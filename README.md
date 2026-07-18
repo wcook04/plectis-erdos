@@ -3,8 +3,9 @@
 
 # Tail certificates and achievement-set geometry for Erdős Problems 249 and 257
 
-**New here?** The [architecture and repository guide](ARCHITECTURE.md)
-assumes no Lean or project history.
+**New here?** See the [architecture and repository guide](ARCHITECTURE.md)
+or the [printable PDF](claim-faithful-publication-systems-paper.pdf). It assumes
+no Lean or project history.
 
 Lean 4 formal work on two unsolved irrationality problems.
 
@@ -15,10 +16,9 @@ Lean 4 formal work on two unsolved irrationality problems.
 [Plectis](https://wcook04.github.io/plectis/)
 
 This repository is one of two public demonstrations of a private system: its
-companion, [Plectis](https://github.com/wcook04/plectis), shows the system's
-machinery as runnable components, and this one shows its mathematical output.
-The [website](https://wcook04.github.io/plectis/) links both and hosts the
-papers; the PDFs above are the fastest route in.
+companion [Plectis](https://github.com/wcook04/plectis) shows the runnable
+machinery; this one shows the mathematics. The
+[website](https://wcook04.github.io/plectis/) links both and hosts the papers.
 
 ## The two problems
 
@@ -97,7 +97,7 @@ an unsafe band.
 | Library | Current size |
 |---|---:|
 | Lean modules | 635 |
-| Formal results and supporting lemmas | 11,538 |
+| Formal results and supporting lemmas | 11,530 |
 | Curated claim records | 99 |
 | Contribution families | 21 |
 
