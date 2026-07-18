@@ -2891,16 +2891,17 @@ subsection records exactly why no transfer follows.
   \node[minimum width=2.7cm] (r3b) at (5.3,-1.8) {$\mathbf 1*\mathbf 1$};
   \node[minimum width=2.7cm] (r4b) at (5.3,-2.7) {$1,0,0,0,\ldots$};
   \node[minimum width=2.7cm] (r5b) at (5.3,-3.6) {$f_A$};
-  \node[anchor=west] (r1c) at (9.0,0)    {$S$: open \textup{(i)}};
-  \node[anchor=west] (r2c) at (9.0,-0.9) {$2$: rational};
-  \node[anchor=west] (r3c) at (9.0,-1.8) {$E$: irrational};
-  \node[anchor=west] (r4c) at (9.0,-2.7) {$1/2$: rational};
-  \node[anchor=west] (r5c) at (9.0,-3.6) {$X_A$: ever rational? \textup{(ii)}};
+% colour marks status: green rational, blue irrational, amber open
+  \node[anchor=west] (r1c) at (9.0,0)    {$S$: \textcolor{BurntOrange!85!black}{open \textup{(i)}}};
+  \node[anchor=west] (r2c) at (9.0,-0.9) {$2$: \textcolor{PineGreen!90!black}{rational}};
+  \node[anchor=west] (r3c) at (9.0,-1.8) {$E$: \textcolor{MidnightBlue}{irrational}};
+  \node[anchor=west] (r4c) at (9.0,-2.7) {$1/2$: \textcolor{PineGreen!90!black}{rational}};
+  \node[anchor=west] (r5c) at (9.0,-3.6) {$X_A$: \textcolor{BurntOrange!85!black}{ever rational? \textup{(ii)}}};
   \foreach \r in {1,2,3,4,5}{
     \draw[->] (r\r a) -- (r\r b);
     \draw[->] (r\r b) -- (r\r c);
   }
-  \draw[->,densely dashed,shorten <=1mm,shorten >=1mm]
+  \draw[->,densely dashed,BurntOrange!85!black,shorten <=1mm,shorten >=1mm]
     ([xshift=2.5mm]r5c.east) to[bend right=52]
     node[right,font=\scriptsize,xshift=1mm]{(iii)?}
     ([xshift=2.5mm]r4c.east);
@@ -2914,7 +2915,8 @@ half-value route fixes the value \(1/2\), reached by the signed
 M\"obius input through the stream \(1,0,0,\ldots\), and asks whether an
 infinite Boolean input reaches it as well.  The figure organises
 statements proved in Sections~\ref{sec:ladder}--\ref{sec:eb} and
-Appendix~\ref{sec:carry}; it asserts nothing further.}
+Appendix~\ref{sec:carry}; it asserts nothing further.  Colour marks
+status: green rational, blue irrational, amber open.}
 \label{fig:transform}
 \end{figure}
 

@@ -113,7 +113,7 @@ relationships remain intact before a release.
   x=1cm, y=1cm,
   artefact/.style={draw, semithick, rounded corners=1.5pt, align=center,
     fill=white, inner xsep=5pt, inner ysep=5pt, text width=3.25cm, font=\small},
-  humanbox/.style={draw, densely dashed, rounded corners=3pt, align=center,
+  humanbox/.style={draw=BurntOrange!80!black, densely dashed, rounded corners=3pt, align=center,
     inner xsep=5pt, inner ysep=4pt, text width=2.75cm, font=\small},
   checkbox/.style={draw, thick, align=center, fill=white,
     inner xsep=5pt, inner ysep=5pt, text width=4.35cm, font=\small},
@@ -122,7 +122,8 @@ relationships remain intact before a release.
   outcome/.style={draw, semithick, align=center, fill=white,
     inner xsep=5pt, inner ysep=4pt, text width=3.4cm, font=\small},
   flow/.style={-{Stealth[length=2.4mm]}, semithick},
-  human/.style={-{Stealth[length=2.4mm]}, semithick, densely dashed},
+  human/.style={-{Stealth[length=2.4mm]}, semithick, densely dashed,
+    draw=BurntOrange!80!black},
   lab/.style={font=\footnotesize, fill=white, inner sep=1.5pt}
 ]
 \node[artefact, text width=3.6cm] (lean) at (1.8, 0) {\textbf{Lean source}\\[1pt]
@@ -155,23 +156,23 @@ relationships remain intact before a release.
   (-0.1,-6.32) rectangle (14.1,-3.90);
 \node[font=\scriptsize] at (6.0,-4.15)
   {\textsc{configured CI workflow} (clean checkout)};
-\node[checkbox, anchor=north] (build) at (2.4, -4.40) {\textbf{formal proof job}\\[1pt]
+\node[checkbox, anchor=north, draw=MidnightBlue!85, fill=MidnightBlue!5] (build) at (2.4, -4.40) {\textbf{formal proof job}\\[1pt]
   {\footnotesize\texttt{lake build}}};
-\node[checkbox, text width=5.4cm, anchor=north] (release) at (9.6, -4.40)
+\node[checkbox, text width=5.4cm, anchor=north, draw=Violet!75!black, fill=Violet!5] (release) at (9.6, -4.40)
   {\textbf{release-surface job}\\[1pt]
    {\footnotesize\texttt{python3 scripts/check\_release.py}\\
    source identity, claim fields,\\ generated files, required wording}};
-\node[lab, anchor=east] at (2.15,-3.62) {proof sources};
-\node[lab, anchor=east] at (9.35,-3.62) {all four artefacts reach the release job};
-\draw[flow] (2.4,-3.35) -- (build.north);
-\draw[flow] (9.6,-3.35) -- (release.north);
+\node[lab, anchor=east, text=MidnightBlue] at (2.15,-3.62) {proof sources};
+\node[lab, anchor=east, text=Violet!75!black] at (9.35,-3.62) {all four artefacts reach the release job};
+\draw[flow, draw=MidnightBlue!85] (2.4,-3.35) -- (build.north);
+\draw[flow, draw=Violet!75!black] (9.6,-3.35) -- (release.north);
 \draw[semithick] (build.south) |- (7.0,-6.55);
 \draw[semithick] (release.south) |- (7.0,-6.55);
 \node[gate] (gate) at (7.0, -7.35) {\footnotesize both jobs pass?};
 \draw[flow] (7.0,-6.55) -- (gate.north);
-\node[outcome] (stop) at (1.9, -7.35) {\textbf{workflow fails}\\
+\node[outcome, draw=BrickRed!70!black, fill=BrickRed!8] (stop) at (1.9, -7.35) {\textbf{workflow fails}\\
   {\footnotesize the failed job records the broken check}};
-\node[outcome] (ship) at (12.0, -7.35) {\textbf{workflow passes}\\
+\node[outcome, draw=ForestGreen!65!black, fill=ForestGreen!10] (ship) at (12.0, -7.35) {\textbf{workflow passes}\\
   {\footnotesize publication remains a human action}};
 \draw[flow] (gate.west) -- (stop.east) node[lab, pos=0.45] {no};
 \draw[flow] (gate.east) -- (ship.west) node[lab, pos=0.45] {yes};
@@ -187,7 +188,9 @@ Continuous integration reruns the first and third; nothing performs the
 second mechanically, and neither job reads unrestricted prose.
 In the worked example of Section~\ref{sec:example} the protected object is
 the recorded boundary between
-the finite theorem and the open requirement.}
+the finite theorem and the open requirement.
+Colour keys the kinds: blue the proof check, amber human judgement,
+violet the persistence check.}
 \label{fig:architecture}
 \end{figure}
 
