@@ -2874,33 +2874,36 @@ subsection records exactly why no transfer follows.
 \centering
 \small
 \begin{tikzpicture}[>={Stealth[length=1.8mm]}, yscale=0.92]
-  \node[font=\footnotesize] at (0,1.05)   {input $f$};
-  \node[font=\footnotesize] at (4.7,1.05) {divisor stream $f*\mathbf 1$};
-  \node[font=\footnotesize] at (9.6,1.05) {value $L(f)$ and status};
-  \draw[->] (1.35,1.05) -- node[above,font=\scriptsize]{divisor transform} (3.15,1.05);
-  \draw[->] (6.35,1.05) -- node[above,font=\scriptsize]{binary evaluation} (7.55,1.05);
-  \node (r1a) at (0,0)     {$\alpha=\ph*\mu$};
-  \node (r1b) at (4.7,0)   {$\ph$};
-  \node[anchor=west] (r1c) at (7.9,0)   {$S$: open \textup{(i)}};
-  \node (r2a) at (0,-0.9)  {$\ph$};
-  \node (r2b) at (4.7,-0.9){$\mathrm{Id}$};
-  \node[anchor=west] (r2c) at (7.9,-0.9){$2$: rational};
-  \node (r3a) at (0,-1.8)  {$\mathbf 1$};
-  \node (r3b) at (4.7,-1.8){$\mathbf 1*\mathbf 1$};
-  \node[anchor=west] (r3c) at (7.9,-1.8){$E$: irrational};
-  \node (r4a) at (0,-2.7)  {$\mu$};
-  \node (r4b) at (4.7,-2.7){$1,0,0,0,\ldots$};
-  \node[anchor=west] (r4c) at (7.9,-2.7){$1/2$: rational};
-  \node (r5a) at (0,-3.6)  {$\mathbf 1_A$, $A$ infinite};
-  \node (r5b) at (4.7,-3.6){$f_A$};
-  \node[anchor=west] (r5c) at (7.9,-3.6){$X_A$: ever rational? \textup{(ii)}};
+% three aligned columns: inputs right-aligned, streams in a fixed-width
+% centre column, outcomes left-aligned, so all ten arrows share two rails
+  \node[font=\footnotesize, anchor=east] at (1.5,1.15) {input $f$};
+  \node[font=\footnotesize] at (5.3,1.15) {divisor stream $f*\mathbf 1$};
+  \node[font=\footnotesize, anchor=west] at (9.0,1.15) {value $L(f)$ and status};
+  \draw[->] (1.62,1.15) -- node[above,font=\scriptsize]{divisor transform} (3.62,1.15);
+  \draw[->] (6.98,1.15) -- node[above,font=\scriptsize]{binary evaluation} (8.88,1.15);
+  \node[anchor=east] (r1a) at (1.5,0)    {$\alpha=\ph*\mu$};
+  \node[anchor=east] (r2a) at (1.5,-0.9) {$\ph$};
+  \node[anchor=east] (r3a) at (1.5,-1.8) {$\mathbf 1$};
+  \node[anchor=east] (r4a) at (1.5,-2.7) {$\mu$};
+  \node[anchor=east] (r5a) at (1.5,-3.6) {$\mathbf 1_A$, $A$ infinite};
+  \node[minimum width=2.7cm] (r1b) at (5.3,0)    {$\ph$};
+  \node[minimum width=2.7cm] (r2b) at (5.3,-0.9) {$\mathrm{Id}$};
+  \node[minimum width=2.7cm] (r3b) at (5.3,-1.8) {$\mathbf 1*\mathbf 1$};
+  \node[minimum width=2.7cm] (r4b) at (5.3,-2.7) {$1,0,0,0,\ldots$};
+  \node[minimum width=2.7cm] (r5b) at (5.3,-3.6) {$f_A$};
+  \node[anchor=west] (r1c) at (9.0,0)    {$S$: open \textup{(i)}};
+  \node[anchor=west] (r2c) at (9.0,-0.9) {$2$: rational};
+  \node[anchor=west] (r3c) at (9.0,-1.8) {$E$: irrational};
+  \node[anchor=west] (r4c) at (9.0,-2.7) {$1/2$: rational};
+  \node[anchor=west] (r5c) at (9.0,-3.6) {$X_A$: ever rational? \textup{(ii)}};
   \foreach \r in {1,2,3,4,5}{
     \draw[->] (r\r a) -- (r\r b);
     \draw[->] (r\r b) -- (r\r c);
   }
-  \draw[->,dashed] (r5c.east) to[bend right=30]
-    node[right,font=\scriptsize]{(iii)?}
-    (r4c.east);
+  \draw[->,densely dashed,shorten <=1mm,shorten >=1mm]
+    ([xshift=2.5mm]r5c.east) to[bend right=52]
+    node[right,font=\scriptsize,xshift=1mm]{(iii)?}
+    ([xshift=2.5mm]r4c.east);
 \end{tikzpicture}
 \caption{The one transform behind the paper, with the statuses of
 Section~\ref{sec:ladder}.  Labels (i)--(iii) are the three questions of
