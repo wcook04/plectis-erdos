@@ -11,11 +11,12 @@
 -- Both Erdős Problem 249 (irrationality of ∑ φ(n)/2ⁿ) and Erdős Problem 257
 -- (irrationality of ∑_{n∈A} 1/(2ⁿ−1) for every infinite A) are OPEN. Nothing
 -- imported here decides either of them.
-import ErdosProblems.Erdos249.FiniteEulerSieve
-import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
-import ErdosProblems.Erdos249.CyclotomicAnchoredKill
-import ErdosProblems.Erdos249.PeriodMultipleEscape
-import ErdosProblems.Erdos249.RankOneSubrankObstruction
-import ErdosProblems.Erdos249.TotientStrictPrimeEscape
-import ErdosProblems.Erdos257.HalfCounterexampleFrontier
-import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Root
+import ErdosProblems.AxiomAudit
+
+/-!
+# Problem-centric Erdős research library
+
+This is the supported root for the problem-owned modules. The `Erdos249257`
+library remains available as the reviewed #249/#257 corpus.
+-/

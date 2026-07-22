@@ -1,7 +1,7 @@
 name = "erdos249257"
 version = "0.6.0"
 keywords = ["math", "erdos249", "erdos257", "lean4", "mathlib", "formalized-mathematics"]
-defaultTargets = ["Erdos249257"]
+defaultTargets = ["Erdos249257", "ErdosProblems"]
 
 [leanOptions]
 pp.unicode.fun = true
@@ -15,9 +15,6 @@ rev = "v4.29.1"
 name = "Erdos249257"
 
 # Problem-centric statements, built on the shared machinery in Erdos249257.
-# Not a default target, for the same reason Examples is not: a downstream
-# consumer running `lake build` should get exactly the one library it depends
-# on. CI builds this explicitly with `lake build ErdosProblems`.
 [[lean_lib]]
 name = "ErdosProblems"
 
