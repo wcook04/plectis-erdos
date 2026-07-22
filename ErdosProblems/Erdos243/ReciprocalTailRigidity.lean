@@ -21,9 +21,8 @@ infinity cannot have bounded upward increments.  That proof combines exact
 coprimality, whole-modulus avoidance, a shifted CRT barrier, and first crossing.
 
 It does not settle the unrestricted problem, whose live obstruction is an
-integer centered state with unbounded negative excursions; the final signed
-centering and zero-absorption wrapper around the bounded-negative theorem
-remains to be formalized.
+integer centered state with cofinally unbounded negative excursions.  The full
+bounded-negative-part regime is closed below without a periodicity hypothesis.
 -/
 
 namespace ErdosProblems.Erdos243
@@ -1368,5 +1367,215 @@ theorem centeredState_eventually_zero
     (hconst (n + 1) hn1).trans (hconst n hn).symm
   have := hrec n
   omega
+
+/-! ## Bounded negative part: the signed wrapper
+
+The preceding CRT theorem excludes cofinally many bounded negative errors once
+their nonzero magnitudes vanish relative to the tail.  The final wrapper has
+two additional ingredients.  First, the exact defect identity makes zero
+absorbing as soon as the centered representative satisfies `|Eₙ| < Cₙ`.
+Second, failure of cofinal negativity leaves an eventually nonnegative natural
+tail, so `centeredState_eventually_zero` applies.
+-/
+
+/-- The natural product-cleared recurrence realizes the integer tail update
+used by `nextTailState`. -/
+theorem natTail_eq_nextTailState
+    (a C D : ℕ → ℕ)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n) (n : ℕ) :
+    (C (n + 1) : ℤ) =
+      nextTailState (a n : ℤ) (D n : ℤ) (C n : ℤ) := by
+  have hCast := congrArg (fun x : ℕ ↦ (x : ℤ)) (hC n)
+  simp only [Nat.cast_add, Nat.cast_mul] at hCast
+  simp only [nextTailState]
+  omega
+
+/-- The natural denominator recurrence realizes `nextDenState` over the
+integers. -/
+theorem natDen_eq_nextDenState
+    (a D : ℕ → ℕ)
+    (hD : ∀ n, D (n + 1) = a n * D n) (n : ℕ) :
+    (D (n + 1) : ℤ) = nextDenState (a n : ℤ) (D n : ℤ) := by
+  have hCast := congrArg (fun x : ℕ ↦ (x : ℤ)) (hD n)
+  simpa only [Nat.cast_mul, nextDenState] using hCast
+
+/-- Along an exact natural orbit, the signed centered state gives the integer
+tail identity `Cₙ₊₁ = Cₙ - Eₙ`. -/
+theorem natTail_eq_sub_centeredState
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (n : ℕ) :
+    (C (n + 1) : ℤ) = (C n : ℤ) - E n := by
+  rw [natTail_eq_nextTailState a C D hC n,
+    nextTailState_eq_sub_centered, ← hE n]
+
+/-- A zero centered state is absorbing under the strict centered-representative
+bound at the next index.  The defect identity makes `Cₙ₊₁` divide `Eₙ₊₁`, and
+the only multiple with smaller absolute value is zero. -/
+theorem centeredState_zero_absorbing
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hcentered : ∀ n, Int.natAbs (E n) < C n)
+    (n : ℕ) (hzero : E n = 0) :
+    E (n + 1) = 0 := by
+  have hdefect := sylvesterDefect_mul_nextTailState
+    (a n : ℤ) (a (n + 1) : ℤ) (D n : ℤ) (C n : ℤ)
+  rw [← natTail_eq_nextTailState a C D hC n,
+    ← natDen_eq_nextDenState a D hD n, ← hE n, ← hE (n + 1), hzero]
+    at hdefect
+  simp only [pow_two, mul_zero, zero_sub] at hdefect
+  have hdiv : (C (n + 1) : ℤ) ∣ E (n + 1) := by
+    refine ⟨-sylvesterDefect (a n : ℤ) (a (n + 1) : ℤ), ?_⟩
+    calc
+      E (n + 1) =
+          -(sylvesterDefect (a n : ℤ) (a (n + 1) : ℤ) *
+            (C (n + 1) : ℤ)) := by omega
+      _ = (C (n + 1) : ℤ) *
+          -sylvesterDefect (a n : ℤ) (a (n + 1) : ℤ) := by ring
+  apply Int.eq_zero_of_dvd_of_natAbs_lt_natAbs hdiv
+  simpa using hcentered (n + 1)
+
+/-- If zero is absorbing from an index onward, failure of eventual zero forces
+every state on that tail to be nonzero. -/
+theorem eventually_nonzero_of_zero_absorbing
+    (E : ℕ → ℤ) (N : ℕ)
+    (habsorbing : ∀ n, N ≤ n → E n = 0 → E (n + 1) = 0)
+    (hnot : ¬ ∃ M, ∀ n, M ≤ n → E n = 0) :
+    ∀ n, N ≤ n → E n ≠ 0 := by
+  intro n hn hzero
+  apply hnot
+  refine ⟨n, fun t hnt ↦ ?_⟩
+  induction t, hnt using Nat.le_induction with
+  | base => exact hzero
+  | succ t hnt iht =>
+      exact habsorbing t (hn.trans hnt) iht
+
+/-- Global signed form of bounded-negative-part rigidity.  Exact natural
+`D/C` dynamics, strict centering, a uniform lower bound on `E`, and
+division-free normalized vanishing force the centered state to vanish
+eventually. -/
+theorem boundedNegativePart_eventually_zero
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ) (B : ℕ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hcentered : ∀ n, Int.natAbs (E n) < C n)
+    (hbound : ∀ n, -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 := by
+  by_contra hnot
+  have habsorbing : ∀ n, E n = 0 → E (n + 1) = 0 := by
+    intro n
+    exact centeredState_zero_absorbing a C D E hC hD hE hcentered n
+  have hnonzero : ∀ n, E n ≠ 0 :=
+    fun n ↦ eventually_nonzero_of_zero_absorbing E 0
+      (fun m _ ↦ habsorbing m) hnot n (Nat.zero_le n)
+  by_cases hnegative : ∀ n, ∃ t, n ≤ t ∧ E t < 0
+  · have hBpos : 0 < B := by
+      obtain ⟨t, _, htneg⟩ := hnegative 0
+      have htbound := hbound t
+      omega
+    have hRise : ∀ n, C (n + 1) ≤ C n + B := by
+      intro n
+      have htail := natTail_eq_sub_centeredState a C D E hC hE n
+      have hboundn := hbound n
+      exact_mod_cast (show (C (n + 1) : ℤ) ≤ (C n : ℤ) + (B : ℤ) by omega)
+    have hmagnitude : ∀ n, 0 < Int.natAbs (E n) := by
+      intro n
+      exact Int.natAbs_pos.mpr (hnonzero n)
+    have hnegativeShape : ∀ n, ∃ t e, n ≤ t ∧ 0 < e ∧ e ≤ B ∧
+        D t + e = (a t - 1) * C t := by
+      intro n
+      obtain ⟨t, hnt, htneg⟩ := hnegative n
+      let e := Int.natAbs (E t)
+      have hepos : 0 < e := Int.natAbs_pos.mpr (hnonzero t)
+      have hecast : (e : ℤ) = -E t := by
+        dsimp [e]
+        exact Int.ofNat_natAbs_of_nonpos (le_of_lt htneg)
+      have heB : e ≤ B := by
+        have htbound := hbound t
+        exact_mod_cast (show (e : ℤ) ≤ (B : ℤ) by omega)
+      have haone : 1 ≤ a t := by have := ha t; omega
+      have hshapeCast :
+          (D t : ℤ) + (e : ℤ) = ((a t - 1 : ℕ) : ℤ) * (C t : ℤ) := by
+        rw [Nat.cast_sub haone]
+        rw [hE t] at hecast
+        simp only [centeredState] at hecast
+        norm_num at hecast ⊢
+        omega
+      refine ⟨t, e, hnt, hepos, heB, ?_⟩
+      exact_mod_cast hshapeCast
+    exact no_cofinallyBoundedNegative_of_normalizedVanishes
+      a C D (fun n ↦ Int.natAbs (E n)) B hBpos ha hCpos hC hD hRise
+      hmagnitude hvanish hnegativeShape
+  · push Not at hnegative
+    obtain ⟨N, hnonnegative⟩ := hnegative
+    let Eplus : ℕ → ℕ := fun n ↦ Int.toNat (E (N + n))
+    have hrec : ∀ n, C (N + (n + 1)) + Eplus n = C (N + n) := by
+      intro n
+      have hnnonneg : 0 ≤ E (N + n) := hnonnegative (N + n) (by omega)
+      apply Nat.cast_injective (R := ℤ)
+      simp only [Nat.cast_add]
+      rw [Int.toNat_of_nonneg hnnonneg]
+      have htail := natTail_eq_sub_centeredState a C D E hC hE (N + n)
+      have htail' :
+          (C ((N + n) + 1) : ℤ) + E (N + n) = (C (N + n) : ℤ) := by
+        omega
+      simpa only [Nat.add_assoc] using htail'
+    obtain ⟨K, hK⟩ := centeredState_eventually_zero
+      (fun n ↦ C (N + n)) Eplus hrec
+    refine hnot ⟨N + K, fun n hn ↦ ?_⟩
+    have hNn : N ≤ n := by omega
+    let k := n - N
+    have hNk : N + k = n := Nat.add_sub_of_le hNn
+    have hKk : K ≤ k := by omega
+    have htoNat : Int.toNat (E n) = 0 := by
+      simpa [Eplus, hNk] using hK k hKk
+    have hnnonneg : 0 ≤ E n := hnonnegative n hNn
+    have hcast := Int.toNat_of_nonneg hnnonneg
+    rw [htoNat] at hcast
+    exact hcast.symm
+
+/-- Eventual signed form matching the analytic bounded-negative-part regime:
+strict centering and the lower bound may begin at different indices. -/
+theorem eventuallyBoundedNegativePart_eventually_zero
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (ha : ∀ n, 1 < a n)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hcentered : ∃ N, ∀ n, N ≤ n → Int.natAbs (E n) < C n)
+    (hbound : ∃ N B : ℕ, ∀ n, N ≤ n → -(B : ℤ) ≤ E n)
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 := by
+  obtain ⟨NC, hcentered⟩ := hcentered
+  obtain ⟨NB, B, hbound⟩ := hbound
+  let N := max NC NB
+  obtain ⟨K, hK⟩ := boundedNegativePart_eventually_zero
+    (fun n ↦ a (N + n)) (fun n ↦ C (N + n))
+    (fun n ↦ D (N + n)) (fun n ↦ E (N + n)) B
+    (fun n ↦ ha (N + n)) (fun n ↦ hCpos (N + n))
+    (fun n ↦ by simpa only [Nat.add_assoc] using hC (N + n))
+    (fun n ↦ by simpa only [Nat.add_assoc] using hD (N + n))
+    (fun n ↦ hE (N + n))
+    (fun n ↦ hcentered (N + n) ((Nat.le_max_left NC NB).trans (by omega)))
+    (fun n ↦ hbound (N + n) ((Nat.le_max_right NC NB).trans (by omega)))
+    (fun scale ↦ by
+      obtain ⟨M, hM⟩ := hvanish scale
+      exact ⟨M, fun n hn ↦ hM (N + n) (by omega)⟩)
+  refine ⟨N + K, fun n hn ↦ ?_⟩
+  have hNn : N ≤ n := by omega
+  let k := n - N
+  have hNk : N + k = n := Nat.add_sub_of_le hNn
+  have hKk : K ≤ k := by omega
+  simpa [hNk] using hK k hKk
 
 end ErdosProblems.Erdos243

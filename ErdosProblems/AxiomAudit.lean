@@ -59,4 +59,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero
 #print axioms ErdosProblems.Erdos243.antitone_nat_eventually_constant
 #print axioms ErdosProblems.Erdos243.centeredState_eventually_zero
+#print axioms ErdosProblems.Erdos243.centeredState_zero_absorbing
+#print axioms ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
+#print axioms ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
 #print axioms ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial
