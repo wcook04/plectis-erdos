@@ -124,6 +124,18 @@ import Pkg.TooLate
 
         self.assertEqual(maximum, 2)
 
+    def test_plan_lines_are_compact_unless_verbose(self) -> None:
+        waves = [["Pkg.A", "Pkg.B"], ["Pkg.Root"]]
+
+        self.assertEqual(
+            fast.plan_lines(waves, verbose=False),
+            ["wave 1: 2 module(s)", "wave 2: 1 module(s)"],
+        )
+        self.assertEqual(
+            fast.plan_lines(waves, verbose=True),
+            ["wave 1: Pkg.A Pkg.B", "wave 2: Pkg.Root"],
+        )
+
     def test_discovery_ignores_ephemeral_underscore_modules(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
