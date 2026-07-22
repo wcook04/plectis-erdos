@@ -1,5 +1,6 @@
 import Mathlib.Data.Nat.Log
 import Mathlib.Data.Nat.Prime.Basic
+import Mathlib.Data.Nat.Prime.Int
 import Mathlib.Algebra.GCDMonoid.Finset
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Finset.Card
@@ -195,6 +196,68 @@ theorem threePrimeKernelQ_eq_of_sameLogCell
       threePrimeKernelQ p q r i' j' k' := by
   simp only [threePrimeKernelQ]
   rw [threePrimeHeight_eq_of_sameLogCell hcell]
+
+/-! ## Finite pure-power jump enumeration -/
+
+/-- The first `count` positive powers of one prime base.  Exponent zero is
+omitted because it is the common initial value `1` in every channel. -/
+def positivePrimePowers (p count : ℕ) : Finset ℕ :=
+  (Finset.range count).image fun e => p ^ (e + 1)
+
+/-- A prime base has no repeated positive powers. -/
+theorem positivePrimePowers_card
+    {p count : ℕ} (hp : p.Prime) :
+    (positivePrimePowers p count).card = count := by
+  calc
+    (positivePrimePowers p count).card = (Finset.range count).card := by
+      rw [positivePrimePowers, Finset.card_image_iff]
+      intro a _ha b _hb hab
+      exact Nat.add_right_cancel (Nat.pow_right_injective hp.two_le hab)
+    _ = count := Finset.card_range count
+
+/-- Positive power channels of two distinct primes are disjoint. -/
+theorem positivePrimePowers_disjoint
+    {p q pcount qcount : ℕ} (hp : p.Prime) (hq : q.Prime) (hpq : p ≠ q) :
+    Disjoint (positivePrimePowers p pcount) (positivePrimePowers q qcount) := by
+  rw [Finset.disjoint_left]
+  intro x hpx hqx
+  change x ∈ (Finset.range pcount).image (fun e => p ^ (e + 1)) at hpx
+  change x ∈ (Finset.range qcount).image (fun e => q ^ (e + 1)) at hqx
+  rcases Finset.mem_image.mp hpx with ⟨a, _ha, hpa⟩
+  rcases Finset.mem_image.mp hqx with ⟨b, _hb, hqb⟩
+  have hpow : p ^ (a + 1) = q ^ (b + 1) := hpa.trans hqb.symm
+  exact hpq (hp.pow_inj hq hpow).1
+
+/-- The finite union of the first `count` positive powers in each of the three
+prime channels. -/
+def threePrimePositiveJumpSet (p q r count : ℕ) : Finset ℕ :=
+  (positivePrimePowers p count ∪ positivePrimePowers q count) ∪
+    positivePrimePowers r count
+
+/-- For three pairwise-distinct primes, the finite positive jump channels have
+exactly `3 * count` elements: there are no cross-channel duplicate powers. -/
+theorem threePrimePositiveJumpSet_card
+    {p q r count : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
+    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) :
+    (threePrimePositiveJumpSet p q r count).card = 3 * count := by
+  have hpqDisjoint :=
+    positivePrimePowers_disjoint (pcount := count) (qcount := count) hp hq hpq
+  have hprDisjoint :=
+    positivePrimePowers_disjoint (pcount := count) (qcount := count) hp hr hpr
+  have hqrDisjoint :=
+    positivePrimePowers_disjoint (pcount := count) (qcount := count) hq hr hqr
+  have hpqrDisjoint :
+      Disjoint
+        (positivePrimePowers p count ∪ positivePrimePowers q count)
+        (positivePrimePowers r count) :=
+    Finset.disjoint_union_left.mpr ⟨hprDisjoint, hqrDisjoint⟩
+  rw [threePrimePositiveJumpSet,
+    Finset.card_union_of_disjoint hpqrDisjoint,
+    Finset.card_union_of_disjoint hpqDisjoint,
+    positivePrimePowers_card hp,
+    positivePrimePowers_card hq,
+    positivePrimePowers_card hr]
+  omega
 
 /-! ## Single-coordinate jump ratios -/
 
