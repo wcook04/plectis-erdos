@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
 """Build stale local Lean modules with bounded memory, then verify with Lake.
 
-The optional targets may be module names or ``.lean`` paths.  With no targets,
-the public root module is built.  Focused targets keep the edit/test loop from
-paying for every public certificate module while preserving an ordinary Lake
-build as the final authority check.  ``--changed-from`` derives those focused
-targets from Git, including untracked Lean files.  ``--lake-staleness`` asks
+The optional targets may be module names or ``.lean`` paths. With no targets,
+each supported public root is built serially. Focused targets keep the
+edit/test loop from paying for every public certificate module while preserving
+a bounded Lake authority check. ``--changed-from`` derives those focused
+targets from Git, including untracked Lean files. ``--lake-staleness`` asks
 Lake's content-trace checker to validate restored CI outputs instead of using
 checkout mtimes, which are new on every GitHub runner.
+
+``--plan`` reports compact dependency-wave sizes. Add ``--verbose-plan`` when
+the exact module names are needed for diagnosis.
 """
 
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
 from pathlib import Path
 import re
@@ -129,7 +133,7 @@ def reachable_graph(
 def resolve_targets(
     targets: Iterable[str], modules: dict[str, Path], root: Path = ROOT
 ) -> list[str]:
-    requested = list(targets) or ["Erdos249257"]
+    requested = list(targets) or default_root_targets(modules, root)
     resolved: list[str] = []
     for target in requested:
         candidate = target.removeprefix("+")
@@ -147,6 +151,20 @@ def resolve_targets(
                 continue
         raise ValueError(f"unknown local Lean target: {target}")
     return resolved
+
+
+def default_root_targets(modules: dict[str, Path], root: Path = ROOT) -> list[str]:
+    """Return the package roots without relying on Lake's unbounded default."""
+
+    resolved_root = root.resolve()
+    targets = sorted(
+        name
+        for name, source in modules.items()
+        if source.parent.resolve() == resolved_root
+    )
+    if not targets:
+        raise ValueError("no public root Lean modules found")
+    return targets
 
 
 def changed_lean_paths(base: str, root: Path = ROOT) -> set[Path]:
@@ -336,51 +354,63 @@ def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
     return name, result.returncode, time.monotonic() - started
 
 
-def build_batch(
-    names: Iterable[str],
-    root: Path = ROOT,
-) -> tuple[list[str], int, float]:
-    """Build one bounded target batch through a single Lake invocation."""
-
-    batch = list(names)
-    started = time.monotonic()
-    result = subprocess.run(
-        ["lake", "build", *(f"+{name}" for name in batch)],
-        cwd=root,
-        check=False,
-    )
-    return batch, result.returncode, time.monotonic() - started
-
-
 def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
-    """Build one wave in bounded Lake batches, isolating failures individually."""
+    """Build one dependency wave with at most ``jobs`` Lake processes.
+
+    A multi-target Lake invocation can schedule its own wide worker set, so
+    batching targets does not actually enforce the wrapper's memory bound.
+    Independent single-target invocations give this function a real process
+    ceiling while keeping failures attributable to their exact module.
+    """
 
     modules = list(names)
     failed: list[str] = []
-    for start in range(0, len(modules), jobs):
-        batch = modules[start : start + jobs]
-        built, code, duration = build_batch(batch, root)
-        print(
-            f"lean-fast-build: {','.join(built)} -> {code} "
-            f"({duration:.1f}s, batch={len(built)})"
-        )
-        if not code:
-            continue
-        print("lean-fast-build: batch failed; isolating targets")
-        for name in batch:
-            isolated_name, isolated_code, isolated_duration = build_one(name, root)
-            print(
-                f"lean-fast-build: {isolated_name} -> {isolated_code} "
-                f"({isolated_duration:.1f}s, isolated)"
-            )
-            if isolated_code:
-                failed.append(isolated_name)
+    if not modules:
+        return failed
+    print(f"lean-fast-build: prebuilding {len(modules)} module(s), max {jobs} concurrent")
+    with ThreadPoolExecutor(max_workers=jobs) as executor:
+        futures = {executor.submit(build_one, name, root): name for name in modules}
+        for future in as_completed(futures):
+            name, code, duration = future.result()
+            print(f"lean-fast-build: {name} -> {code} ({duration:.1f}s)")
+            if code:
+                failed.append(name)
     return failed
+
+
+def plan_lines(build_waves: Iterable[Iterable[str]], *, verbose: bool) -> list[str]:
+    """Format a readable build plan without flooding normal terminals."""
+
+    lines: list[str] = []
+    for index, wave in enumerate(build_waves, 1):
+        names = list(wave)
+        detail = " ".join(names) if verbose else f"{len(names)} module(s)"
+        lines.append(f"wave {index}: {detail}")
+    return lines
+
+
+def run_final_authority_check(
+    targets: Iterable[str], root: Path = ROOT
+) -> int:
+    """Run focused authority checks serially to preserve the process bound."""
+
+    target_list = list(targets)
+    if not target_list:
+        raise ValueError("final authority check requires at least one target")
+    for name in target_list:
+        result = subprocess.run(["lake", "build", f"+{name}"], cwd=root, check=False)
+        if result.returncode:
+            return result.returncode
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("targets", nargs="*", help="local module name or .lean path; defaults to Erdos249257")
+    parser.add_argument(
+        "targets",
+        nargs="*",
+        help="local module name or .lean path; defaults to all supported public roots",
+    )
     parser.add_argument(
         "--changed-from",
         nargs="?",
@@ -391,6 +421,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--jobs", type=int, default=default_jobs())
     parser.add_argument("--plan", action="store_true")
     parser.add_argument(
+        "--verbose-plan",
+        action="store_true",
+        help="print every module in the plan; implies --plan",
+    )
+    parser.add_argument(
         "--lake-staleness",
         action="store_true",
         help="use Lake content traces for restored outputs instead of checkout mtimes",
@@ -398,6 +433,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.jobs < 1:
         parser.error("--jobs must be at least 1")
+    if args.verbose_plan:
+        args.plan = True
 
     root = ROOT
     try:
@@ -460,8 +497,8 @@ def main(argv: list[str] | None = None) -> int:
         f"staleness={'lake-trace' if use_lake_staleness else 'mtime'}"
     )
     if args.plan:
-        for index, wave in enumerate(pending, 1):
-            print(f"wave {index}: {' '.join(wave)}")
+        for line in plan_lines(pending, verbose=args.verbose_plan):
+            print(line)
         return 0
 
     for wave in pending:
@@ -474,10 +511,8 @@ def main(argv: list[str] | None = None) -> int:
         if failed:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
-    print("lean-fast-build: final Lake authority check")
-    focused = bool(args.targets) or args.changed_from is not None
-    final_targets = [f"+{name}" for name in target_modules] if focused else []
-    return subprocess.run(["lake", "build", *final_targets], cwd=root, check=False).returncode
+    print("lean-fast-build: final serialized Lake authority check")
+    return run_final_authority_check(target_modules, root)
 
 
 if __name__ == "__main__":

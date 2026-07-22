@@ -3,7 +3,7 @@ import ErdosProblems.Root
 /-!
 # Assumption audit for the problem-owned assimilation root
 
-This file is intentionally executable documentation. The release gate builds
+This file is intentionally executable documentation.  The release gate builds
 it and records the assumptions of the main results brought in by the first
 problem-centric wave.
 -/
@@ -33,8 +33,33 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den
 #print axioms ErdosProblems.Erdos251.natCarryCoeff_cast
 #print axioms ErdosProblems.Erdos243.sylvesterDefect_mul_nextTailState
+#print axioms ErdosProblems.Erdos243.no_normalizedConstantNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_scalePrimitiveConstantNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_constantNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_eventuallyConstantNegative_orbit
+#print axioms ErdosProblems.Erdos243.repeatedDivisor_forces_periodicCommonScale
+#print axioms ErdosProblems.Erdos243.no_phasePrimitivePeriodicNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_periodicNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_eventuallyPeriodicNegative_orbit
+#print axioms ErdosProblems.Erdos243.exists_shifted_consecutiveMultiples
+#print axioms ErdosProblems.Erdos243.no_boundedRise_of_tailAvoidance
+#print axioms ErdosProblems.Erdos243.reducedStep_coprime_currentFactor
+#print axioms ErdosProblems.Erdos243.reducedTail_pairwiseCoprime
+#print axioms ErdosProblems.Erdos243.reducedTail_wholeModulusAvoidance
+#print axioms ErdosProblems.Erdos243.no_boundedRise_reducedTail
+#print axioms ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail
+#print axioms ErdosProblems.Erdos243.tailGcd_dvd_succ
+#print axioms ErdosProblems.Erdos243.tailGcd_eq_gcd_negativeMagnitude
+#print axioms ErdosProblems.Erdos243.dvdChain_eventuallyConstant_of_cofinally_bounded
+#print axioms ErdosProblems.Erdos243.tailGcd_eventuallyConstant_of_cofinally_boundedNegative
+#print axioms ErdosProblems.Erdos243.no_cofinallyBoundedNegative_of_tailTendsto
+#print axioms ErdosProblems.Erdos243.tailState_tendsto_atTop_of_nonzero_normalizedVanishes
+#print axioms ErdosProblems.Erdos243.no_cofinallyBoundedNegative_of_normalizedVanishes
 #print axioms ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero
 #print axioms ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero
 #print axioms ErdosProblems.Erdos243.antitone_nat_eventually_constant
 #print axioms ErdosProblems.Erdos243.centeredState_eventually_zero
+#print axioms ErdosProblems.Erdos243.centeredState_zero_absorbing
+#print axioms ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
+#print axioms ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
 #print axioms ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial

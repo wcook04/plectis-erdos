@@ -90,7 +90,7 @@ jobs:
         if: steps.lean-inputs.outputs.changed == 'true'
         # Drain independent Lucas modules without Lake's unbounded ready-set
         # fan-out. Lake's own trace hashes validate restored project outputs;
-        # the final ordinary build remains the authority check.
+        # final serialized Lake checks remain the proof-authority check.
         run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness
       - name: Build downstream consumer example
         if: steps.lean-inputs.outputs.changed == 'true'
