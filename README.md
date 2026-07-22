@@ -184,6 +184,12 @@ For memory-constrained builds:
 python3 scripts/lean_fast_build.py --jobs 2
 ```
 
+When `.lake` outputs come from a restored CI or local cache, add
+`--lake-staleness` to use Lake's content traces instead of checkout mtimes.
+The wrapper keeps at most `--jobs` independent Lake processes active and
+serializes focused final authority checks, so its stated memory bound remains
+real even for a wide dependency wave.
+
 Check the public release surfaces separately:
 
 ```sh
