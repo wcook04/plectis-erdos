@@ -10,7 +10,9 @@ import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.FiniteHorizonResidue
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+import ErdosProblems.Erdos269.ResidueEscape
 import ErdosProblems.Erdos1049.RationalBaseLambert
+import ErdosProblems.Erdos1049.RationalPadeArithmetic
 
 /-!
 # Problem-centric Erdős formalization root
