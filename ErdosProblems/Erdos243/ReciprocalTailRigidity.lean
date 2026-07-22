@@ -70,6 +70,24 @@ theorem sylvesterDefect_mul_nextTailState
     centeredState]
   ring
 
+/-- If two consecutive centered errors vanish and the next tail state is
+nonzero, the defect identity forces the original denominator sequence to take
+the exact Sylvester step. -/
+theorem sylvesterNext_eq_of_centered_zero
+    (a aNext D C : ℤ)
+    (hCnext : nextTailState a D C ≠ 0)
+    (hE : centeredState a D C = 0)
+    (hEnext :
+      centeredState aNext (nextDenState a D) (nextTailState a D C) = 0) :
+    aNext = sylvesterNext a := by
+  have hdefect := sylvesterDefect_mul_nextTailState a aNext D C
+  rw [hE, hEnext] at hdefect
+  simp only [mul_zero, sub_zero] at hdefect
+  have hzero : sylvesterDefect a aNext = 0 :=
+    (mul_eq_zero.mp hdefect).resolve_right hCnext
+  rw [sylvesterDefect] at hzero
+  exact sub_eq_zero.mp hzero
+
 /-- Every nonincreasing sequence of naturals is eventually constant. -/
 theorem antitone_nat_eventually_constant
     (C : ℕ → ℕ) (hstep : ∀ n, C (n + 1) ≤ C n) :
