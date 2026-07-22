@@ -1,5 +1,9 @@
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring
+
+open scoped BigOperators
 
 /-!
 # Erdős #1049: rational-base Lambert arithmetic
@@ -68,5 +72,65 @@ theorem threeHalves_no_coordinatewiseCorridor
   have hlt := coordinatewiseCorridor_implies_pow_lt_linear hcorr
   have hge := three_mul_lt_two_pow_succ (x := N + K) (by omega)
   omega
+
+/-! ## Rational-base cleared-tail dynamics -/
+
+/-- The first `N` terms of a rational-base divisor-series coordinate.  The
+coefficient sequence is kept abstract so the recurrence is reusable beyond
+the divisor function. -/
+def rationalBasePrefixQ
+    (r s : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
+  ∑ m ∈ Finset.range N,
+    coeff (m + 1) * s ^ (m + 1) / r ^ (m + 1)
+
+@[simp] theorem rationalBasePrefixQ_succ
+    (r s : ℚ) (coeff : ℕ → ℚ) (N : ℕ) :
+    rationalBasePrefixQ r s coeff (N + 1) =
+      rationalBasePrefixQ r s coeff N +
+        coeff (N + 1) * s ^ (N + 1) / r ^ (N + 1) := by
+  rw [rationalBasePrefixQ, rationalBasePrefixQ, Finset.sum_range_succ]
+
+/-- Denominator-cleared tail state for a putative rational value `F`. -/
+def rationalBaseClearedTailQ
+    (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
+  B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
+
+/-- Exact rational-base recurrence.  The forcing term contains `s^(N+1)`;
+this is the denominator-base tax absent from the integer-base case `s = 1`. -/
+theorem rationalBaseClearedTailQ_succ
+    {r s B F : ℚ} {coeff : ℕ → ℚ} (hr : r ≠ 0) (N : ℕ) :
+    rationalBaseClearedTailQ r s B F coeff (N + 1) =
+      r * rationalBaseClearedTailQ r s B F coeff N -
+        B * coeff (N + 1) * s ^ (N + 1) := by
+  rw [rationalBaseClearedTailQ, rationalBaseClearedTailQ,
+    rationalBasePrefixQ_succ, pow_succ]
+  field_simp [hr]
+  ring
+
+/-- Natural-valued magnitude of the forcing term in the cleared recurrence. -/
+def rationalBaseForcingNat
+    (s B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) : ℕ :=
+  B * coeff (N + 1) * s ^ (N + 1)
+
+/-- At every genuine noninteger denominator base `s ≥ 2`, positive
+coefficients force at least exponential `2^(N+1)` growth. -/
+theorem twoPow_le_rationalBaseForcingNat
+    {s B : ℕ} {coeff : ℕ → ℕ} {N : ℕ}
+    (hs : 2 ≤ s) (hB : 1 ≤ B) (hc : 1 ≤ coeff (N + 1)) :
+    2 ^ (N + 1) ≤ rationalBaseForcingNat s B coeff N := by
+  have hcoeff : 1 ≤ B * coeff (N + 1) := Nat.mul_pos hB hc
+  calc
+    2 ^ (N + 1) ≤ s ^ (N + 1) := Nat.pow_le_pow_left hs _
+    _ = 1 * s ^ (N + 1) := by simp
+    _ ≤ (B * coeff (N + 1)) * s ^ (N + 1) :=
+      Nat.mul_le_mul_right _ hcoeff
+    _ = rationalBaseForcingNat s B coeff N := by
+      simp [rationalBaseForcingNat, mul_assoc]
+
+/-- In the integer-base case the denominator-base tax collapses exactly. -/
+@[simp] theorem rationalBaseForcingNat_one
+    (B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) :
+    rationalBaseForcingNat 1 B coeff N = B * coeff (N + 1) := by
+  simp [rationalBaseForcingNat]
 
 end ErdosProblems.Erdos1049
