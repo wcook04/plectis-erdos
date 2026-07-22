@@ -43,10 +43,10 @@
           "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
           "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
           "present": true,
-          "line_count": 146,
-          "declaration_count": 11,
-          "theorem_count": 6,
-          "content_digest": "sha256:074818d77500eb657eb0f720b310a55171754a433ee80b0e89d3fc8b8d4e3a37"
+          "line_count": 1581,
+          "declaration_count": 45,
+          "theorem_count": 40,
+          "content_digest": "sha256:f5add2b81059c557f467f725108e2df07080e0c9adf9e13b285f7ee7e6db4940"
         },
         {
           "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
@@ -66,33 +66,39 @@
         "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
       },
       "what_is_checked": [
-        "The exact product-cleared tail dynamics, as an algebraic identity in the integer state variables.",
-        "That two consecutive vanishing centred errors together with a nonvanishing next tail state force the exact Sylvester step at that index.",
-        "The sequence-level form: eventual vanishing of the centred state plus eventual nonvanishing of the next tail state forces the Sylvester recurrence eventually.",
-        "That the integer state dynamics commute with common scaling, so scalar multiples of a state are not distinct search candidates.",
+        "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
+        "That a vanishing centred state is absorbing under strict centring, so the state is either eventually zero or nowhere zero.",
+        "That eventual vanishing of the centred state, with the next tail state nonvanishing, forces the Sylvester recurrence eventually.",
+        "That a nonnegative centred state vanishes eventually, by descent.",
+        "That the centred state cannot be eventually constant and negative, at any magnitude and any common scale.",
+        "That the negative magnitude cannot be eventually periodic with positive drift, in the regime where each magnitude is below its multiplier.",
+        "A coprimality barrier: a sequence tending to infinity with uniformly bounded upward increments cannot permanently avoid infinitely many fresh pairwise coprime moduli.",
+        "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
+        "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
+        "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
         "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
       ],
       "what_is_not_checked": [
         "The unrestricted problem.",
-        "That an infinitely recurring constant-negative state is impossible; no such orbit has been excluded and none has been constructed.",
-        "The weighted criterion of Erdős and Straus, which is cited rather than formalised.",
-        "The behaviour at the critical growth boundary."
+        "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
+        "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
+        "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
       ],
       "open_obligations": [
         {
-          "id": "exclude_infinite_constant_negative_state",
-          "statement": "Show that the divisibility condition sustaining a constant-negative forced orbit cannot persist at every index, or exhibit an orbit on which it does."
+          "id": "unbounded_negative_excursions",
+          "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part."
         },
         {
-          "id": "formalise_weighted_criterion",
-          "statement": "Kernel-check the weighted undershoot criterion and its consumer under explicit analytic hypotheses."
+          "id": "derive_the_two_analytic_hypotheses",
+          "statement": "Derive eventual strict centring and normalised vanishing from the growth hypothesis and rationality, or show that they do not follow."
         },
         {
-          "id": "critical_boundary",
-          "statement": "Decide the critical case where the normalised undershoot sits at the reciprocal-index boundary."
+          "id": "formalise_the_published_criteria",
+          "statement": "Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses."
         }
       ],
-      "finite_search": "An exact search over initial states below five thousand, reduced by scale equivariance, found forced prefixes of length seventeen and no longer. That is neither a counterexample nor a rigidity proof."
+      "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale."
     },
     {
       "problem_id": "erdos_251",
@@ -150,7 +156,7 @@
       "erdos_number": 269,
       "short_title": "Three-prime running least common multiples",
       "status": "open",
-      "question": "Is the relevant series irrational in the first unresolved case, where the smooth numbers are generated by three distinct primes?",
+      "question": "For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.",
       "library_root": "ErdosProblems.lean",
       "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
       "directory": "ErdosProblems/Erdos269",

@@ -161,7 +161,7 @@ Run the focused public-surface gate after documentation or registry changes:
 
 ```sh
 python3 scripts/check_release.py
-python3 scripts/check_problem_note_sources.py
+python3 scripts/check_problem_note_sources.py --coverage
 python3 scripts/build_problem_index.py --check
 python3 scripts/test_dependency_lock_contract.py
 python3 scripts/test_citation_identity_contract.py
