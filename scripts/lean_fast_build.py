@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Build stale local Lean modules with bounded memory, then verify with Lake.
 
-The optional targets may be module names or ``.lean`` paths.  With no targets,
-the public root module is built.  Focused targets keep the edit/test loop from
-paying for every public certificate module while preserving an ordinary Lake
-build as the final authority check.  ``--changed-from`` derives those focused
-targets from Git, including untracked Lean files.  ``--lake-staleness`` asks
+The optional targets may be module names or ``.lean`` paths. With no targets,
+each supported public root is built serially. Focused targets keep the
+edit/test loop from paying for every public certificate module while preserving
+a bounded Lake authority check. ``--changed-from`` derives those focused
+targets from Git, including untracked Lean files. ``--lake-staleness`` asks
 Lake's content-trace checker to validate restored CI outputs instead of using
 checkout mtimes, which are new on every GitHub runner.
 """
@@ -130,7 +130,7 @@ def reachable_graph(
 def resolve_targets(
     targets: Iterable[str], modules: dict[str, Path], root: Path = ROOT
 ) -> list[str]:
-    requested = list(targets) or ["Erdos249257"]
+    requested = list(targets) or default_root_targets(modules, root)
     resolved: list[str] = []
     for target in requested:
         candidate = target.removeprefix("+")
@@ -148,6 +148,20 @@ def resolve_targets(
                 continue
         raise ValueError(f"unknown local Lean target: {target}")
     return resolved
+
+
+def default_root_targets(modules: dict[str, Path], root: Path = ROOT) -> list[str]:
+    """Return the package roots without relying on Lake's unbounded default."""
+
+    resolved_root = root.resolve()
+    targets = sorted(
+        name
+        for name, source in modules.items()
+        if source.parent.resolve() == resolved_root
+    )
+    if not targets:
+        raise ValueError("no public root Lean modules found")
+    return targets
 
 
 def changed_lean_paths(base: str, root: Path = ROOT) -> set[Path]:
@@ -368,7 +382,7 @@ def run_final_authority_check(
 
     target_list = list(targets)
     if not target_list:
-        return subprocess.run(["lake", "build"], cwd=root, check=False).returncode
+        raise ValueError("final authority check requires at least one target")
     for name in target_list:
         result = subprocess.run(["lake", "build", f"+{name}"], cwd=root, check=False)
         if result.returncode:
@@ -378,7 +392,11 @@ def run_final_authority_check(
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("targets", nargs="*", help="local module name or .lean path; defaults to Erdos249257")
+    parser.add_argument(
+        "targets",
+        nargs="*",
+        help="local module name or .lean path; defaults to all supported public roots",
+    )
     parser.add_argument(
         "--changed-from",
         nargs="?",
@@ -473,8 +491,7 @@ def main(argv: list[str] | None = None) -> int:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
     print("lean-fast-build: final serialized Lake authority check")
-    focused = bool(args.targets) or args.changed_from is not None
-    return run_final_authority_check(target_modules if focused else [], root)
+    return run_final_authority_check(target_modules, root)
 
 
 if __name__ == "__main__":
