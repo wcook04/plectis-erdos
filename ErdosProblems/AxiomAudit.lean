@@ -14,6 +14,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_firstLogStep
 #print axioms ErdosProblems.Erdos269.threePrimePositiveJumpSet_card
+#print axioms ErdosProblems.Erdos269.threePrimeJumpSetWithOrigin_card
 #print axioms ErdosProblems.Erdos269.kernel_235_not_rankOne
 #print axioms ErdosProblems.Erdos269.smoothExponentShell_card_quadratic
 #print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
