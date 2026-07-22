@@ -19,9 +19,9 @@ graph:
    `python3 scripts/query_corpus.py --open <remaining_open.id>`.
 3. Follow the returned paper label into the authored exposition and its
    declaration or source handles into the modules grouped below.
-4. Read `Erdos249257.lean` only when the package topology itself is the
-   question. Read `docs/WAVE_INDEX.md` for chronology, not as the recommended
-   mathematical reading order.
+4. Read `Erdos249257.lean` or `ErdosProblems.lean` only when package topology
+   itself is the question. Read `docs/WAVE_INDEX.md` for chronology, not as the
+   recommended mathematical reading order.
 
 Lean source checked by the pinned Lean kernel is proof authority. This map is
 authored navigation: it does not strengthen a claim, replace
@@ -31,8 +31,13 @@ and the universal form of #257 remain open.
 ## Build entrypoint
 
 - `Erdos249257.lean`
+- `ErdosProblems.lean`
 - Lake package: `erdos249257`
-- Lean library / stable root import: `Erdos249257`
+- Lean libraries / stable root imports: `Erdos249257`, `ErdosProblems`
+
+`Erdos249257` is the reviewed #249/#257 corpus. `ErdosProblems` is the
+problem-owned expansion surface; unregistered declarations there remain exact
+Lean propositions rather than reviewed public mathematical claims.
 
 ## #257 / Erdős–Borwein families
 

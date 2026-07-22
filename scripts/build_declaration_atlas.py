@@ -27,11 +27,23 @@ DECL_RE = re.compile(
     r"(theorem|lemma|def|abbrev|instance|structure|class|inductive|opaque)\s+"
     r"([A-Za-z0-9_'.]+)\b"
 )
-IMPORT_RE = re.compile(r"^import (Erdos249257(?:\.[A-Za-z0-9_]+)+)\s*$", re.M)
+LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
+ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+IMPORT_RE = re.compile(
+    rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
+    re.M,
+)
 
 
 def source_paths() -> list[Path]:
-    return [ROOT / "Erdos249257.lean", *sorted((ROOT / "Erdos249257").rglob("*.lean"))]
+    return [
+        path
+        for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
+        for path in (
+            ROOT / root_file,
+            *sorted((ROOT / library_root).rglob("*.lean")),
+        )
+    ]
 
 
 def module_id(path: Path) -> str:
@@ -152,6 +164,7 @@ def build() -> dict[str, object]:
             "principal_argument_map": "docs/claims.json",
             "human_exposition": "paper/erdos249-257-main-paper.tex",
             "root_import": "Erdos249257.lean",
+            "root_imports": list(ROOT_FILES),
             "check": "python3 scripts/build_declaration_atlas.py --check",
         },
     }
