@@ -1,6 +1,7 @@
 import Mathlib.Data.Nat.Log
 import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Algebra.GCDMonoid.Finset
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Data.Finset.Card
 import Mathlib.Data.Finset.Prod
 import Mathlib.Tactic.Linarith
@@ -22,6 +23,8 @@ higher-dimensional analytic theorem.
 -/
 
 namespace ErdosProblems.Erdos269
+
+open scoped BigOperators
 
 /-- The `{p,q,r}`-smooth lattice point with exponent vector `(i,j,k)`. -/
 def smooth3Val (p q r i j k : ℕ) : ℕ :=
@@ -192,6 +195,70 @@ theorem threePrimeKernelQ_eq_of_sameLogCell
       threePrimeKernelQ p q r i' j' k' := by
   simp only [threePrimeKernelQ]
   rw [threePrimeHeight_eq_of_sameLogCell hcell]
+
+/-! ## Finite jump grouping -/
+
+/-- A finite rectangular exponent box.  This is the exact finite domain used
+before passing to the infinite three-prime smooth series. -/
+def smoothExponentBox (hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  (Finset.range (hp + 1)).product
+    ((Finset.range (hq + 1)).product (Finset.range (hr + 1)))
+
+/-- The running-LCM height attached to one smooth exponent triple. -/
+def smoothPointHeight (p q r : ℕ) (e : ℕ × ℕ × ℕ) : ℕ :=
+  threePrimeHeight p q r (smooth3Val p q r e.1 e.2.1 e.2.2)
+
+/-- The points of a finite exponent box with one fixed running-LCM height. -/
+def smoothHeightFiber
+    (p q r hp hq hr H : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  (smoothExponentBox hp hq hr).filter fun e => smoothPointHeight p q r e = H
+
+/-- On a fixed height fiber, every lattice-kernel summand is the reciprocal of
+that common height, so the fiber sum is exactly its multiplicity times that
+reciprocal. -/
+theorem smoothHeightFiber_kernel_sum
+    (p q r hp hq hr H : ℕ) :
+    (∑ e ∈ smoothHeightFiber p q r hp hq hr H,
+      threePrimeKernelQ p q r e.1 e.2.1 e.2.2) =
+      (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹) := by
+  classical
+  calc
+    (∑ e ∈ smoothHeightFiber p q r hp hq hr H,
+        threePrimeKernelQ p q r e.1 e.2.1 e.2.2) =
+        ∑ _e ∈ smoothHeightFiber p q r hp hq hr H, ((H : ℚ)⁻¹) := by
+      apply Finset.sum_congr rfl
+      intro e he
+      have hheight : smoothPointHeight p q r e = H :=
+        (Finset.mem_filter.mp he).2
+      simpa [threePrimeKernelQ, smoothPointHeight, hheight]
+    _ = (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹) := by
+      simp
+
+/-- Exact finite normal form obtained by grouping the smooth lattice kernel by
+its genuine running-LCM heights.  The coefficient of each height is the
+cardinality of its fiber.  Together with logarithmic-cell constancy, this is
+the checked finite core of the prime-power jump expansion. -/
+theorem finiteSmoothKernelSum_groupedByHeight
+    (p q r hp hq hr : ℕ) :
+    (∑ e ∈ smoothExponentBox hp hq hr,
+      threePrimeKernelQ p q r e.1 e.2.1 e.2.2) =
+      ∑ H ∈ (smoothExponentBox hp hq hr).image (smoothPointHeight p q r),
+        (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹) := by
+  classical
+  calc
+    (∑ e ∈ smoothExponentBox hp hq hr,
+        threePrimeKernelQ p q r e.1 e.2.1 e.2.2) =
+        ∑ H ∈ (smoothExponentBox hp hq hr).image (smoothPointHeight p q r),
+          ∑ e ∈ smoothExponentBox hp hq hr with smoothPointHeight p q r e = H,
+            threePrimeKernelQ p q r e.1 e.2.1 e.2.2 := by
+      symm
+      exact Finset.sum_fiberwise_of_maps_to
+        (fun _e he => Finset.mem_image_of_mem (smoothPointHeight p q r) he) _
+    _ = ∑ H ∈ (smoothExponentBox hp hq hr).image (smoothPointHeight p q r),
+        (smoothHeightFiber p q r hp hq hr H).card • ((H : ℚ)⁻¹) := by
+      apply Finset.sum_congr rfl
+      intro H _hH
+      exact smoothHeightFiber_kernel_sum p q r hp hq hr H
 
 /-- Each pure-power component of the height is at most `x`, so the three-prime
 height is bounded by `x³`. -/
