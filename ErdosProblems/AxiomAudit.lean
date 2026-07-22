@@ -3,7 +3,7 @@ import ErdosProblems.Root
 /-!
 # Assumption audit for the problem-owned assimilation root
 
-This file is intentionally executable documentation. The release gate builds
+This file is intentionally executable documentation.  The release gate builds
 it and records the assumptions of the main results brought in by the first
 problem-centric wave.
 -/
@@ -33,6 +33,10 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den
 #print axioms ErdosProblems.Erdos251.natCarryCoeff_cast
 #print axioms ErdosProblems.Erdos243.sylvesterDefect_mul_nextTailState
+#print axioms ErdosProblems.Erdos243.no_normalizedConstantNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_scalePrimitiveConstantNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_constantNegative_orbit
+#print axioms ErdosProblems.Erdos243.no_eventuallyConstantNegative_orbit
 #print axioms ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero
 #print axioms ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero
 #print axioms ErdosProblems.Erdos243.antitone_nat_eventually_constant
