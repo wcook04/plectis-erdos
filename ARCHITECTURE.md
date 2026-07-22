@@ -77,7 +77,7 @@ single file that is authoritative for everything.
 
 | Question | Authoritative source | What it controls |
 |---|---|---|
-| What has been formally checked? | [`Erdos249257.lean`](Erdos249257.lean) and the Lean modules it imports, at the fixed source version named in [`docs/claims.json`](docs/claims.json) | Formal statements and proofs |
+| What has been formally checked? | [`Erdos249257.lean`](Erdos249257.lean), [`ErdosProblems.lean`](ErdosProblems.lean), and the Lean modules they import, at the fixed source version named in [`docs/claims.json`](docs/claims.json) | Formal statements and proofs; kernel checking alone does not create a reviewed public claim |
 | What may the project publicly say about a result? | [`docs/claims.json`](docs/claims.json) | Claim wording, status, supporting Lean names, bounded ranges, and the exact questions that remain open |
 | What evidence and review are required when a claim changes? | [`docs/methodology.json`](docs/methodology.json) | Change classes and review requirements |
 | What does a reader see? | [`README.md`](README.md), [`SCOPE.md`](SCOPE.md), and authored papers such as [`paper/erdos249-257-main-paper.tex`](paper/erdos249-257-main-paper.tex) | Human explanation; these files must stay within the claim record |
@@ -97,8 +97,10 @@ authority. Their builder scripts say when they should be regenerated.
 ## Repository map
 
 ```text
-Erdos249257.lean                 supported root import for the Lean library
-Erdos249257/                     formal definitions, theorems, and certificates
+Erdos249257.lean                 reviewed #249/#257 root import
+Erdos249257/                     reviewed #249/#257 definitions, theorems, and certificates
+ErdosProblems.lean               problem-owned expansion root import
+ErdosProblems/Erdos<N>/          formal work grouped by actual Erdős problem number
 examples/                        a small downstream Lean user of the library
 
 docs/claims.json                 reviewed record of public mathematical claims

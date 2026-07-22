@@ -11,7 +11,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-IMPORT_RE = re.compile(r"^import (Erdos249257(?:\.[A-Za-z0-9_]+)+)\s*$", re.M)
+LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
+ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+IMPORT_RE = re.compile(
+    rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
+    re.M,
+)
 
 
 def registry_errors(
@@ -46,7 +51,9 @@ def registry_errors(
     return errors
 
 
-def closure_errors(nodes: list[dict[str, object]], root_imports: list[str]) -> list[str]:
+def closure_errors(
+    nodes: list[dict[str, object]], root_imports: list[str]
+) -> list[str]:
     """Return identity, missing-edge, and orphan errors for a public import graph."""
     module_ids = [str(node["id"]) for node in nodes]
     duplicate_ids = sorted(
@@ -57,7 +64,7 @@ def closure_errors(nodes: list[dict[str, object]], root_imports: list[str]) -> l
         for module_id in duplicate_ids
     ]
     imports_by_id = {str(node["id"]): list(node["imports"]) for node in nodes}
-    for importer, imports in [("Erdos249257", root_imports), *imports_by_id.items()]:
+    for importer, imports in [("supported roots", root_imports), *imports_by_id.items()]:
         for imported in imports:
             if imported not in imports_by_id:
                 errors.append(f"{importer} imports unknown public module {imported}")
@@ -156,10 +163,17 @@ def main() -> int:
     claims = json.loads((ROOT / "docs" / "claims.json").read_text(encoding="utf-8"))
     graph = claims["machine_readable_paper"]["module_graph"]
     assert graph["root"] == "Erdos249257.lean"
-    root_imports = IMPORT_RE.findall((ROOT / graph["root"]).read_text(encoding="utf-8"))
+    roots = [graph["root"], *graph.get("additional_roots", [])]
+    assert roots == list(ROOT_FILES)
+    root_imports = [
+        imported
+        for root in roots
+        for imported in IMPORT_RE.findall((ROOT / root).read_text(encoding="utf-8"))
+    ]
     public_paths = {
         path.relative_to(ROOT).as_posix()
-        for path in (ROOT / "Erdos249257").rglob("*.lean")
+        for library_root in LIBRARY_ROOTS
+        for path in (ROOT / library_root).rglob("*.lean")
     }
     errors = [
         *registry_errors(graph["nodes"], public_paths),
@@ -168,7 +182,7 @@ def main() -> int:
     assert not errors, "\n".join(errors)
     print(
         "test_root_import_closure: registry exactly matches disk and supported "
-        f"root reaches all {len(graph['nodes'])} public Lean modules"
+        f"roots reach all {len(graph['nodes'])} public Lean modules"
     )
     return 0
 

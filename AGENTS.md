@@ -81,8 +81,10 @@ below is the bounded route into mathematical claims and Lean source.
    scale: every declaration, signature excerpt, module, import edge, generated
    certificate marker, and principal-claim link. It is a generated navigation
    projection; drill back to Lean before trusting a statement.
-11. Use `Erdos249257.lean` for the supported root import and exact package
-   topology. Use `docs/SOURCE_MAP.md` for intention-based routes and
+11. Use `Erdos249257.lean` for the reviewed #249/#257 root and
+   `ErdosProblems.lean` for the problem-owned expansion root. Kernel checking
+   the expansion root does not promote its declarations into reviewed public
+   claims. Use `docs/SOURCE_MAP.md` for intention-based routes and
    `docs/WAVE_INDEX.md` for mathematical chronology.
 
 For a bounded lookup, use `python3 scripts/query_corpus.py` with one typed

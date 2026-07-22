@@ -17,8 +17,8 @@ Read order for humans:
    exposition and its source handles.
 4. this file — recover development chronology only when chronology is the
    question.
-5. `Erdos249257.lean` — inspect the complete package topology only when import
-   structure is the question.
+5. `Erdos249257.lean` and `ErdosProblems.lean` — inspect package topology only
+   when import structure is the question.
 
 Lean source checked by the pinned Lean kernel is proof authority. Wave order
 does not strengthen a claim or close an exact open proposition. Erdős #249 and

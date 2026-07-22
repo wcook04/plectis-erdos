@@ -49,9 +49,10 @@ def contract_errors(example: str, readme: str, lakefile: str) -> list[str]:
         errors.append("lakefile is not valid TOML")
         return errors
 
-    if lake_config.get("defaultTargets") != ["Erdos249257"]:
+    if lake_config.get("defaultTargets") != ["Erdos249257", "ErdosProblems"]:
         errors.append(
-            "lakefile defaultTargets must remain exactly ['Erdos249257']"
+            "lakefile defaultTargets must remain exactly "
+            "['Erdos249257', 'ErdosProblems']"
         )
 
     examples_targets = [
@@ -133,8 +134,8 @@ def main() -> int:
     )
 
     default_example = lakefile.replace(
-        'defaultTargets = ["Erdos249257"]',
-        'defaultTargets = ["Erdos249257", "Examples"]',
+        'defaultTargets = ["Erdos249257", "ErdosProblems"]',
+        'defaultTargets = ["Erdos249257", "ErdosProblems", "Examples"]',
         1,
     )
     assert any(

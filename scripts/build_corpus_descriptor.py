@@ -193,6 +193,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "source_by_question": "docs/SOURCE_MAP.md",
             "development_chronology": "docs/WAVE_INDEX.md",
             "supported_root_import": "Erdos249257.lean",
+            "supported_root_imports": ["Erdos249257.lean", "ErdosProblems.lean"],
         },
         "checks": {
             "release": "python3 scripts/check_release.py",
@@ -557,7 +558,14 @@ def build() -> dict[str, Any]:
     # state from ``repository_resolution`` instead.
 
     orientation = build_orientation(claims, atlas)
-    root_module = next(row for row in atlas["modules"] if row["path"] == "Erdos249257.lean")
+    root_paths = [
+        machine_paper["module_graph"]["root"],
+        *machine_paper["module_graph"].get("additional_roots", []),
+    ]
+    root_modules = {
+        root_path: next(row for row in atlas["modules"] if row["path"] == root_path)
+        for root_path in root_paths
+    }
     principal_declaration_handles = [
         {"claim_id": claim["id"], **declaration}
         for claim in orientation["principal_claims"]
@@ -708,8 +716,13 @@ def build() -> dict[str, Any]:
             ],
             "module_topology": {
                 "root": machine_paper["module_graph"]["root"],
+                "roots": root_paths,
                 "node_count": len(machine_paper["module_graph"]["nodes"]),
-                "root_imports": root_module["imports"],
+                "root_imports": root_modules[root_paths[0]]["imports"],
+                "imports_by_root": {
+                    root_path: root_modules[root_path]["imports"]
+                    for root_path in root_paths
+                },
                 "full_graph": "docs/claims.json::machine_readable_paper.module_graph",
             },
             "argument_graph": machine_paper["argument_graph"],

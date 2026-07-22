@@ -60,6 +60,18 @@ ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
 CHECKS = 0
 
+LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
+ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+PROOF_PATHS = tuple(
+    path
+    for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
+    for path in (root_file, library_root)
+)
+INTERNAL_IMPORT_RE = re.compile(
+    rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
+    re.M,
+)
+
 LINE_WINDOW = 3  # declaration name must appear within this many lines of the stated line
 MAX_ROUTE_FIRST_CONTACT_BYTES = 48_000
 
@@ -135,7 +147,7 @@ def source_map_entry_errors(source_map: str) -> list[str]:
         for phrase in required
         if phrase not in source_map
     ]
-    if "Read `Erdos249257.lean` only when the package topology itself is the" not in source_map:
+    if "Read `Erdos249257.lean` or `ErdosProblems.lean` only when package topology" not in source_map:
         errors.append(
             "docs/SOURCE_MAP.md must not send first-contact readers directly "
             "into the full import graph"
@@ -149,7 +161,7 @@ def wave_index_entry_errors(wave_index: str) -> list[str]:
         "docs/orientation.json",
         "docs/SOURCE_MAP.md",
         "recover development chronology only when chronology is the",
-        "inspect the complete package topology only when import",
+        "inspect package topology only",
         "Lean source checked by the pinned Lean kernel is proof authority",
         "Erdős #249",
         "universal form of #257 remain open",
@@ -195,9 +207,8 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     generated navigation, and release metadata may legitimately advance after
     that checkpoint.
     """
-    proof_paths = ("Erdos249257.lean", "Erdos249257")
     comparison = subprocess.run(
-        ["git", "diff", "--quiet", formal_ref, "--", *proof_paths],
+        ["git", "diff", "--quiet", formal_ref, "--", *PROOF_PATHS],
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -206,7 +217,7 @@ def formal_source_matches_current_lean_tree(formal_ref: str) -> tuple[bool, str]
     if comparison.returncode not in (0, 1):
         return False, comparison.stderr.strip() or "could not compare formal source to worktree"
     untracked = subprocess.run(
-        ["git", "ls-files", "--others", "--exclude-standard", "--", *proof_paths],
+        ["git", "ls-files", "--others", "--exclude-standard", "--", *PROOF_PATHS],
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -230,8 +241,8 @@ def name_at_line(lines: list[str], name: str, line: int) -> bool:
 
 
 def internal_imports(path: Path) -> list[str]:
-    """Return direct Erdos249257 imports in source order."""
-    return re.findall(r"^import (Erdos249257(?:\.[A-Za-z0-9_]+)+)\s*$", read(path), re.M)
+    """Return direct imports from either supported library in source order."""
+    return INTERNAL_IMPORT_RE.findall(read(path))
 
 
 def lean_code_without_comments_and_strings(text: str) -> str:
@@ -332,16 +343,15 @@ def check_proof_trust() -> None:
     check(proof_trust_violation('def label := "native_decide"\n') is None,
           "proof-trust scanner must ignore strings")
     example_sources = sorted((ROOT / "examples").rglob("*.lean")) if (ROOT / "examples").is_dir() else []
-    problem_sources = (
-        sorted((ROOT / "ErdosProblems").rglob("*.lean"))
-        + ([ROOT / "ErdosProblems.lean"] if (ROOT / "ErdosProblems.lean").is_file() else [])
-        if (ROOT / "ErdosProblems").is_dir()
-        else []
-    )
     lean_sources = (
-        sorted((ROOT / "Erdos249257").rglob("*.lean"))
-        + [ROOT / "Erdos249257.lean"]
-        + problem_sources
+        [
+            path
+            for library_root, root_file in zip(LIBRARY_ROOTS, ROOT_FILES, strict=True)
+            for path in (
+                *sorted((ROOT / library_root).rglob("*.lean")),
+                ROOT / root_file,
+            )
+        ]
         + example_sources
     )
     for lean in lean_sources:
@@ -702,24 +712,31 @@ def main() -> int:
             observed = internal_imports(path)
             check(observed == node["imports"],
                   f"module {node['id']} imports drifted: registry={node['imports']} source={observed}")
-    root_path = ROOT / machine_paper["module_graph"]["root"]
-    check(root_path.is_file(), "machine-readable module graph root does not exist")
-    if root_path.is_file():
-        root_imports = internal_imports(root_path)
-        unknown_root_imports = set(root_imports) - module_id_set
-        check(not unknown_root_imports,
-              f"Erdos249257.lean has imports missing from the machine-readable module graph: {sorted(unknown_root_imports)}")
-        imports_by_id = {node["id"]: node["imports"] for node in module_nodes}
-        reachable = set(root_imports)
-        frontier = list(root_imports)
-        while frontier:
-            current = frontier.pop()
-            for dependency in imports_by_id.get(current, []):
-                if dependency not in reachable:
-                    reachable.add(dependency)
-                    frontier.append(dependency)
-        check(reachable == module_id_set,
-              f"machine-readable module graph has nodes unreachable from Erdos249257.lean: {sorted(module_id_set - reachable)}")
+    graph = machine_paper["module_graph"]
+    roots = [graph["root"], *graph.get("additional_roots", [])]
+    check(roots == list(ROOT_FILES),
+          f"machine-readable module graph roots drifted: {roots}")
+    root_imports: list[str] = []
+    for root in roots:
+        root_path = ROOT / root
+        check(root_path.is_file(), f"machine-readable module graph root does not exist: {root}")
+        if root_path.is_file():
+            observed = internal_imports(root_path)
+            root_imports.extend(observed)
+            unknown_root_imports = set(observed) - module_id_set
+            check(not unknown_root_imports,
+                  f"{root} has imports missing from the machine-readable module graph: {sorted(unknown_root_imports)}")
+    imports_by_id = {node["id"]: node["imports"] for node in module_nodes}
+    reachable = set(root_imports)
+    frontier = list(root_imports)
+    while frontier:
+        current = frontier.pop()
+        for dependency in imports_by_id.get(current, []):
+            if dependency not in reachable:
+                reachable.add(dependency)
+                frontier.append(dependency)
+    check(reachable == module_id_set,
+          f"machine-readable module graph has nodes unreachable from supported roots: {sorted(module_id_set - reachable)}")
 
     edge_types = set(machine_paper["argument_graph"]["edge_semantics"])
     for edge in machine_paper["argument_graph"]["edges"]:
@@ -944,6 +961,7 @@ def main() -> int:
         "METHODOLOGY.md",
         "SCOPE.md",
         "Erdos249257.lean",
+        "ErdosProblems.lean",
         "scripts/check_release.py",
         "scripts/check_architecture_guide.py",
         "scripts/test_architecture_guide.py",
