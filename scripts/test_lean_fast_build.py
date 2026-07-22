@@ -8,6 +8,8 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import tempfile
+import threading
+import time
 import unittest
 from unittest import mock
 
@@ -91,10 +93,6 @@ import Pkg.TooLate
         }
         with mock.patch.object(
             fast,
-            "build_batch",
-            return_value=(["Pkg.Good", "Pkg.Bad"], 1, 0.2),
-        ), mock.patch.object(
-            fast,
             "build_one",
             side_effect=lambda name, root=fast.ROOT: results[name],
         ):
@@ -103,25 +101,28 @@ import Pkg.TooLate
                 ["Pkg.Bad"],
             )
 
-    def test_build_wave_batches_targets_to_the_worker_bound(self) -> None:
-        batches: list[list[str]] = []
+    def test_build_wave_enforces_the_worker_bound(self) -> None:
+        active = 0
+        maximum = 0
+        lock = threading.Lock()
 
-        def build_batch(names, root=fast.ROOT):
-            batch = list(names)
-            batches.append(batch)
-            return batch, 0, 0.1
+        def build_one(name, root=fast.ROOT):
+            nonlocal active, maximum
+            with lock:
+                active += 1
+                maximum = max(maximum, active)
+            time.sleep(0.02)
+            with lock:
+                active -= 1
+            return name, 0, 0.02
 
-        with mock.patch.object(fast, "build_batch", side_effect=build_batch), mock.patch.object(
-            fast,
-            "build_one",
-            side_effect=AssertionError("successful batches must not rebuild individually"),
-        ):
+        with mock.patch.object(fast, "build_one", side_effect=build_one):
             self.assertEqual(
-                fast.build_wave(["Pkg.A", "Pkg.B", "Pkg.C"], jobs=2),
+                fast.build_wave([f"Pkg.{name}" for name in "ABCD"], jobs=2),
                 [],
             )
 
-        self.assertEqual(batches, [["Pkg.A", "Pkg.B"], ["Pkg.C"]])
+        self.assertEqual(maximum, 2)
 
     def test_discovery_ignores_ephemeral_underscore_modules(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -294,6 +295,16 @@ import Pkg.TooLate
             self.assertEqual(run.call_count, 1)
             self.assertEqual(run.call_args.args[0], ["lake", "build", "+Pkg.Leaf"])
             self.assertEqual(run.call_args.kwargs["cwd"], root)
+
+    def test_final_authority_checks_focused_modules_serially(self) -> None:
+        completed = fast.subprocess.CompletedProcess([], 0, "", "")
+        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+            self.assertEqual(fast.run_final_authority_check(["Pkg.A", "Pkg.B"]), 0)
+
+        self.assertEqual(
+            [call.args[0] for call in run.call_args_list],
+            [["lake", "build", "+Pkg.A"], ["lake", "build", "+Pkg.B"]],
+        )
 
 
 if __name__ == "__main__":
