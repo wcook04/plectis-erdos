@@ -12,6 +12,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos269.kernel_235_not_rankOne
 #print axioms ErdosProblems.Erdos269.smoothExponentShell_card_quadratic
 #print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
+#print axioms ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ
+#print axioms ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
 #print axioms ErdosProblems.Erdos251.tailShift_integral_add
