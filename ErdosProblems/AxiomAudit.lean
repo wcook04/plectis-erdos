@@ -10,6 +10,7 @@ problem-centric wave.
 
 #print axioms ErdosProblems.Erdos269.threePrimeHeight_le_cube
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
+#print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell
 #print axioms ErdosProblems.Erdos269.kernel_235_not_rankOne
 #print axioms ErdosProblems.Erdos269.smoothExponentShell_card_quadratic
 #print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
