@@ -23,6 +23,23 @@ class LeanFastBuildTests(unittest.TestCase):
         ):
             self.assertEqual(fast.default_jobs(), 2)
 
+    def test_ci_restores_cache_before_running_bounded_trace_aware_build(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        cache_step = workflow.index("- name: Restore project Lean cache")
+        dependency_step = workflow.index("- uses: leanprover/lean-action@v1")
+        bounded_build = workflow.index(
+            "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
+        )
+
+        self.assertLess(cache_step, dependency_step)
+        self.assertLess(dependency_step, bounded_build)
+        self.assertIn("uses: actions/cache@v5", workflow)
+        self.assertIn("path: .lake", workflow)
+        self.assertIn("use-mathlib-cache: auto", workflow)
+        self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
+
     def test_reachable_and_waves_limit_focused_target(self) -> None:
         graph = {
             "Root": {"Left", "Right"},
