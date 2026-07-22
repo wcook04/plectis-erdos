@@ -1,0 +1,492 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% One of the Erdős Problem Notes: a short standalone treatment of a single
+% problem in the ErdosProblems expansion library.  Build with
+% `tectonic erdos-251-prime-gap-dyadic-series.tex` or `make`.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+\hypersetup{
+  pdftitle={The prime-gap reformulation and the free carry: Lean-checked finite algebra for Erdős Problem 251},
+  pdfsubject={Erdős Problem Notes: Problem 251},
+  pdfkeywords={irrationality, prime gaps, dyadic series, summation by parts, Lean 4},
+}
+
+\runninghead{Erd\H{o}s \#251: the prime-gap dyadic series}
+\title{The Prime-Gap Reformulation and the Free Carry}
+\subtitle{Lean-checked finite algebra for Erd\H{o}s Problem~\#251}
+\author{Will Cook}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+\noteprovenance
+
+\begin{abstract}
+\noindent
+Let $p_0=2,p_1=3,\ldots$ enumerate the primes and let
+$g_n=p_{n+1}-p_n$.  We formalise in Lean the exact finite identity
+\[
+ \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
+ \;=\;2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}},
+\]
+with the endpoint term retained, so that it is available before any statement
+about convergence.  For an abstract dyadic tail recurrence
+$T_{N+1}=2T_N-g_{N+1}$ with integer digits we prove the block identity
+$T_{N+h}=2^{h}T_N-B_{h,N}$, and hence that the shift $T_{N+h}-T_N$ is integral
+\emph{if and only if} $(2^{h}-1)T_N$ is; that integrality of one shift
+propagates to every later index; and, by Euler's congruence, that a state with
+odd reduced denominator $d$ has an integral shift of length $\ph(d)$.
+
+Problem~\#251 is open and nothing here decides it.  Every statement we prove is
+finite or algebraic: none of them concerns the infinite series, and connecting
+the abstract recurrence to the actual prime-gap tail requires a summability
+argument we do not give.  We also record the exact telescoping identity for an
+unrestricted integer carry, which is the reason a periodic fractional orbit
+carries no information about periodicity of the gap word; the accompanying
+construction of prescribed gap patterns is not formalised.  The surviving
+obligation is a growing-block anti-concentration statement for actual
+consecutive primes.
+\end{abstract}
+
+\section{The problem}\label{sec:problem}
+
+Let $p_n$ denote the $n$th prime.  Erd\H{o}s Problem~\#251 asks whether
+\[
+ \Pi=\sum_{n\ge1}\frac{p_n}{2^{\,n}}
+\]
+is irrational~\cite{erdos1958}\cite[p.~62]{erdosgraham1980}%
+\cite[p.~103]{erdos1988}.  Numbering and status follow Bloom's
+catalogue~\cite{erdosproblems}.  The problem is open.
+
+Throughout the formal development the primes are indexed from zero, so that
+$p^{(0)}_0=2$, $p^{(0)}_1=3$, $p^{(0)}_2=5$, and the gaps are
+$g_i=p^{(0)}_{i+1}-p^{(0)}_i$.  In that indexing
+\[
+ \Pi=\sum_{i\ge0}\frac{p^{(0)}_i}{2^{\,i+1}} ,
+\]
+which is the convention every statement below uses; we drop the superscript
+from here on.  A second normalisation with denominator $2^{\,i}$ also occurs,
+and at every finite horizon it is exactly twice this one,
+\[
+ \sum_{i=0}^{n-1}\frac{p_i}{2^{\,i}}
+ =2\sum_{i=0}^{n-1}\frac{p_i}{2^{\,i+1}} ,
+\]
+the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{55}{prime0DisplayedPartialSumQ_eq_two_mul}{factor-of-two
+normalisation}.  A factor of two does not change rationality, so no result
+below depends on the choice; the identity is stated so that the indexing cannot
+drift silently.
+
+\paragraph{Relation to prior work.}
+Erd\H{o}s proved that $\sum_n p_n^{k}/n!$ is irrational for every
+$k\ge1$~\cite{erdos1958}, and conjectured both that $\sum_n p_n^{k}/2^{n}$ is
+irrational for every $k$ and that $\sum_{n\ge1}p_n/(g_1\cdots g_n)$ is
+irrational whenever $g_n\ge2$ and $g_n=o(p_n)$~\cite[p.~103]{erdos1988}; the
+choice $g_n=p_n+1$ shows that some growth condition is needed there.  The
+statement of Problem~\#251 has been formalised before, as a conjecture with an
+unfilled proof, in the \emph{formal-conjectures} collection.  No claim of
+priority is made for anything below.
+
+\paragraph{Two routes and where they stop.}
+The digits $p_n$ grow, so the series is not a digit expansion in any bounded
+alphabet, and the standard rationality criteria for such expansions do not
+apply directly.  Two rewritings suggest themselves.  The first replaces the
+primes by their gaps, which are bounded on average and are the natural object of
+prime-distribution theory; Section~\ref{sec:parts} carries this out exactly, and
+identifies the endpoint term that a passage to the limit must control.  The
+second reads rationality as a constraint on a tail orbit;
+Section~\ref{sec:tail} develops that constraint, and Section~\ref{sec:carry}
+gives the exact reason it does not constrain the gaps themselves.
+
+\paragraph{Status of everything below.}
+\statusboundary
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.34\linewidth}
+  >{\raggedright\arraybackslash}p{0.18\linewidth}
+  >{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+\toprule
+Statement & Status & Treatment here \\
+\midrule
+Irrationality of $\Pi$ & Open & Not proved. \\
+Finite prime-gap identity & Proved here & Theorem~\ref{res:parts}, with the endpoint retained. \\
+Infinite prime-gap identity & Not proved & Requires $p_n2^{-n}\to0$, which we do not establish. \\
+Block identity for the tail recurrence & Proved here & Theorem~\ref{res:block}. \\
+Integral shift criterion & Proved here; an equivalence & Theorem~\ref{res:shiftiff}. \\
+Totient shift from an odd denominator & Proved here & Theorem~\ref{res:totient}. \\
+Propagation of an integral shift & Proved here & Theorem~\ref{res:propagate}. \\
+Rationality forces periodic gaps & False & Section~\ref{sec:carry}; the carry is free. \\
+Anti-concentration for actual gaps & Open & Section~\ref{sec:open}; the surviving obligation. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Reading map.}
+Section~\ref{sec:parts} is the reformulation, Section~\ref{sec:tail} the tail
+algebra, Section~\ref{sec:carry} the no-go, and Section~\ref{sec:open} the
+remaining obligation.  Linked phrases open the corresponding Lean declaration
+at the pinned source revision~\commitshort.
+
+\medskip
+\noindent\textbf{Keywords.} irrationality; prime gaps; dyadic series;
+summation by parts; Lean~4.
+\qquad
+\textbf{MSC 2020.} 11J72 (primary); 11N05, 68V20 (secondary).
+
+\section{Summation by parts, with the endpoint retained}\label{sec:parts}
+
+Write $\Npos$-indexed sums with the convention
+\[
+ D(P,n)=\sum_{i=0}^{n-1}\frac{P(i)}{2^{\,i+1}},
+ \qquad
+ \Delta(P,n)=\sum_{i=0}^{n-1}\frac{P(i+1)-P(i)}{2^{\,i+1}} ,
+\]
+for a rational sequence $P$.  These are the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{45}{dyadicPartialSumQ}{dyadic partial
+sum} and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{65}{dyadicDifferencePartialSumQ}{dyadic
+difference sum}.
+
+\begin{proposition}[finite summation by parts]\label{res:abel}
+For every rational sequence $P$ and every $n\ge0$,
+\[
+ D(P,n+1)=P(0)+\Delta(P,n)-\frac{P(n)}{2^{\,n+1}} .
+\]
+\end{proposition}
+
+\begin{proof}
+Induction on $n$.  At $n=0$ both sides equal $P(0)/2$.  For the step, adding
+$P(n+1)/2^{\,n+2}$ to the left and
+$\bigl(P(n+1)-P(n)\bigr)/2^{\,n+1}$ to the difference sum changes the endpoint
+term from $P(n)/2^{\,n+1}$ to $P(n+1)/2^{\,n+2}$, and the two adjustments agree.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{82}{dyadicPartialSumQ_eq_start_add_differences}{summation-by-parts
+identity}.  Nothing is assumed about $P$: no positivity, no monotonicity, and no
+convergence.
+
+Specialising to $P(i)=p_i$, whose first value is $p_0=2$, and writing
+$g_i=p_{i+1}-p_i$ for the zero-based gaps, gives the reformulation.
+
+\begin{theorem}[prime-gap reformulation]\label{res:parts}
+For every $n\ge0$,
+\[
+ \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
+ =2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}} .
+\]
+\end{theorem}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{111}{prime0_dyadic_summation_by_parts}{prime-gap
+summation by parts}, using the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{105}{primeGapPartialSumQ}{gap partial
+sum} and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{100}{primeGap0_cast}{gap cast
+identity}; the latter records that the natural-number difference
+$p_{n+1}-p_n$ agrees with the difference taken in $\Q$, which needs
+$p_n\le p_{n+1}$, the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{96}{prime0_mono_step}{monotonicity
+step}.  The leading $2$ is the first prime, not a normalising constant.
+
+\paragraph{What the identity does and does not give.}
+The identity is exact at every finite horizon and free of hypotheses.  It is
+not the corresponding statement about infinite series.  Passing to the limit
+requires $p_n2^{-n}\to0$, and while that is elementary, it is not proved in the
+formal source and is therefore not available to any statement here.  We record
+the finite identity in this form deliberately: the endpoint term is the whole
+content of the passage to the limit, and suppressing it is exactly the step
+that would make a finite identity look like an infinite one.
+
+\section{The tail recurrence and integral shifts}\label{sec:tail}
+
+Rationality of a dyadic series constrains its tail orbit.  This section proves
+what that constraint is, for an abstract recurrence.
+
+\begin{definition}\label{def:rec}
+Let $g:\N\to\Z$ and $T:\N\to\Q$.  Say $T$ satisfies the \emph{dyadic tail
+recurrence} with digits $g$ when
+\[
+ T_{N+1}=2T_N-g_{N+1}\qquad\text{for every }N .
+\]
+Write $\sigma_h(N)=T_{N+h}-T_N$ for the \emph{shift} of length $h$ at $N$, and
+call a rational number \emph{integral} when it is the image of an integer.
+\end{definition}
+
+\noindent These are the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{123}{DyadicTailRecurrence}{tail
+recurrence}, the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{127}{tailShift}{shift}, and
+\lword{Erdos251/PrimeGapDyadicTail.lean}{143}{RatIntegral}{integrality}.
+The digits are arbitrary integers.  In the intended instance they are the prime
+gaps and $T_N$ is the scaled tail of $\Pi$ after level $N$, but that
+instantiation needs a summability argument and is not made here; every
+statement below is a theorem about Definition~\ref{def:rec}.
+
+Iterating the recurrence accumulates an explicit integer.  Define
+$B_{0,N}=0$ and $B_{h+1,N}=2B_{h,N}+g_{N+h+1}$, so that
+$B_{h,N}=g_{N+1}2^{\,h-1}+\cdots+g_{N+h}$: the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{149}{dyadicTailBlock}{tail block}.
+
+\begin{theorem}[block identity]\label{res:block}
+For every $N$ and $h$,
+\[
+ T_{N+h}=2^{h}T_N-B_{h,N},
+ \qquad\text{hence}\qquad
+ \sigma_h(N)=(2^{h}-1)\,T_N-B_{h,N} .
+\]
+\end{theorem}
+
+\begin{proof}
+Induction on $h$; the step is one application of the recurrence together with
+$2\cdot2^{h}=2^{h+1}$ and the recursion defining $B$.  The second identity is
+the first minus $T_N$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{155}{tail_iterate_eq_pow_mul_sub_block}{iterated
+block identity} and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{169}{tailShift_eq_scaled_sub_block}{scaled
+shift identity}.  The shift also obeys the recurrence in its own right,
+$\sigma_h(N+1)=2\sigma_h(N)-(g_{N+h+1}-g_{N+1})$, the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{131}{tailShift_succ}{shift step
+identity}.
+
+Since $B_{h,N}$ is an integer, Theorem~\ref{res:block} converts a question about
+the shift into a question about a single scaled state.
+
+\begin{theorem}[integral-shift criterion]\label{res:shiftiff}
+For every $N$ and $h$, the shift $\sigma_h(N)$ is integral if and only if
+$(2^{h}-1)T_N$ is integral.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{res:block} the two differ by the integer $B_{h,N}$, and
+subtracting an integer does not change integrality.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{225}{tailShift_integral_iff_scaledTail}{integral-shift
+criterion}, on the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{179}{ratIntegral_sub_int_iff}{integer-shift
+invariance}.  This is an equivalence, not a one-way reduction: the block
+carries no information about integrality, so the two conditions are the same
+condition.
+
+\begin{theorem}[a shift of totient length]\label{res:totient}
+If the reduced denominator $d$ of $T_N$ is odd, then $\sigma_{\ph(d)}(N)$ is
+integral.
+\end{theorem}
+
+\begin{proof}
+Since $d$ is odd, $2$ and $d$ are coprime, so Euler's congruence gives
+$2^{\ph(d)}\equiv1\pmod d$, that is $d\mid 2^{\ph(d)}-1$.  Writing
+$2^{\ph(d)}-1=dk$ and $T_N=u/d$ in lowest terms, $(2^{\ph(d)}-1)T_N=ku$ is an
+integer, and Theorem~\ref{res:shiftiff} transfers this to the shift.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{236}{tailShift_integral_totient_of_odd_den}{totient
+shift} and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{197}{ratIntegral_totientMultiplier_of_odd_den}{Euler
+multiplier}.  The hypothesis is a genuine restriction: the argument uses
+coprimality of $2$ with the denominator, and the even part of a denominator is
+exactly what the doubling in the recurrence acts on.
+
+\begin{theorem}[propagation]\label{res:propagate}
+If $\sigma_h(N)$ is integral, then $\sigma_h(N+k)$ is integral for every
+$k\ge0$.
+\end{theorem}
+
+\begin{proof}
+By the shift step identity, $\sigma_h(N+1)=2\sigma_h(N)-(g_{N+h+1}-g_{N+1})$ is
+an integer combination of an integer and two digits.  Induct on $k$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{247}{tailShift_integral_succ}{one-step
+propagation} and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{259}{tailShift_integral_add}{propagation
+to every later index}.
+
+\paragraph{What this section proves, and what it does not.}
+Theorems~\ref{res:block}--\ref{res:propagate} are statements about
+Definition~\ref{def:rec} and hold for arbitrary integer digits.  None of them
+mentions primes, and none of them uses convergence.  Instantiating them at the
+prime-gap tail is a separate step: one must first prove that the scaled tail of
+$\Pi$ exists and satisfies the recurrence, and we do not.  In particular
+nothing here shows that $\Pi$ has, or does not have, an integral shift.
+
+\section{The carry is free}\label{sec:carry}
+
+A natural hope is that rationality of a dyadic series forces its digit stream
+to be eventually periodic, or at least automatic, and that this is impossible
+for prime gaps.  The hope fails at the first step, and the reason is a
+one-line identity.
+
+Let $K:\N\to\Q$ be arbitrary and put
+$\kappa_n=2K_n-K_{n+1}$: the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{270}{carryCoeff}{carry coefficient}.
+
+\begin{proposition}[exact telescoping]\label{res:telescope}
+For every $n\ge0$,
+\[
+ \sum_{i=0}^{n-1}\frac{\kappa_i}{2^{\,i+1}}=K_0-\frac{K_n}{2^{\,n}} .
+\]
+\end{proposition}
+
+\begin{proof}
+Induction on $n$; the added term is
+$(2K_n-K_{n+1})/2^{\,n+1}=K_n/2^{\,n}-K_{n+1}/2^{\,n+1}$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{279}{carryPartialSum_eq}{carry
+telescoping identity}, on the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{274}{carryPartialSum}{carry partial
+sum}.  When the carries are natural numbers and $K_{n+1}\le2K_n$, the
+coefficients are natural numbers and the two readings agree, the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{295}{natCarryCoeff_cast}{natural-carry
+cast}.
+
+\paragraph{The reading, and its exact status.}
+The identity says that the carry sequence $K$ is unconstrained: choose $K$
+freely, and the emitted coefficients $\kappa_n$ have dyadic partial sums
+telescoping to $K_0$ up to $K_n2^{-n}$.  A rational limit therefore places no
+periodicity or automaticity requirement on the coefficient stream, because the
+same rational value arises from carry sequences that are not eventually
+periodic.  This is why the tail constraint of Section~\ref{sec:tail} does not
+descend to the gap word: rationality controls a fractional orbit, and the
+integer part absorbs everything else.
+
+Proposition~\ref{res:telescope} is proved; the accompanying claim that
+prescribed finite gap patterns can be realised by such a carry is a
+construction we have not formalised, and it is not used anywhere above.  What
+is established is the identity and the consequence that the periodicity route
+is closed, not a classification of which coefficient streams occur.
+
+\section{Complements and further questions}\label{sec:open}
+
+Problem~\#251 is open.  The results above fix the shape of what is missing.
+
+\begin{problem}[growing-block anti-concentration]
+Show that for the actual sequence of consecutive prime gaps, every
+sufficiently long block stays a definite dyadic distance from every
+carry-compatible rational target, with the required length growing with the
+starting index.
+\end{problem}
+
+\begin{problem}[the input from prime distribution]
+Identify a theorem about consecutive primes strong enough to supply that block
+obstruction.  The occurrence of individual gap values, however often, is not
+enough: by Section~\ref{sec:carry} a finite insertion of any fixed even gap
+word is compatible with a rational value, so the obstruction must be a
+statement about long blocks rather than about single gaps.
+\end{problem}
+
+Two smaller obligations remain on the formal side.  The infinite form of
+Theorem~\ref{res:parts} needs $p_n2^{-n}\to0$; and instantiating
+Definition~\ref{def:rec} at the prime-gap tail needs summability.  Neither is
+difficult, and neither is done, so no statement above may be read as concerning
+the infinite series.  What the formal content changes is the location of the
+difficulty: it is not in the reformulation, and it is not in the tail algebra.
+
+\pdfbookmark[1]{Statements and declarations}{statements-declarations}
+\subsection*{Statements and declarations}
+
+\paragraph{Artefact and data availability.} The
+\href{\sourceurl}{pinned formal-source revision} contains the Lean sources, the
+fixed toolchain, and the library manifest used in the verification.  This
+manuscript provides navigation rather than proof authority.
+
+\paragraph{Declaration of generative AI use.} Large-language-model agents were
+used throughout development to draft and revise prose, formal proofs, and
+software.  The author set the objectives and acceptance criteria, selected and
+reviewed the claims, and approved the published version.  The author assumes
+responsibility for the accuracy, interpretation, and presentation of the work.
+Generative systems are production tools; they are not authors and supply no
+independent authority.  Lean checks each proof term against the fixed library
+version, and the sources linked here contain no proof placeholders and no
+project-defined axioms; Lean does not authorise the exposition, the citation
+choices, or the interpretation, for which the author remains responsible.
+
+\paragraph{Funding and competing interests.} This work received no external
+funding.  The author declares no competing interests.
+
+\paragraph{Acknowledgements.} The problem numbering and status follow the
+Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
+
+\appendix
+\section{Guide to the formal sources}\label{app:index}
+
+Each linked phrase opens its Lean declaration at the pinned source
+revision~\commitshort.  All declarations of this note live in one module.  The
+prime-specific material is confined to Section~\ref{sec:parts}; everything in
+Sections~\ref{sec:tail} and~\ref{sec:carry} is stated for arbitrary integer
+digits and arbitrary rational carries, and the reader should not transfer those
+statements to the primes without the summability step named in
+Section~\ref{sec:open}.
+
+% The exhaustive source manifest is retained in the authored TeX for automated
+% validation, and kept outside the printed note.
+\iffalse
+
+\begin{tabular}{@{}ll@{}}
+informal statement & linked Lean source\\
+zero-based primes & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{29}{prime0}\\
+zero-based gaps & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{33}{primeGap0}\\
+dyadic partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{45}{dyadicPartialSumQ}\\
+displayed normalisation & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{50}{prime0DisplayedPartialSumQ}\\
+factor-of-two identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{55}{prime0DisplayedPartialSumQ_eq_two_mul}\\
+dyadic difference sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{65}{dyadicDifferencePartialSumQ}\\
+summation by parts & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{82}{dyadicPartialSumQ_eq_start_add_differences}\\
+monotonicity step & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{96}{prime0_mono_step}\\
+gap cast identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{100}{primeGap0_cast}\\
+gap partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{105}{primeGapPartialSumQ}\\
+prime-gap summation by parts & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{111}{prime0_dyadic_summation_by_parts}\\
+tail recurrence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{123}{DyadicTailRecurrence}\\
+shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{127}{tailShift}\\
+shift step identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{131}{tailShift_succ}\\
+integrality & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{143}{RatIntegral}\\
+tail block & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{149}{dyadicTailBlock}\\
+iterated block identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{155}{tail_iterate_eq_pow_mul_sub_block}\\
+scaled shift identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{169}{tailShift_eq_scaled_sub_block}\\
+integer-shift invariance & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{179}{ratIntegral_sub_int_iff}\\
+Euler multiplier & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{197}{ratIntegral_totientMultiplier_of_odd_den}\\
+integral-shift criterion & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{225}{tailShift_integral_iff_scaledTail}\\
+totient shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{236}{tailShift_integral_totient_of_odd_den}\\
+one-step propagation & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{247}{tailShift_integral_succ}\\
+propagation to every later index & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{259}{tailShift_integral_add}\\
+carry coefficient & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{270}{carryCoeff}\\
+carry partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{274}{carryPartialSum}\\
+carry telescoping identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{279}{carryPartialSum_eq}\\
+natural-carry cast & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{295}{natCarryCoeff_cast}\\
+\end{tabular}
+\fi
+
+\begin{thebibliography}{9}
+\small
+\raggedright
+\setlength{\itemsep}{0pt}
+\bibitem{erdos1958} P.~Erd\H{o}s,
+  \href{https://users.renyi.hu/~p_erdos/1958-08.pdf}{\emph{Sur certaines
+  s\'eries \`a valeur irrationnelle}},
+  Enseign. Math. (2) \textbf{4} (1958), 93--100. MR~98732.
+\bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L. Graham,
+  \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\emph{Old
+  and New Problems and Results in Combinatorial Number Theory}},
+  Monogr. Enseign. Math. 28, Geneva, 1980, p.~62.
+\bibitem{erdos1988} P.~Erd\H{o}s, \emph{On the irrationality of certain series:
+  problems and results}, in A.~Baker (ed.), \emph{New Advances in Transcendence
+  Theory}, Cambridge UP, 1988, pp.~102--109,
+  doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
+\bibitem{erdosproblems} T.~F. Bloom,
+  \href{https://www.erdosproblems.com/251}{\emph{Erd\H{o}s Problem \#251}},
+  \texttt{erdosproblems.com/251}, accessed 22 July 2026.
+\end{thebibliography}
+
+\end{document}

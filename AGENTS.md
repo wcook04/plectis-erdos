@@ -77,11 +77,21 @@ below is the bounded route into mathematical claims and Lean source.
    projection: it resolves theorem numbers, cross-references, and Lean source
    links that the `.tex` only implies, but the `.tex` remains the manuscript and
    the hash of record. Neither is proof authority.
-10. Use `docs/declaration_atlas.json` when you need the exhaustive mathematical
+10. Read `docs/problems.json` when the task names a single Erdős problem
+   covered by the `ErdosProblems` expansion library, currently #243, #251,
+   #269, and #1049. It is the bounded problem-owned index: one row per
+   problem giving its modules with declaration counts, its Erdős Problem Note,
+   what is checked, what is not checked, and the obligation that survives.
+   Its authored source is `docs/problem_index_source.json` and it is rebuilt by
+   `python3 scripts/build_problem_index.py`. **These declarations carry no
+   reviewed public claim status.** The claim registry has no row for them, and
+   a passing kernel check of `ErdosProblems.lean` does not create one; do not
+   report a problem as advanced because its module count grew.
+11. Use `docs/declaration_atlas.json` when you need the exhaustive mathematical
    scale: every declaration, signature excerpt, module, import edge, generated
    certificate marker, and principal-claim link. It is a generated navigation
    projection; drill back to Lean before trusting a statement.
-11. Use `Erdos249257.lean` for the reviewed #249/#257 root and
+12. Use `Erdos249257.lean` for the reviewed #249/#257 root and
    `ErdosProblems.lean` for the problem-owned expansion root. Kernel checking
    the expansion root does not promote its declarations into reviewed public
    claims. Use `docs/SOURCE_MAP.md` for intention-based routes and
@@ -151,6 +161,8 @@ Run the focused public-surface gate after documentation or registry changes:
 
 ```sh
 python3 scripts/check_release.py
+python3 scripts/check_problem_note_sources.py
+python3 scripts/build_problem_index.py --check
 python3 scripts/test_dependency_lock_contract.py
 python3 scripts/test_citation_identity_contract.py
 python3 scripts/test_license_map_contract.py

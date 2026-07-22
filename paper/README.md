@@ -25,11 +25,56 @@ beyond what the Lean sources contain; the proofs are the sources it links to.
 The manuscript layer (this `.tex` and the rendered PDF) is licensed CC-BY-4.0;
 see `REUSE.toml` at the repository root.
 
-There is deliberately no specialist companion note. A former #249-only note
-was scrapped and deleted (it survives only in git history) because a
-one-sided companion does not give readers a coherent paper set for a
-repository about both #249 and #257. Add specialist notes only as a matched
-#249/#257 pair; otherwise keep one mathematical gateway paper.
+There is deliberately no specialist companion note for #249 or #257. A former
+#249-only note was scrapped and deleted (it survives only in git history)
+because a one-sided companion does not give readers a coherent paper set for a
+repository about both #249 and #257. Add specialist notes for those two
+problems only as a matched pair; otherwise they keep one mathematical gateway
+paper between them. That rule is about the balance of the gateway's own
+subject and does not govern other problems.
+
+## Erdős Problem Notes
+
+The four short notes
+
+- `erdos-243-reciprocal-tail-rigidity.tex`
+- `erdos-251-prime-gap-dyadic-series.tex`
+- `erdos-269-three-prime-running-lcm.tex`
+- `erdos-1049-rational-base-lambert.tex`
+
+are the problem-owned series. One note owns one Erdős problem, and each covers
+the modules for that problem in the `ErdosProblems` expansion library. A reader
+who arrives at a single problem gets its statement, its checked results, its
+negative results, and its surviving obligation without assembling them from the
+gateway; deliberate repetition of shared context across notes is the design.
+
+The series is not a set of companions to the gateway. Its subject is a
+different library, whose declarations are exact Lean propositions and are
+**not** reviewed public claims: `docs/claims.json` carries no row for them, and
+kernel checking `ErdosProblems.lean` does not promote them into one. Every note
+states this, and the registry records it as
+`publication_architecture.problem_series_boundary`.
+
+The notes share `problem-note-preamble.tex`, which fixes the house macros and
+the one pinned source revision every link resolves against. Links are validated
+against that pinned commit rather than the working tree, so a note cannot decay
+when a later wave moves declarations:
+
+```sh
+python3 ../scripts/check_problem_note_sources.py
+```
+
+`docs/problems.json`, built by `scripts/build_problem_index.py`, is the
+machine-readable index over the same material: one row per problem naming its
+modules, its note, what is checked, what is not, and the obligation that
+survives.
+
+To add a note, write the `.tex`, add its stem to `PAPERS` and `NOTES` in the
+`Makefile`, register it once in `docs/publication_contract.json` with class
+`problem_note`, add its rendered PDF to the CC-BY override in `REUSE.toml`, add
+its row to `publication_architecture.problem_series` in `docs/claims.json`, and
+add its problem to `docs/problem_index_source.json`. The contract checker fails
+if any of those five are missing.
 
 `claim-faithful-publication-systems-paper.tex` is the printable architecture
 and access guide. It names the real source files, reviewed records, generated

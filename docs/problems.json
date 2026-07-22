@@ -1,0 +1,305 @@
+{
+  "schema": "erdos249257-problem-index/1",
+  "artifact_role": "generated_problem_owned_navigation_index",
+  "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
+  "purpose": "Name every Erdős problem this repository holds formal material for, say what is checked and what is not, and route to the note, the modules, and the surviving obligation. Everything derivable from source -- module paths, declaration counts, note digests -- is filled in by the builder rather than authored here.",
+  "generated_by": "scripts/build_problem_index.py",
+  "authored_source": "docs/problem_index_source.json",
+  "reading_rule": "Select one problem, read its note, then follow the note's links into the pinned Lean source. Do not infer a claim about an Erdős problem from a declaration name, a module name, or a count of checked theorems.",
+  "status_vocabulary": {
+    "open": "The Erdős problem is open and nothing in this repository closes it.",
+    "checked": "The pinned Lean kernel accepts the exact proposition named, with no sorry, no added axiom, and no unchecked evaluation.",
+    "finite_evidence": "An exact finite computation. It constrains, and does not decide, an unbounded question.",
+    "no_go": "A proof that some specific strategy cannot work. It removes a route, not the problem.",
+    "external": "A published theorem cited but not formalised here."
+  },
+  "library_roots": [
+    {
+      "root": "Erdos249257.lean",
+      "role": "reviewed_corpus",
+      "claim_registry": "docs/claims.json",
+      "note": "Declarations under this root carry reviewed public claim status recorded in the claim registry."
+    },
+    {
+      "root": "ErdosProblems.lean",
+      "role": "problem_owned_expansion",
+      "claim_registry": null,
+      "note": "Declarations under this root are exact Lean propositions accepted by the pinned kernel. They are not reviewed public mathematical claims, and kernel checking this root does not promote them into one."
+    }
+  ],
+  "problem_count": 4,
+  "problems": [
+    {
+      "problem_id": "erdos_243",
+      "erdos_number": 243,
+      "short_title": "Reciprocal-tail rigidity near the Sylvester recurrence",
+      "status": "open",
+      "question": "Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?",
+      "library_root": "ErdosProblems.lean",
+      "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+      "directory": "ErdosProblems/Erdos243",
+      "modules": [
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "present": true,
+          "line_count": 146,
+          "declaration_count": 11,
+          "theorem_count": 6,
+          "content_digest": "sha256:074818d77500eb657eb0f720b310a55171754a433ee80b0e89d3fc8b8d4e3a37"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
+          "path": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "present": true,
+          "line_count": 141,
+          "declaration_count": 10,
+          "theorem_count": 7,
+          "content_digest": "sha256:61d3b9deeb41875b031a0b50a27b336d3ebbbfe7111eda14450227c142d13006"
+        }
+      ],
+      "note": {
+        "artifact_id": "erdos_243_note",
+        "title": "The Centred State and the Surviving Negative Case",
+        "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+        "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
+        "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+      },
+      "what_is_checked": [
+        "The exact product-cleared tail dynamics, as an algebraic identity in the integer state variables.",
+        "That two consecutive vanishing centred errors together with a nonvanishing next tail state force the exact Sylvester step at that index.",
+        "The sequence-level form: eventual vanishing of the centred state plus eventual nonvanishing of the next tail state forces the Sylvester recurrence eventually.",
+        "That the integer state dynamics commute with common scaling, so scalar multiples of a state are not distinct search candidates.",
+        "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
+      ],
+      "what_is_not_checked": [
+        "The unrestricted problem.",
+        "That an infinitely recurring constant-negative state is impossible; no such orbit has been excluded and none has been constructed.",
+        "The weighted criterion of Erdős and Straus, which is cited rather than formalised.",
+        "The behaviour at the critical growth boundary."
+      ],
+      "open_obligations": [
+        {
+          "id": "exclude_infinite_constant_negative_state",
+          "statement": "Show that the divisibility condition sustaining a constant-negative forced orbit cannot persist at every index, or exhibit an orbit on which it does."
+        },
+        {
+          "id": "formalise_weighted_criterion",
+          "statement": "Kernel-check the weighted undershoot criterion and its consumer under explicit analytic hypotheses."
+        },
+        {
+          "id": "critical_boundary",
+          "statement": "Decide the critical case where the normalised undershoot sits at the reciprocal-index boundary."
+        }
+      ],
+      "finite_search": "An exact search over initial states below five thousand, reduced by scale equivariance, found forced prefixes of length seventeen and no longer. That is neither a counterexample nor a rigidity proof."
+    },
+    {
+      "problem_id": "erdos_251",
+      "erdos_number": 251,
+      "short_title": "The prime-gap dyadic series",
+      "status": "open",
+      "question": "Is the dyadic series whose digits are the gaps between consecutive primes irrational?",
+      "library_root": "ErdosProblems.lean",
+      "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+      "directory": "ErdosProblems/Erdos251",
+      "modules": [
+        {
+          "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+          "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "present": true,
+          "line_count": 301,
+          "declaration_count": 30,
+          "theorem_count": 17,
+          "content_digest": "sha256:f9ac269b1f91cced246a54d2690858d7b06ef196e2ad2e5cdacae6c1b4348645"
+        }
+      ],
+      "note": {
+        "artifact_id": "erdos_251_note",
+        "title": "The Prime-Gap Reformulation and the Free Carry",
+        "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
+        "rendered_path": "erdos-251-prime-gap-dyadic-series.pdf",
+        "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+      },
+      "what_is_checked": [
+        "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise.",
+        "The factor-of-two normalisation between the two displayed indexings, at every finite horizon.",
+        "For an abstract integer-digit dyadic tail recurrence: the exact block identity, and that a shift of fixed length is integral exactly when an explicit scaled state is.",
+        "That one integral shift propagates to every later index.",
+        "That a rational tail state with odd reduced denominator has an integral shift of length equal to the totient of that denominator."
+      ],
+      "what_is_not_checked": [
+        "The target irrationality.",
+        "Any statement about the infinite series itself; every checked statement is finite or algebraic.",
+        "That rationality constrains the prime gaps: an explicit carry construction shows it does not force eventual periodicity."
+      ],
+      "open_obligations": [
+        {
+          "id": "growing_block_dyadic_anti_concentration",
+          "statement": "Show that for actual consecutive prime gaps, every sufficiently long growing block stays a definite dyadic distance from every carry-compatible rational target."
+        },
+        {
+          "id": "prime_theorem_to_block_obstruction",
+          "statement": "Identify a theorem about consecutive primes strong enough to supply that block obstruction. The occurrence of individual gap values is not enough."
+        }
+      ],
+      "finite_search": null
+    },
+    {
+      "problem_id": "erdos_269",
+      "erdos_number": 269,
+      "short_title": "Three-prime running least common multiples",
+      "status": "open",
+      "question": "Is the relevant series irrational in the first unresolved case, where the smooth numbers are generated by three distinct primes?",
+      "library_root": "ErdosProblems.lean",
+      "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+      "directory": "ErdosProblems/Erdos269",
+      "modules": [
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "present": true,
+          "line_count": 657,
+          "declaration_count": 44,
+          "theorem_count": 30,
+          "content_digest": "sha256:68695069ead54de96b2829c08e40dc6f066e1fc6071ea7e65d396d62b1ad5f40"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ResidueEscape",
+          "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
+          "present": true,
+          "line_count": 55,
+          "declaration_count": 3,
+          "theorem_count": 2,
+          "content_digest": "sha256:b1e33c7b50251bc295f7a2f90b4f1f917ebd168774b4d5343f8699efb1a55b42"
+        }
+      ],
+      "note": {
+        "artifact_id": "erdos_269_note",
+        "title": "The Running Least Common Multiple of a Three-Prime Smooth Prefix",
+        "source_path": "paper/erdos-269-three-prime-running-lcm.tex",
+        "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
+        "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+      },
+      "what_is_checked": [
+        "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.",
+        "That equal logarithmic coordinates give an equal prefix least common multiple, so the running value is constant on logarithmic cells.",
+        "That advancing exactly one logarithmic coordinate multiplies the running value by the corresponding prime.",
+        "That the positive power channels of distinct primes are disjoint, so the first powers in three channels give an exact jump count.",
+        "That a finite smooth lattice sum groups exactly by running height, with the height fibre cardinality as coefficient.",
+        "A quadratic bound on the cardinality of the actual filtered exponent shell.",
+        "That the two-by-two determinants of the lattice kernel at the smallest instance are not all zero, so no rank-one separation exists.",
+        "A finite contradiction consuming a residue-escape hypothesis, stated with that hypothesis explicit and unproved."
+      ],
+      "what_is_not_checked": [
+        "Irrationality or transcendence in any three-prime case.",
+        "The residue-escape hypothesis itself, which is assumed by the consumer theorem rather than proved.",
+        "The infinite limit of the jump expansion; only its finite core is checked.",
+        "Any unbounded denominator exclusion. The finite certificates exclude denominators below an explicit bound and no further."
+      ],
+      "open_obligations": [
+        {
+          "id": "uniform_prime_power_residue_escape",
+          "statement": "Under the rational carry recurrence, force a nonzero residue in some prime-power channel beyond every finite level."
+        },
+        {
+          "id": "nonstationary_analytic_theorem",
+          "statement": "Prove a genuinely higher-dimensional analytic theorem for the phase cocycle or the associated contraction."
+        },
+        {
+          "id": "unbounded_height_certificate",
+          "statement": "Replace one finite denominator exclusion by a family whose exclusion bound tends to infinity."
+        }
+      ],
+      "finite_search": "An exact finite computation excludes every rational denominator below an explicit bound at the smallest three-prime instance. It excludes no denominator above that bound."
+    },
+    {
+      "problem_id": "erdos_1049",
+      "erdos_number": 1049,
+      "short_title": "Lambert-type series at rational bases",
+      "status": "open",
+      "question": "For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.",
+      "library_root": "ErdosProblems.lean",
+      "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+      "directory": "ErdosProblems/Erdos1049",
+      "modules": [
+        {
+          "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+          "present": true,
+          "line_count": 151,
+          "declaration_count": 11,
+          "theorem_count": 7,
+          "content_digest": "sha256:af837d7ee5e159e5fb9d4e60f0ee1c3670e58d50534d61472b327c167f194067"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+          "path": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "present": true,
+          "line_count": 68,
+          "declaration_count": 6,
+          "theorem_count": 3,
+          "content_digest": "sha256:cf2965b3ba4a09f904b6cac34b7731f71576b067de3e8388e5a34ed1ffe80913"
+        }
+      ],
+      "note": {
+        "artifact_id": "erdos_1049_note",
+        "title": "Rational Bases and the Integer-Base Argument",
+        "source_path": "paper/erdos-1049-rational-base-lambert.tex",
+        "rendered_path": "erdos-1049-rational-base-lambert.pdf",
+        "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
+      },
+      "what_is_checked": [
+        "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.",
+        "The exact denominator-cleared rational-base tail recurrence, including its forcing term.",
+        "That for every noninteger base with denominator at least two the forcing magnitude grows at least exponentially, while at denominator one it collapses to a bounded expression.",
+        "Two exact arithmetic facts used by the published height criterion at base seven halves.",
+        "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity."
+      ],
+      "what_is_not_checked": [
+        "Irrationality at base three halves, or for any rational base.",
+        "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
+        "The logarithmic monotonicity step and the transcendental estimate the published criterion also needs.",
+        "Positivity or decay of the Padé remainder; only the exponent arithmetic is checked."
+      ],
+      "open_obligations": [
+        {
+          "id": "three_halves_pade_height_gap",
+          "statement": "Construct integer linear forms at base three halves whose analytic decay beats their common denominator height."
+        },
+        {
+          "id": "published_height_region_formalisation",
+          "statement": "Formalise the elementary parameter inequalities of the published criterion, keeping the analytic theorem itself external and cited."
+        }
+      ],
+      "finite_search": null
+    }
+  ],
+  "reviewed_problems": [
+    {
+      "problem_id": "erdos_249",
+      "erdos_number": 249,
+      "short_title": "The totient constant",
+      "status": "open",
+      "library_root": "Erdos249257.lean",
+      "exposition": "paper/erdos249-257-main-paper.tex",
+      "route": "python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic",
+      "note": "Covered by the gateway paper and the reviewed claim registry, not by a problem note. The claim registry owns its status."
+    },
+    {
+      "problem_id": "erdos_257",
+      "erdos_number": 257,
+      "short_title": "Reciprocal sums over infinite exponent supports",
+      "status": "open",
+      "library_root": "Erdos249257.lean",
+      "exposition": "paper/erdos249-257-main-paper.tex",
+      "route": "python3 scripts/query_corpus.py --route erdos257_half_story",
+      "note": "Covered by the gateway paper and the reviewed claim registry, not by a problem note. The claim registry owns its status."
+    }
+  ],
+  "validation_commands": [
+    "python3 scripts/build_problem_index.py --check",
+    "python3 scripts/check_problem_note_sources.py",
+    "python3 scripts/check_publication_contract.py"
+  ]
+}

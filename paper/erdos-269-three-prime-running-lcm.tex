@@ -1,0 +1,663 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% One of the Erdős Problem Notes: a short standalone treatment of a single
+% problem in the ErdosProblems expansion library.  Build with
+% `tectonic erdos-269-three-prime-running-lcm.tex` or `make`.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+\hypersetup{
+  pdftitle={The running least common multiple of a three-prime smooth prefix: Lean-checked structure for Erdős Problem 269},
+  pdfsubject={Erdős Problem Notes: Problem 269},
+  pdfkeywords={irrationality, least common multiple, smooth numbers, lattice sums, Lean 4},
+}
+
+% The three pure-power coordinates and the running height.
+\newcommand{\hgt}{\operatorname{H}}
+\newcommand{\lo}{\lambda}
+\newcommand{\hi}{\eta}
+\newcommand{\Lprefix}{\operatorname{L}}
+\newcommand{\Kernel}{\operatorname{K}}
+
+\runninghead{Erd\H{o}s \#269: three-prime running lcm}
+\title{The Running Least Common Multiple of a Three-Prime Smooth Prefix}
+\subtitle{Lean-checked structure for Erd\H{o}s Problem~\#269}
+\author{Will Cook}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+\noteprovenance
+
+\begin{abstract}
+\noindent
+Let $p,q,r$ be pairwise distinct primes and let $\Lprefix(x)$ denote the least
+common multiple of all $\{p,q,r\}$-smooth numbers not exceeding $x$.  We prove
+in Lean that
+\[
+ \Lprefix(x)=p^{\lfloor\log_p x\rfloor}q^{\lfloor\log_q x\rfloor}
+ r^{\lfloor\log_r x\rfloor}
+ \qquad(x\ge1),
+\]
+so the running least common multiple is the product of the three maximal pure
+prime powers below the cutoff, and is at most $x^{3}$.  Consequently it is
+constant on each cell where the three integer logarithms are constant; when
+exactly one logarithm advances by one it is multiplied by exactly the
+corresponding prime; and the first $n$ positive powers in the three channels,
+together with the common origin $1$, give exactly $3n+1$ distinct jump values.
+We prove an exact finite normal form in which a rectangular lattice sum of
+reciprocal running values is grouped by its genuine height, with each
+coefficient the cardinality of the corresponding fibre, and a uniform bound
+$9\,\#\mathcal S\le(j+3)^{2}$ on the cardinality of a smooth exponent shell
+whose sorted height coordinates sum to $j$.  At $\{2,3,5\}$ we exhibit the
+smallest exact obstruction to separating the kernel as a product, the two sides
+being $1/60$ and $1/12$.
+
+Problem~\#269 is open and nothing here decides it.  We prove no irrationality
+and no transcendence statement in any three-prime case.  The residue-escape
+route is represented only by its final step, a finite contradiction whose
+escape hypothesis is assumed and not proved; we state that hypothesis
+explicitly, and it is the obligation that survives.
+\end{abstract}
+
+\section{The problem}\label{sec:problem}
+
+Let $P$ be a finite set of primes with $|P|\ge2$, and let
+$a_1<a_2<\cdots$ enumerate the positive integers all of whose prime factors lie
+in $P$.  Erd\H{o}s Problem~\#269 asks whether
+\[
+ \sum_{n\ge1}\frac{1}{[a_1,\ldots,a_n]}
+\]
+is irrational, where $[a_1,\ldots,a_n]$ is the least common
+multiple~\cite[p.~65]{erdosgraham1980}\cite[p.~106]{erdos1988}.  Numbering and
+status follow Bloom's catalogue~\cite{erdosproblems}.  The problem is open for
+every finite $P$ with $|P|\ge2$.
+
+Three things are known and fix the shape of the question.  The restriction
+$|P|\ge2$ is necessary: for $P=\{p\}$ the enumeration is $a_n=p^{\,n-1}$, so
+$[a_1,\ldots,a_n]=p^{\,n-1}$ and the sum is $p/(p-1)$, which is rational.  For
+infinite $P$ the sum is always irrational, which Erd\H{o}s calls a simple
+exercise~\cite[p.~106]{erdos1988}.  And in a letter of 1 January 1973 he
+recorded that he could prove irrationality once duplicate summands are
+removed~\cite{erdos1974letter}.
+
+That last remark is the one this note is closest to.  The running least common
+multiple is not injective in $n$: it is constant along stretches of the
+enumeration and changes only at certain points.  Removing duplicate summands
+means summing over the distinct values rather than over $n$.  Sections
+\ref{sec:cells} and~\ref{sec:fibre} make that reindexing exact, in the case
+$|P|=3$: they identify where the value is constant, by exactly what factor it
+changes when it changes, and what multiplicity each distinct value carries.
+They do not recover the irrationality proof Erd\H{o}s reported for the
+de-duplicated sum, and they say nothing about the original sum.
+
+Throughout, $p,q,r$ are pairwise distinct primes.  Call $n$ \emph{smooth} when
+$n=p^{i}q^{j}r^{k}$ for some $i,j,k\ge0$; this is the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val}{smooth lattice
+value}.  For $x\ge1$ write
+\[
+ \Lprefix(x)=\lcm\{\,n\le x:\ n\ \text{smooth}\,\},
+ \qquad
+ \hgt(x)=p^{\lfloor\log_p x\rfloor}\,q^{\lfloor\log_q x\rfloor}\,
+ r^{\lfloor\log_r x\rfloor},
+\]
+the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm}{running least
+common multiple} and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight}{pure-power
+height}, where $\lfloor\log_b x\rfloor$ is the integer logarithm, the largest
+$e$ with $b^{e}\le x$.  Since $a_1,\ldots,a_n$ are exactly the smooth numbers
+up to $a_n$, we have $[a_1,\ldots,a_n]=\Lprefix(a_n)$, and the summands of the
+problem are the reciprocals of $\Lprefix$ along the enumeration.  The
+reciprocal of the height at a smooth point is the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}{lattice
+kernel}
+\[
+ \Kernel(i,j,k)=\frac{1}{\hgt(p^{i}q^{j}r^{k})} .
+\]
+
+\paragraph{Scope of this note, and relation to prior work.}
+We treat $|P|=3$ throughout, writing $P=\{p,q,r\}$, and the smallest instance
+is $\{2,3,5\}$.  Nothing here is specific to three generators for its own sake;
+three is where the coordinates stop separating, which
+Theorem~\ref{res:rank} makes exact at the smallest instance.  The statement of
+Problem~\#269 has been formalised before, as a conjecture with an unfilled
+proof, in the \emph{formal-conjectures} collection.  That is a formal statement
+of the question.  The declarations described below are propositions about the
+objects the question is posed over, and no claim of priority is made for any of
+them.
+
+\paragraph{Status of everything below.}
+\statusboundary
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.34\linewidth}
+  >{\raggedright\arraybackslash}p{0.18\linewidth}
+  >{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+\toprule
+Statement & Status & Treatment here \\
+\midrule
+Irrationality in any three-prime case & Open & Not proved. \\
+$\Lprefix(x)=\hgt(x)$ & Proved here & Theorem~\ref{res:lcm}; needs the primes distinct. \\
+$\hgt(x)\le x^{3}$ & Proved here & Proposition~\ref{res:cube}. \\
+Constancy on logarithmic cells & Proved here & Theorem~\ref{res:cell}. \\
+Single-coordinate jump ratios & Proved here & Theorem~\ref{res:jump}. \\
+Exactly $3n+1$ jump values & Proved here & Theorem~\ref{res:count}. \\
+Height-fibre normal form & Proved here; finite & Theorem~\ref{res:fibre}. \\
+Infinite limit of that expansion & Not proved & Section~\ref{sec:fibre}. \\
+Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Proved here & Theorem~\ref{res:shell}. \\
+Kernel is not separable at $\{2,3,5\}$ & Proved here & Theorem~\ref{res:rank}. \\
+Residue escape occurs & Assumed, not proved & Section~\ref{sec:escape}. \\
+Finite contradiction consuming it & Proved here & Theorem~\ref{res:consumer}. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Reading map.}
+Section~\ref{sec:lcm} identifies the running value.  Sections~\ref{sec:cells}
+and~\ref{sec:fibre} develop its jump structure and the finite normal form,
+Section~\ref{sec:shell} bounds fibre multiplicity, and Section~\ref{sec:rank}
+records the obstruction to separating the kernel.  Section~\ref{sec:escape} is
+the one place where an unproved hypothesis appears, and it is marked as such
+throughout.  Linked phrases open the corresponding Lean declaration at the
+pinned source revision~\commitshort.
+
+\medskip
+\noindent\textbf{Keywords.} irrationality; least common multiple; smooth
+numbers; lattice sums; Lean~4.
+\qquad
+\textbf{MSC 2020.} 11J72 (primary); 11A05, 11N25, 68V20 (secondary).
+
+\section{The running value is a product of pure powers}\label{sec:lcm}
+
+The smooth numbers up to $x$ are indexed by the exponent triples $(i,j,k)$ with
+$i\le\lfloor\log_p x\rfloor$, $j\le\lfloor\log_q x\rfloor$,
+$k\le\lfloor\log_r x\rfloor$ and $p^{i}q^{j}r^{k}\le x$: the coordinate bounds
+make the index set finite, and the last condition is the actual constraint.
+This is the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{46}{smoothPrefixExponents}{smooth
+prefix index set}.  Both conditions matter: the coordinate box is strictly
+larger than the prefix, since a product of three large pure powers can exceed
+$x$ while each factor does not.
+
+\begin{theorem}[the running least common multiple]\label{res:lcm}
+Let $p,q,r$ be pairwise distinct primes and $x\ge1$.  Then
+$\Lprefix(x)=\hgt(x)$.
+\end{theorem}
+
+\begin{proof}
+For divisibility in one direction, every smooth $n\le x$ has exponents bounded
+by the corresponding integer logarithms, so $n\mid\hgt(x)$, and hence
+$\Lprefix(x)\mid\hgt(x)$.  For the other, the three pure powers
+$p^{\lfloor\log_p x\rfloor}$, $q^{\lfloor\log_q x\rfloor}$ and
+$r^{\lfloor\log_r x\rfloor}$ are themselves smooth numbers not exceeding $x$,
+so each divides $\Lprefix(x)$.  Distinct primes have coprime powers, so their
+product divides $\Lprefix(x)$ as well.  The two divisibilities give equality.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}{running-lcm
+identity}, from the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{77}{smoothPrefixLcm_dvd_threePrimeHeight}{divisibility
+into the height} and the three membership statements for the pure powers,
+namely the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents}{first},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents}{second},
+and
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents}{third}
+pure-power memberships.
+
+The hypothesis that the primes are pairwise distinct is used exactly once, in
+the coprimality step, and it is not decorative: without it the three pure
+powers need not have coprime orders and their product need not divide the least
+common multiple.  The identity is what makes every later statement about
+$\Lprefix$ computable from three integer logarithms.
+
+\begin{proposition}\label{res:cube}
+For every $x\ge1$, $\hgt(x)\le x^{3}$.
+\end{proposition}
+
+\begin{proof}
+Each of the three factors is a power of its base not exceeding $x$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube}{cubic
+majorant}, which needs no primality.  The exponent $3$ is the number of
+generating primes, and the bound is the reason the reciprocal kernel is
+comparable to $x^{-3}$ rather than to $x^{-1}$.
+
+\section{Cells, jumps, and their count}\label{sec:cells}
+
+Say that $x$ and $y$ lie in the same \emph{logarithmic cell} when
+$\lfloor\log_b x\rfloor=\lfloor\log_b y\rfloor$ for each of $b=p,q,r$: the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell}{cell
+relation}.
+
+\begin{theorem}[constancy on cells]\label{res:cell}
+If $x,y\ge1$ lie in the same logarithmic cell, then
+$\Lprefix(x)=\Lprefix(y)$.  The same holds for the kernel at two smooth points
+whose values lie in one cell.
+\end{theorem}
+
+\begin{proof}
+Immediate from Theorem~\ref{res:lcm}, since $\hgt$ depends on $x$ only
+through the three integer logarithms.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}{cell
+constancy of the running value}, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell}{cell
+constancy of the height}, and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell}{cell
+constancy of the kernel}.  The running value therefore changes only when one of
+the three logarithms changes, and the next theorem says by exactly how much.
+
+\begin{theorem}[single-coordinate jump ratios]\label{res:jump}
+Let $x,y\ge1$.  If $\lfloor\log_p y\rfloor=\lfloor\log_p x\rfloor+1$ while the
+other two logarithms agree, then $\Lprefix(y)=p\,\Lprefix(x)$; and similarly
+with $q$ or $r$ in place of $p$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{res:lcm} both sides are heights, and one factor of the height
+gains one in its exponent while the others are unchanged.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}{first},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}{second},
+and
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}{third}
+coordinate steps, over the corresponding statements for the height alone, which
+need no primality: the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep}{first
+height step}, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep}{second},
+and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}{third}.
+
+The jump values are therefore the pure prime powers, and they do not collide
+across channels.
+
+\begin{theorem}[jump count]\label{res:count}
+Let $n\ge0$.  The set of the first $n$ positive powers of $p$, of $q$, and of
+$r$ has exactly $3n$ elements, and adjoining the common origin $1$ gives
+exactly $3n+1$.
+\end{theorem}
+
+\begin{proof}
+Within one channel the powers $b,b^{2},\ldots,b^{n}$ are distinct because
+$b\ge2$.  Across two channels a common value would be a positive power of two
+distinct primes, which unique factorisation forbids.  Finally $1$ is not a
+positive power of any prime.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card}{positive
+jump count} and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}{jump
+count with the origin}, over the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card}{channel
+cardinality}, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint}{channel
+disjointness}, and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers}{exclusion
+of the origin}; the channels themselves are the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers}{positive
+power sets}.  The exponent $0$ is omitted from each channel because it is the
+shared initial value, which is why the origin is counted once rather than three
+times.
+
+\section{The height-fibre normal form}\label{sec:fibre}
+
+Grouping a lattice sum by the value of the running least common multiple turns
+it into a sum over heights whose coefficients are multiplicities.  We prove
+this exactly, on a finite rectangular box.
+
+Write $B(h_p,h_q,h_r)$ for the box of exponent triples with $i\le h_p$,
+$j\le h_q$, $k\le h_r$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox}{exponent
+box}, and for a height $H$ write $F(H)$ for the set of points of the box whose
+running height equals $H$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber}{height
+fibre}.
+
+\begin{theorem}[finite normal form]\label{res:fibre}
+For every box,
+\[
+ \sum_{(i,j,k)\in B}\Kernel(i,j,k)
+ =\sum_{H}\frac{\#F(H)}{H},
+\]
+the outer sum ranging over the heights actually attained on $B$.
+\end{theorem}
+
+\begin{proof}
+Partition $B$ into the fibres of the height map.  On $F(H)$ every summand is
+$1/H$ by definition of the kernel, so the fibre contributes $\#F(H)/H$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}{height-fibre
+normal form}, over the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum}{fibre
+sum}, with the height of a lattice point given by the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight}{point
+height}.
+
+Together with Theorem~\ref{res:cell} this is the finite core of the ordered
+prime-power jump expansion: the value is constant on cells, the cells are
+indexed by heights, and the coefficient of a height is the number of lattice
+points it collects.  The passage to the infinite sum, and the explicit ordering
+of the pure powers that would make the expansion a series in the jumps, are not
+proved here.  Theorem~\ref{res:fibre} is an identity between two finite sums,
+and it is stated over the full box rather than the smooth prefix, so it is not
+a statement about $\Lprefix$ at a cutoff.
+
+The tail dynamics that such an expansion would feed is recorded in the same
+module as a one-step map, $\tau(b,d,s)=b(s-d)$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}{variable-base
+tail step}, together with the rewriting
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}{that names its
+expanded form}.  No orbit of this map is analysed.
+
+\section{Shell multiplicity}\label{sec:shell}
+
+A tail estimate needs to know how many lattice points can share a short
+multiplicative interval.  Write $\mathcal S$ for the set of exponent triples in
+a box $B(h_p,h_q,h_r)$ whose smooth value lies in $[\lo,\hi)$, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell}{smooth
+exponent shell}.
+
+\begin{lemma}[uniqueness in a short interval]\label{res:short}
+Let $b\ge1$ and suppose $\hi\le b\,\lo$.  If $b^{a}w$ and $b^{a'}w$ both lie in
+$[\lo,\hi)$, then $a=a'$.
+\end{lemma}
+
+\begin{proof}
+If $a<a'$ then $\hi\le b\,\lo\le b\cdot b^{a}w=b^{a+1}w\le b^{a'}w<\hi$, which
+is impossible; the case $a>a'$ is symmetric.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}{short-interval
+uniqueness}.  The hypothesis is that the interval has multiplicative width at
+most $b$; then one coordinate is determined by the other two, and projecting it
+away is injective.
+
+\begin{proposition}\label{res:drop}
+If $\hi\le r\,\lo$ then $\#\mathcal S\le(h_p+1)(h_q+1)$; if $\hi\le p\,\lo$ then
+$\#\mathcal S\le(h_q+1)(h_r+1)$.
+\end{proposition}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}{third-coordinate
+projection} and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst}{first-coordinate
+projection}.
+
+\begin{theorem}[quadratic multiplicity bound]\label{res:shell}
+Suppose $\hi\le r\,\lo$ and $h_p\le h_q\le h_r$ with $h_p+h_q+h_r=j$.  Then
+\[
+ 9\,\#\mathcal S\le(j+3)^{2}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{res:drop}, $\#\mathcal S\le(h_p+1)(h_q+1)$.  It therefore
+suffices to prove that $a\le b\le c$ with $a+b+c=j$ gives
+$9(a+1)(b+1)\le(j+3)^{2}$.  From $a\le b\le c$ we get $a+2b\le j$, so it is
+enough that $9(a+1)(b+1)\le(a+2b+3)^{2}$; writing $b=a+d$ with $d\ge0$, the
+difference of the two sides is $d(3a+4d+3)\ge0$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}{quadratic
+shell bound}, over the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}{sorted
+quadratic estimate}.  The constant $9$ is the square of the number of
+generating primes and appears because the bound is the arithmetic--geometric
+comparison for a sum of three sorted coordinates; sorting is a hypothesis, not
+a normalisation, since the shell itself is not symmetric in the three bases.
+
+The bound is uniform in $\lo$ and $\hi$ subject to the width condition, and it
+is stated for the actual filtered shell rather than for a lattice model of it.
+It is an input to a tail estimate and is not itself one: no series is bounded
+here.
+
+\section{The kernel does not separate}\label{sec:rank}
+
+A recurring hope is to write the three-prime kernel as a product of functions
+of the separate coordinates, which would reduce the problem to one-dimensional
+criteria.  At the smallest instance this fails, and the failure is exact.
+
+\begin{theorem}[non-separability at $\{2,3,5\}$]\label{res:rank}
+With $(p,q,r)=(2,3,5)$,
+\[
+ \Kernel(0,0,0)\,\Kernel(1,1,0)=\tfrac1{60}
+ \ne\tfrac1{12}=\Kernel(1,0,0)\,\Kernel(0,1,0).
+\]
+\end{theorem}
+
+\begin{proof}
+The four values are $\Kernel(0,0,0)=1$, $\Kernel(1,0,0)=1/2$,
+$\Kernel(0,1,0)=1/6$ and $\Kernel(1,1,0)=1/60$, computed from
+$\hgt(1)=1$, $\hgt(2)=2$, $\hgt(3)=2\cdot3=6$ and
+$\hgt(6)=4\cdot3\cdot5=60$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne}{non-separation
+witness}, over the four exact values, the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin}{origin},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two}{value at two},
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three}{value at
+three}, and
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six}{value at six}.
+The height at $6$ is $60$ rather than $6$ because the maximal pure powers below
+$6$ are $4$, $3$ and $5$: the running least common multiple at a smooth cutoff
+sees powers of the other primes that the cutoff itself does not contain.  That
+is the mechanism behind the non-separation.
+
+A nonzero two-by-two minor rules out writing the kernel as
+$f(i)g(j)h(k)$ on this box, and hence rules out any argument that first
+separates the coordinates and then treats them one at a time.  It does not
+bound the rank of the kernel from below beyond one, and it is not an
+independence or irrationality statement.
+
+\section{The residue-escape route and what it assumes}\label{sec:escape}
+
+One strategy for the three-prime case runs as follows.  Suppose the value is
+rational with denominator $C$.  The jump expansion produces an integer tail
+state that is positive and bounded by a polynomial window; if one can force the
+state to be congruent modulo $C$ to a least positive residue lying strictly
+above that window, the two facts are incompatible and the assumed rationality
+fails.  The final step is elementary and we record it; the step that would make
+the strategy an argument is the production of the escaping residue, and it is
+not proved.
+
+Say that a residue \emph{escapes} the window when
+$\text{bound}<\text{residue}\le C$, the
+\lword{Erdos269/ResidueEscape.lean}{17}{ResidueEscapesWindow}{escape condition}.
+
+\begin{theorem}[the finite contradiction]\label{res:consumer}
+Let $c,C,\text{bound},\text{residue}$ be natural numbers with $0<c$ and
+$c\le\text{bound}$, and suppose $c\equiv\text{residue}\pmod C$.  If the residue
+escapes the window, the hypotheses are contradictory.  Equivalently, under the
+same congruence, $\text{residue}\le\text{bound}$.
+\end{theorem}
+
+\begin{proof}
+From $c\le\text{bound}<\text{residue}\le C$ we get $c<C$, so $c$ and
+$\text{residue}$ are each their own least residue modulo $C$ unless
+$\text{residue}=C$, in which case its least residue is $0$; in either case the
+congruence forces $c=\text{residue}$ or $c=0$, and both contradict
+$c\le\text{bound}<\text{residue}$ and $0<c$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos269/ResidueEscape.lean}{23}{no_bounded_positive_state_of_residue_escape}{finite
+contradiction} and the
+\lword{Erdos269/ResidueEscape.lean}{44}{residue_le_bound_of_bounded_positive_state}{contrapositive
+form}.
+
+We state plainly what this is.  Theorem~\ref{res:consumer} is two lines of
+arithmetic about residues and contains no information about primes, smooth
+numbers, or least common multiples.  It is the trivial end of the strategy,
+recorded so that the nontrivial end is visible as the only thing missing.  The
+hypothesis that an escaping residue occurs, for every putative denominator and
+beyond every level, is exactly the open producer; assuming it is not progress
+towards it.
+
+\section{Complements and further questions}\label{sec:open}
+
+Problem~\#269 is open.  Three obligations survive the results above, in
+decreasing order of directness.
+
+\begin{problem}[uniform residue escape]
+Show that under the rational carry recurrence some prime-power channel carries
+a nonzero residue beyond every finite level, uniformly in the putative
+denominator.  Theorem~\ref{res:consumer} then closes the argument;
+Theorem~\ref{res:shell} supplies the polynomial window the escape must clear.
+\end{problem}
+
+\begin{problem}[a genuinely three-dimensional analytic theorem]
+Prove an analytic statement for the phase cocycle attached to three
+independent logarithmic coordinates, of the kind available in one dimension.
+By Theorem~\ref{res:rank} no separation into one-dimensional factors is
+available even at $\{2,3,5\}$.
+\end{problem}
+
+\begin{problem}[unbounded denominator exclusion]
+Replace a finite denominator exclusion by a family whose exclusion bound tends
+to infinity.  A finite computation excludes all denominators below its bound
+and none above it, so no single such computation, at any size, bears on
+irrationality.
+\end{problem}
+
+What the formalised material changes is the description of the object, not its
+status.  The running least common multiple is now an explicit function of three
+integer logarithms; its jumps are exactly the pure prime powers; a lattice sum
+groups exactly by height with multiplicities bounded quadratically; and the
+coordinates provably do not separate.  None of this produces the escaping
+residue, and the problem remains open.
+
+\pdfbookmark[1]{Statements and declarations}{statements-declarations}
+\subsection*{Statements and declarations}
+
+\paragraph{Artefact and data availability.} The
+\href{\sourceurl}{pinned formal-source revision} contains the Lean sources, the
+fixed toolchain, and the library manifest used in the verification.  This
+manuscript provides navigation rather than proof authority.
+
+\paragraph{Declaration of generative AI use.} Large-language-model agents were
+used throughout development to draft and revise prose, formal proofs, and
+software.  The author set the objectives and acceptance criteria, selected and
+reviewed the claims, and approved the published version.  The author assumes
+responsibility for the accuracy, interpretation, and presentation of the work.
+Generative systems are production tools; they are not authors and supply no
+independent authority.  Lean checks each proof term against the fixed library
+version, and the sources linked here contain no proof placeholders and no
+project-defined axioms; Lean does not authorise the exposition, the citation
+choices, or the interpretation, for which the author remains responsible.
+
+\paragraph{Funding and competing interests.} This work received no external
+funding.  The author declares no competing interests.
+
+\paragraph{Acknowledgements.} The problem numbering and status follow the
+Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
+
+\appendix
+\section{Guide to the formal sources}\label{app:index}
+
+Each linked phrase opens its Lean declaration at the pinned source
+revision~\commitshort.  The structural material is in the first module and the
+residue consumer in the second.  Three distinctions are worth carrying into the
+source.  The height statements hold for arbitrary bases, while the statements
+about $\Lprefix$ need the three primes to be distinct.  The normal form of
+Section~\ref{sec:fibre} is an identity between finite sums over a rectangular
+box, not over a smooth prefix.  And the escape condition of
+Section~\ref{sec:escape} is a hypothesis of its theorem, not a result.
+
+% The exhaustive source manifest is retained in the authored TeX for automated
+% validation, and kept outside the printed note.
+\iffalse
+
+\begin{tabular}{@{}ll@{}}
+informal statement & linked Lean source\\
+smooth lattice value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val}\\
+pure-power height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight}\\
+lattice kernel & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}\\
+smooth prefix index set & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{46}{smoothPrefixExponents}\\
+running least common multiple & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm}\\
+prefix value divides the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{59}{smooth3Val_dvd_threePrimeHeight_of_mem}\\
+divisibility into the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{77}{smoothPrefixLcm_dvd_threePrimeHeight}\\
+first pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{84}{pureFirst_mem_smoothPrefixExponents}\\
+second pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{97}{pureSecond_mem_smoothPrefixExponents}\\
+third pure-power membership & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{110}{pureThird_mem_smoothPrefixExponents}\\
+running-lcm identity & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{123}{smoothPrefixLcm_eq_threePrimeHeight}\\
+cell relation & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{163}{SameThreePrimeLogCell}\\
+cell constancy of the height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{169}{threePrimeHeight_eq_of_sameLogCell}\\
+cell constancy of the running value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{179}{smoothPrefixLcm_eq_of_sameLogCell}\\
+cell constancy of the kernel & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{191}{threePrimeKernelQ_eq_of_sameLogCell}\\
+positive power sets & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{204}{positivePrimePowers}\\
+channel cardinality & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{208}{positivePrimePowers_card}\\
+exclusion of the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{219}{one_not_mem_positivePrimePowers}\\
+channel disjointness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{229}{positivePrimePowers_disjoint}\\
+positive jump count & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{249}{threePrimePositiveJumpSet_card}\\
+jump count with the origin & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{278}{threePrimeJumpSetWithOrigin_card}\\
+first height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{294}{threePrimeHeight_firstLogStep}\\
+second height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{305}{threePrimeHeight_secondLogStep}\\
+third height step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}\\
+first coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{326}{smoothPrefixLcm_firstLogStep}\\
+second coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{339}{smoothPrefixLcm_secondLogStep}\\
+third coordinate step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{352}{smoothPrefixLcm_thirdLogStep}\\
+exponent box & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{368}{smoothExponentBox}\\
+point height & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{373}{smoothPointHeight}\\
+height fibre & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{377}{smoothHeightFiber}\\
+fibre sum & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{384}{smoothHeightFiber_kernel_sum}\\
+height-fibre normal form & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{406}{finiteSmoothKernelSum_groupedByHeight}\\
+cubic majorant & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{430}{threePrimeHeight_le_cube}\\
+origin value & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{443}{kernel_235_origin}\\
+value at two & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{450}{kernel_235_two}\\
+value at three & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three}\\
+value at six & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six}\\
+non-separation witness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{479}{kernel_235_not_rankOne}\\
+variable-base tail step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}\\
+expanded tail step & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}\\
+smooth exponent shell & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{500}{smoothExponentShell}\\
+short-interval uniqueness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}\\
+first-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{543}{smoothExponentShell_card_le_dropFirst}\\
+third-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}\\
+sorted quadratic estimate & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}\\
+quadratic shell bound & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}\\
+escape condition & \lrefx{Erdos269/ResidueEscape.lean}{17}{ResidueEscapesWindow}\\
+finite contradiction & \lrefx{Erdos269/ResidueEscape.lean}{23}{no_bounded_positive_state_of_residue_escape}\\
+contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{44}{residue_le_bound_of_bounded_positive_state}\\
+\end{tabular}
+\fi
+
+\begin{thebibliography}{9}
+\small
+\raggedright
+\setlength{\itemsep}{0pt}
+\bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L. Graham,
+  \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\emph{Old
+  and New Problems and Results in Combinatorial Number Theory}},
+  Monogr. Enseign. Math. 28, Geneva, 1980, p.~65.
+\bibitem{erdos1988} P.~Erd\H{o}s, \emph{On the irrationality of certain series:
+  problems and results}, in A.~Baker (ed.), \emph{New Advances in Transcendence
+  Theory}, Cambridge UP, 1988, pp.~102--109,
+  doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
+\bibitem{erdos1974letter} P.~Erd\H{o}s, letter to the editor (written 1~January
+  1973), Fibonacci Quart. \textbf{12} (1974), p.~335.
+\bibitem{erdosproblems} T.~F. Bloom,
+  \href{https://www.erdosproblems.com/269}{\emph{Erd\H{o}s Problem \#269}},
+  \texttt{erdosproblems.com/269}, accessed 22 July 2026.
+\end{thebibliography}
+
+\end{document}

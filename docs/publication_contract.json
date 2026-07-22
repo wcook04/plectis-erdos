@@ -13,9 +13,9 @@
       "title": "Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257",
       "artifact_class": "mathematical_gateway",
       "source_path": "paper/erdos249-257-main-paper.tex",
-      "source_content_digest": "sha256:4386d1db57deea87ea9d0b483147806ee4a1e4c7c3edeca28f1471d25872f260",
+      "source_content_digest": "sha256:4085bf4631e0d6fbe80032beeb4fdf1471a0613749bf2e406e922a8d19857916",
       "rendered_path": "erdos249-257-main-paper.pdf",
-      "rendered_content_digest": "sha256:fb22f2fc1a1ea564475b7a40c52e0e7a9772aea2c0a57121c9dd20de90bf0e21",
+      "rendered_content_digest": "sha256:65c51df1db693af4035ede1372192ef355542e2658de8721a4d23c956e3e2d26",
       "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority",
       "claim_scope": "Mathematical exposition of claims and open boundaries owned by docs/claims.json and checked against the pinned Lean source.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.canonical_gateway",
@@ -30,9 +30,9 @@
       "title": "How a Lean Repository Turns Formal Proofs into a Checked Public Release",
       "artifact_class": "repository_architecture_guide",
       "source_path": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_content_digest": "sha256:36a0babdf519ef8988a903ca210ab3ab28e99eac4d9f3a8c4ca01c06f7f198e9",
+      "source_content_digest": "sha256:10f4b035a1c24403b559684bd8297eb717bea801f0553ba0d719db7805af60ab",
       "rendered_path": "claim-faithful-publication-systems-paper.pdf",
-      "rendered_content_digest": "sha256:220ea8f35dc70fb31e23a648f20900799b7e97d1b7d32ebbf2b28d48d7a9570e",
+      "rendered_content_digest": "sha256:7a4055a8e0789910077744ac11ce46d47974a820a341dfafe9f9c4d5b26eaa04",
       "authority_posture": "authored_repository_architecture_not_Lean_proof_authority",
       "claim_scope": "A first-principles architecture and access guide to the public Lean source, reviewed claim record, authored documents, generated views, release flow, CI jobs, and human trust boundary. A later historical example illustrates the limit of explicitly recorded checks; the guide adds no mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
@@ -58,9 +58,117 @@
         "post_repair_full_mutation_rerun": false,
         "forbidden_inference": "Do not report a post-repair ten-of-ten result unless all ten mutations are rerun against the extended invariant set."
       }
+    },
+    {
+      "id": "erdos_243_note",
+      "title": "The Centred State and the Surviving Negative Case",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+      "source_content_digest": "sha256:072af27fcbe6052c141c85ba77b4f76ebc9919615475c68dd3d05a4f3355b824",
+      "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
+      "rendered_content_digest": "sha256:432a15c0bb0dcfaa43255ed7b9f0d39e9132aa4fe636d35bc3c546d8ce690b95",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. The declarations it describes are exact Lean propositions and are not reviewed public claims in docs/claims.json; Erdős Problem 243 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_251_note",
+      "title": "The Prime-Gap Reformulation and the Free Carry",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
+      "source_content_digest": "sha256:757306f81a71977f23f6d0d467a43f11c1e5857aecd5dbc17b16a9f0ff3165ca",
+      "rendered_path": "erdos-251-prime-gap-dyadic-series.pdf",
+      "rendered_content_digest": "sha256:31a515e0b4b0e33eb1f443b0b0cfae789e383eb097f1adf498151bcc2defc39c",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos251 module. Every statement it describes is finite or algebraic; none concerns the infinite series, and Erdős Problem 251 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_269_note",
+      "title": "The Running Least Common Multiple of a Three-Prime Smooth Prefix",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-269-three-prime-running-lcm.tex",
+      "source_content_digest": "sha256:69b32672e241b134c22f9dd23da70566132c239c65647a5229499a46f8f428b2",
+      "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
+      "rendered_content_digest": "sha256:5d98c13b924b8d32f00d4317596671f5a5af4ce5079e9d02fc7c9f4e376a389e",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos269 modules. The residue-escape hypothesis is assumed by its consumer theorem and is not proved; Erdős Problem 269 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_1049_note",
+      "title": "Rational Bases and the Integer-Base Argument",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-1049-rational-base-lambert.tex",
+      "source_content_digest": "sha256:2d41b71fe88044e56342486ce277e264f67d1ddc932d9156053122bac0bd86d8",
+      "rendered_path": "erdos-1049-rational-base-lambert.pdf",
+      "rendered_content_digest": "sha256:6d57eb6300c0ff1b0e817fd8f11685200bf4aeef4eec551caebccd127b3935d0",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos1049 modules. The published height criterion it cites is external and is not formalised here; Erdős Problem 1049 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
     }
   ],
   "entrypoints": [
+    {
+      "id": "read_one_problem_note",
+      "title": "One Erdős problem: its note, its modules, and its surviving obligation",
+      "intent": "Read what is formalised about a single Erdős problem in the ErdosProblems expansion library, and what is not, without loading the reviewed #249/#257 corpus. These declarations carry no reviewed public claim status.",
+      "discovery_terms": [
+        "Erdős problem 243",
+        "Erdős problem 251",
+        "Erdős problem 269",
+        "Erdős problem 1049",
+        "problem note",
+        "what is checked for this problem",
+        "ErdosProblems expansion library"
+      ],
+      "read": [
+        "docs/problems.json",
+        "docs/problem_index_source.json",
+        "ErdosProblems.lean",
+        "docs/publication_contract.json",
+        "SCOPE.md"
+      ],
+      "query_steps": [
+        "python3 scripts/query_corpus.py --publication-artifact erdos_269_note",
+        "python3 scripts/query_corpus.py --artifact erdos-269-three-prime-running-lcm.pdf"
+      ],
+      "authority_owners": [
+        "docs/publication_contract.json",
+        "docs/problems.json",
+        "scripts/check_problem_note_sources.py"
+      ],
+      "adjacent_handle_classes": [
+        "publication_artifact_id",
+        "artifact",
+        "digest",
+        "reading_route"
+      ]
+    },
     {
       "id": "understand_repository_architecture",
       "title": "Repository architecture, access paths, release flow, and trust boundary",
@@ -102,6 +210,8 @@
     "additional_erdos249_companion"
   ],
   "reproducibility": {
+    "problem_note_source_links": "python3 scripts/check_problem_note_sources.py",
+    "problem_index_freshness": "python3 scripts/build_problem_index.py --check",
     "publication_contract_check": "python3 scripts/check_publication_contract.py",
     "publication_contract_fixture_test": "python3 scripts/test_publication_artifact_contract.py",
     "mutation_evidence_query": "python3 scripts/query_corpus.py --publication-evidence summary",
