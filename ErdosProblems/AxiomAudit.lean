@@ -10,6 +10,7 @@ problem-centric wave.
 
 #print axioms ErdosProblems.Erdos269.threePrimeHeight_le_cube
 #print axioms ErdosProblems.Erdos269.kernel_235_not_rankOne
+#print axioms ErdosProblems.Erdos269.smoothExponentShell_card_quadratic
 #print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.natCarryCoeff_cast

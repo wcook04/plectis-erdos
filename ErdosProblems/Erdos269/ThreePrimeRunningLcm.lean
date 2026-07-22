@@ -1,4 +1,7 @@
 import Mathlib.Data.Nat.Log
+import Mathlib.Data.Finset.Card
+import Mathlib.Data.Finset.Prod
+import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring
 
@@ -8,7 +11,8 @@ import Mathlib.Tactic.Ring
 This module starts the problem-owned formalization of the first unresolved
 three-prime case. It records the exact computational height used by the
 running-LCM representation, its cubic majorant, the smallest non-separation
-fixture for `{2,3,5}`, and the variable-base tail-state update.
+fixture for `{2,3,5}`, the variable-base tail-state update, and the uniform
+quadratic bound for actual filtered smooth-number shells.
 
 No declaration here asserts irrationality or transcendence of a three-prime
 value. The missing producer is still an infinite residue-escape or genuinely
@@ -96,5 +100,167 @@ theorem tailStateStep_eq (base digit state next : ℤ) :
     next = tailStateStep base digit state ↔
       next = base * state - base * digit := by
   simp [tailStateStep, mul_sub]
+
+/-! ## Exact short-shell multiplicity bounds -/
+
+/-- Exponent triples in a half-open multiplicative shell, with explicit
+coordinate bounds.  The coordinate bounds are the interface to the pure-power
+jump heights; the interval filter is the actual smooth-number shell. -/
+def smoothExponentShell
+    (p q r lo hi hp hq hr : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  ((Finset.range (hp + 1)).product
+      ((Finset.range (hq + 1)).product (Finset.range (hr + 1)))).filter
+    fun e => lo ≤ smooth3Val p q r e.1 e.2.1 e.2.2 ∧
+      smooth3Val p q r e.1 e.2.1 e.2.2 < hi
+
+/-- In an interval of multiplicative width at most `base`, fixing the other
+factors leaves at most one exponent of `base`. -/
+theorem exponent_unique_in_short_interval
+    {base lo hi weight a b : ℕ}
+    (hbase : 0 < base) (hwidth : hi ≤ base * lo)
+    (haLo : lo ≤ base ^ a * weight) (haHi : base ^ a * weight < hi)
+    (hbLo : lo ≤ base ^ b * weight) (hbHi : base ^ b * weight < hi) :
+    a = b := by
+  rcases lt_trichotomy a b with hab | hab | hab
+  · have hpow : base ^ (a + 1) ≤ base ^ b :=
+      Nat.pow_le_pow_right hbase (by omega)
+    have hcontra : hi < hi := calc
+      hi ≤ base * lo := hwidth
+      _ ≤ base * (base ^ a * weight) := Nat.mul_le_mul_left base haLo
+      _ = base ^ (a + 1) * weight := by
+        rw [pow_succ]
+        ac_rfl
+      _ ≤ base ^ b * weight := Nat.mul_le_mul_right weight hpow
+      _ < hi := hbHi
+    exact (Nat.lt_irrefl hi hcontra).elim
+  · exact hab
+  · have hpow : base ^ (b + 1) ≤ base ^ a :=
+      Nat.pow_le_pow_right hbase (by omega)
+    have hcontra : hi < hi := calc
+      hi ≤ base * lo := hwidth
+      _ ≤ base * (base ^ b * weight) := Nat.mul_le_mul_left base hbLo
+      _ = base ^ (b + 1) * weight := by
+        rw [pow_succ]
+        ac_rfl
+      _ ≤ base ^ a * weight := Nat.mul_le_mul_right weight hpow
+      _ < hi := haHi
+    exact (Nat.lt_irrefl hi hcontra).elim
+
+/-- Projecting away the first exponent is injective on a shell whose width is
+at most the first base.  Consequently the shell has at most the size of the
+other two exponent ranges. -/
+theorem smoothExponentShell_card_le_dropFirst
+    {p q r lo hi hp hq hr : ℕ}
+    (hpPos : 0 < p) (hwidth : hi ≤ p * lo) :
+    (smoothExponentShell p q r lo hi hp hq hr).card ≤
+      (hq + 1) * (hr + 1) := by
+  classical
+  let target := (Finset.range (hq + 1)).product (Finset.range (hr + 1))
+  have hcard :
+      (smoothExponentShell p q r lo hi hp hq hr).card ≤ target.card := by
+    refine Finset.card_le_card_of_injOn (fun e : ℕ × ℕ × ℕ => e.2) ?_ ?_
+    · intro e he
+      change e ∈ smoothExponentShell p q r lo hi hp hq hr at he
+      change e.2 ∈ target
+      rcases e with ⟨a, b, c⟩
+      simp only [smoothExponentShell, Finset.mem_filter] at he
+      have houter := Finset.mem_product.mp he.1
+      have hinner := Finset.mem_product.mp houter.2
+      exact Finset.mem_product.mpr
+        ⟨hinner.1, hinner.2⟩
+    · intro e₁ he₁ e₂ he₂ hproj
+      change e₁ ∈ smoothExponentShell p q r lo hi hp hq hr at he₁
+      change e₂ ∈ smoothExponentShell p q r lo hi hp hq hr at he₂
+      rcases e₁ with ⟨a₁, b₁, c₁⟩
+      rcases e₂ with ⟨a₂, b₂, c₂⟩
+      simp only [Prod.mk.injEq] at hproj
+      rcases hproj with ⟨rfl, rfl⟩
+      simp only [smoothExponentShell, Finset.mem_filter] at he₁ he₂
+      have ha₁Lo : lo ≤ p ^ a₁ * (q ^ b₁ * r ^ c₁) := by
+        simpa [smooth3Val, mul_assoc] using he₁.2.1
+      have ha₁Hi : p ^ a₁ * (q ^ b₁ * r ^ c₁) < hi := by
+        simpa [smooth3Val, mul_assoc] using he₁.2.2
+      have ha₂Lo : lo ≤ p ^ a₂ * (q ^ b₁ * r ^ c₁) := by
+        simpa [smooth3Val, mul_assoc] using he₂.2.1
+      have ha₂Hi : p ^ a₂ * (q ^ b₁ * r ^ c₁) < hi := by
+        simpa [smooth3Val, mul_assoc] using he₂.2.2
+      have ha : a₁ = a₂ := exponent_unique_in_short_interval hpPos hwidth
+        ha₁Lo ha₁Hi ha₂Lo ha₂Hi
+      simp [ha]
+  simpa [target] using hcard
+
+/-- The symmetric projection needed when the third height is the largest:
+fixing the first two exponents leaves at most one exponent of the third base. -/
+theorem smoothExponentShell_card_le_dropThird
+    {p q r lo hi hp hq hr : ℕ}
+    (hrPos : 0 < r) (hwidth : hi ≤ r * lo) :
+    (smoothExponentShell p q r lo hi hp hq hr).card ≤
+      (hp + 1) * (hq + 1) := by
+  classical
+  let target := (Finset.range (hp + 1)).product (Finset.range (hq + 1))
+  have hcard :
+      (smoothExponentShell p q r lo hi hp hq hr).card ≤ target.card := by
+    refine Finset.card_le_card_of_injOn
+      (fun e : ℕ × ℕ × ℕ => (e.1, e.2.1)) ?_ ?_
+    · intro e he
+      change e ∈ smoothExponentShell p q r lo hi hp hq hr at he
+      change (e.1, e.2.1) ∈ target
+      rcases e with ⟨a, b, c⟩
+      simp only [smoothExponentShell, Finset.mem_filter] at he
+      have houter := Finset.mem_product.mp he.1
+      have hinner := Finset.mem_product.mp houter.2
+      exact Finset.mem_product.mpr ⟨houter.1, hinner.1⟩
+    · intro e₁ he₁ e₂ he₂ hproj
+      change e₁ ∈ smoothExponentShell p q r lo hi hp hq hr at he₁
+      change e₂ ∈ smoothExponentShell p q r lo hi hp hq hr at he₂
+      rcases e₁ with ⟨a₁, b₁, c₁⟩
+      rcases e₂ with ⟨a₂, b₂, c₂⟩
+      simp only [Prod.mk.injEq] at hproj
+      rcases hproj with ⟨rfl, rfl⟩
+      simp only [smoothExponentShell, Finset.mem_filter] at he₁ he₂
+      have hc₁Lo : lo ≤ r ^ c₁ * (p ^ a₁ * q ^ b₁) := by
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₁.2.1
+      have hc₁Hi : r ^ c₁ * (p ^ a₁ * q ^ b₁) < hi := by
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₁.2.2
+      have hc₂Lo : lo ≤ r ^ c₂ * (p ^ a₁ * q ^ b₁) := by
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₂.2.1
+      have hc₂Hi : r ^ c₂ * (p ^ a₁ * q ^ b₁) < hi := by
+        simpa [smooth3Val, mul_assoc, mul_comm, mul_left_comm] using he₂.2.2
+      have hc : c₁ = c₂ := exponent_unique_in_short_interval hrPos hwidth
+        hc₁Lo hc₁Hi hc₂Lo hc₂Hi
+      simp [hc]
+  simpa [target] using hcard
+
+/-- If `a ≤ b ≤ c` and the three heights sum to `j`, then the product of
+the two smaller shifted heights satisfies the clean quadratic estimate used
+in the scaled-tail analysis.  This is the denominator-free form of
+`(a+1)(b+1) ≤ (j+3)²/9`. -/
+theorem sorted_pair_quadratic
+    {a b c j : ℕ} (hab : a ≤ b) (hbc : b ≤ c)
+    (hsum : a + b + c = j) :
+    9 * ((a + 1) * (b + 1)) ≤ (j + 3) ^ 2 := by
+  have hj : a + 2 * b ≤ j := by omega
+  let d := b - a
+  have hd : d + a = b := by
+    dsimp [d]
+    omega
+  have hnon : 0 ≤ d * (3 * a + 4 * d + 3) := Nat.zero_le _
+  have hlocal :
+      9 * ((a + 1) * (b + 1)) ≤ (a + 2 * b + 3) ^ 2 := by
+    nlinarith
+  exact hlocal.trans (Nat.pow_le_pow_left (Nat.add_le_add_right hj 3) 2)
+
+/-- The exact smooth shell inherits the uniform quadratic multiplicity bound
+once its height coordinates are sorted and sum to the jump index. -/
+theorem smoothExponentShell_card_quadratic
+    {p q r lo hi hp hq hr j : ℕ}
+    (hrPos : 0 < r) (hwidth : hi ≤ r * lo)
+    (hpq : hp ≤ hq) (hqr : hq ≤ hr)
+    (hsum : hp + hq + hr = j) :
+    9 * (smoothExponentShell p q r lo hi hp hq hr).card ≤
+      (j + 3) ^ 2 := by
+  exact (Nat.mul_le_mul_left 9
+    (smoothExponentShell_card_le_dropThird hrPos hwidth)).trans
+      (sorted_pair_quadratic hpq hqr hsum)
 
 end ErdosProblems.Erdos269
