@@ -1,7 +1,9 @@
 import Mathlib.Data.Nat.Prime.Nth
 import Mathlib.Data.Nat.PrimeFin
+import Mathlib.Data.Rat.Lemmas
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Algebra.BigOperators.Ring.Finset
+import Mathlib.NumberTheory.PowModTotient
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring
@@ -189,6 +191,34 @@ theorem ratIntegral_sub_int_iff (x : ℚ) (z : ℤ) :
     push_cast
     ring
 
+/-- Euler's congruence turns an odd reduced denominator into an explicit
+integral multiplier: if `d = x.den` is odd, then
+`(2^(phi d) - 1) * x` is an integer. -/
+theorem ratIntegral_totientMultiplier_of_odd_den
+    (x : ℚ) (hodd : Odd x.den) :
+    RatIntegral (((2 : ℚ) ^ x.den.totient - 1) * x) := by
+  have hcoprime : Nat.Coprime 2 x.den :=
+    Nat.coprime_two_left.mpr hodd
+  have hmod : 2 ^ x.den.totient ≡ 1 [MOD x.den] :=
+    Nat.ModEq.pow_totient hcoprime
+  have hone : 1 ≤ 2 ^ x.den.totient := Nat.one_le_two_pow
+  have hdiv : x.den ∣ 2 ^ x.den.totient - 1 :=
+    (Nat.modEq_iff_dvd' hone).mp hmod.symm
+  obtain ⟨k, hk⟩ := hdiv
+  have hkQ : (2 : ℚ) ^ x.den.totient - 1 = x.den * k := by
+    exact_mod_cast hk
+  refine ⟨(k : ℤ) * x.num, ?_⟩
+  calc
+    ((2 : ℚ) ^ x.den.totient - 1) * x =
+        ((2 : ℚ) ^ x.den.totient - 1) *
+          ((x.num : ℚ) / (x.den : ℚ)) := by rw [Rat.num_div_den]
+    _ = ((x.den : ℚ) * k) * ((x.num : ℚ) / (x.den : ℚ)) := by
+      rw [hkQ]
+    _ = (((k : ℤ) * x.num : ℤ) : ℚ) := by
+      field_simp [x.den_ne_zero]
+      push_cast
+      ring
+
 /-- Exact algebraic core of the integral-shift criterion: one tail shift is
 integral exactly when `(2^h - 1) * T_N` is integral.  Connecting `T_N` to the
 actual infinite prime-gap series remains a separate analytic interface. -/
@@ -199,6 +229,17 @@ theorem tailShift_integral_iff_scaledTail
       RatIntegral (((2 ^ h : ℚ) - 1) * T N) := by
   rw [tailShift_eq_scaled_sub_block hrec]
   exact ratIntegral_sub_int_iff _ _
+
+/-- If one tail state has odd reduced denominator `d`, its shift by
+`Nat.totient d` steps is integral.  This is the explicit finite-algebraic
+consequence of rationality supplied by Euler's theorem. -/
+theorem tailShift_integral_totient_of_odd_den
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N : ℕ)
+    (hodd : Odd (T N).den) :
+    RatIntegral (tailShift T (T N).den.totient N) := by
+  rw [tailShift_integral_iff_scaledTail hrec]
+  exact ratIntegral_totientMultiplier_of_odd_den (T N) hodd
 
 /-- Once a fixed tail shift is integral, the recurrence keeps it integral at
 the next index.  This is the exact finite algebra behind the eventual-shift
