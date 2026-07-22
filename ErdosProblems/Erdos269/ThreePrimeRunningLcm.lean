@@ -196,6 +196,80 @@ theorem threePrimeKernelQ_eq_of_sameLogCell
   simp only [threePrimeKernelQ]
   rw [threePrimeHeight_eq_of_sameLogCell hcell]
 
+/-! ## Single-coordinate jump ratios -/
+
+/-- If only the first logarithmic coordinate advances by one, the height is
+multiplied by the first base. -/
+theorem threePrimeHeight_firstLogStep
+    {p q r x y : ℕ}
+    (hp : Nat.log p y = Nat.log p x + 1)
+    (hq : Nat.log q y = Nat.log q x)
+    (hr : Nat.log r y = Nat.log r x) :
+    threePrimeHeight p q r y = p * threePrimeHeight p q r x := by
+  simp only [threePrimeHeight, hp, hq, hr, pow_succ]
+  ring
+
+/-- If only the second logarithmic coordinate advances by one, the height is
+multiplied by the second base. -/
+theorem threePrimeHeight_secondLogStep
+    {p q r x y : ℕ}
+    (hp : Nat.log p y = Nat.log p x)
+    (hq : Nat.log q y = Nat.log q x + 1)
+    (hr : Nat.log r y = Nat.log r x) :
+    threePrimeHeight p q r y = q * threePrimeHeight p q r x := by
+  simp only [threePrimeHeight, hp, hq, hr, pow_succ]
+  ring
+
+/-- If only the third logarithmic coordinate advances by one, the height is
+multiplied by the third base. -/
+theorem threePrimeHeight_thirdLogStep
+    {p q r x y : ℕ}
+    (hp : Nat.log p y = Nat.log p x)
+    (hq : Nat.log q y = Nat.log q x)
+    (hr : Nat.log r y = Nat.log r x + 1) :
+    threePrimeHeight p q r y = r * threePrimeHeight p q r x := by
+  simp only [threePrimeHeight, hp, hq, hr, pow_succ]
+  ring
+
+/-- A first-coordinate jump multiplies the literal running LCM by `p`. -/
+theorem smoothPrefixLcm_firstLogStep
+    {p q r x y : ℕ} (pprime : p.Prime) (qprime : q.Prime) (rprime : r.Prime)
+    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r)
+    (hx : x ≠ 0) (hy : y ≠ 0)
+    (hp : Nat.log p y = Nat.log p x + 1)
+    (hq : Nat.log q y = Nat.log q x)
+    (hr : Nat.log r y = Nat.log r x) :
+    smoothPrefixLcm p q r y = p * smoothPrefixLcm p q r x := by
+  rw [smoothPrefixLcm_eq_threePrimeHeight pprime qprime rprime hpq hpr hqr hy,
+    smoothPrefixLcm_eq_threePrimeHeight pprime qprime rprime hpq hpr hqr hx]
+  exact threePrimeHeight_firstLogStep hp hq hr
+
+/-- A second-coordinate jump multiplies the literal running LCM by `q`. -/
+theorem smoothPrefixLcm_secondLogStep
+    {p q r x y : ℕ} (pprime : p.Prime) (qprime : q.Prime) (rprime : r.Prime)
+    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r)
+    (hx : x ≠ 0) (hy : y ≠ 0)
+    (hp : Nat.log p y = Nat.log p x)
+    (hq : Nat.log q y = Nat.log q x + 1)
+    (hr : Nat.log r y = Nat.log r x) :
+    smoothPrefixLcm p q r y = q * smoothPrefixLcm p q r x := by
+  rw [smoothPrefixLcm_eq_threePrimeHeight pprime qprime rprime hpq hpr hqr hy,
+    smoothPrefixLcm_eq_threePrimeHeight pprime qprime rprime hpq hpr hqr hx]
+  exact threePrimeHeight_secondLogStep hp hq hr
+
+/-- A third-coordinate jump multiplies the literal running LCM by `r`. -/
+theorem smoothPrefixLcm_thirdLogStep
+    {p q r x y : ℕ} (pprime : p.Prime) (qprime : q.Prime) (rprime : r.Prime)
+    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r)
+    (hx : x ≠ 0) (hy : y ≠ 0)
+    (hp : Nat.log p y = Nat.log p x)
+    (hq : Nat.log q y = Nat.log q x)
+    (hr : Nat.log r y = Nat.log r x + 1) :
+    smoothPrefixLcm p q r y = r * smoothPrefixLcm p q r x := by
+  rw [smoothPrefixLcm_eq_threePrimeHeight pprime qprime rprime hpq hpr hqr hy,
+    smoothPrefixLcm_eq_threePrimeHeight pprime qprime rprime hpq hpr hqr hx]
+  exact threePrimeHeight_thirdLogStep hp hq hr
+
 /-! ## Finite jump grouping -/
 
 /-- A finite rectangular exponent box.  This is the exact finite domain used
