@@ -23,6 +23,9 @@ coprimality, whole-modulus avoidance, a shifted CRT barrier, and first crossing.
 It does not settle the unrestricted problem, whose live obstruction is an
 integer centered state with cofinally unbounded negative excursions.  The full
 bounded-negative-part regime is closed below without a periodicity hypothesis.
+For the remaining branch, dynamic gcd reduction is also made exact: every gcd
+growth factor is paid for by old-prime overlap and strict growth events have an
+exponential finite budget.
 -/
 
 namespace ErdosProblems.Erdos243
@@ -1081,6 +1084,169 @@ theorem no_eventuallyBoundedRise_reducedTail
 /-! The remaining bounded-negative wrapper needs the tail gcd to stabilise.
 The next lemmas kernel-check that exact arithmetic reduction. -/
 
+/-! ## Dynamic cancellation and the gcd-growth budget
+
+Before the tail gcd stabilises, reduction at consecutive indices introduces a
+growth factor `h`.  The exact normalized step below shows that `h` is paid for
+by overlap between the current multiplier and the reduced denominator.  The
+finite counting lemmas then quantify how expensive strict gcd growth is.
+-/
+
+/-- At one dynamically reduced step, the gcd-growth factor is trapped between
+the old-factor overlap and its square. -/
+theorem cancellationFactor_sandwich
+    {a u v uNext vNext h : ℕ}
+    (hcop : Nat.Coprime u v)
+    (hcopNext : Nat.Coprime uNext vNext)
+    (hu : h * uNext + v = a * u)
+    (hv : h * vNext = a * v) :
+    Nat.gcd a v ∣ h ∧ h ∣ (Nat.gcd a v) ^ 2 := by
+  let d := Nat.gcd a v
+  have hdA : d ∣ a := Nat.gcd_dvd_left a v
+  have hdV : d ∣ v := Nat.gcd_dvd_right a v
+  have hdHu : d ∣ h * uNext := by
+    apply (Nat.dvd_add_iff_left hdV).mpr
+    rw [hu]
+    exact dvd_mul_of_dvd_left hdA u
+  have hdHv : d ∣ h * vNext := by
+    rw [hv]
+    exact dvd_mul_of_dvd_left hdA v
+  have hdH : d ∣ h := by
+    have hdGcd : d ∣ Nat.gcd (h * uNext) (h * vNext) :=
+      Nat.dvd_gcd hdHu hdHv
+    rw [Nat.gcd_mul_left, hcopNext.gcd_eq_one, Nat.mul_one] at hdGcd
+    exact hdGcd
+  refine ⟨hdH, ?_⟩
+  by_cases hdZero : d = 0
+  · obtain ⟨k, hk⟩ := hdH
+    have hhZero : h = 0 := by simpa [hdZero] using hk
+    change h ∣ d ^ 2
+    simp [hhZero, hdZero]
+  · have hdPos : 0 < d := Nat.pos_of_ne_zero hdZero
+    have hcopHU : Nat.Coprime h u := by
+      rw [Nat.coprime_iff_gcd_eq_one]
+      let k := Nat.gcd h u
+      have hkH : k ∣ h := Nat.gcd_dvd_left h u
+      have hkU : k ∣ u := Nat.gcd_dvd_right h u
+      have hkHu : k ∣ h * uNext := dvd_mul_of_dvd_left hkH uNext
+      have hkSum : k ∣ h * uNext + v := by
+        rw [hu]
+        exact dvd_mul_of_dvd_right hkU a
+      have hkV : k ∣ v := (Nat.dvd_add_iff_right hkHu).mpr hkSum
+      exact Nat.eq_one_of_dvd_coprimes hcop hkU hkV
+    have hhA2U : h ∣ a ^ 2 * u := by
+      have hsum : h ∣ a * (h * uNext) + h * vNext := by
+        exact Nat.dvd_add (dvd_mul_of_dvd_right (dvd_mul_right h uNext) a)
+          (dvd_mul_right h vNext)
+      have heq : a * (h * uNext) + h * vNext = a ^ 2 * u := by
+        calc
+          a * (h * uNext) + h * vNext = a * (h * uNext) + a * v := by rw [hv]
+          _ = a * (h * uNext + v) := by ring
+          _ = a * (a * u) := by rw [hu]
+          _ = a ^ 2 * u := by ring
+      rwa [heq] at hsum
+    have hhA2 : h ∣ a ^ 2 := (hcopHU.dvd_mul_right).mp hhA2U
+    have hhV2 : h ∣ v ^ 2 := by
+      have hfirst : h ∣ v * (h * uNext) :=
+        dvd_mul_of_dvd_right (dvd_mul_right h uNext) v
+      have hsum : h ∣ v * (h * uNext) + v ^ 2 := by
+        have heq : v * (h * uNext) + v ^ 2 = u * (h * vNext) := by
+          calc
+            v * (h * uNext) + v ^ 2 = v * (h * uNext + v) := by ring
+            _ = v * (a * u) := by rw [hu]
+            _ = u * (a * v) := by ring
+            _ = u * (h * vNext) := by rw [hv]
+        rw [heq]
+        exact dvd_mul_of_dvd_right (dvd_mul_right h vNext) u
+      exact (Nat.dvd_add_iff_right hfirst).mpr hsum
+    have hhGcdSquares : h ∣ Nat.gcd (a ^ 2) (v ^ 2) :=
+      Nat.dvd_gcd hhA2 hhV2
+    let aRed := a / d
+    let vRed := v / d
+    have hdAeq : a = d * aRed := (Nat.mul_div_cancel' hdA).symm
+    have hdVeq : v = d * vRed := (Nat.mul_div_cancel' hdV).symm
+    have hred : Nat.Coprime aRed vRed := by
+      dsimp [aRed, vRed, d]
+      exact Nat.coprime_div_gcd_div_gcd hdPos
+    have hGcdSquares : Nat.gcd (a ^ 2) (v ^ 2) = d ^ 2 := by
+      rw [hdAeq, hdVeq]
+      simp only [mul_pow]
+      rw [Nat.gcd_mul_left, (hred.pow 2 2).gcd_eq_one, Nat.mul_one]
+    rwa [hGcdSquares] at hhGcdSquares
+
+/-- Cancellation-free reduction is exactly coprimality between the current
+multiplier and the reduced accumulated denominator. -/
+theorem cancellationFactor_eq_one_iff
+    {a u v uNext vNext h : ℕ}
+    (hcop : Nat.Coprime u v)
+    (hcopNext : Nat.Coprime uNext vNext)
+    (hu : h * uNext + v = a * u)
+    (hv : h * vNext = a * v) :
+    h = 1 ↔ Nat.Coprime a v := by
+  obtain ⟨hlower, hupper⟩ :=
+    cancellationFactor_sandwich hcop hcopNext hu hv
+  constructor
+  · intro hh
+    rw [hh] at hlower
+    exact Nat.coprime_iff_gcd_eq_one.mpr (Nat.dvd_one.mp hlower)
+  · intro hav
+    have hd : Nat.gcd a v = 1 := hav.gcd_eq_one
+    rw [hd, one_pow] at hupper
+    exact Nat.dvd_one.mp hupper
+
+/-- Number of strict increases among the first `n` transitions of `G`. -/
+def strictGrowthCount (G : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 0
+  | n + 1 => strictGrowthCount G n + if G n < G (n + 1) then 1 else 0
+
+/-- A strict step in a positive divisibility chain at least doubles. -/
+theorem two_mul_le_of_dvd_of_lt
+    {x y : ℕ} (hxy : x ∣ y) (hxyLt : x < y) :
+    2 * x ≤ y := by
+  obtain ⟨k, rfl⟩ := hxy
+  have hk : 2 ≤ k := by
+    rcases k with _ | _ | k
+    · simp at hxyLt
+    · simp at hxyLt
+    · omega
+  simpa [Nat.mul_comm] using Nat.mul_le_mul_left x hk
+
+/-- Every strict step in a positive divisibility chain consumes one binary
+factor of its total growth. -/
+theorem pow_strictGrowthCount_mul_le
+    (G : ℕ → ℕ)
+    (hpos : ∀ n, 0 < G n)
+    (hchain : ∀ n, G n ∣ G (n + 1)) :
+    ∀ n, 2 ^ strictGrowthCount G n * G 0 ≤ G n := by
+  intro n
+  induction n with
+  | zero => simp [strictGrowthCount]
+  | succ n ih =>
+      by_cases hlt : G n < G (n + 1)
+      · have hdouble : 2 * G n ≤ G (n + 1) :=
+          two_mul_le_of_dvd_of_lt (hchain n) hlt
+        simp only [strictGrowthCount, hlt, if_pos, pow_add, pow_one]
+        calc
+          (2 ^ strictGrowthCount G n * 2) * G 0 =
+              2 * (2 ^ strictGrowthCount G n * G 0) := by ring
+          _ ≤ 2 * G n := Nat.mul_le_mul_left 2 ih
+          _ ≤ G (n + 1) := hdouble
+      · have hmono : G n ≤ G (n + 1) :=
+          Nat.le_of_dvd (hpos (n + 1)) (hchain n)
+        simp only [strictGrowthCount, hlt]
+        exact ih.trans hmono
+
+/-- Shifted finite form: `r` strict gcd-growth steps after index `N` force a
+factor of at least `2^r` between the endpoint gcds. -/
+theorem pow_strictGrowthCountFrom_mul_le
+    (G : ℕ → ℕ) (N n : ℕ)
+    (hpos : ∀ k, 0 < G k)
+    (hchain : ∀ k, G k ∣ G (k + 1)) :
+    2 ^ strictGrowthCount (fun k ↦ G (N + k)) n * G N ≤ G (N + n) := by
+  exact pow_strictGrowthCount_mul_le (fun k ↦ G (N + k))
+    (fun k ↦ hpos (N + k))
+    (fun k ↦ by simpa only [Nat.add_assoc] using hchain (N + k)) n
+
 /-- The gcd of the product-cleared tail and denominator states divides its
 successor. -/
 theorem tailGcd_dvd_succ
@@ -1095,6 +1261,125 @@ theorem tailGcd_dvd_succ
     exact (Nat.dvd_add_iff_left (Nat.gcd_dvd_right C D)).mpr hsum
   · rw [hD]
     exact dvd_mul_of_dvd_right (Nat.gcd_dvd_right C D) a
+
+/-- Numerator after reduction by the exact tail gcd. -/
+def reducedTailNumerator (C D : ℕ) : ℕ :=
+  C / Nat.gcd C D
+
+/-- Denominator state after reduction by the exact tail gcd. -/
+def reducedTailDenominator (C D : ℕ) : ℕ :=
+  D / Nat.gcd C D
+
+/-- Growth factor between two consecutive exact tail gcds. -/
+def tailGcdGrowthFactor (C D Cnext Dnext : ℕ) : ℕ :=
+  Nat.gcd Cnext Dnext / Nat.gcd C D
+
+/-- Reduction by a positive tail gcd produces coprime numerator and
+denominator states. -/
+theorem reducedTail_coprime
+    (C D : ℕ) (hC : 0 < C) :
+    Nat.Coprime (reducedTailNumerator C D) (reducedTailDenominator C D) := by
+  exact Nat.coprime_div_gcd_div_gcd (Nat.gcd_pos_of_pos_left D hC)
+
+/-- Consecutive gcd reductions of an exact tail satisfy the dynamic normalized
+cocycle with multiplier `tailGcdGrowthFactor`. -/
+theorem dynamicReducedTail_step
+    (a C D Cnext Dnext : ℕ)
+    (hCpos : 0 < C)
+    (hCnextPos : 0 < Cnext)
+    (hC : Cnext + D = a * C)
+    (hD : Dnext = a * D) :
+    tailGcdGrowthFactor C D Cnext Dnext *
+          reducedTailNumerator Cnext Dnext + reducedTailDenominator C D =
+        a * reducedTailNumerator C D ∧
+      tailGcdGrowthFactor C D Cnext Dnext *
+          reducedTailDenominator Cnext Dnext =
+        a * reducedTailDenominator C D := by
+  let g := Nat.gcd C D
+  let gNext := Nat.gcd Cnext Dnext
+  have hgPos : 0 < g := by
+    dsimp [g]
+    exact Nat.gcd_pos_of_pos_left D hCpos
+  have hgNextPos : 0 < gNext := by
+    dsimp [gNext]
+    exact Nat.gcd_pos_of_pos_left Dnext hCnextPos
+  have hgNext : g ∣ gNext := by
+    dsimp [g, gNext]
+    exact tailGcd_dvd_succ a C D Cnext Dnext hC hD
+  have hgC : g ∣ C := by
+    dsimp [g]
+    exact Nat.gcd_dvd_left C D
+  have hgD : g ∣ D := by
+    dsimp [g]
+    exact Nat.gcd_dvd_right C D
+  have hgNextC : gNext ∣ Cnext := by
+    dsimp [gNext]
+    exact Nat.gcd_dvd_left Cnext Dnext
+  have hgNextD : gNext ∣ Dnext := by
+    dsimp [gNext]
+    exact Nat.gcd_dvd_right Cnext Dnext
+  change (gNext / g) * (Cnext / gNext) + D / g = a * (C / g) ∧
+    (gNext / g) * (Dnext / gNext) = a * (D / g)
+  constructor
+  · apply Nat.eq_of_mul_eq_mul_left hgPos
+    calc
+      g * ((gNext / g) * (Cnext / gNext) + D / g) =
+          (g * (gNext / g)) * (Cnext / gNext) + g * (D / g) := by ring
+      _ = gNext * (Cnext / gNext) + D := by
+        rw [Nat.mul_div_cancel' hgNext, Nat.mul_div_cancel' hgD]
+      _ = Cnext + D := by rw [Nat.mul_div_cancel' hgNextC]
+      _ = a * C := hC
+      _ = g * (a * (C / g)) := by
+        have hCeq : C = g * (C / g) := (Nat.mul_div_cancel' hgC).symm
+        calc
+          a * C = a * (g * (C / g)) := congrArg (fun x ↦ a * x) hCeq
+          _ = g * (a * (C / g)) := by ring
+  · apply Nat.eq_of_mul_eq_mul_left hgPos
+    calc
+      g * ((gNext / g) * (Dnext / gNext)) =
+          (g * (gNext / g)) * (Dnext / gNext) := by ring
+      _ = gNext * (Dnext / gNext) := by rw [Nat.mul_div_cancel' hgNext]
+      _ = Dnext := Nat.mul_div_cancel' hgNextD
+      _ = a * D := hD
+      _ = g * (a * (D / g)) := by
+        have hDeq : D = g * (D / g) := (Nat.mul_div_cancel' hgD).symm
+        calc
+          a * D = a * (g * (D / g)) := congrArg (fun x ↦ a * x) hDeq
+          _ = g * (a * (D / g)) := by ring
+
+/-- On the actual dynamically reduced exact tail, the gcd-growth factor is
+trapped between old-prime overlap and its square. -/
+theorem tailGcdGrowthFactor_sandwich
+    (a C D Cnext Dnext : ℕ)
+    (hCpos : 0 < C)
+    (hCnextPos : 0 < Cnext)
+    (hC : Cnext + D = a * C)
+    (hD : Dnext = a * D) :
+    Nat.gcd a (reducedTailDenominator C D) ∣
+        tailGcdGrowthFactor C D Cnext Dnext ∧
+      tailGcdGrowthFactor C D Cnext Dnext ∣
+        (Nat.gcd a (reducedTailDenominator C D)) ^ 2 := by
+  obtain ⟨hu, hv⟩ :=
+    dynamicReducedTail_step a C D Cnext Dnext hCpos hCnextPos hC hD
+  exact cancellationFactor_sandwich
+    (reducedTail_coprime C D hCpos)
+    (reducedTail_coprime Cnext Dnext hCnextPos) hu hv
+
+/-- An actual tail gcd stays unchanged exactly when the current multiplier is
+coprime to the reduced accumulated denominator. -/
+theorem tailGcdGrowthFactor_eq_one_iff
+    (a C D Cnext Dnext : ℕ)
+    (hCpos : 0 < C)
+    (hCnextPos : 0 < Cnext)
+    (hC : Cnext + D = a * C)
+    (hD : Dnext = a * D) :
+    tailGcdGrowthFactor C D Cnext Dnext = 1 ↔
+      Nat.Coprime a (reducedTailDenominator C D) := by
+  obtain ⟨hu, hv⟩ :=
+    dynamicReducedTail_step a C D Cnext Dnext hCpos hCnextPos hC hD
+  exact cancellationFactor_eq_one_iff
+    (reducedTail_coprime C D hCpos)
+    (reducedTail_coprime Cnext Dnext hCnextPos) hu hv
 
 /-- At a negative-state index, the tail gcd is exactly the gcd with the
 positive negative-state magnitude. -/

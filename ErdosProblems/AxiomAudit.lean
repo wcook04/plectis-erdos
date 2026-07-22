@@ -48,7 +48,14 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.reducedTail_wholeModulusAvoidance
 #print axioms ErdosProblems.Erdos243.no_boundedRise_reducedTail
 #print axioms ErdosProblems.Erdos243.no_eventuallyBoundedRise_reducedTail
+#print axioms ErdosProblems.Erdos243.cancellationFactor_sandwich
+#print axioms ErdosProblems.Erdos243.cancellationFactor_eq_one_iff
+#print axioms ErdosProblems.Erdos243.pow_strictGrowthCount_mul_le
+#print axioms ErdosProblems.Erdos243.pow_strictGrowthCountFrom_mul_le
 #print axioms ErdosProblems.Erdos243.tailGcd_dvd_succ
+#print axioms ErdosProblems.Erdos243.dynamicReducedTail_step
+#print axioms ErdosProblems.Erdos243.tailGcdGrowthFactor_sandwich
+#print axioms ErdosProblems.Erdos243.tailGcdGrowthFactor_eq_one_iff
 #print axioms ErdosProblems.Erdos243.tailGcd_eq_gcd_negativeMagnitude
 #print axioms ErdosProblems.Erdos243.dvdChain_eventuallyConstant_of_cofinally_bounded
 #print axioms ErdosProblems.Erdos243.tailGcd_eventuallyConstant_of_cofinally_boundedNegative
