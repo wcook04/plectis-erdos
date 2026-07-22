@@ -223,6 +223,30 @@ def coverage_report(commit: str) -> tuple[list[str], list[str]]:
                 f"declarations, below the {floor:.0%} floor; rewrite the note "
                 f"and repin, or lower note_coverage_floor deliberately"
             )
+        # The floor is measured against this checkout, which is what the notes
+        # are built from.  The library is also developed on another branch, and
+        # a note can be current here while that branch has already moved on.
+        # That gap is reported and never gated: failing on someone else's
+        # branch would make this check red through no fault of this tree.
+        upstream = index.get("upstream_ref")
+        if upstream:
+            ahead = 0
+            for module in modules:
+                relative = "/".join(module.split(".")) + ".lean"
+                shown = subprocess.run(
+                    ["git", "show", f"{upstream}:{relative}"],
+                    cwd=ROOT,
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                if shown.returncode == 0:
+                    ahead += len(declarations_in(shown.stdout))
+            if ahead > len(current):
+                lines.append(
+                    f"      upstream {upstream} is {ahead - len(current)} "
+                    f"declaration(s) ahead of this checkout"
+                )
     return lines, failures
 
 
