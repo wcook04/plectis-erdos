@@ -215,6 +215,16 @@ theorem positivePrimePowers_card
       exact Nat.add_right_cancel (Nat.pow_right_injective hp.two_le hab)
     _ = count := Finset.card_range count
 
+/-- The common origin `1` is absent from every positive prime-power channel. -/
+theorem one_not_mem_positivePrimePowers
+    {p count : ℕ} (hp : p.Prime) :
+    1 ∉ positivePrimePowers p count := by
+  intro hone
+  change 1 ∈ (Finset.range count).image (fun e => p ^ (e + 1)) at hone
+  rcases Finset.mem_image.mp hone with ⟨e, _he, hpow⟩
+  have hlt : 1 < p ^ (e + 1) := one_lt_pow₀ hp.one_lt (by omega)
+  exact (Nat.ne_of_gt hlt) hpow
+
 /-- Positive power channels of two distinct primes are disjoint. -/
 theorem positivePrimePowers_disjoint
     {p q pcount qcount : ℕ} (hp : p.Prime) (hq : q.Prime) (hpq : p ≠ q) :
@@ -258,6 +268,24 @@ theorem threePrimePositiveJumpSet_card
     positivePrimePowers_card hq,
     positivePrimePowers_card hr]
   omega
+
+/-- The finite jump set including the unique common origin `1`. -/
+def threePrimeJumpSetWithOrigin (p q r count : ℕ) : Finset ℕ :=
+  insert 1 (threePrimePositiveJumpSet p q r count)
+
+/-- Including the common origin turns the `3 * count` positive candidates into
+exactly `3 * count + 1` distinct finite jump values. -/
+theorem threePrimeJumpSetWithOrigin_card
+    {p q r count : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
+    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) :
+    (threePrimeJumpSetWithOrigin p q r count).card = 3 * count + 1 := by
+  have hone : 1 ∉ threePrimePositiveJumpSet p q r count := by
+    simp [threePrimePositiveJumpSet,
+      one_not_mem_positivePrimePowers hp,
+      one_not_mem_positivePrimePowers hq,
+      one_not_mem_positivePrimePowers hr]
+  rw [threePrimeJumpSetWithOrigin, Finset.card_insert_of_notMem hone,
+    threePrimePositiveJumpSet_card hp hq hr hpq hpr hqr]
 
 /-! ## Single-coordinate jump ratios -/
 
