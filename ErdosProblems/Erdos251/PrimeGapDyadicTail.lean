@@ -123,6 +123,65 @@ theorem tailShift_succ
 def RatIntegral (x : ℚ) : Prop :=
   ∃ z : ℤ, x = z
 
+/-- The integer block accumulated through `h` dyadic tail steps beginning at
+index `N`.  Recursively, this is
+`g (N+1) * 2^(h-1) + ⋯ + g (N+h)`. -/
+def dyadicTailBlock (g : ℕ → ℤ) (N : ℕ) : ℕ → ℤ
+  | 0 => 0
+  | h + 1 => 2 * dyadicTailBlock g N h + g (N + h + 1)
+
+/-- Iterating the tail recurrence for `h` steps gives the exact finite block
+identity `T_(N+h) = 2^h T_N - B_(h,N)`. -/
+theorem tail_iterate_eq_pow_mul_sub_block
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    T (N + h) = 2 ^ h * T N - dyadicTailBlock g N h := by
+  induction h with
+  | zero => simp [dyadicTailBlock]
+  | succ h ih =>
+      rw [show N + (h + 1) = (N + h) + 1 by omega, hrec (N + h), ih]
+      simp only [dyadicTailBlock, pow_succ]
+      push_cast
+      ring
+
+/-- The shifted-tail difference is a scaled copy of `T_N`, up to the explicit
+integer block. -/
+theorem tailShift_eq_scaled_sub_block
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    tailShift T h N =
+      ((2 ^ h : ℚ) - 1) * T N - dyadicTailBlock g N h := by
+  rw [tailShift, tail_iterate_eq_pow_mul_sub_block hrec]
+  ring
+
+/-- Subtracting an integer does not change whether a rational number is
+integral. -/
+theorem ratIntegral_sub_int_iff (x : ℚ) (z : ℤ) :
+    RatIntegral (x - z) ↔ RatIntegral x := by
+  constructor
+  · rintro ⟨k, hk⟩
+    refine ⟨k + z, ?_⟩
+    calc
+      x = (x - (z : ℚ)) + z := by ring
+      _ = (k : ℚ) + z := by rw [hk]
+      _ = ((k + z : ℤ) : ℚ) := by push_cast; ring
+  · rintro ⟨k, hk⟩
+    refine ⟨k - z, ?_⟩
+    rw [hk]
+    push_cast
+    ring
+
+/-- Exact algebraic core of the integral-shift criterion: one tail shift is
+integral exactly when `(2^h - 1) * T_N` is integral.  Connecting `T_N` to the
+actual infinite prime-gap series remains a separate analytic interface. -/
+theorem tailShift_integral_iff_scaledTail
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    RatIntegral (tailShift T h N) ↔
+      RatIntegral (((2 ^ h : ℚ) - 1) * T N) := by
+  rw [tailShift_eq_scaled_sub_block hrec]
+  exact ratIntegral_sub_int_iff _ _
+
 /-- Once a fixed tail shift is integral, the recurrence keeps it integral at
 the next index.  This is the exact finite algebra behind the eventual-shift
 criterion; no prime-distribution input is used. -/
