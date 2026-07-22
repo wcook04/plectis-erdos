@@ -7,12 +7,12 @@
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
 \hypersetup{
-  pdftitle={The centred state and the surviving negative case: Lean-checked rigidity algebra for Erdős Problem 243},
+  pdftitle={Excluding the bounded negative part: Lean-checked rigidity for Erdős Problem 243},
   pdfsubject={Erdős Problem Notes: Problem 243},
   pdfkeywords={irrationality, Ahmes series, Sylvester sequence, unit fractions, Lean 4},
 }
 
-% Names for the four state maps and the two search objects.  They are set as
+% Names for the state maps and the two search objects.  They are set as
 % upright operators so that they read as maps rather than as products.
 \newcommand{\sylnext}{\operatorname{syl}}
 \newcommand{\den}{\operatorname{den}}
@@ -22,9 +22,9 @@
 \newcommand{\fnum}{\operatorname{num}}
 \newcommand{\surv}{\operatorname{Surv}}
 
-\runninghead{Erd\H{o}s \#243: reciprocal-tail rigidity}
-\title{The Centred State and the Surviving Negative Case}
-\subtitle{Lean-checked rigidity algebra for Erd\H{o}s Problem~\#243}
+\runninghead{Erd\H{o}s \#243: excluding the bounded negative part}
+\title{Excluding the Bounded Negative Part}
+\subtitle{Lean-checked rigidity for Erd\H{o}s Problem~\#243}
 \author{Will Cook}
 \date{July 2026}
 
@@ -35,32 +35,35 @@
 \begin{abstract}
 \noindent
 Sylvester's sequence $2,3,7,43,1807,\ldots$ satisfies
-$a_{n+1}=a_n^{2}-a_n+1$ and has reciprocal sum $1$.  Erd\H{o}s asked whether a
-rapidly growing integer sequence with rational reciprocal sum must satisfy that
-recurrence eventually.  We formalise in Lean the integer state system in which
-the question becomes an assertion about a single centred error.
+$a_n=a_{n-1}^{2}-a_{n-1}+1$ and has reciprocal sum $1$.  Erd\H{o}s asked
+whether a rapidly growing integer sequence with rational reciprocal sum must
+satisfy that recurrence eventually.  Clearing denominators gives integer states
+$D_{n+1}=a_nD_n$ and $C_{n+1}=a_nC_n-D_n$, and centring at the Sylvester tail
+gives $E_n=D_n-(a_n-1)C_n$, with $C_{n+1}=C_n-E_n$; the question becomes
+whether $E$ can avoid vanishing.  When $E$ is nonnegative a one-line descent
+settles it.  This note is about the negative side.
 
-Writing $D_{n+1}=a_nD_n$, $C_{n+1}=a_nC_n-D_n$ and $E_n=D_n-(a_n-1)C_n$, we
-prove the update law $C_{n+1}=C_n-E_n$ and the defect identity
-\[
- \bigl(a_{n+1}-(a_n^{2}-a_n+1)\bigr)\,C_{n+1}=a_n^{2}E_n-E_{n+1},
-\]
-and deduce that two consecutive vanishing errors with $C_{n+1}\ne0$ force the
-exact Sylvester step; in sequence form, eventual vanishing of $E$ together with
-eventual nonvanishing of $C$ forces the recurrence eventually.  Separately we
-prove the descent that closes the one-sided case: a nonnegative integer state
-with $C_{n+1}+E_n=C_n$ has $E_n=0$ eventually.  Finally we prove that survival
-through $h$ forced updates of the normalised constant-negative template depends
-only on the initial state modulo $(h+1)!$.
+We formalise in Lean that $E$ cannot be negative in any of four increasingly
+general ways.  It cannot be constantly $-m$, at any magnitude and any scale:
+every multiplier would have to share a prime with the fixed $m$, and once a
+prime divides one multiplier every later multiplier is $1$ modulo it, so a
+fixed integer would need infinitely many distinct prime divisors.  It cannot be
+periodic with positive drift, by the same pigeonhole after a strong induction
+that removes common scale.  And it cannot have a bounded negative part at all:
+a bounded negative part makes $C$ rise by a bounded amount, normalised
+vanishing makes $C$ tend to infinity, the tail gcd stabilises so the orbit may
+be taken reduced, and in a reduced tail the multipliers are pairwise coprime
+and permanently avoided by the numerator, which a Chinese-remainder block of
+consecutive multiples forbids.  Together with an absorption lemma making
+$E_n=0$ propagate, this yields: under exact dynamics, eventual strict centring,
+an eventually bounded negative part, and normalised vanishing, $E$ vanishes
+eventually, and the sequence satisfies the Sylvester recurrence eventually.
 
-Problem~\#243 is open and nothing here decides it.  The surviving case is
-exactly the one the descent does not reach, namely a centred state that is
-negative infinitely often; we neither exclude such an orbit nor construct one.
-An exact search over initial states below $5000$, reduced by the scale
-equivariance we also prove, produced forced prefixes of length $17$ and no
-longer; that is a computation, not a theorem.  The identification of the state
-system with reciprocal tails is exposition here and is not part of the
-formalised statements.
+Problem~\#243 is open and this note does not close it.  The last theorem is
+conditional, and two of its hypotheses are analytic inputs that we assume
+rather than derive.  What the results remove is the bounded case: any
+counterexample must have negative excursions that are unbounded along a
+cofinal set of indices.
 \end{abstract}
 
 \section{The problem}\label{sec:problem}
@@ -85,10 +88,8 @@ Then $a_n=a_{n-1}^{2}-a_{n-1}+1$ for all sufficiently large $n$.
 numbering and status follow Bloom's catalogue~\cite{erdosproblems}.  The
 problem is open.  Below we index the same recurrence as
 $a_{n+1}=a_n^{2}-a_n+1$, which is the shift the formal sources use; the two
-forms are the same statement.
-
-Write $\sylnext(a)=a^{2}-a+1$ throughout, the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{19}{sylvesterNext}{Sylvester
+forms are the same statement.  Write $\sylnext(a)=a^{2}-a+1$, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{31}{sylvesterNext}{Sylvester
 successor}.
 
 \paragraph{Relation to prior work.}
@@ -115,10 +116,13 @@ convert an analytic rate into an integer obstruction.  The conversion used here
 is the classical one: clear denominators along the sequence, so that
 rationality makes a tail integral, and then centre that integer at the value it
 would take on Sylvester's sequence.  What remains is a single integer error
-whose sign controls everything.  Section~\ref{sec:state} sets this up,
-Section~\ref{sec:defect} proves the rigidity step, Section~\ref{sec:descent}
-closes the case where the error is nonnegative, and Section~\ref{sec:residue}
-reduces the surviving case to a finite-horizon residue computation.
+$E$, and the whole question is whether $E$ can avoid vanishing.
+Section~\ref{sec:descent} disposes of the case $E\ge0$ in three lines.  The
+rest of the note is the case $E<0$, in four widening steps: constant magnitude
+(Section~\ref{sec:constant}), periodic magnitude
+(Section~\ref{sec:periodic}), bounded magnitude via a coprimality barrier
+(Sections~\ref{sec:barrier} and~\ref{sec:bounded}), and what is left
+(Section~\ref{sec:open}).
 
 \paragraph{Status of everything below.}
 \statusboundary
@@ -127,34 +131,36 @@ reduces the surviving case to a finite-horizon residue computation.
 \centering
 \small
 \begin{tabular}{@{}
-  >{\raggedright\arraybackslash}p{0.34\linewidth}
-  >{\raggedright\arraybackslash}p{0.18\linewidth}
-  >{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+  >{\raggedright\arraybackslash}p{0.36\linewidth}
+  >{\raggedright\arraybackslash}p{0.17\linewidth}
+  >{\raggedright\arraybackslash}p{0.39\linewidth}@{}}
 \toprule
 Statement & Status & Treatment here \\
 \midrule
 Problem~\#243 as stated & Open & Not proved. \\
-Update law $C_{n+1}=C_n-E_n$ & Proved here & Proposition~\ref{res:update}. \\
 Defect identity & Proved here & Theorem~\ref{res:defect}, an identity in $\Z[a,a',D,C]$. \\
-Two vanishing errors force the step & Proved here & Theorem~\ref{res:step}. \\
-Sequence form & Proved here & Theorem~\ref{res:eventual}. \\
-Nonnegative case & Proved here & Theorem~\ref{res:descent}. \\
-Negative case & Open & Section~\ref{sec:open}; the surviving obstruction. \\
-Scale equivariance & Proved here & Proposition~\ref{res:scale}. \\
-Finite-horizon residue reduction & Proved here & Theorem~\ref{res:residue}. \\
-Longest forced prefix found & Computed & Section~\ref{sec:residue}: length $17$, seeds below $5000$. \\
+Eventual vanishing forces the recurrence & Proved here & Theorem~\ref{res:eventual}. \\
+Zero is absorbing & Proved here & Theorem~\ref{res:absorb}, under strict centring. \\
+Nonnegative $E$ & Proved here & Theorem~\ref{res:descent}, by descent. \\
+Constantly negative $E$ & Excluded here & Theorem~\ref{res:constant}, at any magnitude and scale. \\
+Periodic negative magnitude & Excluded here & Theorem~\ref{res:periodic}, in the regime $e_n<a_n$. \\
+Coprime-modulus barrier & Proved here & Theorem~\ref{res:barrier}. \\
+Bounded negative part & Excluded here; conditional & Theorem~\ref{res:bounded}; see its hypotheses. \\
+Strict centring, normalised vanishing & Assumed, not derived & Section~\ref{sec:bounded}. \\
+Unbounded negative excursions & Open & Section~\ref{sec:open}; the surviving obstruction. \\
+Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; both stronger than anything here. \\
 State system equals reciprocal tails & Not formalised & Section~\ref{sec:state}. \\
-Weighted criterion of Erd\H{o}s and Straus & Proved elsewhere & Cited, not formalised. \\
-Duverney's conditional characterisation & Proved elsewhere & Cited, not formalised; stronger than anything here. \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{Reading map.}
-Sections~\ref{sec:state}--\ref{sec:descent} are the rigidity argument and its
-one-sided closure; Section~\ref{sec:residue} is the reduction used by the
-search; Section~\ref{sec:open} states what survives.  Linked phrases open the
-corresponding Lean declaration at the pinned source revision~\commitshort.
+Sections~\ref{sec:state}--\ref{sec:descent} set up the state system and settle
+the nonnegative case.  Sections~\ref{sec:constant}--\ref{sec:bounded} are the
+negative case and contain the new content; a reader who wants only the
+strongest statement should read Section~\ref{sec:bounded} and then
+Section~\ref{sec:open}.  Linked phrases open the corresponding Lean
+declaration at the pinned source revision~\commitshort.
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; Ahmes series; Sylvester's sequence;
@@ -164,20 +170,20 @@ unit fractions; Lean~4.
 
 \section{The centred integer state}\label{sec:state}
 
-Fix integers and define, for $a,D,C\in\Z$,
+For $a,D,C\in\Z$ define
 \[
  \den(a,D)=aD,
  \quad
  \tail(a,D,C)=aC-D,
  \quad
- \ctr(a,D,C)=D-(a-1)C .
+ \ctr(a,D,C)=D-(a-1)C ,
 \]
-These are the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{23}{nextDenState}{denominator
+the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{35}{nextDenState}{denominator
 update}, the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{27}{nextTailState}{tail update},
+\lword{Erdos243/ReciprocalTailRigidity.lean}{39}{nextTailState}{tail update},
 and the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{31}{centeredState}{centred state}.
+\lword{Erdos243/ReciprocalTailRigidity.lean}{43}{centeredState}{centred state}.
 Given $(a_n)$ we write $D_{n+1}=\den(a_n,D_n)$, $C_{n+1}=\tail(a_n,D_n,C_n)$
 and $E_n=\ctr(a_n,D_n,C_n)$.
 
@@ -190,9 +196,10 @@ $C-\bigl(D-(a-1)C\bigr)=aC-D$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{39}{nextTailState_eq_sub_centered}{update
+\lword{Erdos243/ReciprocalTailRigidity.lean}{51}{nextTailState_eq_sub_centered}{update
 law}.  The state therefore moves by exactly the error at each step, which is
-what makes the sign of $E$ decisive.
+what makes the sign of $E$ decisive: where $E$ is positive the state falls,
+where $E$ is negative it rises, and where $E$ vanishes it is stationary.
 
 \paragraph{The intended reading, which is not formalised.}
 Let $T_n=\sum_{k\ge n}1/a_k$ and suppose $T_0\in\Q$.  Put $D_0$ equal to a
@@ -205,34 +212,42 @@ identically on the Sylvester orbit.
 
 None of this paragraph is formalised.  The Lean module contains no series, no
 rationality hypothesis, and no growth hypothesis; it proves identities and
-implications about the integer system above.  A reader should treat the
-identification as motivation for the definitions and not as a checked step.
+implications about the integer system above, and about its natural-number
+realisation, for which the bridging identities are the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1383}{natTail_eq_nextTailState}{tail
+realisation}, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1395}{natDen_eq_nextDenState}{denominator
+realisation}, and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1404}{natTail_eq_sub_centeredState}{signed
+update law}.  A reader should treat the identification with reciprocal tails as
+motivation for the definitions and not as a checked step.
 
 \begin{proposition}[scale equivariance]\label{res:scale}
 For every $s,a,D,C\in\Z$,
 \[
- \den(a,sD)=s\,\den(a,D),\quad
- \tail(a,sD,sC)=s\,\tail(a,D,C),\quad
+ \den(a,sD)=s\,\den(a,D),\qquad
+ \tail(a,sD,sC)=s\,\tail(a,D,C),
+\]
+\[
  \ctr(a,sD,sC)=s\,\ctr(a,D,C).
 \]
 \end{proposition}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{47}{nextDenState_scale}{denominator
+\lword{Erdos243/ReciprocalTailRigidity.lean}{59}{nextDenState_scale}{denominator
 equivariance}, the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{52}{nextTailState_scale}{tail
+\lword{Erdos243/ReciprocalTailRigidity.lean}{64}{nextTailState_scale}{tail
 equivariance}, and the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{57}{centeredState_scale}{centred
-equivariance}.  The system therefore depends only on the ray through
-$(D,C)$, and a search over initial states may quotient by common scaling.  We
-use this in Section~\ref{sec:residue}; it removed a family of duplicate
-candidates that differ only by a scalar.
+\lword{Erdos243/ReciprocalTailRigidity.lean}{69}{centeredState_scale}{centred
+equivariance}.  The system depends only on the ray through $(D,C)$.  This is
+used twice below, once to reduce a search and once, in
+Theorem~\ref{res:periodic}, as the induction step that removes common scale.
 
-\section{The defect identity and the rigidity step}\label{sec:defect}
+\section{The defect identity, rigidity, and absorption}\label{sec:defect}
 
 Write $\defect(a,a')=a'-\sylnext(a)$ for the deviation of the next term from
 the Sylvester successor, the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{35}{sylvesterDefect}{Sylvester
+\lword{Erdos243/ReciprocalTailRigidity.lean}{47}{sylvesterDefect}{Sylvester
 defect}.
 
 \begin{theorem}[defect identity]\label{res:defect}
@@ -250,14 +265,10 @@ $a'aC-a'D-a^{3}C+a^{2}D+a^{2}C-aD-aC+D$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{64}{sylvesterDefect_mul_nextTailState}{defect
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1289}{sylvesterDefect_mul_nextTailState}{defect
 identity}.  It is a polynomial identity in four indeterminates, with no
-hypothesis of any kind.
-
-The identity is the whole rigidity mechanism.  The left side vanishes exactly
-when the sequence takes the Sylvester step or the state $C_{n+1}$ vanishes; the
-right side vanishes when two consecutive errors do.  Reading it in the second
-direction gives the following.
+hypothesis of any kind, and it carries the whole argument twice over: once for
+rigidity, and once for absorption.
 
 \begin{theorem}[two vanishing errors force the step]\label{res:step}
 Let $a,a',D,C\in\Z$ with $\tail(a,D,C)\ne0$.  If
@@ -267,42 +278,59 @@ $a'=\sylnext(a)$.
 
 \begin{proof}
 By Theorem~\ref{res:defect} the product $\defect(a,a')\cdot\tail(a,D,C)$ is
-zero, and the second factor is nonzero by hypothesis, so $\defect(a,a')=0$.
+zero, and the second factor is nonzero by hypothesis.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{76}{sylvesterNext_eq_of_centered_zero}{local
-rigidity step}.  The hypothesis $C_{n+1}\ne0$ is not removable: at
-$C_{n+1}=0$ the identity gives no information about $a'$, and indeed a state
-that has reached zero constrains nothing further.
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1301}{sylvesterNext_eq_of_centered_zero}{local
+rigidity step}.  The hypothesis $C_{n+1}\ne0$ is not removable: at $C_{n+1}=0$
+the identity gives no information about $a'$.
 
 \begin{theorem}[sequence form]\label{res:eventual}
 Let $a,D,C:\N\to\Z$ satisfy $D_{n+1}=\den(a_n,D_n)$ and
-$C_{n+1}=\tail(a_n,D_n,C_n)$ for every $n$.  Suppose that
-$E_n=\ctr(a_n,D_n,C_n)$ vanishes for all sufficiently large $n$, and that
-$C_{n+1}\ne0$ for all sufficiently large $n$.  Then there is an $N$ with
-\[
- a_{n+1}=a_n^{2}-a_n+1\qquad\text{for every }n\ge N .
-\]
+$C_{n+1}=\tail(a_n,D_n,C_n)$.  If $E_n=0$ for all sufficiently large $n$ and
+$C_{n+1}\ne0$ for all sufficiently large $n$, then $a_{n+1}=a_n^{2}-a_n+1$ for
+all sufficiently large $n$.
+\end{theorem}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1319}{sylvesterNext_eventually_of_centered_zero}{eventual
+Sylvester recurrence}: take the larger of the two thresholds and apply
+Theorem~\ref{res:step} at each later index.  This is the theorem every later
+section feeds: from here on the goal is exactly to force $E$ to vanish
+eventually.
+
+The defect identity has a second consequence, which is what makes a single
+vanishing error worth having.
+
+\begin{theorem}[zero is absorbing]\label{res:absorb}
+Let $a,C,D:\N\to\N$ be an exact natural orbit, so
+$C_{n+1}+D_n=a_nC_n$ and $D_{n+1}=a_nD_n$, and let
+$E_n=\ctr(a_n,D_n,C_n)$.  Suppose the centring is strict, $|E_n|<C_n$ for
+every $n$.  If $E_n=0$ then $E_{n+1}=0$.
 \end{theorem}
 
 \begin{proof}
-Take $N$ to be the larger of the two thresholds and apply
-Theorem~\ref{res:step} at each $n\ge N$, using the transition equations to
-identify $C_{n+1}$ with $\tail(a_n,D_n,C_n)$ and $E_{n+1}$ with
-$\ctr\bigl(a_{n+1},\den(a_n,D_n),\tail(a_n,D_n,C_n)\bigr)$.
+Putting $E_n=0$ in Theorem~\ref{res:defect} gives
+$\Delta_n C_{n+1}=-E_{n+1}$, so $C_{n+1}$ divides $E_{n+1}$.  A multiple of
+$C_{n+1}$ of absolute value smaller than $C_{n+1}$ is zero, and
+$|E_{n+1}|<C_{n+1}$ by hypothesis.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{94}{sylvesterNext_eventually_of_centered_zero}{eventual
-Sylvester recurrence}.  Both hypotheses are eventual, and the conclusion is
-eventual; no compactness or limiting argument is involved, and the two
-thresholds are merged explicitly.
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1416}{centeredState_zero_absorbing}{absorption
+of a vanishing centred state}, with the companion
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1443}{eventually_nonzero_of_zero_absorbing}{contrapositive
+along a tail}: if zero is absorbing beyond some index and $E$ does not vanish
+eventually, then $E$ is nowhere zero beyond that index.
+
+Absorption changes the shape of the problem.  Without it, one would have to
+exclude an $E$ that dips to zero and recovers.  With it, either $E$ hits zero
+once and is finished, or it is never zero at all; the later sections may
+therefore assume that $E_n\ne0$ for every $n$, and in the negative case that
+$E_n<0$ throughout, without loss.
 
 \section{The nonnegative case}\label{sec:descent}
-
-Theorem~\ref{res:eventual} needs the error to vanish eventually.  When the
-state and the error are nonnegative that is automatic, by descent.
 
 \begin{theorem}[descent]\label{res:descent}
 Let $C,E:\N\to\N$ satisfy $C_{n+1}+E_n=C_n$ for every $n$.  Then $E_n=0$ for
@@ -311,80 +339,340 @@ all sufficiently large $n$.
 
 \begin{proof}
 The relation forces $C_{n+1}\le C_n$, so $C$ is a nonincreasing sequence of
-natural numbers and is therefore eventually equal to its minimum value; beyond
-that index $C_{n+1}=C_n$, and the relation gives $E_n=0$.
+natural numbers and is eventually equal to its minimum; beyond that index
+$C_{n+1}=C_n$, and the relation gives $E_n=0$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{132}{centeredState_eventually_zero}{stabilisation
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1357}{centeredState_eventually_zero}{stabilisation
 of the nonnegative error}, on the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{114}{antitone_nat_eventually_constant}{eventual
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1339}{antitone_nat_eventually_constant}{eventual
 constancy of a nonincreasing sequence}.
 
-The two hypotheses of Theorem~\ref{res:descent} are exactly the one-sidedness:
-$C$ and $E$ take values in $\N$.  The relation $C_{n+1}+E_n=C_n$ is
-Proposition~\ref{res:update} rewritten, so the theorem is the descent step of
-every one-sided criterion for this problem.  It is stated for abstract
-$\N$-valued sequences, and instantiating it at the orbit of
-Section~\ref{sec:state} requires knowing that the state and the error are
-nonnegative there, which is not proved and is precisely what fails in the open
-case.
+The hypothesis is exactly one-sidedness: $C$ and $E$ take values in $\N$.  If
+$E_n<0$ at infinitely many indices then $C$ rises there, nothing descends, and
+the argument is unavailable.  That is the whole difficulty, and the rest of
+this note attacks it.
 
-\paragraph{Where the argument stops.}
-If $E_n<0$ for infinitely many $n$, then by Proposition~\ref{res:update} the
-state $C$ increases at those indices, and no quantity is known to descend.  The
-reverse one-sided inequality makes the state nondecreasing, which removes the
-stabilisation argument rather than reversing it.  Nothing above excludes that
-behaviour.
+\section{Constant negative magnitude}\label{sec:constant}
+
+Suppose $E_n=-m$ for a fixed $m>0$ and every $n$.  By
+Proposition~\ref{res:update} the state then climbs by exactly $m$ each step,
+so $C_n=c+nm$ with $c=C_0$, and the definition of the centred state becomes a
+\emph{shape equation}
+\[
+ D_n+m=(a_n-1)\,(c+nm) .
+\tag{5.1}\label{eq:shape}
+\]
+Together with $D_{n+1}=a_nD_n$ this is a closed system in $(a,D)$, and it has
+no solutions.
+
+\begin{theorem}[no constant negative magnitude]\label{res:constant}
+There is no pair of sequences $a,D:\N\to\N$ with $a_n\ge2$ for all $n$
+satisfying $D_{n+1}=a_nD_n$ and~\eqref{eq:shape}, for any $m>0$ and any
+$c$.  The same holds if the shape only begins at some index.
+\end{theorem}
+
+\begin{proof}[Proof of the scale-primitive case]
+Assume first $\gcd(c,m)=1$.  Two facts about the multipliers do all the work.
+
+\emph{Every $a_j$ shares a prime with $m$.}  Suppose $\gcd(a_j,m)=1$.  Then
+$m$ is invertible modulo $a_j$, so some $n$ has $c+nm\equiv0$, that is
+$a_j\mid C_n$; and $a_j\mid D_n$ for every $n>j$, since $D$ is multiplicative
+with $a_j$ among its factors.  Choosing such an $n$ beyond $j$
+and reading~\eqref{eq:shape} modulo $a_j$ gives $a_j\mid m$, contradicting
+$\gcd(a_j,m)=1$ and $a_j\ge2$.
+
+\emph{A prime divisor of $m$ occurs in at most one $a_j$.}  Suppose $p\mid m$
+and $p\mid a_j$.  For $n>j$ we have $p\mid D_n$, so~\eqref{eq:shape} gives
+$(a_n-1)C_n\equiv0 \pmod p$.  Now $C_n=c+nm\equiv c$, and $p\nmid c$ because
+$p\mid m$ and $\gcd(c,m)=1$; hence $p\mid a_n-1$, so $p\nmid a_n$.  Thus $p$
+cannot divide any later multiplier.
+
+The two facts are incompatible.  Each of the infinitely many multipliers needs
+a prime divisor of $m$, and each prime divisor of $m$ serves at most one
+multiplier, while $m$ has only finitely many prime divisors.
+\end{proof}
+
+\noindent The scale-primitive case is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{141}{no_scalePrimitiveConstantNegative_orbit}{scale-primitive
+exclusion}.  The special case $m=c=1$, where $m$ has no prime divisors at all
+and the first fact is immediately contradictory, is recorded separately as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{94}{no_normalizedConstantNegative_orbit}{normalised
+exclusion}.
+
+\begin{proof}[Removing the scale]
+For general $c$, put $g=\gcd(c,m)$.  Equation~\eqref{eq:shape} shows
+$g\mid D_n$ for every $n$, so dividing $D$, $c$ and $m$ by $g$ leaves a system
+of the same shape with coprime data, which the previous case excludes.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{280}{no_constantNegative_orbit}{exclusion
+at every scale}, and the eventual form, obtained by shifting the orbit to the
+first constant index, as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{344}{no_eventuallyConstantNegative_orbit}{eventual
+exclusion}.
+
+\paragraph{What this section proves, and what it does not.}
+It excludes a centred state that is eventually constant and negative, at every
+magnitude and every scale.  It says nothing about a negative state whose
+magnitude changes, and the argument genuinely uses constancy: the finiteness of
+the set of prime divisors of $m$ is what the pigeonhole consumes, and a varying
+magnitude supplies a fresh set at each index.
+
+\section{Periodic negative magnitude}\label{sec:periodic}
+
+The next case allows the magnitude to vary, provided it repeats.  Write
+$e_n=-E_n>0$ for the magnitude, so $C_{n+1}=C_n+e_n$, and suppose $e$ has
+period $h$ and $C$ gains a drift $M>0$ over one period.
+
+Three lemmas replace the two facts of Section~\ref{sec:constant}.  The first is
+that multipliers persist: every $a_j$ divides every strictly later denominator
+state, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{376}{base_dvd_denState_later}{persistence
+of a multiplier}.  The second is a lock: a prime already dividing $D$ and also
+dividing the current multiplier is forced into the next tail state, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{396}{divisorLocksTailSucc}{one-step
+lock}, and once present in both $D$ and $C$ it stays in every later $D$, $C$
+and magnitude, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{423}{divisorLock_persists}{persistence
+of a lock}.  The third transports a lock backwards through the period: if a
+divisor of the drift $M$ occurs in two multipliers, it is a common divisor of
+$C_0$ and of every magnitude, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{488}{repeatedDivisor_forces_periodicCommonScale}{repeated-divisor
+transport}, using that both the period relation and the drift iterate over any
+number of periods, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{455}{periodic_add_mul}{iterated
+period} and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{470}{phaseDrift_add_mul}{iterated
+drift}.
+
+\begin{theorem}[no periodic negative magnitude]\label{res:periodic}
+Let $a,D,C,e:\N\to\N$ with $a_n\ge2$, $e_n>0$ and $e_n<a_n$ for every $n$,
+satisfying
+\[
+ D_{n+1}=a_nD_n,\qquad C_{n+1}=C_n+e_n,\qquad D_n+e_n=(a_n-1)C_n ,
+\]
+and suppose $e_{n+h}=e_n$ and $C_{n+h}=C_n+M$ for some $h>0$ and $M>0$.  This
+is impossible.
+\end{theorem}
+
+\begin{proof}
+Strong induction on $M$.  If no prime divisor of $M$ is a common divisor of
+$C_0$ and of every magnitude, the repeated-divisor transport says each prime
+divisor of $M$ occurs in at most one multiplier; combined with the argument of
+Section~\ref{sec:constant}, applied phase by phase, pigeonhole on the finitely
+many prime divisors of $M$ gives a contradiction.  Otherwise some prime $p$
+divides $M$, $C_0$ and every magnitude; the shape equation then puts $p$ into
+every denominator state, so the whole orbit may be divided by $p$.  Every
+hypothesis survives and the drift becomes $M/p<M$.
+\end{proof}
+
+\noindent The phase-primitive case is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{542}{no_phasePrimitivePeriodicNegative_orbit}{phase-primitive
+exclusion}, the induction is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{684}{no_periodicNegative_orbit}{exclusion
+at every scale}, and the eventual form is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{790}{no_eventuallyPeriodicNegative_orbit}{eventual
+exclusion}.
+
+\paragraph{The regime hypothesis.}
+The bound $e_n<a_n$ is a genuine restriction and not a normalisation.  It is
+the range in which a multiplier cannot divide its own phase magnitude, which
+is what the lock argument needs.  It holds in the intended reading, where
+$e_n$ is a centred representative and $a_n$ grows quadratically, but it is
+assumed here and not derived.  The drift hypothesis $M>0$ is also used: a
+periodic magnitude with zero drift would be identically zero, which is the case
+already settled by Section~\ref{sec:descent}.
+
+\section{A coprimality barrier}\label{sec:barrier}
+
+Periodicity is still a strong assumption.  Removing it needs a different kind
+of obstruction, and the one used here is a counting argument about where an
+integer sequence with bounded upward steps must land.
+
+\begin{lemma}[shifted blocks of consecutive multiples]\label{res:crt}
+Let $m_0,\ldots,m_{B-1}$ be pairwise coprime and at least $2$.  For every bound
+there is a $t$ beyond it with $m_i\mid t+i$ for each $i<B$.
+\end{lemma}
+
+\begin{proof}
+Chinese remaindering: solve $t\equiv-i \pmod{m_i}$ simultaneously, then add
+multiples of $\prod_i m_i$ to pass the bound.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{827}{exists_shifted_consecutiveMultiples}{shifted
+consecutive multiples}.
+
+\begin{theorem}[bounded rise cannot avoid fresh moduli]\label{res:barrier}
+Let $u:\N\to\N$ tend to infinity with $u_{n+1}\le u_n+B$ for a fixed $B>0$.
+Then $u$ cannot permanently avoid infinitely many fresh pairwise coprime
+moduli: there is no family of pairwise coprime $m_i\ge2$, one for each index,
+such that $m_i\nmid u_t$ whenever $i<t$.
+\end{theorem}
+
+\begin{proof}
+Take $B$ of the moduli, from indices beyond any chosen point, and use
+Lemma~\ref{res:crt} to find $t$ far out with the $i$th of them dividing $t+i$.
+The interval $[t,t+B)$ has length $B$, and $u$ climbs by at most $B$ per step
+while tending to infinity, so some $u_s$ lands in it.  Then $u_s=t+i$ for some
+$i<B$, and the $i$th modulus divides $u_s$, against avoidance.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{891}{no_boundedRise_of_tailAvoidance}{bounded-rise
+barrier}.  The two hypotheses pull against each other exactly: divergence
+forces $u$ to travel arbitrarily far, and bounded rise forbids it from stepping
+over a window of width $B$.
+
+The barrier applies to the problem because a \emph{reduced} exact tail supplies
+the coprime moduli for free.  Call $(u,v)$ a reduced exact tail with
+multipliers $a$ when $\gcd(u_n,v_n)=1$,
+\[
+ u_{n+1}+v_n=a_nu_n,\qquad v_{n+1}=a_nv_n .
+\]
+
+\begin{proposition}[reduced tails are pairwise coprime]\label{res:reduced}
+In a reduced exact tail, $a_n$ is coprime to $v_n$; the multipliers at distinct
+indices are pairwise coprime; and every earlier multiplier is coprime to every
+later numerator.
+\end{proposition}
+
+\noindent These are the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{977}{reducedStep_coprime_currentFactor}{step
+coprimality}, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1004}{reducedTail_pairwiseCoprime}{pairwise
+coprimality}, and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1018}{reducedTail_wholeModulusAvoidance}{whole-modulus
+avoidance}.  Feeding them to Theorem~\ref{res:barrier} gives the form used
+later: there is no reduced exact tail whose numerator tends to infinity with a
+uniformly bounded upward increment, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1029}{no_boundedRise_reducedTail}{reduced
+bounded-rise exclusion}, together with its eventual form, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1054}{no_eventuallyBoundedRise_reducedTail}{eventual
+reduced exclusion}.
+
+\paragraph{Passing to a reduced tail.}
+The orbit of Section~\ref{sec:state} is not reduced, so one more step is
+needed: the common factor must stop changing.  The tail gcd
+$\gcd(C_n,D_n)$ divides its successor, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1086}{tailGcd_dvd_succ}{gcd
+monotonicity}, and at an index where the centred state is negative it is
+exactly $\gcd(C_n,e_n)$, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1101}{tailGcd_eq_gcd_negativeMagnitude}{gcd
+at a negative index}.  A positive divisibility chain whose values are bounded
+along a cofinal set is eventually constant, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1119}{dvdChain_eventuallyConstant_of_cofinally_bounded}{chain
+stabilisation}; hence cofinally bounded negative magnitudes make the tail gcd
+stabilise, the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1150}{tailGcd_eventuallyConstant_of_cofinally_boundedNegative}{gcd
+stabilisation}.  Beyond that point the orbit divided by the stable gcd is
+reduced, and Theorem~\ref{res:barrier} applies to it.
+
+\section{The bounded negative part}\label{sec:bounded}
+
+Assembling the previous section gives the strongest statement of this note.
+Its hypotheses are listed in full, because two of them are analytic inputs
+that are assumed here rather than derived from the growth condition of
+Problem~\ref{res:problem}.
+
+\begin{theorem}[bounded negative part]\label{res:bounded}
+Let $a,C,D:\N\to\N$ and $E:\N\to\Z$ satisfy
+\begin{enumerate}
+\item $a_n>1$ and $C_n>0$ for every $n$;
+\item the exact dynamics $C_{n+1}+D_n=a_nC_n$ and $D_{n+1}=a_nD_n$;
+\item $E_n=\ctr(a_n,D_n,C_n)$ for every $n$;
+\item \emph{eventual strict centring}: $|E_n|<C_n$ for all large $n$;
+\item \emph{eventually bounded negative part}: $-B\le E_n$ for all large $n$,
+for some $B$;
+\item \emph{normalised vanishing}: for every $K$ there is an $N$ with
+$K\,|E_n|<C_n$ for all $n\ge N$.
+\end{enumerate}
+Then $E_n=0$ for all sufficiently large $n$.
+\end{theorem}
+
+\begin{proof}
+Suppose not.  By Theorem~\ref{res:absorb} and its contrapositive form, $E$ is
+nowhere zero beyond the centring threshold.  If $E$ is negative cofinally,
+then~(5) bounds those magnitudes, so the tail gcd stabilises and the orbit may
+be taken reduced past that point.  Hypothesis~(5) with
+Proposition~\ref{res:update} gives $C_{n+1}\le C_n+B$, a bounded rise;
+hypothesis~(6) with $E$ nowhere zero gives $C_n\to\infty$.  A reduced exact
+tail with a divergent numerator and bounded rise is excluded by
+Theorem~\ref{res:barrier}.  If instead $E$ is eventually positive, the descent
+of Theorem~\ref{res:descent} applies and forces $E$ to vanish, contradicting
+nowhere-vanishing.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1460}{boundedNegativePart_eventually_zero}{bounded-negative-part
+rigidity}, with the eventual form, in which the centring and the bound need
+only hold from some index, as the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1547}{eventuallyBoundedNegativePart_eventually_zero}{eventual
+bounded-negative-part rigidity}.  The two bridges it uses are the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1253}{tailState_tendsto_atTop_of_nonzero_normalizedVanishes}{divergence
+from normalised vanishing} and the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1268}{no_cofinallyBoundedNegative_of_normalizedVanishes}{exclusion
+of cofinally bounded negative magnitudes}, the latter over the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1175}{no_cofinallyBoundedNegative_of_tailTendsto}{tail-divergence
+form}.
+
+\begin{corollary}\label{res:cor}
+Under the hypotheses of Theorem~\ref{res:bounded}, together with
+$C_{n+1}\ne0$ for all large $n$, the multipliers satisfy
+$a_{n+1}=a_n^{2}-a_n+1$ for all sufficiently large $n$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{res:bounded} then Theorem~\ref{res:eventual}.
+\end{proof}
+
+\paragraph{What is assumed, and what that costs.}
+Hypotheses~(1)--(3) are the state system.  Hypothesis~(4) says the centred
+state is a strict centred representative, and~(6) says $|E_n|/C_n\to0$ in a
+division-free form.  Neither is derived here from
+$a_{n+1}/a_n^{2}\to1$, and no argument in the formal source connects them to
+Problem~\ref{res:problem}.  Theorem~\ref{res:bounded} is therefore a
+conditional theorem about the state system, and Corollary~\ref{res:cor} does
+not settle any case of Problem~\ref{res:problem}.  What is unconditional in
+this note is the exclusion of constant and periodic negative magnitudes,
+Theorems~\ref{res:constant} and~\ref{res:periodic}, and the barrier itself,
+Theorem~\ref{res:barrier}.
 
 \section{A finite-horizon residue reduction}\label{sec:residue}
 
-In the surviving case one may normalise the error to a constant negative value,
-which is legitimate up to common scaling by Proposition~\ref{res:scale}.  In
-that template the next term is forced: at index $n$ its numerator is
+One earlier tool survives, and it is worth recording that it is no longer
+needed for the purpose it was built for.  In the normalised constant-negative
+template the next multiplier is forced: at index $n$ its numerator is
 \[
  \fnum(n,a)=(n+1)a^{2}-(n+2)a+(n+3),
 \]
 the
 \lword{Erdos243/FiniteHorizonResidue.lean}{22}{forcedNumerator}{forced
-numerator}, and the divisor is $n+2$.  The orbit survives one step when the
-division is exact, and continues from the quotient.  Formally, put
-$\surv(0,i,a)$ true and
-\[
- \surv(h+1,i,a)\iff (i+2)\mid\fnum(i,a)
- \ \text{ and }\
- \surv\Bigl(h,\;i+1,\;\tfrac{\fnum(i,a)}{i+2}\Bigr),
-\]
-the
+numerator}, and the divisor is $n+2$.  The orbit survives a step when that
+division is exact, giving a survival predicate, the
 \lword{Erdos243/FiniteHorizonResidue.lean}{75}{ForcedSurvives}{survival
-predicate}.  The template itself is a definition in the formal source, not a
-consequence proved there; the derivation that the surviving case takes this
-shape is not formalised.
-
-The orbit grows doubly exponentially, so deciding $\surv(h,0,a)$ by iteration
-is expensive.  It is unnecessary.
+predicate}.  Deciding survival by iteration is expensive because the orbit
+grows doubly exponentially, and it is unnecessary.
 
 \begin{theorem}[factorial residue reduction]\label{res:residue}
-For all $h\in\N$ and $a,b\in\Z$, if $a\equiv b \pmod{(h+1)!}$ then
-$\surv(h,0,a)\iff\surv(h,0,b)$.
+For all $h$ and all integers $a\equiv b \pmod{(h+1)!}$, the orbit from $a$
+survives $h$ forced updates exactly when the orbit from $b$ does.
 \end{theorem}
 
 \begin{proof}
-Let $M(0,i)=1$ and $M(h+1,i)=(i+2)M(h,i+1)$, so that $M(h,i)$ is an ascending
-factorial and $M(h,0)=(h+1)!$.  We show by induction on $h$ that
-$a\equiv b\pmod{M(h,i)}$ implies $\surv(h,i,a)\iff\surv(h,i,b)$.  The
-numerator is a polynomial with integer coefficients, so the congruence
-transfers to $\fnum(i,a)\equiv\fnum(i,b)\pmod{(i+2)M(h,i+1)}$, and reducing the
-modulus gives divisibility by $i+2$ for one exactly when for the other.  When
-both divisions are exact, cancelling the common factor $i+2$ from the values
-and from the modulus leaves
-$\fnum(i,a)/(i+2)\equiv\fnum(i,b)/(i+2)\pmod{M(h,i+1)}$, and the inductive
-hypothesis applies.
+Let $M(0,i)=1$ and $M(h+1,i)=(i+2)M(h,i+1)$, an ascending factorial with
+$M(h,0)=(h+1)!$.  The numerator is a polynomial with integer coefficients, so
+congruences transfer; reducing the modulus gives divisibility by $i+2$ for one
+exactly when for the other, and cancelling that common factor from both values
+and modulus leaves the inductive hypothesis at $M(h,i+1)$.
 \end{proof}
 
 \noindent Formalised as the
 \lword{Erdos243/FiniteHorizonResidue.lean}{134}{forcedSurvives_iff_of_modEq_factorial}{factorial
-residue reduction}, on the
+residue reduction}, over the
 \lword{Erdos243/FiniteHorizonResidue.lean}{97}{forcedSurvives_iff_of_modEq}{shrinking-modulus
 transport}, the
 \lword{Erdos243/FiniteHorizonResidue.lean}{26}{forcedNumerator_modEq}{polynomial
@@ -396,49 +684,53 @@ form} and the
 \lword{Erdos243/FiniteHorizonResidue.lean}{69}{horizonModulus_zero_eq_factorial}{factorial
 value at the initial index}.
 
-\paragraph{What the search found.}
-Theorem~\ref{res:residue} replaces an orbit of doubly exponential integers by a
-residue computation with a shrinking modulus.  Running it over initial states
-below $5000$, quotiented by the common scaling of
-Proposition~\ref{res:scale}, produced forced prefixes of length $17$ and no
-longer; the leaders include the states $1501$, $1723$, $2029$, $2581$, $2971$,
-$3571$, $3583$, and $4621$, each of which fails a later divisibility condition.
-These are computed values.  A prefix of length $17$ is not evidence that no
-infinite orbit exists, and the failure of every tested leader is not a proof
-that all leaders fail: arbitrary finite deviations can be followed by an exact
-Sylvester tail, so no finite-prefix rule settles the problem.
+The search this supported is superseded.  Running it over initial states below
+$5000$ produced forced prefixes of length $17$ and no longer, which was
+evidence and not a proof; Theorem~\ref{res:constant} now excludes the template
+outright, for every seed and at every scale.  The reduction is retained
+because it is exact, and because the shrinking-modulus technique transfers to
+any forced orbit whose step is a polynomial division.
 
 \section{Complements and further questions}\label{sec:open}
 
-Problem~\#243 is open.  The results above isolate one obligation.
+Problem~\#243 is open.  The negative case has narrowed, and it is worth being
+precise about what is left.
 
-\begin{problem}[the constant-negative orbit]
-Show that the divisibility condition sustaining the forced constant-negative
-template cannot hold at every index, or exhibit an initial state at which it
-does.  By Theorem~\ref{res:residue} the first $h$ conditions depend only on the
-state modulo $(h+1)!$, so the question is whether the shrinking-modulus
-computation terminates for every residue.
+By Theorem~\ref{res:absorb} a counterexample has $E_n\ne0$ for every large $n$.
+By Theorem~\ref{res:descent} it cannot have $E$ eventually nonnegative.  By
+Theorems~\ref{res:constant} and~\ref{res:periodic} its negative magnitudes are
+neither eventually constant nor eventually periodic.  By
+Theorem~\ref{res:bounded}, if the analytic hypotheses~(4) and~(6) hold, the
+negative part cannot be bounded either.  What remains is the following.
+
+\begin{problem}[unbounded negative excursions]
+Exclude, or construct, an exact orbit whose centred state is negative
+infinitely often with magnitudes unbounded along that cofinal set.  Every
+argument in Sections~\ref{sec:constant}--\ref{sec:bounded} consumes some
+finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on
+the negative part.  An unbounded excursion supplies none of them.
+\end{problem}
+
+\begin{problem}[the two analytic hypotheses]
+Derive eventual strict centring and normalised vanishing from
+$a_{n+1}/a_n^{2}\to1$ and rationality, or show that they do not follow.  Until
+one or the other is done, Theorem~\ref{res:bounded} constrains the state
+system and not the original sequence.
 \end{problem}
 
 \begin{problem}[the two published criteria]
 Formalise the criterion of Erd\H{o}s and Straus stated in
 Section~\ref{sec:problem}, and Duverney's conditional characterisation, under
-explicit analytic hypotheses: the weighted recurrence, the tail error estimate,
-and the consumer in each case.  Both are cited here and neither is formalised;
+explicit analytic hypotheses.  Both are cited here and neither is formalised;
 each is stronger than every statement in this note.
 \end{problem}
 
-\begin{problem}[the critical boundary]
-Decide the case in which the normalised undershoot sits at the reciprocal-index
-boundary.  The constant-negative template of Section~\ref{sec:residue} lies
-exactly there, which is why the available rate hypotheses do not exclude it.
-\end{problem}
-
-The formal content changes the shape of the remaining work rather than its
-difficulty.  The rigidity step is an identity, and it is available at every
-index; the nonnegative case is closed by descent; and what is left is a single
-sign condition on an integer sequence, together with the fact that no finite
-prefix decides it.
+The shape of the remaining work has changed more than its difficulty.  Before,
+the obstruction was a sign condition with no handle on it.  Now the sign
+condition has been reduced to a growth condition on the excursions themselves,
+and the tool that closed the bounded case, a coprimality barrier against
+sequences that rise slowly and diverge, is stated in a form that does not
+mention the problem at all.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
@@ -469,12 +761,14 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 \section{Guide to the formal sources}\label{app:index}
 
 Each linked phrase opens its Lean declaration at the pinned source
-revision~\commitshort.  The state system, the defect identity, and the descent
-are in the first module; the residue reduction is in the second.  The two are
-not connected by a formalised derivation: the template of
-Section~\ref{sec:residue} is a definition there, and the identification of
-either module with reciprocal tails is the exposition of
-Section~\ref{sec:state}, not a checked statement.
+revision~\commitshort.  The state system, the exclusions, the barrier, and the
+bounded-negative-part theorem are in the first module; the residue reduction is
+in the second.  Three distinctions are worth carrying into the source.  The
+identification of either module with reciprocal tails is the exposition of
+Section~\ref{sec:state} and is not a checked statement.  The periodic exclusion
+assumes the regime $e_n<a_n$.  And the final theorem assumes strict centring
+and normalised vanishing, which are hypotheses of the theorem and not
+consequences of the problem.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -482,20 +776,54 @@ Section~\ref{sec:state}, not a checked statement.
 
 \begin{tabular}{@{}ll@{}}
 informal statement & linked Lean source\\
-Sylvester successor & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{19}{sylvesterNext}\\
-denominator update & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{23}{nextDenState}\\
-tail update & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{27}{nextTailState}\\
-centred state & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{31}{centeredState}\\
-Sylvester defect & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{35}{sylvesterDefect}\\
-update law & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{39}{nextTailState_eq_sub_centered}\\
-denominator equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{47}{nextDenState_scale}\\
-tail equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{52}{nextTailState_scale}\\
-centred equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{57}{centeredState_scale}\\
-defect identity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{64}{sylvesterDefect_mul_nextTailState}\\
-local rigidity step & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{76}{sylvesterNext_eq_of_centered_zero}\\
-eventual Sylvester recurrence & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{94}{sylvesterNext_eventually_of_centered_zero}\\
-eventual constancy & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{114}{antitone_nat_eventually_constant}\\
-stabilisation of the nonnegative error & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{132}{centeredState_eventually_zero}\\
+Sylvester successor & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{31}{sylvesterNext}\\
+denominator update & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{35}{nextDenState}\\
+tail update & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{39}{nextTailState}\\
+centred state & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{43}{centeredState}\\
+Sylvester defect & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{47}{sylvesterDefect}\\
+update law & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{51}{nextTailState_eq_sub_centered}\\
+denominator equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{59}{nextDenState_scale}\\
+tail equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{64}{nextTailState_scale}\\
+centred equivariance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{69}{centeredState_scale}\\
+normalised exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{94}{no_normalizedConstantNegative_orbit}\\
+scale-primitive exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{141}{no_scalePrimitiveConstantNegative_orbit}\\
+constant exclusion at every scale & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{280}{no_constantNegative_orbit}\\
+eventual constant exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{344}{no_eventuallyConstantNegative_orbit}\\
+persistence of a multiplier & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{376}{base_dvd_denState_later}\\
+one-step lock & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{396}{divisorLocksTailSucc}\\
+persistence of a lock & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{423}{divisorLock_persists}\\
+iterated period & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{455}{periodic_add_mul}\\
+iterated drift & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{470}{phaseDrift_add_mul}\\
+repeated-divisor transport & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{488}{repeatedDivisor_forces_periodicCommonScale}\\
+phase-primitive exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{542}{no_phasePrimitivePeriodicNegative_orbit}\\
+periodic exclusion at every scale & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{684}{no_periodicNegative_orbit}\\
+eventual periodic exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{790}{no_eventuallyPeriodicNegative_orbit}\\
+shifted consecutive multiples & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{827}{exists_shifted_consecutiveMultiples}\\
+bounded-rise barrier & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{891}{no_boundedRise_of_tailAvoidance}\\
+step coprimality & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{977}{reducedStep_coprime_currentFactor}\\
+pairwise coprimality & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1004}{reducedTail_pairwiseCoprime}\\
+whole-modulus avoidance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1018}{reducedTail_wholeModulusAvoidance}\\
+reduced bounded-rise exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1029}{no_boundedRise_reducedTail}\\
+eventual reduced exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1054}{no_eventuallyBoundedRise_reducedTail}\\
+gcd monotonicity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1086}{tailGcd_dvd_succ}\\
+gcd at a negative index & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1101}{tailGcd_eq_gcd_negativeMagnitude}\\
+chain stabilisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1119}{dvdChain_eventuallyConstant_of_cofinally_bounded}\\
+gcd stabilisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1150}{tailGcd_eventuallyConstant_of_cofinally_boundedNegative}\\
+tail-divergence form & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1175}{no_cofinallyBoundedNegative_of_tailTendsto}\\
+divergence from normalised vanishing & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1253}{tailState_tendsto_atTop_of_nonzero_normalizedVanishes}\\
+exclusion from normalised vanishing & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1268}{no_cofinallyBoundedNegative_of_normalizedVanishes}\\
+defect identity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1289}{sylvesterDefect_mul_nextTailState}\\
+local rigidity step & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1301}{sylvesterNext_eq_of_centered_zero}\\
+eventual Sylvester recurrence & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1319}{sylvesterNext_eventually_of_centered_zero}\\
+eventual constancy & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1339}{antitone_nat_eventually_constant}\\
+stabilisation of the nonnegative error & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1357}{centeredState_eventually_zero}\\
+tail realisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1383}{natTail_eq_nextTailState}\\
+denominator realisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1395}{natDen_eq_nextDenState}\\
+signed update law & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1404}{natTail_eq_sub_centeredState}\\
+absorption of a vanishing centred state & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1416}{centeredState_zero_absorbing}\\
+contrapositive along a tail & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1443}{eventually_nonzero_of_zero_absorbing}\\
+bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1460}{boundedNegativePart_eventually_zero}\\
+eventual bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1547}{eventuallyBoundedNegativePart_eventually_zero}\\
 forced numerator & \lrefx{Erdos243/FiniteHorizonResidue.lean}{22}{forcedNumerator}\\
 polynomial congruence & \lrefx{Erdos243/FiniteHorizonResidue.lean}{26}{forcedNumerator_modEq}\\
 exact-division cancellation & \lrefx{Erdos243/FiniteHorizonResidue.lean}{41}{quotient_modEq_of_modEq_mul}\\
@@ -503,6 +831,7 @@ horizon modulus & \lrefx{Erdos243/FiniteHorizonResidue.lean}{53}{horizonModulus}
 ascending-factorial form & \lrefx{Erdos243/FiniteHorizonResidue.lean}{59}{horizonModulus_eq_ascFactorial}\\
 factorial value at the initial index & \lrefx{Erdos243/FiniteHorizonResidue.lean}{69}{horizonModulus_zero_eq_factorial}\\
 survival predicate & \lrefx{Erdos243/FiniteHorizonResidue.lean}{75}{ForcedSurvives}\\
+quotient transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{85}{forcedQuotient_modEq}\\
 shrinking-modulus transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{97}{forcedSurvives_iff_of_modEq}\\
 factorial residue reduction & \lrefx{Erdos243/FiniteHorizonResidue.lean}{134}{forcedSurvives_iff_of_modEq_factorial}\\
 \end{tabular}

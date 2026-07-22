@@ -873,7 +873,7 @@
             "id": "erdos_243_note",
             "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The centred integer state, the defect identity forcing the Sylvester step, the descent closing the nonnegative case, and the finite-horizon factorial residue reduction, with the negative case explicitly surviving."
+            "thesis": "The centred integer state and defect identity, absorption of a vanishing state, descent for the nonnegative case, and exclusion of the negative case when its magnitude is constant, periodic, or bounded, the last conditional on two assumed analytic inputs; unbounded negative excursions survive."
           },
           {
             "id": "erdos_251_note",

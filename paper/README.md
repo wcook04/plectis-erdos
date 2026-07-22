@@ -61,8 +61,21 @@ against that pinned commit rather than the working tree, so a note cannot decay
 when a later wave moves declarations:
 
 ```sh
-python3 ../scripts/check_problem_note_sources.py
+python3 ../scripts/check_problem_note_sources.py --coverage
 ```
+
+Pinning buys safety at a price: a note whose links can never break can instead
+fall silently behind. `--coverage` is the meter for that. It reports, per
+problem, the fraction of the declarations that exist **now** which the note
+actually links, and whether the modules have changed since the pin, and it
+fails below `note_coverage_floor` in `docs/problem_index_source.json`. Drift is
+therefore a failing check with a worklist attached, not something a reader
+discovers.
+
+When a note falls through the floor: rewrite it against the current source,
+repin `\commit` in the shared preamble to a commit that is **pushed** (links
+resolve on GitHub, so an unpushed local merge is not a valid pin), rebuild, and
+refresh the digests in `docs/publication_contract.json`.
 
 `docs/problems.json`, built by `scripts/build_problem_index.py`, is the
 machine-readable index over the same material: one row per problem naming its

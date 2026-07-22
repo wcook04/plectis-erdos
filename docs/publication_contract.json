@@ -64,15 +64,15 @@
       "title": "The Centred State and the Surviving Negative Case",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_content_digest": "sha256:072af27fcbe6052c141c85ba77b4f76ebc9919615475c68dd3d05a4f3355b824",
+      "source_content_digest": "sha256:b61e619b21b015bf6cf3da47a339c630e5eacc371834ba809632a4f98485d562",
       "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "rendered_content_digest": "sha256:432a15c0bb0dcfaa43255ed7b9f0d39e9132aa4fe636d35bc3c546d8ce690b95",
+      "rendered_content_digest": "sha256:20d6aff671e933f18fe2fbb0170620ccd24995835cfc8f3660a4a3970d6e4564",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
       "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. The declarations it describes are exact Lean propositions and are not reviewed public claims in docs/claims.json; Erdős Problem 243 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
-        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
       ]
@@ -84,13 +84,13 @@
       "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
       "source_content_digest": "sha256:757306f81a71977f23f6d0d467a43f11c1e5857aecd5dbc17b16a9f0ff3165ca",
       "rendered_path": "erdos-251-prime-gap-dyadic-series.pdf",
-      "rendered_content_digest": "sha256:31a515e0b4b0e33eb1f443b0b0cfae789e383eb097f1adf498151bcc2defc39c",
+      "rendered_content_digest": "sha256:f1edc988bd0c2c78a338454794252062c628f5a0a3ae939d6870654cd5cf36eb",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
       "claim_scope": "Exposition of the ErdosProblems.Erdos251 module. Every statement it describes is finite or algebraic; none concerns the infinite series, and Erdős Problem 251 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
-        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
       ]
@@ -102,13 +102,13 @@
       "source_path": "paper/erdos-269-three-prime-running-lcm.tex",
       "source_content_digest": "sha256:69b32672e241b134c22f9dd23da70566132c239c65647a5229499a46f8f428b2",
       "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
-      "rendered_content_digest": "sha256:5d98c13b924b8d32f00d4317596671f5a5af4ce5079e9d02fc7c9f4e376a389e",
+      "rendered_content_digest": "sha256:de4be4f065fe9788748429c6630de61ea02ad289d73507257255fd54829ede8a",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
       "claim_scope": "Exposition of the ErdosProblems.Erdos269 modules. The residue-escape hypothesis is assumed by its consumer theorem and is not proved; Erdős Problem 269 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
-        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
       ]
@@ -120,13 +120,13 @@
       "source_path": "paper/erdos-1049-rational-base-lambert.tex",
       "source_content_digest": "sha256:2d41b71fe88044e56342486ce277e264f67d1ddc932d9156053122bac0bd86d8",
       "rendered_path": "erdos-1049-rational-base-lambert.pdf",
-      "rendered_content_digest": "sha256:6d57eb6300c0ff1b0e817fd8f11685200bf4aeef4eec551caebccd127b3935d0",
+      "rendered_content_digest": "sha256:375346342407d0e09d51f6e018c306e24aa95adfa5a8664f13494454ee50c624",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
       "claim_scope": "Exposition of the ErdosProblems.Erdos1049 modules. The published height criterion it cites is external and is not formalised here; Erdős Problem 1049 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
-        "python3 scripts/check_problem_note_sources.py",
+        "python3 scripts/check_problem_note_sources.py --coverage",
         "python3 scripts/build_problem_index.py --check",
         "python3 scripts/check_publication_contract.py"
       ]
@@ -210,7 +210,7 @@
     "additional_erdos249_companion"
   ],
   "reproducibility": {
-    "problem_note_source_links": "python3 scripts/check_problem_note_sources.py",
+    "problem_note_source_links": "python3 scripts/check_problem_note_sources.py --coverage",
     "problem_index_freshness": "python3 scripts/build_problem_index.py --check",
     "publication_contract_check": "python3 scripts/check_publication_contract.py",
     "publication_contract_fixture_test": "python3 scripts/test_publication_artifact_contract.py",

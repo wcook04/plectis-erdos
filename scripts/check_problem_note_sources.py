@@ -32,6 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PREAMBLE = ROOT / "paper" / "problem-note-preamble.tex"
 CONTRACT = ROOT / "docs" / "publication_contract.json"
+INDEX_SOURCE = ROOT / "docs" / "problem_index_source.json"
 NOTE_ARTIFACT_CLASS = "problem_note"
 LIBRARY_PREFIX = "ErdosProblems"
 
@@ -130,12 +131,112 @@ def links(text: str) -> list[tuple[str, int, str | None]]:
     return found
 
 
+def note_for_problem() -> list[tuple[dict, str]]:
+    """Pair each indexed problem with its registered note source path."""
+    index = json.loads(INDEX_SOURCE.read_text(encoding="utf-8"))
+    contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
+    by_id = {row["id"]: row for row in contract.get("artifacts", [])}
+    pairs = []
+    for row in index["problems"]:
+        artifact = by_id.get(row["note_artifact_id"])
+        if artifact is not None:
+            pairs.append((row, artifact["source_path"]))
+    return pairs
+
+
+def declarations_in(text: str) -> list[str]:
+    """Every declaration name a Lean source declares, in file order."""
+    names: list[str] = []
+    for line in text.splitlines():
+        stripped = ATTRIBUTE_RE.sub("", line).strip()
+        for keyword in DECL_KEYWORDS:
+            for prefix in ("", "private ", "protected ", "noncomputable ", "nonrec "):
+                head = f"{prefix}{keyword} "
+                if stripped.startswith(head):
+                    match = re.match(
+                        r"([A-Za-z_][A-Za-z0-9_'.]*)", stripped[len(head) :].lstrip()
+                    )
+                    if match:
+                        names.append(match.group(1))
+                    break
+            else:
+                continue
+            break
+    return names
+
+
+def coverage_report(commit: str) -> tuple[list[str], list[str]]:
+    """Report how much of each problem's current source its note reaches.
+
+    A note pins its links to one commit, so it cannot break when the library
+    moves.  The cost of that safety is that it can fall silently behind.  This
+    measures the gap in the only terms that matter to a reader: how many of the
+    declarations that exist *now* the note actually mentions, and whether the
+    modules have changed at all since the note was pinned.
+    """
+    lines: list[str] = []
+    failures: list[str] = []
+    index = json.loads(INDEX_SOURCE.read_text(encoding="utf-8"))
+    floor = index.get("note_coverage_floor", 0.0)
+    for row, source in note_for_problem():
+        note_text = (ROOT / source).read_text(encoding="utf-8")
+        linked = {declaration for _f, _l, declaration in links(note_text) if declaration}
+        modules = [row["principal_module"], *row.get("companion_modules", [])]
+        current: list[str] = []
+        moved: list[str] = []
+        for module in modules:
+            relative = "/".join(module.split(".")) + ".lean"
+            path = ROOT / relative
+            if not path.is_file():
+                failures.append(f"{row['problem_id']}: {relative} is missing")
+                continue
+            live = path.read_text(encoding="utf-8")
+            current.extend(declarations_in(live))
+            pinned = subprocess.run(
+                ["git", "show", f"{commit}:{relative}"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if pinned.returncode != 0 or pinned.stdout != live:
+                moved.append(relative)
+        if not current:
+            continue
+        covered = [name for name in current if name in linked]
+        ratio = len(covered) / len(current)
+        status = "behind" if moved else "current"
+        lines.append(
+            f"  {row['problem_id']}: {len(covered)}/{len(current)} declarations "
+            f"linked ({ratio:.0%}), source {status}"
+        )
+        if moved:
+            lines.append(f"      moved since the pin: {', '.join(sorted(moved))}")
+            missing = [name for name in current if name not in linked]
+            if missing:
+                head = ", ".join(missing[:6])
+                more = "" if len(missing) <= 6 else f", and {len(missing) - 6} more"
+                lines.append(f"      not reached by the note: {head}{more}")
+        if ratio < floor:
+            failures.append(
+                f"{row['problem_id']}: note reaches {ratio:.0%} of current "
+                f"declarations, below the {floor:.0%} floor; rewrite the note "
+                f"and repin, or lower note_coverage_floor deliberately"
+            )
+    return lines, failures
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--list",
         action="store_true",
         help="print every resolved link rather than only the verdict",
+    )
+    parser.add_argument(
+        "--coverage",
+        action="store_true",
+        help="also report, and gate on, how much of the current source each note reaches",
     )
     args = parser.parse_args()
 
@@ -200,16 +301,25 @@ def main() -> int:
             elif args.list:
                 print(f"  {declaration}  <-  {relative}:{line_number}")
 
+    report: list[str] = []
+    if args.coverage:
+        report, coverage_failures = coverage_report(commit)
+        errors.extend(coverage_failures)
+
     if errors:
         print(f"check_problem_note_sources: {len(errors)} failure(s)")
         for error in errors:
             print(f"  FAIL {error}")
+        for line in report:
+            print(line)
         return 1
 
     print(
         f"check_problem_note_sources: {checked} link(s) across {len(sources)} note(s) "
         f"resolve at {commit[:12]}"
     )
+    for line in report:
+        print(line)
     return 0
 
 
