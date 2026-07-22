@@ -8,6 +8,9 @@ a bounded Lake authority check. ``--changed-from`` derives those focused
 targets from Git, including untracked Lean files. ``--lake-staleness`` asks
 Lake's content-trace checker to validate restored CI outputs instead of using
 checkout mtimes, which are new on every GitHub runner.
+
+``--plan`` reports compact dependency-wave sizes. Add ``--verbose-plan`` when
+the exact module names are needed for diagnosis.
 """
 
 from __future__ import annotations
@@ -375,6 +378,17 @@ def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
     return failed
 
 
+def plan_lines(build_waves: Iterable[Iterable[str]], *, verbose: bool) -> list[str]:
+    """Format a readable build plan without flooding normal terminals."""
+
+    lines: list[str] = []
+    for index, wave in enumerate(build_waves, 1):
+        names = list(wave)
+        detail = " ".join(names) if verbose else f"{len(names)} module(s)"
+        lines.append(f"wave {index}: {detail}")
+    return lines
+
+
 def run_final_authority_check(
     targets: Iterable[str], root: Path = ROOT
 ) -> int:
@@ -407,6 +421,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--jobs", type=int, default=default_jobs())
     parser.add_argument("--plan", action="store_true")
     parser.add_argument(
+        "--verbose-plan",
+        action="store_true",
+        help="print every module in the plan; implies --plan",
+    )
+    parser.add_argument(
         "--lake-staleness",
         action="store_true",
         help="use Lake content traces for restored outputs instead of checkout mtimes",
@@ -414,6 +433,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.jobs < 1:
         parser.error("--jobs must be at least 1")
+    if args.verbose_plan:
+        args.plan = True
 
     root = ROOT
     try:
@@ -476,8 +497,8 @@ def main(argv: list[str] | None = None) -> int:
         f"staleness={'lake-trace' if use_lake_staleness else 'mtime'}"
     )
     if args.plan:
-        for index, wave in enumerate(pending, 1):
-            print(f"wave {index}: {' '.join(wave)}")
+        for line in plan_lines(pending, verbose=args.verbose_plan):
+            print(line)
         return 0
 
     for wave in pending:

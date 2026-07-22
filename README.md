@@ -190,6 +190,8 @@ The wrapper keeps at most `--jobs` independent Lake processes active and
 serializes final authority checks, so its stated memory bound remains real even
 for a wide dependency wave. With no target it checks both supported public
 roots; pass a module or `.lean` path to keep an edit/test loop focused.
+`--plan` prints compact dependency-wave counts; use `--verbose-plan` only when
+you need every planned module name.
 
 Check the public release surfaces separately:
 
