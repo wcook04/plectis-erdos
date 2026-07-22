@@ -149,6 +149,26 @@ import Pkg.TooLate
             with self.assertRaisesRegex(ValueError, "unknown local Lean target"):
                 fast.resolve_targets(["Pkg.Missing"], modules, root)
 
+    def test_default_root_targets_selects_only_top_level_modules(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            first = root / "Erdos249257.lean"
+            second = root / "ErdosProblems.lean"
+            nested = root / "ErdosProblems" / "Erdos243" / "Proof.lean"
+            nested.parent.mkdir(parents=True)
+            for source in (first, second, nested):
+                source.write_text("-- source\n", encoding="utf-8")
+            modules = {
+                "Erdos249257": first,
+                "ErdosProblems": second,
+                "ErdosProblems.Erdos243.Proof": nested,
+            }
+
+            self.assertEqual(
+                fast.resolve_targets([], modules, root),
+                ["Erdos249257", "ErdosProblems"],
+            )
+
     def test_changed_targets_combines_tracked_and_untracked_modules(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -269,6 +289,32 @@ import Pkg.TooLate
 
             up_to_date.assert_called_once_with(["Pkg.Root"], root)
             self.assertEqual(run.call_args.args[0], ["lake", "build", "+Pkg.Root"])
+
+    def test_default_main_serializes_every_public_root(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("Erdos249257", "ErdosProblems"):
+                source = root / f"{name}.lean"
+                output = root / ".lake" / "build" / "lib" / "lean" / f"{name}.olean"
+                source.write_text("-- source\n", encoding="utf-8")
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text("olean\n", encoding="utf-8")
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_targets_up_to_date", return_value=True
+            ) as up_to_date, mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["--lake-staleness"]), 0)
+
+            up_to_date.assert_called_once_with(["Erdos249257", "ErdosProblems"], root)
+            self.assertEqual(
+                [call.args[0] for call in run.call_args_list],
+                [
+                    ["lake", "build", "+Erdos249257"],
+                    ["lake", "build", "+ErdosProblems"],
+                ],
+            )
 
     def test_cycle_is_rejected(self) -> None:
         graph = {"A": {"B"}, "B": {"A"}}
