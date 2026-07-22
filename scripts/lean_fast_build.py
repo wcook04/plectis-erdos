@@ -13,6 +13,7 @@ checkout mtimes, which are new on every GitHub runner.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
 from pathlib import Path
 import re
@@ -336,46 +337,43 @@ def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
     return name, result.returncode, time.monotonic() - started
 
 
-def build_batch(
-    names: Iterable[str],
-    root: Path = ROOT,
-) -> tuple[list[str], int, float]:
-    """Build one bounded target batch through a single Lake invocation."""
-
-    batch = list(names)
-    started = time.monotonic()
-    result = subprocess.run(
-        ["lake", "build", *(f"+{name}" for name in batch)],
-        cwd=root,
-        check=False,
-    )
-    return batch, result.returncode, time.monotonic() - started
-
-
 def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
-    """Build one wave in bounded Lake batches, isolating failures individually."""
+    """Build one dependency wave with at most ``jobs`` Lake processes.
+
+    A multi-target Lake invocation can schedule its own wide worker set, so
+    batching targets does not actually enforce the wrapper's memory bound.
+    Independent single-target invocations give this function a real process
+    ceiling while keeping failures attributable to their exact module.
+    """
 
     modules = list(names)
     failed: list[str] = []
-    for start in range(0, len(modules), jobs):
-        batch = modules[start : start + jobs]
-        built, code, duration = build_batch(batch, root)
-        print(
-            f"lean-fast-build: {','.join(built)} -> {code} "
-            f"({duration:.1f}s, batch={len(built)})"
-        )
-        if not code:
-            continue
-        print("lean-fast-build: batch failed; isolating targets")
-        for name in batch:
-            isolated_name, isolated_code, isolated_duration = build_one(name, root)
-            print(
-                f"lean-fast-build: {isolated_name} -> {isolated_code} "
-                f"({isolated_duration:.1f}s, isolated)"
-            )
-            if isolated_code:
-                failed.append(isolated_name)
+    if not modules:
+        return failed
+    print(f"lean-fast-build: prebuilding {len(modules)} module(s), max {jobs} concurrent")
+    with ThreadPoolExecutor(max_workers=jobs) as executor:
+        futures = {executor.submit(build_one, name, root): name for name in modules}
+        for future in as_completed(futures):
+            name, code, duration = future.result()
+            print(f"lean-fast-build: {name} -> {code} ({duration:.1f}s)")
+            if code:
+                failed.append(name)
     return failed
+
+
+def run_final_authority_check(
+    targets: Iterable[str], root: Path = ROOT
+) -> int:
+    """Run focused authority checks serially to preserve the process bound."""
+
+    target_list = list(targets)
+    if not target_list:
+        return subprocess.run(["lake", "build"], cwd=root, check=False).returncode
+    for name in target_list:
+        result = subprocess.run(["lake", "build", f"+{name}"], cwd=root, check=False)
+        if result.returncode:
+            return result.returncode
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -474,10 +472,9 @@ def main(argv: list[str] | None = None) -> int:
         if failed:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
-    print("lean-fast-build: final Lake authority check")
+    print("lean-fast-build: final serialized Lake authority check")
     focused = bool(args.targets) or args.changed_from is not None
-    final_targets = [f"+{name}" for name in target_modules] if focused else []
-    return subprocess.run(["lake", "build", *final_targets], cwd=root, check=False).returncode
+    return run_final_authority_check(target_modules if focused else [], root)
 
 
 if __name__ == "__main__":
