@@ -20,6 +20,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
 #print axioms ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ
 #print axioms ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat
+#print axioms ErdosProblems.Erdos1049.sevenHalves_power_certificate
+#print axioms ErdosProblems.Erdos1049.sevenHalves_rational_margin
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
 #print axioms ErdosProblems.Erdos251.prime0DisplayedPartialSumQ_eq_two_mul

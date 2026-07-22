@@ -21,6 +21,21 @@ conjecture.
 
 namespace ErdosProblems.Erdos1049
 
+/-! ## Exact arithmetic certificate for the published `7/2` lane -/
+
+/-- The integer-power comparison used to bound
+`log 2 / log 7 < 7 / 18`.  The logarithmic monotonicity step is deliberately
+kept outside this arithmetic declaration. -/
+theorem sevenHalves_power_certificate : 2 ^ 18 < 7 ^ 7 := by
+  norm_num
+
+/-- The exact rational boundary used after the elementary strict estimate
+`1 / π² < 1 / 9`.  Supplying `3 < π` and the published analytic theorem is
+a separate source-backed layer. -/
+theorem sevenHalves_rational_margin :
+    (7 : ℚ) / 18 = 1 / 2 - 1 / 9 := by
+  norm_num
+
 /-- The finite arithmetic core of a coordinatewise rational-base corridor.
 `digit` abstracts the final divisor coefficient that is individually cleared. -/
 def CoordinatewiseCorridor
