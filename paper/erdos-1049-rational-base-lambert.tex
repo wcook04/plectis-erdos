@@ -1,0 +1,487 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% One of the Erdős Problem Notes: a short standalone treatment of a single
+% problem in the ErdosProblems expansion library.  Build with
+% `tectonic erdos-1049-rational-base-lambert.tex` or `make`.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+\hypersetup{
+  pdftitle={Rational bases and the integer-base argument: a Lean-checked strategy separation for Erdős Problem 1049},
+  pdfsubject={Erdős Problem Notes: Problem 1049},
+  pdfkeywords={irrationality, Lambert series, rational base, Padé approximation, Lean 4},
+}
+
+\runninghead{Erd\H{o}s \#1049: rational bases}
+\title{Rational Bases and the Integer-Base Argument}
+\subtitle{A Lean-checked strategy separation for Erd\H{o}s Problem~\#1049}
+\author{Will Cook}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+\noteprovenance
+
+\begin{abstract}
+\noindent
+Erd\H{o}s's argument for the irrationality of $\sum_{n\ge1}c(n)b^{-n}$ at an
+integer base $b\ge2$ proceeds by clearing denominators at a cut level and
+trapping a positive integer below $1$.  At a rational base $r/s$ with $s\ge2$
+the same clearing leaves a factor $s^{N+1}$ behind.  We formalise in Lean the
+elementary consequence of that residue.  Writing a coordinatewise corridor for
+the surviving arithmetic, we prove that a corridor forces
+$s^{N+K+1}<r(N+K)$, and that at the base $3/2$ this is impossible once the
+shift and the cleared window are both nonempty.  We also prove the exact
+denominator-cleared tail recurrence
+$U_{N+1}=rU_N-Bc(N+1)s^{N+1}$ and the bound
+$2^{N+1}\le Bc(N+1)s^{N+1}$ for $s\ge2$ and positive data, against the exact
+collapse of that term to $Bc(N+1)$ at $s=1$.
+
+Problem~\#1049 is open, and nothing here decides it.  The results are
+statements about one clearing scheme, not about the arithmetic nature of any
+value: we do not prove irrationality at $3/2$, at any other rational base, or
+in the unrestricted problem.  The published height criterion that does settle
+a restricted family of rational bases, including $7/2$, is used as an external
+theorem; of its inputs we formalise only two exact arithmetic facts, and we
+state plainly which three inputs are not formalised.  Separately we check
+polynomial bounds on the denominator exponents of a homogenised Pad\'e
+construction, with the analytic remainder left untouched.
+\end{abstract}
+
+\section{The problem}\label{sec:problem}
+
+Let $t>1$ be a rational number and let $\tau(n)$ count the divisors of $n$.
+Erd\H{o}s Problem~\#1049 asks whether
+\[
+ F(t)=\sum_{n\ge1}\frac{1}{t^{n}-1}=\sum_{n\ge1}\frac{\tau(n)}{t^{n}}
+\]
+is irrational~\cite[p.~102]{erdos1988}.  The two forms agree by expanding
+$(t^{n}-1)^{-1}=\sum_{k\ge1}t^{-nk}$ and collecting the terms with the same
+exponent, the coefficient of $t^{-m}$ being the number of divisors of $m$.
+The question is a conjecture of Chowla; Erd\H{o}s proved it for every integer
+$t\ge2$~\cite{erdos1948}.  Numbering and status follow Bloom's
+catalogue~\cite{erdosproblems}.  For non-integer rational $t$ the problem is
+open.
+
+Write $t=r/s$ in lowest terms with $r>s\ge1$, so that $s=1$ is exactly the
+integer case Erd\H{o}s settled.  The smallest resistant explicit base is
+$t=3/2$.  A published height criterion of Bundschuh and
+V\"a\"an\"anen~\cite{bv1994} settles a family of rational bases restricted by a
+height condition; that family contains $7/2$ and does not contain $3/2$.
+Between the two lies the question this note is about: what exactly stops the
+integer-base argument from running at $3/2$?
+
+\paragraph{Relation to prior work.}
+The statement of Problem~\#1049 has been formalised before, as a conjecture
+with an unfilled proof, in the \emph{formal-conjectures} collection.  That is a
+statement of the question; the present note formalises propositions about the
+clearing argument, and neither answers it.  Prior mathematical work on the
+problem is Erd\H{o}s's integer-base theorem~\cite{erdos1948} and the height
+criterion of~\cite{bv1994}; no claim of priority is made for anything below,
+which concerns the formal status of an argument rather than a new theorem about
+$F(t)$.
+
+\paragraph{The integer-base argument, in outline.}
+Suppose $F(b)=p/q$.  Cut the series at a level $N$, multiply by $q b^{N}$, and
+subtract the cleared prefix.  What remains is a positive integer, since every
+term of the prefix has been cleared and the tail is positive; and it is smaller
+than $1$, since the tail of a geometric-type series is small.  A positive
+integer below $1$ does not exist.  The argument is elementary and it is
+sensitive in exactly one place: the clearing must remove every denominator.
+
+At $\beta=r/s$ the term $c(n)\beta^{-n}$ is $c(n)s^{n}/r^{n}$.  Clearing the
+power of $r$ leaves the numerator factor $s^{n}$ in place.  That factor is
+invisible when $s=1$ and grows geometrically when $s\ge2$.  The two sections
+that follow record what that residue costs, first as a no-go for the clearing
+scheme (Section~\ref{sec:corridor}) and then as an exact recurrence with a
+lower bound on the surviving term (Section~\ref{sec:tail}).
+
+\paragraph{Status of everything below.}
+\statusboundary
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.34\linewidth}
+  >{\raggedright\arraybackslash}p{0.18\linewidth}
+  >{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+\toprule
+Statement & Status & Treatment here \\
+\midrule
+Irrationality of $F(3/2)$ & Open & Not proved, and no partial result here bears on it. \\
+Irrationality at some rational non-integer base & Proved elsewhere & The height criterion of~\cite{bv1994}; cited, not formalised. \\
+Corridor forces $s^{N+K+1}<r(N+K)$ & Proved here & Theorem~\ref{res:corridorbound}. \\
+No corridor at base $3/2$ & Proved here & Theorem~\ref{res:nocorridor}; a statement about the clearing scheme. \\
+Cleared-tail recurrence & Proved here & Theorem~\ref{res:tailrec}, an exact identity. \\
+Forcing term at least $2^{N+1}$ for $s\ge2$ & Proved here & Theorem~\ref{res:forcing}; at $s=1$ the term is $Bc(N+1)$. \\
+Two arithmetic facts behind the $7/2$ criterion & Proved here & Section~\ref{sec:sevenhalves}; three further inputs are not formalised. \\
+Pad\'e denominator-exponent bounds & Proved here & Section~\ref{sec:pade}; exponent arithmetic only. \\
+Pad\'e remainder positivity and decay & Not treated & Section~\ref{sec:pade}. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Reading map.}
+Sections~\ref{sec:corridor} and~\ref{sec:tail} are the content;
+Sections~\ref{sec:sevenhalves} and~\ref{sec:pade} record what is and is not
+formalised of two external routes.  Section~\ref{sec:open} states the
+remaining obligations.  Linked phrases open the corresponding Lean
+declaration at the pinned source revision~\commitshort.
+
+\medskip
+\noindent\textbf{Keywords.} irrationality; Lambert series; rational base;
+Pad\'e approximation; Lean~4.
+\qquad
+\textbf{MSC 2020.} 11J72 (primary); 11J82, 68V20 (secondary).
+
+\section{The coordinatewise corridor}\label{sec:corridor}
+
+We isolate the arithmetic that the clearing scheme leaves behind, in a form
+that does not mention the series.
+
+\begin{definition}[coordinatewise corridor]\label{def:corridor}
+Let $a,b,N,K,Q,D$ be natural numbers.  Say that $(a,b,N,K,Q,D)$ is a
+\emph{coordinatewise corridor} when
+\[
+ a>0,\qquad Q>0,\qquad D>0,\qquad D\le N+K,\qquad
+ a^{K}\mid QD,\qquad Q\,b^{\,N+K+1}<a^{\,K+1}.
+\]
+\end{definition}
+
+\noindent The reading is: $a$ and $b$ are the numerator and denominator of the
+base, $N$ is the shift, $K$ is the width of the cleared window, $Q$ is the
+accumulated clearing factor, and $D$ is the final coefficient being cleared.
+The bound $D\le N+K$ is the only property of the coefficient used; for the
+divisor-counting coefficient it holds because $d(n)\le n$.  The divisibility
+$a^{K}\mid QD$ is the requirement that clearing succeeded coordinatewise, and
+the last inequality is the tail estimate that makes the trapped integer smaller
+than~$1$.  The definition is the
+\lword{Erdos1049/RationalBaseLambert.lean}{41}{CoordinatewiseCorridor}{corridor
+predicate}.
+
+\begin{theorem}[corridor bound]\label{res:corridorbound}
+If $(a,b,N,K,Q,D)$ is a coordinatewise corridor, then
+\[
+ b^{\,N+K+1}<a\,(N+K).
+\]
+\end{theorem}
+
+\begin{proof}
+Since $QD>0$ and $a^{K}\mid QD$, we have $a^{K}\le QD$, and $D\le N+K$ gives
+$a^{K}\le Q(N+K)$.  Hence
+\[
+ Q\,b^{\,N+K+1}<a^{\,K+1}=a^{K}\cdot a\le Q(N+K)\cdot a,
+\]
+and cancelling the positive factor $Q$ gives the claim.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos1049/RationalBaseLambert.lean}{49}{coordinatewiseCorridor_implies_pow_lt_linear}{power-versus-linear
+consequence}.
+
+The inequality of Theorem~\ref{res:corridorbound} is where the integer and
+rational cases part.  At $b=1$ it reads $1<a(N+K)$, which holds for every
+$a\ge2$ and every nonempty window; the corridor imposes no obstruction at all.
+At $b\ge2$ the left side is exponential in $N+K$ and the right side is linear,
+so the corridor can survive only for small $N+K$.  At $b=2$ the crossing has
+already happened at the smallest admissible window.
+
+\begin{proposition}\label{res:exp}
+For every natural number $x\ge2$ we have $3x<2^{\,x+1}$.
+\end{proposition}
+
+\begin{proof}
+Induction from $x=2$, where $6<8$.  For the step, $2^{x+1}\ge2^{2}>3$ when
+$x\ge1$, so $3(x+1)=3x+3<2^{x+1}+2^{x+1}=2^{x+2}$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos1049/RationalBaseLambert.lean}{70}{three_mul_lt_two_pow_succ}{exponential
+comparison}.
+
+\begin{theorem}[no corridor at base $3/2$]\label{res:nocorridor}
+For all $N\ge1$ and $K\ge1$ and all natural $Q,D$, the tuple
+$(3,2,N,K,Q,D)$ is not a coordinatewise corridor.
+\end{theorem}
+
+\begin{proof}
+A corridor would give $2^{\,N+K+1}<3(N+K)$ by
+Theorem~\ref{res:corridorbound}, contradicting Proposition~\ref{res:exp}
+applied to $x=N+K\ge2$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos1049/RationalBaseLambert.lean}{83}{threeHalves_no_coordinatewiseCorridor}{corridor
+exclusion at three halves}.
+
+\paragraph{What this section proves, and what it does not.}
+Theorem~\ref{res:nocorridor} is a statement about Definition~\ref{def:corridor}
+and about nothing else.  It says that the arithmetic left over by a literal
+coordinatewise clearing at base $3/2$ is inconsistent, and therefore that the
+integer-base argument does not transfer in that form.  It does not bound the
+denominator of $F(3/2)$, it does not show that $F(3/2)$ is irrational, and it
+does not show that $F(3/2)$ is rational.  It also does not rule out a clearing
+scheme of a different shape: the corridor fixes one divisibility pattern and
+one tail inequality, and an argument organised differently is not covered by
+the hypothesis.
+
+\section{The cleared tail and the denominator tax}\label{sec:tail}
+
+Theorem~\ref{res:nocorridor} says that one scheme fails.  This section
+identifies the quantity responsible, as an exact recurrence.
+
+Throughout, $r,s,B,F$ are rationals with $r\ne0$, and $c:\N\to\Q$ is arbitrary.
+Define the prefix and the cleared tail state by
+\[
+ P_N=\sum_{m=0}^{N-1}\frac{c(m+1)\,s^{\,m+1}}{r^{\,m+1}},
+ \qquad
+ U_N=B\,r^{N}\bigl(F-P_N\bigr).
+\]
+Thus $P_N$ is the partial sum of $\sum_{n\ge1}c(n)(s/r)^{n}$ through level $N$,
+and $U_N$ is the tail of a putative value $F$ after that level, scaled by
+$Br^{N}$.  These are the
+\lword{Erdos1049/RationalBaseLambert.lean}{96}{rationalBasePrefixQ}{rational-base
+prefix} and the
+\lword{Erdos1049/RationalBaseLambert.lean}{109}{rationalBaseClearedTailQ}{cleared
+tail state}.
+
+\begin{theorem}[cleared-tail recurrence]\label{res:tailrec}
+For every $N$,
+\[
+ U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
+\]
+\end{theorem}
+
+\begin{proof}
+Expanding $P_{N+1}=P_N+c(N+1)s^{N+1}/r^{N+1}$ and $r^{N+1}=r^{N}\cdot r$ in the
+definition of $U_{N+1}$ and clearing the denominator $r^{N+1}$, which is
+nonzero, gives the identity.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos1049/RationalBaseLambert.lean}{115}{rationalBaseClearedTailQ_succ}{cleared-tail
+recurrence}.
+
+The recurrence has a linear part $rU_N$ and a forcing term $Bc(N+1)s^{N+1}$.
+The integer-base argument works by keeping the state in a bounded window, and
+the forcing term is what it must absorb at each step.  Its size is exactly the
+point of departure.
+
+\begin{theorem}[the forcing term]\label{res:forcing}
+Let $s,B$ be natural numbers and $c:\N\to\N$, and put
+$G_N=B\,c(N+1)\,s^{\,N+1}$.
+\begin{enumerate}
+\item If $s\ge2$, $B\ge1$ and $c(N+1)\ge1$, then $2^{\,N+1}\le G_N$.
+\item If $s=1$, then $G_N=B\,c(N+1)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For the first part, $2^{N+1}\le s^{N+1}=1\cdot s^{N+1}\le Bc(N+1)s^{N+1}$,
+using $B\,c(N+1)\ge1$.  The second part is the definition with $s=1$.
+\end{proof}
+
+\noindent Formalised as the
+\lword{Erdos1049/RationalBaseLambert.lean}{132}{twoPow_le_rationalBaseForcingNat}{exponential
+lower bound} and the
+\lword{Erdos1049/RationalBaseLambert.lean}{146}{rationalBaseForcingNat_one}{integer-base
+collapse}.
+
+\paragraph{Reading the two parts together.}
+At $s=1$ the forcing term is $Bc(N+1)$, so it grows only as fast as the
+coefficient; for the divisor function that is $O(N^{\varepsilon})$ for every
+$\varepsilon>0$, and a bounded-state argument has room.  At $s\ge2$ the same
+term is at least $2^{N+1}$ whenever the coefficient is nonzero.  This is an
+exact lower bound on one quantity, and it is all that is proved.  It is not a
+proof that no bounded-state argument exists at $s\ge2$; the theorem that one
+particular scheme fails is Theorem~\ref{res:nocorridor}, and the bound here
+records the size of the term that scheme would have to absorb.
+
+\section{The height criterion at $7/2$}\label{sec:sevenhalves}
+
+Bundschuh and V\"a\"an\"anen~\cite{bv1994} prove an irrationality criterion for
+a family of rational bases cut out by a height condition.  The criterion
+applies at $\beta=7/2$.  It is an analytic theorem and it is not formalised
+here.  Two of its elementary inputs are.
+
+\begin{proposition}\label{res:sevenhalves}
+$2^{18}<7^{7}$, and $\tfrac{7}{18}=\tfrac12-\tfrac19$ in $\Q$.
+\end{proposition}
+
+\noindent These are the
+\lword{Erdos1049/RationalBaseLambert.lean}{29}{sevenHalves_power_certificate}{integer
+power comparison}, namely $262\,144<823\,543$, and the
+\lword{Erdos1049/RationalBaseLambert.lean}{35}{sevenHalves_rational_margin}{exact
+rational boundary}.
+
+The first is the arithmetic content of the estimate
+$\log2/\log7<7/18$; the passage from the integer inequality to the logarithmic
+one uses monotonicity of the logarithm, which is not part of the formalised
+statement.  The second is the exact form of a margin whose other input is the
+strict bound $1/\pi^{2}<1/9$, that is $3<\pi$, which is also not formalised
+here.  Three inputs are therefore external: the logarithmic step, the bound on
+$\pi$, and the analytic theorem of~\cite{bv1994} itself.  We record the two
+exact arithmetic facts separately from the theorem precisely so that the two
+cannot be confused; a reader should not take Proposition~\ref{res:sevenhalves}
+as a formalisation of the published criterion, because it is not one.
+
+The criterion does not cover $3/2$, and the results of
+Sections~\ref{sec:corridor} and~\ref{sec:tail} give no evidence either way
+about whether $F(3/2)$ is irrational.
+
+\section{Pad\'e denominator exponents}\label{sec:pade}
+
+A second external route replaces the clearing argument by explicit rational
+approximation.  One constructs integer linear forms in $1$ and $F(\beta)$ whose
+analytic decay outruns the height of their common denominator.  For a
+homogenised construction over integer parameters the proposed common
+denominator exponent is $E_n=(3n^{2}-n)/2$.  Since only doubled exponents
+occur below, every statement lives over $\Z$ and no parity bookkeeping is
+needed; we write $\widetilde{E}_n=2E_n=3n^{2}-n$.
+
+\begin{proposition}[summand bound and exact gap]\label{res:pade}
+Put
+\[
+ \widetilde{P}(n,k)=2\bigl(k(n-k)+nk\bigr)+k(k-1),
+\]
+\[
+ \widetilde{Q}(n,m)=2(n^{2}-n)+j^{2}+2jm+j-m^{2}+3m,
+ \qquad j=n-m-1 .
+\]
+Then, for integers $n,k,m$:
+\begin{enumerate}
+\item if $0\le k\le n$, then $\widetilde{P}(n,k)\le\widetilde{E}_n$, and the
+gap factors as
+$\widetilde{E}_n-\widetilde{P}(n,k)=(n-k)(3n-k-1)$;
+\item $\widetilde{E}_n-\widetilde{Q}(n,m)=2\bigl(n+m(m-1)\bigr)$ identically;
+\item if $n\ge0$ and $m\ge1$, then $\widetilde{Q}(n,m)\le\widetilde{E}_n$.
+\end{enumerate}
+\end{proposition}
+
+\noindent Part~(1) is the
+\lword{Erdos1049/RationalPadeArithmetic.lean}{29}{rationalPadePSummandDenExpTwice_le}{summand
+exponent bound}, part~(2) the
+\lword{Erdos1049/RationalPadeArithmetic.lean}{51}{rationalPadeQMaxDenExpTwice_gap}{exact
+gap identity}, and part~(3) the
+\lword{Erdos1049/RationalPadeArithmetic.lean}{59}{rationalPadeQMaxDenExpTwice_le}{maximal
+exponent bound}.  The gap in~(2) is an identity in $\Z[n,m]$, so~(3) follows
+from $m(m-1)\ge0$ and $n\ge0$; the hypothesis $m\ge1$ names the range in which
+the corresponding summand does not vanish, and it is not the sharpest
+hypothesis under which the inequality holds.
+
+These are inequalities between polynomials in the exponents.  They establish
+that the proposed common denominator is large enough to clear the construction,
+and nothing further.  Positivity of the remainder, its rate of decay, and the
+comparison of that rate against the denominator height are the analytic
+obligations, and none of them is treated here.  A reconstructed identity is not
+an irrationality measure until those are closed.
+
+\section{Complements and further questions}\label{sec:open}
+
+Problem~\#1049 is open.  Two obligations are separated by the results above.
+
+\begin{problem}[the base $3/2$]
+Construct integer linear forms in $1$ and $F(3/2)$ whose analytic decay beats
+the height of their common denominator.  Section~\ref{sec:pade} supplies the
+exponent arithmetic for a homogenised construction; the remainder estimate is
+untouched.  By Theorem~\ref{res:nocorridor}, the coordinatewise clearing route
+is unavailable, so an argument here must be of a different shape.
+\end{problem}
+
+\begin{problem}[the published region]
+Formalise the elementary parameter inequalities of the criterion
+of~\cite{bv1994}, keeping the analytic theorem external and cited.
+Proposition~\ref{res:sevenhalves} formalises two of its inputs; the
+logarithmic monotonicity step and the bound $3<\pi$ remain.
+\end{problem}
+
+The unrestricted question, which rational bases give an irrational value,
+remains open, and is not reduced to either problem above.  What the two
+sections of formal content change is the status of one route, not the status of
+the problem: the integer-base clearing argument fails at $3/2$ for an exact and
+elementary reason, and the term responsible is the factor $s^{N+1}$ in
+Theorem~\ref{res:tailrec}.
+
+\pdfbookmark[1]{Statements and declarations}{statements-declarations}
+\subsection*{Statements and declarations}
+
+\paragraph{Artefact and data availability.} The
+\href{\sourceurl}{pinned formal-source revision} contains the Lean sources, the
+fixed toolchain, and the library manifest used in the verification.  This
+manuscript provides navigation rather than proof authority.
+
+\paragraph{Declaration of generative AI use.} Large-language-model agents were
+used throughout development to draft and revise prose, formal proofs, and
+software.  The author set the objectives and acceptance criteria, selected and
+reviewed the claims, and approved the published version.  The author assumes
+responsibility for the accuracy, interpretation, and presentation of the work.
+Generative systems are production tools; they are not authors and supply no
+independent authority.  Lean checks each proof term against the fixed library
+version, and the sources linked here contain no proof placeholders and no
+project-defined axioms; Lean does not authorise the exposition, the citation
+choices, or the interpretation, for which the author remains responsible.
+
+\paragraph{Funding and competing interests.} This work received no external
+funding.  The author declares no competing interests.
+
+\paragraph{Acknowledgements.} The problem numbering and status follow the
+Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
+
+\appendix
+\section{Guide to the formal sources}\label{app:index}
+
+Each linked phrase opens its Lean declaration at the pinned source
+revision~\commitshort.  The declarations of this note live in two modules:
+the corridor, the cleared-tail recurrence, and the two arithmetic certificates
+in the first; the Pad\'e exponent arithmetic in the second.  The link
+coordinates are validated against that pinned revision, so they remain correct
+as later work moves lines in the working tree.
+
+% The exhaustive source manifest is retained in the authored TeX for automated
+% validation, and kept outside the printed note.
+\iffalse
+
+\begin{tabular}{@{}ll@{}}
+informal statement & linked Lean source\\
+corridor predicate & \lrefx{Erdos1049/RationalBaseLambert.lean}{41}{CoordinatewiseCorridor}\\
+corridor bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{49}{coordinatewiseCorridor_implies_pow_lt_linear}\\
+exponential comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{70}{three_mul_lt_two_pow_succ}\\
+no corridor at $3/2$ & \lrefx{Erdos1049/RationalBaseLambert.lean}{83}{threeHalves_no_coordinatewiseCorridor}\\
+rational-base prefix & \lrefx{Erdos1049/RationalBaseLambert.lean}{96}{rationalBasePrefixQ}\\
+cleared tail state & \lrefx{Erdos1049/RationalBaseLambert.lean}{109}{rationalBaseClearedTailQ}\\
+cleared-tail recurrence & \lrefx{Erdos1049/RationalBaseLambert.lean}{115}{rationalBaseClearedTailQ_succ}\\
+forcing magnitude & \lrefx{Erdos1049/RationalBaseLambert.lean}{126}{rationalBaseForcingNat}\\
+exponential lower bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{132}{twoPow_le_rationalBaseForcingNat}\\
+integer-base collapse & \lrefx{Erdos1049/RationalBaseLambert.lean}{146}{rationalBaseForcingNat_one}\\
+integer power comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{29}{sevenHalves_power_certificate}\\
+exact rational boundary & \lrefx{Erdos1049/RationalBaseLambert.lean}{35}{sevenHalves_rational_margin}\\
+doubled common exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{18}{rationalPadeDenExpTwice}\\
+summand exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{29}{rationalPadePSummandDenExpTwice_le}\\
+exact gap identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{51}{rationalPadeQMaxDenExpTwice_gap}\\
+maximal exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{59}{rationalPadeQMaxDenExpTwice_le}\\
+\end{tabular}
+\fi
+
+\begin{thebibliography}{9}
+\small
+\raggedright
+\setlength{\itemsep}{0pt}
+\bibitem{erdos1948} P.~Erd\H{o}s,
+  \href{https://users.renyi.hu/~p_erdos/1948-04.pdf}{\emph{On arithmetical
+  properties of Lambert series}},
+  J. Indian Math. Soc. (N.S.) \textbf{12} (1948), 63--66.
+\bibitem{erdos1988} P.~Erd\H{o}s, \emph{On the irrationality of certain series:
+  problems and results}, in A.~Baker (ed.), \emph{New Advances in Transcendence
+  Theory}, Cambridge UP, 1988, pp.~102--109,
+  doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
+\bibitem{bv1994} P.~Bundschuh and K.~V\"a\"an\"anen,
+  \href{https://numdam.org/item/CM_1994__91_2_175_0.pdf}{\emph{Arithmetical
+  investigations of a certain infinite product}},
+  Compositio Math. \textbf{91} (1994), no.~2, 175--199.
+\bibitem{erdosproblems} T.~F. Bloom,
+  \href{https://www.erdosproblems.com/1049}{\emph{Erd\H{o}s Problem \#1049}},
+  \texttt{erdosproblems.com/1049}, accessed 22 July 2026.
+\end{thebibliography}
+
+\end{document}
