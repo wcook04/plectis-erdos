@@ -154,6 +154,45 @@ theorem smoothPrefixLcm_eq_threePrimeHeight
     Nat.coprime_mul_iff_left.mpr ⟨hprCoprime, hqrCoprime⟩
   exact hpqrCoprime.mul_dvd_of_dvd_of_dvd hpqDvd hrDvd
 
+/-- Two cutoffs lie in the same three-prime logarithmic cell when none of the
+three maximal pure-power coordinates changes between them. -/
+def SameThreePrimeLogCell (p q r x y : ℕ) : Prop :=
+  Nat.log p x = Nat.log p y ∧
+    Nat.log q x = Nat.log q y ∧
+      Nat.log r x = Nat.log r y
+
+/-- The computational height is exactly constant on every logarithmic cell. -/
+theorem threePrimeHeight_eq_of_sameLogCell
+    {p q r x y : ℕ} (hcell : SameThreePrimeLogCell p q r x y) :
+    threePrimeHeight p q r x = threePrimeHeight p q r y := by
+  rcases hcell with ⟨hp, hq, hr⟩
+  simp [threePrimeHeight, hp, hq, hr]
+
+/-- For pairwise-distinct primes, the literal smooth-prefix LCM is constant on
+every three-prime logarithmic cell.  This is the finite formal interface behind
+the prime-power jump expansion: the LCM can change only when one logarithmic
+coordinate changes. -/
+theorem smoothPrefixLcm_eq_of_sameLogCell
+    {p q r x y : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
+    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r)
+    (hx : x ≠ 0) (hy : y ≠ 0)
+    (hcell : SameThreePrimeLogCell p q r x y) :
+    smoothPrefixLcm p q r x = smoothPrefixLcm p q r y := by
+  rw [smoothPrefixLcm_eq_threePrimeHeight hp hq hr hpq hpr hqr hx,
+    smoothPrefixLcm_eq_threePrimeHeight hp hq hr hpq hpr hqr hy]
+  exact threePrimeHeight_eq_of_sameLogCell hcell
+
+/-- The rational lattice kernel is likewise constant whenever its two smooth
+arguments occupy the same logarithmic cell. -/
+theorem threePrimeKernelQ_eq_of_sameLogCell
+    {p q r i j k i' j' k' : ℕ}
+    (hcell : SameThreePrimeLogCell p q r
+      (smooth3Val p q r i j k) (smooth3Val p q r i' j' k')) :
+    threePrimeKernelQ p q r i j k =
+      threePrimeKernelQ p q r i' j' k' := by
+  simp only [threePrimeKernelQ]
+  rw [threePrimeHeight_eq_of_sameLogCell hcell]
+
 /-- Each pure-power component of the height is at most `x`, so the three-prime
 height is bounded by `x³`. -/
 theorem threePrimeHeight_le_cube
