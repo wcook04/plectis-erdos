@@ -1,4 +1,6 @@
 import Mathlib.Data.Nat.Log
+import Mathlib.Data.Nat.Prime.Basic
+import Mathlib.Algebra.GCDMonoid.Finset
 import Mathlib.Data.Finset.Card
 import Mathlib.Data.Finset.Prod
 import Mathlib.Tactic.Linarith
@@ -33,6 +35,124 @@ def threePrimeHeight (p q r x : ℕ) : ℕ :=
 /-- The exact rational lattice kernel attached to the running-LCM height. -/
 def threePrimeKernelQ (p q r i j k : ℕ) : ℚ :=
   (threePrimeHeight p q r (smooth3Val p q r i j k) : ℚ)⁻¹
+
+/-- Exponent vectors of the actual `{p,q,r}`-smooth prefix up to `x`.  The
+logarithmic box makes the prefix finite; the final filter keeps only products
+which really lie below `x`. -/
+def smoothPrefixExponents (p q r x : ℕ) : Finset (ℕ × ℕ × ℕ) :=
+  ((Finset.range (Nat.log p x + 1)).product
+      ((Finset.range (Nat.log q x + 1)).product
+        (Finset.range (Nat.log r x + 1)))).filter
+    fun e => smooth3Val p q r e.1 e.2.1 e.2.2 ≤ x
+
+/-- The literal running LCM of the finite smooth prefix. -/
+def smoothPrefixLcm (p q r x : ℕ) : ℕ :=
+  (smoothPrefixExponents p q r x).lcm
+    fun e => smooth3Val p q r e.1 e.2.1 e.2.2
+
+/-- Every actual smooth prefix value divides the coordinatewise maximal
+pure-power product. -/
+theorem smooth3Val_dvd_threePrimeHeight_of_mem
+    {p q r x : ℕ} {e : ℕ × ℕ × ℕ}
+    (he : e ∈ smoothPrefixExponents p q r x) :
+    smooth3Val p q r e.1 e.2.1 e.2.2 ∣ threePrimeHeight p q r x := by
+  have hbox := (Finset.mem_filter.mp he).1
+  have hpBox := Finset.mem_product.mp hbox
+  have hqrBox := Finset.mem_product.mp hpBox.2
+  have hpExp : e.1 ≤ Nat.log p x := by
+    exact Nat.lt_succ_iff.mp (Finset.mem_range.mp hpBox.1)
+  have hqExp : e.2.1 ≤ Nat.log q x := by
+    exact Nat.lt_succ_iff.mp (Finset.mem_range.mp hqrBox.1)
+  have hrExp : e.2.2 ≤ Nat.log r x := by
+    exact Nat.lt_succ_iff.mp (Finset.mem_range.mp hqrBox.2)
+  exact mul_dvd_mul
+    (mul_dvd_mul (pow_dvd_pow p hpExp) (pow_dvd_pow q hqExp))
+    (pow_dvd_pow r hrExp)
+
+/-- The literal smooth-prefix LCM divides the computational height. -/
+theorem smoothPrefixLcm_dvd_threePrimeHeight (p q r x : ℕ) :
+    smoothPrefixLcm p q r x ∣ threePrimeHeight p q r x := by
+  apply Finset.lcm_dvd
+  intro e he
+  exact smooth3Val_dvd_threePrimeHeight_of_mem he
+
+/-- The pure `p` height component occurs in the actual prefix. -/
+theorem pureFirst_mem_smoothPrefixExponents
+    {p q r x : ℕ} (hx : x ≠ 0) :
+    (Nat.log p x, 0, 0) ∈ smoothPrefixExponents p q r x := by
+  apply Finset.mem_filter.mpr
+  constructor
+  · apply Finset.mem_product.mpr
+    refine ⟨Finset.mem_range.mpr (Nat.lt_succ_self _), ?_⟩
+    exact Finset.mem_product.mpr
+      ⟨Finset.mem_range.mpr (Nat.zero_lt_succ _),
+        Finset.mem_range.mpr (Nat.zero_lt_succ _)⟩
+  · simpa [smooth3Val] using Nat.pow_log_le_self p hx
+
+/-- The pure `q` height component occurs in the actual prefix. -/
+theorem pureSecond_mem_smoothPrefixExponents
+    {p q r x : ℕ} (hx : x ≠ 0) :
+    (0, Nat.log q x, 0) ∈ smoothPrefixExponents p q r x := by
+  apply Finset.mem_filter.mpr
+  constructor
+  · apply Finset.mem_product.mpr
+    refine ⟨Finset.mem_range.mpr (Nat.zero_lt_succ _), ?_⟩
+    exact Finset.mem_product.mpr
+      ⟨Finset.mem_range.mpr (Nat.lt_succ_self _),
+        Finset.mem_range.mpr (Nat.zero_lt_succ _)⟩
+  · simpa [smooth3Val] using Nat.pow_log_le_self q hx
+
+/-- The pure `r` height component occurs in the actual prefix. -/
+theorem pureThird_mem_smoothPrefixExponents
+    {p q r x : ℕ} (hx : x ≠ 0) :
+    (0, 0, Nat.log r x) ∈ smoothPrefixExponents p q r x := by
+  apply Finset.mem_filter.mpr
+  constructor
+  · apply Finset.mem_product.mpr
+    refine ⟨Finset.mem_range.mpr (Nat.zero_lt_succ _), ?_⟩
+    exact Finset.mem_product.mpr
+      ⟨Finset.mem_range.mpr (Nat.zero_lt_succ _),
+        Finset.mem_range.mpr (Nat.lt_succ_self _)⟩
+  · simpa [smooth3Val] using Nat.pow_log_le_self r hx
+
+/-- Exact running-LCM identity for three pairwise-distinct primes. -/
+theorem smoothPrefixLcm_eq_threePrimeHeight
+    {p q r x : ℕ} (hp : p.Prime) (hq : q.Prime) (hr : r.Prime)
+    (hpq : p ≠ q) (hpr : p ≠ r) (hqr : q ≠ r) (hx : x ≠ 0) :
+    smoothPrefixLcm p q r x = threePrimeHeight p q r x := by
+  apply Nat.dvd_antisymm (smoothPrefixLcm_dvd_threePrimeHeight p q r x)
+  have hpDvd : p ^ Nat.log p x ∣ smoothPrefixLcm p q r x := by
+    simpa [smoothPrefixLcm, smooth3Val] using
+      (Finset.dvd_lcm
+        (f := fun e : ℕ × ℕ × ℕ => smooth3Val p q r e.1 e.2.1 e.2.2)
+        (pureFirst_mem_smoothPrefixExponents (p := p) (q := q) (r := r) hx))
+  have hqDvd : q ^ Nat.log q x ∣ smoothPrefixLcm p q r x := by
+    simpa [smoothPrefixLcm, smooth3Val] using
+      (Finset.dvd_lcm
+        (f := fun e : ℕ × ℕ × ℕ => smooth3Val p q r e.1 e.2.1 e.2.2)
+        (pureSecond_mem_smoothPrefixExponents (p := p) (q := q) (r := r) hx))
+  have hrDvd : r ^ Nat.log r x ∣ smoothPrefixLcm p q r x := by
+    simpa [smoothPrefixLcm, smooth3Val] using
+      (Finset.dvd_lcm
+        (f := fun e : ℕ × ℕ × ℕ => smooth3Val p q r e.1 e.2.1 e.2.2)
+        (pureThird_mem_smoothPrefixExponents (p := p) (q := q) (r := r) hx))
+  have hpqCoprime :
+      (p ^ Nat.log p x).Coprime (q ^ Nat.log q x) :=
+    Nat.coprime_pow_primes _ _ hp hq hpq
+  have hprCoprime :
+      (p ^ Nat.log p x).Coprime (r ^ Nat.log r x) :=
+    Nat.coprime_pow_primes _ _ hp hr hpr
+  have hqrCoprime :
+      (q ^ Nat.log q x).Coprime (r ^ Nat.log r x) :=
+    Nat.coprime_pow_primes _ _ hq hr hqr
+  have hpqDvd :
+      p ^ Nat.log p x * q ^ Nat.log q x ∣ smoothPrefixLcm p q r x :=
+    hpqCoprime.mul_dvd_of_dvd_of_dvd hpDvd hqDvd
+  have hpqrCoprime :
+      (p ^ Nat.log p x * q ^ Nat.log q x).Coprime
+        (r ^ Nat.log r x) :=
+    Nat.coprime_mul_iff_left.mpr ⟨hprCoprime, hqrCoprime⟩
+  exact hpqrCoprime.mul_dvd_of_dvd_of_dvd hpqDvd hrDvd
 
 /-- Each pure-power component of the height is at most `x`, so the three-prime
 height is bounded by `x³`. -/
