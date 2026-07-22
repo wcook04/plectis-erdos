@@ -1,6 +1,8 @@
 import Mathlib.Data.Nat.Prime.Nth
 import Mathlib.Data.Nat.PrimeFin
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Algebra.BigOperators.Ring.Finset
+import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring
 
@@ -40,6 +42,22 @@ noncomputable def primeGap0 (n : ℕ) : ℕ :=
 /-- Finite zero-based dyadic partial sum of a rational sequence. -/
 def dyadicPartialSumQ (P : ℕ → ℚ) (n : ℕ) : ℚ :=
   ∑ i ∈ Finset.range n, P i / 2 ^ (i + 1)
+
+/-- The finite zero-based normalization with denominator `2^i`, matching the
+displayed indexing used by the formal conjecture. -/
+noncomputable def prime0DisplayedPartialSumQ (n : ℕ) : ℚ :=
+  ∑ i ∈ Finset.range n, (prime0 i : ℚ) / 2 ^ i
+
+/-- Exact factor-of-two indexing normalization: the zero-based displayed
+partial sum is twice the convention with denominator `2^(i+1)`. -/
+theorem prime0DisplayedPartialSumQ_eq_two_mul (n : ℕ) :
+    prime0DisplayedPartialSumQ n =
+      2 * dyadicPartialSumQ (fun i => (prime0 i : ℚ)) n := by
+  rw [prime0DisplayedPartialSumQ, dyadicPartialSumQ, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _hi
+  simp only [pow_succ]
+  field_simp
 
 /-- Finite dyadic partial sum of the forward differences of a sequence. -/
 def dyadicDifferencePartialSumQ (P : ℕ → ℚ) (n : ℕ) : ℚ :=

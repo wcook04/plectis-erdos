@@ -22,6 +22,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
+#print axioms ErdosProblems.Erdos251.prime0DisplayedPartialSumQ_eq_two_mul
 #print axioms ErdosProblems.Erdos251.tailShift_integral_add
 #print axioms ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail
 #print axioms ErdosProblems.Erdos251.natCarryCoeff_cast
