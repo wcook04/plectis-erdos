@@ -88,6 +88,28 @@ theorem sylvesterNext_eq_of_centered_zero
   rw [sylvesterDefect] at hzero
   exact sub_eq_zero.mp hzero
 
+/-- Along an exact product-cleared tail orbit, eventual vanishing of the
+centered state and eventual nonvanishing of the next tail force the exact
+Sylvester recurrence from some index onward. -/
+theorem sylvesterNext_eventually_of_centered_zero
+    (a D C : ℕ → ℤ)
+    (hD : ∀ n, D (n + 1) = nextDenState (a n) (D n))
+    (hC : ∀ n, C (n + 1) = nextTailState (a n) (D n) (C n))
+    (hE : ∃ N, ∀ n, N ≤ n → centeredState (a n) (D n) (C n) = 0)
+    (hCne : ∃ N, ∀ n, N ≤ n → C (n + 1) ≠ 0) :
+    ∃ N, ∀ n, N ≤ n → a (n + 1) = sylvesterNext (a n) := by
+  obtain ⟨NE, hE⟩ := hE
+  obtain ⟨NC, hCne⟩ := hCne
+  refine ⟨max NE NC, fun n hn ↦ ?_⟩
+  have hnE : NE ≤ n := (Nat.le_max_left NE NC).trans hn
+  have hnC : NC ≤ n := (Nat.le_max_right NE NC).trans hn
+  apply sylvesterNext_eq_of_centered_zero (a n) (a (n + 1)) (D n) (C n)
+  · rw [← hC n]
+    exact hCne n hnC
+  · exact hE n hnE
+  · rw [← hD n, ← hC n]
+    exact hE (n + 1) (hnE.trans (Nat.le_succ n))
+
 /-- Every nonincreasing sequence of naturals is eventually constant. -/
 theorem antitone_nat_eventually_constant
     (C : ℕ → ℕ) (hstep : ∀ n, C (n + 1) ≤ C n) :
