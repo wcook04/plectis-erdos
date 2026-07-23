@@ -328,4 +328,72 @@ theorem excursionMatrix_det_square
   rw [hα, hβ, hK]
   ring
 
+/-- Primitive matrix gcd lemma.  If both the input vector and the second
+matrix row are primitive, then the common content of the output is exactly
+the gcd of the determinant with the second output coordinate.  This is the
+generic arithmetic consumer behind the exact block-cancellation payment. -/
+theorem primitiveMatrix_gcd_eq_det_gcd
+    {p q r s x y : ℤ}
+    (hrow : Int.gcd r s = 1)
+    (hinput : Int.gcd x y = 1) :
+    Int.gcd (p * x + q * y) (r * x + s * y) =
+      Int.gcd (p * s - q * r) (r * x + s * y) := by
+  let U := p * x + q * y
+  let V := r * x + s * y
+  let det := p * s - q * r
+  change Int.gcd U V = Int.gcd det V
+  apply Nat.dvd_antisymm
+  · apply Int.dvd_gcd
+    · have hdU : (Int.gcd U V : ℤ) ∣ U := Int.gcd_dvd_left U V
+      have hdV : (Int.gcd U V : ℤ) ∣ V := Int.gcd_dvd_right U V
+      have hdDetX : (Int.gcd U V : ℤ) ∣ det * x := by
+        have hlin : s * U - q * V = det * x := by
+          dsimp [U, V, det]
+          ring
+        rw [← hlin]
+        exact Int.dvd_sub (dvd_mul_of_dvd_right hdU s)
+          (dvd_mul_of_dvd_right hdV q)
+      have hdDetY : (Int.gcd U V : ℤ) ∣ det * y := by
+        have hlin : p * V - r * U = det * y := by
+          dsimp [U, V, det]
+          ring
+        rw [← hlin]
+        exact Int.dvd_sub (dvd_mul_of_dvd_right hdV p)
+          (dvd_mul_of_dvd_right hdU r)
+      have hone : Int.gcd x y ∣ 1 := by rw [hinput]
+      rcases Int.gcd_dvd_iff.mp hone with ⟨X, Y, hbez⟩
+      calc
+        (Int.gcd U V : ℤ) ∣ (det * x) * X + (det * y) * Y :=
+          Int.dvd_add (dvd_mul_of_dvd_left hdDetX X)
+            (dvd_mul_of_dvd_left hdDetY Y)
+        _ = det * (x * X + y * Y) := by ring
+        _ = det := by rw [← hbez]; ring
+    · exact Int.gcd_dvd_right U V
+  · apply Int.dvd_gcd
+    · have hdDet : (Int.gcd det V : ℤ) ∣ det := Int.gcd_dvd_left det V
+      have hdV : (Int.gcd det V : ℤ) ∣ V := Int.gcd_dvd_right det V
+      have hdSX : (Int.gcd det V : ℤ) ∣ s * U := by
+        have hlin : s * U = det * x + q * V := by
+          dsimp [U, V, det]
+          ring
+        rw [hlin]
+        exact Int.dvd_add (dvd_mul_of_dvd_left hdDet x)
+          (dvd_mul_of_dvd_right hdV q)
+      have hdRU : (Int.gcd det V : ℤ) ∣ r * U := by
+        have hlin : r * U = p * V - det * y := by
+          dsimp [U, V, det]
+          ring
+        rw [hlin]
+        exact Int.dvd_sub (dvd_mul_of_dvd_right hdV p)
+          (dvd_mul_of_dvd_left hdDet y)
+      have hone : Int.gcd r s ∣ 1 := by rw [hrow]
+      rcases Int.gcd_dvd_iff.mp hone with ⟨R, S, hbez⟩
+      calc
+        (Int.gcd det V : ℤ) ∣ (r * U) * R + (s * U) * S :=
+          Int.dvd_add (dvd_mul_of_dvd_left hdRU R)
+            (dvd_mul_of_dvd_left hdSX S)
+        _ = U * (r * R + s * S) := by ring
+        _ = U := by rw [← hbez]; ring
+    · exact Int.gcd_dvd_right det V
+
 end ErdosProblems.Erdos243
