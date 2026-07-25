@@ -63,3 +63,17 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
 #print axioms ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
 #print axioms ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial
+#print axioms ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap
+#print axioms ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
+#print axioms ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_one
+#print axioms ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_two
+#print axioms ErdosProblems.Erdos249.FiniteEulerSieve.sigmaPrimePow_secondDiff
+#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.checkerboard_unique
+#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.fourPoint_layer_identity
+#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.residueClass_step_has_centred_completion
+#print axioms ErdosProblems.Erdos257.selectedMersenneTail_lt_weight
+#print axioms ErdosProblems.Erdos257.supportedMersenneDigitValue_injective
+#print axioms ErdosProblems.Erdos257.card_squarefreeDivisors
+#print axioms ErdosProblems.Erdos257.squarefreeIncidence_eq
+#print axioms ErdosProblems.Erdos257.odd_squarefreeIncidence
+#print axioms ErdosProblems.Erdos257.two_pow_card_primeFactors_le
