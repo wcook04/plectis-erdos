@@ -43,16 +43,16 @@
 "content": {
 "machine_readable_paper": {
 "path": "docs/claims.json::machine_readable_paper",
-"content_digest": "sha256:e4645d9f2488b7090ed146770fcc55ab1c16982fc74449e751434b4b324ab346"
+"content_digest": "sha256:72d283e0d19152951191c502699e1b475ef0db9f68333b3d41560f461060219c"
 },
 "claims_document": {
 "path": "docs/claims.json",
-"content_digest": "sha256:1d62cc965a2e15d91940e26038708b7f2548df5adec22988e187c5be7be055a2"
+"content_digest": "sha256:18e52d67366bcb73b4236e9fe1ceedd1ff03e29eb1cdc442507c465de97548d4"
 },
 "declaration_atlas": {
 "path": "docs/declaration_atlas.json",
-"content_digest": "sha256:f6d660f020879f5084f5ca4b1d257ece3995c9008fba1260a00962fa708ba06e",
-"source_input_fingerprint": "sha256:66e0fea63f59ff0df5b69bb6fd7aa692394af6ea2e811dcf12d56e8fb48b7a39"
+"content_digest": "sha256:5b14ceb872045835d84583ed8e850ed22fb1df86518fd77d20c4d634f6b649f0",
+"source_input_fingerprint": "sha256:552e6f5d2e647c5e4918f185b37d18b8146c24615571221452c4e7d712bfbf48"
 },
 "methodology_contract": {
 "path": "docs/methodology.json",
@@ -60,7 +60,7 @@
 },
 "bounded_orientation": {
 "path": "docs/orientation.json",
-"content_digest": "sha256:03202c1db7a3b1ee6b77f63aeeb2cb01d116197924be12ae1bb87d168a16e668"
+"content_digest": "sha256:bc867d47d2fbfcd9530e2b5a4d8bdf7d140fa8eda5937ef012ac81db64c18ebb"
 },
 "human_exposition": {
 "source_path": "paper/erdos249-257-main-paper.tex",
@@ -137,19 +137,19 @@
 }
 },
 "summary": {
-"module_count": 635,
-"declaration_count": 12578,
-"theorem_like_count": 11539,
+"module_count": 667,
+"declaration_count": 13322,
+"theorem_like_count": 12162,
 "generated_certificate_declaration_count": 2925,
 "principal_claim_link_count": 299,
 "kind_counts": {
 "abbrev": 9,
-"def": 992,
+"def": 1111,
 "inductive": 4,
 "instance": 5,
-"lemma": 354,
-"structure": 29,
-"theorem": 11185
+"lemma": 358,
+"structure": 31,
+"theorem": 11804
 }
 },
 "compact_graph": {
@@ -643,7 +643,7 @@
 ],
 "module_topology": {
 "root": "Erdos249257.lean",
-"node_count": 634,
+"node_count": 666,
 "root_imports": [
 "Erdos249257.CertificateKernel",
 "Erdos249257.GeneratedCertificates",
@@ -783,7 +783,22 @@
 "Erdos249257.SuffixCylinderStage51",
 "Erdos249257.SuffixCylinderTerminalOnlyBridge",
 "Erdos249257.MersenneLambertLadder",
-"Erdos249257.HalfGreedyTwoThirdsBand"
+"Erdos249257.HalfGreedyTwoThirdsBand",
+"Erdos249257.BooleanMobiusCriticalCapacityCofinal",
+"Erdos249257.BooleanMobiusCriticalCapacityGeometric",
+"Erdos249257.BooleanMobiusExactRowDichotomy",
+"Erdos249257.BooleanMobiusGreedyReduction",
+"Erdos249257.BooleanMobiusSkipRowCofinal",
+"Erdos249257.HalfGapMass",
+"Erdos249257.HalfGreedyFatalGap",
+"Erdos249257.HalfUpperResetCriticalBand",
+"Erdos249257.LambertProjectedNumeratorGap",
+"Erdos249257.TotientActualLcmShortKill",
+"Erdos249257.TotientActualLcmTopEdgeStaircase",
+"Erdos249257.TotientFixedRankLcmAsymptotic",
+"Erdos249257.TotientParityCoboundaryCountermodel",
+"Erdos249257.TotientShiftedMobiusForeignBridge",
+"Erdos249257.TotientTwoAdicPulseBlock"
 ],
 "full_graph": "docs/claims.json::machine_readable_paper.module_graph"
 },
@@ -1785,7 +1800,7 @@
 "expansion": {
 "machine_readable_paper": {
 "path": "docs/claims.json::machine_readable_paper",
-"expected_content_digest": "sha256:e4645d9f2488b7090ed146770fcc55ab1c16982fc74449e751434b4b324ab346",
+"expected_content_digest": "sha256:72d283e0d19152951191c502699e1b475ef0db9f68333b3d41560f461060219c",
 "contains": [
 "all_claims",
 "authored_argument_graph",
@@ -1796,8 +1811,8 @@
 },
 "exhaustive_declaration_atlas": {
 "path": "docs/declaration_atlas.json",
-"expected_content_digest": "sha256:f6d660f020879f5084f5ca4b1d257ece3995c9008fba1260a00962fa708ba06e",
-"expected_source_input_fingerprint": "sha256:66e0fea63f59ff0df5b69bb6fd7aa692394af6ea2e811dcf12d56e8fb48b7a39",
+"expected_content_digest": "sha256:5b14ceb872045835d84583ed8e850ed22fb1df86518fd77d20c4d634f6b649f0",
+"expected_source_input_fingerprint": "sha256:552e6f5d2e647c5e4918f185b37d18b8146c24615571221452c4e7d712bfbf48",
 "availability": "optional_attached_corpus",
 "check": "python3 scripts/build_declaration_atlas.py --check"
 },

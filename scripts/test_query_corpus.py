@@ -816,7 +816,11 @@ def main() -> int:
     assert signed_moment["module"]["role"] == (
         "Finite signed-moment determinant and dyadic-parity substrate"
     )
-    assert signed_moment["dependency_neighbourhood"]["receipt"]["imports_total"] == 0
+    # This module was a leaf until the Mobius-Mersenne ladder (mobiusMersenneTerm,
+    # Theta, the Hankel gap and the log-concavity chain) was published into it; that
+    # body genuinely depends on Erdos249257.MersenneLambertLadder, so the single
+    # import is a real edge and not a packaging artefact.
+    assert signed_moment["dependency_neighbourhood"]["receipt"]["imports_total"] == 1
     assert signed_moment["dependency_neighbourhood"]["receipt"]["importers_total"] == 1
 
     totient_mahler = query("--module", "Erdos249257.TotientMahlerDefect", "--limit", "3")

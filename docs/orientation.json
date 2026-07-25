@@ -23,19 +23,19 @@
   "formal_source_publication_state": "published_committed_checkpoint"
  },
  "scale": {
-  "module_count": 635,
-  "declaration_count": 12578,
-  "theorem_like_count": 11539,
+  "module_count": 667,
+  "declaration_count": 13322,
+  "theorem_like_count": 12162,
   "generated_certificate_declaration_count": 2925,
   "principal_claim_link_count": 299,
   "kind_counts": {
    "abbrev": 9,
-   "def": 992,
+   "def": 1111,
    "inductive": 4,
    "instance": 5,
-   "lemma": 354,
-   "structure": 29,
-   "theorem": 11185
+   "lemma": 358,
+   "structure": 31,
+   "theorem": 11804
   }
  },
  "status_taxonomy": {

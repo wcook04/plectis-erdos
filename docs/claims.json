@@ -1298,6 +1298,7 @@
           "role": "Finite foreign-residue projection consumer",
           "imports": [
             "Erdos249257.FullTargetPrimeAdjunctionNoGo",
+            "Erdos249257.RepunitMobiusNumerator",
             "Erdos249257.SquaredMersenneDiagonalEnclosure"
           ]
         },
@@ -1340,6 +1341,147 @@
           "role": "Boolean-Mobius carry coordinates",
           "imports": [
             "Erdos249257.GenericTailOrbitRigidity"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusCofinalExactRows",
+          "path": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusGlobalRepair"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusCriticalCapacityCofinal",
+          "path": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusExactRowSeed",
+            "Erdos249257.BooleanMobiusExactRowDoubling",
+            "Erdos249257.BooleanMobiusExactRowCrossing",
+            "Erdos249257.BooleanMobiusExactTransition",
+            "Erdos249257.BooleanMobiusSkippedCoreCriticalCapacity",
+            "Erdos249257.HalfCylinderFiniteShadow"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusCriticalCapacityGeometric",
+          "path": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusSkippedCoreCriticalCapacity"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusExactRowCrossing",
+          "path": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusSkipRow",
+            "Erdos249257.HalfCutLocator"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusExactRowDichotomy",
+          "path": "Erdos249257/BooleanMobiusExactRowDichotomy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusExactRowCrossing",
+            "Erdos249257.BooleanMobiusExactRowDoubling",
+            "Erdos249257.BooleanMobiusExactRowRankTwo"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusExactRowDoubling",
+          "path": "Erdos249257/BooleanMobiusExactRowDoubling.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusSkipRow"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusExactRowRankTwo",
+          "path": "Erdos249257/BooleanMobiusExactRowRankTwo.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusSkipRow"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusExactRowSeed",
+          "path": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusCofinalExactRows"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusExactTransition",
+          "path": "Erdos249257/BooleanMobiusExactTransition.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusLocalRepair"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusGlobalRepair",
+          "path": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusLocalRepair",
+            "Erdos249257.HalfCarryReachability"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusGreedyReduction",
+          "path": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusLocalRepair",
+            "Erdos249257.HalfCylinderIntegerGreedy"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusLocalRepair",
+          "path": "Erdos249257/BooleanMobiusLocalRepair.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusCarry",
+            "Erdos249257.GreedyAchievementSet"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusSkipRow",
+          "path": "Erdos249257/BooleanMobiusSkipRow.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusSkippedCoreExactRow",
+            "Erdos249257.BooleanMobiusCofinalExactRows"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusSkipRowCofinal",
+          "path": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusSkipRow",
+            "Erdos249257.HalfCylinderFullShellSeamBridge"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusSkippedCoreCriticalCapacity",
+          "path": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusSkippedCoreExactRow"
+          ]
+        },
+        {
+          "id": "Erdos249257.BooleanMobiusSkippedCoreExactRow",
+          "path": "Erdos249257/BooleanMobiusSkippedCoreExactRow.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusLocalRepair"
           ]
         },
         {
@@ -6048,7 +6190,8 @@
           "path": "Erdos249257/GenericTailOrbitRigidity.lean",
           "role": "Tempered tail-orbit rationality criterion",
           "imports": [
-            "Erdos249257.CertificateKernel"
+            "Erdos249257.CertificateKernel",
+            "Erdos249257.MersenneTailAtoms"
           ]
         },
         {
@@ -6268,6 +6411,8 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.HalfCylinderLastProducerContradiction",
+            "Erdos249257.HalfCylinderFinalMiddleTailSocket",
+            "Erdos249257.HalfCylinderFiniteShadow",
             "Erdos249257.HalfCylinderResetDeficitEscape"
           ]
         },
@@ -6365,6 +6510,22 @@
           ]
         },
         {
+          "id": "Erdos249257.HalfGapMass",
+          "path": "Erdos249257/HalfGapMass.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.GreedyAchievementSet"
+          ]
+        },
+        {
+          "id": "Erdos249257.HalfGreedyFatalGap",
+          "path": "Erdos249257/HalfGreedyFatalGap.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.GreedyAchievementSet"
+          ]
+        },
+        {
           "id": "Erdos249257.HalfGreedyTwoThirdsBand",
           "path": "Erdos249257/HalfGreedyTwoThirdsBand.lean",
           "role": "Lean proof module",
@@ -6377,6 +6538,14 @@
           "imports": [
             "Erdos249257.AdelicHeightObstruction",
             "Erdos249257.BooleanMobiusCarry"
+          ]
+        },
+        {
+          "id": "Erdos249257.HalfUpperResetCriticalBand",
+          "path": "Erdos249257/HalfUpperResetCriticalBand.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfCylinderMiddleCarryLowerBound"
           ]
         },
         {
@@ -6402,6 +6571,14 @@
           "role": "Lambert diagonal enclosure reduction",
           "imports": [
             "Erdos249257.ActualForeignResidueProjection"
+          ]
+        },
+        {
+          "id": "Erdos249257.LambertProjectedNumeratorGap",
+          "path": "Erdos249257/LambertProjectedNumeratorGap.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.SquaredMersenneDiagonalEnclosure"
           ]
         },
         {
@@ -6648,7 +6825,9 @@
           "id": "Erdos249257.SignedQMomentObstruction",
           "path": "Erdos249257/SignedQMomentObstruction.lean",
           "role": "Finite signed-moment determinant and dyadic-parity substrate",
-          "imports": []
+          "imports": [
+            "Erdos249257.MersenneLambertLadder"
+          ]
         },
         {
           "id": "Erdos249257.SquareCRTCube",
@@ -6805,6 +6984,7 @@
           "imports": [
             "Erdos249257.SuffixCylinderStage51",
             "Erdos249257.SuffixCylinderGlobalProducer",
+            "Erdos249257.SuffixCylinderProfiledSwallow",
             "Erdos249257.TerminalOnlyCofinal"
           ]
         },
@@ -6877,6 +7057,58 @@
           ]
         },
         {
+          "id": "Erdos249257.TotientActualLcmOrbitArithmetic",
+          "path": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientActualLcmOrbitNonintegrality",
+            "Erdos249257.DiagonalFreshLossBridge"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientActualLcmOrbitNonintegrality",
+          "path": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientActualLcmOrbitSeparation"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientActualLcmOrbitSeparation",
+          "path": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalFlexibleOddWindowAffine",
+            "Erdos249257.PivotAntiReconstruction"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientActualLcmOrbitSign",
+          "path": "Erdos249257/TotientActualLcmOrbitSign.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientActualLcmOrbitArithmetic",
+            "Erdos249257.TotientTailCarryPeriod"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientActualLcmShortKill",
+          "path": "Erdos249257/TotientActualLcmShortKill.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientActualLcmOrbitArithmetic",
+            "Erdos249257.DiagonalPincerCertificateT64Endpoint"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientActualLcmTopEdgeStaircase",
+          "path": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientActualLcmOrbitSign"
+          ]
+        },
+        {
           "id": "Erdos249257.TotientCarryKernelRigidity",
           "path": "Erdos249257/TotientCarryKernelRigidity.lean",
           "role": "Lean proof module",
@@ -6886,16 +7118,69 @@
           ]
         },
         {
+          "id": "Erdos249257.TotientFixedRankLcmAsymptotic",
+          "path": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientActualLcmOrbitArithmetic"
+          ]
+        },
+        {
           "id": "Erdos249257.TotientMahlerDefect",
           "path": "Erdos249257/TotientMahlerDefect.lean",
           "role": "Finite dyadic-totient rank and certificate interface",
           "imports": []
         },
         {
+          "id": "Erdos249257.TotientParityCoboundaryCountermodel",
+          "path": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientTailPeriodKiller"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientShiftedMobiusForeignBridge",
+          "path": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.ActualForeignResidueProjection",
+            "Erdos249257.LambertDiagonalEnclosure",
+            "Erdos249257.TotientShiftedMobiusPulse"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientShiftedMobiusPulse",
+          "path": "Erdos249257/TotientShiftedMobiusPulse.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.MersenneLambertLadder",
+            "Erdos249257.TotientTailPeriodKiller"
+          ]
+        },
+        {
+          "id": "Erdos249257.TotientTailCarryPeriod",
+          "path": "Erdos249257/TotientTailCarryPeriod.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.CarrySurvivorExtinction",
+            "Erdos249257.CurvatureCarry",
+            "Erdos249257.TotientCarryKernelRigidity"
+          ]
+        },
+        {
           "id": "Erdos249257.TotientTailPeriodKiller",
           "path": "Erdos249257/TotientTailPeriodKiller.lean",
           "role": "Tail-period certificate reduction",
           "imports": []
+        },
+        {
+          "id": "Erdos249257.TotientTwoAdicPulseBlock",
+          "path": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientTailCarryPeriod"
+          ]
         },
         {
           "id": "Erdos249257.TropicalCurvatureCarry",

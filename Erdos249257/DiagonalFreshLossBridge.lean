@@ -52,7 +52,18 @@ def diagonalFreshLossResidueCert (t L : ℕ) : Prop :=
   (periodLcm t + L + 2 : ℤ) < diagonalWindowResidue t L ∧
     diagonalWindowResidue t L < 2 ^ L - (2 * periodLcm t + L + 2)
 
+/-- Symmetric strengthening of the diagonal residue band.  Unlike the
+one-sided fresh-loss certificate, this keeps two full LCM heights clear on
+both edges.  The actual-LCM arithmetic surface identifies this predicate
+with its short arithmetic kill. -/
+def diagonalSymmetricResidueCert (t L : ℕ) : Prop :=
+  (2 * periodLcm t + L + 2 : ℤ) < diagonalWindowResidue t L ∧
+    diagonalWindowResidue t L < 2 ^ L - (2 * periodLcm t + L + 2)
+
 instance (t L : ℕ) : Decidable (diagonalFreshLossResidueCert t L) :=
+  inferInstanceAs (Decidable (_ ∧ _))
+
+instance (t L : ℕ) : Decidable (diagonalSymmetricResidueCert t L) :=
   inferInstanceAs (Decidable (_ ∧ _))
 
 /-- On the two-vertex menu, the generic cone certificate is exactly the
@@ -441,6 +452,60 @@ theorem diagonalFreshLossResidueCert_of_suffix_central {t J m : ℕ}
         obtain ⟨c, hc⟩ := hdvd
         rw [hc,
           show (2 ^ m * c - k : ℤ) = (2 ^ m - k) + 2 ^ m * (c - 1) by ring,
+          Int.add_mul_emod_self_left]
+      have h3 : ((2 : ℤ) ^ m - k) % 2 ^ m = 2 ^ m - k :=
+        Int.emod_eq_of_lt (by omega) (by omega)
+      rw [← hmod, h1, h2, h3]
+    omega
+
+/-- Sliding-suffix transference with the symmetric `2H` edge retained. -/
+theorem diagonalSymmetricResidueCert_of_suffix_central {t J m : ℕ}
+    (hleft : (2 * periodLcm t + (J + m) + 2 : ℤ) <
+      diagonalSuffixResidue t J m)
+    (hright : diagonalSuffixResidue t J m
+        < 2 ^ m - (2 * periodLcm t + (J + m) + 2)) :
+    diagonalSymmetricResidueCert t (J + m) := by
+  have hmod := diagonalWindowResidue_mod_suffix t J m
+  have hM2pos : (0 : ℤ) < 2 ^ m := by positivity
+  have hRlo : (0 : ℤ) ≤ diagonalWindowResidue t (J + m) := by
+    unfold diagonalWindowResidue
+    exact Int.emod_nonneg _ (by positivity)
+  have hRhi : diagonalWindowResidue t (J + m) < 2 ^ (J + m) := by
+    unfold diagonalWindowResidue
+    exact Int.emod_lt_of_pos _ (by positivity)
+  have hdvd : ((2 : ℤ) ^ m) ∣ 2 ^ (J + m) :=
+    pow_dvd_pow 2 (Nat.le_add_left m J)
+  unfold diagonalSymmetricResidueCert
+  constructor
+  · by_contra hnot
+    have hRle : diagonalWindowResidue t (J + m) ≤
+        2 * periodLcm t + (J + m) + 2 := not_lt.mp hnot
+    have hσlt : diagonalSuffixResidue t J m < 2 ^ m := by
+      rw [← hmod]
+      exact Int.emod_lt_of_pos _ hM2pos
+    have hRltM2 : diagonalWindowResidue t (J + m) < 2 ^ m := by omega
+    have hRfix : diagonalWindowResidue t (J + m) % 2 ^ m
+        = diagonalWindowResidue t (J + m) := Int.emod_eq_of_lt hRlo hRltM2
+    omega
+  · by_contra hnot
+    have hRge : 2 ^ (J + m) - (2 * periodLcm t + (J + m) + 2)
+        ≤ diagonalWindowResidue t (J + m) := not_lt.mp hnot
+    have hσnn : (0 : ℤ) ≤ diagonalSuffixResidue t J m := by
+      rw [← hmod]
+      exact Int.emod_nonneg _ (by positivity)
+    have hband : (2 * periodLcm t + (J + m) + 2 : ℤ) < 2 ^ m := by omega
+    have hσeq : diagonalSuffixResidue t J m
+        = 2 ^ m - (2 ^ (J + m) - diagonalWindowResidue t (J + m)) := by
+      set k : ℤ := 2 ^ (J + m) - diagonalWindowResidue t (J + m) with hk
+      have hkpos : (0 : ℤ) < k := by omega
+      have hklt : k < 2 ^ m := by omega
+      have h1 : diagonalWindowResidue t (J + m) = 2 ^ (J + m) - k := by omega
+      have h2 : ((2 : ℤ) ^ (J + m) - k) % 2 ^ m =
+          ((2 : ℤ) ^ m - k) % 2 ^ m := by
+        obtain ⟨c, hc⟩ := hdvd
+        rw [hc,
+          show (2 ^ m * c - k : ℤ) =
+            (2 ^ m - k) + 2 ^ m * (c - 1) by ring,
           Int.add_mul_emod_self_left]
       have h3 : ((2 : ℤ) ^ m - k) % 2 ^ m = 2 ^ m - k :=
         Int.emod_eq_of_lt (by omega) (by omega)
@@ -1672,6 +1737,77 @@ theorem diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap_sharp
     · rw [hd_of_gt (by omega)] at hgap'
       omega
 
+/-- Symmetric adjacent-gap geometry.  Spending one extra LCM height in the
+cross-edge budget preserves a `2H` exclusion on both sides of whichever
+adjacent suffix is central. -/
+theorem diagonalSymmetricResidueCert_or_of_adjacent_suffix_gap
+    {t J m : ℕ}
+    (hgap :
+      let B : ℤ := 4 * periodLcm t + 2 * (J + m) + 5
+      B < diagonalAdjacentSuffixResidue t J m ∧
+        diagonalAdjacentSuffixResidue t J m < 2 ^ m - B) :
+    diagonalSymmetricResidueCert t (J + m) ∨
+      diagonalSymmetricResidueCert t (J + 1 + m) := by
+  let H : ℤ := periodLcm t
+  let M : ℤ := 2 ^ m
+  let x : ℤ := diagonalSuffixResidue t J m
+  let y : ℤ := diagonalSuffixResidue t (J + 1) m
+  let d : ℤ := diagonalAdjacentSuffixResidue t J m
+  let E0 : ℤ := 2 * H + (J + m) + 2
+  let E1 : ℤ := 2 * H + (J + 1 + m) + 2
+  let B : ℤ := 4 * H + 2 * (J + m) + 5
+  have hgap' : B < d ∧ d < M - B := by
+    simpa [B, d, M, H] using hgap
+  have hMpos : 0 < M := by simp [M]
+  have hx0 : 0 ≤ x := by
+    unfold x diagonalSuffixResidue
+    exact Int.emod_nonneg _ hMpos.ne'
+  have hxM : x < M := by
+    unfold x diagonalSuffixResidue
+    exact Int.emod_lt_of_pos _ hMpos
+  have hy0 : 0 ≤ y := by
+    unfold y diagonalSuffixResidue
+    exact Int.emod_nonneg _ hMpos.ne'
+  have hyM : y < M := by
+    unfold y diagonalSuffixResidue
+    exact Int.emod_lt_of_pos _ hMpos
+  have hd : d = (y - x) % M := by rfl
+  have hd_of_le (hxy : x ≤ y) : d = y - x := by
+    rw [hd, Int.emod_eq_of_lt] <;> omega
+  have hd_of_gt (hyx : y < x) : d = M + y - x := by
+    rw [hd, show y - x = (M + y - x) - M by ring,
+      Int.sub_emod_right, Int.emod_eq_of_lt] <;> omega
+  by_cases hxCentral : E0 < x ∧ x < M - E0
+  · left
+    apply diagonalSymmetricResidueCert_of_suffix_central
+    · simpa [E0, x, H] using hxCentral.1
+    · simpa [E0, x, M, H] using hxCentral.2
+  by_cases hyCentral : E1 < y ∧ y < M - E1
+  · right
+    apply diagonalSymmetricResidueCert_of_suffix_central
+    · simpa [E1, y, H, Nat.add_assoc] using hyCentral.1
+    · simpa [E1, y, M, H, Nat.add_assoc] using hyCentral.2
+  exfalso
+  have hxEdge : x ≤ E0 ∨ M - E0 ≤ x := by omega
+  have hyEdge : y ≤ E1 ∨ M - E1 ≤ y := by omega
+  rcases hxEdge with hxlo | hxhi <;> rcases hyEdge with hylo | hyhi
+  · by_cases hxy : x ≤ y
+    · rw [hd_of_le hxy] at hgap'
+      omega
+    · rw [hd_of_gt (by omega)] at hgap'
+      omega
+  · have hxy : x ≤ y := by omega
+    rw [hd_of_le hxy] at hgap'
+    omega
+  · have hyx : y < x := by omega
+    rw [hd_of_gt hyx] at hgap'
+    omega
+  · by_cases hxy : x ≤ y
+    · rw [hd_of_le hxy] at hgap'
+      omega
+    · rw [hd_of_gt (by omega)] at hgap'
+      omega
+
 /-- If the modular displacement between adjacent suffixes exceeds the sum of
 their two edge widths in both directions, then at least one suffix gives a
 full-depth fresh-loss certificate. -/
@@ -1699,6 +1835,27 @@ theorem diagonalFreshLossResidueCert_or_of_adjacent_dyadic_gap
     diagonalFreshLossResidueCert t (J + m) ∨
       diagonalFreshLossResidueCert t (J + 1 + m) := by
   apply diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap
+  dsimp only
+  have hpow : (2 : ℤ) ^ m = 32 * 2 ^ (m - 5) := by
+    calc
+      (2 : ℤ) ^ m = 2 ^ ((m - 5) + 5) := by rw [Nat.sub_add_cancel hm]
+      _ = 32 * 2 ^ (m - 5) := by rw [pow_add]; norm_num; ring
+  rw [hpow] at hwidth
+  constructor <;> omega
+
+/-- The same fixed `1/32` circular band yields a symmetric certificate when
+its width receipt retains the additional LCM-height margin. -/
+theorem diagonalSymmetricResidueCert_or_of_adjacent_dyadic_gap
+    {t J m : ℕ}
+    (hm : 5 ≤ m)
+    (hwidth :
+      32 * (4 * periodLcm t + 2 * (J + m) + 5 : ℤ) < 2 ^ m)
+    (hlo : 2 ^ (m - 5) ≤ diagonalAdjacentSuffixResidue t J m)
+    (hhi : diagonalAdjacentSuffixResidue t J m
+      ≤ 2 ^ m - 2 ^ (m - 5)) :
+    diagonalSymmetricResidueCert t (J + m) ∨
+      diagonalSymmetricResidueCert t (J + 1 + m) := by
+  apply diagonalSymmetricResidueCert_or_of_adjacent_suffix_gap
   dsimp only
   have hpow : (2 : ℤ) ^ m = 32 * 2 ^ (m - 5) := by
     calc
@@ -1752,6 +1909,47 @@ theorem canonicalAdjacentSuffixDepth_width {t : ℕ} (ht : 3 ≤ t) :
     rw [hm]
     omega
   · change 32 * (3 * (H : ℤ) + 2 * (m + 3)) < 2 ^ m
+    exact_mod_cast hwidthNat
+
+/-- The ten-bit canonical guard also pays for the stronger symmetric `2H`
+edge budget; this is the margin retained by the actual-LCM arithmetic route. -/
+theorem canonicalAdjacentSuffixDepth_symmetric_width
+    {t : ℕ} (ht : 3 ≤ t) :
+    5 ≤ canonicalAdjacentSuffixDepth t ∧
+      32 * (4 * periodLcm t +
+        2 * canonicalAdjacentSuffixDepth t + 5 : ℤ) <
+        2 ^ canonicalAdjacentSuffixDepth t := by
+  let H := periodLcm t
+  let m := canonicalAdjacentSuffixDepth t
+  have hH : 3 ≤ H := ht.trans (le_periodLcm t)
+  have hlog_le : Nat.log2 H ≤ H := by
+    rw [Nat.log2_eq_log_two]
+    exact Nat.log_le_self 2 H
+  have hHpow : H < 2 ^ (Nat.log2 H + 1) := by
+    rw [Nat.log2_eq_log_two]
+    exact Nat.lt_pow_succ_log_self Nat.one_lt_two H
+  have hm : m = Nat.log2 H + 10 := by
+    simp [m, canonicalAdjacentSuffixDepth, H]
+  have hbudget : 4 * H + 2 * m + 5 < 16 * H := by
+    omega
+  have hscaled : 32 * (4 * H + 2 * m + 5) < 512 * H := by
+    omega
+  have hpow_eq : 512 * 2 ^ (Nat.log2 H + 1) = 2 ^ m := by
+    rw [hm, show Nat.log2 H + 10 = (Nat.log2 H + 1) + 9 by omega,
+      pow_add]
+    norm_num
+    ring
+  have hwidthNat : 32 * (4 * H + 2 * m + 5) < 2 ^ m := by
+    calc
+      32 * (4 * H + 2 * m + 5) < 512 * H := hscaled
+      _ < 512 * 2 ^ (Nat.log2 H + 1) :=
+        (Nat.mul_lt_mul_left (a := 512) (by norm_num)).2 hHpow
+      _ = 2 ^ m := hpow_eq
+  constructor
+  · change 5 ≤ m
+    rw [hm]
+    omega
+  · change 32 * (4 * (H : ℤ) + 2 * m + 5) < 2 ^ m
     exact_mod_cast hwidthNat
 
 /-- The elementary one-step correction envelope itself is strictly smaller
@@ -3751,6 +3949,22 @@ theorem canonicalAdjacentSuffixDepth_powerTwo_succ_lt_two_mul
   unfold canonicalAdjacentSuffixDepth
   omega
 
+/-- Both adjacent suffix depths remain inside the short actual-LCM window. -/
+theorem oddGuardedCanonicalAdjacentSuffixDepth_powerTwo_succ_lt_two_mul
+    {a : ℕ} (ha : 4 ≤ a) :
+    oddGuardedCanonicalAdjacentSuffixDepth (2 ^ a) + 1 < 2 * 2 ^ a := by
+  have hHeight := periodLcm_pow_two_lt_two_pow_guardTwelve ha
+  have hLog :
+      Nat.log2 (periodLcm (2 ^ a)) < 2 * 2 ^ a - 12 := by
+    rw [Nat.log2_eq_log_two]
+    exact Nat.log_lt_of_lt_pow (periodLcm_pos (2 ^ a)).ne' hHeight
+  have hscale : 16 ≤ 2 ^ a := by
+    change 2 ^ 4 ≤ 2 ^ a
+    exact Nat.pow_le_pow_right (by norm_num : 0 < 2) ha
+  have hguard := oddGuardedCanonicalAdjacentSuffixDepth_le_succ (2 ^ a)
+  unfold canonicalAdjacentSuffixDepth at hguard
+  omega
+
 /-- Requested arithmetic guard for the canonical depth. -/
 theorem canonicalAdjacentSuffixDepth_powerTwo_lt_two_mul
     {a : ℕ} (ha : 4 ≤ a) :
@@ -3853,6 +4067,38 @@ theorem canonicalAdjacentSuffixDepth_succ_width {t : ℕ} (ht : 3 ≤ t) :
   · rw [hnextA, hnextPow]
     omega
 
+/-- The symmetric width receipt likewise survives the optional parity guard
+bit. -/
+theorem canonicalAdjacentSuffixDepth_succ_symmetric_width
+    {t : ℕ} (ht : 3 ≤ t) :
+    5 ≤ canonicalAdjacentSuffixDepth t + 1 ∧
+      32 * (4 * periodLcm t +
+        2 * (canonicalAdjacentSuffixDepth t + 1) + 5 : ℤ) <
+        2 ^ (canonicalAdjacentSuffixDepth t + 1) := by
+  let m := canonicalAdjacentSuffixDepth t
+  let A : ℤ := 32 * (4 * periodLcm t + 2 * m + 5 : ℤ)
+  obtain ⟨hm, hwidth⟩ := canonicalAdjacentSuffixDepth_symmetric_width ht
+  have hwidthA : A < (2 : ℤ) ^ m := by
+    simpa [A, m] using hwidth
+  have hH : 0 < periodLcm t := periodLcm_pos t
+  have hA : (64 : ℤ) < A := by
+    dsimp [A]
+    omega
+  have hnextA :
+      (32 * (4 * periodLcm t + 2 * (m + 1) + 5 : ℤ)) = A + 64 := by
+    dsimp [A]
+    ring
+  have hnextPow : (2 : ℤ) ^ (m + 1) = 2 * 2 ^ m := by
+    rw [pow_succ]
+    ring
+  change 5 ≤ m + 1 ∧
+    32 * (4 * periodLcm t + 2 * (m + 1) + 5 : ℤ) <
+      (2 : ℤ) ^ (m + 1)
+  constructor
+  · omega
+  · rw [hnextA, hnextPow]
+    omega
+
 /-- Whichever parity the canonical depth has, the odd-guarded depth retains
 the automatic adjacent-gap consumer width. -/
 theorem oddGuardedCanonicalAdjacentSuffixDepth_width {t : ℕ} (ht : 3 ≤ t) :
@@ -3866,6 +4112,21 @@ theorem oddGuardedCanonicalAdjacentSuffixDepth_width {t : ℕ} (ht : 3 ≤ t) :
     exact canonicalAdjacentSuffixDepth_succ_width ht
   · simp only [if_neg h]
     exact canonicalAdjacentSuffixDepth_width ht
+
+/-- Odd-guarded canonical depth with the symmetric actual-LCM margin still
+projected locally. -/
+theorem oddGuardedCanonicalAdjacentSuffixDepth_symmetric_width
+    {t : ℕ} (ht : 3 ≤ t) :
+    5 ≤ oddGuardedCanonicalAdjacentSuffixDepth t ∧
+      32 * (4 * periodLcm t +
+        2 * oddGuardedCanonicalAdjacentSuffixDepth t + 5 : ℤ) <
+        2 ^ oddGuardedCanonicalAdjacentSuffixDepth t := by
+  simp only [oddGuardedCanonicalAdjacentSuffixDepth]
+  by_cases h : Even (canonicalAdjacentSuffixDepth t)
+  · simp only [if_pos h]
+    exact canonicalAdjacentSuffixDepth_succ_symmetric_width ht
+  · simp only [if_neg h]
+    exact canonicalAdjacentSuffixDepth_symmetric_width ht
 
 /-- A pointwise half-word band certificate at the odd-guarded depth feeds the
 existing adjacent-gap consumer at a power-of-two endpoint. -/
@@ -3896,6 +4157,38 @@ theorem diagonalFreshLossResidueCert_or_of_powerTwo_oddGuard_halfWordBand
   rw [hdepth] at hm hwidth
   simpa using
     (diagonalFreshLossResidueCert_or_of_adjacent_dyadic_gap
+      (t := 2 ^ a) (J := 0) (m := 2 * q + 1)
+      hm (by simpa using hwidth) hcentral.1 hcentral.2)
+
+/-- The same half-word band retains enough canonical margin to produce the
+stronger symmetric certificate consumed by the actual-LCM arithmetic word. -/
+theorem diagonalSymmetricResidueCert_or_of_powerTwo_oddGuard_halfWordBand
+    {a q : ℕ} (ha : 2 ≤ a)
+    (hdepth : oddGuardedCanonicalAdjacentSuffixDepth (2 ^ a) = 2 * q + 1)
+    (hlo : (4 : ℤ) ^ q ≤
+      32 * (powerTwoOddHalfCorrectionWord a q % (4 : ℤ) ^ q))
+    (hhi : 32 * (powerTwoOddHalfCorrectionWord a q % (4 : ℤ) ^ q) ≤
+      31 * (4 : ℤ) ^ q) :
+    diagonalSymmetricResidueCert (2 ^ a) (2 * q + 1) ∨
+      diagonalSymmetricResidueCert (2 ^ a) (1 + (2 * q + 1)) := by
+  have ht : 3 ≤ 2 ^ a := by
+    have hpow4 : 4 ≤ 2 ^ a := by
+      simpa using (Nat.pow_le_pow_right (by norm_num : 0 < 2) ha)
+    omega
+  obtain ⟨hm, hwidth⟩ :=
+    oddGuardedCanonicalAdjacentSuffixDepth_symmetric_width ht
+  have hcanon : 10 ≤ canonicalAdjacentSuffixDepth (2 ^ a) :=
+    canonicalAdjacentSuffixDepth_ten_le _
+  have hle := canonicalAdjacentSuffixDepth_le_oddGuarded (2 ^ a)
+  have hq : 3 ≤ q := by
+    rw [hdepth] at hle
+    omega
+  have hcentral :=
+    (diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_iff_halfWordBand
+      ha hq).2 ⟨hlo, hhi⟩
+  rw [hdepth] at hm hwidth
+  simpa using
+    (diagonalSymmetricResidueCert_or_of_adjacent_dyadic_gap
       (t := 2 ^ a) (J := 0) (m := 2 * q + 1)
       hm (by simpa using hwidth) hcentral.1 hcentral.2)
 
@@ -4327,6 +4620,29 @@ def actualOddHalfCenteredLift (a q : ℕ) : ℤ :=
 /-- Integral actual half-correction from odd rank `q` to odd rank `q+1`. -/
 def actualOddHalfCorrection (a q : ℕ) : ℤ :=
   powerTwoOddDepthCorrection a q / 2
+
+/-- The integral half-correction is exactly the three consecutive literal
+LCM-ray letters surrounding the even terminal offset.  This exposes the
+arithmetic content hidden by the inherited/fresh cocycle notation: the even
+initial letter occurs with coefficient `-2`, while the following odd and even
+letters occur with coefficient `1`. -/
+theorem two_mul_actualOddHalfCorrection_eq_three_diagonalWindowIncrements
+    {a q : ℕ} (ha : 2 ≤ a) :
+    2 * actualOddHalfCorrection a q =
+      diagonalWindowIncrement (2 ^ a) (2 * q + 3) -
+        2 * diagonalWindowIncrement (2 ^ a) (2 * q + 2) +
+        diagonalWindowIncrement (2 ^ a) (2 * q + 4) := by
+  have hhalf :
+      2 * actualOddHalfCorrection a q = powerTwoOddDepthCorrection a q := by
+    exact Int.two_mul_ediv_two_of_even
+      (powerTwoOddDepthCorrection_even a q)
+  rw [hhalf]
+  unfold powerTwoOddDepthCorrection powerTwoFreshOddIncrement
+  rw [← diagonalWindowIncrement_powerTwoJump_even_offset
+        (a := a) (r := q + 1) ha,
+      ← diagonalWindowIncrement_powerTwoJump_even_offset
+        (a := a) (r := q + 2) ha]
+  congr 1 <;> omega
 
 /-- Centering changes an integer only by a multiple of the modulus. -/
 theorem actualCenteredLift_modEq (A M : ℤ) :
@@ -4963,6 +5279,7 @@ theorem irrational_totientSeries_of_actualPenultimateSignedMarginSupply
 #print axioms nearMultiple_correction_of_twoRank
 #print axioms powerTwoOddDepthCorrection_nearMultiple_of_twoRank
 #print axioms abs_powerTwoOddDepthCorrection_le
+#print axioms two_mul_actualOddHalfCorrection_eq_three_diagonalWindowIncrements
 #print axioms odd_oddGuardedCanonicalAdjacentSuffixDepth
 #print axioms exists_oddGuardedCanonicalAdjacentSuffixDepth_index
 #print axioms canonicalAdjacentSuffixDepth_succ_width
@@ -4981,8 +5298,13 @@ theorem irrational_totientSeries_of_actualPenultimateSignedMarginSupply
 #print axioms threeFutureEdgeRanks_iff_oldStateCrossing
 #print axioms powerTwo_a7_q91_q93_oldCell_integer_fixture
 #print axioms diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap_sharp
+#print axioms diagonalSymmetricResidueCert_of_suffix_central
 #print axioms diagonalFreshLossResidueCert_or_of_adjacent_suffix_gap
 #print axioms diagonalFreshLossResidueCert_or_of_adjacent_dyadic_gap
+#print axioms diagonalSymmetricResidueCert_or_of_adjacent_suffix_gap
+#print axioms diagonalSymmetricResidueCert_or_of_adjacent_dyadic_gap
+#print axioms oddGuardedCanonicalAdjacentSuffixDepth_symmetric_width
+#print axioms diagonalSymmetricResidueCert_or_of_powerTwo_oddGuard_halfWordBand
 #print axioms diagonalFreshLossProjectionSupply_of_adjacentSuffixGapSupply
 #print axioms irrational_totientSeries_of_diagonalAdjacentSuffixGapSupply
 #print axioms irrational_totientSeries_of_canonicalAdjacentSuffixCentralSupply
@@ -5014,6 +5336,7 @@ theorem irrational_totientSeries_of_actualPenultimateSignedMarginSupply
 #print axioms canonicalAdjacentSuffixDepth_powerTwo_succ_lt_two_mul
 #print axioms canonicalAdjacentSuffixDepth_powerTwo_lt_two_mul
 #print axioms oddGuardedCanonicalAdjacentSuffixDepth_powerTwo_lt_two_mul
+#print axioms oddGuardedCanonicalAdjacentSuffixDepth_powerTwo_succ_lt_two_mul
 #print axioms prime_of_squarefree_repeated_low_support_powerTwo_oddGuarded
 #print axioms prime_of_squarefree_repeated_top_support_powerTwo_oddGuarded
 

@@ -105,6 +105,23 @@ theorem finiteCoeffWindow_le_binaryCoeffTail
   unfold finiteCoeffWindow binaryCoeffTail
   exact hsum.sum_le_tsum (Finset.range J) (fun j _ ↦ by positivity)
 
+/-- Any named future coefficient contributes its own dyadically weighted
+term to the complete tail.  This one-row projection is the reusable bridge
+for arithmetic sieves that locate a divisor incidence at a nonconstant
+offset, where choosing a whole `finiteCoeffWindow` would obscure the exact
+source row. -/
+theorem coeff_term_le_binaryCoeffTail
+    (A : Set ℕ) (n j : ℕ) :
+    (supportCoeff A (n + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1) ≤
+      binaryCoeffTail (supportCoeff A) n := by
+  have hsum : Summable (fun k : ℕ ↦
+      (supportCoeff A (n + k + 1) : ℝ) / (2 : ℝ) ^ (k + 1)) :=
+    summable_coeff_shift_tail 2 n (supportCoeff A)
+      (by norm_num) (supportCoeff_le_self A)
+  unfold binaryCoeffTail
+  have hsingle := hsum.sum_le_tsum ({j} : Finset ℕ) (fun k _ ↦ by positivity)
+  simpa using hsingle
+
 /-- A finite future-divisor incidence inequality forces the normalized
 residual below one.  The remaining unbounded problem is precisely to produce
 `hwindow` on every actual greedy prefix. -/
@@ -857,6 +874,7 @@ theorem rankThree_rawSafe_but_seamNotEscaped :
 #print axioms halfStripAdmissible_residual_eq
 #print axioms one_sub_pow_mul_halfResidual_eq_tail_sub_centered
 #print axioms finiteCoeffWindow_le_binaryCoeffTail
+#print axioms coeff_term_le_binaryCoeffTail
 #print axioms scaledHalfResidual_le_one_of_finiteCoeffWindow
 #print axioms rawHalfSlack_nonneg_of_finiteCoeffWindow
 #print axioms futureSkipCapacity_factorization

@@ -332,9 +332,16 @@ def check_proof_trust() -> None:
     check(proof_trust_violation('def label := "native_decide"\n') is None,
           "proof-trust scanner must ignore strings")
     example_sources = sorted((ROOT / "examples").rglob("*.lean")) if (ROOT / "examples").is_dir() else []
+    problem_sources = (
+        sorted((ROOT / "ErdosProblems").rglob("*.lean"))
+        + ([ROOT / "ErdosProblems.lean"] if (ROOT / "ErdosProblems.lean").is_file() else [])
+        if (ROOT / "ErdosProblems").is_dir()
+        else []
+    )
     lean_sources = (
         sorted((ROOT / "Erdos249257").rglob("*.lean"))
         + [ROOT / "Erdos249257.lean"]
+        + problem_sources
         + example_sources
     )
     for lean in lean_sources:

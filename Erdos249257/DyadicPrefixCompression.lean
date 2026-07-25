@@ -3346,6 +3346,120 @@ theorem gcd_dvd_predecessorOvershoot (p D c : ℕ) :
   · exact dvd_mul_of_dvd_right
       (Nat.gcd_dvd_right D (2 ^ (c - 1) - 1)) p
 
+/-- An unsafe Mersenne sandwich forces both adjacent Mersenne gcds to be
+strictly smaller than the displayed numerator.  For the lower gcd this is
+the positive overshoot `delta = 2D - p(2^c - 1)`.  For the next gcd, the
+same divisor divides `|2 delta - p|`; oddness of `p` makes this difference
+nonzero, while `0 < delta < p` keeps it strictly below `p`. -/
+theorem unsafeSandwich_consecutive_gcd_lt
+    {p D c : ℕ} (hD : 0 < D) (hc : 0 < c) (hpodd : Odd p)
+    (hskip : p * (2 ^ c - 1) < 2 * D)
+    (hunsafe : 2 * D < p * 2 ^ c) :
+    Nat.gcd D (2 ^ c - 1) < p ∧
+      Nat.gcd D (2 ^ (c + 1) - 1) < p := by
+  let q := 2 ^ c - 1
+  let delta := 2 * D - p * q
+  have hpowpos : 0 < 2 ^ c := pow_pos (by omega) c
+  have hqsucc : q + 1 = 2 ^ c := by
+    dsimp only [q]
+    exact Nat.sub_add_cancel hpowpos
+  have hskip' : p * q < 2 * D := by
+    simpa only [q] using hskip
+  have hbase : p * q ≤ 2 * D := hskip'.le
+  have hdeltaPos : 0 < delta := by
+    simpa only [delta] using Nat.sub_pos_of_lt hskip'
+  have hdeltaAdd : delta + p * q = 2 * D := by
+    simpa only [delta] using Nat.sub_add_cancel hbase
+  have hunsafe' : 2 * D < p * q + p := by
+    calc
+      2 * D < p * 2 ^ c := hunsafe
+      _ = p * q + p := by rw [← hqsucc]; ring
+  have hdeltaLt : delta < p := by omega
+  have hindex : c + 1 - 1 = c := by omega
+  have hfirstDvd : Nat.gcd D q ∣ delta := by
+    simpa only [hindex, q, delta] using
+      gcd_dvd_predecessorOvershoot p D (c + 1)
+  have hfirstLe : Nat.gcd D q ≤ delta :=
+    Nat.le_of_dvd hdeltaPos hfirstDvd
+  have hfirst : Nat.gcd D q < p := hfirstLe.trans_lt hdeltaLt
+
+  let Q := 2 ^ (c + 1) - 1
+  let g := Nat.gcd D Q
+  have hQ : Q = 2 * q + 1 := by
+    dsimp only [Q]
+    rw [pow_succ, ← hqsucc]
+    omega
+  have hbalance : p * Q + 2 * delta = 4 * D + p := by
+    rw [hQ]
+    calc
+      p * (2 * q + 1) + 2 * delta =
+          2 * (delta + p * q) + p := by ring
+      _ = 2 * (2 * D) + p := by rw [hdeltaAdd]
+      _ = 4 * D + p := by ring
+  have hgD : g ∣ D := by
+    exact Nat.gcd_dvd_left D Q
+  have hgQ : g ∣ Q := by
+    exact Nat.gcd_dvd_right D Q
+  have hgFourD : g ∣ 4 * D := dvd_mul_of_dvd_right hgD 4
+  have hgpQ : g ∣ p * Q := dvd_mul_of_dvd_right hgQ p
+  have htwodeltaNe : 2 * delta ≠ p := by
+    intro heq
+    apply (Nat.not_even_iff_odd.mpr hpodd)
+    rw [← heq]
+    exact ⟨delta, by ring⟩
+  have hsecond : g < p := by
+    rcases lt_or_gt_of_ne htwodeltaNe with hbelow | habove
+    · have hdvd : g ∣ p * Q - 4 * D := Nat.dvd_sub hgpQ hgFourD
+      have heq : p * Q - 4 * D = p - 2 * delta := by omega
+      have hpos : 0 < p * Q - 4 * D := by omega
+      have hle : g ≤ p * Q - 4 * D := Nat.le_of_dvd hpos hdvd
+      rw [heq] at hle
+      omega
+    · have hdvd : g ∣ 4 * D - p * Q := Nat.dvd_sub hgFourD hgpQ
+      have heq : 4 * D - p * Q = 2 * delta - p := by omega
+      have hpos : 0 < 4 * D - p * Q := by omega
+      have hle : g ≤ 4 * D - p * Q := Nat.le_of_dvd hpos hdvd
+      rw [heq] at hle
+      omega
+  simpa only [q, Q, g] using And.intro hfirst hsecond
+
+/-- Actual half-greedy specialization: every putative dyadically unsafe
+skipped rank makes the two consecutive Mersenne gcds smaller than the
+current displayed residual numerator. -/
+theorem greedyHalf_unsafeSkip_consecutive_gcd_lt
+    (n : ℕ)
+    (hskip : ¬ mersenneWeight (n + 1) ≤
+      greedyMersenneRemainder (1 / 2 : ℝ) n)
+    (hunsafe : ¬ BlockDyadicSafeAt
+      (halfGreedyResidualDisplayedNumerator n).natAbs
+      (halfGreedyPrefixDenominator n) (n + 1)) :
+    Nat.gcd (halfGreedyPrefixDenominator n) (2 ^ (n + 1) - 1) <
+        (halfGreedyResidualDisplayedNumerator n).natAbs ∧
+      Nat.gcd (halfGreedyPrefixDenominator n) (2 ^ (n + 2) - 1) <
+        (halfGreedyResidualDisplayedNumerator n).natAbs := by
+  let p := (halfGreedyResidualDisplayedNumerator n).natAbs
+  let D := halfGreedyPrefixDenominator n
+  have hD : 0 < D := by
+    simpa only [D] using Rat.den_pos (halfGreedyPrefixRat n)
+  have hpodd : Odd p := by
+    simpa only [p] using
+      (halfGreedyResidualDisplayedNumerator_odd n).natAbs
+  have hskipBlock : ¬ BlockTakeAt p D (n + 1) := by
+    intro htake
+    apply hskip
+    apply (greedyHalf_take_iff_BlockTakeAt n).2
+    simpa only [p, D] using htake
+  have hskipNat : p * (2 ^ (n + 1) - 1) < 2 * D := by
+    simpa only [BlockTakeAt, not_le] using hskipBlock
+  have hunsafeBlock : ¬ BlockDyadicSafeAt p D (n + 1) := by
+    simpa only [p, D] using hunsafe
+  have hunsafeNat : 2 * D < p * 2 ^ (n + 1) := by
+    simpa only [BlockDyadicSafeAt, not_le] using hunsafeBlock
+  have hresult := unsafeSandwich_consecutive_gcd_lt
+    (p := p) (D := D) (c := n + 1) hD (by omega) hpodd
+      hskipNat hunsafeNat
+  simpa only [p, D, show (n + 1) + 1 = n + 2 by omega] using hresult
+
 /-- The gcd-scaled overshoot inequality is exactly the lower bound on the
 primitive quotient used by the executable actual-orbit replay. -/
 theorem gcdScaled_predecessorOvershoot_iff_primitiveQuotient
@@ -3552,6 +3666,8 @@ theorem half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply
 #print axioms firstTake_rank9_after_rank5_fixture
 #print axioms factorEleven_predecessorOvershoot_not_inductive_fixture
 #print axioms gcd_dvd_predecessorOvershoot
+#print axioms unsafeSandwich_consecutive_gcd_lt
+#print axioms greedyHalf_unsafeSkip_consecutive_gcd_lt
 #print axioms gcdScaled_predecessorOvershoot_iff_primitiveQuotient
 #print axioms blockDyadicSafeAt_of_gcdScaled_predecessorOvershoot
 #print axioms half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply

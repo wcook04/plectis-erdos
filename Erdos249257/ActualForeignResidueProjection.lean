@@ -1,4 +1,5 @@
 import Erdos249257.FullTargetPrimeAdjunctionNoGo
+import Erdos249257.RepunitMobiusNumerator
 import Erdos249257.SquaredMersenneDiagonalEnclosure
 import Mathlib.Algebra.Order.Field.GeomSum
 import Mathlib.NumberTheory.ArithmeticFunction.Moebius
@@ -330,6 +331,71 @@ theorem projectedDivisorChannels_eq_truncated_mobius (H D : ℕ) :
   · rw [if_pos hdiv, if_pos hdiv,
       residueIncrement_of_dvd (Finset.mem_Icc.mp hdMem).1 hdiv]
   · simp [hdiv]
+
+/-- The real explicit shadow is exactly the sum of all divisor residue
+increments.  This is the finite producer required before the analytic channel
+sum can be split into divisor and foreign parts. -/
+theorem scaleExplicitShadow_eq_sum_divisors_residueIncrement
+    {H : ℕ} (hH : 0 < H) :
+    scaleExplicitShadow H =
+      ∑ d ∈ H.divisors, residueIncrement d H := by
+  have hrat :=
+    (RepunitMobiusNumerator.sum_divisors_moebius_ratio_eq_scaledMobiusShadow
+      H hH).symm
+  have hreal := congrArg (fun q : ℚ ↦ (q : ℝ)) hrat
+  push_cast at hreal
+  rw [scaleExplicitShadow, scaleExplicitShadowRat]
+  push_cast
+  calc
+    (H : ℝ) *
+        (RadicalMobiusShadow.numericMobiusShadow H : ℝ) =
+      ∑ d ∈ H.divisors,
+        ((ArithmeticFunction.moebius d : ℤ) : ℝ) * (H : ℝ) /
+          ((d : ℝ) *
+            (RadicalMobiusShadow.mersenne d : ℝ)) := hreal
+    _ = ∑ d ∈ H.divisors, residueIncrement d H := by
+      apply Finset.sum_congr rfl
+      intro d hdmem
+      have hdvd : d ∣ H := Nat.dvd_of_mem_divisors hdmem
+      have hdpos : 0 < d := Nat.pos_of_dvd_of_pos hdvd hH
+      have hpow : (1 : ℕ) ≤ 2 ^ d :=
+        Nat.one_le_pow _ _ (by norm_num)
+      have hMcast :
+          (RadicalMobiusShadow.mersenne d : ℝ) =
+            (2 : ℝ) ^ d - 1 := by
+        unfold RadicalMobiusShadow.mersenne
+        rw [Nat.cast_sub hpow]
+        push_cast
+        rfl
+      rw [residueIncrement_of_dvd hdpos hdvd, hMcast]
+
+/-- Once the cutoff contains `H`, it contains every divisor channel.  Their
+sum is exactly the explicit radical Möbius shadow. -/
+theorem projectedDivisorChannels_eq_scaleExplicitShadow
+    {H D : ℕ} (hH : 0 < H) (hHD : H ≤ D) :
+    projectedDivisorChannels H D = scaleExplicitShadow H := by
+  have hset :
+      {d ∈ Finset.Icc 1 D | d ∣ H} = H.divisors := by
+    ext d
+    constructor
+    · intro hd
+      exact Nat.mem_divisors.mpr
+        ⟨(Finset.mem_filter.mp hd).2, hH.ne'⟩
+    · intro hd
+      have hdvd : d ∣ H := Nat.dvd_of_mem_divisors hd
+      have hdpos : 0 < d := Nat.pos_of_dvd_of_pos hdvd hH
+      have hdleH : d ≤ H := Nat.le_of_dvd hH hdvd
+      exact Finset.mem_filter.mpr
+        ⟨Finset.mem_Icc.mpr ⟨hdpos, hdleH.trans hHD⟩, hdvd⟩
+  calc
+    projectedDivisorChannels H D =
+        ∑ d ∈ {d ∈ Finset.Icc 1 D | d ∣ H},
+          residueIncrement d H := by
+      unfold projectedDivisorChannels
+      rw [Finset.sum_filter]
+    _ = ∑ d ∈ H.divisors, residueIncrement d H := by rw [hset]
+    _ = scaleExplicitShadow H :=
+      (scaleExplicitShadow_eq_sum_divisors_residueIncrement hH).symm
 
 /-- The projection is controlled when its difference from the actual foreign
 defect lies inside the explicit geometric budget. -/
