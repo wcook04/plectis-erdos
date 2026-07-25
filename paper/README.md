@@ -25,34 +25,38 @@ beyond what the Lean sources contain; the proofs are the sources it links to.
 The manuscript layer (this `.tex` and the rendered PDF) is licensed CC-BY-4.0;
 see `REUSE.toml` at the repository root.
 
-There is deliberately no specialist companion note for #249 or #257. A former
-#249-only note was scrapped and deleted (it survives only in git history)
-because a one-sided companion does not give readers a coherent paper set for a
-repository about both #249 and #257. Add specialist notes for those two
-problems only as a matched pair; otherwise they keep one mathematical gateway
-paper between them. That rule is about the balance of the gateway's own
-subject and does not govern other problems.
+The gateway has no length ceiling and remains the cumulative integration
+monograph: new problem-owned notes do not remove, shorten, or transfer material
+out of it.  Problems #249 and #257 now also have a matched pair of standalone
+notes.  Each repeats the context, exact status boundary, negative results, and
+surviving producers needed by a reader who arrives through one problem rather
+than through the joint gateway.
 
 ## Erdős Problem Notes
 
-The four short notes
+The six standalone notes
 
+- `erdos-249-binary-totient-series.tex`
+- `erdos-257-mersenne-support-subseries.tex`
 - `erdos-243-reciprocal-tail-rigidity.tex`
 - `erdos-251-prime-gap-dyadic-series.tex`
 - `erdos-269-three-prime-running-lcm.tex`
 - `erdos-1049-rational-base-lambert.tex`
 
 are the problem-owned series. One note owns one Erdős problem, and each covers
-the modules for that problem in the `ErdosProblems` expansion library. A reader
-who arrives at a single problem gets its statement, its checked results, its
+the modules for that problem in the `ErdosProblems` expansion library.  The
+#249 and #257 notes additionally point back to the reviewed gateway spine while
+keeping the newer research interfaces explicitly unpromoted. A reader who
+arrives at a single problem gets its statement, its checked results, its
 negative results, and its surviving obligation without assembling them from the
 gateway; deliberate repetition of shared context across notes is the design.
 
-The series is not a set of companions to the gateway. Its subject is a
-different library, whose declarations are exact Lean propositions and are
-**not** reviewed public claims: `docs/claims.json` carries no row for them, and
-kernel checking `ErdosProblems.lean` does not promote them into one. Every note
-states this, and the registry records it as
+The series is not a replacement for the gateway. Its new declarations live in
+a different library and are **not** reviewed public claims: `docs/claims.json`
+carries no row for them, and kernel checking `ErdosProblems.lean` does not
+promote them into one. The #249/#257 notes may also restate reviewed gateway
+claims, but the exact authority of those claims stays in the registry. Every
+note states this, and the registry records it as
 `publication_architecture.problem_series_boundary`.
 
 The notes share `problem-note-preamble.tex`, which fixes the house macros and
