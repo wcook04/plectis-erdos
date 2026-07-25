@@ -569,7 +569,8 @@ def main() -> int:
     assert signed_moment_claim["claim"]["declarations"][0] == {
         "name": "det_mul_rectangular",
         "module": "Erdos249257/SignedQMomentObstruction.lean",
-        "line": 28,
+        # Shifted by one when the module gained its MersenneLambertLadder import.
+        "line": 29,
     }
     assert signed_moment_claim["lean_source_identity"] == square_crt_claim["lean_source_identity"]
 

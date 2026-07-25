@@ -13,7 +13,7 @@
       "title": "Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257",
       "artifact_class": "mathematical_gateway",
       "source_path": "paper/erdos249-257-main-paper.tex",
-      "source_content_digest": "sha256:4085bf4631e0d6fbe80032beeb4fdf1471a0613749bf2e406e922a8d19857916",
+      "source_content_digest": "sha256:2ac1d7773053f4b3864c336a30a44cceb76d75f4b5c28bcfd01de3e6cf68426f",
       "rendered_path": "erdos249-257-main-paper.pdf",
       "rendered_content_digest": "sha256:65c51df1db693af4035ede1372192ef355542e2658de8721a4d23c956e3e2d26",
       "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority",

@@ -19,7 +19,7 @@
   "version": "0.6.0",
   "tag": "v0.6.0",
   "lean_toolchain": "leanprover/lean4:v4.29.1",
-  "formal_source_ref": "ebc98ee71f6819bd9fe344a0bb343542c604e533",
+  "formal_source_ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
   "formal_source_publication_state": "published_committed_checkpoint"
  },
  "scale": {
@@ -271,17 +271,17 @@
     {
      "name": "certifiedKill_periodLcm_diagonal_upto_six",
      "module": "Erdos249257/LcmDiagonalReduction.lean",
-     "line": 237
+     "line": 257
     },
     {
      "name": "certifiedKill_periodLcm_diagonal_at_seven",
      "module": "Erdos249257/LcmDiagonalReduction.lean",
-     "line": 242
+     "line": 262
     },
     {
      "name": "certifiedKill_periodLcm_diagonal_at_eight",
      "module": "Erdos249257/LcmDiagonalReduction.lean",
-     "line": 246
+     "line": 266
     },
     {
      "name": "certifiedKill_diagonal_all_imported_through_t64",
@@ -568,9 +568,9 @@
   "blocked_decisions": []
  },
  "source_revision": {
-  "formal_source_ref": "ebc98ee71f6819bd9fe344a0bb343542c604e533",
-  "committed_navigation_snapshot": "ed8ecb9c6095430b8a7b6c0ad6f23bed372b7f84",
-  "main_paper_source_digest": "sha256:4085bf4631e0d6fbe80032beeb4fdf1471a0613749bf2e406e922a8d19857916"
+  "formal_source_ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
+  "committed_navigation_snapshot": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
+  "main_paper_source_digest": "sha256:2ac1d7773053f4b3864c336a30a44cceb76d75f4b5c28bcfd01de3e6cf68426f"
  },
  "reading_routes": [
   {
