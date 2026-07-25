@@ -9,9 +9,20 @@ It assumes no Lean or project history.
 
 Lean 4 formal work on two unsolved irrationality problems.
 
-[**Mathematics paper**](erdos249-257-main-paper.pdf) ·
-[**Publication systems paper**](claim-faithful-publication-systems-paper.pdf) ·
-[All 3 papers, offline](docs/papers/) ·
+**Start with one problem.** Each note is five pages, standalone, and opens with
+what is proved about that problem rather than with what remains open:
+
+[**#249 — exact ranks for the dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) ·
+[**#257 — which supports are settled**](erdos-257-mersenne-support-subseries.pdf)
+
+The [joint #249/#257 monograph](erdos249-257-main-paper.pdf) is the complete
+working record of the combined development — every reduction, every closed
+route, every finite deposit. It is the reference, not the introduction: its
+first pages state a reduction, and a reader who stops there will see only
+that. Read a note first.
+
+[Publication systems paper](claim-faithful-publication-systems-paper.pdf) ·
+[All papers, offline](docs/papers/) ·
 [Release v0.6.0](https://github.com/wcook04/plectis-lean-erdos249-257/releases/tag/v0.6.0) ·
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml) ·
 [Plectis](https://wcook04.github.io/plectis/)
@@ -153,7 +164,10 @@ reader-facing layers:
 - **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded
   formal results and explicit open frontiers for one problem at a time. New
   entries stay outside the reviewed claim registry until human mathematical
-  review establishes their intended meaning and public framing.
+  review establishes their intended meaning and public framing. The #249 and
+  #257 directories deliberately coexist with the historical root: they expose
+  the newly assimilated theorem producers without deleting, renaming, or
+  weakening the reviewed integration corpus.
 
 [`docs/SOURCE_MAP.md`](docs/SOURCE_MAP.md) gives the exact module order within
 each band. [`docs/WAVE_INDEX.md`](docs/WAVE_INDEX.md) gives the development

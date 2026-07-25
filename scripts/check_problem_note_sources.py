@@ -35,15 +35,23 @@ CONTRACT = ROOT / "docs" / "publication_contract.json"
 INDEX_SOURCE = ROOT / "docs" / "problem_index_source.json"
 NOTE_ARTIFACT_CLASS = "problem_note"
 LIBRARY_PREFIX = "ErdosProblems"
+# A note may also cite the reviewed #249/#257 corpus directly.  The expansion
+# library is where problem-owned work lands, but the headline theorems for
+# several problems live in the older reviewed library, and a note that could
+# not name them would have to paraphrase a checked statement instead of
+# linking it.  A link is read as library-qualified when its first path
+# segment names a sibling library; otherwise it stays relative to
+# ``ErdosProblems``, which is what every existing note writes.
+SIBLING_LIBRARIES = ("Erdos249257",)
 
 COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 LINK_RE = re.compile(
-    r"""\\lword\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
+    r"""\\[lm]word\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
             \{(?P<word_decl>[^{}]+)\}\{
-        |\\(?:lref|lrefx)\{(?P<ref_file>[^{}]+)\}\{(?P<ref_line>\d+)\}
+        |\\(?:lref|lrefx|mref)\{(?P<ref_file>[^{}]+)\}\{(?P<ref_line>\d+)\}
             \{(?P<ref_decl>[^{}]+)\}
-        |\\lloc\{(?P<loc_file>[^{}]+)\}\{(?P<loc_line>\d+)\}""",
+        |\\[lm]loc\{(?P<loc_file>[^{}]+)\}\{(?P<loc_line>\d+)\}""",
     re.X,
 )
 # A Lean declaration head: the keyword, optional modifiers, then the name.
@@ -96,6 +104,18 @@ def snapshot_lines(commit: str, relative: str, cache: dict[str, list[str]]) -> l
     else:
         cache[relative] = completed.stdout.splitlines()
     return cache[relative]
+
+
+def library_relative(file_name: str) -> str:
+    """Repository path for a link target named in a note.
+
+    Unqualified names stay relative to the expansion library; a name whose
+    first segment is a sibling library is already repository-relative.
+    """
+    head = file_name.split("/", 1)[0]
+    if head in SIBLING_LIBRARIES:
+        return file_name
+    return f"{LIBRARY_PREFIX}/{file_name}"
 
 
 ATTRIBUTE_RE = re.compile(r"^\s*@\[[^\]]*\]\s*")
@@ -296,7 +316,7 @@ def main() -> int:
             errors.append(f"{source}: authored no formal source links")
         for file_name, line_number, declaration in found:
             checked += 1
-            relative = f"{LIBRARY_PREFIX}/{file_name}"
+            relative = library_relative(file_name)
             lines = snapshot_lines(commit, relative, cache)
             if not lines:
                 errors.append(

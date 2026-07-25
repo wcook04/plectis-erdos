@@ -29,8 +29,8 @@
 % against; the checker reads that snapshot rather than the working tree, so the
 % printed coordinates stay correct however later waves move declarations.
 % ---------------------------------------------------------------------------
-\newcommand{\commit}{4eb4c8ecfa0ad215248577263b583af0f5a36a62}
-\newcommand{\commitshort}{4eb4c8ecfa0a}
+\newcommand{\commit}{62541efa2a909381e1c8140e62ea02f0463f1336}
+\newcommand{\commitshort}{62541efa2a90}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\PX}{ErdosProblems}
@@ -55,6 +55,15 @@
 \newcommand{\lref}[3]{\href{\repobase/\PX/#1\#L#2}{\leanlabel{#3}}}
 \newcommand{\lword}[4]{\href{\repobase/\PX/#1\#L#2}{#4}}
 \newcommand{\lloc}[2]{\href{\repobase/\PX/#1\#L#2}{Lean source}}
+
+% Links into a sibling library, named repository-relative.  The expansion
+% library is implicit in \lref/\lword, because that is where problem-owned
+% work lands.  Several problems have their headline theorem in the older
+% reviewed #249/#257 corpus, and a note that could not name that library
+% would have to paraphrase a checked statement instead of linking it.
+\newcommand{\mref}[3]{\href{\repobase/#1\#L#2}{\leanlabel{#3}}}
+\newcommand{\mword}[4]{\href{\repobase/#1\#L#2}{#4}}
+\newcommand{\mloc}[2]{\href{\repobase/#1\#L#2}{Lean source}}
 \emergencystretch=2em
 
 \newtheorem{theorem}{Theorem}[section]

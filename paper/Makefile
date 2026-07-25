@@ -8,9 +8,11 @@
 # standalone note per problem in the ErdosProblems expansion library.  Every
 # name here must appear exactly once in docs/publication_contract.json.
 PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
+  erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1049-rational-base-lambert
-NOTES = erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
+NOTES = erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
+  erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1049-rational-base-lambert
 ALIASES = module-aliases.tex
 PREAMBLE = problem-note-preamble.tex
@@ -19,6 +21,11 @@ PREAMBLE = problem-note-preamble.tex
 
 all: $(PAPERS:%=%.pdf) sync-root
 
+# Every manuscript keeps a root copy so the published byte-parity chain
+# (root PDF == GitHub main == hosted site) stays intact.  Which manuscript a
+# reader is *routed* to is a README question, not a filesystem one: the joint
+# monograph is no longer the front door, but removing its root copy would
+# break the deploy gate that compares those bytes.
 sync-root: $(PAPERS:%=%.pdf)
 	@for paper in $(PAPERS); do \
 	  cp "$$paper.pdf" "../$$paper.pdf"; \

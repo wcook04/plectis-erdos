@@ -1,0 +1,290 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% Standalone Erdős Problem Note for #257.  Context is deliberately repeated
+% from the gateway so that this file remains independently readable.
+%
+% Ordering rule for this note: settled supports first, then the proved
+% limitation, then the open frontier.  An earlier draft opened with a research
+% programme and a list of analytic targets; a reader who stops after one page
+% then sees only a plan, which is exactly the reading the note must not
+% invite.
+\documentclass[11pt]{article}
+\input{problem-note-preamble}
+\hypersetup{
+  pdftitle={Which supports are settled: a machine-checked map for Erdős Problem 257, with a parity obstruction on the squarefree support},
+  pdfsubject={Erdős Problem Notes: Problem 257},
+  pdfkeywords={irrationality, Mersenne numbers, achievement sets, divisor incidence, squarefree, Lean 4},
+}
+
+\newcommand{\wgt}[1]{w_{#1}}
+\newcommand{\Ach}{\mathcal A}
+\newcommand{\scA}{\operatorname{sc}}
+
+\runninghead{Erd\H{o}s \#257: which supports are settled}
+\title{Which Supports Are Settled}
+\subtitle{A machine-checked map for Erd\H{o}s Problem~\#257, and a parity
+obstruction that closes the squarefree support to one class of argument}
+\author{Will Cook}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+\noteprovenance
+
+\begin{abstract}
+\noindent
+Erd\H{o}s~\#257 asks whether $X_A=\sum_{a\in A}(2^a-1)^{-1}$ is irrational for
+every infinite $A\subseteq\Npos$.  It is open.  In December 2025 the question
+changed character: Tao and Ter\"av\"ainen proved the case $A=\{\text{primes}\}$
+unconditionally, remarked that the same method gives the prime powers, and
+wrote that it seems likely to reach other sets ``sufficiently similar to the
+primes'', leaving open which.  The useful question is therefore now
+\emph{which supports the available methods reach}.
+
+This note answers that for the methods in this development.  Section~\ref{sec:map}
+gives a status map: seven infinite-support families are irrational in
+\emph{every} integer base $b\ge2$, each with a machine-checked proof, and none
+of the seven is reached by the analytic method, nor is the prime support
+reached by ours.  Section~\ref{sec:geometry} records the achievement-set
+geometry, and Section~\ref{sec:half} the exact half-value dichotomy.
+
+Section~\ref{sec:squarefree} contributes a limitation rather than a family.
+For the squarefree support the divisor incidence is exactly $2^{\omega(n)}-1$,
+hence odd at every $n\ge2$.  Every certificate argument in this development
+opens by selecting a block with even incidence, so all of them fail on that
+one support --- uniformly in the block, not for want of searching.  This says
+nothing about whether the squarefree value is irrational, which is open.  It
+says that one natural dense support sits outside both currently available
+methods, and names why.
+\end{abstract}
+
+\statusboundary
+
+\section{The problem}\label{sec:problem}
+
+\begin{problem}[Erd\H{o}s \#257]\label{res:problem}
+For every infinite $A\subseteq\Npos$, is
+$X_A=\sum_{a\in A}\dfrac1{2^a-1}$ irrational?
+\end{problem}
+
+\noindent Numbering and status follow
+\href{https://www.erdosproblems.com/257}{Bloom's catalogue}.  Write
+$\wgt n=(2^n-1)^{-1}$.  Interchanging sums gives the coordinate this note
+works in: with the \emph{divisor incidence}
+$\scA_A(n)=\#\{d\mid n: d\in A\}$,
+\[
+  X_A=\sum_{a\in A}\frac1{2^a-1}=\sum_{n\ge1}\frac{\scA_A(n)}{2^n}.
+  \tag{1}\label{eq:incidence}
+\]
+So \#257 is the question of which $0/1$ weights make a Lambert series
+irrational, and every argument below reads the coefficient sequence
+$\scA_A$ rather than $A$ itself.
+
+\section{The map of settled supports}\label{sec:map}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.31\linewidth}
+  >{\raggedright\arraybackslash}p{0.15\linewidth}
+  >{\raggedright\arraybackslash}p{0.46\linewidth}@{}}
+\toprule
+Support $A$ & Bases & Authority \\
+\midrule
+all of $\Npos$ & every $b\ge2$ & Erd\H{o}s 1948;
+  \mword{Erdos249257/CertificateKernel.lean}{8000}{irrational_erdosSum_full_support}{checked here} \\
+primes & $b=2$ (and $b\ge2$) & Tao--Ter\"av\"ainen~\cite{taoteravainen2025};
+  not formalised here \\
+prime powers & $b=2$ & \emph{ibid.}, stated as a remark; not formalised here \\
+factorials $\{n!\}$ & every $b\ge2$ &
+  \mword{Erdos249257/CertificateKernel.lean}{5754}{erdos257_family_factorial_instance}{checked here} \\
+powers of two $\{2^k\}$ & every $b\ge2$ &
+  \mword{Erdos249257/CertificateKernel.lean}{5762}{erdos257_family_two_pow_instance}{checked here} \\
+multiples of a fixed $d$ & every $b\ge2$ &
+  \mword{Erdos249257/CertificateKernel.lean}{8775}{irrational_erdosSupportSeries_multiples}{checked here} \\
+a residue class & every $b\ge2$ &
+  \mword{Erdos249257/CertificateKernel.lean}{11344}{irrational_erdosSupportSeries_residueClass}{checked here} \\
+the odd numbers & every $b\ge2$ &
+  \mword{Erdos249257/CertificateKernel.lean}{11358}{irrational_erdosSupportSeries_odd}{checked here} \\
+eventually periodic & every $b\ge2$ &
+  \mword{Erdos249257/CertificateKernel.lean}{11276}{irrational_erdosSupportSeries_eventuallyPeriodic}{checked here} \\
+pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
+  \mword{Erdos249257/CertificateKernel.lean}{10448}{irrational_erdosSupportSeries_pairwise_coprime}{checked here} \\
+\midrule
+squarefree numbers & --- & \textbf{Open};
+  outside the engines here (Section~\ref{sec:squarefree}) \\
+arbitrary infinite $A$ & --- & \textbf{Open} (Problem~\ref{res:problem}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent Three things about this table are worth stating plainly.
+
+First, the families checked here are proved for \emph{every} integer base
+$b\ge2$, not only base $2$; the general statement is
+\mword{Erdos249257/CertificateKernel.lean}{8717}{irrational_erdosSupportSeries_univ}{the base-$b$ full-support theorem}
+and the family results specialise it.  Prior art is acknowledged rather than
+absorbed: for eventually periodic \emph{rational} coefficient sequences Luca
+and Tachiya prove a broader theorem by different methods~\cite{lucatachiya},
+and no priority is claimed for the formalised versions.
+
+Second, the two method families are \emph{complementary, not nested}.  The
+analytic method of~\cite{taoteravainen2025} reaches the primes and prime
+powers, which are neither eventually periodic nor pairwise coprime with
+summable reciprocals, so they are outside every row proved here.  The rows
+proved here --- factorials, powers of two, residue classes --- are not
+``sufficiently similar to the primes'' in the sense that method needs.
+Neither list contains the other, and their union does not exhaust the
+infinite supports.
+
+Third, none of this approaches the universal statement.  A list of settled
+families, however long, is a list; Problem~\ref{res:problem} quantifies over
+all infinite $A$, and the gap between the two is not narrowed by adding rows.
+
+\section{A support outside both methods}\label{sec:squarefree}
+
+Let $A_{\mathrm{sf}}=\{d\ge2: d\text{ squarefree}\}$.  This is a natural
+support of density $6/\pi^2$ --- far denser than the primes, and not periodic.
+
+\begin{theorem}[squarefree divisor incidence]\label{res:sfcount}
+For every $n\ge1$ the number of squarefree divisors of $n$ is $2^{\omega(n)}$,
+where $\omega(n)$ is the number of distinct prime factors, and hence
+\[
+  \scA_{A_{\mathrm{sf}}}(n)=2^{\omega(n)}-1 .
+\]
+In particular $\scA_{A_{\mathrm{sf}}}(n)$ is \emph{odd} for every $n\ge2$.
+\end{theorem}
+
+\noindent The count is
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{53}{card_squarefreeDivisors}{checked},
+the incidence formula is
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{70}{squarefreeIncidence_eq}{checked},
+and the parity conclusion is
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{100}{odd_squarefreeIncidence}{checked}.
+The proof is the bijection between squarefree divisors of $n$ and subsets of
+its prime factors
+(\lword{Erdos257/SquarefreeSupportIncidence.lean}{30}{squarefreeDivisors_eq_image}{Lean}),
+so the count is $2^{\omega(n)}$; removing $d=1$ leaves an odd number whenever
+$\omega(n)\ge1$.
+
+\begin{corollary}[the engines cannot see this support]\label{res:blind}
+Every certificate construction in this development opens by selecting a block
+position $N$ with $2\mid\scA_A(N+1)$.  By Theorem~\ref{res:sfcount} no such
+$N$ exists for $A_{\mathrm{sf}}$.  The obstruction is uniform in $N$: it is
+not that a search has not gone far enough, but that the required residue never
+occurs.
+\end{corollary}
+
+\noindent We are deliberate about what this does and does not say.
+
+\emph{It does not say} that $X_{A_{\mathrm{sf}}}=\sum_{d\ \mathrm{squarefree},\,d\ge2}(2^d-1)^{-1}$
+is rational, or that it is hard, or that it is irrational.  That value's status
+is open and this note does not move it.
+
+\emph{It does say} that a specific, fully specified proof method provably
+cannot certify one natural support, for a reason internal to the support
+rather than to the search.  Note also that the obstruction is a parity
+accident rather than a scaling one: the shifted coefficient $2^{\omega(n)}$
+still satisfies $2^{\omega(n)}\le n$
+(\lword{Erdos257/SquarefreeSupportIncidence.lean}{117}{two_pow_card_primeFactors_le}{checked}),
+so it remains inside the coefficient range those arguments require.  Repairing
+the parity is therefore not obviously impossible --- but a repaired first block
+does not discharge the remaining tail and head obligations, and we make no
+claim that it does.
+
+\section{Achievement-set geometry}\label{sec:geometry}
+
+The set of all values obtainable from the base-$2$ Mersenne weights is the
+achievement set
+$\Ach=\{\sum_{n\ge1}\varepsilon_n\wgt n:\varepsilon_n\in\{0,1\}\}$.
+
+\begin{theorem}[geometry of $\Ach$]\label{res:geometry}
+$\Ach$ is compact, perfect, totally disconnected and nowhere dense, and has
+Lebesgue measure~$1$.
+\end{theorem}
+
+\noindent Checked as
+\mword{Erdos249257/GreedyAchievementSet.lean}{1620}{perfect_mersenneAchievementSet}{perfect},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1636}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1645}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
+and
+\mword{Erdos249257/GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}{of measure one}.
+The strict-tail Cantor geometry is recorded by Kova\v{c} and Tao; no novelty is
+claimed for the formalised refinements.  Membership is equivalent to survival
+of the greedy expansion at every level
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}),
+and exact rational death certificates prove non-membership: $3/4\notin\Ach$
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1748}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
+
+\section{The half-value dichotomy}\label{sec:half}
+
+A rational point of $\Ach$ attained by an infinite support would refute
+Problem~\ref{res:problem}.  The distinguished candidate is $1/2$.
+
+\begin{theorem}[exact dichotomy at $1/2$]\label{res:half}
+$1/2\in\Ach$ if and only if the canonical greedy expansion of $1/2$ omits
+infinitely many exponents.  Moreover no finite support has value $1/2$, so
+membership would automatically produce an \emph{infinite} support of rational
+value, and hence a counterexample to universal \#257.
+\end{theorem}
+
+\noindent The equivalence is
+\mword{Erdos249257/GreedyAchievementSet.lean}{2514}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{checked},
+and the finite-support exclusion is
+\mword{Erdos249257/HalfCarryReachability.lean}{589}{finite_boolSupport_ne_half}{checked}.
+
+This is an equivalence, and we mark it as such rather than as progress: both
+sides are open, and proving them equivalent does not decide either.  It is
+included because it fixes what a counterexample would have to look like, and
+because the negative branch is genuinely one-sided --- non-membership is
+witnessed by a finite fatal gap and is therefore semi-decidable, whereas
+membership is an infinite conjunction that no finite computation certifies.
+Computing the greedy orbit further can only ever raise a lower bound on where
+death could occur; it cannot establish survival.
+
+\section{What remains open}\label{sec:open}
+
+\begin{enumerate}
+\item Problem~\ref{res:problem} itself, for arbitrary infinite $A$.  The map in
+  Section~\ref{sec:map} is a list of families and does not approach a universal
+  statement.
+\item Irrationality of $X_{A_{\mathrm{sf}}}$ for the squarefree support.
+  Section~\ref{sec:squarefree} closes one method against it and supplies no
+  replacement.
+\item Membership of $1/2$ in $\Ach$.  Theorem~\ref{res:half} makes it exactly
+  equivalent to infinitely many greedy skips; neither side is proved.
+\item Which supports the analytic method of~\cite{taoteravainen2025} reaches.
+  The authors name this themselves and do not pursue it; it is, in our view,
+  the most valuable open question in the immediate neighbourhood of \#257, and
+  it is not one this development is currently equipped to answer.
+\end{enumerate}
+
+\section*{Statements and declarations}
+
+This manuscript is authored exposition, not proof authority.  The linked Lean
+snapshot is authoritative only for its exact propositions; kernel checking
+establishes that a proposition was proved, not that it is interesting, novel,
+or sufficient.  Results attributed to Tao and Ter\"av\"ainen, to Luca and
+Tachiya, and to Kova\v{c} and Tao are cited from the literature and are not
+formalised here.  Erd\H{o}s Problem~\#257 remains open.
+
+\begin{thebibliography}{9}
+\bibitem{taoteravainen2025} T.~Tao and J.~Ter\"av\"ainen,
+  \emph{Quantitative correlations and some problems on prime factors of
+  consecutive integers}, arXiv:2512.01739 (submitted December 2025, revised
+  April 2026).  Proves $\sum_{n\ge1}\omega(n)/2^n=\sum_{p}(2^p-1)^{-1}$
+  irrational, settling the prime-support case of \#257; remarks that the
+  method also gives the prime-power support and every integer base $b\ge2$.
+\bibitem{pratt} K.~Pratt, \emph{The irrationality of a prime factor series
+  under a prime tuples conjecture}, arXiv:2409.15185.
+\bibitem{lucatachiya} F.~Luca and Y.~Tachiya, \emph{Irrationality of Lambert
+  series associated with a periodic sequence}.
+\bibitem{erdos1948} P.~Erd\H{o}s, \emph{On arithmetical properties of Lambert
+  series}, J.~Indian Math.\ Soc.\ 12 (1948), 63--66.
+\bibitem{erdosproblems} T.~Bloom, \emph{Erd\H{o}s Problems},
+  \url{https://www.erdosproblems.com/257}.
+\end{thebibliography}
+
+\end{document}

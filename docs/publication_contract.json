@@ -60,6 +60,42 @@
       }
     },
     {
+      "id": "erdos_249_note",
+      "title": "Exact Ranks for the Dyadic Sections of Euler’s Totient",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-249-binary-totient-series.tex",
+      "source_content_digest": "sha256:a72a42ad3c16d20e05bf3d17b700b3752a5562344fbef3b56d22f23efa20d516",
+      "rendered_path": "erdos-249-binary-totient-series.pdf",
+      "rendered_content_digest": "sha256:250699fa6e85a9f44c2d0cd56c74d422d0117f15b68ebf6a5f0e7268b26d6120",
+      "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
+      "claim_scope": "Standalone exposition of Erdős Problem 249, ordered unconditional results first: the exact level-e dyadic totient section rank 2^e+1 and the resulting infinite-dimensionality, the explicit denominator exclusion (whose Farey provenance is stated rather than implied), the phi*mu Lambert weight that separates #249 from the settled omega/Omega/tau series, and two scoped method no-go theorems. Every remaining obligation is named and the problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_257_note",
+      "title": "Which Supports Are Settled",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-257-mersenne-support-subseries.tex",
+      "source_content_digest": "sha256:dcc395745342f1acbb714936b241dfcb7fc6ad6c67622a1080ac3af8a2957cd2",
+      "rendered_path": "erdos-257-mersenne-support-subseries.pdf",
+      "rendered_content_digest": "sha256:fa248cdc852fe94c075985fe59444675fe30ccd2c8e8cabfcfc35c80a17708fc",
+      "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
+      "claim_scope": "Standalone exposition of Erdős Problem 257 as a status map of settled supports, including the Tao–Teräväinen prime and prime-power cases as cited external results, seven infinite-support families checked here in every integer base, the achievement-set geometry, the exact half-value dichotomy, and a proved parity obstruction showing the squarefree support is unreachable by the certificate engines here. Universal irrationality remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
       "id": "erdos_243_note",
       "title": "The Centred State and the Surviving Negative Case",
       "artifact_class": "problem_note",
