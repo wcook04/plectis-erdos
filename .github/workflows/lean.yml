@@ -92,6 +92,11 @@ jobs:
         # fan-out. Lake's own trace hashes validate restored project outputs;
         # the final ordinary build remains the authority check.
         run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness
+      - name: Build the problem-centric library
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # Not a default target, so the downstream-consumer contract keeps
+        # `lake build` meaning exactly Erdos249257. It still has to compile.
+        run: lake build ErdosProblems
       - name: Build downstream consumer example
         if: steps.lean-inputs.outputs.changed == 'true'
         run: lake build Examples
