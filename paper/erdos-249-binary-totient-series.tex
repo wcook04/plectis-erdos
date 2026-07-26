@@ -387,6 +387,218 @@ described it as ``surviving'' the shift algebra when the checked conclusion
 carries no non-vanishing clause.  Correcting that is the reason it is here at
 all.
 
+\section{Three problem-owned programmes}\label{sec:programmes}
+
+The modules below are problem-owned rather than part of the reviewed corpus.
+Each states its unproved hypothesis explicitly; none advances \#249, and we
+list them because a reader deciding whether to spend time here should see the
+sufficient conditions in the exact form Lean checks them.
+
+\paragraph{Strict prime-orbit escape.}
+The cleanest of the three, because it moves a threshold.  The producer
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{18}{DTWNaturalPrimeTailOrbitStrictGap}{asks}
+for cofinally many primes $p$ at which the first tail-orbit exponential has
+real part strictly below $9/10$.  Granting it,
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{27}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{a positive adaptive truncation budget}
+follows, and then
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{66}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{$S$ is irrational}.
+The point of interest is the constant: the legacy route required a $4/5$ gap,
+this one requires only $9/10$, so the sufficient condition is strictly weaker
+while the conclusion is unchanged.  Weakening a hypothesis you still cannot
+verify is progress on the \emph{statement}, not on the problem, and the
+producer remains unproved.
+
+\paragraph{Finite Euler-sieve algebra.}
+Elementary identities behind the squared-M\"obius approximation to the totient
+generating function; no transcendence input is claimed.  The local Euler
+factors are exact squares at
+\lword{Erdos249/FiniteEulerSieve.lean}{28}{muSqEulerFactor_one}{$s=1$}
+and
+\lword{Erdos249/FiniteEulerSieve.lean}{36}{muSqEulerFactor_two}{$s=2$},
+and on the divisor-sum prime-power row
+\lword{Erdos249/FiniteEulerSieve.lean}{44}{sigmaPrimePow_firstDiff}{the first difference}
+is $p-1$ while
+\lword{Erdos249/FiniteEulerSieve.lean}{51}{sigmaPrimePow_secondDiff}{the second difference}
+is $p^{e+1}(p-1)$.  The second difference is the content: applying
+$\mu\ast\mu$ converts the divisor-sum row into the prime-power totient row
+exactly, at every finite stage.  These are one-line facts; they are recorded
+because the approximation they license is otherwise easy to assert without
+checking.
+
+\paragraph{Prime-ray cyclotomic curvature.}
+A producer/consumer interface with two named obligations.  Its curvature
+functional is
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{15}{checkerboard}{the checkerboard}
+on a two-anchor rectangle, which
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{19}{checkerboard_separable}{annihilates every separable background}
+$u(x)+v(y)$ and is
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{25}{checkerboard_unique}{the unique such $2\times2$ annihilator up to scale}.
+That uniqueness is worth stating: the operator is not a convenient choice
+among many, it is the only one, which is what makes the resulting obstruction
+coordinate-free.  On top of it sit
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{38}{fourPoint_layer_identity}{a squarefree divisor-layer cancellation}
+and
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{55}{residueClass_step_has_centred_completion}{a centred-completion step for residue classes modulo an even modulus}.
+The two obligations are
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{88}{PrimeRayLayerSupply}{eventual clean cyclotomic layers on a prime ray}
+and
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{95}{BoundedDegreeOrderConsumer}{an exact-order witness at every rational prime divisor of a layer};
+together they give
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{102}{FinitePrimeSupportEscape}{escape from every prescribed finite prime support}.
+Neither obligation is proved here, and polynomial resultant realisability and
+Archimedean growth remain upstream of both.
+
+\section{What we need from a mathematician}\label{sec:ask}
+
+Three obligations carry the whole conditional part of this work.  Each is a
+statement about one explicitly defined sequence, each is stated below from
+definitions given here, and none needs the rest of this note --- or any Lean
+--- to be understood, proved or refuted.  They are written in the form in
+which we would want an answer.
+
+Two remarks apply to all three.  A negative answer is worth exactly as much to
+us as a positive one: if a route provably cannot supply what it is asked for,
+we will say so here and drop the route rather than leave it listed as live.
+And none of the three asks anyone to grant anything about $\Stot$; each is an
+ordinary question about a defined object, answerable, refutable or
+recognisable from the literature on its own terms.
+
+\paragraph{Ask 1.  Certificates beyond every cutoff, on the $\lcm$ diagonal.}
+Write $H_t=\lcm(1,\dots,t)$
+(\mword{Erdos249257/CarrySurvivorExtinction.lean}{515}{periodLcm}{definition})
+and let $R_N=\sum_{m\ge1}\ph(N+m)/2^{m}$ be the fractional layer of
+$2^N\Stot$
+(\mword{Erdos249257/TotientTailPeriodKiller.lean}{57}{totientTail}{definition}).
+\emph{Wanted:} for every $t_0$ there is a $t\ge t_0$ with
+$R_{2H_t}-R_{H_t}\notin\Z$.  That is the hypothesis on the right of
+\mword{Erdos249257/LcmConeFlatness.lean}{426}{irrational_totient_series_iff_lcm_diagonal_certificate_supply}{the diagonal normal form},
+in the finite-certificate coordinates the two forms share
+(\mword{Erdos249257/LcmConeFlatness.lean}{439}{periodLcm_diagonal_kill_iff_tail_diff_notMem_int}{checked}).
+
+\emph{Already settled, so that nobody repeats it.}  The normal form is an
+equivalence, not a sufficient condition: $\Stot$ is irrational if and only if
+that supply exists.  Nothing short of a cofinal statement is therefore of use,
+and no finite band approximates one.  The converse direction is sharper than
+it looks --- one pair $h>0$, $N$ with $R_{N+h}-R_N\in\Z$ already makes
+$\Stot$ rational
+(\mword{Erdos249257/LcmConeFlatness.lean}{357}{not_irrational_of_tail_diff_mem_int}{checked}).
+The certificate is decidable at each $t$, and has been kernel-checked to fire
+at the $28$ scales
+(\mword{Erdos249257/DiagonalPincerCertificatesT64.lean}{1933}{diagonalPincerCertificateScalesThroughT64}{listed})
+lying between $t=1$ and $t=64$
+(\mword{Erdos249257/DiagonalPincerCertificatesT64.lean}{1967}{certifiedKill_diagonal_all_imported_through_t64}{checked}).
+Lengthening that list is not progress towards the ask, and is not offered as
+such: a band bounded at $t=64$ contributes nothing at $t=65$.
+
+\emph{Most useful first.}  (i) Any argument giving $R_{2H_t}-R_{H_t}\notin\Z$
+for infinitely many $t$, with no uniformity or rate required.  (ii) A reason
+the $\lcm$ diagonal is the wrong ray to ask this of --- for instance that
+$R_{2H_t}-R_{H_t}$ is beyond the reach of present methods for structural
+reasons, not merely unproved.  (iii) A single $t$ with $R_{2H_t}-R_{H_t}\in\Z$.
+A construction or a proof (i) helps most; (ii) is next and would be acted on.
+
+\emph{If answered.}  (i) closes \#249, since the normal form is an
+equivalence and the deduction is already checked.  (ii) retires the diagonal
+presentation, and with it Ask~1, without touching the problem.  (iii) settles
+\#249 in the opposite direction, which would be a larger result than anything
+asked for here.
+
+\paragraph{Ask 2.  One cofinal prime with first-harmonic real part below
+$9/10$.}
+\emph{Wanted:} for every $h\ge1$ and every $N_0$, a prime
+$p\ge\max(N_0+h+1,\,h+5)$ with
+\[
+  \cos\bigl(2\pi\,(R_{p-1}-R_{p-h-1})\bigr)<\tfrac{9}{10},
+\]
+equivalently with $R_{p-1}-R_{p-h-1}$ further than
+$\arccos(9/10)/2\pi=0.07178\ldots$ from the nearest integer.  Written with
+$N=p-h-1$, this is
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{18}{DTWNaturalPrimeTailOrbitStrictGap}{the hypothesis}
+verbatim: the real part of the first additive character of $R_{N+h}-R_N$,
+below $9/10$ for cofinally many primes.
+
+\emph{Already settled.}  The quantity is not an artefact of the truncation:
+integer prefixes cancel under the character, so this is exactly the first
+additive character of $2^{N}(2^{h}-1)\Stot$
+(\mword{Erdos249257/PivotAntiReconstruction.lean}{66}{tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp}{checked}),
+that is, of one orbit of the doubling map.  Granting the gap, the adaptive
+truncation budget
+(\lword{Erdos249/TotientStrictPrimeEscape.lean}{27}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{checked})
+and then irrationality
+(\lword{Erdos249/TotientStrictPrimeEscape.lean}{66}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{checked})
+follow with no further input.  The threshold has already been moved: the
+legacy route consumed a $4/5$ gap and this one consumes $9/10$, so the
+hypothesis is strictly weaker than the one it replaced.  We have no proof of
+it at either threshold.
+
+\emph{Most useful first.}  (i) A reference.  This is a one-sided escape
+statement for a single explicit real orbit sampled along the primes, and an
+analytic number theorist may recognise it as standard, as a known consequence
+of an existing estimate, or as a known hard case; any of the three would be
+decisive for how we spend time.  (ii) A proof or proof sketch.  (iii) A reason
+the statement is out of reach for orbits of this kind.  (i) helps most,
+because the cost of the wrong answer here is measured in months.
+
+\emph{If answered.}  (i) or (ii) closes \#249 through the checked endpoint
+above.  (iii) closes only this branch: the gap is sufficient for
+irrationality and nothing here shows it necessary, so its failure would leave
+the problem exactly where it is.  This is the ask we consider most likely to
+be answerable by somebody who has not read the rest of this note.
+
+\paragraph{Ask 3.  Bounded multiplicative order along a prime ray.}
+Fix integers $m,d\ge1$ and a layer sequence $C\colon\N\to\N$.  Two statements
+are wanted, of which the second is the substantial one.
+(a) There is a $Q_0$ with $C(mq)>1$ and $\gcd(C(mq),mq)=1$ for every prime
+$q\ge Q_0$
+(\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{88}{PrimeRayLayerSupply}{the supply}).
+(b) Whenever $q$ and $p$ are prime and $p\mid C(mq)$, some $k$ with
+$1\le k\le d$ has $mq\mid p^{k}-1$
+(\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{95}{BoundedDegreeOrderConsumer}{the consumer}).
+Statement (b) is a primitive-divisor question in classical shape: it asks that
+every prime divisor of a layer have multiplicative order bounded by $d$
+relative to the ray index $mq$.
+
+\emph{Already settled.}  The curvature coordinates are forced rather than
+chosen --- the checkerboard is the only $2\times2$ joint annihilator up to
+scale
+(\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{25}{checkerboard_unique}{checked}) ---
+and the divisor-layer cancellation
+(\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{38}{fourPoint_layer_identity}{checked})
+and the affine recentring step
+(\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{55}{residueClass_step_has_centred_completion}{checked})
+are proved from their stated hypotheses.  What is \emph{not} there should be
+said plainly: (a), (b) and the intended consequence
+\lword{Erdos249/PrimeRayCyclotomicCurvature.lean}{102}{FinitePrimeSupportEscape}{finite-prime-support escape}
+are all recorded as definitions, and the module proves neither obligation.
+One line, offered as prose and not as a checked statement: (b) alone already
+forces the escape by size, since $p\mid C(mq)$ gives $mq\le p^{d}-1$, so for a
+finite set $S$ of primes no member of $S$ divides $C(mq)$ once
+$q>\max_{p\in S}p^{d}/m$.  The role of (a) is then to keep the conclusion from
+being vacuous, since $C(mq)=1$ would satisfy it trivially.
+
+\emph{Most useful first.}  (i) A reference: whether (b) is known, in either
+direction, for cyclic resultants of an integer polynomial, which is the
+intended source of $C$.  (ii) A counterexample family for which (b) fails.
+(iii) A construction of a layer sequence satisfying both.  A reference helps
+most, because we do not know whether we are asking something classical or
+something false.
+
+\emph{If answered.}  This closes one branch and not the problem.  Escape from
+every prescribed finite prime support is not irrationality of $\Stot$:
+realising $C$ by cyclic resultants at all, and the Archimedean growth
+estimate, are both upstream, both unproved, and no route from escape to \#249
+is claimed here.  An answer tells us whether to keep the branch; it does not
+move \#249.
+
+\paragraph{Not an ask: the denominator bound.}
+The constant $7.96\times10^{34}$ of \ref{res:denominator} is not an open item,
+and help with it is not wanted.  It is the classical Farey mediant bound
+applied to a window with a free parameter $K$, it has order $2^{K/2}$, and
+raising it needs only more committed binary digits --- a computation, not an
+idea.  A reader whose first instinct is to improve that number would be
+spending effort at the one point in this note where the method is completely
+understood and the return is nil.
+
 \section{What remains open}\label{sec:open}
 
 The problem is open and this note does not narrow it.  Precisely:
@@ -429,8 +641,10 @@ snapshot is authoritative only for its exact propositions, and kernel checking
 establishes that a proposition was proved, not that it is interesting, novel,
 or sufficient.  The consequence drawn in the last sentence of \ref{res:basis},
 the deduction in \ref{res:periodic} that an unbounded weight is not eventually
-periodic, and the mechanism sentence in Section~\ref{sec:nogo} are one-line
-arguments in the prose, marked as such, from statements that are checked.
+periodic, the mechanism sentence in Section~\ref{sec:nogo}, and the size
+argument under Ask~3 in Section~\ref{sec:ask} are one-line arguments in the
+prose, marked as such; the first three are drawn from checked statements, and
+the last is drawn from two hypotheses that are not proved.
 Numerical decimals quoted in Section~\ref{sec:family} were recomputed
 independently for this note.  Erd\H{o}s Problem~\#249 remains open.
 

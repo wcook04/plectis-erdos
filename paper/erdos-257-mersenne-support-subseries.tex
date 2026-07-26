@@ -12,7 +12,7 @@
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
 \hypersetup{
-  pdftitle={Which supports are settled: a machine-checked map for Erdős Problem 257, with a parity obstruction on the squarefree support},
+  pdftitle={Settled supports and exact finite periods: a machine-checked map for Erdős Problem 257},
   pdfsubject={Erdős Problem Notes: Problem 257},
   pdfkeywords={irrationality, Mersenne numbers, achievement sets, divisor incidence, squarefree, Lean 4},
 }
@@ -21,10 +21,10 @@
 \newcommand{\Ach}{\mathcal A}
 \newcommand{\scA}{\operatorname{sc}}
 
-\runninghead{Erd\H{o}s \#257: which supports are settled}
-\title{Which Supports Are Settled}
-\subtitle{A machine-checked map for Erd\H{o}s Problem~\#257, and a parity
-obstruction that closes the squarefree support to one class of argument}
+\runninghead{Erd\H{o}s \#257: supports and finite periods}
+\title{Settled Supports and Exact Finite Periods}
+\subtitle{A machine-checked map for Erd\H{o}s Problem~\#257, with a
+squarefree-support method boundary}
 \author{Will Cook}
 \date{July 2026}
 
@@ -35,28 +35,24 @@ obstruction that closes the squarefree support to one class of argument}
 \begin{abstract}
 \noindent
 Erd\H{o}s~\#257 asks whether $X_A=\sum_{a\in A}(2^a-1)^{-1}$ is irrational for
-every infinite $A\subseteq\Npos$.  It is open.  In December 2025 the question
-changed character: Tao and Ter\"av\"ainen proved the case $A=\{\text{primes}\}$
-unconditionally, remarked that the same method gives the prime powers, and
-wrote that it seems likely to reach other sets ``sufficiently similar to the
-primes'', leaving open which.  The useful question is therefore now
-\emph{which supports the available methods reach}.
+every infinite $A\subseteq\Npos$.  It remains open.  This note separates the
+content already proved from the universal endpoint.
 
-This note answers that for the methods in this development.  Section~\ref{sec:map}
-gives a status map: seven infinite-support families are irrational in
-\emph{every} integer base $b\ge2$, each with a machine-checked proof, and none
-of the seven is reached by the analytic method, nor is the prime support
-reached by ours.  Section~\ref{sec:geometry} records the achievement-set
-geometry, and Section~\ref{sec:half} the exact half-value dichotomy.
+For every finite nonempty exponent set $F$ and every integer base $b\ge2$, the
+multiplicative order of $b$ modulo the reduced denominator of
+$\sum_{n\in F}(b^n-1)^{-1}$ is exactly $\operatorname{lcm}(F)$: reduction never
+collapses the period.  For infinite supports, seven structured families are
+irrational in every base $b\ge2$, and periodic integer weights satisfy an
+irrational-or-base-terminating dichotomy.  These are unconditional theorems,
+not reformulations of universal \#257; their prior-art boundaries are stated
+where they occur.
 
-Section~\ref{sec:squarefree} contributes a limitation rather than a family.
-For the squarefree support the divisor incidence is exactly $2^{\omega(n)}-1$,
-hence odd at every $n\ge2$.  Every certificate argument in this development
-opens by selecting a block with even incidence, so all of them fail on that
-one support --- uniformly in the block, not for want of searching.  This says
-nothing about whether the squarefree value is irrational, which is open.  It
-says that one natural dense support sits outside both currently available
-methods, and names why.
+The note also records the achievement-set geometry and exact open dichotomy at
+$1/2$, then proves a method limitation on the squarefree support.  Its divisor
+incidence is $2^{\omega(n)}-1$, hence odd for every $n\ge2$, so the two
+certificate engines requiring first-block divisibility have no instance
+there.  This does not decide the squarefree value; it names exactly which
+methods fail and which weaker engine survives.
 \end{abstract}
 
 \statusboundary
@@ -80,6 +76,36 @@ $\scA_A(n)=\#\{d\mid n: d\in A\}$,
 So \#257 is the question of which $0/1$ weights make a Lambert series
 irrational, and every argument below reads the coefficient sequence
 $\scA_A$ rather than $A$ itself.
+
+\section{Exact period of every finite partial sum}\label{sec:period}
+
+For a finite nonempty $F\subseteq\Npos$ and an integer $b\ge2$, write
+\[
+  x_F(b)=\sum_{n\in F}\frac1{b^n-1}=\frac{N_F}{D_F}
+  \qquad (\gcd(N_F,D_F)=1,\ D_F>0).
+\]
+
+\begin{theorem}[finite-period noncollapse]\label{res:period}
+The reduced denominator is coprime to $b$, and
+\[
+  \operatorname{ord}_{D_F}(b)=\operatorname{lcm}\{n:n\in F\}.
+\]
+Thus cancellation in the numerator never lowers the base-$b$ period below
+the least common multiple of the selected exponents.
+\end{theorem}
+
+\noindent The general theorem is
+\mword{Erdos249257/CertificateKernel.lean}{5091}{finite_period_noncollapse}{checked};
+the reduced-denominator and coprimality forms are
+\mword{Erdos249257/CertificateKernel.lean}{5246}{finite_period_noncollapse_rat_den}{checked}
+and
+\mword{Erdos249257/CertificateKernel.lean}{5061}{coprime_base_reducedDenominator}{checked}.
+This is an unconditional statement about every finite support, not a bounded
+table of examples and not an implication with an open hypothesis.  It does not
+settle any infinite support.  Denominator-period control is part of the
+classical engine behind Erd\H{o}s's 1948 argument; whether this exact sharp
+noncollapse statement appears in the literature has not been assessed, so no
+novelty claim is made here.
 
 \section{The map of settled supports}\label{sec:map}
 
@@ -114,7 +140,7 @@ pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{10448}{irrational_erdosSupportSeries_pairwise_coprime}{checked here} \\
 \midrule
 squarefree numbers & --- & \textbf{Open};
-  outside the engines here (Section~\ref{sec:squarefree}) \\
+  outside two divisibility-first engines here (Section~\ref{sec:squarefree}) \\
 arbitrary infinite $A$ & --- & \textbf{Open} (Problem~\ref{res:problem}) \\
 \bottomrule
 \end{tabular}
@@ -143,7 +169,24 @@ Third, none of this approaches the universal statement.  A list of settled
 families, however long, is a list; Problem~\ref{res:problem} quantifies over
 all infinite $A$, and the gap between the two is not narrowed by adding rows.
 
-\section{A support outside both methods}\label{sec:squarefree}
+\begin{theorem}[periodic signed-weight dichotomy]\label{res:signed}
+Let $u:\Npos\to\mathbb Z$ be periodic and $b\ge2$.  Then
+\[
+  \sum_{n\ge1}\frac{u(n)}{b^n-1}
+\]
+is irrational, or some power of $b$ times this value is an integer.
+\end{theorem}
+
+\noindent This is
+\mword{Erdos249257/CertificateKernel.lean}{13847}{irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic}{checked};
+the source also proves the full-block certificate supply used by the theorem.
+For nonnegative support indicators the terminating alternative is excluded in
+the settled rows above.  For genuinely mixed signs it is not excluded in
+general, so Theorem~\ref{res:signed} is a dichotomy rather than a blanket
+irrationality theorem.  Prior art for this mixed-sign periodic formulation has
+not been assessed.
+
+\section{A support outside two certificate engines}\label{sec:squarefree}
 
 Let $A_{\mathrm{sf}}=\{d\ge2: d\text{ squarefree}\}$.  This is a natural
 support of density $6/\pi^2$ --- far denser than the primes, and not periodic.
@@ -169,13 +212,18 @@ its prime factors
 so the count is $2^{\omega(n)}$; removing $d=1$ leaves an odd number whenever
 $\omega(n)\ge1$.
 
-\begin{corollary}[the engines cannot see this support]\label{res:blind}
-Every certificate construction in this development opens by selecting a block
-position $N$ with $2\mid\scA_A(N+1)$.  By Theorem~\ref{res:sfcount} no such
-$N$ exists for $A_{\mathrm{sf}}$.  The obstruction is uniform in $N$: it is
-not that a search has not gone far enough, but that the required residue never
-occurs.
+\begin{corollary}[two block-certificate engines cannot see this support]\label{res:blind}
+For the squarefree support and every even base $b\ge2$, the digitwise and
+carry-aware block-certificate schemas have no instance already at precision
+$q=b^2$.  Their first-block divisibility condition would require $b$ to divide
+the odd coefficient $\scA_{A_{\mathrm{sf}}}(N+1)$.
 \end{corollary}
+
+\noindent The current source contains direct Lean declarations for both
+exclusions.  They postdate this problem-note series' pinned hyperlink snapshot,
+so they are not hyperlinked here.  The argument does \emph{not} reach the
+divisibility-free low-carry engine, odd bases, the support with $1$ adjoined,
+or methods based on lcm gaps or near-integer estimates.
 
 \noindent We are deliberate about what this does and does not say.
 
@@ -183,11 +231,11 @@ occurs.
 is rational, or that it is hard, or that it is irrational.  That value's status
 is open and this note does not move it.
 
-\emph{It does say} that a specific, fully specified proof method provably
-cannot certify one natural support, for a reason internal to the support
-rather than to the search.  Note also that the obstruction is a parity
-accident rather than a scaling one: the shifted coefficient $2^{\omega(n)}$
-still satisfies $2^{\omega(n)}\le n$
+\emph{It does say} that two fully specified proof schemas provably cannot
+certify one natural support at even bases, for a reason internal to the support
+rather than to the search.  The obstruction is a parity accident rather than
+a scaling one: the shifted coefficient $2^{\omega(n)}$ still satisfies
+$2^{\omega(n)}\le n$
 (\lword{Erdos257/SquarefreeSupportIncidence.lean}{117}{two_pow_card_primeFactors_le}{checked}),
 so it remains inside the coefficient range those arguments require.  Repairing
 the parity is therefore not obviously impossible --- but a repaired first block
@@ -218,6 +266,39 @@ of the greedy expansion at every level
 and exact rational death certificates prove non-membership: $3/4\notin\Ach$
 (\mword{Erdos249257/GreedyAchievementSet.lean}{1748}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
 
+\subsection{Rigidity is hereditary}\label{sec:hereditary}
+
+Problem~\ref{res:problem} quantifies over \emph{every} infinite support, so it
+matters whether the base-$2$ coding survives deleting weights.  It does, and
+the argument is short.  For any set $J$ of future offsets, write
+$T_J(n)=\sum_{k\in J}\wgt{n+k+1}$ for the tail restricted to $J$.
+
+\begin{theorem}[hereditary strict superincreasingness]\label{res:hereditary}
+For every $J\subseteq\N$ and every $n\ge1$, $T_J(n)<\wgt n$.  Consequently the
+digit map is injective on strings supported in $J$: every Mersenne subseries
+retains unique binary coding.
+\end{theorem}
+
+\noindent Checked as
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{27}{selectedMersenneTail_lt_weight}{the hereditary inequality}
+and
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{51}{supportedMersenneDigitValue_injective}{injectivity on a chosen support},
+with summability of the restricted tail at
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{21}{summable_selectedMersenneTail}{Lean}.
+The coding is stated on the subtype of
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{42}{SupportedMersenneDigits}{digit strings vanishing off $J$},
+evaluated by the
+\lword{Erdos257/MersenneSubseriesRigidity.lean}{46}{supportedMersenneDigitValue}{restricted digit map},
+so the statement is about the subseries itself rather than a projection of the
+full one.
+The content is that strict superincreasingness is inherited by \emph{arbitrary}
+subfamilies, not merely by tails: deleting weights can only shrink $T_J(n)$,
+which already sits below $\wgt n$ at the full support.  So no choice of
+infinite $A$ escapes the rigidity used throughout this note, and a
+counterexample to \#257 cannot be sought by weakening the coding.  This
+constrains where a counterexample could live; it does not produce one, and it
+decides no value.
+
 \section{The half-value dichotomy}\label{sec:half}
 
 A rational point of $\Ach$ attained by an infinite support would refute
@@ -243,6 +324,173 @@ witnessed by a finite fatal gap and is therefore semi-decidable, whereas
 membership is an infinite conjunction that no finite computation certifies.
 Computing the greedy orbit further can only ever raise a lower bound on where
 death could occur; it cannot establish survival.
+
+\section{What we need from a mathematician}\label{sec:ask}
+
+Three points in this development stop for mathematical rather than
+engineering reasons.  Each is set out below as a specification: the statement
+wanted, what is already checked around it, which kind of answer would help
+most, and exactly what would follow from one.
+
+Two remarks apply to all three.  Each item is self-contained; answering one
+needs no engagement with the other items, with the Lean sources, or with the
+rest of this note, and an answer in ordinary mathematics is what is being
+asked for.  And a negative answer is worth as much as a positive one: a proof
+that a named route cannot work, or a reference showing it is a known dead
+end, would be acted on by withdrawing the route from this note rather than by
+defending it.
+
+\subsection{A method reaching a support outside both lists}\label{sec:ask:univ}
+
+\emph{Statement wanted.}  An infinite $A\subseteq\Npos$, with a proof that
+$X_A$ is irrational, such that $A$ is not eventually periodic, is not
+pairwise coprime with $\sum_{a\in A}a^{-1}<\infty$, and is neither the primes
+nor the prime powers; better, a theorem covering an infinite class of such
+$A$.  Every family checked here is produced, directly or after a base change,
+by one engine, whose only hypothesis is that for each precision $q$ the
+incidence sequence $\scA_A$ admits a block certificate.  That hypothesis is
+the premise of
+\mword{Erdos249257/CertificateKernel.lean}{8703}{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{irrational erdos support series of weighted coeff certificates}
+and of its carry-aware form
+\mword{Erdos249257/CertificateKernel.lean}{9053}{irrational_erdosSupportSeries_of_weighted_coeff_carry_certificates}{checked}.
+A method that does not factor through certificates at all is equally
+admissible, and would be more informative.
+
+\emph{Already checked.}  The reduction from irrationality to certificate
+supply is proved for every base $b\ge2$; the supply itself, for a general
+$A$, is what is missing, and the theorem statements say so.  The supports for
+which it has been produced are the rows of Section~\ref{sec:map}, and that
+section also records that they neither contain nor are contained in the
+primes and prime powers of~\cite{taoteravainen2025}.  Two constraints on any
+answer are already fixed: every finite partial sum has base-$b$ period exactly
+the least common multiple of its exponents (Theorem~\ref{res:period}), and
+strict superincreasingness is inherited by every subfamily
+(Theorem~\ref{res:hereditary}), so no counterexample can be obtained by
+weakening the binary coding.
+
+\emph{What would help most.}  A reason no single method can reach every
+infinite $A$: for instance an infinite $A$ whose series is irrational but
+which provably admits no certificate of the form above.  That would say the
+engine has the wrong shape rather than too little fuel, and it is the answer
+we are least able to produce ourselves.  Next best, a construction reaching
+one support outside both lists.  A reference doing either is worth as much as
+doing it.
+
+\emph{If it were answered.}  Neither answer closes Problem~\ref{res:problem}.
+A construction adds one row to Section~\ref{sec:map} and settles only the
+class it reaches; as that section says, a list of families does not approach
+a universal statement.  A no-single-method result settles no case of the
+problem at all, and would still be the more useful of the two, because it
+would say which programmes to abandon.
+
+\subsection{The squarefree support, without first-block divisibility}
+\label{sec:ask:sf}
+
+\emph{Statement wanted.}  Decide
+$X_{A_{\mathrm{sf}}}=\sum_{n\ge1}\bigl(2^{\omega(n)}-1\bigr)2^{-n}$ by an
+argument that never requires a first block of coefficients to be divisible by
+the base.  Writing $f(n)=2^{\omega(n)}-1$, the engine that survives
+Corollary~\ref{res:blind} asks, for every $q\ge1$, for $N$, $K\le L$ and $C$
+with
+\[
+  \sum_{r=K+1}^{L}f(N+r)\,2^{L-r}\le C,
+  \qquad
+  V=\Bigl(\sum_{r=1}^{K}f(N+r)\,2^{K-r}\Bigr)\bmod 2^{K},
+\]
+some nonzero coefficient beyond $N+L$, and
+\[
+  q\bigl(V\cdot 2^{L-K}+C+N+L+2\bigr)<2^{L}.
+\]
+Nothing is asked of the first block except that its carry residue $V$ be
+small enough to be absorbed.
+That premise is the hypothesis of
+\mword{Erdos249257/CertificateKernel.lean}{14707}{irrational_coeff_series_of_weighted_coeff_low_carry_block_certificates}{irrational coeff series of weighted coeff low carry block certificates}.
+
+\emph{Already checked.}  The incidence identity $f(n)=2^{\omega(n)}-1$ and
+its oddness for every $n\ge2$ (Theorem~\ref{res:sfcount}), and the resulting
+exclusion of the two divisibility-first engines at every even base
+(Corollary~\ref{res:blind}).  The growth envelope this engine needs,
+$f(n)\le n$, follows from the bound $2^{\omega(n)}\le n$ recorded in
+Section~\ref{sec:squarefree}, so the coefficient sequence is admissible and
+only the certificate supply is missing.  The value itself is open in both
+directions; nothing here bears on which way it goes.
+
+\emph{What would help most.}  A reference.  The function $2^{\omega}$ is
+standard, and $\sum_{n\ge1}2^{\omega(n)}2^{-n}$ differs from
+$X_{A_{\mathrm{sf}}}$ by $\sum_{n\ge1}2^{-n}=1$, so either determines the
+other; if that Lambert-type series has already been treated, the pointer
+retires this item outright.  Failing that, a construction: an explicit supply
+of low-carry certificates for $f$, or any analytic route to the value.
+
+\emph{If it were answered.}  Irrationality of $X_{A_{\mathrm{sf}}}$ closes
+the open row in Section~\ref{sec:map} and item~2 of Section~\ref{sec:open}.
+It does not touch Problem~\ref{res:problem}, which quantifies over all
+infinite supports.  Rationality would answer Problem~\ref{res:problem} in the
+negative, the squarefree numbers being infinite; we have no evidence for
+that, and record it only because the item is two-sided.
+
+\subsection{The two surviving cells at the half value}\label{sec:ask:half}
+
+By Theorem~\ref{res:half}, $1/2\in\Ach$ exactly when the greedy expansion of
+$1/2$ omits infinitely many exponents.  Suppose it does not.  In the
+coordinates this development works in, the expansion is then eventually right
+and has a last non-right transition at some rank $D\ge13$
+(\mword{Erdos249257/HalfCylinderLastProducerContradiction.lean}{178}{exists_last_false_terminal_of_eventuallyRight}{checked}),
+of one of two kinds.  The first kind is excluded unconditionally
+(\mword{Erdos249257/HalfCylinderLastProducerContradiction.lean}{250}{upperProducer_not_last}{checked}).
+The second carries an integer $c(D)$, its producer carry, and the surviving
+obligation is that the complete future divisor-incidence tail from row $2D+2$
+lies strictly below $c(D)$.  That tail is nonnegative, so a cell with
+$c(D)<0$ cannot be settled by the comparison and has to be excluded outright.
+Cell $-3$ has been excluded
+(\mword{Erdos249257/HalfCylinderLastProducerContradiction.lean}{315}{middleProducer_neg_three_not_last}{checked});
+cells $-2$ and $-1$ have not.
+
+\emph{Statement wanted.}  The tail comparison at every last middle transition
+with $D\ge13$ and $c(D)\ne-3$.  That statement is
+\mword{Erdos249257/HalfCylinderLastProducerContradiction.lean}{54}{SeamMiddleProducerTailEscapeExceptNegThree}{seam middle producer tail escape except neg three},
+and it contains three separable pieces of work.
+
+\begin{enumerate}
+\item Cell $-2$ does not occur.  What is checked is a conditional bound: when
+  the lazy support --- the finite word below $D$ together with every rank
+  above $D$ --- has value below $1/2$, a cell $-2$ forces its
+  divisor-incidence tail at row $2D+2$ below $2$
+  (\mword{Erdos249257/HalfCylinderFinalMiddleTailSocket.lean}{56}{binaryCoeffTail_union_Ioi_lt_two_of_producerCarry_eq_neg_two}{Lean}).
+  It is therefore enough to show that same tail is at least $2$, which is
+  done whenever $D\not\equiv2\pmod3$
+  (\mword{Erdos249257/HalfFinalMiddlePhaseSieve.lean}{50}{two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six}{Lean}).
+  A further sieve through rank $26$ leaves $412$ joint residue classes modulo
+  $2730$
+  (\mword{Erdos249257/HalfFinalMiddlePhaseSieve.lean}{2050}{finalMiddleTwentySixPhaseSurvivors_card}{Lean}),
+  and those are not excluded.
+\item Cell $-1$ does not occur.  The same conditional bound holds with
+  threshold $3$
+  (\mword{Erdos249257/HalfCylinderFinalMiddleTailSocket.lean}{74}{binaryCoeffTail_union_Ioi_lt_three_of_producerCarry_eq_neg_one}{Lean}),
+  so a tail of at least $3$ would settle it.  No comparable sieve is recorded
+  for this cell.
+\item The comparison itself at every remaining cell: at every $c(D)\ge0$, and
+  at any cell below $-3$ should one occur.  A cruder sufficient form asks only
+  $c(D)>2\sqrt{2D+2}+4$
+  (\mword{Erdos249257/HalfCylinderLastProducerContradiction.lean}{84}{SeamMiddleProducerSqrtEscape}{Lean}).
+\end{enumerate}
+
+\emph{What would help most.}  Item~3, proved or refuted.  Items~1 and~2 are
+finite-looking and would shrink the obligation, but neither decides anything
+on its own.  A demonstration that the comparison fails at infinitely many
+middle transitions would show the route cannot work, and we would record that
+here.
+
+\emph{If it were answered.}  The three together give $1/2\in\Ach$
+(\mword{Erdos249257/HalfCylinderLastProducerContradiction.lean}{387}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{checked}),
+and by Theorem~\ref{res:half} the support realising it is infinite, so
+Problem~\ref{res:problem} would be answered in the negative.  We attach no
+likelihood to that outcome: the hypothesis is open, and its failure would
+prove nothing about Problem~\ref{res:problem} in either direction.  Taken
+singly the three settle nothing: items~1 and~2 close one branch each and
+decide no value, and item~3 leaves both cells standing.  A proof that
+$1/2\notin\Ach$ would retire this item as well, and by Theorem~\ref{res:half}
+it would take the form of a finite fatal gap in the greedy orbit.
 
 \section{What remains open}\label{sec:open}
 
