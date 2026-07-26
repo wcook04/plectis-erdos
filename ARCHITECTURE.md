@@ -151,7 +151,7 @@ by `docs/methodology.json`.
 ## A complete example
 
 One public claim says that Lean has checked successful finite calculations at
-28 named input values, the largest labelled value being 64.
+every scale up to 82, together with eight small periods and separate shards.
 
 In ordinary language, the record says:
 
@@ -159,10 +159,16 @@ In ordinary language, the record says:
 claim id: certified_kill_instances
 public statement: Lean checked the listed finite cases.
 status: verified finite instance
-bounded range: eight small periods, the 28 scale values, and the shard parameters, all named in the record.
-formal evidence: five named Lean declarations.
+bounded range: eight small periods, every scale value up to 82, and the shard parameters, all named in the record. Nothing is asserted at 83.
+formal evidence: six named Lean declarations.
 still open: prove that successful cases exist beyond every fixed cutoff.
 ```
+
+The range is contiguous rather than a sampled list: the scale quantity changes
+only at prime powers and is constant between them, so the earlier deposits
+through 64 already covered every value up to 66. Each scale is nevertheless an
+independent construction — the two supporting modules share no prime — so the
+band buys reach, not leverage.
 
 The phrase *verified finite instance* is not a score or a project-specific
 milestone. It means only that Lean checked a stated finite set of inputs. The
