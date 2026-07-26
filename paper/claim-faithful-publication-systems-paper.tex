@@ -56,6 +56,9 @@ that this unbounded supply is equivalent to an affirmative answer to
 Erd\H{o}s Problem 249; it does not prove the supply.  A historical false edit
 crossed that boundary without changing Lean and escaped the then-current
 checker.  A repaired negative fixture now rejects that one false neighbour.
+The perimeter is therefore selective in both directions: it grows only when a
+person records a relationship, and it shrinks silently when one is retired,
+since no remaining check demands what is no longer registered.
 This is evidence for a specific failure and repair, not a detection rate,
 semantic-truth certificate, or solution of Problems 249 or 257.
 \end{abstract}
@@ -121,10 +124,7 @@ relationships remain intact before a release.
 \end{quote}
 
 Readers focused on the release design may skip
-Sections~\ref{sec:mathrole}--\ref{sec:formal-evidence}; Section~\ref{sec:record}
-resumes with the reviewed record.  Section~\ref{sec:picture} shows the workflow;
-Sections~\ref{sec:trust}--\ref{sec:limits} give its guarantees, observed failure,
-and limits.
+Sections~\ref{sec:mathrole}--\ref{sec:formal-evidence}.
 
 \section{The release workflow}\label{sec:picture}
 
@@ -592,18 +592,19 @@ because the clause was absent from its checklist.  The escape shows that a
 passing checker does not certify all public prose; it gives no detection rate.
 
 \paragraph{Repair and present witness.}
-The repair made the clause a required anchor.  The current README passes and a
-false copy, the \emph{boundary witness}, fails.  This distinguishes one known
-false neighbour.  The other nine edits were not rerun against the extended
-checklist, so there is no post-repair aggregate result.
+The repair made the clause a required anchor.  The post-repair witness accepts
+the current README and rejects a test copy containing the false clause, so it
+distinguishes one known false neighbour.  The other nine edits were not rerun
+against the extended checklist, so there is no post-repair aggregate result.
 
 \paragraph{Later reconstruction.}
 The executable reconstruction preserves three original targets and uses seven
 documented replacements.  It is a new experiment, not the missing runs.
 
 The evidence marks a coverage boundary, not a reliability score.  The edits
-were authored by the checker's author; human review was omitted, and only five
-of seven relationship kinds were probed.  Reader error, ordinary use, and
+were authored by the checker's author; all seven relationship kinds were
+represented, but five of them by one edit each; and no controlled comparison
+with disciplined manual review was run.  Reader error, ordinary use, and
 transfer were not measured.
 
 \begin{samepage}
@@ -791,7 +792,10 @@ The systems contribution is an executable distinction: declaration inventory
 and routing can be exhaustive while statement-level interpretation and public
 claim review remain selective.  The release gate preserves configured,
 reviewed boundaries and a negative fixture now catches one historically
-escaped strengthening.  It does not establish semantic truth, complete
+escaped strengthening.  The governing rule the failure yields is that an
+assurance perimeter is only ever as wide as the relationships someone chose to
+record, so retiring one is as consequential as adding one and deserves the
+same review.  None of this establishes semantic truth, complete
 selection of public claims, a detection rate, or transfer to another
 repository.  A passing workflow says only that Lean accepted the formal proofs
 and the configured structural checks passed on the named revision.
