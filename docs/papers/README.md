@@ -10,13 +10,21 @@ can read all of them offline.
 
 Three papers, three questions. Pick the question you are actually asking:
 
-### What is mathematically proved about Erdős #249 and #257, and what exactly remains open?
+### What is proved about the dyadic sections of Euler's totient and the finite denominator bound, and what still blocks Erdős #249?
 
-**Exact Reductions for Two Open Irrationality Problems of Erdős**
+**A Basis for the Dyadic Sections of Euler’s Totient**
 
-[full text](full-text/erdos249-257-main-paper.md) · [PDF](../../erdos249-257-main-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex) · 144 sections · `erdos249-257-main` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
 
-The paper's own reading map sends a first pass to [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
+This paper states no reading route. Its evidence boundary is in [Results](full-text/erdos-249-binary-totient-series.md#sec:results), [What we need from a mathematician](full-text/erdos-249-binary-totient-series.md#sec:ask), [What remains open](full-text/erdos-249-binary-totient-series.md#sec:open).
+
+### Which Mersenne-support subseries are settled, what finite-period and achievement-set structure is proved, and what still blocks Erdős #257?
+
+**Settled Supports and Exact Finite Periods**
+
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 14 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+
+This paper states no reading route. Its evidence boundary is in [Exact period of every finite partial sum](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [The map of settled supports](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [What we need from a mathematician](full-text/erdos-257-mersenne-support-subseries.md#sec:ask), [What remains open](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
 ### Lean proves the formal statement — but who checks that the README describes it faithfully?
 
@@ -28,7 +36,7 @@ The paper's own reading map sends a first pass to [The release workflow](full-te
 
 ### What may a stranger conclude from public evidence when the author chose both what to publish and what counts as a pass?
 
-**Plectis: What a Stranger Can Check**
+**Plectis: What a Stranger Can Check What public evidence can and cannot show about a private system**
 
 [full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 25 sections · `plectis-public-system` · mirror to this repository
 
@@ -41,7 +49,8 @@ is proof authority. In order:
 
 > checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition.
 
-- `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
+- `erdos-249-binary-totient-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
+- `erdos-257-mersenne-support-subseries` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, which remains open.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
 
