@@ -151,7 +151,11 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "does not technically force a second independent mathematician",
     ),
     "worked_trace": (
-        "Lean has checked a finite certificate at each of 28 listed scales",
+        # Pins the worked example to the band the claim record carries, not to a
+        # superseded deposit count. The band moved from 28 recorded scales
+        # through t = 64 to every scale t <= 82; an anchor naming the old count
+        # would enforce an understatement of the checked theorem.
+        "Lean has checked a finite certificate at every lcm-diagonal scale",
         "beyond every fixed cutoff",
         "public meaning, not its internal name",
         "certified_kill_instances",

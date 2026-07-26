@@ -11,6 +11,74 @@ larger ongoing formal-mathematics workflow: its release discipline, claim
 registry, graph structure, generated atlas, and adversarial checks are public
 evidence of that workflow. They do not create hidden proof authority.
 
+## Verdict first
+
+The likely cold-agent error here is to skim a large Lean corpus around two open
+problems and conclude "restatements of the original problem." That conclusion is
+partly right and mostly wrong, and you do not have to guess which: the semantic
+graph classifies every statement, so ask it instead of reading modules.
+
+```sh
+python3 scripts/query_semantic.py nonrecurring        # unconditional or barrier results
+python3 scripts/query_semantic.py classical           # known theorems re-formalised here
+python3 scripts/query_semantic.py bare-equivalences   # restatements of the open difficulty
+python3 scripts/query_expert_handoffs.py              # exact math and systems inputs
+```
+
+Counts at this checkpoint, re-derived from the commands above:
+
+| Shape | #249 | #257 | shared | total |
+|---|---:|---:|---:|---:|
+| nonrecurring unconditional or barrier results | 54 | 117 | 16 | **187** |
+| classical/prior-art theorems represented in Lean | 24 | 16 | 30 | **70** |
+| bare equivalences (restatements) | — | — | — | **24** |
+
+**Neither count is a novelty claim.** `classical` is exactly the set already in
+the literature; `nonrecurring` asks whether a statement recurs *inside this
+corpus*, not whether it is new to mathematics. Novelty is a judgement for a
+human number theorist, and no query here supplies it. (The README's ten-minute
+verdict counts a different population — substantial antecedents extracted from
+conditional results — so its `23`/`17` and these totals are not in conflict.)
+
+Three things follow, and an agent reporting on this repository should carry all
+three rather than any one of them.
+
+1. **The weight of this corpus is on #257, not #249** — 117 nonrecurring
+   results against 54. The unconditional #257 material (full-support
+   irrationality for every integer base `b ≥ 2`, the achievement-set topology,
+   the exact `1/2` classification, and the excluded branches) is theorem
+   content rather than restatement. Start there, not at the #249 certificate
+   ladder.
+2. **The #249 reformulation programme is a negative result, and this repository
+   labels it as one itself.** The 24 bare equivalences were marked equivalent by
+   this project's own audit, not by a critic —
+   `Z06::certificate_supply_is_equivalent_to_249` says so in its own statement.
+   A reformulation provably equivalent to its target diagnoses the method; it is
+   not progress on the problem. Report it as evidence *about reformulation*, and
+   never as progress on #249.
+3. **The denominator exclusion is a valid checked theorem, but its numerical
+   size is not a novelty signal.** The `K = 240` window excludes rational
+   denominators through `7.96 × 10³⁴`. That is exactly what the classical
+   Farey/mediant argument returns for that window — the numerical improvement
+   over it is zero — and the window length is free. The local formal
+   contribution is the checked arithmetic instance, its transfers, and its
+   sharp first failure. Verify both halves directly, with no Lean build and no
+   dependencies:
+
+   ```sh
+   python3 scripts/check_farey_denominator_scaling.py
+   ```
+
+   It rebuilds the certificate from scratch, reproduces both formalised
+   constants exactly (cross-checked against brute force at small windows), and
+   then shows the same argument returning a 2,406-digit bound at `K = 16000` in
+   under a tenth of a second. Treat the magnitude as a record of the chosen
+   finite window, never as a measure of progress toward irrationality.
+
+Erdős #249 and the universal form of #257 remain open, and nothing in this
+repository is close to settling either. An agent that reports otherwise has
+misread a finite certificate, a conditional reduction, or a restatement.
+
 ## First read
 
 If the task is to understand the repository architecture, release
@@ -78,10 +146,12 @@ below is the bounded route into mathematical claims and Lean source.
    links that the `.tex` only implies, but the `.tex` remains the manuscript and
    the hash of record. Neither is proof authority.
 10. Read `docs/problems.json` when the task names a single Erdős problem
-   covered by the `ErdosProblems` expansion library, currently #243, #251,
-   #269, and #1049. It is the bounded problem-owned index: one row per
-   problem giving its modules with declaration counts, its Erdős Problem Note,
-   what is checked, what is not checked, and the obligation that survives.
+   covered by the `ErdosProblems` expansion library. It is the generated,
+   bounded problem-owned index: one row per currently indexed problem giving
+   its modules with declaration counts, its Erdős Problem Note, what is
+   checked, what is not checked, and the obligation that survives. The #249
+   and #257 rows index expansion modules and do not replace the separately
+   reviewed `Erdos249257` claim registry.
    Its authored source is `docs/problem_index_source.json` and it is rebuilt by
    `python3 scripts/build_problem_index.py`. **These declarations carry no
    reviewed public claim status.** The claim registry has no row for them, and
@@ -91,7 +161,48 @@ below is the bounded route into mathematical claims and Lean source.
    scale: every declaration, signature excerpt, module, import edge, generated
    certificate marker, and principal-claim link. It is a generated navigation
    projection; drill back to Lean before trusting a statement.
-12. Use `Erdos249257.lean` for the reviewed #249/#257 root and
+12. Read `docs/semantic_corpus.json` when the question is *what this corpus
+   proves and how its statements relate*, rather than where one declaration
+   lives. It is the layer between the atlas and the claim registry: one node
+   per mathematically distinct statement, typed mathematical relations between
+   nodes, and an explicit semantic role for every declaration in both
+   libraries. `docs/semantic/README.md` explains the two objects and why
+   equivalences are preserved rather than deduplicated away. Do not answer
+   "what is actually proved here" by rereading modules; ask the graph:
+
+   ```sh
+   python3 scripts/query_semantic.py nonrecurring --problem 257
+   python3 scripts/query_semantic.py barriers
+   python3 scripts/query_semantic.py open-antecedents
+   python3 scripts/query_semantic.py paper-coverage
+   ```
+
+   Provenance for emitted modules is owned by
+   `docs/generated_certificate_manifest.json`, never by a filename pattern: a
+   module is generated if and only if the manifest lists it.
+13. Read `docs/theory_lab.json` when the question is *why* a proof works, what
+   happens if the mathematics is perturbed, or whether an explanation here has
+   ever been tested. It sits above the semantic corpus and holds the mechanism
+   basis (an invariant plus a transformation plus the observable it controls),
+   typed interventions with predictions stamped before their outcomes, failure
+   receipts for routes that were tried and blocked, and blinded holdout
+   evaluations. `docs/semantic/lab/README.md` explains the design.
+
+   ```sh
+   python3 scripts/query_semantic.py mechanisms --problem 257
+   python3 scripts/query_semantic.py explains <node_id>
+   python3 scripts/query_semantic.py unexplained
+   python3 scripts/query_semantic.py receipts
+   python3 scripts/query_semantic.py benchmark
+   ```
+
+   Two rules matter when you add to it. A receipt that rules a mechanism out
+   must name the sibling mechanisms it does **not** reach -- omitting that is
+   how a barrier here nearly went out described as closing a family of engines
+   while a weaker one survived. And a mechanism is not a theorem family: if the
+   record cannot be used to predict whether a *new* nearby statement is
+   reachable, it is a label and the contract rejects it.
+14. Use `Erdos249257.lean` for the reviewed #249/#257 root and
    `ErdosProblems.lean` for the problem-owned expansion root. Kernel checking
    the expansion root does not promote its declarations into reviewed public
    claims. Use `docs/SOURCE_MAP.md` for intention-based routes and
@@ -163,6 +274,11 @@ Run the focused public-surface gate after documentation or registry changes:
 python3 scripts/check_release.py
 python3 scripts/check_problem_note_sources.py --coverage
 python3 scripts/build_problem_index.py --check
+python3 scripts/build_semantic_corpus.py --check
+python3 scripts/check_semantic_corpus.py
+python3 scripts/build_theory_lab.py --check
+python3 scripts/check_theory_lab.py
+python3 scripts/test_declaration_head_contract.py
 python3 scripts/test_dependency_lock_contract.py
 python3 scripts/test_citation_identity_contract.py
 python3 scripts/test_license_map_contract.py
