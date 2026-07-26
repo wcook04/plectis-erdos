@@ -301,8 +301,8 @@ def validate_systems_evidence_source(
         ),
         "coverage boundary": r"coverage boundary, not a reliability score",
         "post-repair example": (
-            r"post-repair witness accepts the current readme and rejects a "
-            r"test copy containing the false clause"
+            r"the current readme passes and a false copy, the boundary witness, "
+            r"fails"
         ),
     }
     for label, pattern in required_patterns.items():

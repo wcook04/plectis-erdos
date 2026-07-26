@@ -943,10 +943,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:10f4b035a1c24403b559684bd8297eb717bea801f0553ba0d719db7805af60ab",
+      "source_sha256": "sha256:867f45fe1d1f6321bd95f8f3b6919d9a83bfd4e349bf2a19ceeb948cabf622ba",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
-      "section_count": 23,
+      "section_count": 24,
       "sections": [
         {
           "level": 1,
@@ -982,115 +982,121 @@
           "level": 2,
           "id": "sec:formal-evidence",
           "title": "The formal evidence",
-          "line": 88
+          "line": 87
+        },
+        {
+          "level": 2,
+          "id": "sec:semantic-coverage",
+          "title": "Four meanings of coverage",
+          "line": 95
         },
         {
           "level": 2,
           "id": "sec:record",
           "title": "The reviewed record",
-          "line": 94
+          "line": 103
         },
         {
           "level": 2,
           "id": "what-the-checker-verifies-here",
           "title": "What the checker verifies here",
-          "line": 121
+          "line": 130
         },
         {
           "level": 1,
           "id": "sec:trust",
           "title": "What the checks establish",
-          "line": 127
+          "line": 136
         },
         {
           "level": 1,
           "id": "sec:failure",
           "title": "A boundary the checklist missed",
-          "line": 156
+          "line": 165
         },
         {
           "level": 4,
           "id": "historical-exercise.",
           "title": "Historical exercise.",
-          "line": 162
+          "line": 171
         },
         {
           "level": 4,
           "id": "repair-and-present-witness.",
           "title": "Repair and present witness.",
-          "line": 170
+          "line": 179
         },
         {
           "level": 4,
           "id": "later-reconstruction.",
           "title": "Later reconstruction.",
-          "line": 176
+          "line": 185
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Scope, reuse, and limits",
-          "line": 196
+          "line": 205
         },
         {
           "level": 4,
           "id": "the-failures-the-design-addresses.",
           "title": "The failures the design addresses.",
-          "line": 200
+          "line": 209
         },
         {
           "level": 4,
           "id": "the-failures-it-does-not-address.",
           "title": "The failures it does not address.",
-          "line": 206
+          "line": 215
         },
         {
           "level": 4,
           "id": "limits-of-the-design-and-this-implementation.",
           "title": "Limits of the design and this implementation.",
-          "line": 212
+          "line": 221
         },
         {
           "level": 4,
           "id": "reuse.",
           "title": "Reuse.",
-          "line": 218
+          "line": 227
         },
         {
           "level": 4,
           "id": "what-is-not-established.",
           "title": "What is not established.",
-          "line": 226
+          "line": 235
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Related systems",
-          "line": 232
+          "line": 241
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 248
+          "line": 259
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 258
+          "line": 267
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 264
+          "line": 273
         }
       ],
-      "citations_rendered": 14,
+      "citations_rendered": 15,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:7a4055a8e0789910077744ac11ce46d47974a820a341dfafe9f9c4d5b26eaa04",
-      "pdf_byte_count": 102858,
+      "pdf_sha256": "sha256:8c37a7c2f35915573f2571eb8ca190a031837063f351fea235f68bfe01c5aa84",
+      "pdf_byte_count": 102791,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1103,17 +1109,17 @@
           {
             "id": "sec:record",
             "title": "The reviewed record",
-            "line": 94
+            "line": 103
           },
           {
             "id": "sec:trust",
             "title": "What the checks establish",
-            "line": 127
+            "line": 136
           },
           {
             "id": "sec:limits",
             "title": "Scope, reuse, and limits",
-            "line": 196
+            "line": 205
           }
         ],
         "unresolved_count": 0
