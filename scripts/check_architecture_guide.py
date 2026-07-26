@@ -155,7 +155,10 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
         "does not technically force a second independent mathematician",
     ),
     "worked_trace": (
-        "Lean has checked a finite certificate at each of 28 listed scales",
+        # The historical deposits were recorded at 28 breakpoints through
+        # t = 64.  The current theorem covers every scale t <= 82, so pin the
+        # public semantic boundary rather than a superseded deposit count.
+        "Lean has checked a finite certificate at every lcm-diagonal scale",
         "beyond every fixed cutoff",
         "public meaning, not its internal name",
         "certified_kill_instances",

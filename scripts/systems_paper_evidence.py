@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -104,31 +105,54 @@ def validate_systems_paper_evidence(
     return errors
 
 
+def reflow_tolerant_replace(
+    source: str, phrase: str, replacement: str, count: int = 1
+) -> str:
+    """Replace ``phrase`` treating each gap between words as any whitespace.
+
+    LaTeX paragraphs get rewrapped freely, so a fixture anchored on a literal
+    line break stops mutating the moment the text reflows: the "mutated" copy
+    becomes byte-identical to the source and the check can no longer fail.
+    That is the silent-decay failure the paper itself warns about, and it has
+    happened here once.  Matching whitespace flexibly keeps every fixture armed
+    across rewrapping, and can only widen what the anchor finds, never narrow
+    it.  A phrase that is genuinely gone still leaves the source unchanged, so
+    the ``_anchor_missing`` detection below is preserved.
+    """
+    pattern = r"\s+".join(re.escape(word) for word in phrase.split())
+    return re.sub(pattern, lambda _match: replacement, source, count=count)
+
+
 def mutation_fixture_failures() -> list[str]:
     """Ensure known paper/evidence disagreements remain rejectable."""
     source = PAPER_PATH.read_text(encoding="utf-8")
+    logs_retained = reflow_tolerant_replace(
+        source,
+        "original run logs were not retained",
+        "original run logs were retained",
+        count=0,
+    )
     fixtures = {
-        "historical_outcome_inverted": source.replace(
+        "historical_outcome_inverted": reflow_tolerant_replace(
+            source,
             "nine of the ten edits were rejected",
             "all ten edits were rejected",
-            1,
         ),
-        "original_logs_claimed_retained": source.replace(
-            "original run logs were not retained",
-            "original run logs were retained",
-        ).replace(
+        "original_logs_claimed_retained": reflow_tolerant_replace(
+            logs_retained,
             "Original run logs were not retained",
             "Original run logs were retained",
+            count=0,
         ),
-        "post_repair_rerun_ceiling_removed": source.replace(
+        "post_repair_rerun_ceiling_removed": reflow_tolerant_replace(
+            source,
             "The other nine edits",
             "The other edits",
-            1,
         ),
-        "mutation_author_dependence_removed": source.replace(
-            "The edits were authored\nby the checker's author",
+        "mutation_author_dependence_removed": reflow_tolerant_replace(
+            source,
+            "The edits were authored by the checker's author",
             "The edits were independently authored",
-            1,
         ),
     }
     failures: list[str] = []
