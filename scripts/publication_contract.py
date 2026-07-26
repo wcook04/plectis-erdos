@@ -143,6 +143,37 @@ class RepositoryReader:
             == 0
         )
 
+    def is_shallow_repository(self) -> bool:
+        completed = subprocess.run(
+            ["git", "rev-parse", "--is-shallow-repository"],
+            cwd=self.root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        return completed.returncode == 0 and completed.stdout.strip() == "true"
+
+    @staticmethod
+    def git_object_unavailable_message(
+        object_name: str,
+        *,
+        shallow: bool,
+    ) -> str:
+        if shallow:
+            return (
+                f"{object_name} is outside this shallow clone; run "
+                "`git fetch --unshallow origin` and rerun the check"
+            )
+        return f"{object_name} is absent"
+
+    def git_object_unavailable_detail(self, object_name: str) -> str | None:
+        if self.git_object_exists(object_name):
+            return None
+        return self.git_object_unavailable_message(
+            object_name,
+            shallow=self.is_shallow_repository(),
+        )
+
 
 def sha256(data: bytes) -> str:
     return "sha256:" + hashlib.sha256(data).hexdigest()
@@ -424,19 +455,25 @@ def validate_mutation_evidence_receipt(
         errors.append("publication evidence negative-fixture count drifted")
 
     corpus_snapshot = evaluation.get("corpus_snapshot", {})
-    try:
-        checkpoint_reader = RepositoryReader(
-            reader.root,
-            evaluation.get("checkpoint"),
-        )
-        checkpoint_claims = load_json(checkpoint_reader, CLAIMS_PATH)
-        checkpoint_atlas = load_json(
-            checkpoint_reader,
-            "docs/declaration_atlas.json",
-        )
-    except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
-        errors.append(f"publication evidence checkpoint census is unreadable: {error}")
-    else:
+    checkpoint = str(evaluation.get("checkpoint") or "")
+    unavailable_detail = reader.git_object_unavailable_detail(checkpoint)
+    checkpoint_claims: dict[str, Any] | None = None
+    checkpoint_atlas: dict[str, Any] | None = None
+    if unavailable_detail is None:
+        try:
+            checkpoint_reader = RepositoryReader(reader.root, checkpoint)
+            checkpoint_claims = load_json(checkpoint_reader, CLAIMS_PATH)
+            checkpoint_atlas = load_json(
+                checkpoint_reader,
+                "docs/declaration_atlas.json",
+            )
+        except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
+            errors.append(
+                f"publication evidence checkpoint census is unreadable: {error}"
+            )
+            checkpoint_claims = None
+            checkpoint_atlas = None
+    if checkpoint_claims is not None and checkpoint_atlas is not None:
         atlas_summary = checkpoint_atlas["summary"]
         assembly = checkpoint_claims["machine_readable_paper"][
             "publication_assembly"
@@ -1067,16 +1104,23 @@ def validate_publication_contract(
             )
             continue
         checkpoint = evidence.get("evaluation_checkpoint", "")
+        unavailable_detail: str | None = None
         if not isinstance(checkpoint, str) or not re.fullmatch(
             r"[0-9a-f]{40}", checkpoint
         ):
             errors.append(
                 f"systems artifact {artifact['id']!r} has an invalid evaluation checkpoint"
             )
-        elif not reader.git_object_exists(checkpoint):
+        else:
+            unavailable_detail = reader.git_object_unavailable_detail(checkpoint)
+        if (
+            isinstance(checkpoint, str)
+            and re.fullmatch(r"[0-9a-f]{40}", checkpoint)
+            and unavailable_detail is not None
+        ):
             errors.append(
-                f"systems artifact {artifact['id']!r} evaluation checkpoint is absent: "
-                f"{checkpoint}"
+                f"systems artifact {artifact['id']!r} evaluation checkpoint "
+                f"{unavailable_detail}"
             )
         if evidence.get("release_check_count_at_evaluation") != 5207:
             errors.append(
@@ -1139,6 +1183,24 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     """Return fixture names whose known-bad mutation was not rejected."""
     contract = load_json(reader, CONTRACT_PATH)
     failures: list[str] = []
+
+    checkpoint = "0" * 40
+    shallow_message = RepositoryReader.git_object_unavailable_message(
+        checkpoint,
+        shallow=True,
+    )
+    if (
+        checkpoint not in shallow_message
+        or "`git fetch --unshallow origin`" not in shallow_message
+        or "shallow clone" not in shallow_message
+    ):
+        failures.append("shallow_checkpoint_recovery_diagnostic")
+    full_history_message = RepositoryReader.git_object_unavailable_message(
+        checkpoint,
+        shallow=False,
+    )
+    if full_history_message != f"{checkpoint} is absent":
+        failures.append("missing_checkpoint_full_history_diagnostic")
 
     missing = copy.deepcopy(contract)
     missing["artifacts"] = [
