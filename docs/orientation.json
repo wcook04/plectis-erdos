@@ -174,7 +174,7 @@
   },
   {
    "id": "denominator_exclusion",
-   "status": "unconditional progress",
+   "status": "formalised here",
    "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality.",
    "paper_label": "res:farey",
    "declarations": [

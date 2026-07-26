@@ -9410,7 +9410,7 @@
     {
       "id": "totient_carry_kernel_anti_compression",
       "label": "Unconditional carry-kernel anti-compression",
-      "status": "unconditional progress",
+      "status": "proved here",
       "statement": "If the totient coefficient series were rational, one positive-multiplier tempered integral carry would have canonical carry-section span dimension at least 2^e − 1 for every e. The all-level kernel-independence producer is supplied by the CRT–Dirichlet minor theorem. No finite-rank bound for every rationality-supplied carry is proved, so this is an infinite anti-compression barrier rather than an irrationality criterion for S.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
@@ -9433,7 +9433,7 @@
     {
       "id": "denominator_exclusion",
       "label": "Unconditional denominator exclusion for the totient constant",
-      "status": "unconditional progress",
+      "status": "formalised here",
       "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"

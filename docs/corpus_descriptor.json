@@ -47,7 +47,7 @@
 },
 "claims_document": {
 "path": "docs/claims.json",
-"content_digest": "sha256:905fab397fb8bb9c651d856e27b8ebb89ff3e6b041d36a9e742a29c655eeb140"
+"content_digest": "sha256:869b8bd4472a4cb5edb261f5bb5a9910d23b23e7b1bc47b5602e645490a85389"
 },
 "declaration_atlas": {
 "path": "docs/declaration_atlas.json",
@@ -60,7 +60,7 @@
 },
 "bounded_orientation": {
 "path": "docs/orientation.json",
-"content_digest": "sha256:036f07d8c6694d49f59ffbf07291829aaa54368d65244f7ccf877f6b07ec7ff5"
+"content_digest": "sha256:409bf7f1c0f98a2238411bd3f76c94b508c3b0afae7bfa81ecb5efadf083470c"
 },
 "human_exposition": {
 "source_path": "paper/erdos249-257-main-paper.tex",
@@ -217,7 +217,7 @@
 },
 {
 "id": "denominator_exclusion",
-"status": "unconditional progress",
+"status": "formalised here",
 "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality.",
 "paper_label": "res:farey",
 "declarations": [

@@ -115,19 +115,30 @@ follows by finite character of linear independence.
 \mword{Erdos249257/TotientMahlerDefect.lean}{900}{linearIndependent_canonicalTotientKernelFamily}{independence},
 \mword{Erdos249257/TotientMahlerDefect.lean}{954}{finrank_canonicalTotientKernel_eq}{dimension}.}
 
-\item\label{res:denominator} \stag{unconditional progress}
+\emph{Taxonomy adjudication for \ref{res:basis}--\ref{res:rank}.}
+The registry groups these declarations with broader certificate and
+infinite-dimensional consequences under one coarse
+\emph{unconditional progress} claim.  The two rows above deliberately use
+\emph{proved here}: for the narrower basis and exact-rank propositions this
+records kernel acceptance and makes no novelty assertion.  Promoting either
+split row would require a separate prior-art judgement, not merely a
+declaration link.
+
+\item\label{res:denominator} \stag{formalised here}
 \textbf{Denominator exclusion, sharp for its window.}  If $\Stot=a/q$ with
 $a\in\Z$ and $q\ge1$ then
 $q>79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053\approx7.96\times10^{34}$.
 The constant is optimal for the window producing it: the next integer up is
 the exact first denominator at which that window's certificate fails.  The
-method is Farey (Section~\ref{sec:denominator}).
+method is Farey (Section~\ref{sec:denominator}).  Here \emph{formalised here}
+is the registry's evidence-status label: known mathematics represented and
+checked in Lean, not a novelty claim; the method is classical.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/CertificateKernel.lean}{18043}{tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053}{exclusion},
 \mword{Erdos249257/CertificateKernel.lean}{18056}{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{reduced-denominator form},
 \mword{Erdos249257/GapFareyBound.lean}{225}{gap_check_window_1_240_first_failure}{first failure}.}
 
-\item\label{res:carryrank} \stag{unconditional progress}
+\item\label{res:carryrank} \stag{proved here}
 \textbf{Carry anti-compression.}  If $\Stot$ were rational then some tempered
 integral carry orbit for the coefficients $\ph$, with positive multiplier,
 would have for \emph{every} $e$ carry sections through level $e$ spanning a
@@ -135,7 +146,11 @@ space of dimension at least $2^e-1$.
 \emph{Closes:} every rationality proof that would exhibit a carry of bounded
 section rank.  \emph{Does not close:} anything else --- it is not an
 irrationality criterion, because no finite-rank upper bound is proved for the
-carries that rationality supplies.
+carries that rationality supplies.  The proposition is unconditional in its
+hypotheses, but its proof is routine transport from \ref{res:rank} and has no
+separate prior-art assessment; \emph{proved here} therefore records kernel
+acceptance without making the stronger contribution judgement
+\emph{unconditional progress}.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/TotientCarryKernelRigidity.lean}{284}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
 \mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{rank transport from \ref{res:rank}}.}
@@ -181,7 +196,10 @@ from a supply of gap certificates --- one window $(N,K)$ per denominator $q$
 whose totient carry residue avoids a band of width $q(N{+}K{+}2)$ out of $2^K$.
 Neither hypothesis is proved for one unbounded family.  Both are restatements
 of \#249 in other coordinates, and are the part of this work most likely to be
-mistaken for a result.
+mistaken for a result.  The mixed tag is intentional: it classifies the
+open-target content of the row.  Lean proves the exact equivalence and
+completeness statements, but the required unbounded certificate supply remains
+open; proved exactness does not make the reduction unconditional.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/LcmConeFlatness.lean}{399}{irrational_totient_series_iff_pointwise_certificates}{the equivalence},
 \mword{Erdos249257/CertificateKernel.lean}{15697}{irrational_tsum_totient_div_pow_two_of_gap_certificate_supply}{the supply implication}.}
