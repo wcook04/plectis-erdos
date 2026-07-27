@@ -19,23 +19,23 @@
   "version": "0.6.0",
   "tag": "v0.6.0",
   "lean_toolchain": "leanprover/lean4:v4.29.1",
-  "formal_source_ref": "ebc98ee71f6819bd9fe344a0bb343542c604e533",
+  "formal_source_ref": "35c358a85bdbd12afbaac685ec331185549d3d99",
   "formal_source_publication_state": "published_committed_checkpoint"
  },
  "scale": {
-  "module_count": 635,
-  "declaration_count": 12578,
-  "theorem_like_count": 11539,
+  "module_count": 653,
+  "declaration_count": 12887,
+  "theorem_like_count": 11760,
   "generated_certificate_declaration_count": 2925,
   "principal_claim_link_count": 299,
   "kind_counts": {
-   "abbrev": 9,
-   "def": 992,
+   "abbrev": 11,
+   "def": 1077,
    "inductive": 4,
    "instance": 5,
    "lemma": 354,
-   "structure": 29,
-   "theorem": 11185
+   "structure": 30,
+   "theorem": 11406
   }
  },
  "status_taxonomy": {
@@ -56,7 +56,7 @@
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "Erd\\H{o}s \\#249",
-    "line": 3650
+    "line": 4149
    }
   },
   {
@@ -67,7 +67,7 @@
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "unbounded certificate supply",
-    "line": 3661
+    "line": 4160
    }
   },
   {
@@ -78,7 +78,7 @@
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "the half-value counterexample route",
-    "line": 3685
+    "line": 4184
    }
   },
   {
@@ -89,7 +89,7 @@
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "universal Erd\\H{o}s \\#257",
-    "line": 3676
+    "line": 4175
    }
   }
  ],
@@ -568,9 +568,9 @@
   "blocked_decisions": []
  },
  "source_revision": {
-  "formal_source_ref": "ebc98ee71f6819bd9fe344a0bb343542c604e533",
-  "committed_navigation_snapshot": "dc6cbb62eac7f8bf12b9af0257bc7f679f615ce8",
-  "main_paper_source_digest": "sha256:4386d1db57deea87ea9d0b483147806ee4a1e4c7c3edeca28f1471d25872f260"
+  "formal_source_ref": "35c358a85bdbd12afbaac685ec331185549d3d99",
+  "committed_navigation_snapshot": "ff45f413a5564f7008f5c741c45fde46db3cc57f",
+  "main_paper_source_digest": "sha256:9f554940b526788e14a944d94768d784e8350b9d543655a816bc275ec9639da3"
  },
  "reading_routes": [
   {
@@ -720,7 +720,11 @@
   "paper_source_sigils": "paper/module-aliases.json",
   "source_by_question": "docs/SOURCE_MAP.md",
   "development_chronology": "docs/WAVE_INDEX.md",
-  "supported_root_import": "Erdos249257.lean"
+  "supported_root_import": "Erdos249257.lean",
+  "supported_root_imports": [
+   "Erdos249257.lean",
+   "ErdosProblems.lean"
+  ]
  },
  "checks": {
   "release": "python3 scripts/check_release.py",

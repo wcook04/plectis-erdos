@@ -4,21 +4,21 @@
   "projection_not_authority": true,
   "proof_authority": "Lean source checked by the pinned Lean kernel",
   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
-  "source_fingerprint": "sha256:760bddff8abb34fe56b62dd312aa651b3a886ac94199dd926a9efe731f577e04",
+  "source_fingerprint": "sha256:ca3a6d67d01af8cf44172fe521713e6c3546964b1365f936ba84afb45e37ef05",
   "summary": {
     "module_count": 653,
-    "declaration_count": 12921,
-    "theorem_like_count": 11784,
+    "declaration_count": 12887,
+    "theorem_like_count": 11760,
     "generated_certificate_declaration_count": 2925,
     "principal_claim_link_count": 299,
     "kind_counts": {
       "abbrev": 11,
-      "def": 1087,
+      "def": 1077,
       "inductive": 4,
       "instance": 5,
       "lemma": 354,
       "structure": 30,
-      "theorem": 11430
+      "theorem": 11406
     }
   },
   "modules": [
@@ -8026,13 +8026,12 @@
       "id": "ErdosProblems.Erdos269.RestrictedFloorSum",
       "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
       "imports": [
-        "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
         "ErdosProblems.Erdos269.ResidueEscape"
       ],
-      "declaration_count": 41,
+      "declaration_count": 7,
       "kind_counts": {
-        "def": 13,
-        "theorem": 28
+        "def": 3,
+        "theorem": 4
       }
     },
     {
@@ -8051,6 +8050,7 @@
       "imports": [
         "ErdosProblems.Erdos243.ReciprocalTailRigidity",
         "ErdosProblems.Erdos243.FiniteHorizonResidue",
+        "ErdosProblems.Erdos243.SparseResetRecovery",
         "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
         "ErdosProblems.Erdos249.FiniteEulerSieve",
         "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
@@ -140260,454 +140260,81 @@
       "docstring": "Integer-valued form of the finite contradiction."
     },
     {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:23:strictSmoothExponents",
-      "name": "strictSmoothExponents",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 23,
-      "signature": "def strictSmoothExponents (p q r x : ℕ) : Finset (ℕ × ℕ × ℕ)",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Strict `{p,q,r}`-smooth exponent prefix. The ambient exponent box of side `x` is deliberately redundant; it gives a finite, integer-only carrier for the strict inequality used by the returned floor-sum formula."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:28:smoothCountLT",
-      "name": "smoothCountLT",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 28,
-      "signature": "def smoothCountLT (p q r x : ℕ) : ℕ",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Exact strict smooth-number count in the finite exponent model."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:34:smoothCountLT_swap_first_second",
-      "name": "smoothCountLT_swap_first_second",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 34,
-      "signature": "theorem smoothCountLT_swap_first_second (p q r x : ℕ) : smoothCountLT p q r x = smoothCountLT q p r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Swapping the first two prime channels does not change the strict smooth count. This lets pure-power formulas use the jumping prime as their logarithm base on either endpoint of a shell."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:67:strictSmoothExponents_mono",
-      "name": "strictSmoothExponents_mono",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 67,
-      "signature": "theorem strictSmoothExponents_mono (p q r : ℕ) {x y : ℕ} (hxy : x ≤ y) : strictSmoothExponents p q r x ⊆ strictSmoothExponents p q r y",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The strict exponent prefixes are monotone in their cutoff."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:84:strictSmoothShell",
-      "name": "strictSmoothShell",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 84,
-      "signature": "def strictSmoothShell (p q r x y : ℕ) : Finset (ℕ × ℕ × ℕ)",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Exact shell between two strict cutoffs."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:90:strictSmoothShell_card",
-      "name": "strictSmoothShell_card",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 90,
-      "signature": "theorem strictSmoothShell_card (p q r : ℕ) {x y : ℕ} (hxy : x ≤ y) : (strictSmoothShell p q r x y).card = smoothCountLT p q r y - smoothCountLT p q r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Shell cardinality is exactly the difference of the two strict counting functions. This is the finite set-theoretic core of `m_N = Ψ(u_{N+1}) - Ψ(u_N)`."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:98:restrictedPurePowerCount",
-      "name": "restrictedPurePowerCount",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 98,
-      "signature": "def restrictedPurePowerCount (p q r a : ℕ) : ℕ",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Restricted count at a pure `p`-power cutoff. This is the integer carrier whose two-dimensional floor-sum evaluation is the next formalization seam."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:101:smoothCountLT_pow_eq_restrictedPurePowerCount",
-      "name": "smoothCountLT_pow_eq_restrictedPurePowerCount",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 101,
-      "signature": "theorem smoothCountLT_pow_eq_restrictedPurePowerCount (p q r a : ℕ) : smoothCountLT p q r (p ^ a) = restrictedPurePowerCount p q r a",
-      "generated_certificate": false,
-      "claim_ids": []
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:110:strictSmoothPairs",
-      "name": "strictSmoothPairs",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 110,
-      "signature": "def strictSmoothPairs (q r x : ℕ) : Finset (ℕ × ℕ)",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The admissible `(q,r)` exponent pairs below a strict cutoff. Once such a pair is fixed, only the remaining `p`-exponent has to be counted."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:116:strictSmoothPairs_mono",
-      "name": "strictSmoothPairs_mono",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 116,
-      "signature": "theorem strictSmoothPairs_mono (q r : ℕ) {x y : ℕ} (hxy : x ≤ y) : strictSmoothPairs q r x ⊆ strictSmoothPairs q r y",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The admissible two-dimensional exponent pairs are monotone in the cutoff."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:130:restrictedFiberCount",
-      "name": "restrictedFiberCount",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 130,
-      "signature": "def restrictedFiberCount (p q r x : ℕ) : ℕ",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The restricted two-dimensional fiber sum: for every admissible `(q,r)` pair, count exactly the `p`-exponents that keep the smooth value below `x`. This is an integer-only version of the returned restricted floor sum."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:137:strictPExponentFiber",
-      "name": "strictPExponentFiber",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 137,
-      "signature": "def strictPExponentFiber (p q r x : ℕ) (e : ℕ × ℕ) : Finset ℕ",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The explicit one-dimensional `p`-exponent fiber over a fixed `(q,r)` pair."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:143:strictPExponentFiber_card_at_pow",
-      "name": "strictPExponentFiber_card_at_pow",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 143,
-      "signature": "theorem strictPExponentFiber_card_at_pow (p q r a : ℕ) {e : ℕ × ℕ} (hp : 1 < p) (hq : 0 < q) (hr : 0 < r) (he : e ∈ strictSmoothPairs q r (p ^ a)) : (strictPExponentFiber p q r (p ^ a) e).card = a - Nat.log p (q ^ e.1 * r ^ e.2)",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "A one-dimensional exponent fiber at a pure power cutoff has the exact length predicted by the natural logarithm."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:184:restrictedFloorSum",
-      "name": "restrictedFloorSum",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 184,
-      "signature": "def restrictedFloorSum (p q r x : ℕ) : ℕ",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The literal restricted two-dimensional floor sum: sum the sizes of the explicit `p`-exponent fibers over all admissible `(q,r)` pairs."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:191:restrictedLogFloorSum",
-      "name": "restrictedLogFloorSum",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 191,
-      "signature": "def restrictedLogFloorSum (p q r a : ℕ) : ℕ",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Closed natural-log form of the restricted floor sum at the pure cutoff `p^a`. Every summand is the exact number of admissible `p`-exponents above the fixed `(q,r)` pair."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:196:restrictedFloorSum_pow_eq_restrictedLogFloorSum",
-      "name": "restrictedFloorSum_pow_eq_restrictedLogFloorSum",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 196,
-      "signature": "theorem restrictedFloorSum_pow_eq_restrictedLogFloorSum (p q r a : ℕ) (hp : 1 < p) (hq : 0 < q) (hr : 0 < r) : restrictedFloorSum p q r (p ^ a) = restrictedLogFloorSum p q r a",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The explicit fiber sum at `p^a` is exactly its closed logarithmic form."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:209:restrictedLogFloorSum_succ_sub",
-      "name": "restrictedLogFloorSum_succ_sub",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 209,
-      "signature": "theorem restrictedLogFloorSum_succ_sub (p q r a : ℕ) (hp : 1 < p) (hq : 1 < q) (hr : 1 < r) : restrictedLogFloorSum p q r (a + 1) - restrictedLogFloorSum p q r a = (strictSmoothPairs q r (p ^ (a + 1))).card",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Exact discrete derivative of the restricted floor sums. This is the returned identity `V_p(a+1) - V_p(a) = W_p(a+1)`, with `W_p(a+1)` represented by the cardinality of the admissible `(q,r)` exponent pairs below `p^(a+1)`."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:280:strictSmoothExponent_fiber_card",
-      "name": "strictSmoothExponent_fiber_card",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 280,
-      "signature": "theorem strictSmoothExponent_fiber_card (p q r x : ℕ) {e : ℕ × ℕ} (he : e ∈ strictSmoothPairs q r x) : ((strictSmoothExponents p q r x).filter fun z => (z.2.1, z.2.2) = e).card = (strictPExponentFiber p q r x e).card",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The abstract projection fiber is exactly the explicit `p`-exponent fiber."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:316:restrictedFiberCount_eq_restrictedFloorSum",
-      "name": "restrictedFiberCount_eq_restrictedFloorSum",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 316,
-      "signature": "theorem restrictedFiberCount_eq_restrictedFloorSum (p q r x : ℕ) : restrictedFiberCount p q r x = restrictedFloorSum p q r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Replacing every projection fiber by its explicit exponent count turns the abstract fiber decomposition into the returned restricted floor sum."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:327:smoothCountLT_eq_restrictedFiberCount",
-      "name": "smoothCountLT_eq_restrictedFiberCount",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 327,
-      "signature": "theorem smoothCountLT_eq_restrictedFiberCount (p q r x : ℕ) (hp : 0 < p) : smoothCountLT p q r x = restrictedFiberCount p q r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Exact dimension reduction of the three-prime smooth count to a restricted two-dimensional sum of one-dimensional fibers."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:347:smoothCountLT_eq_restrictedFloorSum",
-      "name": "smoothCountLT_eq_restrictedFloorSum",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 347,
-      "signature": "theorem smoothCountLT_eq_restrictedFloorSum (p q r x : ℕ) (hp : 0 < p) : smoothCountLT p q r x = restrictedFloorSum p q r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Exact restricted two-dimensional floor-sum formula for the strict three-prime smooth count."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:355:restrictedPurePowerCount_eq_fiberSum",
-      "name": "restrictedPurePowerCount_eq_fiberSum",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 355,
-      "signature": "theorem restrictedPurePowerCount_eq_fiberSum (p q r a : ℕ) (hp : 0 < p) : restrictedPurePowerCount p q r a = restrictedFiberCount p q r (p ^ a)",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "At a pure `p`-power cutoff, the exact restricted count is therefore the returned two-dimensional fiber sum."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:362:restrictedPurePowerCount_eq_restrictedFloorSum",
-      "name": "restrictedPurePowerCount_eq_restrictedFloorSum",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 362,
-      "signature": "theorem restrictedPurePowerCount_eq_restrictedFloorSum (p q r a : ℕ) (hp : 0 < p) : restrictedPurePowerCount p q r a = restrictedFloorSum p q r (p ^ a)",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "At a pure `p`-power cutoff, the exact count is the literal restricted two-dimensional floor sum."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:370:restrictedPurePowerCount_eq_restrictedLogFloorSum",
-      "name": "restrictedPurePowerCount_eq_restrictedLogFloorSum",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 370,
-      "signature": "theorem restrictedPurePowerCount_eq_restrictedLogFloorSum (p q r a : ℕ) (hp : 1 < p) (hq : 0 < q) (hr : 0 < r) : restrictedPurePowerCount p q r a = restrictedLogFloorSum p q r a",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Kernel-checked form of the returned identity `Ψ(p^a) = V_p(a)`: the strict three-prime smooth count at a pure power equals the explicit restricted two-dimensional natural-log floor sum."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:380:strictSmoothShell_card_eq_restrictedFiberCount_sub",
-      "name": "strictSmoothShell_card_eq_restrictedFiberCount_sub",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 380,
-      "signature": "theorem strictSmoothShell_card_eq_restrictedFiberCount_sub (p q r : ℕ) (hp : 0 < p) {x y : ℕ} (hxy : x ≤ y) : (strictSmoothShell p q r x y).card = restrictedFiberCount p q r y - restrictedFiberCount p q r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The exact pure-power shell is the difference of two restricted two-dimensional fiber sums. This is the kernel-checked form of the returned identity `m_N = V_q(b) - V_p(a)` before choosing adjacent jump labels."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:390:strictSmoothShell_card_eq_restrictedFloorSum_sub",
-      "name": "strictSmoothShell_card_eq_restrictedFloorSum_sub",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 390,
-      "signature": "theorem strictSmoothShell_card_eq_restrictedFloorSum_sub (p q r : ℕ) (hp : 0 < p) {x y : ℕ} (hxy : x ≤ y) : (strictSmoothShell p q r x y).card = restrictedFloorSum p q r y - restrictedFloorSum p q r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Exact shell multiplicity as a difference of two literal restricted two-dimensional floor sums."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:400:strictSmoothShell_card_between_purePowers",
-      "name": "strictSmoothShell_card_between_purePowers",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 400,
-      "signature": "theorem strictSmoothShell_card_between_purePowers (p q r a b : ℕ) (hp : 1 < p) (hq : 1 < q) (hr : 0 < r) (hpq : p ^ a ≤ q ^ b) : (strictSmoothShell p q r (p ^ a) (q ^ b)).card = restrictedLogFloorSum q p r b - restrictedLogFloorSum p q r a",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "If a shell runs from a pure `p`-power to a pure `q`-power, its multiplicity is exactly `V_q(b) - V_p(a)` in the returned notation."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:417:windowBase",
+      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:16:windowBase",
       "name": "windowBase",
       "kind": "def",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 417,
-      "signature": "def windowBase (b : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 1 | len + 1 => b (lo + len) * windowBase b lo len /-- Affine forcing accumulated across the same local window. -/ def windowForcing (b e : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0 | len + 1 => b (lo + len) * windowForcing b e lo len + e (lo + len) /-- Weighted correction emitted when the forcing word is a discrete derivative `V(n+1)-V(n)`. Recursively this is the local weighted sum of the interior potentials with coefficients `(b_n-1)` and all later bases. -/ def windowPotentialCorrection (b V : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0",
+      "line": 16,
+      "signature": "def windowBase (b : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 1 | len + 1 => b (lo + len) * windowBase b lo len /-- Affine forcing accumulated across the same local window. -/ def windowForcing (b e : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0 | len + 1 => b (lo + len) * windowForcing b e lo len + e (lo + len) /-- Any first-order affine recurrence unrolls exactly into the local base and local forcing. -/ theorem affineRecurrence_window (A b e : ℕ → ℤ) (lo len : ℕ) (hrec : ∀ n, A (n + 1) = b n * A n + e n) :",
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Multiplicative base accumulated across a local window."
     },
     {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:422:windowForcing",
+      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:21:windowForcing",
       "name": "windowForcing",
       "kind": "def",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 422,
-      "signature": "def windowForcing (b e : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0 | len + 1 => b (lo + len) * windowForcing b e lo len + e (lo + len) /-- Weighted correction emitted when the forcing word is a discrete derivative `V(n+1)-V(n)`. Recursively this is the local weighted sum of the interior potentials with coefficients `(b_n-1)` and all later bases. -/ def windowPotentialCorrection (b V : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0 | len + 1 => b (lo + len) * windowPotentialCorrection b V lo len + (b (lo + len) - 1) * V (lo + len) /-- Exact summation-by-parts expansion of a local forcing numerator whose",
+      "line": 21,
+      "signature": "def windowForcing (b e : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0 | len + 1 => b (lo + len) * windowForcing b e lo len + e (lo + len) /-- Any first-order affine recurrence unrolls exactly into the local base and local forcing. -/ theorem affineRecurrence_window (A b e : ℕ → ℤ) (lo len : ℕ) (hrec : ∀ n, A (n + 1) = b n * A n + e n) : A (lo + len) = windowBase b lo len * A lo + windowForcing b e lo len",
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Affine forcing accumulated across the same local window."
     },
     {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:429:windowPotentialCorrection",
-      "name": "windowPotentialCorrection",
-      "kind": "def",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 429,
-      "signature": "def windowPotentialCorrection (b V : ℕ → ℤ) (lo : ℕ) : ℕ → ℤ | 0 => 0 | len + 1 => b (lo + len) * windowPotentialCorrection b V lo len + (b (lo + len) - 1) * V (lo + len) /-- Exact summation-by-parts expansion of a local forcing numerator whose digits are consecutive differences of a potential. This is the recursive, division-free form of the packet's weighted floor-sum formula for `R_(lo,h)`. -/ theorem windowForcing_difference_eq_potential (b V : ℕ → ℤ) (lo len : ℕ) : windowForcing b (fun n => V (n + 1) - V n) lo len = V (lo + len) - windowBase b lo len * V lo +",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Weighted correction emitted when the forcing word is a discrete derivative `V(n+1)-V(n)`. Recursively this is the local weighted sum of the interior potentials with coefficients `(b_n-1)` and all later bases."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:439:windowForcing_difference_eq_potential",
-      "name": "windowForcing_difference_eq_potential",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 439,
-      "signature": "theorem windowForcing_difference_eq_potential (b V : ℕ → ℤ) (lo len : ℕ) : windowForcing b (fun n => V (n + 1) - V n) lo len = V (lo + len) - windowBase b lo len * V lo + windowPotentialCorrection b V lo len",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Exact summation-by-parts expansion of a local forcing numerator whose digits are consecutive differences of a potential. This is the recursive, division-free form of the packet's weighted floor-sum formula for `R_(lo,h)`."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:455:affineRecurrence_window",
+      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:27:affineRecurrence_window",
       "name": "affineRecurrence_window",
       "kind": "theorem",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 455,
+      "line": 27,
       "signature": "theorem affineRecurrence_window (A b e : ℕ → ℤ) (lo len : ℕ) (hrec : ∀ n, A (n + 1) = b n * A n + e n) : A (lo + len) = windowBase b lo len * A lo + windowForcing b e lo len",
       "generated_certificate": false,
       "claim_ids": [],
-      "docstring": "Any first-order affine recurrence unrolls exactly into the local base and local forcing. This is the algebraic heart of the logarithmic-window compression and is independent of the still-open floor-sum anti-concentration producer."
+      "docstring": "Any first-order affine recurrence unrolls exactly into the local base and local forcing."
     },
     {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:469:windowForcing_const_mul",
+      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:41:windowForcing_const_mul",
       "name": "windowForcing_const_mul",
       "kind": "theorem",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 469,
+      "line": 41,
       "signature": "theorem windowForcing_const_mul (b e : ℕ → ℤ) (B : ℤ) (lo len : ℕ) : windowForcing b (fun n => B * e n) lo len = B * windowForcing b e lo len",
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Scaling every forcing term scales the accumulated local numerator by the same constant."
     },
     {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:480:integralCarry_window",
+      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:52:integralCarry_window",
       "name": "integralCarry_window",
       "kind": "theorem",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 480,
+      "line": 52,
       "signature": "theorem integralCarry_window (c b m : ℕ → ℤ) (B : ℤ) (lo len : ℕ) (hrec : ∀ n, c (n + 1) = b n * c n - B * m n) : c (lo + len) = windowBase b lo len * c lo - B * windowForcing b m lo len",
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Integral-carry form of the local-window identity."
     },
     {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:497:integralCarry_window_potential",
-      "name": "integralCarry_window_potential",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 497,
-      "signature": "theorem integralCarry_window_potential (c b V : ℕ → ℤ) (B : ℤ) (lo len : ℕ) (hrec : ∀ n, c (n + 1) = b n * c n - B * (V (n + 1) - V n)) : c (lo + len) = windowBase b lo len * c lo - B * (V (lo + len) - windowBase b lo len * V lo + windowPotentialCorrection b V lo len)",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "When shell multiplicities are exact differences of smooth-count potentials, the integral-carry window is an explicit weighted potential identity."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:513:smooth3Val_dvd_threePrimeHeight_of_le",
-      "name": "smooth3Val_dvd_threePrimeHeight_of_le",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 513,
-      "signature": "theorem smooth3Val_dvd_threePrimeHeight_of_le {p q r i j k x : ℕ} (hp : 1 < p) (hq : 1 < q) (hr : 1 < r) (hcut : smooth3Val p q r i j k ≤ x) : smooth3Val p q r i j k ∣ threePrimeHeight p q r x",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Any fixed `{p,q,r}`-smooth factor divides the running three-prime height as soon as the cutoff reaches that factor. This is the exact absorption step used before cancelling the smooth part of a hypothetical denominator."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:546:integralCarry_cancel_commonFactor",
-      "name": "integralCarry_cancel_commonFactor",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 546,
-      "signature": "theorem integralCarry_cancel_commonFactor (c d b m : ℕ → ℤ) (smoothFactor reducedDenominator : ℤ) (hsmooth : smoothFactor ≠ 0) (hfactor : ∀ n, c n = smoothFactor * d n) (hrec : ∀ n, c (n + 1) = b n * c n - (smoothFactor * reducedDenominator) * m n) : ∀ n, d (n + 1) = b n * d n - reducedDenominator * m n",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Cancel a common nonzero factor from every state of an integral carry recurrence. In the packet application, `smoothFactor` is the absorbed `{2,3,5}`-smooth part of a hypothetical denominator and `reducedDenominator` is therefore coprime to `30`."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:566:reducedCarry_pos_le_of_commonFactor",
-      "name": "reducedCarry_pos_le_of_commonFactor",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 566,
-      "signature": "theorem reducedCarry_pos_le_of_commonFactor {c d smoothFactor reducedDenominator K : ℤ} (hsmooth : 0 < smoothFactor) (hfactor : c = smoothFactor * d) (hcpos : 0 < c) (hcbound : c ≤ smoothFactor * (reducedDenominator * K)) : 0 < d ∧ d ≤ reducedDenominator * K",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "Positivity and an upper bound descend through the same positive common factor. This is the exact bound transfer `0 < c_n ≤ B_sm B_0 K_n` to `0 < d_n ≤ B_0 K_n`."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:577:reducedIntegralCarry_window",
-      "name": "reducedIntegralCarry_window",
-      "kind": "theorem",
-      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 577,
-      "signature": "theorem reducedIntegralCarry_window (c d b m : ℕ → ℤ) (smoothFactor reducedDenominator : ℤ) (hsmooth : smoothFactor ≠ 0) (hfactor : ∀ n, c n = smoothFactor * d n) (hrec : ∀ n, c (n + 1) = b n * c n - (smoothFactor * reducedDenominator) * m n) (lo len : ℕ) : d (lo + len) = windowBase b lo len * d lo - reducedDenominator * windowForcing b m lo len",
-      "generated_certificate": false,
-      "claim_ids": [],
-      "docstring": "The reduced carry therefore inherits the exact logarithmic-window identity with the reduced denominator as multiplier."
-    },
-    {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:594:CofinalLocalWindowEscape",
+      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:69:CofinalLocalWindowEscape",
       "name": "CofinalLocalWindowEscape",
       "kind": "def",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 594,
+      "line": 69,
       "signature": "def CofinalLocalWindowEscape (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ) : Prop",
       "generated_certificate": false,
       "claim_ids": [],
-      "docstring": "The exact remaining producer after local-window compression. It is kept as a named proposition, not asserted as a theorem."
+      "docstring": "The exact remaining producer after local-window compression. The short bound is denominator-dependent because a rational carry bound scales with the reduced denominator `B`."
     },
     {
-      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:610:no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+      "id": "ErdosProblems/Erdos269/RestrictedFloorSum.lean:83:no_positive_reducedCarry_of_cofinalLocalWindowEscape",
       "name": "no_positive_reducedCarry_of_cofinalLocalWindowEscape",
       "kind": "theorem",
       "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
-      "line": 610,
+      "line": 83,
       "signature": "theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ) (hescape : CofinalLocalWindowEscape b m shortBound) (B : ℕ) (hBpos : 0 < B) (hBcoprime : Nat.Coprime B 30) (d : ℕ → ℤ) (hrec : ∀ n, d (n + 1) = (b n : ℤ) * d n - (B : ℤ) * (m n : ℤ)) (hpos : ∀ n, 0 < d n) (hbound : ∀ n, Int.natAbs (d n) ≤ shortBound B n) : False",
       "generated_certificate": false,
       "claim_ids": [],
-      "docstring": "The denominator-dependent local-window producer is exactly strong enough to rule out a positive reduced carry with the matching short bound. The coprimality hypothesis belongs to the still-open producer; the checked consumer uses only the emitted escaping window."
+      "docstring": "A denominator-dependent cofinal local-window escape rules out every positive reduced carry satisfying the matching bound."
     },
     {
       "id": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:31:smooth3Val",

@@ -876,16 +876,28 @@
             "thesis": "The centred integer state and defect identity, absorption of a vanishing state, descent for the nonnegative case, and exclusion of the negative case when its magnitude is constant, periodic, or bounded, the last conditional on two assumed analytic inputs; unbounded negative excursions survive."
           },
           {
+            "id": "erdos_249_note",
+            "source": "paper/erdos-249-binary-totient-series.tex",
+            "decision": "retain_as_problem_owned_note",
+            "thesis": "A standalone theorem-led account of the exact dyadic-section ranks, infinite-dimensionality, explicit denominator exclusion, finite Euler-sieve identities, and scoped method boundaries for the still-open totient constant."
+          },
+          {
             "id": "erdos_251_note",
             "source": "paper/erdos-251-prime-gap-dyadic-series.tex",
             "decision": "retain_as_problem_owned_note",
             "thesis": "The exact finite prime-gap summation by parts with its endpoint retained, the integral-shift criterion and its totient consequence for an abstract dyadic tail recurrence, and the free-carry telescoping identity that closes the periodicity route."
           },
           {
+            "id": "erdos_257_note",
+            "source": "paper/erdos-257-mersenne-support-subseries.tex",
+            "decision": "retain_as_problem_owned_note",
+            "thesis": "A standalone theorem-led account of finite-period noncollapse, settled support families, finite-change invariance, achievement-set geometry, and the precise surviving boundary for universal Erdős Problem 257."
+          },
+          {
             "id": "erdos_269_note",
             "source": "paper/erdos-269-three-prime-running-lcm.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The running least common multiple of a three-prime smooth prefix as a product of maximal pure powers, its logarithmic cells, jump ratios and jump count, the finite height-fibre normal form, the quadratic shell bound, and the non-separation witness at 2, 3, 5."
+            "thesis": "The running least common multiple of a three-prime smooth prefix, its dyadic radix alphabet and finite height-fibre structure, and the conditional reduction from an arbitrary rational denominator to a coprime reduced carry; actual carry divisibility and cofinal window escape remain open."
           },
           {
             "id": "erdos_1049_note",
@@ -7037,7 +7049,6 @@
           "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "ErdosProblems.Erdos269.ResidueEscape"
           ]
         },
@@ -7054,6 +7065,7 @@
           "imports": [
             "ErdosProblems.Erdos243.ReciprocalTailRigidity",
             "ErdosProblems.Erdos243.FiniteHorizonResidue",
+            "ErdosProblems.Erdos243.SparseResetRecovery",
             "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
             "ErdosProblems.Erdos249.FiniteEulerSieve",
             "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
@@ -7666,7 +7678,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "ebc98ee71f6819bd9fe344a0bb343542c604e533",
+      "ref": "35c358a85bdbd12afbaac685ec331185549d3d99",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint"
@@ -7702,7 +7714,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4150
+        "line": 4149
       }
     },
     {
@@ -7713,7 +7725,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4161
+        "line": 4160
       }
     },
     {
@@ -7724,7 +7736,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4185
+        "line": 4184
       }
     },
     {
@@ -7735,7 +7747,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4176
+        "line": 4175
       }
     }
   ],

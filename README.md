@@ -66,22 +66,20 @@ conclusion depends on a named open condition.
 
 ### Other exact mathematics in the corpus
 
-| Package | Exact checked content | Boundary |
-|---|---|---|
-| Fair-coin coprimality | For independent waiting times with `P(X=n)=2⁻ⁿ`, `S = 1/2 + P(gcd(X,Y)=1)`. The probability has no rational representation with denominator at most `39 819 823 323 350 687 661 677 887 437 915 526`. | Irrationality of the probability, and hence of `S`, remains open. |
-| Squared-Lambert gcd moments | `∑ 1/(2ᵈ-1)² = ∑ (σ(n)-τ(n))/2ⁿ` and `∑ φ(d)/(2ᵈ-1)² = ∑ (P(n)-n)/2ⁿ`, where `P` is Pillai's gcd-sum function. | These identities do not transfer the cited irrationality of the first series to the open Möbius-weighted row. |
-| Stern–Brocot cylinder law | Positive reduced slopes have total Mersenne weight one. Each cylinder splits exactly into a stop mass and two children; the depth-`d` error is at most `(2/3)^d` times the cylinder mass and tends to zero. | This is an exact probability/continued-fraction package, not an irrationality theorem or novelty claim. |
-| Fibonacci/continuant run stability | `r` nonempty alternating runs have height at least `F_{r+3}`, with equality on the all-unit spine. Defects `eᵢ` give an exact multiaffine expansion, gain at least `F_{r+1}∑eᵢ`, and have one-site weight `F_{i+2}F_{r-i+1}`. The first induced run layer has mass `1/2`. | The natural denominator exponent is `F_{r+3}-2`; no theorem here says the analytic run tail survives denominator clearing. |
-| Tempered binary tail rigidity | For every coefficient sequence with `c(n) ≤ n`, `∑ c(n)/2ⁿ` is rational exactly when there is a tempered integer carry orbit; every such orbit is the scaled tail itself. | This is a general rationality classification. Applying it still requires problem-specific control of the resulting orbit. |
-| Exact Möbius-shadow denominator | The reduced denominator of the lcm-height scaled Möbius shadow is computed exactly; an explicit upper-half product of Mersenne factors divides it and gives a quantitative lower bound. | This is denominator survival on the diagonal reduction, not the missing unbounded avoidance supply. |
-| Scalar-localisation height obstruction | If `H ∣ x.den` and `(c·x).den ∣ H`, then `x.den/H ∣ |c|`: denominator clearing transfers the complement into the coefficient. | Local height obstruction, not an irrationality criterion. |
+The corpus also contains checked packages for fair-coin coprimality,
+squared-Lambert gcd moments, Stern–Brocot cylinders, continuant run stability,
+tempered binary tails, exact Möbius-shadow denominators, and scalar-localisation
+height obstructions. These are supporting identities or conditional
+interfaces, not solutions of #249 or #257. The
+[orientation](docs/ORIENTATION.md) gives their exact statements, boundaries,
+and source routes without expanding the first-contact README.
 
-Typed routes expose sources: `probabilistic_gcd_geometry` for the first four
-rows, `boolean_mobius_constraints` for tail rigidity, and
-`arithmetic_obstruction_interfaces` for the last two. Orientation lists
-eventually-periodic nonnegative weighted irrationality, a signed
-irrational-or-base-terminating dichotomy, five binary-carry
-criteria/consequences, and two scoped #249 no-go countermodels.
+Exact routed anchors include the Stern–Brocot cylinder law with error
+`(2/3)^d`, Fibonacci/continuant run stability with lower bound `F_{r+3}`,
+tempered binary tail rigidity, eventually-periodic nonnegative weighted
+irrationality, a signed irrational-or-base-terminating dichotomy, five
+binary-carry criteria/consequences, two scoped #249 no-go countermodels, the
+exact Möbius-shadow denominator, and the scalar-localisation height obstruction.
 
 An exact final-skip band formula does not show that the actual orbit avoids
 an unsafe band.
@@ -106,9 +104,9 @@ an unsafe band.
 
 | Library | Current size |
 |---|---:|
-| Lean modules | 635 |
-| Formal results and supporting lemmas | 11,539 |
-| Curated claim records | 99 |
+| Lean modules | 653 |
+| Formal results and supporting lemmas | 11,760 |
+| Curated claim records | 100 |
 | Contribution families | 21 |
 
 Claim records span every status, including cited and open, and are partitioned
@@ -138,36 +136,10 @@ exactly once. These are navigation counts, not novelty claims.
 
 The package has two supported roots. [`Erdos249257.lean`](Erdos249257.lean)
 preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](ErdosProblems.lean)
-is the problem-owned expansion surface: each new line of work lives under its
-actual Erdős problem number instead of being folded into the historical
-#249/#257 tree. Kernel checking of that second root establishes its exact Lean
-propositions; it does not by itself promote them into the reviewed public claim
-record or claim that an open problem is solved. The source has five
-reader-facing layers:
-
-- **Assembled kernel.** [`CertificateKernel.lean`](Erdos249257/CertificateKernel.lean)
-  contains the common series machinery, the full-support Erdős-Borwein theorem,
-  named support-family interfaces, and the unconditional #249 denominator
-  exclusion.
-- **The #249 reduction spine.** The period-killer, lcm-diagonal, cone, diagonal
-  pincer, fresh-loss, and transport modules turn the open irrationality problem
-  into exact certificate or avoidance obligations. Finite certificate modules
-  verify explicit parameters; they do not supply the unbounded family that the
-  reduction requires.
-- **The #257 carry trunk.** The tail-orbit, achievement-set, Boolean-Möbius
-  carry, reciprocal-mass, and divisor-coverage modules describe what a rational
-  support value would force. They give exact criteria and necessary conditions,
-  not the universal #257 theorem.
-- **The reading layer.** The exposition gives the mathematical account; the
-  [source map](docs/SOURCE_MAP.md) gives code routes, and the declaration index
-  supplies exact Lean names.
-- **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded
-  formal results and explicit open frontiers for one problem at a time. New
-  entries stay outside the reviewed claim registry until human mathematical
-  review establishes their intended meaning and public framing. The #249 and
-  #257 directories deliberately coexist with the historical root: they expose
-  the newly assimilated theorem producers without deleting, renaming, or
-  weakening the reviewed integration corpus.
+is the problem-owned expansion surface. Kernel checking establishes its exact
+propositions; it does not promote them into reviewed public claims or close an
+open problem. The [source map](docs/SOURCE_MAP.md) orders the proof modules, and
+the problem notes give the shorter mathematical routes.
 
 [`docs/SOURCE_MAP.md`](docs/SOURCE_MAP.md) gives the exact module order within
 each band. [`docs/WAVE_INDEX.md`](docs/WAVE_INDEX.md) gives the development

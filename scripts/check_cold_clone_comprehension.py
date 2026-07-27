@@ -344,7 +344,10 @@ def validate_gateway_opening(paper: str) -> None:
             [r"Irrationality in \#249 & Open"],
             [r"Denominator exclusion & Proved"],
             [r"q>\Qzero"],
-            ["28 diagonal certificates"],
+            [
+                "28 diagonal certificates",
+                r"diagonal certificate at every scale \(t\le82\)",
+            ],
             [r"Universal assertion in \#257 & Open"],
             ["Prior work/formalised"],
             ["Open; exact reductions"],

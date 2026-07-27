@@ -35,8 +35,8 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public checkpoint: tag formal-source-2026-07-18 points to this source commit.
-\newcommand{\commit}{ebc98ee71f6819bd9fe344a0bb343542c604e533}
-\newcommand{\commitshort}{ebc98ee71f68}
+\newcommand{\commit}{35c358a85bdbd12afbaac685ec331185549d3d99}
+\newcommand{\commitshort}{35c358a85bdb}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main}
@@ -2146,8 +2146,7 @@ property of \(S\).  What the formalisation adds is that each threshold is
 kernel-checked and sharp for its window, the next denominator provably failing
 the gap certificate.  Farey's 1816 note supplies the historical terminology for
 neighbouring fractions~\cite{farey1816}.  Every exclusion in this ladder is
-Lean-checked, and
-\path{scripts/check_farey_denominator_scaling.py} reproduces both constants
+Lean-checked, and a deterministic integer checker reproduces both constants
 from scratch and exhibits the scaling.  The first threshold is a direct
 low-carry check,
 $2^{22}$ is retained as a named intermediate corollary, and the two largest

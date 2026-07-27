@@ -802,7 +802,7 @@ def build() -> dict[str, Any]:
 
 
 def render() -> str:
-    return json.dumps(build(), ensure_ascii=False, indent=0) + "\n"
+    return json.dumps(build(), ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
 def main() -> int:
