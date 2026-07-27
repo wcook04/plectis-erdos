@@ -72,10 +72,12 @@ Finally we correct a frontier this note previously misreported.  The
 squarefree support was listed here as open; Duverney and Tachiya settled it at
 base~$2$ in 2019.  Its divisor incidence $2^{\omega(n)}-1$ is odd for every
 $n\ge2$, so the two block-certificate engines that require first-block
-divisibility provably have no instance at any even base --- on a value now
-known to be irrational.  Adjoining $1$ to the support changes the value by the
-rational $1/(b-1)$ and the incidence by one, so that obstruction is a property
-of a normalisation and not of the value.
+divisibility provably have no instance at any even base; at $b=2$, where the
+value is now known to be irrational, that exhibits both engines failing on a
+settled value.  Adjoining $1$ to the support changes the value by the rational
+$1/(b-1)$ and the incidence by one, so the obstruction is a property of a
+normalisation and not of the value.  Rationality is in fact invariant under
+every finite change of support, which is the general form of that observation.
 \end{abstract}
 
 \statusboundary
@@ -134,10 +136,13 @@ and the growth clause is
 The content is a noncollapse statement.  Clearing denominators over
 $b^{\lcm(F)}-1$ makes the period at most $\lcm(F)$ immediately; what is not
 immediate is that cancellation in the numerator cannot bring it below.  The
-mechanism is that each selected exponent contributes a prime-power witness of
-exactly its own order --- a primitive divisor of $b^{n}-1$, in the cyclotomic
-sense --- and no single reduction can remove all of them at once.  The growth
-clause then follows formally, since the order divides $\ph(D_F)<D_F$.
+mechanism is that each selected exponent $n$ contributes, by the cyclotomic
+route, a prime-power modulus dividing $b^{n}-1$ on which $b$ has order exactly
+$n$; no single reduction can remove all of them at once.  Prime powers rather
+than primes is not a technicality.  At $(b,n)=(2,6)$ no prime divisor of
+$2^6-1=63$ has order $6$ --- the Zsigmondy exception --- while $9$ does, and it
+is the prime power that carries the witness.  The growth clause then follows
+formally, since the order divides $\ph(D_F)<D_F$.
 
 Two boundaries.  This is an unconditional statement about every finite
 support, not a bounded table of examples, and not an implication with an open
@@ -266,7 +271,7 @@ they narrow it.
 \section{The settled supports, by mechanism}\label{sec:map}
 
 The supports for which irrationality is known are more usefully grouped by the
-argument that reaches them than counted.  There are four mechanisms.
+argument that reaches them than counted.  There are five mechanisms.
 
 \begin{table}[h]
 \centering
@@ -558,10 +563,19 @@ $\sum_{\ell>n}\wgt\ell<\wgt n$ opens a gap at every level, while the total
 measure is not lost.  The division of credit is exact.  The strict inequality,
 the resulting distinctness of subsums over distinct supports, and the Cantor
 conclusion are Remark 4.1 of Kova\v{c} and Tao~\cite{kovactao}; no novelty is
-claimed for any of the three.  That remark makes no metric assertion, and the
-measure of $\Ach$ is not determined by the topology --- Cantor sets built this
-way are generically null --- so the measure-one clause is added here rather
-than formalised from there.
+claimed for any of the three.  That remark makes no metric assertion, and
+strict tail domination does not determine the measure: the weights $3^{-n}$
+satisfy $\sum_{\ell>n}3^{-\ell}=3^{-n}/2<3^{-n}$ and produce a null achievement
+set, the base-$3$ digits-in-$\{0,1\}$ Cantor set.  So the measure-one clause is
+added here rather than formalised from there, and it is the arithmetic of the
+Mersenne weights that supplies it.  With $T_n=\sum_{k>n}\wgt k$, the standard
+level-$n$ convex-hull cover consists of $2^n$ disjoint intervals of length
+$T_n$, its nested intersection is $\Ach$, and
+\[
+  2^nT_n=\sum_{j\ge1}\frac{2^n}{2^{n+j}-1}\longrightarrow\sum_{j\ge1}2^{-j}=1,
+\]
+dominated by $2^{1-j}$.  Continuity of measure from above therefore gives
+$\lambda(\Ach)=1$.
 
 Membership is equivalent to survival of the greedy expansion at every level
 (\mword{Erdos249257/GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}),
@@ -635,7 +649,15 @@ That closes the sign-truncation construction; it excludes no other support.
 
 \section{The exact frontier}\label{sec:open}
 
-Two propositions remain, and they are logically independent of each other.
+Two propositions remain.  They are not independent, and the relation between
+them is asymmetric.  No finite support has value $1/2$
+(Theorem~\ref{res:half}), so $1/2\in\Ach$ would exhibit an \emph{infinite}
+support with a rational value and thereby refute
+Problem~\ref{res:problem}; equivalently, a positive answer to
+Problem~\ref{res:problem} puts $1/2$ outside $\Ach$.  The converse direction
+carries nothing: $1/2\notin\Ach$ eliminates one candidate and leaves the
+universal statement exactly where it was.  The half-value question is
+therefore a one-sided test of \#257, not a second problem beside it.
 
 \begin{enumerate}
 \item \textbf{Problem~\ref{res:problem} itself}, for arbitrary infinite $A$.
@@ -675,6 +697,17 @@ prose rather than checked statements; each is drawn from the checked lemmas
 cited beside it or from the cited literature.  Results attributed to Duverney
 and Tachiya, to Tao and Ter\"av\"ainen, to Luca and Tachiya, and to Kova\v{c}
 and Tao are cited from the literature and are not formalised here.
+
+\emph{Scope of the AI declaration.}  The note on the first page states that the
+prose was model-generated.  The scope is wider than that sentence alone
+conveys, and the wider statement is the accurate one: large-language-model
+agents assisted throughout, drafting and revising this exposition, the Lean
+developments it links to, and the repository software that checks them.  Will
+Cook set the objectives, selected and reviewed the public claims, checked the
+cited literature, and authorised this manuscript, and is responsible for its
+contents.  Formal authority is the pinned kernel's acceptance of an exact
+proposition; no model output carries any, and neither does this sentence.
+
 Erd\H{o}s Problem~\#257 remains open.
 
 \begin{thebibliography}{9}
