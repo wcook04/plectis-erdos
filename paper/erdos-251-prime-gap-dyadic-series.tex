@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #251 advances independently of the corpus
 % default, while the #249/#257 notes retain their own reviewed snapshot.
-\renewcommand{\commit}{27ec97c4c2e2f3d793837545ef57e100fc6bad33}
-\renewcommand{\commitshort}{27ec97c4c2e2}
+\renewcommand{\commit}{7558c58afb7cb0046dbd3101c1b3187ccdac5909}
+\renewcommand{\commitshort}{7558c58afb7c}
 \hypersetup{
   pdftitle={An integral-shift criterion for dyadic tail recurrences, and the prime-gap series of Erdős Problem 251},
   pdfsubject={Erdős Problem Notes: Problem 251},
@@ -717,6 +717,14 @@ has absolute value at most $R_{h,N,L}(M)$, so under~\eqref{eq:truncation} the
 full sum lies at positive distance from every integer.
 \end{proof}
 
+\noindent The last distance-to-integers inference is Lean-checked as the
+generic
+\lword{Erdos251/PrimeGapDyadicTail.lean}{772}{not_ratIntegral_of_approximation_gap}{finite-approximation
+certificate}: an error at most $R$ cannot reach an integer when the
+approximation is farther than $R$ from every integer.  The prime-gap tail
+bound, the convergence used above, and the existence of blocks satisfying
+\eqref{eq:truncation} are not consequences of that formal theorem.
+
 \noindent Taking the classical bound $M(n)\ll n\log n$, a choice
 $L=\lceil A\log_2(N+h+2)\rceil$ with any fixed $A>1$ makes the right side a
 negative power of $N$ up to logarithms.  Thus~\eqref{eq:truncation} asks for a finite
@@ -741,11 +749,14 @@ estimate.
 
 \paragraph{What remains to be formalised.}
 The abstract irrationality theorem and the prime-specific local
-small-mismatch theorem are Lean-checked.  The local source still takes
+small-mismatch theorem are Lean-checked, as is the generic
+finite-approximation certificate used in Proposition~\ref{res:truncation}.
+The local source still takes
 summability of the prime series as a hypothesis and does not define
 $\mathcal T_N$ by an infinite sum; the prime-number-theorem comparison and the
 identification of that concrete tail with the checked real recurrence are
-paper proofs.  No theorem supplies the cofinal pairs in
+paper proofs.  Its prime-gap tail domination and anti-concentration
+hypotheses also remain paper-level obligations.  No theorem supplies the cofinal pairs in
 \eqref{eq:smallpair}, and none of the prime-distribution estimates
 described above is claimed or formalised.
 
@@ -851,6 +862,7 @@ carry partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{742}{carryPartialSu
 carry telescoping identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{747}{carryPartialSum_eq}\\
 natural carry coefficient & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{760}{natCarryCoeff}\\
 natural-carry cast & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{763}{natCarryCoeff_cast}\\
+finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}{not_ratIntegral_of_approximation_gap}\\
 \end{tabular}
 \fi
 
