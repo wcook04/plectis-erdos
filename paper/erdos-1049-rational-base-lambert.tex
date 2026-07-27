@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #1049's endpoint-jet obstruction advances
 % independently of the corpus default.
-\renewcommand{\commit}{b0e3723fa5222346a546f415b8fe93d7c756ce4d}
-\renewcommand{\commitshort}{b0e3723fa522}
+\renewcommand{\commit}{a697d3009d8ebc97b7e5d3c2498b610308fa8308}
+\renewcommand{\commitshort}{a697d3009d8e}
 \hypersetup{
   pdftitle={Rational bases and the integer-base argument: a Lean-checked strategy separation for Erdős Problem 1049},
   pdfsubject={Erdős Problem Notes: Problem 1049},
@@ -400,7 +400,7 @@ put
  H_W(P)=\sum_{i=0}^{W}p_i\,3^i2^{W-i}.
 \]
 This is the
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{95}{homEvalThreeTwo}{homogeneous
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{96}{homEvalThreeTwo}{homogeneous
 endpoint evaluation}.
 
 \begin{theorem}[endpoint residues]\label{res:endpoints}
@@ -420,13 +420,13 @@ residue fields.
 \end{proof}
 
 \noindent The congruences are the
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{120}{homEvalThreeTwo_mod_three}{bottom-endpoint
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{161}{homEvalThreeTwo_mod_three}{bottom-endpoint
 identity} and
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{134}{homEvalThreeTwo_mod_two}{top-endpoint
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{175}{homEvalThreeTwo_mod_two}{top-endpoint
 identity}; the unit consequences are the
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{152}{three_not_dvd_homEvalThreeTwo_of_const_unit}{constant-endpoint
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{193}{three_not_dvd_homEvalThreeTwo_of_const_unit}{constant-endpoint
 obstruction} and
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{170}{two_not_dvd_homEvalThreeTwo_of_top_unit}{top-endpoint
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{211}{two_not_dvd_homEvalThreeTwo_of_top_unit}{top-endpoint
 obstruction}.
 
 For higher powers define the bottom and top jets by reducing \(H_W(P)\) modulo
@@ -437,11 +437,35 @@ divisibility:
  J_{2,S}(P)=0\iff 2^S\mid H_W(P).
 \]
 These are the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{108}{bottomJet3_eq_zero_iff_dvd}{bottom-jet
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{149}{bottomJet3_eq_zero_iff_dvd}{bottom-jet
 consumer} and
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{114}{topJet2_eq_zero_iff_dvd}{top-jet
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{155}{topJet2_eq_zero_iff_dvd}{top-jet
 consumer}.  They turn the missing local divisor into an additive congruence
-kernel problem; they do not construct such a kernel.
+kernel problem.
+
+\begin{theorem}[binary four-jet collision]\label{res:jetkernel}
+Let \((U_j,V_j)_{j<n}\) be any \(n\) integral coefficient pairs.  If the
+\(2^n\) binary selectors outnumber the finite four-jet target
+\[
+ (\Z/3^R\Z)^2\times(\Z/2^S\Z)^2,
+\]
+then two distinct subsets have the same four-jet sum.  Subtracting their
+indicator vectors gives a nonzero coefficient vector in
+\(\{-1,0,1\}^n\) cancelling all four jets.
+\end{theorem}
+
+\begin{proof}
+Send each binary selector to the sum of the four-jet signatures it selects.
+The claimed cardinal inequality and the pigeonhole principle give two
+distinct selectors in the same fibre.
+\end{proof}
+
+\noindent This is the checked
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{133}{exists_distinct_binary_selectors_same_fourJet}{four-jet
+pigeonhole kernel}.  It proves abstract kernel existence and gives bounded
+coefficients.  It does not prove that an available family has enough genuinely
+independent directions at the required quadratic depths, or that a collision
+vector lies outside the analytic remainder nullspace.
 
 \begin{theorem}[scalar margin no-go]\label{res:scalar}
 Let \(C_1>0\).  If \(C_0\le0\) or \(2C_0\le C_1\), then
@@ -451,7 +475,7 @@ Let \(C_1>0\).  If \(C_0\le0\) or \(2C_0\le C_1\), then
 \end{theorem}
 
 \noindent This is the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{221}{three_two_scalar_margin_neg}{three-halves
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{262}{three_two_scalar_margin_neg}{three-halves
 scalar margin}.  The primary Zudilin theorem~\cite{zudilin2004} supplies an integer-base
 irrationality-exponent estimate on its parameter cone, and the elementary
 inequality \(\mu\ge2\) then forces \(2C_0\le C_1\) whenever \(C_0>0\); Lean
@@ -467,8 +491,10 @@ Problem~\#1049 is open.  The current \(3/2\) frontier is the following exact
 producer.
 
 \begin{problem}[growing-rank simultaneous endpoint-jet kernel]
-Construct additive combinations of genuinely independent Heine--Zudilin
-coefficient pairs \((U_j,V_j)\), with rank tending to infinity, which satisfy
+Exhibit enough genuinely independent Heine--Zudilin coefficient pairs
+\((U_j,V_j)\) to satisfy the cardinal hypothesis of
+Theorem~\ref{res:jetkernel} at the required quadratic depths, and prove that
+at least one resulting collision satisfies
 \[
  J_{3,R_n}\!\left(\sum_j\lambda_jU_j\right)=
  J_{3,R_n}\!\left(\sum_j\lambda_jV_j\right)=0,
@@ -477,9 +503,10 @@ coefficient pairs \((U_j,V_j)\), with rank tending to infinity, which satisfy
  J_{2,S_n}\!\left(\sum_j\lambda_jV_j\right)=0,
 \]
 where \(R_n,S_n\) have the required quadratic order, while the resulting
-remainder is nonzero and the coefficient height is smaller than the local
-gain.  A rank-saturated contiguous-shift determinant or a genuinely
-independent deformation is an acceptable first producer.
+remainder is nonzero and its local gain beats the Archimedean height.  The
+checked collision already has coefficients in \(\{-1,0,1\}\).  A
+rank-saturated contiguous-shift family or a genuinely independent deformation
+is an acceptable first producer.
 \end{problem}
 
 \begin{problem}[the published region]
@@ -493,25 +520,28 @@ The unrestricted question, which rational bases give an irrational value,
 remains open, and is not reduced to either problem above.
 
 \paragraph{Wanted.}
-An explicit growing-rank coefficient matrix, with its four endpoint-jet
-congruences, a nonvanishing certificate for the resulting linear form, and an
-asymptotic height bound.  A scalar ray, a multiplicative cyclotomic factor, or
-another primitive-content computation is not responsive to the surviving
-obstruction.
+An explicit growing-rank coefficient matrix large enough for the checked
+pigeonhole inequality, plus a proof that some collision vector has nonzero
+remainder and sufficient local gain.  A scalar ray, a multiplicative
+cyclotomic factor, or another primitive-content computation is not responsive
+to the surviving obstruction.
 
 \paragraph{Already checked.}
 The coordinatewise corridor fails at \(3/2\); the cleared-tail forcing term
 has an exponential denominator tax; the displayed Pad\'e denominator
 exponents clear their finite sums; unit endpoints prevent common factors
-\(3\) and \(2\); and the source integer-base ratio inequality implies a
-strictly negative scalar margin at \(3/2\).  None of these statements proves
-the all-scale rational specialisation or irrationality.
+\(3\) and \(2\); the source integer-base ratio inequality implies a strictly
+negative scalar margin at \(3/2\); and a large enough binary selector space
+forces a nonzero \(\{-1,0,1\}\) four-jet collision.  None of these statements
+produces enough actual independent forms or proves a collision remainder
+nonzero.
 
 \paragraph{Most useful answer.}
-Give the first rank \(r=r(n)\) for which the four jet maps have a nonzero
-kernel vector outside the remainder-nullspace, together with exact coefficient
-height.  If no such vector exists, a rank theorem identifying the obstruction
-is more valuable than further low-rank enumeration.
+Give the first actual family size \(r=r(n)\) satisfying the four-jet cardinal
+inequality, then show that the collision fibre is not contained in the
+remainder-nullspace.  If every available family is too small or degenerate, a
+rank theorem identifying that obstruction is more valuable than further
+low-rank enumeration.
 
 \paragraph{If answered.}
 A positive construction supplies the missing local-content producer to the
@@ -579,15 +609,16 @@ summand exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{29}{ratio
 doubled maximal exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{45}{rationalPadeQMaxDenExpTwice}\\
 exact gap identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{51}{rationalPadeQMaxDenExpTwice_gap}\\
 maximal exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{59}{rationalPadeQMaxDenExpTwice_le}\\
-homogeneous endpoint evaluation & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{95}{homEvalThreeTwo}\\
-bottom-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{108}{bottomJet3_eq_zero_iff_dvd}\\
-top-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{114}{topJet2_eq_zero_iff_dvd}\\
-bottom endpoint modulo three & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{120}{homEvalThreeTwo_mod_three}\\
-top endpoint modulo two & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{134}{homEvalThreeTwo_mod_two}\\
-unit constant endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{152}{three_not_dvd_homEvalThreeTwo_of_const_unit}\\
-unit top endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{170}{two_not_dvd_homEvalThreeTwo_of_top_unit}\\
-irrationality-exponent inequality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{209}{twice_le_of_irrationalityExponent_bounds}\\
-three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{221}{three_two_scalar_margin_neg}\\
+homogeneous endpoint evaluation & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{96}{homEvalThreeTwo}\\
+four-jet pigeonhole kernel & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{133}{exists_distinct_binary_selectors_same_fourJet}\\
+bottom-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{149}{bottomJet3_eq_zero_iff_dvd}\\
+top-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{155}{topJet2_eq_zero_iff_dvd}\\
+bottom endpoint modulo three & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{161}{homEvalThreeTwo_mod_three}\\
+top endpoint modulo two & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{175}{homEvalThreeTwo_mod_two}\\
+unit constant endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{193}{three_not_dvd_homEvalThreeTwo_of_const_unit}\\
+unit top endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{211}{two_not_dvd_homEvalThreeTwo_of_top_unit}\\
+irrationality-exponent inequality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{250}{twice_le_of_irrationalityExponent_bounds}\\
+three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{262}{three_two_scalar_margin_neg}\\
 \end{tabular}
 \fi
 
