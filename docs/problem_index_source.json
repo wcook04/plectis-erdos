@@ -316,26 +316,75 @@
       "directory": "ErdosProblems/Erdos1049",
       "principal_module": "ErdosProblems.Erdos1049.RationalBaseLambert",
       "companion_modules": [
-        "ErdosProblems.Erdos1049.RationalPadeArithmetic"
+        "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+        "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
       ],
       "note_artifact_id": "erdos_1049_note",
+      "required_note_declarations": [
+        {
+          "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "declaration": "threeHalves_no_coordinatewiseCorridor"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "declaration": "rationalBaseClearedTailQ_succ"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "declaration": "sevenHalves_power_certificate"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+          "declaration": "rationalPadePSummandDenExpTwice_le"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+          "declaration": "rationalPadeQMaxDenExpTwice_gap"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "declaration": "bottomJet3_eq_zero_iff_dvd"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "declaration": "topJet2_eq_zero_iff_dvd"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "declaration": "homEvalThreeTwo_mod_three"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "declaration": "homEvalThreeTwo_mod_two"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "declaration": "three_two_scalar_margin_neg"
+        }
+      ],
       "what_is_checked": [
         "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.",
         "The exact denominator-cleared rational-base tail recurrence, including its forcing term.",
         "That for every noninteger base with denominator at least two the forcing magnitude grows at least exponentially, while at denominator one it collapses to a bounded expression.",
         "Two exact arithmetic facts used by the published height criterion at base seven halves.",
-        "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity."
+        "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity.",
+        "The exact Heine-Zudilin cone endpoint exponent arithmetic used to identify the bottom and top coefficient endpoints.",
+        "That homogeneous evaluation at (3,2) sees only the constant endpoint modulo three and the top endpoint modulo two, so unit endpoints obstruct common local factors.",
+        "That vanishing of the higher bottom and top endpoint jets is exactly divisibility by the corresponding powers of three and two.",
+        "That the source integer-base ratio inequality implies a strictly negative scalar product-formula margin at three halves."
       ],
       "what_is_not_checked": [
         "Irrationality at base three halves, or for any rational base.",
         "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
-        "The logarithmic monotonicity step and the transcendental estimate the published criterion also needs.",
-        "Positivity or decay of the Padé remainder; only the exponent arithmetic is checked."
+        "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
+        "A growing-rank additive combination cancelling both two-adic and three-adic endpoint jets in both coefficient channels.",
+        "Nonvanishing and sub-gain coefficient height for such a kernel, and the analytic remainder estimate needed for irrationality.",
+        "Positivity or decay of the elementary Padé remainder; only its exponent arithmetic is checked."
       ],
       "open_obligations": [
         {
-          "id": "three_halves_pade_height_gap",
-          "statement": "Construct integer linear forms at base three halves whose analytic decay beats their common denominator height."
+          "id": "three_halves_growing_rank_endpoint_jet_kernel",
+          "statement": "Construct a growing-rank additive kernel that simultaneously cancels quadratically deep bottom three-adic and top two-adic endpoint jets in both coefficient channels, retains a nonzero remainder, and has coefficient height below the local gain; or prove an exact rank obstruction."
         },
         {
           "id": "published_height_region_formalisation",
