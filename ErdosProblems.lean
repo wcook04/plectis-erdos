@@ -8,3 +8,4 @@ import ErdosProblems.Erdos269.RestrictedFloorSum
 This is the supported root for the problem-owned modules.  The older
 `Erdos249257` library remains available as the reviewed #249/#257 corpus.
 -/
+import ErdosProblems.Erdos269.RestrictedFloorSum
