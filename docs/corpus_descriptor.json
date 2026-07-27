@@ -23,9 +23,9 @@
 },
 "identity": {
 "formal_source": {
-"ref": "c4df220aab347a12ced4beff774384767f2a0f4c",
+"ref": "282c7b3826a9e9bc1e24c312823eeca061da318b",
 "ref_kind": "commit",
-"resolved_commit": "c4df220aab347a12ced4beff774384767f2a0f4c",
+"resolved_commit": "282c7b3826a9e9bc1e24c312823eeca061da318b",
 "publication_state": "committed_checkpoint_pending_remote_publication",
 "relationship_to_last_tag": "post_tag_checkpoint",
 "last_release": {
@@ -36,9 +36,9 @@
 "authority_role": "proof_bearing_committed_source_anchor"
 },
 "navigation_snapshot": {
-"commit": "c4df220aab347a12ced4beff774384767f2a0f4c",
+"commit": "4fe185da6cbd01036ad985e00a242795ecbe72a4",
 "authority_role": "machine_readable_navigation_anchor",
-"repository_resolution": "https://github.com/wcook04/plectis-lean-erdos249-257/tree/c4df220aab347a12ced4beff774384767f2a0f4c"
+"repository_resolution": "https://github.com/wcook04/plectis-lean-erdos249-257/tree/4fe185da6cbd01036ad985e00a242795ecbe72a4"
 },
 "content": {
 "machine_readable_paper": {
@@ -47,12 +47,12 @@
 },
 "claims_document": {
 "path": "docs/claims.json",
-"content_digest": "sha256:cb9936d5c7f5c34bb464f383f0dbaa087296b5e5bbf093fae9653cf9d5ac33e5"
+"content_digest": "sha256:3775d185f1ad31fe49e64455e5ecf17cb95871c174bd7e8a22b7fe494236bfba"
 },
 "declaration_atlas": {
 "path": "docs/declaration_atlas.json",
-"content_digest": "sha256:d6cbc624ac35ab13d2c740b7e237719e0ab747864065819a25f2c8e787c73797",
-"source_input_fingerprint": "sha256:4d076856ecc8c08ba962897e5ae198be21bbba9f7a71abcf4bd9f773d37fee6e"
+"content_digest": "sha256:52e631f6ae162b6f1a53e42e5d4bfeef04b00bcc3763970ee1b6c32c75a0055d",
+"source_input_fingerprint": "sha256:75e2d760390a071b9a78f47a3a5cbf4a3c7d029beef67cae8426aad8b6bfc7ca"
 },
 "methodology_contract": {
 "path": "docs/methodology.json",
@@ -60,13 +60,13 @@
 },
 "bounded_orientation": {
 "path": "docs/orientation.json",
-"content_digest": "sha256:cc8a43dfe37f8b0c131b6b7881c12d8e9a0fa13d89afc59d218d6a777462050b"
+"content_digest": "sha256:c43eea65bfbea12cee7bf5c9c04c6de09f58f9395a456e3af4a6b9462bce946d"
 },
 "human_exposition": {
 "source_path": "paper/erdos249-257-main-paper.tex",
-"source_content_digest": "sha256:9d5b7160c3eb5b77a627adbaeebb5d015209703bbda16144dfe2fb86d7b2e8a1",
+"source_content_digest": "sha256:ac86ce52030091ab7c91a865d34635b426442efccb42a9846e20ad859bce9b04",
 "rendered_path": "erdos249-257-main-paper.pdf",
-"rendered_content_digest": "sha256:b219f3fff4be8f29ba688cf368cecb30277e1d6dadf6f3fbbe1b961cc4419d4a",
+"rendered_content_digest": "sha256:83571d8920df2802cab19cdbadb8b7c2507132828682b6b024c19da661907ab9",
 "artifact_role": "authored_mathematician_facing_exposition",
 "authority_posture": "authored_editorial_surface_not_Lean_proof_authority"
 },
@@ -1665,8 +1665,8 @@
 },
 "exhaustive_declaration_atlas": {
 "path": "docs/declaration_atlas.json",
-"expected_content_digest": "sha256:d6cbc624ac35ab13d2c740b7e237719e0ab747864065819a25f2c8e787c73797",
-"expected_source_input_fingerprint": "sha256:4d076856ecc8c08ba962897e5ae198be21bbba9f7a71abcf4bd9f773d37fee6e",
+"expected_content_digest": "sha256:52e631f6ae162b6f1a53e42e5d4bfeef04b00bcc3763970ee1b6c32c75a0055d",
+"expected_source_input_fingerprint": "sha256:75e2d760390a071b9a78f47a3a5cbf4a3c7d029beef67cae8426aad8b6bfc7ca",
 "availability": "optional_attached_corpus",
 "check": "python3 scripts/build_declaration_atlas.py --check"
 },
@@ -1678,9 +1678,9 @@
 },
 "human_exposition": {
 "source_path": "paper/erdos249-257-main-paper.tex",
-"expected_source_content_digest": "sha256:9d5b7160c3eb5b77a627adbaeebb5d015209703bbda16144dfe2fb86d7b2e8a1",
+"expected_source_content_digest": "sha256:ac86ce52030091ab7c91a865d34635b426442efccb42a9846e20ad859bce9b04",
 "rendered_path": "erdos249-257-main-paper.pdf",
-"expected_rendered_content_digest": "sha256:b219f3fff4be8f29ba688cf368cecb30277e1d6dadf6f3fbbe1b961cc4419d4a",
+"expected_rendered_content_digest": "sha256:83571d8920df2802cab19cdbadb8b7c2507132828682b6b024c19da661907ab9",
 "authority_posture": "authored_editorial_surface_not_Lean_proof_authority"
 },
 "paper_source_sigils": {

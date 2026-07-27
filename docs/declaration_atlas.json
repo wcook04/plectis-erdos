@@ -4,7 +4,7 @@
   "projection_not_authority": true,
   "proof_authority": "Lean source checked by the pinned Lean kernel",
   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
-  "source_fingerprint": "sha256:4d076856ecc8c08ba962897e5ae198be21bbba9f7a71abcf4bd9f773d37fee6e",
+  "source_fingerprint": "sha256:75e2d760390a071b9a78f47a3a5cbf4a3c7d029beef67cae8426aad8b6bfc7ca",
   "summary": {
     "module_count": 689,
     "declaration_count": 13820,
