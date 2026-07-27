@@ -713,4 +713,17 @@ theorem dyadicBlockBase235_mem_interval (a : ℕ) :
   rcases dyadicBlockBase235_cases a with h | h | h | h <;>
     simp [h]
 
+/-! ## Exact rank-two certificate -/
+
+/-- The determinant of the smallest `{2,3,5}` kernel rectangle is exactly
+`-1/15`.  In particular, the corresponding `2 × 2` matrix has rank two over
+the rationals; this is stronger than merely recording that it is not rank one. -/
+theorem kernel_235_minor_eq_neg_one_fifteen :
+    threePrimeKernelQ 2 3 5 0 0 0 *
+          threePrimeKernelQ 2 3 5 1 1 0 -
+        threePrimeKernelQ 2 3 5 1 0 0 *
+          threePrimeKernelQ 2 3 5 0 1 0 =
+      -(1 / 15 : ℚ) := by
+  norm_num
+
 end ErdosProblems.Erdos269
