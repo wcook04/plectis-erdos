@@ -33,13 +33,16 @@ def check_dictionary_budget_and_shape() -> None:
 
 
 def check_vocabulary_mismatch_queries() -> None:
-    assert len(query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS) == 13
-    try:
-        query_corpus.declaration_packet("makes", 1)
-    except KeyError:
-        pass
-    else:
-        raise AssertionError("comment prose must not be queryable as a declaration")
+    assert len(query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS) == 12
+    for comment_word in ("makes", "invariant"):
+        try:
+            query_corpus.declaration_packet(comment_word, 1)
+        except KeyError:
+            pass
+        else:
+            raise AssertionError(
+                "comment prose must not be queryable as a declaration"
+            )
     assert not any(
         row.get("kind") == "declaration" and row.get("name") == "makes"
         for row in query_corpus.search_packet("makes", 20)["results"]
@@ -208,6 +211,41 @@ def check_witness_carrying_semantic_slices() -> None:
     )
 
 
+def check_elaborated_dependency_witnesses() -> None:
+    neighbourhood = query_corpus.formal_dependency_neighbourhood(
+        "Erdos249257.TotientTailPeriodKiller."
+        "irrational_totientSeries_of_sharpCurvatureSupply"
+    )
+    assert neighbourhood["availability"] == "available"
+    assert {
+        row["handle"] for row in neighbourhood["direct_dependencies"]
+    } >= {
+        "Erdos249257.TotientTailPeriodKiller.SharpCurvatureSupply",
+        "Erdos249257.TotientTailPeriodKiller."
+        "curvature_notMem_int_of_sharpCurvatureCert",
+        "Erdos249257.TotientTailPeriodKiller."
+        "rational_totient_series_forces_lcm_cone_flatness",
+    }
+    assert any(
+        path["via"].endswith(
+            ".curvature_notMem_int_of_sharpCurvatureCert"
+        )
+        for path in neighbourhood["two_hop_theorem_paths"]
+    )
+    assert neighbourhood["authority_posture"].startswith(
+        "direct_constant_references_from_elaborated_Lean"
+    )
+    declaration = query_corpus.declaration_packet(
+        "Erdos249257.integerGreedyRemainder_lt_of_get?_eq_false", 1
+    )["matches"][0]
+    assert declaration["name"] == (
+        "integerGreedyRemainder_lt_of_get?_eq_false"
+    )
+    assert declaration["qualified_name"] == (
+        "Erdos249257.integerGreedyRemainder_lt_of_get?_eq_false"
+    )
+
+
 def check_missing_registered_artifact_is_typed_not_fatal() -> None:
     old_root = query_corpus.ROOT
     with tempfile.TemporaryDirectory(prefix="query-corpus-resilience-") as tmp:
@@ -276,6 +314,7 @@ def main() -> int:
     check_dictionary_budget_and_shape()
     check_vocabulary_mismatch_queries()
     check_witness_carrying_semantic_slices()
+    check_elaborated_dependency_witnesses()
     check_missing_registered_artifact_is_typed_not_fatal()
     check_unavailable_paper_coordinate_is_typed_not_fatal()
     print("query corpus semantic-resilience checks: PASS")

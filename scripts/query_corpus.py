@@ -42,7 +42,6 @@ SUPPRESSED_DECLARATION_ATLAS_ROWS = {
     "Erdos249257/CertificateKernel.lean:18198:closes",
     "Erdos249257/CyclicTensorMobiusShadow.lean:167:used",
     "Erdos249257/DiagonalPincerDecomposition.lean:40:and",
-    "Erdos249257/DyadicPrefixCompression.lean:620:invariant",
     "Erdos249257/FullTargetPrimeAdjunctionNoGo.lean:18:controlling",
     "Erdos249257/GenericTailOrbitRigidity.lean:13:says",
     "Erdos249257/GenericTailOrbitRigidity.lean:148:not",
@@ -346,6 +345,184 @@ def module_synopsis(rel: str) -> str | None:
         lines.append(line)
     synopsis = re.sub(r"\s+", " ", " ".join(lines)).strip()
     return synopsis[:1600] or None
+
+
+@lru_cache(maxsize=1)
+def lean_dependency_index() -> dict[str, Any] | None:
+    path = ROOT / "docs/lean_dependency_index.json"
+    if not path.is_file():
+        return None
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        atlas = load("docs/declaration_atlas.json")
+    except (json.JSONDecodeError, OSError, KeyError):
+        return None
+    if (
+        packet.get("schema_version")
+        != "erdos249257-lean-dependency-index/1"
+        or packet.get("source_fingerprint") != atlas.get("source_fingerprint")
+        or not isinstance(packet.get("nodes"), list)
+        or not isinstance(packet.get("edges"), list)
+    ):
+        return None
+    return packet
+
+
+@lru_cache(maxsize=1)
+def lean_dependency_adjacency() -> dict[str, Any] | None:
+    packet = lean_dependency_index()
+    if packet is None:
+        return None
+    nodes_by_id = {
+        row["node_id"]: row
+        for row in packet["nodes"]
+        if isinstance(row, dict) and isinstance(row.get("node_id"), int)
+    }
+    nodes_by_handle = {
+        row["handle"]: row
+        for row in nodes_by_id.values()
+        if isinstance(row.get("handle"), str)
+    }
+    forward: dict[str, list[dict[str, Any]]] = {}
+    reverse: dict[str, list[dict[str, Any]]] = {}
+    relation_legend = packet.get("edge_relation_bit_legend", {})
+    for edge in packet["edges"]:
+        if (
+            not isinstance(edge, list)
+            or len(edge) != 3
+            or edge[0] not in nodes_by_id
+            or edge[1] not in nodes_by_id
+            or not isinstance(edge[2], int)
+        ):
+            continue
+        source = nodes_by_id[edge[0]]
+        target = nodes_by_id[edge[1]]
+        relations = [
+            label
+            for bit, label in sorted(
+                (
+                    (int(bit), label)
+                    for bit, label in relation_legend.items()
+                )
+            )
+            if edge[2] & bit
+        ]
+        target_row = {
+            key: target[key]
+            for key in (
+                "handle",
+                "name",
+                "declaration_kind",
+                "source_ref",
+            )
+        }
+        target_row["relations"] = relations
+        forward.setdefault(source["handle"], []).append(target_row)
+        source_row = {
+            key: source[key]
+            for key in (
+                "handle",
+                "name",
+                "declaration_kind",
+                "source_ref",
+            )
+        }
+        source_row["relations"] = relations
+        reverse.setdefault(target["handle"], []).append(source_row)
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    for rows in (*forward.values(), *reverse.values()):
+        rows.sort(
+            key=lambda row: (
+                0
+                if row["declaration_kind"] in theorem_kinds
+                else 1,
+                0 if "value_reference" in row["relations"] else 1,
+                row["handle"],
+            )
+        )
+    return {
+        "packet": packet,
+        "nodes_by_handle": nodes_by_handle,
+        "forward": forward,
+        "reverse": reverse,
+    }
+
+
+def formal_dependency_neighbourhood(
+    handle: str, limit: int = 8
+) -> dict[str, Any]:
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "availability": "unavailable_or_stale",
+            "authority_posture": (
+                "no_elaborated_dependency_index_loaded;lexical_candidates_"
+                "remain_navigation_only"
+            ),
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    node = adjacency["nodes_by_handle"].get(handle)
+    if node is None:
+        return {
+            "availability": "handle_not_source_resolved",
+            "handle": handle,
+            "authority_posture": (
+                "index_gap_not_evidence_of_no_formal_dependencies"
+            ),
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    dependencies = adjacency["forward"].get(handle, [])
+    consumers = adjacency["reverse"].get(handle, [])
+    two_hop_theorem_paths = []
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    for middle in dependencies:
+        if middle["declaration_kind"] not in theorem_kinds:
+            continue
+        for target in adjacency["forward"].get(middle["handle"], []):
+            if target["declaration_kind"] not in theorem_kinds:
+                continue
+            two_hop_theorem_paths.append(
+                {
+                    "source": handle,
+                    "via": middle["handle"],
+                    "target": target["handle"],
+                    "edge_relations": [
+                        middle["relations"],
+                        target["relations"],
+                    ],
+                }
+            )
+            if len(two_hop_theorem_paths) >= limit:
+                break
+        if len(two_hop_theorem_paths) >= limit:
+            break
+    return {
+        "availability": "available",
+        "handle": handle,
+        "source_ref": node["source_ref"],
+        "direct_dependencies": dependencies[:limit],
+        "direct_consumers": consumers[:limit],
+        "two_hop_theorem_paths": two_hop_theorem_paths,
+        "receipt": {
+            "direct_dependency_total": len(dependencies),
+            "direct_dependency_emitted": min(len(dependencies), limit),
+            "direct_consumer_total": len(consumers),
+            "direct_consumer_emitted": min(len(consumers), limit),
+            "omitted_internal_reference_count": node[
+                "omitted_internal_reference_count"
+            ],
+        },
+        "authority_posture": (
+            "direct_constant_references_from_elaborated_Lean_types_and_values_"
+            "with_source_coordinates;two_hop_paths_are_compositions_of_exact_"
+            "direct_edges"
+        ),
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
 
 
 def publication_contract() -> dict[str, Any]:
@@ -2578,9 +2755,28 @@ def semantic_cell(
             "module_role": declaration.get("module_role"),
         }
         if operator_id in ("support", "trace"):
+            formal_dependencies = formal_dependency_neighbourhood(
+                canonical_handle,
+                3 if operator_id == "trace" else 2,
+            )
+            content["formal_dependency_neighbourhood"] = (
+                formal_dependencies
+            )
             content["source_dependency_candidates"] = (
                 declaration_source_dependency_candidates(canonical_handle)
             )
+            if formal_dependencies["availability"] == "available":
+                witness_edges.extend(
+                    {
+                        "from": f"declaration:{canonical_handle}",
+                        "relation": "uses_elaborated_constant",
+                        "to": f"declaration:{dependency['handle']}",
+                        "authority": "kernel_elaborated_environment",
+                    }
+                    for dependency in formal_dependencies[
+                        "direct_dependencies"
+                    ]
+                )
         expansion_command = (
             "python3 scripts/query_corpus.py --declaration "
             f"{canonical_handle}"
@@ -2811,6 +3007,7 @@ def operator_synthesis(
     """Assemble operator-specific relations without upgrading their authority."""
     if operator_id == "support":
         formal_consumers = []
+        formal_dependency_neighbourhoods = []
         source_dependency_candidates = []
         unproved_requirements = []
         for cell in cells:
@@ -2821,6 +3018,11 @@ def operator_synthesis(
                 )
             elif cell["kind"] == "declaration":
                 formal_consumers.append(cell["content"]["formal_witness"])
+                formal_dependency_neighbourhoods.append(
+                    cell["content"].get(
+                        "formal_dependency_neighbourhood", {}
+                    )
+                )
                 source_dependency_candidates.extend(
                     cell["content"].get(
                         "source_dependency_candidates", []
@@ -2870,6 +3072,11 @@ def operator_synthesis(
                     for row in source_dependency_candidates
                 }.values()
             ),
+            "formal_dependency_neighbourhoods": [
+                row
+                for row in formal_dependency_neighbourhoods
+                if row.get("availability") == "available"
+            ],
             "unproved_requirements": list(
                 {
                     row["id"]: row
@@ -3017,6 +3224,7 @@ def operator_synthesis(
         }
     if operator_id == "trace":
         argument_edges = []
+        formal_dependency_neighbourhoods = []
         source_dependency_candidates = []
         for cell in cells:
             if cell["kind"] == "claim":
@@ -3024,6 +3232,11 @@ def operator_synthesis(
                 argument_edges.extend(neighbourhood["incoming"])
                 argument_edges.extend(neighbourhood["outgoing"])
             elif cell["kind"] == "declaration":
+                formal_dependency_neighbourhoods.append(
+                    cell["content"].get(
+                        "formal_dependency_neighbourhood", {}
+                    )
+                )
                 source_dependency_candidates.extend(
                     cell["content"].get(
                         "source_dependency_candidates", []
@@ -3032,6 +3245,11 @@ def operator_synthesis(
         return {
             "kind": "trace_synthesis",
             "argument_edges": argument_edges,
+            "formal_dependency_neighbourhoods": [
+                row
+                for row in formal_dependency_neighbourhoods
+                if row.get("availability") == "available"
+            ],
             "source_dependency_candidates": list(
                 {
                     (row["name"], row["source_ref"]): row

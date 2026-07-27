@@ -175,6 +175,8 @@ TASKS: tuple[dict[str, Any], ...] = (
             "fixedPrecisionTropicalNoGo",
             "vu_word_has_prefix_locked_completion",
             "source_lexical_dependency_candidate_not_elaborator_dependency_proof",
+            "direct_constant_references_from_elaborated_Lean_types_and_values",
+            "kernel_elaborated_environment",
         ),
     },
     {
@@ -287,6 +289,35 @@ TASKS: tuple[dict[str, Any], ...] = (
                 "declaration:Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert",
                 "elaborated_at",
                 "Erdos249257/CurvatureCarry.lean:159",
+            ),
+        ),
+    },
+    {
+        "id": "heldout_formal_dependency_trace",
+        "split": "held_out",
+        "query": (
+            "trace why sharp curvature supply proves irrationality of the "
+            "totient series"
+        ),
+        "operator": "trace",
+        "required_cells": (
+            ("claim", "transport_curvature_reductions"),
+            (
+                "declaration",
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+            ),
+        ),
+        "required_text": (
+            "direct_constant_references_from_elaborated_Lean_types_and_values",
+            "two_hop_theorem_paths",
+            "curvature_notMem_int_of_sharpCurvatureCert",
+            "rational_totient_series_forces_lcm_cone_flatness",
+        ),
+        "required_edges": (
+            (
+                "declaration:Erdos249257.TotientTailPeriodKiller.irrational_totientSeries_of_sharpCurvatureSupply",
+                "uses_elaborated_constant",
+                "declaration:Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert",
             ),
         ),
     },

@@ -156,6 +156,126 @@ def audit_packet() -> dict[str, Any]:
             f"{sorted(configured_suppression_ids - actual_comment_false_positive_ids)}",
         )
 
+    dependency_index = query_corpus.lean_dependency_index()
+    dependency_node_count = 0
+    dependency_edge_count = 0
+    if dependency_index is None:
+        error(
+            "lean_dependency_index",
+            "docs/lean_dependency_index.json",
+            "missing, stale, or structurally invalid",
+        )
+    else:
+        dependency_nodes = dependency_index["nodes"]
+        dependency_edges = dependency_index["edges"]
+        dependency_node_count = len(dependency_nodes)
+        dependency_edge_count = len(dependency_edges)
+        node_ids = {
+            row.get("node_id")
+            for row in dependency_nodes
+            if isinstance(row, dict)
+        }
+        node_handles = {
+            row.get("handle")
+            for row in dependency_nodes
+            if isinstance(row, dict)
+        }
+        atlas_by_source_ref = {
+            f"{row['module']}:{row['line']}": row for row in declarations
+        }
+        if node_ids != set(range(dependency_node_count)):
+            error(
+                "lean_dependency_node_ids",
+                "docs/lean_dependency_index.json",
+                "node ids are not a dense unique range",
+            )
+        if len(node_handles) != dependency_node_count:
+            error(
+                "lean_dependency_node_handles",
+                "docs/lean_dependency_index.json",
+                "node handles are not unique",
+            )
+        if (
+            "Erdos249257.integerGreedyRemainder_lt_of_get?_eq_false"
+            not in node_handles
+        ):
+            error(
+                "lean_dependency_question_mark_identifier",
+                "Erdos249257/HalfCylinderSkippedRankLimit.lean:21",
+                "full Lean identifier is absent from the source-joined graph",
+            )
+        for node in dependency_nodes:
+            atlas_row = atlas_by_source_ref.get(node.get("source_ref"))
+            if atlas_row is None or atlas_row["name"] != node.get("name"):
+                error(
+                    "lean_dependency_source_join",
+                    str(node.get("handle")),
+                    str(node.get("source_ref")),
+                )
+        for edge in dependency_edges:
+            if (
+                not isinstance(edge, list)
+                or len(edge) != 3
+                or edge[0] not in node_ids
+                or edge[1] not in node_ids
+                or edge[2] not in (1, 2, 3)
+            ):
+                error(
+                    "lean_dependency_edge",
+                    "docs/lean_dependency_index.json",
+                    repr(edge),
+                )
+                break
+        coverage = dependency_index["coverage"]
+        if coverage["source_resolved_node_count"] != dependency_node_count:
+            error(
+                "lean_dependency_coverage",
+                "source_resolved_node_count",
+                str(coverage["source_resolved_node_count"]),
+            )
+        if (
+            coverage["source_resolved_direct_edge_count"]
+            != dependency_edge_count
+        ):
+            error(
+                "lean_dependency_coverage",
+                "source_resolved_direct_edge_count",
+                str(coverage["source_resolved_direct_edge_count"]),
+            )
+        if (
+            sum(
+                coverage[
+                    "unresolved_atlas_declaration_status_counts"
+                ].values()
+            )
+            != coverage["unresolved_atlas_declaration_count"]
+        ):
+            error(
+                "lean_dependency_unresolved_classification",
+                "docs/lean_dependency_index.json",
+                "unresolved declaration classifications do not sum to total",
+            )
+        curvature_dependencies = query_corpus.formal_dependency_neighbourhood(
+            "Erdos249257.TotientTailPeriodKiller."
+            "irrational_totientSeries_of_sharpCurvatureSupply"
+        )
+        if (
+            curvature_dependencies.get("availability") != "available"
+            or "Erdos249257.TotientTailPeriodKiller."
+            "curvature_notMem_int_of_sharpCurvatureCert"
+            not in {
+                row["handle"]
+                for row in curvature_dependencies.get(
+                    "direct_dependencies", []
+                )
+            }
+        ):
+            error(
+                "lean_dependency_anchor",
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+                "exact curvature consumer edge missing",
+            )
+
     packet_specs: tuple[
         tuple[str, list[dict[str, Any]], Callable[[dict[str, Any]], dict[str, Any]]],
         ...,
@@ -313,6 +433,12 @@ def audit_packet() -> dict[str, Any]:
             "verified_comment_false_positive_count": len(
                 actual_comment_false_positive_ids
             ),
+            "source_resolved_lean_dependency_node_count": (
+                dependency_node_count
+            ),
+            "source_resolved_lean_dependency_edge_count": (
+                dependency_edge_count
+            ),
             "theorem_like_docstring_count": theorem_like_with_docstrings,
             "theorem_like_docstring_ratio": (
                 theorem_like_with_docstrings / len(theorem_like)
@@ -352,6 +478,9 @@ def render_card(packet: dict[str, Any]) -> str:
         f"{coverage['programme_question_count']} "
         f"| packets={coverage['typed_packet_expansion_count']}/"
         f"{coverage['expected_typed_packet_expansion_count']} "
+        f"| dependency_graph="
+        f"{coverage['source_resolved_lean_dependency_node_count']}/"
+        f"{coverage['source_resolved_lean_dependency_edge_count']} "
         f"| module_synopses={coverage['authored_module_synopsis_ratio']:.3f} "
         f"| docstrings={coverage['theorem_like_docstring_ratio']:.3f} "
         f"| max_packet={boundedness['maximum_typed_packet_bytes']}B "

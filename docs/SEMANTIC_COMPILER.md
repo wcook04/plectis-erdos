@@ -95,8 +95,8 @@ expansion command, and evidence appropriate to its kind. For example:
 
 - a declaration cell contains the signature, source line, pinned Lean
   identity, docstring, and attached claim links; for `support` and `trace`
-  questions it also lists theorem or lemma names used in that declaration's
-  source span;
+  questions it also carries exact direct constant references from the
+  elaborated declaration and bounded reverse consumers;
 - a claim cell contains the authored status record, formal declaration
   handles, argument neighbourhood, programme ceiling, and remaining-open
   propositions;
@@ -118,11 +118,30 @@ python3 scripts/build_module_synopsis_index.py --check
 Its stored source fingerprint must match the declaration atlas. The index is a
 performance projection; the Lean header remains the authored source.
 
-Declaration-local source-use rows are also projections. They identify exact
-theorem or lemma names occurring in a source span and exclude trailing
-`#print` audit commands. They are labelled lexical dependency candidates,
-because only Lean elaboration establishes the actual dependency of the
-compiled proof term.
+The formal dependency index is generated from the imported Lean environment:
+
+```sh
+python3 scripts/build_lean_dependency_index.py
+python3 scripts/build_lean_dependency_index.py --check
+```
+
+It separates references in an elaborated declaration's type from references
+in its value or proof term, then joins public corpus constants back to exact
+atlas source coordinates. Corpus membership follows Lean's owning module
+rather than declaration namespace, so declarations intentionally living in
+top-level mathematical namespaces remain covered. The builder first runs the incremental
+`lake build Erdos249257` target so the loaded `.olean` environment is current
+with the source fingerprint. Query packets may compose two direct edges into a
+bounded two-hop theorem path, but do not call that a transitive proof
+explanation. Internal compiler/private references and public constants that
+cannot be source-joined are counted as omissions; atlas declarations absent
+from the loaded root or owned by a different loaded module are classified
+separately.
+
+Declaration-local source-use rows remain as a weaker, transparent projection.
+They identify theorem or lemma names occurring in a source span and exclude
+trailing `#print` audit commands. They are labelled lexical dependency
+candidates and never substitute for the elaborated dependency edges.
 
 ## Evaluation
 
@@ -145,16 +164,19 @@ claim, open proposition, and reading route. It also expands every typed claim,
 open, and route packet, checks all vocabulary hints, and asks one natural
 language question for each mathematical programme.
 
-The proof dogfood runs three tasks. The first recovers two conditional #249
+The proof dogfood runs four tasks. The first recovers two conditional #249
 proof sockets and asks Lean to check a new disjunctive irrationality
 corollary. The second recovers two sufficient #257 half-membership consumers
 and checks their disjunctive composition. The third begins from ordinary
 language about a direct dyadic curvature certificate, resolves the authored
 module and exact non-integrality consumer, and checks that application. The
-corollaries prove none of their antecedents. In particular, they make no
-progress on the unbounded #249 producer or the open #257 half-membership
-question. These tests measure premise recovery and formal composition, not
-solutions of the Erdős problems.
+fourth starts from a trace question, recovers two exact proof-term
+dependencies of the sharp-curvature irrationality consumer, and asks Lean to
+check a reconstructed proof using those intermediate theorems rather than the
+packaged consumer. The corollaries prove none of their antecedents. In
+particular, they make no progress on the unbounded #249 producer or the open
+#257 half-membership question. These tests measure premise recovery and formal
+composition, not solutions of the Erdős problems.
 
 ## Limits
 
