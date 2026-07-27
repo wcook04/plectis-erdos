@@ -20,7 +20,9 @@ It includes the interpreted question operator, semantic cells, a
 query-relative witness graph, explicit rejected over-interpretations, and
 typed omissions. It also returns an operator synthesis. This final object
 relates the cells without changing their authority: a support synthesis
-separates checked consumer signatures from unproved requirements, an analogy
+separates checked consumer signatures from unproved requirements and emits
+namespace-qualified `apply <theorem>` tactic candidates that still require
+Lean elaboration, an analogy
 synthesis records shared claim and open handles while declining to infer a
 formal bridge, and a frontier or falsification synthesis preserves the exact
 open records and claim ceilings.
@@ -47,6 +49,15 @@ A navigation edge is not a theorem. A docstring is not claim-status authority.
 A conditional reduction is not promoted to an unconditional result. When an
 authored paper is absent from the worktree, its coordinate is returned as
 unavailable; the claim and Lean witnesses remain available.
+
+The current declaration atlas contains 13 declaration-shaped phrases captured
+from inside Lean block comments by its line-oriented builder. The query layer
+excludes those exact row ids. `scripts/audit_semantic_corpus.py` strips nested
+Lean comments from the source and fails unless the derived false-positive set
+is exactly the configured suppression set. The atlas remains the raw
+projection until its builder and active downstream projections can be
+regenerated together; query summaries therefore report both raw and effective
+declaration counts.
 
 ## Question operators
 

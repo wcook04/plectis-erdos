@@ -10,6 +10,7 @@ not acquire proof authority. Run from any directory; output is JSON by default.
 from __future__ import annotations
 
 import argparse
+import bisect
 import hashlib
 import json
 import re
@@ -28,6 +29,27 @@ SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/1"
 SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
+
+# The current generated atlas was built by a raw line regex and contains these
+# declaration-looking phrases from inside Lean block comments. Query consumers
+# suppress them until the atlas builder and its currently active downstream
+# projections can be regenerated together. The whole-corpus audit proves that
+# this set is exactly the current comment false-positive set.
+SUPPRESSED_DECLARATION_ATLAS_ROWS = {
+    "Erdos249257/CertificateKernel.lean:5729:is",
+    "Erdos249257/CertificateKernel.lean:10461:makes",
+    "Erdos249257/CertificateKernel.lean:11719:of",
+    "Erdos249257/CertificateKernel.lean:18198:closes",
+    "Erdos249257/CyclicTensorMobiusShadow.lean:167:used",
+    "Erdos249257/DiagonalPincerDecomposition.lean:40:and",
+    "Erdos249257/DyadicPrefixCompression.lean:620:invariant",
+    "Erdos249257/FullTargetPrimeAdjunctionNoGo.lean:18:controlling",
+    "Erdos249257/GenericTailOrbitRigidity.lean:13:says",
+    "Erdos249257/GenericTailOrbitRigidity.lean:148:not",
+    "Erdos249257/GreedyAchievementSet.lean:1785:of",
+    "Erdos249257/HalfCarryReachability.lean:787:directly",
+    "Erdos249257/LcmConeNonflat.lean:67:plus",
+}
 
 SEMANTIC_QUERY_OPERATORS = (
     {
@@ -218,6 +240,67 @@ def load(rel: str) -> dict[str, Any]:
     return json.loads((ROOT / rel).read_text(encoding="utf-8"))
 
 
+def atlas_declarations(atlas: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        row
+        for row in atlas["declarations"]
+        if row["id"] not in SUPPRESSED_DECLARATION_ATLAS_ROWS
+    ]
+
+
+def lean_code_projection(text: str) -> str:
+    """Replace Lean comments and strings with spaces while preserving lines."""
+    projected: list[str] = []
+    block_depth = 0
+    in_string = False
+    escaped = False
+    cursor = 0
+    while cursor < len(text):
+        pair = text[cursor : cursor + 2]
+        char = text[cursor]
+        if block_depth:
+            if pair == "/-":
+                projected.extend((" ", " "))
+                block_depth += 1
+                cursor += 2
+            elif pair == "-/":
+                projected.extend((" ", " "))
+                block_depth -= 1
+                cursor += 2
+            else:
+                projected.append("\n" if char == "\n" else " ")
+                cursor += 1
+            continue
+        if in_string:
+            projected.append("\n" if char == "\n" else " ")
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            cursor += 1
+            continue
+        if pair == "--":
+            while cursor < len(text) and text[cursor] != "\n":
+                projected.append(" ")
+                cursor += 1
+            continue
+        if pair == "/-":
+            projected.extend((" ", " "))
+            block_depth = 1
+            cursor += 2
+            continue
+        if char == '"':
+            projected.append(" ")
+            in_string = True
+            cursor += 1
+            continue
+        projected.append(char)
+        cursor += 1
+    return "".join(projected)
+
+
 @lru_cache(maxsize=512)
 def module_synopsis_index() -> dict[str, str | None]:
     path = ROOT / "docs/module_synopsis_index.json"
@@ -271,7 +354,9 @@ def publication_evidence() -> dict[str, Any]:
 
 def current_corpus_census() -> dict[str, Any]:
     claims = load("docs/claims.json")
-    atlas_summary = load("docs/declaration_atlas.json")["summary"]
+    atlas = load("docs/declaration_atlas.json")
+    atlas_summary = atlas["summary"]
+    effective_declaration_count = len(atlas_declarations(atlas))
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     return {
         "snapshot_kind": "current_worktree_navigation_state",
@@ -279,6 +364,10 @@ def current_corpus_census() -> dict[str, Any]:
         "declaration_atlas_source": "docs/declaration_atlas.json",
         "module_count": atlas_summary["module_count"],
         "declaration_count": atlas_summary["declaration_count"],
+        "effective_query_declaration_count": effective_declaration_count,
+        "suppressed_declaration_projection_row_count": (
+            atlas_summary["declaration_count"] - effective_declaration_count
+        ),
         "theorem_like_count": atlas_summary["theorem_like_count"],
         "generated_certificate_declaration_count": atlas_summary[
             "generated_certificate_declaration_count"
@@ -949,7 +1038,11 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     atlas = load("docs/declaration_atlas.json")
     claims = load("docs/claims.json")
     aliases = load("paper/module-aliases.json")["aliases"]
-    matches = [row for row in atlas["declarations"] if row["name"] == name]
+    matches = [
+        row
+        for row in atlas_declarations(atlas)
+        if row["name"] == name or qualified_declaration_name(row) == name
+    ]
     if not matches:
         raise KeyError(f"unknown declaration name: {name}")
     claim_index = {row["id"]: row for row in claims["claims"]}
@@ -961,7 +1054,7 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     source_ref = lean_source_identity["ref"]
     paper_anchors = paper_anchor_inventory()
     declarations_by_module: dict[str, list[dict[str, Any]]] = {}
-    for row in atlas["declarations"]:
+    for row in atlas_declarations(atlas):
         declarations_by_module.setdefault(row["module"], []).append(row)
     for rows in declarations_by_module.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
@@ -979,6 +1072,7 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
         decorated.append(
             {
                 **match,
+                "qualified_name": qualified_declaration_name(match),
                 "source_ref": f"{match['module']}:{match['line']}",
                 "source_url": f"{repository}/blob/{source_ref}/{match['module']}#L{match['line']}",
                 "lean_source_identity": dict(lean_source_identity),
@@ -1058,7 +1152,11 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
         )
 
     module_declarations = sorted(
-        (row for row in atlas["declarations"] if row["module"] == module_path),
+        (
+            row
+            for row in atlas_declarations(atlas)
+            if row["module"] == module_path
+        ),
         key=lambda row: (row["line"], row["name"]),
     )
     window_declarations = sorted(
@@ -1139,6 +1237,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
 def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
     return {
         "name": row["name"],
+        "qualified_name": qualified_declaration_name(row),
         "declaration_kind": row["kind"],
         "module": row["module"],
         "line": row["line"],
@@ -1146,6 +1245,57 @@ def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
         "claim_ids": row.get("claim_ids", []),
         "generated_certificate": bool(row.get("generated_certificate")),
     }
+
+
+@lru_cache(maxsize=1024)
+def module_namespace_events(rel: str) -> tuple[tuple[int, str], ...]:
+    """Return namespace-prefix changes, respecting intervening section blocks."""
+    path = ROOT / rel
+    if not path.is_file():
+        return ((1, ""),)
+    current = ""
+    blocks: list[tuple[str, str]] = []
+    events: list[tuple[int, str]] = [(1, "")]
+    for line_number, raw in enumerate(
+        lean_code_projection(path.read_text(encoding="utf-8")).splitlines(),
+        start=1,
+    ):
+        line = raw.strip()
+        namespace = re.fullmatch(
+            r"namespace\s+([A-Za-z0-9_'.]+)", line
+        )
+        if namespace:
+            name = namespace.group(1)
+            previous = current
+            if not current or name.startswith(f"{current}."):
+                current = name
+            else:
+                current = f"{current}.{name}"
+            blocks.append(("namespace", previous))
+            events.append((line_number + 1, current))
+            continue
+        if re.fullmatch(
+            r"(?:(?:noncomputable|private)\s+)?section(?:\s+[A-Za-z0-9_']+)?",
+            line,
+        ):
+            blocks.append(("section", current))
+            continue
+        if re.fullmatch(r"end(?:\s+[A-Za-z0-9_'.]+)?", line) and blocks:
+            _, previous = blocks.pop()
+            if current != previous:
+                current = previous
+                events.append((line_number + 1, current))
+    return tuple(events)
+
+
+def qualified_declaration_name(row: dict[str, Any]) -> str:
+    events = module_namespace_events(row["module"])
+    starts = [event[0] for event in events]
+    prefix = events[bisect.bisect_right(starts, row["line"]) - 1][1]
+    name = row["name"]
+    if not prefix or name.startswith(f"{prefix}."):
+        return name
+    return f"{prefix}.{name}"
 
 
 def module_roles(claims: dict[str, Any]) -> dict[str, str]:
@@ -1194,7 +1344,9 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         else resolved_handle
     ).removeprefix("./")
     declaration_matches = [
-        row for row in atlas["declarations"] if row["name"] == resolved_handle
+        row
+        for row in atlas_declarations(atlas)
+        if row["name"] == resolved_handle
     ]
     module = next(
         (
@@ -1215,7 +1367,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     roles = module_roles(claims)
     by_module = {row["id"]: row for row in atlas["modules"]}
     declarations_by_path: dict[str, list[dict[str, Any]]] = {}
-    for row in atlas["declarations"]:
+    for row in atlas_declarations(atlas):
         declarations_by_path.setdefault(row["module"], []).append(row)
     for rows in declarations_by_path.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
@@ -1406,7 +1558,9 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     imported_rows = [row for row in atlas["modules"] if row["id"] in module["imports"]]
     importer_rows = [row for row in atlas["modules"] if module["id"] in row["imports"]]
     declarations = [
-        row for row in atlas["declarations"] if row["module"] == module["path"]
+        row
+        for row in atlas_declarations(atlas)
+        if row["module"] == module["path"]
     ]
     attached_claim_ids = sorted(
         {
@@ -1939,7 +2093,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         if rank is not None:
             ranked.append((rank, f"claim:{claim['id']}", {"kind": "claim", **compact_claim(claim)}))
 
-    for row in atlas["declarations"]:
+    for row in atlas_declarations(atlas):
         rank = search_rank(
             query,
             row["name"],
@@ -2195,7 +2349,7 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     atlas = load("docs/declaration_atlas.json")
     declarations = {
         (row["name"], row["module"], row["line"]): row
-        for row in atlas["declarations"]
+        for row in atlas_declarations(atlas)
     }
     claims = load("docs/claims.json")
     identity = formal_source_identity(claims)
@@ -2210,6 +2364,7 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
         witnesses.append(
             {
                 "name": declaration["name"],
+                "qualified_name": qualified_declaration_name(declaration),
                 "declaration_kind": declaration["kind"],
                 "signature": declaration.get("signature"),
                 "source_ref": (
@@ -2236,7 +2391,9 @@ def declaration_source_dependency_candidates(
     trace. The distinction is retained in every emitted row.
     """
     atlas = load("docs/declaration_atlas.json")
-    matches = [row for row in atlas["declarations"] if row["name"] == name]
+    matches = [
+        row for row in atlas_declarations(atlas) if row["name"] == name
+    ]
     if len(matches) != 1:
         return []
     declaration = matches[0]
@@ -2248,7 +2405,7 @@ def declaration_source_dependency_candidates(
     module_declarations = sorted(
         (
             row
-            for row in atlas["declarations"]
+            for row in atlas_declarations(atlas)
             if row["module"] == declaration["module"]
         ),
         key=lambda row: (row["line"], row["name"]),
@@ -2275,7 +2432,7 @@ def declaration_source_dependency_candidates(
         ),
     }
     candidates = []
-    for row in atlas["declarations"]:
+    for row in atlas_declarations(atlas):
         candidate_name = row["name"]
         if (
             row["module"] not in visible_paths
@@ -2295,6 +2452,7 @@ def declaration_source_dependency_candidates(
                 -len(candidate_name),
                 {
                     "name": candidate_name,
+                    "qualified_name": qualified_declaration_name(row),
                     "declaration_kind": row["kind"],
                     "signature": row.get("signature"),
                     "source_ref": f"{row['module']}:{row['line']}",
@@ -2334,6 +2492,7 @@ def semantic_cell(
                 key: declaration.get(key)
                 for key in (
                     "name",
+                    "qualified_name",
                     "kind",
                     "signature",
                     "module",
@@ -2605,15 +2764,30 @@ def operator_synthesis(
                     unproved_requirements.extend(
                         programme["remaining_open_propositions"]
                     )
+        checked_consumers = list(
+            {
+                row["name"]: row
+                for row in formal_consumers
+                if row.get("name")
+            }.values()
+        )
         return {
             "kind": "support_synthesis",
-            "checked_consumer_signatures": list(
+            "checked_consumer_signatures": checked_consumers,
+            "lean_application_candidates": [
                 {
-                    row["name"]: row
-                    for row in formal_consumers
-                    if row.get("name")
-                }.values()
-            ),
+                    "declaration": row["name"],
+                    "qualified_declaration": row.get("qualified_name"),
+                    "signature": row.get("signature"),
+                    "tactic": (
+                        f"apply {row.get('qualified_name') or row['name']}"
+                    ),
+                    "authority_posture": (
+                        "query_derived_tactic_candidate_requires_Lean_elaboration"
+                    ),
+                }
+                for row in checked_consumers
+            ],
             "source_dependency_candidates": list(
                 {
                     (row["name"], row["source_ref"]): row
@@ -3302,6 +3476,9 @@ def publication_architecture_packet() -> dict[str, Any]:
 def summary_packet() -> dict[str, Any]:
     orientation = load("docs/orientation.json")
     claims = load("docs/claims.json")
+    atlas = load("docs/declaration_atlas.json")
+    raw_declaration_count = len(atlas["declarations"])
+    effective_declaration_count = len(atlas_declarations(atlas))
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     bounded_omissions = (
         "editorial_architecture",
@@ -3318,6 +3495,14 @@ def summary_packet() -> dict[str, Any]:
         },
         "curated_claim_count": len(claims["claims"]),
         "publication_family_count": len(assembly["contribution_families"]),
+        "declaration_projection_filter_receipt": {
+            "raw_atlas_declaration_count": raw_declaration_count,
+            "effective_query_declaration_count": effective_declaration_count,
+            "suppressed_comment_false_positive_count": (
+                raw_declaration_count - effective_declaration_count
+            ),
+            "validation": "python3 scripts/audit_semantic_corpus.py",
+        },
         "bounded_summary_omission_receipt": {
             "omitted_sections": list(bounded_omissions),
             "drilldown": "docs/orientation.json",

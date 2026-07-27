@@ -11,6 +11,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Callable
 
+import build_declaration_atlas
 import query_corpus
 
 
@@ -34,7 +35,8 @@ def audit_packet() -> dict[str, Any]:
     programmes = [
         row for row in routes if row.get("route_kind") == "mathematical_programme"
     ]
-    declarations = atlas["declarations"]
+    raw_declarations = atlas["declarations"]
+    declarations = query_corpus.atlas_declarations(atlas)
     errors: list[dict[str, str]] = []
 
     def error(check: str, handle: str, detail: str) -> None:
@@ -105,20 +107,24 @@ def audit_packet() -> dict[str, Any]:
                 error("related_route_link", route["id"], f"missing {related_id}")
 
     module_lines: dict[str, int] = {}
+    module_code_lines: dict[str, list[str]] = {}
     source_missing_count = 0
     coordinate_error_count = 0
-    for declaration in declarations:
+    for declaration in raw_declarations:
         module = declaration["module"]
         if module not in module_lines:
             source = query_corpus.ROOT / module
             if not source.is_file():
                 module_lines[module] = -1
+                module_code_lines[module] = []
                 source_missing_count += 1
                 error("declaration_source", module, "source file missing")
             else:
-                module_lines[module] = len(
-                    source.read_text(encoding="utf-8").splitlines()
-                )
+                source_text = source.read_text(encoding="utf-8")
+                module_lines[module] = len(source_text.splitlines())
+                module_code_lines[module] = query_corpus.lean_code_projection(
+                    source_text
+                ).splitlines()
         if not 1 <= declaration["line"] <= module_lines[module]:
             coordinate_error_count += 1
             error(
@@ -126,6 +132,29 @@ def audit_packet() -> dict[str, Any]:
                 declaration["name"],
                 f"{module}:{declaration['line']} outside 1..{module_lines[module]}",
             )
+
+    actual_comment_false_positive_ids = set()
+    for declaration in raw_declarations:
+        module = declaration["module"]
+        line_number = declaration["line"]
+        code_lines = module_code_lines.get(module, [])
+        if not 1 <= line_number <= len(code_lines):
+            continue
+        match = build_declaration_atlas.DECL_RE.match(
+            code_lines[line_number - 1]
+        )
+        if match is None or match.group(2) != declaration["name"]:
+            actual_comment_false_positive_ids.add(declaration["id"])
+    configured_suppression_ids = query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS
+    if actual_comment_false_positive_ids != configured_suppression_ids:
+        error(
+            "declaration_projection_suppression_contract",
+            "docs/declaration_atlas.json",
+            "missing="
+            f"{sorted(actual_comment_false_positive_ids - configured_suppression_ids)} "
+            "stale="
+            f"{sorted(configured_suppression_ids - actual_comment_false_positive_ids)}",
+        )
 
     packet_specs: tuple[
         tuple[str, list[dict[str, Any]], Callable[[dict[str, Any]], dict[str, Any]]],
@@ -251,7 +280,11 @@ def audit_packet() -> dict[str, Any]:
             "whole_corpus_navigation_and_referential_integrity_audit_not_a_proof_of_open_claims"
         ),
         "corpus_scale": {
+            "raw_atlas_declaration_count": len(raw_declarations),
             "declaration_count": len(declarations),
+            "suppressed_comment_false_positive_count": (
+                len(raw_declarations) - len(declarations)
+            ),
             "theorem_like_count": len(theorem_like),
             "claim_count": len(claims),
             "open_proposition_count": len(opens),
@@ -277,6 +310,9 @@ def audit_packet() -> dict[str, Any]:
             ),
             "missing_declaration_source_count": source_missing_count,
             "invalid_declaration_coordinate_count": coordinate_error_count,
+            "verified_comment_false_positive_count": len(
+                actual_comment_false_positive_ids
+            ),
             "theorem_like_docstring_count": theorem_like_with_docstrings,
             "theorem_like_docstring_ratio": (
                 theorem_like_with_docstrings / len(theorem_like)

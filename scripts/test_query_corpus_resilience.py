@@ -33,6 +33,17 @@ def check_dictionary_budget_and_shape() -> None:
 
 
 def check_vocabulary_mismatch_queries() -> None:
+    assert len(query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS) == 13
+    try:
+        query_corpus.declaration_packet("makes", 1)
+    except KeyError:
+        pass
+    else:
+        raise AssertionError("comment prose must not be queryable as a declaration")
+    assert not any(
+        row.get("kind") == "declaration" and row.get("name") == "makes"
+        for row in query_corpus.search_packet("makes", 20)["results"]
+    )
     assert query_corpus.search_terms(
         "half_mem_mersenneAchievementSet_of_middleProducerTailEscape"
     ) >= {
@@ -46,6 +57,21 @@ def check_vocabulary_mismatch_queries() -> None:
         "tail",
         "escape",
     }
+    qualified = query_corpus.declaration_packet(
+        "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo",
+        1,
+    )
+    assert qualified["matches"][0]["name"] == "fixedPrecisionTropicalNoGo"
+    assert qualified["matches"][0]["qualified_name"] == (
+        "Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo"
+    )
+    dotted = query_corpus.declaration_packet(
+        "BooleanMobiusCarryCertificate.reconstructsSupport",
+        1,
+    )
+    assert dotted["matches"][0]["qualified_name"] == (
+        "Erdos249257.BooleanMobiusCarryCertificate.reconstructsSupport"
+    )
     rank_two = query_corpus.search_packet("is rank two worth pursuing", 5)
     assert rank_two["query_interpretation"]["operator"]["id"] == "falsify"
     assert rank_two["results"][0]["kind"] == "declaration"
@@ -135,6 +161,15 @@ def check_witness_carrying_semantic_slices() -> None:
         "irrational_totientSeries_of_sharpCurvatureSupply",
         "irrational_totient_series_of_exponentOnlyThreeTransportSupply",
     } <= consumer_names
+    assert {
+        row["tactic"]
+        for row in support["operator_synthesis"][
+            "lean_application_candidates"
+        ]
+    } >= {
+        "apply Erdos249257.TotientTailPeriodKiller.irrational_totientSeries_of_sharpCurvatureSupply",
+        "apply Erdos249257.ExponentOnlyTransport.irrational_totient_series_of_exponentOnlyThreeTransportSupply",
+    }
     assert {
         row["id"]
         for row in support["operator_synthesis"]["unproved_requirements"]
