@@ -72,6 +72,18 @@ def check_vocabulary_mismatch_queries() -> None:
     assert dotted["matches"][0]["qualified_name"] == (
         "Erdos249257.BooleanMobiusCarryCertificate.reconstructsSupport"
     )
+    private = query_corpus.declaration_packet("mod_six_cases", 1)
+    assert not private["matches"][0]["externally_addressable"]
+    private_support = query_corpus.semantic_slice_packet(
+        "I need the mod_six_cases theorem",
+        4,
+    )
+    assert not any(
+        row["qualified_declaration"].endswith(".mod_six_cases")
+        for row in private_support["operator_synthesis"].get(
+            "lean_application_candidates", []
+        )
+    )
     rank_two = query_corpus.search_packet("is rank two worth pursuing", 5)
     assert rank_two["query_interpretation"]["operator"]["id"] == "falsify"
     assert rank_two["results"][0]["kind"] == "declaration"

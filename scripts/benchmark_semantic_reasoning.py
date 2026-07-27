@@ -29,7 +29,7 @@ TASKS: tuple[dict[str, Any], ...] = (
         "required_text": ("NOT shallower", "LcmConeFlatness.lean:626"),
         "required_edges": (
             (
-                "declaration:rank2_kill_sound_but_not_shallower_at_cell",
+                "declaration:Erdos249257.TotientTailPeriodKiller.rank2_kill_sound_but_not_shallower_at_cell",
                 "elaborated_at",
                 "Erdos249257/LcmConeFlatness.lean:626",
             ),
@@ -103,6 +103,38 @@ TASKS: tuple[dict[str, Any], ...] = (
             "support_alternative_right",
             "HalfTerminalOnlyScaledVanishingSequence",
             "SeamMiddleProducerTailEscapeExceptNegThree",
+        ),
+    },
+    {
+        "id": "dev_full_target_supply_boundary",
+        "split": "development",
+        "query": (
+            "can full target prime adjacency provide the unbounded "
+            "certificate supply for erdos 249"
+        ),
+        "operator": "support",
+        "required_cells": (
+            (
+                "declaration",
+                "fullTarget_primeAdjunction_diamond_iff_root",
+            ),
+            (
+                "open_proposition",
+                "remaining_open.unbounded_certificate_supply",
+            ),
+            ("module", "Erdos249257.FullTargetPrimeAdjunctionNoGo"),
+        ),
+        "required_text": (
+            "apply Erdos249257.FullTargetPrimeAdjunctionNoGo.fullTarget_primeAdjunction_diamond_iff_root",
+            "Produce certified non-integrality witnesses at unbounded parameters",
+            "unproved_requirements",
+        ),
+        "required_edges": (
+            (
+                "open_proposition:remaining_open.unbounded_certificate_supply",
+                "keeps_open",
+                "claim:erdos_249",
+            ),
         ),
     },
     {
@@ -228,6 +260,34 @@ TASKS: tuple[dict[str, Any], ...] = (
             "rational_totient_series_forces_lcm_cone_flatness",
             "curvature_notMem_int_of_sharpCurvatureCert",
             "apply Erdos249257.TotientTailPeriodKiller.irrational_totientSeries_of_sharpCurvatureSupply",
+        ),
+    },
+    {
+        "id": "heldout_direct_curvature_consumer",
+        "split": "held_out",
+        "query": (
+            "which exact theorem turns a direct dyadic curvature certificate "
+            "into nonintegrality of the curvature expression"
+        ),
+        "operator": "support",
+        "required_cells": (
+            (
+                "declaration",
+                "curvature_notMem_int_of_sharpCurvatureCert",
+            ),
+            ("module", "Erdos249257.CurvatureCarry"),
+        ),
+        "required_text": (
+            "apply Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert",
+            "sharpCurvatureCert H L",
+            "source_current_authored_digestion",
+        ),
+        "required_edges": (
+            (
+                "declaration:Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert",
+                "elaborated_at",
+                "Erdos249257/CurvatureCarry.lean:159",
+            ),
         ),
     },
 )

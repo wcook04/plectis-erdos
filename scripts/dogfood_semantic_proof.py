@@ -34,6 +34,13 @@ HALF_REQUIRED_DECLARATIONS = {
     "half_mem_mersenneAchievementSet_of_terminalScaledVanishing",
     "half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree",
 }
+DIRECT_CURVATURE_QUERY = (
+    "which exact theorem turns a direct dyadic curvature certificate into "
+    "nonintegrality of the curvature expression"
+)
+DIRECT_CURVATURE_REQUIRED_DECLARATIONS = {
+    "curvature_notMem_int_of_sharpCurvatureCert",
+}
 SCRATCH_THEOREM = """\
 import Erdos249257.CurvatureCarry
 import Erdos249257.ExponentOnlyTransport
@@ -73,6 +80,17 @@ theorem semanticCompiler_halfMembershipAlternative
   · exact
       Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree
         hmiddle
+
+/- A query-derived exact consumer for the direct dyadic curvature
+   certificate. The query selected both the authored module and this theorem. -/
+theorem semanticCompiler_directCurvatureConsumer {H L : ℕ} (hH : 1 ≤ H)
+    (hcert :
+      Erdos249257.TotientTailPeriodKiller.sharpCurvatureCert H L) :
+    Erdos249257.TotientTailPeriodKiller.curvatureTail H ∉
+      Set.range ((↑) : ℤ → ℝ) := by
+  exact
+    Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert
+      hH hcert
 """
 
 
@@ -95,6 +113,11 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     task_specs = (
         ("transport_supply_alternatives", query, REQUIRED_DECLARATIONS),
         ("half_membership_alternatives", HALF_QUERY, HALF_REQUIRED_DECLARATIONS),
+        (
+            "direct_curvature_consumer",
+            DIRECT_CURVATURE_QUERY,
+            DIRECT_CURVATURE_REQUIRED_DECLARATIONS,
+        ),
     )
     tasks = []
     all_required: set[str] = set()
