@@ -211,6 +211,16 @@ below is the bounded route into mathematical claims and Lean source.
 For a bounded lookup, use `python3 scripts/query_corpus.py` with one typed
 handle:
 
+- `--vocabulary` for the compact executable mathematical Rosetta stone:
+  question operators, ordinary-language aliases, corpus terms of art,
+  transparent query expansions, and typed route hints;
+- `--ask "<question>"` to compile ordinary mathematical language into a
+  bounded witness graph while keeping kernel, claim-status, authored-digestion,
+  and navigation provenance separate; support and trace cells use the
+  source-joined elaborated dependency index when it is fresh, and the contract
+  and evaluation levels are documented in `docs/SEMANTIC_COMPILER.md`;
+  relational trace questions with explicit `from ... to ...` endpoints resolve
+  each endpoint independently before searching for an exact formal path;
 - `--claim <id>`, `--open <remaining_open.id>`, or `--route <id>` for the
   mathematical story and exact frontier;
 - programme routes such as `erdos249_diagonal_arithmetic`,
@@ -225,6 +235,33 @@ handle:
   contribution-family index;
 - `--declaration <name>`, `--source <module.lean:line>`, or `--module <path_or_id>`
   for checked source;
+- `--goal-support "<Lean or mathematical goal>"` for theorem candidates ranked
+  by precomputed elaborated conclusion shape, conclusion constants, exact
+  context phrases, and binder structure; this is a navigation affordance, not
+  an applicability proof, so the emitted `apply` candidates still require
+  Lean elaboration;
+- `--proof-plan "<Lean or mathematical goal>" --depth <1..8>` to extend the
+  best goal-support candidate with its Lean-classified term/proposition
+  telescope, a context-match or missing-obligation ledger, and a bounded exact
+  proof-term dependency spine;
+- `python3 scripts/proof_state_compiler.py --pilot-controls` to cross the
+  static/runtime boundary: candidate applications are executed against actual
+  Lean examples, accepted transitions become AND/OR obligation hyperedges,
+  rejected applications retain typed failures, and closed runs carry replay
+  receipts.  Use `--request-file` or `--request-stdin` for another explicit
+  bounded goal; this runtime packet is documented in
+  `docs/PROOF_STATE_COMPILER.md` and remains distinct from claim status;
+- `python3 scripts/proof_workbench.py {open,note,probe,claim,close,replay,show}`
+  for the agent-native session notary: typed cognitive moves in an
+  append-only ledger, kernel probes whose verdicts the agent cannot author,
+  claims that must cite kernel-accepted probe receipts, and byte-exact
+  session replay.  The inhabitation contract — instruments versus agent
+  policy, and the assisted / context-blind / prospective invention ladder —
+  is `docs/AGENT_WORKBENCH.md`;
+- `--proof-cone <declaration> --depth <1..8>` for a bounded,
+  theorem-prioritized cone of exact proof-term dependencies, or
+  `--dependency-path <source> <target> --depth <1..8>` for the shortest exact
+  directed path between two source-resolved declarations;
 - `--artifact <path_or_sha256>` for a registered paper, PDF, JSON owner, or
   content identity;
 - `--publication-artifact <id>` for a shipped manuscript's typed role,
@@ -284,6 +321,8 @@ python3 scripts/test_citation_identity_contract.py
 python3 scripts/test_license_map_contract.py
 python3 scripts/test_methodology_contract.py
 python3 scripts/build_module_graph.py --check
+python3 scripts/build_module_synopsis_index.py --check
+python3 scripts/build_lean_dependency_index.py --check
 python3 scripts/refresh_source_coordinates.py --check
 python3 scripts/build_corpus_descriptor.py --check
 python3 scripts/build_publication_entry_packet.py --check
@@ -291,6 +330,10 @@ python3 scripts/check_publication_contract.py
 python3 scripts/test_publication_artifact_contract.py
 python3 scripts/run_publication_mutations.py --verify-operators
 python3 scripts/test_query_corpus.py --programme-routes-only
+python3 scripts/test_query_corpus_resilience.py
+python3 scripts/benchmark_semantic_reasoning.py --split held_out
+python3 scripts/audit_semantic_corpus.py
+python3 scripts/dogfood_semantic_proof.py
 python3 scripts/test_status_question_search.py
 python3 scripts/test_claim_packet_boundaries.py
 python3 scripts/test_publication_evidence_time_axis.py

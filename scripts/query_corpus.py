@@ -10,11 +10,13 @@ not acquire proof authority. Run from any directory; output is JSON by default.
 from __future__ import annotations
 
 import argparse
+import bisect
 import hashlib
 import json
 import re
 import sys
 import unicodedata
+from collections import deque
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -22,14 +24,1509 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
+MAX_SEMANTIC_CELLS = 4
 OUTPUT_BUDGET_BYTES = 64_000
 SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
+SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/1"
+SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
+
+# The current generated atlas was built by a raw line regex and contains these
+# declaration-looking phrases from inside Lean block comments. Query consumers
+# suppress them until the atlas builder and its currently active downstream
+# projections can be regenerated together. The whole-corpus audit proves that
+# this set is exactly the current comment false-positive set.
+SUPPRESSED_DECLARATION_ATLAS_ROWS = {
+    "Erdos249257/CertificateKernel.lean:5729:is",
+    "Erdos249257/CertificateKernel.lean:10461:makes",
+    "Erdos249257/CertificateKernel.lean:11719:of",
+    "Erdos249257/CertificateKernel.lean:18198:closes",
+    "Erdos249257/CyclicTensorMobiusShadow.lean:167:used",
+    "Erdos249257/DiagonalPincerDecomposition.lean:40:and",
+    "Erdos249257/FullTargetPrimeAdjunctionNoGo.lean:18:controlling",
+    "Erdos249257/GenericTailOrbitRigidity.lean:14:says",
+    "Erdos249257/GenericTailOrbitRigidity.lean:149:not",
+    "Erdos249257/GreedyAchievementSet.lean:1785:of",
+    "Erdos249257/HalfCarryReachability.lean:787:directly",
+    "Erdos249257/LcmConeNonflat.lean:67:plus",
+    "Erdos249257/SignedQMomentObstruction.lean:533:for",
+}
+
+SEMANTIC_QUERY_OPERATORS = (
+    {
+        "id": "locate",
+        "intent": "Find an exact declaration, definition, claim, paper anchor, or source coordinate.",
+        "cues": ("find", "where", "locate", "source", "declaration"),
+    },
+    {
+        "id": "support",
+        "intent": "Find a jointly useful premise or strategy support set.",
+        "cues": (
+            "need to prove",
+            "need",
+            "premise",
+            "support",
+            "approach",
+            "proof socket",
+            "socket",
+            "provide",
+            "yield",
+            "imply",
+        ),
+    },
+    {
+        "id": "frontier",
+        "intent": "Recover the exact open proposition and its nearest proved reductions or blockers.",
+        "cues": ("what remains", "what blocks", "missing", "next", "try next"),
+    },
+    {
+        "id": "analogy",
+        "intent": "Compare structurally corresponding arguments without treating similarity as proof.",
+        "cues": ("analog", "analogy", "compare", "transfer"),
+    },
+    {
+        "id": "trace",
+        "intent": "Explain why a claim holds through typed argument and source relationships.",
+        "cues": ("why", "depends on", "builds on", "trace"),
+    },
+    {
+        "id": "digest",
+        "intent": "Return a bounded formal-plus-authored mathematical explanation.",
+        "cues": ("explain", "understand", "overview", "story"),
+    },
+    {
+        "id": "falsify",
+        "intent": "Find non-claims, failed analogies, obstructions, and exact claim ceilings.",
+        "cues": (
+            "cannot",
+            "counterexample",
+            "dead end",
+            "does not",
+            "failed",
+            "worth pursuing",
+        ),
+    },
+)
+
+# This is deliberately a small translation layer, not a generated mini-paper.
+# Rows bridge ordinary questions to the corpus's authored terms of art and typed
+# handles. They never create proof, claim-status, or editorial authority.
+SEMANTIC_VOCABULARY = (
+    {
+        "id": "rank_two_certificate_value",
+        "vocabulary_kind": "entity",
+        "pref_label": "rank-2 certificate shallowness",
+        "alt_labels": (
+            "rank two worth pursuing",
+            "second difference certificate",
+            "better than rank one",
+            "rank two certificate",
+            "worth pursuing",
+        ),
+        "query_expansions": (
+            "rank 2 not shallower",
+            "promotion gate denied",
+        ),
+        "route_hints": (
+            "--declaration rank2_kill_sound_but_not_shallower_at_cell",
+        ),
+    },
+    {
+        "id": "negative_mathematical_result",
+        "vocabulary_kind": "intent",
+        "pref_label": "obstruction or no-go result",
+        "alt_labels": (
+            "dead end",
+            "failed approach",
+            "not worth pursuing",
+            "why it fails",
+            "what is ruled out",
+        ),
+        "query_expansions": (
+            "obstruction no go countermodel",
+            "claim ceiling does not prove",
+        ),
+        "route_hints": (
+            "--route transport_curvature_programme",
+        ),
+    },
+    {
+        "id": "open_producer",
+        "vocabulary_kind": "intent",
+        "pref_label": "remaining open producer",
+        "alt_labels": (
+            "missing step",
+            "missing producer",
+            "what blocks",
+            "what should i try next",
+            "what remains to prove",
+        ),
+        "query_expansions": (
+            "remaining open supply producer",
+            "sufficient interface open",
+        ),
+        "route_hints": (
+            "--open <remaining_open.id>",
+        ),
+    },
+    {
+        "id": "unbounded_certificate_supply",
+        "vocabulary_kind": "entity",
+        "pref_label": "unbounded certified non-integrality supply",
+        "alt_labels": (
+            "unbounded certificate supply",
+            "cofinal certificate producer",
+            "certificates at unbounded parameters",
+        ),
+        "query_expansions": (
+            "certified non-integrality witnesses at unbounded parameters",
+            "lcm diagonal sufficient producer",
+        ),
+        "route_hints": (
+            "--open remaining_open.unbounded_certificate_supply",
+        ),
+    },
+    {
+        "id": "half_value_membership",
+        "vocabulary_kind": "entity",
+        "pref_label": "half-value achievement-set membership",
+        "alt_labels": (
+            "1/2 problem",
+            "half value",
+            "one half",
+            "rational support counterexample",
+        ),
+        "query_expansions": (
+            "half membership mersenne achievement",
+            "greedy half last producer",
+        ),
+        "route_hints": (
+            "--route erdos257_half_story",
+            "--open remaining_open.half_value_membership",
+        ),
+    },
+    {
+        "id": "formal_assumptions",
+        "vocabulary_kind": "intent",
+        "pref_label": "axiom footprint",
+        "alt_labels": (
+            "assumptions",
+            "what does this theorem assume",
+            "trusted base",
+        ),
+        "query_expansions": (
+            "axiom footprint hypothesis",
+        ),
+        "route_hints": (
+            "--declaration <Lean_name>",
+        ),
+    },
+    {
+        "id": "counterexample_language",
+        "vocabulary_kind": "intent",
+        "pref_label": "countermodel",
+        "alt_labels": (
+            "counterexample",
+            "false friend",
+            "disproof example",
+        ),
+        "query_expansions": (
+            "countermodel obstruction no go",
+        ),
+        "route_hints": (
+            "--search countermodel",
+        ),
+    },
+)
 
 
 @lru_cache(maxsize=None)
 def load(rel: str) -> dict[str, Any]:
     return json.loads((ROOT / rel).read_text(encoding="utf-8"))
+
+
+def atlas_declarations(atlas: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        row
+        for row in atlas["declarations"]
+        if row["id"] not in SUPPRESSED_DECLARATION_ATLAS_ROWS
+    ]
+
+
+def lean_code_projection(text: str) -> str:
+    """Replace Lean comments and strings with spaces while preserving lines."""
+    projected: list[str] = []
+    block_depth = 0
+    in_string = False
+    escaped = False
+    cursor = 0
+    while cursor < len(text):
+        pair = text[cursor : cursor + 2]
+        char = text[cursor]
+        if block_depth:
+            if pair == "/-":
+                projected.extend((" ", " "))
+                block_depth += 1
+                cursor += 2
+            elif pair == "-/":
+                projected.extend((" ", " "))
+                block_depth -= 1
+                cursor += 2
+            else:
+                projected.append("\n" if char == "\n" else " ")
+                cursor += 1
+            continue
+        if in_string:
+            projected.append("\n" if char == "\n" else " ")
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            cursor += 1
+            continue
+        if pair == "--":
+            while cursor < len(text) and text[cursor] != "\n":
+                projected.append(" ")
+                cursor += 1
+            continue
+        if pair == "/-":
+            projected.extend((" ", " "))
+            block_depth = 1
+            cursor += 2
+            continue
+        if char == '"':
+            projected.append(" ")
+            in_string = True
+            cursor += 1
+            continue
+        projected.append(char)
+        cursor += 1
+    return "".join(projected)
+
+
+@lru_cache(maxsize=512)
+def module_synopsis_index() -> dict[str, str | None]:
+    path = ROOT / "docs/module_synopsis_index.json"
+    if not path.is_file():
+        return {}
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        atlas = load("docs/declaration_atlas.json")
+    except (json.JSONDecodeError, OSError, KeyError):
+        return {}
+    if packet.get("source_fingerprint") != atlas.get("source_fingerprint"):
+        return {}
+    return {
+        row["path"]: row.get("synopsis")
+        for row in packet.get("modules", [])
+        if isinstance(row, dict) and isinstance(row.get("path"), str)
+    }
+
+
+@lru_cache(maxsize=512)
+def module_synopsis(rel: str) -> str | None:
+    """Return a fingerprint-bound authored module header, with a local fallback."""
+    indexed = module_synopsis_index()
+    if rel in indexed:
+        return indexed[rel]
+    path = ROOT / rel
+    if not path.is_file():
+        return None
+    with path.open(encoding="utf-8") as source:
+        prefix = source.read(64_000)
+    match = re.search(r"/-!(.*?)-/", prefix, re.S)
+    if match is None:
+        return None
+    lines = []
+    for raw in match.group(1).splitlines():
+        line = raw.strip()
+        if line.startswith("#"):
+            line = line.lstrip("#").strip()
+        lines.append(line)
+    synopsis = re.sub(r"\s+", " ", " ".join(lines)).strip()
+    return synopsis[:1600] or None
+
+
+@lru_cache(maxsize=1)
+def lean_dependency_index() -> dict[str, Any] | None:
+    path = ROOT / "docs/lean_dependency_index.json"
+    if not path.is_file():
+        return None
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        atlas = load("docs/declaration_atlas.json")
+    except (json.JSONDecodeError, OSError, KeyError):
+        return None
+    if (
+        packet.get("schema_version")
+        != "erdos249257-lean-dependency-index/3"
+        or packet.get("source_fingerprint") != atlas.get("source_fingerprint")
+        or not isinstance(packet.get("nodes"), list)
+        or not isinstance(packet.get("edges"), list)
+    ):
+        return None
+    return packet
+
+
+@lru_cache(maxsize=1)
+def lean_dependency_adjacency() -> dict[str, Any] | None:
+    packet = lean_dependency_index()
+    if packet is None:
+        return None
+    nodes_by_id = {
+        row["node_id"]: row
+        for row in packet["nodes"]
+        if isinstance(row, dict) and isinstance(row.get("node_id"), int)
+    }
+    nodes_by_handle = {
+        row["handle"]: row
+        for row in nodes_by_id.values()
+        if isinstance(row.get("handle"), str)
+    }
+    forward: dict[str, list[dict[str, Any]]] = {}
+    reverse: dict[str, list[dict[str, Any]]] = {}
+    relation_legend = packet.get("edge_relation_bit_legend", {})
+    for edge in packet["edges"]:
+        if (
+            not isinstance(edge, list)
+            or len(edge) != 3
+            or edge[0] not in nodes_by_id
+            or edge[1] not in nodes_by_id
+            or not isinstance(edge[2], int)
+        ):
+            continue
+        source = nodes_by_id[edge[0]]
+        target = nodes_by_id[edge[1]]
+        relations = [
+            label
+            for bit, label in sorted(
+                (
+                    (int(bit), label)
+                    for bit, label in relation_legend.items()
+                )
+            )
+            if edge[2] & bit
+        ]
+        target_row = {
+            key: target[key]
+            for key in (
+                "handle",
+                "name",
+                "declaration_kind",
+                "source_ref",
+            )
+        }
+        target_row["relations"] = relations
+        forward.setdefault(source["handle"], []).append(target_row)
+        source_row = {
+            key: source[key]
+            for key in (
+                "handle",
+                "name",
+                "declaration_kind",
+                "source_ref",
+            )
+        }
+        source_row["relations"] = relations
+        reverse.setdefault(target["handle"], []).append(source_row)
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    for rows in (*forward.values(), *reverse.values()):
+        rows.sort(
+            key=lambda row: (
+                0
+                if row["declaration_kind"] in theorem_kinds
+                else 1,
+                0 if "value_reference" in row["relations"] else 1,
+                row["handle"],
+            )
+        )
+    formal_type_affordances = {}
+    affordance_packet = packet.get("formal_type_affordances", {})
+    symbol_table = affordance_packet.get("symbol_table", [])
+    binder_name_table = affordance_packet.get("binder_name_table", [])
+    binder_info_legend = affordance_packet.get(
+        "binder_info_code_legend", {}
+    )
+    for row in affordance_packet.get("rows", []):
+        if (
+            not isinstance(row, list)
+            or len(row) != 5
+            or row[0] not in nodes_by_id
+            or not isinstance(row[1], int)
+            or not isinstance(row[2], int)
+            or not isinstance(row[3], list)
+            or not isinstance(row[4], list)
+            or not 0 <= row[2] < len(symbol_table)
+            or any(
+                not isinstance(symbol_id, int)
+                or not 0 <= symbol_id < len(symbol_table)
+                for symbol_id in row[3]
+            )
+            or any(
+                not isinstance(binder, list)
+                or len(binder) != 5
+                or not isinstance(binder[0], int)
+                or not 0 <= binder[0] < len(binder_name_table)
+                or str(binder[1]) not in binder_info_legend
+                or not isinstance(binder[2], bool)
+                or not isinstance(binder[3], int)
+                or not 0 <= binder[3] < len(symbol_table)
+                or not isinstance(binder[4], list)
+                or any(
+                    not isinstance(symbol_id, int)
+                    or not 0 <= symbol_id < len(symbol_table)
+                    for symbol_id in binder[4]
+                )
+                for binder in row[4]
+            )
+        ):
+            continue
+        formal_type_affordances[nodes_by_id[row[0]]["handle"]] = {
+            "forall_binder_count": row[1],
+            "conclusion_head": symbol_table[row[2]],
+            "conclusion_symbols": [
+                symbol_table[symbol_id] for symbol_id in row[3]
+            ],
+            "binders": [
+                {
+                    "index": index,
+                    "name": binder_name_table[binder[0]],
+                    "binder_info": binder_info_legend[str(binder[1])],
+                    "is_proposition": binder[2],
+                    "type_head": symbol_table[binder[3]],
+                    "type_symbols": [
+                        symbol_table[symbol_id]
+                        for symbol_id in binder[4]
+                    ],
+                }
+                for index, binder in enumerate(row[4])
+            ],
+        }
+    return {
+        "packet": packet,
+        "nodes_by_handle": nodes_by_handle,
+        "forward": forward,
+        "reverse": reverse,
+        "formal_type_affordances": formal_type_affordances,
+    }
+
+
+def formal_dependency_neighbourhood(
+    handle: str, limit: int = 8
+) -> dict[str, Any]:
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "availability": "unavailable_or_stale",
+            "authority_posture": (
+                "no_elaborated_dependency_index_loaded;lexical_candidates_"
+                "remain_navigation_only"
+            ),
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    node = adjacency["nodes_by_handle"].get(handle)
+    if node is None:
+        return {
+            "availability": "handle_not_source_resolved",
+            "handle": handle,
+            "authority_posture": (
+                "index_gap_not_evidence_of_no_formal_dependencies"
+            ),
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    dependencies = adjacency["forward"].get(handle, [])
+    consumers = adjacency["reverse"].get(handle, [])
+    two_hop_theorem_paths = []
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    for middle in dependencies:
+        if middle["declaration_kind"] not in theorem_kinds:
+            continue
+        for target in adjacency["forward"].get(middle["handle"], []):
+            if target["declaration_kind"] not in theorem_kinds:
+                continue
+            two_hop_theorem_paths.append(
+                {
+                    "source": handle,
+                    "via": middle["handle"],
+                    "target": target["handle"],
+                    "edge_relations": [
+                        middle["relations"],
+                        target["relations"],
+                    ],
+                }
+            )
+            if len(two_hop_theorem_paths) >= limit:
+                break
+        if len(two_hop_theorem_paths) >= limit:
+            break
+    return {
+        "availability": "available",
+        "handle": handle,
+        "source_ref": node["source_ref"],
+        "direct_dependencies": dependencies[:limit],
+        "direct_consumers": consumers[:limit],
+        "two_hop_theorem_paths": two_hop_theorem_paths,
+        "receipt": {
+            "direct_dependency_total": len(dependencies),
+            "direct_dependency_emitted": min(len(dependencies), limit),
+            "direct_consumer_total": len(consumers),
+            "direct_consumer_emitted": min(len(consumers), limit),
+            "omitted_internal_reference_count": node[
+                "omitted_internal_reference_count"
+            ],
+        },
+        "authority_posture": (
+            "direct_constant_references_from_elaborated_Lean_types_and_values_"
+            "with_source_coordinates;two_hop_paths_are_compositions_of_exact_"
+            "direct_edges"
+        ),
+        "expansion": {
+            "proof_cone": (
+                f"python3 scripts/query_corpus.py --proof-cone {handle} "
+                "--depth 4 --limit 20"
+            ),
+            "path_to": (
+                "python3 scripts/query_corpus.py --dependency-path "
+                f"{handle} <target_declaration> --depth 8"
+            ),
+        },
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+def resolve_formal_dependency_handle(
+    requested: str, adjacency: dict[str, Any]
+) -> dict[str, Any]:
+    if requested in adjacency["nodes_by_handle"]:
+        return {
+            "availability": "available",
+            "requested": requested,
+            "handle": requested,
+            "resolution": "exact_canonical_handle",
+        }
+    matches = sorted(
+        handle
+        for handle, node in adjacency["nodes_by_handle"].items()
+        if node["name"] == requested
+    )
+    if len(matches) == 1:
+        return {
+            "availability": "available",
+            "requested": requested,
+            "handle": matches[0],
+            "resolution": "unique_short_name",
+        }
+    if matches:
+        return {
+            "availability": "ambiguous_short_name",
+            "requested": requested,
+            "candidate_count": len(matches),
+            "candidate_handles": matches[:20],
+            "omitted_candidate_count": max(0, len(matches) - 20),
+        }
+    return {
+        "availability": "handle_not_source_resolved",
+        "requested": requested,
+    }
+
+
+def compact_formal_dependency_node(
+    node: dict[str, Any], depth: int
+) -> dict[str, Any]:
+    return {
+        "handle": node["handle"],
+        "name": node["name"],
+        "declaration_kind": node["declaration_kind"],
+        "source_ref": node["source_ref"],
+        "depth": depth,
+    }
+
+
+def formal_dependency_proof_cone(
+    requested: str,
+    max_depth: int = 4,
+    node_limit: int = 20,
+) -> dict[str, Any]:
+    """Return a bounded proof-term dependency cone with exact omission counts."""
+    if not 1 <= max_depth <= 8:
+        raise ValueError("formal dependency cone depth must be between 1 and 8")
+    if not 1 <= node_limit <= MAX_LIMIT:
+        raise ValueError(
+            f"formal dependency cone limit must be between 1 and {MAX_LIMIT}"
+        )
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "kind": "formal_dependency_proof_cone",
+            "availability": "unavailable_or_stale",
+            "requested": requested,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    resolution = resolve_formal_dependency_handle(requested, adjacency)
+    if resolution["availability"] != "available":
+        return {
+            "kind": "formal_dependency_proof_cone",
+            **resolution,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    handle = resolution["handle"]
+    depths = {handle: 0}
+    queue = deque([handle])
+    exact_edges: dict[
+        tuple[str, str], tuple[str, ...]
+    ] = {}
+    while queue:
+        source = queue.popleft()
+        source_depth = depths[source]
+        if source_depth >= max_depth:
+            continue
+        for target in adjacency["forward"].get(source, []):
+            if "value_reference" not in target["relations"]:
+                continue
+            target_handle = target["handle"]
+            exact_edges[(source, target_handle)] = tuple(
+                target["relations"]
+            )
+            if target_handle not in depths:
+                depths[target_handle] = source_depth + 1
+                queue.append(target_handle)
+    ordered_handles = list(depths)
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    prioritized_handles = [
+        handle,
+        *[
+            candidate
+            for candidate in ordered_handles[1:]
+            if adjacency["nodes_by_handle"][candidate][
+                "declaration_kind"
+            ]
+            in theorem_kinds
+        ],
+        *[
+            candidate
+            for candidate in ordered_handles[1:]
+            if adjacency["nodes_by_handle"][candidate][
+                "declaration_kind"
+            ]
+            not in theorem_kinds
+        ],
+    ]
+    selected = set(prioritized_handles[:node_limit])
+    selected_handles = [
+        candidate for candidate in ordered_handles if candidate in selected
+    ]
+    emitted_edges = [
+        {
+            "from": source,
+            "relation": "uses_in_elaborated_value",
+            "to": target,
+            "edge_relations": list(relations),
+            "authority": "kernel_elaborated_environment",
+        }
+        for (source, target), relations in exact_edges.items()
+        if source in selected and target in selected
+    ]
+    omitted_handles = [
+        candidate
+        for candidate in prioritized_handles
+        if candidate not in selected
+    ]
+    return {
+        "kind": "formal_dependency_proof_cone",
+        "availability": "available",
+        "requested": requested,
+        "resolved_handle": handle,
+        "handle_resolution": resolution["resolution"],
+        "max_depth": max_depth,
+        "edge_policy": "elaborated_value_references_only",
+        "selection_policy": (
+            "root_then_theorem_like_dependencies_then_other_constants_"
+            "with_stable_breadth_first_order_inside_each_class"
+        ),
+        "nodes": [
+            compact_formal_dependency_node(
+                adjacency["nodes_by_handle"][node_handle],
+                depths[node_handle],
+            )
+            for node_handle in selected_handles
+        ],
+        "edges": emitted_edges,
+        "omission_receipt": {
+            "reachable_node_count_within_depth": len(ordered_handles),
+            "emitted_node_count": len(selected_handles),
+            "omitted_node_count": len(omitted_handles),
+            "reachable_edge_count_within_depth": len(exact_edges),
+            "emitted_edge_count": len(emitted_edges),
+            "omitted_edge_count": len(exact_edges) - len(emitted_edges),
+            "first_omitted_handles": omitted_handles[:8],
+            "node_limit": node_limit,
+        },
+        "authority_posture": (
+            "bounded_composition_of_exact_elaborated_value_reference_edges_"
+            "not_a_claim_that_every_reference_is_a_mathematically_decisive_"
+            "premise"
+        ),
+        "follow": {
+            "expand": (
+                "python3 scripts/query_corpus.py --proof-cone "
+                f"{handle} --depth {min(8, max_depth + 1)} "
+                f"--limit {min(MAX_LIMIT, max(node_limit * 2, 20))}"
+            ),
+            "declaration": (
+                "python3 scripts/query_corpus.py --declaration "
+                "<node.handle>"
+            ),
+        },
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+def formal_dependency_path(
+    requested_source: str,
+    requested_target: str,
+    max_depth: int = 8,
+) -> dict[str, Any]:
+    """Return an exact shortest directed proof-term dependency path."""
+    if not 1 <= max_depth <= 8:
+        raise ValueError("formal dependency path depth must be between 1 and 8")
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "kind": "formal_dependency_path",
+            "availability": "unavailable_or_stale",
+            "requested_source": requested_source,
+            "requested_target": requested_target,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    source_resolution = resolve_formal_dependency_handle(
+        requested_source, adjacency
+    )
+    target_resolution = resolve_formal_dependency_handle(
+        requested_target, adjacency
+    )
+    if (
+        source_resolution["availability"] != "available"
+        or target_resolution["availability"] != "available"
+    ):
+        return {
+            "kind": "formal_dependency_path",
+            "availability": "unresolved_endpoint",
+            "source_resolution": source_resolution,
+            "target_resolution": target_resolution,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    source = source_resolution["handle"]
+    target = target_resolution["handle"]
+    predecessor: dict[str, tuple[str, tuple[str, ...]]] = {}
+    depths = {source: 0}
+    queue = deque([source])
+    while queue and target not in depths:
+        current = queue.popleft()
+        if depths[current] >= max_depth:
+            continue
+        for dependency in adjacency["forward"].get(current, []):
+            if "value_reference" not in dependency["relations"]:
+                continue
+            dependency_handle = dependency["handle"]
+            if dependency_handle in depths:
+                continue
+            depths[dependency_handle] = depths[current] + 1
+            predecessor[dependency_handle] = (
+                current,
+                tuple(dependency["relations"]),
+            )
+            queue.append(dependency_handle)
+    if target not in depths:
+        return {
+            "kind": "formal_dependency_path",
+            "availability": "no_path_within_bound",
+            "source": source,
+            "target": target,
+            "max_depth": max_depth,
+            "explored_node_count": len(depths),
+            "edge_policy": "elaborated_value_references_only",
+            "authority_posture": (
+                "bounded_negative_navigation_result_not_proof_of_global_"
+                "dependency_absence"
+            ),
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    path_handles = [target]
+    path_relations = []
+    while path_handles[-1] != source:
+        previous, relations = predecessor[path_handles[-1]]
+        path_relations.append(relations)
+        path_handles.append(previous)
+    path_handles.reverse()
+    path_relations.reverse()
+    return {
+        "kind": "formal_dependency_path",
+        "availability": "available",
+        "requested_source": requested_source,
+        "requested_target": requested_target,
+        "source": source,
+        "target": target,
+        "hop_count": len(path_handles) - 1,
+        "max_depth": max_depth,
+        "minimality_posture": (
+            "shortest_directed_path_in_the_source_resolved_value_reference_"
+            "graph_within_the_depth_bound"
+        ),
+        "nodes": [
+            compact_formal_dependency_node(
+                adjacency["nodes_by_handle"][handle], depth
+            )
+            for depth, handle in enumerate(path_handles)
+        ],
+        "edges": [
+            {
+                "from": path_handles[index],
+                "relation": "uses_in_elaborated_value",
+                "to": path_handles[index + 1],
+                "edge_relations": list(path_relations[index]),
+                "authority": "kernel_elaborated_environment",
+            }
+            for index in range(len(path_relations))
+        ],
+        "explored_node_count": len(depths),
+        "authority_posture": (
+            "shortest_composition_of_exact_elaborated_value_reference_edges_"
+            "not_a_semantic_causality_or_minimal_premise_proof"
+        ),
+        "follow": {
+            "source_cone": (
+                f"python3 scripts/query_corpus.py --proof-cone {source} "
+                f"--depth {max_depth}"
+            ),
+            "declaration": (
+                "python3 scripts/query_corpus.py --declaration "
+                "<node.handle>"
+            ),
+        },
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+@lru_cache(maxsize=1)
+def declaration_rows_by_qualified_name() -> dict[str, dict[str, Any]]:
+    atlas = load("docs/declaration_atlas.json")
+    return {
+        qualified_declaration_name(row): row
+        for row in atlas_declarations(atlas)
+    }
+
+
+def support_goal_request(query: str) -> dict[str, str] | None:
+    """Extract a goal and optional premise context from a support question."""
+    patterns = (
+        (
+            r"\b(?:need|want|trying)\s+to\s+prove\s+(.+?)\s+"
+            r"(?:from|assuming|given)\s+(.+?)(?:[;?]|$)",
+            True,
+        ),
+        (
+            r"\b(?:need|want|trying)\s+to\s+prove\s+(.+?)(?:[;?]|$)",
+            False,
+        ),
+        (r"\bgoal\s*(?:is|:)\s*(.+?)(?:[;?]|$)", False),
+    )
+    for pattern, has_context in patterns:
+        match = re.search(pattern, query, flags=re.IGNORECASE)
+        if match is None:
+            continue
+        return {
+            "goal": match.group(1).strip(),
+            "context": (
+                match.group(2).strip() if has_context else ""
+            ),
+            "extraction": "ordinary_language_goal_pattern",
+        }
+    return None
+
+
+def formal_goal_shape_cues(goal: str) -> list[str]:
+    terms = search_terms(goal)
+    cues = []
+    if "integrality" in terms:
+        cues.append("direct_integer_membership")
+    if "irrational" in terms:
+        cues.append("irrationality")
+    if "mem" in terms:
+        cues.append("membership")
+    if "exist" in terms or "exists" in terms:
+        cues.append("existence")
+    if (
+        "=" in goal
+        or "equal" in terms
+        or "equality" in terms
+    ):
+        cues.append("equality")
+    if any(token in goal for token in ("≤", "<", "≥", ">")):
+        cues.append("order_relation")
+    return cues
+
+
+def formal_affordance_shape_matches(
+    cues: list[str], affordance: dict[str, Any]
+) -> list[str]:
+    head = affordance["conclusion_head"]
+    symbols = set(affordance["conclusion_symbols"])
+    direct_membership = (
+        head.endswith("Membership.mem")
+        or head.endswith("Set.Mem")
+        or head == "Membership.mem"
+    )
+    integer_range = any(
+        symbol.endswith("Set.range") for symbol in symbols
+    ) and any(
+        symbol.endswith("Int.cast")
+        or "IntCast" in symbol
+        or symbol.endswith("Int.ofNat")
+        for symbol in symbols
+    )
+    matches = []
+    if (
+        "direct_integer_membership" in cues
+        and direct_membership
+        and integer_range
+    ):
+        matches.append("direct_integer_membership")
+    if (
+        "irrationality" in cues
+        and head.endswith("Irrational")
+    ):
+        matches.append("irrationality")
+    if "membership" in cues and direct_membership:
+        matches.append("membership")
+    if "existence" in cues and head.endswith("Exists"):
+        matches.append("existence")
+    if "equality" in cues and head.endswith("Eq"):
+        matches.append("equality")
+    if (
+        "order_relation" in cues
+        and (
+            head.endswith("LE.le")
+            or head.endswith("LT.lt")
+            or head.endswith("GE.ge")
+            or head.endswith("GT.gt")
+        )
+    ):
+        matches.append("order_relation")
+    return matches
+
+
+def formal_context_symbol_matches(
+    context_terms: set[str], affordance: dict[str, Any]
+) -> list[str]:
+    """Match premise-language context against elaborated binder type symbols.
+
+    This is deliberately separate from conclusion matching: conclusion shape
+    establishes that a theorem can close the requested goal, while binder
+    symbols distinguish which of several conclusion-compatible theorems fits
+    the premises the operator says are available.
+    """
+    binder_symbols = {
+        symbol
+        for binder in affordance.get("binders", [])
+        for symbol in (
+            binder.get("type_head", ""),
+            *binder.get("type_symbols", []),
+        )
+        if symbol
+    }
+    binder_symbol_terms = set().union(
+        *(search_terms(symbol) for symbol in binder_symbols)
+    )
+    return sorted(
+        context_term
+        for context_term in context_terms
+        if any(
+            context_term == symbol_term
+            or (
+                min(len(context_term), len(symbol_term)) >= 3
+                and (
+                    context_term.startswith(symbol_term)
+                    or symbol_term.startswith(context_term)
+                )
+            )
+            for symbol_term in binder_symbol_terms
+        )
+    )
+
+
+def formal_goal_support_packet(
+    query: str,
+    limit: int,
+    *,
+    explicit_goal: bool = False,
+) -> dict[str, Any]:
+    """Rank theorem candidates by elaborated conclusion affordances."""
+    request = support_goal_request(query)
+    if request is None and explicit_goal:
+        request = {
+            "goal": query.strip(),
+            "context": "",
+            "extraction": "explicit_goal_argument",
+        }
+    if request is None:
+        return {
+            "kind": "formal_goal_support",
+            "availability": "no_goal_expression",
+            "query": query,
+        }
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "kind": "formal_goal_support",
+            "availability": "unavailable_or_stale",
+            "query": query,
+            "goal_request": request,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    generic_terms = {
+        "applie",
+        "cast",
+        "erdo",
+        "goal",
+        "int",
+        "nat",
+        "prove",
+        "real",
+        "result",
+        "set",
+        "theorem",
+    }
+    goal_terms = {
+        term
+        for term in semantic_content_terms(request["goal"])
+        if len(term) > 1 and term not in generic_terms
+    }
+    context_terms = {
+        term
+        for term in search_terms(request["context"])
+        if len(term) > 1 and term not in generic_terms
+    }
+    context_phrase = re.sub(
+        r"^(?:a|an|the)\s+",
+        "",
+        normalized_search_text(request["context"]),
+    )
+    shape_cues = formal_goal_shape_cues(request["goal"])
+    declaration_rows = declaration_rows_by_qualified_name()
+    ranked = []
+    for handle, affordance in adjacency[
+        "formal_type_affordances"
+    ].items():
+        node = adjacency["nodes_by_handle"][handle]
+        if node["declaration_kind"] not in {
+            "theorem",
+            "lemma",
+            "corollary",
+            "proposition",
+        }:
+            continue
+        declaration = declaration_rows.get(handle)
+        if (
+            declaration is None
+            or not declaration_externally_addressable(declaration)
+        ):
+            continue
+        symbol_terms = set().union(
+            *(
+                search_terms(symbol)
+                for symbol in (
+                    affordance["conclusion_head"],
+                    *affordance["conclusion_symbols"],
+                )
+            )
+        )
+        statement_text = " ".join(
+            str(value)
+            for value in (
+                declaration.get("signature"),
+                declaration.get("docstring"),
+            )
+            if value
+        )
+        statement_terms = search_terms(statement_text)
+        context_phrase_match = bool(
+            context_phrase
+            and context_phrase
+            in normalized_search_text(statement_text)
+        )
+        shape_matches = formal_affordance_shape_matches(
+            shape_cues, affordance
+        )
+        formal_matches = sorted(goal_terms & symbol_terms)
+        goal_statement_matches = sorted(goal_terms & statement_terms)
+        context_matches = sorted(context_terms & statement_terms)
+        formal_context_matches = formal_context_symbol_matches(
+            context_terms, affordance
+        )
+        if (
+            not shape_matches
+            and len(formal_matches) < 2
+            and len(goal_statement_matches) < 2
+        ):
+            continue
+        ranked.append(
+            (
+                # Applicability precedence: exact conclusion shape, then
+                # elaborated premise-context coverage, then lexical/formal
+                # goal evidence.  Telescope size is only a late tie-breaker.
+                -len(shape_matches),
+                -len(formal_context_matches),
+                -len(formal_matches),
+                -int(context_phrase_match),
+                -len(context_matches),
+                -len(goal_statement_matches),
+                affordance["forall_binder_count"],
+                handle,
+                declaration,
+                affordance,
+                shape_matches,
+                formal_context_matches,
+                formal_matches,
+                context_phrase_match,
+                context_matches,
+                goal_statement_matches,
+            )
+        )
+    ranked.sort(key=lambda row: row[:8])
+    candidates = []
+    for rank_index, row in enumerate(ranked[:limit]):
+        (
+            _,
+            _,
+            _,
+            _,
+            _,
+            _,
+            _,
+            handle,
+            declaration,
+            affordance,
+            shape_matches,
+            formal_context_matches,
+            formal_matches,
+            context_phrase_match,
+            context_matches,
+            goal_statement_matches,
+        ) = row
+        conclusion_symbols = affordance["conclusion_symbols"]
+        candidates.append(
+            {
+                "kind": "declaration",
+                **compact_declaration(declaration),
+                "signature_excerpt": str(
+                    declaration.get("signature") or ""
+                )[:480],
+                "formal_goal_rank": rank_index,
+                "formal_affordance": {
+                    "forall_binder_count": affordance[
+                        "forall_binder_count"
+                    ],
+                    "conclusion_head": affordance[
+                        "conclusion_head"
+                    ],
+                    "conclusion_symbols": conclusion_symbols[:16],
+                    "omitted_conclusion_symbol_count": max(
+                        0, len(conclusion_symbols) - 16
+                    ),
+                },
+                "match_receipt": {
+                    "shape_matches": shape_matches,
+                    "formal_context_symbol_matches": (
+                        formal_context_matches
+                    ),
+                    "formal_goal_term_matches": formal_matches,
+                    "context_phrase_match": context_phrase_match,
+                    "context_statement_matches": context_matches,
+                    "goal_statement_matches": (
+                        goal_statement_matches
+                    ),
+                },
+                "lean_application_candidate": f"apply {handle}",
+            }
+        )
+    return {
+        "kind": "formal_goal_support",
+        "availability": (
+            "available" if candidates else "no_candidate_within_contract"
+        ),
+        "query": query,
+        "goal_request": request,
+        "goal_terms": sorted(goal_terms),
+        "context_terms": sorted(context_terms),
+        "goal_shape_cues": shape_cues,
+        "candidate_count": len(ranked),
+        "candidates": candidates,
+        "omission_receipt": {
+            "candidate_count": len(ranked),
+            "emitted_candidate_count": len(candidates),
+            "omitted_candidate_count": max(
+                0, len(ranked) - len(candidates)
+            ),
+            "limit": limit,
+        },
+        "authority_posture": (
+            "elaborated_conclusion_shape_and_symbol_candidate_ranking_"
+            "requires_Lean_elaboration_at_the_target_goal_not_a_unification_"
+            "or_applicability_proof"
+        ),
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+def formal_application_obligations(
+    query: str,
+    goal_request: dict[str, str],
+    affordance: dict[str, Any],
+) -> dict[str, Any]:
+    """Classify an application telescope against explicitly stated context."""
+    context_terms = {
+        term
+        for term in semantic_content_terms(goal_request["context"])
+        if len(term) > 1
+    }
+    normalized_query = normalized_search_text(query)
+    obligations = []
+    for binder in affordance["binders"]:
+        type_terms = set().union(
+            *(
+                search_terms(symbol)
+                for symbol in (
+                    binder["type_head"],
+                    *binder["type_symbols"],
+                )
+            )
+        )
+        context_matches = sorted(context_terms & type_terms)
+        binder_name = binder["name"]
+        name_mentioned = bool(
+            binder_name
+            and binder_name != "_"
+            and re.search(
+                rf"(?<![A-Za-z0-9_]){re.escape(binder_name)}"
+                rf"(?![A-Za-z0-9_])",
+                query,
+            )
+        )
+        if binder["binder_info"] == "instance_implicit":
+            status = "instance_synthesis_required"
+        elif binder["is_proposition"]:
+            status = (
+                "context_matched_proposition_candidate"
+                if context_matches
+                else "unmatched_proposition_obligation"
+            )
+        else:
+            status = (
+                "term_parameter_mentioned"
+                if name_mentioned
+                else "term_parameter_required"
+            )
+        obligations.append(
+            {
+                **binder,
+                "role": (
+                    "proposition_hypothesis"
+                    if binder["is_proposition"]
+                    else "term_parameter"
+                ),
+                "status": status,
+                "context_term_matches": context_matches,
+                "binder_name_mentioned": name_mentioned,
+                "type_symbols": binder["type_symbols"][:16],
+                "omitted_type_symbol_count": max(
+                    0, len(binder["type_symbols"]) - 16
+                ),
+            }
+        )
+    proposition_obligations = [
+        row
+        for row in obligations
+        if row["role"] == "proposition_hypothesis"
+        and row["binder_info"] != "instance_implicit"
+    ]
+    unmatched = [
+        row
+        for row in proposition_obligations
+        if row["status"] == "unmatched_proposition_obligation"
+    ]
+    return {
+        "query_context": goal_request["context"],
+        "normalized_query": normalized_query,
+        "obligations": obligations,
+        "obligation_count": len(obligations),
+        "term_parameter_count": sum(
+            row["role"] == "term_parameter" for row in obligations
+        ),
+        "proposition_obligation_count": len(proposition_obligations),
+        "context_matched_proposition_count": (
+            len(proposition_obligations) - len(unmatched)
+        ),
+        "unmatched_proposition_count": len(unmatched),
+        "application_status": (
+            "blocked_by_unmatched_proposition_obligations"
+            if unmatched
+            else "all_proposition_obligations_have_context_matches"
+        ),
+        "authority_posture": (
+            "binder_roles_and_type_shapes_from_elaborated_Lean_context_"
+            "matching_is_lexical_navigation_not_local_context_unification"
+        ),
+    }
+
+
+def formal_proof_plan_packet(
+    query: str,
+    limit: int,
+    depth: int,
+    *,
+    explicit_goal: bool = False,
+) -> dict[str, Any]:
+    """Build a bounded, hypothesis-aware application and proof-spine packet."""
+    support = formal_goal_support_packet(
+        query,
+        max(3, min(limit, MAX_SEMANTIC_CELLS)),
+        explicit_goal=explicit_goal,
+    )
+    if support.get("availability") != "available":
+        return {
+            "kind": "formal_proof_plan",
+            "availability": support.get("availability", "unavailable"),
+            "query": query,
+            "formal_goal_support": support,
+        }
+    terminal = support["candidates"][0]
+    terminal_handle = terminal["qualified_name"]
+    adjacency = lean_dependency_adjacency()
+    if (
+        adjacency is None
+        or terminal_handle not in adjacency["formal_type_affordances"]
+    ):
+        return {
+            "kind": "formal_proof_plan",
+            "availability": "formal_telescope_unavailable",
+            "query": query,
+            "terminal_candidate": terminal,
+        }
+    affordance = adjacency["formal_type_affordances"][terminal_handle]
+    obligations = formal_application_obligations(
+        query,
+        support["goal_request"],
+        affordance,
+    )
+    cone = formal_dependency_proof_cone(
+        terminal_handle,
+        depth,
+        max(limit, 24),
+    )
+    cone_edges = cone.get("edges", [])
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    spine_steps = []
+    for node in sorted(
+        (
+            row
+            for row in cone.get("nodes", [])
+            if row["handle"] != terminal_handle
+            and row["declaration_kind"] in theorem_kinds
+        ),
+        key=lambda row: (-row["depth"], row["handle"]),
+    ):
+        step_affordance = adjacency["formal_type_affordances"].get(
+            node["handle"]
+        )
+        spine_steps.append(
+            {
+                **node,
+                "conclusion_head": (
+                    step_affordance["conclusion_head"]
+                    if step_affordance is not None
+                    else None
+                ),
+                "forall_binder_count": (
+                    step_affordance["forall_binder_count"]
+                    if step_affordance is not None
+                    else None
+                ),
+                "used_by": sorted(
+                    edge["from"]
+                    for edge in cone_edges
+                    if edge["to"] == node["handle"]
+                ),
+            }
+        )
+    return {
+        "kind": "formal_proof_plan",
+        "availability": "available",
+        "query": query,
+        "goal_request": support["goal_request"],
+        "terminal_candidate": terminal,
+        "application": {
+            "lean_tactic_candidate": (
+                terminal["lean_application_candidate"]
+            ),
+            **obligations,
+        },
+        "exact_dependency_spine": {
+            "edge_policy": cone.get("edge_policy"),
+            "steps": spine_steps,
+            "edges": [
+                edge
+                for edge in cone_edges
+                if edge["from"] == terminal_handle
+                or edge["to"] in {
+                    step["handle"] for step in spine_steps
+                }
+            ],
+            "omission_receipt": cone.get("omission_receipt"),
+        },
+        "plan_status": obligations["application_status"],
+        "dynamic_transition_expansion": {
+            "runtime_owner": "scripts/proof_state_compiler.py",
+            "pilot_command": (
+                "python3 scripts/proof_state_compiler.py --pilot-controls"
+            ),
+            "request_schema": "erdos249257-proof-state-request/1",
+            "packet_schema": (
+                "erdos249257-proof-state-compilation/1"
+            ),
+            "boundary": (
+                "the static proof plan nominates candidates; only the "
+                "runtime owner's pinned Lean application receipt can assert "
+                "that a candidate produced particular subgoals or closed"
+            ),
+        },
+        "authority_posture": (
+            "terminal_and_dependency_edges_from_elaborated_Lean_environment_"
+            "binder_context_matches_are_navigation_candidates_and_all_tactic_"
+            "steps_require_Lean_elaboration"
+        ),
+        "validation": (
+            "python3 scripts/dogfood_semantic_proof.py && "
+            "python3 scripts/build_lean_dependency_index.py --check"
+        ),
+    }
 
 
 def publication_contract() -> dict[str, Any]:
@@ -42,7 +1539,9 @@ def publication_evidence() -> dict[str, Any]:
 
 def current_corpus_census() -> dict[str, Any]:
     claims = load("docs/claims.json")
-    atlas_summary = load("docs/declaration_atlas.json")["summary"]
+    atlas = load("docs/declaration_atlas.json")
+    atlas_summary = atlas["summary"]
+    effective_declaration_count = len(atlas_declarations(atlas))
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     return {
         "snapshot_kind": "current_worktree_navigation_state",
@@ -50,6 +1549,10 @@ def current_corpus_census() -> dict[str, Any]:
         "declaration_atlas_source": "docs/declaration_atlas.json",
         "module_count": atlas_summary["module_count"],
         "declaration_count": atlas_summary["declaration_count"],
+        "effective_query_declaration_count": effective_declaration_count,
+        "suppressed_declaration_projection_row_count": (
+            atlas_summary["declaration_count"] - effective_declaration_count
+        ),
         "theorem_like_count": atlas_summary["theorem_like_count"],
         "generated_certificate_declaration_count": atlas_summary[
             "generated_certificate_declaration_count"
@@ -119,6 +1622,7 @@ def artifact_inventory() -> list[dict[str, Any]]:
         if row.get("path") and row.get("content_digest"):
             path = row["path"]
             file_path = path.split("::", 1)[0]
+            resolved_path = ROOT / file_path
             inventory.append(
                 {
                     **common,
@@ -127,13 +1631,21 @@ def artifact_inventory() -> list[dict[str, Any]]:
                     "file_path": file_path,
                     "fragment": path.split("::", 1)[1] if "::" in path else None,
                     "content_digest": row["content_digest"],
-                    "size_bytes": (ROOT / file_path).stat().st_size,
+                    "availability": (
+                        "present" if resolved_path.is_file() else "missing"
+                    ),
+                    "size_bytes": (
+                        resolved_path.stat().st_size
+                        if resolved_path.is_file()
+                        else None
+                    ),
                 }
             )
         for variant in ("source", "rendered"):
             path = row.get(f"{variant}_path")
             digest = row.get(f"{variant}_content_digest")
             if path and digest:
+                resolved_path = ROOT / path
                 inventory.append(
                     {
                         **common,
@@ -142,7 +1654,14 @@ def artifact_inventory() -> list[dict[str, Any]]:
                         "file_path": path,
                         "fragment": None,
                         "content_digest": digest,
-                        "size_bytes": (ROOT / path).stat().st_size,
+                        "availability": (
+                            "present" if resolved_path.is_file() else "missing"
+                        ),
+                        "size_bytes": (
+                            resolved_path.stat().st_size
+                            if resolved_path.is_file()
+                            else None
+                        ),
                     }
                 )
     return sorted(inventory, key=lambda row: (row["artifact_handle"], row["artifact_id"]))
@@ -315,6 +1834,8 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         relative = paper_row["source"]
         lean_source_identity = lean_source_identity_for_paper(claims, relative)
         path = ROOT / relative
+        if not path.is_file():
+            continue
         text = path.read_text(encoding="utf-8")
         lines = text.splitlines()
         environments = set(re.findall(r"\\newtheorem\*?\{([^}]+)\}", text))
@@ -472,7 +1993,17 @@ def paper_coordinate(label: str | None, index: dict[str, dict[str, Any]]) -> dic
         return None
     coordinate = index.get(label)
     if coordinate is None:
-        raise ValueError(f"unknown paper label: {label}")
+        return {
+            "label": label,
+            "source": None,
+            "line": None,
+            "source_ref": None,
+            "rendered": None,
+            "availability": "authored_source_unavailable_in_worktree",
+            "authority_posture": (
+                "unresolved_navigation_anchor_not_claim_or_proof_authority"
+            ),
+        }
     return coordinate
 
 
@@ -513,11 +2044,12 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
         for route in programme_routes
         for open_id in route.get("remaining_open_proposition_ids", [])
     }
+    claim_paper = paper_coordinate(claim.get("paper_label"), label_index)
     return {
         "kind": "claim",
         "authority_posture": "navigation_projection_not_proof_authority",
         "lean_source_identity": lean_source_identity_for_paper(
-            claims, claim.get("paper_label") and label_index[claim["paper_label"]]["source"]
+            claims, claim_paper and claim_paper.get("source")
         ),
         "claim": claim,
         "incoming_edges": incoming,
@@ -551,7 +2083,7 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
             open_index[open_id]
             for open_id in sorted(programme_open_ids - open_ids)
         ],
-        "paper": paper_coordinate(claim.get("paper_label"), label_index),
+        "paper": claim_paper,
         "validation": "python3 scripts/check_release.py",
     }
 
@@ -599,7 +2131,37 @@ def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, An
 
 def paper_label_packet(label: str) -> dict[str, Any]:
     if label not in paper_label_index():
-        raise ValueError(f"unknown paper label: {label}")
+        claims = load("docs/claims.json")
+        attached_claims = [
+            compact_claim(claim)
+            for claim in claims["claims"]
+            if claim.get("paper_label") == label
+        ]
+        if not attached_claims:
+            raise ValueError(f"unknown paper label: {label}")
+        return {
+            "kind": "paper_label",
+            "authority_posture": (
+                "registered_claim_label_with_authored_source_unavailable"
+            ),
+            "canonical_handle": label,
+            "paper": paper_coordinate(label, paper_label_index()),
+            "attached_claims": attached_claims,
+            "attached_open_propositions": [],
+            "source_links": [],
+            "availability": "authored_source_unavailable_in_worktree",
+            "proof_authority": "Lean source checked by the pinned Lean kernel",
+            "follow": {
+                "claim": (
+                    "python3 scripts/query_corpus.py --claim "
+                    "<attached_claim_id>"
+                ),
+                "artifact": (
+                    "python3 scripts/query_corpus.py --artifact "
+                    "<registered_paper_path>"
+                ),
+            },
+        }
     return paper_anchor_packet(label, kind="paper_label")
 
 
@@ -661,7 +2223,11 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     atlas = load("docs/declaration_atlas.json")
     claims = load("docs/claims.json")
     aliases = load("paper/module-aliases.json")["aliases"]
-    matches = [row for row in atlas["declarations"] if row["name"] == name]
+    matches = [
+        row
+        for row in atlas_declarations(atlas)
+        if row["name"] == name or qualified_declaration_name(row) == name
+    ]
     if not matches:
         raise KeyError(f"unknown declaration name: {name}")
     claim_index = {row["id"]: row for row in claims["claims"]}
@@ -673,7 +2239,7 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     source_ref = lean_source_identity["ref"]
     paper_anchors = paper_anchor_inventory()
     declarations_by_module: dict[str, list[dict[str, Any]]] = {}
-    for row in atlas["declarations"]:
+    for row in atlas_declarations(atlas):
         declarations_by_module.setdefault(row["module"], []).append(row)
     for rows in declarations_by_module.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
@@ -691,6 +2257,10 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
         decorated.append(
             {
                 **match,
+                "qualified_name": qualified_declaration_name(match),
+                "externally_addressable": declaration_externally_addressable(
+                    match
+                ),
                 "source_ref": f"{match['module']}:{match['line']}",
                 "source_url": f"{repository}/blob/{source_ref}/{match['module']}#L{match['line']}",
                 "lean_source_identity": dict(lean_source_identity),
@@ -770,7 +2340,11 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
         )
 
     module_declarations = sorted(
-        (row for row in atlas["declarations"] if row["module"] == module_path),
+        (
+            row
+            for row in atlas_declarations(atlas)
+            if row["module"] == module_path
+        ),
         key=lambda row: (row["line"], row["name"]),
     )
     window_declarations = sorted(
@@ -848,9 +2422,20 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     }
 
 
+def declaration_externally_addressable(row: dict[str, Any]) -> bool:
+    """Whether a declaration can be named from an external scratch module."""
+    signature = str(row.get("signature") or "")
+    return re.match(
+        r"^\s*(?:@\[[^\]\n]*\]\s*)*(?:private|local)\b",
+        signature,
+    ) is None
+
+
 def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
     return {
         "name": row["name"],
+        "qualified_name": qualified_declaration_name(row),
+        "externally_addressable": declaration_externally_addressable(row),
         "declaration_kind": row["kind"],
         "module": row["module"],
         "line": row["line"],
@@ -858,6 +2443,57 @@ def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
         "claim_ids": row.get("claim_ids", []),
         "generated_certificate": bool(row.get("generated_certificate")),
     }
+
+
+@lru_cache(maxsize=1024)
+def module_namespace_events(rel: str) -> tuple[tuple[int, str], ...]:
+    """Return namespace-prefix changes, respecting intervening section blocks."""
+    path = ROOT / rel
+    if not path.is_file():
+        return ((1, ""),)
+    current = ""
+    blocks: list[tuple[str, str]] = []
+    events: list[tuple[int, str]] = [(1, "")]
+    for line_number, raw in enumerate(
+        lean_code_projection(path.read_text(encoding="utf-8")).splitlines(),
+        start=1,
+    ):
+        line = raw.strip()
+        namespace = re.fullmatch(
+            r"namespace\s+([A-Za-z0-9_'.]+)", line
+        )
+        if namespace:
+            name = namespace.group(1)
+            previous = current
+            if not current or name.startswith(f"{current}."):
+                current = name
+            else:
+                current = f"{current}.{name}"
+            blocks.append(("namespace", previous))
+            events.append((line_number + 1, current))
+            continue
+        if re.fullmatch(
+            r"(?:(?:noncomputable|private)\s+)?section(?:\s+[A-Za-z0-9_']+)?",
+            line,
+        ):
+            blocks.append(("section", current))
+            continue
+        if re.fullmatch(r"end(?:\s+[A-Za-z0-9_'.]+)?", line) and blocks:
+            _, previous = blocks.pop()
+            if current != previous:
+                current = previous
+                events.append((line_number + 1, current))
+    return tuple(events)
+
+
+def qualified_declaration_name(row: dict[str, Any]) -> str:
+    events = module_namespace_events(row["module"])
+    starts = [event[0] for event in events]
+    prefix = events[bisect.bisect_right(starts, row["line"]) - 1][1]
+    name = row["name"]
+    if not prefix or name.startswith(f"{prefix}."):
+        return name
+    return f"{prefix}.{name}"
 
 
 def module_roles(claims: dict[str, Any]) -> dict[str, str]:
@@ -906,7 +2542,9 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
         else resolved_handle
     ).removeprefix("./")
     declaration_matches = [
-        row for row in atlas["declarations"] if row["name"] == resolved_handle
+        row
+        for row in atlas_declarations(atlas)
+        if row["name"] == resolved_handle
     ]
     module = next(
         (
@@ -927,7 +2565,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     roles = module_roles(claims)
     by_module = {row["id"]: row for row in atlas["modules"]}
     declarations_by_path: dict[str, list[dict[str, Any]]] = {}
-    for row in atlas["declarations"]:
+    for row in atlas_declarations(atlas):
         declarations_by_path.setdefault(row["module"], []).append(row)
     for rows in declarations_by_path.values():
         rows.sort(key=lambda row: (row["line"], row["name"]))
@@ -1107,11 +2745,20 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     if module is None:
         raise KeyError(f"unknown module handle: {handle}")
     roles = module_roles(claims)
-    module_view = {**module, "role": roles.get(module["id"], "Unclassified module")}
+    module_view = {
+        **module,
+        "role": roles.get(module["id"], "Unclassified module"),
+        "authored_synopsis": module_synopsis(module["path"]),
+        "synopsis_authority_posture": (
+            "source_current_authored_digestion_not_proof_or_claim_status_authority"
+        ),
+    }
     imported_rows = [row for row in atlas["modules"] if row["id"] in module["imports"]]
     importer_rows = [row for row in atlas["modules"] if module["id"] in row["imports"]]
     declarations = [
-        row for row in atlas["declarations"] if row["module"] == module["path"]
+        row
+        for row in atlas_declarations(atlas)
+        if row["module"] == module["path"]
     ]
     attached_claim_ids = sorted(
         {
@@ -1185,6 +2832,25 @@ SEARCH_STOP_WORDS = frozenset(
 )
 
 SEARCH_TERM_ALIASES = {
+    "adjacency": "adjunction",
+    "cert": "certificate",
+    "certified": "certificate",
+    "certificate": "certificate",
+    "denominator": "den",
+    "divides": "dvd",
+    "divisibility": "dvd",
+    "divisible": "dvd",
+    "fail": "obstruction",
+    "failed": "obstruction",
+    "failure": "obstruction",
+    "int": "integrality",
+    "integer": "integrality",
+    "integral": "integrality",
+    "integrality": "integrality",
+    "member": "mem",
+    "membership": "mem",
+    "nonintegral": "integrality",
+    "nonintegrality": "integrality",
     "open": "resolution_status",
     "prove": "resolution_status",
     "proved": "resolution_status",
@@ -1199,14 +2865,17 @@ SEARCH_TERM_ALIASES = {
 }
 
 
+@lru_cache(maxsize=32_768)
 def search_terms(value: str) -> set[str]:
     """Return stable lexical terms for bounded natural-language fallback."""
     terms: set[str] = set()
+    value = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", value)
     folded = "".join(
         character
         for character in unicodedata.normalize("NFKD", value.casefold())
         if not unicodedata.combining(character)
     )
+    folded = re.sub(r"\bno[\s-]+go\b", " obstruction ", folded)
     for token in re.findall(r"[a-z0-9]+", folded):
         if token in SEARCH_STOP_WORDS:
             continue
@@ -1216,6 +2885,228 @@ def search_terms(value: str) -> set[str]:
             token = token[:-1]
         terms.add(SEARCH_TERM_ALIASES.get(token, token))
     return terms
+
+
+@lru_cache(maxsize=256)
+def semantic_content_terms(query: str) -> set[str]:
+    """Remove question-operator scaffolding before matching mathematical content."""
+    operator = semantic_query_operator(query)
+    cue_terms = set().union(
+        *(search_terms(cue) for cue in operator["cues"])
+    )
+    conversational_terms = {
+        "after",
+        "can",
+        "could",
+        "do",
+        "does",
+        "either",
+        "exact",
+        "expression",
+        "get",
+        "give",
+        "have",
+        "i",
+        "into",
+        "lemma",
+        "let",
+        "lets",
+        "me",
+        "route",
+        "should",
+        "show",
+        "still",
+        "tell",
+        "theorem",
+        "turn",
+        "whether",
+        "which",
+        "would",
+    }
+    return search_terms(query) - cue_terms - conversational_terms
+
+
+@lru_cache(maxsize=4_096)
+def normalized_search_text(value: str) -> str:
+    folded = "".join(
+        character
+        for character in unicodedata.normalize("NFKD", value.casefold())
+        if not unicodedata.combining(character)
+    )
+    return " ".join(re.findall(r"[a-z0-9]+", folded))
+
+
+@lru_cache(maxsize=256)
+def matched_semantic_vocabulary(query: str) -> list[dict[str, Any]]:
+    """Return the small authored translation rows activated by one question."""
+    query_text = normalized_search_text(query)
+    query_term_set = search_terms(query)
+    matches: list[dict[str, Any]] = []
+    for row in SEMANTIC_VOCABULARY:
+        labels = (row["pref_label"], *row["alt_labels"])
+        if any(
+            (
+                (label_text := normalized_search_text(label)) in query_text
+                or (
+                    len(label_terms := search_terms(label)) >= 2
+                    and label_terms <= query_term_set
+                )
+            )
+            for label in labels
+        ):
+            matches.append(dict(row))
+    return matches
+
+
+@lru_cache(maxsize=256)
+def semantic_query_operator(query: str) -> dict[str, Any]:
+    """Classify the question-shaped operator independently of result ranking."""
+    query_text = normalized_search_text(query)
+    if (
+        "what should i try next" in query_text
+        or "what blocks" in query_text
+        or "what remains" in query_text
+        or "missing" in query_text
+    ):
+        operator_id = "frontier"
+    elif re.search(r"\bcan\b.+\bsolve\b", query_text) or any(
+        cue in query_text
+        for cue in (
+            "cannot",
+            "counterexample",
+            "dead end",
+            "does not",
+            "failed",
+            "worth pursuing",
+        )
+    ):
+        operator_id = "falsify"
+    elif any(cue in query_text for cue in ("analog", "analogy", "compare", "transfer")):
+        operator_id = "analogy"
+    elif any(
+        cue in query_text
+        for cue in (
+            "need",
+            "premise",
+            "need to prove",
+            "support",
+            "approach",
+            "proof socket",
+            "socket",
+        )
+    ) or re.search(
+        r"\bcan\b.+\b(?:provide|yield|imply|establish)\b", query_text
+    ) or re.search(
+        r"\b(?:theorem|lemma)\b.+\b(?:turns?|takes?)\b.+\binto\b",
+        query_text,
+    ):
+        operator_id = "support"
+    elif any(cue in query_text for cue in ("why", "depends on", "builds on", "trace")):
+        operator_id = "trace"
+    elif any(cue in query_text for cue in ("explain", "understand", "overview", "story")):
+        operator_id = "digest"
+    else:
+        operator_id = "locate"
+    return next(
+        dict(row) for row in SEMANTIC_QUERY_OPERATORS if row["id"] == operator_id
+    )
+
+
+@lru_cache(maxsize=256)
+def semantic_query_interpretation(query: str) -> dict[str, Any]:
+    matched_rows = matched_semantic_vocabulary(query)
+    routed_rows = (
+        [row for row in matched_rows if row["vocabulary_kind"] == "entity"]
+        or matched_rows
+    )
+    expansions = list(
+        dict.fromkeys(
+            expansion
+            for row in matched_rows
+            for expansion in row["query_expansions"]
+        )
+    )
+    return {
+        "operator": semantic_query_operator(query),
+        "matched_vocabulary": [
+            {
+                "id": row["id"],
+                "pref_label": row["pref_label"],
+                "query_expansions": list(row["query_expansions"]),
+                "route_hints": list(row["route_hints"]),
+            }
+            for row in matched_rows
+        ],
+        "expanded_queries": expansions,
+        "prioritized_route_hints": list(
+            dict.fromkeys(
+                hint for row in routed_rows for hint in row["route_hints"]
+            )
+        ),
+        "authority_posture": (
+            "authored_navigation_translation_not_proof_or_claim_status_authority"
+        ),
+    }
+
+
+def semantic_dictionary_packet() -> dict[str, Any]:
+    return {
+        "kind": "semantic_dictionary",
+        "schema_version": SEMANTIC_DICTIONARY_SCHEMA,
+        "authority_posture": (
+            "authored_navigation_translation_not_proof_or_claim_status_authority"
+        ),
+        "operators": [
+            {
+                **dict(row),
+                "cues": list(row["cues"]),
+            }
+            for row in SEMANTIC_QUERY_OPERATORS
+        ],
+        "vocabulary": [
+            {
+                **dict(row),
+                "alt_labels": list(row["alt_labels"]),
+                "query_expansions": list(row["query_expansions"]),
+                "route_hints": list(row["route_hints"]),
+            }
+            for row in SEMANTIC_VOCABULARY
+        ],
+        "consumer_action": (
+            "Load this bounded packet before free-text search, then follow one "
+            "typed route hint or inspect the transparent query interpretation "
+            "returned by --search."
+        ),
+        "proof_authority": "Lean source checked by the pinned Lean kernel",
+    }
+
+
+@lru_cache(maxsize=256)
+def semantic_query_variants(query: str) -> list[set[str]]:
+    return [
+        terms
+        for expansion in semantic_query_interpretation(query)["expanded_queries"]
+        if (terms := search_terms(expansion))
+    ]
+
+
+@lru_cache(maxsize=256)
+def semantic_hint_targets(query: str) -> dict[tuple[str, str], int]:
+    flag_to_kind = {
+        "--claim": "claim",
+        "--declaration": "declaration",
+        "--open": "open_proposition",
+        "--route": "reading_route",
+    }
+    targets: dict[tuple[str, str], int] = {}
+    for index, hint in enumerate(
+        semantic_query_interpretation(query)["prioritized_route_hints"]
+    ):
+        parts = hint.split(maxsplit=1)
+        if len(parts) != 2 or parts[0] not in flag_to_kind:
+            continue
+        targets[(flag_to_kind[parts[0]], parts[1])] = index
+    return targets
 
 
 def status_question_target(query: str) -> tuple[str, str] | None:
@@ -1261,7 +3152,7 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
         return 2
     if needle in body:
         return 3
-    query_terms = search_terms(query)
+    query_terms = semantic_content_terms(query)
     if not query_terms:
         return None
     key_terms = search_terms(primary)
@@ -1270,6 +3161,15 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
         return 4
     if query_terms <= body_terms:
         return 5
+    for index, variant_terms in enumerate(semantic_query_variants(query)):
+        if variant_terms <= key_terms:
+            return 6 + index
+        if variant_terms <= body_terms:
+            return 8 + index
+        matched_variant = len(variant_terms & (key_terms | body_terms))
+        required_variant = max(2, (2 * len(variant_terms) + 2) // 3)
+        if matched_variant >= required_variant:
+            return 12 + index + len(variant_terms) - matched_variant
     matched = len(query_terms & (key_terms | body_terms))
     required = max(2, (2 * len(query_terms) + 2) // 3)
     if matched >= required:
@@ -1279,11 +3179,11 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
 
 def search_result_sort_key(
     item: tuple[int, str, dict[str, Any]]
-) -> tuple[int, int, str]:
+) -> tuple[int, int, int, str]:
     """Keep typed-handle lookup exact while preferring routes for semantic ties."""
     rank, stable_key, result = item
     if rank <= 2:
-        return (rank, 0, stable_key)
+        return (rank, 0, 0, stable_key)
     semantic_kind_priority = {
         "reading_route": 0,
         "publication_family": 1,
@@ -1294,7 +3194,18 @@ def search_result_sort_key(
         "module": 6,
         "artifact": 7,
     }
-    return (rank, semantic_kind_priority.get(result["kind"], 99), stable_key)
+    addressability_priority = (
+        1
+        if result["kind"] == "declaration"
+        and not result.get("externally_addressable", True)
+        else 0
+    )
+    return (
+        rank,
+        addressability_priority,
+        semantic_kind_priority.get(result["kind"], 99),
+        stable_key,
+    )
 
 
 def search_packet(query: str, limit: int) -> dict[str, Any]:
@@ -1418,7 +3329,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         if rank is not None:
             ranked.append((rank, f"claim:{claim['id']}", {"kind": "claim", **compact_claim(claim)}))
 
-    for row in atlas["declarations"]:
+    for row in atlas_declarations(atlas):
         rank = search_rank(
             query,
             row["name"],
@@ -1432,7 +3343,14 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
 
     for row in atlas["modules"]:
         sigil = sigil_by_path.get(row["path"])
-        ranks = [search_rank(query, row["id"], row["path"])]
+        synopsis = module_synopsis(row["path"])
+        ranks = [
+            search_rank(
+                query,
+                row["id"],
+                " ".join(value for value in (row["path"], synopsis) if value),
+            )
+        ]
         if sigil:
             ranks.append(search_rank(query, sigil, row["id"] + " " + row["path"]))
         rank = min((value for value in ranks if value is not None), default=None)
@@ -1445,6 +3363,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                         "kind": "module",
                         "id": row["id"],
                         "path": row["path"],
+                        "authored_synopsis": synopsis,
                         "paper_sigil": sigil,
                         "role": roles.get(row["id"], "Unclassified module"),
                         "declaration_count": row["declaration_count"],
@@ -1602,17 +3521,1506 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
+    hint_targets = semantic_hint_targets(query)
+    ranked = [
+        (
+            (
+                -10 + hint_targets[(result["kind"], str(handle))]
+                if handle is not None
+                and (result["kind"], str(handle)) in hint_targets
+                else rank
+            ),
+            stable_key,
+            result,
+        )
+        for rank, stable_key, result in ranked
+        for handle in (result.get("id") or result.get("name"),)
+    ]
     ranked.sort(key=search_result_sort_key)
     results = [item[2] for item in ranked]
+    missing_registered_artifacts = [
+        row["artifact_handle"]
+        for row in artifact_inventory()
+        if row.get("availability") == "missing"
+    ]
     return {
         "kind": "search",
         "authority_posture": "navigation_projection_not_proof_authority",
         "query": query,
+        "query_interpretation": semantic_query_interpretation(query),
         "match_count": len(results),
         "results": results[:limit],
         "omitted_match_count": max(0, len(results) - limit),
         "limit": limit,
-        "next": "Use the typed handle with --claim, --status, --paper-anchor, --open, --declaration, --source, --module, --connections, --artifact, --publication-artifact, --publication-evidence, --route, or --publication-family.",
+        "artifact_availability_receipt": {
+            "status": (
+                "partial_optional_artifacts_missing"
+                if missing_registered_artifacts
+                else "all_registered_artifacts_present"
+            ),
+            "missing_registered_artifacts": missing_registered_artifacts,
+            "effect_on_search": (
+                "missing authored artifacts are omitted from paper-anchor "
+                "indexing; claims, routes, open propositions, declarations, "
+                "modules, and present papers remain searchable"
+            ),
+        },
+        "next": "Inspect --vocabulary when phrasing is uncertain, then use the typed handle with --claim, --status, --paper-anchor, --open, --declaration, --source, --module, --connections, --artifact, --publication-artifact, --publication-evidence, --route, or --publication-family.",
+    }
+
+
+def semantic_result_handle(result: dict[str, Any]) -> str:
+    return str(
+        result.get("id")
+        or result.get("name")
+        or result.get("canonical_handle")
+        or result.get("artifact_handle")
+        or result.get("source_ref")
+        or "unresolved"
+    )
+
+
+def semantic_result_key(result: dict[str, Any]) -> str:
+    """Return an unambiguous result key while retaining short display handles."""
+    if result["kind"] == "declaration":
+        return str(result.get("qualified_name") or result.get("name"))
+    return semantic_result_handle(result)
+
+
+def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
+    """Resolve authored claim handles to exact atlas signatures and source lines."""
+    atlas = load("docs/declaration_atlas.json")
+    declarations = {
+        (row["name"], row["module"], row["line"]): row
+        for row in atlas_declarations(atlas)
+    }
+    claims = load("docs/claims.json")
+    identity = formal_source_identity(claims)
+    repository = identity["repository"].rstrip("/")
+    source_ref = identity["ref"]
+    witnesses = []
+    for handle in claim.get("declarations", []):
+        key = (handle["name"], handle["module"], handle["line"])
+        declaration = declarations.get(key)
+        if declaration is None:
+            continue
+        witnesses.append(
+            {
+                "name": declaration["name"],
+                "qualified_name": qualified_declaration_name(declaration),
+                "externally_addressable": declaration_externally_addressable(
+                    declaration
+                ),
+                "declaration_kind": declaration["kind"],
+                "signature": declaration.get("signature"),
+                "source_ref": (
+                    f"{declaration['module']}:{declaration['line']}"
+                ),
+                "source_url": (
+                    f"{repository}/blob/{source_ref}/{declaration['module']}"
+                    f"#L{declaration['line']}"
+                ),
+                "docstring": declaration.get("docstring"),
+                "lean_source_identity": dict(identity),
+            }
+        )
+    return witnesses
+
+
+@lru_cache(maxsize=512)
+def declaration_source_dependency_candidates(
+    name: str, limit: int = 6
+) -> list[dict[str, Any]]:
+    """Return exact declarations named in one declaration's source span.
+
+    This is source-current lexical evidence, not an elaborator dependency
+    trace. The distinction is retained in every emitted row.
+    """
+    atlas = load("docs/declaration_atlas.json")
+    matches = [
+        row
+        for row in atlas_declarations(atlas)
+        if row["name"] == name or qualified_declaration_name(row) == name
+    ]
+    if len(matches) != 1:
+        return []
+    declaration = matches[0]
+    module = next(
+        row
+        for row in atlas["modules"]
+        if row["path"] == declaration["module"]
+    )
+    module_declarations = sorted(
+        (
+            row
+            for row in atlas_declarations(atlas)
+            if row["module"] == declaration["module"]
+        ),
+        key=lambda row: (row["line"], row["name"]),
+    )
+    declaration_index = module_declarations.index(declaration)
+    source_lines = (ROOT / declaration["module"]).read_text(
+        encoding="utf-8"
+    ).splitlines()
+    span_end = (
+        module_declarations[declaration_index + 1]["line"] - 1
+        if declaration_index + 1 < len(module_declarations)
+        else len(source_lines)
+    )
+    span = "\n".join(
+        source_lines[declaration["line"] - 1 : span_end]
+    )
+    span = re.split(r"(?m)^\s*#print\b", span, maxsplit=1)[0]
+    visible_paths = {
+        declaration["module"],
+        *(
+            row["path"]
+            for row in atlas["modules"]
+            if row["id"] in module.get("imports", [])
+        ),
+    }
+    candidates = []
+    for row in atlas_declarations(atlas):
+        candidate_name = row["name"]
+        if (
+            row["module"] not in visible_paths
+            or row["id"] == declaration["id"]
+            or len(candidate_name) < 3
+            or row["kind"] not in ("theorem", "lemma")
+        ):
+            continue
+        occurrences = list(
+            re.finditer(rf"\b{re.escape(candidate_name)}\b", span)
+        )
+        if not occurrences:
+            continue
+        candidates.append(
+            (
+                occurrences[0].start(),
+                -len(candidate_name),
+                {
+                    "name": candidate_name,
+                    "qualified_name": qualified_declaration_name(row),
+                    "declaration_kind": row["kind"],
+                    "signature": row.get("signature"),
+                    "source_ref": f"{row['module']}:{row['line']}",
+                    "use_count_in_declaration_span": len(occurrences),
+                    "evidence_posture": (
+                        "source_lexical_dependency_candidate_not_elaborator_dependency_proof"
+                    ),
+                },
+            )
+        )
+    candidates.sort(key=lambda item: (item[0], item[1], item[2]["name"]))
+    return [item[2] for item in candidates[:limit]]
+
+
+def semantic_cell(
+    query: str, result: dict[str, Any], selection_reason: str
+) -> dict[str, Any]:
+    """Expand one ranked handle without collapsing its authority planes."""
+    kind = result["kind"]
+    handle = semantic_result_handle(result)
+    canonical_handle = semantic_result_key(result)
+    operator_id = semantic_query_operator(query)["id"]
+    expansion_command: str
+    witness_edges: list[dict[str, str]] = [
+        {
+            "from": "query",
+            "relation": "retrieved_as",
+            "to": f"{kind}:{canonical_handle}",
+            "authority": "navigation",
+        }
+    ]
+
+    if kind == "declaration":
+        packet = declaration_packet(canonical_handle, 1)
+        declaration = packet["matches"][0]
+        canonical_handle = declaration.get("qualified_name") or handle
+        content = {
+            "formal_witness": {
+                key: declaration.get(key)
+                for key in (
+                    "name",
+                    "qualified_name",
+                    "externally_addressable",
+                    "kind",
+                    "signature",
+                    "module",
+                    "line",
+                    "source_ref",
+                    "source_url",
+                    "lean_source_identity",
+                )
+            },
+            "authored_digest": {
+                "text": declaration.get("docstring"),
+                "authority_posture": (
+                    "authored_explanation_not_kernel_or_claim_status_authority"
+                ),
+            },
+            "claim_status_links": declaration.get("attached_claims", []),
+            "module_role": declaration.get("module_role"),
+        }
+        if operator_id in ("support", "trace"):
+            formal_dependencies = formal_dependency_neighbourhood(
+                canonical_handle,
+                3 if operator_id == "trace" else 2,
+            )
+            content["formal_dependency_neighbourhood"] = (
+                formal_dependencies
+            )
+            content["source_dependency_candidates"] = (
+                declaration_source_dependency_candidates(canonical_handle)
+            )
+            if formal_dependencies["availability"] == "available":
+                witness_edges.extend(
+                    {
+                        "from": f"declaration:{canonical_handle}",
+                        "relation": "uses_elaborated_constant",
+                        "to": f"declaration:{dependency['handle']}",
+                        "authority": "kernel_elaborated_environment",
+                    }
+                    for dependency in formal_dependencies[
+                        "direct_dependencies"
+                    ]
+                )
+        expansion_command = (
+            "python3 scripts/query_corpus.py --declaration "
+            f"{canonical_handle}"
+        )
+        witness_edges.append(
+            {
+                "from": f"declaration:{canonical_handle}",
+                "relation": "elaborated_at",
+                "to": declaration["source_ref"],
+                "authority": "kernel",
+            }
+        )
+    elif kind == "claim":
+        packet = claim_packet(handle)
+        claim = packet["claim"]
+        content = {
+            "claim_record": claim,
+            "formal_witnesses": claim_formal_witnesses(claim),
+            "argument_neighbourhood": packet["argument_neighbourhood"],
+            "remaining_open_propositions": packet[
+                "remaining_open_propositions"
+            ],
+            "programme_contexts": packet["programme_contexts"],
+            "paper_coordinate": packet["paper"],
+            "lean_source_identity": packet["lean_source_identity"],
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --claim {handle}"
+        if operator_id in ("locate", "support", "trace", "digest"):
+            witness_edges.extend(
+                {
+                    "from": f"claim:{handle}",
+                    "relation": "has_formal_handle",
+                    "to": f"declaration:{declaration['name']}",
+                    "authority": "status_to_kernel_bridge",
+                }
+                for declaration in claim.get("declarations", [])
+            )
+        if operator_id in ("frontier", "falsify", "trace", "digest"):
+            witness_edges.extend(
+                {
+                    "from": f"claim:{handle}",
+                    "relation": "bounded_by",
+                    "to": f"open_proposition:{proposition['id']}",
+                    "authority": "status",
+                }
+                for proposition in packet["remaining_open_propositions"]
+            )
+        if operator_id == "trace":
+            for direction in ("incoming", "outgoing"):
+                witness_edges.extend(
+                    {
+                        "from": (
+                            f"claim:{edge['neighbour']['id']}"
+                            if direction == "incoming"
+                            else f"claim:{handle}"
+                        ),
+                        "relation": edge["relation"],
+                        "to": (
+                            f"claim:{handle}"
+                            if direction == "incoming"
+                            else f"claim:{edge['neighbour']['id']}"
+                        ),
+                        "authority": "status_argument_graph",
+                    }
+                    for edge in packet["argument_neighbourhood"][direction]
+                )
+    elif kind == "open_proposition":
+        packet = open_proposition_packet(handle)
+        proposition = packet["open_proposition"]
+        content = {
+            "open_record": proposition,
+            "open_target": packet["open_target"],
+            "nearest_advances": packet["advancing_claims"],
+            "linked_claims": packet["linked_claims"],
+            "paper_anchor": packet["paper_anchor"],
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --open {handle}"
+        witness_edges.append(
+            {
+                "from": f"open_proposition:{handle}",
+                "relation": "keeps_open",
+                "to": f"claim:{packet['open_target']['id']}",
+                "authority": "status",
+            }
+        )
+        if operator_id in ("frontier", "trace", "digest"):
+            witness_edges.extend(
+                {
+                    "from": f"claim:{advance['claim']['id']}",
+                    "relation": advance["operation"],
+                    "to": f"open_proposition:{handle}",
+                    "authority": "status",
+                }
+                for advance in packet["advancing_claims"]
+            )
+    elif kind == "reading_route":
+        packet = route_packet(handle)
+        route = packet["route"]
+        programme = packet.get("programme")
+        content = {
+            "route": route,
+            "programme": programme,
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --route {handle}"
+        if programme and operator_id in ("trace", "digest"):
+            witness_edges.extend(
+                {
+                    "from": f"reading_route:{handle}",
+                    "relation": "organises",
+                    "to": f"claim:{claim['id']}",
+                    "authority": "navigation",
+                }
+                for claim in programme["core_claims"]
+            )
+        if programme and operator_id in (
+            "frontier",
+            "falsify",
+            "analogy",
+            "trace",
+            "digest",
+        ):
+            witness_edges.extend(
+                {
+                    "from": f"reading_route:{handle}",
+                    "relation": "bounded_by",
+                    "to": f"open_proposition:{proposition['id']}",
+                    "authority": "status",
+                }
+                for proposition in programme["remaining_open_propositions"]
+            )
+    elif kind == "module":
+        packet = module_packet(handle, 6)
+        content = {
+            "module": packet["module"],
+            "attached_claims": packet["attached_claims"],
+            "declaration_preview": packet["declaration_preview"],
+            "dependency_neighbourhood": packet["dependency_neighbourhood"],
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --module {handle}"
+        witness_edges.append(
+            {
+                "from": f"module:{handle}",
+                "relation": "authored_in",
+                "to": packet["module"]["path"],
+                "authority": "digestion_to_kernel_source",
+            }
+        )
+    else:
+        content = {
+            "ranked_result": result,
+            "notice": (
+                "This handle is retained as navigation context; use its typed "
+                "query command for the full owner packet."
+            ),
+        }
+        flag_by_kind = {
+            "paper_anchor": "--paper-anchor",
+            "module": "--module",
+            "publication_family": "--publication-family",
+            "artifact": "--artifact",
+            "publication_artifact": "--publication-artifact",
+            "publication_evidence": "--publication-evidence",
+        }
+        expansion_command = (
+            "python3 scripts/query_corpus.py "
+            f"{flag_by_kind.get(kind, '--search')} {handle}"
+        )
+
+    return {
+        "cell_id": f"{kind}:{canonical_handle}",
+        "kind": kind,
+        "handle": handle,
+        "canonical_handle": canonical_handle,
+        "selection_reason": selection_reason,
+        "witness_selection": {
+            "operator": operator_id,
+            "posture": (
+                "operator_specific_decisive_edges; full typed content remains "
+                "available inside the cell and through expansion_command"
+            ),
+        },
+        "content": content,
+        "witness_edges": witness_edges,
+        "typed_provenance": [
+            {
+                "plane": "kernel",
+                "owner": "pinned Lean source and Lean kernel",
+                "meaning": (
+                    "Only elaborated declarations and their exact source "
+                    "coordinates carry proof authority."
+                ),
+            },
+            {
+                "plane": "status",
+                "owner": "docs/claims.json",
+                "meaning": (
+                    "Claim labels, statuses, remaining-open boundaries, and "
+                    "argument relations are authored registry authority."
+                ),
+            },
+            {
+                "plane": "digestion",
+                "owner": "declaration docstrings and authored paper coordinates",
+                "meaning": (
+                    "Explanation aids comprehension but does not replace proof "
+                    "or claim-status authority."
+                ),
+            },
+            {
+                "plane": "navigation",
+                "owner": "scripts/query_corpus.py",
+                "meaning": (
+                    "Selection, vocabulary translation, and route ordering are "
+                    "query-relative navigation projections."
+                ),
+            },
+        ],
+        "authority_invariant": (
+            "kernel,status,digestion,navigation_are_typed_and_non_substitutable"
+        ),
+        "expansion_command": expansion_command,
+    }
+
+
+def operator_synthesis(
+    operator_id: str, cells: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Assemble operator-specific relations without upgrading their authority."""
+    if operator_id == "support":
+        formal_consumers = []
+        formal_dependency_neighbourhoods = []
+        source_dependency_candidates = []
+        unproved_requirements = []
+        for cell in cells:
+            if cell["kind"] == "claim":
+                formal_consumers.extend(cell["content"]["formal_witnesses"])
+                unproved_requirements.extend(
+                    cell["content"]["remaining_open_propositions"]
+                )
+            elif cell["kind"] == "declaration":
+                formal_consumers.append(cell["content"]["formal_witness"])
+                formal_dependency_neighbourhoods.append(
+                    cell["content"].get(
+                        "formal_dependency_neighbourhood", {}
+                    )
+                )
+                source_dependency_candidates.extend(
+                    cell["content"].get(
+                        "source_dependency_candidates", []
+                    )
+                )
+            elif cell["kind"] == "open_proposition":
+                unproved_requirements.append(cell["content"]["open_record"])
+            elif cell["kind"] == "reading_route":
+                programme = cell["content"].get("programme")
+                if programme:
+                    unproved_requirements.extend(
+                        programme["remaining_open_propositions"]
+                    )
+        checked_consumers = list(
+            {
+                row.get("qualified_name") or row["name"]: row
+                for row in formal_consumers
+                if row.get("name")
+                and (
+                    row.get("kind")
+                    or row.get("declaration_kind")
+                )
+                in {"theorem", "lemma", "corollary", "proposition"}
+                and row.get("externally_addressable", True)
+            }.values()
+        )
+        return {
+            "kind": "support_synthesis",
+            "checked_consumer_signatures": checked_consumers,
+            "lean_application_candidates": [
+                {
+                    "declaration": row["name"],
+                    "qualified_declaration": row.get("qualified_name"),
+                    "signature": row.get("signature"),
+                    "tactic": (
+                        f"apply {row.get('qualified_name') or row['name']}"
+                    ),
+                    "authority_posture": (
+                        "query_derived_tactic_candidate_requires_Lean_elaboration"
+                    ),
+                }
+                for row in checked_consumers
+            ],
+            "source_dependency_candidates": list(
+                {
+                    (row["name"], row["source_ref"]): row
+                    for row in source_dependency_candidates
+                }.values()
+            ),
+            "formal_dependency_neighbourhoods": [
+                row
+                for row in formal_dependency_neighbourhoods
+                if row.get("availability") == "available"
+            ],
+            "unproved_requirements": list(
+                {
+                    row["id"]: row
+                    for row in unproved_requirements
+                    if row.get("id")
+                }.values()
+            ),
+            "sufficiency_posture": (
+                "Only an emitted theorem signature can certify that its named "
+                "hypothesis implies its conclusion; relevance alone is not "
+                "joint sufficiency."
+            ),
+        }
+    if operator_id == "analogy":
+        subjects: dict[str, dict[str, Any]] = {}
+        for side in ("left", "right"):
+            side_cells = [
+                cell
+                for cell in cells
+                if cell["selection_reason"] == f"analogy_{side}_subject"
+            ]
+            claim_ids: set[str] = set()
+            open_ids: set[str] = set()
+            ceilings = []
+            for cell in side_cells:
+                if cell["kind"] == "reading_route":
+                    programme = cell["content"].get("programme")
+                    if programme:
+                        claim_ids.update(
+                            row["id"] for row in programme["core_claims"]
+                        )
+                        open_ids.update(
+                            row["id"]
+                            for row in programme[
+                                "remaining_open_propositions"
+                            ]
+                        )
+                        ceilings.append(programme["claim_ceiling"])
+                elif cell["kind"] == "claim":
+                    claim_ids.add(cell["handle"])
+                    open_ids.update(
+                        row["id"]
+                        for row in cell["content"][
+                            "remaining_open_propositions"
+                        ]
+                    )
+            subjects[side] = {
+                "cell_ids": [cell["cell_id"] for cell in side_cells],
+                "claim_ids": sorted(claim_ids),
+                "open_proposition_ids": sorted(open_ids),
+                "claim_ceilings": ceilings,
+            }
+        left_claims = set(subjects["left"]["claim_ids"])
+        right_claims = set(subjects["right"]["claim_ids"])
+        left_opens = set(subjects["left"]["open_proposition_ids"])
+        right_opens = set(subjects["right"]["open_proposition_ids"])
+        return {
+            "kind": "analogy_synthesis",
+            "subjects": subjects,
+            "shared_claim_ids": sorted(left_claims & right_claims),
+            "shared_open_proposition_ids": sorted(left_opens & right_opens),
+            "formal_bridge_status": "not_inferred",
+            "formal_bridge_requirement": (
+                "A transported conclusion requires an emitted Lean theorem "
+                "whose signature connects the two subjects."
+            ),
+        }
+    if operator_id == "frontier":
+        open_records = []
+        advances = []
+        for cell in cells:
+            if cell["kind"] == "open_proposition":
+                open_records.append(cell["content"]["open_record"])
+                advances.extend(cell["content"]["nearest_advances"])
+            elif cell["kind"] == "reading_route":
+                programme = cell["content"].get("programme")
+                if programme:
+                    open_records.extend(
+                        programme["remaining_open_propositions"]
+                    )
+            elif cell["kind"] == "claim":
+                open_records.extend(
+                    cell["content"]["remaining_open_propositions"]
+                )
+        return {
+            "kind": "frontier_synthesis",
+            "exact_open_records": list(
+                {
+                    row["id"]: row for row in open_records if row.get("id")
+                }.values()
+            ),
+            "nearest_advances": advances,
+            "boundary": (
+                "Every emitted open record remains open; narrowing and "
+                "re-expression operations do not discharge it."
+            ),
+        }
+    if operator_id == "falsify":
+        verdicts = []
+        claim_ceilings = []
+        open_requirements = []
+        for cell in cells:
+            if cell["kind"] == "declaration":
+                digest = cell["content"]["authored_digest"]
+                if digest.get("text"):
+                    verdicts.append(
+                        {
+                            "declaration": cell["handle"],
+                            "authored_digest": digest,
+                            "formal_witness": cell["content"][
+                                "formal_witness"
+                            ],
+                        }
+                    )
+            elif cell["kind"] == "claim":
+                open_requirements.extend(
+                    cell["content"]["remaining_open_propositions"]
+                )
+                claim_ceilings.extend(
+                    row["claim_ceiling"]
+                    for row in cell["content"]["programme_contexts"]
+                )
+            elif cell["kind"] == "reading_route":
+                programme = cell["content"].get("programme")
+                if programme:
+                    claim_ceilings.append(programme["claim_ceiling"])
+                    open_requirements.extend(
+                        programme["remaining_open_propositions"]
+                    )
+        return {
+            "kind": "falsification_synthesis",
+            "authored_verdicts": verdicts,
+            "claim_ceilings": list(dict.fromkeys(claim_ceilings)),
+            "open_requirements": list(
+                {
+                    row["id"]: row
+                    for row in open_requirements
+                    if row.get("id")
+                }.values()
+            ),
+            "boundary": (
+                "A measured negative verdict is scoped to its stated fixture "
+                "or probe; an open producer blocks promotion to a solved claim."
+            ),
+        }
+    if operator_id == "trace":
+        argument_edges = []
+        formal_dependency_neighbourhoods = []
+        source_dependency_candidates = []
+        for cell in cells:
+            if cell["kind"] == "claim":
+                neighbourhood = cell["content"]["argument_neighbourhood"]
+                argument_edges.extend(neighbourhood["incoming"])
+                argument_edges.extend(neighbourhood["outgoing"])
+            elif cell["kind"] == "declaration":
+                formal_dependency_neighbourhoods.append(
+                    cell["content"].get(
+                        "formal_dependency_neighbourhood", {}
+                    )
+                )
+                source_dependency_candidates.extend(
+                    cell["content"].get(
+                        "source_dependency_candidates", []
+                    )
+                )
+        return {
+            "kind": "trace_synthesis",
+            "argument_edges": argument_edges,
+            "formal_dependency_neighbourhoods": [
+                row
+                for row in formal_dependency_neighbourhoods
+                if row.get("availability") == "available"
+            ],
+            "source_dependency_candidates": list(
+                {
+                    (row["name"], row["source_ref"]): row
+                    for row in source_dependency_candidates
+                }.values()
+            ),
+            "boundary": (
+                "Authored argument relations explain dependency posture; "
+                "formal source witnesses remain proof authority."
+            ),
+        }
+    if operator_id == "digest":
+        return {
+            "kind": "digest_synthesis",
+            "ordered_cell_ids": [cell["cell_id"] for cell in cells],
+            "boundedness": (
+                "The digest is an ordered witness slice, not a complete "
+                "summary of every declaration matching the question."
+            ),
+        }
+    return {
+        "kind": "location_synthesis",
+        "exact_handles": [cell["cell_id"] for cell in cells],
+        "source_witnesses": [
+            edge
+            for cell in cells
+            for edge in cell["witness_edges"]
+            if edge["authority"]
+            in ("kernel", "digestion_to_kernel_source")
+        ],
+    }
+
+
+def semantic_slice_rejections(operator_id: str) -> list[str]:
+    common = [
+        "A navigation match is not evidence that a theorem proves the query.",
+        "A conditional reduction, finite instance, or open target is not promoted to a solved claim.",
+    ]
+    operator_specific = {
+        "frontier": (
+            "Nearby proved reductions do not discharge the exact remaining-open proposition.",
+        ),
+        "falsify": (
+            "A promising formal interface is not treated as a producer when its supply hypothesis remains open.",
+            "Authored experimental verdicts are reported as measured scope, not universal impossibility.",
+        ),
+        "analogy": (
+            "Structural similarity is not transported as a proof without an exact formal bridge.",
+        ),
+        "support": (
+            "Individually relevant premises are not asserted jointly sufficient without a checked consumer.",
+        ),
+        "trace": (
+            "Argument-graph edges explain authored dependency posture; Lean source remains proof authority.",
+        ),
+        "digest": (
+            "The bounded digest omits material by handle rather than silently claiming corpus completeness.",
+        ),
+        "locate": (
+            "A lexical or vocabulary match is not treated as identity unless its typed handle is expanded.",
+        ),
+    }
+    return [*common, *operator_specific.get(operator_id, ())]
+
+
+def analogy_subject_queries(query: str) -> list[str]:
+    """Recover the compared subjects so intersection matching does not erase either."""
+    stripped = re.sub(
+        r"^\s*(?:compare|contrast)\s+",
+        "",
+        query,
+        flags=re.IGNORECASE,
+    )
+    parts = re.split(
+        r"\s+(?:with|versus|vs\.?|and)\s+",
+        stripped,
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )
+    return [part.strip() for part in parts if part.strip()] if len(parts) == 2 else []
+
+
+def support_alternative_queries(query: str) -> list[str]:
+    """Split `either X or Y proves Z` into two premise-selection questions."""
+    match = re.search(
+        r"\beither\s+(.+?)\s+or\s+(.+?)\s+"
+        r"(?:prove|proves|imply|implies|establish|establishes)\s+(.+)",
+        query,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+    left, right, conclusion = (part.strip() for part in match.groups())
+    return [f"{left} {conclusion}", f"{right} {conclusion}"]
+
+
+def trace_endpoint_queries(query: str) -> list[str]:
+    """Split an explicitly relational trace question into two subjects."""
+    patterns = (
+        r"\bfrom\s+(.+?)\s+(?:to|through|into)\s+(.+?)\s*[?.!]*$",
+        (
+            r"^\s*(?:trace\s+)?(?:why\s+)?(?:does\s+)?(.+?)\s+"
+            r"(?:ultimately\s+)?(?:use|uses|depend(?:s)?\s+on|"
+            r"build(?:s)?\s+on)\s+(.+?)\s*[?.!]*$"
+        ),
+    )
+    for pattern in patterns:
+        match = re.search(pattern, query, flags=re.IGNORECASE)
+        if match is not None:
+            subjects = [part.strip() for part in match.groups()]
+            if all(subjects):
+                return subjects
+    return []
+
+
+def trace_dependency_resolution(
+    query: str, candidate_limit: int = 24
+) -> dict[str, Any]:
+    """Resolve two natural-language endpoints through exact Lean paths."""
+    subjects = trace_endpoint_queries(query)
+    if len(subjects) != 2:
+        return {"availability": "no_explicit_endpoint_pair"}
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+
+    def candidates(subject: str) -> list[dict[str, Any]]:
+        results = search_packet(subject, min(MAX_LIMIT, 40))["results"]
+        return [
+            result
+            for result in results
+            if result["kind"] == "declaration"
+            and result.get("declaration_kind") in theorem_kinds
+            and result.get("externally_addressable", True)
+        ][:candidate_limit]
+
+    source_candidates = candidates(subjects[0])
+    target_candidates = candidates(subjects[1])
+    tested_pair_count = 0
+    ranked_paths = []
+    for source_index, source in enumerate(source_candidates):
+        for target_index, target in enumerate(target_candidates):
+            tested_pair_count += 1
+            path = formal_dependency_path(
+                semantic_result_key(source),
+                semantic_result_key(target),
+                8,
+            )
+            if path["availability"] != "available" or not path["hop_count"]:
+                continue
+            ranked_paths.append(
+                (
+                    path["hop_count"],
+                    source_index + target_index,
+                    source_index,
+                    target_index,
+                    source,
+                    target,
+                    path,
+                )
+            )
+    if not ranked_paths:
+        return {
+            "availability": "no_path_between_bounded_candidates",
+            "endpoint_queries": subjects,
+            "source_candidate_count": len(source_candidates),
+            "target_candidate_count": len(target_candidates),
+            "tested_pair_count": tested_pair_count,
+            "source_candidate_handles": [
+                semantic_result_key(row)
+                for row in source_candidates[:8]
+            ],
+            "target_candidate_handles": [
+                semantic_result_key(row)
+                for row in target_candidates[:8]
+            ],
+            "authority_posture": (
+                "bounded_negative_navigation_result_not_global_dependency_"
+                "absence"
+            ),
+        }
+    (
+        _,
+        _,
+        source_index,
+        target_index,
+        source,
+        target,
+        path,
+    ) = min(ranked_paths, key=lambda row: row[:4])
+    return {
+        "availability": "available",
+        "endpoint_queries": subjects,
+        "source_result": source,
+        "target_result": target,
+        "formal_dependency_path": path,
+        "receipt": {
+            "source_candidate_count": len(source_candidates),
+            "target_candidate_count": len(target_candidates),
+            "tested_pair_count": tested_pair_count,
+            "path_bearing_pair_count": len(ranked_paths),
+            "selected_source_rank": source_index,
+            "selected_target_rank": target_index,
+            "selection_policy": (
+                "shortest_exact_path_then_combined_endpoint_rank_then_"
+                "source_rank_then_target_rank"
+            ),
+            "omitted_source_candidate_count": max(
+                0, len(source_candidates) - 8
+            ),
+            "omitted_target_candidate_count": max(
+                0, len(target_candidates) - 8
+            ),
+            "alternative_source_handles": [
+                semantic_result_key(row)
+                for row in source_candidates[:8]
+                if semantic_result_key(row)
+                != semantic_result_key(source)
+            ],
+            "alternative_target_handles": [
+                semantic_result_key(row)
+                for row in target_candidates[:8]
+                if semantic_result_key(row)
+                != semantic_result_key(target)
+            ],
+        },
+        "authority_posture": (
+            "lexical_endpoint_resolution_plus_exact_kernel_elaborated_path_"
+            "not_proof_that_the_selected_endpoints_match_user_intent"
+        ),
+    }
+
+
+def semantic_context_residual_terms(query: str) -> set[str]:
+    """Return mathematical terms not already explained by a vocabulary route."""
+    consumed: set[str] = set()
+    for row in matched_semantic_vocabulary(query):
+        for phrase in (
+            row["pref_label"],
+            *row["alt_labels"],
+            *row["query_expansions"],
+        ):
+            consumed.update(search_terms(phrase))
+    return {
+        term
+        for term in semantic_content_terms(query)
+        - consumed
+        - {"problem", "erdo"}
+        if not term.isdigit()
+    }
+
+
+def module_local_declaration_results(
+    query: str, module_result: dict[str, Any], limit: int = 2
+) -> list[dict[str, Any]]:
+    """Rank exact declarations after authored module digestion finds the organ."""
+    query_terms = semantic_content_terms(query)
+    if not query_terms:
+        return []
+    atlas = load("docs/declaration_atlas.json")
+    theorem_requested = (
+        semantic_query_operator(query)["id"] == "support"
+        or bool(
+            {"theorem", "lemma", "proof"}
+            & search_terms(query)
+        )
+    )
+    ranked = []
+    for row in atlas_declarations(atlas):
+        if row["module"] != module_result["path"]:
+            continue
+        candidate_terms = search_terms(
+            " ".join(
+                str(value)
+                for value in (
+                    row["name"],
+                    row.get("signature"),
+                    row.get("docstring"),
+                )
+                if value
+            )
+        )
+        matched = len(query_terms & candidate_terms)
+        if matched < min(2, len(query_terms)):
+            continue
+        theorem_like = row["kind"] in {
+            "theorem",
+            "lemma",
+            "corollary",
+            "proposition",
+        }
+        if theorem_requested and (
+            not theorem_like
+            or not declaration_externally_addressable(row)
+        ):
+            continue
+        ranked.append(
+            (
+                -matched,
+                0 if theorem_requested and theorem_like else 1,
+                len(candidate_terms - query_terms),
+                row["line"],
+                row,
+            )
+        )
+    results = []
+    for _, _, _, _, row in sorted(ranked)[:limit]:
+        result = {"kind": "declaration", **compact_declaration(row)}
+        if row.get("signature"):
+            result["signature_excerpt"] = str(row["signature"])[:240]
+        results.append(result)
+    return results
+
+
+def best_reading_route_result(query: str) -> dict[str, Any] | None:
+    """Rank routes as a handle class so declaration volume cannot erase them."""
+    claims = load("docs/claims.json")
+    ranked = []
+    for route in all_entrypoints(claims):
+        haystack = " ".join(
+            str(value)
+            for value in (
+                route.get("title"),
+                route.get("intent"),
+                route.get("mathematical_focus"),
+                route.get("claim_ceiling"),
+                *route.get("discovery_terms", []),
+                *route.get("core_claim_ids", []),
+                *route.get("remaining_open_proposition_ids", []),
+            )
+            if value
+        )
+        ranks = [search_rank(query, route["id"], haystack)]
+        ranks.extend(
+            search_rank(query, term, haystack)
+            for term in route.get("discovery_terms", [])
+        )
+        rank = min((value for value in ranks if value is not None), default=None)
+        if rank is not None:
+            ranked.append((rank, route["id"], route))
+    if not ranked:
+        return None
+    _, _, route = min(ranked, key=lambda row: (row[0], row[1]))
+    return {
+        "kind": "reading_route",
+        "id": route["id"],
+        "route_kind": route.get("route_kind", "reading_route"),
+        "title": route.get("title"),
+        "intent": route["intent"],
+        "problem_target_claim_ids": route.get(
+            "problem_target_claim_ids", []
+        ),
+    }
+
+
+def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
+    """Compile a question into a bounded, witness-carrying semantic subgraph."""
+    search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
+    interpretation = search["query_interpretation"]
+    operator_id = interpretation["operator"]["id"]
+    hint_targets = set(semantic_hint_targets(query))
+    directly_routed = [
+        result
+        for result in search["results"]
+        if (result["kind"], semantic_result_handle(result)) in hint_targets
+    ]
+    analogy_subjects = (
+        analogy_subject_queries(query) if operator_id == "analogy" else []
+    )
+    support_alternatives = (
+        support_alternative_queries(query) if operator_id == "support" else []
+    )
+    trace_resolution = (
+        trace_dependency_resolution(query)
+        if operator_id == "trace"
+        else {"availability": "not_a_trace_query"}
+    )
+    goal_support = (
+        formal_goal_support_packet(query, 3)
+        if operator_id == "support"
+        and support_goal_request(query) is not None
+        else {
+            "kind": "formal_goal_support",
+            "availability": "no_goal_expression",
+        }
+    )
+    if (
+        goal_support["availability"] == "available"
+        and goal_support["candidates"]
+    ):
+        goal_adjacency = lean_dependency_adjacency()
+        goal_handle = goal_support["candidates"][0]["qualified_name"]
+        if (
+            goal_adjacency is not None
+            and goal_handle
+            in goal_adjacency["formal_type_affordances"]
+        ):
+            goal_support = {
+                **goal_support,
+                "application": formal_application_obligations(
+                    query,
+                    goal_support["goal_request"],
+                    goal_adjacency["formal_type_affordances"][
+                        goal_handle
+                    ],
+                ),
+            }
+    if trace_resolution["availability"] not in (
+        "available",
+        "no_explicit_endpoint_pair",
+        "not_a_trace_query",
+    ):
+        interpretation = {
+            **interpretation,
+            "trace_endpoint_resolution": trace_resolution,
+        }
+    selected_with_reasons: list[tuple[dict[str, Any], str]]
+    if trace_resolution["availability"] == "available":
+        interpretation = {
+            **interpretation,
+            "trace_endpoint_resolution": {
+                "availability": "available",
+                "endpoint_queries": trace_resolution[
+                    "endpoint_queries"
+                ],
+                "resolved_source": semantic_result_key(
+                    trace_resolution["source_result"]
+                ),
+                "resolved_target": semantic_result_key(
+                    trace_resolution["target_result"]
+                ),
+                "receipt": trace_resolution["receipt"],
+                "authority_posture": trace_resolution[
+                    "authority_posture"
+                ],
+            },
+        }
+        selected_with_reasons = [
+            (
+                trace_resolution["source_result"],
+                "trace_source_endpoint",
+            ),
+            (
+                trace_resolution["target_result"],
+                "trace_target_endpoint",
+            ),
+        ][: min(limit, MAX_SEMANTIC_CELLS)]
+    elif len(support_alternatives) == 2:
+        interpretation = {
+            **interpretation,
+            "support_alternative_queries": support_alternatives,
+        }
+        selected_with_reasons = []
+        for side, subject in zip(("left", "right"), support_alternatives):
+            subject_results = search_packet(subject, max(8, limit))["results"]
+            declaration = next(
+                (
+                    result
+                    for result in subject_results
+                    if result["kind"] == "declaration"
+                ),
+                None,
+            )
+            claim = next(
+                (
+                    result
+                    for result in subject_results
+                    if result["kind"] == "claim"
+                ),
+                None,
+            )
+            candidates = [
+                result for result in (declaration, claim) if result is not None
+            ]
+            selected_with_reasons.extend(
+                (result, f"support_alternative_{side}")
+                for result in candidates[:2]
+            )
+        selected_with_reasons = selected_with_reasons[
+            : min(limit, MAX_SEMANTIC_CELLS)
+        ]
+    elif (
+        goal_support["availability"] == "available"
+        and goal_support["candidates"]
+    ):
+        interpretation = {
+            **interpretation,
+            "formal_goal_support": {
+                "availability": "available",
+                "goal_request": goal_support["goal_request"],
+                "goal_shape_cues": goal_support[
+                    "goal_shape_cues"
+                ],
+                "candidate_count": goal_support["candidate_count"],
+                "selected_declaration": semantic_result_key(
+                    goal_support["candidates"][0]
+                ),
+                "authority_posture": goal_support[
+                    "authority_posture"
+                ],
+            },
+        }
+        selected_with_reasons = [
+            (
+                goal_support["candidates"][0],
+                "formal_goal_shape_candidate",
+            )
+        ]
+    elif len(analogy_subjects) == 2:
+        interpretation = {
+            **interpretation,
+            "analogy_subject_queries": analogy_subjects,
+        }
+        selected_with_reasons = []
+        for side, subject in zip(("left", "right"), analogy_subjects):
+            subject_results = search_packet(subject, max(8, limit))["results"]
+            route = best_reading_route_result(subject)
+            candidates = [
+                *([route] if route else []),
+                *[
+                    result
+                    for result in subject_results
+                    if result is not route
+                    and result["kind"]
+                    in ("claim", "declaration", "publication_family")
+                ],
+            ]
+            selected_with_reasons.extend(
+                (result, f"analogy_{side}_subject")
+                for result in candidates[:2]
+            )
+        selected_with_reasons = selected_with_reasons[
+            : min(limit, MAX_SEMANTIC_CELLS)
+        ]
+    elif directly_routed:
+        selected_with_reasons = [
+            (result, "controlled_vocabulary_route")
+            for result in directly_routed[
+                : min(limit, MAX_SEMANTIC_CELLS)
+            ]
+        ]
+        residual_terms = semantic_context_residual_terms(query)
+        if len(residual_terms) >= 2:
+            contextual_search = search_packet(
+                " ".join(sorted(residual_terms)),
+                max(12, min(MAX_LIMIT, limit * 4)),
+            )
+            routed_keys = {
+                (result["kind"], semantic_result_key(result))
+                for result, _ in selected_with_reasons
+            }
+            contextual = [
+                result
+                for result in contextual_search["results"]
+                if (
+                    result["kind"],
+                    semantic_result_key(result),
+                )
+                not in routed_keys
+                and result["kind"]
+                in ("declaration", "claim", "module", "reading_route")
+            ]
+            selected_with_reasons.extend(
+                (result, "ranked_context_beyond_controlled_vocabulary")
+                for result in contextual[
+                    : max(
+                        0,
+                        min(limit, MAX_SEMANTIC_CELLS)
+                        - len(selected_with_reasons),
+                    )
+                ]
+            )
+    else:
+        selected_with_reasons = [
+            (result, "ranked_query_relative_match")
+            for result in search["results"][
+                : min(limit, MAX_SEMANTIC_CELLS)
+            ]
+        ]
+        if operator_id == "frontier":
+            claims = load("docs/claims.json")
+            claim_index = {row["id"]: row for row in claims["claims"]}
+            route_index = {row["id"]: row for row in all_entrypoints(claims)}
+            open_index = {
+                row["id"]: row
+                for row in claims["remaining_open_propositions"]
+            }
+            boundary_ids: list[str] = []
+            for result, _ in selected_with_reasons[:3]:
+                if result["kind"] == "claim":
+                    boundary_ids.extend(
+                        claim_index[result["id"]].get(
+                            "remaining_open_proposition_ids", []
+                        )
+                    )
+                elif result["kind"] == "reading_route":
+                    boundary_ids.extend(
+                        route_index[result["id"]].get(
+                            "remaining_open_proposition_ids", []
+                        )
+                    )
+            boundary_rows = [
+                (
+                    {"kind": "open_proposition", **open_index[open_id]},
+                    "frontier_boundary_from_ranked_context",
+                )
+                for open_id in dict.fromkeys(boundary_ids)
+                if open_id in open_index
+            ]
+            if boundary_rows:
+                selected_with_reasons = [
+                    *selected_with_reasons[:2],
+                    *boundary_rows,
+                    *selected_with_reasons[2:],
+                ][: min(limit, MAX_SEMANTIC_CELLS)]
+
+    wants_local_theorem = (
+        operator_id == "support"
+        or bool({"theorem", "lemma"} & search_terms(query))
+    ) and "module" not in search_terms(query)
+    if wants_local_theorem:
+        local_results = [
+            result
+            for result, _ in selected_with_reasons
+            if result["kind"] == "module"
+        ]
+        enriched = [
+            (
+                declaration,
+                "module_local_declaration_witness",
+            )
+            for module in local_results
+            for declaration in module_local_declaration_results(
+                query, module, 1
+            )
+        ]
+        if enriched:
+            merged = [*enriched, *selected_with_reasons]
+            selected_with_reasons = []
+            seen_keys: set[tuple[str, str]] = set()
+            for result, reason in merged:
+                key = (result["kind"], semantic_result_key(result))
+                if key in seen_keys:
+                    continue
+                seen_keys.add(key)
+                selected_with_reasons.append((result, reason))
+                if len(selected_with_reasons) >= min(
+                    limit, MAX_SEMANTIC_CELLS
+                ):
+                    break
+    selected = [result for result, _ in selected_with_reasons]
+    if not selected:
+        return {
+            "kind": "semantic_slice",
+            "schema_version": SEMANTIC_SLICE_SCHEMA,
+            "query": query,
+            "query_interpretation": interpretation,
+            "semantic_cells": [],
+            "operator_synthesis": operator_synthesis(operator_id, []),
+            "minimal_witness_subgraph": {"nodes": ["query"], "edges": []},
+            "rejected_overinterpretations": semantic_slice_rejections(operator_id),
+            "omission_receipt": {
+                "status": "no_matching_handles",
+                "refine_with": "python3 scripts/query_corpus.py --vocabulary",
+            },
+            "authority_posture": "bounded_navigation_projection_not_proof_authority",
+        }
+
+    selected_keys = {
+        (result["kind"], semantic_result_key(result)) for result in selected
+    }
+    cells = [
+        semantic_cell(query, result, reason)
+        for result, reason in selected_with_reasons
+    ]
+    near_misses = [
+        {
+            "kind": result["kind"],
+            "handle": semantic_result_handle(result),
+            "canonical_handle": semantic_result_key(result),
+            "reason": "lower_ranked_outside_bounded_witness_slice",
+        }
+        for result in search["results"]
+        if (result["kind"], semantic_result_key(result)) not in selected_keys
+    ][:5]
+    witness_edges: list[dict[str, str]] = [
+        edge for cell in cells for edge in cell["witness_edges"]
+    ]
+    synthesis = operator_synthesis(operator_id, cells)
+    if goal_support["availability"] == "available":
+        synthesis = {
+            **synthesis,
+            "formal_goal_support": goal_support,
+        }
+    if trace_resolution["availability"] == "available":
+        formal_path = trace_resolution["formal_dependency_path"]
+        synthesis = {
+            **synthesis,
+            "endpoint_resolution_receipt": trace_resolution["receipt"],
+            "formal_dependency_path": formal_path,
+        }
+        witness_edges.extend(
+            {
+                "from": f"declaration:{edge['from']}",
+                "relation": "uses_in_elaborated_value",
+                "to": f"declaration:{edge['to']}",
+                "authority": "kernel_elaborated_environment",
+            }
+            for edge in formal_path["edges"]
+        )
+    witness_nodes = list(
+        dict.fromkeys(
+            [
+                "query",
+                *(cell["cell_id"] for cell in cells),
+                *(edge["from"] for edge in witness_edges),
+                *(edge["to"] for edge in witness_edges),
+            ]
+        )
+    )
+    digest_source = {
+        "query": query,
+        "operator": operator_id,
+        "cells": [cell["cell_id"] for cell in cells],
+        "edges": witness_edges,
+    }
+    slice_digest = hashlib.sha256(
+        json.dumps(
+            digest_source, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ).encode("utf-8")
+    ).hexdigest()
+    return {
+        "kind": "semantic_slice",
+        "schema_version": SEMANTIC_SLICE_SCHEMA,
+        "slice_id": f"sha256:{slice_digest}",
+        "query": query,
+        "query_interpretation": interpretation,
+        "semantic_cells": cells,
+        "operator_synthesis": synthesis,
+        "minimal_witness_subgraph": {
+            "nodes": witness_nodes,
+            "edges": witness_edges,
+            "minimality_posture": (
+                "query_relative_operator_specific_decisive_edges_with_typed_omission_handles"
+            ),
+        },
+        "rejected_overinterpretations": semantic_slice_rejections(operator_id),
+        "near_misses": near_misses,
+        "omission_receipt": {
+            "search_match_count": search["match_count"],
+            "selected_cell_count": len(cells),
+            "omitted_match_count": max(0, search["match_count"] - len(cells)),
+            "additional_match_handles": near_misses,
+            "refine_with": (
+                f"python3 scripts/query_corpus.py --search {json.dumps(query)} "
+                f"--limit {min(MAX_LIMIT, max(limit * 2, 12))}"
+            ),
+        },
+        "artifact_availability_receipt": search[
+            "artifact_availability_receipt"
+        ],
+        "authority_posture": (
+            "witness_carrying_navigation_projection_with_non_substitutable_authority_planes"
+        ),
+        "proof_authority": "Lean source checked by the pinned Lean kernel",
     }
 
 
@@ -1776,6 +5184,9 @@ def publication_architecture_packet() -> dict[str, Any]:
 def summary_packet() -> dict[str, Any]:
     orientation = load("docs/orientation.json")
     claims = load("docs/claims.json")
+    atlas = load("docs/declaration_atlas.json")
+    raw_declaration_count = len(atlas["declarations"])
+    effective_declaration_count = len(atlas_declarations(atlas))
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     bounded_omissions = (
         "checks",
@@ -1802,6 +5213,14 @@ def summary_packet() -> dict[str, Any]:
         **summary_orientation,
         "curated_claim_count": len(claims["claims"]),
         "publication_family_count": len(assembly["contribution_families"]),
+        "declaration_projection_filter_receipt": {
+            "raw_atlas_declaration_count": raw_declaration_count,
+            "effective_query_declaration_count": effective_declaration_count,
+            "suppressed_comment_false_positive_count": (
+                raw_declaration_count - effective_declaration_count
+            ),
+            "validation": "python3 scripts/audit_semantic_corpus.py",
+        },
         "bounded_summary_omission_receipt": {
             "omitted_sections": list(bounded_omissions),
             "omitted_fields": ["principal_claims[].declarations"],
@@ -1826,8 +5245,11 @@ def render_card(packet: dict[str, Any]) -> str:
     if kind == "paper_label":
         paper = packet["paper"]
         claim_ids = ",".join(row["id"] for row in packet["attached_claims"]) or "none"
+        source = paper.get("source_ref") or paper.get(
+            "availability", "unavailable"
+        )
         return (
-            f"paper {paper['label']} | {paper['source_ref']} | rendered={paper['rendered']} "
+            f"paper {paper['label']} | {source} | rendered={paper.get('rendered')} "
             f"| claims={claim_ids}"
         )
     if kind == "paper_anchor":
@@ -1840,6 +5262,37 @@ def render_card(packet: dict[str, Any]) -> str:
         return "\n".join(
             f"declaration {row['name']} | {row['kind']} | {row['module']}:{row['line']} | claims={','.join(row['claim_ids']) or 'none'}"
             for row in packet["matches"]
+        )
+    if kind == "formal_dependency_proof_cone":
+        return (
+            f"proof cone {packet.get('resolved_handle', packet['requested'])} "
+            f"| {packet['availability']} | nodes={len(packet.get('nodes', []))} "
+            f"| edges={len(packet.get('edges', []))} "
+            f"| depth={packet.get('max_depth', 'n/a')}"
+        )
+    if kind == "formal_dependency_path":
+        return (
+            f"dependency path {packet.get('source', packet.get('requested_source'))} "
+            f"-> {packet.get('target', packet.get('requested_target'))} "
+            f"| {packet['availability']} "
+            f"| hops={packet.get('hop_count', 'n/a')}"
+        )
+    if kind == "formal_goal_support":
+        return (
+            f"formal goal support | {packet['availability']} "
+            f"| goal={packet.get('goal_request', {}).get('goal', 'unresolved')} "
+            f"| candidates={len(packet.get('candidates', []))}/"
+            f"{packet.get('candidate_count', 0)}"
+        )
+    if kind == "formal_proof_plan":
+        application = packet.get("application", {})
+        return (
+            f"formal proof plan | {packet['availability']} "
+            f"| terminal={packet.get('terminal_candidate', {}).get('name', 'unresolved')} "
+            f"| status={packet.get('plan_status', 'unresolved')} "
+            f"| obligations={application.get('obligation_count', 0)} "
+            f"| unmatched={application.get('unmatched_proposition_count', 0)} "
+            f"| spine={len(packet.get('exact_dependency_spine', {}).get('steps', []))}"
         )
     if kind == "source_coordinate":
         source = packet["source"]
@@ -1908,11 +5361,34 @@ def render_card(packet: dict[str, Any]) -> str:
         )
     if kind == "search":
         rows = [
-            f"search {packet['query']!r} | matches={packet['match_count']} | emitted={len(packet['results'])}"
+            f"search {packet['query']!r} "
+            f"| operator={packet['query_interpretation']['operator']['id']} "
+            f"| matches={packet['match_count']} | emitted={len(packet['results'])}"
         ]
         for result in packet["results"]:
             handle = result.get("id") or result.get("name")
             rows.append(f"{result['kind']} | {handle}")
+        return "\n".join(rows)
+    if kind == "semantic_dictionary":
+        return (
+            f"semantic dictionary {packet['schema_version']} "
+            f"| operators={len(packet['operators'])} "
+            f"| vocabulary={len(packet['vocabulary'])}"
+        )
+    if kind == "semantic_slice":
+        rows = [
+            f"semantic slice {packet['query']!r} "
+            f"| operator={packet['query_interpretation']['operator']['id']} "
+            f"| cells={len(packet['semantic_cells'])}"
+        ]
+        rows.extend(
+            f"{cell['kind']} | {cell['handle']} | {cell['selection_reason']}"
+            for cell in packet["semantic_cells"]
+        )
+        rows.append(
+            f"witness_edges={len(packet['minimal_witness_subgraph']['edges'])} "
+            f"| omitted={packet['omission_receipt'].get('omitted_match_count', 0)}"
+        )
         return "\n".join(rows)
     if kind == "claim_status":
         return (
@@ -1975,6 +5451,14 @@ def main() -> int:
     group.add_argument("--paper-anchor", metavar="LABEL_OR_SOURCE_REF")
     group.add_argument("--open", metavar="ID")
     group.add_argument("--declaration", metavar="NAME")
+    group.add_argument("--goal-support", metavar="LEAN_OR_MATHEMATICAL_GOAL")
+    group.add_argument("--proof-plan", metavar="LEAN_OR_MATHEMATICAL_GOAL")
+    group.add_argument("--proof-cone", metavar="DECLARATION")
+    group.add_argument(
+        "--dependency-path",
+        nargs=2,
+        metavar=("SOURCE_DECLARATION", "TARGET_DECLARATION"),
+    )
     group.add_argument("--source", metavar="MODULE_DOT_LEAN:LINE")
     group.add_argument("--artifact", metavar="PATH_OR_SHA256")
     group.add_argument("--publication-artifact", metavar="ID")
@@ -1990,13 +5474,26 @@ def main() -> int:
     group.add_argument("--status", metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
+    group.add_argument("--vocabulary", action="store_true")
     group.add_argument("--search", metavar="TEXT")
+    group.add_argument("--ask", metavar="QUESTION")
     parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT)
+    parser.add_argument(
+        "--depth",
+        type=int,
+        default=4,
+        help=(
+            "maximum dependency depth for --proof-plan/--proof-cone/"
+            "--dependency-path"
+        ),
+    )
     parser.add_argument("--query", default="", help="rank a connection card toward one task")
     parser.add_argument("--format", choices=("json", "card"), default="json")
     args = parser.parse_args()
     if not 1 <= args.limit <= MAX_LIMIT:
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
+    if not 1 <= args.depth <= 8:
+        parser.error("--depth must be between 1 and 8")
     try:
         if args.claim:
             packet = claim_packet(args.claim)
@@ -2008,6 +5505,29 @@ def main() -> int:
             packet = open_proposition_packet(args.open)
         elif args.declaration:
             packet = declaration_packet(args.declaration, args.limit)
+        elif args.goal_support:
+            packet = formal_goal_support_packet(
+                args.goal_support,
+                args.limit,
+                explicit_goal=True,
+            )
+        elif args.proof_plan:
+            packet = formal_proof_plan_packet(
+                args.proof_plan,
+                args.limit,
+                args.depth,
+                explicit_goal=True,
+            )
+        elif args.proof_cone:
+            packet = formal_dependency_proof_cone(
+                args.proof_cone, args.depth, args.limit
+            )
+        elif args.dependency_path:
+            packet = formal_dependency_path(
+                args.dependency_path[0],
+                args.dependency_path[1],
+                args.depth,
+            )
         elif args.source:
             packet = source_coordinate_packet(args.source, args.limit)
         elif args.artifact:
@@ -2028,8 +5548,12 @@ def main() -> int:
             packet = publication_family_packet(args.publication_family)
         elif args.publication_architecture:
             packet = publication_architecture_packet()
+        elif args.vocabulary:
+            packet = semantic_dictionary_packet()
         elif args.search:
             packet = search_packet(args.search, args.limit)
+        elif args.ask:
+            packet = semantic_slice_packet(args.ask, args.limit)
         else:
             packet = summary_packet()
     except (KeyError, ValueError, json.JSONDecodeError, OSError) as exc:

@@ -32,7 +32,7 @@ DECL_RE = re.compile(
     r"^\s*(?:@\[[^\]\n]*\]\s*)*"
     r"(?:(?:noncomputable|private|protected|scoped|local|partial|unsafe)\s+)*"
     r"(theorem|lemma|def|abbrev|instance|structure|class|inductive|opaque)\s+"
-    r"([A-Za-z_\u00c0-\u024f\u0370-\u03ff][^\s(){}\[\]:,]*)"
+    r"([A-Za-z_\u00c0-\u024f\u0370-\u03ff][^\s(){}\[\]:,]*)(?=$|[\s({:\[])"
 )
 KEYWORD_ONLY_RE = re.compile(
     r"^\s*(?:@\[[^\]\n]*\]\s*)*"
