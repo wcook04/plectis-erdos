@@ -2226,12 +2226,96 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     return witnesses
 
 
+@lru_cache(maxsize=512)
+def declaration_source_dependency_candidates(
+    name: str, limit: int = 6
+) -> list[dict[str, Any]]:
+    """Return exact declarations named in one declaration's source span.
+
+    This is source-current lexical evidence, not an elaborator dependency
+    trace. The distinction is retained in every emitted row.
+    """
+    atlas = load("docs/declaration_atlas.json")
+    matches = [row for row in atlas["declarations"] if row["name"] == name]
+    if len(matches) != 1:
+        return []
+    declaration = matches[0]
+    module = next(
+        row
+        for row in atlas["modules"]
+        if row["path"] == declaration["module"]
+    )
+    module_declarations = sorted(
+        (
+            row
+            for row in atlas["declarations"]
+            if row["module"] == declaration["module"]
+        ),
+        key=lambda row: (row["line"], row["name"]),
+    )
+    declaration_index = module_declarations.index(declaration)
+    source_lines = (ROOT / declaration["module"]).read_text(
+        encoding="utf-8"
+    ).splitlines()
+    span_end = (
+        module_declarations[declaration_index + 1]["line"] - 1
+        if declaration_index + 1 < len(module_declarations)
+        else len(source_lines)
+    )
+    span = "\n".join(
+        source_lines[declaration["line"] - 1 : span_end]
+    )
+    span = re.split(r"(?m)^\s*#print\b", span, maxsplit=1)[0]
+    visible_paths = {
+        declaration["module"],
+        *(
+            row["path"]
+            for row in atlas["modules"]
+            if row["id"] in module.get("imports", [])
+        ),
+    }
+    candidates = []
+    for row in atlas["declarations"]:
+        candidate_name = row["name"]
+        if (
+            row["module"] not in visible_paths
+            or candidate_name == name
+            or len(candidate_name) < 3
+            or row["kind"] not in ("theorem", "lemma")
+        ):
+            continue
+        occurrences = list(
+            re.finditer(rf"\b{re.escape(candidate_name)}\b", span)
+        )
+        if not occurrences:
+            continue
+        candidates.append(
+            (
+                occurrences[0].start(),
+                -len(candidate_name),
+                {
+                    "name": candidate_name,
+                    "declaration_kind": row["kind"],
+                    "signature": row.get("signature"),
+                    "source_ref": f"{row['module']}:{row['line']}",
+                    "use_count_in_declaration_span": len(occurrences),
+                    "evidence_posture": (
+                        "source_lexical_dependency_candidate_not_elaborator_dependency_proof"
+                    ),
+                },
+            )
+        )
+    candidates.sort(key=lambda item: (item[0], item[1], item[2]["name"]))
+    return [item[2] for item in candidates[:limit]]
+
+
 def semantic_cell(
     query: str, result: dict[str, Any], selection_reason: str
 ) -> dict[str, Any]:
     """Expand one ranked handle without collapsing its authority planes."""
     kind = result["kind"]
     handle = semantic_result_handle(result)
+    operator_id = semantic_query_operator(query)["id"]
     expansion_command: str
     witness_edges: list[dict[str, str]] = [
         {
@@ -2268,6 +2352,10 @@ def semantic_cell(
             "claim_status_links": declaration.get("attached_claims", []),
             "module_role": declaration.get("module_role"),
         }
+        if operator_id in ("support", "trace"):
+            content["source_dependency_candidates"] = (
+                declaration_source_dependency_candidates(handle)
+            )
         expansion_command = (
             f"python3 scripts/query_corpus.py --declaration {handle}"
         )
@@ -2294,24 +2382,45 @@ def semantic_cell(
             "lean_source_identity": packet["lean_source_identity"],
         }
         expansion_command = f"python3 scripts/query_corpus.py --claim {handle}"
-        witness_edges.extend(
-            {
-                "from": f"claim:{handle}",
-                "relation": "has_formal_handle",
-                "to": f"declaration:{declaration['name']}",
-                "authority": "status_to_kernel_bridge",
-            }
-            for declaration in claim.get("declarations", [])
-        )
-        witness_edges.extend(
-            {
-                "from": f"claim:{handle}",
-                "relation": "bounded_by",
-                "to": f"open_proposition:{proposition['id']}",
-                "authority": "status",
-            }
-            for proposition in packet["remaining_open_propositions"]
-        )
+        if operator_id in ("locate", "support", "trace", "digest"):
+            witness_edges.extend(
+                {
+                    "from": f"claim:{handle}",
+                    "relation": "has_formal_handle",
+                    "to": f"declaration:{declaration['name']}",
+                    "authority": "status_to_kernel_bridge",
+                }
+                for declaration in claim.get("declarations", [])
+            )
+        if operator_id in ("frontier", "falsify", "trace", "digest"):
+            witness_edges.extend(
+                {
+                    "from": f"claim:{handle}",
+                    "relation": "bounded_by",
+                    "to": f"open_proposition:{proposition['id']}",
+                    "authority": "status",
+                }
+                for proposition in packet["remaining_open_propositions"]
+            )
+        if operator_id == "trace":
+            for direction in ("incoming", "outgoing"):
+                witness_edges.extend(
+                    {
+                        "from": (
+                            f"claim:{edge['neighbour']['id']}"
+                            if direction == "incoming"
+                            else f"claim:{handle}"
+                        ),
+                        "relation": edge["relation"],
+                        "to": (
+                            f"claim:{handle}"
+                            if direction == "incoming"
+                            else f"claim:{edge['neighbour']['id']}"
+                        ),
+                        "authority": "status_argument_graph",
+                    }
+                    for edge in packet["argument_neighbourhood"][direction]
+                )
     elif kind == "open_proposition":
         packet = open_proposition_packet(handle)
         proposition = packet["open_proposition"]
@@ -2331,15 +2440,16 @@ def semantic_cell(
                 "authority": "status",
             }
         )
-        witness_edges.extend(
-            {
-                "from": f"claim:{advance['claim']['id']}",
-                "relation": advance["operation"],
-                "to": f"open_proposition:{handle}",
-                "authority": "status",
-            }
-            for advance in packet["advancing_claims"]
-        )
+        if operator_id in ("frontier", "trace", "digest"):
+            witness_edges.extend(
+                {
+                    "from": f"claim:{advance['claim']['id']}",
+                    "relation": advance["operation"],
+                    "to": f"open_proposition:{handle}",
+                    "authority": "status",
+                }
+                for advance in packet["advancing_claims"]
+            )
     elif kind == "reading_route":
         packet = route_packet(handle)
         route = packet["route"]
@@ -2349,7 +2459,7 @@ def semantic_cell(
             "programme": programme,
         }
         expansion_command = f"python3 scripts/query_corpus.py --route {handle}"
-        if programme:
+        if programme and operator_id in ("trace", "digest"):
             witness_edges.extend(
                 {
                     "from": f"reading_route:{handle}",
@@ -2359,6 +2469,13 @@ def semantic_cell(
                 }
                 for claim in programme["core_claims"]
             )
+        if programme and operator_id in (
+            "frontier",
+            "falsify",
+            "analogy",
+            "trace",
+            "digest",
+        ):
             witness_edges.extend(
                 {
                     "from": f"reading_route:{handle}",
@@ -2411,6 +2528,13 @@ def semantic_cell(
         "kind": kind,
         "handle": handle,
         "selection_reason": selection_reason,
+        "witness_selection": {
+            "operator": operator_id,
+            "posture": (
+                "operator_specific_decisive_edges; full typed content remains "
+                "available inside the cell and through expansion_command"
+            ),
+        },
         "content": content,
         "witness_edges": witness_edges,
         "typed_provenance": [
@@ -2460,6 +2584,7 @@ def operator_synthesis(
     """Assemble operator-specific relations without upgrading their authority."""
     if operator_id == "support":
         formal_consumers = []
+        source_dependency_candidates = []
         unproved_requirements = []
         for cell in cells:
             if cell["kind"] == "claim":
@@ -2469,6 +2594,11 @@ def operator_synthesis(
                 )
             elif cell["kind"] == "declaration":
                 formal_consumers.append(cell["content"]["formal_witness"])
+                source_dependency_candidates.extend(
+                    cell["content"].get(
+                        "source_dependency_candidates", []
+                    )
+                )
             elif cell["kind"] == "reading_route":
                 programme = cell["content"].get("programme")
                 if programme:
@@ -2482,6 +2612,12 @@ def operator_synthesis(
                     row["name"]: row
                     for row in formal_consumers
                     if row.get("name")
+                }.values()
+            ),
+            "source_dependency_candidates": list(
+                {
+                    (row["name"], row["source_ref"]): row
+                    for row in source_dependency_candidates
                 }.values()
             ),
             "unproved_requirements": list(
@@ -2631,15 +2767,27 @@ def operator_synthesis(
         }
     if operator_id == "trace":
         argument_edges = []
+        source_dependency_candidates = []
         for cell in cells:
-            if cell["kind"] != "claim":
-                continue
-            neighbourhood = cell["content"]["argument_neighbourhood"]
-            argument_edges.extend(neighbourhood["incoming"])
-            argument_edges.extend(neighbourhood["outgoing"])
+            if cell["kind"] == "claim":
+                neighbourhood = cell["content"]["argument_neighbourhood"]
+                argument_edges.extend(neighbourhood["incoming"])
+                argument_edges.extend(neighbourhood["outgoing"])
+            elif cell["kind"] == "declaration":
+                source_dependency_candidates.extend(
+                    cell["content"].get(
+                        "source_dependency_candidates", []
+                    )
+                )
         return {
             "kind": "trace_synthesis",
             "argument_edges": argument_edges,
+            "source_dependency_candidates": list(
+                {
+                    (row["name"], row["source_ref"]): row
+                    for row in source_dependency_candidates
+                }.values()
+            ),
             "boundary": (
                 "Authored argument relations explain dependency posture; "
                 "formal source witnesses remain proof authority."
@@ -2969,7 +3117,7 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
             "nodes": witness_nodes,
             "edges": witness_edges,
             "minimality_posture": (
-                "query_relative_bounded_slice_with_typed_omission_handles"
+                "query_relative_operator_specific_decisive_edges_with_typed_omission_handles"
             ),
         },
         "rejected_overinterpretations": semantic_slice_rejections(operator_id),

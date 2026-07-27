@@ -140,6 +140,16 @@ def check_witness_carrying_semantic_slices() -> None:
         for row in support["operator_synthesis"]["unproved_requirements"]
     } == {"remaining_open.unbounded_certificate_supply"}
 
+    trace = query_corpus.semantic_slice_packet(
+        "why does fixed precision transport fail", 4
+    )
+    assert [
+        row["name"]
+        for row in trace["operator_synthesis"][
+            "source_dependency_candidates"
+        ]
+    ] == ["vu_word_has_prefix_locked_completion"]
+
     module = query_corpus.semantic_slice_packet(
         "where is the module for a direct dyadic curvature certificate", 4
     )
