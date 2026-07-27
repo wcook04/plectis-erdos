@@ -133,14 +133,14 @@
     },
     {
       "id": "erdos_269_note",
-      "title": "The Running Least Common Multiple of a Three-Prime Smooth Prefix",
+      "title": "The Three-Prime Running Least Common Multiple",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_content_digest": "sha256:c6d0107aa689ed8326f47f5fd38d27013552ba40722a353f1d457d4802a113a5",
+      "source_content_digest": "sha256:b977215388fd1b7793d4393a6cdc739232883e9b73f9691a544033314f5e2c91",
       "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
-      "rendered_content_digest": "sha256:f5c4fdb046b7d9b98a505b408bbbdf0300c1102ba96bfc5fad2c6099c723b0a0",
+      "rendered_content_digest": "sha256:341bf11e30deb13a83156b469414b6e7cb6700bbb86ab3859ca8a25d15ef270e",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos269 modules. The residue-escape hypothesis is assumed by its consumer theorem and is not proved; Erdős Problem 269 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos269 modules. Lean checks canonical least-positive-residue arithmetic and the complete implication from denominator-dependent CofinalLocalWindowEscape to extinction of a bounded positive reduced carry. The actual ordered {2,3,5} carry instantiation and the cofinal escape producer are not proved; Erdős Problem 269 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
