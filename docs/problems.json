@@ -222,7 +222,8 @@
         "For a real-valued dyadic recurrence, cofinal non-integrality of every fixed positive shift implies irrationality of the initial state.",
         "That the actual consecutive-prime-gap sequence is unbounded, by the factorial prime-free-interval construction, and therefore is not eventually periodic with any positive period.",
         "For any integer-digit dyadic tail recurrence, two adjacent fixed-length shifts lying strictly between -1 and 1 cannot both be integral when the corresponding digits differ.",
-        "For the actual prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap excludes eventual integrality of that fixed shift."
+        "For the actual prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap excludes eventual integrality of that fixed shift.",
+        "The generic distance-to-integers core of the finite-truncation criterion: an approximation farther than its error bound from every integer certifies non-integrality."
       ],
       "what_is_not_checked": [
         "The target irrationality.",
@@ -348,7 +349,7 @@
         "That a finite smooth lattice sum groups exactly by running height, with the height fibre cardinality as coefficient.",
         "A quadratic bound on the cardinality of the actual filtered exponent shell.",
         "That each dyadic block contains at most one internal pure power from each non-dyadic channel, so the compressed {2,3,5} block radix belongs to the exact alphabet {2,6,10,30} and in particular lies between 2 and 30.",
-        "That the two-by-two determinants of the lattice kernel at the smallest instance are not all zero, so no rank-one separation exists.",
+        "That the smallest {2,3,5} kernel rectangle has determinant exactly -1/15, so its two-by-two matrix has rank two over the rationals and no rank-one separation exists.",
         "The canonical least-positive-residue interval and congruence facts, including the zero-residue representative.",
         "The exact local-window identity for an integral carry.",
         "A denominator-dependent CofinalLocalWindowEscape proposition and the full theorem that it rules out every positive reduced integral carry satisfying the matching bound."
@@ -429,7 +430,7 @@
         "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.",
         "The exact denominator-cleared rational-base tail recurrence, including its forcing term.",
         "That for every noninteger base with denominator at least two the forcing magnitude grows at least exponentially, while at denominator one it collapses to a bounded expression.",
-        "Two exact arithmetic facts used by the published height criterion at base seven halves.",
+        "The complete elementary Archimedean height inequality used by the published Bundschuh-Väänänen criterion at base seven halves; the analytic irrationality theorem itself remains external.",
         "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity.",
         "The exact exterior-determinant elimination identity, and that rowwise contents scale the Padé errors, exterior determinant, and absolute determinant height by the same factors.",
         "The exact Heine-Zudilin cone endpoint exponent arithmetic used to identify the bottom and top coefficient endpoints.",
@@ -451,10 +452,6 @@
         {
           "id": "three_halves_growing_rank_endpoint_jet_kernel",
           "statement": "After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction."
-        },
-        {
-          "id": "published_height_region_formalisation",
-          "statement": "Formalise the elementary parameter inequalities of the published criterion, keeping the analytic theorem itself external and cited."
         }
       ],
       "finite_search": null
