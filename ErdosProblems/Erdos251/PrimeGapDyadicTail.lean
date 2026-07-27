@@ -1,9 +1,12 @@
 import Mathlib.Data.Nat.Prime.Nth
 import Mathlib.Data.Nat.PrimeFin
+import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Rat.Lemmas
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Algebra.BigOperators.Ring.Finset
 import Mathlib.NumberTheory.PowModTotient
+import Mathlib.NumberTheory.Real.Irrational
+import Mathlib.Topology.Algebra.InfiniteSum.NatInt
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Ring
@@ -115,6 +118,111 @@ theorem prime0_dyadic_summation_by_parts (n : ℕ) :
     prime0] using
     (dyadicPartialSumQ_eq_start_add_differences
       (fun i => (prime0 i : ℚ)) n)
+
+/-! ## Infinite prime-gap reformulation -/
+
+/-- The real term in the normalized zero-based prime series. -/
+noncomputable def primeDyadicTerm (n : ℕ) : ℝ :=
+  (prime0 n : ℝ) / 2 ^ (n + 1)
+
+/-- The term with denominator `2^n` used by the displayed formal
+conjecture. -/
+noncomputable def primeDisplayedDyadicTerm (n : ℕ) : ℝ :=
+  (prime0 n : ℝ) / 2 ^ n
+
+/-- The real term in the corresponding consecutive-prime-gap series. -/
+noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ :=
+  (primeGap0 n : ℝ) / 2 ^ (n + 1)
+
+/-- Infinite-series version of the exact factor-two normalization. -/
+theorem primeDisplayedDyadicTerm_eq_two_mul (n : ℕ) :
+    primeDisplayedDyadicTerm n = 2 * primeDyadicTerm n := by
+  rw [primeDisplayedDyadicTerm, primeDyadicTerm, pow_succ]
+  field_simp
+
+/-- Each gap term is the dyadic discrete derivative of the prime term. -/
+theorem primeGapDyadicTerm_eq (n : ℕ) :
+    primeGapDyadicTerm n =
+      2 * primeDyadicTerm (n + 1) - primeDyadicTerm n := by
+  rw [primeGapDyadicTerm, primeDyadicTerm, primeDyadicTerm, primeGap0,
+    Nat.cast_sub (prime0_mono_step n)]
+  simp only [pow_succ]
+  field_simp
+
+/-- Summability of the normalized prime series automatically supplies
+summability of the actual prime-gap series.  This closes the analytic
+interface left implicit by the finite summation-by-parts identity. -/
+theorem summable_primeGapDyadicTerm_of_summable_primeDyadicTerm
+    (hprime : Summable primeDyadicTerm) :
+    Summable primeGapDyadicTerm := by
+  have hshift : Summable (fun n => primeDyadicTerm (n + 1)) := by
+    simpa [Nat.add_comm] using
+      hprime.comp_injective (add_left_injective 1)
+  exact ((hshift.mul_left 2).sub hprime).congr fun n =>
+    (primeGapDyadicTerm_eq n).symm
+
+/-- Exact infinite prime-gap reformulation.  Whenever the normalized prime
+series is summable, its sum is `2` plus the sum of the actual consecutive
+prime gaps. -/
+theorem tsum_primeDyadicTerm_eq_two_add_primeGap
+    (hprime : Summable primeDyadicTerm) :
+    (∑' n : ℕ, primeDyadicTerm n) =
+      2 + ∑' n : ℕ, primeGapDyadicTerm n := by
+  have hshift : Summable (fun n => primeDyadicTerm (n + 1)) := by
+    simpa [Nat.add_comm] using
+      hprime.comp_injective (add_left_injective 1)
+  have hsplit := hprime.sum_add_tsum_nat_add 1
+  have hshiftSum :
+      (∑' n : ℕ, primeDyadicTerm (n + 1)) =
+        (∑' n : ℕ, primeDyadicTerm n) - 1 := by
+    norm_num [primeDyadicTerm, prime0, Nat.nth_prime_zero_eq_two] at hsplit ⊢
+    linarith
+  have hgapSum :
+      (∑' n : ℕ, primeGapDyadicTerm n) =
+        2 * (∑' n : ℕ, primeDyadicTerm (n + 1)) -
+          ∑' n : ℕ, primeDyadicTerm n := by
+    simpa only [primeGapDyadicTerm_eq] using
+      ((hshift.hasSum.mul_left 2).sub hprime.hasSum).tsum_eq
+  rw [hgapSum, hshiftSum]
+  ring
+
+/-- Erdős #251 is therefore exactly equivalent to irrationality of the
+consecutive-prime-gap dyadic series, once summability of the displayed prime
+series is supplied. -/
+theorem irrational_tsum_primeDyadicTerm_iff_primeGap
+    (hprime : Summable primeDyadicTerm) :
+    Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
+      Irrational (∑' n : ℕ, primeGapDyadicTerm n) := by
+  rw [tsum_primeDyadicTerm_eq_two_add_primeGap hprime]
+  exact irrational_natCast_add_iff
+
+/-- The zero-based displayed series is `4` plus twice the normalized
+prime-gap series. -/
+theorem tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap
+    (hprime : Summable primeDyadicTerm) :
+    (∑' n : ℕ, primeDisplayedDyadicTerm n) =
+      4 + 2 * ∑' n : ℕ, primeGapDyadicTerm n := by
+  calc
+    (∑' n : ℕ, primeDisplayedDyadicTerm n) =
+        2 * ∑' n : ℕ, primeDyadicTerm n :=
+      (by simpa only [primeDisplayedDyadicTerm_eq_two_mul] using
+        (hprime.hasSum.mul_left 2).tsum_eq)
+    _ = 4 + 2 * ∑' n : ℕ, primeGapDyadicTerm n := by
+      rw [tsum_primeDyadicTerm_eq_two_add_primeGap hprime]
+      ring
+
+/-- Direct irrationality equivalence for the indexing used in the formal
+conjecture. -/
+theorem irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap
+    (hprime : Summable primeDyadicTerm) :
+    Irrational (∑' n : ℕ, primeDisplayedDyadicTerm n) ↔
+      Irrational (∑' n : ℕ, primeGapDyadicTerm n) := by
+  rw [tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap hprime]
+  constructor
+  · intro h
+    exact (Irrational.of_natCast_add 4 h).of_natCast_mul 2
+  · intro h
+    exact (h.natCast_mul (by norm_num : (2 : ℕ) ≠ 0)).natCast_add 4
 
 /-! ## Exact tail-shift dynamics -/
 
@@ -265,6 +373,138 @@ theorem tailShift_integral_add
   | k + 1 => by
       simpa [Nat.add_assoc] using
         tailShift_integral_succ hrec (tailShift_integral_add hrec hInt k)
+
+/-- Repeated doubling removes the entire power-of-two part of a rational
+denominator.  The remaining reduced denominator is therefore odd. -/
+theorem exists_twoPow_mul_odd_den (q : ℚ) :
+    ∃ k : ℕ, Odd (((2 : ℚ) ^ k * q).den) := by
+  obtain ⟨k, m, hm, hden⟩ :=
+    Nat.exists_eq_two_pow_mul_odd q.den_ne_zero
+  have hm0 : m ≠ 0 := by
+    intro hmzero
+    simp [hmzero] at hden
+  have hdenQ : (q.den : ℚ) = (2 : ℚ) ^ k * m := by
+    exact_mod_cast hden
+  have hq :
+      (2 : ℚ) ^ k * q = (q.num : ℚ) / (m : ℚ) := by
+    calc
+      (2 : ℚ) ^ k * q =
+          (2 : ℚ) ^ k * ((q.num : ℚ) / (q.den : ℚ)) := by
+            rw [q.num_div_den]
+      _ = (q.num : ℚ) / (m : ℚ) := by
+        rw [hdenQ]
+        field_simp [hm0]
+  have hcoprime : Nat.Coprime q.num.natAbs m := by
+    exact q.reduced.of_dvd_right ⟨2 ^ k, by rw [hden, Nat.mul_comm]⟩
+  refine ⟨k, ?_⟩
+  rw [hq]
+  have hdenm :
+      ((q.num : ℚ) / (m : ℚ)).den = m := by
+    have hdenmZ := Rat.den_div_eq_of_coprime
+      (a := q.num) (b := (m : ℤ))
+      (by simpa only [Int.natCast_pos] using Nat.pos_of_ne_zero hm0)
+      (by simpa using hcoprime)
+    exact_mod_cast hdenmZ
+  rw [hdenm]
+  exact hm
+
+/-- Every rational-valued dyadic tail recurrence has an odd-denominator state.
+The index is exactly the number of doublings needed to clear the initial
+power-of-two denominator. -/
+theorem exists_odd_den_state
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) :
+    ∃ N : ℕ, Odd (T N).den := by
+  obtain ⟨N, hodd⟩ := exists_twoPow_mul_odd_den (T 0)
+  refine ⟨N, ?_⟩
+  have hstate := tail_iterate_eq_pow_mul_sub_block hrec 0 N
+  have hdenEq :
+      (T N).den = (((2 : ℚ) ^ N * T 0).den) := by
+    simpa using congrArg Rat.den hstate
+  rw [hdenEq]
+  exact hodd
+
+/-- Rationality forces one fixed positive shift to be integral from some point
+onwards.  This is the exact contrapositive consumer for a prime-specific
+cofinal non-integrality theorem. -/
+theorem exists_eventually_integral_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) :
+    ∃ h N : ℕ, 0 < h ∧
+      ∀ k, RatIntegral (tailShift T h (N + k)) := by
+  obtain ⟨N, hodd⟩ := exists_odd_den_state hrec
+  let h := (T N).den.totient
+  have hh : 0 < h := Nat.totient_pos.mpr (T N).den_pos
+  refine ⟨h, N, hh, ?_⟩
+  exact tailShift_integral_add hrec
+    (tailShift_integral_totient_of_odd_den hrec N hodd)
+
+/-! ## The real-orbit irrationality consumer -/
+
+/-- Real-valued version of the dyadic tail recurrence. -/
+def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
+
+/-- Difference between two real tail states separated by `h` steps. -/
+def realTailShift (T : ℕ → ℝ) (h N : ℕ) : ℝ :=
+  T (N + h) - T N
+
+/-- A real number is integral when it is the cast of an integer. -/
+def RealIntegral (x : ℝ) : Prop :=
+  ∃ z : ℤ, x = z
+
+/-- Rational orbit with prescribed initial state and integer digits. -/
+def rationalDyadicOrbit (g : ℕ → ℤ) (q : ℚ) : ℕ → ℚ
+  | 0 => q
+  | N + 1 => 2 * rationalDyadicOrbit g q N - g (N + 1)
+
+theorem rationalDyadicOrbit_recurrence (g : ℕ → ℤ) (q : ℚ) :
+    DyadicTailRecurrence g (rationalDyadicOrbit g q) := by
+  intro N
+  rfl
+
+/-- A real recurrence with rational initial state is the real cast of the
+corresponding rational recurrence at every later index. -/
+theorem realTail_eq_ratCast_rationalDyadicOrbit
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) (q : ℚ)
+    (hzero : T 0 = q) :
+    ∀ N, T N = (rationalDyadicOrbit g q N : ℝ)
+  | 0 => by simpa [rationalDyadicOrbit] using hzero
+  | N + 1 => by
+      rw [hrec N, rationalDyadicOrbit,
+        realTail_eq_ratCast_rationalDyadicOrbit hrec q hzero N]
+      push_cast
+      rfl
+
+/-- Cofinal failure of integral shifts for every fixed positive length. -/
+def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
+  ∀ h, 0 < h → ∀ N₀, ∃ N, N₀ ≤ N ∧
+    ¬RealIntegral (realTailShift T h N)
+
+/-- Exact proof consumer: to prove the initial value irrational, it is enough
+to rule out eventual integrality cofinally for every fixed positive shift.
+Rationality would produce a rational orbit, and the denominator-collapse
+theorem above produces one fixed shift integral at every sufficiently late
+index. -/
+theorem irrational_initial_of_cofinalNonintegralTailShifts
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T)
+    (hescape : CofinalNonintegralTailShifts T) :
+    Irrational (T 0) := by
+  by_contra hnot
+  obtain ⟨q, hq⟩ := exists_rat_of_not_irrational hnot
+  have hcast := realTail_eq_ratCast_rationalDyadicOrbit hrec q hq
+  obtain ⟨h, N₀, hh, hInt⟩ :=
+    exists_eventually_integral_tailShift
+      (rationalDyadicOrbit_recurrence g q)
+  obtain ⟨N, hN, hnon⟩ := hescape h hh N₀
+  obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hN
+  apply hnon
+  obtain ⟨z, hz⟩ := hInt k
+  refine ⟨z, ?_⟩
+  have hzR := congrArg ((↑) : ℚ → ℝ) hz
+  simpa [realTailShift, tailShift, hcast] using hzR
 
 /-- The coefficient emitted by an unrestricted integer carry. -/
 def carryCoeff (K : ℕ → ℚ) (n : ℕ) : ℚ :=
