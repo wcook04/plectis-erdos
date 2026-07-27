@@ -614,23 +614,35 @@ own}\label{sec:open}
   prime-orbit gap they refine, are unproved.
 \end{enumerate}
 
-\noindent A route we would now take seriously, and do not have: adapt the
-Gowers-uniformity and quantitative-correlation method
-of~\cite{taoteravainen2025} from the bounded weight
-$\mathbf 1_{\text{primes}}$ to an unbounded weight.  Their argument uses the
-prime-dilation identity
-$\omega(pn)=\omega(n)+1-\mathbf 1_{p\mid n}$, whose main increment is constant
-and whose error is sparse.  For $\ph$ the corresponding correction is
-valuation-dependent, and the formal corpus makes the difficulty precise rather
-than impressionistic: on any prescribed finite horizon the correction
-\emph{can} be suppressed, by a bounded simultaneous square-CRT base
-(\mword{Erdos249257/SquareCRTCube.lean}{228}{exists_squareCRT_clean_horizon}{checked}),
-but suppression alone forces nothing, since a clean block can vanish
-(\mword{Erdos249257/SquareCRTCube.lean}{285}{squareCRT_clean_block_can_vanish}{checked})
-and can equally be nonzero
-(\mword{Erdos249257/SquareCRTCube.lean}{303}{squareCRT_clean_block_can_be_nonzero}{checked}).
-So the transfer is not blocked by an obvious obstruction and is not routine
-either.  It is the first place a reader who wants to close \#249 should look.
+\noindent The correlation source that fits the normalised totient most
+directly is Balasubramanian--Giri--Srivastav~\cite{bgs2017}, not an
+off-the-shelf transfer of the Tao--Ter\"av\"ainen engine.  Write
+\[
+  g(n)=\frac{\ph(n)}n
+      =\sum_{d\mid n}\frac{\mu(d)}d=(f*1)(n),
+  \qquad f(d)=\frac{\mu(d)}d\in\mathcal A_1 .
+\]
+Theorem~2 of the arXiv version of~\cite{bgs2017} gives, uniformly for
+$|h|\le x/2$, an explicit asymptotic for
+$\sum g(n)g(n-h)$ with error $O(\log^2x)$; Remark~4 gives its Euler product,
+and the weighted partial-summation formula immediately following Corollary~8
+permits $Q(n)=n(n-h)$, restoring the two linear factors needed to return from
+$g(n)g(n-h)$ to $\ph(n)\ph(n-h)$ with an explicit propagated error.
+
+This corrects a tempting but inaccurate description in an earlier draft.
+Tao--Ter\"av\"ainen's quantitative correlation theorem
+(\cite{taoteravainen2025}, Theorem~10) assumes either quantitative
+equidistribution together with an exact small-prime condition, or
+non-pretentiousness.  Here $g(p)=1-1/p$, so the stated small-prime condition
+does not hold, while
+$\sum_p(1-g(p))/p=\sum_p1/p^2<\infty$, so $g$ is pretentious to the constant
+function.  Their theorem therefore does not apply unchanged.  The
+Balasubramanian--Giri--Srivastav theorem supplies the missing first- and
+second-moment input in the correct divisor-convolution class, but it does
+\emph{not} supply the residue small-ball or phase anti-concentration estimate
+needed to turn those moments into a certificate.  That modulo-$2^L$ step is
+the precise remaining analytic gap; no irrationality conclusion is drawn from
+the correlation asymptotic alone.
 
 \subsection{Unregistered results}\label{sec:registry}
 
@@ -684,6 +696,13 @@ non-existence.  Erd\H{o}s Problem~\#249 remains open.
   $\sum_{n\ge1}\omega(n)/2^n$ at base $2$; the extension to every integer base
   and the $\Omega$ analogue are stated as remarks, with the modifications left
   to the reader.
+\bibitem{bgs2017} R.~Balasubramanian, S.~Giri and K.~R.~Srivastav,
+  \emph{On correlations of certain multiplicative functions},
+  J.\ Number Theory 174 (2017), 221--238,
+  \href{https://doi.org/10.1016/j.jnt.2016.10.001}{DOI};
+  \href{https://arxiv.org/abs/1511.02221}{arXiv:1511.02221}.
+  The arXiv version's Theorem~2 and Remark~4 give the uniform shifted
+  divisor-convolution correlation and Euler product used above.
 \bibitem{lucatachiya} F.~Luca and Y.~Tachiya, \emph{Irrationality of Lambert
   series associated with a periodic sequence}, Int.\ J.\ Number Theory 10
   (2014), no.~3, 623--636,
