@@ -7,8 +7,10 @@ The problem notes cover the expansion library ``ErdosProblems``, which is an
 active research surface: later waves add theorems and move lines.  A note that
 linked the working tree would therefore decay the moment the next wave landed.
 
-Each note instead resolves its links against one pinned commit, declared once in
-``paper/problem-note-preamble.tex``.  This program reads that snapshot out of Git
+Each note instead resolves its links against an immutable commit.  The corpus
+default is declared in ``paper/problem-note-preamble.tex``; a note may override
+that pin with ``\\renewcommand{\\commit}{...}`` when one problem advances on a
+disjoint source branch.  This program reads each selected snapshot out of Git
 -- never the working tree -- and requires that every authored ``(file, line,
 declaration)`` triple names exactly that declaration at exactly that line in the
 pinned snapshot.  A link can then be wrong only if it was wrong when written.
@@ -45,6 +47,7 @@ LIBRARY_PREFIX = "ErdosProblems"
 SIBLING_LIBRARIES = ("Erdos249257",)
 
 COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
+NOTE_COMMIT_RE = re.compile(r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}")
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 LINK_RE = re.compile(
     r"""\\[lm]word\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
@@ -89,9 +92,20 @@ def pinned_commit() -> str:
     return match.group(1)
 
 
-def snapshot_lines(commit: str, relative: str, cache: dict[str, list[str]]) -> list[str]:
-    if relative in cache:
-        return cache[relative]
+def note_pinned_commit(note_text: str, default_commit: str) -> str:
+    """Return a note-local source pin, falling back to the corpus default."""
+    match = NOTE_COMMIT_RE.search(strip_comments(note_text))
+    return default_commit if match is None else match.group(1)
+
+
+def snapshot_lines(
+    commit: str,
+    relative: str,
+    cache: dict[tuple[str, str], list[str]],
+) -> list[str]:
+    key = (commit, relative)
+    if key in cache:
+        return cache[key]
     completed = subprocess.run(
         ["git", "show", f"{commit}:{relative}"],
         cwd=ROOT,
@@ -100,10 +114,10 @@ def snapshot_lines(commit: str, relative: str, cache: dict[str, list[str]]) -> l
         check=False,
     )
     if completed.returncode != 0:
-        cache[relative] = []
+        cache[key] = []
     else:
-        cache[relative] = completed.stdout.splitlines()
-    return cache[relative]
+        cache[key] = completed.stdout.splitlines()
+    return cache[key]
 
 
 def library_relative(file_name: str) -> str:
@@ -185,7 +199,7 @@ def declarations_in(text: str) -> list[str]:
     return names
 
 
-def coverage_report(commit: str) -> tuple[list[str], list[str]]:
+def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
     """Report how much of each problem's current source its note reaches.
 
     A note pins its links to one commit, so it cannot break when the library
@@ -200,6 +214,7 @@ def coverage_report(commit: str) -> tuple[list[str], list[str]]:
     floor = index.get("note_coverage_floor", 0.0)
     for row, source in note_for_problem():
         note_text = (ROOT / source).read_text(encoding="utf-8")
+        commit = note_pinned_commit(note_text, default_commit)
         linked = {declaration for _f, _l, declaration in links(note_text) if declaration}
         modules = [row["principal_module"], *row.get("companion_modules", [])]
         current: list[str] = []
@@ -289,29 +304,33 @@ def main() -> int:
         print("check_problem_note_sources: no problem notes are registered")
         return 0
 
-    commit = pinned_commit()
-    if (
-        subprocess.run(
-            ["git", "cat-file", "-e", f"{commit}^{{commit}}"],
-            cwd=ROOT,
-            capture_output=True,
-            check=False,
-        ).returncode
-        != 0
-    ):
-        print(f"check_problem_note_sources: pinned commit is absent: {commit}")
-        return 1
-
-    cache: dict[str, list[str]] = {}
+    default_commit = pinned_commit()
+    cache: dict[tuple[str, str], list[str]] = {}
     errors: list[str] = []
     checked = 0
+    resolved_commits: set[str] = set()
 
     for source in sources:
         path = ROOT / source
         if not path.is_file():
             errors.append(f"{source}: registered problem note is missing")
             continue
-        found = links(path.read_text(encoding="utf-8"))
+        note_text = path.read_text(encoding="utf-8")
+        commit = note_pinned_commit(note_text, default_commit)
+        resolved_commits.add(commit)
+        if (
+            subprocess.run(
+                ["git", "cat-file", "-e", f"{commit}^{{commit}}"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            ).returncode
+            != 0
+        ):
+            errors.append(f"{source}: pinned commit is absent: {commit}")
+            continue
+        found = links(note_text)
         if not found:
             errors.append(f"{source}: authored no formal source links")
         for file_name, line_number, declaration in found:
@@ -347,7 +366,7 @@ def main() -> int:
 
     report: list[str] = []
     if args.coverage:
-        report, coverage_failures = coverage_report(commit)
+        report, coverage_failures = coverage_report(default_commit)
         errors.extend(coverage_failures)
 
     if errors:
@@ -360,7 +379,7 @@ def main() -> int:
 
     print(
         f"check_problem_note_sources: {checked} link(s) across {len(sources)} note(s) "
-        f"resolve at {commit[:12]}"
+        f"resolve against {len(resolved_commits)} pinned commit(s)"
     )
     for line in report:
         print(line)

@@ -115,14 +115,14 @@
     },
     {
       "id": "erdos_251_note",
-      "title": "The Prime-Gap Reformulation and the Free Carry",
+      "title": "The Prime-Gap Equivalence and the Integral-Shift Frontier",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
-      "source_content_digest": "sha256:2f8011b5f4f06876219d0aa0611aab2c05a448fa7a279b783ce499e6782fb95b",
+      "source_content_digest": "sha256:5cc8934be0758b780e09fc82c9457c57ccb68e1ab8298e35dd125d7843a617ed",
       "rendered_path": "erdos-251-prime-gap-dyadic-series.pdf",
-      "rendered_content_digest": "sha256:69e1f3dd13e877157248c41884d91c6f81784c8cfdcf0f4584b3805a4d1ab608",
+      "rendered_content_digest": "sha256:75f37ced940b2a854e743a15b0319b77f7b449f5fcfac0ec82b997b53c8ef132",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos251 module. Every statement it describes is finite or algebraic; none concerns the infinite series, and Erdős Problem 251 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos251 module. Lean checks the infinite prime/gap equivalence conditional on summability, denominator collapse for rational dyadic recurrences, and an abstract real-orbit cofinal-shift irrationality consumer. The prime-number-theorem summability and concrete prime-gap-tail instantiation are paper proofs; the prime-specific cofinal shift-escape theorem and Erdős Problem 251 remain open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
