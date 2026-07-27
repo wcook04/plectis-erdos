@@ -26,6 +26,17 @@ Lean elaboration, an analogy
 synthesis records shared claim and open handles while declining to infer a
 formal bridge, and a frontier or falsification synthesis preserves the exact
 open records and claim ceilings.
+Private and local declarations remain navigable as source witnesses, but they
+are marked non-addressable and are never emitted as external scratch-module
+`apply` candidates.
+
+Declaration cells retain the short authored name for display and carry a
+namespace-qualified canonical handle for expansion, witness-graph identity,
+and Lean tactic candidates. This matters because the atlas contains many
+short names repeated across modules. If an authored module synopsis is the
+strongest match for a support question, the compiler performs a bounded local
+declaration ranking inside that module so the mathematical organ can lead to
+an exact theorem rather than stopping at a file name.
 
 The witness graph is pruned by operator. A support question retains the
 claim-to-declaration consumer edges; a frontier or falsification question
@@ -134,13 +145,16 @@ claim, open proposition, and reading route. It also expands every typed claim,
 open, and route packet, checks all vocabulary hints, and asks one natural
 language question for each mathematical programme.
 
-The proof dogfood runs two tasks. The first recovers two conditional #249 proof
-sockets and asks Lean to check a new disjunctive irrationality corollary. The
-second recovers two sufficient #257 half-membership consumers and checks their
-disjunctive composition. The corollaries prove none of their antecedents. In
-particular, they make no progress on the unbounded #249 producer or the open
-#257 half-membership question. These tests measure premise recovery and formal
-composition, not solutions of the Erdős problems.
+The proof dogfood runs three tasks. The first recovers two conditional #249
+proof sockets and asks Lean to check a new disjunctive irrationality
+corollary. The second recovers two sufficient #257 half-membership consumers
+and checks their disjunctive composition. The third begins from ordinary
+language about a direct dyadic curvature certificate, resolves the authored
+module and exact non-integrality consumer, and checks that application. The
+corollaries prove none of their antecedents. In particular, they make no
+progress on the unbounded #249 producer or the open #257 half-membership
+question. These tests measure premise recovery and formal composition, not
+solutions of the Erdős problems.
 
 ## Limits
 

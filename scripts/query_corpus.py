@@ -62,11 +62,15 @@ SEMANTIC_QUERY_OPERATORS = (
         "intent": "Find a jointly useful premise or strategy support set.",
         "cues": (
             "need to prove",
+            "need",
             "premise",
             "support",
             "approach",
             "proof socket",
             "socket",
+            "provide",
+            "yield",
+            "imply",
         ),
     },
     {
@@ -1073,6 +1077,9 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
             {
                 **match,
                 "qualified_name": qualified_declaration_name(match),
+                "externally_addressable": declaration_externally_addressable(
+                    match
+                ),
                 "source_ref": f"{match['module']}:{match['line']}",
                 "source_url": f"{repository}/blob/{source_ref}/{match['module']}#L{match['line']}",
                 "lean_source_identity": dict(lean_source_identity),
@@ -1234,10 +1241,20 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     }
 
 
+def declaration_externally_addressable(row: dict[str, Any]) -> bool:
+    """Whether a declaration can be named from an external scratch module."""
+    signature = str(row.get("signature") or "")
+    return re.match(
+        r"^\s*(?:@\[[^\]\n]*\]\s*)*(?:private|local)\b",
+        signature,
+    ) is None
+
+
 def compact_declaration(row: dict[str, Any]) -> dict[str, Any]:
     return {
         "name": row["name"],
         "qualified_name": qualified_declaration_name(row),
+        "externally_addressable": declaration_externally_addressable(row),
         "declaration_kind": row["kind"],
         "module": row["module"],
         "line": row["line"],
@@ -1634,11 +1651,21 @@ SEARCH_STOP_WORDS = frozenset(
 )
 
 SEARCH_TERM_ALIASES = {
+    "adjacency": "adjunction",
+    "cert": "certificate",
+    "certified": "certificate",
+    "certificate": "certificate",
     "fail": "obstruction",
     "failed": "obstruction",
     "failure": "obstruction",
+    "int": "integrality",
+    "integer": "integrality",
+    "integral": "integrality",
+    "integrality": "integrality",
     "member": "mem",
     "membership": "mem",
+    "nonintegral": "integrality",
+    "nonintegrality": "integrality",
     "open": "resolution_status",
     "prove": "resolution_status",
     "proved": "resolution_status",
@@ -1689,9 +1716,14 @@ def semantic_content_terms(query: str) -> set[str]:
         "do",
         "does",
         "either",
+        "exact",
+        "expression",
         "get",
         "give",
+        "have",
         "i",
+        "into",
+        "lemma",
         "let",
         "lets",
         "me",
@@ -1700,6 +1732,8 @@ def semantic_content_terms(query: str) -> set[str]:
         "show",
         "still",
         "tell",
+        "theorem",
+        "turn",
         "whether",
         "which",
         "would",
@@ -1767,6 +1801,7 @@ def semantic_query_operator(query: str) -> dict[str, Any]:
     elif any(
         cue in query_text
         for cue in (
+            "need",
             "premise",
             "need to prove",
             "support",
@@ -1774,6 +1809,11 @@ def semantic_query_operator(query: str) -> dict[str, Any]:
             "proof socket",
             "socket",
         )
+    ) or re.search(
+        r"\bcan\b.+\b(?:provide|yield|imply|establish)\b", query_text
+    ) or re.search(
+        r"\b(?:theorem|lemma)\b.+\b(?:turns?|takes?)\b.+\binto\b",
+        query_text,
     ):
         operator_id = "support"
     elif any(cue in query_text for cue in ("why", "depends on", "builds on", "trace")):
@@ -1954,11 +1994,11 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
 
 def search_result_sort_key(
     item: tuple[int, str, dict[str, Any]]
-) -> tuple[int, int, str]:
+) -> tuple[int, int, int, str]:
     """Keep typed-handle lookup exact while preferring routes for semantic ties."""
     rank, stable_key, result = item
     if rank <= 2:
-        return (rank, 0, stable_key)
+        return (rank, 0, 0, stable_key)
     semantic_kind_priority = {
         "reading_route": 0,
         "publication_family": 1,
@@ -1969,7 +2009,18 @@ def search_result_sort_key(
         "module": 6,
         "artifact": 7,
     }
-    return (rank, semantic_kind_priority.get(result["kind"], 99), stable_key)
+    addressability_priority = (
+        1
+        if result["kind"] == "declaration"
+        and not result.get("externally_addressable", True)
+        else 0
+    )
+    return (
+        rank,
+        addressability_priority,
+        semantic_kind_priority.get(result["kind"], 99),
+        stable_key,
+    )
 
 
 def search_packet(query: str, limit: int) -> dict[str, Any]:
@@ -2344,6 +2395,13 @@ def semantic_result_handle(result: dict[str, Any]) -> str:
     )
 
 
+def semantic_result_key(result: dict[str, Any]) -> str:
+    """Return an unambiguous result key while retaining short display handles."""
+    if result["kind"] == "declaration":
+        return str(result.get("qualified_name") or result.get("name"))
+    return semantic_result_handle(result)
+
+
 def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
     """Resolve authored claim handles to exact atlas signatures and source lines."""
     atlas = load("docs/declaration_atlas.json")
@@ -2365,6 +2423,9 @@ def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
             {
                 "name": declaration["name"],
                 "qualified_name": qualified_declaration_name(declaration),
+                "externally_addressable": declaration_externally_addressable(
+                    declaration
+                ),
                 "declaration_kind": declaration["kind"],
                 "signature": declaration.get("signature"),
                 "source_ref": (
@@ -2392,7 +2453,9 @@ def declaration_source_dependency_candidates(
     """
     atlas = load("docs/declaration_atlas.json")
     matches = [
-        row for row in atlas_declarations(atlas) if row["name"] == name
+        row
+        for row in atlas_declarations(atlas)
+        if row["name"] == name or qualified_declaration_name(row) == name
     ]
     if len(matches) != 1:
         return []
@@ -2436,7 +2499,7 @@ def declaration_source_dependency_candidates(
         candidate_name = row["name"]
         if (
             row["module"] not in visible_paths
-            or candidate_name == name
+            or row["id"] == declaration["id"]
             or len(candidate_name) < 3
             or row["kind"] not in ("theorem", "lemma")
         ):
@@ -2473,26 +2536,29 @@ def semantic_cell(
     """Expand one ranked handle without collapsing its authority planes."""
     kind = result["kind"]
     handle = semantic_result_handle(result)
+    canonical_handle = semantic_result_key(result)
     operator_id = semantic_query_operator(query)["id"]
     expansion_command: str
     witness_edges: list[dict[str, str]] = [
         {
             "from": "query",
             "relation": "retrieved_as",
-            "to": f"{kind}:{handle}",
+            "to": f"{kind}:{canonical_handle}",
             "authority": "navigation",
         }
     ]
 
     if kind == "declaration":
-        packet = declaration_packet(handle, 1)
+        packet = declaration_packet(canonical_handle, 1)
         declaration = packet["matches"][0]
+        canonical_handle = declaration.get("qualified_name") or handle
         content = {
             "formal_witness": {
                 key: declaration.get(key)
                 for key in (
                     "name",
                     "qualified_name",
+                    "externally_addressable",
                     "kind",
                     "signature",
                     "module",
@@ -2513,14 +2579,15 @@ def semantic_cell(
         }
         if operator_id in ("support", "trace"):
             content["source_dependency_candidates"] = (
-                declaration_source_dependency_candidates(handle)
+                declaration_source_dependency_candidates(canonical_handle)
             )
         expansion_command = (
-            f"python3 scripts/query_corpus.py --declaration {handle}"
+            "python3 scripts/query_corpus.py --declaration "
+            f"{canonical_handle}"
         )
         witness_edges.append(
             {
-                "from": f"declaration:{handle}",
+                "from": f"declaration:{canonical_handle}",
                 "relation": "elaborated_at",
                 "to": declaration["source_ref"],
                 "authority": "kernel",
@@ -2683,9 +2750,10 @@ def semantic_cell(
         )
 
     return {
-        "cell_id": f"{kind}:{handle}",
+        "cell_id": f"{kind}:{canonical_handle}",
         "kind": kind,
         "handle": handle,
+        "canonical_handle": canonical_handle,
         "selection_reason": selection_reason,
         "witness_selection": {
             "operator": operator_id,
@@ -2758,6 +2826,8 @@ def operator_synthesis(
                         "source_dependency_candidates", []
                     )
                 )
+            elif cell["kind"] == "open_proposition":
+                unproved_requirements.append(cell["content"]["open_record"])
             elif cell["kind"] == "reading_route":
                 programme = cell["content"].get("programme")
                 if programme:
@@ -2766,9 +2836,15 @@ def operator_synthesis(
                     )
         checked_consumers = list(
             {
-                row["name"]: row
+                row.get("qualified_name") or row["name"]: row
                 for row in formal_consumers
                 if row.get("name")
+                and (
+                    row.get("kind")
+                    or row.get("declaration_kind")
+                )
+                in {"theorem", "lemma", "corollary", "proposition"}
+                and row.get("externally_addressable", True)
             }.values()
         )
         return {
@@ -3052,6 +3128,87 @@ def support_alternative_queries(query: str) -> list[str]:
     return [f"{left} {conclusion}", f"{right} {conclusion}"]
 
 
+def semantic_context_residual_terms(query: str) -> set[str]:
+    """Return mathematical terms not already explained by a vocabulary route."""
+    consumed: set[str] = set()
+    for row in matched_semantic_vocabulary(query):
+        for phrase in (
+            row["pref_label"],
+            *row["alt_labels"],
+            *row["query_expansions"],
+        ):
+            consumed.update(search_terms(phrase))
+    return {
+        term
+        for term in semantic_content_terms(query)
+        - consumed
+        - {"problem", "erdo"}
+        if not term.isdigit()
+    }
+
+
+def module_local_declaration_results(
+    query: str, module_result: dict[str, Any], limit: int = 2
+) -> list[dict[str, Any]]:
+    """Rank exact declarations after authored module digestion finds the organ."""
+    query_terms = semantic_content_terms(query)
+    if not query_terms:
+        return []
+    atlas = load("docs/declaration_atlas.json")
+    theorem_requested = (
+        semantic_query_operator(query)["id"] == "support"
+        or bool(
+            {"theorem", "lemma", "proof"}
+            & search_terms(query)
+        )
+    )
+    ranked = []
+    for row in atlas_declarations(atlas):
+        if row["module"] != module_result["path"]:
+            continue
+        candidate_terms = search_terms(
+            " ".join(
+                str(value)
+                for value in (
+                    row["name"],
+                    row.get("signature"),
+                    row.get("docstring"),
+                )
+                if value
+            )
+        )
+        matched = len(query_terms & candidate_terms)
+        if matched < min(2, len(query_terms)):
+            continue
+        theorem_like = row["kind"] in {
+            "theorem",
+            "lemma",
+            "corollary",
+            "proposition",
+        }
+        if theorem_requested and (
+            not theorem_like
+            or not declaration_externally_addressable(row)
+        ):
+            continue
+        ranked.append(
+            (
+                -matched,
+                0 if theorem_requested and theorem_like else 1,
+                len(candidate_terms - query_terms),
+                row["line"],
+                row,
+            )
+        )
+    results = []
+    for _, _, _, _, row in sorted(ranked)[:limit]:
+        result = {"kind": "declaration", **compact_declaration(row)}
+        if row.get("signature"):
+            result["signature_excerpt"] = str(row["signature"])[:240]
+        results.append(result)
+    return results
+
+
 def best_reading_route_result(query: str) -> dict[str, Any] | None:
     """Rank routes as a handle class so declaration volume cannot erase them."""
     claims = load("docs/claims.json")
@@ -3178,6 +3335,37 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
                 : min(limit, MAX_SEMANTIC_CELLS)
             ]
         ]
+        residual_terms = semantic_context_residual_terms(query)
+        if len(residual_terms) >= 2:
+            contextual_search = search_packet(
+                " ".join(sorted(residual_terms)),
+                max(12, min(MAX_LIMIT, limit * 4)),
+            )
+            routed_keys = {
+                (result["kind"], semantic_result_key(result))
+                for result, _ in selected_with_reasons
+            }
+            contextual = [
+                result
+                for result in contextual_search["results"]
+                if (
+                    result["kind"],
+                    semantic_result_key(result),
+                )
+                not in routed_keys
+                and result["kind"]
+                in ("declaration", "claim", "module", "reading_route")
+            ]
+            selected_with_reasons.extend(
+                (result, "ranked_context_beyond_controlled_vocabulary")
+                for result in contextual[
+                    : max(
+                        0,
+                        min(limit, MAX_SEMANTIC_CELLS)
+                        - len(selected_with_reasons),
+                    )
+                ]
+            )
     else:
         selected_with_reasons = [
             (result, "ranked_query_relative_match")
@@ -3221,6 +3409,41 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
                     *boundary_rows,
                     *selected_with_reasons[2:],
                 ][: min(limit, MAX_SEMANTIC_CELLS)]
+
+    wants_local_theorem = (
+        operator_id == "support"
+        or bool({"theorem", "lemma"} & search_terms(query))
+    ) and "module" not in search_terms(query)
+    if wants_local_theorem:
+        local_results = [
+            result
+            for result, _ in selected_with_reasons
+            if result["kind"] == "module"
+        ]
+        enriched = [
+            (
+                declaration,
+                "module_local_declaration_witness",
+            )
+            for module in local_results
+            for declaration in module_local_declaration_results(
+                query, module, 1
+            )
+        ]
+        if enriched:
+            merged = [*enriched, *selected_with_reasons]
+            selected_with_reasons = []
+            seen_keys: set[tuple[str, str]] = set()
+            for result, reason in merged:
+                key = (result["kind"], semantic_result_key(result))
+                if key in seen_keys:
+                    continue
+                seen_keys.add(key)
+                selected_with_reasons.append((result, reason))
+                if len(selected_with_reasons) >= min(
+                    limit, MAX_SEMANTIC_CELLS
+                ):
+                    break
     selected = [result for result, _ in selected_with_reasons]
     if not selected:
         return {
@@ -3240,7 +3463,7 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         }
 
     selected_keys = {
-        (result["kind"], semantic_result_handle(result)) for result in selected
+        (result["kind"], semantic_result_key(result)) for result in selected
     }
     cells = [
         semantic_cell(query, result, reason)
@@ -3250,10 +3473,11 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         {
             "kind": result["kind"],
             "handle": semantic_result_handle(result),
+            "canonical_handle": semantic_result_key(result),
             "reason": "lower_ranked_outside_bounded_witness_slice",
         }
         for result in search["results"]
-        if (result["kind"], semantic_result_handle(result)) not in selected_keys
+        if (result["kind"], semantic_result_key(result)) not in selected_keys
     ][:5]
     witness_edges = [
         edge for cell in cells for edge in cell["witness_edges"]
