@@ -22,14 +22,236 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
+MAX_SEMANTIC_CELLS = 4
 OUTPUT_BUDGET_BYTES = 64_000
 SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
+SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/1"
+SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
+
+SEMANTIC_QUERY_OPERATORS = (
+    {
+        "id": "locate",
+        "intent": "Find an exact declaration, definition, claim, paper anchor, or source coordinate.",
+        "cues": ("find", "where", "locate", "source", "declaration"),
+    },
+    {
+        "id": "support",
+        "intent": "Find a jointly useful premise or strategy support set.",
+        "cues": ("need to prove", "premise", "support", "approach"),
+    },
+    {
+        "id": "frontier",
+        "intent": "Recover the exact open proposition and its nearest proved reductions or blockers.",
+        "cues": ("what remains", "what blocks", "missing", "next", "try next"),
+    },
+    {
+        "id": "analogy",
+        "intent": "Compare structurally corresponding arguments without treating similarity as proof.",
+        "cues": ("analog", "analogy", "compare", "transfer"),
+    },
+    {
+        "id": "trace",
+        "intent": "Explain why a claim holds through typed argument and source relationships.",
+        "cues": ("why", "depends on", "builds on", "trace"),
+    },
+    {
+        "id": "digest",
+        "intent": "Return a bounded formal-plus-authored mathematical explanation.",
+        "cues": ("explain", "understand", "overview", "story"),
+    },
+    {
+        "id": "falsify",
+        "intent": "Find non-claims, failed analogies, obstructions, and exact claim ceilings.",
+        "cues": (
+            "cannot",
+            "counterexample",
+            "dead end",
+            "does not",
+            "failed",
+            "worth pursuing",
+        ),
+    },
+)
+
+# This is deliberately a small translation layer, not a generated mini-paper.
+# Rows bridge ordinary questions to the corpus's authored terms of art and typed
+# handles. They never create proof, claim-status, or editorial authority.
+SEMANTIC_VOCABULARY = (
+    {
+        "id": "rank_two_certificate_value",
+        "vocabulary_kind": "entity",
+        "pref_label": "rank-2 certificate shallowness",
+        "alt_labels": (
+            "rank two worth pursuing",
+            "second difference certificate",
+            "better than rank one",
+            "rank two certificate",
+            "worth pursuing",
+        ),
+        "query_expansions": (
+            "rank 2 not shallower",
+            "promotion gate denied",
+        ),
+        "route_hints": (
+            "--declaration rank2_kill_sound_but_not_shallower_at_cell",
+        ),
+    },
+    {
+        "id": "negative_mathematical_result",
+        "vocabulary_kind": "intent",
+        "pref_label": "obstruction or no-go result",
+        "alt_labels": (
+            "dead end",
+            "failed approach",
+            "not worth pursuing",
+            "why it fails",
+            "what is ruled out",
+        ),
+        "query_expansions": (
+            "obstruction no go countermodel",
+            "claim ceiling does not prove",
+        ),
+        "route_hints": (
+            "--route transport_curvature_programme",
+        ),
+    },
+    {
+        "id": "open_producer",
+        "vocabulary_kind": "intent",
+        "pref_label": "remaining open producer",
+        "alt_labels": (
+            "missing step",
+            "missing producer",
+            "what blocks",
+            "what should i try next",
+            "what remains to prove",
+        ),
+        "query_expansions": (
+            "remaining open supply producer",
+            "sufficient interface open",
+        ),
+        "route_hints": (
+            "--open <remaining_open.id>",
+        ),
+    },
+    {
+        "id": "unbounded_certificate_supply",
+        "vocabulary_kind": "entity",
+        "pref_label": "unbounded certified non-integrality supply",
+        "alt_labels": (
+            "unbounded certificate supply",
+            "cofinal certificate producer",
+            "certificates at unbounded parameters",
+        ),
+        "query_expansions": (
+            "certified non-integrality witnesses at unbounded parameters",
+            "lcm diagonal sufficient producer",
+        ),
+        "route_hints": (
+            "--open remaining_open.unbounded_certificate_supply",
+        ),
+    },
+    {
+        "id": "half_value_membership",
+        "vocabulary_kind": "entity",
+        "pref_label": "half-value achievement-set membership",
+        "alt_labels": (
+            "1/2 problem",
+            "half value",
+            "one half",
+            "rational support counterexample",
+        ),
+        "query_expansions": (
+            "half membership mersenne achievement",
+            "greedy half last producer",
+        ),
+        "route_hints": (
+            "--route erdos257_half_story",
+            "--open remaining_open.half_value_membership",
+        ),
+    },
+    {
+        "id": "formal_assumptions",
+        "vocabulary_kind": "intent",
+        "pref_label": "axiom footprint",
+        "alt_labels": (
+            "assumptions",
+            "what does this theorem assume",
+            "trusted base",
+        ),
+        "query_expansions": (
+            "axiom footprint hypothesis",
+        ),
+        "route_hints": (
+            "--declaration <Lean_name>",
+        ),
+    },
+    {
+        "id": "counterexample_language",
+        "vocabulary_kind": "intent",
+        "pref_label": "countermodel",
+        "alt_labels": (
+            "counterexample",
+            "false friend",
+            "disproof example",
+        ),
+        "query_expansions": (
+            "countermodel obstruction no go",
+        ),
+        "route_hints": (
+            "--search countermodel",
+        ),
+    },
+)
 
 
 @lru_cache(maxsize=None)
 def load(rel: str) -> dict[str, Any]:
     return json.loads((ROOT / rel).read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=512)
+def module_synopsis_index() -> dict[str, str | None]:
+    path = ROOT / "docs/module_synopsis_index.json"
+    if not path.is_file():
+        return {}
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        atlas = load("docs/declaration_atlas.json")
+    except (json.JSONDecodeError, OSError, KeyError):
+        return {}
+    if packet.get("source_fingerprint") != atlas.get("source_fingerprint"):
+        return {}
+    return {
+        row["path"]: row.get("synopsis")
+        for row in packet.get("modules", [])
+        if isinstance(row, dict) and isinstance(row.get("path"), str)
+    }
+
+
+@lru_cache(maxsize=512)
+def module_synopsis(rel: str) -> str | None:
+    """Return a fingerprint-bound authored module header, with a local fallback."""
+    indexed = module_synopsis_index()
+    if rel in indexed:
+        return indexed[rel]
+    path = ROOT / rel
+    if not path.is_file():
+        return None
+    with path.open(encoding="utf-8") as source:
+        prefix = source.read(64_000)
+    match = re.search(r"/-!(.*?)-/", prefix, re.S)
+    if match is None:
+        return None
+    lines = []
+    for raw in match.group(1).splitlines():
+        line = raw.strip()
+        if line.startswith("#"):
+            line = line.lstrip("#").strip()
+        lines.append(line)
+    synopsis = re.sub(r"\s+", " ", " ".join(lines)).strip()
+    return synopsis[:1600] or None
 
 
 def publication_contract() -> dict[str, Any]:
@@ -119,6 +341,7 @@ def artifact_inventory() -> list[dict[str, Any]]:
         if row.get("path") and row.get("content_digest"):
             path = row["path"]
             file_path = path.split("::", 1)[0]
+            resolved_path = ROOT / file_path
             inventory.append(
                 {
                     **common,
@@ -127,13 +350,21 @@ def artifact_inventory() -> list[dict[str, Any]]:
                     "file_path": file_path,
                     "fragment": path.split("::", 1)[1] if "::" in path else None,
                     "content_digest": row["content_digest"],
-                    "size_bytes": (ROOT / file_path).stat().st_size,
+                    "availability": (
+                        "present" if resolved_path.is_file() else "missing"
+                    ),
+                    "size_bytes": (
+                        resolved_path.stat().st_size
+                        if resolved_path.is_file()
+                        else None
+                    ),
                 }
             )
         for variant in ("source", "rendered"):
             path = row.get(f"{variant}_path")
             digest = row.get(f"{variant}_content_digest")
             if path and digest:
+                resolved_path = ROOT / path
                 inventory.append(
                     {
                         **common,
@@ -142,7 +373,14 @@ def artifact_inventory() -> list[dict[str, Any]]:
                         "file_path": path,
                         "fragment": None,
                         "content_digest": digest,
-                        "size_bytes": (ROOT / path).stat().st_size,
+                        "availability": (
+                            "present" if resolved_path.is_file() else "missing"
+                        ),
+                        "size_bytes": (
+                            resolved_path.stat().st_size
+                            if resolved_path.is_file()
+                            else None
+                        ),
                     }
                 )
     return sorted(inventory, key=lambda row: (row["artifact_handle"], row["artifact_id"]))
@@ -315,6 +553,8 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         relative = paper_row["source"]
         lean_source_identity = lean_source_identity_for_paper(claims, relative)
         path = ROOT / relative
+        if not path.is_file():
+            continue
         text = path.read_text(encoding="utf-8")
         lines = text.splitlines()
         environments = set(re.findall(r"\\newtheorem\*?\{([^}]+)\}", text))
@@ -472,7 +712,17 @@ def paper_coordinate(label: str | None, index: dict[str, dict[str, Any]]) -> dic
         return None
     coordinate = index.get(label)
     if coordinate is None:
-        raise ValueError(f"unknown paper label: {label}")
+        return {
+            "label": label,
+            "source": None,
+            "line": None,
+            "source_ref": None,
+            "rendered": None,
+            "availability": "authored_source_unavailable_in_worktree",
+            "authority_posture": (
+                "unresolved_navigation_anchor_not_claim_or_proof_authority"
+            ),
+        }
     return coordinate
 
 
@@ -513,11 +763,12 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
         for route in programme_routes
         for open_id in route.get("remaining_open_proposition_ids", [])
     }
+    claim_paper = paper_coordinate(claim.get("paper_label"), label_index)
     return {
         "kind": "claim",
         "authority_posture": "navigation_projection_not_proof_authority",
         "lean_source_identity": lean_source_identity_for_paper(
-            claims, claim.get("paper_label") and label_index[claim["paper_label"]]["source"]
+            claims, claim_paper and claim_paper.get("source")
         ),
         "claim": claim,
         "incoming_edges": incoming,
@@ -551,7 +802,7 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
             open_index[open_id]
             for open_id in sorted(programme_open_ids - open_ids)
         ],
-        "paper": paper_coordinate(claim.get("paper_label"), label_index),
+        "paper": claim_paper,
         "validation": "python3 scripts/check_release.py",
     }
 
@@ -1107,7 +1358,14 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
     if module is None:
         raise KeyError(f"unknown module handle: {handle}")
     roles = module_roles(claims)
-    module_view = {**module, "role": roles.get(module["id"], "Unclassified module")}
+    module_view = {
+        **module,
+        "role": roles.get(module["id"], "Unclassified module"),
+        "authored_synopsis": module_synopsis(module["path"]),
+        "synopsis_authority_posture": (
+            "source_current_authored_digestion_not_proof_or_claim_status_authority"
+        ),
+    }
     imported_rows = [row for row in atlas["modules"] if row["id"] in module["imports"]]
     importer_rows = [row for row in atlas["modules"] if module["id"] in row["imports"]]
     declarations = [
@@ -1185,6 +1443,9 @@ SEARCH_STOP_WORDS = frozenset(
 )
 
 SEARCH_TERM_ALIASES = {
+    "fail": "obstruction",
+    "failed": "obstruction",
+    "failure": "obstruction",
     "open": "resolution_status",
     "prove": "resolution_status",
     "proved": "resolution_status",
@@ -1199,6 +1460,7 @@ SEARCH_TERM_ALIASES = {
 }
 
 
+@lru_cache(maxsize=32_768)
 def search_terms(value: str) -> set[str]:
     """Return stable lexical terms for bounded natural-language fallback."""
     terms: set[str] = set()
@@ -1207,6 +1469,7 @@ def search_terms(value: str) -> set[str]:
         for character in unicodedata.normalize("NFKD", value.casefold())
         if not unicodedata.combining(character)
     )
+    folded = re.sub(r"\bno[\s-]+go\b", " obstruction ", folded)
     for token in re.findall(r"[a-z0-9]+", folded):
         if token in SEARCH_STOP_WORDS:
             continue
@@ -1216,6 +1479,205 @@ def search_terms(value: str) -> set[str]:
             token = token[:-1]
         terms.add(SEARCH_TERM_ALIASES.get(token, token))
     return terms
+
+
+@lru_cache(maxsize=256)
+def semantic_content_terms(query: str) -> set[str]:
+    """Remove question-operator scaffolding before matching mathematical content."""
+    operator = semantic_query_operator(query)
+    cue_terms = set().union(
+        *(search_terms(cue) for cue in operator["cues"])
+    )
+    conversational_terms = {
+        "after",
+        "can",
+        "could",
+        "do",
+        "does",
+        "either",
+        "get",
+        "give",
+        "i",
+        "let",
+        "lets",
+        "me",
+        "route",
+        "should",
+        "show",
+        "still",
+        "tell",
+        "whether",
+        "which",
+        "would",
+    }
+    return search_terms(query) - cue_terms - conversational_terms
+
+
+@lru_cache(maxsize=4_096)
+def normalized_search_text(value: str) -> str:
+    folded = "".join(
+        character
+        for character in unicodedata.normalize("NFKD", value.casefold())
+        if not unicodedata.combining(character)
+    )
+    return " ".join(re.findall(r"[a-z0-9]+", folded))
+
+
+@lru_cache(maxsize=256)
+def matched_semantic_vocabulary(query: str) -> list[dict[str, Any]]:
+    """Return the small authored translation rows activated by one question."""
+    query_text = normalized_search_text(query)
+    query_term_set = search_terms(query)
+    matches: list[dict[str, Any]] = []
+    for row in SEMANTIC_VOCABULARY:
+        labels = (row["pref_label"], *row["alt_labels"])
+        if any(
+            (
+                (label_text := normalized_search_text(label)) in query_text
+                or (
+                    len(label_terms := search_terms(label)) >= 2
+                    and label_terms <= query_term_set
+                )
+            )
+            for label in labels
+        ):
+            matches.append(dict(row))
+    return matches
+
+
+@lru_cache(maxsize=256)
+def semantic_query_operator(query: str) -> dict[str, Any]:
+    """Classify the question-shaped operator independently of result ranking."""
+    query_text = normalized_search_text(query)
+    if (
+        "what should i try next" in query_text
+        or "what blocks" in query_text
+        or "what remains" in query_text
+        or "missing" in query_text
+    ):
+        operator_id = "frontier"
+    elif re.search(r"\bcan\b.+\bsolve\b", query_text) or any(
+        cue in query_text
+        for cue in (
+            "cannot",
+            "counterexample",
+            "dead end",
+            "does not",
+            "failed",
+            "worth pursuing",
+        )
+    ):
+        operator_id = "falsify"
+    elif any(cue in query_text for cue in ("analog", "analogy", "compare", "transfer")):
+        operator_id = "analogy"
+    elif any(cue in query_text for cue in ("premise", "need to prove", "support", "approach")):
+        operator_id = "support"
+    elif any(cue in query_text for cue in ("why", "depends on", "builds on", "trace")):
+        operator_id = "trace"
+    elif any(cue in query_text for cue in ("explain", "understand", "overview", "story")):
+        operator_id = "digest"
+    else:
+        operator_id = "locate"
+    return next(
+        dict(row) for row in SEMANTIC_QUERY_OPERATORS if row["id"] == operator_id
+    )
+
+
+@lru_cache(maxsize=256)
+def semantic_query_interpretation(query: str) -> dict[str, Any]:
+    matched_rows = matched_semantic_vocabulary(query)
+    routed_rows = (
+        [row for row in matched_rows if row["vocabulary_kind"] == "entity"]
+        or matched_rows
+    )
+    expansions = list(
+        dict.fromkeys(
+            expansion
+            for row in matched_rows
+            for expansion in row["query_expansions"]
+        )
+    )
+    return {
+        "operator": semantic_query_operator(query),
+        "matched_vocabulary": [
+            {
+                "id": row["id"],
+                "pref_label": row["pref_label"],
+                "query_expansions": list(row["query_expansions"]),
+                "route_hints": list(row["route_hints"]),
+            }
+            for row in matched_rows
+        ],
+        "expanded_queries": expansions,
+        "prioritized_route_hints": list(
+            dict.fromkeys(
+                hint for row in routed_rows for hint in row["route_hints"]
+            )
+        ),
+        "authority_posture": (
+            "authored_navigation_translation_not_proof_or_claim_status_authority"
+        ),
+    }
+
+
+def semantic_dictionary_packet() -> dict[str, Any]:
+    return {
+        "kind": "semantic_dictionary",
+        "schema_version": SEMANTIC_DICTIONARY_SCHEMA,
+        "authority_posture": (
+            "authored_navigation_translation_not_proof_or_claim_status_authority"
+        ),
+        "operators": [
+            {
+                **dict(row),
+                "cues": list(row["cues"]),
+            }
+            for row in SEMANTIC_QUERY_OPERATORS
+        ],
+        "vocabulary": [
+            {
+                **dict(row),
+                "alt_labels": list(row["alt_labels"]),
+                "query_expansions": list(row["query_expansions"]),
+                "route_hints": list(row["route_hints"]),
+            }
+            for row in SEMANTIC_VOCABULARY
+        ],
+        "consumer_action": (
+            "Load this bounded packet before free-text search, then follow one "
+            "typed route hint or inspect the transparent query interpretation "
+            "returned by --search."
+        ),
+        "proof_authority": "Lean source checked by the pinned Lean kernel",
+    }
+
+
+@lru_cache(maxsize=256)
+def semantic_query_variants(query: str) -> list[set[str]]:
+    return [
+        terms
+        for expansion in semantic_query_interpretation(query)["expanded_queries"]
+        if (terms := search_terms(expansion))
+    ]
+
+
+@lru_cache(maxsize=256)
+def semantic_hint_targets(query: str) -> dict[tuple[str, str], int]:
+    flag_to_kind = {
+        "--claim": "claim",
+        "--declaration": "declaration",
+        "--open": "open_proposition",
+        "--route": "reading_route",
+    }
+    targets: dict[tuple[str, str], int] = {}
+    for index, hint in enumerate(
+        semantic_query_interpretation(query)["prioritized_route_hints"]
+    ):
+        parts = hint.split(maxsplit=1)
+        if len(parts) != 2 or parts[0] not in flag_to_kind:
+            continue
+        targets[(flag_to_kind[parts[0]], parts[1])] = index
+    return targets
 
 
 def status_question_target(query: str) -> tuple[str, str] | None:
@@ -1261,7 +1723,7 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
         return 2
     if needle in body:
         return 3
-    query_terms = search_terms(query)
+    query_terms = semantic_content_terms(query)
     if not query_terms:
         return None
     key_terms = search_terms(primary)
@@ -1270,6 +1732,15 @@ def search_rank(query: str, primary: str, haystack: str) -> int | None:
         return 4
     if query_terms <= body_terms:
         return 5
+    for index, variant_terms in enumerate(semantic_query_variants(query)):
+        if variant_terms <= key_terms:
+            return 6 + index
+        if variant_terms <= body_terms:
+            return 8 + index
+        matched_variant = len(variant_terms & (key_terms | body_terms))
+        required_variant = max(2, (2 * len(variant_terms) + 2) // 3)
+        if matched_variant >= required_variant:
+            return 12 + index + len(variant_terms) - matched_variant
     matched = len(query_terms & (key_terms | body_terms))
     required = max(2, (2 * len(query_terms) + 2) // 3)
     if matched >= required:
@@ -1432,7 +1903,14 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
 
     for row in atlas["modules"]:
         sigil = sigil_by_path.get(row["path"])
-        ranks = [search_rank(query, row["id"], row["path"])]
+        synopsis = module_synopsis(row["path"])
+        ranks = [
+            search_rank(
+                query,
+                row["id"],
+                " ".join(value for value in (row["path"], synopsis) if value),
+            )
+        ]
         if sigil:
             ranks.append(search_rank(query, sigil, row["id"] + " " + row["path"]))
         rank = min((value for value in ranks if value is not None), default=None)
@@ -1445,6 +1923,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                         "kind": "module",
                         "id": row["id"],
                         "path": row["path"],
+                        "authored_synopsis": synopsis,
                         "paper_sigil": sigil,
                         "role": roles.get(row["id"], "Unclassified module"),
                         "declaration_count": row["declaration_count"],
@@ -1602,17 +2081,529 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
+    hint_targets = semantic_hint_targets(query)
+    ranked = [
+        (
+            (
+                -10 + hint_targets[(result["kind"], str(handle))]
+                if handle is not None
+                and (result["kind"], str(handle)) in hint_targets
+                else rank
+            ),
+            stable_key,
+            result,
+        )
+        for rank, stable_key, result in ranked
+        for handle in (result.get("id") or result.get("name"),)
+    ]
     ranked.sort(key=search_result_sort_key)
     results = [item[2] for item in ranked]
+    missing_registered_artifacts = [
+        row["artifact_handle"]
+        for row in artifact_inventory()
+        if row.get("availability") == "missing"
+    ]
     return {
         "kind": "search",
         "authority_posture": "navigation_projection_not_proof_authority",
         "query": query,
+        "query_interpretation": semantic_query_interpretation(query),
         "match_count": len(results),
         "results": results[:limit],
         "omitted_match_count": max(0, len(results) - limit),
         "limit": limit,
-        "next": "Use the typed handle with --claim, --status, --paper-anchor, --open, --declaration, --source, --module, --connections, --artifact, --publication-artifact, --publication-evidence, --route, or --publication-family.",
+        "artifact_availability_receipt": {
+            "status": (
+                "partial_optional_artifacts_missing"
+                if missing_registered_artifacts
+                else "all_registered_artifacts_present"
+            ),
+            "missing_registered_artifacts": missing_registered_artifacts,
+            "effect_on_search": (
+                "missing authored artifacts are omitted from paper-anchor "
+                "indexing; claims, routes, open propositions, declarations, "
+                "modules, and present papers remain searchable"
+            ),
+        },
+        "next": "Inspect --vocabulary when phrasing is uncertain, then use the typed handle with --claim, --status, --paper-anchor, --open, --declaration, --source, --module, --connections, --artifact, --publication-artifact, --publication-evidence, --route, or --publication-family.",
+    }
+
+
+def semantic_result_handle(result: dict[str, Any]) -> str:
+    return str(
+        result.get("id")
+        or result.get("name")
+        or result.get("canonical_handle")
+        or result.get("artifact_handle")
+        or result.get("source_ref")
+        or "unresolved"
+    )
+
+
+def semantic_cell(
+    query: str, result: dict[str, Any], selection_reason: str
+) -> dict[str, Any]:
+    """Expand one ranked handle without collapsing its authority planes."""
+    kind = result["kind"]
+    handle = semantic_result_handle(result)
+    expansion_command: str
+    witness_edges: list[dict[str, str]] = [
+        {
+            "from": "query",
+            "relation": "retrieved_as",
+            "to": f"{kind}:{handle}",
+            "authority": "navigation",
+        }
+    ]
+
+    if kind == "declaration":
+        packet = declaration_packet(handle, 1)
+        declaration = packet["matches"][0]
+        content = {
+            "formal_witness": {
+                key: declaration.get(key)
+                for key in (
+                    "name",
+                    "kind",
+                    "signature",
+                    "module",
+                    "line",
+                    "source_ref",
+                    "source_url",
+                    "lean_source_identity",
+                )
+            },
+            "authored_digest": {
+                "text": declaration.get("docstring"),
+                "authority_posture": (
+                    "authored_explanation_not_kernel_or_claim_status_authority"
+                ),
+            },
+            "claim_status_links": declaration.get("attached_claims", []),
+            "module_role": declaration.get("module_role"),
+        }
+        expansion_command = (
+            f"python3 scripts/query_corpus.py --declaration {handle}"
+        )
+        witness_edges.append(
+            {
+                "from": f"declaration:{handle}",
+                "relation": "elaborated_at",
+                "to": declaration["source_ref"],
+                "authority": "kernel",
+            }
+        )
+    elif kind == "claim":
+        packet = claim_packet(handle)
+        claim = packet["claim"]
+        content = {
+            "claim_record": claim,
+            "argument_neighbourhood": packet["argument_neighbourhood"],
+            "remaining_open_propositions": packet[
+                "remaining_open_propositions"
+            ],
+            "programme_contexts": packet["programme_contexts"],
+            "paper_coordinate": packet["paper"],
+            "lean_source_identity": packet["lean_source_identity"],
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --claim {handle}"
+        witness_edges.extend(
+            {
+                "from": f"claim:{handle}",
+                "relation": "has_formal_handle",
+                "to": f"declaration:{declaration['name']}",
+                "authority": "status_to_kernel_bridge",
+            }
+            for declaration in claim.get("declarations", [])
+        )
+        witness_edges.extend(
+            {
+                "from": f"claim:{handle}",
+                "relation": "bounded_by",
+                "to": f"open_proposition:{proposition['id']}",
+                "authority": "status",
+            }
+            for proposition in packet["remaining_open_propositions"]
+        )
+    elif kind == "open_proposition":
+        packet = open_proposition_packet(handle)
+        proposition = packet["open_proposition"]
+        content = {
+            "open_record": proposition,
+            "open_target": packet["open_target"],
+            "nearest_advances": packet["advancing_claims"],
+            "linked_claims": packet["linked_claims"],
+            "paper_anchor": packet["paper_anchor"],
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --open {handle}"
+        witness_edges.append(
+            {
+                "from": f"open_proposition:{handle}",
+                "relation": "keeps_open",
+                "to": f"claim:{packet['open_target']['id']}",
+                "authority": "status",
+            }
+        )
+        witness_edges.extend(
+            {
+                "from": f"claim:{advance['claim']['id']}",
+                "relation": advance["operation"],
+                "to": f"open_proposition:{handle}",
+                "authority": "status",
+            }
+            for advance in packet["advancing_claims"]
+        )
+    elif kind == "reading_route":
+        packet = route_packet(handle)
+        route = packet["route"]
+        programme = packet.get("programme")
+        content = {
+            "route": route,
+            "programme": programme,
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --route {handle}"
+        if programme:
+            witness_edges.extend(
+                {
+                    "from": f"reading_route:{handle}",
+                    "relation": "organises",
+                    "to": f"claim:{claim['id']}",
+                    "authority": "navigation",
+                }
+                for claim in programme["core_claims"]
+            )
+            witness_edges.extend(
+                {
+                    "from": f"reading_route:{handle}",
+                    "relation": "bounded_by",
+                    "to": f"open_proposition:{proposition['id']}",
+                    "authority": "status",
+                }
+                for proposition in programme["remaining_open_propositions"]
+            )
+    elif kind == "module":
+        packet = module_packet(handle, 6)
+        content = {
+            "module": packet["module"],
+            "attached_claims": packet["attached_claims"],
+            "declaration_preview": packet["declaration_preview"],
+            "dependency_neighbourhood": packet["dependency_neighbourhood"],
+        }
+        expansion_command = f"python3 scripts/query_corpus.py --module {handle}"
+        witness_edges.append(
+            {
+                "from": f"module:{handle}",
+                "relation": "authored_in",
+                "to": packet["module"]["path"],
+                "authority": "digestion_to_kernel_source",
+            }
+        )
+    else:
+        content = {
+            "ranked_result": result,
+            "notice": (
+                "This handle is retained as navigation context; use its typed "
+                "query command for the full owner packet."
+            ),
+        }
+        flag_by_kind = {
+            "paper_anchor": "--paper-anchor",
+            "module": "--module",
+            "publication_family": "--publication-family",
+            "artifact": "--artifact",
+            "publication_artifact": "--publication-artifact",
+            "publication_evidence": "--publication-evidence",
+        }
+        expansion_command = (
+            "python3 scripts/query_corpus.py "
+            f"{flag_by_kind.get(kind, '--search')} {handle}"
+        )
+
+    return {
+        "cell_id": f"{kind}:{handle}",
+        "kind": kind,
+        "handle": handle,
+        "selection_reason": selection_reason,
+        "content": content,
+        "witness_edges": witness_edges,
+        "typed_provenance": [
+            {
+                "plane": "kernel",
+                "owner": "pinned Lean source and Lean kernel",
+                "meaning": (
+                    "Only elaborated declarations and their exact source "
+                    "coordinates carry proof authority."
+                ),
+            },
+            {
+                "plane": "status",
+                "owner": "docs/claims.json",
+                "meaning": (
+                    "Claim labels, statuses, remaining-open boundaries, and "
+                    "argument relations are authored registry authority."
+                ),
+            },
+            {
+                "plane": "digestion",
+                "owner": "declaration docstrings and authored paper coordinates",
+                "meaning": (
+                    "Explanation aids comprehension but does not replace proof "
+                    "or claim-status authority."
+                ),
+            },
+            {
+                "plane": "navigation",
+                "owner": "scripts/query_corpus.py",
+                "meaning": (
+                    "Selection, vocabulary translation, and route ordering are "
+                    "query-relative navigation projections."
+                ),
+            },
+        ],
+        "authority_invariant": (
+            "kernel,status,digestion,navigation_are_typed_and_non_substitutable"
+        ),
+        "expansion_command": expansion_command,
+    }
+
+
+def semantic_slice_rejections(operator_id: str) -> list[str]:
+    common = [
+        "A navigation match is not evidence that a theorem proves the query.",
+        "A conditional reduction, finite instance, or open target is not promoted to a solved claim.",
+    ]
+    operator_specific = {
+        "frontier": (
+            "Nearby proved reductions do not discharge the exact remaining-open proposition.",
+        ),
+        "falsify": (
+            "A promising formal interface is not treated as a producer when its supply hypothesis remains open.",
+            "Authored experimental verdicts are reported as measured scope, not universal impossibility.",
+        ),
+        "analogy": (
+            "Structural similarity is not transported as a proof without an exact formal bridge.",
+        ),
+        "support": (
+            "Individually relevant premises are not asserted jointly sufficient without a checked consumer.",
+        ),
+        "trace": (
+            "Argument-graph edges explain authored dependency posture; Lean source remains proof authority.",
+        ),
+        "digest": (
+            "The bounded digest omits material by handle rather than silently claiming corpus completeness.",
+        ),
+        "locate": (
+            "A lexical or vocabulary match is not treated as identity unless its typed handle is expanded.",
+        ),
+    }
+    return [*common, *operator_specific.get(operator_id, ())]
+
+
+def analogy_subject_queries(query: str) -> list[str]:
+    """Recover the compared subjects so intersection matching does not erase either."""
+    stripped = re.sub(
+        r"^\s*(?:compare|contrast)\s+",
+        "",
+        query,
+        flags=re.IGNORECASE,
+    )
+    parts = re.split(
+        r"\s+(?:with|versus|vs\.?|and)\s+",
+        stripped,
+        maxsplit=1,
+        flags=re.IGNORECASE,
+    )
+    return [part.strip() for part in parts if part.strip()] if len(parts) == 2 else []
+
+
+def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
+    """Compile a question into a bounded, witness-carrying semantic subgraph."""
+    search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
+    interpretation = search["query_interpretation"]
+    operator_id = interpretation["operator"]["id"]
+    hint_targets = set(semantic_hint_targets(query))
+    directly_routed = [
+        result
+        for result in search["results"]
+        if (result["kind"], semantic_result_handle(result)) in hint_targets
+    ]
+    analogy_subjects = (
+        analogy_subject_queries(query) if operator_id == "analogy" else []
+    )
+    selected_with_reasons: list[tuple[dict[str, Any], str]]
+    if len(analogy_subjects) == 2:
+        interpretation = {
+            **interpretation,
+            "analogy_subject_queries": analogy_subjects,
+        }
+        selected_with_reasons = []
+        for side, subject in zip(("left", "right"), analogy_subjects):
+            subject_results = search_packet(subject, max(8, limit))["results"]
+            route = next(
+                (
+                    result
+                    for result in subject_results
+                    if result["kind"] == "reading_route"
+                ),
+                None,
+            )
+            candidates = [
+                *([route] if route else []),
+                *[
+                    result
+                    for result in subject_results
+                    if result is not route
+                    and result["kind"]
+                    in ("claim", "declaration", "publication_family")
+                ],
+            ]
+            selected_with_reasons.extend(
+                (result, f"analogy_{side}_subject")
+                for result in candidates[:2]
+            )
+        selected_with_reasons = selected_with_reasons[
+            : min(limit, MAX_SEMANTIC_CELLS)
+        ]
+    elif directly_routed:
+        selected_with_reasons = [
+            (result, "controlled_vocabulary_route")
+            for result in directly_routed[
+                : min(limit, MAX_SEMANTIC_CELLS)
+            ]
+        ]
+    else:
+        selected_with_reasons = [
+            (result, "ranked_query_relative_match")
+            for result in search["results"][
+                : min(limit, MAX_SEMANTIC_CELLS)
+            ]
+        ]
+        if operator_id == "frontier":
+            claims = load("docs/claims.json")
+            claim_index = {row["id"]: row for row in claims["claims"]}
+            route_index = {row["id"]: row for row in all_entrypoints(claims)}
+            open_index = {
+                row["id"]: row
+                for row in claims["remaining_open_propositions"]
+            }
+            boundary_ids: list[str] = []
+            for result, _ in selected_with_reasons[:3]:
+                if result["kind"] == "claim":
+                    boundary_ids.extend(
+                        claim_index[result["id"]].get(
+                            "remaining_open_proposition_ids", []
+                        )
+                    )
+                elif result["kind"] == "reading_route":
+                    boundary_ids.extend(
+                        route_index[result["id"]].get(
+                            "remaining_open_proposition_ids", []
+                        )
+                    )
+            boundary_rows = [
+                (
+                    {"kind": "open_proposition", **open_index[open_id]},
+                    "frontier_boundary_from_ranked_context",
+                )
+                for open_id in dict.fromkeys(boundary_ids)
+                if open_id in open_index
+            ]
+            if boundary_rows:
+                selected_with_reasons = [
+                    *selected_with_reasons[:2],
+                    *boundary_rows,
+                    *selected_with_reasons[2:],
+                ][: min(limit, MAX_SEMANTIC_CELLS)]
+    selected = [result for result, _ in selected_with_reasons]
+    if not selected:
+        return {
+            "kind": "semantic_slice",
+            "schema_version": SEMANTIC_SLICE_SCHEMA,
+            "query": query,
+            "query_interpretation": interpretation,
+            "semantic_cells": [],
+            "minimal_witness_subgraph": {"nodes": ["query"], "edges": []},
+            "rejected_overinterpretations": semantic_slice_rejections(operator_id),
+            "omission_receipt": {
+                "status": "no_matching_handles",
+                "refine_with": "python3 scripts/query_corpus.py --vocabulary",
+            },
+            "authority_posture": "bounded_navigation_projection_not_proof_authority",
+        }
+
+    selected_keys = {
+        (result["kind"], semantic_result_handle(result)) for result in selected
+    }
+    cells = [
+        semantic_cell(query, result, reason)
+        for result, reason in selected_with_reasons
+    ]
+    near_misses = [
+        {
+            "kind": result["kind"],
+            "handle": semantic_result_handle(result),
+            "reason": "lower_ranked_outside_bounded_witness_slice",
+        }
+        for result in search["results"]
+        if (result["kind"], semantic_result_handle(result)) not in selected_keys
+    ][:5]
+    witness_edges = [
+        edge for cell in cells for edge in cell["witness_edges"]
+    ]
+    witness_nodes = list(
+        dict.fromkeys(
+            [
+                "query",
+                *(cell["cell_id"] for cell in cells),
+                *(edge["from"] for edge in witness_edges),
+                *(edge["to"] for edge in witness_edges),
+            ]
+        )
+    )
+    digest_source = {
+        "query": query,
+        "operator": operator_id,
+        "cells": [cell["cell_id"] for cell in cells],
+        "edges": witness_edges,
+    }
+    slice_digest = hashlib.sha256(
+        json.dumps(
+            digest_source, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ).encode("utf-8")
+    ).hexdigest()
+    return {
+        "kind": "semantic_slice",
+        "schema_version": SEMANTIC_SLICE_SCHEMA,
+        "slice_id": f"sha256:{slice_digest}",
+        "query": query,
+        "query_interpretation": interpretation,
+        "semantic_cells": cells,
+        "minimal_witness_subgraph": {
+            "nodes": witness_nodes,
+            "edges": witness_edges,
+            "minimality_posture": (
+                "query_relative_bounded_slice_with_typed_omission_handles"
+            ),
+        },
+        "rejected_overinterpretations": semantic_slice_rejections(operator_id),
+        "near_misses": near_misses,
+        "omission_receipt": {
+            "search_match_count": search["match_count"],
+            "selected_cell_count": len(cells),
+            "omitted_match_count": max(0, search["match_count"] - len(cells)),
+            "additional_match_handles": near_misses,
+            "refine_with": (
+                f"python3 scripts/query_corpus.py --search {json.dumps(query)} "
+                f"--limit {min(MAX_LIMIT, max(limit * 2, 12))}"
+            ),
+        },
+        "artifact_availability_receipt": search[
+            "artifact_availability_receipt"
+        ],
+        "authority_posture": (
+            "witness_carrying_navigation_projection_with_non_substitutable_authority_planes"
+        ),
+        "proof_authority": "Lean source checked by the pinned Lean kernel",
     }
 
 
@@ -1896,11 +2887,34 @@ def render_card(packet: dict[str, Any]) -> str:
         )
     if kind == "search":
         rows = [
-            f"search {packet['query']!r} | matches={packet['match_count']} | emitted={len(packet['results'])}"
+            f"search {packet['query']!r} "
+            f"| operator={packet['query_interpretation']['operator']['id']} "
+            f"| matches={packet['match_count']} | emitted={len(packet['results'])}"
         ]
         for result in packet["results"]:
             handle = result.get("id") or result.get("name")
             rows.append(f"{result['kind']} | {handle}")
+        return "\n".join(rows)
+    if kind == "semantic_dictionary":
+        return (
+            f"semantic dictionary {packet['schema_version']} "
+            f"| operators={len(packet['operators'])} "
+            f"| vocabulary={len(packet['vocabulary'])}"
+        )
+    if kind == "semantic_slice":
+        rows = [
+            f"semantic slice {packet['query']!r} "
+            f"| operator={packet['query_interpretation']['operator']['id']} "
+            f"| cells={len(packet['semantic_cells'])}"
+        ]
+        rows.extend(
+            f"{cell['kind']} | {cell['handle']} | {cell['selection_reason']}"
+            for cell in packet["semantic_cells"]
+        )
+        rows.append(
+            f"witness_edges={len(packet['minimal_witness_subgraph']['edges'])} "
+            f"| omitted={packet['omission_receipt'].get('omitted_match_count', 0)}"
+        )
         return "\n".join(rows)
     if kind == "claim_status":
         return (
@@ -1978,7 +2992,9 @@ def main() -> int:
     group.add_argument("--status", metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
+    group.add_argument("--vocabulary", action="store_true")
     group.add_argument("--search", metavar="TEXT")
+    group.add_argument("--ask", metavar="QUESTION")
     parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT)
     parser.add_argument("--query", default="", help="rank a connection card toward one task")
     parser.add_argument("--format", choices=("json", "card"), default="json")
@@ -2016,8 +3032,12 @@ def main() -> int:
             packet = publication_family_packet(args.publication_family)
         elif args.publication_architecture:
             packet = publication_architecture_packet()
+        elif args.vocabulary:
+            packet = semantic_dictionary_packet()
         elif args.search:
             packet = search_packet(args.search, args.limit)
+        elif args.ask:
+            packet = semantic_slice_packet(args.ask, args.limit)
         else:
             packet = summary_packet()
     except (KeyError, ValueError, json.JSONDecodeError, OSError) as exc:

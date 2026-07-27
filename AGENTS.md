@@ -76,6 +76,13 @@ below is the bounded route into mathematical claims and Lean source.
 For a bounded lookup, use `python3 scripts/query_corpus.py` with one typed
 handle:
 
+- `--vocabulary` for the compact executable mathematical Rosetta stone:
+  question operators, ordinary-language aliases, corpus terms of art,
+  transparent query expansions, and typed route hints;
+- `--ask "<question>"` to compile ordinary mathematical language into a
+  bounded witness graph while keeping kernel, claim-status, authored-digestion,
+  and navigation provenance separate; the contract and evaluation levels are
+  documented in `docs/SEMANTIC_COMPILER.md`;
 - `--claim <id>`, `--open <remaining_open.id>`, or `--route <id>` for the
   mathematical story and exact frontier;
 - programme routes such as `erdos249_diagonal_arithmetic`,
@@ -142,6 +149,7 @@ python3 scripts/test_citation_identity_contract.py
 python3 scripts/test_license_map_contract.py
 python3 scripts/test_methodology_contract.py
 python3 scripts/build_module_graph.py --check
+python3 scripts/build_module_synopsis_index.py --check
 python3 scripts/refresh_source_coordinates.py --check
 python3 scripts/build_corpus_descriptor.py --check
 python3 scripts/build_publication_entry_packet.py --check
@@ -149,6 +157,10 @@ python3 scripts/check_publication_contract.py
 python3 scripts/test_publication_artifact_contract.py
 python3 scripts/run_publication_mutations.py --verify-operators
 python3 scripts/test_query_corpus.py --programme-routes-only
+python3 scripts/test_query_corpus_resilience.py
+python3 scripts/benchmark_semantic_reasoning.py --split held_out
+python3 scripts/audit_semantic_corpus.py
+python3 scripts/dogfood_semantic_proof.py
 python3 scripts/test_status_question_search.py
 python3 scripts/test_claim_packet_boundaries.py
 python3 scripts/test_publication_evidence_time_axis.py
