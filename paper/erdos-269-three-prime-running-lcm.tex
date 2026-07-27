@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{c9b1a7434f558a6998de5c895cd685abf4a3ac7a}
-\renewcommand{\commitshort}{c9b1a7434f55}
+\renewcommand{\commit}{35c358a85bdbd12afbaac685ec331185549d3d99}
+\renewcommand{\commitshort}{35c358a85bdb}
 \hypersetup{
   pdftitle={The running least common multiple of a three-prime smooth prefix: Lean-checked structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -73,16 +73,18 @@ exponent shell whose sorted height coordinates sum to $j$.
 
 Problem~\#269 is open and nothing here decides it.  We prove no irrationality
 or transcendence statement in any three-prime case.  What we prove towards it
-is conditional: for a positive reduced denominator $B$ coprime to $30$, a
-denominator-dependent cofinal local-window residue escape rules out every
-positive integral carry obeying the matching bound.  Lean checks that
-implication.  An integer-only checker constructs the corresponding block
-digits, reproduces three small certificates, and finds an escaping window of
-length at most $18$ for each of $106{,}666$ tested denominator/start pairs.
-This is finite experimental evidence, not a cofinal theorem.  Two statements
-are not proved here: the identification of the actual block digits and of the
-denominator-cleared carry bound with the formal recurrence, and the cofinal
-escape property itself.
+is conditional: after cancellation of the $\{2,3,5\}$-smooth part of a
+hypothetical denominator, the remaining denominator $B$ is coprime to $30$,
+and a denominator-dependent cofinal local-window residue escape rules out every
+positive reduced integral carry obeying the matching bound.  Lean checks the
+absorption-and-cancellation core and the resulting implication.  An
+integer-only checker constructs the corresponding block digits, reproduces
+three small certificates, and finds an escaping window of length at most $18$
+for each of $106{,}666$ tested denominator/start pairs.  This is finite
+experimental evidence, not a cofinal theorem.  Two problem-specific statements
+are not proved here: the rationality-to-carry identification, including the
+divisibility needed to perform that cancellation, and the cofinal escape
+property itself.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
@@ -177,16 +179,21 @@ $\Lprefix$ exactly as a product of three pure powers, so that every later
 statement is a statement about three integer logarithms.  Second, compress its
 jump word into dyadic blocks, whose radix takes only the four values of
 Theorem~\ref{res:dyadic-alphabet}.  Third, assume the sum rational with reduced
-denominator $B$ coprime to $30$, clear denominators, and obtain a positive
-integral carry $d_n$ bounded by $K(B,n)$ and satisfying
+denominator $D$, factor $D=D_{\mathrm{sm}}B$ where every prime divisor of
+$D_{\mathrm{sm}}$ lies in $\{2,3,5\}$ and $\gcd(B,30)=1$, prove that the
+integral carry states share the factor $D_{\mathrm{sm}}$, cancel it, and obtain
+a positive reduced carry $d_n$ bounded by $K(B,n)$ and satisfying
 $d_{n+1}=b_nd_n-Bm_n$.  Fourth, find a window over which the accumulated base
 and forcing put the residue of that carry above the bound, which is impossible.
 The first two stages and the finite core of the fourth are proved and
-formalised here.  The instantiation in the third stage, and the cofinal
-existence of windows in the fourth, are not; they are the two obligations of
-Section~\ref{sec:open}.  The third and fourth stages follow a pattern standard
-in irrationality proofs; what is specific here is that the radix word driving
-the carry is the block alphabet of Theorem~\ref{res:dyadic-alphabet}.
+formalised here.  The algebraic absorption-and-cancellation core of the third
+stage is also checked, but the problem-specific claim that the actual carry
+shares $D_{\mathrm{sm}}$ is not.  That rationality-to-carry instantiation and
+the cofinal existence of windows in the fourth stage are the two obligations
+of Section~\ref{sec:open}.  The third and fourth stages follow a pattern
+standard in irrationality proofs; what is specific here is that the radix word
+driving the carry is the block alphabet of
+Theorem~\ref{res:dyadic-alphabet}.
 
 The statement of Problem~\#269 has been formalised before, as a conjecture with
 an unfilled proof, in the \emph{Formal Conjectures}
@@ -223,6 +230,7 @@ $2\times2$ kernel restriction has rank two at $\{2,3,5\}$ & Proved here & Determ
 Dyadic block radix lies in $\{2,6,10,30\}$ & Proved here & Theorem~\ref{res:dyadic-alphabet}. \\
 Canonical least-positive-residue arithmetic & Proved here & Theorem~\ref{res:consumer}. \\
 Carry contradiction assuming~\eqref{eq:escape} & Proved here & Theorem~\ref{res:windowconsumer}; the implication only. \\
+Smooth-factor absorption and carry cancellation & Proved here; conditional core & Theorem~\ref{res:denominator-reduction}; divisibility of the actual carry remains unproved. \\
 Dyadic-window scan for $B\le1000$ & Exact finite computation & $106{,}666$ pairs; no failures; not a theorem. \\
 Bridge from the actual summands to $(b_n,m_n,K)$ & Not proved & Section~\ref{sec:open}. \\
 Local-window escape for the actual $\{2,3,5\}$ word & Open & Problem~\ref{prob:producer}. \\
@@ -613,6 +621,48 @@ growth hypothesis on it is needed.  What is not yet checked in Lean is the
 identification of the corresponding block digit with the multiplicity forcing
 in the original series.
 
+\subsection{The denominator reduction and its boundary}
+
+Let $D$ be the reduced denominator of a hypothetical rational value, and write
+\[
+  D=D_{\mathrm{sm}}B,\qquad
+  D_{\mathrm{sm}}=2^{u}3^{v}5^{w},\qquad \gcd(B,30)=1.
+\]
+The coprimality condition below is therefore intended as the endpoint of a
+reduction from an arbitrary $D$, not as a restriction on which rational values
+are being considered.  Every fixed $\{2,3,5\}$-smooth factor divides the
+running height once the cutoff reaches that factor
+(\lword{Erdos269/RestrictedFloorSum.lean}{513}{smooth3Val_dvd_threePrimeHeight_of_le}{checked
+absorption}).  If the denominator-cleared carry states $c_n$ share the absorbed
+factor, so that $c_n=D_{\mathrm{sm}}d_n$, Lean cancels it from
+\[
+  c_{n+1}=b_nc_n-D_{\mathrm{sm}}B\,m_n
+\]
+and obtains
+\[
+  d_{n+1}=b_nd_n-Bm_n
+\]
+(\lword{Erdos269/RestrictedFloorSum.lean}{546}{integralCarry_cancel_commonFactor}{checked
+cancellation}).  Positivity and the sharp denominator-dependent upper bound
+descend through the same positive factor
+(\lword{Erdos269/RestrictedFloorSum.lean}{566}{reducedCarry_pos_le_of_commonFactor}{checked
+bound transfer}), and the reduced carry inherits the exact window identity
+(\lword{Erdos269/RestrictedFloorSum.lean}{577}{reducedIntegralCarry_window}{checked
+window transfer}).
+
+\begin{theorem}[conditional denominator reduction]\label{res:denominator-reduction}
+If the actual denominator-cleared carry for $D=D_{\mathrm{sm}}B$ has the
+common-factor form $c_n=D_{\mathrm{sm}}d_n$ with $D_{\mathrm{sm}}>0$, then its
+recurrence, positivity, bound, and window identity reduce to the same statements
+with multiplier $B$, where $\gcd(B,30)=1$.
+\end{theorem}
+
+\noindent The theorem is conditional at exactly one point: height absorption
+does not by itself prove that the \emph{carry state} is divisible by
+$D_{\mathrm{sm}}$.  That divisibility must come from the still-unproved
+rationality-to-carry identification for the actual series.  The phrase
+``$B$ coprime to $30$'' below is valid only downstream of this bridge.
+
 \subsection{The window recurrence and the residue contradiction}
 
 The statements of this subsection are about integer sequences: they do not
@@ -628,8 +678,8 @@ just recorded.  For an integer radix word $b_n$ and forcing word $m_n$, define
 \end{aligned}
 \]
 These are the
-\lword{Erdos269/RestrictedFloorSum.lean}{16}{windowBase}{window base} and
-\lword{Erdos269/RestrictedFloorSum.lean}{21}{windowForcing}{window forcing}.
+\lword{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}{window base} and
+\lword{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}{window forcing}.
 If an integral carry satisfies
 \[
  d_{n+1}=b_n d_n-Bm_n ,
@@ -639,7 +689,7 @@ then induction gives the exact division-free identity
  d_{\ell+h}=W_{\ell,h}d_\ell-BF_{\ell,h};
 \]
 this is the
-\lword{Erdos269/RestrictedFloorSum.lean}{52}{integralCarry_window}{checked
+\lword{Erdos269/RestrictedFloorSum.lean}{480}{integralCarry_window}{checked
 window identity}.
 
 For $C>0$, let $\operatorname{lpr}_C(x)\in\{1,\ldots,C\}$ be the least
@@ -665,7 +715,7 @@ $30$ and every $\ell_0$, there are $\ell\ge\ell_0$ and $h>0$ such that
 \]
 Both the quantifier over $B$ and the dependence of $K$ on $B$ are part of the
 statement.  The exact unproved proposition is the
-\lword{Erdos269/RestrictedFloorSum.lean}{69}{CofinalLocalWindowEscape}{cofinal
+\lword{Erdos269/RestrictedFloorSum.lean}{594}{CofinalLocalWindowEscape}{cofinal
 local-window escape condition}.
 
 The next statement is the finite core of the argument.  The key point is the
@@ -714,7 +764,7 @@ Theorem~\ref{res:consumer} is the contradiction.
 \end{proof}
 
 \noindent This is formalised as the
-\lword{Erdos269/RestrictedFloorSum.lean}{83}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{reduced-carry
+\lword{Erdos269/RestrictedFloorSum.lean}{610}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{reduced-carry
 extinction theorem}.  Coprimality with $30$ is used by~\eqref{eq:escape} to
 select a window; once a window has been chosen, the finite contradiction does
 not use it.  The formalisation carries the edge cases: $|W_{\ell,h}|=0$ is
@@ -750,13 +800,15 @@ for unbounded $B$ or for cofinally many starts.
 
 Two statements would be needed to turn Section~\ref{sec:escape} into an
 irrationality proof at $\{2,3,5\}$, and they are of different kinds.  The first
-is an identification.  The ordered $\{2,3,5\}$ jump word, its block digits
-$m_a$, and the bound $K(B,a)$ obtained by clearing denominators in a
-hypothetical rational value would have to be shown to produce a carry $d_n$
-satisfying $d_{n+1}=b_nd_n-Bm_n$ with the radix word $b_a=\beta_a$ of
-Theorem~\ref{res:dyadic-alphabet}.  The second is the Diophantine existence
-statement of Problem~\ref{prob:producer}.  No Lean theorem yet identifies those
-digits with the formal forcing word, derives $K(B,a)$ from a rational value, or
+is the complete problem-specific carry identification.  Starting with an
+arbitrary reduced denominator $D=D_{\mathrm{sm}}B$, it must identify the
+ordered jump word and its block digits $m_a$, derive the bound $K(B,a)$, and
+prove that the denominator-cleared carry is divisible by
+$D_{\mathrm{sm}}$.  Theorem~\ref{res:denominator-reduction} then produces
+$d_{n+1}=b_nd_n-Bm_n$ with $\gcd(B,30)=1$ and the radix
+$b_a=\beta_a$ of Theorem~\ref{res:dyadic-alphabet}.  The second obligation is
+the Diophantine existence statement of Problem~\ref{prob:producer}.  No Lean
+theorem yet supplies that problem-specific carry identification or
 proves~\eqref{eq:escape}.
 
 \begin{problem}[cofinal local-window escape]\label{prob:producer}
@@ -836,13 +888,15 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 
 Each linked phrase opens its Lean declaration at the pinned source
 revision~\commitshort.  The running-LCM structure, residue arithmetic, and
-local-window bridge occupy three separate modules.  Three distinctions are
+local-window bridge occupy three separate modules.  Four distinctions are
 worth carrying into the source.  The height statements hold for arbitrary
 bases, while the statements about $\Lprefix$ need the three primes to be
 distinct.  The normal form of Section~\ref{sec:fibre} is a finite identity over
-a rectangular box, not a convergence theorem.  And the formal cofinal-escape
-predicate is an unproved hypothesis of Theorem~\ref{res:windowconsumer}; its
-application to the actual $\{2,3,5\}$ word is not asserted.
+a rectangular box, not a convergence theorem.  The smooth part of a
+hypothetical denominator can be cancelled only after divisibility of the actual
+carry states by that factor is proved.  And the formal cofinal-escape predicate
+is an unproved hypothesis of Theorem~\ref{res:windowconsumer}; its application
+to the actual $\{2,3,5\}$ word is not asserted.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -910,13 +964,17 @@ escape condition & \lrefx{Erdos269/ResidueEscape.lean}{65}{ResidueEscapesWindow}
 finite natural-state contradiction & \lrefx{Erdos269/ResidueEscape.lean}{71}{no_bounded_positive_state_of_residue_escape}\\
 contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{92}{residue_le_bound_of_bounded_positive_state}\\
 integer least-positive-residue consumer & \lrefx{Erdos269/ResidueEscape.lean}{104}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
-window base & \lrefx{Erdos269/RestrictedFloorSum.lean}{16}{windowBase}\\
-window forcing & \lrefx{Erdos269/RestrictedFloorSum.lean}{21}{windowForcing}\\
-affine window identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{27}{affineRecurrence_window}\\
-scaled forcing identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{41}{windowForcing_const_mul}\\
-integral carry window & \lrefx{Erdos269/RestrictedFloorSum.lean}{52}{integralCarry_window}\\
-cofinal window producer & \lrefx{Erdos269/RestrictedFloorSum.lean}{69}{CofinalLocalWindowEscape}\\
-reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{83}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}\\
+window base & \lrefx{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}\\
+window forcing & \lrefx{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}\\
+affine window identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{455}{affineRecurrence_window}\\
+scaled forcing identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{469}{windowForcing_const_mul}\\
+integral carry window & \lrefx{Erdos269/RestrictedFloorSum.lean}{480}{integralCarry_window}\\
+absorbed smooth factor & \lrefx{Erdos269/RestrictedFloorSum.lean}{513}{smooth3Val_dvd_threePrimeHeight_of_le}\\
+common-factor cancellation & \lrefx{Erdos269/RestrictedFloorSum.lean}{546}{integralCarry_cancel_commonFactor}\\
+reduced bound transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{566}{reducedCarry_pos_le_of_commonFactor}\\
+reduced window transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{577}{reducedIntegralCarry_window}\\
+cofinal window producer & \lrefx{Erdos269/RestrictedFloorSum.lean}{594}{CofinalLocalWindowEscape}\\
+reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{610}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}\\
 \end{tabular}
 \fi
 
