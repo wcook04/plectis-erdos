@@ -718,11 +718,12 @@ this paper claims none of them.
 A \emph{proof blueprint} pairs an informal outline with Lean declarations and
 records which results depend on which earlier results.  \texttt{leanblueprint}
 stores that outline in \TeX{} and checks that every named declaration
-exists~\cite{leanblueprint}.  LeanArchitect stores blueprint data in Lean,
-infers those dependencies, tracks formalisation progress, and exports
-synchronised \TeX{}~\cite{leanarchitect}.  Both support a formalisation in
-progress.  The claim record instead asks which public wording was reviewed
-after Lean accepted a proof, and which stronger conclusion remains open.
+exists~\cite{leanblueprint}.  LeanArchitect infers dependencies and
+\texttt{sorry} status, exporting synced
+\TeX{}~\cite{leanarchitect}.  Text and unformalised nodes stay manual.  Both systems
+support a formalisation in progress.  The claim record
+instead asks which public wording was reviewed after Lean accepted a proof, and
+which stronger conclusion remains open.
 
 Lean Atlas and EconCSLib ask whether a formalisation expresses its intended
 source mathematics.  Lean Atlas leaves semantic verification to people.  Given
