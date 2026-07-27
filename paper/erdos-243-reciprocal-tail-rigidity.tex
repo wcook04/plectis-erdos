@@ -111,11 +111,15 @@ where $[a_1,\ldots,a_n]$ is the least common
 multiple~\cite{erdosstraus1964}.  Duverney proved a conditional form of the
 problem itself: if $\sum_{n\ge0}\bigl(a_{n+1}/a_n^{2}-1\bigr)$ converges, then
 the reciprocal sum is rational if and only if the recurrence holds for all
-large $n$~\cite{duverney2001}.  Neither is formalised here, and the results
+large $n$~\cite[Cor.~3.2, pp.~286--287]{duverney2001}.  Neither is formalised here, and the results
 below do not recover either of them.  The statement of Problem~\#243 has also
 been formalised before, as a conjecture with an unfilled proof, in the
-\emph{formal-conjectures} collection; that is a statement of the question.  No
-claim of priority is made for anything below.
+\emph{Formal Conjectures} collection~\cite{formalconjectures243}; that is a
+statement of the question.  Against these stronger analytic results, the
+contribution to read here is the machine-checked algebraic obstruction spine:
+especially the bounded-negative-part theorem and the exact hypotheses that
+still separate it from Problem~\#243.  No claim of priority is made for
+anything below.
 
 \paragraph{Why a state system.}
 The hypothesis is asymptotic and the conclusion is exact, so the argument must
@@ -917,9 +921,10 @@ factorial residue reduction & \lrefx{Erdos243/FiniteHorizonResidue.lean}{134}{fo
   \href{https://users.renyi.hu/~p_erdos/1964-19.pdf}{\emph{On the irrationality
   of certain Ahmes series}},
   J. Indian Math. Soc. (N.S.) \textbf{27} (1964), 129--133. MR~175848.
-\bibitem{duverney2001} D.~Duverney, \emph{Irrationality of fast converging
-  series of rational numbers}, J. Math. Sci. Univ. Tokyo \textbf{8} (2001),
-  275--316. MR~1837165.
+\bibitem{duverney2001} D.~Duverney,
+  \href{https://www.ms.u-tokyo.ac.jp/journal/pdf/jms080206.pdf}
+  {\emph{Irrationality of fast converging series of rational numbers}},
+  J. Math. Sci. Univ. Tokyo \textbf{8} (2001), 275--316. MR~1837165.
 \bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L. Graham,
   \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\emph{Old
   and New Problems and Results in Combinatorial Number Theory}},
@@ -931,6 +936,10 @@ factorial residue reduction & \lrefx{Erdos243/FiniteHorizonResidue.lean}{134}{fo
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/243}{\emph{Erd\H{o}s Problem \#243}},
   \texttt{erdosproblems.com/243}, accessed 22 July 2026.
+\bibitem{formalconjectures243} The Formal Conjectures Authors,
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/243.lean}
+  {\emph{FormalConjectures.ErdosProblems.\texttt{243}}},
+  Lean source, 2025, accessed 27 July 2026.
 \end{thebibliography}
 
 \end{document}
