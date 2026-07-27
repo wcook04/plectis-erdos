@@ -4,6 +4,7 @@ import Mathlib.Data.Nat.ChineseRemainder
 import Mathlib.Data.Nat.Find
 import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Data.ZMod.Basic
+import Mathlib.Analysis.SpecificLimits.Basic
 import Mathlib.Order.Filter.AtTopBot.Basic
 import Mathlib.Tactic.Ring
 
@@ -23,6 +24,11 @@ coprimality, whole-modulus avoidance, a shifted CRT barrier, and first crossing.
 It does not settle the unrestricted problem, whose live obstruction is an
 integer centered state with cofinally unbounded negative excursions.  The full
 bounded-negative-part regime is closed below without a periodicity hypothesis.
+For the remaining branch, dynamic gcd reduction is also made exact: every gcd
+growth factor is paid for by old-prime overlap.  Normalized centered-state
+vanishing now yields local near-unit tail growth, explicit subexponential tail
+growth, and hence sublinear strict gcd growth through the finite `2^r` budget.
+The residual is to turn sparse old-prime reuse into a contradiction.
 -/
 
 namespace ErdosProblems.Erdos243
@@ -1081,6 +1087,338 @@ theorem no_eventuallyBoundedRise_reducedTail
 /-! The remaining bounded-negative wrapper needs the tail gcd to stabilise.
 The next lemmas kernel-check that exact arithmetic reduction. -/
 
+/-! ## Dynamic cancellation and the gcd-growth budget
+
+Before the tail gcd stabilises, reduction at consecutive indices introduces a
+growth factor `h`.  The exact normalized step below shows that `h` is paid for
+by overlap between the current multiplier and the reduced denominator.  The
+finite counting lemmas then quantify how expensive strict gcd growth is.
+-/
+
+/-- At one dynamically reduced step, the gcd-growth factor is trapped between
+the old-factor overlap and its square. -/
+theorem cancellationFactor_sandwich
+    {a u v uNext vNext h : ℕ}
+    (hcop : Nat.Coprime u v)
+    (hcopNext : Nat.Coprime uNext vNext)
+    (hu : h * uNext + v = a * u)
+    (hv : h * vNext = a * v) :
+    Nat.gcd a v ∣ h ∧ h ∣ (Nat.gcd a v) ^ 2 := by
+  let d := Nat.gcd a v
+  have hdA : d ∣ a := Nat.gcd_dvd_left a v
+  have hdV : d ∣ v := Nat.gcd_dvd_right a v
+  have hdHu : d ∣ h * uNext := by
+    apply (Nat.dvd_add_iff_left hdV).mpr
+    rw [hu]
+    exact dvd_mul_of_dvd_left hdA u
+  have hdHv : d ∣ h * vNext := by
+    rw [hv]
+    exact dvd_mul_of_dvd_left hdA v
+  have hdH : d ∣ h := by
+    have hdGcd : d ∣ Nat.gcd (h * uNext) (h * vNext) :=
+      Nat.dvd_gcd hdHu hdHv
+    rw [Nat.gcd_mul_left, hcopNext.gcd_eq_one, Nat.mul_one] at hdGcd
+    exact hdGcd
+  refine ⟨hdH, ?_⟩
+  by_cases hdZero : d = 0
+  · obtain ⟨k, hk⟩ := hdH
+    have hhZero : h = 0 := by simpa [hdZero] using hk
+    change h ∣ d ^ 2
+    simp [hhZero, hdZero]
+  · have hdPos : 0 < d := Nat.pos_of_ne_zero hdZero
+    have hcopHU : Nat.Coprime h u := by
+      rw [Nat.coprime_iff_gcd_eq_one]
+      let k := Nat.gcd h u
+      have hkH : k ∣ h := Nat.gcd_dvd_left h u
+      have hkU : k ∣ u := Nat.gcd_dvd_right h u
+      have hkHu : k ∣ h * uNext := dvd_mul_of_dvd_left hkH uNext
+      have hkSum : k ∣ h * uNext + v := by
+        rw [hu]
+        exact dvd_mul_of_dvd_right hkU a
+      have hkV : k ∣ v := (Nat.dvd_add_iff_right hkHu).mpr hkSum
+      exact Nat.eq_one_of_dvd_coprimes hcop hkU hkV
+    have hhA2U : h ∣ a ^ 2 * u := by
+      have hsum : h ∣ a * (h * uNext) + h * vNext := by
+        exact Nat.dvd_add (dvd_mul_of_dvd_right (dvd_mul_right h uNext) a)
+          (dvd_mul_right h vNext)
+      have heq : a * (h * uNext) + h * vNext = a ^ 2 * u := by
+        calc
+          a * (h * uNext) + h * vNext = a * (h * uNext) + a * v := by rw [hv]
+          _ = a * (h * uNext + v) := by ring
+          _ = a * (a * u) := by rw [hu]
+          _ = a ^ 2 * u := by ring
+      rwa [heq] at hsum
+    have hhA2 : h ∣ a ^ 2 := (hcopHU.dvd_mul_right).mp hhA2U
+    have hhV2 : h ∣ v ^ 2 := by
+      have hfirst : h ∣ v * (h * uNext) :=
+        dvd_mul_of_dvd_right (dvd_mul_right h uNext) v
+      have hsum : h ∣ v * (h * uNext) + v ^ 2 := by
+        have heq : v * (h * uNext) + v ^ 2 = u * (h * vNext) := by
+          calc
+            v * (h * uNext) + v ^ 2 = v * (h * uNext + v) := by ring
+            _ = v * (a * u) := by rw [hu]
+            _ = u * (a * v) := by ring
+            _ = u * (h * vNext) := by rw [hv]
+        rw [heq]
+        exact dvd_mul_of_dvd_right (dvd_mul_right h vNext) u
+      exact (Nat.dvd_add_iff_right hfirst).mpr hsum
+    have hhGcdSquares : h ∣ Nat.gcd (a ^ 2) (v ^ 2) :=
+      Nat.dvd_gcd hhA2 hhV2
+    let aRed := a / d
+    let vRed := v / d
+    have hdAeq : a = d * aRed := (Nat.mul_div_cancel' hdA).symm
+    have hdVeq : v = d * vRed := (Nat.mul_div_cancel' hdV).symm
+    have hred : Nat.Coprime aRed vRed := by
+      dsimp [aRed, vRed, d]
+      exact Nat.coprime_div_gcd_div_gcd hdPos
+    have hGcdSquares : Nat.gcd (a ^ 2) (v ^ 2) = d ^ 2 := by
+      rw [hdAeq, hdVeq]
+      simp only [mul_pow]
+      rw [Nat.gcd_mul_left, (hred.pow 2 2).gcd_eq_one, Nat.mul_one]
+    rwa [hGcdSquares] at hhGcdSquares
+
+/-- Cancellation-free reduction is exactly coprimality between the current
+multiplier and the reduced accumulated denominator. -/
+theorem cancellationFactor_eq_one_iff
+    {a u v uNext vNext h : ℕ}
+    (hcop : Nat.Coprime u v)
+    (hcopNext : Nat.Coprime uNext vNext)
+    (hu : h * uNext + v = a * u)
+    (hv : h * vNext = a * v) :
+    h = 1 ↔ Nat.Coprime a v := by
+  obtain ⟨hlower, hupper⟩ :=
+    cancellationFactor_sandwich hcop hcopNext hu hv
+  constructor
+  · intro hh
+    rw [hh] at hlower
+    exact Nat.coprime_iff_gcd_eq_one.mpr (Nat.dvd_one.mp hlower)
+  · intro hav
+    have hd : Nat.gcd a v = 1 := hav.gcd_eq_one
+    rw [hd, one_pow] at hupper
+    exact Nat.dvd_one.mp hupper
+
+/-- Number of strict increases among the first `n` transitions of `G`. -/
+def strictGrowthCount (G : ℕ → ℕ) : ℕ → ℕ
+  | 0 => 0
+  | n + 1 => strictGrowthCount G n + if G n < G (n + 1) then 1 else 0
+
+/-- A strict step in a positive divisibility chain at least doubles. -/
+theorem two_mul_le_of_dvd_of_lt
+    {x y : ℕ} (hxy : x ∣ y) (hxyLt : x < y) :
+    2 * x ≤ y := by
+  obtain ⟨k, rfl⟩ := hxy
+  have hk : 2 ≤ k := by
+    rcases k with _ | _ | k
+    · simp at hxyLt
+    · simp at hxyLt
+    · omega
+  simpa [Nat.mul_comm] using Nat.mul_le_mul_left x hk
+
+/-- Every strict step in a positive divisibility chain consumes one binary
+factor of its total growth. -/
+theorem pow_strictGrowthCount_mul_le
+    (G : ℕ → ℕ)
+    (hpos : ∀ n, 0 < G n)
+    (hchain : ∀ n, G n ∣ G (n + 1)) :
+    ∀ n, 2 ^ strictGrowthCount G n * G 0 ≤ G n := by
+  intro n
+  induction n with
+  | zero => simp [strictGrowthCount]
+  | succ n ih =>
+      by_cases hlt : G n < G (n + 1)
+      · have hdouble : 2 * G n ≤ G (n + 1) :=
+          two_mul_le_of_dvd_of_lt (hchain n) hlt
+        simp only [strictGrowthCount, hlt, if_pos, pow_add, pow_one]
+        calc
+          (2 ^ strictGrowthCount G n * 2) * G 0 =
+              2 * (2 ^ strictGrowthCount G n * G 0) := by ring
+          _ ≤ 2 * G n := Nat.mul_le_mul_left 2 ih
+          _ ≤ G (n + 1) := hdouble
+      · have hmono : G n ≤ G (n + 1) :=
+          Nat.le_of_dvd (hpos (n + 1)) (hchain n)
+        simp only [strictGrowthCount, hlt]
+        exact ih.trans hmono
+
+/-- Shifted finite form: `r` strict gcd-growth steps after index `N` force a
+factor of at least `2^r` between the endpoint gcds. -/
+theorem pow_strictGrowthCountFrom_mul_le
+    (G : ℕ → ℕ) (N n : ℕ)
+    (hpos : ∀ k, 0 < G k)
+    (hchain : ∀ k, G k ∣ G (k + 1)) :
+    2 ^ strictGrowthCount (fun k ↦ G (N + k)) n * G N ≤ G (N + n) := by
+  exact pow_strictGrowthCount_mul_le (fun k ↦ G (N + k))
+    (fun k ↦ hpos (N + k))
+    (fun k ↦ by simpa only [Nat.add_assoc] using hchain (N + k)) n
+
+/-- Natural-number form of density zero.  If every fixed power of a positive
+divisibility chain is eventually dominated by `2^n`, then its strict-growth
+count is sublinear in the division-free sense `K * count < n`. -/
+theorem strictGrowthCount_sublinear_of_subexponential
+    (G : ℕ → ℕ)
+    (hpos : ∀ n, 0 < G n)
+    (hchain : ∀ n, G n ∣ G (n + 1))
+    (hsubexp : ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n → G n ^ K < 2 ^ n) :
+    ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n → K * strictGrowthCount G n < n := by
+  intro K hK
+  obtain ⟨N, hN⟩ := hsubexp K hK
+  refine ⟨N, fun n hn ↦ ?_⟩
+  have hbudget := pow_strictGrowthCount_mul_le G hpos hchain n
+  have hpowCount : 2 ^ strictGrowthCount G n ≤ G n := by
+    have hbase : 2 ^ strictGrowthCount G n ≤
+        2 ^ strictGrowthCount G n * G 0 :=
+      Nat.le_mul_of_pos_right _ (hpos 0)
+    exact hbase.trans hbudget
+  have hraised : (2 ^ strictGrowthCount G n) ^ K ≤ G n ^ K :=
+    Nat.pow_le_pow_left hpowCount K
+  have hpowerLt : 2 ^ (strictGrowthCount G n * K) < 2 ^ n := by
+    rw [pow_mul]
+    exact hraised.trans_lt (hN n hn)
+  have hexponent : strictGrowthCount G n * K < n :=
+    (Nat.pow_lt_pow_iff_right (by omega)).mp hpowerLt
+  simpa [Nat.mul_comm] using hexponent
+
+/-- Strict-growth counts split exactly at a shifted endpoint. -/
+theorem strictGrowthCount_add
+    (G : ℕ → ℕ) (m n : ℕ) :
+    strictGrowthCount G (m + n) =
+      strictGrowthCount G m +
+        strictGrowthCount (fun k ↦ G (m + k)) n := by
+  induction n with
+  | zero => simp [strictGrowthCount]
+  | succ n ih =>
+      simp only [Nat.add_succ, strictGrowthCount]
+      change
+        strictGrowthCount G (m + n) +
+            (if G (m + n) < G (m + n + 1) then 1 else 0) =
+          strictGrowthCount G m +
+            (strictGrowthCount (fun k ↦ G (m + k)) n +
+              if G (m + n) < G (m + n + 1) then 1 else 0)
+      rw [ih]
+      omega
+
+/-- One strict step before an endpoint makes its cumulative count positive. -/
+theorem strictGrowthCount_pos_of_event
+    (G : ℕ → ℕ) {j n : ℕ}
+    (hj : j < n) (hstep : G j < G (j + 1)) :
+    0 < strictGrowthCount G n := by
+  have hjle : j + 1 ≤ n := by omega
+  have hn : (j + 1) + (n - (j + 1)) = n :=
+    Nat.add_sub_of_le hjle
+  rw [← hn, strictGrowthCount_add]
+  have hbase : 0 < strictGrowthCount G (j + 1) := by
+    simp [strictGrowthCount, hstep]
+  omega
+
+/-- If the endpoint count is too small to hit every aligned length-`L` block,
+one of those blocks contains no strict-growth transition. -/
+theorem exists_aligned_noStrictGrowthBlock_of_count_bound
+    (G : ℕ → ℕ) {B L m : ℕ}
+    (hm : B < m)
+    (hcount :
+      (L + 1) * strictGrowthCount G (B + m * L) < B + m * L) :
+    ∃ t, t < m ∧ ∀ j, j < L →
+      ¬ G (B + t * L + j) < G (B + t * L + j + 1) := by
+  by_contra hnone
+  have hhit : ∀ t, t < m → ∃ j, j < L ∧
+      G (B + t * L + j) < G (B + t * L + j + 1) := by
+    intro t ht
+    by_contra hblock
+    apply hnone
+    refine ⟨t, ht, ?_⟩
+    intro j hj hstep
+    exact hblock ⟨j, hj, hstep⟩
+  have hlower : ∀ t, t ≤ m →
+      t ≤ strictGrowthCount G (B + t * L) := by
+    intro t
+    induction t with
+    | zero =>
+        intro _
+        simp
+    | succ t ih =>
+        intro ht
+        have htlt : t < m := by omega
+        obtain ⟨j, hjL, hstep⟩ := hhit t htlt
+        have hspos : 0 < strictGrowthCount
+            (fun k ↦ G (B + t * L + k)) L := by
+          apply strictGrowthCount_pos_of_event
+              (fun k ↦ G (B + t * L + k)) hjL
+          simpa [Nat.add_assoc] using hstep
+        have hindex :
+            B + (t + 1) * L = (B + t * L) + L := by
+          ring
+        rw [hindex, strictGrowthCount_add]
+        have hit := ih (by omega : t ≤ m)
+        omega
+  have hmLower := hlower m le_rfl
+  have hmul := Nat.mul_le_mul_left (L + 1) hmLower
+  have hendLt : B + m * L < (L + 1) * m := by
+    have hreorder : (L + 1) * m = m * L + m := by ring
+    rw [hreorder]
+    omega
+  omega
+
+/-- Sublinear strict-growth count forces arbitrarily late blocks with no
+strict-growth transition. -/
+theorem exists_arbitrarilyLate_noStrictGrowthBlock_of_sublinear
+    (G : ℕ → ℕ)
+    (hsub : ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n →
+      K * strictGrowthCount G n < n)
+    (B L : ℕ) :
+    ∃ n, B ≤ n ∧ ∀ j, j < L →
+      ¬ G (n + j) < G (n + j + 1) := by
+  by_cases hL : L = 0
+  · subst L
+    refine ⟨B, le_rfl, ?_⟩
+    intro j hj
+    omega
+  · obtain ⟨N, hN⟩ := hsub (L + 1) (by omega)
+    let m := B + N + 1
+    have hm : B < m := by
+      dsimp [m]
+      omega
+    have hmprod : m ≤ m * L :=
+      Nat.le_mul_of_pos_right m (by omega)
+    have hend : N ≤ B + m * L := by
+      dsimp [m] at hmprod ⊢
+      omega
+    obtain ⟨t, ht, hblock⟩ :=
+      exists_aligned_noStrictGrowthBlock_of_count_bound
+        (G := G) (B := B) (L := L) (m := m) hm
+        (hN (B + m * L) hend)
+    refine ⟨B + t * L, by omega, ?_⟩
+    intro j hj
+    simpa [Nat.add_assoc] using hblock j hj
+
+/-- In a positive divisibility chain, the no-strict-growth blocks supplied by
+sublinearity are genuinely constant. -/
+theorem exists_arbitrarilyLate_constBlock_of_sublinear
+    (G : ℕ → ℕ)
+    (hpos : ∀ n, 0 < G n)
+    (hchain : ∀ n, G n ∣ G (n + 1))
+    (hsub : ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n →
+      K * strictGrowthCount G n < n)
+    (B L : ℕ) :
+    ∃ n, B ≤ n ∧ ∀ j, j ≤ L → G (n + j) = G n := by
+  obtain ⟨n, hn, hflat⟩ :=
+    exists_arbitrarilyLate_noStrictGrowthBlock_of_sublinear G hsub B L
+  refine ⟨n, hn, ?_⟩
+  intro j
+  induction j with
+  | zero =>
+      intro _
+      simp
+  | succ j ih =>
+      intro hj
+      have hjL : j < L := by omega
+      have hle : G (n + j) ≤ G (n + j + 1) :=
+        Nat.le_of_dvd (hpos (n + j + 1)) (hchain (n + j))
+      have heq : G (n + j) = G (n + j + 1) :=
+        Nat.le_antisymm hle (not_lt.mp (hflat j hjL))
+      calc
+        G (n + (j + 1)) = G (n + j + 1) := by rw [Nat.add_succ]
+        _ = G (n + j) := heq.symm
+        _ = G n := ih (by omega)
+
 /-- The gcd of the product-cleared tail and denominator states divides its
 successor. -/
 theorem tailGcd_dvd_succ
@@ -1095,6 +1433,148 @@ theorem tailGcd_dvd_succ
     exact (Nat.dvd_add_iff_left (Nat.gcd_dvd_right C D)).mpr hsum
   · rw [hD]
     exact dvd_mul_of_dvd_right (Nat.gcd_dvd_right C D) a
+
+/-- If the exact natural tail state is subexponential in the power-vs-`2^n`
+sense, then strict tail-gcd growth events have natural density zero. -/
+theorem tailGcd_strictGrowthCount_sublinear_of_tailSubexponential
+    (a C D : ℕ → ℕ)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hsubexp : ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n → C n ^ K < 2 ^ n) :
+    ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n →
+      K * strictGrowthCount (fun n ↦ Nat.gcd (C n) (D n)) n < n := by
+  apply strictGrowthCount_sublinear_of_subexponential
+  · intro n
+    exact Nat.gcd_pos_of_pos_left (D n) (hCpos n)
+  · intro n
+    exact tailGcd_dvd_succ (a n) (C n) (D n) (C (n + 1)) (D (n + 1))
+      (hC n) (hD n)
+  · intro K hK
+    obtain ⟨N, hN⟩ := hsubexp K hK
+    refine ⟨N, fun n hn ↦ ?_⟩
+    have hgcdLe : Nat.gcd (C n) (D n) ≤ C n :=
+      Nat.gcd_le_left (D n) (hCpos n)
+    exact (Nat.pow_le_pow_left hgcdLe K).trans_lt (hN n hn)
+
+/-- Numerator after reduction by the exact tail gcd. -/
+def reducedTailNumerator (C D : ℕ) : ℕ :=
+  C / Nat.gcd C D
+
+/-- Denominator state after reduction by the exact tail gcd. -/
+def reducedTailDenominator (C D : ℕ) : ℕ :=
+  D / Nat.gcd C D
+
+/-- Growth factor between two consecutive exact tail gcds. -/
+def tailGcdGrowthFactor (C D Cnext Dnext : ℕ) : ℕ :=
+  Nat.gcd Cnext Dnext / Nat.gcd C D
+
+/-- Reduction by a positive tail gcd produces coprime numerator and
+denominator states. -/
+theorem reducedTail_coprime
+    (C D : ℕ) (hC : 0 < C) :
+    Nat.Coprime (reducedTailNumerator C D) (reducedTailDenominator C D) := by
+  exact Nat.coprime_div_gcd_div_gcd (Nat.gcd_pos_of_pos_left D hC)
+
+/-- Consecutive gcd reductions of an exact tail satisfy the dynamic normalized
+cocycle with multiplier `tailGcdGrowthFactor`. -/
+theorem dynamicReducedTail_step
+    (a C D Cnext Dnext : ℕ)
+    (hCpos : 0 < C)
+    (hCnextPos : 0 < Cnext)
+    (hC : Cnext + D = a * C)
+    (hD : Dnext = a * D) :
+    tailGcdGrowthFactor C D Cnext Dnext *
+          reducedTailNumerator Cnext Dnext + reducedTailDenominator C D =
+        a * reducedTailNumerator C D ∧
+      tailGcdGrowthFactor C D Cnext Dnext *
+          reducedTailDenominator Cnext Dnext =
+        a * reducedTailDenominator C D := by
+  let g := Nat.gcd C D
+  let gNext := Nat.gcd Cnext Dnext
+  have hgPos : 0 < g := by
+    dsimp [g]
+    exact Nat.gcd_pos_of_pos_left D hCpos
+  have hgNextPos : 0 < gNext := by
+    dsimp [gNext]
+    exact Nat.gcd_pos_of_pos_left Dnext hCnextPos
+  have hgNext : g ∣ gNext := by
+    dsimp [g, gNext]
+    exact tailGcd_dvd_succ a C D Cnext Dnext hC hD
+  have hgC : g ∣ C := by
+    dsimp [g]
+    exact Nat.gcd_dvd_left C D
+  have hgD : g ∣ D := by
+    dsimp [g]
+    exact Nat.gcd_dvd_right C D
+  have hgNextC : gNext ∣ Cnext := by
+    dsimp [gNext]
+    exact Nat.gcd_dvd_left Cnext Dnext
+  have hgNextD : gNext ∣ Dnext := by
+    dsimp [gNext]
+    exact Nat.gcd_dvd_right Cnext Dnext
+  change (gNext / g) * (Cnext / gNext) + D / g = a * (C / g) ∧
+    (gNext / g) * (Dnext / gNext) = a * (D / g)
+  constructor
+  · apply Nat.eq_of_mul_eq_mul_left hgPos
+    calc
+      g * ((gNext / g) * (Cnext / gNext) + D / g) =
+          (g * (gNext / g)) * (Cnext / gNext) + g * (D / g) := by ring
+      _ = gNext * (Cnext / gNext) + D := by
+        rw [Nat.mul_div_cancel' hgNext, Nat.mul_div_cancel' hgD]
+      _ = Cnext + D := by rw [Nat.mul_div_cancel' hgNextC]
+      _ = a * C := hC
+      _ = g * (a * (C / g)) := by
+        have hCeq : C = g * (C / g) := (Nat.mul_div_cancel' hgC).symm
+        calc
+          a * C = a * (g * (C / g)) := congrArg (fun x ↦ a * x) hCeq
+          _ = g * (a * (C / g)) := by ring
+  · apply Nat.eq_of_mul_eq_mul_left hgPos
+    calc
+      g * ((gNext / g) * (Dnext / gNext)) =
+          (g * (gNext / g)) * (Dnext / gNext) := by ring
+      _ = gNext * (Dnext / gNext) := by rw [Nat.mul_div_cancel' hgNext]
+      _ = Dnext := Nat.mul_div_cancel' hgNextD
+      _ = a * D := hD
+      _ = g * (a * (D / g)) := by
+        have hDeq : D = g * (D / g) := (Nat.mul_div_cancel' hgD).symm
+        calc
+          a * D = a * (g * (D / g)) := congrArg (fun x ↦ a * x) hDeq
+          _ = g * (a * (D / g)) := by ring
+
+/-- On the actual dynamically reduced exact tail, the gcd-growth factor is
+trapped between old-prime overlap and its square. -/
+theorem tailGcdGrowthFactor_sandwich
+    (a C D Cnext Dnext : ℕ)
+    (hCpos : 0 < C)
+    (hCnextPos : 0 < Cnext)
+    (hC : Cnext + D = a * C)
+    (hD : Dnext = a * D) :
+    Nat.gcd a (reducedTailDenominator C D) ∣
+        tailGcdGrowthFactor C D Cnext Dnext ∧
+      tailGcdGrowthFactor C D Cnext Dnext ∣
+        (Nat.gcd a (reducedTailDenominator C D)) ^ 2 := by
+  obtain ⟨hu, hv⟩ :=
+    dynamicReducedTail_step a C D Cnext Dnext hCpos hCnextPos hC hD
+  exact cancellationFactor_sandwich
+    (reducedTail_coprime C D hCpos)
+    (reducedTail_coprime Cnext Dnext hCnextPos) hu hv
+
+/-- An actual tail gcd stays unchanged exactly when the current multiplier is
+coprime to the reduced accumulated denominator. -/
+theorem tailGcdGrowthFactor_eq_one_iff
+    (a C D Cnext Dnext : ℕ)
+    (hCpos : 0 < C)
+    (hCnextPos : 0 < Cnext)
+    (hC : Cnext + D = a * C)
+    (hD : Dnext = a * D) :
+    tailGcdGrowthFactor C D Cnext Dnext = 1 ↔
+      Nat.Coprime a (reducedTailDenominator C D) := by
+  obtain ⟨hu, hv⟩ :=
+    dynamicReducedTail_step a C D Cnext Dnext hCpos hCnextPos hC hD
+  exact cancellationFactor_eq_one_iff
+    (reducedTail_coprime C D hCpos)
+    (reducedTail_coprime Cnext Dnext hCnextPos) hu hv
 
 /-- At a negative-state index, the tail gcd is exactly the gcd with the
 positive negative-state magnitude. -/
@@ -1409,6 +1889,243 @@ theorem natTail_eq_sub_centeredState
     (C (n + 1) : ℤ) = (C n : ℤ) - E n := by
   rw [natTail_eq_nextTailState a C D hC n,
     nextTailState_eq_sub_centered, ← hE n]
+
+/-- A pointwise normalized centered-state bound gives the local near-unit
+growth inequality needed for multiplicative accumulation.  No limiting or
+density argument is hidden here: `K * |Eₙ| < Cₙ` and
+`Cₙ₊₁ = Cₙ - Eₙ` directly imply
+`K * Cₙ₊₁ < (K + 1) * Cₙ`. -/
+theorem tailState_localNearUnitGrowth
+    (C : ℕ → ℕ) (E : ℕ → ℤ)
+    (hTail : ∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n)
+    (K n : ℕ) (hsmall : K * Int.natAbs (E n) < C n) :
+    K * C (n + 1) < (K + 1) * C n := by
+  have hnegE : -E n ≤ (Int.natAbs (E n) : ℤ) := by
+    rw [← Int.natAbs_neg]
+    exact Int.le_natAbs
+  have hupper : (C (n + 1) : ℤ) ≤
+      (C n : ℤ) + (Int.natAbs (E n) : ℤ) := by
+    rw [hTail n]
+    omega
+  have hupperNat : C (n + 1) ≤ C n + Int.natAbs (E n) := by
+    exact_mod_cast hupper
+  calc
+    K * C (n + 1) ≤ K * (C n + Int.natAbs (E n)) :=
+      Nat.mul_le_mul_left K hupperNat
+    _ = K * C n + K * Int.natAbs (E n) := by ring
+    _ < K * C n + C n := Nat.add_lt_add_left hsmall _
+    _ = (K + 1) * C n := by ring
+
+/-- Along the exact natural tail orbit, division-free normalized vanishing
+eventually makes every one-step tail growth arbitrarily close to unit from
+above.  This is the local input for the remaining analytic accumulation
+step toward subexponential tail growth. -/
+theorem tailState_eventually_localNearUnitGrowth_of_normalizedVanishes
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * C (n + 1) < (K + 1) * C n := by
+  intro K
+  obtain ⟨N, hN⟩ := hvanish K
+  refine ⟨N, fun n hn ↦ ?_⟩
+  exact tailState_localNearUnitGrowth C E
+    (natTail_eq_sub_centeredState a C D E hC hE) K n (hN n hn)
+
+/-- Every fixed power admits an integer near-unit rate whose corresponding
+power growth is strictly slower than doubling.  This is the numerical rate
+selection used by `subexponential_of_eventually_nearUnitGrowth`. -/
+theorem exists_nearUnitPower_rate (K : ℕ) :
+    ∃ q : ℕ, 0 < q ∧ (q + 1) ^ K < 2 * q ^ K := by
+  have hcast : Filter.Tendsto (fun q : ℕ ↦ (q : ℝ))
+      Filter.atTop Filter.atTop := tendsto_natCast_atTop_atTop
+  have hinv : Filter.Tendsto (fun q : ℕ ↦ ((q : ℝ))⁻¹)
+      Filter.atTop (nhds 0) := tendsto_inv_atTop_zero.comp hcast
+  have hone : Filter.Tendsto (fun q : ℕ ↦ (1 : ℝ) + ((q : ℝ))⁻¹)
+      Filter.atTop (nhds 1) := by
+    simpa using tendsto_const_nhds.add hinv
+  have hpow : Filter.Tendsto
+      (fun q : ℕ ↦ ((1 : ℝ) + ((q : ℝ))⁻¹) ^ K)
+      Filter.atTop (nhds 1) := by simpa using hone.pow K
+  have hevent : ∀ᶠ q : ℕ in Filter.atTop,
+      ((1 : ℝ) + ((q : ℝ))⁻¹) ^ K < 2 :=
+    hpow.eventually_lt_const (by norm_num)
+  obtain ⟨N, hN⟩ := Filter.eventually_atTop.mp hevent
+  let q := max 1 N
+  have hq : 0 < q := by dsimp [q]; omega
+  have hratio := hN q (by dsimp [q]; omega)
+  refine ⟨q, hq, ?_⟩
+  have hqR : (0 : ℝ) < (q : ℝ) := by exact_mod_cast hq
+  have hmul := mul_lt_mul_of_pos_right hratio (pow_pos hqR K)
+  have hreal : (((q + 1) ^ K : ℕ) : ℝ) <
+      ((2 * q ^ K : ℕ) : ℝ) := by
+    calc
+      (((q + 1) ^ K : ℕ) : ℝ) =
+          ((1 : ℝ) + ((q : ℝ))⁻¹) ^ K * (q : ℝ) ^ K := by
+            push_cast
+            rw [← mul_pow]
+            congr 1
+            field_simp
+      _ < 2 * (q : ℝ) ^ K := hmul
+      _ = ((2 * q ^ K : ℕ) : ℝ) := by norm_num
+  exact_mod_cast hreal
+
+/-- A geometric rate with smaller base eventually beats any fixed competing
+constant.  The statement stays in naturals so the accumulation theorem can
+clear every denominator before invoking this analytic fact. -/
+theorem eventually_const_mul_pow_lt_const_mul_pow
+    (U V A B : ℕ) (hV : 0 < V) (hB : 0 < B) (hAB : A < B) :
+    ∃ M, ∀ m, M ≤ m → U * A ^ m < V * B ^ m := by
+  let r : ℝ := (A : ℝ) / (B : ℝ)
+  have hBreal : (0 : ℝ) < (B : ℝ) := by exact_mod_cast hB
+  have hr0 : 0 ≤ r := by
+    dsimp [r]
+    positivity
+  have hr1 : r < 1 := by
+    dsimp [r]
+    rw [div_lt_one hBreal]
+    exact_mod_cast hAB
+  have hpow := tendsto_pow_atTop_nhds_zero_of_lt_one hr0 hr1
+  have hlim : Filter.Tendsto
+      (fun m : ℕ ↦ ((U : ℝ) / (V : ℝ)) * r ^ m)
+      Filter.atTop (nhds 0) := by
+    simpa using tendsto_const_nhds.mul hpow
+  have hevent : ∀ᶠ m : ℕ in Filter.atTop,
+      ((U : ℝ) / (V : ℝ)) * r ^ m < 1 :=
+    hlim.eventually_lt_const (by norm_num)
+  obtain ⟨M, hM⟩ := Filter.eventually_atTop.mp hevent
+  refine ⟨M, fun m hm ↦ ?_⟩
+  have hratio := hM m hm
+  have hVne : (V : ℝ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hV)
+  have hBne : (B : ℝ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hB)
+  have hreal : ((U * A ^ m : ℕ) : ℝ) <
+      ((V * B ^ m : ℕ) : ℝ) := by
+    dsimp [r] at hratio
+    rw [div_pow] at hratio
+    field_simp [hVne, hBne] at hratio
+    push_cast
+    simpa [mul_assoc, mul_left_comm, mul_comm] using hratio
+  exact_mod_cast hreal
+
+/-- The analytic accumulation bridge.  If every prescribed integer rate
+eventually bounds one-step growth by `(q + 1) / q`, then every fixed power of
+the sequence is eventually dominated by `2^n`.  The proof iterates a fully
+denominator-cleared inequality and absorbs the finite prefix by geometric
+domination. -/
+theorem subexponential_of_eventually_nearUnitGrowth
+    (C : ℕ → ℕ)
+    (hnear : ∀ q, 0 < q → ∃ N, ∀ n, N ≤ n →
+      q * C (n + 1) < (q + 1) * C n) :
+    ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n → C n ^ K < 2 ^ n := by
+  intro K _hK
+  obtain ⟨q, hq, hrate⟩ := exists_nearUnitPower_rate K
+  obtain ⟨N, hN⟩ := hnear q hq
+  let Q := q ^ K
+  let A := (q + 1) ^ K
+  let X := C N ^ K
+  let B := 2 * Q
+  have hQ : 0 < Q := by dsimp [Q]; exact pow_pos hq K
+  have hB : 0 < B := by dsimp [B]; omega
+  have hAB : A < B := by simpa [A, B, Q] using hrate
+  have hstep : ∀ n, N ≤ n →
+      Q * C (n + 1) ^ K ≤ A * C n ^ K := by
+    intro n hn
+    have hs := Nat.pow_le_pow_left (Nat.le_of_lt (hN n hn)) K
+    simpa [Q, A, mul_pow] using hs
+  have hiter : ∀ m, Q ^ m * C (N + m) ^ K ≤ A ^ m * X := by
+    intro m
+    induction m with
+    | zero => simp [X]
+    | succ m ih =>
+        have hs := hstep (N + m) (by omega)
+        calc
+          Q ^ (m + 1) * C (N + (m + 1)) ^ K =
+              Q ^ m * (Q * C ((N + m) + 1) ^ K) := by
+                rw [pow_succ]
+                ring_nf
+          _ ≤ Q ^ m * (A * C (N + m) ^ K) :=
+            Nat.mul_le_mul_left _ hs
+          _ = A * (Q ^ m * C (N + m) ^ K) := by ring
+          _ ≤ A * (A ^ m * X) := Nat.mul_le_mul_left A ih
+          _ = A ^ (m + 1) * X := by rw [pow_succ]; ring
+  obtain ⟨M, hM⟩ := eventually_const_mul_pow_lt_const_mul_pow
+    X (2 ^ N) A B (pow_pos (by omega) N) hB hAB
+  refine ⟨N + M, fun n hn ↦ ?_⟩
+  have hNn : N ≤ n := by omega
+  let m := n - N
+  have hNm : N + m = n := Nat.add_sub_of_le hNn
+  have hMm : M ≤ m := by dsimp [m]; omega
+  have hi := hiter m
+  have hd := hM m hMm
+  have hchain : Q ^ m * C n ^ K < Q ^ m * 2 ^ n := by
+    calc
+      Q ^ m * C n ^ K = Q ^ m * C (N + m) ^ K := by rw [hNm]
+      _ ≤ A ^ m * X := hi
+      _ = X * A ^ m := by ring
+      _ < 2 ^ N * B ^ m := hd
+      _ = Q ^ m * 2 ^ n := by
+        rw [← hNm]
+        simp [B, pow_add, mul_pow]
+        ring
+  exact (Nat.mul_lt_mul_left (pow_pos hQ m)).mp hchain
+
+/-- Exact-orbit specialization of the analytic accumulation bridge: normalized
+centered-state vanishing forces power-vs-`2^n` subexponential tail growth. -/
+theorem tailState_subexponential_of_normalizedVanishes
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n → C n ^ K < 2 ^ n := by
+  apply subexponential_of_eventually_nearUnitGrowth C
+  intro q hq
+  exact tailState_eventually_localNearUnitGrowth_of_normalizedVanishes
+    a C D E hC hE hvanish q
+
+/-- The complete budget consumer: along an exact positive natural tail,
+normalized centered-state vanishing makes strict tail-gcd growth sublinear.
+This composes local near-unit growth, analytic accumulation, and the finite
+`2^r` divisibility-chain budget. -/
+theorem tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n) :
+    ∀ K, 0 < K → ∃ N, ∀ n, N ≤ n →
+      K * strictGrowthCount (fun n ↦ Nat.gcd (C n) (D n)) n < n := by
+  exact tailGcd_strictGrowthCount_sublinear_of_tailSubexponential
+    a C D hCpos hC hD
+    (tailState_subexponential_of_normalizedVanishes a C D E hC hE hvanish)
+
+/-- Normalized centered-state vanishing forces arbitrarily late finite blocks
+on which the exact tail gcd is constant. -/
+theorem tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes
+    (a C D : ℕ → ℕ) (E : ℕ → ℤ)
+    (hCpos : ∀ n, 0 < C n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hE : ∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ))
+    (hvanish : ∀ K, ∃ N, ∀ n, N ≤ n →
+      K * Int.natAbs (E n) < C n)
+    (B L : ℕ) :
+    ∃ n, B ≤ n ∧ ∀ j, j ≤ L →
+      Nat.gcd (C (n + j)) (D (n + j)) = Nat.gcd (C n) (D n) := by
+  exact exists_arbitrarilyLate_constBlock_of_sublinear
+    (fun n ↦ Nat.gcd (C n) (D n))
+    (fun n ↦ Nat.gcd_pos_of_pos_left (D n) (hCpos n))
+    (fun n ↦ tailGcd_dvd_succ
+      (a n) (C n) (D n) (C (n + 1)) (D (n + 1)) (hC n) (hD n)
+    )
+    (tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes
+      a C D E hCpos hC hD hE hvanish
+    )
+    B L
 
 /-- A zero centered state is absorbing under the strict centered-representative
 bound at the next index.  The defect identity makes `Cₙ₊₁` divide `Eₙ₊₁`, and
