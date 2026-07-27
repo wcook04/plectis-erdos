@@ -19,7 +19,7 @@ import query_corpus
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "lean_dependency_index.json"
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
-SCHEMA = "erdos249257-lean-dependency-index/2"
+SCHEMA = "erdos249257-lean-dependency-index/3"
 
 
 def ensure_elaborated_environment() -> None:
@@ -85,17 +85,50 @@ def parse_environment_output(
         elif fields[0] == "AIW_TYPE_SHAPE" and len(fields) == 4:
             _, handle, binder_count, conclusion_head = fields
             type_shapes.setdefault(
-                handle, {"conclusion_symbols": set()}
+                handle,
+                {"conclusion_symbols": set(), "binders": {}},
             ).update(
                 {
                     "binder_count": int(binder_count),
                     "conclusion_head": conclusion_head,
                 }
             )
+        elif fields[0] == "AIW_BINDER_SHAPE" and len(fields) == 7:
+            (
+                _,
+                handle,
+                binder_index,
+                binder_name,
+                binder_info,
+                is_proposition,
+                type_head,
+            ) = fields
+            type_shapes.setdefault(
+                handle,
+                {"conclusion_symbols": set(), "binders": {}},
+            )["binders"][int(binder_index)] = {
+                "name": binder_name,
+                "binder_info": binder_info,
+                "is_proposition": is_proposition == "true",
+                "type_head": type_head,
+                "type_symbols": set(),
+            }
+        elif fields[0] == "AIW_BINDER_REF" and len(fields) == 4:
+            _, handle, binder_index, reference = fields
+            shape = type_shapes.setdefault(
+                handle,
+                {"conclusion_symbols": set(), "binders": {}},
+            )
+            binder = shape["binders"].setdefault(
+                int(binder_index),
+                {"type_symbols": set()},
+            )
+            binder["type_symbols"].add(reference)
         elif fields[0] == "AIW_CONCLUSION_REF" and len(fields) == 3:
             _, handle, reference = fields
             type_shapes.setdefault(
-                handle, {"conclusion_symbols": set()}
+                handle,
+                {"conclusion_symbols": set(), "binders": {}},
             )["conclusion_symbols"].add(reference)
         elif fields[0] == "AIW_EDGE" and len(fields) == 6:
             _, source, source_module, target, target_module, relation = fields
@@ -188,6 +221,18 @@ def build_packet() -> dict[str, Any]:
         if row["kind"] in theorem_kinds
         and handle in environment_type_shapes
     ]
+    affordance_binders = {}
+    for handle in affordance_handles:
+        shape = environment_type_shapes[handle]
+        binder_indexes = sorted(shape["binders"])
+        if binder_indexes != list(range(shape["binder_count"])):
+            raise RuntimeError(
+                f"non-contiguous binder export for {handle}: "
+                f"{binder_indexes!r}"
+            )
+        affordance_binders[handle] = [
+            shape["binders"][index] for index in binder_indexes
+        ]
     affordance_symbols = sorted(
         {
             symbol
@@ -195,12 +240,37 @@ def build_packet() -> dict[str, Any]:
             for symbol in (
                 environment_type_shapes[handle]["conclusion_head"],
                 *environment_type_shapes[handle]["conclusion_symbols"],
+                *(
+                    binder_symbol
+                    for binder in affordance_binders[handle]
+                    for binder_symbol in (
+                        binder["type_head"],
+                        *binder["type_symbols"],
+                    )
+                ),
             )
         }
     )
     affordance_symbol_ids = {
         symbol: symbol_id
         for symbol_id, symbol in enumerate(affordance_symbols)
+    }
+    affordance_binder_names = sorted(
+        {
+            binder["name"]
+            for handle in affordance_handles
+            for binder in affordance_binders[handle]
+        }
+    )
+    affordance_binder_name_ids = {
+        name: name_id
+        for name_id, name in enumerate(affordance_binder_names)
+    }
+    binder_info_codes = {
+        "explicit": 0,
+        "implicit": 1,
+        "strict_implicit": 2,
+        "instance_implicit": 3,
     }
     affordance_rows = [
         [
@@ -215,9 +285,30 @@ def build_packet() -> dict[str, Any]:
                     "conclusion_symbols"
                 ]
             ),
+            [
+                [
+                    affordance_binder_name_ids[binder["name"]],
+                    binder_info_codes[binder["binder_info"]],
+                    binder["is_proposition"],
+                    affordance_symbol_ids[binder["type_head"]],
+                    sorted(
+                        affordance_symbol_ids[symbol]
+                        for symbol in binder["type_symbols"]
+                    ),
+                ]
+                for binder in affordance_binders[handle]
+            ],
         ]
         for handle in affordance_handles
     ]
+    affordance_binder_count = sum(
+        len(binders) for binders in affordance_binders.values()
+    )
+    affordance_proposition_binder_count = sum(
+        binder["is_proposition"]
+        for binders in affordance_binders.values()
+        for binder in binders
+    )
     formal_source = claims["release"]["formal_source"]
     unresolved_atlas_rows = []
     for row in atlas_rows:
@@ -301,6 +392,15 @@ def build_packet() -> dict[str, Any]:
             "formal_type_affordance_symbol_count": len(
                 affordance_symbols
             ),
+            "formal_type_affordance_binder_name_count": len(
+                affordance_binder_names
+            ),
+            "formal_type_affordance_binder_count": (
+                affordance_binder_count
+            ),
+            "formal_type_affordance_proposition_binder_count": (
+                affordance_proposition_binder_count
+            ),
         },
         "unresolved_atlas_declarations": unresolved_atlas_rows,
         "edge_relation_bit_legend": {
@@ -317,8 +417,23 @@ def build_packet() -> dict[str, Any]:
                 "forall_binder_count",
                 "conclusion_head_symbol_id",
                 "conclusion_symbol_ids",
+                "binder_rows",
             ],
+            "binder_row_layout": [
+                "binder_name_id",
+                "binder_info_code",
+                "is_proposition",
+                "type_head_symbol_id",
+                "type_symbol_ids",
+            ],
+            "binder_info_code_legend": {
+                "0": "explicit",
+                "1": "implicit",
+                "2": "strict_implicit",
+                "3": "instance_implicit",
+            },
             "symbol_table": affordance_symbols,
+            "binder_name_table": affordance_binder_names,
             "rows": affordance_rows,
         },
         "nodes": nodes,

@@ -65,6 +65,15 @@ GOAL_SUPPORT_QUERY = (
 GOAL_SUPPORT_REQUIRED_DECLARATIONS = {
     "tail_diff_int_of_den_dvd",
 }
+CURVATURE_PLAN_QUERY = (
+    "I need to prove Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / "
+    "2 ^ n) from a SharpCurvatureSupply"
+)
+CURVATURE_PLAN_REQUIRED_SPINE = {
+    "curvature_notMem_int_of_sharpCurvatureCert",
+    "periodLcm_pos",
+    "rational_totient_series_forces_lcm_cone_flatness",
+}
 SCRATCH_THEOREM = """\
 import Erdos249257.CurvatureCarry
 import Erdos249257.ExponentOnlyTransport
@@ -222,6 +231,7 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     all_recovered: set[str] = set()
     all_ranked: set[str] = set()
     missing_any: set[str] = set()
+    planning_contract_errors: list[str] = []
     for task_id, task_query, required in task_specs:
         ranked_search = query_corpus.search_packet(
             task_query, query_corpus.MAX_SEMANTIC_CELLS
@@ -373,27 +383,37 @@ def dogfood_packet(query: str) -> dict[str, Any]:
         for result in goal_support_ranked["results"]
         if result["kind"] == "declaration"
     }
-    goal_support_slice = query_corpus.semantic_slice_packet(
-        GOAL_SUPPORT_QUERY, 20
+    goal_support_plan = query_corpus.formal_proof_plan_packet(
+        GOAL_SUPPORT_QUERY, 20, 4
     )
     goal_support_declarations = {
-        candidate["name"]
-        for candidate in goal_support_slice[
-            "operator_synthesis"
-        ].get("formal_goal_support", {}).get("candidates", [])
+        goal_support_plan.get("terminal_candidate", {}).get("name", "")
     }
+    goal_support_declarations.discard("")
     missing_goal_support = sorted(
         GOAL_SUPPORT_REQUIRED_DECLARATIONS
         - goal_support_declarations
     )
+    unmatched_goal_obligations = {
+        row["name"]
+        for row in goal_support_plan.get("application", {}).get(
+            "obligations", []
+        )
+        if row["status"] == "unmatched_proposition_obligation"
+    }
+    if (
+        goal_support_plan.get("plan_status")
+        != "blocked_by_unmatched_proposition_obligations"
+        or unmatched_goal_obligations != {"hdvd"}
+    ):
+        planning_contract_errors.append(
+            "integer_tail_plan_did_not_isolate_hdvd"
+        )
     tasks.append(
         {
             "id": "formal_goal_affordance_application",
             "query": GOAL_SUPPORT_QUERY,
-            "semantic_slice_id": goal_support_slice.get("slice_id"),
-            "semantic_operator": goal_support_slice[
-                "query_interpretation"
-            ]["operator"]["id"],
+            "semantic_operator": "support",
             "required_declarations": sorted(
                 GOAL_SUPPORT_REQUIRED_DECLARATIONS
             ),
@@ -415,7 +435,11 @@ def dogfood_packet(query: str) -> dict[str, Any]:
                 & goal_support_ranked_declarations
             ),
             "dependency_authority": (
-                "elaborated_conclusion_shape_candidate_ranking"
+                "elaborated_conclusion_shape_and_application_telescope"
+            ),
+            "proof_plan_status": goal_support_plan.get("plan_status"),
+            "unmatched_proposition_obligations": sorted(
+                unmatched_goal_obligations
             ),
         }
     )
@@ -423,7 +447,59 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     all_recovered.update(goal_support_declarations)
     all_ranked.update(goal_support_ranked_declarations)
     missing_any.update(missing_goal_support)
-    if missing_any:
+    curvature_plan = query_corpus.formal_proof_plan_packet(
+        CURVATURE_PLAN_QUERY, 30, 4
+    )
+    curvature_terminal = curvature_plan.get(
+        "terminal_candidate", {}
+    ).get("name")
+    curvature_spine = {
+        row["name"]
+        for row in curvature_plan.get(
+            "exact_dependency_spine", {}
+        ).get("steps", [])
+    }
+    missing_curvature_spine = sorted(
+        CURVATURE_PLAN_REQUIRED_SPINE - curvature_spine
+    )
+    if (
+        curvature_terminal
+        != "irrational_totientSeries_of_sharpCurvatureSupply"
+        or curvature_plan.get("plan_status")
+        != "all_proposition_obligations_have_context_matches"
+        or curvature_plan.get("application", {}).get(
+            "unmatched_proposition_count"
+        )
+        != 0
+    ):
+        planning_contract_errors.append(
+            "curvature_plan_not_context_ready"
+        )
+    tasks.append(
+        {
+            "id": "hypothesis_aware_curvature_reconstruction",
+            "query": CURVATURE_PLAN_QUERY,
+            "semantic_operator": "support",
+            "required_declarations": sorted(
+                CURVATURE_PLAN_REQUIRED_SPINE
+            ),
+            "retrieved_declarations": sorted(curvature_spine),
+            "synthesized_consumer_signatures": {},
+            "ranked_search_recovered_required_declarations": [],
+            "missing_required_declarations": missing_curvature_spine,
+            "semantic_expansion_gain": len(
+                CURVATURE_PLAN_REQUIRED_SPINE & curvature_spine
+            ),
+            "dependency_authority": (
+                "elaborated_application_telescope_and_value_reference_spine"
+            ),
+            "proof_plan_status": curvature_plan.get("plan_status"),
+        }
+    )
+    all_required.update(CURVATURE_PLAN_REQUIRED_SPINE)
+    all_recovered.update(curvature_spine)
+    missing_any.update(missing_curvature_spine)
+    if missing_any or planning_contract_errors:
         return {
             "kind": "semantic_proof_dogfood",
             "schema_version": DOGFOOD_SCHEMA,
@@ -431,6 +507,7 @@ def dogfood_packet(query: str) -> dict[str, Any]:
             "passed": False,
             "stage": "semantic_retrieval",
             "missing_required_declarations": sorted(missing_any),
+            "planning_contract_errors": planning_contract_errors,
         }
 
     started = time.monotonic()

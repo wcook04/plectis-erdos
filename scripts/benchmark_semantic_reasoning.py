@@ -262,6 +262,9 @@ TASKS: tuple[dict[str, Any], ...] = (
             "rational_totient_series_forces_lcm_cone_flatness",
             "curvature_notMem_int_of_sharpCurvatureCert",
             "apply Erdos249257.TotientTailPeriodKiller.irrational_totientSeries_of_sharpCurvatureSupply",
+            "all_proposition_obligations_have_context_matches",
+            "hsupply",
+            "context_matched_proposition_candidate",
         ),
     },
     {
@@ -413,6 +416,9 @@ TASKS: tuple[dict[str, Any], ...] = (
             "Set.range",
             "apply Erdos249257.TotientTailPeriodKiller.tail_diff_int_of_den_dvd",
             "requires_Lean_elaboration_at_the_target_goal",
+            "blocked_by_unmatched_proposition_obligations",
+            "hdvd",
+            "unmatched_proposition_obligation",
         ),
     },
 )
