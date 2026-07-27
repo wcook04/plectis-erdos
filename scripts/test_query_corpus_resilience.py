@@ -393,6 +393,19 @@ def check_formal_goal_affordance_support() -> None:
         "two_pow_mul_totient_series_eq",
         "summable_totient_div_two_pow",
     }
+    assert plan["dynamic_transition_expansion"] == {
+        "runtime_owner": "scripts/proof_state_compiler.py",
+        "pilot_command": (
+            "python3 scripts/proof_state_compiler.py --pilot-controls"
+        ),
+        "request_schema": "erdos249257-proof-state-request/1",
+        "packet_schema": "erdos249257-proof-state-compilation/1",
+        "boundary": (
+            "the static proof plan nominates candidates; only the runtime "
+            "owner's pinned Lean application receipt can assert that a "
+            "candidate produced particular subgoals or closed"
+        ),
+    }
     curvature_plan = query_corpus.formal_proof_plan_packet(
         "I need to prove Irrational (∑' n : ℕ, "
         "(Nat.totient n : ℝ) / 2 ^ n) from a SharpCurvatureSupply",

@@ -1449,6 +1449,21 @@ def formal_proof_plan_packet(
             "omission_receipt": cone.get("omission_receipt"),
         },
         "plan_status": obligations["application_status"],
+        "dynamic_transition_expansion": {
+            "runtime_owner": "scripts/proof_state_compiler.py",
+            "pilot_command": (
+                "python3 scripts/proof_state_compiler.py --pilot-controls"
+            ),
+            "request_schema": "erdos249257-proof-state-request/1",
+            "packet_schema": (
+                "erdos249257-proof-state-compilation/1"
+            ),
+            "boundary": (
+                "the static proof plan nominates candidates; only the "
+                "runtime owner's pinned Lean application receipt can assert "
+                "that a candidate produced particular subgoals or closed"
+            ),
+        },
         "authority_posture": (
             "terminal_and_dependency_edges_from_elaborated_Lean_environment_"
             "binder_context_matches_are_navigation_candidates_and_all_tactic_"
