@@ -1,3 +1,4 @@
+import Mathlib.Data.Int.ModEq
 import Mathlib.Tactic.Ring
 
 /-!
@@ -11,6 +12,53 @@ rational denominator.
 -/
 
 namespace ErdosProblems.Erdos269
+
+/-- Canonical positive representative of an integer modulo `C`: a zero
+residue is represented by `C`, and every nonzero residue by its nonnegative
+Euclidean remainder. -/
+def leastPositiveResidue (C : ℕ) (x : ℤ) : ℕ :=
+  if x % (C : ℤ) = 0 then C else Int.natAbs (x % (C : ℤ))
+
+/-- The least positive representative really lies in the canonical interval
+`1, ..., C` when the modulus is positive. -/
+theorem leastPositiveResidue_pos_le
+    {C : ℕ} (hC : 0 < C) (x : ℤ) :
+    0 < leastPositiveResidue C x ∧ leastPositiveResidue C x ≤ C := by
+  unfold leastPositiveResidue
+  by_cases hx : x % (C : ℤ) = 0
+  · simp [hx, hC]
+  · simp only [hx, if_false]
+    have hCInt : (0 : ℤ) < C := by exact_mod_cast hC
+    have hnonneg : 0 ≤ x % (C : ℤ) :=
+      Int.emod_nonneg x hCInt.ne'
+    have hlt : x % (C : ℤ) < C :=
+      Int.emod_lt_of_pos x hCInt
+    constructor
+    · exact Int.natAbs_pos.mpr hx
+    · have habsLt : Int.natAbs (x % (C : ℤ)) < C := by
+        exact_mod_cast (show (Int.natAbs (x % (C : ℤ)) : ℤ) < C by
+          simpa [Int.natAbs_of_nonneg hnonneg] using hlt)
+      omega
+
+/-- The canonical positive representative is congruent to the source
+integer. -/
+theorem leastPositiveResidue_modEq
+    {C : ℕ} (hC : 0 < C) (x : ℤ) :
+    Int.ModEq C (leastPositiveResidue C x : ℤ) x := by
+  unfold leastPositiveResidue Int.ModEq
+  by_cases hx : x % (C : ℤ) = 0
+  · simp [hx]
+  · simp only [hx, if_false]
+    have hCInt : (0 : ℤ) < C := by exact_mod_cast hC
+    have hnonneg : 0 ≤ x % (C : ℤ) :=
+      Int.emod_nonneg x hCInt.ne'
+    have hlt : x % (C : ℤ) < C :=
+      Int.emod_lt_of_pos x hCInt
+    have hcast :
+        ((Int.natAbs (x % (C : ℤ)) : ℕ) : ℤ) =
+          x % (C : ℤ) := by
+      simp [Int.natAbs_of_nonneg hnonneg]
+    rw [hcast, Int.emod_eq_of_lt hnonneg hlt]
 
 /-- A residue representative escapes a tail window when it is strictly above
 the window but still lies in the canonical positive range `1, ..., C`. -/
@@ -51,5 +99,32 @@ theorem residue_le_bound_of_bounded_positive_state
   by_contra hnot
   exact no_bounded_positive_state_of_residue_escape
     hcpos hcbound ⟨Nat.lt_of_not_ge hnot, hresidueC⟩ hmod
+
+/-- Integer-valued form of the finite contradiction. -/
+theorem no_bounded_positive_int_state_of_leastPositiveResidue
+    {C bound : ℕ} {x c : ℤ}
+    (hC : 0 < C)
+    (hcpos : 0 < c)
+    (hcbound : Int.natAbs c ≤ bound)
+    (hescape : bound < leastPositiveResidue C x)
+    (hmod : Int.ModEq C c x) :
+    False := by
+  have hresidue :=
+    leastPositiveResidue_pos_le hC x
+  have hmodInt :
+      ((Int.natAbs c : ℕ) : ℤ) % (C : ℤ) =
+        ((leastPositiveResidue C x : ℕ) : ℤ) % (C : ℤ) := by
+    have hcx :
+        Int.ModEq C ((Int.natAbs c : ℕ) : ℤ) x := by
+      simpa [Int.natAbs_of_nonneg hcpos.le] using hmod
+    exact (hcx.trans (leastPositiveResidue_modEq hC x).symm).eq
+  have hmodNat :
+      Int.natAbs c % C = leastPositiveResidue C x % C := by
+    exact_mod_cast hmodInt
+  exact no_bounded_positive_state_of_residue_escape
+    (Int.natAbs_pos.mpr hcpos.ne')
+    hcbound
+    ⟨hescape, hresidue.2⟩
+    hmodNat
 
 end ErdosProblems.Erdos269
