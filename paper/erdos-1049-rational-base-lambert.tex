@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #1049's primitive endpoint-jet obstruction advances
 % independently of the corpus default.
-\renewcommand{\commit}{d7c339fe1e2c9c4729004afafd10ae4b2cf59fef}
-\renewcommand{\commitshort}{d7c339fe1e2c}
+\renewcommand{\commit}{08d83b6689c85fc501f4051960d4c35bddb0f431}
+\renewcommand{\commitshort}{08d83b6689c8}
 \hypersetup{
   pdftitle={Multiplicative obstructions at base 3/2: Lean-checked exclusions for the linear-form approach to Erdős Problem 1049},
   pdfsubject={Erdős Problem Notes: Problem 1049},
@@ -60,10 +60,11 @@ $U_{N+1}=rU_N-Bc(N+1)s^{N+1}$ and the bound
 $2^{N+1}\le Bc(N+1)s^{N+1}$ for $s\ge2$ and positive data, against the exact
 collapse of that term to $Bc(N+1)$ at $s=1$.  The height criterion of Bundschuh
 and V\"a\"an\"anen (1994), which settles a restricted family of rational bases
-containing $7/2$, is used as an external theorem; of its inputs we formalise
-only two exact arithmetic facts.  Separately we check polynomial bounds on the
-denominator exponents of a homogenised Pad\'e construction, with the analytic
-remainder left untouched.
+containing $7/2$, is used as an external theorem.  We formalise the complete
+elementary Archimedean height inequality required at $7/2$, while leaving the
+source theorem's analytic irrationality argument external.  Separately we
+check polynomial bounds on the denominator exponents of a homogenised Pad\'e
+construction, with the analytic remainder left untouched.
 
 Problem~\#1049 is open, and nothing here decides it.  The results are
 exclusions of particular constructions, not statements about the arithmetic
@@ -194,7 +195,7 @@ Corridor forces $s^{N+K+1}<r(N+K)$ & Proved here & Theorem~\ref{res:corridorboun
 No corridor at base $3/2$ & Proved here & Theorem~\ref{res:nocorridor}; a statement about the clearing scheme. \\
 Cleared-tail recurrence & Proved here & Theorem~\ref{res:tailrec}, an exact identity. \\
 Forcing term at least $2^{N+1}$ for $s\ge2$ & Proved here & Theorem~\ref{res:forcing}; at $s=1$ the term is $Bc(N+1)$. \\
-Two arithmetic facts behind the $7/2$ criterion & Proved here & Section~\ref{sec:sevenhalves}; three further inputs are not formalised. \\
+The elementary $7/2$ height condition & Proved here & Theorem~\ref{res:sevenhalves}; the analytic theorem of~\cite{bv1994} remains external. \\
 Pad\'e denominator-exponent bounds & Proved here & Section~\ref{sec:pade}; exponent arithmetic only. \\
 Pad\'e remainder positivity and decay & Not treated & Section~\ref{sec:pade}. \\
 Growing-rank simultaneous endpoint-jet kernel & Open & Section~\ref{sec:open}; the exact remaining obligation. \\
@@ -481,7 +482,7 @@ divisor-counting coefficient it holds because $d(n)\le n$.  The divisibility
 $a^{K}\mid QD$ is the requirement that clearing succeeded coordinatewise, and
 the last inequality is the tail estimate that makes the trapped integer smaller
 than~$1$.  The definition is the
-\lword{Erdos1049/RationalBaseLambert.lean}{41}{CoordinatewiseCorridor}{corridor
+\lword{Erdos1049/RationalBaseLambert.lean}{106}{CoordinatewiseCorridor}{corridor
 predicate}.
 
 \begin{theorem}[corridor bound]\label{res:corridorbound}
@@ -502,7 +503,7 @@ and cancelling the positive factor $Q$ gives the claim.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos1049/RationalBaseLambert.lean}{49}{coordinatewiseCorridor_implies_pow_lt_linear}{power-versus-linear
+\lword{Erdos1049/RationalBaseLambert.lean}{114}{coordinatewiseCorridor_implies_pow_lt_linear}{power-versus-linear
 consequence}.
 
 The inequality of Theorem~\ref{res:corridorbound} is where the integer and
@@ -522,7 +523,7 @@ $x\ge1$, so $3(x+1)=3x+3<2^{x+1}+2^{x+1}=2^{x+2}$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos1049/RationalBaseLambert.lean}{70}{three_mul_lt_two_pow_succ}{exponential
+\lword{Erdos1049/RationalBaseLambert.lean}{135}{three_mul_lt_two_pow_succ}{exponential
 comparison}.
 
 \begin{theorem}[no corridor at base $3/2$]\label{res:nocorridor}
@@ -537,7 +538,7 @@ applied to $x=N+K\ge2$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos1049/RationalBaseLambert.lean}{83}{threeHalves_no_coordinatewiseCorridor}{corridor
+\lword{Erdos1049/RationalBaseLambert.lean}{148}{threeHalves_no_coordinatewiseCorridor}{corridor
 exclusion at three halves}.
 
 Theorem~\ref{res:nocorridor} excludes the coordinatewise clearing scheme at
@@ -562,9 +563,9 @@ Define the prefix and the cleared tail state by
 Thus $P_N$ is the partial sum of $\sum_{n\ge1}c(n)(s/r)^{n}$ through level $N$,
 and $U_N$ is the tail of a putative value $F$ after that level, scaled by
 $Br^{N}$.  These are the
-\lword{Erdos1049/RationalBaseLambert.lean}{96}{rationalBasePrefixQ}{rational-base
+\lword{Erdos1049/RationalBaseLambert.lean}{161}{rationalBasePrefixQ}{rational-base
 prefix} and the
-\lword{Erdos1049/RationalBaseLambert.lean}{109}{rationalBaseClearedTailQ}{cleared
+\lword{Erdos1049/RationalBaseLambert.lean}{174}{rationalBaseClearedTailQ}{cleared
 tail state}.
 
 \begin{theorem}[cleared-tail recurrence]\label{res:tailrec}
@@ -582,7 +583,7 @@ nonzero, gives the identity.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos1049/RationalBaseLambert.lean}{115}{rationalBaseClearedTailQ_succ}{cleared-tail
+\lword{Erdos1049/RationalBaseLambert.lean}{180}{rationalBaseClearedTailQ_succ}{cleared-tail
 recurrence}.
 
 The recurrence has a linear part $rU_N$ and a forcing term $Bc(N+1)s^{N+1}$.
@@ -606,9 +607,9 @@ using $B\,c(N+1)\ge1$.  The second part is the definition with $s=1$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos1049/RationalBaseLambert.lean}{132}{twoPow_le_rationalBaseForcingNat}{exponential
+\lword{Erdos1049/RationalBaseLambert.lean}{197}{twoPow_le_rationalBaseForcingNat}{exponential
 lower bound} and the
-\lword{Erdos1049/RationalBaseLambert.lean}{146}{rationalBaseForcingNat_one}{integer-base
+\lword{Erdos1049/RationalBaseLambert.lean}{211}{rationalBaseForcingNat_one}{integer-base
 collapse}.
 
 At $s=1$ the forcing term is $Bc(N+1)$, so it grows only as fast as the
@@ -625,31 +626,46 @@ records the size of the term that scheme would have to absorb.
 \section{The height criterion at $7/2$}\label{sec:sevenhalves}
 
 In 1994 Bundschuh and V\"a\"an\"anen proved an irrationality criterion for a
-family of rational bases cut out by a height condition~\cite{bv1994}.  The
-criterion applies at $\beta=7/2$.  It is an analytic theorem and it is not
-formalised here.  Two of its elementary inputs are.
+family of rational bases cut out by a height condition~\cite[Theorem~2,
+pp.~176--177]{bv1994}.  In its special case $\alpha=-1$, the printed
+hypothesis is
+\[
+ \lambda<\left(\frac12+\frac1{\pi^2}\right)^{-1}.
+\]
+At $q=7/2$ the Archimedean parameter is
+$\lambda=\log 7/\log(7/2)$.  The criterion therefore applies once the following
+strict inequality is checked.
 
-\begin{proposition}\label{res:sevenhalves}
-$2^{18}<7^{7}$, and $\tfrac{7}{18}=\tfrac12-\tfrac19$ in $\Q$.
-\end{proposition}
+\begin{theorem}[the $7/2$ height condition]\label{res:sevenhalves}
+\[
+ \frac{\log 7}{\log(7/2)}
+ <
+ \left(\frac12+\frac1{\pi^2}\right)^{-1}.
+\]
+\end{theorem}
 
-\noindent These are the
-\lword{Erdos1049/RationalBaseLambert.lean}{29}{sevenHalves_power_certificate}{integer
-power comparison}, namely $262\,144<823\,543$, and the
-\lword{Erdos1049/RationalBaseLambert.lean}{35}{sevenHalves_rational_margin}{exact
-rational boundary}.
+\noindent The Lean proof factors the estimate into the
+\lword{Erdos1049/RationalBaseLambert.lean}{32}{sevenHalves_power_certificate}{integer
+certificate} $2^{18}<7^7$, the resulting
+\lword{Erdos1049/RationalBaseLambert.lean}{41}{sevenHalves_log_ratio_lt}{logarithmic
+ratio bound} $\log2/\log7<7/18$, the
+\lword{Erdos1049/RationalBaseLambert.lean}{57}{one_div_pi_sq_lt_one_nine}{$\pi$-bound}
+$1/\pi^2<1/9$, and the
+\lword{Erdos1049/RationalBaseLambert.lean}{66}{sevenHalves_bundschuhVaananen_margin}{strict
+margin}
+\[
+ \frac{\log2}{\log7}<\frac12-\frac1{\pi^2}.
+\]
+The
+\lword{Erdos1049/RationalBaseLambert.lean}{76}{sevenHalves_archimedean_height_condition}{final
+height inequality} then rewrites
+$\log(7/2)=\log7-\log2$ and closes the displayed condition.
 
-The first is the arithmetic content of the estimate
-$\log2/\log7<7/18$; the passage from the integer inequality to the logarithmic
-one uses monotonicity of the logarithm, which is not part of the formalised
-statement.  The second is the exact form of a margin whose other input is the
-strict bound $1/\pi^{2}<1/9$, that is $3<\pi$, which is also not formalised
-here.  Three inputs are therefore external: the logarithmic step, the bound on
-$\pi$, and the analytic theorem of~\cite{bv1994} itself.
-Proposition~\ref{res:sevenhalves} is not a formalisation of the criterion
-of~\cite{bv1994}.  The two remaining elementary inputs, the logarithmic
-monotonicity step and the bound $3<\pi$, could be formalised on their own, with
-the analytic theorem left external and cited.
+This formalises the complete elementary parameter check at $q=7/2$; it does
+not formalise Bundschuh and V\"a\"an\"anen's analytic irrationality theorem,
+whose proof occupies pp.~189--193 of the source.  The conclusion that
+$F(7/2)$ is irrational is consequently cited from that theorem, not claimed as
+a Lean theorem here.
 
 The criterion does not cover $3/2$, and the results of
 Sections~\ref{sec:corridor} and~\ref{sec:tail} give no evidence either way
@@ -778,19 +794,23 @@ as later work moves lines in the working tree.
 
 \begin{tabular}{@{}ll@{}}
 informal statement & linked Lean source\\
-corridor predicate & \lrefx{Erdos1049/RationalBaseLambert.lean}{41}{CoordinatewiseCorridor}\\
-corridor bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{49}{coordinatewiseCorridor_implies_pow_lt_linear}\\
-exponential comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{70}{three_mul_lt_two_pow_succ}\\
-no corridor at $3/2$ & \lrefx{Erdos1049/RationalBaseLambert.lean}{83}{threeHalves_no_coordinatewiseCorridor}\\
-rational-base prefix & \lrefx{Erdos1049/RationalBaseLambert.lean}{96}{rationalBasePrefixQ}\\
-prefix step & \lrefx{Erdos1049/RationalBaseLambert.lean}{101}{rationalBasePrefixQ_succ}\\
-cleared tail state & \lrefx{Erdos1049/RationalBaseLambert.lean}{109}{rationalBaseClearedTailQ}\\
-cleared-tail recurrence & \lrefx{Erdos1049/RationalBaseLambert.lean}{115}{rationalBaseClearedTailQ_succ}\\
-forcing magnitude & \lrefx{Erdos1049/RationalBaseLambert.lean}{126}{rationalBaseForcingNat}\\
-exponential lower bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{132}{twoPow_le_rationalBaseForcingNat}\\
-integer-base collapse & \lrefx{Erdos1049/RationalBaseLambert.lean}{146}{rationalBaseForcingNat_one}\\
-integer power comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{29}{sevenHalves_power_certificate}\\
-exact rational boundary & \lrefx{Erdos1049/RationalBaseLambert.lean}{35}{sevenHalves_rational_margin}\\
+corridor predicate & \lrefx{Erdos1049/RationalBaseLambert.lean}{106}{CoordinatewiseCorridor}\\
+corridor bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{114}{coordinatewiseCorridor_implies_pow_lt_linear}\\
+exponential comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{135}{three_mul_lt_two_pow_succ}\\
+no corridor at $3/2$ & \lrefx{Erdos1049/RationalBaseLambert.lean}{148}{threeHalves_no_coordinatewiseCorridor}\\
+rational-base prefix & \lrefx{Erdos1049/RationalBaseLambert.lean}{161}{rationalBasePrefixQ}\\
+prefix step & \lrefx{Erdos1049/RationalBaseLambert.lean}{166}{rationalBasePrefixQ_succ}\\
+cleared tail state & \lrefx{Erdos1049/RationalBaseLambert.lean}{174}{rationalBaseClearedTailQ}\\
+cleared-tail recurrence & \lrefx{Erdos1049/RationalBaseLambert.lean}{180}{rationalBaseClearedTailQ_succ}\\
+forcing magnitude & \lrefx{Erdos1049/RationalBaseLambert.lean}{191}{rationalBaseForcingNat}\\
+exponential lower bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{197}{twoPow_le_rationalBaseForcingNat}\\
+integer-base collapse & \lrefx{Erdos1049/RationalBaseLambert.lean}{211}{rationalBaseForcingNat_one}\\
+integer power comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{32}{sevenHalves_power_certificate}\\
+exact rational boundary & \lrefx{Erdos1049/RationalBaseLambert.lean}{36}{sevenHalves_rational_margin}\\
+logarithmic ratio bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{41}{sevenHalves_log_ratio_lt}\\
+$\pi$ reciprocal-square bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{57}{one_div_pi_sq_lt_one_nine}\\
+strict source margin & \lrefx{Erdos1049/RationalBaseLambert.lean}{66}{sevenHalves_bundschuhVaananen_margin}\\
+complete $7/2$ height condition & \lrefx{Erdos1049/RationalBaseLambert.lean}{76}{sevenHalves_archimedean_height_condition}\\
 doubled common exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{19}{rationalPadeDenExpTwice}\\
 doubled summand exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{24}{rationalPadePSummandDenExpTwice}\\
 summand exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{30}{rationalPadePSummandDenExpTwice_le}\\
