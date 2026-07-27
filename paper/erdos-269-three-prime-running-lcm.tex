@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{6fe669c2c773d209dbf5d763891820a555c32cd0}
-\renewcommand{\commitshort}{6fe669c2c773}
+\renewcommand{\commit}{773d2a6ec5640b623c4a77262a82332d9ea85df0}
+\renewcommand{\commitshort}{773d2a6ec564}
 \hypersetup{
   pdftitle={The running least common multiple of a three-prime smooth prefix: Lean-checked structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -63,8 +63,16 @@ frontier is an exact consumer.  For a positive reduced denominator $B$ coprime
 to $30$, a denominator-dependent cofinal local-window residue escape rules out
 every positive integral carry obeying the matching bound.  Lean checks the
 complete implication, including the zero-residue convention and all modulus
-edge cases.  What remains unproved is the producer: the actual ordered
-$\{2,3,5\}$ word must supply those escaping windows cofinally.
+edge cases.  For the actual dyadic compression, Lean proves that each open
+block $(2^a,2^{a+1})$ contains at most one pure $3$-power and at most one pure
+$5$-power.  Hence its block radix belongs to the exact alphabet
+$\{2,6,10,30\}$, rather than merely lying in a coarse bounded interval.  An
+integer-only checker constructs the corresponding block digits, reproduces
+three small certificates, and finds an escaping window of length at most $18$
+for each of $106{,}666$ tested denominator/start pairs.  This is finite
+experimental evidence, not a cofinal theorem.  What remains unproved is the
+producer: bind the actual block digit and denominator-cleared carry to the
+formal recurrence, then prove that these four-symbol windows escape cofinally.
 \end{abstract}
 
 \section{The problem}\label{sec:problem}
@@ -157,8 +165,10 @@ Height-fibre normal form & Proved here; finite & Theorem~\ref{res:fibre}. \\
 Infinite limit of that expansion & Not proved & Section~\ref{sec:fibre}. \\
 Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Proved here & Theorem~\ref{res:shell}. \\
 Kernel is not separable at $\{2,3,5\}$ & Proved here & Theorem~\ref{res:rank}. \\
+Actual dyadic block radix is in $\{2,6,10,30\}$ & Proved here & Theorem~\ref{res:dyadic-alphabet}. \\
 Canonical least-positive-residue arithmetic & Proved here & Theorem~\ref{res:consumer}. \\
 Denominator-dependent local-window consumer & Proved here & Theorem~\ref{res:windowconsumer}. \\
+Dyadic-window scan for $B\le1000$ & Exact finite computation & $106{,}666$ pairs; no failures; not a theorem. \\
 Local-window escape for the actual $\{2,3,5\}$ word & Open & Problem~\ref{prob:producer}. \\
 \bottomrule
 \end{tabular}
@@ -168,10 +178,11 @@ Local-window escape for the actual $\{2,3,5\}$ word & Open & Problem~\ref{prob:p
 Section~\ref{sec:lcm} identifies the running value.  Sections~\ref{sec:cells}
 and~\ref{sec:fibre} develop its jump structure and the finite normal form,
 Section~\ref{sec:shell} bounds fibre multiplicity, and Section~\ref{sec:rank}
-records the obstruction to separating the kernel.  Section~\ref{sec:escape} is
-the one place where an unproved hypothesis appears, and it is marked as such
-throughout.  Linked phrases open the corresponding Lean declaration at the
-pinned source revision~\commitshort.
+records the obstruction to separating the kernel.  Section~\ref{sec:escape}
+identifies the exact dyadic radix, exercises the finite consumer, and isolates
+the remaining cofinal producer.  Every unproved hypothesis is marked as such.
+Linked phrases open the corresponding Lean declaration at the pinned source
+revision~\commitshort.
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; least common multiple; smooth
@@ -479,6 +490,73 @@ independence or irrationality statement.
 
 \section{The exact local-window frontier}\label{sec:escape}
 
+\subsection{The actual four-symbol dyadic radix}
+
+Compress the jump word between consecutive powers of two: a block starts just
+after $2^a$, includes every pure $3$- or $5$-power strictly between $2^a$ and
+$2^{a+1}$, and ends with the jump at $2^{a+1}$.  A channel cannot occur twice
+inside one block.  Indeed, if
+\[
+  2^a<p^e,p^f<2^{a+1}\qquad(p\ge2),
+\]
+then the ratio between the interval endpoints is $2\le p$, so strict
+monotonicity of the powers forces $e=f$.  This is the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}{checked
+internal-power uniqueness lemma}.
+
+Let $\beta_a$ be the product of the terminal dyadic factor $2$, a factor $3$
+when the block contains an internal $3$-power, and a factor $5$ when it
+contains an internal $5$-power.
+
+\begin{theorem}[the dyadic block alphabet]\label{res:dyadic-alphabet}
+For every $a$,
+\[
+  \beta_a\in\{2,6,10,30\};
+  \qquad\text{in particular}\qquad 2\le\beta_a\le30.
+\]
+\end{theorem}
+
+\begin{proof}
+Internal-power uniqueness leaves two independent yes/no choices, one for the
+$3$-channel and one for the $5$-channel.  Multiplying the terminal factor $2$
+by the selected channel factors gives exactly the displayed four cases.
+\end{proof}
+
+\noindent The definition is the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{688}{dyadicBlockBase235}{dyadic
+block base}; Lean checks both the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}{exact
+four-case alphabet} and the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}{bounded-radix
+consequence}.  Thus radix growth is no longer an open part of the producer.
+What is not yet checked in Lean is the identification of the corresponding
+block digit with the multiplicity forcing in the original series.
+
+\paragraph{Exact finite consumer experiment.}
+The integer-only
+\href{\sourceurl/scripts/check_erdos269_dyadic_windows.py}{dyadic-window
+checker} constructs the ordered pure-power jumps, the block bases, and the
+block digits from exact multiplicity counts.  It reproduces the following
+certificates; the columns are denominator $B$, dyadic start $a$, window length
+$h$, endpoint jump index $n$, window base $W$, forcing $F$, least positive
+residue $R=\operatorname{lpr}_{W}(-BF)$, and short bound $K$.
+\[
+\begin{array}{c|c|c|c|r|r|r|r}
+B&a&h&n&W&F&R&K\\ \hline
+1&1&2&4&60&47&13&9\\
+7&1&3&6&360&289&137&95\\
+16&1&4&9&10800&8735&640&352
+\end{array}
+\]
+A fresh scan over every $B\le1000$ coprime to $30$ and every
+$100\le a\le500$ tested $106{,}666$ pairs.  In every case a window of length
+at most $18$ made both $W>K$ and
+$\operatorname{lpr}_{W}(-BF)>K$; the largest first successful length was
+$14$.  The computation uses integers only and is reproducible from the pinned
+checker.  Its claim ceiling is deliberately finite: neither the scan nor the
+three displayed certificates proves escape for unbounded $B$ or cofinally
+many starts.
+
 The residue route can now be stated without hiding either the denominator or
 the consumer.  For an integer radix word $b_n$ and forcing word $m_n$, define
 \[
@@ -581,16 +659,18 @@ modulus, and positivity prevents the endpoint carry from being zero.
 
 \subsection{Candidate mechanisms and disconfirmers}
 
-The most direct mechanism is channel-sensitive anti-concentration.  One seeks
-windows ending after controlled $2$-, $3$-, or $5$-power jumps for which the
-modulus $|W_{\ell,h}|$ grows faster than the carry window and the weighted
-forcing $-BF_{\ell,h}$ does not remain trapped in the two short arcs adjacent
-to $0$ modulo that modulus.  A theorem for one cofinal family of channel
-windows is enough; no equidistribution of all windows is required.
+The most direct mechanism is now four-symbol anti-concentration.  The radix
+word is constrained to $\{2,6,10,30\}$, so the surviving arithmetic lies in
+the block digit and its carry into the residue class.  One seeks a cofinal
+family of blocks for which the modulus $|W_{\ell,h}|$ grows faster than the
+carry window and the weighted forcing $-BF_{\ell,h}$ does not remain trapped
+in the two short arcs adjacent to $0$ modulo that modulus.  A theorem for one
+cofinal family is enough; no equidistribution of all windows is required.
 
-Three shortcuts are already disconfirmed.  A fixed finite list of denominator
-certificates does not address the universal $B$-quantifier.  A bound
-independent of $B$ is not the bound delivered by denominator clearing.
+Four shortcuts are already disconfirmed.  Merely proving
+$2\le b_a\le30$ loses the exact channel alphabet.  A fixed finite list of
+denominator certificates does not address the universal $B$-quantifier.  A
+bound independent of $B$ is not the bound delivered by denominator clearing.
 Finally, large absolute forcing is irrelevant unless its \emph{least positive
 residue} is large.  These are not stylistic cautions: each removes a false
 version of~\eqref{eq:escape}.
@@ -598,10 +678,12 @@ version of~\eqref{eq:escape}.
 \section{Specialist handoff and surviving questions}\label{sec:open}
 
 \begin{problem}[the exact surviving producer]\label{prob:producer}
-For the actual ordered $\{2,3,5\}$ jump expansion, define the resulting radix
-word $b_n$, forcing word $m_n$, and denominator-cleared bound $K(B,n)$, and
-prove~\eqref{eq:escape} for every $B>0$ coprime to $30$ and every starting
-index.  Equivalently, prove a cofinal subfamily of windows on which
+For the actual ordered $\{2,3,5\}$ jump expansion, identify the formal radix
+word with $\beta_a\in\{2,6,10,30\}$, define and verify the corresponding block
+digit $m_a$, derive the denominator-cleared bound $K(B,a)$ from a hypothetical
+rational value, and prove~\eqref{eq:escape} for every $B>0$ coprime to $30$
+and every starting index.  Equivalently, prove a cofinal subfamily of windows
+on which
 \[
  \operatorname{lpr}_{|W_{\ell,h}|}(-BF_{\ell,h})>K(B,\ell+h).
 \]
@@ -609,24 +691,29 @@ index.  Equivalently, prove a cofinal subfamily of windows on which
 
 \paragraph{Wanted.}
 A theorem proving Problem~\ref{prob:producer}, or a strictly weaker
-prime-channel statement that still emits one escaping window beyond every
-level for each fixed $B$.  The answer must state all dependence on $B$ and the
-window endpoint.
+four-symbol block statement that still emits one escaping window beyond every
+level for each fixed $B$.  The answer must state the block digit, all
+dependence on $B$, and the endpoint at which the carry bound is evaluated.
 
 \paragraph{Already checked.}
-Lean checks the window recurrence, the least-positive-residue interval and
-congruence lemmas, the denominator-dependent producer type, and the complete
+Lean checks the exact dyadic radix alphabet, the window recurrence, the
+least-positive-residue interval and congruence lemmas, the
+denominator-dependent producer type, and the complete
 producer-to-contradiction theorem.  The structural height, jump, fibre,
 quadratic shell, and non-separation results earlier in this note are also
-checked.  No theorem here constructs the actual words $b_n,m_n$, derives
-$K(B,n)$ from a rational value, or proves~\eqref{eq:escape}.
+checked.  The exact checker constructs actual block digits and supplies the
+finite evidence reported above.  No Lean theorem yet identifies those digits
+with the formal forcing word, derives $K(B,a)$ from a rational value, or
+proves~\eqref{eq:escape}.
 
 \paragraph{Most useful answer.}
-Give an explicit cofinal window rule---for example by a specified pattern of
-prime-power channels---together with a lower bound for the canonical residue
-and an upper bound for $K(B,\ell+h)$.  A negative answer is also valuable if it
-constructs infinitely many $(B,\ell_0)$ for which every proposed window family
-fails; that would retire the present producer rather than merely weaken it.
+First close the exact bridge from the original summands to the block digit
+used by the checker and to the denominator-cleared bound.  Then give an
+explicit cofinal rule in the alphabet $\{2,6,10,30\}$, together with a lower
+bound for the canonical residue and an upper bound for $K(B,\ell+h)$.  A
+negative answer is also valuable if it constructs infinitely many
+$(B,\ell_0)$ for which every proposed window family fails; that would retire
+the present producer rather than merely weaken it.
 
 \paragraph{If answered.}
 Theorem~\ref{res:windowconsumer} immediately rules out the corresponding
@@ -652,8 +739,9 @@ separation into one-dimensional factors is unavailable even at $\{2,3,5\}$.
 
 \paragraph{Artefact and data availability.} The
 \href{\sourceurl}{pinned formal-source revision} contains the Lean sources, the
-fixed toolchain, and the library manifest used in the verification.  This
-manuscript provides navigation rather than proof authority.
+fixed toolchain, the library manifest, and the exact dyadic-window checker used
+in the finite experiment.  This manuscript provides navigation rather than
+proof authority.
 
 \paragraph{Declaration of generative AI use.} Large-language-model agents were
 used throughout development to draft and revise prose, formal proofs, and
@@ -681,9 +769,9 @@ local-window bridge occupy three separate modules.  Three distinctions are
 worth carrying into the source.  The height statements hold for arbitrary
 bases, while the statements about $\Lprefix$ need the three primes to be
 distinct.  The normal form of Section~\ref{sec:fibre} is a finite identity over
-a rectangular box, not a convergence theorem.  And
-\texttt{CofinalLocalWindowEscape} is an unproved proposition consumed by a
-theorem; its application to the actual $\{2,3,5\}$ word is not asserted.
+a rectangular box, not a convergence theorem.  And the formal cofinal-escape
+predicate is an unproved proposition consumed by a theorem; its application
+to the actual $\{2,3,5\}$ word is not asserted.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -739,6 +827,11 @@ first-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{543}{sm
 third-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}\\
 sorted quadratic estimate & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}\\
 quadratic shell bound & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}\\
+dyadic internal power & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{662}{DyadicInternalPower}\\
+internal-power uniqueness & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{668}{dyadicInternalPower_exponent_unique}\\
+dyadic block base & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{688}{dyadicBlockBase235}\\
+exact dyadic radix alphabet & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}\\
+bounded-radix consequence & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}\\
 least positive residue & \lrefx{Erdos269/ResidueEscape.lean}{19}{leastPositiveResidue}\\
 positive representative range & \lrefx{Erdos269/ResidueEscape.lean}{24}{leastPositiveResidue_pos_le}\\
 representative congruence & \lrefx{Erdos269/ResidueEscape.lean}{45}{leastPositiveResidue_modEq}\\
