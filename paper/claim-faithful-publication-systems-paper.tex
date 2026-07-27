@@ -592,10 +592,12 @@ because the clause was absent from its checklist.  The escape shows that a
 passing checker does not certify all public prose; it gives no detection rate.
 
 \paragraph{Repair and present witness.}
-The repair made the clause a required anchor.  The post-repair witness accepts
-the current README and rejects a test copy containing the false clause, so it
-distinguishes one known false neighbour.  The other nine edits were not rerun
-against the extended checklist, so there is no post-repair aggregate result.
+The repair made the clause a required anchor and added a \emph{boundary
+witness}: a false neighbour chosen because it crosses a consequential public
+boundary while leaving every Lean proof intact.  It accepts the current README
+and rejects a test copy containing the false clause, so it distinguishes that
+one neighbour.  The other nine edits were not rerun against the extended
+checklist, so there is no post-repair aggregate result.
 
 \paragraph{Later reconstruction.}
 The executable reconstruction preserves three original targets and uses seven
@@ -627,6 +629,26 @@ The shape of this limit is familiar from Section~\ref{sec:mathrole}.  A
 configured checklist, like a finite certificate interval, does not exhaust an
 open-ended domain.  The comparison is only structural: prose has no
 equivalence theorem and no diagonal compresses it.
+
+\paragraph{Three boundaries the companion papers exposed.}
+The exercise above was designed against the checklist.  Three corrections made
+to this project's own mathematics papers over the same period were not, and
+each sits outside the perimeter for a different reason.  A headline theorem in
+the Problem 249 note is kernel-checked but owned by no record entry, so it
+carries no reviewed public status while reading as a result; the checker is
+silent because the record defines the perimeter, and absence from it is not a
+detectable state.  A support the Problem 257 note printed as open had in fact
+been settled in the literature in 2019; no edit, no proof and no comparison
+could have signalled it, since the defeating evidence lay outside the
+repository.  And a valid parity theorem in that note was read as a
+frontier of the value until it was observed that adjoining one element to the
+support changes the value by a rational number and removes the obstruction ---
+the theorem was correct and its advertised significance was not.  Registration
+gap, stale external status, and representation-dependent significance are three
+distinct classes, none reachable by comparing recorded artefacts with one
+another.  Naturalistic rather than injected, they say more about where the
+perimeter ends than the designed exercise; like it, they are incidents,
+not a rate.
 
 \section{Scope, reuse, and limits}\label{sec:limits}
 
@@ -685,14 +707,6 @@ relationship must state its mechanical check; selected high-risk boundaries
 should also have a deliberately false fixture.  The record must present its
 coverage as selective rather than complete.
 
-Stronger variants impose more structure.  A project could generate public
-wording from the record instead of anchoring authored prose; extract formal
-statements and assumptions instead of recording source lines; require an
-independent reviewer for designated claims; constrain critical claims to a
-controlled vocabulary; or use tools that interpret prose to propose discrepancies for
-human review.  This repository instead keeps unrestricted prose and an
-external record.
-
 \paragraph{What is not established.}
 The architecture does not
 establish a solution to either Erd\H{o}s problem; that a formal statement is
@@ -703,14 +717,11 @@ its behaviour intact.  A large number of passing comparisons measure none of
 those things.  What a passing workflow establishes is narrower: the
 configured jobs ran on the named revision, Lean accepted the formal proofs,
 and every configured structural comparison passed.  This paper
-is an architecture note with one bounded case study,
-not an empirical evaluation of the design.  A credible evaluation would need
-several stages, each with its own limit.  Records naming the reviewer, revision,
-and time could establish who checked which revision, when, and how often, but
-not effectiveness.  Deliberately wrong edits by people other than the checker's
-author could measure the response to unseen faults, but not
-behaviour in ordinary use.  Only after those stages would comparison with ordinary review
-on the same changes become meaningful.  None of those stages exists yet, and
+is an architecture note with one bounded case study and three naturalistic
+incidents, not an empirical evaluation of the design.  A credible evaluation
+would need review records naming reviewer and revision, wrong edits authored by
+someone other than the checker's author, and only then a comparison with
+ordinary review on the same changes.  None of those stages exists here, and
 this paper claims none of them.
 
 \section{Related systems}\label{sec:related}
@@ -881,7 +892,7 @@ Formalization}, 2026,
 \bibitem{econcs} N.~Garg, \emph{EconCSLib: AI-Assisted Lean Formalization for
 Economics \& Computation research}, 2026,
 \href{https://doi.org/10.48550/arXiv.2606.13306}{arXiv:2606.13306}.
-\bibitem{benchmarkfaults} A.~Agarwal, L.~Cao, and S.~Welleck,
+\bibitem{benchmarkfaults} P.~S.~Ammanamanchi, S.~Bhat, and S.~Biderman,
 \emph{Faults in Our Formal Benchmarking: Dataset Defects and Evaluation
 Failures in Lean Theorem Proving}, 2026,
 \href{https://doi.org/10.48550/arXiv.2606.29493}{arXiv:2606.29493}.
