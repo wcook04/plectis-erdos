@@ -6,6 +6,10 @@
 % `tectonic erdos-269-three-prime-running-lcm.tex` or `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+% Problem-specific source pin: #269's local-window consumer advances
+% independently of the corpus default.
+\renewcommand{\commit}{6fe669c2c773d209dbf5d763891820a555c32cd0}
+\renewcommand{\commitshort}{6fe669c2c773}
 \hypersetup{
   pdftitle={The running least common multiple of a three-prime smooth prefix: Lean-checked structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -20,8 +24,8 @@
 \newcommand{\Kernel}{\operatorname{K}}
 
 \runninghead{Erd\H{o}s \#269: three-prime running lcm}
-\title{The Running Least Common Multiple of a Three-Prime Smooth Prefix}
-\subtitle{Lean-checked structure for Erd\H{o}s Problem~\#269}
+\title{The Three-Prime Running Least Common Multiple}
+\subtitle{Exact structure and the denominator-dependent local-window frontier}
 \author{Will Cook}
 \date{July 2026}
 
@@ -54,10 +58,13 @@ smallest exact obstruction to separating the kernel as a product, the two sides
 being $1/60$ and $1/12$.
 
 Problem~\#269 is open and nothing here decides it.  We prove no irrationality
-and no transcendence statement in any three-prime case.  The residue-escape
-route is represented only by its final step, a finite contradiction whose
-escape hypothesis is assumed and not proved; we state that hypothesis
-explicitly, and it is the obligation that survives.
+or transcendence statement in any three-prime case.  What is new at the
+frontier is an exact consumer.  For a positive reduced denominator $B$ coprime
+to $30$, a denominator-dependent cofinal local-window residue escape rules out
+every positive integral carry obeying the matching bound.  Lean checks the
+complete implication, including the zero-residue convention and all modulus
+edge cases.  What remains unproved is the producer: the actual ordered
+$\{2,3,5\}$ word must supply those escaping windows cofinally.
 \end{abstract}
 
 \section{The problem}\label{sec:problem}
@@ -150,8 +157,9 @@ Height-fibre normal form & Proved here; finite & Theorem~\ref{res:fibre}. \\
 Infinite limit of that expansion & Not proved & Section~\ref{sec:fibre}. \\
 Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Proved here & Theorem~\ref{res:shell}. \\
 Kernel is not separable at $\{2,3,5\}$ & Proved here & Theorem~\ref{res:rank}. \\
-Residue escape occurs & Assumed, not proved & Section~\ref{sec:escape}. \\
-Finite contradiction consuming it & Proved here & Theorem~\ref{res:consumer}. \\
+Canonical least-positive-residue arithmetic & Proved here & Theorem~\ref{res:consumer}. \\
+Denominator-dependent local-window consumer & Proved here & Theorem~\ref{res:windowconsumer}. \\
+Local-window escape for the actual $\{2,3,5\}$ word & Open & Problem~\ref{prob:producer}. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -469,82 +477,175 @@ separates the coordinates and then treats them one at a time.  It does not
 bound the rank of the kernel from below beyond one, and it is not an
 independence or irrationality statement.
 
-\section{The residue-escape route and what it assumes}\label{sec:escape}
+\section{The exact local-window frontier}\label{sec:escape}
 
-One strategy for the three-prime case runs as follows.  Suppose the value is
-rational with denominator $C$.  The jump expansion produces an integer tail
-state that is positive and bounded by a polynomial window; if one can force the
-state to be congruent modulo $C$ to a least positive residue lying strictly
-above that window, the two facts are incompatible and the assumed rationality
-fails.  The final step is elementary and we record it; the step that would make
-the strategy an argument is the production of the escaping residue, and it is
-not proved.
+The residue route can now be stated without hiding either the denominator or
+the consumer.  For an integer radix word $b_n$ and forcing word $m_n$, define
+\[
+\begin{aligned}
+ W_{\ell,0}&=1,
+&W_{\ell,h+1}&=b_{\ell+h}W_{\ell,h},\\
+ F_{\ell,0}&=0,
+&F_{\ell,h+1}&=b_{\ell+h}F_{\ell,h}+m_{\ell+h}.
+\end{aligned}
+\]
+These are the
+\lword{Erdos269/RestrictedFloorSum.lean}{16}{windowBase}{window base} and
+\lword{Erdos269/RestrictedFloorSum.lean}{21}{windowForcing}{window forcing}.
+If an integral carry satisfies
+\[
+ d_{n+1}=b_n d_n-Bm_n ,
+\]
+then induction gives the exact division-free identity
+\[
+ d_{\ell+h}=W_{\ell,h}d_\ell-BF_{\ell,h};
+\]
+this is the
+\lword{Erdos269/RestrictedFloorSum.lean}{52}{integralCarry_window}{checked
+window identity}.
 
-Say that a residue \emph{escapes} the window when
-$\text{bound}<\text{residue}\le C$, the
-\lword{Erdos269/ResidueEscape.lean}{17}{ResidueEscapesWindow}{escape condition}.
+For $C>0$, let $\operatorname{lpr}_C(x)\in\{1,\ldots,C\}$ be the least
+positive representative of $x\bmod C$, with a zero residue represented by
+$C$.  This is the
+\lword{Erdos269/ResidueEscape.lean}{19}{leastPositiveResidue}{canonical
+representative}.  Lean checks both its
+\lword{Erdos269/ResidueEscape.lean}{24}{leastPositiveResidue_pos_le}{positive
+range} and its
+\lword{Erdos269/ResidueEscape.lean}{45}{leastPositiveResidue_modEq}{congruence
+to the source integer}.  This convention matters: replacing
+$\operatorname{lpr}_C(x)$ by $|x|$ would not be a modular statement.
 
-\begin{theorem}[the finite contradiction]\label{res:consumer}
-Let $c,C,\text{bound},\text{residue}$ be natural numbers with $0<c$ and
-$c\le\text{bound}$, and suppose $c\equiv\text{residue}\pmod C$.  If the residue
-escapes the window, the hypotheses are contradictory.  Equivalently, under the
-same congruence, $\text{residue}\le\text{bound}$.
+Let $K(B,n)$ be the bound on the reduced carry at denominator $B$.  Define
+\emph{cofinal local-window escape} to mean that for every $B>0$ coprime to
+$30$ and every $\ell_0$, there are $\ell\ge\ell_0$ and $h>0$ such that
+\[
+ C_{\ell,h}:=|W_{\ell,h}|>0
+ \quad\text{and}\quad
+ K(B,\ell+h)<
+ \operatorname{lpr}_{C_{\ell,h}}(-BF_{\ell,h}).
+\tag{E}\label{eq:escape}
+\]
+The quantifier over $B$ is part of the proposition, and so is the dependence
+of $K$ on $B$; suppressing it gives the wrong expert interface.  The exact
+unproved proposition is the
+\lword{Erdos269/RestrictedFloorSum.lean}{69}{CofinalLocalWindowEscape}{cofinal
+local-window producer}.
+
+\begin{theorem}[the finite residue contradiction]\label{res:consumer}
+Let $C>0$, $c>0$, and $|c|\le K$.  If
+$c\equiv x\pmod C$ and $K<\operatorname{lpr}_C(x)$, then the hypotheses are
+contradictory.
 \end{theorem}
 
 \begin{proof}
-From $c\le\text{bound}<\text{residue}\le C$ we get $c<C$, so $c$ and
-$\text{residue}$ are each their own least residue modulo $C$ unless
-$\text{residue}=C$, in which case its least residue is $0$; in either case the
-congruence forces $c=\text{residue}$ or $c=0$, and both contradict
-$c\le\text{bound}<\text{residue}$ and $0<c$.
+The canonical representative lies in $\{1,\ldots,C\}$.  The inequalities put
+$c$ strictly between $0$ and $C$.  If $x\equiv0\pmod C$, its positive
+representative is $C$ while $c\bmod C=c\ne0$.  Otherwise both $c$ and
+$\operatorname{lpr}_C(x)$ are their own residues and congruence makes them
+equal, contradicting $|c|\le K<\operatorname{lpr}_C(x)$.
 \end{proof}
 
-\noindent Formalised as the
-\lword{Erdos269/ResidueEscape.lean}{23}{no_bounded_positive_state_of_residue_escape}{finite
-contradiction} and the
-\lword{Erdos269/ResidueEscape.lean}{44}{residue_le_bound_of_bounded_positive_state}{contrapositive
-form}.
+\noindent The natural-state version is the
+\lword{Erdos269/ResidueEscape.lean}{71}{no_bounded_positive_state_of_residue_escape}{finite
+consumer}; the integer carry version is the
+\lword{Erdos269/ResidueEscape.lean}{104}{no_bounded_positive_int_state_of_leastPositiveResidue}{least-positive-residue
+consumer}.
 
-We state plainly what this is.  Theorem~\ref{res:consumer} is two lines of
-arithmetic about residues and contains no information about primes, smooth
-numbers, or least common multiples.  It is the trivial end of the strategy,
-recorded so that the nontrivial end is visible as the only thing missing.  The
-hypothesis that an escaping residue occurs, for every putative denominator and
-beyond every level, is exactly the open producer; assuming it is not progress
-towards it.
+\begin{theorem}[the checked local-window consumer]\label{res:windowconsumer}
+Assume the cofinal escape property~\eqref{eq:escape}.  Fix $B>0$ coprime to
+$30$.  There is no integral sequence $d_n$ satisfying simultaneously
+\[
+ d_{n+1}=b_nd_n-Bm_n,\qquad d_n>0,\qquad
+ |d_n|\le K(B,n)\quad(n\ge0).
+\]
+\end{theorem}
 
-\section{Complements and further questions}\label{sec:open}
+\begin{proof}
+Choose one window supplied by~\eqref{eq:escape}.  The checked window identity
+gives
+\[
+ d_{\ell+h}\equiv -BF_{\ell,h}\pmod{|W_{\ell,h}|}.
+\]
+The endpoint state is positive and at most $K(B,\ell+h)$, whereas the
+canonical positive residue of the right-hand side is larger than this bound.
+Theorem~\ref{res:consumer} is the contradiction.
+\end{proof}
 
-Problem~\#269 is open.  Three obligations survive the results above, in
-decreasing order of directness.
+\noindent This is formalised as the
+\lword{Erdos269/RestrictedFloorSum.lean}{83}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{reduced-carry
+extinction theorem}.  Coprimality with $30$ is used by the open producer to
+select a window; once a window has been emitted, the finite contradiction
+does not use it.  The theorem also treats the edge cases explicitly:
+$|W_{\ell,h}|=0$ is excluded, a zero residue is represented by the full
+modulus, and positivity prevents the endpoint carry from being zero.
 
-\begin{problem}[uniform residue escape]
-Show that under the rational carry recurrence some prime-power channel carries
-a nonzero residue beyond every finite level, uniformly in the putative
-denominator.  Theorem~\ref{res:consumer} then closes the argument;
-Theorem~\ref{res:shell} supplies the polynomial window the escape must clear.
+\subsection{Candidate mechanisms and disconfirmers}
+
+The most direct mechanism is channel-sensitive anti-concentration.  One seeks
+windows ending after controlled $2$-, $3$-, or $5$-power jumps for which the
+modulus $|W_{\ell,h}|$ grows faster than the carry window and the weighted
+forcing $-BF_{\ell,h}$ does not remain trapped in the two short arcs adjacent
+to $0$ modulo that modulus.  A theorem for one cofinal family of channel
+windows is enough; no equidistribution of all windows is required.
+
+Three shortcuts are already disconfirmed.  A fixed finite list of denominator
+certificates does not address the universal $B$-quantifier.  A bound
+independent of $B$ is not the bound delivered by denominator clearing.
+Finally, large absolute forcing is irrelevant unless its \emph{least positive
+residue} is large.  These are not stylistic cautions: each removes a false
+version of~\eqref{eq:escape}.
+
+\section{Specialist handoff and surviving questions}\label{sec:open}
+
+\begin{problem}[the exact surviving producer]\label{prob:producer}
+For the actual ordered $\{2,3,5\}$ jump expansion, define the resulting radix
+word $b_n$, forcing word $m_n$, and denominator-cleared bound $K(B,n)$, and
+prove~\eqref{eq:escape} for every $B>0$ coprime to $30$ and every starting
+index.  Equivalently, prove a cofinal subfamily of windows on which
+\[
+ \operatorname{lpr}_{|W_{\ell,h}|}(-BF_{\ell,h})>K(B,\ell+h).
+\]
+\end{problem}
+
+\paragraph{Wanted.}
+A theorem proving Problem~\ref{prob:producer}, or a strictly weaker
+prime-channel statement that still emits one escaping window beyond every
+level for each fixed $B$.  The answer must state all dependence on $B$ and the
+window endpoint.
+
+\paragraph{Already checked.}
+Lean checks the window recurrence, the least-positive-residue interval and
+congruence lemmas, the denominator-dependent producer type, and the complete
+producer-to-contradiction theorem.  The structural height, jump, fibre,
+quadratic shell, and non-separation results earlier in this note are also
+checked.  No theorem here constructs the actual words $b_n,m_n$, derives
+$K(B,n)$ from a rational value, or proves~\eqref{eq:escape}.
+
+\paragraph{Most useful answer.}
+Give an explicit cofinal window rule---for example by a specified pattern of
+prime-power channels---together with a lower bound for the canonical residue
+and an upper bound for $K(B,\ell+h)$.  A negative answer is also valuable if it
+constructs infinitely many $(B,\ell_0)$ for which every proposed window family
+fails; that would retire the present producer rather than merely weaken it.
+
+\paragraph{If answered.}
+Theorem~\ref{res:windowconsumer} immediately rules out the corresponding
+positive reduced carry.  After the separate rational-value-to-actual-carry
+instantiation is checked, this supplies the missing contradiction for the
+three-prime case.  Until both pieces are present, Problem~\#269 remains open.
+
+\begin{problem}[direct nonintegral tails]
+As an alternative to local windows, prove directly that for every positive
+$B$ coprime to $30$ the denominator-cleared actual dyadic tail is nonintegral
+cofinally.  Such a theorem would bypass~\eqref{eq:escape}, but it must still
+feed the same rational-carry consumer.
 \end{problem}
 
 \begin{problem}[a genuinely three-dimensional analytic theorem]
-Prove an analytic statement for the phase cocycle attached to three
-independent logarithmic coordinates, of the kind available in one dimension.
-By Theorem~\ref{res:rank} no separation into one-dimensional factors is
-available even at $\{2,3,5\}$.
+Prove a target-faithful analytic statement for the phase cocycle attached to
+the three logarithmic coordinates.  By Theorem~\ref{res:rank}, a preliminary
+separation into one-dimensional factors is unavailable even at $\{2,3,5\}$.
 \end{problem}
-
-\begin{problem}[unbounded denominator exclusion]
-Replace a finite denominator exclusion by a family whose exclusion bound tends
-to infinity.  A finite computation excludes all denominators below its bound
-and none above it, so no single such computation, at any size, bears on
-irrationality.
-\end{problem}
-
-What the formalised material changes is the description of the object, not its
-status.  The running least common multiple is now an explicit function of three
-integer logarithms; its jumps are exactly the pure prime powers; a lattice sum
-groups exactly by height with multiplicities bounded quadratically; and the
-coordinates provably do not separate.  None of this produces the escaping
-residue, and the problem remains open.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
@@ -575,13 +676,14 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 \section{Guide to the formal sources}\label{app:index}
 
 Each linked phrase opens its Lean declaration at the pinned source
-revision~\commitshort.  The structural material is in the first module and the
-residue consumer in the second.  Three distinctions are worth carrying into the
-source.  The height statements hold for arbitrary bases, while the statements
-about $\Lprefix$ need the three primes to be distinct.  The normal form of
-Section~\ref{sec:fibre} is an identity between finite sums over a rectangular
-box, not over a smooth prefix.  And the escape condition of
-Section~\ref{sec:escape} is a hypothesis of its theorem, not a result.
+revision~\commitshort.  The running-LCM structure, residue arithmetic, and
+local-window bridge occupy three separate modules.  Three distinctions are
+worth carrying into the source.  The height statements hold for arbitrary
+bases, while the statements about $\Lprefix$ need the three primes to be
+distinct.  The normal form of Section~\ref{sec:fibre} is a finite identity over
+a rectangular box, not a convergence theorem.  And
+\texttt{CofinalLocalWindowEscape} is an unproved proposition consumed by a
+theorem; its application to the actual $\{2,3,5\}$ word is not asserted.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -637,9 +739,20 @@ first-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{543}{sm
 third-coordinate projection & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}\\
 sorted quadratic estimate & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{629}{sorted_pair_quadratic}\\
 quadratic shell bound & \lrefx{Erdos269/ThreePrimeRunningLcm.lean}{646}{smoothExponentShell_card_quadratic}\\
-escape condition & \lrefx{Erdos269/ResidueEscape.lean}{17}{ResidueEscapesWindow}\\
-finite contradiction & \lrefx{Erdos269/ResidueEscape.lean}{23}{no_bounded_positive_state_of_residue_escape}\\
-contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{44}{residue_le_bound_of_bounded_positive_state}\\
+least positive residue & \lrefx{Erdos269/ResidueEscape.lean}{19}{leastPositiveResidue}\\
+positive representative range & \lrefx{Erdos269/ResidueEscape.lean}{24}{leastPositiveResidue_pos_le}\\
+representative congruence & \lrefx{Erdos269/ResidueEscape.lean}{45}{leastPositiveResidue_modEq}\\
+escape condition & \lrefx{Erdos269/ResidueEscape.lean}{65}{ResidueEscapesWindow}\\
+finite natural-state contradiction & \lrefx{Erdos269/ResidueEscape.lean}{71}{no_bounded_positive_state_of_residue_escape}\\
+contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{92}{residue_le_bound_of_bounded_positive_state}\\
+integer least-positive-residue consumer & \lrefx{Erdos269/ResidueEscape.lean}{104}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
+window base & \lrefx{Erdos269/RestrictedFloorSum.lean}{16}{windowBase}\\
+window forcing & \lrefx{Erdos269/RestrictedFloorSum.lean}{21}{windowForcing}\\
+affine window identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{27}{affineRecurrence_window}\\
+scaled forcing identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{41}{windowForcing_const_mul}\\
+integral carry window & \lrefx{Erdos269/RestrictedFloorSum.lean}{52}{integralCarry_window}\\
+cofinal window producer & \lrefx{Erdos269/RestrictedFloorSum.lean}{69}{CofinalLocalWindowEscape}\\
+reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{83}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}\\
 \end{tabular}
 \fi
 
