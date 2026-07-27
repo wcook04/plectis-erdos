@@ -105,4 +105,3 @@ theorem finalMiddleCell_neg_two_unique_scale_sharper
 #print axioms finalMiddleCell_neg_two_unique_scale_sharper
 
 end V8
-

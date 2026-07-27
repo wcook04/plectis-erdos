@@ -26,6 +26,9 @@ does.
     python3 scripts/query_semantic.py expert-questions XQ249-pivot-decorrelation
     python3 scripts/query_semantic.py prior-art-review
     python3 scripts/query_semantic.py coverage
+    python3 scripts/query_semantic.py inventory
+    python3 scripts/query_semantic.py inventory selectedMersenneTail_lt_weight
+    python3 scripts/query_semantic.py inventory --module ErdosProblems/Erdos257
     python3 scripts/query_semantic.py paper-coverage
     python3 scripts/query_semantic.py motifs
     python3 scripts/query_semantic.py node <node_id>
@@ -535,6 +538,9 @@ def cmd_coverage(corpus: dict, args) -> int:
                 "typed_routing": {
                     "live_declarations_routed": coverage["declarations_owned"],
                     "orphan_declarations": coverage["orphan_count"],
+                    "automatic_inventory_fallback_declarations": coverage[
+                        "automatic_inventory_fallback_count"
+                    ],
                     "duplicate_role_assignments": coverage[
                         "duplicate_role_assignment_count"
                     ],
@@ -605,6 +611,63 @@ def cmd_coverage(corpus: dict, args) -> int:
             "not_established": corpus.get("coverage_contract", {}).get(
                 "accuracy_boundary"
             ),
+        }
+    )
+
+
+def cmd_inventory(corpus: dict, args) -> int:
+    """Search the exhaustive declaration routes without inferring mathematics."""
+    needle = (args.node_id or "").casefold()
+    module_filter = (args.module or "").casefold()
+    role_filter = (args.role or "").casefold()
+    zone_filter = (args.zone or "").casefold()
+
+    matches = []
+    for route in corpus["declaration_roles"]:
+        searchable = " ".join(
+            str(route.get(field) or "")
+            for field in ("id", "module", "declaration", "statement_node")
+        ).casefold()
+        if needle and needle not in searchable:
+            continue
+        if module_filter and module_filter not in str(route.get("module") or "").casefold():
+            continue
+        if role_filter and role_filter != str(route.get("role") or "").casefold():
+            continue
+        if zone_filter and zone_filter != str(route.get("zone") or "").casefold():
+            continue
+        matches.append(
+            {
+                "id": route["id"],
+                "module": route.get("module"),
+                "declaration": route.get("declaration"),
+                "role": route.get("role"),
+                "zone": route.get("zone"),
+                "statement_node": route.get("statement_node"),
+                "routing_origin": route.get("routing_origin", "authored"),
+            }
+        )
+
+    return emit(
+        {
+            "question": "Which live Lean declarations match this general inventory route?",
+            "authority_posture": "exhaustive_inventory_navigation_not_semantic_interpretation",
+            "measurement_contract": (
+                "Every result is a live declaration route from the exhaustive atlas. "
+                "A zone or automatic fallback makes the declaration discoverable; it "
+                "does not infer a mathematical claim. Only statement_node links carry "
+                "authored statement-level interpretation."
+            ),
+            "filters": {
+                "search": args.node_id or "",
+                "module": args.module or "",
+                "role": args.role or "",
+                "zone": args.zone or "",
+            },
+            "total_matches": len(matches),
+            "returned": min(len(matches), args.limit),
+            "omitted": max(0, len(matches) - args.limit),
+            "results": matches[: args.limit],
         }
     )
 
@@ -915,6 +978,7 @@ COMMANDS = {
     "expert-questions": cmd_expert_questions,
     "prior-art-review": cmd_prior_art_review,
     "coverage": cmd_coverage,
+    "inventory": cmd_inventory,
     "paper-coverage": cmd_paper_coverage,
     "motifs": cmd_motifs,
     "node": cmd_node,
@@ -938,6 +1002,18 @@ def main() -> int:
         help="detail id for node, mechanism, explains, or expert-questions",
     )
     parser.add_argument("--problem", choices=("249", "257", "shared_substrate"))
+    parser.add_argument(
+        "--module",
+        help="inventory-only case-insensitive module path filter",
+    )
+    parser.add_argument(
+        "--role",
+        help="inventory-only exact declaration-role filter",
+    )
+    parser.add_argument(
+        "--zone",
+        help="inventory-only exact semantic-zone filter",
+    )
     parser.add_argument("--limit", type=int, default=40)
     args = parser.parse_args()
     return COMMANDS[args.command](load(), args)

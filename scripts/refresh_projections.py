@@ -36,9 +36,12 @@ BUILDERS = (
     "build_methodology.py",
     "build_module_graph.py",
     "build_declaration_atlas.py",
+    # Source-coordinate refresh rewrites docs/claims.json, which is an input
+    # to the semantic corpus. It must therefore precede both semantic layers;
+    # placing it afterwards makes one full refresh invalidate its own output.
+    "refresh_source_coordinates.py",
     "build_semantic_corpus.py",
     "build_theory_lab.py",
-    "refresh_source_coordinates.py",
     "build_corpus_descriptor.py",
     "build_paper_module_aliases.py",
     "build_publication_entry_packet.py",

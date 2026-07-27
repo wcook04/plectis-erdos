@@ -37,13 +37,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Builders that check_release.py regenerates and compares against committed bytes.
+# Builders that refresh_projections.py runs, in the same dependency order.
 BUILDERS = (
-    "build_corpus_descriptor.py",
-    "build_declaration_atlas.py",
-    "build_module_graph.py",
-    "build_paper_module_aliases.py",
     "build_methodology.py",
+    "build_module_graph.py",
+    "build_declaration_atlas.py",
+    "refresh_source_coordinates.py",
+    "build_semantic_corpus.py",
+    "build_theory_lab.py",
+    "build_corpus_descriptor.py",
+    "build_paper_module_aliases.py",
+    "build_publication_entry_packet.py",
 )
 
 # Files those builders own. Compared byte-for-byte between the two checkouts.
@@ -53,8 +57,13 @@ PROJECTIONS = (
     "docs/ORIENTATION.md",
     "docs/declaration_atlas.json",
     "docs/methodology.json",
+    "docs/claims.json",
+    "docs/semantic_corpus.json",
+    "docs/theory_lab.json",
+    "docs/publication_entry_packet.json",
     "docs/WAVE_INDEX.md",
     "README.md",
+    "paper/erdos249-257-main-paper.tex",
     "paper/module-aliases.json",
     "paper/module-aliases.tex",
 )

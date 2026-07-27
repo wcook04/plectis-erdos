@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:394a2b269a07b12228d599dca4cf2ce719922823a02eda13a5ddbec5bdfbb0c0",
-    "docs/claims.json": "sha256:10431ba92ad02d3a83cdbde66e635eaa1f07e6c950d1e895f4e846f085b353b5",
-    "docs/methodology.json": "sha256:d2dab3ef7bd853be6bd086ad2ff448d97996280c648878f6aa5066e1616a722e",
-    "docs/publication_contract.json": "sha256:b75103e97bd837609fb691262c9732763c53cbbfa6c5fe4884883150f1345718",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:8b4cbbfe740f48670fc4cfab7eaf31f2816f67f9ed92954646c24556d2e566ed",
+    "docs/claims.json": "sha256:76132ad1d87b0c35cc4b1c1518eb0d382533bc6284374d03b6b10aaa6044ebba",
+    "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
+    "docs/publication_contract.json": "sha256:b08a46034dd5c4557702439ea9c1389d87e2f9b748d8715ce1359fef690f592b",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -265,44 +265,48 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4157,
+        "line": 4153,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "Erd\\H{o}s \\#249"
       },
-      "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator."
+      "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.",
+      "status": "open"
     },
     {
       "id": "remaining_open.unbounded_certificate_supply",
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4168,
+        "line": 4164,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "unbounded certificate supply"
       },
-      "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal."
+      "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.",
+      "status": "open"
     },
     {
       "id": "remaining_open.half_value_membership",
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4192,
+        "line": 4188,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "the half-value counterexample route"
       },
-      "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route."
+      "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.",
+      "status": "open"
     },
     {
       "id": "remaining_open.universal_257_all_infinite_supports",
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4183,
+        "line": 4179,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "universal Erd\\H{o}s \\#257"
       },
-      "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here."
+      "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
+      "status": "open"
     }
   ],
   "revision_and_identity": {

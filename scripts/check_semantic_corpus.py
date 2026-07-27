@@ -148,6 +148,26 @@ def main() -> int:
         not unlinked_statement_roles,
         f"{len(unlinked_statement_roles)} declaration(s) claim role 'statement' with no node",
     )
+    automatic_inventory_roles = {
+        key: role
+        for key, role in roles.items()
+        if role.get("routing_origin") == "automatic_inventory_fallback"
+    }
+    malformed_inventory_roles = [
+        key
+        for key, role in automatic_inventory_roles.items()
+        if role.get("role") != "substrate"
+        or role.get("statement_node") is not None
+        or role.get("zone") != "inventory"
+        or not role.get("routing_basis")
+    ]
+    check(
+        not malformed_inventory_roles,
+        (
+            f"{len(malformed_inventory_roles)} automatic inventory route(s) "
+            "claim semantic meaning or lack a routing basis"
+        ),
+    )
 
     # 4. generated provenance is a contract, not a filename pattern
     manifest_paths = {p for f in manifest["families"] for p in f["module_paths"]}
@@ -382,6 +402,7 @@ def main() -> int:
     summary_coverage = corpus["summary"]["coverage"]
     expected_coverage = {
         "declarations_owned": len(roles),
+        "automatic_inventory_fallback_count": len(automatic_inventory_roles),
         "duplicate_role_assignment_count": len(duplicate_roles),
         "node_linked_declarations": len(node_linked),
         "authored_theorem_like_node_linked": len(authored_node_linked),

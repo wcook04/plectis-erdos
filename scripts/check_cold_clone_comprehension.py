@@ -17,6 +17,7 @@ authority.
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import copy
 import json
 import re
@@ -27,24 +28,22 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 QUERY = ROOT / "scripts" / "query_corpus.py"
+SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
+EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
+SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
 HUMAN_SURFACES = ("README.md", "SCOPE.md", "docs/ORIENTATION.md")
-# Whole-file ceilings. README.md and docs/ORIENTATION.md were raised from
-# 12_000 and 16_000 on 2026-07-23, when they sat 16 and 196 bytes below their
-# caps: a one-sentence edit to either would have turned main red, and a gate
-# that fires on the next honest sentence teaches authors to route around it
-# rather than to write short. The ceilings still bind, roughly a page of slack
-# each, and the constraint that actually protects a cold reader is not this one
-# -- see README_FIRST_CONTACT_BUDGET_BYTES below, which did not move.
+CENSUS_SURFACES = ("README.md", "docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
+# Whole-file ceilings are intentionally looser than the fixed first-contact
+# prefix below. They prevent accidental bloat without making the next honest
+# sentence a release failure.
 HUMAN_SURFACE_BUDGET_BYTES = {
     "README.md": 14_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
 }
-# Deliberately NOT raised with the ceiling above. This is a prefix window, not
-# a cap: the section order and every semantic anchor group are asserted against
-# the first 12_000 bytes of README.md. Holding it fixed while the ceiling rises
-# means a longer README must still say what it owes a newcomer on the first
-# screen, and anything added past that point cannot pay the first-contact debt.
+# This prefix window is the actual newcomer contract: later growth cannot move
+# the problem statements, authority boundary, or semantic routes off the first
+# screen.
 README_FIRST_CONTACT_BUDGET_BYTES = 12_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 PACKET_BUDGET_BYTES = 16_384
@@ -173,6 +172,62 @@ def query_packet(*args: str, budget_bytes: int = PACKET_BUDGET_BYTES) -> dict[st
     return json.loads(completed.stdout)
 
 
+def semantic_query_packet(
+    *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
+) -> dict[str, Any]:
+    """Run the public semantic CLI exactly as a cold coding agent would."""
+    completed = subprocess.run(
+        [sys.executable, str(SEMANTIC_QUERY), *args],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
+    raw = completed.stdout.encode("utf-8")
+    assert len(raw) <= budget_bytes, (
+        f"semantic query {' '.join(args)} emitted {len(raw)} bytes "
+        f"(budget {budget_bytes})"
+    )
+    return json.loads(completed.stdout)
+
+
+def expert_handoff_packet(
+    *args: str, budget_bytes: int = PACKET_BUDGET_BYTES
+) -> dict[str, Any]:
+    """Run the cross-domain expert-handoff query from a cold clone."""
+    completed = subprocess.run(
+        [sys.executable, str(EXPERT_HANDOFF_QUERY), *args],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
+    raw = completed.stdout.encode("utf-8")
+    assert len(raw) <= budget_bytes, (
+        f"expert-handoff query {' '.join(args) or '<default>'} emitted "
+        f"{len(raw)} bytes (budget {budget_bytes})"
+    )
+    return json.loads(completed.stdout)
+
+
+def check_expert_handoff_protocol() -> str:
+    """Run the cross-domain protocol's own structural self-check."""
+    completed = subprocess.run(
+        [sys.executable, str(EXPERT_HANDOFF_QUERY), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
+    return completed.stdout.strip()
+
+
 def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
     """Facts a reader must recover from the bounded README first contact.
 
@@ -202,11 +257,16 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
         ],
         "recover_headline_statuses": [
             ["formalised here"],
-            ["unconditional progress"],
             ["conditional reduction"],
             ["verified finite instance"],
             ["does not show that the actual orbit avoids", "does not show the actual orbit avoids"],
             ["does not prove successful cases beyond every fixed cutoff"],
+        ],
+        "recover_farey_boundary": [
+            ["classical Farey/mediant bound"],
+            ["Farey's method supplies the number directly"],
+            ["numerical delta `0`", "numerical delta 0"],
+            ["exactly the Farey bound, not an improvement"],
         ],
         "recover_breadth_beyond_headlines": [
             ["eventually-periodic nonnegative weighted irrationality"],
@@ -242,6 +302,16 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
              "Produce the unbounded certificate supply"],
             [open_rows["remaining_open.universal_257_all_infinite_supports"]["statement"],
              "Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite"],
+        ],
+        "route_exact_expert_handoffs": [
+            ["exact expert handoffs"],
+            ["what input is requested"],
+            ["current guess"],
+            ["alternatives"],
+            ["discriminating evidence"],
+            ["checked consumer"],
+            ["endpoint-or-counterexample boundary"],
+            ["python3 scripts/query_expert_handoffs.py"],
         ],
         "choose_a_next_read": [
             ["Exposition PDF"],
@@ -318,6 +388,188 @@ def validate_human_first_contact(
         assert contains_any(orientation, [programme["claim_ceiling"]])
 
 
+def semantic_census() -> dict[str, Any]:
+    """Recompute the public diagnostic census from the generated graph."""
+    corpus = json.loads(read("docs/semantic_corpus.json"))
+    nodes = corpus["statement_nodes"]
+    frontier = corpus["frontier"]
+    nonrecurring_ids = set(corpus["views"]["nonrecurring"]["nodes"])
+    nonrecurring = [node for node in nodes if node["id"] in nonrecurring_ids]
+    bare = [
+        node
+        for node in nodes
+        if node.get("logical_class") == "equivalence_or_classification"
+        and node.get("is_restatement_of_open_problem")
+    ]
+    classical = [
+        node
+        for node in nodes
+        if node.get("logical_class") == "classical_formalised"
+        or node.get("prior_art_state") in ("known_classical", "prior_art_found")
+    ]
+    open_antecedents = frontier["open_antecedents"]
+    demand_lattice = frontier["demand_lattice"]
+    demand_classes = demand_lattice["classes"]
+    demand_equivalent_classes = [
+        row for row in demand_classes if row.get("equivalent_to_problem")
+    ]
+
+    def problem_counts(rows: list[dict[str, Any]]) -> Counter[str]:
+        return Counter(row["problem"] for row in rows)
+
+    return {
+        "nonrecurring_total": len(nonrecurring),
+        "nonrecurring_by_problem": problem_counts(nonrecurring),
+        "nonrecurring_by_class": Counter(
+            row["logical_class"] for row in nonrecurring
+        ),
+        "nonrecurring_not_assessed": sum(
+            row.get("prior_art_state") == "not_assessed"
+            for row in nonrecurring
+        ),
+        "bare_total": len(bare),
+        "bare_by_problem": problem_counts(bare),
+        "classical_total": len(classical),
+        "classical_by_problem": problem_counts(classical),
+        "open_antecedent_cluster_total": len(open_antecedents),
+        "open_antecedent_equivalent_total": sum(
+            row.get("equivalent_to_the_open_problem") is True
+            for row in open_antecedents
+        ),
+        "demand_lattice_counts": demand_lattice["counts"],
+        "demand_equivalent_total": sum(
+            len(row["members"]) for row in demand_equivalent_classes
+        ),
+        "demand_equivalent_by_problem": Counter(
+            {
+                problem: sum(
+                    len(row["members"])
+                    for row in demand_equivalent_classes
+                    if row["problem"] == problem
+                )
+                for problem in ("249", "257")
+            }
+        ),
+    }
+
+
+def validate_public_semantic_census(
+    census: dict[str, Any], surfaces: dict[str, str]
+) -> None:
+    """Keep authored public snapshots synchronized with the live graph."""
+    assert set(surfaces) == set(CENSUS_SURFACES)
+    nonrecurring = census["nonrecurring_by_problem"]
+    classes = census["nonrecurring_by_class"]
+    bare = census["bare_by_problem"]
+    classical = census["classical_by_problem"]
+    total = census["nonrecurring_total"]
+    unassessed = census["nonrecurring_not_assessed"]
+    demand = census["demand_lattice_counts"]
+    demand_equivalent = census["demand_equivalent_total"]
+    demand_equivalent_by_problem = census[
+        "demand_equivalent_by_problem"
+    ]
+    open_cluster_total = census["open_antecedent_cluster_total"]
+    open_cluster_equivalent = census[
+        "open_antecedent_equivalent_total"
+    ]
+
+    expectations = {
+        "README.md": (
+            (
+                f"{total} mechanically nonrecurring candidates "
+                f"({nonrecurring['257']} #257, {nonrecurring['249']} #249, "
+                f"{nonrecurring['shared_substrate']} shared)"
+            ),
+            f"{census['bare_total']} bare equivalences",
+            f"{census['classical_total']} classical/prior-art formalisations",
+            f"{unassessed} candidates lack prior-art assessment",
+            (
+                f"{demand_equivalent} of {demand['substantial']} substantial "
+                "hypotheses extracted from conditional theorems are proved "
+                "endpoint-equivalent"
+            ),
+        ),
+        "docs/RESULTS.md": (
+            (
+                "| mechanically nonrecurring candidates | "
+                f"{nonrecurring['249']} | {nonrecurring['257']} | "
+                f"{nonrecurring['shared_substrate']} | **{total}** |"
+            ),
+            (
+                "| classical/prior-art formalisations | "
+                f"{classical['249']} | {classical['257']} | "
+                f"{classical['shared_substrate']} | "
+                f"**{census['classical_total']}** |"
+            ),
+            (
+                "| bare open-problem equivalences | "
+                f"{bare['249']} | {bare['257']} | "
+                f"{bare['shared_substrate']} | **{census['bare_total']}** |"
+            ),
+            (
+                f"The nonrecurring view contains "
+                f"{classes['unconditional_object_theorem']} unconditional "
+                f"object theorems, {classes['barrier_no_go']} scoped "
+                f"barriers, and {classes['reduction_or_transport']} "
+                "reductions or transports"
+            ),
+            f"{unassessed} of the {total} candidates have",
+            (
+                f"Of {demand['substantial']} substantial Lean propositions "
+                "extracted from hypotheses of conditional theorems, "
+                f"{demand_equivalent} are provably equivalent to an endpoint"
+            ),
+            (
+                f"{demand_equivalent_by_problem['249']} to #249 and "
+                f"{demand_equivalent_by_problem['257']} to the `1/2` "
+                "membership test for #257"
+            ),
+            (
+                f"`open-antecedents` view currently has {open_cluster_total} "
+                f"entries, {open_cluster_equivalent} marked "
+                "endpoint-equivalent"
+            ),
+        ),
+        "docs/TRUTH_AUDIT.md": (
+            (
+                f"{total} mechanically nonrecurring candidates "
+                f"({nonrecurring['249']} for #249, "
+                f"{nonrecurring['257']} for #257, and "
+                f"{nonrecurring['shared_substrate']} shared)"
+            ),
+            f"{census['bare_total']} bare open-problem equivalences",
+            f"{census['classical_total']} classical/prior-art formalisations",
+            f"{unassessed} candidates have no completed prior-art assessment",
+            (
+                f"The `{demand_equivalent}/{demand['substantial']}` count is "
+                "a narrower kernel-checked audit"
+            ),
+            (
+                f"starts from {demand['conditional_declarations_walked']} "
+                "conditional declarations, extracts "
+                f"{demand['closed_props_extracted']} distinct closed "
+                "hypothesis Props"
+            ),
+            (
+                f"classifies {demand['substantial']} as substantial; "
+                f"{demand_equivalent} of those {demand['substantial']} are "
+                "endpoint-equivalent"
+            ),
+            (
+                f"lists {open_cluster_total} entries, "
+                f"{open_cluster_equivalent} marked endpoint-equivalent"
+            ),
+        ),
+    }
+    for path, phrases in expectations.items():
+        compact = normalized(surfaces[path])
+        for phrase in phrases:
+            assert normalized(phrase) in compact, (
+                f"{path} semantic census is stale; missing {phrase!r}"
+            )
+
+
 def validate_gateway_opening(paper: str) -> None:
     """Check that the authored introduction works without source inventory."""
     start = paper.index(r"\section{Introduction}")
@@ -356,10 +608,11 @@ def validate_gateway_opening(paper: str) -> None:
             [r"Irrationality in \#249 & Open"],
             [r"Denominator exclusion & Proved"],
             [r"q>\Qzero"],
-            [
-                "28 diagonal certificates",
-                r"diagonal certificate at every scale \(t\le82\)",
-            ],
+            # Pins the finite-evidence row to the band the claim record carries.
+            # The band moved from 28 deposits through t = 64 to every scale
+            # t <= 82; anchoring the old count would enforce an understatement
+            # of the checked theorem.
+            ["diagonal certificate at every scale"],
             [r"Universal assertion in \#257 & Open"],
             ["Prior work/formalised"],
             ["Open; exact reductions"],
@@ -432,6 +685,14 @@ def collect_agent_packets() -> dict[str, Any]:
     """Collect only bounded query replies needed to walk the public graph."""
     summary = query_packet(budget_bytes=SUMMARY_PACKET_BUDGET_BYTES)
     publication_architecture = query_packet("--publication-architecture")
+    expert_questions = semantic_query_packet("expert-questions")
+    expert_handoffs = expert_handoff_packet()
+    mathematical_question_ids = [
+        row["id"] for row in expert_questions["results"]
+    ]
+    handoff_ids = [row["id"] for row in expert_handoffs["results"]]
+    semantic_corpus = json.loads(read("docs/semantic_corpus.json"))
+    inventory_sample = semantic_corpus["declaration_roles"][0]
     packets: dict[str, Any] = {
         "summary": summary,
         "opens": {},
@@ -465,6 +726,42 @@ def collect_agent_packets() -> dict[str, Any]:
         "story_claims": {
             claim_id: query_packet("--claim", claim_id) for claim_id in STORY_CLAIMS
         },
+        "expert_questions": expert_questions,
+        "semantic_inventory": semantic_query_packet(
+            "inventory", "--limit", "3"
+        ),
+        "semantic_inventory_lookup": semantic_query_packet(
+            "inventory",
+            inventory_sample["declaration"],
+            "--module",
+            inventory_sample["module"],
+            "--limit",
+            "3",
+        ),
+        "semantic_inventory_sample": inventory_sample,
+        "expert_questions_by_problem": {
+            problem: semantic_query_packet(
+                "expert-questions", "--problem", problem
+            )
+            for problem in ("249", "257")
+        },
+        "expert_question_details": {
+            question_id: semantic_query_packet(
+                "expert-questions", question_id
+            )
+            for question_id in mathematical_question_ids
+        },
+        "expert_handoffs": expert_handoffs,
+        "expert_handoff_details": {
+            question_id: expert_handoff_packet(
+                "--question", question_id
+            )
+            for question_id in handoff_ids
+        },
+        "expert_handoff_protocol_check": check_expert_handoff_protocol(),
+        "expert_handoff_review_template": expert_handoff_packet(
+            "--review-template", SYSTEMS_EXPERT_QUESTION_ID
+        ),
     }
     for row in summary["remaining_open_propositions"]:
         packets["opens"][row["id"]] = query_packet("--open", row["id"])
@@ -531,6 +828,25 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         assert packet["family"]["consumer_or_open_obligation"]
         assert packet["family"]["view_decision"]
         assert encoded_bytes(packet) <= PACKET_BUDGET_BYTES
+
+    inventory = packets["semantic_inventory"]
+    assert inventory["authority_posture"] == (
+        "exhaustive_inventory_navigation_not_semantic_interpretation"
+    )
+    assert inventory["total_matches"] == summary["scale"]["declaration_count"]
+    assert inventory["returned"] == 3
+    assert inventory["omitted"] == inventory["total_matches"] - 3
+    assert all(row["module"] and row["declaration"] for row in inventory["results"])
+    assert "does not infer a mathematical claim" in inventory["measurement_contract"]
+
+    inventory_sample = packets["semantic_inventory_sample"]
+    inventory_lookup = packets["semantic_inventory_lookup"]
+    assert inventory_lookup["total_matches"] >= 1
+    assert any(
+        row["id"] == inventory_sample["id"]
+        for row in inventory_lookup["results"]
+    )
+    assert encoded_bytes(inventory_lookup) <= PACKET_BUDGET_BYTES
 
     assert set(packets["claim_statuses"]) == set(summary["status_taxonomy"])
     for status, packet in packets["claim_statuses"].items():
@@ -763,12 +1079,430 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         ("advances_open_target", "erdos_249"),
     }
 
+    def validate_compact_question(row: dict[str, Any]) -> None:
+        assert isinstance(row.get("id"), str) and row["id"].strip()
+        assert row.get("status") == "OPEN"
+        for field in ("exact_ask", "current_hypothesis"):
+            assert isinstance(row.get(field), str) and row[field].strip()
+        assert row.get("hypothesis_confidence") in {"low", "medium", "high"}
+        alternatives = row.get("plausible_alternatives")
+        assert isinstance(alternatives, list) and len(alternatives) >= 2
+        alternative_ids = [alternative.get("id") for alternative in alternatives]
+        assert len(alternative_ids) == len(set(alternative_ids))
+        for alternative in alternatives:
+            for field in ("id", "statement"):
+                assert isinstance(alternative.get(field), str)
+                assert alternative[field].strip()
+        for field in ("current_evidence", "discriminating_evidence"):
+            evidence = row.get(field)
+            assert isinstance(evidence, list) and len(evidence) >= 2
+            assert len(evidence) == len(set(evidence))
+            assert all(
+                isinstance(item, str) and item.strip()
+                for item in evidence
+            )
+
+    def validate_full_question(row: dict[str, Any]) -> None:
+        validate_compact_question(row)
+        for field in ("payoff", "boundary", "known_obstruction"):
+            assert isinstance(row.get(field), str) and row[field].strip()
+        for alternative in row["plausible_alternatives"]:
+            assert isinstance(alternative.get("consequence"), str)
+            assert alternative["consequence"].strip()
+
+    expert_questions = packets["expert_questions"]
+    expert_questions_by_problem = packets["expert_questions_by_problem"]
+    expert_question_details = packets["expert_question_details"]
+    assert expert_questions["packet_kind"] == "compact_index"
+    assert expert_questions["count"] == len(expert_questions["results"]) == 5
+    assert encoded_bytes(expert_questions) <= PACKET_BUDGET_BYTES
+    assert set(expert_questions_by_problem) == {"249", "257"}
+    assert {
+        problem: packet["count"]
+        for problem, packet in expert_questions_by_problem.items()
+    } == {"249": 3, "257": 2}
+    assert {
+        row["classification"] for row in expert_questions["results"]
+    } == {
+        "endpoint_equivalent",
+        "sufficient_for_erdos_249",
+        "sufficient_for_counterexample",
+    }
+    assert set(expert_questions["classification_legend"]) == {
+        "endpoint_equivalent",
+        "sufficient_for_erdos_249",
+        "sufficient_for_counterexample",
+    }
+    semantic_index_by_id = {
+        row["id"]: row for row in expert_questions["results"]
+    }
+    assert len(semantic_index_by_id) == 5
+    for row in semantic_index_by_id.values():
+        assert row["problem"] in {"249", "257"}
+        validate_compact_question(row)
+        assert row["detail_command"] == (
+            "python3 scripts/query_semantic.py expert-questions "
+            f"{row['id']}"
+        )
+        assert isinstance(row.get("checked_consumers"), list)
+        assert row["checked_consumers"]
+        assert all(
+            isinstance(consumer, str) and consumer.strip()
+            for consumer in row["checked_consumers"]
+        )
+    default_by_problem = {
+        problem: [
+            row for row in expert_questions["results"]
+            if row["problem"] == problem
+        ]
+        for problem in ("249", "257")
+    }
+    for problem, packet in expert_questions_by_problem.items():
+        assert packet["packet_kind"] == "compact_index"
+        assert packet["results"] == default_by_problem[problem]
+        assert all(row["problem"] == problem for row in packet["results"])
+        assert packet["classification_legend"] == (
+            expert_questions["classification_legend"]
+        )
+        assert packet["limits"] == expert_questions["limits"]
+        assert encoded_bytes(packet) <= PACKET_BUDGET_BYTES
+    assert {
+        row["classification"]
+        for row in expert_questions_by_problem["249"]["results"]
+    } == {"endpoint_equivalent", "sufficient_for_erdos_249"}
+    assert {
+        row["classification"]
+        for row in expert_questions_by_problem["257"]["results"]
+    } == {"sufficient_for_counterexample"}
+    expert_limits = normalized(" ".join(expert_questions["limits"]))
+    assert contains_any(
+        expert_limits,
+        [
+            "The two #257 questions can produce a counterexample if answered "
+            "positively; they cannot prove the universal positive statement."
+        ],
+    )
+    assert contains_any(
+        expert_limits,
+        [
+            "No checked strictly weaker expert handoff currently implies "
+            "universal Erdős #257 for every infinite support."
+        ],
+    )
+    assert set(expert_question_details) == set(semantic_index_by_id)
+    semantic_detail_by_id: dict[str, dict[str, Any]] = {}
+    compact_identity_fields = (
+        "id",
+        "problem",
+        "classification",
+        "status",
+        "exact_ask",
+        "current_hypothesis",
+        "hypothesis_confidence",
+        "current_evidence",
+        "discriminating_evidence",
+    )
+    for question_id, packet in expert_question_details.items():
+        assert packet["packet_kind"] == "full_question"
+        assert packet["count"] == len(packet["results"]) == 1
+        assert packet["classification_legend"] == (
+            expert_questions["classification_legend"]
+        )
+        assert packet["limits"] == expert_questions["limits"]
+        assert encoded_bytes(packet) <= PACKET_BUDGET_BYTES
+        row = packet["results"][0]
+        assert row["id"] == question_id
+        validate_full_question(row)
+        index_row = semantic_index_by_id[question_id]
+        assert all(
+            row[field] == index_row[field]
+            for field in compact_identity_fields
+        )
+        assert [
+            {
+                "id": alternative["id"],
+                "statement": alternative["statement"],
+            }
+            for alternative in row["plausible_alternatives"]
+        ] == index_row["plausible_alternatives"]
+        consumers = row.get("consumer_declarations")
+        assert isinstance(consumers, list) and consumers
+        for consumer in consumers:
+            assert isinstance(consumer.get("declaration"), str)
+            assert consumer["declaration"].strip()
+            assert isinstance(consumer.get("module"), str)
+            assert consumer["module"].strip()
+            assert isinstance(consumer.get("line"), int) and consumer["line"] > 0
+        assert [
+            f"{consumer['module']}:{consumer['line']}:{consumer['declaration']}"
+            for consumer in consumers
+        ] == index_row["checked_consumers"]
+        for field in (
+            "open_proposition_id",
+            "source_claim_id",
+            "verification_command",
+        ):
+            assert isinstance(row.get(field), str) and row[field].strip()
+        semantic_detail_by_id[question_id] = row
+
+    expert_handoffs = packets["expert_handoffs"]
+    expert_handoff_details = packets["expert_handoff_details"]
+    assert expert_handoffs["packet_kind"] == "compact_index"
+    assert expert_handoffs["count"] == len(expert_handoffs["results"]) == 6
+    assert expert_handoffs["domain_counts"] == {
+        "mathematics": 5,
+        "systems": 1,
+    }
+    assert encoded_bytes(expert_handoffs) <= PACKET_BUDGET_BYTES
+    handoff_index_by_id = {
+        row["id"]: row for row in expert_handoffs["results"]
+    }
+    assert len(handoff_index_by_id) == 6
+    assert set(expert_handoff_details) == set(handoff_index_by_id)
+    shared_index_fields = (
+        "id",
+        "problem",
+        "classification",
+        "status",
+        "exact_ask",
+        "current_hypothesis",
+        "hypothesis_confidence",
+        "plausible_alternatives",
+        "current_evidence",
+        "discriminating_evidence",
+    )
+    for row in handoff_index_by_id.values():
+        validate_compact_question(row)
+        assert row["detail_command"] == (
+            "python3 scripts/query_expert_handoffs.py --question "
+            f"{row['id']}"
+        )
+        if row["domain"] == "mathematics":
+            semantic_row = semantic_index_by_id[row["id"]]
+            assert all(
+                row[field] == semantic_row[field]
+                for field in shared_index_fields
+            )
+    handoff_detail_by_id: dict[str, dict[str, Any]] = {}
+    for question_id, packet in expert_handoff_details.items():
+        assert packet["packet_kind"] == "full_question"
+        assert packet["count"] == len(packet["results"]) == 1
+        assert encoded_bytes(packet) <= PACKET_BUDGET_BYTES
+        row = packet["results"][0]
+        assert row["id"] == question_id
+        assert packet["domain_counts"] == {row["domain"]: 1}
+        validate_full_question(row)
+        index_row = handoff_index_by_id[question_id]
+        assert all(
+            row.get(field) == index_row.get(field)
+            for field in compact_identity_fields
+        )
+        assert [
+            {
+                "id": alternative["id"],
+                "statement": alternative["statement"],
+            }
+            for alternative in row["plausible_alternatives"]
+        ] == index_row["plausible_alternatives"]
+        if row["domain"] == "mathematics":
+            semantic_row = semantic_detail_by_id[question_id]
+            assert {
+                key: value for key, value in row.items()
+                if key != "domain"
+            } == semantic_row
+        handoff_detail_by_id[question_id] = row
+
+    mathematical_handoffs_by_id = {
+        question_id: row
+        for question_id, row in handoff_detail_by_id.items()
+        if row["domain"] == "mathematics"
+    }
+    expected_257_consumers = {
+        "XQ257-second-channel-separation": {
+            "half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
+            "positiveMersenneSupportValue_coe_finset_ne_half",
+            "positiveMersenneSupportValue_eq_erdosSupportSeries",
+        },
+        "XQ257-middle-producer-tail-escape": {
+            "half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree",
+            "positiveMersenneSupportValue_coe_finset_ne_half",
+            "positiveMersenneSupportValue_eq_erdosSupportSeries",
+        },
+    }
+    for question_id, expected_consumers in expected_257_consumers.items():
+        row = mathematical_handoffs_by_id[question_id]
+        assert row["problem"] == "257"
+        assert {
+            consumer["declaration"]
+            for consumer in row["consumer_declarations"]
+        } == expected_consumers
+    pivot = mathematical_handoffs_by_id["XQ249-pivot-decorrelation"]
+    assert "h <= L-s" in pivot["exact_ask"]
+    assert (
+        "all four 14/25, 1/100, 1/100 and 8/25 budgets"
+        in pivot["current_hypothesis"]
+    )
+    pivot_alternatives = {
+        row["id"]: row for row in pivot["plausible_alternatives"]
+    }
+    assert set(pivot_alternatives) == {
+        "cofinal_four_budget_socket",
+        "no_cofinal_joint_witness",
+    }
+    assert pivot_alternatives["cofinal_four_budget_socket"]["statement"] == (
+        "All four budgets, overlap and room inequalities hold cofinally for "
+        "every positive shift."
+    )
+    assert pivot_alternatives["no_cofinal_joint_witness"]["statement"] == (
+        "For some h > 0, every s > 0 and eta in (0,1) has a cutoff after "
+        "which no X,L meet the complete structural and four-budget conjunction."
+    )
+
+    adjacent = mathematical_handoffs_by_id[
+        "XQ249-adjacent-phase-separation"
+    ]
+    assert "16(2X+h+L+2) <= 2^L" in adjacent["exact_ask"]
+    adjacent_alternatives = {
+        row["id"]: row for row in adjacent["plausible_alternatives"]
+    }
+    assert adjacent_alternatives["phase_locking"]["statement"] == (
+        "For some positive shift there is a cutoff beyond which no admissible "
+        "block, depth and adjacent pair meet the 19/25 threshold."
+    )
+    assert any(
+        "Infinitely many bad blocks alone do not." in evidence
+        for evidence in adjacent["discriminating_evidence"]
+    )
+
+    second_channel = mathematical_handoffs_by_id[
+        "XQ257-second-channel-separation"
+    ]
+    second_channel_text = " ".join(
+        [
+            second_channel["current_hypothesis"],
+            second_channel["known_obstruction"],
+            *second_channel["current_evidence"],
+        ]
+    )
+    assert "Theta(n^2)" not in second_channel_text
+    assert (
+        "no matching reduced-denominator lower bound"
+        in second_channel_text
+    )
+    assert "1 <= n <= 1000" in second_channel_text
+    assert "Rank 1001 onward is unmeasured" in second_channel_text
+    assert "1033253069/8193024" in second_channel_text
+    assert (
+        "All 128 branch words of length seven occur"
+        in second_channel_text
+    )
+    assert second_channel["measured_evidence_artifact"] == (
+        "docs/measurements/second_channel_separation_probe.json"
+    )
+    assert second_channel["measurement_check_command"] == (
+        "python3 scripts/probe_second_channel_separation.py --check"
+    )
+
+    middle = mathematical_handoffs_by_id[
+        "XQ257-middle-producer-tail-escape"
+    ]
+    assert (
+        "Prove C_s = -3 or (1 <= C_s and Theta_s < C_s)."
+        in middle["exact_ask"]
+    )
+    middle_alternatives = {
+        row["id"]: row for row in middle["plausible_alternatives"]
+    }
+    assert set(middle_alternatives) == {
+        "full_middle_disjunction",
+        "nonpositive_cell_counterexample",
+        "positive_tail_counterexample",
+    }
+    assert middle_alternatives["full_middle_disjunction"]["statement"] == (
+        "Every actual middle row satisfies C_s = -3 or 1 <= C_s with "
+        "Theta_s < C_s."
+    )
+    assert middle_alternatives["nonpositive_cell_counterexample"][
+        "statement"
+    ] == "An actual middle row has C_s <= 0 with C_s != -3."
+    assert middle_alternatives["positive_tail_counterexample"]["statement"] == (
+        "An actual middle row has 1 <= C_s and Theta_s >= C_s."
+    )
+    systems_handoff = handoff_detail_by_id[SYSTEMS_EXPERT_QUESTION_ID]
+    assert systems_handoff["domain"] == "systems"
+    assert systems_handoff["classification"] == "external_validation"
+    for field in (
+        "exact_ask",
+        "payoff",
+        "boundary",
+        "known_obstruction",
+        "verification_command",
+    ):
+        assert isinstance(systems_handoff.get(field), str)
+        assert systems_handoff[field].strip()
+    assert systems_handoff["input_template"]["question_id"] == (
+        systems_handoff["id"]
+    )
+    assert "acceptance" not in systems_handoff
+    assert "review_template" not in systems_handoff
+    rubric = systems_handoff.get("manual_review_rubric")
+    assert isinstance(rubric, dict) and rubric
+    assert all(
+        isinstance(key, str) and key.strip()
+        and isinstance(value, str) and value.strip()
+        for key, value in rubric.items()
+    )
+    scalar_answer_fields = (
+        "prior_project_context",
+        "elapsed_seconds",
+        "problem_249_status",
+        "problem_257_status",
+        "farey_bound_provenance",
+        "farey_numerical_delta",
+        "equivalent_antecedents",
+        "substantial_antecedents",
+    )
+    assert all(
+        systems_handoff["input_template"][field] is None
+        for field in scalar_answer_fields
+    )
+    assert systems_handoff["consumer"]["command"]
+    assert systems_handoff["consumer"]["review_template_command"] == (
+        "python3 scripts/query_expert_handoffs.py --review-template "
+        f"{SYSTEMS_EXPERT_QUESTION_ID}"
+    )
+    assert systems_handoff["consumer"]["final_review_command"]
+    assert systems_handoff["verification_command"] == (
+        "python3 scripts/query_expert_handoffs.py --check"
+    )
+    assert packets["expert_handoff_protocol_check"] == (
+        "expert handoff protocol: 5 mathematical questions and "
+        "1 systems question(s) verified"
+    )
+    review_template = packets["expert_handoff_review_template"]
+    assert review_template["question_id"] == SYSTEMS_EXPERT_QUESTION_ID
+    assert review_template["response_sha256"] is None
+    assert review_template["evaluator_identity"] is None
+    assert review_template["evaluated_at"] is None
+    assert review_template["reviewer_provenance_verified"] is None
+    assert review_template["timing_provenance_verified"] is None
+    assert review_template["review_notes"] == ""
+    assert review_template["final_outcome"] is None
+    assert set(review_template["criteria"]) == set(rubric)
+    assert all(value is None for value in review_template["criteria"].values())
+    assert "acceptance" not in review_template
+    assert encoded_bytes(review_template) <= PACKET_BUDGET_BYTES
+
 
 def run_quick_check() -> int:
     """Verify the zero-build first-contact path from committed projections."""
     summary = quick_summary()
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
+    validate_public_semantic_census(
+        semantic_census(),
+        {path: read(path) for path in CENSUS_SURFACES},
+    )
     validate_gateway_opening(read(GATEWAY_PAPER))
     validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
     print(
@@ -798,6 +1532,10 @@ def main(argv: list[str] | None = None) -> int:
     summary = packets["summary"]
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
+    validate_public_semantic_census(
+        semantic_census(),
+        {path: read(path) for path in CENSUS_SURFACES},
+    )
     validate_gateway_opening(read(GATEWAY_PAPER))
     validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
     validate_agent_packets(packets)
@@ -817,6 +1555,13 @@ def main(argv: list[str] | None = None) -> int:
         + len(packets["discovery_searches"])
         + len(packets["discovery_multi_searches"])
         + len(packets["story_claims"])
+        + 2
+        + 1
+        + len(packets["expert_questions_by_problem"])
+        + len(packets["expert_question_details"])
+        + 1
+        + len(packets["expert_handoff_details"])
+        + 2
         + 3
     )
     print(

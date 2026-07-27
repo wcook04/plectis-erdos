@@ -432,6 +432,42 @@ def collect() -> dict:
             }
         )
 
+    # Authored zone files carry the reviewed statement-level interpretation,
+    # but inventory routing must not go stale whenever a Lean module grows.
+    # Route every otherwise-unclassified live declaration through a deliberately
+    # non-semantic inventory lane.  This is module-agnostic and preserves the
+    # important ceiling: the declaration is discoverable, but no canonical
+    # mathematical statement is inferred from its name or source text.
+    automatic_inventory_roles = []
+    for row in atlas["declarations"]:
+        if row["id"] in roles:
+            continue
+        assignment = {
+            "declaration": row["name"],
+            "module": row["module"],
+            "role": "substrate",
+            "statement_node": None,
+            "zone": "inventory",
+            "routing_origin": "automatic_inventory_fallback",
+            "routing_basis": (
+                "Live declaration from the exhaustive atlas with no authored "
+                "zone receipt; routed for discovery without semantic interpretation."
+            ),
+        }
+        roles[row["id"]] = assignment
+        automatic_inventory_roles.append(row["id"])
+    if automatic_inventory_roles:
+        zone_index.append(
+            {
+                "zone_id": "inventory",
+                "title": "Unclassified live declaration inventory",
+                "problem": "shared_substrate",
+                "source": "generated from docs/declaration_atlas.json",
+                "statement_nodes": 0,
+                "declaration_roles": len(automatic_inventory_roles),
+            }
+        )
+
     # ---- coverage receipts ----------------------------------------------
     owned = set(roles)
     all_ids = set(atlas_rows)
@@ -499,6 +535,19 @@ def collect() -> dict:
     # ---- views ------------------------------------------------------------
     frontier_path = SEMANTIC_DIR / "frontier.json"
     frontier = load(frontier_path) if frontier_path.is_file() else {}
+    # Consumer coordinates are generated navigation data. Resolve them from
+    # the live atlas so a harmless line shift cannot invalidate an otherwise
+    # current expert handoff.
+    for question in frontier.get("expert_questions", []):
+        for consumer in question.get("consumer_declarations", []):
+            row = find_declaration(
+                consumer.get("module", ""),
+                consumer.get("declaration", ""),
+            )
+            if row is not None:
+                consumer["module"] = row["module"]
+                consumer["declaration"] = row["name"]
+                consumer["line"] = row["line"]
 
     def node_ids(predicate) -> list[str]:
         return sorted(nid for nid, n in nodes.items() if predicate(n))
@@ -657,7 +706,8 @@ def collect() -> dict:
             ),
             "routing": (
                 "Every live declaration has exactly one role-and-zone receipt, or one "
-                "manifest-owned generated-family receipt."
+                "manifest-owned generated-family receipt. Declarations not yet covered "
+                "by an authored semantic zone receive an automatic inventory-only route."
             ),
             "statement_interpretation": (
                 "Only a declaration whose receipt names a statement_node is claimed to "
@@ -713,6 +763,9 @@ def collect() -> dict:
             "zones": len(zone_index),
             "coverage": {
                 "declarations_owned": len(live_roles),
+                "automatic_inventory_fallback_count": len(
+                    automatic_inventory_roles
+                ),
                 "role_references": len(owned),
                 "orphan_count": len(orphans),
                 "phantom_count": len(phantom),
@@ -769,6 +822,9 @@ def collect() -> dict:
         "views": views,
         "integrity": {
             "orphans": orphans,
+            "automatic_inventory_fallback_declarations": (
+                automatic_inventory_roles
+            ),
             "phantom_declaration_references": phantom,
             "duplicate_role_assignments": duplicate_role_assignments,
             "curated_claim_declarations_without_node": claim_without_node,

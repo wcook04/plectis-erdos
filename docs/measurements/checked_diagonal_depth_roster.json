@@ -176,8 +176,8 @@
    {
     "source_path": "ErdosProblems/Lift/CertT67.lean",
     "lean_module": "ErdosProblems.Lift.CertT67",
-    "bytes": 1117050,
-    "source_sha256": "sha256:8e12ec938db479746af4ad45e409ab44d06cfebaef15b4c61cdb70c20b78b943",
+    "bytes": 1117049,
+    "source_sha256": "sha256:af0618171a0d0ad5c2d3d9bed48183fb4c4d33d2d9e7225be08603764a82e87d",
     "certificate_declarations": 1,
     "least_depth_declarations": 1
    },
@@ -1123,14 +1123,14 @@
      "lean_module": "ErdosProblems.Lift.CertT67",
      "declaration": "certifiedKill_diagonal_t71",
      "line": 21281,
-     "source_sha256": "sha256:8e12ec938db479746af4ad45e409ab44d06cfebaef15b4c61cdb70c20b78b943"
+     "source_sha256": "sha256:af0618171a0d0ad5c2d3d9bed48183fb4c4d33d2d9e7225be08603764a82e87d"
     },
     "least_depth": {
      "source_path": "ErdosProblems/Lift/CertT67.lean",
      "lean_module": "ErdosProblems.Lift.CertT67",
      "declaration": "t71_minimal_depth",
      "line": 21288,
-     "source_sha256": "sha256:8e12ec938db479746af4ad45e409ab44d06cfebaef15b4c61cdb70c20b78b943"
+     "source_sha256": "sha256:af0618171a0d0ad5c2d3d9bed48183fb4c4d33d2d9e7225be08603764a82e87d"
     }
    }
   },

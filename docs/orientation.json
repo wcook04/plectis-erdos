@@ -23,20 +23,19 @@
   "formal_source_publication_state": "committed_checkpoint_pending_remote_publication"
  },
  "scale": {
-  "module_count": 689,
-  "declaration_count": 13863,
-  "theorem_like_count": 12567,
-  "generated_certificate_declaration_count": 2925,
+  "module_count": 989,
+  "declaration_count": 151706,
+  "theorem_like_count": 149762,
+  "generated_certificate_declaration_count": 8171,
   "principal_claim_link_count": 299,
   "kind_counts": {
    "abbrev": 11,
-   "class": 1,
-   "def": 1243,
-   "inductive": 4,
-   "instance": 5,
-   "lemma": 363,
+   "def": 1892,
+   "inductive": 3,
+   "instance": 6,
+   "lemma": 402,
    "structure": 32,
-   "theorem": 12204
+   "theorem": 149360
   }
  },
  "status_taxonomy": {
@@ -51,46 +50,50 @@
  "remaining_open_propositions": [
   {
    "id": "remaining_open.erdos_249_irrationality",
+   "status": "open",
    "open_target_claim": "erdos_249",
    "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.",
    "paper_anchor": {
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "Erd\\H{o}s \\#249",
-    "line": 4157
+    "line": 4153
    }
   },
   {
    "id": "remaining_open.unbounded_certificate_supply",
+   "status": "open",
    "open_target_claim": "erdos_249",
    "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.",
    "paper_anchor": {
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "unbounded certificate supply",
-    "line": 4168
+    "line": 4164
    }
   },
   {
    "id": "remaining_open.half_value_membership",
+   "status": "open",
    "open_target_claim": "universal_257",
    "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.",
    "paper_anchor": {
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "the half-value counterexample route",
-    "line": 4192
+    "line": 4188
    }
   },
   {
    "id": "remaining_open.universal_257_all_infinite_supports",
+   "status": "open",
    "open_target_claim": "universal_257",
    "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
    "paper_anchor": {
     "source": "paper/erdos249-257-main-paper.tex",
     "environment": "problem",
     "title": "universal Erd\\H{o}s \\#257",
-    "line": 4183
+    "line": 4179
    }
   }
  ],
@@ -571,7 +574,7 @@
  "source_revision": {
   "formal_source_ref": "eeedb6307b45e64632e8435ecfa075e5b010c30a",
   "committed_navigation_snapshot": "e46d862471f9764077c629cb09560ae84b92bb14",
-  "main_paper_source_digest": "sha256:a5526032705f1beb208625b9e58dedf2afdeacf6f842768853dbb6d815ed3dce"
+  "main_paper_source_digest": "sha256:7429e6a90ad1f5fa1c439801a28612916a6f7a623b379443e6df748cc2f0bdf8"
  },
  "reading_routes": [
   {

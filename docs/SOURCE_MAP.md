@@ -94,8 +94,11 @@ open obligation; it does not prove the required unbounded supply.
 - `Erdos249257.DiagonalFreshLossBridge` — exact fresh-loss projection and
   stronger adjacent-suffix supply interfaces.
 - `Erdos249257.DiagonalPincerCertificates` and
-  `Erdos249257.DiagonalPincerCertificatesT*` — the finite diagonal segment,
-  currently assembled at 28 explicit scales through `t = 64`.
+  `Erdos249257.DiagonalPincerCertificatesT*`, followed by
+  `ErdosProblems.Lift` and `ErdosProblems.Skip` — the finite diagonal segment
+  supplies a checked working depth for every
+  natural `t ≤ 82`; it supplies nothing at `t = 83`. This is finite source
+  extraction, not a cofinal or asymptotic result.
 - `Erdos249257.DiagonalPincerPrimeCertificates.*` — finite prime certificate
   shards used by that assembled segment; read the aggregators first.
 

@@ -4,6 +4,7 @@ import ErdosProblems.Erdos249.CyclotomicAnchoredKill
 import ErdosProblems.Erdos249.PeriodMultipleEscape
 import ErdosProblems.Erdos249.RankOneSubrankObstruction
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
+import ErdosProblems.Erdos249.LcmJumpKillFromDiagonal
 import ErdosProblems.Erdos257.HalfCounterexampleFrontier
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos243.ReciprocalTailRigidity

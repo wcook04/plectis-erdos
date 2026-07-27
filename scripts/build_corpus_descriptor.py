@@ -745,6 +745,12 @@ def build() -> dict[str, Any]:
                     root_path: len(root_modules[root_path]["imports"])
                     for root_path in root_paths
                 },
+                "auxiliary_root_count": len(
+                    machine_paper["module_graph"].get("auxiliary_roots", [])
+                ),
+                "auxiliary_root_posture": machine_paper["module_graph"].get(
+                    "auxiliary_root_contract", {}
+                ).get("posture"),
                 "full_graph": "docs/claims.json::machine_readable_paper.module_graph",
             },
             "argument_graph": machine_paper["argument_graph"],

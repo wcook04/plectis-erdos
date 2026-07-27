@@ -23,17 +23,17 @@ The paper's own reading map sends a first pass to [The two exact reductions](ful
 
 **A Basis for the Dyadic Sections of Euler’s Totient**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex) · 25 sections · `erdos-249-binary-totient-series` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Results](full-text/erdos-249-binary-totient-series.md#sec:results), [What we need from a mathematician](full-text/erdos-249-binary-totient-series.md#sec:ask), [What remains open](full-text/erdos-249-binary-totient-series.md#sec:open).
 
 ### Which Mersenne-support subseries are settled, what finite-period and achievement-set structure is proved, and what still blocks Erdős #257?
 
-**Settled Supports and Exact Finite Periods**
+**Forced Structure in Mersenne Subseries**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 14 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 19 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
-This paper states no reading route. Its evidence boundary is in [Exact period of every finite partial sum](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [The map of settled supports](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [What we need from a mathematician](full-text/erdos-257-mersenne-support-subseries.md#sec:ask), [What remains open](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
+This paper states no reading route. Its evidence boundary is in [Exact periods of finite partial sums](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [The settled supports, by mechanism](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [The exact frontier](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
 ### Lean proves the formal statement — but who checks that the README describes it faithfully?
 

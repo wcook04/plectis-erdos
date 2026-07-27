@@ -1334,6 +1334,253 @@
       "additional_roots": [
         "ErdosProblems.lean"
       ],
+      "auxiliary_roots": [
+        "ErdosProblems.Bit.verify.B1",
+        "ErdosProblems.Bit.verify.B2",
+        "ErdosProblems.Bit.verify.B3",
+        "ErdosProblems.Bit.verify.B4",
+        "ErdosProblems.Bit.verify.B5",
+        "ErdosProblems.Decl.verify.D1",
+        "ErdosProblems.Decl.verify.D2",
+        "ErdosProblems.Decl.verify.D3",
+        "ErdosProblems.Decl.verify.D4",
+        "ErdosProblems.FreePosition.FreeKill18B",
+        "ErdosProblems.FreePosition.FreeKill21C",
+        "ErdosProblems.FreePosition.FreeKill53D",
+        "ErdosProblems.FreePosition.FreeKill59Root",
+        "ErdosProblems.FreePosition.FreeKill61E",
+        "ErdosProblems.FreePosition.FreeKill64DecH",
+        "ErdosProblems.FreePosition.FreeKill64DepthRoot",
+        "ErdosProblems.FreePosition.FreeKill64EighteenP",
+        "ErdosProblems.FreePosition.FreeKill64EightyBZ",
+        "ErdosProblems.FreePosition.FreeKill64EightyEightCH",
+        "ErdosProblems.FreePosition.FreeKill64EightyFiveCE",
+        "ErdosProblems.FreePosition.FreeKill64EightyFourCD",
+        "ErdosProblems.FreePosition.FreeKill64EightyNineCI",
+        "ErdosProblems.FreePosition.FreeKill64EightyOneCA",
+        "ErdosProblems.FreePosition.FreeKill64EightySevenCG",
+        "ErdosProblems.FreePosition.FreeKill64EightySixCF",
+        "ErdosProblems.FreePosition.FreeKill64EightyThreeCC",
+        "ErdosProblems.FreePosition.FreeKill64EightyTwoCB",
+        "ErdosProblems.FreePosition.FreeKill64ElevenI",
+        "ErdosProblems.FreePosition.FreeKill64F",
+        "ErdosProblems.FreePosition.FreeKill64FifteenM",
+        "ErdosProblems.FreePosition.FreeKill64FiftyAV",
+        "ErdosProblems.FreePosition.FreeKill64FiftyEightBD",
+        "ErdosProblems.FreePosition.FreeKill64FiftyFiveBA",
+        "ErdosProblems.FreePosition.FreeKill64FiftyFourAZ",
+        "ErdosProblems.FreePosition.FreeKill64FiftyNineBE",
+        "ErdosProblems.FreePosition.FreeKill64FiftyOneAW",
+        "ErdosProblems.FreePosition.FreeKill64FiftySevenBC",
+        "ErdosProblems.FreePosition.FreeKill64FiftySixBB",
+        "ErdosProblems.FreePosition.FreeKill64FiftyThreeAY",
+        "ErdosProblems.FreePosition.FreeKill64FiftyTwoAX",
+        "ErdosProblems.FreePosition.FreeKill64FortyAL",
+        "ErdosProblems.FreePosition.FreeKill64FortyEightAT",
+        "ErdosProblems.FreePosition.FreeKill64FortyFiveAQ",
+        "ErdosProblems.FreePosition.FreeKill64FortyFourAP",
+        "ErdosProblems.FreePosition.FreeKill64FortyNineAU",
+        "ErdosProblems.FreePosition.FreeKill64FortyOneAM",
+        "ErdosProblems.FreePosition.FreeKill64FortySevenAS",
+        "ErdosProblems.FreePosition.FreeKill64FortySixAR",
+        "ErdosProblems.FreePosition.FreeKill64FortyThreeAO",
+        "ErdosProblems.FreePosition.FreeKill64FortyTwoAN",
+        "ErdosProblems.FreePosition.FreeKill64ForwardRoot",
+        "ErdosProblems.FreePosition.FreeKill64FourteenL",
+        "ErdosProblems.FreePosition.FreeKill64HighG",
+        "ErdosProblems.FreePosition.FreeKill64NineteenQ",
+        "ErdosProblems.FreePosition.FreeKill64NinetyCJ",
+        "ErdosProblems.FreePosition.FreeKill64NinetyEightCR",
+        "ErdosProblems.FreePosition.FreeKill64NinetyFiveCO",
+        "ErdosProblems.FreePosition.FreeKill64NinetyFourCN",
+        "ErdosProblems.FreePosition.FreeKill64NinetyNineCS",
+        "ErdosProblems.FreePosition.FreeKill64NinetyOneCK",
+        "ErdosProblems.FreePosition.FreeKill64NinetySevenCQ",
+        "ErdosProblems.FreePosition.FreeKill64NinetySixCP",
+        "ErdosProblems.FreePosition.FreeKill64NinetyThreeCM",
+        "ErdosProblems.FreePosition.FreeKill64NinetyTwoCL",
+        "ErdosProblems.FreePosition.FreeKill64NonG",
+        "ErdosProblems.FreePosition.FreeKill64OctF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredCT",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredEightDB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredEighteenDL",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredElevenDE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFifteenDI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyER",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyEightEZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFiveEW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFourEV",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyNineFA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyOneES",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySevenEY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySixEX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyThreeEU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyTwoET",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiveCY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEightEP",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFiveEM",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFourEL",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyNineEQ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyOneEI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortySevenEO",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortySixEN",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyThreeEK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyTwoEJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFourCX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFourteenDH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredNineDC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredNineteenDM",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredOneCU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSevenDA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSeventeenDK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixCZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixteenDJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyEightFJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFiveFG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFourFF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyNineFK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyOneFC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySevenFI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySixFH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyThreeFE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyTwoFD",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTenDD",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirteenDG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyDX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyEightEF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFiveEC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFourEB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyNineEG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyOneDY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySevenEE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySixED",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyThreeEA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyTwoDZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThreeCW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwelveDF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyDN",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyEightDV",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFiveDS",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFourDR",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyNineDW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyOneDO",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySevenDU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySixDT",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyThreeDQ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyTwoDP",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwoCV",
+        "ErdosProblems.FreePosition.FreeKill64QuadB",
+        "ErdosProblems.FreePosition.FreeKill64QuintC",
+        "ErdosProblems.FreePosition.FreeKill64SeptE",
+        "ErdosProblems.FreePosition.FreeKill64SeventeenO",
+        "ErdosProblems.FreePosition.FreeKill64SeventyBP",
+        "ErdosProblems.FreePosition.FreeKill64SeventyEightBX",
+        "ErdosProblems.FreePosition.FreeKill64SeventyFiveBU",
+        "ErdosProblems.FreePosition.FreeKill64SeventyFourBT",
+        "ErdosProblems.FreePosition.FreeKill64SeventyNineBY",
+        "ErdosProblems.FreePosition.FreeKill64SeventyOneBQ",
+        "ErdosProblems.FreePosition.FreeKill64SeventySevenBW",
+        "ErdosProblems.FreePosition.FreeKill64SeventySixBV",
+        "ErdosProblems.FreePosition.FreeKill64SeventyThreeBS",
+        "ErdosProblems.FreePosition.FreeKill64SeventyTwoBR",
+        "ErdosProblems.FreePosition.FreeKill64SextD",
+        "ErdosProblems.FreePosition.FreeKill64SixteenN",
+        "ErdosProblems.FreePosition.FreeKill64SixtyBF",
+        "ErdosProblems.FreePosition.FreeKill64SixtyEightBN",
+        "ErdosProblems.FreePosition.FreeKill64SixtyFiveBK",
+        "ErdosProblems.FreePosition.FreeKill64SixtyFourBJ",
+        "ErdosProblems.FreePosition.FreeKill64SixtyNineBO",
+        "ErdosProblems.FreePosition.FreeKill64SixtyOneBG",
+        "ErdosProblems.FreePosition.FreeKill64SixtySevenBM",
+        "ErdosProblems.FreePosition.FreeKill64SixtySixBL",
+        "ErdosProblems.FreePosition.FreeKill64SixtyThreeBI",
+        "ErdosProblems.FreePosition.FreeKill64SixtyTwoBH",
+        "ErdosProblems.FreePosition.FreeKill64ThirteenK",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyAB",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyEightAJ",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyFiveAG",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyFourAF",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyNineAK",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyOneAC",
+        "ErdosProblems.FreePosition.FreeKill64ThirtySevenAI",
+        "ErdosProblems.FreePosition.FreeKill64ThirtySixAH",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyThreeAE",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyTwoAD",
+        "ErdosProblems.FreePosition.FreeKill64TripleA",
+        "ErdosProblems.FreePosition.FreeKill64TwelveJ",
+        "ErdosProblems.FreePosition.FreeKill64TwentyEightZ",
+        "ErdosProblems.FreePosition.FreeKill64TwentyFiveW",
+        "ErdosProblems.FreePosition.FreeKill64TwentyFourV",
+        "ErdosProblems.FreePosition.FreeKill64TwentyNineAA",
+        "ErdosProblems.FreePosition.FreeKill64TwentyOneS",
+        "ErdosProblems.FreePosition.FreeKill64TwentyR",
+        "ErdosProblems.FreePosition.FreeKill64TwentySevenY",
+        "ErdosProblems.FreePosition.FreeKill64TwentySixX",
+        "ErdosProblems.FreePosition.FreeKill64TwentyThreeU",
+        "ErdosProblems.FreePosition.FreeKill64TwentyTwoT",
+        "ErdosProblems.Half.verify.W1",
+        "ErdosProblems.Half.verify.W2",
+        "ErdosProblems.Half.verify.W3",
+        "ErdosProblems.Half.verify.W4",
+        "ErdosProblems.Half.verify.W5",
+        "ErdosProblems.Half.verify.W6",
+        "ErdosProblems.Half.verify.W7",
+        "ErdosProblems.Hlow.W1",
+        "ErdosProblems.Hlow.W3",
+        "ErdosProblems.Hlow.verify.V1",
+        "ErdosProblems.Hlow.verify.V2",
+        "ErdosProblems.Lift.verify.Check1",
+        "ErdosProblems.Lift.verify.Check10",
+        "ErdosProblems.Lift.verify.Check11",
+        "ErdosProblems.Lift.verify.Check12",
+        "ErdosProblems.Lift.verify.Check13",
+        "ErdosProblems.Lift.verify.Check14",
+        "ErdosProblems.Lift.verify.Check2",
+        "ErdosProblems.Lift.verify.Check3",
+        "ErdosProblems.Lift.verify.Check4",
+        "ErdosProblems.Lift.verify.Check5",
+        "ErdosProblems.Lift.verify.Check6",
+        "ErdosProblems.Lift.verify.Check7",
+        "ErdosProblems.Lift.verify.Check8",
+        "ErdosProblems.Lift.verify.Check9",
+        "ErdosProblems.Rem.verify.C1",
+        "ErdosProblems.Rem.verify.C2",
+        "ErdosProblems.Rem.verify.C3",
+        "ErdosProblems.Rem.verify.C4",
+        "ErdosProblems.Rem.verify.C5",
+        "ErdosProblems.Rem.verify.C6",
+        "ErdosProblems.Skip.verify.V1",
+        "ErdosProblems.Skip.verify.V10",
+        "ErdosProblems.Skip.verify.V2",
+        "ErdosProblems.Skip.verify.V3",
+        "ErdosProblems.Skip.verify.V4",
+        "ErdosProblems.Skip.verify.V5",
+        "ErdosProblems.Skip.verify.V6",
+        "ErdosProblems.Skip.verify.V7",
+        "ErdosProblems.Skip.verify.V8",
+        "ErdosProblems.Skip.verify.V9",
+        "ErdosProblems.Three.verify.T1",
+        "ErdosProblems.Three.verify.T2",
+        "ErdosProblems.Three.verify.T3",
+        "ErdosProblems.Three.verify.T4"
+      ],
+      "auxiliary_root_contract": {
+        "posture": "exhaustive_inventory_forest_not_compact_reading_root",
+        "allowed_prefixes": [
+          "ErdosProblems.Bit.",
+          "ErdosProblems.Decl.",
+          "ErdosProblems.FreePosition.",
+          "ErdosProblems.Half.",
+          "ErdosProblems.Hlow.",
+          "ErdosProblems.Lift.",
+          "ErdosProblems.Rem.",
+          "ErdosProblems.Skip.",
+          "ErdosProblems.Three."
+        ],
+        "meaning": "Independent exploratory and certificate components remain kernel-checkable and exhaustively navigable without forcing them into one monolithic import environment."
+      },
       "nodes": [
         {
           "id": "Erdos249257.ActualForeignResidueProjection",
@@ -7242,6 +7489,314 @@
           ]
         },
         {
+          "id": "ErdosProblems.Bit.Corr1",
+          "path": "ErdosProblems/Bit/Corr1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfCylinderLargestSkipInduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.Corr2",
+          "path": "ErdosProblems/Bit/Corr2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfCylinderIntegerGreedy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.Corr3",
+          "path": "ErdosProblems/Bit/Corr3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D2",
+            "ErdosProblems.Skip.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.R1",
+          "path": "ErdosProblems/Bit/R1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.Corr1",
+            "ErdosProblems.Bit.Corr2",
+            "ErdosProblems.Skip.D2",
+            "ErdosProblems.Skip.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.R2",
+          "path": "ErdosProblems/Bit/R2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D2",
+            "ErdosProblems.Skip.D3",
+            "ErdosProblems.Bit.Corr2",
+            "Erdos249257.HalfCylinderResetDeficitEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.R3",
+          "path": "ErdosProblems/Bit/R3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.Corr2",
+            "ErdosProblems.Skip.D2",
+            "ErdosProblems.Skip.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.R4",
+          "path": "ErdosProblems/Bit/R4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.Corr1",
+            "ErdosProblems.Bit.Corr2",
+            "ErdosProblems.Skip.D2",
+            "ErdosProblems.Skip.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.verify.B1",
+          "path": "ErdosProblems/Bit/verify/B1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.Corr1",
+            "ErdosProblems.Skip.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.verify.B2",
+          "path": "ErdosProblems/Bit/verify/B2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.Corr2",
+            "Erdos249257.HalfCylinderConcreteSeamAdapter"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.verify.B3",
+          "path": "ErdosProblems/Bit/verify/B3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.Corr3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.verify.B4",
+          "path": "ErdosProblems/Bit/verify/B4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.R1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Bit.verify.B5",
+          "path": "ErdosProblems/Bit/verify/B5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.R2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.D1",
+          "path": "ErdosProblems/Decl/D1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T1",
+            "ErdosProblems.Bit.Corr1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.D2",
+          "path": "ErdosProblems/Decl/D2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.D3",
+          "path": "ErdosProblems/Decl/D3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T1",
+            "ErdosProblems.Three.T4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.D4",
+          "path": "ErdosProblems/Decl/D4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T1",
+            "ErdosProblems.Three.T4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.verify.D1",
+          "path": "ErdosProblems/Decl/verify/D1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Decl.D1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.verify.D2",
+          "path": "ErdosProblems/Decl/verify/D2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Decl.D2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.verify.D3",
+          "path": "ErdosProblems/Decl/verify/D3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Decl.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Decl.verify.D4",
+          "path": "ErdosProblems/Decl/verify/D4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Decl.D4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.Basic",
+          "path": "ErdosProblems/DemandLedger/Basic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Hyp",
+            "ErdosProblems.Erdos249.TotientStrictPrimeEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.Hyp",
+          "path": "ErdosProblems/DemandLedger/Hyp.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.Bridge1",
+          "path": "ErdosProblems/DemandLedger/edges/Bridge1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.Bridge2",
+          "path": "ErdosProblems/DemandLedger/edges/Bridge2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.Bridge3",
+          "path": "ErdosProblems/DemandLedger/edges/Bridge3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.ClusterA",
+          "path": "ErdosProblems/DemandLedger/edges/ClusterA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.ClusterB",
+          "path": "ErdosProblems/DemandLedger/edges/ClusterB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.ClusterC",
+          "path": "ErdosProblems/DemandLedger/edges/ClusterC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.ClusterD",
+          "path": "ErdosProblems/DemandLedger/edges/ClusterD.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.ClusterE",
+          "path": "ErdosProblems/DemandLedger/edges/ClusterE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.ClusterF",
+          "path": "ErdosProblems/DemandLedger/edges/ClusterF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.Discharge1_G097",
+          "path": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.Discharge2_G100",
+          "path": "ErdosProblems/DemandLedger/edges/Discharge2_G100.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.Discharge3_G103",
+          "path": "ErdosProblems/DemandLedger/edges/Discharge3_G103.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger",
+          "path": "ErdosProblems/DemandLedger.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic",
+            "ErdosProblems.DemandLedger.edges.ClusterA",
+            "ErdosProblems.DemandLedger.edges.ClusterB",
+            "ErdosProblems.DemandLedger.edges.ClusterC",
+            "ErdosProblems.DemandLedger.edges.ClusterD",
+            "ErdosProblems.DemandLedger.edges.ClusterE",
+            "ErdosProblems.DemandLedger.edges.ClusterF",
+            "ErdosProblems.DemandLedger.edges.Bridge1",
+            "ErdosProblems.DemandLedger.edges.Bridge2",
+            "ErdosProblems.DemandLedger.edges.Bridge3",
+            "ErdosProblems.DemandLedger.edges.Discharge1_G097",
+            "ErdosProblems.DemandLedger.edges.Discharge2_G100",
+            "ErdosProblems.DemandLedger.edges.Discharge3_G103"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.RationalBaseLambert",
           "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
           "role": "Lean proof module",
@@ -7295,6 +7850,15 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.MersenneLambertLadder"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.LcmJumpKillFromDiagonal",
+          "path": "ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.LcmConeNonflat",
+            "Erdos249257.DiagonalPincerCertificatesT31"
           ]
         },
         {
@@ -7357,7 +7921,9 @@
           "id": "ErdosProblems.Erdos257.SquarefreeSupportIncidence",
           "path": "ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean",
           "role": "Lean proof module",
-          "imports": []
+          "imports": [
+            "Erdos249257.CertificateKernel"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos269.ResidueEscape",
@@ -7381,6 +7947,1916 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.FreePosition.FreeKill18B",
+          "path": "ErdosProblems/FreePosition/FreeKill18B.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT41"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill21C",
+          "path": "ErdosProblems/FreePosition/FreeKill21C.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT49"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill53D",
+          "path": "ErdosProblems/FreePosition/FreeKill53D.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT53"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill59Root",
+          "path": "ErdosProblems/FreePosition/FreeKill59Root.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT59"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill61E",
+          "path": "ErdosProblems/FreePosition/FreeKill61E.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT61"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64DecH",
+          "path": "ErdosProblems/FreePosition/FreeKill64DecH.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64DepthRoot",
+          "path": "ErdosProblems/FreePosition/FreeKill64DepthRoot.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT61"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EighteenP",
+          "path": "ErdosProblems/FreePosition/FreeKill64EighteenP.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyBZ",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyBZ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyEightCH",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyEightCH.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyFiveCE",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyFiveCE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyFourCD",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyFourCD.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyNineCI",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyNineCI.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyOneCA",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyOneCA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightySevenCG",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightySevenCG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightySixCF",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightySixCF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyThreeCC",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyThreeCC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64EightyTwoCB",
+          "path": "ErdosProblems/FreePosition/FreeKill64EightyTwoCB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ElevenI",
+          "path": "ErdosProblems/FreePosition/FreeKill64ElevenI.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64F",
+          "path": "ErdosProblems/FreePosition/FreeKill64F.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FifteenM",
+          "path": "ErdosProblems/FreePosition/FreeKill64FifteenM.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyAV",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyAV.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyEightBD",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyEightBD.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyFiveBA",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyFiveBA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyFourAZ",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyFourAZ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyNineBE",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyNineBE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyOneAW",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyOneAW.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftySevenBC",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftySevenBC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftySixBB",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftySixBB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyThreeAY",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyThreeAY.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FiftyTwoAX",
+          "path": "ErdosProblems/FreePosition/FreeKill64FiftyTwoAX.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyAL",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyAL.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyEightAT",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyEightAT.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyFiveAQ",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyFiveAQ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyFourAP",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyFourAP.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyNineAU",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyNineAU.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyOneAM",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyOneAM.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortySevenAS",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortySevenAS.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortySixAR",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortySixAR.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyThreeAO",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyThreeAO.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FortyTwoAN",
+          "path": "ErdosProblems/FreePosition/FreeKill64FortyTwoAN.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ForwardRoot",
+          "path": "ErdosProblems/FreePosition/FreeKill64ForwardRoot.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64FourteenL",
+          "path": "ErdosProblems/FreePosition/FreeKill64FourteenL.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64HighG",
+          "path": "ErdosProblems/FreePosition/FreeKill64HighG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NineteenQ",
+          "path": "ErdosProblems/FreePosition/FreeKill64NineteenQ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyCJ",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyCJ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyEightCR",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyEightCR.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyFiveCO",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyFiveCO.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyFourCN",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyFourCN.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyNineCS",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyNineCS.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyOneCK",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyOneCK.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetySevenCQ",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetySevenCQ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetySixCP",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetySixCP.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyThreeCM",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyThreeCM.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NinetyTwoCL",
+          "path": "ErdosProblems/FreePosition/FreeKill64NinetyTwoCL.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64NonG",
+          "path": "ErdosProblems/FreePosition/FreeKill64NonG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OctF",
+          "path": "ErdosProblems/FreePosition/FreeKill64OctF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredCT",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredCT.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredEightDB",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredEightDB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredEighteenDL",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredEighteenDL.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredElevenDE",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredElevenDE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFifteenDI",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFifteenDI.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyER",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyER.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyEightEZ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyEightEZ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFiveEW",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFiveEW.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFourEV",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFourEV.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyNineFA",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyNineFA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyOneES",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyOneES.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySevenEY",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySevenEY.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySixEX",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySixEX.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyThreeEU",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyThreeEU.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyTwoET",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyTwoET.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFiveCY",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFiveCY.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEH",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEH.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEightEP",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEightEP.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFiveEM",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFiveEM.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFourEL",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFourEL.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyNineEQ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyNineEQ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyOneEI",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyOneEI.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortySevenEO",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortySevenEO.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortySixEN",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortySixEN.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyThreeEK",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyThreeEK.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFortyTwoEJ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyTwoEJ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFourCX",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFourCX.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredFourteenDH",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredFourteenDH.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredNineDC",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredNineDC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredNineteenDM",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredNineteenDM.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredOneCU",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredOneCU.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSevenDA",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSevenDA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSeventeenDK",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSeventeenDK.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixCZ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixCZ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixteenDJ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixteenDJ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyEightFJ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyEightFJ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFB",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFiveFG",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFiveFG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFourFF",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFourFF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyNineFK",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyNineFK.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyOneFC",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyOneFC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySevenFI",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySevenFI.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySixFH",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySixFH.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyThreeFE",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyThreeFE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyTwoFD",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyTwoFD.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTenDD",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTenDD.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirteenDG",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirteenDG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyDX",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyDX.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyEightEF",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyEightEF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFiveEC",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFiveEC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFourEB",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFourEB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyNineEG",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyNineEG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyOneDY",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyOneDY.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySevenEE",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySevenEE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySixED",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySixED.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyThreeEA",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyThreeEA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyTwoDZ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyTwoDZ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredThreeCW",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredThreeCW.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwelveDF",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwelveDF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyDN",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyDN.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyEightDV",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyEightDV.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFiveDS",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFiveDS.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFourDR",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFourDR.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyNineDW",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyNineDW.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyOneDO",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyOneDO.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySevenDU",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySevenDU.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySixDT",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySixDT.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyThreeDQ",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyThreeDQ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyTwoDP",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyTwoDP.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64OneHundredTwoCV",
+          "path": "ErdosProblems/FreePosition/FreeKill64OneHundredTwoCV.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64QuadB",
+          "path": "ErdosProblems/FreePosition/FreeKill64QuadB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64QuintC",
+          "path": "ErdosProblems/FreePosition/FreeKill64QuintC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeptE",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeptE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventeenO",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventeenO.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyBP",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyBP.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyEightBX",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyEightBX.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyFiveBU",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyFiveBU.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyFourBT",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyFourBT.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyNineBY",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyNineBY.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyOneBQ",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyOneBQ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventySevenBW",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventySevenBW.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventySixBV",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventySixBV.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyThreeBS",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyThreeBS.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SeventyTwoBR",
+          "path": "ErdosProblems/FreePosition/FreeKill64SeventyTwoBR.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SextD",
+          "path": "ErdosProblems/FreePosition/FreeKill64SextD.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixteenN",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixteenN.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyBF",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyBF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyEightBN",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyEightBN.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyFiveBK",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyFiveBK.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyFourBJ",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyFourBJ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyNineBO",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyNineBO.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyOneBG",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyOneBG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtySevenBM",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtySevenBM.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtySixBL",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtySixBL.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyThreeBI",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyThreeBI.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64SixtyTwoBH",
+          "path": "ErdosProblems/FreePosition/FreeKill64SixtyTwoBH.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirteenK",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirteenK.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyAB",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyAB.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyEightAJ",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyEightAJ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyFiveAG",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyFiveAG.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyFourAF",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyFourAF.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyNineAK",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyNineAK.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyOneAC",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyOneAC.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtySevenAI",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtySevenAI.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtySixAH",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtySixAH.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyThreeAE",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyThreeAE.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64ThirtyTwoAD",
+          "path": "ErdosProblems/FreePosition/FreeKill64ThirtyTwoAD.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TripleA",
+          "path": "ErdosProblems/FreePosition/FreeKill64TripleA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwelveJ",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwelveJ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyEightZ",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyEightZ.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyFiveW",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyFiveW.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyFourV",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyFourV.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyNineAA",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyNineAA.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyOneS",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyOneS.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyR",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyR.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentySevenY",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentySevenY.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentySixX",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentySixX.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyThreeU",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyThreeU.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.FreePosition.FreeKill64TwentyTwoT",
+          "path": "ErdosProblems/FreePosition/FreeKill64TwentyTwoT.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalPincerCertificatesT64"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.FreeWalk1",
+          "path": "ErdosProblems/Half/FreeWalk1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon249"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.FreeWalk2",
+          "path": "ErdosProblems/Half/FreeWalk2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleA2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.FreeWalk3",
+          "path": "ErdosProblems/Half/FreeWalk3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleA3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.H1",
+          "path": "ErdosProblems/Half/H1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D1",
+            "Erdos249257.HalfCylinderMiddleCarryLowerBound"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.H2",
+          "path": "ErdosProblems/Half/H2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.H3",
+          "path": "ErdosProblems/Half/H3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.H4",
+          "path": "ErdosProblems/Half/H4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D1",
+            "ErdosProblems.Skip.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.verify.W1",
+          "path": "ErdosProblems/Half/verify/W1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Half.H1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.verify.W2",
+          "path": "ErdosProblems/Half/verify/W2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Half.H2",
+            "Erdos249257.HalfCylinderSkippedRankLimit"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.verify.W3",
+          "path": "ErdosProblems/Half/verify/W3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Half.H3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.verify.W4",
+          "path": "ErdosProblems/Half/verify/W4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Half.H4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.verify.W5",
+          "path": "ErdosProblems/Half/verify/W5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Half.FreeWalk1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.verify.W6",
+          "path": "ErdosProblems/Half/verify/W6.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Half.FreeWalk2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Half.verify.W7",
+          "path": "ErdosProblems/Half/verify/W7.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Half.FreeWalk1",
+            "ErdosProblems.Half.FreeWalk2",
+            "ErdosProblems.Half.FreeWalk3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Hlow.H1",
+          "path": "ErdosProblems/Hlow/H1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Decl.D1",
+            "ErdosProblems.Three.T4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Hlow.H2",
+          "path": "ErdosProblems/Hlow/H2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Decl.D4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Hlow.W1",
+          "path": "ErdosProblems/Hlow/W1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfCylinderIntegerGreedy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Hlow.W3",
+          "path": "ErdosProblems/Hlow/W3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.R2",
+            "ErdosProblems.Rem.C1",
+            "ErdosProblems.Three.T2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Hlow.verify.V1",
+          "path": "ErdosProblems/Hlow/verify/V1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Hlow.H1",
+            "ErdosProblems.Rem.C1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Hlow.verify.V2",
+          "path": "ErdosProblems/Hlow/verify/V2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Hlow.H2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleA1",
+          "path": "ErdosProblems/Lift/AngleA1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.LcmDiagonalReduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleA2",
+          "path": "ErdosProblems/Lift/AngleA2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.LcmConeFlatness"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleA3",
+          "path": "ErdosProblems/Lift/AngleA3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.CarrySurvivorExtinction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleA4",
+          "path": "ErdosProblems/Lift/AngleA4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.LcmDiagonalReduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleA5",
+          "path": "ErdosProblems/Lift/AngleA5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.LcmDiagonalReduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleB1",
+          "path": "ErdosProblems/Lift/AngleB1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfFinalMiddlePhaseSieve"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleB2",
+          "path": "ErdosProblems/Lift/AngleB2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon257"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleB3",
+          "path": "ErdosProblems/Lift/AngleB3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon257"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.AngleB4",
+          "path": "ErdosProblems/Lift/AngleB4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon257",
+            "Erdos249257.HalfCylinderFatalGapRightTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.CertT67",
+          "path": "ErdosProblems/Lift/CertT67.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.edges.Discharge1_G097"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.InduceLaw",
+          "path": "ErdosProblems/Lift/InduceLaw.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.DiagonalFreshLossBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.Recon249",
+          "path": "ErdosProblems/Lift/Recon249.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.CarrySurvivorExtinction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.Recon257",
+          "path": "ErdosProblems/Lift/Recon257.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfFinalMiddlePhaseSieve"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.Recon67",
+          "path": "ErdosProblems/Lift/Recon67.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.edges.Discharge1_G097"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check1",
+          "path": "ErdosProblems/Lift/verify/Check1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleA1",
+            "Erdos249257.LcmConeFlatness"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check10",
+          "path": "ErdosProblems/Lift/verify/Check10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.CertT67"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check11",
+          "path": "ErdosProblems/Lift/verify/Check11.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.InduceLaw"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check12",
+          "path": "ErdosProblems/Lift/verify/Check12.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon249"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check13",
+          "path": "ErdosProblems/Lift/verify/Check13.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon257"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check14",
+          "path": "ErdosProblems/Lift/verify/Check14.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon67"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check2",
+          "path": "ErdosProblems/Lift/verify/Check2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleA2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check3",
+          "path": "ErdosProblems/Lift/verify/Check3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleA3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check4",
+          "path": "ErdosProblems/Lift/verify/Check4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleA4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check5",
+          "path": "ErdosProblems/Lift/verify/Check5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleA5"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check6",
+          "path": "ErdosProblems/Lift/verify/Check6.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check7",
+          "path": "ErdosProblems/Lift/verify/Check7.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check8",
+          "path": "ErdosProblems/Lift/verify/Check8.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.verify.Check9",
+          "path": "ErdosProblems/Lift/verify/Check9.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.C1",
+          "path": "ErdosProblems/Rem/C1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.R1",
+            "ErdosProblems.Bit.R2",
+            "ErdosProblems.Bit.R3",
+            "ErdosProblems.Bit.R4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.C2",
+          "path": "ErdosProblems/Rem/C2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfCylinderIntegerGreedy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.C3",
+          "path": "ErdosProblems/Rem/C3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.R1",
+            "ErdosProblems.Bit.R2",
+            "ErdosProblems.Bit.R3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.C4",
+          "path": "ErdosProblems/Rem/C4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D2",
+            "ErdosProblems.Bit.Corr1",
+            "ErdosProblems.Bit.R2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.C5",
+          "path": "ErdosProblems/Rem/C5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.R2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.C6",
+          "path": "ErdosProblems/Rem/C6.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.HalfCylinderIntegerGreedy"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.verify.C1",
+          "path": "ErdosProblems/Rem/verify/C1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.verify.C2",
+          "path": "ErdosProblems/Rem/verify/C2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.verify.C3",
+          "path": "ErdosProblems/Rem/verify/C3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.verify.C4",
+          "path": "ErdosProblems/Rem/verify/C4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C4"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.verify.C5",
+          "path": "ErdosProblems/Rem/verify/C5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C5"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Rem.verify.C6",
+          "path": "ErdosProblems/Rem/verify/C6.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C6",
+            "ErdosProblems.Rem.C5",
+            "ErdosProblems.Bit.R2",
+            "Erdos249257.HalfCylinderSkippedRankLimit",
+            "Erdos249257.HalfCylinderLargestSkipInduction"
+          ]
+        },
+        {
           "id": "ErdosProblems.Root",
           "path": "ErdosProblems/Root.lean",
           "role": "Lean proof module",
@@ -7391,6 +9867,7 @@
             "ErdosProblems.Erdos249.PeriodMultipleEscape",
             "ErdosProblems.Erdos249.RankOneSubrankObstruction",
             "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+            "ErdosProblems.Erdos249.LcmJumpKillFromDiagonal",
             "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
             "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "ErdosProblems.Erdos243.ReciprocalTailRigidity",
@@ -7407,6 +9884,246 @@
             "ErdosProblems.Erdos1049.RationalBaseLambert",
             "ErdosProblems.Erdos1049.RationalPadeArithmetic",
             "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.D1",
+          "path": "ErdosProblems/Skip/D1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.D2",
+          "path": "ErdosProblems/Skip/D2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.D3",
+          "path": "ErdosProblems/Skip/D3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.D4",
+          "path": "ErdosProblems/Skip/D4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2",
+            "Erdos249257.HalfCylinderSkippedRankLimit"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.D5",
+          "path": "ErdosProblems/Skip/D5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2",
+            "Erdos249257.HalfCylinderLargestSkipInduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.D6",
+          "path": "ErdosProblems/Skip/D6.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2",
+            "Erdos249257.HalfCylinderLargestSkipInduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.LadderT67",
+          "path": "ErdosProblems/Skip/LadderT67.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon67",
+            "ErdosProblems.Lift.CertT67"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.Wire1",
+          "path": "ErdosProblems/Skip/Wire1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2",
+            "Erdos249257.HalfCylinderLastProducerContradiction",
+            "Erdos249257.HalfCylinderLargestSkipInduction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.Wire2",
+          "path": "ErdosProblems/Skip/Wire2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2",
+            "Erdos249257.HalfCylinderSkippedRankLimit"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.Wire3",
+          "path": "ErdosProblems/Skip/Wire3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.AngleB2",
+            "Erdos249257.HalfCylinderSkippedRankLimit"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V1",
+          "path": "ErdosProblems/Skip/verify/V1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V10",
+          "path": "ErdosProblems/Skip/verify/V10.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.LadderT67"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V2",
+          "path": "ErdosProblems/Skip/verify/V2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V3",
+          "path": "ErdosProblems/Skip/verify/V3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V4",
+          "path": "ErdosProblems/Skip/verify/V4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D4",
+            "ErdosProblems.Skip.D1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V5",
+          "path": "ErdosProblems/Skip/verify/V5.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D5"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V6",
+          "path": "ErdosProblems/Skip/verify/V6.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.D6",
+            "ErdosProblems.Skip.Wire1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V7",
+          "path": "ErdosProblems/Skip/verify/V7.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.Wire1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V8",
+          "path": "ErdosProblems/Skip/verify/V8.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.Wire2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.verify.V9",
+          "path": "ErdosProblems/Skip/verify/V9.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Skip.Wire3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.T1",
+          "path": "ErdosProblems/Three/T1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C6"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.T2",
+          "path": "ErdosProblems/Three/T2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.R2",
+            "ErdosProblems.Bit.R3",
+            "ErdosProblems.Half.H1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.T3",
+          "path": "ErdosProblems/Three/T3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Rem.C1",
+            "ErdosProblems.Rem.C3",
+            "ErdosProblems.Rem.C6"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.T4",
+          "path": "ErdosProblems/Three/T4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Bit.Corr1",
+            "ErdosProblems.Bit.R2",
+            "ErdosProblems.Rem.C6"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.verify.T1",
+          "path": "ErdosProblems/Three/verify/T1.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T1"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.verify.T2",
+          "path": "ErdosProblems/Three/verify/T2.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T2"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.verify.T3",
+          "path": "ErdosProblems/Three/verify/T3.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T3"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Three.verify.T4",
+          "path": "ErdosProblems/Three/verify/T4.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Three.T4"
           ]
         }
       ]
@@ -8038,46 +10755,50 @@
   "remaining_open_propositions": [
     {
       "id": "remaining_open.erdos_249_irrationality",
+      "status": "open",
       "open_target_claim": "erdos_249",
       "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.",
       "paper_anchor": {
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4157
+        "line": 4153
       }
     },
     {
       "id": "remaining_open.unbounded_certificate_supply",
+      "status": "open",
       "open_target_claim": "erdos_249",
       "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.",
       "paper_anchor": {
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4168
+        "line": 4164
       }
     },
     {
       "id": "remaining_open.half_value_membership",
+      "status": "open",
       "open_target_claim": "universal_257",
       "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.",
       "paper_anchor": {
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4192
+        "line": 4188
       }
     },
     {
       "id": "remaining_open.universal_257_all_infinite_supports",
+      "status": "open",
       "open_target_claim": "universal_257",
       "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
       "paper_anchor": {
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4183
+        "line": 4179
       }
     }
   ],

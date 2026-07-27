@@ -213,8 +213,24 @@ def main() -> int:
             failures.append(f"benchmark item {iid} holds out {target}, absent from the atlas")
         code, _ = git("merge-base", "--is-ancestor", cut, "HEAD")
         if code != 0:
-            failures.append(f"benchmark item {iid} cut {cut[:8]} is not an ancestor of HEAD")
-            continue
+            # Reconciliation branches may port a checked declaration without
+            # making its original development branch an ancestor. Preserve
+            # the real holdout cut when it is proven to precede the recorded
+            # introducing commit; requiring HEAD ancestry would force a fake
+            # replacement cut and destroy benchmark provenance.
+            introducing = item.get("introducing_commit")
+            lineage_code, _ = git(
+                "merge-base",
+                "--is-ancestor",
+                str(cut),
+                str(introducing or ""),
+            )
+            if not introducing or lineage_code != 0:
+                failures.append(
+                    f"benchmark item {iid} cut {cut[:8]} is neither an ancestor "
+                    "of HEAD nor of its recorded introducing commit"
+                )
+                continue
         code, out = git("grep", "-l", target, cut, "--", "*.lean")
         if code == 0 and out.strip():
             failures.append(

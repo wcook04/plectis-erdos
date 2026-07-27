@@ -397,12 +397,12 @@
       "evidence": [
         {
           "declaration": "seamGreedyBits_head2367",
-          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
           "line": 234
         },
         {
           "declaration": "seven_mem_seamGreedySupport",
-          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
           "line": 251
         },
         {
@@ -1425,12 +1425,12 @@
       "evidence": [
         {
           "declaration": "two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six",
-          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
           "line": 50
         },
         {
           "declaration": "finalMiddleCell_neg_two_forces_mod_three_two",
-          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
           "line": 259
         },
         {
@@ -2925,7 +2925,7 @@
     },
     {
       "declaration": "two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six",
-      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
       "line": 50,
       "role": "statement",
       "statement_node": "final_middle_neg_two_phase_sieve"
@@ -2939,21 +2939,21 @@
     },
     {
       "declaration": "seamGreedyBits_head2367",
-      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
       "line": 234,
       "role": "representation",
       "statement_node": "forced_seam_ranks_seven_through_twentysix"
     },
     {
       "declaration": "seven_mem_seamGreedySupport",
-      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
       "line": 251,
       "role": "statement",
       "statement_node": "forced_seam_ranks_seven_through_twentysix"
     },
     {
       "declaration": "finalMiddleCell_neg_two_forces_mod_three_two",
-      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
       "line": 259,
       "role": "statement",
       "statement_node": "final_middle_neg_two_phase_sieve"

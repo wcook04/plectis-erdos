@@ -77,4 +77,3 @@ limit.  Here is the actual monotone statement, which is what the name suggests
 and what the file does not prove. -/
 theorem probe_coverage_is_only_an_existential (h L M : ℕ) :
     ∀ N, M * (h + 6) < 2 * (N + h + L) + 5 → True := fun _ _ => trivial
-

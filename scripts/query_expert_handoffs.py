@@ -21,6 +21,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 FRONTIER = ROOT / "docs" / "semantic" / "frontier.json"
+ATLAS = ROOT / "docs" / "declaration_atlas.json"
 PROTOCOL = ROOT / "docs" / "expert_review_protocol.json"
 SCHEMA = "plectis_expert_review_protocol_v1"
 MATH_DOMAIN = "mathematics"
@@ -45,6 +46,20 @@ def load_json(path: Path) -> dict[str, Any]:
 
 def mathematical_questions() -> list[dict[str, Any]]:
     rows = load_json(FRONTIER).get("expert_questions", [])
+    declarations = {
+        (row["module"], row["name"]): row
+        for row in load_json(ATLAS).get("declarations", [])
+    }
+    # Coordinates are navigation data, not authored mathematical content.
+    # Resolve them from the exhaustive live atlas so every expert-query surface
+    # survives harmless source movement in the same way as semantic_corpus.json.
+    for question in rows:
+        for consumer in question.get("consumer_declarations", []):
+            declaration = declarations.get(
+                (consumer.get("module"), consumer.get("declaration"))
+            )
+            if declaration is not None:
+                consumer["line"] = declaration["line"]
     return [{"domain": MATH_DOMAIN, **row} for row in rows]
 
 

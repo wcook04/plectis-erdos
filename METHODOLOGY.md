@@ -52,7 +52,7 @@ Limit: An exact reduction can expose an open proposition without proving it.
 
 Finite certificates, bounded searches, and verified initial segments remain finite evidence unless a checked theorem supplies the unbounded or universal step.
 
-Seen in: Certified-kill band and finite shards (`certified_kill_instances`).
+Seen in: Initial certified-kill segment and generated certificates (`certified_kill_instances`).
 
 Recorded boundary: Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal (`remaining_open.unbounded_certificate_supply`).
 
@@ -153,7 +153,7 @@ Remaining open: `remaining_open.unbounded_certificate_supply`.
 
 certifiedKill_all_small and the lcm-diagonal deposits through t = 8 (certifiedKill_periodLcm_diagonal_upto_six and the t = 7 and t = 8 endpoints) are kernel-checked with decide at fixed bounds. Each names a specific bounded region the checker has cleared; together with the generated certificate shards they show the reduction is not vacuous. The claim keeps the status verified finite instance and states its bounded domain. Raising the checked bound changes the stated bound; it does not change the quantifier of any public claim.
 
-Claims: Certified-kill band and finite shards (`certified_kill_instances`).
+Claims: Initial certified-kill segment and generated certificates (`certified_kill_instances`).
 
 Remaining open: `remaining_open.unbounded_certificate_supply`.
 

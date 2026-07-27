@@ -795,16 +795,46 @@ def main() -> int:
             check(not unknown_root_imports,
                   f"{root} has imports missing from the machine-readable module graph: {sorted(unknown_root_imports)}")
     imports_by_id = {node["id"]: node["imports"] for node in module_nodes}
-    reachable = set(root_imports)
-    frontier = list(root_imports)
+    auxiliary_roots = graph.get("auxiliary_roots", [])
+    auxiliary_contract = graph.get("auxiliary_root_contract", {})
+    allowed_auxiliary_prefixes = tuple(
+        auxiliary_contract.get("allowed_prefixes", [])
+    )
+    check(
+        auxiliary_contract.get("posture")
+        == "exhaustive_inventory_forest_not_compact_reading_root",
+        "machine-readable module graph lost its auxiliary-root posture",
+    )
+    check(
+        len(auxiliary_roots) == len(set(auxiliary_roots)),
+        "machine-readable module graph contains duplicate auxiliary roots",
+    )
+    check(
+        all(root_id in module_id_set for root_id in auxiliary_roots),
+        "machine-readable module graph names an unknown auxiliary root",
+    )
+    check(
+        bool(allowed_auxiliary_prefixes)
+        and all(
+            root_id.startswith(allowed_auxiliary_prefixes)
+            for root_id in auxiliary_roots
+        ),
+        "machine-readable module graph has an auxiliary root outside the "
+        "explicit experimental namespaces",
+    )
+    reachable = set([*root_imports, *auxiliary_roots])
+    frontier = list(reachable)
     while frontier:
         current = frontier.pop()
         for dependency in imports_by_id.get(current, []):
             if dependency not in reachable:
                 reachable.add(dependency)
                 frontier.append(dependency)
-    check(reachable == module_id_set,
-          f"machine-readable module graph has nodes unreachable from supported roots: {sorted(module_id_set - reachable)}")
+    check(
+        reachable == module_id_set,
+        "machine-readable module graph has nodes unreachable from supported "
+        f"roots or the validated auxiliary forest: {sorted(module_id_set - reachable)}",
+    )
 
     edge_types = set(machine_paper["argument_graph"]["edge_semantics"])
     for edge in machine_paper["argument_graph"]["edges"]:
