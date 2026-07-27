@@ -36,9 +36,9 @@
 "authority_role": "proof_bearing_committed_source_anchor"
 },
 "navigation_snapshot": {
-"commit": "4fe185da6cbd01036ad985e00a242795ecbe72a4",
+"commit": "c322a82ef849980e937f173c2f9859f9c5e70287",
 "authority_role": "machine_readable_navigation_anchor",
-"repository_resolution": "https://github.com/wcook04/plectis-lean-erdos249-257/tree/4fe185da6cbd01036ad985e00a242795ecbe72a4"
+"repository_resolution": "https://github.com/wcook04/plectis-lean-erdos249-257/tree/c322a82ef849980e937f173c2f9859f9c5e70287"
 },
 "content": {
 "machine_readable_paper": {
@@ -60,7 +60,7 @@
 },
 "bounded_orientation": {
 "path": "docs/orientation.json",
-"content_digest": "sha256:c43eea65bfbea12cee7bf5c9c04c6de09f58f9395a456e3af4a6b9462bce946d"
+"content_digest": "sha256:cbdeccef92cf4d6c311cb8e5767756ab4536b33dc7403a474807235ede02f3e6"
 },
 "human_exposition": {
 "source_path": "paper/erdos249-257-main-paper.tex",
