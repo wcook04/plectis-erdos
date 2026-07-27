@@ -25,7 +25,8 @@
 
 \runninghead{Erd\H{o}s \#269: three-prime running lcm}
 \title{The Three-Prime Running Least Common Multiple}
-\subtitle{Exact structure and the denominator-dependent local-window frontier}
+\subtitle{Exact structure of the running least common multiple, and a
+conditional residue criterion}
 \author{Will Cook}
 \date{July 2026}
 
@@ -37,45 +38,54 @@
 \noindent
 Let $p,q,r$ be pairwise distinct primes and let $\Lprefix(x)$ denote the least
 common multiple of all $\{p,q,r\}$-smooth numbers not exceeding $x$.  We prove
-in Lean that
+two exact statements in the smallest case $\{2,3,5\}$.  First, group the jumps
+of $\Lprefix$ into the blocks cut out by consecutive powers of two.  Each open
+block $(2^{a},2^{a+1})$ contains at most one pure $3$-power and at most one
+pure $5$-power, so the block radix $\beta_a$, the product of the terminal factor
+$2$ with a factor $3$ when the block contains an internal $3$-power and a factor
+$5$ when it contains an internal $5$-power, belongs to the exact four-element
+alphabet $\{2,6,10,30\}$, rather than merely lying in a coarse bounded interval.  Second, the reciprocal of the running least common multiple
+at a smooth point is not a product of functions of the three exponents
+separately: we exhibit the smallest exact obstruction to separating it as such
+a product, the two sides being $1/60$ and $1/12$.  The second statement
+excludes every argument that first separates the three coordinates and then
+treats them one at a time.
+
+The structural spine of the note is the identification
 \[
  \Lprefix(x)=p^{\lfloor\log_p x\rfloor}q^{\lfloor\log_q x\rfloor}
  r^{\lfloor\log_r x\rfloor}
  \qquad(x\ge1),
 \]
 so the running least common multiple is the product of the three maximal pure
-prime powers below the cutoff, and is at most $x^{3}$.  Consequently it is
-constant on each cell where the three integer logarithms are constant; when
-exactly one logarithm advances by one it is multiplied by exactly the
-corresponding prime; and the first $n$ positive powers in the three channels,
-together with the common origin $1$, give exactly $3n+1$ distinct jump values.
-We prove an exact finite normal form in which a rectangular lattice sum of
-reciprocal running values is grouped by its genuine height, with each
-coefficient the cardinality of the corresponding fibre, and a uniform bound
-$9\,\#\mathcal S\le(j+3)^{2}$ on the cardinality of a smooth exponent shell
-whose sorted height coordinates sum to $j$.  At $\{2,3,5\}$ we exhibit the
-smallest exact obstruction to separating the kernel as a product, the two sides
-being $1/60$ and $1/12$.
+prime powers below the cutoff.  This is the $P$-restricted form of the
+classical prime-power decomposition of $\lcm(1,\ldots,N)$; we record it because
+every later statement in the formal development is derived from it.  It gives
+$\Lprefix(x)\le x^{3}$; constancy on each cell where the three integer
+logarithms are constant; multiplication by exactly the corresponding prime when
+exactly one logarithm advances by one; and exactly $3n+1$ distinct jump values
+from the first $n$ positive powers of each of the three primes together with the
+common origin $1$.  We also prove an exact finite normal form in which a
+rectangular lattice sum of reciprocal running values is grouped by its genuine
+height, with each coefficient the cardinality of the corresponding fibre, and a
+uniform bound $9\,\#\mathcal S\le(j+3)^{2}$ on the cardinality of a smooth
+exponent shell whose sorted height coordinates sum to $j$.
 
 Problem~\#269 is open and nothing here decides it.  We prove no irrationality
-or transcendence statement in any three-prime case.  What is new at the
-frontier is an exact consumer.  For a positive reduced denominator $B$ coprime
-to $30$, a denominator-dependent cofinal local-window residue escape rules out
-every positive integral carry obeying the matching bound.  Lean checks the
-complete implication, including the zero-residue convention and all modulus
-edge cases.  For the actual dyadic compression, Lean proves that each open
-block $(2^a,2^{a+1})$ contains at most one pure $3$-power and at most one pure
-$5$-power.  Hence its block radix belongs to the exact alphabet
-$\{2,6,10,30\}$, rather than merely lying in a coarse bounded interval.  An
-integer-only checker constructs the corresponding block digits, reproduces
-three small certificates, and finds an escaping window of length at most $18$
-for each of $106{,}666$ tested denominator/start pairs.  This is finite
-experimental evidence, not a cofinal theorem.  What remains unproved is the
-producer: bind the actual block digit and denominator-cleared carry to the
-formal recurrence, then prove that these four-symbol windows escape cofinally.
+or transcendence statement in any three-prime case.  What we prove towards it
+is conditional: for a positive reduced denominator $B$ coprime to $30$, a
+denominator-dependent cofinal local-window residue escape rules out every
+positive integral carry obeying the matching bound.  Lean checks that
+implication.  An integer-only checker constructs the corresponding block
+digits, reproduces three small certificates, and finds an escaping window of
+length at most $18$ for each of $106{,}666$ tested denominator/start pairs.
+This is finite experimental evidence, not a cofinal theorem.  Two statements
+are not proved here: the identification of the actual block digits and of the
+denominator-cleared carry bound with the formal recurrence, and the cofinal
+escape property itself.
 \end{abstract}
 
-\section{The problem}\label{sec:problem}
+\section{Introduction}\label{sec:problem}
 
 Let $P$ be a finite set of primes with $|P|\ge2$, and let
 $a_1<a_2<\cdots$ enumerate the positive integers all of whose prime factors lie
@@ -104,7 +114,8 @@ means summing over the distinct values rather than over $n$.  Sections
 $|P|=3$: they identify where the value is constant, by exactly what factor it
 changes when it changes, and what multiplicity each distinct value carries.
 They do not recover the irrationality proof Erd\H{o}s reported for the
-de-duplicated sum, and they say nothing about the original sum.
+de-duplicated sum, and they say nothing about the original sum.  We do not know
+of a published account of that proof.
 
 Throughout, $p,q,r$ are pairwise distinct primes.  Call $n$ \emph{smooth} when
 $n=p^{i}q^{j}r^{k}$ for some $i,j,k\ge0$; this is the
@@ -130,23 +141,58 @@ kernel}
 \[
  \Kernel(i,j,k)=\frac{1}{\hgt(p^{i}q^{j}r^{k})} .
 \]
+For $b\in\{p,q,r\}$ we call the set of positive powers of $b$ the \emph{$b$-channel}.
 
-\paragraph{Scope of this note, and relation to prior work.}
-We treat $|P|=3$ throughout, writing $P=\{p,q,r\}$, and the smallest instance
-is $\{2,3,5\}$.  Nothing here is specific to three generators for its own sake;
-three is where the coordinates stop separating, which
-Theorem~\ref{res:rank} makes exact at the smallest instance.  The statement of
-Problem~\#269 has been formalised before, as a conjecture with an unfilled
-proof, in the \emph{Formal Conjectures} collection~\cite{formalconjectures269}.
-That is a formal statement of the question.  The declarations described below
-are propositions about the objects the question is posed over.  In relation to
-the historical record, the result to foreground is not the elementary
-running-lcm formula by itself but the checked denominator-dependent
-local-window consumer: it isolates a precise producer whose proof would turn
-the four-symbol radix structure into an irrationality contradiction.  No claim
-of priority is made for any of these declarations.
+We treat $|P|=3$ throughout, writing $P=\{p,q,r\}$, and the smallest instance is
+$\{2,3,5\}$.  Two of the statements proved here are unconditional and exact
+rather than approximate.  Theorem~\ref{res:dyadic-alphabet} determines the
+alphabet of the dyadic compression of the jump word exactly: the radix
+$\beta_a$ of the block between $2^{a}$ and $2^{a+1}$ takes one of the four
+values $2$, $6$, $10$, $30$ and no others.
+Theorem~\ref{res:rank} shows that the kernel at $\{2,3,5\}$ is not a product
+$f(i)g(j)h(k)$, and therefore excludes every argument that first separates the
+three coordinates and then treats them one at a time.  The mechanism behind the
+second is a small computation: $\hgt(6)=4\cdot3\cdot5=60$ and not $6$, because
+the running least common multiple at a smooth cutoff already sees powers of the
+other primes that the cutoff itself does not contain.
+We do not determine whether the coordinates separate when $|P|=2$.
 
-\paragraph{Status of everything below.}
+The identification $\Lprefix(x)=\hgt(x)$ of Theorem~\ref{res:lcm} is what makes
+every statement about $\Lprefix$ below computable from three integer
+logarithms.  In the unrestricted case that identification is
+classical: $\lcm(1,\ldots,N)=\prod_{t\le N}t^{\lfloor\log_t N\rfloor}$, the
+product being over the primes $t\le N$, equivalently
+$\log\lcm(1,\ldots,N)=\psi(N)$ for Chebyshev's function
+$\psi$~\cite[Ch.~4]{apostol1976}.  We record the $P$-restricted form because
+every later statement in the formal development is derived from it, and we
+claim nothing new for it.
+
+The line of argument developed below has four stages.  First, identify
+$\Lprefix$ exactly as a product of three pure powers, so that every later
+statement is a statement about three integer logarithms.  Second, compress its
+jump word into dyadic blocks, whose radix takes only the four values of
+Theorem~\ref{res:dyadic-alphabet}.  Third, assume the sum rational with reduced
+denominator $B$ coprime to $30$, clear denominators, and obtain a positive
+integral carry $d_n$ bounded by $K(B,n)$ and satisfying
+$d_{n+1}=b_nd_n-Bm_n$.  Fourth, find a window over which the accumulated base
+and forcing put the residue of that carry above the bound, which is impossible.
+The first two stages and the finite core of the fourth are proved and
+formalised here.  The instantiation in the third stage, and the cofinal
+existence of windows in the fourth, are not; they are the two obligations of
+Section~\ref{sec:open}.  The third and fourth stages follow a pattern standard
+in irrationality proofs; what is specific here is that the radix word driving
+the carry is the block alphabet of Theorem~\ref{res:dyadic-alphabet}.
+
+The statement of Problem~\#269 has been formalised before, as a conjecture with
+an unfilled proof, in the \emph{Formal Conjectures}
+collection~\cite{formalconjectures269}.  That is a formal statement of the
+question.  The declarations described below are propositions about the objects
+the question is posed over.  No claim of priority is made for any of these
+declarations.  Kova\v{c} and Tao~\cite{kovactao2024} treat several
+irrationality problems of Erd\H{o}s for series of unit fractions by elementary
+means; nothing from that work is used here.  We offer no numerical evidence
+about the value of the sum itself.
+
 \statusboundary
 
 \begin{table}[t]
@@ -160,7 +206,7 @@ of priority is made for any of these declarations.
 Statement & Status & Treatment here \\
 \midrule
 Irrationality in any three-prime case & Open & Not proved. \\
-$\Lprefix(x)=\hgt(x)$ & Proved here & Theorem~\ref{res:lcm}; needs the primes distinct. \\
+$\Lprefix(x)=\hgt(x)$ & Proved here & Theorem~\ref{res:lcm}; needs the primes distinct; classical in the unrestricted case. \\
 $\hgt(x)\le x^{3}$ & Proved here & Proposition~\ref{res:cube}. \\
 Constancy on logarithmic cells & Proved here & Theorem~\ref{res:cell}. \\
 Single-coordinate jump ratios & Proved here & Theorem~\ref{res:jump}. \\
@@ -169,24 +215,26 @@ Height-fibre normal form & Proved here; finite & Theorem~\ref{res:fibre}. \\
 Infinite limit of that expansion & Not proved & Section~\ref{sec:fibre}. \\
 Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Proved here & Theorem~\ref{res:shell}. \\
 Kernel is not separable at $\{2,3,5\}$ & Proved here & Theorem~\ref{res:rank}. \\
-Actual dyadic block radix is in $\{2,6,10,30\}$ & Proved here & Theorem~\ref{res:dyadic-alphabet}. \\
+Dyadic block radix lies in $\{2,6,10,30\}$ & Proved here & Theorem~\ref{res:dyadic-alphabet}. \\
 Canonical least-positive-residue arithmetic & Proved here & Theorem~\ref{res:consumer}. \\
-Denominator-dependent local-window consumer & Proved here & Theorem~\ref{res:windowconsumer}. \\
+Carry contradiction assuming~\eqref{eq:escape} & Proved here & Theorem~\ref{res:windowconsumer}; the implication only. \\
 Dyadic-window scan for $B\le1000$ & Exact finite computation & $106{,}666$ pairs; no failures; not a theorem. \\
+Bridge from the actual summands to $(b_n,m_n,K)$ & Not proved & Section~\ref{sec:open}. \\
 Local-window escape for the actual $\{2,3,5\}$ word & Open & Problem~\ref{prob:producer}. \\
 \bottomrule
 \end{tabular}
+\caption{Status of the statements discussed in this note.}
 \end{table}
 
-\paragraph{Reading map.}
+\subsection*{Structure}
 Section~\ref{sec:lcm} identifies the running value.  Sections~\ref{sec:cells}
 and~\ref{sec:fibre} develop its jump structure and the finite normal form,
 Section~\ref{sec:shell} bounds fibre multiplicity, and Section~\ref{sec:rank}
 records the obstruction to separating the kernel.  Section~\ref{sec:escape}
-identifies the exact dyadic radix, exercises the finite consumer, and isolates
-the remaining cofinal producer.  Every unproved hypothesis is marked as such.
-Linked phrases open the corresponding Lean declaration at the pinned source
-revision~\commitshort.
+determines the block alphabet, proves the conditional contradiction, and states
+the remaining unproved hypothesis.  Section~\ref{sec:open} collects the
+questions that remain.  Linked phrases open the corresponding Lean declaration
+at the pinned source revision~\commitshort.
 
 \medskip
 \noindent\textbf{Keywords.} irrationality; least common multiple; smooth
@@ -194,7 +242,7 @@ numbers; lattice sums; Lean~4.
 \qquad
 \textbf{MSC 2020.} 11J72 (primary); 11A05, 11N25, 68V20 (secondary).
 
-\section{The running value is a product of pure powers}\label{sec:lcm}
+\section{The running least common multiple as a product of pure powers}\label{sec:lcm}
 
 The smooth numbers up to $x$ are indexed by the exponent triples $(i,j,k)$ with
 $i\le\lfloor\log_p x\rfloor$, $j\le\lfloor\log_q x\rfloor$,
@@ -205,6 +253,10 @@ This is the
 prefix index set}.  Both conditions matter: the coordinate box is strictly
 larger than the prefix, since a product of three large pure powers can exceed
 $x$ while each factor does not.
+
+The identification below is routine, and its unrestricted analogue is classical,
+as recalled in the introduction; the short proof is given because every later
+statement is derived from it in the formal development.
 
 \begin{theorem}[the running least common multiple]\label{res:lcm}
 Let $p,q,r$ be pairwise distinct primes and $x\ge1$.  Then
@@ -253,7 +305,7 @@ majorant}, which needs no primality.  The exponent $3$ is the number of
 generating primes, and the bound is the reason the reciprocal kernel is
 comparable to $x^{-3}$ rather than to $x^{-1}$.
 
-\section{Cells, jumps, and their count}\label{sec:cells}
+\section{Constancy on logarithmic cells and the jump values}\label{sec:cells}
 
 Say that $x$ and $y$ lie in the same \emph{logarithmic cell} when
 $\lfloor\log_b x\rfloor=\lfloor\log_b y\rfloor$ for each of $b=p,q,r$: the
@@ -314,7 +366,7 @@ exactly $3n+1$.
 \end{theorem}
 
 \begin{proof}
-Within one channel the powers $b,b^{2},\ldots,b^{n}$ are distinct because
+The count is routine.  Within one channel the powers $b,b^{2},\ldots,b^{n}$ are distinct because
 $b\ge2$.  Across two channels a common value would be a positive power of two
 distinct primes, which unique factorisation forbids.  Finally $1$ is not a
 positive power of any prime.
@@ -360,7 +412,7 @@ the outer sum ranging over the heights actually attained on $B$.
 \end{theorem}
 
 \begin{proof}
-Partition $B$ into the fibres of the height map.  On $F(H)$ every summand is
+The identity is a regrouping.  Partition $B$ into the fibres of the height map.  On $F(H)$ every summand is
 $1/H$ by definition of the kernel, so the fibre contributes $\#F(H)/H$.
 \end{proof}
 
@@ -381,14 +433,13 @@ proved here.  Theorem~\ref{res:fibre} is an identity between two finite sums,
 and it is stated over the full box rather than the smooth prefix, so it is not
 a statement about $\Lprefix$ at a cutoff.
 
-The tail dynamics that such an expansion would feed is recorded in the same
-module as a one-step map, $\tau(b,d,s)=b(s-d)$, the
+The same module records a one-step map $\tau(b,d,s)=b(s-d)$, the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{487}{tailStateStep}{variable-base
-tail step}, together with the rewriting
+tail step}, with the rewriting
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{490}{tailStateStep_eq}{that names its
 expanded form}.  No orbit of this map is analysed.
 
-\section{Shell multiplicity}\label{sec:shell}
+\section{A quadratic bound for smooth exponent shells}\label{sec:shell}
 
 A tail estimate needs to know how many lattice points can share a short
 multiplicative interval.  Write $\mathcal S$ for the set of exponent triples in
@@ -409,13 +460,21 @@ is impossible; the case $a>a'$ is symmetric.
 \noindent Formalised as the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{509}{exponent_unique_in_short_interval}{short-interval
 uniqueness}.  The hypothesis is that the interval has multiplicative width at
-most $b$; then one coordinate is determined by the other two, and projecting it
-away is injective.
+most $b$.
 
 \begin{proposition}\label{res:drop}
 If $\hi\le r\,\lo$ then $\#\mathcal S\le(h_p+1)(h_q+1)$; if $\hi\le p\,\lo$ then
 $\#\mathcal S\le(h_q+1)(h_r+1)$.
 \end{proposition}
+
+\begin{proof}
+Suppose $\hi\le r\,\lo$.  If two triples of $\mathcal S$ agree in their first
+two coordinates, Lemma~\ref{res:short} applied with $b=r$ and $w=p^{i}q^{j}$
+forces their third coordinates to agree as well.  So the projection forgetting
+the third coordinate is injective on $\mathcal S$, and its image lies in a
+rectangle with $(h_p+1)(h_q+1)$ points.  The case $\hi\le p\,\lo$ is the same
+with the first coordinate projected away.
+\end{proof}
 
 \noindent Formalised as the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{585}{smoothExponentShell_card_le_dropThird}{third-coordinate
@@ -431,7 +490,9 @@ Suppose $\hi\le r\,\lo$ and $h_p\le h_q\le h_r$ with $h_p+h_q+h_r=j$.  Then
 \end{theorem}
 
 \begin{proof}
-By Proposition~\ref{res:drop}, $\#\mathcal S\le(h_p+1)(h_q+1)$.  It therefore
+By Proposition~\ref{res:drop}, $\#\mathcal S\le(h_p+1)(h_q+1)$; under the
+sorting hypothesis the two surviving coordinates are the two smallest.  It
+therefore
 suffices to prove that $a\le b\le c$ with $a+b+c=j$ gives
 $9(a+1)(b+1)\le(j+3)^{2}$.  From $a\le b\le c$ we get $a+2b\le j$, so it is
 enough that $9(a+1)(b+1)\le(a+2b+3)^{2}$; writing $b=a+d$ with $d\ge0$, the
@@ -450,13 +511,15 @@ a normalisation, since the shell itself is not symmetric in the three bases.
 The bound is uniform in $\lo$ and $\hi$ subject to the width condition, and it
 is stated for the actual filtered shell rather than for a lattice model of it.
 It is an input to a tail estimate and is not itself one: no series is bounded
-here.
+here.  The estimate is elementary and uses no analytic input on the
+distribution of smooth numbers, only the projection of
+Proposition~\ref{res:drop}.
 
-\section{The kernel does not separate}\label{sec:rank}
+\section{Non-separability of the three-prime kernel}\label{sec:rank}
 
-A recurring hope is to write the three-prime kernel as a product of functions
-of the separate coordinates, which would reduce the problem to one-dimensional
-criteria.  At the smallest instance this fails, and the failure is exact.
+One might hope to write the three-prime kernel as $f(i)g(j)h(k)$ and so reduce
+the problem to one-dimensional criteria.  Theorem~\ref{res:rank} shows that
+this already fails at $\{2,3,5\}$, and that the failure is exact.
 
 \begin{theorem}[non-separability at $\{2,3,5\}$]\label{res:rank}
 With $(p,q,r)=(2,3,5)$,
@@ -492,9 +555,9 @@ separates the coordinates and then treats them one at a time.  It does not
 bound the rank of the kernel from below beyond one, and it is not an
 independence or irrationality statement.
 
-\section{The exact local-window frontier}\label{sec:escape}
+\section{Dyadic blocks and a conditional carry contradiction}\label{sec:escape}
 
-\subsection{The actual four-symbol dyadic radix}
+\subsection{The four-element block alphabet}
 
 Compress the jump word between consecutive powers of two: a block starts just
 after $2^a$, includes every pure $3$- or $5$-power strictly between $2^a$ and
@@ -532,37 +595,17 @@ block base}; Lean checks both the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{699}{dyadicBlockBase235_cases}{exact
 four-case alphabet} and the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{711}{dyadicBlockBase235_mem_interval}{bounded-radix
-consequence}.  Thus radix growth is no longer an open part of the producer.
-What is not yet checked in Lean is the identification of the corresponding
-block digit with the multiplicity forcing in the original series.
+consequence}.  The radix word is therefore constrained to four values, and no
+growth hypothesis on it is needed.  What is not yet checked in Lean is the
+identification of the corresponding block digit with the multiplicity forcing
+in the original series.
 
-\paragraph{Exact finite consumer experiment.}
-The integer-only
-\href{\sourceurl/scripts/check_erdos269_dyadic_windows.py}{dyadic-window
-checker} constructs the ordered pure-power jumps, the block bases, and the
-block digits from exact multiplicity counts.  It reproduces the following
-certificates; the columns are denominator $B$, dyadic start $a$, window length
-$h$, endpoint jump index $n$, window base $W$, forcing $F$, least positive
-residue $R=\operatorname{lpr}_{W}(-BF)$, and short bound $K$.
-\[
-\begin{array}{c|c|c|c|r|r|r|r}
-B&a&h&n&W&F&R&K\\ \hline
-1&1&2&4&60&47&13&9\\
-7&1&3&6&360&289&137&95\\
-16&1&4&9&10800&8735&640&352
-\end{array}
-\]
-A fresh scan over every $B\le1000$ coprime to $30$ and every
-$100\le a\le500$ tested $106{,}666$ pairs.  In every case a window of length
-at most $18$ made both $W>K$ and
-$\operatorname{lpr}_{W}(-BF)>K$; the largest first successful length was
-$14$.  The computation uses integers only and is reproducible from the pinned
-checker.  Its claim ceiling is deliberately finite: neither the scan nor the
-three displayed certificates proves escape for unbounded $B$ or cofinally
-many starts.
+\subsection{The window recurrence and the residue contradiction}
 
-The residue route can now be stated without hiding either the denominator or
-the consumer.  For an integer radix word $b_n$ and forcing word $m_n$, define
+The statements of this subsection are about integer sequences: they do not
+refer to $\Lprefix$ or to the smooth numbers, and the identification of those
+sequences with the block data of the preceding subsection is the obligation
+just recorded.  For an integer radix word $b_n$ and forcing word $m_n$, define
 \[
 \begin{aligned}
  W_{\ell,0}&=1,
@@ -607,11 +650,15 @@ $30$ and every $\ell_0$, there are $\ell\ge\ell_0$ and $h>0$ such that
  \operatorname{lpr}_{C_{\ell,h}}(-BF_{\ell,h}).
 \tag{E}\label{eq:escape}
 \]
-The quantifier over $B$ is part of the proposition, and so is the dependence
-of $K$ on $B$; suppressing it gives the wrong expert interface.  The exact
-unproved proposition is the
+Both the quantifier over $B$ and the dependence of $K$ on $B$ are part of the
+statement.  The exact unproved proposition is the
 \lword{Erdos269/RestrictedFloorSum.lean}{69}{CofinalLocalWindowEscape}{cofinal
-local-window producer}.
+local-window escape condition}.
+
+The next statement is the finite core of the argument.  The key point is the
+convention just fixed: because $\operatorname{lpr}_C$ represents a vanishing
+residue by $C$ and not by $0$, the proof has to treat that case separately, and
+the two branches conclude for different reasons.
 
 \begin{theorem}[the finite residue contradiction]\label{res:consumer}
 Let $C>0$, $c>0$, and $|c|\le K$.  If
@@ -629,11 +676,11 @@ equal, contradicting $|c|\le K<\operatorname{lpr}_C(x)$.
 
 \noindent The natural-state version is the
 \lword{Erdos269/ResidueEscape.lean}{71}{no_bounded_positive_state_of_residue_escape}{finite
-consumer}; the integer carry version is the
-\lword{Erdos269/ResidueEscape.lean}{104}{no_bounded_positive_int_state_of_leastPositiveResidue}{least-positive-residue
-consumer}.
+contradiction}; the integer carry version is the
+\lword{Erdos269/ResidueEscape.lean}{104}{no_bounded_positive_int_state_of_leastPositiveResidue}{integer
+form of the contradiction}.
 
-\begin{theorem}[the checked local-window consumer]\label{res:windowconsumer}
+\begin{theorem}[a conditional contradiction for bounded carries]\label{res:windowconsumer}
 Assume the cofinal escape property~\eqref{eq:escape}.  Fix $B>0$ coprime to
 $30$.  There is no integral sequence $d_n$ satisfying simultaneously
 \[
@@ -655,88 +702,95 @@ Theorem~\ref{res:consumer} is the contradiction.
 
 \noindent This is formalised as the
 \lword{Erdos269/RestrictedFloorSum.lean}{83}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{reduced-carry
-extinction theorem}.  Coprimality with $30$ is used by the open producer to
-select a window; once a window has been emitted, the finite contradiction
-does not use it.  The theorem also treats the edge cases explicitly:
-$|W_{\ell,h}|=0$ is excluded, a zero residue is represented by the full
-modulus, and positivity prevents the endpoint carry from being zero.
+extinction theorem}.  Coprimality with $30$ is used by~\eqref{eq:escape} to
+select a window; once a window has been chosen, the finite contradiction does
+not use it.  The formalisation carries the edge cases: $|W_{\ell,h}|=0$ is
+excluded, a zero residue is represented by the full modulus, and positivity
+prevents the endpoint carry from being zero.
 
-\subsection{Candidate mechanisms and disconfirmers}
+\subsection{A finite check of the escape condition}
 
-The most direct mechanism is now four-symbol anti-concentration.  The radix
-word is constrained to $\{2,6,10,30\}$, so the surviving arithmetic lies in
-the block digit and its carry into the residue class.  One seeks a cofinal
-family of blocks for which the modulus $|W_{\ell,h}|$ grows faster than the
-carry window and the weighted forcing $-BF_{\ell,h}$ does not remain trapped
-in the two short arcs adjacent to $0$ modulo that modulus.  A theorem for one
-cofinal family is enough; no equidistribution of all windows is required.
+The integer-only
+\href{\sourceurl/scripts/check_erdos269_dyadic_windows.py}{dyadic-window
+checker} constructs the ordered pure-power jumps, the block bases, and the
+block digits from exact multiplicity counts.  It reproduces the following
+certificates; the columns are denominator $B$, dyadic start $a$, window length
+$h$, endpoint jump index $n$, window base $W$, forcing $F$, least positive
+residue $R=\operatorname{lpr}_{W}(-BF)$, and short bound $K$.
+\[
+\begin{array}{c|c|c|c|r|r|r|r}
+B&a&h&n&W&F&R&K\\ \hline
+1&1&2&4&60&47&13&9\\
+7&1&3&6&360&289&137&95\\
+16&1&4&9&10800&8735&640&352
+\end{array}
+\]
+A fresh scan over every $B\le1000$ coprime to $30$ and every
+$100\le a\le500$ tested $106{,}666$ pairs.  In every case a window of length
+at most $18$ made both $W>K$ and
+$\operatorname{lpr}_{W}(-BF)>K$; the largest first successful length was
+$14$.  The computation uses integers only and is reproducible from the pinned
+checker.  Neither the scan nor the three displayed certificates proves escape
+for unbounded $B$ or for cofinally many starts.
 
-Four shortcuts are already disconfirmed.  Merely proving
-$2\le b_a\le30$ loses the exact channel alphabet.  A fixed finite list of
-denominator certificates does not address the universal $B$-quantifier.  A
-bound independent of $B$ is not the bound delivered by denominator clearing.
-Finally, large absolute forcing is irrelevant unless its \emph{least positive
-residue} is large.  These are not stylistic cautions: each removes a false
-version of~\eqref{eq:escape}.
+\section{Complements and further questions}\label{sec:open}
 
-\section{Specialist handoff and surviving questions}\label{sec:open}
+Two statements would be needed to turn Section~\ref{sec:escape} into an
+irrationality proof at $\{2,3,5\}$, and they are of different kinds.  The first
+is an identification.  The ordered $\{2,3,5\}$ jump word, its block digits
+$m_a$, and the bound $K(B,a)$ obtained by clearing denominators in a
+hypothetical rational value would have to be shown to produce a carry $d_n$
+satisfying $d_{n+1}=b_nd_n-Bm_n$ with the radix word $b_a=\beta_a$ of
+Theorem~\ref{res:dyadic-alphabet}.  The second is the Diophantine existence
+statement of Problem~\ref{prob:producer}.  No Lean theorem yet identifies those
+digits with the formal forcing word, derives $K(B,a)$ from a rational value, or
+proves~\eqref{eq:escape}.
 
-\begin{problem}[the exact surviving producer]\label{prob:producer}
-For the actual ordered $\{2,3,5\}$ jump expansion, identify the formal radix
-word with $\beta_a\in\{2,6,10,30\}$, define and verify the corresponding block
-digit $m_a$, derive the denominator-cleared bound $K(B,a)$ from a hypothetical
-rational value, and prove~\eqref{eq:escape} for every $B>0$ coprime to $30$
-and every starting index.  Equivalently, prove a cofinal subfamily of windows
-on which
+\begin{problem}[cofinal local-window escape]\label{prob:producer}
+With $b_a=\beta_a\in\{2,6,10,30\}$ the block radix of
+Theorem~\ref{res:dyadic-alphabet}, and with $m_a$ and $K(B,a)$ as in the
+identification above, prove~\eqref{eq:escape}: for every $B>0$ coprime to $30$
+and every starting index there are a later $\ell$ and an $h>0$ with
+$|W_{\ell,h}|>0$ and
 \[
  \operatorname{lpr}_{|W_{\ell,h}|}(-BF_{\ell,h})>K(B,\ell+h).
 \]
 \end{problem}
 
-\paragraph{Wanted.}
-A theorem proving Problem~\ref{prob:producer}, or a strictly weaker
-four-symbol block statement that still emits one escaping window beyond every
-level for each fixed $B$.  The answer must state the block digit, all
-dependence on $B$, and the endpoint at which the carry bound is evaluated.
+By Theorem~\ref{res:windowconsumer} a proof of Problem~\ref{prob:producer}
+rules out the corresponding positive reduced carry; together with the
+identification above it supplies the missing contradiction for the three-prime
+case.  Until both pieces are present, Problem~\#269 remains open.
 
-\paragraph{Already checked.}
-Lean checks the exact dyadic radix alphabet, the window recurrence, the
-least-positive-residue interval and congruence lemmas, the
-denominator-dependent producer type, and the complete
-producer-to-contradiction theorem.  The structural height, jump, fibre,
-quadratic shell, and non-separation results earlier in this note are also
-checked.  The exact checker constructs actual block digits and supplies the
-finite evidence reported above.  No Lean theorem yet identifies those digits
-with the formal forcing word, derives $K(B,a)$ from a rational value, or
-proves~\eqref{eq:escape}.
+For each $B$, condition~\eqref{eq:escape} asks only for a cofinal family of
+windows.  The radix word is
+constrained to $\{2,6,10,30\}$, so the remaining arithmetic is in the block
+digit and its carry into the residue class, and one seeks blocks for which the
+modulus $|W_{\ell,h}|$ grows faster than the carry window and the weighted
+forcing $-BF_{\ell,h}$ does not remain trapped in the two short arcs adjacent
+to $0$ modulo that modulus.  A theorem for one cofinal family is enough; no
+equidistribution of all windows is required.
 
-\paragraph{Most useful answer.}
-First close the exact bridge from the original summands to the block digit
-used by the checker and to the denominator-cleared bound.  Then give an
-explicit cofinal rule in the alphabet $\{2,6,10,30\}$, together with a lower
-bound for the canonical residue and an upper bound for $K(B,\ell+h)$.  A
-negative answer is also valuable if it constructs infinitely many
-$(B,\ell_0)$ for which every proposed window family fails; that would retire
-the present producer rather than merely weaken it.
-
-\paragraph{If answered.}
-Theorem~\ref{res:windowconsumer} immediately rules out the corresponding
-positive reduced carry.  After the separate rational-value-to-actual-carry
-instantiation is checked, this supplies the missing contradiction for the
-three-prime case.  Until both pieces are present, Problem~\#269 remains open.
+None of the following weaker statements suffices, and each removes a false
+version of~\eqref{eq:escape}.  Merely proving $2\le b_a\le30$ loses the exact
+channel alphabet.  A fixed finite list of denominator certificates does not
+address the universal $B$-quantifier.  A bound independent of $B$ is not the
+bound delivered by denominator clearing.  Large absolute forcing is irrelevant
+unless its \emph{least positive residue} is large.  In the other direction, a
+construction of infinitely many $(B,\ell_0)$ for which every such window family
+fails would show that no argument of this shape can succeed.
 
 \begin{problem}[direct nonintegral tails]
 As an alternative to local windows, prove directly that for every positive
-$B$ coprime to $30$ the denominator-cleared actual dyadic tail is nonintegral
-cofinally.  Such a theorem would bypass~\eqref{eq:escape}, but it must still
-feed the same rational-carry consumer.
+$B$ coprime to $30$ the denominator-cleared tail of the actual $\{2,3,5\}$
+expansion is nonintegral cofinally.  Such a theorem would
+bypass~\eqref{eq:escape}, but it would still have to be joined to the
+denominator-clearing step in the same way.
 \end{problem}
 
-\begin{problem}[a genuinely three-dimensional analytic theorem]
-Prove a target-faithful analytic statement for the phase cocycle attached to
-the three logarithmic coordinates.  By Theorem~\ref{res:rank}, a preliminary
+An analytic treatment of the three logarithmic coordinates would have to be
+genuinely three-dimensional: by Theorem~\ref{res:rank}, a preliminary
 separation into one-dimensional factors is unavailable even at $\{2,3,5\}$.
-\end{problem}
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
@@ -774,8 +828,8 @@ worth carrying into the source.  The height statements hold for arbitrary
 bases, while the statements about $\Lprefix$ need the three primes to be
 distinct.  The normal form of Section~\ref{sec:fibre} is a finite identity over
 a rectangular box, not a convergence theorem.  And the formal cofinal-escape
-predicate is an unproved proposition consumed by a theorem; its application
-to the actual $\{2,3,5\}$ word is not asserted.
+predicate is an unproved hypothesis of Theorem~\ref{res:windowconsumer}; its
+application to the actual $\{2,3,5\}$ word is not asserted.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -874,6 +928,11 @@ reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{83}{no_posit
   \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/269.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{269}}},
   Lean source, 2025, accessed 27 July 2026.
+\bibitem{apostol1976} T.~M. Apostol, \emph{Introduction to Analytic Number
+  Theory}, Springer, New York, 1976, Ch.~4.
+\bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao, \emph{On several irrationality
+  problems for Ahmes series},
+  \href{https://arxiv.org/abs/2406.17593}{arXiv:2406.17593}, 2024.
 \end{thebibliography}
 
 \end{document}
