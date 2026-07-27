@@ -226,6 +226,51 @@ def audit_packet() -> dict[str, Any]:
                     repr(edge),
                 )
                 break
+        affordance_packet = dependency_index.get(
+            "formal_type_affordances", {}
+        )
+        affordance_symbols = affordance_packet.get(
+            "symbol_table", []
+        )
+        affordance_rows = affordance_packet.get("rows", [])
+        if (
+            affordance_symbols != sorted(set(affordance_symbols))
+            or affordance_packet.get("row_layout")
+            != [
+                "node_id",
+                "forall_binder_count",
+                "conclusion_head_symbol_id",
+                "conclusion_symbol_ids",
+            ]
+        ):
+            error(
+                "lean_formal_affordance_symbols",
+                "docs/lean_dependency_index.json",
+                "symbol table or row layout is invalid",
+            )
+        for row in affordance_rows:
+            if (
+                not isinstance(row, list)
+                or len(row) != 4
+                or row[0] not in node_ids
+                or not isinstance(row[1], int)
+                or row[1] < 0
+                or not isinstance(row[2], int)
+                or not 0 <= row[2] < len(affordance_symbols)
+                or not isinstance(row[3], list)
+                or row[3] != sorted(set(row[3]))
+                or any(
+                    not isinstance(symbol_id, int)
+                    or not 0 <= symbol_id < len(affordance_symbols)
+                    for symbol_id in row[3]
+                )
+            ):
+                error(
+                    "lean_formal_affordance_row",
+                    "docs/lean_dependency_index.json",
+                    repr(row),
+                )
+                break
         coverage = dependency_index["coverage"]
         if coverage["source_resolved_node_count"] != dependency_node_count:
             error(
@@ -254,6 +299,17 @@ def audit_packet() -> dict[str, Any]:
                 "lean_dependency_unresolved_classification",
                 "docs/lean_dependency_index.json",
                 "unresolved declaration classifications do not sum to total",
+            )
+        if (
+            coverage["source_resolved_formal_type_affordance_count"]
+            != len(affordance_rows)
+            or coverage["formal_type_affordance_symbol_count"]
+            != len(affordance_symbols)
+        ):
+            error(
+                "lean_formal_affordance_coverage",
+                "docs/lean_dependency_index.json",
+                "affordance coverage counts do not match payload",
             )
         curvature_dependencies = query_corpus.formal_dependency_neighbourhood(
             "Erdos249257.TotientTailPeriodKiller."
@@ -324,6 +380,31 @@ def audit_packet() -> dict[str, Any]:
                 "lean_dependency_natural_trace",
                 "sharp curvature irrationality to denominator divisibility",
                 "ordinary-language endpoints did not recover exact path",
+            )
+        goal_support = query_corpus.formal_goal_support_packet(
+            "I need to prove totientTail (N + h) - totientTail N is an "
+            "integer from a rational totient series; which theorem applies?",
+            3,
+        )
+        if (
+            goal_support.get("availability") != "available"
+            or not goal_support.get("candidates")
+            or goal_support["candidates"][0]["qualified_name"]
+            != "Erdos249257.TotientTailPeriodKiller."
+            "tail_diff_int_of_den_dvd"
+            or goal_support["candidates"][0]["formal_affordance"][
+                "conclusion_head"
+            ]
+            != "Membership.mem"
+            or "direct_integer_membership"
+            not in goal_support["candidates"][0]["match_receipt"][
+                "shape_matches"
+            ]
+        ):
+            error(
+                "lean_formal_goal_support_anchor",
+                "integer tail difference from rationality",
+                "formal affordance did not rank exact theorem first",
             )
 
     packet_specs: tuple[
@@ -489,6 +570,16 @@ def audit_packet() -> dict[str, Any]:
             "source_resolved_lean_dependency_edge_count": (
                 dependency_edge_count
             ),
+            "source_resolved_formal_type_affordance_count": (
+                len(affordance_rows)
+                if dependency_index is not None
+                else 0
+            ),
+            "formal_type_affordance_symbol_count": (
+                len(affordance_symbols)
+                if dependency_index is not None
+                else 0
+            ),
             "theorem_like_docstring_count": theorem_like_with_docstrings,
             "theorem_like_docstring_ratio": (
                 theorem_like_with_docstrings / len(theorem_like)
@@ -531,6 +622,9 @@ def render_card(packet: dict[str, Any]) -> str:
         f"| dependency_graph="
         f"{coverage['source_resolved_lean_dependency_node_count']}/"
         f"{coverage['source_resolved_lean_dependency_edge_count']} "
+        f"| goal_affordances="
+        f"{coverage['source_resolved_formal_type_affordance_count']}/"
+        f"{coverage['formal_type_affordance_symbol_count']} "
         f"| module_synopses={coverage['authored_module_synopsis_ratio']:.3f} "
         f"| docstrings={coverage['theorem_like_docstring_ratio']:.3f} "
         f"| max_packet={boundedness['maximum_typed_packet_bytes']}B "

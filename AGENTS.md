@@ -112,6 +112,11 @@ handle:
   contribution-family index;
 - `--declaration <name>`, `--source <module.lean:line>`, or `--module <path_or_id>`
   for checked source;
+- `--goal-support "<Lean or mathematical goal>"` for theorem candidates ranked
+  by precomputed elaborated conclusion shape, conclusion constants, exact
+  context phrases, and binder structure; this is a navigation affordance, not
+  an applicability proof, so the emitted `apply` candidates still require
+  Lean elaboration;
 - `--proof-cone <declaration> --depth <1..8>` for a bounded,
   theorem-prioritized cone of exact proof-term dependencies, or
   `--dependency-path <source> <target> --depth <1..8>` for the shortest exact

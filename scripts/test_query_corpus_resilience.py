@@ -321,6 +321,55 @@ def check_multihop_formal_dependency_reasoning() -> None:
     ]
 
 
+def check_formal_goal_affordance_support() -> None:
+    query = (
+        "I need to prove totientTail (N + h) - totientTail N is an "
+        "integer from a rational totient series; which theorem applies?"
+    )
+    request = query_corpus.support_goal_request(query)
+    assert request == {
+        "goal": (
+            "totientTail (N + h) - totientTail N is an integer"
+        ),
+        "context": "a rational totient series",
+        "extraction": "ordinary_language_goal_pattern",
+    }
+    packet = query_corpus.formal_goal_support_packet(query, 3)
+    assert packet["availability"] == "available"
+    candidate = packet["candidates"][0]
+    assert candidate["qualified_name"] == (
+        "Erdos249257.TotientTailPeriodKiller."
+        "tail_diff_int_of_den_dvd"
+    )
+    assert candidate["formal_affordance"]["conclusion_head"] == (
+        "Membership.mem"
+    )
+    assert {"Set.range", "Int.cast"} <= set(
+        candidate["formal_affordance"]["conclusion_symbols"]
+    )
+    assert candidate["match_receipt"]["shape_matches"] == [
+        "direct_integer_membership"
+    ]
+    assert candidate["lean_application_candidate"].endswith(
+        ".tail_diff_int_of_den_dvd"
+    )
+    semantic_slice = query_corpus.semantic_slice_packet(query, 20)
+    assert [
+        (cell["handle"], cell["selection_reason"])
+        for cell in semantic_slice["semantic_cells"]
+    ] == [
+        (
+            "tail_diff_int_of_den_dvd",
+            "formal_goal_shape_candidate",
+        )
+    ]
+    assert semantic_slice["operator_synthesis"][
+        "formal_goal_support"
+    ]["candidates"][0]["qualified_name"].endswith(
+        ".tail_diff_int_of_den_dvd"
+    )
+
+
 def check_missing_registered_artifact_is_typed_not_fatal() -> None:
     old_root = query_corpus.ROOT
     with tempfile.TemporaryDirectory(prefix="query-corpus-resilience-") as tmp:
@@ -391,6 +440,7 @@ def main() -> int:
     check_witness_carrying_semantic_slices()
     check_elaborated_dependency_witnesses()
     check_multihop_formal_dependency_reasoning()
+    check_formal_goal_affordance_support()
     check_missing_registered_artifact_is_typed_not_fatal()
     check_unavailable_paper_coordinate_is_typed_not_fatal()
     print("query corpus semantic-resilience checks: PASS")

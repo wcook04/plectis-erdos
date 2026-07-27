@@ -19,7 +19,7 @@ import query_corpus
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "lean_dependency_index.json"
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
-SCHEMA = "erdos249257-lean-dependency-index/1"
+SCHEMA = "erdos249257-lean-dependency-index/2"
 
 
 def ensure_elaborated_environment() -> None:
@@ -46,6 +46,7 @@ def export_environment() -> tuple[
     dict[str, str],
     dict[tuple[str, str], set[str]],
     dict[str, int],
+    dict[str, dict[str, Any]],
 ]:
     completed = subprocess.run(
         ["lake", "env", "lean", str(EXPORTER)],
@@ -70,15 +71,32 @@ def parse_environment_output(
     dict[str, str],
     dict[tuple[str, str], set[str]],
     dict[str, int],
+    dict[str, dict[str, Any]],
 ]:
     nodes: dict[str, str] = {}
     relations: dict[tuple[str, str], set[str]] = defaultdict(set)
     internal_omissions: dict[str, int] = {}
+    type_shapes: dict[str, dict[str, Any]] = {}
     for line in output.splitlines():
         fields = line.split("\t")
         if fields[0] == "AIW_NODE" and len(fields) == 3:
             _, handle, owner_module = fields
             nodes[handle] = owner_module
+        elif fields[0] == "AIW_TYPE_SHAPE" and len(fields) == 4:
+            _, handle, binder_count, conclusion_head = fields
+            type_shapes.setdefault(
+                handle, {"conclusion_symbols": set()}
+            ).update(
+                {
+                    "binder_count": int(binder_count),
+                    "conclusion_head": conclusion_head,
+                }
+            )
+        elif fields[0] == "AIW_CONCLUSION_REF" and len(fields) == 3:
+            _, handle, reference = fields
+            type_shapes.setdefault(
+                handle, {"conclusion_symbols": set()}
+            )["conclusion_symbols"].add(reference)
         elif fields[0] == "AIW_EDGE" and len(fields) == 6:
             _, source, source_module, target, target_module, relation = fields
             nodes.setdefault(source, source_module)
@@ -89,7 +107,7 @@ def parse_environment_output(
             internal_omissions[handle] = int(count)
         elif line.strip():
             raise RuntimeError(f"unexpected Lean exporter output: {line}")
-    return nodes, relations, internal_omissions
+    return nodes, relations, internal_omissions, type_shapes
 
 
 def build_packet() -> dict[str, Any]:
@@ -108,9 +126,12 @@ def build_packet() -> dict[str, Any]:
         ): row
         for row in atlas_rows
     }
-    environment_nodes, environment_relations, internal_omissions = (
-        export_environment()
-    )
+    (
+        environment_nodes,
+        environment_relations,
+        internal_omissions,
+        environment_type_shapes,
+    ) = export_environment()
     resolved_rows = {
         handle: rows_by_environment_identity[(handle, owner_module)]
         for handle, owner_module in environment_nodes.items()
@@ -159,6 +180,43 @@ def build_packet() -> dict[str, Any]:
         for (source, target), relations in sorted(
             resolved_relations.items()
         )
+    ]
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    affordance_handles = [
+        handle
+        for handle, row in sorted(resolved_rows.items())
+        if row["kind"] in theorem_kinds
+        and handle in environment_type_shapes
+    ]
+    affordance_symbols = sorted(
+        {
+            symbol
+            for handle in affordance_handles
+            for symbol in (
+                environment_type_shapes[handle]["conclusion_head"],
+                *environment_type_shapes[handle]["conclusion_symbols"],
+            )
+        }
+    )
+    affordance_symbol_ids = {
+        symbol: symbol_id
+        for symbol_id, symbol in enumerate(affordance_symbols)
+    }
+    affordance_rows = [
+        [
+            node_id_by_handle[handle],
+            environment_type_shapes[handle]["binder_count"],
+            affordance_symbol_ids[
+                environment_type_shapes[handle]["conclusion_head"]
+            ],
+            sorted(
+                affordance_symbol_ids[symbol]
+                for symbol in environment_type_shapes[handle][
+                    "conclusion_symbols"
+                ]
+            ),
+        ]
+        for handle in affordance_handles
     ]
     formal_source = claims["release"]["formal_source"]
     unresolved_atlas_rows = []
@@ -237,11 +295,31 @@ def build_packet() -> dict[str, Any]:
             "unresolved_atlas_declaration_status_counts": (
                 unresolved_atlas_status_counts
             ),
+            "source_resolved_formal_type_affordance_count": len(
+                affordance_rows
+            ),
+            "formal_type_affordance_symbol_count": len(
+                affordance_symbols
+            ),
         },
         "unresolved_atlas_declarations": unresolved_atlas_rows,
         "edge_relation_bit_legend": {
             "1": "type_reference",
             "2": "value_reference",
+        },
+        "formal_type_affordances": {
+            "authority_posture": (
+                "conclusion_shape_from_elaborated_Lean_types_for_navigation_"
+                "and_candidate_ranking_not_unification_or_applicability_proof"
+            ),
+            "row_layout": [
+                "node_id",
+                "forall_binder_count",
+                "conclusion_head_symbol_id",
+                "conclusion_symbol_ids",
+            ],
+            "symbol_table": affordance_symbols,
+            "rows": affordance_rows,
         },
         "nodes": nodes,
         "edges": edges,

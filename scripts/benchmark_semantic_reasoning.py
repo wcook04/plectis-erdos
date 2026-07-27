@@ -395,6 +395,26 @@ TASKS: tuple[dict[str, Any], ...] = (
             ),
         },
     },
+    {
+        "id": "heldout_formal_goal_affordance",
+        "split": "held_out",
+        "query": (
+            "I need to prove totientTail (N + h) - totientTail N is an "
+            "integer from a rational totient series; which theorem applies?"
+        ),
+        "operator": "support",
+        "required_cells": (
+            ("declaration", "tail_diff_int_of_den_dvd"),
+        ),
+        "required_text": (
+            "formal_goal_shape_candidate",
+            "direct_integer_membership",
+            "Membership.mem",
+            "Set.range",
+            "apply Erdos249257.TotientTailPeriodKiller.tail_diff_int_of_den_dvd",
+            "requires_Lean_elaboration_at_the_target_goal",
+        ),
+    },
 )
 
 

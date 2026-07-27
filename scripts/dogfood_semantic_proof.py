@@ -58,6 +58,13 @@ FORMAL_PATH_REQUIRED_DECLARATIONS = {
     "eventual_period_of_not_irrational",
     "tail_diff_int_of_den_dvd",
 }
+GOAL_SUPPORT_QUERY = (
+    "I need to prove totientTail (N + h) - totientTail N is an integer "
+    "from a rational totient series; which theorem applies?"
+)
+GOAL_SUPPORT_REQUIRED_DECLARATIONS = {
+    "tail_diff_int_of_den_dvd",
+}
 SCRATCH_THEOREM = """\
 import Erdos249257.CurvatureCarry
 import Erdos249257.ExponentOnlyTransport
@@ -109,6 +116,16 @@ theorem semanticCompiler_directCurvatureConsumer {H L : ℕ} (hH : 1 ≤ H)
   exact
     Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert
       hH hcert
+
+/- A formal-affordance match for a fresh integer-tail goal. -/
+theorem semanticCompiler_goalMatchedTailIntegrality
+    (r : ℚ)
+    (hS : (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) = (r : ℝ))
+    (h N : ℕ)
+    (hdvd : (r.den : ℕ) ∣ 2 ^ N * (2 ^ h - 1)) :
+    totientTail (N + h) - totientTail N ∈
+      Set.range ((↑) : ℤ → ℝ) := by
+  apply tail_diff_int_of_den_dvd r hS h N hdvd
 
 /- A proof-cone reconstruction of the lcm-cone flatness bridge.  The semantic
    path exposes `eventual_period_of_not_irrational` as the exact intermediate
@@ -348,6 +365,64 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     all_required.update(FORMAL_PATH_REQUIRED_DECLARATIONS)
     all_recovered.update(formal_path_declarations)
     missing_any.update(missing_path)
+    goal_support_ranked = query_corpus.search_packet(
+        GOAL_SUPPORT_QUERY, query_corpus.MAX_SEMANTIC_CELLS
+    )
+    goal_support_ranked_declarations = {
+        query_corpus.semantic_result_handle(result)
+        for result in goal_support_ranked["results"]
+        if result["kind"] == "declaration"
+    }
+    goal_support_slice = query_corpus.semantic_slice_packet(
+        GOAL_SUPPORT_QUERY, 20
+    )
+    goal_support_declarations = {
+        candidate["name"]
+        for candidate in goal_support_slice[
+            "operator_synthesis"
+        ].get("formal_goal_support", {}).get("candidates", [])
+    }
+    missing_goal_support = sorted(
+        GOAL_SUPPORT_REQUIRED_DECLARATIONS
+        - goal_support_declarations
+    )
+    tasks.append(
+        {
+            "id": "formal_goal_affordance_application",
+            "query": GOAL_SUPPORT_QUERY,
+            "semantic_slice_id": goal_support_slice.get("slice_id"),
+            "semantic_operator": goal_support_slice[
+                "query_interpretation"
+            ]["operator"]["id"],
+            "required_declarations": sorted(
+                GOAL_SUPPORT_REQUIRED_DECLARATIONS
+            ),
+            "retrieved_declarations": sorted(
+                goal_support_declarations
+            ),
+            "synthesized_consumer_signatures": {},
+            "ranked_search_recovered_required_declarations": sorted(
+                GOAL_SUPPORT_REQUIRED_DECLARATIONS
+                & goal_support_ranked_declarations
+            ),
+            "missing_required_declarations": missing_goal_support,
+            "semantic_expansion_gain": len(
+                GOAL_SUPPORT_REQUIRED_DECLARATIONS
+                & goal_support_declarations
+            )
+            - len(
+                GOAL_SUPPORT_REQUIRED_DECLARATIONS
+                & goal_support_ranked_declarations
+            ),
+            "dependency_authority": (
+                "elaborated_conclusion_shape_candidate_ranking"
+            ),
+        }
+    )
+    all_required.update(GOAL_SUPPORT_REQUIRED_DECLARATIONS)
+    all_recovered.update(goal_support_declarations)
+    all_ranked.update(goal_support_ranked_declarations)
+    missing_any.update(missing_goal_support)
     if missing_any:
         return {
             "kind": "semantic_proof_dogfood",
