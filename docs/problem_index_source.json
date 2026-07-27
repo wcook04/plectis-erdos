@@ -40,8 +40,7 @@
       "directory": "ErdosProblems/Erdos243",
       "principal_module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
       "companion_modules": [
-        "ErdosProblems.Erdos243.FiniteHorizonResidue",
-        "ErdosProblems.Erdos243.SparseResetRecovery"
+        "ErdosProblems.Erdos243.FiniteHorizonResidue"
       ],
       "note_artifact_id": "erdos_243_note",
       "required_note_declarations": [
@@ -80,10 +79,6 @@
         {
           "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
           "declaration": "forcedSurvives_iff_of_modEq_factorial"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
-          "declaration": "sylvesterNext_eventually_of_summable_negativeRelativeMass"
         }
       ],
       "what_is_checked": [
@@ -97,19 +92,18 @@
         "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
         "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
         "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
-        "Conditionally: exact dynamics, positive tail state, normalised vanishing, and finite normalised negative centred-defect mass force the Sylvester recurrence eventually.",
         "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
       ],
       "what_is_not_checked": [
         "The unrestricted problem.",
         "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
-        "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set and whose normalised negative mass diverges.",
+        "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
         "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
       ],
       "open_obligations": [
         {
-          "id": "unbounded_divergent_mass_negative_excursions",
-          "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set and divergent normalised negative mass sum_n (-E_n)_+/C_n. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, a fixed bound on the negative part, or a finite multiplicative growth budget."
+          "id": "unbounded_negative_excursions",
+          "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part."
         },
         {
           "id": "derive_the_two_analytic_hypotheses",
@@ -121,6 +115,109 @@
         }
       ],
       "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale."
+    },
+    {
+      "problem_id": "erdos_249",
+      "erdos_number": 249,
+      "short_title": "The binary totient series",
+      "status": "open",
+      "question": "Is the binary Lambert series sum phi(n)/2^n irrational?",
+      "directory": "ErdosProblems/Erdos249",
+      "principal_module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+      "companion_modules": [
+        "ErdosProblems.Erdos249.FiniteEulerSieve",
+        "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature"
+      ],
+      "note_artifact_id": "erdos_249_note",
+      "required_note_declarations": [
+        {
+          "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+          "declaration": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
+          "declaration": "muSqEulerFactor_one"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
+          "declaration": "muSqEulerFactor_two"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
+          "declaration": "sigmaPrimePow_firstDiff"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
+          "declaration": "sigmaPrimePow_secondDiff"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "declaration": "checkerboard_separable"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "declaration": "checkerboard_unique"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "declaration": "fourPoint_layer_identity"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "declaration": "residueClass_step_has_centred_completion"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "declaration": "PrimeRayLayerSupply"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "declaration": "BoundedDegreeOrderConsumer"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "declaration": "FinitePrimeSupportEscape"
+        }
+      ],
+      "what_is_checked": [
+        "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.",
+        "The local s=1 and s=2 squared Möbius Euler-factor identities and the first two prime-power divisor-sum differences.",
+        "That the two-by-two checkerboard kills separable backgrounds and is unique up to scale under the four row and column cancellations.",
+        "An abstract four-point divisor-layer identity, stated from its four explicit factorisation hypotheses.",
+        "An affine completion no-go: every residue class modulo an even modulus has a digit that recentres one carry step.",
+        "Exact producer and consumer interfaces for prime-ray layer supply, bounded-degree order witnesses, and finite-prime-support escape."
+      ],
+      "what_is_not_checked": [
+        "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.",
+        "The packet's sharp parabolic Stern-Brocot cusp theorem and its passage from a geometric x-parameter to the arithmetic totient series.",
+        "Eventual Hankel nonvanishing for the Möbius-Mersenne power ladder, or its denominator obstruction.",
+        "The natural-boundary and quasimodular-transcendence steps of the infinite Euler-sieve tower.",
+        "Polynomial resultant realisability, exact-order finite-field supply, Frobenius freezing, or the Archimedean growth needed by the prime-ray strategy.",
+        "Unconditional irrationality of the binary totient series."
+      ],
+      "open_obligations": [
+        {
+          "id": "strict_prime_tail_orbit_gap",
+          "statement": "Prove the cofinal strict 9/10 real-part gap for the exact natural prime-tail orbit, or replace it with another producer for the reviewed pivot-escape endpoint."
+        },
+        {
+          "id": "hankel_denominator_fan_in",
+          "statement": "Prove eventual nonvanishing or a usable denominator obstruction for the Möbius-Mersenne power ladder and connect it to the target value."
+        },
+        {
+          "id": "euler_sieve_limit_theorem",
+          "statement": "Control the infinite Euler-sieve limit strongly enough that finite-stage quasimodularity yields a valid arithmetic obstruction."
+        },
+        {
+          "id": "prime_ray_resultant_supply",
+          "statement": "Realise the layer system by cyclic resultants and prove prime-support escape with the growth estimates needed to contradict a rational carry orbit."
+        },
+        {
+          "id": "stern_brocot_arithmetic_bridge",
+          "statement": "Prove the sharp cusp asymptotic and then supply a non-formal bridge from the geometric parameter regime to the exact totient value."
+        }
+      ],
+      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate."
     },
     {
       "problem_id": "erdos_251",
@@ -188,6 +285,10 @@
         {
           "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
           "declaration": "primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch"
+        },
+        {
+          "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+          "declaration": "not_ratIntegral_of_approximation_gap"
         }
       ],
       "what_is_checked": [
@@ -200,7 +301,8 @@
         "For a real-valued dyadic recurrence, cofinal non-integrality of every fixed positive shift implies irrationality of the initial state.",
         "That the actual consecutive-prime-gap sequence is unbounded, by the factorial prime-free-interval construction, and therefore is not eventually periodic with any positive period.",
         "For any integer-digit dyadic tail recurrence, two adjacent fixed-length shifts lying strictly between -1 and 1 cannot both be integral when the corresponding digits differ.",
-        "For the actual prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap excludes eventual integrality of that fixed shift."
+        "For the actual prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap excludes eventual integrality of that fixed shift.",
+        "The generic distance-to-integers core of the finite-truncation criterion: an approximation farther than its error bound from every integer certifies non-integrality."
       ],
       "what_is_not_checked": [
         "The target irrationality.",
@@ -220,6 +322,48 @@
         {
           "id": "actual_prime_gap_tail_formal_bridge",
           "statement": "Formalise summability of the actual prime and prime-gap dyadic series and identify the concrete infinite prime-gap tail with the checked real/rational dyadic recurrence, so the local consumer reaches the target series without a paper-only analytic bridge."
+        }
+      ],
+      "finite_search": null
+    },
+    {
+      "problem_id": "erdos_257",
+      "erdos_number": 257,
+      "short_title": "Reciprocal sums over infinite exponent supports",
+      "status": "open",
+      "question": "Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?",
+      "directory": "ErdosProblems/Erdos257",
+      "principal_module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+      "companion_modules": [],
+      "note_artifact_id": "erdos_257_note",
+      "required_note_declarations": [
+        {
+          "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+          "declaration": "selectedMersenneTail_lt_weight"
+        },
+        {
+          "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+          "declaration": "supportedMersenneDigitValue_injective"
+        }
+      ],
+      "what_is_checked": [
+        "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
+        "That binary digit strings restricted to any chosen support retain unique Mersenne coding."
+      ],
+      "what_is_not_checked": [
+        "The universal irrationality problem, or irrationality for any new infinite support.",
+        "The packet's measure classification: cofinite supports have positive measure and infinite-complement supports have measure zero.",
+        "The fair-bit law, the singularity dichotomy, and the explicit dimensions for periodic stride supports.",
+        "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
+      ],
+      "open_obligations": [
+        {
+          "id": "arithmetic_rigidity_for_thin_supports",
+          "statement": "Convert hereditary unique coding into an arithmetic obstruction to rational values for every infinite support, including zero-measure Cantor supports."
+        },
+        {
+          "id": "formalise_measure_and_stride_geometry",
+          "statement": "Kernel-check the exact measure dichotomy, Bernoulli-law classification, and periodic-stride dimension formulas without overstating what they imply arithmetically."
         }
       ],
       "finite_search": null
@@ -288,6 +432,10 @@
         },
         {
           "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "kernel_235_minor_eq_neg_one_fifteen"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
           "declaration": "tailStateStep_eq"
         },
         {
@@ -315,7 +463,7 @@
         "That a finite smooth lattice sum groups exactly by running height, with the height fibre cardinality as coefficient.",
         "A quadratic bound on the cardinality of the actual filtered exponent shell.",
         "That each dyadic block contains at most one internal pure power from each non-dyadic channel, so the compressed {2,3,5} block radix belongs to the exact alphabet {2,6,10,30} and in particular lies between 2 and 30.",
-        "That the two-by-two determinants of the lattice kernel at the smallest instance are not all zero, so no rank-one separation exists.",
+        "That the smallest {2,3,5} kernel rectangle has determinant exactly -1/15, so its two-by-two matrix has rank two over the rationals and no rank-one separation exists.",
         "The canonical least-positive-residue interval and congruence facts, including the zero-residue representative.",
         "The exact local-window identity for an integral carry.",
         "A denominator-dependent CofinalLocalWindowEscape proposition and the full theorem that it rules out every positive reduced integral carry satisfying the matching bound."
@@ -372,6 +520,10 @@
         {
           "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
           "declaration": "sevenHalves_power_certificate"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "declaration": "sevenHalves_archimedean_height_condition"
         },
         {
           "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
@@ -434,7 +586,7 @@
         "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.",
         "The exact denominator-cleared rational-base tail recurrence, including its forcing term.",
         "That for every noninteger base with denominator at least two the forcing magnitude grows at least exponentially, while at denominator one it collapses to a bounded expression.",
-        "Two exact arithmetic facts used by the published height criterion at base seven halves.",
+        "The complete elementary Archimedean height inequality used by the published Bundschuh-Väänänen criterion at base seven halves; the analytic irrationality theorem itself remains external.",
         "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity.",
         "The exact exterior-determinant elimination identity, and that rowwise contents scale the Padé errors, exterior determinant, and absolute determinant height by the same factors.",
         "The exact Heine-Zudilin cone endpoint exponent arithmetic used to identify the bottom and top coefficient endpoints.",
@@ -456,10 +608,6 @@
         {
           "id": "three_halves_growing_rank_endpoint_jet_kernel",
           "statement": "After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction."
-        },
-        {
-          "id": "published_height_region_formalisation",
-          "statement": "Formalise the elementary parameter inequalities of the published criterion, keeping the analytic theorem itself external and cited."
         }
       ],
       "finite_search": null
@@ -474,7 +622,7 @@
       "library_root": "Erdos249257.lean",
       "exposition": "paper/erdos249-257-main-paper.tex",
       "route": "python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic",
-      "note": "Covered by the gateway paper and the reviewed claim registry, not by a problem note. The claim registry owns its status."
+      "note": "The gateway paper and reviewed claim registry own reviewed status. A standalone problem note also synthesises the unregistered problem-owned expansion without promoting it into that registry."
     },
     {
       "problem_id": "erdos_257",
@@ -484,13 +632,13 @@
       "library_root": "Erdos249257.lean",
       "exposition": "paper/erdos249-257-main-paper.tex",
       "route": "python3 scripts/query_corpus.py --route erdos257_half_story",
-      "note": "Covered by the gateway paper and the reviewed claim registry, not by a problem note. The claim registry owns its status."
+      "note": "The gateway paper and reviewed claim registry own reviewed status. A standalone problem note also synthesises the unregistered problem-owned expansion without promoting it into that registry."
     }
   ],
   "reading_rule": "Select one problem, read its note, then follow the note's links into the pinned Lean source. Do not infer a claim about an Erdős problem from a declaration name, a module name, or a count of checked theorems.",
   "validation_commands": [
     "python3 scripts/build_problem_index.py --check",
-    "python3 scripts/check_problem_note_sources.py",
+    "python3 scripts/check_problem_note_sources.py --coverage",
     "python3 scripts/check_publication_contract.py"
   ]
 }
