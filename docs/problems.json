@@ -275,6 +275,15 @@
           "declaration_count": 6,
           "theorem_count": 3,
           "content_digest": "sha256:cf2965b3ba4a09f904b6cac34b7731f71576b067de3e8388e5a34ed1ffe80913"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "present": true,
+          "line_count": 243,
+          "declaration_count": 22,
+          "theorem_count": 15,
+          "content_digest": "sha256:8fd2ba068735a986024360f45fb848e6e505456d154ea1c2880f814cd1822071"
         }
       ],
       "note": {
@@ -289,18 +298,24 @@
         "The exact denominator-cleared rational-base tail recurrence, including its forcing term.",
         "That for every noninteger base with denominator at least two the forcing magnitude grows at least exponentially, while at denominator one it collapses to a bounded expression.",
         "Two exact arithmetic facts used by the published height criterion at base seven halves.",
-        "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity."
+        "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity.",
+        "The exact Heine-Zudilin cone endpoint exponent arithmetic used to identify the bottom and top coefficient endpoints.",
+        "That homogeneous evaluation at (3,2) sees only the constant endpoint modulo three and the top endpoint modulo two, so unit endpoints obstruct common local factors.",
+        "That vanishing of the higher bottom and top endpoint jets is exactly divisibility by the corresponding powers of three and two.",
+        "That the source integer-base ratio inequality implies a strictly negative scalar product-formula margin at three halves."
       ],
       "what_is_not_checked": [
         "Irrationality at base three halves, or for any rational base.",
         "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
-        "The logarithmic monotonicity step and the transcendental estimate the published criterion also needs.",
-        "Positivity or decay of the Padé remainder; only the exponent arithmetic is checked."
+        "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
+        "A growing-rank additive combination cancelling both two-adic and three-adic endpoint jets in both coefficient channels.",
+        "Nonvanishing and sub-gain coefficient height for such a kernel, and the analytic remainder estimate needed for irrationality.",
+        "Positivity or decay of the elementary Padé remainder; only its exponent arithmetic is checked."
       ],
       "open_obligations": [
         {
-          "id": "three_halves_pade_height_gap",
-          "statement": "Construct integer linear forms at base three halves whose analytic decay beats their common denominator height."
+          "id": "three_halves_growing_rank_endpoint_jet_kernel",
+          "statement": "Construct a growing-rank additive kernel that simultaneously cancels quadratically deep bottom three-adic and top two-adic endpoint jets in both coefficient channels, retains a nonzero remainder, and has coefficient height below the local gain; or prove an exact rank obstruction."
         },
         {
           "id": "published_height_region_formalisation",
