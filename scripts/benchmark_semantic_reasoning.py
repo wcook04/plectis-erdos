@@ -139,7 +139,11 @@ TASKS: tuple[dict[str, Any], ...] = (
             ("claim", "fixed_precision_transport_no_go"),
             ("declaration", "fixedPrecisionTropicalNoGo"),
         ),
-        "required_text": ("fixedPrecisionTropicalNoGo",),
+        "required_text": (
+            "fixedPrecisionTropicalNoGo",
+            "vu_word_has_prefix_locked_completion",
+            "source_lexical_dependency_candidate_not_elaborator_dependency_proof",
+        ),
     },
     {
         "id": "heldout_half_programme_analogy",
@@ -204,6 +208,25 @@ TASKS: tuple[dict[str, Any], ...] = (
         "required_text": (
             "Curvature carry for the totient tail",
             "source_current_authored_digestion",
+        ),
+    },
+    {
+        "id": "heldout_lean_goal_support",
+        "split": "held_out",
+        "query": (
+            "I need to prove Irrational (∑' n : ℕ, "
+            "(Nat.totient n : ℝ) / 2 ^ n) from a SharpCurvatureSupply"
+        ),
+        "operator": "support",
+        "required_cells": (
+            (
+                "declaration",
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+            ),
+        ),
+        "required_text": (
+            "rational_totient_series_forces_lcm_cone_flatness",
+            "curvature_notMem_int_of_sharpCurvatureCert",
         ),
     },
 )

@@ -25,6 +25,13 @@ synthesis records shared claim and open handles while declining to infer a
 formal bridge, and a frontier or falsification synthesis preserves the exact
 open records and claim ceilings.
 
+The witness graph is pruned by operator. A support question retains the
+claim-to-declaration consumer edges; a frontier or falsification question
+retains the open-boundary edges; an analogy retains the programme boundaries;
+and a trace or digest may retain the wider argument path. The complete typed
+cell remains expandable even when an internal edge is omitted from the
+query-relative graph.
+
 ## Authority planes
 
 The four provenance planes in a semantic cell are not interchangeable.
@@ -65,7 +72,9 @@ Each semantic cell carries its typed handle, the reason it was selected, an
 expansion command, and evidence appropriate to its kind. For example:
 
 - a declaration cell contains the signature, source line, pinned Lean
-  identity, docstring, and attached claim links;
+  identity, docstring, and attached claim links; for `support` and `trace`
+  questions it also lists theorem or lemma names used in that declaration's
+  source span;
 - a claim cell contains the authored status record, formal declaration
   handles, argument neighbourhood, programme ceiling, and remaining-open
   propositions;
@@ -86,6 +95,12 @@ python3 scripts/build_module_synopsis_index.py --check
 
 Its stored source fingerprint must match the declaration atlas. The index is a
 performance projection; the Lean header remains the authored source.
+
+Declaration-local source-use rows are also projections. They identify exact
+theorem or lemma names occurring in a source span and exclude trailing
+`#print` audit commands. They are labelled lexical dependency candidates,
+because only Lean elaboration establishes the actual dependency of the
+compiled proof term.
 
 ## Evaluation
 
