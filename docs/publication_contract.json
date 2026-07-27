@@ -97,14 +97,14 @@
     },
     {
       "id": "erdos_243_note",
-      "title": "The Centred State and the Surviving Negative Case",
+      "title": "Excluding the Bounded Negative Part",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_content_digest": "sha256:b61e619b21b015bf6cf3da47a339c630e5eacc371834ba809632a4f98485d562",
+      "source_content_digest": "sha256:372cff7ef1f748172206f0ed97281148ca8047007d3f56cf742ef1a77db8316a",
       "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "rendered_content_digest": "sha256:c72148115e55b5430e959a6a84c35e25c8771f491ece6b0e6d35fdab5fdab00c",
+      "rendered_content_digest": "sha256:64dac8b978d4bee8d7a6d2015f85b133f511640abb7c267b750fd6b8a7fef5ce",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. The declarations it describes are exact Lean propositions and are not reviewed public claims in docs/claims.json; Erdős Problem 243 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks that finite normalised negative centred-defect mass, together with the exact tail dynamics, positivity, and normalised vanishing, forces eventual Sylvester recurrence. The analytic bridge and the unbounded divergent-mass branch remain open; Erdős Problem 243 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [

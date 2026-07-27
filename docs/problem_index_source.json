@@ -40,9 +40,52 @@
       "directory": "ErdosProblems/Erdos243",
       "principal_module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
       "companion_modules": [
-        "ErdosProblems.Erdos243.FiniteHorizonResidue"
+        "ErdosProblems.Erdos243.FiniteHorizonResidue",
+        "ErdosProblems.Erdos243.SparseResetRecovery"
       ],
       "note_artifact_id": "erdos_243_note",
+      "required_note_declarations": [
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "nextTailState_eq_sub_centered"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "centeredState_zero_absorbing"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "sylvesterNext_eventually_of_centered_zero"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "centeredState_eventually_zero"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "no_eventuallyConstantNegative_orbit"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "no_eventuallyPeriodicNegative_orbit"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "no_eventuallyBoundedRise_reducedTail"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "declaration": "no_cofinallyBoundedNegative_of_normalizedVanishes"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
+          "declaration": "forcedSurvives_iff_of_modEq_factorial"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
+          "declaration": "sylvesterNext_eventually_of_summable_negativeRelativeMass"
+        }
+      ],
       "what_is_checked": [
         "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
         "That a vanishing centred state is absorbing under strict centring, so the state is either eventually zero or nowhere zero.",
@@ -54,18 +97,19 @@
         "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
         "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
         "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
+        "Conditionally: exact dynamics, positive tail state, normalised vanishing, and finite normalised negative centred-defect mass force the Sylvester recurrence eventually.",
         "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
       ],
       "what_is_not_checked": [
         "The unrestricted problem.",
         "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
-        "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
+        "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set and whose normalised negative mass diverges.",
         "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
       ],
       "open_obligations": [
         {
-          "id": "unbounded_negative_excursions",
-          "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part."
+          "id": "unbounded_divergent_mass_negative_excursions",
+          "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set and divergent normalised negative mass sum_n (-E_n)_+/C_n. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, a fixed bound on the negative part, or a finite multiplicative growth budget."
         },
         {
           "id": "derive_the_two_analytic_hypotheses",
