@@ -439,6 +439,73 @@ theorem exists_eventually_integral_tailShift
   exact tailShift_integral_add hrec
     (tailShift_integral_totient_of_odd_den hrec N hodd)
 
+/-! ## The real-orbit irrationality consumer -/
+
+/-- Real-valued version of the dyadic tail recurrence. -/
+def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
+
+/-- Difference between two real tail states separated by `h` steps. -/
+def realTailShift (T : ℕ → ℝ) (h N : ℕ) : ℝ :=
+  T (N + h) - T N
+
+/-- A real number is integral when it is the cast of an integer. -/
+def RealIntegral (x : ℝ) : Prop :=
+  ∃ z : ℤ, x = z
+
+/-- Rational orbit with prescribed initial state and integer digits. -/
+def rationalDyadicOrbit (g : ℕ → ℤ) (q : ℚ) : ℕ → ℚ
+  | 0 => q
+  | N + 1 => 2 * rationalDyadicOrbit g q N - g (N + 1)
+
+theorem rationalDyadicOrbit_recurrence (g : ℕ → ℤ) (q : ℚ) :
+    DyadicTailRecurrence g (rationalDyadicOrbit g q) := by
+  intro N
+  rfl
+
+/-- A real recurrence with rational initial state is the real cast of the
+corresponding rational recurrence at every later index. -/
+theorem realTail_eq_ratCast_rationalDyadicOrbit
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) (q : ℚ)
+    (hzero : T 0 = q) :
+    ∀ N, T N = (rationalDyadicOrbit g q N : ℝ)
+  | 0 => by simpa [rationalDyadicOrbit] using hzero
+  | N + 1 => by
+      rw [hrec N, rationalDyadicOrbit,
+        realTail_eq_ratCast_rationalDyadicOrbit hrec q hzero N]
+      push_cast
+      rfl
+
+/-- Cofinal failure of integral shifts for every fixed positive length. -/
+def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
+  ∀ h, 0 < h → ∀ N₀, ∃ N, N₀ ≤ N ∧
+    ¬RealIntegral (realTailShift T h N)
+
+/-- Exact proof consumer: to prove the initial value irrational, it is enough
+to rule out eventual integrality cofinally for every fixed positive shift.
+Rationality would produce a rational orbit, and the denominator-collapse
+theorem above produces one fixed shift integral at every sufficiently late
+index. -/
+theorem irrational_initial_of_cofinalNonintegralTailShifts
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T)
+    (hescape : CofinalNonintegralTailShifts T) :
+    Irrational (T 0) := by
+  by_contra hnot
+  obtain ⟨q, hq⟩ := exists_rat_of_not_irrational hnot
+  have hcast := realTail_eq_ratCast_rationalDyadicOrbit hrec q hq
+  obtain ⟨h, N₀, hh, hInt⟩ :=
+    exists_eventually_integral_tailShift
+      (rationalDyadicOrbit_recurrence g q)
+  obtain ⟨N, hN, hnon⟩ := hescape h hh N₀
+  obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hN
+  apply hnon
+  obtain ⟨z, hz⟩ := hInt k
+  refine ⟨z, ?_⟩
+  have hzR := congrArg ((↑) : ℚ → ℝ) hz
+  simpa [realTailShift, tailShift, hcast] using hzR
+
 /-- The coefficient emitted by an unrestricted integer carry. -/
 def carryCoeff (K : ℕ → ℚ) (n : ℕ) : ℚ :=
   2 * K n - K (n + 1)
