@@ -6,10 +6,10 @@
 % `tectonic erdos-1049-rational-base-lambert.tex` or `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-% Problem-specific source pin: #1049's endpoint-jet obstruction advances
+% Problem-specific source pin: #1049's primitive endpoint-jet obstruction advances
 % independently of the corpus default.
-\renewcommand{\commit}{551bcf6c2525efa6e2b3d29ca6d78db41c50c232}
-\renewcommand{\commitshort}{551bcf6c2525}
+\renewcommand{\commit}{d7c339fe1e2c9c4729004afafd10ae4b2cf59fef}
+\renewcommand{\commitshort}{d7c339fe1e2c}
 \hypersetup{
   pdftitle={Rational bases and the integer-base argument: a Lean-checked strategy separation for Erdős Problem 1049},
   pdfsubject={Erdős Problem Notes: Problem 1049},
@@ -50,14 +50,17 @@ theorem; of its inputs we formalise only two exact arithmetic facts, and we
 state plainly which three inputs are not formalised.  Separately we check
 polynomial bounds on the denominator exponents of a homogenised Pad\'e
 construction, with the analytic remainder left untouched.  For the stronger
-Heine--Zudilin route we isolate a sharper obstruction: homogeneous
+Heine--Zudilin route we isolate a sharper obstruction.  Rowwise content scales
+the analytic error and the exterior determinant by exactly the same factors,
+including the absolute determinant height.  Moreover homogeneous
 specialisation at $(3,2)$ sees the constant endpoint modulo $3$ and the top
-endpoint modulo $2$.  Unit endpoints therefore prevent scalar forms from
-acquiring the common local content they need.  The surviving programme is a
-growing-rank additive kernel that cancels both endpoint jets in both
-coefficient channels while preserving a nonzero, sufficiently small
-remainder.  We count the four-jet target exactly and prove the concrete
-sufficient threshold \(n\ge 4R+2S\) at positive bottom depth.
+endpoint modulo $2$, so unit endpoints exclude both primes from any common
+multiplier.  Thus the missing local gain must survive primitive normalisation.
+The surviving programme is a growing-rank additive kernel that cancels both
+endpoint jets in both primitive coefficient channels while preserving a
+nonzero, sufficiently small remainder.  We count the four-jet target exactly
+and prove the concrete sufficient threshold \(n\ge 4R+2S\) at positive bottom
+depth.
 \end{abstract}
 
 \section{The problem}\label{sec:problem}
@@ -375,11 +378,11 @@ $\widetilde{E}_n-\widetilde{P}(n,k)=(n-k)(3n-k-1)$;
 \end{proposition}
 
 \noindent Part~(1) is the
-\lword{Erdos1049/RationalPadeArithmetic.lean}{29}{rationalPadePSummandDenExpTwice_le}{summand
+\lword{Erdos1049/RationalPadeArithmetic.lean}{30}{rationalPadePSummandDenExpTwice_le}{summand
 exponent bound}, part~(2) the
-\lword{Erdos1049/RationalPadeArithmetic.lean}{51}{rationalPadeQMaxDenExpTwice_gap}{exact
+\lword{Erdos1049/RationalPadeArithmetic.lean}{52}{rationalPadeQMaxDenExpTwice_gap}{exact
 gap identity}, and part~(3) the
-\lword{Erdos1049/RationalPadeArithmetic.lean}{59}{rationalPadeQMaxDenExpTwice_le}{maximal
+\lword{Erdos1049/RationalPadeArithmetic.lean}{60}{rationalPadeQMaxDenExpTwice_le}{maximal
 exponent bound}.  The gap in~(2) is an identity in $\Z[n,m]$, so~(3) follows
 from $m(m-1)\ge0$ and $n\ge0$; the hypothesis $m\ge1$ names the range in which
 the corresponding summand does not vanish, and it is not the sharpest
@@ -391,6 +394,64 @@ and nothing further.  Positivity of the remainder, its rate of decay, and the
 comparison of that rate against the denominator height are the analytic
 obligations, and none of them is treated here.  A reconstructed identity is not
 an irrationality measure until those are closed.
+
+\section{Primitive normalisation is compulsory}\label{sec:primitive}
+
+For an integer coefficient pair \((U,V)\) and a real target \(S\), put
+\[
+ L_S(U,V)=US-V,
+ \qquad
+ \Delta\bigl((U_n,V_n),(U_m,V_m)\bigr)=U_nV_m-U_mV_n.
+\]
+The second expression eliminates \(S\) exactly:
+\[
+ \Delta=U_mL_S(U_n,V_n)-U_nL_S(U_m,V_m).
+\]
+This is the determinant consumer for any two rational approximants.
+
+\begin{theorem}[row-content no-go]\label{res:content}
+For integers \(c_n,c_m\),
+\[
+ L_S(c_nU_n,c_nV_n)=c_nL_S(U_n,V_n),
+\]
+\[
+ \Delta\bigl(c_n(U_n,V_n),c_m(U_m,V_m)\bigr)
+ =c_nc_m\Delta\bigl((U_n,V_n),(U_m,V_m)\bigr),
+\]
+and consequently
+\[
+ \left|\Delta\bigl(c_n(U_n,V_n),c_m(U_m,V_m)\bigr)\right|
+ =|c_n|\,|c_m|\,
+   \left|\Delta\bigl((U_n,V_n),(U_m,V_m)\bigr)\right|.
+\]
+In particular \(c_nc_m\) divides the scaled determinant.  Hence a local
+divisor supplied only by the two row contents is paid for by exactly the same
+factor in the Archimedean determinant height.
+\end{theorem}
+
+\begin{proof}
+All three identities are direct expansions in \(\Z\) or \(\R\); the
+divisibility statement uses the primitive determinant as its witness.
+\end{proof}
+
+\noindent Lean checks the error identity in
+\lword{Erdos1049/RationalPadeArithmetic.lean}{84}{rationalPadeError_mul}{error
+scaling}, the determinant identity in
+\lword{Erdos1049/RationalPadeArithmetic.lean}{94}{rationalPadeExteriorDet_mul_contents}{content
+factorisation}, the exact absolute-height identity in
+\lword{Erdos1049/RationalPadeArithmetic.lean}{104}{natAbs_rationalPadeExteriorDet_mul_contents}{absolute
+determinant scaling}, and the divisor statement in
+\lword{Erdos1049/RationalPadeArithmetic.lean}{116}{contentProduct_dvd_rationalPadeExteriorDet}{content-product
+divisibility}.  The elimination identity is the checked
+\lword{Erdos1049/RationalPadeArithmetic.lean}{124}{rationalPadeExteriorDet_cast_eq}{exterior
+determinant identity}.
+
+The theorem does not construct primitive Pad\'e rows, estimate their
+remainders, or prove that their exterior determinant is nonzero.  It removes
+one tempting source of false gain: multiplying a useful row by a large common
+integer cannot improve the local-to-Archimedean balance.  Every candidate
+family must first be divided by its rowwise common contents; the required
+\(2\)-adic and \(3\)-adic gain must remain afterwards.
 
 \section{The endpoint obstruction at $3/2$}\label{sec:endpoints}
 
@@ -429,6 +490,19 @@ identity}; the unit consequences are the
 obstruction} and
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{251}{two_not_dvd_homEvalThreeTwo_of_top_unit}{top-endpoint
 obstruction}.
+
+There is a useful common-multiplier form of the same boundary.  If \(U\) has
+unit top endpoint, \(V\) has unit constant endpoint, and an integer \(c\)
+divides both \(H_W(U)\) and \(H_W(V)\), then
+\[
+ 2\nmid c\qquad\text{and}\qquad 3\nmid c.
+\]
+This is the checked
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{293}{commonMultiplier_not_two_not_three_of_endpoint_units}{common-multiplier
+exclusion}.  Together with Theorem~\ref{res:content}, it says that neither
+rowwise scalar content nor a common multiplier of the specialised channels can
+manufacture the two local primes required at \(3/2\) under the stated endpoint
+hypotheses.
 
 For higher powers define the bottom and top jets by reducing \(H_W(P)\) modulo
 \(3^R\) and \(2^S\), respectively.  Their vanishing is exactly the requested
@@ -489,7 +563,7 @@ Let \(C_1>0\).  If \(C_0\le0\) or \(2C_0\le C_1\), then
 \end{theorem}
 
 \noindent This is the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{302}{three_two_scalar_margin_neg}{three-halves
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{323}{three_two_scalar_margin_neg}{three-halves
 scalar margin}.  The primary Zudilin theorem~\cite{zudilin2004} supplies an integer-base
 irrationality-exponent estimate on its parameter cone, and the elementary
 inequality \(\mu\ge2\) then forces \(2C_0\le C_1\) whenever \(C_0>0\); Lean
@@ -506,8 +580,9 @@ producer.
 
 \begin{problem}[growing-rank simultaneous endpoint-jet kernel]
 For positive quadratic target depths \(R_n,S_n\), exhibit at least
-\(4R_n+2S_n\) Heine--Zudilin coefficient pairs from a genuinely non-collapsed
-deformation, and prove that at least one resulting checked collision satisfies
+\(4R_n+2S_n\) \emph{primitive-normalised} Heine--Zudilin coefficient pairs
+from a genuinely non-collapsed deformation, and prove that at least one
+resulting checked collision satisfies
 \[
  J_{3,R_n}\!\left(\sum_j\lambda_jU_j\right)=
  J_{3,R_n}\!\left(\sum_j\lambda_jV_j\right)=0,
@@ -534,33 +609,39 @@ remains open, and is not reduced to either problem above.
 
 \paragraph{Wanted.}
 At positive target depths \(R_n,S_n\), an explicit family of at least
-\(4R_n+2S_n\) coefficient pairs, plus a proof that some checked collision has
-nonzero polynomial pair, nonzero remainder, and sufficient local gain.  A
-scalar ray, a multiplicative cyclotomic factor, or another primitive-content
-computation is not responsive to the surviving obstruction.
+\(4R_n+2S_n\) primitive coefficient pairs, plus a proof that some checked
+collision has nonzero polynomial pair, nonzero remainder, and sufficient
+local gain after primitive normalisation.  A scalar ray, row-content growth,
+a multiplicative cyclotomic factor, or another common-multiplier computation
+is not responsive to the surviving obstruction.
 
 \paragraph{Already checked.}
 The coordinatewise corridor fails at \(3/2\); the cleared-tail forcing term
 has an exponential denominator tax; the displayed Pad\'e denominator
 exponents clear their finite sums; unit endpoints prevent common factors
-\(3\) and \(2\); the source integer-base ratio inequality implies a strictly
-negative scalar margin at \(3/2\); and a large enough binary selector space
-forces a nonzero \(\{-1,0,1\}\) four-jet collision.  The exact target size is
+\(3\) and \(2\); row contents factor exactly from errors and determinants and
+pay the same factor in absolute determinant height; under unit endpoints a
+common specialised multiplier contains neither \(2\) nor \(3\); the source
+integer-base ratio inequality implies a strictly negative scalar margin at
+\(3/2\); and a large enough binary selector space forces a nonzero
+\(\{-1,0,1\}\) four-jet collision.  The exact target size is
 \((3^{R})^2(2^{S})^2\), and \(n\ge4R+2S\) suffices when \(R>0\).  None of
-these statements produces a sufficiently large non-collapsed family or proves
-a collision polynomial pair or remainder nonzero.
+these statements produces a sufficiently large primitive non-collapsed
+family or proves a collision polynomial pair or remainder nonzero.
 
 \paragraph{Most useful answer.}
-Give the first actual family with \(r(n)\ge4R_n+2S_n\), then show that its
-collision fibre is not contained in the polynomial-pair or remainder
-nullspace.  If every available family is too small or degenerate, a rank
-theorem identifying that obstruction is more valuable than further low-rank
-enumeration.
+Give the first actual primitive-normalised family with
+\(r(n)\ge4R_n+2S_n\), prove that the required local gain survives that
+normalisation, then show that its collision fibre is not contained in the
+polynomial-pair or remainder nullspace.  If every available family is too
+small or degenerate, a rank theorem identifying that obstruction is more
+valuable than further low-rank enumeration.
 
 \paragraph{If answered.}
-A positive construction supplies the missing local-content producer to the
-existing Archimedean consumer.  A negative rank theorem removes the additive
-endpoint route and exposes the next genuinely different deformation.
+A positive construction supplies the missing \emph{primitive} local-gain
+producer to the existing exterior-determinant consumer.  A negative rank
+theorem removes the additive endpoint route and exposes the next genuinely
+different deformation.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
@@ -617,12 +698,17 @@ exponential lower bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{132}{twoPow
 integer-base collapse & \lrefx{Erdos1049/RationalBaseLambert.lean}{146}{rationalBaseForcingNat_one}\\
 integer power comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{29}{sevenHalves_power_certificate}\\
 exact rational boundary & \lrefx{Erdos1049/RationalBaseLambert.lean}{35}{sevenHalves_rational_margin}\\
-doubled common exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{18}{rationalPadeDenExpTwice}\\
-doubled summand exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{23}{rationalPadePSummandDenExpTwice}\\
-summand exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{29}{rationalPadePSummandDenExpTwice_le}\\
-doubled maximal exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{45}{rationalPadeQMaxDenExpTwice}\\
-exact gap identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{51}{rationalPadeQMaxDenExpTwice_gap}\\
-maximal exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{59}{rationalPadeQMaxDenExpTwice_le}\\
+doubled common exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{19}{rationalPadeDenExpTwice}\\
+doubled summand exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{24}{rationalPadePSummandDenExpTwice}\\
+summand exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{30}{rationalPadePSummandDenExpTwice_le}\\
+doubled maximal exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{46}{rationalPadeQMaxDenExpTwice}\\
+exact gap identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{52}{rationalPadeQMaxDenExpTwice_gap}\\
+maximal exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{60}{rationalPadeQMaxDenExpTwice_le}\\
+Pad\'e error scaling & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{84}{rationalPadeError_mul}\\
+row-content determinant factorisation & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{94}{rationalPadeExteriorDet_mul_contents}\\
+absolute determinant scaling & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{104}{natAbs_rationalPadeExteriorDet_mul_contents}\\
+content-product divisibility & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{116}{contentProduct_dvd_rationalPadeExteriorDet}\\
+exterior determinant identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{124}{rationalPadeExteriorDet_cast_eq}\\
 homogeneous endpoint evaluation & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{96}{homEvalThreeTwo}\\
 four-jet target cardinality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{129}{fourJetSignature_card}\\
 four-jet pigeonhole kernel & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{140}{exists_distinct_binary_selectors_same_fourJet}\\
@@ -633,8 +719,9 @@ bottom endpoint modulo three & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{201}
 top endpoint modulo two & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{215}{homEvalThreeTwo_mod_two}\\
 unit constant endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{233}{three_not_dvd_homEvalThreeTwo_of_const_unit}\\
 unit top endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{251}{two_not_dvd_homEvalThreeTwo_of_top_unit}\\
-irrationality-exponent inequality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{290}{twice_le_of_irrationalityExponent_bounds}\\
-three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{302}{three_two_scalar_margin_neg}\\
+common-multiplier exclusion & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{293}{commonMultiplier_not_two_not_three_of_endpoint_units}\\
+irrationality-exponent inequality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{311}{twice_le_of_irrationalityExponent_bounds}\\
+three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{323}{three_two_scalar_margin_neg}\\
 \end{tabular}
 \fi
 
