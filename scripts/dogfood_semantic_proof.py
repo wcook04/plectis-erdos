@@ -26,9 +26,19 @@ REQUIRED_DECLARATIONS = {
     "irrational_totientSeries_of_sharpCurvatureSupply",
     "irrational_totient_series_of_exponentOnlyThreeTransportSupply",
 }
+HALF_QUERY = (
+    "which proof sockets let either terminal scaled vanishing or middle "
+    "producer tail escape prove half membership"
+)
+HALF_REQUIRED_DECLARATIONS = {
+    "half_mem_mersenneAchievementSet_of_terminalScaledVanishing",
+    "half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree",
+}
 SCRATCH_THEOREM = """\
 import Erdos249257.CurvatureCarry
 import Erdos249257.ExponentOnlyTransport
+import Erdos249257.TerminalOnlyScaledVanishing
+import Erdos249257.HalfCylinderLastProducerContradiction
 
 open scoped BigOperators
 
@@ -46,6 +56,23 @@ theorem semanticCompiler_disjunctiveSupplySocket
   · exact
       Erdos249257.ExponentOnlyTransport.irrational_totient_series_of_exponentOnlyThreeTransportSupply
         htransport
+
+/- A query-derived disjunction between two sufficient half-membership
+   sockets. This does not assert either antecedent. -/
+theorem semanticCompiler_halfMembershipAlternative
+    (h :
+      Nonempty
+          Erdos249257.HalfCarryReachability.HalfTerminalOnlyScaledVanishingSequence ∨
+        Erdos249257.SeamMiddleProducerTailEscapeExceptNegThree) :
+    (1 / 2 : ℝ) ∈ Erdos249257.mersenneAchievementSet := by
+  rcases h with hterminal | hmiddle
+  · rcases hterminal with ⟨S⟩
+    exact
+      Erdos249257.HalfCarryReachability.half_mem_mersenneAchievementSet_of_terminalScaledVanishing
+        S
+  · exact
+      Erdos249257.half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree
+        hmiddle
 """
 
 
@@ -65,30 +92,68 @@ def retrieved_declarations(packet: dict[str, Any]) -> set[str]:
 
 
 def dogfood_packet(query: str) -> dict[str, Any]:
-    ranked_search = query_corpus.search_packet(
-        query, query_corpus.MAX_SEMANTIC_CELLS
+    task_specs = (
+        ("transport_supply_alternatives", query, REQUIRED_DECLARATIONS),
+        ("half_membership_alternatives", HALF_QUERY, HALF_REQUIRED_DECLARATIONS),
     )
-    ranked_declarations = {
-        query_corpus.semantic_result_handle(result)
-        for result in ranked_search["results"]
-        if result["kind"] == "declaration"
-    }
-    semantic_slice = query_corpus.semantic_slice_packet(query, 4)
-    recovered = retrieved_declarations(semantic_slice)
-    missing = sorted(REQUIRED_DECLARATIONS - recovered)
-    if missing:
+    tasks = []
+    all_required: set[str] = set()
+    all_recovered: set[str] = set()
+    all_ranked: set[str] = set()
+    missing_any: set[str] = set()
+    for task_id, task_query, required in task_specs:
+        ranked_search = query_corpus.search_packet(
+            task_query, query_corpus.MAX_SEMANTIC_CELLS
+        )
+        ranked_declarations = {
+            query_corpus.semantic_result_handle(result)
+            for result in ranked_search["results"]
+            if result["kind"] == "declaration"
+        }
+        semantic_slice = query_corpus.semantic_slice_packet(task_query, 4)
+        recovered = retrieved_declarations(semantic_slice)
+        synthesized_consumers = {
+            row["name"]: row["signature"]
+            for row in semantic_slice["operator_synthesis"].get(
+                "checked_consumer_signatures", []
+            )
+        }
+        missing = sorted(
+            required - recovered - set(synthesized_consumers)
+        )
+        tasks.append(
+            {
+                "id": task_id,
+                "query": task_query,
+                "semantic_slice_id": semantic_slice.get("slice_id"),
+                "semantic_operator": semantic_slice[
+                    "query_interpretation"
+                ]["operator"]["id"],
+                "required_declarations": sorted(required),
+                "retrieved_declarations": sorted(recovered),
+                "synthesized_consumer_signatures": synthesized_consumers,
+                "ranked_search_recovered_required_declarations": sorted(
+                    required & ranked_declarations
+                ),
+                "missing_required_declarations": missing,
+                "semantic_expansion_gain": (
+                    len(required & (recovered | set(synthesized_consumers)))
+                    - len(required & ranked_declarations)
+                ),
+            }
+        )
+        all_required.update(required)
+        all_recovered.update(recovered)
+        all_ranked.update(ranked_declarations)
+        missing_any.update(missing)
+    if missing_any:
         return {
             "kind": "semantic_proof_dogfood",
             "schema_version": DOGFOOD_SCHEMA,
-            "query": query,
+            "proof_tasks": tasks,
             "passed": False,
             "stage": "semantic_retrieval",
-            "retrieved_declarations": sorted(recovered),
-            "ranked_search_recovered_required_declarations": sorted(
-                REQUIRED_DECLARATIONS & ranked_declarations
-            ),
-            "missing_required_declarations": missing,
-            "semantic_slice_id": semantic_slice.get("slice_id"),
+            "missing_required_declarations": sorted(missing_any),
         }
 
     started = time.monotonic()
@@ -109,21 +174,16 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     return {
         "kind": "semantic_proof_dogfood",
         "schema_version": DOGFOOD_SCHEMA,
-        "query": query,
+        "proof_tasks": tasks,
         "passed": completed.returncode == 0,
         "stage": "kernel_validation",
-        "semantic_slice_id": semantic_slice["slice_id"],
-        "semantic_operator": semantic_slice["query_interpretation"]["operator"][
-            "id"
-        ],
-        "retrieved_declarations": sorted(recovered),
-        "required_declarations": sorted(REQUIRED_DECLARATIONS),
+        "retrieved_declarations": sorted(all_recovered),
+        "required_declarations": sorted(all_required),
         "ranked_search_recovered_required_declarations": sorted(
-            REQUIRED_DECLARATIONS & ranked_declarations
+            all_required & all_ranked
         ),
-        "semantic_expansion_gain": (
-            len(REQUIRED_DECLARATIONS & recovered)
-            - len(REQUIRED_DECLARATIONS & ranked_declarations)
+        "semantic_expansion_gain": sum(
+            task["semantic_expansion_gain"] for task in tasks
         ),
         "scratch_theorem_sha256": hashlib.sha256(
             SCRATCH_THEOREM.encode("utf-8")
@@ -150,7 +210,7 @@ def render_card(packet: dict[str, Any]) -> str:
     return (
         f"semantic proof dogfood {packet['schema_version']} "
         f"| {'PASS' if packet['passed'] else 'FAIL'} "
-        f"| operator={packet['semantic_operator']} "
+        f"| tasks={len(packet['proof_tasks'])} "
         f"| declarations={len(packet['required_declarations'])} "
         f"| lean_exit={packet['lean_exit_code']} "
         f"| elapsed={packet['elapsed_seconds']}s"

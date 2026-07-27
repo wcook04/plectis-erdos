@@ -18,7 +18,12 @@ python3 scripts/query_corpus.py --ask "<question>"
 `erdos249257-semantic-slice/1` packet. The latter is the reasoning interface.
 It includes the interpreted question operator, semantic cells, a
 query-relative witness graph, explicit rejected over-interpretations, and
-typed omissions.
+typed omissions. It also returns an operator synthesis. This final object
+relates the cells without changing their authority: a support synthesis
+separates checked consumer signatures from unproved requirements, an analogy
+synthesis records shared claim and open handles while declining to infer a
+formal bridge, and a frontier or falsification synthesis preserves the exact
+open records and claim ceilings.
 
 ## Authority planes
 
@@ -103,12 +108,13 @@ claim, open proposition, and reading route. It also expands every typed claim,
 open, and route packet, checks all vocabulary hints, and asks one natural
 language question for each mathematical programme.
 
-The proof dogfood query recovers two conditional proof sockets and asks Lean to
-check a new disjunctive corollary. The corollary states that either of two
-unproved supply hypotheses would imply irrationality. It proves neither
-supply hypothesis and makes no progress on the open producer problem. This
-test measures premise recovery and formal composition, not a solution of
-Erdős problem #249.
+The proof dogfood runs two tasks. The first recovers two conditional #249 proof
+sockets and asks Lean to check a new disjunctive irrationality corollary. The
+second recovers two sufficient #257 half-membership consumers and checks their
+disjunctive composition. The corollaries prove none of their antecedents. In
+particular, they make no progress on the unbounded #249 producer or the open
+#257 half-membership question. These tests measure premise recovery and formal
+composition, not solutions of the Erdős problems.
 
 ## Limits
 

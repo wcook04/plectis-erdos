@@ -38,7 +38,14 @@ SEMANTIC_QUERY_OPERATORS = (
     {
         "id": "support",
         "intent": "Find a jointly useful premise or strategy support set.",
-        "cues": ("need to prove", "premise", "support", "approach"),
+        "cues": (
+            "need to prove",
+            "premise",
+            "support",
+            "approach",
+            "proof socket",
+            "socket",
+        ),
     },
     {
         "id": "frontier",
@@ -850,7 +857,37 @@ def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, An
 
 def paper_label_packet(label: str) -> dict[str, Any]:
     if label not in paper_label_index():
-        raise ValueError(f"unknown paper label: {label}")
+        claims = load("docs/claims.json")
+        attached_claims = [
+            compact_claim(claim)
+            for claim in claims["claims"]
+            if claim.get("paper_label") == label
+        ]
+        if not attached_claims:
+            raise ValueError(f"unknown paper label: {label}")
+        return {
+            "kind": "paper_label",
+            "authority_posture": (
+                "registered_claim_label_with_authored_source_unavailable"
+            ),
+            "canonical_handle": label,
+            "paper": paper_coordinate(label, paper_label_index()),
+            "attached_claims": attached_claims,
+            "attached_open_propositions": [],
+            "source_links": [],
+            "availability": "authored_source_unavailable_in_worktree",
+            "proof_authority": "Lean source checked by the pinned Lean kernel",
+            "follow": {
+                "claim": (
+                    "python3 scripts/query_corpus.py --claim "
+                    "<attached_claim_id>"
+                ),
+                "artifact": (
+                    "python3 scripts/query_corpus.py --artifact "
+                    "<registered_paper_path>"
+                ),
+            },
+        }
     return paper_anchor_packet(label, kind="paper_label")
 
 
@@ -1446,6 +1483,8 @@ SEARCH_TERM_ALIASES = {
     "fail": "obstruction",
     "failed": "obstruction",
     "failure": "obstruction",
+    "member": "mem",
+    "membership": "mem",
     "open": "resolution_status",
     "prove": "resolution_status",
     "proved": "resolution_status",
@@ -1464,6 +1503,7 @@ SEARCH_TERM_ALIASES = {
 def search_terms(value: str) -> set[str]:
     """Return stable lexical terms for bounded natural-language fallback."""
     terms: set[str] = set()
+    value = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", value)
     folded = "".join(
         character
         for character in unicodedata.normalize("NFKD", value.casefold())
@@ -1570,7 +1610,17 @@ def semantic_query_operator(query: str) -> dict[str, Any]:
         operator_id = "falsify"
     elif any(cue in query_text for cue in ("analog", "analogy", "compare", "transfer")):
         operator_id = "analogy"
-    elif any(cue in query_text for cue in ("premise", "need to prove", "support", "approach")):
+    elif any(
+        cue in query_text
+        for cue in (
+            "premise",
+            "need to prove",
+            "support",
+            "approach",
+            "proof socket",
+            "socket",
+        )
+    ):
         operator_id = "support"
     elif any(cue in query_text for cue in ("why", "depends on", "builds on", "trace")):
         operator_id = "trace"
@@ -2140,6 +2190,42 @@ def semantic_result_handle(result: dict[str, Any]) -> str:
     )
 
 
+def claim_formal_witnesses(claim: dict[str, Any]) -> list[dict[str, Any]]:
+    """Resolve authored claim handles to exact atlas signatures and source lines."""
+    atlas = load("docs/declaration_atlas.json")
+    declarations = {
+        (row["name"], row["module"], row["line"]): row
+        for row in atlas["declarations"]
+    }
+    claims = load("docs/claims.json")
+    identity = formal_source_identity(claims)
+    repository = identity["repository"].rstrip("/")
+    source_ref = identity["ref"]
+    witnesses = []
+    for handle in claim.get("declarations", []):
+        key = (handle["name"], handle["module"], handle["line"])
+        declaration = declarations.get(key)
+        if declaration is None:
+            continue
+        witnesses.append(
+            {
+                "name": declaration["name"],
+                "declaration_kind": declaration["kind"],
+                "signature": declaration.get("signature"),
+                "source_ref": (
+                    f"{declaration['module']}:{declaration['line']}"
+                ),
+                "source_url": (
+                    f"{repository}/blob/{source_ref}/{declaration['module']}"
+                    f"#L{declaration['line']}"
+                ),
+                "docstring": declaration.get("docstring"),
+                "lean_source_identity": dict(identity),
+            }
+        )
+    return witnesses
+
+
 def semantic_cell(
     query: str, result: dict[str, Any], selection_reason: str
 ) -> dict[str, Any]:
@@ -2198,6 +2284,7 @@ def semantic_cell(
         claim = packet["claim"]
         content = {
             "claim_record": claim,
+            "formal_witnesses": claim_formal_witnesses(claim),
             "argument_neighbourhood": packet["argument_neighbourhood"],
             "remaining_open_propositions": packet[
                 "remaining_open_propositions"
@@ -2367,6 +2454,219 @@ def semantic_cell(
     }
 
 
+def operator_synthesis(
+    operator_id: str, cells: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Assemble operator-specific relations without upgrading their authority."""
+    if operator_id == "support":
+        formal_consumers = []
+        unproved_requirements = []
+        for cell in cells:
+            if cell["kind"] == "claim":
+                formal_consumers.extend(cell["content"]["formal_witnesses"])
+                unproved_requirements.extend(
+                    cell["content"]["remaining_open_propositions"]
+                )
+            elif cell["kind"] == "declaration":
+                formal_consumers.append(cell["content"]["formal_witness"])
+            elif cell["kind"] == "reading_route":
+                programme = cell["content"].get("programme")
+                if programme:
+                    unproved_requirements.extend(
+                        programme["remaining_open_propositions"]
+                    )
+        return {
+            "kind": "support_synthesis",
+            "checked_consumer_signatures": list(
+                {
+                    row["name"]: row
+                    for row in formal_consumers
+                    if row.get("name")
+                }.values()
+            ),
+            "unproved_requirements": list(
+                {
+                    row["id"]: row
+                    for row in unproved_requirements
+                    if row.get("id")
+                }.values()
+            ),
+            "sufficiency_posture": (
+                "Only an emitted theorem signature can certify that its named "
+                "hypothesis implies its conclusion; relevance alone is not "
+                "joint sufficiency."
+            ),
+        }
+    if operator_id == "analogy":
+        subjects: dict[str, dict[str, Any]] = {}
+        for side in ("left", "right"):
+            side_cells = [
+                cell
+                for cell in cells
+                if cell["selection_reason"] == f"analogy_{side}_subject"
+            ]
+            claim_ids: set[str] = set()
+            open_ids: set[str] = set()
+            ceilings = []
+            for cell in side_cells:
+                if cell["kind"] == "reading_route":
+                    programme = cell["content"].get("programme")
+                    if programme:
+                        claim_ids.update(
+                            row["id"] for row in programme["core_claims"]
+                        )
+                        open_ids.update(
+                            row["id"]
+                            for row in programme[
+                                "remaining_open_propositions"
+                            ]
+                        )
+                        ceilings.append(programme["claim_ceiling"])
+                elif cell["kind"] == "claim":
+                    claim_ids.add(cell["handle"])
+                    open_ids.update(
+                        row["id"]
+                        for row in cell["content"][
+                            "remaining_open_propositions"
+                        ]
+                    )
+            subjects[side] = {
+                "cell_ids": [cell["cell_id"] for cell in side_cells],
+                "claim_ids": sorted(claim_ids),
+                "open_proposition_ids": sorted(open_ids),
+                "claim_ceilings": ceilings,
+            }
+        left_claims = set(subjects["left"]["claim_ids"])
+        right_claims = set(subjects["right"]["claim_ids"])
+        left_opens = set(subjects["left"]["open_proposition_ids"])
+        right_opens = set(subjects["right"]["open_proposition_ids"])
+        return {
+            "kind": "analogy_synthesis",
+            "subjects": subjects,
+            "shared_claim_ids": sorted(left_claims & right_claims),
+            "shared_open_proposition_ids": sorted(left_opens & right_opens),
+            "formal_bridge_status": "not_inferred",
+            "formal_bridge_requirement": (
+                "A transported conclusion requires an emitted Lean theorem "
+                "whose signature connects the two subjects."
+            ),
+        }
+    if operator_id == "frontier":
+        open_records = []
+        advances = []
+        for cell in cells:
+            if cell["kind"] == "open_proposition":
+                open_records.append(cell["content"]["open_record"])
+                advances.extend(cell["content"]["nearest_advances"])
+            elif cell["kind"] == "reading_route":
+                programme = cell["content"].get("programme")
+                if programme:
+                    open_records.extend(
+                        programme["remaining_open_propositions"]
+                    )
+            elif cell["kind"] == "claim":
+                open_records.extend(
+                    cell["content"]["remaining_open_propositions"]
+                )
+        return {
+            "kind": "frontier_synthesis",
+            "exact_open_records": list(
+                {
+                    row["id"]: row for row in open_records if row.get("id")
+                }.values()
+            ),
+            "nearest_advances": advances,
+            "boundary": (
+                "Every emitted open record remains open; narrowing and "
+                "re-expression operations do not discharge it."
+            ),
+        }
+    if operator_id == "falsify":
+        verdicts = []
+        claim_ceilings = []
+        open_requirements = []
+        for cell in cells:
+            if cell["kind"] == "declaration":
+                digest = cell["content"]["authored_digest"]
+                if digest.get("text"):
+                    verdicts.append(
+                        {
+                            "declaration": cell["handle"],
+                            "authored_digest": digest,
+                            "formal_witness": cell["content"][
+                                "formal_witness"
+                            ],
+                        }
+                    )
+            elif cell["kind"] == "claim":
+                open_requirements.extend(
+                    cell["content"]["remaining_open_propositions"]
+                )
+                claim_ceilings.extend(
+                    row["claim_ceiling"]
+                    for row in cell["content"]["programme_contexts"]
+                )
+            elif cell["kind"] == "reading_route":
+                programme = cell["content"].get("programme")
+                if programme:
+                    claim_ceilings.append(programme["claim_ceiling"])
+                    open_requirements.extend(
+                        programme["remaining_open_propositions"]
+                    )
+        return {
+            "kind": "falsification_synthesis",
+            "authored_verdicts": verdicts,
+            "claim_ceilings": list(dict.fromkeys(claim_ceilings)),
+            "open_requirements": list(
+                {
+                    row["id"]: row
+                    for row in open_requirements
+                    if row.get("id")
+                }.values()
+            ),
+            "boundary": (
+                "A measured negative verdict is scoped to its stated fixture "
+                "or probe; an open producer blocks promotion to a solved claim."
+            ),
+        }
+    if operator_id == "trace":
+        argument_edges = []
+        for cell in cells:
+            if cell["kind"] != "claim":
+                continue
+            neighbourhood = cell["content"]["argument_neighbourhood"]
+            argument_edges.extend(neighbourhood["incoming"])
+            argument_edges.extend(neighbourhood["outgoing"])
+        return {
+            "kind": "trace_synthesis",
+            "argument_edges": argument_edges,
+            "boundary": (
+                "Authored argument relations explain dependency posture; "
+                "formal source witnesses remain proof authority."
+            ),
+        }
+    if operator_id == "digest":
+        return {
+            "kind": "digest_synthesis",
+            "ordered_cell_ids": [cell["cell_id"] for cell in cells],
+            "boundedness": (
+                "The digest is an ordered witness slice, not a complete "
+                "summary of every declaration matching the question."
+            ),
+        }
+    return {
+        "kind": "location_synthesis",
+        "exact_handles": [cell["cell_id"] for cell in cells],
+        "source_witnesses": [
+            edge
+            for cell in cells
+            for edge in cell["witness_edges"]
+            if edge["authority"]
+            in ("kernel", "digestion_to_kernel_source")
+        ],
+    }
+
+
 def semantic_slice_rejections(operator_id: str) -> list[str]:
     common = [
         "A navigation match is not evidence that a theorem proves the query.",
@@ -2416,6 +2716,61 @@ def analogy_subject_queries(query: str) -> list[str]:
     return [part.strip() for part in parts if part.strip()] if len(parts) == 2 else []
 
 
+def support_alternative_queries(query: str) -> list[str]:
+    """Split `either X or Y proves Z` into two premise-selection questions."""
+    match = re.search(
+        r"\beither\s+(.+?)\s+or\s+(.+?)\s+"
+        r"(?:prove|proves|imply|implies|establish|establishes)\s+(.+)",
+        query,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+    left, right, conclusion = (part.strip() for part in match.groups())
+    return [f"{left} {conclusion}", f"{right} {conclusion}"]
+
+
+def best_reading_route_result(query: str) -> dict[str, Any] | None:
+    """Rank routes as a handle class so declaration volume cannot erase them."""
+    claims = load("docs/claims.json")
+    ranked = []
+    for route in all_entrypoints(claims):
+        haystack = " ".join(
+            str(value)
+            for value in (
+                route.get("title"),
+                route.get("intent"),
+                route.get("mathematical_focus"),
+                route.get("claim_ceiling"),
+                *route.get("discovery_terms", []),
+                *route.get("core_claim_ids", []),
+                *route.get("remaining_open_proposition_ids", []),
+            )
+            if value
+        )
+        ranks = [search_rank(query, route["id"], haystack)]
+        ranks.extend(
+            search_rank(query, term, haystack)
+            for term in route.get("discovery_terms", [])
+        )
+        rank = min((value for value in ranks if value is not None), default=None)
+        if rank is not None:
+            ranked.append((rank, route["id"], route))
+    if not ranked:
+        return None
+    _, _, route = min(ranked, key=lambda row: (row[0], row[1]))
+    return {
+        "kind": "reading_route",
+        "id": route["id"],
+        "route_kind": route.get("route_kind", "reading_route"),
+        "title": route.get("title"),
+        "intent": route["intent"],
+        "problem_target_claim_ids": route.get(
+            "problem_target_claim_ids", []
+        ),
+    }
+
+
 def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     """Compile a question into a bounded, witness-carrying semantic subgraph."""
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
@@ -2430,8 +2785,45 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     analogy_subjects = (
         analogy_subject_queries(query) if operator_id == "analogy" else []
     )
+    support_alternatives = (
+        support_alternative_queries(query) if operator_id == "support" else []
+    )
     selected_with_reasons: list[tuple[dict[str, Any], str]]
-    if len(analogy_subjects) == 2:
+    if len(support_alternatives) == 2:
+        interpretation = {
+            **interpretation,
+            "support_alternative_queries": support_alternatives,
+        }
+        selected_with_reasons = []
+        for side, subject in zip(("left", "right"), support_alternatives):
+            subject_results = search_packet(subject, max(8, limit))["results"]
+            declaration = next(
+                (
+                    result
+                    for result in subject_results
+                    if result["kind"] == "declaration"
+                ),
+                None,
+            )
+            claim = next(
+                (
+                    result
+                    for result in subject_results
+                    if result["kind"] == "claim"
+                ),
+                None,
+            )
+            candidates = [
+                result for result in (declaration, claim) if result is not None
+            ]
+            selected_with_reasons.extend(
+                (result, f"support_alternative_{side}")
+                for result in candidates[:2]
+            )
+        selected_with_reasons = selected_with_reasons[
+            : min(limit, MAX_SEMANTIC_CELLS)
+        ]
+    elif len(analogy_subjects) == 2:
         interpretation = {
             **interpretation,
             "analogy_subject_queries": analogy_subjects,
@@ -2439,14 +2831,7 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         selected_with_reasons = []
         for side, subject in zip(("left", "right"), analogy_subjects):
             subject_results = search_packet(subject, max(8, limit))["results"]
-            route = next(
-                (
-                    result
-                    for result in subject_results
-                    if result["kind"] == "reading_route"
-                ),
-                None,
-            )
+            route = best_reading_route_result(subject)
             candidates = [
                 *([route] if route else []),
                 *[
@@ -2522,6 +2907,7 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
             "query": query,
             "query_interpretation": interpretation,
             "semantic_cells": [],
+            "operator_synthesis": operator_synthesis(operator_id, []),
             "minimal_witness_subgraph": {"nodes": ["query"], "edges": []},
             "rejected_overinterpretations": semantic_slice_rejections(operator_id),
             "omission_receipt": {
@@ -2578,6 +2964,7 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         "query": query,
         "query_interpretation": interpretation,
         "semantic_cells": cells,
+        "operator_synthesis": operator_synthesis(operator_id, cells),
         "minimal_witness_subgraph": {
             "nodes": witness_nodes,
             "edges": witness_edges,
@@ -2805,8 +3192,11 @@ def render_card(packet: dict[str, Any]) -> str:
     if kind == "paper_label":
         paper = packet["paper"]
         claim_ids = ",".join(row["id"] for row in packet["attached_claims"]) or "none"
+        source = paper.get("source_ref") or paper.get(
+            "availability", "unavailable"
+        )
         return (
-            f"paper {paper['label']} | {paper['source_ref']} | rendered={paper['rendered']} "
+            f"paper {paper['label']} | {source} | rendered={paper.get('rendered')} "
             f"| claims={claim_ids}"
         )
     if kind == "paper_anchor":
