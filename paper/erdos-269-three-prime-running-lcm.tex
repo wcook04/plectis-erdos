@@ -6,6 +6,7 @@
 % `tectonic erdos-269-three-prime-running-lcm.tex` or `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+\usepackage{longtable}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
 \renewcommand{\commit}{234ced3455a73357c33113e8a285e1a3b3d411fb}
@@ -226,48 +227,52 @@ about the value of the sum itself.
 
 \statusboundary
 
-The middle column of the table below separates categories that are easy to
-conflate, and the reader who wants only the boundary can read that column
-alone.  \emph{Proved here} means that this note gives a proof and links the
-corresponding checked Lean declaration; a qualifier attached to it
-(\emph{finite}, \emph{conditional core}) names the restriction under which the
-statement was proved.  \emph{Exact finite computation} is evidence and not a
-theorem: the dyadic-window scan of Section~\ref{sec:escape} settles
-$106{,}666$ instances and asserts nothing beyond them.  \emph{Not proved}
-marks a statement that this note does not establish, and \emph{Open} marks one
-for which no proof is known.
+The table records two independent facts.  The \emph{authority} column says
+whether the statement is supported by an argument in this paper together with
+a linked Lean declaration, by a direct computation, or by no result in this
+paper.  The last column states its logical reach and the nearest boundary.
+Thus a conditional implication may be checked in Lean while its hypothesis
+remains open, and the dyadic-window scan is a direct computation over
+$106{,}666$ instances rather than an unbounded theorem.
 
-\begin{table}[t]
-\centering
-\small
-\begin{tabular}{@{}
+{\small
+\begin{longtable}{@{}
   >{\raggedright\arraybackslash}p{0.34\linewidth}
   >{\raggedright\arraybackslash}p{0.18\linewidth}
   >{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+\caption{Authority and logical reach of the statements discussed in this note.}\\
 \toprule
-Statement & Status & Treatment here \\
+Statement & Authority & Logical reach and boundary \\
 \midrule
-Irrationality in any three-prime case & Open & Not proved. \\
-$\Lprefix(x)=\hgt(x)$ & Proved here & Theorem~\ref{res:lcm}; needs the primes distinct; classical in the unrestricted case. \\
-$\hgt(x)\le x^{3}$ & Proved here & Proposition~\ref{res:cube}. \\
-Constancy on logarithmic cells & Proved here & Theorem~\ref{res:cell}. \\
-Single-coordinate jump ratios & Proved here & Theorem~\ref{res:jump}. \\
-Exactly $3n+1$ jump values & Proved here & Theorem~\ref{res:count}. \\
-Height-fibre normal form & Proved here; finite & Theorem~\ref{res:fibre}. \\
-Infinite limit of that expansion & Not proved & Section~\ref{sec:fibre}. \\
-Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Proved here & Theorem~\ref{res:shell}. \\
-$2\times2$ kernel restriction has rank two at $\{2,3,5\}$ & Proved here & Determinant $-1/15$; Theorem~\ref{res:rank}. \\
-Dyadic block radix lies in $\{2,6,10,30\}$ & Proved here & Theorem~\ref{res:dyadic-alphabet}. \\
-Canonical least-positive-residue arithmetic & Proved here & Theorem~\ref{res:consumer}. \\
-Carry contradiction assuming~\eqref{eq:escape} & Proved here & Theorem~\ref{res:windowconsumer}; the implication only. \\
-Smooth-factor absorption and carry cancellation & Proved here; conditional core & Theorem~\ref{res:denominator-reduction}; divisibility of the actual carry remains unproved. \\
-Dyadic-window scan for $B\le1000$ & Exact finite computation & $106{,}666$ pairs; no failures; not a theorem. \\
-Bridge from the actual summands to $(b_n,m_n,K)$ & Not proved & Section~\ref{sec:open}. \\
-Local-window escape for the actual $\{2,3,5\}$ word & Open & Problem~\ref{prob:producer}. \\
+\endfirsthead
+\toprule
+Statement & Authority & Logical reach and boundary \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{\small\itshape Continued on the next page.}\\
+\endfoot
 \bottomrule
-\end{tabular}
-\caption{Status of the statements discussed in this note.}
-\end{table}
+\endlastfoot
+Irrationality in any three-prime case & None & Open. \\
+$\Lprefix(x)=\hgt(x)$ & Paper; Lean source & Unconditional for distinct primes; Theorem~\ref{res:lcm}.  The unrestricted identity is classical. \\
+$\hgt(x)\le x^{3}$ & Paper; Lean source & Unconditional; Proposition~\ref{res:cube}. \\
+Constancy on logarithmic cells & Paper; Lean source & Unconditional; Theorem~\ref{res:cell}. \\
+Single-coordinate jump ratios & Paper; Lean source & Unconditional; Theorem~\ref{res:jump}. \\
+Exactly $3n+1$ jump values & Paper; Lean source & Unconditional; Theorem~\ref{res:count}. \\
+Height-fibre normal form & Paper; Lean source & Exact finite identity; Theorem~\ref{res:fibre}. \\
+Infinite limit of that expansion & None in this paper & Not proved here; Section~\ref{sec:fibre}. \\
+Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Paper; Lean source & Unconditional; Theorem~\ref{res:shell}. \\
+$2\times2$ kernel restriction has rank two at $\{2,3,5\}$ & Paper; Lean source & Unconditional local obstruction; determinant $-1/15$ in Theorem~\ref{res:rank}. \\
+Dyadic block radix lies in $\{2,6,10,30\}$ & Paper; Lean source & Unconditional; Theorem~\ref{res:dyadic-alphabet}. \\
+Canonical least-positive-residue arithmetic & Paper; Lean source & Unconditional finite lemma; Theorem~\ref{res:consumer}. \\
+Carry contradiction assuming~\eqref{eq:escape} & Paper; Lean source & Conditional implication only; Theorem~\ref{res:windowconsumer}. \\
+Smooth-factor absorption and carry cancellation & Paper; Lean source & Conditional core; Theorem~\ref{res:denominator-reduction}.  Divisibility of the actual carry remains unproved. \\
+Dyadic-window scan for $B\le1000$ & Direct computation & $106{,}666$ pairs with no failures; bounded evidence, not a theorem. \\
+Bridge from the actual summands to $(b_n,m_n,K)$ & None in this paper & Not proved here; Section~\ref{sec:open}. \\
+Local-window escape for the actual $\{2,3,5\}$ word & None & Open; Problem~\ref{prob:producer}. \\
+\end{longtable}
+}
 
 \subsection*{Structure}
 Section~\ref{sec:lcm} identifies the running value.  Sections~\ref{sec:cells}
