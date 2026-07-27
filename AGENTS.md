@@ -96,6 +96,8 @@ handle:
   and navigation provenance separate; support and trace cells use the
   source-joined elaborated dependency index when it is fresh, and the contract
   and evaluation levels are documented in `docs/SEMANTIC_COMPILER.md`;
+  relational trace questions with explicit `from ... to ...` endpoints resolve
+  each endpoint independently before searching for an exact formal path;
 - `--claim <id>`, `--open <remaining_open.id>`, or `--route <id>` for the
   mathematical story and exact frontier;
 - programme routes such as `erdos249_diagonal_arithmetic`,

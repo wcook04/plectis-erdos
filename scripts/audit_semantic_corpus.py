@@ -301,6 +301,30 @@ def audit_packet() -> dict[str, Any]:
                 "irrational_totientSeries_of_sharpCurvatureSupply",
                 "expected exact three-hop tail-period path missing",
             )
+        natural_trace = query_corpus.semantic_slice_packet(
+            "trace the formal chain from sharp curvature irrationality "
+            "to denominator divisibility",
+            20,
+        )
+        natural_trace_path = natural_trace["operator_synthesis"].get(
+            "formal_dependency_path", {}
+        )
+        if (
+            natural_trace_path.get("hop_count") != 3
+            or {
+                cell["handle"]
+                for cell in natural_trace["semantic_cells"]
+            }
+            != {
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+                "tail_diff_int_of_den_dvd",
+            }
+        ):
+            error(
+                "lean_dependency_natural_trace",
+                "sharp curvature irrationality to denominator divisibility",
+                "ordinary-language endpoints did not recover exact path",
+            )
 
     packet_specs: tuple[
         tuple[str, list[dict[str, Any]], Callable[[dict[str, Any]], dict[str, Any]]],

@@ -339,6 +339,62 @@ TASKS: tuple[dict[str, Any], ...] = (
             ),
         },
     },
+    {
+        "id": "heldout_natural_language_dependency_path",
+        "split": "held_out",
+        "query": (
+            "trace the formal chain from sharp curvature irrationality "
+            "to denominator divisibility"
+        ),
+        "operator": "trace",
+        "required_cells": (
+            (
+                "declaration",
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+            ),
+            ("declaration", "tail_diff_int_of_den_dvd"),
+        ),
+        "required_text": (
+            "trace_source_endpoint",
+            "trace_target_endpoint",
+            "endpoint_resolution_receipt",
+            "eventual_period_of_not_irrational",
+            "shortest_directed_path_in_the_source_resolved_value_reference",
+        ),
+        "required_edges": (
+            (
+                "declaration:Erdos249257.TotientTailPeriodKiller.irrational_totientSeries_of_sharpCurvatureSupply",
+                "uses_in_elaborated_value",
+                "declaration:Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness",
+            ),
+            (
+                "declaration:Erdos249257.TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness",
+                "uses_in_elaborated_value",
+                "declaration:Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational",
+            ),
+            (
+                "declaration:Erdos249257.TotientTailPeriodKiller.eventual_period_of_not_irrational",
+                "uses_in_elaborated_value",
+                "declaration:Erdos249257.TotientTailPeriodKiller.tail_diff_int_of_den_dvd",
+            ),
+        ),
+        "required_dependency_path": {
+            "source": (
+                "Erdos249257.TotientTailPeriodKiller."
+                "irrational_totientSeries_of_sharpCurvatureSupply"
+            ),
+            "target": (
+                "Erdos249257.TotientTailPeriodKiller."
+                "tail_diff_int_of_den_dvd"
+            ),
+            "node_names": (
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+                "rational_totient_series_forces_lcm_cone_flatness",
+                "eventual_period_of_not_irrational",
+                "tail_diff_int_of_den_dvd",
+            ),
+        },
+    },
 )
 
 

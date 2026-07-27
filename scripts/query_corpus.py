@@ -2166,6 +2166,10 @@ SEARCH_TERM_ALIASES = {
     "cert": "certificate",
     "certified": "certificate",
     "certificate": "certificate",
+    "denominator": "den",
+    "divides": "dvd",
+    "divisibility": "dvd",
+    "divisible": "dvd",
     "fail": "obstruction",
     "failed": "obstruction",
     "failure": "obstruction",
@@ -3680,6 +3684,141 @@ def support_alternative_queries(query: str) -> list[str]:
     return [f"{left} {conclusion}", f"{right} {conclusion}"]
 
 
+def trace_endpoint_queries(query: str) -> list[str]:
+    """Split an explicitly relational trace question into two subjects."""
+    patterns = (
+        r"\bfrom\s+(.+?)\s+(?:to|through|into)\s+(.+?)\s*[?.!]*$",
+        (
+            r"^\s*(?:trace\s+)?(?:why\s+)?(?:does\s+)?(.+?)\s+"
+            r"(?:ultimately\s+)?(?:use|uses|depend(?:s)?\s+on|"
+            r"build(?:s)?\s+on)\s+(.+?)\s*[?.!]*$"
+        ),
+    )
+    for pattern in patterns:
+        match = re.search(pattern, query, flags=re.IGNORECASE)
+        if match is not None:
+            subjects = [part.strip() for part in match.groups()]
+            if all(subjects):
+                return subjects
+    return []
+
+
+def trace_dependency_resolution(
+    query: str, candidate_limit: int = 24
+) -> dict[str, Any]:
+    """Resolve two natural-language endpoints through exact Lean paths."""
+    subjects = trace_endpoint_queries(query)
+    if len(subjects) != 2:
+        return {"availability": "no_explicit_endpoint_pair"}
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+
+    def candidates(subject: str) -> list[dict[str, Any]]:
+        results = search_packet(subject, min(MAX_LIMIT, 40))["results"]
+        return [
+            result
+            for result in results
+            if result["kind"] == "declaration"
+            and result.get("declaration_kind") in theorem_kinds
+            and result.get("externally_addressable", True)
+        ][:candidate_limit]
+
+    source_candidates = candidates(subjects[0])
+    target_candidates = candidates(subjects[1])
+    tested_pair_count = 0
+    ranked_paths = []
+    for source_index, source in enumerate(source_candidates):
+        for target_index, target in enumerate(target_candidates):
+            tested_pair_count += 1
+            path = formal_dependency_path(
+                semantic_result_key(source),
+                semantic_result_key(target),
+                8,
+            )
+            if path["availability"] != "available" or not path["hop_count"]:
+                continue
+            ranked_paths.append(
+                (
+                    path["hop_count"],
+                    source_index + target_index,
+                    source_index,
+                    target_index,
+                    source,
+                    target,
+                    path,
+                )
+            )
+    if not ranked_paths:
+        return {
+            "availability": "no_path_between_bounded_candidates",
+            "endpoint_queries": subjects,
+            "source_candidate_count": len(source_candidates),
+            "target_candidate_count": len(target_candidates),
+            "tested_pair_count": tested_pair_count,
+            "source_candidate_handles": [
+                semantic_result_key(row)
+                for row in source_candidates[:8]
+            ],
+            "target_candidate_handles": [
+                semantic_result_key(row)
+                for row in target_candidates[:8]
+            ],
+            "authority_posture": (
+                "bounded_negative_navigation_result_not_global_dependency_"
+                "absence"
+            ),
+        }
+    (
+        _,
+        _,
+        source_index,
+        target_index,
+        source,
+        target,
+        path,
+    ) = min(ranked_paths, key=lambda row: row[:4])
+    return {
+        "availability": "available",
+        "endpoint_queries": subjects,
+        "source_result": source,
+        "target_result": target,
+        "formal_dependency_path": path,
+        "receipt": {
+            "source_candidate_count": len(source_candidates),
+            "target_candidate_count": len(target_candidates),
+            "tested_pair_count": tested_pair_count,
+            "path_bearing_pair_count": len(ranked_paths),
+            "selected_source_rank": source_index,
+            "selected_target_rank": target_index,
+            "selection_policy": (
+                "shortest_exact_path_then_combined_endpoint_rank_then_"
+                "source_rank_then_target_rank"
+            ),
+            "omitted_source_candidate_count": max(
+                0, len(source_candidates) - 8
+            ),
+            "omitted_target_candidate_count": max(
+                0, len(target_candidates) - 8
+            ),
+            "alternative_source_handles": [
+                semantic_result_key(row)
+                for row in source_candidates[:8]
+                if semantic_result_key(row)
+                != semantic_result_key(source)
+            ],
+            "alternative_target_handles": [
+                semantic_result_key(row)
+                for row in target_candidates[:8]
+                if semantic_result_key(row)
+                != semantic_result_key(target)
+            ],
+        },
+        "authority_posture": (
+            "lexical_endpoint_resolution_plus_exact_kernel_elaborated_path_"
+            "not_proof_that_the_selected_endpoints_match_user_intent"
+        ),
+    }
+
+
 def semantic_context_residual_terms(query: str) -> set[str]:
     """Return mathematical terms not already explained by a vocabulary route."""
     consumed: set[str] = set()
@@ -3819,8 +3958,52 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     support_alternatives = (
         support_alternative_queries(query) if operator_id == "support" else []
     )
+    trace_resolution = (
+        trace_dependency_resolution(query)
+        if operator_id == "trace"
+        else {"availability": "not_a_trace_query"}
+    )
+    if trace_resolution["availability"] not in (
+        "available",
+        "no_explicit_endpoint_pair",
+        "not_a_trace_query",
+    ):
+        interpretation = {
+            **interpretation,
+            "trace_endpoint_resolution": trace_resolution,
+        }
     selected_with_reasons: list[tuple[dict[str, Any], str]]
-    if len(support_alternatives) == 2:
+    if trace_resolution["availability"] == "available":
+        interpretation = {
+            **interpretation,
+            "trace_endpoint_resolution": {
+                "availability": "available",
+                "endpoint_queries": trace_resolution[
+                    "endpoint_queries"
+                ],
+                "resolved_source": semantic_result_key(
+                    trace_resolution["source_result"]
+                ),
+                "resolved_target": semantic_result_key(
+                    trace_resolution["target_result"]
+                ),
+                "receipt": trace_resolution["receipt"],
+                "authority_posture": trace_resolution[
+                    "authority_posture"
+                ],
+            },
+        }
+        selected_with_reasons = [
+            (
+                trace_resolution["source_result"],
+                "trace_source_endpoint",
+            ),
+            (
+                trace_resolution["target_result"],
+                "trace_target_endpoint",
+            ),
+        ][: min(limit, MAX_SEMANTIC_CELLS)]
+    elif len(support_alternatives) == 2:
         interpretation = {
             **interpretation,
             "support_alternative_queries": support_alternatives,
@@ -4031,9 +4214,26 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         for result in search["results"]
         if (result["kind"], semantic_result_key(result)) not in selected_keys
     ][:5]
-    witness_edges = [
+    witness_edges: list[dict[str, str]] = [
         edge for cell in cells for edge in cell["witness_edges"]
     ]
+    synthesis = operator_synthesis(operator_id, cells)
+    if trace_resolution["availability"] == "available":
+        formal_path = trace_resolution["formal_dependency_path"]
+        synthesis = {
+            **synthesis,
+            "endpoint_resolution_receipt": trace_resolution["receipt"],
+            "formal_dependency_path": formal_path,
+        }
+        witness_edges.extend(
+            {
+                "from": f"declaration:{edge['from']}",
+                "relation": "uses_in_elaborated_value",
+                "to": f"declaration:{edge['to']}",
+                "authority": "kernel_elaborated_environment",
+            }
+            for edge in formal_path["edges"]
+        )
     witness_nodes = list(
         dict.fromkeys(
             [
@@ -4062,7 +4262,7 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         "query": query,
         "query_interpretation": interpretation,
         "semantic_cells": cells,
-        "operator_synthesis": operator_synthesis(operator_id, cells),
+        "operator_synthesis": synthesis,
         "minimal_witness_subgraph": {
             "nodes": witness_nodes,
             "edges": witness_edges,
