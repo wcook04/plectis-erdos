@@ -110,6 +110,10 @@ handle:
   contribution-family index;
 - `--declaration <name>`, `--source <module.lean:line>`, or `--module <path_or_id>`
   for checked source;
+- `--proof-cone <declaration> --depth <1..8>` for a bounded,
+  theorem-prioritized cone of exact proof-term dependencies, or
+  `--dependency-path <source> <target> --depth <1..8>` for the shortest exact
+  directed path between two source-resolved declarations;
 - `--artifact <path_or_sha256>` for a registered paper, PDF, JSON owner, or
   content identity;
 - `--publication-artifact <id>` for a shipped manuscript's typed role,

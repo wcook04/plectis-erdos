@@ -129,14 +129,30 @@ It separates references in an elaborated declaration's type from references
 in its value or proof term, then joins public corpus constants back to exact
 atlas source coordinates. Corpus membership follows Lean's owning module
 rather than declaration namespace, so declarations intentionally living in
-top-level mathematical namespaces remain covered. The builder first runs the incremental
-`lake build Erdos249257` target so the loaded `.olean` environment is current
-with the source fingerprint. Query packets may compose two direct edges into a
-bounded two-hop theorem path, but do not call that a transitive proof
-explanation. Internal compiler/private references and public constants that
-cannot be source-joined are counted as omissions; atlas declarations absent
-from the loaded root or owned by a different loaded module are classified
-separately.
+top-level mathematical namespaces remain covered. The builder first runs the
+incremental `lake build Erdos249257` target so the loaded `.olean` environment
+is current with the source fingerprint.
+
+Two explicit drilldowns expose longer formal structure:
+
+```sh
+python3 scripts/query_corpus.py \
+  --proof-cone <declaration> --depth 4 --limit 20
+python3 scripts/query_corpus.py \
+  --dependency-path <source_declaration> <target_declaration> --depth 8
+```
+
+The proof cone follows value/proof-term references, prioritizes theorem-like
+nodes inside its byte-bounded selection, and reports exact reachable/emitted
+node and edge counts plus the first omitted handles. The dependency-path query
+returns the shortest directed path inside the source-resolved value-reference
+graph and exact source coordinates for every hop. These are compositions of
+kernel-extracted direct edges, not claims that every reference is a decisive
+premise or that the path is a causal mathematical explanation.
+
+Internal compiler/private references and public constants that cannot be
+source-joined are counted as omissions; atlas declarations absent from the
+loaded root or owned by a different loaded module are classified separately.
 
 Declaration-local source-use rows remain as a weaker, transparent projection.
 They identify theorem or lemma names occurring in a source span and exclude
@@ -164,7 +180,7 @@ claim, open proposition, and reading route. It also expands every typed claim,
 open, and route packet, checks all vocabulary hints, and asks one natural
 language question for each mathematical programme.
 
-The proof dogfood runs four tasks. The first recovers two conditional #249
+The proof dogfood runs five tasks. The first recovers two conditional #249
 proof sockets and asks Lean to check a new disjunctive irrationality
 corollary. The second recovers two sufficient #257 half-membership consumers
 and checks their disjunctive composition. The third begins from ordinary
@@ -173,10 +189,14 @@ module and exact non-integrality consumer, and checks that application. The
 fourth starts from a trace question, recovers two exact proof-term
 dependencies of the sharp-curvature irrationality consumer, and asks Lean to
 check a reconstructed proof using those intermediate theorems rather than the
-packaged consumer. The corollaries prove none of their antecedents. In
-particular, they make no progress on the unbounded #249 producer or the open
-#257 half-membership question. These tests measure premise recovery and formal
-composition, not solutions of the Erdős problems.
+packaged consumer. The fifth follows the exact three-hop path from that
+consumer through lcm-cone flatness and eventual tail periodicity to the
+denominator-divisibility theorem, reconstructs the cone-flatness bridge, and
+uses the reconstruction inside the curvature proof. The corollaries prove
+none of their antecedents. In particular, they make no progress on the
+unbounded #249 producer or the open #257 half-membership question. These tests
+measure premise recovery and formal composition, not solutions of the Erdős
+problems.
 
 ## Limits
 

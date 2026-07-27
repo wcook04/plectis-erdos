@@ -275,6 +275,32 @@ def audit_packet() -> dict[str, Any]:
                 "irrational_totientSeries_of_sharpCurvatureSupply",
                 "exact curvature consumer edge missing",
             )
+        curvature_tail_path = query_corpus.formal_dependency_path(
+            "Erdos249257.TotientTailPeriodKiller."
+            "irrational_totientSeries_of_sharpCurvatureSupply",
+            "Erdos249257.TotientTailPeriodKiller."
+            "tail_diff_int_of_den_dvd",
+            8,
+        )
+        if (
+            curvature_tail_path.get("availability") != "available"
+            or curvature_tail_path.get("hop_count") != 3
+            or [
+                row["name"]
+                for row in curvature_tail_path.get("nodes", [])
+            ]
+            != [
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+                "rational_totient_series_forces_lcm_cone_flatness",
+                "eventual_period_of_not_irrational",
+                "tail_diff_int_of_den_dvd",
+            ]
+        ):
+            error(
+                "lean_dependency_multihop_anchor",
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+                "expected exact three-hop tail-period path missing",
+            )
 
     packet_specs: tuple[
         tuple[str, list[dict[str, Any]], Callable[[dict[str, Any]], dict[str, Any]]],

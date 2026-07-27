@@ -312,6 +312,8 @@ TASKS: tuple[dict[str, Any], ...] = (
             "two_hop_theorem_paths",
             "curvature_notMem_int_of_sharpCurvatureCert",
             "rational_totient_series_forces_lcm_cone_flatness",
+            "--proof-cone",
+            "--dependency-path",
         ),
         "required_edges": (
             (
@@ -320,6 +322,22 @@ TASKS: tuple[dict[str, Any], ...] = (
                 "declaration:Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert",
             ),
         ),
+        "required_dependency_path": {
+            "source": (
+                "Erdos249257.TotientTailPeriodKiller."
+                "irrational_totientSeries_of_sharpCurvatureSupply"
+            ),
+            "target": (
+                "Erdos249257.TotientTailPeriodKiller."
+                "tail_diff_int_of_den_dvd"
+            ),
+            "node_names": (
+                "irrational_totientSeries_of_sharpCurvatureSupply",
+                "rational_totient_series_forces_lcm_cone_flatness",
+                "eventual_period_of_not_irrational",
+                "tail_diff_int_of_den_dvd",
+            ),
+        },
     },
 )
 
@@ -402,6 +420,25 @@ def evaluate_task(task: dict[str, Any]) -> dict[str, Any]:
     for edge in task.get("required_edges", ()):
         if edge not in edges:
             failures.append(f"missing witness edge {edge}")
+    dependency_path_hops = None
+    if "required_dependency_path" in task:
+        path_spec = task["required_dependency_path"]
+        dependency_path = query_corpus.formal_dependency_path(
+            path_spec["source"], path_spec["target"], 8
+        )
+        dependency_path_hops = dependency_path.get("hop_count")
+        actual_path_names = tuple(
+            row["name"] for row in dependency_path.get("nodes", [])
+        )
+        if (
+            dependency_path.get("availability") != "available"
+            or actual_path_names != path_spec["node_names"]
+        ):
+            failures.append(
+                "formal dependency path mismatch: "
+                f"{dependency_path.get('availability')} "
+                f"{actual_path_names}"
+            )
     if len(encoded) > query_corpus.OUTPUT_BUDGET_BYTES:
         failures.append(
             f"packet size {len(encoded)} exceeds {query_corpus.OUTPUT_BUDGET_BYTES}"
@@ -429,6 +466,7 @@ def evaluate_task(task: dict[str, Any]) -> dict[str, Any]:
         ),
         "cell_count": len(cells),
         "witness_edge_count": len(edges),
+        "formal_dependency_path_hops": dependency_path_hops,
         "packet_bytes": len(encoded),
         "failures": failures,
     }
