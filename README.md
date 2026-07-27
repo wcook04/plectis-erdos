@@ -153,7 +153,10 @@ reader-facing layers:
 - **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded
   formal results and explicit open frontiers for one problem at a time. New
   entries stay outside the reviewed claim registry until human mathematical
-  review establishes their intended meaning and public framing.
+  review establishes their intended meaning and public framing. The #249 and
+  #257 directories deliberately coexist with the historical root: they expose
+  the newly assimilated theorem producers without deleting, renaming, or
+  weakening the reviewed integration corpus.
 
 [`docs/SOURCE_MAP.md`](docs/SOURCE_MAP.md) gives the exact module order within
 each band. [`docs/WAVE_INDEX.md`](docs/WAVE_INDEX.md) gives the development
