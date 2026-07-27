@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:1f3be710a537f95ed303e4d60a1e7e73b7cec911f24a6eb21227935acfa62000",
+      "source_sha256": "sha256:e337c83d13d7f3faf78756a58e568c20348b1b561c8f1ecb422c97f28e747684",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 157,
@@ -984,8 +984,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:617fc7eb4e41280fff567481894d95d8d9108889ba3e68678b87f17d3df15323",
-      "pdf_byte_count": 425411,
+      "pdf_sha256": "sha256:00d5c3037249ef51c24bf5af51bc372cd485990db69a341257894654b73f45a6",
+      "pdf_byte_count": 425289,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
