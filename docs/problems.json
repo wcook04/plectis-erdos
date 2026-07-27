@@ -328,10 +328,10 @@
           "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
           "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
           "present": true,
-          "line_count": 121,
-          "declaration_count": 7,
-          "theorem_count": 4,
-          "content_digest": "sha256:d50f1a13f48e3bcf74e12c50b1056772abb16701897bea075dd8ae722b173f39"
+          "line_count": 648,
+          "declaration_count": 41,
+          "theorem_count": 28,
+          "content_digest": "sha256:21ad5930e03718ed931b2d05d94fc17b97171b017f6fbef869ca062807f686c2"
         }
       ],
       "note": {
