@@ -33,6 +33,11 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
 #print axioms ErdosProblems.Erdos251.prime0DisplayedPartialSumQ_eq_two_mul
+#print axioms ErdosProblems.Erdos251.exists_primeGap0_gt
+#print axioms ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne
+#print axioms ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch
+#print axioms ErdosProblems.Erdos251.primeGap0_not_eventually_periodic
+#print axioms ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
 #print axioms ErdosProblems.Erdos251.tailShift_integral_add
 #print axioms ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail
 #print axioms ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den

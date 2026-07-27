@@ -1,6 +1,8 @@
 import Mathlib.Data.Nat.Prime.Nth
 import Mathlib.Data.Nat.PrimeFin
 import Mathlib.Data.Nat.Factorization.Basic
+import Mathlib.Data.Nat.Prime.Factorial
+import Mathlib.Data.Nat.Periodic
 import Mathlib.Data.Rat.Lemmas
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Algebra.BigOperators.Ring.Finset
@@ -43,6 +45,51 @@ noncomputable def primeGap0 (n : ℕ) : ℕ :=
 @[simp] theorem primeGap0_one : primeGap0 1 = 2 := by
   simp [primeGap0, prime0, Nat.nth_prime_one_eq_three,
     Nat.nth_prime_two_eq_five]
+
+/-- The classical factorial construction gives arbitrarily long prime-free
+intervals, hence the actual consecutive-prime gaps are unbounded. -/
+theorem exists_primeGap0_gt (M : ℕ) :
+    ∃ n, M < primeGap0 n := by
+  let width := M + 2
+  let base := width.factorial
+  let primeCount := Nat.count Nat.Prime (base + 2)
+  have hbasePos : 0 < base := Nat.factorial_pos width
+  have hcountPos : 0 < primeCount := by
+    apply Nat.pos_of_ne_zero
+    exact Nat.count_ne_iff_exists.mpr
+      ⟨2, by simp [base, hbasePos], Nat.prime_two⟩
+  let n := primeCount - 1
+  have hnSucc : n + 1 = primeCount := by
+    exact Nat.sub_add_cancel hcountPos
+  have hprev : prime0 n < base + 2 := by
+    rw [prime0]
+    apply Nat.nth_lt_of_lt_count
+    change primeCount - 1 < primeCount
+    omega
+  have hnextPrime : Nat.Prime (prime0 (n + 1)) := by
+    rw [prime0]
+    exact Nat.nth_mem_of_infinite Nat.infinite_setOf_prime _
+  have hnextLower : base + 2 ≤ prime0 (n + 1) := by
+    rw [prime0, hnSucc]
+    exact Nat.le_nth_count Nat.infinite_setOf_prime (base + 2)
+  have hcomposite :
+      ∀ i, 2 ≤ i → i ≤ width → ¬ Nat.Prime (base + i) := by
+    intro i hiTwo hiWidth
+    apply Nat.not_prime_of_dvd_of_lt (m := i)
+    · simpa [base] using Nat.dvd_factorial (by omega) hiWidth
+    · exact hiTwo
+    · omega
+  have hnext : base + width < prime0 (n + 1) := by
+    by_contra h
+    have hnextUpper : prime0 (n + 1) ≤ base + width := by omega
+    let i := prime0 (n + 1) - base
+    have hiTwo : 2 ≤ i := by omega
+    have hiWidth : i ≤ width := by omega
+    have hsplit : base + i = prime0 (n + 1) := by omega
+    exact hcomposite i hiTwo hiWidth (hsplit ▸ hnextPrime)
+  refine ⟨n, ?_⟩
+  rw [primeGap0]
+  omega
 
 /-- Finite zero-based dyadic partial sum of a rational sequence. -/
 def dyadicPartialSumQ (P : ℕ → ℚ) (n : ℕ) : ℚ :=
@@ -505,6 +552,187 @@ theorem irrational_initial_of_cofinalNonintegralTailShifts
   refine ⟨z, ?_⟩
   have hzR := congrArg ((↑) : ℚ → ℝ) hz
   simpa [realTailShift, tailShift, hcast] using hzR
+/-! ## Eventual integrality collapses under a shrinking shift -/
+
+/-- An integral rational lying strictly between `-1` and `1` is zero. -/
+theorem ratIntegral_eq_zero_of_neg_one_lt_of_lt_one
+    {x : ℚ} (hInt : RatIntegral x) (hlow : -1 < x) (hhigh : x < 1) :
+    x = 0 := by
+  rcases hInt with ⟨z, rfl⟩
+  have hzlow : (-1 : ℤ) < z := by exact_mod_cast hlow
+  have hzhigh : z < (1 : ℤ) := by exact_mod_cast hhigh
+  have : z = 0 := by omega
+  simp [this]
+
+/-- If one fixed tail shift is eventually integral and eventually lies in the
+open unit interval around zero, then that shift is eventually identically
+zero.  This is the discrete rigidity step needed to turn an analytic
+small-shift estimate into exact arithmetic information. -/
+theorem tailShift_eventually_zero_of_eventually_integral_of_eventually_small
+    {T : ℕ → ℚ} {h : ℕ}
+    (hInt : ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N))
+    (hsmall : ∃ N₀, ∀ N, N₀ ≤ N →
+      -1 < tailShift T h N ∧ tailShift T h N < 1) :
+    ∃ N₀, ∀ N, N₀ ≤ N → tailShift T h N = 0 := by
+  rcases hInt with ⟨NInt, hInt⟩
+  rcases hsmall with ⟨NSmall, hsmall⟩
+  refine ⟨max NInt NSmall, fun N hN => ?_⟩
+  exact ratIntegral_eq_zero_of_neg_one_lt_of_lt_one
+    (hInt N ((le_max_left _ _).trans hN))
+    (hsmall N ((le_max_right _ _).trans hN)).1
+    (hsmall N ((le_max_right _ _).trans hN)).2
+
+/-- For an integer-digit dyadic recurrence, eventual integrality plus an
+eventually small fixed shift forces the digit word to be eventually periodic
+with that shift.  This is a strong global route; the adjacent-pair consumer
+below isolates a weaker cofinal local supply. -/
+theorem digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (h : ℕ)
+    (hInt : ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N))
+    (hsmall : ∃ N₀, ∀ N, N₀ ≤ N →
+      -1 < tailShift T h N ∧ tailShift T h N < 1) :
+    ∃ N₀, ∀ N, N₀ ≤ N → g (N + h + 1) = g (N + 1) := by
+  obtain ⟨N₀, hzero⟩ :=
+    tailShift_eventually_zero_of_eventually_integral_of_eventually_small
+      hInt hsmall
+  refine ⟨N₀, fun N hN => ?_⟩
+  have hstep := tailShift_succ hrec h N
+  rw [hzero N hN, hzero (N + 1) (hN.trans (Nat.le_succ N))] at hstep
+  have hcast :
+      (g (N + h + 1) : ℚ) = (g (N + 1) : ℚ) := by
+    linarith
+  exact_mod_cast hcast
+
+/-- Contrapositive consumer: if the digit word is not eventually periodic
+with shift `h`, then an eventually small `h`-shift cannot also be eventually
+integral. -/
+theorem not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (h : ℕ)
+    (hsmall : ∃ N₀, ∀ N, N₀ ≤ N →
+      -1 < tailShift T h N ∧ tailShift T h N < 1)
+    (hnotPeriodic :
+      ¬ ∃ N₀, ∀ N, N₀ ≤ N → g (N + h + 1) = g (N + 1)) :
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  intro hInt
+  exact hnotPeriodic
+    (digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small
+      hrec h hInt hsmall)
+
+/-- A single adjacent pair of small shifts with a mismatching digit difference
+already excludes simultaneous integrality.  This is the shortest finite
+consumer for a growing-block anti-concentration certificate. -/
+theorem tailShift_not_both_integral_of_small_pair_of_digit_ne
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (h N : ℕ)
+    (hsmall :
+      (-1 < tailShift T h N ∧ tailShift T h N < 1) ∧
+      (-1 < tailShift T h (N + 1) ∧ tailShift T h (N + 1) < 1))
+    (hdigit : g (N + h + 1) ≠ g (N + 1)) :
+    ¬ (RatIntegral (tailShift T h N) ∧
+      RatIntegral (tailShift T h (N + 1))) := by
+  rintro ⟨hIntN, hIntSucc⟩
+  have hzeroN : tailShift T h N = 0 :=
+    ratIntegral_eq_zero_of_neg_one_lt_of_lt_one
+      hIntN hsmall.1.1 hsmall.1.2
+  have hzeroSucc : tailShift T h (N + 1) = 0 :=
+    ratIntegral_eq_zero_of_neg_one_lt_of_lt_one
+      hIntSucc hsmall.2.1 hsmall.2.2
+  have hstep := tailShift_succ hrec h N
+  rw [hzeroN, hzeroSucc] at hstep
+  apply hdigit
+  have hcast :
+      (g (N + h + 1) : ℚ) = (g (N + 1) : ℚ) := by
+    linarith
+  exact_mod_cast hcast
+
+/-- Cofinal finite-certificate consumer.  To rule out eventual integrality of
+a fixed shift it is enough to find, beyond every level, one adjacent pair of
+strictly small shifts whose corresponding digits differ. -/
+theorem not_eventuallyIntegralTailShift_of_cofinal_small_mismatch
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (h : ℕ)
+    (hsupply : ∀ N₀, ∃ N, N₀ ≤ N ∧
+      ((-1 < tailShift T h N ∧ tailShift T h N < 1) ∧
+       (-1 < tailShift T h (N + 1) ∧ tailShift T h (N + 1) < 1)) ∧
+      g (N + h + 1) ≠ g (N + 1)) :
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  rintro ⟨N₀, hInt⟩
+  obtain ⟨N, hN, hsmall, hdigit⟩ := hsupply N₀
+  exact tailShift_not_both_integral_of_small_pair_of_digit_ne
+    hrec h N hsmall hdigit
+    ⟨hInt N hN, hInt (N + 1) (hN.trans (Nat.le_succ N))⟩
+
+/-- Consecutive prime gaps cannot become periodic with any positive period.
+The proof combines the exact factorial prime-free intervals above with the
+finite range of a periodic natural-valued sequence. -/
+theorem primeGap0_not_eventually_periodic
+    {h : ℕ} (hpos : 0 < h) :
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N →
+      primeGap0 (N + h + 1) = primeGap0 (N + 1) := by
+  rintro ⟨N₀, hperiodic⟩
+  let f : ℕ → ℕ := fun k => primeGap0 (N₀ + 1 + k)
+  have hf : Function.Periodic f h := by
+    intro k
+    have hk := hperiodic (N₀ + k) (Nat.le_add_right N₀ k)
+    simpa [f, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hk
+  let periodBound := ∑ i ∈ Finset.range h, f i
+  let initialBound := ∑ i ∈ Finset.range (N₀ + 1), primeGap0 i
+  obtain ⟨n, hn⟩ := exists_primeGap0_gt (periodBound + initialBound)
+  have hnLate : N₀ + 1 ≤ n := by
+    by_contra h
+    have hnMem : n ∈ Finset.range (N₀ + 1) := Finset.mem_range.mpr (by omega)
+    have hnInitial : primeGap0 n ≤ initialBound := by
+      exact Finset.single_le_sum (fun _ _ => Nat.zero_le _) hnMem
+    omega
+  let k := n - (N₀ + 1)
+  have hkEq : N₀ + 1 + k = n := by
+    exact Nat.add_sub_of_le hnLate
+  have hkMem : k % h ∈ Finset.range h :=
+    Finset.mem_range.mpr (Nat.mod_lt k hpos)
+  have hkBound : f k ≤ periodBound := by
+    calc
+      f k = f (k % h) := (hf.map_mod_nat k).symm
+      _ ≤ periodBound :=
+        Finset.single_le_sum (fun _ _ => Nat.zero_le _) hkMem
+  change primeGap0 (N₀ + 1 + k) ≤ periodBound at hkBound
+  rw [hkEq] at hkBound
+  omega
+
+/-- Prime-specific global exclusion of eventual integral tail shifts.
+Eventual strict smallness would force periodicity, which the factorial gap
+theorem rules out.  The next theorem uses only cofinally many local
+small-mismatch certificates. -/
+theorem primeGapTailShift_not_eventuallyIntegral_of_eventually_small
+    {T : ℕ → ℚ} {h : ℕ}
+    (hrec : DyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) T)
+    (hpos : 0 < h)
+    (hsmall : ∃ N₀, ∀ N, N₀ ≤ N →
+      -1 < tailShift T h N ∧ tailShift T h N < 1) :
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  apply not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic
+    hrec h hsmall
+  intro hperiodic
+  apply primeGap0_not_eventually_periodic hpos
+  rcases hperiodic with ⟨N₀, hperiodic⟩
+  refine ⟨N₀, fun N hN => ?_⟩
+  exact_mod_cast hperiodic N hN
+
+/-- Actual-prime-gap version of the cofinal finite-certificate consumer. -/
+theorem primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
+    {T : ℕ → ℚ} (h : ℕ)
+    (hrec : DyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) T)
+    (hsupply : ∀ N₀, ∃ N, N₀ ≤ N ∧
+      ((-1 < tailShift T h N ∧ tailShift T h N < 1) ∧
+       (-1 < tailShift T h (N + 1) ∧ tailShift T h (N + 1) < 1)) ∧
+      primeGap0 (N + h + 1) ≠ primeGap0 (N + 1)) :
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N → RatIntegral (tailShift T h N) := by
+  apply not_eventuallyIntegralTailShift_of_cofinal_small_mismatch hrec h
+  intro N₀
+  obtain ⟨N, hN, hsmall, hdigit⟩ := hsupply N₀
+  refine ⟨N, hN, hsmall, ?_⟩
+  exact_mod_cast hdigit
 
 /-- The coefficient emitted by an unrestricted integer carry. -/
 def carryCoeff (K : ℕ → ℚ) (n : ℕ) : ℚ :=
