@@ -284,6 +284,27 @@ theorem not_three_dvd_both_homEval_of_right_const_unit
   intro h
   exact three_not_dvd_homEvalThreeTwo_of_const_unit W V hunit h.2
 
+/-- A genuine common multiplier of the two specialised coefficient channels
+cannot contain either local prime needed at the rational base `3 / 2`, provided
+the left channel has a unit top endpoint and the right channel has a unit
+bottom endpoint.  Hence any useful `2`-adic or `3`-adic gain must survive
+rowwise primitive normalisation; it cannot be manufactured by common content
+of one Padé pair. -/
+theorem commonMultiplier_not_two_not_three_of_endpoint_units
+    (c : ℤ) (W : ℕ) (U V : Polynomial ℤ)
+    (hUtop : U.coeff W = 1 ∨ U.coeff W = -1)
+    (hVconst : V.coeff 0 = 1 ∨ V.coeff 0 = -1)
+    (hcU : c ∣ homEvalThreeTwo W U)
+    (hcV : c ∣ homEvalThreeTwo W V) :
+    (¬ (2 : ℤ) ∣ c) ∧ (¬ (3 : ℤ) ∣ c) := by
+  constructor
+  · intro htwo
+    exact two_not_dvd_homEvalThreeTwo_of_top_unit W U hUtop
+      (dvd_trans htwo hcU)
+  · intro hthree
+    exact three_not_dvd_homEvalThreeTwo_of_const_unit W V hVconst
+      (dvd_trans hthree hcV)
+
 /-- The only analytic input needed from an irrationality-exponent argument:
 if an irrational number has exponent at least `2` and a source construction
 bounds that exponent by `C₁ / C₀`, then `2 C₀ ≤ C₁`. -/
