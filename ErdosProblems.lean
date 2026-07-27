@@ -13,6 +13,7 @@
 -- imported here decides either of them.
 import ErdosProblems.Root
 import ErdosProblems.AxiomAudit
+import ErdosProblems.Erdos269.RestrictedFloorSum
 
 /-!
 # Problem-centric Erdős research library

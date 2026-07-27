@@ -8,6 +8,7 @@ import ErdosProblems.Erdos257.HalfCounterexampleFrontier
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.FiniteHorizonResidue
+import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos249.FiniteEulerSieve
 import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
