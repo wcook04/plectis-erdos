@@ -5,6 +5,7 @@ import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.ResidueEscape
 import ErdosProblems.Erdos1049.RationalBaseLambert
 import ErdosProblems.Erdos1049.RationalPadeArithmetic
+import ErdosProblems.Erdos1049.ZudilinConeArithmetic
 
 /-!
 # Problem-centric Erdős formalization root
