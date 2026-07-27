@@ -19,8 +19,8 @@
   "version": "0.6.0",
   "tag": "v0.6.0",
   "lean_toolchain": "leanprover/lean4:v4.29.1",
-  "formal_source_ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
-  "formal_source_publication_state": "published_committed_checkpoint"
+  "formal_source_ref": "c4df220aab347a12ced4beff774384767f2a0f4c",
+  "formal_source_publication_state": "committed_checkpoint_pending_remote_publication"
  },
  "scale": {
   "module_count": 689,
@@ -569,9 +569,9 @@
   "blocked_decisions": []
  },
  "source_revision": {
-  "formal_source_ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
-  "committed_navigation_snapshot": "2477b7f61da185fadbf0526ed24b5d5e4567c351",
-  "main_paper_source_digest": "sha256:2ac1d7773053f4b3864c336a30a44cceb76d75f4b5c28bcfd01de3e6cf68426f"
+  "formal_source_ref": "c4df220aab347a12ced4beff774384767f2a0f4c",
+  "committed_navigation_snapshot": "c4df220aab347a12ced4beff774384767f2a0f4c",
+  "main_paper_source_digest": "sha256:9d5b7160c3eb5b77a627adbaeebb5d015209703bbda16144dfe2fb86d7b2e8a1"
  },
  "reading_routes": [
   {

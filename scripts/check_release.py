@@ -1239,8 +1239,10 @@ def main() -> int:
     check(len(orientation_path.read_bytes()) <= 32_000,
           "orientation JSON exceeds the 32 KB bounded first-read budget")
     for target in orientation.get("drilldowns", {}).values():
-        rel = str(target).split("::", 1)[0]
-        check((ROOT / rel).is_file(), f"orientation drilldown path does not exist: {rel}")
+        targets = target if isinstance(target, list) else [target]
+        for item in targets:
+            rel = str(item).split("::", 1)[0]
+            check((ROOT / rel).is_file(), f"orientation drilldown path does not exist: {rel}")
     query_check = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
         cwd=ROOT,

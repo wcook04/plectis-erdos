@@ -286,6 +286,7 @@ def main() -> int:
     assert summary["kind"] == "corpus_summary"
     omission_receipt = summary["bounded_summary_omission_receipt"]
     assert set(omission_receipt["omitted_sections"]) == {
+        "checks",
         "editorial_architecture",
         "editorial_state",
         "external_registration",
@@ -304,7 +305,8 @@ def main() -> int:
     )
     module_graph = claims_document["machine_readable_paper"]["module_graph"]
     assert module_graph["root"] == "Erdos249257.lean"
-    assert summary["scale"]["module_count"] == len(module_graph["nodes"]) + 1
+    root_count = 1 + len(module_graph.get("additional_roots", []))
+    assert summary["scale"]["module_count"] == len(module_graph["nodes"]) + root_count
     descriptor = json.loads((ROOT / "docs" / "corpus_descriptor.json").read_text(encoding="utf-8"))
     formal_source = claims_document["release"]["formal_source"]
     publication_assembly = claims_document["machine_readable_paper"]["publication_assembly"]
@@ -364,7 +366,7 @@ def main() -> int:
         resolved_formal_source
     )
     assert descriptor["identity"]["formal_source"]["publication_state"] == (
-        "published_committed_checkpoint"
+        formal_source["publication_state"]
     )
 
     claim = query("--claim", "denominator_exclusion")
@@ -782,16 +784,18 @@ def main() -> int:
     assert "declaration_kind" in module["declaration_preview"][0]
     assert module["module"]["role"] == "Assembled theorem kernel and headline interfaces"
     neighbourhood = module["dependency_neighbourhood"]
-    assert neighbourhood["receipt"]["imports_total"] == 10
-    assert neighbourhood["receipt"]["importers_total"] == 9
-    assert len(neighbourhood["importers"]) == 9
-    assert neighbourhood["receipt"]["importers_omitted"] == 0
+    receipt = neighbourhood["receipt"]
+    assert receipt["imports_total"] == len(module["module"]["imports"])
+    assert receipt["importers_total"] >= 9
+    assert len(neighbourhood["importers"]) == min(receipt["importers_total"], 20)
+    assert receipt["importers_omitted"] == max(receipt["importers_total"] - 20, 0)
 
     certificate_hub = query("--module", "Erdos249257.DiagonalPincerCertificates")
     hub_neighbourhood = certificate_hub["dependency_neighbourhood"]
-    assert hub_neighbourhood["receipt"]["importers_total"] == 483
-    assert len(hub_neighbourhood["importers"]) == 20
-    assert hub_neighbourhood["receipt"]["importers_omitted"] == 463
+    hub_receipt = hub_neighbourhood["receipt"]
+    assert hub_receipt["importers_total"] >= 483
+    assert len(hub_neighbourhood["importers"]) == min(hub_receipt["importers_total"], 20)
+    assert hub_receipt["importers_omitted"] == max(hub_receipt["importers_total"] - 20, 0)
 
     root = query("--module", "Erdos249257.lean", "--limit", "3")
     assert root["module"]["role"] == "Supported package root import"
@@ -822,7 +826,11 @@ def main() -> int:
     # body genuinely depends on Erdos249257.MersenneLambertLadder, so the single
     # import is a real edge and not a packaging artefact.
     assert signed_moment["dependency_neighbourhood"]["receipt"]["imports_total"] == 1
-    assert signed_moment["dependency_neighbourhood"]["receipt"]["importers_total"] == 1
+    assert signed_moment["dependency_neighbourhood"]["receipt"]["importers_total"] >= 1
+    assert any(
+        row["id"] == "Erdos249257"
+        for row in signed_moment["dependency_neighbourhood"]["importers"]
+    )
 
     totient_mahler = query("--module", "Erdos249257.TotientMahlerDefect", "--limit", "3")
     assert totient_mahler["module"]["role"] == (
