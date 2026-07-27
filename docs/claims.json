@@ -7334,6 +7334,7 @@
           "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
           "role": "Lean proof module",
           "imports": [
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "ErdosProblems.Erdos269.ResidueEscape"
           ]
         },
