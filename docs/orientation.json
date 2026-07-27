@@ -23,19 +23,20 @@
   "formal_source_publication_state": "published_committed_checkpoint"
  },
  "scale": {
-  "module_count": 667,
-  "declaration_count": 13322,
-  "theorem_like_count": 12162,
+  "module_count": 689,
+  "declaration_count": 13820,
+  "theorem_like_count": 12540,
   "generated_certificate_declaration_count": 2925,
   "principal_claim_link_count": 299,
   "kind_counts": {
-   "abbrev": 9,
-   "def": 1111,
+   "abbrev": 10,
+   "class": 1,
+   "def": 1229,
    "inductive": 4,
    "instance": 5,
-   "lemma": 358,
+   "lemma": 363,
    "structure": 31,
-   "theorem": 11804
+   "theorem": 12177
   }
  },
  "status_taxonomy": {
@@ -720,7 +721,11 @@
   "paper_source_sigils": "paper/module-aliases.json",
   "source_by_question": "docs/SOURCE_MAP.md",
   "development_chronology": "docs/WAVE_INDEX.md",
-  "supported_root_import": "Erdos249257.lean"
+  "supported_root_import": "Erdos249257.lean",
+  "supported_root_imports": [
+   "Erdos249257.lean",
+   "ErdosProblems.lean"
+  ]
  },
  "checks": {
   "release": "python3 scripts/check_release.py",

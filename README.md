@@ -95,8 +95,8 @@ an unsafe band.
 
 | Library | Current size |
 |---|---:|
-| Lean modules | 667 |
-| Formal results and supporting lemmas | 12,162 |
+| Lean modules | 689 |
+| Formal results and supporting lemmas | 12,540 |
 | Curated claim records | 99 |
 | Contribution families | 21 |
 

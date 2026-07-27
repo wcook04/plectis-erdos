@@ -1291,6 +1291,9 @@
     ],
     "module_graph": {
       "root": "Erdos249257.lean",
+      "additional_roots": [
+        "ErdosProblems.lean"
+      ],
       "nodes": [
         {
           "id": "Erdos249257.ActualForeignResidueProjection",
@@ -7188,6 +7191,180 @@
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.CurvatureCarry"
+          ]
+        },
+        {
+          "id": "ErdosProblems.AxiomAudit",
+          "path": "ErdosProblems/AxiomAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Root"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+          "path": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.DynamicCancellation",
+          "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.FiniteHorizonResidue",
+          "path": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.SparseResetRecovery",
+          "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+          "path": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+            "Erdos249257.CertificateKernel",
+            "Erdos249257.TotientActualLcmTopEdgeStaircase"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteEulerSieve",
+          "path": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.MersenneLambertLadder"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PeriodMultipleEscape",
+          "path": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientTailPeriodKiller",
+            "Erdos249257.LcmConeFlatness",
+            "ErdosProblems.Erdos249.CyclotomicAnchoredKill"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TropicalCurvatureCarry"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+          "path": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.SignedQMomentObstruction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+          "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.PivotAntiReconstruction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+          "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
+          "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TerminalOnlyScaledVanishing"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+          "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.GreedyAchievementSet"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.ResidueEscape",
+          "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.RestrictedFloorSum",
+          "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.ResidueEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Root",
+          "path": "ErdosProblems/Root.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteEulerSieve",
+            "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+            "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+            "ErdosProblems.Erdos249.PeriodMultipleEscape",
+            "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+            "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+            "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
+            "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+            "ErdosProblems.Erdos243.FiniteHorizonResidue",
+            "ErdosProblems.Erdos243.DynamicCancellation",
+            "ErdosProblems.Erdos243.SparseResetRecovery",
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+            "ErdosProblems.Erdos269.ResidueEscape",
+            "ErdosProblems.Erdos269.RestrictedFloorSum",
+            "ErdosProblems.Erdos1049.RationalBaseLambert",
+            "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+            "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
           ]
         }
       ]
