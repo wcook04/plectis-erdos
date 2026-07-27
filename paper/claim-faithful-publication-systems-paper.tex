@@ -732,11 +732,11 @@ whose meaning can affect them, narrowing what a person must inspect; it assumes
 Lean's standard library and the mathematical library Mathlib are semantically
 correct rather than inspecting them~\cite{leanatlas}.  This guarantee is
 conditional on choosing all targets that matter; it does not find every claim
-occurrence in later public prose.  EconCSLib uses a
-different division: an AI language model writes Lean; Lean checks the formal
-statements and proofs; a dashboard and separate language-model reviewers help
-people assess whether a source paper was translated correctly.  Its paper
-reports that human review remained incomplete~\cite{econcs}.  This paper
+occurrence in later public prose.  EconCSLib instead has a model write Lean;
+Lean checks statements and proofs; two model passes and a dashboard assess
+source-to-Lean translation.  The model validations currently run in one Codex
+agent stack, so errors may correlate; dashboard-based human review was sparse
+and incomplete~\cite{econcs}.  This paper
 addresses a later boundary: it starts from accepted Lean proofs and asks how
 subsequent public wording can remain within a reviewed interpretation of them.
 
