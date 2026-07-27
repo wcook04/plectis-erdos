@@ -98,13 +98,19 @@ drift silently.
 
 \paragraph{Relation to prior work.}
 Erd\H{o}s proved that $\sum_n p_n^{k}/n!$ is irrational for every
-$k\ge1$~\cite{erdos1958}, and conjectured both that $\sum_n p_n^{k}/2^{n}$ is
-irrational for every $k$ and that $\sum_{n\ge1}p_n/(g_1\cdots g_n)$ is
-irrational whenever $g_n\ge2$ and $g_n=o(p_n)$~\cite[p.~103]{erdos1988}; the
-choice $g_n=p_n+1$ shows that some growth condition is needed there.  The
-statement of Problem~\#251 has been formalised before, as a conjecture with an
-unfilled proof, in the \emph{formal-conjectures} collection.  No claim of
-priority is made for anything below.
+$k\ge1$~\cite{erdos1958}.  On page~103 of his 1988 problem paper he separately
+posed the fixed-denominator conjecture that
+$\sum_n p_n^{k}/2^{n}$ is irrational for every $k\ge1$, and the
+variable-denominator expectation that
+$\sum_{n\ge1}p_n/(g_1\cdots g_n)$ is irrational whenever $g_n\ge2$ and
+$g_n=o(p_n)$~\cite[p.~103]{erdos1988}.  The latter expectation is false:
+ChatGPT~5.4 Pro, orchestrated by Vjeko Kova\v{c}, constructs such a sequence
+$(g_n)$ for which the sum is exactly $1$~\cite{kovac2026}.  That construction
+does not address the fixed-denominator dyadic series studied here.
+Problem~\#251 also appears as the unproved declaration
+\texttt{erdos\_251} in the \emph{Formal Conjectures}
+repository~\cite{formalconjectures251}.  No claim of priority is made for
+anything below.
 
 \paragraph{Two routes and where they stop.}
 The digits $p_n$ grow, so the series is not a digit expansion in any bounded
@@ -811,6 +817,14 @@ natural-carry cast & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{763}{natCarryCoeff
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/251}{\emph{Erd\H{o}s Problem \#251}},
   \texttt{erdosproblems.com/251}, accessed 22 July 2026.
+\bibitem{kovac2026} ChatGPT~5.4 Pro (orchestrated by V.~Kova\v{c}),
+  \href{https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf}
+  {\emph{On the Erd\H{o}s problem \#251}},
+  unpublished note, 2026.
+\bibitem{formalconjectures251} The Formal Conjectures Authors,
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/251.lean}
+  {\emph{FormalConjectures.ErdosProblems.\texttt{251}}},
+  Lean source, 2025, accessed 27 July 2026.
 \end{thebibliography}
 
 \end{document}
