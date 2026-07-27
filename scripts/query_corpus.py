@@ -1778,6 +1778,7 @@ def summary_packet() -> dict[str, Any]:
     claims = load("docs/claims.json")
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     bounded_omissions = (
+        "checks",
         "editorial_architecture",
         "editorial_state",
         "external_registration",

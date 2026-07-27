@@ -584,7 +584,9 @@ passing checker does not certify all public prose; it gives no detection rate.
 The repair required the clause and added a \emph{boundary witness}: a false
 neighbour crossing a consequential public boundary while leaving every Lean
 proof intact.  The post-repair witness accepts the current README and rejects
-a test copy containing the false clause, distinguishing that neighbour.  The
+a test copy containing the false clause, distinguishing that neighbour.  In
+the release check's exact terms, the current README passes and a false copy,
+the boundary witness, fails.  The
 other nine edits were not rerun against the extended checklist, so there is no
 post-repair aggregate result.
 

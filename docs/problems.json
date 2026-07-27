@@ -60,7 +60,7 @@
       ],
       "note": {
         "artifact_id": "erdos_243_note",
-        "title": "The Centred State and the Surviving Negative Case",
+        "title": "Excluding the Bounded Negative Part",
         "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
         "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -132,15 +132,15 @@
           "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
           "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
           "present": true,
-          "line_count": 107,
-          "declaration_count": 8,
-          "theorem_count": 4,
-          "content_digest": "sha256:462d9e6e0a94cc8d4c4af70fb3db4310b342000725912cbc7b0ee856dd85b595"
+          "line_count": 184,
+          "declaration_count": 12,
+          "theorem_count": 7,
+          "content_digest": "sha256:afa772249fb970ccb167cae7f4b73130f3d66f454f466ffd6e305d27f926418c"
         }
       ],
       "note": {
         "artifact_id": "erdos_249_note",
-        "title": "A Basis for the 2-Kernel of Euler's Totient",
+        "title": "Exact Ranks for the Dyadic Sections of Euler’s Totient",
         "source_path": "paper/erdos-249-binary-totient-series.tex",
         "rendered_path": "erdos-249-binary-totient-series.pdf",
         "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
@@ -261,10 +261,10 @@
           "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
           "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
           "present": true,
-          "line_count": 57,
-          "declaration_count": 6,
-          "theorem_count": 3,
-          "content_digest": "sha256:5574e86f7ababfe40bc95032347e63a4a4263830416c8ab73f7c199dd13a270e"
+          "line_count": 421,
+          "declaration_count": 28,
+          "theorem_count": 23,
+          "content_digest": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419"
         }
       ],
       "note": {
@@ -276,12 +276,12 @@
       },
       "what_is_checked": [
         "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
-        "That binary digit strings restricted to any chosen support retain unique Mersenne coding."
+        "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
+        "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
       ],
       "what_is_not_checked": [
         "The universal irrationality problem, or irrationality for any new infinite support.",
-        "The packet's measure classification: cofinite supports have positive measure and infinite-complement supports have measure zero.",
-        "The fair-bit law, the singularity dichotomy, and the explicit dimensions for periodic stride supports.",
+        "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
         "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
       ],
       "open_obligations": [
@@ -291,7 +291,7 @@
         },
         {
           "id": "formalise_measure_and_stride_geometry",
-          "statement": "Kernel-check the exact measure dichotomy, Bernoulli-law classification, and periodic-stride dimension formulas without overstating what they imply arithmetically."
+          "statement": "Extend the measure dichotomy to Bernoulli laws and periodic-stride dimensions without implying arithmetic consequences."
         }
       ],
       "finite_search": null

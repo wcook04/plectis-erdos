@@ -104,9 +104,9 @@ an unsafe band.
 
 | Library | Current size |
 |---|---:|
-| Lean modules | 667 |
-| Formal results and supporting lemmas | 12,162 |
-| Curated claim records | 99 |
+| Lean modules | 689 |
+| Formal results and supporting lemmas | 12,567 |
+| Curated claim records | 100 |
 | Contribution families | 21 |
 
 Claim records span every status, including cited and open, and are partitioned

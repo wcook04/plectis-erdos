@@ -718,9 +718,9 @@ def build() -> dict[str, Any]:
                 "root": machine_paper["module_graph"]["root"],
                 "roots": root_paths,
                 "node_count": len(machine_paper["module_graph"]["nodes"]),
-                "root_imports": root_modules[root_paths[0]]["imports"],
-                "imports_by_root": {
-                    root_path: root_modules[root_path]["imports"]
+                "root_import_count": len(root_modules[root_paths[0]]["imports"]),
+                "import_counts_by_root": {
+                    root_path: len(root_modules[root_path]["imports"])
                     for root_path in root_paths
                 },
                 "full_graph": "docs/claims.json::machine_readable_paper.module_graph",

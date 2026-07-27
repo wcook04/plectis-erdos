@@ -7280,6 +7280,16 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+          "path": "ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+            "Erdos249257.CertificateKernel",
+            "Erdos249257.TotientActualLcmTopEdgeStaircase"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos249.FiniteEulerSieve",
           "path": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
           "role": "Lean proof module",
@@ -7288,11 +7298,29 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.PeriodMultipleEscape",
+          "path": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientTailPeriodKiller",
+            "Erdos249257.LcmConeFlatness",
+            "ErdosProblems.Erdos249.CyclotomicAnchoredKill"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
           "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.TropicalCurvatureCarry"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+          "path": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.SignedQMomentObstruction"
           ]
         },
         {
@@ -7308,6 +7336,14 @@
           "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
+          "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TerminalOnlyScaledVanishing"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
@@ -7349,6 +7385,14 @@
           "path": "ErdosProblems/Root.lean",
           "role": "Lean proof module",
           "imports": [
+            "ErdosProblems.Erdos249.FiniteEulerSieve",
+            "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+            "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
+            "ErdosProblems.Erdos249.PeriodMultipleEscape",
+            "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+            "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+            "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
+            "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "ErdosProblems.Erdos243.ReciprocalTailRigidity",
             "ErdosProblems.Erdos243.FiniteHorizonResidue",
             "ErdosProblems.Erdos243.SparseResetRecovery",
@@ -7964,9 +8008,9 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
+      "ref": "eeedb6307b45e64632e8435ecfa075e5b010c30a",
       "ref_kind": "commit",
-      "publication_state": "published_committed_checkpoint",
+      "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
     "public_projection": {
@@ -8000,7 +8044,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 3655
+        "line": 4157
       }
     },
     {
@@ -8011,7 +8055,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 3666
+        "line": 4168
       }
     },
     {
@@ -8022,7 +8066,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 3690
+        "line": 4192
       }
     },
     {
@@ -8033,7 +8077,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 3681
+        "line": 4183
       }
     }
   ],

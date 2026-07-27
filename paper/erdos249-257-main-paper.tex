@@ -35,7 +35,7 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public checkpoint: tag formal-source-2026-07-18 points to this source commit.
-\newcommand{\commit}{312b96c0d149ed466725c62d4ef24cfc91bca34e}
+\newcommand{\commit}{eeedb6307b45e64632e8435ecfa075e5b010c30a}
 \newcommand{\commitshort}{312b96c0d149}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
@@ -4031,17 +4031,17 @@ that is, \(R_{N+h}-R_N\) lies at distance at least
 \(\arccos(4/5)/(2\pi)=0.10241\ldots\) from the nearest integer, for one shift
 whose index \(N+h+1\) is prime, beyond every cutoff.  This is the formal
 hypothesis
-\lword{PivotAntiReconstruction.lean}{1236}{DTWNaturalPrimeTailOrbitGap}{DTWNaturalPrimeTailOrbitGap};
+\lword{PivotAntiReconstruction.lean}{1267}{DTWNaturalPrimeTailOrbitGap}{DTWNaturalPrimeTailOrbitGap};
 the strict variant~\eqref{eq:packet-prime-gap} at threshold \(9/10\) is
 equally good, since the surplus is absorbed into the truncation budget.
 
 \emph{Already checked.}  The implication from this hypothesis to
 irrationality is proved end to end
-(\lword{PivotAntiReconstruction.lean}{1552}{irrational_totient_series_of_naturalPrimeTailOrbitGap}{prime-orbit endpoint}),
+(\lword{PivotAntiReconstruction.lean}{1583}{irrational_totient_series_of_naturalPrimeTailOrbitGap}{prime-orbit endpoint}),
 through a singleton bridge
-(\lword{PivotAntiReconstruction.lean}{1246}{naturalPivotPointEscape_of_naturalPrimeTailOrbitGap}{prime-to-point bridge})
+(\lword{PivotAntiReconstruction.lean}{1277}{naturalPivotPointEscape_of_naturalPrimeTailOrbitGap}{prime-to-point bridge})
 and a point-escape consumer
-(\lword{PivotAntiReconstruction.lean}{1528}{irrational_totient_series_of_naturalPivotPointEscape}{point-escape consumer}).
+(\lword{PivotAntiReconstruction.lean}{1559}{irrational_totient_series_of_naturalPivotPointEscape}{point-escape consumer}).
 The truncation accounting is proved as well: an infinite-orbit gap survives
 finite windows with an explicit error budget
 (\lword{PivotAntiReconstruction.lean}{221}{windowFirstCos_le_add_of_tailOrbitGap}{window transfer}),
@@ -4075,20 +4075,20 @@ exponent \(D\ge13\) has \(C_D=-2\) or \(C_D=-1\), where
 Section~\ref{sec:final-skip-reduction}.  This is the first of the two
 unproved inputs to Corollary~\ref{res:taildominance}; the three exceptional
 values are pinned down by the
-\lword{HalfCylinderMiddleCarryLowerBound.lean}{3090}{seamMiddleCoordinate_not_safe_iff_three_cells}{three-cell classification}.
+\lword{HalfCylinderMiddleCarryLowerBound.lean}{4125}{seamMiddleCoordinate_not_safe_iff_three_cells}{three-cell classification}.
 
 \emph{Already checked.}  At a final skip the upper successor is impossible
-(\lword{HalfCylinderLastProducerContradiction.lean}{250}{upperProducer_not_last}{upper-branch exclusion}),
+(\lword{HalfCylinderLastProducerContradiction.lean}{299}{upperProducer_not_last}{upper-branch exclusion}),
 and \(C_D=-3\) is impossible
-(\lword{HalfCylinderLastProducerContradiction.lean}{315}{middleProducer_neg_three_not_last}{middle exclusion},
+(\lword{HalfCylinderLastProducerContradiction.lean}{364}{middleProducer_neg_three_not_last}{middle exclusion},
 refined by the
 \lword{HalfCylinderFinalMiddleCellEscape.lean}{587}{finalMiddleCell_neg_three_not_last}{final-cell exclusion}).
 For \(C_D=-2\) with an all-right suffix and \(D\ge27\), the greedy prefix
 through rank \(26\) is exactly \(\{2,3,6,7,14,20,21,26\}\)
-(\lword{HalfFinalMiddlePhaseSieve.lean}{1190}{seamGreedyBits_head2367_14_20_21_26}{rank-26 prefix}),
+(\lword{HalfFinalMiddlePhaseSieve.lean}{899}{seamGreedyBits_head2367_14_20_21_26}{rank-26 prefix}),
 which confines \(D\) to \(412\) residue classes modulo \(2730\)
-(\lword{HalfFinalMiddlePhaseSieve.lean}{1913}{finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix}{phase sieve},
-\lword{HalfFinalMiddlePhaseSieve.lean}{2050}{finalMiddleTwentySixPhaseSurvivors_card}{survivor count}).
+(\lword{HalfFinalMiddlePhaseSieve.lean}{1622}{finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix}{phase sieve},
+\lword{HalfFinalMiddlePhaseSieve.lean}{1759}{finalMiddleTwentySixPhaseSurvivors_card}{survivor count}).
 The case \(C_D=-1\) is untouched.  Note that shrinking the survivor density
 is not enough, since nested nonempty residue sets can have nonempty inverse
 limit; the sieve must reach the empty set or be replaced by an Archimedean
@@ -4116,7 +4116,7 @@ where \(A_D=G_D\cup\{D\}\) and \(f_{A_D}(n)\) counts the elements of
 \(A_D\) dividing \(n\); \(\Theta_D\) is the complete future tail, not a
 truncation.  This is inequality~\textup{(4.2)}, the second unproved input to
 the
-\lword{HalfCylinderLastProducerContradiction.lean}{387}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{tail-dominance theorem}.
+\lword{HalfCylinderLastProducerContradiction.lean}{436}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{tail-dominance theorem}.
 The word ``every'' is essential: one surviving final middle transition is
 enough for nonmembership.
 
@@ -4127,11 +4127,11 @@ so \(\Theta_D<C_D\) is equivalent to \(\sum_{a\in A_D}w_a<\tfrac12\)
 (\lword{HalfCylinderProducerCarrySocket.lean}{48}{producerCarry_gt_tail_iff_supportSeries_lt_half}{below-half equivalence}).
 Three stronger hypotheses are proved sufficient: with \(g_D=\#G_D\), the
 inequality \(g_D+1<C_D\)
-(\lword{HalfCylinderMiddleCarryLowerBound.lean}{1503}{half_mem_mersenneAchievementSet_of_middleProducerCardEscape}{cardinality criterion}),
+(\lword{HalfCylinderMiddleCarryLowerBound.lean}{2364}{half_mem_mersenneAchievementSet_of_middleProducerCardEscape}{cardinality criterion}),
 the row bound \(R_{D,D}\ge D\) at every late middle row
-(\lword{HalfCylinderMiddleCarryLowerBound.lean}{1510}{half_mem_mersenneAchievementSet_of_middleProducerRowEscape}{row-scale criterion}),
+(\lword{HalfCylinderMiddleCarryLowerBound.lean}{2371}{half_mem_mersenneAchievementSet_of_middleProducerRowEscape}{row-scale criterion}),
 and a square-root variant
-(\lword{HalfCylinderLastProducerContradiction.lean}{409}{half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape}{square-root criterion}).
+(\lword{HalfCylinderLastProducerContradiction.lean}{458}{half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape}{square-root criterion}).
 A separate finite certificate covers the upper-reset band for
 \(13\le d\le30\)
 (\lword{HalfCylinderUpperResetBandCertificates.lean}{78}{seamUpperResetDyadicBandEscape_through_thirty}{finite band certificate}).
