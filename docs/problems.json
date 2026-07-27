@@ -27,7 +27,7 @@
       "note": "Declarations under this root are exact Lean propositions accepted by the pinned kernel. They are not reviewed public mathematical claims, and kernel checking this root does not promote them into one."
     }
   ],
-  "problem_count": 4,
+  "problem_count": 6,
   "problems": [
     {
       "problem_id": "erdos_243",
@@ -56,20 +56,11 @@
           "declaration_count": 10,
           "theorem_count": 7,
           "content_digest": "sha256:61d3b9deeb41875b031a0b50a27b336d3ebbbfe7111eda14450227c142d13006"
-        },
-        {
-          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
-          "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
-          "present": true,
-          "line_count": 208,
-          "declaration_count": 6,
-          "theorem_count": 5,
-          "content_digest": "sha256:74685dc6ad5abceedd76ea3928b25845a3bdf6070aaa96344d5ac5996a96187a"
         }
       ],
       "note": {
         "artifact_id": "erdos_243_note",
-        "title": "Excluding the Bounded Negative Part",
+        "title": "The Centred State and the Surviving Negative Case",
         "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
         "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
         "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority"
@@ -85,19 +76,18 @@
         "That a reduced exact tail has pairwise coprime multipliers which its numerator permanently avoids, so no such tail has a divergent numerator with bounded rise.",
         "That the tail gcd stabilises under cofinally bounded negative magnitudes.",
         "Conditionally: exact dynamics, eventual strict centring, an eventually bounded negative part, and normalised vanishing together force the centred state to vanish eventually.",
-        "Conditionally: exact dynamics, positive tail state, normalised vanishing, and finite normalised negative centred-defect mass force the Sylvester recurrence eventually.",
         "That survival through a fixed number of forced updates depends only on the initial state modulo a factorial of the horizon."
       ],
       "what_is_not_checked": [
         "The unrestricted problem.",
         "That eventual strict centring and normalised vanishing follow from the growth hypothesis and rationality. Both are assumed by the final theorem and neither is derived, so that theorem constrains the state system rather than the original sequence.",
-        "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set and whose normalised negative mass diverges.",
+        "Any exclusion of negative excursions whose magnitudes are unbounded along a cofinal set.",
         "The criterion of Erdos and Straus and Duverney's conditional characterisation, which are cited rather than formalised and are both stronger than anything checked here."
       ],
       "open_obligations": [
         {
-          "id": "unbounded_divergent_mass_negative_excursions",
-          "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set and divergent normalised negative mass sum_n (-E_n)_+/C_n. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, a fixed bound on the negative part, or a finite multiplicative growth budget."
+          "id": "unbounded_negative_excursions",
+          "statement": "Exclude, or construct, an exact orbit whose centred state is negative infinitely often with magnitudes unbounded along that cofinal set. Every checked exclusion consumes some finiteness: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part."
         },
         {
           "id": "derive_the_two_analytic_hypotheses",
@@ -109,6 +99,91 @@
         }
       ],
       "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale."
+    },
+    {
+      "problem_id": "erdos_249",
+      "erdos_number": 249,
+      "short_title": "The binary totient series",
+      "status": "open",
+      "question": "Is the binary Lambert series sum phi(n)/2^n irrational?",
+      "library_root": "ErdosProblems.lean",
+      "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+      "directory": "ErdosProblems/Erdos249",
+      "modules": [
+        {
+          "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+          "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "present": true,
+          "line_count": 72,
+          "declaration_count": 3,
+          "theorem_count": 2,
+          "content_digest": "sha256:9361d904a02a52e115aebefcea9b5a329f079b6f3f417188ac74945484876fa7"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
+          "path": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+          "present": true,
+          "line_count": 69,
+          "declaration_count": 6,
+          "theorem_count": 4,
+          "content_digest": "sha256:a0172184d831cb4d6004781027464922460d762c4a93b17b04fefc950dd62e93"
+        },
+        {
+          "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
+          "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "present": true,
+          "line_count": 107,
+          "declaration_count": 8,
+          "theorem_count": 4,
+          "content_digest": "sha256:462d9e6e0a94cc8d4c4af70fb3db4310b342000725912cbc7b0ee856dd85b595"
+        }
+      ],
+      "note": {
+        "artifact_id": "erdos_249_note",
+        "title": "A Basis for the 2-Kernel of Euler's Totient",
+        "source_path": "paper/erdos-249-binary-totient-series.tex",
+        "rendered_path": "erdos-249-binary-totient-series.pdf",
+        "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
+      },
+      "what_is_checked": [
+        "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.",
+        "The local s=1 and s=2 squared Möbius Euler-factor identities and the first two prime-power divisor-sum differences.",
+        "That the two-by-two checkerboard kills separable backgrounds and is unique up to scale under the four row and column cancellations.",
+        "An abstract four-point divisor-layer identity, stated from its four explicit factorisation hypotheses.",
+        "An affine completion no-go: every residue class modulo an even modulus has a digit that recentres one carry step.",
+        "Exact producer and consumer interfaces for prime-ray layer supply, bounded-degree order witnesses, and finite-prime-support escape."
+      ],
+      "what_is_not_checked": [
+        "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.",
+        "The packet's sharp parabolic Stern-Brocot cusp theorem and its passage from a geometric x-parameter to the arithmetic totient series.",
+        "Eventual Hankel nonvanishing for the Möbius-Mersenne power ladder, or its denominator obstruction.",
+        "The natural-boundary and quasimodular-transcendence steps of the infinite Euler-sieve tower.",
+        "Polynomial resultant realisability, exact-order finite-field supply, Frobenius freezing, or the Archimedean growth needed by the prime-ray strategy.",
+        "Unconditional irrationality of the binary totient series."
+      ],
+      "open_obligations": [
+        {
+          "id": "strict_prime_tail_orbit_gap",
+          "statement": "Prove the cofinal strict 9/10 real-part gap for the exact natural prime-tail orbit, or replace it with another producer for the reviewed pivot-escape endpoint."
+        },
+        {
+          "id": "hankel_denominator_fan_in",
+          "statement": "Prove eventual nonvanishing or a usable denominator obstruction for the Möbius-Mersenne power ladder and connect it to the target value."
+        },
+        {
+          "id": "euler_sieve_limit_theorem",
+          "statement": "Control the infinite Euler-sieve limit strongly enough that finite-stage quasimodularity yields a valid arithmetic obstruction."
+        },
+        {
+          "id": "prime_ray_resultant_supply",
+          "statement": "Realise the layer system by cyclic resultants and prove prime-support escape with the growth estimates needed to contradict a rational carry orbit."
+        },
+        {
+          "id": "stern_brocot_arithmetic_bridge",
+          "statement": "Prove the sharp cusp asymptotic and then supply a non-formal bridge from the geometric parameter regime to the exact totient value."
+        }
+      ],
+      "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate."
     },
     {
       "problem_id": "erdos_251",
@@ -124,10 +199,10 @@
           "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
           "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
           "present": true,
-          "line_count": 769,
-          "declaration_count": 63,
-          "theorem_count": 42,
-          "content_digest": "sha256:fb60c4deefa75ea1f62c0c2eac47ed6a45d59624919676e63c8a30290cc2af67"
+          "line_count": 782,
+          "declaration_count": 64,
+          "theorem_count": 43,
+          "content_digest": "sha256:56c54f523c84d9a2e69799d4be5a2be283758505c3658b25a26ae07e68bce4d6"
         }
       ],
       "note": {
@@ -172,6 +247,55 @@
       "finite_search": null
     },
     {
+      "problem_id": "erdos_257",
+      "erdos_number": 257,
+      "short_title": "Reciprocal sums over infinite exponent supports",
+      "status": "open",
+      "question": "Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?",
+      "library_root": "ErdosProblems.lean",
+      "claim_registry_status": "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims",
+      "directory": "ErdosProblems/Erdos257",
+      "modules": [
+        {
+          "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+          "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "present": true,
+          "line_count": 57,
+          "declaration_count": 6,
+          "theorem_count": 3,
+          "content_digest": "sha256:5574e86f7ababfe40bc95032347e63a4a4263830416c8ab73f7c199dd13a270e"
+        }
+      ],
+      "note": {
+        "artifact_id": "erdos_257_note",
+        "title": "Forced Structure in Mersenne Subseries",
+        "source_path": "paper/erdos-257-mersenne-support-subseries.tex",
+        "rendered_path": "erdos-257-mersenne-support-subseries.pdf",
+        "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
+      },
+      "what_is_checked": [
+        "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
+        "That binary digit strings restricted to any chosen support retain unique Mersenne coding."
+      ],
+      "what_is_not_checked": [
+        "The universal irrationality problem, or irrationality for any new infinite support.",
+        "The packet's measure classification: cofinite supports have positive measure and infinite-complement supports have measure zero.",
+        "The fair-bit law, the singularity dichotomy, and the explicit dimensions for periodic stride supports.",
+        "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
+      ],
+      "open_obligations": [
+        {
+          "id": "arithmetic_rigidity_for_thin_supports",
+          "statement": "Convert hereditary unique coding into an arithmetic obstruction to rational values for every infinite support, including zero-measure Cantor supports."
+        },
+        {
+          "id": "formalise_measure_and_stride_geometry",
+          "statement": "Kernel-check the exact measure dichotomy, Bernoulli-law classification, and periodic-stride dimension formulas without overstating what they imply arithmetically."
+        }
+      ],
+      "finite_search": null
+    },
+    {
       "problem_id": "erdos_269",
       "erdos_number": 269,
       "short_title": "Three-prime running least common multiples",
@@ -185,10 +309,10 @@
           "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
           "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
           "present": true,
-          "line_count": 716,
-          "declaration_count": 49,
-          "theorem_count": 33,
-          "content_digest": "sha256:3961e0dee259ff1465d9082fa0c7697e2bb5c06f46fd32308c67c47b8609a322"
+          "line_count": 729,
+          "declaration_count": 50,
+          "theorem_count": 34,
+          "content_digest": "sha256:b3279ce084c98e4e7521e0bb94d3e366de010a30548fab0b326390da16ff6c3c"
         },
         {
           "module": "ErdosProblems.Erdos269.ResidueEscape",
@@ -270,10 +394,10 @@
           "module": "ErdosProblems.Erdos1049.RationalBaseLambert",
           "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
           "present": true,
-          "line_count": 151,
-          "declaration_count": 11,
-          "theorem_count": 7,
-          "content_digest": "sha256:af837d7ee5e159e5fb9d4e60f0ee1c3670e58d50534d61472b327c167f194067"
+          "line_count": 216,
+          "declaration_count": 15,
+          "theorem_count": 11,
+          "content_digest": "sha256:fe46fedeec9b8c90f38af320855a5f03542ed8bebf636ac2f141b4e67f33aa56"
         },
         {
           "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
@@ -345,7 +469,7 @@
       "library_root": "Erdos249257.lean",
       "exposition": "paper/erdos249-257-main-paper.tex",
       "route": "python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic",
-      "note": "Covered by the gateway paper and the reviewed claim registry, not by a problem note. The claim registry owns its status."
+      "note": "The gateway paper and reviewed claim registry own reviewed status. A standalone problem note also synthesises the unregistered problem-owned expansion without promoting it into that registry."
     },
     {
       "problem_id": "erdos_257",
@@ -355,12 +479,12 @@
       "library_root": "Erdos249257.lean",
       "exposition": "paper/erdos249-257-main-paper.tex",
       "route": "python3 scripts/query_corpus.py --route erdos257_half_story",
-      "note": "Covered by the gateway paper and the reviewed claim registry, not by a problem note. The claim registry owns its status."
+      "note": "The gateway paper and reviewed claim registry own reviewed status. A standalone problem note also synthesises the unregistered problem-owned expansion without promoting it into that registry."
     }
   ],
   "validation_commands": [
     "python3 scripts/build_problem_index.py --check",
-    "python3 scripts/check_problem_note_sources.py",
+    "python3 scripts/check_problem_note_sources.py --coverage",
     "python3 scripts/check_publication_contract.py"
   ]
 }
