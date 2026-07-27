@@ -33,6 +33,19 @@ def check_dictionary_budget_and_shape() -> None:
 
 
 def check_vocabulary_mismatch_queries() -> None:
+    assert query_corpus.search_terms(
+        "half_mem_mersenneAchievementSet_of_middleProducerTailEscape"
+    ) >= {
+        "half",
+        "mem",
+        "mersenne",
+        "achievement",
+        "set",
+        "middle",
+        "producer",
+        "tail",
+        "escape",
+    }
     rank_two = query_corpus.search_packet("is rank two worth pursuing", 5)
     assert rank_two["query_interpretation"]["operator"]["id"] == "falsify"
     assert rank_two["results"][0]["kind"] == "declaration"
@@ -70,6 +83,9 @@ def check_witness_carrying_semantic_slices() -> None:
     assert {
         row["plane"] for row in rank_cell["typed_provenance"]
     } == {"kernel", "status", "digestion", "navigation"}
+    assert rank_two["operator_synthesis"]["kind"] == (
+        "falsification_synthesis"
+    )
 
     half_value = query_corpus.semantic_slice_packet(
         "what should I try next for the half value problem", 5
@@ -88,6 +104,41 @@ def check_witness_carrying_semantic_slices() -> None:
     assert "neither half-membership" in (
         route_cell["content"]["programme"]["claim_ceiling"]
     )
+    assert {
+        row["id"]
+        for row in half_value["operator_synthesis"]["exact_open_records"]
+    } >= {"remaining_open.half_value_membership"}
+
+    analogy = query_corpus.semantic_slice_packet(
+        "compare half carry compactness with the half achievement set route",
+        4,
+    )
+    assert analogy["operator_synthesis"]["formal_bridge_status"] == (
+        "not_inferred"
+    )
+    assert "remaining_open.half_value_membership" in (
+        analogy["operator_synthesis"]["shared_open_proposition_ids"]
+    )
+
+    support = query_corpus.semantic_slice_packet(
+        "which premises let either sharp curvature or exponent only three "
+        "transport prove irrationality of the totient series",
+        4,
+    )
+    consumer_names = {
+        row["name"]
+        for row in support["operator_synthesis"][
+            "checked_consumer_signatures"
+        ]
+    }
+    assert {
+        "irrational_totientSeries_of_sharpCurvatureSupply",
+        "irrational_totient_series_of_exponentOnlyThreeTransportSupply",
+    } <= consumer_names
+    assert {
+        row["id"]
+        for row in support["operator_synthesis"]["unproved_requirements"]
+    } == {"remaining_open.unbounded_certificate_supply"}
 
     module = query_corpus.semantic_slice_packet(
         "where is the module for a direct dyadic curvature certificate", 4
@@ -155,6 +206,13 @@ def check_unavailable_paper_coordinate_is_typed_not_fatal() -> None:
     assert coordinate["label"] == "sec:missing"
     assert coordinate["availability"] == "authored_source_unavailable_in_worktree"
     assert coordinate["source_ref"] is None
+    packet = query_corpus.paper_label_packet("sec:curvature")
+    assert packet["kind"] == "paper_label"
+    assert packet["paper"]["label"] == "sec:curvature"
+    assert any(
+        claim["id"] == "transport_curvature_reductions"
+        for claim in packet["attached_claims"]
+    )
 
 
 def main() -> int:

@@ -81,6 +81,31 @@ TASKS: tuple[dict[str, Any], ...] = (
         ),
     },
     {
+        "id": "dev_half_alternative_support",
+        "split": "development",
+        "query": (
+            "which proof sockets let either terminal scaled vanishing or "
+            "middle producer tail escape prove half membership"
+        ),
+        "operator": "support",
+        "required_cells": (
+            (
+                "declaration",
+                "half_mem_mersenneAchievementSet_of_terminalScaledVanishing",
+            ),
+            (
+                "declaration",
+                "half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree",
+            ),
+        ),
+        "required_text": (
+            "support_alternative_left",
+            "support_alternative_right",
+            "HalfTerminalOnlyScaledVanishingSequence",
+            "SeamMiddleProducerTailEscapeExceptNegThree",
+        ),
+    },
+    {
         "id": "heldout_affine_annihilation_location",
         "split": "held_out",
         "query": "where is the exact theorem for affine old channel annihilation",
