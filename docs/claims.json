@@ -948,11 +948,12 @@
             "eb_full_support",
             "eb_constant",
             "support_families",
+            "squarefree_support_irrationality",
             "prime_support_irrationality",
             "universal_257"
           ],
-          "status_summary": "Classical formalisation, cited special case, and the open universal target.",
-          "prior_art_posture": "Erdős owns full support; Erdős owns the pairwise-coprime family; Tao–Teräväinen own the prime-support theorem. No priority claim is made for their formalisation.",
+          "status_summary": "Classical formalisation, cited special cases, and the open universal target.",
+          "prior_art_posture": "Erdős owns full support and the pairwise-coprime family; Duverney–Tachiya own the base-2 squarefree-support theorem; Tao–Teräväinen own the base-2 prime-support theorem. The cited squarefree theorem does not cover bases b≥3, and the cited prime-power extension is remark-only. No priority claim is made for the formalised families.",
           "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim eb_full_support",
           "consumer_or_open_obligation": "Establishes the classical benchmark and leaves remaining_open.universal_257_all_infinite_supports.",
@@ -10009,6 +10010,13 @@
       "label": "Transcendence of ∑ σ(m)/2^m",
       "status": "cited only",
       "statement": "Nesterenko (1996); the ladder rung L(Id). Cited for positioning, not formalised here.",
+      "declarations": []
+    },
+    {
+      "id": "squarefree_support_irrationality",
+      "label": "Irrationality of the base-2 squarefree-support series",
+      "status": "cited only",
+      "statement": "Duverney–Tachiya Corollary 1.2 and Example 1.1 prove linear independence of 1 and the squarefree Lambert sum including n=1; subtracting that rational term settles the support {n≥2:n squarefree} at base 2. Their condition |q|^L≤s does not cover the same support at integer bases b≥3. This result is not formalised here.",
       "declarations": []
     },
     {
