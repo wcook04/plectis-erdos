@@ -49,6 +49,18 @@ FORMAL_TRACE_REQUIRED_DEPENDENCIES = {
     "curvature_notMem_int_of_sharpCurvatureCert",
     "rational_totient_series_forces_lcm_cone_flatness",
 }
+FORMAL_PATH_SOURCE = (
+    "Erdos249257.TotientTailPeriodKiller."
+    "irrational_totientSeries_of_sharpCurvatureSupply"
+)
+FORMAL_PATH_TARGET = (
+    "Erdos249257.TotientTailPeriodKiller.tail_diff_int_of_den_dvd"
+)
+FORMAL_PATH_REQUIRED_DECLARATIONS = {
+    "rational_totient_series_forces_lcm_cone_flatness",
+    "eventual_period_of_not_irrational",
+    "tail_diff_int_of_den_dvd",
+}
 SCRATCH_THEOREM = """\
 import Erdos249257.CurvatureCarry
 import Erdos249257.ExponentOnlyTransport
@@ -101,6 +113,34 @@ theorem semanticCompiler_directCurvatureConsumer {H L : ℕ} (hH : 1 ≤ H)
     Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert
       hH hcert
 
+/- A proof-cone reconstruction of the lcm-cone flatness bridge.  The semantic
+   path exposes `eventual_period_of_not_irrational` as the exact intermediate
+   between curvature irrationality and denominator-divisibility arithmetic. -/
+theorem semanticCompiler_reconstructedConeFlatness
+    (hrat : ¬ Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)) :
+    ∃ t₁ : ℕ, ∀ t, t₁ ≤ t → ∀ q m : ℕ, 0 < q →
+      totientTail (q * periodLcm t + m * periodLcm t) -
+        totientTail (q * periodLcm t) ∈ Set.range ((↑) : ℤ → ℝ) := by
+  obtain ⟨h₀, hpos, N₀, hint⟩ := eventual_period_of_not_irrational hrat
+  refine ⟨max h₀ N₀, fun t ht q m hq => ?_⟩
+  have hdvdH : h₀ ∣ periodLcm t :=
+    dvd_periodLcm hpos (le_trans (le_max_left _ _) ht)
+  have hdvd : h₀ ∣ m * periodLcm t := hdvdH.mul_left m
+  have hN : N₀ ≤ q * periodLcm t := by
+    have h1 : N₀ ≤ t := le_trans (le_max_right _ _) ht
+    have h2 : t ≤ periodLcm t := le_periodLcm t
+    have h3 : periodLcm t ≤ q * periodLcm t := by
+      calc
+        periodLcm t = 1 * periodLcm t := (one_mul _).symm
+        _ ≤ q * periodLcm t := Nat.mul_le_mul_right _ hq
+    omega
+  obtain ⟨c, hc⟩ := hdvd
+  have hmem := tail_diff_mul_mem_int hint c (q * periodLcm t) hN
+  have heq : c * h₀ = m * periodLcm t := by
+    rw [hc]
+    ring
+  rwa [heq] at hmem
+
 /- A dependency-index reconstruction of the curvature supply proof socket.
    The proof deliberately uses the two exact theorem dependencies recovered
    from the elaborated body instead of invoking the packaged consumer. -/
@@ -109,7 +149,7 @@ theorem semanticCompiler_reconstructedCurvatureChain
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
   by_contra hrat
   obtain ⟨t₁, hflat⟩ :=
-    rational_totient_series_forces_lcm_cone_flatness hrat
+    semanticCompiler_reconstructedConeFlatness hrat
   obtain ⟨t, ht, hcert⟩ := hsupply (max t₁ 1)
   have ht₁ : t₁ ≤ t := (le_max_left _ _).trans ht
   have htpos : 1 ≤ t := (le_max_right _ _).trans ht
@@ -269,6 +309,45 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     all_recovered.update(formal_dependencies)
     all_ranked.update(trace_ranked_declarations)
     missing_any.update(missing_trace)
+    formal_path = query_corpus.formal_dependency_path(
+        FORMAL_PATH_SOURCE, FORMAL_PATH_TARGET, 8
+    )
+    formal_path_declarations = {
+        node["name"] for node in formal_path.get("nodes", [])[1:]
+    }
+    missing_path = sorted(
+        FORMAL_PATH_REQUIRED_DECLARATIONS - formal_path_declarations
+    )
+    tasks.append(
+        {
+            "id": "formal_multihop_cone_reconstruction",
+            "query": FORMAL_TRACE_QUERY,
+            "semantic_slice_id": trace_slice.get("slice_id"),
+            "semantic_operator": trace_slice[
+                "query_interpretation"
+            ]["operator"]["id"],
+            "required_declarations": sorted(
+                FORMAL_PATH_REQUIRED_DECLARATIONS
+            ),
+            "retrieved_declarations": sorted(
+                formal_path_declarations
+            ),
+            "synthesized_consumer_signatures": {},
+            "ranked_search_recovered_required_declarations": [],
+            "missing_required_declarations": missing_path,
+            "semantic_expansion_gain": len(
+                FORMAL_PATH_REQUIRED_DECLARATIONS
+                & formal_path_declarations
+            ),
+            "dependency_authority": (
+                "shortest_elaborated_value_reference_path"
+            ),
+            "dependency_hop_count": formal_path.get("hop_count"),
+        }
+    )
+    all_required.update(FORMAL_PATH_REQUIRED_DECLARATIONS)
+    all_recovered.update(formal_path_declarations)
+    missing_any.update(missing_path)
     if missing_any:
         return {
             "kind": "semantic_proof_dogfood",

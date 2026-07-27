@@ -246,6 +246,44 @@ def check_elaborated_dependency_witnesses() -> None:
     )
 
 
+def check_multihop_formal_dependency_reasoning() -> None:
+    source = (
+        "Erdos249257.TotientTailPeriodKiller."
+        "irrational_totientSeries_of_sharpCurvatureSupply"
+    )
+    target = (
+        "Erdos249257.TotientTailPeriodKiller."
+        "tail_diff_int_of_den_dvd"
+    )
+    path = query_corpus.formal_dependency_path(source, target, 8)
+    assert path["availability"] == "available"
+    assert path["hop_count"] == 3
+    assert [node["name"] for node in path["nodes"]] == [
+        "irrational_totientSeries_of_sharpCurvatureSupply",
+        "rational_totient_series_forces_lcm_cone_flatness",
+        "eventual_period_of_not_irrational",
+        "tail_diff_int_of_den_dvd",
+    ]
+    assert all(
+        edge["authority"] == "kernel_elaborated_environment"
+        and edge["relation"] == "uses_in_elaborated_value"
+        for edge in path["edges"]
+    )
+    cone = query_corpus.formal_dependency_proof_cone(source, 4, 20)
+    assert cone["availability"] == "available"
+    cone_depths = {
+        node["name"]: node["depth"] for node in cone["nodes"]
+    }
+    assert cone_depths[
+        "rational_totient_series_forces_lcm_cone_flatness"
+    ] == 1
+    assert cone_depths["eventual_period_of_not_irrational"] == 2
+    assert cone_depths["tail_diff_int_of_den_dvd"] == 3
+    assert cone["omission_receipt"]["reachable_node_count_within_depth"] > (
+        cone["omission_receipt"]["emitted_node_count"]
+    )
+
+
 def check_missing_registered_artifact_is_typed_not_fatal() -> None:
     old_root = query_corpus.ROOT
     with tempfile.TemporaryDirectory(prefix="query-corpus-resilience-") as tmp:
@@ -315,6 +353,7 @@ def main() -> int:
     check_vocabulary_mismatch_queries()
     check_witness_carrying_semantic_slices()
     check_elaborated_dependency_witnesses()
+    check_multihop_formal_dependency_reasoning()
     check_missing_registered_artifact_is_typed_not_fatal()
     check_unavailable_paper_coordinate_is_typed_not_fatal()
     print("query corpus semantic-resilience checks: PASS")

@@ -16,6 +16,7 @@ import json
 import re
 import sys
 import unicodedata
+from collections import deque
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -521,6 +522,339 @@ def formal_dependency_neighbourhood(
             "with_source_coordinates;two_hop_paths_are_compositions_of_exact_"
             "direct_edges"
         ),
+        "expansion": {
+            "proof_cone": (
+                f"python3 scripts/query_corpus.py --proof-cone {handle} "
+                "--depth 4 --limit 20"
+            ),
+            "path_to": (
+                "python3 scripts/query_corpus.py --dependency-path "
+                f"{handle} <target_declaration> --depth 8"
+            ),
+        },
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+def resolve_formal_dependency_handle(
+    requested: str, adjacency: dict[str, Any]
+) -> dict[str, Any]:
+    if requested in adjacency["nodes_by_handle"]:
+        return {
+            "availability": "available",
+            "requested": requested,
+            "handle": requested,
+            "resolution": "exact_canonical_handle",
+        }
+    matches = sorted(
+        handle
+        for handle, node in adjacency["nodes_by_handle"].items()
+        if node["name"] == requested
+    )
+    if len(matches) == 1:
+        return {
+            "availability": "available",
+            "requested": requested,
+            "handle": matches[0],
+            "resolution": "unique_short_name",
+        }
+    if matches:
+        return {
+            "availability": "ambiguous_short_name",
+            "requested": requested,
+            "candidate_count": len(matches),
+            "candidate_handles": matches[:20],
+            "omitted_candidate_count": max(0, len(matches) - 20),
+        }
+    return {
+        "availability": "handle_not_source_resolved",
+        "requested": requested,
+    }
+
+
+def compact_formal_dependency_node(
+    node: dict[str, Any], depth: int
+) -> dict[str, Any]:
+    return {
+        "handle": node["handle"],
+        "name": node["name"],
+        "declaration_kind": node["declaration_kind"],
+        "source_ref": node["source_ref"],
+        "depth": depth,
+    }
+
+
+def formal_dependency_proof_cone(
+    requested: str,
+    max_depth: int = 4,
+    node_limit: int = 20,
+) -> dict[str, Any]:
+    """Return a bounded proof-term dependency cone with exact omission counts."""
+    if not 1 <= max_depth <= 8:
+        raise ValueError("formal dependency cone depth must be between 1 and 8")
+    if not 1 <= node_limit <= MAX_LIMIT:
+        raise ValueError(
+            f"formal dependency cone limit must be between 1 and {MAX_LIMIT}"
+        )
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "kind": "formal_dependency_proof_cone",
+            "availability": "unavailable_or_stale",
+            "requested": requested,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    resolution = resolve_formal_dependency_handle(requested, adjacency)
+    if resolution["availability"] != "available":
+        return {
+            "kind": "formal_dependency_proof_cone",
+            **resolution,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    handle = resolution["handle"]
+    depths = {handle: 0}
+    queue = deque([handle])
+    exact_edges: dict[
+        tuple[str, str], tuple[str, ...]
+    ] = {}
+    while queue:
+        source = queue.popleft()
+        source_depth = depths[source]
+        if source_depth >= max_depth:
+            continue
+        for target in adjacency["forward"].get(source, []):
+            if "value_reference" not in target["relations"]:
+                continue
+            target_handle = target["handle"]
+            exact_edges[(source, target_handle)] = tuple(
+                target["relations"]
+            )
+            if target_handle not in depths:
+                depths[target_handle] = source_depth + 1
+                queue.append(target_handle)
+    ordered_handles = list(depths)
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    prioritized_handles = [
+        handle,
+        *[
+            candidate
+            for candidate in ordered_handles[1:]
+            if adjacency["nodes_by_handle"][candidate][
+                "declaration_kind"
+            ]
+            in theorem_kinds
+        ],
+        *[
+            candidate
+            for candidate in ordered_handles[1:]
+            if adjacency["nodes_by_handle"][candidate][
+                "declaration_kind"
+            ]
+            not in theorem_kinds
+        ],
+    ]
+    selected = set(prioritized_handles[:node_limit])
+    selected_handles = [
+        candidate for candidate in ordered_handles if candidate in selected
+    ]
+    emitted_edges = [
+        {
+            "from": source,
+            "relation": "uses_in_elaborated_value",
+            "to": target,
+            "edge_relations": list(relations),
+            "authority": "kernel_elaborated_environment",
+        }
+        for (source, target), relations in exact_edges.items()
+        if source in selected and target in selected
+    ]
+    omitted_handles = [
+        candidate
+        for candidate in prioritized_handles
+        if candidate not in selected
+    ]
+    return {
+        "kind": "formal_dependency_proof_cone",
+        "availability": "available",
+        "requested": requested,
+        "resolved_handle": handle,
+        "handle_resolution": resolution["resolution"],
+        "max_depth": max_depth,
+        "edge_policy": "elaborated_value_references_only",
+        "selection_policy": (
+            "root_then_theorem_like_dependencies_then_other_constants_"
+            "with_stable_breadth_first_order_inside_each_class"
+        ),
+        "nodes": [
+            compact_formal_dependency_node(
+                adjacency["nodes_by_handle"][node_handle],
+                depths[node_handle],
+            )
+            for node_handle in selected_handles
+        ],
+        "edges": emitted_edges,
+        "omission_receipt": {
+            "reachable_node_count_within_depth": len(ordered_handles),
+            "emitted_node_count": len(selected_handles),
+            "omitted_node_count": len(omitted_handles),
+            "reachable_edge_count_within_depth": len(exact_edges),
+            "emitted_edge_count": len(emitted_edges),
+            "omitted_edge_count": len(exact_edges) - len(emitted_edges),
+            "first_omitted_handles": omitted_handles[:8],
+            "node_limit": node_limit,
+        },
+        "authority_posture": (
+            "bounded_composition_of_exact_elaborated_value_reference_edges_"
+            "not_a_claim_that_every_reference_is_a_mathematically_decisive_"
+            "premise"
+        ),
+        "follow": {
+            "expand": (
+                "python3 scripts/query_corpus.py --proof-cone "
+                f"{handle} --depth {min(8, max_depth + 1)} "
+                f"--limit {min(MAX_LIMIT, max(node_limit * 2, 20))}"
+            ),
+            "declaration": (
+                "python3 scripts/query_corpus.py --declaration "
+                "<node.handle>"
+            ),
+        },
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+def formal_dependency_path(
+    requested_source: str,
+    requested_target: str,
+    max_depth: int = 8,
+) -> dict[str, Any]:
+    """Return an exact shortest directed proof-term dependency path."""
+    if not 1 <= max_depth <= 8:
+        raise ValueError("formal dependency path depth must be between 1 and 8")
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "kind": "formal_dependency_path",
+            "availability": "unavailable_or_stale",
+            "requested_source": requested_source,
+            "requested_target": requested_target,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    source_resolution = resolve_formal_dependency_handle(
+        requested_source, adjacency
+    )
+    target_resolution = resolve_formal_dependency_handle(
+        requested_target, adjacency
+    )
+    if (
+        source_resolution["availability"] != "available"
+        or target_resolution["availability"] != "available"
+    ):
+        return {
+            "kind": "formal_dependency_path",
+            "availability": "unresolved_endpoint",
+            "source_resolution": source_resolution,
+            "target_resolution": target_resolution,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    source = source_resolution["handle"]
+    target = target_resolution["handle"]
+    predecessor: dict[str, tuple[str, tuple[str, ...]]] = {}
+    depths = {source: 0}
+    queue = deque([source])
+    while queue and target not in depths:
+        current = queue.popleft()
+        if depths[current] >= max_depth:
+            continue
+        for dependency in adjacency["forward"].get(current, []):
+            if "value_reference" not in dependency["relations"]:
+                continue
+            dependency_handle = dependency["handle"]
+            if dependency_handle in depths:
+                continue
+            depths[dependency_handle] = depths[current] + 1
+            predecessor[dependency_handle] = (
+                current,
+                tuple(dependency["relations"]),
+            )
+            queue.append(dependency_handle)
+    if target not in depths:
+        return {
+            "kind": "formal_dependency_path",
+            "availability": "no_path_within_bound",
+            "source": source,
+            "target": target,
+            "max_depth": max_depth,
+            "explored_node_count": len(depths),
+            "edge_policy": "elaborated_value_references_only",
+            "authority_posture": (
+                "bounded_negative_navigation_result_not_proof_of_global_"
+                "dependency_absence"
+            ),
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    path_handles = [target]
+    path_relations = []
+    while path_handles[-1] != source:
+        previous, relations = predecessor[path_handles[-1]]
+        path_relations.append(relations)
+        path_handles.append(previous)
+    path_handles.reverse()
+    path_relations.reverse()
+    return {
+        "kind": "formal_dependency_path",
+        "availability": "available",
+        "requested_source": requested_source,
+        "requested_target": requested_target,
+        "source": source,
+        "target": target,
+        "hop_count": len(path_handles) - 1,
+        "max_depth": max_depth,
+        "minimality_posture": (
+            "shortest_directed_path_in_the_source_resolved_value_reference_"
+            "graph_within_the_depth_bound"
+        ),
+        "nodes": [
+            compact_formal_dependency_node(
+                adjacency["nodes_by_handle"][handle], depth
+            )
+            for depth, handle in enumerate(path_handles)
+        ],
+        "edges": [
+            {
+                "from": path_handles[index],
+                "relation": "uses_in_elaborated_value",
+                "to": path_handles[index + 1],
+                "edge_relations": list(path_relations[index]),
+                "authority": "kernel_elaborated_environment",
+            }
+            for index in range(len(path_relations))
+        ],
+        "explored_node_count": len(depths),
+        "authority_posture": (
+            "shortest_composition_of_exact_elaborated_value_reference_edges_"
+            "not_a_semantic_causality_or_minimal_premise_proof"
+        ),
+        "follow": {
+            "source_cone": (
+                f"python3 scripts/query_corpus.py --proof-cone {source} "
+                f"--depth {max_depth}"
+            ),
+            "declaration": (
+                "python3 scripts/query_corpus.py --declaration "
+                "<node.handle>"
+            ),
+        },
         "validation": "python3 scripts/build_lean_dependency_index.py --check",
     }
 
@@ -3985,6 +4319,20 @@ def render_card(packet: dict[str, Any]) -> str:
             f"declaration {row['name']} | {row['kind']} | {row['module']}:{row['line']} | claims={','.join(row['claim_ids']) or 'none'}"
             for row in packet["matches"]
         )
+    if kind == "formal_dependency_proof_cone":
+        return (
+            f"proof cone {packet.get('resolved_handle', packet['requested'])} "
+            f"| {packet['availability']} | nodes={len(packet.get('nodes', []))} "
+            f"| edges={len(packet.get('edges', []))} "
+            f"| depth={packet.get('max_depth', 'n/a')}"
+        )
+    if kind == "formal_dependency_path":
+        return (
+            f"dependency path {packet.get('source', packet.get('requested_source'))} "
+            f"-> {packet.get('target', packet.get('requested_target'))} "
+            f"| {packet['availability']} "
+            f"| hops={packet.get('hop_count', 'n/a')}"
+        )
     if kind == "source_coordinate":
         source = packet["source"]
         return (
@@ -4142,6 +4490,12 @@ def main() -> int:
     group.add_argument("--paper-anchor", metavar="LABEL_OR_SOURCE_REF")
     group.add_argument("--open", metavar="ID")
     group.add_argument("--declaration", metavar="NAME")
+    group.add_argument("--proof-cone", metavar="DECLARATION")
+    group.add_argument(
+        "--dependency-path",
+        nargs=2,
+        metavar=("SOURCE_DECLARATION", "TARGET_DECLARATION"),
+    )
     group.add_argument("--source", metavar="MODULE_DOT_LEAN:LINE")
     group.add_argument("--artifact", metavar="PATH_OR_SHA256")
     group.add_argument("--publication-artifact", metavar="ID")
@@ -4161,11 +4515,19 @@ def main() -> int:
     group.add_argument("--search", metavar="TEXT")
     group.add_argument("--ask", metavar="QUESTION")
     parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT)
+    parser.add_argument(
+        "--depth",
+        type=int,
+        default=4,
+        help="maximum dependency depth for --proof-cone/--dependency-path",
+    )
     parser.add_argument("--query", default="", help="rank a connection card toward one task")
     parser.add_argument("--format", choices=("json", "card"), default="json")
     args = parser.parse_args()
     if not 1 <= args.limit <= MAX_LIMIT:
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
+    if not 1 <= args.depth <= 8:
+        parser.error("--depth must be between 1 and 8")
     try:
         if args.claim:
             packet = claim_packet(args.claim)
@@ -4177,6 +4539,16 @@ def main() -> int:
             packet = open_proposition_packet(args.open)
         elif args.declaration:
             packet = declaration_packet(args.declaration, args.limit)
+        elif args.proof_cone:
+            packet = formal_dependency_proof_cone(
+                args.proof_cone, args.depth, args.limit
+            )
+        elif args.dependency_path:
+            packet = formal_dependency_path(
+                args.dependency_path[0],
+                args.dependency_path[1],
+                args.depth,
+            )
         elif args.source:
             packet = source_coordinate_packet(args.source, args.limit)
         elif args.artifact:
