@@ -351,6 +351,10 @@
         },
         {
           "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "declaration": "exists_distinct_binary_selectors_same_fourJet"
+        },
+        {
+          "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
           "declaration": "homEvalThreeTwo_mod_three"
         },
         {
@@ -371,20 +375,21 @@
         "The exact Heine-Zudilin cone endpoint exponent arithmetic used to identify the bottom and top coefficient endpoints.",
         "That homogeneous evaluation at (3,2) sees only the constant endpoint modulo three and the top endpoint modulo two, so unit endpoints obstruct common local factors.",
         "That vanishing of the higher bottom and top endpoint jets is exactly divisibility by the corresponding powers of three and two.",
-        "That the source integer-base ratio inequality implies a strictly negative scalar product-formula margin at three halves."
+        "That the source integer-base ratio inequality implies a strictly negative scalar product-formula margin at three halves.",
+        "That whenever the binary selector space is larger than the finite four-jet target, two distinct subsets collide and their {-1,0,1} difference cancels all four endpoint jets."
       ],
       "what_is_not_checked": [
         "Irrationality at base three halves, or for any rational base.",
         "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
         "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
-        "A growing-rank additive combination cancelling both two-adic and three-adic endpoint jets in both coefficient channels.",
-        "Nonvanishing and sub-gain coefficient height for such a kernel, and the analytic remainder estimate needed for irrationality.",
+        "Enough genuinely independent coefficient pairs to satisfy the checked four-jet pigeonhole inequality at the required quadratic depths.",
+        "That one of the resulting bounded-coefficient collision vectors lies outside the analytic remainder nullspace and has sufficient local gain.",
         "Positivity or decay of the elementary Padé remainder; only its exponent arithmetic is checked."
       ],
       "open_obligations": [
         {
           "id": "three_halves_growing_rank_endpoint_jet_kernel",
-          "statement": "Construct a growing-rank additive kernel that simultaneously cancels quadratically deep bottom three-adic and top two-adic endpoint jets in both coefficient channels, retains a nonzero remainder, and has coefficient height below the local gain; or prove an exact rank obstruction."
+          "statement": "Exhibit enough genuinely independent coefficient pairs to satisfy the checked four-jet pigeonhole cardinal inequality at the required quadratic depths, and prove that at least one resulting {-1,0,1} collision vector lies outside the analytic remainder nullspace with sufficient local gain; or prove an exact rank obstruction."
         },
         {
           "id": "published_height_region_formalisation",
