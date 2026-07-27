@@ -360,7 +360,7 @@ def lean_dependency_index() -> dict[str, Any] | None:
         return None
     if (
         packet.get("schema_version")
-        != "erdos249257-lean-dependency-index/1"
+        != "erdos249257-lean-dependency-index/2"
         or packet.get("source_fingerprint") != atlas.get("source_fingerprint")
         or not isinstance(packet.get("nodes"), list)
         or not isinstance(packet.get("edges"), list)
@@ -441,11 +441,38 @@ def lean_dependency_adjacency() -> dict[str, Any] | None:
                 row["handle"],
             )
         )
+    formal_type_affordances = {}
+    affordance_packet = packet.get("formal_type_affordances", {})
+    symbol_table = affordance_packet.get("symbol_table", [])
+    for row in affordance_packet.get("rows", []):
+        if (
+            not isinstance(row, list)
+            or len(row) != 4
+            or row[0] not in nodes_by_id
+            or not isinstance(row[1], int)
+            or not isinstance(row[2], int)
+            or not isinstance(row[3], list)
+            or not 0 <= row[2] < len(symbol_table)
+            or any(
+                not isinstance(symbol_id, int)
+                or not 0 <= symbol_id < len(symbol_table)
+                for symbol_id in row[3]
+            )
+        ):
+            continue
+        formal_type_affordances[nodes_by_id[row[0]]["handle"]] = {
+            "forall_binder_count": row[1],
+            "conclusion_head": symbol_table[row[2]],
+            "conclusion_symbols": [
+                symbol_table[symbol_id] for symbol_id in row[3]
+            ],
+        }
     return {
         "packet": packet,
         "nodes_by_handle": nodes_by_handle,
         "forward": forward,
         "reverse": reverse,
+        "formal_type_affordances": formal_type_affordances,
     }
 
 
@@ -855,6 +882,327 @@ def formal_dependency_path(
                 "<node.handle>"
             ),
         },
+        "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+@lru_cache(maxsize=1)
+def declaration_rows_by_qualified_name() -> dict[str, dict[str, Any]]:
+    atlas = load("docs/declaration_atlas.json")
+    return {
+        qualified_declaration_name(row): row
+        for row in atlas_declarations(atlas)
+    }
+
+
+def support_goal_request(query: str) -> dict[str, str] | None:
+    """Extract a goal and optional premise context from a support question."""
+    patterns = (
+        (
+            r"\b(?:need|want|trying)\s+to\s+prove\s+(.+?)\s+"
+            r"(?:from|assuming|given)\s+(.+?)(?:[;?]|$)",
+            True,
+        ),
+        (
+            r"\b(?:need|want|trying)\s+to\s+prove\s+(.+?)(?:[;?]|$)",
+            False,
+        ),
+        (r"\bgoal\s*(?:is|:)\s*(.+?)(?:[;?]|$)", False),
+    )
+    for pattern, has_context in patterns:
+        match = re.search(pattern, query, flags=re.IGNORECASE)
+        if match is None:
+            continue
+        return {
+            "goal": match.group(1).strip(),
+            "context": (
+                match.group(2).strip() if has_context else ""
+            ),
+            "extraction": "ordinary_language_goal_pattern",
+        }
+    return None
+
+
+def formal_goal_shape_cues(goal: str) -> list[str]:
+    terms = search_terms(goal)
+    cues = []
+    if "integrality" in terms:
+        cues.append("direct_integer_membership")
+    if "irrational" in terms:
+        cues.append("irrationality")
+    if "mem" in terms:
+        cues.append("membership")
+    if "exist" in terms or "exists" in terms:
+        cues.append("existence")
+    if (
+        "=" in goal
+        or "equal" in terms
+        or "equality" in terms
+    ):
+        cues.append("equality")
+    if any(token in goal for token in ("≤", "<", "≥", ">")):
+        cues.append("order_relation")
+    return cues
+
+
+def formal_affordance_shape_matches(
+    cues: list[str], affordance: dict[str, Any]
+) -> list[str]:
+    head = affordance["conclusion_head"]
+    symbols = set(affordance["conclusion_symbols"])
+    direct_membership = (
+        head.endswith("Membership.mem")
+        or head.endswith("Set.Mem")
+        or head == "Membership.mem"
+    )
+    integer_range = any(
+        symbol.endswith("Set.range") for symbol in symbols
+    ) and any(
+        symbol.endswith("Int.cast")
+        or "IntCast" in symbol
+        or symbol.endswith("Int.ofNat")
+        for symbol in symbols
+    )
+    matches = []
+    if (
+        "direct_integer_membership" in cues
+        and direct_membership
+        and integer_range
+    ):
+        matches.append("direct_integer_membership")
+    if (
+        "irrationality" in cues
+        and head.endswith("Irrational")
+    ):
+        matches.append("irrationality")
+    if "membership" in cues and direct_membership:
+        matches.append("membership")
+    if "existence" in cues and head.endswith("Exists"):
+        matches.append("existence")
+    if "equality" in cues and head.endswith("Eq"):
+        matches.append("equality")
+    if (
+        "order_relation" in cues
+        and (
+            head.endswith("LE.le")
+            or head.endswith("LT.lt")
+            or head.endswith("GE.ge")
+            or head.endswith("GT.gt")
+        )
+    ):
+        matches.append("order_relation")
+    return matches
+
+
+def formal_goal_support_packet(
+    query: str,
+    limit: int,
+    *,
+    explicit_goal: bool = False,
+) -> dict[str, Any]:
+    """Rank theorem candidates by elaborated conclusion affordances."""
+    request = support_goal_request(query)
+    if request is None and explicit_goal:
+        request = {
+            "goal": query.strip(),
+            "context": "",
+            "extraction": "explicit_goal_argument",
+        }
+    if request is None:
+        return {
+            "kind": "formal_goal_support",
+            "availability": "no_goal_expression",
+            "query": query,
+        }
+    adjacency = lean_dependency_adjacency()
+    if adjacency is None:
+        return {
+            "kind": "formal_goal_support",
+            "availability": "unavailable_or_stale",
+            "query": query,
+            "goal_request": request,
+            "validation": (
+                "python3 scripts/build_lean_dependency_index.py --check"
+            ),
+        }
+    generic_terms = {
+        "applie",
+        "cast",
+        "erdo",
+        "goal",
+        "int",
+        "nat",
+        "prove",
+        "real",
+        "result",
+        "set",
+        "theorem",
+    }
+    goal_terms = {
+        term
+        for term in semantic_content_terms(request["goal"])
+        if len(term) > 1 and term not in generic_terms
+    }
+    context_terms = {
+        term
+        for term in search_terms(request["context"])
+        if len(term) > 1 and term not in generic_terms
+    }
+    context_phrase = re.sub(
+        r"^(?:a|an|the)\s+",
+        "",
+        normalized_search_text(request["context"]),
+    )
+    shape_cues = formal_goal_shape_cues(request["goal"])
+    declaration_rows = declaration_rows_by_qualified_name()
+    ranked = []
+    for handle, affordance in adjacency[
+        "formal_type_affordances"
+    ].items():
+        node = adjacency["nodes_by_handle"][handle]
+        if node["declaration_kind"] not in {
+            "theorem",
+            "lemma",
+            "corollary",
+            "proposition",
+        }:
+            continue
+        declaration = declaration_rows.get(handle)
+        if (
+            declaration is None
+            or not declaration_externally_addressable(declaration)
+        ):
+            continue
+        symbol_terms = set().union(
+            *(
+                search_terms(symbol)
+                for symbol in (
+                    affordance["conclusion_head"],
+                    *affordance["conclusion_symbols"],
+                )
+            )
+        )
+        statement_text = " ".join(
+            str(value)
+            for value in (
+                declaration.get("signature"),
+                declaration.get("docstring"),
+            )
+            if value
+        )
+        statement_terms = search_terms(statement_text)
+        context_phrase_match = bool(
+            context_phrase
+            and context_phrase
+            in normalized_search_text(statement_text)
+        )
+        shape_matches = formal_affordance_shape_matches(
+            shape_cues, affordance
+        )
+        formal_matches = sorted(goal_terms & symbol_terms)
+        goal_statement_matches = sorted(goal_terms & statement_terms)
+        context_matches = sorted(context_terms & statement_terms)
+        if (
+            not shape_matches
+            and len(formal_matches) < 2
+            and len(goal_statement_matches) < 2
+        ):
+            continue
+        ranked.append(
+            (
+                -len(shape_matches),
+                -len(formal_matches),
+                -int(context_phrase_match),
+                -len(context_matches),
+                -len(goal_statement_matches),
+                affordance["forall_binder_count"],
+                handle,
+                declaration,
+                affordance,
+                shape_matches,
+                formal_matches,
+                context_phrase_match,
+                context_matches,
+                goal_statement_matches,
+            )
+        )
+    ranked.sort(key=lambda row: row[:7])
+    candidates = []
+    for rank_index, row in enumerate(ranked[:limit]):
+        (
+            _,
+            _,
+            _,
+            _,
+            _,
+            _,
+            handle,
+            declaration,
+            affordance,
+            shape_matches,
+            formal_matches,
+            context_phrase_match,
+            context_matches,
+            goal_statement_matches,
+        ) = row
+        conclusion_symbols = affordance["conclusion_symbols"]
+        candidates.append(
+            {
+                "kind": "declaration",
+                **compact_declaration(declaration),
+                "signature_excerpt": str(
+                    declaration.get("signature") or ""
+                )[:480],
+                "formal_goal_rank": rank_index,
+                "formal_affordance": {
+                    "forall_binder_count": affordance[
+                        "forall_binder_count"
+                    ],
+                    "conclusion_head": affordance[
+                        "conclusion_head"
+                    ],
+                    "conclusion_symbols": conclusion_symbols[:16],
+                    "omitted_conclusion_symbol_count": max(
+                        0, len(conclusion_symbols) - 16
+                    ),
+                },
+                "match_receipt": {
+                    "shape_matches": shape_matches,
+                    "formal_goal_term_matches": formal_matches,
+                    "context_phrase_match": context_phrase_match,
+                    "context_statement_matches": context_matches,
+                    "goal_statement_matches": (
+                        goal_statement_matches
+                    ),
+                },
+                "lean_application_candidate": f"apply {handle}",
+            }
+        )
+    return {
+        "kind": "formal_goal_support",
+        "availability": (
+            "available" if candidates else "no_candidate_within_contract"
+        ),
+        "query": query,
+        "goal_request": request,
+        "goal_terms": sorted(goal_terms),
+        "context_terms": sorted(context_terms),
+        "goal_shape_cues": shape_cues,
+        "candidate_count": len(ranked),
+        "candidates": candidates,
+        "omission_receipt": {
+            "candidate_count": len(ranked),
+            "emitted_candidate_count": len(candidates),
+            "omitted_candidate_count": max(
+                0, len(ranked) - len(candidates)
+            ),
+            "limit": limit,
+        },
+        "authority_posture": (
+            "elaborated_conclusion_shape_and_symbol_candidate_ranking_"
+            "requires_Lean_elaboration_at_the_target_goal_not_a_unification_"
+            "or_applicability_proof"
+        ),
         "validation": "python3 scripts/build_lean_dependency_index.py --check",
     }
 
@@ -3963,6 +4311,15 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         if operator_id == "trace"
         else {"availability": "not_a_trace_query"}
     )
+    goal_support = (
+        formal_goal_support_packet(query, 3)
+        if operator_id == "support"
+        and support_goal_request(query) is not None
+        else {
+            "kind": "formal_goal_support",
+            "availability": "no_goal_expression",
+        }
+    )
     if trace_resolution["availability"] not in (
         "available",
         "no_explicit_endpoint_pair",
@@ -4036,6 +4393,33 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
             )
         selected_with_reasons = selected_with_reasons[
             : min(limit, MAX_SEMANTIC_CELLS)
+        ]
+    elif (
+        goal_support["availability"] == "available"
+        and goal_support["candidates"]
+    ):
+        interpretation = {
+            **interpretation,
+            "formal_goal_support": {
+                "availability": "available",
+                "goal_request": goal_support["goal_request"],
+                "goal_shape_cues": goal_support[
+                    "goal_shape_cues"
+                ],
+                "candidate_count": goal_support["candidate_count"],
+                "selected_declaration": semantic_result_key(
+                    goal_support["candidates"][0]
+                ),
+                "authority_posture": goal_support[
+                    "authority_posture"
+                ],
+            },
+        }
+        selected_with_reasons = [
+            (
+                goal_support["candidates"][0],
+                "formal_goal_shape_candidate",
+            )
         ]
     elif len(analogy_subjects) == 2:
         interpretation = {
@@ -4218,6 +4602,11 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         edge for cell in cells for edge in cell["witness_edges"]
     ]
     synthesis = operator_synthesis(operator_id, cells)
+    if goal_support["availability"] == "available":
+        synthesis = {
+            **synthesis,
+            "formal_goal_support": goal_support,
+        }
     if trace_resolution["availability"] == "available":
         formal_path = trace_resolution["formal_dependency_path"]
         synthesis = {
@@ -4533,6 +4922,13 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| {packet['availability']} "
             f"| hops={packet.get('hop_count', 'n/a')}"
         )
+    if kind == "formal_goal_support":
+        return (
+            f"formal goal support | {packet['availability']} "
+            f"| goal={packet.get('goal_request', {}).get('goal', 'unresolved')} "
+            f"| candidates={len(packet.get('candidates', []))}/"
+            f"{packet.get('candidate_count', 0)}"
+        )
     if kind == "source_coordinate":
         source = packet["source"]
         return (
@@ -4690,6 +5086,7 @@ def main() -> int:
     group.add_argument("--paper-anchor", metavar="LABEL_OR_SOURCE_REF")
     group.add_argument("--open", metavar="ID")
     group.add_argument("--declaration", metavar="NAME")
+    group.add_argument("--goal-support", metavar="LEAN_OR_MATHEMATICAL_GOAL")
     group.add_argument("--proof-cone", metavar="DECLARATION")
     group.add_argument(
         "--dependency-path",
@@ -4739,6 +5136,12 @@ def main() -> int:
             packet = open_proposition_packet(args.open)
         elif args.declaration:
             packet = declaration_packet(args.declaration, args.limit)
+        elif args.goal_support:
+            packet = formal_goal_support_packet(
+                args.goal_support,
+                args.limit,
+                explicit_goal=True,
+            )
         elif args.proof_cone:
             packet = formal_dependency_proof_cone(
                 args.proof_cone, args.depth, args.limit

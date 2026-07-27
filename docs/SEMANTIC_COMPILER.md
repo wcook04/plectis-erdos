@@ -12,6 +12,7 @@ The main entry points are:
 python3 scripts/query_corpus.py --vocabulary
 python3 scripts/query_corpus.py --search "<text>"
 python3 scripts/query_corpus.py --ask "<question>"
+python3 scripts/query_corpus.py --goal-support "<Lean or mathematical goal>"
 ```
 
 `--search` returns ranked handles. `--ask` expands at most four handles into an
@@ -29,6 +30,22 @@ open records and claim ceilings.
 Private and local declarations remain navigable as source witnesses, but they
 are marked non-addressable and are never emitted as external scratch-module
 `apply` candidates.
+
+Goal-support queries use a compact projection of the elaborated Lean types.
+For each source-resolved declaration, the dependency index records the number
+of outer `forall`/`let` binders, the head constant of the conclusion, and all
+constants occurring below that conclusion. The compiler compares those formal
+affordances with goal shapes such as irrationality, equality, divisibility,
+existence, inequalities, and integer membership. It then combines conclusion
+shape with formal-symbol, exact-context, and statement overlap. Ordinary
+support questions that contain a recognizable goal shape use the same ranking
+and attach the candidate receipt to their semantic slice.
+
+This ranking requires the stored elaborated environment, but it is not Lean
+unification and does not establish that a candidate applies. The result
+records the extracted goal cues, formal match reasons, and a
+namespace-qualified `apply` candidate that must still elaborate in the user's
+actual local context.
 
 Declaration cells retain the short authored name for display and carry a
 namespace-qualified canonical handle for expansion, witness-graph identity,
@@ -131,7 +148,22 @@ atlas source coordinates. Corpus membership follows Lean's owning module
 rather than declaration namespace, so declarations intentionally living in
 top-level mathematical namespaces remain covered. The builder first runs the
 incremental `lake build Erdos249257` target so the loaded `.olean` environment
-is current with the source fingerprint.
+is current with the source fingerprint. Version 2 of the index also stores the
+compact elaborated conclusion affordances used by `--goal-support`; this adds
+no Lean invocation to an individual query.
+
+A goal can therefore be routed without knowing its theorem name:
+
+```sh
+python3 scripts/query_corpus.py --goal-support \
+  "I need to prove totientTail (N + h) - totientTail N is an integer \
+from a rational totient series; which theorem applies?"
+```
+
+For the pinned corpus this ranks
+`tail_diff_int_of_den_dvd` first, with conclusion head `Membership.mem` and
+the direct-integer-membership shape. That is an exact navigation benchmark,
+not a hard-coded theorem alias or a proof that the caller has its hypotheses.
 
 Two explicit drilldowns expose longer formal structure:
 
@@ -197,7 +229,7 @@ claim, open proposition, and reading route. It also expands every typed claim,
 open, and route packet, checks all vocabulary hints, and asks one natural
 language question for each mathematical programme.
 
-The proof dogfood runs five tasks. The first recovers two conditional #249
+The proof dogfood runs six tasks. The first recovers two conditional #249
 proof sockets and asks Lean to check a new disjunctive irrationality
 corollary. The second recovers two sufficient #257 half-membership consumers
 and checks their disjunctive composition. The third begins from ordinary
@@ -210,7 +242,10 @@ packaged consumer. The fifth follows the exact three-hop path from that
 consumer through lcm-cone flatness and eventual tail periodicity to the
 denominator-divisibility theorem starting only from the ordinary-language
 endpoint question above, reconstructs the cone-flatness bridge, and uses the
-reconstruction inside the curvature proof. The corollaries prove none of
+reconstruction inside the curvature proof. The sixth starts only from the
+ordinary-language integer-valued totient-tail goal above, selects the exact
+formally shape-compatible theorem, and asks Lean to check its application in a
+fresh scratch theorem. The corollaries prove none of
 their antecedents. In particular, they make no progress on the unbounded #249
 producer or the open #257 half-membership question. These tests measure
 premise recovery and formal composition, not solutions of the Erdős problems.

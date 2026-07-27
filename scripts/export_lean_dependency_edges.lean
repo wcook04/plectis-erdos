@@ -15,6 +15,18 @@ private def emitLine (stdout : IO.FS.Stream) (line : String) :
     Lean.Elab.Command.CommandElabM Unit :=
   liftM <| stdout.putStr (line ++ "\n")
 
+private partial def conclusionShape (type : Expr) (binderCount : Nat := 0) :
+    Nat × Expr :=
+  match type with
+  | .forallE _ _ body _ => conclusionShape body (binderCount + 1)
+  | .letE _ _ _ body _ => conclusionShape body binderCount
+  | conclusion => (binderCount, conclusion)
+
+private def conclusionHeadLabel (conclusion : Expr) : String :=
+  match conclusion.getAppFn with
+  | .const name _ => name.toString
+  | _ => "expr.nonconstant_head"
+
 private def emitDependencies (stdout : IO.FS.Stream) (env : Environment)
     (source : Name) (relation : String) (dependencies : NameSet) :
     Lean.Elab.Command.CommandElabM Nat := do
@@ -43,6 +55,15 @@ run_cmd do
     if isCorpusConstant env source && !source.isInternal then
       emitLine stdout <|
         "AIW_NODE\t" ++ source.toString ++ "\t" ++ moduleString env source
+      let (binderCount, conclusion) := conclusionShape info.type
+      emitLine stdout <|
+        "AIW_TYPE_SHAPE\t" ++ source.toString ++ "\t" ++
+        toString binderCount ++ "\t" ++ conclusionHeadLabel conclusion
+      for reference in conclusion.getUsedConstantsAsSet do
+        if !reference.isInternal then
+          emitLine stdout <|
+            "AIW_CONCLUSION_REF\t" ++ source.toString ++ "\t" ++
+            reference.toString
       let typeOmissions ← emitDependencies stdout env source
         "type_reference" info.type.getUsedConstantsAsSet
       let valueOmissions ←
