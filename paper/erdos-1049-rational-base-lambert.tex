@@ -88,13 +88,22 @@ integer-base argument from running at $3/2$?
 
 \paragraph{Relation to prior work.}
 The statement of Problem~\#1049 has been formalised before, as a conjecture
-with an unfilled proof, in the \emph{formal-conjectures} collection.  That is a
-statement of the question; the present note formalises propositions about the
-clearing argument, and neither answers it.  Prior mathematical work on the
-problem is Erd\H{o}s's integer-base theorem~\cite{erdos1948} and the height
-criterion of~\cite{bv1994}; no claim of priority is made for anything below,
-which concerns the formal status of an argument rather than a new theorem about
-$F(t)$.
+with an unfilled proof, in the \emph{Formal Conjectures}
+collection~\cite{formalconjectures1049}.  That is a statement of the question;
+the present note formalises propositions about the clearing argument, and
+neither answers it.  Erd\H{o}s's positive-integer theorem~\cite{erdos1948} sits
+inside a larger integer-base literature: Van Assche recovered the
+integer-base irrationality and an irrationality-measure bound using little
+$q$-Legendre Pad\'e approximants~\cite[Thm.~1]{vanassche2001}, while Vandehey
+completed the elementary digit method for negative integer bases and bounded
+coefficient sequences~\cite[Thm.~1.2]{vandehey2013}.  Both retain an integer
+base.  The rational non-integer progress relevant here is instead the height
+criterion of Bundschuh and V\"a\"an\"anen~\cite{bv1994}.  This makes the
+primitive-normalisation no-go and the surviving additive-kernel programme,
+rather than the elementary corridor observation alone, the main contribution
+to surface from this note.  No claim of priority is made for anything below,
+which concerns the formal status of an argument rather than a new theorem
+about $F(t)$.
 
 \paragraph{The integer-base argument, in outline.}
 Suppose $F(b)=p/q$.  Cut the series at a level $N$, multiply by $q b^{N}$, and
@@ -745,9 +754,21 @@ three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{323}{t
   \href{https://www.impan.pl/shop/en/publication/transaction/download/product/82435}{\emph{Heine's
   basic transform and a permutation group for \(q\)-harmonic series}},
   Acta Arith. \textbf{111} (2004), no.~2, 153--164.
+\bibitem{vanassche2001} W.~Van Assche,
+  \href{https://arxiv.org/abs/math/0101187}{\emph{Little \(q\)-Legendre
+  polynomials and irrationality of certain Lambert series}},
+  Ramanujan J. \textbf{5} (2001), 295--310.
+\bibitem{vandehey2013} J.~Vandehey,
+  \href{https://arxiv.org/abs/1206.0340}{\emph{On an incomplete argument of
+  Erd\H{o}s on the irrationality of Lambert series}},
+  Integers \textbf{13} (2013), Paper A58.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/1049}{\emph{Erd\H{o}s Problem \#1049}},
   \texttt{erdosproblems.com/1049}, accessed 22 July 2026.
+\bibitem{formalconjectures1049} The Formal Conjectures Authors,
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/1049.lean}
+  {\emph{FormalConjectures.ErdosProblems.\texttt{1049}}},
+  Lean source, 2025, accessed 27 July 2026.
 \end{thebibliography}
 
 \end{document}
