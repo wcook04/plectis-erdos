@@ -279,19 +279,19 @@
           "module": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
           "path": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
           "present": true,
-          "line_count": 68,
-          "declaration_count": 6,
-          "theorem_count": 3,
-          "content_digest": "sha256:cf2965b3ba4a09f904b6cac34b7731f71576b067de3e8388e5a34ed1ffe80913"
+          "line_count": 222,
+          "declaration_count": 19,
+          "theorem_count": 14,
+          "content_digest": "sha256:c7b54971556577d73bbc563dcf14eaf62aef8d31e1450c4e7337028e46013690"
         },
         {
           "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
           "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
           "present": true,
-          "line_count": 324,
-          "declaration_count": 28,
-          "theorem_count": 18,
-          "content_digest": "sha256:55b24649b891717fec08fcc32635ba9fca516a715a9701b204da7e027ef20b10"
+          "line_count": 345,
+          "declaration_count": 29,
+          "theorem_count": 19,
+          "content_digest": "sha256:7c5542b1d2d9951ce43f5f92f43dc0884f079620c9805ddc96b4dd856d5f36d3"
         }
       ],
       "note": {
@@ -307,8 +307,10 @@
         "That for every noninteger base with denominator at least two the forcing magnitude grows at least exponentially, while at denominator one it collapses to a bounded expression.",
         "Two exact arithmetic facts used by the published height criterion at base seven halves.",
         "Polynomial bounds on the doubled denominator exponents in the homogenised Padé construction, together with an exact gap identity.",
+        "The exact exterior-determinant elimination identity, and that rowwise contents scale the Padé errors, exterior determinant, and absolute determinant height by the same factors.",
         "The exact Heine-Zudilin cone endpoint exponent arithmetic used to identify the bottom and top coefficient endpoints.",
         "That homogeneous evaluation at (3,2) sees only the constant endpoint modulo three and the top endpoint modulo two, so unit endpoints obstruct common local factors.",
+        "That under unit top and constant endpoint hypotheses, a common multiplier of the two specialised coefficient channels is divisible by neither two nor three; the missing local gain must therefore survive primitive normalisation.",
         "That vanishing of the higher bottom and top endpoint jets is exactly divisibility by the corresponding powers of three and two.",
         "That the source integer-base ratio inequality implies a strictly negative scalar product-formula margin at three halves.",
         "That the four-jet target has exact cardinality (3^R)^2(2^S)^2 and, for positive R, any family with n at least 4R+2S forces two distinct binary selectors to collide; their {-1,0,1} difference cancels all four endpoint jets."
@@ -317,14 +319,14 @@
         "Irrationality at base three halves, or for any rational base.",
         "The published analytic height theorem, which is cited and used as an external result and is not formalised here.",
         "The all-scale Heine-Zudilin coefficient construction at rational base three halves; the primary source assumes an integer base.",
-        "A sufficiently large non-collapsed coefficient family meeting the checked n >= 4R+2S threshold at the required quadratic depths.",
+        "A sufficiently large primitive-normalised, non-collapsed coefficient family meeting the checked n >= 4R+2S threshold at the required quadratic depths.",
         "That one of the resulting bounded-coefficient collision vectors has a nonzero polynomial pair, lies outside the analytic remainder nullspace, and has sufficient local gain.",
         "Positivity or decay of the elementary Padé remainder; only its exponent arithmetic is checked."
       ],
       "open_obligations": [
         {
           "id": "three_halves_growing_rank_endpoint_jet_kernel",
-          "statement": "At positive quadratic target depths R_n,S_n, exhibit at least 4R_n+2S_n coefficient pairs from a genuinely non-collapsed deformation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair, lies outside the analytic remainder nullspace, and has sufficient local gain; or prove an exact rank obstruction."
+          "statement": "After dividing every coefficient pair by its rowwise common content, at positive quadratic target depths R_n,S_n exhibit at least 4R_n+2S_n primitive coefficient pairs from a genuinely non-collapsed deformation, prove that the required two-adic and three-adic gain survives primitive normalisation, and prove that at least one resulting checked {-1,0,1} collision has a nonzero polynomial pair and lies outside the analytic remainder nullspace; or prove an exact rank obstruction."
         },
         {
           "id": "published_height_region_formalisation",
