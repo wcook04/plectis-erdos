@@ -162,9 +162,68 @@
       "directory": "ErdosProblems/Erdos269",
       "principal_module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
       "companion_modules": [
-        "ErdosProblems.Erdos269.ResidueEscape"
+        "ErdosProblems.Erdos269.ResidueEscape",
+        "ErdosProblems.Erdos269.RestrictedFloorSum"
       ],
       "note_artifact_id": "erdos_269_note",
+      "required_note_declarations": [
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "smoothPrefixLcm_eq_threePrimeHeight"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "smoothPrefixLcm_eq_of_sameLogCell"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "smoothPrefixLcm_firstLogStep"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "smoothPrefixLcm_secondLogStep"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "smoothPrefixLcm_thirdLogStep"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "threePrimeJumpSetWithOrigin_card"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "finiteSmoothKernelSum_groupedByHeight"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "smoothExponentShell_card_quadratic"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "kernel_235_not_rankOne"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "declaration": "tailStateStep_eq"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ResidueEscape",
+          "declaration": "no_bounded_positive_state_of_residue_escape"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.ResidueEscape",
+          "declaration": "no_bounded_positive_int_state_of_leastPositiveResidue"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
+          "declaration": "CofinalLocalWindowEscape"
+        },
+        {
+          "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
+          "declaration": "no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+        }
+      ],
       "what_is_checked": [
         "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.",
         "That equal logarithmic coordinates give an equal prefix least common multiple, so the running value is constant on logarithmic cells.",
@@ -173,18 +232,25 @@
         "That a finite smooth lattice sum groups exactly by running height, with the height fibre cardinality as coefficient.",
         "A quadratic bound on the cardinality of the actual filtered exponent shell.",
         "That the two-by-two determinants of the lattice kernel at the smallest instance are not all zero, so no rank-one separation exists.",
-        "A finite contradiction consuming a residue-escape hypothesis, stated with that hypothesis explicit and unproved."
+        "The canonical least-positive-residue interval and congruence facts, including the zero-residue representative.",
+        "The exact local-window identity for an integral carry.",
+        "A denominator-dependent CofinalLocalWindowEscape proposition and the full theorem that it rules out every positive reduced integral carry satisfying the matching bound."
       ],
       "what_is_not_checked": [
         "Irrationality or transcendence in any three-prime case.",
-        "The residue-escape hypothesis itself, which is assumed by the consumer theorem rather than proved.",
+        "The actual ordered {2,3,5} radix and forcing words, and the derivation of the denominator-dependent short bound from a hypothetical rational value.",
+        "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
         "The infinite limit of the jump expansion; only its finite core is checked.",
         "Any unbounded denominator exclusion. The finite certificates exclude denominators below an explicit bound and no further."
       ],
       "open_obligations": [
         {
-          "id": "uniform_prime_power_residue_escape",
-          "statement": "Under the rational carry recurrence, force a nonzero residue in some prime-power channel beyond every finite level."
+          "id": "actual_local_window_residue_escape",
+          "statement": "For every positive B coprime to 30 and every starting index, produce a later actual {2,3,5} window whose least positive forcing residue exceeds the exact denominator-dependent carry bound."
+        },
+        {
+          "id": "actual_rational_carry_instantiation",
+          "statement": "Formalize the ordered {2,3,5} radix and forcing words and derive the positive reduced carry recurrence and its bound from a hypothetical rational value."
         },
         {
           "id": "nonstationary_analytic_theorem",
