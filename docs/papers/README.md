@@ -4,11 +4,20 @@
      private system repository. Do not edit by hand: edits are overwritten
      on the next export, and the manuscripts are the source of truth. -->
 
-One private system, two public repositories, three papers. This directory
-carries all three, in both repositories, so a reader who cloned either one
-can read all of them offline.
+This directory carries every active manuscript as navigable text in both
+public repositories. A retired manuscript that remains shipped as a root
+PDF is carried only by its home repository for provenance; it is not
+mirrored or restored to an active publication route.
 
-Three papers, three questions. Pick the question you are actually asking:
+This checkout carries 4 active papers and 1 retired provenance paper. Pick the question you are actually asking:
+
+### What is mathematically proved about Erdős #249 and #257, and what exactly remains open?
+
+**Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257** · **retired provenance manuscript**
+
+[full text](full-text/erdos249-257-main-paper.md) · [PDF](../../erdos249-257-main-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex) · 157 sections · `erdos249-257-main` · native to this repository
+
+The paper's own reading map sends a first pass to [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
 
 ### What is proved about the dyadic sections of Euler's totient and the finite denominator bound, and what still blocks Erdős #249?
 
@@ -49,6 +58,7 @@ is proof authority. In order:
 
 > checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition.
 
+- `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
 - `erdos-249-binary-totient-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
 - `erdos-257-mersenne-support-subseries` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, which remains open.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
