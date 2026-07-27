@@ -376,7 +376,7 @@ What the equivalence changes is the search space, not the difficulty.
 
 \paragraph{Combined constraints on a rational counterexample.}
 Taken together: a counterexample to Problem~\ref{res:problem} would have an
-unbounded scaled-tail states obeying an exact linear recurrence and
+unbounded scaled-tail sequence obeying an exact linear recurrence and
 sublogarithmic divisor-coverage gaps.  If its reciprocal sum converged and its
 reduced odd denominator part were greater than~$1$, it would also satisfy
 Theorem~\ref{res:mass}.  Theorem~\ref{res:bmc} reconstructs every rational
@@ -421,9 +421,18 @@ factorials $\{n!\}$ & every $b\ge2$ &
 powers of two $\{2^k\}$ & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{5731}{irrational_erdosSum_two_pow_support}{checked here} \\
 pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
-  \mword{Erdos249257/CertificateKernel.lean}{10448}{irrational_erdosSupportSeries_pairwise_coprime}{checked here} \\
+  Erd\H{o}s~\cite{erdos1968}, theorem on p.~222;
+  \mword{Erdos249257/CertificateKernel.lean}{10448}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here} \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Multiplicative closure: Chowla--Erd\H{o}s, refined}}\\
+$F_s(E)$ and the monomial images
+  $\{j n^i:n\in F_s(E)\}$ & $b^L\le s$,
+  $L=\lcm(1,\dots,\ell)$ &
+  Duverney--Tachiya~\cite{duverneytachiya}, Cor.~1.2;
+  linear independence, not only irrationality; not formalised here \\
+$s$-free positive integers, with or without $1$ & $2\le b\le s$ &
+  \emph{ibid.}, with $E$ the primes and $\ell=i=j=1$;
+  deleting $1$ changes the value by $1/(b-1)\in\Q$ \\
 squarefree & $b=2$ only & Duverney--Tachiya~\cite{duverneytachiya}, Cor.~1.2
   with $F_2(P)$ and Ex.~1.1; not formalised here \\
 coprime to a fixed $N$; sums of two squares & every $b\ge2$ &
@@ -827,15 +836,17 @@ That closes the sign-truncation construction; it excludes no other support.
 
 \section{Open problems}\label{sec:open}
 
-Two propositions remain.  They are not independent, and the relation between
+For the base-$2$ universal problem, two endpoint propositions organise the
+remaining discussion.  They are not independent, and the relation between
 them is asymmetric.  No finite support has value $1/2$
 (Theorem~\ref{res:half}), so $1/2\in\Ach$ would exhibit an \emph{infinite}
 support with a rational value and thereby refute
 Problem~\ref{res:problem}; equivalently, a positive answer to
 Problem~\ref{res:problem} puts $1/2$ outside $\Ach$.  The converse direction
-carries nothing: $1/2\notin\Ach$ eliminates one candidate and leaves the
-universal statement exactly where it was.  The half-value question is
-therefore a one-sided test of \#257, not a second problem beside it.
+does not follow: $1/2\notin\Ach$ would give a finite fatal-gap witness and
+eliminate this candidate, but would not imply the universal statement.  The
+half-value question is therefore a one-sided test of \#257, not a second
+problem beside it.
 
 \begin{enumerate}
 \item \textbf{Problem~\ref{res:problem} itself}, for arbitrary infinite $A$.
@@ -893,8 +904,10 @@ Erd\H{o}s Problem~\#257 remains open.
 \bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya, \emph{Refinement of the
   Chowla--Erd\H{o}s method and linear independence of certain Lambert series},
   Forum Math.\ 31 (2019), no.~6, 1557--1566,
-  \href{https://doi.org/10.1515/forum-2018-0299}{DOI}.  Corollary 1.2 and
-  Example 1.1 settle the squarefree support at base~$2$.
+  \href{https://doi.org/10.1515/forum-2018-0299}{DOI}.  Corollary 1.2 gives
+  the general $F_s(E)$ theorem and its monomial images under
+  $|q|^{\lcm(1,\dots,\ell)}\le s$; Example 1.1 is the squarefree base-$2$
+  specialisation.
 \bibitem{taoteravainen2025} T.~Tao and J.~Ter\"av\"ainen,
   \emph{Quantitative correlations and some problems on prime factors of
   consecutive integers}, arXiv:2512.01739 (submitted December 2025, revised
@@ -912,6 +925,10 @@ Erd\H{o}s Problem~\#257 remains open.
   the strict tail inequality and the Cantor structure.
 \bibitem{erdos1948} P.~Erd\H{o}s, \emph{On arithmetical properties of Lambert
   series}, J.~Indian Math.\ Soc.\ 12 (1948), 63--66.
+\bibitem{erdos1968} P.~Erd\H{o}s, \emph{On the irrationality of certain
+  series}, Math.\ Student 36 (1968), 222--226.  The theorem on p.~222 treats
+  pairwise-coprime support with convergent reciprocal sum at every integer
+  base $b\ge2$.
 \bibitem{erdosproblems} T.~Bloom, \emph{Erd\H{o}s Problems},
   \url{https://www.erdosproblems.com/257}.
 \end{thebibliography}
