@@ -1,5 +1,6 @@
 import Mathlib.Data.Nat.Prime.Nth
 import Mathlib.Data.Nat.PrimeFin
+import Mathlib.Data.Nat.Factorization.Basic
 import Mathlib.Data.Rat.Lemmas
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 import Mathlib.Algebra.BigOperators.Ring.Finset
@@ -372,6 +373,71 @@ theorem tailShift_integral_add
   | k + 1 => by
       simpa [Nat.add_assoc] using
         tailShift_integral_succ hrec (tailShift_integral_add hrec hInt k)
+
+/-- Repeated doubling removes the entire power-of-two part of a rational
+denominator.  The remaining reduced denominator is therefore odd. -/
+theorem exists_twoPow_mul_odd_den (q : ℚ) :
+    ∃ k : ℕ, Odd (((2 : ℚ) ^ k * q).den) := by
+  obtain ⟨k, m, hm, hden⟩ :=
+    Nat.exists_eq_two_pow_mul_odd q.den_ne_zero
+  have hm0 : m ≠ 0 := by
+    intro hmzero
+    simp [hmzero] at hden
+  have hdenQ : (q.den : ℚ) = (2 : ℚ) ^ k * m := by
+    exact_mod_cast hden
+  have hq :
+      (2 : ℚ) ^ k * q = (q.num : ℚ) / (m : ℚ) := by
+    calc
+      (2 : ℚ) ^ k * q =
+          (2 : ℚ) ^ k * ((q.num : ℚ) / (q.den : ℚ)) := by
+            rw [q.num_div_den]
+      _ = (q.num : ℚ) / (m : ℚ) := by
+        rw [hdenQ]
+        field_simp [hm0]
+  have hcoprime : Nat.Coprime q.num.natAbs m := by
+    exact q.reduced.of_dvd_right ⟨2 ^ k, by rw [hden, Nat.mul_comm]⟩
+  refine ⟨k, ?_⟩
+  rw [hq]
+  have hdenm :
+      ((q.num : ℚ) / (m : ℚ)).den = m := by
+    have hdenmZ := Rat.den_div_eq_of_coprime
+      (a := q.num) (b := (m : ℤ))
+      (by simpa only [Int.natCast_pos] using Nat.pos_of_ne_zero hm0)
+      (by simpa using hcoprime)
+    exact_mod_cast hdenmZ
+  rw [hdenm]
+  exact hm
+
+/-- Every rational-valued dyadic tail recurrence has an odd-denominator state.
+The index is exactly the number of doublings needed to clear the initial
+power-of-two denominator. -/
+theorem exists_odd_den_state
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) :
+    ∃ N : ℕ, Odd (T N).den := by
+  obtain ⟨N, hodd⟩ := exists_twoPow_mul_odd_den (T 0)
+  refine ⟨N, ?_⟩
+  have hstate := tail_iterate_eq_pow_mul_sub_block hrec 0 N
+  have hdenEq :
+      (T N).den = (((2 : ℚ) ^ N * T 0).den) := by
+    simpa using congrArg Rat.den hstate
+  rw [hdenEq]
+  exact hodd
+
+/-- Rationality forces one fixed positive shift to be integral from some point
+onwards.  This is the exact contrapositive consumer for a prime-specific
+cofinal non-integrality theorem. -/
+theorem exists_eventually_integral_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) :
+    ∃ h N : ℕ, 0 < h ∧
+      ∀ k, RatIntegral (tailShift T h (N + k)) := by
+  obtain ⟨N, hodd⟩ := exists_odd_den_state hrec
+  let h := (T N).den.totient
+  have hh : 0 < h := Nat.totient_pos.mpr (T N).den_pos
+  refine ⟨h, N, hh, ?_⟩
+  exact tailShift_integral_add hrec
+    (tailShift_integral_totient_of_odd_den hrec N hodd)
 
 /-- The coefficient emitted by an unrestricted integer carry. -/
 def carryCoeff (K : ℕ → ℚ) (n : ℕ) : ℚ :=
