@@ -86,7 +86,9 @@ contaminate another branch.
 - proof-state nodes and application hyperedges;
 - AND children and OR alternatives;
 - non-dominated candidates under the emitted cost vector;
-- plan blocker sets and bounded minimal hitting cuts;
+- plan blocker sets, the minimal-missing-interventions antichain, and
+  bounded minimal hitting cuts, with a `blocker_algebra_semantics` block
+  keeping the three projections non-interchangeable;
 - discharge and closed-proof replay receipts;
 - an abstention receipt when no bounded route closes;
 - omissions and an explicit re-entry route.
@@ -104,9 +106,14 @@ exact obligation is sufficient for this exact application.  It does not prove
 that every possible proof of the target must use the same premise.
 
 For a larger candidate forest, each accepted application contributes its open
-AND set.  The packet reports full completion sets per plan and bounded
-minimal hitting cuts across alternatives.  These are critic inputs, not proof
-terms.
+AND set.  The packet reports full completion sets per plan, the antichain of
+minimal missing interventions, and bounded minimal hitting cuts across
+alternatives.  The intervention and cut families answer different questions
+and must not be substituted for one another: supplying every member of one
+intervention row completes a route, while a cut names the smallest removal
+that defeats every known route.  For plans `{a,b}` and `{b,c}` the cuts are
+`{b}` and `{a,c}`, yet adding `b` alone closes nothing.  These are critic
+inputs, not proof terms.
 
 ## Historical shadow
 

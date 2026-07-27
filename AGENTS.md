@@ -128,6 +128,13 @@ handle:
   receipts.  Use `--request-file` or `--request-stdin` for another explicit
   bounded goal; this runtime packet is documented in
   `docs/PROOF_STATE_COMPILER.md` and remains distinct from claim status;
+- `python3 scripts/proof_workbench.py {open,note,probe,claim,close,replay,show}`
+  for the agent-native session notary: typed cognitive moves in an
+  append-only ledger, kernel probes whose verdicts the agent cannot author,
+  claims that must cite kernel-accepted probe receipts, and byte-exact
+  session replay.  The inhabitation contract — instruments versus agent
+  policy, and the assisted / context-blind / prospective invention ladder —
+  is `docs/AGENT_WORKBENCH.md`;
 - `--proof-cone <declaration> --depth <1..8>` for a bounded,
   theorem-prioritized cone of exact proof-term dependencies, or
   `--dependency-path <source> <target> --depth <1..8>` for the shortest exact

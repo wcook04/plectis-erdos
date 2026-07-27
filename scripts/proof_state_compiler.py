@@ -384,6 +384,28 @@ def minimal_hitting_sets(
     return [sorted(row) for row in results]
 
 
+def minimal_missing_interventions(
+    plan_residual_sets: Iterable[Iterable[str]],
+) -> list[list[str]]:
+    """Return the inclusion-minimal antichain of per-plan residual sets.
+
+    Each returned row is one complete addition plan: supplying every member
+    closes at least one Lean-reached route.  This is deliberately not the
+    hitting-set family: a cut intersects every route and says which removal
+    defeats the whole graph, while an intervention completes one route.  The
+    two families coincide only in degenerate cases.
+    """
+    normalized = sorted(
+        {frozenset(rows) for rows in plan_residual_sets},
+        key=lambda row: (len(row), tuple(sorted(row))),
+    )
+    kept: list[frozenset[str]] = []
+    for candidate in normalized:
+        if not any(previous <= candidate for previous in kept):
+            kept.append(candidate)
+    return [sorted(row) for row in kept]
+
+
 def _declaration_receipt(
     declaration: str,
     repo_root: Path,
@@ -741,6 +763,9 @@ def compile_request(
         for plan in open_plans
     ]
     minimal_cuts = minimal_hitting_sets(blocker_sets)
+    interventions = minimal_missing_interventions(
+        row["required_open_node_ids"] for row in completion_sets
+    )
     closed = [
         transition
         for transition in transitions
@@ -788,6 +813,17 @@ def compile_request(
         },
         "pareto_frontier": _pareto_frontier(transitions),
         "plan_blocker_sets": completion_sets,
+        "minimal_missing_interventions": [
+            {
+                "node_ids": row,
+                "targets": [
+                    nodes_by_id[node_id]["target"]
+                    for node_id in row
+                    if node_id in nodes_by_id
+                ],
+            }
+            for row in interventions
+        ],
         "minimal_blocker_cuts": [
             {
                 "node_ids": cut,
@@ -799,6 +835,21 @@ def compile_request(
             }
             for cut in minimal_cuts
         ],
+        "blocker_algebra_semantics": {
+            "plan_blocker_sets": (
+                "per-plan AND residuals: every listed obligation of one"
+                " plan must be discharged for that plan to close"
+            ),
+            "minimal_missing_interventions": (
+                "antichain over plan residuals: supplying every member of"
+                " one row completes at least one Lean-reached route"
+            ),
+            "minimal_blocker_cuts": (
+                "minimal transversals of the plan residuals: the smallest"
+                " removals meeting every known route; a cut is not an"
+                " addition plan"
+            ),
+        },
         "closed_proof_receipts": [
             {
                 "candidate_id": transition["candidate_id"],
