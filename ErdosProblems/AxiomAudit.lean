@@ -17,6 +17,9 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos269.threePrimeJumpSetWithOrigin_card
 #print axioms ErdosProblems.Erdos269.kernel_235_not_rankOne
 #print axioms ErdosProblems.Erdos269.smoothExponentShell_card_quadratic
+#print axioms ErdosProblems.Erdos269.dyadicInternalPower_exponent_unique
+#print axioms ErdosProblems.Erdos269.dyadicBlockBase235_cases
+#print axioms ErdosProblems.Erdos269.dyadicBlockBase235_mem_interval
 #print axioms ErdosProblems.Erdos269.no_bounded_positive_state_of_residue_escape
 #print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
 #print axioms ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ

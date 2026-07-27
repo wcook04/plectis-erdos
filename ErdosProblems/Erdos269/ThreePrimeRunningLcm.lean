@@ -654,4 +654,63 @@ theorem smoothExponentShell_card_quadratic
     (smoothExponentShell_card_le_dropThird hrPos hwidth)).trans
       (sorted_pair_quadratic hpq hqr hsum)
 
+/-! ## Exact dyadic block geometry for `{2,3,5}` -/
+
+/-- A positive `p`-power lies strictly inside the dyadic block
+`(2^a, 2^(a+1))`.  Endpoints are excluded because the dyadic jump itself is
+the distinguished terminal factor of the compressed block. -/
+def DyadicInternalPower (p a e : ℕ) : Prop :=
+  2 ^ a < p ^ e ∧ p ^ e < 2 ^ (a + 1)
+
+/-- A channel contributes at most one internal pure-power jump to a dyadic
+block.  This is the exact reason that a compressed `{2,3,5}` block contains
+at most the dyadic jump together with one `3`-jump and one `5`-jump. -/
+theorem dyadicInternalPower_exponent_unique
+    {p a e f : ℕ} (hp : 2 ≤ p)
+    (he : DyadicInternalPower p a e)
+    (hf : DyadicInternalPower p a f) :
+    e = f := by
+  have hpPos : 0 < p := by omega
+  have hwidth : 2 ^ (a + 1) ≤ p * 2 ^ a := by
+    rw [pow_succ]
+    simpa [mul_comm] using Nat.mul_le_mul_right (2 ^ a) hp
+  apply exponent_unique_in_short_interval
+    (base := p) (lo := 2 ^ a) (hi := 2 ^ (a + 1)) (weight := 1)
+    hpPos hwidth
+  · simpa using Nat.le_of_lt he.1
+  · simpa using he.2
+  · simpa using Nat.le_of_lt hf.1
+  · simpa using hf.2
+
+/-- The exact radix of the dyadic block after compressing all internal
+`3`- and `5`-power jumps.  Each internal channel contributes its prime once,
+and the terminal dyadic jump contributes the factor `2`. -/
+noncomputable def dyadicBlockBase235 (a : ℕ) : ℕ :=
+  by
+    classical
+    exact
+      2 *
+        (if ∃ e, DyadicInternalPower 3 a e then 3 else 1) *
+        (if ∃ e, DyadicInternalPower 5 a e then 5 else 1)
+
+/-- Every actual compressed dyadic radix is one of `2, 6, 10, 30`.
+This replaces the generic interval `[2,30]` by the exact four-symbol alphabet
+consumed by the integer certificate engine. -/
+theorem dyadicBlockBase235_cases (a : ℕ) :
+    dyadicBlockBase235 a = 2 ∨
+      dyadicBlockBase235 a = 6 ∨
+      dyadicBlockBase235 a = 10 ∨
+      dyadicBlockBase235 a = 30 := by
+  classical
+  by_cases h3 : ∃ e, DyadicInternalPower 3 a e <;>
+    by_cases h5 : ∃ e, DyadicInternalPower 5 a e <;>
+      simp [dyadicBlockBase235, h3, h5]
+
+/-- In particular, the actual dyadic block radix satisfies the hypotheses of
+the checked bounded-radix escape theorem, with no hidden larger base. -/
+theorem dyadicBlockBase235_mem_interval (a : ℕ) :
+    2 ≤ dyadicBlockBase235 a ∧ dyadicBlockBase235 a ≤ 30 := by
+  rcases dyadicBlockBase235_cases a with h | h | h | h <;>
+    simp [h]
+
 end ErdosProblems.Erdos269
