@@ -6,6 +6,10 @@
 % `tectonic erdos-1049-rational-base-lambert.tex` or `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+% Problem-specific source pin: #1049's endpoint-jet obstruction advances
+% independently of the corpus default.
+\renewcommand{\commit}{b0e3723fa5222346a546f415b8fe93d7c756ce4d}
+\renewcommand{\commitshort}{b0e3723fa522}
 \hypersetup{
   pdftitle={Rational bases and the integer-base argument: a Lean-checked strategy separation for Erdős Problem 1049},
   pdfsubject={Erdős Problem Notes: Problem 1049},
@@ -45,7 +49,14 @@ a restricted family of rational bases, including $7/2$, is used as an external
 theorem; of its inputs we formalise only two exact arithmetic facts, and we
 state plainly which three inputs are not formalised.  Separately we check
 polynomial bounds on the denominator exponents of a homogenised Pad\'e
-construction, with the analytic remainder left untouched.
+construction, with the analytic remainder left untouched.  For the stronger
+Heine--Zudilin route we isolate a sharper obstruction: homogeneous
+specialisation at $(3,2)$ sees the constant endpoint modulo $3$ and the top
+endpoint modulo $2$.  Unit endpoints therefore prevent scalar forms from
+acquiring the common local content they need.  The surviving programme is a
+growing-rank additive kernel that cancels both endpoint jets in both
+coefficient channels while preserving a nonzero, sufficiently small
+remainder.
 \end{abstract}
 
 \section{The problem}\label{sec:problem}
@@ -118,6 +129,9 @@ Forcing term at least $2^{N+1}$ for $s\ge2$ & Proved here & Theorem~\ref{res:for
 Two arithmetic facts behind the $7/2$ criterion & Proved here & Section~\ref{sec:sevenhalves}; three further inputs are not formalised. \\
 Pad\'e denominator-exponent bounds & Proved here & Section~\ref{sec:pade}; exponent arithmetic only. \\
 Pad\'e remainder positivity and decay & Not treated & Section~\ref{sec:pade}. \\
+Homogeneous endpoint residues at $(3,2)$ & Proved here & Theorem~\ref{res:endpoints}. \\
+Scalar-cone product-formula margin & Negative under source input & Theorem~\ref{res:scalar}; the source inequality is assumed. \\
+Growing-rank simultaneous endpoint-jet kernel & Open & Section~\ref{sec:open}; the exact surviving producer. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -377,16 +391,95 @@ comparison of that rate against the denominator height are the analytic
 obligations, and none of them is treated here.  A reconstructed identity is not
 an irrationality measure until those are closed.
 
+\section{The endpoint obstruction at $3/2$}\label{sec:endpoints}
+
+The Heine--Zudilin forms have integral coefficient polynomials before
+specialisation.  For \(P(X)=\sum_i p_iX^i\in\Z[X]\) and a declared width \(W\),
+put
+\[
+ H_W(P)=\sum_{i=0}^{W}p_i\,3^i2^{W-i}.
+\]
+This is the
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{95}{homEvalThreeTwo}{homogeneous
+endpoint evaluation}.
+
+\begin{theorem}[endpoint residues]\label{res:endpoints}
+For every integral polynomial \(P\),
+\[
+ H_W(P)\equiv p_0\,2^W\pmod 3,\qquad
+ H_W(P)\equiv p_W\,3^W\pmod 2.
+\]
+Consequently a unit constant coefficient prevents divisibility by \(3\), and
+a unit top coefficient prevents divisibility by \(2\).
+\end{theorem}
+
+\begin{proof}
+Modulo \(3\), every summand with \(i>0\) vanishes; modulo \(2\), every summand
+with \(i<W\) vanishes.  The remaining powers are units in the corresponding
+residue fields.
+\end{proof}
+
+\noindent The congruences are the
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{120}{homEvalThreeTwo_mod_three}{bottom-endpoint
+identity} and
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{134}{homEvalThreeTwo_mod_two}{top-endpoint
+identity}; the unit consequences are the
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{152}{three_not_dvd_homEvalThreeTwo_of_const_unit}{constant-endpoint
+obstruction} and
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{170}{two_not_dvd_homEvalThreeTwo_of_top_unit}{top-endpoint
+obstruction}.
+
+For higher powers define the bottom and top jets by reducing \(H_W(P)\) modulo
+\(3^R\) and \(2^S\), respectively.  Their vanishing is exactly the requested
+divisibility:
+\[
+ J_{3,R}(P)=0\iff 3^R\mid H_W(P),\qquad
+ J_{2,S}(P)=0\iff 2^S\mid H_W(P).
+\]
+These are the checked
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{108}{bottomJet3_eq_zero_iff_dvd}{bottom-jet
+consumer} and
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{114}{topJet2_eq_zero_iff_dvd}{top-jet
+consumer}.  They turn the missing local divisor into an additive congruence
+kernel problem; they do not construct such a kernel.
+
+\begin{theorem}[scalar margin no-go]\label{res:scalar}
+Let \(C_1>0\).  If \(C_0\le0\) or \(2C_0\le C_1\), then
+\[
+ C_0\log 3-C_1\log 2<0.
+\]
+\end{theorem}
+
+\noindent This is the checked
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{221}{three_two_scalar_margin_neg}{three-halves
+scalar margin}.  The primary Zudilin theorem~\cite{zudilin2004} supplies an integer-base
+irrationality-exponent estimate on its parameter cone, and the elementary
+inequality \(\mu\ge2\) then forces \(2C_0\le C_1\) whenever \(C_0>0\); Lean
+checks that implication separately.  The primary theorem assumes an integer
+base \(p=1/q\).  It does not state a rational \(p=3/2\) theorem, so the
+all-scale coefficient construction and rational specialisation remain
+external to the checked result.  What is closed here is the scalar parameter
+margin, not Problem~\#1049.
+
 \section{Complements and further questions}\label{sec:open}
 
-Problem~\#1049 is open.  Two obligations are separated by the results above.
+Problem~\#1049 is open.  The current \(3/2\) frontier is the following exact
+producer.
 
-\begin{problem}[the base $3/2$]
-Construct integer linear forms in $1$ and $F(3/2)$ whose analytic decay beats
-the height of their common denominator.  Section~\ref{sec:pade} supplies the
-exponent arithmetic for a homogenised construction; the remainder estimate is
-untouched.  By Theorem~\ref{res:nocorridor}, the coordinatewise clearing route
-is unavailable, so an argument here must be of a different shape.
+\begin{problem}[growing-rank simultaneous endpoint-jet kernel]
+Construct additive combinations of genuinely independent Heine--Zudilin
+coefficient pairs \((U_j,V_j)\), with rank tending to infinity, which satisfy
+\[
+ J_{3,R_n}\!\left(\sum_j\lambda_jU_j\right)=
+ J_{3,R_n}\!\left(\sum_j\lambda_jV_j\right)=0,
+\qquad
+ J_{2,S_n}\!\left(\sum_j\lambda_jU_j\right)=
+ J_{2,S_n}\!\left(\sum_j\lambda_jV_j\right)=0,
+\]
+where \(R_n,S_n\) have the required quadratic order, while the resulting
+remainder is nonzero and the coefficient height is smaller than the local
+gain.  A rank-saturated contiguous-shift determinant or a genuinely
+independent deformation is an acceptable first producer.
 \end{problem}
 
 \begin{problem}[the published region]
@@ -397,11 +490,33 @@ logarithmic monotonicity step and the bound $3<\pi$ remain.
 \end{problem}
 
 The unrestricted question, which rational bases give an irrational value,
-remains open, and is not reduced to either problem above.  What the two
-sections of formal content change is the status of one route, not the status of
-the problem: the integer-base clearing argument fails at $3/2$ for an exact and
-elementary reason, and the term responsible is the factor $s^{N+1}$ in
-Theorem~\ref{res:tailrec}.
+remains open, and is not reduced to either problem above.
+
+\paragraph{Wanted.}
+An explicit growing-rank coefficient matrix, with its four endpoint-jet
+congruences, a nonvanishing certificate for the resulting linear form, and an
+asymptotic height bound.  A scalar ray, a multiplicative cyclotomic factor, or
+another primitive-content computation is not responsive to the surviving
+obstruction.
+
+\paragraph{Already checked.}
+The coordinatewise corridor fails at \(3/2\); the cleared-tail forcing term
+has an exponential denominator tax; the displayed Pad\'e denominator
+exponents clear their finite sums; unit endpoints prevent common factors
+\(3\) and \(2\); and the source integer-base ratio inequality implies a
+strictly negative scalar margin at \(3/2\).  None of these statements proves
+the all-scale rational specialisation or irrationality.
+
+\paragraph{Most useful answer.}
+Give the first rank \(r=r(n)\) for which the four jet maps have a nonzero
+kernel vector outside the remainder-nullspace, together with exact coefficient
+height.  If no such vector exists, a rank theorem identifying the obstruction
+is more valuable than further low-rank enumeration.
+
+\paragraph{If answered.}
+A positive construction supplies the missing local-content producer to the
+existing Archimedean consumer.  A negative rank theorem removes the additive
+endpoint route and exposes the next genuinely different deformation.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
@@ -432,9 +547,10 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 \section{Guide to the formal sources}\label{app:index}
 
 Each linked phrase opens its Lean declaration at the pinned source
-revision~\commitshort.  The declarations of this note live in two modules:
+revision~\commitshort.  The declarations of this note live in three modules:
 the corridor, the cleared-tail recurrence, and the two arithmetic certificates
-in the first; the Pad\'e exponent arithmetic in the second.  The link
+in the first; the Pad\'e exponent arithmetic in the second; and the
+Heine--Zudilin endpoint arithmetic in the third.  The link
 coordinates are validated against that pinned revision, so they remain correct
 as later work moves lines in the working tree.
 
@@ -463,6 +579,15 @@ summand exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{29}{ratio
 doubled maximal exponent & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{45}{rationalPadeQMaxDenExpTwice}\\
 exact gap identity & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{51}{rationalPadeQMaxDenExpTwice_gap}\\
 maximal exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{59}{rationalPadeQMaxDenExpTwice_le}\\
+homogeneous endpoint evaluation & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{95}{homEvalThreeTwo}\\
+bottom-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{108}{bottomJet3_eq_zero_iff_dvd}\\
+top-jet divisibility & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{114}{topJet2_eq_zero_iff_dvd}\\
+bottom endpoint modulo three & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{120}{homEvalThreeTwo_mod_three}\\
+top endpoint modulo two & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{134}{homEvalThreeTwo_mod_two}\\
+unit constant endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{152}{three_not_dvd_homEvalThreeTwo_of_const_unit}\\
+unit top endpoint obstruction & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{170}{two_not_dvd_homEvalThreeTwo_of_top_unit}\\
+irrationality-exponent inequality & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{209}{twice_le_of_irrationalityExponent_bounds}\\
+three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{221}{three_two_scalar_margin_neg}\\
 \end{tabular}
 \fi
 
@@ -482,6 +607,10 @@ maximal exponent bound & \lrefx{Erdos1049/RationalPadeArithmetic.lean}{59}{ratio
   \href{https://numdam.org/item/CM_1994__91_2_175_0.pdf}{\emph{Arithmetical
   investigations of a certain infinite product}},
   Compositio Math. \textbf{91} (1994), no.~2, 175--199.
+\bibitem{zudilin2004} W.~Zudilin,
+  \href{https://www.impan.pl/shop/en/publication/transaction/download/product/82435}{\emph{Heine's
+  basic transform and a permutation group for \(q\)-harmonic series}},
+  Acta Arith. \textbf{111} (2004), no.~2, 153--164.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/1049}{\emph{Erd\H{o}s Problem \#1049}},
   \texttt{erdosproblems.com/1049}, accessed 22 July 2026.
