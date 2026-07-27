@@ -282,6 +282,43 @@ def check_multihop_formal_dependency_reasoning() -> None:
     assert cone["omission_receipt"]["reachable_node_count_within_depth"] > (
         cone["omission_receipt"]["emitted_node_count"]
     )
+    natural_query = (
+        "trace the formal chain from sharp curvature irrationality "
+        "to denominator divisibility"
+    )
+    assert query_corpus.trace_endpoint_queries(natural_query) == [
+        "sharp curvature irrationality",
+        "denominator divisibility",
+    ]
+    assert query_corpus.trace_endpoint_queries(
+        "why does sharp curvature irrationality ultimately use "
+        "denominator divisibility?"
+    ) == [
+        "sharp curvature irrationality",
+        "denominator divisibility",
+    ]
+    semantic_slice = query_corpus.semantic_slice_packet(natural_query, 20)
+    assert {
+        (cell["kind"], cell["handle"])
+        for cell in semantic_slice["semantic_cells"]
+    } == {
+        (
+            "declaration",
+            "irrational_totientSeries_of_sharpCurvatureSupply",
+        ),
+        ("declaration", "tail_diff_int_of_den_dvd"),
+    }
+    assert [
+        node["name"]
+        for node in semantic_slice["operator_synthesis"][
+            "formal_dependency_path"
+        ]["nodes"]
+    ] == [
+        "irrational_totientSeries_of_sharpCurvatureSupply",
+        "rational_totient_series_forces_lcm_cone_flatness",
+        "eventual_period_of_not_irrational",
+        "tail_diff_int_of_den_dvd",
+    ]
 
 
 def check_missing_registered_artifact_is_typed_not_fatal() -> None:

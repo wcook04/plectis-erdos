@@ -150,6 +150,23 @@ graph and exact source coordinates for every hop. These are compositions of
 kernel-extracted direct edges, not claims that every reference is a decisive
 premise or that the path is a causal mathematical explanation.
 
+An ordinary trace question can invoke the same path search without knowing
+Lean names:
+
+```sh
+python3 scripts/query_corpus.py --ask \
+  "trace the formal chain from sharp curvature irrationality to denominator divisibility"
+```
+
+For explicit `from ... to ...`, `why X uses Y`, and `X depends on Y` forms,
+the compiler searches each endpoint independently, tests the bounded
+declaration pairs against the exact value-reference graph, and selects the
+shortest path before using endpoint rank as a tiebreaker. The output records
+the lexical endpoint alternatives, tested-pair count, selected ranks, exact
+path, and authority boundary. Endpoint selection remains navigation: the
+kernel witnesses the selected edges, but does not prove that the lexical
+interpretation matches the user's intent.
+
 Internal compiler/private references and public constants that cannot be
 source-joined are counted as omissions; atlas declarations absent from the
 loaded root or owned by a different loaded module are classified separately.
@@ -191,12 +208,12 @@ dependencies of the sharp-curvature irrationality consumer, and asks Lean to
 check a reconstructed proof using those intermediate theorems rather than the
 packaged consumer. The fifth follows the exact three-hop path from that
 consumer through lcm-cone flatness and eventual tail periodicity to the
-denominator-divisibility theorem, reconstructs the cone-flatness bridge, and
-uses the reconstruction inside the curvature proof. The corollaries prove
-none of their antecedents. In particular, they make no progress on the
-unbounded #249 producer or the open #257 half-membership question. These tests
-measure premise recovery and formal composition, not solutions of the Erdős
-problems.
+denominator-divisibility theorem starting only from the ordinary-language
+endpoint question above, reconstructs the cone-flatness bridge, and uses the
+reconstruction inside the curvature proof. The corollaries prove none of
+their antecedents. In particular, they make no progress on the unbounded #249
+producer or the open #257 half-membership question. These tests measure
+premise recovery and formal composition, not solutions of the Erdős problems.
 
 ## Limits
 

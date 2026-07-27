@@ -49,12 +49,9 @@ FORMAL_TRACE_REQUIRED_DEPENDENCIES = {
     "curvature_notMem_int_of_sharpCurvatureCert",
     "rational_totient_series_forces_lcm_cone_flatness",
 }
-FORMAL_PATH_SOURCE = (
-    "Erdos249257.TotientTailPeriodKiller."
-    "irrational_totientSeries_of_sharpCurvatureSupply"
-)
-FORMAL_PATH_TARGET = (
-    "Erdos249257.TotientTailPeriodKiller.tail_diff_int_of_den_dvd"
+FORMAL_PATH_QUERY = (
+    "trace the formal chain from sharp curvature irrationality "
+    "to denominator divisibility"
 )
 FORMAL_PATH_REQUIRED_DECLARATIONS = {
     "rational_totient_series_forces_lcm_cone_flatness",
@@ -309,8 +306,11 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     all_recovered.update(formal_dependencies)
     all_ranked.update(trace_ranked_declarations)
     missing_any.update(missing_trace)
-    formal_path = query_corpus.formal_dependency_path(
-        FORMAL_PATH_SOURCE, FORMAL_PATH_TARGET, 8
+    formal_path_slice = query_corpus.semantic_slice_packet(
+        FORMAL_PATH_QUERY, 20
+    )
+    formal_path = formal_path_slice["operator_synthesis"].get(
+        "formal_dependency_path", {}
     )
     formal_path_declarations = {
         node["name"] for node in formal_path.get("nodes", [])[1:]
@@ -321,9 +321,9 @@ def dogfood_packet(query: str) -> dict[str, Any]:
     tasks.append(
         {
             "id": "formal_multihop_cone_reconstruction",
-            "query": FORMAL_TRACE_QUERY,
-            "semantic_slice_id": trace_slice.get("slice_id"),
-            "semantic_operator": trace_slice[
+            "query": FORMAL_PATH_QUERY,
+            "semantic_slice_id": formal_path_slice.get("slice_id"),
+            "semantic_operator": formal_path_slice[
                 "query_interpretation"
             ]["operator"]["id"],
             "required_declarations": sorted(
