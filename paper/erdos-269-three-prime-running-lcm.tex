@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{773d2a6ec5640b623c4a77262a82332d9ea85df0}
-\renewcommand{\commitshort}{773d2a6ec564}
+\renewcommand{\commit}{c9b1a7434f558a6998de5c895cd685abf4a3ac7a}
+\renewcommand{\commitshort}{c9b1a7434f55}
 \hypersetup{
   pdftitle={The running least common multiple of a three-prime smooth prefix: Lean-checked structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -46,10 +46,10 @@ $2$ with a factor $3$ when the block contains an internal $3$-power and a factor
 $5$ when it contains an internal $5$-power, belongs to the exact four-element
 alphabet $\{2,6,10,30\}$, rather than merely lying in a coarse bounded interval.  Second, the reciprocal of the running least common multiple
 at a smooth point is not a product of functions of the three exponents
-separately: we exhibit the smallest exact obstruction to separating it as such
-a product, the two sides being $1/60$ and $1/12$.  The second statement
-excludes every argument that first separates the three coordinates and then
-treats them one at a time.
+separately: on the smallest nontrivial two-by-two exponent rectangle its
+determinant is exactly $-1/15$.  Thus that matrix has rank two, which excludes
+every argument that first separates the three coordinates and then treats them
+one at a time.
 
 The structural spine of the note is the identification
 \[
@@ -96,7 +96,11 @@ in $P$.  Erd\H{o}s Problem~\#269 asks whether
 is irrational, where $[a_1,\ldots,a_n]$ is the least common
 multiple~\cite[p.~65]{erdosgraham1980}\cite[p.~106]{erdos1988}.  Numbering and
 status follow Bloom's catalogue~\cite{erdosproblems}.  The problem is open for
-every finite $P$ with $|P|\ge2$.
+every finite $P$ with $|P|\ge2$.  In the primary 1988 source, Erd\H{o}s proves
+the infinite-$P$ assertion and presents persistence for a finite number of
+primes greater than one as a probable extension, not as a theorem; the current
+open status is supplied by the catalogue rather than inferred from that
+conjectural wording.
 
 Three things are known and fix the shape of the question.  The restriction
 $|P|\ge2$ is necessary: for $P=\{p\}$ the enumeration is $a_n=p^{\,n-1}$, so
@@ -149,12 +153,13 @@ rather than approximate.  Theorem~\ref{res:dyadic-alphabet} determines the
 alphabet of the dyadic compression of the jump word exactly: the radix
 $\beta_a$ of the block between $2^{a}$ and $2^{a+1}$ takes one of the four
 values $2$, $6$, $10$, $30$ and no others.
-Theorem~\ref{res:rank} shows that the kernel at $\{2,3,5\}$ is not a product
-$f(i)g(j)h(k)$, and therefore excludes every argument that first separates the
-three coordinates and then treats them one at a time.  The mechanism behind the
-second is a small computation: $\hgt(6)=4\cdot3\cdot5=60$ and not $6$, because
-the running least common multiple at a smooth cutoff already sees powers of the
-other primes that the cutoff itself does not contain.
+Theorem~\ref{res:rank} shows that the smallest two-by-two restriction of the
+kernel at $\{2,3,5\}$ has determinant $-1/15$ and hence rank two.  In
+particular, it is not a product $f(i)g(j)h(k)$, so every argument that first
+separates the three coordinates and then treats them one at a time is excluded.
+The mechanism is a small computation: $\hgt(6)=4\cdot3\cdot5=60$ and not $6$,
+because the running least common multiple at a smooth cutoff already sees
+powers of the other primes that the cutoff itself does not contain.
 We do not determine whether the coordinates separate when $|P|=2$.
 
 The identification $\Lprefix(x)=\hgt(x)$ of Theorem~\ref{res:lcm} is what makes
@@ -214,7 +219,7 @@ Exactly $3n+1$ jump values & Proved here & Theorem~\ref{res:count}. \\
 Height-fibre normal form & Proved here; finite & Theorem~\ref{res:fibre}. \\
 Infinite limit of that expansion & Not proved & Section~\ref{sec:fibre}. \\
 Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Proved here & Theorem~\ref{res:shell}. \\
-Kernel is not separable at $\{2,3,5\}$ & Proved here & Theorem~\ref{res:rank}. \\
+$2\times2$ kernel restriction has rank two at $\{2,3,5\}$ & Proved here & Determinant $-1/15$; Theorem~\ref{res:rank}. \\
 Dyadic block radix lies in $\{2,6,10,30\}$ & Proved here & Theorem~\ref{res:dyadic-alphabet}. \\
 Canonical least-positive-residue arithmetic & Proved here & Theorem~\ref{res:consumer}. \\
 Carry contradiction assuming~\eqref{eq:escape} & Proved here & Theorem~\ref{res:windowconsumer}; the implication only. \\
@@ -524,16 +529,21 @@ this already fails at $\{2,3,5\}$, and that the failure is exact.
 \begin{theorem}[non-separability at $\{2,3,5\}$]\label{res:rank}
 With $(p,q,r)=(2,3,5)$,
 \[
- \Kernel(0,0,0)\,\Kernel(1,1,0)=\tfrac1{60}
- \ne\tfrac1{12}=\Kernel(1,0,0)\,\Kernel(0,1,0).
+ \Kernel(0,0,0)\,\Kernel(1,1,0)
+ -\Kernel(1,0,0)\,\Kernel(0,1,0)
+ =-\tfrac1{15}\ne0.
 \]
+Consequently this two-by-two kernel restriction has rank two over
+$\mathbb Q$.
 \end{theorem}
 
 \begin{proof}
 The four values are $\Kernel(0,0,0)=1$, $\Kernel(1,0,0)=1/2$,
 $\Kernel(0,1,0)=1/6$ and $\Kernel(1,1,0)=1/60$, computed from
 $\hgt(1)=1$, $\hgt(2)=2$, $\hgt(3)=2\cdot3=6$ and
-$\hgt(6)=4\cdot3\cdot5=60$.
+$\hgt(6)=4\cdot3\cdot5=60$.  Hence the determinant is
+$1/60-1/12=-1/15$, and a two-by-two matrix with nonzero determinant has rank
+two.
 \end{proof}
 
 \noindent Formalised as the
@@ -544,6 +554,9 @@ witness}, over the four exact values, the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{458}{kernel_235_three}{value at
 three}, and
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{467}{kernel_235_six}{value at six}.
+The exact determinant calculation is the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{721}{kernel_235_minor_eq_neg_one_fifteen}{rank-two
+certificate}.
 The height at $6$ is $60$ rather than $6$ because the maximal pure powers below
 $6$ are $4$, $3$ and $5$: the running least common multiple at a smooth cutoff
 sees powers of the other primes that the cutoff itself does not contain.  That
@@ -551,9 +564,9 @@ is the mechanism behind the non-separation.
 
 A nonzero two-by-two minor rules out writing the kernel as
 $f(i)g(j)h(k)$ on this box, and hence rules out any argument that first
-separates the coordinates and then treats them one at a time.  It does not
-bound the rank of the kernel from below beyond one, and it is not an
-independence or irrationality statement.
+separates the coordinates and then treats them one at a time.  It gives no
+rank lower bound beyond two, and it is not an independence or irrationality
+statement.
 
 \section{Dyadic blocks and a conditional carry contradiction}\label{sec:escape}
 
