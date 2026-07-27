@@ -1,0 +1,3663 @@
+{
+  "zone_id": "Z04",
+  "title": "Radical Mobius shadow: repunit numerators, cyclotomic fibres and Mersenne channel denominators",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "mersenne_channel",
+      "label": "Mersenne channel",
+      "description": "The modulus 2^n - 1 attached to an exponent n, and its prime-index specialisations."
+    },
+    {
+      "id": "squarefree_radical_kernel",
+      "label": "Squarefree radical kernel",
+      "description": "rad(H) = product of the distinct primes of H, and the residual scale H/rad(H)."
+    },
+    {
+      "id": "mobius_shadow_numerator",
+      "label": "Mobius shadow numerator",
+      "description": "M_r = sum over squarefree d | r of mu(d)(r/d)((2^r-1)/(2^d-1)), the integral numerator of B(r) = M_r/(2^r-1)."
+    },
+    {
+      "id": "explicit_finite_shadow",
+      "label": "Explicit finite shadow",
+      "description": "The rational H * numericMobiusShadow H, the finite explicit part of the lcm-diagonal totient tail difference for Erdos 249."
+    },
+    {
+      "id": "spaced_repunit",
+      "label": "Divisor-spaced repunit",
+      "description": "1 + X^d + ... + X^{(q-1)d}, the block polynomial indexed by a divisor of the exponent."
+    },
+    {
+      "id": "gcd_word",
+      "label": "gcd word",
+      "description": "The polynomial whose k-th coefficient is (r/gcd(r,k)) * phi(gcd(r,k)) for k < r and zero beyond."
+    },
+    {
+      "id": "cyclotomic_fibre",
+      "label": "Cyclotomic fibre",
+      "description": "Reduction of the numerator polynomial modulo Phi_m, and its integer shadow Phi_m(2)."
+    },
+    {
+      "id": "jordan_totient_two",
+      "label": "Second Jordan totient",
+      "description": "J2 = mu * id^2, equal to the product of (q^2 - 1) over the primes of a squarefree argument."
+    },
+    {
+      "id": "cyclic_tensor_algebra",
+      "label": "Cyclic tensor algebra",
+      "description": "Z[X]/(X^r - 1) with its prime-index subgroup sums, local numerator factors and integral cofactors."
+    },
+    {
+      "id": "odd_jordan_scalar",
+      "label": "Odd Jordan scalar",
+      "description": "Product of (q^2 - 1) over the odd primes of r, the small integer that replaces M_r inside gcds mod 2^r - 1."
+    },
+    {
+      "id": "prime_adjunction_jump",
+      "label": "Prime adjunction jump",
+      "description": "The T5 recurrence relating the numerator at rp to the numerator at r via a repunit block and a p-fold expansion."
+    },
+    {
+      "id": "upper_half_prime_family",
+      "label": "Upper-half prime family",
+      "description": "Primes p with t/2 < p <= t, whose Mersenne channels are too large to be cancelled by t-smooth data."
+    },
+    {
+      "id": "lcm_height",
+      "label": "LCM height",
+      "description": "H_t = lcm(1..t), its radical r_t and residual scale h_t = H_t/r_t."
+    },
+    {
+      "id": "denominator_survival",
+      "label": "Denominator survival",
+      "description": "A divisor of a displayed denominator that survives reduction to lowest terms, and what a scale can cancel."
+    },
+    {
+      "id": "foreign_defect_boundary",
+      "label": "Foreign defect boundary",
+      "description": "Everything in the actual lcm-diagonal difference outside the explicit finite shadow; untouched by this zone."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "squarefree_kernel_basic",
+      "canonical_statement": "The squarefree kernel rad(n), defined as the product of the distinct prime factors of n, is positive, divides n, is squarefree, is idempotent, has the same prime factors as n, and for n nonzero shares exactly the prime divisors of n.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "squarefreeKernel_primeFactors",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 42
+        },
+        {
+          "declaration": "squarefreeKernel_idem",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 48
+        },
+        {
+          "declaration": "squarefreeKernel_pos",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 54
+        },
+        {
+          "declaration": "squarefreeKernel_dvd",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 58
+        },
+        {
+          "declaration": "squarefreeKernel_squarefree",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 63
+        },
+        {
+          "declaration": "prime_dvd_squarefreeKernel_iff",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 77
+        }
+      ],
+      "concepts": [
+        "squarefree_radical_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary properties of the radical of an integer; standard, formalised here for the T6 scaling convention (rad 0 = 1).",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "radical_reduction_of_scaled_shadow",
+      "canonical_statement": "The numeric Mobius shadow of H depends only on rad(H), and multiplying it by H is exactly multiplying the unscaled radical shadow B(rad H) = M_{rad H}/(2^{rad H} - 1) by the residual scale H/rad(H).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "numericMobiusShadow_radical",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 118
+        },
+        {
+          "declaration": "scaledMobiusShadow_eq_radicalBase",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 125
+        },
+        {
+          "declaration": "scaledMobiusShadow_eq_radicalNumerator",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 141
+        }
+      ],
+      "concepts": [
+        "squarefree_radical_kernel",
+        "explicit_finite_shadow",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T6 radical reduction",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "A normalisation of the definition, not an arithmetic theorem: the reduced denominator of the scaled object is deliberately left to the separate exact-denominator statements, because the extra factor H/rad(H) can cancel further.",
+      "confidence": "high"
+    },
+    {
+      "id": "base_shadow_generic_reduced_denominator",
+      "canonical_statement": "The reduced denominator of the unscaled radical shadow B(r) = M_r/(2^r - 1) is (2^r - 1) divided by gcd(|M_r|, 2^r - 1), for every positive r; a kernel-checked gcd certificate therefore yields the reduced denominator immediately.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "baseMobiusShadow_den",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 150
+        },
+        {
+          "declaration": "baseMobiusShadow_den_of_gcd_eq",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 163
+        }
+      ],
+      "concepts": [
+        "mobius_shadow_numerator",
+        "mersenne_channel",
+        "denominator_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Mathlib's Rat.den_divInt specialised to the displayed numerator and Mersenne denominator; no arithmetic input of its own.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_radical_shadow_denominator",
+      "canonical_statement": "For a prime exponent p the Mobius numerator is exactly p(2^p - 1) - 1, which is coprime to 2^p - 1, so the unscaled radical shadow B(p) has reduced denominator exactly 2^p - 1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mobiusNumerator_prime",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 172
+        },
+        {
+          "declaration": "mobiusNumerator_prime_gcd",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 179
+        },
+        {
+          "declaration": "baseMobiusShadow_den_prime",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 200
+        },
+        {
+          "declaration": "sum_powerset_singleton",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 27
+        }
+      ],
+      "concepts": [
+        "mobius_shadow_numerator",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two-term powerset expansion at a prime radical",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A one-line computation on the two subsets of a singleton prime support; also a special case of the later odd-Jordan gcd collapse proved in the same zone.",
+      "scope_caveat": "Statement is about the explicit finite Mobius shadow only. It says nothing about the foreign diagonal defect (the part of the actual totient tail difference not captured by the finite shadow), so it does not bear on the irrationality of sum phi(n)/2^n on its own.",
+      "confidence": "high"
+    },
+    {
+      "id": "twice_prime_radical_shadow_denominator",
+      "canonical_statement": "For every prime p at least 5 the Mobius numerator at exponent 2p expands into four explicit terms and has gcd exactly 3 with 2^{2p} - 1, so the unscaled radical shadow B(2p) has reduced denominator exactly (2^{2p} - 1)/3.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mobiusNumerator_twicePrime",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 207
+        },
+        {
+          "declaration": "mobiusNumerator_twicePrime_gcd",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 267
+        },
+        {
+          "declaration": "baseMobiusShadow_den_twicePrime",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 391
+        },
+        {
+          "declaration": "prime_mod_six_eq_one_or_five",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 225
+        },
+        {
+          "declaration": "prime_pow_two_mod_nine_cases",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 243
+        }
+      ],
+      "concepts": [
+        "mobius_shadow_numerator",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "residues of 2^p modulo 9 split by p mod 6",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Special case of the general odd-Jordan gcd collapse proved later in this zone (oddJordanScalar(2p) = p^2 - 1), combined with an explicit mod-9 computation.",
+      "scope_caveat": "Statement is about the explicit finite Mobius shadow only. It says nothing about the foreign diagonal defect (the part of the actual totient tail difference not captured by the finite shadow), so it does not bear on the irrationality of sum phi(n)/2^n on its own.",
+      "confidence": "high"
+    },
+    {
+      "id": "radical_shadow_denominator_fixtures",
+      "canonical_statement": "Kernel-checked numerical values: M_5 = 154 with denominator 2^5 - 1; M_10 = 8460 with gcd 3 and denominator (2^10 - 1)/3; M_210 equal to an explicit 66-digit integer with gcd 9 and denominator (2^210 - 1)/9.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "prime5_numerator_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 403
+        },
+        {
+          "declaration": "prime5_den_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 409
+        },
+        {
+          "declaration": "twicePrime5_numerator_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 414
+        },
+        {
+          "declaration": "twicePrime5_gcd_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 420
+        },
+        {
+          "declaration": "twicePrime5_den_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 425
+        },
+        {
+          "declaration": "radical210_numerator_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 429
+        },
+        {
+          "declaration": "radical210_gcd_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 437
+        },
+        {
+          "declaration": "radical210_den_fixture",
+          "module": "Erdos249257/RadicalMobiusShadow.lean",
+          "line": 442
+        }
+      ],
+      "concepts": [
+        "mobius_shadow_numerator",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "norm_num evaluation of the powerset sum",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Verified at three exponents only (5, 10, 210). Regression evidence for the general formulas, not a substitute for them.",
+      "confidence": "high"
+    },
+    {
+      "id": "repunit_numerator_is_gcd_word",
+      "canonical_statement": "For squarefree r the divisor-signed spaced-repunit polynomial sum over d | r of mu(d)(r/d)(1 + X^d + ... + X^{r-d}) equals the gcd word: its coefficient at X^k is (r/gcd(r,k)) * phi(gcd(r,k)) for k < r and zero for k at least r.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mobiusNumeratorPolynomial_eq_gcdWord",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 205
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_coeff",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 217
+        },
+        {
+          "declaration": "coeff_spacedRepunit_of_lt",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 48
+        },
+        {
+          "declaration": "coeff_spacedRepunit_eq_zero_of_le",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 73
+        },
+        {
+          "declaration": "moebius_divisor_sum_eq_totient",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 89
+        },
+        {
+          "declaration": "scaled_moebius_divisor_sum_eq",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 111
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_coeff_of_lt",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 134
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_coeff_eq_zero_of_le",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 182
+        },
+        {
+          "declaration": "gcdWord_coeff_of_lt",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 194
+        },
+        {
+          "declaration": "gcdWord_coeff_eq_zero_of_le",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 199
+        }
+      ],
+      "concepts": [
+        "spaced_repunit",
+        "gcd_word",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T1 coefficient extraction: divisors of r dividing k are exactly the divisors of gcd(r,k)",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The coefficient identity is Mobius inversion of the classical sum over d | n of phi(d) = n, applied at gcd(r,k); the content is the bookkeeping that the filtered divisor set is the divisor set of the gcd.",
+      "scope_caveat": "Stated only on the squarefree boundary; the module does not extend the identity to nonsquarefree exponents.",
+      "confidence": "high"
+    },
+    {
+      "id": "repunit_numerator_positivity",
+      "canonical_statement": "Every gcd-word coefficient is strictly positive, so for squarefree r the Mobius numerator polynomial has strictly positive coefficients below degree r and is nonnegative everywhere.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "gcdWordCoeff_pos",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 226
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_coeff_pos",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 234
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_coeff_nonneg",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 243
+        }
+      ],
+      "concepts": [
+        "gcd_word",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "positivity of (r/g) and of phi(g)",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate from the coefficient formula once that formula is available.",
+      "scope_caveat": "No cancellation statement: positivity of coefficients says nothing about the gcd of the evaluated numerator with 2^r - 1.",
+      "confidence": "high"
+    },
+    {
+      "id": "polynomial_numerator_evaluation_bridge",
+      "canonical_statement": "For squarefree r, evaluating the divisor-signed spaced-repunit polynomial at X = 2 returns exactly the integral Mobius numerator M_r defined by the squarefree-subset expansion.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mobiusNumeratorPolynomial_eval_two",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 320
+        },
+        {
+          "declaration": "eval_spacedRepunit_two",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 252
+        },
+        {
+          "declaration": "moebius_prod_subset_primeFactors",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 274
+        },
+        {
+          "declaration": "divisor_mobiusNumerator_eq_subset",
+          "module": "Erdos249257/RepunitMobiusNumerator.lean",
+          "line": 297
+        }
+      ],
+      "concepts": [
+        "spaced_repunit",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "geometric sum evaluation plus the squarefree divisor/subset bijection",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "The bridge is the only link between the polynomial layer and the integer layer; it is stated only for squarefree exponents.",
+      "confidence": "high"
+    },
+    {
+      "id": "jordan_totient_two_evaluation",
+      "canonical_statement": "The second Jordan totient J2 = mu * id^2 satisfies J2(1) = 1, equals the divisor sum of mu(d)(n/d)^2, is multiplicative, takes value p^2 - 1 at a prime, and on a squarefree argument equals the product of (q^2 - 1) over its prime factors, with the same product formula for its absolute value.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "jordanTotientTwo_one",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 37
+        },
+        {
+          "declaration": "jordanTotientTwo_eq_divisorSum",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 40
+        },
+        {
+          "declaration": "jordanTotientTwo_multiplicative",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 54
+        },
+        {
+          "declaration": "jordanTotientTwo_prime",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 59
+        },
+        {
+          "declaration": "jordanTotientTwo_eq_prod_primeFactors",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 67
+        },
+        {
+          "declaration": "jordanTotientTwo_natAbs_eq_prod",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 614
+        }
+      ],
+      "concepts": [
+        "jordan_totient_two"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The Jordan totient J_k and its Euler product are classical (Jordan, 19th century); formalised here as a Mathlib arithmetic-function convolution.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "jordan_totient_two_prime_support_bound",
+      "canonical_statement": "If a squarefree n has all prime factors at most t and t is at least 3, then every prime dividing |J2(n)| is also at most t; the bound at t = 3 is exactly what absorbs the exceptional factor 3 coming from 2^2 - 1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "jordanTotientTwo_natAbs_primeFactors_le",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 79
+        }
+      ],
+      "concepts": [
+        "jordan_totient_two",
+        "upper_half_prime_family"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "q^2 - 1 = (q-1)(q+1) with the parity step at q = 2 and at odd prime divisors of q+1",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary once J2 is the product of q^2 - 1; the only real content is that a prime dividing q + 1 for odd q is at most q.",
+      "scope_caveat": "A smoothness statement only; it does not say J2(n) is nonzero modulo any particular channel.",
+      "confidence": "high"
+    },
+    {
+      "id": "spaced_repunit_cyclotomic_factorisation",
+      "canonical_statement": "For d | r the spaced repunit with block size d and r/d blocks is the product of the cyclotomic polynomials Phi_e over the divisors e of r that do not divide d; consequently Phi_m divides it whenever m | r and m does not divide d, and Phi_m divides it minus the constant r/d whenever m | d.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "cyclotomic_dvd_spacedRepunit_of_not_dvd",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 162
+        },
+        {
+          "declaration": "cyclotomic_dvd_spacedRepunit_sub_C_of_dvd",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 174
+        },
+        {
+          "declaration": "spacedRepunit_eq_sum_X_pow",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 129
+        },
+        {
+          "declaration": "spacedRepunit_mul_X_pow_sub_one",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 135
+        },
+        {
+          "declaration": "spacedRepunit_eq_prod_cyclotomic_sdiff",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 143
+        }
+      ],
+      "concepts": [
+        "spaced_repunit",
+        "cyclotomic_fibre"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "X^n - 1 = product of Phi_d over d | n, divided through by X^d - 1",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The cyclotomic factorisation of (X^{dq} - 1)/(X^d - 1) is standard; the two divisibility wrappers are the geometric inputs used by T2 and T5.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "cyclotomic_fibre_congruence",
+      "canonical_statement": "T2. For squarefree r and every m | r, the cyclotomic polynomial Phi_m divides the Mobius numerator polynomial minus the constant mu(m) J2(r/m); evaluating at X = 2, the integer Phi_m(2) divides M_r - mu(m) J2(r/m), and at a prime channel p | r this reads 2^p - 1 divides M_r + J2(r/p).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "cyclotomic_dvd_mobiusNumeratorPolynomial_sub",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 299
+        },
+        {
+          "declaration": "mobiusNumerator_mod_cyclotomicEval",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 310
+        },
+        {
+          "declaration": "mobiusNumerator_mod_mersenne_prime",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 666
+        },
+        {
+          "declaration": "cyclotomicFibreConstant",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 193
+        },
+        {
+          "declaration": "cyclotomic_dvd_polynomial_sub_fibreConstant",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 199
+        },
+        {
+          "declaration": "cyclotomicFibreConstant_eq",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 225
+        }
+      ],
+      "concepts": [
+        "cyclotomic_fibre",
+        "mobius_shadow_numerator",
+        "jordan_totient_two"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T2 fibre projection: each divisor summand is either killed or frozen to a constant on the m-fibre",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Statement about an object defined inside this development; no external owner identified, and no external search was performed.",
+      "scope_caveat": "Squarefree exponents only. The theorem locates the residue of M_r in each fibre; it makes no claim that the residue is nonzero except in the top fibre, handled separately.",
+      "confidence": "high"
+    },
+    {
+      "id": "cyclotomic_channel_divides_mersenne",
+      "canonical_statement": "The integer |Phi_m(2)| divides 2^m - 1 for every m, and at a prime p one has Phi_p(2) = 2^p - 1, so the prime cyclotomic channels are exactly the prime-index Mersenne channels.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "cyclotomicValue_dvd_mersenne",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 321
+        },
+        {
+          "declaration": "cyclotomicEval_prime",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 333
+        },
+        {
+          "declaration": "cyclotomicValue_prime",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 345
+        }
+      ],
+      "concepts": [
+        "cyclotomic_fibre",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Evaluation at 2 of the classical cyclotomic factorisation of X^m - 1.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "top_cyclotomic_fibre_noncollapse",
+      "canonical_statement": "T3. For squarefree r the Mobius numerator M_r is coprime to |Phi_r(2)|, because in the top fibre it is congruent to mu(r) = plus or minus 1; therefore |Phi_r(2)| divides the reduced denominator of the unscaled radical shadow B(r).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mobiusNumerator_gcd_cyclotomicValue",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 350
+        },
+        {
+          "declaration": "cyclotomicValue_dvd_baseMobiusShadow_den",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 389
+        }
+      ],
+      "concepts": [
+        "cyclotomic_fibre",
+        "mobius_shadow_numerator",
+        "denominator_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T2 at m = r, where J2(1) = 1 and mu(r) is a unit",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Statement about a development-internal object; no external owner identified.",
+      "scope_caveat": "Only the unscaled shadow B(r) is covered: this node says nothing about the extra scale H/rad(H), which is handled by the separate scaled statements, and nothing about the foreign diagonal defect.",
+      "confidence": "high"
+    },
+    {
+      "id": "mersenne_quotient_channel_congruence",
+      "canonical_statement": "For m | r with r positive, the integer Phi_m(2) divides (2^r - 1)/(2^m - 1) minus r/m; that is, the geometric Mersenne cofactor is congruent to its number of blocks in the m-th cyclotomic channel.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mersenneQuotient_mod_cyclotomicEval",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 429
+        },
+        {
+          "declaration": "eval_spacedRepunit_two",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 405
+        }
+      ],
+      "concepts": [
+        "cyclotomic_fibre",
+        "mersenne_channel",
+        "spaced_repunit"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "evaluation at X = 2 of the old-fibre repunit congruence",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct evaluation of the classical old-fibre congruence; the second algebraic bridge consumed by T4.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "cyclotomic_projection_anchors",
+      "canonical_statement": "Kernel-checked instances of T2 at r = 210 in the fibres m = 105 and m = 210, and of T3 at r = 2310.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "t2_210_105_anchor",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 466
+        },
+        {
+          "declaration": "t2_210_210_anchor",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 473
+        },
+        {
+          "declaration": "t3_2310_anchor",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 480
+        },
+        {
+          "declaration": "squarefree_210",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 446
+        },
+        {
+          "declaration": "squarefree_2310",
+          "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+          "line": 459
+        }
+      ],
+      "concepts": [
+        "cyclotomic_fibre",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "elaboration of the general theorems at fixed exponents",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Two exponents only. These are elaboration anchors; they are not finite substitutes for T2 or T3 and carry no unbounded supply.",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_recurrence",
+      "canonical_statement": "T5. For a prime p not dividing r, the Mobius numerator polynomial at rp equals p times the spaced repunit of block size r with p blocks times the numerator at r, minus the p-fold expansion of the numerator at r. No squarefreeness hypothesis is needed. Equivalent orientations state the same identity with the factors commuted, with expansion written as composition with X^p, and evaluated at an arbitrary integer x, where expansion becomes evaluation at x^p.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mobiusNumeratorPolynomial_mul_prime",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 160
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_prime_mul",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 210
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_mul_prime_comp",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 220
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_mul_prime_eval",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 230
+        },
+        {
+          "declaration": "expand_spacedRepunit",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 45
+        },
+        {
+          "declaration": "divisors_mul_prime_split",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 25
+        },
+        {
+          "declaration": "divisors_disjoint_prime_multiples",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 35
+        },
+        {
+          "declaration": "spacedRepunit_eq_sum_X_pow",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 56
+        },
+        {
+          "declaration": "spacedRepunit_mul_X_pow_sub_one",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 61
+        },
+        {
+          "declaration": "X_pow_sub_one_ne_zero",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 68
+        },
+        {
+          "declaration": "spacedRepunit_blocks",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 75
+        },
+        {
+          "declaration": "moebius_mul_prime",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 94
+        },
+        {
+          "declaration": "old_divisor_summand",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 103
+        },
+        {
+          "declaration": "new_divisor_summand",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 138
+        }
+      ],
+      "concepts": [
+        "prime_adjunction_jump",
+        "spaced_repunit",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T5 divisor split: divisors of rp are the old divisors and their p-multiples, disjointly",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A divisor-sum split with the multiplicativity of mu at a fresh prime; standard technique, applied to a bespoke polynomial.",
+      "scope_caveat": "A polynomial identity only. It supplies no channel-avoidance statement and no infinite supply of anything.",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_new_fibre",
+      "canonical_statement": "When a fresh prime p is adjoined to r, in a genuinely new fibre m*p (with m | r) the geometric old-divisor block vanishes, so Phi_{m*p} divides the new numerator polynomial plus the p-fold expansion of the old one; on squarefree r this is equivalently Phi_{m*p} dividing the new numerator plus the constant mu(m) J2(r/m).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "cyclotomic_dvd_primeJump_new_fibre",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 281
+        },
+        {
+          "declaration": "cyclotomic_dvd_primeJump_new_fibre_constant",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 347
+        },
+        {
+          "declaration": "cyclotomic_dvd_expand_sub_constant",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 256
+        }
+      ],
+      "concepts": [
+        "prime_adjunction_jump",
+        "cyclotomic_fibre"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T5 recurrence combined with cyclotomic_expand_eq_cyclotomic_mul",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "A congruence interface. It does not assert that any foreign defect misses the displayed target in the new fibre.",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_old_fibre",
+      "canonical_statement": "When a fresh prime p is adjoined to a squarefree r, on an old fibre m | r the numerator is scaled by p^2 - 1: Phi_m divides the new numerator polynomial minus (p^2 - 1) times the old one.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "cyclotomic_dvd_primeJump_old_fibre",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 310
+        }
+      ],
+      "concepts": [
+        "prime_adjunction_jump",
+        "cyclotomic_fibre",
+        "jordan_totient_two"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T5 recurrence plus the old-fibre repunit congruence",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Squarefreeness is used only to call the T2 constant-fibre theorem, not for the underlying recurrence; the statement makes no claim about non-cancellation.",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_fixtures",
+      "canonical_statement": "Kernel-checked instances of the jump recurrence: the numerator polynomials at r = 2 and r = 6, the explicit Phi_6 quotient of the first new fibre and the explicit Phi_2 quotient of the corresponding old fibre, plus an r = 4, p = 3 instance showing the recurrence does not need a squarefree source exponent.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mobiusNumeratorPolynomial_two_fixture",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 380
+        },
+        {
+          "declaration": "mobiusNumeratorPolynomial_six_fixture",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 390
+        },
+        {
+          "declaration": "primeJump_new_fibre_six_factorization",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 404
+        },
+        {
+          "declaration": "primeJump_old_fibre_two_factorization",
+          "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+          "line": 416
+        }
+      ],
+      "concepts": [
+        "prime_adjunction_jump",
+        "cyclotomic_fibre"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "explicit coefficient expansion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Pins sign and multiplication orientation at the two smallest exponents only.",
+      "confidence": "high"
+    },
+    {
+      "id": "cyclic_subgroup_sum_idempotence",
+      "canonical_statement": "In the cyclic algebra Z[X]/(X^r - 1), for q | r the order-q subgroup sum is idempotent up to scale: X^r - 1 divides the square of the subgroup sum minus q times the subgroup sum.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "cyclicModulus_dvd_subgroupSum_sq_sub_smul",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 87
+        },
+        {
+          "declaration": "subgroupSum_mul_X_pow_sub_one",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 57
+        },
+        {
+          "declaration": "X_pow_sub_one_dvd_subgroupSum_sub_C",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 67
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the subgroup sum is congruent to q modulo X^{r/q} - 1",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The scaled idempotence of a subgroup-sum element of a group algebra is standard; formalised here for Z[X]/(X^r - 1).",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "local_factor_adjugate_identity",
+      "canonical_statement": "For q | r the local numerator factor A_q = q*Sigma_q - 1 and the integral cofactor B_q = q*Sigma_q - (q^2 - 1) multiply to the scalar q^2 - 1 modulo X^r - 1; evaluating at X = 2 the same identity holds in Z/(2^r - 1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "cyclicModulus_dvd_localNumerator_mul_localCofactor_sub_scalar",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 105
+        },
+        {
+          "declaration": "localNumerator_mul_localCofactor_mod_mersenne",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 279
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "jordan_totient_two",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "scaled idempotence of the subgroup sum",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "An adjugate identity: it exhibits a cofactor, not an inverse, and asserts nothing about q^2 - 1 being invertible.",
+      "confidence": "high"
+    },
+    {
+      "id": "fresh_prime_expansion_trivial_mod_cyclic",
+      "canonical_statement": "For squarefree r and a prime p not dividing r, the p-fold expansion acts trivially on the Mobius numerator polynomial modulo X^r - 1: X^r - 1 divides the numerator minus its p-fold expansion.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "cyclicModulus_dvd_mobiusNumeratorPolynomial_sub_expand",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 168
+        },
+        {
+          "declaration": "monic_dvd_of_map_rat_dvd",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 152
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "prime_adjunction_jump",
+        "cyclotomic_fibre"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "fibrewise T2 constants plus pairwise-coprime cyclotomic recombination over Q, pulled back by monicity",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "The transport lemma for prime-adjunction induction; it is an identity modulo X^r - 1 and carries no arithmetic non-cancellation content.",
+      "confidence": "high"
+    },
+    {
+      "id": "cyclic_tensor_factorisation",
+      "canonical_statement": "For squarefree r the Mobius numerator polynomial factors, modulo X^r - 1, as the product over the primes q | r of the local numerator factors q*Sigma_q - 1: X^r - 1 divides the numerator minus that product.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "cyclicModulus_dvd_mobiusNumeratorPolynomial_sub_numeratorFactorProduct",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 267
+        },
+        {
+          "declaration": "expand_cyclicModulus",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 219
+        },
+        {
+          "declaration": "localNumeratorFactor_mul_prime",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 224
+        },
+        {
+          "declaration": "numeratorFactorProduct_mul_prime",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 233
+        },
+        {
+          "declaration": "subgroupSum_mul_prime_at_prime",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 252
+        },
+        {
+          "declaration": "subgroupSum_mul_cyclicModulus",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 257
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "mobius_shadow_numerator",
+        "prime_adjunction_jump"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "prime-adjunction induction on the squarefree exponent (induction_on_primes)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No parallel numerator definition is introduced: the left-hand object is the original T1 polynomial.",
+      "scope_caveat": "Squarefree exponents only; a congruence modulo X^r - 1, not a factorisation in Z[X].",
+      "confidence": "high"
+    },
+    {
+      "id": "global_cofactor_adjugate",
+      "canonical_statement": "For squarefree r, multiplying the local adjugate identities gives that X^r - 1 divides the product of the local numerator factors times the product of the local cofactors minus J2(r), and combining with the tensor factorisation, that X^r - 1 divides the Mobius numerator polynomial times the cofactor product minus J2(r).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "cyclicModulus_dvd_numeratorFactorProduct_mul_cofactorProduct_sub_jordanTotientTwo",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 326
+        },
+        {
+          "declaration": "cyclicModulus_dvd_mobiusNumeratorPolynomial_mul_cofactorProduct_sub_jordanTotientTwo",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 347
+        },
+        {
+          "declaration": "dvd_finset_prod_sub_prod",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 125
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "jordan_totient_two",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "telescoping product of local adjugate identities",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "An integral adjugate for the original numerator polynomial; it does not invert anything and does not bound any gcd by itself.",
+      "confidence": "high"
+    },
+    {
+      "id": "mersenne_local_product_congruence",
+      "canonical_statement": "Evaluating the tensor factorisation at X = 2: for squarefree r, 2^r - 1 divides M_r minus the product over the primes q | r of the evaluated local numerator factors.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "mersenne_dvd_mobiusNumerator_sub_localNumeratorProduct",
+          "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+          "line": 366
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "mobius_shadow_numerator",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "evaluation at X = 2 of the cyclic tensor factorisation",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate evaluation of the tensor factorisation node.",
+      "scope_caveat": "Squarefree exponents only, and a congruence modulo 2^r - 1 only: it locates M_r's residue class but by itself bounds no gcd of M_r with 2^r - 1, and says nothing about the foreign diagonal defect.",
+      "confidence": "high"
+    },
+    {
+      "id": "local_factor_base_two_evaluation",
+      "canonical_statement": "Base-two evaluation of the local factors: the evaluated local numerator factor is q times the base-two repunit sum of 2^{r/q} minus 1, and the evaluated cofactor is the same product minus (q^2 - 1).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "localNumeratorValue_eq",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 41
+        },
+        {
+          "declaration": "localCofactorValue_eq",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 49
+        },
+        {
+          "declaration": "baseTwoRepunit_mul",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 35
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "base_two_subgroup_sum_coprime_q2_minus_1",
+      "canonical_statement": "For an odd prime q the base-two evaluated subgroup sum, the geometric sum of (2^{r/q})^j for j < q, is coprime to q^2 - 1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "baseTwoRepunit_coprime_prime_sq_sub_one",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 58
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "order of 2^{r/q} modulo a hypothetical common prime forces that prime to exceed q + 1",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A standard order argument: a prime dividing the q-th geometric sum is 1 mod q, hence larger than q + 1 unless it equals 2.",
+      "scope_caveat": "Odd primes q only; the binary prime is handled separately and genuinely differently.",
+      "confidence": "high"
+    },
+    {
+      "id": "odd_local_cofactor_unit_mod_mersenne",
+      "canonical_statement": "For an odd prime q dividing r, the evaluated local cofactor is coprime to 2^r - 1, equivalently a unit in Z/(2^r - 1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "localCofactorValue_coprime_mersenne",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 125
+        },
+        {
+          "declaration": "localCofactorValue_isUnit_mod_mersenne",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 185
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "split 2^r - 1 as (base-two repunit) times (2^{r/q} - 1) and rule out both factors",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Says nothing about the binary prime q = 2, where the cofactor is not claimed to be a unit.",
+      "confidence": "high"
+    },
+    {
+      "id": "binary_local_numerator_unit_mod_mersenne",
+      "canonical_statement": "For squarefree even r, the binary local numerator factor equals 2*2^{r/2} + 1 and is coprime to 2^r - 1, hence a unit in Z/(2^r - 1); squarefreeness enters by making r/2 odd.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "localNumeratorValue_two_coprime_mersenne",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 194
+        },
+        {
+          "declaration": "localNumeratorValue_two_isUnit_mod_mersenne",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 261
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "factor 2^r - 1 as (x-1)(x+1) with x = 2^{r/2}, then a mod 3 computation using oddness of r/2",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Requires r squarefree and even; the companion finite instance shows the conclusion is false at r = 4.",
+      "confidence": "high"
+    },
+    {
+      "id": "binary_factor_squarefree_sharpness",
+      "canonical_statement": "At r = 4 the binary local numerator factor has gcd 3 with 2^4 - 1, so the squarefree hypothesis in the binary unit theorem cannot be dropped.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "localNumeratorValue_four_gcd",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 271
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "direct computation",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "A single witness at r = 4. It shows the hypothesis is necessary; it does not describe how the unit statement fails in general for nonsquarefree exponents.",
+      "confidence": "high"
+    },
+    {
+      "id": "mobius_numerator_odd_jordan_normal_form",
+      "canonical_statement": "Base-two unit normal form: for squarefree r the Mobius numerator M_r is associated, in Z/(2^r - 1), to the odd Jordan scalar, the product of (q^2 - 1) over the odd primes q dividing r. The binary prime contributes only a unit.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "localNumeratorProduct_associated_oddJordanScalar",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 306
+        },
+        {
+          "declaration": "mobiusNumerator_associated_oddJordanScalar",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 339
+        }
+      ],
+      "concepts": [
+        "cyclic_tensor_algebra",
+        "odd_jordan_scalar",
+        "mobius_shadow_numerator",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "prime-local adjugate units multiplied over the prime factors",
+      "prior_art_state": "candidate_new_statement",
+      "prior_art_note": "Unconditional, about the explicit numerator M_r, and not a corollary of any classical theorem in the corpus: it replaces an astronomically large integer by a scalar of size at most t^{2 pi(t)} inside the Mersenne quotient. Novelty is claimed only relative to this development's own object; no external literature search has been performed.",
+      "scope_caveat": "An associatedness statement modulo 2^r - 1, for squarefree r only. It computes the numerator's residue class up to units; it says nothing about the foreign diagonal defect and therefore nothing about Erdos 249.",
+      "confidence": "high"
+    },
+    {
+      "id": "associated_residues_share_gcd",
+      "canonical_statement": "Two integers whose residues are associated modulo M have the same gcd with M.",
+      "logical_class": "infrastructure",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "gcd_natAbs_eq_of_associated_mod",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 394
+        },
+        {
+          "declaration": "associated_modulus_dvd_natAbs",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 366
+        },
+        {
+          "declaration": "associated_modulus_dvd_natAbs_iff",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 386
+        }
+      ],
+      "concepts": [
+        "denominator_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "push the association through the ring map ZMod M to ZMod d for each divisor d",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Generic commutative-algebra plumbing; no arithmetic content specific to this development.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "scaled_gcd_collapses_to_odd_jordan_scalar",
+      "canonical_statement": "For squarefree r and any natural scale h, the gcd of |h * M_r| with 2^r - 1 equals the gcd of h times the absolute odd Jordan scalar with 2^r - 1; the unscaled case h = 1 is the special case.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "scaledMobiusNumerator_gcd_eq_oddJordanScalar",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 412
+        },
+        {
+          "declaration": "mobiusNumerator_gcd_eq_oddJordanScalar",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 431
+        }
+      ],
+      "concepts": [
+        "odd_jordan_scalar",
+        "mobius_shadow_numerator",
+        "mersenne_channel",
+        "denominator_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "normal form plus invariance of gcd under association modulo the modulus",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct combination of the odd-Jordan normal form with the generic gcd invariance lemma; state corrected from not_assessed, since the note already records the derivation as routine and the novelty is carried entirely by mobius_numerator_odd_jordan_normal_form.",
+      "scope_caveat": "Squarefree exponents only; a statement about the displayed fraction M_r/(2^r - 1), not about the totient series.",
+      "confidence": "high"
+    },
+    {
+      "id": "scaled_shadow_exact_denominator",
+      "canonical_statement": "For squarefree r and any natural scale h, the reduced denominator of (h * M_r)/(2^r - 1) is exactly (2^r - 1) divided by the gcd of 2^r - 1 with h times the absolute odd Jordan scalar of r.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "scaledMobiusNumerator_den_exact",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 441
+        }
+      ],
+      "concepts": [
+        "odd_jordan_scalar",
+        "mersenne_channel",
+        "denominator_survival",
+        "explicit_finite_shadow"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "gcd collapse fed into Rat.den_divInt",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Routine once the gcd collapse is available; recorded separately because it is the form the LCM-height instantiation consumes. State corrected from not_assessed to match that note.",
+      "scope_caveat": "Statement is about the explicit finite Mobius shadow only. It says nothing about the foreign diagonal defect (the part of the actual totient tail difference not captured by the finite shadow), so it does not bear on the irrationality of sum phi(n)/2^n on its own.",
+      "confidence": "high"
+    },
+    {
+      "id": "mersenne_prime_divisor_lower_bound",
+      "canonical_statement": "For an odd prime p, every prime divisor of 2^p - 1 is at least 2p + 1; in particular it exceeds any scale t with t < 2p.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "prime_dvd_mersenne_gt_scale",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 460
+        },
+        {
+          "declaration": "prime_dvd_mersenne_lower_bound",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 517
+        }
+      ],
+      "concepts": [
+        "mersenne_channel",
+        "upper_half_prime_family"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "order of 2 in ZMod l is p, so 2p divides l - 1 by oddness",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Classical (Fermat/Euler): prime divisors of 2^p - 1 are congruent to 1 modulo 2p.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "smooth_numbers_coprime_to_upper_half_channel",
+      "canonical_statement": "If every prime factor of a natural number is at most t and p is a prime with 3 <= p and t < 2p, then that number is coprime to 2^p - 1 and a unit modulo it; in particular q^2 - 1 for any prime q at most t, and |J2(r/p)| for a squarefree t-smooth r, are coprime to 2^p - 1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "coprime_mersenne_of_primeFactors_le",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 531
+        },
+        {
+          "declaration": "isUnit_mod_mersenne_of_primeFactors_le",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 542
+        },
+        {
+          "declaration": "coprime_mersenne_prime_sq_sub_one",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 630
+        },
+        {
+          "declaration": "coprime_mersenne_jordanTotientTwo",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 651
+        }
+      ],
+      "concepts": [
+        "mersenne_channel",
+        "upper_half_prime_family",
+        "jordan_totient_two"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "every prime divisor of 2^p - 1 exceeds 2p, hence exceeds t",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate from the classical lower bound on prime divisors of 2^p - 1.",
+      "scope_caveat": "The size separation is between t-smooth data and a single upper-half channel; it says nothing about data with a prime factor above t.",
+      "confidence": "high"
+    },
+    {
+      "id": "upper_half_unit_target_is_unit",
+      "canonical_statement": "The T2 residue target -h*j*n^{-1} in Z/(2^p - 1) is a unit whenever p is a prime with 3 <= p, t < 2p, and each of h, n and |j| has all prime factors at most t.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "upperHalfUnitTarget",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 551
+        },
+        {
+          "declaration": "upperHalfUnitTarget_isUnit_of_primeFactors_le",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 561
+        }
+      ],
+      "concepts": [
+        "upper_half_prime_family",
+        "mersenne_channel",
+        "jordan_totient_two"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "smoothness coprimality applied to each of the three arithmetic factors",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The three smoothness hypotheses are discharged at the LCM height outside this zone, in DiagonalPincerDecomposition.lcmChannelTarget_isUnit; inside this zone they are undischarged parameters.",
+      "scope_caveat": "Only says the target residue is invertible, so the channel does not degenerate. It does not say that the foreign diagonal defect hits or misses that target, which is the actual open supply question for Erdos 249.",
+      "confidence": "high"
+    },
+    {
+      "id": "rational_denominator_survival_reexport",
+      "canonical_statement": "Re-exported from RationalDenominatorSurvival: a divisor of a displayed denominator that is coprime to the displayed numerator survives reduction to lowest terms, and under an extra integer scale h the surviving part is the divisor divided by its gcd with h.",
+      "logical_class": "infrastructure",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "divisor_dvd_divInt_den",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 595
+        },
+        {
+          "declaration": "survivingDivisor_dvd_scaled_divInt_den",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 604
+        }
+      ],
+      "concepts": [
+        "denominator_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Namespace aliases of theorems owned by Erdos249257/RationalDenominatorSurvival.lean; no new content in this zone.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "upper_half_channel_coprime_numerator",
+      "canonical_statement": "For squarefree t-smooth r and an upper-half prime p | r (t < 2p, t at least 5), the channel 2^p - 1 is coprime to |M_r|, and so is the product of the channels over any finite family of such primes.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "coprime_mersenne_mobiusNumerator",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 690
+        },
+        {
+          "declaration": "channelProduct_coprime_mobiusNumerator",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 747
+        },
+        {
+          "declaration": "coprime_natAbs_of_sum_dvd",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 674
+        }
+      ],
+      "concepts": [
+        "upper_half_prime_family",
+        "mobius_shadow_numerator",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T2 prime-channel congruence M_r = -J2(r/p) mod 2^p - 1, plus smoothness coprimality of J2(r/p)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "The size separation is the whole argument: it works only because the channel's prime divisors exceed 2p > t while the numerator's residue is t-smooth.",
+      "confidence": "high"
+    },
+    {
+      "id": "mersenne_channel_product_structure",
+      "canonical_statement": "Mersenne numbers at distinct prime indices are pairwise coprime, so for a finite family of primes all dividing r the product of their Mersenne channels divides 2^r - 1.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "coprime_mersenne_of_distinct_primes",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 700
+        },
+        {
+          "declaration": "channelProduct_dvd_mersenne",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 713
+        }
+      ],
+      "concepts": [
+        "mersenne_channel",
+        "upper_half_prime_family"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "gcd(2^a - 1, 2^b - 1) = 2^{gcd(a,b)} - 1",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard Mersenne gcd identity, available in Mathlib as Nat.pow_sub_one_gcd_pow_sub_one.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "upper_half_channel_survives_scaled_denominator",
+      "canonical_statement": "T4. Let r be squarefree with all prime factors at most t (t at least 5), let P be a finite set of primes dividing r with t < 2p for each p in P, and let C be the product of the Mersenne channels 2^p - 1 over P. Then C divided by gcd(C, h) divides the reduced denominator of (h * M_r)/(2^r - 1) for every natural scale h; the single-prime case and the full-product corollaries under a coprime scale, or under a t-smooth scale, follow.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "upperHalfChannel_survivorProduct_dvd_den",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 766
+        },
+        {
+          "declaration": "upperHalfChannel_survivor_dvd_den",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 784
+        },
+        {
+          "declaration": "upperHalfChannel_product_dvd_den_of_coprime_scale",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 795
+        },
+        {
+          "declaration": "upperHalfChannel_product_dvd_den_of_scale_primeFactors_le",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 809
+        }
+      ],
+      "concepts": [
+        "upper_half_prime_family",
+        "denominator_survival",
+        "mersenne_channel",
+        "mobius_shadow_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T4 channel survival: coprimality of the channel product to the numerator plus scale-aware rational reduction",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Exactly the part gcd(C, h) may be cancelled by the scale; the full product is claimed only under an explicit coprimality or smoothness hypothesis on the scale. Nothing is claimed about arbitrary integer cyclotomic evaluations, about non-prime channels, or about the foreign diagonal defect.",
+      "confidence": "high"
+    },
+    {
+      "id": "lcm_height_prime_support",
+      "canonical_statement": "The prime support of H_t = lcm(1..t) is exactly the primes at most t; H_t is positive; the residual scale h_t = H_t/rad(H_t) divides H_t and is t-smooth; a prime divides rad(H_t) iff it is at most t; and rad(H_t)/p divides H_t and is t-smooth for any p dividing rad(H_t).",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "prime_dvd_lcmHeight_iff",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 855
+        },
+        {
+          "declaration": "lcmScale_dvd_lcmHeight",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 879
+        },
+        {
+          "declaration": "lcmScale_primeFactors_le",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 885
+        },
+        {
+          "declaration": "prime_dvd_lcmRadical_iff",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 891
+        },
+        {
+          "declaration": "lcmRadical_div_dvd_lcmHeight",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 899
+        },
+        {
+          "declaration": "lcmRadical_div_primeFactors_le",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 906
+        },
+        {
+          "declaration": "lcmHeight_pos",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 872
+        },
+        {
+          "declaration": "lcmHeight_zero",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 834
+        },
+        {
+          "declaration": "lcmHeight_one",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 838
+        }
+      ],
+      "concepts": [
+        "lcm_height",
+        "squarefree_radical_kernel",
+        "upper_half_prime_family"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary facts about lcm(1..t); formalised here to fix the through-t convention.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "lcm_height_channel_product_divides_shadow_denominator",
+      "canonical_statement": "T4 at the development's own object. For H positive and t at least 5, with P a family of upper-half primes dividing rad(H) and rad(H) t-smooth, the surviving part of the channel product divides the reduced denominator of H * numericMobiusShadow H; when the residual scale H/rad(H) is t-smooth the whole product divides it; concretely, at H = H_t = lcm(1..t) with t at least 5, the product of 2^p - 1 over all primes p with t/2 < p <= t divides that reduced denominator.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "scaledMobiusShadow_upperHalf_survivorProduct_dvd_den",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 924
+        },
+        {
+          "declaration": "scaledMobiusShadow_upperHalf_product_dvd_den_of_scale_primeFactors_le",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 957
+        },
+        {
+          "declaration": "lcmHeight_upperHalf_product_dvd_den",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 983
+        }
+      ],
+      "concepts": [
+        "upper_half_prime_family",
+        "explicit_finite_shadow",
+        "lcm_height",
+        "denominator_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "T4 plus the radical reduction of the scaled shadow, with the LCM-height smoothness bounds discharged",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Statement is about the explicit finite Mobius shadow only. It says nothing about the foreign diagonal defect (the part of the actual totient tail difference not captured by the finite shadow), so it does not bear on the irrationality of sum phi(n)/2^n on its own.",
+      "confidence": "high"
+    },
+    {
+      "id": "upper_half_channel_product_growth",
+      "canonical_statement": "The product of the upper-half Mersenne channels dominates the product of 2^{p-1} over the same primes, equivalently 2 to the power of the sum of (p - 1); and for t at least 5 it is at least 2^{t/2}.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "upperHalfMersenneProduct_factorwise_lower_bound",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 32
+        },
+        {
+          "declaration": "upperHalfMersenneProduct_sum_lower_bound",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 41
+        },
+        {
+          "declaration": "upperHalfMersenneProduct_lower_bound",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 60
+        },
+        {
+          "declaration": "two_pow_pred_le_mersenne",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 22
+        }
+      ],
+      "concepts": [
+        "upper_half_prime_family",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "factorwise bound 2^{p-1} <= 2^p - 1, then a single Bertrand prime in the upper half",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary size estimate; the only nonelementary input is Bertrand's postulate, taken from Mathlib.",
+      "scope_caveat": "A lower bound on the channel product only. It is far weaker than the exact denominator formula proved in the same zone.",
+      "confidence": "high"
+    },
+    {
+      "id": "bertrand_supplies_upper_half_prime",
+      "canonical_statement": "For every t at least 2 the upper-half prime family, the primes in the half-open interval (t/2, t], is nonempty.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "upperHalfPrimes_nonempty",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 50
+        }
+      ],
+      "concepts": [
+        "upper_half_prime_family"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Bertrand's postulate (Nat.exists_prime_lt_and_le_two_mul)",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Bertrand's postulate, from Mathlib; the only content added is the correct odd-t endpoint 2*(t/2) <= t.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "lcm_height_denominator_lower_bound",
+      "canonical_statement": "For t at least 5, the reduced denominator of the scaled LCM-height Mobius shadow H_t * numericMobiusShadow H_t is at least 2^{t/2}.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "lcmHeight_scaledMobiusShadow_den_lower_bound",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 85
+        }
+      ],
+      "concepts": [
+        "explicit_finite_shadow",
+        "lcm_height",
+        "upper_half_prime_family"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "channel product divisibility plus the elementary product bound",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "A denominator statement only. Denominator growth of the explicit shadow does not imply a channel miss and does not rule out cancellation by the foreign diagonal defect, so it does not prove Erdos 249.",
+      "confidence": "high"
+    },
+    {
+      "id": "single_channel_with_two_sided_bounds",
+      "canonical_statement": "For t at least 5 there exists an upper-half prime p such that 2^{t/2} <= 2^p - 1 < 2^t and 2^p - 1 divides the reduced denominator of the scaled LCM-height Mobius shadow.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "exists_upperHalf_mersenne_channel_dvd_den_with_bounds",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 99
+        }
+      ],
+      "concepts": [
+        "upper_half_prime_family",
+        "explicit_finite_shadow",
+        "lcm_height",
+        "mersenne_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Bertrand prime in the upper half plus T4 divisibility",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Selected form for a later discrete channel-separation consumer; the two-sided bit-scale bound is the only extra content over the product statement.",
+      "scope_caveat": "Existence of one surviving channel of controlled size. No statement that any residual quantity avoids that channel.",
+      "confidence": "high"
+    },
+    {
+      "id": "lcm_height_exact_denominator",
+      "canonical_statement": "At every LCM height t, the reduced denominator of H_t * numericMobiusShadow H_t is exactly (2^{r_t} - 1) divided by the gcd of 2^{r_t} - 1 with h_t times the absolute odd Jordan scalar of r_t, where r_t = rad(H_t) and h_t = H_t/r_t. The giant Mobius numerator is replaced completely by the scale times a small scalar.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "lcmHeight_scaledMobiusShadow_den_exact",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 147
+        },
+        {
+          "declaration": "primeFactors_thirty",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 127
+        },
+        {
+          "declaration": "primeFactors_sixty",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 137
+        }
+      ],
+      "concepts": [
+        "explicit_finite_shadow",
+        "lcm_height",
+        "odd_jordan_scalar",
+        "denominator_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "odd-Jordan normal form of the numerator instantiated at the LCM radical",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Downgraded from candidate_new_statement on adversarial re-read of the Lean. The proof of lcmHeight_scaledMobiusShadow_den_exact (MersenneShadowDenominatorGrowth.lean lines 147-175) is a twenty-line instantiation: rewrite by RadicalMobiusShadow.scaledMobiusShadow_eq_radicalNumerator (node radical_reduction_of_scaled_shadow), fold the scale into the numerator with Rat.divInt_mul_divInt, then apply scaledMobiusNumerator_den_exact (node scaled_shadow_exact_denominator) at r := rad(H_t), h := H_t/rad(H_t), discharging squarefreeness with squarefreeKernel_squarefree. It introduces no new hypothesis, no new mechanism and no case analysis. The novelty of the zone sits upstream, in mobius_numerator_odd_jordan_normal_form (and the two unit lemmas it consumes), which is what actually eliminates M_{r_t}; this node is that theorem read at one family of arguments. It remains a genuine and useful named instantiation, and is listed in docs/claims.json as claim mersenne_shadow_denominator, status 'proved here'; no external prior-art search has been done.",
+      "scope_caveat": "Exact for the explicit finite shadow only. It computes a denominator; it does not show any real quantity is non-integral, and it says nothing about the foreign diagonal defect, so it does not prove Erdos 249. Also note the exactness is only as sharp as the gcd it displays: the formula does not by itself assert the gcd is small, and the accompanying lower bound 2^{t/2} is proved separately and is far weaker than 2^{rad(H_t)}.",
+      "confidence": "high"
+    },
+    {
+      "id": "lcm_height_five_fixtures",
+      "canonical_statement": "Kernel-checked boundary instances at t = 5: H_5 = 60, the upper-half prime family is {3, 5}, rad(H_5) = 30, the scale is 2, the surviving channel product is 217 = (2^3 - 1)(2^5 - 1), and the exact reduced denominator is (2^30 - 1)/3.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "lcmHeight_five_fixture",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 843
+        },
+        {
+          "declaration": "upperHalfPrimes_five_fixture",
+          "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+          "line": 919
+        },
+        {
+          "declaration": "lcmRadical_five_fixture",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 178
+        },
+        {
+          "declaration": "lcmScale_five_fixture",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 183
+        },
+        {
+          "declaration": "lcmHeight_five_scaledMobiusShadow_den_exact",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 187
+        },
+        {
+          "declaration": "upperHalfMersenneProduct_five_fixture",
+          "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+          "line": 199
+        }
+      ],
+      "concepts": [
+        "lcm_height",
+        "upper_half_prime_family",
+        "explicit_finite_shadow"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "decide / norm_num at t = 5",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "One height only (t = 5). Pressure tests the through-t convention and the strict lower / inclusive upper endpoints of the upper-half interval.",
+      "confidence": "high"
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "sum_powerset_singleton",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 27,
+      "role": "engine",
+      "statement_node": "prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "mersenne",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 35,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "squarefreeKernel",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 40,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "squarefreeKernel_primeFactors",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 42,
+      "role": "statement",
+      "statement_node": "squarefree_kernel_basic"
+    },
+    {
+      "declaration": "squarefreeKernel_idem",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 48,
+      "role": "statement",
+      "statement_node": "squarefree_kernel_basic"
+    },
+    {
+      "declaration": "squarefreeKernel_pos",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 54,
+      "role": "statement",
+      "statement_node": "squarefree_kernel_basic"
+    },
+    {
+      "declaration": "squarefreeKernel_dvd",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 58,
+      "role": "statement",
+      "statement_node": "squarefree_kernel_basic"
+    },
+    {
+      "declaration": "squarefreeKernel_squarefree",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 63,
+      "role": "statement",
+      "statement_node": "squarefree_kernel_basic"
+    },
+    {
+      "declaration": "prime_dvd_squarefreeKernel_iff",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 77,
+      "role": "statement",
+      "statement_node": "squarefree_kernel_basic"
+    },
+    {
+      "declaration": "mobiusNumerator",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 101,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "baseMobiusShadow",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 108,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "numericMobiusShadow",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 113,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "numericMobiusShadow_radical",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 118,
+      "role": "statement",
+      "statement_node": "radical_reduction_of_scaled_shadow"
+    },
+    {
+      "declaration": "scaledMobiusShadow_eq_radicalBase",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 125,
+      "role": "statement",
+      "statement_node": "radical_reduction_of_scaled_shadow"
+    },
+    {
+      "declaration": "scaledMobiusShadow_eq_radicalNumerator",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 141,
+      "role": "statement",
+      "statement_node": "radical_reduction_of_scaled_shadow"
+    },
+    {
+      "declaration": "baseMobiusShadow_den",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 150,
+      "role": "statement",
+      "statement_node": "base_shadow_generic_reduced_denominator"
+    },
+    {
+      "declaration": "baseMobiusShadow_den_of_gcd_eq",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 163,
+      "role": "statement",
+      "statement_node": "base_shadow_generic_reduced_denominator"
+    },
+    {
+      "declaration": "mobiusNumerator_prime",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 172,
+      "role": "statement",
+      "statement_node": "prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "mobiusNumerator_prime_gcd",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 179,
+      "role": "statement",
+      "statement_node": "prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "baseMobiusShadow_den_prime",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 200,
+      "role": "statement",
+      "statement_node": "prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "mobiusNumerator_twicePrime",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 207,
+      "role": "representation",
+      "statement_node": "twice_prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "prime_mod_six_eq_one_or_five",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 225,
+      "role": "engine",
+      "statement_node": "twice_prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "prime_pow_two_mod_nine_cases",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 243,
+      "role": "engine",
+      "statement_node": "twice_prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "mobiusNumerator_twicePrime_gcd",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 267,
+      "role": "statement",
+      "statement_node": "twice_prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "baseMobiusShadow_den_twicePrime",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 391,
+      "role": "statement",
+      "statement_node": "twice_prime_radical_shadow_denominator"
+    },
+    {
+      "declaration": "prime5_numerator_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 403,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "prime5_den_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 409,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "twicePrime5_numerator_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 414,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "twicePrime5_gcd_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 420,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "twicePrime5_den_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 425,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "radical210_numerator_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 429,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "radical210_gcd_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 437,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "radical210_den_fixture",
+      "module": "Erdos249257/RadicalMobiusShadow.lean",
+      "line": 442,
+      "role": "finite_instance",
+      "statement_node": "radical_shadow_denominator_fixtures"
+    },
+    {
+      "declaration": "spacedRepunit",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 29,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 35,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "gcdWordCoeff",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 41,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "gcdWord",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 45,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "coeff_spacedRepunit_of_lt",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 48,
+      "role": "engine",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "coeff_spacedRepunit_eq_zero_of_le",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 73,
+      "role": "engine",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "moebius_divisor_sum_eq_totient",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 89,
+      "role": "engine",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "scaled_moebius_divisor_sum_eq",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 111,
+      "role": "engine",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_coeff_of_lt",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 134,
+      "role": "engine",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_coeff_eq_zero_of_le",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 182,
+      "role": "engine",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "gcdWord_coeff_of_lt",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 194,
+      "role": "representation",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "gcdWord_coeff_eq_zero_of_le",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 199,
+      "role": "representation",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_eq_gcdWord",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 205,
+      "role": "statement",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_coeff",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 217,
+      "role": "statement",
+      "statement_node": "repunit_numerator_is_gcd_word"
+    },
+    {
+      "declaration": "gcdWordCoeff_pos",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 226,
+      "role": "statement",
+      "statement_node": "repunit_numerator_positivity"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_coeff_pos",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 234,
+      "role": "statement",
+      "statement_node": "repunit_numerator_positivity"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_coeff_nonneg",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 243,
+      "role": "statement",
+      "statement_node": "repunit_numerator_positivity"
+    },
+    {
+      "declaration": "eval_spacedRepunit_two",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 252,
+      "role": "engine",
+      "statement_node": "polynomial_numerator_evaluation_bridge"
+    },
+    {
+      "declaration": "moebius_prod_subset_primeFactors",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 274,
+      "role": "engine",
+      "statement_node": "polynomial_numerator_evaluation_bridge"
+    },
+    {
+      "declaration": "divisor_mobiusNumerator_eq_subset",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 297,
+      "role": "engine",
+      "statement_node": "polynomial_numerator_evaluation_bridge"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_eval_two",
+      "module": "Erdos249257/RepunitMobiusNumerator.lean",
+      "line": 320,
+      "role": "statement",
+      "statement_node": "polynomial_numerator_evaluation_bridge"
+    },
+    {
+      "declaration": "jordanTotientTwo",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 24,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "cyclotomicEval",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 29,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "cyclotomicValue",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 33,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "jordanTotientTwo_one",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 37,
+      "role": "statement",
+      "statement_node": "jordan_totient_two_evaluation"
+    },
+    {
+      "declaration": "jordanTotientTwo_eq_divisorSum",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 40,
+      "role": "statement",
+      "statement_node": "jordan_totient_two_evaluation"
+    },
+    {
+      "declaration": "jordanTotientTwo_multiplicative",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 54,
+      "role": "engine",
+      "statement_node": "jordan_totient_two_evaluation"
+    },
+    {
+      "declaration": "jordanTotientTwo_prime",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 59,
+      "role": "statement",
+      "statement_node": "jordan_totient_two_evaluation"
+    },
+    {
+      "declaration": "jordanTotientTwo_eq_prod_primeFactors",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 67,
+      "role": "statement",
+      "statement_node": "jordan_totient_two_evaluation"
+    },
+    {
+      "declaration": "jordanTotientTwo_natAbs_primeFactors_le",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 79,
+      "role": "statement",
+      "statement_node": "jordan_totient_two_prime_support_bound"
+    },
+    {
+      "declaration": "spacedRepunit_eq_sum_X_pow",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 129,
+      "role": "engine",
+      "statement_node": "spaced_repunit_cyclotomic_factorisation"
+    },
+    {
+      "declaration": "spacedRepunit_mul_X_pow_sub_one",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 135,
+      "role": "engine",
+      "statement_node": "spaced_repunit_cyclotomic_factorisation"
+    },
+    {
+      "declaration": "spacedRepunit_eq_prod_cyclotomic_sdiff",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 143,
+      "role": "engine",
+      "statement_node": "spaced_repunit_cyclotomic_factorisation"
+    },
+    {
+      "declaration": "cyclotomic_dvd_spacedRepunit_of_not_dvd",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 162,
+      "role": "statement",
+      "statement_node": "spaced_repunit_cyclotomic_factorisation"
+    },
+    {
+      "declaration": "cyclotomic_dvd_spacedRepunit_sub_C_of_dvd",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 174,
+      "role": "statement",
+      "statement_node": "spaced_repunit_cyclotomic_factorisation"
+    },
+    {
+      "declaration": "cyclotomicFibreConstant",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 193,
+      "role": "concept",
+      "statement_node": "cyclotomic_fibre_congruence"
+    },
+    {
+      "declaration": "cyclotomic_dvd_polynomial_sub_fibreConstant",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 199,
+      "role": "engine",
+      "statement_node": "cyclotomic_fibre_congruence"
+    },
+    {
+      "declaration": "cyclotomicFibreConstant_eq",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 225,
+      "role": "engine",
+      "statement_node": "cyclotomic_fibre_congruence"
+    },
+    {
+      "declaration": "cyclotomic_dvd_mobiusNumeratorPolynomial_sub",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 299,
+      "role": "statement",
+      "statement_node": "cyclotomic_fibre_congruence"
+    },
+    {
+      "declaration": "mobiusNumerator_mod_cyclotomicEval",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 310,
+      "role": "statement",
+      "statement_node": "cyclotomic_fibre_congruence"
+    },
+    {
+      "declaration": "cyclotomicValue_dvd_mersenne",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 321,
+      "role": "statement",
+      "statement_node": "cyclotomic_channel_divides_mersenne"
+    },
+    {
+      "declaration": "cyclotomicEval_prime",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 333,
+      "role": "statement",
+      "statement_node": "cyclotomic_channel_divides_mersenne"
+    },
+    {
+      "declaration": "cyclotomicValue_prime",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 345,
+      "role": "statement",
+      "statement_node": "cyclotomic_channel_divides_mersenne"
+    },
+    {
+      "declaration": "mobiusNumerator_gcd_cyclotomicValue",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 350,
+      "role": "statement",
+      "statement_node": "top_cyclotomic_fibre_noncollapse"
+    },
+    {
+      "declaration": "cyclotomicValue_dvd_baseMobiusShadow_den",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 389,
+      "role": "statement",
+      "statement_node": "top_cyclotomic_fibre_noncollapse"
+    },
+    {
+      "declaration": "eval_spacedRepunit_two",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 405,
+      "role": "engine",
+      "statement_node": "mersenne_quotient_channel_congruence"
+    },
+    {
+      "declaration": "mersenneQuotient_mod_cyclotomicEval",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 429,
+      "role": "statement",
+      "statement_node": "mersenne_quotient_channel_congruence"
+    },
+    {
+      "declaration": "squarefree_210",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 446,
+      "role": "substrate",
+      "statement_node": "cyclotomic_projection_anchors"
+    },
+    {
+      "declaration": "squarefree_2310",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 459,
+      "role": "substrate",
+      "statement_node": "cyclotomic_projection_anchors"
+    },
+    {
+      "declaration": "t2_210_105_anchor",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 466,
+      "role": "finite_instance",
+      "statement_node": "cyclotomic_projection_anchors"
+    },
+    {
+      "declaration": "t2_210_210_anchor",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 473,
+      "role": "finite_instance",
+      "statement_node": "cyclotomic_projection_anchors"
+    },
+    {
+      "declaration": "t3_2310_anchor",
+      "module": "Erdos249257/CyclotomicProjectionOfShadow.lean",
+      "line": 480,
+      "role": "finite_instance",
+      "statement_node": "cyclotomic_projection_anchors"
+    },
+    {
+      "declaration": "divisors_mul_prime_split",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 25,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "divisors_disjoint_prime_multiples",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 35,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "expand_spacedRepunit",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 45,
+      "role": "representation",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "spacedRepunit_eq_sum_X_pow",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 56,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "spacedRepunit_mul_X_pow_sub_one",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 61,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "X_pow_sub_one_ne_zero",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 68,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "spacedRepunit_blocks",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 75,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "moebius_mul_prime",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 94,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "old_divisor_summand",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 103,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "new_divisor_summand",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 138,
+      "role": "engine",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_mul_prime",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 160,
+      "role": "statement",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_prime_mul",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 210,
+      "role": "representation",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_mul_prime_comp",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 220,
+      "role": "representation",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_mul_prime_eval",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 230,
+      "role": "representation",
+      "statement_node": "prime_jump_recurrence"
+    },
+    {
+      "declaration": "prime_not_dvd_divisor",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 246,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "polynomial_dvd_sub",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 250,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "cyclotomic_dvd_expand_sub_constant",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 256,
+      "role": "engine",
+      "statement_node": "prime_jump_new_fibre"
+    },
+    {
+      "declaration": "cyclotomic_dvd_primeJump_new_fibre",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 281,
+      "role": "statement",
+      "statement_node": "prime_jump_new_fibre"
+    },
+    {
+      "declaration": "cyclotomic_dvd_primeJump_old_fibre",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 310,
+      "role": "statement",
+      "statement_node": "prime_jump_old_fibre"
+    },
+    {
+      "declaration": "cyclotomic_dvd_primeJump_new_fibre_constant",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 347,
+      "role": "statement",
+      "statement_node": "prime_jump_new_fibre"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_two_fixture",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 380,
+      "role": "finite_instance",
+      "statement_node": "prime_jump_fixtures"
+    },
+    {
+      "declaration": "mobiusNumeratorPolynomial_six_fixture",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 390,
+      "role": "finite_instance",
+      "statement_node": "prime_jump_fixtures"
+    },
+    {
+      "declaration": "primeJump_new_fibre_six_factorization",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 404,
+      "role": "finite_instance",
+      "statement_node": "prime_jump_fixtures"
+    },
+    {
+      "declaration": "primeJump_old_fibre_two_factorization",
+      "module": "Erdos249257/PrimePowerJumpDynamics.lean",
+      "line": 416,
+      "role": "finite_instance",
+      "statement_node": "prime_jump_fixtures"
+    },
+    {
+      "declaration": "cyclicModulus",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 21,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "subgroupSum",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 25,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "localNumeratorFactor",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 29,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "localCofactorFactor",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 33,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "numeratorFactorProduct",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 38,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "cofactorProduct",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 42,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "oddJordanScalar",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 46,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "localNumeratorValue",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 50,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "localCofactorValue",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 54,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "subgroupSum_mul_X_pow_sub_one",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 57,
+      "role": "engine",
+      "statement_node": "cyclic_subgroup_sum_idempotence"
+    },
+    {
+      "declaration": "X_pow_sub_one_dvd_subgroupSum_sub_C",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 67,
+      "role": "engine",
+      "statement_node": "cyclic_subgroup_sum_idempotence"
+    },
+    {
+      "declaration": "cyclicModulus_dvd_subgroupSum_sq_sub_smul",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 87,
+      "role": "statement",
+      "statement_node": "cyclic_subgroup_sum_idempotence"
+    },
+    {
+      "declaration": "cyclicModulus_dvd_localNumerator_mul_localCofactor_sub_scalar",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 105,
+      "role": "statement",
+      "statement_node": "local_factor_adjugate_identity"
+    },
+    {
+      "declaration": "dvd_finset_prod_sub_prod",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 125,
+      "role": "engine",
+      "statement_node": "global_cofactor_adjugate"
+    },
+    {
+      "declaration": "polynomial_dvd_sub",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 146,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "monic_dvd_of_map_rat_dvd",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 152,
+      "role": "engine",
+      "statement_node": "fresh_prime_expansion_trivial_mod_cyclic"
+    },
+    {
+      "declaration": "cyclicModulus_dvd_mobiusNumeratorPolynomial_sub_expand",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 168,
+      "role": "statement",
+      "statement_node": "fresh_prime_expansion_trivial_mod_cyclic"
+    },
+    {
+      "declaration": "expand_cyclicModulus",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 219,
+      "role": "engine",
+      "statement_node": "cyclic_tensor_factorisation"
+    },
+    {
+      "declaration": "localNumeratorFactor_mul_prime",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 224,
+      "role": "engine",
+      "statement_node": "cyclic_tensor_factorisation"
+    },
+    {
+      "declaration": "numeratorFactorProduct_mul_prime",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 233,
+      "role": "engine",
+      "statement_node": "cyclic_tensor_factorisation"
+    },
+    {
+      "declaration": "subgroupSum_mul_prime_at_prime",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 252,
+      "role": "engine",
+      "statement_node": "cyclic_tensor_factorisation"
+    },
+    {
+      "declaration": "subgroupSum_mul_cyclicModulus",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 257,
+      "role": "engine",
+      "statement_node": "cyclic_tensor_factorisation"
+    },
+    {
+      "declaration": "cyclicModulus_dvd_mobiusNumeratorPolynomial_sub_numeratorFactorProduct",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 267,
+      "role": "statement",
+      "statement_node": "cyclic_tensor_factorisation"
+    },
+    {
+      "declaration": "cyclicModulus_dvd_numeratorFactorProduct_mul_cofactorProduct_sub_jordanTotientTwo",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 326,
+      "role": "statement",
+      "statement_node": "global_cofactor_adjugate"
+    },
+    {
+      "declaration": "cyclicModulus_dvd_mobiusNumeratorPolynomial_mul_cofactorProduct_sub_jordanTotientTwo",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 347,
+      "role": "statement",
+      "statement_node": "global_cofactor_adjugate"
+    },
+    {
+      "declaration": "mersenne_dvd_mobiusNumerator_sub_localNumeratorProduct",
+      "module": "Erdos249257/CyclicTensorMobiusShadow.lean",
+      "line": 366,
+      "role": "statement",
+      "statement_node": "mersenne_local_product_congruence"
+    },
+    {
+      "declaration": "baseTwoRepunit",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 32,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "baseTwoRepunit_mul",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 35,
+      "role": "engine",
+      "statement_node": "local_factor_base_two_evaluation"
+    },
+    {
+      "declaration": "localNumeratorValue_eq",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 41,
+      "role": "statement",
+      "statement_node": "local_factor_base_two_evaluation"
+    },
+    {
+      "declaration": "localCofactorValue_eq",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 49,
+      "role": "statement",
+      "statement_node": "local_factor_base_two_evaluation"
+    },
+    {
+      "declaration": "baseTwoRepunit_coprime_prime_sq_sub_one",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 58,
+      "role": "statement",
+      "statement_node": "base_two_subgroup_sum_coprime_q2_minus_1"
+    },
+    {
+      "declaration": "localCofactorValue_coprime_mersenne",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 125,
+      "role": "statement",
+      "statement_node": "odd_local_cofactor_unit_mod_mersenne"
+    },
+    {
+      "declaration": "localCofactorValue_isUnit_mod_mersenne",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 185,
+      "role": "statement",
+      "statement_node": "odd_local_cofactor_unit_mod_mersenne"
+    },
+    {
+      "declaration": "localNumeratorValue_two_coprime_mersenne",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 194,
+      "role": "statement",
+      "statement_node": "binary_local_numerator_unit_mod_mersenne"
+    },
+    {
+      "declaration": "localNumeratorValue_two_isUnit_mod_mersenne",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 261,
+      "role": "statement",
+      "statement_node": "binary_local_numerator_unit_mod_mersenne"
+    },
+    {
+      "declaration": "localNumeratorValue_four_gcd",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 271,
+      "role": "finite_instance",
+      "statement_node": "binary_factor_squarefree_sharpness"
+    },
+    {
+      "declaration": "localNumerator_mul_localCofactor_mod_mersenne",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 279,
+      "role": "representation",
+      "statement_node": "local_factor_adjugate_identity"
+    },
+    {
+      "declaration": "localNumeratorProduct_associated_oddJordanScalar",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 306,
+      "role": "statement",
+      "statement_node": "mobius_numerator_odd_jordan_normal_form"
+    },
+    {
+      "declaration": "mobiusNumerator_associated_oddJordanScalar",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 339,
+      "role": "statement",
+      "statement_node": "mobius_numerator_odd_jordan_normal_form"
+    },
+    {
+      "declaration": "associated_modulus_dvd_natAbs",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 366,
+      "role": "engine",
+      "statement_node": "associated_residues_share_gcd"
+    },
+    {
+      "declaration": "associated_modulus_dvd_natAbs_iff",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 386,
+      "role": "engine",
+      "statement_node": "associated_residues_share_gcd"
+    },
+    {
+      "declaration": "gcd_natAbs_eq_of_associated_mod",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 394,
+      "role": "statement",
+      "statement_node": "associated_residues_share_gcd"
+    },
+    {
+      "declaration": "scaledMobiusNumerator_gcd_eq_oddJordanScalar",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 412,
+      "role": "statement",
+      "statement_node": "scaled_gcd_collapses_to_odd_jordan_scalar"
+    },
+    {
+      "declaration": "mobiusNumerator_gcd_eq_oddJordanScalar",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 431,
+      "role": "statement",
+      "statement_node": "scaled_gcd_collapses_to_odd_jordan_scalar"
+    },
+    {
+      "declaration": "scaledMobiusNumerator_den_exact",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 441,
+      "role": "statement",
+      "statement_node": "scaled_shadow_exact_denominator"
+    },
+    {
+      "declaration": "prime_dvd_mersenne_gt_scale",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 460,
+      "role": "statement",
+      "statement_node": "mersenne_prime_divisor_lower_bound"
+    },
+    {
+      "declaration": "prime_dvd_mersenne_lower_bound",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 517,
+      "role": "statement",
+      "statement_node": "mersenne_prime_divisor_lower_bound"
+    },
+    {
+      "declaration": "coprime_mersenne_of_primeFactors_le",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 531,
+      "role": "statement",
+      "statement_node": "smooth_numbers_coprime_to_upper_half_channel"
+    },
+    {
+      "declaration": "isUnit_mod_mersenne_of_primeFactors_le",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 542,
+      "role": "statement",
+      "statement_node": "smooth_numbers_coprime_to_upper_half_channel"
+    },
+    {
+      "declaration": "upperHalfUnitTarget",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 551,
+      "role": "concept",
+      "statement_node": "upper_half_unit_target_is_unit"
+    },
+    {
+      "declaration": "upperHalfUnitTarget_isUnit_of_primeFactors_le",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 561,
+      "role": "statement",
+      "statement_node": "upper_half_unit_target_is_unit"
+    },
+    {
+      "declaration": "divisor_dvd_divInt_den",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 595,
+      "role": "representation",
+      "statement_node": "rational_denominator_survival_reexport"
+    },
+    {
+      "declaration": "survivingDivisor_dvd_scaled_divInt_den",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 604,
+      "role": "representation",
+      "statement_node": "rational_denominator_survival_reexport"
+    },
+    {
+      "declaration": "jordanTotientTwo_natAbs_eq_prod",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 614,
+      "role": "statement",
+      "statement_node": "jordan_totient_two_evaluation"
+    },
+    {
+      "declaration": "coprime_mersenne_prime_sq_sub_one",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 630,
+      "role": "statement",
+      "statement_node": "smooth_numbers_coprime_to_upper_half_channel"
+    },
+    {
+      "declaration": "coprime_mersenne_jordanTotientTwo",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 651,
+      "role": "statement",
+      "statement_node": "smooth_numbers_coprime_to_upper_half_channel"
+    },
+    {
+      "declaration": "mobiusNumerator_mod_mersenne_prime",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 666,
+      "role": "representation",
+      "statement_node": "cyclotomic_fibre_congruence"
+    },
+    {
+      "declaration": "coprime_natAbs_of_sum_dvd",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 674,
+      "role": "engine",
+      "statement_node": "upper_half_channel_coprime_numerator"
+    },
+    {
+      "declaration": "coprime_mersenne_mobiusNumerator",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 690,
+      "role": "statement",
+      "statement_node": "upper_half_channel_coprime_numerator"
+    },
+    {
+      "declaration": "coprime_mersenne_of_distinct_primes",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 700,
+      "role": "statement",
+      "statement_node": "mersenne_channel_product_structure"
+    },
+    {
+      "declaration": "channelProduct_dvd_mersenne",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 713,
+      "role": "statement",
+      "statement_node": "mersenne_channel_product_structure"
+    },
+    {
+      "declaration": "channelProduct_coprime_mobiusNumerator",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 747,
+      "role": "statement",
+      "statement_node": "upper_half_channel_coprime_numerator"
+    },
+    {
+      "declaration": "upperHalfChannel_survivorProduct_dvd_den",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 766,
+      "role": "statement",
+      "statement_node": "upper_half_channel_survives_scaled_denominator"
+    },
+    {
+      "declaration": "upperHalfChannel_survivor_dvd_den",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 784,
+      "role": "statement",
+      "statement_node": "upper_half_channel_survives_scaled_denominator"
+    },
+    {
+      "declaration": "upperHalfChannel_product_dvd_den_of_coprime_scale",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 795,
+      "role": "statement",
+      "statement_node": "upper_half_channel_survives_scaled_denominator"
+    },
+    {
+      "declaration": "upperHalfChannel_product_dvd_den_of_scale_primeFactors_le",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 809,
+      "role": "statement",
+      "statement_node": "upper_half_channel_survives_scaled_denominator"
+    },
+    {
+      "declaration": "lcmHeight",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 830,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "lcmHeight_zero",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 834,
+      "role": "substrate",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "lcmHeight_one",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 838,
+      "role": "substrate",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "lcmHeight_five_fixture",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 843,
+      "role": "finite_instance",
+      "statement_node": "lcm_height_five_fixtures"
+    },
+    {
+      "declaration": "lcmRadical",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 847,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "lcmScale",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 851,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "prime_dvd_lcmHeight_iff",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 855,
+      "role": "statement",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "lcmHeight_pos",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 872,
+      "role": "substrate",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "lcmScale_dvd_lcmHeight",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 879,
+      "role": "statement",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "lcmScale_primeFactors_le",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 885,
+      "role": "statement",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "prime_dvd_lcmRadical_iff",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 891,
+      "role": "statement",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "lcmRadical_div_dvd_lcmHeight",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 899,
+      "role": "statement",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "lcmRadical_div_primeFactors_le",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 906,
+      "role": "statement",
+      "statement_node": "lcm_height_prime_support"
+    },
+    {
+      "declaration": "upperHalfPrimes",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 914,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "upperHalfPrimes_five_fixture",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 919,
+      "role": "finite_instance",
+      "statement_node": "lcm_height_five_fixtures"
+    },
+    {
+      "declaration": "scaledMobiusShadow_upperHalf_survivorProduct_dvd_den",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 924,
+      "role": "statement",
+      "statement_node": "lcm_height_channel_product_divides_shadow_denominator"
+    },
+    {
+      "declaration": "scaledMobiusShadow_upperHalf_product_dvd_den_of_scale_primeFactors_le",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 957,
+      "role": "statement",
+      "statement_node": "lcm_height_channel_product_divides_shadow_denominator"
+    },
+    {
+      "declaration": "lcmHeight_upperHalf_product_dvd_den",
+      "module": "Erdos249257/MersenneShadowCyclotomicNoncollapse.lean",
+      "line": 983,
+      "role": "statement",
+      "statement_node": "lcm_height_channel_product_divides_shadow_denominator"
+    },
+    {
+      "declaration": "two_pow_pred_le_mersenne",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 22,
+      "role": "engine",
+      "statement_node": "upper_half_channel_product_growth"
+    },
+    {
+      "declaration": "upperHalfMersenneProduct_factorwise_lower_bound",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 32,
+      "role": "statement",
+      "statement_node": "upper_half_channel_product_growth"
+    },
+    {
+      "declaration": "upperHalfMersenneProduct_sum_lower_bound",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 41,
+      "role": "statement",
+      "statement_node": "upper_half_channel_product_growth"
+    },
+    {
+      "declaration": "upperHalfPrimes_nonempty",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 50,
+      "role": "statement",
+      "statement_node": "bertrand_supplies_upper_half_prime"
+    },
+    {
+      "declaration": "upperHalfMersenneProduct_lower_bound",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 60,
+      "role": "statement",
+      "statement_node": "upper_half_channel_product_growth"
+    },
+    {
+      "declaration": "lcmHeight_scaledMobiusShadow_den_lower_bound",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 85,
+      "role": "statement",
+      "statement_node": "lcm_height_denominator_lower_bound"
+    },
+    {
+      "declaration": "exists_upperHalf_mersenne_channel_dvd_den_with_bounds",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 99,
+      "role": "statement",
+      "statement_node": "single_channel_with_two_sided_bounds"
+    },
+    {
+      "declaration": "primeFactors_thirty",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 127,
+      "role": "substrate",
+      "statement_node": "lcm_height_exact_denominator"
+    },
+    {
+      "declaration": "primeFactors_sixty",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 137,
+      "role": "substrate",
+      "statement_node": "lcm_height_exact_denominator"
+    },
+    {
+      "declaration": "lcmHeight_scaledMobiusShadow_den_exact",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 147,
+      "role": "statement",
+      "statement_node": "lcm_height_exact_denominator"
+    },
+    {
+      "declaration": "lcmRadical_five_fixture",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 178,
+      "role": "finite_instance",
+      "statement_node": "lcm_height_five_fixtures"
+    },
+    {
+      "declaration": "lcmScale_five_fixture",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 183,
+      "role": "finite_instance",
+      "statement_node": "lcm_height_five_fixtures"
+    },
+    {
+      "declaration": "lcmHeight_five_scaledMobiusShadow_den_exact",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 187,
+      "role": "finite_instance",
+      "statement_node": "lcm_height_five_fixtures"
+    },
+    {
+      "declaration": "upperHalfMersenneProduct_five_fixture",
+      "module": "Erdos249257/MersenneShadowDenominatorGrowth.lean",
+      "line": 199,
+      "role": "finite_instance",
+      "statement_node": "lcm_height_five_fixtures"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "prime_radical_shadow_denominator",
+      "to": "scaled_gcd_collapses_to_odd_jordan_scalar",
+      "relation": "specialises",
+      "basis": "gcd(M_p, 2^p - 1) = 1 is the case r = p of the odd-Jordan gcd collapse, since oddJordanScalar(p) = p^2 - 1 is coprime to 2^p - 1 by the prime-divisor lower bound."
+    },
+    {
+      "from": "twice_prime_radical_shadow_denominator",
+      "to": "scaled_gcd_collapses_to_odd_jordan_scalar",
+      "relation": "specialises",
+      "basis": "gcd 3 at exponent 2p is the case r = 2p, where the odd Jordan scalar is p^2 - 1 and the surviving common factor with 2^{2p} - 1 is exactly 3."
+    },
+    {
+      "from": "radical_shadow_denominator_fixtures",
+      "to": "base_shadow_generic_reduced_denominator",
+      "relation": "finite_instance_of",
+      "basis": "Each fixture certifies one gcd and reads the denominator off the generic formula at a fixed exponent."
+    },
+    {
+      "from": "polynomial_numerator_evaluation_bridge",
+      "to": "repunit_numerator_is_gcd_word",
+      "relation": "reformulates",
+      "basis": "Same polynomial numerator in two dresses: the gcd-word theorem describes it coefficientwise, the bridge identifies its value at X = 2 with the integer numerator M_r."
+    },
+    {
+      "from": "repunit_numerator_is_gcd_word",
+      "to": "repunit_numerator_positivity",
+      "relation": "implies",
+      "basis": "Positivity is read directly off the gcd-word coefficient formula (r/g) * phi(g)."
+    },
+    {
+      "from": "spaced_repunit_cyclotomic_factorisation",
+      "to": "cyclotomic_fibre_congruence",
+      "relation": "implies",
+      "basis": "Applying the two repunit divisibility facts summand by summand over the divisors of r yields the fibre congruence."
+    },
+    {
+      "from": "top_cyclotomic_fibre_noncollapse",
+      "to": "cyclotomic_fibre_congruence",
+      "relation": "specialises",
+      "basis": "T3 is T2 at the top fibre m = r, where J2(1) = 1 leaves the unit mu(r)."
+    },
+    {
+      "from": "mersenne_quotient_channel_congruence",
+      "to": "spaced_repunit_cyclotomic_factorisation",
+      "relation": "specialises",
+      "basis": "The congruence is the old-fibre repunit statement at d = m, evaluated at X = 2."
+    },
+    {
+      "from": "cyclotomic_projection_anchors",
+      "to": "cyclotomic_fibre_congruence",
+      "relation": "finite_instance_of",
+      "basis": "The 210 anchors instantiate T2 and the 2310 anchor instantiates T3 at fixed squarefree exponents."
+    },
+    {
+      "from": "prime_jump_recurrence",
+      "to": "prime_jump_new_fibre",
+      "relation": "implies",
+      "basis": "Reading the recurrence modulo Phi_{m*p}, where the repunit block vanishes, gives the new-fibre congruence."
+    },
+    {
+      "from": "prime_jump_recurrence",
+      "to": "prime_jump_old_fibre",
+      "relation": "implies",
+      "basis": "Reading the recurrence modulo Phi_m, where the repunit block is congruent to p, gives the old-fibre congruence."
+    },
+    {
+      "from": "prime_jump_fixtures",
+      "to": "prime_jump_recurrence",
+      "relation": "finite_instance_of",
+      "basis": "Explicit polynomials at r = 2, 6 and 12 instantiating the recurrence and its two fibre splits."
+    },
+    {
+      "from": "cyclic_subgroup_sum_idempotence",
+      "to": "local_factor_adjugate_identity",
+      "relation": "implies",
+      "basis": "Multiplying out A_q * B_q leaves q^2 times the idempotence defect, so scaled idempotence gives the adjugate identity."
+    },
+    {
+      "from": "fresh_prime_expansion_trivial_mod_cyclic",
+      "to": "cyclic_tensor_factorisation",
+      "relation": "implies",
+      "basis": "The prime-adjunction induction step needs exactly that the fresh-prime expansion is trivial modulo the old cyclic modulus."
+    },
+    {
+      "from": "prime_jump_recurrence",
+      "to": "cyclic_tensor_factorisation",
+      "relation": "implies",
+      "basis": "The induction step rewrites the numerator at p*r by the T5 recurrence before matching it against the local factor at p."
+    },
+    {
+      "from": "global_cofactor_adjugate",
+      "to": "local_factor_adjugate_identity",
+      "relation": "generalises",
+      "basis": "The global adjugate is the product over the prime factors of the local adjugate identities."
+    },
+    {
+      "from": "mersenne_local_product_congruence",
+      "to": "cyclic_tensor_factorisation",
+      "relation": "specialises",
+      "basis": "Base-two evaluation of the polynomial factorisation modulo X^r - 1."
+    },
+    {
+      "from": "mersenne_local_product_congruence",
+      "to": "mobius_numerator_odd_jordan_normal_form",
+      "relation": "implies",
+      "basis": "The normal form starts from the congruence M_r = product of local values modulo 2^r - 1."
+    },
+    {
+      "from": "odd_local_cofactor_unit_mod_mersenne",
+      "to": "mobius_numerator_odd_jordan_normal_form",
+      "relation": "implies",
+      "basis": "Each odd local factor is associated to q^2 - 1 exactly because its cofactor is a unit in the Mersenne quotient."
+    },
+    {
+      "from": "binary_local_numerator_unit_mod_mersenne",
+      "to": "mobius_numerator_odd_jordan_normal_form",
+      "relation": "implies",
+      "basis": "The binary factor contributes 1 to the association precisely because it is itself a unit."
+    },
+    {
+      "from": "binary_factor_squarefree_sharpness",
+      "to": "binary_local_numerator_unit_mod_mersenne",
+      "relation": "barrier_for",
+      "basis": "The r = 4 computation blocks the nonsquarefree extension of the binary unit statement, not the statement itself: with squarefreeness dropped the binary factor can share the factor 3 with 2^r - 1."
+    },
+    {
+      "from": "base_two_subgroup_sum_coprime_q2_minus_1",
+      "to": "odd_local_cofactor_unit_mod_mersenne",
+      "relation": "implies",
+      "basis": "Coprimality of the evaluated subgroup sum to q^2 - 1 is the first of the two cases in the cofactor argument."
+    },
+    {
+      "from": "mobius_numerator_odd_jordan_normal_form",
+      "to": "scaled_gcd_collapses_to_odd_jordan_scalar",
+      "relation": "implies",
+      "basis": "Associated residues have equal gcd with the modulus, so the numerator may be replaced by the scalar inside the gcd."
+    },
+    {
+      "from": "scaled_gcd_collapses_to_odd_jordan_scalar",
+      "to": "scaled_shadow_exact_denominator",
+      "relation": "implies",
+      "basis": "Substituting the collapsed gcd into the reduced-denominator formula gives the exact denominator."
+    },
+    {
+      "from": "lcm_height_exact_denominator",
+      "to": "scaled_shadow_exact_denominator",
+      "relation": "specialises",
+      "basis": "Instantiation at r = rad(H_t) and h = H_t/rad(H_t)."
+    },
+    {
+      "from": "mersenne_prime_divisor_lower_bound",
+      "to": "smooth_numbers_coprime_to_upper_half_channel",
+      "relation": "implies",
+      "basis": "Every prime divisor of the channel exceeds 2p > t, so no t-smooth number can share a factor with it."
+    },
+    {
+      "from": "cyclotomic_fibre_congruence",
+      "to": "upper_half_channel_coprime_numerator",
+      "relation": "implies",
+      "basis": "The prime-channel form of T2 puts M_r in the residue class of -J2(r/p), which is t-smooth and therefore coprime to the channel."
+    },
+    {
+      "from": "upper_half_channel_coprime_numerator",
+      "to": "upper_half_channel_survives_scaled_denominator",
+      "relation": "implies",
+      "basis": "Coprimality of the channel product to the numerator is exactly the hypothesis of the scale-aware survival lemma."
+    },
+    {
+      "from": "mersenne_channel_product_structure",
+      "to": "upper_half_channel_survives_scaled_denominator",
+      "relation": "implies",
+      "basis": "Pairwise coprimality of prime-index Mersennes is what makes the channel product divide 2^r - 1."
+    },
+    {
+      "from": "lcm_height_channel_product_divides_shadow_denominator",
+      "to": "upper_half_channel_survives_scaled_denominator",
+      "relation": "specialises",
+      "basis": "T4 instantiated at r = rad(H), h = H/rad(H), with all smoothness side conditions discharged from the LCM-height support facts."
+    },
+    {
+      "from": "lcm_height_channel_product_divides_shadow_denominator",
+      "to": "lcm_height_denominator_lower_bound",
+      "relation": "implies",
+      "basis": "A divisor of a positive denominator is at most that denominator."
+    },
+    {
+      "from": "upper_half_channel_product_growth",
+      "to": "lcm_height_denominator_lower_bound",
+      "relation": "implies",
+      "basis": "The 2^{t/2} bound on the channel product transfers to the denominator that the product divides."
+    },
+    {
+      "from": "single_channel_with_two_sided_bounds",
+      "to": "lcm_height_channel_product_divides_shadow_denominator",
+      "relation": "specialises",
+      "basis": "One Bertrand prime is selected from the surviving family and its single channel is bounded on both sides."
+    },
+    {
+      "from": "lcm_height_exact_denominator",
+      "to": "lcm_height_denominator_lower_bound",
+      "relation": "implies",
+      "basis": "The exact value determines the same denominator the growth statement only bounds below; deriving 2^{t/2} from the exact formula needs an unformalised comparison of h_t times the odd Jordan scalar against 2^{rad H_t}, so in Lean the two proofs remain independent."
+    },
+    {
+      "from": "lcm_height_five_fixtures",
+      "to": "lcm_height_exact_denominator",
+      "relation": "finite_instance_of",
+      "basis": "t = 5 instance of the exact denominator, together with the height, radical, scale and channel-product values it uses."
+    },
+    {
+      "from": "bertrand_supplies_upper_half_prime",
+      "to": "upper_half_channel_product_growth",
+      "relation": "implies",
+      "basis": "The 2^{t/2} bound needs at least one prime in the upper half, supplied by Bertrand's postulate."
+    },
+    {
+      "from": "smooth_numbers_coprime_to_upper_half_channel",
+      "to": "upper_half_unit_target_is_unit",
+      "relation": "implies",
+      "basis": "Each of the three arithmetic factors of the target is t-smooth, hence invertible in the channel."
+    },
+    {
+      "from": "squarefree_kernel_basic",
+      "to": "radical_reduction_of_scaled_shadow",
+      "relation": "implies",
+      "basis": "The scaling identity is the divisibility rad(H) | H together with positivity of the kernel."
+    },
+    {
+      "from": "jordan_totient_two_prime_support_bound",
+      "to": "jordan_totient_two_evaluation",
+      "relation": "specialises",
+      "basis": "The support bound reads off the product formula J2(n) = product of (q^2 - 1) over the primes of n."
+    },
+    {
+      "from": "local_factor_base_two_evaluation",
+      "to": "local_factor_adjugate_identity",
+      "relation": "reformulates",
+      "basis": "The base-two values are the evaluations of the same two local factors whose adjugate identity is proved in the polynomial layer."
+    }
+  ]
+}

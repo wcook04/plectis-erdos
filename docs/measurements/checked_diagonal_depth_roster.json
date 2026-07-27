@@ -1,0 +1,1238 @@
+{
+ "schema": "erdos249257-checked-diagonal-depth-roster/1",
+ "artifact_role": "generated_source_backed_finite_measurement",
+ "generator": "scripts/build_checked_diagonal_depth_roster.py",
+ "question": "What checked working depth is recorded at every distinct LCM-diagonal scale through t=82, and which depths are separately proved least?",
+ "parameters": {
+  "t": {
+   "minimum": 1,
+   "maximum": 82
+  },
+  "one_row_per": "distinct periodLcm scale",
+  "admissibility_floor": "min {L>=1 : 2^L > 2*(2*periodLcm(t)+L+2)}"
+ },
+ "source_contract": {
+  "working_certificate_shape": "certifiedKill (periodLcm t) (periodLcm t) L",
+  "least_depth_shape": "certifiedKill (periodLcm t) (periodLcm t) L and for every K<L, not certifiedKill (periodLcm t) (periodLcm t) K",
+  "generic_depth_floor": {
+   "source_path": "Erdos249257/TotientTailPeriodKiller.lean",
+   "lean_module": "Erdos249257.TotientTailPeriodKiller",
+   "declaration": "certifiedKill_depth_floor",
+   "line": 79,
+   "source_sha256": "sha256:1e30899a37d017c8b83d54b61e101be920a86d9ae01e612c31ffce1dd6217b8f"
+  },
+  "continuous_band": {
+   "source_path": "ErdosProblems/Skip/LadderT67.lean",
+   "lean_module": "ErdosProblems.Skip.LadderT67",
+   "declaration": "exists_diagonalKill_le_82",
+   "line": 71264,
+   "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+  },
+  "source_inventory": [
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificates",
+    "bytes": 123733,
+    "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132",
+    "certificate_declarations": 12,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT19.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT19",
+    "bytes": 35535,
+    "source_sha256": "sha256:b8efa92636d745354532280af2b5e35f2eacf2bd901971517a2e6213f720b0f3",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT23.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT23",
+    "bytes": 40016,
+    "source_sha256": "sha256:112a88ca141f142d17f60c40557cafe39c1b53cf524a3eb389ed903010293939",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT25.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT25",
+    "bytes": 43098,
+    "source_sha256": "sha256:e16deb48bbc3062a8d29c4e9dbe9803447002891eeea2da1db19904149bf4633",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT27.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT27",
+    "bytes": 47216,
+    "source_sha256": "sha256:94b677e80770a3c0a303991e53747ef104d6638fbf2af8a7cc87d4b952e28d28",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT29.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT29",
+    "bytes": 55534,
+    "source_sha256": "sha256:27dbb75d2c83c02d15cfd49dd50b327ad935f2f42fb7aca839ae2cb5f045447a",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT31.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT31",
+    "bytes": 62311,
+    "source_sha256": "sha256:1dc7559c38ea738dfe46694407e000f6168c9b44954d2a59469ef934301978d4",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT32.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT32",
+    "bytes": 61295,
+    "source_sha256": "sha256:ada9c9d87b89787ae335e5edb6fa58edf51c181dbcf6834490113bd8b455197e",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT37.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT37",
+    "bytes": 73507,
+    "source_sha256": "sha256:b2487564f0ce4791a0f6345dde552db99fffcda01efa269b0b0bd70d14c05670",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT41",
+    "bytes": 82273,
+    "source_sha256": "sha256:59694e5da8b0effd1e0ea0361cef7031b191f9510a56f9e0735981917d79661a",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT43",
+    "bytes": 89337,
+    "source_sha256": "sha256:6c2a60419d38cd0468a1caed8094222250d17065b710eb7fdfc856edf66b0100",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT47.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT47",
+    "bytes": 95121,
+    "source_sha256": "sha256:1a8ae2dc1a9b9062fb7b57c41014dbcc00610645c090d55f37bb8ff070aab25a",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT49.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT49",
+    "bytes": 97670,
+    "source_sha256": "sha256:7273af647c0e0f5248c92b95d51b57a7525b7887fef11b7b27e9201755c29417",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT53.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT53",
+    "bytes": 106909,
+    "source_sha256": "sha256:40e6d67448541e5cf1c5080213253b9770775b4a39cecfb2013765d75cf2652e",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT59.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT59",
+    "bytes": 120461,
+    "source_sha256": "sha256:decc5eedfad7fccaa3bcd08182897ceaa2fef421df2033eb281f92971aa9a484",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificatesT61.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificatesT61",
+    "bytes": 129891,
+    "source_sha256": "sha256:3bdc9f6c1da80f5eb43ea2a95f8b550562971604b55799f83c6f1157a070fd2b",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean",
+    "lean_module": "Erdos249257.DiagonalPincerCertificateT64Endpoint",
+    "bytes": 126664,
+    "source_sha256": "sha256:17aa09e2bb0fb1aabbcfe32014a426674d0b9deae941191b20207110a5731588",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 0
+   },
+   {
+    "source_path": "ErdosProblems/Lift/Recon67.lean",
+    "lean_module": "ErdosProblems.Lift.Recon67",
+    "bytes": 1001734,
+    "source_sha256": "sha256:92c581c6329bf9de30ef66c2d8a82bbe15d035142073aa0093dc5f4d973d5c8d",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 1
+   },
+   {
+    "source_path": "ErdosProblems/Lift/CertT67.lean",
+    "lean_module": "ErdosProblems.Lift.CertT67",
+    "bytes": 1117050,
+    "source_sha256": "sha256:8e12ec938db479746af4ad45e409ab44d06cfebaef15b4c61cdb70c20b78b943",
+    "certificate_declarations": 1,
+    "least_depth_declarations": 1
+   },
+   {
+    "source_path": "ErdosProblems/Skip/LadderT67.lean",
+    "lean_module": "ErdosProblems.Skip.LadderT67",
+    "bytes": 3841504,
+    "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8",
+    "certificate_declarations": 3,
+    "least_depth_declarations": 3
+   },
+   {
+    "source_path": "Erdos249257/TotientTailPeriodKiller.lean",
+    "lean_module": "Erdos249257.TotientTailPeriodKiller",
+    "bytes": 20604,
+    "source_sha256": "sha256:1e30899a37d017c8b83d54b61e101be920a86d9ae01e612c31ffce1dd6217b8f",
+    "certificate_declarations": 0,
+    "least_depth_declarations": 0
+   }
+  ]
+ },
+ "summary": {
+  "covered_positive_t": 82,
+  "distinct_lcm_scales": 33,
+  "checked_working_depth_rows": 33,
+  "proved_exact_least_depth_rows": 5,
+  "working_depth_only_rows": 28,
+  "exact_least_depth_t": [
+   67,
+   71,
+   73,
+   79,
+   81
+  ],
+  "checked_working_depth_excess_all_rows": {
+   "interpretation": "Exact on proved-least rows; otherwise only an upper bound on least-depth excess.",
+   "sample_size": 33,
+   "minimum": 0,
+   "median": {
+    "numerator": 1,
+    "denominator": 1
+   },
+   "mean": {
+    "numerator": 40,
+    "denominator": 33
+   },
+   "maximum": 4,
+   "distribution": [
+    {
+     "excess": 0,
+     "count": 10,
+     "proportion": {
+      "numerator": 10,
+      "denominator": 33
+     }
+    },
+    {
+     "excess": 1,
+     "count": 12,
+     "proportion": {
+      "numerator": 4,
+      "denominator": 11
+     }
+    },
+    {
+     "excess": 2,
+     "count": 6,
+     "proportion": {
+      "numerator": 2,
+      "denominator": 11
+     }
+    },
+    {
+     "excess": 3,
+     "count": 4,
+     "proportion": {
+      "numerator": 4,
+      "denominator": 33
+     }
+    },
+    {
+     "excess": 4,
+     "count": 1,
+     "proportion": {
+      "numerator": 1,
+      "denominator": 33
+     }
+    }
+   ]
+  },
+  "proved_exact_least_depth_excess": {
+   "sample_size": 5,
+   "minimum": 0,
+   "median": {
+    "numerator": 2,
+    "denominator": 1
+   },
+   "mean": {
+    "numerator": 8,
+    "denominator": 5
+   },
+   "maximum": 3,
+   "distribution": [
+    {
+     "excess": 0,
+     "count": 1,
+     "proportion": {
+      "numerator": 1,
+      "denominator": 5
+     }
+    },
+    {
+     "excess": 1,
+     "count": 1,
+     "proportion": {
+      "numerator": 1,
+      "denominator": 5
+     }
+    },
+    {
+     "excess": 2,
+     "count": 2,
+     "proportion": {
+      "numerator": 2,
+      "denominator": 5
+     }
+    },
+    {
+     "excess": 3,
+     "count": 1,
+     "proportion": {
+      "numerator": 1,
+      "denominator": 5
+     }
+    }
+   ]
+  },
+  "working_depth_only_excess_upper_bounds": {
+   "sample_size": 28,
+   "minimum": 0,
+   "median": {
+    "numerator": 1,
+    "denominator": 1
+   },
+   "mean": {
+    "numerator": 8,
+    "denominator": 7
+   },
+   "maximum": 4,
+   "distribution": [
+    {
+     "excess": 0,
+     "count": 9,
+     "proportion": {
+      "numerator": 9,
+      "denominator": 28
+     }
+    },
+    {
+     "excess": 1,
+     "count": 11,
+     "proportion": {
+      "numerator": 11,
+      "denominator": 28
+     }
+    },
+    {
+     "excess": 2,
+     "count": 4,
+     "proportion": {
+      "numerator": 1,
+      "denominator": 7
+     }
+    },
+    {
+     "excess": 3,
+     "count": 3,
+     "proportion": {
+      "numerator": 3,
+      "denominator": 28
+     }
+    },
+    {
+     "excess": 4,
+     "count": 1,
+     "proportion": {
+      "numerator": 1,
+      "denominator": 28
+     }
+    }
+   ]
+  }
+ },
+ "rows": [
+  {
+   "scale_index_t": 1,
+   "lcm_plateau_t": {
+    "minimum": 1,
+    "maximum": 1
+   },
+   "period_lcm": 1,
+   "arithmetic_admissibility_floor": 5,
+   "checked_working_depth": 6,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t1",
+     "line": 2782,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 2,
+   "lcm_plateau_t": {
+    "minimum": 2,
+    "maximum": 2
+   },
+   "period_lcm": 2,
+   "arithmetic_admissibility_floor": 5,
+   "checked_working_depth": 5,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t2",
+     "line": 2787,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 3,
+   "lcm_plateau_t": {
+    "minimum": 3,
+    "maximum": 3
+   },
+   "period_lcm": 6,
+   "arithmetic_admissibility_floor": 6,
+   "checked_working_depth": 7,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t3",
+     "line": 2792,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 4,
+   "lcm_plateau_t": {
+    "minimum": 4,
+    "maximum": 4
+   },
+   "period_lcm": 12,
+   "arithmetic_admissibility_floor": 7,
+   "checked_working_depth": 7,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t4",
+     "line": 2797,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 5,
+   "lcm_plateau_t": {
+    "minimum": 5,
+    "maximum": 6
+   },
+   "period_lcm": 60,
+   "arithmetic_admissibility_floor": 9,
+   "checked_working_depth": 9,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t5",
+     "line": 2802,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 7,
+   "lcm_plateau_t": {
+    "minimum": 7,
+    "maximum": 7
+   },
+   "period_lcm": 420,
+   "arithmetic_admissibility_floor": 11,
+   "checked_working_depth": 14,
+   "checked_working_depth_excess": 3,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 3,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t7",
+     "line": 2807,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 8,
+   "lcm_plateau_t": {
+    "minimum": 8,
+    "maximum": 8
+   },
+   "period_lcm": 840,
+   "arithmetic_admissibility_floor": 12,
+   "checked_working_depth": 15,
+   "checked_working_depth_excess": 3,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 3,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t8",
+     "line": 2812,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 9,
+   "lcm_plateau_t": {
+    "minimum": 9,
+    "maximum": 10
+   },
+   "period_lcm": 2520,
+   "arithmetic_admissibility_floor": 14,
+   "checked_working_depth": 14,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t9",
+     "line": 2817,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 11,
+   "lcm_plateau_t": {
+    "minimum": 11,
+    "maximum": 12
+   },
+   "period_lcm": 27720,
+   "arithmetic_admissibility_floor": 17,
+   "checked_working_depth": 21,
+   "checked_working_depth_excess": 4,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 4,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t11",
+     "line": 2822,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 13,
+   "lcm_plateau_t": {
+    "minimum": 13,
+    "maximum": 15
+   },
+   "period_lcm": 360360,
+   "arithmetic_admissibility_floor": 21,
+   "checked_working_depth": 22,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t13",
+     "line": 2827,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 16,
+   "lcm_plateau_t": {
+    "minimum": 16,
+    "maximum": 16
+   },
+   "period_lcm": 720720,
+   "arithmetic_admissibility_floor": 22,
+   "checked_working_depth": 23,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t16",
+     "line": 2832,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 17,
+   "lcm_plateau_t": {
+    "minimum": 17,
+    "maximum": 18
+   },
+   "period_lcm": 12252240,
+   "arithmetic_admissibility_floor": 26,
+   "checked_working_depth": 26,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificates",
+     "declaration": "certifiedKill_diagonal_t17",
+     "line": 2837,
+     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 19,
+   "lcm_plateau_t": {
+    "minimum": 19,
+    "maximum": 22
+   },
+   "period_lcm": 232792560,
+   "arithmetic_admissibility_floor": 30,
+   "checked_working_depth": 32,
+   "checked_working_depth_excess": 2,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 2,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT19.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT19",
+     "declaration": "certifiedKill_diagonal_t19",
+     "line": 698,
+     "source_sha256": "sha256:b8efa92636d745354532280af2b5e35f2eacf2bd901971517a2e6213f720b0f3"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 23,
+   "lcm_plateau_t": {
+    "minimum": 23,
+    "maximum": 24
+   },
+   "period_lcm": 5354228880,
+   "arithmetic_admissibility_floor": 35,
+   "checked_working_depth": 35,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT23.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT23",
+     "declaration": "certifiedKill_diagonal_t23",
+     "line": 764,
+     "source_sha256": "sha256:112a88ca141f142d17f60c40557cafe39c1b53cf524a3eb389ed903010293939"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 25,
+   "lcm_plateau_t": {
+    "minimum": 25,
+    "maximum": 26
+   },
+   "period_lcm": 26771144400,
+   "arithmetic_admissibility_floor": 37,
+   "checked_working_depth": 38,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT25.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT25",
+     "declaration": "certifiedKill_diagonal_t25",
+     "line": 820,
+     "source_sha256": "sha256:e16deb48bbc3062a8d29c4e9dbe9803447002891eeea2da1db19904149bf4633"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 27,
+   "lcm_plateau_t": {
+    "minimum": 27,
+    "maximum": 28
+   },
+   "period_lcm": 80313433200,
+   "arithmetic_admissibility_floor": 39,
+   "checked_working_depth": 40,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT27.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT27",
+     "declaration": "certifiedKill_diagonal_t27",
+     "line": 860,
+     "source_sha256": "sha256:94b677e80770a3c0a303991e53747ef104d6638fbf2af8a7cc87d4b952e28d28"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 29,
+   "lcm_plateau_t": {
+    "minimum": 29,
+    "maximum": 30
+   },
+   "period_lcm": 2329089562800,
+   "arithmetic_admissibility_floor": 44,
+   "checked_working_depth": 45,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT29.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT29",
+     "declaration": "certifiedKill_diagonal_t29",
+     "line": 985,
+     "source_sha256": "sha256:27dbb75d2c83c02d15cfd49dd50b327ad935f2f42fb7aca839ae2cb5f045447a"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 31,
+   "lcm_plateau_t": {
+    "minimum": 31,
+    "maximum": 31
+   },
+   "period_lcm": 72201776446800,
+   "arithmetic_admissibility_floor": 49,
+   "checked_working_depth": 49,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT31.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT31",
+     "declaration": "certifiedKill_diagonal_t31",
+     "line": 1081,
+     "source_sha256": "sha256:1dc7559c38ea738dfe46694407e000f6168c9b44954d2a59469ef934301978d4"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 32,
+   "lcm_plateau_t": {
+    "minimum": 32,
+    "maximum": 36
+   },
+   "period_lcm": 144403552893600,
+   "arithmetic_admissibility_floor": 50,
+   "checked_working_depth": 50,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT32.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT32",
+     "declaration": "certifiedKill_diagonal_t32",
+     "line": 1065,
+     "source_sha256": "sha256:ada9c9d87b89787ae335e5edb6fa58edf51c181dbcf6834490113bd8b455197e"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 37,
+   "lcm_plateau_t": {
+    "minimum": 37,
+    "maximum": 40
+   },
+   "period_lcm": 5342931457063200,
+   "arithmetic_admissibility_floor": 55,
+   "checked_working_depth": 56,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT37.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT37",
+     "declaration": "certifiedKill_diagonal_t37",
+     "line": 1237,
+     "source_sha256": "sha256:b2487564f0ce4791a0f6345dde552db99fffcda01efa269b0b0bd70d14c05670"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 41,
+   "lcm_plateau_t": {
+    "minimum": 41,
+    "maximum": 42
+   },
+   "period_lcm": 219060189739591200,
+   "arithmetic_admissibility_floor": 60,
+   "checked_working_depth": 61,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT41",
+     "declaration": "certifiedKill_diagonal_t41",
+     "line": 1356,
+     "source_sha256": "sha256:59694e5da8b0effd1e0ea0361cef7031b191f9510a56f9e0735981917d79661a"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 43,
+   "lcm_plateau_t": {
+    "minimum": 43,
+    "maximum": 46
+   },
+   "period_lcm": 9419588158802421600,
+   "arithmetic_admissibility_floor": 66,
+   "checked_working_depth": 66,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 0,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT43",
+     "declaration": "certifiedKill_diagonal_t43",
+     "line": 1452,
+     "source_sha256": "sha256:6c2a60419d38cd0468a1caed8094222250d17065b710eb7fdfc856edf66b0100"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 47,
+   "lcm_plateau_t": {
+    "minimum": 47,
+    "maximum": 48
+   },
+   "period_lcm": 442720643463713815200,
+   "arithmetic_admissibility_floor": 71,
+   "checked_working_depth": 73,
+   "checked_working_depth_excess": 2,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 2,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT47.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT47",
+     "declaration": "certifiedKill_diagonal_t47",
+     "line": 1525,
+     "source_sha256": "sha256:1a8ae2dc1a9b9062fb7b57c41014dbcc00610645c090d55f37bb8ff070aab25a"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 49,
+   "lcm_plateau_t": {
+    "minimum": 49,
+    "maximum": 52
+   },
+   "period_lcm": 3099044504245996706400,
+   "arithmetic_admissibility_floor": 74,
+   "checked_working_depth": 76,
+   "checked_working_depth_excess": 2,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 2,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT49.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT49",
+     "declaration": "certifiedKill_diagonal_t49",
+     "line": 1559,
+     "source_sha256": "sha256:7273af647c0e0f5248c92b95d51b57a7525b7887fef11b7b27e9201755c29417"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 53,
+   "lcm_plateau_t": {
+    "minimum": 53,
+    "maximum": 58
+   },
+   "period_lcm": 164249358725037825439200,
+   "arithmetic_admissibility_floor": 80,
+   "checked_working_depth": 81,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT53.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT53",
+     "declaration": "certifiedKill_diagonal_t53",
+     "line": 1662,
+     "source_sha256": "sha256:40e6d67448541e5cf1c5080213253b9770775b4a39cecfb2013765d75cf2652e"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 59,
+   "lcm_plateau_t": {
+    "minimum": 59,
+    "maximum": 60
+   },
+   "period_lcm": 9690712164777231700912800,
+   "arithmetic_admissibility_floor": 86,
+   "checked_working_depth": 88,
+   "checked_working_depth_excess": 2,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 2,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT59.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT59",
+     "declaration": "certifiedKill_diagonal_t59",
+     "line": 1832,
+     "source_sha256": "sha256:decc5eedfad7fccaa3bcd08182897ceaa2fef421df2033eb281f92971aa9a484"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 61,
+   "lcm_plateau_t": {
+    "minimum": 61,
+    "maximum": 63
+   },
+   "period_lcm": 591133442051411133755680800,
+   "arithmetic_admissibility_floor": 91,
+   "checked_working_depth": 94,
+   "checked_working_depth_excess": 3,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 3,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificatesT61.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificatesT61",
+     "declaration": "certifiedKill_diagonal_t61",
+     "line": 1936,
+     "source_sha256": "sha256:3bdc9f6c1da80f5eb43ea2a95f8b550562971604b55799f83c6f1157a070fd2b"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 64,
+   "lcm_plateau_t": {
+    "minimum": 64,
+    "maximum": 66
+   },
+   "period_lcm": 1182266884102822267511361600,
+   "arithmetic_admissibility_floor": 92,
+   "checked_working_depth": 93,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "upper_bound_on_least_depth_excess",
+   "proved_least_depth": null,
+   "proved_least_depth_excess": null,
+   "least_depth_excess_upper_bound": 1,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean",
+     "lean_module": "Erdos249257.DiagonalPincerCertificateT64Endpoint",
+     "declaration": "certifiedKill_diagonal_t64",
+     "line": 1928,
+     "source_sha256": "sha256:17aa09e2bb0fb1aabbcfe32014a426674d0b9deae941191b20207110a5731588"
+    },
+    "least_depth": null
+   }
+  },
+  {
+   "scale_index_t": 67,
+   "lcm_plateau_t": {
+    "minimum": 67,
+    "maximum": 70
+   },
+   "period_lcm": 79211881234889091923261227200,
+   "arithmetic_admissibility_floor": 98,
+   "checked_working_depth": 100,
+   "checked_working_depth_excess": 2,
+   "checked_working_depth_excess_status": "proved_exact_least_depth_excess",
+   "proved_least_depth": 100,
+   "proved_least_depth_excess": 2,
+   "least_depth_excess_upper_bound": null,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "ErdosProblems/Lift/Recon67.lean",
+     "lean_module": "ErdosProblems.Lift.Recon67",
+     "declaration": "certifiedKill_diagonal_t67",
+     "line": 18821,
+     "source_sha256": "sha256:92c581c6329bf9de30ef66c2d8a82bbe15d035142073aa0093dc5f4d973d5c8d"
+    },
+    "least_depth": {
+     "source_path": "ErdosProblems/Lift/Recon67.lean",
+     "lean_module": "ErdosProblems.Lift.Recon67",
+     "declaration": "t67_minimal_depth",
+     "line": 18827,
+     "source_sha256": "sha256:92c581c6329bf9de30ef66c2d8a82bbe15d035142073aa0093dc5f4d973d5c8d"
+    }
+   }
+  },
+  {
+   "scale_index_t": 71,
+   "lcm_plateau_t": {
+    "minimum": 71,
+    "maximum": 72
+   },
+   "period_lcm": 5624043567677125526551547131200,
+   "arithmetic_admissibility_floor": 105,
+   "checked_working_depth": 105,
+   "checked_working_depth_excess": 0,
+   "checked_working_depth_excess_status": "proved_exact_least_depth_excess",
+   "proved_least_depth": 105,
+   "proved_least_depth_excess": 0,
+   "least_depth_excess_upper_bound": null,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "ErdosProblems/Lift/CertT67.lean",
+     "lean_module": "ErdosProblems.Lift.CertT67",
+     "declaration": "certifiedKill_diagonal_t71",
+     "line": 21281,
+     "source_sha256": "sha256:8e12ec938db479746af4ad45e409ab44d06cfebaef15b4c61cdb70c20b78b943"
+    },
+    "least_depth": {
+     "source_path": "ErdosProblems/Lift/CertT67.lean",
+     "lean_module": "ErdosProblems.Lift.CertT67",
+     "declaration": "t71_minimal_depth",
+     "line": 21288,
+     "source_sha256": "sha256:8e12ec938db479746af4ad45e409ab44d06cfebaef15b4c61cdb70c20b78b943"
+    }
+   }
+  },
+  {
+   "scale_index_t": 73,
+   "lcm_plateau_t": {
+    "minimum": 73,
+    "maximum": 78
+   },
+   "period_lcm": 410555180440430163438262940577600,
+   "arithmetic_admissibility_floor": 111,
+   "checked_working_depth": 113,
+   "checked_working_depth_excess": 2,
+   "checked_working_depth_excess_status": "proved_exact_least_depth_excess",
+   "proved_least_depth": 113,
+   "proved_least_depth_excess": 2,
+   "least_depth_excess_upper_bound": null,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "ErdosProblems/Skip/LadderT67.lean",
+     "lean_module": "ErdosProblems.Skip.LadderT67",
+     "declaration": "certifiedKill_diagonal_t73",
+     "line": 71100,
+     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+    },
+    "least_depth": {
+     "source_path": "ErdosProblems/Skip/LadderT67.lean",
+     "lean_module": "ErdosProblems.Skip.LadderT67",
+     "declaration": "t73_minimal_depth",
+     "line": 71106,
+     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+    }
+   }
+  },
+  {
+   "scale_index_t": 79,
+   "lcm_plateau_t": {
+    "minimum": 79,
+    "maximum": 80
+   },
+   "period_lcm": 32433859254793982911622772305630400,
+   "arithmetic_admissibility_floor": 117,
+   "checked_working_depth": 120,
+   "checked_working_depth_excess": 3,
+   "checked_working_depth_excess_status": "proved_exact_least_depth_excess",
+   "proved_least_depth": 120,
+   "proved_least_depth_excess": 3,
+   "least_depth_excess_upper_bound": null,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "ErdosProblems/Skip/LadderT67.lean",
+     "lean_module": "ErdosProblems.Skip.LadderT67",
+     "declaration": "certifiedKill_diagonal_t79",
+     "line": 71177,
+     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+    },
+    "least_depth": {
+     "source_path": "ErdosProblems/Skip/LadderT67.lean",
+     "lean_module": "ErdosProblems.Skip.LadderT67",
+     "declaration": "t79_minimal_depth",
+     "line": 71183,
+     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+    }
+   }
+  },
+  {
+   "scale_index_t": 81,
+   "lcm_plateau_t": {
+    "minimum": 81,
+    "maximum": 82
+   },
+   "period_lcm": 97301577764381948734868316916891200,
+   "arithmetic_admissibility_floor": 119,
+   "checked_working_depth": 120,
+   "checked_working_depth_excess": 1,
+   "checked_working_depth_excess_status": "proved_exact_least_depth_excess",
+   "proved_least_depth": 120,
+   "proved_least_depth_excess": 1,
+   "least_depth_excess_upper_bound": null,
+   "provenance": {
+    "working_certificate": {
+     "source_path": "ErdosProblems/Skip/LadderT67.lean",
+     "lean_module": "ErdosProblems.Skip.LadderT67",
+     "declaration": "certifiedKill_diagonal_t81",
+     "line": 71242,
+     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+    },
+    "least_depth": {
+     "source_path": "ErdosProblems/Skip/LadderT67.lean",
+     "lean_module": "ErdosProblems.Skip.LadderT67",
+     "declaration": "t81_minimal_depth",
+     "line": 71248,
+     "source_sha256": "sha256:d78669c832ef65f32f9f6a91afabb368111cc5bb482c9389da12d326fcf8fba8"
+    }
+   }
+  }
+ ],
+ "limits": [
+  "The roster covers the finite positive band 1<=t<=82. It does not exhibit a certificate at t=83 or beyond.",
+  "A checked working depth is not reported as least unless the listed Lean least-depth theorem excludes every smaller depth.",
+  "On working-depth-only rows, working depth minus the arithmetic floor is only an upper bound on the unknown least-depth excess.",
+  "The source extractor verifies current theorem signatures and hashes; it does not perform a separate proof build.",
+  "Finite depth and excess distributions prove no asymptotic law, equidistribution, uniform excess bound, or cofinal certificate supply. Erdos #249 remains OPEN."
+ ]
+}

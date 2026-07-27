@@ -29,6 +29,11 @@
       "decides_label": "Records a reviewed judgement about",
       "decides": "Whether a formal proposition matches the intended statement, how it relates to prior work, what public claim it supports, and what remains open.",
       "does_not_decide": "Whether the Lean kernel accepts the proof term."
+    },
+    "blinded_recovery_evaluation": {
+      "human_name": "Blinded recovery evaluation",
+      "decides": "Whether an agent given the development as it stood before a declaration landed, and a stated subset of the derived layers, reconstructs that declaration's statement or proof mechanism. The holdout is a git checkout predating the target, so the target is absent by construction rather than by the agent's restraint.",
+      "does_not_decide": "Whether the recovered statement is novel, significant, or correctly proved; whether the mechanism credited for the recovery is the one the original proof used; or whether a recovery generalises beyond the held-out case."
     }
   },
   "human_capsule": [
@@ -105,13 +110,30 @@
       "title": "Proof means the exact proposition checked by Lean",
       "human_name": "A formal result is the exact proposition Lean checked",
       "statement": "A result is proved here only as the exact elaborated proposition accepted by the pinned public Lean environment under its transitive assumptions.",
-      "evidence_classes": ["lean_check"],
-      "applies_to": ["object:lean_declaration", "change_type:proof_body_changed", "change_type:lean_proposition_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.proof_trust"],
+      "evidence_classes": [
+        "lean_check"
+      ],
+      "applies_to": [
+        "object:lean_declaration",
+        "change_type:proof_body_changed",
+        "change_type:lean_proposition_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.proof_trust"
+      ],
       "scope_limit": "Kernel acceptance does not establish intended meaning, relevance, novelty, or claim status.",
       "local_instances": [
-        {"relation": "illustrates", "ref_kind": "public_claim", "ref": "eb_full_support"},
-        {"relation": "enforces", "ref_kind": "validation_guard", "ref": "release.proof_trust"}
+        {
+          "relation": "illustrates",
+          "ref_kind": "public_claim",
+          "ref": "eb_full_support"
+        },
+        {
+          "relation": "enforces",
+          "ref_kind": "validation_guard",
+          "ref": "release.proof_trust"
+        }
       ]
     },
     {
@@ -119,14 +141,36 @@
       "title": "Formal proof does not verify intended meaning",
       "human_name": "Formal validity and mathematical faithfulness are separate questions",
       "statement": "A checked Lean declaration and the intended mathematical statement remain distinct until human mathematical review records their correspondence.",
-      "evidence_classes": ["lean_check", "human_mathematical_review"],
-      "applies_to": ["object:lean_declaration", "object:public_claim", "change_type:lean_proposition_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:lean_declaration",
+        "object:public_claim",
+        "change_type:lean_proposition_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "The repository can require and route review; it cannot compute mathematical faithfulness.",
       "local_instances": [
-        {"relation": "illustrates", "ref_kind": "public_claim", "ref": "support_families"},
-        {"relation": "states_limit", "ref_kind": "remaining_open", "ref": "remaining_open.universal_257_all_infinite_supports"},
-        {"relation": "enforces", "ref_kind": "validation_guard", "ref": "release.claim_transition_requirements"}
+        {
+          "relation": "illustrates",
+          "ref_kind": "public_claim",
+          "ref": "support_families"
+        },
+        {
+          "relation": "states_limit",
+          "ref_kind": "remaining_open",
+          "ref": "remaining_open.universal_257_all_infinite_supports"
+        },
+        {
+          "relation": "enforces",
+          "ref_kind": "validation_guard",
+          "ref": "release.claim_transition_requirements"
+        }
       ]
     },
     {
@@ -134,14 +178,36 @@
       "title": "Representation changes require a proved implication or equivalence",
       "human_name": "A public claim crosses representations only through proved transport",
       "statement": "A claim may move between coordinates, encodings, normalisations, or models only through a checked implication or equivalence whose direction and losses are explicit.",
-      "evidence_classes": ["lean_check", "human_mathematical_review"],
-      "applies_to": ["object:representation", "change_type:representation_changed", "argument_relation:makes_exact"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:representation",
+        "change_type:representation_changed",
+        "argument_relation:makes_exact"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "A transport theorem establishes the stated relation; it does not establish that the new representation is useful.",
       "local_instances": [
-        {"relation": "illustrates", "ref_kind": "public_claim", "ref": "mersenne_lambert_ladder"},
-        {"relation": "states_limit", "ref_kind": "remaining_open", "ref": "remaining_open.erdos_249_irrationality"},
-        {"relation": "enforces", "ref_kind": "validation_guard", "ref": "release.claim_transition_requirements"}
+        {
+          "relation": "illustrates",
+          "ref_kind": "public_claim",
+          "ref": "mersenne_lambert_ladder"
+        },
+        {
+          "relation": "states_limit",
+          "ref_kind": "remaining_open",
+          "ref": "remaining_open.erdos_249_irrationality"
+        },
+        {
+          "relation": "enforces",
+          "ref_kind": "validation_guard",
+          "ref": "release.claim_transition_requirements"
+        }
       ]
     },
     {
@@ -149,15 +215,42 @@
       "title": "A reduction states the remaining open hypothesis",
       "human_name": "A reduction keeps the remaining hypothesis visible",
       "statement": "Every conditional theorem, criterion, or reduction names the exact hypothesis or quantifier that remains open.",
-      "evidence_classes": ["lean_check", "repository_check", "human_mathematical_review"],
-      "applies_to": ["claim_status:conditional reduction", "object:proved_reduction", "argument_relation:makes_exact"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "claim_status:conditional reduction",
+        "object:proved_reduction",
+        "argument_relation:makes_exact"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "An exact reduction can expose an open proposition without proving it.",
       "local_instances": [
-        {"relation": "illustrates", "ref_kind": "public_claim", "ref": "certificate_reduction"},
-        {"relation": "states_limit", "ref_kind": "remaining_open", "ref": "remaining_open.unbounded_certificate_supply"},
-        {"relation": "enforces", "ref_kind": "validation_guard", "ref": "release.claim_transition_requirements"},
-        {"relation": "tests_rejection", "ref_kind": "negative_fixture", "ref": "conditional_reduction_without_remaining_open_proposition"}
+        {
+          "relation": "illustrates",
+          "ref_kind": "public_claim",
+          "ref": "certificate_reduction"
+        },
+        {
+          "relation": "states_limit",
+          "ref_kind": "remaining_open",
+          "ref": "remaining_open.unbounded_certificate_supply"
+        },
+        {
+          "relation": "enforces",
+          "ref_kind": "validation_guard",
+          "ref": "release.claim_transition_requirements"
+        },
+        {
+          "relation": "tests_rejection",
+          "ref_kind": "negative_fixture",
+          "ref": "conditional_reduction_without_remaining_open_proposition"
+        }
       ]
     },
     {
@@ -165,15 +258,42 @@
       "title": "A finite result remains finite without an unbounded or universal theorem",
       "human_name": "Finite verification does not change quantifiers",
       "statement": "Finite certificates, bounded searches, and verified initial segments remain finite evidence unless a checked theorem supplies the unbounded or universal step.",
-      "evidence_classes": ["lean_check", "repository_check", "human_mathematical_review"],
-      "applies_to": ["claim_status:verified finite instance", "object:finite_certificate", "change_type:finite_certificate_range_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "claim_status:verified finite instance",
+        "object:finite_certificate",
+        "change_type:finite_certificate_range_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "Increasing a checked bound does not change the quantifier of the public claim.",
       "local_instances": [
-        {"relation": "illustrates", "ref_kind": "public_claim", "ref": "certified_kill_instances"},
-        {"relation": "states_limit", "ref_kind": "remaining_open", "ref": "remaining_open.unbounded_certificate_supply"},
-        {"relation": "enforces", "ref_kind": "validation_guard", "ref": "release.claim_transition_requirements"},
-        {"relation": "tests_rejection", "ref_kind": "negative_fixture", "ref": "finite_result_changed_to_open_status"}
+        {
+          "relation": "illustrates",
+          "ref_kind": "public_claim",
+          "ref": "certified_kill_instances"
+        },
+        {
+          "relation": "states_limit",
+          "ref_kind": "remaining_open",
+          "ref": "remaining_open.unbounded_certificate_supply"
+        },
+        {
+          "relation": "enforces",
+          "ref_kind": "validation_guard",
+          "ref": "release.claim_transition_requirements"
+        },
+        {
+          "relation": "tests_rejection",
+          "ref_kind": "negative_fixture",
+          "ref": "finite_result_changed_to_open_status"
+        }
       ]
     },
     {
@@ -181,16 +301,46 @@
       "title": "Progress toward an open problem names the outstanding obligation it affects",
       "human_name": "A claim of progress names both the theorem and the outstanding obligation",
       "statement": "A result advances an open target only when it states which remaining open proposition it proves, narrows, decomposes, re-expresses, or constrains.",
-      "evidence_classes": ["repository_check", "human_mathematical_review"],
-      "applies_to": ["argument_relation:advances_open_target", "object:remaining_open_proposition", "change_type:open_problem_relation_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "argument_relation:advances_open_target",
+        "object:remaining_open_proposition",
+        "change_type:open_problem_relation_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "The repository checks that the claimed effect is explicit; human review decides whether the effect is mathematically significant.",
       "local_instances": [
-        {"relation": "illustrates", "ref_kind": "public_claim", "ref": "denominator_exclusion"},
-        {"relation": "illustrates", "ref_kind": "public_claim", "ref": "sublog_zero_windows"},
-        {"relation": "states_limit", "ref_kind": "non_claim", "ref": "not_erdos_249_solution"},
-        {"relation": "enforces", "ref_kind": "validation_guard", "ref": "release.claim_transition_requirements"},
-        {"relation": "tests_rejection", "ref_kind": "negative_fixture", "ref": "open_target_edge_without_stated_effect"}
+        {
+          "relation": "illustrates",
+          "ref_kind": "public_claim",
+          "ref": "denominator_exclusion"
+        },
+        {
+          "relation": "illustrates",
+          "ref_kind": "public_claim",
+          "ref": "sublog_zero_windows"
+        },
+        {
+          "relation": "states_limit",
+          "ref_kind": "non_claim",
+          "ref": "not_erdos_249_solution"
+        },
+        {
+          "relation": "enforces",
+          "ref_kind": "validation_guard",
+          "ref": "release.claim_transition_requirements"
+        },
+        {
+          "relation": "tests_rejection",
+          "ref_kind": "negative_fixture",
+          "ref": "open_target_edge_without_stated_effect"
+        }
       ]
     }
   ],
@@ -200,9 +350,19 @@
       "title": "State a partial result and the remaining open proposition together",
       "group": "publishing",
       "statement": "Every frontier-facing partial result states both its positive conclusion and the exact proposition that survives it.",
-      "evidence_classes": ["repository_check", "human_mathematical_review"],
-      "applies_to": ["claim_status:conditional reduction", "claim_status:unconditional progress", "argument_relation:advances_open_target"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "claim_status:conditional reduction",
+        "claim_status:unconditional progress",
+        "argument_relation:advances_open_target"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "Closed results that do not face an open target need not invent a remaining-open field."
     },
     {
@@ -210,9 +370,17 @@
       "title": "Derive exact consequences from a hypothetical assumption",
       "group": "proving",
       "statement": "Under a hypothetical rational value or counterexample, derive checked structural consequences instead of replacing proof with plausibility.",
-      "evidence_classes": ["lean_check", "human_mathematical_review"],
-      "applies_to": ["object:necessary_consequence", "object:proved_reduction"],
-      "checked_by": ["release.methodology_schema_and_references"],
+      "evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:necessary_consequence",
+        "object:proved_reduction"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references"
+      ],
       "scope_limit": "This is a method for developing consequences, not a claim that every useful proof must use contradiction."
     },
     {
@@ -220,9 +388,18 @@
       "title": "Calling a finite checker exact requires soundness and completeness",
       "group": "proving",
       "statement": "A finite checker needs a soundness theorem; calling it exact additionally requires a completeness theorem at the stated parameters.",
-      "evidence_classes": ["lean_check", "human_mathematical_review"],
-      "applies_to": ["object:finite_certificate", "argument_relation:makes_exact"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:finite_certificate",
+        "argument_relation:makes_exact"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "Soundness and completeness at fixed parameters do not provide an unbounded supply of certificates."
     },
     {
@@ -230,9 +407,18 @@
       "title": "Record what a representation change preserves, reflects, or loses",
       "group": "publishing",
       "statement": "Each representation change identifies the checked theorem that transfers the claim and states the direction and any loss.",
-      "evidence_classes": ["lean_check", "human_mathematical_review"],
-      "applies_to": ["object:representation", "change_type:representation_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:representation",
+        "change_type:representation_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "Informal similarity between two representations is not a transfer theorem."
     },
     {
@@ -240,9 +426,16 @@
       "title": "Record failed routes and counterexamples when they constrain later work",
       "group": "maintaining",
       "statement": "A failed strategy, counterexample, or disproved finite-state interpretation is retained when it rules out a recurring mathematical route.",
-      "evidence_classes": ["human_mathematical_review"],
-      "applies_to": ["object:necessary_consequence", "change_type:authored_exposition_changed"],
-      "checked_by": ["release.methodology_schema_and_references"],
+      "evidence_classes": [
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:necessary_consequence",
+        "change_type:authored_exposition_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references"
+      ],
       "scope_limit": "Routine failed experiments and private working notes are not automatically public artefacts."
     },
     {
@@ -250,9 +443,25 @@
       "title": "Classify a change before updating public claims",
       "group": "maintaining",
       "statement": "Distinguish proof-body, proposition, assumption, representation, finite-range, claim-status, exposition, and projection changes before deciding what must be updated.",
-      "evidence_classes": ["repository_check", "human_mathematical_review"],
-      "applies_to": ["change_type:proof_body_changed", "change_type:lean_proposition_changed", "change_type:assumptions_changed", "change_type:representation_changed", "change_type:finite_certificate_range_changed", "change_type:claim_support_linkage_changed", "change_type:claim_status_changed", "change_type:authored_exposition_changed", "change_type:projection_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_routes_exist"],
+      "evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "change_type:proof_body_changed",
+        "change_type:lean_proposition_changed",
+        "change_type:assumptions_changed",
+        "change_type:representation_changed",
+        "change_type:finite_certificate_range_changed",
+        "change_type:claim_support_linkage_changed",
+        "change_type:claim_status_changed",
+        "change_type:authored_exposition_changed",
+        "change_type:projection_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_routes_exist"
+      ],
       "scope_limit": "The classification routes review; it does not decide the review outcome."
     },
     {
@@ -260,9 +469,20 @@
       "title": "Separate Lean, human, and agent authority",
       "group": "maintaining",
       "statement": "Lean owns formal validity; humans own intended meaning, significance, and public framing; agents may search, propose, test, and expose consequences without inheriting either authority.",
-      "evidence_classes": ["lean_check", "human_mathematical_review"],
-      "applies_to": ["object:lean_declaration", "object:public_claim", "object:projection"],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_routes_exist", "release.proof_trust"],
+      "evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:lean_declaration",
+        "object:public_claim",
+        "object:projection"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_routes_exist",
+        "release.proof_trust"
+      ],
       "scope_limit": "Human review does not replace kernel checking, and kernel checking does not replace human review."
     },
     {
@@ -270,9 +490,20 @@
       "title": "Update authoritative sources before projections",
       "group": "maintaining",
       "statement": "Update Lean source first, then assumption and meaning review, then claim status, then authored exposition, then generated projections.",
-      "evidence_classes": ["repository_check", "human_mathematical_review"],
-      "applies_to": ["change_type:lean_proposition_changed", "change_type:claim_status_changed", "change_type:authored_exposition_changed", "change_type:projection_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_routes_exist"],
+      "evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "change_type:lean_proposition_changed",
+        "change_type:claim_status_changed",
+        "change_type:authored_exposition_changed",
+        "change_type:projection_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_routes_exist"
+      ],
       "scope_limit": "A proof-body-only change does not automatically authorize stronger prose."
     },
     {
@@ -280,9 +511,19 @@
       "title": "A public checkout must explain the claims and open boundary",
       "group": "publishing",
       "statement": "A reader using only the public checkout must be able to find the main argument, proof routes, public claim statuses, and remaining open propositions.",
-      "evidence_classes": ["repository_check", "human_mathematical_review"],
-      "applies_to": ["object:projection", "change_type:projection_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_projection_matches_source", "release.methodology_routes_exist"],
+      "evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:projection",
+        "change_type:projection_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_projection_matches_source",
+        "release.methodology_routes_exist"
+      ],
       "scope_limit": "Path and projection checks establish availability, not reader comprehension."
     },
     {
@@ -290,9 +531,24 @@
       "title": "Claim assurance checks underclaiming as well as overclaiming",
       "group": "publishing",
       "statement": "Public claim review checks both ceilings and coverage: prose must not exceed the checked theorem chain, and a source-backed high-value mechanism, exact reformulation, quantitative reduction, or distinct endpoint must be mechanically discoverable when omitting it would materially understate the corpus.",
-      "evidence_classes": ["lean_check", "repository_check", "human_mathematical_review"],
-      "applies_to": ["object:lean_declaration", "object:public_claim", "object:projection", "change_type:claim_support_linkage_changed", "change_type:authored_exposition_changed", "change_type:projection_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_projection_matches_source", "release.methodology_routes_exist"],
+      "evidence_classes": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:lean_declaration",
+        "object:public_claim",
+        "object:projection",
+        "change_type:claim_support_linkage_changed",
+        "change_type:authored_exposition_changed",
+        "change_type:projection_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_projection_matches_source",
+        "release.methodology_routes_exist"
+      ],
       "scope_limit": "Coverage does not turn support lemmas into separate headline claims: group plumbing under the smallest faithful contribution and require human review for significance."
     }
   ],
@@ -301,72 +557,142 @@
       "id": "anti_principle.do_not_equate_lean_acceptance_with_intended_meaning",
       "title": "Do not equate Lean acceptance with intended meaning",
       "statement": "Do not use a successful Lean check to bypass review of whether the proposition expresses the intended mathematics.",
-      "evidence_classes": ["human_mathematical_review"],
-      "applies_to": ["object:lean_declaration", "object:public_claim", "change_type:lean_proposition_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:lean_declaration",
+        "object:public_claim",
+        "change_type:lean_proposition_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "The repository can require review but cannot automate the judgement."
     },
     {
       "id": "anti_principle.do_not_report_reduction_as_solution",
       "title": "Do not report a reduction as a solution",
       "statement": "Do not narrate a conditional implication, equivalence, or criterion as closure of the original open problem.",
-      "evidence_classes": ["repository_check", "human_mathematical_review"],
-      "applies_to": ["claim_status:conditional reduction", "object:proved_reduction"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "claim_status:conditional reduction",
+        "object:proved_reduction"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "An exact and useful reduction remains a genuine result when its remaining hypothesis is explicit."
     },
     {
       "id": "anti_principle.do_not_generalize_finite_result_without_theorem",
       "title": "Do not generalize a finite result without a theorem",
       "statement": "Do not treat a large checked range as evidence for an unbounded or universal assertion.",
-      "evidence_classes": ["repository_check", "human_mathematical_review"],
-      "applies_to": ["claim_status:verified finite instance", "object:finite_certificate", "change_type:finite_certificate_range_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "claim_status:verified finite instance",
+        "object:finite_certificate",
+        "change_type:finite_certificate_range_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "Finite results may be valuable without changing the universal claim."
     },
     {
       "id": "anti_principle.do_not_identify_representations_without_transport",
       "title": "Do not identify two representations without proved transport",
       "statement": "Do not speak of a transformed representation as the original claim unless a checked implication or equivalence supplies that relation.",
-      "evidence_classes": ["lean_check", "human_mathematical_review"],
-      "applies_to": ["object:representation", "change_type:representation_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "object:representation",
+        "change_type:representation_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "This rule concerns claim transfer, not the informal use of notation."
     },
     {
       "id": "anti_principle.do_not_treat_graph_model_or_private_work_as_proof",
       "title": "Do not treat a graph, model output, or private work as proof authority",
       "statement": "A dependency graph, generated explanation, language-model output, or private proof sketch is not public proof authority.",
-      "evidence_classes": ["repository_check"],
-      "applies_to": ["object:projection", "change_type:projection_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_routes_exist", "release.proof_trust"],
+      "evidence_classes": [
+        "repository_check"
+      ],
+      "applies_to": [
+        "object:projection",
+        "change_type:projection_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_routes_exist",
+        "release.proof_trust"
+      ],
       "scope_limit": "These artefacts may help navigation or discovery without becoming proof."
     },
     {
       "id": "anti_principle.do_not_use_output_volume_as_mathematical_progress",
       "title": "Do not use output volume as mathematical progress",
       "statement": "Counts of declarations, proof lines, certificates, or agent activity do not by themselves establish progress on an open problem.",
-      "evidence_classes": ["human_mathematical_review"],
-      "applies_to": ["argument_relation:advances_open_target", "change_type:open_problem_relation_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"],
+      "evidence_classes": [
+        "human_mathematical_review"
+      ],
+      "applies_to": [
+        "argument_relation:advances_open_target",
+        "change_type:open_problem_relation_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ],
       "scope_limit": "Scale metrics may describe the artefact; they do not change a mathematical claim."
     },
     {
       "id": "anti_principle.do_not_edit_projection_as_source",
       "title": "Do not edit a projection as though it were the source",
       "statement": "README, generated Markdown, the corpus descriptor, and declaration maps must remain below their owning source files.",
-      "evidence_classes": ["repository_check"],
-      "applies_to": ["object:projection", "change_type:projection_changed"],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_projection_matches_source", "release.methodology_routes_exist"],
+      "evidence_classes": [
+        "repository_check"
+      ],
+      "applies_to": [
+        "object:projection",
+        "change_type:projection_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_projection_matches_source",
+        "release.methodology_routes_exist"
+      ],
       "scope_limit": "The paper is authored exposition and is checked for bounded agreement rather than generated from this file."
     },
     {
       "id": "anti_principle.do_not_keep_rule_without_owner_check_and_scope",
       "title": "Do not keep a rule without an owner, a check or review route, and a scope limit",
       "statement": "A methodology rule is removed if it cannot name the objects or changes it applies to, the evidence it requires, the route that evaluates it, and what it does not establish.",
-      "evidence_classes": ["repository_check"],
-      "applies_to": ["object:projection", "change_type:methodology_changed"],
-      "checked_by": ["release.methodology_schema_and_references"],
+      "evidence_classes": [
+        "repository_check"
+      ],
+      "applies_to": [
+        "object:projection",
+        "change_type:methodology_changed"
+      ],
+      "checked_by": [
+        "release.methodology_schema_and_references"
+      ],
       "scope_limit": "A human-review route is valid when the judgement is not machine-decidable; it must still be explicit."
     }
   ],
@@ -374,8 +700,13 @@
     {
       "id": "example.exact_reduction_without_closure",
       "title": "An exact reduction that does not close #249",
-      "claim_ids": ["certificate_reduction", "certificate_completeness"],
-      "remaining_open_ids": ["remaining_open.unbounded_certificate_supply"],
+      "claim_ids": [
+        "certificate_reduction",
+        "certificate_completeness"
+      ],
+      "remaining_open_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
       "route": [
         "a hypothetical rational value of S = ∑ φ(n)/2ⁿ",
         "an integrality constraint on totient tail differences",
@@ -388,32 +719,75 @@
     {
       "id": "example.finite_verification_stays_finite",
       "title": "Finite verification that stays finite",
-      "claim_ids": ["certified_kill_instances"],
-      "remaining_open_ids": ["remaining_open.unbounded_certificate_supply"],
+      "claim_ids": [
+        "certified_kill_instances"
+      ],
+      "remaining_open_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
       "narrative": "certifiedKill_all_small and the lcm-diagonal deposits through t = 8 (certifiedKill_periodLcm_diagonal_upto_six and the t = 7 and t = 8 endpoints) are kernel-checked with decide at fixed bounds. Each names a specific bounded region the checker has cleared; together with the generated certificate shards they show the reduction is not vacuous. The claim keeps the status verified finite instance and states its bounded domain. Raising the checked bound changes the stated bound; it does not change the quantifier of any public claim."
     },
     {
       "id": "example.necessary_structure_without_contradiction",
       "title": "Necessary structure that does not yet contradict",
-      "claim_ids": ["reciprocal_mass_bound", "unbounded_carry_states", "sublog_zero_windows"],
-      "remaining_open_ids": ["remaining_open.universal_257_all_infinite_supports"],
+      "claim_ids": [
+        "reciprocal_mass_bound",
+        "unbounded_carry_states",
+        "sublog_zero_windows"
+      ],
+      "remaining_open_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
       "narrative": "The carry and zero-window theorems state what a rational series value would force: reciprocal-mass lower bounds, unbounded carry states, and sublogarithmic zero windows in divisor coverage. These are necessary consequences of rationality. They constrain a hypothetical rational value; none of them rules it out, and the universal #257 statement remains open."
     }
   ],
   "human_review_triggers": [
-    {"id": "claim_text_changed", "description": "The wording of a public claim changes."},
-    {"id": "claim_status_changed", "description": "The status of a public claim changes."},
-    {"id": "intended_meaning_changed", "description": "The reviewed correspondence between a proposition and its intended statement changes."},
-    {"id": "paper_statement_changed", "description": "A paper-facing mathematical statement changes."},
-    {"id": "significance_claim_changed", "description": "What the repository says a result means for an open problem changes."},
-    {"id": "rule_semantics_changed", "description": "The meaning of a methodology rule changes, not only its wording or projection."}
+    {
+      "id": "claim_text_changed",
+      "description": "The wording of a public claim changes."
+    },
+    {
+      "id": "claim_status_changed",
+      "description": "The status of a public claim changes."
+    },
+    {
+      "id": "intended_meaning_changed",
+      "description": "The reviewed correspondence between a proposition and its intended statement changes."
+    },
+    {
+      "id": "paper_statement_changed",
+      "description": "A paper-facing mathematical statement changes."
+    },
+    {
+      "id": "significance_claim_changed",
+      "description": "What the repository says a result means for an open problem changes."
+    },
+    {
+      "id": "rule_semantics_changed",
+      "description": "The meaning of a methodology rule changes, not only its wording or projection."
+    }
   ],
   "forbidden_effect_vocabulary": [
-    {"id": "change_open_target_status", "description": "The change must not alter the status of an open target claim."},
-    {"id": "infer_unbounded_result", "description": "The change must not derive an unbounded or universal statement from bounded evidence."},
-    {"id": "strengthen_public_claim_wording", "description": "The change must not strengthen the wording of any public claim."},
-    {"id": "identify_representations_without_transport", "description": "The change must not present a transformed representation as the original claim without a checked transport theorem."},
-    {"id": "bypass_projection_owner", "description": "The change must not edit a generated projection except by regenerating it from its owner."}
+    {
+      "id": "change_open_target_status",
+      "description": "The change must not alter the status of an open target claim."
+    },
+    {
+      "id": "infer_unbounded_result",
+      "description": "The change must not derive an unbounded or universal statement from bounded evidence."
+    },
+    {
+      "id": "strengthen_public_claim_wording",
+      "description": "The change must not strengthen the wording of any public claim."
+    },
+    {
+      "id": "identify_representations_without_transport",
+      "description": "The change must not present a transformed representation as the original claim without a checked transport theorem."
+    },
+    {
+      "id": "bypass_projection_owner",
+      "description": "The change must not edit a generated projection except by regenerating it from its owner."
+    }
   ],
   "change_types": [
     "proof_body_changed",
@@ -432,93 +806,166 @@
     {
       "id": "proof_body_changed",
       "summary": "A proof body changes; the stated proposition does not",
-      "minimum_evidence": ["lean_check", "repository_check"],
+      "minimum_evidence": [
+        "lean_check",
+        "repository_check"
+      ],
       "human_review": "on_trigger",
-      "review_triggers": ["intended_meaning_changed", "claim_text_changed"],
-      "forbidden_effects": ["strengthen_public_claim_wording", "change_open_target_status"],
+      "review_triggers": [
+        "intended_meaning_changed",
+        "claim_text_changed"
+      ],
+      "forbidden_effects": [
+        "strengthen_public_claim_wording",
+        "change_open_target_status"
+      ],
       "public_consequence": "No claim or exposition change follows automatically. Compare the axiom audit before and after."
     },
     {
       "id": "lean_proposition_changed",
       "summary": "A stated proposition or its hypotheses change",
-      "minimum_evidence": ["lean_check", "repository_check", "human_mathematical_review"],
+      "minimum_evidence": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "human_review": "required",
-      "forbidden_effects": ["change_open_target_status"],
+      "forbidden_effects": [
+        "change_open_target_status"
+      ],
       "public_consequence": "Reconcile the claim wording, the remaining-open boundary, and the paper statement."
     },
     {
       "id": "assumptions_changed",
       "summary": "The transitive assumptions of a declaration change",
-      "minimum_evidence": ["lean_check", "repository_check", "human_mathematical_review"],
+      "minimum_evidence": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "human_review": "required",
-      "forbidden_effects": ["strengthen_public_claim_wording"],
+      "forbidden_effects": [
+        "strengthen_public_claim_wording"
+      ],
       "public_consequence": "Reassess the proof posture even when the proposition is unchanged."
     },
     {
       "id": "representation_changed",
       "summary": "A claim moves between coordinates, encodings, or models",
-      "minimum_evidence": ["lean_check", "human_mathematical_review"],
+      "minimum_evidence": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
       "human_review": "required",
-      "forbidden_effects": ["identify_representations_without_transport"],
+      "forbidden_effects": [
+        "identify_representations_without_transport"
+      ],
       "public_consequence": "Record the transport theorem, its direction, and anything not preserved."
     },
     {
       "id": "finite_certificate_range_changed",
       "summary": "A checked bounded range or certificate family is extended",
-      "minimum_evidence": ["lean_check", "repository_check"],
+      "minimum_evidence": [
+        "lean_check",
+        "repository_check"
+      ],
       "human_review": "on_trigger",
-      "review_triggers": ["claim_text_changed", "claim_status_changed", "intended_meaning_changed", "paper_statement_changed"],
-      "forbidden_effects": ["change_open_target_status", "infer_unbounded_result"],
+      "review_triggers": [
+        "claim_text_changed",
+        "claim_status_changed",
+        "intended_meaning_changed",
+        "paper_statement_changed"
+      ],
+      "forbidden_effects": [
+        "change_open_target_status",
+        "infer_unbounded_result"
+      ],
       "public_consequence": "Keep the finite status; update only the stated bound."
     },
     {
       "id": "claim_support_linkage_changed",
       "summary": "A claim's declaration coordinates or links are corrected; the claim is otherwise unchanged",
-      "minimum_evidence": ["lean_check", "repository_check"],
+      "minimum_evidence": [
+        "lean_check",
+        "repository_check"
+      ],
       "human_review": "on_trigger",
-      "review_triggers": ["claim_text_changed", "claim_status_changed", "intended_meaning_changed"],
-      "forbidden_effects": ["strengthen_public_claim_wording", "change_open_target_status"],
+      "review_triggers": [
+        "claim_text_changed",
+        "claim_status_changed",
+        "intended_meaning_changed"
+      ],
+      "forbidden_effects": [
+        "strengthen_public_claim_wording",
+        "change_open_target_status"
+      ],
       "public_consequence": "Link or correct the supporting declarations of an unchanged claim, then regenerate dependent projections. The mathematical claim does not change; a Lean check confirms the linked declaration exists and elaborates."
     },
     {
       "id": "open_problem_relation_changed",
       "summary": "An advances-open-target relation is added or changed",
-      "minimum_evidence": ["repository_check", "human_mathematical_review"],
+      "minimum_evidence": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "human_review": "required",
-      "forbidden_effects": ["change_open_target_status"],
+      "forbidden_effects": [
+        "change_open_target_status"
+      ],
       "public_consequence": "Record the outstanding obligation affected and the exact relation."
     },
     {
       "id": "claim_status_changed",
       "summary": "The status of a public claim changes",
-      "minimum_evidence": ["repository_check", "human_mathematical_review"],
+      "minimum_evidence": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "human_review": "required",
-      "forbidden_effects": ["infer_unbounded_result"],
+      "forbidden_effects": [
+        "infer_unbounded_result"
+      ],
       "public_consequence": "State the theorem or review that licenses the new status."
     },
     {
       "id": "authored_exposition_changed",
       "summary": "Authored paper or documentation prose changes mathematically",
-      "minimum_evidence": ["repository_check", "human_mathematical_review"],
+      "minimum_evidence": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "human_review": "required",
-      "forbidden_effects": ["change_open_target_status"],
+      "forbidden_effects": [
+        "change_open_target_status"
+      ],
       "public_consequence": "Prose must not exceed the status recorded in the claim registry."
     },
     {
       "id": "projection_changed",
       "summary": "A generated projection is rebuilt",
-      "minimum_evidence": ["repository_check"],
+      "minimum_evidence": [
+        "repository_check"
+      ],
       "human_review": "not_required",
-      "forbidden_effects": ["bypass_projection_owner", "strengthen_public_claim_wording"],
+      "forbidden_effects": [
+        "bypass_projection_owner",
+        "strengthen_public_claim_wording"
+      ],
       "public_consequence": "Regenerate below the existing owners; no mathematical effect."
     },
     {
       "id": "methodology_changed",
       "summary": "docs/methodology.json changes",
-      "minimum_evidence": ["repository_check"],
+      "minimum_evidence": [
+        "repository_check"
+      ],
       "human_review": "on_trigger",
-      "review_triggers": ["rule_semantics_changed"],
-      "forbidden_effects": ["change_open_target_status"],
+      "review_triggers": [
+        "rule_semantics_changed"
+      ],
+      "forbidden_effects": [
+        "change_open_target_status"
+      ],
       "public_consequence": "Regenerate METHODOLOGY.md and the corpus descriptor. Rules route review; they do not decide mathematics."
     }
   ],
@@ -527,76 +974,115 @@
       "id": "transition.lean_declaration_to_public_claim",
       "title": "From a Lean declaration to a public claim",
       "trigger": "A new declaration or a changed proposition is proposed as support for a public claim.",
-      "required_evidence_classes": ["lean_check", "repository_check", "human_mathematical_review"],
+      "required_evidence_classes": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "requirements": [
         "The declaration exists in the pinned public source and passes the Lean check.",
         "The public claim links to the declaration and uses a declared claim status.",
         "Human mathematical review confirms that the proposition expresses the intended paper-facing statement.",
         "Any remaining open proposition is stated explicitly."
       ],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"]
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ]
     },
     {
       "id": "transition.representation_change_to_public_claim",
       "title": "From a changed representation to a public claim",
       "trigger": "A claim is moved into different coordinates, an encoding, a recurrence, or another model.",
-      "required_evidence_classes": ["lean_check", "human_mathematical_review"],
+      "required_evidence_classes": [
+        "lean_check",
+        "human_mathematical_review"
+      ],
       "requirements": [
         "A checked implication or equivalence identifies the direction of transfer.",
         "The claim states anything not preserved by the transfer.",
         "Human mathematical review confirms that the transferred statement is the intended one."
       ],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"]
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ]
     },
     {
       "id": "transition.conditional_reduction_to_public_claim",
       "title": "From a conditional reduction to a public claim",
       "trigger": "A checked implication or equivalence is published with status conditional reduction.",
-      "required_evidence_classes": ["lean_check", "repository_check", "human_mathematical_review"],
+      "required_evidence_classes": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "requirements": [
         "The supporting declaration is linked.",
         "The claim names at least one remaining open proposition from docs/claims.json.",
         "The public statement says what the reduction does not prove."
       ],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"]
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ]
     },
     {
       "id": "transition.finite_certificate_to_public_claim",
       "title": "From a finite certificate to a public claim",
       "trigger": "A checked finite computation or bounded family is added as a new public claim, or its interpretation changes.",
-      "required_evidence_classes": ["lean_check", "repository_check", "human_mathematical_review"],
+      "required_evidence_classes": [
+        "lean_check",
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "requirements": [
         "The claim status remains verified finite instance.",
         "The checked finite domain is explicit.",
         "No open target changes status without a separate unbounded or universal theorem.",
         "A purely mechanical extension of an already reviewed bounded family follows the finite_certificate_range_changed change class instead: Lean and repository checks, with review re-entered only when claim text, claim status, intended meaning, or the paper statement changes."
       ],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"]
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ]
     },
     {
       "id": "transition.public_claim_to_open_target_edge",
       "title": "From a public claim to an advances-open-target edge",
       "trigger": "The argument graph says that a public claim advances an open target.",
-      "required_evidence_classes": ["repository_check", "human_mathematical_review"],
+      "required_evidence_classes": [
+        "repository_check",
+        "human_mathematical_review"
+      ],
       "requirements": [
         "The target claim has status open.",
         "The edge names a remaining open proposition owned by that target.",
         "The edge states whether the result proves, narrows, decomposes, re-expresses, or constrains that proposition."
       ],
-      "checked_by": ["release.methodology_schema_and_references", "release.claim_transition_requirements"]
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.claim_transition_requirements"
+      ]
     },
     {
       "id": "transition.methodology_source_to_public_projections",
       "title": "From methodology source to public projections",
       "trigger": "docs/methodology.json changes.",
-      "required_evidence_classes": ["repository_check"],
+      "required_evidence_classes": [
+        "repository_check"
+      ],
       "requirements": [
         "METHODOLOGY.md is regenerated exactly from docs/methodology.json.",
         "The corpus descriptor records the methodology path, schema, digest, and compact capsule.",
         "AGENTS.md and README.md route to the methodology without duplicating its full content.",
         "README.md carries no methodology machine identifiers beyond the source link."
       ],
-      "checked_by": ["release.methodology_schema_and_references", "release.methodology_projection_matches_source", "release.methodology_routes_exist"]
+      "checked_by": [
+        "release.methodology_schema_and_references",
+        "release.methodology_projection_matches_source",
+        "release.methodology_routes_exist"
+      ]
     }
   ],
   "validation_guards": [

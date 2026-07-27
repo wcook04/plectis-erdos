@@ -27,6 +27,16 @@ def assert_human_rejected(summary: dict, surfaces: dict[str, str], label: str) -
     raise AssertionError(f"human first-contact mutation escaped: {label}")
 
 
+def assert_census_rejected(
+    census: dict, surfaces: dict[str, str], label: str
+) -> None:
+    try:
+        diagnostic.validate_public_semantic_census(census, surfaces)
+    except AssertionError:
+        return
+    raise AssertionError(f"public census mutation escaped: {label}")
+
+
 def remove_semantic_anchor(text: str, token: str) -> str:
     """Delete every case-insensitive occurrence seen by the production check."""
     return re.sub(
@@ -46,6 +56,11 @@ def main() -> int:
     }
     diagnostic.validate_human_first_contact(quick_summary, human_surfaces)
     diagnostic.validate_human_first_contact(summary, human_surfaces)
+    census = diagnostic.semantic_census()
+    census_surfaces = {
+        path: diagnostic.read(path) for path in diagnostic.CENSUS_SURFACES
+    }
+    diagnostic.validate_public_semantic_census(census, census_surfaces)
     gateway_paper = diagnostic.read(diagnostic.GATEWAY_PAPER)
     diagnostic.validate_gateway_opening(gateway_paper)
     agents = diagnostic.read("AGENTS.md")
@@ -78,6 +93,35 @@ def main() -> int:
         + mutated["README.md"]
     )
     assert_human_rejected(summary, mutated, "self-appraisal language")
+    checks += 1
+
+    mutated_census = copy.deepcopy(census_surfaces)
+    mutated_census["docs/RESULTS.md"] = mutated_census[
+        "docs/RESULTS.md"
+    ].replace(
+        f"| mechanically nonrecurring candidates | "
+        f"{census['nonrecurring_by_problem']['249']} | "
+        f"{census['nonrecurring_by_problem']['257']} |",
+        "| mechanically nonrecurring candidates | 0 | 0 |",
+        1,
+    )
+    assert_census_rejected(
+        census, mutated_census, "live semantic census synchronization"
+    )
+    checks += 1
+
+    mutated_census = copy.deepcopy(census_surfaces)
+    mutated_census["README.md"] = mutated_census["README.md"].replace(
+        (
+            f"{census['demand_equivalent_total']} of "
+            f"{census['demand_lattice_counts']['substantial']}"
+        ),
+        "0 of 0",
+        1,
+    )
+    assert_census_rejected(
+        census, mutated_census, "demand-lattice population distinction"
+    )
     checks += 1
 
     mutated_paper = remove_semantic_anchor(
@@ -280,6 +324,267 @@ def main() -> int:
         if row["neighbour"]["id"] != "first_harmonic_certificate_interface"
     ]
     assert_rejected(mutated, "#249 harmonic-pivot consumer edge")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_questions"]["results"][0]["status"] = "PROVED"
+    assert_rejected(mutated, "expert-question OPEN boundary")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_questions"]["results"][0]["exact_ask"] = ""
+    assert_rejected(mutated, "expert-question exact ask")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    first_question_id = mutated["expert_questions"]["results"][0]["id"]
+    mutated["expert_question_details"][first_question_id]["results"][0][
+        "consumer_declarations"
+    ] = []
+    assert_rejected(mutated, "expert-question checked consumer")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_questions"]["packet_kind"] = "full_question"
+    assert_rejected(mutated, "expert-question compact index")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    first_question_id = next(iter(mutated["expert_question_details"]))
+    mutated["expert_question_details"][first_question_id]["packet_kind"] = (
+        "compact_index"
+    )
+    assert_rejected(mutated, "expert-question full drill-down")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_questions_by_problem"]["249"]["results"].pop()
+    mutated["expert_questions_by_problem"]["249"]["count"] = 2
+    assert_rejected(mutated, "expert-question 5/3/2 problem split")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_questions"]["results"][0]["classification"] = (
+        "sufficient_for_counterexample"
+    )
+    assert_rejected(mutated, "expert-question classification partition")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_questions"]["limits"] = [
+        limit
+        for limit in mutated["expert_questions"]["limits"]
+        if "strictly weaker expert handoff" not in limit
+    ]
+    assert_rejected(mutated, "universal #257 expert-handoff boundary")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoffs"]["domain_counts"] = {
+        "mathematics": 6,
+        "systems": 0,
+    }
+    assert_rejected(mutated, "cross-domain expert-handoff 5/1 split")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoff_details"][diagnostic.SYSTEMS_EXPERT_QUESTION_ID][
+        "results"
+    ][0]["boundary"] = ""
+    assert_rejected(mutated, "systems expert-handoff boundary")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoffs"]["packet_kind"] = "full_question"
+    assert_rejected(mutated, "cross-domain compact index")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    first_handoff_id = next(iter(mutated["expert_handoff_details"]))
+    mutated["expert_handoff_details"][first_handoff_id]["packet_kind"] = (
+        "compact_index"
+    )
+    assert_rejected(mutated, "cross-domain full drill-down")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    first_handoff_id = next(iter(mutated["expert_handoff_details"]))
+    mutated["expert_handoff_details"][first_handoff_id]["results"][0][
+        "plausible_alternatives"
+    ][0]["consequence"] = ""
+    assert_rejected(mutated, "full handoff alternative consequence")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoff_protocol_check"] = "unchecked"
+    assert_rejected(mutated, "expert-handoff protocol self-check")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoffs"]["results"][0]["current_hypothesis"] = ""
+    assert_rejected(mutated, "expert-handoff current hypothesis")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoffs"]["results"][0]["hypothesis_confidence"] = (
+        "certain"
+    )
+    assert_rejected(mutated, "expert-handoff hypothesis confidence")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    alternatives = mutated["expert_handoffs"]["results"][0][
+        "plausible_alternatives"
+    ]
+    alternatives[1]["id"] = alternatives[0]["id"]
+    assert_rejected(mutated, "expert-handoff distinct alternatives")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoffs"]["results"][0]["current_evidence"].pop()
+    assert_rejected(mutated, "expert-handoff current evidence")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoffs"]["results"][0]["discriminating_evidence"].pop()
+    assert_rejected(mutated, "expert-handoff discriminating evidence")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    second_channel = mutated["expert_handoff_details"][
+        "XQ257-second-channel-separation"
+    ]["results"][0]
+    second_channel["consumer_declarations"].pop()
+    assert_rejected(mutated, "#257 dual-consumer handoff")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    pivot = mutated["expert_handoff_details"][
+        "XQ249-pivot-decorrelation"
+    ]["results"][0]
+    pivot["exact_ask"] = pivot["exact_ask"].replace("h <= L-s", "h may exceed L-s")
+    assert_rejected(mutated, "#249 pivot overlap condition")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    pivot = mutated["expert_handoff_details"][
+        "XQ249-pivot-decorrelation"
+    ]["results"][0]
+    pivot_negative = next(
+        row for row in pivot["plausible_alternatives"]
+        if row["id"] == "no_cofinal_joint_witness"
+    )
+    pivot_negative["statement"] = (
+        "Infinitely many blocks fail one clause of the socket."
+    )
+    assert_rejected(mutated, "#249 pivot exact complement")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    adjacent = mutated["expert_handoff_details"][
+        "XQ249-adjacent-phase-separation"
+    ]["results"][0]
+    phase_locking = next(
+        row for row in adjacent["plausible_alternatives"]
+        if row["id"] == "phase_locking"
+    )
+    phase_locking["statement"] = (
+        "Infinitely many blocks contain no good adjacent pair."
+    )
+    assert_rejected(mutated, "#249 adjacent eventual negation")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    adjacent = mutated["expert_handoff_details"][
+        "XQ249-adjacent-phase-separation"
+    ]["results"][0]
+    adjacent["exact_ask"] = adjacent["exact_ask"].replace(
+        "16(2X+h+L+2) <= 2^L",
+        "the dyadic-room inequality",
+    )
+    assert_rejected(mutated, "#249 adjacent explicit room inequality")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    second_channel = mutated["expert_handoff_details"][
+        "XQ257-second-channel-separation"
+    ]["results"][0]
+    second_channel["current_evidence"].append(
+        "The reduced denominator height is on the scale 2^(Theta(n^2))."
+    )
+    assert_rejected(mutated, "#257 unproved height law")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    second_channel = mutated["expert_handoff_details"][
+        "XQ257-second-channel-separation"
+    ]["results"][0]
+    second_channel["current_evidence"][1] = (
+        second_channel["current_evidence"][1]
+        .replace("1 <= n <= 1000", "1 <= n <= 100")
+        .replace("Rank 1001 onward", "Rank 101 onward")
+    )
+    assert_rejected(mutated, "#257 measured range contraction")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    second_channel = mutated["expert_handoff_details"][
+        "XQ257-second-channel-separation"
+    ]["results"][0]
+    second_channel["current_evidence"][2] = (
+        "The finite orbit looks symbolically constrained."
+    )
+    assert_rejected(mutated, "#257 short-word discriminator")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    middle = mutated["expert_handoff_details"][
+        "XQ257-middle-producer-tail-escape"
+    ]["results"][0]
+    middle["exact_ask"] = middle["exact_ask"].replace(
+        "C_s = -3 or (1 <= C_s and Theta_s < C_s)",
+        "Theta_s < C_s whenever C_s != -3",
+    )
+    assert_rejected(mutated, "#257 middle exact disjunction")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    middle = mutated["expert_handoff_details"][
+        "XQ257-middle-producer-tail-escape"
+    ]["results"][0]
+    middle["plausible_alternatives"][1]["id"] = "old_cell_partition"
+    assert_rejected(mutated, "#257 middle alternative partition")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    systems = mutated["expert_handoff_details"][
+        diagnostic.SYSTEMS_EXPERT_QUESTION_ID
+    ]["results"][0]
+    systems["acceptance"] = {"problem_status": "OPEN"}
+    assert_rejected(mutated, "respondent packet evaluator-answer leak")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    systems = mutated["expert_handoff_details"][
+        diagnostic.SYSTEMS_EXPERT_QUESTION_ID
+    ]["results"][0]
+    systems.pop("manual_review_rubric")
+    assert_rejected(mutated, "respondent packet manual rubric")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    systems = mutated["expert_handoff_details"][
+        diagnostic.SYSTEMS_EXPERT_QUESTION_ID
+    ]["results"][0]
+    systems["input_template"]["farey_numerical_delta"] = 0
+    assert_rejected(mutated, "respondent packet scalar answer key")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["expert_handoff_review_template"]["criteria"].pop(
+        next(iter(mutated["expert_handoff_review_template"]["criteria"]))
+    )
+    assert_rejected(mutated, "expert-handoff review-template shape")
     checks += 1
 
     conditional = next(

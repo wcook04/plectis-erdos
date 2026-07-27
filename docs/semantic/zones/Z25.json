@@ -1,0 +1,1721 @@
+{
+ "zone_id": "Z25",
+ "title": "Declared correction predicates and the seven-five counterexample",
+ "problem": "257",
+ "concepts": [
+  {
+   "id": "audited_expansion_boundary",
+   "label": "audited expansion claim boundary",
+   "note": "A distinction between an exact Lean declaration, supporting proof substrate, finite checked instances, measurements, and any claim that would resolve an open Erdős problem."
+  }
+ ],
+ "statement_nodes": [
+  {
+   "id": "hlow_false_at_seven_five",
+   "canonical_statement": "PROVED: the proposed low-correction inequality fails at s = 7 and d = 5.",
+   "logical_class": "barrier_no_go",
+   "problem": "257",
+   "concepts": [
+    "audited_expansion_boundary"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "exact evaluation of lateCorrection and the late-entry remainder",
+   "prior_art_state": "not_assessed",
+   "prior_art_note": "No priority or novelty claim is made. This node records the exact scope needed for public claim hygiene.",
+   "scope_caveat": "This is a counterexample to the universal hlow side condition. It is not an obstruction to a hit; row seven is itself a hit.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "not_hlow_seven_five",
+     "module": "ErdosProblems/Decl/D4.lean",
+     "line": 209
+    }
+   ]
+  }
+ ],
+ "declaration_roles": [
+  {
+   "declaration": "weightTail",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 153,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weight_eq_top_add_tail",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 155,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightTail_le",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 161,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weight_succ_le_of_two_pow_le",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 171,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_lt_two_pow_of_declined",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 183,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt.taken",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 200,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt.not_declined_succ",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 207,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt.residual_succ",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 213,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt.excess_lt",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 219,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt.residual_succ_lt",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 229,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt.restored",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 244,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BrokenAt.not_restored",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 255,
+   "role": "substrate"
+  },
+  {
+   "declaration": "brokenAt_thirteen_seven",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 270,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamResidualUpto_thirteen_eight",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 275,
+   "role": "substrate"
+  },
+  {
+   "declaration": "thirteen_break_repairs",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 280,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightTail_fails_halving",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 292,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sum_exact_aux",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 303,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_sum_exact",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 334,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sum_exact_implies_C6_lower",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 343,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_lt_of_late_largest_skip_sharp",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 359,
+   "role": "substrate"
+  },
+  {
+   "declaration": "late_largest_skip_bound_sharp",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 374,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_lt_of_largest_skip_pred_pred",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 388,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_strictly_beats_C6",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 400,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_bound_sixteen",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 415,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_sixteen_lt_sharp",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 422,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_bound_fourteen",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 427,
+   "role": "substrate"
+  },
+  {
+   "declaration": "correction_ge",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 444,
+   "role": "substrate"
+  },
+  {
+   "declaration": "correction_ge_trivial",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 462,
+   "role": "substrate"
+  },
+  {
+   "declaration": "tailCorrected_not_intervalCeiling",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 473,
+   "role": "substrate"
+  },
+  {
+   "declaration": "PairCeiling",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 502,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sound",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 517,
+   "role": "substrate"
+  },
+  {
+   "declaration": "SplitsAt",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 533,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lo_succ_eq_zero",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 537,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weight_le_hi_succ",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 545,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weight_pos",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 555,
+   "role": "substrate"
+  },
+  {
+   "declaration": "zero_lo_step",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 563,
+   "role": "substrate"
+  },
+  {
+   "declaration": "zero_lo_forever",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 579,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declined_obligation",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 588,
+   "role": "substrate"
+  },
+  {
+   "declaration": "terminal_ge_of_splits",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 596,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_splitsAt_of_terminal_lt",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 618,
+   "role": "substrate"
+  },
+  {
+   "declaration": "branch_decided",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 628,
+   "role": "substrate"
+  },
+  {
+   "declaration": "branches_decided_of_terminal_lt",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 646,
+   "role": "substrate"
+  },
+  {
+   "declaration": "orbit",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 659,
+   "role": "substrate"
+  },
+  {
+   "declaration": "orbit_never_splits",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 671,
+   "role": "substrate"
+  },
+  {
+   "declaration": "loose",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 678,
+   "role": "substrate"
+  },
+  {
+   "declaration": "loose_splitsAt_two",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 693,
+   "role": "substrate"
+  },
+  {
+   "declaration": "loose_terminal_ge",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 705,
+   "role": "substrate"
+  },
+  {
+   "declaration": "take_succ_seamWeightsFrom",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 726,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedyRemainder_seamWeights_take",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 743,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_eq",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 763,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_lt_two_pow_of_declined",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 773,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_twenty_fifteen",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 788,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declined_twenty_fifteen",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 792,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_twenty_fifteen",
+   "module": "ErdosProblems/Decl/D1.lean",
+   "line": 797,
+   "role": "substrate"
+  },
+  {
+   "declaration": "DeclineBlock",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 158,
+   "role": "substrate"
+  },
+  {
+   "declaration": "TakeBlock",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 163,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declineBlock_self",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 166,
+   "role": "substrate"
+  },
+  {
+   "declaration": "takeBlock_self",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 169,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_eq_of_declineBlock",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 173,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_lt_weight_of_declineBlock",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 186,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_lt_weight_first_of_declineBlock",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declineBlock_gain",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 206,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_lt_two_pow_add_of_declineBlock",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 214,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_excess_le_of_takeBlock",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 229,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_lt_of_lastDecline",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 251,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_of_lastDecline",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 262,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_two_pow_succ_add",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 273,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightTail",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 288,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_add_two_pow_le_weight",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 290,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weight_eq_two_pow_add_weightTail",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 314,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_le_weightTail",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 321,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightTail_le",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 329,
+   "role": "substrate"
+  },
+  {
+   "declaration": "geomTail_aux",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 338,
+   "role": "substrate"
+  },
+  {
+   "declaration": "three_mul_weightTail_sum_le",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 365,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sum_weightTail_block_le",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 379,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 396,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_zero",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 400,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_succ",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 402,
+   "role": "substrate"
+  },
+  {
+   "declaration": "worstDeclined",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 406,
+   "role": "substrate"
+  },
+  {
+   "declaration": "worstDeclined_lt",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 408,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_lower_of_invariant",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 415,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_worst_invariant",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 432,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_le_blockRun_worst",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 477,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_worst_takes",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 484,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_worst_excess",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 499,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_blockMethod_closure",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 517,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_blockMethod_sound",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 529,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockMethod_excess_window",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 544,
+   "role": "substrate"
+  },
+  {
+   "declaration": "residual_excess_lt_weightTail",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 559,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declineBlock_twenty",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 574,
+   "role": "substrate"
+  },
+  {
+   "declaration": "takeBlock_twenty_fourteen",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 580,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declineBlock_twenty_late",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 587,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamResidualUpto_twenty_thirteen",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 592,
+   "role": "substrate"
+  },
+  {
+   "declaration": "run_collapse_twenty",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 600,
+   "role": "substrate"
+  },
+  {
+   "declaration": "invariant_holds_twenty",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 608,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_twenty_lt",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 614,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declineBlock_thirteen",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 621,
+   "role": "substrate"
+  },
+  {
+   "declaration": "thirteen_run_length_one",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 628,
+   "role": "substrate"
+  },
+  {
+   "declaration": "takeBlock_thirteen",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 635,
+   "role": "substrate"
+  },
+  {
+   "declaration": "run_of_length_one_breaks_invariant",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 646,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_thirteen_lt",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 654,
+   "role": "substrate"
+  },
+  {
+   "declaration": "worstDeclined_twenty_six",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 662,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_twenty_six",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 671,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockRun_twenty_six_exceeds",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 675,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightTail_twenty_six",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 679,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_blockMethod_closure_twenty",
+   "module": "ErdosProblems/Decl/D2.lean",
+   "line": 683,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 179,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_late",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 181,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_least",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 184,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_le_firstLate",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 187,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_lt",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 190,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 193,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_twelve",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_fourteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 197,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_twenty",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 199,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_take_succ",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 203,
+   "role": "substrate"
+  },
+  {
+   "declaration": "earlyWeights_succ",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 220,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_eq_greedy",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 228,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_succ",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 233,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_two",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 242,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_eq_seamResidualUpto",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 248,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_iff_residualInvariant",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 262,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_of_declined",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 272,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_succ_of_taken",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 285,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_of_taken_run",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 302,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedyRemainder_ge",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 318,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_sum_upper_aux",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 325,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_sum_upper",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 366,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_add_two_pow_le",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 375,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_of_seamRemainder_lt",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 386,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_le_seamRemainder_of_not_hhigh",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 394,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_le",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 402,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_firstLate_error_le",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 406,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_firstLate_of_seamRemainder_lt",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 414,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_ge_of_not_hhigh_firstLate",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 425,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_firstLate_sandwich",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 435,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_two_pow_succ_of_declined",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 449,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 461,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_thirteen_nine",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 476,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_thirteen_eight",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 484,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_hhigh_thirteen_eight",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 492,
+   "role": "substrate"
+  },
+  {
+   "declaration": "eight_not_late_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 500,
+   "role": "substrate"
+  },
+  {
+   "declaration": "eight_lt_firstLate_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 502,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 506,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_thirteen_nine",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 511,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 517,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_thirteen_small",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 528,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_thirteen_derived",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 533,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sandwich_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 538,
+   "role": "substrate"
+  },
+  {
+   "declaration": "admissible_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 547,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_thirteen_ten",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 555,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_thirteen_eleven",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 561,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_thirteen_twelve",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 567,
+   "role": "substrate"
+  },
+  {
+   "declaration": "taken_run_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 574,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_thirteen_twelve",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 591,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_fourteen_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 599,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_fourteen_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 605,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declined_fourteen_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 611,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_fourteen_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 616,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_fourteen_thirteen",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 622,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_fourteen_lt",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 627,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_seven",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 640,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate_seven",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 648,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_seven_five",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 650,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_seven_five",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 656,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_hlow_seven",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 662,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_seven",
+   "module": "ErdosProblems/Decl/D3.lean",
+   "line": 669,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mod_two_pow_le_mod_two_pow",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 153,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_le_mod_two_pow_succ_of_testBit",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 162,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_seven",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 178,
+   "role": "substrate"
+  },
+  {
+   "declaration": "five_is_first_late",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 187,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 189,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 202,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_hlow_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 209,
+   "role": "statement",
+   "statement_node": "hlow_false_at_seven_five"
+  },
+  {
+   "declaration": "hlow_seven_five_deficit",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 216,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_lateEntryAdmissible_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 223,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_seven",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 229,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seven_is_a_hit",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 238,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_seven_six",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 241,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_seven_six",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 247,
+   "role": "substrate"
+  },
+  {
+   "declaration": "admissible_seven_six",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 256,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_is_rank_dependent",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 264,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_lt_two_pow_two_mul",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 278,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_of_testBit",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 289,
+   "role": "substrate"
+  },
+  {
+   "declaration": "window_nonempty",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 302,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_of_testBit_halfPoint",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 309,
+   "role": "substrate"
+  },
+  {
+   "declaration": "testBit_false_of_not_hlow",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 316,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_twenty_fourteen_from_bit",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 328,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateGreedy_lt_of_high",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 350,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_two_pow_succ_add",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 379,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_of_high",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 388,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_three_mul_two_pow_of_high",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 399,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 416,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharpness_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 426,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitCorrection",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 446,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitCorrection_eq_zero",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 454,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitCorrection_eq_cons",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 458,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitCorrection_le_lateCorrection",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 466,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitCorrection_congr",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 479,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateGreedy_eq_mod_sub_bitCorrection",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 502,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateGreedy_le_mod_of_bitCorrection",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 570,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mod_le_lateGreedy_add",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 580,
+   "role": "substrate"
+  },
+  {
+   "declaration": "BitAdmissible",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 592,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitAdmissible_of_lateEntryAdmissible",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 598,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_le_mod",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 603,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_two_pow_succ'",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 610,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_two_pow_of_testBit_false'",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 615,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_bitAdmissible_halfPointBitClearCofinally",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 625,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitCorrection_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 641,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitLow_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 650,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitAdmissible_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 655,
+   "role": "substrate"
+  },
+  {
+   "declaration": "testBit_seven_halfPoint",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 658,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_seven_lt",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 666,
+   "role": "substrate"
+  },
+  {
+   "declaration": "separation_at_seven_five",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 671,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_eq_mod_sub",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 680,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_bounds'",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 689,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_le_seamRemainder_add_of_testBit_true'",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 699,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_getElem?",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 715,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_eq_integerGreedy",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 725,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedy_take_eq_seamResidual",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 729,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_eq_seamResidualUpto",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 749,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_iff_seamResidualUpto",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 760,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_thirteen_nine",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 772,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamResidualUpto_thirteen_eight",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 779,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitAdmissible_fourteen",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 785,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitAdmissible_twenty",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 788,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_twenty_lt'",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 791,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_twenty_lt_of_high",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 798,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_seven_lt_of_high",
+   "module": "ErdosProblems/Decl/D4.lean",
+   "line": 805,
+   "role": "substrate"
+  },
+  {
+   "declaration": "scanAux",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 100,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowScan",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 108,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightTail'",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 110,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rows",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 113,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lastDeclined",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 194,
+   "role": "substrate"
+  },
+  {
+   "declaration": "orbit_thirteen_hi_terminal",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 393,
+   "role": "substrate"
+  },
+  {
+   "declaration": "orbit_thirteen_terminal_lt",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 401,
+   "role": "substrate"
+  },
+  {
+   "declaration": "branches_decided_thirteen",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 410,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_restored_hypothesis_fails_at_thirteen",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 426,
+   "role": "substrate"
+  },
+  {
+   "declaration": "restored_hypothesis_holds_at_thirteen",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 435,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_at_sixteen",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 454,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_is_weaker_than_declined",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 474,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_hhigh_of_declined'",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 486,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_twenty_fifteen'",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 492,
+   "role": "substrate"
+  },
+  {
+   "declaration": "narrowedTail_not_intervalCeiling",
+   "module": "ErdosProblems/Decl/verify/D1.lean",
+   "line": 541,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowScan",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 106,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowWord",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 118,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fastResidual",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 122,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declineBlockB",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 127,
+   "role": "substrate"
+  },
+  {
+   "declaration": "takeBlockB",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 131,
+   "role": "substrate"
+  },
+  {
+   "declaration": "runsOf",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 143,
+   "role": "substrate"
+  },
+  {
+   "declaration": "closedRunsOf",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 162,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lastDeclined",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 183,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declineBlock_gain_is_pure_arithmetic",
+   "module": "ErdosProblems/Decl/verify/D2.lean",
+   "line": 397,
+   "role": "substrate"
+  },
+  {
+   "declaration": "d0",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 140,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhighD0",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 143,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlowD0",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 147,
+   "role": "substrate"
+  },
+  {
+   "declaration": "suff5",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 151,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rhoSmall",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 155,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declinedD0",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 159,
+   "role": "substrate"
+  },
+  {
+   "declaration": "someDeclinedLate",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 163,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhighAt",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 169,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rows",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 171,
+   "role": "substrate"
+  },
+  {
+   "declaration": "failures",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 174,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhighAllFailures",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 194,
+   "role": "substrate"
+  },
+  {
+   "declaration": "masterSlack",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 219,
+   "role": "substrate"
+  },
+  {
+   "declaration": "derivedMargin",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 225,
+   "role": "substrate"
+  },
+  {
+   "declaration": "notHhighTagged",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 244,
+   "role": "substrate"
+  },
+  {
+   "declaration": "unconditionalRow",
+   "module": "ErdosProblems/Decl/verify/D3.lean",
+   "line": 262,
+   "role": "substrate"
+  },
+  {
+   "declaration": "decBitAdmissible",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 120,
+   "role": "substrate"
+  },
+  {
+   "declaration": "decLateEntryAdmissible",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 123,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 128,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitCorr'",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 202,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorr'",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 206,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntry'",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 209,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rho'",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 213,
+   "role": "substrate"
+  },
+  {
+   "declaration": "IntervalCeiling.four_pow_le_at",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 413,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_intervalCeiling_certifies_hhigh",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 438,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_intervalCeiling_certifies_hhigh_twenty",
+   "module": "ErdosProblems/Decl/verify/D4.lean",
+   "line": 462,
+   "role": "substrate"
+  }
+ ],
+ "intra_zone_relations": []
+}

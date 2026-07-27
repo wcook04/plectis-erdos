@@ -115,8 +115,9 @@ def main() -> int:
     try:
         checker.validate_entry_links(
             readme.replace(
-                "exact equivalence / open step",
-                "exact equivalence / conditional producer",
+                "Finishing the argument would require certificates at "
+                "arbitrarily large stages",
+                "A conditional producer would be required",
             ),
             agents,
             paper_readme,

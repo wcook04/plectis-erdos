@@ -1,0 +1,655 @@
+{
+  "schema": "erdos249257-generated-schemas/1",
+  "artifact_role": "dated_historical_generated_family_analysis_not_current_coverage_source",
+  "authority_posture": "dated authored analysis at source_revision 967b4cf; not current corpus coverage, Lean proof authority, or the curated claim ledger",
+  "purpose": "Preserve the seven-family analysis performed at the recorded historical revision. Current generated-family provenance and coverage live in docs/generated_certificate_manifest.json and docs/semantic_corpus.json.",
+  "source_revision": "967b4cfcc105701b0fe276ac16c9df8bcae549a1",
+  "measured_from": "DATED SNAPSHOT: docs/declaration_atlas.json at module_count 650 and declaration_count 12,809, plus direct source and emitter reads",
+  "detection_note": "Historical analysis only. Its whole-corpus totals and percentages must not be quoted as current. Use docs/generated_certificate_manifest.json for current family ownership and docs/semantic_corpus.json for current denominators.",
+  "families": [
+    {
+      "id": "emitted_direct_prime_certificate_aggregate",
+      "label": "Direct-prime emitted period certificates (aggregate module)",
+      "modules_glob": "Erdos249257/GeneratedCertificates.lean",
+      "module_count": 1,
+      "declaration_count": 1174,
+      "template_statement": "For a fixed base b, block length L and offset A: (i) `concrete_generated_b{b}_F{L}_A{A}_factorization_support_cases {p} (hp : p in (L:Nat).factorization.support) : p = q1 or ... or p = qk` pins the prime support of L; (ii) for each prime p | L, `concrete_generated_b{b}_F{L}_A{A}_p{p}_prime_witness : PrimeComponentWitness L A b p q` exhibits a prime q with (primeComponentQuotient b L p).factorization q > A.factorization q, and `..._CanonicalWitnessRowCase : CanonicalWitnessRowCase L A b p` injects it into the kernel's row disjunction; (iii) `def emittedCertificate_b{b}_L{L}_A{A} : EmittedCertificateTable L A b` bundles the rows; (iv) `orderOf_b{b}_mod{Q}_eq_{L}_from_emittedCertificate_denNorm : orderOf (ZMod.unitOfCoprime b (h : Nat.Coprime b Q)) = L` applies the authored kernel theorem `finite_period_noncollapse_from_emitted_certificate_table`. Lifted rows use the variant name `concrete_lifted_b{b}_F{L}_A{A}_from_A{A0}_mul{k}_p{p}_...` (via `PrimeComponentWitness.mul_right_of_factorization_eq_zero`) or `..._from_A{A0}_factorization_le_p{p}_...` (via `PrimeComponentWitness.of_factorization_le`). All arithmetic side conditions are closed by `decide` / `norm_num`; no native evaluation.",
+      "parameters": [
+        "b (base)",
+        "L (block length / target order)",
+        "A (offset / numerator)",
+        "p (prime divisor of L, one row per p)",
+        "q (prime component witness for row p)",
+        "Q (reduced denominator, appears in the orderOf conclusion)"
+      ],
+      "parameter_values": {
+        "distinct_(b,L,A)_tuples": 148,
+        "bases_b": {
+          "2": 24,
+          "3": 2,
+          "4": 9,
+          "5": 1,
+          "6": 8,
+          "10": 6,
+          "12": 98
+        },
+        "L_values": {
+          "5": 1,
+          "6": 9,
+          "10": 3,
+          "12": 114,
+          "14": 1,
+          "15": 1,
+          "21": 1,
+          "30": 2,
+          "33": 6,
+          "105": 9,
+          "210": 1
+        },
+        "example_tuples": [
+          [
+            2,
+            10,
+            3
+          ],
+          [
+            2,
+            10,
+            31
+          ],
+          [
+            2,
+            12,
+            9
+          ],
+          [
+            2,
+            14,
+            3
+          ],
+          [
+            2,
+            15,
+            7
+          ],
+          [
+            2,
+            21,
+            7
+          ],
+          [
+            2,
+            30,
+            9
+          ],
+          [
+            2,
+            30,
+            99
+          ]
+        ]
+      },
+      "generator": "ai_workflow/tools/meta/factory/run_formal_math_erdos257_period_noncollapse_strike.py (absolute: /Users/willcook/src/ai_workflow/tools/meta/factory/run_formal_math_erdos257_period_noncollapse_strike.py) \u2014 NOT in this repository",
+      "generator_evidence": "`_render_direct_prime_generated_certificate_module(..., header=\"-- Generated direct-prime emitted certificate aggregate.\")` at line 2513 of the strike script; the row/def/orderOf name templates `emittedCertificate_b{b}_L{L}_A{A}` and `orderOf_b{b}_mod{Q}_eq_{L}_from_emittedCertificate_denNorm` appear verbatim at lines 840-841.",
+      "provenance_evidence": "Line 1 of the module is the literal comment `-- Generated direct-prime emitted certificate aggregate.`, followed by `import Erdos249257.CertificateKernel` and one import per emitted shard. The module sets `set_option linter.unusedTactic false` / `linter.unreachableTactic false`, the emitter's characteristic linter suppression. The byte-identical upstream file exists at ~/src/ai_workflow/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeneratedCertificates.lean modulo the namespace rename Erdos257PeriodNoncollapse -> Erdos249257 (verified by diff).",
+      "declaration_shapes": [
+        {
+          "name_pattern": "concrete_generated_bN_FN_AN_pN_prime_witness",
+          "count": 308,
+          "example_signature": "theorem concrete_generated_b2_F10_A31_p2_prime_witness : PrimeComponentWitness 10 31 2 2 3"
+        },
+        {
+          "name_pattern": "concrete_generated_bN_FN_AN_pN_CanonicalWitnessRowCase",
+          "count": 308,
+          "example_signature": "theorem concrete_generated_b2_F10_A31_p2_CanonicalWitnessRowCase : CanonicalWitnessRowCase 10 31 2 2"
+        },
+        {
+          "name_pattern": "emittedCertificate_bN_LN_AN",
+          "count": 148,
+          "example_signature": "def emittedCertificate_b2_L10_A31 : EmittedCertificateTable 10 31 2"
+        },
+        {
+          "name_pattern": "orderOf_bN_modN_eq_N_from_emittedCertificate_denNorm",
+          "count": 148,
+          "example_signature": "theorem orderOf_b2_mod33_eq_10_from_emittedCertificate_denNorm : orderOf (ZMod.unitOfCoprime 2 (by decide : Nat.Coprime 2 33)) = 10"
+        },
+        {
+          "name_pattern": "concrete_generated_bN_FN_AN_factorization_support_cases",
+          "count": 134,
+          "example_signature": "theorem concrete_generated_b2_F33_A23_factorization_support_cases {p : Nat} (hp : p \u2208 (33 : Nat).factorization.support) : p = 3 \u2228 p = 11"
+        },
+        {
+          "name_pattern": "concrete_lifted_bN_FN_AN_from_AN_mulN_pN_prime_witness",
+          "count": 55,
+          "example_signature": "theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p2_prime_witness : PrimeComponentWitness 12 102965 12 2 29"
+        },
+        {
+          "name_pattern": "concrete_lifted_bN_FN_AN_from_AN_mulN_pN_CanonicalWitnessRowCase",
+          "count": 55,
+          "example_signature": "theorem concrete_lifted_b12_F12_A102965_from_A5_mul20593_p2_CanonicalWitnessRowCase : CanonicalWitnessRowCase 12 102965 12 2"
+        },
+        {
+          "name_pattern": "concrete_generated_bN_FN_factorization_support_cases",
+          "count": 10,
+          "example_signature": "theorem concrete_generated_b2_F14_factorization_support_cases {p : Nat} (hp : p \u2208 (14 : Nat).factorization.support) : p = 2 \u2228 p = 7"
+        },
+        {
+          "name_pattern": "concrete_lifted_bN_FN_AN_from_AN_factorization_le_pN_prime_witness",
+          "count": 4,
+          "example_signature": "theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p2_prime_witness : PrimeComponentWitness 12 13 12 2 5"
+        },
+        {
+          "name_pattern": "concrete_lifted_bN_FN_AN_from_AN_factorization_le_pN_CanonicalWitnessRowCase",
+          "count": 4,
+          "example_signature": "theorem concrete_lifted_b12_F12_A13_from_A11_factorization_le_p2_CanonicalWitnessRowCase : CanonicalWitnessRowCase 12 13 12 2"
+        }
+      ],
+      "consumed_by": [],
+      "consumed_by_evidence": "grep of all 151 generated `emittedCertificate_*` definition names across Erdos249257/, ErdosProblems/ and examples/ returns zero references outside the generated modules themselves. The only edge into this family is `import Erdos249257.GeneratedCertificates` in the root aggregation module Erdos249257.lean (line 3).",
+      "direction_of_use": "The family USES authored kernel results rather than feeding them: each module applies `Erdos249257.finite_period_noncollapse_from_emitted_certificate_table` and `Erdos249257.emitted_certificate_table_supplies_generated_finite_rows` (Erdos249257/CertificateKernel.lean:3084, 3101).",
+      "logical_class": "generated_certificate_instance",
+      "sceptical_note": "Every instance in this family is a special case of the authored unconditional theorem `Erdos249257.finite_period_noncollapse (F : Finset Nat) (b : Nat) (hF : F.Nonempty) (h0 : 0 notin F) (hb : 2 <= b) : orderOf (ZMod.unitOfCoprime b _) = F.lcm id` at Erdos249257/CertificateKernel.lean:5091, whose docstring states that no witness-supply hypothesis remains. The 1,174 emitted declarations therefore add no mathematical content over an authored general theorem already in the same file they import; they are executable evidence that the kernel route runs, not new results. None of them is claim-linked in docs/claims.json."
+    },
+    {
+      "id": "emitted_direct_prime_certificate_shards",
+      "label": "Direct-prime emitted period certificates (per-tuple shard modules)",
+      "modules_glob": "Erdos249257/GeneratedCertificates/b{b}_L{L}_A{A}.lean",
+      "module_count": 3,
+      "declaration_count": 27,
+      "template_statement": "Identical template to the aggregate family, restricted to a single (b, L, A) tuple whose parameters are recoverable from the module name: support-cases lemma for L, one PrimeComponentWitness + CanonicalWitnessRowCase pair per prime p | L, `def emittedCertificate_b{b}_L{L}_A{A} : EmittedCertificateTable L A b`, and the conclusion `orderOf_b{b}_mod{Q}_eq_{L}_from_emittedCertificate_denNorm : orderOf (ZMod.unitOfCoprime b _) = L`.",
+      "parameters": [
+        "b (base)",
+        "L (block length)",
+        "A (offset)",
+        "p (prime divisor of L)",
+        "q (prime component witness)",
+        "Q (reduced denominator)"
+      ],
+      "parameter_values": {
+        "tuples_on_disk": [
+          "b10_L6_A11",
+          "b2_L105_A75047",
+          "b2_L210_A21371"
+        ],
+        "declarations_per_module": {
+          "b10_L6_A11": 7,
+          "b2_L105_A75047": 9,
+          "b2_L210_A21371": 11
+        }
+      },
+      "generator": "ai_workflow/tools/meta/factory/run_formal_math_erdos257_period_noncollapse_strike.py (absolute: /Users/willcook/src/ai_workflow/tools/meta/factory/run_formal_math_erdos257_period_noncollapse_strike.py) \u2014 NOT in this repository",
+      "generator_evidence": "`_render_direct_prime_generated_certificate_shard_module` (line 2448, header f\"-- Generated direct-prime emitted certificate shard: {spec_id}.\") and `_render_direct_prime_generated_certificate_manifest_shard_module` (line 2457, header \"-- Generated direct-prime emitted certificate shard from manifest: ...\"), with spec_id built as f\"b{b}_L{L}_A{A}\" at line 6475.",
+      "provenance_evidence": "Line 1 of each module is `-- Generated direct-prime emitted certificate shard: b10_L6_A11.` or `-- Generated direct-prime emitted certificate shard from manifest: b2_L105_A75047.`; each imports only Erdos249257.CertificateKernel and carries the same two linter suppressions. Byte-identical upstream copies exist under ~/src/ai_workflow/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeneratedCertificates/ modulo the namespace rename (verified by diff on b10_L6_A11.lean).",
+      "declaration_shapes": [
+        {
+          "name_pattern": "concrete_generated_bN_FN_AN_pN_prime_witness",
+          "count": 9,
+          "example_signature": "theorem concrete_generated_b10_F6_A11_p2_prime_witness : PrimeComponentWitness 6 11 10 2 7"
+        },
+        {
+          "name_pattern": "concrete_generated_bN_FN_AN_pN_CanonicalWitnessRowCase",
+          "count": 9,
+          "example_signature": "theorem concrete_generated_b10_F6_A11_p2_CanonicalWitnessRowCase : CanonicalWitnessRowCase 6 11 10 2"
+        },
+        {
+          "name_pattern": "concrete_generated_bN_FN_AN_factorization_support_cases",
+          "count": 3,
+          "example_signature": "theorem concrete_generated_b10_F6_A11_factorization_support_cases {p : Nat} (hp : p \u2208 (6 : Nat).factorization.support) : p = 2 \u2228 p = 3"
+        },
+        {
+          "name_pattern": "emittedCertificate_bN_LN_AN",
+          "count": 3,
+          "example_signature": "def emittedCertificate_b10_L6_A11 : EmittedCertificateTable 6 11 10"
+        },
+        {
+          "name_pattern": "orderOf_bN_modN_eq_N_from_emittedCertificate_denNorm",
+          "count": 3,
+          "example_signature": "theorem orderOf_b10_mod90909_eq_6_from_emittedCertificate_denNorm : orderOf (ZMod.unitOfCoprime 10 (by decide : Nat.Coprime 10 90909)) = 6"
+        }
+      ],
+      "consumed_by": [],
+      "consumed_by_evidence": "The three shard modules are imported only by Erdos249257/GeneratedCertificates.lean; none of their declaration names is referenced anywhere outside the generated tree.",
+      "direction_of_use": "Same as the aggregate: applies CertificateKernel theorems, is not applied by anything.",
+      "logical_class": "generated_certificate_instance",
+      "sceptical_note": "Same subsumption as the aggregate family: covered by the authored unconditional `finite_period_noncollapse`. Not claim-linked."
+    },
+    {
+      "id": "diagonal_pincer_base_prefix",
+      "label": "Diagonal-pincer certified kills, landed prefix through t = 17",
+      "modules_glob": "Erdos249257/DiagonalPincerCertificates.lean",
+      "module_count": 1,
+      "declaration_count": 459,
+      "template_statement": "Shared emitted infrastructure (`abbrev FactorBlock := Nat x Nat`, `factorBlockValue`, `factorBlockTotient`, `binaryPow`, `binaryPow_eq_pow`, `binaryPowMod`, `binaryPow_natCast`, `binaryPow_zmod`, `totient_factorBlocks`, `prime_dvd_factorBlocks`), then per scale t in [1,2,3,4,5,7,8,9,11,13,16,17]: private `prime_{p} : Nat.Prime p` leaves, private `phi_{n} : Nat.totient n = phi(n)` rows reconstructed from pairwise-coprime prime-power FactorBlock lists via `totient_factorBlocks`, and `theorem certifiedKill_diagonal_t{t} : certifiedKill (periodLcm t) (periodLcm t) {L_t}` closed by `norm_num [certifiedKill, windowDiscrepancy, periodLcm, Finset.sum_range_succ, phi_...]`. Aggregated by `def diagonalPincerCertificateScales : List Nat`, `def diagonalPincerKillDepth : Nat -> Nat` and `theorem certifiedKill_diagonal_all_imported : forall t in diagonalPincerCertificateScales, certifiedKill (periodLcm t) (periodLcm t) (diagonalPincerKillDepth t)`.",
+      "parameters": [
+        "t (lcm-diagonal scale)",
+        "L_t (certificate depth)",
+        "n (window index, one phi row per n)",
+        "p (prime leaf)"
+      ],
+      "parameter_values": {
+        "scales": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9,
+          11,
+          13,
+          16,
+          17
+        ],
+        "kill_depths": {
+          "1": 6,
+          "2": 5,
+          "3": 7,
+          "4": 7,
+          "5": 9,
+          "7": 14,
+          "8": 15,
+          "9": 14,
+          "11": 21,
+          "13": 22,
+          "16": 23,
+          "17": 26
+        }
+      },
+      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py (absolute: /Users/willcook/src/ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py) \u2014 NOT in this repository",
+      "generator_evidence": "OUTPUT = .../DiagonalPincerCertificates.lean at line 33 of the builder; the module docstring text \"This generated module materializes the kernel-safe prefix of finite\" is emitted at line 136; LANDED_MAX_T = 17 at line 57.",
+      "provenance_evidence": "Module docstring reads `This generated module materializes the kernel-safe prefix of finite certifiedKill (periodLcm t) (periodLcm t) L_min rows in the imported pincer table: 12 distinct scales through t = 17`, and pins two input hashes: `Results input SHA-256: 1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd` and `Factorization input SHA-256: 4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d` (the upstream JSON artifacts erdos249_pincer_results_t83.json / erdos249_pincer_factorisations_t83.json). Ends with `#print axioms certifiedKill_diagonal_all_imported`.",
+      "declaration_shapes": [
+        {
+          "name_pattern": "phi_N",
+          "count": 277,
+          "example_signature": "private theorem phi_2 : Nat.totient 2 = 1"
+        },
+        {
+          "name_pattern": "prime_N",
+          "count": 157,
+          "example_signature": "private theorem prime_2 : Nat.Prime 2"
+        },
+        {
+          "name_pattern": "certifiedKill_diagonal_tN",
+          "count": 12,
+          "example_signature": "theorem certifiedKill_diagonal_t1 : certifiedKill (periodLcm 1) (periodLcm 1) 6"
+        },
+        {
+          "name_pattern": "FactorBlock",
+          "count": 1,
+          "example_signature": "abbrev FactorBlock"
+        },
+        {
+          "name_pattern": "factorBlockValue",
+          "count": 1,
+          "example_signature": "def factorBlockValue (b : FactorBlock) : \u2115"
+        },
+        {
+          "name_pattern": "factorBlockTotient",
+          "count": 1,
+          "example_signature": "def factorBlockTotient (b : FactorBlock) : \u2115"
+        },
+        {
+          "name_pattern": "binaryPow",
+          "count": 1,
+          "example_signature": "def binaryPow {\u03b1 : Type*} [Monoid \u03b1] (a : \u03b1) : (n : \u2115) \u2192 \u03b1 | 0 => 1 | n + 1 => let x"
+        },
+        {
+          "name_pattern": "binaryPow_eq_pow",
+          "count": 1,
+          "example_signature": "theorem binaryPow_eq_pow {\u03b1 : Type*} [Monoid \u03b1] (a : \u03b1) : \u2200 n : \u2115, binaryPow a n = a ^ n"
+        },
+        {
+          "name_pattern": "binaryPowMod",
+          "count": 1,
+          "example_signature": "def binaryPowMod (a m : \u2115) : (n : \u2115) \u2192 \u2115 | 0 => 1 % m | n + 1 => let x"
+        },
+        {
+          "name_pattern": "binaryPow_natCast",
+          "count": 1,
+          "example_signature": "theorem binaryPow_natCast (a m n : \u2115) : binaryPow (a : ZMod m) n = (binaryPowMod a m n : ZMod m)"
+        },
+        {
+          "name_pattern": "binaryPow_zmod",
+          "count": 1,
+          "example_signature": "theorem binaryPow_zmod {m : \u2115} [NeZero m] (a : ZMod m) (n : \u2115) : binaryPow a n = (binaryPowMod a.val m n : ZMod m)"
+        },
+        {
+          "name_pattern": "totient_factorBlocks",
+          "count": 1,
+          "example_signature": "theorem totient_factorBlocks (bs : List FactorBlock) (hprime : \u2200 b \u2208 bs, Nat.Prime b.1) (hpos : \u2200 b \u2208 bs, 0 < b.2) (hpair : bs.Pairwise (Function.onFun Nat.Coprime factorBlockValue)) : Nat.totient ((bs.map factorBlockVal"
+        }
+      ],
+      "consumed_by": [],
+      "consumed_by_evidence": "No declaration name from this module appears outside the generated tree; the only import edge in is Erdos249257.lean line 22. The authored theorems that cover the same small scales (`Erdos249257.TotientTailPeriodKiller.certifiedKill_periodLcm_diagonal_upto_six`, `..._at_seven`, `..._at_eight` in Erdos249257/LcmDiagonalReduction.lean) are proved independently by `decide` and do not reference this module.",
+      "intended_consumer_hypothesis": "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_diagonal_certificate_supply (Erdos249257/LcmDiagonalReduction.lean) and its iff form Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_lcm_diagonal_certificate_supply (Erdos249257/LcmConeFlatness.lean), whose hypothesis is the COFINAL supply `forall t0, exists t >= t0, exists L, certifiedKill (periodLcm t) (periodLcm t) L`.",
+      "logical_class": "finite_instance",
+      "sceptical_note": "This family instantiates the cofinal antecedent at finitely many t. It cannot discharge it: the hypothesis quantifies over all t0, and any finite table leaves it open. Claim `certified_kill_instances` in docs/claims.json is correctly typed 'verified finite instance'."
+    },
+    {
+      "id": "diagonal_pincer_scale_extensions",
+      "label": "Diagonal-pincer certified kills, per-scale extension modules t = 19..64",
+      "modules_glob": "Erdos249257/DiagonalPincerCertificatesT{t}.lean",
+      "module_count": 16,
+      "declaration_count": 4374,
+      "template_statement": "For one scale t, re-declare private `prime_t{t}_{p} : Nat.Prime p` leaves (small ones by `norm_num`, large ones by importing `prime_lucas_{p}` from the Lucas-leaf family), prove one private `phi_t{t}_{n} : Nat.totient n = phi(n)` per index n in the t-window by `rw [totient_factorBlocks]` over a pairwise-coprime prime-power block list, then `theorem certifiedKill_diagonal_t{t} : certifiedKill (periodLcm t) (periodLcm t) {L_t}` by `norm_num [certifiedKill, windowDiscrepancy, periodLcm, Finset.sum_range_succ, phi_t{t}_...]`, and chain the table forward as `theorem certifiedKill_diagonal_all_imported_through_t{t}` (a right-nested conjunction with the previous scale for t = 19,23,25; from t = 27 onward a `forall t in diagonalPincerCertificateScalesThroughT{t}, certifiedKill (periodLcm t) (periodLcm t) (diagonalPincerKillDepthThroughT{t} t)` over freshly emitted `def diagonalPincerCertificateScalesThroughT{t} : List Nat` and `def diagonalPincerKillDepthThroughT{t} : Nat -> Nat`).",
+      "parameters": [
+        "t (lcm-diagonal scale, one module each)",
+        "L_t (certificate depth)",
+        "n (window index, one phi row per n)",
+        "p (prime leaf, small inline or large imported)"
+      ],
+      "parameter_values": {
+        "scales": [
+          19,
+          23,
+          25,
+          27,
+          29,
+          31,
+          32,
+          37,
+          41,
+          43,
+          47,
+          49,
+          53,
+          59,
+          61,
+          64
+        ],
+        "kill_depth_L_t": {
+          "19": 32,
+          "23": 35,
+          "25": 38,
+          "27": 40,
+          "29": 45,
+          "31": 49,
+          "32": 50,
+          "37": 56,
+          "41": 61,
+          "43": 66,
+          "47": 73,
+          "49": 76,
+          "53": 81,
+          "59": 88,
+          "61": 94,
+          "64": 93
+        },
+        "declarations_per_scale": {
+          "19": 157,
+          "23": 162,
+          "25": 165,
+          "27": 179,
+          "29": 205,
+          "31": 233,
+          "32": 229,
+          "37": 257,
+          "41": 289,
+          "43": 280,
+          "47": 333,
+          "49": 319,
+          "53": 342,
+          "59": 400,
+          "61": 408,
+          "64": 416
+        },
+        "totient_rows_per_scale": {
+          "19": 64,
+          "23": 70,
+          "25": 76,
+          "27": 80,
+          "29": 90,
+          "31": 98,
+          "32": 100,
+          "37": 112,
+          "41": 122,
+          "43": 132,
+          "47": 146,
+          "49": 152,
+          "53": 162,
+          "59": 176,
+          "61": 188,
+          "64": 186
+        },
+        "imported_lucas_leaf_modules_per_scale": {
+          "19": 6,
+          "23": 17,
+          "25": 22,
+          "27": 18,
+          "29": 37,
+          "31": 41,
+          "32": 13,
+          "37": 61,
+          "41": 68,
+          "43": 93,
+          "47": 0,
+          "49": 0,
+          "53": 0,
+          "59": 0,
+          "61": 0,
+          "64": 0
+        }
+      },
+      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py (absolute: /Users/willcook/src/ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py) \u2014 NOT in this repository",
+      "generator_evidence": "T19_OUTPUT..T64_OUTPUT constants at lines 37-53 and the `build_scale_extension(...)` calls at lines ~720-1360; the emitted docstring template f\"This generated extension consumes {len(new_large_primes)} new large-prime Lucas roots\" is at line 1083 and the theorem-name template f\"theorem certifiedKill_diagonal_t{scale} :\" at line 1140 (with `axiom_target = f\"certifiedKill_diagonal_t{scale}\"` at line 1182).",
+      "provenance_evidence": "Each module's docstring is an instance of `This generated extension consumes <n> ... Lucas certificates/roots ..., reconstructs all <k> Euler totients in the t=<t> window, and proves the <ordinal> finite diagonal kill without native evaluation/native_decide`, followed by the emitter's fixed option block `set_option maxRecDepth 100000` + `linter.unusedTactic/unreachableTactic/unnecessarySeqFocus false` and a section header `/-! ## Prime leaves used by the t=<t> window -/`. Each ends with `#print axioms certifiedKill_diagonal_t{t}`. From t = 47 on, large primality is taken from the single shared closure module instead of per-prime imports.",
+      "declaration_shapes": [
+        {
+          "name_pattern": "prime_tN_N",
+          "count": 2362,
+          "example_signature": "private theorem prime_t19_2 : Nat.Prime 2"
+        },
+        {
+          "name_pattern": "phi_tN_N",
+          "count": 1954,
+          "example_signature": "private theorem phi_t19_232792561 : Nat.totient 232792561 = 232792560"
+        },
+        {
+          "name_pattern": "certifiedKill_diagonal_tN",
+          "count": 16,
+          "example_signature": "theorem certifiedKill_diagonal_t19 : certifiedKill (periodLcm 19) (periodLcm 19) 32"
+        },
+        {
+          "name_pattern": "certifiedKill_diagonal_all_imported_through_tN",
+          "count": 16,
+          "example_signature": "theorem certifiedKill_diagonal_all_imported_through_t19 : (\u2200 t \u2208 diagonalPincerCertificateScales, certifiedKill (periodLcm t) (periodLcm t) (diagonalPincerKillDepth t)) \u2227 certifiedKill (periodLcm 19) (periodLcm 19) 32"
+        },
+        {
+          "name_pattern": "diagonalPincerCertificateScalesThroughTN",
+          "count": 13,
+          "example_signature": "def diagonalPincerCertificateScalesThroughT27 : List \u2115"
+        },
+        {
+          "name_pattern": "diagonalPincerKillDepthThroughTN",
+          "count": 13,
+          "example_signature": "def diagonalPincerKillDepthThroughT27 : \u2115 \u2192 \u2115 | 1 => 6 | 2 => 5 | 3 => 7 | 4 => 7 | 5 => 9 | 7 => 14 | 8 => 15 | 9 => 14 | 11 => 21 | 13 => 22 | 16 => 23 | 17 => 26 | 19 => 32"
+        }
+      ],
+      "consumed_by": [],
+      "consumed_by_evidence": "grep for `certifiedKill_diagonal` across all .lean files: every hit is inside the generated diagonal-pincer tree. The names appear outside Lean only in docs/claims.json, docs/*.json projections and paper/*.tex prose.",
+      "intended_consumer_hypothesis": "Same cofinal antecedent as the base prefix: Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_lcm_diagonal_certificate_supply / irrational_totient_series_iff_lcm_diagonal_certificate_supply.",
+      "logical_class": "finite_instance",
+      "sceptical_note": "28 scales are now certified (t through 64) and the chained aggregates make the table look like it is converging on the hypothesis, but the hypothesis is `forall t0, exists t >= t0`, so the family's contribution to Erdos #249 is exactly zero logical progress on the open antecedent - it only moves the finite frontier. The reduction that would make a cofinal supply sufficient, Erdos249257/DiagonalPincerDecomposition.lean:irrational_totientSeries_of_full_target_avoidance_supply, is itself conditional (claims.json id `diagonal_pincer_reduction`, status 'conditional reduction')."
+    },
+    {
+      "id": "diagonal_pincer_t64_endpoint",
+      "label": "Diagonal-pincer t = 64 standalone endpoint certificate",
+      "modules_glob": "Erdos249257/DiagonalPincerCertificateT64Endpoint.lean",
+      "module_count": 1,
+      "declaration_count": 413,
+      "template_statement": "Same per-scale template as the extension family instantiated at t = 64, but emitted with `include_aggregate=False` and no chain to t = 61: prime leaves + 186 `phi_t64_{n}` totient rows + `theorem certifiedKill_diagonal_t64 : certifiedKill (periodLcm 64) (periodLcm 64) 93`, with no `certifiedKill_diagonal_all_imported_through_*` aggregate and no `diagonalPincerCertificateScalesThroughT64` definition.",
+      "parameters": [
+        "t = 64 (fixed)",
+        "L = 93 (certificate depth)",
+        "n (window index, 186 phi rows)",
+        "p (prime leaf, all via the shared ClosureT64 module)"
+      ],
+      "parameter_values": {
+        "t": 64,
+        "kill_depth": 93,
+        "totient_rows": 186,
+        "prime_leaf_source": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64"
+      },
+      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py (absolute: /Users/willcook/src/ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py) \u2014 NOT in this repository",
+      "generator_evidence": "T64_ENDPOINT_OUTPUT at line 54; emitted by `build_scale_extension(SIXTEENTH_EXTENSION_T, None, preexisting_primes, \"standalone exponent-six\", shared_prime_closure=t64_prime_closure, include_aggregate=False)` at lines 1360-1367.",
+      "provenance_evidence": "Docstring is the extension template with the ordinal slot filled by `standalone exponent-six`: `This generated extension consumes 175 new large-prime Lucas roots and 1067 recursive Pratt dependencies, reuses 0 earlier certificates, reconstructs all 186 Euler totients in the t=64 window, and proves the standalone exponent-six finite diagonal kill without native_decide.` Section header `/-! ## The standalone exponent-six finite diagonal certificate -/` precedes the theorem; module ends with `#print axioms certifiedKill_diagonal_t64`. Imports only DiagonalPincerCertificates and DiagonalPincerPrimeCertificates.ClosureT64.",
+      "declaration_shapes": [
+        {
+          "name_pattern": "prime_tN_N",
+          "count": 226,
+          "example_signature": "private theorem prime_t64_2 : Nat.Prime 2"
+        },
+        {
+          "name_pattern": "phi_tN_N",
+          "count": 186,
+          "example_signature": "private theorem phi_t64_1182266884102822267511361601 : Nat.totient 1182266884102822267511361601 = 1170554827853295639500976192"
+        },
+        {
+          "name_pattern": "certifiedKill_diagonal_tN",
+          "count": 1,
+          "example_signature": "theorem certifiedKill_diagonal_t64 : certifiedKill (periodLcm 64) (periodLcm 64) 93"
+        }
+      ],
+      "consumed_by": [],
+      "consumed_by_evidence": "No Lean reference outside the generated tree; imported by Erdos249257.lean line 112. Claim-linked as `diagonal_pincer_t64_endpoint_certificate` in docs/claims.json (status 'verified finite instance').",
+      "logical_class": "finite_instance",
+      "integrity_flag": "NAME COLLISION: this module and Erdos249257/DiagonalPincerCertificatesT64.lean both declare `Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64` with the identical statement `certifiedKill (periodLcm 64) (periodLcm 64) 93`, and Erdos249257.lean imports both (lines 112 and 113). The generator produces the duplicate by design (it calls build_scale_extension at t = 64 twice, once chained and once standalone) and does not rename the standalone theorem. This should be checked against an actual `lake build` of the root module; it is at minimum a redundant 413-declaration copy of content already present in DiagonalPincerCertificatesT64.lean.",
+      "sceptical_note": "Despite the 'standalone exponent-six' framing in the docstring, the theorem statement is byte-identical to the one in the chained T64 module. The endpoint module is a duplicate instance, not an additional mathematical fact."
+    },
+    {
+      "id": "lucas_prime_leaf_certificates",
+      "label": "Isolated Lucas primality certificates, one prime per module",
+      "modules_glob": "Erdos249257/DiagonalPincerPrimeCertificates/Prime{p}.lean",
+      "module_count": 480,
+      "declaration_count": 480,
+      "template_statement": "`theorem prime_lucas_{p} : Nat.Prime {p}` in namespace Erdos249257.TotientTailPeriodKiller, proved by `apply lucas_primality {p} ({a} : ZMod {p})` for an explicit witness base a, with the Fermat congruence and each `(a : ZMod p) ^ ((p-1)/q) != 1` side condition discharged through an emitted `calc` ladder of square-and-multiply steps (`fermat_0`, `fermat_1`, ... each `(a : ZMod p) ^ (m+m) = (a : ZMod p) ^ m * (a : ZMod p) ^ m` closed by `decide`); the factor list of p-1 is a `List FactorBlock` handled by `prime_dvd_factorBlocks`. Recursive Pratt dependencies are expressed as imports of other Prime{q}.lean modules. Module ends with `#print axioms prime_lucas_{p}`. Exactly one theorem per module.",
+      "parameters": [
+        "p (the prime being certified)",
+        "a (Lucas witness base)",
+        "the factorisation of p-1 as a FactorBlock list",
+        "t (the diagonal scale whose window first needed p)"
+      ],
+      "parameter_values": {
+        "prime_leaves_per_t_window": {
+          "19": 6,
+          "23": 17,
+          "25": 24,
+          "27": 19,
+          "29": 39,
+          "31": 46,
+          "32": 16,
+          "37": 88,
+          "41": 96,
+          "43": 129
+        },
+        "declarations_per_module": 1,
+        "recursive_pratt_dependencies": "115 of the 480 leaf modules import at least one other leaf module as a Pratt sub-certificate"
+      },
+      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py (absolute: /Users/willcook/src/ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py) \u2014 NOT in this repository",
+      "generator_evidence": "PRIME_OUTPUT_DIR at line 36; the per-module docstring f\"/-! A bounded Lucas certificate for one t={scale} prime leaf. -/\" is emitted at line 473 with namespace lines `Erdos257PeriodNoncollapse` / `TotientTailPeriodKiller` at 475-476.",
+      "provenance_evidence": "Every module's line 3 is the one-line docstring `/-! A bounded Lucas certificate for one t=<t> prime leaf. -/` (10 distinct t values: 19,23,25,27,29,31,32,37,41,43); all 481 files in the directory import `Erdos249257.DiagonalPincerCertificates` and set `maxRecDepth 100000` / `maxHeartbeats 1000000`. Prime100979387.lean is byte-identical to its upstream counterpart under ~/src/ai_workflow/formal_math/erdos257_period_noncollapse/ modulo the namespace rename (verified by diff).",
+      "declaration_shapes": [
+        {
+          "name_pattern": "prime_lucas_N",
+          "count": 480,
+          "example_signature": "theorem prime_lucas_1007065607398559 : Nat.Prime 1007065607398559"
+        }
+      ],
+      "consumed_by": [
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t19",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t23",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t25",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t27",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t29",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t31",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t32",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t37",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t41",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t43"
+      ],
+      "consumed_by_evidence": "Import edges: DiagonalPincerCertificatesT19..T43 import 6,17,22,18,37,41,13,61,68,93 Prime{p} modules respectively; 115 Prime{p} modules additionally import other Prime{p} modules as Pratt sub-certificates. All consumers are themselves generated - no authored module imports or names any prime_lucas_* theorem.",
+      "logical_class": "generated_certificate_instance",
+      "sceptical_note": "These are primality facts about specific integers. They are infrastructure for the finite diagonal table and carry no independent bearing on either open problem."
+    },
+    {
+      "id": "lucas_shared_closure_t64",
+      "label": "Shared Lucas primality closure for t = 47..64",
+      "modules_glob": "Erdos249257/DiagonalPincerPrimeCertificates/ClosureT64.lean",
+      "module_count": 1,
+      "declaration_count": 1244,
+      "template_statement": "Two helper lemmas (`natCast_zmod_eq_one_iff (a m : Nat) : (a : ZMod m) = 1 <-> a % m = 1 % m` and its negation) followed by 1,242 theorems `prime_lucas_{p} : Nat.Prime {p}` in dependency order. Each proof states `hfermat : (a : ZMod p) ^ (p - 1) = 1` and one `hfactor_i : (a : ZMod p) ^ ((p-1) / q_i) != 1` per prime factor q_i of p-1, each reduced by `rw [<- binaryPow_eq_pow, binaryPow_zmod, natCast_zmod_(n)e_one_iff]` and closed by `decide +kernel`, then `apply lucas_primality p (a : ZMod p)` with the factor list supplied as a `List FactorBlock` through `prime_dvd_factorBlocks`.",
+      "parameters": [
+        "p (each of 1,242 primes)",
+        "a (Lucas witness base per prime)",
+        "the FactorBlock factorisation of p-1"
+      ],
+      "parameter_values": {
+        "prime_theorems": 1242,
+        "helper_lemmas": 2,
+        "lines": 51792,
+        "serves_scales": [
+          47,
+          49,
+          53,
+          59,
+          61,
+          64
+        ]
+      },
+      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py (absolute: /Users/willcook/src/ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py) \u2014 NOT in this repository",
+      "generator_evidence": "T64_PRIME_CLOSURE_OUTPUT = PRIME_OUTPUT_DIR / \"ClosureT64.lean\" at line 55; the docstring line \"This generated module is the compressed primality dependency surface for\" is emitted at line 673 with the namespace lines at 680-681; it is threaded into build_scale_extension as `shared_prime_closure=t64_prime_closure` for t = 47,49,53,59,61,64.",
+      "provenance_evidence": "Module docstring: `# Shared Lucas closure through t=64 / This generated module is the compressed primality dependency surface for the t=47,49,53,59,61,64 diagonal-pincer certificates.  Dependencies are declared before consumers.  Each modular congruence is reduced through the logarithmic binaryPowMod recurrence and checked by kernel decide; lucas_primality remains the proof-producing theorem.` Options `maxRecDepth 100000` / `maxHeartbeats 2000000` (double the per-leaf value).",
+      "declaration_shapes": [
+        {
+          "name_pattern": "prime_lucas_N",
+          "count": 1242,
+          "example_signature": "theorem prime_lucas_35463269 : Nat.Prime 35463269"
+        },
+        {
+          "name_pattern": "natCast_zmod_eq_one_iff",
+          "count": 1,
+          "example_signature": "theorem natCast_zmod_eq_one_iff (a m : \u2115) : (a : ZMod m) = 1 \u2194 a % m = 1 % m"
+        },
+        {
+          "name_pattern": "natCast_zmod_ne_one_iff",
+          "count": 1,
+          "example_signature": "theorem natCast_zmod_ne_one_iff (a m : \u2115) : (a : ZMod m) \u2260 1 \u2194 a % m \u2260 1 % m"
+        }
+      ],
+      "consumed_by": [
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t47",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t49",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t53",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t59",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t61",
+        "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64"
+      ],
+      "consumed_by_evidence": "Imported by DiagonalPincerCertificatesT47/T49/T53/T59/T61/T64 and by DiagonalPincerCertificateT64Endpoint; also imported directly by the root Erdos249257.lean at line 106. All consumers are generated modules. Claim-linked as `diagonal_pincer_t64_primality_closure` via `prime_lucas_2364533768205644535022723273`.",
+      "logical_class": "generated_certificate_instance",
+      "sceptical_note": "Structurally the same content as the per-leaf family, emitted in one module with the faster `decide +kernel` / binaryPowMod route rather than the `calc` ladder. Claims.json already types it as finite certificate infrastructure that supplies no unbounded family."
+    }
+  ],
+  "totals": {
+    "generated_modules": 503,
+    "generated_declarations": 8171,
+    "authored_modules": 147,
+    "authored_declarations": 4638,
+    "atlas_generated_declaration_count": 8171,
+    "collapse_ratio": "8171 declarations -> 7 family nodes",
+    "note": "authored_* are computed as atlas totals (650 modules / 12,809 declarations) minus the generated families; the 650 module count includes both library root modules Erdos249257.lean and ErdosProblems.lean."
+  },
+  "cross_checks": [
+    "Every module counted here has generated_certificate=true in docs/declaration_atlas.json, and every atlas declaration with generated_certificate=true falls in exactly one family (8171 = 1174+27+459+4374+413+480+1244).",
+    "docs/generated_certificate_manifest.json lists the same 503 modules but groups them into 3 families and reports `unknown_emitter` for all three; both emitting scripts are now identified by name, line number and byte-identical upstream output.",
+    "The manifest's consumed_by for emitted_block_certificates names Erdos249257.emittedCertificate_b2_L6_A1 / _b2_L10_A1 / _b2_L30_A1. Those three definitions are AUTHORED, declared in Erdos249257/CertificateKernel.lean at lines 3436, 3619 and 3848; they are hand-written siblings of the generated family, not consumers of it. Nothing in the authored corpus consumes any generated declaration.",
+    "Only 5 of the 8,171 generated declarations are linked to docs/claims.json: certifiedKill_diagonal_t64 (endpoint), certifiedKill_diagonal_all_imported_through_t64, prime_lucas_2364533768205644535022723273, and 2 authored declarations in DiagonalPincerDecomposition.lean."
+  ],
+  "risks_and_caveats": [
+    "Neither generator lives in this repository. Both are in ~/src/ai_workflow/tools/meta/factory/, and the diagonal-pincer generator reads two JSON artifacts under ~/src/ai_workflow/state/formal_math_research_operations/pilots/erdos249/typeb_artifacts_2026_07_10/ that are not vendored here. A cold clone of this repository cannot regenerate or re-verify the provenance of 503 of its 650 modules; only the two SHA-256 input hashes recorded in DiagonalPincerCertificates.lean tie the output to its inputs.",
+    "The generated layer is a leaf in the import graph. Only the root aggregation module Erdos249257.lean imports it (20 direct edges). No authored mathematical module depends on any generated declaration, so removing the whole generated layer would not break a single authored proof.",
+    "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64 is declared twice (DiagonalPincerCertificatesT64.lean:1928 and DiagonalPincerCertificateT64Endpoint.lean:1928) with identical statements, and Erdos249257.lean imports both modules.",
+    "63.8% of the corpus by declaration count (8,171 of 12,809) is emitted certificate text. Any statistic quoted over 'declarations' in this repository is dominated by finite instances of two schemas unless the generated layer is excluded."
+  ]
+}

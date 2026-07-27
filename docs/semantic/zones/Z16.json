@@ -1,0 +1,3905 @@
+{
+  "zone_id": "Z16",
+  "title": "Suffix-cylinder feedback tree: endpoint-indexed cylinders, profiled two-sheet gaps and promotion",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "selected_half_window",
+      "label": "Selected half-window",
+      "description": "A family of admissible half-words on rows 1..N, one for each terminal integer half-carry k in 1..R, with the canonical fixed-coefficient successor stepExplicit."
+    },
+    {
+      "id": "suffix_cylinder",
+      "label": "Endpoint-indexed suffix cylinder",
+      "description": "HasSuffixCylinderAt: all words of a selected family share one length-M prefix and their binary suffix numerals are the consecutive values endpoint - k indexed by terminal carry k."
+    },
+    {
+      "id": "endpoint_index",
+      "label": "Cylinder endpoint E",
+      "description": "The single natural number E with suffixNumeral(word k) + k = E for every carry k; it is the whole state of the cylinder above the cutoff."
+    },
+    {
+      "id": "head_threshold",
+      "label": "Binary head weight 2^(N-(K+1))",
+      "description": "The place value of the next prefix bit; whether the consecutive suffix interval lies below, above, or across it decides promotion."
+    },
+    {
+      "id": "cylinder_stage",
+      "label": "Full-strip cylinder stage",
+      "description": "CylinderStage K N: a selected window on the entire square-root strip 1..halfStripBound N carrying a suffix cylinder at cutoff K whose endpoint covers the strip."
+    },
+    {
+      "id": "feedback_row",
+      "label": "Half-divisor feedback row",
+      "description": "A row with N + 1 = 2*(K+1), where the divisor K+1 of the next row first becomes visible and the cutoff must be promoted before advancing."
+    },
+    {
+      "id": "canonical_parent",
+      "label": "Canonical fixed-coefficient parent",
+      "description": "parent c q = (q + c + 1)/2 with parity bit explicitParentBitZ; the inverse of the carry recurrence k -> 2k - c - bit."
+    },
+    {
+      "id": "half_strip_bound",
+      "label": "Square-root strip bound",
+      "description": "halfStripBound n = 2*sqrt(n) + 4, the protected band of terminal carries the construction must cover at every depth."
+    },
+    {
+      "id": "selected_half_interval",
+      "label": "Selected half-interval",
+      "description": "SelectedHalfInterval N L U: the same data as a selected window but indexed by an arbitrary closed carry interval [L,U], possibly empty, used for the shifted upper sheet."
+    },
+    {
+      "id": "two_sheet_split",
+      "label": "Two-sheet split around a hole",
+      "description": "The state after a crossing whose hole stays in the strip: a lower window on 1..hole-1, an upper interval on hole+1..bound, and the exact missing carry."
+    },
+    {
+      "id": "profiled_gap",
+      "label": "Profiled finite gap",
+      "description": "ProfiledGapStage M N: a closed carry gap [gapLo,gapHi] with two live sheets carrying independent literal cutoff prefixes and their own next-row coefficients."
+    },
+    {
+      "id": "binary_adjacency",
+      "label": "Binary adjacency of the two prefixes",
+      "description": "HasAdjacentPrefixes: as fixed-length binary numerals the lower sheet's prefix is exactly the upper sheet's prefix plus one."
+    },
+    {
+      "id": "swallow_cell",
+      "label": "Swallow cell",
+      "description": "The arithmetic region 2*gapLo <= lowerCoeff + 2 and nextBound + upperCoeff <= 2*gapHi in which neither tracked sheet supplies a canonical parent for any carry of the next strip."
+    },
+    {
+      "id": "protected_even_seam",
+      "label": "Protected one-hole seam",
+      "description": "ProtectedEvenSeamRealizedAt N d c: every carry in 3..27 that survives the scalar one-hole seam 2d-c is realized by an admissible word at depth N."
+    },
+    {
+      "id": "terminal_only_witness",
+      "label": "Terminal-only strip witness",
+      "description": "HalfTerminalOnlyStripWitness M: a normalized word whose terminal half-carry lies in the square-root strip, with no all-prefix admissibility demanded; a cofinal supply of these is the consumer interface."
+    },
+    {
+      "id": "mersenne_half_target",
+      "label": "Infinite support with Mersenne series 1/2",
+      "description": "The #257-side target object: an infinite set A of positive integers with sum over a in A of 1/(2^a - 1) equal to 1/2."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "endpoint_indexed_suffix_cylinder_calculus",
+      "canonical_statement": "Definition and basic calculus of the endpoint-indexed suffix cylinder: a selected family of half-words is said to have a suffix cylinder at cutoff M with endpoint E when all its words agree on their first M bits and the binary value of the bits after M, added to the terminal carry index k, is the same number E for every k. The supporting binary calculus is: a suffix numeral of length L is below 2^L; it splits as (head bit)*2^(L-1) plus the shorter numeral; it depends only on membership in the window it reads; and appending one bit doubles it and adds that bit.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "wordSuffixNumeral_split_head",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 45
+        },
+        {
+          "declaration": "supportSuffixNumeral_extendHalfWord",
+          "module": "Erdos249257/SelectedSuffixCylinder.lean",
+          "line": 55
+        }
+      ],
+      "concepts": [
+        "suffix_cylinder",
+        "endpoint_index",
+        "selected_half_window"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "binary suffix-numeral (supportSuffixNumeral) bookkeeping over Boolean half-words",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "suffix_cylinder_endpoint_propagation",
+      "canonical_statement": "Under the canonical explicit successor of a selected window at a row whose coefficient C is common to all carries, the suffix cylinder propagates: the cutoff is unchanged, and the endpoint updates by exactly E' = 2E - C. The same window buffer that makes the successor well formed also proves the new endpoint still covers the whole new carry interval.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.hasSuffixCylinderAt_stepExplicit",
+          "module": "Erdos249257/SelectedSuffixCylinder.lean",
+          "line": 136
+        }
+      ],
+      "concepts": [
+        "suffix_cylinder",
+        "endpoint_index",
+        "canonical_parent",
+        "selected_half_window"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "stepExplicit successor plus the one-bit suffix-numeral doubling law and the parent/bit recurrence q + C + bit = 2*parent C q",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "head_threshold_promotion_criterion",
+      "canonical_statement": "Exact geometric criterion for extending the common prefix by one bit: for a selected family whose suffix cylinder at cutoff K has endpoint E over carries 1..R, the (K+1)-bit is common to all words if and only if the consecutive suffix interval E-R,...,E-1 lies entirely below the head weight 2^(N-(K+1)) or entirely at or above it, i.e. iff E <= 2^(N-(K+1)) or 2^(N-(K+1)) + R <= E. Supporting facts: a false head bit forces the suffix below the head weight and a true head bit forces it at or above; and two adjacent endpoint-indexed words can only flip the head bit from true (smaller index) to false (larger index).",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "commonRestrictionAt_succ_iff_endpoint_avoids_headThreshold",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 29
+        },
+        {
+          "declaration": "commonRestrictionAt_succ_of_headThreshold_add_width_le_endpoint",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 107
+        },
+        {
+          "declaration": "wordSuffixNumeral_lt_headPower_of_false",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 84
+        },
+        {
+          "declaration": "headPower_le_wordSuffixNumeral_of_true",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 92
+        },
+        {
+          "declaration": "adjacent_endpoint_head_orientation",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 101
+        }
+      ],
+      "concepts": [
+        "suffix_cylinder",
+        "head_threshold",
+        "endpoint_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "head-bit split of the suffix numeral against the consecutive endpoint interval",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Both sides of the equivalence are decidable properties of a supplied finite object; neither side is an open problem.",
+      "confidence": "high"
+    },
+    {
+      "id": "one_bit_cutoff_promotion",
+      "canonical_statement": "One-bit promotion with exact endpoint arithmetic. If the endpoint is at least one full window width above the head weight the newly common bit is true, the cylinder promotes to cutoff K+1 and the endpoint drops by exactly the head weight; if the endpoint is at or below the head weight the newly common bit is false and the endpoint is unchanged. Both forms also refine the shared prefix to the literal word extended by that bit, and both persist to the covering condition R <= new endpoint. The same statement is proved for windows indexed by an initial carry segment and for families indexed by a shifted closed interval, and is packaged as the promoteHigh / promoteLow operations on full-strip stages.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "restrictWord_succ_eq_extend_false_of_endpoint_le_headThreshold",
+          "module": "Erdos249257/SuffixCylinderStage51.lean",
+          "line": 40
+        },
+        {
+          "declaration": "promoteSuffixCylinderAt_succ_of_headThreshold_add_width_le_endpoint",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 120
+        },
+        {
+          "declaration": "promoteSuffixCylinderAt_succ_of_endpoint_le_headThreshold",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 163
+        },
+        {
+          "declaration": "restrictWord_succ_eq_extend_true_of_headThreshold_add_width_le_endpoint",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 206
+        },
+        {
+          "declaration": "CylinderStage.promoteHigh",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 888
+        },
+        {
+          "declaration": "selectedHalfWindowPromoteLow",
+          "module": "Erdos249257/SuffixCylinderProfiledPromotion.lean",
+          "line": 50
+        },
+        {
+          "declaration": "selectedHalfIntervalPromoteHigh",
+          "module": "Erdos249257/SuffixCylinderProfiledPromotion.lean",
+          "line": 107
+        },
+        {
+          "declaration": "promoteSuffixCylinderAt_succ_of_commonRestriction",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 231
+        },
+        {
+          "declaration": "CylinderStage.promoteLow",
+          "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+          "line": 158
+        }
+      ],
+      "concepts": [
+        "suffix_cylinder",
+        "head_threshold",
+        "endpoint_index",
+        "cylinder_stage",
+        "selected_half_interval"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "head-threshold criterion followed by the suffix-numeral head split",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "crossing_unit_drop_profile",
+      "canonical_statement": "When the cylinder endpoint genuinely crosses the head weight, the head bit is true exactly on the initial carry segment k <= E - 2^(N-(K+1)) and false above it; consequently at the exact doubled row N + 1 = 2*(K+1) the next-row divisor coefficient has the literal unit-drop profile, equal to c+1 on that initial segment and c above it, for one constant c read off the false child of the shared prefix.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "headBit_true_iff_le_crossingCut",
+          "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+          "line": 28
+        },
+        {
+          "declaration": "supportCoeff_profile_of_crossingSuffixCylinder",
+          "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+          "line": 60
+        }
+      ],
+      "concepts": [
+        "suffix_cylinder",
+        "head_threshold",
+        "feedback_row"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "cylinder head-bit characterisation composed with the half-divisor restriction transfer supportCoeff_eq_of_restriction_at_halfDivisor",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "complementary_prefix_coefficient_agreement",
+      "canonical_statement": "The two complementary one-bit extensions of a common prefix (append true, append false) have the same divisor coefficient at the odd row immediately after their doubled feedback row, because the only divisor at which they differ, K+1, does not divide 2*(K+1)+1. Hence the two literal sheets of a freshly split two-sheet state automatically share one next-row coefficient at that single row.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "supportCoeff_extend_true_eq_false_at_double_add_one",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 226
+        },
+        {
+          "declaration": "InStripTwoSheetStage.hasCommonNextCoeff_at_oddSuccessor",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 293
+        }
+      ],
+      "concepts": [
+        "two_sheet_split",
+        "feedback_row"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "divisor-agreement transfer for supportCoeff, using that K+1 does not divide 2(K+1)+1",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "binary_increment_coefficient_bound",
+      "canonical_statement": "If two binary words of the same length are consecutive as numerals (lower = upper + 1) then, at any inspected row, the lower word's divisor coefficient exceeds the upper word's by at most one; if they are equal as numerals the coefficients are equal. The stage form gives lowerNextCoeff <= upperNextCoeff + 1 for adjacent profiled sheets.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "supportCoeff_eq_and_le_add_one_of_wordNumeral_eq_or_succ",
+          "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+          "line": 112
+        },
+        {
+          "declaration": "ProfiledGapStage.lowerNextCoeff_le_upperNextCoeff_add_one",
+          "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+          "line": 232
+        }
+      ],
+      "concepts": [
+        "binary_adjacency",
+        "profiled_gap"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "induction on word length with the extendHalfWord coefficient indicator identity",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "adjacent_prefix_invariant",
+      "canonical_statement": "Binary adjacency of the two profiled sheet prefixes is an invariant of the whole profiled machinery: it holds for the state produced by the in-strip split (the true and false children of one boundary prefix), it is preserved by the fixed-cutoff profiled successor (which does not touch the prefixes), and it is preserved by cutoff promotion (which appends false to the lower and true to the upper prefix, sending n, n-1 to 2n, 2n-1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "ProfiledGapStage.promoteCutoff_hasAdjacentPrefixes",
+          "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+          "line": 65
+        },
+        {
+          "declaration": "ProfiledGapStage.advanceOfReady_hasAdjacentPrefixes",
+          "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+          "line": 80
+        },
+        {
+          "declaration": "ProfiledGapStage.promoteThenAdvance_hasAdjacentPrefixes",
+          "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+          "line": 110
+        },
+        {
+          "declaration": "profiledGapStageOfTwoSheet_hasAdjacentPrefixes",
+          "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+          "line": 243
+        },
+        {
+          "declaration": "ProfiledGapStage.advanceOfNextCoeffProfile_hasAdjacentPrefixes",
+          "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+          "line": 270
+        }
+      ],
+      "concepts": [
+        "binary_adjacency",
+        "profiled_gap"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "left-shift identities for appending a bit to a whole-word numeral",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "boundary_words_binary_consecutive",
+      "canonical_statement": "For a profiled gap with adjacent prefixes and both sheets nonempty, the top word of the lower sheet and the bottom word of the upper sheet are consecutive full binary words: the lower boundary word is the lower prefix followed by all zeros (its suffix numeral is 0) and the upper boundary word is the upper prefix followed by all ones (its suffix numeral is 2^(N-M) - 1), so the former equals the latter plus one.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "ProfiledGapStage.boundaryWordsAdjacent",
+          "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+          "line": 112
+        }
+      ],
+      "concepts": [
+        "binary_adjacency",
+        "profiled_gap",
+        "suffix_cylinder"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "prefix/suffix split of a whole-word numeral at the retained cutoff, evaluated at the two cylinder endpoints",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "parent_gap_doubling_law",
+      "canonical_statement": "Exact iteration law for the canonical fixed-coefficient parent map. A target carry q has parent h if and only if q equals 2h - C or 2h - C - 1; equivalently q avoids the parent h exactly when it avoids both of those two adjacent children. For a closed forbidden parent block [a,b] the pullback under one row is exactly the closed child block [2a - C - 1, 2b - C], whose untruncated integer width is exactly doubled.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "parent_eq_iff_eq_two_adjacent_children",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 162
+        },
+        {
+          "declaration": "parent_ne_iff_avoids_two_adjacent_children",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 189
+        },
+        {
+          "declaration": "parent_mem_interval_iff_mem_doubled_child_interval",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 212
+        }
+      ],
+      "concepts": [
+        "canonical_parent"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the parity recurrence q + C + bit = 2 * parent C q with bit in {0,1}",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary integer arithmetic of the map k -> 2k - C - bit; no external attribution needed.",
+      "scope_caveat": "All three evidence lemmas are literal iffs (parent C q = h <-> ..., parent C q != h <-> ..., a <= parent C q <= b <-> ...). Both sides of each are decidable statements of Nat/Int arithmetic about the fixed map k -> 2k - C - bit; neither side is an open problem, so this is a closed classification, not a restatement. It is about the canonical fixed-coefficient parent only, not about admissibility of the resulting words.",
+      "confidence": "high"
+    },
+    {
+      "id": "shifted_interval_cylinder_machinery",
+      "canonical_statement": "Selected families indexed by an arbitrary closed carry interval (possibly empty) support the same canonical fixed-coefficient successor as initial-segment windows, provided the coefficient hypothesis is imposed only on the canonical parents actually used. The successor preserves admissibility and the exact terminal-carry identity, preserves any common literal cutoff prefix, and propagates an interval suffix cylinder with the same endpoint law E' = 2E - C. Separately, one arbitrary admissible parent word with known terminal carry and known next coefficient already realizes its two children, so no initial carry segment is needed to advance a shifted sheet.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "halfTerminalReachable_succ_of_admissibleParent",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 325
+        },
+        {
+          "declaration": "selectedHalfIntervalStepExplicit_preserves_literalPrefix",
+          "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+          "line": 141
+        },
+        {
+          "declaration": "selectedHalfIntervalHasSuffixCylinderOnInterval_stepExplicit",
+          "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+          "line": 164
+        }
+      ],
+      "concepts": [
+        "selected_half_interval",
+        "canonical_parent",
+        "suffix_cylinder",
+        "half_strip_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "extendHalfWord successor with the integerHalfCarry recurrence and the insert-coefficient identity",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "cylinder_stage_advance_within_cutoff",
+      "canonical_statement": "A full-strip cylinder stage at cutoff K and depth N advances one row unconditionally whenever the fixed cutoff already sees every proper divisor of the next row, that is whenever (N+1)/2 <= K: the shared prefix forces a common next-row coefficient C, the square-root coefficient envelope supplies the successor buffer, and the new stage has endpoint 2E - C on the full strip at depth N+1. Iterating gives a stage at every depth N + d with N + d <= 2K + 1, i.e. through the entire band before the next feedback row; and one feedback macrostep combines a high-side cutoff promotion with an ordinary advance.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "CylinderStage.advance",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 835
+        },
+        {
+          "declaration": "CylinderStage.advanceWithinCutoff",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 874
+        },
+        {
+          "declaration": "CylinderStage.feedbackAdvanceHigh",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 904
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "feedback_row",
+        "half_strip_bound",
+        "suffix_cylinder"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "CylinderStage.advance (common restriction -> next-row divisor agreement -> stepExplicit) iterated by advanceWithinCutoff",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "literal_prefix_endpoint_run_law",
+      "canonical_statement": "Before a row is reached by feedback, a word's next divisor coefficient is already determined by its literal cutoff restriction; the canonical successor preserves any common literal prefix; and therefore the endpoint of a stage carrying a fixed literal cutoff word, advanced d rows inside its cutoff horizon, is computed exactly by the scalar recurrence E_{d+1} = 2 E_d - (coefficient of the literal cutoff word at row N+d+1). This turns a whole band of stage advances into a finite scalar evaluation.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "FullCylinderStageHasLiteralPrefix_advance",
+          "module": "Erdos249257/SuffixCylinderStage51.lean",
+          "line": 437
+        },
+        {
+          "declaration": "FullCylinderStageHasLiteralPrefix_advanceWithinCutoff",
+          "module": "Erdos249257/SuffixCylinderStage51.lean",
+          "line": 449
+        },
+        {
+          "declaration": "fullCylinderStage_nextCoeff_eq_literalPrefix",
+          "module": "Erdos249257/SuffixCylinderStage51.lean",
+          "line": 475
+        },
+        {
+          "declaration": "fullCylinderStage_endpoint_advanceWithinCutoff_eq_literalPrefixEndpointRun",
+          "module": "Erdos249257/SuffixCylinderStage51.lean",
+          "line": 495
+        },
+        {
+          "declaration": "SelectedHalfWindow.stepExplicit_preserves_literalPrefix",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 258
+        },
+        {
+          "declaration": "supportCoeff_word_eq_of_restrict_before_feedback",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 343
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "endpoint_index",
+        "selected_half_window"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "supportCoeff_word_eq_of_restrict_before_feedback plus stepExplicit prefix preservation, packaged as literalPrefixEndpointRun",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "pre_feedback_run_to_depth_27",
+      "canonical_statement": "Starting from the certified depth-18 executable base, whose twelve words share a depth-13 prefix and have common endpoint 17, the canonical selected successor runs unbroken through depth 27 while preserving the depth-13 suffix cylinder, because every proper divisor read before row 28 lies at or below that prefix. The endpoints are exactly 17, 34, 67, 132, 263, 526, 1049, 2098, 4195, 8389 at depths 18 through 27, computed from the base prefix coefficients 0,1,2,1,0,3,0,1,1. The output is a full protected selected window at depth 27 on the whole strip, with an admissible word for every terminal carry.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "nonempty_stage_of_eighteen_le_of_le_twentySeven",
+          "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+          "line": 118
+        },
+        {
+          "declaration": "depth27SelectedHalfWindow_hasSuffixCylinderAt_thirteen",
+          "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+          "line": 141
+        },
+        {
+          "declaration": "depth27SelectedHalfWindow_endpoint_covers_strip",
+          "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+          "line": 147
+        },
+        {
+          "declaration": "depth27SelectedHalfWindow_admissible",
+          "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+          "line": 153
+        }
+      ],
+      "concepts": [
+        "selected_half_window",
+        "suffix_cylinder",
+        "endpoint_index",
+        "half_strip_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Stage.step iterated ten times with kernel-decided prefix coefficients",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "first_feedback_promotion_depth_27_to_29",
+      "canonical_statement": "At the first genuine half-divisor feedback row the depth-27 endpoint 8389 exceeds the head weight 2^13 = 8192 by more than the strip width 14, so the depth-14 bit is common and true: the cylinder promotes to cutoff 14 with endpoint 8389 - 8192 = 197, the shared prefix becomes the depth-13 base prefix extended by true, the depth-28 row has common coefficient 3 giving endpoint 2*197 - 3 = 391, and the depth-29 row has common coefficient 0 giving endpoint 782. Full protected selected windows and admissible words exist at depths 28 and 29.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "depth27SelectedHalfWindow_commonRestrictionAt_fourteen",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 508
+        },
+        {
+          "declaration": "depth27SelectedHalfWindow_hasSuffixCylinderAt_fourteen",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 521
+        },
+        {
+          "declaration": "depth27SelectedHalfWindow_restrict_fourteen",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 542
+        },
+        {
+          "declaration": "depth28SelectedHalfWindow_hasSuffixCylinderAt_fourteen",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 602
+        },
+        {
+          "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_fourteen",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 686
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "feedback_row",
+        "head_threshold",
+        "endpoint_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "high-side promotion at the exact endpoint margin, then two stepExplicit rows with kernel-decided coefficients",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "depth29_cutoff25_normalisation",
+      "canonical_statement": "The depth-29 cylinder is normalised as far as its endpoint permits: repeated low-side promotions carry the cutoff from 14 through 19 with endpoint 782 unchanged, a high-side promotion at cutoff 20 drops it to 270, a further high-side promotion at cutoff 21 drops it to 14, and low-side promotions carry the cutoff to 25 with endpoint 14. The literal cutoff-25 word is exhibited bit by bit as the depth-13 base prefix followed by true, false, false, false, false, false, true, true, false, false, false, false.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_twentyFive",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 796
+        }
+      ],
+      "concepts": [
+        "suffix_cylinder",
+        "head_threshold",
+        "endpoint_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "alternating low-side and high-side one-bit promotions driven by the endpoint value",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "depth29_cutoff26_promotion_impossible",
+      "canonical_statement": "The cutoff 25 is maximal for the depth-29 window: its depth-26 restriction is not common, because the promotion criterion fails on both sides for endpoint 14 and strip width 14 against head weight 2^3 = 8, the consecutive suffix interval straddling that weight exactly.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "depth29SelectedHalfWindow_not_commonRestrictionAt_twentySix",
+          "module": "Erdos249257/SuffixCylinderThreshold.lean",
+          "line": 806
+        }
+      ],
+      "concepts": [
+        "head_threshold",
+        "suffix_cylinder"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "contrapositive of the head-threshold promotion criterion at K = 25, E = 14",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Rules out only the promotion of this one depth-29 window past cutoff 25; it says nothing about progress, since the run continues at cutoff 25 unchanged to depth 51. It rules out no other window, no other depth, no other promotion strategy, and does not bear on whether cylinder stages exist beyond depth 52.",
+      "confidence": "high"
+    },
+    {
+      "id": "certified_cylinder_run_to_depth_52",
+      "canonical_statement": "The normalised depth-29 stage at cutoff 25 with endpoint 14 advances unconditionally through the entire band to depth 51, with no feedback decision required, because its cutoff already sees every divisor of every row up to 51. Evaluating the literal cutoff-25 word's coefficients at rows 30..51 (the table 3,0,1,1,1,1,3,0,1,1,2,0,6,0,1,1,1,0,3,1,1,1) gives the exact depth-51 endpoint 51327745, which exceeds 2^25 + halfStripBound 51 = 33554432 + 18, so the second feedback row promotes to cutoff 26 and advances to a full cylinder stage at depth 52.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "fullCylinderStage51_endpoint",
+          "module": "Erdos249257/SuffixCylinderStage51.lean",
+          "line": 520
+        },
+        {
+          "declaration": "fullCylinderStage52",
+          "module": "Erdos249257/SuffixCylinderStage51.lean",
+          "line": 547
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "endpoint_index",
+        "feedback_row",
+        "half_strip_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "advanceWithinCutoff over 22 rows evaluated through literalPrefixEndpointRun, then feedbackAdvanceHigh",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "feedback_trichotomy_advance_or_seam",
+      "canonical_statement": "Total one-row feedback step. Given a full-strip cylinder stage at an exact half-divisor horizon (N + 1 = 2*(K+1)) with a strip wide enough for the protected consumer, exactly three cases can occur for the endpoint relative to the head weight - below, above, or crossing - and in the first two the stage promotes and advances to a full stage at (K+1, N+1), while in the crossing case the unit-drop coefficient profile realizes a localized one-hole protected even seam at the produced row. There is no fourth object-level case.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "protectedEvenSeamRealizedAt_succ_of_crossingSuffixCylinder",
+          "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+          "line": 117
+        },
+        {
+          "declaration": "CylinderStage.feedbackStep_or_protectedSeam",
+          "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+          "line": 174
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "feedback_row",
+        "head_threshold",
+        "protected_even_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "case split on endpoint versus head weight; crossing branch routed through the unit-drop profile into protectedEvenSeamRealizedAt_succ_of_profile",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "feedback_fan_in_hole_in_strip",
+      "canonical_statement": "Sharpened feedback fan-in. The crossing branch is split further by the exact integer hole 2*delta - c: if the hole falls below carry one or above the next strip bound, the crossing is recylindrified and the stage still advances to a full cylinder at (K+1, N+1). Therefore the only non-advancing outcome is a realized protected even seam whose exact integer hole lies inside the next full strip, that is 1 <= 2*delta - c <= halfStripBound (N+1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "CylinderStage.feedbackAdvance_or_protectedSeam_inStrip",
+          "module": "Erdos249257/SuffixCylinderFeedbackFanIn.lean",
+          "line": 62
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "feedback_row",
+        "protected_even_seam",
+        "two_sheet_split"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "coefficient-retaining crossing profile (protectedEvenSeamRealizedAt_succ_of_crossingProfile) plus the two escaping-hole sheet constructors",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "escaping_hole_recylindrification",
+      "canonical_statement": "When a crossing hole escapes the next strip, a full endpoint cylinder is recovered rather than lost. If the hole lies above the strip, restricting the parent window to its true-bit initial segment, promoting that segment's common bit and taking the ordinary explicit step gives a full stage at (K+1, N+1). If the hole lies below carry one, every target of the next strip has its canonical fixed-c parent in the false-bit tail; reindexing that tail by the canonical parent gives a full stage at (K+1, N+1) with endpoint 2E - c.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "CylinderStage.feedbackAdvanceCrossingAbove",
+          "module": "Erdos249257/SuffixCylinderTwoSheet.lean",
+          "line": 43
+        },
+        {
+          "declaration": "CylinderStage.feedbackAdvanceCrossingBelow",
+          "module": "Erdos249257/SuffixCylinderBelow.lean",
+          "line": 136
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "two_sheet_split",
+        "canonical_parent",
+        "head_threshold"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "SelectedHalfWindow.take on the lower sheet; SelectedHalfWindow.stepTailExplicit (tail-only coefficient hypothesis) on the upper sheet",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "in_strip_two_sheet_split",
+      "canonical_statement": "When the crossing hole stays inside the next strip the live words split into two exact endpoint cylinders rather than disappearing: a lower selected window on carries 1..hole-1 with endpoint hole-1 and literal prefix (boundary prefix extended by true), an upper selected interval on carries hole+1..stripBound with endpoint 2E-c and literal prefix (boundary prefix extended by false), the two endpoints separated by exactly one head weight, together with the scalar seam coordinates whose one-hole predicate is exactly the complement of the hole. Consequently every full cylinder stage at a feedback row either advances as a full cylinder or produces this exact two-sheet state.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "CylinderStage.feedbackAdvance_or_inStripTwoSheet",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 665
+        }
+      ],
+      "concepts": [
+        "two_sheet_split",
+        "cylinder_stage",
+        "feedback_row",
+        "selected_half_interval",
+        "protected_even_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "feedbackSplitCrossingInStrip: take/stepExplicit on the true segment plus stepTailExplicit on the false tail",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "By the module's own statement this is a one-depth split, not an iteration closure: continuing past the produced row still needs next-row coefficient receipts, which are supplied only by the separately conditional gap advances.",
+      "confidence": "high"
+    },
+    {
+      "id": "two_sheet_hole_only_reachability",
+      "canonical_statement": "A two-sheet state realizes every terminal carry of the full square-root strip except its single hole, which is strictly stronger than the protected 3..27 realization interface; projecting it therefore reproduces the localized one-hole protected even seam consumer whenever the strip is at least 27 wide.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "InStripTwoSheetStage.halfTerminalReachable_of_ne_hole",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 409
+        },
+        {
+          "declaration": "InStripTwoSheetStage.protectedEvenSeamRealizedAt",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 422
+        }
+      ],
+      "concepts": [
+        "two_sheet_split",
+        "protected_even_seam",
+        "half_strip_bound",
+        "terminal_only_witness"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "direct reading of the two sheets, with the scalar seam equivalence carried in the structure",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "two_sheet_next_row_off_child_gap",
+      "canonical_statement": "If the two sheets of a two-sheet state genuinely share one next-row coefficient C, then every target carry of the next row whose canonical fixed-C parent is not the old hole is realized one row later; by the parent doubling law the sole parent hole becomes exactly the adjacent child pair {2*hole - C - 1, 2*hole - C} intersected with the target strip.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "InStripTwoSheetStage.halfTerminalReachable_succ_off_childGap",
+          "module": "Erdos249257/SuffixCylinderInStrip.lean",
+          "line": 377
+        }
+      ],
+      "concepts": [
+        "two_sheet_split",
+        "canonical_parent",
+        "half_strip_bound"
+      ],
+      "open_antecedents": [
+        "hcommon : T.HasCommonNextCoeff C, i.e. (forall q, 1 <= q -> q <= T.hole - 1 -> supportCoeff (wordSupport (T.lower.word q ..)) (N+1) = C) and (forall q, T.hole + 1 <= q -> q <= halfStripBound N -> supportCoeff (wordSupport (T.upper.word q ..)) (N+1) = C). Cross-sheet coefficient equality is proved in this corpus only at the single odd row immediately after the split (InStripTwoSheetStage.hasCommonNextCoeff_at_oddSuccessor); it is not proved at any later row, and after a cutoff promotion the two sheets provably acquire different prefixes."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "halfTerminalReachable_succ_of_admissibleParent applied sheetwise",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "The Lean conclusion covers only carries q <= B for a supplied bound B satisfying B <= halfStripBound (N+1) and the divisor buffer B + C <= 2*halfStripBound N; it is not stated for the full next strip outright, although the sqrt coefficient envelope discharges the buffer at B = halfStripBound (N+1). This is a one-row statement: it produces HalfTerminalReachable at N+1, not another two-sheet stage.",
+      "confidence": "high"
+    },
+    {
+      "id": "common_next_coeff_gap_advance",
+      "canonical_statement": "Structure-preserving successor for a closed carry gap under a genuinely common next-row coefficient: the parent gap [a,b] becomes the child gap [2a - C - 1, 2b - C], and both selected families, both suffix-cylinder endpoints and the two complementary literal prefixes survive the step. The one-hole feedback state is the singleton-gap instance of this package.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "InStripGapStage.advanceOfCommonNextCoeff",
+          "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+          "line": 256
+        }
+      ],
+      "concepts": [
+        "two_sheet_split",
+        "canonical_parent",
+        "selected_half_interval",
+        "profiled_gap"
+      ],
+      "open_antecedents": [
+        "hcommon : T.HasCommonNextCoeff C - one coefficient shared by both sheets at row N+1, unproved beyond the immediate odd successor row",
+        "hchildLoPos : 1 <= 2 * T.gapLo - C - 1 - the child gap must not fall below carry one",
+        "hchildHiStrip : 2 * T.gapHi - C <= halfStripBound (N + 1) - the child gap must not exceed the next strip"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "stepExplicit on the lower window and selectedHalfIntervalStepExplicit on the upper interval",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "ready_cutoff_determines_per_sheet_coefficients",
+      "canonical_statement": "If the retained cutoff M of a profiled gap still covers the next row (N <= 2M), then each sheet's next-row divisor coefficient is exactly the coefficient of its own retained literal prefix. This produces the per-sheet coefficient profile automatically and, unlike the cross-sheet common-coefficient requirement it replaces, it survives cutoff promotion, since the two prefixes are allowed to differ.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "ProfiledGapStage.hasNextCoeffProfile_of_ready",
+          "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+          "line": 100
+        }
+      ],
+      "concepts": [
+        "profiled_gap",
+        "feedback_row"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "supportCoeff_word_eq_of_restrict_before_feedback applied to each sheet's literal prefix",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "profiled_gap_advance",
+      "canonical_statement": "Profiled successor for a finite carry gap with two independent sheet prefixes and two independent coefficients: the child gap is [2*gapLo - lowerCoeff - 1, 2*gapHi - upperCoeff], and both cylinders, both literal prefixes, the endpoint-separation invariant and the strip cover are propagated. At a ready cutoff the coefficient profile and the divisor buffer are synthesized internally, so the step consumes only a four-inequality arithmetic cell; promote-then-advance packages a feedback-boundary promotion followed by such a step.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "ProfiledGapStage.advanceOfNextCoeffProfile",
+          "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+          "line": 124
+        },
+        {
+          "declaration": "ProfiledGapStage.advanceOfReady",
+          "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+          "line": 70
+        },
+        {
+          "declaration": "ProfiledGapStage.promoteThenAdvance",
+          "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+          "line": 101
+        }
+      ],
+      "concepts": [
+        "profiled_gap",
+        "canonical_parent",
+        "selected_half_interval",
+        "endpoint_index"
+      ],
+      "open_antecedents": [
+        "hnext : T.NextArithmetic, i.e. the four inequalities childLoPos : 1 <= 2 * T.gapLo - T.lowerNextCoeff - 1; upperCoeffFits : T.upperNextCoeff <= 2 * T.gapHi; childOrder : 2 * T.gapLo - T.lowerNextCoeff - 1 <= 2 * T.gapHi - T.upperNextCoeff; childHiStrip : 2 * T.gapHi - T.upperNextCoeff <= halfStripBound (N + 1). Nothing in this zone proves that a canonical profiled gap satisfies these along any infinite run; the gap-width recurrence in fact shows the child gap width doubles each row while the strip bound grows like 2*sqrt(N), so childHiStrip is exactly the unproved control.",
+        "hready : T.Ready, i.e. N <= 2 * M - required for the coefficient profile, restored at a feedback boundary only by promoteCutoff and otherwise assumed"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "advanceOfNextCoeffProfile: stepExplicit on the lower window and selectedHalfIntervalStepExplicit on the upper interval, with per-sheet coefficients",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "profiled_cutoff_promotion",
+      "canonical_statement": "At an odd feedback boundary N = 2M + 1 with M >= 4, the square-root strip lies below the new binary head weight 2^M, so the lower sheet promotes through a false head bit with its endpoint unchanged, while the endpoint-separation invariant puts the entire upper interval a full head weight beyond that boundary and forces a true head bit, dropping its endpoint by exactly 2^M. The carry gap and both selected families are unchanged; only the extracted prefixes and the upper endpoint are renormalised, and the promoted cutoff is again ready for the next coefficient row.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "ProfiledGapStage.promoteCutoff",
+          "module": "Erdos249257/SuffixCylinderProfiledPromotion.lean",
+          "line": 168
+        }
+      ],
+      "concepts": [
+        "profiled_gap",
+        "head_threshold",
+        "feedback_row",
+        "half_strip_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "halfStripBound (2M+1) <= 2^M together with the low-window / high-interval promotion lemmas",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "tracked_parent_survival_normal_form",
+      "canonical_statement": "Exact normal form for whether the two tracked sheets of a profiled gap still supply a canonical parent for the next strip. With gap [a,b] inside carries 1..R and sheet coefficients cL, cU, some target in 1..B has its canonical cL-parent below a exactly when cL + 3 <= 2a, and some target has its canonical cU-parent in b+1..R exactly when 2b + 1 <= B + cU. Hence at least one tracked sheet survives iff cL + 3 <= 2a or 2b + 1 <= B + cU, and the sharp swallow cell is the negation: 2a <= cL + 2 and B + cU <= 2b.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "lowerParentSurvives_iff",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 60
+        },
+        {
+          "declaration": "upperParentSurvives_iff",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 75
+        },
+        {
+          "declaration": "trackedParentSurvives_iff",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 96
+        },
+        {
+          "declaration": "not_trackedParentSurvives_iff",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 109
+        }
+      ],
+      "concepts": [
+        "swallow_cell",
+        "profiled_gap",
+        "canonical_parent"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "monotonicity of parent c q in q via the parity recurrence, evaluated at the endpoints q = 1 and q = B",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "The equivalence concerns only the two sheets the stage happens to track; a swallow of the tracked sheets is not by itself a statement about all admissible words, since a ProfiledGapStage is a selected witness subtree rather than an exhaustivity certificate. Both sides are decidable arithmetic; neither is open. The two directions are not hypothesis-free: lowerParentSurvives_iff assumes 1 <= B, and upperParentSurvives_iff (hence trackedParentSurvives_iff and its negation) additionally assumes the divisor buffer B + cU <= 2*R, so the stated normal form is an equivalence only inside that arithmetic cell.",
+      "confidence": "high"
+    },
+    {
+      "id": "singleton_gap_no_swallow",
+      "canonical_statement": "A one-point tracked gap with binary-adjacent sheet prefixes can never swallow the next strip: swallowing would force the next strip bound to be at most three, while every square-root strip has width at least four. In particular the initial one-hole profiled state, and any later profiled state whose gap has returned to a single point, always has a canonical parent in one of its two tracked sheets at the next row.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "trackedParentSurvives_of_singletonGap",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 153
+        },
+        {
+          "declaration": "ProfiledGapStage.trackedNextParentSurvives_of_singletonGap",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 168
+        }
+      ],
+      "concepts": [
+        "swallow_cell",
+        "profiled_gap",
+        "binary_adjacency",
+        "half_strip_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "swallow normal form combined with lowerCoeff <= upperCoeff + 1 from binary adjacency and halfStripBound >= 4",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Scoped to the two sheets the stage tracks. trackedParentSurvives_of_singletonGap is about the TrackedParentSurvives predicate only, and its stage form additionally consumes the adjacency invariant (HasAdjacentPrefixes) plus the built-in strip buffer; by the module's own header a ProfiledGapStage is a selected witness subtree, not an exhaustivity certificate, so 'never swallows' means the tracked pair still supplies a canonical parent, NOT that the construction survives. It also says nothing about gaps of width two or more, where the swallow cell is not excluded (see macro_swallow_quarter_band_bound), and nothing about whether a canonical profiled gap ever returns to a single point.",
+      "confidence": "high"
+    },
+    {
+      "id": "gap_width_recurrence",
+      "canonical_statement": "Exact width arithmetic for a profiled gap in signed coordinates. One row sends the closed gap [a,b] to [2a - cL - 1, 2b - cU], so the inclusive width doubles and picks up the signed coefficient difference cL - cU. Two consecutive rows send the endpoints to the base-four affine coordinates 4a - 2*cLodd - cLeven - 3 and 4b - 2*cUodd - cUeven, so the width quadruples and picks up the difference of the two combined row pulses 2*oddCoeff + evenCoeff.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "signedGapWidth_next",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 216
+        },
+        {
+          "declaration": "signedGapWidth_macro",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 239
+        }
+      ],
+      "concepts": [
+        "profiled_gap",
+        "swallow_cell"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "direct integer algebra on the child-gap endpoints",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Pure integer algebra of the doubling map; nothing external is being reproduced.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "macro_swallow_quarter_band_bound",
+      "canonical_statement": "If a two-row macro step swallows the next strip and the two sheets' combined coefficient pulses differ by at most two, then the old gap already occupied at least a quarter of the next strip bound, up to the sharp additive two: nextBound <= 4*(b - a + 1) + 2. This is a necessary condition on the swallow branch, not an exclusion of it.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "nextBound_le_four_gapWidth_add_two_of_macro_swallow",
+          "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+          "line": 254
+        }
+      ],
+      "concepts": [
+        "swallow_cell",
+        "profiled_gap"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two-row width recurrence combined with the swallow inequalities",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "This is deliberately not a barrier: the module states that it does not assert the quarter-band branch is impossible, and nothing in this zone excludes it.",
+      "confidence": "high"
+    },
+    {
+      "id": "rewind_history_promotion_dichotomy",
+      "canonical_statement": "For a window carrying a width-valid exact rewind history back to a base window with a suffix cylinder, either the cylinder promotes through the next prefix bit (with the endpoint covering the carry window), or the two adjacent base ancestors are literally the marked true/false boundary pair; at a full-strip feedback row this yields either a promoted cylinder or a realized localized one-hole protected even seam.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "commonRestrictionAt_succ_or_rewindBaseHalfDivisorBoundaryPairAt",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 128
+        },
+        {
+          "declaration": "promoteSuffixCylinderAt_succ_or_boundaryPair_of_rewindHistory",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 281
+        },
+        {
+          "declaration": "promotedSuffixCylinder_or_protectedEvenSeamRealizedAt",
+          "module": "Erdos249257/SuffixCylinderPromotion.lean",
+          "line": 322
+        }
+      ],
+      "concepts": [
+        "suffix_cylinder",
+        "protected_even_seam",
+        "feedback_row"
+      ],
+      "open_antecedents": [
+        "hprov : W.HasRewindRestrictionAt W0 hMN cs - an exact rewind history of the current window back to a base window",
+        "hwidth : halfStripBound N <= denom cs - width validity of that history. Nothing inside this zone produces such a history at an arbitrary feedback row; the later GlobalProducer route was written precisely to obtain the same dichotomy from the cylinder itself without a retained history."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "seam-pair analysis of the rewind index map combined with the adjacent head-bit orientation lemma",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "medium"
+    },
+    {
+      "id": "terminal_only_projection",
+      "canonical_statement": "Lossy projection to the compactness-free consumer: any all-prefix reachable terminal state, hence any nonempty selected window and hence any full cylinder stage, forgets its history into a terminal-only square-root-strip witness at the same depth; and a realized localized one-hole seam also gives such a witness, because a one-hole seam cannot delete both carries 3 and 4. Consequently at an exact half-divisor horizon a terminal-only witness exists at the next row in both branches of the total feedback theorem.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "CylinderStage.halfTerminalOnlyStripWitness",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 58
+        },
+        {
+          "declaration": "halfTerminalOnlyStripWitness_of_protectedEvenSeamRealizedAt",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 69
+        },
+        {
+          "declaration": "CylinderStage.halfTerminalOnlyStripWitness_after_feedback",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 92
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "terminal_only_witness",
+        "protected_even_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "forgetting map into HalfTerminalOnlyStripWitness, with the pigeonhole choice between carries 3 and 4 on the seam branch",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "certified_terminal_witnesses_51_52",
+      "canonical_statement": "The certified depth-51 and depth-52 cylinder stages give concrete normalized terminal strip witnesses at depths 51 and 52.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "fullCylinderStage51_halfTerminalOnlyStripWitness",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 111
+        },
+        {
+          "declaration": "fullCylinderStage52_halfTerminalOnlyStripWitness",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 118
+        }
+      ],
+      "concepts": [
+        "terminal_only_witness",
+        "cylinder_stage"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "projection of fullCylinderStage51 and fullCylinderStage52",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate specialisation of terminal_only_projection (CylinderStage.halfTerminalOnlyStripWitness) to the two certified stages of certified_cylinder_run_to_depth_52; no content beyond applying the projection to an already constructed object.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "cofinal_stages_conditional_export",
+      "canonical_statement": "Conditional export to the #257-side target. If full cylinder stages exist at cofinally many depths, then terminal-only square-root-strip witnesses exist at cofinally many depths, and hence there is an infinite set A of exponents, with 0 excluded, whose Mersenne support series sums exactly to 1/2. The construction supplies such stages only at the finitely many depths reached so far (through 52); the cofinality hypothesis is exactly the open crux of the whole programme and is proved nowhere in the corpus.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "cofinalTerminalOnlyStrip_of_cofinalCylinderStages",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 125
+        },
+        {
+          "declaration": "exists_infinite_support_half_of_cofinalCylinderStages",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 138
+        },
+        {
+          "declaration": "exists_infinite_positive_support_half_of_cofinalCylinderStages",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 148
+        }
+      ],
+      "concepts": [
+        "cylinder_stage",
+        "terminal_only_witness",
+        "mersenne_half_target"
+      ],
+      "open_antecedents": [
+        "hstages : forall N : Nat, exists M K : Nat, max N 1 <= M and Nonempty (CylinderStage K M) - cofinal existence of full-strip suffix-cylinder stages. No theorem in this zone or elsewhere in the corpus produces stages at unboundedly many depths; the zone's own feedback theorems are one-row step laws that consume a stage and may return a two-sheet state or a seam instead of a stage, and the profiled continuation of the two-sheet branch is itself gated on the unproved NextArithmetic cell."
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "composition with exists_infinite_support_half_of_cofinalTerminalOnlyStrip through the terminal-only projection",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "carryOneCoeff_eq_depth13Prefix",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 13,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_nineteen",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 25,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twenty",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 30,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twentyOne",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 35,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twentyTwo",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 40,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twentyThree",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 45,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twentyFour",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 50,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twentyFive",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 55,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twentySix",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 60,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth13Prefix_coeff_twentySeven",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 65,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage18_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 70,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage19_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 72,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage20_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 81,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage21_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 90,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage22_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 99,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage23_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 108,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage24_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 117,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage25_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 126,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage26_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 135,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage27_endpoint_eq",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 144,
+      "role": "representation",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth27_commonRestrictionAt_fourteen",
+      "module": "Erdos249257/SuffixCylinderFirstFeedback.lean",
+      "line": 153,
+      "role": "representation",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth29Prefix14",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 23,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix15",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 26,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix16",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 27,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix17",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 28,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix18",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 29,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix19",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 30,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix20",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 31,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix21",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 32,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix22",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 33,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix23",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 34,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix24",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 35,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 36,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "restrictWord_succ_eq_extend_false_of_endpoint_le_headThreshold",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 40,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_fourteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 67,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_fifteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 80,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_sixteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 90,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_seventeen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 100,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_eighteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 110,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_nineteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 120,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_twenty",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 130,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_twentyOne",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 141,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_twentyTwo",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 152,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_twentyThree",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 162,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_twentyFour",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 172,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_restrict_twentyFive",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 182,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "cutoff25CoeffTable",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 194,
+      "role": "representation",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirty",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 201,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtyOne",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 204,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtyTwo",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 207,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtyThree",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 210,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtyFour",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 213,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtyFive",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 216,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtySix",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 219,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtySeven",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 222,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtyEight",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 225,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirtyNine",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 228,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_forty",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 231,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortyOne",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 234,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortyTwo",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 237,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortyThree",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 240,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortyFour",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 243,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortyFive",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 246,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortySix",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 249,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortySeven",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 252,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortyEight",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 255,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fortyNine",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 258,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fifty",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 261,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_fiftyOne",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 264,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_wordCoeff_thirty_add",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 268,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "literalPrefixEndpointRun",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 297,
+      "role": "concept",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "literalPrefixEndpointRun_succ",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 303,
+      "role": "substrate",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_zero",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 310,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_one",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 314,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_two",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 319,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_three",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 324,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_four",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 329,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_five",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 334,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_six",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 339,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_seven",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 344,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_eight",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 349,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_nine",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 354,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_ten",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 359,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_eleven",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 364,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_twelve",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 369,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_thirteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 374,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_fourteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 379,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_fifteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 384,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_sixteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 389,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_seventeen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 394,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_eighteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 399,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_nineteen",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 404,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_twenty",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 409,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_twentyOne",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 414,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "depth29Prefix25_endpointRun_twentyTwo",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 419,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "FullCylinderStageHasLiteralPrefix",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 425,
+      "role": "concept",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "fullCylinderStage29_hasLiteralPrefix",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 430,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "FullCylinderStageHasLiteralPrefix_advance",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 437,
+      "role": "statement",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "FullCylinderStageHasLiteralPrefix_advanceWithinCutoff",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 449,
+      "role": "statement",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "CylinderStage.endpoint_advance",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 466,
+      "role": "substrate",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "fullCylinderStage_nextCoeff_eq_literalPrefix",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 475,
+      "role": "statement",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "fullCylinderStage_endpoint_advanceWithinCutoff_eq_literalPrefixEndpointRun",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 495,
+      "role": "statement",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "fullCylinderStage51_endpoint",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 520,
+      "role": "statement",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "halfStripBound_fiftyOne",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 530,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "fullCylinderStage51_feedback_headThreshold_margin",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 536,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "fullCylinderStage51Promoted",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 542,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "fullCylinderStage52",
+      "module": "Erdos249257/SuffixCylinderStage51.lean",
+      "line": 547,
+      "role": "statement",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "LowerParentSurvives",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 45,
+      "role": "concept",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "UpperParentSurvives",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 50,
+      "role": "concept",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "TrackedParentSurvives",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 55,
+      "role": "concept",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "lowerParentSurvives_iff",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 60,
+      "role": "statement",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "upperParentSurvives_iff",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 75,
+      "role": "statement",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "trackedParentSurvives_iff",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 96,
+      "role": "statement",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "not_trackedParentSurvives_iff",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 109,
+      "role": "statement",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "profiledGapStageTrackedNextParentSurvives",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 122,
+      "role": "concept",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "profiledGapStageTrackedNextParentSurvives_iff",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 128,
+      "role": "representation",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "not_profiledGapStageTrackedNextParentSurvives_iff",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 139,
+      "role": "representation",
+      "statement_node": "tracked_parent_survival_normal_form"
+    },
+    {
+      "declaration": "trackedParentSurvives_of_singletonGap",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 153,
+      "role": "statement",
+      "statement_node": "singleton_gap_no_swallow"
+    },
+    {
+      "declaration": "ProfiledGapStage.trackedNextParentSurvives_of_singletonGap",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 168,
+      "role": "statement",
+      "statement_node": "singleton_gap_no_swallow"
+    },
+    {
+      "declaration": "nextGapLoZ",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 204,
+      "role": "concept",
+      "statement_node": "gap_width_recurrence"
+    },
+    {
+      "declaration": "nextGapHiZ",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 208,
+      "role": "concept",
+      "statement_node": "gap_width_recurrence"
+    },
+    {
+      "declaration": "signedGapWidth",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 212,
+      "role": "concept",
+      "statement_node": "gap_width_recurrence"
+    },
+    {
+      "declaration": "signedGapWidth_next",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 216,
+      "role": "statement",
+      "statement_node": "gap_width_recurrence"
+    },
+    {
+      "declaration": "macroGapLoZ",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 227,
+      "role": "concept",
+      "statement_node": "gap_width_recurrence"
+    },
+    {
+      "declaration": "macroGapHiZ",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 233,
+      "role": "concept",
+      "statement_node": "gap_width_recurrence"
+    },
+    {
+      "declaration": "signedGapWidth_macro",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 239,
+      "role": "statement",
+      "statement_node": "gap_width_recurrence"
+    },
+    {
+      "declaration": "nextBound_le_four_gapWidth_add_two_of_macro_swallow",
+      "module": "Erdos249257/SuffixCylinderProfiledSwallow.lean",
+      "line": 254,
+      "role": "statement",
+      "statement_node": "macro_swallow_quarter_band_bound"
+    },
+    {
+      "declaration": "SelectedHalfInterval",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 29,
+      "role": "concept",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "HasSuffixCylinderOnInterval",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 37,
+      "role": "concept",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "SelectedHalfInterval.stepTailExplicit",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 47,
+      "role": "engine",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "SelectedHalfInterval.word_stepTailExplicit",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 143,
+      "role": "substrate",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "parent_eq_iff_eq_two_adjacent_children",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 162,
+      "role": "statement",
+      "statement_node": "parent_gap_doubling_law"
+    },
+    {
+      "declaration": "parent_ne_iff_avoids_two_adjacent_children",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 189,
+      "role": "statement",
+      "statement_node": "parent_gap_doubling_law"
+    },
+    {
+      "declaration": "parent_mem_interval_iff_mem_doubled_child_interval",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 212,
+      "role": "statement",
+      "statement_node": "parent_gap_doubling_law"
+    },
+    {
+      "declaration": "supportCoeff_extend_true_eq_false_at_double_add_one",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 226,
+      "role": "statement",
+      "statement_node": "complementary_prefix_coefficient_agreement"
+    },
+    {
+      "declaration": "InStripTwoSheetStage",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 253,
+      "role": "concept",
+      "statement_node": "in_strip_two_sheet_split"
+    },
+    {
+      "declaration": "InStripTwoSheetStage.HasCommonNextCoeff",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 284,
+      "role": "concept",
+      "statement_node": "common_next_coeff_gap_advance"
+    },
+    {
+      "declaration": "InStripTwoSheetStage.hasCommonNextCoeff_at_oddSuccessor",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 293,
+      "role": "statement",
+      "statement_node": "complementary_prefix_coefficient_agreement"
+    },
+    {
+      "declaration": "halfTerminalReachable_succ_of_admissibleParent",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 325,
+      "role": "statement",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "InStripTwoSheetStage.halfTerminalReachable_succ_off_childGap",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 377,
+      "role": "statement",
+      "statement_node": "two_sheet_next_row_off_child_gap"
+    },
+    {
+      "declaration": "InStripTwoSheetStage.halfTerminalReachable_of_ne_hole",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 409,
+      "role": "statement",
+      "statement_node": "two_sheet_hole_only_reachability"
+    },
+    {
+      "declaration": "InStripTwoSheetStage.protectedEvenSeamRealizedAt",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 422,
+      "role": "statement",
+      "statement_node": "two_sheet_hole_only_reachability"
+    },
+    {
+      "declaration": "CylinderStage.feedbackSplitCrossingInStrip",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 436,
+      "role": "engine",
+      "statement_node": "in_strip_two_sheet_split"
+    },
+    {
+      "declaration": "CylinderStage.feedbackAdvance_or_inStripTwoSheet",
+      "module": "Erdos249257/SuffixCylinderInStrip.lean",
+      "line": 665,
+      "role": "statement",
+      "statement_node": "in_strip_two_sheet_split"
+    },
+    {
+      "declaration": "commonRestrictionAt_succ_iff_endpoint_avoids_headThreshold",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 29,
+      "role": "statement",
+      "statement_node": "head_threshold_promotion_criterion"
+    },
+    {
+      "declaration": "commonRestrictionAt_succ_of_headThreshold_add_width_le_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 107,
+      "role": "statement",
+      "statement_node": "head_threshold_promotion_criterion"
+    },
+    {
+      "declaration": "promoteSuffixCylinderAt_succ_of_headThreshold_add_width_le_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 120,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "promoteSuffixCylinderAt_succ_of_endpoint_le_headThreshold",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 163,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "restrictWord_succ_eq_extend_true_of_headThreshold_add_width_le_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 206,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "HasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 236,
+      "role": "concept",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage18_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 240,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "Stage.endpoint_step",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 248,
+      "role": "substrate",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "SelectedHalfWindow.stepExplicit_preserves_literalPrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 258,
+      "role": "statement",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "HasDepth13BasePrefix.step",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 285,
+      "role": "substrate",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage19_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 296,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage20_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 301,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage21_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 306,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage22_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 311,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage23_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 316,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage24_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 321,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage25_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 326,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage26_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 331,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage27_hasDepth13BasePrefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 336,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "supportCoeff_word_eq_of_restrict_before_feedback",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 343,
+      "role": "statement",
+      "statement_node": "literal_prefix_endpoint_run_law"
+    },
+    {
+      "declaration": "Stage.nextCoeff_eq_depth18Prefix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 359,
+      "role": "substrate",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_nineteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 375,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twenty",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 380,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twentyOne",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 385,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twentyTwo",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 390,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twentyThree",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 395,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twentyFour",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 400,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twentyFive",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 405,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twentySix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 410,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18PrefixWord_supportCoeff_twentySeven",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 415,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "Stage.endpoint_step_eq",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 420,
+      "role": "substrate",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage18_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 430,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage19_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 432,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage20_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 439,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage21_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 446,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage22_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 453,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage23_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 460,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage24_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 467,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage25_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 474,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage26_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 481,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage27_endpoint",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 488,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "halfStripBound_twentySeven",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 497,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27_feedback_headThreshold_margin",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 503,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_commonRestrictionAt_fourteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 508,
+      "role": "statement",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_hasSuffixCylinderAt_fourteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 521,
+      "role": "statement",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27_promoted_endpoint_covers_strip",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 537,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_restrict_fourteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 542,
+      "role": "statement",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth14PromotedPrefix_supportCoeff_twentyEight",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 556,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_supportCoeff_twentyEight",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 561,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_selectedRowCoeff_eq_three",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 577,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "halfStripBound_twentyEight",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 583,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth27_to_depth28_buffer",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 589,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28SelectedHalfWindow",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 595,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28SelectedHalfWindow_hasSuffixCylinderAt_fourteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 602,
+      "role": "statement",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28SelectedHalfWindow_endpoint_covers_strip",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 616,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28SelectedHalfWindow_admissible",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 621,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28SelectedHalfWindow_restrict_fourteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 627,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth14PromotedPrefix_supportCoeff_twentyNine",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 641,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28SelectedHalfWindow_supportCoeff_twentyNine",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 646,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28SelectedHalfWindow_selectedRowCoeff_eq_zero",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 663,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "halfStripBound_twentyNine",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 669,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth28_to_depth29_buffer",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 675,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 680,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_fourteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 686,
+      "role": "statement",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_endpoint_covers_strip",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 700,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_admissible",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 705,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_fifteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 713,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_sixteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 720,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_seventeen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 728,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_eighteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 736,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_nineteen",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 744,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_twenty",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 752,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_twentyOne",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 762,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_twentyTwo",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 772,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_twentyThree",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 780,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_twentyFour",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 788,
+      "role": "finite_instance",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_hasSuffixCylinderAt_twentyFive",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 796,
+      "role": "statement",
+      "statement_node": "depth29_cutoff25_normalisation"
+    },
+    {
+      "declaration": "depth29SelectedHalfWindow_not_commonRestrictionAt_twentySix",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 806,
+      "role": "statement",
+      "statement_node": "depth29_cutoff26_promotion_impossible"
+    },
+    {
+      "declaration": "CylinderStage",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 822,
+      "role": "concept",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "FullCylinderStage",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 831,
+      "role": "representation",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "CylinderStage.advance",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 835,
+      "role": "statement",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "CylinderStage.advanceWithinCutoff",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 874,
+      "role": "statement",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "CylinderStage.promoteHigh",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 888,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "CylinderStage.feedbackAdvanceHigh",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 904,
+      "role": "statement",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "fullCylinderOrdinaryTransition",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 911,
+      "role": "representation",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "fullCylinderFeedbackTransitionHigh",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 916,
+      "role": "representation",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "fullCylinderStage29",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 923,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "fullCylinderStage51",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 930,
+      "role": "finite_instance",
+      "statement_node": "certified_cylinder_run_to_depth_52"
+    },
+    {
+      "declaration": "cylinderStage27",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 934,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "cylinderStage28",
+      "module": "Erdos249257/SuffixCylinderThreshold.lean",
+      "line": 941,
+      "role": "finite_instance",
+      "statement_node": "first_feedback_promotion_depth_27_to_29"
+    },
+    {
+      "declaration": "ProfiledGapStage",
+      "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+      "line": 32,
+      "role": "concept",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "profiledGapStageOfTwoSheet",
+      "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+      "line": 57,
+      "role": "representation",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.HasNextCoeffProfile",
+      "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+      "line": 80,
+      "role": "concept",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.Ready",
+      "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+      "line": 92,
+      "role": "concept",
+      "statement_node": "ready_cutoff_determines_per_sheet_coefficients"
+    },
+    {
+      "declaration": "ProfiledGapStage.hasNextCoeffProfile_of_ready",
+      "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+      "line": 100,
+      "role": "statement",
+      "statement_node": "ready_cutoff_determines_per_sheet_coefficients"
+    },
+    {
+      "declaration": "ProfiledGapStage.advanceOfNextCoeffProfile",
+      "module": "Erdos249257/SuffixCylinderProfiledGap.lean",
+      "line": 124,
+      "role": "statement",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "selectedHalfIntervalStepExplicit",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 30,
+      "role": "engine",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "selectedHalfIntervalWord_stepExplicit",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 122,
+      "role": "substrate",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "selectedHalfIntervalStepExplicit_preserves_literalPrefix",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 141,
+      "role": "statement",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "selectedHalfIntervalHasSuffixCylinderOnInterval_stepExplicit",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 164,
+      "role": "statement",
+      "statement_node": "shifted_interval_cylinder_machinery"
+    },
+    {
+      "declaration": "InStripGapStage",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 199,
+      "role": "concept",
+      "statement_node": "common_next_coeff_gap_advance"
+    },
+    {
+      "declaration": "InStripGapStage.HasCommonNextCoeff",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 221,
+      "role": "concept",
+      "statement_node": "common_next_coeff_gap_advance"
+    },
+    {
+      "declaration": "inStripGapStageOfTwoSheet",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 229,
+      "role": "representation",
+      "statement_node": "common_next_coeff_gap_advance"
+    },
+    {
+      "declaration": "inStripGapStageOfTwoSheet_hasCommonNextCoeff",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 248,
+      "role": "representation",
+      "statement_node": "common_next_coeff_gap_advance"
+    },
+    {
+      "declaration": "InStripGapStage.advanceOfCommonNextCoeff",
+      "module": "Erdos249257/SuffixCylinderFiniteGap.lean",
+      "line": 256,
+      "role": "statement",
+      "statement_node": "common_next_coeff_gap_advance"
+    },
+    {
+      "declaration": "halfStripBound_two_mul_add_one_le_pow",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotion.lean",
+      "line": 27,
+      "role": "substrate",
+      "statement_node": "profiled_cutoff_promotion"
+    },
+    {
+      "declaration": "selectedHalfWindowPromoteLow",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotion.lean",
+      "line": 50,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "selectedHalfIntervalPromoteHigh",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotion.lean",
+      "line": 107,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "ProfiledGapStage.promoteCutoff",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotion.lean",
+      "line": 168,
+      "role": "statement",
+      "statement_node": "profiled_cutoff_promotion"
+    },
+    {
+      "declaration": "wordSuffixNumeral_extendHalfWord_false_zero",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+      "line": 23,
+      "role": "substrate",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "wordSuffixNumeral_extendHalfWord_true_zero",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+      "line": 32,
+      "role": "substrate",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "ProfiledGapStage.promoteCutoff",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+      "line": 56,
+      "role": "representation",
+      "statement_node": "profiled_cutoff_promotion"
+    },
+    {
+      "declaration": "ProfiledGapStage.promoteCutoff_hasAdjacentPrefixes",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+      "line": 65,
+      "role": "statement",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "ProfiledGapStage.lowerTop_suffixNumeral_eq_zero",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+      "line": 83,
+      "role": "substrate",
+      "statement_node": "boundary_words_binary_consecutive"
+    },
+    {
+      "declaration": "ProfiledGapStage.upperBottom_suffixNumeral_eq_pow_sub_one",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+      "line": 96,
+      "role": "substrate",
+      "statement_node": "boundary_words_binary_consecutive"
+    },
+    {
+      "declaration": "ProfiledGapStage.boundaryWordsAdjacent",
+      "module": "Erdos249257/SuffixCylinderProfiledPromotionAdjacency.lean",
+      "line": 112,
+      "role": "statement",
+      "statement_node": "boundary_words_binary_consecutive"
+    },
+    {
+      "declaration": "SelectedHalfWindow.take",
+      "module": "Erdos249257/SuffixCylinderTwoSheet.lean",
+      "line": 18,
+      "role": "substrate",
+      "statement_node": "escaping_hole_recylindrification"
+    },
+    {
+      "declaration": "hasSuffixCylinderAt_take",
+      "module": "Erdos249257/SuffixCylinderTwoSheet.lean",
+      "line": 26,
+      "role": "substrate",
+      "statement_node": "escaping_hole_recylindrification"
+    },
+    {
+      "declaration": "CylinderStage.feedbackAdvanceCrossingAbove",
+      "module": "Erdos249257/SuffixCylinderTwoSheet.lean",
+      "line": 43,
+      "role": "statement",
+      "statement_node": "escaping_hole_recylindrification"
+    },
+    {
+      "declaration": "ProfiledGapStage.lowerNextCoeff",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 27,
+      "role": "concept",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.upperNextCoeff",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 33,
+      "role": "concept",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.NextArithmetic",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 41,
+      "role": "concept",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.upperNextCoeff_le_two_mul_sqrt",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 52,
+      "role": "substrate",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.upperNextBuffer",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 59,
+      "role": "substrate",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.advanceOfReady",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 70,
+      "role": "statement",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.advanceOfReady_hasAdjacentPrefixes",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 80,
+      "role": "statement",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "ProfiledGapStage.promoteCutoff_ready",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 92,
+      "role": "substrate",
+      "statement_node": "profiled_cutoff_promotion"
+    },
+    {
+      "declaration": "ProfiledGapStage.promoteThenAdvance",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 101,
+      "role": "statement",
+      "statement_node": "profiled_gap_advance"
+    },
+    {
+      "declaration": "ProfiledGapStage.promoteThenAdvance_hasAdjacentPrefixes",
+      "module": "Erdos249257/SuffixCylinderProfiledAutoStep.lean",
+      "line": 110,
+      "role": "statement",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "SelectedHalfWindow.stepTailExplicit",
+      "module": "Erdos249257/SuffixCylinderBelow.lean",
+      "line": 22,
+      "role": "engine",
+      "statement_node": "escaping_hole_recylindrification"
+    },
+    {
+      "declaration": "SelectedHalfWindow.word_stepTailExplicit",
+      "module": "Erdos249257/SuffixCylinderBelow.lean",
+      "line": 117,
+      "role": "substrate",
+      "statement_node": "escaping_hole_recylindrification"
+    },
+    {
+      "declaration": "CylinderStage.feedbackAdvanceCrossingBelow",
+      "module": "Erdos249257/SuffixCylinderBelow.lean",
+      "line": 136,
+      "role": "statement",
+      "statement_node": "escaping_hole_recylindrification"
+    },
+    {
+      "declaration": "supportSuffixNumeral_lt_two_pow",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 19,
+      "role": "substrate",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "supportSuffixNumeral_split_head",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 28,
+      "role": "substrate",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "wordSuffixNumeral_split_head",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 45,
+      "role": "statement",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "restrictWord_succ_eq_extendHalfWord",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 65,
+      "role": "substrate",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "wordSuffixNumeral_lt_two_pow",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 77,
+      "role": "substrate",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "wordSuffixNumeral_lt_headPower_of_false",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 84,
+      "role": "statement",
+      "statement_node": "head_threshold_promotion_criterion"
+    },
+    {
+      "declaration": "headPower_le_wordSuffixNumeral_of_true",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 92,
+      "role": "statement",
+      "statement_node": "head_threshold_promotion_criterion"
+    },
+    {
+      "declaration": "adjacent_endpoint_head_orientation",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 101,
+      "role": "statement",
+      "statement_node": "head_threshold_promotion_criterion"
+    },
+    {
+      "declaration": "commonRestrictionAt_succ_or_rewindBaseHalfDivisorBoundaryPairAt",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 128,
+      "role": "statement",
+      "statement_node": "rewind_history_promotion_dichotomy"
+    },
+    {
+      "declaration": "promoteSuffixCylinderAt_succ_of_commonRestriction",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 231,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "commonRestrictionAt_mono",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 265,
+      "role": "substrate",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "promoteSuffixCylinderAt_succ_or_boundaryPair_of_rewindHistory",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 281,
+      "role": "statement",
+      "statement_node": "rewind_history_promotion_dichotomy"
+    },
+    {
+      "declaration": "commonRestrictionAt_of_suffixCylinder",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 312,
+      "role": "substrate",
+      "statement_node": "cylinder_stage_advance_within_cutoff"
+    },
+    {
+      "declaration": "promotedSuffixCylinder_or_protectedEvenSeamRealizedAt",
+      "module": "Erdos249257/SuffixCylinderPromotion.lean",
+      "line": 322,
+      "role": "statement",
+      "statement_node": "rewind_history_promotion_dichotomy"
+    },
+    {
+      "declaration": "ProfiledGapStage.HasAdjacentPrefixes",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 25,
+      "role": "concept",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "supportSuffixNumeral_zero_split",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 44,
+      "role": "substrate",
+      "statement_node": "boundary_words_binary_consecutive"
+    },
+    {
+      "declaration": "wordSuffixNumeral_zero_split",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 58,
+      "role": "substrate",
+      "statement_node": "boundary_words_binary_consecutive"
+    },
+    {
+      "declaration": "supportCoeff_wordSupport_extendHalfWord_eq",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 91,
+      "role": "substrate",
+      "statement_node": "binary_increment_coefficient_bound"
+    },
+    {
+      "declaration": "supportCoeff_eq_and_le_add_one_of_wordNumeral_eq_or_succ",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 112,
+      "role": "statement",
+      "statement_node": "binary_increment_coefficient_bound"
+    },
+    {
+      "declaration": "ProfiledGapStage.lowerNextCoeff_le_upperNextCoeff_add_one",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 232,
+      "role": "statement",
+      "statement_node": "binary_increment_coefficient_bound"
+    },
+    {
+      "declaration": "profiledGapStageOfTwoSheet_hasAdjacentPrefixes",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 243,
+      "role": "statement",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "ProfiledGapStage.advanceOfNextCoeffProfile_hasAdjacentPrefixes",
+      "module": "Erdos249257/SuffixCylinderProfiledAdjacency.lean",
+      "line": 270,
+      "role": "statement",
+      "statement_node": "adjacent_prefix_invariant"
+    },
+    {
+      "declaration": "halfTerminalOnlyStripWitness_of_halfTerminalReachable",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 27,
+      "role": "substrate",
+      "statement_node": "terminal_only_projection"
+    },
+    {
+      "declaration": "SelectedHalfWindow.halfTerminalOnlyStripWitness",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 48,
+      "role": "substrate",
+      "statement_node": "terminal_only_projection"
+    },
+    {
+      "declaration": "CylinderStage.halfTerminalOnlyStripWitness",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 58,
+      "role": "statement",
+      "statement_node": "terminal_only_projection"
+    },
+    {
+      "declaration": "halfTerminalOnlyStripWitness_of_protectedEvenSeamRealizedAt",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 69,
+      "role": "statement",
+      "statement_node": "terminal_only_projection"
+    },
+    {
+      "declaration": "CylinderStage.halfTerminalOnlyStripWitness_after_feedback",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 92,
+      "role": "statement",
+      "statement_node": "terminal_only_projection"
+    },
+    {
+      "declaration": "fullCylinderStage51_halfTerminalOnlyStripWitness",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 111,
+      "role": "finite_instance",
+      "statement_node": "certified_terminal_witnesses_51_52"
+    },
+    {
+      "declaration": "fullCylinderStage52_halfTerminalOnlyStripWitness",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 118,
+      "role": "finite_instance",
+      "statement_node": "certified_terminal_witnesses_51_52"
+    },
+    {
+      "declaration": "cofinalTerminalOnlyStrip_of_cofinalCylinderStages",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 125,
+      "role": "statement",
+      "statement_node": "cofinal_stages_conditional_export"
+    },
+    {
+      "declaration": "exists_infinite_support_half_of_cofinalCylinderStages",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 138,
+      "role": "statement",
+      "statement_node": "cofinal_stages_conditional_export"
+    },
+    {
+      "declaration": "exists_infinite_positive_support_half_of_cofinalCylinderStages",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 148,
+      "role": "statement",
+      "statement_node": "cofinal_stages_conditional_export"
+    },
+    {
+      "declaration": "Stage",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 28,
+      "role": "concept",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "Stage.step",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 39,
+      "role": "engine",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage18",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 81,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage19",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 86,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage20",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 89,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage21",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 92,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage22",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 95,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage23",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 98,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage24",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 101,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage25",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 104,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage26",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 107,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "stage27",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 111,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "nonempty_stage_of_eighteen_le_of_le_twentySeven",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 118,
+      "role": "statement",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 135,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_hasSuffixCylinderAt_thirteen",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 141,
+      "role": "statement",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_endpoint_covers_strip",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 147,
+      "role": "statement",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth27SelectedHalfWindow_admissible",
+      "module": "Erdos249257/SelectedSuffixCylinderPreFeedback.lean",
+      "line": 153,
+      "role": "statement",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "headBit_true_iff_le_crossingCut",
+      "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+      "line": 28,
+      "role": "statement",
+      "statement_node": "crossing_unit_drop_profile"
+    },
+    {
+      "declaration": "supportCoeff_profile_of_crossingSuffixCylinder",
+      "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+      "line": 60,
+      "role": "statement",
+      "statement_node": "crossing_unit_drop_profile"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_crossingSuffixCylinder",
+      "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+      "line": 117,
+      "role": "statement",
+      "statement_node": "feedback_trichotomy_advance_or_seam"
+    },
+    {
+      "declaration": "CylinderStage.promoteLow",
+      "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+      "line": 158,
+      "role": "statement",
+      "statement_node": "one_bit_cutoff_promotion"
+    },
+    {
+      "declaration": "CylinderStage.feedbackStep_or_protectedSeam",
+      "module": "Erdos249257/SuffixCylinderGlobalProducer.lean",
+      "line": 174,
+      "role": "statement",
+      "statement_node": "feedback_trichotomy_advance_or_seam"
+    },
+    {
+      "declaration": "wordSuffixNumeral",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 23,
+      "role": "concept",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "HasSuffixCylinderAt",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 29,
+      "role": "concept",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "supportSuffixNumeral_congr_on",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 40,
+      "role": "substrate",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "supportSuffixNumeral_extendHalfWord",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 55,
+      "role": "statement",
+      "statement_node": "endpoint_indexed_suffix_cylinder_calculus"
+    },
+    {
+      "declaration": "depth18Word_suffix_thirteen",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 80,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18SelectedHalfWindow_hasSuffixCylinderAt_thirteen",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 88,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "depth18SelectedHalfWindow_endpoint_covers_strip",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 101,
+      "role": "finite_instance",
+      "statement_node": "pre_feedback_run_to_depth_27"
+    },
+    {
+      "declaration": "SelectedHalfWindow.word_stepExplicit",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 107,
+      "role": "substrate",
+      "statement_node": "suffix_cylinder_endpoint_propagation"
+    },
+    {
+      "declaration": "explicitParent_bitNat_recurrence",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 121,
+      "role": "substrate",
+      "statement_node": "suffix_cylinder_endpoint_propagation"
+    },
+    {
+      "declaration": "SelectedHalfWindow.hasSuffixCylinderAt_stepExplicit",
+      "module": "Erdos249257/SelectedSuffixCylinder.lean",
+      "line": 136,
+      "role": "statement",
+      "statement_node": "suffix_cylinder_endpoint_propagation"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_crossingProfile",
+      "module": "Erdos249257/SuffixCylinderFeedbackFanIn.lean",
+      "line": 22,
+      "role": "substrate",
+      "statement_node": "feedback_fan_in_hole_in_strip"
+    },
+    {
+      "declaration": "CylinderStage.feedbackAdvance_or_protectedSeam_inStrip",
+      "module": "Erdos249257/SuffixCylinderFeedbackFanIn.lean",
+      "line": 62,
+      "role": "statement",
+      "statement_node": "feedback_fan_in_hole_in_strip"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "suffix_cylinder_endpoint_propagation",
+      "to": "endpoint_indexed_suffix_cylinder_calculus",
+      "relation": "specialises",
+      "basis": "the E' = 2E - C law is the one-bit suffix-numeral doubling identity applied along the canonical successor."
+    },
+    {
+      "from": "head_threshold_promotion_criterion",
+      "to": "endpoint_indexed_suffix_cylinder_calculus",
+      "relation": "specialises",
+      "basis": "the criterion is the head split of the suffix numeral read against a consecutive endpoint interval."
+    },
+    {
+      "from": "one_bit_cutoff_promotion",
+      "to": "head_threshold_promotion_criterion",
+      "relation": "specialises",
+      "basis": "the two promotion lemmas are the two sides of the criterion with the endpoint arithmetic attached."
+    },
+    {
+      "from": "crossing_unit_drop_profile",
+      "to": "head_threshold_promotion_criterion",
+      "relation": "specialises",
+      "basis": "the crossing case is exactly the third alternative excluded by the criterion's two branches."
+    },
+    {
+      "from": "cylinder_stage_advance_within_cutoff",
+      "to": "suffix_cylinder_endpoint_propagation",
+      "relation": "specialises",
+      "basis": "the stage advance is the propagation law applied on the full square-root strip."
+    },
+    {
+      "from": "literal_prefix_endpoint_run_law",
+      "to": "cylinder_stage_advance_within_cutoff",
+      "relation": "reformulates",
+      "basis": "it replaces a whole band of stage advances by a scalar recurrence on the endpoint."
+    },
+    {
+      "from": "shifted_interval_cylinder_machinery",
+      "to": "suffix_cylinder_endpoint_propagation",
+      "relation": "generalises",
+      "basis": "the same endpoint law is proved for families indexed by an arbitrary closed carry interval."
+    },
+    {
+      "from": "pre_feedback_run_to_depth_27",
+      "to": "suffix_cylinder_endpoint_propagation",
+      "relation": "finite_instance_of",
+      "basis": "ten concrete applications of the endpoint step at depths 18 through 27."
+    },
+    {
+      "from": "first_feedback_promotion_depth_27_to_29",
+      "to": "one_bit_cutoff_promotion",
+      "relation": "finite_instance_of",
+      "basis": "the depth-27 promotion is the high-side lemma at K = 13, E = 8389."
+    },
+    {
+      "from": "depth29_cutoff25_normalisation",
+      "to": "one_bit_cutoff_promotion",
+      "relation": "finite_instance_of",
+      "basis": "eleven concrete low-side and high-side promotions of one window."
+    },
+    {
+      "from": "depth29_cutoff26_promotion_impossible",
+      "to": "depth29_cutoff25_normalisation",
+      "relation": "barrier_for",
+      "basis": "it is the exact reason the normalisation of that window stops at cutoff 25."
+    },
+    {
+      "from": "certified_cylinder_run_to_depth_52",
+      "to": "literal_prefix_endpoint_run_law",
+      "relation": "finite_instance_of",
+      "basis": "the 22-row endpoint evaluation is the scalar recurrence at the literal cutoff-25 word."
+    },
+    {
+      "from": "certified_cylinder_run_to_depth_52",
+      "to": "cylinder_stage_advance_within_cutoff",
+      "relation": "finite_instance_of",
+      "basis": "depths 29 to 51 are one application of advanceWithinCutoff with d = 22."
+    },
+    {
+      "from": "certified_terminal_witnesses_51_52",
+      "to": "terminal_only_projection",
+      "relation": "finite_instance_of",
+      "basis": "depths 51 and 52 are the projection applied to the two certified stages."
+    },
+    {
+      "from": "feedback_fan_in_hole_in_strip",
+      "to": "feedback_trichotomy_advance_or_seam",
+      "relation": "specialises",
+      "basis": "it refines the crossing branch of the trichotomy by the position of the exact integer hole."
+    },
+    {
+      "from": "escaping_hole_recylindrification",
+      "to": "feedback_fan_in_hole_in_strip",
+      "relation": "implies",
+      "basis": "the two escaping-hole constructors are what turn two of the crossing subcases back into full stages."
+    },
+    {
+      "from": "in_strip_two_sheet_split",
+      "to": "feedback_fan_in_hole_in_strip",
+      "relation": "repair_of",
+      "basis": "it replaces the existential seam receipt of the residual branch by a structure retaining both sheets, the hole, the endpoints and the prefixes."
+    },
+    {
+      "from": "two_sheet_hole_only_reachability",
+      "to": "in_strip_two_sheet_split",
+      "relation": "specialises",
+      "basis": "it reads reachability off the two sheets produced by the split."
+    },
+    {
+      "from": "rewind_history_promotion_dichotomy",
+      "to": "feedback_trichotomy_advance_or_seam",
+      "relation": "generalises",
+      "basis": "the cylinder route obtains the same advance-or-seam dichotomy without assuming a retained rewind history, so the history version is superseded."
+    },
+    {
+      "from": "two_sheet_next_row_off_child_gap",
+      "to": "parent_gap_doubling_law",
+      "relation": "specialises",
+      "basis": "the surviving child set is the complement of the two adjacent children of the old hole."
+    },
+    {
+      "from": "two_sheet_next_row_off_child_gap",
+      "to": "complementary_prefix_coefficient_agreement",
+      "relation": "depends_on_open",
+      "basis": "its common-coefficient hypothesis is discharged only at the single odd row supplied by that node and is unproved at every later row."
+    },
+    {
+      "from": "common_next_coeff_gap_advance",
+      "to": "two_sheet_next_row_off_child_gap",
+      "relation": "generalises",
+      "basis": "it propagates the whole two-sheet package rather than pointwise reachability, under the same common-coefficient hypothesis."
+    },
+    {
+      "from": "common_next_coeff_gap_advance",
+      "to": "complementary_prefix_coefficient_agreement",
+      "relation": "depends_on_open",
+      "basis": "the cross-sheet coefficient equality it assumes is proved nowhere beyond the immediate odd successor row."
+    },
+    {
+      "from": "profiled_gap_advance",
+      "to": "common_next_coeff_gap_advance",
+      "relation": "repair_of",
+      "basis": "it drops the non-iterable cross-sheet coefficient equality in favour of two independent per-sheet coefficients."
+    },
+    {
+      "from": "ready_cutoff_determines_per_sheet_coefficients",
+      "to": "profiled_gap_advance",
+      "relation": "implies",
+      "basis": "readiness supplies automatically the coefficient profile that the advance would otherwise have to assume."
+    },
+    {
+      "from": "profiled_cutoff_promotion",
+      "to": "profiled_gap_advance",
+      "relation": "implies",
+      "basis": "promotion at N = 2M+1 restores readiness so that another profiled row is available."
+    },
+    {
+      "from": "profiled_gap_advance",
+      "to": "gap_width_recurrence",
+      "relation": "depends_on_open",
+      "basis": "its unproved childHiStrip inequality is exactly the width control that the doubling recurrence makes non-automatic against a strip bound growing like 2*sqrt(N)."
+    },
+    {
+      "from": "adjacent_prefix_invariant",
+      "to": "binary_increment_coefficient_bound",
+      "relation": "implies",
+      "basis": "the preserved adjacency is precisely the hypothesis of the coefficient bound, so the bound holds at every profiled stage."
+    },
+    {
+      "from": "boundary_words_binary_consecutive",
+      "to": "adjacent_prefix_invariant",
+      "relation": "specialises",
+      "basis": "the two boundary words realise prefix adjacency at the extreme suffix values 0 and 2^(N-M)-1."
+    },
+    {
+      "from": "singleton_gap_no_swallow",
+      "to": "tracked_parent_survival_normal_form",
+      "relation": "specialises",
+      "basis": "it is the normal form evaluated at a one-point gap using the adjacency coefficient bound."
+    },
+    {
+      "from": "macro_swallow_quarter_band_bound",
+      "to": "gap_width_recurrence",
+      "relation": "specialises",
+      "basis": "it is the two-row width recurrence read as a necessary condition on the swallow branch."
+    },
+    {
+      "from": "terminal_only_projection",
+      "to": "feedback_trichotomy_advance_or_seam",
+      "relation": "reformulates",
+      "basis": "the projection is applied to both branches of the total feedback step, so a witness survives either way."
+    },
+    {
+      "from": "cofinal_stages_conditional_export",
+      "to": "terminal_only_projection",
+      "relation": "reformulates",
+      "basis": "it composes the projection with the downstream achievement-set consumer."
+    },
+    {
+      "from": "cofinal_stages_conditional_export",
+      "to": "cylinder_stage_advance_within_cutoff",
+      "relation": "depends_on_open",
+      "basis": "its hypothesis asks for stages at cofinally many depths, which the one-row step laws of this zone never produce."
+    },
+    {
+      "from": "cofinal_stages_conditional_export",
+      "to": "profiled_gap_advance",
+      "relation": "depends_on_open",
+      "basis": "the residual two-sheet branch can only be continued through the unproved NextArithmetic cell, so it supplies no stages either."
+    },
+    {
+      "from": "cofinal_stages_conditional_export",
+      "to": "in_strip_two_sheet_split",
+      "relation": "depends_on_open",
+      "basis": "the split is the one branch of the fan-in that does not return a stage, and closing it is what the cofinality hypothesis silently assumes."
+    }
+  ]
+}

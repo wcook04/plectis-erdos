@@ -7,7 +7,9 @@ The authored TeX deliberately retains exact Lean coordinates inside hyperlink
 arguments so release tooling can validate them.  A source link must print
 ordinary mathematical words, not an indistinguishable glyph or a raw Lean
 identifier.  Module names, source paths, registry paths, commit hashes, and
-unlinked Lean identifiers remain outside the rendered narrative.
+unlinked Lean identifiers remain outside the rendered narrative.  The one
+exception is the public Farey reproduction script named below: it is part of
+the mathematical audit trail, not an internal proof coordinate.
 
 Run from the repository root:
 
@@ -56,15 +58,15 @@ FIRST_MINUTE_CONTRACT = {
             "q > q0",
             "all positive exponents in every integer base",
             "refute the universal assertion",
-            "do not prove the required unbounded supply",
-            "we do not decide whether 1/2 is attainable",
+            "certificate band, though contiguous, is bounded",
+            "values -2, -1 and a comparison with the unused tail remain unresolved",
         ),
         (1, 2): ("neither problem is settled",),
         (2, 4): (
             "tail differences and finite certificates",
-            "half-value membership and final greedy skips",
-            "no finite such support can have value 1/2",
-            "neither this finite computation nor the denominator bound proves the unbounded supply",
+            "membership of 1/2",
+            "no proof covers every infinite support",
+            "the band is contiguous but bounded, not an unbounded family",
         ),
     },
     "claim-faithful-publication-systems-paper.pdf": {
@@ -105,6 +107,9 @@ VISIBLE_PATH_RE = re.compile(
 )
 COMMIT_RE = re.compile(r"\b[0-9a-f]{40}\b", re.I)
 LEAN_IDENTIFIER_RE = re.compile(r"\b[A-Za-z][A-Za-z0-9]*_[A-Za-z0-9_]{8,}\b")
+PUBLIC_REPRODUCIBILITY_PATHS = (
+    "scripts/check_farey_denominator_scaling.py",
+)
 
 
 def visible_tex(text: str) -> str:
@@ -118,6 +123,8 @@ def visible_tex(text: str) -> str:
 def source_errors(path: Path) -> list[str]:
     text = path.read_text(encoding="utf-8")
     visible = visible_tex(text)
+    for public_path in PUBLIC_REPRODUCIBILITY_PATHS:
+        visible = visible.replace(public_path, "")
     errors: list[str] = []
 
     if r"\newcommand{\sourceglyph}" in text:
@@ -313,6 +320,8 @@ def rendered_errors(
     compact = re.sub(r"_\s+(?=[a-z0-9])", "_", text)
     compact = re.sub(r"(?<=[a-z0-9])\s+_", "_", compact)
     compact = re.sub(r"\s+", " ", compact)
+    for public_path in PUBLIC_REPRODUCIBILITY_PATHS:
+        compact = compact.replace(public_path, "")
 
     fixed_terms = (
         "docs/claims.json",

@@ -20,13 +20,13 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import subprocess
 import sys
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
+DESCRIPTOR_MAX_BYTES = 64_000
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
@@ -59,17 +59,28 @@ def file_digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def git(*args: str, check: bool = True) -> str:
-    completed = subprocess.run(
-        ["git", *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    if check and completed.returncode != 0:
-        raise RuntimeError(completed.stderr.strip() or f"git {' '.join(args)} failed")
-    return completed.stdout.strip() if completed.returncode == 0 else ""
+def recorded_navigation_commit() -> str:
+    """Return the last recorded navigation snapshot without invoking Git.
+
+    Rebuilding the content projections in a shared worktree must not mutate or
+    inspect version-control state. The exact current content is bound by file
+    digests; this commit remains a historical navigation label.
+    """
+    if ORIENTATION_JSON.is_file():
+        current = json.loads(ORIENTATION_JSON.read_text(encoding="utf-8"))
+        value = current.get("source_revision", {}).get(
+            "committed_navigation_snapshot"
+        )
+        if isinstance(value, str) and value:
+            return value
+    if OUTPUT.is_file():
+        current = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        value = current.get("identity", {}).get("navigation_snapshot", {}).get(
+            "commit"
+        )
+        if isinstance(value, str) and value:
+            return value
+    return "unknown"
 
 
 def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str, Any]:
@@ -98,15 +109,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
 
     machine_paper = claims["machine_readable_paper"]
     publication_assembly = machine_paper["publication_assembly"]
-    navigation_commit = git(
-        "log",
-        "-1",
-        "--format=%H",
-        "--",
-        "docs/claims.json",
-        "docs/declaration_atlas.json",
-        "docs/methodology.json",
-    )
+    navigation_commit = recorded_navigation_commit()
     # The runnable per-route command is derivable from the id (see the
     # ``queries`` section); storing it per row would spend first-contact
     # budget on repetition.
@@ -219,7 +222,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         "external_registration": {
             "path": "docs/corpus_descriptor.json",
             "schema": "erdos249257-corpus-descriptor/4",
-            "maximum_bytes": 64_000,
+            "maximum_bytes": DESCRIPTOR_MAX_BYTES,
             "inline": ["release_identity", "content_digests", "principal_claim_handles", "root_module_topology"],
             "expands_to": [
                 "docs/claims.json",
@@ -538,16 +541,21 @@ def build() -> dict[str, Any]:
 
     formal_source = release["formal_source"]
     formal_ref = str(formal_source["ref"])
-    formal_commit = git("rev-parse", f"{formal_ref}^{{commit}}")
-    navigation_commit = git(
-        "log",
-        "-1",
-        "--format=%H",
-        "--",
-        "docs/claims.json",
-        "docs/declaration_atlas.json",
-        "docs/methodology.json",
-    )
+    if formal_source.get("ref_kind") == "commit":
+        formal_commit = formal_ref
+    else:
+        current = (
+            json.loads(OUTPUT.read_text(encoding="utf-8"))
+            if OUTPUT.is_file()
+            else {}
+        )
+        recorded = current.get("identity", {}).get("formal_source", {})
+        formal_commit = (
+            recorded.get("resolved_commit")
+            if recorded.get("ref") == formal_ref
+            else "unknown"
+        )
+    navigation_commit = recorded_navigation_commit()
     # The descriptor deliberately records no publication state for the
     # navigation snapshot. Whether a snapshot commit is reachable from main is a
     # property of the repository at read time, not of this tree: it depends on
@@ -570,6 +578,19 @@ def build() -> dict[str, Any]:
         {"claim_id": claim["id"], **declaration}
         for claim in orientation["principal_claims"]
         for declaration in claim["declarations"]
+    ]
+    # The descriptor is a registration envelope, so its principal-claim rows
+    # are handles rather than a second copy of authored claim prose.  Preserve
+    # every status, paper, open-obligation, and Lean-source coordinate needed
+    # to resolve a claim; the exact statement remains in the digest-bound
+    # claims document and in the bounded orientation projection.
+    principal_claim_handles = [
+        {
+            key: value
+            for key, value in claim.items()
+            if key != "statement"
+        }
+        for claim in orientation["principal_claims"]
     ]
 
     repository = str(release["repository"])
@@ -698,7 +719,8 @@ def build() -> dict[str, Any]:
         "summary": atlas["summary"],
         "compact_graph": {
             "status_taxonomy": claims["status_taxonomy"],
-            "principal_claims": orientation["principal_claims"],
+            "principal_claims": principal_claim_handles,
+            "principal_claim_statement_owner": "docs/claims.json::claims",
             "non_claims": claims["non_claims"],
             "remaining_open_propositions": claims["remaining_open_propositions"],
             "mathematical_programmes": [
@@ -805,6 +827,14 @@ def render() -> str:
     return json.dumps(build(), ensure_ascii=False, separators=(",", ":")) + "\n"
 
 
+def write_if_changed(path: Path, content: str) -> bool:
+    """Write one generated projection only when its bytes changed."""
+    if path.is_file() and path.read_text(encoding="utf-8") == content:
+        return False
+    path.write_text(content, encoding="utf-8")
+    return True
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the descriptor is stale")
@@ -829,6 +859,13 @@ def main() -> int:
         WAVE_SHAPE_END,
         render_wave_package_shape(atlas),
     )
+    descriptor_bytes = len(expected.encode("utf-8"))
+    if descriptor_bytes > DESCRIPTOR_MAX_BYTES:
+        print(
+            "corpus descriptor exceeds the registration-envelope budget: "
+            f"{descriptor_bytes:,} > {DESCRIPTOR_MAX_BYTES:,} bytes"
+        )
+        return 1
     if args.check:
         actual = OUTPUT.read_text(encoding="utf-8") if OUTPUT.is_file() else ""
         actual_orientation_json = (
@@ -855,19 +892,25 @@ def main() -> int:
         print(
             "corpus descriptor and orientation current: "
             f"formal={descriptor['identity']['formal_source']['resolved_commit'][:8]} "
-            f"navigation={descriptor['identity']['navigation_snapshot']['commit'][:8]}"
+            f"navigation={descriptor['identity']['navigation_snapshot']['commit'][:8]} "
+            f"bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
         )
         return 0
-    OUTPUT.write_text(expected, encoding="utf-8")
-    ORIENTATION_JSON.write_text(expected_orientation_json, encoding="utf-8")
-    ORIENTATION_MARKDOWN.write_text(expected_orientation_markdown, encoding="utf-8")
-    README_PATH.write_text(expected_readme, encoding="utf-8")
-    WAVE_INDEX_PATH.write_text(expected_wave_index, encoding="utf-8")
+    changed = [
+        path.relative_to(ROOT).as_posix()
+        for path, content in (
+            (OUTPUT, expected),
+            (ORIENTATION_JSON, expected_orientation_json),
+            (ORIENTATION_MARKDOWN, expected_orientation_markdown),
+            (README_PATH, expected_readme),
+            (WAVE_INDEX_PATH, expected_wave_index),
+        )
+        if write_if_changed(path, content)
+    ]
     print(
         "wrote "
-        f"{OUTPUT.relative_to(ROOT)}, {ORIENTATION_JSON.relative_to(ROOT)}, and "
-        f"{ORIENTATION_MARKDOWN.relative_to(ROOT)}, {README_PATH.relative_to(ROOT)}, and "
-        f"{WAVE_INDEX_PATH.relative_to(ROOT)}"
+        + (", ".join(changed) if changed else "no changed projections")
+        + f"; descriptor bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
     )
     return 0
 

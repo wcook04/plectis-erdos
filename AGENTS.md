@@ -22,7 +22,7 @@ graph classifies every statement, so ask it instead of reading modules.
 python3 scripts/query_semantic.py nonrecurring        # unconditional or barrier results
 python3 scripts/query_semantic.py classical           # known theorems re-formalised here
 python3 scripts/query_semantic.py bare-equivalences   # restatements of the open difficulty
-python3 scripts/query_expert_handoffs.py              # exact math and systems inputs
+python3 scripts/query_expert_handoffs.py              # asks, guesses, alternatives, tests
 ```
 
 Counts at this checkpoint, re-derived from the commands above:

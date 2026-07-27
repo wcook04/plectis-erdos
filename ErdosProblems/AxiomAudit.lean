@@ -96,4 +96,14 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos257.card_squarefreeDivisors
 #print axioms ErdosProblems.Erdos257.squarefreeIncidence_eq
 #print axioms ErdosProblems.Erdos257.odd_squarefreeIncidence
+#print axioms ErdosProblems.Erdos257.one_le_squarefreeIncidence
 #print axioms ErdosProblems.Erdos257.two_pow_card_primeFactors_le
+#print axioms ErdosProblems.Erdos257.supportCoeff_squarefreeSupport
+#print axioms ErdosProblems.Erdos257.dvd_last_of_carry_block
+#print axioms ErdosProblems.Erdos257.no_carry_block_certificate
+#print axioms ErdosProblems.Erdos257.not_exists_carry_certificates_squarefreeSupport
+#print axioms ErdosProblems.Erdos257.not_exists_digitwise_certificates_squarefreeSupport
+#print axioms ErdosProblems.Erdos257.supportCoeff_squarefreeShiftedSupport
+#print axioms ErdosProblems.Erdos257.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted
+#print axioms ErdosProblems.Erdos257.exists_omega_ge_block
+#print axioms ErdosProblems.Erdos257.exists_digitwise_block_squarefreeShiftedSupport

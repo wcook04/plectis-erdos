@@ -88,6 +88,7 @@ REQUIRED_FORBIDDEN_EFFECTS = {
 
 MUTATION_FIXTURE_IDS = {
     "conditional_reduction_without_remaining_open_proposition",
+    "remaining_open_proposition_without_open_status",
     "finite_result_changed_to_open_status",
     "open_target_edge_without_stated_effect",
     "methodology_rule_without_implemented_guard",
@@ -342,6 +343,8 @@ def validate_contract(claims: dict[str, Any], methodology: dict[str, Any]) -> li
     remaining_by_id = {row.get("id"): row for row in remaining_rows}
     for row in remaining_rows:
         row_id = row.get("id", "<missing>")
+        if row.get("status") != "open":
+            errors.append(f"{row_id}: remaining open proposition status must be open")
         target = claims_by_id.get(row.get("open_target_claim"))
         if target is None or target.get("status") != "open":
             errors.append(f"{row_id}: open_target_claim must name an open claim")
@@ -563,6 +566,10 @@ def mutation_fixture_errors(claims: dict[str, Any], methodology: dict[str, Any])
     conditional = next(row for row in missing_remaining["claims"] if row["status"] == "conditional reduction")
     conditional.pop("remaining_open_proposition_ids", None)
     fixtures["conditional_reduction_without_remaining_open_proposition"] = (missing_remaining, methodology)
+
+    unstated_open = deepcopy(claims)
+    unstated_open["remaining_open_propositions"][0].pop("status", None)
+    fixtures["remaining_open_proposition_without_open_status"] = (unstated_open, methodology)
 
     finite_promoted = deepcopy(claims)
     finite = next(row for row in finite_promoted["claims"] if row["status"] == "verified finite instance")

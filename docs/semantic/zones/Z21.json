@@ -1,0 +1,1565 @@
+{
+ "zone_id": "Z21",
+ "title": "Half-zone identities and finite free-walk obstructions",
+ "problem": "257",
+ "concepts": [
+  {
+   "id": "audited_expansion_boundary",
+   "label": "audited expansion claim boundary",
+   "note": "A distinction between an exact Lean declaration, supporting proof substrate, finite checked instances, measurements, and any claim that would resolve an open Erdős problem."
+  }
+ ],
+ "statement_nodes": [
+  {
+   "id": "prime_seam_excess_not_two",
+   "canonical_statement": "PROVED: at a prime row s at least 13, seamExcess s is not two.",
+   "logical_class": "unconditional_object_theorem",
+   "problem": "257",
+   "concepts": [
+    "audited_expansion_boundary"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "parity of the prime-row greedy remainder",
+   "prior_art_state": "not_assessed",
+   "prior_art_note": "No priority or novelty claim is made. This node records the exact scope needed for public claim hygiene.",
+   "scope_caveat": "This is a rowwise prime statement. It does not provide a cofinal hit supply or resolve membership of one half.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "seamExcess_ne_two_of_prime",
+     "module": "ErdosProblems/Half/H3.lean",
+     "line": 290
+    }
+   ]
+  },
+  {
+   "id": "free_walk_no_small_absolute_bound",
+   "canonical_statement": "PROVED: the tested FreeWalk2 formulation has no absolute run bound at most twelve.",
+   "logical_class": "barrier_no_go",
+   "problem": "249",
+   "concepts": [
+    "audited_expansion_boundary"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "explicit finite counterexamples to each proposed bound",
+   "prior_art_state": "not_assessed",
+   "prior_art_note": "No priority or novelty claim is made. This node records the exact scope needed for public claim hygiene.",
+   "scope_caveat": "Only bounds at most twelve are excluded. This is not an asymptotic theorem and says nothing about a larger or parameter-dependent bound.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "no_small_absolute_run_bound",
+     "module": "ErdosProblems/Half/FreeWalk2.lean",
+     "line": 402
+    }
+   ]
+  }
+ ],
+ "declaration_roles": [
+  {
+   "declaration": "walkStep",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 137,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkRes",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 141,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkCo",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 145,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkRes_nonneg",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 147,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkRes_lt",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 150,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkRes_eq",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 153,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkRes_succ",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 159,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_le_totient",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 170,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkStep_le",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 176,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walkStep_ge",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 191,
+   "role": "substrate"
+  },
+  {
+   "declaration": "real_step_budget",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 206,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_certifiedKill_iff",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 221,
+   "role": "substrate"
+  },
+  {
+   "declaration": "upperBand_run",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 233,
+   "role": "substrate"
+  },
+  {
+   "declaration": "certifiedKill_of_upperBand",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 282,
+   "role": "substrate"
+  },
+  {
+   "declaration": "certifiedKill_of_upperBand_log",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 303,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lowerBand_run",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 321,
+   "role": "substrate"
+  },
+  {
+   "declaration": "certifiedKill_of_lowerBand",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 388,
+   "role": "substrate"
+  },
+  {
+   "declaration": "AdmissibleRun",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 414,
+   "role": "substrate"
+  },
+  {
+   "declaration": "trap_upper",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 427,
+   "role": "substrate"
+  },
+  {
+   "declaration": "trap_lower",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 446,
+   "role": "substrate"
+  },
+  {
+   "declaration": "trap_interior",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 469,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_absolute_bound_on_consecutive_failures",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 489,
+   "role": "substrate"
+  },
+  {
+   "declaration": "thresholds_are_sharp",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 501,
+   "role": "substrate"
+  },
+  {
+   "declaration": "upperBand_card",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 514,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lowerBand_card",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 520,
+   "role": "substrate"
+  },
+  {
+   "declaration": "coverage_fraction_tends_to_zero",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 530,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lowerBand_instance_data",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 537,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lowerBand_instance",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 544,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lowerBand_instance_realised",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 553,
+   "role": "substrate"
+  },
+  {
+   "declaration": "upperBand_instance_data",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 560,
+   "role": "substrate"
+  },
+  {
+   "declaration": "upperBand_instance",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 567,
+   "role": "substrate"
+  },
+  {
+   "declaration": "upperBand_instance_realised",
+   "module": "ErdosProblems/Half/FreeWalk1.lean",
+   "line": 576,
+   "role": "substrate"
+  },
+  {
+   "declaration": "split_arith",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 147,
+   "role": "substrate"
+  },
+  {
+   "declaration": "certifiedKill_depth_split",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 198,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_certifiedKill_shift",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 251,
+   "role": "substrate"
+  },
+  {
+   "declaration": "certifiedKill_window_iff",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 279,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ConsecutiveFail",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 290,
+   "role": "substrate"
+  },
+  {
+   "declaration": "consecutiveFail_of_deep_fail",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 297,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deep_fail_of_consecutiveFail",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 303,
+   "role": "substrate"
+  },
+  {
+   "declaration": "consecutiveFail_iff",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 314,
+   "role": "substrate"
+  },
+  {
+   "declaration": "forall_consecutiveFail_iff",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 323,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fail_26_3_19",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 339,
+   "role": "substrate"
+  },
+  {
+   "declaration": "depth_seven_nondegenerate",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 343,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_13",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 347,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_13_sharp",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 351,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fail_22_4518_32",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 354,
+   "role": "substrate"
+  },
+  {
+   "declaration": "depth_fourteen_nondegenerate",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 357,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_19",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 363,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_19_sharp",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 367,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_19_exact",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 370,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_17",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 377,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_17_threshold",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 382,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_17_sharp",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 386,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk_run_17_exact",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 391,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_small_absolute_run_bound",
+   "module": "ErdosProblems/Half/FreeWalk2.lean",
+   "line": 402,
+   "role": "statement",
+   "statement_node": "free_walk_no_small_absolute_bound"
+  },
+  {
+   "declaration": "windowDiscrepancy_split",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 143,
+   "role": "substrate"
+  },
+  {
+   "declaration": "windowDiscrepancy_slide_emod",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 161,
+   "role": "substrate"
+  },
+  {
+   "declaration": "certifiedKill_walk_iff",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 170,
+   "role": "substrate"
+  },
+  {
+   "declaration": "certifiedKill_descend",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 187,
+   "role": "substrate"
+  },
+  {
+   "declaration": "base_descent_not_free",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 194,
+   "role": "substrate"
+  },
+  {
+   "declaration": "base_descent_repaired",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 200,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walk_run_transfers",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 231,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ascent_witness",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 242,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ascent_blocked",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 245,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_bounded_ascent_law",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 255,
+   "role": "substrate"
+  },
+  {
+   "declaration": "failure_run_seven",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 267,
+   "role": "substrate"
+  },
+  {
+   "declaration": "failure_run_seven_bracketed",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 270,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_certifiedKill_of_pow_le",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 280,
+   "role": "substrate"
+  },
+  {
+   "declaration": "free_walk_run_unbounded",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 294,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_certifiedKill_zero_shift",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 302,
+   "role": "substrate"
+  },
+  {
+   "declaration": "failure_zone_step_invariant",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 321,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenFloor",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 331,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenFloor_le",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 334,
+   "role": "substrate"
+  },
+  {
+   "declaration": "le_evenFloor_succ",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 337,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenFloor_even",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 340,
+   "role": "substrate"
+  },
+  {
+   "declaration": "abs_evenDelta_le",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 344,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenFloor_shift",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 358,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenWindow",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 363,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenKill",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 368,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sum_two_pow_reflect",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 372,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenWindow_eq",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 386,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_evenKill",
+   "module": "ErdosProblems/Half/FreeWalk3.lean",
+   "line": 408,
+   "role": "substrate"
+  },
+  {
+   "declaration": "InHalfZone",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 88,
+   "role": "substrate"
+  },
+  {
+   "declaration": "InHalfZone.two_le",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 90,
+   "role": "substrate"
+  },
+  {
+   "declaration": "InHalfZone.half",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 92,
+   "role": "substrate"
+  },
+  {
+   "declaration": "InHalfZone.third",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 94,
+   "role": "substrate"
+  },
+  {
+   "declaration": "InHalfZone.three_le_s",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 96,
+   "role": "substrate"
+  },
+  {
+   "declaration": "InHalfZone.lt",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 99,
+   "role": "substrate"
+  },
+  {
+   "declaration": "inHalfZone_or_late_of_half",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 104,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_eq_threeTerm_of_halfRank",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 118,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seven_mul_cubeSuffixSum_add_boundary",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 154,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_sum_halfZone",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 193,
+   "role": "substrate"
+  },
+  {
+   "declaration": "halfGapCorrection",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 244,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_tailWeight_add_exactHalfGap",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 251,
+   "role": "substrate"
+  },
+  {
+   "declaration": "halfGapCorrection_lt_twentyOne_mul_gap",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 284,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_largestSkipLowerWeight_add_exactHalfGap_eq_upperWeight",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 315,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamAdjacentCut_above_eq_largestSkipUpperWord_of_halfZone",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 363,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_remainder_add_overshoot_eq_exactHalfGap",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 407,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_dvd_halfGapCorrection",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 439,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipHalfGapCorrection",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 451,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_remainder_add_overshoot_eq_skipHalfGap",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 458,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipHalfGapCorrection_pos_and_lt",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 475,
+   "role": "substrate"
+  },
+  {
+   "declaration": "gap_strictly_between_of_largestSkipHalf",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 494,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_overshoot_add_fortyTwo_eq_skipHalfGap",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 513,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_forces_correction_window",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 524,
+   "role": "substrate"
+  },
+  {
+   "declaration": "le_halfGapCorrection",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 541,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_congruence_is_trivial",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 557,
+   "role": "substrate"
+  },
+  {
+   "declaration": "isLargestFalseRank_eleven_seven",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 574,
+   "role": "substrate"
+  },
+  {
+   "declaration": "inHalfZone_eleven_seven",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 581,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_late_eleven_seven",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 584,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamAdjacentCut_gap_eleven",
+   "module": "ErdosProblems/Half/H1.lean",
+   "line": 588,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_eq_threeTerm_of_halfRank",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 115,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seven_mul_threePowerSuffixSum_add_boundary",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 147,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_sum_eq_threeTerm_of_halfRank",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 176,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_tailWeight_add_exactHalfGap_eq_twentyOne_mul_headWeight",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 224,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_tailWeight_add_exactHalfGap_eq_twentyOne_mul_headWeight_floor",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 243,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_largestSkipLowerWeight_add_exactHalfGap_eq_upperWeight",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 260,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_remainder_lt_exactHalfGap",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 308,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_pred_eq_two_mul_landing",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 342,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_add_tailWeight_lt_truncatedWeight",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 360,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_lt_truncatedWeight",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 373,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_satisfies_exactLateGap_strip",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 384,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_satisfies_exactHalfGap_strip",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 396,
+   "role": "substrate"
+  },
+  {
+   "declaration": "isLargestFalseRank_thirteen_seven",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 410,
+   "role": "substrate"
+  },
+  {
+   "declaration": "thirteen_seven_halfZone",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 421,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twentyOne_mul_remainder_thirteen_lt_exactHalfGap",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 426,
+   "role": "substrate"
+  },
+  {
+   "declaration": "isLargestFalseRank_sixtyOne_sixty",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 435,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_sixtyOne",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 448,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_thirteen",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 451,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_eq_of_seamExcess_eq_two",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 457,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landingRow_magnitude_consistent",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 477,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landingRow_satisfies_exactLateGap_strip",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 488,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landingRow_satisfies_exactHalfGap_strip",
+   "module": "ErdosProblems/Half/H2.lean",
+   "line": 499,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_dvd_two_pow",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 123,
+   "role": "substrate"
+  },
+  {
+   "declaration": "four_dvd_two_pow",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 128,
+   "role": "substrate"
+  },
+  {
+   "declaration": "geometricCore_eq_twoPow_mul_add_one",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 133,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_eq_twoPow_mul_geom",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 144,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_mod_two",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 153,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_mod_four",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 174,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_two_mod_two",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 199,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wordWeightSum_add_seamIntegerGreedyRemainder",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 206,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamSubsetTarget_mod_two",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 218,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sum_seamWordSupport_mod_two",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 229,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_mod_two",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 248,
+   "role": "substrate"
+  },
+  {
+   "declaration": "eq_two_of_dvd_two_mul_of_prime",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 261,
+   "role": "substrate"
+  },
+  {
+   "declaration": "divisorSelected_prime",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 272,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_odd_of_prime",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 283,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamExcess_ne_two_of_prime",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 290,
+   "role": "statement",
+   "statement_node": "prime_seam_excess_not_two"
+  },
+  {
+   "declaration": "seamExcess_ne_zero_of_prime",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 306,
+   "role": "substrate"
+  },
+  {
+   "declaration": "finalMiddleCell_neg_two_impossible_of_prime_succ",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 325,
+   "role": "substrate"
+  },
+  {
+   "declaration": "dvd_two_mul_not_late",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 344,
+   "role": "substrate"
+  },
+  {
+   "declaration": "dvd_two_mul_half_eq_cofThree",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 359,
+   "role": "substrate"
+  },
+  {
+   "declaration": "dvd_two_mul_sub_one_not_late",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 377,
+   "role": "substrate"
+  },
+  {
+   "declaration": "four_dvd_truncatedMersenneWeight_of_late",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 391,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_mod_twoPow_of_late",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 402,
+   "role": "substrate"
+  },
+  {
+   "declaration": "four_dvd_lateBlock",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 419,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBlock_mod_four_indep",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 427,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sum_seamWordSupport_mod_four_of_late",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 438,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_lowerPrefix_sum_mod_four_of_largestSkipLate",
+   "module": "ErdosProblems/Half/H3.lean",
+   "line": 458,
+   "role": "substrate"
+  },
+  {
+   "declaration": "d0Table",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 139,
+   "role": "substrate"
+  },
+  {
+   "declaration": "d0At",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 166,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowOk",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 171,
+   "role": "substrate"
+  },
+  {
+   "declaration": "blockAll",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 177,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowOk_of_block",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 181,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_largestFalseRank_of_rowOk",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 186,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestFalseRank_near_terminal",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 199,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_block",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 204,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_block",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 210,
+   "role": "substrate"
+  },
+  {
+   "declaration": "highTable",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 220,
+   "role": "substrate"
+  },
+  {
+   "declaration": "pairOk",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 225,
+   "role": "substrate"
+  },
+  {
+   "declaration": "highAll",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 232,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestFalseRank_near_terminal_high",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 235,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_high",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 243,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_high",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 248,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_3001",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 254,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_survivorWindow",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 263,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_landingRow",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 290,
+   "role": "substrate"
+  },
+  {
+   "declaration": "no_refutation_on_block",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 297,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_forall_not_largestSkipHalfAt_landingRow",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 304,
+   "role": "substrate"
+  },
+  {
+   "declaration": "allRight_landingRow_conclusion_is_unconditional",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 313,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_eventually_largestSkipHalfAt",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 331,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_largestFalseRank_near_terminal",
+   "module": "ErdosProblems/Half/H4.lean",
+   "line": 340,
+   "role": "substrate"
+  },
+  {
+   "declaration": "inHalfZone_three_two",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 67,
+   "role": "substrate"
+  },
+  {
+   "declaration": "halfGapCorrection_three_two",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 71,
+   "role": "substrate"
+  },
+  {
+   "declaration": "le_halfGapCorrection_sharp",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 76,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipHalfAt_eleven",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 82,
+   "role": "substrate"
+  },
+  {
+   "declaration": "gap_eleven_via_combined",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 88,
+   "role": "substrate"
+  },
+  {
+   "declaration": "gap_eleven_strictly_between",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 100,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_eleven",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 124,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_fails_eleven",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 128,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landing_theorem_not_applicable_at_eleven",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 133,
+   "role": "substrate"
+  },
+  {
+   "declaration": "eleven_seven_not_late",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 145,
+   "role": "substrate"
+  },
+  {
+   "declaration": "eleven_seven_half_not_late",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 147,
+   "role": "substrate"
+  },
+  {
+   "declaration": "headline_is_a_gap_bound_only",
+   "module": "ErdosProblems/Half/verify/W1.lean",
+   "line": 160,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bits",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 64,
+   "role": "substrate"
+  },
+  {
+   "declaration": "falseRanks",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 68,
+   "role": "substrate"
+  },
+  {
+   "declaration": "trueRanks",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 73,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestFalseRank",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 78,
+   "role": "substrate"
+  },
+  {
+   "declaration": "halfSkip",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 81,
+   "role": "substrate"
+  },
+  {
+   "declaration": "halfNotLate",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 87,
+   "role": "substrate"
+  },
+  {
+   "declaration": "halfSkipFailures",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 123,
+   "role": "substrate"
+  },
+  {
+   "declaration": "halfNotLateRows",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 128,
+   "role": "substrate"
+  },
+  {
+   "declaration": "landingRows",
+   "module": "ErdosProblems/Half/verify/W2.lean",
+   "line": 132,
+   "role": "substrate"
+  },
+  {
+   "declaration": "witness_13",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 61,
+   "role": "substrate"
+  },
+  {
+   "declaration": "witness_17",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 64,
+   "role": "substrate"
+  },
+  {
+   "declaration": "witness_101",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 67,
+   "role": "substrate"
+  },
+  {
+   "declaration": "witness_odd_13",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 70,
+   "role": "substrate"
+  },
+  {
+   "declaration": "witnesses_unbounded",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 75,
+   "role": "substrate"
+  },
+  {
+   "declaration": "survivorPhase_three_dvd_succ",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 90,
+   "role": "substrate"
+  },
+  {
+   "declaration": "prime_succ_not_survivorPhase",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 100,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ratchet_already_dead_on_prime_family",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 113,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBlock_mod_four_is_zero",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 123,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBlock_indep_is_trivial",
+   "module": "ErdosProblems/Half/verify/W3.lean",
+   "line": 128,
+   "role": "substrate"
+  },
+  {
+   "declaration": "audit_no_allRight_tail_below_500",
+   "module": "ErdosProblems/Half/verify/W4.lean",
+   "line": 128,
+   "role": "substrate"
+  },
+  {
+   "declaration": "audit_skipD1_landingRow_premise_is_false",
+   "module": "ErdosProblems/Half/verify/W4.lean",
+   "line": 145,
+   "role": "substrate"
+  },
+  {
+   "declaration": "audit_no_allRight_tail_start_le_3000",
+   "module": "ErdosProblems/Half/verify/W4.lean",
+   "line": 155,
+   "role": "substrate"
+  },
+  {
+   "declaration": "audit_skipD1_landingRow_premise_is_false_below_3000",
+   "module": "ErdosProblems/Half/verify/W4.lean",
+   "line": 171,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_headline_is_redundant",
+   "module": "ErdosProblems/Half/verify/W5.lean",
+   "line": 40,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_headline_equiv",
+   "module": "ErdosProblems/Half/verify/W5.lean",
+   "line": 46,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_walkStep_even",
+   "module": "ErdosProblems/Half/verify/W5.lean",
+   "line": 57,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_trap_upper_violates_parity",
+   "module": "ErdosProblems/Half/verify/W5.lean",
+   "line": 68,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_trap_lower_violates_parity",
+   "module": "ErdosProblems/Half/verify/W5.lean",
+   "line": 72,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_coverage_is_only_an_existential",
+   "module": "ErdosProblems/Half/verify/W5.lean",
+   "line": 78,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_split_fires",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 60,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_split_left_false",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 66,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_split_right_true",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 69,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_window_iff_applies",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 73,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_consecutiveFail_iff_applies",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 79,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_consecutiveFail_iff_at_floor_plus_one",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 85,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_threshold_fails_for_run19_and_run13",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 93,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_consecutiveFail_has_content",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 100,
+   "role": "substrate"
+  },
+  {
+   "declaration": "xcheck_run_13",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 109,
+   "role": "substrate"
+  },
+  {
+   "declaration": "xcheck_run_13_exact",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 112,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp3_hyp_holds",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 122,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp4_hyp_fails",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 124,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_deep_cert",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 127,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_left_fails",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 129,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_right_fails",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 131,
+   "role": "substrate"
+  },
+  {
+   "declaration": "depth_split_fails_at_three",
+   "module": "ErdosProblems/Half/verify/W6.lean",
+   "line": 134,
+   "role": "substrate"
+  },
+  {
+   "declaration": "transfer_needs_only_the_last_failure",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 55,
+   "role": "substrate"
+  },
+  {
+   "declaration": "walk_run_transfers_is_a_corollary",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 68,
+   "role": "substrate"
+  },
+  {
+   "declaration": "transfer_conclusion_at_seven_run_is_unconditional",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 79,
+   "role": "substrate"
+  },
+  {
+   "declaration": "step_invariant_needs_no_radius",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 96,
+   "role": "substrate"
+  },
+  {
+   "declaration": "file_step_invariant_from_radius_free",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 102,
+   "role": "substrate"
+  },
+  {
+   "declaration": "failure_run_eight",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 113,
+   "role": "substrate"
+  },
+  {
+   "declaration": "failure_run_eight_bracketed",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 117,
+   "role": "substrate"
+  },
+  {
+   "declaration": "freeWalk2_already_has_nineteen",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 144,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenFloor_fails_totient_lt",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 168,
+   "role": "substrate"
+  },
+  {
+   "declaration": "evenFloor_fails_two_le",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 174,
+   "role": "substrate"
+  },
+  {
+   "declaration": "slide_emod_is_angleA2_truncate",
+   "module": "ErdosProblems/Half/verify/W7.lean",
+   "line": 187,
+   "role": "substrate"
+  }
+ ],
+ "intra_zone_relations": []
+}

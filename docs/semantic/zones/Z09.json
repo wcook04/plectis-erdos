@@ -1,0 +1,3392 @@
+{
+  "zone_id": "Z09",
+  "title": "Dyadic totient kernel, curvature carries and prime-jump / dilation transport",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "dyadic_totient_kernel",
+      "label": "Dyadic totient kernel",
+      "description": "The family of arithmetic sections n |-> phi(2^j n + r) of Euler's totient, viewed as vectors over the rationals."
+    },
+    {
+      "id": "odd_core_channel",
+      "label": "Odd-core channel",
+      "description": "A dyadic section with odd residue, plus the two zero-residue base channels phi(n) and phi(2n)."
+    },
+    {
+      "id": "separated_minor_certificate",
+      "label": "Separated evaluation minor",
+      "description": "A square matrix of evaluations of a finite family of sequences whose determinant is nonzero."
+    },
+    {
+      "id": "parity_separated_matrix",
+      "label": "Parity-separated matrix",
+      "description": "A natural matrix with a per-column 2-adic depth whose depth quotient is the identity modulo two."
+    },
+    {
+      "id": "crt_dirichlet_row",
+      "label": "CRT-Dirichlet prime row",
+      "description": "An evaluation input making one affine channel prime while every other channel receives a fresh prime divisor congruent to one modulo a large power of two."
+    },
+    {
+      "id": "tempered_binary_orbit",
+      "label": "Tempered binary carry orbit",
+      "description": "The integer sequence u with u(N+1) = 2u(N) - v c(N+1) supplied by rationality of the binary coefficient series."
+    },
+    {
+      "id": "carry_kernel_section",
+      "label": "Carry-kernel section",
+      "description": "A dyadic section n |-> u(2^j n + r) of an integer carry orbit."
+    },
+    {
+      "id": "totient_tail",
+      "label": "Totient tail R_M",
+      "description": "The real tail sum of phi(n)/2^n started above an index M."
+    },
+    {
+      "id": "lcm_cone_flatness",
+      "label": "LCM-cone flatness",
+      "description": "Rationality of the totient series forces every tail difference along the lcm cone to be an integer beyond a finite point."
+    },
+    {
+      "id": "dyadic_window_word",
+      "label": "Dyadic window word",
+      "description": "The exact integer depth-L numerator of a stencil combination of totient tails, with an input-driven doubling recurrence."
+    },
+    {
+      "id": "sharp_edge_radius",
+      "label": "Sharp edge radius",
+      "description": "The elementary symmetric bound on the truncated remainder of a stencil word, obtained only from phi(n) <= n - 1."
+    },
+    {
+      "id": "residue_gap_certificate",
+      "label": "Residue-gap certificate",
+      "description": "A decidable condition placing the window residue mod 2^L strictly outside the radius ball around the integer lattice."
+    },
+    {
+      "id": "certificate_supply_socket",
+      "label": "Unbounded certificate supply socket",
+      "description": "An explicitly named and unproved hypothesis asserting certificates at arbitrarily large lcm heights."
+    },
+    {
+      "id": "curvature_second_difference",
+      "label": "Affine curvature (1,-3,2)",
+      "description": "The second difference R_(4H) - 3 R_(2H) + 2 R_H of the totient tail on the ray H, 2H, 4H."
+    },
+    {
+      "id": "balanced_boundary_word",
+      "label": "Balanced (1,2,3,6) boundary word",
+      "description": "(R_(6H) - R_(3H)) - 3 (R_(2H) - R_H), the four-ray balanced stencil."
+    },
+    {
+      "id": "joint35_annihilator",
+      "label": "Joint (3,5) annihilator",
+      "description": "The primitive four-vertex operator q(X,Y) = XY - 3X - 2Y + 4 with vanishing constant and first moments."
+    },
+    {
+      "id": "prime_jump_commutator",
+      "label": "Prime-jump commutator",
+      "description": "J(H,p) = D(pH) - p D(H) where D(H) = R_(2H) - R_H is the diagonal tail difference."
+    },
+    {
+      "id": "valuation_unit_symbol",
+      "label": "Valuation-unit symbol",
+      "description": "A fixed-precision 2-adic signature recording the valuation and a bounded number of unit bits of a carry digit."
+    },
+    {
+      "id": "affine_residue_state",
+      "label": "Affine residue state",
+      "description": "The exact Moebius residue kernel written as scale times a periodic slope plus a periodic intercept."
+    },
+    {
+      "id": "squarefree_support_stability",
+      "label": "Squarefree support stability",
+      "description": "When p already divides H, multiplying by p adds no squarefree divisor channel and leaves the nonzero Moebius support fixed."
+    },
+    {
+      "id": "square_crt_localisation",
+      "label": "Square-CRT localisation",
+      "description": "Imposing n congruent to A + p a modulo p^2 makes the cofactor coprime to p on a finite shift horizon."
+    },
+    {
+      "id": "prime_dilation_cocycle",
+      "label": "Prime-dilation cocycle",
+      "description": "phi(pm) = (p-1) phi(m) + phi(m) [p divides m], the exact correction term of a prime dilation."
+    },
+    {
+      "id": "scalar_localisation_height",
+      "label": "Scalar-localisation height tax",
+      "description": "Clearing a rational's denominator down to one channel transfers the complementary reduced denominator into the coefficient."
+    },
+    {
+      "id": "cyclotomic_layer_socket",
+      "label": "Prime-ray cyclotomic layer socket",
+      "description": "Named producer and consumer predicates for cyclotomic layers along a prime ray m*q."
+    },
+    {
+      "id": "euler_sieve_local_factor",
+      "label": "Euler-sieve local factor",
+      "description": "Local Euler factors of the squared Moebius function and the prime-power divisor-sum row."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "totient_two_adic_scaling",
+      "canonical_statement": "For odd m and any t, phi(2^(t+1) m) = 2^t phi(m); and for any j, phi(2^j (2n)) = 2^j phi(2n). Doubling an already even argument multiplies the totient by two exactly.",
+      "logical_class": "classical_formalised",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "totient_two_pow_succ_mul_of_odd",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 110
+        },
+        {
+          "declaration": "totient_two_pow_mul_two",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 130
+        }
+      ],
+      "concepts": [
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary consequence of multiplicativity of Euler's totient and phi(2^k) = 2^(k-1); Mathlib already carries the one-step forms Nat.totient_two_mul_of_odd and Nat.totient_two_mul_of_even.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "dyadic_channel_odd_core_reduction",
+      "canonical_statement": "Every canonical dyadic section n |-> phi(2^j n + r) with r < 2^j is an explicit rational scalar multiple of an odd-core channel: a zero residue reduces to phi(n) or phi(2n), and an even positive residue 2^(t+1) s with s odd reduces to 2^t times the channel at level j - (t+1) and residue s. Consequently every dyadic section lies in the span of the odd-core family.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "totientKernel_zero_residue",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 150
+        },
+        {
+          "declaration": "totientKernel_even_residue_reduce",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 159
+        },
+        {
+          "declaration": "totientKernelSeq_zero_mem_span_oddCore",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1171
+        },
+        {
+          "declaration": "totientKernelSeq_mem_span_oddCore",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1206
+        }
+      ],
+      "concepts": [
+        "dyadic_totient_kernel",
+        "odd_core_channel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct corollary of the two-adic scaling identities; the content is bookkeeping of which channels are redundant, not a new fact about phi.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "separated_minor_rank_criterion",
+      "canonical_statement": "A finite family of sequences with a square evaluation matrix of nonzero determinant is linearly independent over the rationals, and the span of the canonical level-e family then has finite rank exactly 2^e + 1, which is the cardinality of the canonical index.",
+      "logical_class": "infrastructure",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "linearIndependent_of_separatedMinorCertificate",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 81
+        },
+        {
+          "declaration": "finrank_canonicalTotientKernel_eq_of_linearIndependent",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 92
+        },
+        {
+          "declaration": "finrank_canonicalTotientKernel_eq_of_certificate",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 101
+        },
+        {
+          "declaration": "card_totientCanonicalIndex",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 51
+        }
+      ],
+      "concepts": [
+        "separated_minor_certificate",
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "pullback along a finite evaluation linear map plus Matrix.linearIndependent_cols_of_det_ne_zero",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard linear algebra; the producer-neutral packaging is the only local content.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "parity_separated_determinant_criterion",
+      "canonical_statement": "A square matrix of naturals carrying a per-column 2-adic depth, with an odd diagonal depth quotient and even off-diagonal depth quotients, has nonzero determinant over the rationals: the depth quotient reduces to the identity matrix modulo two.",
+      "logical_class": "infrastructure",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "paritySeparatedMatrix_det_ne_zero",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 788
+        }
+      ],
+      "concepts": [
+        "parity_separated_matrix",
+        "separated_minor_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "factorisation M = B * diagonal(2^depth) with det B nonzero because B reduces to the identity over ZMod 2",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The mod-2 unipotence argument for nonvanishing determinants is standard; the specific packaging with per-column depths is local.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "crt_dirichlet_parity_row",
+      "canonical_statement": "For every dyadic depth e and every normalised affine channel i, there exists an odd input n, congruent to a prescribed base residue modulo 2^(e+3), at which the value of channel i is prime and every other channel value is divisible by a distinct prime congruent to one modulo 2^(e+3). Hence at that row phi of the target value has exact 2-adic depth strictly below e+2, while phi of every other channel value is divisible by 2^(e+2).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "exists_totientAffinePrimeRow",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 478
+        },
+        {
+          "declaration": "exists_totientAffineParityRow",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 694
+        }
+      ],
+      "concepts": [
+        "crt_dirichlet_row",
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Chinese remainder theorem over the target modulus and one fresh prime per off-target channel, plus Dirichlet primes in the arithmetic progression 1 mod 2^K, plus Nat.forall_exists_prime_gt_and_modEq to make the target value prime",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Uses Mathlib's Nat.infinite_setOf_prime_modEq_one (Dirichlet in the special progression 1 mod 2^K); the row construction itself was not compared against literature.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "finite_level_dyadic_totient_independence",
+      "canonical_statement": "For every e, the canonical family of 2^e + 1 dyadic sections of Euler's totient through level e (the two zero-residue base channels and every odd residue at levels 1..e) is linearly independent over the rationals, and its span has rank exactly 2^e + 1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "exists_separatedMinorCertificate_totientAffineOddFamily",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 847
+        },
+        {
+          "declaration": "linearIndependent_totientAffineOddFamily",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 892
+        },
+        {
+          "declaration": "linearIndependent_canonicalTotientKernelFamily",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 900
+        },
+        {
+          "declaration": "finrank_canonicalTotientKernel_eq",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 954
+        }
+      ],
+      "concepts": [
+        "dyadic_totient_kernel",
+        "separated_minor_certificate",
+        "crt_dirichlet_row"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "CRT-Dirichlet parity rows assembled into a parity-separated evaluation minor",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "docs/claims.json records this family as 'unconditional progress' and makes no novelty claim; no external comparison was performed here.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "full_dyadic_kernel_infinite_dimensional",
+      "canonical_statement": "The rational span of all dyadic sections n |-> phi(2^j n + r) of Euler's totient is not finite dimensional.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "not_finiteDimensional_span_fullTotientKernel",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1014
+        }
+      ],
+      "concepts": [
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "instantiate the finite-level rank 2^e + 1 at e equal to a hypothetical ambient finrank",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate from the finite-level rank theorem; the substance is entirely in that theorem. This is a coefficient-side statement about phi and implies nothing about the value of sum phi(n)/2^n. [adversarial review 2026-07-25: prior_art_state moved from not_assessed to routine_corollary_or_specialisation. The Lean proof is a four-line instantiation of finrank_canonicalTotientKernel_eq at e equal to a hypothetical ambient finrank; the zone's own edge already records 'specialises -> finite_level_dyadic_totient_independence', and the source docstring at TotientMahlerDefect.lean:1063 calls the basis theorem strictly sharper than this one.]",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "dyadic_section_basis_classification",
+      "canonical_statement": "The odd-core family is linearly independent and spans every dyadic section of Euler's totient, so it is an explicit basis of the span of the full dyadic kernel. Equivalently, the only rational linear relations among dyadic sections of phi are those generated by the two elementary two-adic scaling identities.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "linearIndependent_oddCoreTotientKernelFamily",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1133
+        },
+        {
+          "declaration": "span_range_fullTotientKernel_eq_span_range_oddCore",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1248
+        },
+        {
+          "declaration": "totientDyadicSectionBasis",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1260
+        }
+      ],
+      "concepts": [
+        "odd_core_channel",
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite character of linear independence applied to the level-e families, plus the odd-core reduction for spanning",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Strictly sharper than infinite dimensionality, but obtained by a routine finite-character argument from the finite-level independence theorem together with the elementary reduction identities. Both sides of the classification are proved, so it is not a bare equivalence.",
+      "scope_caveat": "",
+      "confidence": "medium"
+    },
+    {
+      "id": "compressed_adjoint_contradiction_consumer",
+      "canonical_statement": "There is no data consisting of positive Q and v, a nonzero integer A and an integer boundary with Q*v*A = boundary and |boundary| < Q*v: a nonzero multiple of Q*v has absolute value at least Q*v.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "false_of_compressedAdjointCertificate",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1051
+        }
+      ],
+      "concepts": [
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary integer size arithmetic. The surrounding docstrings present it as the contradiction consumer of a future compressed-adjoint construction for #249, but the statement itself contains no totient, no series and no dyadic kernel; it carries no progress towards #249 on its own.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "carry_derivative_totient_transport",
+      "canonical_statement": "For any integer sequence satisfying the exact binary-orbit recurrence u(N+1) = 2u(N) - v c(N+1), the discrete carry derivative 2u(n-1) - u(n) equals v c(n) at every positive n. For c = phi this recovers the scaled totient, inherits multiplicativity in coprime and gcd-corrected form, and identifies every positive-residue dyadic totient channel, scaled by v, with the two-term difference 2 u(2^j n + r - 1) - u(2^j n + r) of adjacent carry sections.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "carryDerivative_eq_scaledCoeff_of_recurrence",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 29
+        },
+        {
+          "declaration": "totient_temperedOrbit_derivative",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 43
+        },
+        {
+          "declaration": "totient_carryDerivative_coprime_mul",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 52
+        },
+        {
+          "declaration": "totient_carryDerivative_gcd_mul",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 68
+        },
+        {
+          "declaration": "totient_carryKernel_diff",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 94
+        },
+        {
+          "declaration": "canonicalCarryDifferenceFamily_eq_smul_totient",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 182
+        }
+      ],
+      "concepts": [
+        "tempered_binary_orbit",
+        "carry_kernel_section",
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "algebraic inversion of the one-step carry recurrence; temperedness is not used",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct algebra on the recurrence; the module docstring itself calls this infrastructure and disclaims any rank compression.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "finite_level_carry_anti_compression",
+      "canonical_statement": "Let v be positive and u a tempered binary carry orbit for phi with multiplier v. If the canonical level-e dyadic totient family is linearly independent, then the rational span of the carry sections through level e has rank at least 2^e - 1. Temperedness is used only to supply the exact recurrence.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "finrank_canonicalCarryKernel_ge_of_linearIndependent",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 211
+        },
+        {
+          "declaration": "finrank_canonicalCarryKernel_ge_of_certificate",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 245
+        }
+      ],
+      "concepts": [
+        "carry_kernel_section",
+        "tempered_binary_orbit",
+        "dyadic_totient_kernel"
+      ],
+      "open_antecedents": [
+        "IsTemperedBinaryOrbit Nat.totient v u : the existence of a positive multiplier v and an integer sequence u obeying u(N+1) = 2 u(N) - v phi(N+1) together with the temperedness bound. Both evidence theorems carry this as a free hypothesis. No such orbit is constructed anywhere in the corpus, and by not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit its existence is EQUIVALENT to rationality of sum phi(n)/2^n, that is to the FAILURE of Erdos #249."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "scale the independent odd totient channels by the unit v and realise them as carry differences inside the carry span",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The independence hypothesis is discharged inside this corpus by finite_level_dyadic_totient_independence. The temperedness hypothesis is NOT: it is a free unproved hypothesis equivalent to the negation of #249, which is why this node is a conditional implication and not an unconditional object theorem. [adversarial review 2026-07-25: reclassified from unconditional_object_theorem; the previous note asserted 'the statement is not conditional on anything unproved', which was true of the independence hypothesis only.]",
+      "scope_caveat": "The rank bound quantifies over a class of objects that is not known to be inhabited: if Erdos #249 is true then no tempered binary carry orbit for phi exists and both evidence theorems are vacuous. The only discharge available in the corpus is from the negation of #249 (see rationality_forces_unbounded_carry_rank), so this node proves nothing about the actual totient series on its own. The linear-independence hypothesis is genuinely discharged in corpus by finite_level_dyadic_totient_independence; the orbit hypothesis is not.",
+      "confidence": "high"
+    },
+    {
+      "id": "rationality_forces_unbounded_carry_rank",
+      "canonical_statement": "If sum phi(n)/2^n is rational then there exist a positive multiplier v and a tempered integral carry orbit u for phi such that, for every e, the rational span of the dyadic carry sections of u through level e has rank at least 2^e - 1.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 259
+        },
+        {
+          "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+          "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+          "line": 284
+        }
+      ],
+      "concepts": [
+        "tempered_binary_orbit",
+        "carry_kernel_section"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "rationality-to-orbit equivalence for binary coefficient series composed with the finite-level anti-compression bound",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This converts #249 into 'no rationality-supplied tempered carry has bounded dyadic section rank'. It is a one-directional transport: the missing half, a finite-rank compression theorem bounding the carry section rank, is not proved anywhere in the corpus and does not follow from the recurrence plus temperedness. The module docstring says so explicitly. [adversarial review 2026-07-25: prior_art_state moved from not_assessed to routine_corollary_or_specialisation. Both evidence theorems are four-line compositions of the pre-existing rationality-to-orbit equivalence with finite_level_carry_anti_compression; the zone's own edge already records 'specialises'. All novelty sits in the two inputs.]",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "curvature_window_split_sharp_radius",
+      "canonical_statement": "For the affine curvature Q(H) = R_(4H) - 3 R_(2H) + 2 R_H of the totient tail, 2^L Q(H) equals the exact integer depth-L curvature window plus a shifted remainder whose absolute value is at most 6H + 3L + 3 whenever H is positive; the fresh integer letter at offset s is bounded by 6H + 3s. The remainder bound rests only on phi(n) <= n - 1, sharpened to R_M <= M + 1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "two_pow_mul_curvature_eq_window_add_shifted",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 119
+        },
+        {
+          "declaration": "abs_curvatureShiftedTail_le",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 137
+        },
+        {
+          "declaration": "abs_curvatureDrive_le",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 46
+        },
+        {
+          "declaration": "totientTail_le_succ",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 66
+        }
+      ],
+      "concepts": [
+        "curvature_second_difference",
+        "totient_tail",
+        "dyadic_window_word",
+        "sharp_edge_radius"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "termwise phi(n) <= n - 1 against a geometric plus linear-geometric majorant",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary summation; the sharpness claim is relative to the corpus's own earlier two-cell radii, not to any external result.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "curvature_residue_gap_nonintegrality",
+      "canonical_statement": "If at some depth L the curvature window residue modulo 2^L lies strictly between the sharp radius 6H + 3L + 3 and 2^L minus that radius, then the affine curvature Q(H) of the totient tail is not an integer.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "curvature_notMem_int_of_sharpCurvatureCert",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 159
+        }
+      ],
+      "concepts": [
+        "residue_gap_certificate",
+        "curvature_second_difference",
+        "sharp_edge_radius"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "dyadic lattice separation: an integer value would force the window to sit within the radius ball around a multiple of 2^L",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard three-distance style separation argument; the content is the radius, not the separation.",
+      "scope_caveat": "Non-vacuity is not established. sharpCurvatureCert is decidable, but no witness of sharpCurvatureCert H L is exhibited at any (H, L) anywhere in either library - unlike the three-transport analogue (sharpThreeTransportCert_60_12) and the prime-jump analogue (primeJumpSharpKill_twelve_five), which do have kernel-checked witnesses and therefore do yield unconditional non-integrality facts. This node yields no non-integrality fact about any concrete curvature value.",
+      "confidence": "high"
+    },
+    {
+      "id": "curvature_supply_implies_249",
+      "canonical_statement": "If sharp curvature certificates exist at arbitrarily large lcm heights - either at the fixed log-scaled depth, or at arbitrary depth, or produced by curvature phase certificates - then sum phi(n)/2^n is irrational.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "irrational_totientSeries_of_sharpCurvatureSupply",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 206
+        },
+        {
+          "declaration": "irrational_totientSeries_of_sharpCurvatureAnyDepthSupply",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 234
+        },
+        {
+          "declaration": "irrational_totientSeries_of_phaseCertificateSupply",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 308
+        }
+      ],
+      "concepts": [
+        "certificate_supply_socket",
+        "residue_gap_certificate",
+        "lcm_cone_flatness",
+        "curvature_second_difference"
+      ],
+      "open_antecedents": [
+        "SharpCurvatureSupply : forall t0, exists t, t0 <= t and sharpCurvatureCert (periodLcm t) (Nat.log2 (periodLcm t) + 10)",
+        "SharpCurvatureAnyDepthSupply : forall t0, exists t L, t0 <= t and sharpCurvatureCert (periodLcm t) L",
+        "CurvaturePhaseCertificateSupply : forall t0, exists t m r, t0 <= t and Nonempty (CurvaturePhaseCertificate (periodLcm t) m r)"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "contradiction with rational_totient_series_forces_lcm_cone_flatness at the vertices H, 2H, 4H",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "None of the three supply predicates is proved anywhere in the corpus, and no theorem here derives any of them from #249, so the implication is strictly one-directional. The hypotheses are at least arithmetically decidable at each fixed (t, L), which is what distinguishes them from an outright restatement; but the entire mathematical weight of the route sits inside them.",
+      "scope_caveat": "The three supply hypotheses are not three independent routes. CurvaturePhaseCertificate carries the field 'sharp : sharpCurvatureCert H (m + exitOffset)', so irrational_totientSeries_of_phaseCertificateSupply is a field projection into the any-depth consumer (CurvatureCarry.lean:308-314) and adds no arithmetic content; the log-scaled-depth supply is a specialisation of the any-depth supply. Effectively one socket. Furthermore no witness of sharpCurvatureCert exists anywhere in the corpus at any (H, L), so none of the three supplies is known to be satisfiable even once.",
+      "confidence": "high"
+    },
+    {
+      "id": "curvature_window_doubling_recurrence",
+      "canonical_statement": "The depth-L curvature window satisfies the exact input-driven doubling recurrence W(L+1) = 2 W(L) + drive(L+1), and the affine carry orbit launched at depth m from the genuine prefix window reproduces the curvature window at every later depth.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "curvatureWindow_succ",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 259
+        },
+        {
+          "declaration": "curvatureCarryOrbit_curvatureWindow",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 283
+        }
+      ],
+      "concepts": [
+        "dyadic_window_word",
+        "curvature_second_difference"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Unfolding of the window definition plus induction; it re-presents the window as a carry orbit and adds no arithmetic content.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "curvature_drive_common_carrier_identity",
+      "canonical_statement": "For every common carrier g, g times the curvature drive at offset s equals 3 L(g, 2H+s) - 2 L(g, H+s) - L(g, 4H+s), where L(g, n) = phi(g) n - g phi(n) is the scaled rough loss. No divisibility or factorisation hypothesis is needed.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "curvatureDrive_commonCarrier",
+          "module": "Erdos249257/CurvatureCarry.lean",
+          "line": 323
+        }
+      ],
+      "concepts": [
+        "curvature_second_difference"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A ring identity after unfolding both definitions: the phi(g) n terms cancel because the stencil (1,-3,2) has vanishing mass. It records a rewriting option, not an estimate.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "fixed_precision_tropical_no_go",
+      "canonical_statement": "Fix any positive number u of retained unit bits. Then for every finite word of 2-adic valuation-unit symbols with odd units and every initial carry state, there is a compatible carry orbit whose state after every prefix stays within the symmetric radius 2^(valuation + u - 1). Bounded local valuation-unit data alone therefore never excludes all finite centred carry completions.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "vu_step_has_centred_completion",
+          "module": "Erdos249257/TropicalCurvatureCarry.lean",
+          "line": 69
+        },
+        {
+          "declaration": "vu_word_has_prefix_locked_completion",
+          "module": "Erdos249257/TropicalCurvatureCarry.lean",
+          "line": 115
+        },
+        {
+          "declaration": "fixedPrecisionTropicalNoGo",
+          "module": "Erdos249257/TropicalCurvatureCarry.lean",
+          "line": 137
+        }
+      ],
+      "concepts": [
+        "valuation_unit_symbol",
+        "curvature_second_difference"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "recentring a residue class by integer division: the unrestricted high quotient can always place the next state in the centre of its dyadic interval",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "docs/claims.json carries this as claim fixed_precision_transport_no_go, 'unconditional progress'.",
+      "scope_caveat": "Rules out only the bounded local signature at a FIXED precision u, with the symbol word treated as free data. It does not rule out: precision u growing with the depth; arithmetic relations among the high quotients; exact rough-prime or factorisation labels on the digits; joint constraints linking symbols at different offsets; or the question whether the ACTUAL curvature drive digits admit such completions. It excludes no certificate supply, and settles nothing about #249.",
+      "confidence": "high"
+    },
+    {
+      "id": "three_transport_window_certificate",
+      "canonical_statement": "For the balanced four-ray word (R_(6H) - R_(3H)) - 3 (R_(2H) - R_H), 2^L times the word equals an exact integer depth-L window plus a shifted remainder of absolute value at most 9H + 4L + 4; the window obeys the input-driven doubling recurrence; and a window residue mod 2^L strictly inside the complementary band proves the word is not an integer. Any such certificate also forces 2^L to exceed twice the radius.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "two_pow_mul_threeTransport_eq_window_add_shifted",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 67
+        },
+        {
+          "declaration": "abs_threeTransportShiftedTail_le",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 86
+        },
+        {
+          "declaration": "abs_threeTransportDrive_le",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 48
+        },
+        {
+          "declaration": "threeTransportWindow_succ",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 102
+        },
+        {
+          "declaration": "threeTransport_notMem_int_of_cert",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 126
+        },
+        {
+          "declaration": "sharpThreeTransportCert_depth_floor",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 119
+        }
+      ],
+      "concepts": [
+        "balanced_boundary_word",
+        "dyadic_window_word",
+        "sharp_edge_radius",
+        "residue_gap_certificate",
+        "totient_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "elementary stencil mass and first-moment bookkeeping plus dyadic lattice separation",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Same engine as the curvature word with a different stencil; the only new numbers are the mass 4 and first moment 9.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "three_transport_supply_implies_249",
+      "canonical_statement": "If sharp balanced-boundary certificates exist at arbitrarily large lcm heights and arbitrary depths, then sum phi(n)/2^n is irrational.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "irrational_totientSeries_of_roughnessBoundaryLatticeSupply",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 177
+        }
+      ],
+      "concepts": [
+        "certificate_supply_socket",
+        "lcm_cone_flatness",
+        "balanced_boundary_word"
+      ],
+      "open_antecedents": [
+        "RoughnessBoundaryLatticeSupply : forall t0, exists t L, t0 <= t and sharpThreeTransportCert (periodLcm t) L"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "contradiction with rational_totient_series_forces_lcm_cone_flatness at the vertices H, 2H, 3H, 6H",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The supply is unproved and the module docstring calls it 'the sole open producer socket'. Only one finite instance of the certificate is available (H = 60, L = 12), which establishes nothing about the supply.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "three_transport_finite_certificate_60_12",
+      "canonical_statement": "At the lcm height H = lcm(1..6) = 60 and depth L = 12 the balanced boundary window equals 19316, and the sharp separation certificate holds there by kernel computation.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "threeTransportWindow_60_12",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 197
+        },
+        {
+          "declaration": "sharpThreeTransportCert_60_12",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 203
+        }
+      ],
+      "concepts": [
+        "residue_gap_certificate",
+        "balanced_boundary_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "decide on the closed integer window",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "docs/claims.json claim transport_certificate_instances records these as bounded instances establishing no unbounded supply.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "three_transport_alias_of_exponent_only_commutator",
+      "canonical_statement": "The balanced boundary word of ThreeTransportBoundary and the four-vertex transport commutator of ExponentOnlyTransport are the same real-valued function of H, definitionally.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "threeTransportTail_eq_commutator",
+          "module": "Erdos249257/ThreeTransportBoundary.lean",
+          "line": 166
+        }
+      ],
+      "concepts": [
+        "balanced_boundary_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Proved by rfl. Two modules define the same object under two names; this node exists so the duplication is recorded rather than counted twice.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_dilation_cocycle",
+      "canonical_statement": "For a prime p and any m, phi(p m) = (p-1) phi(m) plus phi(m) when p divides m and plus zero otherwise.",
+      "logical_class": "classical_formalised",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "totient_mul_prime_cocycle",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 34
+        }
+      ],
+      "concepts": [
+        "prime_dilation_cocycle"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard multiplicativity of Euler's totient; both branches already exist in Mathlib as Nat.totient_mul_of_prime_of_dvd and Nat.totient_mul_of_prime_of_not_dvd.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "square_crt_correction_suppression",
+      "canonical_statement": "Imposing a square congruence n congruent to A + p a modulo p^2 makes the cofactor at every shift h with p not dividing a + h coprime to p, so the dilation correction vanishes and phi(n + p h - A) = (p-1) phi(a + p t + h). Distinct primes give pairwise-coprime square moduli, so finitely many such congruences can be imposed simultaneously with a least representative below the product, and the representative can be raised above any prescribed floor at a cost of less than one extra block. Consequently one common base removes every dilation correction on a prescribed finite horizon 1 <= h <= J whenever every construction prime exceeds J.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "totient_dilation_clean_of_square_residue",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 48
+        },
+        {
+          "declaration": "totient_dilation_clean_of_square_witness",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 70
+        },
+        {
+          "declaration": "totient_dilation_clean_of_square_modEq",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 98
+        },
+        {
+          "declaration": "exists_squareCRT_base_of_distinct_primes",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 148
+        },
+        {
+          "declaration": "exists_large_squareCRT_base",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 164
+        },
+        {
+          "declaration": "exists_squareCRT_clean_totient_family",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 198
+        },
+        {
+          "declaration": "exists_squareCRT_clean_horizon",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 228
+        }
+      ],
+      "concepts": [
+        "square_crt_localisation",
+        "prime_dilation_cocycle"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Chinese remainder theorem on prime-square moduli plus the not-dividing branch of the dilation cocycle",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Combination of two textbook facts; docs/claims.json claim square_crt_correction_suppression already disclaims any irrationality criterion.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "clean_square_cube_does_not_separate",
+      "canonical_statement": "Explicit kernel-checked witnesses: at n = 52 with primes 13 and 5 the square-localised one-dimensional cube is correction-free at both vertices and both controlled shifts, and its second finite coefficient actualOneCubeCoeff 52 26 18 vanishes; at n = 27 with primes 3 and 5 an equally clean cube has second coefficient -4. Correction suppression alone therefore neither forces nor forbids a nonzero cube coefficient at these parameters.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "squareCRT_clean_block_can_vanish",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 285
+        },
+        {
+          "declaration": "squareCRT_vanishing_countermodel_is_clean",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 294
+        },
+        {
+          "declaration": "squareCRT_clean_block_can_be_nonzero",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 303
+        },
+        {
+          "declaration": "squareCRT_nonzero_countermodel_is_clean",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 311
+        }
+      ],
+      "concepts": [
+        "square_crt_localisation"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "decide on closed totient values",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "These are two bounded countermodels at k = 1, J = 2. They refute the specific inference 'clean implies separating' at those parameters; they are not a general barrier and do not exclude cleanness plus extra input forcing separation at larger k or J.",
+      "scope_caveat": "Read the Lean, not the prose. Of the six conjuncts in squareCRT_clean_block_can_vanish two are tautologies: '52 = 52 [MOD 13^2]' is reflexivity of Nat.ModEq, and 'actualOneCubeCoeff 52 13 13 = 0' holds for every n whatsoever because the two shifts are equal (phi(n+13) - phi(n+13)); the same is true of 'actualOneCubeCoeff 27 3 3 = 0' in the nonzero witness. Only one genuine coefficient evaluation is carried in each witness. The 'neither forces nor forbids' reading is an inference from two data points at k = 1, J = 2; no general no-go is formalised, and this node is not a barrier_no_go.",
+      "confidence": "high"
+    },
+    {
+      "id": "alternating_cube_insertion_cancellation",
+      "canonical_statement": "If inserting a fixed coordinate into any subset of a finite set leaves the term unchanged, then the alternating sum over the powerset of the enlarged set vanishes.",
+      "logical_class": "infrastructure",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "alternating_powerset_sum_eq_zero_of_insert_invariant",
+          "module": "Erdos249257/SquareCRTCube.lean",
+          "line": 264
+        }
+      ],
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The standard telescoping cancellation behind Hilbert-cube arguments, stated with all totient and CRT hypotheses removed.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "generic_window_residue_gap_soundness",
+      "canonical_statement": "Generic modular soundness: if a real number equals an integer A divided by 2^L plus a remainder e with |e 2^L| at most R, and A mod 2^L lies strictly between R and 2^L - R, then the real number is not an integer.",
+      "logical_class": "infrastructure",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "notMem_int_of_window_remainder_bound",
+          "module": "Erdos249257/PrimeJumpWindow.lean",
+          "line": 53
+        }
+      ],
+      "concepts": [
+        "residue_gap_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "integer division bookkeeping on A - k 2^L",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The reusable form of the separation step that the curvature, boundary and joint-cone modules each re-prove inline.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_window_sharp_radius",
+      "canonical_statement": "The prime-jump commutator J(H,p) = D(pH) - p D(H) of diagonal totient-tail differences splits at every depth L into the exact four-vertex integer window over 2^L plus a remainder of size at most 3 p H + (p+1)(L+2); a window residue mod 2^L strictly inside the complementary band therefore proves J(H,p) is not an integer. The radius is 3pH rather than the 4pH belonging to the two-cell disjunction.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "primeJumpTailCommutator_eq_window_add_remainder",
+          "module": "Erdos249257/PrimeJumpWindow.lean",
+          "line": 91
+        },
+        {
+          "declaration": "primeJumpTailCommutator_notMem_int_of_sharpKill",
+          "module": "Erdos249257/PrimeJumpWindow.lean",
+          "line": 178
+        }
+      ],
+      "concepts": [
+        "prime_jump_commutator",
+        "dyadic_window_word",
+        "sharp_edge_radius",
+        "residue_gap_certificate",
+        "totient_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "four-vertex partial-window decomposition plus the generic residue-gap soundness lemma",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Same lattice-separation engine as the other window families; the improvement over 4pH is internal to this corpus.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_finite_certificate_12_5_15",
+      "canonical_statement": "The sharp prime-jump certificate holds at H = 12, p = 5, L = 15 by kernel computation.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "primeJumpSharpKill_twelve_five",
+          "module": "Erdos249257/PrimeJumpWindow.lean",
+          "line": 186
+        }
+      ],
+      "concepts": [
+        "residue_gap_certificate",
+        "prime_jump_commutator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "decide on the closed integer window",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "docs/claims.json claim transport_certificate_instances; a single bounded instance.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_supply_implies_249",
+      "canonical_statement": "If for every threshold there is a larger lcm height t together with a positive p and a depth L at which the sharp prime-jump certificate holds, then sum phi(n)/2^n is irrational.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "irrational_totient_series_of_primeJumpSharpKill_supply",
+          "module": "Erdos249257/PrimeJumpWindow.lean",
+          "line": 193
+        }
+      ],
+      "concepts": [
+        "certificate_supply_socket",
+        "lcm_cone_flatness",
+        "prime_jump_commutator"
+      ],
+      "open_antecedents": [
+        "hsupply : forall t0, exists t, t0 <= t and exists p L, 0 < p and primeJumpSharpKill (periodLcm t) p L"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "contradiction with rational_totient_series_forces_lcm_cone_flatness at the vertices H, 2H, pH, 2pH",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The supply is an inline hypothesis, not even a named definition; nothing in the corpus proves it. One finite instance exists.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_jump_channel_migration",
+      "canonical_statement": "The contribution of a residue channel d to the prime-jump commutator equals its post-jump value plus the pre-jump value of the same channel transported with coefficient -p; and every carrier d already dividing H cancels exactly in the commutator.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "residueHeckeDefect_eq_postJump_add_migration",
+          "module": "Erdos249257/PrimeJumpMigration.lean",
+          "line": 38
+        },
+        {
+          "declaration": "residueHeckeDefect_eq_zero_of_dvd",
+          "module": "Erdos249257/PrimeJumpMigration.lean",
+          "line": 46
+        }
+      ],
+      "concepts": [
+        "prime_jump_commutator",
+        "affine_residue_state"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "linearity of the foreign-residue increment plus its closed form on divisor channels",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Algebraic; its value is corrective - it records that a post-jump-only split omits the migration term.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "migration_sign_reversal_fixture",
+      "canonical_statement": "At the first new-prime jump d = 5, H = 12, p = 5 the transition channel equals 10228/961, positive, while its post-jump part alone equals -12/31, negative: the pre-jump migration term reverses the sign.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "residueHeckeDefect_five_twelve",
+          "module": "Erdos249257/PrimeJumpMigration.lean",
+          "line": 58
+        },
+        {
+          "declaration": "postJumpResidueChannel_five_twelve",
+          "module": "Erdos249257/PrimeJumpMigration.lean",
+          "line": 66
+        }
+      ],
+      "concepts": [
+        "prime_jump_commutator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "closed evaluation of the Moebius residue kernel at one channel",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "One fixture. It exhibits, and does not bound, the migration effect.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "squarefree_support_stability_under_exponent_jump",
+      "canonical_statement": "If p divides H then for every squarefree d, d divides p H if and only if d divides H; primality of p and the exponent are not needed. Hence the nonzero Moebius support is unchanged across H to p H.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "squarefree_dvd_mul_iff_of_dvd",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 36
+        },
+        {
+          "declaration": "squarefree_dvd_prime_mul_iff_of_prime_dvd",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 56
+        },
+        {
+          "declaration": "mobius_ne_zero_dvd_mul_iff_of_dvd",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 62
+        }
+      ],
+      "concepts": [
+        "squarefree_support_stability"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "a squarefree divisor is the lcm of its prime factors, each of which divides p or H",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary divisibility; the interesting content is the contrast it draws with a new-prime jump, which is not itself formalised here.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "residue_kernel_affine_state",
+      "canonical_statement": "The exact Moebius residue kernel is affine in the scale coordinate: K(d, N) = N times a slope plus an intercept, where both slope and intercept depend on N only through N mod d and are periodic with period d. On divisor channels the diagonal increment collapses to the linear form mu(d) H / (d (2^d - 1)). Consequently the four-vertex H to 3H transport of the increment splits into a slope block and an intercept block, and both blocks are present.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "transportResidueKernel_eq_affineState",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 141
+        },
+        {
+          "declaration": "residueSlope_add_period",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 153
+        },
+        {
+          "declaration": "residueIntercept_add_period",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 158
+        },
+        {
+          "declaration": "transportResidueIncrement_of_dvd",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 92
+        },
+        {
+          "declaration": "residueTransportDefect_three_eq_affineState",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 176
+        }
+      ],
+      "concepts": [
+        "affine_residue_state"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The module docstring states the point of this decomposition explicitly as an anti-overclaim device: invertibility of the constant residue-permutation block alone cannot show the transport is nonzero, because the slope block is also present and channels can cancel against each other. That warning is a comment, not a theorem: no barrier here rules the permutation-block argument out.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "old_channel_moment_annihilation",
+      "canonical_statement": "Any finite real coefficient vector whose zeroth and first moments both vanish annihilates every old affine residue channel, that is every channel index d dividing H, when applied to the kernel values at the scaled points m_i H. In particular the first-order transport defect vanishes on divisor channels, and the primitive joint (3,5) observable with coefficients (1, -3, -2, 4) at the vertices (15, 3, 5, 1) kills every such channel.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "oldChannel_affine_moment_annihilation",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 36
+        },
+        {
+          "declaration": "joint35_oldChannel_zero",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 71
+        },
+        {
+          "declaration": "residueTransportDefect_eq_zero_of_dvd",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 112
+        }
+      ],
+      "concepts": [
+        "affine_residue_state",
+        "joint35_annihilator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the affine state is constant in the residue coordinate on divisor channels, so the combination reduces to the two vanishing moments",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Once the affine state decomposition is available this is linear algebra on two moments. It is an obstruction to detecting old channels, not evidence that new channels survive.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "exponent_only_three_transport_supply_implies_249",
+      "canonical_statement": "If for every threshold there is an exponent a at least 2 with the balanced four-vertex transport commutator at the lcm height periodLcm(3^a - 1) failing to be an integer, then sum phi(n)/2^n is irrational.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "irrational_totient_series_of_exponentOnlyThreeTransportSupply",
+          "module": "Erdos249257/ExponentOnlyTransport.lean",
+          "line": 205
+        }
+      ],
+      "concepts": [
+        "certificate_supply_socket",
+        "lcm_cone_flatness",
+        "balanced_boundary_word"
+      ],
+      "open_antecedents": [
+        "ExponentOnlyThreeTransportSupply : forall t0, exists a, 2 <= a and t0 <= 3^a - 1 and threeTransportTailCommutator (periodLcm (3^a - 1)) not in Set.range ((coe) : Int -> Real)"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "contradiction with rational_totient_series_forces_lcm_cone_flatness on the fixed 3^a lcm tower",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Marked a restatement: unlike the certificate supplies, this hypothesis is not a decidable finite check. It asserts non-integrality of the same real totient-tail expression on the same lcm cone that the conclusion is about, at the same logical complexity as the goal, and the proof is a two-line transport of the flatness lemma. Assuming it is close to assuming the answer.",
+      "scope_caveat": "",
+      "confidence": "medium"
+    },
+    {
+      "id": "joint35_cone_window_certificate",
+      "canonical_statement": "For the four-vertex cone observable R_(15H) - 3 R_(3H) - 2 R_(5H) + 4 R_H, 2^L times the observable equals an exact integer depth-L window plus a shifted remainder of size at most 19H + 5L + 5; the window obeys the input-driven doubling recurrence; and a window residue mod 2^L inside the complementary band proves the observable is not an integer. The associated eight-vertex transport tail expands into four diagonal differences.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "two_pow_mul_joint35Cone_eq_window_add_shifted",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 127
+        },
+        {
+          "declaration": "abs_joint35ConeShiftedTail_le",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 148
+        },
+        {
+          "declaration": "joint35Cone_notMem_int_of_cert",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 172
+        },
+        {
+          "declaration": "joint35ConeWindow_succ",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 246
+        },
+        {
+          "declaration": "joint35TransportTail_expand",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 259
+        }
+      ],
+      "concepts": [
+        "joint35_annihilator",
+        "dyadic_window_word",
+        "sharp_edge_radius",
+        "residue_gap_certificate",
+        "totient_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "stencil mass and first-moment bookkeeping plus dyadic lattice separation",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Third instance of the same window engine, with stencil mass 10 and first moment 19.",
+      "scope_caveat": "Non-vacuity is not established: no witness of sharpJoint35ConeCert is exhibited at any (H, L) anywhere in either library, so the criterion yields no non-integrality fact about any concrete joint (3,5) cone value. The eight-vertex joint35TransportTail_expand is an unfolding identity only; it carries no bound and no certificate.",
+      "confidence": "high"
+    },
+    {
+      "id": "joint35_supply_implies_249",
+      "canonical_statement": "If sharp joint (3,5) cone certificates exist at arbitrarily large lcm heights above t = 5 and arbitrary depth, then sum phi(n)/2^n is irrational.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "irrational_totient_series_of_anchoredJoint35ConeSupply",
+          "module": "Erdos249257/JointExponentTransport.lean",
+          "line": 217
+        }
+      ],
+      "concepts": [
+        "certificate_supply_socket",
+        "lcm_cone_flatness",
+        "joint35_annihilator"
+      ],
+      "open_antecedents": [
+        "AnchoredJoint35ConeSupply : forall t0, exists t L, max t0 5 <= t and sharpJoint35ConeCert (periodLcm t) L"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "contradiction with rational_totient_series_forces_lcm_cone_flatness at the vertices H, 3H, 5H, 15H",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Unproved supply; unlike the boundary and prime-jump families this one has no finite instance checked in the module, so nothing here shows the certificate is ever satisfiable.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "scalar_localisation_height_barrier",
+      "canonical_statement": "Let x be a rational, H a divisor of its reduced denominator, and c an integer such that the reduced denominator of c x divides H. Then the complementary factor den(x)/H divides |c|, so H c x equals an integer multiple of the original reduced numerator. Moreover any rational-linear channel that annihilates every scalar relation is the evaluation map times one fixed vector. Scalar denominator clearing therefore transfers the discarded denominator into the coefficient rather than erasing it.",
+      "logical_class": "barrier_no_go",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "scalarLocalization_complement_dvd",
+          "module": "Erdos249257/AdelicHeightObstruction.lean",
+          "line": 23
+        },
+        {
+          "declaration": "scalarLocalization_divisor_dvd_coefficient",
+          "module": "Erdos249257/AdelicHeightObstruction.lean",
+          "line": 45
+        },
+        {
+          "declaration": "scalarLocalization_integer_eq_mul_num",
+          "module": "Erdos249257/AdelicHeightObstruction.lean",
+          "line": 56
+        },
+        {
+          "declaration": "linearDescender_eq_smul_eval",
+          "module": "Erdos249257/AdelicHeightObstruction.lean",
+          "line": 120
+        }
+      ],
+      "concepts": [
+        "scalar_localisation_height"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Rat.den_mul_den_eq_den_mul_gcd together with coprimality of the reduced numerator and denominator",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "docs/claims.json claim adelic_height_obstruction, 'proved here', already disclaims any irrationality criterion.",
+      "scope_caveat": "Rules out only SCALAR denominator clearing, by a single integer multiplier, discarding the complementary reduced denominator; and, via the descender lemma, only rational-LINEAR channels that kill every scalar relation and hit 1. It does not rule out: localisers using several rationals jointly, non-linear or non-rational channels, arguments that let the coefficient grow and pay the Archimedean cost, or any argument that does not attempt denominator clearing at all. It proves no irrationality statement for any support.",
+      "confidence": "high"
+    },
+    {
+      "id": "positive_rational_height_inequality",
+      "canonical_statement": "If a positive rational x is smaller than 2/M with M positive, and N divides the absolute value of its reduced numerator, then N M < 2 den(x). Specialising N to 2^r and M to a Mersenne number 2^n - 1 gives the denominator lower bound used by synchronised tails.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "positiveRat_numDivisor_mul_lt_two_mul_den",
+          "module": "Erdos249257/AdelicHeightObstruction.lean",
+          "line": 77
+        },
+        {
+          "declaration": "positiveRat_twoPow_mul_lt_two_mul_den",
+          "module": "Erdos249257/AdelicHeightObstruction.lean",
+          "line": 96
+        },
+        {
+          "declaration": "positiveRat_mersenne_height",
+          "module": "Erdos249257/AdelicHeightObstruction.lean",
+          "line": 103
+        }
+      ],
+      "concepts": [
+        "scalar_localisation_height"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The elementary Liouville-style comparison between the size of a rational and the size of its reduced numerator; the Mersenne form is a substitution.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "checkerboard_unique_joint_annihilator",
+      "canonical_statement": "The two-by-two checkerboard functional F(1,1) - F(1,0) - F(0,1) + F(0,0) annihilates every additively separable background u(i) + v(j), and any two-by-two coefficient array whose row sums and column sums all vanish is a scalar multiple of the checkerboard.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "checkerboard_separable",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 19
+        },
+        {
+          "declaration": "checkerboard_unique",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 25
+        }
+      ],
+      "concepts": [],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary two-by-two linear algebra, proved by simp/omega; the mathematical setting it names (cyclotomic curvature) does not appear in the statements. [adversarial review 2026-07-25: reclassified from unconditional_object_theorem to infrastructure. Both evidence theorems are about an abstract F : Bool -> Bool -> Z with no totient, Mersenne-support or tail object in the statement, are discharged by ring/omega, and are consumed by no other declaration in either library (only by ErdosProblems/AxiomAudit.lean). Counting them as object theorems inflates the object-theorem census.]",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "four_point_divisor_layer_identity",
+      "canonical_statement": "Given the four explicit divisor-layer factorisations of A at q, r q, s q and r s q in terms of layer functions C, the product A(r s q) A(q) equals A(r q) A(s q) C(r s) C(r s q).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "fourPoint_layer_identity",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 38
+        }
+      ],
+      "concepts": [
+        "cyclotomic_layer_socket"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A ring identity from four hypothesised factorisations of abstract functions on the naturals. Nothing here shows any arithmetic A and C satisfy those factorisations; the docstring is candid that no resultant API is involved. No declaration in the corpus consumes it.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "affine_step_centred_completion",
+      "canonical_statement": "For any even modulus M = 2R with R positive, any residue class a modulo M, any multiplier b and any incoming state e, there is a digit c in the class a modulo M with the affine step e' = b e + c satisfying |e'| at most R.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "residueClass_step_has_centred_completion",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 55
+        }
+      ],
+      "concepts": [
+        "valuation_unit_symbol"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "recentring by integer division modulo M",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A generalisation of the one-step lemma inside the tropical no-go, with the valuation-unit dressing removed. It is a single step only: this module contains no word-level iteration and therefore states no barrier of its own.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "prime_ray_cyclotomic_open_sockets",
+      "canonical_statement": "Three named and unproved predicates on a cyclotomic layer function C along a prime ray m q: eventual nontrivial layers coprime to m q; a bounded-degree exact-order consumer for every rational prime divisor of a layer; and escape of large layers from every prescribed finite prime support.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "PrimeRayLayerSupply",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 88
+        },
+        {
+          "declaration": "BoundedDegreeOrderConsumer",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 95
+        },
+        {
+          "declaration": "FinitePrimeSupportEscape",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 102
+        }
+      ],
+      "concepts": [
+        "cyclotomic_layer_socket"
+      ],
+      "open_antecedents": [
+        "PrimeRayLayerSupply C m : eventual nontrivial layers C(m q) > 1 coprime to m q for all large primes q. Defined at PrimeRayCyclotomicCurvature.lean:88, proved nowhere, consumed nowhere.",
+        "BoundedDegreeOrderConsumer C m d : every rational prime divisor p of C(m q) satisfies m q | p^k - 1 for some 1 <= k <= d. Defined at PrimeRayCyclotomicCurvature.lean:95, proved nowhere, consumed nowhere.",
+        "FinitePrimeSupportEscape C m : large prime-ray layers avoid every prescribed finite prime set. Defined at PrimeRayCyclotomicCurvature.lean:102, proved nowhere, consumed nowhere."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "These are definitions only. No theorem in either library proves any of them, derives one from another, or consumes any of them; grep finds each name exactly once in the whole source tree. The module docstring says polynomial resultant realisability and Archimedean growth remain upstream obligations, which is accurate: the module contributes interface, not mathematics.",
+      "scope_caveat": "These are dead sockets. Grepping both libraries finds each of the three names exactly once, at its own definition site; no theorem anywhere derives one, assumes one, or produces any conditional implication from them. Listing them as open antecedents records named obligations, not a proof route: nothing in the corpus would follow even if all three were proved.",
+      "confidence": "high"
+    },
+    {
+      "id": "euler_sieve_local_identities",
+      "canonical_statement": "Elementary local identities behind the Euler-sieve approximation: 1 - 2/p + 1/p^2 = (1 - 1/p)^2 and 1 - 2/p^2 + 1/p^4 = (1 - 1/p^2)^2 for positive p; and the second difference of the prime-power divisor-sum row sigma_p equals p^(e+1) (p - 1), the prime-power totient row, with first difference p - 1.",
+      "logical_class": "classical_formalised",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "muSqEulerFactor_one",
+          "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+          "line": 28
+        },
+        {
+          "declaration": "muSqEulerFactor_two",
+          "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+          "line": 36
+        },
+        {
+          "declaration": "sigmaPrimePow_firstDiff",
+          "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+          "line": 44
+        },
+        {
+          "declaration": "sigmaPrimePow_secondDiff",
+          "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+          "line": 51
+        }
+      ],
+      "concepts": [
+        "euler_sieve_local_factor"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The Euler factorisation of the Dirichlet series of mu^2 and the prime-power values of phi are textbook. The module docstring correctly states that no external transcendence theorem is asserted as Lean authority here.",
+      "scope_caveat": "",
+      "confidence": "high"
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "totientKernelSeq",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 36,
+      "role": "concept",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "TotientCanonicalIndex",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 41,
+      "role": "concept",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "canonicalTotientKernelFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 45,
+      "role": "concept",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "card_totientCanonicalIndex",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 51,
+      "role": "substrate",
+      "statement_node": "separated_minor_rank_criterion"
+    },
+    {
+      "declaration": "evaluationLinearMap",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 65,
+      "role": "substrate",
+      "statement_node": "separated_minor_rank_criterion"
+    },
+    {
+      "declaration": "SeparatedMinorCertificate",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 73,
+      "role": "concept",
+      "statement_node": "separated_minor_rank_criterion"
+    },
+    {
+      "declaration": "linearIndependent_of_separatedMinorCertificate",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 81,
+      "role": "statement",
+      "statement_node": "separated_minor_rank_criterion"
+    },
+    {
+      "declaration": "finrank_canonicalTotientKernel_eq_of_linearIndependent",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 92,
+      "role": "statement",
+      "statement_node": "separated_minor_rank_criterion"
+    },
+    {
+      "declaration": "finrank_canonicalTotientKernel_eq_of_certificate",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 101,
+      "role": "statement",
+      "statement_node": "separated_minor_rank_criterion"
+    },
+    {
+      "declaration": "totient_two_pow_succ_mul_of_odd",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 110,
+      "role": "statement",
+      "statement_node": "totient_two_adic_scaling"
+    },
+    {
+      "declaration": "totient_two_pow_mul_two",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 130,
+      "role": "statement",
+      "statement_node": "totient_two_adic_scaling"
+    },
+    {
+      "declaration": "totientKernel_zero_residue",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 150,
+      "role": "statement",
+      "statement_node": "dyadic_channel_odd_core_reduction"
+    },
+    {
+      "declaration": "totientKernel_even_residue_reduce",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 159,
+      "role": "statement",
+      "statement_node": "dyadic_channel_odd_core_reduction"
+    },
+    {
+      "declaration": "TotientAffineIndex",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 191,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineSlope",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 195,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineResidue",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 200,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineValue",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 205,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 209,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineOddFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 213,
+      "role": "concept",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "totientAffineSlope_pos",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 216,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineResidue_lt_slope",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 222,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineSlope_coprime_residue",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 232,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffine_parameters_injective",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 242,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffine_cross_ne",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 276,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineBaseResidue",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 298,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineBaseResidue_odd",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 302,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineCore",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 309,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineBaseResidue_lt_modulus",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 313,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineCore_pos",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 319,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineCore_even",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 331,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "totientAffineCore_lt_depthBound",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 344,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "exists_totientAffineCore_depth",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 380,
+      "role": "substrate",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "exists_large_distinct_primes_modEq_one",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 399,
+      "role": "engine",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "exists_affine_root_mod_prime",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 422,
+      "role": "engine",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "affine_target_coprime_of_cross",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 440,
+      "role": "engine",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "TotientAffinePrimeRow",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 462,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "exists_totientAffinePrimeRow",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 478,
+      "role": "statement",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "TotientAffineParityRow",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 682,
+      "role": "concept",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "exists_totientAffineParityRow",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 694,
+      "role": "statement",
+      "statement_node": "crt_dirichlet_parity_row"
+    },
+    {
+      "declaration": "paritySeparatedMatrix_det_ne_zero",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 788,
+      "role": "statement",
+      "statement_node": "parity_separated_determinant_criterion"
+    },
+    {
+      "declaration": "exists_separatedMinorCertificate_totientAffineOddFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 847,
+      "role": "statement",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "linearIndependent_totientAffineOddFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 892,
+      "role": "statement",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "linearIndependent_canonicalTotientKernelFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 900,
+      "role": "statement",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "finrank_canonicalTotientKernel_eq",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 954,
+      "role": "statement",
+      "statement_node": "finite_level_dyadic_totient_independence"
+    },
+    {
+      "declaration": "TotientDyadicKernelIndex",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 964,
+      "role": "concept",
+      "statement_node": "full_dyadic_kernel_infinite_dimensional"
+    },
+    {
+      "declaration": "fullTotientKernelFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 967,
+      "role": "concept",
+      "statement_node": "full_dyadic_kernel_infinite_dimensional"
+    },
+    {
+      "declaration": "canonicalTotientKernelToFull",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 972,
+      "role": "substrate",
+      "statement_node": "full_dyadic_kernel_infinite_dimensional"
+    },
+    {
+      "declaration": "fullTotientKernelFamily_canonicalTotientKernelToFull",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 979,
+      "role": "substrate",
+      "statement_node": "full_dyadic_kernel_infinite_dimensional"
+    },
+    {
+      "declaration": "range_canonicalTotientKernelFamily_subset_full",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 991,
+      "role": "substrate",
+      "statement_node": "full_dyadic_kernel_infinite_dimensional"
+    },
+    {
+      "declaration": "nat_le_two_pow_self",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 998,
+      "role": "substrate",
+      "statement_node": "full_dyadic_kernel_infinite_dimensional"
+    },
+    {
+      "declaration": "not_finiteDimensional_span_fullTotientKernel",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1014,
+      "role": "statement",
+      "statement_node": "full_dyadic_kernel_infinite_dimensional"
+    },
+    {
+      "declaration": "CompressedAdjointCertificate",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1039,
+      "role": "concept",
+      "statement_node": "compressed_adjoint_contradiction_consumer"
+    },
+    {
+      "declaration": "false_of_compressedAdjointCertificate",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1051,
+      "role": "statement",
+      "statement_node": "compressed_adjoint_contradiction_consumer"
+    },
+    {
+      "declaration": "of",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1066,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "TotientOddCoreIndex",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1083,
+      "role": "concept",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "oddCoreTotientKernelFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1086,
+      "role": "concept",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "oddCoreLevel",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1092,
+      "role": "substrate",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "canonicalToOddCore",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1097,
+      "role": "substrate",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "oddCoreToCanonical",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1103,
+      "role": "substrate",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "oddCoreTotientKernelFamily_canonicalToOddCore",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1108,
+      "role": "substrate",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "canonicalToOddCore_oddCoreToCanonical",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1117,
+      "role": "substrate",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "linearIndependent_oddCoreTotientKernelFamily",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1133,
+      "role": "statement",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "range_oddCoreTotientKernelFamily_subset_full",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1157,
+      "role": "substrate",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "totientKernelSeq_zero_mem_span_oddCore",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1171,
+      "role": "statement",
+      "statement_node": "dyadic_channel_odd_core_reduction"
+    },
+    {
+      "declaration": "totientKernelSeq_odd_mem_span_oddCore",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1187,
+      "role": "substrate",
+      "statement_node": "dyadic_channel_odd_core_reduction"
+    },
+    {
+      "declaration": "totientKernelSeq_mem_span_oddCore",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1206,
+      "role": "statement",
+      "statement_node": "dyadic_channel_odd_core_reduction"
+    },
+    {
+      "declaration": "span_range_fullTotientKernel_eq_span_range_oddCore",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1248,
+      "role": "statement",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "totientDyadicSectionBasis",
+      "module": "Erdos249257/TotientMahlerDefect.lean",
+      "line": 1260,
+      "role": "representation",
+      "statement_node": "dyadic_section_basis_classification"
+    },
+    {
+      "declaration": "carryDerivative",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 24,
+      "role": "concept",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "carryDerivative_eq_scaledCoeff_of_recurrence",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 29,
+      "role": "statement",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "totient_temperedOrbit_derivative",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 43,
+      "role": "statement",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "totient_carryDerivative_coprime_mul",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 52,
+      "role": "statement",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "totient_carryDerivative_gcd_mul",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 68,
+      "role": "statement",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "carryKernelSeq",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 88,
+      "role": "concept",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "totient_carryKernel_diff",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 94,
+      "role": "statement",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "TotientOddIndex",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 111,
+      "role": "concept",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "TotientCarryIndex",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 115,
+      "role": "concept",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "canonicalTotientOddKernelFamily",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 119,
+      "role": "concept",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "canonicalCarryKernelFamily",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 125,
+      "role": "concept",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "carryEvenIndex",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 130,
+      "role": "substrate",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "carryOddIndex",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 136,
+      "role": "substrate",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "canonicalCarryDifferenceFamily",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 142,
+      "role": "concept",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "card_totientOddIndex",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 148,
+      "role": "substrate",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "linearIndependent_totientOddKernelFamily",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 160,
+      "role": "substrate",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "linearIndependent_totientOddKernelFamily_of_certificate",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 172,
+      "role": "substrate",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "canonicalCarryDifferenceFamily_eq_smul_totient",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 182,
+      "role": "statement",
+      "statement_node": "carry_derivative_totient_transport"
+    },
+    {
+      "declaration": "canonicalCarryDifferenceFamily_mem_span",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 197,
+      "role": "substrate",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "finrank_canonicalCarryKernel_ge_of_linearIndependent",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 211,
+      "role": "statement",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "finrank_canonicalCarryKernel_ge_of_certificate",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 245,
+      "role": "statement",
+      "statement_node": "finite_level_carry_anti_compression"
+    },
+    {
+      "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 259,
+      "role": "statement",
+      "statement_node": "rationality_forces_unbounded_carry_rank"
+    },
+    {
+      "declaration": "not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+      "module": "Erdos249257/TotientCarryKernelRigidity.lean",
+      "line": 284,
+      "role": "statement",
+      "statement_node": "rationality_forces_unbounded_carry_rank"
+    },
+    {
+      "declaration": "curvatureTail",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 27,
+      "role": "concept",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "curvatureWindow",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 31,
+      "role": "concept",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "curvatureShiftedTail",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 35,
+      "role": "concept",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "curvatureDrive",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 40,
+      "role": "concept",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "abs_curvatureDrive_le",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 46,
+      "role": "statement",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "sharpCurvatureRadius",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 62,
+      "role": "concept",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "totientTail_le_succ",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 66,
+      "role": "statement",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "two_pow_mul_curvature_eq_window_add_shifted",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 119,
+      "role": "statement",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "abs_curvatureShiftedTail_le",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 137,
+      "role": "statement",
+      "statement_node": "curvature_window_split_sharp_radius"
+    },
+    {
+      "declaration": "sharpCurvatureCert",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 151,
+      "role": "concept",
+      "statement_node": "curvature_residue_gap_nonintegrality"
+    },
+    {
+      "declaration": "curvature_notMem_int_of_sharpCurvatureCert",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 159,
+      "role": "statement",
+      "statement_node": "curvature_residue_gap_nonintegrality"
+    },
+    {
+      "declaration": "SharpCurvatureSupply",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 197,
+      "role": "concept",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "SharpCurvatureAnyDepthSupply",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 202,
+      "role": "concept",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_sharpCurvatureSupply",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 206,
+      "role": "statement",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_sharpCurvatureAnyDepthSupply",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 234,
+      "role": "statement",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "curvatureWindow_succ",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 259,
+      "role": "statement",
+      "statement_node": "curvature_window_doubling_recurrence"
+    },
+    {
+      "declaration": "curvatureCarryOrbit",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 268,
+      "role": "concept",
+      "statement_node": "curvature_window_doubling_recurrence"
+    },
+    {
+      "declaration": "curvatureBlockLocked",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 273,
+      "role": "concept",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "curvatureEndpointSurvivor",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 278,
+      "role": "concept",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "curvatureCarryOrbit_curvatureWindow",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 283,
+      "role": "statement",
+      "statement_node": "curvature_window_doubling_recurrence"
+    },
+    {
+      "declaration": "CurvaturePhaseCertificate",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 294,
+      "role": "concept",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "CurvaturePhaseCertificateSupply",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 303,
+      "role": "concept",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_phaseCertificateSupply",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 308,
+      "role": "statement",
+      "statement_node": "curvature_supply_implies_249"
+    },
+    {
+      "declaration": "scaledRoughLoss",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 317,
+      "role": "concept",
+      "statement_node": "curvature_drive_common_carrier_identity"
+    },
+    {
+      "declaration": "curvatureDrive_commonCarrier",
+      "module": "Erdos249257/CurvatureCarry.lean",
+      "line": 323,
+      "role": "statement",
+      "statement_node": "curvature_drive_common_carrier_identity"
+    },
+    {
+      "declaration": "VUSymbol",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 26,
+      "role": "concept",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "VUCompatible",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 32,
+      "role": "concept",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "vuModulus",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 38,
+      "role": "concept",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "vuRadius",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 42,
+      "role": "concept",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "vuBaseDigit",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 46,
+      "role": "concept",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "vuCentredStep",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 51,
+      "role": "concept",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "vuModulus_eq_two_mul_radius",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 56,
+      "role": "substrate",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "vu_step_has_centred_completion",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 69,
+      "role": "statement",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "VUOrbit",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 106,
+      "role": "concept",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "vu_word_has_prefix_locked_completion",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 115,
+      "role": "statement",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "fixedPrecisionTropicalNoGo",
+      "module": "Erdos249257/TropicalCurvatureCarry.lean",
+      "line": 137,
+      "role": "statement",
+      "statement_node": "fixed_precision_tropical_no_go"
+    },
+    {
+      "declaration": "threeTransportTail",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 24,
+      "role": "concept",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "threeTransportDrive",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 29,
+      "role": "concept",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "threeTransportWindow",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 34,
+      "role": "concept",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "threeTransportShiftedTail",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 38,
+      "role": "concept",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "threeTransportRadius",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 44,
+      "role": "concept",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "abs_threeTransportDrive_le",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 48,
+      "role": "statement",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "two_pow_mul_threeTransport_eq_window_add_shifted",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 67,
+      "role": "statement",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "abs_threeTransportShiftedTail_le",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 86,
+      "role": "statement",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "threeTransportWindow_succ",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 102,
+      "role": "statement",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "sharpThreeTransportCert",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 111,
+      "role": "concept",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "sharpThreeTransportCert_depth_floor",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 119,
+      "role": "substrate",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "threeTransport_notMem_int_of_cert",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 126,
+      "role": "statement",
+      "statement_node": "three_transport_window_certificate"
+    },
+    {
+      "declaration": "threeTransportTail_eq_commutator",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 166,
+      "role": "statement",
+      "statement_node": "three_transport_alias_of_exponent_only_commutator"
+    },
+    {
+      "declaration": "RoughnessBoundaryLatticeSupply",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 173,
+      "role": "concept",
+      "statement_node": "three_transport_supply_implies_249"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_roughnessBoundaryLatticeSupply",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 177,
+      "role": "statement",
+      "statement_node": "three_transport_supply_implies_249"
+    },
+    {
+      "declaration": "threeTransportWindow_60_12",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 197,
+      "role": "finite_instance",
+      "statement_node": "three_transport_finite_certificate_60_12"
+    },
+    {
+      "declaration": "sharpThreeTransportCert_60_12",
+      "module": "Erdos249257/ThreeTransportBoundary.lean",
+      "line": 203,
+      "role": "finite_instance",
+      "statement_node": "three_transport_finite_certificate_60_12"
+    },
+    {
+      "declaration": "totient_mul_prime_cocycle",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 34,
+      "role": "statement",
+      "statement_node": "prime_dilation_cocycle"
+    },
+    {
+      "declaration": "totient_dilation_clean_of_square_residue",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 48,
+      "role": "statement",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "totient_dilation_clean_of_square_witness",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 70,
+      "role": "statement",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "exists_square_witness_of_modEq",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 87,
+      "role": "substrate",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "totient_dilation_clean_of_square_modEq",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 98,
+      "role": "statement",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "pairwise_coprime_prime_squares",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 118,
+      "role": "substrate",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "exists_squareCRT_base",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 131,
+      "role": "substrate",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "exists_squareCRT_base_of_distinct_primes",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 148,
+      "role": "statement",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "exists_large_squareCRT_base",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 164,
+      "role": "statement",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "exists_squareCRT_clean_totient_family",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 198,
+      "role": "statement",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "exists_squareCRT_clean_horizon",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 228,
+      "role": "statement",
+      "statement_node": "square_crt_correction_suppression"
+    },
+    {
+      "declaration": "alternating_powerset_sum_eq_zero_of_insert_invariant",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 264,
+      "role": "statement",
+      "statement_node": "alternating_cube_insertion_cancellation"
+    },
+    {
+      "declaration": "actualOneCubeCoeff",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 280,
+      "role": "concept",
+      "statement_node": "clean_square_cube_does_not_separate"
+    },
+    {
+      "declaration": "squareCRT_clean_block_can_vanish",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 285,
+      "role": "finite_instance",
+      "statement_node": "clean_square_cube_does_not_separate"
+    },
+    {
+      "declaration": "squareCRT_vanishing_countermodel_is_clean",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 294,
+      "role": "finite_instance",
+      "statement_node": "clean_square_cube_does_not_separate"
+    },
+    {
+      "declaration": "squareCRT_clean_block_can_be_nonzero",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 303,
+      "role": "finite_instance",
+      "statement_node": "clean_square_cube_does_not_separate"
+    },
+    {
+      "declaration": "squareCRT_nonzero_countermodel_is_clean",
+      "module": "Erdos249257/SquareCRTCube.lean",
+      "line": 311,
+      "role": "finite_instance",
+      "statement_node": "clean_square_cube_does_not_separate"
+    },
+    {
+      "declaration": "diagonalTailDifferenceAt",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 21,
+      "role": "concept",
+      "statement_node": "prime_jump_window_sharp_radius"
+    },
+    {
+      "declaration": "primeJumpTailCommutator",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 25,
+      "role": "concept",
+      "statement_node": "prime_jump_window_sharp_radius"
+    },
+    {
+      "declaration": "primeJumpWindowCommutator",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 30,
+      "role": "concept",
+      "statement_node": "prime_jump_window_sharp_radius"
+    },
+    {
+      "declaration": "primeJumpSharpRadius",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 37,
+      "role": "concept",
+      "statement_node": "prime_jump_window_sharp_radius"
+    },
+    {
+      "declaration": "primeJumpSharpKill",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 42,
+      "role": "concept",
+      "statement_node": "prime_jump_window_sharp_radius"
+    },
+    {
+      "declaration": "notMem_int_of_window_remainder_bound",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 53,
+      "role": "statement",
+      "statement_node": "generic_window_residue_gap_soundness"
+    },
+    {
+      "declaration": "primeJumpTailCommutator_eq_window_add_remainder",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 91,
+      "role": "statement",
+      "statement_node": "prime_jump_window_sharp_radius"
+    },
+    {
+      "declaration": "primeJumpTailCommutator_notMem_int_of_sharpKill",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 178,
+      "role": "statement",
+      "statement_node": "prime_jump_window_sharp_radius"
+    },
+    {
+      "declaration": "primeJumpSharpKill_twelve_five",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 186,
+      "role": "finite_instance",
+      "statement_node": "prime_jump_finite_certificate_12_5_15"
+    },
+    {
+      "declaration": "irrational_totient_series_of_primeJumpSharpKill_supply",
+      "module": "Erdos249257/PrimeJumpWindow.lean",
+      "line": 193,
+      "role": "statement",
+      "statement_node": "prime_jump_supply_implies_249"
+    },
+    {
+      "declaration": "residueHeckeDefect",
+      "module": "Erdos249257/PrimeJumpMigration.lean",
+      "line": 23,
+      "role": "concept",
+      "statement_node": "prime_jump_channel_migration"
+    },
+    {
+      "declaration": "postJumpResidueChannel",
+      "module": "Erdos249257/PrimeJumpMigration.lean",
+      "line": 28,
+      "role": "concept",
+      "statement_node": "prime_jump_channel_migration"
+    },
+    {
+      "declaration": "preJumpMigrationChannel",
+      "module": "Erdos249257/PrimeJumpMigration.lean",
+      "line": 33,
+      "role": "concept",
+      "statement_node": "prime_jump_channel_migration"
+    },
+    {
+      "declaration": "residueHeckeDefect_eq_postJump_add_migration",
+      "module": "Erdos249257/PrimeJumpMigration.lean",
+      "line": 38,
+      "role": "statement",
+      "statement_node": "prime_jump_channel_migration"
+    },
+    {
+      "declaration": "residueHeckeDefect_eq_zero_of_dvd",
+      "module": "Erdos249257/PrimeJumpMigration.lean",
+      "line": 46,
+      "role": "statement",
+      "statement_node": "prime_jump_channel_migration"
+    },
+    {
+      "declaration": "residueHeckeDefect_five_twelve",
+      "module": "Erdos249257/PrimeJumpMigration.lean",
+      "line": 58,
+      "role": "finite_instance",
+      "statement_node": "migration_sign_reversal_fixture"
+    },
+    {
+      "declaration": "postJumpResidueChannel_five_twelve",
+      "module": "Erdos249257/PrimeJumpMigration.lean",
+      "line": 66,
+      "role": "finite_instance",
+      "statement_node": "migration_sign_reversal_fixture"
+    },
+    {
+      "declaration": "squarefree_dvd_mul_iff_of_dvd",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 36,
+      "role": "statement",
+      "statement_node": "squarefree_support_stability_under_exponent_jump"
+    },
+    {
+      "declaration": "squarefree_dvd_prime_mul_iff_of_prime_dvd",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 56,
+      "role": "statement",
+      "statement_node": "squarefree_support_stability_under_exponent_jump"
+    },
+    {
+      "declaration": "mobius_ne_zero_dvd_mul_iff_of_dvd",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 62,
+      "role": "statement",
+      "statement_node": "squarefree_support_stability_under_exponent_jump"
+    },
+    {
+      "declaration": "transportResidueOffset",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 72,
+      "role": "concept",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "transportResidueKernel",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 76,
+      "role": "concept",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "transportResidueIncrement",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 84,
+      "role": "concept",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "residueTransportDefect",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 88,
+      "role": "concept",
+      "statement_node": "old_channel_moment_annihilation"
+    },
+    {
+      "declaration": "transportResidueIncrement_of_dvd",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 92,
+      "role": "statement",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "residueTransportDefect_eq_zero_of_dvd",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 112,
+      "role": "statement",
+      "statement_node": "old_channel_moment_annihilation"
+    },
+    {
+      "declaration": "residueSlope",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 125,
+      "role": "concept",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "residueIntercept",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 131,
+      "role": "concept",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "transportResidueKernel_eq_affineState",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 141,
+      "role": "statement",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "residueSlope_add_period",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 153,
+      "role": "statement",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "residueIntercept_add_period",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 158,
+      "role": "statement",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "threeTransportSlopePart",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 163,
+      "role": "concept",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "threeTransportInterceptPart",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 169,
+      "role": "concept",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "residueTransportDefect_three_eq_affineState",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 176,
+      "role": "statement",
+      "statement_node": "residue_kernel_affine_state"
+    },
+    {
+      "declaration": "threeTransportTailCommutator",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 192,
+      "role": "concept",
+      "statement_node": "three_transport_alias_of_exponent_only_commutator"
+    },
+    {
+      "declaration": "ExponentOnlyThreeTransportSupply",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 197,
+      "role": "concept",
+      "statement_node": "exponent_only_three_transport_supply_implies_249"
+    },
+    {
+      "declaration": "irrational_totient_series_of_exponentOnlyThreeTransportSupply",
+      "module": "Erdos249257/ExponentOnlyTransport.lean",
+      "line": 205,
+      "role": "statement",
+      "statement_node": "exponent_only_three_transport_supply_implies_249"
+    },
+    {
+      "declaration": "oldChannel_affine_moment_annihilation",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 36,
+      "role": "statement",
+      "statement_node": "old_channel_moment_annihilation"
+    },
+    {
+      "declaration": "joint35_oldChannel_zero",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 71,
+      "role": "statement",
+      "statement_node": "old_channel_moment_annihilation"
+    },
+    {
+      "declaration": "joint35ConeTail",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 108,
+      "role": "concept",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "joint35ConeWindow",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 113,
+      "role": "concept",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "joint35ConeShiftedTail",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 119,
+      "role": "concept",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "sharpJoint35ConeRadius",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 124,
+      "role": "concept",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "two_pow_mul_joint35Cone_eq_window_add_shifted",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 127,
+      "role": "statement",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "abs_joint35ConeShiftedTail_le",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 148,
+      "role": "statement",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "sharpJoint35ConeCert",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 164,
+      "role": "concept",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "joint35Cone_notMem_int_of_cert",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 172,
+      "role": "statement",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "AnchoredJoint35ConeSupply",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 211,
+      "role": "concept",
+      "statement_node": "joint35_supply_implies_249"
+    },
+    {
+      "declaration": "irrational_totient_series_of_anchoredJoint35ConeSupply",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 217,
+      "role": "statement",
+      "statement_node": "joint35_supply_implies_249"
+    },
+    {
+      "declaration": "joint35ConeDrive",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 241,
+      "role": "concept",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "joint35ConeWindow_succ",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 246,
+      "role": "statement",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "joint35TransportTail",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 256,
+      "role": "concept",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "joint35TransportTail_expand",
+      "module": "Erdos249257/JointExponentTransport.lean",
+      "line": 259,
+      "role": "representation",
+      "statement_node": "joint35_cone_window_certificate"
+    },
+    {
+      "declaration": "scalarLocalization_complement_dvd",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
+      "line": 23,
+      "role": "statement",
+      "statement_node": "scalar_localisation_height_barrier"
+    },
+    {
+      "declaration": "scalarLocalization_divisor_dvd_coefficient",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
+      "line": 45,
+      "role": "statement",
+      "statement_node": "scalar_localisation_height_barrier"
+    },
+    {
+      "declaration": "scalarLocalization_integer_eq_mul_num",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
+      "line": 56,
+      "role": "statement",
+      "statement_node": "scalar_localisation_height_barrier"
+    },
+    {
+      "declaration": "positiveRat_numDivisor_mul_lt_two_mul_den",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
+      "line": 77,
+      "role": "statement",
+      "statement_node": "positive_rational_height_inequality"
+    },
+    {
+      "declaration": "positiveRat_twoPow_mul_lt_two_mul_den",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
+      "line": 96,
+      "role": "statement",
+      "statement_node": "positive_rational_height_inequality"
+    },
+    {
+      "declaration": "positiveRat_mersenne_height",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
+      "line": 103,
+      "role": "statement",
+      "statement_node": "positive_rational_height_inequality"
+    },
+    {
+      "declaration": "linearDescender_eq_smul_eval",
+      "module": "Erdos249257/AdelicHeightObstruction.lean",
+      "line": 120,
+      "role": "statement",
+      "statement_node": "scalar_localisation_height_barrier"
+    },
+    {
+      "declaration": "checkerboard",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 15,
+      "role": "concept",
+      "statement_node": "checkerboard_unique_joint_annihilator"
+    },
+    {
+      "declaration": "checkerboard_separable",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 19,
+      "role": "statement",
+      "statement_node": "checkerboard_unique_joint_annihilator"
+    },
+    {
+      "declaration": "checkerboard_unique",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 25,
+      "role": "statement",
+      "statement_node": "checkerboard_unique_joint_annihilator"
+    },
+    {
+      "declaration": "fourPoint_layer_identity",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 38,
+      "role": "statement",
+      "statement_node": "four_point_divisor_layer_identity"
+    },
+    {
+      "declaration": "residueClass_step_has_centred_completion",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 55,
+      "role": "statement",
+      "statement_node": "affine_step_centred_completion"
+    },
+    {
+      "declaration": "PrimeRayLayerSupply",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 88,
+      "role": "concept",
+      "statement_node": "prime_ray_cyclotomic_open_sockets"
+    },
+    {
+      "declaration": "BoundedDegreeOrderConsumer",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 95,
+      "role": "concept",
+      "statement_node": "prime_ray_cyclotomic_open_sockets"
+    },
+    {
+      "declaration": "FinitePrimeSupportEscape",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 102,
+      "role": "concept",
+      "statement_node": "prime_ray_cyclotomic_open_sockets"
+    },
+    {
+      "declaration": "muSqLocal",
+      "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "line": 17,
+      "role": "concept",
+      "statement_node": "euler_sieve_local_identities"
+    },
+    {
+      "declaration": "sigmaPrimePow",
+      "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "line": 24,
+      "role": "concept",
+      "statement_node": "euler_sieve_local_identities"
+    },
+    {
+      "declaration": "muSqEulerFactor_one",
+      "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "line": 28,
+      "role": "statement",
+      "statement_node": "euler_sieve_local_identities"
+    },
+    {
+      "declaration": "muSqEulerFactor_two",
+      "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "line": 36,
+      "role": "statement",
+      "statement_node": "euler_sieve_local_identities"
+    },
+    {
+      "declaration": "sigmaPrimePow_firstDiff",
+      "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "line": 44,
+      "role": "statement",
+      "statement_node": "euler_sieve_local_identities"
+    },
+    {
+      "declaration": "sigmaPrimePow_secondDiff",
+      "module": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
+      "line": 51,
+      "role": "statement",
+      "statement_node": "euler_sieve_local_identities"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "dyadic_channel_odd_core_reduction",
+      "to": "totient_two_adic_scaling",
+      "relation": "specialises",
+      "basis": "The channel reductions are the two-adic scaling identities read on the sequences n |-> phi(2^j n + r)."
+    },
+    {
+      "from": "finite_level_dyadic_totient_independence",
+      "to": "crt_dirichlet_parity_row",
+      "relation": "depends_on_open",
+      "basis": "Placeholder-free dependency: the independence proof consumes the parity rows; no open hypothesis is involved, the edge records which construction carries it."
+    },
+    {
+      "from": "finite_level_dyadic_totient_independence",
+      "to": "parity_separated_determinant_criterion",
+      "relation": "depends_on_open",
+      "basis": "The rows are turned into a nonzero minor by the mod-2 unipotence determinant criterion."
+    },
+    {
+      "from": "full_dyadic_kernel_infinite_dimensional",
+      "to": "finite_level_dyadic_totient_independence",
+      "relation": "specialises",
+      "basis": "Infinite dimensionality is the finite-level rank 2^e + 1 instantiated at e equal to a hypothetical ambient finrank."
+    },
+    {
+      "from": "dyadic_section_basis_classification",
+      "to": "full_dyadic_kernel_infinite_dimensional",
+      "relation": "generalises",
+      "basis": "The explicit basis determines the whole relation module and in particular implies the span is infinite dimensional."
+    },
+    {
+      "from": "dyadic_section_basis_classification",
+      "to": "dyadic_channel_odd_core_reduction",
+      "relation": "depends_on_open",
+      "basis": "Spanning comes from the odd-core reduction; independence from the finite-level theorem."
+    },
+    {
+      "from": "finite_level_carry_anti_compression",
+      "to": "carry_derivative_totient_transport",
+      "relation": "depends_on_open",
+      "basis": "The carry differences that realise the independent totient channels are supplied by the carry-derivative identity."
+    },
+    {
+      "from": "rationality_forces_unbounded_carry_rank",
+      "to": "finite_level_carry_anti_compression",
+      "relation": "specialises",
+      "basis": "The rationality-supplied tempered orbit is fed into the finite-level rank bound at every level."
+    },
+    {
+      "from": "curvature_residue_gap_nonintegrality",
+      "to": "curvature_window_split_sharp_radius",
+      "relation": "depends_on_open",
+      "basis": "The separation argument needs the exact split and the sharp remainder radius."
+    },
+    {
+      "from": "curvature_supply_implies_249",
+      "to": "curvature_residue_gap_nonintegrality",
+      "relation": "depends_on_open",
+      "basis": "The conditional endpoint consumes the non-integrality criterion against lcm-cone flatness."
+    },
+    {
+      "from": "curvature_residue_gap_nonintegrality",
+      "to": "generic_window_residue_gap_soundness",
+      "relation": "specialises",
+      "basis": "Same lattice-separation argument, re-proved inline for the curvature word."
+    },
+    {
+      "from": "three_transport_window_certificate",
+      "to": "generic_window_residue_gap_soundness",
+      "relation": "specialises",
+      "basis": "Same lattice-separation argument, re-proved inline for the balanced boundary word."
+    },
+    {
+      "from": "joint35_cone_window_certificate",
+      "to": "generic_window_residue_gap_soundness",
+      "relation": "specialises",
+      "basis": "Same lattice-separation argument, re-proved inline for the joint cone word."
+    },
+    {
+      "from": "three_transport_supply_implies_249",
+      "to": "three_transport_window_certificate",
+      "relation": "depends_on_open",
+      "basis": "The endpoint consumes the non-integrality criterion; the supply itself is unproved."
+    },
+    {
+      "from": "three_transport_finite_certificate_60_12",
+      "to": "three_transport_window_certificate",
+      "relation": "finite_instance_of",
+      "basis": "A single kernel-checked value of the decidable certificate predicate at H = 60, L = 12."
+    },
+    {
+      "from": "three_transport_alias_of_exponent_only_commutator",
+      "to": "three_transport_window_certificate",
+      "relation": "alias_of",
+      "basis": "The balanced word and the exponent-only commutator are the same function, proved by rfl."
+    },
+    {
+      "from": "exponent_only_three_transport_supply_implies_249",
+      "to": "three_transport_supply_implies_249",
+      "relation": "reformulates",
+      "basis": "Same four-vertex observable and same flatness contradiction; the difference is that the hypothesis is stated as bare non-integrality on a 3^a tower rather than as a decidable window certificate."
+    },
+    {
+      "from": "prime_jump_finite_certificate_12_5_15",
+      "to": "prime_jump_window_sharp_radius",
+      "relation": "finite_instance_of",
+      "basis": "A single kernel-checked value of the decidable prime-jump certificate at H = 12, p = 5, L = 15."
+    },
+    {
+      "from": "prime_jump_supply_implies_249",
+      "to": "prime_jump_window_sharp_radius",
+      "relation": "depends_on_open",
+      "basis": "The endpoint consumes the sharp non-integrality criterion; the supply is an unproved inline hypothesis."
+    },
+    {
+      "from": "prime_jump_channel_migration",
+      "to": "old_channel_moment_annihilation",
+      "relation": "reformulates",
+      "basis": "Both say that channels already dividing H cancel in a moment-balanced transport; they are stated on two different residue kernels."
+    },
+    {
+      "from": "joint35_supply_implies_249",
+      "to": "joint35_cone_window_certificate",
+      "relation": "depends_on_open",
+      "basis": "The endpoint consumes the joint cone non-integrality criterion; the supply is unproved and has no finite instance in this module."
+    },
+    {
+      "from": "old_channel_moment_annihilation",
+      "to": "residue_kernel_affine_state",
+      "relation": "depends_on_open",
+      "basis": "The annihilation is exactly the vanishing of the zeroth and first moments against the affine state decomposition."
+    },
+    {
+      "from": "clean_square_cube_does_not_separate",
+      "to": "square_crt_correction_suppression",
+      "relation": "barrier_for",
+      "basis": "Two kernel-checked clean cubes show correction suppression alone neither forces nor forbids a nonzero cube coefficient, so cleanness is not by itself a separation mechanism."
+    },
+    {
+      "from": "affine_step_centred_completion",
+      "to": "fixed_precision_tropical_no_go",
+      "relation": "generalises",
+      "basis": "The prime-ray lemma is the tropical one-step recentring with the valuation-unit dressing replaced by an arbitrary residue class modulo an even modulus."
+    },
+    {
+      "from": "curvature_window_doubling_recurrence",
+      "to": "curvature_window_split_sharp_radius",
+      "relation": "reformulates",
+      "basis": "The window is re-presented as an affine carry orbit driven by the fresh totient letters."
+    },
+    {
+      "from": "curvature_drive_common_carrier_identity",
+      "to": "curvature_window_split_sharp_radius",
+      "relation": "reformulates",
+      "basis": "A denominator-free rewriting of the same drive letters through the scaled rough loss."
+    },
+    {
+      "from": "prime_dilation_cocycle",
+      "to": "square_crt_correction_suppression",
+      "relation": "implies",
+      "basis": "The correction-free branch of the cocycle is what the square congruence arranges on the finite horizon."
+    },
+    {
+      "from": "positive_rational_height_inequality",
+      "to": "scalar_localisation_height_barrier",
+      "relation": "reformulates",
+      "basis": "The Archimedean half of the same height bookkeeping: what the localiser gains 2-adically it pays in denominator size."
+    }
+  ]
+}

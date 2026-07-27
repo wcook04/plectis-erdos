@@ -17,19 +17,23 @@ pinned snapshot.  A link can then be wrong only if it was wrong when written.
 
 Run from the repository root:
 
-    python3 scripts/check_problem_note_sources.py
+    python3 scripts/check_problem_note_sources.py --coverage
 
 ``--list`` prints the resolved link inventory instead of only a verdict.
+``--coverage`` additionally requires module-qualified links to the configured
+headline declarations and gates the fraction of current declarations reached.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 import subprocess
 import sys
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 PREAMBLE = ROOT / "paper" / "problem-note-preamble.tex"
@@ -47,7 +51,9 @@ LIBRARY_PREFIX = "ErdosProblems"
 SIBLING_LIBRARIES = ("Erdos249257",)
 
 COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
-NOTE_COMMIT_RE = re.compile(r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}")
+NOTE_COMMIT_RE = re.compile(
+    r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}"
+)
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 LINK_RE = re.compile(
     r"""\\[lm]word\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
@@ -71,6 +77,57 @@ DECL_KEYWORDS = (
 
 def strip_comments(text: str) -> str:
     return "\n".join(COMMENT_RE.sub("", line) for line in text.splitlines())
+
+
+def strip_lean_comments(text: str) -> str:
+    """Remove nested Lean comments while preserving source line boundaries."""
+    output: list[str] = []
+    index = 0
+    block_depth = 0
+    in_string = False
+    escaped = False
+    while index < len(text):
+        if block_depth:
+            if text.startswith("/-", index):
+                block_depth += 1
+                output.extend((" ", " "))
+                index += 2
+            elif text.startswith("-/", index):
+                block_depth -= 1
+                output.extend((" ", " "))
+                index += 2
+            else:
+                character = text[index]
+                output.append("\n" if character == "\n" else " ")
+                index += 1
+            continue
+
+        character = text[index]
+        if in_string:
+            output.append(character)
+            index += 1
+            if escaped:
+                escaped = False
+            elif character == "\\":
+                escaped = True
+            elif character == '"':
+                in_string = False
+            continue
+
+        if text.startswith("/-", index):
+            block_depth = 1
+            output.extend((" ", " "))
+            index += 2
+        elif text.startswith("--", index):
+            while index < len(text) and text[index] != "\n":
+                output.append(" ")
+                index += 1
+        else:
+            output.append(character)
+            index += 1
+            if character == '"':
+                in_string = True
+    return "".join(output)
 
 
 def note_sources() -> list[str]:
@@ -132,6 +189,11 @@ def library_relative(file_name: str) -> str:
     return f"{LIBRARY_PREFIX}/{file_name}"
 
 
+def module_relative(module_name: str) -> str:
+    """Repository path for a dotted Lean module name."""
+    return "/".join(module_name.split(".")) + ".lean"
+
+
 ATTRIBUTE_RE = re.compile(r"^\s*@\[[^\]]*\]\s*")
 
 
@@ -181,7 +243,7 @@ def note_for_problem() -> list[tuple[dict, str]]:
 def declarations_in(text: str) -> list[str]:
     """Every declaration name a Lean source declares, in file order."""
     names: list[str] = []
-    for line in text.splitlines():
+    for line in strip_lean_comments(text).splitlines():
         stripped = ATTRIBUTE_RE.sub("", line).strip()
         for keyword in DECL_KEYWORDS:
             for prefix in ("", "private ", "protected ", "noncomputable ", "nonrec "):
@@ -199,34 +261,130 @@ def declarations_in(text: str) -> list[str]:
     return names
 
 
+DeclarationKey = tuple[str, str]
+
+
+def linked_declaration_keys(note_text: str) -> set[DeclarationKey]:
+    """Module-qualified declarations linked by one problem note."""
+    return {
+        (library_relative(file_name), declaration)
+        for file_name, _line, declaration in links(note_text)
+        if declaration is not None
+    }
+
+
+def declarations_for_module(relative: str, text: str) -> list[DeclarationKey]:
+    """Module-qualified declarations parsed from one live Lean source."""
+    return [(relative, name) for name in declarations_in(text)]
+
+
+def validated_coverage_floor(index: dict[str, Any]) -> tuple[float | None, list[str]]:
+    """Return a finite coverage floor in `(0, 1]`, or a validation failure."""
+    value = index.get("note_coverage_floor")
+    if (
+        isinstance(value, bool)
+        or not isinstance(value, (int, float))
+        or not math.isfinite(float(value))
+        or not 0 < float(value) <= 1
+    ):
+        return None, [
+            "note_coverage_floor must be a finite number in the interval (0, 1]"
+        ]
+    return float(value), []
+
+
+def required_note_declaration_failures(
+    row: dict[str, Any],
+    current: set[DeclarationKey],
+    linked: set[DeclarationKey],
+) -> list[str]:
+    """Validate and enforce the problem's module-qualified headline anchors."""
+    failures: list[str] = []
+    raw_anchors = row.get("required_note_declarations")
+    if not isinstance(raw_anchors, list) or not raw_anchors:
+        return [
+            f"{row['problem_id']}: required_note_declarations must be a nonempty list"
+        ]
+
+    allowed_modules = {
+        module_relative(module)
+        for module in [row["principal_module"], *row.get("companion_modules", [])]
+    }
+    seen: set[DeclarationKey] = set()
+    for anchor in raw_anchors:
+        if not isinstance(anchor, dict):
+            failures.append(
+                f"{row['problem_id']}: required note declaration must be an object"
+            )
+            continue
+        module = anchor.get("module")
+        declaration = anchor.get("declaration")
+        if not isinstance(module, str) or not module:
+            failures.append(
+                f"{row['problem_id']}: required note declaration has invalid module"
+            )
+            continue
+        if not isinstance(declaration, str) or not declaration:
+            failures.append(
+                f"{row['problem_id']}: required note declaration has invalid declaration"
+            )
+            continue
+        key = (module_relative(module), declaration)
+        if key in seen:
+            failures.append(
+                f"{row['problem_id']}: duplicate required note declaration "
+                f"{key[0]}::{key[1]}"
+            )
+            continue
+        seen.add(key)
+        if key[0] not in allowed_modules:
+            failures.append(
+                f"{row['problem_id']}: required note declaration module "
+                f"{key[0]} is outside the indexed problem modules"
+            )
+        elif key not in current:
+            failures.append(
+                f"{row['problem_id']}: required note declaration "
+                f"{key[0]}::{key[1]} is absent from current source"
+            )
+        elif key not in linked:
+            failures.append(
+                f"{row['problem_id']}: note does not link required headline "
+                f"declaration {key[0]}::{key[1]}"
+            )
+    return failures
+
+
 def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
     """Report how much of each problem's current source its note reaches.
 
     A note pins its links to one commit, so it cannot break when the library
     moves.  The cost of that safety is that it can fall silently behind.  This
-    measures the gap in the only terms that matter to a reader: how many of the
-    declarations that exist *now* the note actually mentions, and whether the
-    modules have changed at all since the note was pinned.
+    measures the gap in the only terms that matter to a reader: whether every
+    configured headline declaration is linked, how many declarations that
+    exist *now* the note mentions, and whether the modules have changed at all
+    since the note was pinned.
     """
     lines: list[str] = []
     failures: list[str] = []
     index = json.loads(INDEX_SOURCE.read_text(encoding="utf-8"))
-    floor = index.get("note_coverage_floor", 0.0)
+    floor, floor_failures = validated_coverage_floor(index)
+    failures.extend(floor_failures)
     for row, source in note_for_problem():
         note_text = (ROOT / source).read_text(encoding="utf-8")
         commit = note_pinned_commit(note_text, default_commit)
-        linked = {declaration for _f, _l, declaration in links(note_text) if declaration}
+        linked = linked_declaration_keys(note_text)
         modules = [row["principal_module"], *row.get("companion_modules", [])]
-        current: list[str] = []
+        current: list[DeclarationKey] = []
         moved: list[str] = []
         for module in modules:
-            relative = "/".join(module.split(".")) + ".lean"
+            relative = module_relative(module)
             path = ROOT / relative
             if not path.is_file():
                 failures.append(f"{row['problem_id']}: {relative} is missing")
                 continue
             live = path.read_text(encoding="utf-8")
-            current.extend(declarations_in(live))
+            current.extend(declarations_for_module(relative, live))
             pinned = subprocess.run(
                 ["git", "show", f"{commit}:{relative}"],
                 cwd=ROOT,
@@ -238,7 +396,11 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
                 moved.append(relative)
         if not current:
             continue
-        covered = [name for name in current if name in linked]
+        current_set = set(current)
+        failures.extend(
+            required_note_declaration_failures(row, current_set, linked)
+        )
+        covered = [key for key in current if key in linked]
         ratio = len(covered) / len(current)
         status = "behind" if moved else "current"
         lines.append(
@@ -247,12 +409,14 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
         )
         if moved:
             lines.append(f"      moved since the pin: {', '.join(sorted(moved))}")
-            missing = [name for name in current if name not in linked]
+            missing = [key for key in current if key not in linked]
             if missing:
-                head = ", ".join(missing[:6])
+                head = ", ".join(
+                    f"{relative}::{name}" for relative, name in missing[:6]
+                )
                 more = "" if len(missing) <= 6 else f", and {len(missing) - 6} more"
                 lines.append(f"      not reached by the note: {head}{more}")
-        if ratio < floor:
+        if floor is not None and ratio < floor:
             failures.append(
                 f"{row['problem_id']}: note reaches {ratio:.0%} of current "
                 f"declarations, below the {floor:.0%} floor; rewrite the note "
@@ -267,7 +431,7 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
         if upstream:
             ahead = 0
             for module in modules:
-                relative = "/".join(module.split(".")) + ".lean"
+                relative = module_relative(module)
                 shown = subprocess.run(
                     ["git", "show", f"{upstream}:{relative}"],
                     cwd=ROOT,
@@ -323,7 +487,6 @@ def main() -> int:
                 ["git", "cat-file", "-e", f"{commit}^{{commit}}"],
                 cwd=ROOT,
                 capture_output=True,
-                text=True,
                 check=False,
             ).returncode
             != 0

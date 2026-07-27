@@ -1,0 +1,2348 @@
+{
+  "zone_id": "Z15",
+  "title": "Selected protected windows and the fixed-coefficient rewind seam",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "integer_half_carry",
+      "label": "integer half carry K_N",
+      "description": "The orbit K_0 = 1, K_{N+1} = 2K_N - f_A(N+2), where f_A(n) counts divisors of n lying in the support A; K stays in the square-root strip exactly when A's Mersenne series can reach 1/2."
+    },
+    {
+      "id": "half_strip",
+      "label": "square-root admissibility strip",
+      "description": "halfStripBound n = 2*sqrt(n) + 4; a depth-N Boolean word is admissible when every prefix carry lies in [1, halfStripBound n]."
+    },
+    {
+      "id": "half_word",
+      "label": "finite Boolean support word",
+      "description": "HalfWord N = Fin (N+1) -> Bool, the finite truncation of a candidate support A; restriction to smaller depth is literal."
+    },
+    {
+      "id": "selected_half_window",
+      "label": "selected protected window",
+      "description": "A depth-N family assigning to every terminal carry k in [1,R] one admissible word with that exact terminal carry (SelectedHalfWindow N R)."
+    },
+    {
+      "id": "next_row_divisor_agreement",
+      "label": "next-row divisor cylinder agreement",
+      "description": "All representatives of a window agree on membership of every divisor of N+1, hence share one next-row proper-divisor coefficient."
+    },
+    {
+      "id": "fixed_coefficient_rewind",
+      "label": "ceiling-parent rewind map",
+      "description": "Under a common coefficient c the canonical inverse parent is T_c(k) = (k+c+1)/2; iterating a coefficient list gives rewind cs."
+    },
+    {
+      "id": "rewind_closed_form_data",
+      "label": "offset, denominator, dyadic phase",
+      "description": "offset cs accumulates c+1 with doubling weights, denom cs = 2^len, phase cs = (1 + offset cs) mod denom cs; rewind cs k = (k + offset cs) / denom cs."
+    },
+    {
+      "id": "seam_pair",
+      "label": "adjacent-ancestor seam pair",
+      "description": "IsSeamPair cs B: the interval [1,B] rewinds onto two adjacent ancestors instead of one, the residual alternative left by width alone."
+    },
+    {
+      "id": "seam_cut",
+      "label": "seam cut threshold",
+      "description": "seamCut cs = denom cs - phase cs; targets at or below it rewind left, targets above it rewind right."
+    },
+    {
+      "id": "rewind_provenance",
+      "label": "exact rewind restriction provenance",
+      "description": "HasRewindRestrictionAt: every window word restricts to the base word indexed by its closed-form rewind ancestor; built up nil/cons along explicit steps."
+    },
+    {
+      "id": "suffix_numeral",
+      "label": "carry-one suffix numeral",
+      "description": "Binary value X of the removed suffix bits, newest row lowest; the dyadic phase of a realized history is exactly D - 1 - X."
+    },
+    {
+      "id": "protected_even_seam",
+      "label": "localized one-hole even seam",
+      "description": "EvenSeamReachable delta c k misses exactly k = 2*delta - c; ProtectedEvenSeamRealizedAt asks only that seam-reachable carries 3..27 be realized by admissible words."
+    },
+    {
+      "id": "unit_coefficient_drop",
+      "label": "unit drop between adjacent ancestors",
+      "description": "RewindBaseUnitDropAt: the left adjacent base ancestor has next-row coefficient c+1 and the right one has c; this is the sole extra object-level datum the seam branch needs."
+    },
+    {
+      "id": "half_divisor_boundary_pair",
+      "label": "half-divisor boundary pair",
+      "description": "RewindBaseHalfDivisorBoundaryPairAt: the two adjacent ancestors restrict, through the marked half divisor, to the true and false terminal extensions of one common word."
+    },
+    {
+      "id": "cofinal_admissibility",
+      "label": "cofinal finite admissibility",
+      "description": "Admissible finite words exist at cofinally many depths; by the imported inverse-limit compactness theorem this already yields an infinite support of value exactly 1/2."
+    },
+    {
+      "id": "half_value_endpoint",
+      "label": "the 1/2 membership endpoint",
+      "description": "Existence of an infinite A with sum over a in A of 1/(2^a - 1) equal to 1/2; the corpus's own open proposition remaining_open.half_value_membership, whose resolution would refute universal #257."
+    },
+    {
+      "id": "kernel_reflected_table",
+      "label": "kernel-reflected Boolean certificate",
+      "description": "Finite carry tables discharged by decide +kernel on executable wordCoeff/wordCarry, then bridged to the Set-based coefficients."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "rewind_closed_form",
+      "canonical_statement": "Iterating the ceiling parent maps T_c(k) = floor((k+c+1)/2) over a coefficient list, earliest row first, equals a single floor division: rewind(cs, k) = floor((k + offset(cs)) / 2^len(cs)), where offset accumulates each coefficient plus one with doubling weight. The resulting map is monotone in the terminal carry.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "rewind_eq_closedForm",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 49
+        },
+        {
+          "declaration": "rewind_mono",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 69
+        }
+      ],
+      "concepts": [
+        "fixed_coefficient_rewind",
+        "rewind_closed_form_data"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "induction on the list with Nat.add_mul_div_left and Nat.div_div_eq_div_mul",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary floor arithmetic: composition of affine ceiling maps collapsing to one division is standard and not specific to the Erdos objects. Only its use here is bespoke.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "rewind_dyadic_phase_criterion",
+      "canonical_statement": "For an interval [1,B] of width at most the rewind denominator D = 2^L with phase theta = (1 + offset) mod D: the whole interval rewinds to a single ancestor if and only if theta + (B-1) < D, and the interval is a seam pair (endpoints one apart) if and only if D <= theta + (B-1). Singleton behaviour on the whole interval is equivalent to singleton behaviour on the two endpoints alone.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "rewind_endpoint_eq_iff_phase_fit",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 99
+        },
+        {
+          "declaration": "isSeamPair_iff_phase_overflow",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 123
+        },
+        {
+          "declaration": "rewind_interval_singleton_iff_endpoint_eq",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 158
+        },
+        {
+          "declaration": "rewind_interval_singleton_iff_phase_fit",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 171
+        }
+      ],
+      "concepts": [
+        "fixed_coefficient_rewind",
+        "rewind_closed_form_data",
+        "seam_pair"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "closed form plus the add_div_eq_left_div_iff_phase_fit residue lemma",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Both sides are explicit decidable arithmetic at fixed parameters; neither side is open. The open question is only whether the phase-fit inequality holds at cofinally many depths, which nothing here addresses.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "rewind_width_dichotomy",
+      "canonical_statement": "If 1 <= B <= denom(cs) then the two endpoint ancestors differ by at most one, so either every target in [1,B] rewinds to the same ancestor or [1,B] is a seam pair; and in the seam-pair case every interior target lands on one of exactly those two adjacent ancestors. Width alone therefore yields a disjunction, not a singleton.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "rewind_endpoint_le_succ",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 86
+        },
+        {
+          "declaration": "rewind_eq_left_or_right_of_isSeamPair",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 147
+        },
+        {
+          "declaration": "rewind_singleton_or_isSeamPair",
+          "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+          "line": 180
+        }
+      ],
+      "concepts": [
+        "fixed_coefficient_rewind",
+        "seam_pair"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "monotonicity of rewind plus the endpoint gap bound",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The module docstring frames this as a correction ('never an unconditional singleton'). That negative claim is prose only: the Lean statement is the positive disjunction. What is formalised is the dichotomy, not an impossibility, so this is not a barrier.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_cut_threshold_classification",
+      "canonical_statement": "The scalar seam is a clean threshold. With seamCut(cs) = denom(cs) - phase(cs), a target k in [1,B] (B <= denom cs) rewinds to the left ancestor exactly when k <= seamCut(cs), and, when [1,B] is a genuine seam pair, rewinds to the right ancestor exactly when k > seamCut(cs). A genuine seam pair has seamCut(cs) < B, so both sides are nonempty.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "rewind_eq_left_iff_le_seamCut",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 32
+        },
+        {
+          "declaration": "seamCut_lt_rightEndpoint",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 50
+        },
+        {
+          "declaration": "rewind_eq_right_iff_seamCut_lt",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 62
+        }
+      ],
+      "concepts": [
+        "seam_cut",
+        "seam_pair",
+        "rewind_closed_form_data"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "phase criterion applied pointwise",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate repackaging of the phase criterion in threshold coordinates; no new arithmetic.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "fixed_coefficient_parent_cover",
+      "canonical_statement": "If a row's proper-divisor coefficient equals a constant C on every parent carry in [1,R], and the buffer inequality S + C <= 2R holds, then every target carry q in [1,S] has a parent k in [1,R] and a Boolean bit b with q = 2k - C - b. The explicit witness is the canonical ceiling parent k = floor((q + C + 1)/2), for which positivity, the bound k <= R, the Boolean-ness of the residual bit, and the child recurrence all hold identically.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "protectedChild_cover_Icc_of_constant",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 27
+        },
+        {
+          "declaration": "explicitParent_pos",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 364
+        },
+        {
+          "declaration": "explicitParent_le",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 371
+        },
+        {
+          "declaration": "explicitParentBitZ_zero_or_one",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 382
+        },
+        {
+          "declaration": "explicitParent_recurrence",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 398
+        }
+      ],
+      "concepts": [
+        "fixed_coefficient_rewind",
+        "selected_half_window"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "omega on the ceiling division",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Pure integer arithmetic (omega-discharged). The mathematical weight sits entirely in the hypothesis that the coefficient really is constant across the window, which this node does not supply.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "one_bit_extension_preserves_admissibility",
+      "canonical_statement": "Appending one Boolean bit to a strip-admissible depth-N word yields a strip-admissible depth-(N+1) word, provided the new terminal carry itself lies in the strip [1, halfStripBound (N+1)]. All earlier prefix carries are unchanged because the added exponent N+1 is beyond every divisor window already used.",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "HalfStripAdmissible.extend",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 137
+        }
+      ],
+      "concepts": [
+        "half_word",
+        "half_strip"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "wordSupport_extendHalfWord plus integerHalfCarry_inter_Iic_eq_of_succ_le",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Functoriality plumbing for the finite-word representation; no standalone mathematical content.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "restriction_fixes_next_row_coefficient",
+      "canonical_statement": "Agreement on membership of every divisor of n forces equal support coefficients at n. Consequently, if two finite words share a common restriction at a cutoff M with (n)/2 <= M, they have the same coefficient at row n: every proper divisor of n is at most n/2 and hence below the cutoff, while n itself is absent from both finite words. In particular a window with a common restriction beyond half depth has next-row divisor agreement and a genuinely constant selectedRowCoeff; the same argument applies verbatim at a doubled row 2(K+1) inspected through the half divisor K+1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "supportCoeff_eq_of_divisorAgreement",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 202
+        },
+        {
+          "declaration": "SelectedHalfWindow.selectedRowCoeff_eq",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 219
+        },
+        {
+          "declaration": "SelectedHalfWindow.nextRowDivisorAgreement_of_commonRestriction",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 551
+        },
+        {
+          "declaration": "supportCoeff_nextRow_eq_of_restriction",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 84
+        },
+        {
+          "declaration": "supportCoeff_eq_of_restriction_at_halfDivisor",
+          "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+          "line": 26
+        }
+      ],
+      "concepts": [
+        "next_row_divisor_agreement",
+        "half_word",
+        "selected_half_window"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Finset.filter cardinality congruence plus the proper-divisor half bound",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The only arithmetic input is that a proper divisor of n is at most n/2. This is the load-bearing reason the whole half-depth cutoff regime works, but it is elementary.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "executable_word_carry_bridge",
+      "canonical_statement": "The fully computable divisor coefficient and carry recursion on finite Boolean words agree with the Set-based support coefficient of wordSupport and with the integer half carry of that set. This is what lets kernel-reduced Boolean tables certify statements about the live carry.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "wordCoeff_eq_supportCoeff_wordSupport",
+          "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+          "line": 22
+        },
+        {
+          "declaration": "wordCarry_eq_integerHalfCarry",
+          "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+          "line": 46
+        }
+      ],
+      "concepts": [
+        "kernel_reflected_table",
+        "integer_half_carry",
+        "half_word"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Decidability/executability bridge; no mathematical content beyond definitional unfolding.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "fixed_coefficient_window_step",
+      "canonical_statement": "Given a selected protected window at depth N with radius R whose representatives all have the SAME next-row proper-divisor coefficient C, and given the strip condition S <= halfStripBound (N+1) and the buffer S + C <= 2R, one can construct a selected protected window at depth N+1 with radius S. The child for target q is the one-bit extension of the representative at the canonical parent floor((q+C+1)/2).",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.stepOpaque",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 245
+        },
+        {
+          "declaration": "SelectedHalfWindow.stepExplicitWithHistory",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 417
+        },
+        {
+          "declaration": "SelectedHalfWindow.stepExplicit",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 517
+        },
+        {
+          "declaration": "SelectedHalfWindow.step",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 772
+        }
+      ],
+      "concepts": [
+        "selected_half_window",
+        "fixed_coefficient_rewind",
+        "half_strip"
+      ],
+      "open_antecedents": [
+        "hp_common : forall k, 1 <= k -> k <= R -> selectedRowCoeff W k = C (all window representatives share one next-row proper-divisor coefficient) -- proved in this corpus only at isolated finite depths (18, 26), never for a cofinal family",
+        "the existence of the input window W : SelectedHalfWindow N R at unbounded N"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "canonical ceiling parent + one-bit extension; buffer supplied as a hypothesis",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is the corpus's own induction step, not classical mathematics. Note that stepOpaque and stepExplicit prove the SAME theorem; stepOpaque chooses parents by Classical.choose and is superseded.",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "full_strip_step_from_divisor_agreement",
+      "canonical_statement": "If a full square-root-strip selected window at depth N has next-row divisor agreement, then a full square-root-strip selected window at depth N+1 exists, with NO extra buffer hypothesis: the common coefficient is read off the carry-1 representative and the buffer halfStripBound(N+1) + C <= 2*halfStripBound(N) is discharged automatically by the sharp divisor envelope C <= 2*sqrt(N+1).",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.stepOfAgreement",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 786
+        }
+      ],
+      "concepts": [
+        "selected_half_window",
+        "next_row_divisor_agreement",
+        "half_strip"
+      ],
+      "open_antecedents": [
+        "hagree : W.NextRowDivisorAgreement at the depth being stepped -- established in this corpus only for the depth-18 base (and, in a neighbouring zone, for finitely many further depths), never for all large N"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "supportCoeff_le_two_mul_sqrt divisor envelope + halfStripBound_add_coeff_le_two_mul_pred headroom",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is the sharpest genuinely unconditional ingredient in the zone: one step of the induction needs nothing but agreement. Its value is limited by the fact that agreement at row N+2 is not derived from agreement at row N+1.",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "rewind_provenance_of_explicit_step",
+      "canonical_statement": "Along any chain of canonical fixed-coefficient steps, the provenance bookkeeping is exact and unconditional: at the empty history a window restricts to itself at the identity index; consing one coefficient C onto a history cs sends the index k to rewind (C :: cs) k; and the public explicit step inherits this. Hence every word of a depth-N window restricts to the base representative indexed by the closed-form rewind ancestor of its terminal carry.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.restrictWord_stepExplicit",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 527
+        },
+        {
+          "declaration": "SelectedHalfWindow.hasRewindRestrictionAt_nil",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 625
+        },
+        {
+          "declaration": "SelectedHalfWindow.FixedCoeffSuccessor.hasRewindRestrictionAt_cons",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 636
+        },
+        {
+          "declaration": "SelectedHalfWindow.hasRewindRestrictionAt_stepExplicit",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 670
+        }
+      ],
+      "concepts": [
+        "rewind_provenance",
+        "fixed_coefficient_rewind",
+        "selected_half_window"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "restrictWord_trans composition with word_eq_of_index_eq to erase dependent bound proofs",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No unproved proposition is assumed: the window and its successor enter as data, and the nil case supplies the base. The content is that the corpus's constructed step really does realise the scalar rewind map, which is what makes the counterexample module possible.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": "Two of the four evidence declarations are NOT hypothesis-free. SelectedHalfWindow.restrictWord_stepExplicit and SelectedHalfWindow.hasRewindRestrictionAt_stepExplicit both take hp_common : forall k in [1,R], selectedRowCoeff W k = C -- the very hypothesis flagged as an open antecedent of fixed_coefficient_window_step -- and both state their conclusion about the object W.stepExplicit ... hp_common ..., which does not exist without it. The node is kept unconditional because hp_common occurs only as a constructor argument (the theorem is an identity about whatever object the constructor returns) and because the whole chain is instantiated with no hypotheses at all in depth27FirstTwo_hasRewindRestrictionAt. It is NOT unconditional in the sense of holding at unbounded depth: at every depth beyond 26 the provenance statement is vacuous until hp_common is supplied there."
+    },
+    {
+      "id": "rewind_singleton_gives_divisor_agreement",
+      "canonical_statement": "If a depth-N window has exact rewind provenance over a base window at cutoff M with (N+1)/2 <= M, and the rewind map is constant on the protected interval [1,R], then all representatives share one literal prefix and hence have next-row divisor agreement. The phase-fit inequality theta + (R-1) < denom(cs), together with R <= denom(cs), is a sufficient arithmetic trigger.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.commonRestrictionAt_of_rewind_singleton",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 687
+        },
+        {
+          "declaration": "SelectedHalfWindow.nextRowDivisorAgreement_of_rewind_singleton",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 706
+        },
+        {
+          "declaration": "SelectedHalfWindow.nextRowDivisorAgreement_of_rewind_phaseFit",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 719
+        }
+      ],
+      "concepts": [
+        "rewind_provenance",
+        "next_row_divisor_agreement",
+        "rewind_closed_form_data"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "rewind singleton collapses provenance to a single base word; then the half-depth divisor argument",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Unconditional given its data arguments. The singleton/phase-fit hypothesis is an arithmetic side condition that is decidable at any fixed depth, not an open proposition; what is open is whether it holds cofinally.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": "The singleton trigger is never instantiated anywhere in this zone, and at the only concrete rewind history the zone actually certifies it is FALSE: depth27FirstTwo_hasRewindRestrictionAt gives cs = [1] with R = 2, and oneRowHistory_isSeamPair proves IsSeamPair [1] 2, i.e. phase [1] + (2-1) = denom [1], so hsingle / hphase fails there. Zero certified instances of the singleton branch versus one certified instance of the seam branch. The node is therefore an empty route so far, not a working one; only the depth-18 base carries divisor agreement, and it gets it from an explicit common prefix, not from this theorem."
+    },
+    {
+      "id": "object_level_singleton_or_seam_dichotomy",
+      "canonical_statement": "A sufficiently long exact rewind history (R <= denom cs) over a half-depth base cutoff forces the disjunction: either the depth-N window already has next-row divisor agreement, or the scalar interval [1,R] is a seam pair. This transports the scalar width dichotomy to the object level with no extra hypothesis.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.scalarHistoryAlternative_of_rewindHistory",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 739
+        }
+      ],
+      "concepts": [
+        "rewind_provenance",
+        "seam_pair",
+        "next_row_divisor_agreement"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "rewind_singleton_or_isSeamPair fanned through the provenance interface",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Honest about what width buys: a disjunction. The seam branch here is still purely scalar, i.e. it says nothing yet about the object-level seam.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "history_alternative_needs_canonical_seam_bridge",
+      "canonical_statement": "The object-level history alternative (next-row divisor agreement, or an actual canonical one-hole even seam at a doubled row N+1 = 2d) follows from rewind provenance and width ONLY once one assumes a bridge sending the scalar seam pair to an actual canonical even seam. That bridge is assumed, not proved.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.historyAlternative_of_rewindHistory",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 755
+        }
+      ],
+      "concepts": [
+        "seam_pair",
+        "protected_even_seam",
+        "next_row_divisor_agreement"
+      ],
+      "open_antecedents": [
+        "hseamBridge : IsSeamPair cs R -> exists d delta c, N + 1 = 2 * d and IsCanonicalEvenSeam d delta c (the scalar adjacent-ancestor pair is the actual canonical one-hole even seam at the produced row)"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "IsCanonicalEvenSeam is a two-way equivalence between actual terminal reachability and the scalar seam model; assuming it is a strong request. The rest of this zone (the operational bridge modules) exists precisely to avoid it.",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "prefix_truncation_adds_suffix_numeral",
+      "canonical_statement": "For an arbitrary set A and any horizon before feedback can return (M + L <= 2M + 1), truncating A at M raises the integer half carry at time M+L by exactly the binary numeral of the removed suffix bits: K_{A cap [0,M]}(M+L-1) = K_A(M+L-1) + X, where X is the value of the bits at exponents M+1,...,M+L read newest-lowest. The single-row input is that below the feedback threshold, truncating removes from row n only the divisor n itself. When the actual terminal carry is one, the frozen-prefix endpoint is Z = 1 + X.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "supportCoeff_eq_prefix_add_currentBit",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 116
+        },
+        {
+          "declaration": "integerHalfCarry_prefix_eq_add_supportSuffixNumeral",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 183
+        },
+        {
+          "declaration": "integerHalfCarry_prefix_eq_one_add_supportSuffixNumeral",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 209
+        }
+      ],
+      "concepts": [
+        "integer_half_carry",
+        "suffix_numeral"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "induction on L using integerHalfCarry_succ and the pre-feedback divisor bound n <= 2M+1",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "About actual arbitrary supports with no unproved hypothesis, but obtained by unrolling the corpus's own carry recurrence; classifying it as new mathematics would overstate it.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "actual_history_affine_realization",
+      "canonical_statement": "For any set P and any M, L with 1 <= M, the actual coefficient history of P satisfies the exact affine identity K_P(M+L-1) + offset(history) + 1 = denom(history) * (K_P(M-1) + 1). Combined with the truncation identity, a terminal carry of one at row M+L gives the natural-number realization equation offset + X + 2 = denom * (ancestor + 1) for the truncated history, which is exactly the hypothesis the phase identity needs.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "integerHalfCarry_add_offset_eq_denom_mul_initial",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 239
+        },
+        {
+          "declaration": "supportHistory_realization",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 272
+        }
+      ],
+      "concepts": [
+        "integer_half_carry",
+        "fixed_coefficient_rewind",
+        "rewind_closed_form_data"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "induction on L with the live integerHalfCarry recurrence (no independently postulated orbit)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Genuinely about the live carry rather than an abstract model, which is the point of the module; still a direct unrolling of a linear recurrence.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "realized_history_phase_identity",
+      "canonical_statement": "For any coefficient history realized by an actual carry-one orbit, the dyadic phase is exactly theta = D - 1 - X, where D = 2^L is the denominator and X the suffix numeral. Consequently the interval [1,B] rewinds to a single ancestor if and only if B - 1 <= X. The same identity holds in live support coordinates for the actual truncated coefficient history.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "phase_eq_denom_sub_one_sub_suffixNumeral",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 39
+        },
+        {
+          "declaration": "rewind_interval_singleton_iff_suffixNumeral_covers",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 65
+        },
+        {
+          "declaration": "phase_supportCoeffRewindHistory_eq",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 307
+        }
+      ],
+      "concepts": [
+        "suffix_numeral",
+        "rewind_closed_form_data",
+        "fixed_coefficient_rewind"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "natural-number rearrangement of the realization equation, then Nat.mod_eq_of_lt",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The realization hypothesis is discharged for actual histories by actual_history_affine_realization, so this is not left dangling. The module docstring is explicit that no global suffix inequality is asserted.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "live_support_singleton_criterion",
+      "canonical_statement": "For an actual support A with terminal carry one at row M+L, before feedback (M + L <= 2M + 1), and for any B with 1 <= B <= denom of the truncated history: the interval [1,B] rewinds to a single ancestor if and only if B - 1 <= X, equivalently if and only if B <= K_{A cap [0,M]}(M+L-1), the carry of the frozen prefix. All phase and suffix encoding is eliminated: the whole singleton question is one inequality between the protected width and the frozen-prefix carry.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "rewind_supportCoeffHistory_singleton_iff",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 327
+        },
+        {
+          "declaration": "rewind_supportCoeffHistory_singleton_iff_prefixCarry_covers",
+          "module": "Erdos249257/HalfCarryRewindPhase.lean",
+          "line": 352
+        }
+      ],
+      "concepts": [
+        "suffix_numeral",
+        "integer_half_carry",
+        "fixed_coefficient_rewind",
+        "half_value_endpoint"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is the cleanest reformulation in the zone. It does not resolve anything: nothing proves the inequality B <= Z at cofinally many depths, and the pre-feedback horizon M + L <= 2M + 1 caps L at roughly M, so the criterion is unavailable exactly where long histories would be needed.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "selected_parent_realizes_both_children",
+      "canonical_statement": "If one representative of a selected window at depth N has next-row coefficient C, then for either Boolean terminal bit the corresponding child carry q = 2h - C - b is terminally reachable at depth N+1, provided q is positive and inside the strip. This is the single-word realization step underlying every seam consumer.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "halfTerminalReachable_succ_of_selectedParent",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 167
+        }
+      ],
+      "concepts": [
+        "selected_half_window",
+        "half_strip",
+        "half_word"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "one-bit extension plus HalfStripAdmissible.extend",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Object-level, no unproved hypothesis; elementary given the extension calculus.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "rewind_seam_transports_unit_drop_to_profile",
+      "canonical_statement": "Under exact rewind provenance at a half-depth cutoff, a width-valid scalar seam pair, and the assumption that the two adjacent base ancestors have next-row coefficients c+1 (left) and c (right), the live depth-N window has the exact piecewise next-row coefficient profile: coefficient c+1 for targets h <= seamCut(cs) and c for h > seamCut(cs).",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "nextRow_profile_of_rewindSeam",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 140
+        }
+      ],
+      "concepts": [
+        "rewind_provenance",
+        "seam_cut",
+        "unit_coefficient_drop"
+      ],
+      "open_antecedents": [
+        "hbaseProfile : RewindBaseUnitDropAt W0 (N+1) cs c (the left adjacent base ancestor has row-(N+1) coefficient c+1 and the right adjacent base ancestor has coefficient c) -- not proved for any cofinal family",
+        "hseam : IsSeamPair cs R together with hprov : W.HasRewindRestrictionAt W0 hMN cs at unbounded depth"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "seam-cut threshold classification + restriction_fixes_next_row_coefficient transfer",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The module docstring's own framing is accurate: this isolates the one genuinely additional object-level datum (the unit drop) from the arithmetic already forced by provenance plus seam.",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "threshold_profile_realizes_protected_seam",
+      "canonical_statement": "A window whose next-row coefficients follow a two-valued threshold profile (c+1 below the threshold delta, c above) realizes the localized one-hole even seam at depth N+1 on the protected carries 3..27, provided 27 <= S <= halfStripBound (N+1) and the buffer S + (c+1) <= 2R. The same holds stated in the selectedRowCoeff coordinate.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "protectedEvenSeamRealizedAt_succ_of_profile",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 217
+        },
+        {
+          "declaration": "protectedEvenSeamRealizedAt_succ_of_selectedRowCoeff_threshold",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 317
+        }
+      ],
+      "concepts": [
+        "protected_even_seam",
+        "selected_half_window",
+        "half_strip"
+      ],
+      "open_antecedents": [
+        "hprofile : forall h in [1,R], supportCoeff (wordSupport (W.word h)) (N+1) = if h <= delta then c+1 else c (a two-valued threshold coefficient profile across the whole protected window) -- never established for any window in this corpus",
+        "the existence of the window W : SelectedHalfWindow N R with R large enough for the buffer S + (c+1) <= 2R at 27 <= S"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "four-branch case split on EvenSeamReachable, each branch closed by selected_parent_realizes_both_children",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "rewind_seam_plus_unit_drop_realizes_protected_seam",
+      "canonical_statement": "Exact rewind provenance, an actual scalar seam pair, and the unit coefficient drop between the two adjacent base ancestors together realize a localized one-hole even seam at depth N+1 with hole parameter delta = seamCut(cs), with no global canonical-even-seam equivalence needed. For a full square-root-strip window the buffer is discharged automatically by the divisor envelope, so the unit drop is the only remaining semantic input.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "protectedEvenSeamRealizedAt_succ_of_rewindSeam",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 339
+        },
+        {
+          "declaration": "protectedEvenSeamRealizedAt_succ_of_fullStrip_rewindSeam",
+          "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+          "line": 358
+        }
+      ],
+      "concepts": [
+        "rewind_provenance",
+        "seam_pair",
+        "unit_coefficient_drop",
+        "protected_even_seam",
+        "seam_cut"
+      ],
+      "open_antecedents": [
+        "hbaseProfile : RewindBaseUnitDropAt W0 (N+1) cs c -- the unit coefficient drop between the two adjacent base ancestors; unproved except by the boundary-pair route, which is itself unproved",
+        "hprov + hseam at unbounded depths: the existence of selected windows W0, W with R <= denom cs and IsSeamPair cs R at cofinally many N"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "nextRow_profile_of_rewindSeam then threshold_profile_realizes_protected_seam; full-strip variant uses supportCoeff_le_two_mul_sqrt for the buffer",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is the operational replacement for the IsCanonicalEvenSeam assumption, and it is a genuine weakening: it needs only a forward realization on carries 3..27, not a two-way equivalence.",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "half_divisor_bit_unit_drop",
+      "canonical_statement": "At the doubled row 2(N+1), two words that differ only in the terminal bit at exponent N+1 have support coefficients differing by exactly one: the true extension has coefficient one more than the false extension, because N+1 is a divisor of 2(N+1) and no other divisor incidence changes. The identity is restated for any pair of words explicitly identified with those two extensions.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "supportCoeff_extend_true_eq_false_add_one_at_double",
+          "module": "Erdos249257/HalfDivisorUnitDrop.lean",
+          "line": 20
+        },
+        {
+          "declaration": "supportCoeff_boundaryPair_unitDrop_at_double",
+          "module": "Erdos249257/HalfDivisorUnitDrop.lean",
+          "line": 35
+        }
+      ],
+      "concepts": [
+        "unit_coefficient_drop",
+        "half_divisor_boundary_pair",
+        "half_word"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "supportCoeff_insert_divisor at the half divisor",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The ledger records this as 'proved here'. It is a one-line divisor incidence fact; the difficulty was never here but in producing the boundary pair.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "boundary_pair_supplies_unit_drop",
+      "canonical_statement": "If the two adjacent rewind ancestors restrict, through the marked half divisor K+1, to the true and false terminal extensions of one common depth-K word (with the base depth M satisfying K+1 <= M < 2(K+1)), then the unit coefficient drop RewindBaseUnitDropAt holds at the doubled row 2(K+1) with c the coefficient of the false extension.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "rewindBaseUnitDropAt_of_halfDivisorBoundaryPair",
+          "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+          "line": 86
+        }
+      ],
+      "concepts": [
+        "half_divisor_boundary_pair",
+        "unit_coefficient_drop"
+      ],
+      "open_antecedents": [
+        "hpair : RewindBaseHalfDivisorBoundaryPairAt W0 hKM cs a (the two adjacent rewind ancestors are the opposite terminal extensions of one common half-depth word) -- unproved in general, and demonstrably false at the depth-26 instance in this same zone"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "half-divisor restriction transfer + half_divisor_bit_unit_drop",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "boundary_pair_realizes_protected_seam",
+      "canonical_statement": "If the produced row is exactly twice the marked half divisor (N + 1 = 2(K+1)), a half-divisor boundary pair discharges the only extra semantic hypothesis of the rewind-seam realization theorem, giving a localized realized one-hole seam at depth N+1 with hole parameter seamCut(cs). A full-strip variant needs no explicit buffer.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "protectedEvenSeamRealizedAt_succ_of_rewindHalfDivisorBoundaryPair",
+          "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+          "line": 120
+        },
+        {
+          "declaration": "protectedEvenSeamRealizedAt_succ_of_fullStrip_rewindHalfDivisorBoundaryPair",
+          "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+          "line": 147
+        }
+      ],
+      "concepts": [
+        "half_divisor_boundary_pair",
+        "protected_even_seam",
+        "rewind_provenance",
+        "seam_cut"
+      ],
+      "open_antecedents": [
+        "hpair : RewindBaseHalfDivisorBoundaryPairAt W0 hKM cs a at cofinally many depths",
+        "hprov + hseam: selected windows with exact rewind provenance and a width-valid scalar seam pair at cofinally many depths"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "boundary_pair_supplies_unit_drop composed into rewind_seam_plus_unit_drop_realizes_protected_seam",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "confidence": "high",
+      "scope_caveat": "Its antecedent hpair is exactly the predicate falsified by boundary_pair_not_forced_by_scalar_seam at the depth-26/27 instance, where exact rewind provenance, a genuine width-valid scalar seam pair and the doubled-row identity 27+1 = 2*(13+1) all hold. So this theorem has no certified instance and is known not to be reachable from provenance + seam + doubled row alone. The cross-reference is stated in boundary_pair_supplies_unit_drop but was missing here."
+    },
+    {
+      "id": "depth18_selected_window_base",
+      "canonical_statement": "A kernel-reflected Boolean table (twelve words, exponents 2,3,6,7 common and exponents 14..18 encoding 17-k) certifies a selected protected window at depth 18 covering the entire square-root strip halfStripBound 18 = 12. All twelve representatives restrict to the same depth-13 word, so the base already carries next-row divisor agreement at row 19.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "depth18TableCheck_eq_true",
+          "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+          "line": 79
+        },
+        {
+          "declaration": "depth18SelectedHalfWindow",
+          "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+          "line": 129
+        },
+        {
+          "declaration": "depth18SelectedHalfWindow_commonRestrictionAt_thirteen",
+          "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+          "line": 161
+        },
+        {
+          "declaration": "depth18SelectedHalfWindow_nextRowDivisorAgreement",
+          "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+          "line": 172
+        }
+      ],
+      "concepts": [
+        "kernel_reflected_table",
+        "selected_half_window",
+        "next_row_divisor_agreement",
+        "half_strip"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "decide +kernel over executable wordCarry (Nat.sqrt blocks elaborator unfolding, so kernel reduction is used)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "A bounded computation, exactly as the curated ledger records it ('verified finite instance'). It supplies a base for an induction whose step hypothesis is never re-established at the next row.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "depth26_two_carry_window_and_step",
+      "canonical_statement": "A kernel-reflected table certifies a selected window at depth 26 on carries 1 and 2 only (exponents 2,3,6,7,14,20 common, 21..26 encoding 35-k). Both representatives have actual common row-27 coefficient one, so the canonical explicit step is available and produces a depth-27 window on the same two carries whose recorded rewind history is the one-row list [1]; that history has denominator two and makes [1,2] a genuine scalar seam pair.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "depth26FirstTwoCheck_eq_true",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 46
+        },
+        {
+          "declaration": "depth26FirstTwo",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 89
+        },
+        {
+          "declaration": "depth26FirstTwo_selectedRowCoeff_eq_one",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 104
+        },
+        {
+          "declaration": "depth27FirstTwo",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 114
+        },
+        {
+          "declaration": "depth27FirstTwo_hasRewindRestrictionAt",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 123
+        },
+        {
+          "declaration": "oneRowHistory_isSeamPair",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 137
+        },
+        {
+          "declaration": "oneRowHistory_width",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 140
+        }
+      ],
+      "concepts": [
+        "kernel_reflected_table",
+        "selected_half_window",
+        "rewind_provenance",
+        "seam_pair"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "decide +kernel plus the live SelectedHalfWindow.stepExplicit constructor",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Radius 2 only: this is a two-carry sub-window, far below the full strip halfStripBound 26 = 14, and it is chosen to make the falsifier below possible.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "scope_caveat": ""
+    },
+    {
+      "id": "boundary_pair_not_forced_by_scalar_seam",
+      "canonical_statement": "At the depth-26 two-carry window with history [1], the right adjacent rewind ancestor still has bit 14 set to true. Therefore no depth-13 word can make the two adjacent ancestors the true/false terminal extensions required by the marked half-divisor boundary-pair predicate at half divisor 14. Consequently the conjunction of exact rewind provenance, a genuine width-valid scalar seam pair, and the doubled-row identity 27 + 1 = 2*(13+1) does NOT entail RewindBaseHalfDivisorBoundaryPairAt.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "depth26RightAncestor_bit14_true",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 145
+        },
+        {
+          "declaration": "depth26FirstTwo_not_rewindBaseHalfDivisorBoundaryPairAt",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 155
+        },
+        {
+          "declaration": "depth27_actualRewindSeam_not_boundaryPair",
+          "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+          "line": 169
+        }
+      ],
+      "concepts": [
+        "half_divisor_boundary_pair",
+        "seam_pair",
+        "rewind_provenance",
+        "unit_coefficient_drop"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "explicit bit evaluation on the certified depth-26 words",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Recorded in the curated ledger as claim 'rewind_boundary_pair_obstruction' (status: proved here).",
+      "scope_caveat": "This rules out ONE implication at ONE instance, and much less than a reader might assume. (1) It does not touch RewindBaseUnitDropAt, which is the hypothesis the operational seam theorem actually consumes; the half-divisor boundary pair is only one sufficient route to that unit drop, so the operational seam route is NOT closed. (2) The falsifying window has radius R = 2 and one-row history [1] with denominator 2, whereas the cofinal consumer needs 27 <= S and S + (c+1) <= 2R, i.e. R >= 14, and needs denom(cs) >= R, i.e. histories of length at least 4; the module's own docstring concedes the protected-window buffer is 'intentionally absent'. The counterexample therefore lives entirely outside the parameter regime of interest. (3) It says nothing about other depths, other marked half divisors, other base windows, longer coefficient histories, full-strip windows, or the divisor-agreement (singleton) branch. (4) It does not show the boundary-pair predicate is false at large depths; only that scalar one-row seam data does not force it. (5) NOT FORMALISED, but checkable from the certified table and recorded here so point (1) is not read the wrong way: at this same instance RewindBaseUnitDropAt also fails. Row 28 has divisors 1,2,4,7,14,28; both depth26Word 1 and depth26Word 2 carry exponents 2,7,14 and neither carries 1 or 4, and 28 is beyond depth 26, so both adjacent ancestors have row-28 coefficient 3 and no c satisfies 3 = c+1 and 3 = c. (The same evaluation reproduces the kernel-proved row-27 coefficient 1, so the arithmetic mirror is sound.) The instance is therefore not evidence that the operational unit-drop route survives where the boundary-pair route dies; it is simply an instance the zone's Lean says nothing about. The barrier as formalised still closes only the boundary-pair implication.",
+      "confidence": "high",
+      "open_antecedents": []
+    },
+    {
+      "id": "selected_window_cofinal_consumer",
+      "canonical_statement": "If selected protected windows with positive radius exist at every depth from some N0 onward (either given directly or generated by a base window plus a forward step function, iterated as data so the chosen words survive), then admissible finite words exist at cofinally many depths, and by the imported inverse-limit compactness theorem there is an infinite A whose Mersenne series sums to exactly 1/2.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "selectedHalfWindowIterate",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 816
+        },
+        {
+          "declaration": "cofinalAdmissibility_of_selectedHalfWindows",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 831
+        },
+        {
+          "declaration": "cofinalAdmissibility_of_selectedHalfWindow_induction",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 847
+        },
+        {
+          "declaration": "exists_infinite_support_half_of_selectedHalfWindows",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 864
+        },
+        {
+          "declaration": "exists_infinite_support_half_of_selectedHalfWindow_induction",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 875
+        }
+      ],
+      "concepts": [
+        "selected_half_window",
+        "cofinal_admissibility",
+        "half_value_endpoint"
+      ],
+      "open_antecedents": [
+        "hwindow : forall N >= N0, SelectedHalfWindow N (R N) with 1 <= R N (a cofinal supply of selected protected windows) -- nothing in the corpus produces one",
+        "in the induction form: hstep : forall N >= N0, SelectedHalfWindow N (R N) -> SelectedHalfWindow (N+1) (R (N+1)) (an unconditional forward step at every large depth) -- available in this zone only under the unproved common-coefficient or divisor-agreement hypothesis"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "projection of the carry-1 representative into the imported König/inverse-limit compactness theorem",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The conclusion IS the corpus's open proposition remaining_open.half_value_membership. The antecedent is a cofinal construction hypothesis of the same difficulty, so this is a repackaging, not progress. Note also that the proof uses only the carry-1 word: the entire protected-window structure (radius R, coverage of the strip) is discarded by the consumer, so any cofinal supply of single admissible words would do equally well.",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "cofinal_protected_seam_consumer",
+      "canonical_statement": "A one-hole even seam cannot delete both protected carries 3 and 4, since its unique hole is 2*delta - c. Hence a cofinal supply of localized realized one-hole seams (forward realization only, on carries 3..27) yields cofinal finite admissibility, and therefore an infinite A whose Mersenne series sums to exactly 1/2.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "cofinalAdmissibility_of_cofinalProtectedEvenSeamRealization",
+          "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
+          "line": 31
+        },
+        {
+          "declaration": "exists_infinite_support_half_of_cofinalProtectedEvenSeamRealization",
+          "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
+          "line": 53
+        }
+      ],
+      "concepts": [
+        "protected_even_seam",
+        "cofinal_admissibility",
+        "half_value_endpoint"
+      ],
+      "open_antecedents": [
+        "hsupply : HalfCarryCofinalProtectedEvenSeamRealization, i.e. forall N, exists M >= N and delta, c with ProtectedEvenSeamRealizedAt M delta c -- no theorem in the corpus produces this at even one large depth"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "pick k = 4 when the hole is 3 and k = 3 otherwise; then the imported compactness theorem",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The genuinely new content is the two-line pigeonhole 'one hole cannot delete both 3 and 4'; the rest is a restatement of the open endpoint with a differently dressed antecedent. The interface is honestly minimal (forward realization only, no seam escape and no full-strip equivalence), which is the real contribution.",
+      "confidence": "high",
+      "scope_caveat": ""
+    },
+    {
+      "id": "mixed_cofinal_window_or_seam_consumer",
+      "canonical_statement": "At each requested scale it suffices to produce EITHER one selected protected window with positive radius OR one localized realized one-hole seam on carries 3..27; both branches contain an admissible finite word, so the mixed cofinal producer already yields cofinal admissibility and an infinite A summing to exactly 1/2.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "cofinalAdmissibility_of_cofinalSelectedWindowOrProtectedSeam",
+          "module": "Erdos249257/HalfCarryCofinalWindowOrSeamConsumer.lean",
+          "line": 32
+        },
+        {
+          "declaration": "exists_infinite_support_half_of_cofinalSelectedWindowOrProtectedSeam",
+          "module": "Erdos249257/HalfCarryCofinalWindowOrSeamConsumer.lean",
+          "line": 58
+        }
+      ],
+      "concepts": [
+        "selected_half_window",
+        "protected_even_seam",
+        "cofinal_admissibility",
+        "half_value_endpoint"
+      ],
+      "open_antecedents": [
+        "hsupply : HalfCarryCofinalSelectedWindowOrProtectedSeam, i.e. forall N, exists M >= N such that a selected window with 1 <= R exists at M or a localized realized seam exists at M -- unproved"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "branch projection into the imported compactness theorem",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The disjunctive interface matches the singleton-or-seam dichotomy, which is its point. But the proof extracts only one admissible word from either branch, so the consumer is strictly weaker than its name suggests: it is the statement 'cofinal admissibility implies the endpoint' with an elaborate antecedent.",
+      "confidence": "high",
+      "scope_caveat": ""
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "ProtectedChild",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 19,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "protectedChild_cover_Icc_of_constant",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 27,
+      "role": "statement",
+      "statement_node": "fixed_coefficient_parent_cover"
+    },
+    {
+      "declaration": "extendHalfWord",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 65,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "extendHalfWord_castSucc",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 68,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "extendHalfWord_last",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 73,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "mem_wordSupport_extendHalfWord_iff",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 80,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "wordSupport_extendHalfWord",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 118,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "restrictWord_extendHalfWord",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 127,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "HalfStripAdmissible.extend",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 137,
+      "role": "statement",
+      "statement_node": "one_bit_extension_preserves_admissibility"
+    },
+    {
+      "declaration": "SelectedHalfWindow",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 172,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "selectedRowCoeff",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 181,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "SelectedHalfWindow.NextRowDivisorAgreement",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 193,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "supportCoeff_eq_of_divisorAgreement",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 202,
+      "role": "statement",
+      "statement_node": "restriction_fixes_next_row_coefficient"
+    },
+    {
+      "declaration": "SelectedHalfWindow.selectedRowCoeff_eq",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 219,
+      "role": "statement",
+      "statement_node": "restriction_fixes_next_row_coefficient"
+    },
+    {
+      "declaration": "SelectedHalfWindow.HistoryAlternative",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 236,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "SelectedHalfWindow.stepOpaque",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 245,
+      "role": "engine",
+      "statement_node": "fixed_coefficient_window_step"
+    },
+    {
+      "declaration": "explicitParent_pos",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 364,
+      "role": "statement",
+      "statement_node": "fixed_coefficient_parent_cover"
+    },
+    {
+      "declaration": "explicitParent_le",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 371,
+      "role": "statement",
+      "statement_node": "fixed_coefficient_parent_cover"
+    },
+    {
+      "declaration": "explicitParentBitZ",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 378,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "explicitParentBitZ_zero_or_one",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 382,
+      "role": "statement",
+      "statement_node": "fixed_coefficient_parent_cover"
+    },
+    {
+      "declaration": "explicitParent_recurrence",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 398,
+      "role": "statement",
+      "statement_node": "fixed_coefficient_parent_cover"
+    },
+    {
+      "declaration": "SelectedHalfWindow.FixedCoeffSuccessor",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 406,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "SelectedHalfWindow.stepExplicitWithHistory",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 417,
+      "role": "engine",
+      "statement_node": "fixed_coefficient_window_step"
+    },
+    {
+      "declaration": "SelectedHalfWindow.stepExplicit",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 517,
+      "role": "statement",
+      "statement_node": "fixed_coefficient_window_step"
+    },
+    {
+      "declaration": "SelectedHalfWindow.restrictWord_stepExplicit",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 527,
+      "role": "statement",
+      "statement_node": "rewind_provenance_of_explicit_step"
+    },
+    {
+      "declaration": "SelectedHalfWindow.CommonRestrictionAt",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 542,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "SelectedHalfWindow.nextRowDivisorAgreement_of_commonRestriction",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 551,
+      "role": "statement",
+      "statement_node": "restriction_fixes_next_row_coefficient"
+    },
+    {
+      "declaration": "SelectedHalfWindow.HasRewindRestrictionAt",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 607,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "SelectedHalfWindow.word_eq_of_index_eq",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 617,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "SelectedHalfWindow.hasRewindRestrictionAt_nil",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 625,
+      "role": "statement",
+      "statement_node": "rewind_provenance_of_explicit_step"
+    },
+    {
+      "declaration": "SelectedHalfWindow.FixedCoeffSuccessor.hasRewindRestrictionAt_cons",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 636,
+      "role": "statement",
+      "statement_node": "rewind_provenance_of_explicit_step"
+    },
+    {
+      "declaration": "SelectedHalfWindow.hasRewindRestrictionAt_stepExplicit",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 670,
+      "role": "statement",
+      "statement_node": "rewind_provenance_of_explicit_step"
+    },
+    {
+      "declaration": "SelectedHalfWindow.commonRestrictionAt_of_rewind_singleton",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 687,
+      "role": "statement",
+      "statement_node": "rewind_singleton_gives_divisor_agreement"
+    },
+    {
+      "declaration": "SelectedHalfWindow.nextRowDivisorAgreement_of_rewind_singleton",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 706,
+      "role": "statement",
+      "statement_node": "rewind_singleton_gives_divisor_agreement"
+    },
+    {
+      "declaration": "SelectedHalfWindow.nextRowDivisorAgreement_of_rewind_phaseFit",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 719,
+      "role": "statement",
+      "statement_node": "rewind_singleton_gives_divisor_agreement"
+    },
+    {
+      "declaration": "SelectedHalfWindow.ScalarHistoryAlternative",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 732,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "SelectedHalfWindow.scalarHistoryAlternative_of_rewindHistory",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 739,
+      "role": "statement",
+      "statement_node": "object_level_singleton_or_seam_dichotomy"
+    },
+    {
+      "declaration": "SelectedHalfWindow.historyAlternative_of_rewindHistory",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 755,
+      "role": "statement",
+      "statement_node": "history_alternative_needs_canonical_seam_bridge"
+    },
+    {
+      "declaration": "SelectedHalfWindow.step",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 772,
+      "role": "statement",
+      "statement_node": "fixed_coefficient_window_step"
+    },
+    {
+      "declaration": "SelectedHalfWindow.stepOfAgreement",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 786,
+      "role": "statement",
+      "statement_node": "full_strip_step_from_divisor_agreement"
+    },
+    {
+      "declaration": "selectedHalfWindowIterate",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 816,
+      "role": "engine",
+      "statement_node": "selected_window_cofinal_consumer"
+    },
+    {
+      "declaration": "cofinalAdmissibility_of_selectedHalfWindows",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 831,
+      "role": "statement",
+      "statement_node": "selected_window_cofinal_consumer"
+    },
+    {
+      "declaration": "cofinalAdmissibility_of_selectedHalfWindow_induction",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 847,
+      "role": "statement",
+      "statement_node": "selected_window_cofinal_consumer"
+    },
+    {
+      "declaration": "exists_infinite_support_half_of_selectedHalfWindows",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 864,
+      "role": "statement",
+      "statement_node": "selected_window_cofinal_consumer"
+    },
+    {
+      "declaration": "exists_infinite_support_half_of_selectedHalfWindow_induction",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 875,
+      "role": "statement",
+      "statement_node": "selected_window_cofinal_consumer"
+    },
+    {
+      "declaration": "wordCoeff",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 16,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "wordCoeff_eq_supportCoeff_wordSupport",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 22,
+      "role": "statement",
+      "statement_node": "executable_word_carry_bridge"
+    },
+    {
+      "declaration": "wordCarry",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 41,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "wordCarry_eq_integerHalfCarry",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 46,
+      "role": "statement",
+      "statement_node": "executable_word_carry_bridge"
+    },
+    {
+      "declaration": "depth18Word",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 58,
+      "role": "representation",
+      "statement_node": null
+    },
+    {
+      "declaration": "depth18EntryCheck",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 65,
+      "role": "representation",
+      "statement_node": null
+    },
+    {
+      "declaration": "depth18TableCheck",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 73,
+      "role": "representation",
+      "statement_node": null
+    },
+    {
+      "declaration": "depth18TableCheck_eq_true",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 79,
+      "role": "finite_instance",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "depth18EntryCheck_eq_true",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 82,
+      "role": "finite_instance",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "depth18Word_carry_bounds",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 93,
+      "role": "finite_instance",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "depth18Word_terminal",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 115,
+      "role": "finite_instance",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "halfStripBound_eighteen",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 121,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "depth18SelectedHalfWindow",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 129,
+      "role": "statement",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "depth18PrefixWord",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 147,
+      "role": "representation",
+      "statement_node": null
+    },
+    {
+      "declaration": "restrictWord_depth18Word_thirteen",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 152,
+      "role": "finite_instance",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "depth18SelectedHalfWindow_commonRestrictionAt_thirteen",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 161,
+      "role": "statement",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "depth18SelectedHalfWindow_nextRowDivisorAgreement",
+      "module": "Erdos249257/HalfCarrySelectedWindowBase.lean",
+      "line": 172,
+      "role": "statement",
+      "statement_node": "depth18_selected_window_base"
+    },
+    {
+      "declaration": "suffixNumeral",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 19,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "suffixNumeral_lt_two_pow_length",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 25,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "phase_eq_denom_sub_one_sub_suffixNumeral",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 39,
+      "role": "statement",
+      "statement_node": "realized_history_phase_identity"
+    },
+    {
+      "declaration": "rewind_interval_singleton_iff_suffixNumeral_covers",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 65,
+      "role": "statement",
+      "statement_node": "realized_history_phase_identity"
+    },
+    {
+      "declaration": "supportSuffixBits",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 84,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "supportSuffixBits_length",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 89,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "supportSuffixNumeral",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 97,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "suffixNumeral_supportSuffixBits",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 104,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "supportCoeff_eq_prefix_add_currentBit",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 116,
+      "role": "statement",
+      "statement_node": "prefix_truncation_adds_suffix_numeral"
+    },
+    {
+      "declaration": "integerHalfCarry_prefix_eq_add_supportSuffixNumeral",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 183,
+      "role": "statement",
+      "statement_node": "prefix_truncation_adds_suffix_numeral"
+    },
+    {
+      "declaration": "integerHalfCarry_prefix_eq_one_add_supportSuffixNumeral",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 209,
+      "role": "statement",
+      "statement_node": "prefix_truncation_adds_suffix_numeral"
+    },
+    {
+      "declaration": "supportCoeffRewindHistory",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 223,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "supportCoeffRewindHistory_length",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 229,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "integerHalfCarry_add_offset_eq_denom_mul_initial",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 239,
+      "role": "statement",
+      "statement_node": "actual_history_affine_realization"
+    },
+    {
+      "declaration": "supportHistory_realization",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 272,
+      "role": "statement",
+      "statement_node": "actual_history_affine_realization"
+    },
+    {
+      "declaration": "phase_supportCoeffRewindHistory_eq",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 307,
+      "role": "statement",
+      "statement_node": "realized_history_phase_identity"
+    },
+    {
+      "declaration": "rewind_supportCoeffHistory_singleton_iff",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 327,
+      "role": "statement",
+      "statement_node": "live_support_singleton_criterion"
+    },
+    {
+      "declaration": "rewind_supportCoeffHistory_singleton_iff_prefixCarry_covers",
+      "module": "Erdos249257/HalfCarryRewindPhase.lean",
+      "line": 352,
+      "role": "statement",
+      "statement_node": "live_support_singleton_criterion"
+    },
+    {
+      "declaration": "parent",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 24,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "rewind",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 27,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "offset",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 33,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "denom",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 38,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "phase",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 41,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "denom_pos",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 43,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "rewind_eq_closedForm",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 49,
+      "role": "statement",
+      "statement_node": "rewind_closed_form"
+    },
+    {
+      "declaration": "rewind_mono",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 69,
+      "role": "statement",
+      "statement_node": "rewind_closed_form"
+    },
+    {
+      "declaration": "add_div_eq_left_div_iff_phase_fit",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 76,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "rewind_endpoint_le_succ",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 86,
+      "role": "statement",
+      "statement_node": "rewind_width_dichotomy"
+    },
+    {
+      "declaration": "rewind_endpoint_eq_iff_phase_fit",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 99,
+      "role": "statement",
+      "statement_node": "rewind_dyadic_phase_criterion"
+    },
+    {
+      "declaration": "IsSeamPair",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 119,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "isSeamPair_iff_phase_overflow",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 123,
+      "role": "statement",
+      "statement_node": "rewind_dyadic_phase_criterion"
+    },
+    {
+      "declaration": "rewind_eq_left_or_right_of_isSeamPair",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 147,
+      "role": "statement",
+      "statement_node": "rewind_width_dichotomy"
+    },
+    {
+      "declaration": "rewind_interval_singleton_iff_endpoint_eq",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 158,
+      "role": "statement",
+      "statement_node": "rewind_dyadic_phase_criterion"
+    },
+    {
+      "declaration": "rewind_interval_singleton_iff_phase_fit",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 171,
+      "role": "statement",
+      "statement_node": "rewind_dyadic_phase_criterion"
+    },
+    {
+      "declaration": "rewind_singleton_or_isSeamPair",
+      "module": "Erdos249257/HalfCarryCeilParentContraction.lean",
+      "line": 180,
+      "role": "statement",
+      "statement_node": "rewind_width_dichotomy"
+    },
+    {
+      "declaration": "ProtectedEvenSeamRealizedAt",
+      "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
+      "line": 18,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "HalfCarryCofinalProtectedEvenSeamRealization",
+      "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
+      "line": 24,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "cofinalAdmissibility_of_cofinalProtectedEvenSeamRealization",
+      "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
+      "line": 31,
+      "role": "statement",
+      "statement_node": "cofinal_protected_seam_consumer"
+    },
+    {
+      "declaration": "exists_infinite_support_half_of_cofinalProtectedEvenSeamRealization",
+      "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
+      "line": 53,
+      "role": "statement",
+      "statement_node": "cofinal_protected_seam_consumer"
+    },
+    {
+      "declaration": "HalfCarryCofinalSelectedWindowOrProtectedSeam",
+      "module": "Erdos249257/HalfCarryCofinalWindowOrSeamConsumer.lean",
+      "line": 25,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "cofinalAdmissibility_of_cofinalSelectedWindowOrProtectedSeam",
+      "module": "Erdos249257/HalfCarryCofinalWindowOrSeamConsumer.lean",
+      "line": 32,
+      "role": "statement",
+      "statement_node": "mixed_cofinal_window_or_seam_consumer"
+    },
+    {
+      "declaration": "exists_infinite_support_half_of_cofinalSelectedWindowOrProtectedSeam",
+      "module": "Erdos249257/HalfCarryCofinalWindowOrSeamConsumer.lean",
+      "line": 58,
+      "role": "statement",
+      "statement_node": "mixed_cofinal_window_or_seam_consumer"
+    },
+    {
+      "declaration": "seamCut",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 21,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "phase_lt_denom",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 23,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "seamCut_pos",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 26,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "rewind_eq_left_iff_le_seamCut",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 32,
+      "role": "statement",
+      "statement_node": "seam_cut_threshold_classification"
+    },
+    {
+      "declaration": "seamCut_lt_rightEndpoint",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 50,
+      "role": "statement",
+      "statement_node": "seam_cut_threshold_classification"
+    },
+    {
+      "declaration": "rewind_eq_right_iff_seamCut_lt",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 62,
+      "role": "statement",
+      "statement_node": "seam_cut_threshold_classification"
+    },
+    {
+      "declaration": "supportCoeff_nextRow_eq_of_restriction",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 84,
+      "role": "statement",
+      "statement_node": "restriction_fixes_next_row_coefficient"
+    },
+    {
+      "declaration": "RewindBaseUnitDropAt",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 128,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "nextRow_profile_of_rewindSeam",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 140,
+      "role": "statement",
+      "statement_node": "rewind_seam_transports_unit_drop_to_profile"
+    },
+    {
+      "declaration": "halfTerminalReachable_succ_of_selectedParent",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 167,
+      "role": "statement",
+      "statement_node": "selected_parent_realizes_both_children"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_profile",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 217,
+      "role": "statement",
+      "statement_node": "threshold_profile_realizes_protected_seam"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_selectedRowCoeff_threshold",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 317,
+      "role": "statement",
+      "statement_node": "threshold_profile_realizes_protected_seam"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_rewindSeam",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 339,
+      "role": "statement",
+      "statement_node": "rewind_seam_plus_unit_drop_realizes_protected_seam"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_fullStrip_rewindSeam",
+      "module": "Erdos249257/RewindSeamOperationalBridge.lean",
+      "line": 358,
+      "role": "statement",
+      "statement_node": "rewind_seam_plus_unit_drop_realizes_protected_seam"
+    },
+    {
+      "declaration": "supportCoeff_eq_of_restriction_at_halfDivisor",
+      "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+      "line": 26,
+      "role": "statement",
+      "statement_node": "restriction_fixes_next_row_coefficient"
+    },
+    {
+      "declaration": "RewindBaseHalfDivisorBoundaryPairAt",
+      "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+      "line": 71,
+      "role": "concept",
+      "statement_node": null
+    },
+    {
+      "declaration": "rewindBaseUnitDropAt_of_halfDivisorBoundaryPair",
+      "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+      "line": 86,
+      "role": "statement",
+      "statement_node": "boundary_pair_supplies_unit_drop"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_rewindHalfDivisorBoundaryPair",
+      "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+      "line": 120,
+      "role": "statement",
+      "statement_node": "boundary_pair_realizes_protected_seam"
+    },
+    {
+      "declaration": "protectedEvenSeamRealizedAt_succ_of_fullStrip_rewindHalfDivisorBoundaryPair",
+      "module": "Erdos249257/RewindHalfDivisorAdapter.lean",
+      "line": 147,
+      "role": "statement",
+      "statement_node": "boundary_pair_realizes_protected_seam"
+    },
+    {
+      "declaration": "depth26Word",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 28,
+      "role": "representation",
+      "statement_node": null
+    },
+    {
+      "declaration": "depth26EntryCheck",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 36,
+      "role": "representation",
+      "statement_node": null
+    },
+    {
+      "declaration": "depth26FirstTwoCheck",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 43,
+      "role": "representation",
+      "statement_node": null
+    },
+    {
+      "declaration": "depth26FirstTwoCheck_eq_true",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 46,
+      "role": "finite_instance",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth26EntryCheck_eq_true",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 49,
+      "role": "finite_instance",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth26Word_carry_bounds",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 60,
+      "role": "finite_instance",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth26Word_terminal",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 82,
+      "role": "finite_instance",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth26FirstTwo",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 89,
+      "role": "statement",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth26FirstTwo_selectedRowCoeff_eq_one",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 104,
+      "role": "finite_instance",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth27FirstTwo",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 114,
+      "role": "statement",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth27FirstTwo_hasRewindRestrictionAt",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 123,
+      "role": "statement",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "oneRowHistory_isSeamPair",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 137,
+      "role": "finite_instance",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "oneRowHistory_width",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 140,
+      "role": "finite_instance",
+      "statement_node": "depth26_two_carry_window_and_step"
+    },
+    {
+      "declaration": "depth26RightAncestor_bit14_true",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 145,
+      "role": "finite_instance",
+      "statement_node": "boundary_pair_not_forced_by_scalar_seam"
+    },
+    {
+      "declaration": "depth26FirstTwo_not_rewindBaseHalfDivisorBoundaryPairAt",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 155,
+      "role": "statement",
+      "statement_node": "boundary_pair_not_forced_by_scalar_seam"
+    },
+    {
+      "declaration": "depth27_actualRewindSeam_not_boundaryPair",
+      "module": "Erdos249257/RewindBoundaryPairCounterexample.lean",
+      "line": 169,
+      "role": "statement",
+      "statement_node": "boundary_pair_not_forced_by_scalar_seam"
+    },
+    {
+      "declaration": "supportCoeff_extend_true_eq_false_add_one_at_double",
+      "module": "Erdos249257/HalfDivisorUnitDrop.lean",
+      "line": 20,
+      "role": "statement",
+      "statement_node": "half_divisor_bit_unit_drop"
+    },
+    {
+      "declaration": "supportCoeff_boundaryPair_unitDrop_at_double",
+      "module": "Erdos249257/HalfDivisorUnitDrop.lean",
+      "line": 35,
+      "role": "statement",
+      "statement_node": "half_divisor_bit_unit_drop"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "rewind_closed_form",
+      "to": "rewind_dyadic_phase_criterion",
+      "relation": "implies",
+      "basis": "the phase criterion is the closed form plus a residue condition on the single division"
+    },
+    {
+      "from": "rewind_dyadic_phase_criterion",
+      "to": "rewind_width_dichotomy",
+      "relation": "implies",
+      "basis": "the dichotomy is the excluded middle on the phase-fit inequality, with the endpoint gap bound"
+    },
+    {
+      "from": "rewind_dyadic_phase_criterion",
+      "to": "seam_cut_threshold_classification",
+      "relation": "reformulates",
+      "basis": "seamCut = denom - phase turns the residue inequality into a threshold on the target"
+    },
+    {
+      "from": "actual_history_affine_realization",
+      "to": "realized_history_phase_identity",
+      "relation": "implies",
+      "basis": "the affine identity is exactly the realization equation the phase identity assumes, so it is discharged for live histories"
+    },
+    {
+      "from": "prefix_truncation_adds_suffix_numeral",
+      "to": "actual_history_affine_realization",
+      "relation": "implies",
+      "basis": "the truncation identity supplies the carry-one endpoint K_{A cap [0,M]}(M+L-1) = 1 + X that supportHistory_realization consumes; neither node has an open dependence, so the previous depends_on_open label contradicted its own basis text"
+    },
+    {
+      "from": "realized_history_phase_identity",
+      "to": "live_support_singleton_criterion",
+      "relation": "reformulates",
+      "basis": "eliminating phase and suffix leaves the single inequality B <= frozen-prefix carry"
+    },
+    {
+      "from": "rewind_dyadic_phase_criterion",
+      "to": "live_support_singleton_criterion",
+      "relation": "specialises",
+      "basis": "the live criterion is the scalar phase criterion instantiated at an actual truncated support history"
+    },
+    {
+      "from": "fixed_coefficient_parent_cover",
+      "to": "fixed_coefficient_window_step",
+      "relation": "implies",
+      "basis": "the canonical ceiling parent and Boolean residual bit are what the object-level step extends"
+    },
+    {
+      "from": "one_bit_extension_preserves_admissibility",
+      "to": "fixed_coefficient_window_step",
+      "relation": "implies",
+      "basis": "each child is a one-bit extension whose admissibility comes from the extension lemma"
+    },
+    {
+      "from": "rewind_provenance_of_explicit_step",
+      "to": "fixed_coefficient_window_step",
+      "relation": "depends_on_open",
+      "basis": "direction corrected: the open hypothesis (hp_common) is carried by fixed_coefficient_window_step, and it is the provenance theorems that are stated about the object built from it -- matching the convention used by the other depends_on_open edge, where the target node is the one holding the unproved assumption"
+    },
+    {
+      "from": "restriction_fixes_next_row_coefficient",
+      "to": "rewind_singleton_gives_divisor_agreement",
+      "relation": "implies",
+      "basis": "a singleton rewind gives one literal common prefix, which the half-depth divisor argument converts to agreement"
+    },
+    {
+      "from": "rewind_provenance_of_explicit_step",
+      "to": "rewind_singleton_gives_divisor_agreement",
+      "relation": "implies",
+      "basis": "the singleton fan-in consumes exactly HasRewindRestrictionAt"
+    },
+    {
+      "from": "rewind_width_dichotomy",
+      "to": "object_level_singleton_or_seam_dichotomy",
+      "relation": "generalises",
+      "basis": "the object-level alternative is the scalar dichotomy transported through rewind provenance"
+    },
+    {
+      "from": "object_level_singleton_or_seam_dichotomy",
+      "to": "history_alternative_needs_canonical_seam_bridge",
+      "relation": "depends_on_open",
+      "basis": "the seam branch is closed only by assuming the scalar pair is an actual canonical even seam"
+    },
+    {
+      "from": "restriction_fixes_next_row_coefficient",
+      "to": "full_strip_step_from_divisor_agreement",
+      "relation": "implies",
+      "basis": "agreement makes selectedRowCoeff constant, which is the hypothesis the step needs"
+    },
+    {
+      "from": "full_strip_step_from_divisor_agreement",
+      "to": "fixed_coefficient_window_step",
+      "relation": "specialises",
+      "basis": "the agreement version fixes R = S = halfStripBound and discharges the buffer from the sqrt divisor envelope"
+    },
+    {
+      "from": "depth18_selected_window_base",
+      "to": "full_strip_step_from_divisor_agreement",
+      "relation": "finite_instance_of",
+      "basis": "the depth-18 table is the only certified input the agreement step has ever been applied to"
+    },
+    {
+      "from": "executable_word_carry_bridge",
+      "to": "depth18_selected_window_base",
+      "relation": "implies",
+      "basis": "the kernel-reduced Boolean table is transferred to the live carry by the bridge"
+    },
+    {
+      "from": "executable_word_carry_bridge",
+      "to": "depth26_two_carry_window_and_step",
+      "relation": "implies",
+      "basis": "same transfer for the depth-26 table"
+    },
+    {
+      "from": "seam_cut_threshold_classification",
+      "to": "rewind_seam_transports_unit_drop_to_profile",
+      "relation": "implies",
+      "basis": "the piecewise profile is the threshold classification composed with restriction transfer"
+    },
+    {
+      "from": "restriction_fixes_next_row_coefficient",
+      "to": "rewind_seam_transports_unit_drop_to_profile",
+      "relation": "implies",
+      "basis": "the coefficient of a window word is read off its base ancestor through half-depth restriction"
+    },
+    {
+      "from": "selected_parent_realizes_both_children",
+      "to": "threshold_profile_realizes_protected_seam",
+      "relation": "implies",
+      "basis": "every branch of the EvenSeamReachable case split is closed by realizing one child of a selected parent"
+    },
+    {
+      "from": "rewind_seam_transports_unit_drop_to_profile",
+      "to": "rewind_seam_plus_unit_drop_realizes_protected_seam",
+      "relation": "implies",
+      "basis": "the profile is the exact hypothesis of the threshold realization theorem"
+    },
+    {
+      "from": "threshold_profile_realizes_protected_seam",
+      "to": "rewind_seam_plus_unit_drop_realizes_protected_seam",
+      "relation": "implies",
+      "basis": "the rewind-seam theorem is the threshold theorem with the profile supplied by provenance"
+    },
+    {
+      "from": "half_divisor_bit_unit_drop",
+      "to": "boundary_pair_supplies_unit_drop",
+      "relation": "implies",
+      "basis": "the boundary pair reduces the two ancestors to opposite terminal extensions, where the unit drop is the bit identity"
+    },
+    {
+      "from": "boundary_pair_supplies_unit_drop",
+      "to": "boundary_pair_realizes_protected_seam",
+      "relation": "implies",
+      "basis": "the boundary pair discharges RewindBaseUnitDropAt in the rewind-seam realization theorem"
+    },
+    {
+      "from": "rewind_seam_plus_unit_drop_realizes_protected_seam",
+      "to": "boundary_pair_realizes_protected_seam",
+      "relation": "specialises",
+      "basis": "the adapter instantiates the unit-drop hypothesis by the structural boundary-pair predicate"
+    },
+    {
+      "from": "boundary_pair_not_forced_by_scalar_seam",
+      "to": "boundary_pair_supplies_unit_drop",
+      "relation": "barrier_for",
+      "basis": "it falsifies the boundary-pair antecedent at a concrete instance with provenance, seam and doubled row all present"
+    },
+    {
+      "from": "depth26_two_carry_window_and_step",
+      "to": "boundary_pair_not_forced_by_scalar_seam",
+      "relation": "finite_instance_of",
+      "basis": "the certified depth-26/27 pair is the carrier of the falsifier"
+    },
+    {
+      "from": "rewind_seam_plus_unit_drop_realizes_protected_seam",
+      "to": "cofinal_protected_seam_consumer",
+      "relation": "implies",
+      "basis": "the seam-realization theorem produces exactly the ProtectedEvenSeamRealizedAt receipt the consumer collects"
+    },
+    {
+      "from": "cofinal_protected_seam_consumer",
+      "to": "mixed_cofinal_window_or_seam_consumer",
+      "relation": "specialises",
+      "basis": "the mixed consumer is the seam consumer with a disjunctive receipt"
+    },
+    {
+      "from": "selected_window_cofinal_consumer",
+      "to": "mixed_cofinal_window_or_seam_consumer",
+      "relation": "specialises",
+      "basis": "the window branch of the mixed consumer repeats the selected-window consumer verbatim"
+    },
+    {
+      "from": "object_level_singleton_or_seam_dichotomy",
+      "to": "mixed_cofinal_window_or_seam_consumer",
+      "relation": "implies",
+      "basis": "the disjunctive interface is shaped to match the singleton-or-seam dichotomy at each depth"
+    }
+  ]
+}

@@ -1784,18 +1784,29 @@ def summary_packet() -> dict[str, Any]:
         "external_registration",
         "source_revision",
     )
+    summary_orientation = {
+        key: value
+        for key, value in orientation.items()
+        if key not in bounded_omissions
+    }
+    summary_orientation["principal_claims"] = [
+        {
+            key: value
+            for key, value in row.items()
+            if key != "declarations"
+        }
+        for row in orientation["principal_claims"]
+    ]
     return {
         "kind": "corpus_summary",
-        **{
-            key: value
-            for key, value in orientation.items()
-            if key not in bounded_omissions
-        },
+        **summary_orientation,
         "curated_claim_count": len(claims["claims"]),
         "publication_family_count": len(assembly["contribution_families"]),
         "bounded_summary_omission_receipt": {
             "omitted_sections": list(bounded_omissions),
+            "omitted_fields": ["principal_claims[].declarations"],
             "drilldown": "docs/orientation.json",
+            "claim_drilldown": "python3 scripts/query_corpus.py --claim <claim_id>",
             "reason": "non_mathematical_owner_metadata_kept_out_of_bounded_agent_summary",
         },
     }

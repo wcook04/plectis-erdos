@@ -110,6 +110,20 @@ def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def flattened(text: str) -> str:
+    """Collapse every run of whitespace so prose checks survive rewrapping.
+
+    Markdown prose is rewrapped freely, so a required phrase that happens to
+    straddle a line break stops matching a raw ``in`` test even though the
+    sentence is still there — the gate then fails for a reason that has nothing
+    to do with the claim it guards.  The same gap lets a *banned* phrase evade
+    detection simply by wrapping.  Flattening fixes both directions: a phrase
+    that is genuinely absent is still absent after flattening, so this can only
+    remove false failures and add real detections, never mask a missing fence.
+    """
+    return " ".join(text.split())
+
+
 def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
@@ -141,6 +155,8 @@ def source_map_entry_errors(source_map: str) -> list[str]:
         "Lean source checked by the pinned Lean kernel is proof authority",
         "Erdős #249",
         "universal form of #257 remain open",
+        "for every\n  natural `t ≤ 82`",
+        "supplies nothing at `t = 83`",
     )
     errors = [
         f"docs/SOURCE_MAP.md lost bounded first-contact route: {phrase}"
@@ -151,6 +167,11 @@ def source_map_entry_errors(source_map: str) -> list[str]:
         errors.append(
             "docs/SOURCE_MAP.md must not send first-contact readers directly "
             "into the full import graph"
+        )
+    if "currently assembled at 28 explicit scales through `t = 64`" in source_map:
+        errors.append(
+            "docs/SOURCE_MAP.md still presents the historical deposit list "
+            "as the current certificate frontier"
         )
     return errors
 
@@ -403,10 +424,57 @@ def main() -> int:
         "systems paper evidence fixtures stopped rejecting: "
         + ", ".join(systems_paper_fixture_failures),
     )
+    problem_index_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_problem_index.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        problem_index_check.returncode == 0,
+        "generated problem-index freshness failed: "
+        f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
+    )
+    note_source_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "check_problem_note_sources.py"),
+            "--coverage",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        note_source_check.returncode == 0,
+        "problem-note pinned-source contract failed: "
+        f"{note_source_check.stdout.strip() or note_source_check.stderr.strip()}",
+    )
+    paper_corpus_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        paper_corpus_check.returncode == 0,
+        "generated paper-corpus freshness failed: "
+        f"{paper_corpus_check.stdout.strip() or paper_corpus_check.stderr.strip()}",
+    )
     if ERRORS:
         print(
             "check_release: "
-            f"{len(ERRORS)} publication-contract failure(s) across {CHECKS} checks"
+            f"{len(ERRORS)} publication-stage failure(s) across {CHECKS} checks"
         )
         for err in ERRORS:
             print(f"  FAIL {err}")
@@ -903,21 +971,26 @@ def main() -> int:
     listed = set(re.findall(r"`(not_[a-z0-9_]+)`", scope))
     check(declared == listed,
           f"SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
-    check("does not prove" in scope,
+    check("does not prove" in flattened(scope),
           "SCOPE.md must state the open boundary in plain language")
 
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
     check(tag in readme, f"README does not state the release tag {tag}")
-    check("does not solve" in readme, "README must state the open boundary in plain language")
+    check("does not solve" in flattened(readme),
+          "README must state the open boundary in plain language")
     check("METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
     leaked_identifier = re.search(r"method_axiom\.|anti_principle\.|principle\.[a-z_]|transition\.[a-z_]", readme)
     check(leaked_identifier is None,
           f"README leaks a methodology machine identifier: {leaked_identifier.group(0) if leaked_identifier else ''}")
     for phrase in README_BANNED_PHRASES:
-        check(phrase not in readme, f"README contains banned drift phrase: {phrase!r}")
-    for status in re.findall(r"\|\s*\*\*([a-z][a-z ]+)\*\*\s*\|", readme):
+        check(phrase not in flattened(readme),
+              f"README contains banned drift phrase: {phrase!r}")
+    # Parse every bold first-column label before checking the taxonomy.  A
+    # restrictive character class here once let composite labels containing
+    # punctuation evade validation entirely.
+    for status in re.findall(r"\|\s*\*\*([^*\n]+)\*\*\s*\|", readme):
         check(status in taxonomy,
               f"README status table uses {status!r}, which is not in the taxonomy")
 
@@ -968,11 +1041,14 @@ def main() -> int:
         "scripts/query_corpus.py",
     ):
         check(required in agents, f"AGENTS.md does not route through {required}")
-    check("remain open" in agents, "AGENTS.md must preserve the open-problem boundary")
-    check("proof authority" in agents, "AGENTS.md must state the proof-authority boundary")
-    check("larger ongoing formal-mathematics workflow" in agents,
+    flat_agents = flattened(agents)
+    check("remain open" in flat_agents,
+          "AGENTS.md must preserve the open-problem boundary")
+    check("proof authority" in flat_agents,
+          "AGENTS.md must state the proof-authority boundary")
+    check("larger ongoing formal-mathematics workflow" in flat_agents,
           "AGENTS.md must preserve the public-projection provenance boundary")
-    check("mathematical programme" in agents,
+    check("mathematical programme" in flat_agents,
           "AGENTS.md must expose mathematical programme routes")
 
     architecture_check = subprocess.run(
@@ -1041,6 +1117,108 @@ def main() -> int:
     )
     check(atlas_check.returncode == 0,
           f"declaration atlas drift: {atlas_check.stdout.strip() or atlas_check.stderr.strip()}")
+
+    certificate_probe_check = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "probe_certificate_supply.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(certificate_probe_check.returncode == 0,
+          f"certificate-supply probe drift: {certificate_probe_check.stdout.strip() or certificate_probe_check.stderr.strip()}")
+
+    second_channel_probe_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "probe_second_channel_separation.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(second_channel_probe_check.returncode == 0,
+          f"second-channel separation probe drift: {second_channel_probe_check.stdout.strip() or second_channel_probe_check.stderr.strip()}")
+
+    off_diagonal_roster_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_off_diagonal_certificate_roster.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(off_diagonal_roster_check.returncode == 0,
+          f"off-diagonal certificate roster drift: {off_diagonal_roster_check.stdout.strip() or off_diagonal_roster_check.stderr.strip()}")
+
+    diagonal_depth_roster_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_checked_diagonal_depth_roster.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(diagonal_depth_roster_check.returncode == 0,
+          f"checked diagonal depth roster drift: {diagonal_depth_roster_check.stdout.strip() or diagonal_depth_roster_check.stderr.strip()}")
+
+    # The semantic corpus is what makes "what does this prove" a query rather
+    # than a reread.  Its coverage contract is what stops a barrier from being
+    # described as closing a family of engines while a weaker sibling engine
+    # survives it, which has happened here once already.
+    semantic_build = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "build_semantic_corpus.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(semantic_build.returncode == 0,
+          f"semantic corpus drift: {semantic_build.stdout.strip() or semantic_build.stderr.strip()}")
+
+    semantic_contract = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "check_semantic_corpus.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(semantic_contract.returncode == 0,
+          f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
+
+    # The theory lab is the layer that makes predictive claims -- which mechanism
+    # explains a proof, what survives an intervention, whether an explanation
+    # transfers.  Its contract is stricter than the corpus contract because the
+    # failure mode is worse: a plausible mechanism laid over a proof that works
+    # for another reason, or a barrier written up without naming the sibling
+    # engines it leaves alive.
+    lab_build = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "build_theory_lab.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(lab_build.returncode == 0,
+          f"theory lab drift: {lab_build.stdout.strip() or lab_build.stderr.strip()}")
+
+    lab_contract = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "check_theory_lab.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(lab_contract.returncode == 0,
+          f"theory lab contract: {lab_contract.stdout.strip() or lab_contract.stderr.strip()}")
 
     coordinate_check = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "refresh_source_coordinates.py"), "--check"],

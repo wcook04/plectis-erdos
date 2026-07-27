@@ -1,0 +1,3391 @@
+{
+  "zone_id": "Z14",
+  "title": "Last-producer analysis: middle and upper carries, the final -2 cell and its phase sieve",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "mersenne_achievement_set",
+      "label": "Mersenne achievement set",
+      "description": "The set of reals sum_{a in A} 1/(2^a - 1) over supports A of positive integers; whether 1/2 belongs to it is the open half-value question for Erdos #257."
+    },
+    {
+      "id": "half_value_seam",
+      "label": "Half-value seam and adjacent cut",
+      "description": "At each row s a pair of finite Mersenne words bracketing the target 1/2, with integer coordinates remainder (below deficit) and overshoot (above excess)."
+    },
+    {
+      "id": "seam_greedy_word",
+      "label": "Concrete seam greedy word",
+      "description": "The descending integer-greedy include/skip word on the truncated Mersenne weights at row s; its terminal bit decides the branch."
+    },
+    {
+      "id": "three_branch_recurrence",
+      "label": "Upper / middle / right trichotomy",
+      "description": "Each seam row passes to its successor by an upper (successor-carry) reset, a genuine middle landing, or a plain right extension."
+    },
+    {
+      "id": "producer_hypothesis",
+      "label": "Producer socket",
+      "description": "An unproved Prop-valued hypothesis asserting that a required inequality or configuration holds cofinally; none is proved anywhere in the corpus."
+    },
+    {
+      "id": "producer_carry",
+      "label": "Producer-aligned integer carry",
+      "description": "producerCarry A d, the affine binary carry orbit of the divisor-incidence coefficients of A read at depth 2d+1."
+    },
+    {
+      "id": "divisor_incidence_tail",
+      "label": "Future divisor-incidence tail",
+      "description": "binaryCoeffTail of supportCoeff A: the normalised 2^-(j+1)-weighted sum of the numbers of divisors of later rows lying in A."
+    },
+    {
+      "id": "boundary_pulse",
+      "label": "Boundary pulse",
+      "description": "rowPulse / wordPulse / belowPulse / abovePulse: the divisor incidence of the selected ranks at the two new coefficient rows 2s+1 and 2s+2."
+    },
+    {
+      "id": "floor_z_coordinate",
+      "label": "Corrected floor coordinate Z and take threshold",
+      "description": "seamGreedyFloorZ, the remainder corrected by the exact Mersenne floor error, compared against seamTakeThreshold."
+    },
+    {
+      "id": "mobius_centered_half_carry",
+      "label": "Mobius-centred half carry",
+      "description": "The integer carry centred by the Mobius baseline unit; it is nonnegative at every level for any support strictly below 1/2."
+    },
+    {
+      "id": "lazy_cofinite_tail",
+      "label": "Lazy cofinite tail U union Ioi D",
+      "description": "Completing every rank strictly above the last false rank D, turning a finite producer cell into a cofinite support."
+    },
+    {
+      "id": "final_middle_cells",
+      "label": "The three exceptional middle cells",
+      "description": "The signed middle coordinate 4*remainder - belowPulse - 4 taking the values -3, -2, -1, the only values not handled by the generic two-sided argument."
+    },
+    {
+      "id": "forced_seam_ranks",
+      "label": "Forced seam ranks",
+      "description": "Ranks 2, 3, 6, 7, 14, 20, 21, 26, which the greedy seam word is proved to select uniformly from an explicit row onward."
+    },
+    {
+      "id": "phase_sieve",
+      "label": "Residue-class phase sieve",
+      "description": "Restriction of a hypothetical last producer depth D to residue classes modulo 3, 7, 10, 13, 21, 210 and 2730 by counting forced-rank pulse."
+    },
+    {
+      "id": "exponential_barrier",
+      "label": "Exponential barrier 2^s + s <= R_s",
+      "description": "An invariant on the integer seam remainder created by a middle landing and preserved by every subsequent right step."
+    },
+    {
+      "id": "two_sided_dyadic_invariant",
+      "label": "Two-sided dyadic invariant",
+      "description": "min(remainder, overshoot) <= 2^s at every row; its propagation fails only at the three middle cells and at a narrow right-branch pulse leak."
+    },
+    {
+      "id": "affine_right_run_charge",
+      "label": "Affine right-run charge",
+      "description": "The accumulated base-four charge sum over a run of right steps, newest pulse weight one and older pulses multiplied by four."
+    },
+    {
+      "id": "upper_reset_dyadic_band",
+      "label": "Upper-reset dyadic danger band",
+      "description": "Linear-width windows just below the dyadic powers 2^(d-j+1) that the upper reset charge 4*overshoot + abovePulse would have to enter."
+    },
+    {
+      "id": "late_largest_false_rank",
+      "label": "Late largest false rank",
+      "description": "A skipped rank d with 2s < 3d, at which the adjacent upper word is explicitly identified and the adjacent gap is exactly computed."
+    },
+    {
+      "id": "fatal_gap_window",
+      "label": "Fatal gap window",
+      "description": "The exact interval mersenneTail D < rational remainder < mersenneWeight D forced by a middle landing followed by an all-right suffix."
+    },
+    {
+      "id": "cardinality_tail_bound",
+      "label": "Cardinality tail bound",
+      "description": "For a finite support F, every future coefficient counts at most F.card divisors, so the whole normalised tail is at most F.card."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "producer_carry_exact_half_criterion",
+      "canonical_statement": "For a support A of positive integers with 1 not in A and every element at most d, the distance of its Mersenne value from one half is exactly the producer-aligned integer carry minus the complete future divisor-incidence tail, divided by 2^(2d+2). Consequently the value lies strictly below one half exactly when that integer carry exceeds the tail, and strictly above exactly when the carry falls below the tail.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "producerCarry_residual_identity",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 27
+        },
+        {
+          "declaration": "producerCarry_gt_tail_iff_supportSeries_lt_half",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 48
+        },
+        {
+          "declaration": "producerCarry_lt_tail_iff_half_lt_supportSeries",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 78
+        }
+      ],
+      "concepts": [
+        "producer_carry",
+        "divisor_incidence_tail",
+        "mersenne_achievement_set"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "affine binary carry orbit of the divisor-incidence coefficient sequence, read at producer depth 2d+1",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Standard base-two carry bookkeeping for a Lambert-type finite sum; no external attribution found in the corpus docs. It decides nothing on its own: neither side is known to hold for any cofinal family.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "producer_carry_positive_sufficient_conditions",
+      "canonical_statement": "If the producer carry of such a prefix exceeds 2*sqrt(2d+2) + 4, or (for d at least 1) exceeds 2d + 6, then the prefix value is strictly below one half.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "producerCarry_sqrt_sufficient",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 109
+        },
+        {
+          "declaration": "producerCarry_linear_sufficient",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 124
+        }
+      ],
+      "concepts": [
+        "producer_carry",
+        "divisor_incidence_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "square-root divisor-count envelope for supportCoeff composed with the exact carry criterion",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate composition of the exact criterion with an already-available square-root majorant for the divisor-incidence tail; the linear form is a further weakening.",
+      "scope_caveat": "The carry hypotheses (2*sqrt(2d+2)+4 < producerCarry, or 2d+6 < producerCarry) are explicit numerical side conditions on the given finite prefix, not corpus-level sockets, so the theorems are genuinely unconditional implications. But they are the pointwise form of SeamMiddleProducerSqrtEscape, and the corpus does not verify either inequality at a single late seam row.",
+      "confidence": "high"
+    },
+    {
+      "id": "producer_carry_negative_forces_above_half",
+      "canonical_statement": "A negative producer carry forces the prefix value strictly above one half. A carry of at most -8 forces it above one half by more than a full Mersenne gap at rank d (for d at least 2), and hence replacing the top weight by the entire later Mersenne tail still leaves the value above one half.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "producerCarry_neg_forces_half_lt_supportSeries",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 145
+        },
+        {
+          "declaration": "producerCarry_le_neg_eight_forces_gap_margin",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 190
+        },
+        {
+          "declaration": "producerCarry_le_neg_eight_forces_belowTail_gt_half",
+          "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+          "line": 234
+        }
+      ],
+      "concepts": [
+        "producer_carry",
+        "divisor_incidence_tail",
+        "half_value_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "eight units at depth 2d+1 dominate the whole rank-d superincreasing Mersenne gap",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is the analytic engine that later kills the upper last producer unconditionally; the -8 threshold is corpus-specific.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "producer_carry_concrete_seam_coordinates",
+      "canonical_statement": "Adjoining the terminal rank s to a concrete seam row word turns its signed integer subset-sum defect into the producer carry, equal to 4*(wordDefect - 1) - wordPulse. At the actual adjacent cut this is 4*remainder - belowPulse - 4 for the below word and -(4*overshoot + abovePulse + 4) for the above word.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "producerCarry_insert_seamWordSupport_eq",
+          "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+          "line": 105
+        },
+        {
+          "declaration": "producerCarry_insert_seamBelowSupport_eq_middleCoordinate",
+          "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+          "line": 150
+        },
+        {
+          "declaration": "producerCarry_insert_seamAboveSupport_eq_neg_upperCoordinate",
+          "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+          "line": 183
+        }
+      ],
+      "concepts": [
+        "producer_carry",
+        "half_value_seam",
+        "boundary_pulse"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "paired odd/even divisor incidence at rows 2s+1 and 2s+2 identified with the row pulse",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Coordinate dictionary only; the module docstring states explicitly that it does not assert the exponential lower bounds it makes expressible.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "finite_prefix_cardinality_tail_socket",
+      "canonical_statement": "For a finite support F, each coefficient row counts at most card F divisors of F, so the whole normalised future divisor-incidence tail is at most card F. Hence the strict natural-number inequality card(below support) + belowPulse + 5 < 4*remainder says exactly that the producer carry exceeds the cardinality of the terminal-augmented support, and its failure forces the seam remainder to be strictly smaller than its row index.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "binaryCoeffTail_supportCoeff_coe_finset_le_card",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 54
+        },
+        {
+          "declaration": "middleProducer_card_lt_carry",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 124
+        },
+        {
+          "declaration": "middleProducer_not_cardEscape_forces_remainder_lt_row",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 886
+        }
+      ],
+      "concepts": [
+        "cardinality_tail_bound",
+        "producer_carry",
+        "half_value_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "one divisor per support element, against the total mass one of the weights 2^-(j+1)",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary counting. The module docstring itself concedes this is sharper than the square-root strip only for sparse prefixes and is not a uniform improvement once the support cardinality grows linearly in the row.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "tail_escape_equals_rational_take_decision",
+      "canonical_statement": "At every adjacent cut with s at least 5, the carry-minus-tail margin equals exactly four times the distance of the corrected floor coordinate Z above the rational take threshold, and Z can never equal that threshold. Hence the producer tail-escape inequality is not an analytic majorant at all: it holds precisely when the exact rational greedy remainder of the below word is at least the terminal Mersenne weight, that is, precisely when the rational greedy would take rank s.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "middleProducer_tail_lt_carry_iff_takeThreshold_lt_floorZ",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 613
+        },
+        {
+          "declaration": "middleProducer_carry_sub_tail_eq_four_mul_floorZ_sub_threshold",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 690
+        },
+        {
+          "declaration": "middleProducer_carry_lt_tail_iff_floorZ_lt_takeThreshold",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 755
+        },
+        {
+          "declaration": "middleProducer_tail_lt_carry_iff_takeThreshold_le_floorZ",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 844
+        },
+        {
+          "declaration": "middleProducer_tail_lt_carry_iff_rational_take",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 865
+        }
+      ],
+      "concepts": [
+        "producer_carry",
+        "divisor_incidence_tail",
+        "floor_z_coordinate",
+        "seam_greedy_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "pulse absorption into the exact Mersenne floor error, plus the odd-denominator exclusion of an exact finite half-sum",
+      "prior_art_state": "candidate_new_statement",
+      "prior_art_note": "Unconditional and about the actual seam objects: it collapses the whole tail-dominance socket to a single rational greedy decision, which is not a corollary of any classical theorem cited in the corpus. It also shows the socket is no weaker than the configuration it is meant to exclude.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "middle_landing_floor_error_identities",
+      "canonical_statement": "The signed middle landing splits exactly as four times the corrected floor coordinate plus the next-row floor slack, and the complete divisor-incidence tail of the terminal-augmented below support equals the floor error of the false extension plus the terminal rank's own floor error. Both are identities, not majorants.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "middleLandingSignedExcess_eq_four_floorZ_add_nextFloorError",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 361
+        },
+        {
+          "declaration": "binaryCoeffTail_insert_seamBelowSupport_eq_nextFloorError",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 502
+        }
+      ],
+      "concepts": [
+        "floor_z_coordinate",
+        "boundary_pulse",
+        "divisor_incidence_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact Mersenne floor-error bookkeeping",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "forced_seam_ranks_two_three_six",
+      "canonical_statement": "From row thirteen onward the descending greedy seam decisions are forced at the bottom: ranks 2 and 3 are taken, ranks 4 and 5 are skipped, rank 6 is taken. So ranks 2, 3 and 6 lie in every concrete seam word support from row thirteen on.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamGreedy_head236_decisions",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 230
+        },
+        {
+          "declaration": "seamGreedyBits_head236",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 319
+        },
+        {
+          "declaration": "two_three_six_mem_seamGreedySupport",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 340
+        }
+      ],
+      "concepts": [
+        "forced_seam_ranks",
+        "seam_greedy_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "common denominator 63 upper quotient bounds plus individual lower bounds on the skipped weights",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A uniform-in-s explicit computation about the concrete seam word; no external source.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "forced_seam_ranks_seven_through_twentysix",
+      "canonical_statement": "The forced initial segment extends: rank 7 is taken from row 14, ranks 8-13 skipped and rank 14 taken from row 20, ranks 15-19 skipped and rank 20 taken from row 21, rank 21 taken from row 26, ranks 22-25 skipped and rank 26 taken from row 27. Each step rests on an exact rational excess or deficit against one half with the dyadic side term fitting inside it.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamGreedyBits_head2367",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 234
+        },
+        {
+          "declaration": "seven_mem_seamGreedySupport",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 251
+        },
+        {
+          "declaration": "seamGreedy_postSeven_decisions_through_fourteen",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 442
+        },
+        {
+          "declaration": "seamGreedyBits_head2367_14",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 614
+        },
+        {
+          "declaration": "fourteen_mem_seamGreedySupport",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 638
+        },
+        {
+          "declaration": "seamGreedy_postFourteen_decisions_through_twenty",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 651
+        },
+        {
+          "declaration": "seamGreedyBits_head2367_14_20",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 835
+        },
+        {
+          "declaration": "twenty_mem_seamGreedySupport",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 860
+        },
+        {
+          "declaration": "seamGreedy_postTwenty_decision_twentyOne",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 872
+        },
+        {
+          "declaration": "seamGreedyBits_head2367_14_20_21",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 960
+        },
+        {
+          "declaration": "twentyOne_mem_seamGreedySupport",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 978
+        },
+        {
+          "declaration": "seamGreedy_postTwentyOne_decisions_through_twentySix",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 990
+        },
+        {
+          "declaration": "seamGreedyBits_head2367_14_20_21_26",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1190
+        },
+        {
+          "declaration": "twentySix_mem_seamGreedySupport",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1216
+        }
+      ],
+      "concepts": [
+        "forced_seam_ranks",
+        "seam_greedy_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact common-denominator reciprocal comparisons against one half, with explicit deficits such as 1/688086 and 12932167/567347188334850",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Uniform-in-s explicit arithmetic; the row thresholds 14, 20, 21, 26, 27 are exactly where the dyadic side term fits the deficit.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "pulse_and_floor_error_calculus",
+      "canonical_statement": "The accumulated pulse of a finite seam word is at most twice its number of selected ranks and at most four times its floor error, each row pulse being at most four times that rank's fractional floor error. The joint floor slack of the forced ranks 2, 3, 6 is exactly 31/63, 61/63 or 55/63 according to the row modulo three, and it is a lower bound for the false-extension slack; in the class s+1 = 0 mod 3 the total pulse is exactly three plus the pulse of the remaining ranks.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "wordPulse_le_two_mul_supportCard",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 162
+        },
+        {
+          "declaration": "wordPulse_le_four_mul_seamWordFloorError",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 196
+        },
+        {
+          "declaration": "seamRankFloorError_two_three_six_eq",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 389
+        },
+        {
+          "declaration": "wordPulse_eq_three_add_seamResidualPulse236",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 445
+        }
+      ],
+      "concepts": [
+        "boundary_pulse",
+        "floor_z_coordinate",
+        "forced_seam_ranks"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "pointwise cancellation of each quotient digit against the quarter-scaled fractional error of its rank",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "final_middle_producer_must_violate_tail_inequality",
+      "canonical_statement": "If a genuine middle transition at row D at least 13 is followed only by right extensions, then its producer carry is strictly smaller than its complete future divisor-incidence tail, equivalently its corrected floor coordinate is strictly below the rational take threshold, equivalently the below word strictly skips its terminal Mersenne weight in the exact rational model. The strict reverse inequality is therefore the exact arithmetic signature that any hypothetical final middle producer must satisfy.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "middleProducer_allRight_forces_carry_lt_tail",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 953
+        },
+        {
+          "declaration": "middleProducer_allRight_forces_floorZ_lt_takeThreshold",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1008
+        },
+        {
+          "declaration": "middleProducer_allRight_forces_rational_skip",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1027
+        }
+      ],
+      "concepts": [
+        "producer_carry",
+        "divisor_incidence_tail",
+        "floor_z_coordinate",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [
+        "all-right suffix hypothesis hright: for all s >= D+1, seamGreedyWord (s+1) = (seamGreedyWord s).extend true. Nothing in the corpus proves this for any D. By half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight it is the negation of the open proposition remaining_open.half_value_membership, so it is assumed only for contradiction and nobody intends to prove it; but the conclusion below is a statement about a hypothetical configuration and is vacuous if the seam is not eventually right."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "lazy limit of the middle-then-all-right orbit against the analytic half threshold",
+      "prior_art_state": "candidate_new_statement",
+      "prior_art_note": "Unconditional, about the actual seam. It is also the sharpest evidence that the tail-escape socket is not a chosen majorant but the exact negation of the surviving configuration at the single relevant row, which is why the conditional endpoints below should not be read as progress toward a proof.",
+      "scope_caveat": "Reclassified from unconditional_object_theorem on adversarial review: every evidence declaration carries hright, and unlike the *_not_last theorems the conclusion is not False, so the statement is about a hypothetical configuration and is vacuous unless the seam really is eventually right. Read correctly it is still the sharpest sceptical fact in the zone: in the only surviving scenario the tail-escape inequality is false at the last false row, so the sockets of half_membership_conditional_endpoints are not analytic slack conditions that a better majorant could reach. But it is not itself a barrier theorem: it does not show any socket unprovable, because in the complementary world (1/2 in the achievement set) its hypothesis never holds.",
+      "confidence": "high"
+    },
+    {
+      "id": "middle_then_allright_orbit_closed_forms",
+      "canonical_statement": "Along an all-right suffix, and after a genuine middle landing, the exact rational residual, the corrected floor coordinate and the finite prefix value all have explicit closed forms: the residual loses exactly the consecutive Mersenne partial tail, the floor coordinate satisfies a base-four affine recurrence whose accumulated charge closes against 4^k times the initial value, and the finite value gains exactly the corresponding partial Mersenne tail.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "eventualRightTail_rationalRemainder_add_eq",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1077
+        },
+        {
+          "declaration": "eventualRightTail_floorZ_add_charge_eq",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1110
+        },
+        {
+          "declaration": "eventualRightTail_floorZ_add_eq_partialTail",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1137
+        },
+        {
+          "declaration": "middleThenAllRight_rationalRemainder_add_eq",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1165
+        },
+        {
+          "declaration": "middleThenAllRight_floorZ_add_charge_eq",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1194
+        },
+        {
+          "declaration": "middleThenAllRight_floorZ_eq_partialTail",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1217
+        },
+        {
+          "declaration": "middleThenAllRight_finiteValue_add_eq",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1244
+        }
+      ],
+      "concepts": [
+        "floor_z_coordinate",
+        "affine_right_run_charge",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "division-free base-four affine iteration with the explicit charge floorZRightRunCharge",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Every closed form here assumes the all-right suffix hright (unproved, and the negation of the open endpoint); the identities are exact but describe an orbit that may not exist. Kept as representation_normalisation because they assert no new inequality.",
+      "confidence": "high"
+    },
+    {
+      "id": "middle_then_allright_fatal_gap_and_landing_window",
+      "canonical_statement": "A genuine middle landing at row D at least 13 followed by an all-right suffix has limiting lazy value strictly below one half, and its exact rational remainder is trapped strictly between the complete Mersenne tail above D and the single Mersenne weight at D. In the corrected floor coordinate the lower wall is 4^D*mersenneTail(D) - 2^D, whose exact value is 1/3 plus a positive higher-channel tail. Consequently the integer landing excess is at least two, and it is strictly below 2*sqrt(2D+2) + 8.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "middleThenAllRight_limit_lt_half",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1314
+        },
+        {
+          "declaration": "middleThenAllRight_rationalRemainder_fatalGap",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1344
+        },
+        {
+          "declaration": "middleThenAllRight_floorZ_fatalGap",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1383
+        },
+        {
+          "declaration": "middleThenAllRight_landingExcess_two_le",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1458
+        },
+        {
+          "declaration": "middleProducer_allRight_landingExcess_window",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1686
+        }
+      ],
+      "concepts": [
+        "fatal_gap_window",
+        "floor_z_coordinate",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [
+        "all-right suffix hypothesis hright: for all s >= D+1, seamGreedyWord (s+1) = (seamGreedyWord s).extend true. Nothing in the corpus proves this for any D. By half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight it is the negation of the open proposition remaining_open.half_value_membership, so it is assumed only for contradiction and nobody intends to prove it; but the conclusion below is a statement about a hypothetical configuration and is vacuous if the seam is not eventually right."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact tail wall 4^D*mersenneTail(D) - 2^D = 1/3 + positive remainder tail, combined with pulse absorption",
+      "prior_art_state": "candidate_new_statement",
+      "prior_art_note": "Unconditional narrowing of the surviving configuration: the landing excess is squeezed between 2 and a square-root envelope. It restricts but does not empty the window, so it is not a barrier.",
+      "scope_caveat": "Reclassified from unconditional_object_theorem on adversarial review: all five evidence declarations assume hright and conclude non-trivial inequalities, so the whole landing window is a description of a hypothetical surviving configuration and is vacuous if the seam is not eventually right. It narrows and does not empty the window, so it is not a barrier.",
+      "confidence": "medium"
+    },
+    {
+      "id": "eventual_right_tail_positive_excess",
+      "canonical_statement": "A row whose seam remainder is smaller than its row index must take a non-right branch. A right-only tail cannot start at or below its dyadic half point, so every row of an eventual right-extension tail satisfies 2^s < remainder; the signed excess above the dyadic half point then follows the exact base-four affine recurrence with the below pulse as its charge, and stays strictly positive.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamRowSmall_upperOrMiddle",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1566
+        },
+        {
+          "declaration": "allRightTail_forces_twoPow_lt_remainder",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1578
+        },
+        {
+          "declaration": "eventualRightTail_forces_twoPow_lt_remainder",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1618
+        },
+        {
+          "declaration": "eventualRightTail_positive_affineExcess",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1654
+        }
+      ],
+      "concepts": [
+        "three_branch_recurrence",
+        "affine_right_run_charge",
+        "two_sided_dyadic_invariant"
+      ],
+      "open_antecedents": [
+        "all-right tail from a row S: for all s >= S, seamGreedyWord (s+1) = (seamGreedyWord s).extend true (equivalently, no upper or middle transition at any t >= s). Unproved for every S; it is the negation of the open endpoint remaining_open.half_value_membership."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "dyadic deficit consumption plus the positive terminal correction 4 in the right-step pulse charge",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Reclassified from unconditional_object_theorem on adversarial review: three of the four evidence declarations (allRightTail_forces_twoPow_lt_remainder, eventualRightTail_forces_twoPow_lt_remainder, eventualRightTail_positive_affineExcess) assume an all-right tail and are vacuous without it. Only seamRowSmall_upperOrMiddle (a row whose remainder is below its row index must take a non-right branch) is an unconditional fact about the actual seam.",
+      "confidence": "high"
+    },
+    {
+      "id": "exponential_barrier_propagation",
+      "canonical_statement": "A middle branch always sends the next remainder to at least the next row index, and if the source remainder is already at least its row it sends it above the exponential barrier 2^(s+1) + (s+1). Every subsequent right branch preserves that barrier, so a row-scale middle producer followed by any finite run of right successors can never end in a remainder smaller than its row.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamMiddleBranch_nextRemainder_ge_row",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1765
+        },
+        {
+          "declaration": "seamMiddleBranch_nextRemainder_ge_expBarrier",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1790
+        },
+        {
+          "declaration": "seamRightBranch_preserves_expBarrier",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1817
+        },
+        {
+          "declaration": "seamRightRun_preserves_expBarrier",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1852
+        },
+        {
+          "declaration": "seamMiddleThenRightRun_expBarrier",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1878
+        }
+      ],
+      "concepts": [
+        "exponential_barrier",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the middle successor absorbs the whole positive dyadic gap 2^(s+1) while losing only the linear row pulse",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "upper_reset_right_run_exact_cylinder",
+      "canonical_statement": "An upper reset satisfies next remainder plus reset charge equals 2^(d+1) exactly, and a right step satisfies next remainder plus 2^(s+1) plus below pulse plus 4 equals 4 times the current remainder. Iterating gives the exact dyadic cylinder identity: remainder after k right steps plus 4^k times the reset charge plus the accumulated affine right-run charge equals 2^(d+k+1). The same base-four iteration gives the exact signed-excess iterates along an eventual right tail and after a middle landing.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "eventualRightTail_excess_exactIterate",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2353
+        },
+        {
+          "declaration": "middleThenAllRight_excess_exactIterate",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2390
+        },
+        {
+          "declaration": "eventualRightTail_charge_lt_scaledInitialExcess",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2443
+        },
+        {
+          "declaration": "seamUpperThenRightRun_exactCylinder",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2594
+        }
+      ],
+      "concepts": [
+        "affine_right_run_charge",
+        "three_branch_recurrence",
+        "half_value_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "division-free base-four iteration of the additive branch recurrences",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Mixed conditioning. seamUpperThenRightRun_exactCylinder and the length bound depend only on a finite, explicitly listed right run after an upper reset, so they are unconditional facts about whatever the seam does; but eventualRightTail_excess_exactIterate, middleThenAllRight_excess_exactIterate and eventualRightTail_charge_lt_scaledInitialExcess assume the unproved all-right tail and are vacuous without it.",
+      "confidence": "high"
+    },
+    {
+      "id": "upper_reset_right_run_length_bound",
+      "canonical_statement": "An upper reset cannot be followed by more right steps than its reset row index: the reset charge is at least four, so a run longer than d would make its 4^k dilate exceed the dyadic capacity 2^(d+k+1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamUpperThenRightRun_length_le_resetRow",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2618
+        }
+      ],
+      "concepts": [
+        "affine_right_run_charge",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the exact cylinder identity plus positivity of the reset charge",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "row_small_endpoint_reverse_classification",
+      "canonical_statement": "After an upper reset and a run of k right steps, the endpoint remainder is smaller than its row index exactly when the base-four weighted reset-and-pulse charge sits in one explicit top window below the dyadic capacity. That forces an exponential lower bound on the upper reset charge itself, 2^(d-k+1) < 4*overshoot + abovePulse + 2*(d+k), and the same scaling identifies the scaled dyadic gap with the terminal middle coordinate plus the full affine pulse charge, so no congruence information is lost.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamUpperThenRightRun_scaledDyadicGap_eq_middleCoordinate_add_charge",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2664
+        },
+        {
+          "declaration": "seamUpperThenRightRun_rowSmall_forces_resetCylinder",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2763
+        },
+        {
+          "declaration": "seamUpperThenRightRun_rowSmall_iff_resetCylinderWindow",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2808
+        },
+        {
+          "declaration": "seamUpperThenRightRun_rowSmall_forces_resetCharge_lower",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2840
+        }
+      ],
+      "concepts": [
+        "affine_right_run_charge",
+        "upper_reset_dyadic_band",
+        "two_sided_dyadic_invariant"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact reverse cylinder coordinate, dividing out the base-four run length with linear loss 2*(d+k)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Both sides concern the concrete seam; neither is decided. The lower bound is the exact input the unproved dyadic band hypothesis is designed to contradict.",
+      "scope_caveat": "",
+      "confidence": "medium"
+    },
+    {
+      "id": "late_largest_false_adjacent_cut_identification",
+      "canonical_statement": "At a late largest false rank d (2s < 3d) with the greedy support of the stated shape, the explicit largest-skip upper word is the actual minimal word above the seam target, its pulse is the below pulse plus the boundary row pulse, and the adjacent gap is exact: 3*(remainder + overshoot) = 3*2^(s+1) + 2*4^(s-d) + 4.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamAdjacentCut_above_eq_largestSkipUpperWord_of_support",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1968
+        },
+        {
+          "declaration": "seamAdjacentCut_abovePulse_eq_belowPulse_add_rowPulse_of_largestFalse_late",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2014
+        },
+        {
+          "declaration": "three_mul_remainder_add_overshoot_eq_exactLateGap",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2048
+        }
+      ],
+      "concepts": [
+        "late_largest_false_rank",
+        "half_value_seam",
+        "boundary_pulse"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "gap-separated adjacent-cut uniqueness applied to the explicit largest-skip competitor",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "",
+      "scope_caveat": "The late-regime hypotheses (IsLargestFalseRank (seamGreedyWord s) d together with 2*s < 3*d) are not known to hold cofinally: they are supplied only by the unproved LargestSkipLateStepSocket in Erdos249257/HalfCylinderLargestSkipInduction.lean, which no declaration in the corpus discharges. Each statement here is therefore an exact fact about any row that happens to be in the late regime, not a fact known to apply to cofinally many rows.",
+      "confidence": "medium"
+    },
+    {
+      "id": "late_gap_reset_middle_balance",
+      "canonical_statement": "In the late largest-false regime the upper reset charge E and the signed middle coordinate M satisfy the exact non-tautological balance E + M = 4G + rowPulse(s,d) - 4 with 3G = 3*2^(s+1) + 2*4^(s-d) + 4; at the first two-thirds crossing the offset is exactly 4G-2 or 4G-3 according to the parity cell. The signed distance of the reset charge from any dyadic boundary is a completely explicit affine expression in the remainder, the largest-false correction and the above pulse.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "exists_exactLateGap_upperResetCharge_add_middleCoordinate",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2107
+        },
+        {
+          "declaration": "exists_exactLateGap_upperResetCharge_add_middleCoordinate_firstCrossing",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2130
+        },
+        {
+          "declaration": "exists_exactLateGap_upperResetCharge_coordinate",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2228
+        },
+        {
+          "declaration": "three_mul_upperResetCharge_signedDistance_to_dyadic",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2247
+        },
+        {
+          "declaration": "upperResetCharge_signedDistance_eq_remainderBoundary",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2275
+        }
+      ],
+      "concepts": [
+        "late_largest_false_rank",
+        "upper_reset_dyadic_band",
+        "boundary_pulse"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "removing the largest-skip denominator by the factor three",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "The late-regime hypotheses (IsLargestFalseRank (seamGreedyWord s) d together with 2*s < 3*d) are not known to hold cofinally: they are supplied only by the unproved LargestSkipLateStepSocket in Erdos249257/HalfCylinderLargestSkipInduction.lean, which no declaration in the corpus discharges. Each statement here is therefore an exact fact about any row that happens to be in the late regime, not a fact known to apply to cofinally many rows.",
+      "confidence": "medium"
+    },
+    {
+      "id": "late_row_small_forces_middle_branch",
+      "canonical_statement": "In the late largest-false regime a row whose remainder is smaller than its row index cannot take the upper branch, since the exact gap gives 2^(s+1) < remainder + overshoot while an upper carry would force both 4*remainder < 2^(s+1) and 4*overshoot at most 2^(s+1). It therefore takes the middle branch, and its successor's largest false rank resets to the old terminal rank, which is again late.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamRowSmall_not_successorCarries_of_largestFalse_late",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2161
+        },
+        {
+          "declaration": "seamRowSmall_middleBranch_of_largestFalse_late",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2190
+        },
+        {
+          "declaration": "largestSkipLateAt_succ_of_rowSmall",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2212
+        }
+      ],
+      "concepts": [
+        "late_largest_false_rank",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact late adjacent-gap inequality against the two upper-carry inequalities",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "The late-regime hypotheses (IsLargestFalseRank (seamGreedyWord s) d together with 2*s < 3*d) are not known to hold cofinally: they are supplied only by the unproved LargestSkipLateStepSocket in Erdos249257/HalfCylinderLargestSkipInduction.lean, which no declaration in the corpus discharges. Each statement here is therefore an exact fact about any row that happens to be in the late regime, not a fact known to apply to cofinally many rows.",
+      "confidence": "high"
+    },
+    {
+      "id": "two_sided_dyadic_invariant_branch_propagation",
+      "canonical_statement": "An upper successor always satisfies the lower half of the next-row two-sided dyadic bound. A middle successor satisfies one side whenever its signed coordinate is at most -4 or at least 0, and the complement of that safe range is exactly the three integers -3, -2, -1. A right successor preserves the remainder witness always and the overshoot witness whenever its pulse-corrected upper charge stays below twice the old gap; failure of that last condition is exactly a distance cell just below 2^s with 4k < abovePulse.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamUpperBranch_nextRemainder_le_pow",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2916
+        },
+        {
+          "declaration": "seamMiddleBranch_next_twoSided_of_not_neg_small",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 2928
+        },
+        {
+          "declaration": "seamRightBranch_nextRemainder_le_pow_of_remainder_le",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3008
+        },
+        {
+          "declaration": "seamRightBranch_nextOvershoot_le_pow_of_charge_le",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3025
+        },
+        {
+          "declaration": "seamRightBranch_nextOvershoot_le_pow_of_overshoot_le_of_noPulseLeak",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3078
+        },
+        {
+          "declaration": "seamMiddleCoordinate_not_safe_iff_three_cells",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3090
+        },
+        {
+          "declaration": "seamRightPulseLeak_iff_distanceCell",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3167
+        }
+      ],
+      "concepts": [
+        "two_sided_dyadic_invariant",
+        "final_middle_cells",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "candidate-word toggling for the middle branch, pulse-charge comparison for the right branch",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is what isolates exactly the three middle cells and the pulse leak; it proves no invariant on its own.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "two_sided_dyadic_invariant_under_cell_escape",
+      "canonical_statement": "If no middle transition ever lands in the signed cells -3, -2 or -1 and no right transition with overshoot at most 2^s has upper charge above 2^(s+2), then the two-sided dyadic bound min(remainder, overshoot) at most 2^s holds at every row from five onward.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SeamTwoSidedDyadicCellEscape.step",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3363
+        },
+        {
+          "declaration": "SeamTwoSidedDyadicCellEscape.twoSided",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3413
+        }
+      ],
+      "concepts": [
+        "two_sided_dyadic_invariant",
+        "final_middle_cells",
+        "producer_hypothesis"
+      ],
+      "open_antecedents": [
+        "SeamTwoSidedDyadicCellEscape: for all s >= 5, (a) at a genuine middle transition the coordinate 4*remainder - belowPulse - 4 is none of -3, -2, -1, and (b) at a right transition with overshoot <= 2^s one has 4*overshoot + abovePulse <= 2^(s+2)"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "induction from the certified row-five base along the branch propagation lemmas",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The hypothesis is a cofinal statement nobody has proved; the -3 cell is excluded only in the separate last-false configuration, not for arbitrary middle rows.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "pure_half_prefix_normal_form",
+      "canonical_statement": "Running the descending integer greedy on the same seam weights at the unshifted half capacity 2^(2s-1) gives a single coordinate equal to 2^s - overshoot below the upper midpoint and 2^s + remainder above it; the two-sided dyadic bound is exactly the statement that this single coordinate is at most 2^(s+1).",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamPureHalfPrefixRemainder_eq_ite",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3203
+        },
+        {
+          "declaration": "seamPureHalfPrefixRemainder_le_iff_twoSided",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3321
+        }
+      ],
+      "concepts": [
+        "two_sided_dyadic_invariant",
+        "seam_greedy_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the half capacity sits exactly 2^s above the seam target",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "middle_cell_floor_absorption_bounds",
+      "canonical_statement": "In a middle cell 4*remainder = belowPulse + c the pulse part is already absorbed by the exact floor error, so 4*Z is at most c; on an actual middle transition this bounds the scaled rational residual of the successor word by 2^(s+2) + c.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamMiddleCell_four_mul_floorZ_le",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3107
+        },
+        {
+          "declaration": "seamMiddleCell_scaledRationalRemainder_le",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3132
+        }
+      ],
+      "concepts": [
+        "final_middle_cells",
+        "floor_z_coordinate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "pulse absorption into the exact Mersenne floor error",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "medium"
+    },
+    {
+      "id": "upper_reset_dyadic_band_geometry",
+      "canonical_statement": "On an upper branch, the reset charge avoiding a linear-width band below a dyadic power is equivalent to the successor remainder avoiding the translated band above the complementary dyadic boundary; and a quarter-scale exclusion for the adjacent overshoot is sufficient for the full reset-charge exclusion, with the linear pulse loss paid explicitly.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamUpperReset_band_iff_successorRemainder_avoids",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3434
+        },
+        {
+          "declaration": "seamUpperReset_band_of_overshoot_band",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3479
+        }
+      ],
+      "concepts": [
+        "upper_reset_dyadic_band",
+        "half_value_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact dyadic distance identity for the reset charge",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "medium"
+    },
+    {
+      "id": "upper_reset_band_escape_row_thirteen",
+      "canonical_statement": "IF row thirteen is an upper (successor-carry) transition, then its upper reset charge avoids every dyadic danger band: the successor remainder seamIntegerGreedyRemainder 14 is exactly 392 (kernel-decided), the main boundary has margin 392, and every smaller boundary lies above the remainder. The corpus does not decide whether row thirteen actually is an upper transition.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamUpperResetDyadicBandEscape_at_thirteen",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3512
+        }
+      ],
+      "concepts": [
+        "upper_reset_dyadic_band"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "direct evaluation of the row-thirteen adjacent cut",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Overclaim corrected on adversarial review: the earlier canonical statement called row thirteen 'the single non-late upper row', but the Lean theorem takes hcarry : (seamAdjacentCut 13 _).successorCarries as an unproved hypothesis. The corpus proves only that row thirteen has a false terminal (terminal_false_thirteen), i.e. that it is upper OR middle, and that 13 <= seamIntegerGreedyRemainder 13 rules out the row-small case, not the middle case. No declaration anywhere in Erdos249257 establishes (seamAdjacentCut 13 _).successorCarries. If row thirteen is a middle transition this certificate is vacuous. The computation itself (remainder 14 = 392) is unconditional.",
+      "confidence": "high"
+    },
+    {
+      "id": "dyadic_band_producer_gives_row_escape",
+      "canonical_statement": "If no upper reset charge at or after row thirteen ever lies in one of the linear-width bands below the relevant dyadic powers, then no endpoint after an upper reset and a right run is row-small, hence every seam remainder from row thirteen on is at least its row index, which is exactly the row-scale middle producer socket, and therefore one half lies in the Mersenne achievement set.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3544
+        },
+        {
+          "declaration": "SeamUpperResetDyadicBandEscape.remainder_ge_row",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3606
+        },
+        {
+          "declaration": "SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3746
+        }
+      ],
+      "concepts": [
+        "upper_reset_dyadic_band",
+        "producer_hypothesis",
+        "exponential_barrier",
+        "mersenne_achievement_set"
+      ],
+      "open_antecedents": [
+        "SeamUpperResetDyadicBandEscape: for all d >= 13 with (seamAdjacentCut d).successorCarries and all j <= d, either 2^(d-j+1) < 4*overshoot + abovePulse or 4*overshoot + abovePulse + 2*(d+j) <= 2^(d-j+1)"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "last-ancestor fan-in: first row-small row, its last false terminal, exponential barrier for a middle ancestor and the band for an upper ancestor",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Nothing in the corpus proves the band hypothesis; it is a uniform equidistribution-flavoured avoidance statement over all d >= 13 and all j <= d, only verified at d = 13.",
+      "scope_caveat": "The only certified instance of the antecedent is row thirteen (seamUpperResetDyadicBandEscape_at_thirteen), and that certificate itself presupposes an unproved hypothesis, namely that row thirteen is an upper transition. No row of the cofinal range d >= 13 is verified.",
+      "confidence": "high"
+    },
+    {
+      "id": "producer_socket_implication_ladder",
+      "canonical_statement": "The unproved middle-producer sockets are ordered: row-scale escape implies cardinality escape, which implies the exact complete-tail escape, which implies the tail escape away from the -3 cell; and the square-root escape also implies the exact tail escape. Each is a cofinal statement about every late genuine middle transition.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SeamMiddleProducerRowEscape.toCardEscape",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 918
+        },
+        {
+          "declaration": "SeamMiddleProducerCardEscape.toTailEscape",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 929
+        },
+        {
+          "declaration": "SeamMiddleProducerTailEscape.toExceptNegThree",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 76
+        },
+        {
+          "declaration": "SeamMiddleProducerSqrtEscape.toTailEscape",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 98
+        }
+      ],
+      "concepts": [
+        "producer_hypothesis",
+        "cardinality_tail_bound",
+        "producer_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "composition of the cardinality and square-root tail majorants with the exact carry criterion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The implications are proved; none of the five sockets is. By the tail-escape equivalence node, the weakest of them is already exactly the rational greedy take decision at every late middle row.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "last_false_terminal_exists_for_eventual_right",
+      "canonical_statement": "If the integer seam is eventually right, then it has a last false terminal row D at least 13, with every strictly later terminal bit true and every later word a plain right extension. Row thirteen supplies the required false terminal.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "exists_last_false_terminal_of_eventuallyRight",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 178
+        }
+      ],
+      "concepts": [
+        "seam_greedy_word",
+        "three_branch_recurrence"
+      ],
+      "open_antecedents": [
+        "SeamGreedyEventuallyRight: there is S >= 5 with seamGreedyWord (s+1) = (seamGreedyWord s).extend true for all s >= S. Unproved and unrefuted; it is exactly the negation of the open proposition remaining_open.half_value_membership, assumed for contradiction. The conclusion (existence of a last false terminal row D >= 13) is vacuous without it."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "maximum of a finite bad set of non-selected ranks below max(S,14)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "Reclassified from unconditional_object_theorem on adversarial review: the hypothesis is a free unproved Prop. The only unconditional content is the base certificate that row thirteen has a false terminal (node seam_base_row_certificates).",
+      "confidence": "high"
+    },
+    {
+      "id": "upper_last_producer_impossible",
+      "canonical_statement": "An upper (successor-carry) transition at a row D at least 13 cannot be the last non-right transition of an eventually right seam: its terminal-augmented affine carry is at most -8, which puts the corresponding lazy endpoint above one half by a full Mersenne gap, while the eventual right tail puts it below one half.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "upperProducer_not_last",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 250
+        }
+      ],
+      "concepts": [
+        "producer_carry",
+        "three_branch_recurrence",
+        "lazy_cofinite_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "carry at most -8 gap margin against the lazy all-right endpoint",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Downgraded from candidate_new_statement on adversarial review. The Lean proof is the full-support theorem producerCarry_le_neg_eight_forces_belowTail_gt_half (node producer_carry_negative_forces_above_half, whose docstring already announces it as the analytic forced-return statement for the upper producer) instantiated at A = insert D (above support), via the coordinate identity producerCarry_insert_seamAboveSupport_eq_neg_upperCoordinate (node producer_carry_concrete_seam_coordinates) and the single extra observation overshoot >= 1; the below-half bound for the all-right endpoint is imported from outside the zone (prefix_add_mersenneTail_lt_half_of_eventually_right). It is a genuine unconditional branch elimination and is recorded in docs/claims.json as claim final_middle_cell_escape with status proved here, but all of its mathematical content already sits in two other nodes of this zone.",
+      "scope_caveat": "Conclusion is False, so the theorem is the unconditional negative fact that no row D >= 13 is simultaneously an upper (successor-carry) transition and followed only by right extensions; it is not vacuous. Scope: it eliminates the upper branch at a last false terminal only. It says nothing about the middle branch, nothing about the pure right-tail branch, and nothing about rows below 13.",
+      "confidence": "high"
+    },
+    {
+      "id": "final_middle_cell_neg_three_impossible",
+      "canonical_statement": "A genuine middle transition at row D at least 13 whose signed coordinate 4*remainder - belowPulse - 4 equals -3 cannot be the last non-right transition of an eventually right seam: after completing every rank above D the Mobius-centred half carry is zero at row 2D+1, and two further cofinite coefficient rows drive it strictly negative, contradicting the nonnegativity forced by a value below one half.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "middleProducer_neg_three_not_last",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 315
+        },
+        {
+          "declaration": "finalMiddleCell_neg_three_not_last",
+          "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+          "line": 587
+        }
+      ],
+      "concepts": [
+        "final_middle_cells",
+        "mobius_centered_half_carry",
+        "lazy_cofinite_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "lazy cofinite tail swap into the centred carry, plus the paired two-row centred recurrence",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Downgraded from candidate_new_statement on adversarial review. finalMiddleCell_neg_three_not_last is the composition of two other nodes of this zone at the concrete seam: the carry translation mobiusCenteredHalfCarry_union_Ioi_eq_producerCarry_add_three (node lazy_cofinite_tail_carry_translation) turns cell -3 into centred charge 0, and the full-support obstruction cofiniteRightTail_ne_zero_centeredEndpoint (node centered_half_carry_nonnegativity_and_cofinite_obstruction) then applies verbatim; the below-half input is again imported (prefix_add_mersenneTail_lt_half_of_eventually_right). middleProducer_neg_three_not_last is a one-line adapter over finalMiddleCell_neg_three_not_last. Recorded in docs/claims.json as claim final_middle_cell_escape.",
+      "scope_caveat": "Conclusion is False, so this is the unconditional negative fact that no row D >= 13 is simultaneously a genuine middle transition with coordinate -3 and followed only by right extensions; it is not vacuous. Scope: exactly one of the three exceptional middle cells. Cells -2 and -1, and the pure right-tail branch, are untouched, so no branch of the search is closed by it.",
+      "confidence": "high"
+    },
+    {
+      "id": "centered_half_carry_nonnegativity_and_cofinite_obstruction",
+      "canonical_statement": "Two centred half-carry steps combine into one base-four step with forcing 2*supportCoeff(N+2) + supportCoeff(N+3) - 3, with an explicit finite closed form. Any support strictly below one half has nonnegative Mobius-centred carry at every level. A cofinite support supplies at least two forced divisors at row 2D+4, so a zero centred endpoint at row 2D+1 becomes strictly negative within two rows and hence cannot occur below one half.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half",
+          "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+          "line": 94
+        },
+        {
+          "declaration": "cofiniteRightTail_ne_zero_centeredEndpoint",
+          "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+          "line": 547
+        }
+      ],
+      "concepts": [
+        "mobius_centered_half_carry",
+        "lazy_cofinite_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "paired base-four centred recurrence with explicit forcing term",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "lazy_cofinite_tail_carry_translation",
+      "canonical_statement": "Replacing the selected last rank D by the complete open right tail changes the producer-aligned integer carry by exactly four, and the Mobius-centred carry by exactly three; the lazy support value is the finite lower word's value plus the complete Mersenne tail above D. This transports the three finite middle cells to the cofinite centred-carry endpoint.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "integerHalfCarry_union_Ioi_eq_producerCarry_add_four",
+          "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+          "line": 270
+        },
+        {
+          "declaration": "mobiusCenteredHalfCarry_union_Ioi_eq_producerCarry_add_three",
+          "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+          "line": 468
+        },
+        {
+          "declaration": "positiveMersenneSupportValue_union_Ioi_eq_add_tail",
+          "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+          "line": 480
+        }
+      ],
+      "concepts": [
+        "lazy_cofinite_tail",
+        "producer_carry",
+        "mobius_centered_half_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact divisor bookkeeping: below row 2D+2 the tail contributes only the row itself, and at 2D+2 exactly D+1 and the row",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "final_middle_cell_tail_thresholds",
+      "canonical_statement": "A support strictly below one half has future coefficient tail strictly below its integer carry at every level. For a lazy cofinite support with D at least 3 the tail is strictly below the finite producer charge plus four, so a final producer cell of -2 forces the lazy future coefficient tail below two and a cell of -1 forces it below three.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "binaryCoeffTail_union_Ioi_lt_producerCarry_add_four",
+          "module": "Erdos249257/HalfCylinderFinalMiddleTailSocket.lean",
+          "line": 40
+        },
+        {
+          "declaration": "binaryCoeffTail_union_Ioi_lt_two_of_producerCarry_eq_neg_two",
+          "module": "Erdos249257/HalfCylinderFinalMiddleTailSocket.lean",
+          "line": 56
+        },
+        {
+          "declaration": "binaryCoeffTail_union_Ioi_lt_three_of_producerCarry_eq_neg_one",
+          "module": "Erdos249257/HalfCylinderFinalMiddleTailSocket.lean",
+          "line": 74
+        }
+      ],
+      "concepts": [
+        "final_middle_cells",
+        "divisor_incidence_tail",
+        "lazy_cofinite_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "strict support deficit transported through the lazy-tail carry translation",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "final_middle_neg_two_phase_sieve",
+      "canonical_statement": "Given the forced ranks, four rows of the lazy support already outweigh charge two unless the last producer depth is 2 modulo 3, so a final middle -2 cell forces D = 2 mod 3. Using the forced ranks 2, 3, 6, 7 and 14 the depth is confined to five of the twenty-one joint 3-and-7 phases; rank 20 removes seven of the fifty 210-classes; rank 21 removes the whole phase 8 mod 21, leaving thirty-five classes modulo 210; rank 26 removes every class with D = 11 mod 13 and the 11-mod-21 slice of D = 10 mod 13.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 50
+        },
+        {
+          "declaration": "finalMiddleCell_neg_two_forces_mod_three_two",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 259
+        },
+        {
+          "declaration": "finalMiddleCell_neg_two_forces_mod_twenty_one",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1546
+        },
+        {
+          "declaration": "finalMiddleCell_neg_two_forces_phase_refinement",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1691
+        },
+        {
+          "declaration": "finalMiddleCell_neg_two_forces_phase_refinement_through_twentyOne",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1829
+        },
+        {
+          "declaration": "finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1913
+        }
+      ],
+      "concepts": [
+        "phase_sieve",
+        "final_middle_cells",
+        "forced_seam_ranks",
+        "lazy_cofinite_tail"
+      ],
+      "open_antecedents": [
+        "all-right suffix hypothesis hright: for all s >= D+1, seamGreedyWord (s+1) = (seamGreedyWord s).extend true. Nothing in the corpus proves this for any D. By half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight it is the negation of the open proposition remaining_open.half_value_membership, so it is assumed only for contradiction and nobody intends to prove it; but the conclusion below is a statement about a hypothetical configuration and is vacuous if the seam is not eventually right. Here the hypothesis is joined by hcell (the final middle coordinate equals -2), which is likewise a property of a hypothetical last producer and is not known to hold at any row."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "forced-rank divisor incidence at rows 2D+1..2D+4 compared against the tail threshold two",
+      "prior_art_state": "candidate_new_statement",
+      "prior_art_note": "Unconditional and about the actual seam, but the docstring of the claim itself says it restricts and does not eliminate. It leaves a positive density of residue classes, and it says nothing about the -1 cell or the pure right-tail branch.",
+      "scope_caveat": "Reclassified from unconditional_object_theorem on adversarial review: every sieve step assumes both the all-right suffix and the -2 cell, so the modular constraints describe a hypothetical configuration and are vacuous if no such D exists. Row thresholds are not uniform: mod 3 and mod 21 need D >= 13, the first phase refinement D >= 20, the rank-21 refinement D >= 26 and the rank-26 refinement D >= 27. It restricts and does not eliminate the -2 cell (412 of 2730 residue classes survive), and it says nothing about the -1 cell or the pure right-tail branch.",
+      "confidence": "high"
+    },
+    {
+      "id": "final_middle_neg_two_survivor_count",
+      "canonical_statement": "The residue classes surviving the rank-26 final-middle sieve, defined by D mod 21 in {11,14,17,20}, D mod 10 not 8, not (D mod 10 = 7 and D mod 21 = 11), D mod 13 not 11, and not (D mod 13 = 10 and D mod 21 = 11), number exactly 412 out of 2730.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "finalMiddleTwentySixPhaseSurvivors_card",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 2050
+        }
+      ],
+      "concepts": [
+        "phase_sieve",
+        "final_middle_cells"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "decidable evaluation over Finset.range 2730",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A counting certificate for the sieve above; 412/2730 is roughly 15 percent, so about six sevenths of phases are excluded and one seventh survives.",
+      "scope_caveat": "A pure Finset.range 2730 decision procedure, so unconditional as a count. It counts only the modular constraints of final_middle_neg_two_phase_sieve, which themselves hold only for a hypothetical last middle -2 producer at D >= 27 with an all-right suffix. Roughly one seventh of phases survive, so the sieve is far from empty.",
+      "confidence": "high"
+    },
+    {
+      "id": "phase_indexed_below_pulse_lower_bounds",
+      "canonical_statement": "Explicit lower bounds for the below pulse of the adjacent cut in named residue classes: at least one always (from the permanently selected rank 2); at least two when s = 12 mod 13 or s = 9 mod 10; at least three when s = 1 or 2 mod 3, or s = 3 or 6 mod 7; at least six in the joint phases (1 mod 3, 9 mod 10, 3 or 6 mod 7) and (1 mod 3, 6 mod 7, 12 mod 13); at least seven when s = 10 mod 21.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "three_le_belowPulse_of_mod_three_one",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 350
+        },
+        {
+          "declaration": "three_le_belowPulse_of_mod_three_two",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 371
+        },
+        {
+          "declaration": "three_le_belowPulse_of_mod_seven_three",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 412
+        },
+        {
+          "declaration": "two_le_belowPulse_of_mod_thirteen_twelve",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1226
+        },
+        {
+          "declaration": "six_le_belowPulse_of_joint_phase_thirteen",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1252
+        },
+        {
+          "declaration": "two_le_belowPulse_of_mod_ten_nine",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1317
+        },
+        {
+          "declaration": "one_le_belowPulse",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1341
+        },
+        {
+          "declaration": "seven_le_belowPulse_of_mod_twentyOne_ten",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1355
+        },
+        {
+          "declaration": "six_le_belowPulse_of_joint_phase",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1410
+        },
+        {
+          "declaration": "three_le_belowPulse_of_mod_seven_six",
+          "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+          "line": 1499
+        }
+      ],
+      "concepts": [
+        "boundary_pulse",
+        "phase_sieve",
+        "forced_seam_ranks"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "each forced rank d contributes rowPulse(s,d) units according to the divisibility of 2s+1 and 2s+2 by d",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "half_membership_conditional_endpoints",
+      "canonical_statement": "Each of the five unproved middle-producer sockets, and separately the unproved dyadic upper-reset band hypothesis, implies that one half lies in the Mersenne achievement set, which would refute universal Erdos #257.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_middleProducerCardEscape",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1503
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_middleProducerRowEscape",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 1510
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3755
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 387
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_middleProducerTailEscape",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 402
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 409
+        }
+      ],
+      "concepts": [
+        "producer_hypothesis",
+        "mersenne_achievement_set",
+        "half_value_seam"
+      ],
+      "open_antecedents": [
+        "SeamMiddleProducerTailEscape: for all s >= 13, at a genuine middle transition, binaryCoeffTail (supportCoeff (insert s belowSupport)) (2s+2) < producerCarry (insert s belowSupport) s",
+        "SeamMiddleProducerTailEscapeExceptNegThree: the same, additionally assuming 4*remainder - belowPulse - 4 is not -3",
+        "SeamMiddleProducerSqrtEscape: for all s >= 13, at a genuine middle transition, 2*sqrt(2s+2) + 4 < producerCarry (insert s belowSupport) s",
+        "SeamMiddleProducerCardEscape: for all s >= 13, at a genuine middle transition, card(belowSupport) + belowPulse + 5 < 4*remainder",
+        "SeamMiddleProducerRowEscape: for all s >= 13, at a genuine middle transition, s <= remainder",
+        "SeamUpperResetDyadicBandEscape: for all d >= 13 with successorCarries and all j <= d, 2^(d-j+1) < 4*overshoot + abovePulse or 4*overshoot + abovePulse + 2*(d+j) <= 2^(d-j+1)"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "last-false-terminal extraction, unconditional exclusion of the upper branch and the -3 cell, then the socket at the remaining middle rows",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Recorded in docs/claims.json as conditional reductions (last_producer_tail_escape_reduction, middle_producer_cardinality_reduction) with the sockets explicitly unproved. Sceptical reading: the conclusion is verbatim the open proposition remaining_open.half_value_membership, and by the tail-escape equivalence the weakest socket, restricted to the single last-false row, is exactly the negation of the surviving configuration. The reduction therefore trades one unproved cofinal statement for another, and should not be counted as progress toward deciding half-membership.",
+      "scope_caveat": "None of the six sockets is proved anywhere in the corpus, so no endpoint is established. Two sharpenings from this zone: (a) by tail_escape_equals_rational_take_decision the weakest socket is not an analytic majorant but exactly the rational greedy take decision at each late middle row, so no improvement of the tail majorants (square root, cardinality) can reach it; (b) by final_middle_producer_must_violate_tail_inequality every one of the six is false at the last false row in the eventual-right world, which is only the contrapositive of the reductions themselves and therefore adds no independent leverage. The five middle sockets are ordered Row => Card => Tail => ExceptNegThree and Sqrt => Tail, and the band socket implies Row, so each is at least as strong as the weakest one. Do not read this node as partial progress toward deciding half-membership.",
+      "confidence": "high"
+    },
+    {
+      "id": "seam_base_row_certificates",
+      "canonical_statement": "Explicit certified values at the base rows: the twelve seam weights and subset target at row 14, the greedy bit list at row 14, the false terminal at row 13, rank 13 not selected at row 14, the row-thirteen remainder at least 13, and the two-sided dyadic cut at row 5.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "seamTwoSidedDyadicAt_five",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3396
+        },
+        {
+          "declaration": "seamIntegerGreedyRemainder_thirteen_ge",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3592
+        },
+        {
+          "declaration": "thirteen_not_mem_seamGreedyWord_fourteen",
+          "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+          "line": 3598
+        },
+        {
+          "declaration": "lastProducer_seamWeights_fourteen",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 135
+        },
+        {
+          "declaration": "lastProducer_seamSubsetTarget_fourteen",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 155
+        },
+        {
+          "declaration": "lastProducer_integerGreedyBits_fourteen",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 159
+        },
+        {
+          "declaration": "terminal_false_thirteen",
+          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+          "line": 167
+        }
+      ],
+      "concepts": [
+        "seam_greedy_word",
+        "half_value_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "direct evaluation of the descending integer greedy at fixed rows",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": "",
+      "confidence": "high"
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "supportCoeff_coe_finset_le_card",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 39,
+      "role": "substrate",
+      "statement_node": "finite_prefix_cardinality_tail_socket"
+    },
+    {
+      "declaration": "binaryCoeffTail_supportCoeff_coe_finset_le_card",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 54,
+      "role": "statement",
+      "statement_node": "finite_prefix_cardinality_tail_socket"
+    },
+    {
+      "declaration": "SeamMiddleProducerCardEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 111,
+      "role": "concept",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "middleProducer_card_lt_carry",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 124,
+      "role": "statement",
+      "statement_node": "finite_prefix_cardinality_tail_socket"
+    },
+    {
+      "declaration": "wordPulse_le_two_mul_supportCard",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 162,
+      "role": "statement",
+      "statement_node": "pulse_and_floor_error_calculus"
+    },
+    {
+      "declaration": "rowPulse_le_four_mul_seamRankFloorError",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 179,
+      "role": "substrate",
+      "statement_node": "pulse_and_floor_error_calculus"
+    },
+    {
+      "declaration": "wordPulse_le_four_mul_seamWordFloorError",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 196,
+      "role": "statement",
+      "statement_node": "pulse_and_floor_error_calculus"
+    },
+    {
+      "declaration": "sixtyThree_mul_twoPow_le_twoPow_predDouble",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 208,
+      "role": "substrate",
+      "statement_node": "forced_seam_ranks_two_three_six"
+    },
+    {
+      "declaration": "seamGreedy_head236_decisions",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 230,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_two_three_six"
+    },
+    {
+      "declaration": "seamGreedyBits_head236",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 319,
+      "role": "representation",
+      "statement_node": "forced_seam_ranks_two_three_six"
+    },
+    {
+      "declaration": "two_three_six_mem_seamGreedySupport",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 340,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_two_three_six"
+    },
+    {
+      "declaration": "middleLandingSignedExcess_eq_four_floorZ_add_nextFloorError",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 361,
+      "role": "statement",
+      "statement_node": "middle_landing_floor_error_identities"
+    },
+    {
+      "declaration": "seamRankFloorError_two_three_six_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 389,
+      "role": "statement",
+      "statement_node": "pulse_and_floor_error_calculus"
+    },
+    {
+      "declaration": "seamRankFloorError_two_three_six_le_nextFloorError",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 409,
+      "role": "substrate",
+      "statement_node": "pulse_and_floor_error_calculus"
+    },
+    {
+      "declaration": "seamResidualPulse236",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 439,
+      "role": "concept",
+      "statement_node": "pulse_and_floor_error_calculus"
+    },
+    {
+      "declaration": "wordPulse_eq_three_add_seamResidualPulse236",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 445,
+      "role": "statement",
+      "statement_node": "pulse_and_floor_error_calculus"
+    },
+    {
+      "declaration": "binaryCoeffTail_insert_seamBelowSupport_eq_nextFloorError",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 502,
+      "role": "statement",
+      "statement_node": "middle_landing_floor_error_identities"
+    },
+    {
+      "declaration": "middleProducer_tail_lt_carry_iff_takeThreshold_lt_floorZ",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 613,
+      "role": "statement",
+      "statement_node": "tail_escape_equals_rational_take_decision"
+    },
+    {
+      "declaration": "middleProducer_carry_sub_tail_eq_four_mul_floorZ_sub_threshold",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 690,
+      "role": "statement",
+      "statement_node": "tail_escape_equals_rational_take_decision"
+    },
+    {
+      "declaration": "middleProducer_carry_lt_tail_iff_floorZ_lt_takeThreshold",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 755,
+      "role": "statement",
+      "statement_node": "tail_escape_equals_rational_take_decision"
+    },
+    {
+      "declaration": "seamGreedyFloorZ_ne_takeThreshold",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 804,
+      "role": "substrate",
+      "statement_node": "tail_escape_equals_rational_take_decision"
+    },
+    {
+      "declaration": "middleProducer_tail_lt_carry_iff_takeThreshold_le_floorZ",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 844,
+      "role": "statement",
+      "statement_node": "tail_escape_equals_rational_take_decision"
+    },
+    {
+      "declaration": "middleProducer_tail_lt_carry_iff_rational_take",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 865,
+      "role": "statement",
+      "statement_node": "tail_escape_equals_rational_take_decision"
+    },
+    {
+      "declaration": "middleProducer_not_cardEscape_forces_remainder_lt_row",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 886,
+      "role": "statement",
+      "statement_node": "finite_prefix_cardinality_tail_socket"
+    },
+    {
+      "declaration": "SeamMiddleProducerRowEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 908,
+      "role": "concept",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "SeamMiddleProducerRowEscape.toCardEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 918,
+      "role": "statement",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "SeamMiddleProducerCardEscape.toTailEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 929,
+      "role": "statement",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "middleProducer_allRight_forces_carry_lt_tail",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 953,
+      "role": "statement",
+      "statement_node": "final_middle_producer_must_violate_tail_inequality"
+    },
+    {
+      "declaration": "middleProducer_allRight_forces_floorZ_lt_takeThreshold",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1008,
+      "role": "statement",
+      "statement_node": "final_middle_producer_must_violate_tail_inequality"
+    },
+    {
+      "declaration": "middleProducer_allRight_forces_rational_skip",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1027,
+      "role": "statement",
+      "statement_node": "final_middle_producer_must_violate_tail_inequality"
+    },
+    {
+      "declaration": "seamWordRationalRemainder_extend_false",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1050,
+      "role": "substrate",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "seamWordRationalRemainder_extend_true",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1059,
+      "role": "substrate",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "floorZRightRunCharge",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1070,
+      "role": "concept",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "eventualRightTail_rationalRemainder_add_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1077,
+      "role": "statement",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "eventualRightTail_floorZ_succ_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1096,
+      "role": "substrate",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "eventualRightTail_floorZ_add_charge_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1110,
+      "role": "statement",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "eventualRightTail_floorZ_add_eq_partialTail",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1137,
+      "role": "statement",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "middleThenAllRight_rationalRemainder_add_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1165,
+      "role": "statement",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "middleThenAllRight_floorZ_add_charge_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1194,
+      "role": "statement",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "middleThenAllRight_floorZ_eq_partialTail",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1217,
+      "role": "statement",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "middleThenAllRight_finiteValue_add_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1244,
+      "role": "statement",
+      "statement_node": "middle_then_allright_orbit_closed_forms"
+    },
+    {
+      "declaration": "tendsto_middleThenAllRight_finiteValue",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1284,
+      "role": "substrate",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "middleThenAllRight_limit_lt_half",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1314,
+      "role": "statement",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "middleThenAllRight_rationalRemainder_fatalGap",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1344,
+      "role": "statement",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "middleThenAllRight_floorZ_fatalGap",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1383,
+      "role": "statement",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "scaledMersenneTail_floorWall_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1418,
+      "role": "substrate",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "one_third_lt_scaledMersenneTail_floorWall",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1447,
+      "role": "substrate",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "middleThenAllRight_landingExcess_two_le",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1458,
+      "role": "statement",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_middleProducerCardEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1503,
+      "role": "statement",
+      "statement_node": "half_membership_conditional_endpoints"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_middleProducerRowEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1510,
+      "role": "statement",
+      "statement_node": "half_membership_conditional_endpoints"
+    },
+    {
+      "declaration": "three_mul_le_two_pow_succ",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1534,
+      "role": "substrate",
+      "statement_node": "exponential_barrier_propagation"
+    },
+    {
+      "declaration": "four_mul_le_two_pow_succ",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1550,
+      "role": "substrate",
+      "statement_node": "exponential_barrier_propagation"
+    },
+    {
+      "declaration": "seamRowSmall_upperOrMiddle",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1566,
+      "role": "statement",
+      "statement_node": "eventual_right_tail_positive_excess"
+    },
+    {
+      "declaration": "allRightTail_forces_twoPow_lt_remainder",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1578,
+      "role": "statement",
+      "statement_node": "eventual_right_tail_positive_excess"
+    },
+    {
+      "declaration": "eventualRightTail_forces_twoPow_lt_remainder",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1618,
+      "role": "statement",
+      "statement_node": "eventual_right_tail_positive_excess"
+    },
+    {
+      "declaration": "rightBranch_excess_succ_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1636,
+      "role": "substrate",
+      "statement_node": "eventual_right_tail_positive_excess"
+    },
+    {
+      "declaration": "eventualRightTail_positive_affineExcess",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1654,
+      "role": "statement",
+      "statement_node": "eventual_right_tail_positive_excess"
+    },
+    {
+      "declaration": "middleProducer_allRight_landingExcess_window",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1686,
+      "role": "statement",
+      "statement_node": "middle_then_allright_fatal_gap_and_landing_window"
+    },
+    {
+      "declaration": "seamMiddleBranch_nextRemainder_ge_row",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1765,
+      "role": "statement",
+      "statement_node": "exponential_barrier_propagation"
+    },
+    {
+      "declaration": "seamMiddleBranch_nextRemainder_ge_expBarrier",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1790,
+      "role": "statement",
+      "statement_node": "exponential_barrier_propagation"
+    },
+    {
+      "declaration": "seamRightBranch_preserves_expBarrier",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1817,
+      "role": "statement",
+      "statement_node": "exponential_barrier_propagation"
+    },
+    {
+      "declaration": "seamRightRun_preserves_expBarrier",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1852,
+      "role": "statement",
+      "statement_node": "exponential_barrier_propagation"
+    },
+    {
+      "declaration": "seamMiddleThenRightRun_expBarrier",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1878,
+      "role": "statement",
+      "statement_node": "exponential_barrier_propagation"
+    },
+    {
+      "declaration": "PerturbedFamily.AdjacentCut.above_eq_of_candidate_lt_two_gap",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1902,
+      "role": "substrate",
+      "statement_node": "late_largest_false_adjacent_cut_identification"
+    },
+    {
+      "declaration": "largestSkipLowerWord_weight_eq_greedy_of_support",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1921,
+      "role": "substrate",
+      "statement_node": "late_largest_false_adjacent_cut_identification"
+    },
+    {
+      "declaration": "exactLateGap_correction_lt_three_mul_gap",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1943,
+      "role": "substrate",
+      "statement_node": "late_largest_false_adjacent_cut_identification"
+    },
+    {
+      "declaration": "seamAdjacentCut_above_eq_largestSkipUpperWord_of_support",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 1968,
+      "role": "statement",
+      "statement_node": "late_largest_false_adjacent_cut_identification"
+    },
+    {
+      "declaration": "seamAdjacentCut_abovePulse_eq_belowPulse_add_rowPulse_of_largestFalse_late",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2014,
+      "role": "statement",
+      "statement_node": "late_largest_false_adjacent_cut_identification"
+    },
+    {
+      "declaration": "three_mul_remainder_add_overshoot_eq_exactLateGap",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2048,
+      "role": "statement",
+      "statement_node": "late_largest_false_adjacent_cut_identification"
+    },
+    {
+      "declaration": "exists_exactLateGap_upperResetCharge_add_middleCoordinate",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2107,
+      "role": "statement",
+      "statement_node": "late_gap_reset_middle_balance"
+    },
+    {
+      "declaration": "exists_exactLateGap_upperResetCharge_add_middleCoordinate_firstCrossing",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2130,
+      "role": "statement",
+      "statement_node": "late_gap_reset_middle_balance"
+    },
+    {
+      "declaration": "seamRowSmall_not_successorCarries_of_largestFalse_late",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2161,
+      "role": "statement",
+      "statement_node": "late_row_small_forces_middle_branch"
+    },
+    {
+      "declaration": "seamRowSmall_middleBranch_of_largestFalse_late",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2190,
+      "role": "statement",
+      "statement_node": "late_row_small_forces_middle_branch"
+    },
+    {
+      "declaration": "largestSkipLateAt_succ_of_rowSmall",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2212,
+      "role": "statement",
+      "statement_node": "late_row_small_forces_middle_branch"
+    },
+    {
+      "declaration": "exists_exactLateGap_upperResetCharge_coordinate",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2228,
+      "role": "statement",
+      "statement_node": "late_gap_reset_middle_balance"
+    },
+    {
+      "declaration": "three_mul_upperResetCharge_signedDistance_to_dyadic",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2247,
+      "role": "statement",
+      "statement_node": "late_gap_reset_middle_balance"
+    },
+    {
+      "declaration": "upperResetCharge_signedDistance_eq_remainderBoundary",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2275,
+      "role": "statement",
+      "statement_node": "late_gap_reset_middle_balance"
+    },
+    {
+      "declaration": "affineRightRunCharge",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2305,
+      "role": "concept",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "affineRightExcess_exactIterate",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2312,
+      "role": "substrate",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "affineRightExcess_charge_lt_scaledInitial",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2342,
+      "role": "substrate",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "eventualRightTail_excess_exactIterate",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2353,
+      "role": "statement",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "middleThenAllRight_excess_exactIterate",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2390,
+      "role": "statement",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "eventualRightTail_charge_lt_scaledInitialExcess",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2443,
+      "role": "statement",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "middleCoordinate_add_affineRightRunCharge_succ",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2469,
+      "role": "substrate",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "affineRightRun_exactCylinder",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2483,
+      "role": "substrate",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "three_mul_affineRightRunCharge_add_two_mul_le",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2514,
+      "role": "substrate",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "seamUpperBranch_remainder_add_resetCharge_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2534,
+      "role": "substrate",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "seamRightBranch_remainder_add_charge_eq",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2556,
+      "role": "substrate",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "seamUpperThenRightRun_exactCylinder",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2594,
+      "role": "statement",
+      "statement_node": "upper_reset_right_run_exact_cylinder"
+    },
+    {
+      "declaration": "seamUpperThenRightRun_length_le_resetRow",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2618,
+      "role": "statement",
+      "statement_node": "upper_reset_right_run_length_bound"
+    },
+    {
+      "declaration": "seamUpperThenRightRun_scaledDyadicGap_eq_middleCoordinate_add_charge",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2664,
+      "role": "statement",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "seamRightRunCharge_lt_row_mul_four_pow",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2733,
+      "role": "substrate",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "seamUpperThenRightRun_rowSmall_forces_resetCylinder",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2763,
+      "role": "statement",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "remainder_lt_iff_charge_in_topWindow",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2786,
+      "role": "substrate",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "middleInequality_iff_nextCharge_exceeds",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2797,
+      "role": "substrate",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "seamUpperThenRightRun_rowSmall_iff_resetCylinderWindow",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2808,
+      "role": "statement",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "seamUpperThenRightRun_rowSmall_forces_resetCharge_lower",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2840,
+      "role": "statement",
+      "statement_node": "row_small_endpoint_reverse_classification"
+    },
+    {
+      "declaration": "seamAdjacentCut_overshoot_le_candidateExcess",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2901,
+      "role": "substrate",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamUpperBranch_nextRemainder_le_pow",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2916,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamMiddleBranch_next_twoSided_of_not_neg_small",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 2928,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamRightBranch_nextRemainder_le_pow_of_remainder_le",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3008,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamRightBranch_nextOvershoot_le_pow_of_charge_le",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3025,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamRightBranch_nextOvershoot_le_pow_of_overshoot_le_of_noPulseLeak",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3078,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamMiddleCoordinate_not_safe_iff_three_cells",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3090,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamMiddleCell_four_mul_floorZ_le",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3107,
+      "role": "statement",
+      "statement_node": "middle_cell_floor_absorption_bounds"
+    },
+    {
+      "declaration": "seamMiddleCell_scaledRationalRemainder_le",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3132,
+      "role": "statement",
+      "statement_node": "middle_cell_floor_absorption_bounds"
+    },
+    {
+      "declaration": "seamRightPulseLeak_iff_distanceCell",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3167,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_branch_propagation"
+    },
+    {
+      "declaration": "seamPureHalfPrefixRemainder",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3197,
+      "role": "concept",
+      "statement_node": "pure_half_prefix_normal_form"
+    },
+    {
+      "declaration": "seamPureHalfPrefixRemainder_eq_ite",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3203,
+      "role": "statement",
+      "statement_node": "pure_half_prefix_normal_form"
+    },
+    {
+      "declaration": "seamPureHalfPrefixRemainder_le_iff_twoSided",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3321,
+      "role": "statement",
+      "statement_node": "pure_half_prefix_normal_form"
+    },
+    {
+      "declaration": "SeamTwoSidedDyadicCellEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3339,
+      "role": "concept",
+      "statement_node": "two_sided_dyadic_invariant_under_cell_escape"
+    },
+    {
+      "declaration": "SeamTwoSidedDyadicCellEscape.step",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3363,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_under_cell_escape"
+    },
+    {
+      "declaration": "seamTwoSidedDyadicAt_five",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3396,
+      "role": "finite_instance",
+      "statement_node": "seam_base_row_certificates"
+    },
+    {
+      "declaration": "SeamTwoSidedDyadicCellEscape.twoSided",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3413,
+      "role": "statement",
+      "statement_node": "two_sided_dyadic_invariant_under_cell_escape"
+    },
+    {
+      "declaration": "seamUpperReset_band_iff_successorRemainder_avoids",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3434,
+      "role": "statement",
+      "statement_node": "upper_reset_dyadic_band_geometry"
+    },
+    {
+      "declaration": "upperResetCharge_dyadicDistance_add_abovePulse",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3455,
+      "role": "substrate",
+      "statement_node": "upper_reset_dyadic_band_geometry"
+    },
+    {
+      "declaration": "seamUpperReset_band_of_overshoot_band",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3479,
+      "role": "statement",
+      "statement_node": "upper_reset_dyadic_band_geometry"
+    },
+    {
+      "declaration": "seamUpperResetDyadicBandEscape_at_thirteen",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3512,
+      "role": "finite_instance",
+      "statement_node": "upper_reset_band_escape_row_thirteen"
+    },
+    {
+      "declaration": "SeamUpperResetDyadicBandEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3531,
+      "role": "concept",
+      "statement_node": "dyadic_band_producer_gives_row_escape"
+    },
+    {
+      "declaration": "SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3544,
+      "role": "statement",
+      "statement_node": "dyadic_band_producer_gives_row_escape"
+    },
+    {
+      "declaration": "seamIntegerGreedyRemainder_thirteen_ge",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3592,
+      "role": "finite_instance",
+      "statement_node": "seam_base_row_certificates"
+    },
+    {
+      "declaration": "thirteen_not_mem_seamGreedyWord_fourteen",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3598,
+      "role": "finite_instance",
+      "statement_node": "seam_base_row_certificates"
+    },
+    {
+      "declaration": "SeamUpperResetDyadicBandEscape.remainder_ge_row",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3606,
+      "role": "statement",
+      "statement_node": "dyadic_band_producer_gives_row_escape"
+    },
+    {
+      "declaration": "SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3746,
+      "role": "statement",
+      "statement_node": "dyadic_band_producer_gives_row_escape"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+      "module": "Erdos249257/HalfCylinderMiddleCarryLowerBound.lean",
+      "line": 3755,
+      "role": "statement",
+      "statement_node": "half_membership_conditional_endpoints"
+    },
+    {
+      "declaration": "producerCarry",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 20,
+      "role": "concept",
+      "statement_node": "producer_carry_exact_half_criterion"
+    },
+    {
+      "declaration": "producerCarry_residual_identity",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 27,
+      "role": "statement",
+      "statement_node": "producer_carry_exact_half_criterion"
+    },
+    {
+      "declaration": "producerCarry_gt_tail_iff_supportSeries_lt_half",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 48,
+      "role": "statement",
+      "statement_node": "producer_carry_exact_half_criterion"
+    },
+    {
+      "declaration": "producerCarry_lt_tail_iff_half_lt_supportSeries",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 78,
+      "role": "statement",
+      "statement_node": "producer_carry_exact_half_criterion"
+    },
+    {
+      "declaration": "producerCarry_sqrt_sufficient",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 109,
+      "role": "statement",
+      "statement_node": "producer_carry_positive_sufficient_conditions"
+    },
+    {
+      "declaration": "producerCarry_linear_sufficient",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 124,
+      "role": "statement",
+      "statement_node": "producer_carry_positive_sufficient_conditions"
+    },
+    {
+      "declaration": "producerCarry_neg_forces_half_lt_supportSeries",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 145,
+      "role": "statement",
+      "statement_node": "producer_carry_negative_forces_above_half"
+    },
+    {
+      "declaration": "mersenneGap_lt_eight_div_four_pow_succ",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 160,
+      "role": "substrate",
+      "statement_node": "producer_carry_negative_forces_above_half"
+    },
+    {
+      "declaration": "producerCarry_le_neg_eight_forces_gap_margin",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 190,
+      "role": "statement",
+      "statement_node": "producer_carry_negative_forces_above_half"
+    },
+    {
+      "declaration": "producerCarry_le_neg_eight_forces_belowTail_gt_half",
+      "module": "Erdos249257/HalfCylinderProducerCarrySocket.lean",
+      "line": 234,
+      "role": "statement",
+      "statement_node": "producer_carry_negative_forces_above_half"
+    },
+    {
+      "declaration": "wordPulse_eq_pairedSupportCoeff",
+      "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+      "line": 40,
+      "role": "substrate",
+      "statement_node": "producer_carry_concrete_seam_coordinates"
+    },
+    {
+      "declaration": "pairedSupportCoeff_insert_terminal_eq_wordPulse",
+      "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+      "line": 57,
+      "role": "substrate",
+      "statement_node": "producer_carry_concrete_seam_coordinates"
+    },
+    {
+      "declaration": "producerCarry_insert_seamWordSupport_eq",
+      "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+      "line": 105,
+      "role": "statement",
+      "statement_node": "producer_carry_concrete_seam_coordinates"
+    },
+    {
+      "declaration": "producerCarry_insert_seamBelowSupport_eq_middleCoordinate",
+      "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+      "line": 150,
+      "role": "statement",
+      "statement_node": "producer_carry_concrete_seam_coordinates"
+    },
+    {
+      "declaration": "producerCarry_insert_seamAboveSupport_eq_neg_upperCoordinate",
+      "module": "Erdos249257/HalfCylinderProducerLowerBound.lean",
+      "line": 183,
+      "role": "statement",
+      "statement_node": "producer_carry_concrete_seam_coordinates"
+    },
+    {
+      "declaration": "SeamMiddleProducerTailEscape",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 34,
+      "role": "concept",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "SeamMiddleProducerTailEscapeExceptNegThree",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 54,
+      "role": "concept",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "SeamMiddleProducerTailEscape.toExceptNegThree",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 76,
+      "role": "statement",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "SeamMiddleProducerSqrtEscape",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 84,
+      "role": "concept",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "SeamMiddleProducerSqrtEscape.toTailEscape",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 98,
+      "role": "statement",
+      "statement_node": "producer_socket_implication_ladder"
+    },
+    {
+      "declaration": "one_not_mem_insert_seamWordSupport",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 111,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "insert_seamWordSupport_subset_Iic",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 120,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "support_rank_bounds",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 129,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "lastProducer_seamWeights_fourteen",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 135,
+      "role": "finite_instance",
+      "statement_node": "seam_base_row_certificates"
+    },
+    {
+      "declaration": "lastProducer_seamSubsetTarget_fourteen",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 155,
+      "role": "finite_instance",
+      "statement_node": "seam_base_row_certificates"
+    },
+    {
+      "declaration": "lastProducer_integerGreedyBits_fourteen",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 159,
+      "role": "finite_instance",
+      "statement_node": "seam_base_row_certificates"
+    },
+    {
+      "declaration": "terminal_false_thirteen",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 167,
+      "role": "finite_instance",
+      "statement_node": "seam_base_row_certificates"
+    },
+    {
+      "declaration": "exists_last_false_terminal_of_eventuallyRight",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 178,
+      "role": "statement",
+      "statement_node": "last_false_terminal_exists_for_eventual_right"
+    },
+    {
+      "declaration": "right_extensions_after_last_false",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 236,
+      "role": "substrate",
+      "statement_node": "last_false_terminal_exists_for_eventual_right"
+    },
+    {
+      "declaration": "upperProducer_not_last",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 250,
+      "role": "statement",
+      "statement_node": "upper_last_producer_impossible"
+    },
+    {
+      "declaration": "middleProducer_neg_three_not_last",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 315,
+      "role": "statement",
+      "statement_node": "final_middle_cell_neg_three_impossible"
+    },
+    {
+      "declaration": "middleProducer_not_last_except_neg_three",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 333,
+      "role": "substrate",
+      "statement_node": "half_membership_conditional_endpoints"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 387,
+      "role": "statement",
+      "statement_node": "half_membership_conditional_endpoints"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_middleProducerTailEscape",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 402,
+      "role": "statement",
+      "statement_node": "half_membership_conditional_endpoints"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape",
+      "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+      "line": 409,
+      "role": "statement",
+      "statement_node": "half_membership_conditional_endpoints"
+    },
+    {
+      "declaration": "pairedCenteredForcing",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 34,
+      "role": "concept",
+      "statement_node": "centered_half_carry_nonnegativity_and_cofinite_obstruction"
+    },
+    {
+      "declaration": "mobiusCenteredHalfCarry_add_two",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 39,
+      "role": "substrate",
+      "statement_node": "centered_half_carry_nonnegativity_and_cofinite_obstruction"
+    },
+    {
+      "declaration": "mobiusCenteredHalfCarry_add_two_mul",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 49,
+      "role": "substrate",
+      "statement_node": "centered_half_carry_nonnegativity_and_cofinite_obstruction"
+    },
+    {
+      "declaration": "mobiusCenteredHalfCarry_nonneg_of_supportSeries_lt_half",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 94,
+      "role": "statement",
+      "statement_node": "centered_half_carry_nonnegativity_and_cofinite_obstruction"
+    },
+    {
+      "declaration": "supportCoeff_eq_of_divisorAgreement_local",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 128,
+      "role": "substrate",
+      "statement_node": "lazy_cofinite_tail_carry_translation"
+    },
+    {
+      "declaration": "supportCoeff_union_Ioi_eq_add_one",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 141,
+      "role": "substrate",
+      "statement_node": "lazy_cofinite_tail_carry_translation"
+    },
+    {
+      "declaration": "supportCoeff_union_Ioi_two_mul_add_two",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 192,
+      "role": "substrate",
+      "statement_node": "lazy_cofinite_tail_carry_translation"
+    },
+    {
+      "declaration": "integerHalfCarry_union_Ioi_eq_producerCarry_add_four",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 270,
+      "role": "statement",
+      "statement_node": "lazy_cofinite_tail_carry_translation"
+    },
+    {
+      "declaration": "mobiusCenteredHalfCarry_union_Ioi_eq_producerCarry_add_three",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 468,
+      "role": "statement",
+      "statement_node": "lazy_cofinite_tail_carry_translation"
+    },
+    {
+      "declaration": "positiveMersenneSupportValue_union_Ioi_eq_add_tail",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 480,
+      "role": "statement",
+      "statement_node": "lazy_cofinite_tail_carry_translation"
+    },
+    {
+      "declaration": "two_le_supportCoeff_two_mul_add_four_of_Ioi_subset",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 515,
+      "role": "substrate",
+      "statement_node": "centered_half_carry_nonnegativity_and_cofinite_obstruction"
+    },
+    {
+      "declaration": "cofiniteRightTail_ne_zero_centeredEndpoint",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 547,
+      "role": "statement",
+      "statement_node": "centered_half_carry_nonnegativity_and_cofinite_obstruction"
+    },
+    {
+      "declaration": "finalMiddleCell_neg_three_not_last",
+      "module": "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
+      "line": 587,
+      "role": "statement",
+      "statement_node": "final_middle_cell_neg_three_impossible"
+    },
+    {
+      "declaration": "binaryCoeffTail_lt_integerHalfCarry_of_supportSeries_lt_half",
+      "module": "Erdos249257/HalfCylinderFinalMiddleTailSocket.lean",
+      "line": 24,
+      "role": "substrate",
+      "statement_node": "final_middle_cell_tail_thresholds"
+    },
+    {
+      "declaration": "binaryCoeffTail_union_Ioi_lt_producerCarry_add_four",
+      "module": "Erdos249257/HalfCylinderFinalMiddleTailSocket.lean",
+      "line": 40,
+      "role": "statement",
+      "statement_node": "final_middle_cell_tail_thresholds"
+    },
+    {
+      "declaration": "binaryCoeffTail_union_Ioi_lt_two_of_producerCarry_eq_neg_two",
+      "module": "Erdos249257/HalfCylinderFinalMiddleTailSocket.lean",
+      "line": 56,
+      "role": "statement",
+      "statement_node": "final_middle_cell_tail_thresholds"
+    },
+    {
+      "declaration": "binaryCoeffTail_union_Ioi_lt_three_of_producerCarry_eq_neg_one",
+      "module": "Erdos249257/HalfCylinderFinalMiddleTailSocket.lean",
+      "line": 74,
+      "role": "statement",
+      "statement_node": "final_middle_cell_tail_thresholds"
+    },
+    {
+      "declaration": "four_coeff_lower_le_binaryCoeffTail",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 28,
+      "role": "substrate",
+      "statement_node": "final_middle_neg_two_phase_sieve"
+    },
+    {
+      "declaration": "two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 50,
+      "role": "statement",
+      "statement_node": "final_middle_neg_two_phase_sieve"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_two_three_six_seven_le_target",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 191,
+      "role": "substrate",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedyBits_head2367",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 234,
+      "role": "representation",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seven_mem_seamGreedySupport",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 251,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "finalMiddleCell_neg_two_forces_mod_three_two",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 259,
+      "role": "statement",
+      "statement_node": "final_middle_neg_two_phase_sieve"
+    },
+    {
+      "declaration": "seamMiddleBranch_nextRemainder_add_belowPulse_eq",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 294,
+      "role": "substrate",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "pair_rowPulse_le_wordPulse",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 321,
+      "role": "substrate",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "rowPulse_le_wordPulse",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 343,
+      "role": "substrate",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "three_le_belowPulse_of_mod_three_one",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 350,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "three_le_belowPulse_of_mod_three_two",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 371,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "three_le_belowPulse_of_mod_seven_three",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 412,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "seamGreedy_postSeven_decisions_through_fourteen",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 442,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedyBits_head2367_14",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 614,
+      "role": "representation",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "fourteen_mem_seamGreedySupport",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 638,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedy_postFourteen_decisions_through_twenty",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 651,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedyBits_head2367_14_20",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 835,
+      "role": "representation",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "twenty_mem_seamGreedySupport",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 860,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedy_postTwenty_decision_twentyOne",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 872,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedyBits_head2367_14_20_21",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 960,
+      "role": "representation",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "twentyOne_mem_seamGreedySupport",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 978,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedy_postTwentyOne_decisions_through_twentySix",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 990,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "seamGreedyBits_head2367_14_20_21_26",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1190,
+      "role": "representation",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "twentySix_mem_seamGreedySupport",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1216,
+      "role": "statement",
+      "statement_node": "forced_seam_ranks_seven_through_twentysix"
+    },
+    {
+      "declaration": "two_le_belowPulse_of_mod_thirteen_twelve",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1226,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "six_le_belowPulse_of_joint_phase_thirteen",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1252,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "two_le_belowPulse_of_mod_ten_nine",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1317,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "one_le_belowPulse",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1341,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "seven_le_belowPulse_of_mod_twentyOne_ten",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1355,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "six_le_belowPulse_of_joint_phase",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1410,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "three_le_belowPulse_of_mod_seven_six",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1499,
+      "role": "statement",
+      "statement_node": "phase_indexed_below_pulse_lower_bounds"
+    },
+    {
+      "declaration": "finalMiddleCell_neg_two_forces_mod_twenty_one",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1546,
+      "role": "statement",
+      "statement_node": "final_middle_neg_two_phase_sieve"
+    },
+    {
+      "declaration": "finalMiddleCell_neg_two_forces_phase_refinement",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1691,
+      "role": "statement",
+      "statement_node": "final_middle_neg_two_phase_sieve"
+    },
+    {
+      "declaration": "finalMiddleCell_neg_two_forces_phase_refinement_through_twentyOne",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1829,
+      "role": "statement",
+      "statement_node": "final_middle_neg_two_phase_sieve"
+    },
+    {
+      "declaration": "finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 1913,
+      "role": "statement",
+      "statement_node": "final_middle_neg_two_phase_sieve"
+    },
+    {
+      "declaration": "finalMiddleTwentySixPhaseSurvivors",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 2040,
+      "role": "concept",
+      "statement_node": "final_middle_neg_two_survivor_count"
+    },
+    {
+      "declaration": "finalMiddleTwentySixPhaseSurvivors_card",
+      "module": "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
+      "line": 2050,
+      "role": "finite_instance",
+      "statement_node": "final_middle_neg_two_survivor_count"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "producer_carry_concrete_seam_coordinates",
+      "to": "producer_carry_exact_half_criterion",
+      "relation": "specialises",
+      "basis": "The abstract producer carry evaluated at the concrete adjacent-cut below and above supports."
+    },
+    {
+      "from": "tail_escape_equals_rational_take_decision",
+      "to": "producer_carry_exact_half_criterion",
+      "relation": "reformulates",
+      "basis": "Rewrites the carry-versus-tail comparison in corrected floor coordinates and then as a rational greedy take decision."
+    },
+    {
+      "from": "final_middle_producer_must_violate_tail_inequality",
+      "to": "tail_escape_equals_rational_take_decision",
+      "relation": "implies",
+      "basis": "Consumes the exact tail formula to give the reverse strict inequality at a hypothetical final middle producer."
+    },
+    {
+      "from": "half_membership_conditional_endpoints",
+      "to": "final_middle_producer_must_violate_tail_inequality",
+      "relation": "depends_on_open",
+      "basis": "The socket is needed only at the single last-false row, where this unconditional theorem shows it is precisely the negation of the surviving configuration."
+    },
+    {
+      "from": "finite_prefix_cardinality_tail_socket",
+      "to": "producer_socket_implication_ladder",
+      "relation": "implies",
+      "basis": "The cardinality tail bound is exactly what makes the cardinality socket imply the complete-tail socket."
+    },
+    {
+      "from": "producer_carry_positive_sufficient_conditions",
+      "to": "producer_socket_implication_ladder",
+      "relation": "implies",
+      "basis": "The square-root socket enters the ladder through this sufficient condition."
+    },
+    {
+      "from": "producer_socket_implication_ladder",
+      "to": "half_membership_conditional_endpoints",
+      "relation": "implies",
+      "basis": "The ladder collapses all five middle sockets onto the same half-membership endpoint."
+    },
+    {
+      "from": "dyadic_band_producer_gives_row_escape",
+      "to": "producer_socket_implication_ladder",
+      "relation": "implies",
+      "basis": "The band hypothesis yields SeamMiddleProducerRowEscape, the strongest rung of the ladder."
+    },
+    {
+      "from": "exponential_barrier_propagation",
+      "to": "dyadic_band_producer_gives_row_escape",
+      "relation": "implies",
+      "basis": "Supplies the middle-ancestor half of the last-ancestor fan-in."
+    },
+    {
+      "from": "row_small_endpoint_reverse_classification",
+      "to": "dyadic_band_producer_gives_row_escape",
+      "relation": "implies",
+      "basis": "Supplies the upper-ancestor half: a row-small endpoint forces the reset charge into a danger band."
+    },
+    {
+      "from": "upper_reset_right_run_exact_cylinder",
+      "to": "row_small_endpoint_reverse_classification",
+      "relation": "implies",
+      "basis": "The exact dyadic cylinder identity is what turns row-smallness into a charge window."
+    },
+    {
+      "from": "upper_reset_right_run_length_bound",
+      "to": "upper_reset_right_run_exact_cylinder",
+      "relation": "specialises",
+      "basis": "Immediate consequence of the same cylinder identity."
+    },
+    {
+      "from": "upper_reset_band_escape_row_thirteen",
+      "to": "dyadic_band_producer_gives_row_escape",
+      "relation": "finite_instance_of",
+      "basis": "Verifies the unproved band hypothesis at the single row d = 13."
+    },
+    {
+      "from": "upper_reset_dyadic_band_geometry",
+      "to": "dyadic_band_producer_gives_row_escape",
+      "relation": "implies",
+      "basis": "Reduces the band hypothesis to a quarter-scale overshoot exclusion with explicit linear pulse loss."
+    },
+    {
+      "from": "centered_half_carry_nonnegativity_and_cofinite_obstruction",
+      "to": "final_middle_cell_neg_three_impossible",
+      "relation": "implies",
+      "basis": "The cofinite zero-endpoint obstruction is the engine of the -3 exclusion."
+    },
+    {
+      "from": "lazy_cofinite_tail_carry_translation",
+      "to": "final_middle_cell_neg_three_impossible",
+      "relation": "implies",
+      "basis": "Translates the finite -3 producer cell into centred carry zero at row 2D+1."
+    },
+    {
+      "from": "final_middle_cell_tail_thresholds",
+      "to": "lazy_cofinite_tail_carry_translation",
+      "relation": "specialises",
+      "basis": "Quantitative projection of the same translation at the surviving cells -2 and -1."
+    },
+    {
+      "from": "final_middle_cell_tail_thresholds",
+      "to": "final_middle_neg_two_phase_sieve",
+      "relation": "implies",
+      "basis": "The tail-below-two threshold is exactly what the forced-rank divisor incidence contradicts."
+    },
+    {
+      "from": "forced_seam_ranks_seven_through_twentysix",
+      "to": "forced_seam_ranks_two_three_six",
+      "relation": "generalises",
+      "basis": "Extends the forced initial segment from 2,3,6 to 2,3,6,7,14,20,21,26 at successively higher row thresholds."
+    },
+    {
+      "from": "forced_seam_ranks_seven_through_twentysix",
+      "to": "final_middle_neg_two_phase_sieve",
+      "relation": "implies",
+      "basis": "Each newly forced rank removes further residue classes from the sieve."
+    },
+    {
+      "from": "phase_indexed_below_pulse_lower_bounds",
+      "to": "final_middle_neg_two_phase_sieve",
+      "relation": "implies",
+      "basis": "The phase-indexed pulse lower bounds are the arithmetic content of each residue exclusion."
+    },
+    {
+      "from": "final_middle_neg_two_survivor_count",
+      "to": "final_middle_neg_two_phase_sieve",
+      "relation": "finite_instance_of",
+      "basis": "Counts the joint residue classes left by the rank-26 refinement."
+    },
+    {
+      "from": "producer_carry_negative_forces_above_half",
+      "to": "upper_last_producer_impossible",
+      "relation": "implies",
+      "basis": "The carry-at-most--8 Mersenne-gap margin is exactly the engine of the upper exclusion."
+    },
+    {
+      "from": "last_false_terminal_exists_for_eventual_right",
+      "to": "half_membership_conditional_endpoints",
+      "relation": "implies",
+      "basis": "Supplies the row D at which the upper / -3 / remaining-middle case split runs."
+    },
+    {
+      "from": "seam_base_row_certificates",
+      "to": "last_false_terminal_exists_for_eventual_right",
+      "relation": "finite_instance_of",
+      "basis": "The row-13 and row-14 certificates supply the base false terminal that makes the bad set nonempty."
+    },
+    {
+      "from": "two_sided_dyadic_invariant_branch_propagation",
+      "to": "two_sided_dyadic_invariant_under_cell_escape",
+      "relation": "implies",
+      "basis": "The branch lemmas are the induction step of the conditional invariant."
+    },
+    {
+      "from": "pure_half_prefix_normal_form",
+      "to": "two_sided_dyadic_invariant_branch_propagation",
+      "relation": "reformulates",
+      "basis": "Single-coordinate normal form of the same two-sided dyadic bound."
+    },
+    {
+      "from": "middle_then_allright_orbit_closed_forms",
+      "to": "middle_then_allright_fatal_gap_and_landing_window",
+      "relation": "implies",
+      "basis": "The closed forms are evaluated in the limit to produce the fatal gap."
+    },
+    {
+      "from": "middle_then_allright_fatal_gap_and_landing_window",
+      "to": "final_middle_producer_must_violate_tail_inequality",
+      "relation": "implies",
+      "basis": "The same all-right limit strictly below one half gives both conclusions."
+    },
+    {
+      "from": "eventual_right_tail_positive_excess",
+      "to": "middle_then_allright_fatal_gap_and_landing_window",
+      "relation": "implies",
+      "basis": "Positivity of the signed excess anchors the landing-excess window."
+    },
+    {
+      "from": "late_largest_false_adjacent_cut_identification",
+      "to": "late_row_small_forces_middle_branch",
+      "relation": "implies",
+      "basis": "The exact late adjacent gap is what excludes the upper branch at a row-small row."
+    },
+    {
+      "from": "late_gap_reset_middle_balance",
+      "to": "late_largest_false_adjacent_cut_identification",
+      "relation": "specialises",
+      "basis": "The same exact gap rewritten as an upper-reset / middle-coordinate charge balance."
+    },
+    {
+      "from": "middle_cell_floor_absorption_bounds",
+      "to": "middle_landing_floor_error_identities",
+      "relation": "specialises",
+      "basis": "Cell-labelled form of the same pulse absorption into the exact floor error."
+    },
+    {
+      "from": "pulse_and_floor_error_calculus",
+      "to": "middle_landing_floor_error_identities",
+      "relation": "implies",
+      "basis": "Supplies the floor-error majorants used in the landing identity."
+    },
+    {
+      "from": "finite_prefix_cardinality_tail_socket",
+      "to": "final_middle_producer_must_violate_tail_inequality",
+      "relation": "depends_on_open",
+      "basis": "Failure of the cardinality inequality forces remainder < row, the same row-small regime the reverse classification then has to handle."
+    }
+  ]
+}

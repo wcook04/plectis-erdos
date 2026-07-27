@@ -1,0 +1,848 @@
+{
+ "zone_id": "Z26",
+ "title": "Failure of the hlow condition and conversion to hit certificates",
+ "problem": "257",
+ "concepts": [
+  {
+   "id": "audited_expansion_boundary",
+   "label": "audited expansion claim boundary",
+   "note": "A distinction between an exact Lean declaration, supporting proof substrate, finite checked instances, measurements, and any claim that would resolve an open Erdős problem."
+  }
+ ],
+ "statement_nodes": [
+  {
+   "id": "universal_hlow_refuted",
+   "canonical_statement": "PROVED: the universal hlow implication, even with its hhigh premise, is false.",
+   "logical_class": "barrier_no_go",
+   "problem": "257",
+   "concepts": [
+    "audited_expansion_boundary"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "the explicit seven-five counterexample",
+   "prior_art_state": "not_assessed",
+   "prior_art_note": "No priority or novelty claim is made. This node records the exact scope needed for public claim hygiene.",
+   "scope_caveat": "This closes the proposed universal side condition, not the achievement-set problem.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "not_hlow_of_hhigh",
+     "module": "ErdosProblems/Hlow/H1.lean",
+     "line": 441
+    }
+   ]
+  },
+  {
+   "id": "hlow_failure_gives_hit",
+   "canonical_statement": "PROVED: under BitAdmissible, failure of hlow forces the seam remainder below 2^s; in particular the seven-five failure certifies that row seven is a hit.",
+   "logical_class": "conditional_implication",
+   "problem": "257",
+   "concepts": [
+    "audited_expansion_boundary"
+   ],
+   "open_antecedents": [
+    "h: BitAdmissible s d",
+    "hfail: the hlow inequality fails at s,d"
+   ],
+   "is_restatement_of_open_problem": false,
+   "engine": "correction decomposition of the greedy remainder",
+   "prior_art_state": "not_assessed",
+   "prior_art_note": "No priority or novelty claim is made. This node records the exact scope needed for public claim hygiene.",
+   "scope_caveat": "A single hit or conditional hit conversion does not prove the cofinal supply required for membership of one half.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "seamRemainder_lt_two_pow_of_not_hlow",
+     "module": "ErdosProblems/Hlow/H2.lean",
+     "line": 294
+    },
+    {
+     "declaration": "seven_is_a_hit_from_failure",
+     "module": "ErdosProblems/Hlow/H2.lean",
+     "line": 397
+    }
+   ]
+  }
+ ],
+ "declaration_roles": [
+  {
+   "declaration": "hlow_iff",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 169,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_lt_two_mul_four_pow",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 175,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_eq_two_mul_four_pow",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 181,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_pow_le_mod_of_testBit",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 186,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_of_testBit",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_of_two_mul_four_pow_le",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 206,
+   "role": "substrate"
+  },
+  {
+   "declaration": "window_width",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 213,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_of_testBit_halfPoint",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 221,
+   "role": "substrate"
+  },
+  {
+   "declaration": "testBit_false_of_not_hlow",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 228,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_or_window_clear",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 236,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mod_lt_of_not_hlow",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 244,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mod_le_mod_sub_add",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 257,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sub_multiple_mod",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 263,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateGreedy_lower",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 272,
+   "role": "substrate"
+  },
+  {
+   "declaration": "trap",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 311,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateGreedy_lt_sharp",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 353,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateGreedy_lt_two_pow_add",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 360,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_sharp_of_hhigh",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 374,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_sharp_of_declined",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 385,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lower",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 393,
+   "role": "substrate"
+  },
+  {
+   "declaration": "five_is_first_late_seven",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 405,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 408,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 414,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declined_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 420,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhigh_holds_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 427,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_fails_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 433,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_hlow_of_hhigh",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 441,
+   "role": "statement",
+   "statement_node": "universal_hlow_refuted"
+  },
+  {
+   "declaration": "not_admissible_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 450,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seven_five_window_clear",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 456,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_seven_lt",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 469,
+   "role": "substrate"
+  },
+  {
+   "declaration": "upper_trap_needs_hlow",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 480,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_seven_six",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 495,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_seven_six",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 499,
+   "role": "substrate"
+  },
+  {
+   "declaration": "admissible_seven_six",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 504,
+   "role": "substrate"
+  },
+  {
+   "declaration": "twelve_is_first_late_seventeen",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 515,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_seventeen_twelve",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 518,
+   "role": "substrate"
+  },
+  {
+   "declaration": "testBit_seventeen_halfPoint",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 523,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_seventeen_twelve",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 530,
+   "role": "substrate"
+  },
+  {
+   "declaration": "admissible_seventeen",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 536,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_seventeen_lt",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 541,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fourteen_window_clear",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 552,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fourteen_bit_route_silent",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 561,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_twenty_lt_sharp",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 573,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mod_lt_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 585,
+   "role": "substrate"
+  },
+  {
+   "declaration": "window_width_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 590,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_or_window_clear_seven_five",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 595,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lower_seventeen",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 602,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateGreedy_lt_two_pow_add_seventeen",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 608,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_iff_decided",
+   "module": "ErdosProblems/Hlow/H1.lean",
+   "line": 616,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_succ",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 146,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sub_mul_mod_self",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 162,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_succ_of_hlow",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 166,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_mono",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 197,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_hlow_of_not_hlow_ge",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 211,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_not_hlow_iff",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 218,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipCorrection",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 233,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipCorrection_eq_zero",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 241,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipCorrection_eq_cons",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 245,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipCorrection_add_bitCorrection",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 252,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipCorrection_le_lateCorrection",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 265,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_iff_skipCorrection_le_seamRemainder",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 273,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_skipCorrection_of_not_hlow",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 285,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamRemainder_lt_two_pow_of_not_hlow",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 294,
+   "role": "statement",
+   "statement_node": "hlow_failure_gives_hit"
+  },
+  {
+   "declaration": "seamRemainder_le_two_pow_of_not_hlow",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 305,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_not_hlow_cofinally",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 318,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_twenty_fourteen",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 337,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_twenty_seventeen",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 344,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_twenty_all",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 350,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_seven_six",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 360,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_seven_seven",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 363,
+   "role": "substrate"
+  },
+  {
+   "declaration": "row_seven_failure_set",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 367,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipCorrection_seven_five",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 377,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seven_sharp",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 386,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seven_sharp_value",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 391,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seven_is_a_hit_from_failure",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 397,
+   "role": "statement",
+   "statement_node": "hlow_failure_gives_hit"
+  },
+  {
+   "declaration": "seven_consistency",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 402,
+   "role": "substrate"
+  },
+  {
+   "declaration": "skipCorrection_le_seamRemainder_twenty",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 412,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_skipCorrection_le_seamRemainder_seven",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 417,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_hlow_witness",
+   "module": "ErdosProblems/Hlow/H2.lean",
+   "line": 429,
+   "role": "substrate"
+  },
+  {
+   "declaration": "divisorPulseBudget",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 133,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wordPulse_le_divisorPulseBudget",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 138,
+   "role": "substrate"
+  },
+  {
+   "declaration": "divisorPulseBudget_eq_card",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 149,
+   "role": "substrate"
+  },
+  {
+   "declaration": "divisorPulseBudget_le_card_divisors",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 169,
+   "role": "substrate"
+  },
+  {
+   "declaration": "budget_thirty",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "budget_lt_corpus_bound_thirty",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 199,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wordPulse_thirty_le_one",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 206,
+   "role": "substrate"
+  },
+  {
+   "declaration": "budget_twelve",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 214,
+   "role": "substrate"
+  },
+  {
+   "declaration": "budget_five",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 219,
+   "role": "substrate"
+  },
+  {
+   "declaration": "surplus_pinned",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 230,
+   "role": "substrate"
+  },
+  {
+   "declaration": "surplus_lt_two_of_window",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 265,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_le_of_stepLaw",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 281,
+   "role": "substrate"
+  },
+  {
+   "declaration": "witnessSurplus",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 290,
+   "role": "substrate"
+  },
+  {
+   "declaration": "window_witness",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 293,
+   "role": "substrate"
+  },
+  {
+   "declaration": "persistent_surplus_is_exactly_tight",
+   "module": "ErdosProblems/Hlow/W1.lean",
+   "line": 309,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowEntries",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 109,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntries",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 119,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hhighAt",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 122,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlowAt",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 123,
+   "role": "substrate"
+  },
+  {
+   "declaration": "declinedAt",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 124,
+   "role": "substrate"
+  },
+  {
+   "declaration": "admissibleAt",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 125,
+   "role": "substrate"
+  },
+  {
+   "declaration": "N",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 137,
+   "role": "substrate"
+  },
+  {
+   "declaration": "windowHasSetBit",
+   "module": "ErdosProblems/Hlow/verify/V1.lean",
+   "line": 208,
+   "role": "substrate"
+  },
+  {
+   "declaration": "d0",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 116,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitAdmB",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 118,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlowB",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 123,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sat_hlow",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sat_not_hlow",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 199,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sat_bitAdmissible_and_not_hlow",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 205,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sat_bitAdmissible_and_hlow",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 211,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_six_five",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 255,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_six_five",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 261,
+   "role": "substrate"
+  },
+  {
+   "declaration": "five_is_first_late_six",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 264,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_six_five",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 268,
+   "role": "substrate"
+  },
+  {
+   "declaration": "margin_six_five",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 275,
+   "role": "substrate"
+  },
+  {
+   "declaration": "margin_seven_six",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 284,
+   "role": "substrate"
+  },
+  {
+   "declaration": "header_margin_claim_is_false",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 291,
+   "role": "substrate"
+  },
+  {
+   "declaration": "two_equal_binary_length_pairs",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 305,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hit_certificate_is_a_D4_corollary",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 340,
+   "role": "substrate"
+  },
+  {
+   "declaration": "routes_agree",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 347,
+   "role": "substrate"
+  },
+  {
+   "declaration": "sharp_form_is_a_D4_corollary",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 357,
+   "role": "substrate"
+  },
+  {
+   "declaration": "reduction_is_a_D4_corollary",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 370,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_hlow_implies_D4_condition",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 383,
+   "role": "substrate"
+  },
+  {
+   "declaration": "missing_instance_not_hlow_of_not_hlow_ge",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 436,
+   "role": "substrate"
+  },
+  {
+   "declaration": "missing_instance_exists_not_hlow",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 443,
+   "role": "substrate"
+  },
+  {
+   "declaration": "missing_instance_no_failure_in_row_twenty",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 452,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hlow_twenty_seventeen_values",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 463,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_twenty_seventeen_eq_rho",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 474,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_seven_seven_is_zero",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 482,
+   "role": "substrate"
+  },
+  {
+   "declaration": "redeclared_statement",
+   "module": "ErdosProblems/Hlow/verify/V2.lean",
+   "line": 500,
+   "role": "substrate"
+  }
+ ],
+ "intra_zone_relations": []
+}

@@ -56,8 +56,8 @@ infinite-support families do not discharge these propositions. Only a future
 claim transition recorded against the exact identifier, with the evidence
 required by `docs/methodology.json`, can change this boundary.
 
-Expert handoffs: `python3 scripts/query_expert_handoffs.py`; rows separate
-endpoint, sufficient, counterexample, and systems-review asks.
+Expert handoffs: `python3 scripts/query_expert_handoffs.py`; each row gives its
+OPEN ask, current guess, alternatives, discriminator, consumer, and boundary.
 
 ## Machine identifiers
 

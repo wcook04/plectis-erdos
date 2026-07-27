@@ -85,9 +85,12 @@ def main() -> int:
             weakened_transition, open_ids, non_claim_ids
         )
     )
-    stale_open = scope + (
-        "\n- `remaining_open.retired_placeholder`:\n"
-        "  `python3 scripts/query_corpus.py --open remaining_open.retired_placeholder`\n"
+    stale_open = scope.replace(
+        "Machine-resolvable open propositions:",
+        "Machine-resolvable open propositions:\n\n"
+        "- `remaining_open.retired_placeholder`:\n"
+        "  `python3 scripts/query_corpus.py --open remaining_open.retired_placeholder`",
+        1,
     )
     assert any(
         "unknown open identifier" in error
