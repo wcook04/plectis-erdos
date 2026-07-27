@@ -23,10 +23,21 @@ y : Nat
 
 
 def check_minimal_cuts() -> None:
-    cuts = compiler.minimal_hitting_sets(
-        [{"a", "b"}, {"b", "c"}]
-    )
+    residuals = [{"a", "b"}, {"b", "c"}]
+    cuts = compiler.minimal_hitting_sets(residuals)
     assert cuts == [["b"], ["a", "c"]]
+    interventions = compiler.minimal_missing_interventions(residuals)
+    assert interventions == [["a", "b"], ["b", "c"]]
+    # Category boundary: adding cut {b} closes neither plan, while each
+    # intervention row completes exactly one plan.
+    assert interventions != cuts
+    single = [{"a", "b"}]
+    assert compiler.minimal_hitting_sets(single) == [["a"], ["b"]]
+    assert compiler.minimal_missing_interventions(single) == [["a", "b"]]
+    absorbed = compiler.minimal_missing_interventions(
+        [{"a", "b"}, {"a", "b", "c"}]
+    )
+    assert absorbed == [["a", "b"]]
 
 
 def check_live_pilot() -> dict:
@@ -58,6 +69,10 @@ def check_live_pilot() -> dict:
     assert blocked["minimal_blocker_cuts"][0]["targets"] == [
         "⊢ r.den ∣ 2 ^ N * (2 ^ h - 1)"
     ]
+    assert blocked["minimal_missing_interventions"][0]["targets"] == [
+        "⊢ r.den ∣ 2 ^ N * (2 ^ h - 1)"
+    ]
+    assert "minimal_blocker_cuts" in blocked["blocker_algebra_semantics"]
 
     ready = packet["cases"]["integer_tail_with_divisibility"]
     assert ready["closed_proof_receipts"]
