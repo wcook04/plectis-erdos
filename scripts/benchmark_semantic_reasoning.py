@@ -227,6 +227,7 @@ TASKS: tuple[dict[str, Any], ...] = (
         "required_text": (
             "rational_totient_series_forces_lcm_cone_flatness",
             "curvature_notMem_int_of_sharpCurvatureCert",
+            "apply Erdos249257.TotientTailPeriodKiller.irrational_totientSeries_of_sharpCurvatureSupply",
         ),
     },
 )
