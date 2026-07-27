@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import argparse
 import copy
 import re
 
@@ -17,6 +18,37 @@ def assert_rejected(packets: dict, label: str) -> None:
     except AssertionError:
         return
     raise AssertionError(f"semantic mutation escaped: {label}")
+
+
+def assert_proof_plan_rejected(proof_plans: dict, label: str) -> None:
+    try:
+        diagnostic.validate_proof_plan_packets(proof_plans)
+    except AssertionError:
+        return
+    raise AssertionError(f"proof-plan mutation escaped: {label}")
+
+
+def check_proof_plan_mutations(proof_plans: dict) -> int:
+    mutated = copy.deepcopy(proof_plans)
+    mutated["blocked_integer_tail"]["application"]["obligations"] = [
+        row
+        for row in mutated["blocked_integer_tail"]["application"][
+            "obligations"
+        ]
+        if row["name"] != "hdvd"
+    ]
+    assert_proof_plan_rejected(
+        mutated, "proof-plan missing-obligation boundary"
+    )
+
+    mutated = copy.deepcopy(proof_plans)
+    mutated["context_ready_curvature"]["exact_dependency_spine"][
+        "steps"
+    ] = []
+    assert_proof_plan_rejected(
+        mutated, "proof-plan exact dependency spine"
+    )
+    return 2
 
 
 def assert_human_rejected(summary: dict, surfaces: dict[str, str], label: str) -> None:
@@ -226,6 +258,8 @@ def main() -> int:
     assert_rejected(mutated, "no-go programme route coverage")
     checks += 1
 
+    checks += check_proof_plan_mutations(packets["proof_plans"])
+
     mutated = copy.deepcopy(packets)
     mutated["claim_statuses"]["conditional reduction"]["claims"][0][
         "remaining_open_proposition_ids"
@@ -313,5 +347,21 @@ def main() -> int:
     return 0
 
 
+def cli() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--proof-plans-only", action="store_true")
+    args = parser.parse_args()
+    if args.proof_plans_only:
+        proof_plans = diagnostic.collect_proof_plan_packets()
+        diagnostic.validate_proof_plan_packets(proof_plans)
+        rejected = check_proof_plan_mutations(proof_plans)
+        print(
+            "test_cold_clone_comprehension: proof-plan baseline passed; "
+            f"{rejected} semantic mutations were rejected"
+        )
+        return 0
+    return main()
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(cli())

@@ -122,6 +122,16 @@ DISCOVERY_MULTI_ROUTE_QUERIES = {
         "arithmetic_obstruction_interfaces",
     }
 }
+PROOF_PLAN_QUERIES = {
+    "blocked_integer_tail": (
+        "I need to prove totientTail (N + h) - totientTail N is an integer "
+        "from a rational totient series; which theorem applies?"
+    ),
+    "context_ready_curvature": (
+        "I need to prove Irrational (∑' n : ℕ, "
+        "(Nat.totient n : ℝ) / 2 ^ n) from a SharpCurvatureSupply"
+    ),
+}
 
 
 def read(rel: str) -> str:
@@ -406,6 +416,28 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
     assert "## First read" not in claude, "CLAUDE.md duplicated the shared first-read manual"
 
 
+def collect_proof_plan_packets() -> dict[str, Any]:
+    """Exercise the bounded hypothesis-aware path used by a cold coding agent."""
+    return {
+        "blocked_integer_tail": query_packet(
+            "--proof-plan",
+            PROOF_PLAN_QUERIES["blocked_integer_tail"],
+            "--depth",
+            "2",
+            "--limit",
+            "8",
+        ),
+        "context_ready_curvature": query_packet(
+            "--proof-plan",
+            PROOF_PLAN_QUERIES["context_ready_curvature"],
+            "--depth",
+            "1",
+            "--limit",
+            "8",
+        ),
+    }
+
+
 def collect_agent_packets() -> dict[str, Any]:
     """Collect only bounded query replies needed to walk the public graph."""
     summary = query_packet(budget_bytes=SUMMARY_PACKET_BUDGET_BYTES)
@@ -440,6 +472,7 @@ def collect_agent_packets() -> dict[str, Any]:
             search_text: query_packet("--search", search_text, "--limit", "10")
             for search_text in DISCOVERY_MULTI_ROUTE_QUERIES
         },
+        "proof_plans": collect_proof_plan_packets(),
         "story_claims": {
             claim_id: query_packet("--claim", claim_id) for claim_id in STORY_CLAIMS
         },
@@ -471,6 +504,49 @@ def collect_agent_packets() -> dict[str, Any]:
     return packets
 
 
+def validate_proof_plan_packets(proof_plans: dict[str, Any]) -> None:
+    """Validate application boundaries and exact spines independently."""
+    blocked = proof_plans["blocked_integer_tail"]
+    assert blocked["kind"] == "formal_proof_plan"
+    assert blocked["availability"] == "available"
+    assert blocked["terminal_candidate"]["name"] == "tail_diff_int_of_den_dvd"
+    assert blocked["plan_status"] == (
+        "blocked_by_unmatched_proposition_obligations"
+    )
+    assert {
+        row["name"]
+        for row in blocked["application"]["obligations"]
+        if row["status"] == "unmatched_proposition_obligation"
+    } == {"hdvd"}
+    assert blocked["application"]["authority_posture"] == (
+        "binder_roles_and_type_shapes_from_elaborated_Lean_context_"
+        "matching_is_lexical_navigation_not_local_context_unification"
+    )
+    assert encoded_bytes(blocked) <= PACKET_BUDGET_BYTES
+
+    ready = proof_plans["context_ready_curvature"]
+    assert ready["kind"] == "formal_proof_plan"
+    assert ready["availability"] == "available"
+    assert ready["terminal_candidate"]["name"] == (
+        "irrational_totientSeries_of_sharpCurvatureSupply"
+    )
+    assert ready["plan_status"] == (
+        "all_proposition_obligations_have_context_matches"
+    )
+    assert ready["application"]["unmatched_proposition_count"] == 0
+    assert {
+        row["name"] for row in ready["exact_dependency_spine"]["steps"]
+    } >= {
+        "curvature_notMem_int_of_sharpCurvatureCert",
+        "periodLcm_pos",
+        "rational_totient_series_forces_lcm_cone_flatness",
+    }
+    assert ready["exact_dependency_spine"]["edge_policy"] == (
+        "elaborated_value_references_only"
+    )
+    assert encoded_bytes(ready) <= PACKET_BUDGET_BYTES
+
+
 def validate_agent_packets(packets: dict[str, Any]) -> None:
     summary = packets["summary"]
     assert summary["kind"] == "corpus_summary"
@@ -490,6 +566,8 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert summary["curated_claim_count"] >= len(summary["principal_claims"])
     assert summary["publication_family_count"] > 0
     assert len(summary["mathematical_programmes"]) == len(STORY_ROUTES)
+
+    validate_proof_plan_packets(packets["proof_plans"])
 
     architecture = packets["publication_architecture"]
     assert architecture["kind"] == "publication_architecture"
@@ -768,9 +846,24 @@ def main(argv: list[str] | None = None) -> int:
             "build and no exhaustive typed-query sweep"
         ),
     )
+    parser.add_argument(
+        "--proof-plans-only",
+        action="store_true",
+        help=(
+            "exercise the two bounded semantic proof plans without the wider "
+            "claim, paper, and route projection sweep"
+        ),
+    )
     args = parser.parse_args(argv)
     if args.quick:
         return run_quick_check()
+    if args.proof_plans_only:
+        validate_proof_plan_packets(collect_proof_plan_packets())
+        print(
+            "cold-clone proof plans: blocked and context-ready application "
+            "boundaries verified"
+        )
+        return 0
 
     packets = collect_agent_packets()
     summary = packets["summary"]
@@ -794,6 +887,7 @@ def main(argv: list[str] | None = None) -> int:
         + len(packets["story_routes"])
         + len(packets["discovery_searches"])
         + len(packets["discovery_multi_searches"])
+        + len(packets["proof_plans"])
         + len(packets["story_claims"])
         + 3
     )
