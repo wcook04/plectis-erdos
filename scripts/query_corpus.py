@@ -360,7 +360,7 @@ def lean_dependency_index() -> dict[str, Any] | None:
         return None
     if (
         packet.get("schema_version")
-        != "erdos249257-lean-dependency-index/2"
+        != "erdos249257-lean-dependency-index/3"
         or packet.get("source_fingerprint") != atlas.get("source_fingerprint")
         or not isinstance(packet.get("nodes"), list)
         or not isinstance(packet.get("edges"), list)
@@ -444,19 +444,41 @@ def lean_dependency_adjacency() -> dict[str, Any] | None:
     formal_type_affordances = {}
     affordance_packet = packet.get("formal_type_affordances", {})
     symbol_table = affordance_packet.get("symbol_table", [])
+    binder_name_table = affordance_packet.get("binder_name_table", [])
+    binder_info_legend = affordance_packet.get(
+        "binder_info_code_legend", {}
+    )
     for row in affordance_packet.get("rows", []):
         if (
             not isinstance(row, list)
-            or len(row) != 4
+            or len(row) != 5
             or row[0] not in nodes_by_id
             or not isinstance(row[1], int)
             or not isinstance(row[2], int)
             or not isinstance(row[3], list)
+            or not isinstance(row[4], list)
             or not 0 <= row[2] < len(symbol_table)
             or any(
                 not isinstance(symbol_id, int)
                 or not 0 <= symbol_id < len(symbol_table)
                 for symbol_id in row[3]
+            )
+            or any(
+                not isinstance(binder, list)
+                or len(binder) != 5
+                or not isinstance(binder[0], int)
+                or not 0 <= binder[0] < len(binder_name_table)
+                or str(binder[1]) not in binder_info_legend
+                or not isinstance(binder[2], bool)
+                or not isinstance(binder[3], int)
+                or not 0 <= binder[3] < len(symbol_table)
+                or not isinstance(binder[4], list)
+                or any(
+                    not isinstance(symbol_id, int)
+                    or not 0 <= symbol_id < len(symbol_table)
+                    for symbol_id in binder[4]
+                )
+                for binder in row[4]
             )
         ):
             continue
@@ -465,6 +487,20 @@ def lean_dependency_adjacency() -> dict[str, Any] | None:
             "conclusion_head": symbol_table[row[2]],
             "conclusion_symbols": [
                 symbol_table[symbol_id] for symbol_id in row[3]
+            ],
+            "binders": [
+                {
+                    "index": index,
+                    "name": binder_name_table[binder[0]],
+                    "binder_info": binder_info_legend[str(binder[1])],
+                    "is_proposition": binder[2],
+                    "type_head": symbol_table[binder[3]],
+                    "type_symbols": [
+                        symbol_table[symbol_id]
+                        for symbol_id in binder[4]
+                    ],
+                }
+                for index, binder in enumerate(row[4])
             ],
         }
     return {
@@ -1204,6 +1240,224 @@ def formal_goal_support_packet(
             "or_applicability_proof"
         ),
         "validation": "python3 scripts/build_lean_dependency_index.py --check",
+    }
+
+
+def formal_application_obligations(
+    query: str,
+    goal_request: dict[str, str],
+    affordance: dict[str, Any],
+) -> dict[str, Any]:
+    """Classify an application telescope against explicitly stated context."""
+    context_terms = {
+        term
+        for term in semantic_content_terms(goal_request["context"])
+        if len(term) > 1
+    }
+    normalized_query = normalized_search_text(query)
+    obligations = []
+    for binder in affordance["binders"]:
+        type_terms = set().union(
+            *(
+                search_terms(symbol)
+                for symbol in (
+                    binder["type_head"],
+                    *binder["type_symbols"],
+                )
+            )
+        )
+        context_matches = sorted(context_terms & type_terms)
+        binder_name = binder["name"]
+        name_mentioned = bool(
+            binder_name
+            and binder_name != "_"
+            and re.search(
+                rf"(?<![A-Za-z0-9_]){re.escape(binder_name)}"
+                rf"(?![A-Za-z0-9_])",
+                query,
+            )
+        )
+        if binder["binder_info"] == "instance_implicit":
+            status = "instance_synthesis_required"
+        elif binder["is_proposition"]:
+            status = (
+                "context_matched_proposition_candidate"
+                if context_matches
+                else "unmatched_proposition_obligation"
+            )
+        else:
+            status = (
+                "term_parameter_mentioned"
+                if name_mentioned
+                else "term_parameter_required"
+            )
+        obligations.append(
+            {
+                **binder,
+                "role": (
+                    "proposition_hypothesis"
+                    if binder["is_proposition"]
+                    else "term_parameter"
+                ),
+                "status": status,
+                "context_term_matches": context_matches,
+                "binder_name_mentioned": name_mentioned,
+                "type_symbols": binder["type_symbols"][:16],
+                "omitted_type_symbol_count": max(
+                    0, len(binder["type_symbols"]) - 16
+                ),
+            }
+        )
+    proposition_obligations = [
+        row
+        for row in obligations
+        if row["role"] == "proposition_hypothesis"
+        and row["binder_info"] != "instance_implicit"
+    ]
+    unmatched = [
+        row
+        for row in proposition_obligations
+        if row["status"] == "unmatched_proposition_obligation"
+    ]
+    return {
+        "query_context": goal_request["context"],
+        "normalized_query": normalized_query,
+        "obligations": obligations,
+        "obligation_count": len(obligations),
+        "term_parameter_count": sum(
+            row["role"] == "term_parameter" for row in obligations
+        ),
+        "proposition_obligation_count": len(proposition_obligations),
+        "context_matched_proposition_count": (
+            len(proposition_obligations) - len(unmatched)
+        ),
+        "unmatched_proposition_count": len(unmatched),
+        "application_status": (
+            "blocked_by_unmatched_proposition_obligations"
+            if unmatched
+            else "all_proposition_obligations_have_context_matches"
+        ),
+        "authority_posture": (
+            "binder_roles_and_type_shapes_from_elaborated_Lean_context_"
+            "matching_is_lexical_navigation_not_local_context_unification"
+        ),
+    }
+
+
+def formal_proof_plan_packet(
+    query: str,
+    limit: int,
+    depth: int,
+    *,
+    explicit_goal: bool = False,
+) -> dict[str, Any]:
+    """Build a bounded, hypothesis-aware application and proof-spine packet."""
+    support = formal_goal_support_packet(
+        query,
+        max(3, min(limit, MAX_SEMANTIC_CELLS)),
+        explicit_goal=explicit_goal,
+    )
+    if support.get("availability") != "available":
+        return {
+            "kind": "formal_proof_plan",
+            "availability": support.get("availability", "unavailable"),
+            "query": query,
+            "formal_goal_support": support,
+        }
+    terminal = support["candidates"][0]
+    terminal_handle = terminal["qualified_name"]
+    adjacency = lean_dependency_adjacency()
+    if (
+        adjacency is None
+        or terminal_handle not in adjacency["formal_type_affordances"]
+    ):
+        return {
+            "kind": "formal_proof_plan",
+            "availability": "formal_telescope_unavailable",
+            "query": query,
+            "terminal_candidate": terminal,
+        }
+    affordance = adjacency["formal_type_affordances"][terminal_handle]
+    obligations = formal_application_obligations(
+        query,
+        support["goal_request"],
+        affordance,
+    )
+    cone = formal_dependency_proof_cone(
+        terminal_handle,
+        depth,
+        max(limit, 24),
+    )
+    cone_edges = cone.get("edges", [])
+    theorem_kinds = {"theorem", "lemma", "corollary", "proposition"}
+    spine_steps = []
+    for node in sorted(
+        (
+            row
+            for row in cone.get("nodes", [])
+            if row["handle"] != terminal_handle
+            and row["declaration_kind"] in theorem_kinds
+        ),
+        key=lambda row: (-row["depth"], row["handle"]),
+    ):
+        step_affordance = adjacency["formal_type_affordances"].get(
+            node["handle"]
+        )
+        spine_steps.append(
+            {
+                **node,
+                "conclusion_head": (
+                    step_affordance["conclusion_head"]
+                    if step_affordance is not None
+                    else None
+                ),
+                "forall_binder_count": (
+                    step_affordance["forall_binder_count"]
+                    if step_affordance is not None
+                    else None
+                ),
+                "used_by": sorted(
+                    edge["from"]
+                    for edge in cone_edges
+                    if edge["to"] == node["handle"]
+                ),
+            }
+        )
+    return {
+        "kind": "formal_proof_plan",
+        "availability": "available",
+        "query": query,
+        "goal_request": support["goal_request"],
+        "terminal_candidate": terminal,
+        "application": {
+            "lean_tactic_candidate": (
+                terminal["lean_application_candidate"]
+            ),
+            **obligations,
+        },
+        "exact_dependency_spine": {
+            "edge_policy": cone.get("edge_policy"),
+            "steps": spine_steps,
+            "edges": [
+                edge
+                for edge in cone_edges
+                if edge["from"] == terminal_handle
+                or edge["to"] in {
+                    step["handle"] for step in spine_steps
+                }
+            ],
+            "omission_receipt": cone.get("omission_receipt"),
+        },
+        "plan_status": obligations["application_status"],
+        "authority_posture": (
+            "terminal_and_dependency_edges_from_elaborated_Lean_environment_"
+            "binder_context_matches_are_navigation_candidates_and_all_tactic_"
+            "steps_require_Lean_elaboration"
+        ),
+        "validation": (
+            "python3 scripts/dogfood_semantic_proof.py && "
+            "python3 scripts/build_lean_dependency_index.py --check"
+        ),
     }
 
 
@@ -4320,6 +4574,27 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
             "availability": "no_goal_expression",
         }
     )
+    if (
+        goal_support["availability"] == "available"
+        and goal_support["candidates"]
+    ):
+        goal_adjacency = lean_dependency_adjacency()
+        goal_handle = goal_support["candidates"][0]["qualified_name"]
+        if (
+            goal_adjacency is not None
+            and goal_handle
+            in goal_adjacency["formal_type_affordances"]
+        ):
+            goal_support = {
+                **goal_support,
+                "application": formal_application_obligations(
+                    query,
+                    goal_support["goal_request"],
+                    goal_adjacency["formal_type_affordances"][
+                        goal_handle
+                    ],
+                ),
+            }
     if trace_resolution["availability"] not in (
         "available",
         "no_explicit_endpoint_pair",
@@ -4846,6 +5121,7 @@ def summary_packet() -> dict[str, Any]:
     effective_declaration_count = len(atlas_declarations(atlas))
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     bounded_omissions = (
+        "checks",
         "editorial_architecture",
         "editorial_state",
         "external_registration",
@@ -4928,6 +5204,16 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| goal={packet.get('goal_request', {}).get('goal', 'unresolved')} "
             f"| candidates={len(packet.get('candidates', []))}/"
             f"{packet.get('candidate_count', 0)}"
+        )
+    if kind == "formal_proof_plan":
+        application = packet.get("application", {})
+        return (
+            f"formal proof plan | {packet['availability']} "
+            f"| terminal={packet.get('terminal_candidate', {}).get('name', 'unresolved')} "
+            f"| status={packet.get('plan_status', 'unresolved')} "
+            f"| obligations={application.get('obligation_count', 0)} "
+            f"| unmatched={application.get('unmatched_proposition_count', 0)} "
+            f"| spine={len(packet.get('exact_dependency_spine', {}).get('steps', []))}"
         )
     if kind == "source_coordinate":
         source = packet["source"]
@@ -5087,6 +5373,7 @@ def main() -> int:
     group.add_argument("--open", metavar="ID")
     group.add_argument("--declaration", metavar="NAME")
     group.add_argument("--goal-support", metavar="LEAN_OR_MATHEMATICAL_GOAL")
+    group.add_argument("--proof-plan", metavar="LEAN_OR_MATHEMATICAL_GOAL")
     group.add_argument("--proof-cone", metavar="DECLARATION")
     group.add_argument(
         "--dependency-path",
@@ -5116,7 +5403,10 @@ def main() -> int:
         "--depth",
         type=int,
         default=4,
-        help="maximum dependency depth for --proof-cone/--dependency-path",
+        help=(
+            "maximum dependency depth for --proof-plan/--proof-cone/"
+            "--dependency-path"
+        ),
     )
     parser.add_argument("--query", default="", help="rank a connection card toward one task")
     parser.add_argument("--format", choices=("json", "card"), default="json")
@@ -5140,6 +5430,13 @@ def main() -> int:
             packet = formal_goal_support_packet(
                 args.goal_support,
                 args.limit,
+                explicit_goal=True,
+            )
+        elif args.proof_plan:
+            packet = formal_proof_plan_packet(
+                args.proof_plan,
+                args.limit,
+                args.depth,
                 explicit_goal=True,
             )
         elif args.proof_cone:

@@ -117,6 +117,10 @@ handle:
   context phrases, and binder structure; this is a navigation affordance, not
   an applicability proof, so the emitted `apply` candidates still require
   Lean elaboration;
+- `--proof-plan "<Lean or mathematical goal>" --depth <1..8>` to extend the
+  best goal-support candidate with its Lean-classified term/proposition
+  telescope, a context-match or missing-obligation ledger, and a bounded exact
+  proof-term dependency spine;
 - `--proof-cone <declaration> --depth <1..8>` for a bounded,
   theorem-prioritized cone of exact proof-term dependencies, or
   `--dependency-path <source> <target> --depth <1..8>` for the shortest exact

@@ -368,6 +368,69 @@ def check_formal_goal_affordance_support() -> None:
     ]["candidates"][0]["qualified_name"].endswith(
         ".tail_diff_int_of_den_dvd"
     )
+    application = semantic_slice["operator_synthesis"][
+        "formal_goal_support"
+    ]["application"]
+    assert application["application_status"] == (
+        "blocked_by_unmatched_proposition_obligations"
+    )
+    assert [
+        row["name"]
+        for row in application["obligations"]
+        if row["status"] == "unmatched_proposition_obligation"
+    ] == ["hdvd"]
+    plan = query_corpus.formal_proof_plan_packet(query, 20, 4)
+    assert plan["terminal_candidate"]["name"] == (
+        "tail_diff_int_of_den_dvd"
+    )
+    assert plan["plan_status"] == (
+        "blocked_by_unmatched_proposition_obligations"
+    )
+    assert {
+        row["name"]
+        for row in plan["exact_dependency_spine"]["steps"]
+    } >= {
+        "two_pow_mul_totient_series_eq",
+        "summable_totient_div_two_pow",
+    }
+    curvature_plan = query_corpus.formal_proof_plan_packet(
+        "I need to prove Irrational (∑' n : ℕ, "
+        "(Nat.totient n : ℝ) / 2 ^ n) from a SharpCurvatureSupply",
+        30,
+        4,
+    )
+    assert curvature_plan["terminal_candidate"]["name"] == (
+        "irrational_totientSeries_of_sharpCurvatureSupply"
+    )
+    assert curvature_plan["plan_status"] == (
+        "all_proposition_obligations_have_context_matches"
+    )
+    assert curvature_plan["application"][
+        "unmatched_proposition_count"
+    ] == 0
+    assert {
+        row["name"]
+        for row in curvature_plan["exact_dependency_spine"]["steps"]
+    } >= {
+        "curvature_notMem_int_of_sharpCurvatureCert",
+        "periodLcm_pos",
+        "rational_totient_series_forces_lcm_cone_flatness",
+    }
+    negation_affordance = query_corpus.lean_dependency_adjacency()[
+        "formal_type_affordances"
+    ][
+        "Erdos249257.ActualForeignResidueProjection."
+        "scaleFullTarget_miss_of_abs_sub_le_of_forall_int"
+    ]
+    assert negation_affordance["conclusion_head"] == "Not"
+    assert negation_affordance["forall_binder_count"] == 4
+    assert len(negation_affordance["binders"]) == 4
+    assert [row["name"] for row in negation_affordance["binders"]] == [
+        "H",
+        "D",
+        "hcontrol",
+        "hseparation",
+    ]
 
 
 def check_missing_registered_artifact_is_typed_not_fatal() -> None:

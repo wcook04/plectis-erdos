@@ -232,15 +232,29 @@ def audit_packet() -> dict[str, Any]:
         affordance_symbols = affordance_packet.get(
             "symbol_table", []
         )
+        affordance_binder_names = affordance_packet.get(
+            "binder_name_table", []
+        )
         affordance_rows = affordance_packet.get("rows", [])
         if (
             affordance_symbols != sorted(set(affordance_symbols))
+            or affordance_binder_names
+            != sorted(set(affordance_binder_names))
             or affordance_packet.get("row_layout")
             != [
                 "node_id",
                 "forall_binder_count",
                 "conclusion_head_symbol_id",
                 "conclusion_symbol_ids",
+                "binder_rows",
+            ]
+            or affordance_packet.get("binder_row_layout")
+            != [
+                "binder_name_id",
+                "binder_info_code",
+                "is_proposition",
+                "type_head_symbol_id",
+                "type_symbol_ids",
             ]
         ):
             error(
@@ -251,7 +265,7 @@ def audit_packet() -> dict[str, Any]:
         for row in affordance_rows:
             if (
                 not isinstance(row, list)
-                or len(row) != 4
+                or len(row) != 5
                 or row[0] not in node_ids
                 or not isinstance(row[1], int)
                 or row[1] < 0
@@ -264,6 +278,26 @@ def audit_packet() -> dict[str, Any]:
                     or not 0 <= symbol_id < len(affordance_symbols)
                     for symbol_id in row[3]
                 )
+                or not isinstance(row[4], list)
+                or row[1] != len(row[4])
+                or any(
+                    not isinstance(binder, list)
+                    or len(binder) != 5
+                    or not isinstance(binder[0], int)
+                    or not 0 <= binder[0] < len(affordance_binder_names)
+                    or binder[1] not in (0, 1, 2, 3)
+                    or not isinstance(binder[2], bool)
+                    or not isinstance(binder[3], int)
+                    or not 0 <= binder[3] < len(affordance_symbols)
+                    or not isinstance(binder[4], list)
+                    or binder[4] != sorted(set(binder[4]))
+                    or any(
+                        not isinstance(symbol_id, int)
+                        or not 0 <= symbol_id < len(affordance_symbols)
+                        for symbol_id in binder[4]
+                    )
+                    for binder in row[4]
+                )
             ):
                 error(
                     "lean_formal_affordance_row",
@@ -271,6 +305,20 @@ def audit_packet() -> dict[str, Any]:
                     repr(row),
                 )
                 break
+        affordance_binder_count = sum(
+            len(row[4])
+            for row in affordance_rows
+            if isinstance(row, list) and len(row) == 5
+        )
+        affordance_proposition_binder_count = sum(
+            binder[2]
+            for row in affordance_rows
+            if isinstance(row, list) and len(row) == 5
+            for binder in row[4]
+            if isinstance(binder, list)
+            and len(binder) == 5
+            and isinstance(binder[2], bool)
+        )
         coverage = dependency_index["coverage"]
         if coverage["source_resolved_node_count"] != dependency_node_count:
             error(
@@ -305,6 +353,14 @@ def audit_packet() -> dict[str, Any]:
             != len(affordance_rows)
             or coverage["formal_type_affordance_symbol_count"]
             != len(affordance_symbols)
+            or coverage["formal_type_affordance_binder_name_count"]
+            != len(affordance_binder_names)
+            or coverage["formal_type_affordance_binder_count"]
+            != affordance_binder_count
+            or coverage[
+                "formal_type_affordance_proposition_binder_count"
+            ]
+            != affordance_proposition_binder_count
         ):
             error(
                 "lean_formal_affordance_coverage",
@@ -405,6 +461,47 @@ def audit_packet() -> dict[str, Any]:
                 "lean_formal_goal_support_anchor",
                 "integer tail difference from rationality",
                 "formal affordance did not rank exact theorem first",
+            )
+        goal_plan = query_corpus.formal_proof_plan_packet(
+            "I need to prove totientTail (N + h) - totientTail N is an "
+            "integer from a rational totient series; which theorem applies?",
+            20,
+            4,
+        )
+        if (
+            goal_plan.get("plan_status")
+            != "blocked_by_unmatched_proposition_obligations"
+            or {
+                row["name"]
+                for row in goal_plan.get("application", {}).get(
+                    "obligations", []
+                )
+                if row["status"]
+                == "unmatched_proposition_obligation"
+            }
+            != {"hdvd"}
+        ):
+            error(
+                "lean_formal_proof_plan_obligation_anchor",
+                "integer tail difference from rationality",
+                "proof plan did not isolate denominator divisibility",
+            )
+        negation_affordance = query_corpus.lean_dependency_adjacency()[
+            "formal_type_affordances"
+        ].get(
+            "Erdos249257.ActualForeignResidueProjection."
+            "scaleFullTarget_miss_of_abs_sub_le_of_forall_int",
+            {},
+        )
+        if (
+            negation_affordance.get("conclusion_head") != "Not"
+            or negation_affordance.get("forall_binder_count") != 4
+            or len(negation_affordance.get("binders", [])) != 4
+        ):
+            error(
+                "lean_formal_telescope_negation_anchor",
+                "scaleFullTarget_miss_of_abs_sub_le_of_forall_int",
+                "negated conclusion was misclassified as an outer binder",
             )
 
     packet_specs: tuple[
@@ -580,6 +677,16 @@ def audit_packet() -> dict[str, Any]:
                 if dependency_index is not None
                 else 0
             ),
+            "formal_type_affordance_binder_count": (
+                affordance_binder_count
+                if dependency_index is not None
+                else 0
+            ),
+            "formal_type_affordance_proposition_binder_count": (
+                affordance_proposition_binder_count
+                if dependency_index is not None
+                else 0
+            ),
             "theorem_like_docstring_count": theorem_like_with_docstrings,
             "theorem_like_docstring_ratio": (
                 theorem_like_with_docstrings / len(theorem_like)
@@ -625,6 +732,8 @@ def render_card(packet: dict[str, Any]) -> str:
         f"| goal_affordances="
         f"{coverage['source_resolved_formal_type_affordance_count']}/"
         f"{coverage['formal_type_affordance_symbol_count']} "
+        f"| goal_binders={coverage['formal_type_affordance_binder_count']}/"
+        f"{coverage['formal_type_affordance_proposition_binder_count']} "
         f"| module_synopses={coverage['authored_module_synopsis_ratio']:.3f} "
         f"| docstrings={coverage['theorem_like_docstring_ratio']:.3f} "
         f"| max_packet={boundedness['maximum_typed_packet_bytes']}B "

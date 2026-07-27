@@ -13,6 +13,7 @@ python3 scripts/query_corpus.py --vocabulary
 python3 scripts/query_corpus.py --search "<text>"
 python3 scripts/query_corpus.py --ask "<question>"
 python3 scripts/query_corpus.py --goal-support "<Lean or mathematical goal>"
+python3 scripts/query_corpus.py --proof-plan "<Lean or mathematical goal>"
 ```
 
 `--search` returns ranked handles. `--ask` expands at most four handles into an
@@ -148,9 +149,13 @@ atlas source coordinates. Corpus membership follows Lean's owning module
 rather than declaration namespace, so declarations intentionally living in
 top-level mathematical namespaces remain covered. The builder first runs the
 incremental `lake build Erdos249257` target so the loaded `.olean` environment
-is current with the source fingerprint. Version 2 of the index also stores the
-compact elaborated conclusion affordances used by `--goal-support`; this adds
-no Lean invocation to an individual query.
+is current with the source fingerprint. Version 3 of the index also stores
+compact elaborated conclusion affordances and the unreduced outer binder
+telescope used by `--goal-support` and `--proof-plan`. Each binder records its
+name, explicitness, type head and constants, and whether Lean classifies its
+type as a proposition. The unreduced boundary matters: a conclusion such as
+`¬ P` remains a goal with head `Not`; it is not misreported as another theorem
+argument. These tables add no Lean invocation to an individual query.
 
 A goal can therefore be routed without knowing its theorem name:
 
@@ -164,6 +169,23 @@ For the pinned corpus this ranks
 `tail_diff_int_of_den_dvd` first, with conclusion head `Membership.mem` and
 the direct-integer-membership shape. That is an exact navigation benchmark,
 not a hard-coded theorem alias or a proof that the caller has its hypotheses.
+
+The proof-plan form makes that boundary operational:
+
+```sh
+python3 scripts/query_corpus.py --proof-plan \
+  "I need to prove totientTail (N + h) - totientTail N is an integer \
+from a rational totient series; which theorem applies?" --depth 4
+```
+
+It separates term parameters from proposition obligations, marks the
+rational-series equality as a context match, and reports `hdvd` as unmatched.
+The plan is therefore blocked rather than pretending the selected theorem is
+immediately applicable. For the SharpCurvatureSupply irrationality goal, the
+sole proposition binder is context-matched and the exact proof-term spine
+includes the curvature non-integrality, period-lcm positivity, and lcm-cone
+flatness theorems. Context matching remains lexical navigation; only the
+dogfood Lean elaboration validates an application.
 
 Two explicit drilldowns expose longer formal structure:
 
@@ -229,7 +251,7 @@ claim, open proposition, and reading route. It also expands every typed claim,
 open, and route packet, checks all vocabulary hints, and asks one natural
 language question for each mathematical programme.
 
-The proof dogfood runs six tasks. The first recovers two conditional #249
+The proof dogfood runs seven tasks. The first recovers two conditional #249
 proof sockets and asks Lean to check a new disjunctive irrationality
 corollary. The second recovers two sufficient #257 half-membership consumers
 and checks their disjunctive composition. The third begins from ordinary
@@ -245,7 +267,11 @@ endpoint question above, reconstructs the cone-flatness bridge, and uses the
 reconstruction inside the curvature proof. The sixth starts only from the
 ordinary-language integer-valued totient-tail goal above, selects the exact
 formally shape-compatible theorem, and asks Lean to check its application in a
-fresh scratch theorem. The corollaries prove none of
+fresh scratch theorem while requiring the plan to expose `hdvd` as missing
+from the stated context. The seventh starts from the SharpCurvatureSupply
+goal, requires a context-covered application telescope and the exact
+three-theorem top-level dependency spine, then validates the reconstructed
+curvature chain in the same scratch module. The corollaries prove none of
 their antecedents. In particular, they make no progress on the unbounded #249
 producer or the open #257 half-membership question. These tests measure
 premise recovery and formal composition, not solutions of the Erdős problems.
