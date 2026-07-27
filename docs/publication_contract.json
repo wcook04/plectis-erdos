@@ -79,14 +79,14 @@
     },
     {
       "id": "erdos_257_note",
-      "title": "Settled Supports and Exact Finite Periods",
+      "title": "Forced Structure in Mersenne Subseries",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_content_digest": "sha256:1b9567fbcbbf73619dea1dbdaa9b60d80616aa4be119d7e995eafa55dca00ccf",
+      "source_content_digest": "sha256:4e9cc262754411e0b073c98eb060967d41652069f56dd93fce3c2f800037e6c3",
       "rendered_path": "erdos-257-mersenne-support-subseries.pdf",
-      "rendered_content_digest": "sha256:74f88ed270b4b7b688c99d3a1d3427db0332c613151af7c91c9d0a440a0b33ca",
+      "rendered_content_digest": "sha256:1fa2a1a49bd842c12f77f07476e9089c89a3c90084dd282971bc31f571992034",
       "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
-      "claim_scope": "Standalone exposition of Erdős Problem 257 led by exact finite-period noncollapse for every finite nonempty support, seven infinite-support families checked here in every integer base, a periodic signed-weight dichotomy, achievement-set geometry, and the exact half-value equivalence. Its squarefree-support result excludes only two divisibility-first certificate engines; the squarefree value and universal irrationality remain open. Tao–Teräväinen's prime and prime-power cases are cited external results.",
+      "claim_scope": "Standalone exposition of Erdős Problem 257 led by exact finite-period noncollapse, necessary structure for any rational-valued infinite support, and achievement-set geometry. Duverney–Tachiya's full-text Corollary 1.2 and Example 1.1 settle the squarefree support at base 2, but not at bases b≥3; the manuscript separately proves that two divisibility-first certificate engines miss this settled value and that irrationality is invariant under finite support changes via checked prefix/tail lemmas. Tao–Teräväinen prove the prime-support case at base 2; broader base and prime-power extensions are remarks rather than proved theorems there. Universal Erdős #257 and the half-value test remain open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [

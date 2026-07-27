@@ -511,6 +511,18 @@ it is stated in should be varied by a transformation the problem is known to
 be invariant under.  Here the transformation is adding one rational number,
 and it removes the obstruction entirely.
 
+The same invariance holds for every finite change, not only this one.  If
+$A\mathbin{\triangle}B$ is finite, choose $M$ above all of its elements.
+The two support series then have the same tail beyond $M$, while each omitted
+prefix is rational.  The two directions of this argument are exactly the
+checked prefix lemmas
+\mword{Erdos249257/CertificateKernel.lean}{9139}{irrational_erdosSupportSeries_of_tail}{Lean}
+and
+\mword{Erdos249257/CertificateKernel.lean}{9148}{irrational_erdosSupportSeries_tail_of_irrational}{Lean}.
+Thus $X_A(b)$ is irrational if and only if $X_B(b)$ is irrational for every
+integer $b\ge2$.  The present shift is the smallest instance of a general
+checked finite-change principle.
+
 This is the second time in this note that a boundary turns out to belong to
 the method rather than to the mathematics.  In Remark~\ref{res:signed} the
 terminating alternative of the signed periodic dichotomy is empty, and a
@@ -655,8 +667,9 @@ This manuscript is authored exposition, not proof authority.  The linked Lean
 snapshot is authoritative only for its exact propositions; kernel checking
 establishes that a proposition was proved, not that it is interesting, novel,
 or sufficient.  The proof of Corollary~\ref{res:blind}, the derivation of
-Corollary~\ref{res:sfsettled} from~\cite{duverneytachiya}, the shift identity
-and Chinese-remainder remark in Section~\ref{sec:squarefree}, and the
+Corollary~\ref{res:sfsettled} from~\cite{duverneytachiya}, the finite-change
+argument (from the two checked prefix lemmas), the shift identity and
+Chinese-remainder remark in Section~\ref{sec:squarefree}, and the
 hereditary-coding sentence in Section~\ref{sec:geometry} are arguments in the
 prose rather than checked statements; each is drawn from the checked lemmas
 cited beside it or from the cited literature.  Results attributed to Duverney
