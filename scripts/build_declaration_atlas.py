@@ -25,7 +25,7 @@ DECL_RE = re.compile(
     r"^\s*(?:@\[[^\]\n]*\]\s*)*"
     r"(?:(?:noncomputable|private|protected|scoped|local|partial|unsafe)\s+)*"
     r"(theorem|lemma|def|abbrev|instance|structure|class|inductive|opaque)\s+"
-    r"([A-Za-z0-9_'.]+)\b"
+    r"([A-Za-z0-9_'.?]*[A-Za-z0-9_'?])(?=$|[\s({:\[])"
 )
 IMPORT_RE = re.compile(r"^import (Erdos249257(?:\.[A-Za-z0-9_]+)+)\s*$", re.M)
 

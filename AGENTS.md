@@ -81,8 +81,9 @@ handle:
   transparent query expansions, and typed route hints;
 - `--ask "<question>"` to compile ordinary mathematical language into a
   bounded witness graph while keeping kernel, claim-status, authored-digestion,
-  and navigation provenance separate; the contract and evaluation levels are
-  documented in `docs/SEMANTIC_COMPILER.md`;
+  and navigation provenance separate; support and trace cells use the
+  source-joined elaborated dependency index when it is fresh, and the contract
+  and evaluation levels are documented in `docs/SEMANTIC_COMPILER.md`;
 - `--claim <id>`, `--open <remaining_open.id>`, or `--route <id>` for the
   mathematical story and exact frontier;
 - programme routes such as `erdos249_diagonal_arithmetic`,
@@ -150,6 +151,7 @@ python3 scripts/test_license_map_contract.py
 python3 scripts/test_methodology_contract.py
 python3 scripts/build_module_graph.py --check
 python3 scripts/build_module_synopsis_index.py --check
+python3 scripts/build_lean_dependency_index.py --check
 python3 scripts/refresh_source_coordinates.py --check
 python3 scripts/build_corpus_descriptor.py --check
 python3 scripts/build_publication_entry_packet.py --check

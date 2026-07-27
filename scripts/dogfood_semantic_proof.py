@@ -41,6 +41,14 @@ DIRECT_CURVATURE_QUERY = (
 DIRECT_CURVATURE_REQUIRED_DECLARATIONS = {
     "curvature_notMem_int_of_sharpCurvatureCert",
 }
+FORMAL_TRACE_QUERY = (
+    "trace why sharp curvature supply proves irrationality of the totient "
+    "series"
+)
+FORMAL_TRACE_REQUIRED_DEPENDENCIES = {
+    "curvature_notMem_int_of_sharpCurvatureCert",
+    "rational_totient_series_forces_lcm_cone_flatness",
+}
 SCRATCH_THEOREM = """\
 import Erdos249257.CurvatureCarry
 import Erdos249257.ExponentOnlyTransport
@@ -48,6 +56,7 @@ import Erdos249257.TerminalOnlyScaledVanishing
 import Erdos249257.HalfCylinderLastProducerContradiction
 
 open scoped BigOperators
+open Erdos249257.TotientTailPeriodKiller
 
 /- A query-derived composition of two independent conditional proof sockets.
    This does not assert either open supply. -/
@@ -91,6 +100,41 @@ theorem semanticCompiler_directCurvatureConsumer {H L : ℕ} (hH : 1 ≤ H)
   exact
     Erdos249257.TotientTailPeriodKiller.curvature_notMem_int_of_sharpCurvatureCert
       hH hcert
+
+/- A dependency-index reconstruction of the curvature supply proof socket.
+   The proof deliberately uses the two exact theorem dependencies recovered
+   from the elaborated body instead of invoking the packaged consumer. -/
+theorem semanticCompiler_reconstructedCurvatureChain
+    (hsupply : SharpCurvatureSupply) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by
+  by_contra hrat
+  obtain ⟨t₁, hflat⟩ :=
+    rational_totient_series_forces_lcm_cone_flatness hrat
+  obtain ⟨t, ht, hcert⟩ := hsupply (max t₁ 1)
+  have ht₁ : t₁ ≤ t := (le_max_left _ _).trans ht
+  have htpos : 1 ≤ t := (le_max_right _ _).trans ht
+  obtain ⟨a, ha⟩ := hflat t ht₁ 1 1 (by omega)
+  obtain ⟨b, hb⟩ := hflat t ht₁ 2 2 (by omega)
+  have hHpos : 1 ≤ periodLcm t := periodLcm_pos t
+  apply curvature_notMem_int_of_sharpCurvatureCert hHpos hcert
+  refine ⟨b - 2 * a, ?_⟩
+  unfold curvatureTail
+  push_cast
+  have htwo : periodLcm t + periodLcm t = 2 * periodLcm t := by omega
+  have hfour : 2 * periodLcm t + 2 * periodLcm t = 4 * periodLcm t := by
+    omega
+  norm_num at ha hb
+  rw [htwo] at ha
+  rw [hfour] at hb
+  have ha' :
+      (a : ℝ) =
+        totientTail (2 * periodLcm t) - totientTail (periodLcm t) := by
+    exact ha
+  have hb' :
+      (b : ℝ) =
+        totientTail (4 * periodLcm t) - totientTail (2 * periodLcm t) := by
+    exact hb
+  linarith [ha', hb']
 """
 
 
@@ -169,6 +213,62 @@ def dogfood_packet(query: str) -> dict[str, Any]:
         all_recovered.update(recovered)
         all_ranked.update(ranked_declarations)
         missing_any.update(missing)
+    trace_ranked = query_corpus.search_packet(
+        FORMAL_TRACE_QUERY, query_corpus.MAX_SEMANTIC_CELLS
+    )
+    trace_ranked_declarations = {
+        query_corpus.semantic_result_handle(result)
+        for result in trace_ranked["results"]
+        if result["kind"] == "declaration"
+    }
+    trace_slice = query_corpus.semantic_slice_packet(FORMAL_TRACE_QUERY, 4)
+    formal_dependencies = {
+        dependency["name"]
+        for neighbourhood in trace_slice["operator_synthesis"].get(
+            "formal_dependency_neighbourhoods", []
+        )
+        for dependency in neighbourhood["direct_dependencies"]
+    }
+    missing_trace = sorted(
+        FORMAL_TRACE_REQUIRED_DEPENDENCIES - formal_dependencies
+    )
+    tasks.append(
+        {
+            "id": "formal_dependency_reconstruction",
+            "query": FORMAL_TRACE_QUERY,
+            "semantic_slice_id": trace_slice.get("slice_id"),
+            "semantic_operator": trace_slice[
+                "query_interpretation"
+            ]["operator"]["id"],
+            "required_declarations": sorted(
+                FORMAL_TRACE_REQUIRED_DEPENDENCIES
+            ),
+            "retrieved_declarations": sorted(formal_dependencies),
+            "synthesized_consumer_signatures": {},
+            "ranked_search_recovered_required_declarations": sorted(
+                FORMAL_TRACE_REQUIRED_DEPENDENCIES
+                & trace_ranked_declarations
+            ),
+            "missing_required_declarations": missing_trace,
+            "semantic_expansion_gain": (
+                len(
+                    FORMAL_TRACE_REQUIRED_DEPENDENCIES
+                    & formal_dependencies
+                )
+                - len(
+                    FORMAL_TRACE_REQUIRED_DEPENDENCIES
+                    & trace_ranked_declarations
+                )
+            ),
+            "dependency_authority": (
+                "elaborated_Lean_type_and_value_constant_references"
+            ),
+        }
+    )
+    all_required.update(FORMAL_TRACE_REQUIRED_DEPENDENCIES)
+    all_recovered.update(formal_dependencies)
+    all_ranked.update(trace_ranked_declarations)
+    missing_any.update(missing_trace)
     if missing_any:
         return {
             "kind": "semantic_proof_dogfood",

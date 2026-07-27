@@ -7,14 +7,14 @@
   "source_fingerprint": "sha256:66e0fea63f59ff0df5b69bb6fd7aa692394af6ea2e811dcf12d56e8fb48b7a39",
   "summary": {
     "module_count": 635,
-    "declaration_count": 12578,
+    "declaration_count": 12577,
     "theorem_like_count": 11539,
     "generated_certificate_declaration_count": 2925,
     "principal_claim_link_count": 290,
     "kind_counts": {
       "abbrev": 9,
       "def": 992,
-      "inductive": 4,
+      "inductive": 3,
       "instance": 5,
       "lemma": 354,
       "structure": 29,
@@ -6421,10 +6421,9 @@
         "Erdos249257.HalfCutLocator",
         "Erdos249257.RationalSupportCarrySkeleton"
       ],
-      "declaration_count": 175,
+      "declaration_count": 174,
       "kind_counts": {
         "def": 37,
-        "inductive": 1,
         "structure": 3,
         "theorem": 134
       }
@@ -94028,16 +94027,6 @@
       "docstring": "Cancellation-aware form matching an actual taken block. The raw source margin is equivalent to Mersenne-floor avoidance in the reduced post-take state; the common reduction factor disappears from both sides."
     },
     {
-      "id": "Erdos249257/DyadicPrefixCompression.lean:620:invariant",
-      "name": "invariant",
-      "kind": "inductive",
-      "module": "Erdos249257/DyadicPrefixCompression.lean",
-      "line": 620,
-      "signature": "inductive invariant. The state `7/(2*17)` takes rank `3`, producing `15/(2*119)`, but rank `4` is an unsafe skip with exact excess `1`. -/ theorem safeBracket_and_numeratorMonotone_not_inductive_fixture : BlockDyadicSafeAt 7 17 2 ∧ BlockTakeAt 7 17 3 ∧ rawTakenResidualNumerator 7 17 3 = 15 ∧ rawTakenResidualDenominator 17 3 = 119 ∧ 7 ≤ 15 ∧ ¬ BlockTakeAt 15 119 4 ∧ ¬ BlockDyadicSafeAt 15 119 4 ∧ nextDyadicExcessIntNumerator 15 3 119 = 1 ∧ BlockTakeAt 15 119 5",
-      "generated_certificate": false,
-      "claim_ids": []
-    },
-    {
       "id": "Erdos249257/DyadicPrefixCompression.lean:622:safeBracket_and_numeratorMonotone_not_inductive_fixture",
       "name": "safeBracket_and_numeratorMonotone_not_inductive_fixture",
       "kind": "theorem",
@@ -96905,8 +96894,8 @@
       "docstring": "**`L₂(φ)`-rung, Lambert form**: `∑_d φ(d)·(rᵈ/(1-rᵈ))² = ∑_n (P(n) - n)·rⁿ`, where `P(n) = ∑_{e∣n} φ(e)·(n/e)` is Pillai's gcd-sum function (`φ * Id`); the subtracted `n` is `φ * ζ = Id`."
     },
     {
-      "id": "Erdos249257/GcdMomentCalculus.lean:192:half_pow_term",
-      "name": "half_pow_term",
+      "id": "Erdos249257/GcdMomentCalculus.lean:192:half_pow_term'",
+      "name": "half_pow_term'",
       "kind": "lemma",
       "module": "Erdos249257/GcdMomentCalculus.lean",
       "line": 192,
@@ -96916,8 +96905,8 @@
       "docstring": "**`L₂(φ)`-rung, Lambert form**: `∑_d φ(d)·(rᵈ/(1-rᵈ))² = ∑_n (P(n) - n)·rⁿ`, where `P(n) = ∑_{e∣n} φ(e)·(n/e)` is Pillai's gcd-sum function (`φ * Id`); the subtracted `n` is `φ * ζ = Id`. -/ theorem tsum_totient_lambert_sq_pure {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) : ∑' d : ℕ+, (Nat.totient (d : ℕ) : ℝ) * (r ^ (d : ℕ) / (1 - r ^ (d : ℕ))) ^ 2 = ∑' n : ℕ+, ((∑ e ∈ (n : ℕ).divisors, (Nat.totient e : ℝ) * (((n : ℕ) / e : ℕ) : ℝ)) - ((n : ℕ) : ℝ)) * r ^ (n : ℕ) := by have h := tsum_lambert_linear_weight_sq_pure (fun e => (Nat.totient e : ℝ)) (fun d _ => by show |(Nat.totient d : ℝ)| ≤ (d : ℝ) rw [abs_of_nonneg (by positivity)] exact_mod_cast Nat.totient_le d) hr0 hr1 rw [h] refine tsum_congr fun n => ?_ congr 1 have hsplit : ∀ e ∈ (n : ℕ).divisors, (Nat.totient e : ℝ) * ((((n : ℕ) / e : ℕ) : ℝ) - 1) = (Nat.totient e : ℝ) * (((n : ℕ) / e : ℕ) : ℝ) - (Nat.totient e : ℝ) := by intro e _ ring rw [Finset.sum_congr rfl hsplit, Finset.sum_sub_distrib] congr 1 exact_mod_cast congrArg (fun k : ℕ => ("
     },
     {
-      "id": "Erdos249257/GcdMomentCalculus.lean:206:half_pow_sq_term",
-      "name": "half_pow_sq_term",
+      "id": "Erdos249257/GcdMomentCalculus.lean:206:half_pow_sq_term'",
+      "name": "half_pow_sq_term'",
       "kind": "lemma",
       "module": "Erdos249257/GcdMomentCalculus.lean",
       "line": 206,
@@ -96952,8 +96941,8 @@
       "docstring": "**The first gcd moment**: `∑_{d≥1} φ(d)/(2ᵈ-1)² = ∑_{n≥1} (P(n) - n)·(1/2)ⁿ` with `P` Pillai's gcd-sum function. Probability reading: `E[gcd(X,Y)] = ∑_d φ(d)·P(d ∣ gcd)` — the expected gcd of two independent fair-coin waiting times, as a totient-weighted squared-Mersenne series."
     },
     {
-      "id": "Erdos249257/GcdMomentCalculus.lean:252:tsum_pow_succ_geometric",
-      "name": "tsum_pow_succ_geometric",
+      "id": "Erdos249257/GcdMomentCalculus.lean:252:tsum_pow_succ_geometric'",
+      "name": "tsum_pow_succ_geometric'",
       "kind": "lemma",
       "module": "Erdos249257/GcdMomentCalculus.lean",
       "line": 252,
@@ -121208,8 +121197,8 @@
       "claim_ids": []
     },
     {
-      "id": "Erdos249257/HalfCylinderSkippedRankLimit.lean:21:integerGreedyRemainder_lt_of_get",
-      "name": "integerGreedyRemainder_lt_of_get",
+      "id": "Erdos249257/HalfCylinderSkippedRankLimit.lean:21:integerGreedyRemainder_lt_of_get?_eq_false",
+      "name": "integerGreedyRemainder_lt_of_get?_eq_false",
       "kind": "theorem",
       "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
       "line": 21,
@@ -122480,8 +122469,8 @@
       "docstring": "**The wave-24 cone collapse.** #249 follows from certified kills anywhere on the two-multiplier lcm cone: `(h, N) = (m·H_t, q·H_t)` at arbitrarily large `t`. Subsumes the wave-23 diagonal (`q = m = 1`), every q-ray step (`m = 1`), every q-gap (free `m`), and — via `periodLcm_dvd_periodLcm` — every cross-scale pair, since `H_u` is itself a multiple of `H_t` for `u ≥ t`. Rationality flattens the cone; one certified annihilator at arbitrarily large scale is a contradiction."
     },
     {
-      "id": "Erdos249257/LcmConeFlatness.lean:133:summable_linear_half",
-      "name": "summable_linear_half",
+      "id": "Erdos249257/LcmConeFlatness.lean:133:summable_linear_half'",
+      "name": "summable_linear_half'",
       "kind": "lemma",
       "module": "Erdos249257/LcmConeFlatness.lean",
       "line": 133,
@@ -122491,8 +122480,8 @@
       "docstring": "**The wave-24 cone collapse.** #249 follows from certified kills anywhere on the two-multiplier lcm cone: `(h, N) = (m·H_t, q·H_t)` at arbitrarily large `t`. Subsumes the wave-23 diagonal (`q = m = 1`), every q-ray step (`m = 1`), every q-gap (free `m`), and — via `periodLcm_dvd_periodLcm` — every cross-scale pair, since `H_u` is itself a multiple of `H_t` for `u ≥ t`. Rationality flattens the cone; one certified annihilator at arbitrarily large scale is a contradiction. -/ theorem irrational_totient_series_of_lcm_cone_certificate_supply (hsupply : ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ q m L : ℕ, 0 < q ∧ certifiedKill (m * periodLcm t) (q * periodLcm t) L) : Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by by_contra hrat obtain ⟨t₁, hflat⟩ := rational_totient_series_forces_lcm_cone_flatness hrat obtain ⟨t, ht, q, m, L, hq, hkill⟩ := hsupply t₁ exact tail_diff_notMem_int_of_certifiedKill hkill (hflat t ht q m hq) /-! ## Certificate completeness: kills exist exactly at non-integers"
     },
     {
-      "id": "Erdos249257/LcmConeFlatness.lean:138:summable_const_add_mul_half",
-      "name": "summable_const_add_mul_half",
+      "id": "Erdos249257/LcmConeFlatness.lean:138:summable_const_add_mul_half'",
+      "name": "summable_const_add_mul_half'",
       "kind": "lemma",
       "module": "Erdos249257/LcmConeFlatness.lean",
       "line": 138,
