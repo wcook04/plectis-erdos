@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #251 advances independently of the corpus
 % default, while the #249/#257 notes retain their own reviewed snapshot.
-\renewcommand{\commit}{ffbb10e2840a0cd5593023a95d3984f75f6834ee}
-\renewcommand{\commitshort}{ffbb10e2840a}
+\renewcommand{\commit}{27ec97c4c2e2f3d793837545ef57e100fc6bad33}
+\renewcommand{\commitshort}{27ec97c4c2e2}
 \hypersetup{
   pdftitle={The prime-gap equivalence and the integral-shift frontier for Erdős Problem 251},
   pdfsubject={Erdős Problem Notes: Problem 251},
@@ -57,9 +57,14 @@ odd reduced denominator $d$ has an integral shift of length $\ph(d)$.
 Problem~\#251 remains open.  Its shortest surviving consumer is now exact:
 rationality would force some fixed $h\ge1$ for which the actual tail shifts
 $T_{N+h}-T_N$ are integers at every sufficiently large $N$.  Thus it is enough
-to prove cofinal non-integrality for every fixed $h$.  The free-carry identity
-explains why generic periodicity or automaticity arguments cannot do this;
-the missing theorem must use prime-specific long-block structure.
+to prove cofinal non-integrality for every fixed $h$.  We also prove a local
+certificate: two adjacent shifts lying strictly between $-1$ and $1$ cannot
+both be integral when the corresponding prime gaps differ.  Consequently it
+is enough to produce such adjacent small-mismatch pairs cofinally.  The actual
+prime gaps are Lean-checked to be unbounded, hence not eventually periodic,
+but that fact alone supplies no tail smallness.  The free-carry identity
+explains why generic periodicity or automaticity arguments cannot finish the
+proof; the missing theorem must control the full prime-gap tails.
 \end{abstract}
 
 \section{The problem}\label{sec:problem}
@@ -86,7 +91,7 @@ and at every finite horizon it is exactly twice this one,
  =2\sum_{i=0}^{n-1}\frac{p_i}{2^{\,i+1}} ,
 \]
 the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{58}{prime0DisplayedPartialSumQ_eq_two_mul}{factor-of-two
+\lword{Erdos251/PrimeGapDyadicTail.lean}{105}{prime0DisplayedPartialSumQ_eq_two_mul}{factor-of-two
 normalisation}.  A factor of two does not change rationality, so no result
 below depends on the choice; the identity is stated so that the indexing cannot
 drift silently.
@@ -135,9 +140,11 @@ Totient shift from an odd denominator & Proved here & Theorem~\ref{res:totient}.
 Propagation of an integral shift & Proved here & Theorem~\ref{res:propagate}. \\
 Eventual integral shift for every rational orbit & Lean-checked & Theorem~\ref{res:collapse}. \\
 Cofinal shift escape implies irrationality & Lean-checked abstractly & Theorem~\ref{res:consumer}. \\
+Actual prime gaps are unbounded and not eventually periodic & Lean-checked & Proposition~\ref{res:gap-nonperiodic}. \\
+Adjacent small-mismatch pair excludes simultaneous integrality & Lean-checked & Theorem~\ref{res:smallpair}. \\
 Concrete prime-gap tail recurrence & Paper-proved from PNT & Not yet instantiated as a Lean infinite sum. \\
 Rationality forces periodic gaps & False & Section~\ref{sec:carry}; the carry is free. \\
-Logarithmic-block anti-concentration & Proposed sufficient theorem & Equation~\eqref{eq:finite-consumer}; not proved. \\
+Cofinal adjacent small-mismatch supply & Proposed sufficient theorem & Problem~\ref{prob:smallpair}; not proved. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -163,9 +170,9 @@ Write $\Npos$-indexed sums with the convention
  \Delta(P,n)=\sum_{i=0}^{n-1}\frac{P(i+1)-P(i)}{2^{\,i+1}} ,
 \]
 for a rational sequence $P$.  These are the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{48}{dyadicPartialSumQ}{dyadic partial
+\lword{Erdos251/PrimeGapDyadicTail.lean}{95}{dyadicPartialSumQ}{dyadic partial
 sum} and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{68}{dyadicDifferencePartialSumQ}{dyadic
+\lword{Erdos251/PrimeGapDyadicTail.lean}{115}{dyadicDifferencePartialSumQ}{dyadic
 difference sum}.
 
 \begin{proposition}[finite summation by parts]\label{res:abel}
@@ -183,7 +190,7 @@ term from $P(n)/2^{\,n+1}$ to $P(n+1)/2^{\,n+2}$, and the two adjustments agree.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{85}{dyadicPartialSumQ_eq_start_add_differences}{summation-by-parts
+\lword{Erdos251/PrimeGapDyadicTail.lean}{132}{dyadicPartialSumQ_eq_start_add_differences}{summation-by-parts
 identity}.  Nothing is assumed about $P$: no positivity, no monotonicity, and no
 convergence.
 
@@ -199,15 +206,15 @@ For every $n\ge0$,
 \end{theorem}
 
 \noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{114}{prime0_dyadic_summation_by_parts}{prime-gap
+\lword{Erdos251/PrimeGapDyadicTail.lean}{161}{prime0_dyadic_summation_by_parts}{prime-gap
 summation by parts}, using the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{108}{primeGapPartialSumQ}{gap partial
+\lword{Erdos251/PrimeGapDyadicTail.lean}{155}{primeGapPartialSumQ}{gap partial
 sum} and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{103}{primeGap0_cast}{gap cast
+\lword{Erdos251/PrimeGapDyadicTail.lean}{150}{primeGap0_cast}{gap cast
 identity}; the latter records that the natural-number difference
 $p_{n+1}-p_n$ agrees with the difference taken in $\Q$, which needs
 $p_n\le p_{n+1}$, the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{99}{prime0_mono_step}{monotonicity
+\lword{Erdos251/PrimeGapDyadicTail.lean}{146}{prime0_mono_step}{monotonicity
 step}.  The leading $2$ is the first prime, not a normalising constant.
 
 \subsection{The infinite equivalence}\label{sec:infinite}
@@ -218,7 +225,7 @@ Put
  v_n=\frac{g_n}{2^{\,n+1}}.
 \]
 The termwise identity $v_n=2u_{n+1}-u_n$ is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{144}{primeGapDyadicTerm_eq}{dyadic
+\lword{Erdos251/PrimeGapDyadicTail.lean}{191}{primeGapDyadicTerm_eq}{dyadic
 discrete derivative}.  It makes the infinite passage a summable coboundary,
 rather than an informal deletion of the endpoint.
 
@@ -240,9 +247,9 @@ $v_n=2u_{n+1}-u_n$ and use $u_0=1$:
 \end{proof}
 
 \noindent The summability transfer is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{155}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}{gap-series
+\lword{Erdos251/PrimeGapDyadicTail.lean}{202}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}{gap-series
 summability theorem}, and the displayed identity is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{167}{tsum_primeDyadicTerm_eq_two_add_primeGap}{infinite
+\lword{Erdos251/PrimeGapDyadicTail.lean}{214}{tsum_primeDyadicTerm_eq_two_add_primeGap}{infinite
 prime-gap identity}.
 
 \begin{corollary}[exact irrationality reformulation]\label{res:irr-equivalence}
@@ -257,11 +264,11 @@ $4+2\sum_{n\ge0}v_n$ and has the same irrationality status.
 \end{corollary}
 
 \noindent These are the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{192}{irrational_tsum_primeDyadicTerm_iff_primeGap}{normalised
+\lword{Erdos251/PrimeGapDyadicTail.lean}{239}{irrational_tsum_primeDyadicTerm_iff_primeGap}{normalised
 irrationality equivalence}, the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{201}{tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap}{displayed-series
+\lword{Erdos251/PrimeGapDyadicTail.lean}{248}{tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap}{displayed-series
 identity}, and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{216}{irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap}{displayed-series
+\lword{Erdos251/PrimeGapDyadicTail.lean}{263}{irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap}{displayed-series
 irrationality equivalence}.
 
 \paragraph{Where the hypothesis comes from.}
@@ -291,10 +298,10 @@ call a rational number \emph{integral} when it is the image of an integer.
 \end{definition}
 
 \noindent These are the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{231}{DyadicTailRecurrence}{tail
+\lword{Erdos251/PrimeGapDyadicTail.lean}{278}{DyadicTailRecurrence}{tail
 recurrence}, the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{235}{tailShift}{shift}, and
-\lword{Erdos251/PrimeGapDyadicTail.lean}{251}{RatIntegral}{integrality}.
+\lword{Erdos251/PrimeGapDyadicTail.lean}{282}{tailShift}{shift}, and
+\lword{Erdos251/PrimeGapDyadicTail.lean}{298}{RatIntegral}{integrality}.
 The digits are arbitrary integers.  In the intended instance they are the prime
 gaps and $T_N$ is the scaled tail of $\Pi$ after level $N$, but that
 instantiation needs a summability argument and is not made here; every
@@ -303,7 +310,7 @@ statement below is a theorem about Definition~\ref{def:rec}.
 Iterating the recurrence accumulates an explicit integer.  Define
 $B_{0,N}=0$ and $B_{h+1,N}=2B_{h,N}+g_{N+h+1}$, so that
 $B_{h,N}=g_{N+1}2^{\,h-1}+\cdots+g_{N+h}$: the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{257}{dyadicTailBlock}{tail block}.
+\lword{Erdos251/PrimeGapDyadicTail.lean}{304}{dyadicTailBlock}{tail block}.
 
 \begin{theorem}[block identity]\label{res:block}
 For every $N$ and $h$,
@@ -321,12 +328,12 @@ the first minus $T_N$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{263}{tail_iterate_eq_pow_mul_sub_block}{iterated
+\lword{Erdos251/PrimeGapDyadicTail.lean}{310}{tail_iterate_eq_pow_mul_sub_block}{iterated
 block identity} and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{277}{tailShift_eq_scaled_sub_block}{scaled
+\lword{Erdos251/PrimeGapDyadicTail.lean}{324}{tailShift_eq_scaled_sub_block}{scaled
 shift identity}.  The shift also obeys the recurrence in its own right,
 $\sigma_h(N+1)=2\sigma_h(N)-(g_{N+h+1}-g_{N+1})$, the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{239}{tailShift_succ}{shift step
+\lword{Erdos251/PrimeGapDyadicTail.lean}{286}{tailShift_succ}{shift step
 identity}.
 
 Since $B_{h,N}$ is an integer, Theorem~\ref{res:block} converts a question about
@@ -343,9 +350,9 @@ subtracting an integer does not change integrality.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{333}{tailShift_integral_iff_scaledTail}{integral-shift
+\lword{Erdos251/PrimeGapDyadicTail.lean}{380}{tailShift_integral_iff_scaledTail}{integral-shift
 criterion}, on the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{287}{ratIntegral_sub_int_iff}{integer-shift
+\lword{Erdos251/PrimeGapDyadicTail.lean}{334}{ratIntegral_sub_int_iff}{integer-shift
 invariance}.  This is an equivalence, not a one-way reduction: the block
 carries no information about integrality, so the two conditions are the same
 condition.
@@ -363,9 +370,9 @@ integer, and Theorem~\ref{res:shiftiff} transfers this to the shift.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{344}{tailShift_integral_totient_of_odd_den}{totient
+\lword{Erdos251/PrimeGapDyadicTail.lean}{391}{tailShift_integral_totient_of_odd_den}{totient
 shift} and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{305}{ratIntegral_totientMultiplier_of_odd_den}{Euler
+\lword{Erdos251/PrimeGapDyadicTail.lean}{352}{ratIntegral_totientMultiplier_of_odd_den}{Euler
 multiplier}.  The hypothesis is a genuine restriction: the argument uses
 coprimality of $2$ with the denominator, and the even part of a denominator is
 exactly what the doubling in the recurrence acts on.
@@ -381,9 +388,9 @@ an integer combination of an integer and two digits.  Induct on $k$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{355}{tailShift_integral_succ}{one-step
+\lword{Erdos251/PrimeGapDyadicTail.lean}{402}{tailShift_integral_succ}{one-step
 propagation} and the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{367}{tailShift_integral_add}{propagation
+\lword{Erdos251/PrimeGapDyadicTail.lean}{414}{tailShift_integral_add}{propagation
 to every later index}.
 
 \begin{theorem}[denominator collapse]\label{res:collapse}
@@ -404,11 +411,11 @@ Theorem~\ref{res:propagate} keeps that shift integral forever.
 \end{proof}
 
 \noindent The factorisation and cancellation are the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{379}{exists_twoPow_mul_odd_den}{odd-denominator
+\lword{Erdos251/PrimeGapDyadicTail.lean}{426}{exists_twoPow_mul_odd_den}{odd-denominator
 doubling lemma}; the orbit form is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{414}{exists_odd_den_state}{odd-denominator
+\lword{Erdos251/PrimeGapDyadicTail.lean}{461}{exists_odd_den_state}{odd-denominator
 state theorem}; and the quantified conclusion is the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{430}{exists_eventually_integral_tailShift}{eventual
+\lword{Erdos251/PrimeGapDyadicTail.lean}{477}{exists_eventually_integral_tailShift}{eventual
 integral-shift theorem}.
 
 The useful contrapositive is stated for a real recurrence.  Call its shifts
@@ -428,15 +435,15 @@ contradicting cofinal non-integrality.
 \end{proof}
 
 \noindent Lean checks the real recurrence and shift interfaces as
-\lword{Erdos251/PrimeGapDyadicTail.lean}{445}{RealDyadicTailRecurrence}{real
+\lword{Erdos251/PrimeGapDyadicTail.lean}{492}{RealDyadicTailRecurrence}{real
 dyadic recurrence} and
-\lword{Erdos251/PrimeGapDyadicTail.lean}{449}{realTailShift}{real shift}, the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{496}{realTailShift}{real shift}, the
 rational-orbit transport as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{468}{realTail_eq_ratCast_rationalDyadicOrbit}{rational-orbit
+\lword{Erdos251/PrimeGapDyadicTail.lean}{515}{realTail_eq_ratCast_rationalDyadicOrbit}{rational-orbit
 cast theorem}, cofinal non-integrality as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{481}{CofinalNonintegralTailShifts}{cofinal
+\lword{Erdos251/PrimeGapDyadicTail.lean}{528}{CofinalNonintegralTailShifts}{cofinal
 shift-escape predicate}, and Theorem~\ref{res:consumer} as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{490}{irrational_initial_of_cofinalNonintegralTailShifts}{irrationality
+\lword{Erdos251/PrimeGapDyadicTail.lean}{537}{irrational_initial_of_cofinalNonintegralTailShifts}{irrationality
 consumer}.
 
 \paragraph{The actual prime-gap orbit.}
@@ -458,6 +465,66 @@ proved here from the classical prime number theorem; it is not yet a Lean
 declaration.  The abstract consumer, including its real/rational transport, is
 kernel-checked.
 
+\subsection{A local prime-gap certificate}\label{sec:local-certificate}
+
+The denominator-collapse theorem asks for cofinal non-integrality, but a
+specialist need not estimate the distance of a shift from every integer.
+Inside the open unit interval integrality collapses to equality with zero, and
+the one-step shift recurrence then exposes a single gap comparison.
+
+\begin{theorem}[adjacent small-shift obstruction]\label{res:smallpair}
+Let $T:\N\to\Q$ satisfy the dyadic tail recurrence with integer digits $g$.
+Fix $h$ and $N$.  If
+\[
+ -1<\sigma_h(N)<1,\qquad -1<\sigma_h(N+1)<1,
+ \qquad g_{N+h+1}\ne g_{N+1},
+\]
+then $\sigma_h(N)$ and $\sigma_h(N+1)$ cannot both be integral.
+Consequently, if such a pair occurs beyond every threshold, the $h$-shift is
+not eventually integral.
+\end{theorem}
+
+\begin{proof}
+An integral rational strictly between $-1$ and $1$ is zero.  If both shifts
+were integral, both would therefore vanish.  Substitution in
+\[
+ \sigma_h(N+1)
+ =2\sigma_h(N)-\bigl(g_{N+h+1}-g_{N+1}\bigr)
+\]
+would give $g_{N+h+1}=g_{N+1}$, a contradiction.  The cofinal statement
+chooses one such adjacent pair after the alleged onset of integrality.
+\end{proof}
+
+\noindent The finite contradiction is the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{626}{tailShift_not_both_integral_of_small_pair_of_digit_ne}{adjacent
+small-shift obstruction}; its quantified consumer is the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{653}{not_eventuallyIntegralTailShift_of_cofinal_small_mismatch}{cofinal
+small-mismatch theorem}; and the actual-prime-gap specialisation is the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{723}{primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}{prime-gap
+consumer}.  This is a local consumer, not a producer: no occurrence theorem
+for the two tail inequalities is claimed.
+
+\begin{proposition}[prime gaps do not become periodic]\label{res:gap-nonperiodic}
+For every positive $h$, the actual consecutive-prime-gap sequence is not
+eventually periodic with period $h$.
+\end{proposition}
+
+\begin{proof}
+The factorial construction gives prime-free intervals of arbitrary length,
+so the consecutive-prime gaps are unbounded.  An eventually periodic
+natural-valued sequence has finite range after its preperiod, while its finite
+initial segment is bounded as well; hence it is bounded, a contradiction.
+\end{proof}
+
+\noindent Lean checks the factorial argument as
+\lword{Erdos251/PrimeGapDyadicTail.lean}{51}{exists_primeGap0_gt}{unboundedness
+of the actual gaps} and the conclusion as
+\lword{Erdos251/PrimeGapDyadicTail.lean}{670}{primeGap0_not_eventually_periodic}{non-eventual
+periodicity}.  Combining nonperiodicity with eventual strict smallness of one
+positive shift would also exclude eventual integrality, but eventual
+smallness at every sufficiently large index is stronger than the cofinal
+adjacent-pair supply in Theorem~\ref{res:smallpair} and is not asserted here.
+
 \section{The carry is free}\label{sec:carry}
 
 A natural hope is that rationality of a dyadic series forces its digit stream
@@ -467,7 +534,7 @@ one-line identity.
 
 Let $K:\N\to\Q$ be arbitrary and put
 $\kappa_n=2K_n-K_{n+1}$: the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{510}{carryCoeff}{carry coefficient}.
+\lword{Erdos251/PrimeGapDyadicTail.lean}{738}{carryCoeff}{carry coefficient}.
 
 \begin{proposition}[exact telescoping]\label{res:telescope}
 For every $n\ge0$,
@@ -482,12 +549,12 @@ $(2K_n-K_{n+1})/2^{\,n+1}=K_n/2^{\,n}-K_{n+1}/2^{\,n+1}$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{519}{carryPartialSum_eq}{carry
+\lword{Erdos251/PrimeGapDyadicTail.lean}{747}{carryPartialSum_eq}{carry
 telescoping identity}, on the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{514}{carryPartialSum}{carry partial
+\lword{Erdos251/PrimeGapDyadicTail.lean}{742}{carryPartialSum}{carry partial
 sum}.  When the carries are natural numbers and $K_{n+1}\le2K_n$, the
 coefficients are natural numbers and the two readings agree, the
-\lword{Erdos251/PrimeGapDyadicTail.lean}{535}{natCarryCoeff_cast}{natural-carry
+\lword{Erdos251/PrimeGapDyadicTail.lean}{763}{natCarryCoeff_cast}{natural-carry
 cast}.
 
 \paragraph{The reading, and its exact status.}
@@ -511,7 +578,7 @@ is closed, not a classification of which coefficient streams occur.
 Problem~\#251 is open.  The exact surviving theorem is no longer an informal
 request for ``randomness of the gaps''.
 
-\begin{problem}[prime-gap shift escape]\label{prob:escape}
+\begin{problem}[minimal prime-gap shift escape]\label{prob:escape}
 For every $h\ge1$ and every $N_0$, prove that some $N\ge N_0$ satisfies
 \[
  \sum_{j\ge1}
@@ -527,7 +594,28 @@ $\Pi$.  The quantifier over $h$ is essential: a hypothetical rational value
 chooses a shift length from the odd part of its reduced denominator, and that
 length is not known in advance.
 
-\paragraph{A finite-block weakening.}
+\begin{problem}[cofinal adjacent small mismatch]\label{prob:smallpair}
+For every fixed $h\ge1$ and every $N_0$, prove that some $N\ge N_0$ satisfies
+\[
+\begin{split}
+\left|\sum_{j\ge1}
+ \frac{g_{N+h+j}-g_{N+j}}{2^j}\right|&<1,\\
+\left|\sum_{j\ge1}
+ \frac{g_{N+h+1+j}-g_{N+1+j}}{2^j}\right|&<1,\\
+g_{N+h+1}&\ne g_{N+1}.
+\end{split}
+\tag{7.2}\label{eq:smallpair-wanted}
+\]
+\end{problem}
+
+The two sums are adjacent $h$-shifts.  Theorem~\ref{res:smallpair} turns each
+instance of~\eqref{eq:smallpair-wanted} into a finite contradiction to
+simultaneous integrality.  A cofinal supply therefore proves
+Problem~\ref{prob:escape}.  This formulation deliberately asks only for
+sporadic adjacent pairs; the stronger assertion that a fixed shift is
+eventually always smaller than one is unnecessary.
+
+\paragraph{A finite-block route to the inequalities.}
 For $L\ge1$ put
 \[
  S_{h,N,L}=\sum_{j=1}^{L}
@@ -542,13 +630,17 @@ Hence it is enough, cofinally in $N$ for every fixed $h$, to find an $L=L(N,h)$
 such that
 \[
  \operatorname{dist}(S_{h,N,L},\Z)>R_{h,N,L}(M).
-\tag{7.2}\label{eq:finite-consumer}
+\tag{7.3}\label{eq:finite-consumer}
 \]
 Taking the classical bound $M(n)\ll n\log n$, a choice
 $L=A\log_2(N+h+2)$ with any fixed $A>1$ makes the right side a negative power
 of $N$ up to logarithms.  Thus~\eqref{eq:finite-consumer} asks for a finite
 dyadic anti-concentration estimate on a logarithmic-length block, not control
 of an infinite tail and not eventual periodicity of the full gap word.
+For Problem~\ref{prob:smallpair}, the same truncation must certify two adjacent
+full-tail values inside the open unit interval, together with the displayed
+gap mismatch.  A finite prefix is useful only when its omitted tail is
+rigorously dominated.
 
 \paragraph{Candidate mechanisms and disconfirmers.}
 A useful prime-distribution input would control the weighted difference word
@@ -558,32 +650,42 @@ A useful prime-distribution input would control the weighted difference word
 modulo powers of two, or would force two completions of a long admissible prime
 pattern whose values of $S_{h,N,L}$ occupy separated dyadic cells.  Isolated
 small gaps, isolated large gaps, average gap estimates, and the occurrence of
-any one fixed finite pattern do not suffice.  Nor does parity: after the first
-gap all $g_n$ are even.  Section~\ref{sec:carry} is the decisive disconfirmer
-for any argument that tries to deduce automaticity or periodicity from the
-rational fractional orbit alone.
+any one fixed finite pattern do not suffice: both inequalities in
+\eqref{eq:smallpair-wanted} contain the complete infinite continuation.  Nor
+does parity: after the first gap all $g_n$ are even.  Unboundedness and
+non-eventual-periodicity of the actual gaps, though now checked, do not imply
+the required small-tail recurrence.  Section~\ref{sec:carry} is the decisive
+disconfirmer for any argument that tries to deduce automaticity or periodicity
+from the rational fractional orbit alone.
 
 \paragraph{Specialist handoff.}
-\emph{Wanted:} prove~\eqref{eq:wanted}, or the finite sufficient condition
-\eqref{eq:finite-consumer}, uniformly for each fixed $h\ge1$.
+\emph{Wanted:} for each fixed $h\ge1$, prove the cofinal adjacent
+small-mismatch statement~\eqref{eq:smallpair-wanted}; independently, formalise
+the actual prime-gap infinite tail and its recurrence from summability.
 \emph{Already checked:} the infinite prime/gap equivalence, removal of every
 power-of-two denominator, eventual propagation of one integral shift, and the
-real-orbit cofinal-escape consumer.
-\emph{Most useful answer:} a theorem on logarithmic blocks of consecutive
-prime gaps which supplies an explicit lower bound for
-$\operatorname{dist}(S_{h,N,L},\Z)$ exceeding the prime-number-theorem tail
-bound, with its dependence on $h$ stated.
-\emph{If answered:} Theorem~\ref{res:consumer} gives irrationality of the gap
-series, Corollary~\ref{res:irr-equivalence} transfers it to $\Pi$, and
-Problem~\#251 is solved.
+real-orbit cofinal-escape consumer; actual prime gaps are unbounded and not
+eventually periodic; and one adjacent small-mismatch pair excludes
+simultaneous integrality exactly.
+\emph{Most useful answer:} a theorem supplying cofinally many pairs in
+\eqref{eq:smallpair-wanted}, with complete hypotheses and an effective or
+qualitative tail bound.  A periodicity theorem, an automaticity theorem, or
+the occurrence of one isolated finite gap word is not enough.
+\emph{If answered:} the checked local consumer contradicts the eventual
+integral shift forced by rationality; Theorem~\ref{res:consumer} then gives
+irrationality of the gap series, Corollary~\ref{res:irr-equivalence} transfers
+it to $\Pi$, and Problem~\#251 is solved once the actual-tail recurrence bridge
+is formalised.
 
 \paragraph{Remaining formal boundary.}
-The abstract irrationality consumer is Lean-checked.  The local source still
-takes summability of the prime series as a hypothesis and does not define
+The abstract irrationality consumer and the prime-specific local
+small-mismatch consumer are Lean-checked.  The local source still takes
+summability of the prime series as a hypothesis and does not define
 $\mathcal T_N$ by an infinite sum; the prime-number-theorem comparison and the
 identification of that concrete tail with the checked real recurrence are
-paper proofs.  None of the proposed prime-distribution mechanisms above is
-claimed or formalised.
+paper proofs.  No theorem supplies the cofinal pairs in
+\eqref{eq:smallpair-wanted}, and none of the proposed prime-distribution
+mechanisms above is claimed or formalised.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}
@@ -615,11 +717,12 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 
 Each linked phrase opens its Lean declaration at the pinned source
 revision~\commitshort.  All declarations of this note live in one module.  The
-prime-specific material is confined to Section~\ref{sec:parts}; everything in
-Sections~\ref{sec:tail} and~\ref{sec:carry} is stated for arbitrary integer
-digits and arbitrary rational or real orbits.  The concrete prime-gap tail and
-its convergence are paper-level consequences of the prime number theorem; they
-are not definitions in the pinned Lean module.
+summation-by-parts declarations are prime-specific; most of
+Section~\ref{sec:tail} is stated for arbitrary integer digits and arbitrary
+rational or real orbits, while Section~\ref{sec:local-certificate} records the
+actual-gap specialisation.  The concrete prime-gap tail and its convergence
+are paper-level consequences of the prime number theorem; they are not
+definitions in the pinned Lean module.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -627,60 +730,65 @@ are not definitions in the pinned Lean module.
 
 \begin{tabular}{@{}ll@{}}
 informal statement & linked Lean source\\
-zero-based primes & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{32}{prime0}\\
-zero-based gaps & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{36}{primeGap0}\\
-first gap value & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{39}{primeGap0_zero}\\
-second gap value & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{43}{primeGap0_one}\\
-dyadic partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{48}{dyadicPartialSumQ}\\
-displayed normalisation & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{53}{prime0DisplayedPartialSumQ}\\
-factor-of-two identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{58}{prime0DisplayedPartialSumQ_eq_two_mul}\\
-dyadic difference sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{68}{dyadicDifferencePartialSumQ}\\
-partial-sum step & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{71}{dyadicPartialSumQ_succ}\\
-difference-sum step & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{76}{dyadicDifferencePartialSumQ_succ}\\
-summation by parts & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{85}{dyadicPartialSumQ_eq_start_add_differences}\\
-monotonicity step & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{99}{prime0_mono_step}\\
-gap cast identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{103}{primeGap0_cast}\\
-gap partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{108}{primeGapPartialSumQ}\\
-prime-gap summation by parts & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{114}{prime0_dyadic_summation_by_parts}\\
-prime dyadic term & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{125}{primeDyadicTerm}\\
-displayed prime dyadic term & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{130}{primeDisplayedDyadicTerm}\\
-prime-gap dyadic term & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{134}{primeGapDyadicTerm}\\
-infinite factor-of-two identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{138}{primeDisplayedDyadicTerm_eq_two_mul}\\
-gap discrete derivative & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{144}{primeGapDyadicTerm_eq}\\
-gap summability transfer & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{155}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}\\
-infinite gap identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{167}{tsum_primeDyadicTerm_eq_two_add_primeGap}\\
-normalised irrationality equivalence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{192}{irrational_tsum_primeDyadicTerm_iff_primeGap}\\
-displayed infinite identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{201}{tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap}\\
-displayed irrationality equivalence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{216}{irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap}\\
-tail recurrence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{231}{DyadicTailRecurrence}\\
-shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{235}{tailShift}\\
-shift step identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{239}{tailShift_succ}\\
-integrality & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{251}{RatIntegral}\\
-tail block & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{257}{dyadicTailBlock}\\
-iterated block identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{263}{tail_iterate_eq_pow_mul_sub_block}\\
-scaled shift identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{277}{tailShift_eq_scaled_sub_block}\\
-integer-shift invariance & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{287}{ratIntegral_sub_int_iff}\\
-Euler multiplier & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{305}{ratIntegral_totientMultiplier_of_odd_den}\\
-integral-shift criterion & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{333}{tailShift_integral_iff_scaledTail}\\
-totient shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{344}{tailShift_integral_totient_of_odd_den}\\
-one-step propagation & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{355}{tailShift_integral_succ}\\
-propagation to every later index & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{367}{tailShift_integral_add}\\
-odd denominator after doubling & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{379}{exists_twoPow_mul_odd_den}\\
-odd-denominator orbit state & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{414}{exists_odd_den_state}\\
-eventual integral shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{430}{exists_eventually_integral_tailShift}\\
-real tail recurrence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{445}{RealDyadicTailRecurrence}\\
-real tail shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{449}{realTailShift}\\
-real integrality & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{453}{RealIntegral}\\
-rational orbit & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{457}{rationalDyadicOrbit}\\
-rational-orbit recurrence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{461}{rationalDyadicOrbit_recurrence}\\
-real/rational orbit transport & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{468}{realTail_eq_ratCast_rationalDyadicOrbit}\\
-cofinal non-integrality & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{481}{CofinalNonintegralTailShifts}\\
-cofinal-escape irrationality consumer & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{490}{irrational_initial_of_cofinalNonintegralTailShifts}\\
-carry coefficient & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{510}{carryCoeff}\\
-carry partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{514}{carryPartialSum}\\
-carry telescoping identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{519}{carryPartialSum_eq}\\
-natural carry coefficient & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{532}{natCarryCoeff}\\
-natural-carry cast & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{535}{natCarryCoeff_cast}\\
+zero-based primes & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{34}{prime0}\\
+zero-based gaps & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{38}{primeGap0}\\
+first gap value & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{41}{primeGap0_zero}\\
+second gap value & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{45}{primeGap0_one}\\
+unbounded actual prime gaps & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{51}{exists_primeGap0_gt}\\
+dyadic partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{95}{dyadicPartialSumQ}\\
+displayed normalisation & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{100}{prime0DisplayedPartialSumQ}\\
+factor-of-two identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{105}{prime0DisplayedPartialSumQ_eq_two_mul}\\
+dyadic difference sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{115}{dyadicDifferencePartialSumQ}\\
+partial-sum step & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{118}{dyadicPartialSumQ_succ}\\
+difference-sum step & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{123}{dyadicDifferencePartialSumQ_succ}\\
+summation by parts & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{132}{dyadicPartialSumQ_eq_start_add_differences}\\
+monotonicity step & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{146}{prime0_mono_step}\\
+gap cast identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{150}{primeGap0_cast}\\
+gap partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{155}{primeGapPartialSumQ}\\
+prime-gap summation by parts & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{161}{prime0_dyadic_summation_by_parts}\\
+prime dyadic term & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{172}{primeDyadicTerm}\\
+displayed prime dyadic term & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{177}{primeDisplayedDyadicTerm}\\
+prime-gap dyadic term & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{181}{primeGapDyadicTerm}\\
+infinite factor-of-two identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{185}{primeDisplayedDyadicTerm_eq_two_mul}\\
+gap discrete derivative & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{191}{primeGapDyadicTerm_eq}\\
+gap summability transfer & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{202}{summable_primeGapDyadicTerm_of_summable_primeDyadicTerm}\\
+infinite gap identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{214}{tsum_primeDyadicTerm_eq_two_add_primeGap}\\
+normalised irrationality equivalence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{239}{irrational_tsum_primeDyadicTerm_iff_primeGap}\\
+displayed infinite identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{248}{tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap}\\
+displayed irrationality equivalence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{263}{irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap}\\
+tail recurrence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{278}{DyadicTailRecurrence}\\
+shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{282}{tailShift}\\
+shift step identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{286}{tailShift_succ}\\
+integrality & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{298}{RatIntegral}\\
+tail block & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{304}{dyadicTailBlock}\\
+iterated block identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{310}{tail_iterate_eq_pow_mul_sub_block}\\
+scaled shift identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{324}{tailShift_eq_scaled_sub_block}\\
+integer-shift invariance & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{334}{ratIntegral_sub_int_iff}\\
+Euler multiplier & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{352}{ratIntegral_totientMultiplier_of_odd_den}\\
+integral-shift criterion & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{380}{tailShift_integral_iff_scaledTail}\\
+totient shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{391}{tailShift_integral_totient_of_odd_den}\\
+one-step propagation & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{402}{tailShift_integral_succ}\\
+propagation to every later index & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{414}{tailShift_integral_add}\\
+odd denominator after doubling & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{426}{exists_twoPow_mul_odd_den}\\
+odd-denominator orbit state & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{461}{exists_odd_den_state}\\
+eventual integral shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{477}{exists_eventually_integral_tailShift}\\
+real tail recurrence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{492}{RealDyadicTailRecurrence}\\
+real tail shift & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{496}{realTailShift}\\
+real integrality & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{500}{RealIntegral}\\
+rational orbit & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{504}{rationalDyadicOrbit}\\
+rational-orbit recurrence & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{508}{rationalDyadicOrbit_recurrence}\\
+real/rational orbit transport & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{515}{realTail_eq_ratCast_rationalDyadicOrbit}\\
+cofinal non-integrality & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{528}{CofinalNonintegralTailShifts}\\
+cofinal-escape irrationality consumer & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{537}{irrational_initial_of_cofinalNonintegralTailShifts}\\
+adjacent small-shift obstruction & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{626}{tailShift_not_both_integral_of_small_pair_of_digit_ne}\\
+cofinal local consumer & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{653}{not_eventuallyIntegralTailShift_of_cofinal_small_mismatch}\\
+prime gaps not eventually periodic & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{670}{primeGap0_not_eventually_periodic}\\
+actual-prime-gap local consumer & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{723}{primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch}\\
+carry coefficient & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{738}{carryCoeff}\\
+carry partial sum & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{742}{carryPartialSum}\\
+carry telescoping identity & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{747}{carryPartialSum_eq}\\
+natural carry coefficient & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{760}{natCarryCoeff}\\
+natural-carry cast & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{763}{natCarryCoeff_cast}\\
 \end{tabular}
 \fi
 
