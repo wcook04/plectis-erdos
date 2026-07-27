@@ -121,6 +121,13 @@ handle:
   best goal-support candidate with its Lean-classified term/proposition
   telescope, a context-match or missing-obligation ledger, and a bounded exact
   proof-term dependency spine;
+- `python3 scripts/proof_state_compiler.py --pilot-controls` to cross the
+  static/runtime boundary: candidate applications are executed against actual
+  Lean examples, accepted transitions become AND/OR obligation hyperedges,
+  rejected applications retain typed failures, and closed runs carry replay
+  receipts.  Use `--request-file` or `--request-stdin` for another explicit
+  bounded goal; this runtime packet is documented in
+  `docs/PROOF_STATE_COMPILER.md` and remains distinct from claim status;
 - `--proof-cone <declaration> --depth <1..8>` for a bounded,
   theorem-prioritized cone of exact proof-term dependencies, or
   `--dependency-path <source> <target> --depth <1..8>` for the shortest exact
