@@ -1,4 +1,5 @@
 import Mathlib.Algebra.Polynomial.Eval.Defs
+import Mathlib.Data.Fintype.Pigeonhole
 import Mathlib.Data.ZMod.Basic
 import Mathlib.Tactic
 
@@ -102,6 +103,46 @@ def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
 /-- The top `2`-adic endpoint jet of depth `S`. -/
 def topJet2 (S W : ℕ) (P : Polynomial ℤ) : ZMod (2 ^ S) :=
   homEvalThreeTwo W P
+
+/-- The four simultaneous endpoint congruences for a coefficient pair:
+bottom and top jets in both channels. -/
+abbrev FourJetSignature (R S : ℕ) :=
+  (ZMod (3 ^ R) × ZMod (3 ^ R)) ×
+    (ZMod (2 ^ S) × ZMod (2 ^ S))
+
+/-- Four-jet signature of one integral coefficient pair. -/
+def fourJetSignature (R S W : ℕ) (U V : Polynomial ℤ) :
+    FourJetSignature R S :=
+  ((bottomJet3 R W U, bottomJet3 R W V),
+    (topJet2 S W U, topJet2 S W V))
+
+/-- Sum of the four-jet signatures selected by a binary coefficient vector. -/
+def selectedFourJetSum {n : ℕ} (R S W : ℕ)
+    (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
+    (ε : Fin n → Bool) : FourJetSignature R S :=
+  ∑ i, if ε i then
+    fourJetSignature R S W (forms i).1 (forms i).2
+  else 0
+
+/-- Once the binary selector space is larger than the four-jet target, two
+distinct subsets have the same simultaneous endpoint signature.  Subtracting
+their indicator vectors gives a nonzero coefficient vector in
+`{-1,0,1}` whose four endpoint jets cancel.  This theorem supplies kernel
+existence only; it does not prove that the resulting analytic remainder is
+nonzero or that its height beats the local gain. -/
+theorem exists_distinct_binary_selectors_same_fourJet
+    {n R S W : ℕ}
+    (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
+    (hcard : Fintype.card (FourJetSignature R S) < 2 ^ n) :
+    ∃ ε η : Fin n → Bool, ε ≠ η ∧
+      selectedFourJetSum R S W forms ε =
+        selectedFourJetSum R S W forms η := by
+  have hlt :
+      Fintype.card (FourJetSignature R S) <
+        Fintype.card (Fin n → Bool) := by
+    simpa using hcard
+  exact Fintype.exists_ne_map_eq_of_card_lt
+    (selectedFourJetSum R S W forms) hlt
 
 /-- Vanishing of the bottom jet is exactly divisibility of the homogeneous
 evaluation by the requested power of `3`. -/
