@@ -25,6 +25,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.sevenHalves_rational_margin
 #print axioms ErdosProblems.Erdos1049.rationalPadePSummandDenExpTwice_le
 #print axioms ErdosProblems.Erdos1049.rationalPadeQMaxDenExpTwice_le
+#print axioms ErdosProblems.Erdos1049.fourJetSignature_card
+#print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
 #print axioms ErdosProblems.Erdos251.prime0DisplayedPartialSumQ_eq_two_mul
