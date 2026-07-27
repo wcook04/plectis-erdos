@@ -124,10 +124,10 @@
           "module": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
           "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
           "present": true,
-          "line_count": 541,
-          "declaration_count": 52,
-          "theorem_count": 31,
-          "content_digest": "sha256:1fd915084c7de9318267a478d212c03878a217a90a533f66db16ae5cbed2d677"
+          "line_count": 769,
+          "declaration_count": 63,
+          "theorem_count": 42,
+          "content_digest": "sha256:fb60c4deefa75ea1f62c0c2eac47ed6a45d59624919676e63c8a30290cc2af67"
         }
       ],
       "note": {
@@ -144,12 +144,15 @@
         "For an abstract integer-digit dyadic tail recurrence: the exact block identity, and that a shift of fixed length is integral exactly when an explicit scaled state is.",
         "That one integral shift propagates to every later index.",
         "That repeated doubling removes the power-of-two denominator, so every rational-valued dyadic recurrence has one fixed positive shift integral at all sufficiently late indices.",
-        "For a real-valued dyadic recurrence, cofinal non-integrality of every fixed positive shift implies irrationality of the initial state."
+        "For a real-valued dyadic recurrence, cofinal non-integrality of every fixed positive shift implies irrationality of the initial state.",
+        "That the actual consecutive-prime-gap sequence is unbounded, by the factorial prime-free-interval construction, and therefore is not eventually periodic with any positive period.",
+        "For any integer-digit dyadic tail recurrence, two adjacent fixed-length shifts lying strictly between -1 and 1 cannot both be integral when the corresponding digits differ.",
+        "For the actual prime gaps, a cofinal supply of adjacent small-shift pairs with a mismatching gap excludes eventual integrality of that fixed shift."
       ],
       "what_is_not_checked": [
         "The target irrationality.",
         "Summability of the concrete prime series and the definition and recurrence of its concrete prime-gap tail as Lean infinite sums; the note supplies these at paper level from the prime number theorem.",
-        "Cofinal non-integrality of fixed shifts for the actual consecutive-prime-gap tail.",
+        "A theorem supplying cofinally many adjacent actual-prime-gap tail shifts in the open unit interval with the required gap mismatch.",
         "Any theorem forcing periodicity or automaticity of the prime gaps from rationality; the free-carry identity disconfirms that route."
       ],
       "open_obligations": [
@@ -158,8 +161,12 @@
           "statement": "For every fixed h >= 1 and every N0, find N >= N0 for which sum_{j>=1} (g_{N+h+j}-g_{N+j})/2^j is not an integer."
         },
         {
-          "id": "logarithmic_block_dyadic_anti_concentration",
-          "statement": "Prove a finite dyadic anti-concentration bound for logarithmic-length blocks of the gap-difference word that exceeds the explicit prime-number-theorem bound for the discarded tail, uniformly for each fixed h."
+          "id": "cofinal_adjacent_small_mismatch",
+          "statement": "For every fixed h >= 1 and every N0, find N >= N0 such that both adjacent full tail shifts have absolute value less than 1 and g_{N+h+1} != g_{N+1}. The checked local consumer then excludes eventual integrality of the h-shift."
+        },
+        {
+          "id": "actual_prime_gap_tail_formal_bridge",
+          "statement": "Formalise summability of the actual prime and prime-gap dyadic series and identify the concrete infinite prime-gap tail with the checked real/rational dyadic recurrence, so the local consumer reaches the target series without a paper-only analytic bridge."
         }
       ],
       "finite_search": null
