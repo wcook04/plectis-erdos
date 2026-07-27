@@ -124,6 +124,13 @@ def selectedFourJetSum {n : ℕ} (R S W : ℕ)
     fourJetSignature R S W (forms i).1 (forms i).2
   else 0
 
+/-- Exact size of the simultaneous four-jet target.  Each coefficient
+channel contributes one copy of the relevant endpoint modulus. -/
+theorem fourJetSignature_card (R S : ℕ) :
+    Fintype.card (FourJetSignature R S) =
+      (3 ^ R) ^ 2 * (2 ^ S) ^ 2 := by
+  simp [FourJetSignature, ZMod.card, pow_two]
+
 /-- Once the binary selector space is larger than the four-jet target, two
 distinct subsets have the same simultaneous endpoint signature.  Subtracting
 their indicator vectors gives a nonzero coefficient vector in
@@ -143,6 +150,39 @@ theorem exists_distinct_binary_selectors_same_fourJet
     simpa using hcard
   exact Fintype.exists_ne_map_eq_of_card_lt
     (selectedFourJetSum R S W forms) hlt
+
+/-- A concrete rank--depth threshold for four-jet cancellation.  At positive
+bottom depth, `3 ^ R < 2 ^ (2 * R)`, so `4 * R + 2 * S` available binary
+forms already outnumber the exact four-jet target.  No independence or
+nonvanishing conclusion is hidden here: the resulting selector difference is
+nonzero, but its polynomial pair or analytic remainder may still vanish. -/
+theorem exists_distinct_binary_selectors_same_fourJet_of_rank
+    {n R S W : ℕ}
+    (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
+    (hR : 0 < R) (hrank : 4 * R + 2 * S ≤ n) :
+    ∃ ε η : Fin n → Bool, ε ≠ η ∧
+      selectedFourJetSum R S W forms ε =
+        selectedFourJetSum R S W forms η := by
+  apply exists_distinct_binary_selectors_same_fourJet forms
+  rw [fourJetSignature_card]
+  have hthree : 3 ^ R < 4 ^ R :=
+    Nat.pow_lt_pow_left (by omega) hR.ne'
+  have hthree_sq : (3 ^ R) ^ 2 < (4 ^ R) ^ 2 :=
+    Nat.pow_lt_pow_left hthree (by norm_num)
+  have htarget :
+      (3 ^ R) ^ 2 * (2 ^ S) ^ 2 <
+        (4 ^ R) ^ 2 * (2 ^ S) ^ 2 :=
+    Nat.mul_lt_mul_of_pos_right hthree_sq (by positivity)
+  have hrewrite :
+      (4 ^ R) ^ 2 * (2 ^ S) ^ 2 =
+        2 ^ (4 * R + 2 * S) := by
+    rw [← pow_mul, ← pow_mul]
+    rw [show (4 : ℕ) = 2 ^ 2 by norm_num]
+    rw [← pow_mul, ← pow_add]
+    congr 1
+    omega
+  rw [hrewrite] at htarget
+  exact htarget.trans_le (Nat.pow_le_pow_right (by norm_num) hrank)
 
 /-- Vanishing of the bottom jet is exactly divisibility of the homogeneous
 evaluation by the requested power of `3`. -/
