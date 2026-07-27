@@ -766,4 +766,17 @@ theorem natCarryCoeff_cast
       carryCoeff (fun j => (K j : ℚ)) n := by
   simp [natCarryCoeff, carryCoeff, Nat.cast_sub hK]
 
+/-- A finite approximation certifies nonintegrality when its error is no
+larger than `R` and the approximation stays farther than `R` from every
+integer. -/
+theorem not_ratIntegral_of_approximation_gap
+    (full approx R : ℚ)
+    (herror : |full - approx| ≤ R)
+    (hgap : ∀ z : ℤ, R < |approx - z|) :
+    ¬ RatIntegral full := by
+  rintro ⟨z, rfl⟩
+  have hle : |approx - (z : ℚ)| ≤ R := by
+    simpa [abs_sub_comm] using herror
+  exact (not_lt_of_ge hle) (hgap z)
+
 end ErdosProblems.Erdos251
