@@ -19,23 +19,23 @@
   "version": "0.6.0",
   "tag": "v0.6.0",
   "lean_toolchain": "leanprover/lean4:v4.29.1",
-  "formal_source_ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
+  "formal_source_ref": "80917335665c15c23e4c757830046d0aa53fcba4",
   "formal_source_publication_state": "published_committed_checkpoint"
  },
  "scale": {
-  "module_count": 667,
-  "declaration_count": 13322,
-  "theorem_like_count": 12162,
+  "module_count": 668,
+  "declaration_count": 13327,
+  "theorem_like_count": 12168,
   "generated_certificate_declaration_count": 2925,
   "principal_claim_link_count": 299,
   "kind_counts": {
    "abbrev": 9,
    "def": 1111,
-   "inductive": 4,
+   "inductive": 3,
    "instance": 5,
    "lemma": 358,
    "structure": 31,
-   "theorem": 11804
+   "theorem": 11810
   }
  },
  "status_taxonomy": {
@@ -568,9 +568,9 @@
   "blocked_decisions": []
  },
  "source_revision": {
-  "formal_source_ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
+  "formal_source_ref": "80917335665c15c23e4c757830046d0aa53fcba4",
   "committed_navigation_snapshot": "2477b7f61da185fadbf0526ed24b5d5e4567c351",
-  "main_paper_source_digest": "sha256:2ac1d7773053f4b3864c336a30a44cceb76d75f4b5c28bcfd01de3e6cf68426f"
+  "main_paper_source_digest": "sha256:0847dfb3fc7848bd323df0dc556dfdd87b467e62dae6c191eb29beadbfe01cef"
  },
  "reading_routes": [
   {

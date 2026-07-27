@@ -33,7 +33,7 @@ def check_dictionary_budget_and_shape() -> None:
 
 
 def check_vocabulary_mismatch_queries() -> None:
-    assert len(query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS) == 12
+    assert len(query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS) == 13
     for comment_word in ("makes", "invariant"):
         try:
             query_corpus.declaration_packet(comment_word, 1)
@@ -350,8 +350,42 @@ def check_formal_goal_affordance_support() -> None:
     assert candidate["match_receipt"]["shape_matches"] == [
         "direct_integer_membership"
     ]
-    assert candidate["lean_application_candidate"].endswith(
-        ".tail_diff_int_of_den_dvd"
+    assert {
+        "rational",
+        "totient",
+    } <= set(
+        candidate["match_receipt"]["formal_context_symbol_matches"]
+    )
+    carry_query = (
+        "I need to prove totientTail (N + h) - totientTail N is an "
+        "integer from a bounded tail carry; which theorem applies?"
+    )
+    carry_candidate = query_corpus.formal_goal_support_packet(
+        carry_query, 3
+    )["candidates"][0]
+    assert carry_candidate["qualified_name"] == (
+        "Erdos249257.tail_diff_mem_int_of_boundedTailCarry"
+    )
+    assert {"bounded", "carry", "tail"} <= set(
+        carry_candidate["match_receipt"][
+            "formal_context_symbol_matches"
+        ]
+    )
+    context_free_query = (
+        "I need to prove totientTail (N + h) - totientTail N is an "
+        "integer; which theorem applies?"
+    )
+    context_free_candidate = query_corpus.formal_goal_support_packet(
+        context_free_query, 3
+    )["candidates"][0]
+    assert context_free_candidate["qualified_name"] == (
+        "Erdos249257.tail_diff_mem_int_of_boundedTailCarry"
+    )
+    assert context_free_candidate["match_receipt"][
+        "formal_context_symbol_matches"
+    ] == []
+    assert candidate["lean_application_candidate"] == (
+        f"apply {candidate['qualified_name']}"
     )
     semantic_slice = query_corpus.semantic_slice_packet(query, 20)
     assert [
@@ -359,15 +393,13 @@ def check_formal_goal_affordance_support() -> None:
         for cell in semantic_slice["semantic_cells"]
     ] == [
         (
-            "tail_diff_int_of_den_dvd",
+            candidate["name"],
             "formal_goal_shape_candidate",
         )
     ]
     assert semantic_slice["operator_synthesis"][
         "formal_goal_support"
-    ]["candidates"][0]["qualified_name"].endswith(
-        ".tail_diff_int_of_den_dvd"
-    )
+    ]["candidates"][0]["qualified_name"] == candidate["qualified_name"]
     application = semantic_slice["operator_synthesis"][
         "formal_goal_support"
     ]["application"]
@@ -501,11 +533,11 @@ def check_unavailable_paper_coordinate_is_typed_not_fatal() -> None:
     assert coordinate["label"] == "sec:missing"
     assert coordinate["availability"] == "authored_source_unavailable_in_worktree"
     assert coordinate["source_ref"] is None
-    packet = query_corpus.paper_label_packet("sec:curvature")
+    packet = query_corpus.paper_label_packet("res:carrycert")
     assert packet["kind"] == "paper_label"
-    assert packet["paper"]["label"] == "sec:curvature"
+    assert packet["paper"]["label"] == "res:carrycert"
     assert any(
-        claim["id"] == "transport_curvature_reductions"
+        claim["id"] == "boolean_mobius_carry"
         for claim in packet["attached_claims"]
     )
 

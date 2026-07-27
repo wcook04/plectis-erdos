@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:66e0fea63f59ff0df5b69bb6fd7aa692394af6ea2e811dcf12d56e8fb48b7a39",
-  "module_count": 635,
-  "synopsis_count": 628,
+  "source_fingerprint": "sha256:296e9ca2ee8a2f0c753af256e08603fe5f93c903ed100b189696291b3ba81e12",
+  "module_count": 668,
+  "synopsis_count": 661,
   "modules": [
     {
       "id": "Erdos249257",
@@ -39,6 +39,86 @@
       "id": "Erdos249257.BooleanMobiusCarry",
       "path": "Erdos249257/BooleanMobiusCarry.lean",
       "synopsis": "Boolean–Möbius carry coordinates for Erdős #257 For a support `A ⊆ ℕ`, the binary Lambert expansion has positive-index coefficient `f_A(n) = #{a ∈ A : a ∣ n}`. This file makes two exact coordinate changes kernel-visible. * Dirichlet/Möbius: `f_A = 1_A * ζ` and `μ * f_A = 1_A` on positive integers. Conversely, every arithmetic function whose Möbius transform is Boolean is the divisor-count coefficient of the support selected by that Boolean transform. * Binary carry: rationality of the support series is equivalent to a tempered integer orbit for `f_A`; for a displayed fraction `p/q`, the orbit has multiplier `q`, initial value `p`, and its carry quotient is exactly `f_A`. Exponent zero is analytically invisible because the existing support series uses real division-by-zero conventions at `2^0 - 1`. Accordingly, set-level recovery is stated either on positive indices or under `0 ∉ A`. Omitting that guard would be false. The worked support `{2,3}` gives `10/21` and the pure period-six orbit `10,20,19,17,13,26`. These coordinate theorems do **not** prove Erdős 257: they neither exclude infinite Boolean carry paths nor turn finite search into a completeness argument. Both Erdős #249 and #257 remain open. No novelty or priority claim is made for the new theorems in this file."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusCofinalExactRows",
+      "path": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+      "synopsis": "Cofinal exact Boolean--Möbius rows This module isolates a weaker consumer than a coherent global repair trajectory. It needs only exact finite quotient rows at arbitrarily large endpoints. The supports at different endpoints need not agree at any coordinate. For an exact row `D` at endpoint `n`, the quotient identity `localPrefixQuotient D n = 2^(n-1) - 1` and the fractional-part estimate from `BooleanMobiusGlobalRepair` give `|localMersennePrefixValue D - 1/2| <= (n+1)/2^n`. Thus any cofinal supply of exact rows produces achievement-set points tending to `1/2`. Closedness then gives exact membership. This separates the finite Boolean producer from every coherence or frozen-diagonal requirement."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusCriticalCapacityCofinal",
+      "path": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "synopsis": "Cofinal exact rows from critical skipped-core capacity This module packages the protected-core induction behind the sharp skipped-core capacity route. It proves that one explicit arithmetic supply condition is sufficient for cofinally many exact Boolean--Möbius rows. The supply condition itself remains an assumption here; consequently the final membership theorem in this file is a conditional reduction, not an unconditional proof of Erdős problem 257."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusCriticalCapacityGeometric",
+      "path": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+      "synopsis": "Geometric expansion of the skipped-core critical quotient This companion module exposes the integral Mersenne quotients in the critical capacity socket as finite shifted geometric sums."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusExactRowCrossing",
+      "path": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+      "synopsis": "Recycling an above-half support through its first crossing A finite positive-rank Boolean--Möbius support above one half has a first selected rank at which its real Mersenne value crosses one half. The strict prefix before that rank is a skipped core: it is below one half and its deficit is smaller than the weight of the crossing rank. The skipped-core constructor therefore turns it into an exact quotient row. This is an unconditional sign-recycling step. It does not assert that the new endpoint is larger than the old one; that quantitative crossing-location question is kept separate."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusExactRowDichotomy",
+      "path": "Erdos249257/BooleanMobiusExactRowDichotomy.lean",
+      "synopsis": "Sign dichotomy for exact Boolean--Möbius rows This module combines the independent exact-row producers. A row below one half admits a literal doubling-window extension, while a row above one half can be recycled through its first crossing. The result is a transition dichotomy, not a cofinality assertion: the crossing branch need not increase the endpoint."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusExactRowDoubling",
+      "path": "Erdos249257/BooleanMobiusExactRowDoubling.lean",
+      "synopsis": "Doubling a below-half exact Boolean--Möbius row An exact quotient row which is still strictly below one half and contains rank two has enough residue slack to be extended through a pure binary upper window. The construction preserves the entire old support."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusExactRowRankTwo",
+      "path": "Erdos249257/BooleanMobiusExactRowRankTwo.lean",
+      "synopsis": "Rank two is forced in every nontrivial exact Boolean--Möbius row The quotient target at endpoint `n` is already too large to be assembled from ranks strictly above two. Indeed, a finite support omitting rank two is bounded by the complete real Mersenne tail after rank two, which is strictly smaller than the rank-two weight `1/3`. On the other hand, the exact quotient identity at any endpoint `n ≥ 3` forces the scaled support value to be at least `2^(n-1)-1`, and that target is at least `2^n/3`. This removes the rank-two side condition from exact-row extension arguments."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusExactRowSeed",
+      "path": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+      "synopsis": "A concrete seed for the exact Boolean--Möbius row producer At endpoint six, the support `{2, 3, 6}` has quotient contributions `21`, `9`, and `1`. Their sum is `31 = 2^5 - 1`, giving the first explicit exact local half row used by the extension lane."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusExactTransition",
+      "path": "Erdos249257/BooleanMobiusExactTransition.lean",
+      "synopsis": "Exact endpoint transitions for Boolean--Möbius quotients This module records the unconditional one-step arithmetic behind the finite endpoint search. For every Mersenne rank `d ≥ 2`, doubling the endpoint scale either doubles its integral quotient or doubles it and adds one. The extra unit occurs exactly when `d` divides the new endpoint. Summing this identity over a fixed finite Boolean support gives the exact support transition. The final lemmas rewrite the same statement as the signed endpoint-defect recurrence `H(M + 1) = 2 H(M) + 1 - S(M + 1)`. These are reduction lemmas only. In particular, they do not prove that the defect is nonnegative and do not construct an exact Boolean support."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusGlobalRepair",
+      "path": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+      "synopsis": "Global Boolean--Möbius repair limit This module is the compactness/limit consumer for the endpoint construction in `BooleanMobiusLocalRepair`. At endpoint `n`, a repair row keeps every bit through `floor (n / 2)` and rewrites the strict upper half `(floor (n / 2), n]`. The rewritten word has dyadic value `H = 2 A + 1 - S`, where `A` is `localBinarySuffix` and `S` is `endpointDivisorContribution`. Once these finite rows exist at every endpoint, no further compactness assumption is needed: * a coordinate `d` is frozen from row `2d` onward; * the diagonal frozen word is Boolean; * exact endpoint quotient `2^(n-1)-1` makes the row value tend to `1/2`; * agreement through `floor (n/2)` makes the row values tend to the frozen support value; * uniqueness of limits gives an infinite support of value `1/2`. The genuinely unresolved producer is kept visible as `GlobalEndpointExponentialBound`. It is the uniform inequality `2^(S-1)-1 <= A` on the lower support occurring in every row. The larger predicate `GlobalBooleanMobiusRepairFeasible` also records the mechanical word, capacity, and quotient receipts needed by this consumer. Nothing in this file proves that predicate, and therefore nothing here by itself settles Erdos #257."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusGreedyReduction",
+      "path": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+      "synopsis": "Boolean Möbius lower-word greedy reduction This module isolates the finite integer reduction behind the Boolean Möbius repair. Its endpoint is deliberately conditional: a lower word which leaves less than the complete binary upper window must be the unique descending integer-greedy word. The arithmetic behavior of that greedy word remains a separate obligation."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusLocalRepair",
+      "path": "Erdos249257/BooleanMobiusLocalRepair.lean",
+      "synopsis": "Local Boolean--Möbius repair blocks for Erdős #257 This module isolates the finite endpoint arithmetic needed by the constructive counterexample route. Proof declarations are added only after the claimed module's local Lean connection card has been consumed."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusSkipRow",
+      "path": "Erdos249257/BooleanMobiusSkipRow.lean",
+      "synopsis": "Exact quotient rows supplied by skipped cores `BooleanMobiusSkippedCoreExactRow` proves that the quotient defect left by a finite skipped core fits in the pure binary window at endpoint `2c - 2`. This module turns that Boolean word into an actual finite support and hence into an `ExactLocalMersenneHalfRow`."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusSkipRowCofinal",
+      "path": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+      "synopsis": "Cofinal exact rows from cofinal positive greedy skips The skipped-core constructor is local: one positive rational-greedy skip at rank `c` produces an exact quotient row at `2c-2`. This module records the corresponding cofinal fan-in. It intentionally leaves visible the only missing global input: positive skipped ranks must occur cofinally (or the greedy remainder must already vanish, which gives half-membership directly)."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusSkippedCoreCriticalCapacity",
+      "path": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+      "synopsis": "Critical capacity for a skipped Boolean--Möbius core This module isolates the exact quotient test corresponding to the sharp upper-window capacity at endpoint `2c - 2`."
+    },
+    {
+      "id": "Erdos249257.BooleanMobiusSkippedCoreExactRow",
+      "path": "Erdos249257/BooleanMobiusSkippedCoreExactRow.lean",
+      "synopsis": "Exact upper-half fill from a skipped Boolean Mersenne core Suppose a Boolean support `D ⊆ {2, …, c - 1}` is still below one half, but its deficit is smaller than the next Mersenne weight at rank `c`. At the usual odd endpoint `2c - 1`, the rank-`c` quotient is the top binary coin and can obstruct the direct suffix fill. One row earlier, at `M = 2c - 2`, the same deficit is strictly below the complete upper-half window. Hence it has an exact Boolean binary realization of width `c - 1`. This is an unconditional finite-row producer. It does not assert that the skipped ranks are cofinal; that is the remaining local-to-global supply issue."
     },
     {
       "id": "Erdos249257.CampbellShiftSynchronization",
@@ -2846,6 +2926,16 @@
       "synopsis": "A finite phase sieve for the final `-2` middle cell The existing lazy-tail argument forces a hypothetical final middle cell of charge `-2` into the phase `D = 2 (mod 3)`. The exact middle landing then starts the all-right signed excess at `2`. Forced ranks `2`, `3`, `6`, `7`, and `14` leave only five joint `21`-phases. The exact prefix through rank `20` and `21` sharpen that sieve to thirty-five classes modulo `210`. The next forced rank is `26`; its pulse removes a full phase modulo `13` and one additional joint phase, leaving 412 classes modulo `2730`."
     },
     {
+      "id": "Erdos249257.HalfGapMass",
+      "path": "Erdos249257/HalfGapMass.lean",
+      "synopsis": "Total Mersenne gap mass beyond a finite level `GreedyAchievementSet` proves the per-level gap asymptotic `w(n) - T(n) = (2/3)·4⁻ⁿ + O(8⁻ⁿ)` (`mersenneGap_isBigOWith`, with the explicit bound `mersenneGap_asymptotic_bound`). That controls each level separately and says nothing about the levels taken together. This file sums it. The gap sequence is summable, and the mass strictly beyond level `N` admits the explicit geometric bound `∑_{n > N} (w(n) - T(n)) ≤ (2/9)·4⁻ᴺ + (3/7)·8⁻ᴺ`. Every step is a geometric consequence of `mersenneGap_asymptotic_bound` together with the existing `tsum_quarter_nat_add_succ` and `tsum_eighth_nat_add_succ`; no new arithmetic input is used. This bounds gap mass only. It is not a statement about which reals the greedy run reaches, it does not certify membership or nonmembership of any point, and in particular it says nothing about `1/2`. Nothing here settles Erdős problem #257. No novelty or priority claim is made for the theorems in this file."
+    },
+    {
+      "id": "Erdos249257.HalfGreedyFatalGap",
+      "path": "Erdos249257/HalfGreedyFatalGap.lean",
+      "synopsis": "The sharp Mersenne fatal gap: a one-third reduction of the half-greedy obstruction Fix the Mersenne weights `x k = 1 / (2 ^ k - 1)` and the tails `T k = ∑_{j ≥ k} x j`. The half-greedy process for `1 / 2` skips rank `k` when the residual `ρ` satisfies `ρ < x k`, and after a skip the process can still reach `0` exactly when `ρ ≤ T (k + 1)` — the skipped rank is gone forever, so the budget is the tail *strictly after* `k`. Since `x k > T (k + 1)` for every `k`, there is a genuine **fatal gap** `(T (k+1), x k)`: a skipped residual landing strictly inside it can never be completed. Earlier work in this development certified skip-safety through the *dyadic* bound `ρ ≤ 2 ^ (-k)`. That test is strictly too strong, because `T (k + 1) > 2 ^ (-k)`. Writing a residual in lowest terms as `ρ = u / (2 * L)` with `u`, `L` odd and setting `a := 2 * L - (2 ^ k - 1) * u` (so `0 < a` is exactly the skip condition), the dyadic test is `u ≤ a`, whereas the true fatal threshold is governed by `θ k := 1 / T (k + 1) - (2 ^ k - 1)`, and the main theorem here is that `θ k < 2 / 3` for every `k ≥ 1`. Consequently `2 * u ≤ 3 * a` already certifies safety: the obstruction is **one third smaller** than the dyadic test reports, and the entire content of that improvement is the inequality `2 * 2 ^ k > 3`. The key arithmetic identity, with `t = 2 ^ k`, is exact: `21 * t ^ 2 * (3 * t - 1) + 7 * t * (3 * t - 1) + 3 * (3 * t - 1) = 63 * t ^ 3 + 2 * t - 3` so the three-channel Lambert lower bound for `T (k + 1)` beats `3 / (3 * t - 1)` with margin exactly `2 * t - 3`. Three channels is the exact threshold: two"
+    },
+    {
       "id": "Erdos249257.HalfGreedyTwoThirdsBand",
       "path": "Erdos249257/HalfGreedyTwoThirdsBand.lean",
       "synopsis": "Bands for the last skip of a greedy Mersenne expansion Write a residual as `rem = 1/R`. Call a skip at rank `k` of the greedy Mersenne expansion *dyadically safe* when `rem ≤ 2^{-k}`, equivalently `R ≥ 2^k`. Across a run of consecutive skips `R` does not move, so only the *last* skip before the next take can fail this test, and a take immediately followed by a take has no skip to check. Fix a take at `b`, put `q = 2^b - 1`, and let the next take be at rank `c`, so the intervening skips are `b+1, …, c-1`. The last of them is checked against `m = 2^{c-1}`. The main result `postTakeUnsafeAt_iff_band` is that this last skip is dyadically unsafe precisely when the *pre-take* reciprocal `R` lies in `( q(m-1)/(q+m-1) , qm/(q+m) )`, an interval of width exactly `q²/((q+m)(q+m-1))`. Specialising to `c = b+2` (a run of a single skip) gives `m = 2q+2` and the *two-thirds band* `( q(2q+1)/(3q+1) , 2q(q+1)/(3q+2) )`, of width `q²/((3q+1)(3q+2)) < 1/9`, contained in `(2q/3, 2q/3 + 2/9)`; there an unsafe skip forces `2q < 3R < 2q + 2/3`. Two unconditional consequences of that specialisation: * `not_twoThirdsBand_of_int` — an integral reciprocal is never unsafe, since the pinning leaves no room for an integer multiple of three. * `seven_le_of_intBand_odd` — for a residual `rem = p/(2D)` in lowest terms with `p`, `D` and `q` odd, an unsafe single-skip run forces `p ≥ 7`. The argument is `2`-adic: oddness makes the band defect `Δ = 6D - 2pq` divisible by four, and that congruence alone removes the classes `p ∈ {1, 3, 5}`. Scope Everything here is about one take-skip-take step in isolation. T"
@@ -2854,6 +2944,11 @@
       "id": "Erdos249257.HalfTrappingReturnCarry",
       "path": "Erdos249257/HalfTrappingReturnCarry.lean",
       "synopsis": "Carry transfer at overlapping half-trapping returns This module records two exact conclusions from the trapping-return analysis for the greedy `1 / 2` Mersenne achievement-set problem. First, a family of rational-linear channels that is invariant under every zero-valued formal relation has rank at most one. Consequently every square minor of size at least two vanishes. This closes the raw shifted-channel determinant route at all ranks, rather than only at the experimentally tested ranks two through four. Second, two reverse-carry presentations with a common coefficient word, a single `1/0` seam, and a common word on the following overlap have a carry difference equal to a power of two times an odd integer. Combining this exact factorisation with any common Archimedean carry bound gives the corresponding power-of-two spacing inequality. The results below deliberately isolate the proof-bearing algebraic core. They do not assert that a failed greedy separation produces the required reverse carry presentation, nor do they supply an earlier overlapping return. The remaining endpoint obligation is the predecessor-supply theorem tying the greedy threshold orbit to this carry interface."
+    },
+    {
+      "id": "Erdos249257.HalfUpperResetCriticalBand",
+      "path": "Erdos249257/HalfUpperResetCriticalBand.lean",
+      "synopsis": "The single critical dyadic band at an upper reset The existing upper-reset route for Erdős #257 asks a reset charge `E` to avoid one linear-width interval below every power `2^(d-j+1)`, for `0 ≤ j ≤ d`. Only one of those intervals can be critical: the smallest dyadic power still at least `E`. Larger powers have more room and smaller linear widths; smaller powers are already strictly below `E`. This file proves that reduction in `dyadicBandEscape_iff_exists_critical`, then specializes it to the concrete seam reset charge. Thus the local `∀ j` in `SeamUpperResetDyadicBandEscape` is exactly equivalent to one certified nearest-boundary gap at each upper reset. This is a quantifier reduction, not an assumption that the critical gap is large. The remaining arithmetic obligation is displayed without hiding it behind the former family of bands."
     },
     {
       "id": "Erdos249257.IncidenceQuotientHermitePade",
@@ -2869,6 +2964,11 @@
       "id": "Erdos249257.LambertDiagonalEnclosure",
       "path": "Erdos249257/LambertDiagonalEnclosure.lean",
       "synopsis": "Lambert diagonal enclosure This module closes the topological step left after the finite foreign-residue window estimate. Once those finite windows converge to the actual omitted foreign defect, the already-proved uniform geometric bound passes to the limit and yields `ControlledForeignProjection`. The convergence statement is deliberately exposed as the remaining analytic input. This module does not claim the Möbius/Lambert kernel identity, an unbounded supply of separated projections, or irrationality on its own."
+    },
+    {
+      "id": "Erdos249257.LambertProjectedNumeratorGap",
+      "path": "Erdos249257/LambertProjectedNumeratorGap.lean",
+      "synopsis": "Exact numerator gaps for the squared-Mersenne projection This companion isolates the finite arithmetic input needed by the canonical Lambert enclosure. It turns a lower bound for the reduced numerator after clearing an arbitrary integer translate into a miss of the actual diagonal. The theorem does not assert that such gaps occur cofinally; that is the remaining arithmetic producer obligation."
     },
     {
       "id": "Erdos249257.LcmConeFlatness",
@@ -3051,6 +3151,11 @@
       "synopsis": "Upper-sheet recylindrification when the crossing hole is below the strip"
     },
     {
+      "id": "Erdos249257.SuffixCylinderCarryPivot",
+      "path": "Erdos249257/SuffixCylinderCarryPivot.lean",
+      "synopsis": "Carry-pivot normal form for numeral-adjacent boundary words `SuffixCylinderProfiledAdjacency` proves the coarse bound: a binary increment changes any divisor coefficient by at most one. This module replaces that inequality with the exact structure. A pair of words whose suffix numerals are consecutive differs in exactly one carry block: a unique pivot rank `d` flips from unselected to selected, every strictly deeper rank through the cutoff flips from selected to unselected, and every shallower rank agrees. The divisor-coefficient discrepancy at any row is then an exact signed divisor-incidence identity, not merely a `≤ +1` estimate. The two core lemmas are deliberately stated at the set level, where `supportSuffixNumeral` is a plain structural recursion, and transfer to `HalfWord` boundary words in one line. A stage-level corollary consumes `ProfiledGapStage.HasAdjacentPrefixes` directly. These are structural normal forms for the profiled two-sheet frontier. They make no claim about the open problem statuses recorded in `docs/RELATED_PROBLEMS.md`. This module was derived and kernel-checked inside the agent workbench (`docs/AGENT_WORKBENCH.md`); the session ledger is `workbench/sessions/carry_pivot_2026_07_27/`."
+    },
+    {
       "id": "Erdos249257.SuffixCylinderFeedbackFanIn",
       "path": "Erdos249257/SuffixCylinderFeedbackFanIn.lean",
       "synopsis": "Exact feedback fan-in: advance or one certified in-strip hole"
@@ -3161,9 +3266,44 @@
       "synopsis": "Parity does not decide the reduced Erdős #249 margin socket `PowerTwoBitLift` isolates the fifth-bit question as parity of an integral quotient. The actual reduced margin socket asks for much more: a quotient must be close to a multiple of a large even modulus. This file records the elementary obstruction precisely. Under the numerical inequalities present at the canonical `t = 827` row, each parity class contains both a point inside the socket and a point outside it. The result is deliberately abstract. The current public Lean surface does not expose the enormous `t = 827` margin constant, so no duplicate numeral is introduced here."
     },
     {
+      "id": "Erdos249257.TotientActualLcmOrbitArithmetic",
+      "path": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "synopsis": "Coefficient arithmetic for the actual LCM orbit This module refines the finite-window side of the exact actual-LCM orbit frontier. The existing clean-divisor identity `deltaTotient_periodLcm_ray_split` factors a ray letter only when every prime of the offset remains in the quotient `H / j`. Here the missing overlap is kept exactly. For `x > 0`, the standard identity `phi(gcd(j,x)) * phi(j*x) = phi(j) * phi(x) * gcd(j,x)` shows that `phi(j*x)` is `phi(x)` times an explicit integral overlap factor. Consequently every divisor-offset letter on the actual diagonal is reduced to totients at the smaller quotient scale `H / j`, with no cleanliness hypothesis. In a window shorter than `2*t`, every remaining nondivisor offset is a bare prime power by `eq_prime_pow_of_not_dvd_periodLcm`. The final supply is intentionally conditional. It is a strictly stronger short-window arithmetic producer for the landed actual-orbit endpoint, not a claim that the cofinal residue band has been proved."
+    },
+    {
+      "id": "Erdos249257.TotientActualLcmOrbitNonintegrality",
+      "path": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+      "synopsis": "Exact actual-LCM orbit frontier for Erdős #249 The quantitative separation predicate in `TotientActualLcmOrbitSeparation` is sufficient for the existing signed-margin endpoint, but the exact arithmetic frontier is simply cofinal non-integrality of the actual LCM-diagonal tail orbit. This file records that the latter condition is equivalent to irrationality of the totient series."
+    },
+    {
+      "id": "Erdos249257.TotientActualLcmOrbitSeparation",
+      "path": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+      "synopsis": "Actual LCM-orbit separation for Erdős #249 The actual centered odd-window state is a finite dyadic approximation to the LCM-diagonal tail orbit `R_(2H) - R_H`, where `H = lcm(1, ..., 2^a)`. This file records the exact approximation identity, its elementary error bound, and the resulting bridge from a cofinal `1/32` separation of the actual tail orbit to the landed signed-margin producer. The separation supply is deliberately explicit: divisibility of the LCM multipliers, or irrationality alone, does not force such quantitative anti-concentration."
+    },
+    {
+      "id": "Erdos249257.TotientActualLcmOrbitSign",
+      "path": "Erdos249257/TotientActualLcmOrbitSign.lean",
+      "synopsis": "Positive sign corridor for the actual LCM tail orbit The short actual-LCM arithmetic word has strictly positive letters. The quantitative quarter-height bounds are strong enough to turn that finite fact into an Archimedean statement about the true (infinite) tail orbit: through almost the whole short LCM window, the translated difference `R_(2H+J) - R_(H+J)`, where `H = lcm(1, ..., 2^a)`, is positive. The proof keeps an `a+6`-letter positive prefix and absorbs the entire uncontrolled future with the directed lower tail bound. This is a sign theorem, not an irrationality theorem. Its carry consumer records the precise consequence for the existing survivor surface: whenever the true orbit is integral, the true endpoint survivor is on the negative side throughout this corridor. Spurious survivors of either sign may still exist, and no nonintegrality claim is made here."
+    },
+    {
+      "id": "Erdos249257.TotientActualLcmShortKill",
+      "path": "Erdos249257/TotientActualLcmShortKill.lean",
+      "synopsis": "The short actual-LCM arithmetic-kill producer The endpoint-facing producer in `TotientActualLcmOrbitArithmetic` asks for cofinally many residue-band kills inside the window `L < 2 * 2^a`. We begin with the first exact witnesses, stated directly as that producer rather than as detached numerical identities."
+    },
+    {
+      "id": "Erdos249257.TotientActualLcmTopEdgeStaircase",
+      "path": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "synopsis": "Dyadic staircase consumers for the actual-LCM top edge This module tests a natural growing-precision input against the positive top-edge representative forced by an integral actual-LCM orbit. The test is decisive in the negative direction: once the modulus is wide enough to kill the carry strip, positivity makes the final arithmetic letter strictly smaller than that modulus. A terminal staircase would require the same letter to be divisible by the modulus, so the proposed producer is empty. The generic weighted-word lemmas remain useful, but an actual-LCM proof must seek a nonzero residue gap rather than total dyadic annihilation."
+    },
+    {
       "id": "Erdos249257.TotientCarryKernelRigidity",
       "path": "Erdos249257/TotientCarryKernelRigidity.lean",
       "synopsis": "Totient carry-kernel rigidity This module connects the rationality-supplied tempered binary orbit to the dyadic totient-kernel family. Its role is deliberately structural: the carry recurrence recovers every positive totient channel as a two-term difference of carry sections. No finite-state or finite-Cartier-rank conclusion is claimed; the bridge preserves the coefficient-side rank rather than compressing it. This is infrastructure for Erdős #249, not a proof that the totient series is irrational."
+    },
+    {
+      "id": "Erdos249257.TotientFixedRankLcmAsymptotic",
+      "path": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "synopsis": "Fixed-rank asymptotics on power-of-two LCM heights This module sharpens the finite rough-Euler-product estimates used by the actual-LCM orbit. It records only unconditional finite inequalities; the remaining Mersenne-residue anti-concentration needed for Erdős #249 is not asserted here."
     },
     {
       "id": "Erdos249257.TotientMahlerDefect",
@@ -3171,9 +3311,34 @@
       "synopsis": "Exact dyadic totient-kernel interfaces This module records the proof-bearing part of the quantitative dyadic-kernel route for Erdős #249. It deliberately separates three layers: * elementary reduction of every even residue channel to an odd channel; * a finite determinant certificate which is sufficient for linear independence of any chosen family of kernel channels; * the exact contradiction consumer needed by a future compressed-adjoint or finite-rank compression construction. The all-level producer is proved here by CRT plus Dirichlet's theorem on primes in arithmetic progressions: one affine channel is made prime and every other channel receives a fresh prime divisor congruent to one modulo a large power of two. The resulting parity-separated evaluation matrix has nonzero determinant. This proves unconditional finite-level kernel independence. It is not yet a proof that the totient series is irrational: the missing theorem is a rationality-side finite-rank compression or equivalent contradiction."
     },
     {
+      "id": "Erdos249257.TotientParityCoboundaryCountermodel",
+      "path": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "synopsis": "A parity-and-nonperiodicity countermodel for Erdős #249 Parity of Euler's totient is eventually trivial: `phi(n)` is even for every `n >= 3`. That fact, even together with nonnegativity, the linear bound, and non-eventual-periodicity of the coefficient word, cannot force irrationality at `1/2`. This file constructs a bounded natural sequence `c` with * `0 <= c(n) <= n`; * `c(n) = phi(n) (mod 2)` for every `n`; * `c` not eventually periodic; * `sum c(n)/2^n = 3/2`. Start with coefficients `0,1,1,2,4,4,...`. At each lacunary rank `m = 2^(k+3)`, replace the pair `(4,4)` at `(m,m+1)` by `(6,0)`. Each change is the exact binary coboundary `2/2^m - 4/2^(m+1) = 0`, so the value stays rational while the coefficient word becomes aperiodic. This refutes route sufficiency only; it says nothing about the actual totient value beyond identifying the extra arithmetic information a proof must use."
+    },
+    {
+      "id": "Erdos249257.TotientShiftedMobiusForeignBridge",
+      "path": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
+      "synopsis": "The shifted Möbius tail is the actual foreign-residue kernel `ActualForeignResidueProjection` introduced the residue channels needed by the full-target pincer, but deliberately left their global analytic kernel identity open. `TotientShiftedMobiusPulse` now derives that identity from the absolutely summable Möbius--Lambert product. This file identifies the two coordinate systems. In particular, `totientTail_eq_tsum_positiveForeignResidueKernel` is the previously missing unconditional statement that the literal totient tail is the sum of the actual positive residue channels. No foreign term is defined by subtracting an approximation from the target."
+    },
+    {
+      "id": "Erdos249257.TotientShiftedMobiusPulse",
+      "path": "Erdos249257/TotientShiftedMobiusPulse.lean",
+      "synopsis": "Shifted Möbius pulses for the totient tail This file begins the exact analytic identification of the foreign term in the LCM-diagonal decomposition. For `d > 0`, let `r_d(N)` be the least positive integer for which `d ∣ N + r_d(N)`. The contribution of the multiples of `d` to the shifted totient tail is the geometric-linear fibre `sum_k μ(d) * (N / d + 1 + k) / 2^(r_d(N) + d*k)`. The theorem `tsum_shiftedDivisorFiber` evaluates this fibre exactly as the Mersenne pulse `μ(d) * 2^(d-r_d(N)) * ((N/d+1)/(2^d-1) + 1/(2^d-1)^2)`. Unlike the existing `foreignDiagonalDefect`, this is not a definition by subtraction from the target. It is the unconditional local identity needed to identify that defect with the genuinely foreign divisor cone."
+    },
+    {
+      "id": "Erdos249257.TotientTailCarryPeriod",
+      "path": "Erdos249257/TotientTailCarryPeriod.lean",
+      "synopsis": "Rational totient tails as periodic carry quotients The finite-rank route for Erdős #249 stops at a genuine boundary: rationality of one binary value does not make its coefficient generating function rational, so it does not bound the rational rank of the carry's dyadic sections. This file records the exact positive statement that rationality *does* supply on those sections. For the canonical tempered carry `u = v R`, an integral tail difference `R_(N+k) - R_N ∈ ℤ` is equivalent to divisibility of the carry displacement `v ∣ u_(N+k) - u_N`. Consequently the eventual tail period makes every dyadic carry section eventually periodic modulo the same multiplier `v`, uniformly in its level. The same carry nevertheless has rank at least `2^e-1` through level `e`. This is the precise quotient-compression/torsion-free-rank separation that a future totient-specific contradiction must cross."
+    },
+    {
       "id": "Erdos249257.TotientTailPeriodKiller",
       "path": "Erdos249257/TotientTailPeriodKiller.lean",
       "synopsis": "The totient-tail period killer: attacking #249 through the period, not the digits Every earlier wave asked the Erdős–Borwein question of `S = ∑ φ(n)/2ⁿ`: force a long block of zero binary digits. Wave 20 measured why that fails — the totient's 2-adic staircase affords `√(2·log₂ N)` silent positions where the proof engine needs `log₂ N`. This file changes the TARGET. Rationality of `S` is equivalent to *eventual periodicity* of its binary expansion, and periodicity is a statement about the local totient tail `R_N = ∑_{j≥1} φ(N+j)/2ʲ`, because `2^N·S = Φ_N + R_N` with `Φ_N ∈ ℕ`. If `S = P/Q` then for `h` with `oddPart Q ∣ 2ʰ - 1` and every `N ≥ v₂(Q)`, `R_{N+h} - R_N ∈ ℤ` — the **tail-period law**. Killing a period is a FINITE, decidable act. With the window discrepancy `A_{h,N,L} = ∑_{j=0}^{L-1} (φ(N+h+1+j) - φ(N+1+j))·2^{L-1-j}` we get `R_{N+h} - R_N = A/2^L + E`, `|E| ≤ (N+h+L+2)/2^L`, so whenever the residue `A mod 2^L` lands outside the radius-`(N+h+L+2)` neighbourhood of `0`, the difference is provably NOT an integer (`tail_diff_notMem_int_of_certifiedKill`). The forbidden zone has width `O(N)` inside a modulus `2^L ≈ N³`: the old proof had to HIT a measure-zero target, this one only has to MISS a vanishing one. The reduction is complete (`irrational_totient_series_of_certificate_supply`): a supply of certified kills — for every period `h` and every threshold `N₀` some certified `(N ≥ N₀, L)` — proves #249. As a first unconditional deposit, `certifiedKill_all_small` machine-checks kills for every `h ≤ 8` at `N = 12`, `L = 16`, so `S` is not a rational whose denominator "
+    },
+    {
+      "id": "Erdos249257.TotientTwoAdicPulseBlock",
+      "path": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+      "synopsis": "Arbitrary two-adic totient pulse blocks This module isolates the CRT--Dirichlet construction of long totient-increment blocks modulo powers of two and their exact transfer through the integral tail carry recurrence."
     },
     {
       "id": "Erdos249257.TropicalCurvatureCarry",

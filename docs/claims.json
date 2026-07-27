@@ -6870,6 +6870,14 @@
           ]
         },
         {
+          "id": "Erdos249257.SuffixCylinderCarryPivot",
+          "path": "Erdos249257/SuffixCylinderCarryPivot.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.SuffixCylinderProfiledAdjacency"
+          ]
+        },
+        {
           "id": "Erdos249257.SuffixCylinderFeedbackFanIn",
           "path": "Erdos249257/SuffixCylinderFeedbackFanIn.lean",
           "role": "Lean proof module",
@@ -7789,7 +7797,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
+      "ref": "80917335665c15c23e4c757830046d0aa53fcba4",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint"

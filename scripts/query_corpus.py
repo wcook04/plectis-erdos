@@ -44,11 +44,12 @@ SUPPRESSED_DECLARATION_ATLAS_ROWS = {
     "Erdos249257/CyclicTensorMobiusShadow.lean:167:used",
     "Erdos249257/DiagonalPincerDecomposition.lean:40:and",
     "Erdos249257/FullTargetPrimeAdjunctionNoGo.lean:18:controlling",
-    "Erdos249257/GenericTailOrbitRigidity.lean:13:says",
-    "Erdos249257/GenericTailOrbitRigidity.lean:148:not",
+    "Erdos249257/GenericTailOrbitRigidity.lean:14:says",
+    "Erdos249257/GenericTailOrbitRigidity.lean:149:not",
     "Erdos249257/GreedyAchievementSet.lean:1785:of",
     "Erdos249257/HalfCarryReachability.lean:787:directly",
     "Erdos249257/LcmConeNonflat.lean:67:plus",
+    "Erdos249257/SignedQMomentObstruction.lean:533:for",
 }
 
 SEMANTIC_QUERY_OPERATORS = (
@@ -1030,6 +1031,45 @@ def formal_affordance_shape_matches(
     return matches
 
 
+def formal_context_symbol_matches(
+    context_terms: set[str], affordance: dict[str, Any]
+) -> list[str]:
+    """Match premise-language context against elaborated binder type symbols.
+
+    This is deliberately separate from conclusion matching: conclusion shape
+    establishes that a theorem can close the requested goal, while binder
+    symbols distinguish which of several conclusion-compatible theorems fits
+    the premises the operator says are available.
+    """
+    binder_symbols = {
+        symbol
+        for binder in affordance.get("binders", [])
+        for symbol in (
+            binder.get("type_head", ""),
+            *binder.get("type_symbols", []),
+        )
+        if symbol
+    }
+    binder_symbol_terms = set().union(
+        *(search_terms(symbol) for symbol in binder_symbols)
+    )
+    return sorted(
+        context_term
+        for context_term in context_terms
+        if any(
+            context_term == symbol_term
+            or (
+                min(len(context_term), len(symbol_term)) >= 3
+                and (
+                    context_term.startswith(symbol_term)
+                    or symbol_term.startswith(context_term)
+                )
+            )
+            for symbol_term in binder_symbol_terms
+        )
+    )
+
+
 def formal_goal_support_packet(
     query: str,
     limit: int,
@@ -1138,6 +1178,9 @@ def formal_goal_support_packet(
         formal_matches = sorted(goal_terms & symbol_terms)
         goal_statement_matches = sorted(goal_terms & statement_terms)
         context_matches = sorted(context_terms & statement_terms)
+        formal_context_matches = formal_context_symbol_matches(
+            context_terms, affordance
+        )
         if (
             not shape_matches
             and len(formal_matches) < 2
@@ -1146,7 +1189,11 @@ def formal_goal_support_packet(
             continue
         ranked.append(
             (
+                # Applicability precedence: exact conclusion shape, then
+                # elaborated premise-context coverage, then lexical/formal
+                # goal evidence.  Telescope size is only a late tie-breaker.
                 -len(shape_matches),
+                -len(formal_context_matches),
                 -len(formal_matches),
                 -int(context_phrase_match),
                 -len(context_matches),
@@ -1156,16 +1203,18 @@ def formal_goal_support_packet(
                 declaration,
                 affordance,
                 shape_matches,
+                formal_context_matches,
                 formal_matches,
                 context_phrase_match,
                 context_matches,
                 goal_statement_matches,
             )
         )
-    ranked.sort(key=lambda row: row[:7])
+    ranked.sort(key=lambda row: row[:8])
     candidates = []
     for rank_index, row in enumerate(ranked[:limit]):
         (
+            _,
             _,
             _,
             _,
@@ -1176,6 +1225,7 @@ def formal_goal_support_packet(
             declaration,
             affordance,
             shape_matches,
+            formal_context_matches,
             formal_matches,
             context_phrase_match,
             context_matches,
@@ -1204,6 +1254,9 @@ def formal_goal_support_packet(
                 },
                 "match_receipt": {
                     "shape_matches": shape_matches,
+                    "formal_context_symbol_matches": (
+                        formal_context_matches
+                    ),
                     "formal_goal_term_matches": formal_matches,
                     "context_phrase_match": context_phrase_match,
                     "context_statement_matches": context_matches,
