@@ -226,6 +226,13 @@ unit fractions; Lean~4.
 
 \section{The centred integer state}\label{sec:state}
 
+The three maps defined next carry out the two steps announced at the end of
+Section~\ref{sec:problem}.  The first two clear denominators along the
+sequence, so that a rational reciprocal sum leaves a sequence of integers; the
+third subtracts from that integer the value it takes on Sylvester's sequence,
+leaving one number whose vanishing is the whole question.  All three are maps
+between integer tuples and carry no hypothesis of any kind.
+
 For $a,D,C\in\Z$ define
 \[
  \den(a,D)=aD,
@@ -240,8 +247,15 @@ update}, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{45}{nextTailState}{tail update},
 and the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{49}{centeredState}{centred state}.
-Given $(a_n)$ we write $D_{n+1}=\den(a_n,D_n)$, $C_{n+1}=\tail(a_n,D_n,C_n)$
-and $E_n=\ctr(a_n,D_n,C_n)$.
+Given a sequence $(a_n)$ of integers, whose terms we call the
+\emph{multipliers}, we write $D_{n+1}=\den(a_n,D_n)$ for the \emph{denominator
+state}, $C_{n+1}=\tail(a_n,D_n,C_n)$ for the \emph{tail state}, and
+$E_n=\ctr(a_n,D_n,C_n)$ for the \emph{centred state}, also called the
+\emph{error}.  The word \emph{centred} records what the third map does: it
+measures $D_n$ against $(a_n-1)C_n$, and $D_n=(a_n-1)C_n$ holds at every index
+on Sylvester's sequence (Example~\ref{ex:sylvester}), so $E$ is a deviation
+from that sequence rather than a size.  At an index where $E_n<0$ we write
+$e_n=-E_n>0$ and call it the \emph{magnitude} of the error there.
 
 \begin{proposition}[update law]\label{res:update}
 $\tail(a,D,C)=C-\ctr(a,D,C)$; that is, $C_{n+1}=C_n-E_n$.
@@ -256,6 +270,30 @@ $C-\bigl(D-(a-1)C\bigr)=aC-D$.
 law}.  The state therefore moves by exactly the error at each step, which is
 what makes the sign of $E$ decisive: where $E$ is positive the state falls,
 where $E$ is negative it rises, and where $E$ vanishes it is stationary.
+
+\begin{example}[the Sylvester orbit]\label{ex:sylvester}
+Take $a_n=2,3,7,43,1807,\ldots$ with $a_{n+1}=a_n^{2}-a_n+1$, and start the
+state at $D_0=C_0=1$.  The two updates give
+
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$n$ & $a_n$ & $D_n$ & $C_n$ & $E_n$\\
+\midrule
+$0$ & $2$ & $1$ & $1$ & $0$\\
+$1$ & $3$ & $2$ & $1$ & $0$\\
+$2$ & $7$ & $6$ & $1$ & $0$\\
+$3$ & $43$ & $42$ & $1$ & $0$\\
+$4$ & $1807$ & $1806$ & $1$ & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent and $D_n=a_n-1$ with $C_n=1$ at every index: if $D_n=a_n-1$ and
+$C_n=1$ then $C_{n+1}=a_n-(a_n-1)=1$ and $D_{n+1}=a_n(a_n-1)=a_{n+1}-1$.
+Hence $E_n=D_n-(a_n-1)C_n=0$ throughout and the tail state never moves, which
+is Proposition~\ref{res:update} in the stationary case.
+\end{example}
 
 \paragraph{The intended reading, which is not formalised.}
 Let $T_n=\sum_{k\ge n}1/a_k$ and suppose $T_0\in\Q$.  Put $D_0$ equal to a
@@ -302,6 +340,19 @@ induction step that removes common scale.
 
 \section{The defect identity and its two consequences}\label{sec:defect}
 
+Section~\ref{sec:state} connects the Sylvester recurrence to the error in one
+direction only: on Sylvester's sequence the error vanishes.  The converse is
+what the problem needs, and it comes from a single identity, which expresses
+the deviation of $a_{n+1}$
+from the Sylvester successor, multiplied by the tail state $C_{n+1}$, as a
+combination of the errors at $n$ and at $n+1$, the first weighted by
+$a_n^{2}$.  Its two consequences are
+Theorem~\ref{res:eventual}, in which an eventually vanishing error forces the
+recurrence provided the tail state is eventually nonzero, and
+Theorem~\ref{res:absorb}, in which, under strict centring (the condition
+$|E_n|<C_n$ at every index), one vanishing error propagates to every later
+index.
+
 Write $\defect(a,a')=a'-\sylnext(a)$ for the deviation of the next term from
 the Sylvester successor, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{53}{sylvesterDefect}{Sylvester
@@ -326,6 +377,20 @@ $a'aC-a'D-a^{3}C+a^{2}D+a^{2}C-aD-aC+D$.
 identity}.  It is a polynomial identity in four indeterminates, with no
 hypothesis of any kind, and it carries the whole argument twice over: once for
 rigidity, and once for absorption.
+
+\begin{example}[one defect and the error it creates]\label{ex:defect}
+Continue Example~\ref{ex:sylvester} but replace $a_3=43$ by $a_3=44$.  The
+states $D_3=42$ and $C_3=1$ are unchanged, since they depend only on
+$a_0,a_1,a_2$, and $E_2=0$ still.  The defect is
+$\Delta_2=a_3-\sylnext(a_2)=44-43=1$, and
+$E_3=D_3-(a_3-1)C_3=42-43=-1$, so the identity reads
+\[
+ \Delta_2C_3=1\cdot1=1=49\cdot0-(-1)=a_2^{2}E_2-E_3 .
+\]
+By Proposition~\ref{res:update} the tail state then rises, $C_4=C_3-E_3=2$.  A
+single unit of defect at one index has produced a negative error of magnitude
+$1$ at the next, and the state has started to climb.
+\end{example}
 
 \begin{theorem}[two vanishing errors force the step]\label{res:step}
 Let $a,a',D,C\in\Z$ with $\tail(a,D,C)\ne0$.  If
@@ -389,6 +454,11 @@ $E_n<0$ throughout, without loss.
 
 \section{Descent when the error is nonnegative}\label{sec:descent}
 
+The hypothesis of the theorem below is the update law of
+Proposition~\ref{res:update} read inside $\N$: the error is nonnegative at
+every index, so the tail state never rises.  This is the easy case, and it is
+settled in three lines.
+
 \begin{theorem}[descent]\label{res:descent}
 Let $C,E:\N\to\N$ satisfy $C_{n+1}+E_n=C_n$ for every $n$.  Then $E_n=0$ for
 all sufficiently large $n$.
@@ -413,7 +483,8 @@ this note is directed at it.
 
 \section{Excluding a constant negative magnitude}\label{sec:constant}
 
-Suppose $E_n=-m$ for a fixed $m>0$ and every $n$.  By
+Suppose the error is negative with a constant magnitude, $E_n=-m$ for a fixed
+$m>0$ and every $n$.  By
 Proposition~\ref{res:update} the state then climbs by exactly $m$ each step,
 so $C_n=c+nm$ with $c=C_0$, and the definition of the centred state becomes a
 \emph{shape equation}
@@ -422,7 +493,19 @@ so $C_n=c+nm$ with $c=C_0$, and the definition of the centred state becomes a
 \tag{5.1}\label{eq:shape}
 \]
 Together with $D_{n+1}=a_nD_n$ this is a closed system in $(a,D)$, and it has
-no solutions.
+no solutions.  The following instance shows how the failure happens; the
+theorem then shows that it cannot be avoided.
+
+\begin{example}[the shape equation running until it fails]\label{ex:shape}
+Take $m=c=1$, so that $C_n=1+n$ and the shape equation~\eqref{eq:shape} reads
+$D_n+1=(a_n-1)(1+n)$, and take $D_0=1$.  Each step is now determined: at $n=0$
+the equation reads $2=(a_0-1)\cdot1$, so $a_0=3$, and $D_1=a_0D_0=3$; at $n=1$
+it reads $4=(a_1-1)\cdot2$, so $a_1=3$, and $D_2=a_1D_1=9$; at $n=2$ it reads
+$10=(a_2-1)\cdot3$, which has no integer solution, and the orbit stops.
+Longer prefixes occur for other starting values: the finite search recorded in
+Appendix~\ref{app:residue} found none longer than $17$ among the initial
+states below $5000$.
+\end{example}
 
 \begin{theorem}[no constant negative magnitude]\label{res:constant}
 There is no pair of sequences $a,D:\N\to\N$ with $a_n\ge2$ for all $n$
@@ -430,7 +513,7 @@ satisfying $D_{n+1}=a_nD_n$ and~\eqref{eq:shape}, for any $m>0$ and any
 $c$.  The same holds if the shape only begins at some index.
 \end{theorem}
 
-\begin{proof}[Proof of the scale-primitive case]
+\begin{proof}[Proof when $c$ and $m$ are coprime]
 Assume first $\gcd(c,m)=1$.  Two facts about the multipliers do all the work,
 and the difficulty lies in the fact that they concern the same finite set of
 primes from opposite directions: the first makes every multiplier meet that
@@ -454,10 +537,11 @@ a prime divisor of $m$, and each prime divisor of $m$ serves at most one
 multiplier, while $m$ has only finitely many prime divisors.
 \end{proof}
 
-\noindent The scale-primitive case is the
+\noindent The case $\gcd(c,m)=1$ is the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{147}{no_scalePrimitiveConstantNegative_orbit}{scale-primitive
-exclusion}.  The special case $m=c=1$, where $m$ has no prime divisors at all
-and the first fact is immediately contradictory, is recorded separately as the
+exclusion}.  The special case $m=c=1$, worked through in
+Example~\ref{ex:shape}, where $m$ has no prime divisors at all and the first
+fact is immediately contradictory, is recorded separately as the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{100}{no_normalizedConstantNegative_orbit}{normalised
 exclusion}.
 
@@ -483,14 +567,24 @@ pigeonhole uses, and a varying magnitude presents a fresh set at each index.
 \section{Excluding a periodic negative magnitude}\label{sec:periodic}
 
 The next case allows the magnitude to vary, provided it repeats.  Write
-$e_n=-E_n>0$ for the magnitude, so $C_{n+1}=C_n+e_n$, and suppose $e$ has
-period $h$ and $C$ gains a drift $M>0$ over one period.
+$e_n=-E_n>0$ for the magnitude, as in Section~\ref{sec:state}, so that
+$C_{n+1}=C_n+e_n$; suppose $e$ has period $h$, meaning $e_{n+h}=e_n$ for every
+$n$, and that the state gains a fixed \emph{drift} $M>0$ over one period,
+meaning $C_{n+h}=C_n+M$ for every $n$.
 
-Three lemmas replace the two facts of Section~\ref{sec:constant}.  The first is
+At $h=1$ this says that the magnitude is constant and that $M$ is its value,
+which is the situation of Section~\ref{sec:constant};
+Theorem~\ref{res:constant} already excludes it, and does so without the extra
+hypothesis $e_n<a_n$ imposed below.  The new content is $h\ge2$.
+
+Section~\ref{sec:constant} could run its pigeonhole on the prime divisors of
+the single number $m$.  Here the magnitude changes inside a period, and the
+number available to run it on is the drift $M$.  Three lemmas replace the two
+facts of Section~\ref{sec:constant}.  The first is
 that multipliers persist: every $a_j$ divides every strictly later denominator
 state, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{382}{base_dvd_denState_later}{persistence
-of a multiplier}.  The second is a lock: a prime already dividing $D$ and also
+of a multiplier}.  The second is a \emph{lock}: a prime already dividing $D$ and also
 dividing the current multiplier is forced into the next tail state, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{402}{divisorLocksTailSucc}{one-step
 lock}, and once present in both $D$ and $C$ it stays in every later $D$, $C$
@@ -545,7 +639,7 @@ $(D,C,e)$ and so survive; the period is still $h$; and the drift becomes
 $M/p<M$.  The inductive hypothesis applies.
 \end{proof}
 
-\noindent The phase-primitive case is the
+\noindent The first of the two cases above is the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{548}{no_phasePrimitivePeriodicNegative_orbit}{phase-primitive
 exclusion}, the induction is the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{690}{no_periodicNegative_orbit}{exclusion
@@ -581,6 +675,17 @@ then add multiples of $\prod_i m_i$ to pass the bound.
 \lword{Erdos243/ReciprocalTailRigidity.lean}{833}{exists_shifted_consecutiveMultiples}{shifted
 consecutive multiples}.
 
+\begin{example}[a block of three consecutive multiples]\label{ex:crt}
+Take $B=3$ and $(m_0,m_1,m_2)=(3,4,5)$.  The congruences $t\equiv0\pmod3$,
+$t\equiv3\pmod4$ and $t\equiv3\pmod5$ hold exactly when $t\equiv3\pmod{60}$.
+At $t=3$ the block is $3,4,5$ with $3\mid3$, $4\mid4$ and $5\mid5$; at $t=63$
+it is $63,64,65$ with $3\mid63$, $4\mid64$ and $5\mid65$.  A sequence of
+natural numbers that starts at $0$, tends to infinity and rises by at most $3$
+at each step cannot step over the block $\{3,4,5\}$: it has a first value at
+least $3$, that value is at most $5$, and every member of $\{3,4,5\}$ is
+divisible by one of the three moduli.
+\end{example}
+
 \begin{theorem}[bounded rise cannot avoid fresh moduli]\label{res:barrier}
 Let $u:\N\to\N$ tend to infinity with $u_{n+1}\le u_n+B$ for a fixed $B>0$.
 Then $u$ cannot permanently avoid infinitely many fresh pairwise coprime
@@ -607,12 +712,22 @@ free to jump the window.  We have not looked for a sequence of unbounded rise
 avoiding every modulus.  The statement is elementary and we are not aware of a
 prior published form of it, but we would not be surprised if one exists.
 
+The moduli are indexed by the same set as the sequence, and the $i$th of them
+is asked to divide no value $u_t$ with $t>i$; nothing at all is asked of it at
+or before its own index.  That asymmetry is what makes the hypothesis available
+in the application below, where $m_i$ is the $i$th multiplier and only the
+later numerators are known to be coprime to it.
+
 The barrier applies to the problem because a \emph{reduced} exact tail already
 carries pairwise coprime moduli.  Call $(u,v)$ a reduced exact tail with
 multipliers $a$ when $\gcd(u_n,v_n)=1$,
 \[
  u_{n+1}+v_n=a_nu_n,\qquad v_{n+1}=a_nv_n .
 \]
+Here $u$ is the numerator and $v$ the denominator: the two recurrences are
+those of Section~\ref{sec:state}, with $u$ in the role of the tail state $C$
+and $v$ in that of the denominator state $D$, and with coprimality imposed at
+every index.
 
 \begin{proposition}[reduced tails are pairwise coprime]\label{res:reduced}
 In a reduced exact tail, $a_n$ is coprime to $v_n$; the multipliers at distinct
@@ -634,15 +749,30 @@ bounded-rise exclusion}, together with its eventual form, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1060}{no_eventuallyBoundedRise_reducedTail}{eventual
 reduced exclusion}.
 
+\begin{example}[Sylvester's sequence as a reduced exact tail]\label{ex:reduced}
+Put $u_n=1$ and $v_n=D_n=1,2,6,42,1806,\ldots$ as in
+Example~\ref{ex:sylvester}, with multipliers $a_n=v_n+1=2,3,7,43,1807,\ldots$.
+Then $\gcd(u_n,v_n)=1$, $u_{n+1}+v_n=1+v_n=a_nu_n$ and $v_{n+1}=a_nv_n$, so
+this is a reduced exact tail, and Proposition~\ref{res:reduced} returns the
+classical fact that Sylvester's numbers are pairwise coprime.  Its numerator is
+constant, so it satisfies every hypothesis of the exclusion just stated except
+divergence; since the tail exists, that hypothesis cannot be dropped.
+\end{example}
+
 The orbit of Section~\ref{sec:state} is not reduced, so one more step is needed
 before the barrier can be applied to it: the common factor must stop changing.
-This is the only step connecting the orbit of Section~\ref{sec:state} to the
-reduced tails of Proposition~\ref{res:reduced}, and it is where the cofinal
-boundedness in the proof of Theorem~\ref{res:bounded} is used.
+We call a set of indices \emph{cofinal} when it is infinite, and say that a
+property holds \emph{cofinally} when the set of indices at which it holds is
+cofinal.  The step below is the only one connecting the orbit of
+Section~\ref{sec:state} to the reduced tails of
+Proposition~\ref{res:reduced}, and it is where the cofinal boundedness in the
+proof of Theorem~\ref{res:bounded} is used.
 
 \begin{proposition}[the tail gcd stabilises]\label{res:gcdstab}
-Let $(a,D,C)$ be an exact natural orbit whose centred state is negative
-cofinally, with magnitudes bounded along that cofinal set.  Then
+Let $(a,D,C)$ be an exact natural orbit, that is, a triple of $\N$-valued
+sequences with $C_{n+1}+D_n=a_nC_n$ and $D_{n+1}=a_nD_n$, whose centred state
+$E_n=\ctr(a_n,D_n,C_n)$ is negative cofinally, with magnitudes bounded along
+that cofinal set.  Then
 $\gcd(C_n,D_n)$ is eventually constant, and beyond that index the orbit divided
 by the stable gcd is a reduced exact tail.
 \end{proposition}
@@ -682,12 +812,24 @@ second endpoint under a different finiteness hypothesis, and neither theorem
 contains the other.  Theorem~\ref{res:mass} assumes no orbit structure, only
 the state recurrence with $C_n>0$, so it is not a special case of
 Theorem~\ref{res:bounded}; conversely hypothesis~(5) below does not imply
-finite normalised negative mass, since a constant negative part $-b$ gives
-$C_n\sim bn$ and hence a divergent $\sum_n(-E_n)_+/C_n$.  The hypotheses of
+finite \emph{normalised negative mass}, by which we mean convergence of
+$\sum_n(-E_n)_+/C_n$, where $x_+=\max(x,0)$, since a constant negative part
+$-b$ gives $C_n\sim bn$ and hence a divergent sum.  The hypotheses of
 Theorem~\ref{res:bounded} are listed
 in full, because two of them are analytic inputs
 that are assumed here rather than derived from the growth condition of
 Problem~\ref{res:problem}.
+
+Informally, hypotheses~(5) and~(6) below pull against each other.  By
+Proposition~\ref{res:update}, hypothesis~(5) caps the rise of the tail state at
+$B$ per step, while hypothesis~(6), once the error is nowhere zero, forces the
+tail state to diverge.  Proposition~\ref{res:gcdstab} makes the orbit reduced,
+and Theorem~\ref{res:barrier} then converts the tension into a contradiction:
+an integer sequence tending to infinity with upward steps of size at most $B$
+cannot permanently avoid the pairwise coprime moduli a reduced tail carries.
+The
+complementary case, in which the error is eventually positive, is the descent
+of Theorem~\ref{res:descent}.
 
 \begin{theorem}[bounded negative part]\label{res:bounded}
 Let $a,C,D:\N\to\N$ and $E:\N\to\Z$ satisfy
@@ -705,15 +847,17 @@ Then $E_n=0$ for all sufficiently large $n$.
 \end{theorem}
 
 \begin{proof}
-Suppose not.  By Theorem~\ref{res:absorb} and its contrapositive form, $E$ is
-nowhere zero beyond the centring threshold.  If $E$ is negative cofinally,
+Suppose not.  We first remove every late zero: by Theorem~\ref{res:absorb} and
+its contrapositive form, $E$ is nowhere zero beyond the centring threshold.
+Two cases remain.  If $E$ is negative cofinally,
 then~(5) bounds those magnitudes, so Proposition~\ref{res:gcdstab} makes the
 tail gcd stabilise and the orbit may be taken reduced past that point.
 Hypothesis~(5) with
 Proposition~\ref{res:update} gives $C_{n+1}\le C_n+B$, a bounded rise;
 hypothesis~(6) with $E$ nowhere zero gives $C_n\to\infty$.  A reduced exact
 tail with a divergent numerator and bounded rise is excluded by
-Theorem~\ref{res:barrier}.  If instead $E$ is eventually positive, the descent
+Theorem~\ref{res:barrier}.  It remains to treat the case that $E$ is eventually
+positive, and there the descent
 of Theorem~\ref{res:descent} applies and forces $E$ to vanish, contradicting
 nowhere-vanishing.
 \end{proof}
@@ -799,6 +943,20 @@ the state system, not a derivation of normalised vanishing from
 Problem~\#243.  Normalised vanishing is still an input: it is what converts the
 bound on $C$ into a bound on $|E_n|$, and nothing here derives it from the
 growth condition of Problem~\ref{res:problem}.
+
+\begin{example}[the product bound at a geometric rate]\label{ex:mass}
+Suppose $C_0=100$ and $(-E_n)_+/C_n\le2^{-n-1}$ for every $n$, so that the
+normalised negative mass is at most $1$; the constraint at $n=0$ still permits
+$E_0$ as negative as $-50$.  Since $1+x\le e^{x}$,
+\[
+ C_N\le100\prod_{n<N}\bigl(1+2^{-n-1}\bigr)\le100e<272
+\]
+for every $N$.  Normalised vanishing at $K=272$ then gives
+$272|E_n|<C_n<272$ for all large $n$, so $|E_n|<1$ and $E_n=0$ there.  The
+constant $272$ comes from the total mass and not from any single magnitude,
+which is why the hypothesis of Theorem~\ref{res:mass} is summability of
+$(-E_n)_+/C_n$ and not a bound on it.
+\end{example}
 
 \section{Complements and further questions}\label{sec:open}
 
@@ -967,8 +1125,10 @@ factorial residue reduction & \lrefx{Erdos243/FiniteHorizonResidue.lean}{134}{fo
 
 \section{A factorial residue reduction for forced orbits}\label{app:residue}
 
-In the normalised constant-negative case the next multiplier is determined: at
-index $n$ its numerator is
+In the case $m=c=1$ of Section~\ref{sec:constant}, where the shape
+equation~\eqref{eq:shape} reads $D_n+1=(a_n-1)(n+1)$, each multiplier is
+determined by its predecessor; we call such an orbit \emph{forced}.  At index
+$n$ the numerator of the next multiplier is
 \[
  \fnum(n,a)=(n+1)a^{2}-(n+2)a+(n+3),
 \]
@@ -977,7 +1137,10 @@ the
 numerator}, and the divisor is $n+2$.  The orbit survives a step when that
 division is exact, giving a survival predicate, the
 \lword{Erdos243/FiniteHorizonResidue.lean}{75}{ForcedSurvives}{survival
-predicate}.  Deciding survival by iteration is expensive because the orbit
+predicate}.  Example~\ref{ex:shape} is the forced orbit from $a=3$ read this
+way: $\fnum(0,3)=6$ is divisible by $2$ and gives $a_1=3$, while
+$\fnum(1,3)=13$ is not divisible by $3$, so the orbit stops there.  Deciding
+survival by iteration is expensive because the orbit
 grows doubly exponentially, and it is unnecessary: survival over a finite
 horizon depends on the initial value only through a factorial residue.
 
@@ -1007,6 +1170,12 @@ cancellation}; the modulus identifications are the
 form} and the
 \lword{Erdos243/FiniteHorizonResidue.lean}{69}{horizonModulus_zero_eq_factorial}{factorial
 value at the initial index}.
+
+At $h=1$ the modulus is $2!=2$, and surviving one update means
+$2\mid a^{2}-2a+3$, which holds exactly for odd $a$: for instance
+$\fnum(0,3)=6$ but $\fnum(0,4)=11$.  So one step of survival is decided by the
+parity of $a$ alone, which is Theorem~\ref{res:residue} at its smallest
+nontrivial horizon.
 
 The search this supported is superseded.  Running it over initial states below
 $5000$ produced forced prefixes of length $17$ and no longer, which was

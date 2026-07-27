@@ -59,25 +59,28 @@ $\lcm(F)$, and that denominator strictly exceeds $\lcm(F)$.
 For \emph{infinite} supports we record what rationality would force on an
 arbitrary $A$, which is the part of this development that meets the universal
 quantifier rather than sampling it.  A rational value is equivalent to a
-tempered integer carry orbit; for infinite $A$ that orbit is unbounded; the
-zero windows of $\scA_A$ then have length at most $\varepsilon\log_2 N+O(1)$
-uniformly in $A$; a summable support has reciprocal mass at least
-$1/\operatorname{ord}_v(2)$; and rational values correspond exactly to
-Boolean--M\"obius carry certificates, from which the support is reconstructed
-rather than guessed.  These are necessary conditions on a counterexample.
-Jointly they are not yet contradictory, and we do not present them as
-progress towards the universal statement.
+tempered integer carry orbit, that is, to an integer solution $u$ of the
+long-division recurrence with $u(n)=o(2^n)$; for infinite $A$ that orbit is
+unbounded; the zero windows of $\scA_A$, the runs of consecutive integers with
+no divisor in $A$, then have length at most $\varepsilon\log_2 N+O(1)$
+uniformly in $A$; a summable support has reciprocal mass $\sum_{a\in A}1/a$ at
+least $1/\operatorname{ord}_v(2)$, where $v$ is the odd part of the
+denominator; and rational values correspond exactly to Boolean--M\"obius carry
+certificates, from which the support is reconstructed rather than guessed.
+These are necessary conditions on a counterexample.  Jointly they are not yet
+contradictory, and we do not present them as progress towards the universal
+statement.
 
-Finally we correct a frontier this note previously misreported.  The
-squarefree support was listed here as open; Duverney and Tachiya settled it at
-base~$2$ in 2019.  Its divisor incidence $2^{\omega(n)}-1$ is odd for every
-$n\ge2$, so the two block-certificate engines that require first-block
-divisibility provably have no instance at any even base; at $b=2$, where the
-value is now known to be irrational, that exhibits both engines failing on a
-settled value.  Adjoining $1$ to the support changes the value by the rational
+The squarefree support is not open at base~$2$: Duverney and Tachiya proved
+irrationality there in 2019.  Its divisor incidence is $2^{\omega(n)}-1$, where
+$\omega(n)$ is the number of distinct prime factors of $n$, and this is odd for
+every $n\ge2$; the two block-certificate arguments that require first-block
+divisibility therefore have no instance at any even base, and at $b=2$ they
+fail on a value known to be irrational.  Adjoining $1$ to the support changes
+the value by the rational
 $1/(b-1)$ and the incidence by one, so the obstruction is a property of a
-normalisation and not of the value.  Rationality is in fact invariant under
-every finite change of support, which is the general form of that observation.
+normalisation and not of the value.  Rationality is invariant under every
+finite change of support, which is the general form of that observation.
 \end{abstract}
 
 \statusboundary
@@ -108,7 +111,38 @@ sequences.  Its constraint is that the coefficients of the binary expansion
 are divisor counts drawn from a single support, and every theorem below is a
 statement about sequences of that shape.
 
+A small instance fixes the notation.  At $A=\{2,3\}$ the incidence sequence
+begins
+\[
+  \scA_A(1),\dots,\scA_A(12)=0,1,1,1,0,2,0,1,1,1,0,2,
+\]
+the value $2$ occurring at the multiples of $6$ and the value $0$ at the
+integers prime to $6$, and~\eqref{eq:incidence} reads
+$\tfrac13+\tfrac17=\tfrac{10}{21}$.
+
+Several statements below hold at every integer base, so we write
+$X_A(b)=\sum_{a\in A}(b^a-1)^{-1}$ for the value at an integer base $b\ge2$,
+with $X_A=X_A(2)$.  Base~$2$ is the case Problem~\ref{res:problem} asks about
+and is meant whenever no base is named.
+
+\paragraph{Structure.}  Section~\ref{sec:period} settles the finite supports:
+the multiplicative order of the base modulo their reduced denominators is
+determined exactly.  Section~\ref{sec:forced} collects what
+rationality would force on an arbitrary infinite support, which is the part of
+this note that quantifies over every support rather than sampling.
+Section~\ref{sec:map} groups the supports already known to give irrational
+values by the argument that reaches them.  Section~\ref{sec:squarefree} treats
+the squarefree support, whose value is known at base~$2$ and which two of the
+arguments used here provably cannot reach at any even base.
+Section~\ref{sec:geometry} is the geometry of the set of attainable values, and
+the value $1/2$ inside it.  Section~\ref{sec:open} states what remains.
+
 \section{Exact periods of finite partial sums}\label{sec:period}
+
+A finite support has a rational value, so for a finite support the question is
+not irrationality but arithmetic: how large the denominator is, and how the
+base sits inside it.  Theorem~\ref{res:period} answers the second exactly, and
+the first by a strict lower bound.
 
 For a finite nonempty $F\subseteq\Npos$ and an integer $b\ge2$, write
 \[
@@ -117,7 +151,9 @@ For a finite nonempty $F\subseteq\Npos$ and an integer $b\ge2$, write
 \]
 
 \begin{theorem}[finite-period noncollapse]\label{res:period}
-The reduced denominator is coprime to $b$, and
+Let $F\subseteq\Npos$ be finite and nonempty, let $b\ge2$ be an integer, and
+let $D_F>0$ be the denominator of $x_F(b)$ in lowest terms.  Then $D_F$ is
+coprime to $b$, and
 \[
   \operatorname{ord}_{D_F}(b)=\lcm\{n:n\in F\}.
 \]
@@ -133,6 +169,26 @@ coprimality is
 and the growth clause is
 \mword{Erdos249257/CertificateKernel.lean}{5260}{lcm_lt_den_finiteErdosSum}{checked}.
 
+Five instances at $b=2$, which also show what the hypothesis
+$\lcm(F)\ge2$ is for:
+\begin{center}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$F$ & $x_F(2)$ & $D_F$ & $\lcm(F)$ & $\operatorname{ord}_{D_F}(2)$\\
+\midrule
+$\{1\}$   & $1$      & $1$   & $1$  & $1$\\
+$\{2\}$   & $1/3$    & $3$   & $2$  & $2$\\
+$\{2,3\}$ & $10/21$  & $21$  & $6$  & $6$\\
+$\{2,6\}$ & $22/63$  & $63$  & $6$  & $6$\\
+$\{4,6\}$ & $26/315$ & $315$ & $12$ & $12$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The last two columns agree in every row, which is the order statement.  The
+first row is the only finite nonempty support with $\lcm(F)=1$, and the only
+one on which $\lcm(F)<D_F$ fails; that is what the hypothesis $\lcm(F)\ge2$
+excludes.
+
 The content is a noncollapse statement.  Clearing denominators over
 $b^{\lcm(F)}-1$ makes the period at most $\lcm(F)$ immediately; what is not
 immediate is that cancellation in the numerator cannot bring it below.  The
@@ -141,35 +197,52 @@ route, a prime-power modulus dividing $b^{n}-1$ on which $b$ has order exactly
 $n$; no single reduction can remove all of them at once.  Prime powers rather
 than primes is not a technicality.  At $(b,n)=(2,6)$ no prime divisor of
 $2^6-1=63$ has order $6$ --- the Zsigmondy exception --- while $9$ does, and it
-is the prime power that carries the witness.  The growth clause then follows
-formally, since the order divides $\ph(D_F)<D_F$.
+is the prime power that carries the witness.  The row $F=\{2,6\}$ above is that
+case in full: $D_F=63=9\cdot7$, and since $2$ has order $2$ modulo $3$ and
+order $3$ modulo $7$, the order $6$ can only come from $9$.  The growth clause
+then follows formally, since the order divides $\ph(D_F)<D_F$, where $\ph$ is
+Euler's totient.
 
 Two boundaries.  This is an unconditional statement about every finite
 support, not a bounded table of examples, and not an implication with an open
 hypothesis; but it settles no infinite support, and no limit of it does.
-Denominator-period control is part of the classical engine behind
+Denominator-period control is part of the classical method behind
 Erd\H{o}s's 1948 argument~\cite{erdos1948}.  Whether this exact sharp form
 appears in the literature has not been assessed, and no novelty is claimed.
 
 \section{What a rational value would force}\label{sec:forced}
 
-The families of Section~\ref{sec:map} are supports for which irrationality is
-known.  This section is the other half, and the half that meets
+Section~\ref{sec:map} below lists supports for which irrationality is known.
+This section is the other half, and the half that meets
 Problem~\ref{res:problem} rather than sampling it: statements that hold for
-\emph{every} infinite support whose value is rational.  Fix base~$2$ and
-suppose throughout that $A\subseteq\Npos$ has $X_A\in\Q$.
+\emph{every} infinite support whose value is rational.  The base is $2$
+throughout, and each statement carries its own hypotheses.
 
 \paragraph{A carry orbit, and it is unbounded.}
 Binary long division turns a hypothetical rational value into an integer
-recurrence.  For any coefficient sequence with $c(n)\le n$ --- and
-$\scA_A(n)\le d(n)\le n$ qualifies --- the series $\sum c(n)2^{-n}$ is
-rational exactly when a \emph{tempered} integer carry orbit exists, and every
-such orbit is then the scaled tail, so the orbit is unique rather than merely
+recurrence.  Fix an integer $v\ge1$ and a sequence $f\colon\Npos\to\N$ of
+coefficients.  Call an integer sequence $u\colon\N\to\Z$ a \emph{tempered carry
+orbit} for $f$ with multiplier $v$ if
+\[
+  u(n+1)=2u(n)-v\,f(n+1)\quad\text{for every }n\ge0,
+  \qquad\text{and}\qquad u(n)=o(2^{n}).
+\]
+The recurrence is one step of long division in base~$2$: double the remainder,
+then pay out the next coefficient.  The growth condition is what pins the
+solution down, since two solutions of the recurrence differ by $C\,2^{n}$ for a
+constant $C$, and only $C=0$ survives $u(n)=o(2^{n})$.  For any coefficient
+sequence with $f(n)\le n$ --- and $\scA_A(n)\le d(n)\le n$ qualifies, $d$ being
+the divisor function --- the series $\sum f(n)2^{-n}$ is rational exactly when
+a tempered carry orbit exists for some $v\ge1$, and every such orbit is then
+the scaled tail
+$u(n)=v\sum_{j\ge1}f(n+j)2^{-j}$, so the orbit is unique rather than merely
 available
 (\mword{Erdos249257/GenericTailOrbitRigidity.lean}{425}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{checked}).
+The next theorem exhibits such an orbit for $X_A$ itself, with the coefficient
+sequence shifted past the power of $2$ in the denominator.
 
 \begin{theorem}[unbounded carry states]\label{res:unbounded}
-Let $A$ be infinite with $X_A=p/(2^cv)$, $v\ge1$.  Then there is
+Let $A\subseteq\Npos$ be infinite with $X_A=p/(2^cv)$, $v\ge1$.  Then there is
 $u\colon\N\to\Npos$ with $u(n)=v\cdot(\text{binary tail of }\scA_A\text{ at }c+n)$
 satisfying the exact recurrence
 \[
@@ -188,10 +261,12 @@ one whose carry dynamics eventually cycle through a bounded set of states.
 \paragraph{Divisor coverage cannot have long gaps.}
 Say that $\scA_A$ has a \emph{zero window} of length $h$ at $N$ if
 $\scA_A(N+1)=\dots=\scA_A(N+h)=0$, that is, if no element of $A$ divides any
-of $h$ consecutive integers.
+of $h$ consecutive integers.  At $A=\{2,3\}$, for instance, $\scA_A$ vanishes
+exactly on the integers prime to $6$, so every zero window has length at
+most $1$: one of any two consecutive integers is even.
 
 \begin{theorem}[sublogarithmic zero windows]\label{res:sublog}
-Let $A$ be nonempty with $X_A=p/(2^cv)$, $v\ge1$.  For every
+Let $A\subseteq\Npos$ be nonempty with $X_A=p/(2^cv)$, $v\ge1$.  For every
 $\varepsilon>0$ there is a constant $B$, depending only on $\varepsilon$, $c$
 and $v$, such that every zero window of $\scA_A$ at $c+N$ has length
 \[
@@ -207,16 +282,16 @@ Read as a constraint on counterexamples, this says a rational-valued support
 must divide into the integers densely: its divisor coverage may not be absent
 across a run of length even $\varepsilon\log_2N$, for arbitrarily small
 $\varepsilon$, once $N$ is large.  The proof compares an exponential lower
-bound forced on the tail by the carry recurrence with a subpower envelope for
-divisor sums.
+bound forced on the tail by the carry recurrence with an upper bound for
+divisor sums that grows more slowly than any fixed power of $N$.
 
 \paragraph{Reciprocal mass.}
 Let $\operatorname{ord}_v(2)$ denote the multiplicative order of $2$ modulo an
 odd $v>1$, and write the reciprocal mass of $A$ for $\sum_{a\in A}1/a$.
 
 \begin{theorem}[reciprocal mass bound]\label{res:mass}
-Suppose $\sum_{a\in A}1/a$ converges, $X_A=p/(2^cv)$ with $v>1$ odd and
-$\gcd(p,v)=1$.  Then
+Let $A\subseteq\Npos$ be such that $\sum_{a\in A}1/a$ converges, and suppose
+$X_A=p/(2^cv)$ with $v>1$ odd and $\gcd(p,v)=1$.  Then
 \[
   \sum_{a\in A}\frac1a\;\ge\;\frac1{\operatorname{ord}_v(2)} .
 \]
@@ -224,6 +299,9 @@ $\gcd(p,v)=1$.  Then
 
 \noindent Checked as
 \mword{Erdos249257/RationalSupportCarrySkeleton.lean}{1478}{one_div_oddOrder_le_reciprocalMass_of_support_fraction}{Lean}.
+A finite support already supplies an instance: $A=\{2,3\}$ has $X_A=10/21$, so
+$c=0$, $v=21$, $\gcd(p,v)=1$ and $\operatorname{ord}_{21}(2)=6$, and the bound
+reads $\tfrac12+\tfrac13\ge\tfrac16$.
 The summability hypothesis is doing real work: the theorem says that a
 rational value with odd denominator part $v$ is available only to supports
 that are either thick enough to have reciprocal mass at least
@@ -233,8 +311,14 @@ by itself exclude anything; it constrains the pair (support, denominator)
 jointly.
 
 \paragraph{Rational values are exactly Boolean--M\"obius carry certificates.}
-The four statements above are consequences.  The next is an equivalence, and
-is the sharpest description of rational-valued supports the development has.
+The three theorems above give necessary conditions.  The next statement is an
+equivalence, and is the sharpest description of rational-valued supports the
+development has.  It removes the support from the description altogether, which
+is possible because the support can always be read back off the incidence
+sequence: with
+$\mu$ the M\"obius function, $*$ Dirichlet convolution
+$(g*h)(n)=\sum_{d\mid n}g(d)h(n/d)$ and $\mathbf 1_A$ the indicator of $A$, the
+identity $\scA_A=\mathbf 1_A*1$ inverts to $\mu*\scA_A=\mathbf 1_A$.
 
 \begin{theorem}[Boolean--M\"obius carry correspondence]\label{res:bmc}
 Let $p\in\Z$ and $q\ge1$.  There exists a support $A$ with $0\notin A$, with
@@ -245,19 +329,26 @@ recovered as
 \[
   A=\{n:(\mu*Q_U)(n)=1\},
 \]
-where $Q_U$ is the carry quotient of $U$.
+where $Q_U$ is the carry quotient of $U$, namely $Q_U(0)=0$ and
+$Q_U(n)=\bigl(2U(n-1)-U(n)\bigr)/q$ for $n\ge1$.
 \end{theorem}
 
 \noindent Checked as
 \mword{Erdos249257/BooleanMobiusCarry.lean}{948}{exists_normalized_support_fraction_iff_exists_booleanMobiusCarry}{Lean}.
-The certificate asks for a positive orbit obeying the carry recurrence, with a
-square-root growth bound, whose M\"obius quotient takes only the values $0$
-and $1$.  That Boolean condition is exactly the statement that the quotient is
-the indicator of a set, and M\"obius inversion then returns that set.  So the
-search for a rational-valued Mersenne subseries is, without loss, a search for
-one integer orbit with a divisibility-flavoured Boolean condition.
+The certificate asks for an orbit starting at $U(0)=p$, positive at every
+index, obeying the carry recurrence, obeying a square-root growth bound, and
+whose M\"obius quotient $\mu*Q_U$ takes only the values $0$ and $1$.  That
+Boolean condition is exactly the statement that the quotient is the indicator
+of a set, and M\"obius inversion then returns that set.  So the search for a
+rational-valued Mersenne subseries is, without loss, a search for one integer
+orbit with a divisibility-flavoured Boolean condition.
 
-\paragraph{What this does and does not amount to.}
+One boundary on the equivalence.  The support it produces is not required to be
+infinite, and a finite support supplies a certificate for its own value, so a
+certificate is not by itself a counterexample to Problem~\ref{res:problem}.
+What the equivalence changes is the search space, not the difficulty.
+
+\paragraph{The four conditions together.}
 Taken together: a counterexample to Problem~\ref{res:problem} would have an
 unbounded carry orbit obeying an exact linear recurrence, sublogarithmic
 divisor-coverage gaps uniformly in the support, reciprocal mass bounded below
@@ -323,8 +414,8 @@ arbitrary infinite $A$ & --- & \textbf{Open} (Problem~\ref{res:problem}) \\
 \end{tabular}
 \end{table}
 
-\noindent Four remarks, each correcting something an earlier draft of this
-note got wrong or left unsaid.
+\noindent Four remarks on the table: one on containment between the
+mechanisms, two on the literature rows, and one on what ``checked here'' means.
 
 \emph{The mechanisms are not nested, and one non-containment is proved.}  The
 base-$b$ full-support theorem is exactly the $A=\Npos$ statement; the
@@ -339,28 +430,28 @@ which are neither eventually periodic nor pairwise coprime with summable
 reciprocals.  No list contains another, and their union does not exhaust the
 infinite supports.
 
-\emph{Duverney and Tachiya belong in this table, and were missing from it.}
+\emph{One theorem of Duverney and Tachiya generates several rows.}
 Their refinement of the Chowla--Erd\H{o}s method~\cite{duverneytachiya}
 proves, for a pairwise coprime sequence $E$ of polynomial growth and the set
 $F_s(E)$ of products of its members with exponents below $s$, that
 $1$ and the values $\sum_{n\in F_s}(q^{jn^i}-1)^{-1}$ are linearly independent
-over $\Q$ whenever $|q|^{L}\le s$, with $L=\lcm(1,\dots,\ell)$.  This is a
+over $\Q$ whenever $|q|^{L}\le s$, with $L=\lcm(1,\dots,\ell)$ and $\ell$
+bounding the exponent $i$.  This is a
 row-generating theorem, not an isolated example: with $E$ the primes,
 $s=\infty$ returns the full support at every base, while $s=2$ returns the
 squarefree support.  The constraint is what confines the squarefree case to
 base~$2$, and it is sharp in an unusually rigid way: $s=2$ forces $\ell=1$ and
 then $|q|\le2$, so no integer base $b\ge3$ and no higher index $i\ge2$ is
 reachable for that support by this route.  Their conclusion is also stronger
-than irrationality, being linear independence of a whole family.  We had cited
-none of this.
+than irrationality, being linear independence of a whole family.
 
 \emph{The two analytic rows do not have the same standing.}  Theorem 1.3
 of~\cite{taoteravainen2025} proves the prime-support case at base~$2$, the
 series there being $\sum_{n\ge1}\omega(n)/2^n$.  The extension to every
 integer base, and the prime-power support --- which those authors themselves
 identify with Problem~\ref{res:problem} --- are asserted by remark, with the
-modifications explicitly left to the reader.  Printing all three at one tier,
-as this note previously did, overstated two of them.
+modifications explicitly left to the reader.  The table keeps the three apart,
+and only the first is proved.
 
 \emph{Formalisation is not priority.}  Rows marked ``checked here'' are Lean
 statements accepted by the pinned kernel.  For the full support that is a
@@ -370,8 +461,8 @@ this table.
 
 \begin{remark}[signed periodic weights: a gap in the method, not in the
 mathematics]\label{res:signed}
-Dropping nonnegativity weakens what the certificate machinery returns, and it
-is worth being exact about where.  For $u\colon\Npos\to\Z$ periodic and
+Dropping nonnegativity weakens the conclusion available, and it is worth being
+exact about where.  For $u\colon\Npos\to\Z$ periodic and
 $b\ge2$, what is checked here is a \emph{dichotomy}: the series
 $\sum_{n\ge1}u(n)/(b^n-1)$ is irrational, \emph{or} some power of $b$ times
 its value is an integer
@@ -394,9 +485,12 @@ records a second, sharper instance of the same phenomenon.
 \section{A removable obstruction: the squarefree support}\label{sec:squarefree}
 
 Let $\Asf=\{d\ge2: d\text{ squarefree}\}$: a support of density $6/\pi^2$, far
-denser than the primes, and not periodic.  An earlier version of this note
-listed its value as open and asked for help deciding it.  That was wrong, and
-the correction is the point of this section.
+denser than the primes, and not periodic.  Its value at base~$2$ is irrational,
+by a theorem of Duverney and Tachiya from 2019 recalled below; an earlier
+version of this note listed it as open, having missed that reference.  What
+this section establishes is that two of the block-certificate arguments used
+here cannot reach that support at any even base, and that the reason lies in a
+normalisation rather than in the value.
 
 \begin{theorem}[squarefree divisor incidence]\label{res:sfcount}
 For every $n\ge1$ the number of squarefree divisors of $n$ is $2^{\omega(n)}$,
@@ -417,7 +511,9 @@ The proof is the bijection between squarefree divisors of $n$ and subsets of
 its prime factors
 (\lword{Erdos257/SquarefreeSupportIncidence.lean}{30}{squarefreeDivisors_eq_image}{Lean}),
 so the count is $2^{\omega(n)}$; removing $d=1$ leaves an odd number whenever
-$\omega(n)\ge1$.
+$\omega(n)\ge1$.  At $n=12=2^2\cdot3$ the squarefree divisors are $1,2,3,6$, so
+$\scA_{\Asf}(12)=3$; at $n=30$ they are the eight divisors of $30$ and
+$\scA_{\Asf}(30)=7$.
 
 \subsection{The value is known, at base 2}
 
@@ -447,20 +543,34 @@ admissibility condition $|q|^L\le s$ fails at $s=2$ for every $|q|\ge3$, so
 the squarefree support at bases $b\ge3$ is not covered by their corollary and
 remains, as far as we know, open.
 
-\subsection{Two certificate engines are nevertheless blind to it}
+\subsection{Two block-certificate hypotheses have no instance}
 
-The development reaches its infinite supports through block certificates.  Two
-of the engines share a first-block divisibility condition, and the parity of
-Theorem~\ref{res:sfcount} refutes it outright.
+The infinite supports handled in this development are reached by
+\emph{block-certificate} arguments, and it is worth saying plainly what one of
+those is before showing that two of them cannot apply here.  Such an argument
+fixes a base $b$ and asks, at every precision $q$, for a block of consecutive
+coefficients beyond some point $N$ subject to: a divisibility condition on the
+first $K$ coefficients of the block, an upper bound $C$ on the weighted sum of
+the next $L-K$, a nonzero coefficient beyond the block, and the inequality
+$q(C+N+L+2)<b^{L}$, which makes $b^{L}$ large compared with the precision and
+the rest of the data.  Apart from the requirement that some coefficient beyond
+the block be nonzero, each of these involves only finitely many terms of the
+coefficient sequence, and the data $N$, $K$, $L$ and $C$ are supplied
+separately at each precision.  Two of these arguments share the same first-block divisibility
+condition, and the parity of Theorem~\ref{res:sfcount} refutes it outright.
 
-\begin{corollary}[both divisibility-first engines have no instance]\label{res:blind}
-For the squarefree support and every even base $b\ge2$, neither the digitwise
+\begin{corollary}[neither divisibility-first hypothesis has an instance]\label{res:blind}
+For the squarefree support $\Asf$ and every even base $b\ge2$, neither the digitwise
 nor the carry-aware block-certificate hypothesis holds.  Both fail already at
 precision $q=b^2$.
 \end{corollary}
 
 \begin{proof}
-Both engines ask, for every precision $q$, for $N$, $K\le L$ and $C$ with a
+The hypothesis quantifies over every precision, so it is enough to exhibit one
+precision at which no admissible data exist; we take $q=b^{2}$ and split on
+whether the first block is empty.
+
+Both hypotheses ask, for every precision $q$, for $N$, $K\le L$ and $C$ with a
 first-block condition on $\scA_{\Asf}(N+1),\dots,\scA_{\Asf}(N+K)$, a middle
 bound $\sum_{r=K+1}^{L}\scA_{\Asf}(N+r)b^{L-r}\le C$, a nonzero coefficient
 beyond $N+L$, and $q(C+N+L+2)<b^{L}$.  Take $q=b^2$ and write $f=\scA_{\Asf}$.
@@ -486,10 +596,10 @@ and parity lemmas, and is marked as such in
 
 \subsection{The obstruction is a normalisation, not the value}
 
-Corollary~\ref{res:blind} is now a statement about two engines failing on a
-value that Corollary~\ref{res:sfsettled} shows to be irrational.  So the
-interesting question is not whether the value can be reached, but what the
-failure is a property \emph{of}.  It is a property of where the support starts.
+Corollary~\ref{res:blind} is a statement about two arguments failing on a value
+that Corollary~\ref{res:sfsettled} shows to be irrational.  The question it
+raises is therefore not whether the value can be reached, but what the failure
+is a property \emph{of}.  It is a property of where the support starts.
 
 Adjoin $1$ to the support and write $\Asf^{+}=\Asf\cup\{1\}$, the full
 squarefree support.  Then
@@ -500,16 +610,15 @@ so the two supports pose the same irrationality question at every base, while
 the divisor incidence changes from $2^{\omega(n)}-1$ to $2^{\omega(n)}$ ---
 from odd to even at every $n\ge2$.  The parity obstruction of
 Corollary~\ref{res:blind} evaporates under a shift that provably cannot change
-the answer.  Better: the shifted first-block condition at base~$2$ asks for
+the answer.  More is true: the shifted first-block condition at base~$2$ asks for
 $2^{r}\mid 2^{\omega(N+r)}$, that is $\omega(N+r)\ge r$ for $1\le r\le K$, and
 a Chinese-remainder construction reserving $r$ fresh primes for each shift $r$
 supplies such an $N$ for every $K$.
 
-We are deliberate about what follows.  It does \emph{not} follow that either
-engine certifies the shifted support: the opening block is one of three
-conditions, and the middle bound and the arithmetic inequality are untouched
-by this observation.  What does follow is a methodological point worth more
-than the original corollary was: an obstruction stated against a coefficient
+It does \emph{not} follow that either argument certifies the shifted support:
+the opening block is one of the conditions listed above, and the middle bound
+and the arithmetic inequality are untouched by this observation.  What does
+follow is a methodological point: an obstruction stated against a coefficient
 sequence can be an artefact of the normalisation chosen for that sequence.
 Before a no-go result is reported as a property of a problem, the coordinate
 it is stated in should be varied by a transformation the problem is known to
@@ -542,9 +651,11 @@ coordinates it was written in.
 \section{Achievement-set geometry and the value \texorpdfstring{$1/2$}{1/2}}
 \label{sec:geometry}
 
-The set of all values obtainable from the base-$2$ Mersenne weights is the
-achievement set
-$\Ach=\{\sum_{n\ge1}\varepsilon_n\wgt n:\varepsilon_n\in\{0,1\}\}$.
+Problem~\ref{res:problem} asks whether every value obtainable from infinitely
+many of the weights $\wgt n=(2^n-1)^{-1}$ is irrational.  The set of all values
+obtainable, from finite and infinite selections alike, is the achievement set
+$\Ach=\{\sum_{n\ge1}\varepsilon_n\wgt n:\varepsilon_n\in\{0,1\}\}$, and this
+section is about its geometry.
 
 \begin{theorem}[geometry of $\Ach$]\label{res:geometry}
 $\Ach$ is compact, perfect, totally disconnected and nowhere dense, and has
@@ -577,15 +688,24 @@ $T_n$, its nested intersection is $\Ach$, and
 dominated by $2^{1-j}$.  Continuity of measure from above therefore gives
 $\lambda(\Ach)=1$.
 
-Membership is equivalent to survival of the greedy expansion at every level
-(\mword{Erdos249257/GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}),
-and exact rational death certificates prove non-membership: $3/4\notin\Ach$
+Membership is characterised level by level, by a greedy expansion.  Run through
+$n=1,2,\dots$ carrying a remainder, initially the target $x$, and at level $n$
+subtract $\wgt n$ from the remainder if $\wgt n$ does not exceed it, leaving
+the remainder unchanged otherwise; call a level at which nothing is subtracted
+\emph{skipped}.  Say that the expansion \emph{survives} level $n$ if the
+remainder after that level is at most the remaining mass $T_n$.  Then
+$x\in\Ach$ if and only if $x\ge0$ and the expansion survives every level
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}).
+Non-membership of a nonnegative target is therefore visible at a single level,
+and for a rational target the check is exact rational arithmetic, as for
+$3/4\notin\Ach$
 (\mword{Erdos249257/GreedyAchievementSet.lean}{1748}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
 
-The coding is also hereditary, which matters because
-Problem~\ref{res:problem} quantifies over every infinite support rather than
-over $\Npos$.  For a set $J$ of future offsets write
-$T_J(n)=\sum_{k\in J}\wgt{n+k+1}$ for the tail restricted to $J$
+The coding, meaning the map sending a $0/1$ string $(\varepsilon_n)$ to
+$\sum_n\varepsilon_n\wgt n$, which the strict tail inequality makes injective,
+is also hereditary.  That matters because Problem~\ref{res:problem} quantifies
+over every infinite support rather than over $\Npos$.  For a set $J$ of future
+offsets write $T_J(n)=\sum_{k\in J}\wgt{n+k+1}$ for the tail restricted to $J$
 (\lword{Erdos257/MersenneSubseriesRigidity.lean}{17}{selectedMersenneTail}{definition},
 summable at
 \lword{Erdos257/MersenneSubseriesRigidity.lean}{21}{summable_selectedMersenneTail}{Lean}).
@@ -609,8 +729,23 @@ Section~\ref{sec:forced}.
 \subsection{The value \texorpdfstring{$1/2$}{1/2}}
 
 A rational point of $\Ach$ attained by an infinite support refutes
-Problem~\ref{res:problem}.  The distinguished candidate is $1/2$, and its
-membership has an exact and unusually complete classification.
+Problem~\ref{res:problem}.  The distinguished candidate is $1/2$, and
+Theorem~\ref{res:half} classifies its membership exactly, in four equivalent
+forms, with two dual forms for non-membership.
+
+The greedy expansion of $1/2$ is an exact finite computation as far as one
+cares to take it.  Through level $21$ it takes the exponents
+\[
+  2,\ 3,\ 6,\ 7,\ 14,\ 20,\ 21
+\]
+and skips the others, the skipped runs being $\{1\}$, $\{4,5\}$,
+$\{8,\dots,13\}$ and $\{15,\dots,19\}$; every level through $21$ is survived.
+The second condition below asks whether the list of skipped exponents is
+infinite, and no finite computation answers that.
+
+In the statement, $u=(u_1,\dots,u_d)\in\{0,1\}^{d}$ is a finite prefix,
+$V(u)=\sum_{n\le d}u_n\wgt n$ is its value, and $T_n=\sum_{k>n}\wgt k$ as
+above.
 
 \begin{theorem}[classification at $1/2$]\label{res:half}
 The following are equivalent: $1/2\in\Ach$; the canonical greedy expansion of
@@ -632,8 +767,10 @@ Moreover no finite support has value $1/2$.
 and
 \mword{Erdos249257/HalfCarryReachability.lean}{589}{finite_boolSupport_ne_half}{the finite-support exclusion}.
 
-These are equivalences and we mark them as such.  Proving statements
-equivalent decides neither.  Their value is that they fix what a
+Of the forms listed above, only the greedy form and the fatal-gap form are used
+below.  These are
+equivalences and we mark them as such.  Proving statements equivalent decides
+neither.  Their value is that they fix what a
 counterexample would have to look like, and that the two sides are genuinely
 asymmetric: non-membership is witnessed by a \emph{finite} fatal gap and is
 therefore semi-decidable, whereas membership is an infinite conjunction.
@@ -663,24 +800,23 @@ therefore a one-sided test of \#257, not a second problem beside it.
 \item \textbf{Problem~\ref{res:problem} itself}, for arbitrary infinite $A$.
   Section~\ref{sec:map} is a list of families and does not approach a
   universal statement; Section~\ref{sec:forced} constrains every hypothetical
-  counterexample without excluding one.  The concrete question we would most
-  like answered is whether the constraints of Section~\ref{sec:forced} can be
-  made jointly contradictory: an infinite support with an unbounded
-  Boolean--M\"obius carry certificate, sublogarithmic divisor-coverage gaps
-  and the reciprocal-mass lower bound is not yet known to be impossible, and
-  showing that it is would settle the problem.
+  counterexample without excluding one.  Whether those constraints can be made
+  jointly contradictory is itself open: an infinite support carrying an
+  unbounded Boolean--M\"obius carry certificate, with sublogarithmic
+  divisor-coverage gaps and satisfying the reciprocal-mass lower bound of
+  Theorem~\ref{res:mass}, is not known to be impossible, and showing that it is
+  would settle Problem~\ref{res:problem}.
 \item \textbf{Membership of $1/2$ in $\Ach$.}  Theorem~\ref{res:half} makes
   this exactly equivalent to infinitely many greedy skips, and to a fatal gap
   on the other side; neither is proved.  A proof of non-membership would take
   the form of one finite fatal gap.
 \end{enumerate}
 
-\noindent Two questions that were listed here as open are now withdrawn.  The
+\noindent Two questions listed here in an earlier version are withdrawn.  The
 squarefree value at base~$2$ is settled by~\cite{duverneytachiya}
-(Corollary~\ref{res:sfsettled}); we should have found that citation before
-asking for it.  The reach of the analytic method of~\cite{taoteravainen2025}
-is a question its own authors raise, and belongs to them rather than to this
-note.  The squarefree value at bases $b\ge3$ is, as far as we know, genuinely
+(Corollary~\ref{res:sfsettled}).  The reach of the analytic method
+of~\cite{taoteravainen2025} is a question its own authors raise, and belongs to
+them rather than to this note.  The squarefree value at bases $b\ge3$ is, as far as we know, genuinely
 open, and is a well-posed question with a known answer at $b=2$.
 
 \section*{Statements and declarations}
@@ -694,8 +830,12 @@ argument (from the two checked prefix lemmas), the shift identity and
 Chinese-remainder remark in Section~\ref{sec:squarefree}, and the
 hereditary-coding sentence in Section~\ref{sec:geometry} are arguments in the
 prose rather than checked statements; each is drawn from the checked lemmas
-cited beside it or from the cited literature.  Results attributed to Duverney
-and Tachiya, to Tao and Ter\"av\"ainen, to Luca and Tachiya, and to Kova\v{c}
+cited beside it or from the cited literature.  The numerical instances --- the
+table of finite supports in Section~\ref{sec:period}, the incidence and
+zero-window examples, the reciprocal-mass instance, and the greedy expansion of
+$1/2$ through level~$21$ --- are direct computations, reported as computations
+and not as theorems.  Results attributed to Duverney and Tachiya, to Tao and
+Ter\"av\"ainen, to Luca and Tachiya, and to Kova\v{c}
 and Tao are cited from the literature and are not formalised here.
 
 \emph{Scope of the AI declaration.}  The note on the first page states that the

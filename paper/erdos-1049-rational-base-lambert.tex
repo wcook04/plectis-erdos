@@ -31,7 +31,8 @@ Problem~\#1049}
 \noindent
 Let $F(t)=\sum_{n\ge1}(t^{n}-1)^{-1}$.  At the rational base $3/2$ we prove
 exclusions for the approach to irrationality by integer linear forms, and
-formalise them in Lean.  Rowwise content scales the analytic error and the
+formalise them in Lean.  Rowwise content (the greatest common divisor of the
+two entries of a coefficient row) scales the analytic error and the
 exterior determinant by exactly the same factors, including the absolute
 determinant height, so a local divisor supplied only by the two row contents is
 paid for by exactly the same factor in the Archimedean determinant
@@ -43,10 +44,11 @@ endpoint and the other a unit constant endpoint, neither rowwise scalar content
 nor a common multiplier of the two specialised evaluations can manufacture the
 two local primes required at $3/2$.  The missing local gain must therefore survive
 primitive normalisation.  What remains is a growing-rank additive kernel
-cancelling both endpoint jets in both specialised coefficient sequences while
-preserving a nonzero, sufficiently small remainder; we count the four-jet
+cancelling both endpoint jets (the residues of a specialised coefficient
+modulo $3^{R}$ and modulo $2^{S}$) in both specialised coefficient sequences
+while preserving a nonzero, sufficiently small remainder; we count the four-jet
 target exactly and prove the concrete sufficient threshold \(n\ge 4R+2S\) at
-positive bottom depth.
+positive bottom depth $R$.
 
 We also record what the elementary route costs.  Erd\H{o}s's argument for the
 irrationality of $\sum_{n\ge1}c(n)b^{-n}$ at an integer base $b\ge2$ proceeds
@@ -122,24 +124,50 @@ which concerns the formal status of an argument rather than a new theorem
 about $F(t)$.
 
 \paragraph{The integer-base argument, in outline.}
-Suppose $F(b)=p/q$.  Cut the series at a level $N$, multiply by $q b^{N}$, and
+Let $b\ge2$ be an integer and suppose $F(b)=p/q$ for integers $p$ and $q\ge1$.
+Cut the series at a level $N$, multiply by $q b^{N}$, and
 subtract the cleared prefix.  What remains is a positive integer, since every
 term of the prefix has been cleared and the tail is positive; and it is smaller
 than $1$, since the tail of a geometric-type series is small.  A positive
 integer below $1$ does not exist.  The argument is elementary and it is
 sensitive in exactly one place: the clearing must remove every denominator.
 
-At $\beta=r/s$ the term $c(n)\beta^{-n}$ is $c(n)s^{n}/r^{n}$.  Clearing the
+Write $\beta=r/s$ for the base and $c(n)$ for the coefficient of $\beta^{-n}$,
+so that $c=\tau$ in the case at hand.  The term $c(n)\beta^{-n}$ is
+$c(n)s^{n}/r^{n}$.  Clearing the
 power of $r$ leaves the numerator factor $s^{n}$ in place.  That factor is
 invisible when $s=1$ and grows geometrically when $s\ge2$.  At $3/2$ it is
 $2^{n}$.
 
+\paragraph{Terminology.}
+The linear-form route works with pairs $(U,V)$, of integers or of integer
+polynomials; following matrix usage we call such a pair a \emph{row}, and its
+\emph{content} is the greatest common divisor of its two entries.  A row of
+content $1$ is \emph{primitive}, and dividing a row by its content is
+\emph{primitive normalisation}.  The \emph{exterior determinant} of two integer
+rows is $U_{n}V_{m}-U_{m}V_{n}$, the determinant of the $2\times2$ matrix they
+form.  Two quantities attached to that determinant are compared throughout: an
+integer dividing it, which is a local gain, and its absolute value, which is an
+Archimedean cost; we call that comparison the \emph{local-to-Archimedean
+balance}.  The \emph{endpoints} of a coefficient polynomial are its constant
+coefficient and its top coefficient, and a \emph{unit} endpoint is one equal to
+$\pm1$, the units of $\Z$; Theorem~\ref{res:endpoints} is the reason only these
+two coefficients decide divisibility by $3$ and by $2$ after specialisation at
+$(3,2)$.  A \emph{jet} is a
+residue of a specialised coefficient modulo a prime power: the bottom jet is
+its residue modulo $3^{R}$ and the top jet its residue modulo $2^{S}$, and $R$
+and $S$ are the bottom and top \emph{depths}.  A jet vanishes exactly when the
+prime power in question divides the specialised coefficient.
+
 \paragraph{The shortfall at $3/2$.}
 The elementary route and the linear-form route are both examined below.  For
-the coordinatewise clearing scheme the leftover is the forcing term, of size at
-least $2^{N+1}$ once the data are positive (Theorem~\ref{res:forcing}), and the
-scheme itself is excluded at $3/2$ once the shift and the cleared window are
-both nonempty (Theorem~\ref{res:nocorridor}).  For the linear-form
+the coordinatewise clearing scheme the leftover at each step is the forcing
+term of an exact recurrence, of size at least
+$2^{N+1}$ whenever $s\ge2$ and the scaling constant $B$ and the coefficient
+$c(N+1)$ are at least $1$
+(Theorem~\ref{res:forcing}), and the
+scheme itself is excluded at $3/2$ for every shift $N\ge1$ and every cleared
+window of width $K\ge1$ (Theorem~\ref{res:nocorridor}).  For the linear-form
 constructions the shortfall is the $2$-adic and $3$-adic gain that has to
 remain after the coefficient rows have been divided by their contents
 (Section~\ref{sec:primitive}).  Each multiplicative device examined here for
@@ -190,7 +218,7 @@ Homogeneous endpoint residues at $(3,2)$ & Proved here & Theorem~\ref{res:endpoi
 Common multiplier of the two specialised evaluations avoids $2$ and $3$ & Proved here & Proposition~\ref{res:commonmult}; under unit endpoint hypotheses. \\
 No multiplicative local gain at $3/2$ & Deduced here & Corollary~\ref{res:nomult}; an ordinary deduction from the two preceding rows, not separately formalised. \\
 Four-jet collision at $n\ge4R+2S$ & Proved here & Theorem~\ref{res:jetkernel}; sufficient, at positive bottom depth. \\
-Scalar-cone product-formula margin & Negative under source input & Theorem~\ref{res:scalar}; the source inequality is assumed. \\
+Scalar margin on Zudilin's parameter cone & Negative under source input & Theorem~\ref{res:scalar}; the source inequality is assumed. \\
 Corridor forces $s^{N+K+1}<r(N+K)$ & Proved here & Theorem~\ref{res:corridorbound}. \\
 No corridor at base $3/2$ & Proved here & Theorem~\ref{res:nocorridor}; a statement about the clearing scheme. \\
 Cleared-tail recurrence & Proved here & Theorem~\ref{res:tailrec}, an exact identity. \\
@@ -208,7 +236,8 @@ Section~\ref{sec:primitive} proves that rowwise content is neutral for the
 local-to-Archimedean balance.  Section~\ref{sec:endpoints} proves the endpoint
 congruences at $(3,2)$, deduces from them and from
 Section~\ref{sec:primitive} that no multiplicative device supplies the missing
-local gain, and gives the four-jet collision count.
+local gain, gives the four-jet collision count, and records one further
+exclusion on Zudilin's scalar parameters.
 Sections~\ref{sec:corridor} and~\ref{sec:tail} return to the elementary
 clearing scheme and record what the residue $s^{n}$ costs there, first as an
 exclusion and then as an exact recurrence with a lower bound on the surviving
@@ -235,13 +264,26 @@ For an integer coefficient pair \((U,V)\) and a real target \(S\), put
  \qquad
  \Delta\bigl((U_n,V_n),(U_m,V_m)\bigr)=U_nV_m-U_mV_n.
 \]
-The second expression eliminates \(S\) exactly:
+We call \(L_S(U,V)\) the \emph{error} of the row at \(S\); a good approximation
+is one that makes it small.  The second expression is the exterior determinant
+of the two rows, and it eliminates \(S\) exactly:
 \[
  \Delta=U_mL_S(U_n,V_n)-U_nL_S(U_m,V_m).
 \]
+This identity is what makes the determinant useful.  Since \(\Delta\) is an
+integer, if it does not vanish then
+\[
+ 1\le|\Delta|
+  \le|U_m|\,\bigl|L_S(U_n,V_n)\bigr|+|U_n|\,\bigl|L_S(U_m,V_m)\bigr|,
+\]
+and the two errors cannot both be smaller than
+\(1/(|U_n|+|U_m|)\).  The determinant therefore carries two competing
+quantities at once, an integer that divides it and its own absolute value, and
+the theorem below is about how a rescaling moves them.
 
 \begin{theorem}[row-content no-go]\label{res:content}
-For integers \(c_n,c_m\),
+Let \(S\) be real, let \((U_n,V_n)\) and \((U_m,V_m)\) be pairs of integers, and
+let \(c_n,c_m\) be integers.  Then
 \[
  L_S(c_nU_n,c_nV_n)=c_nL_S(U_n,V_n),
 \]
@@ -264,6 +306,20 @@ factor in the Archimedean determinant height.
 All three identities are routine expansions in \(\Z\) or \(\R\); the
 divisibility statement uses the primitive determinant as its witness.
 \end{proof}
+
+Informally, Theorem~\ref{res:content} says that a common factor introduced into
+the rows appears twice over: once as a divisor of the exterior determinant, and
+once as the same factor in the absolute value of that determinant.  It moves
+the local gain and the Archimedean cost by exactly the same amount.
+
+\begin{example}\label{ex:content}
+Take \((U_n,V_n)=(1,2)\) and \((U_m,V_m)=(3,5)\), so that
+\(\Delta=1\cdot5-3\cdot2=-1\).  Multiplying the first row by \(c_n=6\) and the
+second by \(c_m=10\) gives the rows \((6,12)\) and \((30,50)\), whose
+determinant is \(6\cdot50-30\cdot12=-60\).  That determinant is now divisible
+by \(60\), which looks like a local gain of \(60\); and its absolute value has
+risen from \(1\) to \(60\), which is a cost of exactly the same size.
+\end{example}
 
 \noindent Lean checks the error identity in
 \lword{Erdos1049/RationalPadeArithmetic.lean}{84}{rationalPadeError_mul}{error
@@ -299,18 +355,39 @@ construction of this shape, whatever produced them.
 \section{Endpoint residues at $(3,2)$ and the four-jet
 kernel}\label{sec:endpoints}
 
-The Heine--Zudilin forms have integral coefficient polynomials before
-specialisation.  For \(P(X)=\sum_i p_iX^i\in\Z[X]\) and a declared width \(W\),
-put
+Zudilin's treatment of \(q\)-harmonic series~\cite{zudilin2004} builds linear
+forms of the shape used in Section~\ref{sec:primitive} out of Heine's basic
+transform.  What matters here is one feature of that construction: its
+coefficients are produced as polynomials with integer coefficients, and a
+numerical base is substituted only at the end.  We call these the
+Heine--Zudilin forms and ask what the substitution at \(3/2\) does to the two
+primes \(2\) and \(3\).  The endpoint and jet arguments below use no property
+of the construction beyond integrality of those coefficient polynomials, and
+each of them quantifies over arbitrary elements of \(\Z[X]\).  The exception is
+Theorem~\ref{res:scalar} at the end of the section, which concerns the scalar
+parameters of Zudilin's cone rather than the coefficient polynomials.
+
+Substituting \(X=3/2\) into an integer polynomial produces a rational number,
+and multiplying by a power of \(2\) clears its denominator.  The following
+evaluation records that cleared numerator, so that all the arithmetic below
+stays inside \(\Z\).  For \(P(X)=\sum_i p_iX^i\in\Z[X]\) and a declared width
+\(W\ge0\), put
 \[
  H_W(P)=\sum_{i=0}^{W}p_i\,3^i2^{W-i}.
 \]
 This is the
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{96}{homEvalThreeTwo}{homogeneous
-endpoint evaluation}.
+endpoint evaluation}.  It is homogeneous in the sense that \(X^{i}\) is
+replaced by \(3^{i}2^{W-i}\), so the numerator and the denominator of the base
+are carried symmetrically.  When \(W\ge\deg P\) it is exactly the cleared
+numerator, since
+\[
+ \sum_{i=0}^{W}p_i\,3^i2^{W-i}=2^{W}\sum_{i=0}^{W}p_i\left(\tfrac32\right)^{i}
+ =2^{W}P\!\left(\tfrac32\right).
+\]
 
 \begin{theorem}[endpoint residues]\label{res:endpoints}
-For every integral polynomial \(P\),
+Let \(P=\sum_ip_iX^i\in\Z[X]\) and let \(W\ge0\).  Then
 \[
  H_W(P)\equiv p_0\,2^W\pmod 3,\qquad
  H_W(P)\equiv p_W\,3^W\pmod 2.
@@ -324,6 +401,30 @@ Modulo \(3\), every summand with \(i>0\) vanishes; modulo \(2\), every summand
 with \(i<W\) vanishes.  The remaining powers are units in the corresponding
 residue fields.
 \end{proof}
+
+Since \(2^{W}\) is invertible modulo \(3\) and \(3^{W}\) is invertible modulo
+\(2\), the two congruences say more than the stated consequence: divisibility
+of \(H_W(P)\) by \(3\) is decided by \(p_0\) alone, and divisibility by \(2\) by
+\(p_W\) alone.  The rest of the coefficient vector is invisible to both primes.
+
+\begin{example}\label{ex:endpoints}
+Take \(W=2\).  The three polynomials below differ only at an endpoint.
+\begin{center}
+\begin{tabular}{@{}llcc@{}}
+\toprule
+\(P\) & \(H_2(P)\) & \(3\mid H_2(P)\) & \(2\mid H_2(P)\)\\
+\midrule
+\(X^2+1\)  & \(1\cdot4+0\cdot6+1\cdot9=13\) & no  & no \\
+\(X^2+3\)  & \(3\cdot4+0\cdot6+1\cdot9=21\) & yes & no \\
+\(2X^2+1\) & \(1\cdot4+0\cdot6+2\cdot9=22\) & no  & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+The first has both endpoints equal to \(1\) and its evaluation, \(13\), is
+divisible by neither prime; as a check, \(2^{2}\bigl((3/2)^2+1\bigr)=13\).  The
+second and third show that each hypothesis is used: spoiling the constant
+endpoint admits \(3\), and spoiling the top endpoint admits \(2\).
+\end{example}
 
 \noindent The congruences are the
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{201}{homEvalThreeTwo_mod_three}{bottom-endpoint
@@ -343,7 +444,8 @@ at opposite ends of the coefficient vector, and the statement below imposes one
 at each end, on the two entries of a single coefficient pair.
 
 \begin{proposition}[common multiplier]\label{res:commonmult}
-If \(U\) has unit top endpoint, \(V\) has unit constant endpoint, and an integer
+Let \(U,V\in\Z[X]\) and let \(W\ge0\).  If \(U\) has unit top endpoint, \(V\)
+has unit constant endpoint, and an integer
 \(c\) divides both \(H_W(U)\) and \(H_W(V)\), then
 \[
  2\nmid c\qquad\text{and}\qquad 3\nmid c.
@@ -352,7 +454,19 @@ If \(U\) has unit top endpoint, \(V\) has unit constant endpoint, and an integer
 
 \noindent This is the checked
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{293}{commonMultiplier_not_two_not_three_of_endpoint_units}{common-multiplier
-exclusion}.
+exclusion}.  The proposition does not say that the two evaluations are coprime;
+it says that whatever they share misses both of the primes that matter at
+\(3/2\).
+
+\begin{example}\label{ex:commonmult}
+Take \(W=2\), \(U=X^2+3\) and \(V=5X^2+1\).  The top endpoint of \(U\) and the
+constant endpoint of \(V\) are both \(1\), and
+\[
+ H_2(U)=3\cdot4+1\cdot9=21,\qquad H_2(V)=1\cdot4+5\cdot9=49 .
+\]
+Here \(\gcd(21,49)=7\), so a common multiplier does exist and is not small; it
+is simply coprime to \(6\).
+\end{example}
 
 \begin{corollary}[no multiplicative local gain at \(3/2\)]\label{res:nomult}
 Under the endpoint hypotheses of Proposition~\ref{res:commonmult}, neither
@@ -374,7 +488,7 @@ deduction and is not separately formalised.  The corollary excludes two ways of
 producing the required gain.  It does not show that a gain of that kind is
 necessary for a proof by linear forms at \(3/2\).
 
-Corollary~\ref{res:nomult} closes the two multiplicative devices above, and
+Corollary~\ref{res:nomult} excludes the two multiplicative devices above, and
 what the rest of this section pursues in their place is additive: rather than multiplying one
 row by a scalar, take an integer combination of several rows and ask that the
 combination be divisible where the individual rows are not.  The endpoint
@@ -382,9 +496,11 @@ congruences are the first case of a divisibility condition that can be imposed
 to any depth, and it is that condition, read additively, which is counted
 below.
 
-For higher powers define the bottom and top jets by reducing \(H_W(P)\) modulo
-\(3^R\) and \(2^S\), respectively.  Their vanishing is exactly the requested
-divisibility:
+We first raise the two congruences to prime powers.  Fix depths \(R,S\ge0\).
+For \(P\in\Z[X]\) the \emph{bottom jet} \(J_{3,R}(P)\) is the residue of
+\(H_W(P)\) modulo \(3^R\), and the \emph{top jet} \(J_{2,S}(P)\) is its residue
+modulo \(2^S\); Theorem~\ref{res:endpoints} computes them at \(R=S=1\).  Their
+vanishing is exactly the requested divisibility:
 \[
  J_{3,R}(P)=0\iff 3^R\mid H_W(P),\qquad
  J_{2,S}(P)=0\iff 2^S\mid H_W(P).
@@ -393,7 +509,17 @@ These are the checked
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{189}{bottomJet3_eq_zero_iff_dvd}{bottom-jet
 divisibility criterion} and
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{195}{topJet2_eq_zero_iff_dvd}{top-jet
-divisibility criterion}.  They turn the missing local divisor into an additive
+divisibility criterion}.  The \emph{four-jet signature} of a coefficient pair
+\((U,V)\) is then the quadruple
+\[
+ \bigl(J_{3,R}(U),J_{3,R}(V),J_{2,S}(U),J_{2,S}(V)\bigr)
+ \in(\Z/3^R\Z)^2\times(\Z/2^S\Z)^2 ,
+\]
+two residues for each of the two primes, one from each entry of the pair.  By
+the displayed criteria it vanishes exactly when \(3^R\) divides both specialised
+entries and \(2^S\) divides both.
+
+This turns the missing local divisor into an additive
 congruence-kernel problem: what is sought is no longer a scalar multiplier of
 the two evaluations, but a vector of small integer coefficients on which four
 residues vanish at once.  Since \(H_W\) is linear in the coefficients of \(P\),
@@ -401,7 +527,9 @@ the four-jet signature of a combination is the corresponding combination of
 signatures, which is what makes the following count possible.
 
 \begin{theorem}[binary four-jet collision]\label{res:jetkernel}
-Let \((U_j,V_j)_{j<n}\) be any \(n\) integral coefficient pairs.  If the
+Fix a width \(W\) and depths \(R,S\), and let \((U_j,V_j)_{j<n}\) be any \(n\)
+pairs of integral polynomials.  Call a subset of \(\{0,\dots,n-1\}\), equivalently
+a vector of \(\{0,1\}^n\), a \emph{binary selector}.  If the
 \(2^n\) binary selectors outnumber the finite four-jet target
 \[
  (\Z/3^R\Z)^2\times(\Z/2^S\Z)^2,
@@ -440,6 +568,24 @@ polynomial pair and analytic remainder.  None of the statements proved here
 produces a sufficiently large primitive non-collapsed family, or proves that a
 collision has nonzero polynomial pair or nonzero remainder.
 
+\begin{example}\label{ex:jetcount}
+At depths \(R=S=1\) the four-jet target is
+\((\Z/3\Z)^2\times(\Z/2\Z)^2\), of cardinality \(9\cdot4=36\), and the threshold
+reads \(n\ge4\cdot1+2\cdot1=6\).  With six pairs there are \(2^{6}=64\) binary
+selectors against \(36\) targets, so two of them collide and their difference
+is a vector in \(\{-1,0,1\}^{6}\), not identically zero, killing all four jets.
+\end{example}
+
+Informally, the theorem says only this: once there are at least \(4R+2S\) pairs
+and the bottom depth \(R\) is positive, some coefficient vector in
+\(\{-1,0,1\}^n\), not identically zero, kills all four jets of the
+corresponding combination.  It does not say that the combination is nonzero as
+a pair of polynomials, and it does not say that its remainder is nonzero.  Those
+are the two obligations Problem~\ref{prob:kernel} carries.
+
+One further exclusion is recorded here.  It concerns the scalar parameters of
+Zudilin's cone rather than the coefficient polynomials.
+
 \begin{theorem}[scalar margin no-go]\label{res:scalar}
 Let \(C_1>0\).  If \(C_0\le0\) or \(2C_0\le C_1\), then
 \[
@@ -447,7 +593,8 @@ Let \(C_1>0\).  If \(C_0\le0\) or \(2C_0\le C_1\), then
 \]
 \end{theorem}
 
-\noindent The inequality is immediate from \(\log3<2\log2\) and \(C_1>0\), and
+\noindent Written multiplicatively, the conclusion is \(3^{C_0}<2^{C_1}\).  The
+inequality is immediate from \(\log3<2\log2\) and \(C_1>0\), and
 is the checked
 \lword{Erdos1049/ZudilinConeArithmetic.lean}{323}{three_two_scalar_margin_neg}{three-halves
 scalar margin}.  The interest is in the fence around it.  The primary Zudilin
@@ -463,7 +610,11 @@ external to the checked result, which is the scalar parameter margin alone.
 
 This section and the next return to the elementary route and record what the
 residue $s^{n}$ costs there.  We first isolate the arithmetic that the clearing
-scheme leaves behind, in a form that does not mention the series.
+scheme leaves behind, in a form that does not mention the series.  The point of
+doing so is that the clearing argument asks for two things at once, that a
+power of the numerator divide what has been accumulated and that what survives
+be small, and these are easier to play off against each other once the series
+has been discarded and only six natural numbers remain.
 
 \begin{definition}[coordinatewise corridor]\label{def:corridor}
 Let $a,b,N,K,Q,D$ be natural numbers.  Say that $(a,b,N,K,Q,D)$ is a
@@ -475,13 +626,18 @@ Let $a,b,N,K,Q,D$ be natural numbers.  Say that $(a,b,N,K,Q,D)$ is a
 \end{definition}
 
 \noindent The reading is: $a$ and $b$ are the numerator and denominator of the
-base, $N$ is the shift, $K$ is the width of the cleared window, $Q$ is the
+base, playing the roles of $r$ and $s$ in the introduction, so that
+$(a,b)=(3,2)$ is the case of interest;
+$N$ is the shift, $K$ is the width of the cleared window, $Q$ is the
 accumulated clearing factor, and $D$ is the final coefficient being cleared.
 The bound $D\le N+K$ is the only property of the coefficient used; for the
-divisor-counting coefficient it holds because $d(n)\le n$.  The divisibility
+divisor-counting coefficient it holds because $\tau(n)\le n$.  The divisibility
 $a^{K}\mid QD$ is the requirement that clearing succeeded coordinatewise, and
 the last inequality is the tail estimate that makes the trapped integer smaller
-than~$1$.  The definition is the
+than~$1$.  The name records the shape of the constraint: the divisibility
+bounds $a^{K}$ from above by $Q(N+K)$, the tail estimate bounds $a^{K+1}$ from
+below by $Q\,b^{\,N+K+1}$, and admissible parameters must fit in the band
+between them.  The definition is the
 \lword{Erdos1049/RationalBaseLambert.lean}{106}{CoordinatewiseCorridor}{corridor
 predicate}.
 
@@ -512,6 +668,17 @@ $a\ge2$ and every nonempty window; the corridor imposes no obstruction at all.
 At $b\ge2$ the left side is exponential in $N+K$ and the right side is linear,
 so the corridor can survive only for small $N+K$.  At $b=2$ the crossing has
 already happened at the smallest admissible window.
+
+\begin{example}\label{ex:corridor}
+Take the smallest window, $N=K=1$, and numerator $a=3$.  At $b=1$ the tuple
+$(3,1,1,1,3,1)$ is a corridor: $D=1\le2$, the divisibility reads $3\mid3$, and
+the tail estimate reads $3\cdot1^{3}=3<3^{2}=9$.  At $b=2$ no choice works.  The
+tail estimate becomes $Q\cdot2^{3}<3^{2}$, which forces $Q=1$; the divisibility
+then reads $3\mid D$, and the only candidates are $D=1$ and $D=2$, neither
+divisible by $3$.  This is the proof of
+Theorem~\ref{res:corridorbound} in miniature: it derives $a^{K}\le Q(N+K)$,
+here $3\le2$.
+\end{example}
 
 \begin{proposition}\label{res:exp}
 For every natural number $x\ge2$ we have $3x<2^{\,x+1}$.
@@ -553,12 +720,13 @@ term}\label{sec:tail}
 Theorem~\ref{res:nocorridor} says that one scheme fails.  This section
 identifies the quantity responsible, as an exact recurrence.
 
-Throughout, $r,s,B,F$ are rationals with $r\ne0$, and $c:\N\to\Q$ is arbitrary.
+Let $r,s,B,F$ be rationals with $r\ne0$ and let $c:\N\to\Q$ be arbitrary.
 Define the prefix and the cleared tail state by
 \[
  P_N=\sum_{m=0}^{N-1}\frac{c(m+1)\,s^{\,m+1}}{r^{\,m+1}},
  \qquad
  U_N=B\,r^{N}\bigl(F-P_N\bigr).
+\tag{$\ast$}\label{eq:tailstate}
 \]
 Thus $P_N$ is the partial sum of $\sum_{n\ge1}c(n)(s/r)^{n}$ through level $N$,
 and $U_N$ is the tail of a putative value $F$ after that level, scaled by
@@ -569,7 +737,8 @@ prefix} and the
 tail state}.
 
 \begin{theorem}[cleared-tail recurrence]\label{res:tailrec}
-For every $N$,
+Let $r,s,B,F\in\Q$ with $r\ne0$, let $c:\N\to\Q$, and let $P_N$ and $U_N$ be as
+in~\eqref{eq:tailstate}.  Then for every $N$,
 \[
  U_{N+1}=r\,U_N-B\,c(N+1)\,s^{\,N+1}.
 \]
@@ -586,10 +755,11 @@ nonzero, gives the identity.
 \lword{Erdos1049/RationalBaseLambert.lean}{180}{rationalBaseClearedTailQ_succ}{cleared-tail
 recurrence}.
 
-The recurrence has a linear part $rU_N$ and a forcing term $Bc(N+1)s^{N+1}$.
+The recurrence has a linear part $rU_N$ and a forcing term $Bc(N+1)s^{N+1}$,
+the inhomogeneous term the state receives at each step.
 The integer-base argument works by keeping the state in a bounded window, and
-the forcing term is what it must absorb at each step.  Its size is exactly the
-point of departure.
+the forcing term is what it must absorb.  Its size is what separates the two
+cases.
 
 \begin{theorem}[the forcing term]\label{res:forcing}
 Let $s,B$ be natural numbers and $c:\N\to\N$, and put
@@ -617,6 +787,13 @@ coefficient; for the divisor function that is $O(N^{\varepsilon})$ for every
 $\varepsilon>0$, and a bounded-state argument has room.  At $s\ge2$ the same
 term is at least $2^{N+1}$ whenever the coefficient is nonzero.
 
+\begin{example}\label{ex:forcing}
+Take $B=1$, $c=\tau$ and $N=9$, so that the coefficient is $\tau(10)=4$.  At
+$s=1$ the forcing term is $4$.  At $s=2$ it is $4\cdot2^{10}=4096$, and part~(1)
+of Theorem~\ref{res:forcing} already guarantees at least $2^{10}=1024$ without
+knowing the coefficient at all.
+\end{example}
+
 This is an
 exact lower bound on one quantity, and it is all that is proved.  It is not a
 proof that no bounded-state argument exists at $s\ge2$; the theorem that one
@@ -627,8 +804,9 @@ records the size of the term that scheme would have to absorb.
 
 In 1994 Bundschuh and V\"a\"an\"anen proved an irrationality criterion for a
 family of rational bases cut out by a height condition~\cite[Theorem~2,
-pp.~176--177]{bv1994}.  In its special case $\alpha=-1$, the printed
-hypothesis is
+pp.~176--177]{bv1994}.  We keep their notation: $q$ is the base, and $\alpha$
+and $\lambda$ are the parameters of the criterion.  In its special case
+$\alpha=-1$, the printed hypothesis is
 \[
  \lambda<\left(\frac12+\frac1{\pi^2}\right)^{-1}.
 \]
@@ -644,7 +822,9 @@ strict inequality is checked.
 \]
 \end{theorem}
 
-\noindent The Lean proof factors the estimate into the
+\noindent Numerically the two sides are $1.5533\ldots$ and $1.6630\ldots$, so
+the condition holds with a margin of about $0.11$.  The Lean proof factors the
+estimate into the
 \lword{Erdos1049/RationalBaseLambert.lean}{32}{sevenHalves_power_certificate}{integer
 certificate} $2^{18}<7^7$, the resulting
 \lword{Erdos1049/RationalBaseLambert.lean}{41}{sevenHalves_log_ratio_lt}{logarithmic
@@ -675,14 +855,20 @@ about whether $F(3/2)$ is irrational.
 construction}\label{sec:pade}
 
 A second external route builds the linear forms of Section~\ref{sec:primitive}
-by Pad\'e approximation.  For a
+by Pad\'e approximation.  Such a construction produces its coefficients as sums
+of rational summands, and to obtain integer rows one multiplies through by a
+single common denominator.  The bookkeeping obligation is then to check that no
+summand needs a larger denominator than the one proposed, which is a comparison
+between the exponents alone.  This section does that comparison, and only that.
+
+For a
 homogenised construction over integer parameters the proposed common
 denominator exponent is $E_n=(3n^{2}-n)/2$.  Since only doubled exponents
 occur below, every statement lives over $\Z$ and no parity bookkeeping is
 needed; we write $\widetilde{E}_n=2E_n=3n^{2}-n$.
 
 \begin{proposition}[summand bound and exact gap]\label{res:pade}
-Put
+Let $\widetilde{E}_n=3n^{2}-n$ and put
 \[
  \widetilde{P}(n,k)=2\bigl(k(n-k)+nk\bigr)+k(k-1),
 \]
@@ -711,6 +897,15 @@ from $m(m-1)\ge0$ and $n\ge0$; the hypothesis $m\ge1$ names the range in which
 the corresponding summand does not vanish, and it is not the sharpest
 hypothesis under which the inequality holds.
 
+\begin{example}\label{ex:pade}
+At $n=2$ the proposed doubled exponent is $\widetilde{E}_2=10$, and
+$\widetilde{P}(2,k)$ takes the values $0,6,10$ at $k=0,1,2$.  The three gaps are
+$10,4,0$, matching the factorisation $(2-k)(5-k)$ of part~(1); the summand at
+$k=2$ is the one that saturates the proposed denominator.  For part~(2), at
+$m=1$ we have $j=0$ and $\widetilde{Q}(2,1)=6$, with gap
+$4=2\bigl(2+1\cdot0\bigr)$.
+\end{example}
+
 These are routine inequalities between polynomials in the exponents.  They
 establish that the proposed common denominator is large enough to clear the
 construction, and nothing further.  Positivity of the remainder, its rate of
@@ -721,7 +916,13 @@ section is an irrationality measure.
 \section{Complements and further questions}\label{sec:open}
 
 Problem~\#1049 is open.  The following is the exact statement that a
-construction at \(3/2\) would have to supply.
+construction at \(3/2\) would have to supply.  Theorem~\ref{res:jetkernel}
+supplies the combinatorial step: at depths \(R,S\) with \(R>0\), once at least
+\(4R+2S\) pairs are in hand, a coefficient vector on which all four jets vanish
+exists.  What the problem adds is that those pairs be primitive-normalised
+Heine--Zudilin pairs drawn from a family that does not degenerate, that the
+depths grow quadratically, and that the resulting remainder be nonzero with a
+local gain beating the Archimedean height.
 
 \begin{problem}[growing-rank simultaneous endpoint-jet kernel]\label{prob:kernel}
 For positive quadratic target depths \(R_n,S_n\), exhibit at least
@@ -742,9 +943,11 @@ rank-saturated contiguous-shift family or a genuinely independent deformation
 would be a first candidate.
 \end{problem}
 
-A scalar ray, growth in the row contents, a multiplicative cyclotomic factor,
-or a further common-multiplier computation does not address the obstruction
-that survives Corollary~\ref{res:nomult}.  A theorem showing that every
+Rescaling a row along a ray, letting the row contents grow, inserting a
+multiplicative cyclotomic factor, or computing a further common multiplier does
+not address the obstruction that survives Corollary~\ref{res:nomult}; each is
+again a multiplicative device, and what Problem~\ref{prob:kernel} asks for is
+additive.  A theorem showing that every
 available family is too small or too degenerate to meet the requirements of
 Problem~\ref{prob:kernel} would show that no argument of this shape can
 succeed.
