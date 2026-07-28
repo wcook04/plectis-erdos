@@ -78,7 +78,7 @@ FIRST_MINUTE_CONTRACT = {
             "finite certificate at every lcm-diagonal scale",
             "t ≤ 82",
             "beyond every fixed cutoff",
-            "registered claims",
+            "relationship had not been registered",
             "the release workflow",
             "docs/claims.json",
             "scripts/check_release.py",

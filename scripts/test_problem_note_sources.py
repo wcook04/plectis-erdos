@@ -97,6 +97,10 @@ def test_erdos257_headline_anchors_are_required() -> None:
             "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "supportedMersenneDigitValue_injective",
         ),
+        (
+            "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+            "volume_supportedMersenneAchievementSet_dichotomy",
+        ),
     }
 
 
