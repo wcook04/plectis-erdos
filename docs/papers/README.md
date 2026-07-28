@@ -29,11 +29,11 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 ### What is proved about the dyadic sections of Euler's totient and the finite denominator bound, and what still blocks Erdős #249?
 
-**A Basis for the Dyadic Sections of Euler’s Totient**
+**A Basis for the 2-Kernel of Euler’s Totient**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex) · 25 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex) · 21 sections · `erdos-249-binary-totient-series` · native to this repository
 
-This paper states no reading route. Its evidence boundary is in [Results](full-text/erdos-249-binary-totient-series.md#sec:results), [What we need from a mathematician](full-text/erdos-249-binary-totient-series.md#sec:ask), [What remains open](full-text/erdos-249-binary-totient-series.md#sec:open).
+This paper states no reading route. Its evidence boundary is in [Introduction and main results](full-text/erdos-249-binary-totient-series.md#sec:results), [Logical status and analytic input](full-text/erdos-249-binary-totient-series.md#sec:open).
 
 ### What has been tried on Erdős #249, which routes are closed, and what exact cofinal obligations remain?
 
@@ -47,17 +47,17 @@ This paper states no reading route. Its evidence boundary is in [The wall](full-
 
 **An Integral-Shift Criterion for Dyadic Tail Recurrences**
 
-[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex) · 22 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
+[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-251-prime-gap-dyadic-series.tex) · 23 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-251-prime-gap-dyadic-series.md#sec:problem), [The tail recurrence and integral shifts](full-text/erdos-251-prime-gap-dyadic-series.md#sec:tail), [Complements and further questions](full-text/erdos-251-prime-gap-dyadic-series.md#sec:open).
 
 ### Which Mersenne-support subseries are settled, what finite-period and achievement-set structure is proved, and what still blocks Erdős #257?
 
-**Forced Structure in Mersenne Subseries**
+**Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 19 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 21 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
-This paper states no reading route. Its evidence boundary is in [Exact periods of finite partial sums](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [The settled supports, by mechanism](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [The exact frontier](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
+This paper states no reading route. Its evidence boundary is in [Finite-support denominator periods](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [Representative known irrational supports](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [Open problems](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
 ### What has been tried on Erdős #257, which routes are closed, and what exact universal and half-value obligations remain?
 
@@ -71,7 +71,7 @@ This paper states no reading route. Its evidence boundary is in [The problem, an
 
 **The Three-Prime Running Least Common Multiple**
 
-[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex) · 20 sections · `erdos-269-three-prime-running-lcm` · native to this repository
+[full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex) · 21 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [The running least common multiple as a product of pure powers](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [Dyadic blocks and a conditional carry contradiction](full-text/erdos-269-three-prime-running-lcm.md#sec:escape), [Complements and further questions](full-text/erdos-269-three-prime-running-lcm.md#sec:open).
 
@@ -79,7 +79,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **Multiplicative Obstructions at Base 3/2**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex) · 20 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../erdos-1049-rational-base-lambert.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex) · 22 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [Row content does not change the local-to-Archimedean balance](full-text/erdos-1049-rational-base-lambert.md#sec:primitive), [Endpoint residues at (3,2) and the four-jet kernel](full-text/erdos-1049-rational-base-lambert.md#sec:endpoints), [Complements and further questions](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
@@ -87,7 +87,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **From Lean Proofs to Public Claims**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 26 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 30 sections · `claim-faithful-publication-systems` · native to this repository
 
 The paper's own reading map sends a first pass to [The release workflow](full-text/claim-faithful-publication-systems-paper.md#sec:picture), [The reviewed record](full-text/claim-faithful-publication-systems-paper.md#sec:record), [What the checks establish](full-text/claim-faithful-publication-systems-paper.md#sec:trust), [Scope, reuse, and limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 

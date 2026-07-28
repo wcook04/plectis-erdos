@@ -27,19 +27,10 @@ MAX_GUIDE_BYTES = 18_000
 # screen readers, keywords, and a numbered outline, matching what the
 # mathematics paper already declares. No prose was added and the rendered
 # paper is still fourteen pages, so this raise funds metadata, not material.
-# Raised to 53_300 for the generative-AI provenance disclosure: the page-one
-# note saying the agents wrote the prose, and the back-matter declaration that
-# replaced the weaker "AI assistance" paragraph. The disclosure is the one kind
-# of growth this budget must never buy back by trimming, because a reader who
-# misses it misreads the byline; the page-band exchange it forced is already
-# recorded in check_rendered_paper_boundary.py.
-# Raised to 65_000 for the agent-native navigation/workbench case study and its
-# primary-source comparison set. This growth pays for an independently
-# reproducible authority boundary (zero-build projections -> receipted Lean
-# probe -> incremental build), explicit unresolved-index counts, one replayed
-# dogfood session, and the closest graph, retrieval, assurance, and provenance
-# comparators; it does not relax the cold-reader or claim-boundary anchors.
-MAX_SYSTEMS_PAPER_BYTES = 65_000
+# Raised to 55_000 for the early finite-versus-unbounded figure and
+# contribution/evidence/ceiling panel. These reduce reconstruction work for a
+# cold reader while retaining a hard ceiling on operational and inventory prose.
+MAX_SYSTEMS_PAPER_BYTES = 55_000
 
 SECTION_ORDER = (
     "## What this repository is",
@@ -146,19 +137,6 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_diagram_labels": (
         "reading map, code index",
         "machine-readable summary",
-    ),
-    "agent_native_navigation_and_receipt": (
-        "agent_native_corpus_navigation",
-        "151,755 declarations in 991 Lean modules",
-        "8,772 source-resolved nodes and 38,844 direct value-reference edges",
-        "query_corpus.py --tour --format card",
-        "available intent classes",
-        "append-only ledger",
-        "an agent cannot author that verdict",
-        "claim must cite a kernel-accepted probe receipt",
-        "carry_pivot_2026_07_27",
-        "zero stale modules",
-        "26 modules in four dependency waves",
     ),
     "real_owners": (
     "Erdos249257.lean",

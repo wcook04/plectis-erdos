@@ -76,13 +76,17 @@ FIRST_MINUTE_CONTRACT = {
             "lean verifies that a proof establishes the formal statement written in the source",
             "both problems remain open",
             "finite certificate at every lcm-diagonal scale",
+            "t ≤ 82",
+            "beyond every fixed cutoff",
             "registered claims",
             "the release workflow",
             "docs/claims.json",
-            "release checker",
-            "lean checks the formal proofs",
+            "scripts/check_release.py",
         ),
-        (1, 3): ("both jobs pass?",),
+        (1, 3): (
+            "lean checks the formal proofs",
+            "whether both jobs pass",
+        ),
     },
     "cold-clone-to-proof-receipt.pdf": {
         (1, 1): (

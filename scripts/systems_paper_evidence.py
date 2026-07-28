@@ -16,6 +16,8 @@ from publication_contract import normalize_latex_evidence
 ROOT = Path(__file__).resolve().parent.parent
 PAPER_PATH = ROOT / "paper" / "claim-faithful-publication-systems-paper.tex"
 EVIDENCE_PATH = ROOT / "docs" / "publication_evidence.json"
+CLAIMS_PATH = ROOT / "docs" / "claims.json"
+ERDOS_PROBLEMS_ROOT = ROOT / "ErdosProblems.lean"
 
 NUMBER_WORDS = {
     0: "zero",
@@ -41,12 +43,18 @@ def number_word(value: int) -> str:
 def validate_systems_paper_evidence(
     paper_text: str | None = None,
     evidence: dict[str, Any] | None = None,
+    claims: dict[str, Any] | None = None,
+    erdos_problems_root: str | None = None,
 ) -> list[str]:
     """Check the paper's outcome and ceilings against the typed receipt."""
     if paper_text is None:
         paper_text = PAPER_PATH.read_text(encoding="utf-8")
     if evidence is None:
         evidence = json.loads(EVIDENCE_PATH.read_text(encoding="utf-8"))
+    if claims is None:
+        claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
+    if erdos_problems_root is None:
+        erdos_problems_root = ERDOS_PROBLEMS_ROOT.read_text(encoding="utf-8")
 
     errors: list[str] = []
     normalized = normalize_latex_evidence(paper_text)
@@ -102,6 +110,41 @@ def validate_systems_paper_evidence(
         if "the edits were authored by the checker's author" not in normalized:
             errors.append("systems paper lost the mutation-author dependence ceiling")
 
+    finite_claim = next(
+        (
+            claim
+            for claim in claims.get("claims", [])
+            if claim.get("id") == "certified_kill_instances"
+        ),
+        None,
+    )
+    if finite_claim is None:
+        errors.append("claim registry lacks certified_kill_instances")
+    else:
+        declarations = finite_claim.get("declarations", [])
+        final_declaration = declarations[-1] if declarations else {}
+        if finite_claim.get("status") != "verified finite instance":
+            errors.append("finite certificate claim lost verified-finite status")
+        if re.search(
+            r"every[^;]*t ≤ 82",
+            str(finite_claim.get("bounded_domain", "")),
+        ) is None:
+            errors.append("finite certificate claim registry does not own the t ≤ 82 band")
+        if len(declarations) != 6:
+            errors.append("finite certificate claim must name exactly six declarations")
+        if (
+            final_declaration.get("name") != "exists_diagonalKill_le_82"
+            or final_declaration.get("module")
+            != "ErdosProblems/Skip/LadderT67.lean"
+        ):
+            errors.append("finite certificate claim does not terminate at the t ≤ 82 theorem")
+        if re.search(r"t\\le\s*82", normalized) is None:
+            errors.append("systems paper no longer states the registered t ≤ 82 band")
+        if r"no \(t=83\) or cofinal claim" not in normalized:
+            errors.append("systems paper lost the finite-band ceiling")
+        if "import ErdosProblems.Skip.LadderT67" not in erdos_problems_root:
+            errors.append("supported ErdosProblems root does not import the t ≤ 82 theorem")
+
     return errors
 
 
@@ -154,6 +197,16 @@ def mutation_fixture_failures() -> list[str]:
             "The edits were authored by the checker's author",
             "The edits were independently authored",
         ),
+        "finite_band_regressed_to_64": re.sub(
+            r"t\\le\s*82",
+            r"t\\le64",
+            source,
+        ),
+        "finite_band_ceiling_removed": reflow_tolerant_replace(
+            source,
+            r"no \(t=83\) or cofinal claim",
+            "a cofinal claim",
+        ),
     }
     failures: list[str] = []
     for fixture_id, mutated in fixtures.items():
@@ -180,8 +233,8 @@ def main() -> int:
             print(f"  FAIL fixture did not reject: {fixture}")
         return 1
     print(
-        "systems_paper_evidence: historical outcome and evidence ceilings "
-        "match; four opposing fixtures reject"
+        "systems_paper_evidence: central claim, historical outcome, and "
+        "evidence ceilings match; six opposing fixtures reject"
     )
     return 0
 

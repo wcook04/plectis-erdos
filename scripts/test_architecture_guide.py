@@ -5,6 +5,8 @@
 
 from __future__ import annotations
 
+import re
+
 import check_architecture_guide as checker
 
 
@@ -22,6 +24,12 @@ def assert_paper_rejected(text: str, label: str) -> None:
     except AssertionError:
         return
     raise AssertionError(f"systems-paper mutation escaped: {label}")
+
+
+def reflow_tolerant_replace(source: str, phrase: str, replacement: str) -> str:
+    """Replace prose even when LaTeX source rewraps it across lines."""
+    pattern = r"\s+".join(re.escape(word) for word in phrase.split())
+    return re.sub(pattern, lambda _match: replacement, source, count=1)
 
 
 def main() -> int:
@@ -76,7 +84,8 @@ def main() -> int:
             "real claim owner hidden",
         ),
         (
-            systems_paper.replace(
+            reflow_tolerant_replace(
+                systems_paper,
                 "does not technically force a second independent mathematician",
                 "enforces independent review",
             ),

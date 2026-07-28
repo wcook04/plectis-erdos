@@ -34,9 +34,9 @@
 % the repository verifies that it matches docs/claims.json and that every
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
-% Public checkpoint: tag formal-source-2026-07-18 points to this source commit.
-\newcommand{\commit}{1128d0858e1060c741f26460afac166f36801af9}
-\newcommand{\commitshort}{1128d0858e10}
+% Public formal-source checkpoint used by this paper.
+\newcommand{\commit}{1d53a792b7873ce6f0386b7aa2ee70021003e83f}
+\newcommand{\commitshort}{1d53a792b787}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main}
@@ -174,8 +174,12 @@ of integers from \(1\) to \(n\) that are coprime to \(n\).  Problem \#249
 appears on p.~61 of Erd\H{o}s--Graham and p.~102 of Erd\H{o}s's
 survey~\cite[p.~61]{erdosgraham1980}\cite[p.~102]{erdos1988}; problem
 \#257 appears on pp.~62 and 105, respectively~\cite[p.~62]{erdosgraham1980}
-\cite[p.~105]{erdos1988}.  Numbering follows Bloom's
-catalogue~\cite{erdosproblems}.  Neither problem is settled.
+\cite[p.~105]{erdos1988}.  Bloom's current catalogue records reproduce both
+questions and label them open, while explicitly warning that those labels are
+the website owner's present assessments and may omit relevant literature
+\cite{erdosproblems}.  We therefore use the catalogue for numbering and
+current reported status only; the original publications and later cited
+papers carry the mathematical claims.  Neither problem is settled.
 
 Throughout, \(\N=\{0,1,2,\ldots\}\) and
 \(\Npos=\{1,2,3,\ldots\}\).  A \emph{support} \(A\subseteq\Npos\)
@@ -396,7 +400,7 @@ transition branches.  It rules out one branch and the integer transition value
 \(-3\) in the other, but does not exclude \(-2,-1\) or prove the required
 unused-tail inequality for the remaining nonnegative transition values.  The exact
 conditional implication is the
-\lword{HalfCylinderLastProducerContradiction.lean}{436}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{remaining-tail implication}.
+\lword{HalfCylinderLastProducerContradiction.lean}{387}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{remaining-tail implication}.
 Proposition~\ref{res:finalskipexclusions} gives the local exclusions and
 Corollary~\ref{res:taildominance} states the sufficient global hypothesis.
 
@@ -418,10 +422,14 @@ the sums, and collecting the terms with \(m=nk\).  The coefficient
 \((f*\mathbf 1)(m)\) is the Dirichlet convolution of \(f\) with the constant
 function \(\mathbf 1(n)=1\).  We also write \(\mathrm{Id}(n)=n\), let \(\mu\)
 denote the M\"obius function, and put \(\sigma(m)=\sum_{d\mid m}d\).
-For classical arithmetic-function and Dirichlet-convolution background, see
-Apostol~\cite{apostol}.  Lambert-series factorisations and their matrix
-formulations are treated by Merca~\cite{merca2017} and
-Merca--Schmidt~\cite{mercaschmidt}.
+For the exact classical arithmetic-function and Dirichlet-convolution
+background used here, see Apostol's Sections~2.6--2.7 and
+Theorem~11.5~\cite[pp.~28--32, 228--229]{apostol}.  Merca's general
+Lambert-series factorisation is Theorem~1.2, proved from its finite
+Lemma~1.1~\cite[pp.~420--421]{merca2017}; the totient specialisations are
+Corollaries~5.13--5.14~\cite[pp.~430--431]{merca2017}.
+Merca--Schmidt give the divisor-transform identity and its matrix
+factorisations in Equations~(1.1)--(1.6)~\cite[pp.~31--34]{mercaschmidt}.
 
 The rearrangement separates two operations: the divisor transform
 \(f\mapsto f*\mathbf 1\), followed by evaluation of the resulting coefficients
@@ -465,15 +473,22 @@ statuses rather than implications between them.  In particular, \(S\) and
 \(\mathbf 1\), but no displayed convolution connects those weights.  The
 known status of one row therefore does not transfer to another.
 
-Nesterenko proved that
-\(\mathbb Q(q,E_2(q),E_4(q),E_6(q))\) has transcendence degree at least \(3\)
-when \(0<|q|<1\).  Since \(q=1/2\) is algebraic, the three Eisenstein values at
-\(1/2\) are algebraically independent.  In particular,
+Nesterenko uses the Ramanujan \(q\)-series normalisation
+\[
+ P(q)=1-24\sum_{m\ge1}\sigma(m)q^m,
+ \qquad E_2(\tau)=P(e^{2\pi i\tau}),
+\]
+with \(Q\) and \(R\) similarly corresponding to \(E_4\) and \(E_6\).
+His Theorem~1 says that
+\(\mathbb Q(q,P(q),Q(q),R(q))\) has transcendence degree at least \(3\)
+when \(0<|q|<1\); Corollary~2 gives the sharper direct specialization that
+\(P(q),Q(q),R(q)\) are algebraically independent when \(q\) is algebraic.
+Thus at the algebraic \(q\)-parameter \(q=1/2\),
 \[
  L(\mathrm{Id})=\sum_{m\ge1}\frac{\sigma(m)}{2^m}
- =\frac{1-E_2(1/2)}{24}
+ =\frac{1-P(1/2)}{24}
 \]
-is transcendental~\cite{nesterenko}.
+is transcendental~\cite[Theorem~1 and Corollary~2, p.~1320]{nesterenko}.
 
 \begin{proposition}[Two rational Lambert identities]
 \[
@@ -550,9 +565,13 @@ difficulties~\cite[p.~66]{erdos1948}.  That is historical lineage for
 \#249, not a transfer of the full-support theorem or evidence for current status.
 Section~\ref{sec:ladder} writes this constant as $L(\mathbf 1)$, a proved
 comparison value in the same Mersenne--Lambert family as the open $S$.  This
-comparison supplies no further convolution step from $S$.  Borwein later proved a wider
-rational-shift Lambert-series
-theorem~\cite{borwein1992}; that result is not formalised here.
+comparison supplies no further convolution step from $S$.  Borwein later proved that,
+for every integer $q$ with $|q|>1$ and every nonzero rational $c$ away from
+the poles $c=-q^n$, both
+\(\sum_{n\ge1}(q^n+c)^{-1}\) and
+\(\sum_{n\ge1}(-1)^n(q^n+c)^{-1}\) are irrational and not Liouville
+~\cite[Thms.~1--2, pp.~142, 145--146]{borwein1992}; those rational-shift
+theorems do not cover arbitrary supports and are not formalised here.
 
 The proof turns rationality into a spacing obstruction.  Its coefficient
 model is the Lambert identity
@@ -620,13 +639,24 @@ condition~\cite[Theorem, p.~222]{erdos1968});
 \end{theorem}
 \noindent These sort into three groups. The classical case is (d): infinite
 pairwise-coprime $A$ with $\sum_{a\in A}1/a<\infty$, formalised from Erd\H{o}s's
-condition. The lcm-gap named cases are (a) and (b), whose support gaps outgrow the
-running $\lcm$; the structured families are (c) and (e).\footnote{Luca--Tachiya
-prove the broader eventual-periodic rational-coefficient theorem; its indicator
-specialisation directly contains case (e)~\cite{lucatachiya}. Their
-Chowla--Erd\H{o}s-style large-modulus proof is distinct from the periodic-divisor
-certificate route formalised here, and the full mixed-sign coefficient theorem is
-not claimed.}
+printed theorem on p.~222.  His next sentence says that pairwise coprimality
+can be removed by a more complicated argument, but the article omits that
+argument and p.~226 repeats the proof boundary; we therefore do not use the
+stronger extension. The lcm-gap named cases are (a) and (b), whose support gaps outgrow the
+running $\lcm$; the structured families are (c) and (e).\footnote{Luca--Tachiya's
+Theorem~1 directly proves the nonnegative purely-periodic case; subtracting a
+finite rational prefix gives the eventual-support row
+\cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017}.  Their
+Theorem~A restates the broader signed purely-periodic theorem but does not
+reproduce its earlier proof \cite[Theorem~A, p.~139]{lucatachiya2017}.
+Remark~1 says that the earlier signed proof used the
+Alford--Granville--Pomerance large-modulus input, unlike their nonnegative
+proof \cite[p.~140]{lucatachiya2017}.  Example~1 strengthens the nonnegative
+unit case to linear independence of every finite generalized-divisor ladder
+\cite[p.~140]{lucatachiya2017}.  Example~2 applies the period-two odd-support
+indicator and strengthens that row to joint linear independence of every
+finite divisor-convolution ladder, including at negative integer bases with
+absolute value greater than one \cite[p.~140]{lucatachiya2017}.}
 \noindent Formalised case by case by the
 \lword{CertificateKernel.lean}{5707}{irrational_erdosSum_factorial_support}{factorial-support theorem},
 \lword{CertificateKernel.lean}{5731}{irrational_erdosSum_two_pow_support}{power-of-two-support theorem},
@@ -640,24 +670,32 @@ every base \(b\geq2\).
 
 There is also a decisive cited case outside that formalised list.  Let
 \(A_{\mathrm{sf}}=\{n\ge2:n\text{ is squarefree}\}\).  Duverney and Tachiya's
-Corollary~1.2 and Example~1.1 prove that
+Corollary~1.2 and Example~1.1 prove, for every \(h\ge1\), that
 \[
-  1,\qquad \sum_{n\ge1}\frac{|\mu(n)|}{2^n-1}
+  1,\qquad
+  \sum_{n\ge1}\frac{|\mu(n)|}{2^{jn}-1}\quad(1\le j\le h)
 \]
-are linearly independent over \(\Q\)~\cite{duverneytachiya}.  Since
-\(|\mu|\) is the squarefree indicator and the \(n=1\) term is the rational
-number \(1\), it follows that
-\(\sum_{n\in A_{\mathrm{sf}}}(2^n-1)^{-1}\) is irrational.  This result is not
-formalised here.  Its exact hypothesis \(|q|^L\le s\), specialised to
-\(s=2\) and \(L=1\), covers base \(2\) but not integer bases \(b\ge3\);
-neither those bases nor arbitrary infinite supports follow from the citation.
+are linearly independent over \(\Q\)
+~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya}.  Since
+\(|\mu|\) is the squarefree indicator and the omitted \(n=1\) term is the
+rational number \((2^j-1)^{-1}\), it follows that
+\[
+  1,\quad
+  \sum_{n\in A_{\mathrm{sf}}}\frac1{2^n-1},\quad
+  \sum_{n\in A_{\mathrm{sf}}}\frac1{4^n-1},\ \ldots,\
+  \sum_{n\in A_{\mathrm{sf}}}\frac1{(2^h)^n-1}
+\]
+are linearly independent.  This result is not formalised here.  It covers
+every power-of-two base, but neither other bases nor arbitrary infinite
+supports follow from the citation.
 
 The prime support is now known unconditionally: Tao and Ter\"av\"ainen proved
 that
 \[
   \sum_p\frac1{2^p-1}=\sum_{n\ge1}\frac{\omega(n)}{2^n}
 \]
-is irrational~\cite[Theorem~1.3]{taoteravainen}. Their proof uses quantitative two-point
+is irrational~\cite[Theorem~1.3, p.~4; proof in Section~5,
+pp.~44--56]{taoteravainen}. Their proof uses quantitative two-point
 correlations of multiplicative functions and is not formalised here. This
 settles the prime-support case, not the universal support statement.
 They also indicate how the argument should extend to
@@ -723,7 +761,11 @@ and
 \lword{GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{greedy membership theorem}.
 Uniqueness is the
 \lword{GreedyAchievementSet.lean}{1527}{positiveMersenneSupportValue_injective_normalized}{support-coding theorem}.
-Kova\v{c}--Tao provide the strict-tail Cantor-set context~\cite[Remark~4.1]{kovactao}.
+Kova\v{c}--Tao provide the strict-tail Cantor-set
+context~\cite[Remark~4.1, p.~13]{kovactao}.  Their Theorem~2.3
+\cite[p.~5; proof pp.~13--14]{kovactao} constructs rational merged sums from
+several bases under a total-mass hypothesis, but it is not a counterexample
+for one fixed base.
 
 \paragraph{Geometric and finite-arithmetic consequences.}
 Proposition~\ref{res:greedytopology} proves that \(\mathcal A\) is compact,
@@ -781,7 +823,8 @@ support, with its explicit period-six orbit and multiplier \(21\), is worked
 at the end of Appendix~\ref{app:carry-boolean}.
 The recurrence is a necessary consequence of rationality, not a criterion by
 itself.  Wang uses the same forward mechanism for
-\(\gamma(n)=n d_n\)~\cite[Section~3]{wang2026}; Appendix~\ref{app:carry-normal-form}
+\(\gamma(n)=n d_n\)~\cite[Proposition~3.1, pp.~5--6]{wang2026};
+Appendix~\ref{app:carry-normal-form}
 separates that antecedent from the generic converse and rigidity statements
 formalised here.  Wang's density theorem and its Erd\H{o}s~\#260 corollary
 are not used.
@@ -909,7 +952,7 @@ rank \(26\) it takes exactly
 \]
 The finite seam model introduced below reproduces this prefix uniformly for
 every row \(s\geq27\); this is the
-\lword{HalfFinalMiddlePhaseSieve.lean}{899}{seamGreedyBits_head2367_14_20_21_26}{kernel-checked rank-(26) prefix}
+\lword{HalfFinalMiddlePhaseSieve.lean}{1190}{seamGreedyBits_head2367_14_20_21_26}{kernel-checked rank-(26) prefix}
 used again in Appendix~\ref{app:half-final-skip}.
 
 This is only an initial segment.  Membership of \(1/2\) in \(\mathcal A\)
@@ -1039,7 +1082,7 @@ transition followed only by right transitions.  The terminal bit at row
 \(13\) is false.  Consequently, if the seam is eventually right, its last
 false terminal row satisfies \(D\geq13\); the lower bound comes from this
 calculation rather than an omitted range of cases.  This is the
-\lword{HalfCylinderLastProducerContradiction.lean}{227}{exists_last_false_terminal_of_eventuallyRight}{last-false row theorem}.
+\lword{HalfCylinderLastProducerContradiction.lean}{178}{exists_last_false_terminal_of_eventuallyRight}{last-false row theorem}.
 
 At a middle transition \(D\geq13\), the next question is whether restoring the
 skipped rank \(D\) still leaves the support below \(1/2\).  Let
@@ -1100,14 +1143,14 @@ skip, the value \(C_D=-3\) is impossible; the values \(-2\) and \(-1\)
 remain unresolved.
 \end{proposition}
 \noindent The upper and \(C_D=-3\) exclusions are the
-\lword{HalfCylinderLastProducerContradiction.lean}{299}{upperProducer_not_last}{upper-branch exclusion}
+\lword{HalfCylinderLastProducerContradiction.lean}{250}{upperProducer_not_last}{upper-branch exclusion}
 and
-\lword{HalfCylinderLastProducerContradiction.lean}{364}{middleProducer_neg_three_not_last}{middle-\(-3\) exclusion};
+\lword{HalfCylinderLastProducerContradiction.lean}{315}{middleProducer_neg_three_not_last}{middle-\(-3\) exclusion};
 the upper case is proved directly at the linked declaration, and
 Appendix~\ref{app:half-final-skip} sketches a prose argument only for the
 case \(C_D=-3\).
 The three exceptional values are identified by the
-\lword{HalfCylinderMiddleCarryLowerBound.lean}{4125}{seamMiddleCoordinate_not_safe_iff_three_cells}{three exceptional carry values}.
+\lword{HalfCylinderMiddleCarryLowerBound.lean}{3090}{seamMiddleCoordinate_not_safe_iff_three_cells}{three exceptional carry values}.
 
 \begin{corollary}[tail-dominance membership criterion]\label{res:taildominance}
 If every middle transition at a row \(D\geq13\) with \(C_D\neq-3\) satisfies
@@ -1117,7 +1160,7 @@ If every middle transition at a row \(D\geq13\) with \(C_D\neq-3\) satisfies
 then no final skipped exponent exists, and hence \(1/2\in\mathcal A\).
 \end{corollary}
 \noindent This implication is the
-\lword{HalfCylinderLastProducerContradiction.lean}{436}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{tail-dominance theorem}.
+\lword{HalfCylinderLastProducerContradiction.lean}{387}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{tail-dominance theorem}.
 Since \(\Theta_D\geq0\), inequality~\textup{(4.2)} cannot hold when
 \(C_D=-2\) or \(-1\).  The corollary therefore has two open inputs.  First,
 these two carry values must be shown not to occur at any actual middle
@@ -1417,14 +1460,14 @@ $K_N$ and future tail $T_N$.  Exactly $\frac12-X_A=(K_N-T_N)/2^N$
 (\lword{HalfCylinderFiniteShadow.lean}{55}{halfStripAdmissible_residual_eq}{residual identity}).
 A first even seam has sole missing carry $H=2\delta-c$; hence $[1,B]$ is fully
 reachable iff $H<1$ or $B<H$
-(\lword{HalfCylinderFiniteShadow.lean}{824}{evenSeam_fullIntegerStrip_iff_escape}{seam equivalence}).
+(\lword{HalfCylinderFiniteShadow.lean}{807}{evenSeam_fullIntegerStrip_iff_escape}{seam equivalence}).
 Raw safety is weaker: rank-three $A=\{2,3\}$ has residual $1/42<1/32$, but its
 depth-six strip $[1,8]$ contains $H=3$.  After a skip at rank $k+1$, freeze
 the selected support $A$ through $k$ and let $K$ be its centred carry.  The
 sole input is that $m_0=-K$, $m_{J+1}=2m_J+f_A(k+J+2)$ reaches $m_J\geq0$
 for some $J\leq k+1$; the first $J$ future rows then cover $K$.  This unproved
 hypothesis implies $1/2$-membership
-(\lword{HalfCylinderFiniteShadow.lean}{1274}{half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer}{half-membership}),
+(\lword{HalfCylinderFiniteShadow.lean}{1256}{half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer}{half-membership}),
 but the hypothesis is not proved here.
 
 \subsubsection{Fixed-coefficient rewind}\label{res:fixedcoeffrewind}
@@ -1564,7 +1607,7 @@ the ranks
   2,3,6,7,14,20,21,26,
 \]
 by
-\lword{HalfFinalMiddlePhaseSieve.lean}{899}{seamGreedyBits_head2367_14_20_21_26}{the exact rank-(26) prefix}.
+\lword{HalfFinalMiddlePhaseSieve.lean}{1190}{seamGreedyBits_head2367_14_20_21_26}{the exact rank-(26) prefix}.
 
 If \(D\ge27\) has \(C_D=-2\) and is followed by an all-right
 suffix, then
@@ -1574,11 +1617,11 @@ suffix, then
 \]
 the class $D\bmod10=7$ cannot pair with $D\bmod21=11$, and the class
 $D\bmod13=10$ cannot pair with $D\bmod21=11$.  The orbit theorem is
-\lword{HalfFinalMiddlePhaseSieve.lean}{1622}{finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix}{the finite \(C_D=-2\) sieve}.
+\lword{HalfFinalMiddlePhaseSieve.lean}{1913}{finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix}{the finite \(C_D=-2\) sieve}.
 The three moduli are pairwise coprime, so their phase triples correspond to
 the \(21\cdot10\cdot13=2730\) residue classes modulo \(2730\).  Exactly
 \(412\) survive; this finite count is
-\lword{HalfFinalMiddlePhaseSieve.lean}{1759}{finalMiddleTwentySixPhaseSurvivors_card}{the exact survivor count}.
+\lword{HalfFinalMiddlePhaseSieve.lean}{2050}{finalMiddleTwentySixPhaseSurvivors_card}{the exact survivor count}.
 Thus a hypothetical final $C_D=-2$ transition lies in one of $412$ classes
 modulo $2730$, a finite necessary condition rather than an exclusion; the
 $C_D=-1$ case is untouched.  Even a survivor density tending to zero would not
@@ -1590,9 +1633,9 @@ $\Theta_D<C_D$ at every actual middle transition $D\ge13$ except $C_D=-3$.
 Since $\Theta_D\ge0$, exactly two open tasks remain: exclude $C_D=-2,-1$,
 and prove $\Theta_D<C_D$ at every remaining transition with $C_D\ge0$.
 Together they imply half-membership,
-\lword{HalfCylinderLastProducerContradiction.lean}{436}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{unused-tail criterion};
+\lword{HalfCylinderLastProducerContradiction.lean}{387}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{unused-tail criterion};
 a separate square-root lower bound also suffices,
-\lword{HalfCylinderLastProducerContradiction.lean}{458}{half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape}{square-root condition}.
+\lword{HalfCylinderLastProducerContradiction.lean}{409}{half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape}{square-root condition}.
 Neither input is proved.
 
 A stronger finite hypothesis puts $g_D=\#G_D$.  Since
@@ -1600,11 +1643,11 @@ $A_D=G_D\cup\{D\}$ has $g_D+1$ elements, $\Theta_D\le g_D+1$.
 Using $C_D=4R_{D,D}-P_D-4$, the condition
 $g_D+P_D+5<4R_{D,D}$ is exactly $g_D+1<C_D$.  At every late middle row it
 therefore excludes the negative carries and proves tail dominance.  This is
-\lword{HalfCylinderMiddleCarryLowerBound.lean}{279}{SeamMiddleProducerCardEscape}{the cardinality escape condition},
+\lword{HalfCylinderMiddleCarryLowerBound.lean}{111}{SeamMiddleProducerCardEscape}{the cardinality escape condition},
 and its membership consequence is
-\lword{HalfCylinderMiddleCarryLowerBound.lean}{2364}{half_mem_mersenneAchievementSet_of_middleProducerCardEscape}{the prefix-cardinality criterion};
+\lword{HalfCylinderMiddleCarryLowerBound.lean}{1503}{half_mem_mersenneAchievementSet_of_middleProducerCardEscape}{the prefix-cardinality criterion};
 it follows in turn from $R_{D,D}\ge D$ at every late middle row,
-\lword{HalfCylinderMiddleCarryLowerBound.lean}{2371}{half_mem_mersenneAchievementSet_of_middleProducerRowEscape}{row-scale criterion}.
+\lword{HalfCylinderMiddleCarryLowerBound.lean}{1510}{half_mem_mersenneAchievementSet_of_middleProducerRowEscape}{row-scale criterion}.
 Both hypotheses are unproved.
 
 \paragraph{Finite upper-reset band certificates.}  At the upper reset
@@ -1931,14 +1974,14 @@ there is an infinite set \(A\subseteq\Npos\) such that
 \]
 \end{corollary}
 \noindent This is the
-\lword{SuffixCylinderTerminalOnlyBridge.lean}{287}{exists_infinite_positive_support_half_of_cofinalCylinderStages}{positive-support unbounded-depth cylinder criterion}.
+\lword{SuffixCylinderTerminalOnlyBridge.lean}{148}{exists_infinite_positive_support_half_of_cofinalCylinderStages}{positive-support unbounded-depth cylinder criterion}.
 
 \paragraph{Status and relation to prior work.}
 The two transition propositions do not supply their coefficient inequalities,
 and the finite base does not supply witnesses at unbounded depths as required by
 Corollary~\ref{res:cofinalcylinder}.  The
 strict-tail achievement-set literature supplies the surrounding Cantor-set
-geometry~\cite[Remark~4.1]{kovactao}, not this finite carry recurrence; the comparison
+geometry~\cite[Remark~4.1, p.~13]{kovactao}, not this finite carry recurrence; the comparison
 record makes no novelty claim for the recurrence itself.
 
 \subsubsection{Verified finite suffix-cylinder stages}\label{res:prefeedback}
@@ -1964,7 +2007,7 @@ with endpoint \(51{,}327{,}745\), beyond the next head-bit threshold,
 and the promoted successor at depth \(52\) is checked:
 \lword{SuffixCylinderStage51.lean}{536}{fullCylinderStage51_feedback_headThreshold_margin}{depth-\(51\) threshold margin}
 and
-\lword{SuffixCylinderTerminalOnlyBridge.lean}{238}{fullCylinderStage52_halfTerminalOnlyStripWitness}{depth-\(52\) terminal-strip witness}.
+\lword{SuffixCylinderTerminalOnlyBridge.lean}{118}{fullCylinderStage52_halfTerminalOnlyStripWitness}{depth-\(52\) terminal-strip witness}.
 \end{enumerate}
 These are finite milestones, not an unbounded induction; they do not provide
 the arbitrarily large stages required by
@@ -2027,12 +2070,19 @@ escape mechanism.
 \subsubsection{Incompatibility with Campbell's prime-progression bound}
 \label{res:campbellboundary}
 
-Crandall asked whether the binary block \(11\) occurs infinitely often in
-the Erd\H{o}s--Borwein constant~\cite{crandall}.  Campbell's 2026 preprint
-proves this affirmatively~\cite{campbell}, using a Chinese-remainder
-construction and a prime-progression estimate of
-Alford--Granville--Pomerance~\cite{alfordgranvillepomerance}.
-Campbell chooses
+Crandall's divisor-function/BBP method proves that the
+\(10^{100}\)-th binary digit of the Erd\H{o}s--Borwein constant is \(1\)
+and reports the first \(2^{43}\) bits, but he explicitly leaves open whether
+the binary block \(11\) occurs infinitely often
+\cite[\S\S5--7, open-PDF pp.~6--9]{crandall}.  These finite digit
+certificates do not themselves imply an asymptotic block-occurrence theorem.
+Campbell's 2026 preprint proves the \(11\)-occurrence question affirmatively
+\cite[Theorem~1, p.~12; proof
+pp.~12--24]{campbell}, using a Chinese-remainder
+construction and the lower-bound prime-progression property recorded as
+(0.3) on p.~705 of
+Alford--Granville--Pomerance~\cite[p.~705, (0.3)]{alfordgranvillepomerance}.
+Campbell uses its standard special-case formulation and chooses
 exponent \(\delta=1/4\): at prime-search height \(X\), the progression
 modulus \(d\) must satisfy \(d\le X^{1/4}\), equivalently \(d^4\le X\).
 
@@ -2148,8 +2198,10 @@ computation returns a bound above \(10^{2405}\) at \(K=16\,000\) in well under
 a second, so \(\Qzero\) records how far the computation was run rather than a
 property of \(S\).  What the formalisation adds is that each threshold is
 kernel-checked and sharp for its window, the next denominator provably failing
-the gap certificate.  Farey's 1816 note supplies the historical terminology for
-neighbouring fractions~\cite{farey1816}.  Every exclusion in this ladder is
+the gap certificate.  Farey's two-page letter records the bounded-denominator
+mediant observation, examples, and his request for a proof or earlier
+precedent~\cite[pp.~385--386]{farey1816}; it does not use the modern
+``neighbouring fractions'' terminology.  Every exclusion in this ladder is
 Lean-checked, and a deterministic integer checker reproduces both constants
 from scratch and exhibits the scaling.  The first threshold is a direct
 low-carry check,
@@ -2534,9 +2586,9 @@ $C_{H,D}$ from every integer by more than this bound forces
 $\mathcal D_H\notin\Z$ and full-target avoidance.  No converse is asserted.
 \end{proposition}
 \noindent Formalised:
-\lword{SquaredMersenneDiagonalEnclosure.lean}{138}{scaleDiagonalTailDifference_sub_lambertProjectedDiagonal}{squared-Mersenne tail identity}
+\lword{SquaredMersenneDiagonalEnclosure.lean}{116}{scaleDiagonalTailDifference_sub_lambertProjectedDiagonal}{squared-Mersenne tail identity}
 and
-\lword{SquaredMersenneDiagonalEnclosure.lean}{426}{scaleFullTarget_miss_of_lambert_projected_separation}{Lambert-projected separation criterion}.
+\lword{SquaredMersenneDiagonalEnclosure.lean}{237}{scaleFullTarget_miss_of_lambert_projected_separation}{Lambert-projected separation criterion}.
 
 \paragraph{A reduced-denominator finite predicate.}  Separately, there is a
 stricter finite condition for an odd reduced denominator
@@ -2628,10 +2680,10 @@ If
 then the full target at height \(H\) is not attained.
 \end{proposition}
 \noindent Formalised:
-\lword{ActualForeignResidueProjection.lean}{308}{finiteResidueDiagonal_eq_projectedForeign_add_divisor}{foreign--divisor split},
-\lword{ActualForeignResidueProjection.lean}{276}{abs_foreignTailWindow_le_foreignComplementBound}{omitted-term bound},
+\lword{ActualForeignResidueProjection.lean}{307}{finiteResidueDiagonal_eq_projectedForeign_add_divisor}{foreign--divisor split},
+\lword{ActualForeignResidueProjection.lean}{275}{abs_foreignTailWindow_le_foreignComplementBound}{omitted-term bound},
 and
-\lword{ActualForeignResidueProjection.lean}{414}{scaleFullTarget_miss_of_projected_separation}{projected-separation criterion}.
+\lword{ActualForeignResidueProjection.lean}{348}{scaleFullTarget_miss_of_projected_separation}{projected-separation criterion}.
 The passage from finite windows to the analytic foreign complement, including
 the corresponding kernel identity, is not supplied here.  Nor is an
 unbounded family of separated projections.  Both missing inputs belong to
@@ -2707,9 +2759,9 @@ Consequently,
 implies that \(S\) is irrational.
 \end{corollary}
 \noindent Formalised:
-\lword{DiagonalFreshLossBridge.lean}{72}{diagonalFreshLossResidueCert_iff_projectionCert}{residue--projection equivalence}
+\lword{DiagonalFreshLossBridge.lean}{61}{diagonalFreshLossResidueCert_iff_projectionCert}{residue--projection equivalence}
 and
-\lword{DiagonalFreshLossBridge.lean}{202}{irrational_totientSeries_of_diagonalFreshLossProjectionSupply}{unbounded projection criterion}.
+\lword{DiagonalFreshLossBridge.lean}{191}{irrational_totientSeries_of_diagonalFreshLossProjectionSupply}{unbounded projection criterion}.
 The finite equivalence is only between the residue inequality and the
 projection certificate.  Neither condition is asserted to be necessary for
 full-target avoidance or for irrationality.
@@ -2945,10 +2997,17 @@ irrational.
 \paragraph{Relation to prior work.}
 The related qualitative nonregularity is known.  In the terminology of
 Allouche and Shallit, a sequence is $2$-regular when the $\Z$-module generated
-by all its dyadic sections is finitely generated~\cite[Chapter~16]{alloucheshallit}.
+by all its dyadic sections is finitely generated
+~\cite[Defs.~1.1 and~2.1, author-preprint pp.~2--3]{alloucheshallit}.
 Coons proved that $\ph$ is not $k$-regular for any $k\geq2$ by comparing the
 poles of $\zeta(s-1)/\zeta(s)$ with the meromorphic continuation available to
-a regular sequence's Dirichlet series~\cite[Theorem~3.2]{coons2010}.
+a regular sequence's Dirichlet series~\cite[Theorem~3.2, pp.~348--349]{coons2010}.
+Bell and Smertnig proved more generally that a multiplicative-coefficient
+\(k\)-Mahler series has a \(k\)-regular coefficient sequence of an explicit
+form; their Theorem~1.3 yields directly that the totient generating series is
+not \(k\)-Mahler for any \(k\ge2\)
+\cite[Theorem~1.3, pp.~2--3]{bellsmertnig2026}.  Their Corollary~1.4 further
+forces such a series to be rational whenever \(k\) is not a prime power.
 Theorem~\ref{res:dyadictotient} instead gives an explicit $\Q$-linear statement:
 the exact rank $2^e+1$ at each level, witnessed by a CRT--Dirichlet evaluation
 minor and checked without analytic continuation.
@@ -2996,7 +3055,7 @@ corresponding selected-column matrix times the diagonal product
 $\prod_i N_{p(i),i}$.
 \end{proposition}
 \noindent This is the
-\lword{SignedQMomentObstruction.lean}{29}{det_mul_rectangular}{rectangular determinant expansion}.
+\lword{SignedQMomentObstruction.lean}{28}{det_mul_rectangular}{rectangular determinant expansion}.
 
 \begin{proposition}[exact dominant-dyadic-term test]\label{res:dominantdyadic}
 If one selected integer numerator is odd and its dyadic exponent is strictly
@@ -3004,8 +3063,8 @@ larger than every other selected exponent, then the common numerator after
 dyadic denominator clearing is odd and hence nonzero.
 \end{proposition}
 \noindent Formalised by
-\lword{SignedQMomentObstruction.lean}{78}{scaled_dyadic_sum_odd}{dominant dyadic parity}, and
-\lword{SignedQMomentObstruction.lean}{96}{scaled_dyadic_sum_ne_zero}{dominant dyadic nonvanishing}.
+\lword{SignedQMomentObstruction.lean}{77}{scaled_dyadic_sum_odd}{dominant dyadic parity}, and
+\lword{SignedQMomentObstruction.lean}{95}{scaled_dyadic_sum_ne_zero}{dominant dyadic nonvanishing}.
 These are finite algebraic inputs to a signed-moment route.  They do not show
 that any actual totient Hankel determinant is nonzero, and they give no
 irrationality criterion for $S$.
@@ -3522,8 +3581,12 @@ producer inside the same integration manuscript.
 not add a mathematical conclusion to either reduction.
 
 \paragraph{Proof authority and source identity.}
-The Lean~4 proof assistant~\cite{lean} and Mathlib library~\cite{mathlib} check
-the named results.  The source, links from prose to formal statements, and build
+The pinned Lean~4 toolchain and Mathlib revision check the named results.
+De Moura--Ullrich identify the Lean~4 system
+\cite[abstract and \S1, pp.~625--626]{lean}, while the Mathlib paper documents
+the library's historical Lean~3-era architecture
+\cite[abstract and \S1.1, p.~367]{mathlib}; it is not authority for the current
+pinned revision.  The source, links from prose to formal statements, and build
 instructions are available in the
 \href{https://github.com/wcook04/plectis-lean-erdos249-257}{public repository}.
 This paper fixes source revision \texttt{\commitshort}, published under
@@ -3551,7 +3614,7 @@ Lean elaborates each declaration into a proof term, which the kernel checks;
 tactics construct these terms but are not separate proof authority.
 \texttt{norm\_num} constructs concrete arithmetic proofs, and \texttt{decide}
 reduces a decidable finite proposition to obtain a proof.  The
-\lword{HalfFinalMiddlePhaseSieve.lean}{1759}{finalMiddleTwentySixPhaseSurvivors_card}{finite survivor-count theorem}
+\lword{HalfFinalMiddlePhaseSieve.lean}{2050}{finalMiddleTwentySixPhaseSurvivors_card}{finite survivor-count theorem}
 uses \texttt{decide} to count 412 phases.  Its local \texttt{maxRecDepth}
 setting only raises the permitted unfolding depth; the proposition and logical
 rules are unchanged.  The finite survivor-count proof does not use compiler-backed native evaluation, and
@@ -3599,8 +3662,14 @@ not identically zero on its eventual period gives an irrational series.
 \end{theorem}
 \noindent Formalised:
 \lword{CertificateKernel.lean}{12483}{irrational_ratWeightSeries_eventuallyPeriodic}{eventually-periodic nonnegative criterion}.
-Luca--Tachiya prove more: every nonzero eventually periodic rational weight
-gives an irrational series for each integer base $|b|>1$~\cite{lucatachiya}.
+Luca--Tachiya's 2017 open-access RIMS paper proves the nonnegative
+purely-periodic case \cite[Theorem~1, p.~139; proof
+pp.~149--150]{lucatachiya2017}.  Clearing the denominator of the finite
+rational period and subtracting the finite prefix gives the exact
+eventual-rational theorem above; the local checked proof is independent.  The
+same paper's Theorem~A restates the signed purely-periodic integer theorem for
+every integer base $|b|>1$, but does not reproduce that earlier proof
+\cite[Theorem~A, p.~139]{lucatachiya2017}.
 \begin{theorem}[periodic signed-weight dichotomy]\label{res:periodicsigned}
 For a periodic integer weight \(\gamma\), either \(L_b(\gamma)\) is irrational
 or \(b^kL_b(\gamma)\in\Z\) for some \(k\ge0\).  In the rational branch its
@@ -3711,7 +3780,8 @@ Write
 \(\zeta_q(2)=\sum_{n\ge1}nq^n/(1-q^n)\).
 Postelmans--Van Assche prove that \(1,\zeta_q(1),\zeta_q(2)\) are linearly
 independent over \(\Q\) for $q=1/p$ and every integer $p\ge2$
-~\cite[Theorem~1.3]{postelmansvanassche}.  Since
+~\cite[Theorem~1.3 in the published version; Theorem~3 on p.~4 and proof in
+Section~7, pp.~30--34, of the linked preprint]{postelmansvanassche}.  Since
 $L^{(2)}(\mathbf1)=\zeta_{1/2}(2)-\zeta_{1/2}(1)$, their theorem makes the
 constant-weight value irrational.  This cited conclusion is not formalised
 here and does not transfer to the M\"obius row $L^{(2)}(\mu)=S-\tfrac12$.
@@ -3823,10 +3893,15 @@ The sum $E_r$ records exponents before any denominator cancellation.  This
 identity does not identify a reduced denominator for a probability mass or
 for \(S\).
 
-For arithmetic functions and M\"obius inversion we use Apostol~\cite{apostol};
-Merca and Merca--Schmidt treat Lambert-series factorisations
-~\cite{merca2017,mercaschmidt}.  Stern supplies the rational enumeration
-underlying the tree~\cite{stern1858}; the Postelmans--Van Assche theorem
+For arithmetic functions and M\"obius inversion we use
+Apostol~\cite[\S\S2.6--2.7, pp.~28--32]{apostol};
+Merca's Theorem~1.2~\cite[pp.~420--421]{merca2017} and
+Merca--Schmidt's Equations~(1.1)--(1.6)~\cite[pp.~31--34]{mercaschmidt}
+treat Lambert-series factorisations and their matrix forms.  Stern's
+Sections~6--8 prove that every ordered coprime pair occurs exactly once in
+his insertion rows, and Section~10 gives its continued-fraction row
+locator~\cite[pp.~200--204]{stern1858}; the tree terminology is later.
+The Postelmans--Van Assche theorem
 concerns only Appendix~\ref{app:lambert-algebraic}'s constant-weight value.
 The claims here are the linked Lean identities and estimates, not priority for
 the classical mediant or continuant framework.
@@ -3864,9 +3939,9 @@ $[2^{m_t-5},2^{m_t}-2^{m_t-5}]$ if and only if $\sigma_t\ge0$.
 \end{proposition}
 \noindent This fixed-scale equivalence and its beyond-every-cutoff strict-jump
 form are the
-\lword{DiagonalFreshLossBridge.lean}{2667}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{canonical central-band equivalence}
+\lword{DiagonalFreshLossBridge.lean}{2469}{canonicalAdjacentSuffixCentral_iff_slack_nonneg}{canonical central-band equivalence}
 and
-\lword{DiagonalFreshLossBridge.lean}{2757}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{strict-jump slack equivalence}.
+\lword{DiagonalFreshLossBridge.lean}{2559}{canonicalAdjacentSuffixJumpCentralSupply_iff_slackSupply}{strict-jump slack equivalence}.
 
 \begin{corollary}[central-band supply criterion for irrationality]
 \label{res:slackcriterion}
@@ -3877,7 +3952,7 @@ If, for every $t_0$, there is a $t\ge\max\{3,t_0\}$ such that
 then $S$ is irrational.
 \end{corollary}
 \noindent This implication is the
-\lword{DiagonalFreshLossBridge.lean}{2929}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{strict-jump slack irrationality criterion}.
+\lword{DiagonalFreshLossBridge.lean}{2731}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{strict-jump slack irrationality criterion}.
 The proposition is a fixed-\(t\) equivalence; the corollary gives only
 sufficiency.  No converse is known: completeness may choose a depth from the
 tail difference, whereas this criterion fixes \(m_t\).  Persistent negative
@@ -4027,17 +4102,17 @@ that is, \(R_{N+h}-R_N\) lies at distance at least
 \(\arccos(4/5)/(2\pi)=0.10241\ldots\) from the nearest integer, for one shift
 whose index \(N+h+1\) is prime, beyond every cutoff.  This is the formal
 hypothesis
-\lword{PivotAntiReconstruction.lean}{1267}{DTWNaturalPrimeTailOrbitGap}{DTWNaturalPrimeTailOrbitGap};
+\lword{PivotAntiReconstruction.lean}{1236}{DTWNaturalPrimeTailOrbitGap}{DTWNaturalPrimeTailOrbitGap};
 the strict variant~\eqref{eq:packet-prime-gap} at threshold \(9/10\) is
 equally good, since the surplus is absorbed into the truncation budget.
 
 \emph{Already checked.}  The implication from this hypothesis to
 irrationality is proved end to end
-(\lword{PivotAntiReconstruction.lean}{1583}{irrational_totient_series_of_naturalPrimeTailOrbitGap}{prime-orbit endpoint}),
+(\lword{PivotAntiReconstruction.lean}{1552}{irrational_totient_series_of_naturalPrimeTailOrbitGap}{prime-orbit endpoint}),
 through a singleton bridge
-(\lword{PivotAntiReconstruction.lean}{1277}{naturalPivotPointEscape_of_naturalPrimeTailOrbitGap}{prime-to-point bridge})
+(\lword{PivotAntiReconstruction.lean}{1246}{naturalPivotPointEscape_of_naturalPrimeTailOrbitGap}{prime-to-point bridge})
 and a point-escape consumer
-(\lword{PivotAntiReconstruction.lean}{1559}{irrational_totient_series_of_naturalPivotPointEscape}{point-escape consumer}).
+(\lword{PivotAntiReconstruction.lean}{1528}{irrational_totient_series_of_naturalPivotPointEscape}{point-escape consumer}).
 The truncation accounting is proved as well: an infinite-orbit gap survives
 finite windows with an explicit error budget
 (\lword{PivotAntiReconstruction.lean}{221}{windowFirstCos_le_add_of_tailOrbitGap}{window transfer}),
@@ -4071,20 +4146,20 @@ exponent \(D\ge13\) has \(C_D=-2\) or \(C_D=-1\), where
 Section~\ref{sec:final-skip-reduction}.  This is the first of the two
 unproved inputs to Corollary~\ref{res:taildominance}; the three exceptional
 values are pinned down by the
-\lword{HalfCylinderMiddleCarryLowerBound.lean}{4125}{seamMiddleCoordinate_not_safe_iff_three_cells}{three-cell classification}.
+\lword{HalfCylinderMiddleCarryLowerBound.lean}{3090}{seamMiddleCoordinate_not_safe_iff_three_cells}{three-cell classification}.
 
 \emph{Already checked.}  At a final skip the upper successor is impossible
-(\lword{HalfCylinderLastProducerContradiction.lean}{299}{upperProducer_not_last}{upper-branch exclusion}),
+(\lword{HalfCylinderLastProducerContradiction.lean}{250}{upperProducer_not_last}{upper-branch exclusion}),
 and \(C_D=-3\) is impossible
-(\lword{HalfCylinderLastProducerContradiction.lean}{364}{middleProducer_neg_three_not_last}{middle exclusion},
+(\lword{HalfCylinderLastProducerContradiction.lean}{315}{middleProducer_neg_three_not_last}{middle exclusion},
 refined by the
 \lword{HalfCylinderFinalMiddleCellEscape.lean}{587}{finalMiddleCell_neg_three_not_last}{final-cell exclusion}).
 For \(C_D=-2\) with an all-right suffix and \(D\ge27\), the greedy prefix
 through rank \(26\) is exactly \(\{2,3,6,7,14,20,21,26\}\)
-(\lword{HalfFinalMiddlePhaseSieve.lean}{899}{seamGreedyBits_head2367_14_20_21_26}{rank-26 prefix}),
+(\lword{HalfFinalMiddlePhaseSieve.lean}{1190}{seamGreedyBits_head2367_14_20_21_26}{rank-26 prefix}),
 which confines \(D\) to \(412\) residue classes modulo \(2730\)
-(\lword{HalfFinalMiddlePhaseSieve.lean}{1622}{finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix}{phase sieve},
-\lword{HalfFinalMiddlePhaseSieve.lean}{1759}{finalMiddleTwentySixPhaseSurvivors_card}{survivor count}).
+(\lword{HalfFinalMiddlePhaseSieve.lean}{1913}{finalMiddleCell_neg_two_forces_phase_refinement_through_twentySix}{phase sieve},
+\lword{HalfFinalMiddlePhaseSieve.lean}{2050}{finalMiddleTwentySixPhaseSurvivors_card}{survivor count}).
 The case \(C_D=-1\) is untouched.  Note that shrinking the survivor density
 is not enough, since nested nonempty residue sets can have nonempty inverse
 limit; the sieve must reach the empty set or be replaced by an Archimedean
@@ -4112,7 +4187,7 @@ where \(A_D=G_D\cup\{D\}\) and \(f_{A_D}(n)\) counts the elements of
 \(A_D\) dividing \(n\); \(\Theta_D\) is the complete future tail, not a
 truncation.  This is inequality~\textup{(4.2)}, the second unproved input to
 the
-\lword{HalfCylinderLastProducerContradiction.lean}{436}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{tail-dominance theorem}.
+\lword{HalfCylinderLastProducerContradiction.lean}{387}{half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree}{tail-dominance theorem}.
 The word ``every'' is essential: one surviving final middle transition is
 enough for nonmembership.
 
@@ -4123,11 +4198,11 @@ so \(\Theta_D<C_D\) is equivalent to \(\sum_{a\in A_D}w_a<\tfrac12\)
 (\lword{HalfCylinderProducerCarrySocket.lean}{48}{producerCarry_gt_tail_iff_supportSeries_lt_half}{below-half equivalence}).
 Three stronger hypotheses are proved sufficient: with \(g_D=\#G_D\), the
 inequality \(g_D+1<C_D\)
-(\lword{HalfCylinderMiddleCarryLowerBound.lean}{2364}{half_mem_mersenneAchievementSet_of_middleProducerCardEscape}{cardinality criterion}),
+(\lword{HalfCylinderMiddleCarryLowerBound.lean}{1503}{half_mem_mersenneAchievementSet_of_middleProducerCardEscape}{cardinality criterion}),
 the row bound \(R_{D,D}\ge D\) at every late middle row
-(\lword{HalfCylinderMiddleCarryLowerBound.lean}{2371}{half_mem_mersenneAchievementSet_of_middleProducerRowEscape}{row-scale criterion}),
+(\lword{HalfCylinderMiddleCarryLowerBound.lean}{1510}{half_mem_mersenneAchievementSet_of_middleProducerRowEscape}{row-scale criterion}),
 and a square-root variant
-(\lword{HalfCylinderLastProducerContradiction.lean}{458}{half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape}{square-root criterion}).
+(\lword{HalfCylinderLastProducerContradiction.lean}{409}{half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape}{square-root criterion}).
 A separate finite certificate covers the upper-reset band for
 \(13\le d\le30\)
 (\lword{HalfCylinderUpperResetBandCertificates.lean}{78}{seamUpperResetDyadicBandEscape_through_thirty}{finite band certificate}).
@@ -4379,10 +4454,13 @@ finite greedy failure proves nonmembership in the achievement set, whereas
 survival through any finite depth proves nothing.
 
 The prior-art boundary is theorem-family-specific. The integral carry
-recurrence has a direct antecedent in Wang~\cite[Section~3]{wang2026};
-the strict-tail geometry is recorded by Kova\v{c}--Tao~\cite[Remark~4.1]{kovactao};
-M\"obius inversion, repetend algebra, and divisor averaging are classical
-(see, for example, Apostol~\cite{apostol}). We make no claim of mathematical
+recurrence has a direct antecedent in
+Wang~\cite[Proposition~3.1, pp.~5--6]{wang2026};
+the strict-tail geometry is recorded by
+Kova\v{c}--Tao~\cite[Remark~4.1, p.~13]{kovactao};
+M\"obius inversion and divisor averaging are classical
+~\cite[Thms.~2.2, 2.9, pp.~25, 32]{apostol}; the repetend algebra used here
+is the elementary finite-geometric-series identity. We make no claim of mathematical
 priority for the converse/rigidity, certificate-normal-form, or coupled
 reciprocal-mass/collision statements collected here.
 
@@ -4411,7 +4489,8 @@ u(N)/2^N\to0 .
 The recurrence is exact binary long division against the coefficient stream;
 the boundary condition forbids the homogeneous solution. Wang uses the
 integral carry recurrence forced by rationality for the weighted binary
-special case $\gamma(n)=n d_n$~\cite[Section~3]{wang2026}. The theorem below applies that
+special case
+$\gamma(n)=n d_n$~\cite[Proposition~3.1, pp.~5--6]{wang2026}. The theorem below applies that
 forward mechanism to arbitrary nonnegative $\gamma(n)\le n$ and also proves
 the converse and subexponential-orbit rigidity.  No historical-priority claim
 is made for those clauses. Wang's positive-density theorem and its Erd\H{o}s
@@ -4423,14 +4502,14 @@ $u(N)=v\,T_\gamma(N)$ for all $N$; and $X_\gamma$ is rational if and only if a t
 orbit exists for some multiplier $v\ge1$.
 \end{theorem}
 \noindent Formalised:
-\lword{GenericTailOrbitRigidity.lean}{339}{temperedBinaryOrbit_eq_scaledTail}{the scaled-tail orbit identity}
+\lword{GenericTailOrbitRigidity.lean}{338}{temperedBinaryOrbit_eq_scaledTail}{the scaled-tail orbit identity}
 (rigidity) and
-\lword{GenericTailOrbitRigidity.lean}{426}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{the rationality--orbit equivalence}
+\lword{GenericTailOrbitRigidity.lean}{425}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{the rationality--orbit equivalence}
 (the criterion), restated in Mathlib's irrationality vocabulary at
-\lword{GenericTailOrbitRigidity.lean}{435}{not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit}{the non-irrationality--orbit equivalence}.
+\lword{GenericTailOrbitRigidity.lean}{434}{not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit}{the non-irrationality--orbit equivalence}.
 The engine is one observation: a real orbit with $d(N+1)=2\,d(N)$ and
 $d(N)=o(2^N)$ vanishes identically
-(\lword{GenericTailOrbitRigidity.lean}{315}{doublingOrbit_eq_zero_of_tempered}{zero-tail rigidity}).
+(\lword{GenericTailOrbitRigidity.lean}{314}{doublingOrbit_eq_zero_of_tempered}{zero-tail rigidity}).
 
 The tempered boundary is essential: the
 homogeneous parasite $N\mapsto2^N$ can be added to any orbit without
@@ -4484,8 +4563,11 @@ Boolean M\"obius inversion first identifies the support from its divisor
 coefficients; tail-orbit rigidity then identifies rationality with a tempered
 integer orbit.  Theorem~\ref{res:carrycert} is exactly the composition of
 those two equivalences.  The divisor transform and M\"obius inversion are
-classical Lambert-series tools~\cite{apostol,merca2017,mercaschmidt}; the
-composition with the tempered-orbit criterion is what is checked here.
+classical arithmetic-function tools~\cite[Thm.~2.9, p.~32]{apostol}; their
+Lambert-series factorisation formulations are Merca's
+Theorem~1.2~\cite[pp.~420--421]{merca2017} and Merca--Schmidt's
+Equations~(1.1)--(1.6)~\cite[pp.~31--34]{mercaschmidt}.  The composition with the
+tempered-orbit criterion is what is checked here.
 
 \begin{proposition}[Boolean M\"obius inversion, both directions]\label{res:boolmob}
 On positive integers, $f_A=\mathbf 1_A*\mathbf 1$ and $\mu*f_A=\mathbf 1_A$, where
@@ -4765,12 +4847,17 @@ Kova\v{c} and Tao verify, for every fixed integer $t\ge2$, that
 \[
   \sum_{\ell>n}\frac1{t^\ell-1}<\frac1{t^n-1},
 \]
-and deduce distinct Lambert subsums and a Cantor set~\cite[Remark~4.1]{kovactao}. At
+and deduce distinct Lambert subsums and a Cantor
+set~\cite[Remark~4.1, p.~13]{kovactao}. At
 $t=2$ this is the relevant Lambert-series instance of Kakeya's classical
-strict-tail criterion for subsum sets~\cite{kakeya1914}. What is checked here,
-beyond that cited geometry, is the greedy criterion, quantitative enclosure,
-and finite nonmembership certificates.  No historical-priority claim is made
-for those refinements, and they do not settle \#257.
+subsum-set theorem: an absolutely convergent series has a perfect achievement
+set, and the all-index strict-tail regime gives a nowhere-dense
+set~\cite[p.~251]{kakeya1914}.  Kakeya's closing broader characterization in
+terms of infinitely many strict-tail indices is explicitly left unproved
+there.  What is checked here, beyond the proved classical geometry, is the
+greedy criterion, quantitative enclosure, exact measure, and finite
+nonmembership certificates.  No historical-priority claim is made for those
+refinements, and they do not settle \#257.
 
 \begin{theorem}[superincreasing geometry and greedy membership]\label{res:greedy-details}
 For every $n\ge1$ the weight dominates the whole tail after it, $T(n)<w_n$,
@@ -4804,9 +4891,11 @@ and nowhere dense.  Its Lebesgue measure is exactly one.
 \lword{GreedyAchievementSet.lean}{1636}{isTotallyDisconnected_mersenneAchievementSet}{total disconnectedness},
 and
 \lword{GreedyAchievementSet.lean}{1645}{isNowhereDense_mersenneAchievementSet}{nowhere density}.
-Kova\v{c}--Tao supply the strict-tail Cantor-set context
-\cite[Remark~4.1]{kovactao}.  The
-formalisation records these exact properties without making a novelty or
+Kakeya supplies the classical perfectness and all-index strict-tail
+nowhere-density statements~\cite[p.~251]{kakeya1914}, while
+Kova\v{c}--Tao verify the required strict-tail inequality in this Lambert
+family~\cite[Remark~4.1, p.~13]{kovactao}.  The formalisation records the exact
+properties, including the measure computation, without making a novelty or
 priority claim for them.
 
 \begin{proposition}[exact rational runs and finite nonmembership certificates]\label{res:death}
@@ -4970,16 +5059,16 @@ certificate completeness & \lrefx{LcmConeFlatness.lean}{316}{exists_certifiedKil
 joint cone refuter & \lrefx{LcmConeNonflat.lean}{126}{exists_nonintegral_pair_of_coneNonflatCert}\ (\texttt{LcmConeNonflat})\\
 verified finite instances & \lrefx{TotientTailPeriodKiller.lean}{404}{certifiedKill_all_small}\ (\texttt{TotientTailPeriodKiller})\\
 full-target diagonal reduction & \lrefx{DiagonalPincerDecomposition.lean}{215}{diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget}\ (\texttt{DiagonalPincerDecomposition})\\
-squared-Mersenne enclosure & \lrefx{SquaredMersenneDiagonalEnclosure.lean}{138}{scaleDiagonalTailDifference_sub_lambertProjectedDiagonal}\ (\texttt{SquaredMersenneDiagonalEnclosure})\\
+squared-Mersenne enclosure & \lrefx{SquaredMersenneDiagonalEnclosure.lean}{116}{scaleDiagonalTailDifference_sub_lambertProjectedDiagonal}\ (\texttt{SquaredMersenneDiagonalEnclosure})\\
 exact Mersenne-shadow denominator & \lrefx{MersenneShadowDenominatorGrowth.lean}{147}{lcmHeight_scaledMobiusShadow_den_exact}\ (\texttt{MersenneShadowDenominatorGrowth})\\
-finite residue-projection criterion & \lrefx{DiagonalFreshLossBridge.lean}{202}{irrational_totientSeries_of_diagonalFreshLossProjectionSupply}\ (\texttt{DiagonalFreshLossBridge})\\
+finite residue-projection criterion & \lrefx{DiagonalFreshLossBridge.lean}{191}{irrational_totientSeries_of_diagonalFreshLossProjectionSupply}\ (\texttt{DiagonalFreshLossBridge})\\
 prime-adjunction diamond no-go & \lrefx{FullTargetPrimeAdjunctionNoGo.lean}{196}{fullTarget_primeAdjunction_diamond_iff_root}\ (\texttt{FullTargetPrimeAdjunctionNoGo})\\
 scalar-localisation height obstruction & \lrefx{AdelicHeightObstruction.lean}{23}{scalarLocalization_complement_dvd}\ (\texttt{AdelicHeightObstruction})\\
 square-CRT correction suppression & \lrefx{SquareCRTCube.lean}{198}{exists_squareCRT_clean_totient_family}\ (\texttt{SquareCRTCube})\\
-signed dyadic-moment algebra & \lrefx{SignedQMomentObstruction.lean}{29}{det_mul_rectangular}\ (\texttt{SignedQMomentObstruction})\\
+signed dyadic-moment algebra & \lrefx{SignedQMomentObstruction.lean}{28}{det_mul_rectangular}\ (\texttt{SignedQMomentObstruction})\\
 infinite-dimensional dyadic totient kernel & \lrefx{TotientMahlerDefect.lean}{1014}{not_finiteDimensional_span_fullTotientKernel}\ (\texttt{TotientMahlerDefect})\\
 residual-gauge obstruction for monomial minors & \lrefx{ResidualGaugeObstruction.lean}{55}{det_residualMonomialMatrix_ne_zero_iff}\ (\texttt{ResidualGaugeObstruction})\\
-tail-orbit rationality criterion & \lrefx{GenericTailOrbitRigidity.lean}{426}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}\ (\texttt{GenericTailOrbitRigidity})\\
+tail-orbit rationality criterion & \lrefx{GenericTailOrbitRigidity.lean}{425}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}\ (\texttt{GenericTailOrbitRigidity})\\
 Boolean carry certificate $\Leftrightarrow$ support fraction & \lrefx{BooleanMobiusCarry.lean}{948}{exists_normalized_support_fraction_iff_exists_booleanMobiusCarry}\ (\texttt{BooleanMobiusCarry})\\
 one-wrap classification & \lrefx{RationalSupportCarrySkeleton.lean}{415}{one_doublingWrap_classification}\ (\texttt{RationalSupportCarrySkeleton})\\
 order-wrap mass alternative and exact excess mean & \lrefx{RationalSupportCarrySkeleton.lean}{1517}{support_fraction_one_div_oddOrder_reciprocalMassDivergesOrAtLeast}, \lrefx{RationalSupportCarrySkeleton.lean}{1577}{exists_shifted_oddTailExcess_mean_of_support_fraction}\ (\texttt{RationalSupportCarrySkeleton})\\
@@ -5003,7 +5092,9 @@ Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization
   J. Indian Math. Soc. (N.S.) \textbf{12} (1948), 63--66.
 \bibitem{erdos1968} P.~Erd\H{o}s,
   \href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\emph{On the irrationality of certain series}},
-  Math. Student \textbf{36} (1968), 222--226 (issued 1969).
+  Math. Student \textbf{36} (1968), 222--226 (issued 1969).  The theorem is
+  on p.~222; the article does not print the claimed extension beyond
+  pairwise-coprime support.
 \bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L. Graham,
   \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\emph{Old and New Problems and Results in Combinatorial Number Theory}},
   Monogr. Enseign. Math. 28, Geneva, 1980, pp.~61--62.
@@ -5033,26 +5124,53 @@ Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization
 \bibitem{stern1858} M.~Stern,
   \href{https://doi.org/10.1515/crll.1858.55.193}{\emph{Ueber eine zahlentheoretische Funktion}},
   J. Reine Angew. Math. \textbf{55} (1858), 193--220.
-\bibitem{alloucheshallit} J.-P. Allouche and J. Shallit, \emph{Automatic
-  Sequences: Theory, Applications, Generalizations}, Cambridge Univ. Press, 2003,
-  doi:\href{https://doi.org/10.1017/CBO9780511546563}{10.1017/CBO9780511546563}.
+\bibitem{alloucheshallit} J.-P. Allouche and J. Shallit,
+  \href{https://cs.uwaterloo.ca/~shallit/Papers/as0.pdf}{\emph{The ring of
+  $k$-regular sequences}}, Theoret. Comput. Sci. \textbf{98} (1992), no.~2,
+  163--197,
+  doi:\href{https://doi.org/10.1016/0304-3975(92)90001-V}
+  {10.1016/0304-3975(92)90001-V}.  Definitions~1.1 and~2.1 are on
+  pp.~2--3 of the linked author preprint; those definitions are unchanged
+  in the published version.
 \bibitem{coons2010} M.~Coons, \emph{(Non)automaticity of number theoretic
   functions}, J. Th\'eor. Nombres Bordeaux \textbf{22} (2010), no.~2,
   339--352, doi:\href{https://doi.org/10.5802/jtnb.718}{10.5802/jtnb.718}.
+  Theorem~3.2, pp.~348--349, is the totient nonregularity result; it appears
+  as Theorem~3.3 on pp.~8--9 of \href{https://arxiv.org/abs/0810.3709}{the
+  arXiv preprint}.
+\bibitem{bellsmertnig2026} J.~Bell and D.~Smertnig,
+  \emph{Mahler series with multiplicative coefficient sequences}, 2026,
+  \href{https://doi.org/10.48550/arXiv.2603.23456}{arXiv:2603.23456}.
+  Theorem~1.3 is on pp.~2--3; the non-\(k\)-Mahler consequence for Euler's
+  totient and Corollary~1.4 are recorded on p.~3.
 \bibitem{nesterenko} Yu.~V. Nesterenko, \emph{Modular functions and transcendence questions},
   Sb. Math. \textbf{187} (1996), no.~9, 1319--1348,
   doi:\href{https://doi.org/10.1070/SM1996v187n09ABEH000158}{10.1070/SM1996v187n09ABEH000158}.
+  Theorem~1 and Corollary~2 on p.~1320 are stated in the Ramanujan
+  \(q\)-series variables \(P(q),Q(q),R(q)\); the latter is the
+  algebraic-\(q\) specialization used here.
 \bibitem{postelmansvanassche} K.~Postelmans and W.~Van Assche,
   \href{https://arxiv.org/abs/math/0604312v1}{\emph{Irrationality of $\zeta_q(1)$ and $\zeta_q(2)$}},
   J. Number Theory \textbf{126} (2007), no.~1, 119--154,
   doi:\href{https://doi.org/10.1016/j.jnt.2006.11.011}{10.1016/j.jnt.2006.11.011}.
-\bibitem{lucatachiya} F.~Luca and Y.~Tachiya, \emph{Irrationality of Lambert series associated
-  with a periodic sequence}, Int. J. Number Theory \textbf{10} (2014), no.~3, 623--636,
-  doi:\href{https://doi.org/10.1142/S1793042113501121}{10.1142/S1793042113501121}.
+  The linear-independence statement is Theorem~1.3 in the published version
+  and Theorem~3 on p.~4 of the linked arXiv preprint; its preprint proof is
+  Section~7, pp.~30--34.
+\bibitem{lucatachiya2017} F.~Luca and Y.~Tachiya,
+  \href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf}
+  {\emph{Linear independence results for the values of divisor functions
+  series}}, RIMS K\^oky\^uroku No.~2014 (2017), 138--150.
+  Theorem~A on p.~139 explicitly restates their earlier Theorem~1.1 for
+  nonzero purely periodic integer weights.  Theorem~1 is on p.~139, its
+  examples are on p.~140, and its proof is on pp.~149--150.
 \bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya,
-  \emph{Refinement of the Chowla--Erd\H{o}s method and linear independence of
-  certain Lambert series}, Forum Math. \textbf{31} (2019), no.~6, 1557--1566,
+  \href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf}
+  {\emph{Refinement of the Chowla--Erd\H{o}s method and linear independence
+  of certain Lambert series}}, Forum Math. \textbf{31} (2019), no.~6,
+  1557--1566,
   doi:\href{https://doi.org/10.1515/forum-2018-0299}{10.1515/forum-2018-0299}.
+  Corollary~1.2 and Example~1.1 are on p.~4 of the linked author preprint;
+  the proof is on pp.~9--11.
 \bibitem{kovactao} V.~Kova\v{c} and T.~Tao,
   \href{https://arxiv.org/abs/2406.17593v4}{\emph{On several irrationality problems for
   Ahmes series}}, Acta Math. Hungar. \textbf{175} (2025), no.~2, 572--608,
@@ -5062,31 +5180,57 @@ Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization
   rational weighted binary expansions}}, arXiv:2606.24972v2
   (revised 15 July 2026),
   doi:\href{https://doi.org/10.48550/arXiv.2606.24972}{10.48550/arXiv.2606.24972}.
-\bibitem{crandall} R.~Crandall, \emph{The googol-th bit of the Erd\H{o}s--Borwein constant},
-  Integers \textbf{12} (2012), no.~5, 811--840,
+\bibitem{crandall} R.~Crandall,
+  \href{https://math.colgate.edu/~integers/m23/m23.pdf}
+  {\emph{The googol-th bit of the Erd\H{o}s--Borwein constant}},
+  Integers \textbf{12} (2012), electronic article \#A23 (open 18-page
+  version); hardcopy no.~5, 811--840,
   doi:\href{https://doi.org/10.1515/integers-2012-0007}{10.1515/integers-2012-0007}.
+  The remote-bit result is in \S5, open-PDF pp.~6--7; the finite-prefix
+  computation is in \S6, pp.~7--9; and the infinite-\(11\) question is in
+  \S7, p.~9.
 \bibitem{campbell} J.~M. Campbell,
   \href{https://arxiv.org/abs/2605.24160v1}{\emph{On the binary digits of the
   Erd\H{o}s--Borwein constant}}, arXiv:2605.24160v1 (22 May 2026),
   doi:\href{https://doi.org/10.48550/arXiv.2605.24160}{10.48550/arXiv.2605.24160}.
+  Theorem~1 is on p.~12 and its proof is on pp.~12--24; the AGP special
+  case is Lemma~1 and Remark~1 on p.~5.
 \bibitem{alfordgranvillepomerance} W.~R. Alford, A.~Granville, and C.~Pomerance,
   \emph{There are infinitely many Carmichael numbers}, Ann. of Math. (2)
   \textbf{139} (1994), no.~3, 703--722,
   doi:\href{https://doi.org/10.2307/2118576}{10.2307/2118576}.
+  The progression property used here is (0.3) on p.~705; Theorem~2.1
+  (p.~712, proof pp.~712--715) supplies the underlying
+  exceptional-modulus estimate.
 \bibitem{taoteravainen} T.~Tao and J.~Ter\"av\"ainen,
   \href{https://arxiv.org/abs/2512.01739v2}{\emph{Quantitative correlations and
   some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2
   (revised 25 April 2026),
   doi:\href{https://doi.org/10.48550/arXiv.2512.01739}{10.48550/arXiv.2512.01739}.
-\bibitem{lean} L.~de Moura, S.~Kong, J.~Avigad, F.~van Doorn, and J.~von Raumer,
-  \emph{The Lean theorem prover (system description)}, in \emph{CADE-25}, LNCS 9195
-  (2015), 378--388, doi:\href{https://doi.org/10.1007/978-3-319-21401-6_26}{10.1007/978-3-319-21401-6\_26}.
-\bibitem{mathlib} The mathlib Community, \emph{The Lean mathematical library},
-  in \emph{CPP 2020}, ACM, 2020, 367--381, doi:\href{https://doi.org/10.1145/3372885.3373824}{10.1145/3372885.3373824}.
+  Theorem~1.3 is on p.~4 and its proof is Section~5, pp.~44--56.
+\bibitem{lean} L.~de Moura and S.~Ullrich,
+  \href{https://doi.org/10.1007/978-3-030-79876-5_37}
+  {\emph{The Lean~4 theorem prover and programming language}},
+  in \emph{CADE-28}, LNCS 12699 (2021), 625--635,
+  doi:\href{https://doi.org/10.1007/978-3-030-79876-5_37}
+  {10.1007/978-3-030-79876-5\_37}.
+\bibitem{mathlib} The mathlib Community,
+  \href{https://doi.org/10.1145/3372885.3373824}
+  {\emph{The Lean mathematical library}},
+  in \emph{CPP 2020}, ACM, 2020, 367--381,
+  doi:\href{https://doi.org/10.1145/3372885.3373824}
+  {10.1145/3372885.3373824}.  The article describes a December 2019
+  Lean~3-era snapshot; the repository lock owns the current revision.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/249}{\emph{Erd\H{o}s Problem \#249}} and
   \href{https://www.erdosproblems.com/257}{\emph{Erd\H{o}s Problem \#257}}\unskip,
-  accessed 19 July 2026.
+  accessed 28 July 2026.  The \#249 page displays ``last edited 28 September
+  2025'' and cites \texttt{[ErGr80, p.~61]} and
+  \texttt{[Er88c, p.~102]}; the \#257 page displays ``last edited 15 April
+  2026'' and cites \texttt{[Er68d]}, \texttt{[ErGr80, p.~62]} and
+  \texttt{[Er88c, p.~105]}.  Both pages explicitly describe OPEN as the
+  website owner's present assessment rather than a literature-completeness
+  guarantee.
 
 \end{thebibliography}
 
