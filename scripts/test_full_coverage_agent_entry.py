@@ -96,6 +96,29 @@ def main() -> int:
             specific_question
         )
 
+    papers = run_query("--papers")
+    paper_question = run_query(
+        "--ask",
+        "Which papers should I read, in what order, and what does each establish?",
+    )
+    assert papers["kind"] == "paper_reading_guide"
+    assert paper_question["kind"] == "paper_reading_guide"
+    assert papers["paper_count"] == 3
+    assert papers["default_gateway"]["id"] == "human_exposition"
+    assert papers["default_gateway"]["rendered_available_in_checkout"]
+    assert papers["companion_repository"]["name"] == "plectis"
+    assert "technical_companion" in (
+        papers["unavailable_registered_artifact_ids"]
+    )
+    assert "papers are exposition" in query_corpus.render_card(papers)
+    for question in (
+        "Which paper should I read?",
+        "What does each paper establish?",
+        "Where are the papers?",
+        "Show me the paper reading order.",
+    ):
+        assert query_corpus.is_paper_reading_query(question)
+
     print(
         "full coverage agent entry: pass "
         f"({ordinary['coverage_receipt']['mathematical_programme_count']} programmes; "

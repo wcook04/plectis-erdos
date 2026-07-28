@@ -3,9 +3,8 @@
 
 # Tail certificates and achievement-set geometry for Erdős Problems 249 and 257
 
-**New here?** See the [architecture and repository guide](ARCHITECTURE.md)
-or the [printable PDF](claim-faithful-publication-systems-paper.pdf). It assumes
-no Lean or project history.
+**New here?** Read the [architecture guide](ARCHITECTURE.md) or its
+[PDF](claim-faithful-publication-systems-paper.pdf); no Lean needed.
 
 Lean 4 formal work on two unsolved irrationality problems.
 
@@ -15,10 +14,10 @@ Lean 4 formal work on two unsolved irrationality problems.
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml) ·
 [Plectis](https://wcook04.github.io/plectis/)
 
-This repository is one of two public demonstrations of a private system: its
-companion [Plectis](https://github.com/wcook04/plectis) shows the runnable
-machinery; this one shows the mathematics. The
-[website](https://wcook04.github.io/plectis/) links both and hosts the papers.
+This is the mathematical half of two public demonstrations; companion
+[Plectis](https://github.com/wcook04/plectis) owns the runnable machinery.
+The [website](https://wcook04.github.io/plectis/) links both and the papers.
+Papers: `python3 scripts/query_corpus.py --papers`.
 
 ## The two problems
 
@@ -31,7 +30,7 @@ Both remain open. **This project does not solve Erdős #249 or universal Erdős
 #257.** Every table row stays within Lean source.
 
 This self-contained public checkout is not an entrypoint into any private
-development system; do not infer results from private or unreleased work.
+development system; never infer private or unreleased results.
 
 `v0.6.0` is the latest tagged release and citation anchor.
 [`docs/claims.json`](docs/claims.json) pins the post-tag formal-source
@@ -101,8 +100,8 @@ an unsafe band.
 | Curated claim records | 99 |
 | Contribution families | 21 |
 
-Claim records span every status, including cited and open, and are partitioned
-exactly once. These are navigation counts, not novelty claims.
+Claim records span every status and are partitioned once. These are navigation
+counts, not novelty claims.
 <!-- END generated_corpus_at_a_glance -->
 
 ## Read or run it
@@ -115,6 +114,8 @@ exactly once. These are navigation counts, not novelty claims.
   `python3 scripts/query_corpus.py --ask "<question>"` before source.
 - **Exact boundary or claim status:** read [SCOPE.md](SCOPE.md), the human
   [orientation](docs/ORIENTATION.md), and [methodology](METHODOLOGY.md).
+- **Paper choice, role, or reading order:** run
+  `python3 scripts/query_corpus.py --papers`.
 - **Publication topology or contribution family:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
   `python3 scripts/query_corpus.py --publication-family <id>`.

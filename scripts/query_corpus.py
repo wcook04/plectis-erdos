@@ -31,6 +31,7 @@ CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/1"
 SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
 REPOSITORY_OVERVIEW_SCHEMA = "erdos249257-repository-overview/1"
+PAPER_READING_GUIDE_SCHEMA = "erdos249257-paper-reading-guide/1"
 
 PLECTIS_COMPANION_REPOSITORY = {
     "name": "plectis",
@@ -5219,6 +5220,156 @@ def publication_architecture_packet() -> dict[str, Any]:
     }
 
 
+def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
+    """Project a question-first reading route from registered paper artifacts."""
+    contract = publication_contract()
+    paper_artifacts = [
+        row
+        for row in contract.get("artifacts", [])
+        if row.get("artifact_class")
+        in {
+            "mathematical_gateway",
+            "mathematical_companion",
+            "repository_architecture_guide",
+        }
+    ]
+    artifacts = []
+    for row in paper_artifacts:
+        source_path = str(row["source_path"])
+        rendered_path = str(row["rendered_path"])
+        artifacts.append(
+            {
+                "id": row["id"],
+                "title": row["title"],
+                "artifact_class": row["artifact_class"],
+                "source_path": source_path,
+                "rendered_path": rendered_path,
+                "source_available_in_checkout": (ROOT / source_path).is_file(),
+                "rendered_available_in_checkout": (ROOT / rendered_path).is_file(),
+                "claim_scope": row["claim_scope"],
+                "authority_posture": row["authority_posture"],
+                "entry_route_id": row.get("entry_route_id"),
+                "validation": row.get("validation", []),
+            }
+        )
+    by_id = {row["id"]: row for row in artifacts}
+    unavailable = [
+        row["id"]
+        for row in artifacts
+        if not (
+            row["source_available_in_checkout"]
+            and row["rendered_available_in_checkout"]
+        )
+    ]
+    return {
+        "schema": PAPER_READING_GUIDE_SCHEMA,
+        "kind": "paper_reading_guide",
+        "question": question,
+        "answer_contract": {
+            "first_rule": (
+                "Choose by question; do not read every paper or use manuscript "
+                "length as a proxy for mathematical importance."
+            ),
+            "authority_rule": (
+                "Papers own exposition only. Use typed claim, open, declaration, "
+                "and source handles before asserting status or proof."
+            ),
+            "availability_rule": (
+                "Do not route a cold reader into a registered artifact whose source "
+                "or rendered file is absent from this checkout."
+            ),
+        },
+        "recommended_routes": {
+            "understand_the_mathematics": [
+                {
+                    "step": 1,
+                    "artifact_id": "human_exposition",
+                    "why": (
+                        "The gateway is status-sorted and explains the common #249/"
+                        "#257 architecture, strongest results, and exact open line."
+                    ),
+                },
+                {
+                    "step": 2,
+                    "command": (
+                        'python3 scripts/query_corpus.py --ask "<your mathematical question>"'
+                    ),
+                    "why": (
+                        "Move from exposition to registered claims, open propositions, "
+                        "Lean declarations, and source coordinates."
+                    ),
+                },
+                {
+                    "step": 3,
+                    "artifact_id": "technical_companion",
+                    "condition": (
+                        "only for #249 transport/curvature or phase-separation detail, "
+                        "and only when both files are available in this checkout"
+                    ),
+                },
+            ],
+            "understand_repository_and_public_claims": [
+                {
+                    "step": 1,
+                    "artifact_id": "repository_architecture_guide",
+                    "why": (
+                        "Explains how Lean proof, reviewed status, authored prose, "
+                        "generated views, and release checks remain distinct."
+                    ),
+                },
+                {
+                    "step": 2,
+                    "command": (
+                        "python3 scripts/query_corpus.py "
+                        "--publication-evidence summary"
+                    ),
+                    "why": "Checks the paper's historical example and its limits.",
+                },
+            ],
+            "understand_the_two_repository_system": [
+                {
+                    "step": 1,
+                    "command": (
+                        "Read erdos249-257-main-paper.pdf for the mathematical output."
+                    ),
+                },
+                {
+                    "step": 2,
+                    "command": (
+                        "Read claim-faithful-publication-systems-paper.pdf for the "
+                        "claim-to-evidence boundary."
+                    ),
+                },
+                {
+                    "step": 3,
+                    "command": (
+                        "In a Plectis clone run "
+                        "PYTHONPATH=src python3 -m microcosm_core comprehend "
+                        "--self-model --format text"
+                    ),
+                    "why": "Plectis owns the runnable general machinery.",
+                },
+            ],
+        },
+        "papers": artifacts,
+        "paper_count": len(artifacts),
+        "unavailable_registered_artifact_ids": unavailable,
+        "default_gateway": by_id.get("human_exposition"),
+        "companion_repository": dict(PLECTIS_COMPANION_REPOSITORY),
+        "authority_order": [
+            "Lean source checked by the pinned kernel",
+            "docs/claims.json claim status and open boundaries",
+            "docs/methodology.json transition rules",
+            "registered papers as exposition",
+        ],
+        "owners": [
+            "docs/publication_contract.json",
+            "docs/claims.json::machine_readable_paper.publication_assembly",
+        ],
+        "validation": "python3 scripts/check_publication_contract.py",
+    }
+
+
 def summary_packet() -> dict[str, Any]:
     orientation = load("docs/orientation.json")
     claims = load("docs/claims.json")
@@ -5347,6 +5498,29 @@ def is_repository_overview_query(query: str) -> bool:
         )
     )
     return repository_scope and overview_cue
+
+
+def is_paper_reading_query(query: str) -> bool:
+    """Recognize ordinary requests for paper choice, role, or reading order."""
+    text = normalized_search_text(query)
+    return any(
+        phrase in text
+        for phrase in (
+            "which paper",
+            "what paper",
+            "papers should i read",
+            "paper should i read",
+            "what does each paper",
+            "paper reading order",
+            "reading order for the papers",
+            "paper guide",
+            "paper index",
+            "where are the papers",
+            "systems paper",
+            "mathematics paper",
+            "gateway paper",
+        )
+    )
 
 
 def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
@@ -5679,6 +5853,47 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| retained_companions={len(architecture['retained_companions'])} "
             f"| families={len(packet['family_index'])}"
         )
+    if kind == "paper_reading_guide":
+        gateway = packet["default_gateway"]
+        lines = [
+            (
+                f"paper reading guide | registered={packet['paper_count']} "
+                f"| default={gateway['rendered_path']} "
+                f"| unavailable={len(packet['unavailable_registered_artifact_ids'])}"
+            ),
+            (
+                "mathematics | "
+                + " -> ".join(
+                    str(step.get("artifact_id") or step.get("command"))
+                    for step in packet["recommended_routes"][
+                        "understand_the_mathematics"
+                    ]
+                )
+            ),
+            (
+                "repository/public claims | "
+                + " -> ".join(
+                    str(step.get("artifact_id") or step.get("command"))
+                    for step in packet["recommended_routes"][
+                        "understand_repository_and_public_claims"
+                    ]
+                )
+            ),
+            (
+                "boundary | papers are exposition; query typed claim/open/"
+                "declaration/source handles before asserting status"
+            ),
+            (
+                f"companion | {packet['companion_repository']['name']} "
+                f"| {packet['companion_repository']['repository']}"
+            ),
+        ]
+        if packet["unavailable_registered_artifact_ids"]:
+            lines.append(
+                "unavailable registered artifacts | "
+                + ",".join(packet["unavailable_registered_artifact_ids"])
+            )
+        return "\n".join(lines)
     if kind == "repository_overview":
         scale = packet["scale"]
         coverage = packet["coverage_receipt"]
@@ -5763,6 +5978,11 @@ def main() -> int:
     group.add_argument("--publication-family", metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
     group.add_argument(
+        "--papers",
+        action="store_true",
+        help="choose a question-specific paper route and show authority boundaries",
+    )
+    group.add_argument(
         "--overview",
         action="store_true",
         help="show complete bounded repository coverage and companion boundary",
@@ -5841,6 +6061,8 @@ def main() -> int:
             packet = publication_family_packet(args.publication_family)
         elif args.publication_architecture:
             packet = publication_architecture_packet()
+        elif args.papers:
+            packet = paper_reading_guide_packet()
         elif args.overview:
             packet = repository_overview_packet()
         elif args.vocabulary:
@@ -5849,9 +6071,13 @@ def main() -> int:
             packet = search_packet(args.search, args.limit)
         elif args.ask:
             packet = (
-                repository_overview_packet(args.ask)
-                if is_repository_overview_query(args.ask)
-                else semantic_slice_packet(args.ask, args.limit)
+                paper_reading_guide_packet(args.ask)
+                if is_paper_reading_query(args.ask)
+                else (
+                    repository_overview_packet(args.ask)
+                    if is_repository_overview_query(args.ask)
+                    else semantic_slice_packet(args.ask, args.limit)
+                )
             )
         else:
             packet = summary_packet()

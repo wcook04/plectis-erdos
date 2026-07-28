@@ -83,7 +83,20 @@ must be changed through their builder, never by hand.
 
 ### Publication, systems-paper, or artifact-boundary work
 
-Open `docs/publication_entry_packet.json` first, then
+For paper choice, role, availability, or reading order, start with:
+
+```sh
+python3 scripts/query_corpus.py --papers
+```
+
+The same guide must answer ordinary requests such as “which papers should I
+read?” through `--ask`. It separates the mathematical gateway, specialist
+companion, repository-systems guide, and reciprocal Plectis route; it also
+refuses to send a cold reader into a registered artifact absent from the
+checkout. After choosing a paper, follow its typed claim, open, declaration,
+source, or publication handles rather than treating prose as authority.
+
+For publication mutation, open `docs/publication_entry_packet.json` first, then
 `docs/publication_contract.json` or one typed query-corpus paper/publication
 handle. These surfaces own publication organization and evidence boundaries;
 they do not acquire Lean proof authority. Authored prose is digested exposition,
