@@ -113,12 +113,22 @@ def main() -> int:
         for step in papers["recommended_routes"]["understand_the_mathematics"]
         if "artifact_id" in step
     }
-    registered = {row["id"]: row for row in papers["papers"]}
+    registered = {
+        row["id"]: row
+        for row in papers["registered_publication_artifacts"]
+    }
     assert routed_artifacts <= set(registered)
     assert all(
         registered[artifact_id]["source_available_in_checkout"]
         and registered[artifact_id]["rendered_available_in_checkout"]
         for artifact_id in routed_artifacts
+    )
+    assert papers["paper_count"] >= 12
+    assert papers["clone_local_paper_index"] == "docs/papers/README.md"
+    assert all(
+        row["preferred_read_path"]
+        and row["full_text_available_in_checkout"]
+        for row in papers["papers"]
     )
     assert "papers are exposition" in query_corpus.render_card(papers)
     for question in (

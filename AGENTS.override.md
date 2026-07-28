@@ -95,6 +95,9 @@ companion, repository-systems guide, and reciprocal Plectis route; it also
 refuses to send a cold reader into a registered artifact absent from the
 checkout. After choosing a paper, follow its typed claim, open, declaration,
 source, or publication handles rather than treating prose as authority.
+`docs/papers/README.md` is the human question-first index, while
+`docs/papers/corpus.json` is the machine inventory of every carried manuscript
+and section anchor.
 
 For publication mutation, open `docs/publication_entry_packet.json` first, then
 `docs/publication_contract.json` or one typed query-corpus paper/publication

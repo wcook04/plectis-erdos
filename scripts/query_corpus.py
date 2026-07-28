@@ -5221,8 +5221,12 @@ def publication_architecture_packet() -> dict[str, Any]:
 
 
 def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
-    """Project a question-first reading route from registered paper artifacts."""
+    """Project a question-first route across the clone-local paper corpus."""
     contract = publication_contract()
+    corpus_path = ROOT / "docs/papers/corpus.json"
+    scholarly_corpus = (
+        json.loads(corpus_path.read_text()) if corpus_path.is_file() else {}
+    )
     paper_artifacts = [
         row
         for row in contract.get("artifacts", [])
@@ -5253,6 +5257,45 @@ def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
             }
         )
     by_id = {row["id"]: row for row in artifacts}
+    artifact_by_source = {
+        row["source_path"]: row["id"] for row in artifacts
+    }
+    scholarly_papers = []
+    for row in scholarly_corpus.get("papers", []):
+        source_path = str(row.get("local_source") or "")
+        full_text_path = str(row.get("local_full_text") or "")
+        rendered_path = str(row.get("local_pdf") or "")
+        scholarly_papers.append(
+            {
+                "id": row["paper_id"],
+                "title": row["title"],
+                "question_this_paper_answers": row[
+                    "question_this_paper_answers"
+                ],
+                "owns": row["owns"],
+                "not_authority_for": row["not_authority_for"],
+                "publication_state": row["publication_state"],
+                "home_repository": row["home_repository"],
+                "relation_to_this_repository": row[
+                    "relation_to_this_repository"
+                ],
+                "source_path": source_path,
+                "full_text_path": full_text_path,
+                "rendered_path": rendered_path,
+                "source_available_in_checkout": bool(source_path)
+                and (ROOT / source_path).is_file(),
+                "full_text_available_in_checkout": bool(full_text_path)
+                and (ROOT / full_text_path).is_file(),
+                "rendered_available_in_checkout": bool(rendered_path)
+                and (ROOT / rendered_path).is_file(),
+                "preferred_read_path": (
+                    full_text_path or source_path or rendered_path
+                ),
+                "registered_publication_artifact_id": artifact_by_source.get(
+                    source_path
+                ),
+            }
+        )
     unavailable = [
         row["id"]
         for row in artifacts
@@ -5300,8 +5343,9 @@ def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
         "question": question,
         "answer_contract": {
             "first_rule": (
-                "Choose by question; do not read every paper or use manuscript "
-                "length as a proxy for mathematical importance."
+                "Choose from the clone-local scholarly corpus by question; do "
+                "not read every paper or use manuscript length as a proxy for "
+                "mathematical importance."
             ),
             "authority_rule": (
                 "Papers own exposition only. Use typed claim, open, declaration, "
@@ -5357,10 +5401,14 @@ def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
                 },
             ],
         },
-        "papers": artifacts,
-        "paper_count": len(artifacts),
+        "papers": scholarly_papers or artifacts,
+        "paper_count": len(scholarly_papers or artifacts),
+        "registered_publication_artifacts": artifacts,
+        "registered_publication_artifact_count": len(artifacts),
         "unavailable_registered_artifact_ids": unavailable,
         "default_gateway": by_id.get("human_exposition"),
+        "clone_local_paper_index": "docs/papers/README.md",
+        "clone_local_paper_corpus": "docs/papers/corpus.json",
         "companion_repository": dict(PLECTIS_COMPANION_REPOSITORY),
         "authority_order": [
             "Lean source checked by the pinned kernel",
@@ -5369,10 +5417,14 @@ def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
             "registered papers as exposition",
         ],
         "owners": [
+            "docs/papers/corpus.json",
             "docs/publication_contract.json",
             "docs/claims.json::machine_readable_paper.publication_assembly",
         ],
-        "validation": "python3 scripts/check_publication_contract.py",
+        "validation": [
+            "python3 docs/papers/check_paper_corpus.py",
+            "python3 scripts/check_publication_contract.py",
+        ],
     }
 
 
@@ -5863,7 +5915,8 @@ def render_card(packet: dict[str, Any]) -> str:
         gateway = packet["default_gateway"]
         lines = [
             (
-                f"paper reading guide | registered={packet['paper_count']} "
+                f"paper reading guide | carried={packet['paper_count']} "
+                f"| registered={packet['registered_publication_artifact_count']} "
                 f"| default={gateway['rendered_path']} "
                 f"| unavailable={len(packet['unavailable_registered_artifact_ids'])}"
             ),

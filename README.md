@@ -17,7 +17,6 @@ Lean 4 formal work on two unsolved irrationality problems.
 This is the mathematical half of two public demonstrations; companion
 [Plectis](https://github.com/wcook04/plectis) owns the runnable machinery.
 The [website](https://wcook04.github.io/plectis/) links both and the papers.
-Papers: `python3 scripts/query_corpus.py --papers`.
 
 ## The two problems
 
@@ -114,7 +113,7 @@ counts, not novelty claims.
   `python3 scripts/query_corpus.py --ask "<question>"` before source.
 - **Exact boundary or claim status:** read [SCOPE.md](SCOPE.md), the human
   [orientation](docs/ORIENTATION.md), and [methodology](METHODOLOGY.md).
-- **Paper choice, role, or reading order:** run
+- **Papers:** use the [question-first index](docs/papers/README.md) or
   `python3 scripts/query_corpus.py --papers`.
 - **Publication topology or contribution family:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
