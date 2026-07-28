@@ -465,15 +465,22 @@ statuses rather than implications between them.  In particular, \(S\) and
 \(\mathbf 1\), but no displayed convolution connects those weights.  The
 known status of one row therefore does not transfer to another.
 
-Nesterenko proved that
-\(\mathbb Q(q,E_2(q),E_4(q),E_6(q))\) has transcendence degree at least \(3\)
-when \(0<|q|<1\).  Since \(q=1/2\) is algebraic, the three Eisenstein values at
-\(1/2\) are algebraically independent.  In particular,
+Nesterenko uses the Ramanujan \(q\)-series normalisation
+\[
+ P(q)=1-24\sum_{m\ge1}\sigma(m)q^m,
+ \qquad E_2(\tau)=P(e^{2\pi i\tau}),
+\]
+with \(Q\) and \(R\) similarly corresponding to \(E_4\) and \(E_6\).
+His Theorem~1 says that
+\(\mathbb Q(q,P(q),Q(q),R(q))\) has transcendence degree at least \(3\)
+when \(0<|q|<1\); Corollary~2 gives the sharper direct specialization that
+\(P(q),Q(q),R(q)\) are algebraically independent when \(q\) is algebraic.
+Thus at the algebraic \(q\)-parameter \(q=1/2\),
 \[
  L(\mathrm{Id})=\sum_{m\ge1}\frac{\sigma(m)}{2^m}
- =\frac{1-E_2(1/2)}{24}
+ =\frac{1-P(1/2)}{24}
 \]
-is transcendental~\cite{nesterenko}.
+is transcendental~\cite[Theorem~1 and Corollary~2, p.~1320]{nesterenko}.
 
 \begin{proposition}[Two rational Lambert identities]
 \[
@@ -5076,6 +5083,9 @@ Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization
 \bibitem{nesterenko} Yu.~V. Nesterenko, \emph{Modular functions and transcendence questions},
   Sb. Math. \textbf{187} (1996), no.~9, 1319--1348,
   doi:\href{https://doi.org/10.1070/SM1996v187n09ABEH000158}{10.1070/SM1996v187n09ABEH000158}.
+  Theorem~1 and Corollary~2 on p.~1320 are stated in the Ramanujan
+  \(q\)-series variables \(P(q),Q(q),R(q)\); the latter is the
+  algebraic-\(q\) specialization used here.
 \bibitem{postelmansvanassche} K.~Postelmans and W.~Van Assche,
   \href{https://arxiv.org/abs/math/0604312v1}{\emph{Irrationality of $\zeta_q(1)$ and $\zeta_q(2)$}},
   J. Number Theory \textbf{126} (2007), no.~1, 119--154,
