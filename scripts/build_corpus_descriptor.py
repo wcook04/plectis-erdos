@@ -27,6 +27,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
+ORIENTATION_MAX_BYTES = 32_000
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
@@ -837,7 +838,12 @@ def main() -> int:
     atlas = json.loads(ATLAS_PATH.read_text(encoding="utf-8"))
     orientation = build_orientation(claims, atlas)
     expected = render()
-    expected_orientation_json = json.dumps(orientation, ensure_ascii=False, indent=1) + "\n"
+    # This is a machine first-read packet with a strict byte ceiling. Compact
+    # JSON preserves the complete object while keeping formatting whitespace
+    # from crowding out newly registered routes or papers.
+    expected_orientation_json = (
+        json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n"
+    )
     expected_orientation_markdown = render_orientation_markdown(orientation)
     actual_readme = README_PATH.read_text(encoding="utf-8")
     expected_readme = replace_readme_scale_strip(
@@ -854,10 +860,17 @@ def main() -> int:
         render_wave_package_shape(atlas),
     )
     descriptor_bytes = len(expected.encode("utf-8"))
+    orientation_bytes = len(expected_orientation_json.encode("utf-8"))
     if descriptor_bytes > DESCRIPTOR_MAX_BYTES:
         print(
             "corpus descriptor exceeds the registration-envelope budget: "
             f"{descriptor_bytes:,} > {DESCRIPTOR_MAX_BYTES:,} bytes"
+        )
+        return 1
+    if orientation_bytes > ORIENTATION_MAX_BYTES:
+        print(
+            "orientation exceeds the bounded first-read budget: "
+            f"{orientation_bytes:,} > {ORIENTATION_MAX_BYTES:,} bytes"
         )
         return 1
     if args.check:

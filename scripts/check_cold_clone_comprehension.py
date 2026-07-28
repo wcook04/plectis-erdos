@@ -36,7 +36,8 @@ SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
 EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
 SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
 HUMAN_SURFACES = ("README.md", "SCOPE.md", "docs/ORIENTATION.md")
-CENSUS_SURFACES = ("README.md", "docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
+# Volatile semantic counts live on the audit surfaces, not the compact README.
+CENSUS_SURFACES = ("docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
 INCREMENTAL_BUILD_SURFACES = (
     "README.md",
     ".github/workflows/lean.yml",
@@ -314,10 +315,9 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["Plectis"],
             ["not an entrypoint into any private development system"],
         ],
-        "state_both_problems": [
-            ["Erdős #249 asks whether"],
+        "state_problem_frontier": [
+            ["All six problems remain open"],
             ["S = ∑ φ(n)/2ⁿ"],
-            ["Erdős #257 asks whether"],
             ["∑_{n∈A} 1/(2ⁿ - 1)"],
             ["every infinite", "for every infinite"],
         ],
@@ -473,7 +473,7 @@ def validate_human_first_contact(
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     section_order = (
-        "## The two problems",
+        "## Problem papers",
         "## What the formal source establishes",
         "## What remains open",
         "## Read or run it",
@@ -487,6 +487,24 @@ def validate_human_first_contact(
         "[agent-navigation paper](cold-clone-to-proof-receipt.pdf)"
         in readme_prefix
     ), "README no longer exposes the cold-clone-to-proof-receipt paper"
+    for problem, filename in (
+        ("#243", "erdos-243-reciprocal-tail-rigidity.pdf"),
+        ("#249", "erdos-249-binary-totient-series.pdf"),
+        ("#251", "erdos-251-prime-gap-dyadic-series.pdf"),
+        ("#257", "erdos-257-mersenne-support-subseries.pdf"),
+        ("#269", "erdos-269-three-prime-running-lcm.pdf"),
+        ("#1049", "erdos-1049-rational-base-lambert.pdf"),
+    ):
+        assert problem in readme_prefix and f"]({filename})" in readme_prefix, (
+            f"README no longer exposes the individual Erdős {problem} paper"
+        )
+    for filename in (
+        "erdos249-totient-reasoning-surface.pdf",
+        "erdos257-mersenne-reasoning-surface.pdf",
+    ):
+        assert f"]({filename})" in readme_prefix, (
+            f"README no longer exposes the full reasoning record {filename}"
+        )
 
     for task_id, requirements in human_tasks(summary).items():
         for alternatives in requirements:
@@ -496,7 +514,7 @@ def validate_human_first_contact(
             )
 
     scope = surfaces["SCOPE.md"]
-    assert contains_any(scope, ["does not prove"])
+    assert contains_any(scope, ["does not prove", "does not solve"])
     assert contains_any(scope, ["formal-source checkpoint"])
     orientation = surfaces["docs/ORIENTATION.md"]
     for status in (
@@ -601,21 +619,6 @@ def validate_public_semantic_census(
     ]
 
     expectations = {
-        "README.md": (
-            (
-                f"{total} mechanically nonrecurring candidates "
-                f"({nonrecurring['257']} #257, {nonrecurring['249']} #249, "
-                f"{nonrecurring['shared_substrate']} shared)"
-            ),
-            f"{census['bare_total']} bare equivalences",
-            f"{census['classical_total']} classical/prior-art formalisations",
-            f"{unassessed} candidates lack prior-art assessment",
-            (
-                f"{demand_equivalent} of {demand['substantial']} substantial "
-                "hypotheses extracted from conditional theorems are proved "
-                "endpoint-equivalent"
-            ),
-        ),
         "docs/RESULTS.md": (
             (
                 "| mechanically nonrecurring candidates | "

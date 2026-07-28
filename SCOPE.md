@@ -3,12 +3,12 @@
 
 # Scope of this release
 
-This release does not prove the irrationality of the Erdős #249 totient
-constant, and does not prove the universal form of Erdős #257. Its claims
-apply only to the source and dependencies identified by the immutable
-formal-source checkpoint in [`docs/claims.json`](docs/claims.json). The last
-release tag remains the citation and release identity; it can differ from that
-checkpoint.
+This release does not prove Erdős #243, #249, #251, #257, #269, or #1049.
+All six remain open; their papers state only partial checked results and
+surviving obligations. Claims apply only to the source and dependencies at the
+immutable formal-source checkpoint in
+[`docs/claims.json`](docs/claims.json). The last release tag remains the
+citation identity and can differ from that checkpoint.
 
 Mathematical proof authority is Lean source at that declared checkpoint after
 checking by the pinned Lean kernel. Unreleased work, private repositories,

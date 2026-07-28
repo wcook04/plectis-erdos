@@ -1,32 +1,34 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Tail certificates and achievement-set geometry for Erdős Problems 249 and 257
+# Six open Erdős problems
 
-Lean 4 work on two open irrationality problems. Start with:
-[RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) →
-[PRIOR ART](docs/PRIOR_ART.md) → [SOURCE MAP](docs/SOURCE_MAP.md).
-[architecture and repository guide](ARCHITECTURE.md).
+Lean 4 on Erdős Problems 243, 249, 251, 257, 269, and 1049.
+[RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
+→ [architecture and repository guide](ARCHITECTURE.md).
 It assumes no Lean or project history.
-[agent-navigation paper](cold-clone-to-proof-receipt.pdf): navigation,
-receipts, incremental builds.
+[agent-navigation paper](cold-clone-to-proof-receipt.pdf).
 
-[**#249 — exact ranks for the dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) ·
-[**#257 — settled supports and exact finite periods**](erdos-257-mersenne-support-subseries.pdf)
+## Problem papers
 
-[Joint technical exposition](erdos249-257-main-paper.pdf) ·
+Every covered Erdős problem has its own PDF:
+
+- [**#243 — reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf)
+- [**#249 — dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [full working record](erdos249-totient-reasoning-surface.pdf)
+- [**#251 — prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf)
+- [**#257 — reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [full working record](erdos257-mersenne-reasoning-surface.pdf)
+- [**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf)
+- [**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf)
+
+[Retained joint #249/#257 exposition](erdos249-257-main-paper.pdf) ·
 [printable PDF](claim-faithful-publication-systems-paper.pdf) ·
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml)
 
-## The two problems
+## Status
 
-- **Erdős #249 asks whether** the totient constant
-  `S = ∑ φ(n)/2ⁿ` is irrational.
-- **Erdős #257 asks whether** `∑_{n∈A} 1/(2ⁿ - 1)` is irrational for every
-  infinite `A ⊆ ℕ`.
-
-Both remain open. **This project does not solve Erdős #249 or universal Erdős
-#257.** Results stay within Lean source.
+All six problems remain open. **This project does not solve any of them.**
+Each problem paper states the checked results, the evidence boundary, and the
+exact obligation that remains. Results stay within Lean source.
 
 **Ten-minute verdict.** Checked non-restatement centre:
 
@@ -39,11 +41,6 @@ Both remain open. **This project does not solve Erdős #249 or universal Erdős
   substantial hypotheses extracted from conditional theorems are proved
   endpoint-equivalent. Those equivalences are evidence about the methods, not
   progress on either open problem.
-
-Audit: 196 mechanically nonrecurring candidates (121 #257, 59 #249, 16
-shared), 25 bare equivalences, and 70 classical/prior-art formalisations.
-184 candidates lack prior-art assessment; 17 of 23 substantial hypotheses
-extracted from conditional theorems are proved endpoint-equivalent.
 
 The finite #249 result is the classical Farey/mediant bound at `K=240`
 (numerical delta `0`); Farey's method supplies the number directly. The local

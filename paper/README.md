@@ -8,9 +8,10 @@ infrastructure, start with the plain-language
 [`ARCHITECTURE.md`](../ARCHITECTURE.md) at the repository root. The files in
 this directory are authored papers with narrower jobs.
 
-`erdos249-257-main-paper.tex` is the mathematical gateway for readers who do
-not read Lean. It states, in ordinary notation, what the Lean development
-proves, cites, and leaves open.
+Each covered Erdős problem has its own short problem note. Problems #249 and
+#257 also have full working-record papers. `erdos249-257-main-paper.tex` is the
+retained joint exposition of those two reviewed lanes; it is not the index for
+the other four problems.
 
 Every formal statement links to the exact source
 line on GitHub, pinned to the formal-source checkpoint named in
@@ -25,12 +26,12 @@ beyond what the Lean sources contain; the proofs are the sources it links to.
 The manuscript layer (this `.tex` and the rendered PDF) is licensed CC-BY-4.0;
 see `REUSE.toml` at the repository root.
 
-The gateway has no length ceiling and remains the cumulative integration
-monograph: new problem-owned notes do not remove, shorten, or transfer material
-out of it.  Problems #249 and #257 now also have a matched pair of standalone
-notes.  Each repeats the context, exact status boundary, negative results, and
-surviving producers needed by a reader who arrives through one problem rather
-than through the joint gateway.
+The joint exposition has no length ceiling and remains the cumulative
+integration monograph for #249 and #257. New problem-owned notes do not remove,
+shorten, or transfer material out of it. The #249 and #257 notes repeat the
+context, exact status boundary, negative results, and surviving producers
+needed by a reader who arrives through one problem rather than through the
+joint paper.
 
 ## Erdős Problem Notes
 
@@ -50,6 +51,18 @@ keeping the newer research interfaces explicitly unpromoted. A reader who
 arrives at a single problem gets its statement, its checked results, its
 negative results, and its surviving obligation without assembling them from the
 gateway; deliberate repetition of shared context across notes is the design.
+
+## Full Reasoning Records
+
+Two additional papers retain the complete working context for the original
+reviewed problem lanes:
+
+- `erdos249-totient-reasoning-surface.tex`
+- `erdos257-mersenne-reasoning-surface.tex`
+
+They are separate rendered papers, not hidden source appendices and not
+substitutes for the shorter problem notes. Each records checked premises,
+finite evidence, failed and equivalent routes, and the obligations that remain.
 
 The series is not a replacement for the gateway. Its new declarations live in
 a different library and are **not** reviewed public claims: `docs/claims.json`
@@ -125,10 +138,9 @@ pdflatex erdos249-257-main-paper.tex && pdflatex erdos249-257-main-paper.tex
 make
 ```
 
-The outputs include `erdos249-257-main-paper.pdf`,
-`claim-faithful-publication-systems-paper.pdf`, and
-`cold-clone-to-proof-receipt.pdf`; `make` also synchronises the tracked
-reader-facing copies at repository root.
+The outputs include every stem in `PAPERS`: the three repository-level papers,
+the two full reasoning records, and all six problem notes. `make` also
+synchronises every tracked reader-facing PDF to the repository root.
 
 ## Contents
 

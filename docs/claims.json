@@ -923,7 +923,20 @@
       "role": "Canonical gateway: status-sorted exact mathematics, common architecture, and one-page spines for both open problems.",
       "principal_declaration_index_label": "app:index",
       "claim_anchor_field": "paper_label",
-      "companion_sources": []
+      "companion_sources": [
+        {
+          "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
+          "source": "paper/erdos249-totient-reasoning-surface.tex",
+          "rendered": "erdos249-totient-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #249."
+        },
+        {
+          "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
+          "source": "paper/erdos257-mersenne-reasoning-surface.tex",
+          "rendered": "erdos257-mersenne-reasoning-surface.pdf",
+          "role": "Full problem-specific reasoning record for Erdős #257."
+        }
+      ]
     },
     "publication_assembly": {
       "purpose": "Partition every public claim into one mathematical contribution family and bind its status, prior-art posture, narrative owner, source route, consumer or open obligation, and rendered-view decision.",
@@ -934,7 +947,20 @@
           "decision": "retain_and_reconstruct",
           "thesis": "Exact certificate and achievement-set spines for Erdős Problems 249 and 257, with unconditional bounds, classical formalisation boundaries, conditional reductions, finite evidence, and unresolved producers visible before auxiliary variants."
         },
-        "retained_companions": [],
+        "retained_companions": [
+          {
+            "id": "erdos_249_reasoning_record",
+            "source": "paper/erdos249-totient-reasoning-surface.tex",
+            "decision": "retain_as_full_problem_reasoning_record",
+            "thesis": "Complete working record for Erdős #249: checked premises, finite certificates, closed routes, evidence bands, and surviving obligations."
+          },
+          {
+            "id": "erdos_257_reasoning_record",
+            "source": "paper/erdos257-mersenne-reasoning-surface.tex",
+            "decision": "retain_as_full_problem_reasoning_record",
+            "thesis": "Complete working record for Erdős #257: checked premises, finite computations, route relations, evidence bands, and surviving obligations."
+          }
+        ],
         "problem_series": [
           {
             "id": "erdos_243_note",

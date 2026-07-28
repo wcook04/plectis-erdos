@@ -81,6 +81,42 @@
       ]
     },
     {
+      "id": "erdos_249_reasoning_record",
+      "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos249-totient-reasoning-surface.tex",
+      "source_content_digest": "sha256:3ae9210389127df49bbf2c10f157322f713d1c21588082d42b538528d8a39303",
+      "rendered_path": "erdos249-totient-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:2dd410739d04491b1cd8e5d38a90a36b506ca911c317b2f8f39ba77fb17ccb37",
+      "authority_posture": "authored_full_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Full working record for Erdős Problem 249: checked premises, finite certificates, closed routes, surviving obligations, evidence bands, and Lean coordinates. The problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_257_reasoning_record",
+      "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos257-mersenne-reasoning-surface.tex",
+      "source_content_digest": "sha256:d621736b0163f4b3ba3da0272113f052ca519563452c3dc13f051d3657122ba1",
+      "rendered_path": "erdos257-mersenne-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:bacae53813f8af9eb496171cb4373f243bd53523974b556cb936469107619ba3",
+      "authority_posture": "authored_full_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Full working record for Erdős Problem 257: checked premises, finite computations, equivalent and weaker routes, surviving obligations, evidence bands, and Lean coordinates. The universal and half-value questions remain open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
       "id": "erdos_249_note",
       "title": "Exact Ranks for the Dyadic Sections of Euler’s Totient",
       "artifact_class": "problem_note",

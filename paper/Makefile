@@ -4,11 +4,13 @@
 #     https://tectonic-typesetting.github.io
 # Fallback: a standard TeX Live install (run pdflatex twice for the TOC/refs).
 
-# The three long-form manuscripts, then the Erdős Problem Notes: one short,
-# standalone note per problem in the ErdosProblems expansion library.  Every
-# name here must appear exactly once in docs/publication_contract.json.
+# The repository guides and full reasoning records, then the Erdős Problem
+# Notes: one short standalone note per problem in the ErdosProblems expansion
+# library. Every name here must appear exactly once in
+# docs/publication_contract.json.
 PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
-  cold-clone-to-proof-receipt \
+  cold-clone-to-proof-receipt erdos249-totient-reasoning-surface \
+  erdos257-mersenne-reasoning-surface \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1049-rational-base-lambert

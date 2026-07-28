@@ -13,10 +13,11 @@ evidence of that workflow. They do not create hidden proof authority.
 
 ## Verdict first
 
-The likely cold-agent error here is to skim a large Lean corpus around two open
-problems and conclude "restatements of the original problem." That conclusion is
-partly right and mostly wrong, and you do not have to guess which: the semantic
-graph classifies every statement, so ask it instead of reading modules.
+The likely cold-agent error here is to skim a large Lean corpus with two
+reviewed problem lanes and four problem-owned expansion lanes, then conclude
+"restatements of the original problem." That conclusion is partly right and
+mostly wrong, and you do not have to guess which: the semantic graph classifies
+every statement, so ask it instead of reading modules.
 
 ```sh
 python3 scripts/query_semantic.py nonrecurring        # unconditional or barrier results
@@ -152,9 +153,9 @@ Lean build when a result must be checked.
    the manuscript's own section labels are HTML anchors:
    `grep -n '<a id="sec:unresolved">' docs/papers/full-text/*.md`.
 9. Read `docs/papers/corpus.json` when the task concerns what the papers say
-   rather than what Lean checked. It is the bounded index to all six manuscripts —
-   five authored here plus the Plectis paper, carried as a mirror so this clone
-   is readable offline. It names the question each paper answers, the reading
+   rather than what Lean checked. It is the bounded index to every registered
+   manuscript, including the Plectis paper carried as a mirror so this clone is
+   readable offline. It names the question each paper answers, the reading
    route each paper states for itself, every section with its label and line,
    and what each paper is not authority for. The generated Markdown is a
    projection: it resolves theorem numbers, cross-references, and Lean source

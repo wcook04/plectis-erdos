@@ -569,9 +569,12 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
                 "declarations_cited": len(cited),
                 "statement_nodes_reached": len(reached),
                 "node_routed_declaration_citations": len(node_routed),
-                "node_routed_citations": node_routed,
-                "zone_only_declaration_citations": zone_only,
-                "atlas_absent_declaration_citations": absent,
+                "node_routed_citations_total": len(node_routed),
+                "node_routed_citations": node_routed[: args.limit],
+                "zone_only_declaration_citations_total": len(zone_only),
+                "zone_only_declaration_citations": zone_only[: args.limit],
+                "atlas_absent_declaration_citations_total": len(absent),
+                "atlas_absent_declaration_citations": absent[: args.limit],
                 "per_problem": per_problem,
             }
         )
