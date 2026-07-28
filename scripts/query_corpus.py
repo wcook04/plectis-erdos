@@ -16,7 +16,7 @@ import json
 import re
 import sys
 import unicodedata
-from collections import deque
+from collections import Counter, deque
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -32,26 +32,11 @@ CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/1"
 SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
 
-# The current generated atlas was built by a raw line regex and contains these
-# declaration-looking phrases from inside Lean block comments. Query consumers
-# suppress them until the atlas builder and its currently active downstream
-# projections can be regenerated together. The whole-corpus audit proves that
-# this set is exactly the current comment false-positive set.
-SUPPRESSED_DECLARATION_ATLAS_ROWS = {
-    "Erdos249257/CertificateKernel.lean:5729:is",
-    "Erdos249257/CertificateKernel.lean:10461:makes",
-    "Erdos249257/CertificateKernel.lean:11719:of",
-    "Erdos249257/CertificateKernel.lean:18198:closes",
-    "Erdos249257/CyclicTensorMobiusShadow.lean:167:used",
-    "Erdos249257/DiagonalPincerDecomposition.lean:40:and",
-    "Erdos249257/FullTargetPrimeAdjunctionNoGo.lean:18:controlling",
-    "Erdos249257/GenericTailOrbitRigidity.lean:14:says",
-    "Erdos249257/GenericTailOrbitRigidity.lean:149:not",
-    "Erdos249257/GreedyAchievementSet.lean:1785:of",
-    "Erdos249257/HalfCarryReachability.lean:787:directly",
-    "Erdos249257/LcmConeNonflat.lean:67:plus",
-    "Erdos249257/SignedQMomentObstruction.lean:533:for",
-}
+# The atlas builder strips nested Lean comments and recognizes heads whose
+# keyword and identifier are split across lines.  This compatibility set must
+# remain exactly equal to any false declaration rows independently detected by
+# the whole-corpus audit; it is empty for the current atlas.
+SUPPRESSED_DECLARATION_ATLAS_ROWS: frozenset[str] = frozenset()
 
 SEMANTIC_QUERY_OPERATORS = (
     {
@@ -5198,6 +5183,206 @@ def publication_architecture_packet() -> dict[str, Any]:
     }
 
 
+def agent_tour_packet() -> dict[str, Any]:
+    """Return a scale-first, corpus-derived tour for an unfamiliar agent.
+
+    The tour is intentionally assembled from committed projections rather than
+    paper-specific module names. It exposes the same intent classes that recur
+    in a large Lean development: understand the mathematical map, locate exact
+    source, inspect formal dependencies, begin a checked change, and audit the
+    agent/release system.
+    """
+    orientation = load("docs/orientation.json")
+    claims = load("docs/claims.json")
+    dependency = load("docs/lean_dependency_index.json")
+    assembly = claims["machine_readable_paper"]["publication_assembly"]
+    status_counts = Counter(row["status"] for row in claims["claims"])
+    coverage = dependency["coverage"]
+    programmes = orientation["mathematical_programmes"]
+    open_rows = orientation["remaining_open_propositions"]
+    return {
+        "kind": "agent_corpus_tour",
+        "schema_version": "agent-corpus-tour/1",
+        "authority_posture": "computed_navigation_tour_not_proof_authority",
+        "scale": {
+            **orientation["scale"],
+            "curated_claim_count": len(claims["claims"]),
+            "mathematical_programme_count": len(programmes),
+            "contribution_family_count": len(
+                assembly["contribution_families"]
+            ),
+            "remaining_open_proposition_count": len(open_rows),
+        },
+        "formal_dependency_graph": {
+            "loaded_library_roots": coverage["loaded_library_roots"],
+            "source_resolved_node_count": coverage[
+                "source_resolved_node_count"
+            ],
+            "source_resolved_direct_edge_count": coverage[
+                "source_resolved_direct_edge_count"
+            ],
+            "unresolved_atlas_declaration_count": coverage[
+                "unresolved_atlas_declaration_count"
+            ],
+            "unresolved_public_edge_count": coverage[
+                "unresolved_public_edge_count"
+            ],
+            "edge_policy": "elaborated direct value references",
+        },
+        "claim_status_counts": {
+            status: status_counts.get(status, 0)
+            for status in orientation["status_taxonomy"]
+        },
+        "mathematical_map": [
+            {
+                "id": row["id"],
+                "title": row["title"],
+                "mathematical_focus": row["mathematical_focus"],
+                "claim_ceiling": row["claim_ceiling"],
+                "core_claim_count": row["core_claim_count"],
+                "remaining_open_proposition_ids": row[
+                    "remaining_open_proposition_ids"
+                ],
+                "follow": (
+                    "python3 scripts/query_corpus.py --route "
+                    f"{row['id']}"
+                ),
+            }
+            for row in programmes
+        ],
+        "frontier": [
+            {
+                "id": row["id"],
+                "statement": row["statement"],
+                "follow": (
+                    "python3 scripts/query_corpus.py --open "
+                    f"{row['id']}"
+                ),
+            }
+            for row in open_rows
+        ],
+        "intent_lenses": [
+            {
+                "intent": "understand_the_mathematics",
+                "start": "python3 scripts/query_corpus.py --route <mathematical_map.id>",
+                "then": "python3 scripts/query_corpus.py --claim <claim.id>",
+            },
+            {
+                "intent": "locate_any_formal_object",
+                "start": (
+                    "python3 scripts/query_corpus.py --search "
+                    "<ordinary-language-query>"
+                ),
+                "then": (
+                    "python3 scripts/query_semantic.py inventory "
+                    "<candidate-name-or-source-term> --module <path-fragment> "
+                    "--role <role> --zone <zone>"
+                ),
+                "expand": (
+                    "python3 scripts/query_corpus.py --declaration <Lean_name>"
+                ),
+            },
+            {
+                "intent": "inspect_exact_formal_dependencies",
+                "start": (
+                    "python3 scripts/query_corpus.py --proof-cone "
+                    "<Lean_name> --depth 2"
+                ),
+                "then": (
+                    "python3 scripts/query_corpus.py --dependency-path "
+                    "<source> <target>"
+                ),
+            },
+            {
+                "intent": "begin_a_checked_change",
+                "start": "python3 scripts/proof_workbench.py open --help",
+                "then": (
+                    "python3 scripts/lean_fast_build.py --jobs 2 "
+                    "--lake-staleness <selected-target>"
+                ),
+            },
+            {
+                "intent": "audit_the_agent_and_release_system",
+                "start": "python3 scripts/query_corpus.py --publication-architecture",
+                "then": "python3 scripts/check_release.py",
+            },
+        ],
+        "cold_reader_contracts": {
+            "research_mathematician": {
+                "questions_answered": [
+                    "What mathematical programmes are present?",
+                    "Which claims are proved, conditional, finite, cited, or open?",
+                    "What exact propositions remain open?",
+                ],
+                "use": [
+                    "mathematical_map",
+                    "claim_status_counts",
+                    "frontier",
+                ],
+            },
+            "formalisation_engineer": {
+                "questions_answered": [
+                    "Where is a declaration defined?",
+                    "Which exact formal values does it reference?",
+                    "How do I make and replay a kernel-checked change?",
+                ],
+                "use": [
+                    "locate_any_formal_object",
+                    "inspect_exact_formal_dependencies",
+                    "begin_a_checked_change",
+                ],
+            },
+            "ai_lab_researcher": {
+                "questions_answered": [
+                    "Which layers are exhaustive and which are selective?",
+                    "What is exact graph data versus authored interpretation?",
+                    "Which agent actions receive replayable authority receipts?",
+                ],
+                "use": [
+                    "scale",
+                    "formal_dependency_graph",
+                    "authority_boundary",
+                ],
+            },
+            "independent_contributor": {
+                "questions_answered": [
+                    "Can I orient before compiling?",
+                    "Can I build only the selected or stale dependency cone?",
+                    "Which release check establishes the public handoff?",
+                ],
+                "use": [
+                    "authority_boundary.navigation",
+                    "begin_a_checked_change",
+                    "audit_the_agent_and_release_system",
+                ],
+            },
+        },
+        "authority_boundary": {
+            "navigation": "committed JSON projections; no Lean build required",
+            "proof": orientation["proof_authority"],
+            "public_meaning": (
+                "maintainer-reviewed claims and authored mathematical "
+                "interpretation"
+            ),
+            "release": (
+                "automated checks preserve recorded relationships but do not "
+                "judge unrestricted prose"
+            ),
+        },
+        "omission_receipt": {
+            "omitted": (
+                "the exhaustive declaration rows, proof edges, and full claim "
+                "records"
+            ),
+            "reason": "first-contact tour stays bounded and points to typed expansions",
+            "expand": (
+                "python3 scripts/query_corpus.py --route "
+                "agent_native_corpus_navigation"
+            ),
+        },
+    }
+
+
 def summary_packet() -> dict[str, Any]:
     orientation = load("docs/orientation.json")
     claims = load("docs/claims.json")
@@ -5448,6 +5633,38 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| retained_companions={len(architecture['retained_companions'])} "
             f"| families={len(packet['family_index'])}"
         )
+    if kind == "agent_corpus_tour":
+        scale = packet["scale"]
+        graph = packet["formal_dependency_graph"]
+        frontier = ",".join(row["id"] for row in packet["frontier"])
+        return "\n".join(
+            (
+                (
+                    f"corpus tour | modules={scale['module_count']} "
+                    f"| theorem_like={scale['theorem_like_count']} "
+                    f"| curated_claims={scale['curated_claim_count']} "
+                    f"| programmes={scale['mathematical_programme_count']} "
+                    f"| contribution_families={scale['contribution_family_count']} "
+                    f"| open={scale['remaining_open_proposition_count']}"
+                ),
+                (
+                    f"formal graph | roots={','.join(graph['loaded_library_roots'])} "
+                    f"| nodes={graph['source_resolved_node_count']} "
+                    f"| direct_edges={graph['source_resolved_direct_edge_count']} "
+                    f"| unresolved_atlas={graph['unresolved_atlas_declaration_count']} "
+                    f"| unresolved_edges={graph['unresolved_public_edge_count']}"
+                ),
+                (
+                    "authority | navigation=committed projections/no build "
+                    "| proof=pinned Lean kernel | public meaning=maintainer review"
+                ),
+                f"frontier | {frontier}",
+                (
+                    "start | choose mathematical_map.id or intent_lenses.intent "
+                    "| expand=--route agent_native_corpus_navigation"
+                ),
+            )
+        )
     scale = packet["scale"]
     return (
         f"corpus {packet['release']['tag']} | modules={scale['module_count']} "
@@ -5491,6 +5708,7 @@ def main() -> int:
     group.add_argument("--status", metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
+    group.add_argument("--tour", action="store_true")
     group.add_argument("--vocabulary", action="store_true")
     group.add_argument("--search", metavar="TEXT")
     group.add_argument("--ask", metavar="QUESTION")
@@ -5565,6 +5783,8 @@ def main() -> int:
             packet = publication_family_packet(args.publication_family)
         elif args.publication_architecture:
             packet = publication_architecture_packet()
+        elif args.tour:
+            packet = agent_tour_packet()
         elif args.vocabulary:
             packet = semantic_dictionary_packet()
         elif args.search:

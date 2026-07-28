@@ -4,10 +4,11 @@
 #     https://tectonic-typesetting.github.io
 # Fallback: a standard TeX Live install (run pdflatex twice for the TOC/refs).
 
-# The two long-form manuscripts, then the Erdős Problem Notes: one short,
+# The three long-form manuscripts, then the Erdős Problem Notes: one short,
 # standalone note per problem in the ErdosProblems expansion library.  Every
 # name here must appear exactly once in docs/publication_contract.json.
 PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
+  cold-clone-to-proof-receipt \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1049-rational-base-lambert
@@ -38,7 +39,10 @@ check: all
 # The notes share one preamble, so a change there rebuilds all of them.
 $(NOTES:%=%.pdf): $(PREAMBLE)
 
-$(ALIASES): $(PAPERS:%=%.tex) ../scripts/build_paper_module_aliases.py
+# Only the mathematical gateway owns Lean source-link aliases. Keeping every
+# unrelated manuscript in this prerequisite list rebuilt the complete paper
+# set whenever a systems paper changed.
+$(ALIASES): erdos249-257-main-paper.tex ../scripts/build_paper_module_aliases.py
 	python3 ../scripts/build_paper_module_aliases.py
 
 %.pdf: %.tex $(ALIASES)

@@ -33,7 +33,13 @@ MAX_GUIDE_BYTES = 18_000
 # of growth this budget must never buy back by trimming, because a reader who
 # misses it misreads the byline; the page-band exchange it forced is already
 # recorded in check_rendered_paper_boundary.py.
-MAX_SYSTEMS_PAPER_BYTES = 53_300
+# Raised to 61_000 for the agent-native navigation/workbench case study and its
+# primary-source comparison set. This growth pays for an independently
+# reproducible authority boundary (zero-build projections -> receipted Lean
+# probe -> incremental build), explicit unresolved-index counts, one replayed
+# dogfood session, and four bibliography entries; it does not relax the existing
+# cold-reader or claim-boundary anchors.
+MAX_SYSTEMS_PAPER_BYTES = 61_000
 
 SECTION_ORDER = (
     "## What this repository is",
@@ -140,6 +146,19 @@ PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_diagram_labels": (
         "reading map, code index",
         "machine-readable summary",
+    ),
+    "agent_native_navigation_and_receipt": (
+        "agent_native_corpus_navigation",
+        "151,755 declarations in 991 Lean modules",
+        "8,772 source-resolved nodes and 38,844 direct value-reference edges",
+        "query_corpus.py --tour --format card",
+        "available intent classes",
+        "append-only ledger",
+        "an agent cannot author that verdict",
+        "claim must cite a kernel-accepted probe receipt",
+        "carry_pivot_2026_07_27",
+        "zero stale modules",
+        "26 modules in four dependency waves",
     ),
     "real_owners": (
     "Erdos249257.lean",

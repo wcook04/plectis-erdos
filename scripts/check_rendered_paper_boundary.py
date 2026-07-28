@@ -41,6 +41,7 @@ PAPERS = (
 )
 ARCHITECTURE_PAPERS = (
     ROOT / "claim-faithful-publication-systems-paper.pdf",
+    ROOT / "cold-clone-to-proof-receipt.pdf",
 )
 ALIASES = ROOT / "paper" / "module-aliases.json"
 # Page bands are the reach a limiting statement must keep, not a layout record.
@@ -82,6 +83,15 @@ FIRST_MINUTE_CONTRACT = {
             "lean checks the formal proofs",
         ),
         (1, 3): ("both jobs pass?",),
+    },
+    "cold-clone-to-proof-receipt.pdf": {
+        (1, 1): (
+            "from a cold clone to a proof receipt",
+            "151,755 declarations",
+            "navigation does not receive proof authority",
+            "verdicts come from the pinned lean process",
+            "not an autonomous theorem prover",
+        ),
     },
 }
 

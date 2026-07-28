@@ -1075,6 +1075,17 @@ def validate_publication_contract(
     }
     if by_class.get("repository_architecture_guide", set()) != systems_sources:
         errors.append("publication architecture guides drifted from docs/claims.json")
+    agent_navigation_sources = {
+        row["source"]
+        for row in architecture.get("agent_native_guides", [])
+    }
+    if (
+        by_class.get("agent_navigation_guide", set())
+        != agent_navigation_sources
+    ):
+        errors.append(
+            "publication agent-navigation guides drifted from docs/claims.json"
+        )
     # A problem note expounds the expansion library, whose declarations carry no
     # reviewed claim status.  The class is compared like the others so that a
     # note cannot be shipped without a matching registry row, and its posture is

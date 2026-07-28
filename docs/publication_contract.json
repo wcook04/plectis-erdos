@@ -30,9 +30,9 @@
       "title": "How a Lean Repository Turns Formal Proofs into a Checked Public Release",
       "artifact_class": "repository_architecture_guide",
       "source_path": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_content_digest": "sha256:79a83df8232e94fd1eb9eb32cfd1620a0e88b51f9f6806d2fd136320db1def0d",
+      "source_content_digest": "sha256:3b5dee9db407fc26f6a379a750aa6abd0598acf74b6f33fae31a942cd72697dc",
       "rendered_path": "claim-faithful-publication-systems-paper.pdf",
-      "rendered_content_digest": "sha256:b9073597dc49043a16ce193b01ca28321d2d2f86a8ddbee9768df185454208ab",
+      "rendered_content_digest": "sha256:9ba61efed4dd78c9940400dfe268447075865159cd0c25724d8633ab662c861b",
       "authority_posture": "authored_repository_architecture_not_Lean_proof_authority",
       "claim_scope": "A first-principles architecture and access guide to the public Lean source, reviewed claim record, authored documents, generated views, release flow, CI jobs, and human trust boundary. A later historical example illustrates the limit of explicitly recorded checks; the guide adds no mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
@@ -58,6 +58,27 @@
         "post_repair_full_mutation_rerun": false,
         "forbidden_inference": "Do not report a post-repair ten-of-ten result unless all ten mutations are rerun against the extended invariant set."
       }
+    },
+    {
+      "id": "agent_native_navigation_guide",
+      "title": "From a Cold Clone to a Proof Receipt",
+      "artifact_class": "agent_navigation_guide",
+      "source_path": "paper/cold-clone-to-proof-receipt.tex",
+      "source_content_digest": "sha256:41d1d2da2fde12bcc8b5dd9fda42d4088d185296cecd10094b218f63ce5e8bfa",
+      "rendered_path": "cold-clone-to-proof-receipt.pdf",
+      "rendered_content_digest": "sha256:a7547eba126e5577f6b9f83c1f1ce15f4dd604599f2210273112a25083b68914",
+      "authority_posture": "authored_agent_navigation_and_incremental_validation_guide_not_Lean_proof_authority",
+      "claim_scope": "A case study of zero-build corpus navigation, explicit authority boundaries, replayable agent-session receipts, focused changed-cone builds, and exact cached dependency-index validation in this repository. It does not claim autonomous proving, optimal reasoning, external mathematical novelty, or demonstrated transfer to another project.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.agent_native_guides",
+      "entry_route_id": "agent_native_corpus_navigation",
+      "validation": [
+        "python3 scripts/check_agent_navigation_paper.py",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_cold_clone_comprehension.py --quick",
+        "python3 scripts/test_lean_dependency_index_cache.py",
+        "python3 scripts/check_release.py"
+      ]
     },
     {
       "id": "erdos_249_note",

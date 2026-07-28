@@ -98,9 +98,14 @@ def main() -> int:
     agents = diagnostic.read("AGENTS.md")
     claude = diagnostic.read("CLAUDE.md")
     diagnostic.validate_cross_agent_entry(agents, claude)
+    incremental_surfaces = {
+        path: diagnostic.read(path)
+        for path in diagnostic.INCREMENTAL_BUILD_SURFACES
+    }
+    diagnostic.validate_incremental_build_contract(incremental_surfaces)
     diagnostic.validate_agent_packets(packets)
 
-    checks = 3
+    checks = 4
     for task_id, requirements in diagnostic.human_tasks(summary).items():
         for alternatives in requirements:
             mutated = copy.deepcopy(human_surfaces)
@@ -118,6 +123,28 @@ def main() -> int:
     )
     assert_human_rejected(summary, mutated, "first-contact section contract")
     checks += 1
+
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
+        ".github/workflows/lean.yml"
+    ].replace("uses: actions/cache@v5", "uses: actions/cache@v0", 1)
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("project-cache workflow deletion escaped")
+
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental["scripts/lean_fast_build.py"] = mutated_incremental[
+        "scripts/lean_fast_build.py"
+    ].replace('"--changed-from"', '"--all-from-scratch"', 1)
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("changed-cone planner deletion escaped")
 
     mutated = copy.deepcopy(human_surfaces)
     mutated["README.md"] = (
@@ -225,6 +252,63 @@ def main() -> int:
         "python3 scripts/query_corpus.py --publication-architecture"
     )
     assert_rejected(mutated, "contribution-family first-read route")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["agent_native_navigation_route"]["route"]["action_steps"] = [
+        step
+        for step in mutated["agent_native_navigation_route"]["route"]["action_steps"]
+        if "proof_workbench.py open" not in step
+    ]
+    assert_rejected(mutated, "agent-native navigation workbench handoff")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["agent_native_navigation_route"]["route"]["cold_clone_contract"][
+        "navigation_requires_lean_build"
+    ] = True
+    assert_rejected(mutated, "agent-native zero-build navigation contract")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["agent_native_navigation_route"]["route"]["query_steps"].remove(
+        "python3 scripts/query_corpus.py --search <ordinary-language-query>"
+    )
+    assert_rejected(mutated, "agent-native ordinary-language first drilldown")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["agent_native_navigation_route"]["route"]["query_steps"] = [
+        step
+        for step in mutated["agent_native_navigation_route"]["route"][
+            "query_steps"
+        ]
+        if "--publication-artifact agent_native_navigation_guide" not in step
+    ]
+    assert_rejected(mutated, "agent-native publication handoff")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["agent_tour"]["intent_lenses"] = [
+        row
+        for row in mutated["agent_tour"]["intent_lenses"]
+        if row["intent"] != "begin_a_checked_change"
+    ]
+    assert_rejected(mutated, "agent tour checked-change intent")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    del mutated["agent_tour"]["cold_reader_contracts"]["ai_lab_researcher"]
+    assert_rejected(mutated, "agent tour AI-lab reader contract")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["agent_native_navigation_route"]["route"]["action_steps"] = [
+        step
+        for step in mutated["agent_native_navigation_route"]["route"]["action_steps"]
+        if "lean_fast_build.py" not in step
+    ]
+    assert_rejected(mutated, "agent-native focused incremental build handoff")
     checks += 1
 
     mutated = copy.deepcopy(packets)

@@ -41,8 +41,8 @@ study separates four questions often compressed into the word ``coverage'':
 whether declarations were inventoried, whether they were routed to a
 mathematical zone, whether selected declarations were interpreted as authored
 statement nodes, and whether selected public claims were reviewed.  At the
-audited revision every one of 150,631 live declarations has a typed route, but
-only 4,261 of 140,895 authored theorem-like declarations are linked to authored
+audited revision every one of 151,755 live declarations has a typed route, but
+only 4,258 of 141,820 authored theorem-like declarations are linked to authored
 statement nodes.  The first fact is exhaustive routing, not exhaustive
 interpretation.
 
@@ -363,18 +363,86 @@ to authored statement nodes, and selected nodes have typed mathematical
 relations with stated bases.  Fourth, the claim registry selects a much smaller
 set for public presentation and records its status and open boundary.
 
-The generated receipt at this revision makes the ceiling visible: 150,631 of
-150,631 declarations are routed, with no duplicate routing receipts; 4,261 of
-140,895 authored theorem-like declarations are linked to authored statement
-nodes, while 136,634 are only zone-routed; and all 300 declarations selected
+The generated receipt at this revision makes the ceiling visible: 151,755 of
+151,755 declarations are routed, with no duplicate routing receipts; 4,258 of
+141,820 authored theorem-like declarations are linked to authored statement
+nodes, while 137,562 are only zone-routed; and all 299 declarations selected
 by the public claim ledger have the required semantic route.  The command
-\path{python3 scripts/query_semantic.py coverage} derives these counts.  Its
+\texttt{python3 scripts/query\_semantic.py coverage} derives these counts.  Its
 checker validates source freshness, roles, node references, relation labels,
 endpoints, and stated bases.  It does not prove that canonical prose is
 extensionally equivalent to its Lean proposition, that a mathematical relation
 is true, or that the selected graph is complete.  Here \emph{semantic
 coverage} means explicit statement-level interpretation, never mere inventory
 or routing.
+
+\subsection{From a cold clone to a proof receipt}\label{sec:agent-workbench}
+
+The public checkout commits three different navigation products.  The
+declaration atlas inventories 151,755 declarations in 991 Lean modules.  The
+semantic graph adds authored meaning to a selective subset, as the preceding
+counts show.  The elaborated dependency index records 8,772 source-resolved
+nodes and 38,844 direct value-reference edges for the two loaded library roots.
+It also reports its misses: 3,074 atlas declarations are not resolved to a node
+in that loaded environment, and 5,800 public reference pairs have an external
+or otherwise unresolved endpoint.  The first command,
+\texttt{python3 scripts/query\_corpus.py --tour --format card}, derives a
+five-line orientation from those committed products: corpus scale, loaded-root
+graph size and unresolved counts, the authority boundary, the exact open
+frontier, and the available intent classes.  It does not name a specimen module
+in its routing logic.  The longer
+\texttt{agent\_native\_corpus\_navigation} route then gives generic declaration
+inventory, connection-card, proof-cone, workbench, and focused-build commands.
+Both surfaces work immediately in a cold clone and do not elaborate Lean.
+That is a navigation guarantee, not a proof guarantee.
+
+Proof work crosses a deliberate authority boundary.  The session notary in
+\path{scripts/proof_workbench.py} records observations, falsifiable
+conjectures, plans, interpretations, abandonments, probes, and claims in an
+append-only ledger.  A probe stores the exact Lean input bytes and computes its
+verdict from the pinned Lean process; an agent cannot author that verdict.  A
+claim must cite a kernel-accepted probe receipt or the notary refuses it.
+Replaying a session reruns every stored probe and compares the new verdict with
+the recorded one.  Static inventory and dependency queries nominate where to
+look; only the probe can establish that the proposed Lean source is accepted.
+
+The committed prospective carry-pivot session is a dogfood case rather than a
+synthetic demonstration.  Its ledger contains six reasoning notes, one
+kernel-accepted probe, and two claims bound to that probe.  The session produced
+\path{Erdos249257/SuffixCylinderCarryPivot.lean}, including an exact
+divisor-incidence identity that sharpens a previously landed inequality to an
+equality.  At this revision
+\texttt{proof\_workbench.py replay --session carry\_pivot\_2026\_07\_27}
+replays the stored probe with a matching \texttt{kernel\_accepted} verdict.
+The receipt establishes acceptance and replay integrity.  It does not establish
+that the reasoning was optimal, that a bounded search was exhaustive, or that
+the mathematical result is new outside the repository history.
+
+Compilation is separate again.  A fresh Git clone contains the navigation
+products but not platform-specific project \texttt{.olean} files.  Formal
+editing therefore needs a first project build or a compatible restored cache.
+Thereafter \path{scripts/lean_fast_build.py} can select an exact target, modules
+changed since a Git reference, or the stale dependency cone.  Lake content
+traces are used for restored caches so checkout timestamps do not force a full
+rebuild.  In the dogfood environment a two-root trace plan reported zero stale
+modules; replaying the historical four-file problem-owned addition selected 26
+modules in four dependency waves rather than both complete roots.  The
+24-test planner suite checks trace freshness, changed-file selection,
+dependency ordering, bounded parallelism, failure handling, and the final
+serialized Lake authority check.  These are one-revision functional receipts,
+not cross-machine performance benchmarks.
+
+The exhaustive dependency-index validator also writes an exact receipt under
+the ignored \path{.lake} cache after a full environment export matches the
+committed index.  It binds every supported Lean source file, the pinned
+toolchain and Lake locks, the exporter and builder inputs, the declaration
+atlas and generated manifest, the formal-source release slice of the claim
+registry, the dependency-extraction helper definitions, and the index bytes.
+An ordinary check reuses the receipt
+only while all of those bytes are unchanged; an explicit full-check flag
+bypasses it.  Thus restored CI caches avoid repeating the environment export
+for documentation-only revisions without allowing a changed formal input to
+inherit an old validation result.
 
 \subsection{The reviewed record}\label{sec:record}
 
@@ -722,10 +790,31 @@ records which results depend on which earlier results.  \texttt{leanblueprint}
 stores that outline in \TeX{} and checks that every named declaration
 exists~\cite{leanblueprint}.  LeanArchitect infers dependencies and
 \texttt{sorry} status, exporting synced
-\TeX{}~\cite{leanarchitect}.  Text and unformalised nodes stay manual.  Both systems
-support a formalisation in progress.  The claim record
-instead asks which public wording was reviewed after Lean accepted a proof, and
-which stronger conclusion remains open.
+\TeX{}~\cite{leanarchitect}.  Text and unformalised nodes stay manual.  The
+Carleson blueprint documents the same relationship at project scale: an early
+blueprint initiated the Lean work, roughly 180 tasks were distributed, and
+formalisation feedback corrected and extended the final guide~\cite{carleson}.
+These systems support a formalisation in progress.  The claim record instead
+asks which public wording was reviewed after Lean accepted a proof, and which
+stronger conclusion remains open.
+
+LeanDojo supplies an open programmatic Lean environment, extracted proof data,
+premise annotations, retrieval, and a 98,734-theorem benchmark~\cite{leandojo}.
+Pantograph supplies Python, REPL, and FFI interfaces for tactic execution,
+proof-state exploration, metavariable coupling, and data
+extraction~\cite{pantograph}.  They address the machine-to-Lean interaction
+boundary.  The workbench here is complementary and smaller: it does not provide
+a learned search policy or replace those interfaces; it notarises the policy
+moves an agent chose, prevents an authored kernel verdict, and binds claims to
+replayable accepted probes.
+
+Large-library maintenance is itself prior art, not an incidental
+implementation concern.  \emph{Growing Mathlib} describes deprecation, semantic
+linters, conscious library redesign for compilation speed, explicit technical
+debt tracking, per-commit benchmarks, and review/triage tooling~\cite{growingmathlib}.
+The focused and trace-based build wrapper used here applies that maintenance
+posture to a much smaller two-root corpus.  Its local receipts do not transfer
+Mathlib's scale, performance, or social evidence.
 
 Lean Atlas and EconCSLib ask whether a formalisation expresses its intended
 source mathematics.  Lean Atlas leaves semantic verification to people.  Given
@@ -844,7 +933,7 @@ interpret them.
 
 {\scriptsize
 \begin{multicols}{2}
-\begin{thebibliography}{16}
+\begin{thebibliography}{20}
 \setlength{\itemsep}{0pt}
 \setlength{\parsep}{0pt}
 \bibitem{lean4} L.~de Moura and S.~Ullrich, \emph{The Lean 4 Theorem Prover
@@ -876,6 +965,25 @@ accessed 18 July 2026.
 in \emph{17th International Conference on Interactive Theorem Proving},
 LIPIcs 382, 2026, pp.~25:1--25:16,
 \href{https://doi.org/10.4230/LIPIcs.ITP.2026.25}{DOI}.
+\bibitem{carleson} L.~Becker et al., \emph{A Blueprint for the Formalization
+of Carleson's Theorem on Convergence of Fourier Series}, 2025,
+\href{https://doi.org/10.48550/arXiv.2405.06423}{arXiv:2405.06423}.
+\bibitem{leandojo} K.~Yang, A.~M.~Swope, A.~Gu, R.~Chalamala, P.~Song,
+S.~Yu, S.~Godil, R.~Prenger, and A.~Anandkumar, \emph{LeanDojo: Theorem
+Proving with Retrieval-Augmented Language Models}, in \emph{Advances in
+Neural Information Processing Systems 36}, 2023,
+\href{https://doi.org/10.48550/arXiv.2306.15626}{arXiv:2306.15626}.
+\bibitem{pantograph} L.~Aniva, C.~Sun, B.~Miranda, C.~Barrett, and S.~Koyejo,
+\emph{Pantograph: A Machine-to-Machine Interaction Interface for Advanced
+Theorem Proving, High Level Reasoning, and Data Extraction in Lean 4}, in
+\emph{Tools and Algorithms for the Construction and Analysis of Systems},
+2025, pp.~116--137,
+\href{https://doi.org/10.1007/978-3-031-90643-5_6}{DOI}.
+\bibitem{growingmathlib} A.~Baanen, M.~R.~Ballard, J.~Commelin,
+B.~Gin-ge Chen, M.~Rothgang, and D.~Testa, \emph{Growing Mathlib:
+Maintenance of a Large Scale Mathematical Library}, in \emph{Intelligent
+Computer Mathematics}, 2025,
+\href{https://doi.org/10.48550/arXiv.2508.21593}{arXiv:2508.21593}.
 \bibitem{leanatlas} B.~Yanahama and A.~Sannai, \emph{Lean Atlas: An
 Integrated Proof Environment for Scalable Human--AI Collaborative
 Formalization}, 2026,

@@ -14,7 +14,7 @@
   "licences": {
     "CC-BY-4.0": "all carried manuscripts and every view generated from them"
   },
-  "paper_count": 5,
+  "paper_count": 6,
   "papers": [
     {
       "paper_id": "erdos249-257-main",
@@ -1398,10 +1398,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:79a83df8232e94fd1eb9eb32cfd1620a0e88b51f9f6806d2fd136320db1def0d",
+      "source_sha256": "sha256:3b5dee9db407fc26f6a379a750aa6abd0598acf74b6f33fae31a942cd72697dc",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
-      "section_count": 25,
+      "section_count": 26,
       "sections": [
         {
           "level": 1,
@@ -1447,117 +1447,123 @@
         },
         {
           "level": 2,
+          "id": "sec:agent-workbench",
+          "title": "From a cold clone to a proof receipt",
+          "line": 103
+        },
+        {
+          "level": 2,
           "id": "sec:record",
           "title": "The reviewed record",
-          "line": 103
+          "line": 117
         },
         {
           "level": 2,
           "id": "what-the-checker-verifies-here",
           "title": "What the checker verifies here",
-          "line": 130
+          "line": 144
         },
         {
           "level": 1,
           "id": "sec:trust",
           "title": "What the checks establish",
-          "line": 136
+          "line": 150
         },
         {
           "level": 1,
           "id": "sec:failure",
           "title": "A boundary the checklist missed",
-          "line": 165
+          "line": 179
         },
         {
           "level": 4,
           "id": "historical-exercise.",
           "title": "Historical exercise.",
-          "line": 171
+          "line": 185
         },
         {
           "level": 4,
           "id": "repair-and-present-witness.",
           "title": "Repair and present witness.",
-          "line": 179
+          "line": 193
         },
         {
           "level": 4,
           "id": "later-reconstruction.",
           "title": "Later reconstruction.",
-          "line": 185
+          "line": 199
         },
         {
           "level": 4,
           "id": "three-boundaries-the-companion-papers-exposed.",
           "title": "Three boundaries the companion papers exposed.",
-          "line": 205
+          "line": 219
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Scope, reuse, and limits",
-          "line": 211
+          "line": 225
         },
         {
           "level": 4,
           "id": "the-failures-the-design-addresses.",
           "title": "The failures the design addresses.",
-          "line": 215
+          "line": 229
         },
         {
           "level": 4,
           "id": "the-failures-it-does-not-address.",
           "title": "The failures it does not address.",
-          "line": 221
+          "line": 235
         },
         {
           "level": 4,
           "id": "limits-of-the-design-and-this-implementation.",
           "title": "Limits of the design and this implementation.",
-          "line": 227
+          "line": 241
         },
         {
           "level": 4,
           "id": "reuse.",
           "title": "Reuse.",
-          "line": 233
+          "line": 247
         },
         {
           "level": 4,
           "id": "what-is-not-established.",
           "title": "What is not established.",
-          "line": 239
+          "line": 253
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Related systems",
-          "line": 245
+          "line": 259
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 263
+          "line": 281
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 271
+          "line": 289
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 277
+          "line": 295
         }
       ],
-      "citations_rendered": 15,
+      "citations_rendered": 19,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:b9073597dc49043a16ce193b01ca28321d2d2f86a8ddbee9768df185454208ab",
-      "pdf_byte_count": 103793,
+      "pdf_sha256": "sha256:9ba61efed4dd78c9940400dfe268447075865159cd0c25724d8633ab662c861b",
+      "pdf_byte_count": 111877,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1570,17 +1576,164 @@
           {
             "id": "sec:record",
             "title": "The reviewed record",
-            "line": 103
+            "line": 117
           },
           {
             "id": "sec:trust",
             "title": "What the checks establish",
-            "line": 136
+            "line": 150
           },
           {
             "id": "sec:limits",
             "title": "Scope, reuse, and limits",
-            "line": 211
+            "line": 225
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
+      "paper_id": "cold-clone-to-proof-receipt",
+      "title": "From a Cold Clone to a Proof Receipt",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?",
+      "owns": "the agent-navigation architecture: layered corpus projections, bounded intent routing, kernel-authored session receipts, focused builds, and exact dependency-index cache receipts",
+      "not_authority_for": "proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project",
+      "publication_state": "active",
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-lean-erdos249-257",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
+      "local_source": "paper/cold-clone-to-proof-receipt.tex",
+      "source_sha256": "sha256:41d1d2da2fde12bcc8b5dd9fda42d4088d185296cecd10094b218f63ce5e8bfa",
+      "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/cold-clone-to-proof-receipt.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/cold-clone-to-proof-receipt.tex",
+      "section_count": 15,
+      "sections": [
+        {
+          "level": 1,
+          "id": "cold-clone-to-proof-receipt",
+          "title": "From a Cold Clone to a Proof Receipt",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "The cold-clone problem",
+          "line": 17
+        },
+        {
+          "level": 1,
+          "id": "sec:layers",
+          "title": "A layered mathematical option surface",
+          "line": 27
+        },
+        {
+          "level": 4,
+          "id": "exhaustive-inventory.",
+          "title": "Exhaustive inventory.",
+          "line": 38
+        },
+        {
+          "level": 4,
+          "id": "exact-formal-neighbourhoods.",
+          "title": "Exact formal neighbourhoods.",
+          "line": 44
+        },
+        {
+          "level": 4,
+          "id": "selective-mathematical-interpretation.",
+          "title": "Selective mathematical interpretation.",
+          "line": 50
+        },
+        {
+          "level": 4,
+          "id": "reviewed-public-claims.",
+          "title": "Reviewed public claims.",
+          "line": 56
+        },
+        {
+          "level": 1,
+          "id": "sec:tour",
+          "title": "A bounded tour over an unbounded drilldown",
+          "line": 62
+        },
+        {
+          "level": 1,
+          "id": "sec:authority",
+          "title": "Crossing from navigation to authority",
+          "line": 84
+        },
+        {
+          "level": 1,
+          "id": "sec:incremental",
+          "title": "Compilation after comprehension",
+          "line": 101
+        },
+        {
+          "level": 1,
+          "id": "sec:dogfood",
+          "title": "Dogfood receipt",
+          "line": 113
+        },
+        {
+          "level": 1,
+          "id": "sec:related",
+          "title": "Relation to prior work",
+          "line": 123
+        },
+        {
+          "level": 1,
+          "id": "sec:limits",
+          "title": "Limits and transfer conditions",
+          "line": 135
+        },
+        {
+          "level": 1,
+          "id": "sec:conclusion",
+          "title": "Authority-preserving agent entry",
+          "line": 147
+        },
+        {
+          "level": 1,
+          "id": "app:repro",
+          "title": "Reproduction routes",
+          "line": 155
+        }
+      ],
+      "citations_rendered": 8,
+      "local_pdf": "cold-clone-to-proof-receipt.pdf",
+      "pdf_sha256": "sha256:a7547eba126e5577f6b9f83c1f1ce15f4dd604599f2210273112a25083b68914",
+      "pdf_byte_count": 59570,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection; this paper states no reading route of its own",
+        "sections": [
+          {
+            "id": "sec:problem",
+            "title": "The cold-clone problem",
+            "line": 17
+          },
+          {
+            "id": "sec:layers",
+            "title": "A layered mathematical option surface",
+            "line": 27
+          },
+          {
+            "id": "sec:authority",
+            "title": "Crossing from navigation to authority",
+            "line": 84
+          },
+          {
+            "id": "sec:incremental",
+            "title": "Compilation after comprehension",
+            "line": 101
+          },
+          {
+            "id": "sec:limits",
+            "title": "Limits and transfer conditions",
+            "line": 135
           }
         ],
         "unresolved_count": 0

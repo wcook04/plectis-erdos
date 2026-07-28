@@ -29,7 +29,7 @@ Counts at this checkpoint, re-derived from the commands above:
 
 | Shape | #249 | #257 | shared | total |
 |---|---:|---:|---:|---:|
-| nonrecurring unconditional or barrier results | 54 | 117 | 16 | **187** |
+| nonrecurring unconditional or barrier results | 54 | 116 | 16 | **186** |
 | classical/prior-art theorems represented in Lean | 24 | 16 | 30 | **70** |
 | bare equivalences (restatements) | — | — | — | **24** |
 
@@ -43,7 +43,7 @@ conditional results — so its `23`/`17` and these totals are not in conflict.)
 Three things follow, and an agent reporting on this repository should carry all
 three rather than any one of them.
 
-1. **The weight of this corpus is on #257, not #249** — 117 nonrecurring
+1. **The weight of this corpus is on #257, not #249** — 116 nonrecurring
    results against 54. The unconditional #257 material (full-support
    irrationality for every integer base `b ≥ 2`, the achievement-set topology,
    the exact `1/2` classification, and the excluded branches) is theorem
@@ -85,6 +85,20 @@ If the task is to understand the repository architecture, release
 infrastructure, sources of truth, or newcomer path, read `ARCHITECTURE.md`
 first. It is the plain-language human guide. The machine-readable orientation
 below is the bounded route into mathematical claims and Lean source.
+
+For whole-corpus source navigation, do not compile or skim modules first. Run:
+
+```sh
+python3 scripts/query_corpus.py --tour --format card
+```
+
+The five-line tour reports the full scale, exact loaded-root dependency graph,
+open frontier, authority boundary, and the next intent choices. Then run
+`python3 scripts/query_corpus.py --route agent_native_corpus_navigation` for
+the generic declaration, connection, proof-cone, workbench, and focused-build
+commands. All navigation reads committed JSON and therefore works in a cold
+clone. It does not elaborate Lean or acquire proof authority; use the pinned
+Lean build when a result must be checked.
 
 1. Read `docs/orientation.json`. It is the bounded first-read capsule: release
    scale, exact open propositions, mathematical programme routes, principal
@@ -137,8 +151,8 @@ below is the bounded route into mathematical claims and Lean source.
    the manuscript's own section labels are HTML anchors:
    `grep -n '<a id="sec:unresolved">' docs/papers/full-text/*.md`.
 9. Read `docs/papers/corpus.json` when the task concerns what the papers say
-   rather than what Lean checked. It is the bounded index to all three papers —
-   both authored here plus the Plectis paper, carried as a mirror so this clone
+   rather than what Lean checked. It is the bounded index to all six manuscripts —
+   five authored here plus the Plectis paper, carried as a mirror so this clone
    is readable offline. It names the question each paper answers, the reading
    route each paper states for itself, every section with its label and line,
    and what each paper is not authority for. The generated Markdown is a

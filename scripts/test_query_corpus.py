@@ -13,6 +13,7 @@ from pathlib import Path
 
 import query_corpus
 from query_corpus import (
+    agent_tour_packet,
     artifact_inventory,
     artifact_packet,
     claim_status_packet,
@@ -145,6 +146,51 @@ def validate_programme_routes() -> None:
         card = run("--route", route_id, "--format", "card")
         assert card.returncode == 0
         assert card.stdout.startswith(f"programme {route_id} |")
+
+
+def validate_agent_tour() -> None:
+    packet = agent_tour_packet()
+    assert packet["kind"] == "agent_corpus_tour"
+    assert packet["scale"]["declaration_count"] > 100_000
+    assert packet["scale"]["mathematical_programme_count"] == len(
+        PROGRAMME_EXPECTATIONS
+    )
+    assert packet["formal_dependency_graph"]["source_resolved_node_count"] > 0
+    assert packet["formal_dependency_graph"]["source_resolved_direct_edge_count"] > 0
+    assert {row["id"] for row in packet["mathematical_map"]} == set(
+        PROGRAMME_EXPECTATIONS
+    )
+    assert {
+        row["intent"] for row in packet["intent_lenses"]
+    } >= {
+        "understand_the_mathematics",
+        "locate_any_formal_object",
+        "inspect_exact_formal_dependencies",
+        "begin_a_checked_change",
+    }
+    locate = next(
+        row
+        for row in packet["intent_lenses"]
+        if row["intent"] == "locate_any_formal_object"
+    )
+    assert "query_corpus.py --search" in locate["start"]
+    assert "query_semantic.py inventory" in locate["then"]
+    assert "query_corpus.py --declaration" in locate["expand"]
+    assert set(packet["cold_reader_contracts"]) == {
+        "research_mathematician",
+        "formalisation_engineer",
+        "ai_lab_researcher",
+        "independent_contributor",
+    }
+    card = run("--tour", "--format", "card")
+    assert card.returncode == 0
+    lines = card.stdout.strip().splitlines()
+    assert len(lines) == 5
+    assert lines[0].startswith("corpus tour | modules=")
+    assert lines[1].startswith("formal graph | roots=")
+    assert lines[2].startswith("authority | navigation=")
+    assert lines[3].startswith("frontier | ")
+    assert lines[4].startswith("start | ")
 
 
 def validate_natural_language_search() -> None:
@@ -280,6 +326,7 @@ def validate_claim_status_packets() -> None:
 
 def main() -> int:
     validate_programme_routes()
+    validate_agent_tour()
     validate_natural_language_search()
     validate_claim_status_packets()
     summary = query()
@@ -925,6 +972,22 @@ def main() -> int:
     assert route["route"]["authority_owners"]
     assert route["route"]["adjacent_handle_classes"]
 
+    agent_route = query("--route", "agent_native_corpus_navigation")["route"]
+    assert all(
+        step.startswith("python3 scripts/query_corpus.py --")
+        for step in agent_route["query_steps"]
+    )
+    assert {
+        "scripts/query_semantic.py",
+        "scripts/proof_workbench.py",
+        "scripts/lean_fast_build.py",
+    } == {
+        step.split()[1] for step in agent_route["action_steps"]
+    }
+    assert {"lean-toolchain", "lakefile.toml"}.issubset(
+        agent_route["authority_owners"]
+    )
+
     unknown = run("--claim", "does_not_exist")
     assert unknown.returncode == 2
     assert "unknown claim id" in unknown.stderr
@@ -1061,6 +1124,7 @@ def main() -> int:
 if __name__ == "__main__":
     if sys.argv[1:] == ["--programme-routes-only"]:
         validate_programme_routes()
+        validate_agent_tour()
         validate_natural_language_search()
         print(
             "test_query_corpus: "

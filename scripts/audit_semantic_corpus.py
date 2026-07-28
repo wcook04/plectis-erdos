@@ -140,10 +140,10 @@ def audit_packet() -> dict[str, Any]:
         code_lines = module_code_lines.get(module, [])
         if not 1 <= line_number <= len(code_lines):
             continue
-        match = build_declaration_atlas.DECL_RE.match(
-            code_lines[line_number - 1]
+        head = build_declaration_atlas.declaration_head(
+            code_lines, line_number - 1
         )
-        if match is None or match.group(2) != declaration["name"]:
+        if head is None or head[1] != declaration["name"]:
             actual_comment_false_positive_ids.add(declaration["id"])
     configured_suppression_ids = query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS
     if actual_comment_false_positive_ids != configured_suppression_ids:

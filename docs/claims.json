@@ -52,6 +52,60 @@
         ]
       },
       {
+        "id": "agent_native_corpus_navigation",
+        "intent": "Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.",
+        "cold_clone_contract": {
+          "navigation_requires_lean_build": false,
+          "navigation_source": "committed JSON projections",
+          "proof_authority_requires_kernel_check": true,
+          "first_proof_build_policy": "Build the selected target and its dependency cone; reserve both-root builds for release validation.",
+          "cache_policy": "Reuse compatible .lake outputs and select staleness from Lake content traces rather than checkout timestamps."
+        },
+        "discovery_terms": [
+          "navigate the whole Lean corpus",
+          "understand the repository without compiling",
+          "find any declaration",
+          "inspect exact proof dependencies",
+          "start an agent proof session",
+          "agent-native Lean workbench",
+          "cold-clone mathematical comprehension"
+        ],
+        "read": [
+          "docs/AGENT_WORKBENCH.md",
+          "docs/SEMANTIC_COMPILER.md"
+        ],
+        "query_steps": [
+          "python3 scripts/query_corpus.py --search <ordinary-language-query>",
+          "python3 scripts/query_corpus.py --declaration <Lean_name>",
+          "python3 scripts/query_corpus.py --proof-cone <Lean_name> --depth 2",
+          "python3 scripts/query_corpus.py --connections <module-or-declaration> --query <task>",
+          "python3 scripts/query_corpus.py --publication-artifact agent_native_navigation_guide"
+        ],
+        "action_steps": [
+          "python3 scripts/query_semantic.py inventory <candidate-name-or-source-term> --module <path-fragment> --role <declaration-role> --zone <semantic-zone>",
+          "python3 scripts/proof_workbench.py open --help",
+          "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness <selected-target>",
+          "python3 scripts/lean_fast_build.py --jobs 2 --changed-from <git-ref> --plan"
+        ],
+        "authority_owners": [
+          "lean-toolchain",
+          "lakefile.toml",
+          "docs/semantic_corpus.json",
+          "docs/lean_dependency_index.json",
+          "scripts/proof_workbench.py",
+          "scripts/lean_fast_build.py"
+        ],
+        "adjacent_handle_classes": [
+          "declaration",
+          "module",
+          "semantic_zone",
+          "declaration_role",
+          "dependency_edge",
+          "workbench_session",
+          "publication_artifact_id"
+        ]
+      },
+      {
         "id": "browse_claim_status",
         "intent": "Browse bounded claim handles by exact registry status.",
         "discovery_terms": [
@@ -919,6 +973,14 @@
             "source": "paper/claim-faithful-publication-systems-paper.tex",
             "decision": "retain_as_primary_repository_architecture_guide",
             "thesis": "A first-principles map of the Lean source, reviewed public claims, authored documents, generated views, release commands, GitHub workflow, and the exact boundary between human judgement and automatic checks."
+          }
+        ],
+        "agent_native_guides": [
+          {
+            "id": "agent_native_navigation_guide",
+            "source": "paper/cold-clone-to-proof-receipt.tex",
+            "decision": "retain_as_agent_navigation_and_receipt_guide",
+            "thesis": "A cold-clone-to-proof-receipt architecture: exhaustive and selective navigation layers, bounded intent routing, a session notary whose verdicts come from Lean, focused changed-cone builds, exact dependency-index cache receipts, one replayed dogfood session, and explicit transfer limits."
           }
         ],
         "qualified_future_companion": {

@@ -100,9 +100,17 @@ claim from Lean proof to public page. The historical checker example appears
 only after the architecture and illustrates its coverage limit; it is not a
 score and adds no mathematical result.
 
-That twelve-page paper is still a draft, not a finished exemplar. Its revision
-target and cold-reader loop are recorded in
+That architecture paper remains a maintained draft. Its revision target and
+cold-reader loop are recorded in
 `claim-faithful-publication-systems-revision-brief.md`.
+
+`cold-clone-to-proof-receipt.tex` is the agent-native navigation and
+incremental-validation guide. It explains how a fresh checkout exposes the
+whole mathematical option surface without compiling Lean, how an inhabiting
+agent crosses from advisory navigation into a kernel-authored receipt, and how
+focused builds and exact cache receipts avoid repeating unchanged work. Its
+dogfood session is evidence of acceptance and replay, not a proof of optimal
+reasoning or external novelty.
 
 ## Build
 
@@ -117,9 +125,10 @@ pdflatex erdos249-257-main-paper.tex && pdflatex erdos249-257-main-paper.tex
 make
 ```
 
-The outputs are `erdos249-257-main-paper.pdf` and
-`claim-faithful-publication-systems-paper.pdf`; `make` also synchronises the
-tracked reader-facing copies at repository root.
+The outputs include `erdos249-257-main-paper.pdf`,
+`claim-faithful-publication-systems-paper.pdf`, and
+`cold-clone-to-proof-receipt.pdf`; `make` also synchronises the tracked
+reader-facing copies at repository root.
 
 ## Contents
 

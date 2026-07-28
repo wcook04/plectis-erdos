@@ -586,6 +586,14 @@
    ]
   },
   {
+   "id": "agent_native_corpus_navigation",
+   "intent": "Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.",
+   "read": [
+    "docs/AGENT_WORKBENCH.md",
+    "docs/SEMANTIC_COMPILER.md"
+   ]
+  },
+  {
    "id": "browse_claim_status",
    "intent": "Browse bounded claim handles by exact registry status.",
    "read": [

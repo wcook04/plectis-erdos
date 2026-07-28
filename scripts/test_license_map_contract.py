@@ -18,6 +18,7 @@ SPDX_LICENSE_HEADER = "SPDX-License-" "Identifier: "
 MANUSCRIPT_BINARIES = {
     ".github/banner.png",
     "claim-faithful-publication-systems-paper.pdf",
+    "cold-clone-to-proof-receipt.pdf",
     "erdos-243-reciprocal-tail-rigidity.pdf",
     "erdos-251-prime-gap-dyadic-series.pdf",
     "erdos-269-three-prime-running-lcm.pdf",
@@ -28,6 +29,7 @@ MANUSCRIPT_BINARIES = {
 }
 MANUSCRIPT_SOURCES = {
     "paper/claim-faithful-publication-systems-paper.tex",
+    "paper/cold-clone-to-proof-receipt.tex",
     "paper/erdos-243-reciprocal-tail-rigidity.tex",
     "paper/erdos-251-prime-gap-dyadic-series.tex",
     "paper/erdos-269-three-prime-running-lcm.tex",

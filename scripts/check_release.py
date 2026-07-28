@@ -681,6 +681,15 @@ def main() -> int:
         for step in route.get("query_steps", []):
             check(step.startswith("python3 scripts/query_corpus.py --"),
                   f"route {route.get('id')!r} query step is not a typed corpus query: {step}")
+        for step in route.get("action_steps", []):
+            match = re.match(r"^python3 (scripts/[A-Za-z0-9_.-]+\.py)(?:\s|$)", step)
+            action_path = match.group(1) if match else ""
+            check(
+                bool(match)
+                and action_path != "scripts/query_corpus.py"
+                and (ROOT / action_path).is_file(),
+                f"route {route.get('id')!r} has an invalid executable action handoff: {step}",
+            )
         discovery_terms = route.get("discovery_terms", [])
         check(
             isinstance(discovery_terms, list)
@@ -1104,6 +1113,21 @@ def main() -> int:
         architecture_fixture_check.returncode == 0,
         "newcomer architecture guide fixtures failed: "
         f"{architecture_fixture_check.stdout.strip() or architecture_fixture_check.stderr.strip()}",
+    )
+    agent_navigation_paper_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        agent_navigation_paper_check.returncode == 0,
+        "agent-navigation paper failed: "
+        f"{agent_navigation_paper_check.stdout.strip() or agent_navigation_paper_check.stderr.strip()}",
     )
 
     contributing = read(ROOT / "CONTRIBUTING.md")

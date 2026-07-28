@@ -103,6 +103,8 @@ settle the open proposition attached to it.
 
 - **Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.** (`instant_orientation`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route instant_orientation`
+- **Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.** (`agent_native_corpus_navigation`): `docs/AGENT_WORKBENCH.md` → `docs/SEMANTIC_COMPILER.md`
+  - Route: `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
 - **Browse bounded claim handles by exact registry status.** (`browse_claim_status`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route browse_claim_status`
 - **Trace one mathematical claim from exposition to checked source.** (`follow_one_claim`): `docs/orientation.json` → `docs/ORIENTATION.md`

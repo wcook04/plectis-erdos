@@ -6,20 +6,17 @@
 Lean 4 formal work on two open irrationality problems. Start with:
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) →
 [PRIOR ART](docs/PRIOR_ART.md) → [SOURCE MAP](docs/SOURCE_MAP.md).
-The [architecture and repository guide](ARCHITECTURE.md) separately covers
-layout and verification. It assumes no Lean or project history.
-
-The short problem notes are:
+The [architecture and repository guide](ARCHITECTURE.md) covers layout and
+verification. It assumes no Lean or project history.
+The [agent-navigation paper](cold-clone-to-proof-receipt.pdf): cold-clone
+navigation, Lean receipts, and incremental builds.
 
 [**#249 — exact ranks for the dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) ·
 [**#257 — settled supports and exact finite periods**](erdos-257-mersenne-support-subseries.pdf)
 
 [Joint technical exposition](erdos249-257-main-paper.pdf) ·
 [printable PDF](claim-faithful-publication-systems-paper.pdf) ·
-[All papers, offline](docs/papers/) ·
-[Release v0.6.0](https://github.com/wcook04/plectis-lean-erdos249-257/releases/tag/v0.6.0) ·
-[![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml) ·
-[Plectis](https://wcook04.github.io/plectis/)
+[![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml)
 
 ## The two problems
 
@@ -58,7 +55,7 @@ This self-contained public checkout is not an entrypoint into any private
 development system. `v0.6.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](docs/claims.json) pins a post-tag formal-source checkpoint,
 not a new tagged release. Lean source checked by the pinned Lean kernel is
-proof authority.
+proof authority; do not infer results from private or unreleased work.
 
 ## What the formal source establishes
 
@@ -142,6 +139,13 @@ exactly once. These are navigation counts, not novelty claims.
 - **Coding agent:** read [`AGENTS.md`](AGENTS.md), then the bounded
   [`docs/orientation.json`](docs/orientation.json); select one programme or
   claim before expanding the registry.
+- **Whole-corpus agent navigation, without a Lean build:** run
+  `python3 scripts/query_corpus.py --tour --format card`, then follow
+  `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
+  The no-build tour exposes corpus scale, mathematical map, exact open frontier, and
+  authority boundary. Committed indexes expose every indexed declaration and
+  exact dependencies for both loaded roots immediately after cloning.
+  They are navigation projections, not proof authority; Lean checks proofs.
 - **Publication topology:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
   `python3 scripts/query_corpus.py --publication-family <id>`.
@@ -206,12 +210,15 @@ lake exe cache get
 lake build
 ```
 
-For a memory-constrained or focused build, run
-`python3 scripts/lean_fast_build.py --jobs 2 [target]`.
-When `.lake` outputs come from a restored cache, add `--lake-staleness` so the
-wrapper uses Lake's content traces instead of checkout mtimes. With no target
-it validates both supported roots; `--plan` prints compact dependency-wave
-counts without starting the build.
+For a focused build, run
+`python3 scripts/lean_fast_build.py --jobs 2 [target]`. Add `--lake-staleness`
+with restored `.lake` outputs so it trusts Lake content traces, not checkout
+times. Without a target it checks both roots; `--plan` reports waves without
+building. A cold clone can navigate before this step; formal editing needs the
+pinned toolchain. Later builds reuse outputs and rebuild only the selected or
+stale dependency cone; `--changed-from <git-ref>` selects changed modules.
+The dependency-index validator stores an exact `.lake` receipt: unchanged
+inputs make `--check` constant-time; `--check --full-check` forces an audit.
 
 Check the public release surfaces separately:
 
@@ -244,8 +251,10 @@ hypothesis explicit and does not prove universal #257.
 
 ## Citation and licence
 
-Use [`CITATION.cff`](CITATION.cff) for `v0.6.0`. Code and documentation are
-Apache-2.0; manuscripts are CC-BY-4.0; [`REUSE.toml`](REUSE.toml) is complete.
+Use [`CITATION.cff`](CITATION.cff) for `v0.6.0`.
+Code, scripts, and documentation are Apache-2.0. The manuscript layer, including
+the paper source and rendered PDFs, is CC-BY-4.0.
+[`REUSE.toml`](REUSE.toml) is complete.
 
 Use the issue forms for corrections. [`CONTRIBUTING.md`](CONTRIBUTING.md)
 explains local checks; [`SECURITY.md`](SECURITY.md) gives the private route.

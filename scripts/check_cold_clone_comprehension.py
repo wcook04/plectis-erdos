@@ -18,13 +18,17 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import contextlib
 import copy
+import io
 import json
 import re
 import subprocess
 import sys
 from pathlib import Path
 from typing import Any
+
+import query_corpus
 
 ROOT = Path(__file__).resolve().parent.parent
 QUERY = ROOT / "scripts" / "query_corpus.py"
@@ -33,11 +37,19 @@ EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
 SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
 HUMAN_SURFACES = ("README.md", "SCOPE.md", "docs/ORIENTATION.md")
 CENSUS_SURFACES = ("README.md", "docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
+INCREMENTAL_BUILD_SURFACES = (
+    "README.md",
+    ".github/workflows/lean.yml",
+    "scripts/lean_fast_build.py",
+)
 # Whole-file ceilings are intentionally looser than the fixed first-contact
 # prefix below. They prevent accidental bloat without making the next honest
 # sentence a release failure.
 HUMAN_SURFACE_BUDGET_BYTES = {
-    "README.md": 14_000,
+    # The extra allowance pays for the explicit zero-build navigation and
+    # incremental-build boundary; the fixed 12 kB prefix below still prevents
+    # that route from displacing the mathematical verdict.
+    "README.md": 14_500,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
 }
@@ -159,27 +171,77 @@ def quick_summary() -> dict[str, Any]:
     }
 
 
+def check_semantic_corpus_freshness() -> None:
+    """Keep the quick entry check honest after claim-route source edits."""
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_semantic_corpus.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, (
+        completed.stdout.strip() or completed.stderr.strip()
+    )
+
+
 def encoded_bytes(value: Any) -> int:
     return len(json.dumps(value, ensure_ascii=False, sort_keys=True).encode("utf-8"))
 
 
 def query_packet(*args: str, budget_bytes: int = PACKET_BUDGET_BYTES) -> dict[str, Any]:
-    """Run the public CLI exactly as a cold coding agent would."""
+    """Exercise the public CLI parser while reusing its immutable JSON caches.
+
+    A cold agent process naturally keeps loaded projections in memory across a
+    navigation session. Spawning one Python process per assertion made the
+    evaluator repeatedly parse the exhaustive declaration atlas and measured
+    process-start overhead rather than comprehension. The full check retains a
+    real external-process smoke below; this hot path calls the same ``main``
+    parser and packet renderer in one process.
+    """
+    stdout = io.StringIO()
+    stderr = io.StringIO()
+    previous_argv = sys.argv
+    try:
+        sys.argv = [str(QUERY), *args]
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            return_code = query_corpus.main()
+    finally:
+        sys.argv = previous_argv
+    if return_code != 0:
+        raise AssertionError(stdout.getvalue().strip() or stderr.getvalue().strip())
+    output = stdout.getvalue()
+    raw = output.encode("utf-8")
+    assert len(raw) <= budget_bytes, (
+        f"query {' '.join(args) or '<summary>'} emitted {len(raw)} bytes "
+        f"(budget {budget_bytes})"
+    )
+    return json.loads(output)
+
+
+def validate_query_cli_process_smoke() -> None:
+    """Prove the installed script still works as a standalone cold process."""
     completed = subprocess.run(
-        [sys.executable, str(QUERY), *args],
-        cwd=ROOT,
+        [
+            sys.executable,
+            str(QUERY),
+            "--route",
+            "agent_native_corpus_navigation",
+        ],
+        cwd=ROOT.parent,
         capture_output=True,
         text=True,
         check=False,
     )
     if completed.returncode != 0:
         raise AssertionError(completed.stdout.strip() or completed.stderr.strip())
-    raw = completed.stdout.encode("utf-8")
-    assert len(raw) <= budget_bytes, (
-        f"query {' '.join(args) or '<summary>'} emitted {len(raw)} bytes "
-        f"(budget {budget_bytes})"
-    )
-    return json.loads(completed.stdout)
+    packet = json.loads(completed.stdout)
+    assert packet["kind"] == "reading_route"
+    assert packet["route"]["id"] == "agent_native_corpus_navigation"
 
 
 def semantic_query_packet(
@@ -329,6 +391,18 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["docs/orientation.json"],
             ["docs/SOURCE_MAP.md"],
         ],
+        "navigate_without_compiling": [
+            ["Whole-corpus agent navigation"],
+            ["without a Lean build"],
+            ["--tour --format card"],
+            ["corpus scale"],
+            ["mathematical map"],
+            ["exact open frontier"],
+            ["agent_native_corpus_navigation"],
+            ["every indexed declaration"],
+            ["exact dependencies for both loaded roots"],
+            ["navigation projections, not proof authority"],
+        ],
     }
 
 
@@ -343,6 +417,44 @@ def normalized(text: str) -> str:
 def contains_any(text: str, alternatives: list[str]) -> bool:
     compact = normalized(text).casefold()
     return any(normalized(token).casefold() in compact for token in alternatives)
+
+
+def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
+    """Keep cache reuse, focused rebuilding, and the cold-clone boundary aligned."""
+    assert set(surfaces) == set(INCREMENTAL_BUILD_SURFACES)
+    readme = surfaces["README.md"]
+    readme_flat = normalized(readme)
+    workflow = surfaces[".github/workflows/lean.yml"]
+    planner = surfaces["scripts/lean_fast_build.py"]
+
+    for token in (
+        "A cold clone can navigate before this step",
+        "--lake-staleness",
+        "--changed-from <git-ref>",
+        "rebuild only the selected or stale dependency cone",
+    ):
+        assert normalized(token) in readme_flat, (
+            f"README lost incremental-build contract: {token}"
+        )
+
+    for token in (
+        "uses: actions/cache@v5",
+        "path: .lake",
+        "restore-keys:",
+        "python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness",
+        "python3 scripts/build_lean_dependency_index.py --check",
+        "No Lean source or proof-environment input changed; compilation is unchanged.",
+        "This is already a default root.",
+    ):
+        assert token in workflow, f"Lean CI lost cache/build contract: {token}"
+
+    for token in (
+        '"--changed-from"',
+        '"--lake-staleness"',
+        "final serialized Lake authority check",
+        "no changed Lean modules relative to",
+    ):
+        assert token in planner, f"build planner lost incremental contract: {token}"
 
 
 def validate_human_first_contact(
@@ -371,6 +483,10 @@ def validate_human_first_contact(
         f"README first-contact surface lost section sequence {section_order}"
     )
     assert positions == sorted(positions), "README first-contact sections are out of order"
+    assert (
+        "[agent-navigation paper](cold-clone-to-proof-receipt.pdf)"
+        in readme_prefix
+    ), "README no longer exposes the cold-clone-to-proof-receipt paper"
 
     for task_id, requirements in human_tasks(summary).items():
         for alternatives in requirements:
@@ -734,7 +850,11 @@ def collect_agent_packets() -> dict[str, Any]:
         "sources": {},
         "modules": {},
         "sigil_modules": {},
+        "agent_tour": query_packet("--tour"),
         "route": query_packet("--route", "instant_orientation"),
+        "agent_native_navigation_route": query_packet(
+            "--route", "agent_native_corpus_navigation"
+        ),
         "publication_architecture": publication_architecture,
         "publication_families": {
             row["id"]: query_packet("--publication-family", row["id"])
@@ -925,6 +1045,110 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         for row in inventory_lookup["results"]
     )
     assert encoded_bytes(inventory_lookup) <= PACKET_BUDGET_BYTES
+
+    navigation_route = packets["agent_native_navigation_route"]
+    assert navigation_route["kind"] == "reading_route"
+    assert navigation_route["route"]["id"] == "agent_native_corpus_navigation"
+    cold_contract = navigation_route["route"]["cold_clone_contract"]
+    assert cold_contract["navigation_requires_lean_build"] is False
+    assert cold_contract["navigation_source"] == "committed JSON projections"
+    assert cold_contract["proof_authority_requires_kernel_check"] is True
+    assert "selected target and its dependency cone" in (
+        cold_contract["first_proof_build_policy"]
+    )
+    assert "Lake content traces" in cold_contract["cache_policy"]
+    steps = navigation_route["route"]["query_steps"]
+    actions = navigation_route["route"]["action_steps"]
+    assert steps[0] == (
+        "python3 scripts/query_corpus.py --search <ordinary-language-query>"
+    )
+    assert any("query_corpus.py --search" in step for step in steps)
+    assert any("query_corpus.py --proof-cone" in step for step in steps)
+    assert all(step.startswith("python3 scripts/query_corpus.py --") for step in steps)
+    assert any("query_semantic.py inventory" in step for step in actions)
+    assert any("proof_workbench.py open" in step for step in actions)
+    assert any(
+        "lean_fast_build.py" in step and "<selected-target>" in step
+        for step in actions
+    )
+    assert any(
+        "lean_fast_build.py" in step and "--changed-from <git-ref>" in step
+        for step in actions
+    )
+    assert any(
+        "--publication-artifact agent_native_navigation_guide" in step
+        for step in steps
+    )
+    assert all(
+        token not in json.dumps(navigation_route["route"])
+        for token in (
+            "Erdos249257.",
+            "ErdosProblems/Erdos",
+            "SuffixCylinderCarryPivot",
+            "DynamicCancellation",
+        )
+    )
+    assert {
+        "docs/semantic_corpus.json",
+        "docs/lean_dependency_index.json",
+        "scripts/proof_workbench.py",
+    }.issubset(set(navigation_route["route"]["authority_owners"]))
+    assert navigation_route["proof_authority"] == PROOF_AUTHORITY
+    assert encoded_bytes(navigation_route) <= PACKET_BUDGET_BYTES
+
+    tour = packets["agent_tour"]
+    assert tour["kind"] == "agent_corpus_tour"
+    assert tour["authority_posture"] == (
+        "computed_navigation_tour_not_proof_authority"
+    )
+    assert tour["scale"]["declaration_count"] == summary["scale"]["declaration_count"]
+    assert tour["scale"]["curated_claim_count"] == summary["curated_claim_count"]
+    assert tour["scale"]["mathematical_programme_count"] == len(STORY_ROUTES)
+    assert tour["scale"]["contribution_family_count"] == (
+        summary["publication_family_count"]
+    )
+    assert tour["scale"]["remaining_open_proposition_count"] == len(
+        summary["remaining_open_propositions"]
+    )
+    assert tour["formal_dependency_graph"]["loaded_library_roots"] == [
+        "Erdos249257",
+        "ErdosProblems",
+    ]
+    assert tour["formal_dependency_graph"]["source_resolved_node_count"] > 0
+    assert tour["formal_dependency_graph"]["source_resolved_direct_edge_count"] > 0
+    assert {row["id"] for row in tour["mathematical_map"]} == set(STORY_ROUTES)
+    assert {row["id"] for row in tour["frontier"]} == {
+        row["id"] for row in summary["remaining_open_propositions"]
+    }
+    assert {
+        row["intent"] for row in tour["intent_lenses"]
+    } == {
+        "understand_the_mathematics",
+        "locate_any_formal_object",
+        "inspect_exact_formal_dependencies",
+        "begin_a_checked_change",
+        "audit_the_agent_and_release_system",
+    }
+    assert set(tour["cold_reader_contracts"]) == {
+        "research_mathematician",
+        "formalisation_engineer",
+        "ai_lab_researcher",
+        "independent_contributor",
+    }
+    locate_lens = next(
+        row
+        for row in tour["intent_lenses"]
+        if row["intent"] == "locate_any_formal_object"
+    )
+    assert "query_corpus.py --search" in locate_lens["start"]
+    assert "query_semantic.py inventory" in locate_lens["then"]
+    assert "query_corpus.py --declaration" in locate_lens["expand"]
+    for contract in tour["cold_reader_contracts"].values():
+        assert len(contract["questions_answered"]) == 3
+        assert contract["use"]
+    assert tour["authority_boundary"]["proof"] == PROOF_AUTHORITY
+    assert "no Lean build required" in tour["authority_boundary"]["navigation"]
+    assert encoded_bytes(tour) <= PACKET_BUDGET_BYTES
 
     assert set(packets["claim_statuses"]) == set(summary["status_taxonomy"])
     for status, packet in packets["claim_statuses"].items():
@@ -1574,6 +1798,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
 
 def run_quick_check() -> int:
     """Verify the zero-build first-contact path from committed projections."""
+    check_semantic_corpus_freshness()
     summary = quick_summary()
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
     validate_human_first_contact(summary, human_surfaces)
@@ -1583,6 +1808,9 @@ def run_quick_check() -> int:
     )
     validate_gateway_opening(read(GATEWAY_PAPER))
     validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
+    validate_incremental_build_contract(
+        {path: read(path) for path in INCREMENTAL_BUILD_SURFACES}
+    )
     print(
         "cold-clone quick check: committed human and agent first-contact "
         "projections verified; no Lean build or corpus-query sweep run"
@@ -1621,6 +1849,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
 
+    validate_query_cli_process_smoke()
     packets = collect_agent_packets()
     summary = packets["summary"]
     human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
@@ -1631,6 +1860,9 @@ def main(argv: list[str] | None = None) -> int:
     )
     validate_gateway_opening(read(GATEWAY_PAPER))
     validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
+    validate_incremental_build_contract(
+        {path: read(path) for path in INCREMENTAL_BUILD_SURFACES}
+    )
     validate_agent_packets(packets)
     query_count = (
         1

@@ -33,7 +33,7 @@ def check_dictionary_budget_and_shape() -> None:
 
 
 def check_vocabulary_mismatch_queries() -> None:
-    assert len(query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS) == 13
+    assert not query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS
     for comment_word in ("makes", "invariant"):
         try:
             query_corpus.declaration_packet(comment_word, 1)
@@ -47,6 +47,12 @@ def check_vocabulary_mismatch_queries() -> None:
         row.get("kind") == "declaration" and row.get("name") == "makes"
         for row in query_corpus.search_packet("makes", 20)["results"]
     )
+    for wrapped_name in (
+        "diagonalAdjacentSuffixResidue_powerTwo_oddDepth_central_iff_halfWordBand",
+        "HalfTerminalOnlyScaledVanishingSequence.ofCofinalTerminalOnlyStrip",
+    ):
+        wrapped = query_corpus.declaration_packet(wrapped_name, 1)
+        assert wrapped["matches"][0]["name"] == wrapped_name
     assert query_corpus.search_terms(
         "half_mem_mersenneAchievementSet_of_middleProducerTailEscape"
     ) >= {

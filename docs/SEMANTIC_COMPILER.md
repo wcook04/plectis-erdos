@@ -141,6 +141,7 @@ The formal dependency index is generated from the imported Lean environment:
 ```sh
 python3 scripts/build_lean_dependency_index.py
 python3 scripts/build_lean_dependency_index.py --check
+python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
 It separates references in an elaborated declaration's type from references
@@ -150,6 +151,15 @@ rather than declaration namespace, so declarations intentionally living in
 top-level mathematical namespaces remain covered. The builder first runs the
 incremental `lake build Erdos249257 ErdosProblems` targets so both supported
 compact-root `.olean` environments are current with the source fingerprint.
+After an exact full check, a receipt under the ignored `.lake` directory binds
+the complete supported Lean source, toolchain and Lake locks, exporter and
+builder inputs, declaration atlas and generated manifest, the claim registry's
+formal-source release slice, the dependency-extraction helper definitions, and
+committed index bytes. The ordinary `--check` reuses that receipt only while every bound byte is
+unchanged; `--full-check` deliberately bypasses it. Because CI restores
+`.lake`, documentation-only and otherwise unchanged revisions do not repeat
+the environment export, while any formal or exporter input change forces the
+incremental Lake build and a fresh full export.
 The exhaustive declaration inventory remains the route for auxiliary forest
 modules that intentionally are not imported into a compact mathematical root:
 

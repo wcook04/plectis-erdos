@@ -6,6 +6,8 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import inspect
 import json
 import subprocess
 import sys
@@ -21,6 +23,160 @@ OUTPUT = ROOT / "docs" / "lean_dependency_index.json"
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
+CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
+CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
+CHECK_INPUT_FILES = (
+    "docs/declaration_atlas.json",
+    "docs/generated_certificate_manifest.json",
+    "lake-manifest.json",
+    "lakefile.toml",
+    "lean-toolchain",
+    "scripts/build_declaration_atlas.py",
+    "scripts/build_lean_dependency_index.py",
+    "scripts/export_lean_dependency_edges.lean",
+)
+QUERY_CORPUS_DEPENDENCY_HELPERS = (
+    "atlas_declarations",
+    "declaration_externally_addressable",
+    "lean_code_projection",
+    "module_namespace_events",
+    "qualified_declaration_name",
+)
+
+
+def sha256_text(content: str) -> str:
+    return f"sha256:{hashlib.sha256(content.encode('utf-8')).hexdigest()}"
+
+
+def check_input_paths(root: Path = ROOT) -> list[Path]:
+    """Return every source that can change the elaborated dependency packet."""
+    paths = [root / relative for relative in CHECK_INPUT_FILES]
+    for library_root in LEAN_ROOT_TARGETS:
+        paths.append(root / f"{library_root}.lean")
+        paths.extend(sorted((root / library_root).rglob("*.lean")))
+    return sorted(set(paths))
+
+
+def semantic_check_inputs(root: Path = ROOT) -> list[tuple[str, bytes]]:
+    """Project large shared owners to the exact values this builder consumes."""
+    claims = json.loads(
+        (root / "docs" / "claims.json").read_text(encoding="utf-8")
+    )
+    formal_source = json.dumps(
+        claims["release"]["formal_source"],
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    helper_sources = "\n\n".join(
+        inspect.getsource(getattr(query_corpus, name))
+        for name in QUERY_CORPUS_DEPENDENCY_HELPERS
+    )
+    suppressed_rows = json.dumps(
+        sorted(query_corpus.SUPPRESSED_DECLARATION_ATLAS_ROWS),
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+    return [
+        ("docs/claims.json::release.formal_source", formal_source),
+        (
+            "scripts/query_corpus.py::dependency_helpers",
+            f"{helper_sources}\n{suppressed_rows}\n".encode("utf-8"),
+        ),
+    ]
+
+
+def check_input_fingerprint(root: Path = ROOT) -> str:
+    """Hash path identities and bytes, including the complete supported roots."""
+    digest = hashlib.sha256()
+    for path in check_input_paths(root):
+        if not path.is_file():
+            raise RuntimeError(
+                f"Lean dependency verification input is missing: {path}"
+            )
+        relative = path.relative_to(root).as_posix()
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    for identity, payload in semantic_check_inputs(root):
+        digest.update(identity.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(payload)
+        digest.update(b"\0")
+    return f"sha256:{digest.hexdigest()}"
+
+
+def receipt_matches(
+    receipt: dict[str, Any],
+    *,
+    input_fingerprint: str,
+    output_digest: str,
+) -> bool:
+    return (
+        receipt.get("schema") == CHECK_RECEIPT_SCHEMA
+        and receipt.get("builder_schema") == SCHEMA
+        and receipt.get("input_fingerprint") == input_fingerprint
+        and receipt.get("output_digest") == output_digest
+    )
+
+
+def load_cached_check(
+    *,
+    root: Path = ROOT,
+    output: Path = OUTPUT,
+    receipt_path: Path = CHECK_RECEIPT,
+) -> dict[str, Any] | None:
+    """Return a receipt only when the verified inputs and output are exact."""
+    if not output.is_file() or not receipt_path.is_file():
+        return None
+    try:
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    content = output.read_text(encoding="utf-8")
+    if not receipt_matches(
+        receipt,
+        input_fingerprint=check_input_fingerprint(root),
+        output_digest=sha256_text(content),
+    ):
+        return None
+    return receipt
+
+
+def write_check_receipt(
+    content: str,
+    packet: dict[str, Any],
+    *,
+    input_fingerprint: str,
+    root: Path = ROOT,
+    receipt_path: Path = CHECK_RECEIPT,
+) -> None:
+    coverage = packet["coverage"]
+    receipt = {
+        "schema": CHECK_RECEIPT_SCHEMA,
+        "builder_schema": SCHEMA,
+        "input_fingerprint": input_fingerprint,
+        "output_digest": sha256_text(content),
+        "source_fingerprint": packet["source_fingerprint"],
+        "source_resolved_node_count": coverage[
+            "source_resolved_node_count"
+        ],
+        "source_resolved_direct_edge_count": coverage[
+            "source_resolved_direct_edge_count"
+        ],
+        "verification_posture": (
+            "full_supported_root_build_and_elaborated_environment_export_"
+            "matched_the_committed_index"
+        ),
+    }
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = receipt_path.with_suffix(".tmp")
+    temporary.write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(receipt_path)
 
 
 def ensure_elaborated_environment() -> None:
@@ -470,13 +626,42 @@ def encoded(packet: dict[str, Any]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--full-check",
+        action="store_true",
+        help="ignore an exact cached receipt and rerun the Lean exporter",
+    )
     args = parser.parse_args()
+    if args.full_check and not args.check:
+        parser.error("--full-check requires --check")
+    if args.check and not args.full_check:
+        cached = load_cached_check()
+        if cached is not None:
+            print(
+                "Lean dependency index: PASS cached "
+                f"({cached['source_resolved_node_count']} nodes, "
+                f"{cached['source_resolved_direct_edge_count']} edges)"
+            )
+            return 0
+    initial_input_fingerprint = check_input_fingerprint()
     packet = build_packet()
     content = encoded(packet)
+    if check_input_fingerprint() != initial_input_fingerprint:
+        print(
+            "Lean dependency verification inputs changed during the full "
+            "environment check; rerun against a stable snapshot",
+            file=sys.stderr,
+        )
+        return 2
     if args.check:
         if not OUTPUT.is_file() or OUTPUT.read_text(encoding="utf-8") != content:
             print(f"stale Lean dependency index: {OUTPUT}", file=sys.stderr)
             return 1
+        write_check_receipt(
+            content,
+            packet,
+            input_fingerprint=initial_input_fingerprint,
+        )
         print(
             "Lean dependency index: PASS "
             f"({packet['coverage']['source_resolved_node_count']} nodes, "
@@ -484,6 +669,11 @@ def main() -> int:
         )
         return 0
     OUTPUT.write_text(content, encoding="utf-8")
+    write_check_receipt(
+        content,
+        packet,
+        input_fingerprint=initial_input_fingerprint,
+    )
     print(
         f"wrote {OUTPUT} "
         f"({packet['coverage']['source_resolved_node_count']} nodes, "
