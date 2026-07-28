@@ -30,6 +30,27 @@ SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/1"
 SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
+REPOSITORY_OVERVIEW_SCHEMA = "erdos249257-repository-overview/1"
+
+PLECTIS_COMPANION_REPOSITORY = {
+    "name": "plectis",
+    "repository": "https://github.com/wcook04/plectis",
+    "role": (
+        "self-contained runnable system and corpus-machinery companion; owns the "
+        "public executable mechanisms, validators, receipts, and navigation runtime"
+    ),
+    "relationship": (
+        "companion, not dependency: this repository owns the machine-checked "
+        "mathematics; Plectis demonstrates the general runnable system machinery"
+    ),
+    "first_command_in_companion_clone": (
+        'PYTHONPATH=src python3 -m microcosm_core comprehend --self-model --format text'
+    ),
+    "authority_boundary": (
+        "Do not infer theorem status from Plectis or require a sibling checkout for "
+        "any proof, query, paper, or validation command in this repository."
+    ),
+}
 
 # The current generated atlas was built by a raw line regex and contains these
 # declaration-looking phrases from inside Lean block comments. Query consumers
@@ -5221,6 +5242,7 @@ def summary_packet() -> dict[str, Any]:
         },
         "curated_claim_count": len(claims["claims"]),
         "publication_family_count": len(assembly["contribution_families"]),
+        "companion_repository": dict(PLECTIS_COMPANION_REPOSITORY),
         "declaration_projection_filter_receipt": {
             "raw_atlas_declaration_count": raw_declaration_count,
             "effective_query_declaration_count": effective_declaration_count,
@@ -5235,6 +5257,95 @@ def summary_packet() -> dict[str, Any]:
             "reason": "non_mathematical_owner_metadata_kept_out_of_bounded_agent_summary",
         },
     }
+
+
+def is_repository_overview_query(query: str) -> bool:
+    """Recognize ordinary cold-reader requests for corpus-wide coverage."""
+    text = normalized_search_text(query)
+    return any(
+        phrase in text
+        for phrase in (
+            "what is in this repository",
+            "what is in this repo",
+            "whats in this repository",
+            "whats in this repo",
+            "what s in this repository",
+            "what s in this repo",
+            "what does this repository contain",
+            "what does this repo contain",
+            "show me what is here",
+            "show me whats here",
+            "full coverage of everything here",
+            "complete overview of everything here",
+            "complete repository overview",
+            "full repository overview",
+            "overview of the whole repository",
+            "overview of the whole repo",
+        )
+    )
+
+
+def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
+    """Return the bounded, coverage-accounted cold-clone overview."""
+    packet = summary_packet()
+    programmes = packet["mathematical_programmes"]
+    status_taxonomy = packet["status_taxonomy"]
+    open_propositions = packet["remaining_open_propositions"]
+    reading_routes = packet["reading_routes"]
+    packet.update(
+        {
+            "kind": "repository_overview",
+            "schema_version": REPOSITORY_OVERVIEW_SCHEMA,
+            "query": query,
+            "query_interpretation": {
+                "operator": "repository_overview",
+                "routed_by": (
+                    "ordinary_cold_reader_phrase"
+                    if query
+                    else "explicit_overview_selector"
+                ),
+                "authority_posture": (
+                    "navigation_translation_not_proof_or_claim_status_authority"
+                ),
+            },
+            "coverage_receipt": {
+                "coverage_basis": (
+                    "all mathematical programmes, all claim-status classes, all exact "
+                    "remaining-open propositions, the full bounded reading-route index, "
+                    "and every publication contribution family"
+                ),
+                "mathematical_programme_count": len(programmes),
+                "mathematical_programme_ids": [
+                    row["id"] for row in programmes
+                ],
+                "claim_status_class_count": len(status_taxonomy),
+                "claim_status_classes": list(status_taxonomy),
+                "curated_claim_count": packet["curated_claim_count"],
+                "remaining_open_proposition_count": len(open_propositions),
+                "remaining_open_proposition_ids": [
+                    row["id"] for row in open_propositions
+                ],
+                "reading_route_count": len(reading_routes),
+                "publication_family_count": packet[
+                    "publication_family_count"
+                ],
+                "complete_relative_to": [
+                    "docs/orientation.json",
+                    "docs/claims.json",
+                    "docs/declaration_atlas.json",
+                ],
+            },
+            "first_read_order": [
+                "Read scale, mathematical_programmes, status_taxonomy, "
+                "remaining_open_propositions, and non_claims.",
+                "Use reading_routes for one programme or claim-status view.",
+                "Use --claim/--open/--declaration/--module only after selecting "
+                "a typed handle.",
+                "Treat the Plectis link as an optional companion, never proof authority.",
+            ],
+        }
+    )
+    return packet
 
 
 def render_card(packet: dict[str, Any]) -> str:
@@ -5437,6 +5548,41 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| retained_companions={len(architecture['retained_companions'])} "
             f"| families={len(packet['family_index'])}"
         )
+    if kind == "repository_overview":
+        scale = packet["scale"]
+        coverage = packet["coverage_receipt"]
+        companion = packet["companion_repository"]
+        return "\n".join(
+            (
+                (
+                    f"repository overview | modules={scale['module_count']} "
+                    f"| declarations={scale['declaration_count']} "
+                    f"| theorem_like={scale['theorem_like_count']} "
+                    f"| curated_claims={coverage['curated_claim_count']}"
+                ),
+                (
+                    f"coverage | programmes={coverage['mathematical_programme_count']} "
+                    f"| status_classes={coverage['claim_status_class_count']} "
+                    f"| exact_open={coverage['remaining_open_proposition_count']} "
+                    f"| publication_families={coverage['publication_family_count']} "
+                    f"| reading_routes={coverage['reading_route_count']}"
+                ),
+                (
+                    "programmes | "
+                    + ",".join(coverage["mathematical_programme_ids"])
+                ),
+                (
+                    "open | "
+                    + ",".join(
+                        coverage["remaining_open_proposition_ids"]
+                    )
+                ),
+                (
+                    f"companion | {companion['name']} | "
+                    f"{companion['repository']} | not proof authority"
+                ),
+            )
+        )
     scale = packet["scale"]
     return (
         f"corpus {packet['release']['tag']} | modules={scale['module_count']} "
@@ -5480,6 +5626,11 @@ def main() -> int:
     group.add_argument("--status", metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
+    group.add_argument(
+        "--overview",
+        action="store_true",
+        help="show complete bounded repository coverage and companion boundary",
+    )
     group.add_argument("--vocabulary", action="store_true")
     group.add_argument("--search", metavar="TEXT")
     group.add_argument("--ask", metavar="QUESTION")
@@ -5554,12 +5705,18 @@ def main() -> int:
             packet = publication_family_packet(args.publication_family)
         elif args.publication_architecture:
             packet = publication_architecture_packet()
+        elif args.overview:
+            packet = repository_overview_packet()
         elif args.vocabulary:
             packet = semantic_dictionary_packet()
         elif args.search:
             packet = search_packet(args.search, args.limit)
         elif args.ask:
-            packet = semantic_slice_packet(args.ask, args.limit)
+            packet = (
+                repository_overview_packet(args.ask)
+                if is_repository_overview_query(args.ask)
+                else semantic_slice_packet(args.ask, args.limit)
+            )
         else:
             packet = summary_packet()
     except (KeyError, ValueError, json.JSONDecodeError, OSError) as exc:
