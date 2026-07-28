@@ -148,9 +148,24 @@ def prediction_fingerprint(record: dict) -> str:
     return "sha256:" + hashlib.sha256(blob.encode("utf-8")).hexdigest()
 
 
-def head_revision() -> str:
+def source_revision() -> str:
+    """Return the last commit that changed an authoritative projection input.
+
+    Stamping ``HEAD`` makes the generated file self-invalidating: committing
+    ``docs/theory_lab.json`` advances ``HEAD``, so the next ``--check`` asks for
+    a different byte sequence even though none of the inputs changed.  Keep the
+    provenance useful and the projection convergent by excluding the generated
+    output and asking Git for the newest commit that touched the builder or one
+    of its authored/generated inputs.
+    """
+    inputs = (
+        Path(__file__).resolve().relative_to(ROOT),
+        ATLAS.relative_to(ROOT),
+        CORPUS.relative_to(ROOT),
+        LAB_DIR.relative_to(ROOT),
+    )
     proc = subprocess.run(
-        ("git", "rev-parse", "HEAD"),
+        ("git", "log", "-1", "--format=%H", "--", *(str(path) for path in inputs)),
         cwd=str(ROOT),
         capture_output=True,
         text=True,
@@ -253,7 +268,7 @@ def build() -> dict:
             "above": "docs/claims.json stays the curated publication ledger",
             "proof_authority": "Lean kernel; a mechanism is an explanation, never a proof",
         },
-        "source_revision": head_revision(),
+        "source_revision": source_revision(),
         "evidence_fingerprint": "sha256:"
         + hashlib.sha256(fingerprint_material.encode("utf-8")).hexdigest(),
         "vocabularies": {
