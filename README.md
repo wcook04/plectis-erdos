@@ -20,6 +20,21 @@ Every covered Erdős problem has its own PDF:
 - [**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf)
 - [**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf)
 
+| Problem | Mathematical statement | Public checked frontier; what remains |
+|---|---|---|
+| **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? | Exact tail-state dynamics and bounded or periodic negative-state barriers are checked; unbounded cofinal negative excursions and the required analytic hypotheses remain open. |
+| **#249** | Is `∑ φ(n)/2ⁿ` irrational? | Exact dyadic-section ranks, a finite denominator window, certificate equivalences, and finite deposits are checked; no unbounded certificate producer is proved. |
+| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | The summation-by-parts equivalence and integral-shift consumers are checked; cofinal actual-prime-gap nonintegrality and the infinite-sum bridge remain open. |
+| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? | Full support, named families, finite periods, unique coding, and the restricted-set topology and measure dichotomy are checked; arbitrary infinite supports and the half-value seam remain open. |
+| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | The three-prime lcm cells, jump and radix structure, kernel obstruction, and a carry consumer are checked; the actual cofinal window producer and unbounded exclusion remain open. |
+| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? | The failed integer-base transfer, exact rational-base recurrence, and local Padé arithmetic are checked; the primitive noncollapsed construction and analytic remainder control remain open. |
+
+This table is the blank-slate agent and reader inventory: no query is required
+to discover which problems exist or what they ask. It is navigation, not proof
+authority or a novelty claim. Drilldown is optional and uses only tracked
+public files; it does not require `ai_workflow`, a sibling checkout, a private
+cache, or network access.
+
 [Retained joint #249/#257 exposition](erdos249-257-main-paper.pdf) ·
 [printable PDF](claim-faithful-publication-systems-paper.pdf) ·
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml)

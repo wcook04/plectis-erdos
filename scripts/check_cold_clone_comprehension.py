@@ -52,17 +52,17 @@ INCREMENTAL_BUILD_SURFACES = (
 # prefix below. They prevent accidental bloat without making the next honest
 # sentence a release failure.
 HUMAN_SURFACE_BUDGET_BYTES = {
-    # The fixed 12 kB prefix below protects the verdict. Whole-file allowance
-    # scales with the canonical problem registry instead of preserving the
-    # original two-programme specimen ceiling forever.
-    "README.md": 13_800 + 200 * INDEXED_PROBLEM_COUNT,
+    # The fixed prefix below protects the verdict and the direct six-problem
+    # mathematical card. Whole-file allowance scales with the canonical
+    # problem registry instead of preserving the original two-lane ceiling.
+    "README.md": 16_000 + 300 * INDEXED_PROBLEM_COUNT,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
 }
 # This prefix window is the actual newcomer contract: later growth cannot move
 # the problem statements, authority boundary, or semantic routes off the first
 # screen.
-README_FIRST_CONTACT_BUDGET_BYTES = 12_000
+README_FIRST_CONTACT_BUDGET_BYTES = 16_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 PACKET_BUDGET_BYTES = 16_384
 AGENT_TOUR_BUDGET_BYTES = query_corpus.agent_tour_budget_bytes(
@@ -328,6 +328,23 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["S = ∑ φ(n)/2ⁿ"],
             ["∑_{n∈A} 1/(2ⁿ - 1)"],
             ["every infinite", "for every infinite"],
+        ],
+        "recover_blank_slate_problem_card": [
+            ["#243"],
+            ["rapidly growing"],
+            ["Sylvester recurrence"],
+            ["#249"],
+            ["∑ φ(n)/2ⁿ"],
+            ["#251"],
+            ["∑ p_n/2ⁿ"],
+            ["#257"],
+            ["every infinite"],
+            ["#269"],
+            ["running lcms"],
+            ["#1049"],
+            ["rational bases"],
+            ["no query is required"],
+            ["does not require `ai_workflow`", "does not require ai_workflow"],
         ],
         "distinguish_release_source_and_authority": [
             ["latest tagged release and citation anchor"],
@@ -822,6 +839,22 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
     for token in (
         "docs/orientation.json",
         "docs/claims.json",
+        "Six-problem cold-start card",
+        "must not already know a query command",
+        "All six original problems remain open",
+        "Sylvester recurrence",
+        r"\sum_{n\ge1}\varphi(n)/2^n",
+        r"\sum_{n\ge1}p_n/2^n",
+        r"\sum_{n\in A}1/(2^n-1)",
+        "running lcms of the smooth numbers",
+        "smallest resistant explicit base here is",
+        "erdos-243-reciprocal-tail-rigidity.pdf",
+        "erdos-249-binary-totient-series.pdf",
+        "erdos-251-prime-gap-dyadic-series.pdf",
+        "erdos-257-mersenne-support-subseries.pdf",
+        "erdos-269-three-prime-running-lcm.pdf",
+        "erdos-1049-rational-base-lambert.pdf",
+        "no `ai_workflow`",
         "Lean source checked by the pinned Lean kernel",
         "not an entrypoint into any private development system",
     ):
@@ -831,6 +864,8 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "Claude-specific deltas only",
         "docs/orientation.json",
         "mathematical programme",
+        "six-problem cold-start card",
+        "do not query merely to learn which problems exist",
         "larger ongoing formal-mathematics workflow",
         "not an entrypoint into any private development system",
     ):
