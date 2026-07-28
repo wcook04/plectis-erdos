@@ -184,6 +184,20 @@ def main() -> int:
         not missing_zone,
         f"{len(missing_zone)} declaration(s) have no semantic zone, first: {missing_zone[:3]}",
     )
+    routing_basis_catalog = corpus.get("routing_basis_catalog", {})
+    unresolved_routing_basis_refs = [
+        key
+        for key, role in roles.items()
+        if role.get("routing_basis_ref")
+        and role["routing_basis_ref"] not in routing_basis_catalog
+    ]
+    check(
+        not unresolved_routing_basis_refs,
+        (
+            f"{len(unresolved_routing_basis_refs)} declaration route(s) name "
+            "an absent routing-basis reference"
+        ),
+    )
 
     unlinked_statement_roles = [
         k
@@ -213,6 +227,26 @@ def main() -> int:
         (
             f"{len(malformed_inventory_roles)} automatic inventory route(s) "
             "claim semantic meaning or lack a routing basis"
+        ),
+    )
+    structural_roles = {
+        key: role
+        for key, role in roles.items()
+        if role.get("routing_origin") == "source_structural_family"
+    }
+    malformed_structural_roles = [
+        key
+        for key, role in structural_roles.items()
+        if not role.get("statement_node")
+        or not role.get("routing_basis")
+        or nodes.get(role.get("statement_node"), {}).get("interpretation_tier")
+        != "source_structural_family"
+    ]
+    check(
+        not malformed_structural_roles,
+        (
+            f"{len(malformed_structural_roles)} source-structural route(s) "
+            "lack an exact family node or routing basis"
         ),
     )
 
@@ -432,8 +466,8 @@ def main() -> int:
     coverage_contract = corpus.get("coverage_contract", {})
     check(
         coverage_contract.get("posture")
-        == "exhaustive_inventory_and_typed_routing_selective_statement_interpretation",
-        "semantic corpus does not state the exhaustive-routing/selective-interpretation boundary",
+        == "exhaustive_source_structural_linkage_with_selective_authored_interpretation",
+        "semantic corpus does not state the exhaustive-linkage/tiered-interpretation boundary",
     )
     authored_theorem_like = {
         key
@@ -446,15 +480,36 @@ def main() -> int:
     }
     authored_node_linked = authored_theorem_like & node_linked
     authored_zone_only = authored_theorem_like - node_linked
-    direct_evidence = {
-        evidence.get("id")
-        for node in nodes.values()
-        for evidence in node.get("evidence", [])
-        if evidence.get("resolved") and evidence.get("id")
+    authored_structural = {
+        key
+        for key in authored_theorem_like
+        if (roles.get(key) or {}).get("interpretation_tier")
+        == "source_structural_family"
     }
+    authored_statement_interpretation = authored_node_linked - authored_structural
+    direct_evidence = set()
+    authored_statement_evidence = set()
+    structural_family_evidence = set()
+    for node in nodes.values():
+        for evidence in node.get("evidence", []):
+            evidence_id = evidence.get("id")
+            if not evidence.get("resolved") or not evidence_id:
+                continue
+            direct_evidence.add(evidence_id)
+            if node.get("interpretation_tier") == "authored_statement":
+                authored_statement_evidence.add(evidence_id)
+            elif node.get("interpretation_tier") == "source_structural_family":
+                structural_family_evidence.add(evidence_id)
     authored_direct_evidence = authored_theorem_like & direct_evidence
-    authored_contextual_links = authored_node_linked - authored_direct_evidence
+    authored_statement_direct_evidence = (
+        authored_statement_interpretation & authored_statement_evidence
+    )
+    authored_statement_contextual_links = (
+        authored_statement_interpretation
+        - authored_statement_direct_evidence
+    )
     summary_coverage = corpus["summary"]["coverage"]
+    authored_total = max(1, len(authored_theorem_like))
     expected_coverage = {
         "declarations_owned": len(roles),
         "automatic_inventory_fallback_count": len(automatic_inventory_roles),
@@ -462,9 +517,24 @@ def main() -> int:
         "node_linked_declarations": len(node_linked),
         "authored_theorem_like_node_linked": len(authored_node_linked),
         "authored_theorem_like_zone_only": len(authored_zone_only),
+        "authored_theorem_like_authored_statement_interpretation": len(
+            authored_statement_interpretation
+        ),
+        "authored_theorem_like_source_structural_family": len(
+            authored_structural
+        ),
+        "authored_theorem_like_authored_statement_direct_evidence": len(
+            authored_statement_direct_evidence
+        ),
+        "authored_theorem_like_authored_statement_contextual_links": len(
+            authored_statement_contextual_links
+        ),
+        "authored_theorem_like_structural_family_direct_evidence": len(
+            authored_theorem_like & structural_family_evidence
+        ),
         "authored_theorem_like_direct_evidence": len(authored_direct_evidence),
         "authored_theorem_like_contextual_node_links": len(
-            authored_contextual_links
+            authored_statement_contextual_links
         ),
         "curated_claim_declarations_without_node": len(
             integrity.get("curated_claim_declarations_without_node", [])
@@ -484,6 +554,52 @@ def main() -> int:
             summary_coverage.get(field) == expected,
             f"coverage receipt field {field} is {summary_coverage.get(field)!r}, expected {expected}",
         )
+    expected_fractions = {
+        "authored_theorem_like_node_linked_fraction": round(
+            len(authored_node_linked) / authored_total, 4
+        ),
+        "authored_theorem_like_authored_statement_interpretation_fraction": round(
+            len(authored_statement_interpretation) / authored_total, 4
+        ),
+        "authored_theorem_like_authored_statement_direct_evidence_fraction": round(
+            len(authored_statement_direct_evidence) / authored_total, 4
+        ),
+        "authored_theorem_like_direct_evidence_fraction": round(
+            len(authored_direct_evidence) / authored_total, 4
+        ),
+    }
+    for field, expected in expected_fractions.items():
+        check(
+            summary_coverage.get(field) == expected,
+            (
+                f"coverage receipt field {field} is "
+                f"{summary_coverage.get(field)!r}, expected {expected}"
+            ),
+        )
+    check(
+        not authored_zone_only,
+        (
+            f"{len(authored_zone_only)} authored theorem-like declaration(s) "
+            "lack a statement node; exact structural-family compilation must "
+            "keep this coverage at 100%"
+        ),
+    )
+    check(
+        authored_direct_evidence == authored_theorem_like,
+        (
+            f"{len(authored_theorem_like - authored_direct_evidence)} authored "
+            "theorem-like declaration(s) lack exact statement-node evidence"
+        ),
+    )
+    expected_structural_node_count = sum(
+        node.get("interpretation_tier") == "source_structural_family"
+        for node in nodes.values()
+    )
+    check(
+        corpus["summary"].get("source_structural_family_nodes")
+        == expected_structural_node_count,
+        "source-structural family node count drifted from live nodes",
+    )
     check(
         bool(coverage_contract.get("accuracy_boundary")),
         "coverage receipt omits the mathematical-accuracy boundary",
@@ -514,6 +630,29 @@ def main() -> int:
             f"{summary['authored_theorem_like']} authored theorem-like declarations "
             f"({cov['authored_theorem_like_node_linked_fraction']:.1%}); "
             f"{cov['authored_theorem_like_zone_only']} zone-routed only"
+        )
+        print(
+            "    authored readings    "
+            f"{cov['authored_theorem_like_authored_statement_interpretation']}/"
+            f"{summary['authored_theorem_like']} "
+            f"({cov['authored_theorem_like_authored_statement_interpretation_fraction']:.1%})"
+        )
+        print(
+            "      direct evidence    "
+            f"{cov['authored_theorem_like_authored_statement_direct_evidence']}/"
+            f"{summary['authored_theorem_like']} "
+            f"({cov['authored_theorem_like_authored_statement_direct_evidence_fraction']:.1%})"
+        )
+        print(
+            "      contextual family  "
+            f"{cov['authored_theorem_like_authored_statement_contextual_links']}/"
+            f"{summary['authored_theorem_like']}"
+        )
+        print(
+            "    structural families  "
+            f"{cov['authored_theorem_like_source_structural_family']}/"
+            f"{summary['authored_theorem_like']} across "
+            f"{summary['source_structural_family_nodes']} exact signature families"
         )
         print(
             "  direct evidence        "

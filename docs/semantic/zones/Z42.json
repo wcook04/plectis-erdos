@@ -1,0 +1,326 @@
+{
+  "zone_id": "Z42",
+  "title": "Rank-27 auxiliary ratchet: forced seam input, phase refinement, and exact non-closure boundary",
+  "problem": "257",
+  "replaces_role_zone": "Z19",
+  "concepts": [
+    {
+      "id": "z42_forced_rank_twenty_seven",
+      "label": "forced concrete seam rank 27",
+      "note": "From row 32 onward, rank 27 is the ninth explicitly proved selected rank of the concrete integer greedy seam."
+    },
+    {
+      "id": "z42_nine_rank_pulse_floor",
+      "label": "nine-rank pulse floor",
+      "note": "The row-pulse contribution of ranks 2, 3, 6, 7, 14, 20, 21, 26, and 27, periodic modulo 24570 and bounded above by 11."
+    },
+    {
+      "id": "z42_auxiliary_ratchet",
+      "label": "rank-27 auxiliary ratchet",
+      "note": "A natural-number budget recurrence driven by the nine-rank pulse floor, with zero absorbing and 12 an escape threshold."
+    },
+    {
+      "id": "z42_auxiliary_phase_set",
+      "label": "auxiliary surviving phase set",
+      "note": "Residue classes modulo 24570 whose rank-27 auxiliary budget remains nonzero through the finite core; membership does not assert realization by the concrete #257 orbit."
+    },
+    {
+      "id": "z42_conditional_concrete_bridge",
+      "label": "conditional final-middle bridge",
+      "note": "A bridge from displayed no-carry, middle-cell, all-right-tail, and charge hypotheses to landing excess two and then to auxiliary phase membership."
+    },
+    {
+      "id": "z42_phase_fourteen_stall",
+      "label": "phase-14 permanent survivor",
+      "note": "The explicit auxiliary phase D congruent to 14 modulo 24570 whose ratchet budget remains positive at every depth."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "rank_twenty_seven_is_forced_in_the_concrete_seam_from_row_thirty_two",
+      "canonical_statement": "PROVED CONCRETE INPUT: for every seam row s>=32, after the eight previously forced ranks 2,3,6,7,14,20,21,26, the exact integer comparison selects rank 27. Consequently the greedy bit prefix through rank 27 has the displayed normal form and 27 belongs to the concrete seam support.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": ["z42_forced_rank_twenty_seven"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact rational deficit calculation transported to truncated integer weights and the deterministic greedy-bit recursion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The source identifies this as the new concrete mathematical input of the module. No external priority review has been completed, so no novelty claim is made.",
+      "scope_caveat": "The Lean theorem begins at s=32. Failure at rows 28 through 31 is measured outside this theorem. A forced selected rank does not prove a cofinal safe-skip condition or membership of one half in the Mersenne achievement set.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"seamGreedy_postTwentySix_decision_twentySeven","module":"ErdosProblems/Lift/AngleB1.lean","line":110},
+        {"declaration":"seamGreedyBits_head2367_14_20_21_26_27","module":"ErdosProblems/Lift/AngleB1.lean","line":214},
+        {"declaration":"twentySeven_mem_seamGreedySupport","module":"ErdosProblems/Lift/AngleB1.lean","line":236}
+      ]
+    },
+    {
+      "id": "nine_rank_pulse_floor_is_periodic_bounded_and_concretely_dominated",
+      "canonical_statement": "PROVED PULSE FLOOR: the nine forced ranks give a pulse floor bounded above by 11 on every row and periodic with period 24570. From row 32 onward, because all nine ranks lie in the concrete greedy seam support, this auxiliary floor is a genuine lower bound for the below-pulse of the concrete adjacent cut.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": ["z42_forced_rank_twenty_seven", "z42_nine_rank_pulse_floor"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "pairwise pulse bounds, divisibility of all nine forced ranks into 49140, and support monotonicity of the below-pulse",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact finite pulse accounting for the project-specific seam coordinate; no priority claim is made.",
+      "scope_caveat": "The constant floor controls only the chosen nine-rank contribution. It is not an equality with the full concrete below-pulse and does not by itself constrain a realizable final-middle cell.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"pulseFloor27_le_eleven","module":"ErdosProblems/Lift/AngleB1.lean","line":312},
+        {"declaration":"pulseFloor27_add_period","module":"ErdosProblems/Lift/AngleB1.lean","line":325},
+        {"declaration":"pulseFloor27_le_belowPulse","module":"ErdosProblems/Lift/AngleB1.lean","line":351}
+      ]
+    },
+    {
+      "id": "rank_twenty_seven_pulse_has_exact_three_per_window_budget",
+      "canonical_statement": "PROVED EXACT WINDOW BUDGET: the rank-27 pulse is periodic with period 27 and contributes exactly three units over every 27 consecutive rows, independently of the starting row.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": ["z42_forced_rank_twenty_seven", "z42_nine_rank_pulse_floor"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "complete residue-window enumeration for the rank-27 row pulse",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact finite-window identity for the module's auxiliary pulse coordinate.",
+      "scope_caveat": "The identity is pulse bookkeeping. It neither asserts that an auxiliary phase is concretely realized nor supplies a contradiction on the live #257 branch.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"pulseAt_twentySeven_window","module":"ErdosProblems/Lift/AngleB1.lean","line":999}
+      ]
+    },
+    {
+      "id": "ratchet_step_is_ordered_and_twelve_is_an_escape_threshold",
+      "canonical_statement": "PROVED AUXILIARY DYNAMICS: one ratchet step is antitone in pulse charge and monotone in its budget. Since the nine-rank pulse floor is at most 11, every budget at least 12 remains at least 12 after a step. Adding rank 27 can only decrease the auxiliary budget relative to the earlier rank-26 recurrence.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": ["z42_nine_rank_pulse_floor", "z42_auxiliary_ratchet"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "monotonicity of guarded natural subtraction and comparison of the eight- and nine-rank pulse floors",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Elementary order theory for the explicitly defined auxiliary recurrence.",
+      "scope_caveat": "These are statements about the auxiliary recurrence. Interpreting its budget as a bound for a concrete seam excess requires the separate all-right and landing bridge.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"ratchetStep_mono","module":"ErdosProblems/Lift/AngleB1.lean","line":407},
+        {"declaration":"twelve_le_ratchetStep","module":"ErdosProblems/Lift/AngleB1.lean","line":412},
+        {"declaration":"ratchetRun27_le_ratchetRun26","module":"ErdosProblems/Lift/AngleB1.lean","line":446}
+      ]
+    },
+    {
+      "id": "all_right_landing_bridge_transports_concrete_excess_into_the_ratchet",
+      "canonical_statement": "PROVED CONDITIONAL BRIDGE: the displayed no-carry, middle-branch, and charge hypotheses force landing excess seamExcess(D+1)=2. If, in addition, the concrete seam extends right forever from that landing, then the rank-27 ratchet bounds 3*seamExcess-3; death of the auxiliary budget would contradict those hypotheses.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": ["z42_auxiliary_ratchet", "z42_conditional_concrete_bridge"],
+      "open_antecedents": [
+        "the displayed no-carry, final-middle, and pulse-charge hypotheses at a concrete D",
+        "an all-right concrete seam tail from D+1 onward",
+        "a concrete landing equality seamExcess(D+1)=2, either assumed or produced by the displayed local hypotheses"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact seam-excess update along right extensions followed by induction against the pulse-floor ratchet",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific bridge with every hypothesis exposed in the Lean statements.",
+      "scope_caveat": "No theorem here asserts that any D satisfies these hypotheses. Direct evaluation found no landing excess two in the audited range s=5..102; that measurement is not a Lean theorem. The conditional contradiction is not an unconditional exclusion.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"ratchetRun27_bound","module":"ErdosProblems/Lift/AngleB1.lean","line":506},
+        {"declaration":"ratchet27_excludes","module":"ErdosProblems/Lift/AngleB1.lean","line":557},
+        {"declaration":"seamExcess_landing_eq_two","module":"ErdosProblems/Lift/AngleB1.lean","line":594}
+      ]
+    },
+    {
+      "id": "finite_core_makes_the_rank_twenty_seven_phase_set_a_fixed_point",
+      "canonical_statement": "PROVED AUXILIARY FIXED POINT: over all 24570 residue phases, after six ratchet steps every budget is either zero or at least 12. Every phase nonzero at depth six is therefore positive at every depth, so the surviving auxiliary phase set is already stable.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": ["z42_auxiliary_ratchet", "z42_auxiliary_phase_set"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "kernel-checked finite phase partition combined with the absorbing-zero and escape-threshold lemmas",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Project-specific exhaustive finite computation plus a uniform recurrence argument; no asymptotic or novelty claim is made.",
+      "scope_caveat": "Stability is internal to the auxiliary recurrence. The survivor set is not certified as a set of realizable #257 classes.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"ratchet27_finite_core","module":"ErdosProblems/Lift/AngleB1.lean","line":690},
+        {"declaration":"ratchetRun27_pos_of_alive","module":"ErdosProblems/Lift/AngleB1.lean","line":712}
+      ]
+    },
+    {
+      "id": "rank_twenty_seven_survival_refines_the_rank_twenty_six_sieve",
+      "canonical_statement": "PROVED AUXILIARY REFINEMENT: the earlier eight-rank finite core kills every rank-26 phase outside its residue sieve by depth three. Since the rank-27 budget is no larger than the rank-26 budget, every phase surviving the rank-27 depth-six test belongs to the lifted rank-26 survivor sieve.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": ["z42_auxiliary_ratchet", "z42_auxiliary_phase_set"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite rank-26 phase classification and monotone comparison of the two auxiliary recurrences",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact comparison between two project-specific auxiliary phase sieves.",
+      "scope_caveat": "Subset refinement is only about auxiliary phase predicates. It does not establish that any removed or surviving phase occurs in a concrete final-middle configuration.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"ratchet26_finite_core","module":"ErdosProblems/Lift/AngleB1.lean","line":813},
+        {"declaration":"survivorPhase26_of_ratchetRun27_ne_zero","module":"ErdosProblems/Lift/AngleB1.lean","line":826}
+      ]
+    },
+    {
+      "id": "rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve",
+      "canonical_statement": "PROVED STRICT AUXILIARY SHRINKAGE: phase 200 survives the lifted rank-26 residue conditions but is killed by the rank-27 recurrence, so the rank-27 phase set is a proper subset and has strictly smaller cardinality. On the base block [0,2730), Lean computes exactly 390 survivors and proves 390<412.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": ["z42_auxiliary_phase_set"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "explicit witness phase 200, finite-set strict inclusion, and kernel-decided base-block cardinalities",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Project-specific finite phase computation. It is evidence about this recurrence only.",
+      "scope_caveat": "The exact kernel-checked base-block count is 390 versus 412. The full-modulus counts 3522 and 3708 are measured outside Lean and are not claimed here. Shrinking an auxiliary set is not progress on the live #257 branch without a realizability bridge.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"twoHundred_mem_liftedSurvivors26","module":"ErdosProblems/Lift/AngleB1.lean","line":873},
+        {"declaration":"survivors27_ssubset_liftedSurvivors26","module":"ErdosProblems/Lift/AngleB1.lean","line":886},
+        {"declaration":"survivors27_card_lt","module":"ErdosProblems/Lift/AngleB1.lean","line":894},
+        {"declaration":"survivors27Base_card","module":"ErdosProblems/Lift/AngleB1.lean","line":913},
+        {"declaration":"survivors27Base_card_lt","module":"ErdosProblems/Lift/AngleB1.lean","line":947}
+      ]
+    },
+    {
+      "id": "conditional_final_middle_configuration_must_land_in_the_auxiliary_phase_set",
+      "canonical_statement": "PROVED CONDITIONAL NECESSITY: a D>=31 satisfying the displayed no-carry, final-middle, all-right-tail, and charge hypotheses must have D modulo 24570 in the rank-27 auxiliary survivor set.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": ["z42_auxiliary_phase_set", "z42_conditional_concrete_bridge"],
+      "open_antecedents": [
+        "a concrete D satisfying every no-carry, middle-branch, all-right-tail, and charge hypothesis displayed by the theorem"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "landing-excess-two bridge, ratchet domination, and contradiction from finite-core death",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A necessary-condition transport into the auxiliary phase set, with no realizability assertion.",
+      "scope_caveat": "No audited concrete landing instance satisfies the implied landing equality in the stated checked range. Membership in survivors27 remains necessary only under the full displayed hypothesis package.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"finalMiddleCell_neg_two_mem_survivors27","module":"ErdosProblems/Lift/AngleB1.lean","line":957}
+      ]
+    },
+    {
+      "id": "phase_fourteen_survives_forever_so_the_auxiliary_ratchet_stalls",
+      "canonical_statement": "PROVED NON-CLOSURE BARRIER: phase 14 belongs to the rank-27 auxiliary survivor set, and its ratchet budget stays positive at every depth. Thus adding rank 27 removes some auxiliary phases but cannot empty the auxiliary set or close the phase sieve by iteration alone.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": ["z42_auxiliary_ratchet", "z42_auxiliary_phase_set", "z42_phase_fourteen_stall"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "kernel-decided phase-14 membership combined with the finite-core fixed-point theorem",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Exact internal obstruction to this project-specific auxiliary recurrence; no broader priority claim is made.",
+      "scope_caveat": "The theorem does not assert that the concrete half-membership branch realizes phase 14. It proves only that this auxiliary recurrence cannot exclude that residue class, so the computation does not solve or narrow Erdős #257 without further concrete input.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"fourteen_mem_survivors27","module":"ErdosProblems/Lift/AngleB1.lean","line":1021},
+        {"declaration":"ratchetRun27_pos_fourteen","module":"ErdosProblems/Lift/AngleB1.lean","line":1033}
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"seamGreedy_postTwentySix_decision_twentySeven","module":"ErdosProblems/Lift/AngleB1.lean","line":110,"role":"statement","statement_node":"rank_twenty_seven_is_forced_in_the_concrete_seam_from_row_thirty_two"},
+    {"declaration":"seamGreedyBits_head2367_14_20_21_26_27","module":"ErdosProblems/Lift/AngleB1.lean","line":214,"role":"statement","statement_node":"rank_twenty_seven_is_forced_in_the_concrete_seam_from_row_thirty_two"},
+    {"declaration":"twentySeven_mem_seamGreedySupport","module":"ErdosProblems/Lift/AngleB1.lean","line":236,"role":"statement","statement_node":"rank_twenty_seven_is_forced_in_the_concrete_seam_from_row_thirty_two"},
+    {"declaration":"pulseFloor27_le_eleven","module":"ErdosProblems/Lift/AngleB1.lean","line":312,"role":"statement","statement_node":"nine_rank_pulse_floor_is_periodic_bounded_and_concretely_dominated"},
+    {"declaration":"pulseFloor27_add_period","module":"ErdosProblems/Lift/AngleB1.lean","line":325,"role":"statement","statement_node":"nine_rank_pulse_floor_is_periodic_bounded_and_concretely_dominated"},
+    {"declaration":"pulseFloor27_le_belowPulse","module":"ErdosProblems/Lift/AngleB1.lean","line":351,"role":"statement","statement_node":"nine_rank_pulse_floor_is_periodic_bounded_and_concretely_dominated"},
+    {"declaration":"pulseAt_twentySeven_window","module":"ErdosProblems/Lift/AngleB1.lean","line":999,"role":"statement","statement_node":"rank_twenty_seven_pulse_has_exact_three_per_window_budget"},
+    {"declaration":"ratchetStep_mono","module":"ErdosProblems/Lift/AngleB1.lean","line":407,"role":"statement","statement_node":"ratchet_step_is_ordered_and_twelve_is_an_escape_threshold"},
+    {"declaration":"twelve_le_ratchetStep","module":"ErdosProblems/Lift/AngleB1.lean","line":412,"role":"statement","statement_node":"ratchet_step_is_ordered_and_twelve_is_an_escape_threshold"},
+    {"declaration":"ratchetRun27_le_ratchetRun26","module":"ErdosProblems/Lift/AngleB1.lean","line":446,"role":"statement","statement_node":"ratchet_step_is_ordered_and_twelve_is_an_escape_threshold"},
+    {"declaration":"ratchetRun27_bound","module":"ErdosProblems/Lift/AngleB1.lean","line":506,"role":"statement","statement_node":"all_right_landing_bridge_transports_concrete_excess_into_the_ratchet"},
+    {"declaration":"ratchet27_excludes","module":"ErdosProblems/Lift/AngleB1.lean","line":557,"role":"statement","statement_node":"all_right_landing_bridge_transports_concrete_excess_into_the_ratchet"},
+    {"declaration":"seamExcess_landing_eq_two","module":"ErdosProblems/Lift/AngleB1.lean","line":594,"role":"statement","statement_node":"all_right_landing_bridge_transports_concrete_excess_into_the_ratchet"},
+    {"declaration":"ratchet27_finite_core","module":"ErdosProblems/Lift/AngleB1.lean","line":690,"role":"statement","statement_node":"finite_core_makes_the_rank_twenty_seven_phase_set_a_fixed_point"},
+    {"declaration":"ratchetRun27_pos_of_alive","module":"ErdosProblems/Lift/AngleB1.lean","line":712,"role":"statement","statement_node":"finite_core_makes_the_rank_twenty_seven_phase_set_a_fixed_point"},
+    {"declaration":"ratchet26_finite_core","module":"ErdosProblems/Lift/AngleB1.lean","line":813,"role":"statement","statement_node":"rank_twenty_seven_survival_refines_the_rank_twenty_six_sieve"},
+    {"declaration":"survivorPhase26_of_ratchetRun27_ne_zero","module":"ErdosProblems/Lift/AngleB1.lean","line":826,"role":"statement","statement_node":"rank_twenty_seven_survival_refines_the_rank_twenty_six_sieve"},
+    {"declaration":"twoHundred_mem_liftedSurvivors26","module":"ErdosProblems/Lift/AngleB1.lean","line":873,"role":"statement","statement_node":"rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve"},
+    {"declaration":"survivors27_ssubset_liftedSurvivors26","module":"ErdosProblems/Lift/AngleB1.lean","line":886,"role":"statement","statement_node":"rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve"},
+    {"declaration":"survivors27_card_lt","module":"ErdosProblems/Lift/AngleB1.lean","line":894,"role":"statement","statement_node":"rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve"},
+    {"declaration":"survivors27Base_card","module":"ErdosProblems/Lift/AngleB1.lean","line":913,"role":"statement","statement_node":"rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve"},
+    {"declaration":"survivors27Base_card_lt","module":"ErdosProblems/Lift/AngleB1.lean","line":947,"role":"statement","statement_node":"rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve"},
+    {"declaration":"finalMiddleCell_neg_two_mem_survivors27","module":"ErdosProblems/Lift/AngleB1.lean","line":957,"role":"statement","statement_node":"conditional_final_middle_configuration_must_land_in_the_auxiliary_phase_set"},
+    {"declaration":"fourteen_mem_survivors27","module":"ErdosProblems/Lift/AngleB1.lean","line":1021,"role":"statement","statement_node":"phase_fourteen_survives_forever_so_the_auxiliary_ratchet_stalls"},
+    {"declaration":"ratchetRun27_pos_fourteen","module":"ErdosProblems/Lift/AngleB1.lean","line":1033,"role":"statement","statement_node":"phase_fourteen_survives_forever_so_the_auxiliary_ratchet_stalls"}
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "nine_rank_pulse_floor_is_periodic_bounded_and_concretely_dominated",
+      "to": "rank_twenty_seven_is_forced_in_the_concrete_seam_from_row_thirty_two",
+      "relation": "generated_by",
+      "basis": "Rank 27 can enter the nine-rank concrete lower bound only after its selected-support theorem is proved from row 32 onward."
+    },
+    {
+      "from": "rank_twenty_seven_pulse_has_exact_three_per_window_budget",
+      "to": "nine_rank_pulse_floor_is_periodic_bounded_and_concretely_dominated",
+      "relation": "complements",
+      "basis": "The floor theorem bounds the total nine-rank charge rowwise, while the window theorem gives the exact aggregate contribution of its new rank-27 term."
+    },
+    {
+      "from": "ratchet_step_is_ordered_and_twelve_is_an_escape_threshold",
+      "to": "nine_rank_pulse_floor_is_periodic_bounded_and_concretely_dominated",
+      "relation": "generated_by",
+      "basis": "The constant pulse bound of 11 is exactly what makes budget 12 forward-invariant under the ratchet step."
+    },
+    {
+      "from": "all_right_landing_bridge_transports_concrete_excess_into_the_ratchet",
+      "to": "ratchet_step_is_ordered_and_twelve_is_an_escape_threshold",
+      "relation": "transport_of",
+      "basis": "The conditional bridge compares the concrete excess update against the already ordered auxiliary ratchet recurrence."
+    },
+    {
+      "from": "finite_core_makes_the_rank_twenty_seven_phase_set_a_fixed_point",
+      "to": "ratchet_step_is_ordered_and_twelve_is_an_escape_threshold",
+      "relation": "generated_by",
+      "basis": "The finite core reaches the dichotomy zero-or-at-least-twelve, after which absorbing zero and the escape threshold settle every future depth."
+    },
+    {
+      "from": "rank_twenty_seven_survival_refines_the_rank_twenty_six_sieve",
+      "to": "ratchet_step_is_ordered_and_twelve_is_an_escape_threshold",
+      "relation": "generated_by",
+      "basis": "Monotone comparison of rank-27 and rank-26 budgets transports survival into the older phase sieve."
+    },
+    {
+      "from": "rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve",
+      "to": "rank_twenty_seven_survival_refines_the_rank_twenty_six_sieve",
+      "relation": "specialises",
+      "basis": "The general subset relation becomes strict because phase 200 is exhibited in the lifted rank-26 set and excluded from the rank-27 set."
+    },
+    {
+      "from": "conditional_final_middle_configuration_must_land_in_the_auxiliary_phase_set",
+      "to": "all_right_landing_bridge_transports_concrete_excess_into_the_ratchet",
+      "relation": "generated_by",
+      "basis": "The bridge turns the displayed concrete hypotheses into ratchet domination, and finite-core death would then be contradictory."
+    },
+    {
+      "from": "conditional_final_middle_configuration_must_land_in_the_auxiliary_phase_set",
+      "to": "finite_core_makes_the_rank_twenty_seven_phase_set_a_fixed_point",
+      "relation": "depends_on_open",
+      "basis": "Finite-core exclusion becomes a statement about a concrete D only under the theorem's unproved realizability and all-right-tail hypotheses."
+    },
+    {
+      "from": "phase_fourteen_survives_forever_so_the_auxiliary_ratchet_stalls",
+      "to": "finite_core_makes_the_rank_twenty_seven_phase_set_a_fixed_point",
+      "relation": "finite_instance_of",
+      "basis": "Phase 14 is one explicit nonzero depth-six phase, so the fixed-point theorem propagates its positivity to every depth."
+    },
+    {
+      "from": "phase_fourteen_survives_forever_so_the_auxiliary_ratchet_stalls",
+      "to": "rank_twenty_seven_strictly_shrinks_the_auxiliary_phase_sieve",
+      "relation": "barrier_for",
+      "basis": "Strict shrinkage removes phase 200, but phase 14 proves that repeated rank-27 ratchet evolution does not empty the surviving set."
+    }
+  ]
+}

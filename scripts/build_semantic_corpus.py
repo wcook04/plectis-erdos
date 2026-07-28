@@ -52,6 +52,10 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from semantic_review import apply_review_registry
+from semantic_family_compiler import (
+    INTERPRETATION_TIER as STRUCTURAL_INTERPRETATION_TIER,
+    compile_source_structural_families,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
@@ -114,7 +118,16 @@ DECLARATION_ROLES = (
     "generated_instance",
 )
 
-PROBLEMS = ("249", "257", "both", "shared_substrate")
+PROBLEMS = (
+    "243",
+    "249",
+    "251",
+    "257",
+    "269",
+    "1049",
+    "both",
+    "shared_substrate",
+)
 
 # A view is a projection over one graph, never a separate source of truth.
 VIEW_RULES = {
@@ -155,7 +168,15 @@ def relation_files() -> list[Path]:
 
 def semantic_input_paths() -> list[Path]:
     """Return every source whose bytes determine the generated corpus."""
-    fixed = [ATLAS, MANIFEST, CLAIMS, SEMANTIC_DIR / "frontier.json", REVIEWS]
+    fixed = [
+        ATLAS,
+        MANIFEST,
+        CLAIMS,
+        SEMANTIC_DIR / "frontier.json",
+        REVIEWS,
+        Path(__file__).resolve(),
+        ROOT / "scripts" / "semantic_family_compiler.py",
+    ]
     return sorted(
         (path for path in [*fixed, *zone_files(), *relation_files()] if path.is_file()),
         key=lambda path: path.relative_to(ROOT).as_posix(),
@@ -230,6 +251,8 @@ def collect() -> dict:
     edges: list[dict] = []
     roles: dict[str, dict] = {}
     duplicate_role_assignments: list[dict] = []
+    authored_role_replacements: list[dict] = []
+    routing_basis_catalog: dict[str, str] = {}
     zone_index: list[dict] = []
     # Zone classification is independent per zone, so a node id is unique only
     # within its zone: `lcm_cone_flatness_law` and `lcm_ray_window_structure`
@@ -253,6 +276,8 @@ def collect() -> dict:
                 "declaration_roles": len(zone.get("declaration_roles", [])),
             }
         )
+        for local_basis_id, basis in zone.get("routing_bases", {}).items():
+            routing_basis_catalog[f"{zid}::{local_basis_id}"] = basis
         for concept in zone.get("concepts", []):
             concepts.setdefault(concept["id"], {**concept, "zones": []})["zones"].append(zid)
         for node in zone.get("statement_nodes", []):
@@ -261,6 +286,7 @@ def collect() -> dict:
             node.setdefault("concepts", [])
             node.setdefault("prior_art_state", "not_assessed")
             node.setdefault("confidence", "low")
+            node.setdefault("interpretation_tier", "authored_statement")
             # Resolve every evidence declaration against the atlas, so a node
             # can never cite a declaration that is not in the source.
             resolved = []
@@ -306,15 +332,55 @@ def collect() -> dict:
                 "role": role.get("role"),
                 "statement_node": by_zone_local.get((zid, target)) if target else None,
                 "zone": zid,
+                "interpretation_tier": (
+                    "authored_statement" if target else "authored_zone_only"
+                ),
             }
-            if key in roles and row is not None:
-                duplicate_role_assignments.append(
-                    {
-                        "id": key,
-                        "first": roles[key],
-                        "second": assignment,
-                    }
+            for field in ("routing_origin", "routing_basis"):
+                if role.get(field):
+                    assignment[field] = role[field]
+            if role.get("routing_basis_ref"):
+                local_basis_ref = role["routing_basis_ref"]
+                assignment["routing_basis_ref"] = (
+                    local_basis_ref
+                    if "::" in local_basis_ref
+                    else f"{zid}::{local_basis_ref}"
                 )
+            if key in roles and row is not None:
+                previous = roles[key]
+                replaces_zone = role.get(
+                    "replaces_zone",
+                    zone.get("replaces_role_zone"),
+                )
+                valid_narrow_replacement = (
+                    replaces_zone == previous.get("zone")
+                    and previous.get("interpretation_tier")
+                    == "authored_zone_only"
+                    and previous.get("statement_node") is None
+                    and assignment.get("interpretation_tier")
+                    == "authored_statement"
+                    and assignment.get("statement_node") is not None
+                )
+                if valid_narrow_replacement:
+                    assignment["routing_origin"] = (
+                        "explicit_authored_narrow_zone_replacement"
+                    )
+                    assignment["replaces_zone"] = replaces_zone
+                    authored_role_replacements.append(
+                        {
+                            "id": key,
+                            "replaced": previous,
+                            "replacement": assignment,
+                        }
+                    )
+                else:
+                    duplicate_role_assignments.append(
+                        {
+                            "id": key,
+                            "first": previous,
+                            "second": assignment,
+                        }
+                    )
             roles[key] = assignment
 
     def resolve(local: object, zone: object) -> str | None:
@@ -393,6 +459,7 @@ def collect() -> dict:
                 "declaration_count": family["declaration_count"],
                 "parameters": family.get("parameters", []),
                 "consumed_by": family.get("consumed_by", []),
+                "interpretation_tier": "generated_certificate_family",
                 "zone": "generated",
             }
         )
@@ -409,6 +476,7 @@ def collect() -> dict:
             "role": "generated_instance",
             "statement_node": f"generated::{family}",
             "zone": "generated",
+            "interpretation_tier": "generated_certificate_family",
         }
         edges.append(
             {
@@ -418,6 +486,85 @@ def collect() -> dict:
                 "basis": f"declaration {row['name']} is an instance of the {family} schema",
                 "scope": "generated",
                 "suppressed_in_views": True,
+            }
+        )
+
+    # A unique exact evidence citation is itself an authored proposition-level
+    # interpretation.  Some narrow packets intentionally omit a second role
+    # receipt because a broad generated zone already owns the declaration as
+    # zone-only substrate.  Promote that route deterministically when exactly
+    # one authored node cites the declaration; ambiguous multi-node evidence
+    # remains an integrity error and is never guessed here.
+    authored_direct_targets: dict[str, set[str]] = defaultdict(set)
+    for node_id, current_node in nodes.items():
+        if current_node.get("interpretation_tier") != "authored_statement":
+            continue
+        for evidence in current_node.get("evidence", []):
+            if evidence.get("resolved") and evidence.get("id"):
+                authored_direct_targets[evidence["id"]].add(node_id)
+    direct_evidence_role_promotions: list[dict] = []
+    for declaration_id, targets in sorted(authored_direct_targets.items()):
+        if len(targets) != 1:
+            continue
+        previous = roles.get(declaration_id)
+        if previous and previous.get("statement_node"):
+            continue
+        target = next(iter(targets))
+        target_node = nodes[target]
+        row = atlas_rows.get(declaration_id)
+        if row is None:
+            continue
+        promotion = {
+            "declaration": row["name"],
+            "module": row["module"],
+            "role": "statement",
+            "statement_node": target,
+            "zone": target_node["zone"],
+            "interpretation_tier": "authored_statement",
+            "routing_origin": "unique_authored_direct_evidence_promotion",
+            "routing_basis": (
+                "Exactly one authored statement node cites this exact live "
+                "declaration as resolved proposition evidence."
+            ),
+        }
+        roles[declaration_id] = promotion
+        direct_evidence_role_promotions.append(
+            {
+                "id": declaration_id,
+                "replaced": previous,
+                "promotion": promotion,
+            }
+        )
+
+    # ---- exhaustive source-structural theorem families ------------------
+    # Authored paper/zone nodes remain the high semantic tier.  Every remaining
+    # live theorem or lemma receives a lower, exact source-structural node keyed
+    # by its module and normalized Lean proposition signature.  This closes the
+    # navigation graph without pretending that machine grouping is a reviewed
+    # mathematical paraphrase.
+    existing_direct_evidence_ids = {
+        evidence.get("id")
+        for node in nodes.values()
+        for evidence in node.get("evidence", [])
+        if evidence.get("resolved") and evidence.get("id")
+    }
+    structural_nodes, structural_role_updates = compile_source_structural_families(
+        atlas["declarations"],
+        roles,
+        existing_direct_evidence_ids,
+    )
+    for node in structural_nodes:
+        nodes[node["id"]] = node
+    roles.update(structural_role_updates)
+    if structural_nodes:
+        zone_index.append(
+            {
+                "zone_id": "structural",
+                "title": "Exact source-structural proposition families",
+                "problem": "shared_substrate",
+                "source": "generated from exact declaration-atlas signatures",
+                "statement_nodes": len(structural_nodes),
+                "declaration_roles": len(structural_role_updates),
             }
         )
 
@@ -438,6 +585,7 @@ def collect() -> dict:
             "statement_node": None,
             "zone": "inventory",
             "routing_origin": "automatic_inventory_fallback",
+            "interpretation_tier": "inventory_only",
             "routing_basis": (
                 "Live declaration from the exhaustive atlas with no authored "
                 "zone receipt; routed for discovery without semantic interpretation."
@@ -478,6 +626,16 @@ def collect() -> dict:
     }
     authored_node_linked_theorem_like_ids = authored_theorem_like_ids & node_linked_ids
     authored_zone_only_theorem_like_ids = authored_theorem_like_ids - node_linked_ids
+    authored_structural_theorem_like_ids = {
+        key
+        for key in authored_theorem_like_ids
+        if (live_roles.get(key) or {}).get("interpretation_tier")
+        == STRUCTURAL_INTERPRETATION_TIER
+    }
+    authored_statement_theorem_like_ids = (
+        authored_node_linked_theorem_like_ids
+        - authored_structural_theorem_like_ids
+    )
 
     claim_decls = {
         (d["module"], d["name"])
@@ -676,16 +834,28 @@ def collect() -> dict:
     # authored exception in frontier.json with the declaration id, node ids,
     # and a basis.
     evidence_to_nodes: dict[str, set[str]] = defaultdict(set)
+    authored_evidence_to_nodes: dict[str, set[str]] = defaultdict(set)
+    structural_evidence_ids: set[str] = set()
     for node in nodes.values():
         for evidence in node.get("evidence", []):
             if evidence.get("resolved") and evidence.get("id"):
                 evidence_to_nodes[evidence["id"]].add(node["id"])
+                if node.get("interpretation_tier") == "authored_statement":
+                    authored_evidence_to_nodes[evidence["id"]].add(node["id"])
+                elif (
+                    node.get("interpretation_tier")
+                    == STRUCTURAL_INTERPRETATION_TIER
+                ):
+                    structural_evidence_ids.add(evidence["id"])
     authored_theorem_like_direct_evidence_ids = (
         authored_theorem_like_ids & set(evidence_to_nodes)
     )
-    authored_theorem_like_contextual_ids = (
-        authored_node_linked_theorem_like_ids
-        - authored_theorem_like_direct_evidence_ids
+    authored_statement_direct_evidence_ids = (
+        authored_statement_theorem_like_ids & set(authored_evidence_to_nodes)
+    )
+    authored_statement_contextual_ids = (
+        authored_statement_theorem_like_ids
+        - authored_statement_direct_evidence_ids
     )
     equivalent_pairs = {
         frozenset((edge["from"], edge["to"]))
@@ -724,7 +894,7 @@ def collect() -> dict:
     payload = {
         "schema": "erdos249257-semantic-corpus/1",
         "artifact_role": (
-            "generated_exhaustive_declaration_routing_projection_with_selective_"
+            "generated_exhaustive_declaration_routing_projection_with_tiered_"
             "statement_level_semantic_graph"
         ),
         "authority_posture": (
@@ -733,13 +903,15 @@ def collect() -> dict:
         ),
         "purpose": (
             "Own the layer between the exhaustive declaration atlas and the curated claims ledger: "
-            "authored nodes for selected mathematically distinct statements, typed mathematical "
-            "relations between them, and an exhaustive role-and-zone route for every declaration "
-            "in both libraries. Exhaustive routing is not exhaustive interpretation."
+            "authored nodes for selected mathematically distinct statements, exact "
+            "source-structural proposition families for the theorem long tail, typed "
+            "mathematical relations between authored nodes, and an exhaustive role-and-zone "
+            "route for every declaration. Exhaustive linkage is not exhaustive authored "
+            "interpretation."
         ),
         "coverage_contract": {
             "posture": (
-                "exhaustive_inventory_and_typed_routing_selective_statement_"
+                "exhaustive_source_structural_linkage_with_selective_authored_"
                 "interpretation"
             ),
             "inventory": (
@@ -747,18 +919,24 @@ def collect() -> dict:
             ),
             "routing": (
                 "Every live declaration has exactly one role-and-zone receipt, or one "
-                "manifest-owned generated-family receipt. Declarations not yet covered "
-                "by an authored semantic zone receive an automatic inventory-only route."
+                "manifest-owned generated-family receipt. Every otherwise-unlinked live "
+                "theorem/lemma receives an exact source-structural family node; remaining "
+                "definitions and infrastructure receive an inventory-only route."
             ),
             "statement_interpretation": (
-                "Only a declaration whose receipt names a statement_node is claimed to "
-                "participate in a canonical mathematical statement."
+                "A declaration whose receipt names an authored_statement node participates "
+                "in an authored canonical mathematical statement; exact proposition evidence "
+                "and contextual proof-substrate participation are reported separately. A "
+                "source_structural_family node claims only exact module/signature-schema "
+                "membership."
             ),
             "anti_filler": (
-                "Exact theorem-like declarations cited directly by statement-node "
-                "evidence are counted separately from contextual node links. Adding "
-                "helpers to an existing node may improve navigation but cannot increase "
-                "the direct-evidence measure or manufacture a new proposition."
+                "Coverage is reported by interpretation tier. Structural-family linkage can "
+                "close discoverability but cannot increase the authored-statement measure, "
+                "manufacture a reviewed proposition, or inherit authored relations. Moving "
+                "digest-bound helpers into an authored certificate-family context can improve "
+                "family comprehension, but cannot increase the authored direct-evidence "
+                "measure."
             ),
             "relation_interpretation": (
                 "Typed relations are authored and carry a stated evidence basis; the "
@@ -777,6 +955,7 @@ def collect() -> dict:
                 "prior-art states, and relation bases are not review receipts."
             ),
         },
+        "routing_basis_catalog": routing_basis_catalog,
         "layering": {
             "evidence_below": "docs/declaration_atlas.json",
             "provenance": "docs/generated_certificate_manifest.json",
@@ -818,8 +997,9 @@ def collect() -> dict:
             "authored_statement_nodes": sum(
                 1
                 for node in nodes.values()
-                if node.get("logical_class") != "generated_certificate_instance"
+                if node.get("interpretation_tier") == "authored_statement"
             ),
+            "source_structural_family_nodes": len(structural_nodes),
             "concepts": len(concepts),
             "relations": sum(1 for e in edges if not e.get("suppressed_in_views")),
             "zones": len(zone_index),
@@ -831,9 +1011,15 @@ def collect() -> dict:
                 "role_references": len(owned),
                 "orphan_count": len(orphans),
                 "phantom_count": len(phantom),
-                "duplicate_role_assignment_count": len(
-                    duplicate_role_assignments
-                ),
+            "duplicate_role_assignment_count": len(
+                duplicate_role_assignments
+            ),
+            "authored_role_replacement_count": len(
+                authored_role_replacements
+            ),
+            "direct_evidence_role_promotion_count": len(
+                direct_evidence_role_promotions
+            ),
                 "node_linked_declarations": len(node_linked_ids),
                 "node_linked_fraction": round(
                     len(node_linked_ids) / max(1, len(all_ids)), 4
@@ -843,6 +1029,31 @@ def collect() -> dict:
                 ),
                 "authored_theorem_like_zone_only": len(
                     authored_zone_only_theorem_like_ids
+                ),
+                "authored_theorem_like_authored_statement_interpretation": len(
+                    authored_statement_theorem_like_ids
+                ),
+                "authored_theorem_like_authored_statement_interpretation_fraction": round(
+                    len(authored_statement_theorem_like_ids)
+                    / max(1, len(authored_theorem_like_ids)),
+                    4,
+                ),
+                "authored_theorem_like_source_structural_family": len(
+                    authored_structural_theorem_like_ids
+                ),
+                "authored_theorem_like_authored_statement_direct_evidence": len(
+                    authored_statement_direct_evidence_ids
+                ),
+                "authored_theorem_like_authored_statement_direct_evidence_fraction": round(
+                    len(authored_statement_direct_evidence_ids)
+                    / max(1, len(authored_theorem_like_ids)),
+                    4,
+                ),
+                "authored_theorem_like_authored_statement_contextual_links": len(
+                    authored_statement_contextual_ids
+                ),
+                "authored_theorem_like_structural_family_direct_evidence": len(
+                    authored_theorem_like_ids & structural_evidence_ids
                 ),
                 "authored_theorem_like_node_linked_fraction": round(
                     len(authored_node_linked_theorem_like_ids)
@@ -858,7 +1069,7 @@ def collect() -> dict:
                     4,
                 ),
                 "authored_theorem_like_contextual_node_links": len(
-                    authored_theorem_like_contextual_ids
+                    authored_statement_contextual_ids
                 ),
                 "curated_claim_declarations": len(claim_decls),
                 "curated_claim_declarations_without_node": len(claim_without_node),
@@ -907,6 +1118,10 @@ def collect() -> dict:
             ),
             "phantom_declaration_references": phantom,
             "duplicate_role_assignments": duplicate_role_assignments,
+            "authored_role_replacements": authored_role_replacements,
+            "direct_evidence_role_promotions": (
+                direct_evidence_role_promotions
+            ),
             "curated_claim_declarations_without_node": claim_without_node,
             "readme_headline_claims_with_reviewed_node": (
                 headline_claims_with_reviewed_node
@@ -929,7 +1144,14 @@ def collect() -> dict:
 
 
 def render(payload: dict) -> str:
-    return json.dumps(payload, indent=1, ensure_ascii=False) + "\n"
+    # This generated projection contains more than 150,000 exact role rows.
+    # Compact encoding materially reduces cold-clone bytes and parse I/O while
+    # preserving the same JSON contract and deterministic content.
+    return json.dumps(
+        payload,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ) + "\n"
 
 
 def main() -> int:

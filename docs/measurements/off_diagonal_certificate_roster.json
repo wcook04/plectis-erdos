@@ -6985,6 +6985,1955 @@
    "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySixDT.lean",
    "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyThreeDQ.lean",
    "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyTwoDP.lean"
+  ],
+  "distinct_public_theorem_reference_count": 54,
+  "lean_files": [
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredEighteenDL.lean",
+    "sha256": "ee86867e64e411d670354b6ac02348c02ed14717144dda7fcfe112b9d6ff5fcd"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyER.lean",
+    "sha256": "13026b290b6ec0793aed2984c4c92201510b208381d33550721b8d0488c40537"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyEightEZ.lean",
+    "sha256": "75df763e7b72d5c9b64f71d00db32b183e67e6a4e48c7b6d89c1778a4da0c285"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFiveEW.lean",
+    "sha256": "b60b541332685cc99cfcf0ecedb44a0f8938c633485240b07133e15a098edc62"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFourEV.lean",
+    "sha256": "c3cf952837b97eceb4660408cdd35ff344acf09d3537454569ee5f62cb4fabcb"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyNineFA.lean",
+    "sha256": "211071650b31e27216425514386ecf17b6059f759b9a55e59dbc7d13d32dbd7c"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyOneES.lean",
+    "sha256": "34ad1fdbc34ec4af1c4395c500b8f926438a9d9f448b84b0f45ee73ae321acd2"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySevenEY.lean",
+    "sha256": "0961f407b46aa63003f4bce8334dcf5601a4e3fa54be8ae8c1eed9f2fc220011"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySixEX.lean",
+    "sha256": "0ade229140119f74783ee822a018c0aa9325baa261629bf37851dfd66136f4d6"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyThreeEU.lean",
+    "sha256": "2688f8ce7e7d04d9624c42ede29df54600474bb7acb1d3fc5fa55cb7f1aadc27"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyTwoET.lean",
+    "sha256": "beacd2df5df8d60cdae07d840f2a2e3d66694df125f618fbf89a2e0c79497506"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEH.lean",
+    "sha256": "da3abebc5b572b5023696131202606b3d3152a48982859469e9e68e069340f0e"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEightEP.lean",
+    "sha256": "2d7e2f1e67dfade66b7ec3972d0b588e5f13cfc10a137981ed22b6f69097ba95"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFiveEM.lean",
+    "sha256": "d8bb7ddb3dc78e68a22348aebc0e73864ac6e02c0a361a0bc663f8e1a3cfe2e2"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFourEL.lean",
+    "sha256": "ba2071d4fcc582dc41efc4443b3172d6e8da9370ff04d37eae89e6b2f02e30bd"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyNineEQ.lean",
+    "sha256": "9097f5d3b9fd621abd7bbf628b2c061b594ffa403990d6dcbbe67492b0fa0a10"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyOneEI.lean",
+    "sha256": "b4369e3fbf465482f22c03fd9aca5b19561eaffdbf2cabb9031d87398ab6f3f2"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortySevenEO.lean",
+    "sha256": "9e201b2c8ce230b545458b9a678dd74e522e6b9b3e10232306ed20d5fa91386b"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortySixEN.lean",
+    "sha256": "7255a419fb321854bb36f1f10cfe0ed92a0645f57ee6f3774c7068b44ce795c5"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyThreeEK.lean",
+    "sha256": "fd65db6d79802447d7c555fe8db8f7f55db349eb0da5e75600b617d2fa82be73"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyTwoEJ.lean",
+    "sha256": "9fc1a432478c1631832ef45ab41d1f56812b85c755fa1d9cf22408ad0866d338"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredNineteenDM.lean",
+    "sha256": "e8ea5769af9bbe3907b3b6e845436211a5be8186d7dc9856499d1f10db102207"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSeventeenDK.lean",
+    "sha256": "0c6a9d165314c3134060bb16d3373b4be0617650f24f264dac4ae0b043f58a48"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixteenDJ.lean",
+    "sha256": "837271b498b9a6347e6af4fcb80b7e68583cc792118c6e4df0de305a8f9b8126"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyEightFJ.lean",
+    "sha256": "0066f5ac7cd8e4626ccd694acefe7c6917ab370ec715662ca79c929f3ba4f18c"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFB.lean",
+    "sha256": "ab11d0cf1550d767dfc325a59f9004a114bb474fcf15791dd5daf42d9deb26c4"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFiveFG.lean",
+    "sha256": "5ae085370cb9faba9f1839586e289d2935450dfad4f2d1a9eec2f5d05929b2b3"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFourFF.lean",
+    "sha256": "a337e990b7c69910060771b3991db9558f71be67971761015aa20484d0c4e4ea"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyNineFK.lean",
+    "sha256": "9f071ce5699c4662a89d9bf5c5cca5e9baadc7dcfab3a700653a3e1fdd0cb807"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyOneFC.lean",
+    "sha256": "ef0f0768429456b4b3a59a98c069ac4cd967bf488ea51cead94c9a8e89dd8d48"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySevenFI.lean",
+    "sha256": "a5aea831b915cda638d16a27cca26f1d13697256856ef1658319d087fb952247"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySixFH.lean",
+    "sha256": "e9f83cb323b81e948e1d9ff93dea346339e378f6350649b28770aa0ffd9b9ecd"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyThreeFE.lean",
+    "sha256": "480980786e3bb35a618cc909711497e3fb8476691c7a4ddcbcfa774d8785d319"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyTwoFD.lean",
+    "sha256": "f1160b5566f80438ac9a59adce6a0020e96f3f6df2b36d959b947f4b532c61a5"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyDX.lean",
+    "sha256": "94bd7c0a6ad073de220aa2b03d97f0a28d41630e339aa953a835556d34778693"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyEightEF.lean",
+    "sha256": "e40c3f1eb0922fbeff3ce8598181ab02a631846e84fb720e6d1a89a690a71328"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFiveEC.lean",
+    "sha256": "98e8705006afabf9c1b21044129372d06c5ee00985cf97959a453b2e7c852e93"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFourEB.lean",
+    "sha256": "822a09a54f6da1d9cda15a1eae166b12a0132fa3508113bd3237e7a6ba12367b"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyNineEG.lean",
+    "sha256": "623f8a4cd6ede95f88941e3103334428e95de0127886049513cb4a49be119630"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyOneDY.lean",
+    "sha256": "be046518460ba67be058ffaa5ac695d4c6cb84ffcf7ce81e0165c6edabfea595"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySevenEE.lean",
+    "sha256": "452f1947263431e6c88abe8e021c9014e4294a78dd9a263e4477dfe1208a5c93"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySixED.lean",
+    "sha256": "cf86b672abce29ffa8947fafc0039545c971cb99094ce37ddf5ede6440f8ba8f"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyThreeEA.lean",
+    "sha256": "9d48f458dd2c9cc7a8c78b4c77475a4ccbc52fb8b213c9c5567ecfad4529d7bd"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyTwoDZ.lean",
+    "sha256": "d66d088f8295f43691c8b774ae67b093f8f8099b9719c0a54d22991360cba97a"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyDN.lean",
+    "sha256": "e040fe27ddf7b32732002d26e48e52a1f4fdf9ee2de9bd5bf8881d692f52e999"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyEightDV.lean",
+    "sha256": "e8461d84dae9aeef05fa5f7f718fecae32f35259d8d7cbe117913fd80f5f0858"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFiveDS.lean",
+    "sha256": "4e919ee4e7a388af2d2ef35a37e8515cffc17b17ffd18f7e9cd538be24727188"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFourDR.lean",
+    "sha256": "eb7db5aef61ff67f77b27cf34315fc8b0886f8ef51c4281d972435d666587e24"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyNineDW.lean",
+    "sha256": "d2a50bc9145f3b2e02983a1036583973ad3adeac6889422312b89db3a0620532"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyOneDO.lean",
+    "sha256": "5d498a293bc8a76e9618dd071d0e2170927458f9abd017096be4802dc86c5482"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySevenDU.lean",
+    "sha256": "d2708dfa38f8d36051d63f7c69b36fccf231fc3b186322788bb171e99d949347"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySixDT.lean",
+    "sha256": "7b86c360e4be291d7b0740248998ce1b89926b4adecfc93524962b3db63fa161"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyThreeDQ.lean",
+    "sha256": "204bc82832251bdd68f1991304d827db40a3d211562f57134f8d8f6b56126c32"
+   },
+   {
+    "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyTwoDP.lean",
+    "sha256": "8b67e93cac34c7de9dd1dc628b24e023f6bc6211c97d4bda7f257fb16b3a3e8a"
+   }
+  ],
+  "distinct_certificates": [
+   {
+    "certificate_id": "certifiedKill:h=1:N=137142958555927401591317945599:L=101",
+    "h": 1,
+    "N": 137142958555927401591317945599,
+    "L": 101,
+    "source_rows": [
+     6165
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixteenDJ.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixteenDJ",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixteenDJ.lean",
+      "line": 10581,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 137142958555927401591317945599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 137142958555927401591317945599 101",
+      "source_sha256": "837271b498b9a6347e6af4fcb80b7e68583cc792118c6e4df0de305a8f9b8126"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=138325225440030224018829307199:L=101",
+    "h": 1,
+    "N": 138325225440030224018829307199,
+    "L": 101,
+    "source_rows": [
+     6213
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSeventeenDK.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSeventeenDK",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSeventeenDK.lean",
+      "line": 10467,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 138325225440030224018829307199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 138325225440030224018829307199 101",
+      "source_sha256": "0c6a9d165314c3134060bb16d3373b4be0617650f24f264dac4ae0b043f58a48"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=139507492324133046446340668799:L=101",
+    "h": 1,
+    "N": 139507492324133046446340668799,
+    "L": 101,
+    "source_rows": [
+     6261
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredEighteenDL.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredEighteenDL",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredEighteenDL.lean",
+      "line": 9916,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 139507492324133046446340668799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 139507492324133046446340668799 101",
+      "source_sha256": "ee86867e64e411d670354b6ac02348c02ed14717144dda7fcfe112b9d6ff5fcd"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=140689759208235868873852030399:L=101",
+    "h": 1,
+    "N": 140689759208235868873852030399,
+    "L": 101,
+    "source_rows": [
+     6309
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredNineteenDM.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredNineteenDM",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredNineteenDM.lean",
+      "line": 10336,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 140689759208235868873852030399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 140689759208235868873852030399 101",
+      "source_sha256": "e8ea5769af9bbe3907b3b6e845436211a5be8186d7dc9856499d1f10db102207"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=141872026092338691301363391999:L=101",
+    "h": 1,
+    "N": 141872026092338691301363391999,
+    "L": 101,
+    "source_rows": [
+     6357
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyDN.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyDN",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyDN.lean",
+      "line": 10466,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 141872026092338691301363391999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 141872026092338691301363391999 101",
+      "source_sha256": "e040fe27ddf7b32732002d26e48e52a1f4fdf9ee2de9bd5bf8881d692f52e999"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=143054292976441513728874753599:L=101",
+    "h": 1,
+    "N": 143054292976441513728874753599,
+    "L": 101,
+    "source_rows": [
+     6405
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyOneDO.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyOneDO",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyOneDO.lean",
+      "line": 10170,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 143054292976441513728874753599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 143054292976441513728874753599 101",
+      "source_sha256": "5d498a293bc8a76e9618dd071d0e2170927458f9abd017096be4802dc86c5482"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=3:N=144236559860544336156386115199:L=101",
+    "h": 3,
+    "N": 144236559860544336156386115199,
+    "L": 101,
+    "source_rows": [
+     6455
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyTwoDP.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyTwoDP",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyTwoDP.lean",
+      "line": 10505,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 3,
+       "N": 144236559860544336156386115199,
+       "L": 101
+      },
+      "signature": "certifiedKill 3 144236559860544336156386115199 101",
+      "source_sha256": "8b67e93cac34c7de9dd1dc628b24e023f6bc6211c97d4bda7f257fb16b3a3e8a"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=145418826744647158583897476799:L=101",
+    "h": 1,
+    "N": 145418826744647158583897476799,
+    "L": 101,
+    "source_rows": [
+     6501
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyThreeDQ.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyThreeDQ",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyThreeDQ.lean",
+      "line": 10903,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 145418826744647158583897476799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 145418826744647158583897476799 101",
+      "source_sha256": "204bc82832251bdd68f1991304d827db40a3d211562f57134f8d8f6b56126c32"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=146601093628749981011408838399:L=101",
+    "h": 1,
+    "N": 146601093628749981011408838399,
+    "L": 101,
+    "source_rows": [
+     6549
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFourDR.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyFourDR",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFourDR.lean",
+      "line": 9819,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 146601093628749981011408838399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 146601093628749981011408838399 101",
+      "source_sha256": "eb7db5aef61ff67f77b27cf34315fc8b0886f8ef51c4281d972435d666587e24"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=147783360512852803438920199999:L=101",
+    "h": 1,
+    "N": 147783360512852803438920199999,
+    "L": 101,
+    "source_rows": [
+     6597
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFiveDS.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyFiveDS",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyFiveDS.lean",
+      "line": 11126,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 147783360512852803438920199999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 147783360512852803438920199999 101",
+      "source_sha256": "4e919ee4e7a388af2d2ef35a37e8515cffc17b17ffd18f7e9cd538be24727188"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=148965627396955625866431561599:L=101",
+    "h": 1,
+    "N": 148965627396955625866431561599,
+    "L": 101,
+    "source_rows": [
+     6645
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySixDT.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentySixDT",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySixDT.lean",
+      "line": 10357,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 148965627396955625866431561599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 148965627396955625866431561599 101",
+      "source_sha256": "7b86c360e4be291d7b0740248998ce1b89926b4adecfc93524962b3db63fa161"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=150147894281058448293942923199:L=101",
+    "h": 1,
+    "N": 150147894281058448293942923199,
+    "L": 101,
+    "source_rows": [
+     6693
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySevenDU.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentySevenDU",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentySevenDU.lean",
+      "line": 10637,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 150147894281058448293942923199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 150147894281058448293942923199 101",
+      "source_sha256": "d2708dfa38f8d36051d63f7c69b36fccf231fc3b186322788bb171e99d949347"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=151330161165161270721454284799:L=101",
+    "h": 1,
+    "N": 151330161165161270721454284799,
+    "L": 101,
+    "source_rows": [
+     6741
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyEightDV.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyEightDV",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyEightDV.lean",
+      "line": 9678,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 151330161165161270721454284799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 151330161165161270721454284799 101",
+      "source_sha256": "e8461d84dae9aeef05fa5f7f718fecae32f35259d8d7cbe117913fd80f5f0858"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=152512428049264093148965646399:L=101",
+    "h": 1,
+    "N": 152512428049264093148965646399,
+    "L": 101,
+    "source_rows": [
+     6789
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyNineDW.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredTwentyNineDW",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredTwentyNineDW.lean",
+      "line": 11068,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 152512428049264093148965646399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 152512428049264093148965646399 101",
+      "source_sha256": "d2a50bc9145f3b2e02983a1036583973ad3adeac6889422312b89db3a0620532"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=153694694933366915576477007999:L=101",
+    "h": 1,
+    "N": 153694694933366915576477007999,
+    "L": 101,
+    "source_rows": [
+     6837
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyDX.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyDX",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyDX.lean",
+      "line": 10605,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 153694694933366915576477007999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 153694694933366915576477007999 101",
+      "source_sha256": "94bd7c0a6ad073de220aa2b03d97f0a28d41630e339aa953a835556d34778693"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=154876961817469738003988369599:L=101",
+    "h": 1,
+    "N": 154876961817469738003988369599,
+    "L": 101,
+    "source_rows": [
+     6885
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyOneDY.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyOneDY",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyOneDY.lean",
+      "line": 10587,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 154876961817469738003988369599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 154876961817469738003988369599 101",
+      "source_sha256": "be046518460ba67be058ffaa5ac695d4c6cb84ffcf7ce81e0165c6edabfea595"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=156059228701572560431499731199:L=101",
+    "h": 1,
+    "N": 156059228701572560431499731199,
+    "L": 101,
+    "source_rows": [
+     6933
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyTwoDZ.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyTwoDZ",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyTwoDZ.lean",
+      "line": 10253,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 156059228701572560431499731199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 156059228701572560431499731199 101",
+      "source_sha256": "d66d088f8295f43691c8b774ae67b093f8f8099b9719c0a54d22991360cba97a"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=157241495585675382859011092799:L=101",
+    "h": 1,
+    "N": 157241495585675382859011092799,
+    "L": 101,
+    "source_rows": [
+     6981
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyThreeEA.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyThreeEA",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyThreeEA.lean",
+      "line": 10251,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 157241495585675382859011092799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 157241495585675382859011092799 101",
+      "source_sha256": "9d48f458dd2c9cc7a8c78b4c77475a4ccbc52fb8b213c9c5567ecfad4529d7bd"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=158423762469778205286522454399:L=101",
+    "h": 1,
+    "N": 158423762469778205286522454399,
+    "L": 101,
+    "source_rows": [
+     7029
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFourEB.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyFourEB",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFourEB.lean",
+      "line": 11183,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 158423762469778205286522454399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 158423762469778205286522454399 101",
+      "source_sha256": "822a09a54f6da1d9cda15a1eae166b12a0132fa3508113bd3237e7a6ba12367b"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=159606029353881027714033815999:L=101",
+    "h": 1,
+    "N": 159606029353881027714033815999,
+    "L": 101,
+    "source_rows": [
+     7077
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFiveEC.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyFiveEC",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyFiveEC.lean",
+      "line": 10812,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 159606029353881027714033815999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 159606029353881027714033815999 101",
+      "source_sha256": "98e8705006afabf9c1b21044129372d06c5ee00985cf97959a453b2e7c852e93"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=160788296237983850141545177599:L=101",
+    "h": 1,
+    "N": 160788296237983850141545177599,
+    "L": 101,
+    "source_rows": [
+     7125
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySixED.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtySixED",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySixED.lean",
+      "line": 10181,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 160788296237983850141545177599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 160788296237983850141545177599 101",
+      "source_sha256": "cf86b672abce29ffa8947fafc0039545c971cb99094ce37ddf5ede6440f8ba8f"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=161970563122086672569056539199:L=101",
+    "h": 1,
+    "N": 161970563122086672569056539199,
+    "L": 101,
+    "source_rows": [
+     7173
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySevenEE.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtySevenEE",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtySevenEE.lean",
+      "line": 10932,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 161970563122086672569056539199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 161970563122086672569056539199 101",
+      "source_sha256": "452f1947263431e6c88abe8e021c9014e4294a78dd9a263e4477dfe1208a5c93"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=163152830006189494996567900799:L=101",
+    "h": 1,
+    "N": 163152830006189494996567900799,
+    "L": 101,
+    "source_rows": [
+     7221
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyEightEF.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyEightEF",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyEightEF.lean",
+      "line": 10728,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 163152830006189494996567900799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 163152830006189494996567900799 101",
+      "source_sha256": "e40c3f1eb0922fbeff3ce8598181ab02a631846e84fb720e6d1a89a690a71328"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=164335096890292317424079262399:L=101",
+    "h": 1,
+    "N": 164335096890292317424079262399,
+    "L": 101,
+    "source_rows": [
+     7269
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyNineEG.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredThirtyNineEG",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredThirtyNineEG.lean",
+      "line": 10676,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 164335096890292317424079262399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 164335096890292317424079262399 101",
+      "source_sha256": "623f8a4cd6ede95f88941e3103334428e95de0127886049513cb4a49be119630"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=165517363774395139851590623999:L=101",
+    "h": 1,
+    "N": 165517363774395139851590623999,
+    "L": 101,
+    "source_rows": [
+     7317
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEH.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyEH",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEH.lean",
+      "line": 11305,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 165517363774395139851590623999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 165517363774395139851590623999 101",
+      "source_sha256": "da3abebc5b572b5023696131202606b3d3152a48982859469e9e68e069340f0e"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=166699630658497962279101985599:L=101",
+    "h": 1,
+    "N": 166699630658497962279101985599,
+    "L": 101,
+    "source_rows": [
+     7365
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyOneEI.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyOneEI",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyOneEI.lean",
+      "line": 10432,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 166699630658497962279101985599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 166699630658497962279101985599 101",
+      "source_sha256": "b4369e3fbf465482f22c03fd9aca5b19561eaffdbf2cabb9031d87398ab6f3f2"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=167881897542600784706613347199:L=101",
+    "h": 1,
+    "N": 167881897542600784706613347199,
+    "L": 101,
+    "source_rows": [
+     7413
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyTwoEJ.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyTwoEJ",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyTwoEJ.lean",
+      "line": 10855,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 167881897542600784706613347199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 167881897542600784706613347199 101",
+      "source_sha256": "9fc1a432478c1631832ef45ab41d1f56812b85c755fa1d9cf22408ad0866d338"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=169064164426703607134124708799:L=101",
+    "h": 1,
+    "N": 169064164426703607134124708799,
+    "L": 101,
+    "source_rows": [
+     7461
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyThreeEK.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyThreeEK",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyThreeEK.lean",
+      "line": 10449,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 169064164426703607134124708799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 169064164426703607134124708799 101",
+      "source_sha256": "fd65db6d79802447d7c555fe8db8f7f55db349eb0da5e75600b617d2fa82be73"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=170246431310806429561636070399:L=101",
+    "h": 1,
+    "N": 170246431310806429561636070399,
+    "L": 101,
+    "source_rows": [
+     7509
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFourEL.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyFourEL",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFourEL.lean",
+      "line": 11106,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 170246431310806429561636070399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 170246431310806429561636070399 101",
+      "source_sha256": "ba2071d4fcc582dc41efc4443b3172d6e8da9370ff04d37eae89e6b2f02e30bd"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=171428698194909251989147431999:L=101",
+    "h": 1,
+    "N": 171428698194909251989147431999,
+    "L": 101,
+    "source_rows": [
+     7557
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFiveEM.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyFiveEM",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyFiveEM.lean",
+      "line": 10444,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 171428698194909251989147431999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 171428698194909251989147431999 101",
+      "source_sha256": "d8bb7ddb3dc78e68a22348aebc0e73864ac6e02c0a361a0bc663f8e1a3cfe2e2"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=172610965079012074416658793599:L=101",
+    "h": 1,
+    "N": 172610965079012074416658793599,
+    "L": 101,
+    "source_rows": [
+     7605
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortySixEN.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortySixEN",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortySixEN.lean",
+      "line": 10027,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 172610965079012074416658793599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 172610965079012074416658793599 101",
+      "source_sha256": "7255a419fb321854bb36f1f10cfe0ed92a0645f57ee6f3774c7068b44ce795c5"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=173793231963114896844170155199:L=101",
+    "h": 1,
+    "N": 173793231963114896844170155199,
+    "L": 101,
+    "source_rows": [
+     7653
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortySevenEO.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortySevenEO",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortySevenEO.lean",
+      "line": 11057,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 173793231963114896844170155199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 173793231963114896844170155199 101",
+      "source_sha256": "9e201b2c8ce230b545458b9a678dd74e522e6b9b3e10232306ed20d5fa91386b"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=174975498847217719271681516799:L=101",
+    "h": 1,
+    "N": 174975498847217719271681516799,
+    "L": 101,
+    "source_rows": [
+     7701
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEightEP.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyEightEP",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyEightEP.lean",
+      "line": 10541,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 174975498847217719271681516799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 174975498847217719271681516799 101",
+      "source_sha256": "2d7e2f1e67dfade66b7ec3972d0b588e5f13cfc10a137981ed22b6f69097ba95"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=176157765731320541699192878399:L=101",
+    "h": 1,
+    "N": 176157765731320541699192878399,
+    "L": 101,
+    "source_rows": [
+     7749
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFortyNineEQ.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFortyNineEQ",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFortyNineEQ.lean",
+      "line": 10485,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 176157765731320541699192878399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 176157765731320541699192878399 101",
+      "source_sha256": "9097f5d3b9fd621abd7bbf628b2c061b594ffa403990d6dcbbe67492b0fa0a10"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=177340032615423364126704239999:L=101",
+    "h": 1,
+    "N": 177340032615423364126704239999,
+    "L": 101,
+    "source_rows": [
+     7797
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyER.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyER",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyER.lean",
+      "line": 11276,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 177340032615423364126704239999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 177340032615423364126704239999 101",
+      "source_sha256": "13026b290b6ec0793aed2984c4c92201510b208381d33550721b8d0488c40537"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=178522299499526186554215601599:L=101",
+    "h": 1,
+    "N": 178522299499526186554215601599,
+    "L": 101,
+    "source_rows": [
+     7845
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyOneES.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyOneES",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyOneES.lean",
+      "line": 10803,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 178522299499526186554215601599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 178522299499526186554215601599 101",
+      "source_sha256": "34ad1fdbc34ec4af1c4395c500b8f926438a9d9f448b84b0f45ee73ae321acd2"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=179704566383629008981726963199:L=101",
+    "h": 1,
+    "N": 179704566383629008981726963199,
+    "L": 101,
+    "source_rows": [
+     7893
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyTwoET.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyTwoET",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyTwoET.lean",
+      "line": 10236,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 179704566383629008981726963199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 179704566383629008981726963199 101",
+      "source_sha256": "beacd2df5df8d60cdae07d840f2a2e3d66694df125f618fbf89a2e0c79497506"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=180886833267731831409238324799:L=101",
+    "h": 1,
+    "N": 180886833267731831409238324799,
+    "L": 101,
+    "source_rows": [
+     7941
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyThreeEU.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyThreeEU",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyThreeEU.lean",
+      "line": 11065,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 180886833267731831409238324799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 180886833267731831409238324799 101",
+      "source_sha256": "2688f8ce7e7d04d9624c42ede29df54600474bb7acb1d3fc5fa55cb7f1aadc27"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=182069100151834653836749686399:L=101",
+    "h": 1,
+    "N": 182069100151834653836749686399,
+    "L": 101,
+    "source_rows": [
+     7989
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFourEV.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyFourEV",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFourEV.lean",
+      "line": 11052,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 182069100151834653836749686399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 182069100151834653836749686399 101",
+      "source_sha256": "c3cf952837b97eceb4660408cdd35ff344acf09d3537454569ee5f62cb4fabcb"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=183251367035937476264261047999:L=101",
+    "h": 1,
+    "N": 183251367035937476264261047999,
+    "L": 101,
+    "source_rows": [
+     8037
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFiveEW.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyFiveEW",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyFiveEW.lean",
+      "line": 10230,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 183251367035937476264261047999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 183251367035937476264261047999 101",
+      "source_sha256": "b60b541332685cc99cfcf0ecedb44a0f8938c633485240b07133e15a098edc62"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=184433633920040298691772409599:L=101",
+    "h": 1,
+    "N": 184433633920040298691772409599,
+    "L": 101,
+    "source_rows": [
+     8085
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySixEX.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftySixEX",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySixEX.lean",
+      "line": 10550,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 184433633920040298691772409599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 184433633920040298691772409599 101",
+      "source_sha256": "0ade229140119f74783ee822a018c0aa9325baa261629bf37851dfd66136f4d6"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=185615900804143121119283771199:L=101",
+    "h": 1,
+    "N": 185615900804143121119283771199,
+    "L": 101,
+    "source_rows": [
+     8133
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySevenEY.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftySevenEY",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftySevenEY.lean",
+      "line": 10499,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 185615900804143121119283771199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 185615900804143121119283771199 101",
+      "source_sha256": "0961f407b46aa63003f4bce8334dcf5601a4e3fa54be8ae8c1eed9f2fc220011"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=186798167688245943546795132799:L=101",
+    "h": 1,
+    "N": 186798167688245943546795132799,
+    "L": 101,
+    "source_rows": [
+     8181
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyEightEZ.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyEightEZ",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyEightEZ.lean",
+      "line": 9725,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 186798167688245943546795132799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 186798167688245943546795132799 101",
+      "source_sha256": "75df763e7b72d5c9b64f71d00db32b183e67e6a4e48c7b6d89c1778a4da0c285"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=187980434572348765974306494393:L=101",
+    "h": 1,
+    "N": 187980434572348765974306494393,
+    "L": 101,
+    "source_rows": [
+     8247
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyNineFA.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredFiftyNineFA",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredFiftyNineFA.lean",
+      "line": 10508,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 187980434572348765974306494393,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 187980434572348765974306494393 101",
+      "source_sha256": "211071650b31e27216425514386ecf17b6059f759b9a55e59dbc7d13d32dbd7c"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=189162701456451588401817855999:L=101",
+    "h": 1,
+    "N": 189162701456451588401817855999,
+    "L": 101,
+    "source_rows": [
+     8277
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFB.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyFB",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFB.lean",
+      "line": 10283,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 189162701456451588401817855999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 189162701456451588401817855999 101",
+      "source_sha256": "ab11d0cf1550d767dfc325a59f9004a114bb474fcf15791dd5daf42d9deb26c4"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=190344968340554410829329217599:L=101",
+    "h": 1,
+    "N": 190344968340554410829329217599,
+    "L": 101,
+    "source_rows": [
+     8325
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyOneFC.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyOneFC",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyOneFC.lean",
+      "line": 10646,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 190344968340554410829329217599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 190344968340554410829329217599 101",
+      "source_sha256": "ef0f0768429456b4b3a59a98c069ac4cd967bf488ea51cead94c9a8e89dd8d48"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=191527235224657233256840579199:L=101",
+    "h": 1,
+    "N": 191527235224657233256840579199,
+    "L": 101,
+    "source_rows": [
+     8373
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyTwoFD.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyTwoFD",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyTwoFD.lean",
+      "line": 10533,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 191527235224657233256840579199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 191527235224657233256840579199 101",
+      "source_sha256": "f1160b5566f80438ac9a59adce6a0020e96f3f6df2b36d959b947f4b532c61a5"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=192709502108760055684351940799:L=101",
+    "h": 1,
+    "N": 192709502108760055684351940799,
+    "L": 101,
+    "source_rows": [
+     8421
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyThreeFE.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyThreeFE",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyThreeFE.lean",
+      "line": 10463,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 192709502108760055684351940799,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 192709502108760055684351940799 101",
+      "source_sha256": "480980786e3bb35a618cc909711497e3fb8476691c7a4ddcbcfa774d8785d319"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=193891768992862878111863302399:L=101",
+    "h": 1,
+    "N": 193891768992862878111863302399,
+    "L": 101,
+    "source_rows": [
+     8469
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFourFF.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyFourFF",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFourFF.lean",
+      "line": 10900,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 193891768992862878111863302399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 193891768992862878111863302399 101",
+      "source_sha256": "a337e990b7c69910060771b3991db9558f71be67971761015aa20484d0c4e4ea"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=195074035876965700539374663999:L=101",
+    "h": 1,
+    "N": 195074035876965700539374663999,
+    "L": 101,
+    "source_rows": [
+     8517
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFiveFG.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyFiveFG",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyFiveFG.lean",
+      "line": 10917,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 195074035876965700539374663999,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 195074035876965700539374663999 101",
+      "source_sha256": "5ae085370cb9faba9f1839586e289d2935450dfad4f2d1a9eec2f5d05929b2b3"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=196256302761068522966886025599:L=101",
+    "h": 1,
+    "N": 196256302761068522966886025599,
+    "L": 101,
+    "source_rows": [
+     8565
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySixFH.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtySixFH",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySixFH.lean",
+      "line": 10657,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 196256302761068522966886025599,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 196256302761068522966886025599 101",
+      "source_sha256": "e9f83cb323b81e948e1d9ff93dea346339e378f6350649b28770aa0ffd9b9ecd"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=197438569645171345394397387199:L=101",
+    "h": 1,
+    "N": 197438569645171345394397387199,
+    "L": 101,
+    "source_rows": [
+     8613
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySevenFI.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtySevenFI",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtySevenFI.lean",
+      "line": 10251,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 197438569645171345394397387199,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 197438569645171345394397387199 101",
+      "source_sha256": "a5aea831b915cda638d16a27cca26f1d13697256856ef1658319d087fb952247"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=3:N=198620836529274167821908748799:L=101",
+    "h": 3,
+    "N": 198620836529274167821908748799,
+    "L": 101,
+    "source_rows": [
+     8663
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyEightFJ.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyEightFJ",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyEightFJ.lean",
+      "line": 11366,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 3,
+       "N": 198620836529274167821908748799,
+       "L": 101
+      },
+      "signature": "certifiedKill 3 198620836529274167821908748799 101",
+      "source_sha256": "0066f5ac7cd8e4626ccd694acefe7c6917ab370ec715662ca79c929f3ba4f18c"
+     }
+    ]
+   },
+   {
+    "certificate_id": "certifiedKill:h=1:N=199803103413376990249420110399:L=101",
+    "h": 1,
+    "N": 199803103413376990249420110399,
+    "L": 101,
+    "source_rows": [
+     8709
+    ],
+    "source_files": [
+     "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyNineFK.lean"
+    ],
+    "theorems": [
+     {
+      "declaration": "freeKill_64OneHundredSixtyNineFK",
+      "file": "ErdosProblems/FreePosition/FreeKill64OneHundredSixtyNineFK.lean",
+      "line": 10704,
+      "predicate": "certifiedKill",
+      "argument_order": [
+       "h",
+       "N",
+       "L"
+      ],
+      "arguments": {
+       "h": 1,
+       "N": 199803103413376990249420110399,
+       "L": 101
+      },
+      "signature": "certifiedKill 1 199803103413376990249420110399 101",
+      "source_sha256": "9f071ce5699c4662a89d9bf5c5cca5e9baadc7dcfab3a700653a3e1fdd0cb807"
+     }
+    ]
+   }
   ]
  },
  "limits": [

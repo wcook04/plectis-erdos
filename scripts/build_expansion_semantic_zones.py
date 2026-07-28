@@ -35,6 +35,25 @@ COMMON_CONCEPT = {
     ),
 }
 
+DIAGONAL_CERTIFICATE_DEPTH_PROFILE = {
+    "id": "diagonal_certificate_depth_profile",
+    "label": "exact diagonal-certificate depth profile",
+    "note": (
+        "The least checked window depth at selected lcm-diagonal scales, "
+        "separated from any prediction that the depths are monotone or that "
+        "certificates continue cofinally."
+    ),
+}
+
+PERIOD_LCM_PLATEAU_TRANSFER_WALL = {
+    "id": "period_lcm_plateau_transfer_wall",
+    "label": "period-lcm plateau-transfer wall",
+    "note": (
+        "A scale where the lcm changes, so a certificate at the previous scale "
+        "cannot be transported merely by rewriting equal periodLcm values."
+    ),
+}
+
 
 def current_off_diagonal_roster() -> dict[str, Any]:
     """Load the generated roster only when it matches its data and Lean inputs."""
@@ -51,6 +70,12 @@ def current_off_diagonal_roster() -> dict[str, Any]:
 
 
 OFF_DIAGONAL_ROSTER = current_off_diagonal_roster()
+LATER_VERIFIED_CENSUS = OFF_DIAGONAL_ROSTER[
+    "excluded_later_verified_rows"
+]
+LATER_VERIFIED_EXAMPLE = LATER_VERIFIED_CENSUS[
+    "distinct_certificates"
+][0]["theorems"][0]
 
 
 def node(
@@ -90,6 +115,114 @@ SPECS: list[dict[str, Any]] = [
         "problem": "both",
         "prefix": "ErdosProblems/Lift/",
         "nodes": [
+            node(
+                "t67_diagonal_certificate_and_exact_minimal_depth",
+                (
+                    "PROVED FINITE LADDER STEP: the lcm-diagonal cell t = 67 "
+                    "has least certified-kill depth exactly 100: depths 98 and "
+                    "99 fail, the older t = 64 depth 93 cannot survive, and the "
+                    "result extends the certified finite band through t ≤ 70 "
+                    "using exact period-lcm plateaus."
+                ),
+                "finite_instance",
+                "249",
+                [
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "certifiedKill_four_mul_lt",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "certifiedKill_lift_depth",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "certifiedKill_lift_depth_ladder",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "t67_depth_floor",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "t67_not_certifiedKill_at_t64_depth",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "not_certifiedKill_diagonal_t67_98",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "not_certifiedKill_diagonal_t67_99",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "certifiedKill_diagonal_t67",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "t67_minimal_depth",
+                    ),
+                    (
+                        "ErdosProblems/Lift/Recon67.lean",
+                        "exists_diagonalKill_le_70",
+                    ),
+                ],
+                "exact depth inequalities plus explicit totient/factorisation certificate arithmetic",
+                (
+                    "This is one finite rung and a bounded band through 70. "
+                    "It neither supplies certificates at arbitrarily large "
+                    "scales nor proves irrationality in Erdős #249."
+                ),
+            ),
+            node(
+                "t71_diagonal_certificate_and_exact_minimal_depth",
+                (
+                    "PROVED FINITE LADDER STEP: the lcm-diagonal cell t = 71 "
+                    "has least certified-kill depth exactly 105, attaining its "
+                    "arithmetic floor; the t = 67 depth 100 is dead here, and "
+                    "the certificate plus the period-lcm plateau at 72 extends "
+                    "the conditional prior band through t ≤ 72."
+                ),
+                "finite_instance",
+                "249",
+                [
+                    (
+                        "ErdosProblems/Lift/CertT67.lean",
+                        "certifiedKill_four_mul_lt71",
+                    ),
+                    (
+                        "ErdosProblems/Lift/CertT67.lean",
+                        "t71_depth_floor",
+                    ),
+                    (
+                        "ErdosProblems/Lift/CertT67.lean",
+                        "t71_not_certifiedKill_at_t67_depth",
+                    ),
+                    (
+                        "ErdosProblems/Lift/CertT67.lean",
+                        "certifiedKill_diagonal_t71",
+                    ),
+                    (
+                        "ErdosProblems/Lift/CertT67.lean",
+                        "t71_minimal_depth",
+                    ),
+                    (
+                        "ErdosProblems/Lift/CertT67.lean",
+                        "pl72",
+                    ),
+                    (
+                        "ErdosProblems/Lift/CertT67.lean",
+                        "exists_diagonalKill_le_72_of_band_le_70",
+                    ),
+                ],
+                "exact depth inequalities plus explicit totient/factorisation certificate arithmetic",
+                (
+                    "The final band theorem assumes the earlier band through "
+                    "70, and all conclusions remain finite. They do not give "
+                    "the cofinal certificate supply required by Erdős #249."
+                ),
+            ),
             node(
                 "angle_b2_conditional_contradiction",
                 (
@@ -151,6 +284,28 @@ SPECS: list[dict[str, Any]] = [
                 ],
             ),
         ],
+        "contextual_routes": [
+            {
+                "modules": {"ErdosProblems/Lift/Recon67.lean"},
+                "target": "t67_diagonal_certificate_and_exact_minimal_depth",
+                "basis": (
+                    "The declaration is in the exact t = 67 certificate module "
+                    "and supplies its factorisation, primality, totient, or "
+                    "depth-minimality proof chain; it is contextual family "
+                    "substrate unless separately cited as direct evidence."
+                ),
+            },
+            {
+                "modules": {"ErdosProblems/Lift/CertT67.lean"},
+                "target": "t71_diagonal_certificate_and_exact_minimal_depth",
+                "basis": (
+                    "The declaration is in the exact t = 71 certificate module "
+                    "and supplies its factorisation, primality, totient, or "
+                    "depth-minimality proof chain; it is contextual family "
+                    "substrate unless separately cited as direct evidence."
+                ),
+            },
+        ],
     },
     {
         "zone_id": "Z20",
@@ -165,6 +320,10 @@ SPECS: list[dict[str, Any]] = [
                 "exists_diagonalKill_le_82",
             )
         },
+        "concepts": [
+            DIAGONAL_CERTIFICATE_DEPTH_PROFILE,
+            PERIOD_LCM_PLATEAU_TRANSFER_WALL,
+        ],
         "nodes": [
             node(
                 "skip_existential_bound_conditional",
@@ -194,6 +353,143 @@ SPECS: list[dict[str, Any]] = [
                     "hlanding: Recon257.seamExcess (D+1) = 2",
                 ],
             ),
+            node(
+                "diagonal_ladder_exact_minimal_depths",
+                (
+                    "For the lcm-diagonal cells t = 71, 73, 79 and 81, the "
+                    "least depths L for which certifiedKill (periodLcm t) "
+                    "(periodLcm t) L holds are exactly 105, 113, 120 and 120, "
+                    "respectively. The bundled Lean theorem supplies both a "
+                    "certificate at each displayed depth and failure at every "
+                    "smaller depth."
+                ),
+                "finite_instance",
+                "249",
+                [
+                    (
+                        "ErdosProblems/Skip/LadderT67.lean",
+                        "ladder_minimal_depths",
+                    )
+                ],
+                (
+                    "exact totient-window certificates at the firing depths, "
+                    "paired with arithmetic depth floors and checked failures "
+                    "at every remaining admissible smaller depth"
+                ),
+                (
+                    "Four exact finite cells do not supply certificates at "
+                    "arbitrarily large scales, do not predict the next firing "
+                    "depth, and do not prove irrationality of the totient series."
+                ),
+            ),
+            node(
+                "diagonal_ladder_sampled_excess_changes_direction",
+                (
+                    "The checked certificate/failure pattern at t = 71, 73, "
+                    "79 and 81 shows that the sampled excess of least certificate "
+                    "depth over its arithmetic floor decreases and increases: "
+                    "the displayed excesses along t = 67, 71, 73, 79, 81 are "
+                    "2, 0, 2, 3, 1. In particular the floor is missed at t = "
+                    "73, 79 and 81, and this finite sample is not monotone."
+                ),
+                "finite_instance",
+                "249",
+                [
+                    (
+                        "ErdosProblems/Skip/LadderT67.lean",
+                        "ladder_excess_not_monotone",
+                    )
+                ],
+                (
+                    "a conjunction of exact certificates and exact failures "
+                    "at the depths adjacent to the arithmetic floors"
+                ),
+                (
+                    "This refutes monotonicity only for the displayed finite "
+                    "table. It does not establish any eventual behaviour, "
+                    "distribution, or recurrence law for certificate depths."
+                ),
+            ),
+            node(
+                "diagonal_ladder_equal_depth_after_modulus_tripling",
+                (
+                    "Although periodLcm 81 is three times periodLcm 79 and the "
+                    "arithmetic floor rises from 117 to 119, the least certified "
+                    "depth is 120 at both cells. This is a checked counterexample "
+                    "to the proposed law that each new prime-power rung must "
+                    "strictly increase the least certificate depth."
+                ),
+                "finite_instance",
+                "249",
+                [
+                    (
+                        "ErdosProblems/Skip/LadderT67.lean",
+                        "rung_depth_not_strictly_increasing",
+                    )
+                ],
+                (
+                    "exact minimal-depth certificates at t = 79 and t = 81 "
+                    "together with the exact periodLcm multiplier"
+                ),
+                (
+                    "The theorem rules out only strict increase at every "
+                    "prime-power rung. It does not give a transfer from t = 79 "
+                    "to t = 81, a formula for later depths, or evidence for a "
+                    "cofinal certificate supply."
+                ),
+            ),
+            node(
+                "diagonal_band_plateau_transfer_wall_at_83",
+                (
+                    "Every lcm-diagonal scale t at most 82 has a certified kill, "
+                    "but periodLcm 83 is not equal to periodLcm 82, so the "
+                    "plateau-rewrite transport used inside the finite band stops "
+                    "at 82. Moreover, any future certified kill at t = 83 must "
+                    "have depth at least 125."
+                ),
+                "barrier_no_go",
+                "249",
+                [
+                    (
+                        "ErdosProblems/Skip/LadderT67.lean",
+                        "periodLcm_83_eq_mul",
+                    ),
+                    (
+                        "ErdosProblems/Skip/LadderT67.lean",
+                        "band_maximal_at_82",
+                    ),
+                    (
+                        "ErdosProblems/Skip/LadderT67.lean",
+                        "t83_depth_floor",
+                    ),
+                ],
+                (
+                    "the exact prime jump periodLcm 83 = 83 * periodLcm 82 "
+                    "together with the universal certifiedKill depth inequality"
+                ),
+                (
+                    "This rules out only carrying the t = 81 certificate to "
+                    "t = 83 by equality of periodLcm values, and only excludes "
+                    "depths below 125 there. It does not prove that no t = 83 "
+                    "certificate exists, does not prevent a fresh computation "
+                    "at depth 125 or above, and does not address the still-open "
+                    "unbounded certificate supply consumed by the irrationality "
+                    "reduction."
+                ),
+            ),
+        ],
+        "contextual_routes": [
+            {
+                "modules": {"ErdosProblems/Skip/LadderT67.lean"},
+                "target": "diagonal_ladder_exact_minimal_depths",
+                "basis": (
+                    "The declaration is in the exact t = 73/79/81 diagonal "
+                    "ladder module and supplies its factorisation, primality, "
+                    "totient, window, depth-minimality, or finite-band proof "
+                    "chain. It is contextual family substrate unless separately "
+                    "cited as direct evidence."
+                ),
+            },
         ],
     },
     {
@@ -462,11 +758,101 @@ SPECS: list[dict[str, Any]] = [
                 off_diagonal_roster.public_projection_scope_caveat(
                     OFF_DIAGONAL_ROSTER
                 ),
-            )
+            ),
+            node(
+                "free_position_later_verified_certificates",
+                off_diagonal_roster.later_verified_projection_statement(
+                    OFF_DIAGONAL_ROSTER
+                ),
+                "finite_instance",
+                "249",
+                [
+                    (
+                        LATER_VERIFIED_EXAMPLE["file"],
+                        LATER_VERIFIED_EXAMPLE["declaration"],
+                    )
+                ],
+                "explicit factorisations, primality certificates, and modular arithmetic",
+                off_diagonal_roster.later_verified_projection_scope_caveat(
+                    OFF_DIAGONAL_ROSTER
+                ),
+            ),
         ],
         "role_prefix": ("freeKill", "finite_instance", "free_position_finite_certificates"),
+        # The roster binds 122 exact Lean files (by SHA-256) to the 123
+        # distinct historical certificates summarized by the node above.  The
+        # private primality, factorisation, modular-arithmetic, and fast-power
+        # declarations in those files are not 100,000 separate mathematical
+        # claims: they are contextual proof substrate for that finite family.
+        # A second, explicitly separate route covers the 54 post-cutoff files
+        # after the same exact theorem/signature and file-digest validation.
+        "contextual_routes": [
+            {
+                "modules": {
+                    row["file"]
+                    for row in OFF_DIAGONAL_ROSTER["lean_files"]
+                },
+                "target": "free_position_finite_certificates",
+                "basis": (
+                    "The declaration lives in a SHA-256-bound Lean source file "
+                    "named by the historical off-diagonal certificate roster. "
+                    "It is contextual proof substrate for the finite certificate "
+                    "family, not separate direct proposition evidence for the "
+                    "family-level statement."
+                ),
+            },
+            {
+                "modules": {
+                    row["file"]
+                    for row in LATER_VERIFIED_CENSUS["lean_files"]
+                },
+                "target": "free_position_later_verified_certificates",
+                "basis": (
+                    "The declaration lives in a SHA-256-bound Lean source file "
+                    "whose post-cutoff certifiedKill theorem is validated by the "
+                    "separate later-verified census. It is contextual proof "
+                    "substrate, not a cofinal-supply claim."
+                ),
+            },
+        ],
     },
 ]
+
+
+def role_for_row(
+    spec: dict[str, Any],
+    row: dict[str, Any],
+    promoted: dict[tuple[str, str], str],
+) -> dict[str, Any]:
+    """Render one exact declaration role under an expansion-zone policy."""
+    role: dict[str, Any] = {
+        "declaration": row["name"],
+        "module": row["module"],
+        "line": row["line"],
+        "role": "substrate",
+    }
+    target = promoted.get((row["module"], row["name"]))
+    if target is not None:
+        role["role"] = "statement"
+        role["statement_node"] = target
+    if target is None:
+        for route in spec.get("contextual_routes", []):
+            if row["module"] not in route["modules"]:
+                continue
+            role["statement_node"] = route["target"]
+            role["routing_origin"] = (
+                "authored_contextual_certificate_substrate"
+            )
+            role["routing_basis_ref"] = route.get(
+                "basis_id",
+                route["target"],
+            )
+            break
+    prefix_rule = spec.get("role_prefix")
+    if prefix_rule and row["name"].startswith(prefix_rule[0]):
+        role["role"] = prefix_rule[1]
+        role.setdefault("statement_node", prefix_rule[2])
+    return role
 
 
 def main() -> int:
@@ -513,34 +899,36 @@ def main() -> int:
                 continue
             if (row["module"], row["name"]) in exclusions:
                 continue
-            role: dict[str, Any] = {
-                "declaration": row["name"],
-                "module": row["module"],
-                "line": row["line"],
-                "role": "substrate",
-            }
-            target = promoted.get((row["module"], row["name"]))
-            if target is not None:
-                role["role"] = "statement"
-                role["statement_node"] = target
-            prefix_rule = spec.get("role_prefix")
-            if prefix_rule and row["name"].startswith(prefix_rule[0]):
-                role["role"] = prefix_rule[1]
-                role["statement_node"] = prefix_rule[2]
-            roles.append(role)
+            roles.append(role_for_row(spec, row, promoted))
 
         payload = {
             "zone_id": spec["zone_id"],
             "title": spec["title"],
             "problem": spec["problem"],
-            "concepts": [COMMON_CONCEPT],
+            "concepts": [COMMON_CONCEPT, *spec.get("concepts", [])],
             "statement_nodes": rendered_nodes,
+            "routing_bases": {
+                route.get("basis_id", route["target"]): route["basis"]
+                for route in spec.get("contextual_routes", [])
+            },
             "declaration_roles": roles,
             "intra_zone_relations": [],
         }
         destination = ZONES / f"{spec['zone_id']}.json"
+        if len(roles) > 10_000:
+            rendered = json.dumps(
+                payload,
+                ensure_ascii=False,
+                separators=(",", ":"),
+            ) + "\n"
+        else:
+            rendered = json.dumps(
+                payload,
+                ensure_ascii=False,
+                indent=1,
+            ) + "\n"
         destination.write_text(
-            json.dumps(payload, ensure_ascii=False, indent=1) + "\n",
+            rendered,
             encoding="utf-8",
         )
         print(

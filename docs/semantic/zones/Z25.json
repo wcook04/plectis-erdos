@@ -34,6 +34,7 @@
    ]
   }
  ],
+ "routing_bases": {},
  "declaration_roles": [
   {
    "declaration": "weightTail",

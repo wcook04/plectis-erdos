@@ -39,20 +39,20 @@ semantic graph provides three disjoint diagnostic views:
 
 | View | #249 | #257 | shared | total |
 |---|---:|---:|---:|---:|
-| mechanically nonrecurring candidates | 59 | 121 | 16 | **196** |
-| classical/prior-art formalisations | 24 | 16 | 30 | **70** |
-| bare open-problem equivalences | 9 | 15 | 1 | **25** |
+| mechanically nonrecurring candidates | 72 | 137 | 19 | **231** |
+| classical/prior-art formalisations | 29 | 21 | 40 | **91** |
+| bare open-problem equivalences | 14 | 15 | 2 | **31** |
 
-The nonrecurring view contains 130 unconditional object theorems, 35 scoped
-barriers, and 31 reductions or transports after aliases, open antecedents,
+The nonrecurring view contains 149 unconditional object theorems, 44 scoped
+barriers, and 38 reductions or transports after aliases, open antecedents,
 bare equivalences, finite/generated instances, infrastructure, classical
 results, and routine corollaries are removed. The bare-equivalence view records
 exact equivalences whose unresolved side retains the original difficulty. The
 classical view records established mathematics represented in Lean.
 
 These counts answer different questions; they are not a partition of the
-entire corpus and none is a theorem-novelty census. In particular, 184 of the
-196 candidates have `prior_art_state = not_assessed`. The authored frontier
+entire corpus and none is a theorem-novelty census. In particular, 212 of the
+231 candidates have `prior_art_state = not_assessed`. The authored frontier
 therefore advances only a reviewed shortlist of 11—five for #249 and six for
 #257—and records a residual risk for every one. The live prose-level
 `open-antecedents` view currently has 52 entries, 10 marked

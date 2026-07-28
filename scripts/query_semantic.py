@@ -66,6 +66,8 @@ CONTRACT = ROOT / "docs" / "publication_contract.json"
 LAB = ROOT / "docs" / "theory_lab.json"
 
 BUDGET = 64 * 1024
+PROBLEMS = ("243", "249", "251", "257", "269", "1049")
+PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 
 
 def load() -> dict:
@@ -102,6 +104,15 @@ def emit(payload: object) -> int:
 
 def nodes_by_id(corpus: dict) -> dict[str, dict]:
     return {n["id"]: n for n in corpus["statement_nodes"]}
+
+
+def is_authored_interpretation(record: dict) -> bool:
+    """True only for authored semantics, never the structural discovery floor."""
+    return record.get("interpretation_tier") == "authored_statement"
+
+
+def is_structural_interpretation(record: dict) -> bool:
+    return record.get("interpretation_tier") == "source_structural_family"
 
 
 def compact(node: dict) -> dict:
@@ -553,21 +564,60 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
             if not known_citation((module, declaration))
         )
         per_problem = {}
-        for problem in ("249", "257", "both", "shared_substrate"):
-            total = sum(1 for n in corpus["statement_nodes"] if n.get("problem") == problem)
-            hit = sum(1 for nid in reached if (index.get(nid) or {}).get("problem") == problem)
-            if total:
+        for problem in PROBLEM_SCOPES:
+            problem_nodes = [
+                node
+                for node in corpus["statement_nodes"]
+                if node.get("problem") == problem
+            ]
+            authored_nodes = [
+                node
+                for node in problem_nodes
+                if is_authored_interpretation(node)
+            ]
+            structural_nodes = [
+                node
+                for node in problem_nodes
+                if is_structural_interpretation(node)
+            ]
+            authored_hit = sum(
+                1
+                for node_id in reached
+                if (index.get(node_id) or {}).get("problem") == problem
+                and is_authored_interpretation(index.get(node_id) or {})
+            )
+            structural_hit = sum(
+                1
+                for node_id in reached
+                if (index.get(node_id) or {}).get("problem") == problem
+                and is_structural_interpretation(index.get(node_id) or {})
+            )
+            if problem_nodes:
                 per_problem[problem] = {
-                    "nodes_reached": hit,
-                    "nodes_total": total,
-                    "explicit_citation_reach_fraction": round(hit / total, 4),
+                    "authored_nodes_reached": authored_hit,
+                    "authored_nodes_total": len(authored_nodes),
+                    "authored_explicit_citation_reach_fraction": (
+                        round(authored_hit / len(authored_nodes), 4)
+                        if authored_nodes
+                        else None
+                    ),
+                    "structural_family_nodes_reached": structural_hit,
+                    "structural_family_nodes_total": len(structural_nodes),
                 }
         rows.append(
             {
                 "artifact": artifact["id"],
                 "source": artifact["source_path"],
                 "declarations_cited": len(cited),
-                "statement_nodes_reached": len(reached),
+                "authored_statement_nodes_reached": sum(
+                    is_authored_interpretation(index.get(node_id) or {})
+                    for node_id in reached
+                ),
+                "structural_family_nodes_reached": sum(
+                    is_structural_interpretation(index.get(node_id) or {})
+                    for node_id in reached
+                ),
+                "all_tier_statement_nodes_reached": len(reached),
                 "node_routed_declaration_citations": len(node_routed),
                 "node_routed_citations_total": len(node_routed),
                 "node_routed_citations": node_routed[: args.limit],
@@ -581,13 +631,15 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
     return emit(
         {
             "question": (
-                "which authored statement nodes are reached by explicit "
-                "module-and-declaration citations in each manuscript"
+                "which authored statement nodes and source-structural families "
+                "are reached by explicit module-and-declaration citations in "
+                "each manuscript"
             ),
             "measurement_contract": (
                 "This is citation reach, not explanatory or semantic completeness. "
-                "Prose can explain a statement without an explicit Lean citation, and "
-                "a citation can occur without explaining the statement."
+                "Authored and structural-family reaches are reported separately: "
+                "a structural-family hit is exact discoverability, not an authored "
+                "mathematical interpretation."
             ),
             "results": rows,
         }
@@ -635,6 +687,7 @@ def cmd_population_backlog(corpus: dict, args) -> int:
                 target = (
                     linked_by_role
                     if role.get("statement_node")
+                    and is_authored_interpretation(role)
                     else unlinked_by_role
                 )
                 row = target.setdefault(
@@ -645,6 +698,12 @@ def cmd_population_backlog(corpus: dict, args) -> int:
                         "declaration": role["declaration"],
                         "semantic_zone": role.get("zone"),
                         "statement_node": role.get("statement_node"),
+                        "interpretation_tier": role.get(
+                            "interpretation_tier"
+                        ),
+                        "routing_basis_ref": role.get(
+                            "routing_basis_ref"
+                        ),
                         "paper_occurrences": [],
                     },
                 )
@@ -665,8 +724,8 @@ def cmd_population_backlog(corpus: dict, args) -> int:
             {
                 "paper": str(source.relative_to(ROOT)),
                 "raw_citation_count": len(citations),
-                "statement_linked_declaration_count": len(linked),
-                "statement_unlinked_live_declaration_count": len(unlinked),
+                "authored_statement_linked_declaration_count": len(linked),
+                "authored_statement_backlog_declaration_count": len(unlinked),
                 "atlas_absent_citation_count": len(absent),
                 "unlinked_module_groups": [
                     {
@@ -684,7 +743,7 @@ def cmd_population_backlog(corpus: dict, args) -> int:
         )
     source_rows.sort(
         key=lambda row: (
-            -row["statement_unlinked_live_declaration_count"],
+            -row["authored_statement_backlog_declaration_count"],
             row["paper"],
         )
     )
@@ -692,7 +751,7 @@ def cmd_population_backlog(corpus: dict, args) -> int:
         {
             "question": (
                 "Which exact live Lean declarations were selected by authored "
-                "papers but still lack proposition-level semantic linkage?"
+                "papers but still lack authored mathematical interpretation?"
             ),
             "selection_rule": (
                 "Papers nominate high-value targets; exact module/declaration "
@@ -705,8 +764,8 @@ def cmd_population_backlog(corpus: dict, args) -> int:
             ),
             "paper_filter": args.paper,
             "paper_count": len(source_rows),
-            "statement_unlinked_live_declaration_count": sum(
-                row["statement_unlinked_live_declaration_count"]
+            "authored_statement_backlog_declaration_count": sum(
+                row["authored_statement_backlog_declaration_count"]
                 for row in source_rows
             ),
             "papers": source_rows[:paper_cap],
@@ -760,26 +819,36 @@ def cmd_coverage(corpus: dict, args) -> int:
                     "authored_theorem_like_declarations": summary[
                         "authored_theorem_like"
                     ],
-                    "authored_theorem_like_node_linked": coverage[
-                        "authored_theorem_like_node_linked"
+                    "authored_theorem_like_with_authored_interpretation": coverage[
+                        "authored_theorem_like_authored_statement_interpretation"
                     ],
-                    "authored_theorem_like_direct_evidence": coverage[
-                        "authored_theorem_like_direct_evidence"
+                    "authored_interpretation_fraction": coverage[
+                        "authored_theorem_like_authored_statement_interpretation_fraction"
                     ],
-                    "authored_theorem_like_contextual_node_links": coverage[
-                        "authored_theorem_like_contextual_node_links"
+                    "authored_direct_evidence": coverage[
+                        "authored_theorem_like_authored_statement_direct_evidence"
+                    ],
+                    "authored_direct_evidence_fraction": coverage[
+                        "authored_theorem_like_authored_statement_direct_evidence_fraction"
+                    ],
+                    "authored_contextual_family_links": coverage[
+                        "authored_theorem_like_authored_statement_contextual_links"
+                    ],
+                    "source_structural_family_only": coverage[
+                        "authored_theorem_like_source_structural_family"
                     ],
                     "authored_theorem_like_zone_only": coverage[
                         "authored_theorem_like_zone_only"
                     ],
-                    "node_linked_fraction": coverage[
+                    "all_tier_node_linked_fraction": coverage[
                         "authored_theorem_like_node_linked_fraction"
                     ],
                     "claim": (
-                        "Only node-linked declarations participate in an authored "
-                        "canonical mathematical statement. Direct evidence anchors "
-                        "are counted separately so bulk contextual helper links "
-                        "cannot masquerade as new statement evidence."
+                        "Authored interpretations are distinct from exact structural "
+                        "families. Direct proposition anchors are distinct from "
+                        "digest- or module-bound contextual family links, so neither "
+                        "the structural floor nor bulk helpers can masquerade as new "
+                        "direct statement evidence."
                     ),
                 },
                 "typed_relations": {
@@ -952,6 +1021,15 @@ def cmd_inventory(corpus: dict, args) -> int:
                 "zone": route.get("zone"),
                 "statement_node": route.get("statement_node"),
                 "routing_origin": route.get("routing_origin", "authored"),
+                "interpretation_tier": route.get("interpretation_tier"),
+                "routing_basis_ref": route.get("routing_basis_ref"),
+                "routing_basis": (
+                    corpus.get("routing_basis_catalog", {}).get(
+                        route.get("routing_basis_ref")
+                    )
+                    if route.get("routing_basis_ref")
+                    else route.get("routing_basis")
+                ),
             }
         )
 
@@ -962,8 +1040,9 @@ def cmd_inventory(corpus: dict, args) -> int:
             "measurement_contract": (
                 "Every result is a live declaration route from the exhaustive atlas. "
                 "A zone or automatic fallback makes the declaration discoverable; it "
-                "does not infer a mathematical claim. Only statement_node links carry "
-                "authored statement-level interpretation."
+                "does not infer a mathematical claim. Only statement_node links at "
+                "the authored_statement interpretation tier carry authored "
+                "statement-level interpretation."
             ),
             "filters": {
                 "search": args.node_id or "",
@@ -1319,7 +1398,7 @@ def main() -> int:
         nargs="?",
         help="detail id for node, mechanism, explains, or expert-questions",
     )
-    parser.add_argument("--problem", choices=("249", "257", "shared_substrate"))
+    parser.add_argument("--problem", choices=(*PROBLEMS, "shared_substrate"))
     parser.add_argument(
         "--module",
         help="inventory-only case-insensitive module path filter",

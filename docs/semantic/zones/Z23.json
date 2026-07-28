@@ -59,6 +59,7 @@
    ]
   }
  ],
+ "routing_bases": {},
  "declaration_roles": [
   {
    "declaration": "le_of_descent_of_quadrupling",

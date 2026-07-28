@@ -142,10 +142,9 @@ exactly once. These are navigation counts, not novelty claims.
   The no-build tour exposes corpus scale, a mathematical map, the exact open
   frontier, and an authority boundary. Committed indexes expose every indexed
   declaration and exact dependencies for both loaded roots after cloning.
-  Use `python3 scripts/query_semantic.py mechanisms --problem 249`,
-  `receipts`, and `population-backlog` for mechanisms, failed routes, and
-  paper-seeded semantic gaps. These are navigation projections, not proof
-  authority.
+  Use `query_semantic.py` commands `mechanisms`, `coverage`, `receipts`, and
+  `population-backlog`. Coverage separates direct evidence, family
+  context, and structural discovery: navigation projections, not proof authority.
 - **Publication topology:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
   `python3 scripts/query_corpus.py --publication-family <id>`.

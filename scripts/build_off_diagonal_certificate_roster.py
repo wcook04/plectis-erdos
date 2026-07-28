@@ -417,7 +417,11 @@ def build_roster() -> dict[str, Any]:
     bound_rows, grouped, file_digests = bind_rows_to_public_theorems(
         selected_rows
     )
+    later_bound_rows, later_grouped, later_file_digests = (
+        bind_rows_to_public_theorems(excluded_later)
+    )
     certificates = _distinct_certificate_roster(grouped)
+    later_certificates = _distinct_certificate_roster(later_grouped)
     duplicates = _duplicate_groups(grouped)
     distinct_theorem_refs = {
         row["theorem_ref"] for row in bound_rows
@@ -432,6 +436,14 @@ def build_roster() -> dict[str, Any]:
         raise RosterError(
             "historical off-diagonal roster contains diagonal triples: "
             f"{diagonal}"
+        )
+    later_diagonal = [
+        (h, N, L) for h, N, L in later_grouped if h == N
+    ]
+    if later_diagonal:
+        raise RosterError(
+            "later verified off-diagonal census contains diagonal triples: "
+            f"{later_diagonal}"
         )
     maximum_selected_N = (
         max(selected_positions) if selected_positions else None
@@ -452,6 +464,23 @@ def build_roster() -> dict[str, Any]:
         for certificate in certificates
         if certificate["N"] == maximum_selected_N
     ]
+
+    later_summary = _excluded_later_summary(excluded_later)
+    later_summary.update(
+        {
+            "distinct_public_theorem_reference_count": len(
+                {row["theorem_ref"] for row in later_bound_rows}
+            ),
+            "lean_files": [
+                {
+                    "file": source_file,
+                    "sha256": later_file_digests[source_file],
+                }
+                for source_file in sorted(later_file_digests)
+            ],
+            "distinct_certificates": later_certificates,
+        }
+    )
 
     return {
         "schema": "erdos249257-off-diagonal-certificate-roster/1",
@@ -538,9 +567,7 @@ def build_roster() -> dict[str, Any]:
         "source_rows": [
             _source_row_projection(row) for row in bound_rows
         ],
-        "excluded_later_verified_rows": _excluded_later_summary(
-            excluded_later
-        ),
+        "excluded_later_verified_rows": later_summary,
         "limits": [
             (
                 "Every roster entry is one finite checked instance; no "
@@ -593,6 +620,30 @@ def public_projection_scope_caveat(data: dict[str, Any]) -> str:
     )
 
 
+def later_verified_projection_statement(data: dict[str, Any]) -> str:
+    """Render the separately bound post-cutoff finite-certificate census."""
+    later = data["excluded_later_verified_rows"]
+    return (
+        "PROVED SEPARATE FINITE CENSUS: each of the "
+        f"{later['distinct_h_N_L_certificate_count']} distinct verified "
+        "(h,N,L) triples above the historical Z27 cutoff is matched to an "
+        "exact public theorem of type certifiedKill h N L. The census spans "
+        f"{later['distinct_file_count']} SHA-256-bound Lean files and positions "
+        f"from {later['minimum_N']} through {later['maximum_N']}."
+    )
+
+
+def later_verified_projection_scope_caveat(data: dict[str, Any]) -> str:
+    """State why the later census does not enlarge the historical claim."""
+    later = data["excluded_later_verified_rows"]
+    return (
+        f"These {later['row_count']} later rows are finite checked instances "
+        "recorded separately from the bounded historical audit. They do not "
+        "change its 123-certificate count and do not supply the all-position "
+        "or cofinal certificate family required by the #249 reductions."
+    )
+
+
 def validate_zone_projection(
     data: dict[str, Any],
     zone_path: Path = ZONE_PATH,
@@ -620,6 +671,32 @@ def validate_zone_projection(
         errors.append(
             f"{_relative(zone_path)}: scope caveat is stale"
         )
+    later_nodes = [
+        current
+        for current in zone.get("statement_nodes", [])
+        if current.get("id") == "free_position_later_verified_certificates"
+    ]
+    if len(later_nodes) != 1:
+        errors.append(
+            f"{_relative(zone_path)}: expected one "
+            "free_position_later_verified_certificates node"
+        )
+    else:
+        later_node = later_nodes[0]
+        if (
+            later_node.get("canonical_statement")
+            != later_verified_projection_statement(data)
+        ):
+            errors.append(
+                f"{_relative(zone_path)}: later verified statement is stale"
+            )
+        if (
+            later_node.get("scope_caveat")
+            != later_verified_projection_scope_caveat(data)
+        ):
+            errors.append(
+                f"{_relative(zone_path)}: later verified caveat is stale"
+            )
     return errors
 
 

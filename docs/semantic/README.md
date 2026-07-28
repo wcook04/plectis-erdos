@@ -16,7 +16,7 @@ middle.
 Lean source
     ↓  structural extraction
 docs/declaration_atlas.json          exhaustive declaration inventory
-    ↓  typed routing + selected evidence_of   ← THIS DIRECTORY
+    ↓  exact structural families + authored interpretation   ← THIS DIRECTORY
 docs/semantic_corpus.json            statement nodes, typed relations, coverage receipt
     ↓  selected_as
 docs/claims.json                     curated ledger: 100 reviewed claims
@@ -59,13 +59,18 @@ canonical prose statement, its evidence declarations, its logical class, its
 problem membership, the open antecedents it still depends on, its prior-art
 state, and for barriers a mandatory scope caveat.
 
-The graph is not an informalisation of every Lean theorem. Every live
-declaration has a typed route: a role plus a semantic zone, or a generated
-family. Only a declaration whose route names a `statement_node` participates
-in a canonical mathematical statement. A declaration routed only as
-`substrate`, `concept`, `representation`, or another non-statement role is
-locatable, but it has not been interpreted at statement level. The generated
-coverage receipt reports those populations separately.
+The graph has two interpretation tiers. Every theorem or lemma has exact
+source-structural linkage: declarations in the same module with the same
+normalised Lean proposition schema share a generated structural-family node.
+That makes the long tail discoverable without guessing mathematics from names.
+It is not an authored paraphrase.
+
+Above that floor, authored statement nodes record mathematical interpretation.
+Their declaration links are reported in two subtiers: exact proposition
+evidence and contextual participation in a bounded family such as a
+digest-verified certificate roster. A declaration routed only through a
+source-structural family remains locatable but not mathematically interpreted.
+The generated coverage receipt keeps all three populations separate.
 
 A **relation** is a typed mathematical edge with a required evidence basis.
 
@@ -116,10 +121,12 @@ python3 scripts/query_semantic.py population-backlog --paper erdos249-totient-re
 `population-backlog` is the semantic authoring queue.  It scans every authored
 paper, resolves both public `\lword` links and reasoning-surface `\lean` links
 to exact live declaration roles, deduplicates qualified and short spellings,
-and ranks paper-selected declarations that still lack proposition-level
-semantics.  A paper citation nominates a target; the Lean signature and proof
-cone still decide the authored statement.  The command does not promote
-helpers automatically or treat a larger node count as quality.
+and ranks paper-selected declarations that still lack an
+`authored_statement` interpretation. A structural-family link therefore stays
+in the backlog rather than making it disappear. A paper citation nominates a
+target; the Lean signature and proof cone still decide the authored statement.
+The command does not promote helpers automatically or treat a larger node
+count as quality.
 
 ## Prior art is staged, never a boolean
 
@@ -169,13 +176,17 @@ would make safe regeneration depend on Git state.
 2. **Typed routing.** Every live declaration has exactly one role-and-zone
    receipt, or one manifest-owned generated-family receipt. Duplicate authored
    receipts and missing routes fail the check.
-3. **Statement-level interpretation.** Selected declarations point to authored
-   canonical statement nodes. The receipt prints how many authored
-   theorem-like declarations are node-linked and how many are only zone-routed.
-   It separately counts exact theorem-like evidence anchors and contextual
-   links, so assigning more helpers to an existing node cannot masquerade as
-   new proposition evidence.
-4. **Public selection.** Every declaration selected by `claims.json` has a
+3. **Exact structural linkage.** Every authored theorem-like declaration is
+   linked either to an authored node or to an exact module-and-signature family.
+   This closes navigation coverage but makes no claim of mathematical
+   interpretation.
+4. **Authored statement-level interpretation.** Selected declarations point to
+   authored canonical statement nodes. The receipt separately counts exact
+   theorem evidence and contextual family links, so assigning more helpers to
+   a certificate family cannot masquerade as new proposition evidence.
+   Explicit narrow-zone replacement receipts allow a reviewed packet to refine
+   a broad zone-only substrate route without creating duplicate ownership.
+5. **Public selection.** Every declaration selected by `claims.json` has a
    semantic route and, when theorem-like, a statement node.
 
 The checker also requires generated-family provenance, named open antecedents

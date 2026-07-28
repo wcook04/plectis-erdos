@@ -162,8 +162,20 @@ def test_live_roster_counts_signatures_and_duplicate_groups() -> None:
     assert excluded["row_count"] == 54
     assert excluded["distinct_h_N_L_certificate_count"] == 54
     assert excluded["distinct_file_count"] == 54
+    assert excluded["distinct_public_theorem_reference_count"] == 54
+    assert len(excluded["lean_files"]) == 54
+    assert len(excluded["distinct_certificates"]) == 54
     assert excluded["minimum_N"] > roster.HISTORICAL_AUDIT_CUTOFF_N
     assert "historical Z27 cutoff" in excluded["policy"]
+    for certificate in excluded["distinct_certificates"]:
+        expected = {
+            "h": certificate["h"],
+            "N": certificate["N"],
+            "L": certificate["L"],
+        }
+        assert len(certificate["theorems"]) == 1
+        assert certificate["theorems"][0]["arguments"] == expected
+        assert certificate["theorems"][0]["source_sha256"]
 
 
 def test_depth_root_file_matches_two_distinct_public_signatures() -> None:
@@ -206,6 +218,12 @@ def test_public_projection_distinguishes_rows_and_certificates() -> None:
     assert "2 rows duplicate" in statement
     assert "122 Lean files" in statement
     assert "54 later verified certificate triples" in caveat
+    later_statement = roster.later_verified_projection_statement(data)
+    later_caveat = roster.later_verified_projection_scope_caveat(data)
+    assert "54 distinct verified (h,N,L) triples" in later_statement
+    assert "54 SHA-256-bound Lean files" in later_statement
+    assert "recorded separately" in later_caveat
+    assert "do not change its 123-certificate count" in later_caveat
 
 
 def main() -> int:

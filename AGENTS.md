@@ -190,6 +190,7 @@ Lean build when a result must be checked.
    python3 scripts/query_semantic.py nonrecurring --problem 257
    python3 scripts/query_semantic.py barriers
    python3 scripts/query_semantic.py open-antecedents
+   python3 scripts/query_semantic.py coverage
    python3 scripts/query_semantic.py paper-coverage
    python3 scripts/query_semantic.py population-backlog
    python3 scripts/query_semantic.py semantic-reviews
@@ -202,6 +203,10 @@ Lean build when a result must be checked.
    reviews for selected high-value nodes and relations. A model receipt means
    exact source-to-wording consistency review within its stated ceiling, not
    human review, novelty authority, or Lean proof authority.
+   Read the `coverage` result by tier: `authored_statement` is mathematical
+   interpretation, `source_structural_family` is exact module/signature
+   discoverability only, and direct proposition evidence is stricter than
+   contextual membership in an authored certificate family.
 13. Read `docs/theory_lab.json` when the question is *why* a proof works, what
    happens if the mathematics is perturbed, or whether an explanation here has
    ever been tested. It sits above the semantic corpus and holds the mechanism

@@ -1,0 +1,1028 @@
+{
+  "zone_id": "Z38",
+  "title": "Actual-LCM orbit arithmetic: exact descent, positivity, and residue bridges",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "totient_overlap_factor",
+      "label": "totient overlap factor",
+      "note": "The exact integral correction that retains prime-power overlap in the totient of a product instead of imposing coprimality."
+    },
+    {
+      "id": "relative_euler_density",
+      "label": "relative Euler density",
+      "note": "The Euler product over prime factors newly introduced by one endpoint relative to another, together with rough-support cardinality bounds."
+    },
+    {
+      "id": "quotient_scale_divisor_letter",
+      "label": "quotient-scale divisor letter",
+      "note": "Exact reduction of actual-LCM divisor-ray coefficients to totient differences at the smaller quotient scale."
+    },
+    {
+      "id": "foreign_prime_power_descent",
+      "label": "foreign-prime-power descent",
+      "note": "The classification of short nondivisor offsets as bare prime powers and their descent through a predecessor dividing the period LCM."
+    },
+    {
+      "id": "short_window_coefficient_positivity",
+      "label": "short-window coefficient positivity",
+      "note": "Roughness and Euler-density estimates converted into strict positivity and quantitative lower bounds for every short actual-LCM arithmetic letter."
+    },
+    {
+      "id": "terminal_totient_carry_compatibility",
+      "label": "terminal totient carry compatibility",
+      "note": "Exact factorisation and divisibility of the odd-half terminal correction, including the cancellation that prevents it from independently escaping the two-step affine carry."
+    },
+    {
+      "id": "actual_lcm_arithmetic_word",
+      "label": "actual-LCM arithmetic word",
+      "note": "The finite coefficient word attached to the actual LCM diagonal, its recurrence, structural term classification, strict growth, and exact residue interpretation."
+    },
+    {
+      "id": "short_arithmetic_kill_supply",
+      "label": "short arithmetic-kill supply",
+      "note": "Conditional transports from an odd-guard half-word producer to short arithmetic kills and onward to fresh-loss projection data."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "overlap_factor_exact_product_and_excess",
+      "canonical_statement": "PROVED: for x>0, phi(jx) is exactly phi(x) times an integral overlap factor; the factor equals phi(j) in the coprime case, is always at least phi(j), and every nonzero excess is witnessed by a prime whose full power in j is already saturated by x.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "totient_overlap_factor"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the totient gcd-product identity, exact division by phi(gcd(j,x)), and extraction of a saturated common prime from strict overlap",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The underlying totient product identities are classical. No priority or novelty claim is made for this formal packaging.",
+      "scope_caveat": "This is an exact local factorisation. It does not by itself supply a nonzero residue, a cofinal arithmetic kill, or irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totient_mul_eq_overlapFactor_mul",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 43
+        },
+        {
+          "declaration": "totientOverlapFactor_eq_totient_of_coprime",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 163
+        },
+        {
+          "declaration": "totient_le_totientOverlapFactor",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 169
+        },
+        {
+          "declaration": "exists_saturated_prime_of_overlapExcess_ne_zero",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 188
+        }
+      ]
+    },
+    {
+      "id": "relative_euler_product_exactly_measures_new_prime_support",
+      "canonical_statement": "PROVED: the prime factors of a product split into those already present and those new relative to the first factor; this gives an exact relative Euler-product formula for phi(jx), an exact quotient by phi(j), and, on an LCM divisor-ray endpoint, places every relative new prime above the period cutoff.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "relative_euler_density",
+        "totient_overlap_factor"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "prime-factor support decomposition and Euler's finite product formula for the totient",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Finite Euler products and prime-factor support decompositions are classical; no novelty claim is made.",
+      "scope_caveat": "The formulas expose the exact relative density but do not ensure that the density is separated far enough from zero without the later roughness hypotheses.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "primeFactors_mul_eq_union_relative",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 84
+        },
+        {
+          "declaration": "totient_mul_eq_totient_mul_relativeEulerProduct",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 100
+        },
+        {
+          "declaration": "totient_mul_div_totient_eq_relativeEulerProduct",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 114
+        },
+        {
+          "declaration": "relativePrimeFactors_lcmDivisor_endpoint_gt",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 128
+        }
+      ]
+    },
+    {
+      "id": "divisor_ray_letter_has_exact_overlap_descent",
+      "canonical_statement": "PROVED: an actual-LCM divisor-ray letter is exactly its clean quotient-scale core plus the upper overlap excess minus the lower overlap excess; equivalently, the ray's totient difference has an exact overlap-aware quotient-scale formula, recovering the clean delta identity when both excesses vanish.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "totient_overlap_factor",
+        "quotient_scale_divisor_letter"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "apply the overlap-factor product identity at consecutive divisor-ray endpoints and regroup the exact difference",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for the overlap-aware formal descent.",
+      "scope_caveat": "The descent is exact for divisor offsets, but its correction terms need not vanish and the identity alone does not prove the coefficient is positive.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcmDivisorRayLetter_eq_cleanCore_add_overlapExcess",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 225
+        },
+        {
+          "declaration": "deltaTotient_divisor_ray_eq_overlapLetter",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 247
+        },
+        {
+          "declaration": "lcmDivisorRayLetter_eq_clean_delta",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 270
+        }
+      ]
+    },
+    {
+      "id": "diagonal_arithmetic_letter_is_the_exact_totient_increment",
+      "canonical_statement": "PROVED: the actual-LCM arithmetic letter is exactly the consecutive totient difference and the corresponding diagonal-window increment; at every divisor offset it is divisible by phi(j), and every positive even short offset at a power-of-two height divides the period LCM and therefore has that divisibility.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "quotient_scale_divisor_letter",
+        "actual_lcm_arithmetic_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "specialise the exact divisor-ray identity to the actual diagonal and use period-LCM divisibility of even short offsets at power-of-two height",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for these coordinate identifications.",
+      "scope_caveat": "Divisibility by phi(j) constrains the letter arithmetically but does not certify a nonzero residue or a diagonal kill.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcmRayArithmeticLetter_eq_deltaTotient",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 298
+        },
+        {
+          "declaration": "diagonalWindowIncrement_eq_lcmRayArithmeticLetter",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 310
+        },
+        {
+          "declaration": "totient_dvd_lcmRayArithmeticLetter_of_dvd",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 322
+        },
+        {
+          "declaration": "even_short_offset_dvd_periodLcm_pow_two",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 337
+        },
+        {
+          "declaration": "totient_dvd_lcmRayArithmeticLetter_of_even_short_pow_two",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 366
+        }
+      ]
+    },
+    {
+      "id": "short_offsets_are_divisors_or_descending_foreign_prime_powers",
+      "canonical_statement": "PROVED: every positive offset below twice the cutoff is either a divisor of the period LCM or a bare prime power; in the foreign-prime-power case its predecessor divides the period LCM, both relevant endpoints have no small prime factor, the arithmetic letter is exactly the predecessor-scale letter, and the predecessor quotient is strictly smaller.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "foreign_prime_power_descent",
+        "quotient_scale_divisor_letter"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "prime-power classification below twice the LCM cutoff followed by predecessor divisibility and exact totient scaling",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for this formal short-window classification and descent.",
+      "scope_caveat": "The dichotomy is confined to the stated short window. It does not classify arbitrary offsets or itself give a cofinal family of useful residues.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcmRayArithmeticLetter_divisor_or_primePower",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 376
+        },
+        {
+          "declaration": "foreignPrimePower_predecessor_dvd_periodLcm",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 403
+        },
+        {
+          "declaration": "foreignPrimePower_predecessor_endpoint_primeFactors_gt",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 436
+        },
+        {
+          "declaration": "deltaTotient_foreignPrimePower_ray_eq_predecessorLetter",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 486
+        },
+        {
+          "declaration": "foreignPrimePower_predecessor_quotient_lt",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 520
+        },
+        {
+          "declaration": "lcmRayArithmeticLetter_divisor_or_predecessorPrimePower",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 546
+        }
+      ]
+    },
+    {
+      "id": "rough_new_prime_support_retains_three_quarters_euler_density",
+      "canonical_statement": "PROVED: a prime newly appearing beyond the period LCM does not divide that LCM and forces rough endpoint support; elementary Euler-product and support-cardinality bounds then show that sufficiently rough endpoints, and their relative-new-prime analogues, retain more than three quarters of their mass under the totient, with the required power-of-two height range made explicit.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "relative_euler_density",
+        "short_window_coefficient_positivity"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "LCM exclusion of new primes, a finite product union bound, cardinality-versus-power estimates, and Euler's totient product",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The analytic inequalities are elementary finite-product and counting estimates. No novelty claim is made.",
+      "scope_caveat": "The three-quarters threshold depends on the stated roughness and height hypotheses. These estimates do not manufacture the new prime or the final modular certificate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "newPrime_not_dvd_periodLcm",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 587
+        },
+        {
+          "declaration": "newPrime_lcmRay_endpoint_primeFactors_gt",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 599
+        },
+        {
+          "declaration": "one_sub_sum_le_prod_one_sub_rational",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 626
+        },
+        {
+          "declaration": "rough_primeFactors_card_power_le",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 652
+        },
+        {
+          "declaration": "totient_rational_lower_bound_of_primeFactors_gt",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 667
+        },
+        {
+          "declaration": "rough_primeFactors_card_lt_quarter_of_lt_two_pow",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 722
+        },
+        {
+          "declaration": "three_quarters_mul_lt_totient_of_rough_lt_two_pow",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 768
+        },
+        {
+          "declaration": "relativePrimeFactors_card_power_le",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 822
+        },
+        {
+          "declaration": "relativePrimeFactors_card_lt_quarter_of_lt_two_pow",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 843
+        },
+        {
+          "declaration": "three_quarters_lt_relativeEulerProduct_of_lt_two_pow",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 893
+        },
+        {
+          "declaration": "two_mul_le_periodLcm_add_lt_two_pow",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 974
+        }
+      ]
+    },
+    {
+      "id": "every_short_actual_lcm_arithmetic_letter_is_positive",
+      "canonical_statement": "PROVED: divisor, foreign-prime-power, and genuinely new-prime offsets each satisfy explicit period-LCM bounds against their arithmetic letter; consequently every positive offset in the short window has a strictly positive letter, and uniformly H is less than 8t times that letter.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "foreign_prime_power_descent",
+        "relative_euler_density",
+        "short_window_coefficient_positivity"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "case analysis by divisor versus foreign prime power, relative Euler-density lower bounds, and normalization of the resulting coefficient inequalities",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for the assembled quantitative positivity package.",
+      "scope_caveat": "Positivity is proved only under the theorem's power-of-two and short-window hypotheses. Positive coefficients alone do not establish a nonzero diagonal residue or a cofinal kill supply.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "periodLcm_lt_four_mul_j_mul_lcmRayArithmeticLetter_divisor",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1040
+        },
+        {
+          "declaration": "lcmRayArithmeticLetter_divisor_pos",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1191
+        },
+        {
+          "declaration": "lcmRayArithmeticLetter_foreignPrimePower_bracket",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1207
+        },
+        {
+          "declaration": "newPrime_upper_endpoint_primeFactors_card_lt_quarter",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1443
+        },
+        {
+          "declaration": "periodLcm_lt_four_mul_lcmRayArithmeticLetter_newPrime",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1541
+        },
+        {
+          "declaration": "quarter_periodLcm_lt_lcmRayArithmeticLetter_newPrime",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1637
+        },
+        {
+          "declaration": "lcmRayArithmeticLetter_newPrime_pos",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1652
+        },
+        {
+          "declaration": "periodLcm_lt_four_mul_lcmRayArithmeticLetter_of_not_dvd",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1668
+        },
+        {
+          "declaration": "lcmRayArithmeticLetter_pos_of_lt_two_mul",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1703
+        },
+        {
+          "declaration": "periodLcm_lt_eight_mul_t_mul_lcmRayArithmeticLetter",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1906
+        }
+      ]
+    },
+    {
+      "id": "terminal_totient_factor_cancels_in_two_step_carry",
+      "canonical_statement": "PROVED BARRIER: the actual odd-half terminal correction admits a positive totient factorisation and the corresponding twice-totient divisor; substituting it into the exact two-step affine carry identity cancels the same factor, so this terminal projection supplies no independent corridor escape.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "terminal_totient_carry_compatibility"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact terminal factorisation, divisibility of the following-pair correction, and algebraic cancellation in the affine carry recurrence",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for this formally isolated obstruction.",
+      "scope_caveat": "The no-go conclusion concerns this specific terminal-factor projection only. It does not rule out other residue, asymmetric-loss, or longer-window mechanisms.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_pos_terminalTotient_factorization_of_actualOddHalfCorrection",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1748
+        },
+        {
+          "declaration": "two_mul_totient_dvd_actualOddHalfCorrection_sub_following_pair",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1800
+        },
+        {
+          "declaration": "two_mul_affineStep_eq_terminal_sub_carry_add_two",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1820
+        }
+      ]
+    },
+    {
+      "id": "new_prime_frontier_controls_every_short_word_term",
+      "canonical_statement": "PROVED: at a genuinely new-prime offset the two actual-LCM ray endpoints are coprime and satisfy the complete new-prime frontier package; more generally every term of the short diagonal arithmetic word inherits the divisor-or-prime-power structural dichotomy.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "foreign_prime_power_descent",
+        "short_window_coefficient_positivity",
+        "actual_lcm_arithmetic_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "new-prime exclusion from the period LCM, endpoint gcd control, and pointwise transport of the short-offset classification into the finite word",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for the packaged frontier statement.",
+      "scope_caveat": "The frontier controls term structure and size but does not choose a word length whose residue is nonzero.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "newPrime_lcmRay_endpoints_coprime",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1942
+        },
+        {
+          "declaration": "lcmRayArithmeticLetter_newPrime_frontier",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1960
+        },
+        {
+          "declaration": "lcmDiagonalArithmeticWord_term_divisor_or_primePower",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1979
+        }
+      ]
+    },
+    {
+      "id": "positive_letters_force_strict_arithmetic_word_growth",
+      "canonical_statement": "PROVED: extending the diagonal arithmetic word appends exactly the next arithmetic letter, and within the short positive-letter range the successor word is strictly more than twice its predecessor.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "short_window_coefficient_positivity",
+        "actual_lcm_arithmetic_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the exact word recurrence together with strict positivity of the appended coefficient",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is a direct formal consequence of the coefficient recurrence and positivity package; no novelty claim is made.",
+      "scope_caveat": "Rapid integer growth does not prevent the word from lying in a forbidden congruence class; a residue producer is still required.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcmDiagonalArithmeticWord_succ",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2013
+        },
+        {
+          "declaration": "two_mul_lcmDiagonalArithmeticWord_lt_succ",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2026
+        }
+      ]
+    },
+    {
+      "id": "arithmetic_word_residue_exactly_matches_diagonal_certificates",
+      "canonical_statement": "PROVED: reducing the actual-LCM arithmetic word modulo its diagonal modulus gives exactly the diagonal-window residue; arithmetic kill is equivalent to the symmetric diagonal residue certificate and implies the asymmetric fresh-loss residue certificate.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_arithmetic_word",
+        "short_arithmetic_kill_supply"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact identification of the arithmetic word with the landed window discrepancy followed by the established residue-certificate equivalences",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for these formal bridge equivalences.",
+      "scope_caveat": "These theorems translate a supplied arithmetic kill into certificate language. They do not prove that such kills occur cofinally.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcmDiagonalArithmeticWord_emod_eq_diagonalWindowResidue",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2059
+        },
+        {
+          "declaration": "lcmDiagonalArithmeticKill_iff_diagonalSymmetricResidueCert",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2074
+        },
+        {
+          "declaration": "diagonalFreshLossResidueCert_of_lcmDiagonalArithmeticKill",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2083
+        }
+      ]
+    },
+    {
+      "id": "odd_guard_supply_transports_to_short_kills_and_fresh_loss",
+      "canonical_statement": "PROVED CONDITIONAL TRANSPORT: an odd-guard half-word-band supply yields a short actual-LCM arithmetic-kill supply, and any such short-kill supply yields the corresponding diagonal fresh-loss projection supply.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_arithmetic_word",
+        "short_arithmetic_kill_supply"
+      ],
+      "open_antecedents": [
+        "PowerTwoOddGuardHalfWordBandSupply",
+        "PowerTwoActualLcmShortArithmeticKillSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "transport of the supplied half-word witness through the exact arithmetic-word and residue-certificate bridges",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for the conditional supply transport.",
+      "scope_caveat": "The source explicitly does not prove the required cofinal odd-guard or short arithmetic-kill producer. This node is a stronger conditional input lane for the landed actual-orbit endpoint, not a proof of the open problem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "powerTwoActualLcmShortArithmeticKillSupply_of_oddGuardHalfWordBand",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2114
+        },
+        {
+          "declaration": "diagonalFreshLossProjectionSupply_of_shortArithmeticKill",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2141
+        }
+      ]
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "relative_euler_product_exactly_measures_new_prime_support",
+      "to": "overlap_factor_exact_product_and_excess",
+      "relation": "complements",
+      "basis": "The relative Euler product and the integral overlap factor are two exact normal forms for how shared and newly introduced prime support affect phi(jx)."
+    },
+    {
+      "from": "divisor_ray_letter_has_exact_overlap_descent",
+      "to": "overlap_factor_exact_product_and_excess",
+      "relation": "generated_by",
+      "basis": "The divisor-ray descent is obtained by applying the exact overlap factorisation at the upper and lower endpoints."
+    },
+    {
+      "from": "diagonal_arithmetic_letter_is_the_exact_totient_increment",
+      "to": "divisor_ray_letter_has_exact_overlap_descent",
+      "relation": "specialises",
+      "basis": "The actual diagonal arithmetic letter is the coordinate-level specialisation of the overlap-aware divisor-ray difference."
+    },
+    {
+      "from": "short_offsets_are_divisors_or_descending_foreign_prime_powers",
+      "to": "diagonal_arithmetic_letter_is_the_exact_totient_increment",
+      "relation": "complements",
+      "basis": "Divisor offsets use the exact quotient-scale identity, while the remaining short offsets descend through a foreign-prime-power predecessor."
+    },
+    {
+      "from": "rough_new_prime_support_retains_three_quarters_euler_density",
+      "to": "relative_euler_product_exactly_measures_new_prime_support",
+      "relation": "specialises",
+      "basis": "The rough-support bounds turn the exact relative Euler product into a quantitative density lower bound."
+    },
+    {
+      "from": "every_short_actual_lcm_arithmetic_letter_is_positive",
+      "to": "short_offsets_are_divisors_or_descending_foreign_prime_powers",
+      "relation": "generated_by",
+      "basis": "The positivity proof splits on the complete divisor-versus-foreign-prime-power classification."
+    },
+    {
+      "from": "every_short_actual_lcm_arithmetic_letter_is_positive",
+      "to": "rough_new_prime_support_retains_three_quarters_euler_density",
+      "relation": "generated_by",
+      "basis": "The quantitative coefficient bounds consume the three-quarters Euler-density estimates for rough and relative-new-prime support."
+    },
+    {
+      "from": "terminal_totient_factor_cancels_in_two_step_carry",
+      "to": "every_short_actual_lcm_arithmetic_letter_is_positive",
+      "relation": "complements",
+      "basis": "Coefficient positivity supplies a strong short-window fact, while the terminal calculation records that one tempting carry projection nevertheless cancels and cannot finish the residue argument alone."
+    },
+    {
+      "from": "new_prime_frontier_controls_every_short_word_term",
+      "to": "short_offsets_are_divisors_or_descending_foreign_prime_powers",
+      "relation": "specialises",
+      "basis": "The word-level theorem transports the short-offset dichotomy term by term and isolates the full new-prime endpoint package."
+    },
+    {
+      "from": "positive_letters_force_strict_arithmetic_word_growth",
+      "to": "every_short_actual_lcm_arithmetic_letter_is_positive",
+      "relation": "generated_by",
+      "basis": "The more-than-doubling recurrence follows from appending a strictly positive next letter."
+    },
+    {
+      "from": "arithmetic_word_residue_exactly_matches_diagonal_certificates",
+      "to": "new_prime_frontier_controls_every_short_word_term",
+      "relation": "complements",
+      "basis": "The frontier controls the word's terms, while the residue bridges identify what modular property of the assembled word constitutes a diagonal certificate."
+    },
+    {
+      "from": "odd_guard_supply_transports_to_short_kills_and_fresh_loss",
+      "to": "arithmetic_word_residue_exactly_matches_diagonal_certificates",
+      "relation": "generated_by",
+      "basis": "The conditional supply maps consume the exact arithmetic-word and residue-certificate identifications."
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "totient_mul_eq_overlapFactor_mul",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 43,
+      "role": "statement",
+      "statement_node": "overlap_factor_exact_product_and_excess"
+    },
+    {
+      "declaration": "totientOverlapFactor_eq_totient_of_coprime",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 163,
+      "role": "statement",
+      "statement_node": "overlap_factor_exact_product_and_excess"
+    },
+    {
+      "declaration": "totient_le_totientOverlapFactor",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 169,
+      "role": "statement",
+      "statement_node": "overlap_factor_exact_product_and_excess"
+    },
+    {
+      "declaration": "exists_saturated_prime_of_overlapExcess_ne_zero",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 188,
+      "role": "statement",
+      "statement_node": "overlap_factor_exact_product_and_excess"
+    },
+    {
+      "declaration": "primeFactors_mul_eq_union_relative",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 84,
+      "role": "statement",
+      "statement_node": "relative_euler_product_exactly_measures_new_prime_support"
+    },
+    {
+      "declaration": "totient_mul_eq_totient_mul_relativeEulerProduct",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 100,
+      "role": "statement",
+      "statement_node": "relative_euler_product_exactly_measures_new_prime_support"
+    },
+    {
+      "declaration": "totient_mul_div_totient_eq_relativeEulerProduct",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 114,
+      "role": "statement",
+      "statement_node": "relative_euler_product_exactly_measures_new_prime_support"
+    },
+    {
+      "declaration": "relativePrimeFactors_lcmDivisor_endpoint_gt",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 128,
+      "role": "statement",
+      "statement_node": "relative_euler_product_exactly_measures_new_prime_support"
+    },
+    {
+      "declaration": "lcmDivisorRayLetter_eq_cleanCore_add_overlapExcess",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 225,
+      "role": "statement",
+      "statement_node": "divisor_ray_letter_has_exact_overlap_descent"
+    },
+    {
+      "declaration": "deltaTotient_divisor_ray_eq_overlapLetter",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 247,
+      "role": "statement",
+      "statement_node": "divisor_ray_letter_has_exact_overlap_descent"
+    },
+    {
+      "declaration": "lcmDivisorRayLetter_eq_clean_delta",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 270,
+      "role": "statement",
+      "statement_node": "divisor_ray_letter_has_exact_overlap_descent"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_eq_deltaTotient",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 298,
+      "role": "statement",
+      "statement_node": "diagonal_arithmetic_letter_is_the_exact_totient_increment"
+    },
+    {
+      "declaration": "diagonalWindowIncrement_eq_lcmRayArithmeticLetter",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 310,
+      "role": "statement",
+      "statement_node": "diagonal_arithmetic_letter_is_the_exact_totient_increment"
+    },
+    {
+      "declaration": "totient_dvd_lcmRayArithmeticLetter_of_dvd",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 322,
+      "role": "statement",
+      "statement_node": "diagonal_arithmetic_letter_is_the_exact_totient_increment"
+    },
+    {
+      "declaration": "even_short_offset_dvd_periodLcm_pow_two",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 337,
+      "role": "statement",
+      "statement_node": "diagonal_arithmetic_letter_is_the_exact_totient_increment"
+    },
+    {
+      "declaration": "totient_dvd_lcmRayArithmeticLetter_of_even_short_pow_two",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 366,
+      "role": "statement",
+      "statement_node": "diagonal_arithmetic_letter_is_the_exact_totient_increment"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_divisor_or_primePower",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 376,
+      "role": "statement",
+      "statement_node": "short_offsets_are_divisors_or_descending_foreign_prime_powers"
+    },
+    {
+      "declaration": "foreignPrimePower_predecessor_dvd_periodLcm",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 403,
+      "role": "statement",
+      "statement_node": "short_offsets_are_divisors_or_descending_foreign_prime_powers"
+    },
+    {
+      "declaration": "foreignPrimePower_predecessor_endpoint_primeFactors_gt",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 436,
+      "role": "statement",
+      "statement_node": "short_offsets_are_divisors_or_descending_foreign_prime_powers"
+    },
+    {
+      "declaration": "deltaTotient_foreignPrimePower_ray_eq_predecessorLetter",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 486,
+      "role": "statement",
+      "statement_node": "short_offsets_are_divisors_or_descending_foreign_prime_powers"
+    },
+    {
+      "declaration": "foreignPrimePower_predecessor_quotient_lt",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 520,
+      "role": "statement",
+      "statement_node": "short_offsets_are_divisors_or_descending_foreign_prime_powers"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_divisor_or_predecessorPrimePower",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 546,
+      "role": "statement",
+      "statement_node": "short_offsets_are_divisors_or_descending_foreign_prime_powers"
+    },
+    {
+      "declaration": "newPrime_not_dvd_periodLcm",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 587,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "newPrime_lcmRay_endpoint_primeFactors_gt",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 599,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "one_sub_sum_le_prod_one_sub_rational",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 626,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "rough_primeFactors_card_power_le",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 652,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "totient_rational_lower_bound_of_primeFactors_gt",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 667,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "rough_primeFactors_card_lt_quarter_of_lt_two_pow",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 722,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "three_quarters_mul_lt_totient_of_rough_lt_two_pow",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 768,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "relativePrimeFactors_card_power_le",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 822,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "relativePrimeFactors_card_lt_quarter_of_lt_two_pow",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 843,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "three_quarters_lt_relativeEulerProduct_of_lt_two_pow",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 893,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "two_mul_le_periodLcm_add_lt_two_pow",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 974,
+      "role": "statement",
+      "statement_node": "rough_new_prime_support_retains_three_quarters_euler_density"
+    },
+    {
+      "declaration": "periodLcm_lt_four_mul_j_mul_lcmRayArithmeticLetter_divisor",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1040,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_divisor_pos",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1191,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_foreignPrimePower_bracket",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1207,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "newPrime_upper_endpoint_primeFactors_card_lt_quarter",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1443,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "periodLcm_lt_four_mul_lcmRayArithmeticLetter_newPrime",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1541,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "quarter_periodLcm_lt_lcmRayArithmeticLetter_newPrime",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1637,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_newPrime_pos",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1652,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "periodLcm_lt_four_mul_lcmRayArithmeticLetter_of_not_dvd",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1668,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_pos_of_lt_two_mul",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1703,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "periodLcm_lt_eight_mul_t_mul_lcmRayArithmeticLetter",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1906,
+      "role": "statement",
+      "statement_node": "every_short_actual_lcm_arithmetic_letter_is_positive"
+    },
+    {
+      "declaration": "exists_pos_terminalTotient_factorization_of_actualOddHalfCorrection",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1748,
+      "role": "statement",
+      "statement_node": "terminal_totient_factor_cancels_in_two_step_carry"
+    },
+    {
+      "declaration": "two_mul_totient_dvd_actualOddHalfCorrection_sub_following_pair",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1800,
+      "role": "statement",
+      "statement_node": "terminal_totient_factor_cancels_in_two_step_carry"
+    },
+    {
+      "declaration": "two_mul_affineStep_eq_terminal_sub_carry_add_two",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1820,
+      "role": "statement",
+      "statement_node": "terminal_totient_factor_cancels_in_two_step_carry"
+    },
+    {
+      "declaration": "newPrime_lcmRay_endpoints_coprime",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1942,
+      "role": "statement",
+      "statement_node": "new_prime_frontier_controls_every_short_word_term"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_newPrime_frontier",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1960,
+      "role": "statement",
+      "statement_node": "new_prime_frontier_controls_every_short_word_term"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticWord_term_divisor_or_primePower",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1979,
+      "role": "statement",
+      "statement_node": "new_prime_frontier_controls_every_short_word_term"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticWord_succ",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2013,
+      "role": "statement",
+      "statement_node": "positive_letters_force_strict_arithmetic_word_growth"
+    },
+    {
+      "declaration": "two_mul_lcmDiagonalArithmeticWord_lt_succ",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2026,
+      "role": "statement",
+      "statement_node": "positive_letters_force_strict_arithmetic_word_growth"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticWord_emod_eq_diagonalWindowResidue",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2059,
+      "role": "statement",
+      "statement_node": "arithmetic_word_residue_exactly_matches_diagonal_certificates"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticKill_iff_diagonalSymmetricResidueCert",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2074,
+      "role": "statement",
+      "statement_node": "arithmetic_word_residue_exactly_matches_diagonal_certificates"
+    },
+    {
+      "declaration": "diagonalFreshLossResidueCert_of_lcmDiagonalArithmeticKill",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2083,
+      "role": "statement",
+      "statement_node": "arithmetic_word_residue_exactly_matches_diagonal_certificates"
+    },
+    {
+      "declaration": "powerTwoActualLcmShortArithmeticKillSupply_of_oddGuardHalfWordBand",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2114,
+      "role": "statement",
+      "statement_node": "odd_guard_supply_transports_to_short_kills_and_fresh_loss"
+    },
+    {
+      "declaration": "diagonalFreshLossProjectionSupply_of_shortArithmeticKill",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2141,
+      "role": "statement",
+      "statement_node": "odd_guard_supply_transports_to_short_kills_and_fresh_loss"
+    }
+  ]
+}
