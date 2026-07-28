@@ -12,6 +12,9 @@
 -- (irrationality of ∑_{n∈A} 1/(2ⁿ−1) for every infinite A) are OPEN. Nothing
 -- imported here decides either of them.
 import ErdosProblems.Root
+-- Keep the reviewed finite `t ≤ 82` certificate band inside the supported
+-- root closure, so a clean root build re-elaborates its proof authority.
+import ErdosProblems.Skip.LadderT67
 import ErdosProblems.AxiomAudit
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.DemandLedger
