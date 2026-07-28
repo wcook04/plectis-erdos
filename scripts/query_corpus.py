@@ -27,10 +27,20 @@ MAX_LIMIT = 100
 MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
 OUTPUT_BUDGET_BYTES = 64_000
+AGENT_TOUR_BASE_BUDGET_BYTES = 18_000
+AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES = 2_000
 SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
 SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/2"
 SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
+
+
+def agent_tour_budget_bytes(indexed_problem_count: int) -> int:
+    """Scale the bounded tour with the canonical problem registry."""
+    return (
+        AGENT_TOUR_BASE_BUDGET_BYTES
+        + AGENT_TOUR_PER_PROBLEM_BUDGET_BYTES * indexed_problem_count
+    )
 
 # The atlas builder strips nested Lean comments and recognizes heads whose
 # keyword and identifier are split across lines.  This compatibility set must
@@ -3194,6 +3204,7 @@ def semantic_query_interpretation(query: str) -> dict[str, Any]:
 
 def semantic_dictionary_packet() -> dict[str, Any]:
     claims = load("docs/claims.json")
+    problems = load("docs/problems.json").get("problems", [])
     return {
         "kind": "semantic_dictionary",
         "schema_version": SEMANTIC_DICTIONARY_SCHEMA,
@@ -3234,6 +3245,33 @@ def semantic_dictionary_packet() -> dict[str, Any]:
                 }
                 for row in all_entrypoints(claims)
                 if row.get("discovery_terms")
+            ],
+        },
+        "problem_registry_contract": {
+            "source": "docs/problems.json",
+            "matching": (
+                "An exact accent-insensitive problem phrase, problem id, short "
+                "title, or full indexed question routes directly without scanning "
+                "the declaration atlas. Problem navigation does not confer reviewed "
+                "claim status or Lean proof authority."
+            ),
+            "problems": [
+                {
+                    "problem_id": row["problem_id"],
+                    "erdos_number": row["erdos_number"],
+                    "short_title": row["short_title"],
+                    "examples": [
+                        f"Erdős problem {row['erdos_number']}",
+                        f"Erdos problem {row['erdos_number']}",
+                        f"problem {row['erdos_number']}",
+                        row["problem_id"],
+                    ],
+                    "follow": (
+                        "python3 scripts/query_semantic.py problem-registry "
+                        f"--problem {row['erdos_number']}"
+                    ),
+                }
+                for row in problems
             ],
         },
         "consumer_action": (
@@ -3381,12 +3419,12 @@ def exact_discovery_route(
     An exact normalized match may therefore take the fast path while all other
     phrasing still receives the exhaustive ranked search below.
     """
-    normalized_query = " ".join(query.casefold().split())
+    normalized_query = normalized_search_text(query)
     matches: list[dict[str, Any]] = []
     for row in all_entrypoints(claims):
         candidates = (row["id"], *row.get("discovery_terms", []))
         if normalized_query not in {
-            " ".join(str(candidate).casefold().split())
+            normalized_search_text(str(candidate))
             for candidate in candidates
         }:
             continue
@@ -3406,15 +3444,72 @@ def exact_discovery_route(
 
 def has_exact_discovery_term(query: str, claims: dict[str, Any]) -> bool:
     """Distinguish an ambiguous authored phrase from an unseen paraphrase."""
-    normalized_query = " ".join(query.casefold().split())
+    normalized_query = normalized_search_text(query)
     return any(
         normalized_query
         in {
-            " ".join(str(candidate).casefold().split())
+            normalized_search_text(str(candidate))
             for candidate in (row["id"], *row.get("discovery_terms", []))
         }
         for row in all_entrypoints(claims)
     )
+
+
+def problem_registry_route(query: str) -> dict[str, Any] | None:
+    """Resolve one exact public Erdős-problem phrase without an atlas scan."""
+    normalized_query = normalized_search_text(query)
+    matches = []
+    for row in load("docs/problems.json").get("problems", []):
+        problem = str(row["erdos_number"])
+        candidates = {
+            normalized_search_text(f"Erdős problem {problem}"),
+            normalized_search_text(f"Erdos problem {problem}"),
+            normalized_search_text(f"problem {problem}"),
+            normalized_search_text(str(row["problem_id"])),
+            normalized_search_text(str(row["short_title"])),
+            normalized_search_text(str(row["question"])),
+        }
+        if normalized_query in candidates:
+            matches.append(row)
+    if len(matches) != 1:
+        return None
+    row = matches[0]
+    problem = str(row["erdos_number"])
+    return {
+        "kind": "problem",
+        "id": row["problem_id"],
+        "erdos_number": row["erdos_number"],
+        "title": row["short_title"],
+        "status": row["status"],
+        "question": row["question"],
+        "directory": row["directory"],
+        "module_count": len(row.get("modules", [])),
+        "declaration_count": sum(
+            int(module.get("declaration_count", 0))
+            for module in row.get("modules", [])
+        ),
+        "open_obligation_ids": [
+            obligation["id"] for obligation in row.get("open_obligations", [])
+        ],
+        "note": row.get("note"),
+        "follow": {
+            "semantic_problem_registry": (
+                "python3 scripts/query_semantic.py problem-registry "
+                f"--problem {problem}"
+            ),
+            "semantic_inventory": (
+                "python3 scripts/query_semantic.py inventory "
+                f"--problem {problem}"
+            ),
+            "authored_population": (
+                "python3 scripts/query_semantic.py structural-backlog "
+                f"--problem {problem}"
+            ),
+        },
+        "authority_posture": (
+            "generated_problem_index_route_not_claim_status_or_Lean_proof_authority"
+        ),
+    }
 
 
 def direct_route_search_packet(
@@ -3465,6 +3560,14 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     if not query:
         raise ValueError("search query must not be empty")
     claims = load("docs/claims.json")
+    problem_route = problem_registry_route(query)
+    if problem_route is not None:
+        return direct_route_search_packet(
+            query,
+            limit,
+            problem_route,
+            selection="exact_problem_registry_term",
+        )
     exact_route = exact_discovery_route(query, claims)
     if exact_route is not None:
         return direct_route_search_packet(
@@ -5491,6 +5594,7 @@ def agent_tour_packet() -> dict[str, Any]:
     """
     orientation = load("docs/orientation.json")
     claims = load("docs/claims.json")
+    problems = load("docs/problems.json").get("problems", [])
     dependency = load("docs/lean_dependency_index.json")
     assembly = claims["machine_readable_paper"]["publication_assembly"]
     status_counts = Counter(row["status"] for row in claims["claims"])
@@ -5501,6 +5605,18 @@ def agent_tour_packet() -> dict[str, Any]:
         "kind": "agent_corpus_tour",
         "schema_version": "agent-corpus-tour/1",
         "authority_posture": "computed_navigation_tour_not_proof_authority",
+        "budget_contract": {
+            "maximum_encoded_bytes": agent_tour_budget_bytes(len(problems)),
+            "policy": (
+                "18000 base bytes plus 2000 bytes per canonically indexed "
+                "problem; six problems currently yield a 30000-byte ceiling"
+            ),
+            "reason": (
+                "The registry map is material first-contact context. Its budget "
+                "scales with registry breadth instead of inheriting the generic "
+                "single-packet cap."
+            ),
+        },
         "scale": {
             **orientation["scale"],
             "curated_claim_count": len(claims["claims"]),
@@ -5509,6 +5625,7 @@ def agent_tour_packet() -> dict[str, Any]:
                 assembly["contribution_families"]
             ),
             "remaining_open_proposition_count": len(open_rows),
+            "indexed_problem_count": len(problems),
         },
         "formal_dependency_graph": {
             "loaded_library_roots": coverage["loaded_library_roots"],
@@ -5530,6 +5647,21 @@ def agent_tour_packet() -> dict[str, Any]:
             status: status_counts.get(status, 0)
             for status in orientation["status_taxonomy"]
         },
+        "problem_map": [
+            {
+                "problem_id": row["problem_id"],
+                "erdos_number": row["erdos_number"],
+                "title": row["short_title"],
+                "status": row["status"],
+                "module_count": len(row.get("modules", [])),
+                "note": row.get("note"),
+                "follow": (
+                    "python3 scripts/query_corpus.py --search "
+                    f"'Erdős problem {row['erdos_number']}'"
+                ),
+            }
+            for row in problems
+        ],
         "mathematical_map": [
             {
                 "id": row["id"],
@@ -5934,6 +6066,9 @@ def render_card(packet: dict[str, Any]) -> str:
         scale = packet["scale"]
         graph = packet["formal_dependency_graph"]
         frontier = ",".join(row["id"] for row in packet["frontier"])
+        problem_ids = ",".join(
+            f"#{row['erdos_number']}" for row in packet["problem_map"]
+        )
         return "\n".join(
             (
                 (
@@ -5943,6 +6078,11 @@ def render_card(packet: dict[str, Any]) -> str:
                     f"| programmes={scale['mathematical_programme_count']} "
                     f"| contribution_families={scale['contribution_family_count']} "
                     f"| open={scale['remaining_open_proposition_count']}"
+                ),
+                (
+                    f"problem map | indexed={scale['indexed_problem_count']} "
+                    f"| ids={problem_ids} "
+                    "| route=python3 scripts/query_semantic.py problem-registry"
                 ),
                 (
                     f"formal graph | roots={','.join(graph['loaded_library_roots'])} "

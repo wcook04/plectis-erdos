@@ -1,0 +1,193 @@
+{
+  "zone_id": "Z51",
+  "title": "Actual-LCM positive tail corridor, true-survivor sign, and top-edge obstruction",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "actual_lcm_tail_difference",
+      "label": "actual-LCM translated tail difference",
+      "note": "The difference between totient tails at the translated heights 2H+J and H+J for H=periodLcm(2^a)."
+    },
+    {
+      "id": "short_offset_corridor",
+      "label": "short offset corridor",
+      "note": "The range J+K+(a+6)<2*2^a in which the LCM arithmetic letters remain controlled."
+    },
+    {
+      "id": "true_endpoint_survivor",
+      "label": "true endpoint survivor",
+      "note": "The signed carry-orbit value associated with an integral representative of the actual tail difference."
+    },
+    {
+      "id": "top_edge_residue",
+      "label": "top-edge discrepancy residue",
+      "note": "The congruence representative P-e lying strictly inside the final band (P-B,P)."
+    },
+    {
+      "id": "actual_lcm_tail_orbit",
+      "label": "actual-LCM tail orbit",
+      "note": "The J=0 translated actual-LCM tail difference."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "actual_lcm_translated_tail_difference_is_positive_in_the_short_corridor",
+      "canonical_statement": "For a at least eight and J+(a+6)<2*2^a, with H=periodLcm(2^a), the translated difference totientTail(2H+J)-totientTail(H+J) is strictly positive.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_tail_difference",
+        "short_offset_corridor"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "positive arithmetic-letter expansion of the actual-LCM translated tail difference",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Lean proves the sign theorem; no external priority or novelty claim is made.",
+      "scope_caveat": "The result is uniform in unbounded a but only in the displayed short-offset corridor. Positivity is not nonintegrality or irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmTailDiff_shift_pos",
+          "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "id": "actual_lcm_tail_orbit_is_positive",
+      "canonical_statement": "For every a at least eight, actualLcmTailOrbit a is strictly positive.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_tail_orbit",
+        "actual_lcm_tail_difference"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "zero-offset specialization of the positive translated-tail corridor",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is the J=0 specialization of the corridor theorem.",
+      "scope_caveat": "Positivity does not show that the orbit is nonintegral and does not supply the Z28 nonintegrality frontier.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmTailOrbit_pos",
+          "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+          "line": 144
+        }
+      ]
+    },
+    {
+      "id": "integral_actual_lcm_tail_difference_has_negative_true_endpoint_survivor",
+      "canonical_statement": "If an integer d represents the translated actual-LCM tail difference and the J+K corridor remains short, then -carryOrbit H (H+J) d K is strictly negative and is an endpoint survivor.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_tail_difference",
+        "short_offset_corridor",
+        "true_endpoint_survivor"
+      ],
+      "open_antecedents": [
+        "an integer d whose real cast equals the displayed translated actual-LCM tail difference"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact carry tracking of a positive translated tail difference",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project-specific conditional carry-orbit transport.",
+      "scope_caveat": "The theorem removes only the nonnegative branch of the true survivor; negative true survivors and spurious survivors remain, so no nonintegrality follows.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcm_trueEndpointSurvivor_neg",
+          "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+          "line": 172
+        }
+      ]
+    },
+    {
+      "id": "integrality_places_the_discrepancy_residue_at_the_top_edge",
+      "canonical_statement": "Under the short-corridor, integral-representative, and room hypotheses, if e=carryOrbit H (H+J) d K, P=2^K, and B=2H+J+K+2, then the discrepancy residue is exactly P-e and lies strictly between P-B and P.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "true_endpoint_survivor",
+        "top_edge_residue",
+        "short_offset_corridor"
+      ],
+      "open_antecedents": [
+        "an integer d representing the translated actual-LCM tail difference",
+        "the room inequality 2H+J+K+2<2^K"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "conversion of the negative true survivor into its least positive top-edge residue",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a route-boundary theorem internal to the certificate formalisation.",
+      "scope_caveat": "The theorem explains why positivity alone gives no symmetric certified kill. It neither proves integrality nor excludes the top-edge band required by Z36.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcm_integral_forces_topEdgeResidue",
+          "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+          "line": 211
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "actualLcmTailDiff_shift_pos",
+      "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+      "line": 39,
+      "role": "statement",
+      "statement_node": "actual_lcm_translated_tail_difference_is_positive_in_the_short_corridor"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_pos",
+      "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+      "line": 144,
+      "role": "statement",
+      "statement_node": "actual_lcm_tail_orbit_is_positive"
+    },
+    {
+      "declaration": "actualLcm_trueEndpointSurvivor_neg",
+      "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+      "line": 172,
+      "role": "statement",
+      "statement_node": "integral_actual_lcm_tail_difference_has_negative_true_endpoint_survivor"
+    },
+    {
+      "declaration": "actualLcm_integral_forces_topEdgeResidue",
+      "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
+      "line": 211,
+      "role": "statement",
+      "statement_node": "integrality_places_the_discrepancy_residue_at_the_top_edge"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "actual_lcm_tail_orbit_is_positive",
+      "to": "actual_lcm_translated_tail_difference_is_positive_in_the_short_corridor",
+      "relation": "specialises",
+      "basis": "actualLcmTailOrbit is the J=0 translated tail difference, and the source theorem applies the corridor result at that offset."
+    },
+    {
+      "from": "integral_actual_lcm_tail_difference_has_negative_true_endpoint_survivor",
+      "to": "actual_lcm_translated_tail_difference_is_positive_in_the_short_corridor",
+      "relation": "transport_of",
+      "basis": "Exact carry tracking transports positivity of the later translated tail difference into positivity of the carry and hence negativity of the true endpoint survivor."
+    },
+    {
+      "from": "integrality_places_the_discrepancy_residue_at_the_top_edge",
+      "to": "integral_actual_lcm_tail_difference_has_negative_true_endpoint_survivor",
+      "relation": "reformulates",
+      "basis": "Under the room bound, the negative survivor's congruence class is represented exactly by the top-edge residue P-e."
+    },
+    {
+      "from": "integrality_places_the_discrepancy_residue_at_the_top_edge",
+      "to": "actual_lcm_translated_tail_difference_is_positive_in_the_short_corridor",
+      "relation": "barrier_for",
+      "basis": "The top-edge conclusion proves that the positive-sign corridor alone cannot furnish the symmetric central-arc exclusion needed for a modular kill."
+    }
+  ]
+}

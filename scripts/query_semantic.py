@@ -30,9 +30,11 @@ does.
     python3 scripts/query_semantic.py inventory
     python3 scripts/query_semantic.py inventory selectedMersenneTail_lt_weight
     python3 scripts/query_semantic.py inventory --module ErdosProblems/Erdos257
+    python3 scripts/query_semantic.py problem-registry
     python3 scripts/query_semantic.py paper-coverage
     python3 scripts/query_semantic.py population-backlog
     python3 scripts/query_semantic.py population-backlog --paper erdos249-totient-reasoning-surface
+    python3 scripts/query_semantic.py structural-backlog --problem 257
     python3 scripts/query_semantic.py motifs
     python3 scripts/query_semantic.py node <node_id>
 
@@ -55,7 +57,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from build_semantic_corpus import semantic_input_fingerprint
@@ -64,9 +66,22 @@ ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "docs" / "semantic_corpus.json"
 CONTRACT = ROOT / "docs" / "publication_contract.json"
 LAB = ROOT / "docs" / "theory_lab.json"
+PROBLEM_INDEX = ROOT / "docs" / "problems.json"
 
 BUDGET = 64 * 1024
-PROBLEMS = ("243", "249", "251", "257", "269", "1049")
+
+
+def problem_registry_rows() -> list[dict]:
+    """Read the generated public problem registry, never a local hardcoded sample."""
+    if not PROBLEM_INDEX.is_file():
+        return []
+    return json.loads(PROBLEM_INDEX.read_text(encoding="utf-8")).get("problems", [])
+
+
+PROBLEMS = tuple(
+    str(row["erdos_number"])
+    for row in problem_registry_rows()
+)
 PROBLEM_SCOPES = (*PROBLEMS, "both", "shared_substrate")
 
 
@@ -106,6 +121,37 @@ def nodes_by_id(corpus: dict) -> dict[str, dict]:
     return {n["id"]: n for n in corpus["statement_nodes"]}
 
 
+def problem_for_route(
+    corpus: dict,
+    route: dict,
+    *,
+    node_index: dict[str, dict] | None = None,
+    zone_problems: dict[str, str] | None = None,
+) -> str:
+    """Resolve a declaration through authored semantics before namespace fallback."""
+    node_index = node_index or nodes_by_id(corpus)
+    zone_problems = zone_problems or {
+        str(row["zone_id"]): str(row["problem"])
+        for row in corpus.get("zones", [])
+        if row.get("zone_id") and row.get("problem")
+    }
+    match = re.search(
+        r"(?:^|/)ErdosProblems/Erdos([1-9][0-9]*)(?:/|\.lean$)",
+        str(route.get("module") or ""),
+    )
+    if match:
+        return match.group(1)
+    zone = route.get("zone")
+    if zone and str(zone) in zone_problems:
+        return zone_problems[str(zone)]
+    node_id = route.get("statement_node")
+    if node_id:
+        node = node_index.get(str(node_id))
+        if node and node.get("problem"):
+            return str(node["problem"])
+    return "shared_substrate"
+
+
 def is_authored_interpretation(record: dict) -> bool:
     """True only for authored semantics, never the structural discovery floor."""
     return record.get("interpretation_tier") == "authored_statement"
@@ -134,10 +180,17 @@ def compact(node: dict) -> dict:
 def filtered(corpus: dict, problem: str | None) -> list[dict]:
     out = []
     for node in corpus["statement_nodes"]:
-        if problem and node.get("problem") not in (problem, "both"):
+        if problem and not problem_scope_matches(node.get("problem"), problem):
             continue
         out.append(node)
     return out
+
+
+def problem_scope_matches(scope: object, requested: str) -> bool:
+    """`both` is the historical joint #249/#257 lane, not every problem."""
+    return str(scope) == requested or (
+        str(scope) == "both" and requested in ("249", "257")
+    )
 
 
 def cmd_nonrecurring(corpus: dict, args) -> int:
@@ -646,9 +699,205 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
     )
 
 
+def cmd_problem_registry(corpus: dict, args) -> int:
+    """Project every indexed Erdős problem through the live semantic routes."""
+    node_index = nodes_by_id(corpus)
+    zone_problems = {
+        str(row["zone_id"]): str(row["problem"])
+        for row in corpus.get("zones", [])
+        if row.get("zone_id") and row.get("problem")
+    }
+    route_counts = Counter(
+        problem_for_route(
+            corpus,
+            route,
+            node_index=node_index,
+            zone_problems=zone_problems,
+        )
+        for route in corpus["declaration_roles"]
+    )
+    registry = problem_registry_rows()
+    rows = []
+    for row in registry:
+        problem = str(row["erdos_number"])
+        if args.problem and problem != args.problem:
+            continue
+        semantic_summary = corpus["summary"]["per_problem"].get(problem, {})
+        rows.append(
+            {
+                "problem_id": row["problem_id"],
+                "erdos_number": row["erdos_number"],
+                "short_title": row["short_title"],
+                "status": row["status"],
+                "question": row["question"],
+                "directory": row["directory"],
+                "module_count": len(row.get("modules", [])),
+                "declaration_route_count": route_counts.get(problem, 0),
+                "statement_node_count": semantic_summary.get("statement_nodes", 0),
+                "open_obligation_ids": [
+                    obligation["id"]
+                    for obligation in row.get("open_obligations", [])
+                ],
+                "note": row.get("note"),
+                "follow": {
+                    "problem_detail": (
+                        "python3 scripts/query_corpus.py --search "
+                        f"'Erdős problem {problem}'"
+                    ),
+                    "semantic_inventory": (
+                        "python3 scripts/query_semantic.py inventory "
+                        f"--problem {problem}"
+                    ),
+                    "authored_population": (
+                        "python3 scripts/query_semantic.py structural-backlog "
+                        f"--problem {problem}"
+                    ),
+                },
+            }
+        )
+    return emit(
+        {
+            "question": "Which Erdős problems are indexed, and how does each route into the live semantic corpus?",
+            "authority_posture": (
+                "generated_problem_registry_joined_to_navigation_projection;"
+                "not_claim_status_or_Lean_proof_authority"
+            ),
+            "source": "docs/problems.json",
+            "indexed_problem_count": len(registry),
+            "returned_problem_count": len(rows),
+            "filter": args.problem or "",
+            "problems": rows,
+        }
+    )
+
+
+def cmd_structural_backlog(corpus: dict, args) -> int:
+    """Rank structural-only theorem families for honest authored replacement."""
+    atlas = json.loads(
+        (ROOT / "docs" / "declaration_atlas.json").read_text(encoding="utf-8")
+    )
+    atlas_index = {row["id"]: row for row in atlas["declarations"]}
+    role_index = paper_citation_role_index(corpus)
+    paper_selected_ids: set[str] = set()
+    paper_sources = sorted((ROOT / "paper").glob("*.tex"))
+    if args.paper:
+        needle = args.paper.casefold()
+        paper_sources = [
+            source
+            for source in paper_sources
+            if needle in source.name.casefold()
+            or needle in str(source.relative_to(ROOT)).casefold()
+        ]
+    for source in paper_sources:
+        for module, _line, declaration in paper_lean_citations(
+            source.read_text(encoding="utf-8")
+        ):
+            for key in paper_citation_keys(module, declaration):
+                paper_selected_ids.update(
+                    role["id"] for role in role_index.get(key, [])
+                )
+
+    node_index = nodes_by_id(corpus)
+    zone_problems = {
+        str(row["zone_id"]): str(row["problem"])
+        for row in corpus.get("zones", [])
+        if row.get("zone_id") and row.get("problem")
+    }
+    by_module: dict[str, list[dict]] = defaultdict(list)
+    for route in corpus["declaration_roles"]:
+        if route.get("interpretation_tier") != "source_structural_family":
+            continue
+        problem = problem_for_route(
+            corpus,
+            route,
+            node_index=node_index,
+            zone_problems=zone_problems,
+        )
+        if args.problem and not problem_scope_matches(problem, args.problem):
+            continue
+        atlas_row = atlas_index.get(route["id"], {})
+        by_module[str(route.get("module") or "")].append(
+            {
+                "role_id": route["id"],
+                "declaration": route.get("declaration"),
+                "line": atlas_row.get("line"),
+                "kind": atlas_row.get("kind"),
+                "signature": atlas_row.get("signature"),
+                "structural_statement_node": route.get("statement_node"),
+                "paper_selected": route["id"] in paper_selected_ids,
+                "problem": problem,
+            }
+        )
+
+    rows = []
+    for module, roles in by_module.items():
+        roles.sort(
+            key=lambda row: (
+                not row["paper_selected"],
+                int(row.get("line") or 0),
+                str(row["declaration"]),
+            )
+        )
+        problem_counts = Counter(row["problem"] for row in roles)
+        rows.append(
+            {
+                "module": module,
+                "problem": problem_counts.most_common(1)[0][0],
+                "structural_only_role_count": len(roles),
+                "paper_selected_role_count": sum(
+                    row["paper_selected"] for row in roles
+                ),
+                "candidate_roles": roles[:12],
+                "replacement_hint": (
+                    "Read the exact Lean propositions and nearby proofs; author one "
+                    "bounded mathematical family with explicit nonclaims, then "
+                    "replace only these exact role ids. Do not paraphrase names or "
+                    "promote structural linkage into novelty."
+                ),
+            }
+        )
+    rows.sort(
+        key=lambda row: (
+            -int(row["paper_selected_role_count"] > 0),
+            -row["paper_selected_role_count"],
+            -row["structural_only_role_count"],
+            row["module"],
+        )
+    )
+    return emit(
+        {
+            "question": "Which exact structural-only theorem families should receive authored mathematical interpretation next?",
+            "authority_posture": (
+                "ranked_population_worklist_over_exact_atlas_and_structural_routes;"
+                "not_mathematical_interpretation"
+            ),
+            "anti_filler_contract": (
+                "Paper-selected declarations rank first; then larger source modules. "
+                "A replacement must be proposition-grounded, bounded, and explicit "
+                "about open antecedents and nonclaims."
+            ),
+            "filters": {
+                "problem": args.problem or "",
+                "paper": args.paper or "",
+            },
+            "module_backlog_count": len(rows),
+            "structural_only_role_count": sum(
+                row["structural_only_role_count"] for row in rows
+            ),
+            "results": rows[: args.limit],
+        }
+    )
+
+
 def cmd_population_backlog(corpus: dict, args) -> int:
     """Rank paper-selected Lean citations that still lack statement semantics."""
     role_index = paper_citation_role_index(corpus)
+    node_index = nodes_by_id(corpus)
+    zone_problems = {
+        str(row["zone_id"]): str(row["problem"])
+        for row in corpus.get("zones", [])
+        if row.get("zone_id") and row.get("problem")
+    }
     candidate_cap = min(args.limit, 12 if args.paper else 5)
     module_cap = min(args.limit, 12 if args.paper else 8)
     paper_cap = min(args.limit, 1 if args.paper else 3)
@@ -684,6 +933,16 @@ def cmd_population_backlog(corpus: dict, args) -> int:
                 absent.append({**occurrence, "resolved_role_ids": []})
                 continue
             for role in roles:
+                route_problem = problem_for_route(
+                    corpus,
+                    role,
+                    node_index=node_index,
+                    zone_problems=zone_problems,
+                )
+                if args.problem and not problem_scope_matches(
+                    route_problem, args.problem
+                ):
+                    continue
                 target = (
                     linked_by_role
                     if role.get("statement_node")
@@ -696,6 +955,7 @@ def cmd_population_backlog(corpus: dict, args) -> int:
                         "role_id": role["id"],
                         "module": role["module"],
                         "declaration": role["declaration"],
+                        "problem": route_problem,
                         "semantic_zone": role.get("zone"),
                         "statement_node": role.get("statement_node"),
                         "interpretation_tier": role.get(
@@ -929,7 +1189,7 @@ def cmd_semantic_reviews(corpus: dict, args) -> int:
         if not receipt or edge.get("suppressed_in_views"):
             continue
         edge_problem = (index.get(edge.get("from")) or {}).get("problem")
-        if args.problem and edge_problem not in (args.problem, "both"):
+        if args.problem and not problem_scope_matches(edge_problem, args.problem):
             continue
         reviewed_relations.append(
             {
@@ -997,9 +1257,21 @@ def cmd_inventory(corpus: dict, args) -> int:
     module_filter = (args.module or "").casefold()
     role_filter = (args.role or "").casefold()
     zone_filter = (args.zone or "").casefold()
+    node_index = nodes_by_id(corpus)
+    zone_problems = {
+        str(row["zone_id"]): str(row["problem"])
+        for row in corpus.get("zones", [])
+        if row.get("zone_id") and row.get("problem")
+    }
 
     matches = []
     for route in corpus["declaration_roles"]:
+        route_problem = problem_for_route(
+            corpus,
+            route,
+            node_index=node_index,
+            zone_problems=zone_problems,
+        )
         searchable = " ".join(
             str(route.get(field) or "")
             for field in ("id", "module", "declaration", "statement_node")
@@ -1012,11 +1284,16 @@ def cmd_inventory(corpus: dict, args) -> int:
             continue
         if zone_filter and zone_filter != str(route.get("zone") or "").casefold():
             continue
+        if args.problem and not problem_scope_matches(
+            route_problem, args.problem
+        ):
+            continue
         matches.append(
             {
                 "id": route["id"],
                 "module": route.get("module"),
                 "declaration": route.get("declaration"),
+                "problem": route_problem,
                 "role": route.get("role"),
                 "zone": route.get("zone"),
                 "statement_node": route.get("statement_node"),
@@ -1049,6 +1326,7 @@ def cmd_inventory(corpus: dict, args) -> int:
                 "module": args.module or "",
                 "role": args.role or "",
                 "zone": args.zone or "",
+                "problem": args.problem or "",
             },
             "total_matches": len(matches),
             "returned": min(len(matches), args.limit),
@@ -1376,7 +1654,9 @@ COMMANDS = {
     "semantic-reviews": cmd_semantic_reviews,
     "inventory": cmd_inventory,
     "paper-coverage": cmd_paper_coverage,
+    "problem-registry": cmd_problem_registry,
     "population-backlog": cmd_population_backlog,
+    "structural-backlog": cmd_structural_backlog,
     "motifs": cmd_motifs,
     "node": cmd_node,
     "mechanisms": cmd_mechanisms,

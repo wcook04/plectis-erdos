@@ -113,9 +113,11 @@ that silently rots:
 python3 scripts/query_semantic.py nonrecurring --problem 257
 python3 scripts/query_semantic.py barriers
 python3 scripts/query_semantic.py coverage
+python3 scripts/query_semantic.py problem-registry
 python3 scripts/query_semantic.py paper-coverage
 python3 scripts/query_semantic.py population-backlog
 python3 scripts/query_semantic.py population-backlog --paper erdos249-totient-reasoning-surface
+python3 scripts/query_semantic.py structural-backlog --problem 257
 ```
 
 `population-backlog` is the semantic authoring queue.  It scans every authored
@@ -127,6 +129,14 @@ in the backlog rather than making it disappear. A paper citation nominates a
 target; the Lean signature and proof cone still decide the authored statement.
 The command does not promote helpers automatically or treat a larger node
 count as quality.
+
+`problem-registry` is derived from the canonical public problem index rather
+than from a hardcoded #249/#257 specimen. It joins every indexed problem to its
+modules, authored note, open obligations, declaration routes, semantic nodes,
+and exact follow-up commands. `structural-backlog` then ranks the lower-tier
+families that still need authored interpretation: paper-selected roles first,
+then larger exact source modules. Its replacement hint is an anti-filler
+contract, not an invitation to paraphrase declaration names.
 
 ## Prior art is staged, never a boolean
 

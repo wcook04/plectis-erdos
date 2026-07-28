@@ -167,6 +167,16 @@ def validate_agent_tour() -> None:
     assert packet["scale"]["mathematical_programme_count"] == len(
         PROGRAMME_EXPECTATIONS
     )
+    assert packet["scale"]["indexed_problem_count"] == 6
+    assert packet["budget_contract"]["maximum_encoded_bytes"] == 30_000
+    assert {row["erdos_number"] for row in packet["problem_map"]} == {
+        243,
+        249,
+        251,
+        257,
+        269,
+        1049,
+    }
     assert packet["formal_dependency_graph"]["source_resolved_node_count"] > 0
     assert packet["formal_dependency_graph"]["source_resolved_direct_edge_count"] > 0
     assert {row["id"] for row in packet["mathematical_map"]} == set(
@@ -194,15 +204,18 @@ def validate_agent_tour() -> None:
         "ai_lab_researcher",
         "independent_contributor",
     }
+    encoded = json.dumps(packet, ensure_ascii=False).encode("utf-8")
+    assert len(encoded) <= packet["budget_contract"]["maximum_encoded_bytes"]
     card = run("--tour", "--format", "card")
     assert card.returncode == 0
     lines = card.stdout.strip().splitlines()
-    assert len(lines) == 5
+    assert len(lines) == 6
     assert lines[0].startswith("corpus tour | modules=")
-    assert lines[1].startswith("formal graph | roots=")
-    assert lines[2].startswith("authority | navigation=")
-    assert lines[3].startswith("frontier | ")
-    assert lines[4].startswith("start | ")
+    assert lines[1].startswith("problem map | indexed=6")
+    assert lines[2].startswith("formal graph | roots=")
+    assert lines[3].startswith("authority | navigation=")
+    assert lines[4].startswith("frontier | ")
+    assert lines[5].startswith("start | ")
 
 
 def validate_natural_language_search() -> None:
@@ -229,6 +242,17 @@ def validate_natural_language_search() -> None:
         )
         is None
     )
+    for exact_problem_phrase in ("Erdős problem 243", "Erdos problem 243"):
+        problem = query("--search", exact_problem_phrase, "--limit", "1")
+        assert problem["results"][0]["kind"] == "problem"
+        assert problem["results"][0]["id"] == "erdos_243"
+        assert problem["routing_receipt"] == {
+            "selection": "exact_problem_registry_term",
+            "declaration_scan_required": False,
+        }
+    dictionary = query("--vocabulary")
+    assert dictionary["problem_registry_contract"]["source"] == "docs/problems.json"
+    assert len(dictionary["problem_registry_contract"]["problems"]) == 6
     natural_language_routes = {
         "how close is problem 249": "erdos249_certificate_story",
         "what remains open for 257": "erdos257_half_story",
@@ -405,8 +429,16 @@ def validate_paper_semantic_citation_aliases() -> None:
     assert backlog["authored_statement_backlog_declaration_count"] > 0
     paper = backlog["papers"][0]
     assert paper["authored_statement_backlog_declaration_count"] > 0
-    assert any(
-        "TotientActualLcm" in group["module"]
+    assert paper["authored_statement_backlog_declaration_count"] >= sum(
+        group["declaration_count"]
+        for group in paper["unlinked_module_groups"]
+    )
+    assert all(
+        group["declaration_count"] >= len(group["candidates"])
+        for group in paper["unlinked_module_groups"]
+    )
+    assert all(
+        group["module"].endswith(".lean")
         for group in paper["unlinked_module_groups"]
     )
     assert all(

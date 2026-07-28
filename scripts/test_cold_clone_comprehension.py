@@ -158,10 +158,8 @@ def main() -> int:
     mutated_census["docs/RESULTS.md"] = mutated_census[
         "docs/RESULTS.md"
     ].replace(
-        f"| mechanically nonrecurring candidates | "
-        f"{census['nonrecurring_by_problem']['249']} | "
-        f"{census['nonrecurring_by_problem']['257']} |",
-        "| mechanically nonrecurring candidates | 0 | 0 |",
+        "| mechanically nonrecurring candidates |",
+        "| mechanically nonrecurring candidates CORRUPTED |",
         1,
     )
     assert_census_rejected(
@@ -170,12 +168,14 @@ def main() -> int:
     checks += 1
 
     mutated_census = copy.deepcopy(census_surfaces)
-    mutated_census["README.md"] = mutated_census["README.md"].replace(
+    mutated_census["docs/TRUTH_AUDIT.md"] = mutated_census[
+        "docs/TRUTH_AUDIT.md"
+    ].replace(
         (
-            f"{census['demand_equivalent_total']} of "
-            f"{census['demand_lattice_counts']['substantial']}"
+            f"The `{census['demand_equivalent_total']}/"
+            f"{census['demand_lattice_counts']['substantial']}` count"
         ),
-        "0 of 0",
+        "The `0/0` count",
         1,
     )
     assert_census_rejected(

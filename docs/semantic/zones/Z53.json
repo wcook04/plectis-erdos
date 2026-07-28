@@ -1,0 +1,177 @@
+{
+  "zone_id": "Z53",
+  "title": "Arbitrary two-adic totient pulse blocks and exact carry transfer",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z53_totient_divisor_pulse_producer",
+      "label": "totient divisor pulse producer",
+      "note": "A CRT-Dirichlet prime with prescribed power-of-two divisibility across a preceding block."
+    },
+    {
+      "id": "z53_delta_totient_pulse_block",
+      "label": "delta-totient half-turn pulse block",
+      "note": "A zero prefix modulo 2^K followed by the unique order-two residue."
+    },
+    {
+      "id": "z53_window_half_turn_transfer",
+      "label": "window half-turn transfer",
+      "note": "The exact half-modulus discrepancy created by the pulse block."
+    },
+    {
+      "id": "z53_integral_tail_half_pulses",
+      "label": "cofinal integral-tail half pulses",
+      "note": "The consequence of combining eventual tail integrality with the arithmetic pulse producer."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "cofinally_many_primes_realise_the_two_adic_totient_divisor_pattern",
+      "canonical_statement": "PROVED CRT-DIRICHLET PRODUCER: for H,K,B with 2<=K<H, there is a prime p beyond B and H+K such that p is congruent to 1+2^(K-1) modulo 2^K, 2^K divides phi(p+H), and for every 1<=j<K it divides both phi(p-j) and phi(p-j+H).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z53_totient_divisor_pulse_producer"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Fresh primes congruent to one modulo 2^K, a finite Chinese-remainder system for the terminal and preceding positions, and Dirichlet's theorem in the resulting coprime progression.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked project arithmetic producer; no external priority claim is made.",
+      "scope_caveat": "The theorem prescribes divisibility data for one finite block. It does not assert that the resulting discrepancy lies in a certificate's central arc.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_prime_totient_twoAdic_pulse_divisors",
+          "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "id": "the_divisor_pattern_yields_a_zero_prefix_and_half_turn_delta_pulse",
+      "canonical_statement": "PROVED PULSE BLOCK: for H,K,B with 2<=K<H, there is a prime p beyond B and H+K such that deltaTotient H p is congruent to 2^(K-1) modulo 2^K, while deltaTotient H (p-j) vanishes modulo 2^K for every 1<=j<K.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z53_totient_divisor_pulse_producer",
+        "z53_delta_totient_pulse_block"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Rewrite the divisor producer in deltaTotient coordinates, using phi(p)=p-1 and the fact that the negative half-turn equals itself modulo 2^K.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Direct Lean-checked transport of the stronger divisor data into the desired pulse coordinates.",
+      "scope_caveat": "The pulse is an exact congruence statement, not a certified kill. Its prime position is necessarily large relative to the modulus scale.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_prime_deltaTotient_twoAdic_pulseBlock",
+          "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+          "line": 211
+        }
+      ]
+    },
+    {
+      "id": "a_zero_prefix_and_terminal_half_turn_force_a_half_turn_discrepancy",
+      "canonical_statement": "PROVED EXACT WINDOW TRANSFER: if 2<=K<=p, the terminal deltaTotient H p is 2^(K-1) modulo 2^K, and the preceding K-1 deltaTotient letters vanish modulo 2^K, then windowDiscrepancy H (p-K) K is congruent to 2^(K-1) modulo 2^K.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z53_delta_totient_pulse_block",
+        "z53_window_half_turn_transfer"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The discrepancy recurrence doubles the zero prefix and then appends the terminal half-turn.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Finite recurrence transport of the pulse congruences.",
+      "scope_caveat": "Landing at the centre of the residue circle is not enough to fire a certified kill: the certificate radius also grows with p, H, and K.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "windowDiscrepancy_modEq_half_of_twoAdic_pulse",
+          "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+          "line": 262
+        }
+      ]
+    },
+    {
+      "id": "eventual_tail_integrality_forces_cofinally_many_half_turn_representatives",
+      "canonical_statement": "PROVED CONDITIONAL CONSEQUENCE: for 2<=K<H, if every H-shifted totient-tail difference is integral from N0 onward, then beyond every B there is a prime p and an integer representative z of totientTail (p+H)-totientTail p with z congruent to 2^(K-1) modulo 2^K.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z53_delta_totient_pulse_block",
+        "z53_window_half_turn_transfer",
+        "z53_integral_tail_half_pulses"
+      ],
+      "open_antecedents": [
+        "Eventual integrality of every H-shifted totient-tail difference from N0 onward."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Choose a pulse prime beyond both B and N0+K, then transfer the length-K discrepancy congruence through the integral carry recurrence.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked consequence of the arithmetic pulse producer under the rationality-side integrality hypothesis.",
+      "scope_caveat": "This is compatible with eventual integrality and produces no contradiction. It diagnoses the modular shape of the rational branch; it does not prove irrationality or a central-arc certificate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "eventual_integral_tailDiff_has_cofinal_twoAdic_half_pulse",
+          "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+          "line": 327
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "exists_prime_totient_twoAdic_pulse_divisors",
+      "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+      "line": 54,
+      "role": "statement",
+      "statement_node": "cofinally_many_primes_realise_the_two_adic_totient_divisor_pattern"
+    },
+    {
+      "declaration": "exists_prime_deltaTotient_twoAdic_pulseBlock",
+      "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+      "line": 211,
+      "role": "statement",
+      "statement_node": "the_divisor_pattern_yields_a_zero_prefix_and_half_turn_delta_pulse"
+    },
+    {
+      "declaration": "windowDiscrepancy_modEq_half_of_twoAdic_pulse",
+      "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+      "line": 262,
+      "role": "statement",
+      "statement_node": "a_zero_prefix_and_terminal_half_turn_force_a_half_turn_discrepancy"
+    },
+    {
+      "declaration": "eventual_integral_tailDiff_has_cofinal_twoAdic_half_pulse",
+      "module": "Erdos249257/TotientTwoAdicPulseBlock.lean",
+      "line": 327,
+      "role": "statement",
+      "statement_node": "eventual_tail_integrality_forces_cofinally_many_half_turn_representatives"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "the_divisor_pattern_yields_a_zero_prefix_and_half_turn_delta_pulse",
+      "to": "cofinally_many_primes_realise_the_two_adic_totient_divisor_pattern",
+      "relation": "generated_by",
+      "basis": "The deltaTotient congruences are obtained by subtracting the divisor-controlled endpoint totients from the prime totient."
+    },
+    {
+      "from": "a_zero_prefix_and_terminal_half_turn_force_a_half_turn_discrepancy",
+      "to": "the_divisor_pattern_yields_a_zero_prefix_and_half_turn_delta_pulse",
+      "relation": "transport_of",
+      "basis": "The finite discrepancy recurrence transports the produced zero-prefix and terminal-pulse letters into the same half-turn residue."
+    },
+    {
+      "from": "eventual_tail_integrality_forces_cofinally_many_half_turn_representatives",
+      "to": "a_zero_prefix_and_terminal_half_turn_force_a_half_turn_discrepancy",
+      "relation": "generated_by",
+      "basis": "Under eventual integrality, the carry recurrence transfers the window half-turn to an actual integer tail-difference representative."
+    }
+  ]
+}

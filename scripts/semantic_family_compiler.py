@@ -51,9 +51,12 @@ def normalized_proposition_signature(signature: str) -> str:
 
 def problem_for_module(module: str) -> str:
     """Infer only explicit repository problem namespaces, never fuzzy labels."""
-    for problem in ("243", "249", "251", "257", "269", "1049"):
-        if re.search(rf"(?:^|/)Erdos{problem}(?:/|\.lean$)", module):
-            return problem
+    match = re.search(
+        r"(?:^|/)ErdosProblems/Erdos([1-9][0-9]*)(?:/|\.lean$)",
+        module,
+    )
+    if match:
+        return match.group(1)
     return "shared_substrate"
 
 

@@ -1,0 +1,67 @@
+{
+  "zone_id": "Z64",
+  "title": "Actual-LCM orbit representation, raw-block approximation, and quantitative separation endpoint",
+  "problem": "249",
+  "concepts": [
+    {"id":"z64_actual_lcm_orbit","label":"actual-LCM tail orbit","note":"The tail difference at H=periodLcm(2^a), viewed as an integer translate of the scaled #249 series orbit."},
+    {"id":"z64_raw_block_approximation","label":"odd-rank raw-block approximation","note":"The normalized finite diagonal raw block and its explicit elementary error radius."},
+    {"id":"z64_orbit_separation_supply","label":"actual-LCM orbit separation supply","note":"The open cofinal quantitative anti-concentration condition at canonical odd ranks."},
+    {"id":"z64_endpoint_boundary","label":"conditional #249 endpoint boundary","note":"The supply is sufficient for irrationality but is neither proved nor known necessary."}
+  ],
+  "statement_nodes": [
+    {
+      "id":"actual_lcm_tail_orbit_is_an_integer_translate_of_the_scaled_totient_series",
+      "canonical_statement":"For H=periodLcm(2^a), actualLcmTailOrbit(a)=2^H*(2^H-1)*(∑' n, Nat.totient n / 2^n) - (totientPrefix(2H)-totientPrefix(H)).",
+      "logical_class":"reduction_or_transport",
+      "problem":"249",
+      "concepts":["z64_actual_lcm_orbit","z64_endpoint_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"specialization of the exact tail-difference identity at equal LCM heights",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Direct specialization of the existing scaled-series tail identity; no novelty claim is made.",
+      "scope_caveat":"The exact identity alone proves neither nonintegrality nor irrationality. Its integer coefficient and prefix translate supply no quantitative separation from the integers.",
+      "confidence":"high",
+      "evidence":[{"declaration":"actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix","module":"Erdos249257/TotientActualLcmOrbitSeparation.lean","line":68}]
+    },
+    {
+      "id":"odd_rank_raw_block_approximates_the_actual_lcm_orbit_with_explicit_error",
+      "canonical_statement":"For every a and q, |actualLcmTailOrbit(a)-actualLcmRawApprox(a,q)| < actualLcmRawErrorRadius(a,q), where actualLcmRawApprox is diagonalAdjacentSuffixRawBlock(2^a,0,2q+1)/2^(2q+1) and actualLcmRawErrorRadius=(2*actualLcmHeight(a)+2q+3)/2^(2q+1).",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"249",
+      "concepts":["z64_actual_lcm_orbit","z64_raw_block_approximation","z64_endpoint_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact orbit-minus-raw remainder identity, elementary tail-difference bound, and diagonal increment bound",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Elementary quantitative specialization of existing tail and increment estimates; no novelty claim is made.",
+      "scope_caveat":"This is an upper approximation error only. It gives no lower bound or integer separation, and the error radius is not asserted to tend to zero along canonical ranks without growth control comparing q with the LCM height.",
+      "confidence":"high",
+      "evidence":[{"declaration":"abs_actualLcmTailOrbit_sub_rawApprox_lt","module":"Erdos249257/TotientActualLcmOrbitSeparation.lean","line":141}]
+    },
+    {
+      "id":"cofinal_actual_lcm_orbit_separation_conditionally_forces_totient_irrationality",
+      "canonical_statement":"If PowerTwoActualLcmOrbitSeparationSupply holds, namely for every a0 there exist a,q with max(2,a0)≤a, oddGuardedCanonicalAdjacentSuffixDepth(2^a)=2q+1, and for every integer z the bound 1/32+actualLcmRawErrorRadius(a,q)≤|actualLcmTailOrbit(a)-z|, then the binary totient series ∑' n, Nat.totient n / 2^n is irrational.",
+      "logical_class":"conditional_implication",
+      "problem":"249",
+      "concepts":["z64_actual_lcm_orbit","z64_raw_block_approximation","z64_orbit_separation_supply","z64_endpoint_boundary"],
+      "open_antecedents":["PowerTwoActualLcmOrbitSeparationSupply: for every a₀ there exist a,q with max 2 a₀≤a, oddGuardedCanonicalAdjacentSuffixDepth(2^a)=2q+1, and for every z:ℤ, 1/32+actualLcmRawErrorRadius a q≤|actualLcmTailOrbit a-z|."],
+      "is_restatement_of_open_problem":false,
+      "engine":"triangle-inequality transfer from actual-orbit separation to raw-block integer separation, the half-word band theorem, and the existing actual-penultimate signed-margin irrationality consumer",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Corpus-internal sufficient anti-concentration endpoint; no historical priority or external novelty claim is made.",
+      "scope_caveat":"The supply is open and is stronger than mere nonintegrality. It is not proved necessary or implied by irrationality; finite nonintegral examples do not establish its cofinal quantifier. No equidistribution, density, or irrationality measure is proved.",
+      "confidence":"high",
+      "evidence":[{"declaration":"irrational_totientSeries_of_actualLcmOrbitSeparationSupply","module":"Erdos249257/TotientActualLcmOrbitSeparation.lean","line":305}]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"actualLcmTailOrbit_eq_scaled_totientSeries_sub_prefix","module":"Erdos249257/TotientActualLcmOrbitSeparation.lean","line":68,"role":"statement","statement_node":"actual_lcm_tail_orbit_is_an_integer_translate_of_the_scaled_totient_series"},
+    {"declaration":"abs_actualLcmTailOrbit_sub_rawApprox_lt","module":"Erdos249257/TotientActualLcmOrbitSeparation.lean","line":141,"role":"statement","statement_node":"odd_rank_raw_block_approximates_the_actual_lcm_orbit_with_explicit_error"},
+    {"declaration":"irrational_totientSeries_of_actualLcmOrbitSeparationSupply","module":"Erdos249257/TotientActualLcmOrbitSeparation.lean","line":305,"role":"statement","statement_node":"cofinal_actual_lcm_orbit_separation_conditionally_forces_totient_irrationality"}
+  ],
+  "intra_zone_relations": [
+    {"from":"odd_rank_raw_block_approximates_the_actual_lcm_orbit_with_explicit_error","to":"actual_lcm_tail_orbit_is_an_integer_translate_of_the_scaled_totient_series","relation":"complements","basis":"The first theorem locates the orbit relative to the scaled #249 series; the second makes that orbit finitely approximable with an explicit error without proving separation."},
+    {"from":"cofinal_actual_lcm_orbit_separation_conditionally_forces_totient_irrationality","to":"odd_rank_raw_block_approximates_the_actual_lcm_orbit_with_explicit_error","relation":"generated_by","basis":"The endpoint proof uses the explicit error bound to transfer strong separation of the actual orbit to 1/32 integer separation of the raw approximation, then invokes the half-word and signed-margin consumers."}
+  ]
+}

@@ -65,6 +65,15 @@ SEMANTIC_DIR = ROOT / "docs" / "semantic"
 ZONES_DIR = SEMANTIC_DIR / "zones"
 REVIEWS = SEMANTIC_DIR / "reviews.json"
 OUTPUT = ROOT / "docs" / "semantic_corpus.json"
+PROBLEM_INDEX = ROOT / "docs" / "problems.json"
+RESULTS = ROOT / "docs" / "RESULTS.md"
+TRUTH_AUDIT = ROOT / "docs" / "TRUTH_AUDIT.md"
+COLD_CLONE_PAPER = ROOT / "paper" / "cold-clone-to-proof-receipt.tex"
+SYSTEMS_PAPER = ROOT / "paper" / "claim-faithful-publication-systems-paper.tex"
+MD_CENSUS_BEGIN = "<!-- BEGIN semantic_public_census -->"
+MD_CENSUS_END = "<!-- END semantic_public_census -->"
+TEX_COVERAGE_BEGIN = "% BEGIN generated_semantic_coverage_macros"
+TEX_COVERAGE_END = "% END generated_semantic_coverage_macros"
 
 LOGICAL_CLASSES = (
     "unconditional_object_theorem",
@@ -118,16 +127,13 @@ DECLARATION_ROLES = (
     "generated_instance",
 )
 
-PROBLEMS = (
-    "243",
-    "249",
-    "251",
-    "257",
-    "269",
-    "1049",
-    "both",
-    "shared_substrate",
+INDEXED_PROBLEMS = tuple(
+    str(row["erdos_number"])
+    for row in json.loads(PROBLEM_INDEX.read_text(encoding="utf-8")).get(
+        "problems", []
+    )
 )
+PROBLEMS = (*INDEXED_PROBLEMS, "both", "shared_substrate")
 
 # A view is a projection over one graph, never a separate source of truth.
 VIEW_RULES = {
@@ -176,6 +182,7 @@ def semantic_input_paths() -> list[Path]:
         REVIEWS,
         Path(__file__).resolve(),
         ROOT / "scripts" / "semantic_family_compiler.py",
+        PROBLEM_INDEX,
     ]
     return sorted(
         (path for path in [*fixed, *zone_files(), *relation_files()] if path.is_file()),
@@ -192,6 +199,128 @@ def semantic_input_fingerprint() -> str:
         digest.update(path.read_bytes())
         digest.update(b"\0")
     return f"sha256:{digest.hexdigest()}"
+
+
+def scoped_node_counts(
+    nodes: dict[str, dict],
+    node_ids: set[str],
+) -> dict[str, int]:
+    counts = Counter(
+        str(node.get("problem", "shared_substrate"))
+        for node_id, node in nodes.items()
+        if node_id in node_ids
+    )
+    return {
+        **{problem: counts.get(problem, 0) for problem in INDEXED_PROBLEMS},
+        "both": counts.get("both", 0),
+        "shared_substrate": counts.get("shared_substrate", 0),
+        "total": sum(counts.values()),
+    }
+
+
+def markdown_census_table(census: dict) -> str:
+    scopes = (*INDEXED_PROBLEMS, "both", "shared_substrate", "total")
+    headers = [f"#{problem}" for problem in INDEXED_PROBLEMS]
+    headers.extend(("both", "shared", "total"))
+    lines = [
+        "| View | " + " | ".join(headers) + " |",
+        "|---|" + "|".join("---:" for _ in scopes) + "|",
+    ]
+    labels = (
+        ("nonrecurring", "mechanically nonrecurring candidates"),
+        ("classical", "classical/prior-art formalisations"),
+        ("bare_equivalences", "bare open-problem equivalences"),
+    )
+    for key, label in labels:
+        row = census[key]
+        lines.append(
+            "| "
+            + label
+            + " | "
+            + " | ".join(str(row[scope]) for scope in scopes)
+            + " |"
+        )
+    return "\n".join(lines)
+
+
+def semantic_public_census_region(census: dict, *, truth_audit: bool) -> str:
+    table = markdown_census_table(census)
+    prefix = (
+        "At this checkpoint the semantic graph yields three diagnostic views "
+        "across every indexed Erdős problem:"
+        if truth_audit
+        else (
+            "Only after those theorem-level facts comes the corpus census. The "
+            "current semantic graph provides three diagnostic views across every "
+            "indexed Erdős problem:"
+        )
+    )
+    if truth_audit:
+        tier_detail = (
+            f"The graph contains {census['authored_statement_node_count']:,} "
+            "authored statement nodes above "
+            f"{census['source_structural_family_node_count']:,} exact "
+            "source-structural families. The views overlap and are not a "
+            "partition of either tier."
+        )
+    else:
+        classes = census["nonrecurring_by_logical_class"]
+        tier_detail = (
+            "The nonrecurring view contains "
+            f"{classes.get('unconditional_object_theorem', 0)} unconditional "
+            "object theorems, "
+            f"{classes.get('barrier_no_go', 0)} scoped barriers, and "
+            f"{classes.get('reduction_or_transport', 0)} reductions or "
+            "transports after aliases, open antecedents, bare equivalences, "
+            "finite/generated instances, infrastructure, classical results, "
+            "and routine corollaries are removed."
+        )
+    detail = (
+        f"The internal adjudicated frontier shortlist contains "
+        f"{census['reviewed_frontier_shortlist_count']} nodes; it is distinct "
+        f"from the {census['prior_art_review_queue_count']}-node public prior-art "
+        "review queue. "
+        f"{census['nonrecurring_prior_art_not_assessed_count']} nonrecurring "
+        "candidates remain unassessed for prior art. The live authored "
+        f"open-antecedent surface has {census['open_antecedent_cluster_count']} "
+        "clusters, of which "
+        f"{census['open_antecedent_endpoint_equivalent_count']} are marked "
+        "endpoint-equivalent. None of these populations is a novelty census."
+    )
+    return "\n\n".join((prefix, table, tier_detail, detail))
+
+
+def semantic_coverage_macro_region(payload: dict) -> str:
+    coverage = payload["summary"]["coverage"]
+    interpreted = coverage[
+        "authored_theorem_like_authored_statement_interpretation"
+    ]
+    theorem_like = payload["summary"]["authored_theorem_like"]
+    percent = 100 * interpreted / max(1, theorem_like)
+    return "\n".join(
+        (
+            rf"\newcommand{{\SemanticAuthoredTheoremLike}}{{{theorem_like:,}}}",
+            rf"\newcommand{{\SemanticAuthoredInterpreted}}{{{interpreted:,}}}",
+            rf"\newcommand{{\SemanticDirectEvidence}}{{{coverage['authored_theorem_like_authored_statement_direct_evidence']:,}}}",
+            rf"\newcommand{{\SemanticContextual}}{{{coverage['authored_theorem_like_authored_statement_contextual_links']:,}}}",
+            rf"\newcommand{{\SemanticStructuralOnly}}{{{coverage['authored_theorem_like_source_structural_family']:,}}}",
+            rf"\newcommand{{\SemanticAuthoredPercent}}{{{percent:.1f}}}",
+        )
+    )
+
+
+def replace_generated_region(
+    text: str,
+    *,
+    begin: str,
+    end: str,
+    body: str,
+) -> str:
+    if text.count(begin) != 1 or text.count(end) != 1:
+        raise ValueError(f"expected exactly one generated region {begin!r} .. {end!r}")
+    before, remainder = text.split(begin, 1)
+    _old, after = remainder.split(end, 1)
+    return f"{before}{begin}\n{body.rstrip()}\n{end}{after}"
 
 
 def declaration_key(module: str, name: str, line: object) -> str:
@@ -891,6 +1020,73 @@ def collect() -> dict:
                     }
                 )
 
+    classical_ids = {
+        node_id
+        for node_id, node in nodes.items()
+        if node.get("logical_class") == "classical_formalised"
+        or node.get("prior_art_state") in ("known_classical", "prior_art_found")
+    }
+    bare_equivalence_ids = {
+        node_id
+        for node_id, node in nodes.items()
+        if node.get("logical_class") == "equivalence_or_classification"
+        and node.get("is_restatement_of_open_problem")
+    }
+    prior_art_review_ids = {
+        node_id
+        for node_id, node in nodes.items()
+        if node.get("prior_art_state")
+        in ("candidate_new_statement", "external_review_pending")
+    }
+    nonassessed_ids = {
+        node_id
+        for node_id, node in nodes.items()
+        if node.get("prior_art_state") == "not_assessed"
+    }
+    reviewed_frontier = frontier.get("nonrecurring_candidates", [])
+    reviewed_frontier_by_problem = Counter(
+        str(row.get("problem", "shared_substrate"))
+        for row in reviewed_frontier
+    )
+    public_semantic_census = {
+        "indexed_problem_ids": list(INDEXED_PROBLEMS),
+        "nonrecurring": scoped_node_counts(nodes, set(nonrecurring)),
+        "classical": scoped_node_counts(nodes, classical_ids),
+        "bare_equivalences": scoped_node_counts(nodes, bare_equivalence_ids),
+        "prior_art_not_assessed": scoped_node_counts(nodes, nonassessed_ids),
+        "by_logical_class": dict(by_class),
+        "nonrecurring_by_logical_class": dict(
+            Counter(nodes[node_id].get("logical_class") for node_id in nonrecurring)
+        ),
+        "nonrecurring_prior_art_not_assessed_count": sum(
+            nodes[node_id].get("prior_art_state") == "not_assessed"
+            for node_id in nonrecurring
+        ),
+        "authored_statement_node_count": sum(
+            node.get("interpretation_tier") == "authored_statement"
+            for node in nodes.values()
+        ),
+        "source_structural_family_node_count": len(structural_nodes),
+        "reviewed_frontier_shortlist_count": len(reviewed_frontier),
+        "reviewed_frontier_shortlist_by_problem": dict(
+            reviewed_frontier_by_problem
+        ),
+        "prior_art_review_queue_count": len(prior_art_review_ids),
+        "prior_art_review_queue": scoped_node_counts(
+            nodes, prior_art_review_ids
+        ),
+        "open_antecedent_cluster_count": len(
+            frontier.get("open_antecedents", [])
+        ),
+        "open_antecedent_endpoint_equivalent_count": sum(
+            bool(row.get("equivalent_to_the_open_problem"))
+            for row in frontier.get("open_antecedents", [])
+        ),
+        "demand_lattice_counts": frontier.get("demand_lattice", {}).get(
+            "counts", {}
+        ),
+    }
+
     payload = {
         "schema": "erdos249257-semantic-corpus/1",
         "artifact_role": (
@@ -1100,6 +1296,7 @@ def collect() -> dict:
             "by_prior_art_state": dict(by_prior_art),
             "by_relation": dict(by_relation),
             "per_problem": per_problem,
+            "public_semantic_census": public_semantic_census,
         },
         "zones": zone_index,
         "concepts": sorted(concepts.values(), key=lambda c: c["id"]),
@@ -1154,6 +1351,37 @@ def render(payload: dict) -> str:
     ) + "\n"
 
 
+def generated_surface_texts(payload: dict) -> dict[Path, str]:
+    census = payload["summary"]["public_semantic_census"]
+    macros = semantic_coverage_macro_region(payload)
+    return {
+        RESULTS: replace_generated_region(
+            RESULTS.read_text(encoding="utf-8"),
+            begin=MD_CENSUS_BEGIN,
+            end=MD_CENSUS_END,
+            body=semantic_public_census_region(census, truth_audit=False),
+        ),
+        TRUTH_AUDIT: replace_generated_region(
+            TRUTH_AUDIT.read_text(encoding="utf-8"),
+            begin=MD_CENSUS_BEGIN,
+            end=MD_CENSUS_END,
+            body=semantic_public_census_region(census, truth_audit=True),
+        ),
+        COLD_CLONE_PAPER: replace_generated_region(
+            COLD_CLONE_PAPER.read_text(encoding="utf-8"),
+            begin=TEX_COVERAGE_BEGIN,
+            end=TEX_COVERAGE_END,
+            body=macros,
+        ),
+        SYSTEMS_PAPER: replace_generated_region(
+            SYSTEMS_PAPER.read_text(encoding="utf-8"),
+            begin=TEX_COVERAGE_BEGIN,
+            end=TEX_COVERAGE_END,
+            body=macros,
+        ),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the tracked corpus is stale")
@@ -1168,6 +1396,7 @@ def main() -> int:
 
     payload = collect()
     text = render(payload)
+    surfaces = generated_surface_texts(payload)
 
     if args.check:
         if not OUTPUT.is_file():
@@ -1175,6 +1404,18 @@ def main() -> int:
             return 1
         if OUTPUT.read_text(encoding="utf-8") != text:
             print("semantic corpus is stale; run python3 scripts/build_semantic_corpus.py")
+            return 1
+        stale_surfaces = [
+            path.relative_to(ROOT).as_posix()
+            for path, expected in surfaces.items()
+            if path.read_text(encoding="utf-8") != expected
+        ]
+        if stale_surfaces:
+            print(
+                "semantic census/coverage projections are stale: "
+                + ", ".join(stale_surfaces)
+                + "; run python3 scripts/build_semantic_corpus.py"
+            )
             return 1
         summary = payload["summary"]
         print(
@@ -1184,6 +1425,8 @@ def main() -> int:
         return 0
 
     OUTPUT.write_text(text, encoding="utf-8")
+    for path, expected in surfaces.items():
+        path.write_text(expected, encoding="utf-8")
     summary = payload["summary"]
     print(
         f"wrote {OUTPUT.relative_to(ROOT)}: {summary['statement_nodes']} statement nodes, "

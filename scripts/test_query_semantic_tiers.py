@@ -3,8 +3,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 from query_semantic import (
+    PROBLEMS,
     is_authored_interpretation,
     is_structural_interpretation,
+    problem_for_route,
+    problem_scope_matches,
 )
 
 
@@ -30,6 +33,47 @@ def test_zone_only_role_is_neither_interpretation_tier() -> None:
     role = {"zone": "Z40", "role": "substrate"}
     assert not is_authored_interpretation(role)
     assert not is_structural_interpretation(role)
+
+
+def test_problem_registry_is_loaded_from_the_public_problem_index() -> None:
+    assert PROBLEMS == ("243", "249", "251", "257", "269", "1049")
+
+
+def test_historical_both_scope_does_not_leak_into_every_problem() -> None:
+    assert problem_scope_matches("both", "249")
+    assert problem_scope_matches("both", "257")
+    assert not problem_scope_matches("both", "243")
+
+
+def test_problem_route_prefers_authored_node_then_zone_then_exact_namespace() -> None:
+    corpus = {
+        "statement_nodes": [{"id": "Z90::node", "problem": "269"}],
+        "zones": [{"zone_id": "Z91", "problem": "251"}],
+    }
+    assert problem_for_route(
+        corpus,
+        {
+            "statement_node": "Z90::node",
+            "zone": "Z91",
+            "module": "ErdosProblems/Erdos243/Foo.lean",
+        },
+    ) == "243"
+    assert problem_for_route(
+        corpus,
+        {
+            "statement_node": "Z90::node",
+            "zone": "Z91",
+            "module": "Erdos249257/Foo.lean",
+        },
+    ) == "251"
+    assert problem_for_route(
+        corpus,
+        {"statement_node": "Z90::node", "module": "Erdos249257/Foo.lean"},
+    ) == "269"
+    assert problem_for_route(
+        corpus,
+        {"module": "ErdosProblems/Erdos9999/Future.lean"},
+    ) == "9999"
 
 
 if __name__ == "__main__":

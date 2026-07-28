@@ -139,12 +139,13 @@ exactly once. These are navigation counts, not novelty claims.
 - **Whole-corpus agent navigation, without a Lean build:** run
   `python3 scripts/query_corpus.py --tour --format card`, then follow
   `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
-  The no-build tour exposes corpus scale, a mathematical map, the exact open
-  frontier, and an authority boundary. Committed indexes expose every indexed
-  declaration and exact dependencies for both loaded roots after cloning.
-  Use `query_semantic.py` commands `mechanisms`, `coverage`, `receipts`, and
-  `population-backlog`. Coverage separates direct evidence, family
-  context, and structural discovery: navigation projections, not proof authority.
+  The no-build tour exposes corpus scale, the mathematical map, canonical
+  six-problem map, exact open frontier, and authority boundaries. Use
+  `query_semantic.py problem-registry` for every indexed problem and
+  `structural-backlog` for authored replacement. Committed indexes expose every
+  indexed declaration and exact dependencies for both loaded roots; coverage
+  keeps direct evidence, family context, and structural discovery distinct.
+  These are navigation projections, not proof authority.
 - **Publication topology:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
   `python3 scripts/query_corpus.py --publication-family <id>`.

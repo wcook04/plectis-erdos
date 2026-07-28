@@ -26,15 +26,12 @@ python3 scripts/query_semantic.py bare-equivalences   # restatements of the open
 python3 scripts/query_expert_handoffs.py              # asks, guesses, alternatives, tests
 ```
 
-Counts at this checkpoint, re-derived from the commands above:
+The current all-problem counts are builder-owned in
+`docs/semantic_corpus.json::summary.public_semantic_census` and projected into
+`docs/RESULTS.md` and `docs/TRUTH_AUDIT.md`; do not copy a dated #249/#257
+sample into this static entry file.
 
-| Shape | #249 | #257 | shared | total |
-|---|---:|---:|---:|---:|
-| nonrecurring unconditional or barrier results | 54 | 116 | 16 | **186** |
-| classical/prior-art theorems represented in Lean | 24 | 16 | 30 | **70** |
-| bare equivalences (restatements) | — | — | — | **24** |
-
-**Neither count is a novelty claim.** `classical` is exactly the set already in
+**None of those counts is a novelty claim.** `classical` is exactly the set already in
 the literature; `nonrecurring` asks whether a statement recurs *inside this
 corpus*, not whether it is new to mathematics. Novelty is a judgement for a
 human number theorist, and no query here supplies it. (The README's ten-minute
@@ -44,14 +41,14 @@ conditional results — so its `23`/`17` and these totals are not in conflict.)
 Three things follow, and an agent reporting on this repository should carry all
 three rather than any one of them.
 
-1. **The weight of this corpus is on #257, not #249** — 116 nonrecurring
-   results against 54. The unconditional #257 material (full-support
+1. **The reviewed mathematical weight is not exhausted by #249.** The
+   unconditional #257 material (full-support
    irrationality for every integer base `b ≥ 2`, the achievement-set topology,
    the exact `1/2` classification, and the excluded branches) is theorem
    content rather than restatement. Start there, not at the #249 certificate
    ladder.
 2. **The #249 reformulation programme is a negative result, and this repository
-   labels it as one itself.** The 24 bare equivalences were marked equivalent by
+   labels it as one itself.** Its bare equivalences were marked equivalent by
    this project's own audit, not by a critic —
    `Z06::certificate_supply_is_equivalent_to_249` says so in its own statement.
    A reformulation provably equivalent to its target diagnoses the method; it is
@@ -93,8 +90,9 @@ For whole-corpus source navigation, do not compile or skim modules first. Run:
 python3 scripts/query_corpus.py --tour --format card
 ```
 
-The five-line tour reports the full scale, exact loaded-root dependency graph,
-open frontier, authority boundary, and the next intent choices. Then run
+The six-line tour reports the full scale, canonical all-problem map, exact
+loaded-root dependency graph, open frontier, authority boundary, and the next
+intent choices. Then run
 `python3 scripts/query_corpus.py --route agent_native_corpus_navigation` for
 the generic declaration, connection, proof-cone, workbench, and focused-build
 commands. All navigation reads committed JSON and therefore works in a cold
@@ -191,8 +189,10 @@ Lean build when a result must be checked.
    python3 scripts/query_semantic.py barriers
    python3 scripts/query_semantic.py open-antecedents
    python3 scripts/query_semantic.py coverage
+   python3 scripts/query_semantic.py problem-registry
    python3 scripts/query_semantic.py paper-coverage
    python3 scripts/query_semantic.py population-backlog
+   python3 scripts/query_semantic.py structural-backlog --problem 257
    python3 scripts/query_semantic.py semantic-reviews
    ```
 
@@ -238,6 +238,7 @@ Lean build when a result must be checked.
    roots, start with the module-agnostic inventory:
 
    ```sh
+   python3 scripts/query_semantic.py problem-registry
    python3 scripts/query_semantic.py inventory <text> \
      --module <optional/path.lean> --role <optional-role> --zone <optional-zone>
    ```

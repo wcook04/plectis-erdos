@@ -34,30 +34,19 @@ provably equivalent to an endpoint—14 to #249 and 3 to the `1/2` membership
 test for #257. This is a self-diagnosis of reformulation failure, not progress
 on either endpoint.
 
-Only after those theorem-level facts comes the corpus census. The current
-semantic graph provides three disjoint diagnostic views:
+<!-- BEGIN semantic_public_census -->
+Only after those theorem-level facts comes the corpus census. The current semantic graph provides three diagnostic views across every indexed Erdős problem:
 
-| View | #249 | #257 | shared | total |
-|---|---:|---:|---:|---:|
-| mechanically nonrecurring candidates | 72 | 137 | 19 | **231** |
-| classical/prior-art formalisations | 29 | 21 | 40 | **91** |
-| bare open-problem equivalences | 14 | 15 | 2 | **31** |
+| View | #243 | #249 | #251 | #257 | #269 | #1049 | both | shared | total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| mechanically nonrecurring candidates | 0 | 81 | 0 | 154 | 0 | 3 | 0 | 19 | 257 |
+| classical/prior-art formalisations | 0 | 29 | 0 | 21 | 0 | 1 | 0 | 40 | 91 |
+| bare open-problem equivalences | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 2 | 32 |
 
-The nonrecurring view contains 149 unconditional object theorems, 44 scoped
-barriers, and 38 reductions or transports after aliases, open antecedents,
-bare equivalences, finite/generated instances, infrastructure, classical
-results, and routine corollaries are removed. The bare-equivalence view records
-exact equivalences whose unresolved side retains the original difficulty. The
-classical view records established mathematics represented in Lean.
+The nonrecurring view contains 168 unconditional object theorems, 49 scoped barriers, and 40 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
 
-These counts answer different questions; they are not a partition of the
-entire corpus and none is a theorem-novelty census. In particular, 212 of the
-231 candidates have `prior_art_state = not_assessed`. The authored frontier
-therefore advances only a reviewed shortlist of 11—five for #249 and six for
-#257—and records a residual risk for every one. The live prose-level
-`open-antecedents` view currently has 52 entries, 10 marked
-endpoint-equivalent; those entries repeat and refine hypotheses differently
-from the 23-proposition demand lattice.
+The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 224 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
+<!-- END semantic_public_census -->
 
 The large #249 denominator exclusion is a direct, kernel-checked instantiation
 of the classical neighbouring-fraction/mediant method. That method supplies the

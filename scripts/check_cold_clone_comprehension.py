@@ -31,6 +31,11 @@ from typing import Any
 import query_corpus
 
 ROOT = Path(__file__).resolve().parent.parent
+INDEXED_PROBLEM_COUNT = len(
+    json.loads((ROOT / "docs" / "problems.json").read_text(encoding="utf-8"))[
+        "problems"
+    ]
+)
 QUERY = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
 EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
@@ -47,10 +52,10 @@ INCREMENTAL_BUILD_SURFACES = (
 # prefix below. They prevent accidental bloat without making the next honest
 # sentence a release failure.
 HUMAN_SURFACE_BUDGET_BYTES = {
-    # The extra allowance pays for the explicit zero-build navigation and
-    # incremental-build boundary; the fixed 12 kB prefix below still prevents
-    # that route from displacing the mathematical verdict.
-    "README.md": 14_500,
+    # The fixed 12 kB prefix below protects the verdict. Whole-file allowance
+    # scales with the canonical problem registry instead of preserving the
+    # original two-programme specimen ceiling forever.
+    "README.md": 13_800 + 200 * INDEXED_PROBLEM_COUNT,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
 }
@@ -60,6 +65,9 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 README_FIRST_CONTACT_BUDGET_BYTES = 12_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 PACKET_BUDGET_BYTES = 16_384
+AGENT_TOUR_BUDGET_BYTES = query_corpus.agent_tour_budget_bytes(
+    INDEXED_PROBLEM_COUNT
+)
 PROOF_AUTHORITY = "Lean source checked by the pinned Lean kernel"
 SELF_APPRAISAL_PHRASES = (
     "ambitious",
@@ -397,6 +405,8 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["--tour --format card"],
             ["corpus scale"],
             ["mathematical map"],
+            ["canonical six-problem map"],
+            ["problem-registry"],
             ["exact open frontier"],
             ["agent_native_corpus_navigation"],
             ["every indexed declaration"],
@@ -535,6 +545,7 @@ def validate_human_first_contact(
 def semantic_census() -> dict[str, Any]:
     """Recompute the public diagnostic census from the generated graph."""
     corpus = json.loads(read("docs/semantic_corpus.json"))
+    public = corpus["summary"]["public_semantic_census"]
     nodes = corpus["statement_nodes"]
     frontier = corpus["frontier"]
     nonrecurring_ids = set(corpus["views"]["nonrecurring"]["nodes"])
@@ -562,24 +573,31 @@ def semantic_census() -> dict[str, Any]:
         return Counter(row["problem"] for row in rows)
 
     return {
-        "nonrecurring_total": len(nonrecurring),
-        "nonrecurring_by_problem": problem_counts(nonrecurring),
+        "indexed_problem_ids": public["indexed_problem_ids"],
+        "nonrecurring_total": public["nonrecurring"]["total"],
+        "nonrecurring_by_problem": Counter(public["nonrecurring"]),
         "nonrecurring_by_class": Counter(
-            row["logical_class"] for row in nonrecurring
+            public["nonrecurring_by_logical_class"]
         ),
-        "nonrecurring_not_assessed": sum(
-            row.get("prior_art_state") == "not_assessed"
-            for row in nonrecurring
-        ),
-        "bare_total": len(bare),
-        "bare_by_problem": problem_counts(bare),
-        "classical_total": len(classical),
-        "classical_by_problem": problem_counts(classical),
-        "open_antecedent_cluster_total": len(open_antecedents),
-        "open_antecedent_equivalent_total": sum(
-            row.get("equivalent_to_the_open_problem") is True
-            for row in open_antecedents
-        ),
+        "nonrecurring_not_assessed": public[
+            "nonrecurring_prior_art_not_assessed_count"
+        ],
+        "bare_total": public["bare_equivalences"]["total"],
+        "bare_by_problem": Counter(public["bare_equivalences"]),
+        "classical_total": public["classical"]["total"],
+        "classical_by_problem": Counter(public["classical"]),
+        "reviewed_frontier_shortlist_count": public[
+            "reviewed_frontier_shortlist_count"
+        ],
+        "prior_art_review_queue_count": public[
+            "prior_art_review_queue_count"
+        ],
+        "open_antecedent_cluster_total": public[
+            "open_antecedent_cluster_count"
+        ],
+        "open_antecedent_equivalent_total": public[
+            "open_antecedent_endpoint_equivalent_count"
+        ],
         "demand_lattice_counts": demand_lattice["counts"],
         "demand_equivalent_total": sum(
             len(row["members"]) for row in demand_equivalent_classes
@@ -617,25 +635,26 @@ def validate_public_semantic_census(
     open_cluster_equivalent = census[
         "open_antecedent_equivalent_total"
     ]
+    scopes = (
+        *census["indexed_problem_ids"],
+        "both",
+        "shared_substrate",
+        "total",
+    )
+
+    def census_row(label: str, row: Counter[str]) -> str:
+        return (
+            f"| {label} | "
+            + " | ".join(str(row[scope]) for scope in scopes)
+            + " |"
+        )
 
     expectations = {
         "docs/RESULTS.md": (
-            (
-                "| mechanically nonrecurring candidates | "
-                f"{nonrecurring['249']} | {nonrecurring['257']} | "
-                f"{nonrecurring['shared_substrate']} | **{total}** |"
-            ),
-            (
-                "| classical/prior-art formalisations | "
-                f"{classical['249']} | {classical['257']} | "
-                f"{classical['shared_substrate']} | "
-                f"**{census['classical_total']}** |"
-            ),
-            (
-                "| bare open-problem equivalences | "
-                f"{bare['249']} | {bare['257']} | "
-                f"{bare['shared_substrate']} | **{census['bare_total']}** |"
-            ),
+            "<!-- BEGIN semantic_public_census -->",
+            census_row("mechanically nonrecurring candidates", nonrecurring),
+            census_row("classical/prior-art formalisations", classical),
+            census_row("bare open-problem equivalences", bare),
             (
                 f"The nonrecurring view contains "
                 f"{classes['unconditional_object_theorem']} unconditional "
@@ -643,7 +662,13 @@ def validate_public_semantic_census(
                 f"barriers, and {classes['reduction_or_transport']} "
                 "reductions or transports"
             ),
-            f"{unassessed} of the {total} candidates have",
+            f"{unassessed} nonrecurring candidates remain unassessed",
+            (
+                f"frontier shortlist contains "
+                f"{census['reviewed_frontier_shortlist_count']} nodes; it is "
+                f"distinct from the {census['prior_art_review_queue_count']}-node "
+                "public prior-art review queue"
+            ),
             (
                 f"Of {demand['substantial']} substantial Lean propositions "
                 "extracted from hypotheses of conditional theorems, "
@@ -655,21 +680,23 @@ def validate_public_semantic_census(
                 "membership test for #257"
             ),
             (
-                f"`open-antecedents` view currently has {open_cluster_total} "
-                f"entries, {open_cluster_equivalent} marked "
-                "endpoint-equivalent"
+                f"open-antecedent surface has {open_cluster_total} clusters, "
+                f"of which {open_cluster_equivalent} are marked endpoint-equivalent"
             ),
+            "<!-- END semantic_public_census -->",
         ),
         "docs/TRUTH_AUDIT.md": (
+            "<!-- BEGIN semantic_public_census -->",
+            census_row("mechanically nonrecurring candidates", nonrecurring),
+            census_row("classical/prior-art formalisations", classical),
+            census_row("bare open-problem equivalences", bare),
+            f"{unassessed} nonrecurring candidates remain unassessed",
             (
-                f"{total} mechanically nonrecurring candidates "
-                f"({nonrecurring['249']} for #249, "
-                f"{nonrecurring['257']} for #257, and "
-                f"{nonrecurring['shared_substrate']} shared)"
+                f"frontier shortlist contains "
+                f"{census['reviewed_frontier_shortlist_count']} nodes; it is "
+                f"distinct from the {census['prior_art_review_queue_count']}-node "
+                "public prior-art review queue"
             ),
-            f"{census['bare_total']} bare open-problem equivalences",
-            f"{census['classical_total']} classical/prior-art formalisations",
-            f"{unassessed} candidates have no completed prior-art assessment",
             (
                 f"The `{demand_equivalent}/{demand['substantial']}` count is "
                 "a narrower kernel-checked audit"
@@ -689,6 +716,7 @@ def validate_public_semantic_census(
                 f"lists {open_cluster_total} entries, "
                 f"{open_cluster_equivalent} marked endpoint-equivalent"
             ),
+            "<!-- END semantic_public_census -->",
         ),
     }
     for path, phrases in expectations.items():
@@ -853,7 +881,15 @@ def collect_agent_packets() -> dict[str, Any]:
         "sources": {},
         "modules": {},
         "sigil_modules": {},
-        "agent_tour": query_packet("--tour"),
+        "agent_tour": query_packet(
+            "--tour", budget_bytes=AGENT_TOUR_BUDGET_BYTES
+        ),
+        "semantic_dictionary": query_packet("--vocabulary"),
+        "problem_registry": semantic_query_packet("problem-registry"),
+        "problem_searches": {
+            phrase: query_packet("--search", phrase, "--limit", "1")
+            for phrase in ("Erdős problem 243", "Erdos problem 243")
+        },
         "route": query_packet("--route", "instant_orientation"),
         "agent_native_navigation_route": query_packet(
             "--route", "agent_native_corpus_navigation"
@@ -1113,6 +1149,18 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert tour["scale"]["remaining_open_proposition_count"] == len(
         summary["remaining_open_propositions"]
     )
+    assert tour["scale"]["indexed_problem_count"] == 6
+    assert tour["budget_contract"]["maximum_encoded_bytes"] == (
+        AGENT_TOUR_BUDGET_BYTES
+    )
+    assert {row["erdos_number"] for row in tour["problem_map"]} == {
+        243,
+        249,
+        251,
+        257,
+        269,
+        1049,
+    }
     assert tour["formal_dependency_graph"]["loaded_library_roots"] == [
         "Erdos249257",
         "ErdosProblems",
@@ -1151,7 +1199,25 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         assert contract["use"]
     assert tour["authority_boundary"]["proof"] == PROOF_AUTHORITY
     assert "no Lean build required" in tour["authority_boundary"]["navigation"]
-    assert encoded_bytes(tour) <= PACKET_BUDGET_BYTES
+    assert encoded_bytes(tour) <= tour["budget_contract"]["maximum_encoded_bytes"]
+
+    problem_registry = packets["problem_registry"]
+    assert problem_registry["source"] == "docs/problems.json"
+    assert problem_registry["indexed_problem_count"] == 6
+    assert {
+        row["erdos_number"] for row in problem_registry["problems"]
+    } == {243, 249, 251, 257, 269, 1049}
+    dictionary = packets["semantic_dictionary"]
+    assert dictionary["problem_registry_contract"]["source"] == (
+        "docs/problems.json"
+    )
+    assert len(dictionary["problem_registry_contract"]["problems"]) == 6
+    for problem_search in packets["problem_searches"].values():
+        assert problem_search["routing_receipt"] == {
+            "selection": "exact_problem_registry_term",
+            "declaration_scan_required": False,
+        }
+        assert problem_search["results"][0]["id"] == "erdos_243"
 
     assert set(packets["claim_statuses"]) == set(summary["status_taxonomy"])
     for status, packet in packets["claim_statuses"].items():

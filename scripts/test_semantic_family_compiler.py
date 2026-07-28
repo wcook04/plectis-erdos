@@ -134,6 +134,7 @@ def test_single_source_docstring_is_preserved_without_name_inference() -> None:
 
 def test_problem_inference_uses_explicit_namespace_only() -> None:
     assert problem_for_module("ErdosProblems/Erdos243/Tail.lean") == "243"
+    assert problem_for_module("ErdosProblems/Erdos9999/Future.lean") == "9999"
     assert problem_for_module("Erdos249257/Shared.lean") == "shared_substrate"
     assert problem_for_module("Mathlib/Data/Nat/Foo.lean") == "shared_substrate"
 

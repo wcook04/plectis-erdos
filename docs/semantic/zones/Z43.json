@@ -1,0 +1,208 @@
+{
+  "zone_id": "Z43",
+  "title": "Erdős 251 coordinate systems: prime-gap sums, dyadic tails, real escape, and free carries",
+  "problem": "251",
+  "replaces_role_zone": "Z17",
+  "concepts": [
+    {"id":"z43_prime_gap_coordinates","label":"zero-based prime-gap coordinates","note":"The nth-prime and consecutive-gap coordinates used by the #251 development."},
+    {"id":"z43_finite_dyadic_coordinates","label":"finite dyadic partial-sum coordinates","note":"The exact rational partial sums used in finite summation by parts."},
+    {"id":"z43_real_term_coordinates","label":"real dyadic prime and gap terms","note":"The real term coordinates for the prime and prime-gap series."},
+    {"id":"z43_rational_tail_coordinates","label":"rational dyadic tail recurrence","note":"An abstract rational doubling-minus-digit recurrence and its accumulated block."},
+    {"id":"z43_real_escape_coordinates","label":"real tail escape coordinates","note":"The real recurrence and cofinal nonintegral-shift predicate."},
+    {"id":"z43_rational_orbit","label":"rational initial-data orbit","note":"The exact recursively generated rational orbit."},
+    {"id":"z43_free_carry_coordinates","label":"free carry coordinates","note":"The carry coefficients and their finite dyadic partial sums."},
+    {"id":"z43_authority_boundary","label":"proof and interpretation boundary","note":"Lean proves only the cited declarations. Definitions provide representation evidence. The actual real prime-gap tail, its cofinal escape, and Erdős #251 remain open."}
+  ],
+  "statement_nodes": [
+    {
+      "id":"zero_based_prime_gap_coordinates",
+      "canonical_statement":"prime0 n is the zero-based nth prime and primeGap0 n = prime0 (n+1) - prime0 n. Consecutive primes are monotone, so casting the natural gap to rational numbers gives the exact rational difference.",
+      "logical_class":"representation_normalisation",
+      "problem":"251",
+      "concepts":["z43_prime_gap_coordinates","z43_authority_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"definition unfolding plus monotonicity of consecutive primes and exact natural-to-rational subtraction",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Standard prime indexing and cast normalisation; no novelty claim is made.",
+      "scope_caveat":"These coordinates make no distributional, convergence, rationality, or irrationality claim.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"prime0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":34},
+        {"declaration":"primeGap0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":38},
+        {"declaration":"prime0_mono_step","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":146},
+        {"declaration":"primeGap0_cast","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":150}
+      ]
+    },
+    {
+      "id":"finite_dyadic_partial_sum_coordinates",
+      "canonical_statement":"The normalized dyadic partial sum, displayed prime partial sum, forward-difference partial sum, and actual prime-gap partial sum are the exact rational finite-sum coordinates used by the source's summation-by-parts argument.",
+      "logical_class":"representation_normalisation",
+      "problem":"251",
+      "concepts":["z43_prime_gap_coordinates","z43_finite_dyadic_coordinates","z43_authority_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact definitions of four finite rational sums",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Finite-sum notation for a standard dyadic summation-by-parts calculation.",
+      "scope_caveat":"The definitions supply neither convergence nor an infinite-series identity; the already-authored theorem nodes in Z17 and Z31 retain those claims.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"dyadicPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":95},
+        {"declaration":"prime0DisplayedPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":100},
+        {"declaration":"dyadicDifferencePartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":115},
+        {"declaration":"primeGapPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":155}
+      ]
+    },
+    {
+      "id":"real_dyadic_prime_and_gap_term_coordinates",
+      "canonical_statement":"The real term coordinates are prime0 n / 2^(n+1), prime0 n / 2^n, and primeGap0 n / 2^(n+1); the displayed prime term is exactly twice the normalized prime term.",
+      "logical_class":"representation_normalisation",
+      "problem":"251",
+      "concepts":["z43_prime_gap_coordinates","z43_real_term_coordinates","z43_authority_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"definition unfolding and elementary power-of-two arithmetic",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Standard real-series coordinates; no novelty claim is made.",
+      "scope_caveat":"These term definitions and the factor-two identity prove no summability or irrationality conclusion.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"primeDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":172},
+        {"declaration":"primeDisplayedDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":177},
+        {"declaration":"primeGapDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":181},
+        {"declaration":"primeDisplayedDyadicTerm_eq_two_mul","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":185}
+      ]
+    },
+    {
+      "id":"rational_dyadic_tail_coordinate_system",
+      "canonical_statement":"The rational interface consists of the recurrence T_(N+1)=2*T_N-g_(N+1), the shift T_(N+h)-T_N, rational integrality, and the recursively accumulated integer block.",
+      "logical_class":"representation_normalisation",
+      "problem":"251",
+      "concepts":["z43_rational_tail_coordinates","z43_authority_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"four exact definitions forming the abstract rational recurrence interface",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Elementary recurrence coordinates; no novelty claim is made.",
+      "scope_caveat":"This is an abstract rational recurrence, not the actual infinite prime-gap tail.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"DyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":278},
+        {"declaration":"tailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":282},
+        {"declaration":"RatIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":298},
+        {"declaration":"dyadicTailBlock","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":304}
+      ]
+    },
+    {
+      "id":"integrality_is_invariant_under_integer_translation",
+      "canonical_statement":"For a rational number x and an integer z, x-z is integral if and only if x is integral.",
+      "logical_class":"equivalence_or_classification",
+      "problem":"251",
+      "concepts":["z43_rational_tail_coordinates"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"closure of the integer lattice under integer translation",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Routine rational arithmetic.",
+      "scope_caveat":"This generic arithmetic equivalence does not produce an integral tail shift.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"ratIntegral_sub_int_iff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":334}
+      ]
+    },
+    {
+      "id":"real_tail_escape_coordinate_system",
+      "canonical_statement":"The real interface consists of the real dyadic recurrence, real tail shift, real integrality, and CofinalNonintegralTailShifts, which requires every positive shift to fail integrality cofinally.",
+      "logical_class":"representation_normalisation",
+      "problem":"251",
+      "concepts":["z43_real_escape_coordinates","z43_authority_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"four exact real-valued recurrence and escape definitions",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Standard recurrence and integrality predicates.",
+      "scope_caveat":"These definitions do not establish the actual prime-gap real recurrence or cofinal escape; the paper's external prime-number-theorem argument is not formalized here.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"RealDyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":492},
+        {"declaration":"realTailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":496},
+        {"declaration":"RealIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":500},
+        {"declaration":"CofinalNonintegralTailShifts","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":528}
+      ]
+    },
+    {
+      "id":"rational_initial_data_generate_an_exact_rational_orbit",
+      "canonical_statement":"For any integer digit sequence and rational initial value q, primitive recursion constructs the displayed rational orbit beginning at q, and that orbit satisfies DyadicTailRecurrence exactly.",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"251",
+      "concepts":["z43_rational_tail_coordinates","z43_rational_orbit"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"primitive recursion and its defining equation",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Routine construction of the orbit of an affine recurrence.",
+      "scope_caveat":"This constructs an abstract orbit; it proves neither irrationality nor identification with the actual prime-gap tail.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"rationalDyadicOrbit","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":504},
+        {"declaration":"rationalDyadicOrbit_recurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":508}
+      ]
+    },
+    {
+      "id":"free_carry_coordinate_system",
+      "canonical_statement":"The free-carry coordinates are the rational and natural coefficients kappa_n=2*K_n-K_(n+1), together with their finite dyadic partial sum.",
+      "logical_class":"representation_normalisation",
+      "problem":"251",
+      "concepts":["z43_free_carry_coordinates","z43_authority_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact carry-coefficient and finite-partial-sum definitions",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Elementary carry coordinates; no novelty claim is made.",
+      "scope_caveat":"These definitions alone prove neither the finite telescoping theorem, an infinite limit, nor an aperiodic rational-sum example; Z17 retains the finite identity.",
+      "confidence":"high",
+      "evidence":[
+        {"declaration":"carryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":738},
+        {"declaration":"carryPartialSum","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":742},
+        {"declaration":"natCarryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":760}
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"prime0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":34,"role":"representation","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"primeGap0","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":38,"role":"representation","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"prime0_mono_step","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":146,"role":"statement","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"primeGap0_cast","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":150,"role":"statement","statement_node":"zero_based_prime_gap_coordinates"},
+    {"declaration":"dyadicPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":95,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"prime0DisplayedPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":100,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"dyadicDifferencePartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":115,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"primeGapPartialSumQ","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":155,"role":"representation","statement_node":"finite_dyadic_partial_sum_coordinates"},
+    {"declaration":"primeDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":172,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"primeDisplayedDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":177,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"primeGapDyadicTerm","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":181,"role":"representation","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"primeDisplayedDyadicTerm_eq_two_mul","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":185,"role":"statement","statement_node":"real_dyadic_prime_and_gap_term_coordinates"},
+    {"declaration":"DyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":278,"role":"concept","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"tailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":282,"role":"representation","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"RatIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":298,"role":"concept","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"dyadicTailBlock","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":304,"role":"representation","statement_node":"rational_dyadic_tail_coordinate_system"},
+    {"declaration":"ratIntegral_sub_int_iff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":334,"role":"statement","statement_node":"integrality_is_invariant_under_integer_translation"},
+    {"declaration":"RealDyadicTailRecurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":492,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"realTailShift","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":496,"role":"representation","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"RealIntegral","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":500,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"CofinalNonintegralTailShifts","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":528,"role":"concept","statement_node":"real_tail_escape_coordinate_system"},
+    {"declaration":"rationalDyadicOrbit","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":504,"role":"representation","statement_node":"rational_initial_data_generate_an_exact_rational_orbit"},
+    {"declaration":"rationalDyadicOrbit_recurrence","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":508,"role":"statement","statement_node":"rational_initial_data_generate_an_exact_rational_orbit"},
+    {"declaration":"carryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":738,"role":"representation","statement_node":"free_carry_coordinate_system"},
+    {"declaration":"carryPartialSum","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":742,"role":"representation","statement_node":"free_carry_coordinate_system"},
+    {"declaration":"natCarryCoeff","module":"ErdosProblems/Erdos251/PrimeGapDyadicTail.lean","line":760,"role":"representation","statement_node":"free_carry_coordinate_system"}
+  ],
+  "intra_zone_relations": [
+    {"from":"finite_dyadic_partial_sum_coordinates","to":"zero_based_prime_gap_coordinates","relation":"specialises","basis":"The four finite sums instantiate the zero-based prime and gap coordinates; this relation carries no convergence claim."},
+    {"from":"real_dyadic_prime_and_gap_term_coordinates","to":"zero_based_prime_gap_coordinates","relation":"specialises","basis":"The three real terms cast and scale the exact zero-based prime and gap coordinates."},
+    {"from":"integrality_is_invariant_under_integer_translation","to":"rational_dyadic_tail_coordinate_system","relation":"generated_by","basis":"The recurrence's integer block motivates the generic integer-translation equivalence, which by itself produces no integral shift."},
+    {"from":"rational_initial_data_generate_an_exact_rational_orbit","to":"rational_dyadic_tail_coordinate_system","relation":"specialises","basis":"Primitive recursion gives one exact orbit satisfying the abstract rational recurrence."},
+    {"from":"real_tail_escape_coordinate_system","to":"rational_dyadic_tail_coordinate_system","relation":"complements","basis":"The real interface parallels the rational recurrence while adding a cofinal nonintegrality predicate; no actual prime-gap instantiation is asserted."},
+    {"from":"free_carry_coordinate_system","to":"rational_dyadic_tail_coordinate_system","relation":"complements","basis":"The carry coordinates provide a second finite telescoping interface, without an infinite-series or irrationality transport."}
+  ]
+}
