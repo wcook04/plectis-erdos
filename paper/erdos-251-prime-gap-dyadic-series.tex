@@ -942,14 +942,20 @@ What~\eqref{eq:truncation} requires is joint control of the finite block of
 weighted differences $(g_{N+h+1}-g_{N+1},\ldots,g_{N+h+L}-g_{N+L})$ modulo
 powers of two, along a block of logarithmic length.  We do not know how to obtain such control and
 we make no progress on it here.  The strongest results on prime gaps address a
-different shape of question: the bounded-gap theorems of
-Zhang~\cite{zhang2014} and Maynard~\cite{maynard2015} produce infinitely many
-small individual gaps, and the large-gap theorem of Ford, Green, Konyagin,
-Maynard and Tao~\cite[Theorem~1, p.~66]{fgkmt2018} bounds the largest single
-consecutive-prime gap below $X$, whereas \eqref{eq:truncation} needs the joint
-dyadic distribution of a whole block of consecutive gap differences.  The same
-introduction notes a separate sequel on chains of large gaps.  The cited theorem
-itself supplies no residue-sensitive block estimate of the kind needed here.
+different shape of question.  Zhang's bounded-gap theorem
+\cite{zhang2014} produces infinitely many bounded consecutive-prime gaps.
+Maynard proves substantially more than an individual-gap statement:
+\cite[Theorem~1.1, p.~384]{maynard2015} bounds
+$\liminf_n(p_{n+m}-p_n)$ for every fixed $m$, and hence gives bounded clusters
+of every fixed size; \cite[Theorem~1.3, p.~385]{maynard2015} gives the explicit
+unconditional bound $\liminf_n(p_{n+1}-p_n)\le 600$.  The large-gap theorem of
+Ford, Green, Konyagin, Maynard and Tao
+\cite[Theorem~1, p.~66]{fgkmt2018} bounds the largest single consecutive-prime
+gap below $X$.  None of these results supplies the joint dyadic distribution
+of a logarithmic block of consecutive gap differences required by
+\eqref{eq:truncation}.  The same introduction notes a separate sequel on
+chains of large gaps; the cited theorem itself supplies no residue-sensitive
+block estimate of the kind needed here.
 
 \paragraph{What remains to be formalised.}
 The abstract irrationality theorem and the prime-specific local
@@ -1109,7 +1115,9 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
   Lecture Notes in Comput. Sci. 12699, Springer, 2021, pp.~625--635.
 \bibitem{mathlib} The mathlib Community, \emph{The Lean mathematical library},
   in CPP 2020, ACM, 2020, pp.~367--381.
-\bibitem{maynard2015} J.~Maynard, \emph{Small gaps between primes},
+\bibitem{maynard2015} J.~Maynard,
+  \href{https://doi.org/10.4007/annals.2015.181.1.7}
+  {\emph{Small gaps between primes}},
   Ann. of Math. (2) \textbf{181} (2015), 383--413.
 \bibitem{mv2007} H.~L. Montgomery and R.~C. Vaughan, \emph{Multiplicative
   Number Theory I: Classical Theory}, Cambridge Stud. Adv. Math. 97, Cambridge
