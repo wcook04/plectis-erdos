@@ -55,15 +55,24 @@ conclusion depends on a named open condition.
 
 ### Other exact mathematics in the corpus
 
-| Package | Exact checked content | Boundary |
-|---|---|---|
-| Fair-coin coprimality | For independent waiting times with `P(X=n)=2⁻ⁿ`, `S = 1/2 + P(gcd(X,Y)=1)`. The probability has no rational representation with denominator at most `39 819 823 323 350 687 661 677 887 437 915 526`. | Irrationality of the probability, and hence of `S`, remains open. |
-| Squared-Lambert gcd moments | `∑ 1/(2ᵈ-1)² = ∑ (σ(n)-τ(n))/2ⁿ` and `∑ φ(d)/(2ᵈ-1)² = ∑ (P(n)-n)/2ⁿ`, where `P` is Pillai's gcd-sum function. | These identities do not transfer the cited irrationality of the first series to the open Möbius-weighted row. |
-| Stern–Brocot cylinder law | Positive reduced slopes have total Mersenne weight one. Each cylinder splits exactly into a stop mass and two children; the depth-`d` error is at most `(2/3)^d` times the cylinder mass and tends to zero. | This is an exact probability/continued-fraction package, not an irrationality theorem or novelty claim. |
-| Fibonacci/continuant run stability | `r` nonempty alternating runs have height at least `F_{r+3}`, with equality on the all-unit spine. Defects `eᵢ` give an exact multiaffine expansion, gain at least `F_{r+1}∑eᵢ`, and have one-site weight `F_{i+2}F_{r-i+1}`. The first induced run layer has mass `1/2`. | The natural denominator exponent is `F_{r+3}-2`; no theorem here says the analytic run tail survives denominator clearing. |
-| Tempered binary tail rigidity | For every coefficient sequence with `c(n) ≤ n`, `∑ c(n)/2ⁿ` is rational exactly when there is a tempered integer carry orbit; every such orbit is the scaled tail itself. | This is a general rationality classification. Applying it still requires problem-specific control of the resulting orbit. |
-| Exact Möbius-shadow denominator | The reduced denominator of the lcm-height scaled Möbius shadow is computed exactly; an explicit upper-half product of Mersenne factors divides it and gives a quantitative lower bound. | This is denominator survival on the diagonal reduction, not the missing unbounded avoidance supply. |
-| Scalar-localisation height obstruction | If `H ∣ x.den` and `(c·x).den ∣ H`, then `x.den/H ∣ |c|`: denominator clearing transfers the complement into the coefficient. | Local height obstruction, not an irrationality criterion. |
+The corpus also checks several independent packages. None closes either open
+problem:
+
+- **Fair-coin coprimality:** `S = 1/2 + P(gcd(X,Y)=1)`, plus a finite
+  denominator exclusion; irrationality remains open.
+- **Squared-Lambert gcd moments:** exact divisor-sum and Pillai-function
+  identities, without transferring known irrationality to the open row.
+- **Stern–Brocot cylinder law:** exact mass splitting with depth error at most
+  `(2/3)^d`; this is not an irrationality theorem.
+- **Fibonacci/continuant run stability:** `r` runs have height at least
+  `F_{r+3}`, with an exact defect expansion; the analytic tail step is open.
+- **Tempered binary tail rigidity:** rationality is equivalent to a tempered
+  integer carry orbit; applications still need problem-specific orbit control.
+- **Exact Möbius-shadow denominator:** an explicit Mersenne-factor product
+  survives, but does not supply unbounded avoidance.
+- **Scalar-localisation height obstruction:** denominator clearing transfers
+  the complementary height into the scalar; this is not an irrationality
+  criterion.
 
 Typed routes expose sources: `probabilistic_gcd_geometry` for the first four
 rows, `boolean_mobius_constraints` for tail rigidity, and
@@ -184,14 +193,8 @@ For memory-constrained builds:
 python3 scripts/lean_fast_build.py --jobs 2
 ```
 
-When `.lake` outputs come from a restored CI or local cache, add
-`--lake-staleness` to use Lake's content traces instead of checkout mtimes.
-The wrapper keeps at most `--jobs` independent Lake processes active and
-serializes final authority checks, so its stated memory bound remains real even
-for a wide dependency wave. With no target it checks both supported public
-roots; pass a module or `.lean` path to keep an edit/test loop focused.
-`--plan` prints compact dependency-wave counts; use `--verbose-plan` only when
-you need every planned module name.
+Pass a module or `.lean` path for a focused build. Use `--lake-staleness` when
+restored `.lake` outputs have unreliable checkout timestamps.
 
 Check the public release surfaces separately:
 
