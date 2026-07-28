@@ -110,8 +110,13 @@ rational $w$ with $w\ne-t^m$ for all $m\ge1$, by Pad\'e approximation rather
 than by digit clearing; his estimates also show that these values are not
 Liouville numbers~\cite[Thm.~4, pp.~257--258]{borwein1991}.  In 2001 Van
 Assche recovered the integer-base irrationality and an irrationality-measure
-bound using little $q$-Legendre Pad\'e approximants~\cite[Thm.~1]{vanassche2001},
-and in 2013 Vandehey proved that
+bound using little $q$-Legendre Pad\'e approximants
+~\cite[Thm.~1, p.~10; proof pp.~10--11]{vanassche2001}.  His more general
+Theorem~3 proves irrationality of
+$\sum_{k\ge1}(cp^k-1)^{-1}$ for an integer $p>1$ and fixed rational $c$
+away from the poles~\cite[Thm.~3, p.~14]{vanassche2001}; it does not cover a
+rational noninteger base $t$ in $F(t)$, because the multiplier needed to
+write $t^k$ over an integer base varies with $k$.  In 2013 Vandehey proved that
 $\sum_{n\ge1}d(n)a_n/b^n$ is irrational whenever $b>1$ is an integer and
 $(a_n)$ ranges in a finite integer alphabet excluding zero; taking
 $a_n=(-1)^n$ completes the elementary digit method for negative integer
@@ -1103,7 +1108,8 @@ three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{323}{t
 \bibitem{vanassche2001} W.~Van Assche,
   \href{https://arxiv.org/abs/math/0101187}{\emph{Little \(q\)-Legendre
   polynomials and irrationality of certain Lambert series}},
-  Ramanujan J. \textbf{5} (2001), 295--310.
+  Ramanujan J. \textbf{5} (2001), no.~3, 295--310,
+  doi:\href{https://doi.org/10.1023/A:1012930828917}{10.1023/A:1012930828917}.
 \bibitem{vandehey2013} J.~Vandehey,
   \href{https://arxiv.org/abs/1206.0340}{\emph{On an incomplete argument of
   Erd\H{o}s on the irrationality of Lambert series}},
