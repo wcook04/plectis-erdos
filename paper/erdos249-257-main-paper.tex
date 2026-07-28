@@ -129,10 +129,11 @@ $t\le82$.  We state the ceiling on both at once: the denominator constant is
 what the classical Farey/mediant argument returns for its window, with a
 window length that is a free parameter, so it measures computation rather
 than progress; and the certificate band, though contiguous, is bounded, so
-nothing is asserted at $t=83$.  These finite results do not prove the required
-unbounded supply.  Irrationality of $S$ is \emph{equivalent} to certificates
-beyond every bound; this exact reformulation relocates the same difficulty
-and is not progress.
+nothing is asserted at $t=83$.  Irrationality of $S$ is \emph{equivalent} to
+the existence, beyond every bound, of such a certificate --- a finite integer
+calculation plus a rigorous tail estimate showing that two shifted binary
+tails differ by a non-integer.  That equivalence is exact and it is not
+progress: it is the same difficulty in new coordinates.
 
 For \#257, we formalise the classical irrationality theorem for the sum over
 all positive exponents in every integer base $b\geq2$, together with several
@@ -144,7 +145,6 @@ at arbitrarily large ranks; this would refute the universal assertion in
 final omission, the next-step recurrence has two branches.  We exclude one
 branch and the integer remainder $-3$ in the other; the values $-2,-1$ and a
 comparison with the unused tail remain unresolved.
-We do not decide whether $1/2$ is attainable.
 
 An exact change of variables places both series in one common formula, but
 transfers no irrationality theorem between them.  Two things are therefore
@@ -160,7 +160,7 @@ five for \#249 and a hereditary Mersenne-support programme for \#257.  Their exa
 analytic targets, finite evidence, and failed bridges are retained here in full
 and repeated in the standalone problem notes.  We prove neither the
 irrationality of $S$ nor the
-universal assertion in \#257.
+universal assertion in \#257, and we do not decide whether $1/2$ is attainable.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -231,8 +231,6 @@ obligations; neither obligation is proved.
 The phrase ``beyond every bound'' is essential: finitely many checks settle
 neither line.  The common coordinates give a checked obstruction atlas, not a
 recurrence mechanism or evidence that the two programmes merge.
-Neither this finite computation nor the denominator bound proves the unbounded
-supply.
 
 The totient constant also has the elementary form
 \[
@@ -284,8 +282,6 @@ contribution.  Sections~\ref{sec:architecture} and~\ref{sec:unresolved} give
 the comparison limit and every remaining obligation, and
 Section~\ref{sec:asks} states the four points where an answer from a reader
 would be decisive.  Section~\ref{sec:verify} gives the verification protocol.
-The \#257 route is half-value membership and final greedy skips; no finite such
-support can have value \(1/2\).
 The appendices retain alternative certificate, carry, M\"obius, and greedy
 interfaces, local arguments, and audits for readers following a particular
 route; they are not needed on a first reading.  Linked phrases open the
@@ -554,9 +550,13 @@ difficulties~\cite[p.~66]{erdos1948}.  That is historical lineage for
 \#249, not a transfer of the full-support theorem or evidence for current status.
 Section~\ref{sec:ladder} writes this constant as $L(\mathbf 1)$, a proved
 comparison value in the same Mersenne--Lambert family as the open $S$.  This
-comparison supplies no further convolution step from $S$.  Borwein later proved a wider
-rational-shift Lambert-series
-theorem~\cite{borwein1992}; that result is not formalised here.
+comparison supplies no further convolution step from $S$.  Borwein later proved that,
+for every integer $q$ with $|q|>1$ and every nonzero rational $c$ away from
+the poles $c=-q^n$, both
+\(\sum_{n\ge1}(q^n+c)^{-1}\) and
+\(\sum_{n\ge1}(-1)^n(q^n+c)^{-1}\) are irrational and not Liouville
+~\cite[Thms.~1--2, pp.~142, 145--146]{borwein1992}; those rational-shift
+theorems do not cover arbitrary supports and are not formalised here.
 
 The proof turns rationality into a spacing obstruction.  Its coefficient
 model is the Lambert identity
