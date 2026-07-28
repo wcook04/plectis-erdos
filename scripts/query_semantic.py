@@ -26,6 +26,7 @@ does.
     python3 scripts/query_semantic.py expert-questions XQ249-pivot-decorrelation
     python3 scripts/query_semantic.py prior-art-review
     python3 scripts/query_semantic.py coverage
+    python3 scripts/query_semantic.py semantic-reviews
     python3 scripts/query_semantic.py inventory
     python3 scripts/query_semantic.py inventory selectedMersenneTail_lt_weight
     python3 scripts/query_semantic.py inventory --module ErdosProblems/Erdos257
@@ -615,6 +616,81 @@ def cmd_coverage(corpus: dict, args) -> int:
     )
 
 
+def cmd_semantic_reviews(corpus: dict, args) -> int:
+    """List the exact semantic subjects carrying digest-bound review."""
+    reviewed_nodes = []
+    for node in filtered(corpus, args.problem):
+        receipt = node.get("semantic_review")
+        if not receipt:
+            continue
+        reviewed_nodes.append(
+            {
+                "subject_kind": "statement_node",
+                "subject_id": node["id"],
+                "problem": node.get("problem"),
+                "class": node.get("logical_class"),
+                "statement": node.get("canonical_statement"),
+                "review": receipt,
+            }
+        )
+
+    index = nodes_by_id(corpus)
+    reviewed_relations = []
+    for edge in corpus.get("relations", []):
+        receipt = edge.get("semantic_review")
+        if not receipt or edge.get("suppressed_in_views"):
+            continue
+        edge_problem = (index.get(edge.get("from")) or {}).get("problem")
+        if args.problem and edge_problem not in (args.problem, "both"):
+            continue
+        reviewed_relations.append(
+            {
+                "subject_kind": "relation",
+                "subject_id": (
+                    f"{edge.get('from')}|{edge.get('relation')}|{edge.get('to')}"
+                ),
+                "from": edge.get("from"),
+                "relation": edge.get("relation"),
+                "to": edge.get("to"),
+                "basis": edge.get("basis"),
+                "review": receipt,
+            }
+        )
+
+    rows = [*reviewed_nodes, *reviewed_relations]
+    if args.node_id:
+        rows = [
+            row
+            for row in rows
+            if args.node_id.casefold() in row["subject_id"].casefold()
+        ]
+    return emit(
+        {
+            "question": "Which authored semantic subjects have digest-bound review?",
+            "authority_posture": (
+                "reviewed_navigation_meaning_with_per_receipt_claim_ceiling_"
+                "not_Lean_proof_authority"
+            ),
+            "coverage": {
+                "reviewed_statement_nodes": len(reviewed_nodes),
+                "all_statement_nodes": len(corpus.get("statement_nodes", [])),
+                "reviewed_relations": len(reviewed_relations),
+                "all_relations": sum(
+                    1
+                    for edge in corpus.get("relations", [])
+                    if not edge.get("suppressed_in_views")
+                ),
+            },
+            "selection": args.node_id or "all reviewed subjects",
+            "results": rows[: args.limit],
+            "next": (
+                "Use `node <id>` for its complete semantic neighborhood and "
+                "`semantic_review.py --check` for receipt freshness."
+            ),
+        }
+    )
+
+
 def cmd_inventory(corpus: dict, args) -> int:
     """Search the exhaustive declaration routes without inferring mathematics."""
     needle = (args.node_id or "").casefold()
@@ -978,6 +1054,7 @@ COMMANDS = {
     "expert-questions": cmd_expert_questions,
     "prior-art-review": cmd_prior_art_review,
     "coverage": cmd_coverage,
+    "semantic-reviews": cmd_semantic_reviews,
     "inventory": cmd_inventory,
     "paper-coverage": cmd_paper_coverage,
     "motifs": cmd_motifs,

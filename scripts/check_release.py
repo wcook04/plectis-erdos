@@ -32,6 +32,8 @@ This script verifies that every other public surface agrees with it:
      requirements, descriptor capsule, and entry routes agree.
  11. The systems paper's historical outcome and explicit evidence ceilings
      agree with the typed publication-evidence receipt.
+ 12. Digest-bound semantic review receipts remain attached to the exact
+     statement or relation that was reviewed.
 Stdlib only; run from the repository root:  python3 scripts/check_release.py
 """
 
@@ -1247,6 +1249,30 @@ def main() -> int:
     )
     check(semantic_contract.returncode == 0,
           f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
+    semantic_review_check = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "semantic_review.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        semantic_review_check.returncode == 0,
+        "semantic review receipt contract: "
+        f"{semantic_review_check.stdout.strip() or semantic_review_check.stderr.strip()}",
+    )
+    semantic_review_fixtures = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "test_semantic_review.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        semantic_review_fixtures.returncode == 0,
+        "semantic review mutation fixtures: "
+        f"{semantic_review_fixtures.stdout.strip() or semantic_review_fixtures.stderr.strip()}",
+    )
 
     # The theory lab is the layer that makes predictive claims -- which mechanism
     # explains a proof, what survives an intervention, whether an explanation

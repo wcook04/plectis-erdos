@@ -308,7 +308,7 @@
   },
   {
    "id": "mersenne_achievement_set_measure_one",
-   "canonical_statement": "The depth-d cylinder stage is a disjoint union of 2^d translated copies of an interval of length T(d), hence has Lebesgue measure exactly 2^d * T(d); the stages are nested with intersection equal to the achievement set, and 2^d * T(d) tends to 1. Therefore the achievement set has Lebesgue measure exactly one while being nowhere dense: it is a fat Cantor set.",
+   "canonical_statement": "The depth-d cylinder stage is a disjoint union of 2^d translated copies of an interval of length T(d), hence has Lebesgue measure exactly 2^d * T(d); the stages are nested with intersection equal to the achievement set, and 2^d * T(d) tends to 1. Therefore the achievement set has Lebesgue measure exactly one.",
    "logical_class": "unconditional_object_theorem",
    "evidence": [
     {
@@ -341,7 +341,7 @@
    "prior_art_state": "known_classical",
    "prior_art_note": "Measure-one-yet-nowhere-dense subsum sets are classical (Kakeya/Guthrie-Nymann circle of results); the Mersenne instance is attributed to Kovac-Tao in the ledger.",
    "open_antecedents": [],
-   "scope_caveat": "",
+   "scope_caveat": "This node owns the measure calculation only. Combined with the separately evidenced nowhere-dense topology node, it gives the fat Cantor conclusion.",
    "problem": "257",
    "is_restatement_of_open_problem": false,
    "confidence": "high"
@@ -5618,16 +5618,16 @@
    "basis": "the explicit constants 2/7 and 3/8 in the separation threshold come from the remainder-tail bounds"
   },
   {
-   "from": "mersenne_support_coding_normalisation",
-   "to": "mersenne_achievement_set_cantor_geometry",
-   "relation": "depends_on_open",
+   "from": "mersenne_achievement_set_cantor_geometry",
+   "to": "mersenne_support_coding_normalisation",
+   "relation": "transport_of",
    "basis": "the topological statements are transported along the continuous injective digit coding"
   },
   {
    "from": "mersenne_achievement_set_measure_one",
    "to": "mersenne_achievement_set_cantor_geometry",
-   "relation": "implies",
-   "basis": "measure one together with nowhere density is the fat Cantor conclusion; the two nodes are the two halves of it"
+   "relation": "complements",
+   "basis": "the measure-one theorem and the separately evidenced nowhere-dense topology theorem are the two independent halves of the fat Cantor conclusion"
   },
   {
    "from": "greedy_survival_characterisation",

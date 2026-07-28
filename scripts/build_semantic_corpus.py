@@ -51,12 +51,15 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from semantic_review import apply_review_registry
+
 ROOT = Path(__file__).resolve().parent.parent
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 MANIFEST = ROOT / "docs" / "generated_certificate_manifest.json"
 CLAIMS = ROOT / "docs" / "claims.json"
 SEMANTIC_DIR = ROOT / "docs" / "semantic"
 ZONES_DIR = SEMANTIC_DIR / "zones"
+REVIEWS = SEMANTIC_DIR / "reviews.json"
 OUTPUT = ROOT / "docs" / "semantic_corpus.json"
 
 LOGICAL_CLASSES = (
@@ -98,6 +101,7 @@ RELATIONS = (
     "repair_of",
     "generated_by",
     "supersedes",
+    "complements",
 )
 
 DECLARATION_ROLES = (
@@ -137,21 +141,6 @@ def load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def source_revision() -> str:
-    """Preserve the last recorded source revision without invoking Git.
-
-    The corpus evidence fingerprint binds this projection to the exact Lean
-    source content.  The revision is only a navigation label, and rebuilding a
-    projection must remain safe in a shared worktree where Git operations are
-    intentionally prohibited.
-    """
-    if OUTPUT.is_file():
-        current = load(OUTPUT).get("source_revision")
-        if isinstance(current, str) and current:
-            return current
-    return "unknown"
-
-
 def zone_files() -> list[Path]:
     if not ZONES_DIR.is_dir():
         return []
@@ -166,7 +155,7 @@ def relation_files() -> list[Path]:
 
 def semantic_input_paths() -> list[Path]:
     """Return every source whose bytes determine the generated corpus."""
-    fixed = [ATLAS, MANIFEST, CLAIMS, SEMANTIC_DIR / "frontier.json"]
+    fixed = [ATLAS, MANIFEST, CLAIMS, SEMANTIC_DIR / "frontier.json", REVIEWS]
     return sorted(
         (path for path in [*fixed, *zone_files(), *relation_files()] if path.is_file()),
         key=lambda path: path.relative_to(ROOT).as_posix(),
@@ -512,6 +501,26 @@ def collect() -> dict:
         if row["kind"] in ("theorem", "lemma") and not role.get("statement_node"):
             claim_without_node.append(f"{module}::{name}")
 
+    # Authorship and confidence are not semantic review. Attach only receipts
+    # from the dedicated registry, and fail if a receipt has drifted from its
+    # wording, evidence, atlas fingerprint, or formal-source revision.
+    review_registry = load(REVIEWS)
+    formal_revision = str(
+        claims.get("release", {}).get("formal_source", {}).get("ref", "")
+    )
+    review_errors = apply_review_registry(
+        review_registry,
+        nodes,
+        edges,
+        evidence_fingerprint=str(atlas.get("source_fingerprint", "")),
+        reviewed_revision=formal_revision,
+    )
+    if review_errors:
+        raise ValueError(
+            "semantic review registry is invalid:\n  "
+            + "\n  ".join(review_errors)
+        )
+
     # ---- summary ---------------------------------------------------------
     authored_rows = [r for r in atlas["declarations"] if not r["generated_certificate"]]
     by_class = Counter(n.get("logical_class", "unclassified") for n in nodes.values())
@@ -723,10 +732,11 @@ def collect() -> dict:
                 "or correct. That remains a review and evaluation question."
             ),
             "reviewed_semantic_fidelity": (
-                "Digest-bound node and relation review receipts are supported as an "
-                "optional field, but none is present at this revision. Confidence labels, "
-                "prior-art states, and relation bases are not review receipts; reviewed "
-                "semantic fidelity is therefore not measured."
+                "Digest-bound node and relation review receipts are authored in "
+                "docs/semantic/reviews.json and attached only when their subject wording, "
+                "evidence coordinates, formal-source revision, and atlas fingerprint "
+                "still match. Coverage is deliberately partial. Confidence labels, "
+                "prior-art states, and relation bases are not review receipts."
             ),
         },
         "layering": {
@@ -735,7 +745,21 @@ def collect() -> dict:
             "curated_above": "docs/claims.json",
             "rule": "claims.json stays small and reviewed; it selects from this graph and never replaces it.",
         },
-        "source_revision": source_revision(),
+        "source_provenance": {
+            "formal_source": {
+                "ref": claims["release"]["formal_source"]["ref"],
+                "ref_kind": claims["release"]["formal_source"]["ref_kind"],
+                "publication_state": claims["release"]["formal_source"][
+                    "publication_state"
+                ],
+                "authority_role": "proof_bearing_committed_source_anchor",
+            },
+            "projection_identity": (
+                "Content-addressed by evidence_fingerprint and "
+                "semantic_input_fingerprint; intentionally independent of the "
+                "checkout HEAD so rebuilding is safe in a shared worktree."
+            ),
+        },
         "evidence_fingerprint": atlas.get("source_fingerprint"),
         "semantic_input_fingerprint": semantic_input_fingerprint(),
         "vocabularies": {

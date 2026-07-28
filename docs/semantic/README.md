@@ -46,6 +46,7 @@ fails to rule out.
 | `zones/<zone>.json` | **authored.** Per-zone statement nodes, declaration roles, intra-zone edges |
 | `relations_<lens>.json` | **authored.** Cross-zone typed edges, one file per relation lens |
 | `frontier.json` | **authored.** Open antecedents, engine hierarchies, nonrecurring candidates |
+| `reviews.json` | **authored.** Digest-bound reviews for selected nodes and relations |
 | `../semantic_corpus.json` | **generated.** The merged graph plus coverage receipts and views |
 | `../generated_certificate_manifest.json` | **authored.** Which modules are emitted, and the schema each instantiates |
 
@@ -123,6 +124,32 @@ External status is time-stamped for the same reason. Tao and Teräväinen settle
 `∑ ω(n)/2ⁿ` in December 2025, which moved every prime-support statement in
 #257 from frontier to cited prior art without a line of Lean changing. A live
 registry has to absorb that; a PDF cannot.
+
+## Review receipts are stronger than authorship
+
+Authored wording, a confidence label, and a nonempty relation basis do not prove
+that the wording was checked against its cited Lean signatures. Selected
+high-value nodes and relations can therefore carry a receipt from
+`reviews.json`. The receipt is bound to the formal-source revision, the
+declaration-atlas fingerprint, and a digest of the exact semantic subject.
+Changing the statement, evidence, relation label, endpoints, or basis makes the
+builder fail until the subject is reviewed again.
+
+The receipt records its reviewer type and claim ceiling. A Type A model review
+is represented as a source-to-wording consistency review, never as independent
+human mathematical review, Lean proof authority, or a novelty judgement.
+Unreceipted nodes remain authored navigation. Use
+`python3 scripts/query_semantic.py semantic-reviews` to inspect the reviewed
+subjects and `python3 scripts/semantic_review.py --check` for the focused
+freshness gate.
+
+The generated corpus keeps two different identities separate. Its
+`source_provenance.formal_source` is the committed Lean source anchor declared
+by `claims.json`; its `evidence_fingerprint` and
+`semantic_input_fingerprint` content-address the generated navigation
+projection. It deliberately does not label the projection with the checkout
+`HEAD`: that would become stale after an unrelated documentation commit and
+would make safe regeneration depend on Git state.
 
 ## The coverage contract
 

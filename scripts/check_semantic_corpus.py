@@ -41,6 +41,8 @@ from collections import Counter
 from pathlib import Path
 
 from build_semantic_corpus import semantic_input_fingerprint
+from semantic_review import REGISTRY as SEMANTIC_REVIEWS
+from semantic_review import attached_receipt_errors, formal_source_revision
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT / "docs" / "semantic_corpus.json"
@@ -79,10 +81,39 @@ def main() -> int:
         corpus.get("semantic_input_fingerprint") == semantic_input_fingerprint(),
         "semantic corpus is stale relative to the atlas or authored semantic inputs",
     )
+    expected_formal_source = {
+        key: claims["release"]["formal_source"][key]
+        for key in ("ref", "ref_kind", "publication_state")
+    }
+    actual_formal_source = (
+        corpus.get("source_provenance", {}).get("formal_source", {})
+    )
+    check(
+        all(
+            actual_formal_source.get(key) == value
+            for key, value in expected_formal_source.items()
+        ),
+        "semantic corpus formal-source provenance differs from docs/claims.json",
+    )
+    check(
+        "source_revision" not in corpus,
+        "semantic corpus uses the ambiguous legacy source_revision field",
+    )
 
     nodes = {n["id"]: n for n in corpus["statement_nodes"]}
     roles = {r["id"]: r for r in corpus["declaration_roles"]}
     atlas_rows = {r["id"]: r for r in atlas["declarations"]}
+
+    review_errors = attached_receipt_errors(
+        load(SEMANTIC_REVIEWS),
+        corpus,
+        reviewed_revision=formal_source_revision(claims),
+    )
+    check(
+        not review_errors,
+        "semantic review registry is stale or invalid: "
+        + "; ".join(review_errors[:3]),
+    )
 
     # 1. every live declaration is routed exactly once.  The merged roles
     # object cannot itself reveal two authored source assignments because the

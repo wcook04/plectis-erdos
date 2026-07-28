@@ -177,11 +177,10 @@ The source has five reader-facing layers:
 - **The #257 carry trunk.** The tail-orbit, achievement-set, Boolean-Möbius
   carry, reciprocal-mass, and divisor-coverage modules give exact criteria and
   necessary conditions, not the universal #257 theorem.
-- **The navigation layer.** The declaration atlas indexes every Lean
-  declaration and import edge across both libraries. The semantic corpus is a
-  deliberately selective authored statement graph; declarations outside that
-  graph remain discoverable through the generic inventory without acquiring
-  invented mathematical meaning.
+- **Navigation.** The atlas finds every declaration and import. The selective
+  semantic graph never invents meaning. Selected meanings carry scoped reviews
+  (`python3 scripts/query_semantic.py semantic-reviews`)—not human, novelty, or
+  proof authority.
 - **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded
   results and explicit open frontiers for one problem at a time. New entries
   remain outside the reviewed claim registry until mathematical review

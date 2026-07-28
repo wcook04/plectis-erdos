@@ -189,11 +189,16 @@ Lean build when a result must be checked.
    python3 scripts/query_semantic.py barriers
    python3 scripts/query_semantic.py open-antecedents
    python3 scripts/query_semantic.py paper-coverage
+   python3 scripts/query_semantic.py semantic-reviews
    ```
 
    Provenance for emitted modules is owned by
    `docs/generated_certificate_manifest.json`, never by a filename pattern: a
    module is generated if and only if the manifest lists it.
+   `docs/semantic/reviews.json` separately records digest-bound semantic
+   reviews for selected high-value nodes and relations. A model receipt means
+   exact source-to-wording consistency review within its stated ceiling, not
+   human review, novelty authority, or Lean proof authority.
 13. Read `docs/theory_lab.json` when the question is *why* a proof works, what
    happens if the mathematics is perturbed, or whether an explanation here has
    ever been tested. It sits above the semantic corpus and holds the mechanism
@@ -339,6 +344,7 @@ python3 scripts/check_problem_note_sources.py --coverage
 python3 scripts/build_problem_index.py --check
 python3 scripts/build_semantic_corpus.py --check
 python3 scripts/check_semantic_corpus.py
+python3 scripts/semantic_review.py --check
 python3 scripts/build_theory_lab.py --check
 python3 scripts/check_theory_lab.py
 python3 scripts/test_declaration_head_contract.py
