@@ -86,7 +86,7 @@ Let $p_n$ denote the $n$th prime.  Erd\H{o}s Problem~\#251 asks whether
 \[
  \Pi=\sum_{n\ge1}\frac{p_n}{2^{\,n}}
 \]
-is irrational~\cite{erdos1958}\cite[p.~62]{erdosgraham1980}%
+is irrational~\cite[p.~94]{erdos1958}\cite[p.~62]{erdosgraham1980}%
 \cite[p.~103]{erdos1988}.  Numbering and status follow Bloom's
 catalogue~\cite{erdosproblems}.  The problem is open.  Numerically
 $\Pi=2/2+3/4+5/8+7/16+11/32+\cdots=3.674643966\ldots$.
@@ -132,7 +132,9 @@ indices is zero.
 
 \paragraph{Relation to prior work.}
 Erd\H{o}s proved that $\sum_n p_n^{k}/n!$ is irrational for every
-$k\ge1$~\cite{erdos1958}.  On page~103 of his 1988 problem paper he separately
+$k\ge1$~\cite[p.~93]{erdos1958}.  The 1958 article gives the $k=1$ proof on
+pp.~94--95 and says explicitly that the more complicated $k>1$ proof is
+omitted.  On page~103 of his 1988 problem paper he separately
 posed the fixed-denominator conjecture that
 $\sum_n p_n^{k}/2^{n}$ is irrational for every $k\ge1$, and the
 variable-denominator expectation that
@@ -1071,9 +1073,13 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
 \raggedright
 \setlength{\itemsep}{0pt}
 \bibitem{erdos1958} P.~Erd\H{o}s,
-  \href{https://users.renyi.hu/~p_erdos/1958-08.pdf}{\emph{Sur certaines
+  \href{https://combinatorica.hu/~p_erdos/1958-19.pdf}{\emph{Sur certaines
   s\'eries \`a valeur irrationnelle}},
-  Enseign. Math. (2) \textbf{4} (1958), 93--100. MR~98732.
+  Enseign. Math. (2) \textbf{4} (1958), 93--100,
+  doi:\href{https://doi.org/10.5169/seals-34629}{10.5169/seals-34629}.
+  The dyadic prime series is stated as unproved on p.~94; the
+  factorial-prime family is stated on p.~93, with only the $k=1$ proof printed
+  on pp.~94--95.
 \bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L. Graham,
   \href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\emph{Old
   and New Problems and Results in Combinatorial Number Theory}},
