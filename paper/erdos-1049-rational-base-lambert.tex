@@ -116,7 +116,20 @@ the same file's $|t|\le1$ branch instead uses Lean's convention that the
 checked prior art for the identity, but no irrationality theorem.  The present
 note formalises propositions about the clearing argument and likewise does
 not answer the conjecture.  Erd\H{o}s's positive-integer theorem of
-1948~\cite{erdos1948} sits inside a larger integer-base literature.  In 1991
+1948~\cite{erdos1948} sits inside a larger integer-base literature.
+At the level of functions, Rivin proves that if a sequence \(\gamma\) and its
+divisor-sum sequence are both eventually linearly recurrent, then \(\gamma\)
+is finitely supported
+\cite[Theorem~1.1, p.~2; proof pp.~6--8]{rivin2026}.
+His periodic-coefficient corollary therefore shows that
+\[
+  \sum_{n\ge1}\frac{z^n}{1-z^n}
+\]
+is not a rational function~\cite[Corollary~6.4, p.~9]{rivin2026}.
+This is an exact structural statement about the function underlying
+Problem~\#1049, but it gives no irrationality statement for a special value
+at \(z=1/t\): a nonrational function may take rational values at particular
+rational points.  In 1991
 Borwein proved the irrationality of shifted series
 $\sum_{n\ge1}(t^{n}+w)^{-1}$ at integer bases $t\ge2$, for every nonzero
 rational $w$ with $w\ne-t^m$ for all $m\ge1$, by Pad\'e approximation rather
@@ -256,6 +269,10 @@ Statement & Status & Treatment here \\
 \midrule
 Irrationality of $F(3/2)$ & Open & Not proved, and no partial result here bears on it. \\
 Irrationality at some rational non-integer base & Proved elsewhere & The height criterion of~\cite{bv1994}; cited, not formalised. \\
+Nonrationality of the Lambert function
+\(\sum_{n\ge1}z^n/(1-z^n)\) & Proved elsewhere &
+Rivin's Corollary~6.4~\cite[p.~9]{rivin2026}; a functional statement, not a
+special-value theorem. \\
 Row content is neutral for the local-to-Archimedean balance & Proved here & Theorem~\ref{res:content}, including the absolute determinant height. \\
 Homogeneous endpoint residues at $(3,2)$ & Proved here & Theorem~\ref{res:endpoints}. \\
 Common divisor of the two specialised evaluations avoids $2$ and $3$ & Proved here & Proposition~\ref{res:commonmult}; under unit endpoint hypotheses. \\
@@ -1101,7 +1118,7 @@ three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{323}{t
 \end{tabular}
 \fi
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \small
 \raggedright
 \setlength{\itemsep}{0pt}
@@ -1139,6 +1156,11 @@ three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{323}{t
   \href{https://arxiv.org/abs/1206.0340}{\emph{On an incomplete argument of
   Erd\H{o}s on the irrationality of Lambert series}},
   Integers \textbf{13} (2013), Paper A58.
+\bibitem{rivin2026} I.~Rivin,
+  \href{https://arxiv.org/abs/2604.25151}{\emph{Linear recurrences and rational
+  Lambert series}}, arXiv:2604.25151v1, 2026.
+  Theorem~1.1 is on p.~2 and proved on pp.~6--8; the periodic-coefficient
+  Corollary~6.4 is on p.~9.
 \bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao,
   \href{https://arxiv.org/abs/2406.17593}{\emph{On several irrationality
   problems for Ahmes series}}, Acta Math. Hungar. \textbf{175} (2025),
