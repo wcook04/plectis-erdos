@@ -729,7 +729,8 @@ eventually periodic with period $h$.
 \begin{proof}
 The gaps are unbounded, by the standard construction: the interval from $n!+2$
 to $n!+n$ contains no prime.  Far stronger lower bounds for large gaps are
-known~\cite{fgkmt2018}, but unboundedness is all that is needed.  An
+known~\cite[Theorem~1, p.~66]{fgkmt2018}, but unboundedness is all that is
+needed.  An
 eventually periodic natural-valued sequence has finite range after its
 preperiod, while its finite initial segment is bounded as well; hence it is
 bounded, a contradiction.
@@ -939,10 +940,11 @@ we make no progress on it here.  The strongest results on prime gaps address a
 different shape of question: the bounded-gap theorems of
 Zhang~\cite{zhang2014} and Maynard~\cite{maynard2015} produce infinitely many
 small individual gaps, and the large-gap theorem of Ford, Green, Konyagin,
-Maynard and Tao~\cite{fgkmt2018} produces extreme individual gaps, whereas
-\eqref{eq:truncation} needs the joint dyadic distribution of a whole block of
-consecutive gap differences.  None of the cited results supplies that
-estimate.
+Maynard and Tao~\cite[Theorem~1, p.~66]{fgkmt2018} bounds the largest single
+consecutive-prime gap below $X$, whereas \eqref{eq:truncation} needs the joint
+dyadic distribution of a whole block of consecutive gap differences.  The same
+introduction notes a separate sequel on chains of large gaps.  The cited theorem
+itself supplies no residue-sensitive block estimate of the kind needed here.
 
 \paragraph{What remains to be formalised.}
 The abstract irrationality theorem and the prime-specific local
@@ -1085,7 +1087,10 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
   \textbf{27} (1964), 129--133. MR~175848.
 \bibitem{fgkmt2018} K.~Ford, B.~Green, S.~Konyagin, J.~Maynard and T.~Tao,
   \emph{Long gaps between primes}, J. Amer. Math. Soc. \textbf{31} (2018),
-  65--105.
+  65--105,
+  doi:\href{https://doi.org/10.1090/jams/876}{10.1090/jams/876}.
+  Theorem~1 on p.~66 gives the effective lower bound for the largest single
+  consecutive-prime gap below $X$.
 \bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao,
   \href{https://doi.org/10.1007/s10474-025-01528-0}{\emph{On several
   irrationality problems for Ahmes series}}, Acta Math. Hungar. \textbf{175}
