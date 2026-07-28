@@ -402,6 +402,24 @@ Historically, Erd\H{o}s already singled out the totient series itself as a
 difficult analogue at the end of his 1948 paper~\cite[p.~66]{erdos1948};
 that remark supplies lineage, not a modern status proof.
 
+\paragraph{A nearby 2026 totient theorem has different coordinates.}
+Kaneko, Suzuki and Tachiya prove that if \(f(n)\) is a nonnegative integer
+sequence of infinite support with
+\(\sum_{n\le x}f(n)=O(x(\log x)^\delta)\), then, for every integer
+\(t\ge2\), both
+\[
+  \sum_{n\ge1}\frac{f(n)}{t^{\sigma(n)}}
+  \qquad\text{and}\qquad
+  \sum_{n\ge1}\frac{f(n)}{t^{\ph(n)}}
+\]
+are irrational
+\cite[Corollary~3, pp.~5--6; proof pp.~18--19]{kanekosuzukitachiya2026}.
+This includes substantial families of totient-related series, but
+\(\ph(n)\) occurs in the \emph{exponent}.  Problem~\#249 instead places
+\(\ph(n)\) in the coefficient of \(2^{-n}\).  The theorem therefore supplies
+a genuine adjacent result and a useful warning against a tempting
+misidentification; it does not settle or reduce the displayed problem.
+
 \paragraph{Exact identities and representations.}
 Several neighbouring Dirichlet-convolution identities are rational and
 exactly computable:
@@ -862,12 +880,12 @@ $(1,12,16)$, the first values of $\Aw$, the $p=3$ Euler-factor calculation,
 the mixed-difference table, and the values of $H_t$ --- are computations from
 the definitions and checked identities beside them, and are not separate
 checked propositions.  Results attributed to
-Allouche and Shallit, to Coons, to Bell and Smertnig, to Luca and Tachiya, and
-to Tao and Ter\"av\"ainen are cited from the literature and are not formalised
-here; the assessment that no prior source gives an explicit basis, an exact
-finite-level dimension formula, or a relation normal form for the totient
-$2$-kernel is the outcome of a literature search and is not a proof of
-non-existence.
+Allouche and Shallit, to Coons, to Bell and Smertnig, to Kaneko, Suzuki and
+Tachiya, to Luca and Tachiya, and to Tao and Ter\"av\"ainen are cited from the
+literature and are not formalised here; the assessment that no prior source
+gives an explicit basis, an exact finite-level dimension formula, or a
+relation normal form for the totient $2$-kernel is the outcome of a literature
+search and is not a proof of non-existence.
 
 \emph{Scope of the AI declaration.}  Large-language-model agents assisted
 throughout, drafting and revising this exposition, the Lean developments it
@@ -879,7 +897,7 @@ proposition; no model output carries any, and neither does this sentence.
 
 Erd\H{o}s Problem~\#249 remains open.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \bibitem{allouche-shallit} J.-P.~Allouche and J.~Shallit,
   \href{https://cs.uwaterloo.ca/~shallit/Papers/as0.pdf}{\emph{The ring of
   $k$-regular sequences}}, Theoret.\ Comput.\ Sci.\ \textbf{98} (1992),
@@ -899,6 +917,13 @@ Erd\H{o}s Problem~\#249 remains open.
   \href{https://doi.org/10.48550/arXiv.2603.23456}{arXiv:2603.23456}.  The
   totient generating series is not $k$-Mahler for any $k\ge2$, a consequence
   of their Theorem 1.3 recorded in the introduction.
+\bibitem{kanekosuzukitachiya2026} H.~Kaneko, Y.~Suzuki and Y.~Tachiya,
+  \href{https://arxiv.org/abs/2601.20743}
+  {\emph{Refinements of Erd\H{o}s's irrationality criterion for certain
+  sparse infinite series}}, arXiv:2601.20743v1, 2026.
+  Corollary~3 is on pp.~5--6 and proves irrationality for the
+  \(\sigma(n)\)- and \(\ph(n)\)-in-the-exponent families; its proof is on
+  pp.~18--19.
 \bibitem{taoteravainen2025} T.~Tao and J.~Ter\"av\"ainen,
   \emph{Quantitative correlations and some problems on prime factors of
   consecutive integers}, arXiv:2512.01739 (submitted December 2025, revised
