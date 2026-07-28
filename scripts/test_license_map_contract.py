@@ -26,6 +26,8 @@ MANUSCRIPT_BINARIES = {
     "erdos-249-binary-totient-series.pdf",
     "erdos-257-mersenne-support-subseries.pdf",
     "erdos249-257-main-paper.pdf",
+    "erdos249-totient-reasoning-surface.pdf",
+    "erdos257-mersenne-reasoning-surface.pdf",
 }
 MANUSCRIPT_SOURCES = {
     "paper/claim-faithful-publication-systems-paper.tex",

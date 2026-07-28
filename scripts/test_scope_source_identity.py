@@ -56,8 +56,8 @@ def main() -> int:
     assert re.fullmatch(r"[0-9a-f]{40}", formal_source["ref"])
     assert formal_source["ref_kind"] == "commit"
     assert formal_source["relationship_to_last_tag"] in {"at_last_tag", "post_tag_checkpoint"}
-    assert "immutable\nformal-source checkpoint" in scope
-    assert "citation and release identity" in scope
+    assert re.search(r"immutable\s+formal-source checkpoint", scope)
+    assert "citation identity" in scope
     assert "not a substitute for an exact proof-source identity" in scope
     assert "until it is included in a new tagged\nrelease" not in scope
     assert not scope_machine_handle_errors(scope, open_ids, non_claim_ids)

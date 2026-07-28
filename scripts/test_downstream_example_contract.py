@@ -34,10 +34,10 @@ def contract_errors(example: str, readme: str, lakefile: str) -> list[str]:
     readme_requirements = {
         "consumer route": "[`examples/Examples.lean`](examples/Examples.lean)",
         "conditional interface description":
-            "conditional rational shell-pressure\ninterface",
-        "explicit-hypothesis boundary": "leaving its analytic hypothesis explicit",
+            "conditional shell-pressure example",
+        "explicit-hypothesis boundary": "leaves the analytic\nhypothesis explicit",
         "universal claim ceiling":
-            "does\nnot prove the still-open universal Erdős #257 statement",
+            "does not prove universal #257",
     }
     for label, token in readme_requirements.items():
         if token not in readme:
@@ -104,8 +104,8 @@ def main() -> int:
     )
 
     overstated_readme = readme.replace(
-        "does\nnot prove the still-open universal Erdős #257 statement",
-        "proves the universal Erdős #257 statement",
+        "does not prove universal #257",
+        "proves universal #257",
         1,
     )
     assert any(

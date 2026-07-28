@@ -44,6 +44,15 @@ def main() -> int:
     checker.validate_entry_links(readme, agents, paper_readme)
     checks = 3
 
+    contract = checker.json.loads(
+        checker.PUBLICATION_CONTRACT.read_text(encoding="utf-8")
+    )
+    systems_paper_budget = (
+        checker.SYSTEMS_PAPER_BASE_BYTES
+        + checker.SYSTEMS_PAPER_BYTES_PER_ARTIFACT * len(contract["artifacts"])
+    )
+    assert len(systems_paper.encode("utf-8")) <= systems_paper_budget
+
     mutations = (
         (
             guide.replace("Both mathematical problems remain open", ""),
@@ -106,6 +115,15 @@ def main() -> int:
     for mutated, label in paper_mutations:
         assert_paper_rejected(mutated, label)
         checks += 1
+
+    overflow = systems_paper + "x" * (
+        systems_paper_budget - len(systems_paper.encode("utf-8")) + 1
+    )
+    assert_paper_rejected(
+        overflow,
+        "publication-scaled architecture budget exceeded",
+    )
+    checks += 1
 
     try:
         checker.validate_entry_links(

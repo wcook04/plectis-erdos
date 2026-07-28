@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -16,21 +17,15 @@ AGENTS = ROOT / "AGENTS.md"
 PAPER_README = ROOT / "paper" / "README.md"
 SYSTEMS_PAPER = ROOT / "paper" / "claim-faithful-publication-systems-paper.tex"
 SYSTEMS_PDF = ROOT / "claim-faithful-publication-systems-paper.pdf"
+PUBLICATION_CONTRACT = ROOT / "docs" / "publication_contract.json"
 MAX_GUIDE_BYTES = 18_000
-# Raised from 40_000 (maintainer decision, July 2026) to admit the
-# example-instantiated assurance, coverage, and reuse material, then to
-# 50_000 for the cold-reader repairs (named equivalence declarations,
-# witness glosses, integer-arithmetic detail), then to 52_000 for the
-# perimeter-contraction and claim-to-reader-gap material; the budget still
-# exists so the paper cannot grow without a deliberate decision.
-# Raised again to 52_300 for PDF metadata only: a document language for
-# screen readers, keywords, and a numbered outline, matching what the
-# mathematics paper already declares. No prose was added and the rendered
-# paper is still fourteen pages, so this raise funds metadata, not material.
-# Raised to 55_000 for the early finite-versus-unbounded figure and
-# contribution/evidence/ceiling panel. These reduce reconstruction work for a
-# cold reader while retaining a hard ceiling on operational and inventory prose.
-MAX_SYSTEMS_PAPER_BYTES = 55_000
+# Keep the architecture paper bounded without accumulating one-off magic-number
+# raises.  Its legitimate explanatory load grows with the canonical publication
+# inventory, whose exact membership is independently checked against the build
+# and licence manifests.  A stable conceptual base plus a small per-artifact
+# allowance therefore scales only when the governed public surface scales.
+SYSTEMS_PAPER_BASE_BYTES = 45_000
+SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 SECTION_ORDER = (
     "## What this repository is",
@@ -240,9 +235,15 @@ def validate_guide(text: str) -> None:
 def validate_systems_paper(text: str) -> None:
     """Keep the PDF source architecture-first rather than experiment-first."""
     size = len(text.encode("utf-8"))
-    assert size <= MAX_SYSTEMS_PAPER_BYTES, (
+    contract = json.loads(PUBLICATION_CONTRACT.read_text(encoding="utf-8"))
+    artifact_count = len(contract["artifacts"])
+    byte_budget = (
+        SYSTEMS_PAPER_BASE_BYTES
+        + SYSTEMS_PAPER_BYTES_PER_ARTIFACT * artifact_count
+    )
+    assert size <= byte_budget, (
         f"systems architecture paper is {size} bytes "
-        f"(budget {MAX_SYSTEMS_PAPER_BYTES})"
+        f"(budget {byte_budget} for {artifact_count} governed artifacts)"
     )
 
     assert (
