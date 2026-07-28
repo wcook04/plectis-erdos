@@ -38,6 +38,8 @@ Appendix~\ref{app:repro}.}
 Lean verifies that a proof establishes the formal statement written in the
 source.  It does not check that a README or paper describes that statement
 faithfully.  We study that second problem in one public Lean repository.
+This is an architecture and experience report about preserving reviewed
+public-claim boundaries, not an empirical evaluation of reviewer performance.
 For each selected result, a mathematician records the public wording, the
 formal statement said to support it, the range actually proved, and the
 adjacent stronger statement that remains open.  The release workflow checks
@@ -99,6 +101,25 @@ that edit, because the README is not part of any proof.  No program in the
 repository decides whether a line of English has the same meaning as a formal
 statement.  Lean acceptance therefore does not verify the public description.
 
+\begin{figure}[!t]
+\centering
+\fbox{\begin{minipage}{0.88\linewidth}
+\[
+\underbrace{\forall t\le 82,\ \mathrm{Cert}(t)}_{\text{checked finite theorem}}
+\qquad\not\Longrightarrow\qquad
+\underbrace{\forall T,\ \exists t>T,\ \mathrm{Cert}(t)}_{\text{open requirement}} .
+\]
+\(\mathrm{Cert}(t)\) means that finite data lets Lean establish one stated
+non-integrality result at scale \(t\).  The right-hand statement asks for a
+witness after every cutoff.  No fixed upper bound has that logical form.
+\end{minipage}}
+\caption{The distinction the release design is built to preserve.  The
+development proves that the open statement on the right is equivalent to the
+irrationality claim in Erd\H{o}s Problem 249.  The crossed arrow is therefore
+not a missing stylistic qualification: proving it would settle the problem.}
+\label{fig:finite-open-boundary}
+\end{figure}
+
 The design joins five file-and-workflow parts: Lean source, the
 maintainer-reviewed claim record, authored public documents, generated indexes
 and summaries, and the release program and continuous-integration workflow.
@@ -123,6 +144,25 @@ Lean checks the formal proofs.  A maintainer reviews what those proofs mean
 and how they may be described.  The release machinery checks that the recorded
 relationships remain intact before a release.
 \end{quote}
+
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}
+                    >{\raggedright\arraybackslash}p{0.31\linewidth}
+                    >{\raggedright\arraybackslash}p{0.34\linewidth}@{}}
+\toprule
+\textbf{Contribution} & \textbf{Evidence in this paper} &
+\textbf{Not established} \\
+\midrule
+Preserve a selected, human-reviewed relation between a formal result and
+public wording. &
+One implemented claim record, separate proof and release jobs, and one
+historical escaped edit rejected after registration. &
+Correct semantic interpretation, complete discovery of claim-bearing prose,
+a detection rate, independent review, or transfer to another project. \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 Section~\ref{sec:picture} separates human review from automatic checking;
 Section~\ref{sec:example} follows one theorem into its public record; and
@@ -155,9 +195,10 @@ Sections~\ref{sec:mathrole}--\ref{sec:formal-evidence}.
 \node[artefact, text width=3.6cm] (lean) at (1.8, 0) {\textbf{Lean source}\\[1pt]
   {\footnotesize\texttt{Erdos249257.lean}\\ \texttt{Erdos249257/*.lean}}\\[1pt]
   {\footnotesize\itshape proves the finite theorem\\ and the equivalence}};
-\node[artefact, text width=3.9cm] (claim) at (7.0, 0) {\textbf{mathematical index and claim record}\\[1pt]
-  {\footnotesize\texttt{docs/semantic/*.json}\\ \texttt{docs/claims.json}}\\[1pt]
-  {\footnotesize\itshape selected formal statements;\\ public wording and open boundary}};
+\node[artefact, text width=3.9cm] (claim) at (7.0, 0) {\textbf{reviewed public-claim record}\\[1pt]
+  {\footnotesize\texttt{docs/claims.json}}\\[1pt]
+  {\footnotesize\itshape authorised wording, bounded domain,\\
+  formal support, and open boundary}};
 \node[artefact, text width=3.6cm] (public) at (12.2, 0) {\textbf{public documents}\\[1pt]
   {\footnotesize\texttt{README.md}, \texttt{SCOPE.md},\\ \texttt{paper/*.tex}}\\[1pt]
   {\footnotesize\itshape state the claim and\\ keep its limits visible}};
@@ -170,8 +211,8 @@ Sections~\ref{sec:mathrole}--\ref{sec:formal-evidence}.
 \draw[human] ([xshift=7mm]claim.north) |- (htwo.west);
 \draw[human] (htwo.east) -| (public.north);
 \node[artefact, text width=4.3cm] (gen) at (9.6, -2.35) {\textbf{generated views}\\[1pt]
-  {\footnotesize reading map, code index,\\
-  machine-readable summary}};
+  {\footnotesize mathematical navigation index,\\ reading map, code index,\\
+  machine-readable summary; no authority}};
 \draw[flow] (claim.south) |- (gen.west) node[lab, pos=0.45, anchor=east, xshift=-0.5mm] {build};
 \draw[semithick] (1.8,-3.35) -- (12.2,-3.35);
 \draw[semithick] (lean.south) -- (1.8,-3.35);
@@ -218,12 +259,14 @@ amber review, and violet the release job.}
 \end{figure}
 
 Read the upper half of Figure~\ref{fig:architecture} from left to right.  A
-mathematician first reads the Lean source, uses the mathematical index to find
-the relevant formal statements, and records the approved public wording and
-its limit in the claim record.  Authored public documents use that wording;
-generated views merely reorganise the records.  The dashed arrows show the two
-human judgements.  The lower half is automated: each job runs on its own fresh
-copy.  The decision is only whether both jobs pass.
+mathematician first reads the Lean source and records the approved public
+wording and its limit in the claim record.  A separate mathematical index helps
+the reviewer find formal statements, but it is only a generated navigation
+view and has no authority over the claim.  Authored public documents use the
+reviewed wording; generated views merely reorganise source records.  The
+dashed arrows show the two human judgements.  The lower half is automated:
+each job runs on its own fresh copy.  The decision is only whether both jobs
+pass.
 
 Once a person has compared a formal theorem with its public wording, a program
 can preserve the resulting decision about names, files, wording, and limits.
@@ -232,18 +275,14 @@ technically force a second independent mathematician: one maintainer can edit
 the Lean statement, record, and prose together so that every comparison agrees
 with the same mistake.
 
-The two automated jobs answer different questions.  \texttt{lake build} asks
-whether Lean accepts the formal statements and proofs; it never reads the
-README.  \texttt{python3 scripts/check\_release.py} asks whether the recorded
-relationships among source, record, public pages, and generated files still
-hold; it does not run Lean.  The workflow in
-\texttt{.github/workflows/lean.yml} runs them as two separate
-\texttt{ubuntu-latest} jobs.  GitHub documents that, except for single-CPU
-container runners, each hosted runner is a new virtual machine
-\cite{githubrunners}; these jobs therefore begin from separate checkouts of the
-revision.  A checker error stops the program, and the workflow treats that exit
-as a failing job.  Repository settings decide whether failure blocks release;
-a pass proves no mathematics.
+The two automated jobs answer different questions.  \texttt{lake build} checks
+the formal statements and proofs; it never reads the README.
+\texttt{python3 scripts/check\_release.py} compares the recorded relationships
+among source, record, public pages, and generated files; it does not run Lean.
+The workflow in \texttt{.github/workflows/lean.yml} runs them as two separate
+jobs and begins each from a fresh checkout~\cite{githubrunners}.  A checker
+error stops the program, and the workflow treats that exit as a failing job.
+A pass proves no mathematics, and publication remains a human decision.
 
 Generated views are rebuilt rather than edited and create no new mathematics.
 The complete file map, ownership table, and maintenance commands live in
@@ -345,32 +384,17 @@ default \texttt{lake build} compiles the libraries rooted at
 \path{Erdos249257.lean} and \path{ErdosProblems.lean}, including the module
 that proves the \(t\le82\) theorem.
 
-\subsection{Four different questions hidden by ``coverage''}
-\label{sec:semantic-coverage}
+\subsection{What ``coverage'' means here}\label{sec:semantic-coverage}
 
-The word \emph{coverage} is useful only after one says what is being covered.
-This repository answers four different questions.
-\begin{enumerate}
-\item \emph{Inventory:} which named Lean items exist?
-\item \emph{Navigation:} where should a reader look for each item?
-\item \emph{Mathematical interpretation:} which formal statements has a person
-      read and described in ordinary mathematics?
-\item \emph{Public review:} which of those interpretations has a person
-      approved for a particular public claim, with an explicit limit?
-\end{enumerate}
-Lean calls a named theorem, definition, or axiom a \emph{declaration}.  The
-declaration atlas, mathematical zones, authored descriptions, and claim record
-answer the four questions respectively.  Indexing every declaration is not
-understanding every theorem; understanding every theorem would still not find
-every sentence that mentions one.
-
-The dated counts illustrate the distinction but are not a result.  All 150,631
-live declarations are inventoried and routed; 4,261 of 140,895 author-written
-theorem-like declarations have an authored mathematical description.  Every
-declaration selected for a public claim has one.  The command
-\path{python3 scripts/query_semantic.py coverage} derives the counts and checks
-their references.  It cannot show that a description has the same content as
-its Lean statement or that every claim-bearing passage was selected.
+The word \emph{coverage} needs an object.  This project separately tracks
+which named Lean items exist, where readers can find them, which statements a
+person has described, and which descriptions were approved for public use.
+Those are inventory, navigation, interpretation, and public-claim coverage;
+none implies the next.  Lean calls a named theorem or definition a
+\emph{declaration}.  Indexing every declaration is not understanding every
+theorem, and understanding every theorem would still not find every sentence
+that mentions one.  Dated inventory counts belong in
+Appendix~\ref{app:repro}; they are navigation facts, not a result.
 
 \subsection{The reviewed record}\label{sec:record}
 
@@ -631,8 +655,9 @@ the judgement.
 
 \paragraph{The checked boundary.}
 Only listed relationships are checked.  The repository calls their set its
-\emph{assurance perimeter}; in ordinary terms, this is simply the boundary of
-the checklist.  A recorded commitment inside the boundary triggers an
+\emph{registered checking boundary} (historically, its ``assurance
+perimeter''); in ordinary terms, this is simply the boundary of the checklist.
+A recorded commitment inside the boundary triggers an
 automatic check.  Outside it, the checker is silent.  The name must not suggest
 more: choosing what belongs on the checklist remains a human judgement, and a
 passing check does not make the contents true.  This repository gives priority
@@ -796,12 +821,13 @@ The systems result is correspondingly modest and useful.  A mathematician can
 record the exact public wording authorised by a formal result, the result's
 range, and its nearest open strengthening.  A release program can then reject
 later edits which violate those recorded relationships.  In this repository a
-deliberately false example---the negative fixture---now catches the
+deliberately false test case---called a negative fixture in the repository---now catches the
 strengthening that historically escaped.
 
-The failure supplies the governing limit.  The assurance perimeter is only as
-wide as the relationships someone chose to record; in ordinary language, the
-checker cannot enforce an item absent from its checklist.  Retiring an item is
+The failure supplies the governing limit.  The registered checking boundary is
+only as wide as the relationships someone chose to record; in ordinary
+language, the checker cannot enforce an item absent from its checklist.
+Retiring an item is
 therefore as consequential as adding one and deserves the same review.  The
 GSN development guidance makes the corresponding repair concrete: if evidence
 does not cover the lowest claim, state the claim that it actually supports,
@@ -815,6 +841,15 @@ structural comparisons passed on the named revision.
 
 \appendix
 \section{Reproducibility}\label{app:repro}
+
+\paragraph{Dated navigation counts.}
+At the reviewed snapshot, all 150,631 live declarations were inventoried and
+routed; 4,261 of 140,895 author-written theorem-like declarations had an
+authored mathematical description, and every declaration selected for a
+public claim had one.  The command
+\path{python3 scripts/query_semantic.py coverage} derives these volatile
+navigation counts and checks their references.  They do not measure semantic
+review quality or public-claim completeness.
 
 The reviewed claim record, \texttt{docs/claims.json}, names the saved Git
 revision of the Lean source, which the release checker requires to match
