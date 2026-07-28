@@ -11,13 +11,16 @@ integration checks ``main`` out as a local branch and a pull request out as a
 topic branch, so the same commit renders differently in the two jobs and one of
 them fails with no file having changed.
 
-That is not hypothetical. ``build_corpus_descriptor.py`` once recorded
-``navigation_snapshot.publication_state``, derived from whether the navigation
-commit was an ancestor of a local ``main`` ref. Branch builds rendered
-``detached_navigation_snapshot`` and ``main`` builds rendered
-``main_history_snapshot``, so release-surfaces was red on ``main`` for days and
+That is not hypothetical. ``build_corpus_descriptor.py`` once recorded a
+snapshot publication state derived from whether a preserved navigation commit
+was an ancestor of a local ``main`` ref. Branch builds and ``main`` builds then
+rendered different labels, so release-surfaces was red on ``main`` for days and
 no regeneration could fix it: refreshing on a branch broke ``main`` and
 refreshing on ``main`` broke every pull request.
+
+The descriptor now uses content digests for current navigation identity. It
+does not preserve an old Git commit under a current-sounding snapshot field:
+a generated file cannot contain the commit that first contains its own bytes.
 
 This test pins the invariant behaviourally rather than by inspecting source. It
 copies the public tree into two version-control-free workspaces that differ only

@@ -1,0 +1,829 @@
+{
+  "zone_id": "Z29",
+  "title": "Boolean–Möbius exact-row capacity and cofinality frontier",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "exact_boolean_mersenne_row",
+      "label": "exact Boolean–Möbius quotient row",
+      "note": "A finite support whose integral Mersenne quotient at endpoint n is exactly 2^(n-1)-1, making its real support value exponentially close to one half."
+    },
+    {
+      "id": "skipped_core_upper_fill",
+      "label": "skipped-core upper-window fill",
+      "note": "A Boolean repair word placed strictly above a below-half crossing core so that the enlarged support becomes an exact quotient row."
+    },
+    {
+      "id": "critical_capacity_socket",
+      "label": "sharp critical-capacity socket",
+      "note": "The c-2-bit suffix inequality at endpoint 2c-2, equivalently an integral half-target inequality and an explicit division-free geometric-word bound."
+    },
+    {
+      "id": "half_greedy_precritical_socket",
+      "label": "half-greedy precritical socket",
+      "note": "The one-row-earlier suffix bound at actual skipped ranks, represented interchangeably by crossing tax, frozen margin, future-skip coverage, and the last skip before a take."
+    },
+    {
+      "id": "protected_exact_row_progress",
+      "label": "protected exact-row progress",
+      "note": "A below-half protected core and support-separation invariant that makes each critical-capacity successor have strictly larger endpoint."
+    },
+    {
+      "id": "finite_to_cofinal_boundary",
+      "label": "finite-to-cofinal boundary",
+      "note": "The distinction between a local double-or-recycle transition and the strict endpoint progress needed to obtain cofinally many exact rows."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "cofinal_exact_rows_force_half_membership",
+      "canonical_statement": "PROVED CONDITIONAL: if exact Boolean–Möbius quotient rows occur at arbitrarily large endpoints, their finite support values lie in the Mersenne achievement set and approach 1/2 with error at most (n+1)/2^n; closedness therefore places 1/2 in that achievement set even when the row supports are mutually incompatible.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "exact_boolean_mersenne_row",
+        "finite_to_cofinal_boundary"
+      ],
+      "open_antecedents": [
+        "CofinalExactLocalMersenneHalfRows"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact quotient-to-real-value error control followed by closedness of the Mersenne achievement set",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the terminal consumer for the paper-seeded Boolean–Möbius exact-row programme.",
+      "scope_caveat": "The theorem consumes cofinal exact rows; it does not produce them. Finite rows, or an unbounded collection without verified endpoint cofinality, do not satisfy its hypothesis and do not prove Erdős #257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exactLocalMersenneRowValue_mem_mersenneAchievementSet",
+          "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+          "line": 47
+        },
+        {
+          "declaration": "abs_exactLocalMersenneRowValue_sub_half_le",
+          "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+          "line": 58
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_cofinalExactLocalRows",
+          "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+          "line": 71
+        }
+      ]
+    },
+    {
+      "id": "endpoint_six_exact_row_seed",
+      "canonical_statement": "PROVED FINITE INSTANCE: the support {2,3,6} is an exact Boolean–Möbius quotient row at endpoint 6 because its quotient contributions are 21, 9, and 1, summing to 31=2^5-1; its Mersenne support value is strictly below 1/2.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": [
+        "exact_boolean_mersenne_row",
+        "protected_exact_row_progress"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact finite arithmetic for the support {2,3,6}",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the concrete seed used by the protected exact-row induction.",
+      "scope_caveat": "One exact row at endpoint 6 is only a finite seed. It neither supplies arbitrarily large rows nor places 1/2 in the achievement set.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exactRowSixSupport_bounds",
+          "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+          "line": 16
+        },
+        {
+          "declaration": "exactRowSixSupport_quotient",
+          "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+          "line": 22
+        },
+        {
+          "declaration": "exactRowSixSupport_value_lt_half",
+          "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+          "line": 28
+        },
+        {
+          "declaration": "exactLocalMersenneHalfRow_six",
+          "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "id": "below_half_exact_row_has_strict_doubling_extension",
+      "canonical_statement": "PROVED LOCAL PRODUCER: every exact row at endpoint n>=6 whose support contains rank 2 and has value below 1/2 admits an exact extension at endpoint 2n-1, with every newly inserted rank strictly above n.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "exact_boolean_mersenne_row",
+        "skipped_core_upper_fill",
+        "protected_exact_row_progress"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the residual exact quotient is encoded as a bounded binary word and placed in the strict upper window",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the below-half branch in the paper-seeded exact-row dependency closure.",
+      "scope_caveat": "The result is uniform for rows satisfying its local hypotheses, but it does not show that every exact row is below half or that the construction can be iterated without the protected-core invariant.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below",
+          "module": "Erdos249257/BooleanMobiusExactRowDoubling.lean",
+          "line": 185
+        },
+        {
+          "declaration": "exactLocalMersenneHalfRow_two_mul_sub_one_of_exact_below",
+          "module": "Erdos249257/BooleanMobiusExactRowDoubling.lean",
+          "line": 296
+        }
+      ]
+    },
+    {
+      "id": "above_half_support_recycles_through_first_crossing",
+      "canonical_statement": "PROVED LOCAL PRODUCER: every finite positive-rank support whose Mersenne value is above 1/2 has a first crossing rank c>=4; its strict lower prefix is below half, adding c crosses above half, and the skipped-core construction yields an exact row at endpoint 2c-2.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "exact_boolean_mersenne_row",
+        "skipped_core_upper_fill"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "minimal first crossing followed by the unconditional skipped-core exact-row constructor",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the above-half recycling branch paired with the literal doubling branch.",
+      "scope_caveat": "The recycled endpoint 2c-2 need not exceed the original endpoint. The theorem is a local exact-row producer, not a cofinality or strict-progress theorem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_first_localMersenne_crossing",
+          "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+          "line": 31
+        },
+        {
+          "declaration": "exists_skippedCoreExactRow_of_value_above",
+          "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+          "line": 155
+        },
+        {
+          "declaration": "exactLocalMersenneHalfRow_of_first_localMersenne_crossing",
+          "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+          "line": 191
+        }
+      ]
+    },
+    {
+      "id": "double_or_recycle_transition_does_not_imply_cofinality",
+      "canonical_statement": "PROVED BARRIER: every exact row at endpoint n>=6 has either a doubled exact row at 2n-1 or a recycled exact row at 2c-2 for some 4<=c<=n, but this transition shape plus a seed does not imply cofinality; an explicit one-point model at endpoint 6 satisfies the same transition forever and is not cofinal.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": [
+        "exact_boolean_mersenne_row",
+        "finite_to_cofinal_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the exact below/above sign dichotomy paired with a bounded logical countermodel to endpoint growth",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The bounded model is an internal route falsifier, not a counterexample to Erdős #257.",
+      "scope_caveat": "The no-go concerns inference from the transition schema alone. It does not rule out cofinality after adding the sharp capacity or protected-progress input.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exactLocalMersenneHalfRow_double_or_recycle",
+          "module": "Erdos249257/BooleanMobiusExactRowDichotomy.lean",
+          "line": 26
+        },
+        {
+          "declaration": "exists_seeded_bounded_double_or_recycle_model",
+          "module": "Erdos249257/BooleanMobiusExactRowDichotomy.lean",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "id": "sharp_skipped_core_capacity_exact_normal_forms",
+      "canonical_statement": "PROVED EQUIVALENCE: for every below-half core below crossing rank c>=4, fitting its endpoint-(2c-2) repair suffix in c-2 bits is equivalent to the inserted core reaching the integral half target; after expanding each Mersenne quotient, the same socket is one explicit lower bound on a finite sum of shifted powers of two.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "critical_capacity_socket",
+        "skipped_core_upper_fill"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact quotient/suffix complementarity and Euclidean expansion of Mersenne quotients into geometric binary words",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper's audited sharp-capacity row cites the downstream constructor at BooleanMobiusSkipRow.lean:286; this node records its exact arithmetic input forms.",
+      "scope_caveat": "These equivalences remove representational ambiguity but do not prove the inequality for every crossing core or along the half-greedy orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff",
+          "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+          "line": 22
+        },
+        {
+          "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+          "line": 208
+        }
+      ]
+    },
+    {
+      "id": "sharp_capacity_builds_strict_upper_exact_row",
+      "canonical_statement": "PROVED LOCAL PRODUCER: when a skipped core satisfies the sharp c-2-bit capacity inequality, its repair can be supported strictly above c and gives an exact row at endpoint 2c-2; that separation makes the next crossing either leave a below-half row in place or occur strictly later and yield a strictly larger exact-row endpoint.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "critical_capacity_socket",
+        "skipped_core_upper_fill",
+        "protected_exact_row_progress"
+      ],
+      "open_antecedents": [
+        "the sharp local suffix-capacity inequality when required uniformly at all relevant skipped cores"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Boolean word realisation in the strict upper window followed by first-crossing separation",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This includes the theorem at BooleanMobiusSkipRow.lean:286 identified by the reasoning-surface paper as TH-sharp-capacity-progress.",
+      "scope_caveat": "The constructor is unconditional once its local sharp-capacity premise is given, but the corpus does not supply that premise uniformly or cofinally. This theorem is therefore not a cofinal row producer by itself.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity",
+          "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+          "line": 286
+        },
+        {
+          "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity",
+          "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+          "line": 380
+        },
+        {
+          "declaration": "skippedCoreSharpCapacity_below_or_strictly_laterExactRow",
+          "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+          "line": 233
+        }
+      ]
+    },
+    {
+      "id": "fractional_mass_one_is_sufficient_but_not_necessary",
+      "canonical_statement": "PROVED CLASSIFICATION AND BARRIER: at a genuine skipped-core crossing, a total local fractional mass at most one is sufficient for the sharp capacity, and failure of capacity forces that mass above one; however the explicit crossing D={2,3}, c=5 has mass above one while sharp capacity still holds, so this convenient residue estimate is not necessary.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": [
+        "critical_capacity_socket"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "scaled quotient/fractional-mass accounting plus an exact finite crossing fixture",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This records both the valid sufficient criterion and the exact reason it cannot be promoted to an equivalence.",
+      "scope_caveat": "The finite fixture refutes necessity only for the one-unit fractional-mass criterion. It does not refute the sharp capacity socket itself or provide a uniform alternative estimate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_of_splitFractionMass",
+          "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+          "line": 136
+        },
+        {
+          "declaration": "one_lt_splitFractionMass_of_criticalCapacity_failure",
+          "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+          "line": 164
+        },
+        {
+          "declaration": "splitFractionMass_one_bound_not_necessary_fixture",
+          "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+          "line": 183
+        }
+      ]
+    },
+    {
+      "id": "future_skip_lookahead_closes_precritical_row",
+      "canonical_statement": "PROVED LOCAL PRODUCER: at a skipped half-greedy rank c, if the next t-1 ranks are taken, rank c+t is skipped, and c-2 fits in the remaining dyadic room, then the predecessor suffix at endpoint 2c-3 fits in c-3 bits; in particular, two consecutive skipped ranks satisfy the bound for every c>=6.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "half_greedy_precritical_socket",
+        "critical_capacity_socket"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite greedy-remainder telescoping, a forced future threshold, and a dyadic room bound paying the complete local fractional-residue tax",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The reasoning-surface paper cites BooleanMobiusCriticalCapacityCofinal.lean:603 and correctly records this theorem as uniform in its local hypotheses.",
+      "scope_caveat": "The theorem does not establish that its future-skip hypothesis occurs at every required rank. The paper audit identifies that orbit-level skip-gap supply as unproved, so this local implication is not a global or cofinal producer.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "precriticalCrossingTax_of_futureThreshold",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 472
+        },
+        {
+          "declaration": "halfGreedy_precriticalSuffix_lt_iff_crossingTax",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 559
+        },
+        {
+          "declaration": "halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 603
+        },
+        {
+          "declaration": "halfGreedy_precriticalSuffix_lt_of_next_skip",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 682
+        }
+      ]
+    },
+    {
+      "id": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms",
+      "canonical_statement": "PROVED EQUIVALENCES: the global precritical suffix supply is exactly the crossing-overshoot versus fractional-tax inequality, exactly first-shell future-skip coverage of the terminal Möbius-centred carry, and exactly the restriction to skipped ranks immediately followed by an actual take; consecutive skips and the finite ranks 4 and 5 are already discharged.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": [
+        "half_greedy_precritical_socket"
+      ],
+      "open_antecedents": [
+        "HalfGreedyPreTakePrecriticalSuffixSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "pointwise suffix/crossing-tax identity, complementary frozen-margin carry, actual future-skip coverage, and elimination of consecutive-skip rows",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. These are exact coordinate changes for the paper-audited residual, not separate progress claims.",
+      "scope_caveat": "The equivalent supply remains unproved. The equivalences isolate the surviving producer at a skip immediately before a take; they do not show that crossing tax, frozen margin, or future-skip coverage has the required sign.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "halfGreedySkippedPrecriticalSuffixSupply_iff_crossingTax",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 713
+        },
+        {
+          "declaration": "halfGreedySkippedPrecriticalSuffixSupply_iff_preTake",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 838
+        },
+        {
+          "declaration": "halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 949
+        },
+        {
+          "declaration": "halfGreedySkippedPrecriticalSuffixSupply_iff_futureSkipCoverage",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 979
+        },
+        {
+          "declaration": "halfGreedySkippedPrecriticalCrossingTaxSupply_iff_futureSkipCoverage",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 992
+        }
+      ]
+    },
+    {
+      "id": "critical_quotient_supply_collapses_to_actual_skipped_orbit",
+      "canonical_statement": "PROVED EQUIVALENCES: the universal sharp quotient inequality over all crossing finite cores is equivalent to its canonical half-greedy specialization, and that specialization is equivalent to requiring the inequality only at ranks actually skipped by the half-greedy orbit.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": [
+        "critical_capacity_socket",
+        "half_greedy_precritical_socket"
+      ],
+      "open_antecedents": [
+        "SkippedCoreCriticalQuotientSupply, equivalently HalfGreedySkippedCriticalQuotientSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "uniqueness of the below-half crossing core as the canonical half-greedy prefix and exact conversion of the deficit to the greedy remainder",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This removes an artificial universal finite-core quantifier from the Boolean–Möbius capacity frontier.",
+      "scope_caveat": "The quantifier collapse is exact, but the resulting actual-skipped-rank inequality is still open. It is a sharper target, not a proof of its truth or of Erdős #257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "halfGreedyCriticalQuotientSupply_iff_skipped",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1030
+        },
+        {
+          "declaration": "skippedCoreCriticalQuotientSupply_iff_halfGreedy",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1052
+        },
+        {
+          "declaration": "skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1068
+        }
+      ]
+    },
+    {
+      "id": "critical_supply_produces_strictly_growing_rows_and_half_membership",
+      "canonical_statement": "PROVED CONDITIONAL: the critical quotient supply makes every protected exact row admit a strictly later protected successor; iterating from the endpoint-six seed gives cofinally many exact rows and hence places 1/2 in the Mersenne achievement set. It is enough, equivalently through the reduction chain, to prove the precritical suffix bound only at skipped ranks immediately followed by takes.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "protected_exact_row_progress",
+        "exact_boolean_mersenne_row",
+        "half_greedy_precritical_socket"
+      ],
+      "open_antecedents": [
+        "SkippedCoreCriticalQuotientSupply",
+        "or the sufficient HalfGreedyPreTakePrecriticalSuffixSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "protected-core support separation, strict successor iteration, the cofinal exact-row approximation consumer, and the precritical-to-critical reduction",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the strongest landed Boolean–Möbius endpoint in the paper-seeded cluster.",
+      "scope_caveat": "Both displayed global supply routes are unproved. The theorem is a complete consumer and induction architecture, not an unconditional proof that 1/2 is attainable and not a solution of the universal Erdős #257 problem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_laterProtectedExactLocalMersenneRow",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1139
+        },
+        {
+          "declaration": "protectedExactLocalMersenneRow_endpoint_lt_next",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1275
+        },
+        {
+          "declaration": "cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1309
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_criticalQuotientSupply",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1321
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_preTakePrecriticalSuffixSupply",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1330
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "exactLocalMersenneRowValue_mem_mersenneAchievementSet",
+      "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+      "line": 47,
+      "role": "statement",
+      "statement_node": "cofinal_exact_rows_force_half_membership"
+    },
+    {
+      "declaration": "abs_exactLocalMersenneRowValue_sub_half_le",
+      "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+      "line": 58,
+      "role": "statement",
+      "statement_node": "cofinal_exact_rows_force_half_membership"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_cofinalExactLocalRows",
+      "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+      "line": 71,
+      "role": "statement",
+      "statement_node": "cofinal_exact_rows_force_half_membership"
+    },
+    {
+      "declaration": "exactRowSixSupport_bounds",
+      "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+      "line": 16,
+      "role": "statement",
+      "statement_node": "endpoint_six_exact_row_seed"
+    },
+    {
+      "declaration": "exactRowSixSupport_quotient",
+      "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+      "line": 22,
+      "role": "statement",
+      "statement_node": "endpoint_six_exact_row_seed"
+    },
+    {
+      "declaration": "exactRowSixSupport_value_lt_half",
+      "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+      "line": 28,
+      "role": "statement",
+      "statement_node": "endpoint_six_exact_row_seed"
+    },
+    {
+      "declaration": "exactLocalMersenneHalfRow_six",
+      "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+      "line": 34,
+      "role": "statement",
+      "statement_node": "endpoint_six_exact_row_seed"
+    },
+    {
+      "declaration": "exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below",
+      "module": "Erdos249257/BooleanMobiusExactRowDoubling.lean",
+      "line": 185,
+      "role": "statement",
+      "statement_node": "below_half_exact_row_has_strict_doubling_extension"
+    },
+    {
+      "declaration": "exactLocalMersenneHalfRow_two_mul_sub_one_of_exact_below",
+      "module": "Erdos249257/BooleanMobiusExactRowDoubling.lean",
+      "line": 296,
+      "role": "statement",
+      "statement_node": "below_half_exact_row_has_strict_doubling_extension"
+    },
+    {
+      "declaration": "exists_first_localMersenne_crossing",
+      "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+      "line": 31,
+      "role": "statement",
+      "statement_node": "above_half_support_recycles_through_first_crossing"
+    },
+    {
+      "declaration": "exists_skippedCoreExactRow_of_value_above",
+      "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+      "line": 155,
+      "role": "statement",
+      "statement_node": "above_half_support_recycles_through_first_crossing"
+    },
+    {
+      "declaration": "exactLocalMersenneHalfRow_of_first_localMersenne_crossing",
+      "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+      "line": 191,
+      "role": "statement",
+      "statement_node": "above_half_support_recycles_through_first_crossing"
+    },
+    {
+      "declaration": "exactLocalMersenneHalfRow_double_or_recycle",
+      "module": "Erdos249257/BooleanMobiusExactRowDichotomy.lean",
+      "line": 26,
+      "role": "statement",
+      "statement_node": "double_or_recycle_transition_does_not_imply_cofinality"
+    },
+    {
+      "declaration": "exists_seeded_bounded_double_or_recycle_model",
+      "module": "Erdos249257/BooleanMobiusExactRowDichotomy.lean",
+      "line": 91,
+      "role": "statement",
+      "statement_node": "double_or_recycle_transition_does_not_imply_cofinality"
+    },
+    {
+      "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff",
+      "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+      "line": 22,
+      "role": "statement",
+      "statement_node": "sharp_skipped_core_capacity_exact_normal_forms"
+    },
+    {
+      "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometricCore",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+      "line": 208,
+      "role": "statement",
+      "statement_node": "sharp_skipped_core_capacity_exact_normal_forms"
+    },
+    {
+      "declaration": "exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity",
+      "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+      "line": 286,
+      "role": "statement",
+      "statement_node": "sharp_capacity_builds_strict_upper_exact_row"
+    },
+    {
+      "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity",
+      "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+      "line": 380,
+      "role": "statement",
+      "statement_node": "sharp_capacity_builds_strict_upper_exact_row"
+    },
+    {
+      "declaration": "skippedCoreSharpCapacity_below_or_strictly_laterExactRow",
+      "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+      "line": 233,
+      "role": "statement",
+      "statement_node": "sharp_capacity_builds_strict_upper_exact_row"
+    },
+    {
+      "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_of_splitFractionMass",
+      "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+      "line": 136,
+      "role": "statement",
+      "statement_node": "fractional_mass_one_is_sufficient_but_not_necessary"
+    },
+    {
+      "declaration": "one_lt_splitFractionMass_of_criticalCapacity_failure",
+      "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+      "line": 164,
+      "role": "statement",
+      "statement_node": "fractional_mass_one_is_sufficient_but_not_necessary"
+    },
+    {
+      "declaration": "splitFractionMass_one_bound_not_necessary_fixture",
+      "module": "Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean",
+      "line": 183,
+      "role": "statement",
+      "statement_node": "fractional_mass_one_is_sufficient_but_not_necessary"
+    },
+    {
+      "declaration": "precriticalCrossingTax_of_futureThreshold",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 472,
+      "role": "statement",
+      "statement_node": "future_skip_lookahead_closes_precritical_row"
+    },
+    {
+      "declaration": "halfGreedy_precriticalSuffix_lt_iff_crossingTax",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 559,
+      "role": "statement",
+      "statement_node": "future_skip_lookahead_closes_precritical_row"
+    },
+    {
+      "declaration": "halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 603,
+      "role": "statement",
+      "statement_node": "future_skip_lookahead_closes_precritical_row"
+    },
+    {
+      "declaration": "halfGreedy_precriticalSuffix_lt_of_next_skip",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 682,
+      "role": "statement",
+      "statement_node": "future_skip_lookahead_closes_precritical_row"
+    },
+    {
+      "declaration": "halfGreedySkippedPrecriticalSuffixSupply_iff_crossingTax",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 713,
+      "role": "statement",
+      "statement_node": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms"
+    },
+    {
+      "declaration": "halfGreedySkippedPrecriticalSuffixSupply_iff_preTake",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 838,
+      "role": "statement",
+      "statement_node": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms"
+    },
+    {
+      "declaration": "halfGreedy_precriticalSuffix_lt_iff_futureSkipCoverage",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 949,
+      "role": "statement",
+      "statement_node": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms"
+    },
+    {
+      "declaration": "halfGreedySkippedPrecriticalSuffixSupply_iff_futureSkipCoverage",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 979,
+      "role": "statement",
+      "statement_node": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms"
+    },
+    {
+      "declaration": "halfGreedySkippedPrecriticalCrossingTaxSupply_iff_futureSkipCoverage",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 992,
+      "role": "statement",
+      "statement_node": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms"
+    },
+    {
+      "declaration": "halfGreedyCriticalQuotientSupply_iff_skipped",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1030,
+      "role": "statement",
+      "statement_node": "critical_quotient_supply_collapses_to_actual_skipped_orbit"
+    },
+    {
+      "declaration": "skippedCoreCriticalQuotientSupply_iff_halfGreedy",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1052,
+      "role": "statement",
+      "statement_node": "critical_quotient_supply_collapses_to_actual_skipped_orbit"
+    },
+    {
+      "declaration": "skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1068,
+      "role": "statement",
+      "statement_node": "critical_quotient_supply_collapses_to_actual_skipped_orbit"
+    },
+    {
+      "declaration": "exists_laterProtectedExactLocalMersenneRow",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1139,
+      "role": "statement",
+      "statement_node": "critical_supply_produces_strictly_growing_rows_and_half_membership"
+    },
+    {
+      "declaration": "protectedExactLocalMersenneRow_endpoint_lt_next",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1275,
+      "role": "statement",
+      "statement_node": "critical_supply_produces_strictly_growing_rows_and_half_membership"
+    },
+    {
+      "declaration": "cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1309,
+      "role": "statement",
+      "statement_node": "critical_supply_produces_strictly_growing_rows_and_half_membership"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_criticalQuotientSupply",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1321,
+      "role": "statement",
+      "statement_node": "critical_supply_produces_strictly_growing_rows_and_half_membership"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_preTakePrecriticalSuffixSupply",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1330,
+      "role": "statement",
+      "statement_node": "critical_supply_produces_strictly_growing_rows_and_half_membership"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "endpoint_six_exact_row_seed",
+      "to": "cofinal_exact_rows_force_half_membership",
+      "relation": "finite_instance_of",
+      "basis": "The endpoint-six support is one exact row of the kind consumed by the approximation theorem, but one finite row does not meet the cofinal quantifier."
+    },
+    {
+      "from": "below_half_exact_row_has_strict_doubling_extension",
+      "to": "above_half_support_recycles_through_first_crossing",
+      "relation": "complements",
+      "basis": "The two nodes are the below-half and above-half branches used to continue an exact row after excluding equality to one half by odd-denominator parity."
+    },
+    {
+      "from": "double_or_recycle_transition_does_not_imply_cofinality",
+      "to": "below_half_exact_row_has_strict_doubling_extension",
+      "relation": "barrier_for",
+      "basis": "The bounded transition model shows that possessing the doubling/recycling transition schema is insufficient to infer unbounded endpoint growth."
+    },
+    {
+      "from": "double_or_recycle_transition_does_not_imply_cofinality",
+      "to": "above_half_support_recycles_through_first_crossing",
+      "relation": "barrier_for",
+      "basis": "The recycling branch can return to the same endpoint scale, so the local above-half producer needs an independent strict-progress invariant."
+    },
+    {
+      "from": "sharp_capacity_builds_strict_upper_exact_row",
+      "to": "sharp_skipped_core_capacity_exact_normal_forms",
+      "relation": "depends_on_open",
+      "basis": "The strict-upper constructor consumes the sharp c-2-bit inequality whose quotient and geometric forms are exact; the missing global input is that this inequality holds at every relevant crossing."
+    },
+    {
+      "from": "sharp_capacity_builds_strict_upper_exact_row",
+      "to": "double_or_recycle_transition_does_not_imply_cofinality",
+      "relation": "repair_of",
+      "basis": "Support separation from the sharp fill is the extra invariant that prevents the crossing branch from recycling at the same cutoff."
+    },
+    {
+      "from": "fractional_mass_one_is_sufficient_but_not_necessary",
+      "to": "sharp_skipped_core_capacity_exact_normal_forms",
+      "relation": "specialises",
+      "basis": "A one-unit fractional-mass bound supplies one sufficient analytic route to the exact capacity inequality, while the finite fixture proves that this route is not an equivalence."
+    },
+    {
+      "from": "future_skip_lookahead_closes_precritical_row",
+      "to": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms",
+      "relation": "specialises",
+      "basis": "The finite-lookahead theorem proves the precritical suffix inequality for a concrete local skip/take/skip configuration represented by the global equivalent sockets."
+    },
+    {
+      "from": "precritical_supply_has_exact_crossing_tax_and_future_skip_forms",
+      "to": "critical_quotient_supply_collapses_to_actual_skipped_orbit",
+      "relation": "implies",
+      "basis": "The predecessor endpoint recurrence lifts the precritical suffix supply to the skipped critical quotient supply, after which the universal finite-core form follows by the exact quantifier collapse."
+    },
+    {
+      "from": "critical_quotient_supply_collapses_to_actual_skipped_orbit",
+      "to": "sharp_skipped_core_capacity_exact_normal_forms",
+      "relation": "reformulates",
+      "basis": "The global critical supply asks for the same exact local capacity inequality, but only at the canonical cores corresponding to actual skipped half-greedy ranks."
+    },
+    {
+      "from": "critical_supply_produces_strictly_growing_rows_and_half_membership",
+      "to": "sharp_capacity_builds_strict_upper_exact_row",
+      "relation": "depends_on_open",
+      "basis": "Each protected successor uses either strict doubling below half or a strict-upper skipped-core fill above half; the open critical supply provides the latter fill at every crossing."
+    },
+    {
+      "from": "critical_supply_produces_strictly_growing_rows_and_half_membership",
+      "to": "cofinal_exact_rows_force_half_membership",
+      "relation": "implies",
+      "basis": "Strict protected successors generate cofinally many exact endpoints, which satisfy the exact-row approximation consumer and yield half membership."
+    },
+    {
+      "from": "critical_supply_produces_strictly_growing_rows_and_half_membership",
+      "to": "endpoint_six_exact_row_seed",
+      "relation": "generated_by",
+      "basis": "The protected successor orbit starts from the explicit endpoint-six exact row and grows only under the unproved global critical-capacity input."
+    }
+  ]
+}

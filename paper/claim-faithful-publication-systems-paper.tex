@@ -42,9 +42,10 @@ whether declarations were inventoried, whether they were routed to a
 mathematical zone, whether selected declarations were interpreted as authored
 statement nodes, and whether selected public claims were reviewed.  At the
 audited revision every one of 151,755 live declarations has a typed route, but
-only 4,258 of 141,820 authored theorem-like declarations are linked to authored
-statement nodes.  The first fact is exhaustive routing, not exhaustive
-interpretation.
+only 4,348 of 141,820 authored theorem-like declarations are linked to authored
+statement nodes.  Of those links, 2,201 are exact proposition evidence and
+2,147 are contextual links.  The first fact is exhaustive routing, not
+exhaustive interpretation.
 
 For public claims, a reviewed record names Lean evidence, status, finite
 domain, and the adjacent stronger statement that remains open.  Release checks
@@ -364,10 +365,13 @@ relations with stated bases.  Fourth, the claim registry selects a much smaller
 set for public presentation and records its status and open boundary.
 
 The generated receipt at this revision makes the ceiling visible: 151,755 of
-151,755 declarations are routed, with no duplicate routing receipts; 4,258 of
+151,755 declarations are routed, with no duplicate routing receipts; 4,348 of
 141,820 authored theorem-like declarations are linked to authored statement
-nodes, while 137,562 are only zone-routed; and all 299 declarations selected
-by the public claim ledger have the required semantic route.  The command
+nodes, while 137,472 are only zone-routed.  The graph distinguishes 2,201 exact
+proposition-evidence links from 2,147 contextual links, so attaching a large
+helper family to one node cannot masquerade as direct interpretation.  All 300
+declarations selected by the public claim ledger have the required semantic
+route.  The command
 \texttt{python3 scripts/query\_semantic.py coverage} derives these counts.  Its
 checker validates source freshness, roles, node references, relation labels,
 endpoints, and stated bases.  It does not prove that canonical prose is
@@ -375,6 +379,41 @@ extensionally equivalent to its Lean proposition, that a mathematical relation
 is true, or that the selected graph is complete.  Here \emph{semantic
 coverage} means explicit statement-level interpretation, never mere inventory
 or routing.
+
+Population is therefore selection, not bulk labelling.  The authored papers
+already identify mathematically important declarations, state their scale and
+claim ceilings, and provide source coordinates.  The
+\texttt{population-backlog} query resolves both public-paper and
+reasoning-surface links against live declaration roles, deduplicates qualified
+and short names, and ranks citations that still lack proposition-level
+semantics.  A paper only nominates a packet: exact Lean signatures and proof
+cones adjudicate its statements, while repetitive helpers and generated
+certificate leaves remain compressed.  This turns exposition into a
+source-current authoring queue without pretending that prose is proof
+authority or that a higher node count is better coverage.
+
+Selected semantic subjects now carry a stronger, still limited receipt.
+At this revision 20 statement nodes and four typed relations have
+digest-bound source-to-wording reviews.  Each of the eleven README headline
+claim families reaches at least one such node.  The digest covers the exact
+wording, evidence coordinates, formal-source revision, and declaration-atlas
+fingerprint, so changing any of them invalidates the receipt.  This count does
+not mean that every declaration or public sentence in a headline family was
+reviewed.  The recorded reviewer type is an AI semantic-consistency review,
+not independent human mathematical review, Lean proof authority, or a novelty
+judgement.  The command
+\texttt{python3 scripts/query\_semantic.py semantic-reviews} lists the exact
+subjects and their individual claim ceilings.
+
+Above that graph, the theory-laboratory projection currently records nine
+authored mechanisms explaining eight statement nodes, nine short transfer
+capsules, three typed failure receipts, and four temporal holdout items.  A
+mechanism must name an invariant, a transformation, and the observable it
+controls; a failure receipt must also name the sibling routes it does not rule
+out.  There are no benchmark results yet, so the repository makes no measured
+transfer claim.  The commands
+\texttt{python3 scripts/query\_semantic.py mechanisms} and
+\texttt{python3 scripts/query\_semantic.py receipts} expose the exact records.
 
 \subsection{From a cold clone to a proof receipt}\label{sec:agent-workbench}
 
@@ -395,6 +434,17 @@ in its routing logic.  The longer
 inventory, connection-card, proof-cone, workbench, and focused-build commands.
 Both surfaces work immediately in a cold clone and do not elaborate Lean.
 That is a navigation guarantee, not a proof guarantee.
+
+This is not the first declaration graph or Lean retrieval surface.
+LeanGraph extracts elaborator-level typed edges across multiple Lean projects,
+and Mathlib has separately been analysed as a multilayer declaration
+network~\cite{theoremgraph,mathlibnetwork}.  LeanExplore combines semantic,
+lexical, and graph ranking and exposes agent-facing MCP and Python
+interfaces~\cite{leanexplore}; LeanSearch v2 targets whole-theorem premise sets
+with sketch--retrieve--reflect iterations~\cite{leansearchv2}.  The contribution
+here is narrower: a repository-local, dependency-free first-contact contract
+that joins exhaustive addresses to selective authored meaning and explicit
+authority receipts.
 
 Proof work crosses a deliberate authority boundary.  The session notary in
 \path{scripts/proof_workbench.py} records observations, falsifiable
@@ -778,9 +828,11 @@ configured jobs ran on the named revision, Lean accepted the formal proofs,
 and every configured structural comparison passed.  This paper
 is an architecture note with one bounded case study and three naturalistic
 incidents, not an empirical evaluation of the design.  A credible evaluation
-would need review records naming reviewer and revision, wrong edits authored by
-someone other than the checker's author, and only then a comparison with
-ordinary review on the same changes.  None of those stages exists here, and
+would need evaluation records naming reviewer and revision, wrong edits
+authored by someone other than the checker's author, and only then a comparison
+with ordinary review on the same changes.  The semantic receipts described
+above are evidence-bound interpretation reviews, not such an evaluation
+protocol; none of the required mutation-evaluation stages exists here, and
 this paper claims none of them.
 
 \section{Related systems}\label{sec:related}
@@ -869,10 +921,18 @@ Requirements traceability follows a requirement from its origin through
 development, deployment, use, and revision~\cite{gotel}.  An assurance case
 sets out a system claim, the argument for it, and supporting evidence.  The Goal
 Structuring Notation (GSN) is a graphical notation for that argument
-structure~\cite{gsn}.  The claim record resembles both, but it does not contain
-an argument that its Lean declarations justify the public wording.  It records
-the approved wording, supporting declarations, scope, and limits; the justification remains
-a human judgement.
+structure~\cite{gsn}; SACM standardises machine-readable claims, arguments,
+artefacts, and asserted evidence links~\cite{sacm}.  The claim record resembles
+these forms, but it does not contain an argument that its Lean declarations
+justify the public wording.  It records the approved wording, supporting
+declarations, scope, and limits; the justification remains a human judgement.
+
+Likewise, digest- and revision-bound release receipts are not authenticated
+supply-chain attestations.  In-toto cryptographically verifies actors, steps,
+and artefact flow, while SLSA provenance records how a subject was
+built~\cite{intoto,slsa}.  This repository's checks are unsigned and
+maintainer-controlled: they establish configured consistency, not builder
+identity, tamper resistance, or an external root of trust.
 
 \section{Conclusion}\label{sec:conclusion}
 
@@ -979,6 +1039,18 @@ Theorem Proving, High Level Reasoning, and Data Extraction in Lean 4}, in
 \emph{Tools and Algorithms for the Construction and Analysis of Systems},
 2025, pp.~116--137,
 \href{https://doi.org/10.1007/978-3-031-90643-5_6}{DOI}.
+\bibitem{theoremgraph} S.~Kurgan et al., \emph{TheoremGraph: Bridging Formal
+and Informal Mathematics}, 2026,
+\href{https://doi.org/10.48550/arXiv.2606.25363}{arXiv:2606.25363}.
+\bibitem{mathlibnetwork} X.~Li, N.~Peng, S.~Severini, and P.~Shafto,
+\emph{The Network Structure of Mathlib}, 2026,
+\href{https://doi.org/10.48550/arXiv.2604.24797}{arXiv:2604.24797}.
+\bibitem{leanexplore} J.~Asher, \emph{LeanExplore: A Search Engine for Lean 4
+Declarations}, 2025,
+\href{https://doi.org/10.48550/arXiv.2506.11085}{arXiv:2506.11085}.
+\bibitem{leansearchv2} G.~Gao et al., \emph{LeanSearch v2: Global Premise
+Retrieval for Lean 4 Theorem Proving}, 2026,
+\href{https://doi.org/10.48550/arXiv.2605.13137}{arXiv:2605.13137}.
 \bibitem{growingmathlib} A.~Baanen, M.~R.~Ballard, J.~Commelin,
 B.~Gin-ge Chen, M.~Rothgang, and D.~Testa, \emph{Growing Mathlib:
 Maintenance of a Large Scale Mathematical Library}, in \emph{Intelligent
@@ -1020,6 +1092,16 @@ International Conference on Requirements Engineering}, 1994, pp.~94--101,
 \bibitem{gsn} Assurance Case Working Group, \emph{Goal Structuring Notation
 Community Standard (Version 3)}, Safety-Critical Systems Club, 4 May 2021,
 \href{https://scsc.uk/r1386.pdf}{standard}.
+\bibitem{sacm} Object Management Group, \emph{Structured Assurance Case
+Metamodel, Version 2.3}, formal/23-05-08, October 2023,
+\href{https://www.omg.org/spec/SACM/2.3}{standard}.
+\bibitem{intoto} S.~Torres-Arias, H.~Afzali, T.~K.~Kuppusamy, R.~Curtmola,
+and J.~Cappos, \emph{In-toto: Providing Farm-to-Table Guarantees for Bits and
+Bytes}, in \emph{28th USENIX Security Symposium}, 2019, pp.~1393--1410,
+\href{https://www.usenix.org/conference/usenixsecurity19/presentation/torres-arias}{paper}.
+\bibitem{slsa} SLSA contributors, \emph{SLSA Specification, Version 1.2:
+Provenance}, 2026,
+\href{https://slsa.dev/spec/v1.2/provenance}{standard}.
 \end{thebibliography}
 \end{multicols}
 }

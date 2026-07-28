@@ -39,6 +39,7 @@ Stdlib only; run from the repository root:  python3 scripts/check_release.py
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import re
@@ -176,6 +177,98 @@ def source_map_entry_errors(source_map: str) -> list[str]:
             "as the current certificate frontier"
         )
     return errors
+
+
+def certified_kill_claim_errors(data: dict) -> list[str]:
+    """Keep the registered finite #249 frontier aligned with its exact theorem."""
+    claim = next(
+        (
+            row
+            for row in data.get("claims", [])
+            if row.get("id") == "certified_kill_instances"
+        ),
+        None,
+    )
+    if claim is None:
+        return ["docs/claims.json lacks certified_kill_instances"]
+    errors: list[str] = []
+    statement = str(claim.get("statement", ""))
+    bounded_domain = str(claim.get("bounded_domain", ""))
+    declarations = {
+        (row.get("module"), row.get("name"))
+        for row in claim.get("declarations", [])
+    }
+    expected_band_declaration = (
+        "ErdosProblems/Skip/LadderT67.lean",
+        "exists_diagonalKill_le_82",
+    )
+    if "every lcm-diagonal scale t ≤ 82" not in statement:
+        errors.append(
+            "certified_kill_instances must state the contiguous t ≤ 82 band"
+        )
+    if "No certificate at t = 83" not in bounded_domain:
+        errors.append(
+            "certified_kill_instances must retain the explicit t = 83 ceiling"
+        )
+    if expected_band_declaration not in declarations:
+        errors.append(
+            "certified_kill_instances must cite "
+            "ErdosProblems/Skip/LadderT67.exists_diagonalKill_le_82"
+        )
+    if claim.get("status") != "verified finite instance":
+        errors.append(
+            "certified_kill_instances must remain a verified finite instance"
+        )
+    if "remaining_open.unbounded_certificate_supply" not in claim.get(
+        "remaining_open_proposition_ids", []
+    ):
+        errors.append(
+            "certified_kill_instances must retain the unbounded-supply boundary"
+        )
+    return errors
+
+
+def certified_kill_claim_mutation_fixture_failures(data: dict) -> list[str]:
+    """Return mutations that escaped the finite-band claim contract."""
+    fixtures: dict[str, dict] = {}
+    historical = copy.deepcopy(data)
+    historical_claim = next(
+        row
+        for row in historical["claims"]
+        if row["id"] == "certified_kill_instances"
+    )
+    historical_claim["statement"] = (
+        "Kernel-checked certificates at 28 scales through t = 64."
+    )
+    fixtures["historical_t64_understatement"] = historical
+
+    missing_declaration = copy.deepcopy(data)
+    missing_claim = next(
+        row
+        for row in missing_declaration["claims"]
+        if row["id"] == "certified_kill_instances"
+    )
+    missing_claim["declarations"] = [
+        row
+        for row in missing_claim["declarations"]
+        if row["name"] != "exists_diagonalKill_le_82"
+    ]
+    fixtures["t82_declaration_removed"] = missing_declaration
+
+    ceiling_removed = copy.deepcopy(data)
+    ceiling_claim = next(
+        row
+        for row in ceiling_removed["claims"]
+        if row["id"] == "certified_kill_instances"
+    )
+    ceiling_claim["bounded_domain"] = "Every natural lcm-diagonal scale t."
+    fixtures["finite_ceiling_removed"] = ceiling_removed
+
+    return [
+        fixture_id
+        for fixture_id, mutated in fixtures.items()
+        if not certified_kill_claim_errors(mutated)
+    ]
 
 
 def wave_index_entry_errors(wave_index: str) -> list[str]:
@@ -522,6 +615,16 @@ def main() -> int:
     check(len(claim_ids) == len(set(claim_ids)), "docs/claims.json contains duplicate claim ids")
     claim_id_set = set(claim_ids)
     claim_index = {claim["id"]: claim for claim in data["claims"]}
+    finite_band_errors = certified_kill_claim_errors(data)
+    check(
+        not finite_band_errors,
+        "certified-kill claim contract: " + "; ".join(finite_band_errors),
+    )
+    for fixture_id in certified_kill_claim_mutation_fixture_failures(data):
+        check(
+            False,
+            "certified-kill claim mutation fixture escaped: " + fixture_id,
+        )
     remaining_open_id_set = {
         row["id"] for row in data["remaining_open_propositions"]
     }
@@ -832,6 +935,19 @@ def main() -> int:
         ),
         "machine-readable module graph has an auxiliary root outside the "
         "explicit experimental namespaces",
+    )
+    supported_root_reachable = set(root_imports)
+    supported_frontier = list(supported_root_reachable)
+    while supported_frontier:
+        current = supported_frontier.pop()
+        for dependency in imports_by_id.get(current, []):
+            if dependency not in supported_root_reachable:
+                supported_root_reachable.add(dependency)
+                supported_frontier.append(dependency)
+    check(
+        "ErdosProblems.Skip.LadderT67" in supported_root_reachable,
+        "the reviewed t ≤ 82 finite-certificate theorem is outside the "
+        "supported-root build closure",
     )
     reachable = set([*root_imports, *auxiliary_roots])
     frontier = list(reachable)
@@ -1299,6 +1415,17 @@ def main() -> int:
     )
     check(lab_contract.returncode == 0,
           f"theory lab contract: {lab_contract.stdout.strip() or lab_contract.stderr.strip()}")
+    theory_lab = json.loads(read(ROOT / "docs" / "theory_lab.json"))
+    check(
+        theory_lab.get("schema") == "erdos249257-theory-lab/2",
+        "theory lab must use content-addressed schema erdos249257-theory-lab/2",
+    )
+    check(
+        "source_revision" not in theory_lab
+        and theory_lab.get("source_provenance", {}).get("identity_kind")
+        == "content_addressed_input_set",
+        "theory lab retains self-invalidating Git-derived provenance",
+    )
 
     coordinate_check = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "refresh_source_coordinates.py"), "--check"],
@@ -1347,8 +1474,8 @@ def main() -> int:
     )
 
     descriptor = json.loads(read(ROOT / "docs" / "corpus_descriptor.json"))
-    check(descriptor.get("schema") == "erdos249257-corpus-descriptor/4",
-          "corpus descriptor must use schema erdos249257-corpus-descriptor/4")
+    check(descriptor.get("schema") == "erdos249257-corpus-descriptor/5",
+          "corpus descriptor must use schema erdos249257-corpus-descriptor/5")
     check(descriptor.get("release_provenance") == public_projection,
           "corpus descriptor release provenance drifted from docs/claims.json")
     descriptor_path = ROOT / "docs" / "corpus_descriptor.json"
@@ -1483,17 +1610,21 @@ def main() -> int:
     }
     check(orientation.get("editorial_state") == expected_editorial_state,
           "orientation editorial state drifted from publication_assembly")
-    expected_source_revision = {
+    expected_source_provenance = {
         "formal_source_ref": data["release"]["formal_source"]["ref"],
-        "committed_navigation_snapshot": descriptor["identity"][
-            "navigation_snapshot"
-        ]["commit"],
         "main_paper_source_digest": file_digest(
             ROOT / "paper" / "erdos249-257-main-paper.tex"
         ),
+        "navigation_projection_identity": (
+            "content digests in corpus descriptor; no checkout commit embedded"
+        ),
     }
-    check(orientation.get("source_revision") == expected_source_revision,
-          "orientation source revision is older than its canonical claims or paper")
+    check(orientation.get("source_provenance") == expected_source_provenance,
+          "orientation source provenance differs from its canonical claims or paper")
+    check(
+        "navigation_snapshot" not in descriptor.get("identity", {}),
+        "corpus descriptor retains the ambiguous historical navigation snapshot",
+    )
     check(len(orientation_path.read_bytes()) <= 32_000,
           "orientation JSON exceeds the 32 KB bounded first-read budget")
     for target in orientation.get("drilldowns", {}).values():

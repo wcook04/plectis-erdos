@@ -111,8 +111,8 @@ of understanding.
   {\textbf{Elaborated loaded-root dependency index}\\[-1pt]
    \footnotesize 8,772 nodes; 38,844 direct edges. Exact type/value references joined back to source, plus 3,074 unresolved atlas rows and 5,800 unresolved public edge pairs.};
 \node[box, fill=BurntOrange!6, below=7mm of dep] (semantic)
-  {\textbf{Authored semantic graph}\quad 4,258 interpreted theorem-like declarations\\
-   \footnotesize Selected statement nodes and typed mathematical relations; 137,562 authored theorem-like declarations remain route-only.};
+  {\textbf{Authored semantic graph}\quad 4,348 linked theorem-like declarations\\
+   \footnotesize 2,201 exact proposition-evidence links, 2,147 contextual links; 137,472 theorem-like declarations remain route-only.};
 \node[box, fill=ForestGreen!6, below=7mm of semantic] (claims)
   {\textbf{Reviewed public claim map}\quad 100 claims; 10 programmes; 4 open propositions\\
    \footnotesize Public wording, status, evidence, claim ceiling, and stronger adjacent statement.};
@@ -142,10 +142,14 @@ explanation.
 
 \paragraph{Selective mathematical interpretation.}
 The semantic graph contains authored statement nodes and typed relations. At
-the audited revision, 4,258 of 141,820 authored theorem-like declarations are
-linked to statement nodes. The remaining 137,562 still have typed routes but
-not authored interpretations. Keeping both counts visible prevents exhaustive
-routing from being misreported as exhaustive semantic understanding.
+the audited revision, 4,348 of 141,820 authored theorem-like declarations are
+linked to statement nodes. Of those, 2,201 are exact proposition evidence and
+2,147 are contextual links; the remaining 137,472 still have typed routes but
+not authored interpretations. Keeping these counts visible prevents exhaustive
+routing or bulk helper assignment from being misreported as exhaustive semantic understanding. A
+paper-seeded population query ranks exact live citations that remain
+uninterpreted; it nominates proposition clusters for human or agent authoring
+without promoting proof helpers merely to improve the percentage.
 
 \paragraph{Reviewed public claims.}
 The claim map selects 100 results for public exposition. It records 37 as
@@ -331,6 +335,17 @@ a new proof-search policy. It makes the policy slot explicit and records enough
 of an agent-chosen trajectory to separate notes, nominations, rejected probes,
 and accepted claims.
 
+Nor is its declaration graph or retrieval route novel in isolation.
+LeanGraph extracts typed elaborator-level edges across Lean projects, while a
+separate network study analyses Mathlib's multilayer declaration
+graph~\cite{theoremgraph,mathlibnetwork}. LeanExplore combines semantic,
+lexical, and graph ranking behind Python and MCP interfaces, and LeanSearch v2
+targets global premise sets through iterative
+sketch--retrieve--reflect~\cite{leanexplore,leansearchv2}. The narrower claim
+here is that one cold-clone contract composes source addresses, selective
+semantics, dependency cones, incremental validation, and authority receipts
+without requiring a hosted service or an initial Lean build.
+
 Large-library maintenance supplies the relevant compilation lesson.
 \emph{Growing Mathlib} describes performance-aware library design,
 deprecation, semantic linters, benchmarks, review tooling, and explicit
@@ -446,6 +461,18 @@ Theorem Proving, High Level Reasoning, and Data Extraction in Lean 4}, in
 \emph{Tools and Algorithms for the Construction and Analysis of Systems},
 2025, pp.~116--137,
 \href{https://doi.org/10.1007/978-3-031-90643-5_6}{DOI}.
+\bibitem{theoremgraph} S.~Kurgan et al., \emph{TheoremGraph: Bridging Formal
+and Informal Mathematics}, 2026,
+\href{https://doi.org/10.48550/arXiv.2606.25363}{arXiv:2606.25363}.
+\bibitem{mathlibnetwork} X.~Li, N.~Peng, S.~Severini, and P.~Shafto,
+\emph{The Network Structure of Mathlib}, 2026,
+\href{https://doi.org/10.48550/arXiv.2604.24797}{arXiv:2604.24797}.
+\bibitem{leanexplore} J.~Asher, \emph{LeanExplore: A Search Engine for Lean 4
+Declarations}, 2025,
+\href{https://doi.org/10.48550/arXiv.2506.11085}{arXiv:2506.11085}.
+\bibitem{leansearchv2} G.~Gao et al., \emph{LeanSearch v2: Global Premise
+Retrieval for Lean 4 Theorem Proving}, 2026,
+\href{https://doi.org/10.48550/arXiv.2605.13137}{arXiv:2605.13137}.
 \bibitem{growingmathlib} A.~Baanen, M.~R.~Ballard, J.~Commelin,
 B.~Gin-ge Chen, M.~Rothgang, and D.~Testa, \emph{Growing Mathlib:
 Maintenance of a Large Scale Mathematical Library}, in \emph{Intelligent

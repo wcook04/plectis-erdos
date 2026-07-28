@@ -1,0 +1,82 @@
+[
+ {
+  "receipt_id": "failure_finite_aggregation_is_not_unbounded_supply",
+  "candidate": "Promote the checked t ≤ 82 aggregate directly to the cofinal lcm-diagonal certificate supply.",
+  "smallest_failing_hypothesis": "The finite aggregate has no quantifier or recurrence producing a witness beyond its recorded ceiling.",
+  "failure_kind": "candidate_route_ruled_out",
+  "candidate_route_ruled_out": "finite_to_unbounded_certificate_extrapolation",
+  "scope": "using the existing bounded aggregate as a proof of the beyond-every-cutoff certificate obligation",
+  "evidence": [
+   "exists_diagonalKill_le_82",
+   "irrational_totient_series_iff_lcm_diagonal_certificate_supply"
+  ],
+  "reason": "The aggregate quantifies only over t ≤ 82, while the equivalent open supply quantifies beyond every cutoff.",
+  "nearest_repair": "Prove a genuine extension or recurrence theorem that produces a certified kill beyond every input cutoff.",
+  "repair_verdict": "open; the current finite band remains valid and useful but cannot be extrapolated",
+  "reentry_condition": "A theorem with a cofinal or unbounded scale quantifier, not another finite endpoint.",
+  "mechanisms_not_ruled_out": [
+   "modular_gap_denominator_exclusion",
+   "dyadic_odd_core_basis"
+  ],
+  "sibling_family": {
+   "id": "authored_249_predictive_mechanisms",
+   "members": [
+    "modular_gap_denominator_exclusion",
+    "dyadic_odd_core_basis"
+   ]
+  },
+  "prior_art_state": "not_a_novelty_claim",
+  "novelty_claim": false
+ },
+ {
+  "receipt_id": "failure_prime_dilation_formula_on_composite_support",
+  "candidate": "Reuse the prime-support coefficient-dilation identity on arbitrary composite support.",
+  "smallest_failing_hypothesis": "Prime support is exactly what forces the composite dilation defect to vanish.",
+  "failure_kind": "mechanism_scope_exceeded",
+  "mechanism_scope_exceeded": "prime_support_defect_cancellation",
+  "scope": "dropping the defect term while extending the prime-support dilation identity to arbitrary support",
+  "evidence": [
+   "supportCoeff_mul_eq_add_defect",
+   "compositeDilationDefect_eq_zero_of_prime_support"
+  ],
+  "reason": "The exact arbitrary-support identity contains a defect that vanishes under prime support but need not vanish for composites.",
+  "nearest_repair": "Retain the defect term and prove it vanishes or is controlled for the selected structured support.",
+  "repair_verdict": "repaired at the identity level by explicit defect accounting; support-specific control remains separate",
+  "reentry_condition": "A support class with a proved zero or quantitative bound for compositeDilationDefect.",
+  "mechanisms_not_ruled_out": [
+   "composite_dilation_defect_accounting"
+  ],
+  "sibling_family": {
+   "id": "support_dilation_mechanisms",
+   "members": [
+    "composite_dilation_defect_accounting"
+   ]
+  },
+  "prior_art_state": "positioned_by_docs/semantic/lab/PRIOR_ART.md",
+  "novelty_claim": false
+ },
+ {
+  "receipt_id": "failure_scalar_clearing_as_height_reduction",
+  "candidate": "Clear a large part of a rational denominator through a one-dimensional linear channel while keeping the coefficient uniformly small.",
+  "smallest_failing_hypothesis": "The complementary reduced denominator is coprime to the cleared numerator and therefore must divide the scalar.",
+  "failure_kind": "candidate_route_ruled_out",
+  "candidate_route_ruled_out": "scalar_linear_height_reduction",
+  "scope": "using one-dimensional rational-linear denominator clearing to obtain uniformly small integral coefficients",
+  "evidence": [
+   "scalarLocalization_complement_dvd",
+   "linearDescender_eq_smul_eval"
+  ],
+  "reason": "The complementary reduced denominator divides the scalar, and every rational-linear descender is scalar evaluation up to a fixed vector.",
+  "nearest_repair": "Use a genuinely nonlinear or multivariable invariant whose arithmetic content is not a scalar evaluation in disguise.",
+  "repair_verdict": "the scalar and rational-linear route is ruled out; nonlinear and multivariable routes remain open",
+  "reentry_condition": "An explicit non-scalar construction with a theorem showing it escapes linearDescender_eq_smul_eval.",
+  "mechanisms_not_ruled_out": [],
+  "sibling_family": {
+   "id": "authored_nonlinear_or_multivariable_height_reductions",
+   "members": []
+  },
+  "siblings_enumerated_reason": "No nonlinear or genuinely multivariable height-reduction mechanism is currently authored; those possibilities remain the re-entry condition rather than a named sibling.",
+  "prior_art_state": "not_assessed_without_novelty_claim",
+  "novelty_claim": false
+ }
+]

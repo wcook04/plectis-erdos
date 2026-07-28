@@ -6,7 +6,7 @@
 The repository already had the two ends of a three-layer stack and nothing in
 the middle.  ``docs/declaration_atlas.json`` is the exhaustive phone book: every
 declaration, its kind, its coordinates, its signature.  ``docs/claims.json`` is
-the small curated publication ledger: 99 reviewed claims linking 300
+the small curated publication ledger: 100 reviewed claims linking 300
 declarations.  Between them sat no owner for a more limited question: *what
 does the selected interpreted subset state, and how are those statements
 related?*  That question could only be answered by rereading hundreds of
@@ -521,6 +521,31 @@ def collect() -> dict:
             + "\n  ".join(review_errors)
         )
 
+    headline_claim_node_ids: dict[str, set[str]] = {}
+    for claim in claims.get("claims", []):
+        if not claim.get("readme_headline"):
+            continue
+        linked_nodes: set[str] = set()
+        for declaration in claim.get("declarations", []):
+            row = find_declaration(
+                declaration.get("module", ""),
+                declaration.get("name", ""),
+            )
+            if row is None:
+                continue
+            node_id = (roles.get(row["id"]) or {}).get("statement_node")
+            if node_id:
+                linked_nodes.add(str(node_id))
+        headline_claim_node_ids[str(claim["id"])] = linked_nodes
+    headline_claims_with_reviewed_node = sorted(
+        claim_id
+        for claim_id, node_ids in headline_claim_node_ids.items()
+        if any(nodes.get(node_id, {}).get("semantic_review") for node_id in node_ids)
+    )
+    headline_claims_without_reviewed_node = sorted(
+        set(headline_claim_node_ids) - set(headline_claims_with_reviewed_node)
+    )
+
     # ---- summary ---------------------------------------------------------
     authored_rows = [r for r in atlas["declarations"] if not r["generated_certificate"]]
     by_class = Counter(n.get("logical_class", "unclassified") for n in nodes.values())
@@ -655,6 +680,13 @@ def collect() -> dict:
         for evidence in node.get("evidence", []):
             if evidence.get("resolved") and evidence.get("id"):
                 evidence_to_nodes[evidence["id"]].add(node["id"])
+    authored_theorem_like_direct_evidence_ids = (
+        authored_theorem_like_ids & set(evidence_to_nodes)
+    )
+    authored_theorem_like_contextual_ids = (
+        authored_node_linked_theorem_like_ids
+        - authored_theorem_like_direct_evidence_ids
+    )
     equivalent_pairs = {
         frozenset((edge["from"], edge["to"]))
         for edge in edges
@@ -721,6 +753,12 @@ def collect() -> dict:
             "statement_interpretation": (
                 "Only a declaration whose receipt names a statement_node is claimed to "
                 "participate in a canonical mathematical statement."
+            ),
+            "anti_filler": (
+                "Exact theorem-like declarations cited directly by statement-node "
+                "evidence are counted separately from contextual node links. Adding "
+                "helpers to an existing node may improve navigation but cannot increase "
+                "the direct-evidence measure or manufacture a new proposition."
             ),
             "relation_interpretation": (
                 "Typed relations are authored and carry a stated evidence basis; the "
@@ -811,6 +849,17 @@ def collect() -> dict:
                     / max(1, len(authored_theorem_like_ids)),
                     4,
                 ),
+                "authored_theorem_like_direct_evidence": len(
+                    authored_theorem_like_direct_evidence_ids
+                ),
+                "authored_theorem_like_direct_evidence_fraction": round(
+                    len(authored_theorem_like_direct_evidence_ids)
+                    / max(1, len(authored_theorem_like_ids)),
+                    4,
+                ),
+                "authored_theorem_like_contextual_node_links": len(
+                    authored_theorem_like_contextual_ids
+                ),
                 "curated_claim_declarations": len(claim_decls),
                 "curated_claim_declarations_without_node": len(claim_without_node),
                 "statement_nodes_with_semantic_review_receipt": sum(
@@ -821,6 +870,13 @@ def collect() -> dict:
                     for edge in edges
                     if not edge.get("suppressed_in_views")
                     and edge.get("semantic_review")
+                ),
+                "readme_headline_claims": len(headline_claim_node_ids),
+                "readme_headline_claims_with_reviewed_node": len(
+                    headline_claims_with_reviewed_node
+                ),
+                "readme_headline_claims_without_reviewed_node": len(
+                    headline_claims_without_reviewed_node
                 ),
                 "curated_fraction_of_authored_theorem_like": round(
                     len(claim_decls)
@@ -852,6 +908,12 @@ def collect() -> dict:
             "phantom_declaration_references": phantom,
             "duplicate_role_assignments": duplicate_role_assignments,
             "curated_claim_declarations_without_node": claim_without_node,
+            "readme_headline_claims_with_reviewed_node": (
+                headline_claims_with_reviewed_node
+            ),
+            "readme_headline_claims_without_reviewed_node": (
+                headline_claims_without_reviewed_node
+            ),
             "nodes_absorbed_into_generated_families": absorbed,
             "unresolved_relation_endpoints": unresolved_edges,
             "multi_node_evidence_without_equivalence": (

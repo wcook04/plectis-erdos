@@ -12,10 +12,10 @@ the paper anchors in ``docs/claims.json`` stayed pinned to pre-edit line numbers
 for ten commits and release-surfaces was red the whole way.
 
 Run this after editing claims, the atlas, the methodology, or the paper, and
-commit whatever it rewrites together with the edit that caused it. Pushing the
-content commit on its own leaves a commit in history that continuous integration
-will mark red, because ``docs/corpus_descriptor.json`` records the last commit
-that touched its inputs and cannot cite the commit it is being committed in.
+commit whatever it rewrites together with the edit that caused it. Descriptor
+schema 5 identifies generated navigation by content digests, so the refresh is
+checkout-shape independent; the formal-source commit remains a separate proof
+anchor.
 """
 
 from __future__ import annotations

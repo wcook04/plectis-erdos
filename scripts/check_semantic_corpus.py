@@ -114,6 +114,22 @@ def main() -> int:
         "semantic review registry is stale or invalid: "
         + "; ".join(review_errors[:3]),
     )
+    headline_claim_count = sum(
+        1 for claim in claims.get("claims", []) if claim.get("readme_headline")
+    )
+    coverage = corpus.get("summary", {}).get("coverage", {})
+    check(
+        coverage.get("readme_headline_claims") == headline_claim_count,
+        "semantic corpus headline-claim review census differs from docs/claims.json",
+    )
+    unreviewed_headlines = corpus.get("integrity", {}).get(
+        "readme_headline_claims_without_reviewed_node", []
+    )
+    check(
+        not unreviewed_headlines,
+        "README headline claim families lack a digest-reviewed semantic node: "
+        + ", ".join(unreviewed_headlines[:4]),
+    )
 
     # 1. every live declaration is routed exactly once.  The merged roles
     # object cannot itself reveal two authored source assignments because the
@@ -430,6 +446,14 @@ def main() -> int:
     }
     authored_node_linked = authored_theorem_like & node_linked
     authored_zone_only = authored_theorem_like - node_linked
+    direct_evidence = {
+        evidence.get("id")
+        for node in nodes.values()
+        for evidence in node.get("evidence", [])
+        if evidence.get("resolved") and evidence.get("id")
+    }
+    authored_direct_evidence = authored_theorem_like & direct_evidence
+    authored_contextual_links = authored_node_linked - authored_direct_evidence
     summary_coverage = corpus["summary"]["coverage"]
     expected_coverage = {
         "declarations_owned": len(roles),
@@ -438,6 +462,10 @@ def main() -> int:
         "node_linked_declarations": len(node_linked),
         "authored_theorem_like_node_linked": len(authored_node_linked),
         "authored_theorem_like_zone_only": len(authored_zone_only),
+        "authored_theorem_like_direct_evidence": len(authored_direct_evidence),
+        "authored_theorem_like_contextual_node_links": len(
+            authored_contextual_links
+        ),
         "curated_claim_declarations_without_node": len(
             integrity.get("curated_claim_declarations_without_node", [])
         ),
@@ -459,6 +487,10 @@ def main() -> int:
     check(
         bool(coverage_contract.get("accuracy_boundary")),
         "coverage receipt omits the mathematical-accuracy boundary",
+    )
+    check(
+        bool(coverage_contract.get("anti_filler")),
+        "coverage receipt omits the direct-evidence anti-filler boundary",
     )
 
     # 11. emit the census
@@ -482,6 +514,13 @@ def main() -> int:
             f"{summary['authored_theorem_like']} authored theorem-like declarations "
             f"({cov['authored_theorem_like_node_linked_fraction']:.1%}); "
             f"{cov['authored_theorem_like_zone_only']} zone-routed only"
+        )
+        print(
+            "  direct evidence        "
+            f"{cov['authored_theorem_like_direct_evidence']}/"
+            f"{summary['authored_theorem_like']} theorem-like declarations "
+            f"({cov['authored_theorem_like_direct_evidence_fraction']:.1%}); "
+            f"{cov['authored_theorem_like_contextual_node_links']} contextual links"
         )
         print(
             f"  curated ledger covers  {cov['curated_claim_declarations']} declarations "

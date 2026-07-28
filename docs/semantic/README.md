@@ -19,7 +19,7 @@ docs/declaration_atlas.json          exhaustive declaration inventory
     ↓  typed routing + selected evidence_of   ← THIS DIRECTORY
 docs/semantic_corpus.json            statement nodes, typed relations, coverage receipt
     ↓  selected_as
-docs/claims.json                     curated ledger: 99 reviewed claims
+docs/claims.json                     curated ledger: 100 reviewed claims
     ↓  rendered_as
 problem notes · README · packets
 ```
@@ -109,7 +109,17 @@ python3 scripts/query_semantic.py nonrecurring --problem 257
 python3 scripts/query_semantic.py barriers
 python3 scripts/query_semantic.py coverage
 python3 scripts/query_semantic.py paper-coverage
+python3 scripts/query_semantic.py population-backlog
+python3 scripts/query_semantic.py population-backlog --paper erdos249-totient-reasoning-surface
 ```
+
+`population-backlog` is the semantic authoring queue.  It scans every authored
+paper, resolves both public `\lword` links and reasoning-surface `\lean` links
+to exact live declaration roles, deduplicates qualified and short spellings,
+and ranks paper-selected declarations that still lack proposition-level
+semantics.  A paper citation nominates a target; the Lean signature and proof
+cone still decide the authored statement.  The command does not promote
+helpers automatically or treat a larger node count as quality.
 
 ## Prior art is staged, never a boolean
 
@@ -162,6 +172,9 @@ would make safe regeneration depend on Git state.
 3. **Statement-level interpretation.** Selected declarations point to authored
    canonical statement nodes. The receipt prints how many authored
    theorem-like declarations are node-linked and how many are only zone-routed.
+   It separately counts exact theorem-like evidence anchors and contextual
+   links, so assigning more helpers to an existing node cannot masquerade as
+   new proposition evidence.
 4. **Public selection.** Every declaration selected by `claims.json` has a
    semantic route and, when theorem-like, a statement node.
 

@@ -30,6 +30,7 @@ from query_corpus import (
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT / "scripts" / "query_corpus.py"
+SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
 PROGRAMME_EXPECTATIONS = {
     "erdos257_half_story": {
         "title": "Achievement-set geometry and the half-value seam",
@@ -105,6 +106,17 @@ def run(*args: str) -> subprocess.CompletedProcess[str]:
         text=True,
         check=False,
     )
+
+
+def semantic_query(*args: str) -> dict[str, object]:
+    completed = subprocess.run(
+        [sys.executable, str(SEMANTIC_SCRIPT), *args],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return json.loads(completed.stdout)
 
 
 def validate_programme_routes() -> None:
@@ -251,6 +263,15 @@ def validate_natural_language_search() -> None:
         "where are the Lean proofs": "follow_one_claim",
         "what is new mathematics": "trace_prior_art",
         "how do I verify this": "change_or_verify_release",
+        "which semantic meanings were reviewed": "agent_native_corpus_navigation",
+        "what semantic interpretations were checked": "agent_native_corpus_navigation",
+        "audit semantic review receipts": "agent_native_corpus_navigation",
+        "why does this Lean proof work": "agent_native_corpus_navigation",
+        "which proof mechanisms transfer": "agent_native_corpus_navigation",
+        "what mathematical routes failed": "agent_native_corpus_navigation",
+        "what semantic work remains": "agent_native_corpus_navigation",
+        "which paper proofs lack semantic interpretation": "agent_native_corpus_navigation",
+        "prioritize semantic population from the papers": "agent_native_corpus_navigation",
         "what is still missing": "understand_methodology_and_open_boundary",
         "what remains open": "understand_methodology_and_open_boundary",
     }
@@ -258,6 +279,16 @@ def validate_natural_language_search() -> None:
         natural_search = query("--search", search_text, "--limit", "10")
         assert natural_search["results"][0]["kind"] == "reading_route"
         assert natural_search["results"][0]["id"] == route_id
+    backlog_route = query(
+        "--search",
+        "which paper proofs lack semantic interpretation",
+        "--limit",
+        "1",
+    )
+    assert backlog_route["routing_receipt"] == {
+        "selection": "exact_authored_discovery_term",
+        "declaration_scan_required": False,
+    }
     portfolio_search = query(
         "--search", "what other exact mathematics is there", "--limit", "10"
     )
@@ -273,6 +304,99 @@ def validate_natural_language_search() -> None:
         "lambert_obstruction_interfaces",
         "arithmetic_obstruction_interfaces",
     }
+
+
+def validate_indexed_declaration_lookup() -> None:
+    """Keep exact declaration/source lookup off the eager qualified-name scan."""
+    query_corpus.declaration_row_indexes.cache_clear()
+    query_corpus.declaration_rows_by_qualified_name.cache_clear()
+    name = (
+        "tsum_totient_div_pow_two_ne_ratCast_of_den_le_"
+        "79639646646701375323355774875831053"
+    )
+    qualified_name = f"Erdos249257.{name}"
+
+    bare = declaration_packet(name, 20)
+    qualified = declaration_packet(qualified_name, 20)
+    source = source_coordinate_packet(
+        "Erdos249257/CertificateKernel.lean:18055", 20
+    )
+
+    assert bare == qualified
+    assert source["nearby_declarations"][0]["qualified_name"] == qualified_name
+    index_cache = query_corpus.declaration_row_indexes.cache_info()
+    qualified_cache = (
+        query_corpus.declaration_rows_by_qualified_name.cache_info()
+    )
+    assert index_cache.misses == 1
+    assert index_cache.hits >= 2
+    assert qualified_cache.misses == 0
+    assert qualified_cache.currsize == 0
+
+
+def validate_connection_query_ranking() -> None:
+    packet = query_corpus.connection_card(
+        "mersenneTail_lt_weight",
+        8,
+        "achievement set compact closed topology",
+    )
+    declarations = packet["declarations"]
+    names = [row["name"] for row in declarations]
+
+    assert names[0] == "mersenneTail_lt_weight"
+    assert names[1:3] == [
+        "isCompact_mersenneAchievementSet",
+        "isClosed_mersenneAchievementSet",
+    ]
+    assert "mersenneWeightRat_zero" not in names
+    assert all(
+        row["connection_relevance"]["query_term_overlap"]
+        or row["connection_relevance"]["anchor_relations"]
+        for row in declarations[1:]
+    )
+    receipt = packet["declaration_selection_receipt"]
+    assert receipt["selection_policy"] == (
+        "anchor_then_query_overlap_then_exact_source_span_relation"
+    )
+    assert receipt["excluded_module_broad_count"] > 100
+
+
+def validate_paper_semantic_citation_aliases() -> None:
+    """Qualified authored roles must resolve ordinary source-level paper links."""
+    packet = semantic_query("paper-coverage")
+    by_artifact = {row["artifact"]: row for row in packet["results"]}
+    reciprocal = by_artifact["erdos_243_note"]
+
+    assert reciprocal["statement_nodes_reached"] > 0
+    assert (
+        "Erdos243/ReciprocalTailRigidity.lean:no_periodicNegative_orbit"
+        in reciprocal["node_routed_citations"]
+    )
+    assert (
+        "Erdos243/ReciprocalTailRigidity.lean:no_periodicNegative_orbit"
+        not in reciprocal["atlas_absent_declaration_citations"]
+    )
+
+    backlog = semantic_query(
+        "population-backlog",
+        "--paper",
+        "erdos249-totient-reasoning-surface",
+        "--limit",
+        "12",
+    )
+    assert backlog["paper_count"] == 1
+    assert backlog["statement_unlinked_live_declaration_count"] > 0
+    paper = backlog["papers"][0]
+    assert paper["statement_unlinked_live_declaration_count"] > 0
+    assert any(
+        "TotientActualLcm" in group["module"]
+        for group in paper["unlinked_module_groups"]
+    )
+    assert all(
+        candidate["statement_node"] is None
+        for group in paper["unlinked_module_groups"]
+        for candidate in group["candidates"]
+    )
 
 
 def validate_claim_status_packets() -> None:
@@ -328,6 +452,24 @@ def main() -> int:
     validate_programme_routes()
     validate_agent_tour()
     validate_natural_language_search()
+    validate_indexed_declaration_lookup()
+    validate_connection_query_ranking()
+    validate_paper_semantic_citation_aliases()
+    bare_ask = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--ask",
+            "why does this Lean proof work",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert bare_ask.returncode == 0, bare_ask.stderr
+    assert len(bare_ask.stdout.encode("utf-8")) <= query_corpus.OUTPUT_BUDGET_BYTES
+    assert "semantic slice" in bare_ask.stdout.lower()
     validate_claim_status_packets()
     summary = query()
     assert summary["kind"] == "corpus_summary"
@@ -337,7 +479,7 @@ def main() -> int:
         "editorial_architecture",
         "editorial_state",
         "external_registration",
-        "source_revision",
+        "source_provenance",
     }
     assert omission_receipt["drilldown"] == "docs/orientation.json"
     assert all(
@@ -984,6 +1126,10 @@ def main() -> int:
     } == {
         step.split()[1] for step in agent_route["action_steps"]
     }
+    assert any(
+        "query_semantic.py population-backlog" in step
+        for step in agent_route["action_steps"]
+    )
     assert {"lean-toolchain", "lakefile.toml"}.issubset(
         agent_route["authority_owners"]
     )

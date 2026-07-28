@@ -56,17 +56,43 @@ from build_theory_lab import (  # noqa: E402
     INTERVENTION_OPERATORS,
     OUTCOME_STATES,
     prediction_fingerprint,
+    source_provenance,
 )
 
 REQUIRED_MECHANISM_FIELDS = (
     "mechanism_id",
     "human_name",
+    "problem_reach",
+    "confidence",
+    "mechanism_kind",
+    "claim_ceiling",
     "core_idea",
     "invariant",
     "observable_controlled",
     "transformation",
     "proves_when_hypotheses_hold",
 )
+
+REQUIRED_RECEIPT_FIELDS = (
+    "candidate",
+    "smallest_failing_hypothesis",
+    "reason",
+    "nearest_repair",
+    "repair_verdict",
+    "reentry_condition",
+    "scope",
+    "failure_kind",
+)
+
+MECHANISM_KINDS = {
+    "predictive",
+    "barrier",
+    "repair",
+    "scoped_specialisation",
+}
+PROBLEM_REACHES = {"249", "257", "both", "shared_substrate"}
+CONFIDENCE_STATES = {"evidence_bound_authored_mechanism"}
+FAILURE_KINDS = {"candidate_route_ruled_out", "mechanism_scope_exceeded"}
 
 
 def git(*args: str) -> tuple[int, str]:
@@ -86,7 +112,8 @@ def main() -> int:
     corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
 
     declarations = {d["name"] for d in atlas["declarations"]}
-    nodes = {n["id"] for n in corpus["statement_nodes"]}
+    node_index = {n["id"]: n for n in corpus["statement_nodes"]}
+    nodes = set(node_index)
 
     mechanisms = lab.get("mechanisms", [])
     capsules = lab.get("capsules", [])
@@ -97,6 +124,17 @@ def main() -> int:
 
     mech_ids = {m.get("mechanism_id") for m in mechanisms}
     failures: list[str] = []
+    if lab.get("schema") != "erdos249257-theory-lab/2":
+        failures.append("theory lab must use schema erdos249257-theory-lab/2")
+    if "source_revision" in lab:
+        failures.append("theory lab retains the self-invalidating source_revision field")
+    provenance = lab.get("source_provenance", {})
+    if provenance.get("identity_kind") != "content_addressed_input_set":
+        failures.append("theory lab lacks content-addressed source provenance")
+    elif provenance != source_provenance():
+        failures.append(
+            "theory lab source provenance is stale relative to its exact inputs"
+        )
 
     # 1 / 2 / 3  mechanism integrity
     seen: set[str] = set()
@@ -109,18 +147,63 @@ def main() -> int:
         for field in REQUIRED_MECHANISM_FIELDS:
             if not str(mech.get(field, "")).strip():
                 failures.append(f"mechanism {mid} has empty required field {field}")
+        if mech.get("mechanism_kind") not in MECHANISM_KINDS:
+            failures.append(
+                f"mechanism {mid} has unknown mechanism_kind "
+                f"{mech.get('mechanism_kind')!r}"
+            )
+        if mech.get("problem_reach") not in PROBLEM_REACHES:
+            failures.append(
+                f"mechanism {mid} has unknown problem_reach "
+                f"{mech.get('problem_reach')!r}"
+            )
+        if mech.get("confidence") not in CONFIDENCE_STATES:
+            failures.append(
+                f"mechanism {mid} has unknown confidence {mech.get('confidence')!r}"
+            )
 
-        for name in mech.get("realising_declarations", ()) or ():
+        realisers = set(mech.get("realising_declarations", ()) or ())
+        supporters = set(mech.get("supporting_declarations", ()) or ())
+        for name in realisers | supporters:
             if name not in declarations:
                 failures.append(
                     f"mechanism {mid} cites declaration {name} not present in the atlas"
                 )
-        if not (mech.get("realising_declarations") or ()):
+        if not realisers:
             failures.append(f"mechanism {mid} cites no realising declaration")
 
-        for node in mech.get("statement_nodes", ()) or ():
-            if node not in nodes:
-                failures.append(f"mechanism {mid} cites statement node {node} that does not exist")
+        statement_nodes = mech.get("statement_nodes", ()) or ()
+        if not statement_nodes:
+            failures.append(f"mechanism {mid} cites no statement node")
+        for node_id in statement_nodes:
+            node = node_index.get(node_id)
+            if node is None:
+                failures.append(
+                    f"mechanism {mid} cites statement node {node_id} that does not exist"
+                )
+                continue
+            node_realisers = {
+                row.get("declaration")
+                for row in node.get("evidence", ())
+                if row.get("resolved")
+            }
+            if not realisers.intersection(node_realisers):
+                failures.append(
+                    f"mechanism {mid} cites node {node_id} without any intersecting "
+                    "realising declaration"
+                )
+            node_problem = node.get("problem")
+            reach = mech.get("problem_reach")
+            if reach not in (node_problem, "both"):
+                failures.append(
+                    f"mechanism {mid} reach {reach!r} does not cover node {node_id} "
+                    f"problem {node_problem!r}"
+                )
+            if node.get("is_restatement_of_open_problem"):
+                failures.append(
+                    f"mechanism {mid} cites restatement node {node_id}; normal forms "
+                    "belong in the semantic graph, not the mechanism basis"
+                )
 
         # 4  failures are grounded
         for failure in mech.get("sharp_failures", ()) or ():
@@ -135,37 +218,91 @@ def main() -> int:
                     f"{text[:80]!r}"
                 )
 
-    # 5  siblings are enumerated
+    # 5  failures resolve evidence and enumerate their complete sibling family
+    receipt_ids: set[str] = set()
     for receipt in receipts:
         rid = receipt.get("receipt_id", "<unnamed>")
-        ruled_out = receipt.get("mechanism_ruled_out")
-        if not ruled_out:
-            continue
-        if ruled_out not in mech_ids:
-            failures.append(f"receipt {rid} rules out unknown mechanism {ruled_out}")
+        if rid in receipt_ids:
+            failures.append(f"duplicate failure receipt id {rid}")
+        receipt_ids.add(rid)
+        for field in REQUIRED_RECEIPT_FIELDS:
+            if not str(receipt.get(field, "")).strip():
+                failures.append(f"receipt {rid} has empty required field {field}")
+        failure_kind = receipt.get("failure_kind")
+        if failure_kind not in FAILURE_KINDS:
+            failures.append(f"receipt {rid} has unknown failure_kind {failure_kind!r}")
+        target_fields = {
+            "candidate_route_ruled_out": receipt.get("candidate_route_ruled_out"),
+            "mechanism_scope_exceeded": receipt.get("mechanism_scope_exceeded"),
+        }
+        present_targets = [key for key, value in target_fields.items() if value]
+        if present_targets != [failure_kind]:
+            failures.append(
+                f"receipt {rid} must populate exactly its {failure_kind!r} target"
+            )
+        ruled_out = target_fields.get("mechanism_scope_exceeded")
+        if ruled_out and ruled_out not in mech_ids:
+            failures.append(
+                f"receipt {rid} exceeds scope of unknown mechanism {ruled_out}"
+            )
+        evidence = receipt.get("evidence", ()) or ()
+        if not evidence:
+            failures.append(f"receipt {rid} cites no evidence")
+        for ref in evidence:
+            if ref not in declarations and ref not in nodes:
+                failures.append(f"receipt {rid} cites unknown evidence {ref}")
+
         unreached = receipt.get("mechanisms_not_ruled_out")
         if unreached is None:
             failures.append(
-                f"receipt {rid} rules out {ruled_out} without recording which sibling "
-                "mechanisms it does NOT reach"
+                f"receipt {rid} does not record which sibling mechanisms survive"
             )
-        elif not unreached and not str(receipt.get("siblings_enumerated_reason", "")).strip():
+            unreached = []
+        sibling_family = receipt.get("sibling_family")
+        if not isinstance(sibling_family, dict) or not str(
+            sibling_family.get("id", "")
+        ).strip():
+            failures.append(f"receipt {rid} lacks a named sibling_family")
+            sibling_members: list[str] = []
+        else:
+            sibling_members = sibling_family.get("members")
+            if not isinstance(sibling_members, list):
+                failures.append(f"receipt {rid} sibling_family.members is not a list")
+                sibling_members = []
+        if set(unreached) != set(sibling_members):
             failures.append(
-                f"receipt {rid} claims no surviving sibling mechanism but gives no reason; "
-                "an empty list must be justified"
+                f"receipt {rid} mechanisms_not_ruled_out does not exhaust its "
+                "declared sibling_family"
             )
-        for sibling in unreached or ():
+        if not unreached and not str(receipt.get("siblings_enumerated_reason", "")).strip():
+            failures.append(
+                f"receipt {rid} declares an empty sibling family without explaining why"
+            )
+        for sibling in unreached:
             if sibling not in mech_ids:
                 failures.append(f"receipt {rid} names unknown surviving mechanism {sibling}")
+            if ruled_out and sibling == ruled_out:
+                failures.append(
+                    f"receipt {rid} lists its scope-exceeded mechanism as a survivor"
+                )
 
     # 6  capsules are attached
+    capsule_ids: set[str] = set()
     for capsule in capsules:
         cid = capsule.get("mechanism_id")
+        if cid in capsule_ids:
+            failures.append(f"duplicate capsule for mechanism {cid}")
+        capsule_ids.add(cid)
         if cid not in mech_ids:
             failures.append(f"capsule cites unknown mechanism {cid}")
         for field in ("one_sentence", "five_minute", "transfer_challenge"):
             if not str(capsule.get(field, "")).strip():
                 failures.append(f"capsule {cid} has empty {field}")
+    missing_capsules = sorted(mech_ids - capsule_ids)
+    if missing_capsules:
+        failures.append(
+            "mechanisms lack transfer capsules: " + ", ".join(missing_capsules)
+        )
 
     # 7  predictions are immutable
     for record in interventions:

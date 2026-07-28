@@ -30,6 +30,17 @@ def check_dictionary_budget_and_shape() -> None:
     assert packet["authority_posture"].endswith(
         "not_proof_or_claim_status_authority"
     )
+    assert packet["schema_version"] == "erdos249257-semantic-dictionary/2"
+    discovery = packet["route_discovery_contract"]
+    assert discovery["source"].startswith("docs/claims.json::")
+    by_route = {row["route_id"]: row for row in discovery["routes"]}
+    assert "which paper proofs lack semantic interpretation" in by_route[
+        "agent_native_corpus_navigation"
+    ]["discovery_terms"]
+    assert any(
+        row["id"] == "semantic_population_backlog"
+        for row in packet["vocabulary"]
+    )
 
 
 def check_vocabulary_mismatch_queries() -> None:

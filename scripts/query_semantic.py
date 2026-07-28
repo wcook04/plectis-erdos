@@ -31,6 +31,8 @@ does.
     python3 scripts/query_semantic.py inventory selectedMersenneTail_lt_weight
     python3 scripts/query_semantic.py inventory --module ErdosProblems/Erdos257
     python3 scripts/query_semantic.py paper-coverage
+    python3 scripts/query_semantic.py population-backlog
+    python3 scripts/query_semantic.py population-backlog --paper erdos249-totient-reasoning-surface
     python3 scripts/query_semantic.py motifs
     python3 scripts/query_semantic.py node <node_id>
 
@@ -426,18 +428,70 @@ def cmd_prior_art_review(corpus: dict, args) -> int:
     )
 
 
+def paper_citation_keys(module: str, declaration: str) -> set[tuple[str, str]]:
+    """Return symmetric module and declaration aliases used by papers.
+
+    Authored roles retain qualified declaration names so their evidence is
+    unambiguous.  Manuscript links normally use the declaration spelling at the
+    cited source line.  Match both without weakening the module coordinate: a
+    short declaration name is never resolved repo-wide.
+    """
+    module_aliases = {module, Path(module).name}
+    parts = Path(module).parts
+    if parts and parts[0] in ("ErdosProblems", "Erdos249257"):
+        module_aliases.add("/".join(parts[1:]))
+    declaration_aliases = {declaration, declaration.rsplit(".", 1)[-1]}
+    return {
+        (module_alias, declaration_alias)
+        for module_alias in module_aliases
+        for declaration_alias in declaration_aliases
+    }
+
+
+def paper_citation_role_index(
+    corpus: dict,
+) -> dict[tuple[str, str], list[dict]]:
+    index: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for role in corpus["declaration_roles"]:
+        module = role.get("module")
+        declaration = role.get("declaration")
+        if not module or not declaration:
+            continue
+        for key in paper_citation_keys(module, declaration):
+            index[key].append(role)
+    return index
+
+
+def paper_lean_citations(text: str) -> set[tuple[str, int, str]]:
+    """Extract both public-paper source links and reasoning-surface Lean links."""
+    public_link_re = re.compile(
+        r"\\[lm](?:word|ref|refx|loc)\{([^{}]+)\}\{(\d+)\}(?:\{([^{}]+)\})?"
+    )
+    reasoning_link_re = re.compile(r"\\lean\{([^{}]+)\}\{([^{}]+)\}")
+    citations = {
+        (match.group(1), int(match.group(2)), match.group(3))
+        for match in public_link_re.finditer(text)
+        if match.group(3)
+    }
+    for match in reasoning_link_re.finditer(text):
+        declaration = match.group(1).replace(r"\_", "_")
+        locator = match.group(2)
+        locator_match = re.match(r"(.+?\.lean):(\d+)", locator)
+        if locator_match:
+            citations.add(
+                (
+                    locator_match.group(1),
+                    int(locator_match.group(2)),
+                    declaration,
+                )
+            )
+    return citations
+
+
 def cmd_paper_coverage(corpus: dict, args) -> int:
     """Which statement nodes are reached by explicit Lean citations in each manuscript?"""
     contract = json.loads(CONTRACT.read_text(encoding="utf-8"))
-    link_re = re.compile(r"\\[lm](?:word|ref|refx|loc)\{([^{}]+)\}\{(\d+)\}(?:\{([^{}]+)\})?")
     index = nodes_by_id(corpus)
-
-    def citation_keys(module: str, declaration: str) -> set[tuple[str, str]]:
-        keys = {(module, declaration), (Path(module).name, declaration)}
-        parts = Path(module).parts
-        if parts and parts[0] in ("ErdosProblems", "Erdos249257"):
-            keys.add(("/".join(parts[1:]), declaration))
-        return keys
 
     # The declaration role receipt, not a node's short evidence list, owns the
     # exhaustive citation route.  An earlier version used evidence lists and
@@ -450,7 +504,7 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
         declaration = role.get("declaration")
         if not module or not declaration:
             continue
-        for key in citation_keys(module, declaration):
+        for key in paper_citation_keys(module, declaration):
             known_declarations.add(key)
             if role.get("statement_node"):
                 declaration_routes[key].add(role["statement_node"])
@@ -462,28 +516,41 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
             continue
         text = source.read_text(encoding="utf-8")
         cited = {
-            (m.group(1), m.group(3))
-            for m in link_re.finditer(text)
-            if m.group(3)
+            (module, declaration)
+            for module, _, declaration in paper_lean_citations(text)
         }
+        def routed_nodes(citation: tuple[str, str]) -> set[str]:
+            return set().union(
+                *(
+                    declaration_routes.get(key, set())
+                    for key in paper_citation_keys(*citation)
+                )
+            )
+
+        def known_citation(citation: tuple[str, str]) -> bool:
+            return any(
+                key in known_declarations
+                for key in paper_citation_keys(*citation)
+            )
+
         reached: set[str] = set()
         for citation in cited:
-            reached.update(declaration_routes.get(citation, set()))
+            reached.update(routed_nodes(citation))
         node_routed = sorted(
             f"{module}:{declaration}"
             for module, declaration in cited
-            if declaration_routes.get((module, declaration))
+            if routed_nodes((module, declaration))
         )
         zone_only = sorted(
             f"{module}:{declaration}"
             for module, declaration in cited
-            if (module, declaration) in known_declarations
-            and not declaration_routes.get((module, declaration))
+            if known_citation((module, declaration))
+            and not routed_nodes((module, declaration))
         )
         absent = sorted(
             f"{module}:{declaration}"
             for module, declaration in cited
-            if (module, declaration) not in known_declarations
+            if not known_citation((module, declaration))
         )
         per_problem = {}
         for problem in ("249", "257", "both", "shared_substrate"):
@@ -502,6 +569,7 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
                 "declarations_cited": len(cited),
                 "statement_nodes_reached": len(reached),
                 "node_routed_declaration_citations": len(node_routed),
+                "node_routed_citations": node_routed,
                 "zone_only_declaration_citations": zone_only,
                 "atlas_absent_declaration_citations": absent,
                 "per_problem": per_problem,
@@ -523,6 +591,132 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
     )
 
 
+def cmd_population_backlog(corpus: dict, args) -> int:
+    """Rank paper-selected Lean citations that still lack statement semantics."""
+    role_index = paper_citation_role_index(corpus)
+    candidate_cap = min(args.limit, 12 if args.paper else 5)
+    module_cap = min(args.limit, 12 if args.paper else 8)
+    paper_cap = min(args.limit, 1 if args.paper else 3)
+    source_rows = []
+    sources = sorted((ROOT / "paper").glob("*.tex"))
+    if args.paper:
+        needle = args.paper.casefold()
+        sources = [
+            source
+            for source in sources
+            if needle in source.name.casefold()
+            or needle in str(source.relative_to(ROOT)).casefold()
+        ]
+    for source in sources:
+        text = source.read_text(encoding="utf-8")
+        citations = sorted(paper_lean_citations(text))
+        linked_by_role: dict[str, dict] = {}
+        unlinked_by_role: dict[str, dict] = {}
+        absent = []
+        for module, line, declaration in citations:
+            roles_by_id = {
+                role["id"]: role
+                for key in paper_citation_keys(module, declaration)
+                for role in role_index.get(key, [])
+            }
+            roles = list(roles_by_id.values())
+            occurrence = {
+                "paper_module": module,
+                "paper_line": line,
+                "paper_declaration": declaration,
+            }
+            if not roles:
+                absent.append({**occurrence, "resolved_role_ids": []})
+                continue
+            for role in roles:
+                target = (
+                    linked_by_role
+                    if role.get("statement_node")
+                    else unlinked_by_role
+                )
+                row = target.setdefault(
+                    role["id"],
+                    {
+                        "role_id": role["id"],
+                        "module": role["module"],
+                        "declaration": role["declaration"],
+                        "semantic_zone": role.get("zone"),
+                        "statement_node": role.get("statement_node"),
+                        "paper_occurrences": [],
+                    },
+                )
+                row["paper_occurrences"].append(occurrence)
+        if not citations:
+            continue
+        # A declaration resolved through both qualified and short aliases is one
+        # backlog item.  If any exact role already carries statement semantics,
+        # do not also offer an unlinked alias for population.
+        for role_id in linked_by_role:
+            unlinked_by_role.pop(role_id, None)
+        linked = list(linked_by_role.values())
+        unlinked = list(unlinked_by_role.values())
+        by_module: dict[str, list[dict]] = defaultdict(list)
+        for row in unlinked:
+            by_module[row["module"]].append(row)
+        source_rows.append(
+            {
+                "paper": str(source.relative_to(ROOT)),
+                "raw_citation_count": len(citations),
+                "statement_linked_declaration_count": len(linked),
+                "statement_unlinked_live_declaration_count": len(unlinked),
+                "atlas_absent_citation_count": len(absent),
+                "unlinked_module_groups": [
+                    {
+                        "module": module,
+                        "declaration_count": len(rows),
+                        "candidates": rows[:candidate_cap],
+                    }
+                    for module, rows in sorted(
+                        by_module.items(),
+                        key=lambda item: (-len(item[1]), item[0]),
+                    )
+                ][:module_cap],
+                "atlas_absent_citations": absent[:candidate_cap],
+            }
+        )
+    source_rows.sort(
+        key=lambda row: (
+            -row["statement_unlinked_live_declaration_count"],
+            row["paper"],
+        )
+    )
+    return emit(
+        {
+            "question": (
+                "Which exact live Lean declarations were selected by authored "
+                "papers but still lack proposition-level semantic linkage?"
+            ),
+            "selection_rule": (
+                "Papers nominate high-value targets; exact module/declaration "
+                "resolution supplies the backlog. Repeated helpers and generated "
+                "leaves are not promoted merely to increase a percentage."
+            ),
+            "authority_posture": (
+                "paper_seeded_population_priority_not_Lean_proof_authority_or_"
+                "automatic_statement_interpretation"
+            ),
+            "paper_filter": args.paper,
+            "paper_count": len(source_rows),
+            "statement_unlinked_live_declaration_count": sum(
+                row["statement_unlinked_live_declaration_count"]
+                for row in source_rows
+            ),
+            "papers": source_rows[:paper_cap],
+            "papers_omitted": max(0, len(source_rows) - paper_cap),
+            "next_action": (
+                "Cluster one paper/module family by mathematically distinct "
+                "proposition, inspect exact signatures and proof cones, then author "
+                "a bounded zone packet with typed relations and explicit nonclaims."
+            ),
+        }
+    )
+
+
 def cmd_coverage(corpus: dict, args) -> int:
     """Report the coverage tiers without collapsing them into one percentage."""
     summary = corpus["summary"]
@@ -531,6 +725,9 @@ def cmd_coverage(corpus: dict, args) -> int:
         {
             "question": "What kind of coverage does the semantic corpus actually establish?",
             "posture": corpus.get("coverage_contract", {}).get("posture"),
+            "anti_filler_rule": corpus.get("coverage_contract", {}).get(
+                "anti_filler"
+            ),
             "tiers": {
                 "inventory": {
                     "declarations": summary["declarations"],
@@ -563,6 +760,12 @@ def cmd_coverage(corpus: dict, args) -> int:
                     "authored_theorem_like_node_linked": coverage[
                         "authored_theorem_like_node_linked"
                     ],
+                    "authored_theorem_like_direct_evidence": coverage[
+                        "authored_theorem_like_direct_evidence"
+                    ],
+                    "authored_theorem_like_contextual_node_links": coverage[
+                        "authored_theorem_like_contextual_node_links"
+                    ],
                     "authored_theorem_like_zone_only": coverage[
                         "authored_theorem_like_zone_only"
                     ],
@@ -571,7 +774,9 @@ def cmd_coverage(corpus: dict, args) -> int:
                     ],
                     "claim": (
                         "Only node-linked declarations participate in an authored "
-                        "canonical mathematical statement."
+                        "canonical mathematical statement. Direct evidence anchors "
+                        "are counted separately so bulk contextual helper links "
+                        "cannot masquerade as new statement evidence."
                     ),
                 },
                 "typed_relations": {
@@ -598,6 +803,17 @@ def cmd_coverage(corpus: dict, args) -> int:
                     "relation_receipts": coverage[
                         "relations_with_semantic_review_receipt"
                     ],
+                    "readme_headline_claims": coverage[
+                        "readme_headline_claims"
+                    ],
+                    "readme_headline_claims_with_reviewed_node": coverage[
+                        "readme_headline_claims_with_reviewed_node"
+                    ],
+                    "headline_coverage_ceiling": (
+                        "A headline family is counted when at least one linked "
+                        "statement node has a current receipt; this does not mean "
+                        "every supporting declaration or every sentence was reviewed."
+                    ),
                     "claim": corpus.get("coverage_contract", {}).get(
                         "reviewed_semantic_fidelity"
                     ),
@@ -679,6 +895,18 @@ def cmd_semantic_reviews(corpus: dict, args) -> int:
                     1
                     for edge in corpus.get("relations", [])
                     if not edge.get("suppressed_in_views")
+                ),
+                "readme_headline_claims": corpus.get("summary", {})
+                .get("coverage", {})
+                .get("readme_headline_claims"),
+                "readme_headline_claims_with_reviewed_node": corpus.get(
+                    "summary", {}
+                )
+                .get("coverage", {})
+                .get("readme_headline_claims_with_reviewed_node"),
+                "headline_coverage_ceiling": (
+                    "At least one linked node per headline family, not exhaustive "
+                    "review of its declarations or prose."
                 ),
             },
             "selection": args.node_id or "all reviewed subjects",
@@ -840,6 +1068,8 @@ def cmd_mechanisms(corpus: dict, args) -> int:
                     "core_idea": m.get("core_idea"),
                     "invariant": m.get("invariant"),
                     "problem_reach": m.get("problem_reach"),
+                    "mechanism_kind": m.get("mechanism_kind"),
+                    "claim_ceiling": m.get("claim_ceiling"),
                     "explains_nodes": len(m.get("statement_nodes") or ()),
                     "sharp_failures": len(m.get("sharp_failures") or ()),
                     "confidence": m.get("confidence"),
@@ -863,7 +1093,7 @@ def cmd_mechanism(corpus: dict, args) -> int:
             receipts = [
                 r
                 for r in lab.get("failure_receipts", [])
-                if r.get("mechanism_ruled_out") == target
+                if r.get("mechanism_scope_exceeded") == target
                 or target in (r.get("mechanisms_not_ruled_out") or ())
             ]
             return emit({"mechanism": mech, "capsule": capsule, "receipts": receipts})
@@ -981,9 +1211,9 @@ def cmd_receipts(corpus: dict, args) -> int:
         {
             "question": "What was tried and failed, and what does the failure rule out?",
             "rule": (
-                "A failure with no reusable diagnosis is noise. Each receipt names the "
-                "mechanism it rules out AND the sibling mechanisms it does not reach; "
-                "the contract rejects a receipt that omits the second."
+                "A failure with no reusable diagnosis is noise. Each receipt distinguishes "
+                "a candidate route ruled out from an existing mechanism used beyond its "
+                "scope, resolves its evidence, and exhausts a declared sibling family."
             ),
             "count": len(rows),
             "receipts": [
@@ -991,8 +1221,15 @@ def cmd_receipts(corpus: dict, args) -> int:
                     "receipt_id": r.get("receipt_id"),
                     "candidate": r.get("candidate"),
                     "smallest_failing_hypothesis": r.get("smallest_failing_hypothesis"),
-                    "mechanism_ruled_out": r.get("mechanism_ruled_out"),
+                    "failure_kind": r.get("failure_kind"),
+                    "candidate_route_ruled_out": r.get(
+                        "candidate_route_ruled_out"
+                    ),
+                    "mechanism_scope_exceeded": r.get(
+                        "mechanism_scope_exceeded"
+                    ),
                     "mechanisms_not_ruled_out": r.get("mechanisms_not_ruled_out"),
+                    "sibling_family": r.get("sibling_family"),
                     "nearest_repair": r.get("nearest_repair"),
                     "repair_verdict": r.get("repair_verdict"),
                     "reentry_condition": r.get("reentry_condition"),
@@ -1057,6 +1294,7 @@ COMMANDS = {
     "semantic-reviews": cmd_semantic_reviews,
     "inventory": cmd_inventory,
     "paper-coverage": cmd_paper_coverage,
+    "population-backlog": cmd_population_backlog,
     "motifs": cmd_motifs,
     "node": cmd_node,
     "mechanisms": cmd_mechanisms,
@@ -1090,6 +1328,10 @@ def main() -> int:
     parser.add_argument(
         "--zone",
         help="inventory-only exact semantic-zone filter",
+    )
+    parser.add_argument(
+        "--paper",
+        help="population-backlog case-insensitive paper path/name filter",
     )
     parser.add_argument("--limit", type=int, default=40)
     args = parser.parse_args()

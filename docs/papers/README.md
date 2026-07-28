@@ -9,7 +9,7 @@ public repositories. A retired manuscript that remains shipped as a root
 PDF is carried only by its home repository for provenance; it is not
 mirrored or restored to an active publication route.
 
-This checkout carries 5 active papers and 1 retired provenance paper. Pick the question you are actually asking:
+This checkout carries 7 active papers and 1 retired provenance paper. Pick the question you are actually asking:
 
 ### What is mathematically proved about Erdős #249 and #257, and what exactly remains open?
 
@@ -27,6 +27,14 @@ The paper's own reading map sends a first pass to [The two exact reductions](ful
 
 This paper states no reading route. Its evidence boundary is in [Results](full-text/erdos-249-binary-totient-series.md#sec:results), [What we need from a mathematician](full-text/erdos-249-binary-totient-series.md#sec:ask), [What remains open](full-text/erdos-249-binary-totient-series.md#sec:open).
 
+### What has been tried on Erdős #249, which routes are closed, and what exact cofinal obligations remain?
+
+**The Binary Totient Series: a complete working record of Erdős Problem 249**
+
+[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../erdos249-totient-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex) · 150 sections · `erdos249-totient-reasoning-surface` · native to this repository
+
+This paper states no reading route. Its evidence boundary is in [The wall](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [What the wall does not block](full-text/erdos249-totient-reasoning-surface.md#sec:survivors).
+
 ### Which Mersenne-support subseries are settled, what finite-period and achievement-set structure is proved, and what still blocks Erdős #257?
 
 **Forced Structure in Mersenne Subseries**
@@ -34,6 +42,14 @@ This paper states no reading route. Its evidence boundary is in [Results](full-t
 [full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex) · 19 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Exact periods of finite partial sums](full-text/erdos-257-mersenne-support-subseries.md#sec:period), [The settled supports, by mechanism](full-text/erdos-257-mersenne-support-subseries.md#sec:map), [The exact frontier](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
+
+### What has been tried on Erdős #257, which routes are closed, and what exact universal and half-value obligations remain?
+
+**Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257**
+
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex) · 133 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+
+This paper states no reading route. Its evidence boundary is in [The problem, and what is actually known](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [The wall](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [What the wall does not block](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors).
 
 ### Lean proves the formal statement — but who checks that the README describes it faithfully?
 
@@ -55,7 +71,7 @@ This paper states no reading route. Its evidence boundary is in [The cold-clone 
 
 **Plectis: What a Stranger Can Check What public evidence can and cannot show about a private system**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 25 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 28 sections · `plectis-public-system` · mirror to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/plectis-public-system.md#sec:problem), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions).
 
@@ -68,7 +84,9 @@ is proof authority. In order:
 
 - `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
 - `erdos-249-binary-totient-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
+- `erdos249-totient-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
 - `erdos-257-mersenne-support-subseries` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, which remains open.
+- `erdos257-mersenne-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, whose universal and half-value questions remain open.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.

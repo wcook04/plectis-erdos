@@ -33,7 +33,6 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -148,30 +147,34 @@ def prediction_fingerprint(record: dict) -> str:
     return "sha256:" + hashlib.sha256(blob.encode("utf-8")).hexdigest()
 
 
-def source_revision() -> str:
-    """Return the last commit that changed an authoritative projection input.
+def file_digest(path: Path) -> str:
+    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
-    Stamping ``HEAD`` makes the generated file self-invalidating: committing
-    ``docs/theory_lab.json`` advances ``HEAD``, so the next ``--check`` asks for
-    a different byte sequence even though none of the inputs changed.  Keep the
-    provenance useful and the projection convergent by excluding the generated
-    output and asking Git for the newest commit that touched the builder or one
-    of its authored/generated inputs.
+
+def source_provenance() -> dict:
+    """Bind the projection to its exact inputs without consulting Git.
+
+    A Git-derived revision cannot converge when generated atlas or corpus files
+    are committed in the same wave as this projection: the new commit becomes
+    the newest input revision only after it already contains the old bytes.
+    Content digests identify the exact expansion set and stay invariant across
+    checkout shape and the commit that first contains the generated output.
     """
-    inputs = (
-        Path(__file__).resolve().relative_to(ROOT),
-        ATLAS.relative_to(ROOT),
-        CORPUS.relative_to(ROOT),
-        LAB_DIR.relative_to(ROOT),
-    )
-    proc = subprocess.run(
-        ("git", "log", "-1", "--format=%H", "--", *(str(path) for path in inputs)),
-        cwd=str(ROOT),
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    return proc.stdout.strip() if proc.returncode == 0 else "unknown"
+    return {
+        "identity_kind": "content_addressed_input_set",
+        "declaration_atlas_digest": file_digest(ATLAS),
+        "semantic_corpus_digest": file_digest(CORPUS),
+        "authored_lab_source_digests": {
+            f"docs/semantic/lab/{filename}": file_digest(LAB_DIR / filename)
+            for filename in sorted(SOURCES.values())
+            if (LAB_DIR / filename).is_file()
+        },
+        "builder_digest": file_digest(Path(__file__).resolve()),
+        "git_commit_not_embedded_reason": (
+            "Generated projections cannot contain the commit that first contains "
+            "their own bytes; exact input digests are the stable provenance."
+        ),
+    }
 
 
 def build() -> dict:
@@ -197,6 +200,11 @@ def build() -> dict:
         record["prediction_fingerprint_recomputed"] = prediction_fingerprint(record)
 
     mech_ids = {m["mechanism_id"] for m in mechanisms}
+    minimum_basis_ids = {
+        m["mechanism_id"]
+        for m in mechanisms
+        if m.get("mechanism_kind") != "scoped_specialisation"
+    }
 
     # Coverage: which statement nodes does some mechanism claim to explain?
     explained: set[str] = set()
@@ -244,13 +252,14 @@ def build() -> dict:
             "atlas": atlas.get("source_fingerprint"),
             "corpus": corpus.get("evidence_fingerprint"),
             "mechanisms": len(mechanisms),
+            "minimum_basis_mechanisms": len(minimum_basis_ids),
             "interventions": len(interventions),
         },
         sort_keys=True,
     )
 
     return {
-        "schema": "erdos249257-theory-lab/1",
+        "schema": "erdos249257-theory-lab/2",
         "artifact_role": "generated_interventional_projection_over_the_semantic_corpus",
         "authority_posture": (
             "generated_projection_over_authored_mechanism_and_intervention_records; "
@@ -268,7 +277,7 @@ def build() -> dict:
             "above": "docs/claims.json stays the curated publication ledger",
             "proof_authority": "Lean kernel; a mechanism is an explanation, never a proof",
         },
-        "source_revision": source_revision(),
+        "source_provenance": source_provenance(),
         "evidence_fingerprint": "sha256:"
         + hashlib.sha256(fingerprint_material.encode("utf-8")).hexdigest(),
         "vocabularies": {
@@ -279,6 +288,7 @@ def build() -> dict:
         },
         "summary": {
             "mechanisms": len(mechanisms),
+            "minimum_basis_mechanisms": len(minimum_basis_ids),
             "capsules": len(capsules),
             "interventions": len(interventions),
             "failure_receipts": len(receipts),
@@ -299,7 +309,7 @@ def build() -> dict:
         "failure_receipts": receipts,
         "benchmark": {"items": items, "results": results},
         "views": {
-            "minimum_basis": sorted(mech_ids),
+            "minimum_basis": sorted(minimum_basis_ids),
             "unexplained_residual": {
                 "rule": (
                     "Statement nodes no mechanism claims to explain. A large residual "

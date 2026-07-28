@@ -27,7 +27,7 @@ The workflow provenance explains the release discipline; it does not imply hidde
 | Lean declarations | 151,755 |
 | Theorem-like declarations | 149,807 |
 | Generated certificate declarations | 8,171 |
-| Principal claim links | 299 |
+| Principal claim links | 300 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json). Generated certificate
@@ -103,11 +103,11 @@ settle the open proposition attached to it.
 
 - **Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.** (`instant_orientation`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route instant_orientation`
-- **Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.** (`agent_native_corpus_navigation`): `docs/AGENT_WORKBENCH.md` → `docs/SEMANTIC_COMPILER.md`
+- **Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.** (`agent_native_corpus_navigation`): `docs/AGENT_WORKBENCH.md` → `docs/SEMANTIC_COMPILER.md` → `docs/semantic/lab/README.md`
   - Route: `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
 - **Browse bounded claim handles by exact registry status.** (`browse_claim_status`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route browse_claim_status`
-- **Trace one mathematical claim from exposition to checked source.** (`follow_one_claim`): `docs/orientation.json` → `docs/ORIENTATION.md`
+- **Trace one mathematical claim from exposition to checked source.** (`follow_one_claim`): `docs/orientation.json`
   - Route: `python3 scripts/query_corpus.py --route follow_one_claim`
 - **See how the #249 reduction, #257 families, carry trunk, and open targets relate.** (`understand_argument_topology`): `docs/orientation.json` → `docs/SOURCE_MAP.md`
   - Route: `python3 scripts/query_corpus.py --route understand_argument_topology`
@@ -160,7 +160,7 @@ settle the open proposition attached to it.
 ## External corpus registration
 
 [`docs/corpus_descriptor.json`](corpus_descriptor.json) uses schema
-`erdos249257-corpus-descriptor/4`. The release gate keeps it below 64 KB.
+`erdos249257-corpus-descriptor/5`. The release gate keeps it below 64 KB.
 It carries release identities, content digests, principal claim and declaration
 handles, and the root module topology. Complete claims, module imports,
 declaration prose, methodology, both authored papers, and the paper-to-Lean

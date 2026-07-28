@@ -6,8 +6,8 @@
 Lean 4 formal work on two open irrationality problems. Start with:
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) →
 [PRIOR ART](docs/PRIOR_ART.md) → [SOURCE MAP](docs/SOURCE_MAP.md).
-The [architecture and repository guide](ARCHITECTURE.md) covers layout and
-verification. It assumes no Lean or project history.
+The [architecture and repository guide](ARCHITECTURE.md) covers checks.
+It assumes no Lean or project history.
 The [agent-navigation paper](cold-clone-to-proof-receipt.pdf): cold-clone
 navigation, Lean receipts, and incremental builds.
 
@@ -26,10 +26,10 @@ navigation, Lean receipts, and incremental builds.
   infinite `A ⊆ ℕ`.
 
 Both remain open. **This project does not solve Erdős #249 or universal Erdős
-#257.** Every table row stays within Lean source.
+#257.** Results stay within Lean source.
 
-**Ten-minute verdict.** This is neither a partial solution nor merely a corpus
-of restatements. The checked non-restatement centre is concrete:
+**Ten-minute verdict.** This is neither a partial solution nor a corpus of
+restatements. Its checked non-restatement centre is:
 
 - #257 has exact finite-period noncollapse, irrationality for eventually
   periodic supports, a signed periodic-weight dichotomy, achievement-set
@@ -41,17 +41,17 @@ of restatements. The checked non-restatement centre is concrete:
   endpoint-equivalent. Those equivalences are evidence about the methods, not
   progress on either open problem.
 
-The machine-derived audit classifies 186 mechanically nonrecurring candidates (116
-#257, 54 #249, 16 shared), 24 bare equivalences, and 70 classical/prior-art
-formalisations. This is not a novelty census: 174 candidates lack prior-art assessment,
-and the reviewed frontier retains only 11, each with residual risk.
+Audit: 186 nonrecurring candidates (116 #257, 54 #249, 16 shared), 24 bare
+equivalences, and 70 classical/prior-art formalisations. This is not a novelty
+census: 174 lack assessment; the reviewed frontier retains 11 with residual
+risk.
 
-The finite #249 result is the classical Farey/mediant bound at `K=240`.
-Farey's method supplies the number directly (numerical delta `0`); the local
-contribution is checked arithmetic, transfers, and the sharp first failure.
+The finite #249 result is the classical Farey/mediant bound at `K=240`
+(numerical delta `0`); the local contribution is checked arithmetic, transfers,
+and the sharp first failure.
 [RESULTS](docs/RESULTS.md) gives the typed census and limits.
 
-This self-contained public checkout is not an entrypoint into any private
+This public checkout is not an entrypoint into any private
 development system. `v0.6.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](docs/claims.json) pins a post-tag formal-source checkpoint,
 not a new tagged release. Lean source checked by the pinned Lean kernel is
@@ -142,10 +142,13 @@ exactly once. These are navigation counts, not novelty claims.
 - **Whole-corpus agent navigation, without a Lean build:** run
   `python3 scripts/query_corpus.py --tour --format card`, then follow
   `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
-  The no-build tour exposes corpus scale, mathematical map, exact open frontier, and
-  authority boundary. Committed indexes expose every indexed declaration and
-  exact dependencies for both loaded roots immediately after cloning.
-  They are navigation projections, not proof authority; Lean checks proofs.
+  The no-build tour exposes scale, mathematical map, open frontier, and
+  authority boundary. Committed indexes expose declarations and exact
+  dependencies immediately after cloning.
+  Use `python3 scripts/query_semantic.py mechanisms --problem 249`,
+  `receipts`, and `population-backlog` for mechanisms, failed routes, and
+  paper-seeded semantic gaps. These are navigation projections; Lean checks
+  proofs.
 - **Publication topology:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
   `python3 scripts/query_corpus.py --publication-family <id>`.
@@ -177,10 +180,11 @@ The source has five reader-facing layers:
 - **The #257 carry trunk.** The tail-orbit, achievement-set, Boolean-Möbius
   carry, reciprocal-mass, and divisor-coverage modules give exact criteria and
   necessary conditions, not the universal #257 theorem.
-- **Navigation.** The atlas finds every declaration and import. The selective
-  semantic graph never invents meaning. Selected meanings carry scoped reviews
-  (`python3 scripts/query_semantic.py semantic-reviews`)—not human, novelty, or
-  proof authority.
+- **Navigation.** The atlas finds every declaration and import. Selected
+  semantic meanings carry scoped reviews (`python3 scripts/query_semantic.py
+  semantic-reviews`)—not human, novelty, or proof authority. The theory lab
+  adds nine mechanisms, nine transfer capsules, and three failure receipts;
+  four holdouts have no results, so no measured transfer is claimed.
 - **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded
   results and explicit open frontiers for one problem at a time. New entries
   remain outside the reviewed claim registry until mathematical review

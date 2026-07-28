@@ -7,6 +7,16 @@
    "id": "audited_expansion_boundary",
    "label": "audited expansion claim boundary",
    "note": "A distinction between an exact Lean declaration, supporting proof substrate, finite checked instances, measurements, and any claim that would resolve an open Erdős problem."
+  },
+  {
+   "id": "diagonal_certificate_depth_profile",
+   "label": "exact diagonal-certificate depth profile",
+   "note": "The least checked window depth at selected lcm-diagonal scales, separated from any prediction that the depths are monotone or that certificates continue cofinally."
+  },
+  {
+   "id": "period_lcm_plateau_transfer_wall",
+   "label": "period-lcm plateau-transfer wall",
+   "note": "A scale where the lcm changes, so a certificate at the previous scale cannot be transported merely by rewriting equal periodLcm values."
   }
  ],
  "statement_nodes": [
@@ -33,6 +43,113 @@
      "declaration": "exists_bound_allRight_landingExcess_two_impossible",
      "module": "ErdosProblems/Skip/D1.lean",
      "line": 399
+    }
+   ]
+  },
+  {
+   "id": "diagonal_ladder_exact_minimal_depths",
+   "canonical_statement": "For the lcm-diagonal cells t = 71, 73, 79 and 81, the least depths L for which certifiedKill (periodLcm t) (periodLcm t) L holds are exactly 105, 113, 120 and 120, respectively. The bundled Lean theorem supplies both a certificate at each displayed depth and failure at every smaller depth.",
+   "logical_class": "finite_instance",
+   "problem": "249",
+   "concepts": [
+    "audited_expansion_boundary",
+    "diagonal_certificate_depth_profile"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "exact totient-window certificates at the firing depths, paired with arithmetic depth floors and checked failures at every remaining admissible smaller depth",
+   "prior_art_state": "routine_corollary_or_specialisation",
+   "prior_art_note": "This is a bundled finite measurement of the existing certifiedKill predicate, not a new irrationality criterion or a novelty claim.",
+   "scope_caveat": "Four exact finite cells do not supply certificates at arbitrarily large scales, do not predict the next firing depth, and do not prove irrationality of the totient series.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "ladder_minimal_depths",
+     "module": "ErdosProblems/Skip/LadderT67.lean",
+     "line": 71342
+    }
+   ]
+  },
+  {
+   "id": "diagonal_ladder_sampled_excess_changes_direction",
+   "canonical_statement": "The checked certificate/failure pattern at t = 71, 73, 79 and 81 shows that the sampled excess of least certificate depth over its arithmetic floor decreases and increases: the displayed excesses along t = 67, 71, 73, 79, 81 are 2, 0, 2, 3, 1. In particular the floor is missed at t = 73, 79 and 81, and this finite sample is not monotone.",
+   "logical_class": "finite_instance",
+   "problem": "249",
+   "concepts": [
+    "audited_expansion_boundary",
+    "diagonal_certificate_depth_profile"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "a conjunction of exact certificates and exact failures at the depths adjacent to the arithmetic floors",
+   "prior_art_state": "routine_corollary_or_specialisation",
+   "prior_art_note": "A finite counterexample table internal to the certificate computation; no external priority or asymptotic claim is made.",
+   "scope_caveat": "This refutes monotonicity only for the displayed finite table. It does not establish any eventual behaviour, distribution, or recurrence law for certificate depths.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "ladder_excess_not_monotone",
+     "module": "ErdosProblems/Skip/LadderT67.lean",
+     "line": 71314
+    }
+   ]
+  },
+  {
+   "id": "diagonal_ladder_equal_depth_after_modulus_tripling",
+   "canonical_statement": "Although periodLcm 81 is three times periodLcm 79 and the arithmetic floor rises from 117 to 119, the least certified depth is 120 at both cells. This is a checked counterexample to the proposed law that each new prime-power rung must strictly increase the least certificate depth.",
+   "logical_class": "finite_instance",
+   "problem": "249",
+   "concepts": [
+    "audited_expansion_boundary",
+    "diagonal_certificate_depth_profile"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "exact minimal-depth certificates at t = 79 and t = 81 together with the exact periodLcm multiplier",
+   "prior_art_state": "routine_corollary_or_specialisation",
+   "prior_art_note": "A finite counterexample to one extrapolation heuristic, not a general theorem about certificate-depth growth.",
+   "scope_caveat": "The theorem rules out only strict increase at every prime-power rung. It does not give a transfer from t = 79 to t = 81, a formula for later depths, or evidence for a cofinal certificate supply.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "rung_depth_not_strictly_increasing",
+     "module": "ErdosProblems/Skip/LadderT67.lean",
+     "line": 71332
+    }
+   ]
+  },
+  {
+   "id": "diagonal_band_plateau_transfer_wall_at_83",
+   "canonical_statement": "Every lcm-diagonal scale t at most 82 has a certified kill, but periodLcm 83 is not equal to periodLcm 82, so the plateau-rewrite transport used inside the finite band stops at 82. Moreover, any future certified kill at t = 83 must have depth at least 125.",
+   "logical_class": "barrier_no_go",
+   "problem": "249",
+   "concepts": [
+    "audited_expansion_boundary",
+    "diagonal_certificate_depth_profile",
+    "period_lcm_plateau_transfer_wall"
+   ],
+   "open_antecedents": [],
+   "is_restatement_of_open_problem": false,
+   "engine": "the exact prime jump periodLcm 83 = 83 * periodLcm 82 together with the universal certifiedKill depth inequality",
+   "prior_art_state": "routine_corollary_or_specialisation",
+   "prior_art_note": "A local transfer obstruction and arithmetic depth floor for the existing certificate mechanism; no novelty claim is made.",
+   "scope_caveat": "This rules out only carrying the t = 81 certificate to t = 83 by equality of periodLcm values, and only excludes depths below 125 there. It does not prove that no t = 83 certificate exists, does not prevent a fresh computation at depth 125 or above, and does not address the still-open unbounded certificate supply consumed by the irrationality reduction.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "periodLcm_83_eq_mul",
+     "module": "ErdosProblems/Skip/LadderT67.lean",
+     "line": 71281
+    },
+    {
+     "declaration": "band_maximal_at_82",
+     "module": "ErdosProblems/Skip/LadderT67.lean",
+     "line": 71285
+    },
+    {
+     "declaration": "t83_depth_floor",
+     "module": "ErdosProblems/Skip/LadderT67.lean",
+     "line": 71294
     }
    ]
   }
@@ -1729,13 +1846,15 @@
    "declaration": "t73_depth_floor",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 146,
-   "role": "substrate"
+   "role": "engine",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "t79_depth_floor",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 160,
-   "role": "substrate"
+   "role": "engine",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "t73_not_certifiedKill_at_t71_depth",
@@ -18355,13 +18474,15 @@
    "declaration": "certifiedKill_diagonal_t73",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71100,
-   "role": "substrate"
+   "role": "finite_instance",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "t73_minimal_depth",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71106,
-   "role": "substrate"
+   "role": "finite_instance",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "pl74",
@@ -18427,13 +18548,15 @@
    "declaration": "certifiedKill_diagonal_t79",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71177,
-   "role": "substrate"
+   "role": "finite_instance",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "t79_minimal_depth",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71183,
-   "role": "substrate"
+   "role": "finite_instance",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "pl80",
@@ -18469,7 +18592,8 @@
    "declaration": "t81_depth_floor",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71222,
-   "role": "substrate"
+   "role": "engine",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "not_certifiedKill_diagonal_t81_119",
@@ -18481,13 +18605,15 @@
    "declaration": "certifiedKill_diagonal_t81",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71242,
-   "role": "substrate"
+   "role": "finite_instance",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "t81_minimal_depth",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71248,
-   "role": "substrate"
+   "role": "finite_instance",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "pl82",
@@ -18505,19 +18631,22 @@
    "declaration": "periodLcm_83_eq_mul",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71281,
-   "role": "substrate"
+   "role": "engine",
+   "statement_node": "diagonal_band_plateau_transfer_wall_at_83"
   },
   {
    "declaration": "periodLcm_83_ne_82",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71283,
-   "role": "substrate"
+   "role": "engine",
+   "statement_node": "diagonal_band_plateau_transfer_wall_at_83"
   },
   {
    "declaration": "band_maximal_at_82",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71285,
-   "role": "substrate"
+   "role": "statement",
+   "statement_node": "diagonal_band_plateau_transfer_wall_at_83"
   },
   {
    "declaration": "periodLcm_83_value",
@@ -18529,25 +18658,29 @@
    "declaration": "t83_depth_floor",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71294,
-   "role": "substrate"
+   "role": "statement",
+   "statement_node": "diagonal_band_plateau_transfer_wall_at_83"
   },
   {
    "declaration": "ladder_excess_not_monotone",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71314,
-   "role": "substrate"
+   "role": "statement",
+   "statement_node": "diagonal_ladder_sampled_excess_changes_direction"
   },
   {
    "declaration": "rung_depth_not_strictly_increasing",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71332,
-   "role": "substrate"
+   "role": "statement",
+   "statement_node": "diagonal_ladder_equal_depth_after_modulus_tripling"
   },
   {
    "declaration": "ladder_minimal_depths",
    "module": "ErdosProblems/Skip/LadderT67.lean",
    "line": 71342,
-   "role": "substrate"
+   "role": "statement",
+   "statement_node": "diagonal_ladder_exact_minimal_depths"
   },
   {
    "declaration": "half_not_mem_of_rightTail",
@@ -19234,5 +19367,24 @@
    "role": "substrate"
   }
  ],
- "intra_zone_relations": []
+ "intra_zone_relations": [
+  {
+   "from": "diagonal_ladder_exact_minimal_depths",
+   "to": "diagonal_ladder_sampled_excess_changes_direction",
+   "relation": "implies",
+   "basis": "Combining the exact least depths 105, 113, 120, 120 with the Lean-checked arithmetic floors 105, 111, 117, 119 gives excesses 0, 2, 3, 1; the imported t = 67 row supplies the preceding excess 2."
+  },
+  {
+   "from": "diagonal_ladder_exact_minimal_depths",
+   "to": "diagonal_ladder_equal_depth_after_modulus_tripling",
+   "relation": "implies",
+   "basis": "The exact table gives least depth 120 at both t = 79 and t = 81; periodLcm_81_eq_three_mul supplies periodLcm 81 = 3 * periodLcm 79."
+  },
+  {
+   "from": "diagonal_band_plateau_transfer_wall_at_83",
+   "to": "diagonal_ladder_exact_minimal_depths",
+   "relation": "complements",
+   "basis": "The exact table measures the final certified rungs through t = 81, while the wall records why plateau transport reaches t = 82 but cannot cross the new period at t = 83 and supplies the next arithmetic depth floor."
+  }
+ ]
 }

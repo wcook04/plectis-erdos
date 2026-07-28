@@ -29,7 +29,7 @@ MAX_SEMANTIC_CELLS = 4
 OUTPUT_BUDGET_BYTES = 64_000
 SOURCE_LINE_WINDOW = 3
 CONNECTION_CARD_SCHEMA = "lean-connection-card/2"
-SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/1"
+SEMANTIC_DICTIONARY_SCHEMA = "erdos249257-semantic-dictionary/2"
 SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
 
 # The atlas builder strips nested Lean comments and recognizes heads whose
@@ -221,6 +221,24 @@ SEMANTIC_VOCABULARY = (
         ),
         "route_hints": (
             "--search countermodel",
+        ),
+    },
+    {
+        "id": "semantic_population_backlog",
+        "vocabulary_kind": "intent",
+        "pref_label": "paper-seeded semantic population backlog",
+        "alt_labels": (
+            "semantic work remains",
+            "paper proofs lack semantic interpretation",
+            "populate the semantic graph",
+            "semantic coverage gap",
+        ),
+        "query_expansions": (
+            "paper cited live declarations without statement nodes",
+            "proposition level semantic backlog",
+        ),
+        "route_hints": (
+            "--route agent_native_corpus_navigation",
         ),
     },
 )
@@ -910,12 +928,50 @@ def formal_dependency_path(
 
 
 @lru_cache(maxsize=1)
+def declaration_row_indexes() -> dict[str, dict[str, Any]]:
+    """Index atlas rows without eagerly resolving every Lean namespace."""
+    atlas = load("docs/declaration_atlas.json")
+    by_name: dict[str, list[dict[str, Any]]] = {}
+    by_module: dict[str, list[dict[str, Any]]] = {}
+    for row in atlas_declarations(atlas):
+        by_name.setdefault(row["name"], []).append(row)
+        by_module.setdefault(row["module"], []).append(row)
+    for rows in by_module.values():
+        rows.sort(key=lambda row: (row["line"], row["name"]))
+    return {
+        "by_name": by_name,
+        "by_module": by_module,
+    }
+
+
+@lru_cache(maxsize=1)
 def declaration_rows_by_qualified_name() -> dict[str, dict[str, Any]]:
+    """Resolve qualified handles lazily; bare-name queries use the cheap index."""
     atlas = load("docs/declaration_atlas.json")
     return {
         qualified_declaration_name(row): row
         for row in atlas_declarations(atlas)
     }
+
+
+def declaration_rows_for_handle(name: str) -> list[dict[str, Any]]:
+    """Return exact bare-name or qualified-name matches from cached indexes."""
+    by_name = declaration_row_indexes()["by_name"]
+    matches = by_name.get(name)
+    if matches is not None:
+        return list(matches)
+    if "." not in name:
+        return []
+    parts = name.split(".")
+    candidates: dict[str, dict[str, Any]] = {}
+    for index in range(1, len(parts)):
+        for row in by_name.get(".".join(parts[index:]), []):
+            candidates[row["id"]] = row
+    return [
+        row
+        for row in candidates.values()
+        if qualified_declaration_name(row) == name
+    ]
 
 
 def support_goal_request(query: str) -> dict[str, str] | None:
@@ -2205,17 +2261,12 @@ def open_proposition_packet(open_id: str) -> dict[str, Any]:
     }
 
 
-def declaration_packet(name: str, limit: int) -> dict[str, Any]:
-    atlas = load("docs/declaration_atlas.json")
+def decorate_declaration_rows(
+    matches: list[dict[str, Any]], limit: int
+) -> list[dict[str, Any]]:
+    """Attach claim, paper, and source navigation to exact atlas rows."""
     claims = load("docs/claims.json")
     aliases = load("paper/module-aliases.json")["aliases"]
-    matches = [
-        row
-        for row in atlas_declarations(atlas)
-        if row["name"] == name or qualified_declaration_name(row) == name
-    ]
-    if not matches:
-        raise KeyError(f"unknown declaration name: {name}")
     claim_index = {row["id"]: row for row in claims["claims"]}
     roles = module_roles(claims)
     label_index = paper_label_index()
@@ -2224,11 +2275,7 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
     repository = lean_source_identity["repository"].rstrip("/")
     source_ref = lean_source_identity["ref"]
     paper_anchors = paper_anchor_inventory()
-    declarations_by_module: dict[str, list[dict[str, Any]]] = {}
-    for row in atlas_declarations(atlas):
-        declarations_by_module.setdefault(row["module"], []).append(row)
-    for rows in declarations_by_module.values():
-        rows.sort(key=lambda row: (row["line"], row["name"]))
+    declarations_by_module = declaration_row_indexes()["by_module"]
     decorated = []
     for match in matches[:limit]:
         attached_claims = []
@@ -2290,6 +2337,14 @@ def declaration_packet(name: str, limit: int) -> dict[str, Any]:
                 ],
             }
         )
+    return decorated
+
+
+def declaration_packet(name: str, limit: int) -> dict[str, Any]:
+    matches = declaration_rows_for_handle(name)
+    if not matches:
+        raise KeyError(f"unknown declaration name: {name}")
+    decorated = decorate_declaration_rows(matches, limit)
     return {
         "kind": "declaration",
         "authority_posture": "atlas_navigation_projection_not_proof_authority",
@@ -2325,13 +2380,8 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
             f"source coordinate line {line} exceeds {module_path} length {len(source_lines)}"
         )
 
-    module_declarations = sorted(
-        (
-            row
-            for row in atlas_declarations(atlas)
-            if row["module"] == module_path
-        ),
-        key=lambda row: (row["line"], row["name"]),
+    module_declarations = declaration_row_indexes()["by_module"].get(
+        module_path, []
     )
     window_declarations = sorted(
         (
@@ -2349,16 +2399,7 @@ def source_coordinate_packet(source_ref: str, limit: int) -> dict[str, Any]:
     if containing is not None and containing not in candidates:
         candidates.append(containing)
     candidates.sort(key=lambda row: (abs(row["line"] - line), row["line"], row["name"]))
-    decorated = []
-    for row in candidates[:limit]:
-        declaration = declaration_packet(row["name"], MAX_LIMIT)
-        decorated.append(
-            next(
-                candidate
-                for candidate in declaration["matches"]
-                if candidate["module"] == module_path and candidate["line"] == row["line"]
-            )
-        )
+    decorated = decorate_declaration_rows(candidates, limit)
 
     before = [row for row in module_declarations if row["line"] < line]
     after = [row for row in module_declarations if row["line"] > line]
@@ -2561,16 +2602,94 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
     source_counts = identifier_counts(source_text)
     anchor_names = {row["name"] for row in declaration_matches}
     module_declarations = declarations_by_path.get(module["path"], [])
-    ranked_declarations = sorted(
-        module_declarations,
-        key=lambda row: (
-            0 if row["name"] in anchor_names else 1,
-            search_rank(query, row["name"], str(row.get("signature") or ""))
-            if query and search_rank(query, row["name"], str(row.get("signature") or "")) is not None
-            else 9,
-            row["line"],
-        ),
-    )
+    declaration_relevance: dict[str, dict[str, Any]] = {}
+    if query:
+        query_terms = semantic_content_terms(query) or search_terms(query)
+        source_lines = source_text.splitlines()
+        span_identifiers: dict[str, set[str]] = {}
+        for index, row in enumerate(module_declarations):
+            span_end = (
+                module_declarations[index + 1]["line"] - 1
+                if index + 1 < len(module_declarations)
+                else len(source_lines)
+            )
+            span = "\n".join(source_lines[row["line"] - 1 : span_end])
+            span_identifiers[row["id"]] = set(identifier_counts(span))
+        anchor_references = set().union(
+            *(
+                span_identifiers[row["id"]]
+                for row in declaration_matches
+                if row["id"] in span_identifiers
+            ),
+            set(),
+        )
+        ranked_rows: list[tuple[tuple[int, int, int, int], dict[str, Any]]] = []
+        for row in module_declarations:
+            row_terms = search_terms(
+                " ".join(
+                    str(value)
+                    for value in (
+                        row["name"],
+                        row.get("signature"),
+                        row.get("docstring"),
+                    )
+                    if value
+                )
+            )
+            overlap = sorted(query_terms & row_terms)
+            relations = []
+            if row["name"] in anchor_references:
+                relations.append("used_by_anchor_source_span")
+            if anchor_names & span_identifiers[row["id"]]:
+                relations.append("uses_anchor_in_source_span")
+            is_anchor = row["name"] in anchor_names
+            if not is_anchor and not overlap and not relations:
+                continue
+            lexical_rank = search_rank(
+                query,
+                row["name"],
+                " ".join(
+                    str(value)
+                    for value in (row.get("signature"), row.get("docstring"))
+                    if value
+                ),
+            )
+            selection_tier = (
+                "anchor"
+                if is_anchor
+                else "query_and_anchor_relation"
+                if overlap and relations
+                else "query_lexical"
+                if overlap
+                else "anchor_relation"
+            )
+            declaration_relevance[row["id"]] = {
+                "selection_tier": selection_tier,
+                "query_term_overlap": overlap,
+                "anchor_relations": relations,
+            }
+            ranked_rows.append(
+                (
+                    (
+                        0 if is_anchor else 1,
+                        -len(overlap),
+                        lexical_rank if lexical_rank is not None else 10**6,
+                        row["line"],
+                    ),
+                    row,
+                )
+            )
+        ranked_rows.sort(key=lambda item: item[0])
+        ranked_declarations = [row for _, row in ranked_rows]
+    else:
+        query_terms = set()
+        ranked_declarations = sorted(
+            module_declarations,
+            key=lambda row: (
+                0 if row["name"] in anchor_names else 1,
+                row["line"],
+            ),
+        )
 
     dependency_capsules = []
     for imported_id in module.get("imports", [])[: min(6, limit)]:
@@ -2680,10 +2799,34 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
             ],
         },
         "declarations": [
-            {**compact_declaration(row), "statement_head": row.get("signature")}
+            {
+                **compact_declaration(row),
+                "statement_head": row.get("signature"),
+                **(
+                    {"connection_relevance": declaration_relevance[row["id"]]}
+                    if row["id"] in declaration_relevance
+                    else {}
+                ),
+            }
             for row in ranked_declarations[: min(limit, 12)]
         ],
         "declaration_count": len(module_declarations),
+        "declaration_selection_receipt": {
+            "query": query or None,
+            "query_terms": sorted(query_terms),
+            "selection_policy": (
+                "anchor_then_query_overlap_then_exact_source_span_relation"
+                if query
+                else "anchor_then_source_order"
+            ),
+            "eligible_count": len(ranked_declarations),
+            "excluded_module_broad_count": (
+                len(module_declarations) - len(ranked_declarations)
+                if query
+                else 0
+            ),
+            "emitted_count": min(len(ranked_declarations), min(limit, 12)),
+        },
         "dependency_capsules": dependency_capsules,
         "consumer_capsules": consumer_capsules,
         "required_consumption": {
@@ -3050,6 +3193,7 @@ def semantic_query_interpretation(query: str) -> dict[str, Any]:
 
 
 def semantic_dictionary_packet() -> dict[str, Any]:
+    claims = load("docs/claims.json")
     return {
         "kind": "semantic_dictionary",
         "schema_version": SEMANTIC_DICTIONARY_SCHEMA,
@@ -3072,6 +3216,26 @@ def semantic_dictionary_packet() -> dict[str, Any]:
             }
             for row in SEMANTIC_VOCABULARY
         ],
+        "route_discovery_contract": {
+            "source": (
+                "docs/claims.json::machine_readable_paper.entrypoints[]."
+                "discovery_terms plus docs/publication_contract.json::"
+                "entrypoints[].discovery_terms"
+            ),
+            "matching": (
+                "A unique exact normalized authored term may bypass the exhaustive "
+                "declaration scan; ambiguous or non-exact language falls through "
+                "to transparent vocabulary expansion and ranked corpus search."
+            ),
+            "routes": [
+                {
+                    "route_id": row["id"],
+                    "discovery_terms": list(row.get("discovery_terms", [])),
+                }
+                for row in all_entrypoints(claims)
+                if row.get("discovery_terms")
+            ],
+        },
         "consumer_action": (
             "Load this bounded packet before free-text search, then follow one "
             "typed route hint or inspect the transparent query interpretation "
@@ -3208,11 +3372,78 @@ def search_result_sort_key(
     )
 
 
+def exact_discovery_route(
+    query: str, claims: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Resolve an authored first-contact phrase without scanning 151k declarations.
+
+    Discovery terms are an explicit routing contract, not fuzzy corpus content.
+    An exact normalized match may therefore take the fast path while all other
+    phrasing still receives the exhaustive ranked search below.
+    """
+    normalized_query = " ".join(query.casefold().split())
+    matches: list[dict[str, Any]] = []
+    for row in all_entrypoints(claims):
+        candidates = (row["id"], *row.get("discovery_terms", []))
+        if normalized_query not in {
+            " ".join(str(candidate).casefold().split())
+            for candidate in candidates
+        }:
+            continue
+        matches.append(row)
+    if len(matches) != 1:
+        return None
+    row = matches[0]
+    return {
+        "kind": "reading_route",
+        "id": row["id"],
+        "route_kind": row.get("route_kind", "reading_route"),
+        "title": row.get("title"),
+        "intent": row["intent"],
+        "problem_target_claim_ids": row.get("problem_target_claim_ids", []),
+    }
+
+
 def search_packet(query: str, limit: int) -> dict[str, Any]:
     query = query.strip()
     if not query:
         raise ValueError("search query must not be empty")
     claims = load("docs/claims.json")
+    exact_route = exact_discovery_route(query, claims)
+    if exact_route is not None:
+        missing_registered_artifacts = [
+            row["artifact_handle"]
+            for row in artifact_inventory()
+            if row.get("availability") == "missing"
+        ]
+        return {
+            "kind": "search",
+            "authority_posture": "navigation_projection_not_proof_authority",
+            "query": query,
+            "query_interpretation": semantic_query_interpretation(query),
+            "match_count": 1,
+            "results": [exact_route][:limit],
+            "omitted_match_count": 0 if limit else 1,
+            "limit": limit,
+            "routing_receipt": {
+                "selection": "exact_authored_discovery_term",
+                "declaration_scan_required": False,
+            },
+            "artifact_availability_receipt": {
+                "status": (
+                    "partial_optional_artifacts_missing"
+                    if missing_registered_artifacts
+                    else "all_registered_artifacts_present"
+                ),
+                "missing_registered_artifacts": missing_registered_artifacts,
+                "effect_on_search": (
+                    "missing authored artifacts are omitted from paper-anchor "
+                    "indexing; claims, routes, open propositions, declarations, "
+                    "modules, and present papers remain searchable"
+                ),
+            },
+            "next": "Use --route on this handle, then follow its bounded query and action steps.",
+        }
     claims_by_id = {row["id"]: row for row in claims["claims"]}
     atlas = load("docs/declaration_atlas.json")
     aliases = load("paper/module-aliases.json")["aliases"]
@@ -5395,7 +5626,7 @@ def summary_packet() -> dict[str, Any]:
         "editorial_architecture",
         "editorial_state",
         "external_registration",
-        "source_revision",
+        "source_provenance",
     )
     summary_orientation = {
         key: value
@@ -5723,8 +5954,17 @@ def main() -> int:
         ),
     )
     parser.add_argument("--query", default="", help="rank a connection card toward one task")
-    parser.add_argument("--format", choices=("json", "card"), default="json")
+    parser.add_argument(
+        "--format",
+        choices=("json", "card"),
+        default=None,
+        help=(
+            "output encoding; bare --ask defaults to a bounded card, while all "
+            "other routes default to JSON"
+        ),
+    )
     args = parser.parse_args()
+    output_format = args.format or ("card" if args.ask else "json")
     if not 1 <= args.limit <= MAX_LIMIT:
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
     if not 1 <= args.depth <= 8:
@@ -5796,7 +6036,7 @@ def main() -> int:
     except (KeyError, ValueError, json.JSONDecodeError, OSError) as exc:
         print(f"query_corpus: {exc}", file=sys.stderr)
         return 2
-    if args.format == "card":
+    if output_format == "card":
         print(render_card(packet))
     else:
         encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"

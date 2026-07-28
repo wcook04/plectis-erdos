@@ -1,5 +1,5 @@
 {
- "schema": "erdos249257-theory-lab/1",
+ "schema": "erdos249257-theory-lab/2",
  "artifact_role": "generated_interventional_projection_over_the_semantic_corpus",
  "authority_posture": "generated_projection_over_authored_mechanism_and_intervention_records; not Lean, not the semantic corpus, and not a novelty judgement",
  "purpose": "Own the layer above the semantic corpus: the few mechanisms underneath the proofs, the typed interventions that perturb them, the failures those interventions produced, and the blinded evaluations that test whether the mechanisms transfer to mathematics the system was not shown.",
@@ -16,8 +16,22 @@
   "above": "docs/claims.json stays the curated publication ledger",
   "proof_authority": "Lean kernel; a mechanism is an explanation, never a proof"
  },
- "source_revision": "d80f7d5873336d74a736e1a78747b7c0b495d59f",
- "evidence_fingerprint": "sha256:692cff59a796165b79819895b9666a100d1533eff6ca676408194f8eadb82b65",
+ "source_provenance": {
+  "identity_kind": "content_addressed_input_set",
+  "declaration_atlas_digest": "sha256:682d2f18d6ed8f9899f374a999d1f68d187115a525e066aaab185f2335476b09",
+  "semantic_corpus_digest": "sha256:9712f389d45113a965f71d375b5dddae0fcf00e3511541e9250fa06c08602714",
+  "authored_lab_source_digests": {
+   "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
+   "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+   "docs/semantic/lab/capsules.json": "sha256:6ca5f6528f1ae17595624006868a21f437f624a6fb1c300e739916bfd3ffc859",
+   "docs/semantic/lab/interventions.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+   "docs/semantic/lab/mechanisms.json": "sha256:f9e045f91548d9e8856b278fb979f9d9ed6d8d1a3f367b05e34b58725f76a41b",
+   "docs/semantic/lab/receipts.json": "sha256:ab4f72e9b0bb7ddf925ed31c584ab7b11629c74acb509a89974b78ae9fc5d510"
+  },
+  "builder_digest": "sha256:2a6053910f1ac95809c754fec4e6f7f8b5e12e0b55839a8ec84ed4d52264c3e8",
+  "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
+ },
+ "evidence_fingerprint": "sha256:10cdc49aa3ad961e32bf516324cb3c07de67f33ccb0d3f0454dc4dd1513efd19",
  "vocabularies": {
   "intervention_operators": [
    "change_base",
@@ -72,25 +86,26 @@
   ]
  },
  "summary": {
-  "mechanisms": 0,
-  "capsules": 0,
+  "mechanisms": 9,
+  "minimum_basis_mechanisms": 8,
+  "capsules": 9,
   "interventions": 0,
-  "failure_receipts": 0,
+  "failure_receipts": 3,
   "benchmark_items": 4,
   "benchmark_results": 0,
-  "statement_nodes_total": 677,
-  "statement_nodes_explained": 0,
-  "explained_fraction": 0.0,
+  "statement_nodes_total": 705,
+  "statement_nodes_explained": 8,
+  "explained_fraction": 0.0113,
   "authored_theorem_like": 141820,
   "unexplained_by_logical_class": {
-   "unconditional_object_theorem": 246,
+   "unconditional_object_theorem": 247,
    "reduction_or_transport": 47,
-   "finite_instance": 50,
+   "finite_instance": 56,
    "classical_formalised": 41,
-   "conditional_implication": 99,
-   "representation_normalisation": 74,
-   "barrier_no_go": 37,
-   "equivalence_or_classification": 60,
+   "conditional_implication": 103,
+   "representation_normalisation": 76,
+   "barrier_no_go": 42,
+   "equivalence_or_classification": 62,
    "infrastructure": 19,
    "generated_certificate_instance": 4
   },
@@ -98,10 +113,382 @@
   "prediction_discrepancies": 0,
   "arm_tally": {}
  },
- "mechanisms": [],
- "capsules": [],
+ "mechanisms": [
+  {
+   "mechanism_id": "modular_gap_denominator_exclusion",
+   "human_name": "Modular gap certificates exclude bounded denominators",
+   "problem_reach": "249",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "predictive",
+   "claim_ceiling": "A finite denominator exclusion only; the first rung uses a low-carry bottom band, while the large rungs use arbitrary Farey-neighbour gaps. No irrationality conclusion.",
+   "core_idea": "Assume a rational presentation with bounded reduced denominator, clear it at a selected binary scale, and use an exact certified modular gap to contradict integrality.",
+   "invariant": "After denominator clearing, the certified residue or Farey interval remains disjoint from the integer lattice.",
+   "transformation": "Convert a candidate rational denominator bound into a finite certificate search at a compatible dyadic scale, then transport the exclusion through exact Lambert-form identities.",
+   "observable_controlled": "The reduced denominator of any rational representation of the binary totient series.",
+   "proves_when_hypotheses_hold": "No rational presentation exists with denominator at or below the certificate's explicit bound; transported formulations inherit the corresponding bound.",
+   "statement_nodes": [
+    "Z01::totient_denominator_exclusion_ladder"
+   ],
+   "realising_declarations": [
+    "tsum_totient_div_pow_two_ne_ratCast_of_den_le_4838",
+    "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
+   ],
+   "sharp_failures": [
+    "Z01::totient_denominator_exclusion_ladder is bounded: no finite residue certificate alone excludes all possible rational denominators."
+   ],
+   "prior_art_state": "positioned_by_docs/semantic/lab/PRIOR_ART.md",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "dyadic_odd_core_basis",
+   "human_name": "Odd-core basis for dyadic totient sections",
+   "problem_reach": "249",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "predictive",
+   "claim_ceiling": "A basis and relation classification for dyadic totient sections, not irrationality of the evaluated series.",
+   "core_idea": "Use the two elementary two-adic scaling identities to reduce every dyadic section to odd-core channels, then prove those channels linearly independent by finite-level separation.",
+   "invariant": "Odd-core channels have distinct finite-level signatures that survive passage to the full family.",
+   "transformation": "Normalize arbitrary dyadic sections to odd-core representatives and lift finite linear independence through finite character.",
+   "observable_controlled": "The rational span and all rational linear relations of the full dyadic totient kernel.",
+   "proves_when_hypotheses_hold": "The odd-core family is an explicit basis and the only full-kernel relations are generated by the elementary scaling identities.",
+   "statement_nodes": [
+    "Z09::dyadic_section_basis_classification"
+   ],
+   "realising_declarations": [
+    "linearIndependent_oddCoreTotientKernelFamily",
+    "span_range_fullTotientKernel_eq_span_range_oddCore",
+    "totientDyadicSectionBasis"
+   ],
+   "sharp_failures": [
+    "Z09::full_dyadic_kernel_infinite_dimensional is coefficient-sequence structure and does not itself imply irrationality of the evaluated series."
+   ],
+   "prior_art_state": "positioned_by_docs/semantic/lab/PRIOR_ART.md",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "scalar_localisation_height_barrier",
+   "human_name": "Scalar localisation transfers denominator height into coefficients",
+   "problem_reach": "shared_substrate",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "barrier",
+   "claim_ceiling": "Pointwise scalar and rational-linear divisibility only; a uniform obstruction follows only along a family whose complementary denominator factor is proved unbounded.",
+   "core_idea": "Clearing part of a rational denominator cannot erase arithmetic height: the complementary factor must divide the scalar coefficient.",
+   "invariant": "The reduced numerator-denominator coprimality forces any cleared complementary denominator into the multiplier.",
+   "transformation": "Factor the reduced denominator into the part cleared by H and its complement, then classify rational-linear descenders as scalar evaluation channels.",
+   "observable_controlled": "The minimum coefficient height required by scalar denominator-clearing arguments.",
+   "proves_when_hypotheses_hold": "A scalar or rational-linear clearing route relocates the discarded denominator into the coefficient; along any family with unbounded complementary factor, uniformly small coefficients are impossible.",
+   "statement_nodes": [
+    "Z09::scalar_localisation_height_barrier"
+   ],
+   "realising_declarations": [
+    "scalarLocalization_complement_dvd",
+    "scalarLocalization_integer_eq_mul_num",
+    "linearDescender_eq_smul_eval"
+   ],
+   "sharp_failures": [
+    "linearDescender_eq_smul_eval classifies rational-linear single-scalar channels only; nonlinear and genuinely multivariable routes remain outside its scope."
+   ],
+   "prior_art_state": "not_assessed_without_novelty_claim",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "composite_dilation_defect_accounting",
+   "human_name": "Composite dilation defect accounting",
+   "problem_reach": "257",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "repair",
+   "claim_ceiling": "An exact coefficient-dilation identity for arbitrary support and its prime-support specialization; no universal irrationality conclusion.",
+   "core_idea": "When a support element dilates an index, separate the inherited divisors, the new dilator itself, and the genuinely composite cross-divisors.",
+   "invariant": "Every support divisor of a*x belongs to exactly one of the inherited, new-element, or defect classes.",
+   "transformation": "Partition the divisor-incidence count under multiplication by a support element and expose the extra defect term explicitly.",
+   "observable_controlled": "The change in support coefficient under multiplicative dilation.",
+   "proves_when_hypotheses_hold": "The exact coefficient identity remains valid for arbitrary support; on prime support the defect vanishes and the prime-dilation formula is recovered.",
+   "statement_nodes": [
+    "Z10::composite_dilation_defect_identity"
+   ],
+   "realising_declarations": [
+    "supportCoeff_mul_eq_add_defect",
+    "compositeDilationDefect_eq_zero_of_prime_support",
+    "supportCoeff_mul_prime_support"
+   ],
+   "sharp_failures": [
+    "supportCoeff_mul_prime_support cannot be transported unchanged to composite support; supportCoeff_mul_eq_add_defect records the missing term."
+   ],
+   "prior_art_state": "positioned_by_docs/semantic/lab/PRIOR_ART.md",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "prime_support_defect_cancellation",
+   "human_name": "Prime support cancels the dilation defect",
+   "problem_reach": "257",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "scoped_specialisation",
+   "claim_ceiling": "Prime-only support; composite supports require the explicit defect-accounting repair.",
+   "core_idea": "When every support element is prime, a divisor of a*x that is neither inherited from x nor equal to a cannot remain inside the support, so the composite defect vanishes.",
+   "invariant": "Prime support excludes composite cross-divisors from the support-incidence count.",
+   "transformation": "Specialise the exact composite-defect identity to a prime-only support and discharge the defect term as zero.",
+   "observable_controlled": "The support coefficient after multiplying an index by a support prime.",
+   "proves_when_hypotheses_hold": "The arbitrary-support dilation identity collapses to the prime-dilation formula.",
+   "statement_nodes": [
+    "Z10::composite_dilation_defect_identity"
+   ],
+   "realising_declarations": [
+    "compositeDilationDefect_eq_zero_of_prime_support",
+    "supportCoeff_mul_prime_support"
+   ],
+   "sharp_failures": [
+    "supportCoeff_mul_eq_add_defect shows that dropping prime support restores a possibly nonzero composite defect."
+   ],
+   "prior_art_state": "positioned_by_docs/semantic/lab/PRIOR_ART.md",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "sublog_zero_window_self_absorption",
+   "human_name": "Self-absorbing divisor bounds force sublogarithmic zero windows",
+   "problem_reach": "257",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "predictive",
+   "claim_ceiling": "A necessary zero-window bound under an assumed rational value. The theorem supplies B after A and p are fixed; the proof term chooses B from epsilon, c and v, but the exported binder order does not provide one common B across all A and p.",
+   "core_idea": "Under a rational-value hypothesis, a long coefficient-zero window creates too many divisibility obligations; choosing an auxiliary parameter absorbs the window length into the logarithmic bound.",
+   "invariant": "The displayed rational denominator is fixed while a zero window forces a growing family of divisors into a controlled integer.",
+   "transformation": "Derive a fixed-k logarithmic window bound, choose k from epsilon, and absorb the remaining constants into B(epsilon,c,v).",
+   "observable_controlled": "The maximum length of a zero window in the support-coefficient sequence under rationality.",
+   "proves_when_hypotheses_hold": "For each support and rational presentation satisfying the hypotheses, every zero window is o(log N).",
+   "statement_nodes": [
+    "Z11::sublogarithmic_zero_window_bound"
+   ],
+   "realising_declarations": [
+    "supportCoeffZeroWindow_length_le_logb_divisorSubpower",
+    "supportCoeffZeroWindow_length_le_eps_logb_add",
+    "supportCoeffZeroWindow_length_le_eps_logb"
+   ],
+   "sharp_failures": [
+    "supportCoeffZeroWindow_length_le_eps_logb_add has a constant that grows rapidly as epsilon shrinks, so it supplies no useful bounded-N exclusion."
+   ],
+   "prior_art_state": "not_assessed_without_novelty_claim",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "greedy_residual_tail_invariant",
+   "human_name": "Greedy residual equals the unused Mersenne tail",
+   "problem_reach": "257",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "predictive",
+   "claim_ceiling": "Greedy representation and membership consistency only; the half-value orbit and universal Erdős #257 remain open.",
+   "core_idea": "The greedy choice is correct exactly while the current residual can still be paid by the remaining tail; for an encoded support the residual is the value of its unprocessed suffix.",
+   "invariant": "After every finite prefix, chosen-prefix value plus residual equals the target, and the residual equals the suffix value for normalized support inputs.",
+   "transformation": "Iterate the include-or-skip rule and compare each residual with the exact remaining Mersenne tail.",
+   "observable_controlled": "Membership in the achievement set and recovery of the representing support.",
+   "proves_when_hypotheses_hold": "Membership is equivalent to survival at every stage, and the greedy run recovers the original support.",
+   "statement_nodes": [
+    "Z12::greedy_survival_characterisation"
+   ],
+   "realising_declarations": [
+    "greedyMersenneRemainder_supportValue",
+    "greedySupport_supportValue_eq",
+    "mem_mersenneAchievementSet_iff_greedy_survival"
+   ],
+   "sharp_failures": [
+    "Z12::half_membership_iff_infinite_greedy_skips leaves both sides open; the invariant re-expresses half membership but does not decide the orbit."
+   ],
+   "prior_art_state": "not_assessed_without_novelty_claim",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "nested_cylinder_measure_continuity",
+   "human_name": "Nested cylinder stages determine achievement-set measure",
+   "problem_reach": "257",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "predictive",
+   "claim_ceiling": "Lebesgue measure only; nowhere density and total disconnectedness require separate topological mechanisms.",
+   "core_idea": "Approximate the achievement set by decreasing finite unions of disjoint translated tail intervals whose volumes are exactly computable.",
+   "invariant": "The depth-d stage is a disjoint union of 2^d cylinders, and the achievement set is their decreasing intersection.",
+   "transformation": "Compute each finite-stage volume and pass to the intersection by continuity from above.",
+   "observable_controlled": "Lebesgue measure of the Mersenne achievement set.",
+   "proves_when_hypotheses_hold": "The finite-stage volumes converge to one, so the achievement set has measure exactly one.",
+   "statement_nodes": [
+    "Z12::mersenne_achievement_set_measure_one"
+   ],
+   "realising_declarations": [
+    "volume_mersenneCylinderStage",
+    "mersenneAchievementSet_eq_iInter_cylinderStage",
+    "volume_mersenneAchievementSet"
+   ],
+   "sharp_failures": [
+    "Z12::mersenne_achievement_set_measure_one controls measure only; nowhere density and total disconnectedness need separate topology evidence."
+   ],
+   "prior_art_state": "not_assessed_without_novelty_claim",
+   "novelty_claim": false
+  },
+  {
+   "mechanism_id": "strict_superincreasing_first_difference",
+   "human_name": "First differing digit dominates every later digit",
+   "problem_reach": "257",
+   "confidence": "evidence_bound_authored_mechanism",
+   "mechanism_kind": "predictive",
+   "claim_ceiling": "Injectivity for digit strings supported in one prescribed offset set; not a classification of arbitrary achievement-set membership.",
+   "core_idea": "At the first index where two supported binary digit strings differ, that Mersenne weight is strictly larger than the sum of all permitted later weights.",
+   "invariant": "Strict superincreasingness is hereditary under restriction to any prescribed offset set.",
+   "transformation": "Cancel the common prefix and compare the first unequal digit with the entire remaining supported tail.",
+   "observable_controlled": "Injectivity of restricted Mersenne digit coding.",
+   "proves_when_hypotheses_hold": "Distinct digit strings supported in the same offset set have distinct achievement values.",
+   "statement_nodes": [
+    "Z12::supported_mersenne_digit_injectivity"
+   ],
+   "realising_declarations": [
+    "supportedMersenneDigitValue_injective"
+   ],
+   "supporting_declarations": [
+    "selectedMersenneTail_lt_weight",
+    "positiveMersenneDigitValue_injective"
+   ],
+   "sharp_failures": [
+    "supportedMersenneDigitValue_injective depends on strict tail domination; a merely summable or non-strict weight sequence is outside this mechanism."
+   ],
+   "sharp_failure_basis": "scope_argument",
+   "prior_art_state": "not_assessed_without_novelty_claim",
+   "novelty_claim": false
+  }
+ ],
+ "capsules": [
+  {
+   "mechanism_id": "modular_gap_denominator_exclusion",
+   "one_sentence": "Clear a bounded candidate denominator and certify that the resulting residue cannot be integral.",
+   "five_minute": "Choose a dyadic scale compatible with the denominator bound. The first rung controls a low-carry residue; the large rungs use certified Farey-neighbour gaps. In either case the cleared candidate lies in a gap disjoint from the integer lattice. Exact identities then transfer the exclusion to equivalent Lambert presentations. The output is a denominator lower bound, never irrationality.",
+   "transfer_challenge": "Given a stronger candidate denominator range, identify the new finite residue certificate and show which exact transport theorems preserve its bound."
+  },
+  {
+   "mechanism_id": "dyadic_odd_core_basis",
+   "one_sentence": "Reduce dyadic sections to odd-core channels and use finite separation to obtain an explicit basis.",
+   "five_minute": "Two elementary two-adic scaling identities normalize the full kernel to odd-core representatives. At each finite level the representatives have separating signatures; finite character lifts those results to linear independence of the whole family. Spanning plus independence yields a basis and classifies all rational relations.",
+   "transfer_challenge": "For a new arithmetic sequence with a prime-power scaling law, propose the analogue of the odd-core channels and a finite separating minor."
+  },
+  {
+   "mechanism_id": "scalar_localisation_height_barrier",
+   "one_sentence": "Scalar denominator clearing moves the missing denominator into the coefficient instead of removing it.",
+   "five_minute": "Write the reduced denominator as the cleared divisor times its complementary factor. Coprimality forces the complement to divide any scalar that makes the cleared value integral. A classification of rational-linear descenders shows that every one-dimensional linear channel has the same obstruction. The theorem is deliberately silent about nonlinear and multivariable routes.",
+   "transfer_challenge": "Test a proposed denominator-clearing functional by deciding whether it is genuinely multivariable or collapses to scalar evaluation."
+  },
+  {
+   "mechanism_id": "composite_dilation_defect_accounting",
+   "one_sentence": "Multiplicative dilation preserves the prime formula only after every composite cross-divisor is charged to an explicit defect.",
+   "five_minute": "Partition the support divisors of a*x into those already dividing x, the new element a, and the remaining cross-divisors. The cardinality identity is exact for arbitrary support. Prime support kills the defect, explaining why the shorter prime-dilation formula works and exactly what breaks for composite supports.",
+   "transfer_challenge": "For a structured composite support, bound or classify the defect term instead of silently applying the prime-support identity."
+  },
+  {
+   "mechanism_id": "prime_support_defect_cancellation",
+   "one_sentence": "Prime-only support kills every composite cross-divisor, so the general defect identity collapses to the short dilation law.",
+   "five_minute": "Start from the exact arbitrary-support partition. If a and every supported divisor are prime, any new supported divisor of a*x must be a itself or already divide x; the third defect class is empty. This explains the prime-support formula and also states its exact hypothesis boundary.",
+   "transfer_challenge": "For a proposed larger support class, prove the cross-divisor class is still empty before reusing the prime formula."
+  },
+  {
+   "mechanism_id": "sublog_zero_window_self_absorption",
+   "one_sentence": "Rationality makes long coefficient gaps create more divisor obligations than a fixed denominator can sustain.",
+   "five_minute": "A zero window forces a family of divisor relations against the displayed rational denominator. A fixed auxiliary k gives a logarithmic inequality with the window length on both sides. Choosing k from epsilon absorbs that self-reference and leaves h ≤ epsilon log N + B. The theorem supplies B after the support and numerator are fixed; its proof chooses B from epsilon and denominator data, but the exported binder order does not state a common B across supports. The constant is enormous for small epsilon, so the conclusion is asymptotic only.",
+   "transfer_challenge": "Change the base or coefficient incidence and identify the exact divisor-growth estimate needed for the self-absorption step."
+  },
+  {
+   "mechanism_id": "greedy_residual_tail_invariant",
+   "one_sentence": "Greedy membership works because the residual is exactly the value still available in the unused tail.",
+   "five_minute": "Maintain target = chosen prefix + residual. The next weight is chosen precisely when it does not overshoot, and survival requires the residual never exceed the remaining tail. On an actual support value, induction identifies the residual with the support suffix and recovers every digit. For one half this becomes a precise open orbit question rather than a solution.",
+   "transfer_challenge": "For a different summable weight sequence, prove the residual-suffix identity and identify whether survival is sufficient as well as necessary."
+  },
+  {
+   "mechanism_id": "nested_cylinder_measure_continuity",
+   "one_sentence": "Compute finite cylinder-stage volumes and pass through a decreasing intersection.",
+   "five_minute": "At depth d, every binary prefix contributes one translated copy of the same tail interval; disjointness makes the volume exactly 2^d times the tail length. The stages decrease to the achievement set. Continuity from above transfers the limit of their volumes, which is one, to the intersection. Topological conclusions require separate evidence.",
+   "transfer_challenge": "For a new achievement sequence, determine whether cylinders stay disjoint and whether the stage volumes have a computable limit."
+  },
+  {
+   "mechanism_id": "strict_superincreasing_first_difference",
+   "one_sentence": "The first unequal digit determines the sum because its weight dominates the entire allowed suffix.",
+   "five_minute": "Restricting a strictly superincreasing sequence to any offset set preserves strict tail domination. Cancel the common prefix of two digit strings. At their first difference, the larger digit contributes more than every later discrepancy can cancel, proving injectivity. The argument fails exactly when strict domination is lost.",
+   "transfer_challenge": "Given a restricted weight family, prove the hereditary tail inequality or construct a collision showing it fails."
+  }
+ ],
  "interventions": [],
- "failure_receipts": [],
+ "failure_receipts": [
+  {
+   "receipt_id": "failure_finite_aggregation_is_not_unbounded_supply",
+   "candidate": "Promote the checked t ≤ 82 aggregate directly to the cofinal lcm-diagonal certificate supply.",
+   "smallest_failing_hypothesis": "The finite aggregate has no quantifier or recurrence producing a witness beyond its recorded ceiling.",
+   "failure_kind": "candidate_route_ruled_out",
+   "candidate_route_ruled_out": "finite_to_unbounded_certificate_extrapolation",
+   "scope": "using the existing bounded aggregate as a proof of the beyond-every-cutoff certificate obligation",
+   "evidence": [
+    "exists_diagonalKill_le_82",
+    "irrational_totient_series_iff_lcm_diagonal_certificate_supply"
+   ],
+   "reason": "The aggregate quantifies only over t ≤ 82, while the equivalent open supply quantifies beyond every cutoff.",
+   "nearest_repair": "Prove a genuine extension or recurrence theorem that produces a certified kill beyond every input cutoff.",
+   "repair_verdict": "open; the current finite band remains valid and useful but cannot be extrapolated",
+   "reentry_condition": "A theorem with a cofinal or unbounded scale quantifier, not another finite endpoint.",
+   "mechanisms_not_ruled_out": [
+    "modular_gap_denominator_exclusion",
+    "dyadic_odd_core_basis"
+   ],
+   "sibling_family": {
+    "id": "authored_249_predictive_mechanisms",
+    "members": [
+     "modular_gap_denominator_exclusion",
+     "dyadic_odd_core_basis"
+    ]
+   },
+   "prior_art_state": "not_a_novelty_claim",
+   "novelty_claim": false
+  },
+  {
+   "receipt_id": "failure_prime_dilation_formula_on_composite_support",
+   "candidate": "Reuse the prime-support coefficient-dilation identity on arbitrary composite support.",
+   "smallest_failing_hypothesis": "Prime support is exactly what forces the composite dilation defect to vanish.",
+   "failure_kind": "mechanism_scope_exceeded",
+   "mechanism_scope_exceeded": "prime_support_defect_cancellation",
+   "scope": "dropping the defect term while extending the prime-support dilation identity to arbitrary support",
+   "evidence": [
+    "supportCoeff_mul_eq_add_defect",
+    "compositeDilationDefect_eq_zero_of_prime_support"
+   ],
+   "reason": "The exact arbitrary-support identity contains a defect that vanishes under prime support but need not vanish for composites.",
+   "nearest_repair": "Retain the defect term and prove it vanishes or is controlled for the selected structured support.",
+   "repair_verdict": "repaired at the identity level by explicit defect accounting; support-specific control remains separate",
+   "reentry_condition": "A support class with a proved zero or quantitative bound for compositeDilationDefect.",
+   "mechanisms_not_ruled_out": [
+    "composite_dilation_defect_accounting"
+   ],
+   "sibling_family": {
+    "id": "support_dilation_mechanisms",
+    "members": [
+     "composite_dilation_defect_accounting"
+    ]
+   },
+   "prior_art_state": "positioned_by_docs/semantic/lab/PRIOR_ART.md",
+   "novelty_claim": false
+  },
+  {
+   "receipt_id": "failure_scalar_clearing_as_height_reduction",
+   "candidate": "Clear a large part of a rational denominator through a one-dimensional linear channel while keeping the coefficient uniformly small.",
+   "smallest_failing_hypothesis": "The complementary reduced denominator is coprime to the cleared numerator and therefore must divide the scalar.",
+   "failure_kind": "candidate_route_ruled_out",
+   "candidate_route_ruled_out": "scalar_linear_height_reduction",
+   "scope": "using one-dimensional rational-linear denominator clearing to obtain uniformly small integral coefficients",
+   "evidence": [
+    "scalarLocalization_complement_dvd",
+    "linearDescender_eq_smul_eval"
+   ],
+   "reason": "The complementary reduced denominator divides the scalar, and every rational-linear descender is scalar evaluation up to a fixed vector.",
+   "nearest_repair": "Use a genuinely nonlinear or multivariable invariant whose arithmetic content is not a scalar evaluation in disguise.",
+   "repair_verdict": "the scalar and rational-linear route is ruled out; nonlinear and multivariable routes remain open",
+   "reentry_condition": "An explicit non-scalar construction with a theorem showing it escapes linearDescender_eq_smul_eval.",
+   "mechanisms_not_ruled_out": [],
+   "sibling_family": {
+    "id": "authored_nonlinear_or_multivariable_height_reductions",
+    "members": []
+   },
+   "siblings_enumerated_reason": "No nonlinear or genuinely multivariable height-reduction mechanism is currently authored; those possibilities remain the re-entry condition rather than a named sibling.",
+   "prior_art_state": "not_assessed_without_novelty_claim",
+   "novelty_claim": false
+  }
+ ],
  "benchmark": {
   "items": [
    {
@@ -220,10 +607,19 @@
   "results": []
  },
  "views": {
-  "minimum_basis": [],
+  "minimum_basis": [
+   "composite_dilation_defect_accounting",
+   "dyadic_odd_core_basis",
+   "greedy_residual_tail_invariant",
+   "modular_gap_denominator_exclusion",
+   "nested_cylinder_measure_continuity",
+   "scalar_localisation_height_barrier",
+   "strict_superincreasing_first_difference",
+   "sublog_zero_window_self_absorption"
+  ],
   "unexplained_residual": {
    "rule": "Statement nodes no mechanism claims to explain. A large residual is a real finding about the basis, not a bookkeeping gap.",
-   "count": 677,
+   "count": 697,
    "nodes": [
     "Z01::bounded_crt_exact_valuation_frame",
     "Z01::canonical_witness_selector_reduction",
@@ -280,7 +676,6 @@
     "Z01::support_coefficient_representation",
     "Z01::tau_block_certificate_supply",
     "Z01::totient_carry_field_recurrences",
-    "Z01::totient_denominator_exclusion_ladder",
     "Z01::totient_first_block_hinge",
     "Z01::totient_series_moebius_square_lens",
     "Z01::totient_series_rational_exclusions_from_kills",
@@ -507,7 +902,6 @@
     "Z09::curvature_window_doubling_recurrence",
     "Z09::curvature_window_split_sharp_radius",
     "Z09::dyadic_channel_odd_core_reduction",
-    "Z09::dyadic_section_basis_classification",
     "Z09::euler_sieve_local_identities",
     "Z09::exponent_only_three_transport_supply_implies_249",
     "Z09::finite_level_carry_anti_compression",
@@ -530,7 +924,6 @@
     "Z09::prime_ray_cyclotomic_open_sockets",
     "Z09::rationality_forces_unbounded_carry_rank",
     "Z09::residue_kernel_affine_state",
-    "Z09::scalar_localisation_height_barrier",
     "Z09::separated_minor_rank_criterion",
     "Z09::square_crt_correction_suppression",
     "Z09::squarefree_support_stability_under_exponent_jump",
@@ -553,7 +946,6 @@
     "Z10::cesaro_tail_mean_equals_reciprocal_mass",
     "Z10::common_multiple_collision_strengthens_wrap_bound",
     "Z10::composite_defect_fixtures",
-    "Z10::composite_dilation_defect_identity",
     "Z10::denominator_shell_pressure_from_analytic_tail_bound",
     "Z10::dilation_difference_is_pullback_coefficient",
     "Z10::dilation_layer_fixtures",
@@ -613,7 +1005,6 @@
     "Z11::rational_value_predicate_normalisation",
     "Z11::rationality_iff_tempered_orbit",
     "Z11::self_reference_absorption_log_inversion",
-    "Z11::sublogarithmic_zero_window_bound",
     "Z11::subpower_tail_envelope_from_coefficient_bound",
     "Z11::support_coefficient_subpower_envelope",
     "Z11::tempered_orbit_rigidity",
@@ -637,7 +1028,6 @@
     "Z12::full_strip_reachability_yields_257_counterexample",
     "Z12::greedy_mobius_carry_nonneg",
     "Z12::greedy_rational_exactness",
-    "Z12::greedy_survival_characterisation",
     "Z12::half_greedy_self_trapping_interval_criterion",
     "Z12::half_greedy_shadow_reformulation",
     "Z12::half_membership_iff_infinite_greedy_skips",
@@ -654,7 +1044,6 @@
     "Z12::last_skip_iff_finite_skips",
     "Z12::last_skip_shift_geometry",
     "Z12::mersenne_achievement_set_cantor_geometry",
-    "Z12::mersenne_achievement_set_measure_one",
     "Z12::mersenne_gap_two_channel_asymptotic",
     "Z12::mersenne_sliver_coordinate_dynamics",
     "Z12::mersenne_strict_superincreasing_tail",
@@ -678,7 +1067,6 @@
     "Z12::straddle_prefix_membership_criterion",
     "Z12::strip_admissible_branch_forces_half",
     "Z12::strip_envelope_subexponential",
-    "Z12::supported_mersenne_digit_injectivity",
     "Z12::tempered_mobius_carry_yields_half",
     "Z12::terminal_only_cofinal_yields_half",
     "Z12::terminal_only_strip_error_bound",
@@ -887,6 +1275,10 @@
     "Z18::lcm_jump_kill_from_diagonal",
     "Z19::angle_b2_conditional_contradiction",
     "Z19::angle_b3_large_offset_nonrecurrence",
+    "Z20::diagonal_band_plateau_transfer_wall_at_83",
+    "Z20::diagonal_ladder_equal_depth_after_modulus_tripling",
+    "Z20::diagonal_ladder_exact_minimal_depths",
+    "Z20::diagonal_ladder_sampled_excess_changes_direction",
     "Z20::skip_existential_bound_conditional",
     "Z21::free_walk_no_small_absolute_bound",
     "Z21::prime_seam_excess_not_two",
@@ -899,6 +1291,30 @@
     "Z26::hlow_failure_gives_hit",
     "Z26::universal_hlow_refuted",
     "Z27::free_position_finite_certificates",
+    "Z28::actual_lcm_orbit_nonintegrality_exact_frontier",
+    "Z28::carry_displacement_tail_integrality_equivalence",
+    "Z28::cofinal_short_arithmetic_kills_imply_irrationality",
+    "Z28::fixed_rank_curvature_dyadic_divisor_is_sharp",
+    "Z28::fixed_rank_curvature_dyadic_scaling_and_divisibility",
+    "Z28::fixed_rank_curvature_primitive_archimedean_bound",
+    "Z28::full_terminal_dyadic_staircase_is_impossible",
+    "Z28::lcm_arithmetic_word_exact_certificate_representation",
+    "Z28::rationality_mod_period_and_unbounded_rank",
+    "Z28::short_arithmetic_kills_at_exponents_four_and_six",
+    "Z28::top_edge_residue_gap_excludes_integral_tail_difference",
+    "Z28::totient_parity_aperiodicity_rational_countermodel",
+    "Z29::above_half_support_recycles_through_first_crossing",
+    "Z29::below_half_exact_row_has_strict_doubling_extension",
+    "Z29::cofinal_exact_rows_force_half_membership",
+    "Z29::critical_quotient_supply_collapses_to_actual_skipped_orbit",
+    "Z29::critical_supply_produces_strictly_growing_rows_and_half_membership",
+    "Z29::double_or_recycle_transition_does_not_imply_cofinality",
+    "Z29::endpoint_six_exact_row_seed",
+    "Z29::fractional_mass_one_is_sufficient_but_not_necessary",
+    "Z29::future_skip_lookahead_closes_precritical_row",
+    "Z29::precritical_supply_has_exact_crossing_tax_and_future_skip_forms",
+    "Z29::sharp_capacity_builds_strict_upper_exact_row",
+    "Z29::sharp_skipped_core_capacity_exact_normal_forms",
     "generated::diagonal_pincer_windows",
     "generated::emitted_block_certificates",
     "generated::lucas_primality_closures"
@@ -911,8 +1327,18 @@
  },
  "integrity": {
   "declarations_known": 150935,
-  "statement_nodes_known": 677,
-  "mechanism_ids": [],
+  "statement_nodes_known": 705,
+  "mechanism_ids": [
+   "composite_dilation_defect_accounting",
+   "dyadic_odd_core_basis",
+   "greedy_residual_tail_invariant",
+   "modular_gap_denominator_exclusion",
+   "nested_cylinder_measure_continuity",
+   "prime_support_defect_cancellation",
+   "scalar_localisation_height_barrier",
+   "strict_superincreasing_first_difference",
+   "sublog_zero_window_self_absorption"
+  ],
   "unknown_declaration_citations": [],
   "unknown_node_citations": []
  }

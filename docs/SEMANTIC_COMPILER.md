@@ -106,6 +106,14 @@ The vocabulary is deliberately small. It translates a few recurring ordinary
 phrases into the corpus terminology and records every expansion in the output.
 It is not a second mathematical paper.
 
+The same packet exposes the route-discovery lexicon generated from
+`docs/claims.json`. That is the Rosetta source of truth for first-contact
+phrasing: each authored term names the typed route it is allowed to select.
+A unique exact normalized term may use a constant-time fast path; ambiguous or
+unseen language still goes through the visible operator/vocabulary
+interpretation and ranked corpus search. The optimization therefore does not
+turn undocumented phrase luck into a navigation contract.
+
 ## Witness slices
 
 Each semantic cell carries its typed handle, the reason it was selected, an

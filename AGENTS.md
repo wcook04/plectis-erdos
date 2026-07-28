@@ -117,11 +117,12 @@ Lean build when a result must be checked.
    `METHODOLOGY.md` is the shorter human projection.
 4. Read `docs/corpus_descriptor.json` when another agent or system needs to
    register this repository as a mathematical corpus. It separates the pinned
-   proof-source tag from the later navigation snapshot and content digests, and
-   carries bounded principal handles plus digest-bound expansion routes for both
-   authored papers and the paper-to-Lean source-sigil crosswalk. These authored
-   surfaces remain distinct from Lean proof authority. The release gate keeps
-   this registration envelope below 64 KB.
+   proof-source commit from the content-addressed navigation projection, and
+   carries bounded principal handles plus digest-bound expansion routes for
+   both authored papers and the paper-to-Lean source-sigil crosswalk. Generated
+   navigation does not pretend to contain the Git commit that first contains
+   its own bytes. These authored surfaces remain distinct from Lean proof
+   authority. The release gate keeps this registration envelope below 64 KB.
 5. Read `docs/publication_entry_packet.json` when the task concerns the
    systems paper, publication controls, mutation evidence, or their current
    limits. It is a generated, bounded agent packet containing the thesis,
@@ -189,6 +190,7 @@ Lean build when a result must be checked.
    python3 scripts/query_semantic.py barriers
    python3 scripts/query_semantic.py open-antecedents
    python3 scripts/query_semantic.py paper-coverage
+   python3 scripts/query_semantic.py population-backlog
    python3 scripts/query_semantic.py semantic-reviews
    ```
 

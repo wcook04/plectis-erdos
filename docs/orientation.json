@@ -19,7 +19,7 @@
   "version": "0.6.0",
   "tag": "v0.6.0",
   "lean_toolchain": "leanprover/lean4:v4.29.1",
-  "formal_source_ref": "daff75b6881c36001c7b3a1907db8d6390fb057d",
+  "formal_source_ref": "1128d0858e1060c741f26460afac166f36801af9",
   "formal_source_publication_state": "committed_checkpoint_pending_remote_publication"
  },
  "scale": {
@@ -27,7 +27,7 @@
   "declaration_count": 151755,
   "theorem_like_count": 149807,
   "generated_certificate_declaration_count": 8171,
-  "principal_claim_link_count": 299,
+  "principal_claim_link_count": 300,
   "kind_counts": {
    "abbrev": 11,
    "def": 1896,
@@ -264,7 +264,7 @@
   {
    "id": "certified_kill_instances",
    "status": "verified finite instance",
-   "statement": "Kernel-checked certified kills for small periods and at 28 explicit lcm-diagonal scales through t = 64, plus finite certificate shards, each discharged by decide.",
+   "statement": "Kernel-checked certified kills for the listed small periods, every lcm-diagonal scale t ≤ 82, and the finite certificate shards. The historical 28 explicit deposits through t = 64 form a strict subset of this contiguous finite band.",
    "paper_label": "res:deposits",
    "declarations": [
     {
@@ -291,6 +291,11 @@
      "name": "certifiedKill_diagonal_all_imported_through_t64",
      "module": "Erdos249257/DiagonalPincerCertificatesT64.lean",
      "line": 1967
+    },
+    {
+     "name": "exists_diagonalKill_le_82",
+     "module": "ErdosProblems/Skip/LadderT67.lean",
+     "line": 71264
     }
    ],
    "remaining_open_proposition_ids": [
@@ -571,10 +576,10 @@
   "active_inconsistencies": [],
   "blocked_decisions": []
  },
- "source_revision": {
-  "formal_source_ref": "daff75b6881c36001c7b3a1907db8d6390fb057d",
-  "committed_navigation_snapshot": "e46d862471f9764077c629cb09560ae84b92bb14",
-  "main_paper_source_digest": "sha256:6d606eacaba2045e7c23efdaaa1ee758f710e7f3554d56787f64d62e42722d6d"
+ "source_provenance": {
+  "formal_source_ref": "1128d0858e1060c741f26460afac166f36801af9",
+  "main_paper_source_digest": "sha256:a15c068a0c0fbb797cadb50310ae253fd1369f7ffee6c4e289d21692e371832b",
+  "navigation_projection_identity": "content digests in corpus descriptor; no checkout commit embedded"
  },
  "reading_routes": [
   {
@@ -590,7 +595,8 @@
    "intent": "Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.",
    "read": [
     "docs/AGENT_WORKBENCH.md",
-    "docs/SEMANTIC_COMPILER.md"
+    "docs/SEMANTIC_COMPILER.md",
+    "docs/semantic/lab/README.md"
    ]
   },
   {
@@ -605,8 +611,7 @@
    "id": "follow_one_claim",
    "intent": "Trace one mathematical claim from exposition to checked source.",
    "read": [
-    "docs/orientation.json",
-    "docs/ORIENTATION.md"
+    "docs/orientation.json"
    ]
   },
   {
@@ -760,7 +765,7 @@
  },
  "external_registration": {
   "path": "docs/corpus_descriptor.json",
-  "schema": "erdos249257-corpus-descriptor/4",
+  "schema": "erdos249257-corpus-descriptor/5",
   "maximum_bytes": 64000,
   "inline": [
    "release_identity",

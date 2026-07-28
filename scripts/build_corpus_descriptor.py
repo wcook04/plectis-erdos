@@ -59,30 +59,6 @@ def file_digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def recorded_navigation_commit() -> str:
-    """Return the last recorded navigation snapshot without invoking Git.
-
-    Rebuilding the content projections in a shared worktree must not mutate or
-    inspect version-control state. The exact current content is bound by file
-    digests; this commit remains a historical navigation label.
-    """
-    if ORIENTATION_JSON.is_file():
-        current = json.loads(ORIENTATION_JSON.read_text(encoding="utf-8"))
-        value = current.get("source_revision", {}).get(
-            "committed_navigation_snapshot"
-        )
-        if isinstance(value, str) and value:
-            return value
-    if OUTPUT.is_file():
-        current = json.loads(OUTPUT.read_text(encoding="utf-8"))
-        value = current.get("identity", {}).get("navigation_snapshot", {}).get(
-            "commit"
-        )
-        if isinstance(value, str) and value:
-            return value
-    return "unknown"
-
-
 def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str, Any]:
     """Project a bounded first-read capsule from the exhaustive owners."""
     principal_claims = []
@@ -109,7 +85,6 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
 
     machine_paper = claims["machine_readable_paper"]
     publication_assembly = machine_paper["publication_assembly"]
-    navigation_commit = recorded_navigation_commit()
     # The runnable per-route command is derivable from the id (see the
     # ``queries`` section); storing it per row would spend first-contact
     # budget on repetition.
@@ -180,10 +155,12 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         "mathematical_programmes": mathematical_programmes,
         "editorial_architecture": editorial_architecture,
         "editorial_state": editorial_state,
-        "source_revision": {
+        "source_provenance": {
             "formal_source_ref": claims["release"]["formal_source"]["ref"],
-            "committed_navigation_snapshot": navigation_commit,
             "main_paper_source_digest": file_digest(MAIN_PAPER_TEX),
+            "navigation_projection_identity": (
+                "content digests in corpus descriptor; no checkout commit embedded"
+            ),
         },
         "reading_routes": reading_routes,
         "drilldowns": {
@@ -221,7 +198,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         },
         "external_registration": {
             "path": "docs/corpus_descriptor.json",
-            "schema": "erdos249257-corpus-descriptor/4",
+            "schema": "erdos249257-corpus-descriptor/5",
             "maximum_bytes": DESCRIPTOR_MAX_BYTES,
             "inline": ["release_identity", "content_digests", "principal_claim_handles", "root_module_topology"],
             "expands_to": [
@@ -370,7 +347,7 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "## External corpus registration",
             "",
             "[`docs/corpus_descriptor.json`](corpus_descriptor.json) uses schema",
-            "`erdos249257-corpus-descriptor/4`. The release gate keeps it below 64 KB.",
+            "`erdos249257-corpus-descriptor/5`. The release gate keeps it below 64 KB.",
             "It carries release identities, content digests, principal claim and declaration",
             "handles, and the root module topology. Complete claims, module imports,",
             "declaration prose, methodology, both authored papers, and the paper-to-Lean",
@@ -555,16 +532,6 @@ def build() -> dict[str, Any]:
             if recorded.get("ref") == formal_ref
             else "unknown"
         )
-    navigation_commit = recorded_navigation_commit()
-    # The descriptor deliberately records no publication state for the
-    # navigation snapshot. Whether a snapshot commit is reachable from main is a
-    # property of the repository at read time, not of this tree: it depends on
-    # which refs the checkout carries, and it flips when a pull request merges
-    # without any file changing. Consulting origin/main as well as a local main
-    # narrows the gap but does not close it, because a topic branch and the main
-    # branch that later contains it still disagree. Readers resolve publication
-    # state from ``repository_resolution`` instead.
-
     orientation = build_orientation(claims, atlas)
     root_paths = [
         machine_paper["module_graph"]["root"],
@@ -595,7 +562,7 @@ def build() -> dict[str, Any]:
 
     repository = str(release["repository"])
     return {
-        "schema": "erdos249257-corpus-descriptor/4",
+        "schema": "erdos249257-corpus-descriptor/5",
         "artifact_role": "self_describing_external_mathematical_corpus_root",
         "corpus_id": "plectis_lean_erdos249_257_public",
         "release_provenance": release["public_projection"],
@@ -620,10 +587,18 @@ def build() -> dict[str, Any]:
                 "lean_toolchain": release["lean_toolchain"],
                 "authority_role": "proof_bearing_committed_source_anchor",
             },
-            "navigation_snapshot": {
-                "commit": navigation_commit,
-                "authority_role": "machine_readable_navigation_anchor",
-                "repository_resolution": f"{repository}/tree/{navigation_commit}",
+            "navigation_projection": {
+                "identity_kind": "content_addressed_expansion_set",
+                "authority_role": (
+                    "machine_readable_navigation_identity_not_proof_authority"
+                ),
+                "content_identity_owner": "identity.content",
+                "git_commit_not_embedded_reason": (
+                    "A generated file cannot truthfully contain the Git commit "
+                    "that first contains its own bytes. Current projection identity "
+                    "is therefore the committed content-digest set, while the "
+                    "formal-source commit remains separate."
+                ),
             },
             "content": {
                 "machine_readable_paper": {
@@ -820,6 +795,19 @@ def build() -> dict[str, Any]:
                 "compact_graph.methodology_capsule extended fields": "docs/methodology.json",
             },
         },
+        "migration_from_v4": {
+            "reason": (
+                "The former identity.navigation_snapshot.commit was a preserved "
+                "historical label that could lag the generated content and be "
+                "mistaken for its current Git identity."
+            ),
+            "field_replacements": {
+                "identity.navigation_snapshot": (
+                    "identity.navigation_projection plus identity.content digests"
+                ),
+                "orientation.source_revision": "orientation.source_provenance",
+            },
+        },
         "checks": {
             "descriptor": "python3 scripts/build_corpus_descriptor.py --check",
             "methodology": "python3 scripts/build_methodology.py --check",
@@ -898,7 +886,7 @@ def main() -> int:
         print(
             "corpus descriptor and orientation current: "
             f"formal={descriptor['identity']['formal_source']['resolved_commit'][:8]} "
-            f"navigation={descriptor['identity']['navigation_snapshot']['commit'][:8]} "
+            "navigation=content-addressed "
             f"bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
         )
         return 0

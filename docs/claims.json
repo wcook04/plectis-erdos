@@ -68,11 +68,21 @@
           "inspect exact proof dependencies",
           "start an agent proof session",
           "agent-native Lean workbench",
-          "cold-clone mathematical comprehension"
+          "cold-clone mathematical comprehension",
+          "which semantic meanings were reviewed",
+          "what semantic interpretations were checked",
+          "audit semantic review receipts",
+          "why does this Lean proof work",
+          "which proof mechanisms transfer",
+          "what mathematical routes failed",
+          "what semantic work remains",
+          "which paper proofs lack semantic interpretation",
+          "prioritize semantic population from the papers"
         ],
         "read": [
           "docs/AGENT_WORKBENCH.md",
-          "docs/SEMANTIC_COMPILER.md"
+          "docs/SEMANTIC_COMPILER.md",
+          "docs/semantic/lab/README.md"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --search <ordinary-language-query>",
@@ -83,6 +93,10 @@
         ],
         "action_steps": [
           "python3 scripts/query_semantic.py inventory <candidate-name-or-source-term> --module <path-fragment> --role <declaration-role> --zone <semantic-zone>",
+          "python3 scripts/query_semantic.py semantic-reviews",
+          "python3 scripts/query_semantic.py mechanisms --problem <249-or-257>",
+          "python3 scripts/query_semantic.py receipts",
+          "python3 scripts/query_semantic.py population-backlog [--paper <paper-stem>] [--limit <count>]",
           "python3 scripts/proof_workbench.py open --help",
           "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness <selected-target>",
           "python3 scripts/lean_fast_build.py --jobs 2 --changed-from <git-ref> --plan"
@@ -91,6 +105,7 @@
           "lean-toolchain",
           "lakefile.toml",
           "docs/semantic_corpus.json",
+          "docs/theory_lab.json",
           "docs/lean_dependency_index.json",
           "scripts/proof_workbench.py",
           "scripts/lean_fast_build.py"
@@ -152,8 +167,7 @@
           "follow a theorem into Lean"
         ],
         "read": [
-          "docs/orientation.json",
-          "docs/ORIENTATION.md"
+          "docs/orientation.json"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --claim <claim_id>",
@@ -10800,7 +10814,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "daff75b6881c36001c7b3a1907db8d6390fb057d",
+      "ref": "1128d0858e1060c741f26460afac166f36801af9",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint"
@@ -12540,8 +12554,8 @@
       "id": "certified_kill_instances",
       "label": "Initial certified-kill segment and generated certificates",
       "status": "verified finite instance",
-      "statement": "Kernel-checked certified kills for small periods and at 28 explicit lcm-diagonal scales through t = 64, plus finite certificate shards, each discharged by decide.",
-      "bounded_domain": "The explicitly listed small periods; the lcm-diagonal scales t in {1,2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,53,59,61,64}; and the parameters encoded by the finite certificate shards.",
+      "statement": "Kernel-checked certified kills for the listed small periods, every lcm-diagonal scale t ≤ 82, and the finite certificate shards. The historical 28 explicit deposits through t = 64 form a strict subset of this contiguous finite band.",
+      "bounded_domain": "The explicitly listed small periods; every natural lcm-diagonal scale t with t ≤ 82; and the parameters encoded by the finite certificate shards. No certificate at t = 83 and no unbounded or cofinal supply is claimed.",
       "remaining_open_proposition_ids": [
         "remaining_open.unbounded_certificate_supply"
       ],
@@ -12572,6 +12586,11 @@
           "name": "certifiedKill_diagonal_all_imported_through_t64",
           "module": "Erdos249257/DiagonalPincerCertificatesT64.lean",
           "line": 1967
+        },
+        {
+          "name": "exists_diagonalKill_le_82",
+          "module": "ErdosProblems/Skip/LadderT67.lean",
+          "line": 71264
         }
       ]
     },

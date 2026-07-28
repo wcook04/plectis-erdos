@@ -33,13 +33,13 @@ MAX_GUIDE_BYTES = 18_000
 # of growth this budget must never buy back by trimming, because a reader who
 # misses it misreads the byline; the page-band exchange it forced is already
 # recorded in check_rendered_paper_boundary.py.
-# Raised to 61_000 for the agent-native navigation/workbench case study and its
+# Raised to 65_000 for the agent-native navigation/workbench case study and its
 # primary-source comparison set. This growth pays for an independently
 # reproducible authority boundary (zero-build projections -> receipted Lean
 # probe -> incremental build), explicit unresolved-index counts, one replayed
-# dogfood session, and four bibliography entries; it does not relax the existing
-# cold-reader or claim-boundary anchors.
-MAX_SYSTEMS_PAPER_BYTES = 61_000
+# dogfood session, and the closest graph, retrieval, assurance, and provenance
+# comparators; it does not relax the cold-reader or claim-boundary anchors.
+MAX_SYSTEMS_PAPER_BYTES = 65_000
 
 SECTION_ORDER = (
     "## What this repository is",

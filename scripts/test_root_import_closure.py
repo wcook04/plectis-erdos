@@ -206,6 +206,21 @@ def main() -> int:
         for root in roots
         for imported in IMPORT_RE.findall((ROOT / root).read_text(encoding="utf-8"))
     ]
+    imports_by_id = {
+        str(node["id"]): list(node["imports"]) for node in graph["nodes"]
+    }
+    supported_root_reachable: set[str] = set()
+    pending = list(root_imports)
+    while pending:
+        module = pending.pop()
+        if module in supported_root_reachable or module not in imports_by_id:
+            continue
+        supported_root_reachable.add(module)
+        pending.extend(imports_by_id[module])
+    assert "ErdosProblems.Skip.LadderT67" in supported_root_reachable, (
+        "the reviewed t ≤ 82 finite-certificate theorem must be elaborated by "
+        "a supported-root build, not only covered by the auxiliary forest"
+    )
     public_paths = {
         path.relative_to(ROOT).as_posix()
         for library_root in LIBRARY_ROOTS
