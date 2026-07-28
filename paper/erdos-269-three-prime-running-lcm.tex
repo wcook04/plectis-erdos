@@ -193,11 +193,15 @@ We do not determine whether the coordinates separate when $|P|=2$.
 
 The identification $\Lprefix(x)=\hgt(x)$ of Theorem~\ref{res:lcm} is what makes
 every statement about $\Lprefix$ below computable from three integer
-logarithms.  In the unrestricted case that identification is
-classical: $\lcm(1,\ldots,N)=\prod_{t\le N}t^{\lfloor\log_t N\rfloor}$, the
-product being over the primes $t\le N$, equivalently
-$\log\lcm(1,\ldots,N)=\psi(N)$ for Chebyshev's function
-$\psi$~\cite[Ch.~4]{apostol1976}.  We record the $P$-restricted form because
+logarithms.  In the unrestricted case that identification follows by
+iterating the prime-exponent maximum rule for least common multiples:
+$\lcm(1,\ldots,N)=\prod_{t\le N}t^{\lfloor\log_t N\rfloor}$, the product
+being over the primes $t\le N$~\cite[Ex.~1.21(a), p.~22]{apostol1976}.
+Chebyshev's function is the corresponding prime-power sum, so equivalently
+$\log\lcm(1,\ldots,N)=\psi(N)$
+~\cite[\S4.2, p.~75]{apostol1976}; Montgomery--Vaughan state this exact
+identity directly in Exercise~6.2.7~\cite[p.~183]{montgomeryvaughan2007}.
+We record the $P$-restricted form because
 every later statement in the formal development is derived from it, and we
 claim nothing new for it.
 
@@ -1237,8 +1241,16 @@ reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{610}{no_posi
   \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/269.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{269}}},
   Lean source at commit \texttt{f776d2f}, 2025, accessed 28 July 2026.
-\bibitem{apostol1976} T.~M. Apostol, \emph{Introduction to Analytic Number
-  Theory}, Springer, New York, 1976, Ch.~4.
+\bibitem{apostol1976} T.~M. Apostol,
+  \href{https://doi.org/10.1007/978-1-4757-5579-4}
+  {\emph{Introduction to Analytic Number Theory}},
+  Springer, New York, 1976.
+\bibitem{montgomeryvaughan2007} H.~L. Montgomery and R.~C. Vaughan,
+  \emph{The Prime Number Theorem}, in \emph{Multiplicative Number Theory I:
+  Classical Theory}, Cambridge Studies in Advanced Mathematics 97,
+  Cambridge University Press, 2007, pp.~168--198,
+  doi:\href{https://doi.org/10.1017/CBO9780511618314.008}
+  {10.1017/CBO9780511618314.008}.
 \bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao, \emph{On several irrationality
   problems for Ahmes series},
   \href{https://arxiv.org/abs/2406.17593}{arXiv:2406.17593}, 2024.
