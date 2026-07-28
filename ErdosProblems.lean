@@ -1,4 +1,7 @@
 import ErdosProblems.Root
+-- The reviewed finite certificate claim uses `exists_diagonalKill_le_82`.
+-- Import its module here so a supported-root build rechecks that theorem.
+import ErdosProblems.Skip.LadderT67
 import ErdosProblems.AxiomAudit
 import ErdosProblems.Erdos269.RestrictedFloorSum
 
