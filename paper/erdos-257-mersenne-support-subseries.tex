@@ -421,7 +421,8 @@ multiples of a fixed $d$ & every $b\ge2$ & dilation: the multiples series at
 \multicolumn{3}{@{}l}{\emph{Periodicity of the coefficient sequence}}\\
 eventually periodic & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{11276}{irrational_erdosSupportSeries_eventuallyPeriodic}{checked here};
-  Luca--Tachiya prove a broader periodic theorem~\cite{lucatachiya} \\
+  Luca--Tachiya restate a broader signed theorem for purely periodic integer
+  weights~\cite[Theorem~A, p.~139]{lucatachiya2017} \\
 a residue class; the odd numbers & every $b\ge2$ & special cases of the row
   above (\mword{Erdos249257/CertificateKernel.lean}{11344}{irrational_erdosSupportSeries_residueClass}{residue class},
   \mword{Erdos249257/CertificateKernel.lean}{11358}{irrational_erdosSupportSeries_odd}{odd}) \\
@@ -510,9 +511,10 @@ and only the first is proved.
 
 \emph{Formalisation is not priority.}  Rows marked ``checked here'' are Lean
 statements accepted by the pinned kernel.  For the full support that is a
-formalisation of Erd\H{o}s; for eventually periodic supports Luca and Tachiya
-prove a broader theorem by other methods.  No priority is claimed anywhere in
-this table.
+formalisation of Erd\H{o}s; for purely periodic integer weights Luca and
+Tachiya's open note restates a broader signed theorem by other methods
+\cite[Theorem~A, p.~139]{lucatachiya2017}.  No priority is claimed anywhere
+in this table.
 
 \begin{remark}[signed periodic weights: a gap in the method, not in the
 mathematics]\label{res:signed}
@@ -525,16 +527,18 @@ its value is an integer
 For a nonnegative support indicator the terminating alternative is excluded by
 the rows above; for mixed signs this argument does not exclude it.
 
-The terminating alternative never in fact occurs.  Luca and Tachiya's
-Theorem~1.1 gives outright irrationality of $\sum_{n\ge1}a_n/(q^n-1)$ for every
-integer $q$ with $|q|>1$ and every eventually periodic rational sequence
-$(a_n)$ that is not eventually zero~\cite{lucatachiya}, and a nonzero periodic
-integer weight satisfies that hypothesis automatically, since a nonzero value
-recurs.  So the disjunction above is an artefact of the route taken, not a
-feature of the problem: the second branch is empty, and their theorem is what
-shows it.  The local statement retains only the interest of being an
-independently checked argument with a visible boundary.  Section~\ref{sec:squarefree}
-records a second, sharper instance of the same phenomenon.
+The terminating alternative never in fact occurs.  Theorem~A in Luca and
+Tachiya's later open note explicitly restates their earlier Theorem~1.1 in the
+exact form needed here: $\sum_{n\ge1}a_n/(q^n-1)$ is irrational for every
+integer $q$ with $|q|>1$ and every nonzero purely periodic integer sequence
+$(a_n)$ \cite[Theorem~A, p.~139]{lucatachiya2017}.  Thus the disjunction above
+is an artefact of the route taken, not a feature of the problem: the second
+branch is empty, and their author restatement is what shows it.  The open note
+does not reproduce the earlier proof or verify the broader eventual-rational
+formulation, so neither is claimed here.  The local statement retains only
+the interest of being an independently checked argument with a visible
+boundary.  Section~\ref{sec:squarefree} records a second, sharper instance of
+the same phenomenon.
 \end{remark}
 
 \section{Squarefree support and a coordinate-dependent obstruction}
@@ -942,10 +946,13 @@ Erd\H{o}s Problem~\#257 remains open.
   extension to every integer base and the prime-power support are stated as
   remarks with the modifications left to the reader.  The theorem is on
   p.~4 and its proof is Section~5, pp.~44--56, in arXiv v2.
-\bibitem{lucatachiya} F.~Luca and Y.~Tachiya, \emph{Irrationality of Lambert
-  series associated with a periodic sequence}, Int.\ J.\ Number Theory 10
-  (2014), no.~3, 623--636,
-  \href{https://doi.org/10.1142/S1793042113501121}{DOI}.
+\bibitem{lucatachiya2017} F.~Luca and Y.~Tachiya,
+  \href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf}
+  {\emph{Linear independence results for the values of divisor functions
+  series}}, RIMS K\^oky\^uroku No.~2014 (2017), 138--150.
+  Theorem~A on p.~139 explicitly restates their earlier Theorem~1.1 for
+  nonzero purely periodic integer weights.  Theorem~1 is on p.~139, its
+  examples are on p.~140, and its proof is on pp.~149--150.
 \bibitem{kovactao} V.~Kova\v{c} and T.~Tao, \emph{On several irrationality
   problems for Ahmes series}, Acta Math.\ Hungar.\ 175 (2025), 572--608,
   \href{https://doi.org/10.1007/s10474-025-01528-0}{DOI}.  Remark 4.1

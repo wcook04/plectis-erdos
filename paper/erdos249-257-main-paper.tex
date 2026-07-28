@@ -643,12 +643,17 @@ printed theorem on p.~222.  His next sentence says that pairwise coprimality
 can be removed by a more complicated argument, but the article omits that
 argument and p.~226 repeats the proof boundary; we therefore do not use the
 stronger extension. The lcm-gap named cases are (a) and (b), whose support gaps outgrow the
-running $\lcm$; the structured families are (c) and (e).\footnote{Luca--Tachiya
-prove the broader eventual-periodic rational-coefficient theorem; its indicator
-specialisation directly contains case (e)~\cite{lucatachiya}. Their
-Chowla--Erd\H{o}s-style large-modulus proof is distinct from the periodic-divisor
-certificate route formalised here, and the full mixed-sign coefficient theorem is
-not claimed.}
+running $\lcm$; the structured families are (c) and (e).\footnote{Theorem~A
+in Luca--Tachiya's later open note restates their broader signed result for
+every nonzero purely periodic integer coefficient sequence
+\cite[Theorem~A, p.~139]{lucatachiya2017}.  This directly covers periodic
+indicators; the checked finite-change theorem below handles an eventual
+prefix.  Their Remark~1 says that the earlier signed proof used the
+Alford--Granville--Pomerance large-modulus input, unlike their nonnegative
+proof \cite[p.~140]{lucatachiya2017}.  The same paper's Theorem~1 and
+Example~1 strengthen the nonnegative unit case to linear independence of
+every finite generalized-divisor ladder
+\cite[pp.~139--140; proof pp.~149--150]{lucatachiya2017}.}
 \noindent Formalised case by case by the
 \lword{CertificateKernel.lean}{5707}{irrational_erdosSum_factorial_support}{factorial-support theorem},
 \lword{CertificateKernel.lean}{5731}{irrational_erdosSum_two_pow_support}{power-of-two-support theorem},
@@ -3642,8 +3647,11 @@ not identically zero on its eventual period gives an irrational series.
 \end{theorem}
 \noindent Formalised:
 \lword{CertificateKernel.lean}{12483}{irrational_ratWeightSeries_eventuallyPeriodic}{eventually-periodic nonnegative criterion}.
-Luca--Tachiya prove more: every nonzero eventually periodic rational weight
-gives an irrational series for each integer base $|b|>1$~\cite{lucatachiya}.
+Luca--Tachiya's later open note restates the signed purely-periodic integer
+theorem: every nonzero such weight gives an irrational series for each integer
+base $|b|>1$ \cite[Theorem~A, p.~139]{lucatachiya2017}.  That source does not
+reproduce the earlier proof or verify the broader eventual-rational wording;
+the theorem above is supported by the local checked proof.
 \begin{theorem}[periodic signed-weight dichotomy]\label{res:periodicsigned}
 For a periodic integer weight \(\gamma\), either \(L_b(\gamma)\) is irrational
 or \(b^kL_b(\gamma)\in\Z\) for some \(k\ge0\).  In the rational branch its
@@ -5121,9 +5129,13 @@ Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization
   \href{https://arxiv.org/abs/math/0604312v1}{\emph{Irrationality of $\zeta_q(1)$ and $\zeta_q(2)$}},
   J. Number Theory \textbf{126} (2007), no.~1, 119--154,
   doi:\href{https://doi.org/10.1016/j.jnt.2006.11.011}{10.1016/j.jnt.2006.11.011}.
-\bibitem{lucatachiya} F.~Luca and Y.~Tachiya, \emph{Irrationality of Lambert series associated
-  with a periodic sequence}, Int. J. Number Theory \textbf{10} (2014), no.~3, 623--636,
-  doi:\href{https://doi.org/10.1142/S1793042113501121}{10.1142/S1793042113501121}.
+\bibitem{lucatachiya2017} F.~Luca and Y.~Tachiya,
+  \href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf}
+  {\emph{Linear independence results for the values of divisor functions
+  series}}, RIMS K\^oky\^uroku No.~2014 (2017), 138--150.
+  Theorem~A on p.~139 explicitly restates their earlier Theorem~1.1 for
+  nonzero purely periodic integer weights.  Theorem~1 is on p.~139, its
+  examples are on p.~140, and its proof is on pp.~149--150.
 \bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya,
   \href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf}
   {\emph{Refinement of the Chowla--Erd\H{o}s method and linear independence
