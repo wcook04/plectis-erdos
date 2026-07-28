@@ -98,11 +98,16 @@ Between the two lies the question this note is about: what exactly stops the
 integer-base argument from running at $3/2$?
 
 \paragraph{Relation to prior work.}
-The statement of Problem~\#1049 has been formalised before, as a conjecture
-with an unfilled proof, in the \emph{Formal Conjectures}
-collection~\cite{formalconjectures1049}.  That is a statement of the question;
-the present note formalises propositions about the clearing argument, and
-neither answers it.  Erd\H{o}s's positive-integer theorem of
+The \emph{Formal Conjectures} file for Problem~\#1049 contains the conjecture
+and integer-base theorem as \texttt{sorry} placeholders, but it also proves
+the Lambert identity between the two displayed series for rational
+$t$~\cite{formalconjectures1049}.  In the present $t>1$ regime its
+\texttt{lambert\_convergent} branch is an ordinary convergent-series proof;
+the same file's $|t|\le1$ branch instead uses Lean's convention that the
+\texttt{tsum} of a nonsummable series is zero.  Thus it supplies genuine
+checked prior art for the identity, but no irrationality theorem.  The present
+note formalises propositions about the clearing argument and likewise does
+not answer the conjecture.  Erd\H{o}s's positive-integer theorem of
 1948~\cite{erdos1948} sits inside a larger integer-base literature.  In 1991
 Borwein proved the irrationality of shifted series
 $\sum_{n\ge1}(t^{n}+w)^{-1}$ at integer bases $t\ge2$, for every nonzero
@@ -1122,9 +1127,11 @@ three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{323}{t
   \href{https://www.erdosproblems.com/1049}{\emph{Erd\H{o}s Problem \#1049}},
   \texttt{erdosproblems.com/1049}, accessed 22 July 2026.
 \bibitem{formalconjectures1049} The Formal Conjectures Authors,
-  \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/1049.lean}
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/1049.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{1049}}},
-  Lean source, 2025, accessed 27 July 2026.
+  Lean source at commit \texttt{f776d2f}, 2026, accessed 28 July 2026.  The
+  irrationality declarations are unproved; the Lambert-series identity is
+  proved.
 \end{thebibliography}
 
 \end{document}

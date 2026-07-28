@@ -145,7 +145,10 @@ $(g_n)$ for which the sum is exactly $1$~\cite{kovac2026}.  That construction
 does not address the fixed-denominator dyadic series studied here.
 Problem~\#251 also appears as the unproved declaration
 \texttt{erdos\_251} in the \emph{Formal Conjectures}
-repository~\cite{formalconjectures251}; no priority is claimed for anything
+repository~\cite{formalconjectures251}.  Its zero-based Lean sum starts with
+the zeroth prime over $2^0$, so it is twice the displayed normalisation and
+has equivalent irrationality status, but it is not literally the same
+indexing; its proof is \texttt{sorry}.  No priority is claimed for anything
 below.
 
 \paragraph{The strategy.}
@@ -1122,9 +1125,9 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
   unpublished note, 2026, hosted by the Department of Mathematics, University
   of Zagreb, \texttt{web.math.pmf.unizg.hr}, accessed 28 July 2026.
 \bibitem{formalconjectures251} The Formal Conjectures Authors,
-  \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/251.lean}
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/251.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{251}}},
-  Lean source, 2025, accessed 27 July 2026.
+  Lean source at commit \texttt{f776d2f}, 2025, accessed 28 July 2026.
 \end{thebibliography}
 
 \end{document}

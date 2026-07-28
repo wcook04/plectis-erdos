@@ -224,7 +224,10 @@ Theorem~\ref{res:dyadic-alphabet}.
 The statement of Problem~\#269 has been formalised before, as a conjecture with
 an unfilled proof, in the \emph{Formal Conjectures}
 collection~\cite{formalconjectures269}.  That is a formal statement of the
-question.  The declarations described below are propositions about the objects
+question up to a harmless rational normalisation: its Nat-indexed series
+includes the empty-prefix least-common-multiple term.  Its rational,
+irrational, and infinite-prime assertions all end in \texttt{sorry}.
+The declarations described below are propositions about the objects
 the question is posed over.  No claim of priority is made for any of these
 declarations.  Kova\v{c} and Tao~\cite{kovactao2024} treat several
 irrationality problems of Erd\H{o}s for series of unit fractions by elementary
@@ -1221,9 +1224,9 @@ reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{610}{no_posi
   \href{https://www.erdosproblems.com/269}{\emph{Erd\H{o}s Problem \#269}},
   \texttt{erdosproblems.com/269}, accessed 22 July 2026.
 \bibitem{formalconjectures269} The Formal Conjectures Authors,
-  \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/269.lean}
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/269.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{269}}},
-  Lean source, 2025, accessed 27 July 2026.
+  Lean source at commit \texttt{f776d2f}, 2025, accessed 28 July 2026.
 \bibitem{apostol1976} T.~M. Apostol, \emph{Introduction to Analytic Number
   Theory}, Springer, New York, 1976, Ch.~4.
 \bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao, \emph{On several irrationality

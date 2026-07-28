@@ -179,10 +179,13 @@ gives a sample of the intermediate work, including S\'andor (1984) and Badea
 (1987).  They do not treat Problem~\#243; the rigidity conclusion asked for
 there is not among their results.
 
-The statement of Problem~\#243 has also
-been formalised before, as a conjecture with an unfilled proof, in the
-\emph{Formal Conjectures} collection~\cite{formalconjectures243}; that is a
-statement of the question, and the development below is independent of it.
+The \emph{Formal Conjectures} collection contains a nearby unproved
+declaration~\cite{formalconjectures243}, but it is not an exact transcription
+of Problem~\#243: although its docstring mentions that the reciprocal sum is
+rational, the Lean hypotheses assume only summability and never assert that
+the sum lies in $\Q$.  Its proof is also \texttt{sorry}.  We therefore use it
+only as evidence of a prior formalisation attempt, not as statement or proof
+authority; the development below is independent of it.
 What is machine-checked below concerns the state system rather than the
 analytic problem: the exclusion of constant and
 periodic negative magnitudes, the bounded-rise barrier of
@@ -1355,9 +1358,11 @@ technique transfers to any forced orbit whose step is a polynomial division.
   \href{https://www.erdosproblems.com/243}{\emph{Erd\H{o}s Problem \#243}},
   \texttt{erdosproblems.com/243}, accessed 22 July 2026.
 \bibitem{formalconjectures243} The Formal Conjectures Authors,
-  \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/243.lean}
+  \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{243}}},
-  Lean source, 2025, accessed 27 July 2026.
+  Lean source at commit \texttt{f776d2f}, 2025, accessed 28 July 2026.
+  The declaration omits the rational-value hypothesis present in its
+  docstring and ends in \texttt{sorry}.
 \end{thebibliography}
 
 \end{document}
