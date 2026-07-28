@@ -105,14 +105,18 @@ def main() -> int:
             "private evaluation shorthand reintroduced",
         ),
         (
-            systems_paper.replace(
-                "reading map, code index,\\\\\n  machine-readable summary",
+            reflow_tolerant_replace(
+                systems_paper,
+                "navigation, reading map, code index, machine-readable summary; no authority",
                 "orientation, declaration atlas,\\\\\n  machine entry packet",
             ),
             "private diagram labels reintroduced",
         ),
     )
     for mutated, label in paper_mutations:
+        assert mutated != systems_paper, (
+            f"systems-paper mutation fixture became a no-op: {label}"
+        )
         assert_paper_rejected(mutated, label)
         checks += 1
 
@@ -142,8 +146,7 @@ def main() -> int:
     try:
         checker.validate_entry_links(
             readme.replace(
-                "Finishing the argument would require certificates at "
-                "arbitrarily large stages",
+                "All six problems remain open.",
                 "A conditional producer would be required",
             ),
             agents,

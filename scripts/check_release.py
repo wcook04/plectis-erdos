@@ -1144,10 +1144,19 @@ def main() -> int:
     for phrase in README_BANNED_PHRASES:
         check(phrase not in flattened(readme),
               f"README contains banned drift phrase: {phrase!r}")
-    # Parse every bold first-column label before checking the taxonomy.  A
-    # restrictive character class here once let composite labels containing
-    # punctuation evade validation entirely.
-    for status in re.findall(r"\|\s*\*\*([^*\n]+)\*\*\s*\|", readme):
+    # Check only the first column of the canonical Status/Result table. Other
+    # README tables legitimately bold identifiers such as the six problem
+    # numbers, so a document-wide first-column scan produces false failures.
+    # Keep the permissive cell capture: punctuation in an invalid status must
+    # still reach the taxonomy check rather than evade it.
+    status_table = re.search(
+        r"(?ms)^\| Status \| Result \|\n^\|---\|---\|\n"
+        r"(?P<body>(?:^\|.*\n)+)",
+        readme,
+    )
+    check(status_table is not None, "README lost the Status/Result table")
+    status_table_body = status_table.group("body") if status_table else ""
+    for status in re.findall(r"\|\s*\*\*([^*\n]+)\*\*\s*\|", status_table_body):
         check(status in taxonomy,
               f"README status table uses {status!r}, which is not in the taxonomy")
 
