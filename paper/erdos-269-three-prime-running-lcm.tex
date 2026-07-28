@@ -119,10 +119,14 @@ conjectural wording.
 Three things are known and fix the shape of the question.  The restriction
 $|P|\ge2$ is necessary: for $P=\{p\}$ the enumeration is $a_n=p^{\,n-1}$, so
 $[a_1,\ldots,a_n]=p^{\,n-1}$ and the sum is $p/(p-1)$, which is rational.  For
+that reason we use the modern restriction $|P|\ge2$; the 1974 letter itself
+writes ``given primes $p_1,\ldots,p_r$'' without explicitly restricting $r$.
+For
 infinite $P$ the sum is always irrational, which Erd\H{o}s calls a simple
 exercise~\cite[p.~106]{erdos1988}.  And in a letter of 1 January 1973 he
-recorded that he could prove irrationality once duplicate summands are
-removed~\cite{erdos1974letter}.
+recorded that he could prove irrationality once duplicate running-LCM values
+are removed~\cite[p.~335]{erdos1974letter}; the one-page letter states this
+result but does not include its proof.
 
 That last remark is the one this note is closest to.  The running least common
 multiple is not injective in $n$: it is constant along stretches of the
@@ -1206,8 +1210,11 @@ reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{610}{no_posi
   problems and results}, in A.~Baker (ed.), \emph{New Advances in Transcendence
   Theory}, Cambridge UP, 1988, pp.~102--109,
   doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
-\bibitem{erdos1974letter} P.~Erd\H{o}s, letter to the editor (written 1~January
-  1973), Fibonacci Quart. \textbf{12} (1974), p.~335.
+\bibitem{erdos1974letter} P.~Erd\H{o}s,
+  \href{https://www.fq.math.ca/Scanned/12-4/letter.pdf}{\emph{Letter to the
+  Editor}} (written 1~January 1973), Fibonacci Quart. \textbf{12} (1974),
+  no.~4, p.~335.  The letter poses the full series as a conjecture and asserts
+  irrationality after retaining only the distinct running-LCM values.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/269}{\emph{Erd\H{o}s Problem \#269}},
   \texttt{erdosproblems.com/269}, accessed 22 July 2026.
