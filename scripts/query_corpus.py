@@ -5261,6 +5261,39 @@ def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
             and row["rendered_available_in_checkout"]
         )
     ]
+    mathematics_route = [
+        {
+            "step": 1,
+            "artifact_id": "human_exposition",
+            "why": (
+                "The gateway is status-sorted and explains the common #249/"
+                "#257 architecture, strongest results, and exact open line."
+            ),
+        },
+        {
+            "step": 2,
+            "command": (
+                'python3 scripts/query_corpus.py --ask "<your mathematical question>"'
+            ),
+            "why": (
+                "Move from exposition to registered claims, open propositions, "
+                "Lean declarations, and source coordinates."
+            ),
+        },
+    ]
+    technical = by_id.get("technical_companion")
+    if technical and technical["source_available_in_checkout"] and technical[
+        "rendered_available_in_checkout"
+    ]:
+        mathematics_route.append(
+            {
+                "step": 3,
+                "artifact_id": "technical_companion",
+                "condition": (
+                    "only for #249 transport/curvature or phase-separation detail"
+                ),
+            }
+        )
     return {
         "schema": PAPER_READING_GUIDE_SCHEMA,
         "kind": "paper_reading_guide",
@@ -5280,34 +5313,7 @@ def paper_reading_guide_packet(question: str | None = None) -> dict[str, Any]:
             ),
         },
         "recommended_routes": {
-            "understand_the_mathematics": [
-                {
-                    "step": 1,
-                    "artifact_id": "human_exposition",
-                    "why": (
-                        "The gateway is status-sorted and explains the common #249/"
-                        "#257 architecture, strongest results, and exact open line."
-                    ),
-                },
-                {
-                    "step": 2,
-                    "command": (
-                        'python3 scripts/query_corpus.py --ask "<your mathematical question>"'
-                    ),
-                    "why": (
-                        "Move from exposition to registered claims, open propositions, "
-                        "Lean declarations, and source coordinates."
-                    ),
-                },
-                {
-                    "step": 3,
-                    "artifact_id": "technical_companion",
-                    "condition": (
-                        "only for #249 transport/curvature or phase-separation detail, "
-                        "and only when both files are available in this checkout"
-                    ),
-                },
-            ],
+            "understand_the_mathematics": mathematics_route,
             "understand_repository_and_public_claims": [
                 {
                     "step": 1,

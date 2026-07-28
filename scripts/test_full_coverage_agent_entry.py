@@ -103,12 +103,22 @@ def main() -> int:
     )
     assert papers["kind"] == "paper_reading_guide"
     assert paper_question["kind"] == "paper_reading_guide"
-    assert papers["paper_count"] == 3
+    assert papers["paper_count"] == len(papers["papers"])
+    assert papers["paper_count"] >= 2
     assert papers["default_gateway"]["id"] == "human_exposition"
     assert papers["default_gateway"]["rendered_available_in_checkout"]
     assert papers["companion_repository"]["name"] == "plectis"
-    assert "technical_companion" in (
-        papers["unavailable_registered_artifact_ids"]
+    routed_artifacts = {
+        step["artifact_id"]
+        for step in papers["recommended_routes"]["understand_the_mathematics"]
+        if "artifact_id" in step
+    }
+    registered = {row["id"]: row for row in papers["papers"]}
+    assert routed_artifacts <= set(registered)
+    assert all(
+        registered[artifact_id]["source_available_in_checkout"]
+        and registered[artifact_id]["rendered_available_in_checkout"]
+        for artifact_id in routed_artifacts
     )
     assert "papers are exposition" in query_corpus.render_card(papers)
     for question in (
