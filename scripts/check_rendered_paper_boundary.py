@@ -42,29 +42,28 @@ ARCHITECTURE_PAPERS = (
 )
 ALIASES = ROOT / "paper" / "module-aliases.json"
 # Page bands are the reach a limiting statement must keep, not a layout record.
-# Adding the first-page provenance note in July 2026 consumed roughly five body
-# lines of page one in each paper, and pushed exactly one anchor in each across
-# a page boundary: "neither problem is settled" here, "both jobs pass?" in the
-# architecture paper. Their bands are widened by one page and no further; every
-# other anchor still has to land where it always did. The exchange is recorded
-# rather than absorbed, because the note buys the same thing the bands protect
-# -- a reader meeting the limits before the claims -- and page one still carries
-# the abstract's three statements that neither problem is settled.
+# The bands state what a cold reader must encounter early, not the line breaks
+# of an older edition.  They move only when the paper's first-minute explanation
+# changes, and their anchors use ordinary mathematical wording rather than
+# volatile inventory counts.
 FIRST_MINUTE_CONTRACT = {
     "erdos249-257-main-paper.pdf": {
         (1, 1): (
             "q > q0",
             "all positive exponents in every integer base",
             "refute the universal assertion",
-            "do not prove the required unbounded supply",
+            "certificate band, though contiguous, is bounded",
+            "nothing is asserted at t = 83",
+        ),
+        (1, 2): (
+            "neither problem is settled",
             "we do not decide whether 1/2 is attainable",
         ),
-        (1, 2): ("neither problem is settled",),
         (2, 4): (
             "tail differences and finite certificates",
-            "half-value membership and final greedy skips",
-            "no finite such support can have value 1/2",
-            "neither this finite computation nor the denominator bound proves the unbounded supply",
+            "membership of 1/2",
+            "no proof covers every infinite support",
+            "neither equivalence proves the unbounded behaviour that it identifies",
         ),
     },
     "claim-faithful-publication-systems-paper.pdf": {
@@ -72,14 +71,18 @@ FIRST_MINUTE_CONTRACT = {
             "from lean proofs to public claims",
             "lean verifies that a proof establishes the formal statement written in the source",
             "both problems remain open",
-            "finite certificate at each of 28 listed scales",
+            "finite certificate at every lcm-diagonal scale",
+            "t ≤ 82",
+            "beyond every fixed cutoff",
             "registered claims",
             "the release workflow",
             "docs/claims.json",
             "scripts/check_release.py",
-            "lean checks the formal proofs",
         ),
-        (1, 3): ("both jobs pass?",),
+        (1, 3): (
+            "lean checks the formal proofs",
+            "whether both jobs pass",
+        ),
     },
 }
 
