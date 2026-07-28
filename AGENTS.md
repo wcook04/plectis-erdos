@@ -3,6 +3,9 @@
 
 # Agent entry
 
+Reading this as a person? Start with [README.md](README.md); this file is the
+repository-aware agent contract.
+
 This is an ordinary public Lean project and a pinned scholarly artefact. It is
 not an entrypoint into any private development system. Work only from the files
 in this repository, and never infer unpublished results or private machinery.
