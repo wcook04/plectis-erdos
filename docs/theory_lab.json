@@ -16,7 +16,7 @@
   "above": "docs/claims.json stays the curated publication ledger",
   "proof_authority": "Lean kernel; a mechanism is an explanation, never a proof"
  },
- "source_revision": "daff75b6881c36001c7b3a1907db8d6390fb057d",
+ "source_revision": "578914c0476f95229a22aa52ee0e68df28174dae",
  "evidence_fingerprint": "sha256:692cff59a796165b79819895b9666a100d1533eff6ca676408194f8eadb82b65",
  "vocabularies": {
   "intervention_operators": [
