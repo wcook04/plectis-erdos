@@ -1,0 +1,259 @@
+{
+  "zone_id": "Z45",
+  "title": "Period-multiple escape: block identities, exact ray supply, and full-depth sufficient condition",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z45_depth_period_block_coordinates",
+      "label": "depth-period block coordinates",
+      "note": "The full-depth discrepancy and concatenated totient-block identities."
+    },
+    {
+      "id": "z45_multiple_period_integrality",
+      "label": "multiple-period integrality",
+      "note": "Telescoping eventual integrality from one period to all of its multiples."
+    },
+    {
+      "id": "z45_period_multiple_kill_supply",
+      "label": "period-multiple kill supply",
+      "note": "One certified kill on every positive period ray beyond every basepoint threshold."
+    },
+    {
+      "id": "z45_ap_full_depth_escape",
+      "label": "arithmetic-progression full-depth escape",
+      "note": "The stronger open producer in which the certificate depth is locked to its period."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "full_depth_discrepancies_and_totient_blocks_have_exact_nesting_identities",
+      "canonical_statement": "PROVED EXACT IDENTITIES: windowDiscrepancy h N h is totientBlock h (N+h) - totientBlock h N; totientBlock (a+b) N is 2^b times totientBlock a N plus totientBlock b (N+a); hence a block of length 2h splits into its two adjacent h-blocks with the stated dyadic weight.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z45_depth_period_block_coordinates"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Unfolding the finite weighted sums, splitting a range at a, and normalising the powers of two.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary finite-block algebra; no novelty claim is made.",
+      "scope_caveat": "These identities reorganise discrepancy words and explain the nesting of the depth-period channels. They do not supply a central residue or any certified kill.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "windowDiscrepancy_self_eq_totientBlock_sub",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 67
+        },
+        {
+          "declaration": "totientBlock_add",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 77
+        },
+        {
+          "declaration": "totientBlock_two_mul",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 94
+        }
+      ]
+    },
+    {
+      "id": "eventual_integrality_at_one_period_telescopes_to_every_multiple",
+      "canonical_statement": "PROVED TELESCOPING LAW: if the h0-step tail difference is integral for every N >= N0, then for every multiplier t and every N >= N0 the difference totientTail (N+t*h0) - totientTail N is integral.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z45_multiple_period_integrality"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Induction on t, adding the next integral h0-step to the preceding telescoped difference.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard telescoping closure of integer-valued increments.",
+      "scope_caveat": "The theorem is conditional on eventual integrality at the primitive step. It transports that hypothesis; it neither proves nor refutes it for the totient series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tail_diff_mul_mem_int_of_forall_step",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "id": "period_multiple_kill_supply_is_exactly_erdos_249",
+      "canonical_statement": "EXACT OPEN REFORMULATION: PeriodMultipleKillSupply requires that for every d>0 and threshold c there are t>0, N>=c, and L with certifiedKill (t*d) N L. This supply implies irrationality of the totient series, irrationality supplies it already with t=1 and N=c, and therefore the supply is equivalent to Erdős #249.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "z45_multiple_period_integrality",
+        "z45_period_multiple_kill_supply"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": true,
+      "engine": "For sufficiency, the rational tail-period law, multiple-step telescoping, and certificate soundness; for necessity, nonintegrality of every positive shifted tail and certificate completeness.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked project normal form for the open problem; no claim of solving or weakening the open content is made.",
+      "scope_caveat": "Both sides of the equivalence remain open. The ray supply is not an independent proved producer and the change from arbitrary periods to one multiple on each ray does not move the truth value.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "PeriodMultipleKillSupply",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 124
+        },
+        {
+          "declaration": "irrational_totient_series_of_periodMultipleKillSupply",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 132
+        },
+        {
+          "declaration": "periodMultipleKillSupply_of_irrational",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 143
+        },
+        {
+          "declaration": "periodMultipleKillSupply_iff_irrational",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 153
+        }
+      ]
+    },
+    {
+      "id": "full_depth_escape_is_a_stronger_open_sufficient_producer",
+      "canonical_statement": "OPEN SUFFICIENT PRODUCER: ApFullDepthEscape requires, for every d>0 and every N, some t>0 with certifiedKill (t*d) N (t*d). It implies PeriodMultipleKillSupply and hence irrationality of the totient series.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z45_period_multiple_kill_supply",
+        "z45_ap_full_depth_escape"
+      ],
+      "open_antecedents": [
+        "ApFullDepthEscape: for every positive ray d and every basepoint N, a positive multiple t*d fires a certified kill at the locked depth L=t*d."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Use the supplied full-depth certificate at N=c as a period-multiple supply witness, then apply the exact supply-to-irrationality theorem.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific stronger producer interface; no necessity or solution claim is made.",
+      "scope_caveat": "The implication is proved but the antecedent is not. Unlike PeriodMultipleKillSupply, ApFullDepthEscape is not proved necessary for irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ApFullDepthEscape",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 162
+        },
+        {
+          "declaration": "periodMultipleKillSupply_of_apFullDepthEscape",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 165
+        },
+        {
+          "declaration": "irrational_totient_series_of_apFullDepthEscape",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 171
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "windowDiscrepancy_self_eq_totientBlock_sub",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 67,
+      "role": "statement",
+      "statement_node": "full_depth_discrepancies_and_totient_blocks_have_exact_nesting_identities"
+    },
+    {
+      "declaration": "totientBlock_add",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 77,
+      "role": "statement",
+      "statement_node": "full_depth_discrepancies_and_totient_blocks_have_exact_nesting_identities"
+    },
+    {
+      "declaration": "totientBlock_two_mul",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 94,
+      "role": "statement",
+      "statement_node": "full_depth_discrepancies_and_totient_blocks_have_exact_nesting_identities"
+    },
+    {
+      "declaration": "tail_diff_mul_mem_int_of_forall_step",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 102,
+      "role": "statement",
+      "statement_node": "eventual_integrality_at_one_period_telescopes_to_every_multiple"
+    },
+    {
+      "declaration": "PeriodMultipleKillSupply",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 124,
+      "role": "concept",
+      "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
+    },
+    {
+      "declaration": "irrational_totient_series_of_periodMultipleKillSupply",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 132,
+      "role": "statement",
+      "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
+    },
+    {
+      "declaration": "periodMultipleKillSupply_of_irrational",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 143,
+      "role": "statement",
+      "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
+    },
+    {
+      "declaration": "periodMultipleKillSupply_iff_irrational",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 153,
+      "role": "statement",
+      "statement_node": "period_multiple_kill_supply_is_exactly_erdos_249"
+    },
+    {
+      "declaration": "ApFullDepthEscape",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 162,
+      "role": "concept",
+      "statement_node": "full_depth_escape_is_a_stronger_open_sufficient_producer"
+    },
+    {
+      "declaration": "periodMultipleKillSupply_of_apFullDepthEscape",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 165,
+      "role": "statement",
+      "statement_node": "full_depth_escape_is_a_stronger_open_sufficient_producer"
+    },
+    {
+      "declaration": "irrational_totient_series_of_apFullDepthEscape",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 171,
+      "role": "statement",
+      "statement_node": "full_depth_escape_is_a_stronger_open_sufficient_producer"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "eventual_integrality_at_one_period_telescopes_to_every_multiple",
+      "to": "full_depth_discrepancies_and_totient_blocks_have_exact_nesting_identities",
+      "relation": "complements",
+      "basis": "The block identities expose the depth-period coordinates, while telescoping transports the rationality-side integrality hypothesis along a period ray."
+    },
+    {
+      "from": "period_multiple_kill_supply_is_exactly_erdos_249",
+      "to": "eventual_integrality_at_one_period_telescopes_to_every_multiple",
+      "relation": "generated_by",
+      "basis": "The supply-to-irrationality direction contradicts the supplied kill using integrality transported from the primitive period to its selected multiple."
+    },
+    {
+      "from": "full_depth_escape_is_a_stronger_open_sufficient_producer",
+      "to": "period_multiple_kill_supply_is_exactly_erdos_249",
+      "relation": "implies",
+      "basis": "A full-depth escape witness at basepoint c is directly a PeriodMultipleKillSupply witness with N=c and L=t*d."
+    }
+  ]
+}

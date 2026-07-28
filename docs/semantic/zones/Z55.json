@@ -1,0 +1,185 @@
+{
+  "zone_id": "Z55",
+  "title": "Exact Boolean–Möbius endpoint transitions: quotient bits, support aggregation, and signed repair defect",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "single_rank_quotient_transition",
+      "label": "single-rank quotient transition",
+      "note": "The exact doubling-plus-divisibility-bit recurrence for one Mersenne quotient."
+    },
+    {
+      "id": "finite_support_quotient_transition",
+      "label": "finite-support quotient transition",
+      "note": "The summed recurrence whose new bit count is endpointDivisorContribution."
+    },
+    {
+      "id": "endpoint_divisor_contribution",
+      "label": "endpoint divisor contribution",
+      "note": "The number of support ranks dividing the new endpoint."
+    },
+    {
+      "id": "signed_endpoint_defect",
+      "label": "signed endpoint defect",
+      "note": "The integer difference between the half endpoint target and the support quotient."
+    },
+    {
+      "id": "local_repair_integer",
+      "label": "local repair integer",
+      "note": "The affine repair coordinate derived from the previous natural suffix."
+    },
+    {
+      "id": "below_target_cast",
+      "label": "below-target cast boundary",
+      "note": "The hypothesis under which a natural suffix agrees with its signed integer defect."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "single_mersenne_quotient_has_an_exact_divisibility_bit_transition",
+      "canonical_statement": "For d at least two, localMersenneQuotient (M+1) d is twice localMersenneQuotient M d plus one exactly when d divides M+1, and plus zero otherwise.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "single_rank_quotient_transition"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact floor-quotient doubling with one divisibility bit",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project-coordinate arithmetic identity.",
+      "scope_caveat": "The identity gives one quotient bit only; it proves no exact row, capacity inequality, sign, or cofinal support.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersenneQuotient_endpoint_succ",
+          "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "finite_support_quotient_transition_adds_the_endpoint_divisor_count",
+      "canonical_statement": "For a fixed finite support of ranks at least two, localPrefixQuotient D (M+1)=2*localPrefixQuotient D M+endpointDivisorContribution D (M+1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "finite_support_quotient_transition",
+        "endpoint_divisor_contribution"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite summation of the rank-wise quotient-bit transition",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is an internal exact transition identity.",
+      "scope_caveat": "Fixing and summing a support does not construct one that hits the half target, and the theorem does not show that the contribution equals one.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localPrefixQuotient_succ",
+          "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+          "line": 131
+        }
+      ]
+    },
+    {
+      "id": "signed_endpoint_defect_obeys_the_exact_affine_recurrence",
+      "canonical_statement": "For M at least one and a finite support of ranks at least two, localEndpointDefect D (M+1)=2*localEndpointDefect D M+1-endpointDivisorContribution D (M+1).",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "signed_endpoint_defect",
+        "endpoint_divisor_contribution"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "subtraction of the quotient transition from the half-target transition",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The identity normalizes the fixed-support transition in signed coordinates.",
+      "scope_caveat": "The defect is signed. The theorem proves no nonnegativity, boundedness, eventual behavior, exact row, or verified tempered-orbit identification.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localEndpointDefect_succ",
+          "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+          "line": 189
+        }
+      ]
+    },
+    {
+      "id": "below_target_repair_integer_is_the_next_signed_endpoint_defect",
+      "canonical_statement": "If the endpoint-M prefix quotient has not crossed its half target, localRepairInteger D 1 (M+1) equals localEndpointDefect D (M+1).",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "signed_endpoint_defect",
+        "local_repair_integer",
+        "below_target_cast"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "cast of the below-target natural suffix into the signed defect recurrence",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is an exact conditional coordinate identification.",
+      "scope_caveat": "The theorem does not establish its below-target hypothesis and produces no feasible repair or exact row. It does not verify a tempered-orbit instance.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localRepairInteger_eq_localEndpointDefect_succ",
+          "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+          "line": 203
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "localMersenneQuotient_endpoint_succ",
+      "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+      "line": 29,
+      "role": "statement",
+      "statement_node": "single_mersenne_quotient_has_an_exact_divisibility_bit_transition"
+    },
+    {
+      "declaration": "localPrefixQuotient_succ",
+      "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+      "line": 131,
+      "role": "statement",
+      "statement_node": "finite_support_quotient_transition_adds_the_endpoint_divisor_count"
+    },
+    {
+      "declaration": "localEndpointDefect_succ",
+      "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+      "line": 189,
+      "role": "statement",
+      "statement_node": "signed_endpoint_defect_obeys_the_exact_affine_recurrence"
+    },
+    {
+      "declaration": "localRepairInteger_eq_localEndpointDefect_succ",
+      "module": "Erdos249257/BooleanMobiusExactTransition.lean",
+      "line": 203,
+      "role": "statement",
+      "statement_node": "below_target_repair_integer_is_the_next_signed_endpoint_defect"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "finite_support_quotient_transition_adds_the_endpoint_divisor_count",
+      "to": "single_mersenne_quotient_has_an_exact_divisibility_bit_transition",
+      "relation": "generated_by",
+      "basis": "Summing the rank-wise transition over D turns the individual divisibility bits into endpointDivisorContribution D (M+1)."
+    },
+    {
+      "from": "signed_endpoint_defect_obeys_the_exact_affine_recurrence",
+      "to": "finite_support_quotient_transition_adds_the_endpoint_divisor_count",
+      "relation": "reformulates",
+      "basis": "Subtracting the support-quotient transition from the half-endpoint-target transition yields the signed affine defect recurrence exactly."
+    },
+    {
+      "from": "below_target_repair_integer_is_the_next_signed_endpoint_defect",
+      "to": "signed_endpoint_defect_obeys_the_exact_affine_recurrence",
+      "relation": "transport_of",
+      "basis": "Under the below-target hypothesis, the natural suffix casts to the signed current defect, so the repair expression becomes the next defect recurrence."
+    }
+  ]
+}

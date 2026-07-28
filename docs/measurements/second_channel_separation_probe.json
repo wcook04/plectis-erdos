@@ -1,0 +1,348 @@
+{
+ "schema": "erdos249257-second-channel-separation-probe/1",
+ "status": "MEASURED",
+ "question_id": "XQ257-second-channel-separation",
+ "source_contract": {
+  "source_path": "Erdos249257/GreedyAchievementSet.lean",
+  "source_sha256": "sha256:6de75131fcafcd72450ae43af9c44717bbfbd9ee6967acaa6d87dced55cb4dad",
+  "definitions": [
+   {
+    "declaration": "mersenneWeightRat",
+    "line": 56,
+    "fragment_sha256": "sha256:90ab7f9fed9e014cc12868cd1d9f492d37747f3352b042bd8e69154e8def0a7a"
+   },
+   {
+    "declaration": "greedyMersenneRemainderRat",
+    "line": 1024,
+    "fragment_sha256": "sha256:d0d9ddececb07db81ad768a171c70af1636a318f7559cfc48cba0bd2eec003ae"
+   },
+   {
+    "declaration": "greedyMersenneSecondChannelPhaseRat",
+    "line": 2680,
+    "fragment_sha256": "sha256:f9390ab7a9274d79d625cba687bf4a641738f4e8d4cfa5fc9a40cbe0bcc25ebb"
+   },
+   {
+    "declaration": "HalfSecondChannelSeparatedRat",
+    "line": 2695,
+    "fragment_sha256": "sha256:dbf42a1c959a38c62ae4fca7ad9dd413ec745b7eead86189548e9e3c79f9b4a9"
+   }
+  ],
+  "model_boundary": "The Python Fraction recurrence is an independent exact-arithmetic implementation of these four source definitions. Lean remains proof authority; this artifact is finite measured evidence."
+ },
+ "parameters": {
+  "target": {
+   "numerator": 1,
+   "denominator": 2
+  },
+  "checked_ranks": {
+   "minimum": 1,
+   "maximum": 1000
+  },
+  "open_hypothesis_range": {
+   "minimum": 7,
+   "maximum_checked": 1000
+  },
+  "arithmetic": "Python fractions.Fraction exact rational arithmetic"
+ },
+ "summary": {
+  "checked_rank_count": 1000,
+  "separated_rank_count": 1000,
+  "failure_count": 0,
+  "failure_ranks": [],
+  "first_unchecked_rank": 1001,
+  "transition_check_count": 1000,
+  "branch_counts": {
+   "take": 490,
+   "skip": 510
+  },
+  "minimum_margin": {
+   "rank": 6,
+   "value": {
+    "numerator": 16307,
+    "denominator": 32256
+   }
+  },
+  "minimum_margin_on_open_hypothesis_range": {
+   "rank": 7,
+   "value": {
+    "numerator": 1033253069,
+    "denominator": 8193024
+   }
+  }
+ },
+ "branch_word_coverage": {
+  "encoding": {
+   "S": "skip",
+   "T": "take"
+  },
+  "maximum_word_length": 8,
+  "rows": [
+   {
+    "length": 1,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 1000
+    },
+    "sample_window_count": 1000,
+    "possible_word_count": 2,
+    "observed_word_count": 2,
+    "missing_word_count": 0,
+    "missing_words": []
+   },
+   {
+    "length": 2,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 999
+    },
+    "sample_window_count": 999,
+    "possible_word_count": 4,
+    "observed_word_count": 4,
+    "missing_word_count": 0,
+    "missing_words": []
+   },
+   {
+    "length": 3,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 998
+    },
+    "sample_window_count": 998,
+    "possible_word_count": 8,
+    "observed_word_count": 8,
+    "missing_word_count": 0,
+    "missing_words": []
+   },
+   {
+    "length": 4,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 997
+    },
+    "sample_window_count": 997,
+    "possible_word_count": 16,
+    "observed_word_count": 16,
+    "missing_word_count": 0,
+    "missing_words": []
+   },
+   {
+    "length": 5,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 996
+    },
+    "sample_window_count": 996,
+    "possible_word_count": 32,
+    "observed_word_count": 32,
+    "missing_word_count": 0,
+    "missing_words": []
+   },
+   {
+    "length": 6,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 995
+    },
+    "sample_window_count": 995,
+    "possible_word_count": 64,
+    "observed_word_count": 64,
+    "missing_word_count": 0,
+    "missing_words": []
+   },
+   {
+    "length": 7,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 994
+    },
+    "sample_window_count": 994,
+    "possible_word_count": 128,
+    "observed_word_count": 128,
+    "missing_word_count": 0,
+    "missing_words": []
+   },
+   {
+    "length": 8,
+    "window_start_ranks": {
+     "minimum": 1,
+     "maximum": 993
+    },
+    "sample_window_count": 993,
+    "possible_word_count": 256,
+    "observed_word_count": 252,
+    "missing_word_count": 4,
+    "missing_words": [
+     "SSSSTSTT",
+     "SSSTTTST",
+     "TSTSSTTS",
+     "TTTSSSST"
+    ]
+   }
+  ],
+  "boundary": "Complete short-word coverage is a property of this finite branch prefix only. It neither proves normality nor excludes a longer symbolic constraint."
+ },
+ "checkpoints": [
+  {
+   "rank": 1,
+   "branch": "skip",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 1,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 2,
+   "phase_numerator_bits": 2,
+   "phase_denominator_bits": 1
+  },
+  {
+   "rank": 2,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 0,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 3,
+   "phase_numerator_bits": 3,
+   "phase_denominator_bits": 2
+  },
+  {
+   "rank": 3,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": -1,
+   "margin_floor": 5,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 6,
+   "phase_numerator_bits": 7,
+   "phase_denominator_bits": 5
+  },
+  {
+   "rank": 4,
+   "branch": "skip",
+   "separated": true,
+   "phase_sign": -1,
+   "margin_floor": 3,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 6,
+   "phase_numerator_bits": 7,
+   "phase_denominator_bits": 5
+  },
+  {
+   "rank": 5,
+   "branch": "skip",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 16,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 6,
+   "phase_numerator_bits": 9,
+   "phase_denominator_bits": 5
+  },
+  {
+   "rank": 6,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 0,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 7,
+   "phase_numerator_bits": 7,
+   "phase_denominator_bits": 6
+  },
+  {
+   "rank": 7,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": -1,
+   "margin_floor": 126,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 14,
+   "phase_numerator_bits": 20,
+   "phase_denominator_bits": 13
+  },
+  {
+   "rank": 10,
+   "branch": "skip",
+   "separated": true,
+   "phase_sign": -1,
+   "margin_floor": 893,
+   "remainder_numerator_bits": 1,
+   "remainder_denominator_bits": 14,
+   "phase_numerator_bits": 23,
+   "phase_denominator_bits": 13
+  },
+  {
+   "rank": 20,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 50124,
+   "remainder_numerator_bits": 17,
+   "remainder_denominator_bits": 38,
+   "phase_numerator_bits": 53,
+   "phase_denominator_bits": 37
+  },
+  {
+   "rank": 50,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 420393748321582,
+   "remainder_numerator_bits": 495,
+   "remainder_denominator_bits": 545,
+   "phase_numerator_bits": 593,
+   "phase_denominator_bits": 544
+  },
+  {
+   "rank": 100,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": -1,
+   "margin_floor": 128435256295119790043269606938,
+   "remainder_numerator_bits": 1662,
+   "remainder_denominator_bits": 1763,
+   "phase_numerator_bits": 1859,
+   "phase_denominator_bits": 1762
+  },
+  {
+   "rank": 250,
+   "branch": "skip",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 251736506048890777153327524855789060246610554733715433325600681345698543753,
+   "remainder_numerator_bits": 8934,
+   "remainder_denominator_bits": 9184,
+   "phase_numerator_bits": 9431,
+   "phase_denominator_bits": 9183
+  },
+  {
+   "rank": 500,
+   "branch": "skip",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 1639350120386151887815238726163129365162857431957081765153069884075675570177458150194069312783464350215749759349055583003236234903837948530094434201087,
+   "remainder_numerator_bits": 43201,
+   "remainder_denominator_bits": 43702,
+   "phase_numerator_bits": 44200,
+   "phase_denominator_bits": 43701
+  },
+  {
+   "rank": 1000,
+   "branch": "take",
+   "separated": true,
+   "phase_sign": 1,
+   "margin_floor": 1019428914025302012983217364662577608572343581480449873757536450889698888203881429497621213276225232172287585357155802713881407188001165650677856793437645346106663083039355900701502123522574962614938087791886829653307818335276341054510274935022025364215155847701314973106703236020791661691244090570427,
+   "remainder_numerator_bits": 180118,
+   "remainder_denominator_bits": 181119,
+   "phase_numerator_bits": 182114,
+   "phase_denominator_bits": 181118
+  }
+ ],
+ "limits": [
+  "The complete exact failure set is reported only for 1 <= n <= 1000; rank 1001 and every later rank are unmeasured by this artifact.",
+  "An empty finite failure set does not prove HalfSecondChannelSeparatedRat n for every n >= 7 and does not prove that 1/2 belongs to the Mersenne achievement set.",
+  "A later failed rank would close this sufficient socket only; it would not prove universal Erdos #257.",
+  "Checkpoint bit lengths and margin floors compress exact high-height rationals. The builder recomputes every exact predicate value before producing the failure set and minima.",
+  "The recurrence identity is checked at every transition, but no invariant preventing a future visit to the shrinking hole is proved here.",
+  "Every branch word of length at most seven occurs in the measured prefix. This rules out only an absent-word explanation at those lengths and on this finite range."
+ ]
+}

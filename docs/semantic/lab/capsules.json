@@ -1,0 +1,56 @@
+[
+ {
+  "mechanism_id": "modular_gap_denominator_exclusion",
+  "one_sentence": "Clear a bounded candidate denominator and certify that the resulting residue cannot be integral.",
+  "five_minute": "Choose a dyadic scale compatible with the denominator bound. The first rung controls a low-carry residue; the large rungs use certified Farey-neighbour gaps. In either case the cleared candidate lies in a gap disjoint from the integer lattice. Exact identities then transfer the exclusion to equivalent Lambert presentations. The output is a denominator lower bound, never irrationality.",
+  "transfer_challenge": "Given a stronger candidate denominator range, identify the new finite residue certificate and show which exact transport theorems preserve its bound."
+ },
+ {
+  "mechanism_id": "dyadic_odd_core_basis",
+  "one_sentence": "Reduce dyadic sections to odd-core channels and use finite separation to obtain an explicit basis.",
+  "five_minute": "Two elementary two-adic scaling identities normalize the full kernel to odd-core representatives. At each finite level the representatives have separating signatures; finite character lifts those results to linear independence of the whole family. Spanning plus independence yields a basis and classifies all rational relations.",
+  "transfer_challenge": "For a new arithmetic sequence with a prime-power scaling law, propose the analogue of the odd-core channels and a finite separating minor."
+ },
+ {
+  "mechanism_id": "scalar_localisation_height_barrier",
+  "one_sentence": "Scalar denominator clearing moves the missing denominator into the coefficient instead of removing it.",
+  "five_minute": "Write the reduced denominator as the cleared divisor times its complementary factor. Coprimality forces the complement to divide any scalar that makes the cleared value integral. A classification of rational-linear descenders shows that every one-dimensional linear channel has the same obstruction. The theorem is deliberately silent about nonlinear and multivariable routes.",
+  "transfer_challenge": "Test a proposed denominator-clearing functional by deciding whether it is genuinely multivariable or collapses to scalar evaluation."
+ },
+ {
+  "mechanism_id": "composite_dilation_defect_accounting",
+  "one_sentence": "Multiplicative dilation preserves the prime formula only after every composite cross-divisor is charged to an explicit defect.",
+  "five_minute": "Partition the support divisors of a*x into those already dividing x, the new element a, and the remaining cross-divisors. The cardinality identity is exact for arbitrary support. Prime support kills the defect, explaining why the shorter prime-dilation formula works and exactly what breaks for composite supports.",
+  "transfer_challenge": "For a structured composite support, bound or classify the defect term instead of silently applying the prime-support identity."
+ },
+ {
+  "mechanism_id": "prime_support_defect_cancellation",
+  "one_sentence": "Prime-only support kills every composite cross-divisor, so the general defect identity collapses to the short dilation law.",
+  "five_minute": "Start from the exact arbitrary-support partition. If a and every supported divisor are prime, any new supported divisor of a*x must be a itself or already divide x; the third defect class is empty. This explains the prime-support formula and also states its exact hypothesis boundary.",
+  "transfer_challenge": "For a proposed larger support class, prove the cross-divisor class is still empty before reusing the prime formula."
+ },
+ {
+  "mechanism_id": "sublog_zero_window_self_absorption",
+  "one_sentence": "Rationality makes long coefficient gaps create more divisor obligations than a fixed denominator can sustain.",
+  "five_minute": "A zero window forces a family of divisor relations against the displayed rational denominator. A fixed auxiliary k gives a logarithmic inequality with the window length on both sides. Choosing k from epsilon absorbs that self-reference and leaves h ≤ epsilon log N + B. The theorem supplies B after the support and numerator are fixed; its proof chooses B from epsilon and denominator data, but the exported binder order does not state a common B across supports. The constant is enormous for small epsilon, so the conclusion is asymptotic only.",
+  "transfer_challenge": "Change the base or coefficient incidence and identify the exact divisor-growth estimate needed for the self-absorption step."
+ },
+ {
+  "mechanism_id": "greedy_residual_tail_invariant",
+  "one_sentence": "Greedy membership works because the residual is exactly the value still available in the unused tail.",
+  "five_minute": "Maintain target = chosen prefix + residual. The next weight is chosen precisely when it does not overshoot, and survival requires the residual never exceed the remaining tail. On an actual support value, induction identifies the residual with the support suffix and recovers every digit. For one half this becomes a precise open orbit question rather than a solution.",
+  "transfer_challenge": "For a different summable weight sequence, prove the residual-suffix identity and identify whether survival is sufficient as well as necessary."
+ },
+ {
+  "mechanism_id": "nested_cylinder_measure_continuity",
+  "one_sentence": "Compute finite cylinder-stage volumes and pass through a decreasing intersection.",
+  "five_minute": "At depth d, every binary prefix contributes one translated copy of the same tail interval; disjointness makes the volume exactly 2^d times the tail length. The stages decrease to the achievement set. Continuity from above transfers the limit of their volumes, which is one, to the intersection. Topological conclusions require separate evidence.",
+  "transfer_challenge": "For a new achievement sequence, determine whether cylinders stay disjoint and whether the stage volumes have a computable limit."
+ },
+ {
+  "mechanism_id": "strict_superincreasing_first_difference",
+  "one_sentence": "The first unequal digit determines the sum because its weight dominates the entire allowed suffix.",
+  "five_minute": "Restricting a strictly superincreasing sequence to any offset set preserves strict tail domination. Cancel the common prefix of two digit strings. At their first difference, the larger digit contributes more than every later discrepancy can cancel, proving injectivity. The argument fails exactly when strict domination is lost.",
+  "transfer_challenge": "Given a restricted weight family, prove the hereditary tail inequality or construct a collision showing it fails."
+ }
+]

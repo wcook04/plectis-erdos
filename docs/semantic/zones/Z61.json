@@ -1,0 +1,138 @@
+{
+  "zone_id": "Z61",
+  "title": "Boolean-Mobius greedy reduction: Mersenne gap dominance and unique half-target words",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "z61_local_mersenne_gap_dominance",
+      "label": "local Mersenne gap dominance",
+      "note": "Every quotient weight exceeds its complete lower tail by the parity-uniform binary window."
+    },
+    {
+      "id": "z61_below_gap_greedy_uniqueness",
+      "label": "below-gap greedy uniqueness",
+      "note": "An admissible Boolean word with defect below a separating gap is the deterministic integer-greedy word."
+    },
+    {
+      "id": "z61_half_target_lower_word_canonicalisation",
+      "label": "half-target lower-word canonicalisation",
+      "note": "The local Mersenne half target specializes the abstract unique-window hinge."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "local_mersenne_quotient_words_are_gap_dominated",
+      "canonical_statement": "PROVED CONCRETE DOMINANCE: if R <= M and 1 <= d, then the quotient-weight list localMersenneWeightsFrom M R d is recursively gap-dominated by lowerBinaryWindow M R = 2^(M-R); every head exceeds its complete remaining tail by at least that window.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z61_local_mersenne_gap_dominance"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Quotient-floor bounds, the finite Mersenne-tail estimate, positivity of the Mersenne correction beyond the first omitted dyadic harmonic, and recursion down the weight list.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Concrete project-specific instantiation of a superincreasing-word argument; no novelty claim is made.",
+      "scope_caveat": "Gap dominance supplies separation only. It does not prove that a greedy remainder lies below the window, that an exact half-target word exists, or that the remaining repair load is safe.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersenneWeightsFrom_gapDominates",
+          "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+          "line": 280
+        }
+      ]
+    },
+    {
+      "id": "below_gap_defect_exactly_characterises_the_greedy_word",
+      "canonical_statement": "PROVED ABSTRACT UNIQUE-WINDOW HINGE: for a positive gap, a gap-dominating weight list, an equal-length Boolean word, and an admissible target C, the defect C - weightedBoolSum weights bits is below the gap iff bits is exactly integerGreedyBits weights C and the deterministic greedy remainder is itself below the gap.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": [
+        "z61_below_gap_greedy_uniqueness"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Gap separation of distinct Boolean sums plus maximality and admissibility of the descending greedy word.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The paper identifies the superincreasing-word plus below-gap uniqueness technique as standard and fully general.",
+      "scope_caveat": "The right side retains the greedy-remainder inequality. Gap dominance alone does not put that remainder inside the window, and the theorem does not assert existence of a below-gap representative.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "remainder_lt_gap_iff_eq_integerGreedyBits",
+          "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+          "line": 373
+        }
+      ]
+    },
+    {
+      "id": "exact_half_target_lower_words_are_forced_to_be_greedy",
+      "canonical_statement": "PROVED HALF-TARGET SPECIALISATION: if R <= M, bits has the local Mersenne weight-list length, weightedBoolSum (localMersenneWeights M R) bits + A = 2^(M-1)-1, and A < lowerBinaryWindow M R, then bits is the deterministic integer-greedy word for the half target and A equals its integer-greedy remainder.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "z61_local_mersenne_gap_dominance",
+        "z61_below_gap_greedy_uniqueness",
+        "z61_half_target_lower_word_canonicalisation"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The concrete Mersenne gap-dominance theorem followed by the abstract below-gap uniqueness reduction.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct specialization of the general unique-window hinge to the local half target.",
+      "scope_caveat": "The exact-fill and inside-window statements are theorem inputs, not outputs. The theorem canonicalises any such construction but produces neither the construction nor a uniform small-remainder or repair-load theorem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
+          "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+          "line": 452
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "localMersenneWeightsFrom_gapDominates",
+      "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+      "line": 280,
+      "role": "statement",
+      "statement_node": "local_mersenne_quotient_words_are_gap_dominated"
+    },
+    {
+      "declaration": "remainder_lt_gap_iff_eq_integerGreedyBits",
+      "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+      "line": 373,
+      "role": "statement",
+      "statement_node": "below_gap_defect_exactly_characterises_the_greedy_word"
+    },
+    {
+      "declaration": "localMersenneHalfTarget_lower_word_eq_greedy_and_remainder_eq",
+      "module": "Erdos249257/BooleanMobiusGreedyReduction.lean",
+      "line": 452,
+      "role": "statement",
+      "statement_node": "exact_half_target_lower_words_are_forced_to_be_greedy"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "exact_half_target_lower_words_are_forced_to_be_greedy",
+      "to": "below_gap_defect_exactly_characterises_the_greedy_word",
+      "relation": "specialises",
+      "basis": "Instantiate the abstract target with 2^(M-1)-1 and the weights with localMersenneWeights M R, then identify the defect with A using the exact-fill equation."
+    },
+    {
+      "from": "exact_half_target_lower_words_are_forced_to_be_greedy",
+      "to": "local_mersenne_quotient_words_are_gap_dominated",
+      "relation": "generated_by",
+      "basis": "The concrete Mersenne dominance theorem discharges the abstract GapDominates premise needed for unique-window canonicalisation."
+    },
+    {
+      "from": "below_gap_defect_exactly_characterises_the_greedy_word",
+      "to": "local_mersenne_quotient_words_are_gap_dominated",
+      "relation": "complements",
+      "basis": "The concrete theorem proves that Mersenne lists have the required separation, while the abstract theorem explains what any below-gap admissible representative must be."
+    }
+  ]
+}

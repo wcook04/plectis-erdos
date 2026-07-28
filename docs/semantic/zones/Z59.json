@@ -1,0 +1,188 @@
+{
+  "zone_id": "Z59",
+  "title": "Cofinal positive half-greedy skips: local exact rows and the conditional half-membership chain",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "positive_half_greedy_skip",
+      "label": "positive half-greedy skip",
+      "note": "A rank c where the rational half-greedy remainder is positive and smaller than the next Mersenne weight."
+    },
+    {
+      "id": "cofinal_positive_skip_supply",
+      "label": "cofinal positive-skip supply",
+      "note": "Positive half-greedy skip ranks occurring beyond every natural bound."
+    },
+    {
+      "id": "exact_local_mersenne_half_row",
+      "label": "exact local Mersenne half row",
+      "note": "A finite quotient row attaining the exact integral half target at its endpoint."
+    },
+    {
+      "id": "half_achievement_payoff",
+      "label": "half-achievement payoff",
+      "note": "Membership of one half in the closed Mersenne achievement set."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "cofinal_positive_half_greedy_skips_is_the_open_orbit_socket",
+      "canonical_statement": "CofinalPositiveHalfGreedySkips means that beyond every bound there is a rank c at least four where the rational half-greedy remainder after c-1 steps is positive and strictly smaller than mersenneWeightRat c.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "positive_half_greedy_skip",
+        "cofinal_positive_skip_supply"
+      ],
+      "open_antecedents": [
+        "CofinalPositiveHalfGreedySkips"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "cofinal supply predicate on the canonical rational half-greedy orbit",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The declaration defines the project-local open socket. The paper's equivalence audit is not a novelty claim.",
+      "scope_caveat": "This declaration proves neither a cofinal supply nor an equivalence. The paper identifies the predicate with half-membership only after combining external positivity and skipped-support results; no named Lean iff with this predicate exists.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "CofinalPositiveHalfGreedySkips",
+          "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "one_positive_half_greedy_skip_produces_an_exact_row",
+      "canonical_statement": "Every c at least four where the rational half-greedy remainder is positive and below the next Mersenne weight produces ExactLocalMersenneHalfRow (2c-2).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "positive_half_greedy_skip",
+        "exact_local_mersenne_half_row"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "canonical skipped-prefix specialization of the skipped-core exact-row constructor",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is a direct local specialization of the existing skipped-core constructor.",
+      "scope_caveat": "The theorem assumes one skip event and supplies neither infinitely many events nor coherent rows. Having no capacity hypothesis at this step does not solve the global supply problem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
+          "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "id": "cofinal_positive_half_greedy_skips_produce_cofinal_exact_rows",
+      "canonical_statement": "If positive half-greedy skips occur cofinally, the associated endpoints 2c-2 carry exact local Mersenne half rows cofinally.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "cofinal_positive_skip_supply",
+        "exact_local_mersenne_half_row"
+      ],
+      "open_antecedents": [
+        "CofinalPositiveHalfGreedySkips"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "cofinal lifting of the single-skip exact-row constructor",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is a direct quantifier lift of the local producer.",
+      "scope_caveat": "The theorem consumes the full open orbit-level supply and does not prove it.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
+          "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "id": "cofinal_positive_half_greedy_skips_force_half_membership",
+      "canonical_statement": "Cofinal positive half-greedy skips yield cofinal exact rows and therefore place one half in the Mersenne achievement set.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "cofinal_positive_skip_supply",
+        "exact_local_mersenne_half_row",
+        "half_achievement_payoff"
+      ],
+      "open_antecedents": [
+        "CofinalPositiveHalfGreedySkips"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "cofinal exact-row approximation followed by closedness of the achievement set",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is the composition of the local cofinal producer with the existing exact-row payoff consumer.",
+      "scope_caveat": "This is only a forward conditional. It proves no half-membership, infinite support, or universal Erdős #257 result without the open antecedent; the reverse equivalence is not proved in this module.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+          "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+          "line": 73
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "CofinalPositiveHalfGreedySkips",
+      "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+      "line": 22,
+      "role": "concept",
+      "statement_node": "cofinal_positive_half_greedy_skips_is_the_open_orbit_socket"
+    },
+    {
+      "declaration": "exactLocalMersenneHalfRow_of_positiveHalfGreedySkip",
+      "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+      "line": 31,
+      "role": "statement",
+      "statement_node": "one_positive_half_greedy_skip_produces_an_exact_row"
+    },
+    {
+      "declaration": "cofinalExactLocalMersenneHalfRows_of_positiveHalfGreedySkips",
+      "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+      "line": 60,
+      "role": "statement",
+      "statement_node": "cofinal_positive_half_greedy_skips_produce_cofinal_exact_rows"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips",
+      "module": "Erdos249257/BooleanMobiusSkipRowCofinal.lean",
+      "line": 73,
+      "role": "statement",
+      "statement_node": "cofinal_positive_half_greedy_skips_force_half_membership"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "cofinal_positive_half_greedy_skips_produce_cofinal_exact_rows",
+      "to": "cofinal_positive_half_greedy_skips_is_the_open_orbit_socket",
+      "relation": "depends_on_open",
+      "basis": "The cofinal-row theorem takes CofinalPositiveHalfGreedySkips as its sole global hypothesis."
+    },
+    {
+      "from": "cofinal_positive_half_greedy_skips_produce_cofinal_exact_rows",
+      "to": "one_positive_half_greedy_skip_produces_an_exact_row",
+      "relation": "generated_by",
+      "basis": "Each cofinal skip witness is mapped to endpoint 2c-2 by the local exact-row producer, and elementary arithmetic preserves cofinality."
+    },
+    {
+      "from": "cofinal_positive_half_greedy_skips_force_half_membership",
+      "to": "cofinal_positive_half_greedy_skips_is_the_open_orbit_socket",
+      "relation": "depends_on_open",
+      "basis": "The achievement-set conclusion remains conditional on the unproved cofinal positive-skip predicate."
+    },
+    {
+      "from": "cofinal_positive_half_greedy_skips_force_half_membership",
+      "to": "cofinal_positive_half_greedy_skips_produce_cofinal_exact_rows",
+      "relation": "generated_by",
+      "basis": "The proof feeds the cofinal exact-row theorem into the existing cofinal-row achievement-set consumer."
+    }
+  ]
+}

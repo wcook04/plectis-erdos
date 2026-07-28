@@ -20,13 +20,14 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import subprocess
 import sys
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
+DESCRIPTOR_MAX_BYTES = 64_000
+ORIENTATION_MAX_BYTES = 32_000
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
@@ -59,19 +60,6 @@ def file_digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def git(*args: str, check: bool = True) -> str:
-    completed = subprocess.run(
-        ["git", *args],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    if check and completed.returncode != 0:
-        raise RuntimeError(completed.stderr.strip() or f"git {' '.join(args)} failed")
-    return completed.stdout.strip() if completed.returncode == 0 else ""
-
-
 def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str, Any]:
     """Project a bounded first-read capsule from the exhaustive owners."""
     principal_claims = []
@@ -98,15 +86,6 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
 
     machine_paper = claims["machine_readable_paper"]
     publication_assembly = machine_paper["publication_assembly"]
-    navigation_commit = git(
-        "log",
-        "-1",
-        "--format=%H",
-        "--",
-        "docs/claims.json",
-        "docs/declaration_atlas.json",
-        "docs/methodology.json",
-    )
     # The runnable per-route command is derivable from the id (see the
     # ``queries`` section); storing it per row would spend first-contact
     # budget on repetition.
@@ -177,10 +156,12 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         "mathematical_programmes": mathematical_programmes,
         "editorial_architecture": editorial_architecture,
         "editorial_state": editorial_state,
-        "source_revision": {
+        "source_provenance": {
             "formal_source_ref": claims["release"]["formal_source"]["ref"],
-            "committed_navigation_snapshot": navigation_commit,
             "main_paper_source_digest": file_digest(MAIN_PAPER_TEX),
+            "navigation_projection_identity": (
+                "content digests in corpus descriptor; no checkout commit embedded"
+            ),
         },
         "reading_routes": reading_routes,
         "drilldowns": {
@@ -193,6 +174,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "source_by_question": "docs/SOURCE_MAP.md",
             "development_chronology": "docs/WAVE_INDEX.md",
             "supported_root_import": "Erdos249257.lean",
+            "supported_root_imports": ["Erdos249257.lean", "ErdosProblems.lean"],
         },
         "checks": {
             "release": "python3 scripts/check_release.py",
@@ -217,8 +199,8 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         },
         "external_registration": {
             "path": "docs/corpus_descriptor.json",
-            "schema": "erdos249257-corpus-descriptor/4",
-            "maximum_bytes": 64_000,
+            "schema": "erdos249257-corpus-descriptor/5",
+            "maximum_bytes": DESCRIPTOR_MAX_BYTES,
             "inline": ["release_identity", "content_digests", "principal_claim_handles", "root_module_topology"],
             "expands_to": [
                 "docs/claims.json",
@@ -366,7 +348,7 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "## External corpus registration",
             "",
             "[`docs/corpus_descriptor.json`](corpus_descriptor.json) uses schema",
-            "`erdos249257-corpus-descriptor/4`. The release gate keeps it below 64 KB.",
+            "`erdos249257-corpus-descriptor/5`. The release gate keeps it below 64 KB.",
             "It carries release identities, content digests, principal claim and declaration",
             "handles, and the root module topology. Complete claims, module imports,",
             "declaration prose, methodology, both authored papers, and the paper-to-Lean",
@@ -537,36 +519,51 @@ def build() -> dict[str, Any]:
 
     formal_source = release["formal_source"]
     formal_ref = str(formal_source["ref"])
-    formal_commit = git("rev-parse", f"{formal_ref}^{{commit}}")
-    navigation_commit = git(
-        "log",
-        "-1",
-        "--format=%H",
-        "--",
-        "docs/claims.json",
-        "docs/declaration_atlas.json",
-        "docs/methodology.json",
-    )
-    # The descriptor deliberately records no publication state for the
-    # navigation snapshot. Whether a snapshot commit is reachable from main is a
-    # property of the repository at read time, not of this tree: it depends on
-    # which refs the checkout carries, and it flips when a pull request merges
-    # without any file changing. Consulting origin/main as well as a local main
-    # narrows the gap but does not close it, because a topic branch and the main
-    # branch that later contains it still disagree. Readers resolve publication
-    # state from ``repository_resolution`` instead.
-
+    if formal_source.get("ref_kind") == "commit":
+        formal_commit = formal_ref
+    else:
+        current = (
+            json.loads(OUTPUT.read_text(encoding="utf-8"))
+            if OUTPUT.is_file()
+            else {}
+        )
+        recorded = current.get("identity", {}).get("formal_source", {})
+        formal_commit = (
+            recorded.get("resolved_commit")
+            if recorded.get("ref") == formal_ref
+            else "unknown"
+        )
     orientation = build_orientation(claims, atlas)
-    root_module = next(row for row in atlas["modules"] if row["path"] == "Erdos249257.lean")
+    root_paths = [
+        machine_paper["module_graph"]["root"],
+        *machine_paper["module_graph"].get("additional_roots", []),
+    ]
+    root_modules = {
+        root_path: next(row for row in atlas["modules"] if row["path"] == root_path)
+        for root_path in root_paths
+    }
     principal_declaration_handles = [
         {"claim_id": claim["id"], **declaration}
         for claim in orientation["principal_claims"]
         for declaration in claim["declarations"]
     ]
+    # The descriptor is a registration envelope, so its principal-claim rows
+    # are handles rather than a second copy of authored claim prose.  Preserve
+    # every status, paper, open-obligation, and Lean-source coordinate needed
+    # to resolve a claim; the exact statement remains in the digest-bound
+    # claims document and in the bounded orientation projection.
+    principal_claim_handles = [
+        {
+            key: value
+            for key, value in claim.items()
+            if key != "statement"
+        }
+        for claim in orientation["principal_claims"]
+    ]
 
     repository = str(release["repository"])
     return {
-        "schema": "erdos249257-corpus-descriptor/4",
+        "schema": "erdos249257-corpus-descriptor/5",
         "artifact_role": "self_describing_external_mathematical_corpus_root",
         "corpus_id": "plectis_lean_erdos249_257_public",
         "release_provenance": release["public_projection"],
@@ -591,10 +588,18 @@ def build() -> dict[str, Any]:
                 "lean_toolchain": release["lean_toolchain"],
                 "authority_role": "proof_bearing_committed_source_anchor",
             },
-            "navigation_snapshot": {
-                "commit": navigation_commit,
-                "authority_role": "machine_readable_navigation_anchor",
-                "repository_resolution": f"{repository}/tree/{navigation_commit}",
+            "navigation_projection": {
+                "identity_kind": "content_addressed_expansion_set",
+                "authority_role": (
+                    "machine_readable_navigation_identity_not_proof_authority"
+                ),
+                "content_identity_owner": "identity.content",
+                "git_commit_not_embedded_reason": (
+                    "A generated file cannot truthfully contain the Git commit "
+                    "that first contains its own bytes. Current projection identity "
+                    "is therefore the committed content-digest set, while the "
+                    "formal-source commit remains separate."
+                ),
             },
             "content": {
                 "machine_readable_paper": {
@@ -690,7 +695,8 @@ def build() -> dict[str, Any]:
         "summary": atlas["summary"],
         "compact_graph": {
             "status_taxonomy": claims["status_taxonomy"],
-            "principal_claims": orientation["principal_claims"],
+            "principal_claims": principal_claim_handles,
+            "principal_claim_statement_owner": "docs/claims.json::claims",
             "non_claims": claims["non_claims"],
             "remaining_open_propositions": claims["remaining_open_propositions"],
             "mathematical_programmes": [
@@ -708,8 +714,19 @@ def build() -> dict[str, Any]:
             ],
             "module_topology": {
                 "root": machine_paper["module_graph"]["root"],
+                "roots": root_paths,
                 "node_count": len(machine_paper["module_graph"]["nodes"]),
-                "root_imports": root_module["imports"],
+                "root_import_count": len(root_modules[root_paths[0]]["imports"]),
+                "import_counts_by_root": {
+                    root_path: len(root_modules[root_path]["imports"])
+                    for root_path in root_paths
+                },
+                "auxiliary_root_count": len(
+                    machine_paper["module_graph"].get("auxiliary_roots", [])
+                ),
+                "auxiliary_root_posture": machine_paper["module_graph"].get(
+                    "auxiliary_root_contract", {}
+                ).get("posture"),
                 "full_graph": "docs/claims.json::machine_readable_paper.module_graph",
             },
             "argument_graph": machine_paper["argument_graph"],
@@ -779,6 +796,19 @@ def build() -> dict[str, Any]:
                 "compact_graph.methodology_capsule extended fields": "docs/methodology.json",
             },
         },
+        "migration_from_v4": {
+            "reason": (
+                "The former identity.navigation_snapshot.commit was a preserved "
+                "historical label that could lag the generated content and be "
+                "mistaken for its current Git identity."
+            ),
+            "field_replacements": {
+                "identity.navigation_snapshot": (
+                    "identity.navigation_projection plus identity.content digests"
+                ),
+                "orientation.source_revision": "orientation.source_provenance",
+            },
+        },
         "checks": {
             "descriptor": "python3 scripts/build_corpus_descriptor.py --check",
             "methodology": "python3 scripts/build_methodology.py --check",
@@ -789,7 +819,15 @@ def build() -> dict[str, Any]:
 
 
 def render() -> str:
-    return json.dumps(build(), ensure_ascii=False, indent=0) + "\n"
+    return json.dumps(build(), ensure_ascii=False, separators=(",", ":")) + "\n"
+
+
+def write_if_changed(path: Path, content: str) -> bool:
+    """Write one generated projection only when its bytes changed."""
+    if path.is_file() and path.read_text(encoding="utf-8") == content:
+        return False
+    path.write_text(content, encoding="utf-8")
+    return True
 
 
 def main() -> int:
@@ -800,7 +838,12 @@ def main() -> int:
     atlas = json.loads(ATLAS_PATH.read_text(encoding="utf-8"))
     orientation = build_orientation(claims, atlas)
     expected = render()
-    expected_orientation_json = json.dumps(orientation, ensure_ascii=False, indent=1) + "\n"
+    # This is a machine first-read packet with a strict byte ceiling. Compact
+    # JSON preserves the complete object while keeping formatting whitespace
+    # from crowding out newly registered routes or papers.
+    expected_orientation_json = (
+        json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n"
+    )
     expected_orientation_markdown = render_orientation_markdown(orientation)
     actual_readme = README_PATH.read_text(encoding="utf-8")
     expected_readme = replace_readme_scale_strip(
@@ -816,6 +859,20 @@ def main() -> int:
         WAVE_SHAPE_END,
         render_wave_package_shape(atlas),
     )
+    descriptor_bytes = len(expected.encode("utf-8"))
+    orientation_bytes = len(expected_orientation_json.encode("utf-8"))
+    if descriptor_bytes > DESCRIPTOR_MAX_BYTES:
+        print(
+            "corpus descriptor exceeds the registration-envelope budget: "
+            f"{descriptor_bytes:,} > {DESCRIPTOR_MAX_BYTES:,} bytes"
+        )
+        return 1
+    if orientation_bytes > ORIENTATION_MAX_BYTES:
+        print(
+            "orientation exceeds the bounded first-read budget: "
+            f"{orientation_bytes:,} > {ORIENTATION_MAX_BYTES:,} bytes"
+        )
+        return 1
     if args.check:
         actual = OUTPUT.read_text(encoding="utf-8") if OUTPUT.is_file() else ""
         actual_orientation_json = (
@@ -842,19 +899,25 @@ def main() -> int:
         print(
             "corpus descriptor and orientation current: "
             f"formal={descriptor['identity']['formal_source']['resolved_commit'][:8]} "
-            f"navigation={descriptor['identity']['navigation_snapshot']['commit'][:8]}"
+            "navigation=content-addressed "
+            f"bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
         )
         return 0
-    OUTPUT.write_text(expected, encoding="utf-8")
-    ORIENTATION_JSON.write_text(expected_orientation_json, encoding="utf-8")
-    ORIENTATION_MARKDOWN.write_text(expected_orientation_markdown, encoding="utf-8")
-    README_PATH.write_text(expected_readme, encoding="utf-8")
-    WAVE_INDEX_PATH.write_text(expected_wave_index, encoding="utf-8")
+    changed = [
+        path.relative_to(ROOT).as_posix()
+        for path, content in (
+            (OUTPUT, expected),
+            (ORIENTATION_JSON, expected_orientation_json),
+            (ORIENTATION_MARKDOWN, expected_orientation_markdown),
+            (README_PATH, expected_readme),
+            (WAVE_INDEX_PATH, expected_wave_index),
+        )
+        if write_if_changed(path, content)
+    ]
     print(
         "wrote "
-        f"{OUTPUT.relative_to(ROOT)}, {ORIENTATION_JSON.relative_to(ROOT)}, and "
-        f"{ORIENTATION_MARKDOWN.relative_to(ROOT)}, {README_PATH.relative_to(ROOT)}, and "
-        f"{WAVE_INDEX_PATH.relative_to(ROOT)}"
+        + (", ".join(changed) if changed else "no changed projections")
+        + f"; descriptor bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
     )
     return 0
 

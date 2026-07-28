@@ -56,7 +56,12 @@ jobs:
             changed=true
           elif git diff --quiet "$base" "$head" -- \
             '*.lean' \
-            lakefile.toml lakefile.lean lake-manifest.json lean-toolchain; then
+            lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
+            docs/claims.json docs/declaration_atlas.json \
+            docs/generated_certificate_manifest.json \
+            scripts/build_declaration_atlas.py \
+            scripts/build_lean_dependency_index.py \
+            scripts/query_corpus.py; then
             changed=false
           else
             changed=true
@@ -67,6 +72,8 @@ jobs:
         run: python3 scripts/test_dependency_lock_contract.py
       - name: Test bounded build planner
         run: python3 scripts/test_lean_fast_build.py
+      - name: Test dependency-index verification cache
+        run: python3 scripts/test_lean_dependency_index_cache.py
       - name: Restore project Lean cache
         if: steps.lean-inputs.outputs.changed == 'true'
         uses: actions/cache@v5
@@ -90,16 +97,23 @@ jobs:
         if: steps.lean-inputs.outputs.changed == 'true'
         # Drain independent Lucas modules without Lake's unbounded ready-set
         # fan-out. Lake's own trace hashes validate restored project outputs;
-        # the final ordinary build remains the authority check.
+        # final serialized Lake checks remain the proof-authority check.
         run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness
       - name: Build the problem-centric library
         if: steps.lean-inputs.outputs.changed == 'true'
-        # Not a default target, so the downstream-consumer contract keeps
-        # `lake build` meaning exactly Erdos249257. It still has to compile.
+        # This is already a default root. Keep an explicit warm authority check
+        # so the problem-centric root has its own CI receipt after the bounded
+        # planner; restored Lake traces make the repeated check cheap.
         run: lake build ErdosProblems
       - name: Build downstream consumer example
         if: steps.lean-inputs.outputs.changed == 'true'
         run: lake build Examples
+      - name: Verify elaborated dependency index
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # The first changed environment performs the full export and writes an
+        # exact receipt into .lake. An exact cache restore reuses that receipt;
+        # changed formal/exporter inputs force a fresh export.
+        run: python3 scripts/build_lean_dependency_index.py --check
       - name: Record documentation-only build skip
         if: steps.lean-inputs.outputs.changed != 'true'
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."
@@ -119,6 +133,7 @@ jobs:
       - name: Check newcomer architecture guide
         run: |
           python3 scripts/check_architecture_guide.py
+          python3 scripts/check_agent_navigation_paper.py
           python3 scripts/test_architecture_guide.py
 
       # Every check below is blocking, and every check below reports.  The

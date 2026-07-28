@@ -1,0 +1,69 @@
+{
+  "zone_id": "Z62",
+  "title": "Canonical adjacent-suffix slack and post-jump producer specialisation",
+  "problem": "249",
+  "replaces_role_zone": "Z05",
+  "concepts": [
+    {"id":"z62_canonical_slack","label":"canonical adjacent-suffix central slack","note":"The minimum two-sided margin from the canonical residue to the central-band edges."},
+    {"id":"z62_post_jump_supply","label":"post-jump slack supply","note":"Cofinal strict LCM jumps whose new endpoint has nonnegative slack."},
+    {"id":"z62_power_two_supply","label":"power-two post-jump slack supply","note":"The specialization of the same sign condition to endpoints 2^a."},
+    {"id":"z62_owner_boundary","label":"narrow replacement boundary","note":"Z05 retains the broader centrality ladder, transports, and irrationality consumers."}
+  ],
+  "statement_nodes": [
+    {
+      "id":"canonical_adjacent_suffix_slack_is_the_minimum_two_sided_edge_margin",
+      "canonical_statement":"Let m=canonicalAdjacentSuffixDepth(t) and d=diagonalAdjacentSuffixResidue(t,0,m). Then canonicalAdjacentSuffixCentralSlack(t)=min(d-2^(m-5),(2^m-2^(m-5))-d). Nonnegativity is exactly the closed central band 2^(m-5)≤d≤2^m-2^(m-5), and the scalar is constant across equal periodLcm heights.",
+      "logical_class":"representation_normalisation",
+      "problem":"249",
+      "concepts":["z62_canonical_slack","z62_owner_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact slack definition, centrality iff, and plateau invariance from the existing Z05 theorem substrate",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Corpus-specific LCM-jump coordinate; no external novelty or priority claim is made.",
+      "scope_caveat":"The scalar definition proves no recurrence, monotonicity, equidistribution, or sign bias. Plateau invariance does not propagate slack across a strict jump.",
+      "confidence":"high",
+      "evidence":[{"declaration":"canonicalAdjacentSuffixCentralSlack","module":"Erdos249257/DiagonalFreshLossBridge.lean","line":2651}]
+    },
+    {
+      "id":"post_jump_nonnegative_slack_is_an_open_cofinal_supply",
+      "canonical_statement":"CanonicalAdjacentSuffixPostJumpSlackSupply asks that beyond every threshold there be a strict LCM jump periodLcm(t)<periodLcm(t+1) whose new endpoint has 0≤canonicalAdjacentSuffixCentralSlack(t+1).",
+      "logical_class":"conditional_implication",
+      "problem":"249",
+      "concepts":["z62_canonical_slack","z62_post_jump_supply","z62_owner_boundary"],
+      "open_antecedents":["CanonicalAdjacentSuffixPostJumpSlackSupply"],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact cofinal post-jump producer definition and existing Z05 consumer chain",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Corpus-specific sufficient supply predicate; no external novelty or priority claim is made.",
+      "scope_caveat":"Strict LCM jumps are cofinal, but the slack sign at those jumps is unproved. The predicate evaluates at t+1, not t; finite censuses cannot discharge the cofinal quantifier.",
+      "confidence":"high",
+      "evidence":[{"declaration":"CanonicalAdjacentSuffixPostJumpSlackSupply","module":"Erdos249257/DiagonalFreshLossBridge.lean","line":2686}]
+    },
+    {
+      "id":"power_two_endpoints_form_an_open_post_jump_slack_specialisation",
+      "canonical_statement":"CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply asks that for arbitrarily large exponents a≥2, 0≤canonicalAdjacentSuffixCentralSlack(2^a). The corresponding pre-jump index is 2^a-1, while slack is evaluated at the new endpoint 2^a.",
+      "logical_class":"conditional_implication",
+      "problem":"249",
+      "concepts":["z62_canonical_slack","z62_post_jump_supply","z62_power_two_supply","z62_owner_boundary"],
+      "open_antecedents":["CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply"],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact power-two cofinal producer definition and the proved strict-jump reindexing transport",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Corpus-specific sufficient supply predicate; no external novelty or priority claim is made.",
+      "scope_caveat":"Power-two indices remove the position search but do not prove nonnegative slack. Only the forward implication to general post-jump supply is proved; no converse or necessity for irrationality is available.",
+      "confidence":"high",
+      "evidence":[{"declaration":"CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply","module":"Erdos249257/DiagonalFreshLossBridge.lean","line":2693}]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"canonicalAdjacentSuffixCentralSlack","module":"Erdos249257/DiagonalFreshLossBridge.lean","line":2651,"role":"engine","statement_node":"canonical_adjacent_suffix_slack_is_the_minimum_two_sided_edge_margin","replaces_zone":"Z05"},
+    {"declaration":"CanonicalAdjacentSuffixPostJumpSlackSupply","module":"Erdos249257/DiagonalFreshLossBridge.lean","line":2686,"role":"concept","statement_node":"post_jump_nonnegative_slack_is_an_open_cofinal_supply","replaces_zone":"Z05"},
+    {"declaration":"CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply","module":"Erdos249257/DiagonalFreshLossBridge.lean","line":2693,"role":"concept","statement_node":"power_two_endpoints_form_an_open_post_jump_slack_specialisation","replaces_zone":"Z05"}
+  ],
+  "intra_zone_relations": [
+    {"from":"post_jump_nonnegative_slack_is_an_open_cofinal_supply","to":"canonical_adjacent_suffix_slack_is_the_minimum_two_sided_edge_margin","relation":"generated_by","basis":"The supply is exactly a cofinal nonnegativity condition on this scalar immediately after strict LCM jumps."},
+    {"from":"power_two_endpoints_form_an_open_post_jump_slack_specialisation","to":"canonical_adjacent_suffix_slack_is_the_minimum_two_sided_edge_margin","relation":"generated_by","basis":"The power-two producer restricts the same scalar sign condition to endpoints 2^a."},
+    {"from":"power_two_endpoints_form_an_open_post_jump_slack_specialisation","to":"post_jump_nonnegative_slack_is_an_open_cofinal_supply","relation":"implies","basis":"canonicalAdjacentSuffixPostJumpSlackSupply_of_powerTwo uses periodLcm(2^a-1)<periodLcm(2^a) and reindexes each power-of-two witness as a post-jump witness."}
+  ]
+}

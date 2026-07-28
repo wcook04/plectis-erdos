@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:8c37a7c2f35915573f2571eb8ca190a031837063f351fea235f68bfe01c5aa84",
-    "docs/claims.json": "sha256:869b8bd4472a4cb5edb261f5bb5a9910d23b23e7b1bc47b5602e645490a85389",
-    "docs/methodology.json": "sha256:d2dab3ef7bd853be6bd086ad2ff448d97996280c648878f6aa5066e1616a722e",
-    "docs/publication_contract.json": "sha256:fbf7d83b8624abb1d5cac6b75b4d57b82195ca382dd34cf0d8c8d7f63b3346fa",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:1a2f82456b118b86672c2f6558f899da71e7d0a96678de4cacd823452fc4537f",
+    "docs/claims.json": "sha256:84ad04b2055fa5bc62105cd68bb1419cce80a77d07148ad93d0295f28733a64f",
+    "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
+    "docs/publication_contract.json": "sha256:f775e1f81cf70739666ed16d669e2d828cfc7ce2b31d32b3e44cc2afa60e522b",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:867f45fe1d1f6321bd95f8f3b6919d9a83bfd4e349bf2a19ceeb948cabf622ba",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:53cae935c1854d54eb0a590ccf0ac09a847b17ca39df7525159c4ebf85fb9220",
     "scripts/run_publication_mutations.py": "sha256:01834099e0b6897fabfe67d698fbe5a682f701ae54d367c0e35730e3b2ccd437"
   },
   "five_sentence_summary": [
@@ -127,7 +127,7 @@
   "historical_checker_example": {
     "current_owner_snapshot": {
       "contribution_family_count": 21,
-      "curated_claim_count": 99,
+      "curated_claim_count": 100,
       "remaining_open_proposition_count": 4,
       "snapshot_kind": "current_canonical_owners",
       "status_count": 7
@@ -265,52 +265,56 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 3655,
+        "line": 4229,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "Erd\\H{o}s \\#249"
       },
-      "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator."
+      "statement": "Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.",
+      "status": "open"
     },
     {
       "id": "remaining_open.unbounded_certificate_supply",
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 3666,
+        "line": 4240,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "unbounded certificate supply"
       },
-      "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal."
+      "statement": "Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.",
+      "status": "open"
     },
     {
       "id": "remaining_open.half_value_membership",
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 3690,
+        "line": 4264,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "the half-value counterexample route"
       },
-      "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route."
+      "statement": "Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.",
+      "status": "open"
     },
     {
       "id": "remaining_open.universal_257_all_infinite_supports",
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 3681,
+        "line": 4255,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "universal Erd\\H{o}s \\#257"
       },
-      "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here."
+      "statement": "Prove irrationality for every infinite support A, not only the named support families formalised here.",
+      "status": "open"
     }
   ],
   "revision_and_identity": {
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "publication_state": "published_committed_checkpoint",
-      "ref": "312b96c0d149ed466725c62d4ef24cfc91bca34e",
+      "publication_state": "committed_checkpoint_pending_remote_publication",
+      "ref": "1128d0858e1060c741f26460afac166f36801af9",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
@@ -329,6 +333,8 @@
     "python3 scripts/test_publication_artifact_contract.py",
     "python3 scripts/run_publication_mutations.py --verify-operators",
     "python3 scripts/check_release.py",
+    "python3 scripts/check_problem_note_sources.py --coverage",
+    "python3 scripts/build_problem_index.py --check",
     "python3 scripts/query_corpus.py --publication-evidence summary",
     "python3 scripts/run_publication_mutations.py --all --receipt <output.json>",
     "python3 scripts/check_release_ref.py --ref HEAD --receipt <output.json>",

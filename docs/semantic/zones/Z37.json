@@ -1,0 +1,700 @@
+{
+  "zone_id": "Z37",
+  "title": "The signed Möbius–Mersenne moment ladder: exact two-atom curvature, controlled tails, and unconditional order-two Hankel negativity",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "mobius_mersenne_power_ladder",
+      "label": "Möbius–Mersenne power ladder",
+      "description": "The real sequence Θ_r = sum_{d>=1} μ(d)/(2^d-1)^r, viewed across the exponent r rather than along the original summation index."
+    },
+    {
+      "id": "signed_mersenne_atom",
+      "label": "Signed Mersenne atom",
+      "description": "The dth ladder atom μ(d)/(2^d-1)^r; its Möbius sign prevents positive-measure moment arguments but its absolute value has a uniform geometric majorant."
+    },
+    {
+      "id": "two_atom_dominant_part",
+      "label": "Two-atom dominant part",
+      "description": "The exact d=1,2 truncation 1-3^{-r}, whose shifted order-two Hankel gap is explicitly 4/3^{r+2}."
+    },
+    {
+      "id": "geometric_tail_budget",
+      "label": "Geometric tail budget",
+      "description": "An explicit enclosure for the signed atoms after a finite prefix, obtained by comparison with powers of 2^{-r}."
+    },
+    {
+      "id": "hankel_perturbation_budget",
+      "label": "Hankel perturbation budget",
+      "description": "The combined linear and quadratic tail-error allowance needed to transfer a positive two-atom Hankel gap to the full ladder."
+    },
+    {
+      "id": "contraction_rate_separation",
+      "label": "Contraction-rate separation",
+      "description": "The tail-error budget contracts faster than 1/4 per rung while the dominant two-atom gap contracts exactly by 1/3."
+    },
+    {
+      "id": "five_atom_low_rung_certificate",
+      "label": "Five-atom low-rung certificate",
+      "description": "The exact d=1,...,5 prefix 1-3^{-r}-7^{-r}-31^{-r}, plus a geometric residual, used to verify the four rungs below the asymptotic induction threshold."
+    },
+    {
+      "id": "order_two_signed_hankel_negativity",
+      "label": "Order-two signed Hankel negativity",
+      "description": "Strict negativity of every shifted 2x2 Hankel determinant Θ_r Θ_{r+2}-Θ_{r+1}^2 for r>=1."
+    },
+    {
+      "id": "erdos249_totient_offset",
+      "label": "Erdős #249 totient offset",
+      "description": "The identity Θ_2 = sum_{n>=1} φ(n)2^{-n}-1/2, which locates the #249 constant inside the ladder without deciding its arithmetic nature."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "mobius_mersenne_ladder_is_absolutely_convergent",
+      "canonical_statement": "For r>=1, the Möbius–Mersenne atom μ(n+1)/(2^{n+1}-1)^r is bounded in norm by (2^{-r})^n; therefore the infinite ladder Θ_r is absolutely summable.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "mobius_mersenne_power_ladder",
+        "signed_mersenne_atom",
+        "geometric_tail_budget"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Möbius absolute-value bound, the inequality 2^n <= 2^{n+1}-1, and comparison with the geometric series of ratio 2^{-r}",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No novelty or priority claim is made for this convergence estimate; it is the analytic foundation for the later exact ladder statements.",
+      "scope_caveat": "Absolute convergence only makes Θ_r and its finite-prefix decompositions well-defined. It supplies no irrationality or nonvanishing statement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTerm",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 131
+        },
+        {
+          "declaration": "mobiusMersenneTheta",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 136
+        },
+        {
+          "declaration": "norm_mobiusMersenneTerm_le_geometric",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 155
+        },
+        {
+          "declaration": "summable_mobiusMersenneTerm",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 185
+        }
+      ]
+    },
+    {
+      "id": "first_two_ladder_rungs_locate_the_249_constant",
+      "canonical_statement": "The first ladder rung is exactly Θ_1=1/2, while the second is Θ_2=S-1/2 for S=sum_{n>=1} φ(n)2^{-n}, the Erdős #249 totient series.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "mobius_mersenne_power_ladder",
+        "erdos249_totient_offset"
+      ],
+      "open_antecedents": [
+        "The irrationality of S, equivalently of Θ_2 after adding the rational number 1/2, remains open."
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "specialisation of the Möbius Lambert identities at exponents one and two",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "These values specialise the Möbius–Mersenne Lambert identities already formalised elsewhere in the corpus.",
+      "scope_caveat": "The identities locate #249 inside the ladder. They do not show that Θ_2 or S is irrational.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTheta_one",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 197
+        },
+        {
+          "declaration": "mobiusMersenneTheta_two_eq_totient_offset",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 214
+        }
+      ]
+    },
+    {
+      "id": "two_atom_split_has_a_sharp_geometric_remainder",
+      "canonical_statement": "For every r>=1, Θ_r splits exactly as (1-3^{-r}) plus the signed tail beginning at d=3, and the absolute value of that tail is at most (2^{-r})^2/(1-2^{-r}).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "mobius_mersenne_power_ladder",
+        "two_atom_dominant_part",
+        "geometric_tail_budget"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "absolute convergence followed by an exact two-term tsum split and geometric comparison of every remaining signed atom",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No novelty claim is made for the finite-prefix split or its geometric enclosure.",
+      "scope_caveat": "This is an analytic decomposition. The tail bound alone neither determines the sign of Θ_r nor decides any rationality question.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTwoAtom",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 140
+        },
+        {
+          "declaration": "mobiusMersenneTailAfterTwo",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 144
+        },
+        {
+          "declaration": "mobiusMersenneTheta_eq_twoAtom_add_tail",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 234
+        },
+        {
+          "declaration": "abs_mobiusMersenneTailAfterTwo_le",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 260
+        }
+      ]
+    },
+    {
+      "id": "two_atom_model_has_exact_positive_hankel_gap",
+      "canonical_statement": "The two-atom model T_r=1-3^{-r} has exact shifted gap T_{r+1}^2-T_r T_{r+2}=4/3^{r+2}>0, hence is strictly log-concave at every nonnegative rung.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "two_atom_dominant_part",
+        "order_two_signed_hankel_negativity"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "closed-form expansion of 1-3^{-r}",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This exact elementary identity is recorded as the dominant curvature input, without a novelty claim.",
+      "scope_caveat": "The theorem concerns the two-atom truncation, not yet the full infinite ladder and not the irrationality of any rung.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTwoAtom_hankelGap",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 311
+        },
+        {
+          "declaration": "mobiusMersenneTwoAtom_strict_logConcave",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 320
+        }
+      ]
+    },
+    {
+      "id": "tail_error_contracts_faster_than_the_dominant_gap",
+      "canonical_statement": "The closed tail bound B_r=1/(2^r(2^r-1)) is positive and contracts strictly faster than a factor 1/4. The induced Hankel perturbation budget E_r also contracts faster than 1/4, whereas the exact dominant gap G_r=4/3^{r+2} contracts by exactly 1/3; the verified base margin at r=5 therefore yields E_r<G_r for every r>=5.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "geometric_tail_budget",
+        "hankel_perturbation_budget",
+        "contraction_rate_separation",
+        "two_atom_dominant_part"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact rational base verification at r=5 plus induction using quarter-contraction of the error against third-contraction of the gap",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No novelty or priority claim is made. This node records the exact quantitative mechanism formalised in the module.",
+      "scope_caveat": "The comparison proves enough room to preserve an order-two Hankel sign from rung 5 onward. It is not an irrationality estimate and gives no arithmetic denominator obstruction.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTailBound",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 330
+        },
+        {
+          "declaration": "mobiusMersenneHankelError",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 334
+        },
+        {
+          "declaration": "mobiusMersenneDominantGap",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 341
+        },
+        {
+          "declaration": "mobiusMersenneTailBound_pos",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 344
+        },
+        {
+          "declaration": "mobiusMersenneTailBound_eq_geometric",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 353
+        },
+        {
+          "declaration": "abs_mobiusMersenneTailAfterTwo_le_bound",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 365
+        },
+        {
+          "declaration": "mobiusMersenneTailBound_sub_four_succ",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 377
+        },
+        {
+          "declaration": "mobiusMersenneTailBound_succ_lt_quarter",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 395
+        },
+        {
+          "declaration": "mobiusMersenneHankelError_succ_lt_quarter",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 411
+        },
+        {
+          "declaration": "mobiusMersenneDominantGap_succ",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 446
+        },
+        {
+          "declaration": "mobiusMersenneDominantGap_pos",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 454
+        },
+        {
+          "declaration": "mobiusMersenneHankelError_lt_dominantGap",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 461
+        },
+        {
+          "declaration": "mobiusMersenneTwoAtom_mem_unitInterval",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 518
+        }
+      ]
+    },
+    {
+      "id": "full_ladder_is_strictly_log_concave_from_rung_five",
+      "canonical_statement": "For every r>=5, the full infinite ladder satisfies Θ_r Θ_{r+2}<Θ_{r+1}^2: the two-atom positive gap survives the signed infinite tail perturbation.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "mobius_mersenne_power_ladder",
+        "hankel_perturbation_budget",
+        "contraction_rate_separation",
+        "order_two_signed_hankel_negativity"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two-atom decomposition, unit-interval bounds, absolute tail enclosures, a general perturbed-Hankel lower bound, and the eventual error-gap separation",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The public reasoning paper describes this as an unconditional theorem of the formal packet; no broader historical priority claim is made here.",
+      "scope_caveat": "Strict log-concavity is a structural analytic fact about the sequence of ladder values. It does not imply that any individual Θ_r is irrational.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTheta_strict_logConcave_of_five_le",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 534
+        }
+      ]
+    },
+    {
+      "id": "five_atom_certificate_closes_the_four_low_rungs",
+      "canonical_statement": "For 1<=r<5, Θ_r splits into the exact first-five-atom prefix 1-3^{-r}-7^{-r}-31^{-r} and a geometrically bounded residual; exact arithmetic checks of the resulting perturbation inequality prove strict log-concavity on all four low rungs.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "mobius_mersenne_power_ladder",
+        "five_atom_low_rung_certificate",
+        "geometric_tail_budget",
+        "order_two_signed_hankel_negativity"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "five-term tsum split, explicit Möbius values at d=1,...,5, a fifth-order geometric residual, and interval-case exact rational verification",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No novelty claim is made for the finite verification; it closes precisely the r=1,2,3,4 cases omitted by the contraction induction.",
+      "scope_caveat": "This is a finite base-case certificate for log-concavity. In particular, its r=2 instance does not decide the rationality of Θ_2 or the #249 constant.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersennePrefixFive",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 569
+        },
+        {
+          "declaration": "mobiusMersenneTailAfterFive",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 573
+        },
+        {
+          "declaration": "mobiusMersenneTailBoundFive",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 577
+        },
+        {
+          "declaration": "mobiusMersenneTheta_eq_prefixFive_add_tail",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 581
+        },
+        {
+          "declaration": "mobiusMersenneTailBoundFive_pos",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 623
+        },
+        {
+          "declaration": "abs_mobiusMersenneTailAfterFive_le",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 633
+        },
+        {
+          "declaration": "mobiusMersenneTheta_strict_logConcave_of_one_le_of_lt_five",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 721
+        }
+      ]
+    },
+    {
+      "id": "every_shifted_order_two_hankel_minor_is_negative",
+      "canonical_statement": "For every r>=1, Θ_r Θ_{r+2}<Θ_{r+1}^2; equivalently, every shifted 2x2 Hankel determinant Θ_r Θ_{r+2}-Θ_{r+1}^2 of the full signed Möbius–Mersenne ladder is strictly negative.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "mobius_mersenne_power_ladder",
+        "order_two_signed_hankel_negativity"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "case split between the finite first-five-atom certificates for r<5 and the two-atom versus tail contraction argument for r>=5",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The public reasoning paper records this as the full unconditional order-two theorem proved in the module; this semantic node makes no claim beyond the checked declaration.",
+      "scope_caveat": "Negative order-two Hankel minors show that (Θ_r) is not a positive-measure moment sequence. They are unrelated, without an additional theorem not present here, to whether Θ_2=S-1/2 or any other individual rung is rational.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTheta_strict_logConcave",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 730
+        },
+        {
+          "declaration": "mobiusMersenneTheta_hankel_two_neg",
+          "module": "Erdos249257/SignedQMomentObstruction.lean",
+          "line": 740
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "mobiusMersenneTerm",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 131,
+      "role": "representation",
+      "statement_node": "mobius_mersenne_ladder_is_absolutely_convergent"
+    },
+    {
+      "declaration": "mobiusMersenneTheta",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 136,
+      "role": "representation",
+      "statement_node": "mobius_mersenne_ladder_is_absolutely_convergent"
+    },
+    {
+      "declaration": "norm_mobiusMersenneTerm_le_geometric",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 155,
+      "role": "engine",
+      "statement_node": "mobius_mersenne_ladder_is_absolutely_convergent"
+    },
+    {
+      "declaration": "summable_mobiusMersenneTerm",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 185,
+      "role": "statement",
+      "statement_node": "mobius_mersenne_ladder_is_absolutely_convergent"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_one",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 197,
+      "role": "finite_instance",
+      "statement_node": "first_two_ladder_rungs_locate_the_249_constant"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_two_eq_totient_offset",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 214,
+      "role": "statement",
+      "statement_node": "first_two_ladder_rungs_locate_the_249_constant"
+    },
+    {
+      "declaration": "mobiusMersenneTwoAtom",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 140,
+      "role": "representation",
+      "statement_node": "two_atom_split_has_a_sharp_geometric_remainder"
+    },
+    {
+      "declaration": "mobiusMersenneTailAfterTwo",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 144,
+      "role": "representation",
+      "statement_node": "two_atom_split_has_a_sharp_geometric_remainder"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_eq_twoAtom_add_tail",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 234,
+      "role": "statement",
+      "statement_node": "two_atom_split_has_a_sharp_geometric_remainder"
+    },
+    {
+      "declaration": "abs_mobiusMersenneTailAfterTwo_le",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 260,
+      "role": "statement",
+      "statement_node": "two_atom_split_has_a_sharp_geometric_remainder"
+    },
+    {
+      "declaration": "mobiusMersenneTwoAtom_hankelGap",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 311,
+      "role": "statement",
+      "statement_node": "two_atom_model_has_exact_positive_hankel_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTwoAtom_strict_logConcave",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 320,
+      "role": "statement",
+      "statement_node": "two_atom_model_has_exact_positive_hankel_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTailBound",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 330,
+      "role": "representation",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneHankelError",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 334,
+      "role": "representation",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneDominantGap",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 341,
+      "role": "representation",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTailBound_pos",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 344,
+      "role": "engine",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTailBound_eq_geometric",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 353,
+      "role": "engine",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "abs_mobiusMersenneTailAfterTwo_le_bound",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 365,
+      "role": "engine",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTailBound_sub_four_succ",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 377,
+      "role": "engine",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTailBound_succ_lt_quarter",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 395,
+      "role": "statement",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneHankelError_succ_lt_quarter",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 411,
+      "role": "statement",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneDominantGap_succ",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 446,
+      "role": "statement",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneDominantGap_pos",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 454,
+      "role": "engine",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneHankelError_lt_dominantGap",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 461,
+      "role": "statement",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTwoAtom_mem_unitInterval",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 518,
+      "role": "engine",
+      "statement_node": "tail_error_contracts_faster_than_the_dominant_gap"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_strict_logConcave_of_five_le",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 534,
+      "role": "statement",
+      "statement_node": "full_ladder_is_strictly_log_concave_from_rung_five"
+    },
+    {
+      "declaration": "mobiusMersennePrefixFive",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 569,
+      "role": "representation",
+      "statement_node": "five_atom_certificate_closes_the_four_low_rungs"
+    },
+    {
+      "declaration": "mobiusMersenneTailAfterFive",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 573,
+      "role": "representation",
+      "statement_node": "five_atom_certificate_closes_the_four_low_rungs"
+    },
+    {
+      "declaration": "mobiusMersenneTailBoundFive",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 577,
+      "role": "representation",
+      "statement_node": "five_atom_certificate_closes_the_four_low_rungs"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_eq_prefixFive_add_tail",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 581,
+      "role": "statement",
+      "statement_node": "five_atom_certificate_closes_the_four_low_rungs"
+    },
+    {
+      "declaration": "mobiusMersenneTailBoundFive_pos",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 623,
+      "role": "engine",
+      "statement_node": "five_atom_certificate_closes_the_four_low_rungs"
+    },
+    {
+      "declaration": "abs_mobiusMersenneTailAfterFive_le",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 633,
+      "role": "statement",
+      "statement_node": "five_atom_certificate_closes_the_four_low_rungs"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_strict_logConcave_of_one_le_of_lt_five",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 721,
+      "role": "statement",
+      "statement_node": "five_atom_certificate_closes_the_four_low_rungs"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_strict_logConcave",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 730,
+      "role": "statement",
+      "statement_node": "every_shifted_order_two_hankel_minor_is_negative"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_hankel_two_neg",
+      "module": "Erdos249257/SignedQMomentObstruction.lean",
+      "line": 740,
+      "role": "statement",
+      "statement_node": "every_shifted_order_two_hankel_minor_is_negative"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "first_two_ladder_rungs_locate_the_249_constant",
+      "to": "mobius_mersenne_ladder_is_absolutely_convergent",
+      "relation": "specialises",
+      "basis": "The exact first and second rungs specialise the convergent ladder and identify its connection to the #249 constant."
+    },
+    {
+      "from": "two_atom_split_has_a_sharp_geometric_remainder",
+      "to": "mobius_mersenne_ladder_is_absolutely_convergent",
+      "relation": "reformulates",
+      "basis": "Absolute summability permits the ladder to be rewritten as its first two atoms plus the infinite residual."
+    },
+    {
+      "from": "two_atom_model_has_exact_positive_hankel_gap",
+      "to": "two_atom_split_has_a_sharp_geometric_remainder",
+      "relation": "complements",
+      "basis": "The exact curvature of the retained two-atom part is paired with the sharp enclosure of the omitted tail."
+    },
+    {
+      "from": "tail_error_contracts_faster_than_the_dominant_gap",
+      "to": "two_atom_model_has_exact_positive_hankel_gap",
+      "relation": "transport_of",
+      "basis": "The dominant gap is the exact positive margin transported through the quantified infinite-tail perturbation."
+    },
+    {
+      "from": "tail_error_contracts_faster_than_the_dominant_gap",
+      "to": "two_atom_split_has_a_sharp_geometric_remainder",
+      "relation": "implies",
+      "basis": "The closed bound packages the two-atom residual into the three-rung perturbation budget used by the Hankel comparison."
+    },
+    {
+      "from": "full_ladder_is_strictly_log_concave_from_rung_five",
+      "to": "tail_error_contracts_faster_than_the_dominant_gap",
+      "relation": "implies",
+      "basis": "The strict error-versus-gap margin is consumed by the perturbation inequality to preserve the positive Hankel gap on every rung at least five."
+    },
+    {
+      "from": "five_atom_certificate_closes_the_four_low_rungs",
+      "to": "full_ladder_is_strictly_log_concave_from_rung_five",
+      "relation": "complements",
+      "basis": "The exact first-five-atom calculation covers precisely the four positive rungs omitted by the eventual contraction theorem."
+    },
+    {
+      "from": "every_shifted_order_two_hankel_minor_is_negative",
+      "to": "full_ladder_is_strictly_log_concave_from_rung_five",
+      "relation": "generalises",
+      "basis": "The all-rung theorem contains the r>=5 result and extends it with the four finite certificates."
+    },
+    {
+      "from": "every_shifted_order_two_hankel_minor_is_negative",
+      "to": "five_atom_certificate_closes_the_four_low_rungs",
+      "relation": "generalises",
+      "basis": "The all-rung theorem absorbs the separately verified r=1,2,3,4 cases into a uniform statement."
+    },
+    {
+      "from": "every_shifted_order_two_hankel_minor_is_negative",
+      "to": "first_two_ladder_rungs_locate_the_249_constant",
+      "relation": "complements",
+      "basis": "The offset identity explains where #249 sits, while the Hankel theorem records only cross-rung curvature and explicitly does not settle that rung's rationality."
+    }
+  ]
+}

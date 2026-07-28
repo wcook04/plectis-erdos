@@ -1,0 +1,848 @@
+{
+  "zone_id": "Z41",
+  "title": "Three-branch seam dynamics, finite-horizon shadowing, and exact defect witnesses",
+  "problem": "257",
+  "replaces_role_zone": "Z24",
+  "concepts": [
+    {
+      "id": "adjacent_gap_excess",
+      "label": "adjacent-word gap excess",
+      "note": "The nonnegative difference between the actual gap separating the seam words and the nominal gap 2^(s+1)."
+    },
+    {
+      "id": "three_branch_seam_map",
+      "label": "three-branch seam remainder map",
+      "note": "The exact middle, right, and carry recurrences, with their mutually exclusive remainder thresholds."
+    },
+    {
+      "id": "carry_defect_geometry",
+      "label": "carry-defect geometry",
+      "note": "The dependence of the carry-branch error on the adjacent-gap excess and the largest declined rank."
+    },
+    {
+      "id": "cofinal_carry_criterion",
+      "label": "cofinal carry criterion",
+      "note": "The sufficient condition that successor carries occur arbitrarily far out, forcing a later half-point hit."
+    },
+    {
+      "id": "finite_horizon_doubling_shadow",
+      "label": "finite-horizon doubling shadow",
+      "note": "Exact representation of a carry-free finite orbit segment as a doubling orbit of a displaced initial point."
+    },
+    {
+      "id": "shadowing_resolution_barrier",
+      "label": "shadowing resolution barrier",
+      "note": "The dyadic initial coordinate and expanding uncertainty interval that prevent the finite-horizon shadow from yielding a cofinal conclusion."
+    },
+    {
+      "id": "finite_branch_witnesses",
+      "label": "finite branch witnesses",
+      "note": "Kernel-checked rows exhibiting the middle, right, and carry branches and their exact pulses and defects."
+    },
+    {
+      "id": "largest_false_rank_mechanism",
+      "label": "largest-false-rank mechanism",
+      "note": "Exact finite data connecting a late or low largest declined rank to a small or large adjacent-gap excess."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate",
+      "canonical_statement": "PROVED: for every seam row s>=5, the actual adjacent-word gap is at least 2^(s+1), and is exactly 2^(s+1) plus the natural-valued adjacent-gap excess.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "adjacent_gap_excess"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "separation of the bracketing seam words and exact normalization of their remainder-plus-overshoot gap",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records the exact Lean content of this expansion module. No priority or novelty claim is made.",
+      "scope_caveat": "This coordinate measures one finite row. Its nonnegativity supplies neither a small-defect estimate nor a cofinal statement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "adjGapExcess",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 205
+        },
+        {
+          "declaration": "two_pow_le_adjacentGap",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 209
+        },
+        {
+          "declaration": "adjGapExcess_spec",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 222
+        }
+      ]
+    },
+    {
+      "id": "explicit_thresholds_partition_each_row_into_three_branches",
+      "canonical_statement": "PROVED: at every row s>=5, the carry threshold is exactly 3*2^(s+1)+4g_s+q_s <= 4rho_s, the middle threshold is exactly 4rho_s < 2^(s+1)+4+p_s, and these predicates partition the row into the middle, right, and carry cases.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": [
+        "adjacent_gap_excess",
+        "three_branch_seam_map"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "elimination of the seam overshoot by the adjacent-gap identity followed by the source trichotomy",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records the exact Lean content of this expansion module. No priority or novelty claim is made.",
+      "scope_caveat": "The classification is pointwise. It does not determine which branches occur infinitely often.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "successorCarries_iff",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 235
+        },
+        {
+          "declaration": "three_mul_two_pow_le_of_successorCarries",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 249
+        },
+        {
+          "declaration": "MiddleTrigger",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 321
+        },
+        {
+          "declaration": "middleCond_iff",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 325
+        },
+        {
+          "declaration": "upperOrMiddle_iff",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 343
+        },
+        {
+          "declaration": "branch_trichotomy",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 353
+        },
+        {
+          "declaration": "not_upperOrMiddle_iff",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 371
+        }
+      ]
+    },
+    {
+      "id": "each_seam_branch_has_an_exact_remainder_recurrence",
+      "canonical_statement": "PROVED: under its explicit trigger, the middle branch satisfies rho_(s+1)+p_s=4rho_s+2^(s+1), the right branch satisfies rho_(s+1)+2^(s+1)+p_s+4=4rho_s, and the carry branch satisfies both its unused-gap form and rho_(s+1)+3*2^(s+1)+4g_s+q_s=4rho_s.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "adjacent_gap_excess",
+        "three_branch_seam_map"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "specialization of the exact next-remainder trichotomy on each branch",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records the exact Lean content of this expansion module. No priority or novelty claim is made.",
+      "scope_caveat": "Each identity retains its branch hypothesis. The unified perturbed-doubling statement is already authored separately in Z24 and is not duplicated here.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "middleBranch_remainder_succ_eq",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 260
+        },
+        {
+          "declaration": "upperBranch_remainder_succ_eq",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 288
+        },
+        {
+          "declaration": "upperBranch_remainder_succ_eq'",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 307
+        },
+        {
+          "declaration": "rightBranch_remainder_succ_eq_of_triggers",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 386
+        }
+      ]
+    },
+    {
+      "id": "largest_declined_rank_quantitatively_controls_the_carry_defect",
+      "canonical_statement": "PROVED: if d is the largest false rank, the adjacent-gap excess has an exact formula in the late zone and an exact half-zone formula for s<2d; throughout the half zone this bounds 21(4g_s+q_s) by 128*4^(s-d)+42s+160, while the late condition 2s<3d makes the power term geometrically small.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "adjacent_gap_excess",
+        "carry_defect_geometry",
+        "largest_false_rank_mechanism"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "transport of exact late-gap and half-zone identities followed by a power comparison",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records the exact Lean content of this expansion module. No priority or novelty claim is made.",
+      "scope_caveat": "The geometric conclusion requires the late-rank inequality. At the bottom of the half zone the bound permits a macroscopic normalized defect.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "three_mul_adjGapExcess_eq_exactLateGap",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 451
+        },
+        {
+          "declaration": "twentyOne_mul_adjGapExcess_eq_skipHalfGap",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 465
+        },
+        {
+          "declaration": "skipHalfGapCorrection_le",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 477
+        },
+        {
+          "declaration": "twentyOne_mul_carryDefect_le",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 496
+        },
+        {
+          "declaration": "four_pow_cube_le_of_late",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 510
+        }
+      ]
+    },
+    {
+      "id": "cofinal_successor_carries_are_sufficient_for_half_membership",
+      "canonical_statement": "PROVED CONDITIONAL: every successor carry at row s produces a half-point hit at row s+1; therefore carries at arbitrarily large rows imply that 1/2 belongs to the Mersenne achievement set. A separate decidable two-inequality test certifies a carry from consecutive computed remainders.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "three_branch_seam_map",
+        "cofinal_carry_criterion",
+        "finite_branch_witnesses"
+      ],
+      "open_antecedents": [
+        "CarryCofinally"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "the carry-branch unused-gap identity followed by the existing cofinal half-point criterion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records a Lean-checked sufficient condition. No priority or novelty claim is made.",
+      "scope_caveat": "CarryCofinally is defined but not proved. Four finite carry rows do not establish the cofinal antecedent or settle the 1/2 question.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "hitAt_succ_of_successorCarries",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 521
+        },
+        {
+          "declaration": "CarryCofinally",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 528
+        },
+        {
+          "declaration": "half_mem_of_carryCofinally",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 541
+        },
+        {
+          "declaration": "successorCarries_of_numeric",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 551
+        }
+      ]
+    },
+    {
+      "id": "carry_free_segments_have_exact_finite_horizon_doubling_shadows",
+      "canonical_statement": "PROVED: for every finite carry-free run [N,N+k), the integral remainder identity and the normalized coordinate y_s=rho_s/2^(s+1)+1/2 represent y_(N+k) exactly as 2^k(y_N-delta)-M, where 0<=delta<=(N+1)/2^(N+1); hits are exactly the rows with y_s<=1.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "three_branch_seam_map",
+        "finite_horizon_doubling_shadow"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "iteration of the non-carry recurrence, accumulation of the binary digit word and defects, and exact normalization into a real coordinate",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records the exact Lean content of this expansion module. No priority or novelty claim is made.",
+      "scope_caveat": "The displacement is supplied separately for each horizon k. The theorem does not construct one limiting displaced point valid for the whole infinite tail.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "shadow_of_not_carry_run",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 583
+        },
+        {
+          "declaration": "y",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 637
+        },
+        {
+          "declaration": "half_le_y",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 639
+        },
+        {
+          "declaration": "hitAt_iff_y_le_one",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 645
+        },
+        {
+          "declaration": "y_succ",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 670
+        },
+        {
+          "declaration": "y_shadow",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 692
+        },
+        {
+          "declaration": "y_shadow_interval",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 729
+        }
+      ]
+    },
+    {
+      "id": "dyadic_origin_and_expanding_uncertainty_limit_the_shadow_method",
+      "canonical_statement": "PROVED BARRIER: every row coordinate y_s is dyadic, since 2^(s+1)y_s=rho_s+2^s; moreover the allowed shadowing interval, after k>=N+1 doublings, has image length at least one. Thus these two direct criteria cannot by themselves provide a cofinal binary-orbit conclusion.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": [
+        "finite_horizon_doubling_shadow",
+        "shadowing_resolution_barrier"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact denominator clearing for y and a lower bound on the dilation of the shadowing interval",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records a method-specific obstruction. No priority or novelty claim is made.",
+      "scope_caveat": "The barrier applies to the unshifted dyadic-origin criterion and to the stated interval-resolution argument. It does not rule out constructing a common limiting displacement or using a different invariant.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_pow_mul_y",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 746
+        },
+        {
+          "declaration": "shadow_interval_covers",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 760
+        }
+      ]
+    },
+    {
+      "id": "negative_half_membership_forces_eventual_carry_free_finite_shadowing",
+      "canonical_statement": "PROVED CONDITIONAL: if 1/2 does not belong to the Mersenne achievement set, then beyond some row no successor carry occurs, and for every later finite horizon the orbit has an exact doubling representation using some point in one fixed initial interval.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "cofinal_carry_criterion",
+        "finite_horizon_doubling_shadow",
+        "shadowing_resolution_barrier"
+      ],
+      "open_antecedents": [
+        "(1 / 2 : ℝ) ∉ mersenneAchievementSet"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "contraposition of the cofinal-carry criterion followed by finite carry-free shadowing",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The node records a Lean-checked consequence of the negative branch of the open problem. No priority or novelty claim is made.",
+      "scope_caveat": "The antecedent is an open branch of Erdős #257. The point in the interval may depend on the horizon; the theorem does not produce one infinite doubling orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_no_carry_above_of_not_half_mem",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 779
+        },
+        {
+          "declaration": "shadow_of_not_half_mem",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 800
+        }
+      ]
+    },
+    {
+      "id": "a_small_remainder_forces_the_exact_middle_branch",
+      "canonical_statement": "PROVED: whenever 4rho_s<2^(s+1)+4 at a row s>=5, the carry predicate is false, the middle trigger holds, and the successor remainder obeys the exact middle-branch recurrence without any additional branch hypothesis.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "three_branch_seam_map"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "comparison with the exact carry and middle thresholds",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is a direct specialization of the exact threshold and branch identities. No novelty claim is made.",
+      "scope_caveat": "The result applies only under the displayed small-remainder inequality and gives no frequency statement for such rows.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "not_successorCarries_of_four_mul_remainder_lt",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 811
+        },
+        {
+          "declaration": "middleTrigger_of_four_mul_remainder_lt",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 816
+        },
+        {
+          "declaration": "middleBranch_remainder_succ_eq_of_small",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 824
+        }
+      ]
+    },
+    {
+      "id": "all_three_branches_occur_in_kernel_checked_finite_rows",
+      "canonical_statement": "VERIFIED FINITE INSTANCES: exact remainder values certify the middle branch at row 14 with below-pulse 3, the right branch at row 9 with below-pulse 1, and the carry branch at rows 13, 19, 25, and 31.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": [
+        "three_branch_seam_map",
+        "finite_branch_witnesses"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "kernel evaluation of explicit finite remainder rows followed by the exact branch recurrences and the numeric carry criterion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "These are finite checked instances, not a literature or novelty claim.",
+      "scope_caveat": "The four carry rows do not prove CarryCofinally, and the finite branch witnesses do not imply any asymptotic distribution of branches.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "remainder_thirteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 852
+        },
+        {
+          "declaration": "remainder_fourteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 855
+        },
+        {
+          "declaration": "remainder_fifteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 858
+        },
+        {
+          "declaration": "remainder_nineteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 861
+        },
+        {
+          "declaration": "remainder_twenty",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 864
+        },
+        {
+          "declaration": "remainder_twentyfive",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 867
+        },
+        {
+          "declaration": "remainder_twentysix",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 870
+        },
+        {
+          "declaration": "remainder_thirtyone",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 873
+        },
+        {
+          "declaration": "remainder_thirtytwo",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 876
+        },
+        {
+          "declaration": "middleTrigger_fourteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 881
+        },
+        {
+          "declaration": "not_successorCarries_fourteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 885
+        },
+        {
+          "declaration": "belowPulse_fourteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 892
+        },
+        {
+          "declaration": "right_triggers_nine",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 900
+        },
+        {
+          "declaration": "belowPulse_nine",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 904
+        },
+        {
+          "declaration": "successorCarries_thirteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 912
+        },
+        {
+          "declaration": "successorCarries_nineteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 918
+        },
+        {
+          "declaration": "successorCarries_twentyfive",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 924
+        },
+        {
+          "declaration": "successorCarries_thirtyone",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 930
+        },
+        {
+          "declaration": "carry_rows",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 938
+        }
+      ]
+    },
+    {
+      "id": "finite_carry_defects_disprove_uniform_small_error",
+      "canonical_statement": "VERIFIED FINITE INSTANCES AND BARRIER: the carry defects 4g_s+q_s equal 11044, 2739, 691, and 695 at rows 13, 19, 25, and 31 respectively; at row 13 the defect exceeds one quarter of 2^(s+2), so the uncorrected carry-branch doubling approximation is not uniformly accurate.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": [
+        "carry_defect_geometry",
+        "finite_branch_witnesses"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "substitution of exact consecutive remainder values into the carry-branch recurrence",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "These are finite Lean-checked values and a finite counterexample to uniform smallness. No novelty claim is made.",
+      "scope_caveat": "The row-13 counterexample refutes uniform small error, not eventual smallness on a restricted family of rows. The external classification of rows 19, 25, and 31 as good is not used in this node.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "carryDefect_thirteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 960
+        },
+        {
+          "declaration": "carryDefect_nineteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 966
+        },
+        {
+          "declaration": "carryDefect_twentyfive",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 972
+        },
+        {
+          "declaration": "carryDefect_thirtyone",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 978
+        },
+        {
+          "declaration": "carryDefect_thirteen_large",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 988
+        }
+      ]
+    },
+    {
+      "id": "finite_rank_data_explain_small_and_large_gap_excess",
+      "canonical_statement": "VERIFIED FINITE MECHANISM: row 15 has largest false rank 14 and adjacent-gap excess 4, while row 13 has largest false rank 7, adjacent-gap excess 2760, above-pulse 4, and carry defect 11044; conversely the half-zone defect bound forces any largest false rank at row 13 to equal 7.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": [
+        "adjacent_gap_excess",
+        "carry_defect_geometry",
+        "largest_false_rank_mechanism",
+        "finite_branch_witnesses"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "kernel-checked largest-false-rank data inserted into the exact late-gap and half-zone identities",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is a pair of exact finite rows and a converse rank deduction at row 13. No priority or novelty claim is made.",
+      "scope_caveat": "The contrast between rows 13 and 15 identifies a finite mechanism; it does not establish how largest false ranks behave asymptotically or on all carry rows.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "adjGapExcess_late_bound_fifteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 995
+        },
+        {
+          "declaration": "carryDefect_bound_fifteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1003
+        },
+        {
+          "declaration": "isLargestFalseRank_thirteen_seven",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1019
+        },
+        {
+          "declaration": "isLargestFalseRank_fifteen_fourteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1033
+        },
+        {
+          "declaration": "adjGapExcess_fifteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1041
+        },
+        {
+          "declaration": "adjGapExcess_thirteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1049
+        },
+        {
+          "declaration": "abovePulse_thirteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1058
+        },
+        {
+          "declaration": "largestFalseRank_thirteen_is_seven",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1064
+        },
+        {
+          "declaration": "carryDefect_thirteen_forces_low_rank",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1074
+        }
+      ]
+    },
+    {
+      "id": "a_five_row_carry_free_segment_realises_the_shadowing_law",
+      "canonical_statement": "VERIFIED FINITE INSTANCE: rows 14 through 18 are carry-free, row 14 is followed by a half-point hit, and the five-step segment from row 14 to row 19 satisfies both the integral shadow identity and the normalized doubling-shadow identity.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": [
+        "finite_horizon_doubling_shadow",
+        "finite_branch_witnesses"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact remainder evaluation on rows 14 through 18 followed by the general carry-free shadowing theorem",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is a finite Lean-checked witness. No priority or novelty claim is made.",
+      "scope_caveat": "A five-row segment establishes non-vacuity of the hypotheses only. It gives no eventual or cofinal carry-free statement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "hitAt_fourteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1091
+        },
+        {
+          "declaration": "remainder_sixteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1100
+        },
+        {
+          "declaration": "remainder_eighteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1103
+        },
+        {
+          "declaration": "carryFree_run_fourteen",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1106
+        },
+        {
+          "declaration": "shadow_witness",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1125
+        },
+        {
+          "declaration": "y_shadow_witness",
+          "module": "ErdosProblems/Three/T2.lean",
+          "line": 1135
+        }
+      ]
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "explicit_thresholds_partition_each_row_into_three_branches",
+      "to": "adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate",
+      "relation": "generated_by",
+      "basis": "The carry threshold eliminates the overshoot through the exact adjacent-gap excess identity."
+    },
+    {
+      "from": "each_seam_branch_has_an_exact_remainder_recurrence",
+      "to": "explicit_thresholds_partition_each_row_into_three_branches",
+      "relation": "generated_by",
+      "basis": "The partition supplies the mutually exclusive hypotheses under which each exact branch recurrence applies."
+    },
+    {
+      "from": "largest_declined_rank_quantitatively_controls_the_carry_defect",
+      "to": "adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate",
+      "relation": "specialises",
+      "basis": "The rank identities replace the abstract nonnegative excess by exact or quantitative formulas in the half and late zones."
+    },
+    {
+      "from": "largest_declined_rank_quantitatively_controls_the_carry_defect",
+      "to": "each_seam_branch_has_an_exact_remainder_recurrence",
+      "relation": "specialises",
+      "basis": "The estimate controls the explicit 4g_s+q_s defect occurring in the carry recurrence."
+    },
+    {
+      "from": "cofinal_successor_carries_are_sufficient_for_half_membership",
+      "to": "each_seam_branch_has_an_exact_remainder_recurrence",
+      "relation": "generated_by",
+      "basis": "The carry recurrence places the successor remainder below the half-point threshold."
+    },
+    {
+      "from": "carry_free_segments_have_exact_finite_horizon_doubling_shadows",
+      "to": "each_seam_branch_has_an_exact_remainder_recurrence",
+      "relation": "generated_by",
+      "basis": "Iterating the two non-carry recurrences accumulates the finite digit word and the bounded defect."
+    },
+    {
+      "from": "dyadic_origin_and_expanding_uncertainty_limit_the_shadow_method",
+      "to": "carry_free_segments_have_exact_finite_horizon_doubling_shadows",
+      "relation": "barrier_for",
+      "basis": "The barrier quantifies why the finite-horizon shadow does not determine a cofinal binary orbit."
+    },
+    {
+      "from": "negative_half_membership_forces_eventual_carry_free_finite_shadowing",
+      "to": "cofinal_successor_carries_are_sufficient_for_half_membership",
+      "relation": "generated_by",
+      "basis": "The eventual absence of carries is the contrapositive consequence of the cofinal-carry sufficient criterion."
+    },
+    {
+      "from": "negative_half_membership_forces_eventual_carry_free_finite_shadowing",
+      "to": "carry_free_segments_have_exact_finite_horizon_doubling_shadows",
+      "relation": "specialises",
+      "basis": "Once the negative branch supplies an eventual carry-free tail, the finite-horizon shadow theorem applies at every horizon."
+    },
+    {
+      "from": "a_small_remainder_forces_the_exact_middle_branch",
+      "to": "explicit_thresholds_partition_each_row_into_three_branches",
+      "relation": "specialises",
+      "basis": "The stronger small-remainder inequality simultaneously excludes the carry threshold and implies the middle threshold."
+    },
+    {
+      "from": "all_three_branches_occur_in_kernel_checked_finite_rows",
+      "to": "explicit_thresholds_partition_each_row_into_three_branches",
+      "relation": "finite_instance_of",
+      "basis": "The exact finite rows witness all three cases of the abstract partition."
+    },
+    {
+      "from": "finite_carry_defects_disprove_uniform_small_error",
+      "to": "largest_declined_rank_quantitatively_controls_the_carry_defect",
+      "relation": "barrier_for",
+      "basis": "The row-13 value shows that the half-zone bound permits a macroscopic defect when the largest false rank is low."
+    },
+    {
+      "from": "finite_rank_data_explain_small_and_large_gap_excess",
+      "to": "largest_declined_rank_quantitatively_controls_the_carry_defect",
+      "relation": "finite_instance_of",
+      "basis": "Rows 13 and 15 discharge the rank hypotheses and realize the low-rank and late-rank regimes exactly."
+    },
+    {
+      "from": "a_five_row_carry_free_segment_realises_the_shadowing_law",
+      "to": "carry_free_segments_have_exact_finite_horizon_doubling_shadows",
+      "relation": "finite_instance_of",
+      "basis": "The segment [14,19) satisfies the carry-free hypothesis and yields the integral and normalized shadow identities."
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"adjGapExcess","module":"ErdosProblems/Three/T2.lean","line":205,"role":"statement","statement_node":"adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"two_pow_le_adjacentGap","module":"ErdosProblems/Three/T2.lean","line":209,"role":"statement","statement_node":"adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"adjGapExcess_spec","module":"ErdosProblems/Three/T2.lean","line":222,"role":"statement","statement_node":"adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::adjacent_gap_excess_is_an_exact_nonnegative_gap_coordinate; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"successorCarries_iff","module":"ErdosProblems/Three/T2.lean","line":235,"role":"statement","statement_node":"explicit_thresholds_partition_each_row_into_three_branches","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::explicit_thresholds_partition_each_row_into_three_branches; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"three_mul_two_pow_le_of_successorCarries","module":"ErdosProblems/Three/T2.lean","line":249,"role":"statement","statement_node":"explicit_thresholds_partition_each_row_into_three_branches","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::explicit_thresholds_partition_each_row_into_three_branches; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"MiddleTrigger","module":"ErdosProblems/Three/T2.lean","line":321,"role":"statement","statement_node":"explicit_thresholds_partition_each_row_into_three_branches","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::explicit_thresholds_partition_each_row_into_three_branches; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"middleCond_iff","module":"ErdosProblems/Three/T2.lean","line":325,"role":"statement","statement_node":"explicit_thresholds_partition_each_row_into_three_branches","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::explicit_thresholds_partition_each_row_into_three_branches; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"upperOrMiddle_iff","module":"ErdosProblems/Three/T2.lean","line":343,"role":"statement","statement_node":"explicit_thresholds_partition_each_row_into_three_branches","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::explicit_thresholds_partition_each_row_into_three_branches; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"branch_trichotomy","module":"ErdosProblems/Three/T2.lean","line":353,"role":"statement","statement_node":"explicit_thresholds_partition_each_row_into_three_branches","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::explicit_thresholds_partition_each_row_into_three_branches; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"not_upperOrMiddle_iff","module":"ErdosProblems/Three/T2.lean","line":371,"role":"statement","statement_node":"explicit_thresholds_partition_each_row_into_three_branches","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::explicit_thresholds_partition_each_row_into_three_branches; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"middleBranch_remainder_succ_eq","module":"ErdosProblems/Three/T2.lean","line":260,"role":"statement","statement_node":"each_seam_branch_has_an_exact_remainder_recurrence","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::each_seam_branch_has_an_exact_remainder_recurrence; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"upperBranch_remainder_succ_eq","module":"ErdosProblems/Three/T2.lean","line":288,"role":"statement","statement_node":"each_seam_branch_has_an_exact_remainder_recurrence","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::each_seam_branch_has_an_exact_remainder_recurrence; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"upperBranch_remainder_succ_eq'","module":"ErdosProblems/Three/T2.lean","line":307,"role":"statement","statement_node":"each_seam_branch_has_an_exact_remainder_recurrence","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::each_seam_branch_has_an_exact_remainder_recurrence; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"rightBranch_remainder_succ_eq_of_triggers","module":"ErdosProblems/Three/T2.lean","line":386,"role":"statement","statement_node":"each_seam_branch_has_an_exact_remainder_recurrence","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::each_seam_branch_has_an_exact_remainder_recurrence; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"three_mul_adjGapExcess_eq_exactLateGap","module":"ErdosProblems/Three/T2.lean","line":451,"role":"statement","statement_node":"largest_declined_rank_quantitatively_controls_the_carry_defect","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::largest_declined_rank_quantitatively_controls_the_carry_defect; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"twentyOne_mul_adjGapExcess_eq_skipHalfGap","module":"ErdosProblems/Three/T2.lean","line":465,"role":"statement","statement_node":"largest_declined_rank_quantitatively_controls_the_carry_defect","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::largest_declined_rank_quantitatively_controls_the_carry_defect; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"skipHalfGapCorrection_le","module":"ErdosProblems/Three/T2.lean","line":477,"role":"statement","statement_node":"largest_declined_rank_quantitatively_controls_the_carry_defect","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::largest_declined_rank_quantitatively_controls_the_carry_defect; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"twentyOne_mul_carryDefect_le","module":"ErdosProblems/Three/T2.lean","line":496,"role":"statement","statement_node":"largest_declined_rank_quantitatively_controls_the_carry_defect","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::largest_declined_rank_quantitatively_controls_the_carry_defect; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"four_pow_cube_le_of_late","module":"ErdosProblems/Three/T2.lean","line":510,"role":"statement","statement_node":"largest_declined_rank_quantitatively_controls_the_carry_defect","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::largest_declined_rank_quantitatively_controls_the_carry_defect; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"hitAt_succ_of_successorCarries","module":"ErdosProblems/Three/T2.lean","line":521,"role":"statement","statement_node":"cofinal_successor_carries_are_sufficient_for_half_membership","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::cofinal_successor_carries_are_sufficient_for_half_membership; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"CarryCofinally","module":"ErdosProblems/Three/T2.lean","line":528,"role":"statement","statement_node":"cofinal_successor_carries_are_sufficient_for_half_membership","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::cofinal_successor_carries_are_sufficient_for_half_membership; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"half_mem_of_carryCofinally","module":"ErdosProblems/Three/T2.lean","line":541,"role":"statement","statement_node":"cofinal_successor_carries_are_sufficient_for_half_membership","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::cofinal_successor_carries_are_sufficient_for_half_membership; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"successorCarries_of_numeric","module":"ErdosProblems/Three/T2.lean","line":551,"role":"statement","statement_node":"cofinal_successor_carries_are_sufficient_for_half_membership","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::cofinal_successor_carries_are_sufficient_for_half_membership; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"shadow_of_not_carry_run","module":"ErdosProblems/Three/T2.lean","line":583,"role":"statement","statement_node":"carry_free_segments_have_exact_finite_horizon_doubling_shadows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::carry_free_segments_have_exact_finite_horizon_doubling_shadows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"y","module":"ErdosProblems/Three/T2.lean","line":637,"role":"statement","statement_node":"carry_free_segments_have_exact_finite_horizon_doubling_shadows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::carry_free_segments_have_exact_finite_horizon_doubling_shadows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"half_le_y","module":"ErdosProblems/Three/T2.lean","line":639,"role":"statement","statement_node":"carry_free_segments_have_exact_finite_horizon_doubling_shadows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::carry_free_segments_have_exact_finite_horizon_doubling_shadows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"hitAt_iff_y_le_one","module":"ErdosProblems/Three/T2.lean","line":645,"role":"statement","statement_node":"carry_free_segments_have_exact_finite_horizon_doubling_shadows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::carry_free_segments_have_exact_finite_horizon_doubling_shadows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"y_succ","module":"ErdosProblems/Three/T2.lean","line":670,"role":"statement","statement_node":"carry_free_segments_have_exact_finite_horizon_doubling_shadows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::carry_free_segments_have_exact_finite_horizon_doubling_shadows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"y_shadow","module":"ErdosProblems/Three/T2.lean","line":692,"role":"statement","statement_node":"carry_free_segments_have_exact_finite_horizon_doubling_shadows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::carry_free_segments_have_exact_finite_horizon_doubling_shadows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"y_shadow_interval","module":"ErdosProblems/Three/T2.lean","line":729,"role":"statement","statement_node":"carry_free_segments_have_exact_finite_horizon_doubling_shadows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::carry_free_segments_have_exact_finite_horizon_doubling_shadows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"two_pow_mul_y","module":"ErdosProblems/Three/T2.lean","line":746,"role":"statement","statement_node":"dyadic_origin_and_expanding_uncertainty_limit_the_shadow_method","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::dyadic_origin_and_expanding_uncertainty_limit_the_shadow_method; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"shadow_interval_covers","module":"ErdosProblems/Three/T2.lean","line":760,"role":"statement","statement_node":"dyadic_origin_and_expanding_uncertainty_limit_the_shadow_method","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::dyadic_origin_and_expanding_uncertainty_limit_the_shadow_method; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"exists_no_carry_above_of_not_half_mem","module":"ErdosProblems/Three/T2.lean","line":779,"role":"statement","statement_node":"negative_half_membership_forces_eventual_carry_free_finite_shadowing","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::negative_half_membership_forces_eventual_carry_free_finite_shadowing; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"shadow_of_not_half_mem","module":"ErdosProblems/Three/T2.lean","line":800,"role":"statement","statement_node":"negative_half_membership_forces_eventual_carry_free_finite_shadowing","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::negative_half_membership_forces_eventual_carry_free_finite_shadowing; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"not_successorCarries_of_four_mul_remainder_lt","module":"ErdosProblems/Three/T2.lean","line":811,"role":"statement","statement_node":"a_small_remainder_forces_the_exact_middle_branch","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_small_remainder_forces_the_exact_middle_branch; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"middleTrigger_of_four_mul_remainder_lt","module":"ErdosProblems/Three/T2.lean","line":816,"role":"statement","statement_node":"a_small_remainder_forces_the_exact_middle_branch","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_small_remainder_forces_the_exact_middle_branch; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"middleBranch_remainder_succ_eq_of_small","module":"ErdosProblems/Three/T2.lean","line":824,"role":"statement","statement_node":"a_small_remainder_forces_the_exact_middle_branch","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_small_remainder_forces_the_exact_middle_branch; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_thirteen","module":"ErdosProblems/Three/T2.lean","line":852,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_fourteen","module":"ErdosProblems/Three/T2.lean","line":855,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_fifteen","module":"ErdosProblems/Three/T2.lean","line":858,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_nineteen","module":"ErdosProblems/Three/T2.lean","line":861,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_twenty","module":"ErdosProblems/Three/T2.lean","line":864,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_twentyfive","module":"ErdosProblems/Three/T2.lean","line":867,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_twentysix","module":"ErdosProblems/Three/T2.lean","line":870,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_thirtyone","module":"ErdosProblems/Three/T2.lean","line":873,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_thirtytwo","module":"ErdosProblems/Three/T2.lean","line":876,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"middleTrigger_fourteen","module":"ErdosProblems/Three/T2.lean","line":881,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"not_successorCarries_fourteen","module":"ErdosProblems/Three/T2.lean","line":885,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"belowPulse_fourteen","module":"ErdosProblems/Three/T2.lean","line":892,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"right_triggers_nine","module":"ErdosProblems/Three/T2.lean","line":900,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"belowPulse_nine","module":"ErdosProblems/Three/T2.lean","line":904,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"successorCarries_thirteen","module":"ErdosProblems/Three/T2.lean","line":912,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"successorCarries_nineteen","module":"ErdosProblems/Three/T2.lean","line":918,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"successorCarries_twentyfive","module":"ErdosProblems/Three/T2.lean","line":924,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"successorCarries_thirtyone","module":"ErdosProblems/Three/T2.lean","line":930,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carry_rows","module":"ErdosProblems/Three/T2.lean","line":938,"role":"statement","statement_node":"all_three_branches_occur_in_kernel_checked_finite_rows","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::all_three_branches_occur_in_kernel_checked_finite_rows; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryDefect_thirteen","module":"ErdosProblems/Three/T2.lean","line":960,"role":"statement","statement_node":"finite_carry_defects_disprove_uniform_small_error","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_carry_defects_disprove_uniform_small_error; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryDefect_nineteen","module":"ErdosProblems/Three/T2.lean","line":966,"role":"statement","statement_node":"finite_carry_defects_disprove_uniform_small_error","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_carry_defects_disprove_uniform_small_error; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryDefect_twentyfive","module":"ErdosProblems/Three/T2.lean","line":972,"role":"statement","statement_node":"finite_carry_defects_disprove_uniform_small_error","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_carry_defects_disprove_uniform_small_error; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryDefect_thirtyone","module":"ErdosProblems/Three/T2.lean","line":978,"role":"statement","statement_node":"finite_carry_defects_disprove_uniform_small_error","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_carry_defects_disprove_uniform_small_error; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryDefect_thirteen_large","module":"ErdosProblems/Three/T2.lean","line":988,"role":"statement","statement_node":"finite_carry_defects_disprove_uniform_small_error","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_carry_defects_disprove_uniform_small_error; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"adjGapExcess_late_bound_fifteen","module":"ErdosProblems/Three/T2.lean","line":995,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryDefect_bound_fifteen","module":"ErdosProblems/Three/T2.lean","line":1003,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"isLargestFalseRank_thirteen_seven","module":"ErdosProblems/Three/T2.lean","line":1019,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"isLargestFalseRank_fifteen_fourteen","module":"ErdosProblems/Three/T2.lean","line":1033,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"adjGapExcess_fifteen","module":"ErdosProblems/Three/T2.lean","line":1041,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"adjGapExcess_thirteen","module":"ErdosProblems/Three/T2.lean","line":1049,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"abovePulse_thirteen","module":"ErdosProblems/Three/T2.lean","line":1058,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"largestFalseRank_thirteen_is_seven","module":"ErdosProblems/Three/T2.lean","line":1064,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryDefect_thirteen_forces_low_rank","module":"ErdosProblems/Three/T2.lean","line":1074,"role":"statement","statement_node":"finite_rank_data_explain_small_and_large_gap_excess","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::finite_rank_data_explain_small_and_large_gap_excess; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"hitAt_fourteen","module":"ErdosProblems/Three/T2.lean","line":1091,"role":"statement","statement_node":"a_five_row_carry_free_segment_realises_the_shadowing_law","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_five_row_carry_free_segment_realises_the_shadowing_law; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_sixteen","module":"ErdosProblems/Three/T2.lean","line":1100,"role":"statement","statement_node":"a_five_row_carry_free_segment_realises_the_shadowing_law","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_five_row_carry_free_segment_realises_the_shadowing_law; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"remainder_eighteen","module":"ErdosProblems/Three/T2.lean","line":1103,"role":"statement","statement_node":"a_five_row_carry_free_segment_realises_the_shadowing_law","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_five_row_carry_free_segment_realises_the_shadowing_law; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"carryFree_run_fourteen","module":"ErdosProblems/Three/T2.lean","line":1106,"role":"statement","statement_node":"a_five_row_carry_free_segment_realises_the_shadowing_law","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_five_row_carry_free_segment_realises_the_shadowing_law; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"shadow_witness","module":"ErdosProblems/Three/T2.lean","line":1125,"role":"statement","statement_node":"a_five_row_carry_free_segment_realises_the_shadowing_law","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_five_row_carry_free_segment_realises_the_shadowing_law; replaces the broad Z24 zone-only substrate receipt."},
+    {"declaration":"y_shadow_witness","module":"ErdosProblems/Three/T2.lean","line":1135,"role":"statement","statement_node":"a_five_row_carry_free_segment_realises_the_shadowing_law","routing_origin":"authored_statement_replacement","routing_basis":"Direct evidence for Z41::a_five_row_carry_free_segment_realises_the_shadowing_law; replaces the broad Z24 zone-only substrate receipt."}
+  ]
+}

@@ -11,18 +11,23 @@ integration checks ``main`` out as a local branch and a pull request out as a
 topic branch, so the same commit renders differently in the two jobs and one of
 them fails with no file having changed.
 
-That is not hypothetical. ``build_corpus_descriptor.py`` once recorded
-``navigation_snapshot.publication_state``, derived from whether the navigation
-commit was an ancestor of a local ``main`` ref. Branch builds rendered
-``detached_navigation_snapshot`` and ``main`` builds rendered
-``main_history_snapshot``, so release-surfaces was red on ``main`` for days and
+That is not hypothetical. ``build_corpus_descriptor.py`` once recorded a
+snapshot publication state derived from whether a preserved navigation commit
+was an ancestor of a local ``main`` ref. Branch builds and ``main`` builds then
+rendered different labels, so release-surfaces was red on ``main`` for days and
 no regeneration could fix it: refreshing on a branch broke ``main`` and
 refreshing on ``main`` broke every pull request.
 
+The descriptor now uses content digests for current navigation identity. It
+does not preserve an old Git commit under a current-sounding snapshot field:
+a generated file cannot contain the commit that first contains its own bytes.
+
 This test pins the invariant behaviourally rather than by inspecting source. It
-exports HEAD into two checkouts that differ only in their refs -- one carrying a
-local ``main`` branch, one carrying only a topic branch -- regenerates every
-projection in each, and requires byte-identical output.
+copies the public tree into two version-control-free workspaces that differ only
+in an inert checkout-shape marker, regenerates every projection in each, and
+requires byte-identical output. Running without repository metadata also proves
+that no projection builder needs to inspect a branch, index, or commit merely to
+render current content.
 """
 
 from __future__ import annotations
@@ -35,13 +40,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Builders that check_release.py regenerates and compares against committed bytes.
+# Builders that refresh_projections.py runs, in the same dependency order.
 BUILDERS = (
-    "build_corpus_descriptor.py",
-    "build_declaration_atlas.py",
-    "build_module_graph.py",
-    "build_paper_module_aliases.py",
     "build_methodology.py",
+    "build_module_graph.py",
+    "build_declaration_atlas.py",
+    "refresh_source_coordinates.py",
+    "build_semantic_corpus.py",
+    "build_theory_lab.py",
+    "build_corpus_descriptor.py",
+    "build_paper_module_aliases.py",
+    "build_publication_entry_packet.py",
 )
 
 # Files those builders own. Compared byte-for-byte between the two checkouts.
@@ -51,8 +60,13 @@ PROJECTIONS = (
     "docs/ORIENTATION.md",
     "docs/declaration_atlas.json",
     "docs/methodology.json",
+    "docs/claims.json",
+    "docs/semantic_corpus.json",
+    "docs/theory_lab.json",
+    "docs/publication_entry_packet.json",
     "docs/WAVE_INDEX.md",
     "README.md",
+    "paper/erdos249-257-main-paper.tex",
     "paper/module-aliases.json",
     "paper/module-aliases.tex",
 )
@@ -62,26 +76,23 @@ def run(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
     return subprocess.run(args, cwd=cwd, capture_output=True, text=True, check=False)
 
 
-def materialise(destination: Path, branch: str, keep_main: bool) -> None:
-    """Clone HEAD into ``destination`` under ``branch``.
-
-    When ``keep_main`` is false the clone carries no local ``main`` ref, which is
-    how continuous integration checks out a pull request branch.
-    """
-    clone = run(
-        ["git", "clone", "--local", "--no-hardlinks", "--quiet", str(ROOT), str(destination)],
-        cwd=ROOT.parent,
+def materialise(destination: Path, shape: str) -> None:
+    """Copy the public tree without version-control or build metadata."""
+    ignored = shutil.ignore_patterns(
+        ".git",
+        ".lake",
+        ".build",
+        "__pycache__",
+        "*.olean",
+        "*.ilean",
     )
-    if clone.returncode != 0:
-        raise SystemExit(f"could not clone the repository for the shape probe: {clone.stderr.strip()}")
-
-    head = run(["git", "rev-parse", "HEAD"], cwd=ROOT).stdout.strip()
-    run(["git", "checkout", "--quiet", "--detach", head], cwd=destination)
-    for existing in run(["git", "branch", "--format=%(refname:short)"], cwd=destination).stdout.split():
-        run(["git", "branch", "--quiet", "-D", existing], cwd=destination)
-    run(["git", "checkout", "--quiet", "-b", branch, head], cwd=destination)
-    if keep_main and branch != "main":
-        run(["git", "branch", "--quiet", "main", head], cwd=destination)
+    shutil.copytree(ROOT, destination, ignore=ignored)
+    marker = destination / ".checkout-shape"
+    marker.mkdir()
+    (marker / shape).write_text(
+        "inert test marker; projection builders must ignore checkout shape\n",
+        encoding="utf-8",
+    )
 
 
 def regenerate(checkout: Path) -> dict[str, bytes]:
@@ -108,8 +119,8 @@ def main() -> int:
     try:
         as_main = workspace / "as-main"
         as_topic = workspace / "as-topic"
-        materialise(as_main, branch="main", keep_main=True)
-        materialise(as_topic, branch="topic-branch", keep_main=False)
+        materialise(as_main, shape="main")
+        materialise(as_topic, shape="topic")
 
         rendered_main = regenerate(as_main)
         rendered_topic = regenerate(as_topic)
@@ -136,7 +147,7 @@ def main() -> int:
 
     print(
         f"test_projection_checkout_independence: {len(PROJECTIONS)} projections render "
-        "identically whether HEAD is checked out as main or as a topic branch"
+        "identically in two version-control-free checkout shapes"
     )
     return 0
 

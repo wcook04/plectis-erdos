@@ -1,0 +1,1763 @@
+{
+ "schema": "erdos249257-semantic-frontier/1",
+ "artifact_role": "authored_frontier_extraction_over_the_zone_and_relation_files",
+ "comment": "Frontier projection over docs/semantic/zones/*.json and the four relations_<lens>.json files. open_antecedents clusters the antecedent mentions carried by the statement nodes into distinct unproved hypotheses. expert_questions selects exact human handoffs with checked consumers and explicit closure scope. engine_hierarchy orders the engines by the strength of the hypothesis they demand and records, per barrier, exactly which sibling engines the barrier does NOT reach. bare_equivalences lists the proved iffs whose two sides are both open, i.e. the restatements. nonrecurring_candidates is deliberately short and is not a novelty claim: prior_art_state is not_assessed for almost all of it and every entry states its own residual risk.",
+ "method": "Logical class was taken from the zone files, which read it off the Lean statement rather than the docstring. A node counts as blocked only where a barrier_for edge or a scope caveat names it. 'closest_producer' is the node that comes nearest to realising the hypothesis, never a node that discharges it; null means nothing in either library bears on it. The barrier/engine reading follows relations_barrier_engine.json, whose non_edges are the load-bearing half: a barrier with unrecorded unreached siblings is the failure mode that produced the earlier squarefree overclaim.",
+ "expert_questions": [
+  {
+   "id": "XQ249-lcm-diagonal-supply",
+   "problem": "249",
+   "classification": "endpoint_equivalent",
+   "status": "OPEN",
+   "open_proposition_id": "remaining_open.unbounded_certificate_supply",
+   "source_claim_id": "certificate_reduction",
+   "exact_ask": "Prove that for every starting scale t0 there is t >= t0 and a finite depth L for which certifiedKill (periodLcm t) (periodLcm t) L holds.",
+   "payoff": "This is equivalent to irrationality of the totient constant, so a proof closes Erdős #249.",
+   "boundary": "This is an exact normal form of #249, not a weaker intermediate problem and not progress until the unbounded quantifier is proved.",
+   "known_obstruction": "The checked diagonal band stops at t = 82 and the off-diagonal roster is finite; neither supplies certificates beyond every bound.",
+   "current_hypothesis": "The cofinal diagonal supply holds, equivalently the totient constant is irrational. Confidence is low because the checked band is bounded and the equivalence gives no asymptotic mechanism.",
+   "hypothesis_confidence": "low",
+   "plausible_alternatives": [
+    {
+     "id": "cofinal_supply",
+     "statement": "Diagonal certificates occur beyond every starting scale.",
+     "consequence": "By the checked equivalence, Erdős #249 is true."
+    },
+    {
+     "id": "eventual_diagonal_failure",
+     "statement": "Some starting scale has no later diagonal certificate.",
+     "consequence": "By the same equivalence, the totient constant is rational."
+    }
+   ],
+      "current_evidence": [
+        "A diagonal certificate is checked at every t <= 82.",
+        "Historical off-diagonal audit: 125 verified rows represent 123 distinct (h,N,L) certificates in 122 Lean files. This finite roster is asymptotically nondiscriminating.",
+        "Exact arithmetic gives 960/960 certificates on 1 <= N <= 120, 1 <= h <= 8, with first-depth excess 0 through 11 over the admissibility floor (median 1, mean 727/480). Across the 33 distinct LCM scales filling positive t <= 82, checked working-depth excess is 0 through 4 (median 1, mean 40/33), but only five depths are proved least. Finite low excess proves no asymptotic law, bounded-excess theorem, or cofinal supply."
+      ],
+   "discriminating_evidence": [
+    "A proof producing a diagonal certificate beyond every prescribed scale establishes cofinal_supply.",
+    "A rational representation of the totient constant, or a proof that the diagonal predicate fails beyond some scale, establishes eventual_diagonal_failure.",
+    "More bounded certificates without an asymptotic argument do not distinguish the alternatives."
+   ],
+      "consumer_declarations": [
+    {
+     "declaration": "irrational_totient_series_iff_lcm_diagonal_certificate_supply",
+     "module": "Erdos249257/LcmConeFlatness.lean",
+     "line": 426
+    }
+      ],
+      "verification_command": "python3 scripts/query_corpus.py --claim certificate_reduction",
+      "measured_evidence_artifact": "docs/measurements/certificate_supply_probe.json",
+      "measurement_check_command": "python3 scripts/probe_certificate_supply.py --check",
+      "checked_diagonal_depth_artifact": "docs/measurements/checked_diagonal_depth_roster.json",
+      "checked_diagonal_depth_check_command": "python3 scripts/build_checked_diagonal_depth_roster.py --check",
+      "off_diagonal_roster_artifact": "docs/measurements/off_diagonal_certificate_roster.json",
+      "off_diagonal_roster_check_command": "python3 scripts/build_off_diagonal_certificate_roster.py --check"
+  },
+  {
+   "id": "XQ249-pivot-decorrelation",
+   "problem": "249",
+   "classification": "sufficient_for_erdos_249",
+   "status": "OPEN",
+   "open_proposition_id": "remaining_open.unbounded_certificate_supply",
+   "source_claim_id": "first_harmonic_pivot_decomposition",
+   "exact_ask": "For every positive shift h, produce s > 0 and eta in (0,1) so that beyond every X0 there are X,L with max(X0,1) <= X, overlap h <= L-s, dyadic room 16(2X+h+L+2) <= 2^L, centred supplier-fibre real correlation at most 14X/25, supplier mean and bad-supplier norms at most X/100 each, and non-supplier norm at most 8X/25.",
+   "payoff": "These four cofinal budgets imply a finite certificate at every required shift and hence prove Erdős #249.",
+   "boundary": "The exact four-term decomposition and consumer are proved; no prime-distribution or residual-decorrelation theorem supplying the budgets is proved.",
+   "known_obstruction": "A bound on the total complex norm is stronger than needed; the live socket needs only the one-sided centred real bound, but still needs a cofinal arithmetic producer.",
+   "current_hypothesis": "For every h > 0 there are fixed s > 0 and eta in (0,1) such that, beyond every cutoff, some X,L satisfy overlap, room and all four 14/25, 1/100, 1/100 and 8/25 budgets. We expect the centred real term, rather than total complex norm, to be the hard budget. Confidence is low because none of the four budgets has a cofinal producer.",
+   "hypothesis_confidence": "low",
+   "plausible_alternatives": [
+    {
+     "id": "cofinal_four_budget_socket",
+     "statement": "All four budgets, overlap and room inequalities hold cofinally for every positive shift.",
+     "consequence": "The checked consumer proves Erdős #249."
+    },
+    {
+     "id": "no_cofinal_joint_witness",
+     "statement": "For some h > 0, every s > 0 and eta in (0,1) has a cutoff after which no X,L meet the complete structural and four-budget conjunction.",
+     "consequence": "This pivot socket fails; #249 may still be true by another mechanism."
+    }
+   ],
+   "failure_mode_refinements": [
+    "centred real bias above 14X/25 on every sufficiently late structurally admissible block",
+    "eventual failure of the supplier-mean X/100 budget",
+    "eventual failure of the bad-supplier X/100 budget",
+    "eventual failure of the non-supplier 8X/25 budget",
+    "eventual failure of overlap or dyadic room"
+   ],
+   "current_evidence": [
+    "The four-term decomposition and exact constants are checked.",
+    "The needed estimate is one-sided in the real part, strictly narrower than controlling the total complex norm.",
+    "No prime-distribution or residual-decorrelation theorem currently populates the budgets."
+   ],
+   "discriminating_evidence": [
+    "A uniform arithmetic estimate with the exact 14/25, 1/100, 1/100 and 8/25 constants, overlap and room conditions establishes cofinal_four_budget_socket.",
+    "Certified block data at increasing scales can test which term consumes the budget, but only a cofinal theorem decides the socket.",
+    "The exact failure alternative requires one shift for which every parameter choice eventually loses at least one clause; infinitely many bad blocks do not refute cofinally many good witnesses.",
+    "To isolate centred bias as the failure mode, show that for one shift and every s,eta, all sufficiently late structurally admissible X,L have centred real term above 14X/25."
+   ],
+   "consumer_declarations": [
+    {
+     "declaration": "irrational_totient_series_of_pivotResidualDecorrelation",
+     "module": "Erdos249257/FirstHarmonicPivot.lean",
+     "line": 405
+    }
+   ],
+   "verification_command": "python3 scripts/query_corpus.py --claim first_harmonic_pivot_decomposition"
+  },
+  {
+   "id": "XQ249-adjacent-phase-separation",
+   "problem": "249",
+   "classification": "sufficient_for_erdos_249",
+   "status": "OPEN",
+   "open_proposition_id": "remaining_open.unbounded_certificate_supply",
+   "source_claim_id": "adjacent_phase_separation_reduction",
+   "exact_ask": "For every positive shift h and every starting block X0, find X >= max(X0,1), a depth L and adjacent N,N+1 in [X,2X) satisfying 16(2X+h+L+2) <= 2^L and squared chordal separation at least 19/25 between their first-harmonic phases.",
+   "payoff": "A cofinal supply of such adjacent pairs forces certificates and proves Erdős #249.",
+   "boundary": "The two-phase geometric consumer is proved; no theorem produces the required adjacent separation cofinally.",
+   "known_obstruction": "Finite phase scans or average separation do not discharge the for-every-shift, beyond-every-block quantifiers.",
+   "current_hypothesis": "Adjacent phases separate by the required 19/25 threshold on a cofinal sequence for every shift. Confidence is low: generic phase variation suggests separation, but adjacency and the explicit threshold are both load-bearing.",
+   "hypothesis_confidence": "low",
+   "plausible_alternatives": [
+    {
+     "id": "cofinal_adjacent_separation",
+     "statement": "Every positive shift has qualifying adjacent pairs beyond every block.",
+     "consequence": "The checked consumer proves Erdős #249."
+    },
+    {
+     "id": "nonadjacent_or_average_only",
+     "statement": "Large separation occurs only on average or between nonadjacent phases.",
+     "consequence": "The recorded adjacent consumer is not discharged, though a different geometric consumer may exist."
+    },
+    {
+      "id": "phase_locking",
+      "statement": "For some positive shift there is a cutoff beyond which no admissible block, depth and adjacent pair meet the 19/25 threshold.",
+      "consequence": "This route fails without deciding #249."
+    }
+   ],
+   "current_evidence": [
+    "The two-phase geometric implication and threshold are checked exactly.",
+    "No cofinal phase-distribution theorem is recorded.",
+    "Finite scans and average separation are explicitly insufficient for the quantified ask."
+   ],
+   "discriminating_evidence": [
+    "An explicit discrepancy or equidistribution estimate for adjacent phase increments with the 19/25 threshold establishes cofinal_adjacent_separation.",
+    "A positive shift and cutoff beyond which every admissible block, depth and adjacent pair fails the 19/25 threshold establishes phase_locking. Infinitely many bad blocks alone do not.",
+    "Rigorous scans can select a plausible alternative but cannot by themselves settle a cofinal quantifier."
+   ],
+   "consumer_declarations": [
+    {
+     "declaration": "irrational_totient_series_of_adjacentPhaseSeparation",
+     "module": "Erdos249257/AdjacentPhaseSeparation.lean",
+     "line": 295
+    }
+   ],
+   "verification_command": "python3 scripts/query_corpus.py --claim adjacent_phase_separation_reduction"
+  },
+  {
+   "id": "XQ257-second-channel-separation",
+   "problem": "257",
+   "classification": "sufficient_for_counterexample",
+   "status": "OPEN",
+   "open_proposition_id": "remaining_open.half_value_membership",
+   "source_claim_id": "half_second_channel_reduction",
+   "exact_ask": "Prove HalfSecondChannelSeparatedRat n for every natural n >= 7: the exact rational second-channel phase must stay at least 1/6 + (37/56) 2^(-n) away from 1/3.",
+   "payoff": "Together with the six checked initial levels, this proves that 1/2 belongs to the Mersenne achievement set. The checked finite-support exclusion then forces the witnessing support to be infinite, giving a rational counterexample to universal Erdős #257.",
+   "boundary": "This would refute the universal assertion; failure of this particular inequality would not prove universal #257.",
+   "known_obstruction": "The compared rational changes with n. Exact finite arithmetic finds no failure through n = 1000, but no reachability invariant or uniform signed estimate prevents the actual orbit from entering the moving failure interval at a later rank. A naive common-denominator construction gives only an upper height bound on the scale 2^O(n^2), with no matching reduced-denominator lower bound.",
+   "current_hypothesis": "The exact separation continues for every n >= 7, making 1/2 attainable. Confidence is low: the failure set is empty through n = 1000, but that evidence is finite and no invariant controls later ranks.",
+   "hypothesis_confidence": "low",
+   "plausible_alternatives": [
+    {
+     "id": "uniform_second_channel_separation",
+     "statement": "HalfSecondChannelSeparatedRat n holds for every n >= 7.",
+     "consequence": "The membership consumer plus finite-support exclusion gives an infinite-support rational counterexample to universal #257."
+    },
+    {
+     "id": "isolated_separation_failure",
+     "statement": "The predicate fails at one or more later levels.",
+     "consequence": "This sufficient route closes, but 1/2 membership and universal #257 remain undecided."
+    },
+    {
+     "id": "systematic_nonseparation",
+     "statement": "Failures occur with a structure that yields a fatal half-gap or eventual final omission.",
+     "consequence": "That could prove 1/2 nonmembership, which still would not prove universal #257."
+    }
+   ],
+   "current_evidence": [
+    "The required initial levels 1 through 6 are checked.",
+    "Exact rational arithmetic finds no failures for 1 <= n <= 1000; on n >= 7 the least measured margin is 1033253069/8193024 at n = 7. Rank 1001 onward is unmeasured.",
+    "All 128 branch words of length seven occur in the measured prefix, so no short forbidden-word rule explains it; the missing ingredient remains a global reachability or sign invariant."
+   ],
+   "discriminating_evidence": [
+    "A direct exact calculation can establish isolated_separation_failure by finding one failed n; the current exact failure set is empty only on 1 <= n <= 1000.",
+    "A global reachability invariant or uniform sign estimate at the required exponential-in-n scale establishes uniform_second_channel_separation.",
+    "A recurrent failure pattern linked to a checked fatal-gap consumer would support systematic_nonseparation rather than merely closing this socket."
+   ],
+   "consumer_declarations": [
+    {
+     "declaration": "half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
+     "module": "Erdos249257/GreedyAchievementSet.lean",
+     "line": 2901
+    },
+    {
+     "declaration": "positiveMersenneSupportValue_coe_finset_ne_half",
+     "module": "Erdos249257/HalfCutLocator.lean",
+     "line": 243
+    },
+    {
+     "declaration": "positiveMersenneSupportValue_eq_erdosSupportSeries",
+     "module": "Erdos249257/GreedyAchievementSet.lean",
+     "line": 554
+    }
+   ],
+   "verification_command": "python3 scripts/query_corpus.py --claim half_second_channel_reduction",
+   "measured_evidence_artifact": "docs/measurements/second_channel_separation_probe.json",
+   "measurement_check_command": "python3 scripts/probe_second_channel_separation.py --check"
+  },
+  {
+   "id": "XQ257-middle-producer-tail-escape",
+   "problem": "257",
+   "classification": "sufficient_for_counterexample",
+   "status": "OPEN",
+   "open_proposition_id": "remaining_open.half_value_membership",
+   "source_claim_id": "last_producer_tail_escape_reduction",
+   "exact_ask": "For every s >= 13 satisfying the actual middle-transition antecedents, write C_s for the checked producer carry and Theta_s for its nonnegative coefficient tail after 2s+2. Prove C_s = -3 or (1 <= C_s and Theta_s < C_s). At the putative last-false row used by the consumer, the checked -3 theorem removes the first disjunct.",
+   "payoff": "This rules out an eventual final omission and proves 1/2 is attainable. Together with the checked exclusion of every finite-support representation of 1/2, the witnessing support is infinite and gives a rational counterexample to universal Erdős #257.",
+   "boundary": "This is a sufficient route to a counterexample, not a proof of the universal positive statement.",
+   "known_obstruction": "Because Theta_s >= 0, the socket must exclude every actual C_s <= 0 other than -3; a direct tail inequality is possible only when C_s >= 1. The final -2 phase sieve leaves 412 of 2730 classes, and no theorem excludes actual cells C_s <= -4, -1 or 0 or controls Theta_s < C_s for all positive cells.",
+   "current_hypothesis": "Every actual middle row other than the -3 branch has positive carry and its coefficient tail is smaller than that carry. Confidence is low: the final -2 sieve remains incomplete, and the other nonpositive cells and the positive-tail inequality have no uniform theorem.",
+   "hypothesis_confidence": "low",
+   "plausible_alternatives": [
+    {
+     "id": "full_middle_disjunction",
+     "statement": "Every actual middle row satisfies C_s = -3 or 1 <= C_s with Theta_s < C_s.",
+     "consequence": "The membership consumer plus finite-support exclusion gives an infinite-support rational counterexample to universal #257."
+    },
+    {
+     "id": "nonpositive_cell_counterexample",
+     "statement": "An actual middle row has C_s <= 0 with C_s != -3.",
+     "consequence": "This sufficient socket fails, but 1/2 membership remains undecided."
+    },
+    {
+     "id": "positive_tail_counterexample",
+     "statement": "An actual middle row has 1 <= C_s and Theta_s >= C_s.",
+     "consequence": "This sufficient socket fails, but 1/2 membership remains undecided."
+    }
+   ],
+   "current_evidence": [
+    "At the putative last-false row consumed downstream, the cell C_s = -3 is discharged.",
+    "The final C_s = -2 phase sieve leaves 412 of 2730 residue classes rather than an exclusion.",
+    "The tail is nonnegative and the producer carry equals C_s, so any actual nonpositive cell other than -3 refutes this socket automatically.",
+    "No theorem excludes every actual C_s <= -4, -1 or 0 or controls Theta_s < C_s at every positive actual cell."
+   ],
+   "discriminating_evidence": [
+    "A proof of C_s = -3 or (1 <= C_s and Theta_s < C_s) at every actual middle row establishes full_middle_disjunction.",
+    "One exact actual middle row with C_s <= 0 and C_s != -3 establishes nonpositive_cell_counterexample.",
+    "One exact actual middle row with 1 <= C_s and Theta_s >= C_s establishes positive_tail_counterexample.",
+    "Eliminating the 412 surviving final -2 classes would settle only one restricted last-false branch, not the all-row socket."
+   ],
+   "consumer_declarations": [
+    {
+     "declaration": "half_mem_mersenneAchievementSet_of_middleProducerTailEscapeExceptNegThree",
+     "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
+     "line": 387
+    },
+    {
+     "declaration": "positiveMersenneSupportValue_coe_finset_ne_half",
+     "module": "Erdos249257/HalfCutLocator.lean",
+     "line": 243
+    },
+    {
+     "declaration": "positiveMersenneSupportValue_eq_erdosSupportSeries",
+     "module": "Erdos249257/GreedyAchievementSet.lean",
+     "line": 554
+    }
+   ],
+   "verification_command": "python3 scripts/query_corpus.py --claim last_producer_tail_escape_reduction"
+  }
+ ],
+ "expert_question_limits": [
+  "The #249 diagonal question is endpoint-equivalent and must not be advertised as a weaker step.",
+  "The two #257 questions can produce a counterexample if answered positively; they cannot prove the universal positive statement.",
+  "No checked strictly weaker expert handoff currently implies universal Erdős #257 for every infinite support. Named support families and rationality-forced necessary conditions remain partial."
+ ],
+ "open_antecedents": [
+  {
+   "id": "OA249-block-certificate-supply",
+   "statement": "hcert : for every q > 0 there exist N, K, L, C with K <= L, 2^r | phi(N+r) for r in [1,K], the weighted middle window sum bounded by C, and q*(C + (N+L+2)) < 2^L -- a digitwise totient block certificate at every precision",
+   "blocked_nodes": [
+    "erdos249_certificate_supply_restatement"
+   ],
+   "closest_producer": "arbitrarily_long_prescribed_omega_blocks",
+   "gap": "the divisibility half is producible (for every K some N has omega(N+r) >= r, hence 2^r | phi(N+r) via totient_first_block_hinge); the middle-window budget C with q*(C+N+L+2) < 2^L is produced nowhere.",
+   "demand_lattice_class": "K249-blockcert",
+   "lean_constants": [
+    "DemandLedger.G088",
+    "DemandLedger.G089",
+    "DemandLedger.G090"
+   ],
+   "equivalent_to_the_open_problem": false
+  },
+  {
+   "id": "OA249-carry-aware-supply",
+   "statement": "hcert : for every q > 0 there exist N, K, L, C with 2^K dividing the packed first-block totient carry sum and the same height inequality -- carry-aware totient certificate supply",
+   "blocked_nodes": [
+    "erdos249_certificate_supply_restatement"
+   ],
+   "closest_producer": "arbitrarily_long_prescribed_omega_blocks",
+   "gap": "aggregate divisibility is strictly weaker than the digitwise condition, but no construction produces a packed carry sum divisible by 2^K together with the height budget at unbounded precision.",
+   "demand_lattice_class": "K249-blockcert",
+   "lean_constants": [
+    "DemandLedger.G088",
+    "DemandLedger.G089",
+    "DemandLedger.G090"
+   ],
+   "equivalent_to_the_open_problem": false
+  },
+  {
+   "id": "OA249-low-carry-supply",
+   "statement": "hcert : for every q > 0 there exist N, K, L, C with q*((packed totient carry sum mod 2^K)*2^(L-K) + C + (N+L+2)) < 2^L (and the full-block variant with L = K) -- low-carry residue-band totient certificate supply",
+   "blocked_nodes": [
+    "erdos249_certificate_supply_restatement"
+   ],
+   "closest_producer": "totient_carry_field_recurrences",
+   "gap": "the carry residue field V_K(N) is shown to advance by an affine doubling map and a top-band entry forces the next residue below the head totient, which yields a certificate WHEN the height budget allows; nothing forces a top-band entry with the budget satisfied at unbounded precision.",
+   "demand_lattice_class": "K249-blockcert",
+   "lean_constants": [
+    "DemandLedger.G088",
+    "DemandLedger.G089",
+    "DemandLedger.G090"
+   ],
+   "equivalent_to_the_open_problem": false
+  },
+  {
+   "id": "OA249-gap-certificate-supply",
+   "statement": "hsupply : for every q > 0 there exist N, K with (q*((sum over r in [1,K] of phi(N+r)*2^(K-r)) mod 2^K)) mod 2^K + q*(N+K+2) < 2^K -- gap certificate supply at every precision",
+   "blocked_nodes": [
+    "erdos249_gap_supply_restatement"
+   ],
+   "closest_producer": "gap_denominator_rungs",
+   "gap": "the rungs discharge the supply for all q up to 2.48e17 (K=120) and 7.96e34 (K=240) and are sharp there; beyond those denominators no window is produced. This is the weakest demand in the whole certificate chain and it is still open.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G091"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-pointwise-kill-supply",
+   "statement": "hsupply : for every h > 0 and every N0 there is N >= N0 and a depth L with TotientTailPeriodKiller.certifiedKill h N L -- a certified kill at every shift, arbitrarily far out",
+   "blocked_nodes": [
+    "erdos249_period_kill_supply_restatement",
+    "reduction_pointwise_certificate_supply",
+    "certificate_supply_is_equivalent_to_249"
+   ],
+   "closest_producer": "certified_kill_fixtures",
+   "gap": "kills exist only at the two bases N = 12 and N = 14 and only for h <= 8 and h <= 16; no further base is supplied for any h. By certificate_supply_is_equivalent_to_249 this hypothesis is EQUIVALENT to Erdos #249, so no producer weaker than the open problem can exist. MEASURED 2026-07-25: the recorded ladder is not sparse. periodLcm t = lcm(1..t) is a step function -- it changes only at prime powers -- and this predicate depends on t only through the value periodLcm t. The 28 recorded deposits at {1} u {prime powers <= 64} therefore certify the body at EVERY t <= 66 without a break, including t = 65 and t = 66, which lie strictly above the largest recorded deposit (t = 64, 65 = 5*13 and 66 = 2*3*11 are not prime powers, so periodLcm 66 = periodLcm 64). None of the 37 apparent holes below 64 was ever a hole. Kernel-verified as DemandLedger.Discharge1G097.exists_diagonalKill_le_66 : forall t <= 66, exists L, certifiedKill (periodLcm t) (periodLcm t) L, axioms [propext, Classical.choice, Quot.sound]. Supply stops hard at t = 67, the next prime power, where periodLcm jumps by a factor of 67 to a 29-digit modulus and no declaration in the repository mentions the cell. This is the same argument-orbit coincidence as the lcm-jump case: the corpus indexes certificates by t while the predicate depends on periodLcm t.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G081",
+    "DemandLedger.G082",
+    "DemandLedger.G094",
+    "DemandLedger.G097",
+    "DemandLedger.G102",
+    "DemandLedger.G103"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-ray-and-multiple-kill-supply",
+   "statement": "hsupply : for every h0 > 0 and N0 there are m > 0, N >= N0 and K with survivorKill (m*h0) N K (and the endpoint variant with certifiedKill) -- one kill per divisibility ray",
+   "blocked_nodes": [
+    "erdos249_period_kill_supply_restatement",
+    "reduction_multiple_period_supply",
+    "reduction_lcm_ray_supply"
+   ],
+   "closest_producer": "diagonal_kill_roster_finite_list",
+   "gap": "each diagonal kill is also a ray kill at N = periodLcm t, so 22 literal scales t <= 43 give ray instances; the supply demands, for arbitrary t0 and N0, some t >= t0, which a finite literal list cannot give. MEASURED 2026-07-25: the recorded ladder is not sparse. periodLcm t = lcm(1..t) is a step function -- it changes only at prime powers -- and this predicate depends on t only through the value periodLcm t. The 28 recorded deposits at {1} u {prime powers <= 64} therefore certify the body at EVERY t <= 66 without a break, including t = 65 and t = 66, which lie strictly above the largest recorded deposit (t = 64, 65 = 5*13 and 66 = 2*3*11 are not prime powers, so periodLcm 66 = periodLcm 64). None of the 37 apparent holes below 64 was ever a hole. Kernel-verified as DemandLedger.Discharge1G097.exists_diagonalKill_le_66 : forall t <= 66, exists L, certifiedKill (periodLcm t) (periodLcm t) L, axioms [propext, Classical.choice, Quot.sound]. Supply stops hard at t = 67, the next prime power, where periodLcm jumps by a factor of 67 to a 29-digit modulus and no declaration in the repository mentions the cell. This is the same argument-orbit coincidence as the lcm-jump case: the corpus indexes certificates by t while the predicate depends on periodLcm t.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G081",
+    "DemandLedger.G082",
+    "DemandLedger.G094",
+    "DemandLedger.G097",
+    "DemandLedger.G102",
+    "DemandLedger.G103"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-lcm-diagonal-kill-supply",
+   "statement": "hsupply : for every t0 there is t >= t0 and a depth L with certifiedKill (periodLcm t) (periodLcm t) L -- cofinal kills at the lcm diagonal point; equivalently, cofinal non-integrality of R_{2H_t} - R_{H_t}",
+   "blocked_nodes": [
+    "erdos249_period_kill_supply_restatement",
+    "reduction_lcm_diagonal_supply",
+    "supply_conditional_irrationality",
+    "exact_full_target_pincer",
+    "certificate_supply_is_equivalent_to_249"
+   ],
+   "closest_producer": "diagonal_kill_roster_finite_list",
+   "gap": "the roster realises exactly this predicate at 22 literal scales t <= 43 (deepest at L = 61, H = 219060189739591200) and its own statement records that it ranges over a finite list; the one-parameter form is proved equivalent to #249, so it is the target in fewer coordinates. MEASURED 2026-07-25: the recorded ladder is not sparse. periodLcm t = lcm(1..t) is a step function -- it changes only at prime powers -- and this predicate depends on t only through the value periodLcm t. The 28 recorded deposits at {1} u {prime powers <= 64} therefore certify the body at EVERY t <= 66 without a break, including t = 65 and t = 66, which lie strictly above the largest recorded deposit (t = 64, 65 = 5*13 and 66 = 2*3*11 are not prime powers, so periodLcm 66 = periodLcm 64). None of the 37 apparent holes below 64 was ever a hole. Kernel-verified as DemandLedger.Discharge1G097.exists_diagonalKill_le_66 : forall t <= 66, exists L, certifiedKill (periodLcm t) (periodLcm t) L, axioms [propext, Classical.choice, Quot.sound]. Supply stops hard at t = 67, the next prime power, where periodLcm jumps by a factor of 67 to a 29-digit modulus and no declaration in the repository mentions the cell. This is the same argument-orbit coincidence as the lcm-jump case: the corpus indexes certificates by t while the predicate depends on periodLcm t.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G081",
+    "DemandLedger.G082",
+    "DemandLedger.G094",
+    "DemandLedger.G097",
+    "DemandLedger.G102",
+    "DemandLedger.G103"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-lcm-cone-kill-supply",
+   "statement": "hsupply : for every t0 there are t >= t0 and q, m, L with 0 < q and certifiedKill (m*periodLcm t) (q*periodLcm t) L -- one certified annihilator anywhere on the lcm cone at arbitrarily large scale",
+   "blocked_nodes": [
+    "erdos249_cone_supply_restatement",
+    "reduction_lcm_cone_supply"
+   ],
+   "closest_producer": "finite_kill_deposits",
+   "gap": "the only realised off-diagonal cone annihilators anywhere are the cells (2,3,1), (3,2,2), (3,1,3) plus the rank-2 kill (1,8,9), all at t <= 3; nothing produces a cell at arbitrarily large scale.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G093",
+    "DemandLedger.G096",
+    "DemandLedger.G099",
+    "DemandLedger.G100",
+    "DemandLedger.G101"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-lcm-jump-kill-supply",
+   "statement": "hsupply : for every t0 there are t >= t0 and L with certifiedKill (periodLcm (t+1) - periodLcm t) (periodLcm t) L -- a kill at the lcm-jump shift",
+   "blocked_nodes": [
+    "erdos249_cone_supply_restatement",
+    "reduction_lcm_jump_supply"
+   ],
+   "closest_producer": "certifiedKill_periodLcm_diagonal_upto_six / certifiedKill_diagonal_t31",
+   "gap": "Instances now exist. periodLcm t = lcm(1..t) grows by the factor q exactly when t+1 is a prime power q, so the jump length is (q-1)*periodLcm t; at q = 2, i.e. t = 2^k - 1, the factor is one and the jump shift IS the diagonal shift. Kills at an lcm-jump shift are therefore exhibited at t = 1, 3, 7 and 31 (ErdosProblems/Erdos249/LcmJumpKillFromDiagonal.lean), read off diagonal deposits with no new totient arithmetic. What remains open is cofinality, exactly as for the diagonal route: t = 15 and t = 63 lie in {2^k - 1} but carry no diagonal deposit, and beyond t = 64 nothing is deposited at all. The earlier reading -- that no kill at a jump shift was exhibited anywhere at any scale -- was wrong: it followed from the corpus recording only the inequality periodLcm t <= periodLcm (t+1) - periodLcm t (periodLcm_strict_jump_sub_ge) and never the equality case.",
+   "relation_to_diagonal_route": "Not an independent obstacle. Any cofinal diagonal supply along t = 2^k - 1 discharges this hypothesis.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G093",
+    "DemandLedger.G096",
+    "DemandLedger.G099",
+    "DemandLedger.G100",
+    "DemandLedger.G101"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-cone-nonflat-menu-supply",
+   "statement": "hsupply : for every t0 there are t >= t0, L and a nonempty menu Q of positive vertices with q*periodLcm t + L + 2 < 2^L and coneNonflatCert (periodLcm t) L Q -- a firing vertex menu at arbitrarily large scale",
+   "blocked_nodes": [
+    "erdos249_cone_nonflat_supply_restatement",
+    "reduction_cone_nonflat_menu_supply"
+   ],
+   "closest_producer": "finite_kill_deposits",
+   "gap": "the corpus's entire stock of firing menus is three, at t = 1, 2, 3. menu_refuter_monotonicity_and_seed_lift lifts a firing seed menu to every supermenu and every deeper depth, but it cannot move the SCALE t, which is where the supply quantifies.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G095"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-rank2-qray-supply",
+   "statement": "hsupply : for every t0 there are t >= t0, q > 0 and L with certifiedRank2Kill (periodLcm t) (q*periodLcm t) L -- rank-two second-difference kills along the q-ray",
+   "blocked_nodes": [
+    "reduction_rank2_qray_supply"
+   ],
+   "closest_producer": "engine_strength_separations",
+   "gap": "one rank-two second-difference certificate exists anywhere (the single separation fixture cell and its Z06 twin); one cell does not produce a supply at arbitrarily large scale.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G099"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-unit-gap-supply",
+   "statement": "hsupply : PrimitiveReducedDenominatorUnitGapSupply -- for all a and all odd u > 0 there are N >= a and K > 0 with ReducedDenominatorUnitGapCert u N K",
+   "blocked_nodes": [
+    "reduction_unit_gap_supply_projection"
+   ],
+   "closest_producer": "unit_gap_strict_strengthening_instance",
+   "gap": "the only unit-gap certificate anywhere is the single instance (u,N,K) = (3,3,5). unit_gap_prime_power_ceiling additionally shows that at every odd prime-power reduced denominator the supply must solve a zero-or-one-candidate problem."
+  },
+  {
+   "id": "OA249-full-target-avoidance-supply",
+   "statement": "FullTargetAvoidanceSupply : for every t0 there is t >= t0 with not ForeignDiagonalDefectHitsFullTarget t -- the weakest of the eighteen antecedents of supply_conditional_irrationality",
+   "blocked_nodes": [
+    "supply_conditional_irrationality",
+    "exact_full_target_pincer",
+    "channel_projected_pincer"
+   ],
+   "closest_producer": "diagonal_kill_roster_finite_list",
+   "gap": "by exact_full_target_pincer this is verbatim cofinal non-integrality of the actual diagonal, which the roster realises only at 22 literal scales. foreignDiagonalDefect is DEFINED as diagonal minus explicit shadow, so the pincer coordinates add no independent information."
+  },
+  {
+   "id": "OA249-channel-avoidance-supply",
+   "statement": "UpperHalfChannelAvoidanceSupply and FreshPrimeChannelAvoidanceSupply : cofinal existence of an upper-half prime p | rad(H_t), resp. a prime p >= 5, with not RenormalizedDefectHitsFreshTarget",
+   "blocked_nodes": [
+    "supply_conditional_irrationality"
+   ],
+   "closest_producer": "lcm_height_channel_product_divides_shadow_denominator",
+   "gap": "the T4 chain proves the surviving upper-half channel product divides the reduced denominator of the scaled shadow at every t >= 5, i.e. that the channels exist and are large; it says nothing about whether the RENORMALIZED defect misses its fresh target at any one of them."
+  },
+  {
+   "id": "OA249-centrality-supply-ladder",
+   "statement": "The ten mutually implicating canonical adjacent-suffix sockets: CanonicalAdjacentSuffixCentralSupply, PenultimateExactSupply, PenultimateMarginSupply, PenultimateStrongBandSupply, JumpCentralSupply, JumpSlackSupply, PostJumpSlackSupply, PowerTwoPostJumpSlackSupply, DiagonalAdjacentSuffixGapSupply, DiagonalFreshLossProjectionSupply -- all cofinal centrality statements about the canonical adjacent-suffix window",
+   "blocked_nodes": [
+    "supply_conditional_irrationality",
+    "centrality_supply_ladder_equivalences"
+   ],
+   "closest_producer": "canonical_depth_width_is_automatic",
+   "gap": "every MAGNITUDE obligation of the consumer is discharged unconditionally (the width inequality 32(3H + 2(m+3)) < 2^m holds automatically for t >= 3 and every later rank), leaving a pure arithmetic centrality question that nothing addresses. The ladder is a web of proved implications among ten open propositions; no member has a producer."
+  },
+  {
+   "id": "OA249-power-two-supply-ladder",
+   "statement": "PowerTwoActualPenultimateSignedMarginSupply, PowerTwoOddGuardHalfWordBandSupply, PowerTwoActualPenultimateEnvelopeMarginSupply, PowerTwoOddGuardThreeRankBandSupply, ThreeScaleAffineEscapeSupply -- the power-of-two edge-escape sockets, pairwise equivalent or implicating",
+   "blocked_nodes": [
+    "supply_conditional_irrationality",
+    "power_two_supply_ladder_equivalences"
+   ],
+   "closest_producer": "actual_correction_envelope_is_sub_edge",
+   "gap": "the actual correction is proved to be sub-edge, which is exactly the regime envelope_only_no_go shows can never force escape; the missing input is an arithmetic relation between the actual state and its corrections, not a better magnitude bound. three_rank_window_core_no_go additionally shows the radius-e/2 core must be excluded separately, and does NOT close ThreeScaleAffineEscapeSupply."
+  },
+  {
+   "id": "OA249-foreign-projection-control",
+   "statement": "ControlledForeignProjection H D (the actual foreign defect agrees with its projection up to the complement bound), ForeignResidueTailLimit H D (the finite foreign windows converge to the omitted part), and RenormalizedResidueAgreement H D",
+   "blocked_nodes": [
+    "controlled_projection_miss_is_conditional",
+    "tail_limit_supplies_controlled_projection",
+    "renormalized_residue_agreement_is_conditional"
+   ],
+   "closest_producer": "foreign_residue_kernel_geometric_budget",
+   "gap": "the geometric budget bounds omitted channels for the DEFINED foreignResidueKernel; no theorem in the corpus identifies that kernel with the actual totient tail, so the bounds carry no information about phi(n)/2^n. Convergence of the finite windows is asserted nowhere."
+  },
+  {
+   "id": "OA249-first-harmonic-saving",
+   "statement": "DTWFirstHarmonicNormGap (cofinal cancellation ||sum of window first harmonics|| <= (21/25)X) and DTWPivotResidualDecorrelation (a cofinal pivot budget with centred correlation <= (14/25)X)",
+   "blocked_nodes": [
+    "first_harmonic_socket_implies_249"
+   ],
+   "closest_producer": null,
+   "gap": "no cofinal analytic saving of ANY kind is established anywhere in the corpus; the whole first-harmonic lane consists of implications between unproved sockets plus the unconditional consumer first_harmonic_saving_forces_certificate."
+  },
+  {
+   "id": "OA249-adjacent-window-separation",
+   "statement": "DTWAdjacentMiddleThirdSeparation (2^L <= 6*adjacentStepResidue <= 5*2^L cofinally) and DTWAdjacentPhaseSeparation (||windowFirstExp(N+1) - windowFirstExp(N)||^2 >= 19/25 cofinally)",
+   "blocked_nodes": [
+    "adjacent_socket_implies_249"
+   ],
+   "closest_producer": "adjacent_step_carries_no_new_coordinate",
+   "gap": "the adjacent step is proved to be the current tail difference minus a known totient letter plus an error below (2N+2L+2h+5)/2^L, i.e. adjacency is a translate of existing data; nothing produces the separation. The lane's only other unconditional input, squaring-orbit expansivity, needs the orbit never to reach 1, which is #249 itself."
+  },
+  {
+   "id": "OA249-pivot-fibre-sockets",
+   "statement": "The eight pivot-fibre sockets: DTWPivotAntiReconstruction, PivotReconstructionVariance, PivotPairwiseReconstructionEnergy, PivotSeparatedPairs, PivotWindowPairwiseEnergy, PivotWindowSeparatedPairs, NaturalPivotWindowGap, NaturalPivotTwoModeCancellation",
+   "blocked_nodes": [
+    "pivot_fibre_socket_implies_249"
+   ],
+   "closest_producer": "socket_hierarchy_among_open_producers",
+   "gap": "the eight are ordered by proved implications (separated pairs => pairwise energy => variance => anti-reconstruction, etc.), so the lane knows exactly which is weakest; none of the eight is established at any parameters anywhere. An ordering of open hypotheses is not a producer."
+  },
+  {
+   "id": "OA249-prime-tail-orbit-escape",
+   "statement": "DTWNaturalPivotPointEscape (a single base with windowFirstCos <= 9/10 in the cofactor-one fibre), DTWNaturalPrimeTailOrbitGap (a prime with Re tailOrbitFirstExp <= 4/5) and its strict form (< 9/10)",
+   "blocked_nodes": [
+    "point_escape_socket_implies_249",
+    "strict_prime_escape_socket_implies_249"
+   ],
+   "closest_producer": null,
+   "gap": "no single base and no prime is exhibited anywhere at which any real-part gap is proved. These are the weakest sockets in the spectral lane -- one point, not a cofinal family -- and they are still unproduced."
+  },
+  {
+   "id": "OA249-nondyadicity-at-a-fixed-shift",
+   "statement": "not IsDyadicReal ((2^h - 1) * sum phi(n)/2^n) at one fixed shift h",
+   "blocked_nodes": [
+    "nondyadic_scaled_series_gives_fixed_shift_socket"
+   ],
+   "closest_producer": "unconditional_denominator_exclusion",
+   "gap": "dyadic denominators are excluded only at bounded 2-adic height (dividing 2^12 for h <= 8, 2^14 for h <= 16); no node excludes dyadic denominators of unbounded height, so no h is known for which the antecedent holds. This is strictly weaker than #249 and is the cheapest open entry point in the lane."
+  },
+  {
+   "id": "OA249-curvature-supply",
+   "statement": "SharpCurvatureSupply / SharpCurvatureAnyDepthSupply / CurvaturePhaseCertificateSupply : cofinal existence of sharpCurvatureCert (periodLcm t) L",
+   "blocked_nodes": [
+    "curvature_supply_implies_249"
+   ],
+   "closest_producer": null,
+   "gap": "no curvature certificate is exhibited at ANY parameters anywhere in the corpus. The soundness side (curvature_residue_gap_nonintegrality, curvature_window_split_sharp_radius) is complete; the supply side is empty."
+  },
+  {
+   "id": "OA249-three-transport-supply",
+   "statement": "RoughnessBoundaryLatticeSupply : for every t0 there are t >= t0 and L with sharpThreeTransportCert (periodLcm t) L; and ExponentOnlyThreeTransportSupply on the 3^a tower",
+   "blocked_nodes": [
+    "three_transport_supply_implies_249",
+    "exponent_only_three_transport_supply_implies_249"
+   ],
+   "closest_producer": "three_transport_finite_certificate_60_12",
+   "gap": "exactly one balanced-boundary certificate exists, at H = 60, L = 12, and it is not on the 3^a tower the exponent-only variant needs; the supply demands one per arbitrarily large scale."
+  },
+  {
+   "id": "OA249-prime-jump-supply",
+   "statement": "hsupply : for every t0 there are t >= t0, p > 0 and L with primeJumpSharpKill (periodLcm t) p L",
+   "blocked_nodes": [
+    "prime_jump_supply_implies_249"
+   ],
+   "closest_producer": "prime_jump_finite_certificate_12_5_15",
+   "gap": "exactly one prime-jump certificate exists, at H = 12, p = 5, L = 15. prime_jump_channel_migration and migration_sign_reversal_fixture show the channel commutator is genuinely nonzero at one instance, which is evidence the observable is not identically flat, not a supply.",
+   "demand_lattice_class": "K249-problem",
+   "lean_constants": [
+    "DemandLedger.G098"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA249-joint35-supply",
+   "statement": "AnchoredJoint35ConeSupply : for every t0 there are t >= max t0 5 and L with sharpJoint35ConeCert (periodLcm t) L",
+   "blocked_nodes": [
+    "joint35_supply_implies_249"
+   ],
+   "closest_producer": null,
+   "gap": "no joint (3,5) cone certificate is exhibited at any parameters. The observable is only defined and its soundness proved; nothing fires it."
+  },
+  {
+   "id": "OA249-tempered-totient-carry-orbit",
+   "statement": "IsTemperedBinaryOrbit Nat.totient v u : a positive multiplier v and an integer sequence u with u(N+1) = 2u(N) - v*phi(N+1) and u(N)/2^N -> 0",
+   "blocked_nodes": [
+    "finite_level_carry_anti_compression"
+   ],
+   "closest_producer": "rationality_iff_tempered_orbit",
+   "gap": "not a gap but a vacuity: by rationality_iff_tempered_orbit the hypothesis is EQUIVALENT to rationality of sum phi(n)/2^n, i.e. to the FAILURE of Erdos #249. No producer can exist, and if #249 is true every theorem carrying this hypothesis is vacuous."
+  },
+  {
+   "id": "OA249-prime-ray-cyclotomic-sockets",
+   "statement": "PrimeRayLayerSupply C m, BoundedDegreeOrderConsumer C m d, FinitePrimeSupportEscape C m",
+   "blocked_nodes": [
+    "prime_ray_cyclotomic_open_sockets"
+   ],
+   "closest_producer": null,
+   "gap": "all three are defined (PrimeRayCyclotomicCurvature.lean:88, 95, 102), proved nowhere and CONSUMED nowhere. The Z04 cyclotomic theory concerns Mobius numerators at squarefree exponents, not layers along a prime ray, so it is not a producer. This is a dangling interface, not a lane."
+  },
+  {
+   "id": "OA249-hankel-terminal-parity-instantiation",
+   "statement": "existence of an index m whose dyadic exponent e(m) is strictly largest in the family and whose integer numerator u(m) is odd, for the intended signed Mobius / q = 1/2 Hankel moment family",
+   "blocked_nodes": [
+    "unique_dyadic_terminal_parity"
+   ],
+   "closest_producer": null,
+   "gap": "no Lean declaration anywhere instantiates s, u, e on #249 moment data, so the implication is never fired. The hypothesis is supplied and never discharged; the theorem is a true statement about arbitrary families with no connection to the problem."
+  },
+  {
+   "id": "OA257-rationality-of-the-support-series",
+   "statement": "hvalue : erdosSupportSeries 2 A = p / (2^c * v) for an infinite support A -- i.e. that sum_{a in A} 1/(2^a - 1) is rational",
+   "blocked_nodes": [
+    "rational_support_zero_window_lower_bound",
+    "sublogarithmic_zero_window_bound",
+    "rational_value_constructs_odd_tail_state",
+    "rational_value_forces_order_wrap_ratio_bound",
+    "dyadic_denominator_forces_reciprocal_mass_above_one",
+    "carry_state_unbounded_at_common_multiples",
+    "wrap_ratio_lower_bounds_reciprocal_mass",
+    "boolean_collision_surplus",
+    "common_multiple_collision_strengthens_wrap_bound"
+   ],
+   "closest_producer": "rationality_iff_tempered_support_carry_orbit",
+   "gap": "this IS Erdos #257 negated. The equivalence identifies it with existence of a tempered incidence carry orbit, undecided for every infinite support. Every node above is a consequence-of-rationality theorem: real content only if one is eventually driven to a contradiction, and none is."
+  },
+  {
+   "id": "OA257-half-membership",
+   "statement": "(1/2) in mersenneAchievementSet -- equivalently infinitude of the greedy skipped support at 1/2, equivalently the integer seam not eventually right-extending, equivalently no last greedy skip, equivalently existence of a normalised support with value exactly 1/2",
+   "blocked_nodes": [
+    "half_value_forces_residual_reciprocal_mass_bound",
+    "last_skip_shift_geometry",
+    "unbounded_skipped_ranks_give_half_membership",
+    "final_middle_producer_must_violate_tail_inequality",
+    "middle_then_allright_fatal_gap_and_landing_window",
+    "eventual_right_tail_positive_excess",
+    "final_middle_neg_two_phase_sieve",
+    "last_false_terminal_exists_for_eventual_right",
+    "half_prefix_forcing_chain_criterion"
+   ],
+   "closest_producer": "half_membership_seam_equivalence_ring",
+   "gap": "no producer can be weaker: the equivalence ring proves six coordinate systems all equal to this one open endpoint. The Z14 last-producer analysis assumes its NEGATION (eventually-right seam) for contradiction, so those conclusions are vacuous if 1/2 is achieved."
+  },
+  {
+   "id": "OA257-sunflower-forced-slot-selection",
+   "statement": "SunflowerForcedSlotTailSelection A : for all K > 0 there is N with 2^K dividing the packed first-block incidence sum AND binaryCoeffTail (supportCoeff A) (N+K) <= 16 -- a CONSTANT tail bound",
+   "blocked_nodes": [
+    "sunflower_conditional_irrationality"
+   ],
+   "closest_producer": "support_coefficient_subpower_envelope",
+   "gap": "the nearest control is the uniform envelope T(M) <= 2*k^(2^k)*(M+1)^(1/k), which is unbounded in M for every k, so it cannot produce a constant bound of 16. The orthogonal petal bouquet supplies the divisibility half of the selector; the tail half is the whole obstruction and the file names it as the remaining analytic obligation."
+  },
+  {
+   "id": "OA257-denominator-uniform-shell-pressure",
+   "statement": "hupper : beta <= K/2^X + 2/2^(2X) (and the next-support form beta <= 4/2^m) -- a denominator-uniform analytic shell-plus-far-tail upper bound on the actual residual",
+   "blocked_nodes": [
+    "denominator_shell_pressure_from_analytic_tail_bound"
+   ],
+   "closest_producer": "subpower_tail_envelope_from_coefficient_bound",
+   "gap": "the corpus's only unconditional binary-tail envelope is neither denominator-uniform nor of this shape. The module docstring itself records denominator-uniform pressure as the new global bottleneck."
+  },
+  {
+   "id": "OA257-greedy-block-safety-at-every-skip",
+   "statement": "hsafe : at every rank the actual greedy run at 1/2 skips, the state is BlockDyadicSafeAt (displayed numerator, prefix denominator, rank)",
+   "blocked_nodes": [
+    "half_membership_from_actual_block_safety"
+   ],
+   "closest_producer": null,
+   "gap": "no producer anywhere, and none can be finite. safe_bracket_plus_numerator_monotone_is_not_inductive refutes the obvious induction (safe bracket + numerator monotonicity), and raw_dyadic_safety_does_not_force_seam_escape blocks routing it through the seam.",
+   "demand_lattice_class": "K257-blocksafe",
+   "lean_constants": [
+    "DemandLedger.G083"
+   ],
+   "equivalent_to_the_open_problem": false
+  },
+  {
+   "id": "OA257-greedy-skipped-excess-bounds",
+   "statement": "HalfGreedySkippedExcessBound (3*2^(n+1)*nextDyadicExcessNumerator(n) <= prefixDenominator(n) at every skipped rank), plus HalfGreedyThreeDepthTakeRunExcessBound and HalfGreedyLongTakeRunExcessBound",
+   "blocked_nodes": [
+    "half_membership_from_skipped_excess_bound",
+    "half_membership_from_take_run_excess_bounds"
+   ],
+   "closest_producer": null,
+   "gap": "no producer anywhere, and no finite computation can establish an every-rank bound. The run-compressed forms are proved EQUIVALENT to the unrestricted one, so the weakening buys nothing."
+  },
+  {
+   "id": "OA257-raw-block-margin-supply",
+   "statement": "HalfGreedySkippedActualRawMarginSupply / HalfGreedySkippedRawBlockMarginSupply / HalfGreedyUnsafeSkipActualRawMarginSupply : at every skipped rank, a bracketing pair of actual takes with (num*(2^b - 1) - 2D)*2^(c-1) <= 2D(2^b - 1)",
+   "blocked_nodes": [
+    "half_membership_from_raw_block_margin_supply"
+   ],
+   "closest_producer": null,
+   "gap": "no producer anywhere. raw_dyadic_safety_does_not_force_seam_escape refutes only the seam-escape lemma from a single rank-three witness and explicitly does NOT refute this supply, so the route is alive and unproduced."
+  },
+  {
+   "id": "OA257-gcd-overshoot-supply",
+   "statement": "HalfGreedyUnsafeSkipGcdOvershootSupply : at every skipped, not-already-safe rank n, gcd(D(n), 2^(n+1)-1)*|num(n)| <= 2D(n) - |num(n)|*(2^(n+1)-1); plus the primitive-quotient and eleven-fold forms",
+   "blocked_nodes": [
+    "half_membership_from_gcd_overshoot_supply"
+   ],
+   "closest_producer": null,
+   "gap": "no producer anywhere. raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot shows this supply is strictly stronger than raw safety, so a proof of raw safety cannot be routed through it -- the two sufficient conditions must be attacked separately."
+  },
+  {
+   "id": "OA257-frozen-margin-sockets",
+   "statement": "HalfGreedyGovernedFrozenMarginProducer, HalfGreedySkippedFullShellNonnegative, HalfGreedySkippedSeamAlignmentZero, HalfGreedySkippedSeamEscape -- four cofinal statements about the frozen margin at every actual skipped rank",
+   "blocked_nodes": [
+    "half_membership_from_frozen_margin_sockets",
+    "seam_alignment_zero_iff_full_shell_nonnegative"
+   ],
+   "closest_producer": "take_forces_negative_full_shell_margin",
+   "gap": "only the easy half of the sign dichotomy is proved (a take forces a strictly negative full-shell margin); the converse -- a skip forces a nonnegative margin -- is precisely the socket. seam_alignment_zero_iff_full_shell_nonnegative proves two of the four equivalent to each other, which moves the obligation without discharging it."
+  },
+  {
+   "id": "OA257-middle-producer-escape-sockets",
+   "statement": "SeamMiddleProducerTailEscape, TailEscapeExceptNegThree, SqrtEscape, CardEscape, RowEscape -- five cofinal escape statements at every late genuine middle transition; and SeamUpperResetDyadicBandEscape for all d >= 13",
+   "blocked_nodes": [
+    "half_membership_conditional_endpoints",
+    "dyadic_band_producer_gives_row_escape",
+    "two_sided_dyadic_invariant_under_cell_escape"
+   ],
+   "closest_producer": "upper_reset_band_escape_rows_13_to_30",
+   "gap": "of the six only the dyadic-band socket has any producer, verified for rows d = 13..30 and stopping there; the five middle-producer sockets have no producer anywhere. producer_socket_implication_ladder orders them, which again is an ordering of open statements."
+  },
+  {
+   "id": "OA257-cofinal-cylinder-stages",
+   "statement": "hstages : for every N there are M >= max N 1 and K with Nonempty (CylinderStage K M) -- full-strip suffix-cylinder stages at unboundedly many depths",
+   "blocked_nodes": [
+    "cofinal_stages_conditional_export",
+    "selected_window_cofinal_consumer",
+    "full_strip_reachability_yields_257_counterexample",
+    "cofinal_admissibility_yields_257_counterexample",
+    "strip_admissible_branch_forces_half"
+   ],
+   "closest_producer": "certified_cylinder_run_to_depth_52",
+   "gap": "the certified run reaches depth 52 and stops. Past that the continuation is gated on the unproved NextArithmetic cell of the profiled gap step; the zone's own feedback theorems are one-row step laws that may return a two-sheet state or a seam instead of a stage."
+  },
+  {
+   "id": "OA257-profiled-gap-next-arithmetic",
+   "statement": "T.NextArithmetic : childLoPos, upperCoeffFits, childOrder and childHiStrip (2*gapHi - upperNextCoeff <= halfStripBound (N+1)) for the profiled two-sheet gap; plus T.Ready (N <= 2M)",
+   "blocked_nodes": [
+    "profiled_gap_advance"
+   ],
+   "closest_producer": "divisor_pair_square_root_envelope",
+   "gap": "THE structural bottleneck of the #257 cylinder route. The only unconditional control bounds each next-row coefficient by 2*sqrt(n) and says nothing about gap width, while gap_width_recurrence shows the child gap DOUBLES each row against a strip bound growing like 2*sqrt(N). childHiStrip is therefore not a technicality; macro_swallow_quarter_band_bound gives only a necessary condition on the swallow branch, not its exclusion."
+  },
+  {
+   "id": "OA257-cross-sheet-common-coefficient",
+   "statement": "T.HasCommonNextCoeff C : both sheets of a two-sheet state share one next-row proper-divisor coefficient; and W.NextRowDivisorAgreement / hp_common for selected windows",
+   "blocked_nodes": [
+    "two_sheet_next_row_off_child_gap",
+    "common_next_coeff_gap_advance",
+    "fixed_coefficient_window_step",
+    "full_strip_step_from_divisor_agreement"
+   ],
+   "closest_producer": "restriction_fixes_next_row_coefficient",
+   "gap": "agreement on every divisor of a row forces equal coefficients, which holds below the half-depth cutoff and at the single odd row after a split (complementary_prefix_coefficient_agreement); after a cutoff promotion the two sheets PROVABLY acquire different prefixes and the premise fails. ready_cutoff_determines_per_sheet_coefficients supersedes the requirement rather than discharging it."
+  },
+  {
+   "id": "OA257-rewind-base-unit-drop",
+   "statement": "RewindBaseUnitDropAt W0 (N+1) cs c : the left adjacent base ancestor has row-(N+1) coefficient c+1 and the right has c; and its sufficient route RewindBaseHalfDivisorBoundaryPairAt; and the two-valued threshold profile hprofile",
+   "blocked_nodes": [
+    "rewind_seam_transports_unit_drop_to_profile",
+    "rewind_seam_plus_unit_drop_realizes_protected_seam",
+    "boundary_pair_supplies_unit_drop",
+    "boundary_pair_realizes_protected_seam",
+    "threshold_profile_realizes_protected_seam"
+   ],
+   "closest_producer": "crossing_unit_drop_profile",
+   "gap": "an endpoint crossing yields the literal c+1 / c profile at the doubled row, but for CYLINDER ENDPOINTS, not for the two adjacent rewind base ancestors. boundary_pair_not_forced_by_scalar_seam exhibits a depth-26 instance where the boundary-pair route fails outright (and, unformalised but checkable, where the unit drop fails too), so the boundary-pair sufficient condition is not merely unproved."
+  },
+  {
+   "id": "OA257-canonical-seam-bridge",
+   "statement": "hseamBridge : IsSeamPair cs R -> there exist d, delta, c with N+1 = 2d and IsCanonicalEvenSeam d delta c -- that a scalar adjacent-ancestor pair is the actual canonical one-hole even seam; and HalfCarryCanonicalEvenSeamSupply / HalfCarryEvenSeamEscape",
+   "blocked_nodes": [
+    "history_alternative_needs_canonical_seam_bridge",
+    "canonical_even_seam_supply_route"
+   ],
+   "closest_producer": "object_level_singleton_or_seam_dichotomy",
+   "gap": "the width dichotomy is transported to the object level with no extra hypothesis, but its seam branch is still purely SCALAR: it says nothing yet about an object-level seam. The bridge from scalar seam data to an actual canonical seam is assumed and proved at no depth anywhere."
+  },
+  {
+   "id": "OA257-cofinal-protected-seam-or-window",
+   "statement": "HalfCarryCofinalProtectedEvenSeamRealization and HalfCarryCofinalSelectedWindowOrProtectedSeam : at cofinally many depths, a realized localized one-hole protected even seam, or a selected window of positive radius",
+   "blocked_nodes": [
+    "cofinal_protected_seam_consumer",
+    "mixed_cofinal_window_or_seam_consumer"
+   ],
+   "closest_producer": "feedback_trichotomy_advance_or_seam",
+   "gap": "the trichotomy delivers exactly this disjunction at each feedback row, but only from an EXISTING full-strip stage at an exact half-divisor horizon, so it produces it only as far as stages exist -- depth 52. The consumer is not the bottleneck; the stage supply is."
+  },
+  {
+   "id": "OA257-cofinal-terminal-only-witnesses",
+   "statement": "HalfCarryCofinalTerminalOnlyStrip (cofinal normalized words whose terminal carry is inside the square-root strip) and HalfTerminalOnlyScaledVanishingSequence",
+   "blocked_nodes": [
+    "terminal_only_cofinal_yields_half",
+    "terminal_scaled_vanishing_yields_half"
+   ],
+   "closest_producer": "certified_terminal_witnesses_51_52",
+   "gap": "the deepest terminal witnesses anywhere sit at depths 51 and 52; the antecedent needs depths tending to infinity. This is the WEAKEST known sufficient condition for half-membership -- no coherence between depths, no bound on earlier carries -- and it is still unproduced, which is the sharpest single measurement of the #257 half lane."
+  },
+  {
+   "id": "OA257-greedy-carry-upper-bound",
+   "statement": "htempered : mobiusCenteredHalfCarry A N / 2^N -> 0, and hbound : mobiusCenteredHalfCarry (greedy support at 1/2) N <= 2*sqrt N + 4; and the Z13 window form mobiusCenteredHalfCarry A (n-1) <= finiteCoeffWindow A n J",
+   "blocked_nodes": [
+    "tempered_mobius_carry_yields_half",
+    "finite_window_reduction_of_raw_half_residual"
+   ],
+   "closest_producer": "greedy_mobius_carry_nonneg",
+   "gap": "only the LOWER half of the square-root strip is proved unconditionally for the real orbit (the carry is nonnegative at every level); the upper bound is produced nowhere. frozen_margin_integer_recurrence recasts the same obligation as nonnegativity of a purely integer recurrence without discharging it.",
+   "demand_lattice_class": "K257-problem",
+   "lean_constants": [
+    "DemandLedger.G073"
+   ],
+   "equivalent_to_the_open_problem": true
+  },
+  {
+   "id": "OA257-seam-remainder-bounds",
+   "statement": "SeamGreedyRemainderGapBound (seamIntegerGreedyRemainder s < 2^(s+1) for all s >= 6) and SeamGreedyRemainderSubquadraticAlong rows",
+   "blocked_nodes": [
+    "seam_gap_bound_yields_half",
+    "seam_subquadratic_along_yields_half"
+   ],
+   "closest_producer": "right_branch_remainder_window",
+   "gap": "in the late regime 2s < 3d two unconditional triggers pin the remainder into one explicit interval, which is real content, but nothing shows that window is empty for the actual orbit, and the late regime itself is proved only at row fourteen. seam_greedy_general_error_bound is unconditional and useless alone: its error term is controlled exactly by the open quantity."
+  },
+  {
+   "id": "OA257-channel-cap-at-skips",
+   "statement": "hskip : whenever the greedy run skips rank n+1, greedyMersenneRemainder (1/2) n <= halfTwoChannelCap (n+1) (or halfDyadicCap (n+1)); and the second-channel phase separation for n >= 7",
+   "blocked_nodes": [
+    "channel_cap_skip_transport",
+    "second_channel_phase_separation"
+   ],
+   "closest_producer": "unsafe_skip_forces_long_forced_take_block",
+   "gap": "the forced-take law CONSUMES a cap violation rather than producing the cap, and forced_take_block_depth_is_sharp shows the extracted block cannot be extended by one more rank. The second-channel separation is produced only by decidable check at 1 <= n <= 6.",
+   "demand_lattice_class": "K257-blocksafe",
+   "lean_constants": [
+    "DemandLedger.G084",
+    "DemandLedger.G085"
+   ],
+   "equivalent_to_the_open_problem": false
+  },
+  {
+   "id": "OA257-last-skip-late-step-socket",
+   "statement": "LargestSkipLateStepSocket : for all s >= 14 and d with IsLargestFalseRank and 2s < 3d, either 2(s+1) < 3d or SeamGreedyUpperOrMiddleAt s",
+   "blocked_nodes": [
+    "largest_skip_late_step_socket_fan_in"
+   ],
+   "closest_producer": "late_row_small_forces_middle_branch",
+   "gap": "the nearest unconditional law gives the socket's second disjunct, but only under the row-small precondition (remainder below the row index), which is exactly what is not known to recur."
+  },
+  {
+   "id": "OA243-normalized-vanishing",
+   "statement": "hvanish : for every K there is N with K*|E n| < C n for all n >= N -- normalized vanishing of the centered error relative to the tail state (the dominant unproved input of the #243 lane)",
+   "blocked_nodes": [
+    "n243_boundednegative_rigidity"
+   ],
+   "closest_producer": "n243_zero_absorbing",
+   "gap": "in the strict-centering regime a vanishing error is absorbing, so failure of eventual vanishing makes every tail error nonzero -- a dichotomy, not a producer. No orbit is exhibited anywhere for which the vanishing holds, and n243_sylvester_from_vanishing shows it is the exact input that would close #243."
+  },
+  {
+   "id": "OA243-bounded-negative-excursions",
+   "statement": "hnegative : cofinally many t with 0 < e <= B and D t + e = (a t - 1)*C t; together with hRise (uniformly bounded upward tail rise) and hCTop (the tail state tending to infinity)",
+   "blocked_nodes": [
+    "n243_gcd_stabilises",
+    "n243_no_cofinally_bounded_negative"
+   ],
+   "closest_producer": "n243_bounded_rise_barrier",
+   "gap": "the barrier excludes the bounded-rise regime for a tail already known to tend to infinity, which is the contrapositive shape one wants, but nothing produces the indices for any ACTUAL reciprocal tail -- and Z17 never forms the reciprocal series at all, so this whole lane is about an integer system, not about #243's objects."
+  }
+ ],
+ "engine_hierarchy": [
+  {
+   "problem": "257",
+   "family": "coefficient block-certificate ladder for irrationality of a base-b coefficient series (the #257 supply side)",
+   "engines": [
+    "gap_certificate_engine",
+    "low_carry_certificate_engine",
+    "carry_aware_certificate_engine",
+    "generic_coefficient_certificate_engine",
+    "divisor_block_certificate_engine",
+    "signed_protected_block_engine",
+    "local_layer_certificate_engine"
+   ],
+   "blocked_by": [
+    {
+     "engine": "generic_coefficient_certificate_engine",
+     "barrier_node": "no_block_certificate_at_squarefree_support"
+    },
+    {
+     "engine": "carry_aware_certificate_engine",
+     "barrier_node": "no_block_certificate_at_squarefree_support"
+    },
+    {
+     "engine": "generic_coefficient_certificate_engine",
+     "barrier_node": "n1049_three_halves_barrier"
+    },
+    {
+     "engine": "lcm_gap_irrationality_theorem (its HYPOTHESIS only, and only at the full support a_k = k+1)",
+     "barrier_node": "lcm_gap_fails_at_full_support"
+    },
+    {
+     "engine": "lambert_rung_moebius_rational (the Boolean-support reading of the L(mu) = 1/2 rung only)",
+     "barrier_node": "mobius_sign_truncation_overshoots_one_half"
+    }
+   ],
+   "unblocked": [
+    "low_carry_certificate_engine",
+    "gap_certificate_engine",
+    "near_integer_irrationality_criterion",
+    "divisor_block_certificate_engine",
+    "periodic_support_irrationality",
+    "periodic_weight_irrationality",
+    "signed_protected_block_engine",
+    "local_layer_certificate_engine",
+    "lcm_gap_irrationality_theorem",
+    "erdos_borwein_full_support_irrationality",
+    "engine_subsumption_carry_low_carry_gap"
+   ],
+   "note": "engine_subsumption_carry_low_carry_gap machine-checks the ordering: an exact-carry certificate is the zero-residue case of a low-carry one, and a low-carry certificate is the j = 0 case of a gap certificate, so this is a chain of strictly weakening demands, not independent methods. no_block_certificate_at_squarefree_support removes ONLY the two strongest links, and only at the squarefree support and only at even bases: both of its steps (dvd_last_of_carry_block, and the K <= 1 density step) consume the first-block divisibility hypothesis, which the low-carry engine does not impose. Reading it as closing 'the block-certificate family' contradicts the subsumption node. This is the exact overclaim that was nearly published; the third engine is irrational_coeff_series_of_weighted_coeff_low_carry_block_certificates at CertificateKernel.lean:14707. The barrier is also silent about the full support (proved irrational by the tau engine), about odd bases, about the adjoined-one support, and about the irrationality of the squarefree-support value itself, which remains open. lcm_gap_fails_at_full_support kills a HYPOTHESIS at one support, not a target: the same value is proved irrational by the near-integer engine. n1049_three_halves_barrier reaches the generic engine only through the reviewed identification of the coordinatewise corridor with its three clauses, and only at base 3/2."
+  },
+  {
+   "problem": "257",
+   "family": "half-membership route: is 1/2 in the Mersenne achievement set (the #257 counterexample lane)",
+   "engines": [
+    "terminal_only_cofinal_yields_half",
+    "terminal_scaled_vanishing_yields_half",
+    "cofinal_admissibility_yields_257_counterexample",
+    "strip_admissible_branch_forces_half",
+    "full_strip_reachability_yields_257_counterexample",
+    "mixed_cofinal_window_or_seam_consumer",
+    "cofinal_protected_seam_consumer",
+    "selected_window_cofinal_consumer",
+    "cofinal_stages_conditional_export",
+    "profiled_gap_advance",
+    "common_next_coeff_gap_advance",
+    "rewind_seam_plus_unit_drop_realizes_protected_seam",
+    "boundary_pair_realizes_protected_seam",
+    "half_membership_from_raw_block_margin_supply",
+    "half_membership_from_gcd_overshoot_supply",
+    "half_membership_from_frozen_margin_sockets",
+    "half_membership_from_actual_block_safety",
+    "half_membership_conditional_endpoints"
+   ],
+   "blocked_by": [
+    {
+     "engine": "boundary_pair_realizes_protected_seam",
+     "barrier_node": "boundary_pair_not_forced_by_scalar_seam"
+    },
+    {
+     "engine": "boundary_pair_supplies_unit_drop",
+     "barrier_node": "boundary_pair_not_forced_by_scalar_seam"
+    },
+    {
+     "engine": "one_bit_cutoff_promotion",
+     "barrier_node": "depth29_cutoff26_promotion_impossible"
+    },
+    {
+     "engine": "half_membership_from_actual_block_safety",
+     "barrier_node": "safe_bracket_plus_numerator_monotone_is_not_inductive"
+    },
+    {
+     "engine": "half_membership_from_actual_block_safety",
+     "barrier_node": "raw_dyadic_safety_does_not_force_seam_escape"
+    },
+    {
+     "engine": "half_membership_from_gcd_overshoot_supply",
+     "barrier_node": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot"
+    },
+    {
+     "engine": "channel_cap_skip_transport",
+     "barrier_node": "forced_take_block_depth_is_sharp"
+    },
+    {
+     "engine": "last_skip_shift_geometry",
+     "barrier_node": "campbell_agp_parameter_barrier"
+    },
+    {
+     "engine": "overlapping_reverse_carry_two_adic_spacing",
+     "barrier_node": "relation_invariant_channel_determinant_barrier"
+    }
+   ],
+   "unblocked": [
+    "terminal_only_cofinal_yields_half",
+    "terminal_scaled_vanishing_yields_half",
+    "in_strip_two_sheet_split",
+    "two_sheet_hole_only_reachability",
+    "feedback_trichotomy_advance_or_seam",
+    "feedback_fan_in_hole_in_strip",
+    "escaping_hole_recylindrification",
+    "profiled_gap_advance",
+    "half_membership_from_raw_block_margin_supply",
+    "half_membership_from_gcd_overshoot_supply",
+    "half_membership_from_frozen_margin_sockets",
+    "dyadic_band_producer_gives_row_escape",
+    "final_middle_neg_two_phase_sieve",
+    "largest_skip_late_step_socket_fan_in",
+    "tempered_mobius_carry_yields_half",
+    "seam_gap_bound_yields_half",
+    "cofinal_strip_return_yields_half",
+    "half_prefix_forcing_chain_criterion"
+   ],
+   "note": "Ordered weakest demand first. terminal_only_cofinal_yields_half is the weakest sufficient condition anywhere in this lane -- cofinally many normalized words whose TERMINAL carry lies in the square-root strip, with no coherence between depths and no bound on earlier carries, justified unconditionally by terminal_only_strip_error_bound -- and it is still unproduced, which measures the lane honestly. Every barrier here is narrow and every one has a recorded repair: boundary_pair_not_forced_by_scalar_seam is repaired by rewind_history_promotion_dichotomy and bypassed by two_sheet_hole_only_reachability, whose two-sheet state reaches the same protected consumer with no boundary pair in its hypotheses; raw_dyadic_safety_does_not_force_seam_escape is repaired by in_strip_two_sheet_split, which lets a non-escaping hole split into two exact cylinders instead of dying; depth29_cutoff26_promotion_impossible blocks one promotion of one window and the run continues at cutoff 25 to depth 51. Not one barrier in this family touches the raw-margin or gcd-overshoot supplies, so the greedy side is entirely unobstructed and entirely unproduced. relation_invariant_channel_determinant_barrier is the one to watch: it is stated for an arbitrary channel family and NO declaration in the corpus instantiates the concrete shifted channels or proves they satisfy its kernel hypothesis, so 'the raw shifted-channel determinant route is closed' is an informal application, not formalised content."
+  },
+  {
+   "problem": "249",
+   "family": "certificate / tail-difference kill lane (the reduction chain of waves 20-25 and the lcm cone)",
+   "engines": [
+    "gap_certificate_engine",
+    "low_carry_certificate_engine",
+    "carry_aware_certificate_engine",
+    "generic_coefficient_certificate_engine",
+    "reduction_lcm_cone_supply",
+    "reduction_pointwise_certificate_supply",
+    "reduction_multiple_period_supply",
+    "reduction_lcm_ray_supply",
+    "reduction_lcm_diagonal_supply",
+    "reduction_lcm_jump_supply",
+    "reduction_rank2_qray_supply",
+    "reduction_cone_nonflat_menu_supply",
+    "reduction_unit_gap_supply_projection"
+   ],
+   "blocked_by": [
+    {
+     "engine": "endpoint certificate families at bounded or sub-logarithmic depth",
+     "barrier_node": "endpoint_certificate_depth_floor"
+    },
+    {
+     "engine": "LcmFactorIdealAnchorAdmissible finite-rank linear shift observations",
+     "barrier_node": "barrier_finite_rank_shift_algebra"
+    },
+    {
+     "engine": "reduction_unit_gap_supply_projection (at odd prime-power denominators)",
+     "barrier_node": "unit_gap_prime_power_ceiling"
+    },
+    {
+     "engine": "fixed-precision bounded local valuation-unit signatures",
+     "barrier_node": "fixed_precision_tropical_no_go"
+    },
+    {
+     "engine": "scalar denominator clearing",
+     "barrier_node": "scalar_localisation_height_barrier"
+    }
+   ],
+   "unblocked": [
+    "reduction_pointwise_certificate_supply",
+    "reduction_lcm_diagonal_supply",
+    "reduction_lcm_cone_supply",
+    "reduction_cone_nonflat_menu_supply",
+    "reduction_rank2_qray_supply",
+    "reduction_lcm_jump_supply",
+    "window_totient_reconstruction_t29",
+    "diagonal_pincer_kill_t41",
+    "first_harmonic_saving_forces_certificate",
+    "three_transport_window_certificate",
+    "prime_jump_channel_migration",
+    "prime_jump_new_fibre",
+    "totient_denominator_exclusion_ladder",
+    "gap_certificate_engine",
+    "low_carry_certificate_engine"
+   ],
+   "unblocked_but_equivalent_to_the_target": [
+    "reduction_pointwise_certificate_supply",
+    "reduction_lcm_diagonal_supply",
+    "certificate_supply_is_equivalent_to_249",
+    "window_separated_pairs_implies_249"
+   ],
+   "note": "The important structural fact about #249 is that this is NOT a strength hierarchy at the top: certificate_supply_is_equivalent_to_249 proves the pointwise supply, the per-cell certificate existence, the cofinal supply and the one-parameter lcm-diagonal supply ALL equivalent to Erdos #249 itself. Reducing parameters is a change of coordinates, not a weakening, and no producer for any of them can be weaker than the open problem. The genuinely weaker demands sit at the bottom of the list -- the gap and low-carry certificates. The denominator exclusion is unconditional, but the classical Farey/mediant argument gives exactly the same b+d-1 bound, so it is excluded from the nonrecurring shortlist; the formal contribution is the checked arithmetic instance, its transports and its sharp first failure. endpoint_certificate_depth_floor is a NECESSARY condition on any firing certificate, so a firing certificate witnesses that the floor is satisfiable rather than being a casualty of it; the t = 29 kill fires at L = 45 and the t = 41 kill at L = 61, and exponential_depth_pays_budgets repairs it outright. barrier_finite_rank_shift_algebra is the barrier with the recorded internal asymmetry: only lcm_factorIdeal_sparseAnchor_not_sufficient establishes the full admissible package, while the finite-rank shift theorem transports a strictly SHORTER property list, so a strategy requiring the transformed observations to satisfy the natural letter/strip bounds or to match anchors is NOT closed. It is also explicitly silent about arguments using actual totient values at non-anchor positions, which is exactly what every realised kill uses."
+  },
+  {
+   "problem": "249",
+   "family": "spectral / geometric socket lane (first harmonic, pivot fibres, curvature, transport commutators)",
+   "engines": [
+    "strict_prime_escape_socket_implies_249",
+    "point_escape_socket_implies_249",
+    "pivot_fibre_socket_implies_249",
+    "first_harmonic_socket_implies_249",
+    "adjacent_socket_implies_249",
+    "nondyadic_scaled_series_gives_fixed_shift_socket",
+    "curvature_supply_implies_249",
+    "prime_jump_supply_implies_249",
+    "three_transport_supply_implies_249",
+    "joint35_supply_implies_249",
+    "exponent_only_three_transport_supply_implies_249",
+    "supply_conditional_irrationality",
+    "window_separated_pairs_implies_249"
+   ],
+   "blocked_by": [
+    {
+     "engine": "window_separated_pairs_implies_249",
+     "barrier_node": "irrationality_implies_window_separated_pairs"
+    },
+    {
+     "engine": "residual-blind fixed-rank minor certificates",
+     "barrier_node": "locked_residual_countermodel"
+    },
+    {
+     "engine": "row-residual-blind minor certificates",
+     "barrier_node": "row_dependent_residual_countermodel"
+    },
+    {
+     "engine": "Mersenne-tail-atom determinant clearing",
+     "barrier_node": "finite_atom_determinant_clearing_barrier"
+    },
+    {
+     "engine": "finite-horizon Mobius jet rank reduction",
+     "barrier_node": "moebius_incidence_unimodularity_barrier"
+    },
+    {
+     "engine": "horizon-independent integral primitive Euler index",
+     "barrier_node": "primitive_euler_index_no_lift_barrier"
+    },
+    {
+     "engine": "two-prime full-target adjunction squares",
+     "barrier_node": "prime_adjunction_diamond_no_go"
+    },
+    {
+     "engine": "explicit-shadow transport holonomy on multiplicative rays",
+     "barrier_node": "explicit_shadow_transport_has_zero_diamond_curvature"
+    },
+    {
+     "engine": "magnitude-envelope-only edge escape",
+     "barrier_node": "envelope_only_no_go"
+    },
+    {
+     "engine": "three-rank window core escape",
+     "barrier_node": "three_rank_window_core_no_go"
+    },
+    {
+     "engine": "one-parity-bit decision of the margin socket",
+     "barrier_node": "parity_does_not_decide_margin_socket"
+    }
+   ],
+   "unblocked": [
+    "curvature_supply_implies_249",
+    "prime_jump_supply_implies_249",
+    "three_transport_supply_implies_249",
+    "joint35_supply_implies_249",
+    "first_harmonic_socket_implies_249",
+    "adjacent_socket_implies_249",
+    "pivot_fibre_socket_implies_249",
+    "point_escape_socket_implies_249",
+    "strict_prime_escape_socket_implies_249",
+    "nondyadic_scaled_series_gives_fixed_shift_socket",
+    "two_mode_variance_bound",
+    "finite_fibre_intake_forces_certificate",
+    "fibre_variance_equals_pairwise_energy",
+    "curvature_residue_gap_nonintegrality",
+    "certified_kill_soundness",
+    "foreign_pulse_sparsity_and_prime_confinement",
+    "exponent_only_three_transport_supply_implies_249",
+    "power_two_supply_ladder_equivalences"
+   ],
+   "note": "Ordered weakest demand first: strict_prime_escape (ONE prime with a strict real-part gap) is the cheapest hypothesis in the whole #249 development and is unproduced, as is the single-shift non-dyadicity socket, which is strictly weaker than #249 and is blocked only by the bounded 2-adic height of the current denominator exclusions. Only ONE barrier in this lane reaches a socket: irrationality_implies_window_separated_pairs, and even that reaches it in the wrong direction -- it shows the separated-pairs socket is NOT a weaker obligation than #249, not that it is false. Its own scope records that no pivot-fibre socket, no natural-prime socket, no adjacent-separation socket and no first-harmonic socket is shown to follow from irrationality, so all of them remain live intermediate targets. Every other barrier listed closes a determinant, envelope, parity-bit or holonomy STRATEGY and each one's scope explicitly exempts arguments that read the actual arithmetic of the state -- which is precisely what the surviving sockets do. Three of these barriers (locked_residual_countermodel, row_dependent_residual_countermodel, relation-invariant determinant vanishing) carry a recorded MODELLING GAP: their Lean modules contain no #249 object at all, so their identification with a #249 method family is documentation rather than machine-checked content, and no claim that they close a method family should be published without instantiating the channels in Lean or stating the gap."
+  }
+ ],
+ "bare_equivalences": [
+  {
+   "node": "certificate_supply_is_equivalent_to_249",
+   "why_both_sides_open": "Irrationality of sum phi(n)/2^n is proved equivalent to: every positive shifted tail difference being non-integral; every (h,N) admitting some certificate depth; the cofinal certificate supply; and the one-parameter lcm-diagonal supply. All five statements are open. Fewer parameters and one decidable predicate look like progress and are a change of coordinates on the same problem."
+  },
+  {
+   "node": "endpoint_certificate_completeness",
+   "why_both_sides_open": "An endpoint certificate exists at (h,N) exactly when R_{N+h} - R_N is non-integral. Per cell, both sides are unresolved, and by tail_diff_mem_int_iff_scaled_series_mem_int the right-hand side is non-integrality of 2^N(2^h - 1)S. The theorem decides no cell; it shows the finite certificate is not lossy."
+  },
+  {
+   "node": "window_kill_completeness",
+   "why_both_sides_open": "Same iff in the kernel's coordinates (a kill of some depth exists at (h,N) iff the tail difference is non-integral). Proved equivalent to endpoint_certificate_completeness across zones, so the two are one statement in two libraries."
+  },
+  {
+   "node": "window_separated_pairs_equivalent_to_249",
+   "why_both_sides_open": "DTWWindowSeparatedPairs is proved equivalent to Irrational (sum phi(n)/2^n). The geometric separated-pairs socket is therefore the target itself in geometric dress, and irrationality_implies_window_separated_pairs is recorded as a BARRIER on the socket rather than as evidence for it."
+  },
+  {
+   "node": "exact_full_target_pincer",
+   "why_both_sides_open": "Integrality of the actual diagonal at height t iff the foreign diagonal defect hits the full target. foreignDiagonalDefect is DEFINED as diagonalTailDifference minus explicitLcmShadow, so the right side carries no independent information; cofinal non-integrality of the left side is the pre-existing open input."
+  },
+  {
+   "node": "channel_projected_pincer",
+   "why_both_sides_open": "The same defect with one computable channel representative split off and rescaled. Both sides are the same open condition in different coordinates."
+  },
+  {
+   "node": "centrality_supply_ladder_equivalences",
+   "why_both_sides_open": "Ten canonical adjacent-suffix cofinal sockets related by proved equivalences and implications. The node's own statement records that every proposition on both sides of every relation is open; no member has a producer anywhere."
+  },
+  {
+   "node": "power_two_supply_ladder_equivalences",
+   "why_both_sides_open": "Five power-of-two edge-escape sockets, pairwise equivalent or implicating, all open. Notably ThreeScaleAffineEscapeSupply is equivalent to the three-rank band supply, and three_rank_window_core_no_go does NOT close it -- the barrier and the surviving engine sit on two sides of an equivalence."
+  },
+  {
+   "node": "moebius_square_lens_of_249",
+   "why_both_sides_open": "S = 1/2 + sum_d mu(d)/(2^d - 1)^2, so irrationality of the squared-Mersenne Mobius series is equivalent to #249. Both unproved. A change of Lambert lens, not progress."
+  },
+  {
+   "node": "lambert_positive_lift_of_249",
+   "why_both_sides_open": "S = sum_d (phi*mu)(d)/(2^d - 1), the positive Erdos-Borwein-shaped lift. Both sides open, and whether the Erdos 1948 congruence mechanism tolerates a weight with A(p) = p - 2 is proved nowhere in the corpus."
+  },
+  {
+   "node": "coprime_pair_mass_bridge",
+   "why_both_sides_open": "S - 1/2 is the base-2 mass of coprime pairs, so irrationality of that mass is exactly #249. Both open."
+  },
+  {
+   "node": "rationality_iff_tempered_orbit",
+   "why_both_sides_open": "Rationality of a tempered binary coefficient series iff existence of a tempered integer carry orbit. For phi this is #249 negated; for supportCoeff A it is #257 negated. Neither side is decided, and this equivalence is what makes several downstream conditional theorems vacuous rather than conditional."
+  },
+  {
+   "node": "rationality_iff_tempered_support_carry_orbit",
+   "why_both_sides_open": "The #257 instance of the same equivalence. For infinite A, failure of the left side IS Erdos #257, and no theorem in the corpus excludes a tempered carry orbit for an arbitrary infinite support."
+  },
+  {
+   "node": "half_value_iff_canonical_affine_carry_tempered",
+   "why_both_sides_open": "A support has value exactly 1/2 iff the canonical affine carry orbit is tempered. Whether any support has value 1/2 is open; both sides undecided."
+  },
+  {
+   "node": "boolean_mobius_carry_certificate_equivalence",
+   "why_both_sides_open": "Existence of a Boolean Mobius carry certificate for a given p/q is undecided; for infinite supports its non-existence is exactly Erdos #257."
+  },
+  {
+   "node": "adjoining_one_is_value_free_and_repairs_the_parity",
+   "why_both_sides_open": "Irrationality of the squarefree-support series iff irrationality of the shifted (adjoin 1) support series. The iff is proved; both values are undecided, as the module docstring says explicitly. Its real content is that adjoining 1 repairs the parity obstruction, i.e. it relocates the barrier, not the question."
+  },
+  {
+   "node": "half_membership_iff_infinite_greedy_skips",
+   "why_both_sides_open": "1/2 in the Mersenne achievement set iff the greedy skipped support at 1/2 is infinite. Neither is proved anywhere."
+  },
+  {
+   "node": "half_membership_seam_equivalence_ring",
+   "why_both_sides_open": "Six coordinate systems -- seam not eventually right, cofinal false terminal bits, unbounded skipped seam ranks, infinite greedy skipped support, no last greedy skip, membership of 1/2 -- all proved equal to one open endpoint. No positive producer exists for any member of the ring."
+  },
+  {
+   "node": "fatal_gap_eventual_right_classification",
+   "why_both_sides_open": "Four statements proved equivalent (eventually-right seam; a finite fatal half gap; 1/2 not in the achievement set; a last greedy skip). The hard direction is real work, but it decides no branch: it is the negation side of the same open endpoint."
+  },
+  {
+   "node": "fatal_half_gap_dichotomy",
+   "why_both_sides_open": "ExistsFatalHalfGap iff 1/2 not in the Mersenne achievement set. Neither branch is proved."
+  },
+  {
+   "node": "half_value_correction_complement_equivalence",
+   "why_both_sides_open": "halfCorrectionValue A = halfComplementValue A iff the support value is 1/2 -- the open half-membership question in correction/complement coordinates."
+  },
+  {
+   "node": "seam_terminal_false_local_classifier",
+   "why_both_sides_open": "SeamGreedyUnboundedUpperOrMiddle iff SeamGreedyUnboundedTerminalFalse, and the latter is provably equivalent to membership of 1/2, so both sides are open and neither has a positive producer."
+  },
+  {
+   "node": "last_skip_iff_finite_skips",
+   "why_both_sides_open": "Existence of a last half-greedy skip iff finiteness of the skipped support iff 1/2 not achieved. Undecided."
+  },
+  {
+   "node": "shift_window_zero_endpoint_restatement",
+   "why_both_sides_open": "GreedyShiftWindowZero iff 1/2 in the achievement set -- the open problem itself in shifted-window coordinates."
+  },
+  {
+   "node": "half_membership_iff_every_skip_survives",
+   "why_both_sides_open": "Membership of 1/2 iff every actual skip survives. Same endpoint, third coordinate system."
+  },
+  {
+   "node": "seam_alignment_zero_iff_full_shell_nonnegative",
+   "why_both_sides_open": "HalfGreedySkippedSeamAlignmentZero iff HalfGreedySkippedFullShellNonnegative. Both predicates are defined in HalfCylinderFullShellSeamBridge.lean and discharged nowhere; the equivalence moves an obligation between two undischarged sockets."
+  },
+  {
+   "node": "unbounded_skipped_ranks_give_half_membership",
+   "why_both_sides_open": "Its antecedent is proved by the equivalence ring to be half-membership in different coordinates, so it is a one-sided restatement: no producer weaker than the open problem can exist for it."
+  },
+  {
+   "node": "irrationality_implies_window_separated_pairs",
+   "why_both_sides_open": "One-sided, and the side that is open is the antecedent: #249 itself. Recorded as a barrier because, with the forward consumer, it shows the socket is not a strictly weaker obligation. Precision point kept from the zone: irrationality does supply the FIXED-shift predicate at every h, but no single fixed-shift predicate is shown to imply #249, so the fixed-shift socket remains a live target."
+  }
+ ],
+ "nonrecurring_candidates": [
+  {
+   "node": "finite_period_noncollapse",
+   "problem": "257",
+   "why": "For every finite nonempty F of exponents and every base b >= 2, the multiplicative order of b modulo the reduced denominator of the finite sum of 1/(b^n - 1) over F is EXACTLY lcm F. Unconditional with no free hypothesis, about the actual Mersenne-reciprocal partial sums rather than about a certificate schema, and sharp (non-collapse, not a bound). Not a restatement: neither side mentions an open proposition. Not a finite instance: the finite instances (concrete_period_noncollapse_instances) are a separate node that this theorem subsumes. Not a routine corollary: it needs the canonical witness selector plus a cyclotomic exact-order prime-power supply, and the corpus records the reduction (period_noncollapse_witness_reduction) as genuine work. RESIDUAL RISK: denominator/period control of Mersenne partial sums is the classical engine behind Erdos 1948; prior_art_state is not_assessed and this exact sharp statement has not been matched to a source."
+  },
+  {
+   "node": "periodic_support_irrationality",
+   "problem": "257",
+   "why": "Unconditional irrationality of sum_{a in A} 1/(b^a - 1) for EVERY eventually periodic support containing a positive element, at every base b >= 2 -- residue classes, the odds, the multiples of any d. This is an infinite family of actual #257 instances decided outright, not a criterion with an open hypothesis and not a computation at bounded parameters. The engine is substantive: a periodic divisor-orbit sieve that manufactures the block divisibility from Euler cycles at a prime of exact valuation, i.e. it produces the certificate rather than assuming it, which is exactly what every open supply hypothesis in this corpus fails to do. RESIDUAL RISK: adjacent to Luca-Tachiya on periodic Lambert coefficients; the zone flags the overlap as unassessed and it must be checked before any novelty claim."
+  },
+  {
+   "node": "signed_weight_dichotomy",
+   "problem": "257",
+   "why": "For every base b >= 2 and every PERIODIC INTEGER weight, the signed series sum w(a)/(b^a - 1) is either irrational or terminating (some power of b times its value is an integer), and coefficient_nonnegative_signed_irrationality closes the terminating alternative whenever the divisor coefficients are one-signed and not eventually zero. Unconditional; the full-block certificate supply it rests on is proved rather than hypothesised, which distinguishes it from every conditional node in the corpus. The signed protected-block engine (one designated slot congruent to a nonzero value while the rest divide) is a real mechanism, not a reformulation. RESIDUAL RISK: the fully mixed-sign case is explicitly not claimed, and the module itself locates the full Luca-Tachiya statement beyond this."
+  },
+  {
+   "node": "no_block_certificate_at_squarefree_support",
+   "problem": "257",
+   "why": "A properly scoped barrier, and the model for what one should look like. At the squarefree support and every even base, the digitwise and carry-aware block-certificate schemas have NO instance already at precision q = b^2: blocks of length K >= 1 die by parity (the carried first block forces b to divide an odd 2^omega(n) - 1) and K <= 1 dies by density. It is about the actual coefficient normalisation, not about an abstract matrix family, and its scope caveat names the surviving low-carry engine by declaration and line, plus five further exemptions (the value's own irrationality, odd bases, the adjoined-one support, the lcm-gap and near-integer engines, universal #257). This is the barrier whose earlier unscoped version was nearly published as closing the block-certificate family; it now carries its own counter-record."
+  },
+  {
+   "node": "barrier_finite_rank_shift_algebra",
+   "problem": "249",
+   "why": "Defeats an entire hypothesis CLASS rather than one instance: a nonzero integer carry orbit satisfies the exact affine recurrence, absorbs every homogeneous lower factor ideal phi(j) for j | lcm(1..t), respects the natural letter and strip bounds, matches every prescribed anchor letter, and survives every finite integer shift polynomial -- so finite-rank linear shift observations of ANY rank cannot suffice. Properly scoped: it names six exemptions including arguments using actual totient differences at non-anchor positions, nonlinear combinations, and the fresh Mobius channels. It also records, from adversarial review, that its finite-rank half transports a strictly SHORTER property list than its rank-one half, so strategies needing the transformed words to satisfy the natural bounds or match anchors are not closed. RESIDUAL RISK: the countermodel is explicitly synthetic; the compensation letters are not claimed to be realisable totient differences, so it constrains a proof strategy, not the objects."
+  },
+  {
+   "node": "mobius_numerator_odd_jordan_normal_form",
+   "problem": "249",
+   "why": "The only unconditional node currently carrying prior_art_state candidate_new_statement. For squarefree r the Mobius numerator M_r is associated, in Z/(2^r - 1), to the odd Jordan scalar prod_{q | r, q odd} (q^2 - 1) -- the binary prime contributes only a unit. Unconditional, about an explicit arithmetic object, and it replaces an astronomically large integer by a scalar of size at most t^(2 pi(t)) inside the Mersenne quotient, which is a genuine reduction rather than a change of notation. It is the endpoint of a real chain (cyclic tensor factorisation, local adjugate identities, unit cofactors), not a corollary of any classical theorem present in the corpus. RESIDUAL RISK: M_r is a development-internal object, and no external comparison search has been completed; this record does not make a mathematical novelty claim."
+  },
+  {
+   "node": "lcm_height_denominator_lower_bound",
+   "problem": "249",
+   "why": "With upper_half_channel_survives_scaled_denominator (T4) and lcm_height_channel_product_divides_shadow_denominator: the surviving upper-half Mersenne channel product divides the reduced denominator of H * numericMobiusShadow H at every scale, hence the reduced denominator at the lcm height H_t is at least 2^(t/2), and single_channel_with_two_sided_bounds picks out one channel with 2^(t/2) <= 2^p - 1 < 2^t. Unconditional denominator GROWTH about the development's own object at the height the whole #249 pincer uses, and it survives an arbitrary scale h (only gcd(C,h) is lost), which is precisely the accounting scalar_localisation_height_barrier says cannot be evaded. Not a restatement, not finite, and not a routine corollary: it needs the coprimality of M_r to the upper-half channels plus Bertrand. RESIDUAL RISK: a growth statement about the shadow denominator, with no irrationality consequence on its own."
+  },
+  {
+   "node": "finite_level_dyadic_totient_independence",
+   "problem": "249",
+   "why": "For every e, the 2^e + 1 canonical dyadic sections of Euler's totient through level e are linearly independent over Q, with span of rank exactly 2^e + 1; full_dyadic_kernel_infinite_dimensional then makes the kernel infinite-dimensional. Unconditional and about the ACTUAL totient, and the independence is not formal: it is produced by crt_dirichlet_parity_row, an explicit row construction using Dirichlet in the progression 1 mod 2^K at which one channel value is prime and every other is divisible by a distinct prime, forcing distinct 2-adic depths of phi. moebius_incidence_unimodularity_barrier does not reach it, and the barrier's own modelling gap (its matrix is never identified with any jet of an actual series) is precisely what this node does not have. RESIDUAL RISK: claims.json records the family as unconditional progress and makes no novelty claim; no external comparison was performed."
+  },
+  {
+   "node": "feedback_trichotomy_advance_or_seam",
+   "problem": "257",
+   "why": "With feedback_fan_in_hole_in_strip, escaping_hole_recylindrification, in_strip_two_sheet_split and two_sheet_hole_only_reachability: a TOTAL, unconditional one-row feedback step at an exact half-divisor horizon with no fourth object-level case -- the stage advances, or it is recylindrified, or the live words split into two exact endpoint cylinders realising every terminal carry of the full square-root strip except a single computed hole. Unconditional (the stage and its strip enter as data, not as an open hypothesis), about the actual half-carry words of actual supports, and it strictly SUPERSEDES three earlier Z15 interfaces that each carried an unproved hypothesis (threshold_profile_realizes_protected_seam, history_alternative_needs_canonical_seam_bridge, fixed_coefficient_window_step), which is the operational test for content rather than reformulation. It is also the machinery that repairs two barriers rather than being blocked by them. RESIDUAL RISK: it produces stages only from existing stages, so it does not by itself reach cofinality -- the open antecedent OA257-profiled-gap-next-arithmetic is where it stops."
+  },
+  {
+   "node": "rank_gap_excludes_all_supports",
+   "problem": "257",
+   "why": "With half_straddle_canonicality and straddle_prefix_membership_criterion: a single finite rank gap at a prefix excludes EVERY support agreeing with that prefix, not merely the greedy branch, and at the target 1/2 every straddle is strict and every half-straddling word agrees with the actual greedy support up to its depth, so the cut-locator coordinate is canonical rather than branch-dependent. This is what upgrades one finite witness into a global exclusion, and it is the reason the finite computations in this lane are decisive rather than anecdotal. Unconditional, about arbitrary supports and the actual achievement set, not a restatement of half-membership (it is a general criterion that only becomes the open question when specialised to t = 1/2), and not a finite instance. RESIDUAL RISK: elementary; the load-bearing part is the scoping (global over supports), not the arithmetic."
+  },
+  {
+   "node": "adjacent_failure_trichotomy",
+   "problem": "249",
+   "why": "Unconditional and about the actual tail differences: a robust adjacent-arc failure at depth with 4W < 2^L forces the same-base kill certificate to fire, OR gives a genuine non-integrality certificate for R_{N+h} - R_N through the boundary-equality case, OR puts the adjacent carry state inside the strict candidate box of the survivor machinery. It earns a place here for a specific reason: the boundary branch is a non-integrality certificate that the strict certifiedKill predicate does NOT capture, i.e. it is exactly the omitted third case whose absence caused the earlier overclaim, and it is recorded rather than left implicit. The zone is also honest that the Lean conclusion is an inclusive disjunction. RESIDUAL RISK: it is a case analysis, not a producer; nothing shows the failure hypothesis occurs cofinally."
+  }
+ ],
+ "excluded_from_nonrecurring_with_reason": [
+  {
+   "node": "totient_denominator_exclusion_ladder",
+   "reason": "unconditional and about the #249 constant, but the standard neighbouring-fraction/mediant argument gives exactly the same b+d-1 exclusion: the numerical improvement over the classical Farey method is zero. The local contribution is a kernel-checked arithmetic instance, its transports and its sharp first failure, not a new denominator estimate."
+  },
+  {
+   "node": "erdos_borwein_full_support_irrationality",
+   "reason": "classical_formalised: Erdos 1948. Formalisation, not a result."
+  },
+  {
+   "node": "diagonal_pincer_kill_t41",
+   "reason": "finite_instance: a verified computation at t = 41, L = 61 on 254 exactly reconstructed totient values. Decisive as evidence that the engine fires, but bounded parameters; the roster's own statement records that it ranges over a finite literal list."
+  },
+  {
+   "node": "greedy_mobius_carry_nonneg",
+   "reason": "unconditional and about the actual orbit, but its own prior-art note calls it a short consequence of greedy underestimation plus the carry identity -- a routine corollary."
+  },
+  {
+   "node": "n243_constant_negative_excluded",
+   "reason": "unconditional, but the reciprocal series is never formed in Z17: the statement is about an exact integer system, so it is not about the #243 objects."
+  },
+  {
+   "node": "moebius_incidence_unimodularity_barrier",
+   "reason": "barrier with a recorded MODELLING GAP: the module contains no #249 object and no Lean statement identifies its matrix with any jet of any series. What is machine-checked is that one unitriangular integer matrix is invertible."
+  },
+  {
+   "node": "locked_residual_countermodel",
+   "reason": "same modelling gap: ResidualGaugeObstruction.lean never mentions the totient, primWeight or a Mersenne denominator; the identification with a #249 method family is documentation."
+  },
+  {
+   "node": "finite_atom_determinant_clearing_barrier",
+   "reason": "same: MersenneTailAtoms.lean never mentions primWeight or the totient, and the barrier bounds the cleared integer, never the ratio a Diophantine argument needs."
+  },
+  {
+   "node": "balanced_pulse_no_autonomous_finite_state",
+   "reason": "three formal links are missing (no Lean statement that the pulse family has a common series value, none connecting it to the carry orbit or the rationality criterion), and its only open antecedent is an unproved MODELLING assumption without which the declaration has no content."
+  },
+  {
+   "node": "relation_invariant_channel_determinant_barrier",
+   "reason": "abstract rank-one minor vanishing; no declaration defines the concrete shifted channels or proves they satisfy the kernel hypothesis, so 'the determinant route is closed' is an informal application."
+  },
+  {
+   "node": "irrationality_implies_window_separated_pairs",
+   "reason": "its antecedent is #249 itself; recorded as a barrier on a socket, never as evidence for it."
+  },
+  {
+   "node": "unsafe_skip_forces_long_forced_take_block",
+   "reason": "unconditional and about the actual greedy orbit, but geometric tail estimates on Mersenne weights, and forced_take_block_depth_is_sharp shows the extracted block is one rank from optimal -- a modest lemma rather than a result."
+  },
+  {
+   "node": "terminal_only_strip_error_bound",
+   "reason": "genuine and sharp (it replaces the inverse-system argument by closedness of the achievement set), but it is an error estimate feeding an interface whose antecedent has no producer; kept out of the list to keep it defensible, and cited inside the half-membership engine hierarchy instead."
+  }
+ ],
+ "demand_lattice": {
+  "artifact_role": "kernel-checked implication order over the open antecedents recorded in this file",
+  "method": "Each open antecedent below is already a Lean Prop: it is the type of a named hypothesis binder on a conditional_implication declaration. ErdosProblems/DemandLedger/Hyp.lean provides hypOf%, which lifts such a binder into a named constant taken from the kernel's ConstantInfo -- extracted, not transcribed. Walking the 259 conditional-implication declarations yields 101 distinct closed Props (ErdosProblems/DemandLedger/Basic.lean), of which 23 are substantial statements and the rest are side conditions. This file records the implication order over those 23, proved in ErdosProblems/DemandLedger/edges/.",
+  "counts": {
+   "conditional_declarations_walked": 259,
+   "closed_props_extracted": 101,
+   "substantial": 23,
+   "edges_proved": 144,
+   "edges_direct_not_routed_through_the_problem": 7,
+   "equivalence_classes": 7
+  },
+  "headline": "No recorded antecedent is weaker than the problem it is an antecedent of. Seventeen of the 23 are provably equal in strength to the open problem itself (14 for #249, 3 for #257); the remaining six are at least as strong. The frontier reads as a menu of sub-problems to attack; the order says it is one problem restated many ways, plus six statements that are harder.",
+  "classes": [
+   {
+    "id": "K249-problem",
+    "problem": "249",
+    "members": [
+     "G081",
+     "G082",
+     "G091",
+     "G093",
+     "G094",
+     "G095",
+     "G096",
+     "G097",
+     "G098",
+     "G099",
+     "G100",
+     "G101",
+     "G102",
+     "G103"
+    ],
+    "equivalent_to_problem": true,
+    "evidence": "DemandLedger.Discharge3G103.G103_iff_erdos249 proves G103 <-> Irrational (sum phi(n)/2^n); every other member is mutually implied with G103 by the edges in ErdosProblems/DemandLedger/edges/. The reverse direction rests on the corpus theorem Erdos249257.TotientTailPeriodKiller.irrational_totient_series_iff_pointwise_certificates: irrationality holds iff a certified kill exists at every positive shift and every position.",
+    "frontier_antecedents": [
+     "OA249-cone-nonflat-menu-supply",
+     "OA249-gap-certificate-supply",
+     "OA249-lcm-cone-kill-supply",
+     "OA249-lcm-diagonal-kill-supply",
+     "OA249-lcm-jump-kill-supply",
+     "OA249-pointwise-kill-supply",
+     "OA249-prime-jump-supply",
+     "OA249-rank2-qray-supply",
+     "OA249-ray-and-multiple-kill-supply"
+    ],
+    "lean_constants": [
+     "DemandLedger.G081",
+     "DemandLedger.G082",
+     "DemandLedger.G091",
+     "DemandLedger.G093",
+     "DemandLedger.G094",
+     "DemandLedger.G095",
+     "DemandLedger.G096",
+     "DemandLedger.G097",
+     "DemandLedger.G098",
+     "DemandLedger.G099",
+     "DemandLedger.G100",
+     "DemandLedger.G101",
+     "DemandLedger.G102",
+     "DemandLedger.G103"
+    ]
+   },
+   {
+    "id": "K257-problem",
+    "problem": "257",
+    "members": [
+     "G073",
+     "G075",
+     "G076"
+    ],
+    "equivalent_to_problem": true,
+    "evidence": "G076 is the antecedent SeamGreedyUnboundedTerminalFalse, and Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse is a corpus iff with 1/2 in mersenneAchievementSet, so this class is the 1/2-membership question itself.",
+    "frontier_antecedents": [
+     "OA257-greedy-carry-upper-bound"
+    ],
+    "lean_constants": [
+     "DemandLedger.G073",
+     "DemandLedger.G075",
+     "DemandLedger.G076"
+    ]
+   },
+   {
+    "id": "K257-blocksafe",
+    "problem": "257",
+    "members": [
+     "G083",
+     "G084"
+    ],
+    "equivalent_to_problem": false,
+    "evidence": "e_G083_G084 / e_G084_G083: block dyadic safety at the displayed half-orbit state and the real dyadic cap are the same statement after clearing denominators.",
+    "frontier_antecedents": [
+     "OA257-channel-cap-at-skips",
+     "OA257-greedy-block-safety-at-every-skip"
+    ],
+    "lean_constants": [
+     "DemandLedger.G083",
+     "DemandLedger.G084"
+    ]
+   },
+   {
+    "id": "K257-twochannel",
+    "problem": "257",
+    "members": [
+     "G085"
+    ],
+    "equivalent_to_problem": false,
+    "evidence": "",
+    "frontier_antecedents": [
+     "OA257-channel-cap-at-skips"
+    ],
+    "lean_constants": [
+     "DemandLedger.G085"
+    ]
+   },
+   {
+    "id": "K249-blockcert",
+    "problem": "249",
+    "members": [
+     "G088"
+    ],
+    "equivalent_to_problem": false,
+    "evidence": "",
+    "frontier_antecedents": [
+     "OA249-block-certificate-supply",
+     "OA249-carry-aware-supply",
+     "OA249-low-carry-supply"
+    ],
+    "lean_constants": [
+     "DemandLedger.G088"
+    ]
+   },
+   {
+    "id": "K249-carryaware",
+    "problem": "249",
+    "members": [
+     "G089"
+    ],
+    "equivalent_to_problem": false,
+    "evidence": "",
+    "frontier_antecedents": [
+     "OA249-block-certificate-supply",
+     "OA249-carry-aware-supply",
+     "OA249-low-carry-supply"
+    ],
+    "lean_constants": [
+     "DemandLedger.G089"
+    ]
+   },
+   {
+    "id": "K249-lowcarry",
+    "problem": "249",
+    "members": [
+     "G090"
+    ],
+    "equivalent_to_problem": false,
+    "evidence": "",
+    "frontier_antecedents": [
+     "OA249-block-certificate-supply",
+     "OA249-carry-aware-supply",
+     "OA249-low-carry-supply"
+    ],
+    "lean_constants": [
+     "DemandLedger.G090"
+    ]
+   }
+  ],
+  "strict_implications_between_classes": [
+   {
+    "from": "K249-blockcert",
+    "to": "K249-carryaware"
+   },
+   {
+    "from": "K249-carryaware",
+    "to": "K249-lowcarry"
+   },
+   {
+    "from": "K249-lowcarry",
+    "to": "K249-problem"
+   },
+   {
+    "from": "K257-blocksafe",
+    "to": "K257-twochannel"
+   },
+   {
+    "from": "K257-twochannel",
+    "to": "K257-problem"
+   }
+  ],
+  "evidence_modules": [
+   "ErdosProblems/DemandLedger/Hyp.lean",
+   "ErdosProblems/DemandLedger/Basic.lean",
+   "ErdosProblems/DemandLedger.lean",
+   "ErdosProblems/DemandLedger/edges/Bridge1.lean",
+   "ErdosProblems/DemandLedger/edges/Bridge2.lean",
+   "ErdosProblems/DemandLedger/edges/Bridge3.lean",
+   "ErdosProblems/DemandLedger/edges/ClusterA.lean",
+   "ErdosProblems/DemandLedger/edges/ClusterB.lean",
+   "ErdosProblems/DemandLedger/edges/ClusterC.lean",
+   "ErdosProblems/DemandLedger/edges/ClusterD.lean",
+   "ErdosProblems/DemandLedger/edges/ClusterE.lean",
+   "ErdosProblems/DemandLedger/edges/ClusterF.lean",
+   "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
+   "ErdosProblems/DemandLedger/edges/Discharge2_G100.lean",
+   "ErdosProblems/DemandLedger/edges/Discharge3_G103.lean"
+  ],
+  "limits": [
+   "An absent edge is unproved, not refuted. The six antecedents outside the two problem-equivalent classes may also be equivalent; nobody proved the converses. Class count 7 is therefore an upper bound on the true collapse, and the strict separations are not established.",
+   "7 of the 144 edges are direct. The other 137 route through the problem itself, which is legitimate (it uses corpus iff theorems) but carries no content beyond 'this antecedent is the problem again'.",
+   "All 101 extracted Props are pairwise distinct up to reducible defeq (scripts/lean/DefEqScan.lean), so no edge here is a definitional accident.",
+   "Nothing here proves or advances #249 or #257.",
+   "Every edge module was independently re-checked with lake env lean: exit 0, empty output, sorry-free, axioms [propext, Classical.choice, Quot.sound]."
+  ]
+ },
+ "certified_diagonal_band": {
+  "artifact_role": "verified extent of the diagonal certificate ladder",
+  "measured": "2026-07-26",
+  "statement": "ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82 : forall t <= 82, exists L, certifiedKill (periodLcm t) (periodLcm t) L",
+  "axioms": "[propext, Classical.choice, Quot.sound]",
+  "verification": "kernel-checked independently: lake env lean exit 0, empty output, no sorry/admit/native_decide/axiom. An adversarial verifier separately re-derived all 706 factorisations and Miller-Rabin tested all 1226 prime factors outside Lean.",
+  "previous_extent": "t <= 66, from 28 recorded deposits topping out at t = 64. periodLcm is constant between prime powers, so those 28 already covered every t <= 66; none of the 37 apparent holes below 64 was ever a hole.",
+  "new_cells": [
+   {
+    "t": 67,
+    "depth": 100,
+    "minimal": true,
+    "note": "98 and 99 both killed; proved in ErdosProblems/Lift/Recon67.lean:18821"
+   },
+   {
+    "t": 71,
+    "depth": 105,
+    "minimal": true,
+    "periodLcm": "5624043567677125526551547131200",
+    "note": "ErdosProblems/Lift/CertT67.lean"
+   },
+   {
+    "t": 73,
+    "depth": 113,
+    "minimal": true,
+    "periodLcm": "410555180440430163438262940577600"
+   },
+   {
+    "t": 79,
+    "depth": 120,
+    "minimal": true,
+    "periodLcm": "32433859254793982911622772305630400"
+   },
+   {
+    "t": 81,
+    "depth": 120,
+    "minimal": true,
+    "periodLcm": "97301577764381948734868316916891200"
+   }
+  ],
+  "amortisation": "None. The 1574-prime Lucas pool of Skip/LadderT67.lean meets Recon67.lean's 411-prime pool in exactly 0 primes. Every scale is an independent construction. This is the empirical form of the lift no-go results recorded under demand_lattice_no_lift.",
+  "does_not_establish": "The #249 reduction consumes a COFINAL supply (forall t0, exists t >= t0). A bounded band contributes nothing at t0 = 83. This extends the computational frontier and refutes the 'sparse ladder with holes' reading of the corpus; it does not move Erdos #249."
+ },
+ "demand_lattice_no_lift": {
+  "artifact_role": "no-go results closing the seed-plus-lift architecture for #249",
+  "measured": "2026-07-26",
+  "claim": "There is no lift certifiedKill H H L -> exists L', certifiedKill (p*H) (p*H) L'. Three independent proofs.",
+  "proofs": [
+   {
+    "name": "ErdosProblems.Lift.AngleA5.no_lift_from_lower_totient_data",
+    "content": "The lift's conclusion is not a function of its hypotheses, so it is not a theorem. Explicit surrogate: a(n) = phi(n) for n <= 2m, then repeat the block (m, 2m] forever. It satisfies a(n) <= n, the only analytic input to the soundness spine, and agrees with phi below 2m so it inherits every certificate of the seed, yet has no certificate above."
+   },
+   {
+    "name": "ErdosProblems.Lift.InduceLaw.no_window_local_lift",
+    "content": "No window-local lift exists for p >= 3. Corpus audit: all 28 recorded certificates are independent constructions; shared window arguments number 0 at every p >= 3 crossing and exactly min(L,L') at the two p = 2 crossings (49 at 31->32, 93 at 61->64)."
+   },
+   {
+    "name": "ErdosProblems.Lift.AngleA2 antitonicity",
+    "content": "P s -> P t for t <= s: the predicate is a threshold predicate and the ladder transmits DOWNWARD. The seed is implied by higher cells, not the reverse, so seed-plus-lift is architecturally backwards."
+   }
+  ],
+  "clean_form": "ErdosProblems.Lift.AngleA4.exists_certifiedKill_iff (h N) : (exists L, certifiedKill h N L) <-> 2^N (2^h - 1) S not an integer. Every certificate representation in the corpus is literally this one statement. With exists_certifiedKill_antitone (kill at large N implies kill at small N), large N is the hard side, which is what every supply hypothesis needs."
+ },
+ "erdos257_half_reduction": {
+  "artifact_role": "verified reduction of the 1/2-membership question, and the layers proved insufficient",
+  "measured": "2026-07-26",
+  "chain": [
+   {
+    "name": "Erdos249257.AngleD2.half_mem_iff_unboundedLargestSkipLate",
+    "statement": "1/2 in mersenneAchievementSet iff forall N, exists s >= N, LargestSkipLateAt s",
+    "note": "an iff; the corpus's own reduction, not agent-invented"
+   },
+   {
+    "name": "ErdosProblems.BitR2.exists_largestSkipLateAt_of_remainder_le_two_pow",
+    "statement": "5 <= N -> seamIntegerGreedyRemainder N <= 2^N -> exists t in [N+1, 2N+1], LargestSkipLateAt t"
+   },
+   {
+    "name": "ErdosProblems.BitR2.half_mem_of_remainderReachesHalfPointCofinally",
+    "statement": "(forall N, exists s >= N, 5 <= s and rho_s <= 2^s) -> 1/2 in mersenneAchievementSet"
+   }
+  ],
+  "reduction": "Proving seamIntegerGreedyRemainder s <= 2^s for infinitely many s resolves the 1/2 question POSITIVELY.",
+  "axioms": "every link [propext, Classical.choice, Quot.sound]; each verified independently by lake env lean, exit 0, empty output",
+  "trigger_density": "rho_s <= 2^s holds at 41/90 rows in [5,94], 42/100 in [100,199], and flat at 0.49967 over [5,6000] with geometric gaps (max gap 13 at s=5372). No decay; the condition is abundant, not marginal.",
+  "mechanism": "With u_s := rho_s/2^s the branch recurrences give u_{s+1} = 2u_s - 1 (right, exact) and u_{s+1} = 2u_s + 1 (middle/upper, proved in Three/T2), i.e. a doubling map perturbed by O(s/2^(s+1)), which is summable. This accounts for the exact 1/2 density and the geometric gap distribution, and explains why no bounded-gap argument can exist.",
+  "layers_proved_insufficient": [
+   {
+    "layer": "row recursion",
+    "name": "ErdosProblems.RemC1.rowLaw_blind_at_16",
+    "content": "At s=16 every row-level criterion in the corpus is simultaneously silent, yet row 17 is good via skipped rank 14, not the top rank 16. The row recurrence tracks only the top rank, so it is strictly weaker than LargestSkipLateAt; no iteration of it against any ceiling can recover the good rows it cannot see."
+   },
+   {
+    "layer": "any bound rho_s <= C*2^s",
+    "name": "ErdosProblems.RemC1.exists_persistent_surplus_model",
+    "content": "f s = 2^s + 2 satisfies the exact two-sided row law, the good-row ceiling, the pin window, the trivial ceiling AND rho_s <= 2^(s+1), while never returning to the half point. band_invariant makes the whole band [2^s+2, 2^s+4] forward-invariant."
+   },
+   {
+    "layer": "ceiling improvements",
+    "name": "ErdosProblems.RemC1.le_of_descent_of_quadrupling",
+    "content": "The descent law's forward form and every available ceiling are both upper bounds; any ceiling growing at rate >= 4 is compatible with it forever, so constant-factor improvements of the trivial ceiling are worthless."
+   },
+   {
+    "layer": "rank-level interval induction",
+    "name": "ErdosProblems.Three.T1.IntervalCeiling.four_pow_le",
+    "content": "Every ceiling propagating through the rank recursion by one-step interval induction is Omega(4^s), so the target rho_s < 2^(s+1) is unreachable by any such induction. intervalCeiling_obligations_iff shows the two obligations are equivalent to branch-blind one-step induction, so this is not an artefact of a weak abstraction."
+   },
+   {
+    "layer": "parity / 2-adic",
+    "name": "ErdosProblems.Three.T3.exists_persistent_odd_surplus_model",
+    "content": "2^s + 3 is odd at every row, obeys the step law and all row-level constraints, sits inside the forward-invariant band, and never reaches the half point. A mod-2 congruence cannot empty a band of positive width."
+   },
+   {
+    "layer": "doubling-map / dyadic dichotomy",
+    "name": "ErdosProblems.Three.T2.two_pow_mul_y",
+    "content": "2^(s+1)*y_s = rho_s + 2^s is an integer, so the orbit point is a dyadic rational at every row. 'y0 is not a dyadic rational' can never be tested against any finite row; the entire infinitude of hits is carried by the limit alone."
+   }
+  ],
+  "remaining_gap": "The residual induction R_k < 2^(2s-k) closes on TAKEN ranks (R_{k+1} = R_k - w_{k+1} < 2^(2s-k-1)) and fails on DECLINED ranks, where one knows only R_k < w_{k+1} and w_{k+1} exceeds 2^(2s-k-1) by its own lower binary terms (w_d = 2^(2s-d) + 2^(2s-2d) + 2^(2s-3d) + ...). Closing it would give rho_s < 2^(s+1) unconditionally, which by the surplus model above is still not sufficient for the 1/2 question.",
+  "correction_on_record": "ErdosProblems/Rem/C6.lean reported the residual invariant (forall s d, seamResidualUpto s d < 2^(2s-d)) as empirically true with max ratio 0.99989 over s in [6,3000]. It is FALSE: ErdosProblems.Three.T1.not_residualInvariant gives the counterexample s=13, d=7 (residual 524419 vs ceiling 2^19 = 524288), inside the stated range. An independent re-scan found it the sole failure over that range.",
+  "does_not_establish": "Erdos #257's 1/2 question remains open. Nothing here proves or disproves 1/2 in mersenneAchievementSet."
+ }
+}

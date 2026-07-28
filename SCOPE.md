@@ -3,12 +3,12 @@
 
 # Scope of this release
 
-This release does not prove the irrationality of the Erdős #249 totient
-constant, and does not prove the universal form of Erdős #257. Its claims
-apply only to the source and dependencies identified by the immutable
-formal-source checkpoint in [`docs/claims.json`](docs/claims.json). The last
-release tag remains the citation and release identity; it can differ from that
-checkpoint.
+This release does not prove Erdős #243, #249, #251, #257, #269, or #1049.
+All six remain open; their papers state only partial checked results and
+surviving obligations. Claims apply only to the source and dependencies at the
+immutable formal-source checkpoint in
+[`docs/claims.json`](docs/claims.json). The last release tag remains the
+citation identity and can differ from that checkpoint.
 
 Mathematical proof authority is Lean source at that declared checkpoint after
 checking by the pinned Lean kernel. Unreleased work, private repositories,
@@ -17,9 +17,30 @@ the public proof artefact. Work later than the declared checkpoint is out of
 scope even if it checks locally; a later tagged release is a separate citation
 and release action, not a substitute for an exact proof-source identity.
 
+## What the corpus is, by shape
+
+Size is not evidence. The semantic graph classifies every statement; re-derive
+these with `python3 scripts/query_semantic.py <shape>`.
+
+| Shape | Count | Meaning |
+|---|---:|---|
+| `nonrecurring` | 187 | substantive content, weighted to #257 (117) over #249 (54) |
+| `classical` | 70 | already in the literature or matched to prior art; formalisation value only |
+| `bare-equivalences` | 24 | restatements, labelled by this project's own audit |
+
+Neither count asserts novelty: `nonrecurring` means a statement does not recur
+inside this corpus, not that it is new to mathematics. That judgement is a human
+number theorist's, and no query here supplies it.
+
+The `K = 240` denominator exclusion is the classical Farey/mediant bound on a
+committed window. Its improvement over that argument is zero and the window
+length is free: `python3 scripts/check_farey_denominator_scaling.py` reproduces
+the formalised constant, then returns a 2,406-digit bound in a fraction of a
+second. Cite it as a finite computation, never as progress.
+
 ## Exact open propositions
 
-The prose boundary above is backed by machine-resolvable open propositions:
+Machine-resolvable open propositions:
 
 - `remaining_open.erdos_249_irrationality`:
   `python3 scripts/query_corpus.py --open remaining_open.erdos_249_irrationality`
@@ -34,6 +55,9 @@ Finite instances, conditional reductions, cited neighbours, and named
 infinite-support families do not discharge these propositions. Only a future
 claim transition recorded against the exact identifier, with the evidence
 required by `docs/methodology.json`, can change this boundary.
+
+Expert handoffs: `python3 scripts/query_expert_handoffs.py`; each row gives its
+OPEN ask, current guess, alternatives, discriminator, consumer, and boundary.
 
 ## Machine identifiers
 

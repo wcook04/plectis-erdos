@@ -1,0 +1,566 @@
+{
+  "zone_id": "Z31",
+  "title": "Prime-gap dyadic tail collapse and cofinal escape frontier",
+  "problem": "shared_substrate",
+  "concepts": [
+    {
+      "id": "prime_gap_dyadic_coboundary",
+      "label": "prime-gap dyadic coboundary",
+      "note": "The exact finite and infinite summation-by-parts passage from the dyadic prime series to the consecutive-prime-gap series, with the endpoint and summability boundary kept explicit."
+    },
+    {
+      "id": "odd_denominator_collapse",
+      "label": "odd-denominator collapse",
+      "note": "Repeated doubling removes the two-primary part of a rational tail state's reduced denominator, after which an Euler-totient shift is integral and remains so."
+    },
+    {
+      "id": "cofinal_shift_escape",
+      "label": "cofinal shift escape",
+      "note": "For every fixed positive shift length and every threshold, some later tail displacement is non-integral; this is the exact abstract consumer contradicting rational denominator collapse."
+    },
+    {
+      "id": "small_shift_rigidity",
+      "label": "small-shift rigidity",
+      "note": "An integral rational shift in the open unit interval is zero, so two adjacent small integral shifts force equality of the corresponding digits."
+    },
+    {
+      "id": "cofinal_adjacent_mismatch",
+      "label": "cofinal adjacent small mismatch",
+      "note": "A cofinal supply of adjacent shifts in the open unit interval whose corresponding prime gaps differ, sufficient to exclude eventual integrality for each fixed shift."
+    },
+    {
+      "id": "eventual_smallness_route",
+      "label": "eventual-smallness periodicity route",
+      "note": "The stronger route in which eventual smallness and eventual integrality force eventual periodicity of the integer digit word."
+    },
+    {
+      "id": "finite_anti_concentration_certificate",
+      "label": "finite anti-concentration certificate",
+      "note": "A finite approximation farther from every integer than its certified tail error, which proves non-integrality of the full rational quantity."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "prime_gap_series_is_exact_summable_coboundary",
+      "canonical_statement": "PROVED CONDITIONAL: termwise, the normalized consecutive-prime-gap term is twice the next normalized prime term minus the current prime term; therefore summability of the normalized dyadic prime series implies summability of the gap series and the exact identity sum(primes)=2+sum(gaps).",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "concepts": [
+        "prime_gap_dyadic_coboundary"
+      ],
+      "open_antecedents": [
+        "Summable primeDyadicTerm"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "a termwise dyadic discrete derivative followed by summation of the shifted summable sequence",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The paper attributes the required summability to the classical prime number theorem. No priority or novelty claim is made for the summation-by-parts transport.",
+      "scope_caveat": "Lean does not prove the prime-number-theorem input here. The declarations are conditional on summability, and they do not prove irrationality of either series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.primeGapDyadicTerm_eq",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 191
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.summable_primeGapDyadicTerm_of_summable_primeDyadicTerm",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 202
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 214
+        }
+      ]
+    },
+    {
+      "id": "prime_and_gap_irrationality_are_exactly_equivalent",
+      "canonical_statement": "PROVED CONDITIONAL REFORMULATION: under summability of the normalized dyadic prime terms, the normalized prime series is irrational if and only if the consecutive-prime-gap series is irrational; the displayed denominator-2^n normalization is exactly four plus twice the gap series and has the same irrationality status.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "concepts": [
+        "prime_gap_dyadic_coboundary"
+      ],
+      "open_antecedents": [
+        "Summable primeDyadicTerm",
+        "irrationality of the consecutive-prime-gap dyadic series"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "the exact infinite coboundary identity and invariance of irrationality under nonzero rational scaling and rational translation",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The paper uses the classical prime number theorem to discharge summability outside Lean. The equivalence is explicitly a reformulation of the open problem, not progress on its truth value.",
+      "scope_caveat": "This node preserves the open status of Erdős #251. It identifies an equivalent gap-series target but supplies no irrationality witness.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 239
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 248
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 263
+        }
+      ]
+    },
+    {
+      "id": "every_rational_dyadic_tail_has_an_eventually_integral_shift",
+      "canonical_statement": "PROVED ABSTRACTLY: every rational-valued recurrence T(N+1)=2T(N)-g(N+1) with integer digits reaches a state with odd reduced denominator, and consequently admits one fixed positive shift length whose tail displacement is integral at every sufficiently late index.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "concepts": [
+        "odd_denominator_collapse"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "factor the initial denominator into a power of two times an odd part, clear the two-primary factor by recurrence doubling, then apply the Euler-totient integral shift and propagate it",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper presents this as the abstract denominator-control theorem behind the #251 reduction.",
+      "scope_caveat": "The shift length depends on the odd denominator reached from the hypothetical rational initial value and is not known in advance. The theorem applies to arbitrary integer digits and does not use prime-gap distribution.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.exists_twoPow_mul_odd_den",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 426
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.exists_odd_den_state",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 461
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.exists_eventually_integral_tailShift",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 477
+        }
+      ]
+    },
+    {
+      "id": "cofinal_nonintegral_shifts_force_irrational_initial_state",
+      "canonical_statement": "PROVED CONDITIONAL ABSTRACTLY: a real dyadic tail recurrence with integer digits has irrational initial state whenever, for every fixed positive shift length and every threshold, some later shift is not an integer.",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "odd_denominator_collapse",
+        "cofinal_shift_escape"
+      ],
+      "open_antecedents": [
+        "CofinalNonintegralTailShifts for the actual prime-gap real tail",
+        "formal Lean instantiation of the convergent actual prime-gap tail recurrence"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "transport a hypothetical rational real orbit to the rational recurrence and contradict its denominator-collapse shift",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the exact abstract irrationality consumer stated in the paper.",
+      "scope_caveat": "The Lean theorem is generic. The paper derives the actual prime-gap real recurrence from the classical prime number theorem, but that analytic instantiation is not formalised in this module.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.realTail_eq_ratCast_rationalDyadicOrbit",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 515
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.irrational_initial_of_cofinalNonintegralTailShifts",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 537
+        }
+      ]
+    },
+    {
+      "id": "eventually_small_integral_shift_forces_digit_periodicity",
+      "canonical_statement": "PROVED CONDITIONAL: if one fixed rational tail shift is eventually integral and eventually remains strictly between -1 and 1, it is eventually zero; for an integer-digit dyadic recurrence this forces the digit word to be eventually periodic with that shift, so nonperiodicity excludes eventual integrality whenever eventual smallness is available.",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "small_shift_rigidity",
+        "eventual_smallness_route"
+      ],
+      "open_antecedents": [
+        "eventual strict smallness of a fixed actual prime-gap tail shift"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "integral values in the open unit interval vanish, and the one-step shift recurrence turns two consecutive zero shifts into equality of digits",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper records this as a stronger sufficient route than the cofinal adjacent-pair criterion.",
+      "scope_caveat": "Actual prime-gap nonperiodicity is proved, but eventual smallness of every relevant full tail shift is not. This implication does not manufacture that analytic estimate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.tailShift_eventually_zero_of_eventually_integral_of_eventually_small",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 571
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 589
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 610
+        }
+      ]
+    },
+    {
+      "id": "adjacent_small_mismatch_is_a_local_nonintegrality_certificate",
+      "canonical_statement": "PROVED LOCAL CERTIFICATE: for a rational dyadic recurrence, two adjacent shifts lying strictly between -1 and 1 cannot both be integral when the corresponding integer digits differ.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "concepts": [
+        "small_shift_rigidity",
+        "cofinal_adjacent_mismatch"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "an integral rational in (-1,1) is zero, after which the exact shift-step recurrence contradicts the digit mismatch",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the paper's bounded local consumer for a future prime-gap anti-concentration input.",
+      "scope_caveat": "The theorem consumes one already-certified adjacent small pair. It does not prove that such pairs occur for actual prime gaps.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.ratIntegral_eq_zero_of_neg_one_lt_of_lt_one",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 558
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 626
+        }
+      ]
+    },
+    {
+      "id": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality",
+      "canonical_statement": "PROVED CONDITIONAL: if adjacent small mismatching pairs occur beyond every threshold for a fixed shift, that shift cannot be eventually integral; the same implication is Lean-checked for the actual consecutive-prime-gap digits.",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "cofinal_adjacent_mismatch",
+        "cofinal_shift_escape"
+      ],
+      "open_antecedents": [
+        "cofinal adjacent small-mismatch supply for each fixed positive shift of the actual prime-gap tail"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "choose one local adjacent obstruction beyond the alleged onset of eventual integrality",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper explicitly proposes the cofinal small-mismatch supply as a sufficient theorem still to be proved.",
+      "scope_caveat": "The Lean result is a consumer for the quantified supply. It does not prove either full-tail inequality or the cofinal occurrence of mismatching pairs.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 653
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 723
+        }
+      ]
+    },
+    {
+      "id": "actual_prime_gaps_are_unbounded_and_not_eventually_periodic",
+      "canonical_statement": "PROVED: the zero-based consecutive-prime-gap sequence is unbounded by the factorial prime-free-interval construction and therefore is not eventually periodic with any positive period.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "concepts": [
+        "eventual_smallness_route"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "factorial composite blocks give arbitrarily large gaps, while an eventually periodic natural-valued sequence has bounded range",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The factorial construction is classical. The paper cites stronger modern prime-gap bounds but uses only this elementary unboundedness.",
+      "scope_caveat": "Unboundedness and non-eventual-periodicity alone give no tail smallness or anti-concentration. They do not exclude a rational dyadic sum for an unrestricted integer coefficient stream.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.exists_primeGap0_gt",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 51
+        },
+        {
+          "declaration": "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 670
+        }
+      ]
+    },
+    {
+      "id": "actual_prime_gap_eventual_smallness_would_exclude_integral_shifts",
+      "canonical_statement": "PROVED CONDITIONAL: for any fixed positive shift of a rational recurrence driven by the actual prime gaps, eventual strict smallness of that shift excludes its eventual integrality, because the latter pair would force the prime-gap word to become periodic.",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "eventual_smallness_route",
+        "cofinal_shift_escape"
+      ],
+      "open_antecedents": [
+        "eventual strict smallness of the actual prime-gap tail shift for each required positive shift length"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "eventual-small integral-shift rigidity combined with the proved non-eventual-periodicity of actual prime gaps",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the stronger global alternative to the paper's preferred sporadic adjacent-pair criterion.",
+      "scope_caveat": "The eventual-smallness hypothesis is stronger than the proposed cofinal adjacent-pair condition and is not established. The theorem therefore does not resolve Erdős #251.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_eventually_small",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 707
+        }
+      ]
+    },
+    {
+      "id": "finite_approximation_gap_certifies_nonintegrality",
+      "canonical_statement": "PROVED GENERIC CERTIFICATE: if a rational approximation is farther than R from every integer and the full rational value differs from that approximation by at most R, then the full value is not integral.",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "concepts": [
+        "finite_anti_concentration_certificate",
+        "cofinal_shift_escape"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the triangle inequality contrapositive: an integral full value would place the approximation within the certified error radius of an integer",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper uses this elementary lemma as the final kernel-checked inference in its finite-truncation proposal.",
+      "scope_caveat": "The theorem does not construct a prime-gap approximation, prove a tail-error bound, or establish cofinally many anti-concentrated blocks. Those analytic and arithmetic producers remain open.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos251.not_ratIntegral_of_approximation_gap",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 772
+        }
+      ]
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "prime_and_gap_irrationality_are_exactly_equivalent",
+      "to": "prime_gap_series_is_exact_summable_coboundary",
+      "relation": "reformulates",
+      "basis": "The irrationality equivalence is obtained from the summable coboundary identity by rational translation and nonzero rational scaling; it adds no truth-value progress."
+    },
+    {
+      "from": "cofinal_nonintegral_shifts_force_irrational_initial_state",
+      "to": "every_rational_dyadic_tail_has_an_eventually_integral_shift",
+      "relation": "reformulates",
+      "basis": "The real irrationality consumer is the contrapositive of the rational denominator-collapse theorem after exact real/rational orbit transport."
+    },
+    {
+      "from": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality",
+      "to": "adjacent_small_mismatch_is_a_local_nonintegrality_certificate",
+      "relation": "generated_by",
+      "basis": "The cofinal theorem chooses one adjacent small-mismatch certificate beyond the alleged onset of integrality."
+    },
+    {
+      "from": "cofinal_nonintegral_shifts_force_irrational_initial_state",
+      "to": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality",
+      "relation": "depends_on_open",
+      "basis": "For the actual prime-gap orbit, a cofinal small-mismatch supply for every fixed positive h would exclude every eventual integral shift and feed the abstract cofinal-escape consumer; the supply and analytic tail instantiation remain open."
+    },
+    {
+      "from": "actual_prime_gap_eventual_smallness_would_exclude_integral_shifts",
+      "to": "eventually_small_integral_shift_forces_digit_periodicity",
+      "relation": "specialises",
+      "basis": "The actual-prime-gap result specialises the abstract eventual-smallness rigidity theorem and discharges its nonperiodicity premise with the proved prime-gap theorem."
+    },
+    {
+      "from": "actual_prime_gap_eventual_smallness_would_exclude_integral_shifts",
+      "to": "actual_prime_gaps_are_unbounded_and_not_eventually_periodic",
+      "relation": "generated_by",
+      "basis": "The actual-gap exclusion consumes the proved non-eventual-periodicity of the gap word; its separate eventual-smallness premise is not supplied."
+    },
+    {
+      "from": "actual_prime_gap_eventual_smallness_would_exclude_integral_shifts",
+      "to": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality",
+      "relation": "complements",
+      "basis": "Eventual smallness is a stronger global route, whereas the adjacent-pair theorem requires only sporadic cofinal small mismatches."
+    },
+    {
+      "from": "finite_approximation_gap_certifies_nonintegrality",
+      "to": "cofinal_nonintegral_shifts_force_irrational_initial_state",
+      "relation": "specialises",
+      "basis": "A cofinal family of finite approximation-gap certificates, together with valid tail-error bounds, would supply the nonintegral shifts consumed by the abstract irrationality theorem."
+    },
+    {
+      "from": "finite_approximation_gap_certifies_nonintegrality",
+      "to": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality",
+      "relation": "complements",
+      "basis": "Finite anti-concentration directly certifies nonintegrality, while adjacent small mismatches certify that two neighboring shifts cannot both be integral; both still require a cofinal prime-gap producer."
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "ErdosProblems.Erdos251.primeGapDyadicTerm_eq",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 191,
+      "role": "statement",
+      "statement_node": "prime_gap_series_is_exact_summable_coboundary"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.summable_primeGapDyadicTerm_of_summable_primeDyadicTerm",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 202,
+      "role": "statement",
+      "statement_node": "prime_gap_series_is_exact_summable_coboundary"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.tsum_primeDyadicTerm_eq_two_add_primeGap",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 214,
+      "role": "statement",
+      "statement_node": "prime_gap_series_is_exact_summable_coboundary"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 239,
+      "role": "statement",
+      "statement_node": "prime_and_gap_irrationality_are_exactly_equivalent"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 248,
+      "role": "statement",
+      "statement_node": "prime_and_gap_irrationality_are_exactly_equivalent"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDisplayedDyadicTerm_iff_primeGap",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 263,
+      "role": "statement",
+      "statement_node": "prime_and_gap_irrationality_are_exactly_equivalent"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.exists_twoPow_mul_odd_den",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 426,
+      "role": "statement",
+      "statement_node": "every_rational_dyadic_tail_has_an_eventually_integral_shift"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.exists_odd_den_state",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 461,
+      "role": "statement",
+      "statement_node": "every_rational_dyadic_tail_has_an_eventually_integral_shift"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.exists_eventually_integral_tailShift",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 477,
+      "role": "statement",
+      "statement_node": "every_rational_dyadic_tail_has_an_eventually_integral_shift"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.realTail_eq_ratCast_rationalDyadicOrbit",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 515,
+      "role": "statement",
+      "statement_node": "cofinal_nonintegral_shifts_force_irrational_initial_state"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.irrational_initial_of_cofinalNonintegralTailShifts",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 537,
+      "role": "statement",
+      "statement_node": "cofinal_nonintegral_shifts_force_irrational_initial_state"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.tailShift_eventually_zero_of_eventually_integral_of_eventually_small",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 571,
+      "role": "statement",
+      "statement_node": "eventually_small_integral_shift_forces_digit_periodicity"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 589,
+      "role": "statement",
+      "statement_node": "eventually_small_integral_shift_forces_digit_periodicity"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 610,
+      "role": "statement",
+      "statement_node": "eventually_small_integral_shift_forces_digit_periodicity"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.ratIntegral_eq_zero_of_neg_one_lt_of_lt_one",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 558,
+      "role": "statement",
+      "statement_node": "adjacent_small_mismatch_is_a_local_nonintegrality_certificate"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.tailShift_not_both_integral_of_small_pair_of_digit_ne",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 626,
+      "role": "statement",
+      "statement_node": "adjacent_small_mismatch_is_a_local_nonintegrality_certificate"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 653,
+      "role": "statement",
+      "statement_node": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 723,
+      "role": "statement",
+      "statement_node": "cofinal_adjacent_small_mismatches_exclude_eventual_integrality"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.exists_primeGap0_gt",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 51,
+      "role": "statement",
+      "statement_node": "actual_prime_gaps_are_unbounded_and_not_eventually_periodic"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.primeGap0_not_eventually_periodic",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 670,
+      "role": "statement",
+      "statement_node": "actual_prime_gaps_are_unbounded_and_not_eventually_periodic"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_eventually_small",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 707,
+      "role": "statement",
+      "statement_node": "actual_prime_gap_eventual_smallness_would_exclude_integral_shifts"
+    },
+    {
+      "declaration": "ErdosProblems.Erdos251.not_ratIntegral_of_approximation_gap",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 772,
+      "role": "statement",
+      "statement_node": "finite_approximation_gap_certifies_nonintegrality"
+    }
+  ]
+}

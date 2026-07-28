@@ -1,0 +1,354 @@
+{
+  "zone_id": "Z39",
+  "title": "Dyadic prefix compression: primitive coordinates, block margins, and unsafe-skip barriers",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "z39_odd_denominator_transport",
+      "label": "odd-denominator residual transport",
+      "note": "Subtracting a reduced odd-denominator prefix from a dyadic target preserves that entire odd denominator through rational reduction, up to a remaining power-of-two factor."
+    },
+    {
+      "id": "z39_dyadic_excess_numerator",
+      "label": "dyadic excess numerator",
+      "note": "The division-free integer coordinate E=2^n p-L for a displayed residual p/(2L), with affine skip recurrence E(n+1)=2E(n)+L."
+    },
+    {
+      "id": "z39_forbidden_sliver",
+      "label": "Mersenne-dyadic forbidden sliver",
+      "note": "A skipped next rank is dyadically unsafe exactly in the finite integer window 0<E and 2E<p."
+    },
+    {
+      "id": "z39_block_safety_margin",
+      "label": "gcd-free successor-block margin",
+      "note": "All skips between consecutive takes compress to one final-rank inequality, and common reduction factors cancel from the resulting raw margin."
+    },
+    {
+      "id": "z39_two_channel_cap",
+      "label": "two-channel cap",
+      "note": "The dyadic channel plus the first 4-adic correction, whose comparison with the residual becomes one exact integer inequality."
+    },
+    {
+      "id": "z39_primitive_greedy_coordinates",
+      "label": "primitive greedy prefix coordinates",
+      "note": "The reduced numerator and odd denominator of the actual finite half-greedy prefix, related to raw support coordinates by the exact cancellation gcd."
+    },
+    {
+      "id": "z39_unsafe_mersenne_sandwich",
+      "label": "unsafe Mersenne sandwich",
+      "note": "The interval p(2^c-1)<2D<p2^c characterising a skipped but dyadically unsafe displayed residual."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "odd_prefix_denominator_survives_dyadic_subtraction",
+      "canonical_statement": "PROVED DENOMINATOR TRANSPORT: subtracting a reduced odd-denominator fraction from a dyadic fraction cannot cancel any odd factor of the denominator. For the actual finite half-greedy prefix, the prefix denominator is odd, the residual has an exact p/(2D) display, and finite support sums agree under the rational-to-real cast.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": ["z39_odd_denominator_transport", "z39_primitive_greedy_coordinates"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "coprimality of powers of two with an odd denominator, exact rational reduction, and finite-support cast transport",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "General-purpose rational denominator algebra specialised to the binary Mersenne-prefix coordinates; the module expressly makes no novelty or priority claim.",
+      "scope_caveat": "Odd-part survival excludes cancellation and boundary ties, but it neither supplies infinitely many safe skips nor proves that one half belongs to the Mersenne achievement set.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"dyadicResidualNumerator_coprime_oddDenominator","module":"Erdos249257/DyadicPrefixCompression.lean","line":98},
+        {"declaration":"greedyHalfRemainderRat_eq_displayed_divInt","module":"Erdos249257/DyadicPrefixCompression.lean","line":732},
+        {"declaration":"finiteErdosSum_den_odd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1358},
+        {"declaration":"halfGreedyPrefixDenominator_odd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1366},
+        {"declaration":"erdosSupportSeries_finset_eq_cast_finiteErdosSum","module":"Erdos249257/DyadicPrefixCompression.lean","line":1384}
+      ]
+    },
+    {
+      "id": "fixed_denominator_skip_excess_has_exact_affine_dynamics",
+      "canonical_statement": "PROVED AFFINE SKIP DYNAMICS: for a displayed residual p/(2L) whose numerator and denominator do not change during a skip run, the dyadic excess satisfies E(n+1)=2E(n)+L and hence E(n+k)=2^k E(n)+(2^k-1)L. The rational distance from the next dyadic point is exactly E divided by 2^(n+1)L.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": ["z39_dyadic_excess_numerator"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "direct expansion of E=2^n p-L and induction on the skip length",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "An exact integer normal form for the module's rational greedy coordinate; no priority claim is made.",
+      "scope_caveat": "The recurrence describes a run after its take/skip pattern is fixed. It does not prove that the actual orbit has arbitrarily long, safe, or cofinal skip runs.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"nextDyadicExcessIntNumerator_succ","module":"Erdos249257/DyadicPrefixCompression.lean","line":161},
+        {"declaration":"nextDyadicExcessIntNumerator_add","module":"Erdos249257/DyadicPrefixCompression.lean","line":169},
+        {"declaration":"divInt_sub_nextDyadic_eq_excess_divInt","module":"Erdos249257/DyadicPrefixCompression.lean","line":183}
+      ]
+    },
+    {
+      "id": "one_integer_excess_classifies_safe_skip_take_and_forbidden_sliver",
+      "canonical_statement": "PROVED EXACT DECISION CLASSIFIER: for p/(2L), E<=0 is exactly the safe side of the next dyadic boundary, 2E<p is exactly a greedy skip, and 0<E with 2E<p is exactly the skipped-but-dyadically-unsafe Mersenne sliver. The decision defect 2E-p gives the same safe, strengthened-take, and open negative-unit-window trichotomy without division.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": ["z39_dyadic_excess_numerator", "z39_forbidden_sliver"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "positive-denominator cross multiplication and the identity decisionDefect=2E-p",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A lossless Diophantine encoding of the analytic greedy comparisons.",
+      "scope_caveat": "The classifier locates an unsafe skip if one occurs; it does not rule out unsafe skips in the actual half-greedy orbit.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"divInt_le_nextDyadic_iff_excess_nonpos","module":"Erdos249257/DyadicPrefixCompression.lean","line":198},
+        {"declaration":"mersenneWeightRat_succ_le_divInt_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":212},
+        {"declaration":"divInt_lt_mersenneWeightRat_succ_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":252},
+        {"declaration":"divInt_mem_nextMersenneDyadicSliver_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":262},
+        {"declaration":"nextMersenneDecisionDefect_eq_two_excess_sub","module":"Erdos249257/DyadicPrefixCompression.lean","line":282},
+        {"declaration":"nextMersenneDecisionDefect_le_neg_iff_excess_nonpos","module":"Erdos249257/DyadicPrefixCompression.lean","line":293},
+        {"declaration":"le_nextMersenneDecisionDefect_iff_le_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":302},
+        {"declaration":"nextMersenneDecisionDefect_mem_neg_unit_window_iff","module":"Erdos249257/DyadicPrefixCompression.lean","line":311}
+      ]
+    },
+    {
+      "id": "two_channel_cap_is_an_exact_integer_excess_bound",
+      "canonical_statement": "PROVED CAP GEOMETRY: comparison of p/(2L) with the next two-channel cap is exactly 3*2^(n+1)E<=L. On the actual half-greedy orbit, positivity of E detects landing above the dyadic boundary, 2E<p detects a skip, and the reverse strict cap inequality detects violation of the two-channel producer.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": ["z39_dyadic_excess_numerator", "z39_forbidden_sliver", "z39_two_channel_cap"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact rational display of the half-greedy residual followed by denominator clearing",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact arithmetic socket for a project-specific two-channel sufficient condition.",
+      "scope_caveat": "The equivalence does not prove the cap inequality at every skipped rank. That universal producer remains an open antecedent in the downstream membership theorem.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"divInt_le_nextTwoChannelCap_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":668},
+        {"declaration":"nextDyadic_lt_greedyHalfRemainder_iff_excess_pos","module":"Erdos249257/DyadicPrefixCompression.lean","line":849},
+        {"declaration":"greedyHalfRemainder_lt_mersenneWeight_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":858},
+        {"declaration":"twoChannelCap_lt_greedyHalfRemainder_iff_excess","module":"Erdos249257/DyadicPrefixCompression.lean","line":902}
+      ]
+    },
+    {
+      "id": "constant_residual_skip_block_compresses_to_its_last_margin",
+      "canonical_statement": "PROVED BLOCK COMPRESSION: between a take at rank a and the next take at b, dyadic safety is monotone across the unchanged-residual skips. All intermediate skips are safe exactly when the block is adjacent or its final skip satisfies the single margin p*2^(b-1)<=2D; minimality alone yields only the strictly weaker predecessor bound p(2^(b-1)-1)<2D.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": ["z39_dyadic_excess_numerator", "z39_block_safety_margin"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "monotonicity of powers of two through a constant-residual skip block and exact first-take minimality",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A finite block normal form for the module's greedy arithmetic.",
+      "scope_caveat": "Compression reduces a block to one inequality; it does not prove that inequality for every actual successor block.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"all_intermediate_BlockDyadicSafeAt_iff_last","module":"Erdos249257/DyadicPrefixCompression.lean","line":337},
+        {"declaration":"firstBlockTake_predecessor_open_bound","module":"Erdos249257/DyadicPrefixCompression.lean","line":358},
+        {"declaration":"firstBlockTake_all_skips_safe_iff_last_margin","module":"Erdos249257/DyadicPrefixCompression.lean","line":366}
+      ]
+    },
+    {
+      "id": "common_reduction_factors_cancel_from_the_successor_block_margin",
+      "canonical_statement": "PROVED GCD-FREE TRANSPORT: if the raw post-take coordinates (H,B) reduce by any positive common factor to the next displayed state, safety of every intervening skip is equivalent to the raw inequality H*2^(c-1)<=2B. Expanding H and B removes the gcd completely, adjacent takes inherit the margin automatically, and a gcd-scaled predecessor overshoot always implies the raw bound.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": ["z39_block_safety_margin", "z39_primitive_greedy_coordinates"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "homogeneity of the block inequality under common-factor cancellation and elementary predecessor arithmetic",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A corrected cancellation-free formulation of the successor-block proof obligation.",
+      "scope_caveat": "The theorem identifies the right primitive obligation and closes adjacent takes only. Nonadjacent successor blocks still require new orbit arithmetic.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"reduced_nextBlock_all_skips_safe_iff_gcdFree","module":"Erdos249257/DyadicPrefixCompression.lean","line":451},
+        {"declaration":"reduced_nextBlock_gcdFree_margin_expanded","module":"Erdos249257/DyadicPrefixCompression.lean","line":463},
+        {"declaration":"rawTakenResidual_adjacent_margin_of_predecessor_safe","module":"Erdos249257/DyadicPrefixCompression.lean","line":496},
+        {"declaration":"rawPredecessorOvershoot_of_gcdScaled","module":"Erdos249257/DyadicPrefixCompression.lean","line":3279}
+      ]
+    },
+    {
+      "id": "cap_violation_forces_a_long_take_block_without_creating_tail_escape",
+      "canonical_statement": "PROVED FORCED-BLOCK GEOMETRY: if a residual exceeds the two-channel cap at depth m>0, every one of the next 2m+2 Mersenne weights is greedily selected. Sharp higher-channel bounds place the remaining tails below explicit 8-adic and triple-depth thresholds, while exact subtraction shows that consecutive takes preserve signed distance from the full tail separatrix.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": ["z39_two_channel_cap"],
+      "open_antecedents": [
+        "a cap violation at a specified depth; the theorem describes its finite consequence and does not assert that such violations occur cofinally"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite greedy block selection plus geometric estimates for the channels of order at least three",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific exact tail estimates and their finite greedy consumer.",
+      "scope_caveat": "A forced take block is not itself a contradiction: the residual and the true tail lose the same prefix. No cofinal safe-skip or achievement witness follows.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"greedyMersenne_forcedBlock_selected","module":"Erdos249257/DyadicPrefixCompression.lean","line":951},
+        {"declaration":"forcedBlock_tailExcess_eq","module":"Erdos249257/DyadicPrefixCompression.lean","line":998},
+        {"declaration":"mersenneWeightRemainder_le_four_thirds","module":"Erdos249257/DyadicPrefixCompression.lean","line":1007},
+        {"declaration":"mersenneWeightRemainderTail_le_four_twentyone","module":"Erdos249257/DyadicPrefixCompression.lean","line":1024},
+        {"declaration":"remainderTail_lt_tripleDyadic","module":"Erdos249257/DyadicPrefixCompression.lean","line":1051},
+        {"declaration":"capViolation_forces_threeDepthBlock","module":"Erdos249257/DyadicPrefixCompression.lean","line":1091},
+        {"declaration":"tripleDepthTail_lt_thirdChannel","module":"Erdos249257/DyadicPrefixCompression.lean","line":1105}
+      ]
+    },
+    {
+      "id": "actual_prefix_cancellation_gcd_scales_raw_and_primitive_coordinates",
+      "canonical_statement": "PROVED EXACT CANCELLATION LAW: the common-to-reduced scale of the actual finite half-greedy prefix is precisely its numerator-denominator gcd. This same positive gcd multiplies both the raw residual numerator and the raw next-dyadic excess, so all sign and strict cap comparisons survive reduction; at a taken rank the new residual numerator satisfies a division-free recurrence with the exact take-step gcd.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": ["z39_odd_denominator_transport", "z39_dyadic_excess_numerator", "z39_primitive_greedy_coordinates"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "normalisation of a rational common fraction and exact gcd cancellation in one take step",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact bridge between raw support-lattice coordinates and the primitive displayed greedy state.",
+      "scope_caveat": "Cancellation invariance makes the finite tests honest; it supplies no inequality forcing all actual skipped ranks to be safe.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"halfGreedyPrefixReductionFactor_eq_gcd","module":"Erdos249257/DyadicPrefixCompression.lean","line":1773},
+        {"declaration":"halfGreedyRawResidualNumerator_eq_gcd_mul_displayed","module":"Erdos249257/DyadicPrefixCompression.lean","line":1891},
+        {"declaration":"halfGreedyRawNextDyadicExcessNumerator_eq_gcd_mul_reduced","module":"Erdos249257/DyadicPrefixCompression.lean","line":1902},
+        {"declaration":"reducedTakeStep_residualNumerator","module":"Erdos249257/DyadicPrefixCompression.lean","line":2308},
+        {"declaration":"halfGreedy_takenRank_residualCancellation","module":"Erdos249257/DyadicPrefixCompression.lean","line":2633}
+      ]
+    },
+    {
+      "id": "actual_take_skip_recurrences_preserve_exact_prefix_coordinates",
+      "canonical_statement": "PROVED ACTUAL-ORBIT RECURRENCES: a taken rank adds exactly its Mersenne unit fraction to the reduced prefix, while a skipped rank leaves that prefix and both displayed coordinates unchanged. Consequently the excess on a skip obeys E(n+1)=2E(n)+D with no hidden cancellation factor, and every displayed residual numerator remains nonnegative.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": ["z39_dyadic_excess_numerator", "z39_primitive_greedy_coordinates"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact rational greedy recursion and the unchanged reduced fraction on skipped ranks",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Kernel-checked recurrence package for the actual half-greedy orbit.",
+      "scope_caveat": "The recurrences expose the finite state update but do not establish an asymptotic orbit invariant or infinitely many safe skips.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"halfGreedyPrefixRat_succ_of_take","module":"Erdos249257/DyadicPrefixCompression.lean","line":2434},
+        {"declaration":"halfGreedyPrefixRat_succ_of_skip","module":"Erdos249257/DyadicPrefixCompression.lean","line":2446},
+        {"declaration":"halfGreedyNextDyadicExcessNumerator_succ_of_skip","module":"Erdos249257/DyadicPrefixCompression.lean","line":2477},
+        {"declaration":"halfGreedyResidualDisplayedNumerator_nonneg","module":"Erdos249257/DyadicPrefixCompression.lean","line":2741},
+        {"declaration":"halfGreedy_coordinates_add_of_all_skips","module":"Erdos249257/DyadicPrefixCompression.lean","line":3009}
+      ]
+    },
+    {
+      "id": "finite_prefix_fixtures_expose_noninductive_margin_behaviour",
+      "canonical_statement": "PROVED FINITE FIXTURE SUPPORT: the second noninductivity example has denominator equal to the lcm of all Mersenne denominators through rank seven, and in the factor-eleven example ranks six through eight skip before rank nine becomes the first subsequent take. These exact facts support counterexamples showing that saturation or a strong predecessor margin does not propagate automatically.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": ["z39_block_safety_margin"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "kernel-normalised finite lcm arithmetic and exhaustive checking of three take/skip decisions",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Project-specific finite falsification fixtures; no asymptotic or priority claim is made.",
+      "scope_caveat": "The fixtures refute particular proposed inductive invariants only. They neither refute Erdős #257 nor establish behavior beyond the displayed finite states.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"mersenneLcm_through_seven_eq","module":"Erdos249257/DyadicPrefixCompression.lean","line":638},
+        {"declaration":"firstTake_rank9_after_rank5_fixture","module":"Erdos249257/DyadicPrefixCompression.lean","line":3304}
+      ]
+    },
+    {
+      "id": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits",
+      "canonical_statement": "PROVED UNSAFE-SKIP BARRIER: if p is odd and p(2^c-1)<2D<p2^c, then both gcd(D,2^c-1) and gcd(D,2^(c+1)-1) are strictly smaller than p. Therefore every putative dyadically unsafe skip in the actual half-greedy orbit forces consecutive Mersenne gcd deficits below the current displayed residual numerator.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": ["z39_block_safety_margin", "z39_primitive_greedy_coordinates", "z39_unsafe_mersenne_sandwich"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "both adjacent gcds divide nonzero combinations of the positive overshoot delta=2D-p(2^c-1), whose size is strictly below p by the unsafe sandwich and oddness",
+      "prior_art_state": "candidate_new_statement",
+      "prior_art_note": "A project-specific consecutive-gcd obstruction extracted from the exact unsafe window. External prior-art review has not been completed, so this is not a novelty claim.",
+      "scope_caveat": "This is a necessary consequence of an unsafe skip, not a contradiction: no theorem here supplies a lower bound forcing either adjacent gcd to reach p. It does not solve #257.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"unsafeSandwich_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":3354},
+        {"declaration":"greedyHalf_unsafeSkip_consecutive_gcd_lt","module":"Erdos249257/DyadicPrefixCompression.lean","line":3429}
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "unsafeSandwich_consecutive_gcd_lt",
+      "module": "Erdos249257/DyadicPrefixCompression.lean",
+      "line": 3354,
+      "role": "statement",
+      "statement_node": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits"
+    },
+    {
+      "declaration": "greedyHalf_unsafeSkip_consecutive_gcd_lt",
+      "module": "Erdos249257/DyadicPrefixCompression.lean",
+      "line": 3429,
+      "role": "statement",
+      "statement_node": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "one_integer_excess_classifies_safe_skip_take_and_forbidden_sliver",
+      "to": "fixed_denominator_skip_excess_has_exact_affine_dynamics",
+      "relation": "generated_by",
+      "basis": "The exact affine excess coordinate is the integer quantity whose sign and comparison with p classify every next-rank decision."
+    },
+    {
+      "from": "two_channel_cap_is_an_exact_integer_excess_bound",
+      "to": "one_integer_excess_classifies_safe_skip_take_and_forbidden_sliver",
+      "relation": "specialises",
+      "basis": "The two-channel test refines the same excess coordinate by comparing the first positive dyadic excess with the explicit 4-adic correction."
+    },
+    {
+      "from": "constant_residual_skip_block_compresses_to_its_last_margin",
+      "to": "fixed_denominator_skip_excess_has_exact_affine_dynamics",
+      "relation": "generated_by",
+      "basis": "During an intervening skip block the displayed fraction is constant and the affine excess is monotone, leaving only the last skip to check."
+    },
+    {
+      "from": "common_reduction_factors_cancel_from_the_successor_block_margin",
+      "to": "constant_residual_skip_block_compresses_to_its_last_margin",
+      "relation": "transport_of",
+      "basis": "The reduced-state last-margin criterion is transported back to raw post-take coordinates by cancelling their common positive factor."
+    },
+    {
+      "from": "cap_violation_forces_a_long_take_block_without_creating_tail_escape",
+      "to": "two_channel_cap_is_an_exact_integer_excess_bound",
+      "relation": "generated_by",
+      "basis": "The exact cap violation supplies the strict mass inequality that forces selection of the next 2m+2 weights."
+    },
+    {
+      "from": "actual_prefix_cancellation_gcd_scales_raw_and_primitive_coordinates",
+      "to": "odd_prefix_denominator_survives_dyadic_subtraction",
+      "relation": "generated_by",
+      "basis": "Odd-denominator survival identifies the primitive residual display, while the exact gcd measures the remaining raw-to-reduced scaling."
+    },
+    {
+      "from": "actual_prefix_cancellation_gcd_scales_raw_and_primitive_coordinates",
+      "to": "common_reduction_factors_cancel_from_the_successor_block_margin",
+      "relation": "specialises",
+      "basis": "The actual half-greedy prefix instantiates the abstract common-factor cancellation used by the gcd-free successor-block theorem."
+    },
+    {
+      "from": "actual_take_skip_recurrences_preserve_exact_prefix_coordinates",
+      "to": "actual_prefix_cancellation_gcd_scales_raw_and_primitive_coordinates",
+      "relation": "complements",
+      "basis": "The gcd law explains taken-rank reduction, while the take/skip recurrences give the exact state evolution on both branches."
+    },
+    {
+      "from": "finite_prefix_fixtures_expose_noninductive_margin_behaviour",
+      "to": "common_reduction_factors_cancel_from_the_successor_block_margin",
+      "relation": "barrier_for",
+      "basis": "The finite examples show that denominator saturation and a strong current predecessor margin do not inductively supply the next nonadjacent raw margin."
+    },
+    {
+      "from": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits",
+      "to": "common_reduction_factors_cancel_from_the_successor_block_margin",
+      "relation": "complements",
+      "basis": "The gcd-free margin states the sufficient raw inequality; its failure on a skipped rank yields the adjacent-gcd deficit necessary condition."
+    },
+    {
+      "from": "unsafe_skip_forces_two_adjacent_mersenne_gcd_deficits",
+      "to": "one_integer_excess_classifies_safe_skip_take_and_forbidden_sliver",
+      "relation": "generated_by",
+      "basis": "The forbidden-sliver inequalities are exactly the unsafe Mersenne sandwich used to bound both adjacent gcds."
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "zone_id": "Z50",
+  "title": "Critical dyadic-band reduction for upper resets",
+  "problem": "257",
+  "concepts": [
+    {"id":"z50_critical_band_index","label":"critical dyadic band index","note":"The nearest transition of indexed dyadic powers across a reset charge."},
+    {"id":"z50_generic_band_escape","label":"generic dyadic-band escape","note":"Avoidance of all forbidden dyadic intervals and its one-index certificate."},
+    {"id":"z50_actual_reset_charge","label":"actual upper-reset charge","note":"The concrete seam charge bounded by the top dyadic boundary."},
+    {"id":"z50_critical_supply","label":"critical-band producer","note":"The open global producer requiring a certified critical gap at every late upper reset."},
+    {"id":"z50_half_endpoint","label":"Mersenne half-membership endpoint","note":"The conditional endpoint obtained by transport to the existing all-band consumer."}
+  ],
+  "statement_nodes": [
+    {
+      "id":"critical_dyadic_band_index_encodes_the_nearest_power_transition",
+      "canonical_statement":"CriticalDyadicBandIndex d E j means j≤d, E≤2^(d-j+1), and either j=d or 2^(d-(j+1)+1)<E. It records a transition index where the indexed dyadic powers pass from at least E to below E.",
+      "logical_class":"representation_normalisation",
+      "problem":"257",
+      "concepts":["z50_critical_band_index"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact natural-number transition predicate",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Pure natural-number dyadic interval normalisation used internally by this corpus; no priority or novelty search has been performed.",
+      "scope_caveat":"The definition encodes a transition index but does not by itself prove a separately stated uniqueness theorem or a critical gap.",
+      "confidence":"high",
+      "evidence":[{"declaration":"CriticalDyadicBandIndex","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":33}]
+    },
+    {
+      "id":"universal_dyadic_band_escape_collapses_to_one_critical_gap",
+      "canonical_statement":"If E≤2^(d+1), avoidance for every j≤d of the forbidden interval E<2^(d-j+1)<E+2(d+j) is equivalent to the existence of one CriticalDyadicBandIndex j with E+2(d+j)≤2^(d-j+1).",
+      "logical_class":"equivalence_or_classification",
+      "problem":"257",
+      "concepts":["z50_critical_band_index","z50_generic_band_escape"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"nearest-boundary classification of a finite descending dyadic sequence",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Pure natural-number dyadic interval normalisation used internally by this corpus; no priority or novelty search has been performed.",
+      "scope_caveat":"The equivalence assumes E≤2^(d+1) and reduces quantifiers; it does not prove the required gap and is not a strength reduction.",
+      "confidence":"high",
+      "evidence":[{"declaration":"dyadicBandEscape_iff_exists_critical","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":108}]
+    },
+    {
+      "id":"actual_upper_reset_charge_stays_below_the_top_dyadic_boundary",
+      "canonical_statement":"For d≥5, whenever the concrete seam adjacent cut is an upper reset, its charge seamUpperResetCharge=4*overshoot+abovePulse is at most 2^(d+1).",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"257",
+      "concepts":["z50_actual_reset_charge"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"the concrete upper-reset inequality and exact pulse/overshoot charge definition",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Corpus-specific seam specialisation; no historical priority claim is made.",
+      "scope_caveat":"The theorem applies only under successorCarries. It supplies admissibility for the generic collapse, not avoidance of any band.",
+      "confidence":"high",
+      "evidence":[{"declaration":"seamUpperResetCharge_le","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":131}]
+    },
+    {
+      "id":"critical_band_supply_is_exactly_the_all_band_supply",
+      "canonical_statement":"SeamUpperResetCriticalBandEscape, requiring one certified critical gap at every late upper reset, is logically equivalent to SeamUpperResetDyadicBandEscape, which requires every indexed band escape.",
+      "logical_class":"equivalence_or_classification",
+      "problem":"257",
+      "concepts":["z50_generic_band_escape","z50_actual_reset_charge","z50_critical_supply"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"rowwise specialization of the generic critical-index equivalence using the actual reset-charge bound",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Corpus-specific seam specialisation and transport; no historical priority claim is made.",
+      "scope_caveat":"The equivalence is an exact coordinate reformulation. Neither global producer is proved, and finite row checks do not discharge the universal late-row quantifier.",
+      "confidence":"high",
+      "evidence":[{"declaration":"seamUpperResetCriticalBandEscape_iff","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":883}]
+    },
+    {
+      "id":"critical_band_supply_conditionally_forces_half_membership",
+      "canonical_statement":"If SeamUpperResetCriticalBandEscape holds, then 1/2 belongs to the Mersenne achievement set; the proof transports the critical producer through the exact equivalence and applies the existing all-band consumer.",
+      "logical_class":"conditional_implication",
+      "problem":"257",
+      "concepts":["z50_critical_supply","z50_half_endpoint"],
+      "open_antecedents":["SeamUpperResetCriticalBandEscape: at every d≥13 that is an upper reset, there exists a critical index whose nearest dyadic boundary has margin at least 2(d+j) above the reset charge."],
+      "is_restatement_of_open_problem":false,
+      "engine":"producer equivalence followed by the existing all-band half-membership consumer",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"Corpus-specific conditional transport; no historical priority claim is made.",
+      "scope_caveat":"The producer is unproved. The theorem neither establishes half-membership nor refutes the universal statement in Erdős #257, and it proves no equidistribution statement.",
+      "confidence":"high",
+      "evidence":[{"declaration":"half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":896}]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"CriticalDyadicBandIndex","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":33,"role":"concept","statement_node":"critical_dyadic_band_index_encodes_the_nearest_power_transition"},
+    {"declaration":"dyadicBandEscape_iff_exists_critical","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":108,"role":"statement","statement_node":"universal_dyadic_band_escape_collapses_to_one_critical_gap"},
+    {"declaration":"seamUpperResetCharge_le","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":131,"role":"statement","statement_node":"actual_upper_reset_charge_stays_below_the_top_dyadic_boundary"},
+    {"declaration":"seamUpperResetCriticalBandEscape_iff","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":883,"role":"statement","statement_node":"critical_band_supply_is_exactly_the_all_band_supply"},
+    {"declaration":"half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape","module":"Erdos249257/HalfUpperResetCriticalBand.lean","line":896,"role":"statement","statement_node":"critical_band_supply_conditionally_forces_half_membership"}
+  ],
+  "intra_zone_relations": [
+    {"from":"universal_dyadic_band_escape_collapses_to_one_critical_gap","to":"critical_dyadic_band_index_encodes_the_nearest_power_transition","relation":"generated_by","basis":"The existential certificate in the iff uses exactly CriticalDyadicBandIndex."},
+    {"from":"critical_band_supply_is_exactly_the_all_band_supply","to":"universal_dyadic_band_escape_collapses_to_one_critical_gap","relation":"specialises","basis":"The global seam theorem applies the generic (d,E) collapse rowwise with E=seamUpperResetCharge."},
+    {"from":"critical_band_supply_is_exactly_the_all_band_supply","to":"actual_upper_reset_charge_stays_below_the_top_dyadic_boundary","relation":"generated_by","basis":"The concrete charge bound discharges E≤2^(d+1) at every actual upper reset."},
+    {"from":"critical_band_supply_conditionally_forces_half_membership","to":"critical_band_supply_is_exactly_the_all_band_supply","relation":"generated_by","basis":"The endpoint transports the critical producer to the original all-band producer through the proved iff."}
+  ]
+}

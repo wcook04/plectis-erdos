@@ -1,0 +1,67 @@
+{
+  "zone_id": "Z60",
+  "title": "Endpoint-six countermodel for double-or-recycle cofinality",
+  "problem": "257",
+  "concepts": [
+    {"id":"z60_endpoint_six_model","label":"endpoint-six singleton model","note":"The auxiliary predicate holding exactly at n=6."},
+    {"id":"z60_double_or_recycle_shape","label":"double-or-recycle transition shape","note":"The formal disjunction shared with the actual exact-row transition but instantiated by a different predicate."},
+    {"id":"z60_cofinality_barrier","label":"cofinality inference barrier","note":"A seeded bounded model can satisfy the transition shape without being cofinal."}
+  ],
+  "statement_nodes": [
+    {
+      "id":"bounded_double_or_recycle_model_is_the_endpoint_six_singleton",
+      "canonical_statement":"boundedDoubleOrRecycleModel n holds exactly when n=6. It is a free-standing one-point model, not the predicate of actual exact local Mersenne half rows.",
+      "logical_class":"representation_normalisation",
+      "problem":"257",
+      "concepts":["z60_endpoint_six_model"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"exact definition of the auxiliary predicate",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"An explicit corpus-internal logical countermodel; no external novelty or priority claim is made.",
+      "scope_caveat":"The auxiliary predicate is not ExactLocalMersenneHalfRow and asserts nothing about the actual seam.",
+      "confidence":"high",
+      "evidence":[{"declaration":"boundedDoubleOrRecycleModel","module":"Erdos249257/BooleanMobiusExactRowDichotomy.lean","line":58}]
+    },
+    {
+      "id":"endpoint_six_singleton_satisfies_the_double_or_recycle_transition",
+      "canonical_statement":"For n≥6, if the singleton model P holds at n, then P(2n-1) or there exists c with 4≤c≤n and P(2c-2). Since P(n) forces n=6, the proof takes the recycle branch c=4 and returns to endpoint 6.",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"257",
+      "concepts":["z60_endpoint_six_model","z60_double_or_recycle_shape"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"unfolding the singleton predicate and using the fixed recycle witness c=4",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"An explicit corpus-internal logical countermodel; no external novelty or priority claim is made.",
+      "scope_caveat":"The theorem concerns only the auxiliary singleton predicate. It neither reformulates nor refutes the actual exact-row transition theorem.",
+      "confidence":"high",
+      "evidence":[{"declaration":"boundedDoubleOrRecycleModel_transition","module":"Erdos249257/BooleanMobiusExactRowDichotomy.lean","line":64}]
+    },
+    {
+      "id":"endpoint_six_singleton_is_not_cofinal",
+      "canonical_statement":"The endpoint-six singleton model is not cofinal: it is false that for every N there exists n≥N with P(n). The witness threshold N=7 contradicts P(n) iff n=6.",
+      "logical_class":"barrier_no_go",
+      "problem":"257",
+      "concepts":["z60_endpoint_six_model","z60_cofinality_barrier"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"the bounded singleton support and the threshold N=7",
+      "prior_art_state":"not_assessed",
+      "prior_art_note":"An explicit corpus-internal logical countermodel; no external novelty or priority claim is made.",
+      "scope_caveat":"Noncofinality of this auxiliary predicate does not prove actual exact rows noncofinal. It refutes only inference from the abstract seeded transition shape alone and leaves strict-progress or independent arithmetic cofinality inputs available.",
+      "confidence":"high",
+      "evidence":[{"declaration":"boundedDoubleOrRecycleModel_not_cofinal","module":"Erdos249257/BooleanMobiusExactRowDichotomy.lean","line":79}]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"boundedDoubleOrRecycleModel","module":"Erdos249257/BooleanMobiusExactRowDichotomy.lean","line":58,"role":"concept","statement_node":"bounded_double_or_recycle_model_is_the_endpoint_six_singleton"},
+    {"declaration":"boundedDoubleOrRecycleModel_transition","module":"Erdos249257/BooleanMobiusExactRowDichotomy.lean","line":64,"role":"statement","statement_node":"endpoint_six_singleton_satisfies_the_double_or_recycle_transition"},
+    {"declaration":"boundedDoubleOrRecycleModel_not_cofinal","module":"Erdos249257/BooleanMobiusExactRowDichotomy.lean","line":79,"role":"statement","statement_node":"endpoint_six_singleton_is_not_cofinal"}
+  ],
+  "intra_zone_relations": [
+    {"from":"endpoint_six_singleton_satisfies_the_double_or_recycle_transition","to":"bounded_double_or_recycle_model_is_the_endpoint_six_singleton","relation":"generated_by","basis":"Unfolding the singleton definition reduces the transition to the fixed recycle witness c=4."},
+    {"from":"endpoint_six_singleton_is_not_cofinal","to":"bounded_double_or_recycle_model_is_the_endpoint_six_singleton","relation":"generated_by","basis":"The predicate's support is the bounded singleton {6}."},
+    {"from":"endpoint_six_singleton_is_not_cofinal","to":"endpoint_six_singleton_satisfies_the_double_or_recycle_transition","relation":"barrier_for","basis":"A seeded predicate can obey this transition forever while remaining bounded, so the transition shape alone does not force endpoint growth."}
+  ]
+}

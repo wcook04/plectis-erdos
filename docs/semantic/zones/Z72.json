@@ -1,0 +1,253 @@
+{
+  "zone_id": "Z72",
+  "title": "Erdős 1049 Heine-Zudilin cone exponents and endpoint obstructions",
+  "problem": "1049",
+  "concepts": [
+    {
+      "id": "z72_bottom_exponent_geometry",
+      "label": "normalised bottom-exponent geometry",
+      "note": "The exact endpoint value, first difference, and cone-monotonicity of the doubled bottom exponent."
+    },
+    {
+      "id": "z72_raw_degree_geometry",
+      "label": "raw summand degree geometry",
+      "note": "The exact first difference and strict monotonicity of doubled raw degrees through the source index range."
+    },
+    {
+      "id": "z72_endpoint_local_obstruction",
+      "label": "opposite-endpoint local obstruction",
+      "note": "A unit top or constant coefficient prevents simultaneous divisibility of the two specialised channels by 2 or 3."
+    },
+    {
+      "id": "z72_irrationality_exponent_interface",
+      "label": "irrationality-exponent inequality interface",
+      "note": "The minimal real inequality extracted from lower and upper bounds on an irrationality exponent."
+    },
+    {
+      "id": "z72_authority_boundary",
+      "label": "arithmetic-only authority boundary",
+      "note": "The zone checks source-independent endpoint arithmetic; it does not construct Zudilin coefficient polynomials or supply analytic asymptotics."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone",
+      "canonical_statement": "At k=a2 the doubled normalised bottom exponent is 2(a2-a1)(a0+a2-b). Its consecutive difference at k is 2(a0-b+k+1); consequently, under b<=a0+a2, it strictly increases for every k>=a2.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1049",
+      "concepts": [
+        "z72_bottom_exponent_geometry",
+        "z72_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact polynomial expansion of the doubled exponent followed by a linear inequality from the cone hypotheses.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Source-independent integer algebra for the returned Heine-Zudilin parameter cone; no novelty claim is made.",
+      "scope_caveat": "The statement assumes the displayed cone inequality and concerns only exponent bookkeeping. It supplies neither coefficient integrality nor asymptotic decay.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "zudilinBottomExpTwice_at_a2",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 50
+        },
+        {
+          "declaration": "zudilinBottomExpTwice_succ_sub",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 58
+        },
+        {
+          "declaration": "zudilinBottomExpTwice_strict_step",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "id": "raw_summand_degrees_increase_through_the_allowed_index_range",
+      "canonical_statement": "The consecutive difference of the doubled raw summand degree is 2(a0+a1+a2-k-2). If a1>0, b<=a0+a2, and k<=b-2, that difference is positive, so the raw degree strictly increases through the allowed index range.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1049",
+      "concepts": [
+        "z72_raw_degree_geometry",
+        "z72_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact polynomial first-difference calculation and a linear positivity argument from the source-cone bounds.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Source-independent degree bookkeeping for the finite coefficient construction.",
+      "scope_caveat": "Strict degree growth does not construct the coefficient polynomial, prove endpoint units, or establish any irrationality or transcendence statement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "zudilinRawDegreeTwice_succ_sub",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 77
+        },
+        {
+          "declaration": "zudilinRawDegreeTwice_strict_step",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "id": "one_endpoint_unit_blocks_a_common_local_prime_across_both_channels",
+      "canonical_statement": "If the left polynomial has top coefficient plus or minus one, its homogeneous value and the other channel cannot both be divisible by 2. If the right polynomial has constant coefficient plus or minus one, the two values cannot both be divisible by 3.",
+      "logical_class": "barrier_no_go",
+      "problem": "1049",
+      "concepts": [
+        "z72_endpoint_local_obstruction",
+        "z72_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Reduction of homogeneous evaluation modulo 2 to the top endpoint and modulo 3 to the constant endpoint.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate two-channel consequences of the endpoint congruences already authored in Z33.",
+      "scope_caveat": "The barrier requires an endpoint unit and excludes only simultaneous divisibility by the named local prime. It does not prove the endpoint-unit hypotheses for a Zudilin family or rule out other common factors.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "not_two_dvd_both_homEval_of_left_top_unit",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 269
+        },
+        {
+          "declaration": "not_three_dvd_both_homEval_of_right_const_unit",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 279
+        }
+      ]
+    },
+    {
+      "id": "irrationality_exponent_bounds_force_twice_the_lower_rate_below_the_upper_rate",
+      "canonical_statement": "If C0>0, an irrationality exponent mu satisfies 2<=mu, and mu<=C1/C0, then 2*C0<=C1.",
+      "logical_class": "reduction_or_transport",
+      "problem": "1049",
+      "concepts": [
+        "z72_irrationality_exponent_interface",
+        "z72_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Transitivity of the two exponent bounds followed by multiplication through the positive denominator C0.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary real inequality isolating the exact analytic input consumed by the scalar-margin obstruction.",
+      "scope_caveat": "The theorem assumes both exponent bounds. It neither proves irrationality, constructs a linear-form family, nor supplies numerical values of C0 and C1.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "twice_le_of_irrationalityExponent_bounds",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 311
+        }
+      ]
+    },
+    {
+      "id": "homogeneous_three_two_evaluation_representation",
+      "canonical_statement": "For an integral polynomial P and declared width W, homEvalThreeTwo(W,P) is the integer homogeneous evaluation sum over 0<=i<=W of coeff(P,i)*3^i*2^(W-i). The bottom 3-adic and top 2-adic endpoint jets are reductions of this same integer.",
+      "logical_class": "representation_normalisation",
+      "problem": "1049",
+      "concepts": [
+        "z72_endpoint_local_obstruction",
+        "z72_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the common integer endpoint evaluation",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A standard homogeneous polynomial evaluation specialised to (3,2); no novelty claim is made.",
+      "scope_caveat": "The coordinate definition supplies neither endpoint-unit hypotheses nor divisibility obstructions, coefficient constructions, analytic decay, or irrationality/transcendence conclusions.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "homEvalThreeTwo",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 96
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "homEvalThreeTwo",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 96,
+      "role": "representation",
+      "statement_node": "homogeneous_three_two_evaluation_representation"
+    },
+    {
+      "declaration": "zudilinBottomExpTwice_at_a2",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 50,
+      "role": "statement",
+      "statement_node": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone"
+    },
+    {
+      "declaration": "zudilinBottomExpTwice_succ_sub",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 58,
+      "role": "engine",
+      "statement_node": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone"
+    },
+    {
+      "declaration": "zudilinBottomExpTwice_strict_step",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 68,
+      "role": "statement",
+      "statement_node": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone"
+    },
+    {
+      "declaration": "zudilinRawDegreeTwice_succ_sub",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 77,
+      "role": "engine",
+      "statement_node": "raw_summand_degrees_increase_through_the_allowed_index_range"
+    },
+    {
+      "declaration": "zudilinRawDegreeTwice_strict_step",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 86,
+      "role": "statement",
+      "statement_node": "raw_summand_degrees_increase_through_the_allowed_index_range"
+    },
+    {
+      "declaration": "not_two_dvd_both_homEval_of_left_top_unit",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 269,
+      "role": "statement",
+      "statement_node": "one_endpoint_unit_blocks_a_common_local_prime_across_both_channels"
+    },
+    {
+      "declaration": "not_three_dvd_both_homEval_of_right_const_unit",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 279,
+      "role": "statement",
+      "statement_node": "one_endpoint_unit_blocks_a_common_local_prime_across_both_channels"
+    },
+    {
+      "declaration": "twice_le_of_irrationalityExponent_bounds",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 311,
+      "role": "engine",
+      "statement_node": "irrationality_exponent_bounds_force_twice_the_lower_rate_below_the_upper_rate"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "raw_summand_degrees_increase_through_the_allowed_index_range",
+      "to": "bottom_exponents_have_an_exact_endpoint_and_increase_inside_the_cone",
+      "relation": "complements",
+      "basis": "The two monotonicity packets control different exponent axes of the same finite coefficient construction: normalised bottom order versus raw polynomial degree."
+    },
+    {
+      "from": "one_endpoint_unit_blocks_a_common_local_prime_across_both_channels",
+      "to": "irrationality_exponent_bounds_force_twice_the_lower_rate_below_the_upper_rate",
+      "relation": "complements",
+      "basis": "The endpoint obstruction controls local common content, while the exponent inequality isolates the independent analytic-rate constraint; neither statement supplies the other's hypotheses."
+    }
+  ]
+}

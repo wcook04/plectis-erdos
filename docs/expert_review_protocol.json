@@ -1,0 +1,118 @@
+{
+  "schema": "plectis_expert_review_protocol_v1",
+  "artifact_role": "Authored cross-domain handoff contract. Mathematical inputs remain owned by docs/semantic/frontier.json; this file records external evaluations that the repository cannot perform on itself.",
+  "questions": [
+    {
+      "id": "XQSYS-ten-minute-hostile-reader",
+      "domain": "systems",
+      "classification": "external_validation",
+      "status": "OPEN",
+      "exact_ask": "Starting from a fresh public clone and no prior project context, spend at most 600 seconds following the advertised human reading route. Record reviewer and clone provenance, then return the structured response below: the status of both Erdős problems, the provenance and numerical delta of the finite Farey bound, the 17/23 self-diagnosis, at least two non-restatement results for each problem in your own words, the resulting one-sentence verdict, the paths used, and the first confusing surface.",
+      "payoff": "When the response is supplied by an identified independent reviewer who followed the protocol, acceptance is evidence that the public first-contact layer communicated the intended verdict within ten minutes. A rejected response yields field-level repair targets rather than a vague readability complaint.",
+      "boundary": "This evaluates discoverability and claim calibration only. The validator does not authenticate the reviewer or elapsed time, and it does not establish mathematical correctness, priority, novelty, or either open problem.",
+      "known_obstruction": "The repository's cold-clone checker is self-authored and can verify that facts are present, but it cannot certify that an independent human actually finds and interprets them in time. That independence remains an external provenance requirement.",
+      "current_hypothesis": "An independent reader will recover that both problems are open and that the Farey delta is zero, but may still underweight the concrete non-restatement results within 600 seconds. Confidence is low because the only external verdict predates the rewritten entry surfaces.",
+      "hypothesis_confidence": "low",
+      "plausible_alternatives": [
+        {
+          "id": "calibrated_verdict",
+          "statement": "The reader recovers the open boundaries, Farey provenance, 17/23 self-diagnosis and at least two concrete results per problem.",
+          "consequence": "The current first-contact route earns the intended neither-near-solution-nor-nothing-here verdict."
+        },
+        {
+          "id": "nothing_here_compression",
+          "statement": "The reader recovers the concessions but cannot identify substantive non-restatement content.",
+          "consequence": "The entry ordering still erases the work and needs another theorem-first compression pass."
+        },
+        {
+          "id": "near_solution_inflation",
+          "statement": "The reader mistakes finite bounds, certificate bands or half-value reductions for proximity to either endpoint.",
+          "consequence": "The claim boundaries remain too weak or too distant from their headlines."
+        },
+        {
+          "id": "route_timeout",
+          "statement": "The reader cannot recover the required fields within 600 seconds.",
+          "consequence": "The route is still too long or internally inconsistent even if every fact is present."
+        }
+      ],
+      "current_evidence": [
+        "The recorded external verdict compressed the earlier release toward Farey-easy and restatement-only.",
+        "The public entry surfaces have since been reordered and corrected, but no independent post-rewrite timed review is recorded.",
+        "The internal cold-clone checker verifies presence and consistency, not human retrieval or interpretation."
+      ],
+      "discriminating_evidence": [
+        "A provenance-bound response completed within 600 seconds and accepted under the manual rubric establishes calibrated_verdict for that reader.",
+        "Correct scalar fields paired with weak or incorrect result summaries identifies nothing_here_compression.",
+        "Any endpoint overclaim in the verdict or summaries identifies near_solution_inflation.",
+        "Elapsed time above 600 seconds or an incomplete response identifies route_timeout."
+      ],
+      "input_template": {
+        "question_id": "XQSYS-ten-minute-hostile-reader",
+        "reviewer_identity": null,
+        "reviewed_at": null,
+        "clone_revision": null,
+        "prior_project_context": null,
+        "elapsed_seconds": null,
+        "problem_249_status": null,
+        "problem_257_status": null,
+        "farey_bound_provenance": null,
+        "farey_numerical_delta": null,
+        "equivalent_antecedents": null,
+        "substantial_antecedents": null,
+        "nonrestatement_results_249": [],
+        "nonrestatement_results_257": [],
+        "verdict_summary": null,
+        "source_paths_used": [],
+        "first_confusing_surface": ""
+      },
+      "acceptance": {
+        "maximum_elapsed_seconds": 600,
+        "prior_project_context": false,
+        "problem_status": "OPEN",
+        "farey_bound_provenance": "classical_farey_mediant",
+        "farey_numerical_delta": 0,
+        "equivalent_antecedents": 17,
+        "substantial_antecedents": 23,
+        "minimum_nonrestatement_results_per_problem": 2
+      },
+      "manual_review_fields": [
+        "nonrestatement_results_249",
+        "nonrestatement_results_257",
+        "verdict_summary",
+        "first_confusing_surface"
+      ],
+      "manual_review_rubric": {
+        "problem_249_summaries_faithful": "Each #249 summary identifies a reviewed non-restatement result in its own words, associates it with #249, and does not turn a finite result, barrier, or coefficient theorem into irrationality.",
+        "problem_257_summaries_faithful": "Each #257 summary identifies a reviewed non-restatement result in its own words, associates it with #257, and does not turn a support-family theorem, barrier, or half-value reduction into universal #257.",
+        "verdict_calibrated": "The verdict says both problems remain open, recognizes concrete checked non-restatement content, recognizes the self-diagnosed endpoint-equivalent reformulations, and makes no unsupported novelty claim.",
+        "evidence_paths_support_response": "The listed repository paths actually support the scalar answers, summaries, and verdict.",
+        "confusion_report_actionable": "The first confusing surface is named precisely enough to reproduce, or is explicitly recorded as none."
+      },
+      "review_template": {
+        "question_id": "XQSYS-ten-minute-hostile-reader",
+        "response_sha256": null,
+        "evaluator_identity": null,
+        "evaluated_at": null,
+        "reviewer_provenance_verified": null,
+        "timing_provenance_verified": null,
+        "criteria": {
+          "problem_249_summaries_faithful": null,
+          "problem_257_summaries_faithful": null,
+          "verdict_calibrated": null,
+          "evidence_paths_support_response": null,
+          "confusion_report_actionable": null
+        },
+        "review_notes": "",
+        "final_outcome": null
+      },
+      "consumer": {
+        "command": "python3 scripts/query_expert_handoffs.py --response RESPONSE.json",
+        "review_template_command": "python3 scripts/query_expert_handoffs.py --review-template XQSYS-ten-minute-hostile-reader",
+        "final_review_command": "python3 scripts/query_expert_handoffs.py --review RESPONSE.json REVIEW.json",
+        "output": "Field-level structural receipt plus an explicit manual content-review list",
+        "human_owner": "Public first-contact and exposition maintainers"
+      },
+      "verification_command": "python3 scripts/query_expert_handoffs.py --check"
+    }
+  ]
+}

@@ -89,24 +89,33 @@ def render() -> tuple[str, dict[Path, str]]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--claims-only",
+        action="store_true",
+        help="refresh docs/claims.json without writing the authored paper",
+    )
     args = parser.parse_args()
     claims, papers = render()
     if args.check:
         stale = []
         if CLAIMS.read_text(encoding="utf-8") != claims:
             stale.append("docs/claims.json")
-        for path, paper in papers.items():
-            if path.read_text(encoding="utf-8") != paper:
-                stale.append(str(path.relative_to(ROOT)))
+        if not args.claims_only:
+            for path, paper in papers.items():
+                if path.read_text(encoding="utf-8") != paper:
+                    stale.append(str(path.relative_to(ROOT)))
         if stale:
             print("source coordinates are stale: " + ", ".join(stale))
             return 1
         print("source coordinates current")
         return 0
     CLAIMS.write_text(claims, encoding="utf-8")
-    for path, paper in papers.items():
-        path.write_text(paper, encoding="utf-8")
-    print("refreshed claim and paper source coordinates")
+    if args.claims_only:
+        print("refreshed claim source coordinates")
+    else:
+        for path, paper in papers.items():
+            path.write_text(paper, encoding="utf-8")
+        print("refreshed claim and paper source coordinates")
     return 0
 
 

@@ -27,6 +27,7 @@ AGENT_ENTRY_PATH = "AGENTS.md"
 MAKEFILE_PATH = "paper/Makefile"
 REUSE_PATH = "REUSE.toml"
 MANUSCRIPT_LICENSE = "CC-BY-4.0"
+NOTE_ARTIFACT_CLASS = "problem_note"
 SPDX_LICENSE_HEADER = "SPDX-License-" "Identifier: "
 SCHEMA = "erdos249257-publication-contract/1"
 EVIDENCE_SCHEMA = "erdos249257-publication-evidence/1"
@@ -301,8 +302,8 @@ def validate_systems_evidence_source(
         ),
         "coverage boundary": r"coverage boundary, not a reliability score",
         "post-repair example": (
-            r"the current readme passes and a false copy, the boundary witness, "
-            r"fails"
+            r"post-repair witness accepts the current readme and rejects a "
+            r"test copy containing the false clause"
         ),
     }
     for label, pattern in required_patterns.items():
@@ -1074,6 +1075,37 @@ def validate_publication_contract(
     }
     if by_class.get("repository_architecture_guide", set()) != systems_sources:
         errors.append("publication architecture guides drifted from docs/claims.json")
+    agent_navigation_sources = {
+        row["source"]
+        for row in architecture.get("agent_native_guides", [])
+    }
+    if (
+        by_class.get("agent_navigation_guide", set())
+        != agent_navigation_sources
+    ):
+        errors.append(
+            "publication agent-navigation guides drifted from docs/claims.json"
+        )
+    # A problem note expounds the expansion library, whose declarations carry no
+    # reviewed claim status.  The class is compared like the others so that a
+    # note cannot be shipped without a matching registry row, and its posture is
+    # required to say in words that it is not proof authority for a public claim.
+    problem_note_sources = {
+        row["source"] for row in architecture.get("problem_series", [])
+    }
+    if by_class.get(NOTE_ARTIFACT_CLASS, set()) != problem_note_sources:
+        errors.append("publication problem notes drifted from docs/claims.json")
+    if problem_note_sources and not architecture.get("problem_series_boundary"):
+        errors.append(
+            "docs/claims.json ships problem notes without a problem_series_boundary"
+        )
+    for artifact in artifacts:
+        if artifact.get("artifact_class") != NOTE_ARTIFACT_CLASS:
+            continue
+        if "unregistered_expansion_module" not in artifact.get("authority_posture", ""):
+            errors.append(
+                f"problem note {artifact.get('id')!r} lost its unregistered-module posture"
+            )
 
     rejected_ids = set(contract.get("rejected_artifact_ids", []))
     registered_ids = set(artifact_ids)

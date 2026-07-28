@@ -1,0 +1,127 @@
+{
+  "zone_id": "Z91",
+  "title": "Erdős 249 gcd-moment calculus: half-geometric normalizations and dyadic positivity",
+  "problem": "249",
+  "replaces_role_zone": "Z07",
+  "concepts": [
+    {
+      "id": "z91_half_geometric_mersenne_normalization",
+      "label": "half-geometric Mersenne normalization",
+      "note": "At r=1/2, the Lambert factor r^d/(1-r^d) is exactly 1/(2^d-1), including its square."
+    },
+    {
+      "id": "z91_shifted_geometric_tail",
+      "label": "shifted geometric tail",
+      "note": "The positive-index geometric sum has the closed form x/(1-x)."
+    },
+    {
+      "id": "z91_positive_dyadic_denominators",
+      "label": "positive dyadic denominators",
+      "note": "Every positive natural exponent gives 2^a at least two."
+    },
+    {
+      "id": "z91_authority_boundary",
+      "label": "normalization-toolkit boundary",
+      "note": "These classical identities license exact series rewrites and positivity checks; they do not prove the gcd-moment evaluations or any irrationality claim by themselves."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "half_geometric_lambert_factors_are_exact_reciprocal_mersenne_factors",
+      "canonical_statement": "PROVED NORMALIZATION TOOLKIT: for every positive d, ((1/2)^d)/(1-(1/2)^d)=1/(2^d-1), and squaring gives the corresponding reciprocal-square identity. More generally, for 0≤x<1, the sum over g≥0 of x^(g+1) is x/(1-x).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z91_half_geometric_mersenne_normalization",
+        "z91_shifted_geometric_tail",
+        "z91_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Clear the positive dyadic denominators algebraically and factor one power of x from the classical geometric series.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard geometric-series algebra and its specialization at one half.",
+      "scope_caveat": "The identities rewrite individual factors and one elementary sum. They do not justify unrelated sum exchanges, establish q-Padé irrationality, or evaluate the full gcd-moment series without the separate landed theorems that consume them.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "half_pow_term'",
+          "module": "Erdos249257/GcdMomentCalculus.lean",
+          "line": 192
+        },
+        {
+          "declaration": "half_pow_sq_term'",
+          "module": "Erdos249257/GcdMomentCalculus.lean",
+          "line": 206
+        },
+        {
+          "declaration": "tsum_pow_succ_geometric'",
+          "module": "Erdos249257/GcdMomentCalculus.lean",
+          "line": 252
+        }
+      ]
+    },
+    {
+      "id": "positive_natural_exponents_make_two_power_denominators_strictly_positive",
+      "canonical_statement": "PROVED DYADIC LOWER BOUND: for every positive natural a, 2≤2^a; in particular 2^a-1 is positive, as required by the cylinder-mass denominator arguments.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "concepts": [
+        "z91_positive_dyadic_denominators",
+        "z91_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Monotonicity of powers of two from exponent one to a positive exponent.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary monotonicity of exponentiation.",
+      "scope_caveat": "This is only the positivity side condition for later rational cylinder identities; it contains no asymptotic or arithmetic information.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_le_two_pow",
+          "module": "Erdos249257/GcdMomentCalculus.lean",
+          "line": 458
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "half_pow_term'",
+      "module": "Erdos249257/GcdMomentCalculus.lean",
+      "line": 192,
+      "role": "representation",
+      "statement_node": "half_geometric_lambert_factors_are_exact_reciprocal_mersenne_factors"
+    },
+    {
+      "declaration": "half_pow_sq_term'",
+      "module": "Erdos249257/GcdMomentCalculus.lean",
+      "line": 206,
+      "role": "representation",
+      "statement_node": "half_geometric_lambert_factors_are_exact_reciprocal_mersenne_factors"
+    },
+    {
+      "declaration": "tsum_pow_succ_geometric'",
+      "module": "Erdos249257/GcdMomentCalculus.lean",
+      "line": 252,
+      "role": "engine",
+      "statement_node": "half_geometric_lambert_factors_are_exact_reciprocal_mersenne_factors"
+    },
+    {
+      "declaration": "two_le_two_pow",
+      "module": "Erdos249257/GcdMomentCalculus.lean",
+      "line": 458,
+      "role": "engine",
+      "statement_node": "positive_natural_exponents_make_two_power_denominators_strictly_positive"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "positive_natural_exponents_make_two_power_denominators_strictly_positive",
+      "to": "half_geometric_lambert_factors_are_exact_reciprocal_mersenne_factors",
+      "relation": "complements",
+      "basis": "The dyadic lower bound supplies the denominator positivity used by the half-geometric reciprocal-Mersenne normalization."
+    }
+  ]
+}

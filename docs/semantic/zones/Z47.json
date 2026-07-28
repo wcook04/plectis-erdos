@@ -1,0 +1,349 @@
+{
+  "zone_id": "Z47",
+  "title": "Canonical critical-capacity sockets, fixed-horizon margin form, and protected-row state",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "universal_critical_quotient_supply",
+      "label": "universal critical quotient supply",
+      "note": "The open sharp quotient inequality over every finite below-half crossing core."
+    },
+    {
+      "id": "canonical_half_greedy_crossing_core",
+      "label": "canonical half-greedy crossing core",
+      "note": "The unique rational half-greedy prefix forced by an exact crossing."
+    },
+    {
+      "id": "actual_skipped_critical_supply",
+      "label": "actual skipped-orbit critical supply",
+      "note": "The same critical quotient inequality restricted to ranks actually skipped by the half-greedy orbit."
+    },
+    {
+      "id": "pre_take_precritical_supply",
+      "label": "pre-take precritical supply",
+      "note": "The predecessor suffix bound restricted to a skipped rank immediately followed by a take."
+    },
+    {
+      "id": "fixed_horizon_frozen_margin",
+      "label": "fixed-horizon frozen margin",
+      "note": "The exact carry coordinate at horizon c-3 representing the precritical suffix inequality."
+    },
+    {
+      "id": "protected_exact_row",
+      "label": "protected exact row",
+      "note": "A structured exact row carrying a protected core and strict endpoint-progress invariants."
+    },
+    {
+      "id": "finite_lookahead_room",
+      "label": "finite-lookahead dyadic room",
+      "note": "The elementary bound c-2<=2^(c-4) used inside the lookahead proof."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "universal_crossing_core_critical_quotient_socket",
+      "canonical_statement": "SkippedCoreCriticalQuotientSupply is the open universal property requiring every finite below-half crossing core to reach the endpoint-(2c-2) integral half target after inserting the crossing rank c.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "universal_critical_quotient_supply"
+      ],
+      "open_antecedents": [
+        "SkippedCoreCriticalQuotientSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "universal sharp critical-quotient socket",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a development-internal open predicate, not a novelty claim.",
+      "scope_caveat": "The property is defined, not proved; the completed consumer chain does not discharge it.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "SkippedCoreCriticalQuotientSupply",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "critical_crossing_core_is_the_canonical_half_greedy_prefix",
+      "canonical_statement": "Every finite support below rank c satisfying the exact below-half and crossing-deficit hypotheses is equal to halfGreedyPrefixSupport (c-1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "canonical_half_greedy_crossing_core"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "superincreasing greedy-prefix rigidity at the first crossing",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No external priority or novelty claim is made.",
+      "scope_caveat": "Uniqueness collapses the core search space but proves no critical quotient inequality and no half-membership.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "eq_halfGreedyPrefixSupport_of_critical_crossing",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "id": "every_finite_half_greedy_prefix_is_strictly_below_half",
+      "canonical_statement": "For every n, the rational Mersenne value of halfGreedyPrefixSupport n is strictly below one half.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "canonical_half_greedy_crossing_core"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "odd-denominator parity for finite rational half-greedy prefixes",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is an elementary finite-prefix consequence.",
+      "scope_caveat": "Strict finite-prefix inequality does not imply convergence to one half or achievement-set membership.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersennePrefixValue_halfGreedy_lt_half",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 138
+        }
+      ]
+    },
+    {
+      "id": "actual_skipped_orbit_critical_quotient_socket",
+      "canonical_statement": "HalfGreedySkippedCriticalQuotientSupply is the open critical quotient lower bound restricted to ranks actually skipped by the rational half-greedy orbit.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "actual_skipped_critical_supply",
+        "canonical_half_greedy_crossing_core"
+      ],
+      "open_antecedents": [
+        "HalfGreedySkippedCriticalQuotientSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "actual-orbit restriction of the universal critical socket",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a reduced open socket internal to the formal programme.",
+      "scope_caveat": "The predicate is not proved. Its equivalence with the universal socket does not establish either side.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "HalfGreedySkippedCriticalQuotientSupply",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 178
+        }
+      ]
+    },
+    {
+      "id": "pre_take_precritical_suffix_socket",
+      "canonical_statement": "HalfGreedyPreTakePrecriticalSuffixSupply requires that at every skipped rank c at least six immediately followed by a take, the predecessor suffix at endpoint 2c-3 fits in c-3 bits.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "pre_take_precritical_supply"
+      ],
+      "open_antecedents": [
+        "HalfGreedyPreTakePrecriticalSuffixSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "last-skip-before-take restriction of the precritical suffix socket",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is an unproved development-internal supply predicate.",
+      "scope_caveat": "Defining the property does not assert it and does not assert that skip-then-take ranks occur cofinally.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "HalfGreedyPreTakePrecriticalSuffixSupply",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 200
+        }
+      ]
+    },
+    {
+      "id": "precritical_suffix_bound_is_fixed_horizon_frozen_margin_nonnegativity",
+      "canonical_statement": "For c at least four, the endpoint-(2c-3) half-greedy prefix suffix fits in c-3 bits if and only if greedyHalfFrozenMargin (c-1) (c-3) is nonnegative.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": [
+        "pre_take_precritical_supply",
+        "fixed_horizon_frozen_margin"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact suffix-to-fixed-horizon carry coordinate conversion",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The theorem is an exact project-coordinate equivalence.",
+      "scope_caveat": "The equivalence proves neither side and is fixed-horizon rather than eventual first passage.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "halfGreedy_precriticalSuffix_lt_iff_frozenMargin_nonneg",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 866
+        }
+      ]
+    },
+    {
+      "id": "precritical_suffix_supply_feeds_skipped_critical_quotient_supply",
+      "canonical_statement": "The global half-greedy skipped precritical suffix supply implies HalfGreedySkippedCriticalQuotientSupply by advancing the exact endpoint recurrence once.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "pre_take_precritical_supply",
+        "actual_skipped_critical_supply"
+      ],
+      "open_antecedents": [
+        "HalfGreedySkippedPrecriticalSuffixSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "one-endpoint transport from the precritical suffix to the critical quotient",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is an internal reduction between open supply predicates.",
+      "scope_caveat": "The theorem transports an unproved supply and establishes neither supply unconditionally.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1001
+        }
+      ]
+    },
+    {
+      "id": "protected_exact_row_records_strict_progress_invariants",
+      "canonical_statement": "ProtectedExactLocalMersenneRow is the structured exact-row state carrying a below-half protected core, support separation above its cutoff, endpoint bounds, the exact quotient identity, and rank-two membership.",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "concepts": [
+        "protected_exact_row",
+        "universal_critical_quotient_supply"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "state object preserving the invariants required for strict endpoint progress",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is proof infrastructure, not an independent existence theorem.",
+      "scope_caveat": "Declaring the structure proves neither arbitrarily many protected rows nor a successor; those consumers remain in Z29.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ProtectedExactLocalMersenneRow",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 1087
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "SkippedCoreCriticalQuotientSupply",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 30,
+      "role": "concept",
+      "statement_node": "universal_crossing_core_critical_quotient_socket"
+    },
+    {
+      "declaration": "eq_halfGreedyPrefixSupport_of_critical_crossing",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 50,
+      "role": "statement",
+      "statement_node": "critical_crossing_core_is_the_canonical_half_greedy_prefix"
+    },
+    {
+      "declaration": "localMersennePrefixValue_halfGreedy_lt_half",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 138,
+      "role": "statement",
+      "statement_node": "every_finite_half_greedy_prefix_is_strictly_below_half"
+    },
+    {
+      "declaration": "HalfGreedySkippedCriticalQuotientSupply",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 178,
+      "role": "concept",
+      "statement_node": "actual_skipped_orbit_critical_quotient_socket"
+    },
+    {
+      "declaration": "HalfGreedyPreTakePrecriticalSuffixSupply",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 200,
+      "role": "concept",
+      "statement_node": "pre_take_precritical_suffix_socket"
+    },
+    {
+      "declaration": "sub_two_le_two_pow_sub_four",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 432,
+      "role": "substrate",
+      "statement_node": null
+    },
+    {
+      "declaration": "halfGreedy_precriticalSuffix_lt_iff_frozenMargin_nonneg",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 866,
+      "role": "statement",
+      "statement_node": "precritical_suffix_bound_is_fixed_horizon_frozen_margin_nonnegativity"
+    },
+    {
+      "declaration": "halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1001,
+      "role": "statement",
+      "statement_node": "precritical_suffix_supply_feeds_skipped_critical_quotient_supply"
+    },
+    {
+      "declaration": "ProtectedExactLocalMersenneRow",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 1087,
+      "role": "concept",
+      "statement_node": "protected_exact_row_records_strict_progress_invariants"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "actual_skipped_orbit_critical_quotient_socket",
+      "to": "universal_crossing_core_critical_quotient_socket",
+      "relation": "equivalent_to",
+      "basis": "The existing theorem skippedCoreCriticalQuotientSupply_iff_halfGreedySkipped proves the two sockets equivalent after canonical-core reduction."
+    },
+    {
+      "from": "critical_crossing_core_is_the_canonical_half_greedy_prefix",
+      "to": "actual_skipped_orbit_critical_quotient_socket",
+      "relation": "complements",
+      "basis": "Crossing-core uniqueness explains why the universal finite-core socket reduces to the canonical half-greedy orbit."
+    },
+    {
+      "from": "every_finite_half_greedy_prefix_is_strictly_below_half",
+      "to": "actual_skipped_orbit_critical_quotient_socket",
+      "relation": "complements",
+      "basis": "Strict below-halfness makes the canonical prefix's below-half premise automatic in the reduction."
+    },
+    {
+      "from": "precritical_suffix_bound_is_fixed_horizon_frozen_margin_nonnegativity",
+      "to": "pre_take_precritical_suffix_socket",
+      "relation": "reformulates",
+      "basis": "The fixed-horizon frozen-margin inequality is the exact coordinate form of the precritical suffix bound required at pre-take skipped ranks."
+    },
+    {
+      "from": "precritical_suffix_supply_feeds_skipped_critical_quotient_supply",
+      "to": "pre_take_precritical_suffix_socket",
+      "relation": "depends_on_open",
+      "basis": "The existing pre-take equivalence identifies the global skipped suffix supply consumed by the theorem with the pre-take socket."
+    },
+    {
+      "from": "precritical_suffix_supply_feeds_skipped_critical_quotient_supply",
+      "to": "actual_skipped_orbit_critical_quotient_socket",
+      "relation": "implies",
+      "basis": "The exact conclusion of the transport theorem is HalfGreedySkippedCriticalQuotientSupply."
+    },
+    {
+      "from": "protected_exact_row_records_strict_progress_invariants",
+      "to": "universal_crossing_core_critical_quotient_socket",
+      "relation": "complements",
+      "basis": "The protected-row structure is the consumer state whose conditional successor uses the universal critical supply; the structure itself proves no such supply."
+    }
+  ]
+}

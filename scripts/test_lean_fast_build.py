@@ -8,6 +8,8 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import tempfile
+import threading
+import time
 import unittest
 from unittest import mock
 
@@ -20,6 +22,23 @@ class LeanFastBuildTests(unittest.TestCase):
             fast.os, "cpu_count", return_value=64
         ):
             self.assertEqual(fast.default_jobs(), 2)
+
+    def test_ci_restores_cache_before_running_bounded_trace_aware_build(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        cache_step = workflow.index("- name: Restore project Lean cache")
+        dependency_step = workflow.index("- uses: leanprover/lean-action@v1")
+        bounded_build = workflow.index(
+            "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
+        )
+
+        self.assertLess(cache_step, dependency_step)
+        self.assertLess(dependency_step, bounded_build)
+        self.assertIn("uses: actions/cache@v5", workflow)
+        self.assertIn("path: .lake", workflow)
+        self.assertIn("use-mathlib-cache: auto", workflow)
+        self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
 
     def test_reachable_and_waves_limit_focused_target(self) -> None:
         graph = {
@@ -91,10 +110,6 @@ import Pkg.TooLate
         }
         with mock.patch.object(
             fast,
-            "build_batch",
-            return_value=(["Pkg.Good", "Pkg.Bad"], 1, 0.2),
-        ), mock.patch.object(
-            fast,
             "build_one",
             side_effect=lambda name, root=fast.ROOT: results[name],
         ):
@@ -103,25 +118,40 @@ import Pkg.TooLate
                 ["Pkg.Bad"],
             )
 
-    def test_build_wave_batches_targets_to_the_worker_bound(self) -> None:
-        batches: list[list[str]] = []
+    def test_build_wave_enforces_the_worker_bound(self) -> None:
+        active = 0
+        maximum = 0
+        lock = threading.Lock()
 
-        def build_batch(names, root=fast.ROOT):
-            batch = list(names)
-            batches.append(batch)
-            return batch, 0, 0.1
+        def build_one(name, root=fast.ROOT):
+            nonlocal active, maximum
+            with lock:
+                active += 1
+                maximum = max(maximum, active)
+            time.sleep(0.02)
+            with lock:
+                active -= 1
+            return name, 0, 0.02
 
-        with mock.patch.object(fast, "build_batch", side_effect=build_batch), mock.patch.object(
-            fast,
-            "build_one",
-            side_effect=AssertionError("successful batches must not rebuild individually"),
-        ):
+        with mock.patch.object(fast, "build_one", side_effect=build_one):
             self.assertEqual(
-                fast.build_wave(["Pkg.A", "Pkg.B", "Pkg.C"], jobs=2),
+                fast.build_wave([f"Pkg.{name}" for name in "ABCD"], jobs=2),
                 [],
             )
 
-        self.assertEqual(batches, [["Pkg.A", "Pkg.B"], ["Pkg.C"]])
+        self.assertEqual(maximum, 2)
+
+    def test_plan_lines_are_compact_unless_verbose(self) -> None:
+        waves = [["Pkg.A", "Pkg.B"], ["Pkg.Root"]]
+
+        self.assertEqual(
+            fast.plan_lines(waves, verbose=False),
+            ["wave 1: 2 module(s)", "wave 2: 1 module(s)"],
+        )
+        self.assertEqual(
+            fast.plan_lines(waves, verbose=True),
+            ["wave 1: Pkg.A Pkg.B", "wave 2: Pkg.Root"],
+        )
 
     def test_discovery_ignores_ephemeral_underscore_modules(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -147,6 +177,26 @@ import Pkg.TooLate
             self.assertEqual(fast.resolve_targets(["Pkg/Leaf.lean"], modules, root), ["Pkg.Leaf"])
             with self.assertRaisesRegex(ValueError, "unknown local Lean target"):
                 fast.resolve_targets(["Pkg.Missing"], modules, root)
+
+    def test_default_root_targets_selects_only_top_level_modules(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            first = root / "Erdos249257.lean"
+            second = root / "ErdosProblems.lean"
+            nested = root / "ErdosProblems" / "Erdos243" / "Proof.lean"
+            nested.parent.mkdir(parents=True)
+            for source in (first, second, nested):
+                source.write_text("-- source\n", encoding="utf-8")
+            modules = {
+                "Erdos249257": first,
+                "ErdosProblems": second,
+                "ErdosProblems.Erdos243.Proof": nested,
+            }
+
+            self.assertEqual(
+                fast.resolve_targets([], modules, root),
+                ["Erdos249257", "ErdosProblems"],
+            )
 
     def test_changed_targets_combines_tracked_and_untracked_modules(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -269,6 +319,32 @@ import Pkg.TooLate
             up_to_date.assert_called_once_with(["Pkg.Root"], root)
             self.assertEqual(run.call_args.args[0], ["lake", "build", "+Pkg.Root"])
 
+    def test_default_main_serializes_every_public_root(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("Erdos249257", "ErdosProblems"):
+                source = root / f"{name}.lean"
+                output = root / ".lake" / "build" / "lib" / "lean" / f"{name}.olean"
+                source.write_text("-- source\n", encoding="utf-8")
+                output.parent.mkdir(parents=True, exist_ok=True)
+                output.write_text("olean\n", encoding="utf-8")
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_targets_up_to_date", return_value=True
+            ) as up_to_date, mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(fast.main(["--lake-staleness"]), 0)
+
+            up_to_date.assert_called_once_with(["Erdos249257", "ErdosProblems"], root)
+            self.assertEqual(
+                [call.args[0] for call in run.call_args_list],
+                [
+                    ["lake", "build", "+Erdos249257"],
+                    ["lake", "build", "+ErdosProblems"],
+                ],
+            )
+
     def test_cycle_is_rejected(self) -> None:
         graph = {"A": {"B"}, "B": {"A"}}
         with self.assertRaisesRegex(RuntimeError, "cycle"):
@@ -294,6 +370,16 @@ import Pkg.TooLate
             self.assertEqual(run.call_count, 1)
             self.assertEqual(run.call_args.args[0], ["lake", "build", "+Pkg.Leaf"])
             self.assertEqual(run.call_args.kwargs["cwd"], root)
+
+    def test_final_authority_checks_focused_modules_serially(self) -> None:
+        completed = fast.subprocess.CompletedProcess([], 0, "", "")
+        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+            self.assertEqual(fast.run_final_authority_check(["Pkg.A", "Pkg.B"]), 0)
+
+        self.assertEqual(
+            [call.args[0] for call in run.call_args_list],
+            [["lake", "build", "+Pkg.A"], ["lake", "build", "+Pkg.B"]],
+        )
 
 
 if __name__ == "__main__":

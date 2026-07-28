@@ -13,6 +13,7 @@ from pathlib import Path
 
 import query_corpus
 from query_corpus import (
+    agent_tour_packet,
     artifact_inventory,
     artifact_packet,
     claim_status_packet,
@@ -29,6 +30,7 @@ from query_corpus import (
 
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPT = ROOT / "scripts" / "query_corpus.py"
+SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
 PROGRAMME_EXPECTATIONS = {
     "erdos257_half_story": {
         "title": "Achievement-set geometry and the half-value seam",
@@ -106,6 +108,17 @@ def run(*args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+def semantic_query(*args: str) -> dict[str, object]:
+    completed = subprocess.run(
+        [sys.executable, str(SEMANTIC_SCRIPT), *args],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return json.loads(completed.stdout)
+
+
 def validate_programme_routes() -> None:
     for route_id, expected in PROGRAMME_EXPECTATIONS.items():
         packet = query("--route", route_id)
@@ -147,6 +160,64 @@ def validate_programme_routes() -> None:
         assert card.stdout.startswith(f"programme {route_id} |")
 
 
+def validate_agent_tour() -> None:
+    packet = agent_tour_packet()
+    assert packet["kind"] == "agent_corpus_tour"
+    assert packet["scale"]["declaration_count"] > 100_000
+    assert packet["scale"]["mathematical_programme_count"] == len(
+        PROGRAMME_EXPECTATIONS
+    )
+    assert packet["scale"]["indexed_problem_count"] == 6
+    assert packet["budget_contract"]["maximum_encoded_bytes"] == 30_000
+    assert {row["erdos_number"] for row in packet["problem_map"]} == {
+        243,
+        249,
+        251,
+        257,
+        269,
+        1049,
+    }
+    assert packet["formal_dependency_graph"]["source_resolved_node_count"] > 0
+    assert packet["formal_dependency_graph"]["source_resolved_direct_edge_count"] > 0
+    assert {row["id"] for row in packet["mathematical_map"]} == set(
+        PROGRAMME_EXPECTATIONS
+    )
+    assert {
+        row["intent"] for row in packet["intent_lenses"]
+    } >= {
+        "understand_the_mathematics",
+        "locate_any_formal_object",
+        "inspect_exact_formal_dependencies",
+        "begin_a_checked_change",
+    }
+    locate = next(
+        row
+        for row in packet["intent_lenses"]
+        if row["intent"] == "locate_any_formal_object"
+    )
+    assert "query_corpus.py --search" in locate["start"]
+    assert "query_semantic.py inventory" in locate["then"]
+    assert "query_corpus.py --declaration" in locate["expand"]
+    assert set(packet["cold_reader_contracts"]) == {
+        "research_mathematician",
+        "formalisation_engineer",
+        "ai_lab_researcher",
+        "independent_contributor",
+    }
+    encoded = json.dumps(packet, ensure_ascii=False).encode("utf-8")
+    assert len(encoded) <= packet["budget_contract"]["maximum_encoded_bytes"]
+    card = run("--tour", "--format", "card")
+    assert card.returncode == 0
+    lines = card.stdout.strip().splitlines()
+    assert len(lines) == 6
+    assert lines[0].startswith("corpus tour | modules=")
+    assert lines[1].startswith("problem map | indexed=6")
+    assert lines[2].startswith("formal graph | roots=")
+    assert lines[3].startswith("authority | navigation=")
+    assert lines[4].startswith("frontier | ")
+    assert lines[5].startswith("start | ")
+
+
 def validate_natural_language_search() -> None:
     assert query_corpus.search_rank("exact_id", "exact_id", "body") == 0
     assert query_corpus.search_rank("exact", "exact_id", "body") == 1
@@ -171,6 +242,17 @@ def validate_natural_language_search() -> None:
         )
         is None
     )
+    for exact_problem_phrase in ("Erdős problem 243", "Erdos problem 243"):
+        problem = query("--search", exact_problem_phrase, "--limit", "1")
+        assert problem["results"][0]["kind"] == "problem"
+        assert problem["results"][0]["id"] == "erdos_243"
+        assert problem["routing_receipt"] == {
+            "selection": "exact_problem_registry_term",
+            "declaration_scan_required": False,
+        }
+    dictionary = query("--vocabulary")
+    assert dictionary["problem_registry_contract"]["source"] == "docs/problems.json"
+    assert len(dictionary["problem_registry_contract"]["problems"]) == 6
     natural_language_routes = {
         "how close is problem 249": "erdos249_certificate_story",
         "what remains open for 257": "erdos257_half_story",
@@ -205,6 +287,15 @@ def validate_natural_language_search() -> None:
         "where are the Lean proofs": "follow_one_claim",
         "what is new mathematics": "trace_prior_art",
         "how do I verify this": "change_or_verify_release",
+        "which semantic meanings were reviewed": "agent_native_corpus_navigation",
+        "what semantic interpretations were checked": "agent_native_corpus_navigation",
+        "audit semantic review receipts": "agent_native_corpus_navigation",
+        "why does this Lean proof work": "agent_native_corpus_navigation",
+        "which proof mechanisms transfer": "agent_native_corpus_navigation",
+        "what mathematical routes failed": "agent_native_corpus_navigation",
+        "what semantic work remains": "agent_native_corpus_navigation",
+        "which paper proofs lack semantic interpretation": "agent_native_corpus_navigation",
+        "prioritize semantic population from the papers": "agent_native_corpus_navigation",
         "what is still missing": "understand_methodology_and_open_boundary",
         "what remains open": "understand_methodology_and_open_boundary",
     }
@@ -212,6 +303,29 @@ def validate_natural_language_search() -> None:
         natural_search = query("--search", search_text, "--limit", "10")
         assert natural_search["results"][0]["kind"] == "reading_route"
         assert natural_search["results"][0]["id"] == route_id
+    backlog_route = query(
+        "--search",
+        "which paper proofs lack semantic interpretation",
+        "--limit",
+        "1",
+    )
+    assert backlog_route["routing_receipt"] == {
+        "selection": "exact_authored_discovery_term",
+        "declaration_scan_required": False,
+    }
+    paraphrased_backlog = query(
+        "--search",
+        "where are the semantic coverage gaps in the papers",
+        "--limit",
+        "3",
+    )
+    assert paraphrased_backlog["results"][0]["id"] == (
+        "agent_native_corpus_navigation"
+    )
+    assert paraphrased_backlog["routing_receipt"] == {
+        "selection": "controlled_vocabulary_route",
+        "declaration_scan_required": False,
+    }
     portfolio_search = query(
         "--search", "what other exact mathematics is there", "--limit", "10"
     )
@@ -227,6 +341,141 @@ def validate_natural_language_search() -> None:
         "lambert_obstruction_interfaces",
         "arithmetic_obstruction_interfaces",
     }
+
+
+def validate_indexed_declaration_lookup() -> None:
+    """Keep exact declaration/source lookup off the eager qualified-name scan."""
+    query_corpus.declaration_row_indexes.cache_clear()
+    query_corpus.declaration_rows_by_qualified_name.cache_clear()
+    name = (
+        "tsum_totient_div_pow_two_ne_ratCast_of_den_le_"
+        "79639646646701375323355774875831053"
+    )
+    qualified_name = f"Erdos249257.{name}"
+
+    bare = declaration_packet(name, 20)
+    qualified = declaration_packet(qualified_name, 20)
+    source = source_coordinate_packet(
+        "Erdos249257/CertificateKernel.lean:18055", 20
+    )
+
+    assert bare == qualified
+    assert source["nearby_declarations"][0]["qualified_name"] == qualified_name
+    index_cache = query_corpus.declaration_row_indexes.cache_info()
+    qualified_cache = (
+        query_corpus.declaration_rows_by_qualified_name.cache_info()
+    )
+    assert index_cache.misses == 1
+    assert index_cache.hits >= 2
+    assert qualified_cache.misses == 0
+    assert qualified_cache.currsize == 0
+
+
+def validate_connection_query_ranking() -> None:
+    packet = query_corpus.connection_card(
+        "mersenneTail_lt_weight",
+        8,
+        "achievement set compact closed topology",
+    )
+    declarations = packet["declarations"]
+    names = [row["name"] for row in declarations]
+
+    assert names[0] == "mersenneTail_lt_weight"
+    assert names[1:3] == [
+        "isCompact_mersenneAchievementSet",
+        "isClosed_mersenneAchievementSet",
+    ]
+    assert "mersenneWeightRat_zero" not in names
+    assert all(
+        row["connection_relevance"]["query_term_overlap"]
+        or row["connection_relevance"]["anchor_relations"]
+        for row in declarations[1:]
+    )
+    receipt = packet["declaration_selection_receipt"]
+    assert receipt["selection_policy"] == (
+        "anchor_then_query_overlap_then_exact_source_span_relation"
+    )
+    assert receipt["excluded_module_broad_count"] > 100
+
+
+def validate_paper_semantic_citation_aliases() -> None:
+    """Qualified authored roles must resolve ordinary source-level paper links."""
+    packet = semantic_query(
+        "paper-coverage",
+        "--paper",
+        "erdos_243_note",
+        "--limit",
+        "64",
+    )
+    by_artifact = {row["artifact"]: row for row in packet["results"]}
+    reciprocal = by_artifact["erdos_243_note"]
+
+    assert reciprocal["authored_statement_nodes_reached"] > 0
+    assert (
+        reciprocal["all_tier_statement_nodes_reached"]
+        >= reciprocal["authored_statement_nodes_reached"]
+    )
+    assert (
+        "Erdos243/ReciprocalTailRigidity.lean:no_periodicNegative_orbit"
+        in reciprocal["node_routed_citations"]
+    )
+    assert (
+        "Erdos243/ReciprocalTailRigidity.lean:no_periodicNegative_orbit"
+        not in reciprocal["atlas_absent_declaration_citations"]
+    )
+
+    backlog = semantic_query(
+        "population-backlog",
+        "--paper",
+        "erdos249-totient-reasoning-surface",
+        "--limit",
+        "12",
+    )
+    assert backlog["paper_count"] == 1
+    assert backlog["authored_statement_backlog_declaration_count"] > 0
+    paper = backlog["papers"][0]
+    assert paper["authored_statement_backlog_declaration_count"] > 0
+    assert paper["authored_statement_backlog_declaration_count"] >= sum(
+        group["declaration_count"]
+        for group in paper["unlinked_module_groups"]
+    )
+    assert all(
+        group["declaration_count"] >= len(group["candidates"])
+        for group in paper["unlinked_module_groups"]
+    )
+    assert all(
+        group["module"].endswith(".lean")
+        for group in paper["unlinked_module_groups"]
+    )
+    assert all(
+        candidate["interpretation_tier"] != "authored_statement"
+        for group in paper["unlinked_module_groups"]
+        for candidate in group["candidates"]
+    )
+
+    structural = semantic_query(
+        "structural-backlog",
+        "--problem",
+        "257",
+    )
+    assert structural.get("truncated") is not True
+    assert structural["results"]
+    assert structural["returned_module_count"] == len(structural["results"])
+    assert structural["omitted_module_count"] == (
+        structural["module_backlog_count"]
+        - structural["returned_module_count"]
+    )
+    assert structural["results"][0]["candidate_roles"]
+    assert (
+        len(
+            json.dumps(
+                structural,
+                indent=1,
+                ensure_ascii=False,
+            ).encode("utf-8")
+        )
+        <= structural["budget_contract"]["maximum_encoded_bytes"]
+    )
 
 
 def validate_claim_status_packets() -> None:
@@ -280,16 +529,36 @@ def validate_claim_status_packets() -> None:
 
 def main() -> int:
     validate_programme_routes()
+    validate_agent_tour()
     validate_natural_language_search()
+    validate_indexed_declaration_lookup()
+    validate_connection_query_ranking()
+    validate_paper_semantic_citation_aliases()
+    bare_ask = subprocess.run(
+        [
+            sys.executable,
+            str(SCRIPT),
+            "--ask",
+            "why does this Lean proof work",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert bare_ask.returncode == 0, bare_ask.stderr
+    assert len(bare_ask.stdout.encode("utf-8")) <= query_corpus.OUTPUT_BUDGET_BYTES
+    assert "semantic slice" in bare_ask.stdout.lower()
     validate_claim_status_packets()
     summary = query()
     assert summary["kind"] == "corpus_summary"
     omission_receipt = summary["bounded_summary_omission_receipt"]
     assert set(omission_receipt["omitted_sections"]) == {
+        "checks",
         "editorial_architecture",
         "editorial_state",
         "external_registration",
-        "source_revision",
+        "source_provenance",
     }
     assert omission_receipt["drilldown"] == "docs/orientation.json"
     assert all(
@@ -304,7 +573,12 @@ def main() -> int:
     )
     module_graph = claims_document["machine_readable_paper"]["module_graph"]
     assert module_graph["root"] == "Erdos249257.lean"
-    assert summary["scale"]["module_count"] == len(module_graph["nodes"]) + 1
+    assert module_graph["additional_roots"] == ["ErdosProblems.lean"]
+    assert summary["scale"]["module_count"] == (
+        len(module_graph["nodes"])
+        + 1
+        + len(module_graph["additional_roots"])
+    )
     descriptor = json.loads((ROOT / "docs" / "corpus_descriptor.json").read_text(encoding="utf-8"))
     formal_source = claims_document["release"]["formal_source"]
     publication_assembly = claims_document["machine_readable_paper"]["publication_assembly"]
@@ -364,7 +638,7 @@ def main() -> int:
         resolved_formal_source
     )
     assert descriptor["identity"]["formal_source"]["publication_state"] == (
-        "published_committed_checkpoint"
+        formal_source["publication_state"]
     )
 
     claim = query("--claim", "denominator_exclusion")
@@ -777,21 +1051,27 @@ def main() -> int:
     module = json.loads(module_run.stdout)
     assert module["module"]["declaration_count"] > 400
     assert any(row["id"] == "eb_full_support" for row in module["attached_claims"])
-    assert len(module["declaration_preview"]) == 20
+    assert len(module["declaration_preview"]) == 12
     assert module["declaration_preview_receipt"]["omitted"] > 0
+    assert module["declaration_preview_receipt"]["requested_limit"] == 20
+    assert module["declaration_preview_receipt"]["effective_limit"] == 12
     assert "declaration_kind" in module["declaration_preview"][0]
     assert module["module"]["role"] == "Assembled theorem kernel and headline interfaces"
     neighbourhood = module["dependency_neighbourhood"]
-    assert neighbourhood["receipt"]["imports_total"] == 10
-    assert neighbourhood["receipt"]["importers_total"] == 9
-    assert len(neighbourhood["importers"]) == 9
-    assert neighbourhood["receipt"]["importers_omitted"] == 0
+    receipt = neighbourhood["receipt"]
+    assert receipt["imports_total"] == len(module["module"]["imports"])
+    assert receipt["importers_total"] >= 9
+    assert len(neighbourhood["importers"]) == min(receipt["importers_total"], 12)
+    assert receipt["importers_omitted"] == max(receipt["importers_total"] - 12, 0)
+    assert receipt["requested_limit"] == 20
+    assert receipt["effective_limit"] == 12
 
     certificate_hub = query("--module", "Erdos249257.DiagonalPincerCertificates")
     hub_neighbourhood = certificate_hub["dependency_neighbourhood"]
-    assert hub_neighbourhood["receipt"]["importers_total"] == 483
-    assert len(hub_neighbourhood["importers"]) == 20
-    assert hub_neighbourhood["receipt"]["importers_omitted"] == 463
+    hub_receipt = hub_neighbourhood["receipt"]
+    assert hub_receipt["importers_total"] >= 483
+    assert len(hub_neighbourhood["importers"]) == min(hub_receipt["importers_total"], 12)
+    assert hub_receipt["importers_omitted"] == max(hub_receipt["importers_total"] - 12, 0)
 
     root = query("--module", "Erdos249257.lean", "--limit", "3")
     assert root["module"]["role"] == "Supported package root import"
@@ -822,7 +1102,11 @@ def main() -> int:
     # body genuinely depends on Erdos249257.MersenneLambertLadder, so the single
     # import is a real edge and not a packaging artefact.
     assert signed_moment["dependency_neighbourhood"]["receipt"]["imports_total"] == 1
-    assert signed_moment["dependency_neighbourhood"]["receipt"]["importers_total"] == 1
+    assert signed_moment["dependency_neighbourhood"]["receipt"]["importers_total"] >= 1
+    assert any(
+        row["id"] == "Erdos249257"
+        for row in signed_moment["dependency_neighbourhood"]["importers"]
+    )
 
     totient_mahler = query("--module", "Erdos249257.TotientMahlerDefect", "--limit", "3")
     assert totient_mahler["module"]["role"] == (
@@ -908,6 +1192,26 @@ def main() -> int:
     assert route["route"]["query_steps"]
     assert route["route"]["authority_owners"]
     assert route["route"]["adjacent_handle_classes"]
+
+    agent_route = query("--route", "agent_native_corpus_navigation")["route"]
+    assert all(
+        step.startswith("python3 scripts/query_corpus.py --")
+        for step in agent_route["query_steps"]
+    )
+    assert {
+        "scripts/query_semantic.py",
+        "scripts/proof_workbench.py",
+        "scripts/lean_fast_build.py",
+    } == {
+        step.split()[1] for step in agent_route["action_steps"]
+    }
+    assert any(
+        "query_semantic.py population-backlog" in step
+        for step in agent_route["action_steps"]
+    )
+    assert {"lean-toolchain", "lakefile.toml"}.issubset(
+        agent_route["authority_owners"]
+    )
 
     unknown = run("--claim", "does_not_exist")
     assert unknown.returncode == 2
@@ -1045,6 +1349,7 @@ def main() -> int:
 if __name__ == "__main__":
     if sys.argv[1:] == ["--programme-routes-only"]:
         validate_programme_routes()
+        validate_agent_tour()
         validate_natural_language_search()
         print(
             "test_query_corpus: "

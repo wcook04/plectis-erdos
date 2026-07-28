@@ -1,0 +1,188 @@
+{
+  "zone_id": "Z52",
+  "title": "Fixed-rank totient curvature: extremal-ordering socket, primitive affine kernel, and clean-LCM divisibility",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "fixed_rank_totient_curvature",
+      "label": "fixed-rank totient curvature",
+      "note": "The integral three-point second difference across the ranks H+j, 2H+j, and 3H+j."
+    },
+    {
+      "id": "middle_rank_extremality",
+      "label": "middle-rank totient extremality",
+      "note": "The strict local-minimum or strict local-maximum socket for the middle totient."
+    },
+    {
+      "id": "affine_rank_three_kernel",
+      "label": "affine rank-three kernel",
+      "note": "Integer coefficient triples annihilating the constant and linear moments."
+    },
+    {
+      "id": "primitive_second_difference_vector",
+      "label": "primitive second-difference vector",
+      "note": "The coefficient vector (1,-2,1), unique up to integer scaling in the affine kernel."
+    },
+    {
+      "id": "clean_power_two_lcm_offset",
+      "label": "clean power-two-LCM offset",
+      "note": "A positive offset j satisfying j^2<=2^a at the height periodLcm(2^a)."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "fixed_rank_second_difference_is_the_primitive_three_point_curvature",
+      "canonical_statement": "fixedRankSecondDifference H j is the integer φ(3H+j)-2φ(2H+j)+φ(H+j).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "fixed_rank_totient_curvature",
+        "primitive_second_difference_vector"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "primitive affine three-point curvature coordinate",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project coordinate definition.",
+      "scope_caveat": "The definition supplies no sign, nonvanishing, divisibility, asymptotic bound, certificate, or progress on Erdős #249.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "fixedRankSecondDifference",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 256
+        }
+      ]
+    },
+    {
+      "id": "middle_rank_totient_extremality_is_the_local_ordering_socket",
+      "canonical_statement": "MiddleRankTotientExtremal H j means that φ(2H+j) is strictly below both outer totients or strictly above both.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "middle_rank_extremality",
+        "fixed_rank_totient_curvature"
+      ],
+      "open_antecedents": [
+        "for fixed j, cofinal occurrence of MiddleRankTotientExtremal at H=periodLcm(2^a), represented by the unproved PowerTwoLcmMiddleRankExtremalSupply j"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "strict middle-rank ordering socket",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The declaration only names the project-local ordering predicate.",
+      "scope_caveat": "Defining the socket does not assert it at any actual LCM height; sign and nonzero consequences are separate theorems.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "MiddleRankTotientExtremal",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 267
+        }
+      ]
+    },
+    {
+      "id": "affine_three_rank_kernel_is_uniquely_generated_by_one_minus_two_one",
+      "canonical_statement": "Every integer triple annihilating the constant and linear moments has c1=c3, c2=-2c3, and l1 norm 4|c3|.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "affine_rank_three_kernel",
+        "primitive_second_difference_vector"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "elementary integer linear classification of the affine kernel",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is elementary integer linear algebra, with no number-theoretic novelty claim.",
+      "scope_caveat": "Kernel uniqueness gives no information about whether the associated totient curvature is nonzero and supplies no extra two-adic factor.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "affine_rank_three_kernel_classification",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 338
+        }
+      ]
+    },
+    {
+      "id": "clean_power_two_lcm_curvature_is_divisible_by_twice_the_local_totient",
+      "canonical_statement": "For a at least four, j positive, and j^2<=2^a, the integer 2φ(j) divides fixedRankSecondDifference (periodLcm(2^a)) j.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "fixed_rank_totient_curvature",
+        "clean_power_two_lcm_offset"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "clean LCM factorization plus parity of the primitive curvature factor",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No external priority or novelty claim is made for the exact divisibility statement.",
+      "scope_caveat": "Divisibility does not prove nonzero curvature, the extremal supply, a residue certificate, or irrationality. It does not imply stronger two-adic divisibility.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_mul_totient_dvd_fixedRankSecondDifference",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 519
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "fixedRankSecondDifference",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 256,
+      "role": "representation",
+      "statement_node": "fixed_rank_second_difference_is_the_primitive_three_point_curvature"
+    },
+    {
+      "declaration": "MiddleRankTotientExtremal",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 267,
+      "role": "concept",
+      "statement_node": "middle_rank_totient_extremality_is_the_local_ordering_socket"
+    },
+    {
+      "declaration": "affine_rank_three_kernel_classification",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 338,
+      "role": "statement",
+      "statement_node": "affine_three_rank_kernel_is_uniquely_generated_by_one_minus_two_one"
+    },
+    {
+      "declaration": "two_mul_totient_dvd_fixedRankSecondDifference",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 519,
+      "role": "statement",
+      "statement_node": "clean_power_two_lcm_curvature_is_divisible_by_twice_the_local_totient"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "fixed_rank_second_difference_is_the_primitive_three_point_curvature",
+      "to": "affine_three_rank_kernel_is_uniquely_generated_by_one_minus_two_one",
+      "relation": "finite_instance_of",
+      "basis": "The fixed-rank second difference uses the primitive classified coefficient vector obtained by setting c3=1, namely (1,-2,1)."
+    },
+    {
+      "from": "middle_rank_totient_extremality_is_the_local_ordering_socket",
+      "to": "fixed_rank_second_difference_is_the_primitive_three_point_curvature",
+      "relation": "complements",
+      "basis": "The two strict-minimum inequalities force positive curvature and the two strict-maximum inequalities force negative curvature, as proved by the adjacent source theorems."
+    },
+    {
+      "from": "clean_power_two_lcm_curvature_is_divisible_by_twice_the_local_totient",
+      "to": "fixed_rank_second_difference_is_the_primitive_three_point_curvature",
+      "relation": "specialises",
+      "basis": "The divisibility theorem restricts the general curvature to clean offsets at power-two LCM heights and proves an arithmetic property of that specialization."
+    },
+    {
+      "from": "clean_power_two_lcm_curvature_is_divisible_by_twice_the_local_totient",
+      "to": "middle_rank_totient_extremality_is_the_local_ordering_socket",
+      "relation": "complements",
+      "basis": "Divisibility constrains the size lattice of the curvature, while the open extremal-ordering socket would provide independent nonvanishing."
+    }
+  ]
+}

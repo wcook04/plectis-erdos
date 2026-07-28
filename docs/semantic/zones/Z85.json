@@ -1,0 +1,131 @@
+{
+  "zone_id": "Z85",
+  "title": "Stern--Brocot run geometry: direction-flip involution and unit-run height recursion",
+  "problem": "249",
+  "replaces_role_zone": "Z07",
+  "concepts": [
+    {
+      "id": "z85_direction_flip",
+      "label": "Stern--Brocot direction flip",
+      "note": "The map exchanging the left and right mediant directions."
+    },
+    {
+      "id": "z85_flip_involution",
+      "label": "two-direction flip involution",
+      "note": "Flipping either constructor selects the other, and two flips restore the original direction."
+    },
+    {
+      "id": "z85_unit_run_height_recursion",
+      "label": "unit-run height recursion",
+      "note": "The exact height increment caused by prepending a run of length one."
+    },
+    {
+      "id": "z85_authority_boundary",
+      "label": "combinatorial infrastructure boundary",
+      "note": "These exact bookkeeping identities do not establish a measure symmetry, a Fibonacci estimate, analytic tail survival, or irrationality."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "direction_flip_exchanges_left_and_right_and_is_an_involution",
+      "canonical_statement": "PROVED TWO-DIRECTION INVOLUTION: LR.left.flip is LR.right, LR.right.flip is LR.left, and for every Stern--Brocot direction d, applying flip twice returns d.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z85_direction_flip",
+        "z85_flip_involution",
+        "z85_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Definitional reduction on the two constructors of LR; the double-flip law follows by cases on d.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary bookkeeping for a two-element direction type; no novelty or priority claim is made.",
+      "scope_caveat": "The three equalities concern only the direction labels. They do not prove that flipping a whole word swaps its coordinates, preserves a tree measure or run mass, or produces any arithmetic or irrationality consequence.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "LR.flip_left",
+          "module": "Erdos249257/SternBrocotRunGeometry.lean",
+          "line": 47
+        },
+        {
+          "declaration": "LR.flip_right",
+          "module": "Erdos249257/SternBrocotRunGeometry.lean",
+          "line": 48
+        },
+        {
+          "declaration": "LR.flip_flip",
+          "module": "Erdos249257/SternBrocotRunGeometry.lean",
+          "line": 49
+        }
+      ]
+    },
+    {
+      "id": "prepending_one_run_adds_the_previous_first_boundary_coordinate_to_height",
+      "canonical_statement": "PROVED UNIT-RUN RECURSION: for every list of run lengths ns, runHeight (1 :: ns) equals runHeight ns plus the first coordinate of runBoundaryPair ns.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z85_unit_run_height_recursion",
+        "z85_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Unfold runHeight and the continuant recurrence runBoundaryPair at a head run of length one, then normalize the resulting natural-number sum.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate one-step continuant bookkeeping; no novelty or priority claim is made.",
+      "scope_caveat": "This is one exact recursion identity. It supplies no lower bound by itself, does not state the replicated-unit Fibonacci formula or the later defect expansion, and says nothing about run-tail mass after denominator clearing or irrationality of the totient series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "runHeight_one_cons",
+          "module": "Erdos249257/SternBrocotRunGeometry.lean",
+          "line": 385
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "LR.flip_left",
+      "module": "Erdos249257/SternBrocotRunGeometry.lean",
+      "line": 47,
+      "role": "statement",
+      "statement_node": "direction_flip_exchanges_left_and_right_and_is_an_involution",
+      "routing_basis": "Direct left-constructor evidence for Z85::direction_flip_exchanges_left_and_right_and_is_an_involution."
+    },
+    {
+      "declaration": "LR.flip_right",
+      "module": "Erdos249257/SternBrocotRunGeometry.lean",
+      "line": 48,
+      "role": "statement",
+      "statement_node": "direction_flip_exchanges_left_and_right_and_is_an_involution",
+      "routing_basis": "Direct right-constructor evidence for Z85::direction_flip_exchanges_left_and_right_and_is_an_involution."
+    },
+    {
+      "declaration": "LR.flip_flip",
+      "module": "Erdos249257/SternBrocotRunGeometry.lean",
+      "line": 49,
+      "role": "statement",
+      "statement_node": "direction_flip_exchanges_left_and_right_and_is_an_involution",
+      "routing_basis": "Direct involution evidence for Z85::direction_flip_exchanges_left_and_right_and_is_an_involution."
+    },
+    {
+      "declaration": "runHeight_one_cons",
+      "module": "Erdos249257/SternBrocotRunGeometry.lean",
+      "line": 385,
+      "role": "statement",
+      "statement_node": "prepending_one_run_adds_the_previous_first_boundary_coordinate_to_height",
+      "routing_basis": "Direct unit-run recursion evidence for Z85::prepending_one_run_adds_the_previous_first_boundary_coordinate_to_height."
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "prepending_one_run_adds_the_previous_first_boundary_coordinate_to_height",
+      "to": "direction_flip_exchanges_left_and_right_and_is_an_involution",
+      "relation": "complements",
+      "basis": "The flip laws normalize alternation of left and right direction labels, while the unit-run recursion records the corresponding direction-free continuant height update; neither theorem derives the other."
+    }
+  ]
+}

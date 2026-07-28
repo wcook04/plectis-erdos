@@ -1,0 +1,917 @@
+{
+  "zone_id": "Z32",
+  "title": "Erdős 269 three-prime running-LCM cells, shell digits, and cofinal residue frontier",
+  "problem": "shared_substrate",
+  "concepts": [
+    {
+      "id": "z32_restricted_floor_sum",
+      "label": "restricted two-dimensional floor sum",
+      "note": "The exact count of one exponent after fixing the other two, evaluated at arbitrary or pure-power cutoffs without replacing the true smooth prefix by a rectangular approximation."
+    },
+    {
+      "id": "z32_true_smooth_shell",
+      "label": "true smooth shell multiplicity",
+      "note": "The cardinality difference between two literal strict three-prime smooth prefixes, including its exact restricted-floor-sum and pure-power endpoint forms."
+    },
+    {
+      "id": "z32_dyadic_radix_word",
+      "label": "four-letter dyadic block radix",
+      "note": "For the {2,3,5} jump word, the product of the terminal factor 2 and the optional internal 3- and 5-channel jumps in one dyadic block."
+    },
+    {
+      "id": "z32_rank_two_kernel",
+      "label": "exact rank-two kernel obstruction",
+      "note": "The nonzero -1/15 minor of the smallest {2,3,5} kernel rectangle, which excludes a rank-one separation of the three exponent coordinates."
+    },
+    {
+      "id": "z32_affine_window",
+      "label": "division-free affine carry window",
+      "note": "The accumulated base and forcing that exactly unroll a variable-radix affine recurrence across a finite local window."
+    },
+    {
+      "id": "z32_denominator_reduction",
+      "label": "smooth-factor denominator reduction",
+      "note": "Absorption of a fixed {2,3,5}-smooth factor into the running height, followed conditionally by cancellation from a carry recurrence whose states share that factor."
+    },
+    {
+      "id": "z32_cofinal_residue_escape",
+      "label": "cofinal least-positive-residue escape",
+      "note": "The denominator-dependent assertion that arbitrarily late local windows have a canonical positive residue above the matching reduced-carry bound."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "strict_smooth_count_has_exact_two_dimensional_floor_sum",
+      "canonical_statement": "PROVED FINITE NORMAL FORM: for positive first base p, the number of exponent triples with p^i q^j r^k < x is exactly both the sum of the cardinalities of its p-exponent fibres over admissible (q,r) pairs and the literal restricted two-dimensional floor sum built from those fibres.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_restricted_floor_sum"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite fibrewise cardinality decomposition followed by an explicit bijection between abstract projection fibres and p-exponent fibres",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is elementary finite counting and is recorded as the exact integer carrier for the paper's block digits; no novelty or priority claim is made.",
+      "scope_caveat": "The identity is finite and exact. It is not an asymptotic smooth-number estimate, a convergence theorem, or an irrationality statement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "strictSmoothExponent_fiber_card",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 280
+        },
+        {
+          "declaration": "restrictedFiberCount_eq_restrictedFloorSum",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 316
+        },
+        {
+          "declaration": "smoothCountLT_eq_restrictedFiberCount",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 327
+        },
+        {
+          "declaration": "smoothCountLT_eq_restrictedFloorSum",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 347
+        }
+      ]
+    },
+    {
+      "id": "pure_power_count_has_closed_log_floor_sum",
+      "canonical_statement": "PROVED PURE-POWER SPECIALISATION: at cutoff p^a with p>1 and positive q,r, each admissible (q,r)-pair contributes exactly a-log_p(q^j r^k) possible p-exponents, so the strict three-prime count is the explicit restricted logarithmic floor sum.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_restricted_floor_sum"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact cardinality of a one-dimensional exponent fibre at a pure-power cutoff",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "An elementary exact floor-sum rewrite at a pure-power cutoff; no novelty or priority claim is made.",
+      "scope_caveat": "This counts a finite strict prefix. It neither orders the infinite jump series nor estimates its tail.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "strictPExponentFiber_card_at_pow",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 143
+        },
+        {
+          "declaration": "restrictedFloorSum_pow_eq_restrictedLogFloorSum",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 196
+        },
+        {
+          "declaration": "restrictedPurePowerCount_eq_fiberSum",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 355
+        },
+        {
+          "declaration": "restrictedPurePowerCount_eq_restrictedFloorSum",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 362
+        },
+        {
+          "declaration": "restrictedPurePowerCount_eq_restrictedLogFloorSum",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 370
+        }
+      ]
+    },
+    {
+      "id": "true_shell_multiplicity_is_exact_count_difference",
+      "canonical_statement": "PROVED TRUE-SHELL FORMULA: for x<=y the number of literal three-prime smooth exponent triples in [x,y) is the difference of the two strict counts, equivalently the difference of their restricted fibre counts or restricted floor sums; between pure-power endpoints p^a<=q^b it is exactly V_q(b)-V_p(a).",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_true_smooth_shell",
+        "z32_restricted_floor_sum"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "monotonicity of the true strict smooth prefix, finite set difference, and the pure-power floor-sum normal forms",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Finite set subtraction and channel reindexing; recorded because the exact shell multiplicity is the forcing digit used by the window experiment.",
+      "scope_caveat": "The shell is the actual filtered set, but the formula remains finite. No cofinal distribution or anti-concentration of the resulting digits is proved.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "strictSmoothShell_card",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 90
+        },
+        {
+          "declaration": "strictSmoothShell_card_eq_restrictedFiberCount_sub",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 380
+        },
+        {
+          "declaration": "strictSmoothShell_card_eq_restrictedFloorSum_sub",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 390
+        },
+        {
+          "declaration": "strictSmoothShell_card_between_purePowers",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 400
+        }
+      ]
+    },
+    {
+      "id": "restricted_log_floor_sum_has_exact_discrete_derivative",
+      "canonical_statement": "PROVED CELL-INCREMENT LAW: for p,q,r>1, the increment V_p(a+1)-V_p(a) of the restricted logarithmic floor sum is exactly the number of admissible (q,r)-pairs below p^(a+1).",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_restricted_floor_sum",
+        "z32_true_smooth_shell"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "decomposition of consecutive pure-power cells into old pairs, each gaining one exponent, and newly admitted pairs, each contributing one",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary discrete differentiation of a finite floor sum; no novelty or priority claim is made.",
+      "scope_caveat": "This computes one exact cell increment. It does not supply residue escape, randomness, or any asymptotic law for the digit word.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "restrictedLogFloorSum_succ_sub",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 209
+        }
+      ]
+    },
+    {
+      "id": "dyadic_block_radix_has_exact_four_letter_alphabet",
+      "canonical_statement": "PROVED EXACT ALPHABET: in every open dyadic block (2^a,2^(a+1)) there is at most one internal power from each of the 3- and 5-channels; therefore the {2,3,5} block radix is exactly one of 2, 6, 10, or 30, and in particular lies between 2 and 30.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_dyadic_radix_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "strict multiplicative width two prevents two distinct powers of a base at least two inside one block, leaving two independent channel-presence bits",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The result is an exact paper-specific compression of the {2,3,5} jump word. No claim of novelty or priority is made.",
+      "scope_caveat": "The alphabet determines the block bases only. It does not identify the actual series carry, control the block digits, or prove cofinal residue escape.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "dyadicInternalPower_exponent_unique",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 668
+        },
+        {
+          "declaration": "dyadicBlockBase235_cases",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 699
+        },
+        {
+          "declaration": "dyadicBlockBase235_mem_interval",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 711
+        }
+      ]
+    },
+    {
+      "id": "kernel_235_has_exact_negative_one_fifteen_minor",
+      "canonical_statement": "PROVED FINITE RANK CERTIFICATE: on exponent coordinates (0,0),(1,0),(0,1),(1,1) with third exponent zero, the {2,3,5} reciprocal running-LCM kernel has determinant exactly -1/15; hence this restriction has rank two and the kernel cannot factor as f(i)g(j)h(k).",
+      "logical_class": "finite_instance",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_rank_two_kernel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact rational evaluation of the four kernel entries, including H(6)=60 rather than 6",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A finite exact determinant calculation. It strengthens the earlier non-rank-one witness to the paper's explicit -1/15 certificate without making a novelty claim.",
+      "scope_caveat": "One nonzero 2x2 minor rules out rank one only. It proves no larger rank bound, analytic independence, irrationality, or transcendence.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "kernel_235_minor_eq_neg_one_fifteen",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 721
+        }
+      ]
+    },
+    {
+      "id": "affine_recurrence_unrolls_over_exact_local_window",
+      "canonical_statement": "PROVED WINDOW NORMAL FORM: every integer affine recurrence A(n+1)=b(n)A(n)+e(n) unrolls across a finite window as A(lo+len)=W(lo,len)A(lo)+F(lo,len), where W is the accumulated product and F the recursively weighted forcing; multiplying every forcing digit by a constant multiplies F by the same constant.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_affine_window"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "induction on the finite window length",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard affine-recurrence algebra, formalised because it is the exact division-free consumer interface.",
+      "scope_caveat": "The theorem accepts arbitrary radix and forcing words. It neither derives them from the Erdős series nor supplies an escaping window.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "affineRecurrence_window",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 455
+        },
+        {
+          "declaration": "windowForcing_const_mul",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 469
+        }
+      ]
+    },
+    {
+      "id": "difference_forcing_has_exact_summation_by_parts",
+      "canonical_statement": "PROVED SUMMATION-BY-PARTS FORM: when the forcing digit is the difference V(n+1)-V(n), its accumulated window forcing equals the terminal potential minus the accumulated base times the initial potential plus the exact weighted interior correction.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_affine_window",
+        "z32_restricted_floor_sum"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "induction matching the recursive window forcing with the discrete potential difference",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A standard finite summation-by-parts identity in the paper's variable-radix coordinates.",
+      "scope_caveat": "The identity exposes the forcing exactly but gives no sign, magnitude, or modular anti-concentration estimate for it.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "windowForcing_difference_eq_potential",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 439
+        }
+      ]
+    },
+    {
+      "id": "integral_carry_has_exact_window_identity",
+      "canonical_statement": "PROVED CARRY NORMAL FORM: if c(n+1)=b(n)c(n)-B m(n), then c(lo+len)=W(lo,len)c(lo)-B F(lo,len); when m is a potential difference this has the corresponding exact weighted-potential expansion.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_affine_window"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "specialisation of the affine window identity after factoring the constant denominator multiplier from the forcing",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard finite recurrence algebra; it is the exact checked consumer used by the residue argument.",
+      "scope_caveat": "The theorem assumes the recurrence. The unproved problem-specific bridge must still show that the actual three-prime series produces such a carry and these digits.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "integralCarry_window",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 480
+        },
+        {
+          "declaration": "integralCarry_window_potential",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 497
+        }
+      ]
+    },
+    {
+      "id": "fixed_smooth_factor_is_absorbed_by_running_height",
+      "canonical_statement": "PROVED ABSORPTION: for bases p,q,r>1, every fixed smooth value p^i q^j r^k divides the three-prime running height once the cutoff x reaches that smooth value.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_denominator_reduction"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "each exponent is bounded by the corresponding integer logarithm at the cutoff, so the three powers divide coordinatewise",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary divisibility after the running-height product formula; no novelty claim is made.",
+      "scope_caveat": "Height divisibility does not imply that a denominator-cleared carry state shares the same factor.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "smooth3Val_dvd_threePrimeHeight_of_le",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 513
+        }
+      ]
+    },
+    {
+      "id": "common_smooth_carry_factor_cancels_conditionally",
+      "canonical_statement": "PROVED CONDITIONAL REDUCTION: if every integral carry state c(n) has the form S d(n) for one nonzero smooth factor S, then S cancels from c(n+1)=b(n)c(n)-S B m(n); when S is positive, positivity and the sharp bound descend to d, and d inherits the exact local-window identity with reduced denominator B.",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_denominator_reduction",
+        "z32_affine_window"
+      ],
+      "open_antecedents": [
+        "the problem-specific rationality-to-carry identification, including proof that every actual denominator-cleared carry state is divisible by the absorbed {2,3,5}-smooth denominator factor"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "cancellation in the integer recurrence, order transfer through a positive common factor, and the exact integral-carry window identity",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary cancellation and order arithmetic. The mathematical boundary is the missing divisibility of the actual carry, not the algebra once it is assumed.",
+      "scope_caveat": "The theorem never proves that the actual carry shares S. Therefore it does not by itself reduce an arbitrary hypothetical rational denominator to a factor coprime with 30.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "integralCarry_cancel_commonFactor",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 546
+        },
+        {
+          "declaration": "reducedCarry_pos_le_of_commonFactor",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 566
+        },
+        {
+          "declaration": "reducedIntegralCarry_window",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 577
+        }
+      ]
+    },
+    {
+      "id": "least_positive_residue_excludes_bounded_positive_state",
+      "canonical_statement": "PROVED FINITE CONSUMER: for positive modulus C, the canonical least positive representative of x modulo C lies in {1,...,C} and is congruent to x; hence no positive integer state with absolute value at most K can be congruent to x when that representative is strictly larger than K.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_cofinal_residue_escape"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "canonical Euclidean remainder with the zero class represented by C, followed by the two finite residue cases",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary modular arithmetic. The explicit zero-residue convention prevents an invalid absolute-value replacement.",
+      "scope_caveat": "This theorem consumes one escaping residue. It gives no reason that such a residue exists for the actual radix/digit word.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "leastPositiveResidue_pos_le",
+          "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+          "line": 24
+        },
+        {
+          "declaration": "leastPositiveResidue_modEq",
+          "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+          "line": 45
+        },
+        {
+          "declaration": "no_bounded_positive_int_state_of_leastPositiveResidue",
+          "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "id": "cofinal_escape_rules_out_matching_positive_reduced_carry",
+      "canonical_statement": "PROVED CONDITIONAL EXTINCTION: if the denominator-dependent CofinalLocalWindowEscape predicate holds for radix b, digit word m, and bound K, then for every positive B coprime to 30 there is no everywhere-positive integer sequence d satisfying d(n+1)=b(n)d(n)-B m(n) and |d(n)|<=K(B,n).",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_cofinal_residue_escape",
+        "z32_affine_window",
+        "z32_denominator_reduction"
+      ],
+      "open_antecedents": [
+        "CofinalLocalWindowEscape for the actual {2,3,5} dyadic radix, exact shell-multiplicity digits, and denominator-dependent carry bound"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "choose one escaping window, reduce the exact carry window identity modulo its accumulated base, and apply the canonical least-positive-residue contradiction",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The finite consumer is elementary; no novelty or priority claim is made for the conditional packaging.",
+      "scope_caveat": "CofinalLocalWindowEscape is a named Prop supplied as a hypothesis, not a proved theorem. The result also assumes the reduced carry recurrence and does not connect it to the original series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+          "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "line": 610
+        }
+      ]
+    },
+    {
+      "id": "finite_dyadic_window_scan_does_not_supply_cofinal_escape",
+      "canonical_statement": "EXACT COMPUTATIONAL EVIDENCE WITH A HARD CEILING: the integer-only checker reproduces the three displayed certificates and, for all 106666 pairs with B<=1000, gcd(B,30)=1, and 100<=a<=500, finds an escaping window of length at most 18 (largest first-success length 14); these bounded quantifiers do not establish CofinalLocalWindowEscape for unbounded B or arbitrarily late starts.",
+      "logical_class": "barrier_no_go",
+      "problem": "shared_substrate",
+      "concepts": [
+        "z32_dyadic_radix_word",
+        "z32_true_smooth_shell",
+        "z32_cofinal_residue_escape"
+      ],
+      "open_antecedents": [
+        "a proof uniform in every positive B coprime to 30",
+        "escape after every requested starting index rather than only 100<=a<=500",
+        "the rationality-to-actual-carry identification and smooth-factor divisibility"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "scripts/check_erdos269_dyadic_windows.py with --max-denominator 1000 --start-min 100 --start-max 500 --max-length 18 --assert-packet; exact integer output schema erdos269-dyadic-window-exact-check/1",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is reproducible project computation, not a Lean theorem, literature claim, or novelty claim.",
+      "scope_caveat": "The barrier rejects only the inference from a bounded successful scan to a cofinal theorem. It does not refute CofinalLocalWindowEscape and it does not weaken any individual finite certificate.",
+      "confidence": "high",
+      "evidence": []
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "strictSmoothExponents",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 23,
+      "role": "concept",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "smoothCountLT",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 28,
+      "role": "concept",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "strictSmoothPairs",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 110,
+      "role": "concept",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "restrictedFiberCount",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 130,
+      "role": "representation",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "strictPExponentFiber",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 137,
+      "role": "representation",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "restrictedFloorSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 184,
+      "role": "representation",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "strictSmoothExponent_fiber_card",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 280,
+      "role": "engine",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "restrictedFiberCount_eq_restrictedFloorSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 316,
+      "role": "statement",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "smoothCountLT_eq_restrictedFiberCount",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 327,
+      "role": "statement",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "smoothCountLT_eq_restrictedFloorSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 347,
+      "role": "statement",
+      "statement_node": "strict_smooth_count_has_exact_two_dimensional_floor_sum"
+    },
+    {
+      "declaration": "restrictedPurePowerCount",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 98,
+      "role": "concept",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "smoothCountLT_pow_eq_restrictedPurePowerCount",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 101,
+      "role": "substrate",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "strictPExponentFiber_card_at_pow",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 143,
+      "role": "engine",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "restrictedLogFloorSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 191,
+      "role": "representation",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "restrictedFloorSum_pow_eq_restrictedLogFloorSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 196,
+      "role": "statement",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "restrictedPurePowerCount_eq_fiberSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 355,
+      "role": "statement",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "restrictedPurePowerCount_eq_restrictedFloorSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 362,
+      "role": "statement",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "restrictedPurePowerCount_eq_restrictedLogFloorSum",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 370,
+      "role": "statement",
+      "statement_node": "pure_power_count_has_closed_log_floor_sum"
+    },
+    {
+      "declaration": "strictSmoothExponents_mono",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 67,
+      "role": "substrate",
+      "statement_node": "true_shell_multiplicity_is_exact_count_difference"
+    },
+    {
+      "declaration": "strictSmoothShell",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 84,
+      "role": "concept",
+      "statement_node": "true_shell_multiplicity_is_exact_count_difference"
+    },
+    {
+      "declaration": "strictSmoothShell_card",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 90,
+      "role": "statement",
+      "statement_node": "true_shell_multiplicity_is_exact_count_difference"
+    },
+    {
+      "declaration": "smoothCountLT_swap_first_second",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 34,
+      "role": "engine",
+      "statement_node": "true_shell_multiplicity_is_exact_count_difference"
+    },
+    {
+      "declaration": "strictSmoothShell_card_eq_restrictedFiberCount_sub",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 380,
+      "role": "statement",
+      "statement_node": "true_shell_multiplicity_is_exact_count_difference"
+    },
+    {
+      "declaration": "strictSmoothShell_card_eq_restrictedFloorSum_sub",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 390,
+      "role": "statement",
+      "statement_node": "true_shell_multiplicity_is_exact_count_difference"
+    },
+    {
+      "declaration": "strictSmoothShell_card_between_purePowers",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 400,
+      "role": "statement",
+      "statement_node": "true_shell_multiplicity_is_exact_count_difference"
+    },
+    {
+      "declaration": "strictSmoothPairs_mono",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 116,
+      "role": "substrate",
+      "statement_node": "restricted_log_floor_sum_has_exact_discrete_derivative"
+    },
+    {
+      "declaration": "restrictedLogFloorSum_succ_sub",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 209,
+      "role": "statement",
+      "statement_node": "restricted_log_floor_sum_has_exact_discrete_derivative"
+    },
+    {
+      "declaration": "DyadicInternalPower",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 662,
+      "role": "concept",
+      "statement_node": "dyadic_block_radix_has_exact_four_letter_alphabet"
+    },
+    {
+      "declaration": "dyadicInternalPower_exponent_unique",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 668,
+      "role": "engine",
+      "statement_node": "dyadic_block_radix_has_exact_four_letter_alphabet"
+    },
+    {
+      "declaration": "dyadicBlockBase235",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 688,
+      "role": "representation",
+      "statement_node": "dyadic_block_radix_has_exact_four_letter_alphabet"
+    },
+    {
+      "declaration": "dyadicBlockBase235_cases",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 699,
+      "role": "statement",
+      "statement_node": "dyadic_block_radix_has_exact_four_letter_alphabet"
+    },
+    {
+      "declaration": "dyadicBlockBase235_mem_interval",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 711,
+      "role": "statement",
+      "statement_node": "dyadic_block_radix_has_exact_four_letter_alphabet"
+    },
+    {
+      "declaration": "kernel_235_minor_eq_neg_one_fifteen",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 721,
+      "role": "statement",
+      "statement_node": "kernel_235_has_exact_negative_one_fifteen_minor"
+    },
+    {
+      "declaration": "windowBase",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 417,
+      "role": "representation",
+      "statement_node": "affine_recurrence_unrolls_over_exact_local_window"
+    },
+    {
+      "declaration": "windowForcing",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 422,
+      "role": "representation",
+      "statement_node": "affine_recurrence_unrolls_over_exact_local_window"
+    },
+    {
+      "declaration": "affineRecurrence_window",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 455,
+      "role": "statement",
+      "statement_node": "affine_recurrence_unrolls_over_exact_local_window"
+    },
+    {
+      "declaration": "windowForcing_const_mul",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 469,
+      "role": "statement",
+      "statement_node": "affine_recurrence_unrolls_over_exact_local_window"
+    },
+    {
+      "declaration": "windowPotentialCorrection",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 429,
+      "role": "representation",
+      "statement_node": "difference_forcing_has_exact_summation_by_parts"
+    },
+    {
+      "declaration": "windowForcing_difference_eq_potential",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 439,
+      "role": "statement",
+      "statement_node": "difference_forcing_has_exact_summation_by_parts"
+    },
+    {
+      "declaration": "integralCarry_window",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 480,
+      "role": "statement",
+      "statement_node": "integral_carry_has_exact_window_identity"
+    },
+    {
+      "declaration": "integralCarry_window_potential",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 497,
+      "role": "statement",
+      "statement_node": "integral_carry_has_exact_window_identity"
+    },
+    {
+      "declaration": "smooth3Val_dvd_threePrimeHeight_of_le",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 513,
+      "role": "statement",
+      "statement_node": "fixed_smooth_factor_is_absorbed_by_running_height"
+    },
+    {
+      "declaration": "integralCarry_cancel_commonFactor",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 546,
+      "role": "statement",
+      "statement_node": "common_smooth_carry_factor_cancels_conditionally"
+    },
+    {
+      "declaration": "reducedCarry_pos_le_of_commonFactor",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 566,
+      "role": "statement",
+      "statement_node": "common_smooth_carry_factor_cancels_conditionally"
+    },
+    {
+      "declaration": "reducedIntegralCarry_window",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 577,
+      "role": "statement",
+      "statement_node": "common_smooth_carry_factor_cancels_conditionally"
+    },
+    {
+      "declaration": "leastPositiveResidue",
+      "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+      "line": 19,
+      "role": "concept",
+      "statement_node": "least_positive_residue_excludes_bounded_positive_state"
+    },
+    {
+      "declaration": "leastPositiveResidue_pos_le",
+      "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+      "line": 24,
+      "role": "substrate",
+      "statement_node": "least_positive_residue_excludes_bounded_positive_state"
+    },
+    {
+      "declaration": "leastPositiveResidue_modEq",
+      "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+      "line": 45,
+      "role": "substrate",
+      "statement_node": "least_positive_residue_excludes_bounded_positive_state"
+    },
+    {
+      "declaration": "no_bounded_positive_int_state_of_leastPositiveResidue",
+      "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+      "line": 104,
+      "role": "statement",
+      "statement_node": "least_positive_residue_excludes_bounded_positive_state"
+    },
+    {
+      "declaration": "CofinalLocalWindowEscape",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 594,
+      "role": "concept",
+      "statement_node": "cofinal_escape_rules_out_matching_positive_reduced_carry"
+    },
+    {
+      "declaration": "no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+      "module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+      "line": 610,
+      "role": "statement",
+      "statement_node": "cofinal_escape_rules_out_matching_positive_reduced_carry"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "pure_power_count_has_closed_log_floor_sum",
+      "to": "strict_smooth_count_has_exact_two_dimensional_floor_sum",
+      "relation": "specialises",
+      "basis": "The pure-power theorem evaluates the same exact fibre decomposition at x=p^a and closes each one-dimensional fibre by an integer logarithm."
+    },
+    {
+      "from": "true_shell_multiplicity_is_exact_count_difference",
+      "to": "strict_smooth_count_has_exact_two_dimensional_floor_sum",
+      "relation": "reformulates",
+      "basis": "A true shell is the set difference of two strict prefixes, so its cardinality is the difference of the two exact count normal forms."
+    },
+    {
+      "from": "true_shell_multiplicity_is_exact_count_difference",
+      "to": "pure_power_count_has_closed_log_floor_sum",
+      "relation": "specialises",
+      "basis": "At pure-power endpoints the two strict prefix counts become the explicit logarithmic floor sums V_q(b) and V_p(a)."
+    },
+    {
+      "from": "restricted_log_floor_sum_has_exact_discrete_derivative",
+      "to": "pure_power_count_has_closed_log_floor_sum",
+      "relation": "reformulates",
+      "basis": "The discrete derivative identifies the exact change between consecutive pure-power floor-sum cells rather than merely re-evaluating each endpoint independently."
+    },
+    {
+      "from": "difference_forcing_has_exact_summation_by_parts",
+      "to": "affine_recurrence_unrolls_over_exact_local_window",
+      "relation": "specialises",
+      "basis": "The potential identity is the affine window forcing specialised to a discrete-difference digit word."
+    },
+    {
+      "from": "integral_carry_has_exact_window_identity",
+      "to": "affine_recurrence_unrolls_over_exact_local_window",
+      "relation": "specialises",
+      "basis": "The carry identity is the affine recurrence normal form with forcing e(n)=-B m(n)."
+    },
+    {
+      "from": "integral_carry_has_exact_window_identity",
+      "to": "difference_forcing_has_exact_summation_by_parts",
+      "relation": "complements",
+      "basis": "When the exact shell digit is a difference of smooth-count potentials, the carry window consumes the summation-by-parts forcing formula directly."
+    },
+    {
+      "from": "common_smooth_carry_factor_cancels_conditionally",
+      "to": "fixed_smooth_factor_is_absorbed_by_running_height",
+      "relation": "depends_on_open",
+      "basis": "Height absorption supplies the intended smooth factor, but the cancellation theorem additionally needs the unproved fact that every actual carry state is divisible by it."
+    },
+    {
+      "from": "common_smooth_carry_factor_cancels_conditionally",
+      "to": "integral_carry_has_exact_window_identity",
+      "relation": "specialises",
+      "basis": "After cancelling the common smooth factor, the reduced carry inherits the same exact window identity with multiplier B."
+    },
+    {
+      "from": "cofinal_escape_rules_out_matching_positive_reduced_carry",
+      "to": "integral_carry_has_exact_window_identity",
+      "relation": "depends_on_open",
+      "basis": "The conditional extinction theorem reduces one selected cofinal escape window to a congruence using the exact carry-window identity."
+    },
+    {
+      "from": "cofinal_escape_rules_out_matching_positive_reduced_carry",
+      "to": "least_positive_residue_excludes_bounded_positive_state",
+      "relation": "implies",
+      "basis": "At the endpoint of the selected window, the cofinal predicate supplies exactly the residue-above-bound hypothesis consumed by the finite modular contradiction."
+    },
+    {
+      "from": "cofinal_escape_rules_out_matching_positive_reduced_carry",
+      "to": "common_smooth_carry_factor_cancels_conditionally",
+      "relation": "complements",
+      "basis": "The denominator reduction and the cofinal window producer are the two independent missing bridges needed before the finite reduced-carry contradiction can address the actual series."
+    },
+    {
+      "from": "finite_dyadic_window_scan_does_not_supply_cofinal_escape",
+      "to": "dyadic_block_radix_has_exact_four_letter_alphabet",
+      "relation": "generated_by",
+      "basis": "The checker constructs every tested block base from the exact four-letter {2,6,10,30} radix alphabet."
+    },
+    {
+      "from": "finite_dyadic_window_scan_does_not_supply_cofinal_escape",
+      "to": "true_shell_multiplicity_is_exact_count_difference",
+      "relation": "generated_by",
+      "basis": "Its block digits are computed from exact differences of strict smooth-count potentials, the executable counterpart of the true-shell formula."
+    },
+    {
+      "from": "finite_dyadic_window_scan_does_not_supply_cofinal_escape",
+      "to": "cofinal_escape_rules_out_matching_positive_reduced_carry",
+      "relation": "barrier_for",
+      "basis": "Success on 106666 bounded denominator/start pairs does not meet the consumer's universal denominator and arbitrarily-late-start quantifiers."
+    }
+  ]
+}

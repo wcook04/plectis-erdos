@@ -13,9 +13,9 @@
       "title": "Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257",
       "artifact_class": "mathematical_gateway",
       "source_path": "paper/erdos249-257-main-paper.tex",
-      "source_content_digest": "sha256:2ac1d7773053f4b3864c336a30a44cceb76d75f4b5c28bcfd01de3e6cf68426f",
+      "source_content_digest": "sha256:42952aa1988f546423cbe60f3cdbebf44702edcc163ac75c87af9a2e8ddd5ead",
       "rendered_path": "erdos249-257-main-paper.pdf",
-      "rendered_content_digest": "sha256:65c51df1db693af4035ede1372192ef355542e2658de8721a4d23c956e3e2d26",
+      "rendered_content_digest": "sha256:dd079cb849915f1bf0966c786e056693768b556c5a91eba449042f6e4eb5e93f",
       "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority",
       "claim_scope": "Mathematical exposition of claims and open boundaries owned by docs/claims.json and checked against the pinned Lean source.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.canonical_gateway",
@@ -30,9 +30,9 @@
       "title": "How a Lean Repository Turns Formal Proofs into a Checked Public Release",
       "artifact_class": "repository_architecture_guide",
       "source_path": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_content_digest": "sha256:867f45fe1d1f6321bd95f8f3b6919d9a83bfd4e349bf2a19ceeb948cabf622ba",
+      "source_content_digest": "sha256:53cae935c1854d54eb0a590ccf0ac09a847b17ca39df7525159c4ebf85fb9220",
       "rendered_path": "claim-faithful-publication-systems-paper.pdf",
-      "rendered_content_digest": "sha256:8c37a7c2f35915573f2571eb8ca190a031837063f351fea235f68bfe01c5aa84",
+      "rendered_content_digest": "sha256:1a2f82456b118b86672c2f6558f899da71e7d0a96678de4cacd823452fc4537f",
       "authority_posture": "authored_repository_architecture_not_Lean_proof_authority",
       "claim_scope": "A first-principles architecture and access guide to the public Lean source, reviewed claim record, authored documents, generated views, release flow, CI jobs, and human trust boundary. A later historical example illustrates the limit of explicitly recorded checks; the guide adds no mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
@@ -58,9 +58,210 @@
         "post_repair_full_mutation_rerun": false,
         "forbidden_inference": "Do not report a post-repair ten-of-ten result unless all ten mutations are rerun against the extended invariant set."
       }
+    },
+    {
+      "id": "agent_native_navigation_guide",
+      "title": "From a Cold Clone to a Proof Receipt",
+      "artifact_class": "agent_navigation_guide",
+      "source_path": "paper/cold-clone-to-proof-receipt.tex",
+      "source_content_digest": "sha256:e8d1580d2fe1478af224ef2103cfdac5a4abd8b9fd632dd5f5579fa2bd02a51d",
+      "rendered_path": "cold-clone-to-proof-receipt.pdf",
+      "rendered_content_digest": "sha256:b8250d36d515c30354b19ca0c947ec4d617acaa1c3faf8f22bc1b430e5dc73d8",
+      "authority_posture": "authored_agent_navigation_and_incremental_validation_guide_not_Lean_proof_authority",
+      "claim_scope": "A case study of zero-build corpus navigation, explicit authority boundaries, replayable agent-session receipts, focused changed-cone builds, and exact cached dependency-index validation in this repository. It does not claim autonomous proving, optimal reasoning, external mathematical novelty, or demonstrated transfer to another project.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.agent_native_guides",
+      "entry_route_id": "agent_native_corpus_navigation",
+      "validation": [
+        "python3 scripts/check_agent_navigation_paper.py",
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_cold_clone_comprehension.py --quick",
+        "python3 scripts/test_lean_dependency_index_cache.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_249_reasoning_record",
+      "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos249-totient-reasoning-surface.tex",
+      "source_content_digest": "sha256:21d0f60ae3ccc4725e88cce370ae255300105c2d4dbebfd0a427c95787501c9f",
+      "rendered_path": "erdos249-totient-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:bb18e022fa640178c25dc543dabfb6fef0362ebdd133663fc3f917cd1480d763",
+      "authority_posture": "authored_full_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Full working record for Erdős Problem 249: checked premises, finite certificates, closed routes, surviving obligations, evidence bands, and Lean coordinates. The problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_257_reasoning_record",
+      "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
+      "artifact_class": "mathematical_companion",
+      "source_path": "paper/erdos257-mersenne-reasoning-surface.tex",
+      "source_content_digest": "sha256:c925f06aaeddb132c75c7d4d941c9dfd74afcf90aef4aabf8eca09da9d01f88a",
+      "rendered_path": "erdos257-mersenne-reasoning-surface.pdf",
+      "rendered_content_digest": "sha256:8036db8e36669b78385a6a88b140b218247aac61ee032f8d3c27695a299451d7",
+      "authority_posture": "authored_full_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Full working record for Erdős Problem 257: checked premises, finite computations, equivalent and weaker routes, surviving obligations, evidence bands, and Lean coordinates. The universal and half-value questions remain open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
+      "entry_route_id": "follow_one_claim",
+      "validation": [
+        "python3 scripts/check_rendered_paper_boundary.py",
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/check_release.py"
+      ]
+    },
+    {
+      "id": "erdos_249_note",
+      "title": "Exact Ranks for the Dyadic Sections of Euler’s Totient",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-249-binary-totient-series.tex",
+      "source_content_digest": "sha256:4bd77f77e85cbdee774a71aed70b886ec71a900c100f958481868c2465c9172a",
+      "rendered_path": "erdos-249-binary-totient-series.pdf",
+      "rendered_content_digest": "sha256:330217a80db685b5f686c3c011b747933319636b47ce80f5d95fc7f5044f97fc",
+      "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
+      "claim_scope": "Standalone exposition of Erdős Problem 249, ordered unconditional results first: the exact level-e dyadic totient section rank 2^e+1 and the resulting infinite-dimensionality, the explicit denominator exclusion (whose Farey provenance is stated rather than implied), the phi*mu Lambert weight that separates #249 from the settled omega/Omega/tau series, and two scoped method no-go theorems. Every remaining obligation is named and the problem remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_257_note",
+      "title": "Forced Structure in Mersenne Subseries",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-257-mersenne-support-subseries.tex",
+      "source_content_digest": "sha256:0ba1c75cc820272d98bc7fc483ecba892bbb5e2590e7ac7e1892ec553ba8dac1",
+      "rendered_path": "erdos-257-mersenne-support-subseries.pdf",
+      "rendered_content_digest": "sha256:aaff74ea337f70e9dd7c5ecc4bcd2effda890c87ab91075196c5278a77b85094",
+      "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
+      "claim_scope": "Standalone exposition of Erdős Problem 257 led by exact finite-period noncollapse, necessary structure for any rational-valued infinite support, and achievement-set geometry. Duverney–Tachiya's full-text Corollary 1.2 and Example 1.1 settle the squarefree support at base 2, but not at bases b≥3; the manuscript separately proves that two divisibility-first certificate engines miss this settled value and that irrationality is invariant under finite support changes via checked prefix/tail lemmas. Tao–Teräväinen prove the prime-support case at base 2; broader base and prime-power extensions are remarks rather than proved theorems there. Universal Erdős #257 and the half-value test remain open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_243_note",
+      "title": "Excluding the Bounded Negative Part",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-243-reciprocal-tail-rigidity.tex",
+      "source_content_digest": "sha256:d0cd974c36da76273172a136cb9236279ca7ab016a9b139cee2ac20c74c56e30",
+      "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
+      "rendered_content_digest": "sha256:1c94d4b7af4c672ef23a2a9edad95a3d43238180737903d9f91e6ef6e7864025",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks that finite normalised negative centred-defect mass, together with the exact tail dynamics, positivity, and normalised vanishing, forces eventual Sylvester recurrence. The analytic bridge and the unbounded divergent-mass branch remain open; Erdős Problem 243 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_251_note",
+      "title": "The Prime-Gap Equivalence and the Integral-Shift Frontier",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
+      "source_content_digest": "sha256:3c9ad8c370f98b4a7d2b31006fd93370dff022f1d32523509f79c692f384956f",
+      "rendered_path": "erdos-251-prime-gap-dyadic-series.pdf",
+      "rendered_content_digest": "sha256:24b68ea90b85bf67a1a8955ee1975be2637384655f55d152852ccec931fe610c",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos251 module. Lean checks the infinite prime/gap equivalence conditional on summability, denominator collapse for rational dyadic recurrences, unboundedness and non-eventual-periodicity of the actual prime gaps, and the exact local implication from cofinally recurring adjacent small-mismatch tail shifts to failure of eventual integrality. The prime-number-theorem summability and concrete prime-gap-tail instantiation are paper proofs; no theorem supplies the required cofinal adjacent small-mismatch pairs, and Erdős Problem 251 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_269_note",
+      "title": "The Three-Prime Running Least Common Multiple",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-269-three-prime-running-lcm.tex",
+      "source_content_digest": "sha256:8ce70032775b3b5782fcef10f8abd995308debc07ae4600e3e472ccef39e41ad",
+      "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
+      "rendered_content_digest": "sha256:573f4c9d27beaa64ad1b8c143c7fd3223b956e6550b76f30d8f45287a598f49d",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos269 modules. Lean checks the exact dyadic block radix alphabet {2,6,10,30}, canonical least-positive-residue arithmetic, smooth-factor absorption, conditional common-factor cancellation, and the complete implication from denominator-dependent CofinalLocalWindowEscape to extinction of a bounded positive reduced carry. An integer-only checker supplies finite exact evidence for 106,666 denominator/start pairs, but the actual block-digit carry instantiation—including divisibility of the carry by the absorbed smooth denominator factor—and the cofinal escape producer are not proved; Erdős Problem 269 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
+    },
+    {
+      "id": "erdos_1049_note",
+      "title": "Rational Bases and the Integer-Base Argument",
+      "artifact_class": "problem_note",
+      "source_path": "paper/erdos-1049-rational-base-lambert.tex",
+      "source_content_digest": "sha256:17cc87dcad38e3561ec050f524aba3328d6ae84ed0edd240199d7166fa0704ed",
+      "rendered_path": "erdos-1049-rational-base-lambert.pdf",
+      "rendered_content_digest": "sha256:d2ba8b422bd6b56e3cee8eb6c236616b29defe56cae425ad9485fbfefc1b3ce8",
+      "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos1049 modules. Lean checks that rowwise contents scale the Padé error, exterior determinant, and absolute determinant height by exactly the same factors; under unit endpoint hypotheses a common specialised multiplier contains neither two nor three. It also checks the homogeneous endpoint obstruction, the negative scalar margin implication at three halves, the exact four-jet target cardinality, and the sufficient collision threshold n >= 4R+2S for positive R. The primary Zudilin theorem remains integer-base and external; a sufficiently large primitive non-collapsed family, surviving local gain after primitive normalisation, and a collision with nonzero polynomial pair and remainder are not proved. Erdős Problem 1049 remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_problem_note_sources.py --coverage",
+        "python3 scripts/build_problem_index.py --check",
+        "python3 scripts/check_publication_contract.py"
+      ]
     }
   ],
   "entrypoints": [
+    {
+      "id": "read_one_problem_note",
+      "title": "One Erdős problem: its note, its modules, and its surviving obligation",
+      "intent": "Read what is formalised about a single Erdős problem in the ErdosProblems expansion library, and what is not, without loading the reviewed #249/#257 corpus. These declarations carry no reviewed public claim status.",
+      "discovery_terms": [
+        "Erdős problem 243",
+        "Erdős problem 251",
+        "Erdős problem 269",
+        "Erdős problem 1049",
+        "problem note",
+        "what is checked for this problem",
+        "ErdosProblems expansion library"
+      ],
+      "read": [
+        "docs/problems.json",
+        "docs/problem_index_source.json",
+        "ErdosProblems.lean",
+        "docs/publication_contract.json",
+        "SCOPE.md"
+      ],
+      "query_steps": [
+        "python3 scripts/query_corpus.py --publication-artifact erdos_269_note",
+        "python3 scripts/query_corpus.py --artifact erdos-269-three-prime-running-lcm.pdf"
+      ],
+      "authority_owners": [
+        "docs/publication_contract.json",
+        "docs/problems.json",
+        "scripts/check_problem_note_sources.py"
+      ],
+      "adjacent_handle_classes": [
+        "publication_artifact_id",
+        "artifact",
+        "digest",
+        "reading_route"
+      ]
+    },
     {
       "id": "understand_repository_architecture",
       "title": "Repository architecture, access paths, release flow, and trust boundary",
@@ -102,6 +303,8 @@
     "additional_erdos249_companion"
   ],
   "reproducibility": {
+    "problem_note_source_links": "python3 scripts/check_problem_note_sources.py --coverage",
+    "problem_index_freshness": "python3 scripts/build_problem_index.py --check",
     "publication_contract_check": "python3 scripts/check_publication_contract.py",
     "publication_contract_fixture_test": "python3 scripts/test_publication_artifact_contract.py",
     "mutation_evidence_query": "python3 scripts/query_corpus.py --publication-evidence summary",

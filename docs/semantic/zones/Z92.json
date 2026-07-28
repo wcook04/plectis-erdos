@@ -1,0 +1,66 @@
+{
+  "zone_id": "Z92",
+  "title": "Erdős 249 lcm-cone completeness: affine half-geometric decay",
+  "problem": "249",
+  "replaces_role_zone": "Z06",
+  "concepts": [
+    {
+      "id": "z92_affine_half_geometric_decay",
+      "label": "affine half-geometric decay",
+      "note": "The sequences j·2^-j and (C+j)·2^-j are summable, hence the latter tends to zero."
+    },
+    {
+      "id": "z92_certificate_completeness_boundary",
+      "label": "certificate-completeness analytic boundary",
+      "note": "The decay lemmas provide only the analytic small-error input consumed by finite certificate completeness."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "linear_and_affine_coefficients_remain_summable_under_half_geometric_decay",
+      "canonical_statement": "PROVED ANALYTIC TOOLKIT: the sequence j·(1/2)^j is summable, and for every real constant C the affine sequence (C+j)·(1/2)^j is summable as the sum of a geometric constant term and the linear term.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "concepts": [
+        "z92_affine_half_geometric_decay",
+        "z92_certificate_completeness_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Specialize the standard polynomial-times-geometric summability theorem at ratio one half and add a constant multiple of the geometric series.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Classical convergence of polynomially weighted geometric series, restated at the exact ratio used by the lcm-cone certificate proof.",
+      "scope_caveat": "The lemmas show decay of an affine error envelope only. They do not prove tail nonintegrality, produce a certified kill without that hypothesis, establish cone supply, or imply irrationality on their own.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_linear_half'",
+          "module": "Erdos249257/LcmConeFlatness.lean",
+          "line": 133
+        },
+        {
+          "declaration": "summable_const_add_mul_half'",
+          "module": "Erdos249257/LcmConeFlatness.lean",
+          "line": 138
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "summable_linear_half'",
+      "module": "Erdos249257/LcmConeFlatness.lean",
+      "line": 133,
+      "role": "engine",
+      "statement_node": "linear_and_affine_coefficients_remain_summable_under_half_geometric_decay"
+    },
+    {
+      "declaration": "summable_const_add_mul_half'",
+      "module": "Erdos249257/LcmConeFlatness.lean",
+      "line": 138,
+      "role": "engine",
+      "statement_node": "linear_and_affine_coefficients_remain_summable_under_half_geometric_decay"
+    }
+  ],
+  "intra_zone_relations": []
+}

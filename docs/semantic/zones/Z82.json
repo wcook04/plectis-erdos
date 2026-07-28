@@ -1,0 +1,128 @@
+{
+  "zone_id": "Z82",
+  "title": "Erdős 249 visible-lattice model: convergence toolkit and rational Lambert falsifier",
+  "problem": "249",
+  "replaces_role_zone": "Z07",
+  "concepts": [
+    {
+      "id": "z82_geometric_pair_summability",
+      "label": "geometric pair summability",
+      "note": "Absolute convergence of product-geometric and totient-weighted power families for parameters in the unit interval."
+    },
+    {
+      "id": "z82_shifted_geometric_sum",
+      "label": "shifted geometric sum",
+      "note": "The exact value of the positive-index geometric tail x/(1-x)."
+    },
+    {
+      "id": "z82_visible_lattice_lambert_falsifier",
+      "label": "visible-lattice Lambert falsifier",
+      "note": "The coprime-pair Lambert kernel collapses to an elementary square at every real parameter between zero and one."
+    },
+    {
+      "id": "z82_authority_boundary",
+      "label": "geometric-model authority boundary",
+      "note": "The zone validates convergent rearrangements and one rational-model no-go; it does not decide irrationality of the #249 constant."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "geometric_pair_and_totient_power_families_are_summable_inside_the_unit_interval",
+      "canonical_statement": "PROVED CONVERGENCE TOOLKIT: for 0≤r<1, the pair family r^(a+b) is summable over natural pairs and the totient-weighted family φ(n)r^n is summable; moreover the shifted geometric series ∑_{g≥0} x^(g+1) equals x/(1-x) under the same parameter bounds.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "concepts": [
+        "z82_geometric_pair_summability",
+        "z82_shifted_geometric_sum",
+        "z82_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Factor the two-variable power into a product of geometric series, dominate φ(n) by n, and evaluate the shifted geometric sum by factoring one power of x.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard convergence and evaluation facts for geometric and arithmetically weighted power series.",
+      "scope_caveat": "These statements justify later rearrangements only. Summability and a closed form for the geometric tail carry no irrationality information.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_pow_add",
+          "module": "Erdos249257/GeometricCoprimality.lean",
+          "line": 87
+        },
+        {
+          "declaration": "summable_totient_mul_pow",
+          "module": "Erdos249257/GeometricCoprimality.lean",
+          "line": 210
+        },
+        {
+          "declaration": "tsum_pow_succ_geometric",
+          "module": "Erdos249257/GeometricCoprimality.lean",
+          "line": 234
+        }
+      ]
+    },
+    {
+      "id": "the_positive_visible_pair_lambert_kernel_equals_an_elementary_square",
+      "canonical_statement": "PROVED MODEL FALSIFIER: for every real 0≤r<1, summing r^(a+b)/(1-r^(a+b)) over strictly positive coprime pairs (a,b) gives exactly (r/(1-r))^2.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z82_visible_lattice_lambert_falsifier",
+        "z82_geometric_pair_summability",
+        "z82_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Expand each Lambert denominator as a geometric series, exchange the absolutely convergent pair and scale sums, and apply the gcd-layer decomposition.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A classical Lambert-series/coprime-lattice identity specialized as an explicit falsifier for the repository's geometric model.",
+      "scope_caveat": "The equality shows that coprime restriction plus geometric decay alone can still yield a rational value at rational r. It does not show that the #249 totient constant is rational, nor does it exclude arguments using non-geometric arithmetic structure, signed cancellation, or nontrivial cylinder interactions.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tsum_pos_coprime_lambert_eq_sq",
+          "module": "Erdos249257/GeometricCoprimality.lean",
+          "line": 407
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "summable_pow_add",
+      "module": "Erdos249257/GeometricCoprimality.lean",
+      "line": 87,
+      "role": "engine",
+      "statement_node": "geometric_pair_and_totient_power_families_are_summable_inside_the_unit_interval"
+    },
+    {
+      "declaration": "summable_totient_mul_pow",
+      "module": "Erdos249257/GeometricCoprimality.lean",
+      "line": 210,
+      "role": "engine",
+      "statement_node": "geometric_pair_and_totient_power_families_are_summable_inside_the_unit_interval"
+    },
+    {
+      "declaration": "tsum_pow_succ_geometric",
+      "module": "Erdos249257/GeometricCoprimality.lean",
+      "line": 234,
+      "role": "engine",
+      "statement_node": "geometric_pair_and_totient_power_families_are_summable_inside_the_unit_interval"
+    },
+    {
+      "declaration": "tsum_pos_coprime_lambert_eq_sq",
+      "module": "Erdos249257/GeometricCoprimality.lean",
+      "line": 407,
+      "role": "statement",
+      "statement_node": "the_positive_visible_pair_lambert_kernel_equals_an_elementary_square"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "geometric_pair_and_totient_power_families_are_summable_inside_the_unit_interval",
+      "to": "the_positive_visible_pair_lambert_kernel_equals_an_elementary_square",
+      "relation": "complements",
+      "basis": "The convergence toolkit licenses the sum rearrangements and geometric expansions used to prove the exact visible-pair Lambert evaluation."
+    }
+  ]
+}

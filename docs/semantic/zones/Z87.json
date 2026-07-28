@@ -1,0 +1,670 @@
+{
+  "zone_id": "Z87",
+  "title": "Angle A4: exact non-integrality coordinates, scalar lift obstruction, and frontier localisation",
+  "problem": "249",
+  "replaces_role_zone": "Z19",
+  "concepts": [
+    {
+      "id": "z87_tail_difference_orbit",
+      "label": "tail-difference integer-modulo orbit",
+      "note": "The shifted tail difference follows a dyadic affine recurrence, with integrality propagating forward and the whole position orbit determined modulo integers."
+    },
+    {
+      "id": "z87_certificate_nonintegrality_round_trip",
+      "label": "certificate and non-integrality round trip",
+      "note": "Window approximation converts a nonintegral tail difference into a residue certificate, completing the converse to the existing certificate-to-nonintegrality bridge."
+    },
+    {
+      "id": "z87_period_kill_reduction",
+      "label": "faithful period-kill reduction",
+      "note": "Killing every position of every positive period is an exact certificate-supply coordinate sufficient for irrationality."
+    },
+    {
+      "id": "z87_mersenne_ratio_lift",
+      "label": "Mersenne-ratio scalar lift",
+      "note": "Passing from H to pH multiplies the tested non-integrality coordinate by the integer geometric ratio (2^(pH)-1)/(2^H-1)."
+    },
+    {
+      "id": "z87_reciprocal_counterexample",
+      "label": "reciprocal-denominator lift counterexample",
+      "note": "A reciprocal 1/q kills precisely the periods whose Mersenne factor is not divisible by q, producing explicit failures of arbitrary-real lift implications."
+    },
+    {
+      "id": "z87_lcm_order_transport",
+      "label": "lcm nesting and order transfer",
+      "note": "Period-lcm divisibility and multiplicative-order characterisation transport period kills and locate the first rung seen by a divisor."
+    },
+    {
+      "id": "z87_frontier_witness",
+      "label": "fixed frontier witness at 67",
+      "note": "The rational 1/193707721 satisfies every lower-rung period-kill conclusion through t=66 and fails at t=67."
+    },
+    {
+      "id": "z87_lattice_localisation_ceiling",
+      "label": "frontier lattice-localisation ceiling",
+      "note": "At bounded depth, every sufficiently small localisation ball still meets the reciprocal multiplier lattice on which the scalar lift conclusion fails."
+    },
+    {
+      "id": "z87_authority_boundary",
+      "label": "representation and no-lift boundary",
+      "note": "The module closes a proposed representation route and supplies counterexamples for arbitrary reals; it proves no lift for the concrete totient series and no cofinal certificate supply."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality",
+      "canonical_statement": "Write R_N for the shifted totient tail, D_(h,N)=R_(N+h)-R_N, and S for the binary totient series. Then R_(N+1)=2R_N-φ(N+1), D_(h,N+1)=2D_(h,N)-(φ(N+h+1)-φ(N+1)), integrality of D_(h,N) propagates to every later position, and D_(h,N+k)-2^kD_(h,N) is an integer. Moreover D_(h,N)=2^N(2^h-1)S-(Φ_(N+h)-Φ_N), so D_(h,N) is integral exactly when 2^N(2^h-1)S is integral.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z87_tail_difference_orbit",
+        "z87_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact tail splitting gives the one-step recurrence; induction transports integrality and the modulo-integer doubling orbit; prefix clearing gives the closed form in the global series coordinate.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "These are elementary recurrence and integer-translation consequences for the repository's totient-tail coordinate; no novelty claim is made.",
+      "scope_caveat": "The identities and transport laws do not show that any displayed quantity is nonintegral. Upward closure of integrality makes later positions harder for certificates; it supplies no certificate, period lift, cofinal family, or irrationality result.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totientTail_succ",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 133
+        },
+        {
+          "declaration": "tailDiff_succ",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 156
+        },
+        {
+          "declaration": "tailDiff_mem_int_succ",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 168
+        },
+        {
+          "declaration": "tailDiff_mem_int_mono",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 178
+        },
+        {
+          "declaration": "tailDiff_shift_mod_int",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 188
+        },
+        {
+          "declaration": "tailDiff_eq",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 203
+        },
+        {
+          "declaration": "tailDiff_mem_int_iff",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 220
+        }
+      ]
+    },
+    {
+      "id": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent",
+      "canonical_statement": "For every h,N,L, the window discrepancy approximates 2^L D_(h,N) with error at most N+h+L+2. Linear-over-exponential decay supplies a depth at which this error is smaller than the distance of a nonintegral D_(h,N) from the integers, while failure of a depth-L residue certificate places the discrepancy near a multiple of 2^L. Consequently D_(h,N) nonintegral produces some certifiedKill(h,N,L), and some such certificate exists exactly when 2^N(2^h-1)S is nonintegral. At fixed h, existence of a certificate at N implies existence at every earlier M≤N.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "z87_tail_difference_orbit",
+        "z87_certificate_nonintegrality_round_trip",
+        "z87_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Two-sided tail bounds yield the window approximation; geometric decay chooses a separating depth; Euclidean remainder geometry turns failure of the central residue interval into a nearby dyadic multiple; the tail orbit then gives antitonicity in position.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is a project-specific exact round trip between two formal coordinates. No external priority or novelty claim is made.",
+      "scope_caveat": "The depth is existential and not a uniform or effective bound across h,N. Pointwise equivalence does not show nonintegrality at any cell, does not provide cofinally many killed periods, and does not prove irrationality on its own.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tailDiff_approx",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 240
+        },
+        {
+          "declaration": "exists_depth",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 278
+        },
+        {
+          "declaration": "exists_near_multiple",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 301
+        },
+        {
+          "declaration": "exists_certifiedKill_of_tailDiff_notMem_int",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 325
+        },
+        {
+          "declaration": "exists_certifiedKill_iff",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 383
+        },
+        {
+          "declaration": "exists_certifiedKill_antitone",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 398
+        }
+      ]
+    },
+    {
+      "id": "period_killing_is_a_faithful_conditional_reduction_to_irrationality",
+      "canonical_statement": "For each period h, killsPeriod(S,h)—nonintegrality of every dyadic multiple 2^N(2^h-1)S—is equivalent to the existence, for every position N, of some certifiedKill(h,N,L). If killsPeriod(S,h) holds for every positive h, then the binary totient series S is irrational.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z87_certificate_nonintegrality_round_trip",
+        "z87_period_kill_reduction",
+        "z87_authority_boundary"
+      ],
+      "open_antecedents": [
+        "Prove killsPeriod(totientSeries,h) for every positive period h, equivalently supply a certified kill at every position of every positive period."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Apply the pointwise certificate/nonintegrality equivalence at every position and feed the resulting certificate supply into the repository's irrationality reduction.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A direct transport through the existing certificate-supply irrationality criterion; no claim that the required supply has been proved.",
+      "scope_caveat": "This is a faithful conditional reduction, not an unconditional irrationality theorem. The global period-kill hypothesis remains unsupplied and is not weakened by changing coordinates.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "killsPeriod_iff",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 410
+        },
+        {
+          "declaration": "irrational_of_killsPeriod",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 418
+        }
+      ]
+    },
+    {
+      "id": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio",
+      "canonical_statement": "For M=mersenneRatio(p,H)=∑_{i<p}2^(Hi), one has M(2^H-1)=2^(pH)-1. Thus killsPeriod(x,pH) is equivalent to nonintegrality, for every N, of M·(2^N(2^H-1)x); for the totient tail, D_(pH,N)-M·D_(H,N) is an integer.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z87_tail_difference_orbit",
+        "z87_mersenne_ratio_lift",
+        "z87_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The finite geometric-sum identity factors the larger Mersenne denominator; substitution gives the exact kill equivalence and subtraction of the two closed tail formulas gives the modulo-integer relation.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The geometric factorisation is classical; the formal contribution is its exact transport into the period-kill and tail-difference coordinates.",
+      "scope_caveat": "The theorem identifies the lift's scalar multiplier but does not prove that nonintegrality survives multiplication by M. In particular it supplies no implication from a killed H-cell to a killed pH-cell for the concrete totient series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mersenneRatio_mul",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 429
+        },
+        {
+          "declaration": "killsPeriod_lift_iff",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 443
+        },
+        {
+          "declaration": "tailDiff_lift_mod_int",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 461
+        }
+      ]
+    },
+    {
+      "id": "new_reciprocal_denominators_disprove_the_scalar_lift_for_arbitrary_reals",
+      "canonical_statement": "Let q>1 be odd. If q does not divide 2^h-1, then 1/q kills period h; if q divides 2^h-1, then 1/q does not kill period h. Hence whenever q divides 2^(pH)-1 but not 2^H-1, the same real number 1/q kills H and fails to kill pH. In particular 1/11 kills periodLcm(4)=12 and fails at periodLcm(5)=60.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z87_mersenne_ratio_lift",
+        "z87_reciprocal_counterexample",
+        "z87_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Clear the reciprocal denominator, use coprimality with powers of two, and test divisibility of the relevant Mersenne factor; the 12-to-60 instance is decided at q=11.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The reciprocal counterexample is elementary denominator divisibility; the fixed lcm-ladder instance is a direct formal specialization.",
+      "scope_caveat": "This refutes the lift only as a general implication about arbitrary real numbers. It does not show that the concrete totient series fails a lift, lacks extra arithmetic structure, or is rational.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "killsPeriod_one_div",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 489
+        },
+        {
+          "declaration": "not_killsPeriod_one_div",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 510
+        },
+        {
+          "declaration": "killsPeriod_lift_fails",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 528
+        },
+        {
+          "declaration": "lift_fails_periodLcm_four_to_five",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 542
+        }
+      ]
+    },
+    {
+      "id": "lcm_nesting_and_multiplicative_order_locate_period_kill_transport",
+      "canonical_statement": "The period-lcm ladder is divisibility-monotone: s≤t implies periodLcm(s) divides periodLcm(t), and killing a period implies killing each divisor period. Moreover, if d is prime, q>1, and q divides 2^d-1, then q divides 2^H-1 exactly when d divides H.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z87_lcm_order_transport",
+        "z87_reciprocal_counterexample"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Induction along periodLcm divisibility, Mersenne-ratio factorisation for kill transport, and exact multiplicative order in ZMod q when the known exponent d is prime.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Lcm nesting and the multiplicative-order divisibility criterion are classical; they are formalized here in the exact period-kill interface.",
+      "scope_caveat": "These transports organise which reciprocal denominator appears at which rung. They produce neither a new prime divisor nor a certified kill for the totient series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "periodLcm_dvd_of_le",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 554
+        },
+        {
+          "declaration": "killsPeriod_of_dvd",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 560
+        },
+        {
+          "declaration": "dvd_two_pow_sub_one_iff",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 574
+        }
+      ]
+    },
+    {
+      "id": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven",
+      "canonical_statement": "The integer q₆₇=193707721 divides 2^67-1; periodLcm(66)=1182266884102822267511361600 is not divisible by 67. Therefore 1/q₆₇ kills periodLcm(t) for every t≤66, but it does not kill periodLcm(67).",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z87_lcm_order_transport",
+        "z87_frontier_witness",
+        "z87_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel-checked factor and lcm computations, the prime-exponent multiplicative-order criterion, nesting of period lcms, and the reciprocal period-kill lemmas.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A fixed explicit rational witness assembled from elementary factorisation and divisibility checks; no novelty or asymptotic claim is made.",
+      "scope_caveat": "The witness concerns an arbitrary rational number satisfying the same lower-rung conclusions, not the concrete totient series. It shows that lower-rung kill conclusions alone do not force the next rung, but it does not negate the independently certified t=67 totient-series cell.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "frontierWitness_dvd",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 600
+        },
+        {
+          "declaration": "periodLcm_66_val",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 605
+        },
+        {
+          "declaration": "not_dvd_67_periodLcm_66",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 607
+        },
+        {
+          "declaration": "frontierWitness_kills_upto_66",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 616
+        },
+        {
+          "declaration": "frontierWitness_fails_at_67",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 624
+        }
+      ]
+    },
+    {
+      "id": "frontier_multiplier_lattice_defeats_the_bounded_depth_localisation_argument",
+      "canonical_statement": "For every positive natural M and real D, some D' has M·D' integral and |D-D'|≤1/(2M). At the 67-over-periodLcm(66) rung, mersenneRatio(67,periodLcm(66))≥2^L whenever L≤66·periodLcm(66). Hence every real D has such a multiplier-lattice point D' within 2^(-(L+1)) at every depth in that range.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z87_mersenne_ratio_lift",
+        "z87_frontier_witness",
+        "z87_lattice_localisation_ceiling",
+        "z87_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Nearest-integer rounding proves the reciprocal-lattice density; one terminal term of the geometric Mersenne ratio gives the exponential lower bound; reciprocal comparison yields the frontier ball statement.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Nearest-lattice-point density is classical, and the frontier estimate is its direct specialization using the exact geometric-ratio bound.",
+      "scope_caveat": "This is a barrier only for the stated bounded-depth localisation argument. It is not a lower bound on every possible proof, does not determine the minimal certificate depth for the concrete totient series, and does not refute a lift using additional arithmetic information.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_lattice_point",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 634
+        },
+        {
+          "declaration": "frontier_multiplier_ge",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 649
+        },
+        {
+          "declaration": "frontier_ball_meets_lattice",
+          "module": "ErdosProblems/Lift/AngleA4.lean",
+          "line": 666
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "totientTail_succ",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 133,
+      "role": "statement",
+      "statement_node": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality"
+    },
+    {
+      "declaration": "tailDiff_succ",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 156,
+      "role": "representation",
+      "statement_node": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality"
+    },
+    {
+      "declaration": "tailDiff_mem_int_succ",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 168,
+      "role": "statement",
+      "statement_node": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality"
+    },
+    {
+      "declaration": "tailDiff_mem_int_mono",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 178,
+      "role": "statement",
+      "statement_node": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality"
+    },
+    {
+      "declaration": "tailDiff_shift_mod_int",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 188,
+      "role": "statement",
+      "statement_node": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality"
+    },
+    {
+      "declaration": "tailDiff_eq",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 203,
+      "role": "representation",
+      "statement_node": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality"
+    },
+    {
+      "declaration": "tailDiff_mem_int_iff",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 220,
+      "role": "statement",
+      "statement_node": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality"
+    },
+    {
+      "declaration": "tailDiff_approx",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 240,
+      "role": "engine",
+      "statement_node": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent"
+    },
+    {
+      "declaration": "exists_depth",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 278,
+      "role": "engine",
+      "statement_node": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent"
+    },
+    {
+      "declaration": "exists_near_multiple",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 301,
+      "role": "engine",
+      "statement_node": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent"
+    },
+    {
+      "declaration": "exists_certifiedKill_of_tailDiff_notMem_int",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 325,
+      "role": "statement",
+      "statement_node": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent"
+    },
+    {
+      "declaration": "exists_certifiedKill_iff",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 383,
+      "role": "statement",
+      "statement_node": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent"
+    },
+    {
+      "declaration": "exists_certifiedKill_antitone",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 398,
+      "role": "statement",
+      "statement_node": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent"
+    },
+    {
+      "declaration": "killsPeriod_iff",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 410,
+      "role": "statement",
+      "statement_node": "period_killing_is_a_faithful_conditional_reduction_to_irrationality"
+    },
+    {
+      "declaration": "irrational_of_killsPeriod",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 418,
+      "role": "statement",
+      "statement_node": "period_killing_is_a_faithful_conditional_reduction_to_irrationality"
+    },
+    {
+      "declaration": "mersenneRatio_mul",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 429,
+      "role": "representation",
+      "statement_node": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio"
+    },
+    {
+      "declaration": "killsPeriod_lift_iff",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 443,
+      "role": "statement",
+      "statement_node": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio"
+    },
+    {
+      "declaration": "tailDiff_lift_mod_int",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 461,
+      "role": "statement",
+      "statement_node": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio"
+    },
+    {
+      "declaration": "killsPeriod_one_div",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 489,
+      "role": "statement",
+      "statement_node": "new_reciprocal_denominators_disprove_the_scalar_lift_for_arbitrary_reals"
+    },
+    {
+      "declaration": "not_killsPeriod_one_div",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 510,
+      "role": "statement",
+      "statement_node": "new_reciprocal_denominators_disprove_the_scalar_lift_for_arbitrary_reals"
+    },
+    {
+      "declaration": "killsPeriod_lift_fails",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 528,
+      "role": "statement",
+      "statement_node": "new_reciprocal_denominators_disprove_the_scalar_lift_for_arbitrary_reals"
+    },
+    {
+      "declaration": "lift_fails_periodLcm_four_to_five",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 542,
+      "role": "finite_instance",
+      "statement_node": "new_reciprocal_denominators_disprove_the_scalar_lift_for_arbitrary_reals"
+    },
+    {
+      "declaration": "periodLcm_dvd_of_le",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 554,
+      "role": "engine",
+      "statement_node": "lcm_nesting_and_multiplicative_order_locate_period_kill_transport"
+    },
+    {
+      "declaration": "killsPeriod_of_dvd",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 560,
+      "role": "statement",
+      "statement_node": "lcm_nesting_and_multiplicative_order_locate_period_kill_transport"
+    },
+    {
+      "declaration": "dvd_two_pow_sub_one_iff",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 574,
+      "role": "statement",
+      "statement_node": "lcm_nesting_and_multiplicative_order_locate_period_kill_transport"
+    },
+    {
+      "declaration": "frontierWitness_dvd",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 600,
+      "role": "finite_instance",
+      "statement_node": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven"
+    },
+    {
+      "declaration": "periodLcm_66_val",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 605,
+      "role": "finite_instance",
+      "statement_node": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven"
+    },
+    {
+      "declaration": "not_dvd_67_periodLcm_66",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 607,
+      "role": "finite_instance",
+      "statement_node": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven"
+    },
+    {
+      "declaration": "frontierWitness_kills_upto_66",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 616,
+      "role": "statement",
+      "statement_node": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven"
+    },
+    {
+      "declaration": "frontierWitness_fails_at_67",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 624,
+      "role": "statement",
+      "statement_node": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven"
+    },
+    {
+      "declaration": "exists_lattice_point",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 634,
+      "role": "engine",
+      "statement_node": "frontier_multiplier_lattice_defeats_the_bounded_depth_localisation_argument"
+    },
+    {
+      "declaration": "frontier_multiplier_ge",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 649,
+      "role": "statement",
+      "statement_node": "frontier_multiplier_lattice_defeats_the_bounded_depth_localisation_argument"
+    },
+    {
+      "declaration": "frontier_ball_meets_lattice",
+      "module": "ErdosProblems/Lift/AngleA4.lean",
+      "line": 666,
+      "role": "statement",
+      "statement_node": "frontier_multiplier_lattice_defeats_the_bounded_depth_localisation_argument"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent",
+      "to": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality",
+      "relation": "generated_by",
+      "basis": "The round trip uses the exact tail-difference coordinate, its integrality interpretation, and its monotonic position orbit."
+    },
+    {
+      "from": "period_killing_is_a_faithful_conditional_reduction_to_irrationality",
+      "to": "window_approximation_makes_certified_kill_and_tail_nonintegrality_pointwise_equivalent",
+      "relation": "generated_by",
+      "basis": "The period-wide equivalence applies the pointwise certificate/nonintegrality equivalence at every position before invoking the certificate-supply irrationality criterion."
+    },
+    {
+      "from": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio",
+      "to": "tail_differences_form_a_dyadic_affine_orbit_with_upward_closed_integrality",
+      "relation": "generated_by",
+      "basis": "The additive lift congruence subtracts the two closed tail-difference formulas and uses the exact Mersenne-ratio factorisation."
+    },
+    {
+      "from": "new_reciprocal_denominators_disprove_the_scalar_lift_for_arbitrary_reals",
+      "to": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio",
+      "relation": "barrier_for",
+      "basis": "Reciprocals whose denominator divides the new Mersenne ratio make the multiplied coordinate integral even though the lower-period coordinate is nonintegral."
+    },
+    {
+      "from": "lcm_nesting_and_multiplicative_order_locate_period_kill_transport",
+      "to": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio",
+      "relation": "complements",
+      "basis": "The scalar factorisation describes one rung, while lcm nesting and exact order identify which divisor periods and reciprocal denominators occur along the ladder."
+    },
+    {
+      "from": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven",
+      "to": "new_reciprocal_denominators_disprove_the_scalar_lift_for_arbitrary_reals",
+      "relation": "finite_instance_of",
+      "basis": "The frontier witness specializes the reciprocal-denominator counterexample to q=193707721 and the lcm-ladder transition into t=67."
+    },
+    {
+      "from": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven",
+      "to": "lcm_nesting_and_multiplicative_order_locate_period_kill_transport",
+      "relation": "generated_by",
+      "basis": "The proof uses period-lcm nesting and the order-67 divisibility criterion to transport the rational witness across every lower rung."
+    },
+    {
+      "from": "frontier_multiplier_lattice_defeats_the_bounded_depth_localisation_argument",
+      "to": "the_period_lift_is_exactly_multiplication_by_the_mersenne_geometric_ratio",
+      "relation": "barrier_for",
+      "basis": "The multiplier lattice is exactly the set where the scalar lift conclusion fails, and the density estimate shows bounded-depth localization cannot exclude that set by radius alone."
+    },
+    {
+      "from": "frontier_multiplier_lattice_defeats_the_bounded_depth_localisation_argument",
+      "to": "one_rational_witness_passes_all_period_kills_through_sixty_six_and_fails_at_sixty_seven",
+      "relation": "complements",
+      "basis": "The fixed rational witness gives an exact logical counterexample, while the lattice theorem quantifies why the associated frontier multiplier remains dense at bounded localization depth."
+    }
+  ]
+}

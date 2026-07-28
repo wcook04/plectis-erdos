@@ -5,6 +5,8 @@
 
 from __future__ import annotations
 
+import re
+
 import check_architecture_guide as checker
 
 
@@ -24,6 +26,12 @@ def assert_paper_rejected(text: str, label: str) -> None:
     raise AssertionError(f"systems-paper mutation escaped: {label}")
 
 
+def reflow_tolerant_replace(source: str, phrase: str, replacement: str) -> str:
+    """Replace prose even when LaTeX source rewraps it across lines."""
+    pattern = r"\s+".join(re.escape(word) for word in phrase.split())
+    return re.sub(pattern, lambda _match: replacement, source, count=1)
+
+
 def main() -> int:
     guide = checker.GUIDE.read_text(encoding="utf-8")
     readme = checker.README.read_text(encoding="utf-8")
@@ -35,6 +43,15 @@ def main() -> int:
     checker.validate_systems_paper(systems_paper)
     checker.validate_entry_links(readme, agents, paper_readme)
     checks = 3
+
+    contract = checker.json.loads(
+        checker.PUBLICATION_CONTRACT.read_text(encoding="utf-8")
+    )
+    systems_paper_budget = (
+        checker.SYSTEMS_PAPER_BASE_BYTES
+        + checker.SYSTEMS_PAPER_BYTES_PER_ARTIFACT * len(contract["artifacts"])
+    )
+    assert len(systems_paper.encode("utf-8")) <= systems_paper_budget
 
     mutations = (
         (
@@ -76,7 +93,8 @@ def main() -> int:
             "real claim owner hidden",
         ),
         (
-            systems_paper.replace(
+            reflow_tolerant_replace(
+                systems_paper,
                 "does not technically force a second independent mathematician",
                 "enforces independent review",
             ),
@@ -87,16 +105,29 @@ def main() -> int:
             "private evaluation shorthand reintroduced",
         ),
         (
-            systems_paper.replace(
-                "reading map, code index,\\\\\n  machine-readable summary",
+            reflow_tolerant_replace(
+                systems_paper,
+                "navigation, reading map, code index, machine-readable summary; no authority",
                 "orientation, declaration atlas,\\\\\n  machine entry packet",
             ),
             "private diagram labels reintroduced",
         ),
     )
     for mutated, label in paper_mutations:
+        assert mutated != systems_paper, (
+            f"systems-paper mutation fixture became a no-op: {label}"
+        )
         assert_paper_rejected(mutated, label)
         checks += 1
+
+    overflow = systems_paper + "x" * (
+        systems_paper_budget - len(systems_paper.encode("utf-8")) + 1
+    )
+    assert_paper_rejected(
+        overflow,
+        "publication-scaled architecture budget exceeded",
+    )
+    checks += 1
 
     try:
         checker.validate_entry_links(
@@ -115,8 +146,8 @@ def main() -> int:
     try:
         checker.validate_entry_links(
             readme.replace(
-                "exact equivalence / open step",
-                "exact equivalence / conditional producer",
+                "All six problems remain open.",
+                "A conditional producer would be required",
             ),
             agents,
             paper_readme,

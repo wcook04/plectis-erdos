@@ -1,0 +1,34 @@
+import ErdosProblems.Lift.AngleB1
+
+open Erdos249257 Erdos249257.AngleB1
+
+#print axioms seamGreedy_postTwentySix_decision_twentySeven
+#print axioms seamGreedyBits_head2367_14_20_21_26_27
+#print axioms twentySeven_mem_seamGreedySupport
+#print axioms pulseFloor27_le_eleven
+#print axioms pulseFloor27_add_period
+#print axioms pulseFloor27_le_belowPulse
+#print axioms ratchetStep_mono
+#print axioms twelve_le_ratchetStep
+#print axioms ratchetRun27_le_ratchetRun26
+#print axioms ratchetRun27_mod
+#print axioms ratchetRun27_bound
+#print axioms ratchet27_excludes
+#print axioms seamExcess_landing_eq_two
+#print axioms ratchet27_finite_core
+#print axioms ratchetRun27_pos_of_alive
+#print axioms ratchet26_finite_core
+#print axioms survivorPhase26_of_ratchetRun27_ne_zero
+#print axioms survivors27_subset_liftedSurvivors26
+#print axioms survivors27_ssubset_liftedSurvivors26
+#print axioms survivors27_card_lt
+#print axioms survivors27Base_card
+#print axioms survivors27Base_ssubset
+#print axioms survivors27Base_card_lt
+#print axioms finalMiddleCell_neg_two_mem_survivors27
+#print axioms pulseAt_twentySeven_window
+#print axioms fourteen_mem_survivors27
+#print axioms ratchetRun27_pos_fourteen
+
+#print axioms Erdos249257.finalMiddleTwentySixPhaseSurvivors_card
+#print axioms Erdos249257.eventualRightTail_positive_affineExcess

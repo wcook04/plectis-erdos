@@ -1,0 +1,818 @@
+{
+  "zone_id": "Z28",
+  "title": "Actual-LCM orbit, carry-period, and fixed-rank totient frontier",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "carry_tail_integrality",
+      "label": "carry displacement versus tail integrality",
+      "note": "The exact correspondence between divisibility of a tempered integral carry displacement and integrality of the associated totient-tail difference."
+    },
+    {
+      "id": "actual_lcm_orbit",
+      "label": "actual-LCM tail orbit",
+      "note": "The tail difference at the power-of-two LCM height, used as an exact reformulation of the irrationality endpoint and as the consumer of finite arithmetic certificates."
+    },
+    {
+      "id": "short_arithmetic_kill",
+      "label": "short actual-LCM arithmetic kill",
+      "note": "A certified residue-band exclusion at the actual LCM diagonal with depth below twice the power-of-two scale."
+    },
+    {
+      "id": "top_edge_gap",
+      "label": "localized top-edge residue gap",
+      "note": "A one-sided terminal residue condition that excludes the top-edge representative forced by an integral positive actual-LCM tail orbit."
+    },
+    {
+      "id": "coarse_invariant_countermodel",
+      "label": "coarse-invariant rational countermodel",
+      "note": "A bounded, totient-parity-matching, strongly aperiodic coefficient sequence whose binary series is nevertheless rational."
+    },
+    {
+      "id": "fixed_rank_curvature",
+      "label": "fixed-rank totient curvature",
+      "note": "The primitive second difference of totients at the first three positive multiples of a height, together with its dyadic scaling, local divisibility, and Archimedean bounds."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "carry_displacement_tail_integrality_equivalence",
+      "canonical_statement": "PROVED: for every positive multiplier and tempered integral totient carry, the multiplier divides the carry displacement u(N+k)-u(N) if and only if the totient-tail difference R_(N+k)-R_N is an integer; when divisible, quotienting the displacement by the multiplier recovers that integer tail difference exactly.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "carry_tail_integrality"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "tempered-orbit rigidity and exact carry-displacement scaling",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The reasoning-surface paper uses this equivalence to distinguish quotient periodicity from genuine finite-rank compression.",
+      "scope_caveat": "This is an exact local correspondence for a given tempered carry; it neither proves that the totient series is rational nor supplies a non-integral tail difference.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totient_carryShift_cast",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 64
+        },
+        {
+          "declaration": "carryShift_dvd_iff_tailDiff_mem_int",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 77
+        },
+        {
+          "declaration": "carryShift_ediv_cast_eq_tailDiff",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 106
+        }
+      ]
+    },
+    {
+      "id": "rationality_mod_period_and_unbounded_rank",
+      "canonical_statement": "PROVED BARRIER: if the binary totient series is not irrational, one rationality-supplied tempered integral carry has a common eventual period modulo its positive multiplier on every dyadic section, while the rational span of its canonical level-e carry kernels still has rank at least 2^e-1 for every e.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "carry_tail_integrality",
+        "fixed_rank_curvature"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "eventual tail periodicity transported through carry divisibility, combined with unconditional dyadic-kernel linear independence",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is Proposition period-not-rank in the reasoning-surface paper.",
+      "scope_caveat": "The theorem separates quotient periodicity from torsion-free rank. It does not prove rationality, and it does not rule out every possible arithmetic rank upper bound using additional totient structure.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "carrySectionsEventuallyPeriodicMod_of_shift_dvd",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 180
+        },
+        {
+          "declaration": "not_irrational_totientSeries_implies_eventual_mod_period",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 200
+        },
+        {
+          "declaration": "not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 224
+        }
+      ]
+    },
+    {
+      "id": "actual_lcm_orbit_nonintegrality_exact_frontier",
+      "canonical_statement": "PROVED EQUIVALENCE: irrationality of the binary totient series is equivalent to cofinally many non-integral actual-LCM tail orbits at power-of-two LCM heights; irrationality in fact makes every such orbit non-integral.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_orbit"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": true,
+      "engine": "the all-tail-differences irrationality criterion specialized to the power-of-two LCM diagonal",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper explicitly labels this as an exact reformulation that does not move the truth value.",
+      "scope_caveat": "The equivalence identifies the exact endpoint but supplies no unconditional cofinal non-integrality witness.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmTailOrbit_notMem_int_of_irrational",
+          "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+          "line": 26
+        },
+        {
+          "declaration": "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+          "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+          "line": 37
+        },
+        {
+          "declaration": "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
+          "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "id": "lcm_arithmetic_word_exact_certificate_representation",
+      "canonical_statement": "PROVED REPRESENTATION: the quotient-scale LCM arithmetic word is exactly the actual diagonal window discrepancy, so its symmetric residue-band predicate LcmDiagonalArithmeticKill(t,L) is equivalent to certifiedKill(periodLcm t, periodLcm t, L).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_orbit",
+        "short_arithmetic_kill"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "termwise identification of the arithmetic letters with totient differences",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper uses this exact identity to connect the finite arithmetic word to the public certificate surface.",
+      "scope_caveat": "This is an exact change of representation for each fixed t and L; it does not assert that the residue band fires.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcmDiagonalArithmeticWord_eq_windowDiscrepancy",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 1998
+        },
+        {
+          "declaration": "lcmDiagonalArithmeticKill_iff_certifiedKill",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2045
+        }
+      ]
+    },
+    {
+      "id": "cofinal_short_arithmetic_kills_imply_irrationality",
+      "canonical_statement": "PROVED CONDITIONAL: a cofinal supply of short arithmetic kills at power-of-two actual-LCM heights yields cofinal actual-LCM orbit non-integrality and therefore irrationality of the binary totient series.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_orbit",
+        "short_arithmetic_kill"
+      ],
+      "open_antecedents": [
+        "PowerTwoActualLcmShortArithmeticKillSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "certificate soundness followed by the exact actual-LCM orbit endpoint",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper records this as an open cofinal producer and separates it from its two known finite instances.",
+      "scope_caveat": "The cofinal supply is open. The theorem is a consumer for that supply, not evidence that such kills continue beyond the finite exponents currently checked.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmTailOrbit_notMem_int_of_arithmeticKill",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2095
+        },
+        {
+          "declaration": "actualLcmOrbitNonintegralitySupply_of_shortArithmeticKill",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2152
+        },
+        {
+          "declaration": "irrational_totientSeries_of_shortArithmeticKillSupply",
+          "module": "Erdos249257/TotientActualLcmShortKill.lean",
+          "line": 63
+        }
+      ]
+    },
+    {
+      "id": "short_arithmetic_kills_at_exponents_four_and_six",
+      "canonical_statement": "PROVED FINITE INSTANCES: short actual-LCM arithmetic kills fire at exponent a=4 with depth 23 and at exponent a=6 with depth 93, so the corresponding actual-LCM tail orbits are non-integral; the resulting bounded supply statement reaches only cutoffs a0<=6.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_orbit",
+        "short_arithmetic_kill"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two pre-existing compressed diagonal certificates routed through the exact arithmetic-kill representation",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. These are the two exact finite witnesses isolated by the reasoning-surface paper.",
+      "scope_caveat": "The witnesses are finite and the through-six theorem hard-codes the a=6 witness. They do not establish the cofinal short-arithmetic-kill supply, a witness at a=7, or irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcmDiagonalArithmeticKill_two_pow_four",
+          "module": "Erdos249257/TotientActualLcmShortKill.lean",
+          "line": 18
+        },
+        {
+          "declaration": "lcmDiagonalArithmeticKill_two_pow_six",
+          "module": "Erdos249257/TotientActualLcmShortKill.lean",
+          "line": 27
+        },
+        {
+          "declaration": "actualLcmTailOrbit_four_and_six_notMem_int",
+          "module": "Erdos249257/TotientActualLcmShortKill.lean",
+          "line": 35
+        },
+        {
+          "declaration": "powerTwoActualLcmShortArithmeticKillSupply_through_six",
+          "module": "Erdos249257/TotientActualLcmShortKill.lean",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "id": "full_terminal_dyadic_staircase_is_impossible",
+      "canonical_statement": "PROVED BARRIER: in the positive short actual-LCM window, a full terminal dyadic staircase cannot coexist with a modulus wider than the directed carry room, because its last positive arithmetic letter would be both divisible by that modulus and strictly smaller than it.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "short_arithmetic_kill",
+        "top_edge_gap"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "terminal-word divisibility plus positivity and the elementary arithmetic-letter ceiling",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is the terminal-staircase no-go in the paper's amplitude-versus-radius barrier.",
+      "scope_caveat": "The theorem rules out the full letter-by-letter staircase under its room and short-window hypotheses. It does not rule out punctured staircases, nonzero terminal word residues, or every growing-precision producer.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_pow_dvd_windowDiscrepancy_of_terminalDyadicStaircase",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 210
+        },
+        {
+          "declaration": "lcmRayArithmeticLetter_lt_directedRoom",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 227
+        },
+        {
+          "declaration": "not_actualLcmTerminalDyadicStaircase_of_room",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 251
+        }
+      ]
+    },
+    {
+      "id": "top_edge_residue_gap_excludes_integral_tail_difference",
+      "canonical_statement": "PROVED CONDITIONAL: in the positive short actual-LCM window, a terminal residue gap at any precision m<=K excludes integrality of the corresponding actual-LCM tail difference; a punctured dyadic staircase is one sufficient producer of that one-sided gap.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_orbit",
+        "top_edge_gap"
+      ],
+      "open_antecedents": [
+        "ActualLcmTopEdgeResidueGap a J K m, or a producer such as ActualLcmTerminalPuncturedDyadicStaircase a J K m"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "the top-edge residue forced by integrality, reduced modulo a terminal dyadic precision",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper presents this one-sided word condition as the explicit repair permitted by the full-staircase barrier.",
+      "scope_caveat": "The consumer is local and conditional. No cofinal supply of top-edge gaps or punctured staircases is proved here, and the condition is weaker than a symmetric certified-kill band.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmTopEdgeResidueGap_of_puncturedDyadicStaircase",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1115
+        },
+        {
+          "declaration": "actualLcmTailDiff_notMem_int_of_topEdgeResidueGap",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1260
+        }
+      ]
+    },
+    {
+      "id": "totient_parity_aperiodicity_rational_countermodel",
+      "canonical_statement": "PROVED BARRIER: there exists a natural-valued sequence c with c(n)<=6 and c(n)<=n, matching the parity of the Euler totient at every index, not eventually periodic, and carrying arbitrarily many cofinally located marker pairs with any prescribed separation, while its binary series is exactly 3/2 and hence rational.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "coarse_invariant_countermodel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "a lacunary zero-sum binary coboundary splice on a bounded parity-matching base sequence",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This is Proposition parity and barrier B7 in the reasoning-surface paper.",
+      "scope_caveat": "The countermodel rules out deductions that use only the listed coarse coefficient-word invariants. It is not the totient sequence and does not rule out arguments using quantitative totient size, factorisation, or residue information.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "parityCoboundaryWeight_mod_two_eq_totient",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 194
+        },
+        {
+          "declaration": "parityCoboundaryWeight_le_six",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 227
+        },
+        {
+          "declaration": "tsum_parityCoboundaryWeight_eq_three_halves",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 359
+        },
+        {
+          "declaration": "exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 457
+        },
+        {
+          "declaration": "parityCoboundaryWeight_not_eventually_periodic",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 487
+        },
+        {
+          "declaration": "exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 637
+        }
+      ]
+    },
+    {
+      "id": "fixed_rank_curvature_dyadic_scaling_and_divisibility",
+      "canonical_statement": "PROVED: for an even base height H and odd offset j, scaling both by 2^(n+1) scales the primitive three-rank totient second difference by exactly 2^n; because the unscaled curvature is even, the scaled curvature is divisible by 2^(n+1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "fixed_rank_curvature"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the even/odd totient doubling laws iterated through the primitive coefficient vector (1,-2,1)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The paper uses this fixed-rank lane as quantitative arithmetic structure rather than as a certificate by itself.",
+      "scope_caveat": "The result gives a forced dyadic divisor under a scaled-offset hypothesis. It does not prove nonzero curvature or a residue-band certificate at cofinally many actual LCM heights.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "fixedRankSecondDifference_two_pow_succ_mul",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 392
+        },
+        {
+          "declaration": "two_pow_succ_dvd_fixedRankSecondDifference",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 447
+        }
+      ]
+    },
+    {
+      "id": "fixed_rank_curvature_dyadic_divisor_is_sharp",
+      "canonical_statement": "PROVED FINITE FAMILY: at the explicit dyadic fixture with base height 2 and odd offset 3, the scaled primitive three-rank curvature is exactly -2^(n+1) for every n, so the general forced divisor has no additional hidden factor of two.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "fixed_rank_curvature"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact base-cell evaluation transported by the dyadic scaling identity",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The fixture is an exact sharpness witness for the preceding valuation theorem.",
+      "scope_caveat": "This parametric fixture proves sharpness of the general dyadic divisor, not the behavior of fixed-rank curvature at actual power-of-two LCM heights.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "fixedRankSecondDifference_dyadic_fixture_exact",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 462
+        }
+      ]
+    },
+    {
+      "id": "fixed_rank_curvature_primitive_archimedean_bound",
+      "canonical_statement": "PROVED: on every clean offset j with j^2<=2^a, the rank-one, rank-two, and rank-three endpoint totients differ from a common affine main term by relative error below 2/a; their second difference is therefore explicitly o(H), divisible by 2*phi(j), and after dividing by that local factor is an integer z with |z|<(8(H/j)+4)/a and z=0 or |z|>=1.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "fixed_rank_curvature"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "clean LCM-ray factorisation, an elementary rough Euler-density estimate, affine-main-term cancellation, and exact local divisibility",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This records the fixed-rank quantitative frontier emphasized by the reasoning-surface paper.",
+      "scope_caveat": "The bound normalizes the remaining arithmetic obstruction but does not prove that the primitive integer z is nonzero, let alone that it supplies cofinally many tail-difference certificates.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "fixed_rank_clean_endpoint_totient_bounds",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 172
+        },
+        {
+          "declaration": "fixed_rank_secondDifference_abs_lt",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 567
+        },
+        {
+          "declaration": "exists_primitive_fixedRankCurvature_with_bound",
+          "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+          "line": 637
+        }
+      ]
+    },
+    {
+      "id": "cofinal_short_arithmetic_kill_producer_contract",
+      "canonical_statement": "PowerTwoActualLcmShortArithmeticKillSupply is the proposition that beyond every cutoff a0 there are an exponent a and depth L with a0<=a, L<2*2^a, and a certified actual-LCM arithmetic kill at scale 2^a.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_orbit",
+        "short_arithmetic_kill"
+      ],
+      "open_antecedents": [
+        "PowerTwoActualLcmShortArithmeticKillSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the cofinal producer interface",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A Lean interface isolating the exact finite-certificate producer consumed by the irrationality implication; no novelty claim is made.",
+      "scope_caveat": "OPEN PRODUCER. Naming this proposition does not prove that any witnesses exist beyond the two finite exponents already checked, does not establish cofinality, and does not prove Erdős #249.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "PowerTwoActualLcmShortArithmeticKillSupply",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2107
+        }
+      ]
+    },
+    {
+      "id": "parity_coboundary_weight_representation",
+      "canonical_statement": "The parity countermodel coefficient is parityBaseWeight(n) plus twice the sparse large-power-of-two marker at n, minus four times the preceding marker. Natural subtraction is exact because every negative spike occurs on base weight four.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "coarse_invariant_countermodel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the sparse coboundary perturbation",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A concrete coefficient definition for the proved rational countermodel; no novelty claim is made.",
+      "scope_caveat": "This is an artificial bounded sequence matching only selected coarse totient invariants. It is not Euler's totient sequence, and its rational series does not bear directly on the truth of Erdős #249.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "parityCoboundaryWeight",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 59
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "PowerTwoActualLcmShortArithmeticKillSupply",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2107,
+      "role": "representation",
+      "statement_node": "cofinal_short_arithmetic_kill_producer_contract"
+    },
+    {
+      "declaration": "parityCoboundaryWeight",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 59,
+      "role": "representation",
+      "statement_node": "parity_coboundary_weight_representation"
+    },
+    {
+      "declaration": "totient_carryShift_cast",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 64,
+      "role": "statement",
+      "statement_node": "carry_displacement_tail_integrality_equivalence"
+    },
+    {
+      "declaration": "carryShift_dvd_iff_tailDiff_mem_int",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 77,
+      "role": "statement",
+      "statement_node": "carry_displacement_tail_integrality_equivalence"
+    },
+    {
+      "declaration": "carryShift_ediv_cast_eq_tailDiff",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 106,
+      "role": "statement",
+      "statement_node": "carry_displacement_tail_integrality_equivalence"
+    },
+    {
+      "declaration": "carrySectionsEventuallyPeriodicMod_of_shift_dvd",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 180,
+      "role": "statement",
+      "statement_node": "rationality_mod_period_and_unbounded_rank"
+    },
+    {
+      "declaration": "not_irrational_totientSeries_implies_eventual_mod_period",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 200,
+      "role": "statement",
+      "statement_node": "rationality_mod_period_and_unbounded_rank"
+    },
+    {
+      "declaration": "not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 224,
+      "role": "statement",
+      "statement_node": "rationality_mod_period_and_unbounded_rank"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_notMem_int_of_irrational",
+      "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+      "line": 26,
+      "role": "statement",
+      "statement_node": "actual_lcm_orbit_nonintegrality_exact_frontier"
+    },
+    {
+      "declaration": "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+      "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+      "line": 37,
+      "role": "statement",
+      "statement_node": "actual_lcm_orbit_nonintegrality_exact_frontier"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
+      "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
+      "line": 52,
+      "role": "statement",
+      "statement_node": "actual_lcm_orbit_nonintegrality_exact_frontier"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticWord_eq_windowDiscrepancy",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 1998,
+      "role": "statement",
+      "statement_node": "lcm_arithmetic_word_exact_certificate_representation"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticKill_iff_certifiedKill",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2045,
+      "role": "statement",
+      "statement_node": "lcm_arithmetic_word_exact_certificate_representation"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_notMem_int_of_arithmeticKill",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2095,
+      "role": "statement",
+      "statement_node": "cofinal_short_arithmetic_kills_imply_irrationality"
+    },
+    {
+      "declaration": "actualLcmOrbitNonintegralitySupply_of_shortArithmeticKill",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2152,
+      "role": "statement",
+      "statement_node": "cofinal_short_arithmetic_kills_imply_irrationality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_shortArithmeticKillSupply",
+      "module": "Erdos249257/TotientActualLcmShortKill.lean",
+      "line": 63,
+      "role": "statement",
+      "statement_node": "cofinal_short_arithmetic_kills_imply_irrationality"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticKill_two_pow_four",
+      "module": "Erdos249257/TotientActualLcmShortKill.lean",
+      "line": 18,
+      "role": "statement",
+      "statement_node": "short_arithmetic_kills_at_exponents_four_and_six"
+    },
+    {
+      "declaration": "lcmDiagonalArithmeticKill_two_pow_six",
+      "module": "Erdos249257/TotientActualLcmShortKill.lean",
+      "line": 27,
+      "role": "statement",
+      "statement_node": "short_arithmetic_kills_at_exponents_four_and_six"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_four_and_six_notMem_int",
+      "module": "Erdos249257/TotientActualLcmShortKill.lean",
+      "line": 35,
+      "role": "statement",
+      "statement_node": "short_arithmetic_kills_at_exponents_four_and_six"
+    },
+    {
+      "declaration": "powerTwoActualLcmShortArithmeticKillSupply_through_six",
+      "module": "Erdos249257/TotientActualLcmShortKill.lean",
+      "line": 54,
+      "role": "statement",
+      "statement_node": "short_arithmetic_kills_at_exponents_four_and_six"
+    },
+    {
+      "declaration": "two_pow_dvd_windowDiscrepancy_of_terminalDyadicStaircase",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 210,
+      "role": "statement",
+      "statement_node": "full_terminal_dyadic_staircase_is_impossible"
+    },
+    {
+      "declaration": "lcmRayArithmeticLetter_lt_directedRoom",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 227,
+      "role": "statement",
+      "statement_node": "full_terminal_dyadic_staircase_is_impossible"
+    },
+    {
+      "declaration": "not_actualLcmTerminalDyadicStaircase_of_room",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 251,
+      "role": "statement",
+      "statement_node": "full_terminal_dyadic_staircase_is_impossible"
+    },
+    {
+      "declaration": "actualLcmTopEdgeResidueGap_of_puncturedDyadicStaircase",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1115,
+      "role": "statement",
+      "statement_node": "top_edge_residue_gap_excludes_integral_tail_difference"
+    },
+    {
+      "declaration": "actualLcmTailDiff_notMem_int_of_topEdgeResidueGap",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1260,
+      "role": "statement",
+      "statement_node": "top_edge_residue_gap_excludes_integral_tail_difference"
+    },
+    {
+      "declaration": "parityCoboundaryWeight_mod_two_eq_totient",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 194,
+      "role": "statement",
+      "statement_node": "totient_parity_aperiodicity_rational_countermodel"
+    },
+    {
+      "declaration": "parityCoboundaryWeight_le_six",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 227,
+      "role": "statement",
+      "statement_node": "totient_parity_aperiodicity_rational_countermodel"
+    },
+    {
+      "declaration": "tsum_parityCoboundaryWeight_eq_three_halves",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 359,
+      "role": "statement",
+      "statement_node": "totient_parity_aperiodicity_rational_countermodel"
+    },
+    {
+      "declaration": "exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 457,
+      "role": "statement",
+      "statement_node": "totient_parity_aperiodicity_rational_countermodel"
+    },
+    {
+      "declaration": "parityCoboundaryWeight_not_eventually_periodic",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 487,
+      "role": "statement",
+      "statement_node": "totient_parity_aperiodicity_rational_countermodel"
+    },
+    {
+      "declaration": "exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 637,
+      "role": "statement",
+      "statement_node": "totient_parity_aperiodicity_rational_countermodel"
+    },
+    {
+      "declaration": "fixedRankSecondDifference_two_pow_succ_mul",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 392,
+      "role": "statement",
+      "statement_node": "fixed_rank_curvature_dyadic_scaling_and_divisibility"
+    },
+    {
+      "declaration": "two_pow_succ_dvd_fixedRankSecondDifference",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 447,
+      "role": "statement",
+      "statement_node": "fixed_rank_curvature_dyadic_scaling_and_divisibility"
+    },
+    {
+      "declaration": "fixedRankSecondDifference_dyadic_fixture_exact",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 462,
+      "role": "statement",
+      "statement_node": "fixed_rank_curvature_dyadic_divisor_is_sharp"
+    },
+    {
+      "declaration": "fixed_rank_clean_endpoint_totient_bounds",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 172,
+      "role": "statement",
+      "statement_node": "fixed_rank_curvature_primitive_archimedean_bound"
+    },
+    {
+      "declaration": "fixed_rank_secondDifference_abs_lt",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 567,
+      "role": "statement",
+      "statement_node": "fixed_rank_curvature_primitive_archimedean_bound"
+    },
+    {
+      "declaration": "exists_primitive_fixedRankCurvature_with_bound",
+      "module": "Erdos249257/TotientFixedRankLcmAsymptotic.lean",
+      "line": 637,
+      "role": "statement",
+      "statement_node": "fixed_rank_curvature_primitive_archimedean_bound"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "rationality_mod_period_and_unbounded_rank",
+      "to": "carry_displacement_tail_integrality_equivalence",
+      "relation": "transport_of",
+      "basis": "The common eventual period modulo the carry multiplier is obtained by transporting eventual integral tail differences through the exact divisibility equivalence."
+    },
+    {
+      "from": "lcm_arithmetic_word_exact_certificate_representation",
+      "to": "actual_lcm_orbit_nonintegrality_exact_frontier",
+      "relation": "reformulates",
+      "basis": "The arithmetic word identifies the finite residue certificate whose soundness rules out one actual-LCM orbit integrality event; cofinal such events feed the exact frontier."
+    },
+    {
+      "from": "cofinal_short_arithmetic_kills_imply_irrationality",
+      "to": "actual_lcm_orbit_nonintegrality_exact_frontier",
+      "relation": "implies",
+      "basis": "Every short arithmetic kill gives one non-integral actual-LCM orbit, and a cofinal supply supplies the right-hand side of the exact irrationality equivalence."
+    },
+    {
+      "from": "cofinal_short_arithmetic_kills_imply_irrationality",
+      "to": "lcm_arithmetic_word_exact_certificate_representation",
+      "relation": "depends_on_open",
+      "basis": "The conditional endpoint consumes the exact arithmetic-kill/certified-kill identification at each selected power-of-two scale; the only open input is the cofinal supply."
+    },
+    {
+      "from": "short_arithmetic_kills_at_exponents_four_and_six",
+      "to": "cofinal_short_arithmetic_kills_imply_irrationality",
+      "relation": "finite_instance_of",
+      "basis": "The witnesses at exponents four and six instantiate the local kill shape but do not satisfy the cofinal quantifier required by the conditional endpoint."
+    },
+    {
+      "from": "top_edge_residue_gap_excludes_integral_tail_difference",
+      "to": "full_terminal_dyadic_staircase_is_impossible",
+      "relation": "repair_of",
+      "basis": "The viable repair keeps a nonzero terminal word residue and asks only that it avoid the upper carry strip, instead of requiring every terminal letter to vanish at its dyadic place."
+    },
+    {
+      "from": "top_edge_residue_gap_excludes_integral_tail_difference",
+      "to": "actual_lcm_orbit_nonintegrality_exact_frontier",
+      "relation": "specialises",
+      "basis": "At J=0 the localized non-integral tail difference is one actual-LCM orbit non-integrality event; a cofinal supply of such gaps would feed the exact frontier."
+    },
+    {
+      "from": "totient_parity_aperiodicity_rational_countermodel",
+      "to": "rationality_mod_period_and_unbounded_rank",
+      "relation": "complements",
+      "basis": "The countermodel blocks coarse coefficient-word invariants, while the carry theorem separately shows that the genuine rationality consequence is quotient periodicity rather than finite rational rank."
+    },
+    {
+      "from": "fixed_rank_curvature_dyadic_divisor_is_sharp",
+      "to": "fixed_rank_curvature_dyadic_scaling_and_divisibility",
+      "relation": "finite_instance_of",
+      "basis": "The explicit base-height-two, offset-three family attains exactly the divisor forced by the general dyadic scaling theorem."
+    },
+    {
+      "from": "fixed_rank_curvature_primitive_archimedean_bound",
+      "to": "fixed_rank_curvature_dyadic_scaling_and_divisibility",
+      "relation": "complements",
+      "basis": "The dyadic theorem controls the forced two-adic factor, while the clean-ray theorem removes the local factor and bounds the remaining primitive integer in Archimedean size."
+    },
+    {
+      "from": "fixed_rank_curvature_primitive_archimedean_bound",
+      "to": "cofinal_short_arithmetic_kills_imply_irrationality",
+      "relation": "complements",
+      "basis": "The fixed-rank curvature supplies quantitative actual-LCM arithmetic structure but stops at the nonvanishing of a primitive integer, whereas the short-kill route requires a cofinal residue-band exclusion."
+    }
+  ]
+}

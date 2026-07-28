@@ -1,0 +1,753 @@
+{
+  "zone_id": "Z35",
+  "title": "Cyclotomic anchors, filtered carry collapse, and full-Mersenne claim ceilings",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z35_binary_cyclotomic_anchor",
+      "label": "clean binary cyclotomic anchor",
+      "note": "A prime divisor p of |Phi_(h q)(2)| with p coprime to hq, exact order hq for 2 modulo p, and p-1 beyond a requested threshold."
+    },
+    {
+      "id": "z35_totient_block",
+      "label": "cleared finite totient block",
+      "note": "The first H totient-tail letters at N cleared by 2^H, whose residue controls denominator-compatible integral tail differences."
+    },
+    {
+      "id": "z35_prime_filtered_carry",
+      "label": "prime-filtered carry launch",
+      "note": "An integer launch inside the analytic strip and in the single residue class forced by a clean Mersenne prime divisor."
+    },
+    {
+      "id": "z35_single_locked_state",
+      "label": "at-most-one three-step locked state",
+      "note": "The sole possible filtered launch surviving the first three dyadic carry steps after product-modulus spacing collapses the candidate set."
+    },
+    {
+      "id": "z35_full_mersenne_filter",
+      "label": "full Mersenne quotient filter",
+      "note": "The composite modulus M=(2^H-1)/v retained after removing the prospective odd denominator factor v, preserving essentially the whole exponential scale."
+    },
+    {
+      "id": "z35_centered_residue_gap",
+      "label": "centered full-Mersenne residue gap",
+      "note": "The forced block residue lies in the central open arc outside both endpoint intervals representing the complete analytic launch box."
+    },
+    {
+      "id": "z35_edge_lock_rigidity",
+      "label": "edge-lock carry rigidity",
+      "note": "When a large modulus has no central gap on consecutive basepoints, canonical centered block lifts follow the literal integer carry recurrence without modular wrap."
+    },
+    {
+      "id": "z35_claim_ceiling",
+      "label": "exact Erdős 249 claim ceiling",
+      "note": "A supply predicate proved equivalent to irrationality; the equivalence is a lossless reformulation, not evidence that either side holds."
+    },
+    {
+      "id": "z35_period_30_certificate",
+      "label": "period-30 fixed certificate",
+      "note": "Two kernel-checked finite kills and one deeper exact residue datum at the composite cyclotomic anchor h=30."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "prime_index_mersenne_layers_have_unbounded_prime_support",
+      "canonical_statement": "PROVED UNCONDITIONAL SUPPORT: if q and p are prime and p divides 2^q-1, then the order of 2 modulo p is q and q divides p-1. The exact X-2 layer therefore satisfies the degree-one order consumer and clean layer-supply hypotheses, yielding prime divisors beyond every size bound at arbitrarily remote prime indices.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": ["z35_binary_cyclotomic_anchor"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "multiplicative order in ZMod p, primality of q, Fermat-Lagrange divisibility, and the abstract bounded-degree order-consumer theorem",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The prime-index Mersenne divisor congruence p≡1 mod q is classical. The repository packages it into its prime-ray supply interface; no priority claim is made.",
+      "scope_caveat": "Unbounded prime support supplies clean arithmetic anchors only. It proves no tail discrepancy, carry kill, cofinal certificate supply, or irrationality of the binary totient series.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"prime_index_dvd_pred","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":33},
+        {"declaration":"mersenneLayer_orderConsumer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":76},
+        {"declaration":"mersenneLayer_layerSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":84},
+        {"declaration":"mersenneLayer_unboundedPrimeDivisorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":105}
+      ]
+    },
+    {
+      "id": "cleared_totient_block_controls_tail_and_residue_orbit",
+      "canonical_statement": "PROVED EXACT BLOCK DYNAMICS: (2^H-1)R_N is the integer block Q_(H,N) plus R_(N+H)-R_N; sliding N advances Q by the same affine recurrence as the carry modulo the exact multiple (2^H-1)phi(N+1). Consequently a carry initially congruent to -Q modulo any divisor p of 2^H-1 remains congruent to the shifted negative block at every depth.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": ["z35_totient_block", "z35_prime_filtered_carry"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite tail splitting, the totient-tail recurrence, and induction of the affine congruence",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Exact finite-block and affine recurrence algebra for the repository's tail coordinate.",
+      "scope_caveat": "The residue orbit is a consumer interface. It neither makes the true tail difference integral nor supplies a modulus or an escaping carry.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"mersenne_mul_tail_eq_block_add_diff","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":119},
+        {"declaration":"totientBlock_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":151},
+        {"declaration":"carryOrbit_modEq_neg_totientBlock_shift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":169}
+      ]
+    },
+    {
+      "id": "filtered_carry_spacing_collapses_to_one_survivor",
+      "canonical_statement": "PROVED PRODUCT-MODULUS SPACING: two launches in one class modulo M differ at carry depth K by a multiple of 2^K M, so a strip of radius below 2^(K-1)M contains at most one survivor. At a clean prime basepoint N<p with H<=p-1, depth three already forces uniqueness.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": ["z35_prime_filtered_carry", "z35_single_locked_state"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact carry-orbit difference, nonzero modular spacing, and comparison with the combined endpoint-strip width",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary spacing in an affine dyadic recurrence.",
+      "scope_caveat": "Uniqueness says at most one candidate survives. It does not show that the remaining candidate escapes.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"primeBasepointFiltered_survivor_at_three_unique","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":209},
+        {"declaration":"modulusFiltered_survivor_unique","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":250}
+      ]
+    },
+    {
+      "id": "clean_prime_filter_has_four_candidate_normal_form",
+      "canonical_statement": "PROVED FOUR-STATE CLASSIFICATION: at a clean anchor with H<=p-1, every denominator-compatible launch in the analytic initial interval is one of r-2p, r-p, r, or r+p for the canonical residue r. All four representatives lie in the forced class, and after three carry steps their locked subset has cardinality at most one.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_prime_filtered_carry", "z35_single_locked_state"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Euclidean residue normal form plus the depth-three product-modulus spacing theorem",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Finite modular classification in the exact analytic launch interval.",
+      "scope_caveat": "The reduction replaces O(p) launches by four and then at most one; it does not kill the surviving state or provide cofinally many usable anchors.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"primeFiltered_candidate_eq_one_of_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":338},
+        {"declaration":"primeFourCarryCandidate_modEq_residue","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":400},
+        {"declaration":"primeFourCarry_survivor_at_three_unique","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":420},
+        {"declaration":"primeFourCarryLockedThrough_three_card_le_one","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":523}
+      ]
+    },
+    {
+      "id": "four_state_and_single_locked_kills_are_equivalent",
+      "canonical_statement": "PROVED FINITE CERTIFICATE EQUIVALENCE: a four-state kill is exactly emptiness of the locked-through set and is monotone in depth. From depth three onward it is equivalent to killing only the at-most-one locked state, and under clean prime geometry it is exactly the original residue-filtered carry-kill predicate.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_prime_filtered_carry", "z35_single_locked_state"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite-set emptiness, depth monotonicity, four-state classification, and three-step uniqueness",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lossless executable normal forms for the same finite certificate predicate.",
+      "scope_caveat": "Equivalence of finite search encodings does not establish any certificate, let alone a cofinal supply.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"primeFourCarryKill_iff_lockedThrough_eq_empty","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":492},
+        {"declaration":"primeFourCarryKill_mono","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":551},
+        {"declaration":"primeSingleLockedCarryKill_of_primeFourCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":563},
+        {"declaration":"primeFourCarryKill_of_primeSingleLockedCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":575},
+        {"declaration":"primeSingleLockedCarryKill_iff_primeFourCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":604},
+        {"declaration":"primeFourCarryKill_iff_primeFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":613}
+      ]
+    },
+    {
+      "id": "prime_filtered_search_is_sound_and_pointwise_complete",
+      "canonical_statement": "PROVED POINTWISE SEARCH CHARACTERISATION: assuming the denominator filter for an integral tail difference, a finite prime-filtered kill proves that difference nonintegral. Conversely, nonintegrality of the fixed tail difference implies that some uniform finite depth kills every candidate in the finite filtered interval.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_prime_filtered_carry"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "analytic tail-strip bounds, exact carry tracking, and finite maximisation of pointwise escape depths",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A soundness/completeness theorem for the local finite certificate interface.",
+      "scope_caveat": "Completeness is pointwise after nonintegrality is assumed. It does not prove nonintegrality at any new height or a cofinal supply.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"tail_diff_notMem_int_of_primeFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":661},
+        {"declaration":"exists_primeFilteredCarryKill_of_tail_diff_notMem_int","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":719}
+      ]
+    },
+    {
+      "id": "free_basepoint_filter_collapses_to_single_locked_state",
+      "canonical_statement": "PROVED BASEPOINT-DECOUPLED NORMAL FORM: at an arbitrary basepoint the filtered launch set has at most one three-step survivor under clean prime geometry, and also under a composite modulus wider than the analytic radius. Filtered and single-locked certificates are depth-monotone and equivalent from depth three onward; setting N=p-1 recovers the original prime-predecessor predicate.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_prime_filtered_carry", "z35_single_locked_state", "z35_full_mersenne_filter"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "free-basepoint product-modulus spacing and exact translation between launch indices and integer states",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A lossless generalisation of the finite prime-predecessor search interface.",
+      "scope_caveat": "Basepoint freedom permits a later arithmetic construction but supplies neither the modulus nor terminal escape.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"primeBasepointFilteredLockedThrough_three_card_le_one","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":824},
+        {"declaration":"modulusFilteredLockedThrough_three_card_le_one","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":846},
+        {"declaration":"primeBasepointFilteredCarryKill_mono","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":888},
+        {"declaration":"primeBasepointSingleLockedCarryKill_of_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":900},
+        {"declaration":"primeBasepointFilteredCarryKill_of_singleLocked","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":912},
+        {"declaration":"primeBasepointSingleLockedCarryKill_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":944},
+        {"declaration":"primeBasepointFilteredCarryKill_pred_iff","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":954}
+      ]
+    },
+    {
+      "id": "free_basepoint_search_is_sound_and_pointwise_complete",
+      "canonical_statement": "PROVED FREE-BASEPOINT SEARCH CHARACTERISATION: a filtered kill plus the correct block congruence excludes integrality of the true H-step tail difference at any N; conversely, nonintegrality of that fixed difference yields some finite filtered-kill depth.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_prime_filtered_carry"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the exact carry/tail identity and finite uniformisation over the analytic launch interval",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Pointwise soundness and completeness of the basepoint-decoupled certificate.",
+      "scope_caveat": "The theorem is local in H,N,p. It does not prove any global supply or the required congruence from rationality.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"tail_diff_notMem_int_of_primeBasepointFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":972},
+        {"declaration":"exists_primeBasepointFilteredCarryKill_of_tail_diff_notMem_int","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1029}
+      ]
+    },
+    {
+      "id": "scaled_tail_forces_prime_or_full_mersenne_residue",
+      "canonical_statement": "PROVED DENOMINATOR FILTER: if vR_N and the H-step tail difference are integers, then a prime p coprime to v dividing 2^H-1 forces the difference into -Q_(H,N) modulo p. More strongly, an exact factorisation vM=2^H-1 forces the same class modulo the full quotient M without a primality hypothesis.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": ["z35_totient_block", "z35_prime_filtered_carry", "z35_full_mersenne_filter"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the exact cleared-block identity followed by cancellation of v in integers or prime coprimality",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Exact denominator-clearing algebra in the paper's tail coordinates.",
+      "scope_caveat": "The filter is conditional on integrality of the scaled tail and the tail difference. It does not assert rationality or produce a contradiction without a kill or gap.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"tail_diff_modEq_neg_totientBlock_of_scaled_tail","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1075},
+        {"declaration":"tail_diff_modEq_neg_totientBlock_of_scaled_tail_factor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1123}
+      ]
+    },
+    {
+      "id": "full_mersenne_candidate_is_near_integer_and_gap_excludes_it",
+      "canonical_statement": "PROVED FULL-QUOTIENT GEOMETRY: a launch in the full-Mersenne residue class forces vR_N within 2(N+H+2)/M of an integer. Every noninteger real has a positive lattice gap, so once this error is smaller no launch exists. Irrationality makes all positive integer scalings of shifted tails nonintegral, while a rational value with denominator 2^c v makes vR_N integral for every N>=c.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": ["z35_full_mersenne_filter", "z35_centered_residue_gap"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact block identity, distance to the integer lattice, exponential quotient size, and dyadic/odd denominator splitting",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary Diophantine approximation and denominator-clearing lemmas specialised to the actual totient tail.",
+      "scope_caveat": "The forward near-integer implication alone proves nothing. The global conclusions below remain equivalent reformulations of the unknown irrationality statement.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"scaled_tail_near_int_of_mersenne_factor_candidate","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1170},
+        {"declaration":"exists_uniform_int_gap_of_notMem_int","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1248},
+        {"declaration":"no_mersenne_factor_candidate_of_scaled_tail_gap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1287},
+        {"declaration":"scaled_totientTail_notMem_int_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1312},
+        {"declaration":"exists_int_scaled_tail_of_rat_den_eq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1335}
+      ]
+    },
+    {
+      "id": "binary_cyclotomic_layers_supply_clean_cofinal_anchors",
+      "canonical_statement": "PROVED UNCONDITIONAL CLEAN ANCHORS: |Phi_n(2)| divides 2^n-1, and a prime divisor p of a positive binary cyclotomic layer has n=p^a ord_p(2). For every h>0 and threshold N0 one can choose a prime q and clean prime divisor p of |Phi_(hq)(2)| with p coprime to hq, exact order hq, hq dividing p-1, and p-1>=N0; hence the concrete binary layers satisfy CleanCyclotomicAnchorSupply.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": ["z35_binary_cyclotomic_anchor"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "cyclotomic divisibility, finite-field order decomposition, prime selection beyond max(h,N0,2^h), and elimination of the characteristic-prime case",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Built from standard cyclotomic and Dirichlet ingredients; the exact clean-anchor packaging has not been priority-assessed.",
+      "scope_caveat": "This completely supplies anchor provenance but not the cofinal terminal carry kill attached to those anchors.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"binaryCyclotomicLayer_dvd_mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1375},
+        {"declaration":"binaryCyclotomicLayer_prime_order_decomposition","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1390},
+        {"declaration":"two_ne_zero_of_prime_dvd_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1419},
+        {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1464},
+        {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1636}
+      ]
+    },
+    {
+      "id": "eventual_period_integrality_propagates_to_multiples",
+      "canonical_statement": "PROVED PERIOD TRANSPORT: if R_(N+h)-R_N is integral at every sufficiently late N, then R_(N+hk)-R_N is integral for every k and every such N by telescoping k adjacent h-step differences.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": ["z35_claim_ceiling"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite telescoping of adjacent tail differences",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard period-multiple telescoping.",
+      "scope_caveat": "The lemma propagates a supplied eventual integrality law; it neither proves such a law nor proves its negation.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"tail_diff_int_of_period_mul","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1598}
+      ]
+    },
+    {
+      "id": "cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling",
+      "canonical_statement": "EXACT CLAIM-CEILING FAMILY: the cofinal residue-filtered, literal four-state, and one-locked-state cyclotomic supplies are mutually lossless; they feed the free-basepoint supply and each closes irrationality. Under clean Mersenne-dividing anchors irrationality reconstructs the filtered certificates, so for the concrete binary layers—and for the basepoint-decoupled supply—these predicates are each equivalent to Erdős #249.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_binary_cyclotomic_anchor", "z35_prime_filtered_carry", "z35_single_locked_state", "z35_claim_ceiling"],
+      "open_antecedents": [
+        "the truth of any equivalent cofinal terminal-kill supply remains exactly the unresolved irrationality of the binary totient series"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "finite predicate equivalences, clean-anchor supply, rational-denominator splitting, pointwise certificate soundness and completeness",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "These theorems establish equivalence architecture, not the truth of the open predicate. The reasoning-surface paper explicitly reports them as reductions rather than narrowing progress.",
+      "scope_caveat": "No cofinal kill supply is proved independently. Equivalence to Irrational S must not be read as a solution of #249.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1717},
+        {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1742},
+        {"declaration":"cyclotomicPrimeSingleLockedCarryKillSupply_iff_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1767},
+        {"declaration":"primeBasepointFilteredCarryKillSupply_of_cyclotomicFiltered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1790},
+        {"declaration":"irrational_totient_series_of_primeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1809},
+        {"declaration":"irrational_totient_series_of_cyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1881},
+        {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1952},
+        {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1976},
+        {"declaration":"binaryCyclotomicPrimeFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1989},
+        {"declaration":"primeBasepointFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1999}
+      ]
+    },
+    {
+      "id": "full_mersenne_single_locked_supply_is_exact_claim_ceiling",
+      "canonical_statement": "EXACT FULL-QUOTIENT CLAIM CEILING: for every prospective dyadic preperiod c and positive odd denominator part v, the supply of a remote Euler-multiple H whose quotient M=(2^H-1)/v is wider than the initial radius and whose sole three-step survivor eventually escapes is equivalent to irrationality of the binary totient series.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_full_mersenne_filter", "z35_single_locked_state", "z35_claim_ceiling"],
+      "open_antecedents": [
+        "FullMersenneSingleLockedCarryKillSupply is not proved independently of assuming irrationality"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "Euler divisibility, exponential-over-linear quotient growth, pointwise certificate completeness, denominator clearing, and lossless one-state/full-filter conversion",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "An exact reformulation of #249, not a new proof of either side.",
+      "scope_caveat": "The reverse theorem starts from irrationality. The equivalence therefore identifies the residual but contributes no unconditional cofinal escape.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"fullMersenneSingleLockedCarryKillSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2031},
+        {"declaration":"irrational_totient_series_of_fullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2098},
+        {"declaration":"fullMersenneSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2155}
+      ]
+    },
+    {
+      "id": "full_mersenne_centered_residue_has_exact_modular_dynamics",
+      "canonical_statement": "PROVED CENTERED-RESIDUE DYNAMICS: modulo any M dividing 2^H-1, the block residue doubles and subtracts the next delta-totient letter when N advances. The canonical signed lift represents the same class; if the two signed sides fit inside one modulus, the modular recurrence is literal equality. With sufficient room, central-arc escape is exactly the centered lift exceeding the analytic radius.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": ["z35_full_mersenne_filter", "z35_centered_residue_gap"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the exact block recurrence, Euclidean remainders, canonical centering, and a quantitative no-wrap lemma",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Exact modular dynamics and centered-representative arithmetic.",
+      "scope_caveat": "The recurrence describes the residue orbit. It does not prove central escape at any cofinal family of heights.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"fullMersenneBlockResidue_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2185},
+        {"declaration":"fullMersenneBlockCenteredLift_emod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2229},
+        {"declaration":"fullMersenneBlockCenteredLift_succ_modEq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2241},
+        {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_abs_add_abs_lt","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2286},
+        {"declaration":"fullMersenneCenteredResidueGap_iff_abs_centeredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2319}
+      ]
+    },
+    {
+      "id": "edge_lock_rigidity_transports_carry_escape_to_centered_gap",
+      "canonical_statement": "PROVED FINITE ESCAPE TRANSPORT: if a sufficiently large Mersenne divisor has no central gap at two adjacent basepoints, centered lifts obey the literal affine recurrence; over an edge-locked interval they equal the ordinary carry orbit. Therefore one carry escape, a survivorKill, or a certifiedKill forces a genuine centered full-Mersenne gap at or before the checked depth.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": ["z35_centered_residue_gap", "z35_edge_lock_rigidity"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "quantitative no-wrap at adjacent edges, induction over an interval, and contrapositive transport of finite carry escape",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "A project-specific exact bridge from existing finite certificates to the full-Mersenne residue geometry; no novelty claim is made.",
+      "scope_caveat": "Each theorem is finite and requires explicit large-modulus room. It does not supply cofinally many compatible H,N,M or solve #249.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_two_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2359},
+        {"declaration":"fullMersenneBlockCenteredLift_add_eq_carryOrbit_of_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2419},
+        {"declaration":"exists_fullMersenneCenteredResidueGap_of_carryOrbit_escape","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2449},
+        {"declaration":"exists_fullMersenneCenteredResidueGap_of_survivorKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2477},
+        {"declaration":"survivorKill_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2548},
+        {"declaration":"exists_fullMersenneCenteredResidueGap_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2578}
+      ]
+    },
+    {
+      "id": "initial_and_centered_gap_are_same_zero_launch_condition",
+      "canonical_statement": "PROVED ZERO-LAUNCH NORMAL FORM: for positive modulus M, absence of every representative of the forced block class in the initial interval [-B,B] is equivalent to the least nonnegative residue lying in the central open arc. Every positive-height factorisation vM=2^H-1 has M>0, so the equivalence applies to the intended full quotient.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_full_mersenne_filter", "z35_centered_residue_gap"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Euclidean residue classification of all representatives in a symmetric interval",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary modular normal form.",
+      "scope_caveat": "This identifies two finite predicates. It does not prove that either gap occurs.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"fullMersenneInitialResidueGap_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2604},
+        {"declaration":"mersenne_factor_modulus_pos","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2686}
+      ]
+    },
+    {
+      "id": "full_mersenne_gap_supplies_are_exact_claim_ceiling",
+      "canonical_statement": "EXACT ARITHMETIC CLAIM CEILING: irrationality supplies a full-Mersenne initial gap at every prescribed basepoint and hence cofinally; conversely such gaps exclude every rational denominator. Initial-gap and centered-residue supplies are equivalent to #249, and the basepoint may be fixed canonically at the dyadic denominator exponent c without loss.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_full_mersenne_filter", "z35_centered_residue_gap", "z35_claim_ceiling"],
+      "open_antecedents": [
+        "the cofinal centered residue gap is itself exactly the unresolved irrationality statement, not an independently supplied theorem"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "uniform integer-lattice gap of vR_N, Euler-multiple quotient growth, denominator clearing, and exact initial/centered/canonical-basepoint transports",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The paper describes the centered remainder as an arithmetic normal form of #249. These equivalences localise the open content without proving it.",
+      "scope_caveat": "No theorem here proves the centered residue gap without assuming irrationality or an equivalent supply. This is a reformulation of #249, not its resolution.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"exists_fullMersenneInitialResidueGap_at_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2759},
+        {"declaration":"fullMersenneInitialResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2845},
+        {"declaration":"irrational_totient_series_of_fullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2860},
+        {"declaration":"fullMersenneInitialResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2919},
+        {"declaration":"fullMersenneCenteredResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2933},
+        {"declaration":"fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2943},
+        {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2954},
+        {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2976},
+        {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2989}
+      ]
+    },
+    {
+      "id": "cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling",
+      "canonical_statement": "EXACT FINITE-STATE CLAIM CEILING: cyclotomic four-state supply implies irrationality; with clean Mersenne-dividing anchors it is equivalent to irrationality. For the concrete binary cyclotomic layers both the literal four-state supply and the one-locked-state supply are exactly Erdős #249.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_binary_cyclotomic_anchor", "z35_single_locked_state", "z35_claim_ceiling"],
+      "open_antecedents": [
+        "no cofinal four-state or single-locked-state kill supply is proved independently for the binary cyclotomic layers"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "clean anchor provenance plus the lossless local four-state, filtered, and single-locked certificate equivalences",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact finite-state reformulations of the open problem.",
+      "scope_caveat": "The at-most-one state reduction is unconditional locally; its eventual escape at cofinally many anchors is exactly the unresolved content.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"irrational_totient_series_of_cyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2996},
+        {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3005},
+        {"declaration":"binaryCyclotomicPrimeFourCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3017},
+        {"declaration":"binaryCyclotomicPrimeSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3028}
+      ]
+    },
+    {
+      "id": "anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling",
+      "canonical_statement": "EXACT ANCHORED CLAIM CEILING: the guard-cylinder normal form and the arbitrary-depth cyclotomic anchored-kill supply are equivalent. Either supply implies irrationality; clean anchors plus irrationality repopulate it, and for the concrete binary cyclotomic layers both formulations are exactly Erdős #249.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": ["z35_binary_cyclotomic_anchor", "z35_claim_ceiling"],
+      "open_antecedents": [
+        "terminal anti-locking of the actual totient word at cofinally many clean binary cyclotomic anchors"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "exact finite guard-cylinder/certified-kill normal form, period-multiple telescoping, clean anchor supply, and pointwise certificate completeness",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The module's terminal equivalence ladder explicitly identifies the remaining producer with #249. It is architecture, not narrowing progress.",
+      "scope_caveat": "Unconditional prime production is already discharged, but no cofinal guard or anchored-kill supply is established. Therefore #249 remains open.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"cyclotomicGuardCylinderSupply_iff_anchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3070},
+        {"declaration":"irrational_totient_series_of_cyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3093},
+        {"declaration":"cyclotomicAnchoredKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3110},
+        {"declaration":"cyclotomicAnchoredKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3127},
+        {"declaration":"binaryCyclotomicAnchoredKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3138},
+        {"declaration":"irrational_totient_series_of_cyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3147},
+        {"declaration":"binaryCyclotomicGuardCylinderSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3156}
+      ]
+    },
+    {
+      "id": "period_30_certificates_exclude_fixed_denominator_family",
+      "canonical_statement": "PROVED FINITE CERTIFICATES: at H=30 the kernel checks certified kills at the natural basepoint N=300 with depth 13 and the prime anchor N=330 with depth 10; the deeper natural window has exact depth-16 residue 2928 modulo 2^16. The natural certificate proves that the binary totient series equals no rational whose denominator divides 2^300(2^30-1).",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": ["z35_period_30_certificate"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "kernel-decided exact finite totient arithmetic and the sound certified-kill denominator-exclusion consumer",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Project-specific finite certificates. They make no priority claim and do not establish an asymptotic pattern.",
+      "scope_caveat": "The result excludes one explicit denominator-divisor family only. It is not evidence for the cofinal supply and does not prove irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {"declaration":"certifiedKill_cyclotomic_30_331_natural","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3167},
+        {"declaration":"certifiedKill_cyclotomic_30_331_anchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3174},
+        {"declaration":"windowDiscrepancy_30_300_16_mod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3181},
+        {"declaration":"totient_series_ne_rat_of_den_dvd_30_300","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3188}
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":29,"role":"concept","statement_node":"prime_index_mersenne_layers_have_unbounded_prime_support"},
+    {"declaration":"prime_index_dvd_pred","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":33,"role":"statement","statement_node":"prime_index_mersenne_layers_have_unbounded_prime_support"},
+    {"declaration":"mersenneLayer_orderConsumer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":76,"role":"statement","statement_node":"prime_index_mersenne_layers_have_unbounded_prime_support"},
+    {"declaration":"mersenneLayer_layerSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":84,"role":"statement","statement_node":"prime_index_mersenne_layers_have_unbounded_prime_support"},
+    {"declaration":"mersenneLayer_unboundedPrimeDivisorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":105,"role":"statement","statement_node":"prime_index_mersenne_layers_have_unbounded_prime_support"},
+    {"declaration":"totientBlock","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":113,"role":"representation","statement_node":"cleared_totient_block_controls_tail_and_residue_orbit"},
+    {"declaration":"mersenne_mul_tail_eq_block_add_diff","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":119,"role":"statement","statement_node":"cleared_totient_block_controls_tail_and_residue_orbit"},
+    {"declaration":"totientBlock_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":151,"role":"statement","statement_node":"cleared_totient_block_controls_tail_and_residue_orbit"},
+    {"declaration":"carryOrbit_modEq_neg_totientBlock_shift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":169,"role":"statement","statement_node":"cleared_totient_block_controls_tail_and_residue_orbit"},
+    {"declaration":"primeBasepointFiltered_survivor_at_three_unique","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":209,"role":"statement","statement_node":"filtered_carry_spacing_collapses_to_one_survivor"},
+    {"declaration":"modulusFiltered_survivor_unique","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":250,"role":"statement","statement_node":"filtered_carry_spacing_collapses_to_one_survivor"},
+    {"declaration":"PrimeFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":316,"role":"concept","statement_node":"prime_filtered_search_is_sound_and_pointwise_complete"},
+    {"declaration":"primeFilteredResidue","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":332,"role":"representation","statement_node":"clean_prime_filter_has_four_candidate_normal_form"},
+    {"declaration":"primeFiltered_candidate_eq_one_of_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":338,"role":"statement","statement_node":"clean_prime_filter_has_four_candidate_normal_form"},
+    {"declaration":"primeFourCarryCandidates","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":393,"role":"representation","statement_node":"clean_prime_filter_has_four_candidate_normal_form"},
+    {"declaration":"primeFourCarryCandidate_modEq_residue","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":400,"role":"statement","statement_node":"clean_prime_filter_has_four_candidate_normal_form"},
+    {"declaration":"primeFourCarry_survivor_at_three_unique","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":420,"role":"statement","statement_node":"clean_prime_filter_has_four_candidate_normal_form"},
+    {"declaration":"PrimeFourCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":456,"role":"concept","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeFourCarryLockedThrough","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":469,"role":"representation","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"mem_primeFourCarryLockedThrough_iff","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":480,"role":"substrate","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeFourCarryKill_iff_lockedThrough_eq_empty","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":492,"role":"statement","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeFourCarryLockedThrough_three_card_le_one","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":523,"role":"statement","statement_node":"clean_prime_filter_has_four_candidate_normal_form"},
+    {"declaration":"PrimeSingleLockedCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":539,"role":"concept","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeFourCarryKill_mono","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":551,"role":"statement","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeSingleLockedCarryKill_of_primeFourCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":563,"role":"statement","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeFourCarryKill_of_primeSingleLockedCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":575,"role":"statement","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeSingleLockedCarryKill_iff_primeFourCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":604,"role":"statement","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"primeFourCarryKill_iff_primeFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":613,"role":"statement","statement_node":"four_state_and_single_locked_kills_are_equivalent"},
+    {"declaration":"tail_diff_notMem_int_of_primeFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":661,"role":"statement","statement_node":"prime_filtered_search_is_sound_and_pointwise_complete"},
+    {"declaration":"exists_primeFilteredCarryKill_of_tail_diff_notMem_int","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":719,"role":"statement","statement_node":"prime_filtered_search_is_sound_and_pointwise_complete"},
+    {"declaration":"PrimeBasepointFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":769,"role":"concept","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"primeBasepointFilteredLockedThrough","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":788,"role":"representation","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"mem_primeBasepointFilteredLockedThrough_iff","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":810,"role":"substrate","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"primeBasepointFilteredLockedThrough_three_card_le_one","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":824,"role":"statement","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"modulusFilteredLockedThrough_three_card_le_one","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":846,"role":"statement","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"PrimeBasepointSingleLockedCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":872,"role":"concept","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"primeBasepointFilteredCarryKill_mono","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":888,"role":"statement","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"primeBasepointSingleLockedCarryKill_of_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":900,"role":"statement","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"primeBasepointFilteredCarryKill_of_singleLocked","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":912,"role":"statement","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"primeBasepointSingleLockedCarryKill_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":944,"role":"statement","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"primeBasepointFilteredCarryKill_pred_iff","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":954,"role":"statement","statement_node":"free_basepoint_filter_collapses_to_single_locked_state"},
+    {"declaration":"tail_diff_notMem_int_of_primeBasepointFilteredCarryKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":972,"role":"statement","statement_node":"free_basepoint_search_is_sound_and_pointwise_complete"},
+    {"declaration":"exists_primeBasepointFilteredCarryKill_of_tail_diff_notMem_int","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1029,"role":"statement","statement_node":"free_basepoint_search_is_sound_and_pointwise_complete"},
+    {"declaration":"tail_diff_modEq_neg_totientBlock_of_scaled_tail","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1075,"role":"statement","statement_node":"scaled_tail_forces_prime_or_full_mersenne_residue"},
+    {"declaration":"tail_diff_modEq_neg_totientBlock_of_scaled_tail_factor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1123,"role":"statement","statement_node":"scaled_tail_forces_prime_or_full_mersenne_residue"},
+    {"declaration":"scaled_tail_near_int_of_mersenne_factor_candidate","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1170,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
+    {"declaration":"exists_uniform_int_gap_of_notMem_int","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1248,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
+    {"declaration":"no_mersenne_factor_candidate_of_scaled_tail_gap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1287,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
+    {"declaration":"scaled_totientTail_notMem_int_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1312,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
+    {"declaration":"exists_int_scaled_tail_of_rat_den_eq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1335,"role":"statement","statement_node":"full_mersenne_candidate_is_near_integer_and_gap_excludes_it"},
+    {"declaration":"binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1370,"role":"representation","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"binaryCyclotomicLayer_dvd_mersenneLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1375,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"binaryCyclotomicLayer_prime_order_decomposition","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1390,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"two_ne_zero_of_prime_dvd_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1419,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"exists_clean_binaryCyclotomicAnchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1464,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"tail_diff_int_of_period_mul","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1598,"role":"statement","statement_node":"eventual_period_integrality_propagates_to_multiples"},
+    {"declaration":"CleanCyclotomicAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1624,"role":"concept","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"cleanCyclotomicAnchorSupply_binaryCyclotomicLayer","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1636,"role":"statement","statement_node":"binary_cyclotomic_layers_supply_clean_cofinal_anchors"},
+    {"declaration":"CyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1644,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1658,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicPrimeSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1673,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"PrimeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1690,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"PrimeBasepointSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1703,"role":"concept","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1717,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_filtered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1742,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeSingleLockedCarryKillSupply_iff_four","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1767,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointFilteredCarryKillSupply_of_cyclotomicFiltered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1790,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_primeBasepointFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1809,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicPrimeFilteredCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1881,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1952,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFilteredCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1976,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicPrimeFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1989,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointFilteredCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":1999,"role":"statement","statement_node":"cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling"},
+    {"declaration":"FullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2017,"role":"concept","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"fullMersenneSingleLockedCarryKillSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2031,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_fullMersenneSingleLockedCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2098,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"fullMersenneSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2155,"role":"statement","statement_node":"full_mersenne_single_locked_supply_is_exact_claim_ceiling"},
+    {"declaration":"fullMersenneBlockResidue","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2164,"role":"representation","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"FullMersenneCenteredResidueGap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2170,"role":"concept","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockResidue_succ","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2185,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2223,"role":"representation","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_emod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2229,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_succ_modEq","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2241,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_abs_add_abs_lt","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2286,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneCenteredResidueGap_iff_abs_centeredLift","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2319,"role":"statement","statement_node":"full_mersenne_centered_residue_has_exact_modular_dynamics"},
+    {"declaration":"fullMersenneBlockCenteredLift_succ_eq_of_two_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2359,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"fullMersenneBlockCenteredLift_add_eq_carryOrbit_of_edge_locks","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2419,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"exists_fullMersenneCenteredResidueGap_of_carryOrbit_escape","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2449,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"exists_fullMersenneCenteredResidueGap_of_survivorKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2477,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"survivorKill_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2548,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"exists_fullMersenneCenteredResidueGap_of_certifiedKill","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2578,"role":"statement","statement_node":"edge_lock_rigidity_transports_carry_escape_to_centered_gap"},
+    {"declaration":"FullMersenneInitialResidueGap","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2590,"role":"concept","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
+    {"declaration":"fullMersenneInitialResidueGap_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2604,"role":"statement","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
+    {"declaration":"mersenne_factor_modulus_pos","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2686,"role":"statement","statement_node":"initial_and_centered_gap_are_same_zero_launch_condition"},
+    {"declaration":"FullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2701,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"FullMersenneCenteredResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2713,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"FullMersenneCanonicalBasepointResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2726,"role":"concept","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneInitialResidueGapSupply_iff_centered","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2734,"role":"substrate","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"exists_fullMersenneInitialResidueGap_at_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2759,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneInitialResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2845,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_fullMersenneInitialResidueGapSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2860,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneInitialResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2919,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCenteredResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2933,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCenteredResidueGapSupply_of_canonicalBasepoint","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2943,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_of_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2954,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2976,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"primeBasepointSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2989,"role":"statement","statement_node":"full_mersenne_gap_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicPrimeFourCarryKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":2996,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicPrimeFourCarryKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3005,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicPrimeFourCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3017,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicPrimeSingleLockedCarryKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3028,"role":"statement","statement_node":"cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3042,"role":"concept","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"CyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3057,"role":"concept","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicGuardCylinderSupply_iff_anchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3070,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicAnchoredKillSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3093,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicAnchoredKillSupply_of_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3110,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"cyclotomicAnchoredKillSupply_iff_irrational_of_cleanAnchorSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3127,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicAnchoredKillSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3138,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"irrational_totient_series_of_cyclotomicGuardCylinderSupply","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3147,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"binaryCyclotomicGuardCylinderSupply_iff_irrational","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3156,"role":"statement","statement_node":"anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling"},
+    {"declaration":"certifiedKill_cyclotomic_30_331_natural","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3167,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
+    {"declaration":"certifiedKill_cyclotomic_30_331_anchor","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3174,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
+    {"declaration":"windowDiscrepancy_30_300_16_mod","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3181,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"},
+    {"declaration":"totient_series_ne_rat_of_den_dvd_30_300","module":"ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean","line":3188,"role":"statement","statement_node":"period_30_certificates_exclude_fixed_denominator_family"}
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "binary_cyclotomic_layers_supply_clean_cofinal_anchors",
+      "to": "prime_index_mersenne_layers_have_unbounded_prime_support",
+      "relation": "generalises",
+      "basis": "The composite-index binary cyclotomic theorem replaces the prime-index Mersenne layer by |Phi_(hq)(2)| and additionally eliminates the characteristic-prime case to obtain exact clean order hq."
+    },
+    {
+      "from": "clean_prime_filter_has_four_candidate_normal_form",
+      "to": "filtered_carry_spacing_collapses_to_one_survivor",
+      "relation": "specialises",
+      "basis": "The four-state classification applies the general modular spacing theorem at clean prime modulus p and depth three."
+    },
+    {
+      "from": "four_state_and_single_locked_kills_are_equivalent",
+      "to": "clean_prime_filter_has_four_candidate_normal_form",
+      "relation": "generated_by",
+      "basis": "The lossless one-state reduction is possible because the explicit four-state set has at most one member locked through depth three."
+    },
+    {
+      "from": "prime_filtered_search_is_sound_and_pointwise_complete",
+      "to": "four_state_and_single_locked_kills_are_equivalent",
+      "relation": "complements",
+      "basis": "Finite predicate equivalence compresses the search, while soundness/completeness identifies what success or failure means for one fixed true tail difference."
+    },
+    {
+      "from": "free_basepoint_filter_collapses_to_single_locked_state",
+      "to": "filtered_carry_spacing_collapses_to_one_survivor",
+      "relation": "generalises",
+      "basis": "The basepoint-decoupled construction uses the same modulus-spacing mechanism with N independent of the filtering modulus."
+    },
+    {
+      "from": "free_basepoint_search_is_sound_and_pointwise_complete",
+      "to": "prime_filtered_search_is_sound_and_pointwise_complete",
+      "relation": "generalises",
+      "basis": "The same pointwise search semantics hold at arbitrary N; N=p-1 recovers the prime-predecessor version."
+    },
+    {
+      "from": "scaled_tail_forces_prime_or_full_mersenne_residue",
+      "to": "cleared_totient_block_controls_tail_and_residue_orbit",
+      "relation": "generated_by",
+      "basis": "The denominator filter is obtained by combining integrality with the exact identity (2^H-1)R_N=Q plus the H-step tail difference."
+    },
+    {
+      "from": "scaled_tail_forces_prime_or_full_mersenne_residue",
+      "to": "free_basepoint_search_is_sound_and_pointwise_complete",
+      "relation": "complements",
+      "basis": "The filter supplies the congruence hypothesis needed by the sound free-basepoint kill consumer."
+    },
+    {
+      "from": "full_mersenne_candidate_is_near_integer_and_gap_excludes_it",
+      "to": "scaled_tail_forces_prime_or_full_mersenne_residue",
+      "relation": "specialises",
+      "basis": "Retaining the exact quotient M turns one compatible residue-class launch into a quantitative near-integer approximation to vR_N."
+    },
+    {
+      "from": "cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling",
+      "to": "binary_cyclotomic_layers_supply_clean_cofinal_anchors",
+      "relation": "depends_on_open",
+      "basis": "Clean anchors are unconditional, but the terminal filtered-kill field attached to cofinally many of them is precisely the unresolved side of the equivalence."
+    },
+    {
+      "from": "cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling",
+      "to": "free_basepoint_search_is_sound_and_pointwise_complete",
+      "relation": "generated_by",
+      "basis": "Pointwise soundness and completeness lift to the cofinal supply equivalence once clean anchors and denominator clearing are composed."
+    },
+    {
+      "from": "full_mersenne_single_locked_supply_is_exact_claim_ceiling",
+      "to": "full_mersenne_candidate_is_near_integer_and_gap_excludes_it",
+      "relation": "generated_by",
+      "basis": "The full-quotient supply uses the scaled-tail lattice gap and exponential quotient growth to collapse the entire initial launch set."
+    },
+    {
+      "from": "full_mersenne_single_locked_supply_is_exact_claim_ceiling",
+      "to": "free_basepoint_filter_collapses_to_single_locked_state",
+      "relation": "reformulates",
+      "basis": "Its finite residual is exactly the composite-modulus free-basepoint predicate after the quotient is made wider than the analytic radius."
+    },
+    {
+      "from": "edge_lock_rigidity_transports_carry_escape_to_centered_gap",
+      "to": "full_mersenne_centered_residue_has_exact_modular_dynamics",
+      "relation": "generated_by",
+      "basis": "Two-edge and interval rigidity iterate the centered modular recurrence after large-modulus room removes every wrap."
+    },
+    {
+      "from": "initial_and_centered_gap_are_same_zero_launch_condition",
+      "to": "full_mersenne_centered_residue_has_exact_modular_dynamics",
+      "relation": "reformulates",
+      "basis": "The initial no-launch predicate is the Euclidean representative form of the same central-arc gap encoded by the centered lift."
+    },
+    {
+      "from": "full_mersenne_gap_supplies_are_exact_claim_ceiling",
+      "to": "initial_and_centered_gap_are_same_zero_launch_condition",
+      "relation": "generated_by",
+      "basis": "The supply equivalences lift the exact finite initial/centered normal form through every prospective denominator."
+    },
+    {
+      "from": "full_mersenne_gap_supplies_are_exact_claim_ceiling",
+      "to": "full_mersenne_single_locked_supply_is_exact_claim_ceiling",
+      "relation": "reformulates",
+      "basis": "The zero-launch centered gap removes even the one locked state, yielding a sharper but still equivalent arithmetic claim ceiling."
+    },
+    {
+      "from": "cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling",
+      "to": "cyclotomic_and_basepoint_filter_supplies_are_exact_claim_ceiling",
+      "relation": "reformulates",
+      "basis": "The literal four-state and one-state supplies are lossless finite normal forms of the same filtered cofinal predicate."
+    },
+    {
+      "from": "anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling",
+      "to": "cyclotomic_four_and_one_state_supplies_are_exact_claim_ceiling",
+      "relation": "reformulates",
+      "basis": "The terminal guard-cylinder socket is another exact finite normal form of the certified anchored kill at the same clean cyclotomic provenance."
+    },
+    {
+      "from": "anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling",
+      "to": "eventual_period_integrality_propagates_to_multiples",
+      "relation": "generated_by",
+      "basis": "The irrationality consumer defeats a hypothetical eventual period h using a certified discrepancy at an anchored multiple hq."
+    },
+    {
+      "from": "period_30_certificates_exclude_fixed_denominator_family",
+      "to": "edge_lock_rigidity_transports_carry_escape_to_centered_gap",
+      "relation": "finite_instance_of",
+      "basis": "The two period-30 certified kills are fixed finite inputs accepted by the general certificate-to-full-Mersenne-gap transport."
+    },
+    {
+      "from": "period_30_certificates_exclude_fixed_denominator_family",
+      "to": "anchored_kill_and_guard_cylinder_supplies_are_exact_claim_ceiling",
+      "relation": "barrier_for",
+      "basis": "Two fixed certified anchors and one denominator exclusion do not satisfy the cofinal clean-anchor quantifier in the claim-ceiling supply."
+    }
+  ]
+}

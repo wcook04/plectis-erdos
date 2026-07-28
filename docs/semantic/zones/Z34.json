@@ -1,0 +1,1194 @@
+{
+  "zone_id": "Z34",
+  "title": "Certificate-kernel analytic, arithmetic, and finite-instance families",
+  "problem": "shared_substrate",
+  "concepts": [
+    {
+      "id": "rational_denominator_normal_form",
+      "label": "rational denominator normal form",
+      "note": "Exact reduced-denominator formulas for natural quotients and the finite rational sums used by certificate arguments."
+    },
+    {
+      "id": "sparse_support_tail_analysis",
+      "label": "sparse-support tail analysis",
+      "note": "Summability, positivity, and geometric tail control for Mersenne reciprocal series along strictly increasing supports."
+    },
+    {
+      "id": "finite_support_lcm_geometry",
+      "label": "finite-support LCM geometry",
+      "note": "Exact least-common-multiple formulas for concrete factorial and power-of-two prefixes."
+    },
+    {
+      "id": "three_window_certificate",
+      "label": "three-window near-integer certificate",
+      "note": "First-block divisibility, a controlled middle window, and a crude analytic far tail assembled into a near-integer witness."
+    },
+    {
+      "id": "progression_divisor_average",
+      "label": "progression divisor average",
+      "note": "Elementary divisor pairing and one-residue-class counting along coprime arithmetic progressions."
+    },
+    {
+      "id": "generic_coefficient_carry",
+      "label": "generic coefficient carry",
+      "note": "Base-power dilation of a linearly bounded coefficient series into an integer prefix plus a controlled shifted tail."
+    },
+    {
+      "id": "support_coefficient_bridge",
+      "label": "support coefficient bridge",
+      "note": "Exact representations and growth/positivity facts for the divisor-filter coefficient attached to a support."
+    },
+    {
+      "id": "periodic_divisor_orbits",
+      "label": "periodic divisor orbits",
+      "note": "Complete Euler cycles and one-extra-orbit residues on prime-power divisor fibres."
+    },
+    {
+      "id": "signed_weight_certificate",
+      "label": "signed-weight certificate lane",
+      "note": "Absolute growth, protected modular residues, analytic tails, and full-block near-integer consumers for integer weights."
+    },
+    {
+      "id": "totient_carry_field",
+      "label": "totient carry field",
+      "note": "Exact range, window-growth, bottom-split, and shift recurrences for binary weighted totient windows."
+    },
+    {
+      "id": "bounded_denominator_exclusion",
+      "label": "bounded denominator exclusion",
+      "note": "Unconditional finite-window exclusions for rational values of the binary totient series, explicitly bounded in denominator."
+    },
+    {
+      "id": "stern_brocot_boundary_fixture",
+      "label": "Stern–Brocot boundary fixture",
+      "note": "The exact zero-run mass used as the first finite boundary value in the induced cylinder-mass geometry."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "natural_quotient_denominator_formulas",
+      "canonical_statement": "PROVED: the reduced denominator of x/y is y when x and y are coprime, and in general is y/gcd(x,y), for natural x and nonzero y viewed in the rationals.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "rational_denominator_normal_form"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "normalisation of a natural quotient by its greatest common divisor",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary rational arithmetic; no novelty claim is made.",
+      "scope_caveat": "These formulas expose denominators of finite rational quantities only. They do not prove any infinite series irrational.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "den_natCast_div_natCast_of_coprime",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5167
+        },
+        {
+          "declaration": "den_natCast_div_natCast",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5189
+        }
+      ]
+    },
+    {
+      "id": "strict_support_mersenne_tail_package",
+      "canonical_statement": "PROVED: along any strictly increasing positive support and integer base b>=2, the Mersenne reciprocal terms and every shifted tail are summable, every term and tail is positive, the tail after k is at most 4 b^(-a_k), and the finite rational support sum casts to the corresponding real partial sum.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "sparse_support_tail_analysis",
+        "rational_denominator_normal_form"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "strict support growth, comparison with a geometric series, and exact finite casting",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard geometric comparison and coercion algebra; no novelty claim is made.",
+      "scope_caveat": "The estimates hold for a chosen strictly increasing enumeration. They do not provide the denominator-growth or certificate supply needed for arbitrary-support irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "strictMono_add_le_apply",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5330
+        },
+        {
+          "declaration": "summable_erdos_term",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5414
+        },
+        {
+          "declaration": "summable_erdos_term_shift",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5450
+        },
+        {
+          "declaration": "erdos_term_pos",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5456
+        },
+        {
+          "declaration": "erdos_tail_pos",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5469
+        },
+        {
+          "declaration": "erdos_tail_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5479
+        },
+        {
+          "declaration": "finiteErdosSum_image_range_cast",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5540
+        }
+      ]
+    },
+    {
+      "id": "factorial_and_power_two_prefix_lcm_exact",
+      "canonical_statement": "PROVED FINITE FAMILIES: for every positive prefix length k, the LCM of {1!,...,k!} is k!, and the LCM of {2^0,...,2^(k-1)} is 2^(k-1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "finite_support_lcm_geometry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "divisibility chains inside factorial and power-of-two supports",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary LCM identities; no novelty claim is made.",
+      "scope_caveat": "These exact prefix formulas concern two special sparse supports. They do not imply the universal support statement in Erdős #257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lcm_image_factorial_succ",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5671
+        },
+        {
+          "declaration": "lcm_image_two_pow",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5688
+        }
+      ]
+    },
+    {
+      "id": "divisor_count_series_carry_and_far_tail",
+      "canonical_statement": "PROVED: for b>=2 the divisor-count series and its shifted tails are summable; multiplying the series by b^N splits it into an integer prefix plus a shifted tail, whose portion beyond L is at most (N+L+2)/b^L.",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "concepts": [
+        "three_window_certificate",
+        "generic_coefficient_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "the elementary bound tau(n)<=n, base-power denominator clearing, and a linear-times-geometric tail estimate",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "The source identifies the shifted-tail decomposition as the carry skeleton behind Erdős's 1948 argument. No novelty claim is made.",
+      "scope_caveat": "This is analytic and algebraic infrastructure. It does not manufacture the first- or middle-window arithmetic certificate required for irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_divisor_count_term",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 5833
+        },
+        {
+          "declaration": "summable_divisor_count_shift_tail",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6009
+        },
+        {
+          "declaration": "bpow_mul_divisor_count_series_eq_int_add_tail",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6029
+        },
+        {
+          "declaration": "divisor_count_far_tail_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6106
+        }
+      ]
+    },
+    {
+      "id": "linear_geometric_envelope_exact_bound",
+      "canonical_statement": "PROVED: for 0<=x<1 the series sum_t (C+t)x^t is summable, and for x<=1/2 its sum is at most 2C+2.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "concepts": [
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "closed forms for the constant and derivative geometric series",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "A textbook geometric-series estimate; no novelty claim is made.",
+      "scope_caveat": "The theorem only bounds a generic analytic envelope. Its application to a certificate still needs a coefficient growth bound and arithmetic window data.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_const_add_mul_geometric",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6059
+        },
+        {
+          "declaration": "tsum_const_add_mul_geometric_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6075
+        }
+      ]
+    },
+    {
+      "id": "pointwise_middle_bound_implies_weighted_bound",
+      "canonical_statement": "PROVED: a uniform pointwise divisor-count bound B on the middle window K<r<=L implies the weighted bound sum tau(N+r)b^(L-r) <= B b^(L-K).",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "concepts": [
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "termwise domination followed by a finite geometric-weight sum",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary finite-sum domination; no novelty claim is made.",
+      "scope_caveat": "This converts a supplied middle-window bound; it does not establish such a bound for any certificate frame.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "weighted_middle_bound_of_pointwise",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6408
+        }
+      ]
+    },
+    {
+      "id": "coprime_progression_divisor_average",
+      "canonical_statement": "PROVED: modulus support above a window makes the construction modulus coprime to every middle shift; along a coprime progression each divisor occupies at most one residue class, divisor pairing reduces to divisors up to sqrt(X), and the resulting total divisor count is bounded by twice the corresponding floor-sum.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "concepts": [
+        "progression_divisor_average",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "prime-support separation, residue-class injectivity, and divisor pairing",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary divisor-counting technology; the source explicitly notes that no analytic number theory enters.",
+      "scope_caveat": "The theorem family averages a supplied finite progression. It does not by itself choose certificate parameters or give a cofinal family of good frames.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "coprime_middle_of_first_block_support",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6955
+        },
+        {
+          "declaration": "card_filter_dvd_progression_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 6977
+        },
+        {
+          "declaration": "card_divisors_le_two_mul_card_small_divisors",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7024
+        },
+        {
+          "declaration": "sum_card_divisors_progression_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7079
+        }
+      ]
+    },
+    {
+      "id": "weighted_middle_progression_total",
+      "canonical_statement": "PROVED: the geometric weight of K<r<=L is at most b^(L-K), and combining it with the coprime progression divisor average bounds the total weighted middle-window mass across all y<Y.",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "concepts": [
+        "progression_divisor_average",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite geometric summation and the elementary progression divisor average",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A direct aggregation of elementary inputs; no novelty claim is made.",
+      "scope_caveat": "The result controls the sum over a finite search window. Selecting a single frame and closing all certificate inequalities requires the separate pigeonhole and parameter package.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "sum_pow_weight_middle_window_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7136
+        },
+        {
+          "declaration": "sum_weighted_middle_window_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7164
+        }
+      ]
+    },
+    {
+      "id": "pigeonhole_harmonic_parameter_closure",
+      "canonical_statement": "PROVED: a finite sum bound selects one value at most the average; dyadic bucketing bounds sum_{d<=S} floor(Y/d) and its +1 variant when S<=2^J; and an explicit exponential schedule dominates the required linear parameter cost.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "concepts": [
+        "progression_divisor_average",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite averaging, dyadic harmonic buckets, and exponential domination of a linear schedule",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary pigeonhole, harmonic, and exponential-growth estimates; no novelty claim is made.",
+      "scope_caveat": "These close abstract parameter inequalities only after their finite-window inputs are supplied. They are not an irrationality theorem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_le_div_of_sum_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7213
+        },
+        {
+          "declaration": "param_linear_le_two_pow",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7283
+        },
+        {
+          "declaration": "harmonic_div_sum_core",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7301
+        },
+        {
+          "declaration": "harmonic_div_sum_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 7357
+        }
+      ]
+    },
+    {
+      "id": "unit_linear_growth_coefficient_tail_package",
+      "canonical_statement": "PROVED: any natural coefficient sequence satisfying c(m)<=m has a summable base-b series and shifted tails, an exact integer-prefix plus shifted-tail decomposition after multiplication by b^N, and a far-tail bound (N+L+2)/b^L.",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "concepts": [
+        "generic_coefficient_carry",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "linear growth comparison, base-power denominator clearing, and geometric far-tail summation",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Generic analytic and algebraic certificate infrastructure; no novelty claim is made.",
+      "scope_caveat": "The package assumes a coefficient growth envelope and gives no divisibility or middle-window certificate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_coeff_term",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8030
+        },
+        {
+          "declaration": "summable_coeff_shift_tail",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8057
+        },
+        {
+          "declaration": "bpow_mul_coeff_series_eq_int_add_tail",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8077
+        },
+        {
+          "declaration": "coeff_far_tail_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8109
+        }
+      ]
+    },
+    {
+      "id": "support_coefficient_growth_cast_and_summability",
+      "canonical_statement": "PROVED: the support coefficient f_A(n) is at most n, its real cast is the divisor sum of the support indicator, and the Mersenne support-series indicator terms are summable uniformly over every support A at every integer base b>=2.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "support_coefficient_bridge",
+        "generic_coefficient_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "divisor-cardinality growth, indicator-sum normalisation, and geometric domination",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary divisor and convergence facts specialised to the support coefficient; no novelty claim is made.",
+      "scope_caveat": "These facts make the generic coefficient engine applicable but do not supply its cofinal block certificates for an arbitrary infinite support.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "supportCoeff_le_self",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8540
+        },
+        {
+          "declaration": "supportCoeff_cast_eq_sum_indicator",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8553
+        },
+        {
+          "declaration": "summable_erdosSupport_indicator",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 8574
+        }
+      ]
+    },
+    {
+      "id": "support_cut_prefix_and_filter_normal_forms",
+      "canonical_statement": "PROVED: a support indicator splits pointwise at any finite cut, the finite prefix of the resulting Mersenne series is rational, and the support coefficient equals the cardinality of the support-filtered divisor set under any decidable membership instance.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "support_coefficient_bridge",
+        "rational_denominator_normal_form"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "indicator partition, finite rational summation, and decidability-independent divisor filtering",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Representation lemmas; no novelty claim is made.",
+      "scope_caveat": "Finite-prefix rationality does not determine the irrationality of the remaining infinite tail. The filter form is a coordinate bridge, not a certificate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "indicator_support_split_at_cut",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9068
+        },
+        {
+          "declaration": "prefix_sum_eq_rat_cast",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9118
+        },
+        {
+          "declaration": "supportCoeff_eq_card_filter",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9215
+        }
+      ]
+    },
+    {
+      "id": "support_sieve_budget_and_disjoint_blocks",
+      "canonical_statement": "PROVED: progression hit counts admit a reciprocal-budget bound; exponential growth eventually dominates any prescribed linear parameter cost; a support divisor forces positive support coefficient; weighted hit sets have a geometric bound; and an infinite pairwise-coprime support supplies arbitrarily large, pairwise-disjoint blocks whose products remain coprime.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "support_coefficient_bridge",
+        "progression_divisor_average",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite reciprocal aggregation, exponential parameter closure, divisor positivity, and disjoint selection in an infinite pairwise-coprime set",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary sieve-budget and finite-set selection tools; no novelty claim is made.",
+      "scope_caveat": "The family prepares one sparse-support certificate route. It does not cover arbitrary supports, and in particular does not remove the reciprocal-summability restriction from the pairwise-coprime lane.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "sum_div_add_one_cast_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9285
+        },
+        {
+          "declaration": "exists_linear_lt_pow",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9418
+        },
+        {
+          "declaration": "supportCoeff_pos_of_mem_dvd",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9440
+        },
+        {
+          "declaration": "sum_pow_weight_window_hits_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9450
+        },
+        {
+          "declaration": "coprime_prod_prod_of_pairwise_disjoint",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9470
+        },
+        {
+          "declaration": "coprime_prod_of_pairwise_notMem",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9484
+        },
+        {
+          "declaration": "exists_disjoint_support_blocks",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 9498
+        }
+      ]
+    },
+    {
+      "id": "periodic_predicate_prime_power_cycle_divisibility",
+      "canonical_statement": "PROVED: periodic predicates respect addition of period multiples and congruence; their counts over complete cycles multiply exactly; filtered divisors at p^E R decompose along the p-power fibre; and exact valuations w*phi(m)-1 across selected primes force w^|P| divisibility of the filtered divisor count.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "periodic_divisor_orbits",
+        "support_coefficient_bridge"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "periodic cycle counting, unique prime-power divisor decomposition, and Euler's theorem",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Built from elementary periodicity, divisor factorisation, and Euler congruence; no novelty claim is made.",
+      "scope_caveat": "The divisibility theorem consumes exact prime valuations and a periodic predicate. It does not construct a certificate frame or apply to aperiodic supports.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "periodic_pred_add_mul",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 10471
+        },
+        {
+          "declaration": "periodic_pred_iff_of_modEq",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 10485
+        },
+        {
+          "declaration": "card_filter_range_mul_of_periodic",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 10500
+        },
+        {
+          "declaration": "card_filter_divisors_prime_pow_mul_eq_sum",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 10536
+        },
+        {
+          "declaration": "bpow_dvd_card_filter_divisors_of_periodic_block",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 10654
+        },
+        {
+          "declaration": "certificate_param_arithmetic_periodic",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 10932
+        }
+      ]
+    },
+    {
+      "id": "bounded_eventually_periodic_weight_calculus",
+      "canonical_statement": "PROVED: bounded natural weights give W*tau(n) and W*n coefficient bounds while retaining the self weight; eventual periodicity folds every value into one finite prefix-plus-period window and therefore supplies a global bound; and a bounded weighted divisor coefficient is the sum of its indicator-layer filtered divisor counts.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": [
+        "periodic_divisor_orbits",
+        "support_coefficient_bridge",
+        "generic_coefficient_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "divisor-count domination, periodic fold-down, and layer-cake decomposition",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary bounded-periodic and layer-cake calculus; no novelty claim is made.",
+      "scope_caveat": "The calculus is restricted to bounded eventually periodic natural weights. It does not provide an aperiodic certificate producer.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "weightedCoeff_le_mul_card_divisors",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11426
+        },
+        {
+          "declaration": "weightedCoeff_le_mul_self",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11438
+        },
+        {
+          "declaration": "weight_le_weightedCoeff",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11446
+        },
+        {
+          "declaration": "eventually_periodic_add_mul",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11465
+        },
+        {
+          "declaration": "eventually_periodic_fold",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11479
+        },
+        {
+          "declaration": "eventually_periodic_weight_bound",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11502
+        },
+        {
+          "declaration": "weightedCoeff_eq_sum_card_filter",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11517
+        }
+      ]
+    },
+    {
+      "id": "one_extra_orbit_preserves_nat_weight_residue",
+      "canonical_statement": "PROVED: one extra slot beyond complete periodic cycles contributes exactly the origin value; consequently multiplying a coprime cofactor R by p^(b*phi(m)) preserves both filtered divisor counts and m-periodic natural weighted coefficients modulo b.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "periodic_divisor_orbits"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "complete Euler cycles vanish modulo b and the single extra prime-power exponent transports the cofactor residue",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for this packaged modular transport.",
+      "scope_caveat": "The theorem constructs residue transport for one prime-power orbit. It does not place that orbit inside a global certificate progression or establish irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "card_filter_range_mul_succ_of_periodic",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11590
+        },
+        {
+          "declaration": "card_filter_divisors_modEq_of_periodic_extra_orbit",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11615
+        },
+        {
+          "declaration": "weightedCoeff_modEq_of_periodic_extra_orbit",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11685
+        }
+      ]
+    },
+    {
+      "id": "linear_growth_coefficient_near_integer_consumer",
+      "canonical_statement": "PROVED CONDITIONAL: under c(m)<=Gm, the natural coefficient series and shifted tails are summable, b^N dilation has an integer-prefix decomposition, the far tail is at most G(N+L+2)/b^L, and a first-block divisibility plus weighted-middle certificate satisfying q(C+G(N+L+2))<b^L yields a strictly positive distance below 1/q from an integer.",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "generic_coefficient_carry",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [
+        "a cofinal supply of first-block divisibility and middle-window certificates at every requested precision"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "linear-growth tail control combined with supplied divisibility, middle-mass, and positive-far-tail data",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The source describes this as the linear-growth relaxation of an existing certificate consumer.",
+      "scope_caveat": "The near-integer theorem consumes a complete finite certificate. It does not construct certificates or prove a cofinal supply for #249 or arbitrary-support #257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_coeff_term_linear",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11722
+        },
+        {
+          "declaration": "summable_coeff_shift_tail_linear",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11736
+        },
+        {
+          "declaration": "bpow_mul_coeff_series_eq_int_add_tail_linear",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11751
+        },
+        {
+          "declaration": "coeff_far_tail_le_linear",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11783
+        },
+        {
+          "declaration": "near_int_witness_of_weighted_coeff_block_certificate_linear",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 11829
+        }
+      ]
+    },
+    {
+      "id": "bounded_weight_mersenne_terms_are_summable",
+      "canonical_statement": "PROVED: at every integer base b>=2, a uniformly bounded natural weight produces a summable weighted Mersenne reciprocal term sequence.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "generic_coefficient_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "domination by a bounded multiple of the geometric Mersenne envelope",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard comparison-test summability; no novelty claim is made.",
+      "scope_caveat": "Summability alone does not decide rationality or irrationality and supplies no arithmetic certificate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_weightedErdos_term",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12012
+        }
+      ]
+    },
+    {
+      "id": "signed_weight_coefficient_decomposition_and_growth",
+      "canonical_statement": "PROVED: a signed divisor coefficient is the difference of the natural coefficients of the positive and negative parts; finite natAbs obeys the triangle inequality; and a signed weight bounded by W has coefficient absolute value at most W*tau(n) and hence at most Wn.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "signed_weight_certificate",
+        "generic_coefficient_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "integer positive/negative-part decomposition and divisor-sum triangle inequality",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary signed-sum algebra; no novelty claim is made.",
+      "scope_caveat": "These bounds prepare the signed analytic lane but neither control cancellation sharply nor supply modular certificate frames.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "intWeightedCoeff_eq_weightedCoeff_sub",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12661
+        },
+        {
+          "declaration": "natAbs_sum_le_sum_natAbs",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12672
+        },
+        {
+          "declaration": "natAbs_intWeightedCoeff_le_mul_card_divisors",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12684
+        },
+        {
+          "declaration": "natAbs_intWeightedCoeff_le_mul_self",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12697
+        }
+      ]
+    },
+    {
+      "id": "signed_periodic_extra_orbit_protected_residue",
+      "canonical_statement": "PROVED LOCAL PRODUCER: natural congruences cast to integer congruences; an m-periodic signed weight transports its cofactor coefficient modulo any M through one extra p-orbit; any positive weight residue not divisible by M yields a coefficient residue seed, and therefore some protected extra-orbit witness not divisible by M.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "concepts": [
+        "signed_weight_certificate",
+        "periodic_divisor_orbits"
+      ],
+      "open_antecedents": [
+        "integration of the protected-residue cofactor into the simultaneously constrained CRT certificate-frame progression"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "minimal nondivisible coefficient seed followed by one-extra-Euler-orbit modular transport",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for this modular witness package.",
+      "scope_caveat": "Non-cancellation is achieved only in isolation. The source explicitly leaves the cofactor uncontrolled by the CRT frame, so this does not produce a complete certificate or an irrationality theorem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "int_modEq_of_nat_modEq",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12731
+        },
+        {
+          "declaration": "intWeightedCoeff_modEq_of_periodic_extra_orbit",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12745
+        },
+        {
+          "declaration": "intWeightedCoeff_eq_weight_of_zero_below",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12788
+        },
+        {
+          "declaration": "exists_pos_intWeightedCoeff_not_dvd",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12804
+        },
+        {
+          "declaration": "exists_pos_intWeightedCoeff_ne_zero",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12837
+        },
+        {
+          "declaration": "exists_intWeightedCoeff_extra_orbit_witness_not_dvd",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12852
+        }
+      ]
+    },
+    {
+      "id": "signed_linear_growth_tail_package",
+      "canonical_statement": "PROVED: integer casts have the expected absolute-value and exact-division normal forms; a signed coefficient sequence with |c(m)|<=Gm has summable terms and shifted tails, an integer-prefix decomposition after b^N dilation, and far-tail absolute value at most G(N+L+2)/b^L; bounded signed Mersenne weights are summable.",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "concepts": [
+        "signed_weight_certificate",
+        "generic_coefficient_carry"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "absolute linear-growth comparison, integer-prefix denominator clearing, and cast normalisation",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard absolute-convergence and integer-cast infrastructure; no novelty claim is made.",
+      "scope_caveat": "The package controls analytic error for signed sequences but supplies neither non-cancellation nor arithmetic block certificates.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "abs_intCast_eq_natAbs_cast",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12888
+        },
+        {
+          "declaration": "summable_int_coeff_term",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12894
+        },
+        {
+          "declaration": "summable_int_coeff_shift_tail",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12906
+        },
+        {
+          "declaration": "bpow_mul_int_coeff_series_eq_int_add_tail",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12919
+        },
+        {
+          "declaration": "int_coeff_far_tail_abs_le",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 12950
+        },
+        {
+          "declaration": "int_cast_div_real",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 13001
+        },
+        {
+          "declaration": "summable_intWeightedErdos_term",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 13280
+        }
+      ]
+    },
+    {
+      "id": "rational_distance_and_full_block_near_integer_consumers",
+      "canonical_statement": "PROVED CONDITIONAL: a nonzero rational discrepancy from an integer after b^N dilation is at least the reciprocal reduced denominator; a full-block signed certificate places the dilated series within 1/q of an integer without asserting nonzero distance; and a terminating base-b value within 1/b^k of an integer snaps exactly to that integer.",
+      "logical_class": "conditional_implication",
+      "problem": "shared_substrate",
+      "concepts": [
+        "signed_weight_certificate",
+        "three_window_certificate",
+        "rational_denominator_normal_form"
+      ],
+      "open_antecedents": [
+        "a full-block certificate supply at all requested precisions for the intended signed coefficient sequence"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "reduced-denominator spacing plus the signed three-window error bound and base-power discreteness",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary rational-spacing and integer-lattice arguments assembled as certificate consumers; no novelty claim is made.",
+      "scope_caveat": "The full-block consumer explicitly does not prove the near-integer distance is nonzero. It yields a dichotomy only when combined with separate rational nontermination or terminating-value analysis and a certificate supply.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "inv_den_le_abs_bpow_mul_sub_intCast",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 13412
+        },
+        {
+          "declaration": "near_int_of_int_coeff_full_block_certificate",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 13463
+        },
+        {
+          "declaration": "bpow_mul_eq_intCast_of_abs_sub_lt_inv_bpow",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 13963
+        }
+      ]
+    },
+    {
+      "id": "signed_weight_negation_symmetry",
+      "canonical_statement": "PROVED: negating an integer weight negates both its signed divisor coefficient and its signed weighted Mersenne series.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "concepts": [
+        "signed_weight_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "linearity under pointwise weight negation",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate algebraic symmetry; no novelty claim is made.",
+      "scope_caveat": "Negation transports statements between signs but supplies no positivity, periodicity, or certificate existence.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "intWeightedCoeff_neg",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 14299
+        },
+        {
+          "declaration": "intWeightedErdosSeries_neg",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 14305
+        }
+      ]
+    },
+    {
+      "id": "totient_carry_window_exact_recurrences",
+      "canonical_statement": "PROVED: the binary weighted totient carry sum has an exact Icc-to-range form; increasing the window doubles the prior carry and adds the new totient; splitting the bottom slot separates 2^K phi(N+1); and shifting N satisfies T_K(N+1)+2^K phi(N+1)=2T_K(N)+phi(N+K+1).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "totient_carry_field"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite-sum reindexing and exact binary window decomposition",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Exact recurrence algebra for a finite totient window; no novelty claim is made.",
+      "scope_caveat": "These identities describe the carry field but do not show that any window is killed, non-integral, or cofinally useful.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totient_carry_sum_eq_range",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 14825
+        },
+        {
+          "declaration": "totient_carry_sum_succ_window",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 14843
+        },
+        {
+          "declaration": "totient_carry_sum_bottom_split",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 14863
+        },
+        {
+          "declaration": "totient_carry_sum_succ_shift",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 14886
+        }
+      ]
+    },
+    {
+      "id": "finite_totient_denominator_exclusion_instances",
+      "canonical_statement": "PROVED FINITE INSTANCES: the binary totient series differs from every integer quotient with denominator at most 4838, 248672326362367909, and 79639646646701375323355774875831053; in rational-cast form, any rational with reduced denominator at most 4194304 is also excluded.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "bounded_denominator_exclusion",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "kernel-checked finite carry/Farey-gap windows and monotone transport to all smaller denominators",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No mathematical novelty claim is made for the numerical windows; they are formal finite certificate instances.",
+      "scope_caveat": "Every bound is finite. Even the largest value is not an unbounded denominator supply and does not prove irrationality of the totient series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tsum_totient_div_pow_two_ne_int_div_of_den_le_4838",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 15336
+        },
+        {
+          "declaration": "tsum_totient_div_pow_two_ne_int_div_of_den_le_248672326362367909",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 17996
+        },
+        {
+          "declaration": "tsum_totient_div_pow_two_ne_ratCast_of_den_le_4194304",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 18029
+        },
+        {
+          "declaration": "tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 18043
+        }
+      ]
+    },
+    {
+      "id": "gap_band_real_sandwich",
+      "canonical_statement": "PROVED ABSTRACTLY: if bL*j+W=qU, W is nonnegative, a positive remainder s is bounded by (C+D)/bL, and W+q(C+D)<bL, then q(U/bL+s) lies strictly between the adjacent integers j and j+1.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "bounded_denominator_exclusion",
+        "three_window_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two-sided real arithmetic using the Euclidean quotient-remainder split and the certificate band inequality",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary ordered-field algebra; no novelty claim is made.",
+      "scope_caveat": "This private lemma is only the abstract final sandwich. It does not establish any of its arithmetic or tail-bound hypotheses for a totient window.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "gap_band_sandwich",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 15398
+        }
+      ]
+    },
+    {
+      "id": "stern_brocot_zero_run_mass_fixture",
+      "canonical_statement": "PROVED FINITE INSTANCE: the Stern–Brocot zero-run cylinder mass is exactly 1/4; together with the source definition this records the root contribution, while the one-run layer is handled separately.",
+      "logical_class": "finite_instance",
+      "problem": "shared_substrate",
+      "concepts": [
+        "stern_brocot_boundary_fixture"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact evaluation of the first induced Stern–Brocot contribution",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "A finite exact value in classical Stern–Brocot geometry; no novelty claim is made.",
+      "scope_caveat": "This is one boundary fixture. It proves no asymptotic mass limit, cylinder estimate, or irrationality statement by itself.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "stern_brocot_zero_run_mass_eq_quarter",
+          "module": "Erdos249257/CertificateKernel.lean",
+          "line": 18411
+        }
+      ]
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "strict_support_mersenne_tail_package",
+      "to": "natural_quotient_denominator_formulas",
+      "relation": "complements",
+      "basis": "The sparse-support lane needs both analytic tail control and exact finite rational-denominator control; neither substitutes for the other."
+    },
+    {
+      "from": "factorial_and_power_two_prefix_lcm_exact",
+      "to": "strict_support_mersenne_tail_package",
+      "relation": "specialises",
+      "basis": "The two exact LCM families are concrete sparse supports to which the generic strict-support analytic package applies."
+    },
+    {
+      "from": "divisor_count_series_carry_and_far_tail",
+      "to": "linear_geometric_envelope_exact_bound",
+      "relation": "generated_by",
+      "basis": "The divisor-count far-tail bound uses tau(n)<=n and the linear-times-geometric envelope."
+    },
+    {
+      "from": "weighted_middle_progression_total",
+      "to": "coprime_progression_divisor_average",
+      "relation": "generated_by",
+      "basis": "The weighted total combines the progression divisor average with the geometric sum of window weights."
+    },
+    {
+      "from": "weighted_middle_progression_total",
+      "to": "pigeonhole_harmonic_parameter_closure",
+      "relation": "complements",
+      "basis": "The total bound becomes a usable single-frame middle certificate only after averaging and harmonic parameter compression."
+    },
+    {
+      "from": "support_coefficient_growth_cast_and_summability",
+      "to": "unit_linear_growth_coefficient_tail_package",
+      "relation": "specialises",
+      "basis": "The support coefficient satisfies the unit linear-growth hypothesis and therefore enters the generic natural-coefficient carry package."
+    },
+    {
+      "from": "support_sieve_budget_and_disjoint_blocks",
+      "to": "support_cut_prefix_and_filter_normal_forms",
+      "relation": "generated_by",
+      "basis": "The sieve lane works in the exact divisor-filter representation and separates finite rational prefixes from the infinite tail."
+    },
+    {
+      "from": "periodic_predicate_prime_power_cycle_divisibility",
+      "to": "support_coefficient_growth_cast_and_summability",
+      "relation": "specialises",
+      "basis": "A periodic support indicator turns the support coefficient into the filtered divisor count controlled by complete prime-power cycles."
+    },
+    {
+      "from": "one_extra_orbit_preserves_nat_weight_residue",
+      "to": "periodic_predicate_prime_power_cycle_divisibility",
+      "relation": "complements",
+      "basis": "Complete cycles provide divisibility, whereas one extra exponent preserves a protected nonzero residue."
+    },
+    {
+      "from": "one_extra_orbit_preserves_nat_weight_residue",
+      "to": "bounded_eventually_periodic_weight_calculus",
+      "relation": "generated_by",
+      "basis": "The weighted residue theorem lifts the predicate-level one-extra-orbit count through the layer-cake decomposition."
+    },
+    {
+      "from": "linear_growth_coefficient_near_integer_consumer",
+      "to": "unit_linear_growth_coefficient_tail_package",
+      "relation": "generalises",
+      "basis": "The G-linear package extends the unit-growth analytic tail and near-integer interface from c(m)<=m to c(m)<=Gm."
+    },
+    {
+      "from": "linear_growth_coefficient_near_integer_consumer",
+      "to": "weighted_middle_progression_total",
+      "relation": "depends_on_open",
+      "basis": "A concrete application must supply first-block divisibility and a selected middle-window bound at every requested precision."
+    },
+    {
+      "from": "signed_periodic_extra_orbit_protected_residue",
+      "to": "one_extra_orbit_preserves_nat_weight_residue",
+      "relation": "generalises",
+      "basis": "The signed theorem transports the same one-extra-orbit residue through positive/negative decomposition and integer congruences."
+    },
+    {
+      "from": "signed_periodic_extra_orbit_protected_residue",
+      "to": "signed_weight_coefficient_decomposition_and_growth",
+      "relation": "generated_by",
+      "basis": "Signed protected residues use the exact positive/negative coefficient decomposition and its bounded-growth control."
+    },
+    {
+      "from": "rational_distance_and_full_block_near_integer_consumers",
+      "to": "signed_linear_growth_tail_package",
+      "relation": "generated_by",
+      "basis": "The full-block near-integer bound uses the signed integer-prefix decomposition and absolute far-tail estimate."
+    },
+    {
+      "from": "rational_distance_and_full_block_near_integer_consumers",
+      "to": "signed_periodic_extra_orbit_protected_residue",
+      "relation": "complements",
+      "basis": "Full-block certificates allow zero distance and rely on rational nontermination, whereas a protected residue supplies explicit non-cancellation when it can be integrated into the frame."
+    },
+    {
+      "from": "finite_totient_denominator_exclusion_instances",
+      "to": "totient_carry_window_exact_recurrences",
+      "relation": "generated_by",
+      "basis": "The bounded exclusions are finite certificate instances evaluated through the exact binary totient carry field."
+    },
+    {
+      "from": "finite_totient_denominator_exclusion_instances",
+      "to": "gap_band_real_sandwich",
+      "relation": "generated_by",
+      "basis": "The larger Farey-gap windows use the real sandwich as the final strict-between-integers consumer."
+    },
+    {
+      "from": "finite_totient_denominator_exclusion_instances",
+      "to": "linear_growth_coefficient_near_integer_consumer",
+      "relation": "finite_instance_of",
+      "basis": "Each numerical denominator bound is a bounded instantiation of the generic three-window near-integer certificate architecture, not a cofinal supply."
+    }
+  ],
+  "declaration_roles": []
+}

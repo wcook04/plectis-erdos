@@ -1,0 +1,218 @@
+{
+  "zone_id": "Z81",
+  "title": "Erdős 249 rank-one obstruction: geometric tails and uniform rung bounds",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z81_mobius_mersenne_geometric_envelope",
+      "label": "Möbius–Mersenne geometric envelope",
+      "note": "For every rung r at least three, the absolute n-th ladder term is dominated by the geometric sequence (1/8)^n."
+    },
+    {
+      "id": "z81_prefix_tail_control",
+      "label": "uniform finite-prefix control",
+      "note": "Exact prefix-tail splitting together with a uniform error bound after four atoms."
+    },
+    {
+      "id": "z81_rung_upper_bounds",
+      "label": "strict rung upper bounds",
+      "note": "Elementary product growth forces every rung r at least three below one, while the target rung two lies below 8/9."
+    },
+    {
+      "id": "z81_obstruction_boundary",
+      "label": "rank-one obstruction boundary",
+      "note": "These estimates support the landed strict-subrank no-go theorem; they do not prove irrationality of the totient series or exclude higher-rank constructions."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "rungs_at_least_three_admit_a_uniform_one_eighth_geometric_majorant",
+      "canonical_statement": "PROVED GEOMETRIC ENVELOPE: if r is at least three, then 2^3 is at most 2^r, hence 2^(-r) is at most 1/8, and the absolute n-th Möbius–Mersenne term is bounded by (1/8)^n for every n.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z81_mobius_mersenne_geometric_envelope",
+        "z81_obstruction_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Monotonicity of powers of two, inversion of a positive inequality, and the existing termwise Möbius–Mersenne geometric estimate.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary geometric-series domination specialized to the repository's Möbius–Mersenne terms.",
+      "scope_caveat": "The majorant controls only absolute tail size. It supplies no cancellation, nonvanishing linear form, denominator growth, or irrationality conclusion.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_pow_three_le_two_pow",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 41
+        },
+        {
+          "declaration": "geometric_base_le_eighth",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 45
+        },
+        {
+          "declaration": "norm_term_le_eighth_geometric",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "id": "four_atom_prefixes_approximate_every_rung_at_least_three_uniformly",
+      "canonical_statement": "PROVED PREFIX PACKET: every Möbius–Mersenne rung is exactly its first Y atoms plus the tail after Y; when Y is at least four and r is at least three, the absolute difference between the full rung and that prefix is at most 1/3584.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z81_prefix_tail_control",
+        "z81_mobius_mersenne_geometric_envelope",
+        "z81_obstruction_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Split the summable ladder at Y, dominate its shifted tail by the one-eighth geometric series, and evaluate the geometric sum at the worst permitted prefix length Y=4.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard absolutely convergent series splitting and geometric tail estimation, instantiated with exact constants.",
+      "scope_caveat": "The estimate is a uniform analytic input to the rank-one quotient obstruction. It does not show that any prefix is nonzero or produce an irrationality certificate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTheta_eq_prefix_add_tail",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 62
+        },
+        {
+          "declaration": "abs_mobiusMersenneTheta_sub_prefix_le",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 73
+        }
+      ]
+    },
+    {
+      "id": "every_mobius_mersenne_rung_at_least_three_is_strictly_below_one",
+      "canonical_statement": "PROVED STRICT UPPER BOUND: for every r at least three, 3^r is strictly smaller than 2^r(2^r-1); combined with the two-atom decomposition and its tail bound, this forces the Möbius–Mersenne rung Θ_r to be strictly below one.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z81_rung_upper_bounds",
+        "z81_obstruction_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Induction for the exponential product inequality, followed by comparison of the explicit two-atom value and the certified absolute tail bound.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary exponential comparison and a project-specific consequence for the Möbius–Mersenne ladder.",
+      "scope_caveat": "The bound is one-sided and concerns rungs r≥3. It does not determine their signs, monotonicity, algebraic nature, or limit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "three_pow_lt_mersenne_product",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 147
+        },
+        {
+          "declaration": "mobiusMersenneTheta_lt_one",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 196
+        }
+      ]
+    },
+    {
+      "id": "the_target_mobius_mersenne_rung_two_is_strictly_below_eight_ninths",
+      "canonical_statement": "PROVED TARGET-RUNG BOUND: the Möbius–Mersenne rung Θ_2 is strictly smaller than 8/9.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z81_rung_upper_bounds",
+        "z81_obstruction_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Use the exact first-five-atom decomposition at r=2 and its certified remainder bound, then discharge the resulting rational inequality.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A finite exact estimate for the repository's normalized target rung; no novelty claim is made.",
+      "scope_caveat": "This is a numerical upper bound on Θ_2, not an irrationality or transcendence statement about Θ_2 or the original totient series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusMersenneTheta_two_lt_eight_ninths",
+          "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+          "line": 223
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "two_pow_three_le_two_pow",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 41,
+      "role": "engine",
+      "statement_node": "rungs_at_least_three_admit_a_uniform_one_eighth_geometric_majorant"
+    },
+    {
+      "declaration": "geometric_base_le_eighth",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 45,
+      "role": "engine",
+      "statement_node": "rungs_at_least_three_admit_a_uniform_one_eighth_geometric_majorant"
+    },
+    {
+      "declaration": "norm_term_le_eighth_geometric",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 52,
+      "role": "statement",
+      "statement_node": "rungs_at_least_three_admit_a_uniform_one_eighth_geometric_majorant"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_eq_prefix_add_tail",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 62,
+      "role": "representation",
+      "statement_node": "four_atom_prefixes_approximate_every_rung_at_least_three_uniformly"
+    },
+    {
+      "declaration": "abs_mobiusMersenneTheta_sub_prefix_le",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 73,
+      "role": "statement",
+      "statement_node": "four_atom_prefixes_approximate_every_rung_at_least_three_uniformly"
+    },
+    {
+      "declaration": "three_pow_lt_mersenne_product",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 147,
+      "role": "engine",
+      "statement_node": "every_mobius_mersenne_rung_at_least_three_is_strictly_below_one"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_lt_one",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 196,
+      "role": "statement",
+      "statement_node": "every_mobius_mersenne_rung_at_least_three_is_strictly_below_one"
+    },
+    {
+      "declaration": "mobiusMersenneTheta_two_lt_eight_ninths",
+      "module": "ErdosProblems/Erdos249/RankOneSubrankObstruction.lean",
+      "line": 223,
+      "role": "finite_instance",
+      "statement_node": "the_target_mobius_mersenne_rung_two_is_strictly_below_eight_ninths"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "rungs_at_least_three_admit_a_uniform_one_eighth_geometric_majorant",
+      "to": "four_atom_prefixes_approximate_every_rung_at_least_three_uniformly",
+      "relation": "complements",
+      "basis": "The termwise one-eighth envelope is the quantitative input used to estimate the exact prefix-tail decomposition uniformly after four atoms."
+    },
+    {
+      "from": "every_mobius_mersenne_rung_at_least_three_is_strictly_below_one",
+      "to": "the_target_mobius_mersenne_rung_two_is_strictly_below_eight_ninths",
+      "relation": "complements",
+      "basis": "The first node controls all source rungs r≥3 in the rank-one quotient, while the finite target estimate controls Θ_2 on the other side of the obstruction gap."
+    }
+  ]
+}

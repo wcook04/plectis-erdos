@@ -1,0 +1,944 @@
+{
+  "zone_id": "Z88",
+  "title": "Erdős 257 C5 seam remainders: greedy calculus, tail domination, sharp word-only limits, and skip certificates",
+  "problem": "257",
+  "replaces_role_zone": "Z23",
+  "concepts": [
+    {
+      "id": "z88_integer_greedy_remainder",
+      "label": "Descending integer-greedy remainder",
+      "note": "The residual capacity left after scanning a finite weight word from head to tail, taking a weight exactly when it does not exceed the current residual."
+    },
+    {
+      "id": "z88_tail_dominated_word",
+      "label": "Tail-dominated weight word",
+      "note": "TailDominated B means every head weight is at most the sum of the later weights plus one uniform slack B."
+    },
+    {
+      "id": "z88_seam_weight_suffix",
+      "label": "Seam-weight suffix geometry",
+      "note": "The suffix seamWeightsFrom s d consists of truncated Mersenne weights from rank d onward and has exact head-tail decompositions and geometric decay."
+    },
+    {
+      "id": "z88_head_slack",
+      "label": "Seam head slack",
+      "note": "At rank a, the difference between truncatedMersenneWeight s a and the sum of all later seam weights is the optimal counting slack used by the greedy bound."
+    },
+    {
+      "id": "z88_global_word_bound",
+      "label": "Global word-only remainder bound",
+      "note": "Tail domination at the first seam rank gives an unconditional actual-target estimate 8 rem(s) <= 4^s for s>=6."
+    },
+    {
+      "id": "z88_admissible_capacity_barrier",
+      "label": "Admissible-capacity sharpness barrier",
+      "note": "The capacity one below the head weight is admissible but attains a remainder of order 4^s, showing that the weight word plus capacity admissibility cannot force a 2^s bound."
+    },
+    {
+      "id": "z88_skipped_rank",
+      "label": "Localized skipped rank",
+      "note": "SkipsRank s a records that the residual entering rank a is already smaller than its seam weight, allowing the counting argument to restart at that suffix."
+    },
+    {
+      "id": "z88_remainder_ceiling",
+      "label": "Bit/R2 remainder ceiling",
+      "note": "ObeysRemainderCeiling is the downstream ceiling interface; a sufficiently small slack at any certified skipped rank implies it without requiring a good-row hypothesis."
+    },
+    {
+      "id": "z88_consecutive_gap_barrier",
+      "label": "Consecutive-gap barrier",
+      "note": "Adjacent seam weights are separated by at least 2^(s+1), so the proposed premise that two consecutive weights differ by less than 2^s is empty."
+    },
+    {
+      "id": "z88_finite_skip_certificates",
+      "label": "Rows 8, 11, and 12 certificates",
+      "note": "Kernel-computed seam words and suffix sums certify concrete skipped ranks, ceilings at both good and bad rows, and one exact sharp remainder."
+    },
+    {
+      "id": "z88_method_authority_boundary",
+      "label": "Word-only method authority boundary",
+      "note": "The zone exactly measures what follows from the seam weight word and generic capacity admissibility; it does not exploit the arithmetic identity of the actual seam target beyond the explicitly cited comparisons."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition",
+      "canonical_statement": "EXACT GREEDY CALCULUS: the remainder on the empty word is C. On w::t it recurses on t with capacity C-w when w<=C and with unchanged capacity C when w>C. If the whole list sum is at most C, the result is C minus that sum. Scanning an append l1++l2 is exactly scanning l1 first and then scanning l2 from the resulting remainder.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "z88_integer_greedy_remainder",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Unfold integerGreedyBits and integerGreedyRemainder, split on the head take decision, and induct on the first list.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard recursion and concatenation laws for a deterministic descending subset-sum greedy algorithm.",
+      "scope_caveat": "These are exact algorithmic identities for arbitrary finite lists. They contain no seam-weight estimates and give no small-remainder bound without additional hypotheses.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "greedyRemainder_nil",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 104
+        },
+        {
+          "declaration": "greedyRemainder_cons_take",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 107
+        },
+        {
+          "declaration": "greedyRemainder_cons_skip",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 114
+        },
+        {
+          "declaration": "greedyRemainder_eq_sub_sum",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 120
+        },
+        {
+          "declaration": "greedyRemainder_append",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 131
+        }
+      ]
+    },
+    {
+      "id": "tail_domination_bounds_every_admissible_greedy_remainder_by_the_slack",
+      "canonical_statement": "ABSTRACT COUNTING BOUND: for any finite natural-number weight list l, if every suffix head is at most its later-tail sum plus B and the capacity satisfies C<=sum(l)+B, then integerGreedyRemainder l C<=B.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z88_integer_greedy_remainder",
+        "z88_tail_dominated_word",
+        "z88_head_slack",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Induction on the list using the exact take/skip recursion; either decision preserves the capacity-versus-tail inequality needed for the next suffix.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "An elementary greedy-change bound expressed in the repository's TailDominated interface.",
+      "scope_caveat": "The conclusion is only as strong as the supplied uniform slack B. The theorem does not prove tail domination for seam weights and does not distinguish the actual seam target from another admissible capacity.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "greedyRemainder_le_of_tailDominated",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 153
+        }
+      ]
+    },
+    {
+      "id": "seam_suffixes_are_geometrically_decreasing_and_tail_dominated_by_exact_head_slack",
+      "canonical_statement": "SEAM SUFFIX GEOMETRY: when d<s, the suffix sum at d is its head truncatedMersenneWeight s d plus the suffix sum at d+1. For s>=2 and 1<=d<s the later tail is at most the head, while consecutive weights satisfy 2*w_(d+1)<=w_d. These inequalities propagate along the chain and prove that every suffix starting at j>=a is TailDominated by the exact rank-a head slack w_a-sum(tail after a).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z88_seam_weight_suffix",
+        "z88_tail_dominated_word",
+        "z88_head_slack"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact suffix-list decomposition, the truncated-Mersenne dominance gap, a denominator comparison proving consecutive halving, and induction along ranks.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific arithmetic for the seamWeightsFrom word; no external novelty claim is made.",
+      "scope_caveat": "The estimates concern the deterministic seam weight list. They do not determine which weights the actual greedy target takes or skips and do not yet produce the Bit/R2 ceiling.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tail_sum_succ",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 172
+        },
+        {
+          "declaration": "tail_sum_le_weight",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 177
+        },
+        {
+          "declaration": "two_mul_weight_succ_le",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 183
+        },
+        {
+          "declaration": "seam_chain",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 206
+        },
+        {
+          "declaration": "seam_tailDominated",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 221
+        }
+      ]
+    },
+    {
+      "id": "dyadic_scale_and_seam_head_comparisons_control_the_global_counting_input",
+      "canonical_statement": "EXACT SCALE COMPARISONS: 4^s=2^(2s); 4^s<=3*w_2+2 for the first seam weight; the actual seamSubsetTarget s is at most 2*w_2 for s>=1; and for every d>=1, 4^s<(2^d-1)*w_d+(2^d-1).",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "concepts": [
+        "z88_seam_weight_suffix",
+        "z88_global_word_bound",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Power normalization and quotient-remainder bounds for truncatedMersenneWeight s d=floor(4^s/(2^d-1)).",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary power and Euclidean-division comparisons specialized to the seam weights.",
+      "scope_caveat": "These comparisons only supply scale and admissibility inequalities. They do not analyze the greedy decisions or establish an asymptotically smaller remainder.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "four_pow_eq_two_pow",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 236
+        },
+        {
+          "declaration": "four_pow_le_three_mul_head",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 239
+        },
+        {
+          "declaration": "target_le_two_mul_head",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 247
+        },
+        {
+          "declaration": "four_pow_lt_weight_mul",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 285
+        }
+      ]
+    },
+    {
+      "id": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound",
+      "canonical_statement": "GLOBAL POSITIVE RESULT: for s>=3 and every capacity C<=2*w_2, the greedy remainder on seamWeights s plus the suffix sum from rank 3 is at most w_2. The actual seam target satisfies that capacity condition, and for every s>=6 the resulting concrete remainder obeys 8*seamIntegerGreedyRemainder s<=4^s.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z88_integer_greedy_remainder",
+        "z88_tail_dominated_word",
+        "z88_head_slack",
+        "z88_global_word_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Instantiate the abstract tail-dominance theorem with the exact rank-2 seam slack, specialize to seamSubsetTarget, then combine the first two suffix decompositions with quotient bounds at ranks 2, 3, and 4.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A project-specific unconditional quantitative bound for the C5 seam-remainder programme.",
+      "scope_caveat": "The bound improves the trivial target-size estimate but remains of order 4^s. It is weaker than later Rem/C6 bounds and does not reach the 2^s scale needed to resolve Erdős 257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "seam_remainder_bound",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 261
+        },
+        {
+          "declaration": "seamIntegerGreedyRemainder_add_tail_le",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 277
+        },
+        {
+          "declaration": "eight_mul_remainder_le",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 299
+        }
+      ]
+    },
+    {
+      "id": "head_and_tail_estimates_put_the_word_only_sharpness_witness_at_four_power_scale",
+      "canonical_statement": "SHARPNESS ESTIMATES: for d>=3, 7*2^d*w_d<=8*4^s and 7*2^(d-1)*sum(seamWeightsFrom s d)<=8*4^s. Also 4*2^s<=2^(2s-1) for s>=3, and the head weight w_2 is strictly below the actual seam target.",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "concepts": [
+        "z88_seam_weight_suffix",
+        "z88_admissible_capacity_barrier",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Euclidean quotient bounds on each truncated weight, induction on suffixes using consecutive halving, and elementary dyadic exponent comparison.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific auxiliary inequalities supporting the exact C5 sharpness witness.",
+      "scope_caveat": "These inequalities locate the scale of a counterexample capacity. They do not themselves compute its greedy remainder or say that the actual seam target has a large remainder.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "head_weight_small",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 327
+        },
+        {
+          "declaration": "tail_sum_small",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 350
+        },
+        {
+          "declaration": "four_mul_two_pow_le",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 376
+        },
+        {
+          "declaration": "head_lt_target",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 383
+        }
+      ]
+    },
+    {
+      "id": "an_admissible_head_minus_one_capacity_blocks_any_two_power_word_only_bound",
+      "canonical_statement": "SHARP WORD-ONLY BARRIER: at capacity w_2-1 the greedy skips the head, takes the entire later tail, and leaves exactly w_2-1-sum(tail from rank 3). This remainder satisfies 4^s<=21*remainder+35. Consequently, for every s>=6 there exists C<seamSubsetTarget s whose greedy remainder on the same seamWeights s is strictly greater than 2^s.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": [
+        "z88_integer_greedy_remainder",
+        "z88_head_slack",
+        "z88_admissible_capacity_barrier",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Skip the first weight at capacity w_2-1, use exact total subtraction on the tail, combine the quantitative head/tail estimates, and choose that capacity below the actual target.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A formal no-go theorem for the repository's proposed word-only C5 strategy; it is not a no-go for all approaches to Erdős 257.",
+      "scope_caveat": "The witness capacity is not the actual seamSubsetTarget. The result refutes only deductions that use the seam weight word together with generic capacity admissibility; it does not prove the actual seam remainder exceeds 2^s and does not rule out target-specific arithmetic arguments.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "greedyRemainder_at_head_sub_one",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 402
+        },
+        {
+          "declaration": "counting_bound_sharp",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 419
+        },
+        {
+          "declaration": "exists_admissible_capacity_remainder_gt_two_pow",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 442
+        }
+      ]
+    },
+    {
+      "id": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix",
+      "canonical_statement": "LOCALIZED SKIP TRANSPORT: dropping k entries from seamWeightsFrom s a gives seamWeightsFrom s (a+k), and the final seam remainder is the greedy remainder of the suffix from rank a started at the residual entering a. If rank a is skipped, then the final remainder plus the tail after a is at most w_a. If three times that head slack is below 7*2^s+4, the row satisfies Bit/R2.ObeysRemainderCeiling.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z88_integer_greedy_remainder",
+        "z88_seam_weight_suffix",
+        "z88_skipped_rank",
+        "z88_head_slack",
+        "z88_remainder_ceiling"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Use the append law to split the greedy scan at rank a, then apply exact suffix tail domination at the residual certified below the skipped weight.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific localization of the abstract greedy counting theorem to the C5 skipped-rank interface.",
+      "scope_caveat": "SkipsRank and the slack inequality are explicit local hypotheses, not globally proved invariants. The theorem gives no cofinal supply of such ranks and does not say every row obeys the ceiling.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "seamWeightsFrom_drop",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 461
+        },
+        {
+          "declaration": "seam_remainder_split",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 485
+        },
+        {
+          "declaration": "remainder_add_tail_le_of_skipsRank",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 498
+        },
+        {
+          "declaration": "obeysCeiling_of_skipsRank",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 516
+        }
+      ]
+    },
+    {
+      "id": "skipping_the_last_rank_automatically_forces_the_remainder_ceiling",
+      "canonical_statement": "LAST-RANK SPECIALIZATION: for s>=4 the final seam weight is exactly 2^(s+1)+4. Therefore, if the greedy skips rank s-1, its final remainder is at most 2^(s+1)+4 and the row automatically satisfies Bit/R2.ObeysRemainderCeiling.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z88_skipped_rank",
+        "z88_remainder_ceiling",
+        "z88_seam_weight_suffix"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Evaluate the final truncated Mersenne quotient exactly, specialize the localized skip bound where the later suffix is empty, and compare with the Bit/R2 ceiling.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct specialization of the localized skipped-rank theorem to the last nonempty seam rank.",
+      "scope_caveat": "The conclusion assumes that the last rank is skipped. The module certifies this at row 8 only; it does not prove last-rank skipping for arbitrary or cofinally many rows.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "weight_last",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 527
+        },
+        {
+          "declaration": "remainder_le_of_skipsLast",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 552
+        },
+        {
+          "declaration": "obeysCeiling_of_skipsLast",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 560
+        }
+      ]
+    },
+    {
+      "id": "consecutive_seam_weights_never_satisfy_the_proposed_small_gap_premise",
+      "canonical_statement": "EMPTY-PREMISE BARRIER: whenever s>=2, d>=1, and d+1<s, the adjacent seam weights satisfy 2^(s+1)+w_(d+1)<=w_d. Their gap is therefore at least 2^(s+1), so no consecutive pair differs by less than 2^s.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": [
+        "z88_seam_weight_suffix",
+        "z88_consecutive_gap_barrier",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Combine the truncated-Mersenne dominance gap with the exact suffix split one rank later.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A direct formal refutation of the specific small-consecutive-gap premise proposed for the C5 programme.",
+      "scope_caveat": "This rules out one proposed sufficient condition only. It does not rule out localized skip certificates, other relations among several weights, or arithmetic information tied to the actual target.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "consecutive_gap_ge",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 575
+        }
+      ]
+    },
+    {
+      "id": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates",
+      "canonical_statement": "FINITE NON-VACUITY PACKET: the exact seam word at row 8 skips its last rank 7 and obeys the remainder ceiling. Exact words and rank-8 suffix sums at rows 11 and 12 certify a skip at rank 7 and the ceiling there as well. Rows 11 and 12 simultaneously fail Bit/R2.LargestSkipLateAt, so these two ceilings genuinely come from the localized C5 skip mechanism rather than the earlier good-row theorem.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": [
+        "z88_finite_skip_certificates",
+        "z88_skipped_rank",
+        "z88_remainder_ceiling",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel evaluation of the finite seam words, entering remainders, and suffix sums, followed by specialization of the last-rank or general skipped-rank ceiling theorem.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Concrete certified instances of the module's localized skip theorems.",
+      "scope_caveat": "Three rows are finite evidence only. They do not establish a pattern, an eventual or cofinal supply of skipped ranks, or the universal ceiling required to settle Erdős 257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "seamWeights_eight",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 586
+        },
+        {
+          "declaration": "skipsRank_eight",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 599
+        },
+        {
+          "declaration": "obeysCeiling_eight",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 606
+        },
+        {
+          "declaration": "seamWeights_eleven",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 611
+        },
+        {
+          "declaration": "seamTail_eleven",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 627
+        },
+        {
+          "declaration": "skipsRank_eleven",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 635
+        },
+        {
+          "declaration": "obeysCeiling_eleven",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 642
+        },
+        {
+          "declaration": "seamWeights_twelve",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 649
+        },
+        {
+          "declaration": "seamTail_twelve",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 667
+        },
+        {
+          "declaration": "skipsRank_twelve",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 675
+        },
+        {
+          "declaration": "obeysCeiling_twelve",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 682
+        },
+        {
+          "declaration": "ceiling_at_bad_rows",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 693
+        }
+      ]
+    },
+    {
+      "id": "row_eight_computes_the_head_minus_one_sharpness_remainder_exactly",
+      "canonical_statement": "FINITE SHARPNESS CERTIFICATE: at s=8 and capacity truncatedMersenneWeight 8 2 - 1=21844, the greedy remainder on seamWeights 8 is exactly 4443, which is greater than 17 times 2^8.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": [
+        "z88_finite_skip_certificates",
+        "z88_admissible_capacity_barrier",
+        "z88_method_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel evaluation of integerGreedyBits and weightedBoolSum on the explicit row-8 seam word at the head-minus-one capacity.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Exact finite specialization of the quantitative word-only sharpness construction.",
+      "scope_caveat": "This is one finite counterexample capacity, not the actual seam target and not evidence about the asymptotic behavior of seamIntegerGreedyRemainder.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "counting_bound_sharp_eight",
+          "module": "ErdosProblems/Rem/C5.lean",
+          "line": 701
+        }
+      ]
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "tail_domination_bounds_every_admissible_greedy_remainder_by_the_slack",
+      "to": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition",
+      "relation": "generated_by",
+      "basis": "The abstract counting theorem is proved by list induction through the exact head take/skip recursion."
+    },
+    {
+      "from": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound",
+      "to": "tail_domination_bounds_every_admissible_greedy_remainder_by_the_slack",
+      "relation": "generated_by",
+      "basis": "The global seam bound instantiates the abstract theorem with the rank-2 exact head slack."
+    },
+    {
+      "from": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound",
+      "to": "seam_suffixes_are_geometrically_decreasing_and_tail_dominated_by_exact_head_slack",
+      "relation": "generated_by",
+      "basis": "The seam suffix geometry supplies both TailDominated and the exact head-versus-tail slack used in the specialization."
+    },
+    {
+      "from": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound",
+      "to": "dyadic_scale_and_seam_head_comparisons_control_the_global_counting_input",
+      "relation": "generated_by",
+      "basis": "The scale comparisons verify actual-target admissibility and convert the head-slack estimate to 8*remainder<=4^s."
+    },
+    {
+      "from": "an_admissible_head_minus_one_capacity_blocks_any_two_power_word_only_bound",
+      "to": "head_and_tail_estimates_put_the_word_only_sharpness_witness_at_four_power_scale",
+      "relation": "generated_by",
+      "basis": "The head and suffix inequalities quantify the exact head-minus-one remainder and place it at order 4^s."
+    },
+    {
+      "from": "an_admissible_head_minus_one_capacity_blocks_any_two_power_word_only_bound",
+      "to": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound",
+      "relation": "barrier_for",
+      "basis": "The admissible counterexample proves that the word-only upper bound cannot be strengthened uniformly from order 4^s to the desired 2^s scale without target-specific information."
+    },
+    {
+      "from": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix",
+      "to": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition",
+      "relation": "generated_by",
+      "basis": "The append composition law identifies the entering remainder and the suffix computation at the selected rank."
+    },
+    {
+      "from": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix",
+      "to": "tail_domination_bounds_every_admissible_greedy_remainder_by_the_slack",
+      "relation": "generated_by",
+      "basis": "After splitting at a skipped rank, the same abstract TailDominated theorem bounds the remaining suffix by its local head slack."
+    },
+    {
+      "from": "skipping_the_last_rank_automatically_forces_the_remainder_ceiling",
+      "to": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix",
+      "relation": "specialises",
+      "basis": "At rank s-1 the later suffix is empty and the exact last weight makes the generic slack comparison automatic."
+    },
+    {
+      "from": "consecutive_seam_weights_never_satisfy_the_proposed_small_gap_premise",
+      "to": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix",
+      "relation": "complements",
+      "basis": "The consecutive-gap route is empty, while the skipped-rank route is a distinct live sufficient condition with explicit finite witnesses."
+    },
+    {
+      "from": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates",
+      "to": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix",
+      "relation": "finite_instance_of",
+      "basis": "Rows 11 and 12 instantiate the generic rank-7 skip theorem, and row 8 instantiates its last-rank specialization."
+    },
+    {
+      "from": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates",
+      "to": "skipping_the_last_rank_automatically_forces_the_remainder_ceiling",
+      "relation": "finite_instance_of",
+      "basis": "The row-8 certificate skips its last rank and obtains the ceiling through the last-rank theorem."
+    },
+    {
+      "from": "row_eight_computes_the_head_minus_one_sharpness_remainder_exactly",
+      "to": "an_admissible_head_minus_one_capacity_blocks_any_two_power_word_only_bound",
+      "relation": "finite_instance_of",
+      "basis": "The exact value 4443 is the row-8 instance of the same head-minus-one capacity used in the general sharpness barrier."
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "greedyRemainder_nil",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 104,
+      "role": "representation",
+      "statement_node": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition"
+    },
+    {
+      "declaration": "greedyRemainder_cons_take",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 107,
+      "role": "representation",
+      "statement_node": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition"
+    },
+    {
+      "declaration": "greedyRemainder_cons_skip",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 114,
+      "role": "representation",
+      "statement_node": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition"
+    },
+    {
+      "declaration": "greedyRemainder_eq_sub_sum",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 120,
+      "role": "statement",
+      "statement_node": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition"
+    },
+    {
+      "declaration": "greedyRemainder_append",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 131,
+      "role": "statement",
+      "statement_node": "integer_greedy_remainder_has_exact_list_recursion_and_append_composition"
+    },
+    {
+      "declaration": "greedyRemainder_le_of_tailDominated",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 153,
+      "role": "statement",
+      "statement_node": "tail_domination_bounds_every_admissible_greedy_remainder_by_the_slack"
+    },
+    {
+      "declaration": "tail_sum_succ",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 172,
+      "role": "representation",
+      "statement_node": "seam_suffixes_are_geometrically_decreasing_and_tail_dominated_by_exact_head_slack"
+    },
+    {
+      "declaration": "tail_sum_le_weight",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 177,
+      "role": "engine",
+      "statement_node": "seam_suffixes_are_geometrically_decreasing_and_tail_dominated_by_exact_head_slack"
+    },
+    {
+      "declaration": "two_mul_weight_succ_le",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 183,
+      "role": "engine",
+      "statement_node": "seam_suffixes_are_geometrically_decreasing_and_tail_dominated_by_exact_head_slack"
+    },
+    {
+      "declaration": "seam_chain",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 206,
+      "role": "engine",
+      "statement_node": "seam_suffixes_are_geometrically_decreasing_and_tail_dominated_by_exact_head_slack"
+    },
+    {
+      "declaration": "seam_tailDominated",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 221,
+      "role": "statement",
+      "statement_node": "seam_suffixes_are_geometrically_decreasing_and_tail_dominated_by_exact_head_slack"
+    },
+    {
+      "declaration": "four_pow_eq_two_pow",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 236,
+      "role": "representation",
+      "statement_node": "dyadic_scale_and_seam_head_comparisons_control_the_global_counting_input"
+    },
+    {
+      "declaration": "four_pow_le_three_mul_head",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 239,
+      "role": "engine",
+      "statement_node": "dyadic_scale_and_seam_head_comparisons_control_the_global_counting_input"
+    },
+    {
+      "declaration": "target_le_two_mul_head",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 247,
+      "role": "statement",
+      "statement_node": "dyadic_scale_and_seam_head_comparisons_control_the_global_counting_input"
+    },
+    {
+      "declaration": "seam_remainder_bound",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 261,
+      "role": "statement",
+      "statement_node": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound"
+    },
+    {
+      "declaration": "seamIntegerGreedyRemainder_add_tail_le",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 277,
+      "role": "statement",
+      "statement_node": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound"
+    },
+    {
+      "declaration": "four_pow_lt_weight_mul",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 285,
+      "role": "engine",
+      "statement_node": "dyadic_scale_and_seam_head_comparisons_control_the_global_counting_input"
+    },
+    {
+      "declaration": "eight_mul_remainder_le",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 299,
+      "role": "statement",
+      "statement_node": "seam_counting_gives_an_unconditional_four_power_over_eight_remainder_bound"
+    },
+    {
+      "declaration": "head_weight_small",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 327,
+      "role": "engine",
+      "statement_node": "head_and_tail_estimates_put_the_word_only_sharpness_witness_at_four_power_scale"
+    },
+    {
+      "declaration": "tail_sum_small",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 350,
+      "role": "engine",
+      "statement_node": "head_and_tail_estimates_put_the_word_only_sharpness_witness_at_four_power_scale"
+    },
+    {
+      "declaration": "four_mul_two_pow_le",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 376,
+      "role": "engine",
+      "statement_node": "head_and_tail_estimates_put_the_word_only_sharpness_witness_at_four_power_scale"
+    },
+    {
+      "declaration": "head_lt_target",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 383,
+      "role": "statement",
+      "statement_node": "head_and_tail_estimates_put_the_word_only_sharpness_witness_at_four_power_scale"
+    },
+    {
+      "declaration": "greedyRemainder_at_head_sub_one",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 402,
+      "role": "statement",
+      "statement_node": "an_admissible_head_minus_one_capacity_blocks_any_two_power_word_only_bound"
+    },
+    {
+      "declaration": "counting_bound_sharp",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 419,
+      "role": "statement",
+      "statement_node": "an_admissible_head_minus_one_capacity_blocks_any_two_power_word_only_bound"
+    },
+    {
+      "declaration": "exists_admissible_capacity_remainder_gt_two_pow",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 442,
+      "role": "statement",
+      "statement_node": "an_admissible_head_minus_one_capacity_blocks_any_two_power_word_only_bound"
+    },
+    {
+      "declaration": "seamWeightsFrom_drop",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 461,
+      "role": "representation",
+      "statement_node": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix"
+    },
+    {
+      "declaration": "seam_remainder_split",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 485,
+      "role": "representation",
+      "statement_node": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix"
+    },
+    {
+      "declaration": "remainder_add_tail_le_of_skipsRank",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 498,
+      "role": "statement",
+      "statement_node": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix"
+    },
+    {
+      "declaration": "obeysCeiling_of_skipsRank",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 516,
+      "role": "statement",
+      "statement_node": "a_certified_skipped_rank_restarts_the_counting_bound_on_its_suffix"
+    },
+    {
+      "declaration": "weight_last",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 527,
+      "role": "statement",
+      "statement_node": "skipping_the_last_rank_automatically_forces_the_remainder_ceiling"
+    },
+    {
+      "declaration": "remainder_le_of_skipsLast",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 552,
+      "role": "statement",
+      "statement_node": "skipping_the_last_rank_automatically_forces_the_remainder_ceiling"
+    },
+    {
+      "declaration": "obeysCeiling_of_skipsLast",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 560,
+      "role": "statement",
+      "statement_node": "skipping_the_last_rank_automatically_forces_the_remainder_ceiling"
+    },
+    {
+      "declaration": "consecutive_gap_ge",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 575,
+      "role": "statement",
+      "statement_node": "consecutive_seam_weights_never_satisfy_the_proposed_small_gap_premise"
+    },
+    {
+      "declaration": "seamWeights_eight",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 586,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "skipsRank_eight",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 599,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "obeysCeiling_eight",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 606,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "seamWeights_eleven",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 611,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "seamTail_eleven",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 627,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "skipsRank_eleven",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 635,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "obeysCeiling_eleven",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 642,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "seamWeights_twelve",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 649,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "seamTail_twelve",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 667,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "skipsRank_twelve",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 675,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "obeysCeiling_twelve",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 682,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "ceiling_at_bad_rows",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 693,
+      "role": "finite_instance",
+      "statement_node": "rows_eight_eleven_and_twelve_exhibit_live_skip_and_ceiling_certificates"
+    },
+    {
+      "declaration": "counting_bound_sharp_eight",
+      "module": "ErdosProblems/Rem/C5.lean",
+      "line": 701,
+      "role": "finite_instance",
+      "statement_node": "row_eight_computes_the_head_minus_one_sharpness_remainder_exactly"
+    }
+  ]
+}

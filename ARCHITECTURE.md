@@ -77,7 +77,7 @@ single file that is authoritative for everything.
 
 | Question | Authoritative source | What it controls |
 |---|---|---|
-| What has been formally checked? | [`Erdos249257.lean`](Erdos249257.lean) and the Lean modules it imports, at the fixed source version named in [`docs/claims.json`](docs/claims.json) | Formal statements and proofs |
+| What has been formally checked? | [`Erdos249257.lean`](Erdos249257.lean), [`ErdosProblems.lean`](ErdosProblems.lean), and the Lean modules they import, at the fixed source version named in [`docs/claims.json`](docs/claims.json) | Formal statements and proofs; kernel checking alone does not create a reviewed public claim |
 | What may the project publicly say about a result? | [`docs/claims.json`](docs/claims.json) | Claim wording, status, supporting Lean names, bounded ranges, and the exact questions that remain open |
 | What evidence and review are required when a claim changes? | [`docs/methodology.json`](docs/methodology.json) | Change classes and review requirements |
 | What does a reader see? | [`README.md`](README.md), [`SCOPE.md`](SCOPE.md), and authored papers such as [`paper/erdos249-257-main-paper.tex`](paper/erdos249-257-main-paper.tex) | Human explanation; these files must stay within the claim record |
@@ -97,14 +97,18 @@ authority. Their builder scripts say when they should be regenerated.
 ## Repository map
 
 ```text
-Erdos249257.lean                 supported root import for the Lean library
-Erdos249257/                     formal definitions, theorems, and certificates
+Erdos249257.lean                 reviewed #249/#257 root import
+Erdos249257/                     reviewed #249/#257 definitions, theorems, and certificates
+ErdosProblems.lean               problem-owned expansion root import
+ErdosProblems/Erdos<N>/          formal work grouped by actual Erdős problem number
 examples/                        a small downstream Lean user of the library
 
 docs/claims.json                 reviewed record of public mathematical claims
 docs/methodology.json            rules for changing those claims
 docs/publication_contract.json   inventory of shipped papers
 docs/publication_evidence.json   evidence and limits for a historical checker exercise
+docs/problems.json               generated index of the problem-owned expansion library
+docs/problem_index_source.json   the authored source that index is built from
 docs/ORIENTATION.md              generated human reading map
 docs/SOURCE_MAP.md               routes from mathematical questions to Lean files
 
@@ -121,10 +125,33 @@ The hundreds of Lean files are implementation detail at first contact. Start
 from a mathematical question or a claim, then follow the source map or the
 read-only query tool to the few relevant modules.
 
+### Two libraries, two levels of claim
+
+The repository holds two Lean roots and they are not interchangeable.
+
+`Erdos249257.lean` is the reviewed corpus. Every public mathematical claim made
+about it has a row in `docs/claims.json`, a status, declaration coordinates, and
+a place in the gateway paper.
+
+`ErdosProblems.lean` is the problem-owned expansion library, currently covering
+Erdős problems 243, 251, 269, and 1049. Its declarations are checked by the same
+kernel, and they are **not** reviewed public claims: the claim registry has no
+row for them. Building that root proves that its propositions elaborate; it does
+not say that they are the interesting propositions, that they are new, or that
+any of those four problems is closer to being solved. Each of the four has a
+short paper of its own, an Erdős Problem Note in `paper/`, which states its
+checked results and, in the same voice, the obligation that survives them.
+`docs/problems.json` is the machine-readable form of the same thing.
+
+The split exists so that adding formal material about a new problem cannot
+quietly inflate the repository's claim record. Promotion out of the expansion
+library into the reviewed corpus is a separate, human-reviewed change, governed
+by `docs/methodology.json`.
+
 ## A complete example
 
 One public claim says that Lean has checked successful finite calculations at
-28 named input values, the largest labelled value being 64.
+every scale up to 82, together with eight small periods and separate shards.
 
 In ordinary language, the record says:
 
@@ -132,10 +159,16 @@ In ordinary language, the record says:
 claim id: certified_kill_instances
 public statement: Lean checked the listed finite cases.
 status: verified finite instance
-bounded range: eight small periods, the 28 scale values, and the shard parameters, all named in the record.
-formal evidence: five named Lean declarations.
+bounded range: eight small periods, every scale value up to 82, and the shard parameters, all named in the record. Nothing is asserted at 83.
+formal evidence: six named Lean declarations.
 still open: prove that successful cases exist beyond every fixed cutoff.
 ```
+
+The range is contiguous rather than a sampled list: the scale quantity changes
+only at prime powers and is constant between them, so the earlier deposits
+through 64 already covered every value up to 66. Each scale is nevertheless an
+independent construction — the two supporting modules share no prime — so the
+band buys reach, not leverage.
 
 The phrase *verified finite instance* is not a score or a project-specific
 milestone. It means only that Lean checked a stated finite set of inputs. The
