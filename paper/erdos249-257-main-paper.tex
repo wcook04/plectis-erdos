@@ -424,10 +424,12 @@ function \(\mathbf 1(n)=1\).  We also write \(\mathrm{Id}(n)=n\), let \(\mu\)
 denote the M\"obius function, and put \(\sigma(m)=\sum_{d\mid m}d\).
 For the exact classical arithmetic-function and Dirichlet-convolution
 background used here, see Apostol's Sections~2.6--2.7 and
-Theorem~11.5~\cite[pp.~28--32, 228--229]{apostol}.  Lambert-series
-factorisations and their matrix
-formulations are treated by Merca~\cite{merca2017} and
-Merca--Schmidt~\cite{mercaschmidt}.
+Theorem~11.5~\cite[pp.~28--32, 228--229]{apostol}.  Merca's general
+Lambert-series factorisation is Theorem~1.2, proved from its finite
+Lemma~1.1~\cite[pp.~420--421]{merca2017}; the totient specialisations are
+Corollaries~5.13--5.14~\cite[pp.~430--431]{merca2017}.
+Merca--Schmidt give the divisor-transform identity and its matrix
+factorisations in Equations~(1.1)--(1.6)~\cite[pp.~31--34]{mercaschmidt}.
 
 The rearrangement separates two operations: the divisor transform
 \(f\mapsto f*\mathbf 1\), followed by evaluation of the resulting coefficients
@@ -3862,8 +3864,9 @@ for \(S\).
 
 For arithmetic functions and M\"obius inversion we use
 Apostol~\cite[\S\S2.6--2.7, pp.~28--32]{apostol};
-Merca and Merca--Schmidt treat Lambert-series factorisations
-~\cite{merca2017,mercaschmidt}.  Stern supplies the rational enumeration
+Merca's Theorem~1.2~\cite[pp.~420--421]{merca2017} and
+Merca--Schmidt's Equations~(1.1)--(1.6)~\cite[pp.~31--34]{mercaschmidt}
+treat Lambert-series factorisations and their matrix forms.  Stern supplies the rational enumeration
 underlying the tree~\cite{stern1858}; the Postelmans--Van Assche theorem
 concerns only Appendix~\ref{app:lambert-algebraic}'s constant-weight value.
 The claims here are the linked Lean identities and estimates, not priority for
@@ -4527,8 +4530,9 @@ coefficients; tail-orbit rigidity then identifies rationality with a tempered
 integer orbit.  Theorem~\ref{res:carrycert} is exactly the composition of
 those two equivalences.  The divisor transform and M\"obius inversion are
 classical arithmetic-function tools~\cite[Thm.~2.9, p.~32]{apostol}; their
-Lambert-series factorisation formulations are treated by Merca and
-Merca--Schmidt~\cite{merca2017,mercaschmidt}.  The composition with the
+Lambert-series factorisation formulations are Merca's
+Theorem~1.2~\cite[pp.~420--421]{merca2017} and Merca--Schmidt's
+Equations~(1.1)--(1.6)~\cite[pp.~31--34]{mercaschmidt}.  The composition with the
 tempered-orbit criterion is what is checked here.
 
 \begin{proposition}[Boolean M\"obius inversion, both directions]\label{res:boolmob}
