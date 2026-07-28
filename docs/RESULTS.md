@@ -39,11 +39,11 @@ semantic graph provides three disjoint diagnostic views:
 
 | View | #249 | #257 | shared | total |
 |---|---:|---:|---:|---:|
-| mechanically nonrecurring candidates | 54 | 116 | 16 | **186** |
+| mechanically nonrecurring candidates | 59 | 121 | 16 | **196** |
 | classical/prior-art formalisations | 24 | 16 | 30 | **70** |
-| bare open-problem equivalences | 8 | 15 | 1 | **24** |
+| bare open-problem equivalences | 9 | 15 | 1 | **25** |
 
-The nonrecurring view contains 125 unconditional object theorems, 30 scoped
+The nonrecurring view contains 130 unconditional object theorems, 35 scoped
 barriers, and 31 reductions or transports after aliases, open antecedents,
 bare equivalences, finite/generated instances, infrastructure, classical
 results, and routine corollaries are removed. The bare-equivalence view records
@@ -51,8 +51,8 @@ exact equivalences whose unresolved side retains the original difficulty. The
 classical view records established mathematics represented in Lean.
 
 These counts answer different questions; they are not a partition of the
-entire corpus and none is a theorem-novelty census. In particular, 174 of the
-186 candidates have `prior_art_state = not_assessed`. The authored frontier
+entire corpus and none is a theorem-novelty census. In particular, 184 of the
+196 candidates have `prior_art_state = not_assessed`. The authored frontier
 therefore advances only a reviewed shortlist of 11—five for #249 and six for
 #257—and records a residual risk for every one. The live prose-level
 `open-antecedents` view currently has 52 entries, 10 marked

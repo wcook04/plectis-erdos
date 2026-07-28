@@ -32,10 +32,10 @@ The central distinction used below is:
 ## Census populations are not interchangeable
 
 The corpus-shape queries and the demand lattice answer different questions.
-At this checkpoint the 677 semantic statement nodes yield three disjoint
-diagnostic views: 186 mechanically nonrecurring candidates (54 for #249, 116
-for #257, and 16 shared), 24 bare open-problem equivalences, and 70
-classical/prior-art formalisations. The first count is not a novelty claim: 174 candidates have no
+At this checkpoint the 705 semantic statement nodes yield three disjoint
+diagnostic views: 196 mechanically nonrecurring candidates (59 for #249, 121
+for #257, and 16 shared), 25 bare open-problem equivalences, and 70
+classical/prior-art formalisations. The first count is not a novelty claim: 184 candidates have no
 completed prior-art assessment, and the reviewed frontier shortlist contains
 11 nodes, five for #249 and six for #257.
 

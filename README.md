@@ -6,10 +6,10 @@
 Lean 4 formal work on two open irrationality problems. Start with:
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) →
 [PRIOR ART](docs/PRIOR_ART.md) → [SOURCE MAP](docs/SOURCE_MAP.md).
-The [architecture and repository guide](ARCHITECTURE.md) covers checks.
+[Architecture](ARCHITECTURE.md) covers checks.
 It assumes no Lean or project history.
-The [agent-navigation paper](cold-clone-to-proof-receipt.pdf): cold-clone
-navigation, Lean receipts, and incremental builds.
+[agent-navigation paper](cold-clone-to-proof-receipt.pdf): navigation,
+receipts, incremental builds.
 
 [**#249 — exact ranks for the dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) ·
 [**#257 — settled supports and exact finite periods**](erdos-257-mersenne-support-subseries.pdf)
@@ -28,8 +28,7 @@ navigation, Lean receipts, and incremental builds.
 Both remain open. **This project does not solve Erdős #249 or universal Erdős
 #257.** Results stay within Lean source.
 
-**Ten-minute verdict.** This is neither a partial solution nor a corpus of
-restatements. Its checked non-restatement centre is:
+**Ten-minute verdict.** Checked non-restatement centre:
 
 - #257 has exact finite-period noncollapse, irrationality for eventually
   periodic supports, a signed periodic-weight dichotomy, achievement-set
@@ -41,17 +40,18 @@ restatements. Its checked non-restatement centre is:
   endpoint-equivalent. Those equivalences are evidence about the methods, not
   progress on either open problem.
 
-Audit: 186 nonrecurring candidates (116 #257, 54 #249, 16 shared), 24 bare
-equivalences, and 70 classical/prior-art formalisations. This is not a novelty
-census: 174 lack assessment; the reviewed frontier retains 11 with residual
-risk.
+Audit: 196 mechanically nonrecurring candidates (121 #257, 59 #249, 16
+shared), 25 bare equivalences, and 70 classical/prior-art formalisations.
+184 candidates lack prior-art assessment; 17 of 23 substantial hypotheses
+extracted from conditional theorems are proved endpoint-equivalent.
 
 The finite #249 result is the classical Farey/mediant bound at `K=240`
-(numerical delta `0`); the local contribution is checked arithmetic, transfers,
+(numerical delta `0`); Farey's method supplies the number directly. The local
+contribution is checked arithmetic, transfers,
 and the sharp first failure.
 [RESULTS](docs/RESULTS.md) gives the typed census and limits.
 
-This public checkout is not an entrypoint into any private
+This self-contained public Plectis checkout is not an entrypoint into any private
 development system. `v0.6.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](docs/claims.json) pins a post-tag formal-source checkpoint,
 not a new tagged release. Lean source checked by the pinned Lean kernel is
@@ -142,13 +142,13 @@ exactly once. These are navigation counts, not novelty claims.
 - **Whole-corpus agent navigation, without a Lean build:** run
   `python3 scripts/query_corpus.py --tour --format card`, then follow
   `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
-  The no-build tour exposes scale, mathematical map, open frontier, and
-  authority boundary. Committed indexes expose declarations and exact
-  dependencies immediately after cloning.
+  The no-build tour exposes corpus scale, a mathematical map, the exact open
+  frontier, and an authority boundary. Committed indexes expose every indexed
+  declaration and exact dependencies for both loaded roots after cloning.
   Use `python3 scripts/query_semantic.py mechanisms --problem 249`,
   `receipts`, and `population-backlog` for mechanisms, failed routes, and
-  paper-seeded semantic gaps. These are navigation projections; Lean checks
-  proofs.
+  paper-seeded semantic gaps. These are navigation projections, not proof
+  authority.
 - **Publication topology:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
   `python3 scripts/query_corpus.py --publication-family <id>`.
