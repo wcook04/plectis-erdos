@@ -731,21 +731,28 @@ source mathematics.  Lean Atlas leaves semantic verification to people.  Given
 chosen theorem statements, its Lean Compass selects the project declarations
 whose meaning can affect them, narrowing what a person must inspect; it assumes
 Lean's standard library and the mathematical library Mathlib are semantically
-correct rather than inspecting them~\cite{leanatlas}.  This guarantee is
-conditional on choosing all targets that matter; it does not find every claim
-occurrence in later public prose.  EconCSLib instead has a model write Lean;
-Lean checks statements and proofs; two model passes and a dashboard assess
-source-to-Lean translation.  The model validations currently run in one Codex
-agent stack, so errors may correlate; dashboard-based human review was sparse
-and incomplete~\cite{econcs}.  This paper
+correct rather than inspecting them~\cite[Algorithm~1 and Proposition~4,
+p.~6]{leanatlas}.  The authors' soundness claim is conditional on the semantic
+correctness of every returned declaration and the trusted base; project-level
+coverage additionally requires the chosen theorem set to exhaust the intended
+claims.  It does not find every claim occurrence in later public prose.
+EconCSLib instead has a model write Lean.  At statement level, one
+context-blind model pass translates Lean back to \LaTeX{} and a second compares
+that translation with the source; a separate holistic audit checks
+cross-statement drift, and a dashboard records human judgements.  At present
+all model validations run through one Codex agent stack, so errors may
+correlate; saved human review remains sparse and incomplete
+\cite[\S3.2.1, pp.~4--7]{econcs}.  This paper
 addresses a later boundary: it starts from accepted Lean proofs and asks how
 subsequent public wording can remain within a reviewed interpretation of them.
 
 A recent audit of formal-theorem benchmarks likewise shows that kernel
 acceptance does not establish fidelity to the intended natural-language
-problem.  Static checks span 13 variants; prompts tested on 92 labelled
-problems and need human
-filtering~\cite{benchmarkfaults}.  That work concerns
+problem.  Across five benchmarks and 13 released variants, static checkers
+produced 4,833 signals, 398 with machine-checkable certificates; a separate
+semantic audit evaluated 92 labelled natural-language/Lean pairs across six
+error categories and achieved high recall but low precision, so human
+adjudication remained necessary~\cite{benchmarkfaults}.  That work concerns
 incoming benchmark statements.  The present repository concerns outgoing,
 post-proof claims that recur and change across public surfaces.  Its current
 mechanical contribution is narrower than semantic verification: it makes
@@ -763,9 +770,10 @@ This repository keeps prose unrestricted and checks a separate record; its
 checker cannot inspect prose that the record does not name.
 
 CASCADE derives tests and a second implementation from the same documentation
-using language models.  It reports a likely inconsistency only when a generated
-test fails on existing code but passes on code generated from that
-documentation.  A person must confirm it~\cite{cascade}.  Unlike this checker,
+using language models.  It reports a likely inconsistency only when at least
+one generated test fails on the original implementation and passes on the
+generated one, and no generated test changes in the opposite direction.  A
+person must still confirm the report~\cite{cascade}.  Unlike this checker,
 it can inspect unrecorded documentation.
 
 Mutation testing asks whether tests detect deliberately introduced
@@ -781,8 +789,12 @@ sets out a system claim, the argument for it, and supporting evidence.  The Goal
 Structuring Notation (GSN) is a graphical notation for that argument
 structure~\cite{gsn}.  The claim record resembles both, but it does not contain
 an argument that its Lean declarations justify the public wording.  It records
-the approved wording, supporting declarations, scope, and limits; the justification remains
-a human judgement.
+the approved wording, supporting declarations, scope, and limits; the
+justification remains a human judgement.  In Gotel and Finkelstein's
+terminology this is closer to bounded post-requirements-specification
+traceability than to their full lifecycle notion: it does not reconstruct
+exploratory requirement production, changing responsibility, or contributor
+access.
 
 \section{Conclusion}\label{sec:conclusion}
 
@@ -880,21 +892,22 @@ Integrated Proof Environment for Scalable Human--AI Collaborative
 Formalization}, 2026,
 \href{https://doi.org/10.48550/arXiv.2604.16347}{arXiv:2604.16347}.
 \bibitem{econcs} N.~Garg, \emph{EconCSLib: AI-Assisted Lean Formalization for
-Economics \& Computation research}, 2026,
+Economics \& Computation Research}, 2026,
 \href{https://doi.org/10.48550/arXiv.2606.13306}{arXiv:2606.13306}.
 \bibitem{benchmarkfaults} P.~S.~Ammanamanchi, S.~Bhat, and S.~Biderman,
 \emph{Faults in Our Formal Benchmarking: Dataset Defects and Evaluation
-Failures in Lean Theorem Proving}, 2026,
+Failures in Lean Theorem Proving}, in \emph{Proceedings of the 43rd
+International Conference on Machine Learning}, PMLR 306, 2026,
 \href{https://doi.org/10.48550/arXiv.2606.29493}{arXiv:2606.29493}.
 \bibitem{isadof} A.~D.~Brucker and B.~Wolff, \emph{Isabelle/DOF: Design and
 Implementation}, in \emph{Software Engineering and Formal Methods}, Lecture
-Notes in Computer Science 11724, 2019, pp.~275--292,
+Notes in Computer Science 11724, 2019, pp.~275--293,
 \href{https://doi.org/10.1007/978-3-030-30446-1_15}{DOI}.
 \bibitem{cascade} T.~Kiecker, J.~A.~Sparka, M.~Reuter, A.~Ziegler, and
 L.~Grunske, \emph{CASCADE: Detecting
 Inconsistencies between Code and Documentation with Automatic Test
 Generation}, \emph{Proceedings of the ACM on Software Engineering} 3 (FSE),
-Article FSE168, July 2026, pp.~3816--3838,
+Article FSE168, July 2026, 23 pages,
 \href{https://doi.org/10.1145/3808175}{DOI}.
 \bibitem{demillo} R.~A.~DeMillo, R.~J.~Lipton, and F.~G.~Sayward, \emph{Hints
 on test data selection: Help for the practicing programmer}, IEEE Computer

@@ -833,10 +833,14 @@ cited next is stated.
 Theorem~2.2 of the arXiv version of~\cite{bgs2017} gives, uniformly for
 $|h|\le x/2$, an explicit asymptotic for
 $\sum g(n)g(n-h)$ with error $O(\log^2x)$; Remark~2.4 gives its Euler product,
-and the weighted partial-summation formula immediately following
-Corollary~2.8
-permits $Q(n)=n(n-h)$, restoring the two linear factors needed to return from
-$g(n)g(n-h)$ to $\ph(n)\ph(n-h)$ with an explicitly propagated error.
+For each fixed $h$, the weighted partial-summation formula immediately
+following Corollary~2.8 permits $Q(n)=n(n-h)$, restoring the two linear
+factors needed to return from $g(n)g(n-h)$ to
+$\ph(n)\ph(n-h)$ with an explicitly propagated error.  That displayed
+weighted formula is not itself stated uniformly in $h$ and starts its main
+integral at \(1\), not \(H\); retaining uniformity and the lower endpoint
+would require applying partial summation directly to Theorem~2.2.  No later
+claim here relies on an unproved uniform weighted version.
 
 Tao--Ter\"av\"ainen's quantitative correlation theorem
 (\cite{taoteravainen2025}, Theorem~3.1) assumes either quantitative
@@ -939,7 +943,7 @@ Erd\H{o}s Problem~\#249 remains open.
   \href{https://arxiv.org/abs/1511.02221}{arXiv:1511.02221}.
   The arXiv version's Theorem~2.2 and Remark~2.4 give the uniform shifted
   divisor-convolution correlation and Euler product used above; the required
-  weighted partial-summation formula follows Corollary~2.8.
+  fixed-shift weighted partial-summation formula follows Corollary~2.8.
 \bibitem{lucatachiya2017} F.~Luca and Y.~Tachiya,
   \href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf}
   {\emph{Linear independence results for the values of divisor functions
