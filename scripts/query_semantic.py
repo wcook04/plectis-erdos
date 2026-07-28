@@ -71,6 +71,13 @@ PROBLEM_INDEX = ROOT / "docs" / "problems.json"
 BUDGET = 64 * 1024
 
 
+def encoded_json_bytes(payload: object) -> int:
+    """Measure the UTF-8 bytes governed by the public packet budget."""
+    return len(
+        json.dumps(payload, indent=1, ensure_ascii=False).encode("utf-8")
+    )
+
+
 def problem_registry_rows() -> list[dict]:
     """Read the generated public problem registry, never a local hardcoded sample."""
     if not PROBLEM_INDEX.is_file():
@@ -101,7 +108,7 @@ def load() -> dict:
 
 def emit(payload: object) -> int:
     text = json.dumps(payload, indent=1, ensure_ascii=False)
-    if len(text) > BUDGET:
+    if len(text.encode("utf-8")) > BUDGET:
         text = json.dumps(
             {
                 "truncated": True,
@@ -864,29 +871,71 @@ def cmd_structural_backlog(corpus: dict, args) -> int:
             row["module"],
         )
     )
-    return emit(
-        {
-            "question": "Which exact structural-only theorem families should receive authored mathematical interpretation next?",
-            "authority_posture": (
-                "ranked_population_worklist_over_exact_atlas_and_structural_routes;"
-                "not_mathematical_interpretation"
+    eligible_rows = rows[: args.limit]
+    payload = {
+        "question": "Which exact structural-only theorem families should receive authored mathematical interpretation next?",
+        "authority_posture": (
+            "ranked_population_worklist_over_exact_atlas_and_structural_routes;"
+            "not_mathematical_interpretation"
+        ),
+        "anti_filler_contract": (
+            "Paper-selected declarations rank first; then larger source modules. "
+            "A replacement must be proposition-grounded, bounded, and explicit "
+            "about open antecedents and nonclaims."
+        ),
+        "filters": {
+            "problem": args.problem or "",
+            "paper": args.paper or "",
+        },
+        "budget_contract": {
+            "maximum_encoded_bytes": BUDGET,
+            "selection_policy": (
+                "emit complete priority-ranked module rows until the next row "
+                "would cross the UTF-8 packet budget"
             ),
-            "anti_filler_contract": (
-                "Paper-selected declarations rank first; then larger source modules. "
-                "A replacement must be proposition-grounded, bounded, and explicit "
-                "about open antecedents and nonclaims."
-            ),
-            "filters": {
-                "problem": args.problem or "",
-                "paper": args.paper or "",
-            },
-            "module_backlog_count": len(rows),
-            "structural_only_role_count": sum(
-                row["structural_only_role_count"] for row in rows
-            ),
-            "results": rows[: args.limit],
+        },
+        "requested_module_limit": args.limit,
+        "module_backlog_count": len(rows),
+        "returned_module_count": 0,
+        "omitted_module_count": len(rows),
+        "structural_only_role_count": sum(
+            row["structural_only_role_count"] for row in rows
+        ),
+        "results": [],
+    }
+    selected: list[dict] = []
+    for row in eligible_rows:
+        candidate_results = [*selected, row]
+        candidate = {
+            **payload,
+            "returned_module_count": len(candidate_results),
+            "omitted_module_count": len(rows) - len(candidate_results),
+            "results": candidate_results,
         }
-    )
+        if encoded_json_bytes(candidate) > BUDGET:
+            break
+        selected = candidate_results
+
+    # A ranked worklist must remain actionable even if a future Lean signature
+    # makes the highest-priority module unusually large.
+    if eligible_rows and not selected:
+        first = {
+            **eligible_rows[0],
+            "candidate_roles": eligible_rows[0]["candidate_roles"][:1],
+        }
+        candidate = {
+            **payload,
+            "returned_module_count": 1,
+            "omitted_module_count": len(rows) - 1,
+            "results": [first],
+        }
+        if encoded_json_bytes(candidate) <= BUDGET:
+            selected = [first]
+
+    payload["returned_module_count"] = len(selected)
+    payload["omitted_module_count"] = len(rows) - len(selected)
+    payload["results"] = selected
+    return emit(payload)
 
 
 def cmd_population_backlog(corpus: dict, args) -> int:

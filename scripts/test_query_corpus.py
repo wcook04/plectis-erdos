@@ -447,6 +447,30 @@ def validate_paper_semantic_citation_aliases() -> None:
         for candidate in group["candidates"]
     )
 
+    structural = semantic_query(
+        "structural-backlog",
+        "--problem",
+        "257",
+    )
+    assert structural.get("truncated") is not True
+    assert structural["results"]
+    assert structural["returned_module_count"] == len(structural["results"])
+    assert structural["omitted_module_count"] == (
+        structural["module_backlog_count"]
+        - structural["returned_module_count"]
+    )
+    assert structural["results"][0]["candidate_roles"]
+    assert (
+        len(
+            json.dumps(
+                structural,
+                indent=1,
+                ensure_ascii=False,
+            ).encode("utf-8")
+        )
+        <= structural["budget_contract"]["maximum_encoded_bytes"]
+    )
+
 
 def validate_claim_status_packets() -> None:
     claims_document = load("docs/claims.json")
