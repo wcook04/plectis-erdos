@@ -769,11 +769,17 @@ requirements specification from its deployment afterwards
 \cite[\S\S5.1--5.4]{gotel}.  The claim record is closer to bounded post-
 specification traceability: it does not reconstruct exploratory requirement
 production, changing responsibility, or contributor access.  An assurance case
-connects a claim, argument, and evidence, often using Goal Structuring
-Notation~\cite{gsn}.  The claim record resembles both but contains no argument
-that the Lean declarations justify the public wording.  It records the
-approved wording, source, scope, and limits; the justification remains a human
-judgement.
+is a reasoned argument supported by evidence; Goal Structuring Notation (GSN)
+is one graphical notation for documenting its claims, evidential references,
+context, and asserted support relationships
+\cite[\S\S0:2.2--0:4.2, pp.~10--11]{gsn}.  The standard is explicit about the
+boundary: the notation documents an asserted argument but establishes neither
+its truth nor that it sufficiently supports the top claim
+\cite[\S0:3.2, p.~11; \S\S0:4.11--0:4.13, p.~15]{gsn}.  The claim record
+resembles those elements but is not an assurance argument: it contains no
+chain of reasoning asserting that the Lean declarations justify the public
+wording.  It records the approved wording, source, scope, and limits; the
+justification remains a human judgement.
 
 \section{Conclusion}\label{sec:conclusion}
 
@@ -794,6 +800,10 @@ The failure supplies the governing limit.  The assurance perimeter is only as
 wide as the relationships someone chose to record; in ordinary language, the
 checker cannot enforce an item absent from its checklist.  Retiring an item is
 therefore as consequential as adding one and deserves the same review.  The
+GSN development guidance makes the corresponding repair concrete: if evidence
+does not cover the lowest claim, state the claim that it actually supports,
+weaken or bound that claim, and revisit the claims above it
+\cite[\S2:3.8.1, p.~70]{gsn}.  The
 method preserves selected mathematical judgements after they have been made.
 It does not make those judgements correct, discover every public claim, provide
 a detection rate, or establish transfer to another repository.  A passing
@@ -906,9 +916,9 @@ development of mutation testing}, IEEE Transactions on Software Engineering
 of the requirements traceability problem}, in \emph{Proc.\ First IEEE
 International Conference on Requirements Engineering}, 1994, pp.~94--101,
 \href{https://doi.org/10.1109/ICRE.1994.292398}{DOI}.
-\bibitem{gsn} Assurance Case Working Group, \emph{Goal Structuring Notation
-Community Standard (Version 3)}, Safety-Critical Systems Club, 4 May 2021,
-\href{https://scsc.uk/r1386.pdf}{standard}.
+\bibitem{gsn} SCSC Assurance Case Working Group (ACWG), \emph{Goal
+Structuring Notation Community Standard, Version 3}, SCSC-141C, May 2021,
+\href{https://scsc.uk/scsc-141c}{standard}.
 \end{thebibliography}
 \end{multicols}
 }
