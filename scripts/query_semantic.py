@@ -580,8 +580,18 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
             if role.get("statement_node"):
                 declaration_routes[key].add(role["statement_node"])
 
+    artifacts = contract.get("artifacts", [])
+    if args.paper:
+        needle = args.paper.casefold()
+        artifacts = [
+            artifact
+            for artifact in artifacts
+            if needle in artifact["id"].casefold()
+            or needle in artifact["source_path"].casefold()
+        ]
+
     rows = []
-    for artifact in contract.get("artifacts", []):
+    for artifact in artifacts:
         source = ROOT / artifact["source_path"]
         if not source.is_file():
             continue
@@ -695,6 +705,7 @@ def cmd_paper_coverage(corpus: dict, args) -> int:
                 "are reached by explicit module-and-declaration citations in "
                 "each manuscript"
             ),
+            "paper_filter": args.paper or "",
             "measurement_contract": (
                 "This is citation reach, not explanatory or semantic completeness. "
                 "Authored and structural-family reaches are reported separately: "

@@ -3352,7 +3352,10 @@ consumers of it (below the rule). Quantifier prefixes are written out explicitly
 recorded against the Lean source; nothing is compressed to ``$\forall\dots$'' where the source
 specifies bounds.
 
-\begin{longtable}{p{3.4cm}p{3.6cm}p{1.3cm}p{4.1cm}p{2.0cm}}
+\begingroup
+\fontsize{6}{7.2}\selectfont
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{3.2cm}p{2.7cm}p{1.1cm}p{5.8cm}p{1.4cm}}
 \caption{The \#249 scale ladder. Every row above the rule is proved; every row below it is the
 cofinal target or a direct consumer of it.}\\
 \toprule
@@ -3450,7 +3453,10 @@ residual gauge obstruction (locked minors) & \lean{det\_residualMonomialMatrix}{
 incidence-quotient no compression & \lean{incidenceMobius\_det\_eq\_one}{IncidenceQuotientHermitePade.lean:56} & uniform & $\forall N{:}\mathbb{N}$ & mobius-mersenne\\
 
 \multicolumn{5}{l}{\emph{-- \scale{bounded} --}}\\
-Farey window $K{=}240$ denominator bound & \lean{gap\_check\_window\_1\_240\_le\_79639646646701375323355774875831053}{GapFareyBound.lean:176} & bounded & $\forall q{:}\mathbb{N},\,0{<}q{\le}79{,}639{,}646{,}646{,}701{,}375{,}323{,}355{,}774{,}875{,}831{,}053$ & farey\\
+Farey window $K{=}240$ denominator bound & \lean{gap\_check\_window\_1\_240\_le\_79639646646701375323355774875831053}{GapFareyBound.lean:176} & bounded &
+$\forall q{:}\mathbb{N},\,0{<}q{\le}$\newline
+$79{,}639{,}646{,}646{,}701{,}$\newline
+$375{,}323{,}355{,}774{,}875{,}831{,}053$ & farey\\
 denominator lower bound $S{\ne}p/q$, $q{\le}Q_0$ & \lean{tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18056} & bounded & $\forall p{:}\mathbb{Q},\,p.\mathrm{den}{\le}Q_0$ & farey\\
 foreign-residue tail-limit converter & \lean{controlledForeignProjection\_of\_tail\_limit}{LambertDiagonalEnclosure.lean:31} & bounded & $\forall H\,D$ with $2H{\le}D$, given tail-limit convergence & mobius-mersenne\\
 fixed-precision tropical no-go & \lean{fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137} & bounded & $\forall u{>}0$ (fixed precision), $\forall$ finite carry word & p-adic\\
@@ -3505,6 +3511,7 @@ mod-4 pulse survivor kill (fourfold reduction) & \lean{irrational\_totientSeries
 two-adic pulse at arbitrary depth $K$ & \lean{exists\_prime\_totient\_twoAdic\_pulse\_divisors}{TotientTwoAdicPulseBlock.lean:54} & cofinal & $\forall K{\ge}2\,\forall H{>}K\,\forall B\,\exists\text{cofinally many primes}\,p{>}B$ & p-adic\\
 two-adic pulse transfer (needs eventual integrality) & \lean{eventual\_integral\_tailDiff\_has\_cofinal\_twoAdic\_half\_pulse}{TotientTwoAdicPulseBlock.lean:327} & cofinal & $\forall K{\ge}2$, given TA-01 pulse $+$ eventual integrality & p-adic\\
 \end{longtable}
+\endgroup
 
 \noindent $^\dagger$ The source normal-form table tags \texttt{actualLcmTailDiff\_shift\_pos} \scale{bounded}
 because the window parameter $J$ is finite-range relative to $2\cdot2^a$; the exponent $a$ itself is

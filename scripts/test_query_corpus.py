@@ -400,7 +400,13 @@ def validate_connection_query_ranking() -> None:
 
 def validate_paper_semantic_citation_aliases() -> None:
     """Qualified authored roles must resolve ordinary source-level paper links."""
-    packet = semantic_query("paper-coverage")
+    packet = semantic_query(
+        "paper-coverage",
+        "--paper",
+        "erdos_243_note",
+        "--limit",
+        "64",
+    )
     by_artifact = {row["artifact"]: row for row in packet["results"]}
     reciprocal = by_artifact["erdos_243_note"]
 

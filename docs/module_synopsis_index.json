@@ -1,7 +1,7 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:6361ba60a3a92a1dc22b3c720800220c195c740f10c722822f05f99628dacfad",
+  "source_fingerprint": "sha256:3a893ec12b0a6cc13a28671016834a7cf6442069bb3fddf2d26e505ee4488b31",
   "module_count": 991,
   "synopsis_count": 796,
   "modules": [

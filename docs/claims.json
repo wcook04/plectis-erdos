@@ -10877,7 +10877,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4228
+        "line": 4229
       }
     },
     {
@@ -10889,7 +10889,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4239
+        "line": 4240
       }
     },
     {
@@ -10901,7 +10901,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4263
+        "line": 4264
       }
     },
     {
@@ -10913,7 +10913,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4254
+        "line": 4255
       }
     }
   ],

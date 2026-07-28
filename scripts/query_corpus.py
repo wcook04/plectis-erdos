@@ -3518,6 +3518,7 @@ def direct_route_search_packet(
     route: dict[str, Any],
     *,
     selection: str,
+    remaining_open_proposition_ids: tuple[str, ...] = (),
 ) -> dict[str, Any]:
     """Return one source-grounded route without paying the declaration scan."""
     missing_registered_artifacts = [
@@ -3525,14 +3526,31 @@ def direct_route_search_packet(
         for row in artifact_inventory()
         if row.get("availability") == "missing"
     ]
+    interpretation = semantic_query_interpretation(query)
+    routed_results = [route]
+    if (
+        interpretation["operator"]["id"] == "frontier"
+        and remaining_open_proposition_ids
+    ):
+        claims = load("docs/claims.json")
+        open_index = {
+            row["id"]: row
+            for row in claims["remaining_open_propositions"]
+        }
+        routed_results.extend(
+            {"kind": "open_proposition", **open_index[open_id]}
+            for open_id in remaining_open_proposition_ids
+            if open_id in open_index
+        )
+    visible_results = routed_results[:limit]
     return {
         "kind": "search",
         "authority_posture": "navigation_projection_not_proof_authority",
         "query": query,
-        "query_interpretation": semantic_query_interpretation(query),
-        "match_count": 1,
-        "results": [route][:limit],
-        "omitted_match_count": 0 if limit else 1,
+        "query_interpretation": interpretation,
+        "match_count": len(routed_results),
+        "results": visible_results,
+        "omitted_match_count": len(routed_results) - len(visible_results),
         "limit": limit,
         "routing_receipt": {
             "selection": selection,
@@ -3567,6 +3585,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             limit,
             problem_route,
             selection="exact_problem_registry_term",
+            remaining_open_proposition_ids=tuple(
+                problem_route.get("remaining_open_proposition_ids", [])
+            ),
         )
     exact_route = exact_discovery_route(query, claims)
     if exact_route is not None:
@@ -3575,6 +3596,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             limit,
             exact_route,
             selection="exact_authored_discovery_term",
+            remaining_open_proposition_ids=tuple(
+                exact_route.get("remaining_open_proposition_ids", [])
+            ),
         )
     hinted_route_ids = [
         handle
@@ -3612,6 +3636,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                     ),
                 },
                 selection="controlled_vocabulary_route",
+                remaining_open_proposition_ids=tuple(
+                    hinted_row.get("remaining_open_proposition_ids", [])
+                ),
             )
     claims_by_id = {row["id"]: row for row in claims["claims"]}
     atlas = load("docs/declaration_atlas.json")
@@ -5237,42 +5264,83 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
                 : min(limit, MAX_SEMANTIC_CELLS)
             ]
         ]
-        if operator_id == "frontier":
-            claims = load("docs/claims.json")
-            claim_index = {row["id"]: row for row in claims["claims"]}
-            route_index = {row["id"]: row for row in all_entrypoints(claims)}
-            open_index = {
-                row["id"]: row
-                for row in claims["remaining_open_propositions"]
-            }
-            boundary_ids: list[str] = []
-            for result, _ in selected_with_reasons[:3]:
-                if result["kind"] == "claim":
-                    boundary_ids.extend(
-                        claim_index[result["id"]].get(
-                            "remaining_open_proposition_ids", []
-                        )
+
+    if operator_id == "frontier":
+        claims = load("docs/claims.json")
+        claim_index = {row["id"]: row for row in claims["claims"]}
+        route_index = {row["id"]: row for row in all_entrypoints(claims)}
+        open_index = {
+            row["id"]: row
+            for row in claims["remaining_open_propositions"]
+        }
+        boundary_ids: list[str] = []
+        for result, _ in selected_with_reasons[:3]:
+            if result["kind"] == "claim":
+                boundary_ids.extend(
+                    claim_index[result["id"]].get(
+                        "remaining_open_proposition_ids", []
                     )
-                elif result["kind"] == "reading_route":
-                    boundary_ids.extend(
-                        route_index[result["id"]].get(
-                            "remaining_open_proposition_ids", []
-                        )
-                    )
-            boundary_rows = [
-                (
-                    {"kind": "open_proposition", **open_index[open_id]},
-                    "frontier_boundary_from_ranked_context",
                 )
-                for open_id in dict.fromkeys(boundary_ids)
-                if open_id in open_index
+            elif result["kind"] == "reading_route":
+                boundary_ids.extend(
+                    route_index[result["id"]].get(
+                        "remaining_open_proposition_ids", []
+                    )
+                )
+        existing_open_ids = {
+            result["id"]
+            for result, _ in selected_with_reasons
+            if result["kind"] == "open_proposition"
+        }
+        directly_routed_frontier = (
+            bool(selected_with_reasons)
+            and selected_with_reasons[0][1]
+            == "controlled_vocabulary_route"
+        )
+        boundary_rows = [
+            (
+                {"kind": "open_proposition", **open_index[open_id]},
+                "frontier_boundary_from_ranked_context",
+            )
+            for open_id in dict.fromkeys(boundary_ids)
+            if open_id in open_index and open_id not in existing_open_ids
+        ]
+        if directly_routed_frontier and existing_open_ids:
+            boundary_rows = []
+        if boundary_rows:
+            insertion_index = (
+                1
+                if directly_routed_frontier
+                else min(2, len(selected_with_reasons))
+            )
+            selected_with_reasons = [
+                *selected_with_reasons[:insertion_index],
+                *boundary_rows,
+                *selected_with_reasons[insertion_index:],
+            ][: min(limit, MAX_SEMANTIC_CELLS)]
+
+    if (
+        operator_id == "trace"
+        and not any(
+            result["kind"] == "declaration"
+            for result, _ in selected_with_reasons
+        )
+    ):
+        formal_witness = next(
+            (
+                result
+                for result in search["results"]
+                if result["kind"] == "declaration"
+            ),
+            None,
+        )
+        if formal_witness is not None:
+            selected_with_reasons = [
+                *selected_with_reasons[
+                    : max(0, min(limit, MAX_SEMANTIC_CELLS) - 1)
+                ],
+                (formal_witness, "trace_formal_declaration_witness"),
             ]
-            if boundary_rows:
-                selected_with_reasons = [
-                    *selected_with_reasons[:2],
-                    *boundary_rows,
-                    *selected_with_reasons[2:],
-                ][: min(limit, MAX_SEMANTIC_CELLS)]
 
     wants_local_theorem = (
         operator_id == "support"
