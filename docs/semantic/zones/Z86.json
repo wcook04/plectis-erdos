@@ -1,0 +1,151 @@
+{
+  "zone_id": "Z86",
+  "title": "Erdős 257 selected windows: exact one-bit extension and dependent-index coherence",
+  "problem": "257",
+  "replaces_role_zone": "Z15",
+  "concepts": [
+    {
+      "id": "z86_half_word_extension",
+      "label": "one-bit half-word extension",
+      "note": "Appending one Boolean coordinate preserves every old coordinate and exposes the new bit at the terminal index."
+    },
+    {
+      "id": "z86_support_extension_normal_form",
+      "label": "support extension normal form",
+      "note": "The extended support is either unchanged or gains exactly the new terminal integer."
+    },
+    {
+      "id": "z86_selected_word_index_coherence",
+      "label": "selected-word index coherence",
+      "note": "Dependent proofs of the same selected carry index do not change the chosen word."
+    },
+    {
+      "id": "z86_authority_boundary",
+      "label": "finite-word infrastructure boundary",
+      "note": "These are exact finite representation laws; they do not establish selected-window existence, strip admissibility, history agreement, or the half-sum conclusion."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "one_bit_extension_preserves_the_parent_and_has_an_exact_support_normal_form",
+      "canonical_statement": "PROVED EXTENSION PACKET: extending a half word by a Boolean bit agrees with the parent at every cast-successor index and equals the appended bit at the final index. Membership in its support is exactly old support membership or the new terminal index with bit true; therefore its support is unchanged for false and gains precisely N+1 for true, and restricting the extension recovers the parent word.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "z86_half_word_extension",
+        "z86_support_extension_normal_form",
+        "z86_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Fin.lastCases computation at old and final indices, followed by extensional support membership analysis and restriction along the canonical inclusion.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-local finite-function bookkeeping for appending a Boolean coordinate; no mathematical novelty claim is made.",
+      "scope_caveat": "The packet only describes a supplied extension. It does not show that the child satisfies a carry target, remains strip-admissible, or belongs to a coherent protected family.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "extendHalfWord_castSucc",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 68
+        },
+        {
+          "declaration": "extendHalfWord_last",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 73
+        },
+        {
+          "declaration": "mem_wordSupport_extendHalfWord_iff",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 80
+        },
+        {
+          "declaration": "wordSupport_extendHalfWord",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 118
+        },
+        {
+          "declaration": "restrictWord_extendHalfWord",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 127
+        }
+      ]
+    },
+    {
+      "id": "equal_selected_indices_determine_the_same_word_independently_of_bound_proofs",
+      "canonical_statement": "PROVED DEPENDENT-INDEX COHERENCE: in a SelectedHalfWindow, if two carry indices k and ℓ are equal, then the selected words are equal regardless of which proofs witness their positivity and window bounds.",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "concepts": [
+        "z86_selected_word_index_coherence",
+        "z86_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Substitute the index equality; proof irrelevance reduces the two dependent applications definitionally.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A dependent-type coherence lemma for the repository's selected-word structure.",
+      "scope_caveat": "The theorem identifies only words already selected at the same index. It asserts neither uniqueness among all admissible words nor agreement between different carry indices.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.word_eq_of_index_eq",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 617
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "extendHalfWord_castSucc",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 68,
+      "role": "representation",
+      "statement_node": "one_bit_extension_preserves_the_parent_and_has_an_exact_support_normal_form"
+    },
+    {
+      "declaration": "extendHalfWord_last",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 73,
+      "role": "representation",
+      "statement_node": "one_bit_extension_preserves_the_parent_and_has_an_exact_support_normal_form"
+    },
+    {
+      "declaration": "mem_wordSupport_extendHalfWord_iff",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 80,
+      "role": "statement",
+      "statement_node": "one_bit_extension_preserves_the_parent_and_has_an_exact_support_normal_form"
+    },
+    {
+      "declaration": "wordSupport_extendHalfWord",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 118,
+      "role": "representation",
+      "statement_node": "one_bit_extension_preserves_the_parent_and_has_an_exact_support_normal_form"
+    },
+    {
+      "declaration": "restrictWord_extendHalfWord",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 127,
+      "role": "representation",
+      "statement_node": "one_bit_extension_preserves_the_parent_and_has_an_exact_support_normal_form"
+    },
+    {
+      "declaration": "SelectedHalfWindow.word_eq_of_index_eq",
+      "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+      "line": 617,
+      "role": "engine",
+      "statement_node": "equal_selected_indices_determine_the_same_word_independently_of_bound_proofs"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "equal_selected_indices_determine_the_same_word_independently_of_bound_proofs",
+      "to": "one_bit_extension_preserves_the_parent_and_has_an_exact_support_normal_form",
+      "relation": "complements",
+      "basis": "The index-coherence lemma erases dependent proof choices when extension and restriction identities are composed across selected-window history steps."
+    }
+  ]
+}

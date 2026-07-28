@@ -1,0 +1,55 @@
+{
+  "zone_id": "Z79",
+  "title": "Erdős 257 Mersenne digit terms: summability under every binary selector",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "z79_mersenne_digit_term",
+      "label": "Binary Mersenne digit term",
+      "description": "At coordinate k, mersenneDigitTerm k b is the binary digit b(k), viewed in the reals, multiplied by the positive Mersenne weight 1/(2^(k+1)-1)."
+    },
+    {
+      "id": "z79_summable_weight_majorant",
+      "label": "Summable Mersenne-weight majorant",
+      "description": "Each binary digit term has norm at most its corresponding Mersenne weight, and the full positive-index Mersenne-weight series is summable."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "every_binary_mersenne_digit_series_is_summable",
+      "canonical_statement": "For every binary selector b : Nat -> Fin 2, the real series with kth term mersenneDigitTerm k b = b(k) * mersenneWeight (k+1) is summable. The proof is uniform in b: each digit is 0 or 1, so the term norm is bounded by mersenneWeight (k+1), whose series is already summable.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z79_mersenne_digit_term",
+        "z79_summable_weight_majorant"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Norm domination by summable_mersenneWeight via norm_mersenneDigitTerm_le and Summable.of_norm_bounded.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A direct dominated-series consequence of summability of the Mersenne weights and the 0/1 digit bound; no novelty claim is made.",
+      "scope_caveat": "This theorem establishes analytic summability only. It does not compute the sum, prove uniqueness or injectivity of the digit coding, state the one-coordinate update formula, classify an achievement set or its measure, constrain the selected support, or settle any irrationality assertion in Problem 257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "summable_mersenneDigitTerm",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 175
+        }
+      ]
+    }
+  ],
+  "intra_zone_relations": [],
+  "declaration_roles": [
+    {
+      "declaration": "summable_mersenneDigitTerm",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 175,
+      "role": "statement",
+      "statement_node": "every_binary_mersenne_digit_series_is_summable",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper cites this exact theorem as the summability control for the subsequent one-coordinate update calculation; the authored node records only the theorem's direct dominated-series content."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "zone_id": "Z78",
+  "title": "Elementary dyadic room beyond rank six",
+  "problem": "257",
+  "replaces_role_zone": "Z47",
+  "concepts": [
+    {
+      "id": "z78_rank_six_dyadic_room",
+      "label": "rank-six dyadic room bound",
+      "note": "From rank six onward, the linear lower-support budget c-2 fits inside the one-lookahead dyadic capacity 2^(c-4)."
+    },
+    {
+      "id": "z78_local_capacity_boundary",
+      "label": "local capacity versus orbit supply",
+      "note": "The arithmetic room side condition is unconditional, while the future-skip hypotheses needed by its orbit-level consumer remain separate."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "linear_predecessor_capacity_fits_inside_one_step_dyadic_room_from_rank_six",
+      "canonical_statement": "For every natural number c with c≥6, the linear quantity c-2 is at most the dyadic quantity 2^(c-4).",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "concepts": [
+        "z78_rank_six_dyadic_room",
+        "z78_local_capacity_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Natural-number induction from the exact base c=6; at each successor the right side doubles while the left side increases by one.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is an elementary linear-versus-exponential inequality formalized for the exact indices used by the local critical-capacity argument; no novelty claim is made.",
+      "scope_caveat": "The theorem only discharges the numerical room hypothesis for one step of future lookahead. It does not prove that the next greedy rank is skipped, establish the precritical suffix inequality on its own, produce cofinally many exact rows, or prove that one half belongs to the Mersenne achievement set.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "sub_two_le_two_pow_sub_four",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+          "line": 432
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "sub_two_le_two_pow_sub_four",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean",
+      "line": 432,
+      "role": "engine",
+      "statement_node": "linear_predecessor_capacity_fits_inside_one_step_dyadic_room_from_rank_six",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "The exact proposition and induction proof directly supply the one-lookahead room side condition used by halfGreedy_precriticalSuffix_lt_of_next_skip; this replaces Z47's broad zone-only substrate receipt."
+    }
+  ],
+  "intra_zone_relations": []
+}

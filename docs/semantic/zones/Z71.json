@@ -1,0 +1,66 @@
+{
+  "zone_id": "Z71",
+  "title": "Erdős 251 finite dyadic partial-sum successor laws",
+  "problem": "251",
+  "replaces_role_zone": "Z17",
+  "concepts": [
+    {
+      "id": "z71_dyadic_partial_sum_step",
+      "label": "finite dyadic successor step",
+      "note": "The exact last-term increment for ordinary and forward-difference dyadic partial sums."
+    },
+    {
+      "id": "z71_finite_only_boundary",
+      "label": "finite-sum authority boundary",
+      "note": "The identities are exact finite algebra; they supply no convergence, recurrence instantiation, or irrationality conclusion."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "dyadic_partial_sums_gain_exactly_the_new_last_term",
+      "canonical_statement": "Increasing the cutoff from n to n+1 adds exactly P(n)/2^(n+1) to the finite dyadic partial sum, and adds exactly (P(n+1)-P(n))/2^(n+1) to its forward-difference partial sum.",
+      "logical_class": "reduction_or_transport",
+      "problem": "251",
+      "concepts": [
+        "z71_dyadic_partial_sum_step",
+        "z71_finite_only_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The exact Finset sum-range successor identity applied to the two finite rational sums.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Routine finite-sum recurrences used by the subsequent exact summation-by-parts theorem.",
+      "scope_caveat": "These identities concern arbitrary finite rational sequences. They do not prove summability of the prime or prime-gap series, identify an infinite tail, or settle Erdős 251.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "dyadicPartialSumQ_succ",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 118
+        },
+        {
+          "declaration": "dyadicDifferencePartialSumQ_succ",
+          "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "line": 123
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "dyadicPartialSumQ_succ",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 118,
+      "role": "statement",
+      "statement_node": "dyadic_partial_sums_gain_exactly_the_new_last_term"
+    },
+    {
+      "declaration": "dyadicDifferencePartialSumQ_succ",
+      "module": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "line": 123,
+      "role": "statement",
+      "statement_node": "dyadic_partial_sums_gain_exactly_the_new_last_term"
+    }
+  ],
+  "intra_zone_relations": []
+}

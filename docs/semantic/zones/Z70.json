@@ -1,0 +1,278 @@
+{
+  "zone_id": "Z70",
+  "title": "Erdős 243 state coordinates, periodic iteration, and finite-horizon residue mechanics",
+  "problem": "243",
+  "replaces_role_zone": "Z17",
+  "concepts": [
+    {
+      "id": "z70_product_cleared_state",
+      "label": "product-cleared reciprocal-tail state",
+      "note": "The denominator, tail, centered-error, Sylvester-successor, and next-step-defect coordinates used by the exact integer dynamics."
+    },
+    {
+      "id": "z70_periodic_iteration",
+      "label": "period and phase-drift iteration",
+      "note": "Generic iteration laws that propagate a one-period equality or additive drift through any finite number of periods."
+    },
+    {
+      "id": "z70_forced_finite_horizon",
+      "label": "forced finite-horizon residue dynamics",
+      "note": "The polynomial forced numerator, recursively shrinking modulus, exact survival predicate, and congruence transport through division."
+    },
+    {
+      "id": "z70_authority_boundary",
+      "label": "finite-state and open-problem boundary",
+      "note": "Definitions and exact finite transports are Lean-checked; they neither construct nor exclude an infinite negative-state orbit and do not settle Erdős 243."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "product_cleared_reciprocal_tail_coordinates_are_exact",
+      "canonical_statement": "The Erdős 243 integer-state interface uses the Sylvester successor a^2-a+1, denominator update aD, tail update aC-D, centered error D-(a-1)C, and next-multiplier defect aNext-(a^2-a+1). These are exact definitions of the five product-cleared coordinates used by the rigidity proofs.",
+      "logical_class": "representation_normalisation",
+      "problem": "243",
+      "concepts": [
+        "z70_product_cleared_state",
+        "z70_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Five exact integer-valued definitions exposing the state variables and the Sylvester comparison in one coordinate system.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Product-cleared coordinates for the reciprocal-tail recurrence; no novelty claim is made for naming or defining them.",
+      "scope_caveat": "Definitions alone prove no orbit exists, no centered error vanishes, and no recurrence is eventually Sylvester.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "sylvesterNext",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 37
+        },
+        {
+          "declaration": "nextDenState",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 41
+        },
+        {
+          "declaration": "nextTailState",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 45
+        },
+        {
+          "declaration": "centeredState",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 49
+        },
+        {
+          "declaration": "sylvesterDefect",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "id": "period_relations_and_fixed_phase_drifts_iterate_exactly",
+      "canonical_statement": "If x(n+h)=x(n), then x(n+t*h)=x(n) for every t. If instead C(n+h)=C(n)+M, then C(n+t*h)=C(n)+t*M for every t. Thus both a period relation and a fixed additive phase drift iterate with an exact closed form.",
+      "logical_class": "reduction_or_transport",
+      "problem": "243",
+      "concepts": [
+        "z70_periodic_iteration",
+        "z70_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Induction on the number of periods, using associativity and distributivity of natural-number addition and multiplication.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary iteration lemmas recorded as explicit proof interfaces.",
+      "scope_caveat": "These generic laws assume the one-period equality or drift. They do not prove periodicity, produce a phase drift for an Erdős 243 orbit, or exclude an aperiodic negative branch.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "periodic_add_mul",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 461
+        },
+        {
+          "declaration": "phaseDrift_add_mul",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 476
+        }
+      ]
+    },
+    {
+      "id": "forced_negative_state_search_has_exact_finite_horizon_coordinates",
+      "canonical_statement": "At index n the normalized constant-negative update has forced numerator (n+1)a^2-(n+2)a+(n+3). A horizon of remaining exact divisions is represented by a recursively shrinking modulus, and ForcedSurvives records exactly whether those divisions succeed.",
+      "logical_class": "representation_normalisation",
+      "problem": "243",
+      "concepts": [
+        "z70_forced_finite_horizon",
+        "z70_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "A polynomial numerator, an ascending-product modulus exposed recursively, and an inductive exact-divisibility predicate.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Finite-state coordinates for the normalized constant-negative search.",
+      "scope_caveat": "ForcedSurvives describes a fixed finite number of divisions only. Finite survivors exist and do not constitute an infinite orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "forcedNumerator",
+          "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "line": 22
+        },
+        {
+          "declaration": "horizonModulus",
+          "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "line": 53
+        },
+        {
+          "declaration": "ForcedSurvives",
+          "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "line": 75
+        }
+      ]
+    },
+    {
+      "id": "forced_division_transports_congruence_through_the_shrinking_modulus",
+      "canonical_statement": "The forced numerator respects congruence. When two divisible values agree modulo d*m, exact division by the common nonzero factor d makes their quotients agree modulo m; applying this with d=index+2 gives the one-step forced-quotient transport.",
+      "logical_class": "reduction_or_transport",
+      "problem": "243",
+      "concepts": [
+        "z70_forced_finite_horizon",
+        "z70_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Polynomial congruence compatibility followed by cancellation of an exact common divisor from both values and the modulus.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary modular arithmetic and exact division.",
+      "scope_caveat": "The transport proves residue-class invariance for one finite search step; it neither supplies divisibility nor promotes finite-horizon survival to an infinite orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "forcedNumerator_modEq",
+          "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "line": 26
+        },
+        {
+          "declaration": "quotient_modEq_of_modEq_mul",
+          "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "line": 41
+        },
+        {
+          "declaration": "forcedQuotient_modEq",
+          "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "line": 85
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "sylvesterNext",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 37,
+      "role": "representation",
+      "statement_node": "product_cleared_reciprocal_tail_coordinates_are_exact"
+    },
+    {
+      "declaration": "nextDenState",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 41,
+      "role": "representation",
+      "statement_node": "product_cleared_reciprocal_tail_coordinates_are_exact"
+    },
+    {
+      "declaration": "nextTailState",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 45,
+      "role": "representation",
+      "statement_node": "product_cleared_reciprocal_tail_coordinates_are_exact"
+    },
+    {
+      "declaration": "centeredState",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 49,
+      "role": "representation",
+      "statement_node": "product_cleared_reciprocal_tail_coordinates_are_exact"
+    },
+    {
+      "declaration": "sylvesterDefect",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 53,
+      "role": "representation",
+      "statement_node": "product_cleared_reciprocal_tail_coordinates_are_exact"
+    },
+    {
+      "declaration": "periodic_add_mul",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 461,
+      "role": "statement",
+      "statement_node": "period_relations_and_fixed_phase_drifts_iterate_exactly"
+    },
+    {
+      "declaration": "phaseDrift_add_mul",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 476,
+      "role": "statement",
+      "statement_node": "period_relations_and_fixed_phase_drifts_iterate_exactly"
+    },
+    {
+      "declaration": "forcedNumerator",
+      "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+      "line": 22,
+      "role": "representation",
+      "statement_node": "forced_negative_state_search_has_exact_finite_horizon_coordinates"
+    },
+    {
+      "declaration": "forcedNumerator_modEq",
+      "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+      "line": 26,
+      "role": "engine",
+      "statement_node": "forced_division_transports_congruence_through_the_shrinking_modulus"
+    },
+    {
+      "declaration": "quotient_modEq_of_modEq_mul",
+      "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+      "line": 41,
+      "role": "engine",
+      "statement_node": "forced_division_transports_congruence_through_the_shrinking_modulus"
+    },
+    {
+      "declaration": "horizonModulus",
+      "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+      "line": 53,
+      "role": "representation",
+      "statement_node": "forced_negative_state_search_has_exact_finite_horizon_coordinates"
+    },
+    {
+      "declaration": "ForcedSurvives",
+      "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+      "line": 75,
+      "role": "concept",
+      "statement_node": "forced_negative_state_search_has_exact_finite_horizon_coordinates"
+    },
+    {
+      "declaration": "forcedQuotient_modEq",
+      "module": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+      "line": 85,
+      "role": "engine",
+      "statement_node": "forced_division_transports_congruence_through_the_shrinking_modulus"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "forced_division_transports_congruence_through_the_shrinking_modulus",
+      "to": "forced_negative_state_search_has_exact_finite_horizon_coordinates",
+      "relation": "generated_by",
+      "basis": "The exact one-step congruence transport is obtained by applying polynomial compatibility and quotient cancellation to the forced numerator and the first visible factor of the recursive horizon modulus."
+    },
+    {
+      "from": "period_relations_and_fixed_phase_drifts_iterate_exactly",
+      "to": "product_cleared_reciprocal_tail_coordinates_are_exact",
+      "relation": "complements",
+      "basis": "The product-cleared coordinates describe one update, while the generic iteration laws package the period and additive-drift hypotheses used later in the negative-periodic branch; the relation asserts no periodicity of an actual orbit."
+    }
+  ]
+}

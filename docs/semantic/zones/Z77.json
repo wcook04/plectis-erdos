@@ -1,0 +1,162 @@
+{
+  "zone_id": "Z77",
+  "title": "Erdős 243 divisibility-growth, primitive reduction, and geometric-rate engines",
+  "problem": "243",
+  "concepts": [
+    {
+      "id": "z77_strict_growth_accounting",
+      "label": "strict divisibility-growth accounting",
+      "note": "Exact local doubling, interval additivity, and event detection for the strict-growth counter."
+    },
+    {
+      "id": "z77_primitive_tail_reduction",
+      "label": "primitive tail reduction",
+      "note": "Reduction by the exact positive gcd yields a coprime numerator-denominator pair."
+    },
+    {
+      "id": "z77_geometric_rate_domination",
+      "label": "eventual geometric-rate domination",
+      "note": "A strictly larger positive exponential base eventually dominates arbitrary fixed natural prefactors."
+    },
+    {
+      "id": "z77_engine_boundary",
+      "label": "proof-engine boundary",
+      "note": "These are reusable arithmetic and asymptotic engines consumed by stronger authored nodes; they carry no standalone claim that Erdős 243 is solved."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "strict_divisibility_growth_has_exact_binary_and_interval_accounting",
+      "canonical_statement": "A strict step x<y in a natural divisibility chain x|y forces 2x<=y. The strictGrowthCount splits exactly across an interval boundary, and any strict step before n makes the cumulative count at n positive.",
+      "logical_class": "reduction_or_transport",
+      "problem": "243",
+      "concepts": [
+        "z77_strict_growth_accounting",
+        "z77_engine_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Factorization of a strict multiple, recursion of strictGrowthCount, and exact interval decomposition.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary combinatorial bookkeeping for positive divisibility chains.",
+      "scope_caveat": "The lemmas count and price strict events once a divisibility chain is supplied. They do not prove that the tail-gcd chain has finitely or infinitely many such events.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_mul_le_of_dvd_of_lt",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1206
+        },
+        {
+          "declaration": "strictGrowthCount_add",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1281
+        },
+        {
+          "declaration": "strictGrowthCount_pos_of_event",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1300
+        }
+      ]
+    },
+    {
+      "id": "exact_tail_gcd_reduction_produces_primitive_coordinates",
+      "canonical_statement": "If the tail numerator C is positive, dividing C and D by their exact gcd produces coprime reducedTailNumerator and reducedTailDenominator coordinates.",
+      "logical_class": "representation_normalisation",
+      "problem": "243",
+      "concepts": [
+        "z77_primitive_tail_reduction",
+        "z77_engine_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The standard coprimality of two positive natural numbers after division by their gcd.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Canonical primitive normalization of a rational numerator-denominator pair.",
+      "scope_caveat": "Primitivity is a coordinate fact. It does not bound the next gcd-growth factor or exclude recurrent cancellation.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "reducedTail_coprime",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1474
+        }
+      ]
+    },
+    {
+      "id": "a_larger_positive_exponential_base_eventually_beats_fixed_prefactors",
+      "canonical_statement": "For natural U,V,A,B with V>0, B>0, and A<B, there is a cutoff M after which U*A^m < V*B^m for every m>=M.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "243",
+      "concepts": [
+        "z77_geometric_rate_domination",
+        "z77_engine_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The real ratio (A/B)^m tends to zero when 0<=A/B<1, followed by denominator clearing back to natural arithmetic.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Standard eventual domination of geometric sequences with different positive bases.",
+      "scope_caveat": "The theorem is a generic asymptotic comparison. It does not establish that the Erdős 243 tail satisfies either exponential bound consumed by later arguments.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "eventually_const_mul_pow_lt_const_mul_pow",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1978
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "two_mul_le_of_dvd_of_lt",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1206,
+      "role": "engine",
+      "statement_node": "strict_divisibility_growth_has_exact_binary_and_interval_accounting"
+    },
+    {
+      "declaration": "strictGrowthCount_add",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1281,
+      "role": "engine",
+      "statement_node": "strict_divisibility_growth_has_exact_binary_and_interval_accounting"
+    },
+    {
+      "declaration": "strictGrowthCount_pos_of_event",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1300,
+      "role": "engine",
+      "statement_node": "strict_divisibility_growth_has_exact_binary_and_interval_accounting"
+    },
+    {
+      "declaration": "reducedTail_coprime",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1474,
+      "role": "representation",
+      "statement_node": "exact_tail_gcd_reduction_produces_primitive_coordinates"
+    },
+    {
+      "declaration": "eventually_const_mul_pow_lt_const_mul_pow",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1978,
+      "role": "engine",
+      "statement_node": "a_larger_positive_exponential_base_eventually_beats_fixed_prefactors"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "strict_divisibility_growth_has_exact_binary_and_interval_accounting",
+      "to": "a_larger_positive_exponential_base_eventually_beats_fixed_prefactors",
+      "relation": "complements",
+      "basis": "Strict-growth accounting converts repeated divisibility events into powers of two, while geometric domination compares those powers with a larger asymptotic rate; neither theorem supplies the chain or rate hypotheses of the other."
+    },
+    {
+      "from": "exact_tail_gcd_reduction_produces_primitive_coordinates",
+      "to": "strict_divisibility_growth_has_exact_binary_and_interval_accounting",
+      "relation": "complements",
+      "basis": "Primitive tail coordinates isolate the exact gcd whose strict growth is counted; the relation asserts only the intended coordinate interface, not a growth theorem."
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "zone_id": "Z69",
+  "title": "Erdős 269 running-LCM coordinates: prefix witnesses, jump channels, finite fibres, shells, and residue escape",
+  "problem": "269",
+  "replaces_role_zone": "Z17",
+  "concepts": [
+    {
+      "id": "z69_three_prime_running_lcm_coordinates",
+      "label": "three-prime running-LCM coordinates",
+      "note": "Smooth lattice values, logarithmic height, reciprocal kernel, actual prefix, and literal prefix LCM."
+    },
+    {
+      "id": "z69_extremal_prefix_witnesses",
+      "label": "extremal prefix witnesses",
+      "note": "Divisibility of every prefix value into the height and occurrence of each maximal pure-power component."
+    },
+    {
+      "id": "z69_logarithmic_cell",
+      "label": "three-prime logarithmic cell",
+      "note": "Equality of all three integer-logarithm coordinates between two cutoffs."
+    },
+    {
+      "id": "z69_finite_jump_channels",
+      "label": "finite pure-power jump channels",
+      "note": "The positive prime-power channels, their disjoint union, and the unique common origin."
+    },
+    {
+      "id": "z69_height_fibre_coordinates",
+      "label": "finite height-fibre coordinates",
+      "note": "A finite exponent box partitioned by the actual running-LCM height of each lattice point."
+    },
+    {
+      "id": "z69_variable_base_tail_step",
+      "label": "variable-base tail step",
+      "note": "The one-step integer orbit coordinate base*(state-digit)."
+    },
+    {
+      "id": "z69_filtered_smooth_shell",
+      "label": "filtered smooth exponent shell",
+      "note": "Exponent triples in a bounded box whose smooth values lie in a half-open interval."
+    },
+    {
+      "id": "z69_sorted_quadratic_budget",
+      "label": "sorted quadratic budget",
+      "note": "The denominator-free arithmetic inequality underlying the quadratic shell multiplicity bound."
+    },
+    {
+      "id": "z69_residue_escape_window",
+      "label": "residue escape window",
+      "note": "A canonical positive residue lying above a proposed state bound and at most the modulus."
+    },
+    {
+      "id": "z69_authority_boundary",
+      "label": "three-prime authority boundary",
+      "note": "These declarations provide finite coordinates and elementary receipts only; the three-prime irrationality problem, rationality-to-carry identification, infinite ordering, and cofinal escape producer remain open."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "canonical_statement": "The three-prime coordinate system consists of smooth3Val p q r i j k = p^i q^j r^k, the logarithmic height p^(log_p x) q^(log_q x) r^(log_r x), its reciprocal rational kernel at a smooth lattice point, the logarithmically bounded and cutoff-filtered exponent prefix, and the literal LCM of that prefix. Every value in the actual prefix divides the height, and for x nonzero each of the three maximal pure-power components occurs in the prefix.",
+      "logical_class": "representation_normalisation",
+      "problem": "269",
+      "concepts": [
+        "z69_three_prime_running_lcm_coordinates",
+        "z69_extremal_prefix_witnesses",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact definitions, logarithmic exponent bounds for each filtered prefix point, and Nat.pow_log_le_self for the three pure-power witnesses.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The coordinate system is the finite three-prime restriction of the classical prime-power description of an LCM; no novelty claim is made.",
+      "scope_caveat": "This node records the coordinates and the two divisibility directions' local witnesses, not the already-authored equality theorem itself. It proves no infinite reindexing, convergence, irrationality, or transcendence statement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "smooth3Val",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 31
+        },
+        {
+          "declaration": "threePrimeHeight",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 36
+        },
+        {
+          "declaration": "threePrimeKernelQ",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 40
+        },
+        {
+          "declaration": "smoothPrefixExponents",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 46
+        },
+        {
+          "declaration": "smoothPrefixLcm",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 53
+        },
+        {
+          "declaration": "smooth3Val_dvd_threePrimeHeight_of_mem",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 59
+        },
+        {
+          "declaration": "pureFirst_mem_smoothPrefixExponents",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 84
+        },
+        {
+          "declaration": "pureSecond_mem_smoothPrefixExponents",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 97
+        },
+        {
+          "declaration": "pureThird_mem_smoothPrefixExponents",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 110
+        }
+      ]
+    },
+    {
+      "id": "same_three_prime_log_cell_is_exact_coordinate_equality",
+      "canonical_statement": "SameThreePrimeLogCell p q r x y means exactly that log_p x=log_p y, log_q x=log_q y, and log_r x=log_r y.",
+      "logical_class": "representation_normalisation",
+      "problem": "269",
+      "concepts": [
+        "z69_three_prime_running_lcm_coordinates",
+        "z69_logarithmic_cell",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact conjunction of the three integer-logarithm coordinate equalities.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary cell coordinate for a piecewise-constant product of pure powers.",
+      "scope_caveat": "The definition alone states no constancy theorem and no ordering of cells. The height, LCM, and kernel constancy theorems remain separately authored in Z17.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "SameThreePrimeLogCell",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "id": "finite_prime_power_channels_are_disjoint_and_share_only_the_origin",
+      "canonical_statement": "For a prime p, positivePrimePowers p count is the image of exponents 1 through count under e↦p^e, so it excludes 1. Positive-power channels of two distinct primes are disjoint. threePrimePositiveJumpSet is the union of the first count positive powers in the p, q, and r channels, and threePrimeJumpSetWithOrigin adjoins the single common origin 1.",
+      "logical_class": "representation_normalisation",
+      "problem": "269",
+      "concepts": [
+        "z69_finite_jump_channels",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Finite-set images of positive exponents and uniqueness of powers of distinct prime bases.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Finite unique-factorisation bookkeeping for three prime-power channels.",
+      "scope_caveat": "This is a finite jump-coordinate system. It neither orders the union, passes to all powers, nor proves any statement about the infinite running-LCM series; the already-authored cardinality theorems remain in Z17.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "positivePrimePowers",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 204
+        },
+        {
+          "declaration": "one_not_mem_positivePrimePowers",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 219
+        },
+        {
+          "declaration": "positivePrimePowers_disjoint",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 229
+        },
+        {
+          "declaration": "threePrimePositiveJumpSet",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 243
+        },
+        {
+          "declaration": "threePrimeJumpSetWithOrigin",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 273
+        }
+      ]
+    },
+    {
+      "id": "finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel",
+      "canonical_statement": "smoothExponentBox hp hq hr is the rectangular box 0≤i≤hp, 0≤j≤hq, 0≤k≤hr. smoothPointHeight maps a triple to the three-prime height of its smooth value, and smoothHeightFiber p q r hp hq hr H filters the box to the triples whose point height is exactly H.",
+      "logical_class": "representation_normalisation",
+      "problem": "269",
+      "concepts": [
+        "z69_three_prime_running_lcm_coordinates",
+        "z69_height_fibre_coordinates",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Finite rectangular product and exact filtering by the running-height map.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard finite fibre coordinates for regrouping a finite sum.",
+      "scope_caveat": "These definitions form a finite full-box coordinate system, not the cutoff-filtered prefix and not an infinite series. They do not establish the already-authored fibre-sum normal form by themselves.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "smoothExponentBox",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 368
+        },
+        {
+          "declaration": "smoothPointHeight",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 373
+        },
+        {
+          "declaration": "smoothHeightFiber",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 377
+        }
+      ]
+    },
+    {
+      "id": "tail_state_step_is_the_variable_base_integer_orbit_coordinate",
+      "canonical_statement": "tailStateStep base digit state is the integer base*(state-digit), the one-step coordinate used for the variable-base tail orbit.",
+      "logical_class": "representation_normalisation",
+      "problem": "269",
+      "concepts": [
+        "z69_variable_base_tail_step",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact integer affine-step definition.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary affine recurrence coordinate.",
+      "scope_caveat": "No orbit is constructed or analysed here, and this definition is not identified with the actual #269 rational tail. The rationality-to-carry instantiation remains open.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tailStateStep",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 487
+        }
+      ]
+    },
+    {
+      "id": "smooth_exponent_shell_is_the_actual_interval_filtered_box",
+      "canonical_statement": "smoothExponentShell p q r lo hi hp hq hr is the finite exponent box with bounds hp,hq,hr filtered to the triples whose smooth values lie in the half-open interval [lo,hi).",
+      "logical_class": "representation_normalisation",
+      "problem": "269",
+      "concepts": [
+        "z69_three_prime_running_lcm_coordinates",
+        "z69_filtered_smooth_shell",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Finite rectangular exponent ranges and an exact lower-and-upper interval filter on smooth3Val.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard finite smooth-number shell coordinate.",
+      "scope_caveat": "The definition supplies no cardinality or tail estimate. Its bases and coordinate bounds are ordered parameters; the shell is not invariant under silently relabelling them.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "smoothExponentShell",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 500
+        }
+      ]
+    },
+    {
+      "id": "sorted_three_coordinate_heights_obey_the_exact_quadratic_budget",
+      "canonical_statement": "If a≤b≤c and a+b+c=j, then 9(a+1)(b+1)≤(j+3)^2.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "269",
+      "concepts": [
+        "z69_sorted_quadratic_budget",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "From a≤b≤c derive a+2b≤j; with b=a+d, the remaining gap is the nonnegative product d(3a+4d+3).",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary arithmetic-geometric comparison for three sorted coordinates.",
+      "scope_caveat": "Sorting is a theorem hypothesis, not a free relabelling of an asymmetric smooth shell. This arithmetic inequality alone neither bounds a shell nor estimates an infinite tail.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "sorted_pair_quadratic",
+          "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "line": 629
+        }
+      ]
+    },
+    {
+      "id": "residue_escape_window_is_the_strict_canonical_range_predicate",
+      "canonical_statement": "ResidueEscapesWindow C bound residue means exactly bound<residue≤C: the proposed residue lies strictly above the bounded-state window while remaining in the canonical positive residue range through the modulus.",
+      "logical_class": "representation_normalisation",
+      "problem": "269",
+      "concepts": [
+        "z69_residue_escape_window",
+        "z69_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact conjunction of strict escape above the bound and membership in the positive residue interval ending at C.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary modular-window predicate used by the finite contradiction.",
+      "scope_caveat": "The predicate does not produce an escaping residue. The denominator-dependent cofinal local-window escape theorem and the identification of the actual rational tail with a bounded carry remain open.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ResidueEscapesWindow",
+          "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+          "line": 65
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "smooth3Val",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 31,
+      "role": "representation",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct representation evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "threePrimeHeight",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 36,
+      "role": "representation",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct representation evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "threePrimeKernelQ",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 40,
+      "role": "representation",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct representation evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "smoothPrefixExponents",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 46,
+      "role": "representation",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct representation evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "smoothPrefixLcm",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 53,
+      "role": "representation",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct representation evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "smooth3Val_dvd_threePrimeHeight_of_mem",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 59,
+      "role": "statement",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct divisibility evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the Z17-routed structural-only receipt."
+    },
+    {
+      "declaration": "pureFirst_mem_smoothPrefixExponents",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 84,
+      "role": "statement",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct first-coordinate prefix-witness evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the Z17-routed structural-only receipt."
+    },
+    {
+      "declaration": "pureSecond_mem_smoothPrefixExponents",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 97,
+      "role": "statement",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct second-coordinate prefix-witness evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the Z17-routed structural-only receipt."
+    },
+    {
+      "declaration": "pureThird_mem_smoothPrefixExponents",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 110,
+      "role": "statement",
+      "statement_node": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct third-coordinate prefix-witness evidence for Z69::smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses; replaces the Z17-routed structural-only receipt."
+    },
+    {
+      "declaration": "SameThreePrimeLogCell",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 163,
+      "role": "concept",
+      "statement_node": "same_three_prime_log_cell_is_exact_coordinate_equality",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct concept evidence for Z69::same_three_prime_log_cell_is_exact_coordinate_equality; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "positivePrimePowers",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 204,
+      "role": "representation",
+      "statement_node": "finite_prime_power_channels_are_disjoint_and_share_only_the_origin",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct channel representation evidence for Z69::finite_prime_power_channels_are_disjoint_and_share_only_the_origin; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "one_not_mem_positivePrimePowers",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 219,
+      "role": "statement",
+      "statement_node": "finite_prime_power_channels_are_disjoint_and_share_only_the_origin",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct origin-exclusion evidence for Z69::finite_prime_power_channels_are_disjoint_and_share_only_the_origin; replaces the Z17-routed structural-only receipt."
+    },
+    {
+      "declaration": "positivePrimePowers_disjoint",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 229,
+      "role": "statement",
+      "statement_node": "finite_prime_power_channels_are_disjoint_and_share_only_the_origin",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct cross-channel disjointness evidence for Z69::finite_prime_power_channels_are_disjoint_and_share_only_the_origin; replaces the Z17-routed structural-only receipt."
+    },
+    {
+      "declaration": "threePrimePositiveJumpSet",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 243,
+      "role": "representation",
+      "statement_node": "finite_prime_power_channels_are_disjoint_and_share_only_the_origin",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct union representation evidence for Z69::finite_prime_power_channels_are_disjoint_and_share_only_the_origin; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "threePrimeJumpSetWithOrigin",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 273,
+      "role": "representation",
+      "statement_node": "finite_prime_power_channels_are_disjoint_and_share_only_the_origin",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct origin-adjoined representation evidence for Z69::finite_prime_power_channels_are_disjoint_and_share_only_the_origin; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "smoothExponentBox",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 368,
+      "role": "representation",
+      "statement_node": "finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct finite-domain representation evidence for Z69::finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "smoothPointHeight",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 373,
+      "role": "representation",
+      "statement_node": "finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct height-map representation evidence for Z69::finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "smoothHeightFiber",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 377,
+      "role": "representation",
+      "statement_node": "finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct fibre representation evidence for Z69::finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "tailStateStep",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 487,
+      "role": "representation",
+      "statement_node": "tail_state_step_is_the_variable_base_integer_orbit_coordinate",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct recurrence representation evidence for Z69::tail_state_step_is_the_variable_base_integer_orbit_coordinate; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "smoothExponentShell",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 500,
+      "role": "representation",
+      "statement_node": "smooth_exponent_shell_is_the_actual_interval_filtered_box",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct shell representation evidence for Z69::smooth_exponent_shell_is_the_actual_interval_filtered_box; replaces the broad Z17 zone-only receipt."
+    },
+    {
+      "declaration": "sorted_pair_quadratic",
+      "module": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+      "line": 629,
+      "role": "statement",
+      "statement_node": "sorted_three_coordinate_heights_obey_the_exact_quadratic_budget",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct arithmetic evidence for Z69::sorted_three_coordinate_heights_obey_the_exact_quadratic_budget; replaces the Z17-routed structural-only receipt."
+    },
+    {
+      "declaration": "ResidueEscapesWindow",
+      "module": "ErdosProblems/Erdos269/ResidueEscape.lean",
+      "line": 65,
+      "role": "concept",
+      "statement_node": "residue_escape_window_is_the_strict_canonical_range_predicate",
+      "replaces_zone": "Z17",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Direct concept evidence for Z69::residue_escape_window_is_the_strict_canonical_range_predicate; replaces the broad Z17 zone-only receipt."
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "same_three_prime_log_cell_is_exact_coordinate_equality",
+      "to": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "relation": "generated_by",
+      "basis": "The cell predicate freezes exactly the three logarithmic coordinates used by threePrimeHeight and therefore by the reciprocal kernel coordinate."
+    },
+    {
+      "from": "finite_prime_power_channels_are_disjoint_and_share_only_the_origin",
+      "to": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "relation": "complements",
+      "basis": "The prefix coordinates describe the running value at a cutoff; the channel coordinates describe the finite set of pure-power events at which those logarithmic maxima can change."
+    },
+    {
+      "from": "finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel",
+      "to": "smooth_prefix_coordinates_carry_the_exact_extremal_divisibility_witnesses",
+      "relation": "generated_by",
+      "basis": "The point-height and fibre definitions apply the same smooth-value and logarithmic-height coordinates to a finite rectangular exponent domain."
+    },
+    {
+      "from": "finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel",
+      "to": "same_three_prime_log_cell_is_exact_coordinate_equality",
+      "relation": "complements",
+      "basis": "Log cells explain why several lattice points can share a height, while fibres collect all points with one attained height without asserting that each fibre is a single cell."
+    },
+    {
+      "from": "smooth_exponent_shell_is_the_actual_interval_filtered_box",
+      "to": "finite_height_fibres_are_the_exact_coordinates_for_regrouping_the_kernel",
+      "relation": "complements",
+      "basis": "Both are finite exponent-box filters: fibres filter by exact running height, whereas shells filter smooth values by a half-open multiplicative interval."
+    },
+    {
+      "from": "sorted_three_coordinate_heights_obey_the_exact_quadratic_budget",
+      "to": "smooth_exponent_shell_is_the_actual_interval_filtered_box",
+      "relation": "complements",
+      "basis": "The arithmetic inequality supplies the denominator-free final budget used after a short shell has been injected into its two smallest coordinate ranges."
+    },
+    {
+      "from": "residue_escape_window_is_the_strict_canonical_range_predicate",
+      "to": "tail_state_step_is_the_variable_base_integer_orbit_coordinate",
+      "relation": "complements",
+      "basis": "The affine step is the local recurrence coordinate, while the escape predicate is the finite modular condition consumed only after a bounded actual carry and an accumulated window have been supplied."
+    }
+  ]
+}

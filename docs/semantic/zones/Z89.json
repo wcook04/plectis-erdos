@@ -1,0 +1,589 @@
+{
+  "zone_id": "Z89",
+  "title": "Free-N totient walk: affine residue dynamics, outer-band escape, and the coarse-model barrier",
+  "problem": "249",
+  "replaces_role_zone": "Z21",
+  "concepts": [
+    {
+      "id": "z89_walk_residue",
+      "label": "free-N walk residue",
+      "note": "The window discrepancy reduced to the canonical interval modulo 2^L, together with its complementary codistance."
+    },
+    {
+      "id": "z89_affine_doubling_recurrence",
+      "label": "affine doubling recurrence",
+      "note": "Advancing N doubles the current residue and adds one incoming totient difference modulo 2^L."
+    },
+    {
+      "id": "z89_totient_step_budget",
+      "label": "two-sided totient step budget",
+      "note": "The interval for each incoming totient difference derived from elementary upper and lower bounds on Euler's totient."
+    },
+    {
+      "id": "z89_failure_arc",
+      "label": "certified-kill failure arc",
+      "note": "The two edge intervals of radius N+h+L+2 in which a reduced discrepancy fails the certified-kill predicate."
+    },
+    {
+      "id": "z89_outer_band_escape",
+      "label": "outer-band escape",
+      "note": "Conditional escape from the thin upper and lower edge bands under an explicit no-wrap room inequality."
+    },
+    {
+      "id": "z89_coarse_admissible_run",
+      "label": "coarse admissible walk model",
+      "note": "Abstract integer walks retaining only the affine recurrence, the elementary step budget, and failure-arc trapping."
+    },
+    {
+      "id": "z89_permanent_model_traps",
+      "label": "permanent coarse-model traps",
+      "note": "Explicit linear and constant admissible walks that remain inside the coarse failure arc forever."
+    },
+    {
+      "id": "z89_finite_nonavacuity",
+      "label": "kernel-checked non-vacuity fixtures",
+      "note": "Two concrete totient-walk cells satisfying the lower- and upper-band hypotheses and realizing the predicted escape."
+    },
+    {
+      "id": "z89_authority_boundary",
+      "label": "coarse-model authority boundary",
+      "note": "The positive results are conditional outer-band consumers and the negative results concern an abstract size-only model; neither settles the actual global totient walk or Erdős #249."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description",
+      "canonical_statement": "PROVED WALK COORDINATES: the residue rho_N=walkRes h N L is the canonical representative with 0≤rho_N<2^L, its codistance satisfies rho_N=2^L-walkCo h N L, and advancing N gives rho_(N+1)=(2*rho_N+walkStep h N L) mod 2^L. A certified kill fails exactly when rho_N lies in one of the two edge intervals of radius N+h+L+2.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z89_walk_residue",
+        "z89_affine_doubling_recurrence",
+        "z89_failure_arc",
+        "z89_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Canonical remainder bounds and the exact shifted window-discrepancy congruence give the recurrence; unfolding certifiedKill gives the two-edge failure disjunction.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A project-specific coordinate normalization of the existing window-discrepancy recurrence; no novelty or irrationality claim is made.",
+      "scope_caveat": "These identities describe the orbit and its failure set but do not show that any orbit enters an escape band, leaves the failure arc, or yields a cofinal supply of certified kills.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "walkRes_nonneg",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 147
+        },
+        {
+          "declaration": "walkRes_lt",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 150
+        },
+        {
+          "declaration": "walkRes_eq",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 153
+        },
+        {
+          "declaration": "walkRes_succ",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 159
+        },
+        {
+          "declaration": "not_certifiedKill_iff",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 221
+        }
+      ]
+    },
+    {
+      "id": "elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget",
+      "canonical_statement": "PROVED STEP BUDGET: Euler's totient satisfies 2≤phi(n) for n≥3. Consequently, whenever 2≤N+L, walkStep h N L lies between 2-(N+L) and N+h+L-2, and at every shifted basepoint N+j it lies between 2-(N+j+L) and N+j+h+L-2.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z89_totient_step_budget",
+        "z89_affine_doubling_recurrence",
+        "z89_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Combine positivity and evenness of phi(n) above two with the strict bound phi(n)<n, then cast the resulting inequalities to integers and shift N along the run.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary bounds for Euler's totient specialized to the incoming difference of this walk.",
+      "scope_caveat": "The interval is the complete information used by the later coarse model, but actual totient differences satisfy additional arithmetic constraints such as parity. The budget alone does not determine an actual orbit or force escape.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_le_totient",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 170
+        },
+        {
+          "declaration": "walkStep_le",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 176
+        },
+        {
+          "declaration": "walkStep_ge",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 191
+        },
+        {
+          "declaration": "real_step_budget",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 206
+        }
+      ]
+    },
+    {
+      "id": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "canonical_statement": "PROVED CONDITIONAL ESCAPE ENGINE: under the explicit no-wrap room inequality, a failing residue in the upper band N+L≤rho_N≤N+h+L+2 forces a certified kill within K steps whenever h+3<2^(K-1), hence within log_2(h+3)+1 steps in the logarithmic form. Dually, codistance N+h+L≤walkCo≤N+h+L+2 forces a certified kill at N+1 or N+2.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z89_walk_residue",
+        "z89_totient_step_budget",
+        "z89_failure_arc",
+        "z89_outer_band_escape",
+        "z89_authority_boundary"
+      ],
+      "open_antecedents": [
+        "For a general upper-band application, the room inequality and the initial membership N+L≤walkRes h N L≤N+h+L+2.",
+        "For a general lower-band application, the corresponding room inequality and N+h+L≤walkCo h N L≤N+h+L+2."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "While failures continue, induction through the affine recurrence and two-sided step budget makes excess above the appropriate trapping radius grow by at least a factor of two, whereas the failure radius grows only linearly.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked escape criteria for this project-specific residue walk; no claim of a global orbit theorem or mathematical novelty is made.",
+      "scope_caveat": "The conclusions apply only after the stated room and outer-band hypotheses are proved. They cover neither the interior failure residues nor every basepoint, and therefore provide no global bound on failures and no proof of irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "upperBand_run",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 233
+        },
+        {
+          "declaration": "certifiedKill_of_upperBand",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 282
+        },
+        {
+          "declaration": "certifiedKill_of_upperBand_log",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 303
+        },
+        {
+          "declaration": "lowerBand_run",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 321
+        },
+        {
+          "declaration": "certifiedKill_of_lowerBand",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 388
+        }
+      ]
+    },
+    {
+      "id": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "canonical_statement": "PROVED COARSE-MODEL BARRIER: AdmissibleRun contains an upper linear walk starting at N+L-1, a lower linear walk starting at codistance N+h+L-1, and every constant walk c in the interior interval -(N+h+L-2)≤c≤N+L-2 with step -c. Thus this abstract recurrence-plus-budget model has walks that fail forever, and its two escape thresholds are sharp to one unit.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z89_totient_step_budget",
+        "z89_coarse_admissible_run",
+        "z89_permanent_model_traps",
+        "z89_outer_band_escape",
+        "z89_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Choose explicit affine linear steps saturating the lower or upper budget, or choose the constant fixed point a_j=c with d_j=-c, and verify the AdmissibleRun fields directly.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Explicit countermodels to the coarse interval argument formalized in Lean; no novelty claim is made.",
+      "scope_caveat": "AdmissibleRun omits parity and finer arithmetic of actual totient differences. The exhibited walks are not proved to be genuine totient orbits; in particular the threshold witnesses use odd steps. The barrier exhausts a size-only proof strategy, not Erdős #249 and not every strengthened walk model.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "trap_upper",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 427
+        },
+        {
+          "declaration": "trap_lower",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 446
+        },
+        {
+          "declaration": "trap_interior",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 469
+        },
+        {
+          "declaration": "no_absolute_bound_on_consecutive_failures",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 489
+        },
+        {
+          "declaration": "thresholds_are_sharp",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 501
+        }
+      ]
+    },
+    {
+      "id": "the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc",
+      "canonical_statement": "PROVED COVERAGE ACCOUNTING: the upper escape band contains h+3 integers and the lower escape band contains 3, for h+6 covered residues in total. For every multiplier M there exists a basepoint N such that the full failure-arc count 2*(N+h+L)+5 exceeds M*(h+6).",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z89_failure_arc",
+        "z89_outer_band_escape",
+        "z89_permanent_model_traps",
+        "z89_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Evaluate the two integer interval cardinalities exactly, then choose the explicit witness N=M*(h+6) for the comparison inequality.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary finite interval counting and an explicit existential inequality; no asymptotic novelty claim is made.",
+      "scope_caveat": "Despite its Lean name, coverage_fraction_tends_to_zero proves one existential basepoint for each multiplier. It does not formalize a limit, an eventual-for-all statement, or any classification of actual totient-walk residues.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "upperBand_card",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 514
+        },
+        {
+          "declaration": "lowerBand_card",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 520
+        },
+        {
+          "declaration": "coverage_fraction_tends_to_zero",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 530
+        }
+      ]
+    },
+    {
+      "id": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "canonical_statement": "PROVED FINITE NON-VACUITY: at (h,N,L)=(9,9,10), walkCo=30, the lower-band theorem applies, the starting cell fails, and certifiedKill holds at N=10. At (30,1,10), walkRes=14, the upper-band theorem applies with K=7, the cells N=1 and N=2 fail, and certifiedKill holds at N=3.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z89_walk_residue",
+        "z89_outer_band_escape",
+        "z89_finite_nonavacuity",
+        "z89_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel evaluation of the two exact residues and certifiedKill truth values, together with specialization of the general lower- and upper-band escape theorems.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Two finite checked fixtures for the project-specific walk criteria; no novelty or extrapolation claim is made.",
+      "scope_caveat": "The examples show only that both conditional engines have genuine inputs and nontrivial realizations. Two cells do not supply a uniform, cofinal, or density statement and do not prove irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "lowerBand_instance_data",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 537
+        },
+        {
+          "declaration": "lowerBand_instance",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 544
+        },
+        {
+          "declaration": "lowerBand_instance_realised",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 553
+        },
+        {
+          "declaration": "upperBand_instance_data",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 560
+        },
+        {
+          "declaration": "upperBand_instance",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 567
+        },
+        {
+          "declaration": "upperBand_instance_realised",
+          "module": "ErdosProblems/Half/FreeWalk1.lean",
+          "line": 576
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "walkRes_nonneg",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 147,
+      "role": "statement",
+      "statement_node": "the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description",
+      "routing_basis": "Direct canonical-residue lower-bound evidence for Z89::the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description."
+    },
+    {
+      "declaration": "walkRes_lt",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 150,
+      "role": "statement",
+      "statement_node": "the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description",
+      "routing_basis": "Direct canonical-residue upper-bound evidence for Z89::the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description."
+    },
+    {
+      "declaration": "walkRes_eq",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 153,
+      "role": "statement",
+      "statement_node": "the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description",
+      "routing_basis": "Direct residue/codistance identity evidence for Z89::the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description."
+    },
+    {
+      "declaration": "walkRes_succ",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 159,
+      "role": "statement",
+      "statement_node": "the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description",
+      "routing_basis": "Direct affine-recurrence evidence for Z89::the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description."
+    },
+    {
+      "declaration": "not_certifiedKill_iff",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 221,
+      "role": "statement",
+      "statement_node": "the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description",
+      "routing_basis": "Direct failure-arc equivalence evidence for Z89::the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description."
+    },
+    {
+      "declaration": "two_le_totient",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 170,
+      "role": "statement",
+      "statement_node": "elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget",
+      "routing_basis": "Direct totient lower-bound evidence for Z89::elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget."
+    },
+    {
+      "declaration": "walkStep_le",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 176,
+      "role": "statement",
+      "statement_node": "elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget",
+      "routing_basis": "Direct upper-step-budget evidence for Z89::elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget."
+    },
+    {
+      "declaration": "walkStep_ge",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 191,
+      "role": "statement",
+      "statement_node": "elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget",
+      "routing_basis": "Direct lower-step-budget evidence for Z89::elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget."
+    },
+    {
+      "declaration": "real_step_budget",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 206,
+      "role": "statement",
+      "statement_node": "elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget",
+      "routing_basis": "Direct shifted-run budget evidence for Z89::elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget."
+    },
+    {
+      "declaration": "upperBand_run",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 233,
+      "role": "statement",
+      "statement_node": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "routing_basis": "Direct upper-band induction evidence for Z89::thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill."
+    },
+    {
+      "declaration": "certifiedKill_of_upperBand",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 282,
+      "role": "statement",
+      "statement_node": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "routing_basis": "Direct parameterized upper-band escape evidence for Z89::thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill."
+    },
+    {
+      "declaration": "certifiedKill_of_upperBand_log",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 303,
+      "role": "statement",
+      "statement_node": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "routing_basis": "Direct logarithmic upper-band escape evidence for Z89::thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill."
+    },
+    {
+      "declaration": "lowerBand_run",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 321,
+      "role": "statement",
+      "statement_node": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "routing_basis": "Direct lower-band induction evidence for Z89::thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill."
+    },
+    {
+      "declaration": "certifiedKill_of_lowerBand",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 388,
+      "role": "statement",
+      "statement_node": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "routing_basis": "Direct two-step lower-band escape evidence for Z89::thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill."
+    },
+    {
+      "declaration": "trap_upper",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 427,
+      "role": "statement",
+      "statement_node": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "routing_basis": "Direct upper linear trapped-walk evidence for Z89::the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks."
+    },
+    {
+      "declaration": "trap_lower",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 446,
+      "role": "statement",
+      "statement_node": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "routing_basis": "Direct lower linear trapped-walk evidence for Z89::the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks."
+    },
+    {
+      "declaration": "trap_interior",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 469,
+      "role": "statement",
+      "statement_node": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "routing_basis": "Direct interior fixed-point family evidence for Z89::the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks."
+    },
+    {
+      "declaration": "no_absolute_bound_on_consecutive_failures",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 489,
+      "role": "statement",
+      "statement_node": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "routing_basis": "Direct permanent coarse-model failure evidence for Z89::the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks."
+    },
+    {
+      "declaration": "thresholds_are_sharp",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 501,
+      "role": "statement",
+      "statement_node": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "routing_basis": "Direct unit-sharp threshold evidence inside AdmissibleRun for Z89::the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks."
+    },
+    {
+      "declaration": "upperBand_card",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 514,
+      "role": "statement",
+      "statement_node": "the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc",
+      "routing_basis": "Direct upper-band cardinality evidence for Z89::the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc."
+    },
+    {
+      "declaration": "lowerBand_card",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 520,
+      "role": "statement",
+      "statement_node": "the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc",
+      "routing_basis": "Direct lower-band cardinality evidence for Z89::the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc."
+    },
+    {
+      "declaration": "coverage_fraction_tends_to_zero",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 530,
+      "role": "statement",
+      "statement_node": "the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc",
+      "routing_basis": "Direct existential coverage-dilution evidence for Z89::the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc."
+    },
+    {
+      "declaration": "lowerBand_instance_data",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 537,
+      "role": "finite_instance",
+      "statement_node": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "routing_basis": "Direct lower-band residue-data evidence for Z89::two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines."
+    },
+    {
+      "declaration": "lowerBand_instance",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 544,
+      "role": "finite_instance",
+      "statement_node": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "routing_basis": "Direct lower-band theorem specialization evidence for Z89::two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines."
+    },
+    {
+      "declaration": "lowerBand_instance_realised",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 553,
+      "role": "finite_instance",
+      "statement_node": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "routing_basis": "Direct lower-band realised-kill evidence for Z89::two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines."
+    },
+    {
+      "declaration": "upperBand_instance_data",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 560,
+      "role": "finite_instance",
+      "statement_node": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "routing_basis": "Direct upper-band residue-data evidence for Z89::two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines."
+    },
+    {
+      "declaration": "upperBand_instance",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 567,
+      "role": "finite_instance",
+      "statement_node": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "routing_basis": "Direct upper-band theorem specialization evidence for Z89::two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines."
+    },
+    {
+      "declaration": "upperBand_instance_realised",
+      "module": "ErdosProblems/Half/FreeWalk1.lean",
+      "line": 576,
+      "role": "finite_instance",
+      "statement_node": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "routing_basis": "Direct two-step upper-band realization evidence for Z89::two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines."
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "to": "the_reduced_window_discrepancy_obeys_an_exact_affine_recurrence_and_failure_arc_description",
+      "relation": "generated_by",
+      "basis": "Both escape inductions evolve the canonical residue or codistance through the exact affine recurrence and use the failure-arc equivalence to select the surviving edge branch."
+    },
+    {
+      "from": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "to": "elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget",
+      "relation": "generated_by",
+      "basis": "The lower and upper step inequalities provide the one-step control that makes excess above either trapping radius double during a continuing failure run."
+    },
+    {
+      "from": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "to": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "relation": "barrier_for",
+      "basis": "Permanent admissible traps one unit inside the thresholds block any extension from the proved outer bands to a global escape theorem using only the affine recurrence and coarse interval budget."
+    },
+    {
+      "from": "the_two_escape_bands_have_h_plus_six_residues_and_can_be_an_arbitrarily_small_fraction_of_the_failure_arc",
+      "to": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "relation": "complements",
+      "basis": "The counting node measures exactly how many edge residues the two conditional escape engines cover and records the existential dilution as N grows."
+    },
+    {
+      "from": "two_kernel_checked_cells_realise_the_lower_and_upper_escape_engines",
+      "to": "thin_outer_failure_bands_conditionally_force_a_nearby_certified_kill",
+      "relation": "finite_instance_of",
+      "basis": "The h=9 lower-band cell and h=30 upper-band cell discharge the respective hypotheses and realize their predicted nearby certified kills."
+    },
+    {
+      "from": "the_coarse_recurrence_and_size_budget_admit_permanently_trapped_model_walks",
+      "to": "elementary_totient_bounds_give_the_exact_coarse_two_sided_step_budget",
+      "relation": "complements",
+      "basis": "The budget node states what elementary totient size information gives for the real walk; the trap node shows that this interval data, abstracted without finer arithmetic, still permits permanent model failures."
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "zone_id": "Z90",
+  "title": "Erdős 249 window geometry: 2-adic locality, certificate descent, and ray limits",
+  "problem": "249",
+  "replaces_role_zone": "Z19",
+  "concepts": [
+    {
+      "id": "z90_window_top_locality",
+      "label": "window-top 2-adic locality",
+      "note": "Modulo 2^k, a deep discrepancy is controlled exactly by the last k letters of the window."
+    },
+    {
+      "id": "z90_certificate_window_monotonicity",
+      "label": "certificate window monotonicity",
+      "note": "A certified subwindow remains certified after lowering its base and extending its top."
+    },
+    {
+      "id": "z90_diagonal_antitone_ladder",
+      "label": "antitone lcm-diagonal ladder",
+      "note": "Existence of a diagonal kill at a larger period-lcm index forces one at every smaller index."
+    },
+    {
+      "id": "z90_valuation_certificate",
+      "label": "2-adic valuation certificate",
+      "note": "A nonzero residue divisible by a sufficiently large power of two is separated from both ends of its residue interval."
+    },
+    {
+      "id": "z90_dilation_coverage",
+      "label": "uniform dilation coverage ceiling",
+      "note": "Prime dilation controls only offsets divisible by the prime, with a base-independent cardinality bound."
+    },
+    {
+      "id": "z90_authority_boundary",
+      "label": "ray-geometry authority boundary",
+      "note": "The zone proves transport, conditional reductions, finite witnesses, and coverage ceilings; it supplies no cofinal certificate family and no lift to arbitrary larger periods."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "the_low_k_bits_of_a_deep_window_are_exactly_the_far_end_depth_k_window",
+      "canonical_statement": "PROVED LOCALITY PACKET: peeling the base letter expresses a depth-(L+1) discrepancy as a 2^L-weighted head plus the depth-L discrepancy at the next base. Iterating this gives A(h,N,k+j)≡A(h,N+j,k) mod 2^k, and therefore 2^k divides the deep discrepancy if and only if it divides the far-end depth-k discrepancy.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "z90_window_top_locality",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact head peeling followed by induction on the number of discarded head letters and the divisibility/emod equivalence.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact binary place-value bookkeeping for the repository's window discrepancy.",
+      "scope_caveat": "The congruence identifies where low-bit information lives; it does not provide any favorable valuation or nondivisibility at the far end.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "windowDiscrepancy_head_peel",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 123
+        },
+        {
+          "declaration": "windowDiscrepancy_emod_truncate",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 143
+        },
+        {
+          "declaration": "two_pow_dvd_windowDiscrepancy_iff",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 167
+        }
+      ]
+    },
+    {
+      "id": "a_certified_subwindow_survives_inside_every_containing_window",
+      "canonical_statement": "PROVED WINDOW MONOTONICITY: a certificate at base N+j and depth k descends to base N at depth k+j. More generally, if [M+1,M+k] lies inside [N+1,N+L], then certifiedKill h M k implies certifiedKill h N L. Hence existence at any base M≥N descends to N, including ray cells descending to their diagonal base.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z90_window_top_locality",
+        "z90_certificate_window_monotonicity",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Lift the certified residue through the truncation congruence while preserving the common window-top exclusion radius, then combine base descent with depth extension.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific monotonicity of the finite certifiedKill predicate.",
+      "scope_caveat": "The transport moves certificates toward smaller bases or larger containing windows. It does not climb to a larger base, create a new period, or produce any certificate from scratch.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_base_descent",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 189
+        },
+        {
+          "declaration": "certifiedKill_of_window_subset",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 230
+        },
+        {
+          "declaration": "exists_certifiedKill_of_base_le",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 240
+        },
+        {
+          "declaration": "exists_certifiedKill_diagonal_of_ray",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 248
+        },
+        {
+          "declaration": "lift_target_of_ray_cell",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 255
+        }
+      ]
+    },
+    {
+      "id": "cofinal_certificate_supply_anywhere_above_the_lcm_diagonal_implies_irrationality",
+      "canonical_statement": "PROVED CONDITIONAL REDUCTION: if for every threshold t₀ there is t≥t₀ and some base N≥periodLcm t carrying a certified kill at some depth, then the binary totient series is irrational.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z90_certificate_window_monotonicity",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [
+        "A cofinal supply, over period-lcm indices, of at least one certifiedKill at an arbitrary base on or above each selected diagonal."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Descend each supplied ray cell to its diagonal base, then invoke the existing lcm-diagonal certificate-supply reduction.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A project-local weakening of the base-pinned certificate-supply hypothesis.",
+      "scope_caveat": "The theorem is only an implication. The required cofinal ray supply is not constructed here, and the result does not claim that base freedom makes that supply easier to prove.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "irrational_totient_series_of_lcm_ray_certificate_supply",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 263
+        }
+      ]
+    },
+    {
+      "id": "diagonal_kill_existence_is_antitone_and_cofinal_supply_equals_total_supply",
+      "canonical_statement": "PROVED LADDER CLASSIFICATION: integrality of a fixed-period tail difference propagates upward in the base. Consequently, if t≤s and a diagonal kill exists at periodLcm s, then one exists at periodLcm t; thus a cofinal supply of diagonal kills is equivalent to a kill at every index.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "z90_certificate_window_monotonicity",
+        "z90_diagonal_antitone_ladder",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Contrapose base descent through the tail-integrality/certificate-completeness interface, telescope along periodLcm divisibility, and use antitonicity to turn cofinal existence into total existence.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A structural classification of the repository's lcm-diagonal certificate predicate.",
+      "scope_caveat": "Antitonicity propagates certificates downward in t. It supplies no upward lift and does not prove that the predicate holds at any unbounded family of indices.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tail_diff_int_of_base_le",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 275
+        },
+        {
+          "declaration": "exists_diagonalKill_antitone",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 296
+        },
+        {
+          "declaration": "diagonalKill_cofinal_iff_all",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 319
+        }
+      ]
+    },
+    {
+      "id": "certificate_base_descent_has_no_general_converse",
+      "canonical_statement": "PROVED FINITE NO-GO: certifiedKill 1 0 5 holds, while certifiedKill 1 1 4 fails, even though the latter is the smaller contained window. Therefore certificate base descent cannot be reversed in general.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z90_certificate_window_monotonicity",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel computation of the two concrete certifiedKill predicates.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A finite counterexample to reversing a project-specific monotonicity law.",
+      "scope_caveat": "The counterexample rules out an unconditional converse only. It does not exclude a converse under additional arithmetic hypotheses or other mechanisms for climbing to larger bases.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "base_descent_converse_fails",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 333
+        }
+      ]
+    },
+    {
+      "id": "the_period_five_certificate_descends_to_base_zero_at_depth_twenty_eight",
+      "canonical_statement": "PROVED FINITE TRANSPORT: the certified period-five cell at base 12 and depth 16 descends to certifiedKill 5 0 28.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z90_certificate_window_monotonicity",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Apply the exact base-descent theorem with a twelve-step base shift.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A concrete regression witness for certificate transport.",
+      "scope_caveat": "One descended certificate provides no cofinal supply, no lift to other periods, and no irrationality conclusion.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_five_zero_twentyeight",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 341
+        }
+      ]
+    },
+    {
+      "id": "a_nonzero_large_two_adic_factor_certifies_a_window_and_is_read_at_its_far_end",
+      "canonical_statement": "PROVED VALUATION CRITERION: if 2^v divides a window discrepancy, 2^L does not divide it, and 2^v exceeds the exclusion radius, then the window is certified. For a depth k+j window, the required 2^k divisibility may equivalently be supplied by the far-end depth-k window.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z90_window_top_locality",
+        "z90_valuation_certificate",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [
+        "A power-of-two divisibility bound large enough to exceed the window exclusion radius.",
+        "Nondivisibility of the full discrepancy by its entire modulus, ensuring a nonzero residue."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "A nonzero multiple of 2^v in [0,2^L) lies at least 2^v from both residue endpoints; combine this with far-end divisibility equivalence.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary valuation geometry in a finite power-of-two residue interval.",
+      "scope_caveat": "The theorem does not establish either antecedent for the frontier windows. In particular it supplies no unexpectedly large 2-adic valuation.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_of_two_pow_dvd",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 353
+        },
+        {
+          "declaration": "certifiedKill_of_far_end_valuation",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 383
+        }
+      ]
+    },
+    {
+      "id": "prime_dilation_controls_at_most_k_over_p_plus_one_letters_in_any_depth_k_window",
+      "canonical_statement": "PROVED COVERAGE CEILING: among k consecutive offsets at any base, at most k/p+1 are divisible by p. On such covered offsets, when p is prime and coprime to the two source arguments, the lifted totient-difference letter equals (p-1) times the period-H letter; at p=67 and depth 100, at most two offsets are covered at every base.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z90_dilation_coverage",
+        "z90_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Inject covered offsets into quotient indices i/p, apply multiplicativity of the totient at coprime prime factors, and specialize the cardinality bound.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary arithmetic-progression counting and totient multiplicativity, specialized to the exact lift interface.",
+      "scope_caveat": "The ceiling limits only information obtained from the displayed exact dilation law. It does not rule out control of uncovered letters by other congruences, correlations, or analytic arguments.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ray_coverage_card_le",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 399
+        },
+        {
+          "declaration": "window_letter_dilation",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 427
+        },
+        {
+          "declaration": "window_letter_dilation_at",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 447
+        },
+        {
+          "declaration": "ray_coverage_at_67",
+          "module": "ErdosProblems/Lift/AngleA2.lean",
+          "line": 459
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "windowDiscrepancy_head_peel",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 123,
+      "role": "representation",
+      "statement_node": "the_low_k_bits_of_a_deep_window_are_exactly_the_far_end_depth_k_window"
+    },
+    {
+      "declaration": "windowDiscrepancy_emod_truncate",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 143,
+      "role": "statement",
+      "statement_node": "the_low_k_bits_of_a_deep_window_are_exactly_the_far_end_depth_k_window"
+    },
+    {
+      "declaration": "two_pow_dvd_windowDiscrepancy_iff",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 167,
+      "role": "statement",
+      "statement_node": "the_low_k_bits_of_a_deep_window_are_exactly_the_far_end_depth_k_window"
+    },
+    {
+      "declaration": "certifiedKill_base_descent",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 189,
+      "role": "statement",
+      "statement_node": "a_certified_subwindow_survives_inside_every_containing_window"
+    },
+    {
+      "declaration": "certifiedKill_of_window_subset",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 230,
+      "role": "statement",
+      "statement_node": "a_certified_subwindow_survives_inside_every_containing_window"
+    },
+    {
+      "declaration": "exists_certifiedKill_of_base_le",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 240,
+      "role": "engine",
+      "statement_node": "a_certified_subwindow_survives_inside_every_containing_window"
+    },
+    {
+      "declaration": "exists_certifiedKill_diagonal_of_ray",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 248,
+      "role": "engine",
+      "statement_node": "a_certified_subwindow_survives_inside_every_containing_window"
+    },
+    {
+      "declaration": "lift_target_of_ray_cell",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 255,
+      "role": "engine",
+      "statement_node": "a_certified_subwindow_survives_inside_every_containing_window"
+    },
+    {
+      "declaration": "irrational_totient_series_of_lcm_ray_certificate_supply",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 263,
+      "role": "statement",
+      "statement_node": "cofinal_certificate_supply_anywhere_above_the_lcm_diagonal_implies_irrationality"
+    },
+    {
+      "declaration": "tail_diff_int_of_base_le",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 275,
+      "role": "engine",
+      "statement_node": "diagonal_kill_existence_is_antitone_and_cofinal_supply_equals_total_supply"
+    },
+    {
+      "declaration": "exists_diagonalKill_antitone",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 296,
+      "role": "statement",
+      "statement_node": "diagonal_kill_existence_is_antitone_and_cofinal_supply_equals_total_supply"
+    },
+    {
+      "declaration": "diagonalKill_cofinal_iff_all",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 319,
+      "role": "statement",
+      "statement_node": "diagonal_kill_existence_is_antitone_and_cofinal_supply_equals_total_supply"
+    },
+    {
+      "declaration": "base_descent_converse_fails",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 333,
+      "role": "finite_instance",
+      "statement_node": "certificate_base_descent_has_no_general_converse"
+    },
+    {
+      "declaration": "certifiedKill_five_zero_twentyeight",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 341,
+      "role": "finite_instance",
+      "statement_node": "the_period_five_certificate_descends_to_base_zero_at_depth_twenty_eight"
+    },
+    {
+      "declaration": "certifiedKill_of_two_pow_dvd",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 353,
+      "role": "statement",
+      "statement_node": "a_nonzero_large_two_adic_factor_certifies_a_window_and_is_read_at_its_far_end"
+    },
+    {
+      "declaration": "certifiedKill_of_far_end_valuation",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 383,
+      "role": "statement",
+      "statement_node": "a_nonzero_large_two_adic_factor_certifies_a_window_and_is_read_at_its_far_end"
+    },
+    {
+      "declaration": "ray_coverage_card_le",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 399,
+      "role": "statement",
+      "statement_node": "prime_dilation_controls_at_most_k_over_p_plus_one_letters_in_any_depth_k_window"
+    },
+    {
+      "declaration": "window_letter_dilation",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 427,
+      "role": "statement",
+      "statement_node": "prime_dilation_controls_at_most_k_over_p_plus_one_letters_in_any_depth_k_window"
+    },
+    {
+      "declaration": "window_letter_dilation_at",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 447,
+      "role": "engine",
+      "statement_node": "prime_dilation_controls_at_most_k_over_p_plus_one_letters_in_any_depth_k_window"
+    },
+    {
+      "declaration": "ray_coverage_at_67",
+      "module": "ErdosProblems/Lift/AngleA2.lean",
+      "line": 459,
+      "role": "finite_instance",
+      "statement_node": "prime_dilation_controls_at_most_k_over_p_plus_one_letters_in_any_depth_k_window"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "the_low_k_bits_of_a_deep_window_are_exactly_the_far_end_depth_k_window",
+      "to": "a_certified_subwindow_survives_inside_every_containing_window",
+      "relation": "complements",
+      "basis": "The exact truncation congruence is the arithmetic input used to lift a certified far-end subwindow into a containing window with the same top."
+    },
+    {
+      "from": "a_certified_subwindow_survives_inside_every_containing_window",
+      "to": "cofinal_certificate_supply_anywhere_above_the_lcm_diagonal_implies_irrationality",
+      "relation": "complements",
+      "basis": "Window monotonicity turns each arbitrary supplied ray cell into the diagonal cell required by the existing irrationality reduction."
+    },
+    {
+      "from": "diagonal_kill_existence_is_antitone_and_cofinal_supply_equals_total_supply",
+      "to": "cofinal_certificate_supply_anywhere_above_the_lcm_diagonal_implies_irrationality",
+      "relation": "complements",
+      "basis": "The antitone classification explains that cofinal diagonal supply is equivalent to total supply, sharpening the logical shape of the conditional reduction without proving its hypothesis."
+    },
+    {
+      "from": "certificate_base_descent_has_no_general_converse",
+      "to": "a_certified_subwindow_survives_inside_every_containing_window",
+      "relation": "barrier_for",
+      "basis": "The explicit finite counterexample blocks reversing the certified-window monotonicity law as an unconditional route to higher bases."
+    },
+    {
+      "from": "the_period_five_certificate_descends_to_base_zero_at_depth_twenty_eight",
+      "to": "a_certified_subwindow_survives_inside_every_containing_window",
+      "relation": "finite_instance_of",
+      "basis": "The period-five certificate is a direct concrete instance of twelve-step base descent."
+    },
+    {
+      "from": "a_nonzero_large_two_adic_factor_certifies_a_window_and_is_read_at_its_far_end",
+      "to": "the_low_k_bits_of_a_deep_window_are_exactly_the_far_end_depth_k_window",
+      "relation": "complements",
+      "basis": "The valuation criterion becomes a far-end criterion precisely through the low-bit truncation equivalence."
+    },
+    {
+      "from": "prime_dilation_controls_at_most_k_over_p_plus_one_letters_in_any_depth_k_window",
+      "to": "a_nonzero_large_two_adic_factor_certifies_a_window_and_is_read_at_its_far_end",
+      "relation": "complements",
+      "basis": "The coverage ceiling quantifies how few far-end letters the exact dilation law controls, while the valuation criterion states the stronger window-wide arithmetic datum still needed."
+    }
+  ]
+}

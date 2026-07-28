@@ -1,0 +1,315 @@
+{
+  "zone_id": "Z76",
+  "title": "Erdős 243 exact dynamic cancellation and primitive two-step curvature",
+  "problem": "243",
+  "concepts": [
+    {
+      "id": "z76_raw_next_content",
+      "label": "raw-next common content",
+      "note": "The exact coprimality and square-overlap formula controlling the content removed from one raw reciprocal-tail step."
+    },
+    {
+      "id": "z76_overlap_normal_form",
+      "label": "square-overlap normal form",
+      "note": "The factorization of cancellation content, deleted denominator factor, and equivalent lcm transport."
+    },
+    {
+      "id": "z76_reduced_two_step",
+      "label": "primitive reduced two-step recurrence",
+      "note": "Coprimality, cancellation-factor identity, and exact second-order recurrence across consecutive reduced steps."
+    },
+    {
+      "id": "z76_cancellation_free_curvature",
+      "label": "cancellation-free curvature and matrix content",
+      "note": "Dual remainder, quadratic curvature, square determinant, and primitive matrix gcd identities."
+    },
+    {
+      "id": "z76_global_boundary",
+      "label": "local arithmetic versus global termination",
+      "note": "Exact local cancellation identities expose constraints and falsifiers but do not prove termination of the unrestricted Erdős 243 orbit."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "primitive_raw_steps_have_exact_square_control_of_removed_content",
+      "canonical_statement": "For a primitive pair (u,v) with q+v=a*u, the current numerator u is coprime to q and gcd(q,a*v)=gcd(q,a^2). Writing d=gcd(a,v), the removed content is exactly d*gcd(q/d,d): one forced copy of d and one residual overlap copy.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "243",
+      "concepts": [
+        "z76_raw_next_content",
+        "z76_global_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Primitive-input coprimality, divisibility through q+v=a*u, and quotienting by d=gcd(a,v) to isolate the second square-overlap copy.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact arithmetic normalization of one dynamically reduced reciprocal-tail step.",
+      "scope_caveat": "The formula controls one raw step. It does not bound the overlap over time, force descent, or exclude an infinite orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "rawNext_coprime_currentNumerator",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 15
+        },
+        {
+          "declaration": "rawNext_gcd_eq_gcd_sq",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 33
+        },
+        {
+          "declaration": "rawNext_gcd_exact_overlap",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "id": "square_overlap_has_an_explicit_denominator_deletion_normal_form",
+      "canonical_statement": "After factoring a=d*alpha and w=d*omega with alpha coprime to omega, the remaining square overlap is c=gcd(omega,d). If d=b*c, the removed content is b*c^2 and c stays coprime to alpha. When the old denominator is c*t and the next one is alpha*t, c is exactly the deleted factor v/gcd(v,vNext), equivalently lcm(a,v)=c*vNext.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "243",
+      "concepts": [
+        "z76_overlap_normal_form",
+        "z76_raw_next_content",
+        "z76_global_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Primitive factorization of multiplier and numerator, exact gcd extraction from a square, cancellation through positive common factors, and gcd-lcm multiplication.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Explicit factor-level normal form for dynamic cancellation.",
+      "scope_caveat": "The normal form identifies the local payment exactly but does not show that deleted overlap is small, rare, or globally unsustainable.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "gcd_scaled_square_eq",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 136
+        },
+        {
+          "declaration": "cancellationOverlap_normalForm_explicit",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 159
+        },
+        {
+          "declaration": "cancellation_denominator_transport_explicit",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 184
+        },
+        {
+          "declaration": "deletedFactor_eq_oldDenominator_div_gcd",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 212
+        },
+        {
+          "declaration": "lcm_eq_overlap_mul_nextDenominator",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 225
+        }
+      ]
+    },
+    {
+      "id": "consecutive_primitive_steps_satisfy_an_exact_second_order_recurrence",
+      "canonical_statement": "Full content removal leaves consecutive reduced numerators coprime, and the removed factor is exactly gcd(q,a^2). Two consecutive reduced steps then obey a^2*u + h*hNext*uNextNext = h*(a+aNext)*uNext.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "243",
+      "concepts": [
+        "z76_reduced_two_step",
+        "z76_raw_next_content",
+        "z76_global_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "One-step primitive coprimality and square-content identification substituted into two consecutive product-cleared numerator/denominator equations.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact non-autonomous recurrence for primitive numerators after dynamic cancellation.",
+      "scope_caveat": "The recurrence is an identity under the stated step equations. It supplies no monotone quantity, anti-shadowing theorem, or global termination argument.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "reducedStep_consecutiveNumerator_coprime",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 243
+        },
+        {
+          "declaration": "reducedStep_cancellationFactor_eq_square",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 254
+        },
+        {
+          "declaration": "reducedStep_secondOrder",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 268
+        }
+      ]
+    },
+    {
+      "id": "cancellation_free_steps_expose_dual_remainders_curvature_and_square_determinants",
+      "canonical_statement": "On a cancellation-free step the centered error satisfies the exact dual-remainder identity s*e-Delta*p=eNext-e. Across two steps the primitive recurrence yields q^2+(p*pNextNext-pNext^2)=(aNext-a)*p*pNext. The associated excursion transfer has square determinant, and for primitive input and second matrix row the output gcd is exactly the gcd of that determinant with the second output coordinate.",
+      "logical_class": "reduction_or_transport",
+      "problem": "243",
+      "concepts": [
+        "z76_cancellation_free_curvature",
+        "z76_reduced_two_step",
+        "z76_global_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact elimination in the two-step recurrence, scalar expansion of the excursion transfer, and Bézout reduction of primitive matrix content to determinant content.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Algebraic interfaces for later anti-shadowing or block arguments; no global result is asserted.",
+      "scope_caveat": "The identities expose a changing quadratic quantity and determinant-controlled cancellation. They do not prove that curvature has a fixed sign, that determinant content is bounded, or that the orbit terminates.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "cancellationFree_dualRemainder",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 291
+        },
+        {
+          "declaration": "cancellationFree_curvature_square",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 307
+        },
+        {
+          "declaration": "excursionMatrix_det_square",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 322
+        },
+        {
+          "declaration": "primitiveMatrix_gcd_eq_det_gcd",
+          "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "line": 335
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "rawNext_coprime_currentNumerator",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 15,
+      "role": "statement",
+      "statement_node": "primitive_raw_steps_have_exact_square_control_of_removed_content"
+    },
+    {
+      "declaration": "rawNext_gcd_eq_gcd_sq",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 33,
+      "role": "engine",
+      "statement_node": "primitive_raw_steps_have_exact_square_control_of_removed_content"
+    },
+    {
+      "declaration": "rawNext_gcd_exact_overlap",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 68,
+      "role": "statement",
+      "statement_node": "primitive_raw_steps_have_exact_square_control_of_removed_content"
+    },
+    {
+      "declaration": "gcd_scaled_square_eq",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 136,
+      "role": "engine",
+      "statement_node": "square_overlap_has_an_explicit_denominator_deletion_normal_form"
+    },
+    {
+      "declaration": "cancellationOverlap_normalForm_explicit",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 159,
+      "role": "statement",
+      "statement_node": "square_overlap_has_an_explicit_denominator_deletion_normal_form"
+    },
+    {
+      "declaration": "cancellation_denominator_transport_explicit",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 184,
+      "role": "engine",
+      "statement_node": "square_overlap_has_an_explicit_denominator_deletion_normal_form"
+    },
+    {
+      "declaration": "deletedFactor_eq_oldDenominator_div_gcd",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 212,
+      "role": "statement",
+      "statement_node": "square_overlap_has_an_explicit_denominator_deletion_normal_form"
+    },
+    {
+      "declaration": "lcm_eq_overlap_mul_nextDenominator",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 225,
+      "role": "representation",
+      "statement_node": "square_overlap_has_an_explicit_denominator_deletion_normal_form"
+    },
+    {
+      "declaration": "reducedStep_consecutiveNumerator_coprime",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 243,
+      "role": "statement",
+      "statement_node": "consecutive_primitive_steps_satisfy_an_exact_second_order_recurrence"
+    },
+    {
+      "declaration": "reducedStep_cancellationFactor_eq_square",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 254,
+      "role": "engine",
+      "statement_node": "consecutive_primitive_steps_satisfy_an_exact_second_order_recurrence"
+    },
+    {
+      "declaration": "reducedStep_secondOrder",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 268,
+      "role": "statement",
+      "statement_node": "consecutive_primitive_steps_satisfy_an_exact_second_order_recurrence"
+    },
+    {
+      "declaration": "cancellationFree_dualRemainder",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 291,
+      "role": "representation",
+      "statement_node": "cancellation_free_steps_expose_dual_remainders_curvature_and_square_determinants"
+    },
+    {
+      "declaration": "cancellationFree_curvature_square",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 307,
+      "role": "statement",
+      "statement_node": "cancellation_free_steps_expose_dual_remainders_curvature_and_square_determinants"
+    },
+    {
+      "declaration": "excursionMatrix_det_square",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 322,
+      "role": "engine",
+      "statement_node": "cancellation_free_steps_expose_dual_remainders_curvature_and_square_determinants"
+    },
+    {
+      "declaration": "primitiveMatrix_gcd_eq_det_gcd",
+      "module": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+      "line": 335,
+      "role": "statement",
+      "statement_node": "cancellation_free_steps_expose_dual_remainders_curvature_and_square_determinants"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "square_overlap_has_an_explicit_denominator_deletion_normal_form",
+      "to": "primitive_raw_steps_have_exact_square_control_of_removed_content",
+      "relation": "generated_by",
+      "basis": "The explicit normal form factors the one-step gcd(q,a^2) square-overlap formula into forced and residual copies and transports those factors to the reduced denominator."
+    },
+    {
+      "from": "consecutive_primitive_steps_satisfy_an_exact_second_order_recurrence",
+      "to": "primitive_raw_steps_have_exact_square_control_of_removed_content",
+      "relation": "generated_by",
+      "basis": "Primitive consecutive numerators and the exact removed factor are direct consumers of the one-step coprimality and square-content identities."
+    },
+    {
+      "from": "cancellation_free_steps_expose_dual_remainders_curvature_and_square_determinants",
+      "to": "consecutive_primitive_steps_satisfy_an_exact_second_order_recurrence",
+      "relation": "generated_by",
+      "basis": "The dual-remainder and curvature forms are algebraic eliminations of the primitive second-order step equations; the determinant lemma records the corresponding block-content interface."
+    }
+  ]
+}

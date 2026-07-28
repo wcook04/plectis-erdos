@@ -1,0 +1,285 @@
+{
+  "zone_id": "Z67",
+  "title": "Exact Möbius–Lambert and foreign-residue coordinates for the totient tail",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z67_lambert_regrouping",
+      "label": "absolute Lambert-pair regrouping",
+      "note": "A product-filtered, positive-index regrouping justified by absolute summability for x in the half-open unit interval."
+    },
+    {
+      "id": "z67_literal_tail_coordinates",
+      "label": "literal totient-tail coordinates",
+      "note": "Exact shifted Möbius-pulse and positive-index foreign-residue representations of the literal tail."
+    },
+    {
+      "id": "z67_residue_channel_split",
+      "label": "divisor and foreign residue channels",
+      "note": "The finite divisor-channel shadow and the complete positive-index foreign-residue kernel are kept distinct."
+    },
+    {
+      "id": "z67_renormalized_center",
+      "label": "renormalized Lambert center",
+      "note": "Exact agreement between residue-projection and Lambert-projection coordinates once the cutoff is at least twice the height."
+    },
+    {
+      "id": "z67_numerator_gap_consumer",
+      "label": "reduced numerator-gap consumer",
+      "note": "A conditional target-miss theorem whose substantive input is a rational numerator gap larger than the denominator-scaled analytic complement."
+    },
+    {
+      "id": "z67_authority_boundary",
+      "label": "representation versus separation boundary",
+      "note": "Exact coordinate identities do not themselves prove positivity, noncancellation, rational separation, cofinal escape, or irrationality."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "absolute_lambert_pair_regrouping_respects_arbitrary_product_filters",
+      "canonical_statement": "Let w,v : ℕ → ℝ satisfy |w(d)| ≤ d and |v(m)| ≤ m at positive indices, let P be any decidable predicate on ℕ, and let 0 ≤ x < 1. Then the absolutely convergent positive-pair sum of w(d)v(m)x^(dm), restricted by P(dm), equals the positive-index sum whose nth coefficient is the divisor sum ∑_{e∣n} w(e)v(n/e), restricted by P(n).",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z67_lambert_regrouping",
+        "z67_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Absolute summability of the polynomially bounded Lambert pair family, transport across the positive-pair/product-fibre equivalence, and a sigma antidiagonal regrouping.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The analytic rearrangement principle is classical; the project-specific value is the exact positive-index and arbitrary-product-filter interface used by the totient-tail formalization.",
+      "scope_caveat": "This is an exact real-series regrouping on 0 ≤ x < 1. It does not cover x=1, assert positivity of either weight, or imply integrality, irrationality, or target avoidance.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tsum_lambert_pair_regroup_if",
+          "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
+          "line": 112
+        }
+      ]
+    },
+    {
+      "id": "literal_totient_tail_is_the_exact_shifted_mobius_pulse_sum",
+      "canonical_statement": "For every N, the literal tail totientTail(N) is exactly the convergent sum over positive d of the shifted Möbius pulse μ(d)·2^(d-r_d(N))·((⌊N/d⌋+1)/(2^d-1) + 1/(2^d-1)^2), where r_d(N)=d-(N mod d).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z67_literal_tail_coordinates",
+        "z67_lambert_regrouping",
+        "z67_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Apply the product-filtered Lambert regrouping to the strict-tail predicate N<n, identify each divisor fibre by its first multiple strictly beyond N, and simplify the resulting geometric series.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is a project-specific exact bridge recorded in the paper and Lean source; no external priority or novelty claim is made.",
+      "scope_caveat": "The equality is an exact coordinate formula, not a sign or noncancellation result. It neither proves the tail nonzero nor yields integrality, irrationality, or target avoidance by itself.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totientTail_eq_tsum_shiftedMobiusPulse",
+          "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
+          "line": 535
+        }
+      ]
+    },
+    {
+      "id": "literal_totient_tail_is_the_exact_positive_index_foreign_residue_kernel_sum",
+      "canonical_statement": "For every N, totientTail(N) is exactly the convergent sum over positive d of positiveForeignResidueKernel(d,N).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z67_literal_tail_coordinates",
+        "z67_residue_channel_split",
+        "z67_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Rewrite the literal tail as its shifted Möbius pulse sum and use the pointwise equality between the positive-index foreign-residue kernel and the shifted pulse term.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The theorem is the formal project's global representation bridge; no historical novelty claim is made.",
+      "scope_caveat": "Here “positive” describes the positive-natural index type, not the sign of the summand: the kernel contains a Möbius factor and is not asserted nonnegative. The identity alone gives no separation, nonvanishing, irrationality, or target-miss theorem.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totientTail_eq_tsum_positiveForeignResidueKernel",
+          "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "id": "explicit_mobius_shadow_is_exactly_the_divisor_residue_channel_sum",
+      "canonical_statement": "For every positive height H, scaleExplicitShadow(H) equals the finite sum of residueIncrement(d,H) over the positive divisors d of H.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z67_residue_channel_split",
+        "z67_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Use the rational divisor-sum formula for the scaled Möbius shadow, cast it to the ambient real expression, and identify each divisor-channel residue increment termwise.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The finite divisor-channel identity is a project-specific normalization; no standalone novelty claim is made.",
+      "scope_caveat": "This identifies only the divisor-indexed residue channels. It does not identify the full infinite foreign-residue tail and does not supply a separation or target-miss conclusion.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "scaleExplicitShadow_eq_sum_divisors_residueIncrement",
+          "module": "Erdos249257/ActualForeignResidueProjection.lean",
+          "line": 338
+        }
+      ]
+    },
+    {
+      "id": "renormalized_residue_projection_equals_the_lambert_center_past_twice_the_height",
+      "canonical_statement": "For every H>0 and every cutoff D with 2H≤D, renormalizedResidueProjection(H,D) equals lambertProjectedDiagonal(H,D). Equivalently, the explicit divisor shadow, projected foreign defect, and rational first-tail correction combine exactly into the canonical Lambert projected center.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z67_literal_tail_coordinates",
+        "z67_residue_channel_split",
+        "z67_renormalized_center",
+        "z67_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Split the finite residue projection into divisor and foreign channels, replace the divisor channels by the explicit shadow, use the global positive-index kernel formula for the literal tail, and reconcile the remaining tail terms with the Lambert projected diagonal.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This closes a project-internal representation obligation under an explicit cutoff; no external novelty claim is made.",
+      "scope_caveat": "The cutoff condition is part of the theorem. Coordinate agreement is not rational separation: this theorem does not provide a numerator gap, bound the analytic complement, prove target avoidance, or establish irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "renormalizedResidueAgreement_of_twice_le",
+          "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
+          "line": 329
+        }
+      ]
+    },
+    {
+      "id": "a_uniform_reduced_numerator_gap_forces_a_full_target_miss",
+      "canonical_statement": "Fix H,D and a natural m. If the reduced numerator of lambertProjectedDiagonalRat(H,D) stays at distance at least m from every integer multiple of its reduced denominator, and the Lambert square-complement bound multiplied by that denominator is strictly less than m, then ScaleFullTargetHit(H) is false.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z67_renormalized_center",
+        "z67_numerator_gap_consumer",
+        "z67_authority_boundary"
+      ],
+      "open_antecedents": [
+        "Produce a natural m that uniformly separates the reduced numerator of lambertProjectedDiagonalRat(H,D) from every integer multiple of its reduced denominator.",
+        "Prove that the Lambert square-complement bound at H,D, after multiplication by that reduced denominator, is strictly smaller than m."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Scale the reduced rational numerator separation by the positive denominator, convert it to a real separation from every integer, and invoke the existing projected-center separation criterion for failure of the full target hit.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The deduction from a certified rational gap and a smaller analytic error is a standard separation argument; the substantive open work lies in producing the hypotheses at useful heights.",
+      "scope_caveat": "This consumer does not construct m, prove the uniform numerator gap, establish the analytic bound, produce a cofinal family of heights, or imply irrationality; its conclusion concerns one fixed height H.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "scaleFullTarget_miss_of_lambert_projected_num_gap",
+          "module": "Erdos249257/LambertProjectedNumeratorGap.lean",
+          "line": 23
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "tsum_lambert_pair_regroup_if",
+      "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
+      "line": 112,
+      "role": "statement",
+      "statement_node": "absolute_lambert_pair_regrouping_respects_arbitrary_product_filters",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper's exact shifted-tail route explicitly factors through this product-filtered Lambert regrouping."
+    },
+    {
+      "declaration": "totientTail_eq_tsum_shiftedMobiusPulse",
+      "module": "Erdos249257/TotientShiftedMobiusPulse.lean",
+      "line": 535,
+      "role": "statement",
+      "statement_node": "literal_totient_tail_is_the_exact_shifted_mobius_pulse_sum",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper displays the exact pulse formula and the Lean theorem proves it for the literal tail."
+    },
+    {
+      "declaration": "totientTail_eq_tsum_positiveForeignResidueKernel",
+      "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
+      "line": 52,
+      "role": "statement",
+      "statement_node": "literal_totient_tail_is_the_exact_positive_index_foreign_residue_kernel_sum",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper inventory identifies this exact global foreign-residue bridge, and the Lean theorem proves the displayed equality."
+    },
+    {
+      "declaration": "scaleExplicitShadow_eq_sum_divisors_residueIncrement",
+      "module": "Erdos249257/ActualForeignResidueProjection.lean",
+      "line": 338,
+      "role": "statement",
+      "statement_node": "explicit_mobius_shadow_is_exactly_the_divisor_residue_channel_sum",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper and theorem identify the finite divisor residue channels with the explicit Möbius shadow."
+    },
+    {
+      "declaration": "renormalizedResidueAgreement_of_twice_le",
+      "module": "Erdos249257/TotientShiftedMobiusForeignBridge.lean",
+      "line": 329,
+      "role": "statement",
+      "statement_node": "renormalized_residue_projection_equals_the_lambert_center_past_twice_the_height",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The exact theorem bounds the paper table's shorthand to coordinate agreement for H>0 and 2H≤D."
+    },
+    {
+      "declaration": "scaleFullTarget_miss_of_lambert_projected_num_gap",
+      "module": "Erdos249257/LambertProjectedNumeratorGap.lean",
+      "line": 23,
+      "role": "statement",
+      "statement_node": "a_uniform_reduced_numerator_gap_forces_a_full_target_miss",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper's numerator-gap route and exact Lean theorem make this the separation consumer downstream of the coordinate layer."
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "literal_totient_tail_is_the_exact_shifted_mobius_pulse_sum",
+      "to": "absolute_lambert_pair_regrouping_respects_arbitrary_product_filters",
+      "relation": "generated_by",
+      "basis": "The shifted-pulse theorem applies the generic restricted Lambert regrouping to the strict-tail predicate and then evaluates the divisor fibres."
+    },
+    {
+      "from": "literal_totient_tail_is_the_exact_positive_index_foreign_residue_kernel_sum",
+      "to": "literal_totient_tail_is_the_exact_shifted_mobius_pulse_sum",
+      "relation": "reformulates",
+      "basis": "The foreign-residue theorem rewrites the shifted-pulse sum pointwise through positiveForeignResidueKernel_eq_shiftedMobiusPulseTerm."
+    },
+    {
+      "from": "explicit_mobius_shadow_is_exactly_the_divisor_residue_channel_sum",
+      "to": "literal_totient_tail_is_the_exact_positive_index_foreign_residue_kernel_sum",
+      "relation": "complements",
+      "basis": "The finite shadow identity controls the divisor-indexed residue channels, while the global kernel identity controls the complete positive-index tail coordinate."
+    },
+    {
+      "from": "renormalized_residue_projection_equals_the_lambert_center_past_twice_the_height",
+      "to": "literal_totient_tail_is_the_exact_positive_index_foreign_residue_kernel_sum",
+      "relation": "generated_by",
+      "basis": "The agreement proof uses the global foreign-residue kernel identity as its exact infinite-tail representation input, together with additional tail identities."
+    },
+    {
+      "from": "renormalized_residue_projection_equals_the_lambert_center_past_twice_the_height",
+      "to": "explicit_mobius_shadow_is_exactly_the_divisor_residue_channel_sum",
+      "relation": "generated_by",
+      "basis": "The agreement proof replaces the divisor part of the finite residue split by scaleExplicitShadow using this exact identity, alongside other tail inputs."
+    },
+    {
+      "from": "a_uniform_reduced_numerator_gap_forces_a_full_target_miss",
+      "to": "renormalized_residue_projection_equals_the_lambert_center_past_twice_the_height",
+      "relation": "complements",
+      "basis": "Coordinate agreement identifies the residue and Lambert centers; the numerator-gap theorem is a distinct conditional separation consumer and must not be conflated with that agreement."
+    }
+  ]
+}
