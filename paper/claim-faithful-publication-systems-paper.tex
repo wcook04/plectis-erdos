@@ -776,12 +776,16 @@ generated one, and no generated test changes in the opposite direction.  A
 person must still confirm the report~\cite{cascade}.  Unlike this checker,
 it can inspect unrecorded documentation.
 
-Mutation testing asks whether tests detect deliberately introduced
-faults~\cite{demillo,jiaharman}.  The deliberately wrong copies in
+Mutation testing deliberately seeds faults into a program and asks whether
+tests distinguish the resulting mutants from the original~\cite{demillo};
+Jia and Harman give the process and its mutation-score denominator
+explicitly~\cite[pp.~649, 652]{jiaharman}.  The deliberately wrong copies in
 Section~\ref{sec:failure} serve that narrower purpose: a known wrong input
 must continue to fail.  The ten-edit exercise is a small, hand-authored
 mutation run.  Since nine edits were not rerun after repair, it gives no
-post-repair detection rate.
+post-repair detection rate and no mutation-adequacy score: the edits are
+selected cases, not a systematic operator set with equivalent-mutant
+accounting.
 
 Requirements traceability follows a requirement from its origin through
 development, deployment, use, and revision~\cite{gotel}.  An assurance case
