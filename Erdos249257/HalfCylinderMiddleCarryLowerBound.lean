@@ -1,4 +1,6 @@
 import Erdos249257.HalfCylinderLastProducerContradiction
+import Erdos249257.HalfCylinderFinalMiddleTailSocket
+import Erdos249257.HalfCylinderFiniteShadow
 import Erdos249257.HalfCylinderResetDeficitEscape
 
 /-!
@@ -29,11 +31,177 @@ namespace Erdos249257
 
 open Set Filter
 open HalfCylinderIntegerGreedy
+open HalfCylinderFiniteShadow
 open scoped BigOperators
 
 noncomputable section
 
 /-! ## A sharp tail bound for finite supports -/
+
+/-- The first four future coefficient rows form a locally usable lower
+surface for the complete binary tail.  Keeping this next to the forced-
+divisor lemma lets later cell sieves combine exact divisibility at four rows
+without reopening the analytic `tsum`. -/
+theorem four_coeff_lower_le_binaryCoeffTail
+    (A : Set ℕ) (N : ℕ) :
+    (supportCoeff A (N + 1) : ℝ) / 2 +
+          (supportCoeff A (N + 2) : ℝ) / 4 +
+          (supportCoeff A (N + 3) : ℝ) / 8 +
+          (supportCoeff A (N + 4) : ℝ) / 16 ≤
+      binaryCoeffTail (supportCoeff A) N := by
+  calc
+    (supportCoeff A (N + 1) : ℝ) / 2 +
+          (supportCoeff A (N + 2) : ℝ) / 4 +
+          (supportCoeff A (N + 3) : ℝ) / 8 +
+          (supportCoeff A (N + 4) : ℝ) / 16 =
+        finiteCoeffWindow A N 4 := by
+          norm_num [finiteCoeffWindow, Finset.sum_range_succ]
+    _ ≤ binaryCoeffTail (supportCoeff A) N :=
+      finiteCoeffWindow_le_binaryCoeffTail A N 4
+
+/-- Four rows of the lazy support already outweigh charge two unless the
+last producer depth is `2 mod 3`.  The selected divisors are the row itself,
+its cofinite half on even rows, and the forced seam ranks `2,3,6`.  This is
+the coefficient-tail version of the adjacent
+`seamRankFloorError_two_three_six_eq` phase split. -/
+theorem two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six
+    (U : Set ℕ) (D : ℕ) (hD13 : 13 ≤ D) (hU : U ⊆ Set.Iio D)
+    (h2 : 2 ∈ U) (h3 : 3 ∈ U) (h6 : 6 ∈ U)
+    (hmod : D % 3 ≠ 2) :
+    2 < binaryCoeffTail (supportCoeff (U ∪ Set.Ioi D)) (2 * D + 2) := by
+  classical
+  let B : Set ℕ := U ∪ Set.Ioi D
+  have hself (n : ℕ) (hDn : D < n) :
+      1 ≤ supportCoeff B n := by
+    have h := card_le_supportCoeff_of_forced_divisors
+      B ({n} : Finset ℕ) n (by omega)
+      (by
+        intro d hd
+        simp only [Finset.mem_singleton] at hd
+        subst d
+        exact Set.mem_union_right U (Set.mem_Ioi.mpr hDn))
+      (by simp)
+    simpa using h
+  have heven (k : ℕ) (hk : D < k) :
+      3 ≤ supportCoeff B (2 * k) := by
+    have h := card_le_supportCoeff_of_forced_divisors
+      B ({2, k, 2 * k} : Finset ℕ) (2 * k) (by omega)
+      (by
+        intro d hd
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hd
+        rcases hd with rfl | rfl | rfl
+        · exact Set.mem_union_left _ h2
+        · exact Set.mem_union_right U (Set.mem_Ioi.mpr hk)
+        · exact Set.mem_union_right U (Set.mem_Ioi.mpr (by omega)))
+      (by
+        intro d hd
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hd
+        rcases hd with rfl | rfl | rfl
+        · exact ⟨k, by omega⟩
+        · exact ⟨2, by omega⟩
+        · exact dvd_rfl)
+    have hcard : ({2, k, 2 * k} : Finset ℕ).card = 3 := by
+      have h2k : 2 ≠ k := by omega
+      have h22k : 2 ≠ 2 * k := by omega
+      have hk2k : k ≠ 2 * k := by omega
+      simp [h2k, h22k, hk2k]
+    rwa [hcard] at h
+  have hthreeSelf (n : ℕ) (hDn : D < n) (hthree : 3 ∣ n) :
+      2 ≤ supportCoeff B n := by
+    have h := card_le_supportCoeff_of_forced_divisors
+      B ({3, n} : Finset ℕ) n (by omega)
+      (by
+        intro d hd
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hd
+        rcases hd with rfl | rfl
+        · exact Set.mem_union_left _ h3
+        · exact Set.mem_union_right U (Set.mem_Ioi.mpr hDn))
+      (by
+        intro d hd
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hd
+        rcases hd with rfl | rfl
+        · exact hthree
+        · exact dvd_rfl)
+    have hcard : ({3, n} : Finset ℕ).card = 2 := by
+      have h3n : 3 ≠ n := by omega
+      simp [h3n]
+    rwa [hcard] at h
+  have hfive (k : ℕ) (hk : D < k) (hsix : 6 ∣ 2 * k) :
+      5 ≤ supportCoeff B (2 * k) := by
+    have h := card_le_supportCoeff_of_forced_divisors
+      B ({2, 3, 6, k, 2 * k} : Finset ℕ) (2 * k) (by omega)
+      (by
+        intro d hd
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hd
+        rcases hd with rfl | rfl | rfl | rfl | rfl
+        · exact Set.mem_union_left _ h2
+        · exact Set.mem_union_left _ h3
+        · exact Set.mem_union_left _ h6
+        · exact Set.mem_union_right U (Set.mem_Ioi.mpr hk)
+        · exact Set.mem_union_right U (Set.mem_Ioi.mpr (by omega)))
+      (by
+        intro d hd
+        simp only [Finset.mem_insert, Finset.mem_singleton] at hd
+        rcases hd with rfl | rfl | rfl | rfl | rfl
+        · exact ⟨k, by omega⟩
+        · exact dvd_trans (by norm_num : 3 ∣ 6) hsix
+        · exact hsix
+        · exact ⟨2, by omega⟩
+        · exact dvd_rfl)
+    have hcard : ({2, 3, 6, k, 2 * k} : Finset ℕ).card = 5 := by
+      have h2k : 2 ≠ k := by omega
+      have h22k : 2 ≠ 2 * k := by omega
+      have h3k : 3 ≠ k := by omega
+      have h32k : 3 ≠ 2 * k := by omega
+      have h6k : 6 ≠ k := by omega
+      have h62k : 6 ≠ 2 * k := by omega
+      have hk2k : k ≠ 2 * k := by omega
+      simp [h2k, h22k, h3k, h32k, h6k, h62k, hk2k]
+    rwa [hcard] at h
+  have hwindow := four_coeff_lower_le_binaryCoeffTail B (2 * D + 2)
+  have hrange : D % 3 < 3 := Nat.mod_lt _ (by norm_num)
+  interval_cases hDmod : D % 3
+  · have hc1 : 2 ≤ supportCoeff B (2 * D + 3) :=
+      hthreeSelf _ (by omega)
+        (Nat.dvd_iff_mod_eq_zero.mpr (by omega))
+    have hc2 : 3 ≤ supportCoeff B (2 * D + 4) := by
+      simpa only [show 2 * D + 4 = 2 * (D + 2) by omega] using
+        heven (D + 2) (by omega)
+    have hc3 : 1 ≤ supportCoeff B (2 * D + 5) := hself _ (by omega)
+    have hc4 : 5 ≤ supportCoeff B (2 * D + 6) := by
+      simpa only [show 2 * D + 6 = 2 * (D + 3) by omega] using
+        hfive (D + 3) (by omega)
+          (Nat.dvd_iff_mod_eq_zero.mpr (by omega))
+    norm_num only [show 2 * D + 2 + 1 = 2 * D + 3 by omega,
+      show 2 * D + 2 + 2 = 2 * D + 4 by omega,
+      show 2 * D + 2 + 3 = 2 * D + 5 by omega,
+      show 2 * D + 2 + 4 = 2 * D + 6 by omega] at hwindow
+    have hc1R : (2 : ℝ) ≤ supportCoeff B (2 * D + 3) := by exact_mod_cast hc1
+    have hc2R : (3 : ℝ) ≤ supportCoeff B (2 * D + 4) := by exact_mod_cast hc2
+    have hc3R : (1 : ℝ) ≤ supportCoeff B (2 * D + 5) := by exact_mod_cast hc3
+    have hc4R : (5 : ℝ) ≤ supportCoeff B (2 * D + 6) := by exact_mod_cast hc4
+    dsimp [B] at hwindow ⊢
+    linarith only [hwindow, hc1R, hc2R, hc3R, hc4R]
+  · have hc1 : 1 ≤ supportCoeff B (2 * D + 3) := hself _ (by omega)
+    have hc2 : 5 ≤ supportCoeff B (2 * D + 4) := by
+      simpa only [show 2 * D + 4 = 2 * (D + 2) by omega] using
+        hfive (D + 2) (by omega)
+          (Nat.dvd_iff_mod_eq_zero.mpr (by omega))
+    have hc3 : 1 ≤ supportCoeff B (2 * D + 5) := hself _ (by omega)
+    have hc4 : 3 ≤ supportCoeff B (2 * D + 6) := by
+      simpa only [show 2 * D + 6 = 2 * (D + 3) by omega] using
+        heven (D + 3) (by omega)
+    norm_num only [show 2 * D + 2 + 1 = 2 * D + 3 by omega,
+      show 2 * D + 2 + 2 = 2 * D + 4 by omega,
+      show 2 * D + 2 + 3 = 2 * D + 5 by omega,
+      show 2 * D + 2 + 4 = 2 * D + 6 by omega] at hwindow
+    have hc1R : (1 : ℝ) ≤ supportCoeff B (2 * D + 3) := by exact_mod_cast hc1
+    have hc2R : (5 : ℝ) ≤ supportCoeff B (2 * D + 4) := by exact_mod_cast hc2
+    have hc3R : (1 : ℝ) ≤ supportCoeff B (2 * D + 5) := by exact_mod_cast hc3
+    have hc4R : (3 : ℝ) ≤ supportCoeff B (2 * D + 6) := by exact_mod_cast hc4
+    dsimp [B] at hwindow ⊢
+    linarith only [hwindow, hc1R, hc2R, hc3R, hc4R]
+  · exact (hmod rfl).elim
 
 /-- A finite support contributes at most one divisor per support element. -/
 theorem supportCoeff_coe_finset_le_card
@@ -335,6 +503,94 @@ theorem seamGreedyBits_head236
   rw [if_pos h2, if_pos h3, if_neg (by omega), if_neg (by omega),
     if_pos h6]
 
+/-- The next greedy decision is forced one row later.  The denominator
+identity `1/3 + 1/7 + 1/63 + 1/127 = 4000/8001` leaves exactly enough room
+below one half once `s ≥ 14`. -/
+theorem truncatedMersenneWeight_two_three_six_seven_le_target
+    (s : ℕ) (hs : 14 ≤ s) :
+    truncatedMersenneWeight s 2 + truncatedMersenneWeight s 3 +
+        truncatedMersenneWeight s 6 + truncatedMersenneWeight s 7 ≤
+      seamSubsetTarget s := by
+  have hpow : 8001 ≤ 2 ^ (s - 1) := by
+    have hexp : 13 ≤ s - 1 := by omega
+    have hmono : 2 ^ 13 ≤ 2 ^ (s - 1) :=
+      Nat.pow_le_pow_right (by norm_num) hexp
+    norm_num at hmono ⊢
+    omega
+  have hside : 8001 * 2 ^ s ≤ 2 ^ (2 * s - 1) := by
+    have hmul := Nat.mul_le_mul_right (2 ^ s) hpow
+    calc
+      8001 * 2 ^ s ≤ 2 ^ (s - 1) * 2 ^ s := hmul
+      _ = 2 ^ (2 * s - 1) := by
+        rw [← pow_add]
+        congr 1
+        omega
+  have hfour : 4 ^ s = 2 * 2 ^ (2 * s - 1) := by
+    calc
+      4 ^ s = 2 ^ (2 * s) := by
+        rw [show 4 = 2 ^ 2 by norm_num, pow_mul]
+      _ = 2 ^ ((2 * s - 1) + 1) := by congr 1 <;> omega
+      _ = 2 * 2 ^ (2 * s - 1) := by
+        rw [pow_succ]
+        ring
+  have hw2 : 3 * truncatedMersenneWeight s 2 ≤ 4 ^ s := by
+    change 3 * (4 ^ s / 3) ≤ 4 ^ s
+    simpa [Nat.mul_comm] using Nat.div_mul_le_self (4 ^ s) 3
+  have hw3 : 7 * truncatedMersenneWeight s 3 ≤ 4 ^ s := by
+    change 7 * (4 ^ s / 7) ≤ 4 ^ s
+    simpa [Nat.mul_comm] using Nat.div_mul_le_self (4 ^ s) 7
+  have hw6 : 63 * truncatedMersenneWeight s 6 ≤ 4 ^ s := by
+    change 63 * (4 ^ s / 63) ≤ 4 ^ s
+    simpa [Nat.mul_comm] using Nat.div_mul_le_self (4 ^ s) 63
+  have hw7 : 127 * truncatedMersenneWeight s 7 ≤ 4 ^ s := by
+    change 127 * (4 ^ s / 127) ≤ 4 ^ s
+    simpa [Nat.mul_comm] using Nat.div_mul_le_self (4 ^ s) 127
+  unfold seamSubsetTarget
+  omega
+
+/-- List-level normal form exposing the newly forced rank seven. -/
+theorem seamGreedyBits_head2367
+    (s : ℕ) (hs : 14 ≤ s) :
+    integerGreedyBits (seamWeights s) (seamSubsetTarget s) =
+      true :: true :: false :: false :: true :: true ::
+        integerGreedyBits (seamWeightsFrom s 8)
+          (seamSubsetTarget s - truncatedMersenneWeight s 2 -
+            truncatedMersenneWeight s 3 - truncatedMersenneWeight s 6 -
+            truncatedMersenneWeight s 7) := by
+  have htake := truncatedMersenneWeight_two_three_six_seven_le_target s hs
+  rw [seamGreedyBits_head236 s (by omega : 13 ≤ s),
+    seamWeightsFrom_eq_cons (by omega : 7 < s)]
+  simp only [integerGreedyBits]
+  rw [if_pos (by omega)]
+
+/-- Rank seven is a fourth mandatory selected seam rank from row fourteen
+onward.  It is kept separate from the established `2,3,6` interface so
+downstream proofs can adopt the stronger sieve without API churn. -/
+theorem seven_mem_seamGreedySupport
+    (s : ℕ) (hs : 14 ≤ s) :
+    7 ∈ seamWordSupport (seamGreedyWord s) := by
+  have hbits := seamGreedyBits_head2367 s hs
+  apply mem_seamWordSupport_iff.mpr
+  refine ⟨⟨5, by omega⟩, ?_, by norm_num⟩
+  simp [seamGreedyWord, SeamRowWord.ofList, hbits]
+
+/-- The two ranks between the forced `3` and `6` decisions are genuinely
+skipped.  This local negative interface lets the residual-pulse route turn
+"not one of `2,3,6`" into the useful lower bound `7 ≤ d` without reopening
+the list-level greedy calculation. -/
+theorem four_five_not_mem_seamGreedySupport
+    (s : ℕ) (hs : 13 ≤ s) :
+    4 ∉ seamWordSupport (seamGreedyWord s) ∧
+      5 ∉ seamWordSupport (seamGreedyWord s) := by
+  have hbits := seamGreedyBits_head236 s hs
+  constructor
+  · apply (not_mem_seamWordSupport_iff_false
+      (seamGreedyWord s) (by omega) (by omega)).2
+    simp [seamGreedyWord, SeamRowWord.ofList, hbits]
+  · apply (not_mem_seamWordSupport_iff_false
+      (seamGreedyWord s) (by omega) (by omega)).2
+    simp [seamGreedyWord, SeamRowWord.ofList, hbits]
+
 /-- Ranks `2`, `3`, and `6` are mandatory selected ranks in every concrete
 seam word from row thirteen onward. -/
 theorem two_three_six_mem_seamGreedySupport
@@ -435,6 +691,42 @@ theorem seamRankFloorError_two_three_six_le_nextFloorError
         exact seamRankFloorError_nonneg
           (by have := (seamWordSupport_below hd).1; omega)
 
+/-- Exact final-cell routing for the first surviving middle charge.  The
+analytic socket in `HalfCylinderFinalMiddleCellEscape` says charge `-2`
+forces the lazy coefficient tail below two; the four-row `2,3,6` sieve above
+forces it above two in the other residue classes. -/
+theorem finalMiddleCell_neg_two_forces_mod_three_two
+    (D : ℕ) (hD13 : 13 ≤ D)
+    (hone : 1 ∉
+      (↑(seamWordSupport (seamGreedyWord D)) : Set ℕ) ∪ Set.Ioi D)
+    (hseries :
+      erdosSupportSeries 2
+          ((↑(seamWordSupport (seamGreedyWord D)) : Set ℕ) ∪ Set.Ioi D) <
+        (1 : ℝ) / 2)
+    (hcell :
+      producerCarry
+          (insert D
+            (↑(seamWordSupport (seamGreedyWord D)) : Set ℕ)) D = -2) :
+    D % 3 = 2 := by
+  let U : Set ℕ := ↑(seamWordSupport (seamGreedyWord D))
+  have hU : U ⊆ Set.Iio D := by
+    intro d hd
+    exact (seamWordSupport_below hd).2
+  have hmem := two_three_six_mem_seamGreedySupport D hD13
+  by_contra hmod
+  have hlower :
+      2 < binaryCoeffTail (supportCoeff (U ∪ Set.Ioi D)) (2 * D + 2) :=
+    two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six
+      U D hD13 hU hmem.1 hmem.2.1 hmem.2.2 hmod
+  have hupper :
+      binaryCoeffTail (supportCoeff (U ∪ Set.Ioi D)) (2 * D + 2) < 2 := by
+    apply binaryCoeffTail_union_Ioi_lt_two_of_producerCarry_eq_neg_two
+      U D (by omega) hU
+    · simpa [U] using hone
+    · simpa [U] using hseries
+    · simpa [U] using hcell
+  linarith
+
 /-- Pulse remaining after deleting the three forced low ranks. -/
 def seamResidualPulse236 (s : ℕ) : ℕ :=
   ∑ d ∈ (((seamWordSupport (seamGreedyWord s)).erase 2).erase 3).erase 6,
@@ -493,6 +785,575 @@ theorem wordPulse_eq_three_add_seamResidualPulse236
     _ = 3 + seamResidualPulse236 s := by
       rw [hp2, hp3, hp6]
       simp [seamResidualPulse236, S]
+
+/-- Charge `-1` fixes the seam pulse to the residue class one modulo four.
+This is the exact arithmetic information hidden by the affine carry formula. -/
+theorem wordPulse_mod_four_eq_one_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 5 ≤ s)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    wordPulse s (seamGreedyWord s).toNatWord % 4 = 1 := by
+  have hcarry := producerCarry_insert_seamWordSupport_eq
+    hs (seamGreedyWord s)
+  rw [hcell] at hcarry
+  omega
+
+/-- In the surviving `s ≡ 2 (mod 3)` phase, charge `-1` therefore forces
+the pulse outside the mandatory `2,3,6` ranks to be two modulo four. -/
+theorem seamResidualPulse236_mod_four_eq_two_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    seamResidualPulse236 s % 4 = 2 := by
+  have hpulse := wordPulse_eq_three_add_seamResidualPulse236 s hs hmod
+  have hpmod := wordPulse_mod_four_eq_one_of_producerCarry_eq_neg_one
+    s (by omega) hcell
+  omega
+
+/-- Consequently a `-1` cell in that phase must contain at least two units
+of genuinely additional boundary pulse beyond the forced low ranks. -/
+theorem two_le_seamResidualPulse236_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    2 ≤ seamResidualPulse236 s := by
+  have hres :=
+    seamResidualPulse236_mod_four_eq_two_of_producerCarry_eq_neg_one
+      s hs hmod hcell
+  omega
+
+/-- The residual pulse forced by a `-1` cell is carried by an actual selected
+rank `d ≥ 7` on one of the two new incidence boundaries.  This consumes
+`two_le_seamResidualPulse236_of_producerCarry_eq_neg_one` and feeds the next
+divisor-incidence/tail sieve: the congruence obstruction is therefore not an
+abstract pulse count but a concrete extra divisor of `2*s+1` or `2*s+2`. -/
+theorem exists_high_boundary_divisor_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    ∃ d : ℕ,
+      d ∈ seamWordSupport (seamGreedyWord s) ∧
+        7 ≤ d ∧ d < s ∧ (d ∣ 2 * s + 1 ∨ d ∣ 2 * s + 2) := by
+  classical
+  let R := (((seamWordSupport (seamGreedyWord s)).erase 2).erase 3).erase 6
+  have hres : 2 ≤ ∑ d ∈ R, rowPulse s d := by
+    simpa [R, seamResidualPulse236] using
+      two_le_seamResidualPulse236_of_producerCarry_eq_neg_one
+        s hs hmod hcell
+  have hexists : ∃ d ∈ R, 0 < rowPulse s d := by
+    by_contra hnot
+    have hzero : ∑ d ∈ R, rowPulse s d = 0 := by
+      apply Finset.sum_eq_zero
+      intro d hd
+      exact Nat.eq_zero_of_not_pos fun hpos => hnot ⟨d, hd, hpos⟩
+    omega
+  obtain ⟨d, hdR, hdpulse⟩ := hexists
+  have hdErase6 := Finset.mem_erase.mp hdR
+  have hdErase3 := Finset.mem_erase.mp hdErase6.2
+  have hdErase2 := Finset.mem_erase.mp hdErase3.2
+  have hdmem : d ∈ seamWordSupport (seamGreedyWord s) := hdErase2.2
+  have hdbounds := seamWordSupport_below hdmem
+  have hskip := four_five_not_mem_seamGreedySupport s hs
+  have hdne4 : d ≠ 4 := by
+    intro hd4
+    subst d
+    exact hskip.1 hdmem
+  have hdne5 : d ≠ 5 := by
+    intro hd5
+    subst d
+    exact hskip.2 hdmem
+  have hd7 : 7 ≤ d := by
+    omega
+  have hddiv : d ∣ 2 * s + 1 ∨ d ∣ 2 * s + 2 := by
+    by_contra hnot
+    rcases not_or.mp hnot with ⟨hodd, heven⟩
+    simp [rowPulse, hodd, heven] at hdpulse
+  exact ⟨d, hdmem, hd7, hdbounds.2, hddiv⟩
+
+/-- The weighted residual pulse has the exact multiplicity dichotomy needed
+by later tail sieves.  Either one selected high rank hits the odd boundary
+`2*s+1` (and contributes pulse weight two), or at least two distinct selected
+high ranks hit the even boundary `2*s+2` (each contributing weight one).
+This refines the preceding existence theorem without incorrectly identifying
+pulse magnitude with the number of selected ranks. -/
+theorem high_boundary_divisor_dichotomy_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    (∃ d : ℕ,
+        d ∈ seamWordSupport (seamGreedyWord s) ∧
+          7 ≤ d ∧ d < s ∧ d ∣ 2 * s + 1) ∨
+      ∃ d e : ℕ,
+        d ∈ seamWordSupport (seamGreedyWord s) ∧
+          e ∈ seamWordSupport (seamGreedyWord s) ∧
+          7 ≤ d ∧ 7 ≤ e ∧ d < s ∧ e < s ∧ d ≠ e ∧
+          d ∣ 2 * s + 2 ∧ e ∣ 2 * s + 2 := by
+  classical
+  let R := (((seamWordSupport (seamGreedyWord s)).erase 2).erase 3).erase 6
+  have hres : 2 ≤ ∑ d ∈ R, rowPulse s d := by
+    simpa [R, seamResidualPulse236] using
+      two_le_seamResidualPulse236_of_producerCarry_eq_neg_one
+        s hs hmod hcell
+  have hskip := four_five_not_mem_seamGreedySupport s hs
+  have hrank (d : ℕ) (hdR : d ∈ R) :
+      d ∈ seamWordSupport (seamGreedyWord s) ∧ 7 ≤ d ∧ d < s := by
+    have hdErase6 := Finset.mem_erase.mp hdR
+    have hdErase3 := Finset.mem_erase.mp hdErase6.2
+    have hdErase2 := Finset.mem_erase.mp hdErase3.2
+    have hdmem : d ∈ seamWordSupport (seamGreedyWord s) := hdErase2.2
+    have hdbounds := seamWordSupport_below hdmem
+    have hdne4 : d ≠ 4 := by
+      intro hd4
+      subst d
+      exact hskip.1 hdmem
+    have hdne5 : d ≠ 5 := by
+      intro hd5
+      subst d
+      exact hskip.2 hdmem
+    exact ⟨hdmem, by omega, hdbounds.2⟩
+  by_cases hodd : ∃ d ∈ R, d ∣ 2 * s + 1
+  · obtain ⟨d, hdR, hddiv⟩ := hodd
+    obtain ⟨hdmem, hd7, hdlt⟩ := hrank d hdR
+    exact Or.inl ⟨d, hdmem, hd7, hdlt, hddiv⟩
+  · have hexists : ∃ d ∈ R, 0 < rowPulse s d := by
+      by_contra hnot
+      have hzero : ∑ d ∈ R, rowPulse s d = 0 := by
+        apply Finset.sum_eq_zero
+        intro d hd
+        exact Nat.eq_zero_of_not_pos fun hpos => hnot ⟨d, hd, hpos⟩
+      omega
+    obtain ⟨d, hdR, hdpulse⟩ := hexists
+    have hdodd : ¬ d ∣ 2 * s + 1 := by
+      intro hddiv
+      exact hodd ⟨d, hdR, hddiv⟩
+    have hdeven : d ∣ 2 * s + 2 := by
+      by_contra hddiv
+      simp [rowPulse, hdodd, hddiv] at hdpulse
+    have hdpulse_eq : rowPulse s d = 1 := by
+      simp [rowPulse, hdodd, hdeven]
+    have hsecond : ∃ e ∈ R, e ≠ d ∧ e ∣ 2 * s + 2 := by
+      by_contra hnone
+      have heven_none : ∀ e ∈ R, e ≠ d → ¬ e ∣ 2 * s + 2 := by
+        intro e heR hne hediv
+        exact hnone ⟨e, heR, hne, hediv⟩
+      have hsumErase : ∑ e ∈ R.erase d, rowPulse s e = 0 := by
+        apply Finset.sum_eq_zero
+        intro e heErase
+        have heData := Finset.mem_erase.mp heErase
+        have heodd : ¬ e ∣ 2 * s + 1 := by
+          intro hediv
+          exact hodd ⟨e, heData.2, hediv⟩
+        have heeven := heven_none e heData.2 heData.1
+        simp [rowPulse, heodd, heeven]
+      have hsum : ∑ e ∈ R, rowPulse s e = 1 := by
+        calc
+          ∑ e ∈ R, rowPulse s e =
+              rowPulse s d + ∑ e ∈ R.erase d, rowPulse s e :=
+            (Finset.add_sum_erase _ _ hdR).symm
+          _ = 1 := by rw [hdpulse_eq, hsumErase]
+      omega
+    obtain ⟨e, heR, hene, hediv⟩ := hsecond
+    obtain ⟨hdmem, hd7, hdlt⟩ := hrank d hdR
+    obtain ⟨hemem, he7, helt⟩ := hrank e heR
+    exact Or.inr
+      ⟨d, e, hdmem, hemem, hd7, he7, hdlt, helt, hene.symm, hdeven, hediv⟩
+
+/-- The boundary divisor exposed by
+`exists_high_boundary_divisor_of_producerCarry_eq_neg_one` reappears as a
+second selected divisor at a definite future row of the lazy `Ioi` tail.
+This is the local bridge from the residual-pulse sieve to coefficient-tail
+lower bounds: a hypothetical `-1` cell cannot leave every future coefficient
+at its self-divisor baseline. -/
+theorem exists_future_coeff_bump_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    ∃ d : ℕ,
+      7 ≤ d ∧ d < s ∧
+        ((d ∣ 2 * s + 1 ∧
+            2 ≤ supportCoeff
+              ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                Set.Ioi s)
+              (2 * s + 1 + d)) ∨
+          (d ∣ 2 * s + 2 ∧
+            2 ≤ supportCoeff
+              ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                Set.Ioi s)
+              (2 * s + 2 + d))) := by
+  classical
+  obtain ⟨d, hdmem, hd7, hdlt, hdiv | hdiv⟩ :=
+    exists_high_boundary_divisor_of_producerCarry_eq_neg_one
+      s hs hmod hcell
+  · refine ⟨d, hd7, hdlt, Or.inl ⟨hdiv, ?_⟩⟩
+    let B : Set ℕ :=
+      (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s
+    let n := 2 * s + 1 + d
+    have hdn : d ∣ n := by
+      simpa [n] using dvd_add hdiv (dvd_refl d)
+    have hforced := card_le_supportCoeff_of_forced_divisors
+      B ({d, n} : Finset ℕ) n (by dsimp [n]; omega)
+      (by
+        intro e he
+        simp only [Finset.mem_insert, Finset.mem_singleton] at he
+        rcases he with rfl | rfl
+        · exact Set.mem_union_left _ hdmem
+        · exact Set.mem_union_right _ (Set.mem_Ioi.mpr (by dsimp [n]; omega)))
+      (by
+        intro e he
+        simp only [Finset.mem_insert, Finset.mem_singleton] at he
+        rcases he with rfl | rfl
+        · exact hdn
+        · exact dvd_rfl)
+    have hdne : d ≠ n := by
+      dsimp [n]
+      omega
+    have hcard : ({d, n} : Finset ℕ).card = 2 := by
+      simp [hdne]
+    simpa [B, n] using (show 2 ≤ supportCoeff B n by
+      rwa [hcard] at hforced)
+  · refine ⟨d, hd7, hdlt, Or.inr ⟨hdiv, ?_⟩⟩
+    let B : Set ℕ :=
+      (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s
+    let n := 2 * s + 2 + d
+    have hdn : d ∣ n := by
+      simpa [n] using dvd_add hdiv (dvd_refl d)
+    have hforced := card_le_supportCoeff_of_forced_divisors
+      B ({d, n} : Finset ℕ) n (by dsimp [n]; omega)
+      (by
+        intro e he
+        simp only [Finset.mem_insert, Finset.mem_singleton] at he
+        rcases he with rfl | rfl
+        · exact Set.mem_union_left _ hdmem
+        · exact Set.mem_union_right _ (Set.mem_Ioi.mpr (by dsimp [n]; omega)))
+      (by
+        intro e he
+        simp only [Finset.mem_insert, Finset.mem_singleton] at he
+        rcases he with rfl | rfl
+        · exact hdn
+        · exact dvd_rfl)
+    have hdne : d ≠ n := by
+      dsimp [n]
+      omega
+    have hcard : ({d, n} : Finset ℕ).card = 2 := by
+      simp [hdne]
+    simpa [B, n] using (show 2 ≤ supportCoeff B n by
+      rwa [hcard] at hforced)
+
+/-- The future coefficient bump has a precise analytic price in the complete
+tail after row `2*s+2`: an odd-boundary divisor contributes at offset `d-1`,
+while an even-boundary divisor contributes at offset `d`.  This consumes the
+local bump theorem together with the reusable one-row projection
+`coeff_term_le_binaryCoeffTail`, and feeds the surviving `tail < 3` sieve
+without hiding the selected rank inside an oversized finite window. -/
+theorem exists_weighted_tail_bump_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    ∃ d : ℕ,
+      7 ≤ d ∧ d < s ∧
+        ((2 : ℝ) / (2 : ℝ) ^ (d - 1) ≤
+            binaryCoeffTail
+              (supportCoeff
+                ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                  Set.Ioi s))
+              (2 * s + 2) ∨
+          (2 : ℝ) / (2 : ℝ) ^ d ≤
+            binaryCoeffTail
+              (supportCoeff
+                ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                  Set.Ioi s))
+              (2 * s + 2)) := by
+  let B : Set ℕ :=
+    (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s
+  obtain ⟨d, hd7, hdlt, ⟨_, hcoeff⟩ | ⟨_, hcoeff⟩⟩ :=
+    exists_future_coeff_bump_of_producerCarry_eq_neg_one
+      s hs hmod hcell
+  · refine ⟨d, hd7, hdlt, Or.inl ?_⟩
+    have hindex : 2 * s + 2 + (d - 2) + 1 = 2 * s + 1 + d := by
+      omega
+    have hexponent : d - 2 + 1 = d - 1 := by
+      omega
+    have hterm := coeff_term_le_binaryCoeffTail B (2 * s + 2) (d - 2)
+    rw [hindex, hexponent] at hterm
+    have hcast : (2 : ℝ) ≤ supportCoeff B (2 * s + 1 + d) := by
+      exact_mod_cast hcoeff
+    exact (div_le_div_of_nonneg_right hcast (by positivity)).trans hterm
+  · refine ⟨d, hd7, hdlt, Or.inr ?_⟩
+    have hindex : 2 * s + 2 + (d - 1) + 1 = 2 * s + 2 + d := by
+      omega
+    have hexponent : d - 1 + 1 = d := by
+      omega
+    have hterm := coeff_term_le_binaryCoeffTail B (2 * s + 2) (d - 1)
+    rw [hindex, hexponent] at hterm
+    have hcast : (2 : ℝ) ≤ supportCoeff B (2 * s + 2 + d) := by
+      exact_mod_cast hcoeff
+    exact (div_le_div_of_nonneg_right hcast (by positivity)).trans hterm
+
+private theorem two_le_lazy_supportCoeff_add_of_selected_divisor
+    {s d n : ℕ}
+    (hdmem : d ∈ seamWordSupport (seamGreedyWord s))
+    (hsn : s < n) (hddiv : d ∣ n) :
+    2 ≤ supportCoeff
+      ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s)
+      (n + d) := by
+  classical
+  let B : Set ℕ :=
+    (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s
+  have hdn : d ∣ n + d := dvd_add hddiv (dvd_refl d)
+  have hforced := card_le_supportCoeff_of_forced_divisors
+    B ({d, n + d} : Finset ℕ) (n + d) (by omega)
+    (by
+      intro r hr
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hr
+      rcases hr with rfl | rfl
+      · exact Set.mem_union_left _ hdmem
+      · exact Set.mem_union_right _ (Set.mem_Ioi.mpr (by omega)))
+    (by
+      intro r hr
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hr
+      rcases hr with rfl | rfl
+      · exact hdn
+      · exact dvd_rfl)
+  have hdne : d ≠ n + d := by omega
+  have hdnot : d ∉ ({n + d} : Finset ℕ) := by
+    simpa only [Finset.mem_singleton] using hdne
+  have hcard : ({d, n + d} : Finset ℕ).card = 2 := by
+    rw [Finset.card_insert_of_notMem hdnot]
+    norm_num
+  simpa [B] using (show 2 ≤ supportCoeff B (n + d) by
+    rwa [hcard] at hforced)
+
+private theorem two_le_lazy_supportCoeff_add_mul_of_selected_divisor
+    {s d n : ℕ}
+    (hdmem : d ∈ seamWordSupport (seamGreedyWord s))
+    (hsn : s < n) (hddiv : d ∣ n) (j : ℕ) :
+    2 ≤ supportCoeff
+      ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s)
+      (n + (j + 1) * d) := by
+  have hddiv' : d ∣ n + j * d :=
+    dvd_add hddiv (dvd_mul_left d j)
+  have h := two_le_lazy_supportCoeff_add_of_selected_divisor
+    hdmem (by omega : s < n + j * d) hddiv'
+  simpa [add_mul, add_assoc] using h
+
+/-- The boundary-divisor dichotomy forces whole arithmetic-progression
+channels in the lazy coefficient word, not merely the first coefficient
+bump.  The odd boundary produces one infinite channel; otherwise the even
+boundary produces two distinct infinite channels. -/
+theorem infinite_coeff_channel_dichotomy_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    (∃ d : ℕ,
+        7 ≤ d ∧ d < s ∧
+          ∀ j : ℕ,
+            2 ≤ supportCoeff
+              ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                Set.Ioi s)
+              (2 * s + 1 + (j + 1) * d)) ∨
+      ∃ d e : ℕ,
+        7 ≤ d ∧ 7 ≤ e ∧ d < s ∧ e < s ∧ d ≠ e ∧
+          ∀ j : ℕ,
+            2 ≤ supportCoeff
+              ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                Set.Ioi s)
+              (2 * s + 2 + (j + 1) * d) ∧
+            2 ≤ supportCoeff
+              ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                Set.Ioi s)
+              (2 * s + 2 + (j + 1) * e) := by
+  rcases high_boundary_divisor_dichotomy_of_producerCarry_eq_neg_one
+      s hs hmod hcell with
+    ⟨d, hdmem, hd7, hdlt, hddiv⟩ |
+      ⟨d, e, hdmem, hemel, hd7, he7, hdlt, helt, hde, hddiv, hediv⟩
+  · refine Or.inl ⟨d, hd7, hdlt, ?_⟩
+    intro j
+    exact two_le_lazy_supportCoeff_add_mul_of_selected_divisor
+      hdmem (by omega : s < 2 * s + 1) hddiv j
+  · refine Or.inr ⟨d, e, hd7, he7, hdlt, helt, hde, ?_⟩
+    intro j
+    exact ⟨
+      two_le_lazy_supportCoeff_add_mul_of_selected_divisor
+        hdmem (by omega : s < 2 * s + 2) hddiv j,
+      two_le_lazy_supportCoeff_add_mul_of_selected_divisor
+        hemel (by omega : s < 2 * s + 2) hediv j⟩
+
+private theorem two_coeff_terms_le_binaryCoeffTail
+    (A : Set ℕ) (N j k : ℕ) (hjk : j ≠ k) :
+    (supportCoeff A (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1) +
+        (supportCoeff A (N + k + 1) : ℝ) / (2 : ℝ) ^ (k + 1) ≤
+      binaryCoeffTail (supportCoeff A) N := by
+  have hsum : Summable (fun r : ℕ ↦
+      (supportCoeff A (N + r + 1) : ℝ) / (2 : ℝ) ^ (r + 1)) :=
+    summable_coeff_shift_tail 2 N (supportCoeff A)
+      (by norm_num) (supportCoeff_le_self A)
+  unfold binaryCoeffTail
+  have hjnot : j ∉ ({k} : Finset ℕ) := by
+    simpa only [Finset.mem_singleton] using hjk
+  calc
+    (supportCoeff A (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1) +
+          (supportCoeff A (N + k + 1) : ℝ) / (2 : ℝ) ^ (k + 1) =
+        ∑ r ∈ ({j, k} : Finset ℕ),
+          (supportCoeff A (N + r + 1) : ℝ) / (2 : ℝ) ^ (r + 1) := by
+            rw [Finset.sum_insert hjnot, Finset.sum_singleton]
+    _ ≤ ∑' r : ℕ,
+          (supportCoeff A (N + r + 1) : ℝ) / (2 : ℝ) ^ (r + 1) :=
+      hsum.sum_le_tsum ({j, k} : Finset ℕ) (fun r _ ↦ by positivity)
+
+/-- **Two-channel spend of the boundary-divisor dichotomy.**  A hypothetical
+final producer cell `-1` has one of two quantitatively distinct consequences
+for the complete lazy coefficient tail.  An odd-boundary divisor contributes
+one weight-two channel at offset `d-1`.  Otherwise two distinct even-boundary
+divisors contribute two separate weight-two channels, and their dyadic prices
+add inside the same tail.
+
+Unlike `exists_weighted_tail_bump_of_producerCarry_eq_neg_one`, the even case
+does not discard the second divisor forced by the exact residual pulse. -/
+theorem weighted_tail_channel_dichotomy_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    (∃ d : ℕ,
+        7 ≤ d ∧ d < s ∧
+          (2 : ℝ) / (2 : ℝ) ^ (d - 1) ≤
+            binaryCoeffTail
+              (supportCoeff
+                ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                  Set.Ioi s))
+              (2 * s + 2)) ∨
+      ∃ d e : ℕ,
+        7 ≤ d ∧ 7 ≤ e ∧ d < s ∧ e < s ∧ d ≠ e ∧
+          (2 : ℝ) / (2 : ℝ) ^ d + (2 : ℝ) / (2 : ℝ) ^ e ≤
+            binaryCoeffTail
+              (supportCoeff
+                ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                  Set.Ioi s))
+              (2 * s + 2) := by
+  let B : Set ℕ :=
+    (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s
+  rcases high_boundary_divisor_dichotomy_of_producerCarry_eq_neg_one
+      s hs hmod hcell with
+    ⟨d, hdmem, hd7, hdlt, hddiv⟩ |
+      ⟨d, e, hdmem, hemel, hd7, he7, hdlt, helt, hde, hddiv, hediv⟩
+  · have hcoeff := two_le_lazy_supportCoeff_add_of_selected_divisor
+      hdmem (by omega : s < 2 * s + 1) hddiv
+    have hterm := coeff_term_le_binaryCoeffTail B (2 * s + 2) (d - 2)
+    have hindex : 2 * s + 2 + (d - 2) + 1 = 2 * s + 1 + d := by omega
+    have hexponent : d - 2 + 1 = d - 1 := by omega
+    rw [hindex, hexponent] at hterm
+    have hcast : (2 : ℝ) ≤ supportCoeff B (2 * s + 1 + d) := by
+      exact_mod_cast hcoeff
+    refine Or.inl ⟨d, hd7, hdlt, ?_⟩
+    exact (div_le_div_of_nonneg_right hcast (by positivity)).trans hterm
+  · have hdcoeff := two_le_lazy_supportCoeff_add_of_selected_divisor
+      hdmem (by omega : s < 2 * s + 2) hddiv
+    have hecoeff := two_le_lazy_supportCoeff_add_of_selected_divisor
+      hemel (by omega : s < 2 * s + 2) hediv
+    have hoffsets : d - 1 ≠ e - 1 := by omega
+    have hpair := two_coeff_terms_le_binaryCoeffTail
+      B (2 * s + 2) (d - 1) (e - 1) hoffsets
+    have hdindex : 2 * s + 2 + (d - 1) + 1 = 2 * s + 2 + d := by omega
+    have heindex : 2 * s + 2 + (e - 1) + 1 = 2 * s + 2 + e := by omega
+    have hdexponent : d - 1 + 1 = d := by omega
+    have heexponent : e - 1 + 1 = e := by omega
+    rw [hdindex, heindex, hdexponent, heexponent] at hpair
+    have hdcast : (2 : ℝ) ≤ supportCoeff B (2 * s + 2 + d) := by
+      exact_mod_cast hdcoeff
+    have hecast : (2 : ℝ) ≤ supportCoeff B (2 * s + 2 + e) := by
+      exact_mod_cast hecoeff
+    refine Or.inr ⟨d, e, hd7, he7, hdlt, helt, hde, ?_⟩
+    exact (add_le_add
+      (div_le_div_of_nonneg_right hdcast (by positivity))
+      (div_le_div_of_nonneg_right hecast (by positivity))).trans hpair
+
+/-- **Iterated spend of the odd boundary channel.**  The odd-boundary arm of
+`infinite_coeff_channel_dichotomy_of_producerCarry_eq_neg_one` contributes at
+least two distinct weight-two coefficients to the same complete dyadic tail,
+at the first two positive multiples of its selected divisor.  The even arm
+retains the two distinct divisor channels already forced by the residual
+pulse.  Thus neither arm is reduced to a single isolated coefficient bump. -/
+theorem iterated_weighted_tail_channel_dichotomy_of_producerCarry_eq_neg_one
+    (s : ℕ) (hs : 13 ≤ s) (hmod : (s + 1) % 3 = 0)
+    (hcell : producerCarry
+        (insert s
+          (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ)) s = -1) :
+    (∃ d : ℕ,
+        7 ≤ d ∧ d < s ∧
+          (2 : ℝ) / (2 : ℝ) ^ (d - 1) +
+              (2 : ℝ) / (2 : ℝ) ^ (2 * d - 1) ≤
+            binaryCoeffTail
+              (supportCoeff
+                ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                  Set.Ioi s))
+              (2 * s + 2)) ∨
+      ∃ d e : ℕ,
+        7 ≤ d ∧ 7 ≤ e ∧ d < s ∧ e < s ∧ d ≠ e ∧
+          (2 : ℝ) / (2 : ℝ) ^ d + (2 : ℝ) / (2 : ℝ) ^ e ≤
+            binaryCoeffTail
+              (supportCoeff
+                ((↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪
+                  Set.Ioi s))
+              (2 * s + 2) := by
+  let B : Set ℕ :=
+    (↑(seamWordSupport (seamGreedyWord s)) : Set ℕ) ∪ Set.Ioi s
+  rcases high_boundary_divisor_dichotomy_of_producerCarry_eq_neg_one
+      s hs hmod hcell with
+    ⟨d, hdmem, hd7, hdlt, hddiv⟩ |
+      ⟨d, e, hdmem, hemel, hd7, he7, hdlt, helt, hde, hddiv, hediv⟩
+  · have hcoeff0 : 2 ≤ supportCoeff B (2 * s + 1 + d) := by
+      simpa [B] using
+        (two_le_lazy_supportCoeff_add_mul_of_selected_divisor
+          hdmem (by omega : s < 2 * s + 1) hddiv 0)
+    have hcoeff1 : 2 ≤ supportCoeff B (2 * s + 1 + 2 * d) := by
+      simpa [B] using
+        (two_le_lazy_supportCoeff_add_mul_of_selected_divisor
+          hdmem (by omega : s < 2 * s + 1) hddiv 1)
+    have hoffsets : d - 2 ≠ 2 * d - 2 := by omega
+    have hpair := two_coeff_terms_le_binaryCoeffTail
+      B (2 * s + 2) (d - 2) (2 * d - 2) hoffsets
+    have hindex0 : 2 * s + 2 + (d - 2) + 1 = 2 * s + 1 + d := by omega
+    have hindex1 : 2 * s + 2 + (2 * d - 2) + 1 =
+        2 * s + 1 + 2 * d := by omega
+    have hexponent0 : d - 2 + 1 = d - 1 := by omega
+    have hexponent1 : 2 * d - 2 + 1 = 2 * d - 1 := by omega
+    rw [hindex0, hindex1, hexponent0, hexponent1] at hpair
+    have hcast0 : (2 : ℝ) ≤ supportCoeff B (2 * s + 1 + d) := by
+      exact_mod_cast hcoeff0
+    have hcast1 : (2 : ℝ) ≤ supportCoeff B (2 * s + 1 + 2 * d) := by
+      exact_mod_cast hcoeff1
+    refine Or.inl ⟨d, hd7, hdlt, ?_⟩
+    exact (add_le_add
+      (div_le_div_of_nonneg_right hcast0 (by positivity))
+      (div_le_div_of_nonneg_right hcast1 (by positivity))).trans hpair
+  · have hdcoeff := two_le_lazy_supportCoeff_add_of_selected_divisor
+      hdmem (by omega : s < 2 * s + 2) hddiv
+    have hecoeff := two_le_lazy_supportCoeff_add_of_selected_divisor
+      hemel (by omega : s < 2 * s + 2) hediv
+    have hoffsets : d - 1 ≠ e - 1 := by omega
+    have hpair := two_coeff_terms_le_binaryCoeffTail
+      B (2 * s + 2) (d - 1) (e - 1) hoffsets
+    have hdindex : 2 * s + 2 + (d - 1) + 1 = 2 * s + 2 + d := by omega
+    have heindex : 2 * s + 2 + (e - 1) + 1 = 2 * s + 2 + e := by omega
+    have hdexponent : d - 1 + 1 = d := by omega
+    have heexponent : e - 1 + 1 = e := by omega
+    rw [hdindex, heindex, hdexponent, heexponent] at hpair
+    have hdcast : (2 : ℝ) ≤ supportCoeff B (2 * s + 2 + d) := by
+      exact_mod_cast hdcoeff
+    have hecast : (2 : ℝ) ≤ supportCoeff B (2 * s + 2 + e) := by
+      exact_mod_cast hecoeff
+    refine Or.inr ⟨d, e, hd7, he7, hdlt, helt, hde, ?_⟩
+    exact (add_le_add
+      (div_le_div_of_nonneg_right hdcast (by positivity))
+      (div_le_div_of_nonneg_right hecast (by positivity))).trans hpair
 
 /-! ## The exact middle-producer tail -/
 
@@ -1760,6 +2621,35 @@ theorem middleProducer_allRight_landingExcess_window
   norm_num [Nat.cast_add, Nat.cast_mul] at hupper ⊢
   exact hupper
 
+/-- Exact additive recurrence on the middle branch.  Keeping the pulse on
+the left removes the truncated subtraction from `nextRemainder_trichotomy`
+and exposes the full dyadic recovery term used by late-row arguments. -/
+theorem seamMiddleBranch_nextRemainder_add_belowPulse_eq
+    {s : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight) :
+    seamIntegerGreedyRemainder (s + 1) +
+        (seamAdjacentCut s hs).belowPulse =
+      4 * seamIntegerGreedyRemainder s + 2 ^ (s + 1) := by
+  classical
+  have hpulse :=
+    (seamPerturbedFamily s (by omega)).pulse_le
+      (seamAdjacentCut s hs).below
+  change (seamAdjacentCut s hs).belowPulse ≤ 2 * (s - 2) at hpulse
+  have hnext := (seamAdjacentCut s hs).nextRemainder_trichotomy
+  rw [if_neg hncarry, if_pos hmiddle,
+    seamAdjacentCut_nextRemainder hs] at hnext
+  change seamIntegerGreedyRemainder (s + 1) =
+      4 * (seamAdjacentCut s hs).remainder + 2 ^ (s + 1) -
+        (seamAdjacentCut s hs).belowPulse at hnext
+  have hpow := three_mul_le_two_pow_succ hs
+  rw [seamAdjacentCut_remainder hs] at hnext
+  omega
+
 /-- A middle branch cannot itself create a row-scale-small successor.  This
 uses no lower bound on the source remainder. -/
 theorem seamMiddleBranch_nextRemainder_ge_row
@@ -2100,6 +2990,71 @@ theorem three_mul_remainder_add_overshoot_eq_exactLateGap
   dsimp [lower, upper] at hlower hgap hupperGt hcandidateAbove hcandidateWindow habove hcapOver ⊢
   omega
 
+/-- The terminal predecessor never contributes to the row pulse once the
+row is at least six.  Indeed, after subtracting twice the candidate divisor,
+the two new incidence indices leave the fixed remainders three and four,
+both strictly smaller than `s - 1`. -/
+theorem rowPulse_terminalPred_eq_zero
+    {s : ℕ} (hs : 6 ≤ s) :
+    rowPulse s (s - 1) = 0 := by
+  have hodd : ¬ s - 1 ∣ 2 * s + 1 := by
+    intro hdiv
+    have htwice : s - 1 ∣ 2 * (s - 1) := ⟨2, by omega⟩
+    have hrem : s - 1 ∣ (2 * s + 1) - 2 * (s - 1) :=
+      Nat.dvd_sub hdiv htwice
+    have heq : (2 * s + 1) - 2 * (s - 1) = 3 := by omega
+    rw [heq] at hrem
+    have hle : s - 1 ≤ 3 := Nat.le_of_dvd (by norm_num) hrem
+    omega
+  have heven : ¬ s - 1 ∣ 2 * s + 2 := by
+    intro hdiv
+    have htwice : s - 1 ∣ 2 * (s - 1) := ⟨2, by omega⟩
+    have hrem : s - 1 ∣ (2 * s + 2) - 2 * (s - 1) :=
+      Nat.dvd_sub hdiv htwice
+    have heq : (2 * s + 2) - 2 * (s - 1) = 4 := by omega
+    rw [heq] at hrem
+    have hle : s - 1 ≤ 4 := Nat.le_of_dvd (by norm_num) hrem
+    omega
+  simp [rowPulse, hodd, heven]
+
+/-- If the largest false rank is the terminal predecessor, the explicit
+late-gap formula collapses to a constant correction: the adjacent remainder
+and overshoot add to exactly `2^(s+1) + 4`. -/
+theorem remainder_add_overshoot_eq_of_terminalLargestFalse
+    {s : ℕ} (hs : 6 ≤ s)
+    (hd : IsLargestFalseRank (seamGreedyWord s) (s - 1)) :
+    (seamAdjacentCut s (by omega)).remainder +
+        (seamAdjacentCut s (by omega)).overshoot =
+      2 ^ (s + 1) + 4 := by
+  have hgap := three_mul_remainder_add_overshoot_eq_exactLateGap
+    (s := s) (d := s - 1) (by omega) hd (by omega)
+  have hsub : s - (s - 1) = 1 := by omega
+  rw [hsub] at hgap
+  have hthree :
+      3 * ((seamAdjacentCut s (by omega)).remainder +
+          (seamAdjacentCut s (by omega)).overshoot) =
+        3 * (2 ^ (s + 1) + 4) := by
+    calc
+      3 * ((seamAdjacentCut s (by omega)).remainder +
+          (seamAdjacentCut s (by omega)).overshoot) =
+          3 * 2 ^ (s + 1) + 2 * 4 ^ 1 + 4 := hgap
+      _ = 3 * (2 ^ (s + 1) + 4) := by ring
+  exact Nat.eq_of_mul_eq_mul_left (by omega) hthree
+
+/-- At a terminal largest false rank the upper replacement has exactly the
+same pulse as the greedy lower word.  Thus the terminal reset carries no
+hidden incidence correction. -/
+theorem seamAdjacentCut_abovePulse_eq_belowPulse_of_terminalLargestFalse
+    {s : ℕ} (hs : 6 ≤ s)
+    (hd : IsLargestFalseRank (seamGreedyWord s) (s - 1)) :
+    (seamAdjacentCut s (by omega)).abovePulse =
+      (seamAdjacentCut s (by omega)).belowPulse := by
+  have hpulse :=
+    seamAdjacentCut_abovePulse_eq_belowPulse_add_rowPulse_of_largestFalse_late
+      (s := s) (d := s - 1) (by omega) hd (by omega)
+  rw [rowPulse_terminalPred_eq_zero hs, add_zero] at hpulse
+  exact hpulse
+
 /-- Exact non-tautological reset/middle balance at a late largest false
 rank.  If `G = remainder + overshoot` is the actual adjacent gap, `E` is the
 upper reset charge, `M` the signed middle coordinate, and `ρ` the boundary
@@ -2123,6 +3078,28 @@ theorem exists_exactLateGap_upperResetCharge_add_middleCoordinate
         hs hd hlate
     push_cast
     omega
+
+/-- Terminal largest-false resets obey an exact conservation law with no
+boundary-pulse defect.  The upper reset charge plus the signed middle
+coordinate is the fixed dyadic quantity `4 * (2^(s+1) + 4) - 4`. -/
+theorem upperResetCharge_add_middleCoordinate_eq_of_terminalLargestFalse
+    {s : ℕ} (hs : 6 ≤ s)
+    (hd : IsLargestFalseRank (seamGreedyWord s) (s - 1)) :
+    (((4 * (seamAdjacentCut s (by omega)).overshoot +
+          (seamAdjacentCut s (by omega)).abovePulse : ℕ) : ℤ) +
+      (4 * ((seamAdjacentCut s (by omega)).remainder : ℤ) -
+        ((seamAdjacentCut s (by omega)).belowPulse : ℤ) - 4)) =
+      4 * ((2 ^ (s + 1) + 4 : ℕ) : ℤ) - 4 := by
+  obtain ⟨G, hG, hbalance⟩ :=
+    exists_exactLateGap_upperResetCharge_add_middleCoordinate
+      (s := s) (d := s - 1) (by omega) hd (by omega)
+  have hsub : s - (s - 1) = 1 := by omega
+  rw [hsub] at hG
+  norm_num [pow_one] at hG
+  have hGexact : G = 2 ^ (s + 1) + 4 := by omega
+  rw [hGexact, rowPulse_terminalPred_eq_zero hs] at hbalance
+  norm_num at hbalance ⊢
+  exact hbalance
 
 /-- At the first two-thirds crossing, the balance has one of two exact
 integer offsets: `4*G-2` in the odd boundary cell and `4*G-3` in the even
@@ -2204,6 +3181,37 @@ theorem seamRowSmall_middleBranch_of_largestFalse_late
   rcases hUM with hcarry | ⟨_, hmiddle⟩
   · exact False.elim (hncarry hcarry)
   · exact ⟨hncarry, hmiddle⟩
+
+/-- A late row-small state is not merely cleared at the next row.  Its
+forced middle transition recovers to within the full linear pulse budget of
+the dyadic gap, while the terminal reset preserves the late largest-skip
+invariant.  In particular, two row-small states cannot occur consecutively
+along a late largest-false orbit. -/
+theorem seamRowSmall_late_nextRemainder_recovers
+    {s d : ℕ} (hs : 5 ≤ s)
+    (hd : IsLargestFalseRank (seamGreedyWord s) d)
+    (hlate : 2 * s < 3 * d)
+    (hsmall : seamIntegerGreedyRemainder s < s) :
+    2 ^ (s + 1) - 2 * (s - 2) ≤
+        seamIntegerGreedyRemainder (s + 1) ∧
+      s + 1 ≤ seamIntegerGreedyRemainder (s + 1) ∧
+        LargestSkipLateAt (s + 1) := by
+  obtain ⟨hncarry, hmiddle⟩ :=
+    seamRowSmall_middleBranch_of_largestFalse_late
+      hs hd hlate hsmall
+  have hadd := seamMiddleBranch_nextRemainder_add_belowPulse_eq
+    hs hncarry hmiddle
+  have hpulse :=
+    (seamPerturbedFamily s (by omega)).pulse_le
+      (seamAdjacentCut s hs).below
+  change (seamAdjacentCut s hs).belowPulse ≤ 2 * (s - 2) at hpulse
+  have hpow := three_mul_le_two_pow_succ hs
+  refine ⟨by omega,
+    seamMiddleBranch_nextRemainder_ge_row hs hncarry hmiddle, ?_⟩
+  refine ⟨s,
+    seamGreedyWord_succ_isLargestFalseRank_terminal_of_middleBranch
+      s hs hncarry hmiddle, ?_⟩
+  omega
 
 /-- A late row-scale-small state resets its successor's largest false rank
 to the old terminal rank, and that rank is automatically late at the next
@@ -2918,6 +3926,33 @@ theorem seamUpperBranch_nextRemainder_le_pow
     (hcarry : (seamAdjacentCut s hs).successorCarries) :
     seamIntegerGreedyRemainder (s + 1) ≤ 2 ^ (s + 1) := by
   have hreset := seamUpperBranch_remainder_add_resetCharge_eq hs hcarry
+  omega
+
+/-- Upper resets are isolated: an upper branch cannot be followed by a
+second upper branch.  The first reset makes the next row's terminal rank
+the largest false rank; its exact terminal gap then forces the next
+overshoot far above the next upper-charge budget. -/
+theorem seamUpperBranch_next_not_successorCarries
+    {s : ℕ} (hs : 5 ≤ s)
+    (hcarry : (seamAdjacentCut s hs).successorCarries) :
+    ¬ (seamAdjacentCut (s + 1) (by omega)).successorCarries := by
+  intro hnext
+  have hdNext :=
+    seamGreedyWord_succ_isLargestFalseRank_terminal_of_upperBranch
+      s hs hcarry
+  have hgap :=
+    remainder_add_overshoot_eq_of_terminalLargestFalse
+      (s := s + 1) (by omega) hdNext
+  have hR := seamUpperBranch_nextRemainder_le_pow hs hcarry
+  rw [seamAdjacentCut_remainder (by omega)] at hgap
+  have hcharge := hnext
+  change 4 * (seamAdjacentCut (s + 1) (by omega)).overshoot +
+      (seamAdjacentCut (s + 1) (by omega)).abovePulse ≤
+        2 ^ (s + 2) at hcharge
+  have hpow : (2 : ℕ) ^ (s + 2) = 2 * 2 ^ (s + 1) := by
+    rw [show s + 2 = (s + 1) + 1 by omega, pow_succ]
+    ring
+  rw [hpow] at hgap hcharge
   omega
 
 /-- Outside the three signed cells `-3,-2,-1`, a middle successor satisfies
@@ -3797,12 +4832,32 @@ theorem half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
 #print axioms half_mem_mersenneAchievementSet_of_middleProducerCardEscape
 #print axioms half_mem_mersenneAchievementSet_of_middleProducerRowEscape
 #print axioms three_mul_le_two_pow_succ
+#print axioms seamMiddleBranch_nextRemainder_add_belowPulse_eq
 #print axioms seamMiddleBranch_nextRemainder_ge_row
+#print axioms seamRowSmall_late_nextRemainder_recovers
+#print axioms largestSkipLateAt_succ_of_rowSmall
 #print axioms seamMiddleBranch_nextRemainder_ge_expBarrier
 #print axioms seamRightBranch_preserves_expBarrier
 #print axioms seamRightRun_preserves_expBarrier
 #print axioms seamMiddleThenRightRun_expBarrier
 #print axioms seamAdjacentCut_overshoot_le_candidateExcess
+#print axioms truncatedMersenneWeight_two_three_six_seven_le_target
+#print axioms seamGreedyBits_head2367
+#print axioms seven_mem_seamGreedySupport
+#print axioms four_coeff_lower_le_binaryCoeffTail
+#print axioms two_lt_binaryCoeffTail_union_Ioi_of_forced_two_three_six
+#print axioms finalMiddleCell_neg_two_forces_mod_three_two
+#print axioms wordPulse_mod_four_eq_one_of_producerCarry_eq_neg_one
+#print axioms seamResidualPulse236_mod_four_eq_two_of_producerCarry_eq_neg_one
+#print axioms two_le_seamResidualPulse236_of_producerCarry_eq_neg_one
+#print axioms four_five_not_mem_seamGreedySupport
+#print axioms exists_high_boundary_divisor_of_producerCarry_eq_neg_one
+#print axioms high_boundary_divisor_dichotomy_of_producerCarry_eq_neg_one
+#print axioms exists_future_coeff_bump_of_producerCarry_eq_neg_one
+#print axioms exists_weighted_tail_bump_of_producerCarry_eq_neg_one
+#print axioms infinite_coeff_channel_dichotomy_of_producerCarry_eq_neg_one
+#print axioms weighted_tail_channel_dichotomy_of_producerCarry_eq_neg_one
+#print axioms iterated_weighted_tail_channel_dichotomy_of_producerCarry_eq_neg_one
 #print axioms seamUpperBranch_nextRemainder_le_pow
 #print axioms seamMiddleBranch_next_twoSided_of_not_neg_small
 #print axioms seamRightBranch_nextRemainder_le_pow_of_remainder_le

@@ -1,0 +1,360 @@
+{
+  "zone_id": "Z48",
+  "title": "Supported Mersenne achievement sets: topology, coordinate splitting, and exact volume dichotomy",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "z48_supported_mersenne_achievement_set",
+      "label": "supported Mersenne achievement set",
+      "note": "Values coded by binary Mersenne digits constrained to a prescribed support J."
+    },
+    {
+      "id": "z48_supported_set_topology",
+      "label": "supported-set topology",
+      "note": "Compactness, nowhere density, and perfectness for infinite support."
+    },
+    {
+      "id": "z48_coordinate_face_split",
+      "label": "one-coordinate face split",
+      "note": "The disjoint translate decomposition obtained by allowing one new digit."
+    },
+    {
+      "id": "z48_volume_dichotomy",
+      "label": "exact volume dichotomy",
+      "note": "Positive dyadic measure for finite codimension and zero measure for infinite codimension."
+    }
+  ],
+  "routing_bases": {
+    "supported_topology_domain_model": "The supported digit set and its closedness identify the compact source space whose continuous image is the restricted achievement set; these declarations are contextual representation and engine substrate, not separate topology conclusions.",
+    "supported_topology_image_bridge": "The exact image equality converts the subtype-range definition into the full digit-map image used by the compactness and preperfectness arguments.",
+    "supported_nowhere_density_inheritance": "The exact inclusion in the full Mersenne achievement set is the hereditary step used to transfer nowhere density to every supported set.",
+    "supported_perfectness_assembly": "Closedness and transferred preperfectness are precisely the two components assembled into the perfectness theorem at line 167.",
+    "coordinate_update_split_engine": "The exact one-coordinate update identity is the representation engine behind the disjoint two-face split and its measure consequence.",
+    "full_support_volume_anchor": "The unrestricted supported set is identified with the full measure-one achievement set, supplying the finite-codimension induction base.",
+    "finite_codimension_volume_induction": "The division-free finite-complement identity is the induction engine from repeated one-coordinate doubling to the exact dyadic volume formula.",
+    "infinite_codimension_monotone_trap": "Support monotonicity traps an infinite-complement supported set below finite-codimension faces of arbitrarily small volume."
+  },
+  "statement_nodes": [
+    {
+      "id": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense",
+      "canonical_statement": "PROVED TOPOLOGICAL GEOMETRY: supportedMersenneAchievementSet J is the range of Mersenne digit values supported on J; for every support J it is compact and nowhere dense.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z48_supported_mersenne_achievement_set",
+        "z48_supported_set_topology"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Continuous image of the closed supported digit subspace for compactness, followed by inclusion in the full nowhere-dense Mersenne achievement set.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked topology of the project-specific reciprocal-Mersenne achievement sets; no external novelty claim is made.",
+      "scope_caveat": "Compactness and nowhere density classify the set geometrically. They decide neither membership of 1/2 nor irrationality of any individual supported subseries.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "supportedMersenneAchievementSet",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 76
+        },
+        {
+          "declaration": "isCompact_supportedMersenneAchievementSet",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 90
+        },
+        {
+          "declaration": "isNowhereDense_supportedMersenneAchievementSet",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 112
+        }
+      ]
+    },
+    {
+      "id": "infinite_support_gives_a_perfect_supported_achievement_set",
+      "canonical_statement": "PROVED INFINITE-SUPPORT GEOMETRY: if J is infinite, then the supported digit subspace has no isolated points, and the supported Mersenne achievement set is perfect.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z48_supported_mersenne_achievement_set",
+        "z48_supported_set_topology"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Flip an unrestricted coordinate outside each finite basic neighbourhood, then transfer preperfectness through the continuous injective digit map and combine it with closedness.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A formal Cantor-space no-isolated-point argument specialised to supported Mersenne digit values.",
+      "scope_caveat": "The theorem is an implication from infinitude of J; these selected declarations do not prove the converse. Perfectness still makes no arithmetic classification of individual points.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "preperfect_supportedMersenneDigitSet",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 120
+        },
+        {
+          "declaration": "perfect_supportedMersenneAchievementSet",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 167
+        }
+      ]
+    },
+    {
+      "id": "allowing_one_coordinate_gives_disjoint_faces_and_doubles_volume",
+      "canonical_statement": "PROVED ONE-COORDINATE SELF-SIMILARITY: if k is not in J, the zero face supported on J and its translate by mersenneWeight (k+1) are disjoint; consequently allowing k doubles the Lebesgue measure of the supported achievement set.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z48_supported_mersenne_achievement_set",
+        "z48_coordinate_face_split"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Unique Mersenne digit coding separates the two faces; translation invariance and additivity of Lebesgue measure turn the exact split into the doubling law.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific formalisation of a standard binary-face decomposition.",
+      "scope_caveat": "The result compares measures after adding one allowed coordinate. It does not assert that an arbitrary supported set has positive measure.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "supportedMersenneAchievementSet_insert",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 203
+        },
+        {
+          "declaration": "disjoint_supportedMersenneAchievementSet_translate",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 262
+        },
+        {
+          "declaration": "volume_supportedMersenneAchievementSet_insert",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 286
+        }
+      ]
+    },
+    {
+      "id": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy",
+      "canonical_statement": "PROVED COMPLETE VOLUME CLASSIFICATION: for every J, either J is the complement of a finite set F and the supported achievement set has volume (2^|F|)^-1, or J has infinite complement and the supported achievement set has volume zero.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "257",
+      "concepts": [
+        "z48_supported_mersenne_achievement_set",
+        "z48_coordinate_face_split",
+        "z48_volume_dichotomy"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Finite-coordinate doubling from the full measure-one set, plus monotonic trapping below finite-codimension faces of arbitrarily small dyadic measure when the complement is infinite.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact Lean-checked measure classification for the supported reciprocal-Mersenne achievement sets; no priority claim is made.",
+      "scope_caveat": "Measure classifies the size of each value set, not the arithmetic nature of its points. The dichotomy does not settle Erdős #257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "volume_supportedMersenneAchievementSet_finset_compl",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 349
+        },
+        {
+          "declaration": "volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 368
+        },
+        {
+          "declaration": "volume_supportedMersenneAchievementSet_dichotomy",
+          "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+          "line": 397
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "supportedMersenneDigitSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 63,
+      "role": "representation",
+      "statement_node": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "supported_topology_domain_model"
+    },
+    {
+      "declaration": "isClosed_supportedMersenneDigitSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 66,
+      "role": "engine",
+      "statement_node": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "supported_topology_domain_model"
+    },
+    {
+      "declaration": "supportedMersenneAchievementSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 76,
+      "role": "concept",
+      "statement_node": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense"
+    },
+    {
+      "declaration": "supportedMersenneAchievementSet_eq_image",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 79,
+      "role": "representation",
+      "statement_node": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "supported_topology_image_bridge"
+    },
+    {
+      "declaration": "isCompact_supportedMersenneAchievementSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 90,
+      "role": "statement",
+      "statement_node": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense"
+    },
+    {
+      "declaration": "isClosed_supportedMersenneAchievementSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 96,
+      "role": "engine",
+      "statement_node": "infinite_support_gives_a_perfect_supported_achievement_set",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "supported_perfectness_assembly"
+    },
+    {
+      "declaration": "supportedMersenneAchievementSet_subset",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 103,
+      "role": "engine",
+      "statement_node": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "supported_nowhere_density_inheritance"
+    },
+    {
+      "declaration": "isNowhereDense_supportedMersenneAchievementSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 112,
+      "role": "statement",
+      "statement_node": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense"
+    },
+    {
+      "declaration": "preperfect_supportedMersenneDigitSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 120,
+      "role": "statement",
+      "statement_node": "infinite_support_gives_a_perfect_supported_achievement_set"
+    },
+    {
+      "declaration": "preperfect_supportedMersenneAchievementSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 150,
+      "role": "engine",
+      "statement_node": "infinite_support_gives_a_perfect_supported_achievement_set",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "supported_perfectness_assembly"
+    },
+    {
+      "declaration": "perfect_supportedMersenneAchievementSet",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 167,
+      "role": "statement",
+      "statement_node": "infinite_support_gives_a_perfect_supported_achievement_set"
+    },
+    {
+      "declaration": "positiveMersenneDigitValue_update",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 182,
+      "role": "engine",
+      "statement_node": "allowing_one_coordinate_gives_disjoint_faces_and_doubles_volume",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "coordinate_update_split_engine"
+    },
+    {
+      "declaration": "supportedMersenneAchievementSet_insert",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 203,
+      "role": "statement",
+      "statement_node": "allowing_one_coordinate_gives_disjoint_faces_and_doubles_volume"
+    },
+    {
+      "declaration": "disjoint_supportedMersenneAchievementSet_translate",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 262,
+      "role": "statement",
+      "statement_node": "allowing_one_coordinate_gives_disjoint_faces_and_doubles_volume"
+    },
+    {
+      "declaration": "supportedMersenneAchievementSet_univ",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 300,
+      "role": "representation",
+      "statement_node": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "full_support_volume_anchor"
+    },
+    {
+      "declaration": "volume_supportedMersenneAchievementSet_finset_compl_scaled",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 313,
+      "role": "engine",
+      "statement_node": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "finite_codimension_volume_induction"
+    },
+    {
+      "declaration": "volume_supportedMersenneAchievementSet_finset_compl",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 349,
+      "role": "statement",
+      "statement_node": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy"
+    },
+    {
+      "declaration": "supportedMersenneAchievementSet_mono",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 358,
+      "role": "engine",
+      "statement_node": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy",
+      "routing_origin": "authored_contextual_module_substrate",
+      "routing_basis_ref": "infinite_codimension_monotone_trap"
+    },
+    {
+      "declaration": "volume_supportedMersenneAchievementSet_insert",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 286,
+      "role": "statement",
+      "statement_node": "allowing_one_coordinate_gives_disjoint_faces_and_doubles_volume"
+    },
+    {
+      "declaration": "volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 368,
+      "role": "statement",
+      "statement_node": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy"
+    },
+    {
+      "declaration": "volume_supportedMersenneAchievementSet_dichotomy",
+      "module": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "line": 397,
+      "role": "statement",
+      "statement_node": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "infinite_support_gives_a_perfect_supported_achievement_set",
+      "to": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense",
+      "relation": "complements",
+      "basis": "For infinite J, the no-isolated-point argument supplements the compact closed geometry with perfectness; nowhere density remains valid for every J."
+    },
+    {
+      "from": "allowing_one_coordinate_gives_disjoint_faces_and_doubles_volume",
+      "to": "supported_mersenne_achievement_sets_are_compact_and_nowhere_dense",
+      "relation": "complements",
+      "basis": "The face split uses compact measurability and injective coding but adds an exact metric self-similarity statement."
+    },
+    {
+      "from": "supported_mersenne_sets_have_an_exact_finite_or_infinite_codimension_volume_dichotomy",
+      "to": "allowing_one_coordinate_gives_disjoint_faces_and_doubles_volume",
+      "relation": "generated_by",
+      "basis": "The finite-codimension branch iterates the one-coordinate doubling law; the infinite-codimension branch is obtained by monotone comparison with those finite faces."
+    }
+  ]
+}

@@ -23,11 +23,11 @@ The workflow provenance explains the release discipline; it does not imply hidde
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 649 |
-| Lean declarations | 12,855 |
-| Theorem-like declarations | 11,744 |
-| Generated certificate declarations | 2,925 |
-| Principal claim links | 299 |
+| Lean modules | 991 |
+| Lean declarations | 151,755 |
+| Theorem-like declarations | 149,807 |
+| Generated certificate declarations | 8,171 |
+| Principal claim links | 300 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json). Generated certificate
@@ -85,7 +85,7 @@ programmes, and source owners without loading the exhaustive graph.
 | `eb_full_support` | formalised here | `res:full` | `irrational_erdosSum_full_support` in `Erdos249257/CertificateKernel.lean:8000` |
 | `eb_constant` | formalised here | `res:full` | `irrational_erdosBorwein_series` in `Erdos249257/CertificateKernel.lean:8007` |
 | `support_families` | formalised here | `res:support` | `erdos257_family_factorial_instance` in `Erdos249257/CertificateKernel.lean:5754` |
-| `denominator_exclusion` | unconditional progress | `res:farey` | `tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053` in `Erdos249257/CertificateKernel.lean:18056` |
+| `denominator_exclusion` | formalised here | `res:farey` | `tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053` in `Erdos249257/CertificateKernel.lean:18056` |
 | `certificate_reduction` | conditional reduction | `res:diag` | `irrational_totient_series_of_certificate_supply` in `Erdos249257/TotientTailPeriodKiller.lean:394` |
 | `certificate_completeness` | proved here | `res:pointwisecomplete` | `exists_certifiedKill_iff_tail_diff_notMem_int` in `Erdos249257/LcmConeFlatness.lean:316` |
 | `certified_kill_instances` | verified finite instance | `res:deposits` | `certifiedKill_all_small` in `Erdos249257/TotientTailPeriodKiller.lean:404` |
@@ -101,11 +101,13 @@ settle the open proposition attached to it.
 
 ## Read by intent
 
-- **Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.** (`instant_orientation`): `docs/orientation.json` → `SCOPE.md` → `README.md`
+- **Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.** (`instant_orientation`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route instant_orientation`
+- **Navigate every committed Lean declaration and exact loaded-root dependency from a cold clone before compiling, then open a receipted workbench session when beginning proof work.** (`agent_native_corpus_navigation`): `docs/AGENT_WORKBENCH.md` → `docs/SEMANTIC_COMPILER.md` → `docs/semantic/lab/README.md`
+  - Route: `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
 - **Browse bounded claim handles by exact registry status.** (`browse_claim_status`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route browse_claim_status`
-- **Trace one mathematical claim from exposition to checked source.** (`follow_one_claim`): `docs/orientation.json` → `docs/ORIENTATION.md`
+- **Trace one mathematical claim from exposition to checked source.** (`follow_one_claim`): `docs/orientation.json`
   - Route: `python3 scripts/query_corpus.py --route follow_one_claim`
 - **See how the #249 reduction, #257 families, carry trunk, and open targets relate.** (`understand_argument_topology`): `docs/orientation.json` → `docs/SOURCE_MAP.md`
   - Route: `python3 scripts/query_corpus.py --route understand_argument_topology`
@@ -158,7 +160,7 @@ settle the open proposition attached to it.
 ## External corpus registration
 
 [`docs/corpus_descriptor.json`](corpus_descriptor.json) uses schema
-`erdos249257-corpus-descriptor/4`. The release gate keeps it below 64 KB.
+`erdos249257-corpus-descriptor/5`. The release gate keeps it below 64 KB.
 It carries release identities, content digests, principal claim and declaration
 handles, and the root module topology. Complete claims, module imports,
 declaration prose, methodology, both authored papers, and the paper-to-Lean

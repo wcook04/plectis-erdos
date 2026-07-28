@@ -1,0 +1,153 @@
+{
+  "zone_id": "Z65",
+  "title": "Erdős #257 rational-half counterexample frontier",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "universal_mersenne_subseries_irrationality",
+      "label": "universal Mersenne-subseries irrationality",
+      "note": "The assertion that every infinite reciprocal-Mersenne subseries at base two is irrational."
+    },
+    {
+      "id": "terminal_scaled_vanishing_sequence",
+      "label": "terminal scaled-vanishing sequence",
+      "note": "An open sequence of finite half words whose depths diverge and whose absolute terminal carries vanish after binary scaling."
+    },
+    {
+      "id": "rational_half_counterexample",
+      "label": "rational half counterexample",
+      "note": "An infinite support whose base-two reciprocal-Mersenne subseries is exactly one half."
+    },
+    {
+      "id": "problem_centric_counterexample_interface",
+      "label": "problem-centric counterexample interface",
+      "note": "The new ErdosProblems namespace wrapper around the existing terminal-scaled-vanishing consumer."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
+      "canonical_statement": "UniversalMersenneSubseriesIrrationality means that for every infinite set A of natural numbers, erdosSupportSeries 2 A is irrational.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "universal_mersenne_subseries_irrationality",
+        "problem_centric_counterexample_interface"
+      ],
+      "open_antecedents": [
+        "UniversalMersenneSubseriesIrrationality, the unresolved universal assertion of Erdős #257"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "problem-namespace restatement of the universal base-two subseries assertion",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The declaration restates the original problem in the expansion namespace and makes no novelty claim.",
+      "scope_caveat": "This is a definition, not a proof or disproof of the universal assertion.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "UniversalMersenneSubseriesIrrationality",
+          "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "terminal_scaled_vanishing_supplies_an_infinite_exact_half_support",
+      "canonical_statement": "Every HalfTerminalOnlyScaledVanishingSequence supplies an infinite set A with erdosSupportSeries 2 A exactly equal to one half.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "terminal_scaled_vanishing_sequence",
+        "rational_half_counterexample",
+        "problem_centric_counterexample_interface"
+      ],
+      "open_antecedents": [
+        "S : HalfTerminalOnlyScaledVanishingSequence"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "direct reuse of the terminal-scaled-vanishing compactness consumer",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The theorem is a namespace-level wrapper around exists_infinite_support_half_of_terminalScaledVanishing.",
+      "scope_caveat": "No scaled-vanishing sequence is constructed. Finite cutoff checks do not discharge the antecedent or supply an infinite counterexample.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_rational_half_counterexample_of_terminalScaledVanishing",
+          "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "terminal_scaled_vanishing_refutes_universal_mersenne_subseries_irrationality",
+      "canonical_statement": "Every HalfTerminalOnlyScaledVanishingSequence negates UniversalMersenneSubseriesIrrationality by supplying an infinite support whose series is the rational number one half.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "concepts": [
+        "terminal_scaled_vanishing_sequence",
+        "rational_half_counterexample",
+        "universal_mersenne_subseries_irrationality",
+        "problem_centric_counterexample_interface"
+      ],
+      "open_antecedents": [
+        "S : HalfTerminalOnlyScaledVanishingSequence"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "rationality of one half applied to the exact infinite-support witness",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is the immediate problem-centric consequence of the existing half-support consumer.",
+      "scope_caveat": "The theorem is conditional and does not disprove Erdős #257 without the unproved producer sequence. It adds no stronger producer than the Z12 terminal-scaled-vanishing route.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "not_universal_of_terminalScaledVanishing",
+          "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+          "line": 37
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "UniversalMersenneSubseriesIrrationality",
+      "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+      "line": 25,
+      "role": "concept",
+      "statement_node": "universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion"
+    },
+    {
+      "declaration": "exists_rational_half_counterexample_of_terminalScaledVanishing",
+      "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+      "line": 30,
+      "role": "statement",
+      "statement_node": "terminal_scaled_vanishing_supplies_an_infinite_exact_half_support"
+    },
+    {
+      "declaration": "not_universal_of_terminalScaledVanishing",
+      "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+      "line": 37,
+      "role": "statement",
+      "statement_node": "terminal_scaled_vanishing_refutes_universal_mersenne_subseries_irrationality"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "terminal_scaled_vanishing_supplies_an_infinite_exact_half_support",
+      "to": "universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
+      "relation": "complements",
+      "basis": "The exact rational half support is the counterexample object needed to negate the universal assertion, but it remains conditional on the open producer."
+    },
+    {
+      "from": "terminal_scaled_vanishing_refutes_universal_mersenne_subseries_irrationality",
+      "to": "terminal_scaled_vanishing_supplies_an_infinite_exact_half_support",
+      "relation": "generated_by",
+      "basis": "The proof obtains the infinite exact-half support from the preceding theorem and applies the rationality of one half."
+    },
+    {
+      "from": "terminal_scaled_vanishing_refutes_universal_mersenne_subseries_irrationality",
+      "to": "universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
+      "relation": "complements",
+      "basis": "The conclusion is exactly the negation of the universal predicate represented by the definition."
+    }
+  ]
+}

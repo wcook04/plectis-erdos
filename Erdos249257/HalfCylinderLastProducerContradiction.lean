@@ -164,6 +164,55 @@ private theorem lastProducer_integerGreedyBits_fourteen :
     lastProducer_seamSubsetTarget_fourteen]
   norm_num [integerGreedyBits]
 
+/-- The exact row-fourteen integer-greedy remainder. -/
+theorem seamIntegerGreedyRemainder_fourteen_eq :
+    seamIntegerGreedyRemainder 14 = 392 := by
+  rw [seamIntegerGreedyRemainder, integerGreedyRemainder,
+    lastProducer_integerGreedyBits_fourteen,
+    lastProducer_seamWeights_fourteen,
+    lastProducer_seamSubsetTarget_fourteen]
+  norm_num [weightedBoolSum]
+
+private theorem lastProducer_seamWeights_thirteen :
+    seamWeights 13 =
+      [22369621, 9586980, 4473924, 2164802, 1065220, 528416,
+        263172, 131328, 65600, 32784, 16388] := by
+  unfold seamWeights
+  rw [seamWeightsFrom_eq_cons (by norm_num : 2 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 3 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 4 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 5 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 6 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 7 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 8 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 9 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 10 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 11 < 13),
+    seamWeightsFrom_eq_cons (by norm_num : 12 < 13),
+    seamWeightsFrom_eq_nil (by norm_num : 13 ≤ 13)]
+  norm_num [truncatedMersenneWeight]
+
+private theorem lastProducer_seamSubsetTarget_thirteen :
+    seamSubsetTarget 13 = 33546240 := by
+  norm_num [seamSubsetTarget]
+
+private theorem lastProducer_integerGreedyBits_thirteen :
+    integerGreedyBits (seamWeights 13) (seamSubsetTarget 13) =
+      [true, true, false, false, true, false,
+        true, true, true, true, true] := by
+  rw [lastProducer_seamWeights_thirteen,
+    lastProducer_seamSubsetTarget_thirteen]
+  norm_num [integerGreedyBits]
+
+/-- The exact row-thirteen integer-greedy remainder. -/
+theorem seamIntegerGreedyRemainder_thirteen_eq :
+    seamIntegerGreedyRemainder 13 = 15147 := by
+  rw [seamIntegerGreedyRemainder, integerGreedyRemainder,
+    lastProducer_integerGreedyBits_thirteen,
+    lastProducer_seamWeights_thirteen,
+    lastProducer_seamSubsetTarget_thirteen]
+  norm_num [weightedBoolSum]
+
 private theorem terminal_false_thirteen :
     SeamRowWord.terminal (by omega)
       (seamGreedyWord (13 + 1)) = false := by
@@ -413,6 +462,8 @@ theorem half_mem_mersenneAchievementSet_of_middleProducerSqrtEscape
     hsqrt.toTailEscape
 
 #print axioms SeamMiddleProducerSqrtEscape.toTailEscape
+#print axioms seamIntegerGreedyRemainder_fourteen_eq
+#print axioms seamIntegerGreedyRemainder_thirteen_eq
 #print axioms one_not_mem_insert_seamWordSupport
 #print axioms insert_seamWordSupport_subset_Iic
 #print axioms exists_last_false_terminal_of_eventuallyRight

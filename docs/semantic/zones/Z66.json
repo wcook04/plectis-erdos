@@ -1,0 +1,152 @@
+{
+  "zone_id": "Z66",
+  "title": "Period-67 and period-127 finite kill deposits and denominator exclusion",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z66_fixed_period_certificates",
+      "label": "fixed period kill certificates",
+      "note": "Exact kernel-checked certifiedKill instances at periods 67 and 127 and basepoint 300."
+    },
+    {
+      "id": "z66_locked_depth_instance",
+      "label": "single locked full-depth instance",
+      "note": "One period-67 certificate whose depth equals its period; this is one matrix instance, not the global full-depth producer."
+    },
+    {
+      "id": "z66_fixed_denominator_exclusion",
+      "label": "fixed period-127 denominator class",
+      "note": "Rational denominators dividing 2^300 times 2^127-1, excluded by the fixed certificate."
+    },
+    {
+      "id": "z66_cofinality_boundary",
+      "label": "finite versus cofinal boundary",
+      "note": "Finite certificates and denominator exclusions do not establish either open cofinal supply authored in Z45."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "periods_sixty_seven_and_one_hundred_twenty_seven_have_fixed_depth_eleven_kills",
+      "canonical_statement": "Lean proves certifiedKill 67 300 11 and certifiedKill 127 300 11. These are two exact kernel-checked central-residue certificates at the common basepoint 300 and depth 11.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z66_fixed_period_certificates",
+        "z66_cofinality_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel evaluation of the certifiedKill predicate at the two displayed parameter triples.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Kernel-checked finite instances of the existing certified-kill predicate; no novelty or asymptotic claim is made.",
+      "scope_caveat": "These two fixed cells establish no cofinal supply, do not propagate to multiples, adjacent periods, or other basepoints, and do not by themselves prove irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_67_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 192
+        },
+        {
+          "declaration": "certifiedKill_127_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 211
+        }
+      ]
+    },
+    {
+      "id": "period_sixty_seven_has_one_locked_full_depth_certificate",
+      "canonical_statement": "Lean proves certifiedKill 67 300 67. Thus the matrix of the open depth-locked producer is inhabited at the single local choice d=67, N=300, and t=1.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z66_fixed_period_certificates",
+        "z66_locked_depth_instance",
+        "z66_cofinality_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel evaluation of certifiedKill at the fixed period, basepoint, and locked depth.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "One kernel-checked local instance of the matrix quantified by ApFullDepthEscape; no novelty or global producer claim is made.",
+      "scope_caveat": "One local full-depth instance does not prove ApFullDepthEscape, gives no witness for other d or N, and does not assert that depth 67 is minimal or arithmetically distinguished.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_67_300_fullDepth",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 219
+        }
+      ]
+    },
+    {
+      "id": "the_period_one_hundred_twenty_seven_kill_excludes_its_fixed_denominator_class",
+      "canonical_statement": "For every rational r, if r.den divides 2^300 * (2^127 - 1), then the binary totient series is not equal to r.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z66_fixed_period_certificates",
+        "z66_fixed_denominator_exclusion",
+        "z66_cofinality_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The generic denominator-exclusion theorem applied to the fixed certifiedKill 127 300 11 instance.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct application of the generic denominator-exclusion theorem to the fixed period-127 certificate.",
+      "scope_caveat": "The result covers only denominators dividing the displayed fixed integer. It excludes no rational outside that divisor class, does not require or prove primality of 2^127-1, and does not establish irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_127_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 255
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "certifiedKill_67_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 192,
+      "role": "finite_instance",
+      "statement_node": "periods_sixty_seven_and_one_hundred_twenty_seven_have_fixed_depth_eleven_kills"
+    },
+    {
+      "declaration": "certifiedKill_127_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 211,
+      "role": "finite_instance",
+      "statement_node": "periods_sixty_seven_and_one_hundred_twenty_seven_have_fixed_depth_eleven_kills"
+    },
+    {
+      "declaration": "certifiedKill_67_300_fullDepth",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 219,
+      "role": "finite_instance",
+      "statement_node": "period_sixty_seven_has_one_locked_full_depth_certificate"
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_127_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 255,
+      "role": "statement",
+      "statement_node": "the_period_one_hundred_twenty_seven_kill_excludes_its_fixed_denominator_class"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "period_sixty_seven_has_one_locked_full_depth_certificate",
+      "to": "periods_sixty_seven_and_one_hundred_twenty_seven_have_fixed_depth_eleven_kills",
+      "relation": "complements",
+      "basis": "Both nodes record the period-67/basepoint-300 cell at different depths: the depth-67 theorem exposes one locked-depth instance, while the depth-11 theorem records the shorter firing certificate."
+    },
+    {
+      "from": "the_period_one_hundred_twenty_seven_kill_excludes_its_fixed_denominator_class",
+      "to": "periods_sixty_seven_and_one_hundred_twenty_seven_have_fixed_depth_eleven_kills",
+      "relation": "generated_by",
+      "basis": "The denominator exclusion applies the residual generic theorem totient_series_ne_rat_of_certifiedKill to certifiedKill_127_300."
+    }
+  ]
+}

@@ -314,6 +314,131 @@ private theorem divisor_mobiusNumerator_eq_subset {r : ℕ}
     simpa [Function.id_def] using hmobius
   rw [hmobius']
 
+/-- The integral divisor expansion, normalized term-by-term as the rational
+Möbius/Mersenne sum.  This is the finite identity needed to identify the
+divisor residue channels with the explicit radical shadow. -/
+theorem sum_divisors_moebius_ratio_eq_baseMobiusShadow {r : ℕ}
+    (hr : Squarefree r) :
+    (∑ d ∈ r.divisors,
+        ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (r : ℚ) /
+          ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ))) =
+      RadicalMobiusShadow.baseMobiusShadow r := by
+  have hrpos : 0 < r := Nat.pos_of_ne_zero hr.ne_zero
+  have hnum :
+      (∑ d ∈ r.divisors,
+          ((ArithmeticFunction.moebius d : ℤ) : ℚ) *
+            ((r / d : ℕ) : ℚ) *
+              ((RadicalMobiusShadow.mersenne r /
+                RadicalMobiusShadow.mersenne d : ℕ) : ℚ)) =
+        (RadicalMobiusShadow.mobiusNumerator r : ℚ) := by
+    have hnumZ := congrArg (fun z : ℤ => (z : ℚ))
+      (divisor_mobiusNumerator_eq_subset hr)
+    push_cast at hnumZ
+    convert hnumZ using 1 <;> simp
+  rw [RadicalMobiusShadow.baseMobiusShadow, Rat.divInt_eq_div,
+    ← hnum, Finset.sum_div]
+  apply Finset.sum_congr rfl
+  intro d hdmem
+  have hdvd : d ∣ r := Nat.dvd_of_mem_divisors hdmem
+  have hdpos : 0 < d := Nat.pos_of_dvd_of_pos hdvd hrpos
+  have hMdiv : RadicalMobiusShadow.mersenne d ∣
+      RadicalMobiusShadow.mersenne r := by
+    simpa [RadicalMobiusShadow.mersenne] using
+      (Nat.pow_sub_one_dvd_pow_sub_one 2 hdvd)
+  have hMdpos : 0 < RadicalMobiusShadow.mersenne d := by
+    exact Nat.sub_pos_of_lt (Nat.one_lt_two_pow hdpos.ne')
+  have hMrpos : 0 < RadicalMobiusShadow.mersenne r := by
+    exact Nat.sub_pos_of_lt (Nat.one_lt_two_pow hrpos.ne')
+  have hdQ : (d : ℚ) ≠ 0 := by exact_mod_cast hdpos.ne'
+  have hMdQ : (RadicalMobiusShadow.mersenne d : ℚ) ≠ 0 := by
+    exact_mod_cast hMdpos.ne'
+  have hMrQ : (RadicalMobiusShadow.mersenne r : ℚ) ≠ 0 := by
+    exact_mod_cast hMrpos.ne'
+  rw [Nat.cast_div hdvd hdQ, Nat.cast_div hMdiv hMdQ]
+  field_simp [hdQ, hMdQ, hMrQ]
+  norm_cast
+
+/-- The same divisor formula at an arbitrary positive scale.  The Möbius
+coefficient kills every nonsquarefree divisor of `H`, so the remaining
+divisor set is exactly the divisor set of `rad(H)`. -/
+theorem sum_divisors_moebius_ratio_eq_scaledMobiusShadow
+    (H : ℕ) (hH : 0 < H) :
+    (∑ d ∈ H.divisors,
+        ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (H : ℚ) /
+          ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ))) =
+      (H : ℚ) * RadicalMobiusShadow.numericMobiusShadow H := by
+  let r := RadicalMobiusShadow.squarefreeKernel H
+  have hrpos : 0 < r := RadicalMobiusShadow.squarefreeKernel_pos H
+  have hrsf : Squarefree r :=
+    RadicalMobiusShadow.squarefreeKernel_squarefree H
+  have hrdvd : r ∣ H := RadicalMobiusShadow.squarefreeKernel_dvd H
+  have hdivisors :
+      H.divisors.filter Squarefree = r.divisors := by
+    ext d
+    constructor
+    · intro hdmem
+      have hdH := Nat.dvd_of_mem_divisors (Finset.mem_filter.mp hdmem).1
+      have hdsf := (Finset.mem_filter.mp hdmem).2
+      have hpf : d.primeFactors ⊆ H.primeFactors :=
+        Nat.primeFactors_mono hdH hH.ne'
+      have hdker : d ∣ r := by
+        calc
+          d = d.primeFactors.prod id :=
+            (Nat.prod_primeFactors_of_squarefree hdsf).symm
+          _ ∣ H.primeFactors.prod id :=
+            Finset.prod_dvd_prod_of_subset
+              d.primeFactors H.primeFactors id hpf
+          _ = r := by
+            simp [r, RadicalMobiusShadow.squarefreeKernel]
+      exact Nat.mem_divisors.mpr ⟨hdker, hrpos.ne'⟩
+    · intro hdmem
+      have hdr : d ∣ r := Nat.dvd_of_mem_divisors hdmem
+      apply Finset.mem_filter.mpr
+      exact ⟨Nat.mem_divisors.mpr ⟨hdr.trans hrdvd, hH.ne'⟩,
+        hrsf.squarefree_of_dvd hdr⟩
+  have hfilter :
+      (∑ d ∈ H.divisors,
+          ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (H : ℚ) /
+            ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ))) =
+        ∑ d ∈ H.divisors.filter Squarefree,
+          ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (H : ℚ) /
+            ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ)) := by
+    symm
+    apply Finset.sum_subset (Finset.filter_subset _ _)
+    intro d hdH hdnot
+    have hdsf : ¬ Squarefree d := by
+      intro hsq
+      exact hdnot (Finset.mem_filter.mpr ⟨hdH, hsq⟩)
+    simp [ArithmeticFunction.moebius_eq_zero_of_not_squarefree hdsf]
+  have hHcast : (H : ℚ) = ((H / r : ℕ) : ℚ) * (r : ℚ) := by
+    exact_mod_cast (Nat.div_mul_cancel hrdvd).symm
+  calc
+    (∑ d ∈ H.divisors,
+        ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (H : ℚ) /
+          ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ))) =
+        ∑ d ∈ H.divisors.filter Squarefree,
+          ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (H : ℚ) /
+            ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ)) := hfilter
+    _ = ∑ d ∈ r.divisors,
+          ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (H : ℚ) /
+            ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ)) := by
+      rw [hdivisors]
+    _ = ((H / r : ℕ) : ℚ) *
+          (∑ d ∈ r.divisors,
+            ((ArithmeticFunction.moebius d : ℤ) : ℚ) * (r : ℚ) /
+              ((d : ℚ) * (RadicalMobiusShadow.mersenne d : ℚ))) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro d _hd
+      rw [hHcast]
+      ring
+    _ = ((H / r : ℕ) : ℚ) *
+          RadicalMobiusShadow.baseMobiusShadow r := by
+      rw [sum_divisors_moebius_ratio_eq_baseMobiusShadow hrsf]
+    _ = (H : ℚ) * RadicalMobiusShadow.numericMobiusShadow H := by
+      simpa [r] using
+        (RadicalMobiusShadow.scaledMobiusShadow_eq_radicalBase H hH).symm
+
 /-- Evaluation at `X = 2` recovers the integral numerator already owned by
 `RadicalMobiusShadow`.  The theorem deliberately retains the squarefree
 boundary of T1. -/

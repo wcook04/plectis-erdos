@@ -8,9 +8,10 @@ infrastructure, start with the plain-language
 [`ARCHITECTURE.md`](../ARCHITECTURE.md) at the repository root. The files in
 this directory are authored papers with narrower jobs.
 
-`erdos249-257-main-paper.tex` is the mathematical gateway for readers who do
-not read Lean. It states, in ordinary notation, what the Lean development
-proves, cites, and leaves open.
+Each covered Erdős problem has its own short problem note. Problems #249 and
+#257 also have full working-record papers. `erdos249-257-main-paper.tex` is the
+retained joint exposition of those two reviewed lanes; it is not the index for
+the other four problems.
 
 Every formal statement links to the exact source
 line on GitHub, pinned to the formal-source checkpoint named in
@@ -25,11 +26,85 @@ beyond what the Lean sources contain; the proofs are the sources it links to.
 The manuscript layer (this `.tex` and the rendered PDF) is licensed CC-BY-4.0;
 see `REUSE.toml` at the repository root.
 
-There is deliberately no specialist companion note. A former #249-only note
-was scrapped and deleted (it survives only in git history) because a
-one-sided companion does not give readers a coherent paper set for a
-repository about both #249 and #257. Add specialist notes only as a matched
-#249/#257 pair; otherwise keep one mathematical gateway paper.
+The joint exposition has no length ceiling and remains the cumulative
+integration monograph for #249 and #257. New problem-owned notes do not remove,
+shorten, or transfer material out of it. The #249 and #257 notes repeat the
+context, exact status boundary, negative results, and surviving producers
+needed by a reader who arrives through one problem rather than through the
+joint paper.
+
+## Erdős Problem Notes
+
+The six standalone notes
+
+- `erdos-249-binary-totient-series.tex`
+- `erdos-257-mersenne-support-subseries.tex`
+- `erdos-243-reciprocal-tail-rigidity.tex`
+- `erdos-251-prime-gap-dyadic-series.tex`
+- `erdos-269-three-prime-running-lcm.tex`
+- `erdos-1049-rational-base-lambert.tex`
+
+are the problem-owned series. One note owns one Erdős problem, and each covers
+the modules for that problem in the `ErdosProblems` expansion library.  The
+#249 and #257 notes additionally point back to the reviewed gateway spine while
+keeping the newer research interfaces explicitly unpromoted. A reader who
+arrives at a single problem gets its statement, its checked results, its
+negative results, and its surviving obligation without assembling them from the
+gateway; deliberate repetition of shared context across notes is the design.
+
+## Full Reasoning Records
+
+Two additional papers retain the complete working context for the original
+reviewed problem lanes:
+
+- `erdos249-totient-reasoning-surface.tex`
+- `erdos257-mersenne-reasoning-surface.tex`
+
+They are separate rendered papers, not hidden source appendices and not
+substitutes for the shorter problem notes. Each records checked premises,
+finite evidence, failed and equivalent routes, and the obligations that remain.
+
+The series is not a replacement for the gateway. Its new declarations live in
+a different library and are **not** reviewed public claims: `docs/claims.json`
+carries no row for them, and kernel checking `ErdosProblems.lean` does not
+promote them into one. The #249/#257 notes may also restate reviewed gateway
+claims, but the exact authority of those claims stays in the registry. Every
+note states this, and the registry records it as
+`publication_architecture.problem_series_boundary`.
+
+The notes share `problem-note-preamble.tex`, which fixes the house macros and
+the one pinned source revision every link resolves against. Links are validated
+against that pinned commit rather than the working tree, so a note cannot decay
+when a later wave moves declarations:
+
+```sh
+python3 ../scripts/check_problem_note_sources.py --coverage
+```
+
+Pinning buys safety at a price: a note whose links can never break can instead
+fall silently behind. `--coverage` is the meter for that. It reports, per
+problem, the fraction of the declarations that exist **now** which the note
+actually links, and whether the modules have changed since the pin, and it
+fails below `note_coverage_floor` in `docs/problem_index_source.json`. Drift is
+therefore a failing check with a worklist attached, not something a reader
+discovers.
+
+When a note falls through the floor: rewrite it against the current source,
+repin `\commit` in the shared preamble to a commit that is **pushed** (links
+resolve on GitHub, so an unpushed local merge is not a valid pin), rebuild, and
+refresh the digests in `docs/publication_contract.json`.
+
+`docs/problems.json`, built by `scripts/build_problem_index.py`, is the
+machine-readable index over the same material: one row per problem naming its
+modules, its note, what is checked, what is not, and the obligation that
+survives.
+
+To add a note, write the `.tex`, add its stem to `PAPERS` and `NOTES` in the
+`Makefile`, register it once in `docs/publication_contract.json` with class
+`problem_note`, add its rendered PDF to the CC-BY override in `REUSE.toml`, add
+its row to `publication_architecture.problem_series` in `docs/claims.json`, and
+add its problem to `docs/problem_index_source.json`. The contract checker fails
+if any of those five are missing.
 
 `claim-faithful-publication-systems-paper.tex` is the printable architecture
 and access guide. It names the real source files, reviewed records, generated
@@ -38,9 +113,17 @@ claim from Lean proof to public page. The historical checker example appears
 only after the architecture and illustrates its coverage limit; it is not a
 score and adds no mathematical result.
 
-That twelve-page paper is still a draft, not a finished exemplar. Its revision
-target and cold-reader loop are recorded in
+That architecture paper remains a maintained draft. Its revision target and
+cold-reader loop are recorded in
 `claim-faithful-publication-systems-revision-brief.md`.
+
+`cold-clone-to-proof-receipt.tex` is the agent-native navigation and
+incremental-validation guide. It explains how a fresh checkout exposes the
+whole mathematical option surface without compiling Lean, how an inhabiting
+agent crosses from advisory navigation into a kernel-authored receipt, and how
+focused builds and exact cache receipts avoid repeating unchanged work. Its
+dogfood session is evidence of acceptance and replay, not a proof of optimal
+reasoning or external novelty.
 
 ## Build
 
@@ -55,9 +138,9 @@ pdflatex erdos249-257-main-paper.tex && pdflatex erdos249-257-main-paper.tex
 make
 ```
 
-The outputs are `erdos249-257-main-paper.pdf` and
-`claim-faithful-publication-systems-paper.pdf`; `make` also synchronises the
-tracked reader-facing copies at repository root.
+The outputs include every stem in `PAPERS`: the three repository-level papers,
+the two full reasoning records, and all six problem notes. `make` also
+synchronises every tracked reader-facing PDF to the repository root.
 
 ## Contents
 

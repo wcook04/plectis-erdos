@@ -1,0 +1,608 @@
+{
+ "lens": "specialisation",
+ "edges": [
+  {
+   "from": "totient_tail_shift_and_period_law",
+   "from_zone": "Z01",
+   "to": "shift_identity_totient_tail",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18438 `two_pow_mul_totient_series_eq_prefix_add_tail := TotientTailPeriodKiller.two_pow_mul_totient_series_eq`; same identity 2^N*S = Phi_N + R_N. The Z01 node bundles this with two further re-exports, edged separately.",
+   "confidence": "high"
+  },
+  {
+   "from": "totient_tail_shift_and_period_law",
+   "from_zone": "Z01",
+   "to": "tail_strip_and_carry_recurrence",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18497 `totient_tail_carry_recurrence := TotientTailPeriodKiller.totientTail_succ`; identical carry recurrence R_{M+1} = 2R_M - phi(M+1). Z06 additionally owns the strip bound.",
+   "confidence": "high"
+  },
+  {
+   "from": "totient_tail_shift_and_period_law",
+   "from_zone": "Z01",
+   "to": "period_ray_telescoping",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18513 `totient_tail_diff_multiple_telescope := TotientTailPeriodKiller.tail_diff_mul`; the same telescoping of the period-mh difference.",
+   "confidence": "high"
+  },
+  {
+   "from": "rationality_forces_tail_period",
+   "from_zone": "Z01",
+   "to": "tail_period_law_from_rationality",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18455 `rational_totient_series_forces_eventual_tail_period := TotientTailPeriodKiller.eventual_period_of_not_irrational`; identical hypothesis (not Irrational S) and conclusion.",
+   "confidence": "high"
+  },
+  {
+   "from": "certified_kill_soundness",
+   "from_zone": "Z01",
+   "to": "endpoint_certificate_soundness",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18447 `totient_tail_diff_not_int_of_certified_kill := TotientTailPeriodKiller.tail_diff_notMem_int_of_certifiedKill`.",
+   "confidence": "high"
+  },
+  {
+   "from": "certified_kill_soundness",
+   "from_zone": "Z01",
+   "to": "carry_orbit_survivor_soundness",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18505 `totient_tail_diff_not_int_of_survivor_kill := TotientTailPeriodKiller.tail_diff_notMem_int_of_survivorKill`.",
+   "confidence": "high"
+  },
+  {
+   "from": "certified_kill_soundness",
+   "from_zone": "Z01",
+   "to": "rank2_second_difference_soundness",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18729 `totient_tail_second_diff_not_int_of_rank_two_kill := TotientTailPeriodKiller.second_diff_notMem_int_of_certifiedRank2Kill`.",
+   "confidence": "high"
+  },
+  {
+   "from": "window_kill_completeness",
+   "from_zone": "Z01",
+   "to": "endpoint_certificate_completeness",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18697 `totient_tail_window_kill_exists_iff_tail_diff_not_int := TotientTailPeriodKiller.exists_certifiedKill_iff_tail_diff_notMem_int`; the same iff.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_period_kill_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_pointwise_certificate_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18464 `irrational_totient_series_of_period_kill_supply := TotientTailPeriodKiller.irrational_totient_series_of_certificate_supply`; the two nodes carry the same free hypothesis verbatim.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_period_kill_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_multiple_period_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18523/18530 re-export `irrational_totient_series_of_multiple_survivor_supply` and `..._of_multiple_certificate_supply`; identical one-kill-per-divisibility-ray hypothesis.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_period_kill_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_lcm_ray_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18538/18585 re-export `irrational_totient_series_of_lcm_survivor_supply` and `..._of_lcm_certificate_supply`; identical lcm-family supply hypothesis.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_period_kill_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_lcm_diagonal_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18595/18603 re-export `irrational_totient_series_of_lcm_diagonal_certificate_supply` and `..._survivor_supply`; identical diagonal supply hypothesis.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_cone_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_lcm_cone_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18686/18718 re-export `irrational_totient_series_of_lcm_cone_certificate_supply` and `..._of_lcm_cone_nonintegrality_supply`; the two-multiplier cone supply is the same statement.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_cone_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_rank2_qray_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18739 `irrational_totient_series_of_lcm_qray_rank_two_kill_supply := TotientTailPeriodKiller.irrational_totient_series_of_lcm_qray_rank2_supply`; the Z01 node bundles this q-ray cell with the other cone cells.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_cone_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_lcm_jump_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18824 `irrational_totient_series_of_lcm_jump_window_kill_supply := TotientTailPeriodKiller.irrational_totient_series_of_lcm_jump_kill_supply`; identical lcm-jump supply hypothesis.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos249_cone_nonflat_supply_restatement",
+   "from_zone": "Z01",
+   "to": "reduction_cone_nonflat_menu_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18812 `irrational_totient_series_of_lcm_cone_nonflat_supply := TotientTailPeriodKiller.irrational_totient_series_of_lcm_cone_nonflat_supply`; same firing-menu supply hypothesis.",
+   "confidence": "high"
+  },
+  {
+   "from": "lcm_cone_flatness_law",
+   "from_zone": "Z01",
+   "to": "lcm_cone_flatness_law",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18674 `rational_totient_series_forces_lcm_cone_flatness := TotientTailPeriodKiller.rational_totient_series_forces_lcm_cone_flatness` (owned at LcmConeFlatness.lean:90). The two nodes share the node id and the theorem.",
+   "confidence": "high"
+  },
+  {
+   "from": "lcm_cone_flatness_law",
+   "from_zone": "Z01",
+   "to": "lcm_ray_divisibility_skeleton",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18667 `period_lcm_dvd_period_lcm_of_le := TotientTailPeriodKiller.periodLcm_dvd_periodLcm`; the nesting clause the Z01 node attaches to the flatness law is a component of Z06's divisibility skeleton.",
+   "confidence": "high"
+  },
+  {
+   "from": "lcm_ray_window_structure",
+   "from_zone": "Z01",
+   "to": "lcm_ray_window_structure",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18613 `period_lcm_window_index_prime_pow_of_not_dvd := TotientTailPeriodKiller.eq_prime_pow_of_not_dvd_periodLcm` (owned at LcmDiagonalReduction.lean:137); same statement, shared node id.",
+   "confidence": "high"
+  },
+  {
+   "from": "lcm_ray_window_structure",
+   "from_zone": "Z01",
+   "to": "lcm_ray_totient_factorisation",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18622 `totient_period_lcm_ray_factorisation := TotientTailPeriodKiller.totient_periodLcm_ray_split`; the second conjunct of the Z01 node is exactly Z06's ray-factorisation node.",
+   "confidence": "high"
+  },
+  {
+   "from": "cone_nonflat_menu_refuter",
+   "from_zone": "Z01",
+   "to": "menu_refuter_soundness",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18801 `totient_tail_nonintegral_pair_of_cone_nonflat_cert := TotientTailPeriodKiller.exists_nonintegral_pair_of_coneNonflatCert`.",
+   "confidence": "high"
+  },
+  {
+   "from": "menu_refuter_exactness_and_monotonicity",
+   "from_zone": "Z01",
+   "to": "menu_refuter_exactness",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18900 re-exports `coneNonflatCert_iff_no_common_point`; the exactness half of the Z01 node is Z06's node.",
+   "confidence": "high"
+  },
+  {
+   "from": "menu_refuter_exactness_and_monotonicity",
+   "from_zone": "Z01",
+   "to": "menu_refuter_monotonicity_and_seed_lift",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18908/18918/18930/18941 re-export `coneCommonPoint_of_succ`, `coneNonflatCert_mono_of_le`, `..._supermenu`, `..._seed_lift`; the monotonicity half of the Z01 node is Z06's node.",
+   "confidence": "high"
+  },
+  {
+   "from": "totient_series_rational_exclusions_from_kills",
+   "from_zone": "Z01",
+   "to": "unconditional_denominator_exclusion",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18479/18562 re-export `totient_series_ne_rat_of_den_dvd` and `..._upto_sixteen`; identical bounded-denominator exclusions.",
+   "confidence": "high"
+  },
+  {
+   "from": "certified_kill_fixtures",
+   "from_zone": "Z01",
+   "to": "finite_kill_deposits",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18472/18555/18633/18749/18833 re-export `certifiedKill_all_small`, `certifiedKill_all_upto_sixteen`, `certifiedKill_periodLcm_diagonal_upto_six`, the lcm-cone cells and the coneNonflatCert cells; the Z01 fixture list is the re-exported subset of Z06's deposit list.",
+   "confidence": "high"
+  },
+  {
+   "from": "engine_strength_separations",
+   "from_zone": "Z01",
+   "to": "certificate_family_comparisons_at_cells",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18548/18762/18845/18862 re-export `survivor_strict_at_equal_budget`, `rank2_kill_sound_but_not_shallower_at_cell`, `cone_nonflat_strict_win_at_cell`, `cone_nonflat_joint_win_at_cell`; the same four single-cell separations.",
+   "confidence": "high"
+  },
+  {
+   "from": "lambert_ladder_rational_rungs",
+   "from_zone": "Z01",
+   "to": "lambert_rung_totient_rational",
+   "to_zone": "Z07",
+   "relation": "specialises",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18101 `tsum_totient_div_two_pow_sub_one_eq_two := MersenneLambertLadder.tsum_totient_div_two_pow_sub_one_eq_two`, which Z07 owns as the r = 1/2 evaluation of the r-parametric identity `tsum_totient_lambert` (sum phi(d) r^d/(1-r^d) = sum n r^n for 0 <= r < 1).",
+   "confidence": "high"
+  },
+  {
+   "from": "lambert_ladder_rational_rungs",
+   "from_zone": "Z01",
+   "to": "lambert_rung_moebius_rational",
+   "to_zone": "Z07",
+   "relation": "specialises",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18106 `tsum_moebius_div_two_pow_sub_one_eq_half := MersenneLambertLadder.tsum_moebius_div_two_pow_sub_one_eq_half`, the r = 1/2 case of Z07's r-parametric `tsum_moebius_lambert`.",
+   "confidence": "high"
+  },
+  {
+   "from": "visible_lattice_coprimality",
+   "from_zone": "Z01",
+   "to": "coprime_pair_mass_bridge",
+   "to_zone": "Z07",
+   "relation": "specialises",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18229 `totient_series_eq_half_add_visible_coprime_pairs := GeometricCoprimality.tsum_pos_coprime_pair_pow`; Z07 states the coprime-pair mass identity for every 0 <= r < 1, Z01 keeps only the r = 1/2 instance.",
+   "confidence": "high"
+  },
+  {
+   "from": "visible_lattice_coprimality",
+   "from_zone": "Z01",
+   "to": "gcd_layer_normalisation",
+   "to_zone": "Z07",
+   "relation": "specialises",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18269 `tsum_visible_coprime_gcd_layers_eq_one := GeometricCoprimality.tsum_gcd_layer_pos_coprime_half_eq_one`; Z07 owns the general-r gcd-layer identity of which this is the r = 1/2 evaluation.",
+   "confidence": "high"
+  },
+  {
+   "from": "gcd_moment_squared_lambert",
+   "from_zone": "Z01",
+   "to": "squared_kernel_zeta_rung",
+   "to_zone": "Z07",
+   "relation": "specialises",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18308 `tsum_inv_mersenne_sq_eq_sigma_sub_tau_series := GcdMomentCalculus.tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series`, the r = 1/2 case of Z07's `tsum_one_lambert_sq_pure`.",
+   "confidence": "high"
+  },
+  {
+   "from": "gcd_moment_squared_lambert",
+   "from_zone": "Z01",
+   "to": "squared_kernel_totient_rung",
+   "to_zone": "Z07",
+   "relation": "specialises",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18318 `tsum_totient_div_mersenne_sq_eq_gcd_moment_series := GcdMomentCalculus.tsum_totient_div_mersenne_sq_eq_gcd_moment_series`, the r = 1/2 case of Z07's `tsum_totient_lambert_sq_pure`.",
+   "confidence": "high"
+  },
+  {
+   "from": "gcd_moment_squared_lambert",
+   "from_zone": "Z01",
+   "to": "gcd_divisibility_factorisation",
+   "to_zone": "Z07",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18328 `tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq := GcdMomentCalculus.tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq`; Z07's node is exactly this single base-2 statement.",
+   "confidence": "high"
+  },
+  {
+   "from": "gcd_moment_squared_lambert",
+   "from_zone": "Z01",
+   "to": "reduced_direction_law",
+   "to_zone": "Z07",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18338 `tsum_visible_coprime_inv_mersenne_eq_one := GcdMomentCalculus.tsum_pos_coprime_inv_mersenne_eq_one`; same base-2 statement, renamed.",
+   "confidence": "high"
+  },
+  {
+   "from": "gcd_moment_squared_lambert",
+   "from_zone": "Z01",
+   "to": "stern_brocot_cylinder_law",
+   "to_zone": "Z07",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18346/18358 re-export `GcdMomentCalculus.sternBrocotDepthMass_error` and `tendsto_sternBrocotDepthMass`; Z01 carries two of the four declarations Z07 owns (the mediant split and the child-mass bound stay in Z07).",
+   "confidence": "high"
+  },
+  {
+   "from": "stern_brocot_run_geometry",
+   "from_zone": "Z01",
+   "to": "fibonacci_height_floor",
+   "to_zone": "Z07",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18391/18399 re-export `SternBrocotRunGeometry.runHeight_fib_lower` and `runHeight_replicate_one`; identical Fibonacci floor and spine equality.",
+   "confidence": "high"
+  },
+  {
+   "from": "stern_brocot_run_geometry",
+   "from_zone": "Z01",
+   "to": "induced_run_layer_masses",
+   "to_zone": "Z07",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18405/18411/18415 re-export `SternBrocotRunGeometry.runHeight_pair`, `zeroRunMass_eq_quarter`, `oneRunMass_eq_half`.",
+   "confidence": "high"
+  },
+  {
+   "from": "stern_brocot_run_geometry",
+   "from_zone": "Z01",
+   "to": "fibonacci_partial_sum_denominator_scale",
+   "to_zone": "Z07",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18421 `stern_brocot_natural_run_denominator_exponent_add_two := SternBrocotRunGeometry.naturalRunDenominatorExponent_add_two`.",
+   "confidence": "high"
+  },
+  {
+   "from": "stern_brocot_run_geometry",
+   "from_zone": "Z01",
+   "to": "run_coordinate_normalisation",
+   "to_zone": "Z07",
+   "relation": "alias_of",
+   "basis": "Erdos249257/CertificateKernel.lean is a re-export facade: the Z01 declaration is a one-line restatement whose proof term is literally the owning module's declaration. CertificateKernel.lean:18380 `stern_brocot_pair_of_run_lengths := SternBrocotRunGeometry.sbPair_runWord`; the run/tree coordinate identification the Z01 node quotes is Z07's node.",
+   "confidence": "high"
+  },
+  {
+   "from": "aggregate_imported_scales_fire",
+   "from_zone": "Z02",
+   "to": "diagonal_kill_roster_finite_list",
+   "to_zone": "Z03",
+   "relation": "specialises",
+   "basis": "The literal scale lists nest: `diagonalPincerCertificateScalesThroughT41` (DiagonalPincerCertificatesT41.lean:1361) is `diagonalPincerCertificateScalesThroughT37` (T37.lean:1242) extended by 41, and both roll-ups assert `certifiedKill (periodLcm t) (periodLcm t) (depth t)` for every t in their own list; the Z02 aggregates are therefore the restriction of the Z03 roster to a sub-list.",
+   "confidence": "high"
+  },
+  {
+   "from": "certified_kill_fixtures",
+   "from_zone": "Z01",
+   "to": "aggregate_imported_scales_fire",
+   "to_zone": "Z02",
+   "relation": "specialises",
+   "basis": "Z01's `totient_tail_period_lcm_diagonal_killed_upto_six` and `..._at_seven_and_eight` assert the diagonal kill at the scales t <= 8, which are members of the literal list quantified over by Z02's `certifiedKill_diagonal_all_imported_through_t29`; depth differences are absorbed by the depth-monotonicity theorem `certifiedKill_succ` (Z06).",
+   "confidence": "medium"
+  },
+  {
+   "from": "t_seven_finite_full_target_miss",
+   "from_zone": "Z05",
+   "to": "certified_kill_fixtures",
+   "to_zone": "Z01",
+   "relation": "specialises",
+   "basis": "`foreignDiagonalDefect_misses_fullTarget_seven` (DiagonalPincerDecomposition.lean:275) is proved as `tail_diff_not_int_periodLcm_diagonal_seven_eight.1` transported through the definitional pincer iff `diagonal_not_int_iff_foreignDiagonalDefect_misses_fullTarget` (:215); it is the t = 7 cell of Z01's `totient_tail_period_lcm_diagonal_not_int_at_seven_and_eight`.",
+   "confidence": "high"
+  },
+  {
+   "from": "supply_conditional_irrationality",
+   "from_zone": "Z05",
+   "to": "reduction_lcm_diagonal_supply",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "`diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget` (DiagonalPincerDecomposition.lean:215) proves ForeignDiagonalDefectHitsFullTarget t is literally integrality of diagonalTailDifference t, so Z05's weakest socket FullTargetAvoidanceSupply is verbatim the cofinal diagonal non-integrality hypothesis of `irrational_totient_series_of_lcm_diagonal_nonintegrality_supply`; the eighteen-theorem family re-dresses that pre-existing supply rather than weakening it.",
+   "confidence": "high"
+  },
+  {
+   "from": "rationality_iff_tempered_support_carry_orbit",
+   "from_zone": "Z10",
+   "to": "rationality_iff_tempered_orbit",
+   "to_zone": "Z11",
+   "relation": "specialises",
+   "basis": "`erdosSupportSeries_rational_iff_exists_temperedCarry` (BooleanMobiusCarry.lean:383) is the c := supportCoeff A instance of `binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit` (GenericTailOrbitRigidity.lean:425), the growth side condition c n <= n discharged by `supportCoeff_le_self`.",
+   "confidence": "high"
+  },
+  {
+   "from": "mersenne_support_coding_normalisation",
+   "from_zone": "Z12",
+   "to": "support_coefficient_representation",
+   "to_zone": "Z01",
+   "relation": "specialises",
+   "basis": "`positiveMersenneSupportValue_eq_erdosSupportSeries : positiveMersenneSupportValue A = erdosSupportSeries 2 A` (GreedyAchievementSet.lean:554) identifies the Mersenne coding with the base b = 2 case of the generic support series that Z01 defines and normalises.",
+   "confidence": "high"
+  },
+  {
+   "from": "erdos_borwein_constant_irrational",
+   "from_zone": "Z12",
+   "to": "erdos_borwein_full_support_irrationality",
+   "to_zone": "Z01",
+   "relation": "specialises",
+   "basis": "`irrational_erdosBorweinMersenneConstant` (GreedyAchievementSet.lean:2433) is `irrational_erdosBorwein_series` (CertificateKernel.lean:8007), which is in turn `irrational_erdosSum_full_support 2`; Z01 states the same conclusion for every integer base b >= 2.",
+   "confidence": "high"
+  },
+  {
+   "from": "producer_carry_exact_half_criterion",
+   "from_zone": "Z14",
+   "to": "integer_half_carry_calculus",
+   "to_zone": "Z12",
+   "relation": "specialises",
+   "basis": "`producerCarry A d` (HalfCylinderProducerCarrySocket.lean:20) and `integerHalfCarry A` (HalfCarryReachability.lean:36) are the same `affineBinaryOrbit (fun n => supportCoeff A (n+1)) 1`, so `producerCarry_residual_identity` is `integerHalfCarry_eq_scaled_residual_add_tail` at N = 2d+1 under the extra hypothesis A subset Iic d.",
+   "confidence": "high"
+  },
+  {
+   "from": "selected_window_cofinal_consumer",
+   "from_zone": "Z15",
+   "to": "cofinal_admissibility_yields_257_counterexample",
+   "to_zone": "Z12",
+   "relation": "specialises",
+   "basis": "`cofinalAdmissibility_of_selectedHalfWindows` (HalfCarrySelectedWindow.lean:831) derives `HalfCarryCofinalAdmissibility` from the cofinal-selected-window hypothesis; that predicate is exactly the antecedent of Z12's `exists_infinite_support_half_of_cofinalAdmissibility` (HalfCarryReachability.lean:984) and the conclusions coincide, so Z15's theorem is the hypothesis-strengthened form.",
+   "confidence": "high"
+  },
+  {
+   "from": "cofinal_protected_seam_consumer",
+   "from_zone": "Z15",
+   "to": "cofinal_admissibility_yields_257_counterexample",
+   "to_zone": "Z12",
+   "relation": "specialises",
+   "basis": "`cofinalAdmissibility_of_cofinalProtectedEvenSeamRealization` (HalfCarryProtectedSeamConsumer.lean:31) derives the same `HalfCarryCofinalAdmissibility` antecedent from the cofinal localized-seam hypothesis; identical conclusion.",
+   "confidence": "high"
+  },
+  {
+   "from": "mixed_cofinal_window_or_seam_consumer",
+   "from_zone": "Z15",
+   "to": "cofinal_admissibility_yields_257_counterexample",
+   "to_zone": "Z12",
+   "relation": "specialises",
+   "basis": "`cofinalAdmissibility_of_cofinalSelectedWindowOrProtectedSeam` derives `HalfCarryCofinalAdmissibility` from the disjunctive cofinal producer; Z12's node is the weakest socket both branches factor through.",
+   "confidence": "high"
+  },
+  {
+   "from": "cofinal_stages_conditional_export",
+   "from_zone": "Z16",
+   "to": "terminal_only_cofinal_yields_half",
+   "to_zone": "Z12",
+   "relation": "specialises",
+   "basis": "`cofinalTerminalOnlyStrip_of_cofinalCylinderStages` (SuffixCylinderTerminalOnlyBridge.lean:125) derives `HalfCarryCofinalTerminalOnlyStrip` from cofinal full cylinder stages; that predicate is the antecedent of Z12's `half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip`, and the conclusions agree.",
+   "confidence": "high"
+  },
+  {
+   "from": "half_membership_from_actual_block_safety",
+   "from_zone": "Z10",
+   "to": "channel_cap_skip_transport",
+   "to_zone": "Z12",
+   "relation": "specialises",
+   "basis": "`greedyHalfRemainder_le_nextDyadic_of_BlockSafe` (DyadicPrefixCompression.lean:2759) turns block dyadic safety at a skipped rank into `greedyMersenneRemainder (1/2) n <= halfDyadicCap (n+1)`, which is verbatim the dyadic-cap branch hypothesis of Z12's node; both conclude 1/2 in mersenneAchievementSet.",
+   "confidence": "high"
+  },
+  {
+   "from": "finite_shadow_square_root_strip",
+   "from_zone": "Z13",
+   "to": "terminal_only_strip_error_bound",
+   "to_zone": "Z12",
+   "relation": "specialises",
+   "basis": "Z12's `dist_half_erdosSupportSeries_wordSupport_le_carry_add_tail` (TerminalOnlyScaledVanishing.lean:24) bounds |1/2 - value| by (|terminal carry| + 2 sqrt M + 4)/2^M using the terminal carry alone; Z13's `halfStripAdmissible_abs_residual_le` (HalfCylinderFiniteShadow.lean:532) is that bound under the strictly stronger HalfStripAdmissible hypothesis, which pins every prefix carry.",
+   "confidence": "high"
+  },
+  {
+   "from": "upper_reset_band_escape_row_thirteen",
+   "from_zone": "Z14",
+   "to": "upper_reset_band_escape_rows_13_to_30",
+   "to_zone": "Z13",
+   "relation": "specialises",
+   "basis": "`seamUpperResetDyadicBandEscape_at_thirteen` (HalfCylinderMiddleCarryLowerBound.lean:3512) is the d = 13 instance of `seamUpperResetDyadicBandEscape_through_thirty` (HalfCylinderUpperResetBandCertificates.lean:78): identical conclusion for all j <= d, with d fixed to 13.",
+   "confidence": "high"
+  },
+  {
+   "from": "fatal_gap_eventual_right_classification",
+   "from_zone": "Z13",
+   "to": "half_membership_seam_equivalence_ring",
+   "to_zone": "Z12",
+   "relation": "alias_of",
+   "basis": "Z13's `seamGreedyEventuallyRight_iff_half_not_mem` and Z12's `half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight` are the same equivalence up to negation; both rings pivot on (1/2 : R) in mersenneAchievementSet and both carry the last-skip and fatal-gap coordinates.",
+   "confidence": "high"
+  },
+  {
+   "from": "half_membership_iff_every_skip_survives",
+   "from_zone": "Z13",
+   "to": "half_membership_iff_infinite_greedy_skips",
+   "to_zone": "Z12",
+   "relation": "alias_of",
+   "basis": "Z13's `no_lastHalfGreedySkip_iff_every_skip_survives` plus `half_mem_iff_every_actual_skip_survives` and Z12's `half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite` characterise the same membership through the same greedy orbit; Z12's `half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip` supplies the identification of the two coordinates.",
+   "confidence": "medium"
+  },
+  {
+   "from": "window_separated_pairs_equivalent_to_249",
+   "from_zone": "Z08",
+   "to": "certificate_supply_is_equivalent_to_249",
+   "to_zone": "Z06",
+   "relation": "alias_of",
+   "basis": "`dtwWindowSeparatedPairs_iff_irrational_totient_series` (Z08) and `irrational_totient_series_iff_certificate_supply` (Z06) each prove their socket logically equivalent to Irrational (sum phi n / 2^n), so the two sockets are provably equivalent to each other; both are the open problem in different coordinates, not independent obligations.",
+   "confidence": "high"
+  },
+  {
+   "from": "shifted_interval_cylinder_machinery",
+   "from_zone": "Z16",
+   "to": "fixed_coefficient_window_step",
+   "to_zone": "Z15",
+   "relation": "generalises",
+   "basis": "Z16 carries the canonical fixed-coefficient successor for families indexed by an arbitrary closed carry interval, imposing the coefficient hypothesis only on the canonical parents actually used (`selectedHalfIntervalStepExplicit_preserves_literalPrefix`, `selectedHalfIntervalHasSuffixCylinderOnInterval_stepExplicit`); Z15's `SelectedHalfWindow.stepExplicit` on an initial carry segment is the special case.",
+   "confidence": "medium"
+  },
+  {
+   "from": "cylinder_stage_advance_within_cutoff",
+   "from_zone": "Z16",
+   "to": "fixed_coefficient_window_step",
+   "to_zone": "Z15",
+   "relation": "specialises",
+   "basis": "`CylinderStage.advanceWithinCutoff` is the same canonical fixed-coefficient step restricted to a stage whose cutoff already sees every proper divisor of the next row, which discharges Z15's common-coefficient hypothesis (from the shared prefix) and its buffer hypothesis (from the square-root divisor envelope).",
+   "confidence": "medium"
+  },
+  {
+   "from": "feedback_trichotomy_advance_or_seam",
+   "from_zone": "Z16",
+   "to": "threshold_profile_realizes_protected_seam",
+   "to_zone": "Z15",
+   "relation": "generalises",
+   "basis": "Z15's `protectedEvenSeamRealizedAt_succ_of_profile` assumes the two-valued threshold coefficient profile; Z16's `supportCoeff_profile_of_crossingSuffixCylinder` proves that exact profile for a crossing endpoint cylinder, so `protectedEvenSeamRealizedAt_succ_of_crossingSuffixCylinder` reaches the same conclusion with the profile hypothesis discharged.",
+   "confidence": "medium"
+  },
+  {
+   "from": "two_sheet_hole_only_reachability",
+   "from_zone": "Z16",
+   "to": "threshold_profile_realizes_protected_seam",
+   "to_zone": "Z15",
+   "relation": "generalises",
+   "basis": "`InStripTwoSheetStage.halfTerminalReachable_of_ne_hole` realizes every terminal carry of the full square-root strip except the single hole, and `InStripTwoSheetStage.protectedEvenSeamRealizedAt` projects that onto the localized 3..27 ProtectedEvenSeamRealizedAt interface Z15 produces; the two-sheet state is the strictly stronger object.",
+   "confidence": "medium"
+  },
+  {
+   "from": "endpoint_certificate_soundness",
+   "from_zone": "Z06",
+   "to": "generic_window_residue_gap_soundness",
+   "to_zone": "Z09",
+   "relation": "specialises",
+   "basis": "Z09's `notMem_int_of_window_remainder_bound` is the generic criterion (x = A/2^L + e with |e 2^L| <= R and A mod 2^L strictly inside (R, 2^L - R) implies x not an integer); Z06's `tail_diff_notMem_int_of_certifiedKill` is that criterion at x = R_{N+h} - R_N, A = the depth-L window discrepancy and R = N+h+L+2, the remainder bound supplied by `tail_diff_eq_increment_prefix_add_shifted` and `abs_tail_diff_lt`.",
+   "confidence": "medium"
+  },
+  {
+   "from": "binary_tail_shift_identity",
+   "from_zone": "Z11",
+   "to": "n1049_cleared_tail_recurrence",
+   "to_zone": "Z17",
+   "relation": "specialises",
+   "basis": "Z17's `ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ` gives cleared(N+1) = r cleared(N) - B coeff(N+1) s^(N+1) for a rational base r/s; at (r,s,B) = (2,1,1) this is Z11's `binaryCoeffTail_succ` T(N+1) = 2 T(N) - c(N+1), the s = 1 collapse being recorded by `ErdosProblems.Erdos1049.rationalBaseForcingNat_one`.",
+   "confidence": "medium"
+  },
+  {
+   "from": "certificate_supply_is_equivalent_to_249",
+   "from_zone": "Z06",
+   "to": "n251_integrality_criterion",
+   "to_zone": "Z17",
+   "relation": "specialises",
+   "basis": "Z17's `ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail` states for any dyadic tail obeying T(N+1) = 2T(N) - g(N+1) with integer digits that a shifted tail difference is integral exactly when (2^h - 1) times the tail state is; Z06's `tail_diff_mem_int_iff_scaled_series_mem_int` is that criterion for the totient tail, where the scaled state is 2^N (2^h - 1) S.",
+   "confidence": "medium"
+  },
+  {
+   "from": "n251_free_carry_barrier",
+   "from_zone": "Z17",
+   "to": "dyadic_coboundary_shift_calculus",
+   "to_zone": "Z06",
+   "relation": "specialises",
+   "basis": "`ErdosProblems.Erdos251.carryPartialSum_eq` (partial sums of the emitted word 2K(n) - K(n+1) telescope to K(0) - K(n)/2^n) is the base-point case of Z06's `dyadicClearedPrefix_dyadicCoboundary`, which computes the depth-L cleared prefix of a = 2c - Ec as 2^L c_n - c_{n+L} at every start and horizon.",
+   "confidence": "medium"
+  },
+  {
+   "from": "rational_denominator_survival_reexport",
+   "from_zone": "Z04",
+   "to": "rational_denominator_divisor_survival",
+   "to_zone": "Z11",
+   "relation": "alias_of",
+   "basis": "Both nodes own exactly the declarations `divisor_dvd_divInt_den` and `survivingDivisor_dvd_scaled_divInt_den` of Erdos249257/RationalDenominatorSurvival.lean; the Z04 node states in its own docstring that it is a re-export.",
+   "confidence": "high"
+  },
+  {
+   "from": "residual_invariant_counterexample",
+   "from_zone": "Z24",
+   "to": "residual_invariant_refuted",
+   "to_zone": "Z23",
+   "relation": "alias_of",
+   "basis": "Both nodes cite the identical Lean proposition `ErdosProblems/Three/T1.lean:159:not_residualInvariant`. Z24 records its concrete witness s = 13, d = 7; Z23 records the same proposition as a barrier for the remainder programme. They are two presentations of one checked statement, not two results.",
+   "confidence": "high"
+  }
+ ]
+}

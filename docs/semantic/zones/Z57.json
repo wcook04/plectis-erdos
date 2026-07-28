@@ -1,0 +1,180 @@
+{
+  "zone_id": "Z57",
+  "title": "Primitive local Boolean–Möbius repair coordinates: quotient, support sum, binary suffix, and signed repair",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "scaled_mersenne_weight",
+      "label": "scaled Mersenne weight",
+      "note": "The dyadically scaled reciprocal-Mersenne contribution at one rank."
+    },
+    {
+      "id": "integral_quotient_coordinate",
+      "label": "integral quotient coordinate",
+      "note": "The natural floor quotient 2^M/(2^d-1)."
+    },
+    {
+      "id": "finite_support_quotient",
+      "label": "finite-support quotient aggregate",
+      "note": "The sum of integral quotient coordinates over a finite support."
+    },
+    {
+      "id": "natural_binary_suffix",
+      "label": "natural binary suffix",
+      "note": "The natural-subtraction remainder below a dyadic target."
+    },
+    {
+      "id": "signed_local_repair",
+      "label": "signed local repair",
+      "note": "The affine integer coordinate obtained from the preceding suffix and endpoint divisor count."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "local_mersenne_quotient_is_the_integral_scaled_weight_coordinate",
+      "canonical_statement": "localMersenneQuotient M d is the natural-number floor quotient 2^M/(2^d-1).",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "scaled_mersenne_weight",
+        "integral_quotient_coordinate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "integral part of a scaled reciprocal-Mersenne weight",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project coordinate definition.",
+      "scope_caveat": "It is only the integral quotient part and does not equal the full scaled weight without the separate fractional remainder.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersenneQuotient",
+          "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "id": "local_prefix_quotient_aggregates_integral_contributions_of_a_finite_support",
+      "canonical_statement": "localPrefixQuotient D M is the sum over d in D of localMersenneQuotient M d.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "integral_quotient_coordinate",
+        "finite_support_quotient"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite aggregation of the single-rank quotient coordinates",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project coordinate definition.",
+      "scope_caveat": "The aggregate omits fractional mass and proves neither an exact half-target row nor a capacity inequality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localPrefixQuotient",
+          "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "local_binary_suffix_is_the_natural_truncated_dyadic_carry",
+      "canonical_statement": "localBinarySuffix D k M is 2^(M-k)-localPrefixQuotient D M-1 using natural-number subtraction.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "finite_support_quotient",
+        "natural_binary_suffix"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "natural subtraction from the dyadic half-target coordinate",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project coordinate definition.",
+      "scope_caveat": "Natural subtraction may truncate; the definition proves no honest signed residual, nonnegativity, or Boolean-word capacity.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localBinarySuffix",
+          "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "id": "local_repair_integer_is_the_signed_next_coefficient_from_suffix_and_endpoint_count",
+      "canonical_statement": "localRepairInteger D k n is 2*localBinarySuffix D k (n-1)+1-endpointDivisorContribution D n in the integers.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "natural_binary_suffix",
+        "signed_local_repair"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "signed affine next-step repair coordinate",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project coordinate definition.",
+      "scope_caveat": "The value may be negative. The definition proves no nonnegativity, Boolean representation, upper-half capacity, exact row, or tempered-orbit identification.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localRepairInteger",
+          "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+          "line": 74
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "localMersenneQuotient",
+      "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+      "line": 20,
+      "role": "representation",
+      "statement_node": "local_mersenne_quotient_is_the_integral_scaled_weight_coordinate"
+    },
+    {
+      "declaration": "localPrefixQuotient",
+      "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+      "line": 29,
+      "role": "representation",
+      "statement_node": "local_prefix_quotient_aggregates_integral_contributions_of_a_finite_support"
+    },
+    {
+      "declaration": "localBinarySuffix",
+      "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+      "line": 53,
+      "role": "representation",
+      "statement_node": "local_binary_suffix_is_the_natural_truncated_dyadic_carry"
+    },
+    {
+      "declaration": "localRepairInteger",
+      "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+      "line": 74,
+      "role": "representation",
+      "statement_node": "local_repair_integer_is_the_signed_next_coefficient_from_suffix_and_endpoint_count"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "local_prefix_quotient_aggregates_integral_contributions_of_a_finite_support",
+      "to": "local_mersenne_quotient_is_the_integral_scaled_weight_coordinate",
+      "relation": "generated_by",
+      "basis": "The prefix quotient is definitionally the finite sum of the single-rank quotient coordinates."
+    },
+    {
+      "from": "local_binary_suffix_is_the_natural_truncated_dyadic_carry",
+      "to": "local_prefix_quotient_aggregates_integral_contributions_of_a_finite_support",
+      "relation": "generated_by",
+      "basis": "The suffix subtracts the aggregated prefix quotient and the terminal unit from the depth-(M-k) dyadic target."
+    },
+    {
+      "from": "local_repair_integer_is_the_signed_next_coefficient_from_suffix_and_endpoint_count",
+      "to": "local_binary_suffix_is_the_natural_truncated_dyadic_carry",
+      "relation": "generated_by",
+      "basis": "The signed repair coordinate doubles the preceding suffix, adds the affine unit, and subtracts the new endpoint divisor count."
+    }
+  ]
+}

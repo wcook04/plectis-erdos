@@ -1,0 +1,300 @@
+{
+  "zone_id": "Z80",
+  "title": "Period-multiple escape: finite certified kills and their denominator-class exclusions",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z80_certified_kill_consumer",
+      "label": "certified-kill denominator consumer",
+      "note": "The generic theorem turning one certified kill and one denominator divisibility hypothesis into a rational-value exclusion."
+    },
+    {
+      "id": "z80_fixed_period_kills",
+      "label": "fixed period kill deposits",
+      "note": "Six exact certifiedKill instances at basepoint 300 for periods beyond the 64-smooth diagonal bank."
+    },
+    {
+      "id": "z80_fixed_denominator_classes",
+      "label": "fixed denominator divisor classes",
+      "note": "Rationals whose reduced denominators divide 2^300 times one of seven displayed Mersenne-type factors."
+    },
+    {
+      "id": "z80_finite_cofinal_boundary",
+      "label": "finite versus cofinal boundary",
+      "note": "A finite list of certificates and divisor classes does not establish PeriodMultipleKillSupply, ApFullDepthEscape, or irrationality."
+    },
+    {
+      "id": "z80_novelty_boundary",
+      "label": "formalisation and novelty boundary",
+      "note": "The zone records exact Lean propositions and routine specialisations without claiming mathematical novelty, optimal parameters, or literature priority."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "a_certified_kill_excludes_every_rational_in_its_fixed_denominator_divisor_class",
+      "canonical_statement": "PROVED GENERIC DENOMINATOR CONSUMER: for natural h, N, and L, a proof of certifiedKill h N L implies that the binary totient series differs from every rational r whose reduced denominator divides 2^N * (2^h - 1).",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z80_certified_kill_consumer",
+        "z80_fixed_denominator_classes",
+        "z80_finite_cofinal_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The denominator divisibility hypothesis makes the h-step tail difference integral if the series equals r, while certified-kill soundness proves that same difference is not integral.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A direct reusable composition of the existing tail-period integrality and certified-kill soundness theorems; no novelty claim is made.",
+      "scope_caveat": "The theorem consumes a certified kill but does not produce one. For a fixed h and N it excludes only the displayed divisor class, gives no conclusion for denominators outside that class, and does not by itself prove irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totient_series_ne_rat_of_certifiedKill",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "id": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "canonical_statement": "PROVED SIX FINITE CERTIFICATES: Lean proves certifiedKill 81 300 13, certifiedKill 97 300 13, certifiedKill 101 300 11, certifiedKill 121 300 10, certifiedKill 125 300 18, and certifiedKill 128 300 11.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z80_fixed_period_kills",
+        "z80_finite_cofinal_boundary",
+        "z80_novelty_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Kernel evaluation of the decidable certifiedKill predicate at the six displayed parameter triples.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Exact finite certificates checked in Lean; no claim is made that the periods, basepoint, or depths are optimal or mathematically novel.",
+      "scope_caveat": "These are six isolated cells. They do not propagate to adjacent periods, multiples, other basepoints, or locked full depth; they establish neither PeriodMultipleKillSupply nor ApFullDepthEscape and do not prove irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_81_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 195
+        },
+        {
+          "declaration": "certifiedKill_97_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 198
+        },
+        {
+          "declaration": "certifiedKill_101_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 201
+        },
+        {
+          "declaration": "certifiedKill_121_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 204
+        },
+        {
+          "declaration": "certifiedKill_125_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 207
+        },
+        {
+          "declaration": "certifiedKill_128_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 214
+        }
+      ]
+    },
+    {
+      "id": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "canonical_statement": "PROVED FINITE EXCLUSION PACKET: for each h in {67, 81, 97, 101, 121, 125, 128}, the binary totient series differs from every rational r whose reduced denominator divides 2^300 * (2^h - 1).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z80_certified_kill_consumer",
+        "z80_fixed_period_kills",
+        "z80_fixed_denominator_classes",
+        "z80_finite_cofinal_boundary",
+        "z80_novelty_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Apply the generic certified-kill denominator consumer to the corresponding fixed certificate at basepoint 300; six certificates are recorded in this zone and the period-67 certificate is already authored in Z66.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Seven direct specialisations of the generic denominator-exclusion theorem to kernel-checked finite certificates; no novelty or priority claim is made.",
+      "scope_caveat": "The packet is the finite union of seven explicit divisor classes. It does not show that these classes exhaust rational denominators, does not extend a certificate along an arithmetic progression of periods, and does not establish irrationality or either open cofinal supply.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_67_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 225
+        },
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_81_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 230
+        },
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_97_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 235
+        },
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_101_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 240
+        },
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_121_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 245
+        },
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_125_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 250
+        },
+        {
+          "declaration": "totient_series_ne_rat_of_den_dvd_128_300",
+          "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+          "line": 260
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "totient_series_ne_rat_of_certifiedKill",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 181,
+      "role": "statement",
+      "statement_node": "a_certified_kill_excludes_every_rational_in_its_fixed_denominator_divisor_class",
+      "routing_basis": "Direct generic consumer evidence for Z80::a_certified_kill_excludes_every_rational_in_its_fixed_denominator_divisor_class."
+    },
+    {
+      "declaration": "certifiedKill_81_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 195,
+      "role": "finite_instance",
+      "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "routing_basis": "Direct period-81 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
+    },
+    {
+      "declaration": "certifiedKill_97_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 198,
+      "role": "finite_instance",
+      "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "routing_basis": "Direct period-97 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
+    },
+    {
+      "declaration": "certifiedKill_101_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 201,
+      "role": "finite_instance",
+      "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "routing_basis": "Direct period-101 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
+    },
+    {
+      "declaration": "certifiedKill_121_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 204,
+      "role": "finite_instance",
+      "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "routing_basis": "Direct period-121 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
+    },
+    {
+      "declaration": "certifiedKill_125_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 207,
+      "role": "finite_instance",
+      "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "routing_basis": "Direct period-125 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
+    },
+    {
+      "declaration": "certifiedKill_128_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 214,
+      "role": "finite_instance",
+      "statement_node": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "routing_basis": "Direct period-128 finite-certificate evidence for Z80::six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates."
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_67_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 225,
+      "role": "statement",
+      "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "routing_basis": "Direct period-67 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_81_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 230,
+      "role": "statement",
+      "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "routing_basis": "Direct period-81 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_97_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 235,
+      "role": "statement",
+      "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "routing_basis": "Direct period-97 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_101_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 240,
+      "role": "statement",
+      "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "routing_basis": "Direct period-101 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_121_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 245,
+      "role": "statement",
+      "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "routing_basis": "Direct period-121 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_125_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 250,
+      "role": "statement",
+      "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "routing_basis": "Direct period-125 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
+    },
+    {
+      "declaration": "totient_series_ne_rat_of_den_dvd_128_300",
+      "module": "ErdosProblems/Erdos249/PeriodMultipleEscape.lean",
+      "line": 260,
+      "role": "statement",
+      "statement_node": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "routing_basis": "Direct period-128 denominator-class evidence for Z80::seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes."
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "to": "a_certified_kill_excludes_every_rational_in_its_fixed_denominator_divisor_class",
+      "relation": "complements",
+      "basis": "The finite node supplies six concrete certified-kill inputs, while the generic node explains what denominator exclusion any such input supports."
+    },
+    {
+      "from": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "to": "a_certified_kill_excludes_every_rational_in_its_fixed_denominator_divisor_class",
+      "relation": "generated_by",
+      "basis": "Each of the seven exclusion theorems is the generic consumer instantiated with its corresponding period/basepoint certificate; six certificates are in this zone and the period-67 certificate is already authored in Z66."
+    },
+    {
+      "from": "seven_fixed_period_kills_exclude_their_corresponding_denominator_divisor_classes",
+      "to": "six_periods_beyond_the_diagonal_bank_have_fixed_basepoint_kill_certificates",
+      "relation": "complements",
+      "basis": "The certificate node records the six still-uninterpreted finite inputs, while the exclusion node records their rational-value consequences together with the already-authored period-67 input."
+    }
+  ]
+}

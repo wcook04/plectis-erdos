@@ -1,0 +1,4814 @@
+{
+  "zone_id": "Z13",
+  "title": "Half-cylinder integer seam: greedy remainder, floor-error resets and the fatal-gap / right-tail classification",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "mersenne_achievement_set",
+      "label": "Mersenne achievement set",
+      "description": "The set of reals of the form sum_{a in A} 1/(2^a - 1) over supports A of positive integers; membership of 1/2 is the open test value of Erdos #257."
+    },
+    {
+      "id": "half_membership",
+      "label": "half-value membership",
+      "description": "The open question whether 1/2 lies in the Mersenne achievement set; a positive answer would refute the universal form of #257."
+    },
+    {
+      "id": "truncated_mersenne_weight",
+      "label": "truncated Mersenne weight w(s,d)",
+      "description": "The integer 4^s / (2^d - 1), the exact contribution of divisor rank d to the depth-2s half-carry seam at row s."
+    },
+    {
+      "id": "seam_subset_target",
+      "label": "seam subset target T(s)",
+      "description": "T(s) = 2^(2s-1) - 2^s, the integer capacity that a Boolean divisor incidence word must approach from below at row s."
+    },
+    {
+      "id": "gap_domination",
+      "label": "gap domination",
+      "description": "Strict superincreasingness with an explicit margin: every head weight exceeds its full tail sum plus 2^(s+1)."
+    },
+    {
+      "id": "integer_greedy_remainder",
+      "label": "integer greedy remainder rem(s)",
+      "description": "seamIntegerGreedyRemainder s = T(s) minus the descending-greedy subset sum of the truncated weights; one deterministic integer sequence."
+    },
+    {
+      "id": "seam_greedy_word",
+      "label": "seam greedy word",
+      "description": "The descending integer-greedy Boolean word at row s over ranks 2,...,s-1."
+    },
+    {
+      "id": "half_actual_seam_word",
+      "label": "actual half seam word",
+      "description": "The Boolean word encoding the genuine rational greedy prefix of 1/2 through rank s-1."
+    },
+    {
+      "id": "frozen_margin",
+      "label": "frozen margin M(k,J)",
+      "description": "greedyHalfFrozenMargin k J: a signed integer recurrence whose sign records whether the first J divisor-incidence rows after depth k cover the centered half carry."
+    },
+    {
+      "id": "future_skip_capacity",
+      "label": "future skip capacity",
+      "description": "Binary capacity carried by ranks the actual greedy orbit omits in the next J rows, earliest skip weighted heaviest."
+    },
+    {
+      "id": "finite_coeff_window",
+      "label": "finite coefficient window",
+      "description": "The first J divisor-count rows of the analytic tail after row n, a strict truncation of the complete tail."
+    },
+    {
+      "id": "seam_floor_error",
+      "label": "seam floor error",
+      "description": "The rational remainder 4^s/(2^d-1) minus its integer floor, aggregated over a word's support; the exact loss from working with integer weights."
+    },
+    {
+      "id": "adjacent_cut",
+      "label": "perturbed family and adjacent cut",
+      "description": "Abstract packet: an injective old-sum family with pulses and a separation gap, together with the maximal admissible word below a capacity and the minimal word above it."
+    },
+    {
+      "id": "umr_branches",
+      "label": "U / M / R successor branches",
+      "description": "The exact three-branch successor recurrence: carry to the upper word (U), stay below without paying the terminal weight (M), or pay the new terminal weight (R)."
+    },
+    {
+      "id": "largest_false_rank",
+      "label": "largest false rank",
+      "description": "The largest omitted rank of a seam word, above which every in-row rank is selected."
+    },
+    {
+      "id": "late_two_thirds",
+      "label": "late regime 2s < 3d",
+      "description": "The regime in which the largest false rank lies beyond two thirds of the row; there Euclidean division has quotient two and the suffix is pulse-invisible."
+    },
+    {
+      "id": "row_pulse",
+      "label": "row pulse",
+      "description": "The quotient digit created at rank d when a row is scaled by four: indicator of d | 2s+2 plus twice the indicator of d | 2s+1; at most two."
+    },
+    {
+      "id": "fatal_half_gap",
+      "label": "fatal half gap",
+      "description": "A finite prefix u and depth d with prefix + full tail below 1/2 and prefix + weight(d+1) above it, which excludes 1/2 from the achievement set."
+    },
+    {
+      "id": "eventual_right_tail",
+      "label": "eventual right seam tail",
+      "description": "The seam greedy word extends by a true terminal bit at every row beyond some threshold."
+    },
+    {
+      "id": "producer_socket",
+      "label": "producer socket",
+      "description": "A named Lean Prop asserted nowhere in the corpus, used as the free hypothesis of a half-membership consumer."
+    },
+    {
+      "id": "half_strip_bound",
+      "label": "half strip bound",
+      "description": "halfStripBound n = 2*sqrt(n) + 4, the square-root strip inside which admissible half carries are confined."
+    },
+    {
+      "id": "quarter_band",
+      "label": "quarter and reset bands",
+      "description": "Explicit forbidden intervals for the greedy remainder whose avoidance would force the next residual above the target strip."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "truncated_mersenne_weight_closed_forms",
+      "canonical_statement": "The integer 4^s divided by 2^d - 1 has three equal closed forms: a power of two times a geometric sum in 2^d, a descending sum of powers of two at the multiples of d, and the sum over rows j of the indicator that d divides row j+2 weighted by 2^(2s-2-j).",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "truncatedMersenneWeight_eq_geometricCore",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 29
+        },
+        {
+          "declaration": "truncatedMersenneWeight_eq_divisorIndicatorSum",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 197
+        }
+      ],
+      "concepts": [
+        "truncated_mersenne_weight"
+      ],
+      "engine": "Euclidean division of 2s by d plus geometric summation",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_row_perturbation_affine_recurrence",
+      "canonical_statement": "Advancing the seam by one row is exactly affine: each old truncated weight quadruples plus its row pulse, the target quadruples plus 2^(s+1), the new terminal rank has weight 2^(s+2)+4, and hence the signed defect of any Boolean word satisfies defect(s+1) = 4*defect(s) + 2^(s+1) - pulse(s) - (terminal weight if the new bit is set).",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "truncatedMersenneWeight_succ",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1096
+        },
+        {
+          "declaration": "seamSubsetTarget_succ",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1138
+        },
+        {
+          "declaration": "truncatedMersenneWeight_newRank",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1154
+        },
+        {
+          "declaration": "wordDefect_succ",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1225
+        }
+      ],
+      "concepts": [
+        "truncated_mersenne_weight",
+        "seam_subset_target",
+        "row_pulse"
+      ],
+      "engine": "row-quadrupling algebra with explicit quotient digit",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_weight_gap_domination",
+      "canonical_statement": "For s at least two the truncated Mersenne weights at row s are strictly superincreasing with an explicit margin: each weight exceeds the sum of all smaller weights by at least 2^(s+1).",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "truncatedMersenneWeight_dominanceGap",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 362
+        },
+        {
+          "declaration": "seamWeights_gapDominates",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 420
+        }
+      ],
+      "concepts": [
+        "truncated_mersenne_weight",
+        "gap_domination",
+        "seam_subset_target"
+      ],
+      "engine": "floor enclosure of the scaled Mersenne tail, retaining the infinite tail at rank s-1",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "abstract_greedy_optimality_and_small_defect_equivalence",
+      "canonical_statement": "For any list of weights that is gap dominating with a positive gap, distinct Boolean subset sums differ by at least the gap; descending greedy realises the maximal subset sum below a capacity; and for any window B strictly below the gap, some Boolean word leaves a positive defect at most B exactly when the descending greedy remainder itself lies in that window, in which case that word is the greedy word.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "integerGreedyBits_maximal",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 534
+        },
+        {
+          "declaration": "exists_smallPositiveDefect_iff_integerGreedyRemainder",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 578
+        },
+        {
+          "declaration": "smallPositiveDefect_bits_eq_integerGreedyBits",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 415
+        }
+      ],
+      "concepts": [
+        "gap_domination",
+        "integer_greedy_remainder"
+      ],
+      "engine": "separation of distinct subset sums by the domination gap",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard superincreasing / knapsack greedy optimality argument, stated here with an explicit quantitative gap.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "first_wrap_defect_reduction_to_one_integer_remainder",
+      "canonical_statement": "For every row s at least three, some Boolean divisor incidence word produces a first-wrap seam defect inside the square-root half-carry strip if and only if the single deterministic descending-greedy remainder at that row is positive and inside that strip. The search over exponentially many words collapses to one integer sequence.",
+      "logical_class": "reduction_or_transport",
+      "evidence": [
+        {
+          "declaration": "seam_smallPositiveDefect_iff_integerGreedyRemainder",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 654
+        }
+      ],
+      "concepts": [
+        "integer_greedy_remainder",
+        "half_strip_bound",
+        "gap_domination"
+      ],
+      "engine": "gap domination plus the abstract small-defect equivalence, with 2*sqrt(2s)+4 < 2^(s+1)",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "actual_seam_hole_equals_integer_subset_sum_defect",
+      "canonical_statement": "For every finite Boolean stem supported on proper ranks 2,...,s-1 and not containing s, the actual first-wrap seam hole (twice the integer half carry at depth 2s-2 minus the divisor coefficient at row 2s) equals the seam subset target minus the selected truncated weight sum. The finite divisor/multiple incidence swap needed for this is discharged unconditionally.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "stemIncidenceSwap",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 863
+        },
+        {
+          "declaration": "actualSeamHole_eq_target_sub_stemTruncatedSum_unconditional",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1079
+        }
+      ],
+      "concepts": [
+        "truncated_mersenne_weight",
+        "seam_subset_target"
+      ],
+      "engine": "divisor/multiple double counting over rows 2,...,2s",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "adjacent_cut_three_branch_recurrence",
+      "canonical_statement": "In any perturbed family whose pulse cap is below the separation gap, the maximal admissible word after one row perturbation is either the old maximal word or its immediate successor, and the next residual obeys an exact three-branch recurrence: gap minus four times the overshoot minus the above pulse when the successor carries; four times the remainder plus gap minus the below pulse when it does not and that value is under the terminal weight; and that value minus the terminal weight otherwise.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "prefixChoice_maximal",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1390
+        },
+        {
+          "declaration": "nextRemainder_trichotomy",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1463
+        }
+      ],
+      "concepts": [
+        "adjacent_cut",
+        "umr_branches"
+      ],
+      "engine": "adjacent-cut packet with pulse cap below gap",
+      "confidence": "high",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "quarter_band_escape_equivalence",
+      "canonical_statement": "Under the middle-branch separation hypothesis, the two pulse-correlated quarter-band clauses are not merely sufficient for the updated residual to exceed a target bound: they are exactly equivalent to it.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "quarterBandEscape_iff_bound_lt_nextRemainder",
+          "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+          "line": 1528
+        }
+      ],
+      "concepts": [
+        "quarter_band",
+        "umr_branches",
+        "adjacent_cut"
+      ],
+      "confidence": "high",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "concrete_seam_greedy_one_step_recurrence",
+      "canonical_statement": "The finite seam words at row s form a concrete perturbed family whose adjacent cut at the seam target has remainder equal to the integer greedy remainder at row s and next residual equal to the integer greedy remainder at row s+1; the cut's successor word is literally the seam greedy word at row s+1, and the three branch conditions identify it as the above word extended by false, the below word extended by false, or the below word extended by true.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "seamAdjacentCut_remainder",
+          "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+          "line": 375
+        },
+        {
+          "declaration": "seamAdjacentCut_nextRemainder",
+          "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+          "line": 699
+        },
+        {
+          "declaration": "seamCutNextWord_eq_greedyWord_succ",
+          "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+          "line": 667
+        },
+        {
+          "declaration": "seamGreedyWord_succ_eq_upperBranch",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 289
+        },
+        {
+          "declaration": "seamGreedyWord_succ_eq_middleBranch",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 306
+        },
+        {
+          "declaration": "seamGreedyWord_succ_eq_rightBranch",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 338
+        }
+      ],
+      "concepts": [
+        "seam_greedy_word",
+        "integer_greedy_remainder",
+        "adjacent_cut",
+        "umr_branches"
+      ],
+      "engine": "transport of the abstract adjacent cut through the concrete seam word type",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_floor_error_envelope",
+      "canonical_statement": "The rational error hidden by flooring each Mersenne weight is nonnegative, below one per rank, at most four sevenths per rank from rank two, and the total over an entire even truncation is at most sixty forty-ninths times sqrt(2h)-1, hence strictly below 2*sqrt(2h)+4; the floor error of any seam word is below the row width.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "seamRankFloorError_le_four_sevenths",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 285
+        },
+        {
+          "declaration": "evenTruncationFloorErrorEnvelope_le_sqrtCellBound",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 632
+        },
+        {
+          "declaration": "evenTruncationFloorErrorEnvelope_lt_two_sqrt_add_four",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 662
+        },
+        {
+          "declaration": "seamWordFloorError_lt_width",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 760
+        }
+      ],
+      "concepts": [
+        "seam_floor_error",
+        "truncated_mersenne_weight"
+      ],
+      "engine": "Euclidean quotient-cell decomposition of 4^s mod (2^d - 1) = 2^((2s) mod d), summed in sqrt-many cells",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The sqrt-many-quotient-cells device is the standard hyperbola-method split; the specific constants are corpus-local.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "rational_take_comparison_in_floor_coordinates",
+      "canonical_statement": "Change of coordinates between the exact rational greedy state and the integer seam state: the signed defect of a word equals 4^s times its rational remainder minus 2^s plus its floor error, the corrected coordinate floorZ = defect minus floor error satisfies exact extension laws under appending a false or a true bit, and the real greedy take decision at rank s holds exactly when floorZ reaches the threshold 2^s/(2^s - 1).",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "wordDefect_eq_scaledRemainder_sub_pow_add_floorError",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 836
+        },
+        {
+          "declaration": "seamWord_take_iff_floorZ",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 855
+        },
+        {
+          "declaration": "seamWordFloorZ_extend_false",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 972
+        },
+        {
+          "declaration": "seamWordFloorZ_extend_true",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 983
+        },
+        {
+          "declaration": "seamGreedyFloorZ_eq_remainder_sub_error",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1006
+        }
+      ],
+      "concepts": [
+        "seam_floor_error",
+        "integer_greedy_remainder",
+        "half_actual_seam_word"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "reset_sockets_in_output_floor_coordinates",
+      "canonical_statement": "The upper and right greedy floor coordinates at row s+1 have exact closed forms in terms of row-s data, and consequently the two named but unproved reset inequalities SeamResetUAt and SeamResetRAt are equivalent to the same inequalities stated directly about the row-(s+1) corrected coordinate. Neither reset inequality is asserted.",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "seamGreedyFloorZ_succ_upper",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1095
+        },
+        {
+          "declaration": "seamGreedyFloorZ_succ_right",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1131
+        },
+        {
+          "declaration": "seamResetUAt_iff_output_floorZ",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1171
+        },
+        {
+          "declaration": "seamResetRAt_iff_output_floorZ",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1185
+        }
+      ],
+      "concepts": [
+        "seam_floor_error",
+        "umr_branches",
+        "producer_socket"
+      ],
+      "scope_caveat": "",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": ""
+    },
+    {
+      "id": "aligned_positive_skip_forces_next_take",
+      "canonical_statement": "If at row s (at least five) the real greedy orbit for 1/2 skips rank s, the actual seam word coincides with the integer seam greedy word, and the integer greedy remainder is positive, then the real greedy decision at rank s+1 is a take. Combined with the skipped-endpoint trichotomy this says the negative-margin endpoint cell cannot occur at two consecutive rows.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "alignedPositiveSkip_forces_next_take",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1220
+        },
+        {
+          "declaration": "seamTakeThreshold_le_greedyFloorZ_of_card_add_two_le",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1033
+        },
+        {
+          "declaration": "mersenneWeightRat_le_seamGreedyRemainder_of_card_add_two_le",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 1062
+        }
+      ],
+      "concepts": [
+        "integer_greedy_remainder",
+        "seam_floor_error",
+        "half_actual_seam_word"
+      ],
+      "engine": "exact floorZ comparison plus the proved floor-error-below-width bound",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The hypotheses are exactly the first cell of the proved skipped-endpoint trichotomy, so this is a case-conditioned unconditional step rather than a socket.",
+      "confidence": "medium",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "frozen_margin_integer_recurrence",
+      "canonical_statement": "The frozen margin M(k,J) is a purely integer recurrence M(k,J+1) = 2*M(k,J) + (divisor count of row k+J+2 in the frozen greedy prefix) started at minus the centered half carry; after normalisation it equals 2^J times (finite coefficient window minus centered carry), it is nonnegative exactly when that window covers the carry, nonnegativity persists once reached, and at an actual skipped rank inside the first shell it equals actual future-skip capacity minus the actual terminal carry.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "greedyHalfFrozenMargin_succ",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 1036
+        },
+        {
+          "declaration": "greedyHalfFrozenMargin_cast_eq_pow_mul_window_sub_carry",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 1047
+        },
+        {
+          "declaration": "greedyHalfFrozenMargin_nonneg_iff_window_covers",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 1072
+        },
+        {
+          "declaration": "greedyHalfFrozenMargin_eq_actual_skip_margin",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 1102
+        }
+      ],
+      "concepts": [
+        "frozen_margin",
+        "finite_coeff_window",
+        "future_skip_capacity"
+      ],
+      "engine": "binary doubling recurrence on the frozen finite prefix, with no real tail",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "future_skip_capacity_factorization",
+      "canonical_statement": "Freezing the support at depth n, the weighted frozen incidence surplus over any window J at most n equals exactly the binary capacity of the actual future skips minus the actual centered carry at the end of the window; hence window coverage is exactly terminal-carry coverage by the skip word, is exactly the reduced tail-tax inequality in reduced coordinates (E,D), persists at every later time inside the first shell, and one sufficiently early actual skip already establishes it.",
+      "logical_class": "equivalence_or_classification",
+      "evidence": [
+        {
+          "declaration": "futureSkipCapacity_factorization",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 211
+        },
+        {
+          "declaration": "finiteCoeffWindow_covers_iff_terminal_le_skipCapacity",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 282
+        },
+        {
+          "declaration": "futureSkipCapacityMargin_eq_reducedTailTax",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 344
+        },
+        {
+          "declaration": "futureSkipCoverage_persistent",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 451
+        },
+        {
+          "declaration": "finiteCoeffWindow_covers_of_one_future_skip",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 492
+        }
+      ],
+      "concepts": [
+        "future_skip_capacity",
+        "finite_coeff_window",
+        "frozen_margin"
+      ],
+      "engine": "exact binary bookkeeping between frozen incidence rows and omitted ranks",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "finite_window_reduction_of_raw_half_residual",
+      "canonical_statement": "For any support avoiding one, a finite divisor-incidence inequality at depth n (the centered half carry lies below the first J rows of the analytic tail) forces the normalised distance of the support value from 1/2 to be at most one; the finite window is a strict truncation of the complete tail, and for frozen prefixes the inequality is exactly the future-skip coverage condition.",
+      "logical_class": "reduction_or_transport",
+      "evidence": [
+        {
+          "declaration": "scaledHalfResidual_le_one_of_finiteCoeffWindow",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 111
+        },
+        {
+          "declaration": "rawHalfSlack_nonneg_of_finiteCoeffWindow",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 128
+        },
+        {
+          "declaration": "scaledPrefixHalfResidual_le_one_of_terminal_le_skipCapacity",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 510
+        }
+      ],
+      "concepts": [
+        "finite_coeff_window",
+        "future_skip_capacity",
+        "half_strip_bound"
+      ],
+      "open_antecedents": [
+        "hwindow : (mobiusCenteredHalfCarry A (n - 1) : R) <= finiteCoeffWindow A n J -- no proof that this holds on every actual greedy prefix"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "frozen_margin_first_passage_iff_negative_dyadic_excess",
+      "canonical_statement": "At every positive depth k the frozen margin recurrence eventually becomes nonnegative for some horizon J if and only if the landed dyadic excess numerator at k is strictly negative. The horizon supplied is not bounded by the first shell k+1.",
+      "logical_class": "equivalence_or_classification",
+      "evidence": [
+        {
+          "declaration": "exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 1211
+        }
+      ],
+      "concepts": [
+        "frozen_margin",
+        "finite_coeff_window"
+      ],
+      "engine": "convergence of finite coefficient windows to the complete tail",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is the exact place where the unconditional result and the governed socket diverge: the socket demands horizon at most k+1, this theorem supplies only some finite horizon.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "half_membership_from_frozen_margin_sockets",
+      "canonical_statement": "Four named but unproved propositions each imply that 1/2 lies in the Mersenne achievement set: a governed frozen-margin producer (first nonnegative margin by horizon k+1 at every skipped rank), full-shell nonnegativity at every skipped rank, seam-alignment-zero at every skipped aligned rank, and skip-conditioned seam escape (integer greedy remainder above the square-root strip at every skipped rank). Seam escape implies full-shell nonnegativity, which is equivalent to alignment-zero, which implies the governed producer.",
+      "logical_class": "conditional_implication",
+      "evidence": [
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 1256
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 633
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_skippedSeamAlignmentZero",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 678
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_skippedSeamEscape",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 722
+        },
+        {
+          "declaration": "governedFrozenMarginProducer_of_skippedSeamEscape",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 695
+        }
+      ],
+      "concepts": [
+        "producer_socket",
+        "half_membership",
+        "frozen_margin",
+        "integer_greedy_remainder"
+      ],
+      "open_antecedents": [
+        "HalfGreedyGovernedFrozenMarginProducer : forall k, not (mersenneWeight (k+1) <= greedyMersenneRemainder (1/2) k) -> exists J <= k+1, 0 <= greedyHalfFrozenMargin k J",
+        "HalfGreedySkippedFullShellNonnegative : forall n >= 3, not (mersenneWeight n <= greedyMersenneRemainder (1/2) (n-1)) -> 0 <= greedyHalfFrozenMargin (n-1) n",
+        "HalfGreedySkippedSeamAlignmentZero : forall n >= 3, skip at n -> stemBits n (halfGreedyPrefixSupport (n-1)) = integerGreedyBits (seamWeights n) (seamSubsetTarget n) -> seamIntegerGreedyRemainder n = 0",
+        "HalfGreedySkippedSeamEscape : forall n >= 3, skip at n -> halfStripBound (2*n) < seamIntegerGreedyRemainder n"
+      ],
+      "engine": "frozen-margin first passage feeding the existing dyadic-cap half-membership consumer",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "By the trichotomy node, all four antecedents say the same thing: the negative-below endpoint cell never occurs at an actual skipped rank. They are dressings of one requirement, not independent routes.",
+      "confidence": "high",
+      "problem": "257",
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_alignment_zero_iff_full_shell_nonnegative",
+      "canonical_statement": "The word-level condition that an aligned skipped seam word has vanishing integer greedy remainder is exactly equivalent to the condition that the full-shell frozen margin is nonnegative at every genuine skipped rank. Both sides are unproved.",
+      "logical_class": "equivalence_or_classification",
+      "evidence": [
+        {
+          "declaration": "skippedSeamAlignmentZero_iff_skippedFullShellNonnegative",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 671
+        }
+      ],
+      "concepts": [
+        "producer_socket",
+        "frozen_margin",
+        "integer_greedy_remainder"
+      ],
+      "open_antecedents": [
+        "HalfGreedySkippedSeamAlignmentZero : forall n >= 3, (skip at n) -> stemBits n (halfGreedyPrefixSupport (n-1)) = integerGreedyBits (seamWeights n) (seamSubsetTarget n) -> seamIntegerGreedyRemainder n = 0 -- defined Erdos249257/HalfCylinderFullShellSeamBridge.lean:593, never discharged anywhere in the corpus",
+        "HalfGreedySkippedFullShellNonnegative : forall n >= 3, (skip at n) -> 0 <= greedyHalfFrozenMargin (n-1) n -- defined Erdos249257/HalfCylinderFullShellSeamBridge.lean:604, never discharged anywhere in the corpus"
+      ],
+      "is_restatement_of_open_problem": true,
+      "prior_art_note": "Both sides are open; the theorem shows the two sockets are the same statement, so replacing one by the other is not progress.",
+      "confidence": "high",
+      "problem": "257",
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "scope_caveat": "Both sides are unproved sockets: a grep over Erdos249257/ and ErdosProblems/ shows each Prop occurs only as a definition and as a theorem hypothesis, never as a conclusion. The iff therefore transports no unconditional content; it shows the two sockets are interchangeable, which is a reduction of the socket inventory, not progress on the object. Flagged is_restatement_of_open_problem in the same sense as Z06 endpoint_certificate_completeness (both sides unresolved). Note the weaker precise fact: neither side is known to be equivalent to Erdos #257 or to half-membership - each is only known to imply half-membership (see half_membership_from_frozen_margin_sockets), so this is a restatement at socket level, not a restatement of the open problem itself."
+    },
+    {
+      "id": "skipped_endpoint_trichotomy",
+      "canonical_statement": "At any genuinely skipped rank s at least five, exactly one of three cells holds: the full-shell frozen margin is negative, in which case the actual seam word equals the integer seam greedy word and the margin is minus a positive integer greedy remainder confined to the square-root strip; the margin is zero, with the same alignment and zero remainder; or the margin is positive, in which case the actual word is the minimal word above the target and the margin is its overshoot. Moreover an aligned skip stays aligned exactly on the middle branch, and its next full-shell margin is always strictly negative.",
+      "logical_class": "equivalence_or_classification",
+      "evidence": [
+        {
+          "declaration": "halfGreedy_skipped_endpoint_trichotomy",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 246
+        },
+        {
+          "declaration": "skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 569
+        },
+        {
+          "declaration": "alignedSkip_next_alignment_iff_middle",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 368
+        },
+        {
+          "declaration": "alignedSkip_nextMargin_neg",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 472
+        }
+      ],
+      "concepts": [
+        "frozen_margin",
+        "integer_greedy_remainder",
+        "half_actual_seam_word",
+        "half_strip_bound"
+      ],
+      "engine": "gap domination forcing uniqueness of small-defect words, plus the adjacent cut",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is the structural heart of the zone: it names precisely the one cell (negative margin) whose exclusion every socket in the zone demands.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "take_forces_negative_full_shell_margin",
+      "canonical_statement": "If the real greedy orbit takes rank n then the full-shell frozen margin at n is strictly negative; equivalently, a nonnegative full-shell margin at n forces the orbit to skip rank n. The converse implication is not proved.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "greedyHalfFrozenMargin_fullShell_neg_of_take",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 442
+        },
+        {
+          "declaration": "skip_of_fullShell_margin_nonneg",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 476
+        }
+      ],
+      "concepts": [
+        "frozen_margin",
+        "half_membership"
+      ],
+      "prior_art_note": "Only the easy half of the observed sign dichotomy; the missing half is exactly the full-shell-nonnegativity socket.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "scope_caveat": ""
+    },
+    {
+      "id": "finite_shadow_square_root_strip",
+      "canonical_statement": "Every admissible finite half word at depth N has its Mersenne support sum within (4*sqrt(N)+8)/2^N of one half, via the exact identity that the discrepancy equals the terminal integer half carry minus the future-multiple coefficient tail scaled by 2^N; the coefficient tail itself is below 2*sqrt(N)+3.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "halfStripAdmissible_residual_eq",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 55
+        },
+        {
+          "declaration": "halfStripAdmissible_abs_residual_le",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 532
+        },
+        {
+          "declaration": "binaryCoeffTail_supportCoeff_lt_two_natSqrt_add_three",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 43
+        }
+      ],
+      "concepts": [
+        "half_strip_bound",
+        "finite_coeff_window"
+      ],
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary divisor-count tail estimate (number of divisors of n below sqrt(n)-type bound) summed geometrically; the one-unit sharpening is a block-summation refinement, not new mathematics.",
+      "scope_caveat": "",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null
+    },
+    {
+      "id": "pre_feedback_gauge_symmetry_barrier",
+      "canonical_statement": "If two coefficient words agree up to the carry immediately before row s, the left word has one extra coefficient at row s, and the right word has one extra coefficient at every later row through n, then their integer half carries differ by exactly one at every row from s through n.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "preFeedbackGaugeSymmetry",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 588
+        }
+      ],
+      "concepts": [
+        "half_strip_bound"
+      ],
+      "scope_caveat": "RECLASSIFIED from barrier_no_go by adversarial audit: the Lean statement (preFeedbackGaugeSymmetry, HalfCylinderFiniteShadow.lean:588) is a positive carry identity and contains no non-derivability content. It does not state, in any form, that no contradiction can be derived from the local equations; that reading exists only in the docstring ('a contradiction must use information not represented by those local equations'). The theorem also shows carries are DETERMINED (they differ by exactly one), not underdetermined, and it exhibits no pair of realisable divisor supports both meeting the pattern - set-level divisor realisability is explicitly not addressed here (see first_feedback_child_carry_algebra). Even read informally the no-go covers only the interval from s to n under the carry recurrence plus the coefficient-difference pattern; it says nothing about divisor realisability, about rows beyond n, or about the first feedback row 2s, which is computed separately and is not gauge symmetric.",
+      "confidence": "medium",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": ""
+    },
+    {
+      "id": "first_feedback_child_carry_algebra",
+      "canonical_statement": "Given two boundary parents with carries delta and delta+1 whose first feedback coefficients at row 2s are c+1 and c, the four zero/one children have carries H-1, H-2, H+2 and H+1 where H = 2*delta - c; and these hypotheses can themselves be supplied from the pre-feedback gauge data.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "firstFeedbackChildCarries",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 657
+        },
+        {
+          "declaration": "firstFeedbackChildCarries_of_preFeedbackGauge",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 701
+        }
+      ],
+      "concepts": [
+        "half_strip_bound"
+      ],
+      "prior_art_note": "Exact algebra of the affine carry recurrence; the remaining content is set-level divisor realisability, which is not addressed here.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_hole_scalar_normal_forms",
+      "canonical_statement": "Scalar normal forms for the first-wrap endpoint: every fixed-coefficient child numerator is the affine expression 2T - c - k; the raw endpoint splits into an extended prefix boundary plus the seam hole 2*delta - c; for an actual Boolean stem the seam hole is one more than the row-2s carry of the left boundary word; an in-strip hole is a shifted zero-child carry; and full scalar reachability of the integer strip holds exactly when the hole misses the strip on one side.",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "fixedCoeffNumeratorReachable_iff_endpoint",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 745
+        },
+        {
+          "declaration": "firstWrap_rawEndpoint_decomposition",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 759
+        },
+        {
+          "declaration": "actualFirstWrap_hole_eq_leftZeroCarry_add_one",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 769
+        },
+        {
+          "declaration": "evenSeam_fullIntegerStrip_iff_escape",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 807
+        }
+      ],
+      "concepts": [
+        "half_strip_bound",
+        "truncated_mersenne_weight"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "raw_dyadic_safety_does_not_force_seam_escape",
+      "canonical_statement": "An explicit witness shows that raw block-dyadic safety does not imply half-cylinder seam escape: the greedy state after taking rank three (support {2,3}, residual 1/42) is block-dyadically safe at the last predecessor before rank six, yet its scalar seam hole H=3 lies inside the strip of half width eight and is not even-seam reachable.",
+      "logical_class": "barrier_no_go",
+      "evidence": [
+        {
+          "declaration": "greedyHalf_rankThree_prefix_fixture",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 820
+        },
+        {
+          "declaration": "rankThree_rawSafe_but_seamNotEscaped",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 845
+        }
+      ],
+      "concepts": [
+        "half_strip_bound",
+        "seam_greedy_word"
+      ],
+      "engine": "explicit finite computation at rank three",
+      "scope_caveat": "A single low-rank witness. It rules out only the implication 'raw block-dyadic safety at a predecessor implies seam escape' as a general lemma. It does not show raw safety fails at large ranks, does not show the seam route is unusable, and gives no cofinal family of counterexamples. Additional audit caveat: the seam side of the witness enters as numeric literals. rankThree_rawSafe_but_seamNotEscaped asserts BlockDyadicSafeAt 1 21 5 (which is tied to the fixture residual 1/42) together with facts about the literals delta=2, c=1, k=3; no theorem in the corpus evaluates integerHalfCarry / supportCoeff on the actual {2,3} greedy state to those values (depth14_evenSeam_three_not_reachable is itself stated on the bare literals). The identification of the scalar seam data with the rank-three greedy state is therefore documentation-level, not machine-checked - it is arithmetically correct (integerHalfCarry {2,3} 4 = 2, supportCoeff {2} 6 = 1, so H = 2*2-1 = 3) but that check is not in Lean.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": ""
+    },
+    {
+      "id": "real_to_rational_greedy_prefix_bridge",
+      "canonical_statement": "The primitive prefix of the real greedy Mersenne support at depth n is exactly the finite rational greedy prefix at n; if the next real greedy decision is a skip the prefix does not change; hence at an actual skipped half-greedy rank the real support through k+1 is the landed rational support through k.",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "primitivePrefix_greedyMersenneSupport_eq_prefixRat",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 897
+        },
+        {
+          "declaration": "primitivePrefix_greedyHalf_eq_halfGreedyPrefixSupport_of_skip",
+          "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+          "line": 950
+        }
+      ],
+      "concepts": [
+        "half_actual_seam_word",
+        "half_membership"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "full_shell_margin_equals_integer_seam_defect",
+      "canonical_statement": "At the full first shell J = n, the frozen margin is exactly the signed integer seam subset-sum defect: selected truncated weight sum minus seam subset target. In analytic form it is the amplified dyadic safety slack minus the coefficient tail still pending after row 2(k+1). This identifies the analytic and integer coordinates exactly.",
+      "logical_class": "reduction_or_transport",
+      "evidence": [
+        {
+          "declaration": "frozenMargin_fullShell_eq_stemTruncatedSum_sub_target",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 151
+        },
+        {
+          "declaration": "greedyHalfFrozenMargin_fullShell_eq_stemTruncatedSum_sub_target",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 240
+        },
+        {
+          "declaration": "greedyHalfFrozenMargin_fullShell_cast_eq_slack_sub_tail",
+          "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+          "line": 252
+        },
+        {
+          "declaration": "greedyHalfFrozenMargin_fullShell_eq_actualOldSum_sub_target",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 110
+        }
+      ],
+      "concepts": [
+        "frozen_margin",
+        "seam_subset_target",
+        "truncated_mersenne_weight"
+      ],
+      "engine": "closed weighted-sum form of the window numerator matched against the divisor-indicator form of the truncated weights",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "unbounded_skipped_ranks_give_half_membership",
+      "canonical_statement": "A false coordinate of the integer seam greedy word bounds the row remainder by that coordinate's truncated weight, so cofinal rows carrying skipped ranks that tend to infinity make the normalised remainder vanish and force 1/2 into the Mersenne achievement set. Equivalent supply forms are cofinal false successor terminal bits and false terminal bits beyond every bound.",
+      "logical_class": "conditional_implication",
+      "evidence": [
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_unboundedSkippedRanks",
+          "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+          "line": 142
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_cofinalTerminalFalse",
+          "module": "Erdos249257/HalfCylinderFalseBitSupply.lean",
+          "line": 47
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_unboundedTerminalFalse",
+          "module": "Erdos249257/HalfCylinderFalseBitSupply.lean",
+          "line": 64
+        },
+        {
+          "declaration": "seamIntegerGreedyRemainder_lt_truncatedWeight_of_false",
+          "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+          "line": 58
+        }
+      ],
+      "concepts": [
+        "producer_socket",
+        "seam_greedy_word",
+        "half_membership"
+      ],
+      "open_antecedents": [
+        "SeamGreedyUnboundedSkippedRanksAlong rows : a choice of one false seam coordinate per cofinal row whose Mersenne rank tends to infinity",
+        "hterminal : forall N, exists p >= N with 5 <= p and SeamRowWord.terminal (seamGreedyWord (p+1)) = false"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "skipped-coordinate remainder bound plus the existing seam-limit compactness consumer",
+      "prior_art_note": "The antecedent is the negation of SeamGreedyEventuallyRight, which this same zone proves equivalent to 1/2 not being in the achievement set. So the hypothesis is equivalent to the conclusion: this consumer is a restatement, not a reduction.",
+      "confidence": "high",
+      "problem": "257",
+      "prior_art_state": "not_assessed",
+      "scope_caveat": ""
+    },
+    {
+      "id": "fatal_gap_eventual_right_classification",
+      "canonical_statement": "Four statements are proved equivalent: the integer seam greedy word eventually extends by a true terminal bit at every row; a finite fatal half gap exists (a finite prefix whose value plus the whole remaining Mersenne tail is below 1/2 while the prefix plus the next weight is above it); 1/2 is not in the Mersenne achievement set; and the real greedy orbit for 1/2 has a last skipped exponent. The hard direction builds the fatal gap from the largest missing rank of a base row, using two limit endpoint kills.",
+      "logical_class": "equivalence_or_classification",
+      "evidence": [
+        {
+          "declaration": "seamGreedyEventuallyRight_iff_existsFatalHalfGap",
+          "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "line": 781
+        },
+        {
+          "declaration": "seamGreedyEventuallyRight_iff_half_not_mem",
+          "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "line": 787
+        },
+        {
+          "declaration": "seamGreedyEventuallyRight_iff_exists_isLastHalfGreedySkip",
+          "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "line": 802
+        },
+        {
+          "declaration": "existsFatalHalfGap_of_seamGreedyEventuallyRight",
+          "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "line": 757
+        }
+      ],
+      "concepts": [
+        "eventual_right_tail",
+        "fatal_half_gap",
+        "half_membership",
+        "largest_false_rank"
+      ],
+      "is_restatement_of_open_problem": true,
+      "engine": "largest missing rank decomposition, lazy lower endpoint limit, fixed upper competitor above every normalised target",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The repository's own PRIOR_ART.md records this equivalence package as provisional theorem-specific positioning and explicitly not a novelty assertion. All four sides are open, so the package decides nothing.",
+      "scope_caveat": "",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": []
+    },
+    {
+      "id": "seam_word_adjacency_and_missing_rank_normal_form",
+      "canonical_statement": "In a gap-dominating word the two Boolean words prefix-false-all-true and prefix-true-all-false are adjacent in weighted-sum order, every equal-length word lying on one closed side; every seam greedy word from row five onward omits some rank (else the first three ranks alone exceed the target); and each such support is a finite prefix below its largest missing rank together with the completely filled interval above it.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "weightedBoolSum_adjacent_cut",
+          "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "line": 52
+        },
+        {
+          "declaration": "seamGreedyWord_exists_false",
+          "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "line": 138
+        },
+        {
+          "declaration": "exists_maximal_missing_rank_support_decomposition",
+          "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "line": 194
+        }
+      ],
+      "concepts": [
+        "gap_domination",
+        "seam_greedy_word",
+        "largest_false_rank"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "largest_false_rank_branch_transport",
+      "canonical_statement": "Having a named largest false rank is exactly the decomposition into a fixed lower prefix plus the filled interval above it; appending false makes the old terminal rank the new largest false rank, appending true preserves the existing one; and on the concrete seam the upper and middle branches reset the largest false rank to the old terminal rank while the right branch preserves it.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "isLargestFalseRank_iff_exists_lowerPrefix_fullSuffix",
+          "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+          "line": 42
+        },
+        {
+          "declaration": "seamGreedyWord_succ_isLargestFalseRank_terminal_of_upperOrMiddle",
+          "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+          "line": 328
+        },
+        {
+          "declaration": "IsLargestFalseRank.seamGreedyWord_succ_of_rightBranch",
+          "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+          "line": 339
+        }
+      ],
+      "concepts": [
+        "largest_false_rank",
+        "umr_branches",
+        "seam_greedy_word"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "exact_late_rank_adjacent_gap",
+      "canonical_statement": "In the late range 2s < 3d the truncated Mersenne weight is exactly 2^(2s-d) + 4^(s-d), the strict suffix weights telescope, and the adjacent lower and upper words with any common lower prefix satisfy the division-free identity 3*lowerWeight + (3*2^(s+1) + 2*4^(s-d) + 4) = 3*upperWeight, that is a gap of 2^(s+1) + (2*4^(s-d)+4)/3.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "truncatedMersenneWeight_eq_twoPower_add_fourPower_of_lateRank",
+          "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+          "line": 118
+        },
+        {
+          "declaration": "three_mul_tailWeight_add_exactLateGap_eq_three_mul_headWeight",
+          "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+          "line": 230
+        },
+        {
+          "declaration": "three_mul_largestSkipLowerWeight_add_exactLateGap_eq_upperWeight",
+          "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+          "line": 259
+        }
+      ],
+      "concepts": [
+        "late_two_thirds",
+        "largest_false_rank",
+        "truncated_mersenne_weight"
+      ],
+      "engine": "Euclidean quotient two plus telescoping geometric suffix sums",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "largest_skip_late_step_socket_fan_in",
+      "canonical_statement": "If a late largest false rank can never cross the two-thirds boundary of the row without the concrete successor taking an upper or middle branch, then every row from fourteen onward has a late largest false rank, which supplies cofinal skipped seam ranks tending to infinity and therefore puts 1/2 in the Mersenne achievement set. The crossing statement itself is left unproved.",
+      "logical_class": "conditional_implication",
+      "evidence": [
+        {
+          "declaration": "largestSkipLateAt_of_stepSocket",
+          "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+          "line": 120
+        },
+        {
+          "declaration": "seamGreedyUnboundedSkippedRanksAlong_of_largestSkipLateStepSocket",
+          "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+          "line": 130
+        },
+        {
+          "declaration": "half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket",
+          "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+          "line": 167
+        }
+      ],
+      "concepts": [
+        "producer_socket",
+        "late_two_thirds",
+        "largest_false_rank",
+        "half_membership"
+      ],
+      "open_antecedents": [
+        "LargestSkipLateStepSocket : forall s d, 14 <= s -> IsLargestFalseRank (seamGreedyWord s) d -> 2*s < 3*d -> 2*(s+1) < 3*d or SeamGreedyUpperOrMiddleAt s"
+      ],
+      "engine": "linear largest-skip induction from the row-fourteen base",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Unlike the unbounded-skipped-ranks consumer, this antecedent is not known to be equivalent to half membership: no theorem in the corpus derives LargestSkipLateStepSocket from half membership, and it demands more than a supply of skipped ranks (a late, i.e. linear, largest false rank at every row from fourteen). On that evidence it is treated as a genuine conditional rather than a restatement, but the non-equivalence is unproved - only the forward implication is formalised. Its consequence still factors through the restatement-level supply condition.",
+      "confidence": "high",
+      "problem": "257",
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "row_fourteen_late_base_computation",
+      "canonical_statement": "Verified computation at row fourteen: the twelve truncated Mersenne weights, the target 134201344, and the descending greedy bit word [T,T,F,F,T,T,F,F,F,F,F,F], from which the terminal rank thirteen is false and row fourteen has a late largest false rank.",
+      "logical_class": "finite_instance",
+      "evidence": [
+        {
+          "declaration": "largestSkipLateAt_fourteen",
+          "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+          "line": 73
+        },
+        {
+          "declaration": "integerGreedyBits_fourteen",
+          "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+          "line": 65
+        }
+      ],
+      "concepts": [
+        "seam_greedy_word",
+        "late_two_thirds",
+        "largest_false_rank"
+      ],
+      "engine": "norm_num evaluation of the recursive weight list",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "late_boundary_pulse_normalisation",
+      "canonical_statement": "Above a late largest skipped rank every filled suffix rank is too large to divide either new incidence index, so it has zero row pulse and the entire word pulse is carried by the prefix below d; at the first row where the late inequality fails, either 3d = 2s+1 with row pulse two, or 3d = 2s+2 with row pulse one.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "rowPulse_eq_zero_of_late_strictSuffix",
+          "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+          "line": 75
+        },
+        {
+          "declaration": "exists_lowerPrefix_wordPulse_eq_of_largestFalse_late",
+          "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+          "line": 85
+        },
+        {
+          "declaration": "rowPulse_boundary_of_late_firstCrossing",
+          "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+          "line": 150
+        }
+      ],
+      "concepts": [
+        "row_pulse",
+        "late_two_thirds",
+        "largest_false_rank"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "right_branch_remainder_window",
+      "canonical_statement": "Two unconditional triggers pin the greedy remainder at a late largest-false-rank row: a remainder below a quarter of the doubled gap forces an upper or middle successor (this trigger needs no lateness hypothesis), and twelve times the remainder reaching the explicit gap-and-pulse budget forces the successor to carry. Together, a right branch at a row whose largest false rank d is late (2s < 3d) forces the remainder into one explicit interval bounded below by (2^(s+1)+4)/4 and above by the carry threshold. In addition, at any such late largest-false-rank row the remainder lies strictly below the exact late adjacent gap.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "upperOrMiddle_of_four_mul_remainder_lt",
+          "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+          "line": 79
+        },
+        {
+          "declaration": "successorCarries_of_twelve_mul_remainder_ge",
+          "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+          "line": 150
+        },
+        {
+          "declaration": "three_mul_remainder_lt_exactLateGap",
+          "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+          "line": 117
+        },
+        {
+          "declaration": "rightBranch_remainder_window",
+          "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+          "line": 200
+        }
+      ],
+      "concepts": [
+        "integer_greedy_remainder",
+        "umr_branches",
+        "late_two_thirds",
+        "quarter_band"
+      ],
+      "engine": "exact late adjacent-gap identity combined with the abstract carry condition",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Real unconditional content in the late regime, but it does not prove that the pinned window is empty for the actual orbit; that emptiness is precisely the remaining socket. See scope_caveat for the separate limit that the late regime itself is proved only at row fourteen.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": "Three of the four evidence theorems (successorCarries_of_twelve_mul_remainder_ge, three_mul_remainder_lt_exactLateGap, rightBranch_remainder_window) carry the hypotheses IsLargestFalseRank (seamGreedyWord s) d and 2*s < 3*d. That regime hypothesis is a property of the ACTUAL deterministic seam word and is proved unconditionally only at s = 14 (row_fourteen_late_base_computation); for every s >= 15 it is supplied only by the unproved LargestSkipLateStepSocket via largestSkipLateAt_of_stepSocket. So the pinned window is an unconditional theorem about rows in the late regime, but the corpus does not prove that any row above fourteen is in that regime. Only upperOrMiddle_of_four_mul_remainder_lt applies at every row s >= 5."
+    },
+    {
+      "id": "right_branch_remainder_recurrence",
+      "canonical_statement": "On a right branch the seam greedy remainder obeys the exact recurrence rem(s+1) + 2^(s+1) + belowPulse(s) + 4 = 4*rem(s).",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "rightBranch_remainder_succ_eq",
+          "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+          "line": 218
+        }
+      ],
+      "concepts": [
+        "integer_greedy_remainder",
+        "umr_branches"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "deficit_run_length_law",
+      "canonical_statement": "For rows s >= 5 with rem(s) <= 2^s, if the doubled-scale deficit satisfies 2^s <= 2^k * (2^s - rem(s)) then an upper or middle branch occurs at some row between s and s+k. Contrapositively, an all-right run of length k from row s forces rem(s) to lie within 2^(s-k) of the half point 2^s. The hypothesis rem(s) <= 2^s is present in the Lean statement and is not discharged there.",
+      "logical_class": "unconditional_object_theorem",
+      "evidence": [
+        {
+          "declaration": "upperOrMiddle_within_of_two_pow_deficit",
+          "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+          "line": 261
+        }
+      ],
+      "concepts": [
+        "integer_greedy_remainder",
+        "umr_branches"
+      ],
+      "engine": "iteration of the right-branch recurrence against the quarter-point middle trigger",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Unconditional and about the actual deterministic remainder sequence, but derivable from the corpus's own right-branch recurrence (right_branch_remainder_recurrence) plus the quarter-point middle trigger; classified as a routine corollary of that recurrence rather than an independent result, matching the intra-zone 'specialises' relation already recorded.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "quarter_band_endpoint_cell_normal_forms",
+      "canonical_statement": "Arithmetic normal forms for the two non-carry branches: failure of the next-row upper bound on the middle branch is exactly occupancy of a unique multiple-of-four pulse cell at remainder H + k, and on the terminal-reset branch exactly occupancy of a 3H + k cell inside an interval fixed by the adjacent separation and the two pulses. The concrete seam specialisations take H = 2^(s-1).",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "middleUpperFailure_iff_exists_pulseCell",
+          "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+          "line": 21
+        },
+        {
+          "declaration": "rightUpperFailure_iff_exists_correctedPulseCell",
+          "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+          "line": 62
+        },
+        {
+          "declaration": "seamAdjacentCut_middleNextUpperFailure_iff_pulseCell",
+          "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+          "line": 153
+        },
+        {
+          "declaration": "seamAdjacentCut_rightNextUpperFailure_iff_pulseCell",
+          "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+          "line": 175
+        }
+      ],
+      "concepts": [
+        "quarter_band",
+        "umr_branches",
+        "adjacent_cut"
+      ],
+      "prior_art_note": "The module states outright that it does not assert the production seam word avoids the cells; these are omega-level rewritings.",
+      "confidence": "high",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "scope_caveat": ""
+    },
+    {
+      "id": "upper_reset_floor_coordinate_bridge",
+      "canonical_statement": "On an upper transition the next greedy floor error absorbs exactly the pulse of the old above word, so the rationally corrected upper charge is the integer reset charge plus the next floor error, and distance from any dyadic boundary translates exactly into a statement about the corrected coordinate floorZ at row s+1.",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "seamUpperBranch_nextFloorError_add_abovePulse_eq",
+          "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+          "line": 25
+        },
+        {
+          "declaration": "seamUpperBranch_correctedCharge_eq_resetCharge_add_nextFloorError",
+          "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+          "line": 44
+        },
+        {
+          "declaration": "seamUpperBranch_correctedDyadicDistance_eq_floorZ",
+          "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+          "line": 61
+        }
+      ],
+      "concepts": [
+        "seam_floor_error",
+        "umr_branches",
+        "quarter_band"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "upper_reset_band_escape_rows_13_to_30",
+      "canonical_statement": "Kernel-verified finite computation: for every row d from thirteen to thirty at which the seam successor carries, the upper reset charge avoids every linear-width danger band below the relevant dyadic powers, for all band indices j at most d. The verification proceeds by evaluating the exact seam integer greedy remainder at each row (seamIntegerGreedyRemainder 14 = 392, seamIntegerGreedyRemainder 21 = 100251, seamIntegerGreedyRemainder 30 = 1583742700).",
+      "logical_class": "finite_instance",
+      "evidence": [
+        {
+          "declaration": "seamUpperResetDyadicBandEscape_through_thirty",
+          "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+          "line": 78
+        }
+      ],
+      "concepts": [
+        "quarter_band",
+        "integer_greedy_remainder",
+        "producer_socket"
+      ],
+      "engine": "decide +kernel evaluation of seamIntegerGreedyRemainder per row",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "An initial segment only of the unbounded producer SeamUpperResetDyadicBandEscape (defined in Erdos249257/HalfCylinderMiddleCarryLowerBound.lean:3531 and never discharged), which quantifies over all d at least thirteen. The computed remainders are strongly non-monotone (seamIntegerGreedyRemainder 20 = 549353, seamIntegerGreedyRemainder 21 = 100251), so no growth or drift law is visible from this data. The statement is non-vacuous: within 13..30 the successor carries at rows 13, 19 and 25.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_hole_to_producer_carry_alignment",
+      "canonical_statement": "For a left boundary support obtained by inserting the seam rank s into a stem, the producer-aligned carry equals four times the shifted seam hole minus the explicit paired incidence pulse at rows 2s+1 and 2s+2.",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "producerCarry_insert_eq_four_mul_shiftedHole_sub_pulse",
+          "module": "Erdos249257/HalfCylinderSeamProducerAlignment.lean",
+          "line": 24
+        }
+      ],
+      "concepts": [
+        "row_pulse",
+        "half_strip_bound"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    },
+    {
+      "id": "half_membership_iff_every_skip_survives",
+      "canonical_statement": "A skipped rank is the last skipped rank exactly when its post-decision residual already exceeds the entire remaining Mersenne tail; therefore 1/2 lies in the Mersenne achievement set if and only if at every actual skipped rank the greedy residual stays at or below the complete remaining tail.",
+      "logical_class": "equivalence_or_classification",
+      "evidence": [
+        {
+          "declaration": "isLastHalfGreedySkip_iff_skip_and_fatal",
+          "module": "Erdos249257/HalfCylinderFixedTailSocket.lean",
+          "line": 22
+        },
+        {
+          "declaration": "no_lastHalfGreedySkip_iff_every_skip_survives",
+          "module": "Erdos249257/HalfCylinderFixedTailSocket.lean",
+          "line": 57
+        },
+        {
+          "declaration": "half_mem_iff_every_actual_skip_survives",
+          "module": "Erdos249257/HalfCylinderFixedTailSocket.lean",
+          "line": 73
+        }
+      ],
+      "concepts": [
+        "half_membership",
+        "fatal_half_gap"
+      ],
+      "is_restatement_of_open_problem": true,
+      "prior_art_note": "Both sides are open; the module itself states that no tail-survival estimate is asserted. This is a rank-local rephrasing of the open half-membership question.",
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "scope_caveat": ""
+    },
+    {
+      "id": "seam_word_support_and_actual_word_representation",
+      "canonical_statement": "Encoding lemmas for finite seam words: the support of a word, its behaviour under appending a false or true bit, the identification of the actual half seam word's support with the rational greedy prefix support, membership of a rank being exactly a true coordinate, and the fact that the actual word evolves by appending precisely the real greedy take/skip decision at the terminal coordinate.",
+      "logical_class": "representation_normalisation",
+      "evidence": [
+        {
+          "declaration": "seamWordSupport_halfActualSeamWord",
+          "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+          "line": 115
+        },
+        {
+          "declaration": "halfActualSeamWord_succ",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 79
+        },
+        {
+          "declaration": "self_mem_halfGreedyPrefixSupport_iff_take",
+          "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+          "line": 66
+        }
+      ],
+      "concepts": [
+        "half_actual_seam_word",
+        "seam_greedy_word"
+      ],
+      "confidence": "high",
+      "problem": "257",
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "",
+      "scope_caveat": ""
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "truncatedMersenneWeight",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 25,
+      "role": "concept",
+      "statement_node": "truncated_mersenne_weight_closed_forms"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_eq_geometricCore",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 29,
+      "role": "statement",
+      "statement_node": "truncated_mersenne_weight_closed_forms"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_eq_descendingMultiples",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 89,
+      "role": "substrate",
+      "statement_node": "truncated_mersenne_weight_closed_forms"
+    },
+    {
+      "declaration": "descendingMultiples_eq_divisorIndicatorSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 121,
+      "role": "substrate",
+      "statement_node": "truncated_mersenne_weight_closed_forms"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_eq_divisorIndicatorSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 197,
+      "role": "statement",
+      "statement_node": "truncated_mersenne_weight_closed_forms"
+    },
+    {
+      "declaration": "seamSubsetTarget",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 207,
+      "role": "concept",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeightsFrom",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 211,
+      "role": "concept",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeights",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 221,
+      "role": "concept",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeightsFrom_eq_nil",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 224,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeightsFrom_eq_cons",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 229,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_cast_le_scaled",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 237,
+      "role": "substrate",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "scaled_lt_truncatedMersenneWeight_cast_add_one",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 266,
+      "role": "substrate",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "four_pow_mul_half_pow_pred",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 296,
+      "role": "substrate",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeightsFrom_cast_sum_add_tail_le",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 319,
+      "role": "engine",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_dominanceGap",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 362,
+      "role": "statement",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "GapDominates",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 402,
+      "role": "concept",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeightsFrom_gapDominates",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 406,
+      "role": "statement",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeights_gapDominates",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 420,
+      "role": "statement",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "weightedBoolSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 426,
+      "role": "concept",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "weightedBoolSum_le_sum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 431,
+      "role": "substrate",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "weightedBoolSum_separated",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 447,
+      "role": "engine",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "integerGreedyBits",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 500,
+      "role": "concept",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "integerGreedyRemainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 508,
+      "role": "concept",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "integerGreedyBits_length",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 511,
+      "role": "representation",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "integerGreedyBits_admissible",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 519,
+      "role": "substrate",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "integerGreedyBits_maximal",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 534,
+      "role": "statement",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "exists_smallPositiveDefect_iff_integerGreedyRemainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 578,
+      "role": "statement",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "seamIntegerGreedyRemainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 625,
+      "role": "concept",
+      "statement_node": "first_wrap_defect_reduction_to_one_integer_remainder"
+    },
+    {
+      "declaration": "two_mul_add_four_lt_two_pow_succ",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 628,
+      "role": "substrate",
+      "statement_node": "first_wrap_defect_reduction_to_one_integer_remainder"
+    },
+    {
+      "declaration": "halfStripBound_lt_truncatedWeightGap",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 639,
+      "role": "substrate",
+      "statement_node": "first_wrap_defect_reduction_to_one_integer_remainder"
+    },
+    {
+      "declaration": "seam_smallPositiveDefect_iff_integerGreedyRemainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 654,
+      "role": "statement",
+      "statement_node": "first_wrap_defect_reduction_to_one_integer_remainder"
+    },
+    {
+      "declaration": "integerHalfCarry_eq_pow_sub_sum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 672,
+      "role": "substrate",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemBitsFrom",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 699,
+      "role": "concept",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemBits",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 708,
+      "role": "concept",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemBitsFrom_eq_nil",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 711,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemBitsFrom_eq_cons",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 716,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemBitsFrom_length_eq_seamWeightsFrom_length",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 721,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemBits_length_eq_seamWeights_length",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 734,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemTruncatedSumFrom",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 739,
+      "role": "concept",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemTruncatedSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 749,
+      "role": "concept",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemTruncatedSumFrom_eq_Ico",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 752,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemTruncatedSum_eq_sum_support",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 769,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "weightedBoolSum_stemBitsFrom",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 786,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "weightedBoolSum_stemBits",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 806,
+      "role": "representation",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "StemIncidenceSwap",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 815,
+      "role": "concept",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "supportCoeff_finset_eq_indicatorSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 821,
+      "role": "substrate",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "supportIncidenceTotal_eq_sum_weights",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 832,
+      "role": "engine",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "stemIncidenceSwap",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 863,
+      "role": "statement",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "supportCoeff_insert_eq_add_indicator",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 882,
+      "role": "substrate",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "actualSeamHole_eq_target_sub_stemTruncatedSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 913,
+      "role": "substrate",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "actualSeamHole_eq_target_sub_stemTruncatedSum_unconditional",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1079,
+      "role": "statement",
+      "statement_node": "actual_seam_hole_equals_integer_subset_sum_defect"
+    },
+    {
+      "declaration": "rowPulse",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1091,
+      "role": "concept",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_succ",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1096,
+      "role": "statement",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "seamSubsetTarget_succ",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1138,
+      "role": "statement",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_newRank",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1154,
+      "role": "statement",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "extendWord",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1170,
+      "role": "concept",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "wordWeightSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1174,
+      "role": "concept",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "wordPulse",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1179,
+      "role": "concept",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "wordDefect",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1184,
+      "role": "concept",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "wordWeightSum_succ",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1187,
+      "role": "statement",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "wordDefect_succ",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1225,
+      "role": "statement",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "rowPulse_le_two",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1237,
+      "role": "substrate",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "wordPulse_le",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1252,
+      "role": "substrate",
+      "statement_node": "seam_row_perturbation_affine_recurrence"
+    },
+    {
+      "declaration": "oldRank_order_preserved",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1269,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "PerturbedFamily",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1286,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "newSum",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1302,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "newSum_strictMono",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1304,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "newSum_mono",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1313,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "AdjacentCut",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1320,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "remainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1332,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "overshoot",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1334,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "belowPulse",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1336,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "abovePulse",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1338,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "newCapacity",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1340,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "successorCarries",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1342,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "prefixChoice",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1345,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "old_below_add_remainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1348,
+      "role": "representation",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "capacity_add_overshoot",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1354,
+      "role": "representation",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "below_newSum_le_capacity",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1360,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "above_newSum_le_capacity_iff",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1368,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "above_residual_eq",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1374,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "below_residual_eq",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1381,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "prefixChoice_maximal",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1390,
+      "role": "statement",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "terminalWeight",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1432,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "prefixRemainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1434,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "nextRemainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1440,
+      "role": "concept",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "prefixRemainder_eq_capacity_sub_choice",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1446,
+      "role": "representation",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "carry_prefix_lt_terminal",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1455,
+      "role": "substrate",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "nextRemainder_trichotomy",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1463,
+      "role": "statement",
+      "statement_node": "adjacent_cut_three_branch_recurrence"
+    },
+    {
+      "declaration": "QuarterBandEscapeAt",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1496,
+      "role": "concept",
+      "statement_node": "quarter_band_escape_equivalence"
+    },
+    {
+      "declaration": "bound_lt_nextRemainder_of_quarterBandEscape",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1505,
+      "role": "substrate",
+      "statement_node": "quarter_band_escape_equivalence"
+    },
+    {
+      "declaration": "quarterBandEscape_iff_bound_lt_nextRemainder",
+      "module": "Erdos249257/HalfCylinderIntegerGreedy.lean",
+      "line": 1528,
+      "role": "statement",
+      "statement_node": "quarter_band_escape_equivalence"
+    },
+    {
+      "declaration": "SeamRowWord",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 18,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "toNatWord",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 22,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "toList",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 25,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "ofList",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 28,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "toList_ofList",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 32,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "toList_injective",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 38,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamWeightsFrom_length_eq",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 45,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeights_length_eq",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 57,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeightsFrom_eq_ofFn",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 62,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "seamWeights_eq_ofFn",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 84,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "weightedBoolSum_ofFn",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 92,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "weightedBoolSum_toList_eq_wordWeightSum",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 104,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamPerturbedFamily",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 120,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamPerturbedFamily_newSum_eq",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 168,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamPulseCap_lt_gap",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 176,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamGreedyWord",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 185,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamGreedyWord_toList",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 190,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamHeadThreeWord",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 195,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "wordWeightSum_seamHeadThreeWord",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 198,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamHeadThreeWord_above_target",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 235,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "exists_seamWord_minimal_above",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 304,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAboveWord",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 328,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAboveWord_strict",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 332,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAboveWord_minimal",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 338,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 346,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut_remainder",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 375,
+      "role": "statement",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "adjacentCutSuccessorCarriesDecidable",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 386,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "extend",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 395,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "dropTerminal",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 399,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "terminal",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 403,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "dropTerminal_extend",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 406,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "terminal_extend",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 412,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "extend_dropTerminal_terminal",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 417,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "toNatWord_extend",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 428,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut_newCapacity",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 451,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut_terminalWeight",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 458,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "wordWeightSum_rowWord_extend",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 467,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamPrefixChoice_admissible",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 476,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamCutNextWord",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 490,
+      "role": "concept",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamCutNextWord_sum",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 497,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamCutNextWord_admissible",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 519,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamCut_nextRemainder_eq_target_sub_sum",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 549,
+      "role": "substrate",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "terminalWeight_le_newSum_gap",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 577,
+      "role": "engine",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamCutNextWord_maximal",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 596,
+      "role": "engine",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamCutNextWord_eq_greedyWord_succ",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 667,
+      "role": "statement",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut_nextRemainder",
+      "module": "Erdos249257/HalfCylinderConcreteSeamAdapter.lean",
+      "line": 699,
+      "role": "statement",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamWordSupport",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 27,
+      "role": "concept",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "mem_seamWordSupport_iff",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 31,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordSupport_below",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 44,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordSupport_card_le_width",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 50,
+      "role": "substrate",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordSupport_extend_false",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 65,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordSupport_extend_true",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 85,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordSupport_halfActualSeamWord",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 115,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordRationalSum",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 134,
+      "role": "concept",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordRationalRemainder",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 138,
+      "role": "concept",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordRationalRemainder_halfActualSeamWord",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 141,
+      "role": "representation",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamRankFloorError",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 152,
+      "role": "concept",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamWordFloorError",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 157,
+      "role": "concept",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamRankFloorError_nonneg",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 160,
+      "role": "statement",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamRankFloorError_lt_one",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 179,
+      "role": "statement",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamRankFloorError_eq_mod_div",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 201,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "four_pow_mod_mersenne",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 227,
+      "role": "engine",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamRankFloorError_eq_modPow",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 276,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamRankFloorError_le_four_sevenths",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 285,
+      "role": "statement",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationFloorErrorEnvelope",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 322,
+      "role": "concept",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationFloorErrorEnvelope_eq_modPowSum",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 325,
+      "role": "representation",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamRankFloorError_le_quotientGeometric",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 336,
+      "role": "engine",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationFloorErrorQuotientCell",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 390,
+      "role": "concept",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationFloorErrorQuotientCell_eq_filterSum",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 395,
+      "role": "representation",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationFloorErrorQuotientCell_le",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 439,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationHighQuotientCell",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 489,
+      "role": "concept",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationHighQuotientCell_le",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 493,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationHighFloorError_eq_sum_cells",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 531,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncation_highQuotient_range",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 553,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncation_lowFloorError_le",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 571,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncation_highFloorError_le",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 585,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationFloorErrorEnvelope_le_sqrtCellBound",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 632,
+      "role": "statement",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "evenTruncationFloorErrorEnvelope_lt_two_sqrt_add_four",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 662,
+      "role": "statement",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamWordFloorError_le_evenTruncationEnvelope",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 678,
+      "role": "statement",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "wordWeightSum_eq_sum_seamWordSupport",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 692,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordFloorError_eq_scaledSum_sub_weightSum",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 715,
+      "role": "representation",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamWordFloorError_nonneg",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 736,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamWordFloorError_lt_card",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 746,
+      "role": "substrate",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamWordFloorError_lt_width",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 760,
+      "role": "statement",
+      "statement_node": "seam_floor_error_envelope"
+    },
+    {
+      "declaration": "seamWordFloorZ",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 774,
+      "role": "concept",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamTakeThreshold",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 777,
+      "role": "concept",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "four_pow_eq_two_pow_sq",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 780,
+      "role": "substrate",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamSubsetTarget_cast_rat",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 785,
+      "role": "representation",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordFloorZ_eq_target_sub_scaledSum",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 811,
+      "role": "representation",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordRationalRemainder_eq_pow_add_floorZ_div",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 822,
+      "role": "representation",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "wordDefect_eq_scaledRemainder_sub_pow_add_floorError",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 836,
+      "role": "statement",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "halfActualWordDefect_eq_scaledGreedyRemainder_sub_pow_add_floorError",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 847,
+      "role": "statement",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWord_take_iff_floorZ",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 855,
+      "role": "statement",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamTakeThreshold_lt_two",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 885,
+      "role": "substrate",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordRationalSum_extend_false",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 903,
+      "role": "representation",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordRationalSum_extend_true",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 908,
+      "role": "representation",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordFloorError_extend_false",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 920,
+      "role": "substrate",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamRankFloorError_newRank",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 935,
+      "role": "substrate",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordFloorError_extend_true",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 950,
+      "role": "substrate",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordFloorZ_extend_false",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 972,
+      "role": "statement",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamWordFloorZ_extend_true",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 983,
+      "role": "statement",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamGreedyFloorError",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 997,
+      "role": "concept",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamAboveFloorError",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1000,
+      "role": "concept",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamGreedyFloorZ",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1003,
+      "role": "concept",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamGreedyFloorZ_eq_remainder_sub_error",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1006,
+      "role": "statement",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamTakeThreshold_le_greedyFloorZ_of_card_add_two_le",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1033,
+      "role": "statement",
+      "statement_node": "aligned_positive_skip_forces_next_take"
+    },
+    {
+      "declaration": "mersenneWeightRat_le_seamGreedyRemainder_of_card_add_two_le",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1062,
+      "role": "statement",
+      "statement_node": "aligned_positive_skip_forces_next_take"
+    },
+    {
+      "declaration": "seamAboveFloorZ_eq_neg_overshoot_sub_error",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1072,
+      "role": "substrate",
+      "statement_node": "rational_take_comparison_in_floor_coordinates"
+    },
+    {
+      "declaration": "seamGreedyFloorZ_succ_upper",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1095,
+      "role": "statement",
+      "statement_node": "reset_sockets_in_output_floor_coordinates"
+    },
+    {
+      "declaration": "seamGreedyFloorZ_succ_middle",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1116,
+      "role": "statement",
+      "statement_node": "reset_sockets_in_output_floor_coordinates"
+    },
+    {
+      "declaration": "seamGreedyFloorZ_succ_right",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1131,
+      "role": "statement",
+      "statement_node": "reset_sockets_in_output_floor_coordinates"
+    },
+    {
+      "declaration": "SeamResetUAt",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1150,
+      "role": "concept",
+      "statement_node": "reset_sockets_in_output_floor_coordinates"
+    },
+    {
+      "declaration": "SeamResetRAt",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1160,
+      "role": "concept",
+      "statement_node": "reset_sockets_in_output_floor_coordinates"
+    },
+    {
+      "declaration": "seamResetUAt_iff_output_floorZ",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1171,
+      "role": "statement",
+      "statement_node": "reset_sockets_in_output_floor_coordinates"
+    },
+    {
+      "declaration": "seamResetRAt_iff_output_floorZ",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1185,
+      "role": "statement",
+      "statement_node": "reset_sockets_in_output_floor_coordinates"
+    },
+    {
+      "declaration": "four_mul_sub_three_add_two_lt_two_pow_succ",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1205,
+      "role": "substrate",
+      "statement_node": "aligned_positive_skip_forces_next_take"
+    },
+    {
+      "declaration": "alignedPositiveSkip_forces_next_take",
+      "module": "Erdos249257/HalfCylinderFloorErrorReset.lean",
+      "line": 1220,
+      "role": "statement",
+      "statement_node": "aligned_positive_skip_forces_next_take"
+    },
+    {
+      "declaration": "wordSupport_subset_Iic",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 27,
+      "role": "representation",
+      "statement_node": "finite_shadow_square_root_strip"
+    },
+    {
+      "declaration": "wordSupport_inter_Iic",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 34,
+      "role": "representation",
+      "statement_node": "finite_shadow_square_root_strip"
+    },
+    {
+      "declaration": "one_not_mem_wordSupport_of_admissible",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 40,
+      "role": "substrate",
+      "statement_node": "finite_shadow_square_root_strip"
+    },
+    {
+      "declaration": "halfStripAdmissible_residual_eq",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 55,
+      "role": "statement",
+      "statement_node": "finite_shadow_square_root_strip"
+    },
+    {
+      "declaration": "finiteCoeffWindow",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 72,
+      "role": "concept",
+      "statement_node": "finite_window_reduction_of_raw_half_residual"
+    },
+    {
+      "declaration": "one_sub_pow_mul_halfResidual_eq_tail_sub_centered",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 80,
+      "role": "substrate",
+      "statement_node": "finite_window_reduction_of_raw_half_residual"
+    },
+    {
+      "declaration": "finiteCoeffWindow_le_binaryCoeffTail",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 97,
+      "role": "substrate",
+      "statement_node": "finite_window_reduction_of_raw_half_residual"
+    },
+    {
+      "declaration": "scaledHalfResidual_le_one_of_finiteCoeffWindow",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 111,
+      "role": "statement",
+      "statement_node": "finite_window_reduction_of_raw_half_residual"
+    },
+    {
+      "declaration": "rawHalfSlack_nonneg_of_finiteCoeffWindow",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 128,
+      "role": "statement",
+      "statement_node": "finite_window_reduction_of_raw_half_residual"
+    },
+    {
+      "declaration": "finiteCoeffWindowNumerator",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 143,
+      "role": "concept",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "futureSkipCapacity",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 152,
+      "role": "concept",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "finiteCoeffWindow_eq_numerator_div_pow",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 163,
+      "role": "representation",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "binaryCoeffTail_eq_finiteCoeffWindow_add_shiftedTail",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 186,
+      "role": "substrate",
+      "statement_node": "finite_window_reduction_of_raw_half_residual"
+    },
+    {
+      "declaration": "futureSkipCapacity_factorization",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 211,
+      "role": "statement",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "finiteCoeffWindowNumerator_covers_iff_terminal_le_skipCapacity",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 256,
+      "role": "statement",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "finiteCoeffWindow_covers_iff_terminal_le_skipCapacity",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 282,
+      "role": "statement",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "ReducedTailGapCoordinates",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 315,
+      "role": "concept",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "halfGreedyPrefix_reducedTailGapCoordinates",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 323,
+      "role": "substrate",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "futureSkipCapacityMargin_eq_reducedTailTax",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 344,
+      "role": "statement",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "futureSkipCoverage_iff_reducedTailTax",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 399,
+      "role": "statement",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "futureSkipCoverage_succ",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 426,
+      "role": "substrate",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "futureSkipCoverage_persistent",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 451,
+      "role": "statement",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "futureSkipWeight_le_capacity_of_not_mem",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 467,
+      "role": "substrate",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "finiteCoeffWindow_covers_of_one_future_skip",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 492,
+      "role": "statement",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "scaledPrefixHalfResidual_le_one_of_terminal_le_skipCapacity",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 510,
+      "role": "statement",
+      "statement_node": "finite_window_reduction_of_raw_half_residual"
+    },
+    {
+      "declaration": "halfStripAdmissible_abs_residual_le",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 532,
+      "role": "statement",
+      "statement_node": "finite_shadow_square_root_strip"
+    },
+    {
+      "declaration": "preFeedbackGaugeSymmetry",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 588,
+      "role": "statement",
+      "statement_node": "pre_feedback_gauge_symmetry_barrier"
+    },
+    {
+      "declaration": "supportCoeff_insert_divisor",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 625,
+      "role": "substrate",
+      "statement_node": "first_feedback_child_carry_algebra"
+    },
+    {
+      "declaration": "supportCoeff_insert_self",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 643,
+      "role": "substrate",
+      "statement_node": "first_feedback_child_carry_algebra"
+    },
+    {
+      "declaration": "firstFeedbackChildCarries",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 657,
+      "role": "statement",
+      "statement_node": "first_feedback_child_carry_algebra"
+    },
+    {
+      "declaration": "firstFeedbackChildCarries_of_preFeedbackGauge",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 701,
+      "role": "statement",
+      "statement_node": "first_feedback_child_carry_algebra"
+    },
+    {
+      "declaration": "FixedCoeffNumeratorReachable",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 729,
+      "role": "concept",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "fixedCoeffCylinder_endpoint",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 736,
+      "role": "substrate",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "fixedCoeffNumeratorReachable_iff_endpoint",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 745,
+      "role": "statement",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "firstWrap_rawEndpoint_decomposition",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 759,
+      "role": "statement",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "actualFirstWrap_hole_eq_leftZeroCarry_add_one",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 769,
+      "role": "statement",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "hole_in_strip_iff_shiftedCarry_in_strip",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 786,
+      "role": "representation",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "hole_avoids_integerStrip_iff",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 793,
+      "role": "representation",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "evenSeam_fullIntegerStrip_iff_escape",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 807,
+      "role": "statement",
+      "statement_node": "seam_hole_scalar_normal_forms"
+    },
+    {
+      "declaration": "greedyHalf_rankThree_prefix_fixture",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 820,
+      "role": "finite_instance",
+      "statement_node": "raw_dyadic_safety_does_not_force_seam_escape"
+    },
+    {
+      "declaration": "rankThree_rawSafe_but_seamNotEscaped",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 845,
+      "role": "finite_instance",
+      "statement_node": "raw_dyadic_safety_does_not_force_seam_escape"
+    },
+    {
+      "declaration": "primitivePrefix_greedyMersenneSupport_eq_prefixRat",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 897,
+      "role": "statement",
+      "statement_node": "real_to_rational_greedy_prefix_bridge"
+    },
+    {
+      "declaration": "primitivePrefix_greedyMersenneSupport_succ_eq_of_skip",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 930,
+      "role": "statement",
+      "statement_node": "real_to_rational_greedy_prefix_bridge"
+    },
+    {
+      "declaration": "primitivePrefix_greedyHalf_eq_halfGreedyPrefixSupport_of_skip",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 950,
+      "role": "statement",
+      "statement_node": "real_to_rational_greedy_prefix_bridge"
+    },
+    {
+      "declaration": "greedyHalf_futureSkipCapacityMargin_eq_reducedTailTax",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 963,
+      "role": "substrate",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "greedyHalf_futureSkipCoverage_iff_reducedTailTax",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 991,
+      "role": "substrate",
+      "statement_node": "future_skip_capacity_factorization"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1021,
+      "role": "concept",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_zero",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1028,
+      "role": "representation",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_succ",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1036,
+      "role": "statement",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_cast_eq_pow_mul_window_sub_carry",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1047,
+      "role": "statement",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_nonneg_iff_window_covers",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1072,
+      "role": "statement",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_nonneg_succ",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1094,
+      "role": "statement",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_eq_actual_skip_margin",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1102,
+      "role": "statement",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_nonneg_iff_reducedTailTax",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1131,
+      "role": "substrate",
+      "statement_node": "frozen_margin_integer_recurrence"
+    },
+    {
+      "declaration": "tendsto_finiteCoeffWindow_atTop",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1149,
+      "role": "substrate",
+      "statement_node": "frozen_margin_first_passage_iff_negative_dyadic_excess"
+    },
+    {
+      "declaration": "exists_greedyHalfFrozenMargin_nonneg_of_excess_neg",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1180,
+      "role": "substrate",
+      "statement_node": "frozen_margin_first_passage_iff_negative_dyadic_excess"
+    },
+    {
+      "declaration": "exists_greedyHalfFrozenMargin_nonneg_iff_excess_neg",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1211,
+      "role": "statement",
+      "statement_node": "frozen_margin_first_passage_iff_negative_dyadic_excess"
+    },
+    {
+      "declaration": "HalfGreedyGovernedFrozenMarginProducer",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1249,
+      "role": "concept",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer",
+      "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
+      "line": 1256,
+      "role": "statement",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "sqrt_shift_le_sqrt_add_one_add_div",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 22,
+      "role": "substrate",
+      "statement_node": "finite_shadow_square_root_strip"
+    },
+    {
+      "declaration": "binaryCoeffTail_supportCoeff_lt_two_natSqrt_add_three",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 43,
+      "role": "statement",
+      "statement_node": "finite_shadow_square_root_strip"
+    },
+    {
+      "declaration": "finiteCoeffWindowNumerator_eq_weighted_sum",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 126,
+      "role": "representation",
+      "statement_node": "full_shell_margin_equals_integer_seam_defect"
+    },
+    {
+      "declaration": "frozenMargin_fullShell_eq_stemTruncatedSum_sub_target",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 151,
+      "role": "statement",
+      "statement_node": "full_shell_margin_equals_integer_seam_defect"
+    },
+    {
+      "declaration": "halfGreedyPrefixSupport_pred_below",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 224,
+      "role": "substrate",
+      "statement_node": "full_shell_margin_equals_integer_seam_defect"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_fullShell_eq_stemTruncatedSum_sub_target",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 240,
+      "role": "statement",
+      "statement_node": "full_shell_margin_equals_integer_seam_defect"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_fullShell_cast_eq_slack_sub_tail",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 252,
+      "role": "statement",
+      "statement_node": "full_shell_margin_equals_integer_seam_defect"
+    },
+    {
+      "declaration": "greedyHalf_skip_amplified_dyadic_overshoot_lt_two",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 301,
+      "role": "substrate",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "neg_greedyHalfFrozenMargin_fullShell_le_halfStripBound",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 333,
+      "role": "substrate",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "neg_greedyHalfFrozenMargin_fullShell_implies_seamRemainder_small",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 368,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "smallPositiveDefect_bits_eq_integerGreedyBits",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 415,
+      "role": "engine",
+      "statement_node": "abstract_greedy_optimality_and_small_defect_equivalence"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_fullShell_neg_of_take",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 442,
+      "role": "statement",
+      "statement_node": "take_forces_negative_full_shell_margin"
+    },
+    {
+      "declaration": "skip_of_fullShell_margin_nonneg",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 476,
+      "role": "statement",
+      "statement_node": "take_forces_negative_full_shell_margin"
+    },
+    {
+      "declaration": "stemBits_eq_integerGreedyBits_of_skipped_fullShell_neg",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 487,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_fullShell_eq_neg_seamRemainder_of_alignment",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 531,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "skipped_fullShell_neg_iff_alignment_and_seamRemainder_pos",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 569,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "HalfGreedySkippedSeamAlignmentZero",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 593,
+      "role": "concept",
+      "statement_node": "seam_alignment_zero_iff_full_shell_nonnegative"
+    },
+    {
+      "declaration": "HalfGreedySkippedFullShellNonnegative",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 604,
+      "role": "concept",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "governedFrozenMarginProducer_of_skippedFullShellNonnegative",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 612,
+      "role": "statement",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_skippedFullShellNonnegative",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 633,
+      "role": "statement",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "skippedFullShellNonnegative_of_seamAlignmentZero",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 641,
+      "role": "substrate",
+      "statement_node": "seam_alignment_zero_iff_full_shell_nonnegative"
+    },
+    {
+      "declaration": "seamAlignmentZero_of_skippedFullShellNonnegative",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 656,
+      "role": "substrate",
+      "statement_node": "seam_alignment_zero_iff_full_shell_nonnegative"
+    },
+    {
+      "declaration": "skippedSeamAlignmentZero_iff_skippedFullShellNonnegative",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 671,
+      "role": "statement",
+      "statement_node": "seam_alignment_zero_iff_full_shell_nonnegative"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_skippedSeamAlignmentZero",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 678,
+      "role": "statement",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "HalfGreedySkippedSeamEscape",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 687,
+      "role": "concept",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "governedFrozenMarginProducer_of_skippedSeamEscape",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 695,
+      "role": "statement",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_skippedSeamEscape",
+      "module": "Erdos249257/HalfCylinderFullShellSeamBridge.lean",
+      "line": 722,
+      "role": "statement",
+      "statement_node": "half_membership_from_frozen_margin_sockets"
+    },
+    {
+      "declaration": "stemBitsFrom_eq_ofFn",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 21,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "stemBits_eq_ofFn",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 41,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "halfActualSeamWord",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 49,
+      "role": "concept",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "halfActualSeamWord_toList",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 52,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "mem_halfGreedyPrefixSupport_succ_iff_of_lt",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 59,
+      "role": "substrate",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "self_mem_halfGreedyPrefixSupport_iff_take",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 66,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "halfActualSeamWord_succ",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 79,
+      "role": "statement",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamPerturbedFamily_oldSum_halfActualSeamWord",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 102,
+      "role": "representation",
+      "statement_node": "full_shell_margin_equals_integer_seam_defect"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_fullShell_eq_actualOldSum_sub_target",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 110,
+      "role": "statement",
+      "statement_node": "full_shell_margin_equals_integer_seam_defect"
+    },
+    {
+      "declaration": "greedyHalfFrozenMargin_fullShell_lt_gap",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 120,
+      "role": "substrate",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "halfActualSeamWord_eq_greedy_of_margin_eq_zero",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 150,
+      "role": "substrate",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "halfActualSeamWord_eq_above_of_margin_pos",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 184,
+      "role": "substrate",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "halfGreedy_skipped_endpoint_trichotomy",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 246,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_eq_upperBranch",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 289,
+      "role": "statement",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_eq_middleBranch",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 306,
+      "role": "statement",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_eq_rightBranch",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 338,
+      "role": "statement",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "alignedSkip_next_alignment_iff_middle",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 368,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "alignedSkip_nextMargin_eq_neg_middleQuantity",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 422,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "alignedSkip_nextMargin_neg",
+      "module": "Erdos249257/HalfCylinderSkippedEndpointClassifier.lean",
+      "line": 472,
+      "role": "statement",
+      "statement_node": "skipped_endpoint_trichotomy"
+    },
+    {
+      "declaration": "weightedBoolSum_replicate_true",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 25,
+      "role": "representation",
+      "statement_node": "seam_word_adjacency_and_missing_rank_normal_form"
+    },
+    {
+      "declaration": "weightedBoolSum_replicate_false",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 34,
+      "role": "representation",
+      "statement_node": "seam_word_adjacency_and_missing_rank_normal_form"
+    },
+    {
+      "declaration": "weightedBoolSum_adjacent_cut",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 52,
+      "role": "statement",
+      "statement_node": "seam_word_adjacency_and_missing_rank_normal_form"
+    },
+    {
+      "declaration": "seamGreedyWord_exists_false",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 138,
+      "role": "statement",
+      "statement_node": "seam_word_adjacency_and_missing_rank_normal_form"
+    },
+    {
+      "declaration": "not_mem_seamWordSupport_iff_false",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 169,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "exists_maximal_missing_rank_support_decomposition",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 194,
+      "role": "statement",
+      "statement_node": "seam_word_adjacency_and_missing_rank_normal_form"
+    },
+    {
+      "declaration": "SeamGreedyEventuallyRight",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 257,
+      "role": "concept",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamWordSupport_add_eq_of_eventually_right",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 264,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamWordSupport_add_eq_prefix_union_Ico",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 287,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamRowWordOfFinset",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 306,
+      "role": "concept",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamWordSupport_seamRowWordOfFinset",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 309,
+      "role": "representation",
+      "statement_node": "seam_word_support_and_actual_word_representation"
+    },
+    {
+      "declaration": "seamGreedyFiniteValue_add_eq_prefix_add_partialTail",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 328,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "prefix_add_mersenneTail_le_half_of_eventually_right",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 357,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "prefix_add_mersenneTail_lt_half_of_eventually_right",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 402,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "sum_truncatedMersenneWeight_Ico_eq_seamWeightsFrom_sum",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 419,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "wordWeightSum_cast_le_scaled_supportValue",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 430,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "upper_competitor_exceeds_target_of_eventually_right",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 453,
+      "role": "engine",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamSubsetTarget_div_four_pow_eq",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 544,
+      "role": "representation",
+      "statement_node": "seam_weight_gap_domination"
+    },
+    {
+      "declaration": "tendsto_seamSubsetTarget_div_four_pow_add",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 562,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "normalized_target_lt_upper_competitor_of_eventually_right",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 589,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "half_lt_upper_competitor_of_eventually_right",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 627,
+      "role": "engine",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_eq_extend_true_of_terminal_true",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 653,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_eq_extend_true_iff_terminal_true",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 682,
+      "role": "representation",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyEventuallyRight_iff_eventually_terminal_true",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 695,
+      "role": "representation",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "eventually_terminal_true_of_half_not_mem",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 715,
+      "role": "substrate",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyEventuallyRight_of_half_not_mem",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 740,
+      "role": "statement",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyEventuallyRight_of_existsFatalHalfGap",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 748,
+      "role": "statement",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "existsFatalHalfGap_of_seamGreedyEventuallyRight",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 757,
+      "role": "statement",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyEventuallyRight_iff_existsFatalHalfGap",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 781,
+      "role": "statement",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyEventuallyRight_iff_half_not_mem",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 787,
+      "role": "statement",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyEventuallyRight_of_exists_isLastHalfGreedySkip",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 795,
+      "role": "statement",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "seamGreedyEventuallyRight_iff_exists_isLastHalfGreedySkip",
+      "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+      "line": 802,
+      "role": "statement",
+      "statement_node": "fatal_gap_eventual_right_classification"
+    },
+    {
+      "declaration": "IsLargestFalseRank",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 34,
+      "role": "concept",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "isLargestFalseRank_iff_exists_lowerPrefix_fullSuffix",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 42,
+      "role": "statement",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "isLargestFalseRank_extend_false",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 88,
+      "role": "statement",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "IsLargestFalseRank.extend_true",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 99,
+      "role": "statement",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "truncatedMersenneWeight_eq_twoPower_add_fourPower_of_lateRank",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 118,
+      "role": "statement",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "twoPowerSuffixSum_add_boundary",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 149,
+      "role": "substrate",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "three_mul_fourPowerSuffixSum_add_four",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 184,
+      "role": "substrate",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "seamWeightsFrom_sum_eq_twoPowerSuffix_add_fourPowerSuffix_of_lateRank",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 212,
+      "role": "substrate",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "three_mul_tailWeight_add_exactLateGap_eq_three_mul_headWeight",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 230,
+      "role": "statement",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "largestSkipLowerWord",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 250,
+      "role": "concept",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "largestSkipUpperWord",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 254,
+      "role": "concept",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "three_mul_largestSkipLowerWeight_add_exactLateGap_eq_upperWeight",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 259,
+      "role": "statement",
+      "statement_node": "exact_late_rank_adjacent_gap"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_isLargestFalseRank_terminal_of_upperBranch",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 304,
+      "role": "statement",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_isLargestFalseRank_terminal_of_middleBranch",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 313,
+      "role": "statement",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "seamGreedyWord_succ_isLargestFalseRank_terminal_of_upperOrMiddle",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 328,
+      "role": "statement",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "IsLargestFalseRank.seamGreedyWord_succ_of_rightBranch",
+      "module": "Erdos249257/HalfCylinderLargestSkipGap.lean",
+      "line": 339,
+      "role": "statement",
+      "statement_node": "largest_false_rank_branch_transport"
+    },
+    {
+      "declaration": "LargestSkipLateAt",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 27,
+      "role": "concept",
+      "statement_node": "largest_skip_late_step_socket_fan_in"
+    },
+    {
+      "declaration": "LargestSkipLateStepSocket",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 34,
+      "role": "concept",
+      "statement_node": "largest_skip_late_step_socket_fan_in"
+    },
+    {
+      "declaration": "seamWeights_fourteen",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 41,
+      "role": "finite_instance",
+      "statement_node": "row_fourteen_late_base_computation"
+    },
+    {
+      "declaration": "seamSubsetTarget_fourteen",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 61,
+      "role": "finite_instance",
+      "statement_node": "row_fourteen_late_base_computation"
+    },
+    {
+      "declaration": "integerGreedyBits_fourteen",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 65,
+      "role": "finite_instance",
+      "statement_node": "row_fourteen_late_base_computation"
+    },
+    {
+      "declaration": "largestSkipLateAt_fourteen",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 73,
+      "role": "finite_instance",
+      "statement_node": "row_fourteen_late_base_computation"
+    },
+    {
+      "declaration": "LargestSkipLateStepSocket.largestSkipLateAt_succ",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 90,
+      "role": "substrate",
+      "statement_node": "largest_skip_late_step_socket_fan_in"
+    },
+    {
+      "declaration": "largestSkipLateAt_of_stepSocket",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 120,
+      "role": "statement",
+      "statement_node": "largest_skip_late_step_socket_fan_in"
+    },
+    {
+      "declaration": "seamGreedyUnboundedSkippedRanksAlong_of_largestSkipLateStepSocket",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 130,
+      "role": "statement",
+      "statement_node": "largest_skip_late_step_socket_fan_in"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket",
+      "module": "Erdos249257/HalfCylinderLargestSkipInduction.lean",
+      "line": 167,
+      "role": "statement",
+      "statement_node": "largest_skip_late_step_socket_fan_in"
+    },
+    {
+      "declaration": "wordPulse_eq_sum_seamWordSupport",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 24,
+      "role": "representation",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "not_dvd_two_mul_add_one_of_late_strictSuffix",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 49,
+      "role": "substrate",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "not_dvd_two_mul_add_two_of_late_strictSuffix",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 62,
+      "role": "substrate",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "rowPulse_eq_zero_of_late_strictSuffix",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 75,
+      "role": "statement",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "exists_lowerPrefix_wordPulse_eq_of_largestFalse_late",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 85,
+      "role": "statement",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "late_firstCrossing_boundary",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 115,
+      "role": "substrate",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "rowPulse_eq_two_of_boundary_one",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 123,
+      "role": "substrate",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "rowPulse_eq_one_of_boundary_two",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 137,
+      "role": "substrate",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "rowPulse_boundary_of_late_firstCrossing",
+      "module": "Erdos249257/HalfCylinderBoundaryPulse.lean",
+      "line": 150,
+      "role": "statement",
+      "statement_node": "late_boundary_pulse_normalisation"
+    },
+    {
+      "declaration": "«local instance : Decidable K.successorCarries»",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 46,
+      "role": "substrate",
+      "statement_node": "right_branch_remainder_window"
+    },
+    {
+      "declaration": "seamAdjacentCut_gap_eq",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 53,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut_terminalWeight_eq",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 56,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut_belowPulse_le",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 59,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamAdjacentCut_abovePulse_le",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 63,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "seamGreedy_weight_add_remainder",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 68,
+      "role": "representation",
+      "statement_node": "concrete_seam_greedy_one_step_recurrence"
+    },
+    {
+      "declaration": "upperOrMiddle_of_four_mul_remainder_lt",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 79,
+      "role": "statement",
+      "statement_node": "right_branch_remainder_window"
+    },
+    {
+      "declaration": "seamGreedy_weight_eq_largestSkipLowerWord",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 96,
+      "role": "substrate",
+      "statement_node": "right_branch_remainder_window"
+    },
+    {
+      "declaration": "three_mul_remainder_lt_exactLateGap",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 117,
+      "role": "statement",
+      "statement_node": "right_branch_remainder_window"
+    },
+    {
+      "declaration": "successorCarries_of_twelve_mul_remainder_ge",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 150,
+      "role": "statement",
+      "statement_node": "right_branch_remainder_window"
+    },
+    {
+      "declaration": "rightBranch_remainder_window",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 200,
+      "role": "statement",
+      "statement_node": "right_branch_remainder_window"
+    },
+    {
+      "declaration": "rightBranch_remainder_succ_eq",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 218,
+      "role": "statement",
+      "statement_node": "right_branch_remainder_recurrence"
+    },
+    {
+      "declaration": "upperOrMiddle_within_of_two_pow_deficit",
+      "module": "Erdos249257/HalfCylinderResetDeficitEscape.lean",
+      "line": 261,
+      "role": "statement",
+      "statement_node": "deficit_run_length_law"
+    },
+    {
+      "declaration": "integerGreedyRemainder_lt_of_get?_eq_false",
+      "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+      "line": 21,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "seamIntegerGreedyRemainder_lt_truncatedWeight_of_false",
+      "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+      "line": 58,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "seamGreedyNormalizedRemainder_lt_mersenneWeight_of_false",
+      "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+      "line": 80,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "tendsto_mersenneWeight_atTop_zero",
+      "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+      "line": 99,
+      "role": "substrate",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "SeamGreedyUnboundedSkippedRanksAlong",
+      "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+      "line": 115,
+      "role": "concept",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "seamGreedyRemainderSubquadraticAlong_of_unboundedSkippedRanks",
+      "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+      "line": 123,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_unboundedSkippedRanks",
+      "module": "Erdos249257/HalfCylinderSkippedRankLimit.lean",
+      "line": 142,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "seamGreedyUnboundedSkippedRanksAlong_succ_of_cofinalTerminalFalse",
+      "module": "Erdos249257/HalfCylinderFalseBitSupply.lean",
+      "line": 21,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_cofinalTerminalFalse",
+      "module": "Erdos249257/HalfCylinderFalseBitSupply.lean",
+      "line": 47,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "half_mem_mersenneAchievementSet_of_unboundedTerminalFalse",
+      "module": "Erdos249257/HalfCylinderFalseBitSupply.lean",
+      "line": 64,
+      "role": "statement",
+      "statement_node": "unbounded_skipped_ranks_give_half_membership"
+    },
+    {
+      "declaration": "isLastHalfGreedySkip_iff_skip_and_fatal",
+      "module": "Erdos249257/HalfCylinderFixedTailSocket.lean",
+      "line": 22,
+      "role": "statement",
+      "statement_node": "half_membership_iff_every_skip_survives"
+    },
+    {
+      "declaration": "no_lastHalfGreedySkip_iff_every_skip_survives",
+      "module": "Erdos249257/HalfCylinderFixedTailSocket.lean",
+      "line": 57,
+      "role": "statement",
+      "statement_node": "half_membership_iff_every_skip_survives"
+    },
+    {
+      "declaration": "half_mem_iff_every_actual_skip_survives",
+      "module": "Erdos249257/HalfCylinderFixedTailSocket.lean",
+      "line": 73,
+      "role": "statement",
+      "statement_node": "half_membership_iff_every_skip_survives"
+    },
+    {
+      "declaration": "middleUpperFailure_iff_exists_pulseCell",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 21,
+      "role": "statement",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "pulseCell_unique",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 34,
+      "role": "substrate",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "rightUpperFailure_iff_exists_pulseCell",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 44,
+      "role": "statement",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "rightUpperFailure_iff_exists_correctedPulseCell",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 62,
+      "role": "statement",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "PerturbedFamily.AdjacentCut.middleNextUpperFailure_iff_pulseCell",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 87,
+      "role": "statement",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "PerturbedFamily.AdjacentCut.rightNextUpperFailure_iff_pulseCell",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 111,
+      "role": "statement",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "quarterBandEndpointCarriesDecidable",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 148,
+      "role": "substrate",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "seamAdjacentCut_middleNextUpperFailure_iff_pulseCell",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 153,
+      "role": "statement",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "seamAdjacentCut_rightNextUpperFailure_iff_pulseCell",
+      "module": "Erdos249257/HalfCylinderQuarterBandEndpoints.lean",
+      "line": 175,
+      "role": "statement",
+      "statement_node": "quarter_band_endpoint_cell_normal_forms"
+    },
+    {
+      "declaration": "seamUpperBranch_nextFloorError_add_abovePulse_eq",
+      "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+      "line": 25,
+      "role": "statement",
+      "statement_node": "upper_reset_floor_coordinate_bridge"
+    },
+    {
+      "declaration": "seamUpperBranch_correctedCharge_eq_resetCharge_add_nextFloorError",
+      "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+      "line": 44,
+      "role": "statement",
+      "statement_node": "upper_reset_floor_coordinate_bridge"
+    },
+    {
+      "declaration": "seamUpperBranch_correctedDyadicDistance_eq_floorZ",
+      "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+      "line": 61,
+      "role": "statement",
+      "statement_node": "upper_reset_floor_coordinate_bridge"
+    },
+    {
+      "declaration": "seamUpperResetDyadicBandEscape_through_thirty",
+      "module": "Erdos249257/HalfCylinderUpperResetBandCertificates.lean",
+      "line": 78,
+      "role": "finite_instance",
+      "statement_node": "upper_reset_band_escape_rows_13_to_30"
+    },
+    {
+      "declaration": "producerCarry_insert_eq_four_mul_shiftedHole_sub_pulse",
+      "module": "Erdos249257/HalfCylinderSeamProducerAlignment.lean",
+      "line": 24,
+      "role": "statement",
+      "statement_node": "seam_hole_to_producer_carry_alignment"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "first_wrap_defect_reduction_to_one_integer_remainder",
+      "to": "abstract_greedy_optimality_and_small_defect_equivalence",
+      "relation": "specialises",
+      "basis": "The seam reduction is the abstract small-defect equivalence instantiated at the truncated Mersenne weights with B = halfStripBound (2s)."
+    },
+    {
+      "from": "first_wrap_defect_reduction_to_one_integer_remainder",
+      "to": "seam_weight_gap_domination",
+      "relation": "depends_on_open",
+      "basis": "The instantiation needs the quantitative 2^(s+1) domination gap, which is the preceding node."
+    },
+    {
+      "from": "concrete_seam_greedy_one_step_recurrence",
+      "to": "adjacent_cut_three_branch_recurrence",
+      "relation": "specialises",
+      "basis": "The concrete seam family is a PerturbedFamily, so its next residual is the abstract three-branch recurrence."
+    },
+    {
+      "from": "seam_row_perturbation_affine_recurrence",
+      "to": "adjacent_cut_three_branch_recurrence",
+      "relation": "implies",
+      "basis": "The affine row recurrence supplies the newSum = 4*oldSum + pulse structure that the abstract packet requires."
+    },
+    {
+      "from": "quarter_band_endpoint_cell_normal_forms",
+      "to": "quarter_band_escape_equivalence",
+      "relation": "reformulates",
+      "basis": "Both describe when the updated residual fails to clear the target strip; the endpoint node names the failure cells explicitly."
+    },
+    {
+      "from": "full_shell_margin_equals_integer_seam_defect",
+      "to": "actual_seam_hole_equals_integer_subset_sum_defect",
+      "relation": "equivalent_to",
+      "basis": "At the full first shell the analytic frozen margin and the integer seam hole are the same signed quantity."
+    },
+    {
+      "from": "skipped_endpoint_trichotomy",
+      "to": "full_shell_margin_equals_integer_seam_defect",
+      "relation": "depends_on_open",
+      "basis": "The trichotomy is read off the full-shell identity together with gap domination."
+    },
+    {
+      "from": "skipped_endpoint_trichotomy",
+      "to": "abstract_greedy_optimality_and_small_defect_equivalence",
+      "relation": "specialises",
+      "basis": "Uniqueness of the small-defect bit word is what forces alignment in the negative cell."
+    },
+    {
+      "from": "half_membership_from_frozen_margin_sockets",
+      "to": "skipped_endpoint_trichotomy",
+      "relation": "depends_on_open",
+      "basis": "Every socket in the node is the demand that the negative-margin cell of the trichotomy never occurs at an actual skip."
+    },
+    {
+      "from": "seam_alignment_zero_iff_full_shell_nonnegative",
+      "to": "half_membership_from_frozen_margin_sockets",
+      "relation": "alias_of",
+      "basis": "Two of the four sockets are proved to be the same proposition, so they are not independent routes."
+    },
+    {
+      "from": "aligned_positive_skip_forces_next_take",
+      "to": "skipped_endpoint_trichotomy",
+      "relation": "specialises",
+      "basis": "Its hypotheses are exactly the first cell of the trichotomy, so it says that cell cannot recur at consecutive rows."
+    },
+    {
+      "from": "take_forces_negative_full_shell_margin",
+      "to": "half_membership_from_frozen_margin_sockets",
+      "relation": "barrier_for",
+      "basis": "It supplies only the easy direction of the sign dichotomy; the socket is precisely the unproved converse."
+    },
+    {
+      "from": "frozen_margin_first_passage_iff_negative_dyadic_excess",
+      "to": "half_membership_from_frozen_margin_sockets",
+      "relation": "barrier_for",
+      "basis": "Unconditional first passage is proved but with an unbounded horizon, while the governed socket demands horizon at most k+1; the gap between the two is the open content."
+    },
+    {
+      "from": "future_skip_capacity_factorization",
+      "to": "frozen_margin_integer_recurrence",
+      "relation": "reformulates",
+      "basis": "The frozen margin is the integer form of future-skip capacity minus terminal carry at an actual skipped rank."
+    },
+    {
+      "from": "finite_window_reduction_of_raw_half_residual",
+      "to": "future_skip_capacity_factorization",
+      "relation": "depends_on_open",
+      "basis": "The sufficient window hypothesis is exactly future-skip coverage for frozen prefixes."
+    },
+    {
+      "from": "unbounded_skipped_ranks_give_half_membership",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "equivalent_to",
+      "basis": "The supply antecedent is the negation of eventual-right, which the classification proves equivalent to the conclusion; hence this consumer is a restatement."
+    },
+    {
+      "from": "largest_skip_late_step_socket_fan_in",
+      "to": "unbounded_skipped_ranks_give_half_membership",
+      "relation": "implies",
+      "basis": "The late-invariant induction produces exactly the cofinal skipped-rank supply consumed there."
+    },
+    {
+      "from": "largest_skip_late_step_socket_fan_in",
+      "to": "row_fourteen_late_base_computation",
+      "relation": "depends_on_open",
+      "basis": "The induction is anchored at the verified row-fourteen late base."
+    },
+    {
+      "from": "row_fourteen_late_base_computation",
+      "to": "largest_false_rank_branch_transport",
+      "relation": "finite_instance_of",
+      "basis": "It exhibits one concrete row satisfying the late largest-false-rank invariant that the branch transport propagates."
+    },
+    {
+      "from": "right_branch_remainder_window",
+      "to": "exact_late_rank_adjacent_gap",
+      "relation": "depends_on_open",
+      "basis": "The window bounds are read off the division-free late adjacent-gap identity."
+    },
+    {
+      "from": "deficit_run_length_law",
+      "to": "right_branch_remainder_recurrence",
+      "relation": "specialises",
+      "basis": "The run law is the iterated right-branch recurrence compared with the quarter-point middle trigger."
+    },
+    {
+      "from": "right_branch_remainder_window",
+      "to": "largest_skip_late_step_socket_fan_in",
+      "relation": "barrier_for",
+      "basis": "It pins the remainder window a right branch would need, but does not prove that window empty; emptiness for the actual orbit is the socket."
+    },
+    {
+      "from": "late_boundary_pulse_normalisation",
+      "to": "right_branch_remainder_window",
+      "relation": "depends_on_open",
+      "basis": "The pulse budget in the carry threshold uses the fact that the filled late suffix is pulse invisible."
+    },
+    {
+      "from": "upper_reset_band_escape_rows_13_to_30",
+      "to": "upper_reset_floor_coordinate_bridge",
+      "relation": "finite_instance_of",
+      "basis": "The verified rows instantiate the reset-charge coordinate the bridge provides."
+    },
+    {
+      "from": "raw_dyadic_safety_does_not_force_seam_escape",
+      "to": "seam_hole_scalar_normal_forms",
+      "relation": "barrier_for",
+      "basis": "The witness shows the scalar seam-escape criterion is strictly stronger than raw block-dyadic safety."
+    },
+    {
+      "from": "pre_feedback_gauge_symmetry_barrier",
+      "to": "first_feedback_child_carry_algebra",
+      "relation": "barrier_for",
+      "basis": "The corpus reads pre-feedback gauge symmetry as the informal reason to seek a contradiction at or beyond the first feedback row that the second node computes; the non-derivability itself is not formalised, so the first node is recorded as an unconditional carry identity rather than a barrier."
+    },
+    {
+      "from": "half_membership_iff_every_skip_survives",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "reformulates",
+      "basis": "Both restate half-membership; the fixed-tail form is the rank-local version of the last-skip clause."
+    },
+    {
+      "from": "rational_take_comparison_in_floor_coordinates",
+      "to": "seam_floor_error_envelope",
+      "relation": "depends_on_open",
+      "basis": "The corrected coordinate is only usable because the floor error is bounded by the envelope node."
+    },
+    {
+      "from": "reset_sockets_in_output_floor_coordinates",
+      "to": "rational_take_comparison_in_floor_coordinates",
+      "relation": "specialises",
+      "basis": "The reset sockets are the take comparison applied to the three concrete successor branches."
+    },
+    {
+      "from": "seam_word_adjacency_and_missing_rank_normal_form",
+      "to": "largest_false_rank_branch_transport",
+      "relation": "generalises",
+      "basis": "The named largest-false-rank invariant is the parameterised form of the maximal-missing-rank decomposition."
+    },
+    {
+      "from": "seam_hole_to_producer_carry_alignment",
+      "to": "seam_hole_scalar_normal_forms",
+      "relation": "depends_on_open",
+      "basis": "It advances the seam hole two coefficient rows into the producer-aligned carry coordinate."
+    },
+    {
+      "from": "truncated_mersenne_weight_closed_forms",
+      "to": "actual_seam_hole_equals_integer_subset_sum_defect",
+      "relation": "implies",
+      "basis": "The divisor-indicator form of the weight is what makes the finite incidence swap unconditional."
+    },
+    {
+      "from": "real_to_rational_greedy_prefix_bridge",
+      "to": "seam_word_support_and_actual_word_representation",
+      "relation": "depends_on_open",
+      "basis": "Both identify the actual real greedy orbit with a finite rational object usable by the seam machinery."
+    },
+    {
+      "from": "finite_shadow_square_root_strip",
+      "to": "skipped_endpoint_trichotomy",
+      "relation": "implies",
+      "basis": "The square-root strip bound is what confines the negative-cell seam remainder to halfStripBound (2n)."
+    }
+  ]
+}

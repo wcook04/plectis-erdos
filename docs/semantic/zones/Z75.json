@@ -1,0 +1,172 @@
+{
+  "zone_id": "Z75",
+  "title": "Erdős 1049 Padé exterior determinants: channel divisibility and sign-controlled noncancellation",
+  "problem": "1049",
+  "concepts": [
+    {
+      "id": "z75_exterior_determinant",
+      "label": "Padé exterior determinant",
+      "note": "The integer determinant Un*Vm-Um*Vn of two coefficient rows."
+    },
+    {
+      "id": "z75_channel_common_divisor",
+      "label": "coefficient-channel common divisor",
+      "note": "A divisor shared by both U coefficients or by both V coefficients."
+    },
+    {
+      "id": "z75_positive_pade_errors",
+      "label": "positive Padé errors",
+      "note": "Strict positivity of both real linear-form errors in the two selected rows."
+    },
+    {
+      "id": "z75_alternating_coefficient_signs",
+      "label": "alternating first-coefficient signs",
+      "note": "One U coefficient is strictly negative and the other strictly positive."
+    },
+    {
+      "id": "z75_sign_controlled_noncancellation",
+      "label": "sign-controlled determinant noncancellation",
+      "note": "The determinant sign, and hence nonvanishing, forced by positive errors and alternating U signs."
+    },
+    {
+      "id": "z75_authority_boundary",
+      "label": "finite arithmetic authority boundary",
+      "note": "The zone proves abstract divisibility and sign lemmas only; it supplies no Padé family, analytic remainder positivity or decay, coefficient-sign theorem, primitive local gain, or irrationality result."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "a_divisor_common_to_either_coefficient_channel_divides_the_exterior_determinant",
+      "canonical_statement": "PROVED DIVISIBILITY INTERFACE: if d divides both Un and Um, then d divides rationalPadeExteriorDet Un Vn Um Vm; symmetrically, if d divides both Vn and Vm, then d divides the same exterior determinant.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "1049",
+      "concepts": [
+        "z75_exterior_determinant",
+        "z75_channel_common_divisor",
+        "z75_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Factor the common divisor from the two terms of Un*Vm-Um*Vn in the selected coefficient channel.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary determinant divisibility over the integers; no novelty or priority claim is made.",
+      "scope_caveat": "The theorems do not produce a nonunit divisor, a growing prime-power valuation, primitive Padé rows, or a favorable local-to-Archimedean balance. Separate divisors from the U and V channels each divide the determinant, but their product is not asserted to divide it without an additional coprimality argument.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "commonU_dvd_rationalPadeExteriorDet",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 135
+        },
+        {
+          "declaration": "commonV_dvd_rationalPadeExteriorDet",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 147
+        }
+      ]
+    },
+    {
+      "id": "positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation",
+      "canonical_statement": "PROVED CONDITIONAL SIGN PACKET: if both rational Padé errors are strictly positive and Un<0<Um, then the exterior determinant is strictly positive; if both errors are strictly positive and Um<0<Un, then it is strictly negative. In either alternating-sign configuration the determinant is nonzero.",
+      "logical_class": "conditional_implication",
+      "problem": "1049",
+      "concepts": [
+        "z75_exterior_determinant",
+        "z75_positive_pade_errors",
+        "z75_alternating_coefficient_signs",
+        "z75_sign_controlled_noncancellation",
+        "z75_authority_boundary"
+      ],
+      "open_antecedents": [
+        "For application to an actual adjacent Padé family, strict positivity of both real errors rationalPadeError S Un Vn and rationalPadeError S Um Vm.",
+        "For the same selected adjacent rows, one of the two strict alternating sign patterns Un<0<Um or Um<0<Un."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Use the exact real determinant identity Um*error_n-Un*error_m; positive errors and the two alternating coefficient signs make both contributions have the same strict sign, then cast the result back to the integer determinant.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary sign analysis of the exterior-determinant identity; no analytic positivity theorem or novelty claim is supplied.",
+      "scope_caveat": "The abstract implications are proved, but the intended Padé application still needs an actual coefficient family with positive remainders and alternating U signs. The packet gives no determinant-size bound, no local divisibility gain, no remainder decay, and no irrationality or transcendence conclusion.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "rationalPadeExteriorDet_pos_of_left_neg_right_pos",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 158
+        },
+        {
+          "declaration": "rationalPadeExteriorDet_neg_of_left_pos_right_neg",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 179
+        },
+        {
+          "declaration": "rationalPadeExteriorDet_ne_zero_of_left_neg_right_pos",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 200
+        },
+        {
+          "declaration": "rationalPadeExteriorDet_ne_zero_of_left_pos_right_neg",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 212
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "commonU_dvd_rationalPadeExteriorDet",
+      "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "line": 135,
+      "role": "statement",
+      "statement_node": "a_divisor_common_to_either_coefficient_channel_divides_the_exterior_determinant",
+      "routing_basis": "Direct U-channel divisibility evidence for Z75::a_divisor_common_to_either_coefficient_channel_divides_the_exterior_determinant."
+    },
+    {
+      "declaration": "commonV_dvd_rationalPadeExteriorDet",
+      "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "line": 147,
+      "role": "statement",
+      "statement_node": "a_divisor_common_to_either_coefficient_channel_divides_the_exterior_determinant",
+      "routing_basis": "Direct V-channel divisibility evidence for Z75::a_divisor_common_to_either_coefficient_channel_divides_the_exterior_determinant."
+    },
+    {
+      "declaration": "rationalPadeExteriorDet_pos_of_left_neg_right_pos",
+      "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "line": 158,
+      "role": "statement",
+      "statement_node": "positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation",
+      "routing_basis": "Direct positive-sign evidence for Z75::positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation."
+    },
+    {
+      "declaration": "rationalPadeExteriorDet_neg_of_left_pos_right_neg",
+      "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "line": 179,
+      "role": "statement",
+      "statement_node": "positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation",
+      "routing_basis": "Direct negative-sign evidence for Z75::positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation."
+    },
+    {
+      "declaration": "rationalPadeExteriorDet_ne_zero_of_left_neg_right_pos",
+      "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "line": 200,
+      "role": "statement",
+      "statement_node": "positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation",
+      "routing_basis": "Direct positive-configuration noncancellation evidence for Z75::positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation."
+    },
+    {
+      "declaration": "rationalPadeExteriorDet_ne_zero_of_left_pos_right_neg",
+      "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+      "line": 212,
+      "role": "statement",
+      "statement_node": "positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation",
+      "routing_basis": "Direct negative-configuration noncancellation evidence for Z75::positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation."
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "positive_errors_and_alternating_first_coefficients_force_determinant_noncancellation",
+      "to": "a_divisor_common_to_either_coefficient_channel_divides_the_exterior_determinant",
+      "relation": "complements",
+      "basis": "The channel lemmas provide arithmetic divisibility of the determinant, while the sign packet provides conditional Archimedean noncancellation; neither supplies the other's hypotheses or a favorable size-versus-divisor inequality."
+    }
+  ]
+}

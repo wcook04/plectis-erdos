@@ -216,6 +216,26 @@ theorem totient_periodLcm_ray_split {t j : ℕ} (q : ℕ) (hdvd : j ∣ periodLc
   rw [key]
   exact totient_ray_split q hclean
 
+/-- **Recursive lcm-ray quotient identity.**  After removing the exact clean
+factor `φ(j)`, an lcm-ray forcing letter is another genuine `deltaTotient`
+letter at the smaller scale `periodLcm t / j`.  Thus the factor is only the
+outer gauge; the quotient retains arithmetic information that homogeneous
+divisibility alone discards. -/
+theorem deltaTotient_periodLcm_ray_split {t j : ℕ} (q : ℕ)
+    (hdvd : j ∣ periodLcm t)
+    (hclean : ∀ p : ℕ, Nat.Prime p → p ∣ j → p ∣ (periodLcm t / j)) :
+    deltaTotient (periodLcm t) (q * periodLcm t + j) =
+      (Nat.totient j : ℤ) *
+        deltaTotient (periodLcm t / j)
+          (q * (periodLcm t / j) + 1) := by
+  unfold deltaTotient
+  rw [show q * periodLcm t + j + periodLcm t =
+        (q + 1) * periodLcm t + j by ring]
+  rw [totient_periodLcm_ray_split (q + 1) hdvd hclean,
+    totient_periodLcm_ray_split q hdvd hclean]
+  push_cast
+  ring_nf
+
 /-! ## Kernel-decided diagonal deposits: the floor of the sequence `P t` -/
 
 /-- Certified diagonal kill depths for `1 ≤ t ≤ 8`, matching the wave-23

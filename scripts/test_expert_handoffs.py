@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+"""Adversarial fixtures for the cross-domain expert-handoff contract."""
+
+from __future__ import annotations
+
+from copy import deepcopy
+
+import query_expert_handoffs as handoffs
+
+
+def valid_response() -> dict:
+    return {
+        "question_id": "XQSYS-ten-minute-hostile-reader",
+        "reviewer_identity": "independent-reviewer-1",
+        "reviewed_at": "2026-07-26",
+        "clone_revision": "1" * 40,
+        "prior_project_context": False,
+        "elapsed_seconds": 537,
+        "problem_249_status": "OPEN",
+        "problem_257_status": "OPEN",
+        "farey_bound_provenance": "classical_farey_mediant",
+        "farey_numerical_delta": 0,
+        "equivalent_antecedents": 17,
+        "substantial_antecedents": 23,
+        "nonrestatement_results_249": [
+            "Exact finite-level independence of the dyadic totient sections.",
+            "A finite-rank shift countermodel that rules out a proof-strategy class.",
+        ],
+        "nonrestatement_results_257": [
+            "Exact noncollapse of the reduced-denominator period for finite sums.",
+            "Irrationality for every eventually periodic support.",
+        ],
+        "verdict_summary": (
+            "The project contains checked results and barriers while openly "
+            "identifying many equivalent reformulations; neither problem is closed."
+        ),
+        "source_paths_used": ["README.md", "docs/RESULTS.md"],
+        "first_confusing_surface": "",
+    }
+
+
+def valid_review(response: dict) -> dict:
+    question = handoffs.systems_questions()[0]
+    criteria = {key: True for key in question["manual_review_rubric"]}
+    return {
+        "question_id": response["question_id"],
+        "response_sha256": handoffs.object_digest(response),
+        "evaluator_identity": "independent-evaluator-1",
+        "evaluated_at": "2026-07-26",
+        "reviewer_provenance_verified": True,
+        "timing_provenance_verified": True,
+        "criteria": criteria,
+        "review_notes": "",
+        "final_outcome": "accepted",
+    }
+
+
+def main() -> int:
+    assert handoffs.protocol_errors() == []
+    packet = handoffs.question_packet(None)
+    assert packet["packet_kind"] == "compact_index"
+    assert packet["count"] == 6
+    assert packet["domain_counts"] == {"mathematics": 5, "systems": 1}
+    for row in packet["results"]:
+        assert row["current_hypothesis"]
+        assert row["hypothesis_confidence"] == "low"
+        assert len(row["plausible_alternatives"]) >= 2
+        assert len(row["current_evidence"]) >= 2
+        assert len(row["discriminating_evidence"]) >= 2
+        assert row["detail_command"].endswith(row["id"])
+
+    for question in handoffs.all_questions():
+        detail = handoffs.question_packet(None, question["id"])
+        assert detail["packet_kind"] == "full_question"
+        assert detail["count"] == 1
+        assert detail["results"][0]["id"] == question["id"]
+
+    second_channel = next(
+        row
+        for row in handoffs.mathematical_questions()
+        if row["id"] == "XQ257-second-channel-separation"
+    )
+    assert second_channel["measured_evidence_artifact"] == (
+        "docs/measurements/second_channel_separation_probe.json"
+    )
+    assert second_channel["measurement_check_command"] == (
+        "python3 scripts/probe_second_channel_separation.py --check"
+    )
+
+    systems_packet = handoffs.question_packet(handoffs.SYSTEMS_DOMAIN)
+    assert systems_packet["packet_kind"] == "full_question"
+    assert systems_packet["count"] == 1
+    systems_row = systems_packet["results"][0]
+    assert "acceptance" not in systems_row
+    assert "review_template" not in systems_row
+
+    response = valid_response()
+    assert handoffs.validate_response(response) == []
+    assert handoffs.validate_response([]) == ["response must be a JSON object"]
+    review = valid_review(response)
+    assert handoffs.validate_review(response, review) == []
+
+    mutations = []
+    too_slow = deepcopy(response)
+    too_slow["elapsed_seconds"] = 601
+    mutations.append(too_slow)
+    wrong_farey = deepcopy(response)
+    wrong_farey["farey_numerical_delta"] = 1
+    mutations.append(wrong_farey)
+    restatement_only = deepcopy(response)
+    restatement_only["nonrestatement_results_249"] = []
+    mutations.append(restatement_only)
+    wrong_endpoint = deepcopy(response)
+    wrong_endpoint["problem_257_status"] = "CLOSED"
+    mutations.append(wrong_endpoint)
+    empty_verdict = deepcopy(response)
+    empty_verdict["verdict_summary"] = ""
+    mutations.append(empty_verdict)
+    duplicate_result = deepcopy(response)
+    duplicate_result["nonrestatement_results_257"][1] = (
+        duplicate_result["nonrestatement_results_257"][0]
+    )
+    mutations.append(duplicate_result)
+    nonexistent_source = deepcopy(response)
+    nonexistent_source["source_paths_used"] = ["docs/does-not-exist.md"]
+    mutations.append(nonexistent_source)
+
+    for mutation in mutations:
+        assert handoffs.validate_response(mutation), mutation
+
+    bad_digest = deepcopy(review)
+    bad_digest["response_sha256"] = "0" * 64
+    assert handoffs.validate_review(response, bad_digest)
+    unearned_acceptance = deepcopy(review)
+    first_criterion = next(iter(unearned_acceptance["criteria"]))
+    unearned_acceptance["criteria"][first_criterion] = False
+    assert handoffs.validate_review(response, unearned_acceptance)
+    unexplained_revision = deepcopy(review)
+    unexplained_revision["final_outcome"] = "needs_revision"
+    assert handoffs.validate_review(response, unexplained_revision)
+
+    print(
+        "expert handoff tests: 7 response and 3 review mutations rejected"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

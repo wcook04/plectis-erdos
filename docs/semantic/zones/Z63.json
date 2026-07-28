@@ -1,0 +1,103 @@
+{
+  "zone_id": "Z63",
+  "title": "Base diagonal-pincer certificate roster and depth table",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z63_base_diagonal_pincer_roster",
+      "label": "base diagonal-pincer roster",
+      "note": "The twelve generated lcm-diagonal scales certified in the base module."
+    },
+    {
+      "id": "z63_base_diagonal_pincer_depth_table",
+      "label": "base diagonal-pincer depth table",
+      "note": "The explicit certificate depth assigned to each of the twelve base scales."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "base_diagonal_pincer_scale_and_depth_table_is_explicit_data",
+      "canonical_statement": "GENERATED REPRESENTATION: diagonalPincerCertificateScales is exactly [1,2,3,4,5,7,8,9,11,13,16,17], and diagonalPincerKillDepth assigns the respective depths [6,5,7,7,9,14,15,14,21,22,23,26], returning zero at every unlisted input.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z63_base_diagonal_pincer_roster",
+        "z63_base_diagonal_pincer_depth_table"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Generated literal list and pattern-matching lookup table.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Generated bookkeeping for finite certificate instances.",
+      "scope_caveat": "The definitions are data, not proofs that certificates fire. The zero fallback is not a certificate depth for an unlisted scale, and no cofinal or asymptotic fact follows from the table.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "diagonalPincerCertificateScales",
+          "module": "Erdos249257/DiagonalPincerCertificates.lean",
+          "line": 2842
+        },
+        {
+          "declaration": "diagonalPincerKillDepth",
+          "module": "Erdos249257/DiagonalPincerCertificates.lean",
+          "line": 2844
+        }
+      ]
+    },
+    {
+      "id": "twelve_base_diagonal_pincer_scales_fire_at_the_tabulated_depths",
+      "canonical_statement": "PROVED GENERATED FINITE ROSTER: for every t in [1,2,3,4,5,7,8,9,11,13,16,17], certifiedKill (periodLcm t) (periodLcm t) holds at the tabulated depth [6,5,7,7,9,14,15,14,21,22,23,26], respectively.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "concepts": [
+        "z63_base_diagonal_pincer_roster",
+        "z63_base_diagonal_pincer_depth_table"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Finite case analysis over the generated scale list, dispatching to twelve kernel-checked norm_num certificate theorems built from exact totient reconstructions.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Finite generated certificate bank; no novelty or asymptotic claim is made.",
+      "scope_caveat": "The theorem covers exactly twelve listed scales through t=17. Its name all_imported does not include the sibling T19 through T64 modules, the later 28-scale aggregate, every t in an interval, or infinitely many t.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_diagonal_all_imported",
+          "module": "Erdos249257/DiagonalPincerCertificates.lean",
+          "line": 2860
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "diagonalPincerCertificateScales",
+      "module": "Erdos249257/DiagonalPincerCertificates.lean",
+      "line": 2842,
+      "role": "representation",
+      "statement_node": "base_diagonal_pincer_scale_and_depth_table_is_explicit_data"
+    },
+    {
+      "declaration": "diagonalPincerKillDepth",
+      "module": "Erdos249257/DiagonalPincerCertificates.lean",
+      "line": 2844,
+      "role": "representation",
+      "statement_node": "base_diagonal_pincer_scale_and_depth_table_is_explicit_data"
+    },
+    {
+      "declaration": "certifiedKill_diagonal_all_imported",
+      "module": "Erdos249257/DiagonalPincerCertificates.lean",
+      "line": 2860,
+      "role": "statement",
+      "statement_node": "twelve_base_diagonal_pincer_scales_fire_at_the_tabulated_depths"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "twelve_base_diagonal_pincer_scales_fire_at_the_tabulated_depths",
+      "to": "base_diagonal_pincer_scale_and_depth_table_is_explicit_data",
+      "relation": "generated_by",
+      "basis": "The aggregate theorem case-splits over exactly the listed scales and selects exactly the depths encoded by the lookup table."
+    }
+  ]
+}

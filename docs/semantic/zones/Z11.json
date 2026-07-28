@@ -1,0 +1,488 @@
+{
+  "zone_id": "Z11",
+  "title": "Shared tempered binary-carry trunk and support-free zero-window transfer",
+  "problem": "shared_substrate",
+  "concepts": [
+    {
+      "id": "binary_coeff_series",
+      "label": "binary coefficient series X_c = sum_{n>=1} c(n)/2^n",
+      "description": "The shared object of #249 (c = Euler phi) and #257 (c = supportCoeff A), carried under the single growth hypothesis c(n) <= n (binaryCoeffSeries, GenericTailOrbitRigidity.lean:36)."
+    },
+    {
+      "id": "scaled_binary_tail",
+      "label": "scaled tail T_c(N) = sum_{j>=1} c(N+j)/2^j",
+      "description": "The value of the series after the first N binary digits have been shifted out; the canonical carry coordinate (binaryCoeffTail, GenericTailOrbitRigidity.lean:40)."
+    },
+    {
+      "id": "tempered_carry_orbit",
+      "label": "tempered integer orbit u(N+1) = 2u(N) - v*c(N+1), u(N) = o(2^N)",
+      "description": "An integer sequence obeying the exact digit-expulsion recurrence together with the subexponential boundary condition (IsTemperedBinaryOrbit, GenericTailOrbitRigidity.lean:66)."
+    },
+    {
+      "id": "temperedness_boundary",
+      "label": "o(2^N) boundary in place of positivity",
+      "description": "The module deliberately uses u(N)/2^N -> 0 rather than positivity, because a homogeneous 2^N parasite satisfies the same recurrence; declared a NON_CLAIM guard against a superseded positive-orbit route."
+    },
+    {
+      "id": "balanced_pulse_family",
+      "label": "balanced two-site pulse c_r = (R-r at m, 2r at m+1)",
+      "description": "A one-parameter family with identical series value and identical coefficients before m, whose first post-m tail decodes r exactly (balancedPulseCoeff, GenericTailOrbitRigidity.lean:156)."
+    },
+    {
+      "id": "affine_carry_cocycle",
+      "label": "input-driven affine orbit and fixed-depth reset",
+      "description": "u_{n+1} = 2u_n - a(n+1) driven by a forcing word; two carries under the same word differ by exactly 2^L times their initial gap (affineBinaryOrbit, GenericTailOrbitRigidity.lean:275)."
+    },
+    {
+      "id": "coeff_zero_window",
+      "label": "zero window: c vanishes at N+1, ..., N+h",
+      "description": "h consecutive vanishing coefficients after index N (CoeffZeroWindow, BinaryTailWindowTransfer.lean:28; SupportCoeffZeroWindow, SublogDivisorCoverage.lean:201)."
+    },
+    {
+      "id": "window_lower_certificate",
+      "label": "lower certificate 2^h <= scale * T_f(start + h)",
+      "description": "The single arithmetic input the transfer layer consumes; produced by a positive tail-realising state that doubles across the window (BinaryTailWindowLowerBound, BinaryTailWindowTransfer.lean:49)."
+    },
+    {
+      "id": "subpower_tail_envelope",
+      "label": "upper envelope T_f(M) <= C*(M+1)^delta",
+      "description": "The second and only other input to the transfer layer: a global real upper bound for the binary tail (BinaryCoeffTailEnvelope, BinaryTailWindowTransfer.lean:54)."
+    },
+    {
+      "id": "self_reference_absorption",
+      "label": "absorbing the window length out of its own bound",
+      "description": "The window length h appears on both sides through (start+h)^(1/k); raising to the k-th power and using Y+h <= Y*2^h consumes exactly one of the k binary factors, leaving coefficient 1/(k-1)."
+    },
+    {
+      "id": "explicit_divisor_subpower_constant",
+      "label": "divisorSubpowerConst k = k^(2^k)",
+      "description": "The completely explicit constant in tau(n) <= k^(2^k) * n^(1/k); it is doubly exponential in k, hence in 1/epsilon (SublogDivisorCoverage.lean:103)."
+    },
+    {
+      "id": "support_coefficient",
+      "label": "support coefficient f_A(n) = #{d | n : d in A}",
+      "description": "The coefficient in which Erdos #257 is stated, since sum_{a in A} 1/(2^a - 1) = sum_n f_A(n)/2^n (supportCoeff, CertificateKernel.lean:8528)."
+    },
+    {
+      "id": "displayed_rational_denominator",
+      "label": "displayed value p / (2^c * v)",
+      "description": "The rationality hypothesis in fully general displayed form (any rational is p/(2^c*v) with v > 0); c is the dyadic part that gets shifted away, v the surviving multiplier."
+    },
+    {
+      "id": "denominator_survival",
+      "label": "coprime divisor survives rational reduction",
+      "description": "A divisor of a displayed denominator that is coprime to the displayed numerator still divides the reduced denominator (RationalDenominatorSurvival.lean:17)."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "tempered_orbit_rigidity",
+      "canonical_statement": "Let c be a coefficient sequence with c(n) <= n for all n. If an integer sequence u satisfies u(N+1) = 2u(N) - v*c(N+1) for all N and u(N)/2^N tends to 0, then u(N) equals v times the scaled binary tail of c at N, for every N. The engine is the abstract fact that a real sequence with d(N+1) = 2d(N) and d(N) = o(2^N) is identically zero.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "temperedBinaryOrbit_eq_scaledTail", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 338},
+        {"declaration": "doublingOrbit_eq_zero_of_tempered", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 314}
+      ],
+      "concepts": ["binary_coeff_series", "scaled_binary_tail", "tempered_carry_orbit", "temperedness_boundary"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "doubling-orbit rigidity: d(N+1)=2d(N) and d(N)=o(2^N) force d = 0",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The rigidity step is the standard one-line dyadic argument (a homogeneous solution of x_{N+1}=2x_N is C*2^N, killed by the o(2^N) side condition). Its value here is that it fixes the carry coordinate for both problems at once; no literature check was performed.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "rationality_iff_tempered_orbit",
+      "canonical_statement": "For c(n) <= n, the binary series sum c(n)/2^n is rational if and only if there exist a positive integer v and an integer sequence u with u(N+1) = 2u(N) - v*c(N+1) and u(N) = o(2^N). Both directions are proved: rationality supplies u(N) = v*T_c(N) built from the truncation integers, and any tempered orbit gives the value u(0)/v. Instantiated at c = Euler phi this is exactly Erdos #249 and at c = supportCoeff A exactly Erdos #257, so the two sides of the equivalence are equally open for the sequences of interest: the criterion transports the problem into carry-orbit language without reducing its difficulty.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 425},
+        {"declaration": "not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 434},
+        {"declaration": "exists_temperedBinaryOrbit_of_rational", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 367},
+        {"declaration": "rational_of_exists_temperedBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 412}
+      ],
+      "concepts": ["binary_coeff_series", "tempered_carry_orbit", "temperedness_boundary", "scaled_binary_tail"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": true,
+      "engine": "tempered tail-orbit rigidity plus the truncation decomposition 2^N * X_c = integer + T_c(N)",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Curated as claim id tail_orbit_rigidity, status 'proved here'. The equivalence itself is proved; what it does not do is decide either side. Both sides are open at c = Nat.totient and at c = supportCoeff A.",
+      "scope_caveat": "BOTH SIDES OPEN. open_antecedents is empty because the Lean theorem has no free hypothesis (hgrowth : c n <= n is a binder discharged for both sequences of interest), not because nothing is open. At c = Nat.totient, 'HasRationalValue (binaryCoeffSeries Nat.totient)' is the negation of Erdos #249 and is unproved; the right-hand side 'exists a tempered orbit' is by this very theorem equivalent to it and is therefore equally unproved. At c = supportCoeff A the same holds for Erdos #257 via erdosSupportSeries_two_eq_binaryCoeffSeries (BooleanMobiusCarry.lean:376). So the equivalence changes vocabulary, not difficulty, and is correctly flagged is_restatement_of_open_problem = true. Nothing downstream in this zone discharges either side.",
+      "confidence": "high"
+    },
+    {
+      "id": "binary_tail_shift_identity",
+      "canonical_statement": "For c(n) <= n the scaled binary tail satisfies T_c(0) = X_c, 0 <= T_c(N) <= N + 2, T_c(N)/2^N -> 0, and the exact one-step shift identity T_c(N+1) = 2*T_c(N) - c(N+1). This is the analytic normalisation of the object: shifting the binary window by one digit doubles the tail and expels the head coefficient.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "binaryCoeffTail_succ", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 110},
+        {"declaration": "binaryCoeffTail_zero", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 72},
+        {"declaration": "binaryCoeffTail_nonneg", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 77},
+        {"declaration": "binaryCoeffTail_le", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 84},
+        {"declaration": "binaryCoeffTail_div_pow_tendsto_zero", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 90}
+      ],
+      "concepts": ["binary_coeff_series", "scaled_binary_tail"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary tsum manipulation and a geometric majorant; no new content, but it is what makes the temperedness boundary non-vacuous (the canonical orbit itself is o(2^N)).",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "rational_value_predicate_normalisation",
+      "canonical_statement": "The explicit predicate 'x = p/v for some integer p and positive natural v' is equivalent to the Mathlib predicate 'x is not irrational'. This only makes the carry multiplier v visible in downstream theorem statements.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "hasRationalValue_iff_not_irrational", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 51}
+      ],
+      "concepts": ["displayed_rational_denominator"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Pure vocabulary bridge to Mathlib's Irrational.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "balanced_pulse_no_autonomous_finite_state",
+      "canonical_statement": "WHAT IS ACTUALLY PROVED IN LEAN, itemised. (a) balancedPulseCoeff m r (radius R = floor((m+1)/2), value R-r at index m, 2r at index m+1, zero elsewhere) is admissible for the generic class: for 2 <= m and r <= R one has balancedPulseCoeff m r n <= n for all n (balancedPulseCoeff_le_self). (b) The two-site weighted numerator is constant in r: 2*c(m) + c(m+1) = 2R (balancedPulse_weighted_pair). (c) The right-hand site decodes the parameter: c(m+1)/2 = r (balancedPulse_endpoint_fanout). (d) A PURELY GENERIC pigeonhole: any label : Fin (R+1) -> Lambda admitting a left inverse decode is injective, hence R+1 <= card Lambda for finite Lambda (balancedPulse_label_injective, balancedPulse_label_card_lower_bound). (e) Arithmetic: k+1 <= balancedPulseRadius (2k) + 1 (balancedPulse_fanout_unbounded). (f) A constant state map state : Fin (R+1) -> State with state r = state 0 for all r admits no decode with decode (state r) = r (balancedPulse_no_autonomous_decoder). The assembly of (a)-(f) into a no-go for autonomous finite-state successor interfaces is PROSE in the module docstring, not a Lean theorem: see scope_caveat for the three missing formal links.",
+      "logical_class": "barrier_no_go",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "balancedPulse_no_autonomous_decoder", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 246},
+        {"declaration": "balancedPulse_label_card_lower_bound", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 227},
+        {"declaration": "balancedPulse_label_injective", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 215},
+        {"declaration": "balancedPulse_fanout_unbounded", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 236}
+      ],
+      "concepts": ["balanced_pulse_family", "binary_coeff_series", "tempered_carry_orbit"],
+      "open_antecedents": [
+        "hstate : forall r, state r = state <0> in balancedPulse_no_autonomous_decoder -- an UNPROVED MODELLING ASSUMPTION (not an open number-theoretic problem). The docstring justifies it by 'as every state determined by the common pre-m history must', but no Lean declaration in this corpus proves that a state determined by the common pre-m history is constant on the pulse family, because the required premise (equal series value and equal pre-m coefficients across the family) is itself never formalised. Without hstate the declaration has no content."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "value-preserving two-site mass transfer with exact endpoint decoding",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Not in the curated ledger. Downgraded from 'not_assessed' on adversarial review: balancedPulse_label_injective is 'a function with a left inverse is injective' and balancedPulse_label_card_lower_bound is a one-line application of Mathlib's Fintype.card_le_of_injective; neither mentions balancedPulseCoeff at all, so neither is a fact about the pulse family. balancedPulse_fanout_unbounded is Nat arithmetic on (2k+1)/2. balancedPulse_no_autonomous_decoder is 'a constant map has no left inverse when its domain has >= 2 elements'. Only (a), (b) and (c) in the canonical statement are genuinely about the witness family, and each is a two-line simp/omega. No literature check performed, but nothing here is a candidate new statement.",
+      "scope_caveat": "THREE FORMAL LINKS ARE MISSING, verified by grep: `balancedPulse` occurs only in Erdos249257/GenericTailOrbitRigidity.lean and in no other module. (1) NO Lean declaration states that binaryCoeffSeries (balancedPulseCoeff m r) is independent of r. balancedPulse_weighted_pair proves only the natural-number identity 2*c(m)+c(m+1)=2R; the step from that to equality of the real series values is never taken in Lean. The canonical claim 'all of which have the same binary series value' is therefore UNFORMALISED. (2) NO Lean declaration states that the coefficients of balancedPulseCoeff m r agree strictly before m across r (it follows in one line from balancedPulseCoeff_eq_zero_of_ne, but it is not stated), and nothing connects 'the common pre-m history' to the `state`/`label` maps: in balancedPulse_label_injective, balancedPulse_label_card_lower_bound and balancedPulse_no_autonomous_decoder the maps are arbitrary functions out of Fin (balancedPulseRadius m + 1) and balancedPulseCoeff never appears in the statement. The pulse family enters those three declarations only as a numeral for the domain cardinality. (3) NO Lean declaration connects any of this to IsTemperedBinaryOrbit, binaryCoeffTail, or the rationality criterion, so the barrier is not formally attached to the object it is advertised as blocking. In addition this does NOT rule out: (i) any method aimed at the actual problems, because the witness sequences vanish at every index except m and m+1, and no such sequence is Euler phi (never zero on positive n) or a support coefficient f_A of an infinite support, so #249/#257 methods are never confronted with this family; (ii) input-driven or growing-depth state, which the same module then offers as the positive replacement (affineBinaryOrbit); (iii) decoders that read more than the common pre-m history, or that read the arithmetic structure of the index; (iv) approximate, non-exact successor interfaces, or interfaces that only need the value rather than the exact tail. The previous version of this caveat said 'the genuine unbounded-fan-out content lives in balancedPulse_label_card_lower_bound'; that was itself an overclaim and is retracted here, since that declaration is generic pigeonhole with no pulse content.",
+      "confidence": "medium"
+    },
+    {
+      "id": "affine_carry_fixed_depth_reset",
+      "canonical_statement": "For the input-driven affine carry recursion u(n+1) = 2u(n) - a(n+1) with a common forcing word a, two orbits started from different initial carries satisfy u_L - v_L = 2^L * (u_0 - v_0) exactly; consequently their endpoint values agree modulo 2^L. Depth-L residues are therefore determined by the last L forcing symbols and not by the predecessor carry.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "affineBinaryOrbit_sub", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 288},
+        {"declaration": "affineBinaryOrbit_mod_twoPow_eq", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 306}
+      ],
+      "concepts": ["affine_carry_cocycle", "tempered_carry_orbit"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "homogeneous amplification of the initial gap by exactly 2^L",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "One-line induction; this is the standard dyadic-carry synchronisation fact.",
+      "scope_caveat": "The Lean statements are affineBinaryOrbit_sub and affineBinaryOrbit_mod_twoPow_eq: they compare two orbits STARTED AT INDEX 0 under the same forcing word a, and say the depth-L difference is 2^L*(u0-v0), hence 0 mod 2^L. The second clause of the canonical statement, 'depth-L residues are determined by the LAST L forcing symbols', is prose: there is no shift/translation lemma in the module placing the window at an arbitrary starting index, and no lemma exhibiting the residue as a function of a restricted to that window. Also nothing links affineBinaryOrbit to IsTemperedBinaryOrbit, binaryCoeffTail or either problem, so the module's framing of this as 'the positive replacement' for the barrier is a design intention, not a proved substitution.",
+      "confidence": "high"
+    },
+    {
+      "id": "zero_window_exact_state_doubling",
+      "canonical_statement": "If a natural-number state u obeys u(n+1) + v*f(offset+n+1) = 2*u(n) and f vanishes at the h indices offset+N+1, ..., offset+N+h, then u(N+h) = 2^h * u(N) exactly. If in addition u(N) > 0 then 2^h <= u(N+h); and if u realises the scaled tail, u(n) = v*T_f(offset+n), this yields the reusable lower certificate 2^h <= v*T_f(offset+N+h). Only positivity at the left edge of the window is used.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "state_eq_pow_mul_of_coeffZeroWindow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 59},
+        {"declaration": "binaryTailWindowLowerBound_of_natState", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 90},
+        {"declaration": "shiftedTailState_eq_pow_mul_of_supportCoeffZeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 207},
+        {"declaration": "pow_le_shiftedTailState_of_supportCoeffZeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 218}
+      ],
+      "concepts": ["coeff_zero_window", "window_lower_certificate", "scaled_binary_tail", "support_coefficient"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact doubling of a carry state across a coefficient gap",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Induction on the window length. shiftedTailState_eq_pow_mul_of_supportCoeffZeroWindow is literally `exact state_eq_pow_mul_of_coeffZeroWindow ...` at f = supportCoeff A; pow_le_shiftedTailState_of_supportCoeffZeroWindow is the same rewrite plus Nat.le_mul_of_pos_right. Same content in different dress.",
+      "scope_caveat": "The sentence 'Only positivity at the left edge of the window is used' is accurate for the generic binaryTailWindowLowerBound_of_natState (binder huN : 0 < u N) but NOT for the support-side pow_le_shiftedTailState_of_supportCoeffZeroWindow, whose Lean binder is the strictly stronger hpos : forall n, 0 < u n. Also note that state_eq_pow_mul_of_coeffZeroWindow says nothing about the existence of such a state u; the only producer of one in this zone is the rationality-conditioned exists_shifted_odd_tail_nat_states_of_support_fraction (RationalSupportCarrySkeleton.lean:668), so this node is unconditional exactly because it quantifies over hypothetical states.",
+      "confidence": "high"
+    },
+    {
+      "id": "subpower_tail_envelope_from_coefficient_bound",
+      "canonical_statement": "If f(n) <= C*n^delta for all n with 0 <= delta <= 1, then the binary tail of f satisfies T_f(M) <= 2*C*(M+1)^delta for every M. The proof uses M+j+1 <= (M+1)(j+1), sub-multiplicativity of the delta-power, and the exact identity sum_{j>=0} (j+1)/2^(j+1) = 2.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "binaryCoeffTail_le_two_mul_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 156},
+        {"declaration": "binaryCoeffTailEnvelope_two_mul_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 220}
+      ],
+      "concepts": ["subpower_tail_envelope", "scaled_binary_tail"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "weighted geometric majorant with exact tsum value 2",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Textbook comparison of a dyadic tail against a weighted geometric series.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "self_reference_absorption_log_inversion",
+      "canonical_statement": "Fix an integer k >= 2, a natural Y >= 1 and a real L >= 1. If 2^h <= L*(Y+h)^(1/k), then 2^((k-1)h) <= L^k * Y, hence h <= (log_2 Y + log_2(L^k))/(k-1). Composed with a window lower certificate and a matching (1/k)-power tail envelope, this converts the pair (certificate, envelope) into the explicit window-length bound h <= (log_2(start+1) + log_2((scale*C)^k))/(k-1). The step that removes the self-reference is Y+h <= Y*2^h, which consumes exactly one of the k binary factors.",
+      "logical_class": "reduction_or_transport",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "pow_sub_one_mul_le_of_pow_le_mul_add_invNat_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 255},
+        {"declaration": "length_le_logb_of_pow_le_mul_add_invNat_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 303},
+        {"declaration": "length_le_logb_of_binaryTailWindowLowerBound", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 334}
+      ],
+      "concepts": ["self_reference_absorption", "window_lower_certificate", "subpower_tail_envelope", "coeff_zero_window"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "k-th power raising plus Y+h <= Y*2^h absorption, then logarithmic inversion",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The hypotheses are ordinary lemma binders, not open assumptions: both are discharged inside the corpus for f = supportCoeff A. The transfer layer is support-free and knows nothing about divisors or totients.",
+      "scope_caveat": "Side conditions omitted from the canonical statement's composed form, present in the Lean: length_le_logb_of_binaryTailWindowLowerBound additionally requires hscale : 0 <= scale and hLC : 1 <= scale * C, and its envelope binder is the exact shape C*(M+1)^(1/k) (not an arbitrary envelope). The absorption lemma pow_sub_one_mul_le_of_pow_le_mul_add_invNat_rpow requires k >= 2, Y >= 1 and L >= 1. Only the reverse direction is proved: nothing here shows the resulting bound is tight, and the k-th-power step is lossy, so the exponent 1/(k-1) is an artefact of the absorption, not a proved optimum.",
+      "confidence": "high"
+    },
+    {
+      "id": "explicit_fixed_power_divisor_bound",
+      "canonical_statement": "For every n >= 1 and every k >= 1, the divisor count satisfies tau(n)^k <= (k^(2^k))^k * n, and hence tau(n) <= k^(2^k) * n^(1/k) for all n (including n = 0). The proof is entirely in the naturals: at each prime power p^a one has (a+1)^k <= k^k * 2^a <= k^k * p^a when p < 2^k, and (a+1)^k <= p^a when p >= 2^k, and there are at most 2^k primes below the cutoff.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "card_divisors_pow_le_divisorSubpowerConst_pow_mul", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 107},
+        {"declaration": "card_divisors_le_divisorSubpowerConst_mul_rpow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 142}
+      ],
+      "concepts": ["explicit_divisor_subpower_constant"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "prime-power factorisation with an explicit small-prime penalty k^k and cutoff 2^k",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "This is the standard elementary tau(n) = O_eps(n^eps) bound (Wigert-type elementary argument) with one particular explicit constant. The constant k^(2^k) is doubly exponential and is far from optimal; the classical sharp statement is tau(n) <= 2^((1+o(1)) log n / log log n). Formalisation value only.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "support_coefficient_subpower_envelope",
+      "canonical_statement": "For every support set A and every k >= 1: the natural-number power form f_A(n)^k <= (k^(2^k))^k * n holds for every n >= 1 (the Lean binder is hn : 0 < n), and the real form f_A(n) <= k^(2^k) * n^(1/k) holds for every n including n = 0; consequently the binary tail of f_A satisfies T_{f_A}(M) <= 2*k^(2^k)*(M+1)^(1/k) for all M. The bound is uniform in A.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "evidence": [
+        {"declaration": "supportCoeffTailEnvelope_divisorSubpower", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 268},
+        {"declaration": "supportCoeff_le_divisorSubpowerConst_mul_rpow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 186},
+        {"declaration": "supportCoeff_pow_le_divisorSubpowerConst_pow_mul", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 176}
+      ],
+      "concepts": ["support_coefficient", "subpower_tail_envelope", "explicit_divisor_subpower_constant"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "f_A <= tau composed with the explicit fixed-power divisor bound and the geometric tail majorant",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Immediate from f_A(n) <= tau(n) (proved in CertificateKernel.lean:8532) plus the classical divisor bound; uniformity in A is free because the bound never looks at A.",
+      "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "rational_support_zero_window_lower_bound",
+      "canonical_statement": "Suppose A contains a positive element and the Erdos #257 series sum_{a in A} 1/(2^a - 1) equals p/(2^c * v) with v > 0. Then for every N and every h, if the support coefficient f_A vanishes at c+N+1, ..., c+N+h, one has 2^h <= v * T_{f_A}(c+N+h); and with any upper envelope for that tail, 2^h <= v * envelope(c+N+h). Substituting the unconditional (1/k)-envelope gives 2^h <= 2*v*k^(2^k) * (c+N+1+h)^(1/k).",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {"declaration": "pow_le_mul_binaryCoeffTail_of_support_fraction_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 232},
+        {"declaration": "pow_le_mul_tailEnvelope_of_support_fraction_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 285},
+        {"declaration": "pow_le_divisorSubpower_of_support_fraction_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 319},
+        {"declaration": "pow_le_mul_two_mul_rpow_of_card_divisors_bound_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 301}
+      ],
+      "concepts": ["support_coefficient", "displayed_rational_denominator", "coeff_zero_window", "window_lower_certificate", "subpower_tail_envelope"],
+      "open_antecedents": [
+        "hvalue : erdosSupportSeries 2 A = (p : R) / ((2 ^ c * v : N) : R) -- i.e. the assumption that sum_{a in A} 1/(2^a - 1) is rational, which is exactly what Erdos #257 asks one to refute for infinite A; nobody has proved it for any infinite A and it is expected to be false"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "shifted odd-denominator natural tail state (exists_shifted_odd_tail_nat_states_of_support_fraction, RationalSupportCarrySkeleton.lean:668) doubling across the window",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The displayed form p/(2^c*v) with v > 0 loses no generality (take c = 0, v = denominator), so the antecedent is exactly rationality. The auxiliary binder hA (A contains a positive element) is not an open hypothesis.",
+      "scope_caveat": "Not a restatement: the hypothesis is the NEGATION of the #257 conclusion and the conclusion is new structural information about A, so is_restatement_of_open_problem is correctly false. But the direction of implication means no instance of this theorem can be discharged without deciding #257 negatively for some A, and the corpus exhibits no infinite A satisfying hvalue. Same vacuity risk as sublogarithmic_zero_window_bound. The existence of the doubling state is supplied entirely by exists_shifted_odd_tail_nat_states_of_support_fraction (RationalSupportCarrySkeleton.lean:668), which lies outside this zone and is itself conditioned on hvalue.",
+      "confidence": "high"
+    },
+    {
+      "id": "sublogarithmic_zero_window_bound",
+      "canonical_statement": "Suppose A contains a positive element and sum_{a in A} 1/(2^a - 1) = p/(2^c * v) with v > 0. Then for every k >= 2, every zero window of f_A starting after c+N has length h <= (log_2(c+N+1) + log_2((2*v*k^(2^k))^k))/(k-1); and for every epsilon > 0 there is a constant B = B(epsilon, c, v) >= 0 with h <= epsilon*log_2(N+1) + B for all N and h, and h <= epsilon*log_2 N + B for all N >= 1. Equivalently, under rationality the gaps in the support of f_A are o(log N). The bound is uniform in A, p, N and h at fixed (c, v), but the constant B is not small: choosing k of order 1/epsilon makes B grow like 2^(1/epsilon), so the estimate is asymptotic in N and gives nothing at bounded N.",
+      "logical_class": "conditional_implication",
+      "problem": "257",
+      "evidence": [
+        {"declaration": "supportCoeffZeroWindow_length_le_eps_logb", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 435},
+        {"declaration": "supportCoeffZeroWindow_length_le_eps_logb_add", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 392},
+        {"declaration": "supportCoeffZeroWindow_length_le_logb_divisorSubpower", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 348}
+      ],
+      "concepts": ["support_coefficient", "displayed_rational_denominator", "coeff_zero_window", "self_reference_absorption", "explicit_divisor_subpower_constant"],
+      "open_antecedents": [
+        "hvalue : erdosSupportSeries 2 A = (p : R) / ((2 ^ c * v : N) : R) -- the rationality of sum_{a in A} 1/(2^a - 1); this is the negation of the Erdos #257 conclusion and is proved nowhere in the corpus"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "carry-state doubling certificate + unconditional (1/k) divisor envelope + self-reference absorption and logarithmic inversion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Curated as claim id sublog_zero_windows, status 'proved here', with remaining_open_proposition remaining_open.universal_257_all_infinite_supports. All three ingredients are elementary; whether the combined statement is new was not assessed against the literature. It is a structural consequence drawn under the assumed negation of #257, not a step that contradicts anything, so it does not by itself yield irrationality for any A.",
+      "scope_caveat": "DOCSTRING/STATEMENT MISMATCH, flagged deliberately. supportCoeffZeroWindow_length_le_eps_logb_add carries the docstring heading '**Unconditional T11.**' and sits under the section header '## Unconditional T11', but its Lean binder list contains hvalue : erdosSupportSeries 2 A = p / (2^c * v), i.e. rationality of the #257 series for A. The theorem is CONDITIONAL; only the divisor-envelope half (support_coefficient_subpower_envelope) is unconditional, and the module's own opening docstring says as much ('The unconditional half is now closed in the same module'). This node is classified from the Lean binders, not the heading. The module also carries an explicit NON-CLAIM paragraph disclaiming any resolution of #257 or #249. Vacuity risk: if #257 is true for all infinite A then hvalue is satisfiable only by finite A (and by the A the corpus does not exclude), so the theorem may have no infinite-support instances at all; nothing in the corpus exhibits an A satisfying hvalue with infinite support.",
+      "confidence": "high"
+    },
+    {
+      "id": "rational_denominator_divisor_survival",
+      "canonical_statement": "If D > 0, m divides D, and m is coprime to |a|, then m divides the denominator of the reduced rational a/D. More generally, if C divides D and C is coprime to |a|, then C/gcd(C,h) divides the denominator of the reduced rational (h*a)/D: scaling by h can cancel exactly the part gcd(C,h) of C and no more. The clean corollary 'if in addition C is coprime to h then C itself divides the reduced denominator' is present only as an UNNAMED `example` at RationalDenominatorSurvival.lean:99, so it is not citable and does not appear in the declaration atlas.",
+      "logical_class": "classical_formalised",
+      "problem": "shared_substrate",
+      "evidence": [
+        {"declaration": "divisor_dvd_divInt_den", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 17},
+        {"declaration": "survivingDivisor_dvd_scaled_divInt_den", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 38}
+      ],
+      "concepts": ["denominator_survival", "displayed_rational_denominator"],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "gcd cancellation in Rat.divInt via Rat.num_den_mk",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Textbook rational-arithmetic fact. Domain-neutral: it is consumed by the #257-side cyclotomic/Mersenne modules (CyclotomicProjectionOfShadow.lean:393, MersenneShadowCyclotomicNoncollapse.lean:599,609,776, which re-export it under the same two names), not by anything else in this zone; AdelicHeightObstruction.lean imports the module but does not reference either theorem by name.",
+      "scope_caveat": "This node covers only the two named theorems. The module additionally contains seven unnamed `example` declarations (lines 79, 82, 87, 90, 93, 96, 99) which are outside docs/declaration_atlas.json entirely, because the atlas indexes named declarations only. They are recorded in declaration_roles below with synthetic identifiers of the form `example@<line>` and are NOT citable Lean names.",
+      "confidence": "high"
+    },
+    {
+      "id": "binary_coefficient_series_representation",
+      "canonical_statement": "For a natural coefficient sequence c, binaryCoeffSeries c is the real series sum over n>=0 of c(n+1)/2^(n+1). It is the common binary generating-series interface instantiated by Euler's totient for Erdős #249 and by support coefficients for Erdős #257.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "binaryCoeffSeries",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 37
+        }
+      ],
+      "concepts": [
+        "binary_coefficient_series",
+        "binary_tail_state"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the common binary series",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A shared notation and indexing convention for the two problem-specific series; no novelty claim is made.",
+      "scope_caveat": "The definition supplies only the ambient real series. It does not assert convergence beyond the hypotheses used by downstream theorems, rationality, irrationality, or any property special to totients or support coefficients.",
+      "confidence": "high"
+    }
+  ],
+  "declaration_roles": [
+    {"declaration": "binaryCoeffSeries", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 37, "role": "representation", "statement_node": "binary_coefficient_series_representation"},
+    {"declaration": "binaryCoeffTail", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 40, "role": "concept", "statement_node": null},
+    {"declaration": "HasRationalValue", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 46, "role": "concept", "statement_node": "rational_value_predicate_normalisation"},
+    {"declaration": "hasRationalValue_iff_not_irrational", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 51, "role": "statement", "statement_node": "rational_value_predicate_normalisation"},
+    {"declaration": "IsTemperedBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 66, "role": "concept", "statement_node": "tempered_orbit_rigidity"},
+    {"declaration": "binaryCoeffTail_zero", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 72, "role": "substrate", "statement_node": "binary_tail_shift_identity"},
+    {"declaration": "binaryCoeffTail_nonneg", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 77, "role": "substrate", "statement_node": "binary_tail_shift_identity"},
+    {"declaration": "binaryCoeffTail_le", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 84, "role": "substrate", "statement_node": "binary_tail_shift_identity"},
+    {"declaration": "binaryCoeffTail_div_pow_tendsto_zero", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 90, "role": "substrate", "statement_node": "binary_tail_shift_identity"},
+    {"declaration": "binaryCoeffTail_succ", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 110, "role": "statement", "statement_node": "binary_tail_shift_identity"},
+    {"declaration": "balancedPulseRadius", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 152, "role": "concept", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulseCoeff", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 156, "role": "concept", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulseCoeff_at_left", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 161, "role": "representation", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulseCoeff_at_right", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 165, "role": "representation", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulseCoeff_eq_zero_of_ne", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 169, "role": "representation", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulseCoeff_le_self", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 175, "role": "substrate", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulse_weighted_pair", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 199, "role": "substrate", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulse_endpoint_fanout", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 208, "role": "substrate", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulse_label_injective", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 215, "role": "engine", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulse_label_card_lower_bound", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 227, "role": "statement", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulse_fanout_unbounded", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 236, "role": "substrate", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "balancedPulse_no_autonomous_decoder", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 246, "role": "statement", "statement_node": "balanced_pulse_no_autonomous_finite_state"},
+    {"declaration": "affineBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 275, "role": "concept", "statement_node": "affine_carry_fixed_depth_reset"},
+    {"declaration": "affineBinaryOrbit_zero", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 279, "role": "representation", "statement_node": "affine_carry_fixed_depth_reset"},
+    {"declaration": "affineBinaryOrbit_succ", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 282, "role": "representation", "statement_node": "affine_carry_fixed_depth_reset"},
+    {"declaration": "affineBinaryOrbit_sub", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 288, "role": "statement", "statement_node": "affine_carry_fixed_depth_reset"},
+    {"declaration": "affineBinaryOrbit_mod_twoPow_eq", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 306, "role": "statement", "statement_node": "affine_carry_fixed_depth_reset"},
+    {"declaration": "doublingOrbit_eq_zero_of_tempered", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 314, "role": "engine", "statement_node": "tempered_orbit_rigidity"},
+    {"declaration": "temperedBinaryOrbit_eq_scaledTail", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 338, "role": "statement", "statement_node": "tempered_orbit_rigidity"},
+    {"declaration": "exists_temperedBinaryOrbit_of_rational", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 367, "role": "statement", "statement_node": "rationality_iff_tempered_orbit"},
+    {"declaration": "rational_of_exists_temperedBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 412, "role": "statement", "statement_node": "rationality_iff_tempered_orbit"},
+    {"declaration": "binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 425, "role": "statement", "statement_node": "rationality_iff_tempered_orbit"},
+    {"declaration": "not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 434, "role": "representation", "statement_node": "rationality_iff_tempered_orbit"},
+
+    {"declaration": "CoeffZeroWindow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 28, "role": "concept", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "coeffZeroWindow_zero", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 32, "role": "representation", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "coeffZeroWindow_one_iff", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 38, "role": "representation", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "BinaryTailWindowLowerBound", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 49, "role": "concept", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "BinaryCoeffTailEnvelope", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 54, "role": "concept", "statement_node": "subpower_tail_envelope_from_coefficient_bound"},
+    {"declaration": "state_eq_pow_mul_of_coeffZeroWindow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 59, "role": "statement", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "binaryTailWindowLowerBound_of_natState", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 90, "role": "statement", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "summable_succ_div_two_pow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 117, "role": "substrate", "statement_node": "subpower_tail_envelope_from_coefficient_bound"},
+    {"declaration": "tsum_succ_div_two_pow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 128, "role": "engine", "statement_node": "subpower_tail_envelope_from_coefficient_bound"},
+    {"declaration": "binaryCoeffTail_le_two_mul_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 156, "role": "statement", "statement_node": "subpower_tail_envelope_from_coefficient_bound"},
+    {"declaration": "binaryCoeffTailEnvelope_two_mul_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 220, "role": "representation", "statement_node": "subpower_tail_envelope_from_coefficient_bound"},
+    {"declaration": "binaryTailWindowLowerBound_le_mul_envelope", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 230, "role": "substrate", "statement_node": "self_reference_absorption_log_inversion"},
+    {"declaration": "nat_add_one_le_two_pow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 243, "role": "substrate", "statement_node": "self_reference_absorption_log_inversion"},
+    {"declaration": "pow_sub_one_mul_le_of_pow_le_mul_add_invNat_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 255, "role": "statement", "statement_node": "self_reference_absorption_log_inversion"},
+    {"declaration": "length_le_logb_of_pow_le_mul_add_invNat_rpow", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 303, "role": "statement", "statement_node": "self_reference_absorption_log_inversion"},
+    {"declaration": "length_le_logb_of_binaryTailWindowLowerBound", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 334, "role": "statement", "statement_node": "self_reference_absorption_log_inversion"},
+    {"declaration": "exists_nat_two_le_inv_sub_one_le", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 367, "role": "substrate", "statement_node": "sublogarithmic_zero_window_bound"},
+    {"declaration": "logb_nat_affine_le_add", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 374, "role": "substrate", "statement_node": "sublogarithmic_zero_window_bound"},
+    {"declaration": "le_epsilon_mul_logb_add_constant_div_of_affine_log_bound", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 388, "role": "substrate", "statement_node": "sublogarithmic_zero_window_bound"},
+    {"declaration": "logb_nat_succ_le_one_add", "module": "Erdos249257/BinaryTailWindowTransfer.lean", "line": 423, "role": "substrate", "statement_node": "sublogarithmic_zero_window_bound"},
+
+    {"declaration": "nat_add_one_pow_le_self_pow_mul_two_pow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 40, "role": "substrate", "statement_node": "explicit_fixed_power_divisor_bound"},
+    {"declaration": "factorization_add_one_pow_le_penalty_mul", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 66, "role": "engine", "statement_node": "explicit_fixed_power_divisor_bound"},
+    {"declaration": "card_small_primeFactors_le_two_pow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 91, "role": "substrate", "statement_node": "explicit_fixed_power_divisor_bound"},
+    {"declaration": "divisorSubpowerConst", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 103, "role": "concept", "statement_node": "explicit_fixed_power_divisor_bound"},
+    {"declaration": "card_divisors_pow_le_divisorSubpowerConst_pow_mul", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 107, "role": "statement", "statement_node": "explicit_fixed_power_divisor_bound"},
+    {"declaration": "card_divisors_le_divisorSubpowerConst_mul_rpow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 142, "role": "statement", "statement_node": "explicit_fixed_power_divisor_bound"},
+    {"declaration": "supportCoeff_pow_le_divisorSubpowerConst_pow_mul", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 176, "role": "statement", "statement_node": "support_coefficient_subpower_envelope"},
+    {"declaration": "supportCoeff_le_divisorSubpowerConst_mul_rpow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 186, "role": "statement", "statement_node": "support_coefficient_subpower_envelope"},
+    {"declaration": "SupportCoeffZeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 201, "role": "concept", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "shiftedTailState_eq_pow_mul_of_supportCoeffZeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 207, "role": "statement", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "pow_le_shiftedTailState_of_supportCoeffZeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 218, "role": "statement", "statement_node": "zero_window_exact_state_doubling"},
+    {"declaration": "pow_le_mul_binaryCoeffTail_of_support_fraction_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 232, "role": "statement", "statement_node": "rational_support_zero_window_lower_bound"},
+    {"declaration": "SupportCoeffTailEnvelope", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 249, "role": "concept", "statement_node": "support_coefficient_subpower_envelope"},
+    {"declaration": "supportCoeffTailEnvelope_two_mul_rpow_of_card_divisors_bound", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 254, "role": "representation", "statement_node": "subpower_tail_envelope_from_coefficient_bound"},
+    {"declaration": "supportCoeffTailEnvelope_divisorSubpower", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 268, "role": "statement", "statement_node": "support_coefficient_subpower_envelope"},
+    {"declaration": "pow_le_mul_tailEnvelope_of_support_fraction_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 285, "role": "statement", "statement_node": "rational_support_zero_window_lower_bound"},
+    {"declaration": "pow_le_mul_two_mul_rpow_of_card_divisors_bound_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 301, "role": "statement", "statement_node": "rational_support_zero_window_lower_bound"},
+    {"declaration": "pow_le_divisorSubpower_of_support_fraction_zeroWindow", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 319, "role": "statement", "statement_node": "rational_support_zero_window_lower_bound"},
+    {"declaration": "supportCoeffZeroWindow_length_le_logb_divisorSubpower", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 348, "role": "statement", "statement_node": "sublogarithmic_zero_window_bound"},
+    {"declaration": "supportCoeffZeroWindow_length_le_eps_logb_add", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 392, "role": "statement", "statement_node": "sublogarithmic_zero_window_bound"},
+    {"declaration": "supportCoeffZeroWindow_length_le_eps_logb", "module": "Erdos249257/SublogDivisorCoverage.lean", "line": 435, "role": "statement", "statement_node": "sublogarithmic_zero_window_bound"},
+
+    {"declaration": "divisor_dvd_divInt_den", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 17, "role": "statement", "statement_node": "rational_denominator_divisor_survival"},
+    {"declaration": "survivingDivisor_dvd_scaled_divInt_den", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 38, "role": "statement", "statement_node": "rational_denominator_divisor_survival"},
+
+    {"declaration": "example@79", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 79, "role": "finite_instance", "statement_node": "rational_denominator_divisor_survival", "anonymous": true, "note": "Sharpness probe: 2 divides 6 but 2 does not divide (2/6).den; shows coprimality to the numerator is not removable."},
+    {"declaration": "example@82", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 82, "role": "finite_instance", "statement_node": "rational_denominator_divisor_survival", "anonymous": true, "note": "Boundary instance of survivingDivisor_dvd_scaled_divInt_den at h = 0, where gcd(C,0) = C."},
+    {"declaration": "example@87", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 87, "role": "finite_instance", "statement_node": "rational_denominator_divisor_survival", "anonymous": true, "note": "Numeric regression: (4/12).den = 3."},
+    {"declaration": "example@90", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 90, "role": "finite_instance", "statement_node": "rational_denominator_divisor_survival", "anonymous": true, "note": "Numeric regression with a negative numerator: (-15/12).den = 4."},
+    {"declaration": "example@93", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 93, "role": "finite_instance", "statement_node": "rational_denominator_divisor_survival", "anonymous": true, "note": "Numeric regression: 24/gcd(24,6) = 4 and (6/72).den = 12."},
+    {"declaration": "example@96", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 96, "role": "substrate", "statement_node": "rational_denominator_divisor_survival", "anonymous": true, "note": "Degenerate-coprimality fact: Nat.Coprime C 0 implies C = 1."},
+    {"declaration": "example@99", "module": "Erdos249257/RationalDenominatorSurvival.lean", "line": 99, "role": "statement", "statement_node": "rational_denominator_divisor_survival", "anonymous": true, "note": "SUBSTANTIVE BUT UNNAMED. Corollary: if C divides D, C is coprime to |a| and C is coprime to h, then C divides ((h*a)/D).den. This is the clean consumer-facing form of survivingDivisor_dvd_scaled_divInt_den and is the only genuinely mathematical content among the examples; because it is an `example` it cannot be cited by downstream modules and is invisible to docs/declaration_atlas.json."}
+  ],
+  "coverage_audit": {
+    "audited_on": "adversarial zone verification",
+    "method": "grep for declaration keywords at any indentation in each module, cross-checked against docs/declaration_atlas.json",
+    "per_module": [
+      {"module": "Erdos249257/GenericTailOrbitRigidity.lean", "named_declarations_in_source": 33, "atlas_rows": 35, "declaration_roles_rows": 33, "covered": true, "note": "The atlas over-counts by 2: its regex captured docstring prose at line 13 ('theorem says that ...') and line 148 ('structure not present in ...') as declarations named `says` and `not`. Those are not declarations; the zone is right to omit them, and the atlas is the artifact that needs fixing."},
+      {"module": "Erdos249257/BinaryTailWindowTransfer.lean", "named_declarations_in_source": 20, "atlas_rows": 20, "declaration_roles_rows": 20, "covered": true, "note": "Four trailing `#print axioms` commands (lines 435-438) are commands, not declarations."},
+      {"module": "Erdos249257/SublogDivisorCoverage.lean", "named_declarations_in_source": 21, "atlas_rows": 21, "declaration_roles_rows": 21, "covered": true, "note": "Twelve trailing `#print axioms` commands (lines 457-468) are commands, not declarations."},
+      {"module": "Erdos249257/RationalDenominatorSurvival.lean", "named_declarations_in_source": 2, "anonymous_example_declarations_in_source": 7, "atlas_rows": 2, "declaration_roles_rows": 9, "covered": true, "note": "Coverage gap found and fixed: the seven `example` declarations at lines 79, 82, 87, 90, 93, 96, 99 were absent from both the atlas and declaration_roles. Added with synthetic `example@<line>` identifiers and flagged anonymous."}
+    ],
+    "totals": {"named_declarations_in_source": 76, "declaration_roles_named_rows": 76, "anonymous_rows_added": 7}
+  },
+  "intra_zone_relations": [
+    {"from": "binary_tail_shift_identity", "to": "tempered_orbit_rigidity", "relation": "implies", "basis": "The one-step shift identity is exactly the recurrence that the difference d(N) = u(N) - v*T_c(N) must satisfy, and the o(2^N) tail bound makes the temperedness hypothesis non-vacuous."},
+    {"from": "tempered_orbit_rigidity", "to": "rationality_iff_tempered_orbit", "relation": "implies", "basis": "The reverse direction of the criterion is rigidity evaluated at N = 0 together with T_c(0) = X_c."},
+    {"from": "rational_value_predicate_normalisation", "to": "rationality_iff_tempered_orbit", "relation": "reformulates", "basis": "It is the only thing separating the explicit-denominator form of the criterion from its Mathlib Irrational form."},
+    {"from": "balanced_pulse_no_autonomous_finite_state", "to": "rationality_iff_tempered_orbit", "relation": "barrier_for", "basis": "It blocks replacing the tempered orbit in the criterion by an autonomous finite-state successor function, but only inside the generic linear-growth class."},
+    {"from": "affine_carry_fixed_depth_reset", "to": "balanced_pulse_no_autonomous_finite_state", "relation": "repair_of", "basis": "The module presents the input-driven affine cocycle with its 2^L synchronisation as the positive replacement for the autonomous state the barrier rules out."},
+    {"from": "zero_window_exact_state_doubling", "to": "rational_support_zero_window_lower_bound", "relation": "implies", "basis": "The support version is the generic doubling certificate applied to the shifted odd-denominator natural state supplied by the rationality hypothesis."},
+    {"from": "support_coefficient_subpower_envelope", "to": "subpower_tail_envelope_from_coefficient_bound", "relation": "specialises", "basis": "The support-tail envelope is the generic envelope constructor instantiated at f = supportCoeff A with delta = 1/k."},
+    {"from": "explicit_fixed_power_divisor_bound", "to": "support_coefficient_subpower_envelope", "relation": "implies", "basis": "The support coefficient is bounded by the divisor count pointwise, so the divisor bound transfers verbatim and uniformly in A."},
+    {"from": "rational_support_zero_window_lower_bound", "to": "sublogarithmic_zero_window_bound", "relation": "implies", "basis": "It supplies the lower certificate 2^h <= v*T(c+N+h) that the absorption step inverts."},
+    {"from": "support_coefficient_subpower_envelope", "to": "sublogarithmic_zero_window_bound", "relation": "implies", "basis": "It supplies the unconditional (1/k)-power upper envelope, the only other input the transfer layer consumes."},
+    {"from": "self_reference_absorption_log_inversion", "to": "sublogarithmic_zero_window_bound", "relation": "implies", "basis": "The support-free transfer lemma is applied verbatim with scale = v, C = 2*k^(2^k), start = c+N."},
+    {"from": "sublogarithmic_zero_window_bound", "to": "rational_support_zero_window_lower_bound", "relation": "depends_on_open", "basis": "Both carry the identical unproved antecedent that the #257 series for A is rational; neither is unconditional."}
+  ]
+}

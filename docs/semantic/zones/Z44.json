@@ -1,0 +1,470 @@
+{
+  "zone_id": "Z44",
+  "title": "Three-channel Mersenne tail bound and sharp single-skip fatal-gap criterion",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "three_channel_tail_lower_bound",
+      "label": "three-channel Mersenne tail lower bound",
+      "note": "An explicit rational expression retaining the first three dyadic channels of the Mersenne tail."
+    },
+    {
+      "id": "represented_skip_fraction",
+      "label": "represented skip fraction",
+      "note": "A positive fraction u/(2L) together with the arithmetic decomposition 2^k*u+a=2L+u."
+    },
+    {
+      "id": "two_thirds_margin",
+      "label": "two-thirds skip-safety margin",
+      "note": "The sharp sufficient arithmetic inequality 2u<=3a."
+    },
+    {
+      "id": "dyadic_margin",
+      "label": "dyadic skip-safety margin",
+      "note": "The stronger elementary sufficient condition u<=a."
+    },
+    {
+      "id": "fatal_gap_region",
+      "label": "fatal-gap numerator region",
+      "note": "The complementary strict region 3a<2u forced when the represented fraction lies above a tail lower bound."
+    },
+    {
+      "id": "unit_numerator",
+      "label": "unit-numerator skip",
+      "note": "The u=1 specialization, which is automatically safe under the represented decomposition."
+    },
+    {
+      "id": "actual_mersenne_tail",
+      "label": "actual Mersenne tail",
+      "note": "The infinite reciprocal-Mersenne tail that strictly dominates the three-channel expression."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "three_channel_mersenne_tail_bound_representation",
+      "canonical_statement": "The quantity mersenneTailLB3 k is the explicit three-channel rational lower-bound expression used to compare represented greedy-skip fractions with the Mersenne tail.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "three_channel_tail_lower_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "explicit three-channel rational tail coordinate",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a project representation, not a novelty claim.",
+      "scope_caveat": "The definition alone proves no inequality against the actual Mersenne tail and says nothing about the greedy orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mersenneTailLB3",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "id": "three_channel_bound_exceeds_two_thirds_threshold",
+      "canonical_statement": "For every k at least one, 3/(3*2^k-1) is strictly smaller than mersenneTailLB3 k.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "three_channel_tail_lower_bound",
+        "two_thirds_margin"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "positive rational comparison of the explicit three-channel expression",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Lean proves the inequality; no priority or novelty claim is made.",
+      "scope_caveat": "The comparison contains no greedy-orbit or achievement-set conclusion.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "three_div_lt_mersenneTailLB3",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "id": "two_thirds_margin_certifies_three_channel_skip_safety",
+      "canonical_statement": "For positive k,u,a,L satisfying 2^k*u+a=2L+u, the arithmetic margin 2u<=3a implies u/(2L)<mersenneTailLB3 k.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "represented_skip_fraction",
+        "two_thirds_margin",
+        "three_channel_tail_lower_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two-thirds numerator-margin comparison against the explicit tail bound",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No comparison with external prior art has been completed.",
+      "scope_caveat": "This is a sufficient single-rank criterion, not a necessary condition and not an orbit-wide producer.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "skipSafe_of_two_mul_le_three_mul",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 103
+        }
+      ]
+    },
+    {
+      "id": "unit_numerator_is_three_channel_safe",
+      "canonical_statement": "Under the positive represented decomposition with numerator one, 1/(2L) is strictly below mersenneTailLB3 k.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "unit_numerator",
+        "represented_skip_fraction",
+        "three_channel_tail_lower_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "unit-numerator specialization of the two-thirds margin",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is the explicit u=1 specialization of the preceding arithmetic criterion.",
+      "scope_caveat": "The conclusion concerns only the auxiliary three-channel bound.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "unitNumerator_skipSafe",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 131
+        }
+      ]
+    },
+    {
+      "id": "fatality_above_the_bound_forces_strict_two_thirds_region",
+      "canonical_statement": "If mersenneTailLB3 k<=T<u/(2L) under the positive represented decomposition, then 3a<2u.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "fatal_gap_region",
+        "represented_skip_fraction",
+        "three_channel_tail_lower_bound"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "contrapositive separation from the two-thirds safe region",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Lean proves the necessary inequality; no external novelty judgement is supplied.",
+      "scope_caveat": "The strict two-thirds region is necessary under the displayed fatality hypotheses, not sufficient and not known to occur.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "three_mul_lt_two_mul_of_fatal",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 142
+        }
+      ]
+    },
+    {
+      "id": "fatality_forces_numerator_at_least_two",
+      "canonical_statement": "The same fatality hypotheses force the numerator u to be at least two.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "fatal_gap_region",
+        "unit_numerator"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exclusion of the unit numerator by the safe-region theorem",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is an immediate arithmetic consequence of the fatal-region inequality.",
+      "scope_caveat": "It does not exclude any fatal numerator u>=2.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_le_of_fatal",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 157
+        }
+      ]
+    },
+    {
+      "id": "odd_fatal_numerator_is_at_least_three",
+      "canonical_statement": "If the fatal numerator is odd, the same fatality hypotheses force u to be at least three.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "fatal_gap_region"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "parity refinement of the numerator lower bound",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is an elementary parity specialization.",
+      "scope_caveat": "Oddness is load-bearing; the theorem makes no assertion without it.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "three_le_of_fatal_of_odd",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 169
+        }
+      ]
+    },
+    {
+      "id": "sharp_safety_strictly_contains_dyadic_safety",
+      "canonical_statement": "The dyadic margin u<=a implies the sharper two-thirds margin 2u<=3a, and the latter implication is strict for an explicit existential pair.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "two_thirds_margin",
+        "dyadic_margin"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact comparison of two sufficient arithmetic regions",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is an elementary comparison internal to the formal development; the manuscript's external-prior comparison remains unverified.",
+      "scope_caveat": "Strict containment of sufficient arithmetic criteria is not equivalence with actual greedy survival.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "sharp_of_dyadic",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 193
+        },
+        {
+          "declaration": "sharp_strictly_stronger",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 196
+        }
+      ]
+    },
+    {
+      "id": "actual_mersenne_tail_strictly_dominates_three_channel_bound",
+      "canonical_statement": "For every k, mersenneTailLB3 k is strictly smaller than the actual Mersenne tail mersenneTail k.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "three_channel_tail_lower_bound",
+        "actual_mersenne_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "positive omitted-channel comparison",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No external priority claim is made for the exact bound.",
+      "scope_caveat": "Dominating the auxiliary bound does not control the actual greedy residual.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mersenneTailLB3_lt_mersenneTail",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 212
+        }
+      ]
+    },
+    {
+      "id": "two_thirds_margin_certifies_actual_tail_skip_safety",
+      "canonical_statement": "For the positive represented decomposition, 2u<=3a implies u/(2L)<mersenneTail k.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "represented_skip_fraction",
+        "two_thirds_margin",
+        "actual_mersenne_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "transport of the three-channel safe region through the strict tail lower bound",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "Lean proves the transported criterion; no novelty claim is made.",
+      "scope_caveat": "The theorem is sufficient at one represented skip and gives no universal orbit avoidance.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "skipSafe_actualTail_of_two_mul_le_three_mul",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 231
+        }
+      ]
+    },
+    {
+      "id": "unit_numerator_is_actual_tail_safe",
+      "canonical_statement": "Under the positive unit-numerator decomposition, 1/(2L) is strictly below the actual Mersenne tail.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "unit_numerator",
+        "represented_skip_fraction",
+        "actual_mersenne_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "unit-numerator specialization transported to the actual tail",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is the u=1 specialization of the actual-tail safety theorem.",
+      "scope_caveat": "It does not prove that all actual skips have unit numerator.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "unitNumerator_skipSafe_actualTail",
+          "module": "Erdos249257/HalfGreedyFatalGap.lean",
+          "line": 242
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "mersenneTailLB3",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 52,
+      "role": "representation",
+      "statement_node": "three_channel_mersenne_tail_bound_representation"
+    },
+    {
+      "declaration": "three_div_lt_mersenneTailLB3",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 66,
+      "role": "statement",
+      "statement_node": "three_channel_bound_exceeds_two_thirds_threshold"
+    },
+    {
+      "declaration": "skipSafe_of_two_mul_le_three_mul",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 103,
+      "role": "statement",
+      "statement_node": "two_thirds_margin_certifies_three_channel_skip_safety"
+    },
+    {
+      "declaration": "unitNumerator_skipSafe",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 131,
+      "role": "statement",
+      "statement_node": "unit_numerator_is_three_channel_safe"
+    },
+    {
+      "declaration": "three_mul_lt_two_mul_of_fatal",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 142,
+      "role": "statement",
+      "statement_node": "fatality_above_the_bound_forces_strict_two_thirds_region"
+    },
+    {
+      "declaration": "two_le_of_fatal",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 157,
+      "role": "statement",
+      "statement_node": "fatality_forces_numerator_at_least_two"
+    },
+    {
+      "declaration": "three_le_of_fatal_of_odd",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 169,
+      "role": "statement",
+      "statement_node": "odd_fatal_numerator_is_at_least_three"
+    },
+    {
+      "declaration": "sharp_of_dyadic",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 193,
+      "role": "statement",
+      "statement_node": "sharp_safety_strictly_contains_dyadic_safety"
+    },
+    {
+      "declaration": "sharp_strictly_stronger",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 196,
+      "role": "statement",
+      "statement_node": "sharp_safety_strictly_contains_dyadic_safety"
+    },
+    {
+      "declaration": "mersenneTailLB3_lt_mersenneTail",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 212,
+      "role": "statement",
+      "statement_node": "actual_mersenne_tail_strictly_dominates_three_channel_bound"
+    },
+    {
+      "declaration": "skipSafe_actualTail_of_two_mul_le_three_mul",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 231,
+      "role": "statement",
+      "statement_node": "two_thirds_margin_certifies_actual_tail_skip_safety"
+    },
+    {
+      "declaration": "unitNumerator_skipSafe_actualTail",
+      "module": "Erdos249257/HalfGreedyFatalGap.lean",
+      "line": 242,
+      "role": "statement",
+      "statement_node": "unit_numerator_is_actual_tail_safe"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "three_channel_bound_exceeds_two_thirds_threshold",
+      "to": "three_channel_mersenne_tail_bound_representation",
+      "relation": "generated_by",
+      "basis": "The threshold theorem is the fundamental rational comparison proved from the explicit three-channel expression."
+    },
+    {
+      "from": "two_thirds_margin_certifies_three_channel_skip_safety",
+      "to": "three_channel_bound_exceeds_two_thirds_threshold",
+      "relation": "generated_by",
+      "basis": "The represented decomposition and 2u<=3a reduce the skip fraction to the threshold dominated by the three-channel bound."
+    },
+    {
+      "from": "unit_numerator_is_three_channel_safe",
+      "to": "two_thirds_margin_certifies_three_channel_skip_safety",
+      "relation": "specialises",
+      "basis": "The unit-numerator theorem is the u=1 instance of the two-thirds safety criterion."
+    },
+    {
+      "from": "fatality_above_the_bound_forces_strict_two_thirds_region",
+      "to": "two_thirds_margin_certifies_three_channel_skip_safety",
+      "relation": "complements",
+      "basis": "Under mersenneTailLB3 k<=T, fatality forces the strict complement 3a<2u of the safe two-thirds region."
+    },
+    {
+      "from": "fatality_forces_numerator_at_least_two",
+      "to": "fatality_above_the_bound_forces_strict_two_thirds_region",
+      "relation": "implies",
+      "basis": "The strict fatal-region inequality and positivity exclude the unit numerator."
+    },
+    {
+      "from": "odd_fatal_numerator_is_at_least_three",
+      "to": "fatality_forces_numerator_at_least_two",
+      "relation": "specialises",
+      "basis": "Oddness sharpens the general lower bound u>=2 to u>=3."
+    },
+    {
+      "from": "sharp_safety_strictly_contains_dyadic_safety",
+      "to": "two_thirds_margin_certifies_three_channel_skip_safety",
+      "relation": "complements",
+      "basis": "The comparison node classifies the sharp hypothesis used by the safety theorem against the stronger dyadic sufficient condition."
+    },
+    {
+      "from": "actual_mersenne_tail_strictly_dominates_three_channel_bound",
+      "to": "three_channel_mersenne_tail_bound_representation",
+      "relation": "complements",
+      "basis": "The theorem validates the represented expression as a strict lower bound for the actual infinite tail."
+    },
+    {
+      "from": "two_thirds_margin_certifies_actual_tail_skip_safety",
+      "to": "two_thirds_margin_certifies_three_channel_skip_safety",
+      "relation": "transport_of",
+      "basis": "The three-channel inequality transports to the actual tail through mersenneTailLB3 k<mersenneTail k."
+    },
+    {
+      "from": "unit_numerator_is_actual_tail_safe",
+      "to": "unit_numerator_is_three_channel_safe",
+      "relation": "transport_of",
+      "basis": "The unit-numerator three-channel bound transports through the strict lower bound for the actual tail."
+    },
+    {
+      "from": "unit_numerator_is_actual_tail_safe",
+      "to": "two_thirds_margin_certifies_actual_tail_skip_safety",
+      "relation": "specialises",
+      "basis": "The actual-tail unit theorem is the u=1 specialization of the actual-tail two-thirds criterion."
+    }
+  ]
+}

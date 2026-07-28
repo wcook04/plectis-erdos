@@ -1,0 +1,4277 @@
+{
+  "zone_id": "Z03",
+  "title": "Diagonal-pincer finite kills, deep window tranche (t = 41, 43)",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "period_lcm_ray",
+      "label": "lcm period ray H_t = lcm(1,...,t)",
+      "description": "The universal candidate period at scale t; every primitive period h0 <= t divides it (periodLcm, CarrySurvivorExtinction.lean:515)."
+    },
+    {
+      "id": "diagonal_pincer_position",
+      "label": "diagonal position h = N = H_t",
+      "description": "Standing on the ray: the certificate is evaluated with both the period and the window base equal to H_t, so one integer parameter t indexes the whole search."
+    },
+    {
+      "id": "window_discrepancy",
+      "label": "window discrepancy A(h,N,L)",
+      "description": "The integer sum over j < L of (phi(N+h+1+j) - phi(N+1+j)) * 2^(L-1-j); the depth-L truncation of 2^L times the tail difference (TotientTailPeriodKiller.lean:66)."
+    },
+    {
+      "id": "certified_kill_predicate",
+      "label": "certifiedKill h N L",
+      "description": "Decidable predicate: A(h,N,L) mod 2^L lies strictly between N+h+L+2 and 2^L - (N+h+L+2), which forces the tail difference to be a non-integer (TotientTailPeriodKiller.lean:72)."
+    },
+    {
+      "id": "exact_totient_reconstruction",
+      "label": "totient from checked prime-power blocks",
+      "description": "Each window index is rewritten as a product of pairwise-coprime prime powers and phi is computed by totient_factorBlocks, avoiding native evaluation (DiagonalPincerCertificates.lean:83)."
+    },
+    {
+      "id": "pratt_lucas_prime_leaves",
+      "label": "Pratt/Lucas certified large prime factors",
+      "description": "Prime factors beyond norm_num range arrive as imported prime_lucas_* certificates; only the small leaves are re-proved inside this zone."
+    },
+    {
+      "id": "kill_depth_floor",
+      "label": "dyadic depth floor 2*(N+h+L+2) < 2^L",
+      "description": "Any certificate needs depth L above roughly log2(4*H_t), so certificate cost grows with t and each scale needs about 2L fresh factorisations of H_t-sized integers (certifiedKill_depth_floor)."
+    },
+    {
+      "id": "diagonal_supply_hypothesis",
+      "label": "open supply hypothesis: P t for infinitely many t",
+      "description": "Erdos #249 follows from 'for every t0 there is t >= t0 with some L such that certifiedKill (periodLcm t) (periodLcm t) L'; this quantified statement is the open content and is not established by any finite roster."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "diagonal_pincer_kill_t41",
+      "canonical_statement": "At scale t = 41, with H = lcm(1,...,41) = 219060189739591200, the depth-61 window discrepancy between the totient windows starting at 2H+1 and at H+1 has residue modulo 2^61 strictly inside the admissible band, i.e. certifiedKill H H 61 holds. Unconditionally and by kernel-checked arithmetic (no native evaluation), this makes the local totient tails R_{2H} and R_H differ by a non-integer. Via the imported pincer reduction this excludes every rational value of the sum of phi(n)/2^n whose eventual binary period divides lcm(1,...,41) and whose pre-period is at most lcm(1,...,41) -- but that consequence is a downstream corollary that is stated NOWHERE IN THE CORPUS, not merely nowhere in this zone. The only realised denominator-exclusion corollaries stop far below this scale: totient_series_ne_rat_of_den_dvd (h <= 8 at N = 12, TotientTailPeriodKiller.lean:416) and totient_series_ne_rat_of_den_dvd_upto_sixteen (h <= 16 at N = 14, CarrySurvivorExtinction.lean:587). Composing tail_diff_notMem_int_of_certifiedKill with tail_diff_int_of_den_dvd would give the t = 41 form in two lines, but nobody has written it, so the deposited Lean content here is exactly the residue-band fact and nothing about rational values.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_diagonal_t41",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 1356
+        }
+      ],
+      "concepts": [
+        "period_lcm_ray",
+        "diagonal_pincer_position",
+        "window_discrepancy",
+        "certified_kill_predicate",
+        "exact_totient_reconstruction",
+        "kill_depth_floor"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "diagonal-pincer certificate engine: exact prime-power factorisation of the 122 window indices, imported Pratt/Lucas certificates for the large prime roots (68 newly imported Prime*.lean modules plus 28 recursive Pratt dependencies; 70 distinct prime_lucas_* facts are consumed in total, 2 reused from earlier scales), totient_factorBlocks multiplicativity, then norm_num evaluation of windowDiscrepancy modulo 2^61",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Same engine as the already-deposited scales t <= 37 (DiagonalPincerCertificates.lean and the T19..T37 modules); only the numeric data is new. The curated ledger already absorbs it wholesale under claim 'certified_kill_instances' (verified finite instance, 28 lcm-diagonal scales through t = 64). No new mathematics: the difficulty is factoring 122 integers near 4.4e17, which is computation, not deduction.",
+      "scope_caveat": "One scale only. certifiedKill H H 61 constrains nothing outside the pair of tails (R_{2H}, R_H) at H = lcm(1,...,41): it does not bound any rational denominator whose 2-order exceeds H or whose odd part has multiplicative order of 2 not dividing H, and it says nothing about the behaviour at t = 42 or beyond. It is compatible with sum phi(n)/2^n being rational; only the unproved supply hypothesis (remaining_open.unbounded_certificate_supply) would convert a family of such certificates into #249. Verified independently for this review by recomputing all 122 window totients from the factor blocks in the module and evaluating the depth-61 residue: 1856914291793306324 modulo 2^61, admissible band (438120379479182463, 2^61 - 438120379479182463) -- the certificate fires as stated.",
+      "confidence": "high"
+    },
+    {
+      "id": "diagonal_pincer_kill_t43",
+      "canonical_statement": "At scale t = 43, with H = lcm(1,...,43) = 9419588158802421600 (= 43 times the t = 41 ray point, since t = 42 adds no new prime power), the depth-66 window discrepancy between the totient windows starting at 2H+1 and at H+1 has residue modulo 2^66 strictly inside the admissible band, i.e. certifiedKill H H 66 holds. Depth 66 is the smallest depth arithmetically possible here: 2*(N+h+L+2) < 2^L fails at L = 65 and holds at L = 66, so this certificate sits exactly on the dyadic floor.",
+      "logical_class": "finite_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_diagonal_t43",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 1452
+        }
+      ],
+      "concepts": [
+        "period_lcm_ray",
+        "diagonal_pincer_position",
+        "window_discrepancy",
+        "certified_kill_predicate",
+        "exact_totient_reconstruction",
+        "kill_depth_floor"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "diagonal-pincer certificate engine at depth 66: 132 window indices factored exactly, 93 newly imported large-prime Lucas roots plus 36 recursive Pratt dependencies (95 distinct prime_lucas_* facts consumed, 2 reused from earlier scales), totient_factorBlocks, norm_num residue evaluation modulo 2^66",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Identical engine to t = 41 and to every earlier scale; a new numeric row, not a new theorem. Covered coarsely by ledger claim 'certified_kill_instances'.",
+      "scope_caveat": "Same single-scale limitation as t = 41: the certificate constrains only the pair (R_{2H}, R_H) at H = lcm(1,...,43), no denominator-exclusion corollary at this scale is stated anywhere in the corpus, and no finite set of such certificates touches the open supply hypothesis. The 'sits exactly on the dyadic floor' remark is a statement about certifiedKill_depth_floor, a NECESSARY condition only: it says depth 65 could not have worked, not that depth 66 was guaranteed to work. Verified independently for this review by recomputing all 132 window totients from the module's own factor blocks: residue 43530800251420602688 modulo 2^66, admissible band (18839176317604843268, 2^66 - 18839176317604843268); the L = 65 floor check 2*(2H+67) = 37678352635209686534 > 2^65 = 36893488147419103232 also confirms the floor claim.",
+      "confidence": "high"
+    },
+    {
+      "id": "deep_window_totient_reconstruction",
+      "canonical_statement": "Exact values of Euler's totient at each of the 254 window indices used by the two certificates: the 122 integers H41+1..H41+61 and 2*H41+1..2*H41+61, and the 132 integers H43+1..H43+66 and 2*H43+1..2*H43+66. Each value is obtained by exhibiting a complete prime-power factorisation, verifying every base is prime, verifying the blocks are pairwise coprime, multiplying back to the target, and applying multiplicativity of phi.",
+      "logical_class": "generated_certificate_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "phi_t41_219060189739591201",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 256
+        },
+        {
+          "declaration": "phi_t41_438120379479182401",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 805
+        },
+        {
+          "declaration": "phi_t41_438120379479182461",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 1345
+        },
+        {
+          "declaration": "phi_t43_9419588158802421601",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 262
+        },
+        {
+          "declaration": "phi_t43_18839176317604843201",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 856
+        },
+        {
+          "declaration": "phi_t43_18839176317604843266",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 1441
+        }
+      ],
+      "concepts": [
+        "exact_totient_reconstruction",
+        "pratt_lucas_prime_leaves",
+        "window_discrepancy"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "totient_factorBlocks (DiagonalPincerCertificates.lean:83) driven by explicit FactorBlock lists, with norm_num for the multiply-back and decide for pairwise coprimality",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Pure specialisation of Nat.totient multiplicativity and Nat.totient_prime_pow to explicit integers. Mathematical content nil; the real cost is the offline factorisation of numbers near 1.9e19, which Lean only replays.",
+      "scope_caveat": "Reclassified from finite_instance to generated_certificate_instance during adversarial review: both module headers describe themselves as a 'generated extension', these 254 declarations are private, are referenced only by the single certifiedKill theorem in their own module, and assert nothing about the objects of #249. Counting them as finite instances would inflate the corpus's finite-instance total by 254 rows of certificate scaffolding. The mathematical input is entirely offline (the factorisations were found outside Lean); Lean checks the replay, not the search. Independently re-verified for this review: for all 254 declarations the stated factor blocks multiply back to the index, every block base is prime, and the product of factorBlockTotient equals the asserted phi value -- zero discrepancies, and the 254 indices are exactly the window sets the two certificates consume, with none missing and none spare.",
+      "confidence": "high"
+    },
+    {
+      "id": "window_prime_leaf_primality",
+      "canonical_statement": "307 primality declarations for the small prime bases occurring in the t = 41 and t = 43 window factorisations (163 leaves in the t = 41 module, ranging from 2 to 32547331; 144 leaves in the t = 43 module, ranging from 2 to 27822491), each discharged by norm_num. The 307 declarations cover only 263 DISTINCT primes: the two modules share 44 leaves, each re-proved once per module, so the declaration count overstates the number of distinct facts by 44. Prime factors above norm_num's practical range are not proved here: they enter as imported Pratt/Lucas certificates named prime_lucas_* (the first such root is 39404513 at t = 41 and 40430111 at t = 43).",
+      "logical_class": "generated_certificate_instance",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "prime_t41_2",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 90
+        },
+        {
+          "declaration": "prime_t41_3539",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 171
+        },
+        {
+          "declaration": "prime_t41_32547331",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 252
+        },
+        {
+          "declaration": "prime_t43_2",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 115
+        },
+        {
+          "declaration": "prime_t43_3511",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 187
+        },
+        {
+          "declaration": "prime_t43_27822491",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 258
+        }
+      ],
+      "concepts": [
+        "pratt_lucas_prime_leaves",
+        "exact_totient_reconstruction"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "norm_num primality; large roots delegated to the imported Erdos249257.DiagonalPincerPrimeCertificates.Prime* modules (outside this zone)",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Primality of explicit small integers; no ownership question arises. Note that the modules duplicate the small-prime leaf set per scale (prime_t41_2, prime_t43_2, ...), so the counts measure generated boilerplate, not distinct facts.",
+      "scope_caveat": "Reclassified from finite_instance to generated_certificate_instance during adversarial review: these are private norm_num primality facts about integers below 3.3e7, machine-generated one per module, with 44 of them duplicated across the two modules. They carry no statement about #249 and should not be counted alongside the certifiedKill instances. Verified for this review that every declared leaf is actually consumed by a factorisation in its own module (no dead declarations) and that every factor-block base in both modules is either a leaf declared here or an imported prime_lucas_* root, with no base left unproved; independent Miller-Rabin agreement on all bases.",
+      "confidence": "high"
+    },
+    {
+      "id": "diagonal_kill_roster_finite_list",
+      "canonical_statement": "Roll-up statements asserting that for every t in the explicit literal list [1,2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41] (respectively the same list extended by 43), certifiedKill (periodLcm t) (periodLcm t) (tabulated depth) holds, where the depth table is a finite case split. Each roll-up is proved by unfolding the list and quoting the corresponding already-established per-scale certificate, so it carries no content beyond the conjunction of its 21 (resp. 22) members. It has the surface shape of a universally quantified supply statement but ranges over a finite literal list, and therefore does not and cannot discharge the open supply hypothesis 'for every t0 there exists t >= t0 with P t' that Erdos #249 needs.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_diagonal_all_imported_through_t41",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 1388
+        },
+        {
+          "declaration": "certifiedKill_diagonal_all_imported_through_t43",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 1485
+        },
+        {
+          "declaration": "diagonalPincerCertificateScalesThroughT41",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 1361
+        },
+        {
+          "declaration": "diagonalPincerKillDepthThroughT41",
+          "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+          "line": 1363
+        },
+        {
+          "declaration": "diagonalPincerCertificateScalesThroughT43",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 1457
+        },
+        {
+          "declaration": "diagonalPincerKillDepthThroughT43",
+          "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+          "line": 1459
+        }
+      ],
+      "concepts": [
+        "diagonal_pincer_position",
+        "certified_kill_predicate",
+        "diagonal_supply_hypothesis"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "list membership case split plus simpa from the per-scale certificates",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Aggregation only. The t = 43 roster strictly contains the t = 41 roster, and each successive module reproduces the same aggregation with one extra clause; the pattern is generated bookkeeping. The corpus itself flags the gap: LcmDiagonalReduction.lean states that the supply hypothesis 'is the open content of #249 and is NOT claimed', and docs/claims.json keeps it as remaining_open.unbounded_certificate_supply.",
+      "scope_caveat": "The two roll-up theorems are NOT self-contained within this zone: 20 of the 21 clauses of the t = 41 roster and 21 of the 22 clauses of the t = 43 roster are discharged by certificates imported from modules outside Z03 (DiagonalPincerCertificates.lean and T19..T37), and each roster also silently inherits the Pratt/Lucas prime certificate modules. Only one clause per roster is proved in-zone. Readers must not treat the roster as evidence produced by this zone. Separately, the universally quantified surface form is the exact shape of an overclaim risk: 'for all t in <list>' looks like the supply hypothesis but the list is a literal, so the statement is a finite conjunction and its truth is compatible with sum phi(n)/2^n being rational.",
+      "confidence": "high"
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "prime_t41_2",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 90,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_3",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 91,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_5",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 92,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_7",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 93,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_11",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 94,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_13",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 95,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_17",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 96,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_19",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 97,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_23",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 98,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_29",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 99,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_31",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 100,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_37",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 101,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_41",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 102,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_43",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 103,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_47",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 104,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_53",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 105,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_59",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 106,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_61",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 107,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_67",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 108,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_71",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 109,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_73",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 110,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_79",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 111,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_89",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 112,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_97",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 113,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_101",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 114,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_103",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 115,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_107",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 116,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_109",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 117,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_113",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 118,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_127",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 119,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_137",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 120,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_139",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 121,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_149",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 122,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_157",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 123,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_163",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 124,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_173",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 125,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_179",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 126,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_181",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 127,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_191",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 128,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_193",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 129,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_199",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 130,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_229",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 131,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_233",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 132,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_263",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 133,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_271",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 134,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_277",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 135,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_293",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 136,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_313",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 137,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_353",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 138,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_373",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 139,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_379",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 140,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_397",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 141,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_409",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 142,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_419",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 143,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_439",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 144,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_479",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 145,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_509",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 146,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_547",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 147,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_631",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 148,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_733",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 149,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_827",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 150,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_947",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 151,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1063",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 152,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1283",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 153,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1381",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 154,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1429",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 155,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1511",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 156,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1607",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 157,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1663",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 158,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1789",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 159,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1867",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 160,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1889",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 161,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2069",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 162,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2243",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 163,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2269",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 164,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2281",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 165,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2351",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 166,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2383",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 167,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2543",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 168,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2659",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 169,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_3121",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 170,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_3539",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 171,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_5231",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 172,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_5717",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 173,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_6029",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 174,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_6091",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 175,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_6247",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 176,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_6311",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 177,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_6947",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 178,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_7121",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 179,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_7717",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 180,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_8647",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 181,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_9697",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 182,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_9923",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 183,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_10223",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 184,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_10321",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 185,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_13903",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 186,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_15731",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 187,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_18701",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 188,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_21157",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 189,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_21757",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 190,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_22409",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 191,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_23333",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 192,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_23627",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 193,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_25303",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 194,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_25469",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 195,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_26393",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 196,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_30259",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 197,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_40499",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 198,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_43399",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 199,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_54941",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 200,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_75239",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 201,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_83641",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 202,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_86111",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 203,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_87793",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 204,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_100057",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 205,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_104147",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 206,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_111427",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 207,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_113647",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 208,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_115117",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 209,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_116167",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 210,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_119069",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 211,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_122509",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 212,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_133157",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 213,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_138283",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 214,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_145513",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 215,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_170851",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 216,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_195739",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 217,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_231019",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 218,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_269701",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 219,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_302999",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 220,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_305353",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 221,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_308219",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 222,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_420191",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 223,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_645041",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 224,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_784789",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 225,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_855187",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 226,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1156013",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 227,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1181617",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 228,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1232563",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 229,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1272629",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 230,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1281367",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 231,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1305247",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 232,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1630633",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 233,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_1987519",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 234,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_2990017",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 235,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_3844273",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 236,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_5620469",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 237,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_6218159",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 238,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_6824777",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 239,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_7973477",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 240,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_10173811",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 241,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_12772433",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 242,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_13113077",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 243,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_13482731",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 244,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_14531747",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 245,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_15867463",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 246,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_18751769",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 247,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_19370159",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 248,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_23521501",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 249,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_25630177",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 250,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_29700313",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 251,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t41_32547331",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 252,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "phi_t41_219060189739591201",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 256,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591202",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 265,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591203",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 274,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591204",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 283,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591205",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 292,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591206",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 301,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591207",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 310,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591208",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 319,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591209",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 328,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591210",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 337,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591211",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 346,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591212",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 355,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591213",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 364,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591214",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 373,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591215",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 382,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591216",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 391,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591217",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 400,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591218",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 409,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591219",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 418,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591220",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 427,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591221",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 436,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591222",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 445,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591223",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 454,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591224",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 463,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591225",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 472,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591226",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 481,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591227",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 490,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591228",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 499,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591229",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 508,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591230",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 517,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591231",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 526,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591232",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 535,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591233",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 544,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591234",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 553,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591235",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 562,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591236",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 571,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591237",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 580,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591238",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 589,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591239",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 598,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591240",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 607,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591241",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 616,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591242",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 625,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591243",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 634,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591244",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 643,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591245",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 652,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591246",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 661,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591247",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 670,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591248",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 679,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591249",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 688,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591250",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 697,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591251",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 706,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591252",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 715,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591253",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 724,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591254",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 733,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591255",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 742,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591256",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 751,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591257",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 760,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591258",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 769,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591259",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 778,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591260",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 787,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_219060189739591261",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 796,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182401",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 805,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182402",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 814,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182403",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 823,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182404",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 832,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182405",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 841,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182406",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 850,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182407",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 859,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182408",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 868,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182409",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 877,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182410",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 886,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182411",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 895,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182412",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 904,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182413",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 913,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182414",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 922,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182415",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 931,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182416",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 940,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182417",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 949,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182418",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 958,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182419",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 967,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182420",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 976,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182421",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 985,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182422",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 994,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182423",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1003,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182424",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1012,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182425",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1021,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182426",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1030,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182427",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1039,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182428",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1048,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182429",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1057,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182430",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1066,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182431",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1075,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182432",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1084,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182433",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1093,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182434",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1102,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182435",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1111,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182436",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1120,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182437",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1129,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182438",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1138,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182439",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1147,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182440",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1156,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182441",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1165,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182442",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1174,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182443",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1183,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182444",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1192,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182445",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1201,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182446",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1210,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182447",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1219,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182448",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1228,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182449",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1237,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182450",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1246,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182451",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1255,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182452",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1264,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182453",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1273,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182454",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1282,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182455",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1291,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182456",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1300,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182457",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1309,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182458",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1318,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182459",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1327,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182460",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1336,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t41_438120379479182461",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1345,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "certifiedKill_diagonal_t41",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1356,
+      "role": "statement",
+      "statement_node": "diagonal_pincer_kill_t41"
+    },
+    {
+      "declaration": "diagonalPincerCertificateScalesThroughT41",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1361,
+      "role": "representation",
+      "statement_node": "diagonal_kill_roster_finite_list"
+    },
+    {
+      "declaration": "diagonalPincerKillDepthThroughT41",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1363,
+      "role": "representation",
+      "statement_node": "diagonal_kill_roster_finite_list"
+    },
+    {
+      "declaration": "certifiedKill_diagonal_all_imported_through_t41",
+      "module": "Erdos249257/DiagonalPincerCertificatesT41.lean",
+      "line": 1388,
+      "role": "statement",
+      "statement_node": "diagonal_kill_roster_finite_list"
+    },
+    {
+      "declaration": "prime_t43_2",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 115,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 116,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_5",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 117,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_7",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 118,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_11",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 119,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_13",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 120,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_17",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 121,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_19",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 122,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_23",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 123,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_29",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 124,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_31",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 125,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_37",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 126,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_41",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 127,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_43",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 128,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_47",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 129,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_53",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 130,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_59",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 131,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_61",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 132,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_67",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 133,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_71",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 134,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_73",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 135,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_79",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 136,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_89",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 137,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_97",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 138,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_101",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 139,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_103",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 140,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_109",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 141,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_127",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 142,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_131",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 143,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_137",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 144,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_139",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 145,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_149",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 146,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_151",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 147,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_157",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 148,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_163",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 149,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_167",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 150,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_173",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 151,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_181",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 152,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_191",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 153,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_193",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 154,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_199",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 155,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_227",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 156,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_239",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 157,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_293",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 158,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_311",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 159,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_337",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 160,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_347",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 161,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_373",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 162,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_409",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 163,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_421",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 164,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_461",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 165,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_491",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 166,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_827",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 167,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_829",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 168,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_857",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 169,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_941",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 170,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1009",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 171,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1061",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 172,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1093",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 173,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1217",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 174,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1367",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 175,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1439",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 176,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1667",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 177,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1913",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 178,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1931",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 179,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1951",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 180,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_2531",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 181,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_2557",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 182,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_2851",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 183,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3209",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 184,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3329",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 185,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3433",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 186,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3511",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 187,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3943",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 188,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_4127",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 189,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_4357",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 190,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_4519",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 191,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_4561",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 192,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_4651",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 193,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_6367",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 194,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_8731",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 195,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_8863",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 196,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_9719",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 197,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_11069",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 198,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_11807",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 199,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_13553",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 200,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_14753",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 201,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_16937",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 202,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_17387",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 203,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_19583",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 204,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_20393",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 205,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_21991",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 206,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_23669",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 207,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_24821",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 208,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_25609",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 209,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_27283",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 210,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_33569",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 211,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_44021",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 212,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_47629",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 213,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_52253",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 214,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_54941",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 215,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_71153",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 216,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_72679",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 217,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_83641",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 218,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_93059",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 219,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_112241",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 220,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_116507",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 221,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_131501",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 222,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_134597",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 223,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_139991",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 224,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_185161",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 225,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_188401",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 226,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_194581",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 227,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_231131",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 228,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_337741",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 229,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_474343",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 230,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_504683",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 231,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_519097",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 232,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_559913",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 233,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_627329",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 234,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_629891",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 235,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_679829",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 236,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_684547",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 237,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1117073",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 238,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1167799",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 239,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1412087",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 240,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_1573907",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 241,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_2274859",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 242,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_2536363",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 243,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3005417",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 244,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3082291",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 245,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_3860867",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 246,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_4136179",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 247,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_5577839",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 248,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_5681089",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 249,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_6037543",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 250,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_6182819",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 251,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_7156277",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 252,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_9397337",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 253,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_14415397",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 254,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_17975473",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 255,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_25127183",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 256,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_27596801",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 257,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "prime_t43_27822491",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 258,
+      "role": "substrate",
+      "statement_node": "window_prime_leaf_primality"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421601",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 262,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421602",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 271,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421603",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 280,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421604",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 289,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421605",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 298,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421606",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 307,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421607",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 316,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421608",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 325,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421609",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 334,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421610",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 343,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421611",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 352,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421612",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 361,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421613",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 370,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421614",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 379,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421615",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 388,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421616",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 397,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421617",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 406,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421618",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 415,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421619",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 424,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421620",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 433,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421621",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 442,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421622",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 451,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421623",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 460,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421624",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 469,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421625",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 478,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421626",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 487,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421627",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 496,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421628",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 505,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421629",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 514,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421630",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 523,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421631",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 532,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421632",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 541,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421633",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 550,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421634",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 559,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421635",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 568,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421636",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 577,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421637",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 586,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421638",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 595,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421639",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 604,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421640",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 613,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421641",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 622,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421642",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 631,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421643",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 640,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421644",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 649,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421645",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 658,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421646",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 667,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421647",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 676,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421648",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 685,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421649",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 694,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421650",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 703,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421651",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 712,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421652",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 721,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421653",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 730,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421654",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 739,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421655",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 748,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421656",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 757,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421657",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 766,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421658",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 775,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421659",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 784,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421660",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 793,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421661",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 802,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421662",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 811,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421663",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 820,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421664",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 829,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421665",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 838,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_9419588158802421666",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 847,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843201",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 856,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843202",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 865,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843203",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 874,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843204",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 883,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843205",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 892,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843206",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 901,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843207",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 910,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843208",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 919,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843209",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 928,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843210",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 937,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843211",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 946,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843212",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 955,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843213",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 964,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843214",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 973,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843215",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 982,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843216",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 991,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843217",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1000,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843218",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1009,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843219",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1018,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843220",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1027,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843221",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1036,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843222",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1045,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843223",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1054,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843224",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1063,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843225",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1072,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843226",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1081,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843227",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1090,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843228",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1099,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843229",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1108,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843230",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1117,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843231",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1126,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843232",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1135,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843233",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1144,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843234",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1153,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843235",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1162,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843236",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1171,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843237",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1180,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843238",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1189,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843239",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1198,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843240",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1207,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843241",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1216,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843242",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1225,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843243",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1234,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843244",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1243,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843245",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1252,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843246",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1261,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843247",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1270,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843248",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1279,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843249",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1288,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843250",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1297,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843251",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1306,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843252",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1315,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843253",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1324,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843254",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1333,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843255",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1342,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843256",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1351,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843257",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1360,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843258",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1369,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843259",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1378,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843260",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1387,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843261",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1396,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843262",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1405,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843263",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1414,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843264",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1423,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843265",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1432,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "phi_t43_18839176317604843266",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1441,
+      "role": "finite_instance",
+      "statement_node": "deep_window_totient_reconstruction"
+    },
+    {
+      "declaration": "certifiedKill_diagonal_t43",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1452,
+      "role": "statement",
+      "statement_node": "diagonal_pincer_kill_t43"
+    },
+    {
+      "declaration": "diagonalPincerCertificateScalesThroughT43",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1457,
+      "role": "representation",
+      "statement_node": "diagonal_kill_roster_finite_list"
+    },
+    {
+      "declaration": "diagonalPincerKillDepthThroughT43",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1459,
+      "role": "representation",
+      "statement_node": "diagonal_kill_roster_finite_list"
+    },
+    {
+      "declaration": "certifiedKill_diagonal_all_imported_through_t43",
+      "module": "Erdos249257/DiagonalPincerCertificatesT43.lean",
+      "line": 1485,
+      "role": "statement",
+      "statement_node": "diagonal_kill_roster_finite_list"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "window_prime_leaf_primality",
+      "to": "deep_window_totient_reconstruction",
+      "relation": "implies",
+      "basis": "the primality leaves are the side conditions consumed by totient_factorBlocks in every phi_t41_*/phi_t43_* proof"
+    },
+    {
+      "from": "deep_window_totient_reconstruction",
+      "to": "diagonal_pincer_kill_t41",
+      "relation": "implies",
+      "basis": "the 122 exact totient values at the t = 41 window are precisely the rewrite set that norm_num consumes to evaluate windowDiscrepancy modulo 2^61"
+    },
+    {
+      "from": "deep_window_totient_reconstruction",
+      "to": "diagonal_pincer_kill_t43",
+      "relation": "implies",
+      "basis": "the 132 exact totient values at the t = 43 window are precisely the rewrite set that norm_num consumes to evaluate windowDiscrepancy modulo 2^66"
+    },
+    {
+      "from": "diagonal_kill_roster_finite_list",
+      "to": "diagonal_pincer_kill_t41",
+      "relation": "reformulates",
+      "basis": "the roster's t = 41 clause unfolds by simpa to certifiedKill_diagonal_t41; the roster adds no new certificate"
+    },
+    {
+      "from": "diagonal_kill_roster_finite_list",
+      "to": "diagonal_pincer_kill_t43",
+      "relation": "reformulates",
+      "basis": "the roster's t = 43 clause unfolds by simpa to certifiedKill_diagonal_t43; the roster adds no new certificate"
+    },
+    {
+      "from": "diagonal_pincer_kill_t43",
+      "to": "diagonal_pincer_kill_t41",
+      "relation": "sibling_instance",
+      "basis": "Relabelled from 'specialises' during adversarial review: the previous label contradicted its own basis text. Neither node specialises or implies the other. They are sibling instances of one engine at consecutive admissible scales; periodLcm 43 = 43 * periodLcm 41 is verified, but divisibility of the period does NOT propagate the certificate, because certifiedKill is evaluated at a different window base and a different depth (61 vs 66) in each case."
+    }
+  ]
+}

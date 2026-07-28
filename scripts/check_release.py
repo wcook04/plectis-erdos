@@ -32,11 +32,14 @@ This script verifies that every other public surface agrees with it:
      requirements, descriptor capsule, and entry routes agree.
  11. The systems paper's historical outcome and explicit evidence ceilings
      agree with the typed publication-evidence receipt.
+ 12. Digest-bound semantic review receipts remain attached to the exact
+     statement or relation that was reviewed.
 Stdlib only; run from the repository root:  python3 scripts/check_release.py
 """
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import re
@@ -110,6 +113,20 @@ def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def flattened(text: str) -> str:
+    """Collapse every run of whitespace so prose checks survive rewrapping.
+
+    Markdown prose is rewrapped freely, so a required phrase that happens to
+    straddle a line break stops matching a raw ``in`` test even though the
+    sentence is still there — the gate then fails for a reason that has nothing
+    to do with the claim it guards.  The same gap lets a *banned* phrase evade
+    detection simply by wrapping.  Flattening fixes both directions: a phrase
+    that is genuinely absent is still absent after flattening, so this can only
+    remove false failures and add real detections, never mask a missing fence.
+    """
+    return " ".join(text.split())
+
+
 def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
@@ -141,6 +158,8 @@ def source_map_entry_errors(source_map: str) -> list[str]:
         "Lean source checked by the pinned Lean kernel is proof authority",
         "Erdős #249",
         "universal form of #257 remain open",
+        "for every\n  natural `t ≤ 82`",
+        "supplies nothing at `t = 83`",
     )
     errors = [
         f"docs/SOURCE_MAP.md lost bounded first-contact route: {phrase}"
@@ -152,7 +171,104 @@ def source_map_entry_errors(source_map: str) -> list[str]:
             "docs/SOURCE_MAP.md must not send first-contact readers directly "
             "into the full import graph"
         )
+    if "currently assembled at 28 explicit scales through `t = 64`" in source_map:
+        errors.append(
+            "docs/SOURCE_MAP.md still presents the historical deposit list "
+            "as the current certificate frontier"
+        )
     return errors
+
+
+def certified_kill_claim_errors(data: dict) -> list[str]:
+    """Keep the registered finite #249 frontier aligned with its exact theorem."""
+    claim = next(
+        (
+            row
+            for row in data.get("claims", [])
+            if row.get("id") == "certified_kill_instances"
+        ),
+        None,
+    )
+    if claim is None:
+        return ["docs/claims.json lacks certified_kill_instances"]
+    errors: list[str] = []
+    statement = str(claim.get("statement", ""))
+    bounded_domain = str(claim.get("bounded_domain", ""))
+    declarations = {
+        (row.get("module"), row.get("name"))
+        for row in claim.get("declarations", [])
+    }
+    expected_band_declaration = (
+        "ErdosProblems/Skip/LadderT67.lean",
+        "exists_diagonalKill_le_82",
+    )
+    if "every lcm-diagonal scale t ≤ 82" not in statement:
+        errors.append(
+            "certified_kill_instances must state the contiguous t ≤ 82 band"
+        )
+    if "No certificate at t = 83" not in bounded_domain:
+        errors.append(
+            "certified_kill_instances must retain the explicit t = 83 ceiling"
+        )
+    if expected_band_declaration not in declarations:
+        errors.append(
+            "certified_kill_instances must cite "
+            "ErdosProblems/Skip/LadderT67.exists_diagonalKill_le_82"
+        )
+    if claim.get("status") != "verified finite instance":
+        errors.append(
+            "certified_kill_instances must remain a verified finite instance"
+        )
+    if "remaining_open.unbounded_certificate_supply" not in claim.get(
+        "remaining_open_proposition_ids", []
+    ):
+        errors.append(
+            "certified_kill_instances must retain the unbounded-supply boundary"
+        )
+    return errors
+
+
+def certified_kill_claim_mutation_fixture_failures(data: dict) -> list[str]:
+    """Return mutations that escaped the finite-band claim contract."""
+    fixtures: dict[str, dict] = {}
+    historical = copy.deepcopy(data)
+    historical_claim = next(
+        row
+        for row in historical["claims"]
+        if row["id"] == "certified_kill_instances"
+    )
+    historical_claim["statement"] = (
+        "Kernel-checked certificates at 28 scales through t = 64."
+    )
+    fixtures["historical_t64_understatement"] = historical
+
+    missing_declaration = copy.deepcopy(data)
+    missing_claim = next(
+        row
+        for row in missing_declaration["claims"]
+        if row["id"] == "certified_kill_instances"
+    )
+    missing_claim["declarations"] = [
+        row
+        for row in missing_claim["declarations"]
+        if row["name"] != "exists_diagonalKill_le_82"
+    ]
+    fixtures["t82_declaration_removed"] = missing_declaration
+
+    ceiling_removed = copy.deepcopy(data)
+    ceiling_claim = next(
+        row
+        for row in ceiling_removed["claims"]
+        if row["id"] == "certified_kill_instances"
+    )
+    ceiling_claim["bounded_domain"] = "Every natural lcm-diagonal scale t."
+    fixtures["finite_ceiling_removed"] = ceiling_removed
+
+    return [
+        fixture_id
+        for fixture_id, mutated in fixtures.items()
+        if not certified_kill_claim_errors(mutated)
+    ]
 
 
 def wave_index_entry_errors(wave_index: str) -> list[str]:
@@ -403,10 +519,57 @@ def main() -> int:
         "systems paper evidence fixtures stopped rejecting: "
         + ", ".join(systems_paper_fixture_failures),
     )
+    problem_index_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_problem_index.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        problem_index_check.returncode == 0,
+        "generated problem-index freshness failed: "
+        f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
+    )
+    note_source_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "check_problem_note_sources.py"),
+            "--coverage",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        note_source_check.returncode == 0,
+        "problem-note pinned-source contract failed: "
+        f"{note_source_check.stdout.strip() or note_source_check.stderr.strip()}",
+    )
+    paper_corpus_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        paper_corpus_check.returncode == 0,
+        "generated paper-corpus freshness failed: "
+        f"{paper_corpus_check.stdout.strip() or paper_corpus_check.stderr.strip()}",
+    )
     if ERRORS:
         print(
             "check_release: "
-            f"{len(ERRORS)} publication-contract failure(s) across {CHECKS} checks"
+            f"{len(ERRORS)} publication-stage failure(s) across {CHECKS} checks"
         )
         for err in ERRORS:
             print(f"  FAIL {err}")
@@ -452,6 +615,16 @@ def main() -> int:
     check(len(claim_ids) == len(set(claim_ids)), "docs/claims.json contains duplicate claim ids")
     claim_id_set = set(claim_ids)
     claim_index = {claim["id"]: claim for claim in data["claims"]}
+    finite_band_errors = certified_kill_claim_errors(data)
+    check(
+        not finite_band_errors,
+        "certified-kill claim contract: " + "; ".join(finite_band_errors),
+    )
+    for fixture_id in certified_kill_claim_mutation_fixture_failures(data):
+        check(
+            False,
+            "certified-kill claim mutation fixture escaped: " + fixture_id,
+        )
     remaining_open_id_set = {
         row["id"] for row in data["remaining_open_propositions"]
     }
@@ -613,6 +786,15 @@ def main() -> int:
         for step in route.get("query_steps", []):
             check(step.startswith("python3 scripts/query_corpus.py --"),
                   f"route {route.get('id')!r} query step is not a typed corpus query: {step}")
+        for step in route.get("action_steps", []):
+            match = re.match(r"^python3 (scripts/[A-Za-z0-9_.-]+\.py)(?:\s|$)", step)
+            action_path = match.group(1) if match else ""
+            check(
+                bool(match)
+                and action_path != "scripts/query_corpus.py"
+                and (ROOT / action_path).is_file(),
+                f"route {route.get('id')!r} has an invalid executable action handoff: {step}",
+            )
         discovery_terms = route.get("discovery_terms", [])
         check(
             isinstance(discovery_terms, list)
@@ -727,16 +909,59 @@ def main() -> int:
             check(not unknown_root_imports,
                   f"{root} has imports missing from the machine-readable module graph: {sorted(unknown_root_imports)}")
     imports_by_id = {node["id"]: node["imports"] for node in module_nodes}
-    reachable = set(root_imports)
-    frontier = list(root_imports)
+    auxiliary_roots = graph.get("auxiliary_roots", [])
+    auxiliary_contract = graph.get("auxiliary_root_contract", {})
+    allowed_auxiliary_prefixes = tuple(
+        auxiliary_contract.get("allowed_prefixes", [])
+    )
+    check(
+        auxiliary_contract.get("posture")
+        == "exhaustive_inventory_forest_not_compact_reading_root",
+        "machine-readable module graph lost its auxiliary-root posture",
+    )
+    check(
+        len(auxiliary_roots) == len(set(auxiliary_roots)),
+        "machine-readable module graph contains duplicate auxiliary roots",
+    )
+    check(
+        all(root_id in module_id_set for root_id in auxiliary_roots),
+        "machine-readable module graph names an unknown auxiliary root",
+    )
+    check(
+        bool(allowed_auxiliary_prefixes)
+        and all(
+            root_id.startswith(allowed_auxiliary_prefixes)
+            for root_id in auxiliary_roots
+        ),
+        "machine-readable module graph has an auxiliary root outside the "
+        "explicit experimental namespaces",
+    )
+    supported_root_reachable = set(root_imports)
+    supported_frontier = list(supported_root_reachable)
+    while supported_frontier:
+        current = supported_frontier.pop()
+        for dependency in imports_by_id.get(current, []):
+            if dependency not in supported_root_reachable:
+                supported_root_reachable.add(dependency)
+                supported_frontier.append(dependency)
+    check(
+        "ErdosProblems.Skip.LadderT67" in supported_root_reachable,
+        "the reviewed t ≤ 82 finite-certificate theorem is outside the "
+        "supported-root build closure",
+    )
+    reachable = set([*root_imports, *auxiliary_roots])
+    frontier = list(reachable)
     while frontier:
         current = frontier.pop()
         for dependency in imports_by_id.get(current, []):
             if dependency not in reachable:
                 reachable.add(dependency)
                 frontier.append(dependency)
-    check(reachable == module_id_set,
-          f"machine-readable module graph has nodes unreachable from supported roots: {sorted(module_id_set - reachable)}")
+    check(
+        reachable == module_id_set,
+        "machine-readable module graph has nodes unreachable from supported "
+        f"roots or the validated auxiliary forest: {sorted(module_id_set - reachable)}",
+    )
 
     edge_types = set(machine_paper["argument_graph"]["edge_semantics"])
     for edge in machine_paper["argument_graph"]["edges"]:
@@ -903,21 +1128,35 @@ def main() -> int:
     listed = set(re.findall(r"`(not_[a-z0-9_]+)`", scope))
     check(declared == listed,
           f"SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
-    check("does not prove" in scope,
+    check("does not prove" in flattened(scope),
           "SCOPE.md must state the open boundary in plain language")
 
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
     check(tag in readme, f"README does not state the release tag {tag}")
-    check("does not solve" in readme, "README must state the open boundary in plain language")
+    check("does not solve" in flattened(readme),
+          "README must state the open boundary in plain language")
     check("METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
     leaked_identifier = re.search(r"method_axiom\.|anti_principle\.|principle\.[a-z_]|transition\.[a-z_]", readme)
     check(leaked_identifier is None,
           f"README leaks a methodology machine identifier: {leaked_identifier.group(0) if leaked_identifier else ''}")
     for phrase in README_BANNED_PHRASES:
-        check(phrase not in readme, f"README contains banned drift phrase: {phrase!r}")
-    for status in re.findall(r"\|\s*\*\*([a-z][a-z ]+)\*\*\s*\|", readme):
+        check(phrase not in flattened(readme),
+              f"README contains banned drift phrase: {phrase!r}")
+    # Check only the first column of the canonical Status/Result table. Other
+    # README tables legitimately bold identifiers such as the six problem
+    # numbers, so a document-wide first-column scan produces false failures.
+    # Keep the permissive cell capture: punctuation in an invalid status must
+    # still reach the taxonomy check rather than evade it.
+    status_table = re.search(
+        r"(?ms)^\| Status \| Result \|\n^\|---\|---\|\n"
+        r"(?P<body>(?:^\|.*\n)+)",
+        readme,
+    )
+    check(status_table is not None, "README lost the Status/Result table")
+    status_table_body = status_table.group("body") if status_table else ""
+    for status in re.findall(r"\|\s*\*\*([^*\n]+)\*\*\s*\|", status_table_body):
         check(status in taxonomy,
               f"README status table uses {status!r}, which is not in the taxonomy")
 
@@ -968,11 +1207,14 @@ def main() -> int:
         "scripts/query_corpus.py",
     ):
         check(required in agents, f"AGENTS.md does not route through {required}")
-    check("remain open" in agents, "AGENTS.md must preserve the open-problem boundary")
-    check("proof authority" in agents, "AGENTS.md must state the proof-authority boundary")
-    check("larger ongoing formal-mathematics workflow" in agents,
+    flat_agents = flattened(agents)
+    check("remain open" in flat_agents,
+          "AGENTS.md must preserve the open-problem boundary")
+    check("proof authority" in flat_agents,
+          "AGENTS.md must state the proof-authority boundary")
+    check("larger ongoing formal-mathematics workflow" in flat_agents,
           "AGENTS.md must preserve the public-projection provenance boundary")
-    check("mathematical programme" in agents,
+    check("mathematical programme" in flat_agents,
           "AGENTS.md must expose mathematical programme routes")
 
     architecture_check = subprocess.run(
@@ -998,6 +1240,21 @@ def main() -> int:
         architecture_fixture_check.returncode == 0,
         "newcomer architecture guide fixtures failed: "
         f"{architecture_fixture_check.stdout.strip() or architecture_fixture_check.stderr.strip()}",
+    )
+    agent_navigation_paper_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "check_agent_navigation_paper.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        agent_navigation_paper_check.returncode == 0,
+        "agent-navigation paper failed: "
+        f"{agent_navigation_paper_check.stdout.strip() or agent_navigation_paper_check.stderr.strip()}",
     )
 
     contributing = read(ROOT / "CONTRIBUTING.md")
@@ -1041,6 +1298,143 @@ def main() -> int:
     )
     check(atlas_check.returncode == 0,
           f"declaration atlas drift: {atlas_check.stdout.strip() or atlas_check.stderr.strip()}")
+
+    certificate_probe_check = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "probe_certificate_supply.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(certificate_probe_check.returncode == 0,
+          f"certificate-supply probe drift: {certificate_probe_check.stdout.strip() or certificate_probe_check.stderr.strip()}")
+
+    second_channel_probe_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "probe_second_channel_separation.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(second_channel_probe_check.returncode == 0,
+          f"second-channel separation probe drift: {second_channel_probe_check.stdout.strip() or second_channel_probe_check.stderr.strip()}")
+
+    off_diagonal_roster_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_off_diagonal_certificate_roster.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(off_diagonal_roster_check.returncode == 0,
+          f"off-diagonal certificate roster drift: {off_diagonal_roster_check.stdout.strip() or off_diagonal_roster_check.stderr.strip()}")
+
+    diagonal_depth_roster_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_checked_diagonal_depth_roster.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(diagonal_depth_roster_check.returncode == 0,
+          f"checked diagonal depth roster drift: {diagonal_depth_roster_check.stdout.strip() or diagonal_depth_roster_check.stderr.strip()}")
+
+    # The semantic corpus is what makes "what does this prove" a query rather
+    # than a reread.  Its coverage contract is what stops a barrier from being
+    # described as closing a family of engines while a weaker sibling engine
+    # survives it, which has happened here once already.
+    semantic_build = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "build_semantic_corpus.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(semantic_build.returncode == 0,
+          f"semantic corpus drift: {semantic_build.stdout.strip() or semantic_build.stderr.strip()}")
+
+    semantic_contract = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "check_semantic_corpus.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(semantic_contract.returncode == 0,
+          f"semantic coverage contract: {semantic_contract.stdout.strip() or semantic_contract.stderr.strip()}")
+    semantic_review_check = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "semantic_review.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        semantic_review_check.returncode == 0,
+        "semantic review receipt contract: "
+        f"{semantic_review_check.stdout.strip() or semantic_review_check.stderr.strip()}",
+    )
+    semantic_review_fixtures = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "test_semantic_review.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        semantic_review_fixtures.returncode == 0,
+        "semantic review mutation fixtures: "
+        f"{semantic_review_fixtures.stdout.strip() or semantic_review_fixtures.stderr.strip()}",
+    )
+
+    # The theory lab is the layer that makes predictive claims -- which mechanism
+    # explains a proof, what survives an intervention, whether an explanation
+    # transfers.  Its contract is stricter than the corpus contract because the
+    # failure mode is worse: a plausible mechanism laid over a proof that works
+    # for another reason, or a barrier written up without naming the sibling
+    # engines it leaves alive.
+    lab_build = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "build_theory_lab.py"), "--check"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(lab_build.returncode == 0,
+          f"theory lab drift: {lab_build.stdout.strip() or lab_build.stderr.strip()}")
+
+    lab_contract = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "check_theory_lab.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(lab_contract.returncode == 0,
+          f"theory lab contract: {lab_contract.stdout.strip() or lab_contract.stderr.strip()}")
+    theory_lab = json.loads(read(ROOT / "docs" / "theory_lab.json"))
+    check(
+        theory_lab.get("schema") == "erdos249257-theory-lab/2",
+        "theory lab must use content-addressed schema erdos249257-theory-lab/2",
+    )
+    check(
+        "source_revision" not in theory_lab
+        and theory_lab.get("source_provenance", {}).get("identity_kind")
+        == "content_addressed_input_set",
+        "theory lab retains self-invalidating Git-derived provenance",
+    )
 
     coordinate_check = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "refresh_source_coordinates.py"), "--check"],
@@ -1089,8 +1483,8 @@ def main() -> int:
     )
 
     descriptor = json.loads(read(ROOT / "docs" / "corpus_descriptor.json"))
-    check(descriptor.get("schema") == "erdos249257-corpus-descriptor/4",
-          "corpus descriptor must use schema erdos249257-corpus-descriptor/4")
+    check(descriptor.get("schema") == "erdos249257-corpus-descriptor/5",
+          "corpus descriptor must use schema erdos249257-corpus-descriptor/5")
     check(descriptor.get("release_provenance") == public_projection,
           "corpus descriptor release provenance drifted from docs/claims.json")
     descriptor_path = ROOT / "docs" / "corpus_descriptor.json"
@@ -1225,17 +1619,21 @@ def main() -> int:
     }
     check(orientation.get("editorial_state") == expected_editorial_state,
           "orientation editorial state drifted from publication_assembly")
-    expected_source_revision = {
+    expected_source_provenance = {
         "formal_source_ref": data["release"]["formal_source"]["ref"],
-        "committed_navigation_snapshot": descriptor["identity"][
-            "navigation_snapshot"
-        ]["commit"],
         "main_paper_source_digest": file_digest(
             ROOT / "paper" / "erdos249-257-main-paper.tex"
         ),
+        "navigation_projection_identity": (
+            "content digests in corpus descriptor; no checkout commit embedded"
+        ),
     }
-    check(orientation.get("source_revision") == expected_source_revision,
-          "orientation source revision is older than its canonical claims or paper")
+    check(orientation.get("source_provenance") == expected_source_provenance,
+          "orientation source provenance differs from its canonical claims or paper")
+    check(
+        "navigation_snapshot" not in descriptor.get("identity", {}),
+        "corpus descriptor retains the ambiguous historical navigation snapshot",
+    )
     check(len(orientation_path.read_bytes()) <= 32_000,
           "orientation JSON exceeds the 32 KB bounded first-read budget")
     for target in orientation.get("drilldowns", {}).values():

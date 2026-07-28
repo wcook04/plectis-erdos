@@ -583,6 +583,37 @@ theorem firstHarmonicAnchorDefect_ge_iff_first_harmonic_gap
 
 /-! ## Finite-fibre variance intake -/
 
+/-- Additive real pairwise energy does not by itself force first-harmonic
+phase separation.  At every prescribed scale there is a two-point sample
+whose squared real gap is at least that scale while its exponential chord is
+exactly zero: integer-period aliasing erases the entire gap.  Consequently a
+variance input for real lifts must be supplemented by residue small-ball or
+phase anti-concentration information before it can feed
+`DTWWindowSeparatedPairs`. -/
+theorem exists_large_real_pair_energy_with_zero_first_harmonic_chord
+    (B : ℕ) :
+    ∃ x y : ℝ,
+      (B : ℝ) ≤ (x - y) ^ 2 ∧
+      ‖Complex.exp (((2 * Real.pi * x : ℝ) : ℂ) * Complex.I) -
+          Complex.exp (((2 * Real.pi * y : ℝ) : ℂ) * Complex.I)‖ ^ 2 = 0 := by
+  refine ⟨0, ((B + 1 : ℕ) : ℝ), ?_, ?_⟩
+  · push_cast
+    have hB : (0 : ℝ) ≤ (B : ℝ) := by positivity
+    nlinarith [sq_nonneg (B : ℝ)]
+  · have hexponent :
+        (((2 * Real.pi * (((B + 1 : ℕ) : ℝ)) : ℝ) : ℂ) * Complex.I) =
+          ((B + 1 : ℕ) : ℂ) * (2 * (Real.pi : ℂ) * Complex.I) := by
+      push_cast
+      ring
+    have hperiod :
+        Complex.exp
+            (((2 * Real.pi * (((B + 1 : ℕ) : ℝ)) : ℝ) : ℂ) *
+              Complex.I) = 1 := by
+      rw [hexponent]
+      exact Complex.exp_nat_mul_two_pi_mul_I (B + 1)
+    rw [hperiod]
+    norm_num
+
 /-- Exact finite complex bias--variance identity.  This is kept independent
 of the pivot definitions so an arithmetic producer may first establish
 variance for whatever explicit complex error vector its prime toggles expose. -/
@@ -1766,6 +1797,7 @@ theorem irrational_totient_series_of_naturalPivotTwoModeCancellation
 #print axioms norm_windowFirstExp_sub_tailOrbitFirstExp_lt
 #print axioms windowFirstCos_le_nine_tenths_of_tailOrbitGap
 #print axioms firstHarmonicAnchorDefect_ge_iff_first_harmonic_gap
+#print axioms exists_large_real_pair_energy_with_zero_first_harmonic_chord
 #print axioms sum_pairwise_norm_sq_eq_two_card_mul_centered
 #print axioms card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs
 #print axioms card_div_five_le_sum_anchor_norm_sq_of_pairwise

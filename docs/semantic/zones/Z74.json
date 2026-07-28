@@ -1,0 +1,237 @@
+{
+  "zone_id": "Z74",
+  "title": "Erdős 257 terminal-only bridge: operational feedback, profiled-gap survival, and depths 53–54",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "z74_terminal_only_projection",
+      "label": "Terminal-only lossy projection",
+      "description": "HalfTerminalOnlyStripWitness records one normalized reachable terminal half-carry inside the square-root strip while deliberately forgetting the all-prefix history and cylinder geometry that produced it."
+    },
+    {
+      "id": "z74_two_sheet_hole",
+      "label": "One-hole two-sheet survivor",
+      "description": "An InStripTwoSheetStage covers every strip carry except one hole; selecting between carries 1 and 2 therefore always leaves a reachable terminal state."
+    },
+    {
+      "id": "z74_operational_feedback",
+      "label": "Operational feedback fan-in",
+      "description": "The exact feedback-row producer returns either a next full cylinder or an in-strip two-sheet stage, and both outputs admit the same terminal-only consumer."
+    },
+    {
+      "id": "z74_tracked_parent_survival",
+      "label": "Tracked-parent survival socket",
+      "description": "TrackedParentSurvives asserts that at least one next-strip carry has its canonical parent in the lower or upper live sheet of a ready profiled gap."
+    },
+    {
+      "id": "z74_singleton_gap",
+      "label": "Binary-adjacent singleton gap",
+      "description": "A profiled gap whose endpoints coincide and whose two retained prefixes are consecutive cannot swallow every canonical parent for the next strip."
+    },
+    {
+      "id": "z74_finite_witness_boundary",
+      "label": "Finite terminal-witness boundary",
+      "description": "The certified witnesses through depths 51–54 form a finite chain; they do not supply the cofinal family of stages required by the existing HALF export."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "an_in_strip_two_sheet_stage_always_retains_a_terminal_witness",
+      "canonical_statement": "Every InStripTwoSheetStage K N yields a HalfTerminalOnlyStripWitness N. Its unique missing carry cannot be both 1 and 2, and whichever of those two carries survives lies in every half strip and is reachable in the retained two-sheet object.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "z74_terminal_only_projection",
+        "z74_two_sheet_hole"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Pigeonhole choice between carries 1 and 2 followed by InStripTwoSheetStage.halfTerminalReachable_of_ne_hole and the terminal-only forgetting map.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A project-specific projection from the operational two-sheet interface; no mathematical novelty claim is made.",
+      "scope_caveat": "This is a same-depth witness extraction. It neither fills the missing carry nor constructs a next cylinder stage, an iterative continuation, a cofinal witness family, or a set whose Mersenne support series is 1/2.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "InStripTwoSheetStage.halfTerminalOnlyStripWitness",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 97
+        }
+      ]
+    },
+    {
+      "id": "operational_feedback_preserves_a_terminal_witness_without_the_legacy_width_bound",
+      "canonical_statement": "If S is a CylinderStage K N with 1 <= N, K+1 <= N, and N+1 = 2(K+1), then HalfTerminalOnlyStripWitness (N+1) holds. The operational feedback dichotomy is consumed directly: a full-cylinder output is projected by the ordinary cylinder consumer, while an in-strip two-sheet output is projected by its unavoidable surviving carry. Unlike the legacy protected-seam route, no hypothesis 27 <= halfStripBound (N+1) is required.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "z74_terminal_only_projection",
+        "z74_two_sheet_hole",
+        "z74_operational_feedback"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Case analysis on CylinderStage.feedbackAdvance_or_inStripTwoSheet, followed by the full-cylinder projection in one branch and the two-sheet survivor projection in the other.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A project-specific consumer theorem that sharpens the older protected-seam interface by using the exact operational outputs; no mathematical novelty claim is made.",
+      "scope_caveat": "The theorem produces only a terminal witness at the next row. In the two-sheet branch it does not recover a full CylinderStage, so it gives no unconditional iteration and no cofinal stage or witness supply.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "CylinderStage.halfTerminalOnlyStripWitness_after_operational_feedback",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 118
+        }
+      ]
+    },
+    {
+      "id": "tracked_parent_survival_realises_a_next_terminal_witness",
+      "canonical_statement": "For a ready ProfiledGapStage M N with 1 <= N, the project-specific tracked-next-parent survival predicate, evaluated at the actual next-row coefficients of the lower and upper prefixes, implies HalfTerminalOnlyStripWitness (N+1). In either surviving-sheet case the proof selects the certified parent word, appends the parity bit dictated by the exact parent recurrence, obtains a reachable successor state, and then forgets it to the terminal-only interface.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "z74_terminal_only_projection",
+        "z74_tracked_parent_survival"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Ready determines the literal per-sheet coefficient profile; TrackedParentSurvives supplies a lower- or upper-sheet canonical parent; halfTerminalReachable_succ_of_admissibleParent constructs the successor witness.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A proof-bearing transport from the corpus's arithmetic survival socket to its terminal-state consumer; no mathematical novelty claim is made.",
+      "scope_caveat": "Tracked-parent survival is a local theorem hypothesis, not a proved invariant for arbitrary profiled gaps. This result does not advance the whole gap object, bound future gap widths, or establish survival at unboundedly many rows.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ProfiledGapStage.halfTerminalOnlyStripWitness_after_trackedParentSurvives",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 160
+        }
+      ]
+    },
+    {
+      "id": "a_binary_adjacent_singleton_gap_cannot_kill_the_next_terminal_witness",
+      "canonical_statement": "If a ready ProfiledGapStage M N at N >= 1 has adjacent binary prefixes and gapLo = gapHi, then HalfTerminalOnlyStripWitness (N+1) holds. The singleton-gap no-swallow theorem supplies tracked-parent survival automatically, which the proof-bearing parent consumer converts into an actual admissible successor witness.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z74_terminal_only_projection",
+        "z74_tracked_parent_survival",
+        "z74_singleton_gap"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "ProfiledGapStage.trackedNextParentSurvives_of_singletonGap followed by the tracked-parent terminal consumer.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "An immediate project-local specialization of the tracked-parent consumer using the already formalized singleton-gap survival theorem.",
+      "scope_caveat": "The conclusion is local to one successor row and assumes readiness, prefix adjacency, and a singleton gap. It says nothing about wider gaps, preservation of the singleton condition, repeated continuation, or cofinal stage production.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ProfiledGapStage.halfTerminalOnlyStripWitness_after_singletonGap",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 217
+        }
+      ]
+    },
+    {
+      "id": "certified_terminal_witnesses_extend_the_finite_chain_to_depths_53_and_54",
+      "canonical_statement": "There are concrete HalfTerminalOnlyStripWitness instances at depths 53 and 54. Depth 53 is obtained by projecting the ordinary successor fullCylinderStage53, while depth 54 consumes both possible outputs at the next feedback boundary through the operational feedback theorem. Together with the already authored depth-51 and depth-52 instances, these results extend the certified finite witness chain exactly through 54.",
+      "logical_class": "finite_instance",
+      "problem": "257",
+      "concepts": [
+        "z74_terminal_only_projection",
+        "z74_operational_feedback",
+        "z74_finite_witness_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Direct projection of fullCylinderStage53 at depth 53 and exact numerical specialization of the operational feedback consumer at depth 54.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Concrete specializations of the already formalized stage construction and terminal consumers; no content beyond the certified finite instances is claimed.",
+      "scope_caveat": "Four consecutive witnesses at depths 51–54 are still only a finite chain. These declarations do not prove a CylinderStage at depth 54, a stage or witness beyond 54, cofinal nonempty full-cylinder stages, equivalence with O3 or O4, or the existence of an infinite positive Mersenne support summing to 1/2.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "fullCylinderStage53_halfTerminalOnlyStripWitness",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 250
+        },
+        {
+          "declaration": "fullCylinderStage54_halfTerminalOnlyStripWitness",
+          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+          "line": 257
+        }
+      ]
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "operational_feedback_preserves_a_terminal_witness_without_the_legacy_width_bound",
+      "to": "an_in_strip_two_sheet_stage_always_retains_a_terminal_witness",
+      "relation": "generated_by",
+      "basis": "The operational feedback consumer invokes the two-sheet projection in exactly its non-cylinder branch; its other branch uses the older full-cylinder projection already owned by Z16."
+    },
+    {
+      "from": "a_binary_adjacent_singleton_gap_cannot_kill_the_next_terminal_witness",
+      "to": "tracked_parent_survival_realises_a_next_terminal_witness",
+      "relation": "specialises",
+      "basis": "Adjacent singleton gaps furnish the tracked-parent-survival hypothesis and then apply the general proof-bearing consumer."
+    },
+    {
+      "from": "tracked_parent_survival_realises_a_next_terminal_witness",
+      "to": "an_in_strip_two_sheet_stage_always_retains_a_terminal_witness",
+      "relation": "complements",
+      "basis": "Both theorems forget a richer branch object to the same terminal-only interface, but one consumes a profiled gap plus a surviving canonical parent while the other consumes a one-hole two-sheet stage directly."
+    },
+    {
+      "from": "certified_terminal_witnesses_extend_the_finite_chain_to_depths_53_and_54",
+      "to": "operational_feedback_preserves_a_terminal_witness_without_the_legacy_width_bound",
+      "relation": "finite_instance_of",
+      "basis": "The depth-54 declaration is the exact numerical specialization of the operational feedback consumer to fullCylinderStage53; the paired depth-53 declaration is the immediately preceding ordinary full-cylinder projection."
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "InStripTwoSheetStage.halfTerminalOnlyStripWitness",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 97,
+      "role": "statement",
+      "statement_node": "an_in_strip_two_sheet_stage_always_retains_a_terminal_witness"
+    },
+    {
+      "declaration": "CylinderStage.halfTerminalOnlyStripWitness_after_operational_feedback",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 118,
+      "role": "statement",
+      "statement_node": "operational_feedback_preserves_a_terminal_witness_without_the_legacy_width_bound"
+    },
+    {
+      "declaration": "ProfiledGapStage.halfTerminalOnlyStripWitness_after_trackedParentSurvives",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 160,
+      "role": "statement",
+      "statement_node": "tracked_parent_survival_realises_a_next_terminal_witness"
+    },
+    {
+      "declaration": "ProfiledGapStage.halfTerminalOnlyStripWitness_after_singletonGap",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 217,
+      "role": "statement",
+      "statement_node": "a_binary_adjacent_singleton_gap_cannot_kill_the_next_terminal_witness"
+    },
+    {
+      "declaration": "fullCylinderStage53_halfTerminalOnlyStripWitness",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 250,
+      "role": "finite_instance",
+      "statement_node": "certified_terminal_witnesses_extend_the_finite_chain_to_depths_53_and_54"
+    },
+    {
+      "declaration": "fullCylinderStage54_halfTerminalOnlyStripWitness",
+      "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
+      "line": 257,
+      "role": "finite_instance",
+      "statement_node": "certified_terminal_witnesses_extend_the_finite_chain_to_depths_53_and_54"
+    }
+  ]
+}

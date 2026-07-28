@@ -1,0 +1,178 @@
+{
+  "zone_id": "Z56",
+  "title": "Global Boolean-Mobius repair: frozen coordinates, open feasibility, and endpoint approximation",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "z56_frozen_diagonal_trajectory",
+      "label": "frozen diagonal repair trajectory",
+      "note": "A trajectory whose coordinate d is unchanged after endpoint 2d."
+    },
+    {
+      "id": "z56_endpoint_exponential_producer",
+      "label": "endpoint exponential producer",
+      "note": "The named uniform lower-support inequality required to make every local repair integer nonnegative."
+    },
+    {
+      "id": "z56_global_repair_feasibility",
+      "label": "global repair feasibility package",
+      "note": "The four-clause open package combining the exponential producer with word realization, capacity, and exact quotient receipts."
+    },
+    {
+      "id": "z56_exact_row_half_approximation",
+      "label": "exact-row half approximation",
+      "note": "The explicit O(n/2^n) error estimate obtained from an exact endpoint quotient."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "repair_trajectory_coordinates_freeze_at_their_double_endpoint",
+      "canonical_statement": "PROVED STRUCTURAL INVARIANT: for every repair trajectory T, coordinate d, and endpoint n, if 2*d <= n, then T.bit n d = T.bit (2*d) d.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z56_frozen_diagonal_trajectory"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Natural-number induction from the trajectory field frozen_step.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Elementary structural invariant of the project-specific trajectory interface; no novelty claim is made.",
+      "scope_caveat": "The theorem proves stability for any supplied trajectory. It does not construct a trajectory satisfying an arithmetic receipt or the feasibility predicate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "BooleanMobiusGlobalRepairTrajectory.bit_stable",
+          "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+          "line": 82
+        }
+      ]
+    },
+    {
+      "id": "endpoint_exponential_bound_is_the_named_open_uniform_producer",
+      "canonical_statement": "OPEN PREDICATE: GlobalEndpointExponentialBound T requires, uniformly for every n >= 2, the lower-support inequality 2^(endpointDivisorContribution D n - 1) - 1 <= localBinarySuffix D 1 (n - 1), where D = globalRepairLowerSupport T.bit n.",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "concepts": [
+        "z56_endpoint_exponential_producer"
+      ],
+      "open_antecedents": [
+        "A proof that the displayed endpoint inequality holds for one trajectory T at every endpoint n >= 2; the module defines this obligation but proves no such uniform inhabitant."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Named packaging of the lower-support inequality consumed by globalRepairInteger_nonneg.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific open producer interface; no priority claim is made.",
+      "scope_caveat": "The definition is Lean-checked, but the uniform inequality is not proved or promoted from finite observations. It is only one clause of the larger feasibility package.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "GlobalEndpointExponentialBound",
+          "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+          "line": 139
+        }
+      ]
+    },
+    {
+      "id": "global_repair_feasibility_is_a_four_clause_open_receipt_bundle",
+      "canonical_statement": "OPEN FEASIBILITY PACKAGE: GlobalBooleanMobiusRepairFeasible T is the conjunction of the endpoint exponential bound, exact signed-dyadic realization of every upper word, the upper-word capacity inequality, and localPrefixQuotient (globalRepairStageSupport T.bit n) n = 2^(n-1)-1 for every n >= 2.",
+      "logical_class": "infrastructure",
+      "problem": "257",
+      "concepts": [
+        "z56_frozen_diagonal_trajectory",
+        "z56_endpoint_exponential_producer",
+        "z56_global_repair_feasibility"
+      ],
+      "open_antecedents": [
+        "A trajectory T satisfying GlobalEndpointExponentialBound T.",
+        "Uniform proofs of the word-value, capacity, and exact-quotient clauses for the same trajectory T."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "An explicit conjunction retaining all finite producer and audit obligations.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific fallback consumer interface; no novelty claim is made.",
+      "scope_caveat": "Defining the package does not prove that such a trajectory exists. It is a sufficient fallback interface, not an equivalence with Erdos #257 and not a proved counterexample.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "GlobalBooleanMobiusRepairFeasible",
+          "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+          "line": 174
+        }
+      ]
+    },
+    {
+      "id": "exact_endpoint_quotient_gives_an_explicit_half_error_bound",
+      "canonical_statement": "PROVED QUANTITATIVE ESTIMATE: if n >= 2, every d in D lies in [2,n], and localPrefixQuotient D n = 2^(n-1)-1, then the real absolute difference between localMersennePrefixValue D and 1/2 is at most (n+1)/2^n.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z56_exact_row_half_approximation"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The scaled prefix identity, nonnegative fractional mass, the bound of fractional mass by D.card, and D.card <= n+1.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary quantitative consequence of the exact quotient identity.",
+      "scope_caveat": "The exact quotient is a theorem hypothesis. The result proves neither a supply of exact rows nor coherence, monotonicity, convergence, or membership of 1/2; rows may overshoot or undershoot.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "abs_localMersennePrefixValue_sub_half_le",
+          "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+          "line": 243
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "BooleanMobiusGlobalRepairTrajectory.bit_stable",
+      "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+      "line": 82,
+      "role": "statement",
+      "statement_node": "repair_trajectory_coordinates_freeze_at_their_double_endpoint"
+    },
+    {
+      "declaration": "GlobalEndpointExponentialBound",
+      "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+      "line": 139,
+      "role": "concept",
+      "statement_node": "endpoint_exponential_bound_is_the_named_open_uniform_producer"
+    },
+    {
+      "declaration": "GlobalBooleanMobiusRepairFeasible",
+      "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+      "line": 174,
+      "role": "concept",
+      "statement_node": "global_repair_feasibility_is_a_four_clause_open_receipt_bundle"
+    },
+    {
+      "declaration": "abs_localMersennePrefixValue_sub_half_le",
+      "module": "Erdos249257/BooleanMobiusGlobalRepair.lean",
+      "line": 243,
+      "role": "statement",
+      "statement_node": "exact_endpoint_quotient_gives_an_explicit_half_error_bound"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "global_repair_feasibility_is_a_four_clause_open_receipt_bundle",
+      "to": "endpoint_exponential_bound_is_the_named_open_uniform_producer",
+      "relation": "depends_on_open",
+      "basis": "The exponential bound is literally the first conjunct of feasibility, and none of the other three clauses discharges it."
+    },
+    {
+      "from": "global_repair_feasibility_is_a_four_clause_open_receipt_bundle",
+      "to": "repair_trajectory_coordinates_freeze_at_their_double_endpoint",
+      "relation": "complements",
+      "basis": "Coordinate freezing is automatic structural information carried by any trajectory, while feasibility adds the unresolved arithmetic receipts."
+    },
+    {
+      "from": "exact_endpoint_quotient_gives_an_explicit_half_error_bound",
+      "to": "global_repair_feasibility_is_a_four_clause_open_receipt_bundle",
+      "relation": "complements",
+      "basis": "The approximation theorem is independent and local; feasibility's fourth clause supplies its exact-quotient hypothesis when instantiated on a stage support."
+    }
+  ]
+}

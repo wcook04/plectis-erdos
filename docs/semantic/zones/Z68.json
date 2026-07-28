@@ -1,0 +1,322 @@
+{
+  "zone_id": "Z68",
+  "title": "Exact local Mersenne rows: producer coordinates, skipped-core transport, and the one-bit capacity boundary",
+  "problem": "257",
+  "concepts": [
+    {
+      "id": "z68_exact_local_mersenne_half_row",
+      "label": "exact local Mersenne half row",
+      "note": "A finite support whose integral local Mersenne quotient hits the half-scale target exactly."
+    },
+    {
+      "id": "z68_cofinal_exact_row_supply",
+      "label": "cofinal exact-row supply",
+      "note": "The open supply of exact rows at arbitrarily large endpoints, without compatibility between witnesses."
+    },
+    {
+      "id": "z68_geometric_quotient_coordinate",
+      "label": "division-free geometric quotient coordinate",
+      "note": "A finite shifted geometric-word representation of the floor quotient by a Mersenne denominator."
+    },
+    {
+      "id": "z68_skipped_core_transport",
+      "label": "skipped-core exact-row transport",
+      "note": "The finite construction that turns a below-half core crossed by the next weight into an exact row at endpoint 2c-2."
+    },
+    {
+      "id": "z68_first_crossing_coordinate",
+      "label": "first-crossing coordinate",
+      "note": "The selected ranks at which an inclusive ordered prefix first lies above one half."
+    },
+    {
+      "id": "z68_rank_two_forcing",
+      "label": "rank-two forcing",
+      "note": "The fact that every nontrivial exact quotient-row witness necessarily contains rank two."
+    },
+    {
+      "id": "z68_one_bit_capacity_boundary",
+      "label": "one-bit skipped-core capacity boundary",
+      "note": "The unconditional c-1-bit upper-half bound and the unresolved sharper c-2-bit threshold."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence",
+      "canonical_statement": "ExactLocalMersenneHalfRow n means that some finite support D contained in the ranks from 2 through n has localPrefixQuotient D n exactly equal to 2^(n-1)-1. CofinalExactLocalMersenneHalfRows asks for such an endpoint beyond every bound, with no compatibility condition between the witnessing supports. The named finite seed support is exactRowSixSupport = {2,3,6}.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "z68_exact_local_mersenne_half_row",
+        "z68_cofinal_exact_row_supply"
+      ],
+      "open_antecedents": [
+        "CofinalExactLocalMersenneHalfRows -- the definition names the open cofinal supply; this node does not prove it"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Integral floor-quotient equality at one finite endpoint, followed by an incoherent cofinal existential quantifier over endpoints.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Development-internal producer vocabulary and its named finite seed; no novelty claim is made.",
+      "scope_caveat": "The definitions prove neither the existence of any exact row nor cofinality. The named set {2,3,6} is only the support coordinate; Z29 separately owns the checked theorem that it is an exact endpoint-six row. A single seed cannot imply the cofinal predicate or half membership.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "ExactLocalMersenneHalfRow",
+          "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+          "line": 31
+        },
+        {
+          "declaration": "CofinalExactLocalMersenneHalfRows",
+          "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+          "line": 38
+        },
+        {
+          "declaration": "exactRowSixSupport",
+          "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+          "line": 14
+        }
+      ]
+    },
+    {
+      "id": "sharp_capacity_has_a_division_free_geometric_normal_form",
+      "canonical_statement": "For d at least 2, localMersenneQuotient M d is exactly 2^(M mod d) times the finite geometric sum of (2^d)^j for j < M/d. Consequently, for a below-half core D supported in [2,c), the sharp suffix-capacity inequality localBinarySuffix D 1 (2c-2) < 2^(c-2) is equivalent to the inserted support's division-free geometric prefix quotient reaching the integral half target 2^((2c-2)-1).",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "z68_geometric_quotient_coordinate",
+        "z68_skipped_core_transport",
+        "z68_one_bit_capacity_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Euclidean division of 2^M by 2^d-1 expanded as a shifted finite geometric word, then summed over the inserted support.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A finite geometric-series normalisation of the project-specific quotient and sharp-capacity socket.",
+      "scope_caveat": "This is an exact change of coordinates. It does not establish the sharp capacity inequality for any core, let alone uniformly or cofinally, and therefore does not produce half membership.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersenneQuotient_eq_geometric",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+          "line": 27
+        },
+        {
+          "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric",
+          "module": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+          "line": 196
+        }
+      ]
+    },
+    {
+      "id": "upper_half_mersenne_quotients_are_pure_binary_coins",
+      "canonical_statement": "If 2 <= d <= M and d lies strictly above M/2, then localMersenneQuotient M d is exactly the pure power of two 2^(M-d).",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z68_geometric_quotient_coordinate",
+        "z68_skipped_core_transport"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The Euclidean remainder 2^(M-d) is smaller than 2^d-1 throughout the strict upper half of the endpoint window.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary Mersenne-quotient arithmetic; its semantic value is that an upper support becomes a literal Boolean word.",
+      "scope_caveat": "The theorem is a local quotient identity. It gives no Boolean word, skipped core, exact row, cofinal supply, or irrationality conclusion by itself.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersenneQuotient_eq_two_pow_sub_of_half_lt",
+          "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "id": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row",
+      "canonical_statement": "localMersenneCrossingRanks E is the set of selected ranks c whose inclusive ordered prefix already has Mersenne value above one half. More generally, whenever c >= 4 and D is supported in [2,c), has value below one half, and has deficit smaller than the rank-c Mersenne weight, D can be completed to an ExactLocalMersenneHalfRow at endpoint 2c-2.",
+      "logical_class": "reduction_or_transport",
+      "problem": "257",
+      "concepts": [
+        "z68_exact_local_mersenne_half_row",
+        "z68_skipped_core_transport",
+        "z68_first_crossing_coordinate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The skipped-core deficit is encoded as a Boolean word in the pure upper-half quotient window and adjoined to the old support.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "A Lean-checked local construction in the corpus's exact-row programme; no external priority or novelty claim is made.",
+      "scope_caveat": "The theorem produces one finite exact row from one supplied crossing core. It does not prove that such cores occur cofinally, that the new endpoint exceeds any previous endpoint, or that the resulting supports are compatible.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localMersenneCrossingRanks",
+          "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+          "line": 24
+        },
+        {
+          "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCore",
+          "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+          "line": 197
+        }
+      ]
+    },
+    {
+      "id": "every_nontrivial_exact_quotient_row_forces_rank_two",
+      "canonical_statement": "For every endpoint n >= 3 and every support D contained in [2,n], if localPrefixQuotient D n = 2^(n-1)-1, then rank 2 belongs to D.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z68_exact_local_mersenne_half_row",
+        "z68_rank_two_forcing"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Omitting rank two bounds the support value by the strict tail below 1/3, while the exact scaled quotient target is at least 2^n/3.",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "An elementary but load-bearing rigidity theorem for the exact-row witness space; no novelty claim is made.",
+      "scope_caveat": "Rank-two membership removes one side condition from later extension arguments. It neither determines the remaining support nor supplies exact rows at any endpoint.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_mem_of_exact_localMersenneQuotient",
+          "module": "Erdos249257/BooleanMobiusExactRowRankTwo.lean",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "skipped_cores_fit_the_loose_upper_window_but_not_the_sharp_window",
+      "canonical_statement": "If c >= 4, D is supported in [2,c), its value is below one half, and its deficit is smaller than the rank-c Mersenne weight, then localBinarySuffix D 1 (2c-2) is strictly less than 2^(c-1). This is a proved c-1-bit upper-half capacity bound; it does not establish the sharper c-2-bit inequality required by the strict separated repair socket.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "z68_skipped_core_transport",
+        "z68_one_bit_capacity_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The scaled deficit contributes less than 2^(c-2)+1, and the fractional residue mass is bounded by |D| <= c-2 <= 2^(c-2).",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "A uniform Lean-checked bound whose significance is the exact remaining one-bit capacity gap; no external novelty claim is made.",
+      "scope_caveat": "The theorem leaves the possible band from 2^(c-2) through the proved c-1-bit ceiling unresolved. It therefore cannot discharge the sharp capacity socket, strict support separation, cofinal exact rows, or half membership.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "localBinarySuffix_two_mul_sub_two_lt_upperHalfCapacity",
+          "module": "Erdos249257/BooleanMobiusSkippedCoreExactRow.lean",
+          "line": 123
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "ExactLocalMersenneHalfRow",
+      "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+      "line": 31,
+      "role": "concept",
+      "statement_node": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence"
+    },
+    {
+      "declaration": "CofinalExactLocalMersenneHalfRows",
+      "module": "Erdos249257/BooleanMobiusCofinalExactRows.lean",
+      "line": 38,
+      "role": "concept",
+      "statement_node": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence"
+    },
+    {
+      "declaration": "exactRowSixSupport",
+      "module": "Erdos249257/BooleanMobiusExactRowSeed.lean",
+      "line": 14,
+      "role": "representation",
+      "statement_node": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence"
+    },
+    {
+      "declaration": "localMersenneQuotient_eq_geometric",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+      "line": 27,
+      "role": "statement",
+      "statement_node": "sharp_capacity_has_a_division_free_geometric_normal_form"
+    },
+    {
+      "declaration": "localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff_geometric",
+      "module": "Erdos249257/BooleanMobiusCriticalCapacityGeometric.lean",
+      "line": 196,
+      "role": "statement",
+      "statement_node": "sharp_capacity_has_a_division_free_geometric_normal_form"
+    },
+    {
+      "declaration": "localMersenneQuotient_eq_two_pow_sub_of_half_lt",
+      "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+      "line": 72,
+      "role": "statement",
+      "statement_node": "upper_half_mersenne_quotients_are_pure_binary_coins"
+    },
+    {
+      "declaration": "localMersenneCrossingRanks",
+      "module": "Erdos249257/BooleanMobiusExactRowCrossing.lean",
+      "line": 24,
+      "role": "representation",
+      "statement_node": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row"
+    },
+    {
+      "declaration": "exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCore",
+      "module": "Erdos249257/BooleanMobiusSkipRow.lean",
+      "line": 197,
+      "role": "statement",
+      "statement_node": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row"
+    },
+    {
+      "declaration": "two_mem_of_exact_localMersenneQuotient",
+      "module": "Erdos249257/BooleanMobiusExactRowRankTwo.lean",
+      "line": 23,
+      "role": "statement",
+      "statement_node": "every_nontrivial_exact_quotient_row_forces_rank_two"
+    },
+    {
+      "declaration": "localBinarySuffix_two_mul_sub_two_lt_upperHalfCapacity",
+      "module": "Erdos249257/BooleanMobiusSkippedCoreExactRow.lean",
+      "line": 123,
+      "role": "statement",
+      "statement_node": "skipped_cores_fit_the_loose_upper_window_but_not_the_sharp_window"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row",
+      "to": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence",
+      "relation": "specialises",
+      "basis": "The skipped-core theorem supplies an explicit family of instances of ExactLocalMersenneHalfRow, at endpoints 2c-2, from local crossing data."
+    },
+    {
+      "from": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row",
+      "to": "upper_half_mersenne_quotients_are_pure_binary_coins",
+      "relation": "generated_by",
+      "basis": "The exact-row adapter encodes the missing quotient as a Boolean word because every selected rank in its upper window contributes the pure coin 2^(M-d)."
+    },
+    {
+      "from": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row",
+      "to": "skipped_cores_fit_the_loose_upper_window_but_not_the_sharp_window",
+      "relation": "generated_by",
+      "basis": "The proved c-1-bit capacity bound ensures that the skipped-core deficit fits in the full upper-half Boolean window used by the exact-row construction."
+    },
+    {
+      "from": "every_nontrivial_exact_quotient_row_forces_rank_two",
+      "to": "exact_rows_are_floor_quotient_hits_and_cofinality_requires_no_witness_coherence",
+      "relation": "complements",
+      "basis": "The definition leaves the witness support existential, while rank-two forcing proves that every witness at an endpoint at least three contains the same mandatory rank."
+    },
+    {
+      "from": "skipped_cores_fit_the_loose_upper_window_but_not_the_sharp_window",
+      "to": "sharp_capacity_has_a_division_free_geometric_normal_form",
+      "relation": "barrier_for",
+      "basis": "The unconditional theorem reaches only the threshold 2^(c-1), whereas the geometric equivalence exposes the strict separated-repair threshold 2^(c-2); the intervening one-bit band is not ruled out."
+    },
+    {
+      "from": "sharp_capacity_has_a_division_free_geometric_normal_form",
+      "to": "a_first_crossing_core_transports_to_an_exact_even_endpoint_row",
+      "relation": "complements",
+      "basis": "The skipped-core transport constructs a bare exact row using the full c-1-bit upper window; the sharp geometric coordinate records the stronger c-2-bit condition used elsewhere to obtain strict support separation."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+import ErdosProblems.Lift.AngleA2
+
+open ErdosProblems.Lift.AngleA2
+
+#print axioms windowDiscrepancy_head_peel
+#print axioms windowDiscrepancy_emod_truncate
+#print axioms two_pow_dvd_windowDiscrepancy_iff
+#print axioms certifiedKill_base_descent
+#print axioms certifiedKill_of_window_subset
+#print axioms exists_certifiedKill_of_base_le
+#print axioms exists_certifiedKill_diagonal_of_ray
+#print axioms lift_target_of_ray_cell
+#print axioms irrational_totient_series_of_lcm_ray_certificate_supply
+#print axioms tail_diff_int_of_base_le
+#print axioms exists_diagonalKill_antitone
+#print axioms diagonalKill_cofinal_iff_all
+#print axioms base_descent_converse_fails
+#print axioms certifiedKill_five_zero_twentyeight
+#print axioms certifiedKill_of_two_pow_dvd
+#print axioms certifiedKill_of_far_end_valuation
+#print axioms ray_coverage_card_le
+#print axioms window_letter_dilation
+#print axioms window_letter_dilation_at
+#print axioms ray_coverage_at_67

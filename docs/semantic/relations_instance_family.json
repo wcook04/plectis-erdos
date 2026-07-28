@@ -1,0 +1,1145 @@
+{
+  "lens": "instance_family",
+  "comment": "Cross-zone edges only; intra-zone edges live in the zone files. finite_instance_of: a finite verified computation instantiates an infinite family, i.e. it realises at bounded parameters exactly the predicate that family quantifies without bound. depends_on_open: the target is the CLOSEST EXISTING node bearing on the source's named open antecedent - either a producer that realises it only at bounded parameters, or the node that proves the antecedent equivalent to a named open endpoint, so that no producer weaker than the open problem can exist. The basis says which; a depends_on_open edge is never a claim that the antecedent is discharged. Conditional nodes whose antecedent has no producer anywhere are listed under no_producer rather than given a spurious edge. No edge here records Lean proof dependency.",
+  "edges": [
+    {
+      "from": "certified_kill_fixtures",
+      "to": "reduction_pointwise_certificate_supply",
+      "relation": "finite_instance_of",
+      "basis": "the fixture kills certifiedKill h 12 16 for h<=8 and certifiedKill h 14 9 for h<=16 are cells of the same predicate the pointwise supply quantifies as 'for every h and every N0 some N>=N0 with a firing depth'; only the two bases N=12,14 are realised.",
+      "confidence": "high"
+    },
+    {
+      "from": "certified_kill_fixtures",
+      "to": "reduction_lcm_diagonal_supply",
+      "relation": "finite_instance_of",
+      "basis": "the lcm-diagonal cells killed for t<=6 and at t=7,8 are literally certifiedKill (periodLcm t) (periodLcm t) L, the decidable predicate P t whose cofinal truth is the diagonal supply hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "certified_kill_fixtures",
+      "to": "reduction_lcm_cone_supply",
+      "relation": "finite_instance_of",
+      "basis": "the three killed lcm-cone cells are instances of certifiedKill (m*periodLcm t) (q*periodLcm t) L, the annihilator the two-multiplier cone supply asks for at arbitrarily large scale.",
+      "confidence": "high"
+    },
+    {
+      "from": "certified_kill_fixtures",
+      "to": "reduction_cone_nonflat_menu_supply",
+      "relation": "finite_instance_of",
+      "basis": "the three certified cone non-flatness menus are firing coneNonflatCert (periodLcm t) L Q rows, the exact object the menu supply requires at arbitrarily large t.",
+      "confidence": "high"
+    },
+    {
+      "from": "engine_strength_separations",
+      "to": "reduction_cone_nonflat_menu_supply",
+      "relation": "finite_instance_of",
+      "basis": "the recorded three-vertex menu that fires where every two-vertex sub-menu fails is a firing coneNonflatCert instance at one cell of the menu supply family, and it also shows that family is not exhausted by its two-vertex sub-cells.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_kill_t29",
+      "to": "reduction_lcm_diagonal_supply",
+      "relation": "finite_instance_of",
+      "basis": "the node's own statement is certifiedKill (periodLcm 29) (periodLcm 29) 45 at H = 2329089562800; that is one value of t of the single N-indexed predicate whose cofinal truth is this reduction's unproved supply hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_kill_t29",
+      "to": "erdos249_period_kill_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the restatement enumerates 'kills at the lcm diagonal point N = lcm(1..t)' as one of its four supply forms; this kill is that predicate evaluated at the single scale t = 29.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_kill_t31",
+      "to": "reduction_lcm_diagonal_supply",
+      "relation": "finite_instance_of",
+      "basis": "the node's own statement is certifiedKill (periodLcm 31) (periodLcm 31) 49 at H = 72201776446800; that is one value of t of the single N-indexed predicate whose cofinal truth is this reduction's unproved supply hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_kill_t31",
+      "to": "erdos249_period_kill_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the restatement enumerates 'kills at the lcm diagonal point N = lcm(1..t)' as one of its four supply forms; this kill is that predicate evaluated at the single scale t = 31.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_kill_t37",
+      "to": "reduction_lcm_diagonal_supply",
+      "relation": "finite_instance_of",
+      "basis": "the node's own statement is certifiedKill (periodLcm 37) (periodLcm 37) 56 at H = 5342931457063200; that is one value of t of the single N-indexed predicate whose cofinal truth is this reduction's unproved supply hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_kill_t37",
+      "to": "erdos249_period_kill_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the restatement enumerates 'kills at the lcm diagonal point N = lcm(1..t)' as one of its four supply forms; this kill is that predicate evaluated at the single scale t = 37.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_pincer_kill_t41",
+      "to": "reduction_lcm_diagonal_supply",
+      "relation": "finite_instance_of",
+      "basis": "the node's own statement is certifiedKill (periodLcm 41) (periodLcm 41) 61 at H = 219060189739591200; that is one value of t of the single N-indexed predicate whose cofinal truth is this reduction's unproved supply hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_pincer_kill_t41",
+      "to": "erdos249_period_kill_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the restatement enumerates 'kills at the lcm diagonal point N = lcm(1..t)' as one of its four supply forms; this kill is that predicate evaluated at the single scale t = 41.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_pincer_kill_t43",
+      "to": "reduction_lcm_diagonal_supply",
+      "relation": "finite_instance_of",
+      "basis": "the node's own statement is certifiedKill (periodLcm 43) (periodLcm 43) 66 at H = 9419588158802421600; that is one value of t of the single N-indexed predicate whose cofinal truth is this reduction's unproved supply hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_pincer_kill_t43",
+      "to": "erdos249_period_kill_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the restatement enumerates 'kills at the lcm diagonal point N = lcm(1..t)' as one of its four supply forms; this kill is that predicate evaluated at the single scale t = 43.",
+      "confidence": "high"
+    },
+    {
+      "from": "diagonal_pincer_kill_t43",
+      "to": "endpoint_certificate_depth_floor",
+      "relation": "finite_instance_of",
+      "basis": "the node's canonical statement carries the floor arithmetic at H = lcm(1..43): 2*(N+h+L+2) < 2^L fails at L=65 and holds at L=66, an instance of the universal depth-floor inequality; recorded inside the node as a reviewed arithmetic check, not as a separate Lean declaration.",
+      "confidence": "medium"
+    },
+    {
+      "from": "finite_kill_deposits",
+      "to": "erdos249_period_kill_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the deposited endpoint kills (h<=8 at (12,16), h<=16 at (14,9)), the survivor kill (1,12,7) and the lcm-diagonal kills at t<=8 are instances of three of the four supply forms this restatement quantifies cofinally.",
+      "confidence": "high"
+    },
+    {
+      "from": "finite_kill_deposits",
+      "to": "erdos249_cone_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the off-diagonal cone cells (t,q,m) = (2,3,1), (3,2,2), (3,1,3) and the rank-2 kill at (1,8,9) are firing instances of the certified-annihilator and rank-two clauses of this cone supply.",
+      "confidence": "high"
+    },
+    {
+      "from": "finite_kill_deposits",
+      "to": "erdos249_cone_nonflat_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the menu refutations at (t,Q,L) = (1,[1,2,3],5), (2,[1,2,3,4],5), (3,[1,2,3],6) are firing vertex menus, the object whose cofinal existence is this restatement's sole hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "gap_denominator_rungs",
+      "to": "erdos249_gap_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "the K=120 and K=240 windows certify the gap inequality for every denominator q up to 2.48e17 and 7.96e34 respectively; the supply asks for a window at EVERY precision q, so the rungs are its bounded-q instance, and the recorded sharpness (the mediant denominator b+d is the first failure) shows those two windows cannot be pushed further.",
+      "confidence": "high"
+    },
+    {
+      "from": "t_seven_finite_full_target_miss",
+      "to": "erdos249_cone_supply_restatement",
+      "relation": "finite_instance_of",
+      "basis": "by exact_full_target_pincer a full-target miss at height t is exactly non-integrality of the LCM-diagonal tail difference at t, which is this node's second supply clause ('diagonal non-integrality supply'); the t=7 miss is that clause at one scale.",
+      "confidence": "high"
+    },
+    {
+      "from": "t_seven_finite_full_target_miss",
+      "to": "reduction_cone_nonflat_menu_supply",
+      "relation": "finite_instance_of",
+      "basis": "one of the three routes is the depth-13 two-vertex projection certificate, and two_vertex_certificate_forces_full_target_miss identifies the [1,2] menu with the generic cone non-flatness certificate; so this is a firing coneNonflatCert (periodLcm 7) 13 [1,2] cell of the menu supply.",
+      "confidence": "high"
+    },
+    {
+      "from": "support23_period_six_carry_fixture",
+      "to": "rationality_iff_tempered_orbit",
+      "relation": "finite_instance_of",
+      "basis": "the exhibited period-six orbit 10,20,19,17,13,26 with all differences divisible by 21 is a concrete tempered integer carry orbit with multiplier v=21 for c = supportCoeff {2,3}, realising the right-hand side of the equivalence at the rational value 10/21.",
+      "confidence": "high"
+    },
+    {
+      "from": "support23_period_six_carry_fixture",
+      "to": "finite_period_noncollapse",
+      "relation": "finite_instance_of",
+      "basis": "the fixture records reduced denominator 21 for the finite support {2,3} with carry orbit of exact period 6 = lcm{2,3}: the multiplicative order of 2 modulo the reduced denominator equals the lcm of the exponent set, at one finite F.",
+      "confidence": "high"
+    },
+    {
+      "from": "dyadic_prefix_fixtures",
+      "to": "finite_period_noncollapse",
+      "relation": "finite_instance_of",
+      "basis": "both fixtures instantiate the sharp order statement: order 6 = lcm{2,3} at reduced denominator 21, and order 42 = lcm{2,3,6,7,14} at reduced denominator 344043.",
+      "confidence": "high"
+    },
+    {
+      "from": "dyadic_prefix_fixtures",
+      "to": "rational_denominator_bridge",
+      "relation": "finite_instance_of",
+      "basis": "the reduced sums 10/21 and 172021/344043 are Rat denominators of finite Mersenne partial sums, exhibiting in two cases what the bridge asserts in general (odd, coprime to 2, dividing 2^lcm - 1).",
+      "confidence": "medium"
+    },
+    {
+      "from": "concrete_period_noncollapse_instances",
+      "to": "finite_fragment_residual_transport",
+      "relation": "finite_instance_of",
+      "basis": "the transport's exact-period clause says a removed finite fragment F leaves a rational with odd reduced denominator whose order of 2 is exactly lcm F; the fixtures verify that at F = {2},{6},{10},{30} with denominators 3, 63, 1023 and 2^30-1 and orders 2, 6, 10, 30.",
+      "confidence": "high"
+    },
+    {
+      "from": "half_orbit_exact_rational_fixtures",
+      "to": "finite_fragment_residual_transport",
+      "relation": "finite_instance_of",
+      "basis": "the exact residuals 1/2 - sum over {2,3,6,7} = 1/16002 and over {2,3,6,7,14} = 1/688086 are two instances of subtracting the exact rational finite Mersenne sum of a fragment F from a value, with the odd reduced denominators the transport predicts.",
+      "confidence": "medium"
+    },
+    {
+      "from": "row_fourteen_late_base_computation",
+      "to": "forced_seam_ranks_two_three_six",
+      "relation": "finite_instance_of",
+      "basis": "the certified row-14 greedy word [T,T,F,F,T,T,F,F,F,F,F,F] over ranks 2..13 has ranks 2 and 3 taken, 4 and 5 skipped and 6 taken - the bottom forcing law evaluated at s = 14.",
+      "confidence": "high"
+    },
+    {
+      "from": "row_fourteen_late_base_computation",
+      "to": "forced_seam_ranks_seven_through_twentysix",
+      "relation": "finite_instance_of",
+      "basis": "the same certified word has rank 7 selected, which is exactly the law's first clause 'rank 7 is taken from row 14'; the computation is that clause's base instance.",
+      "confidence": "medium"
+    },
+    {
+      "from": "upper_reset_band_escape_rows_13_to_30",
+      "to": "dyadic_band_producer_gives_row_escape",
+      "relation": "finite_instance_of",
+      "basis": "the computation verifies, for d = 13..30 and all j <= d, precisely the disjunction SeamUpperResetDyadicBandEscape that this conditional assumes for all d >= 13; it is that hypothesis at eighteen bounded rows.",
+      "confidence": "high"
+    },
+    {
+      "from": "seam_base_row_certificates",
+      "to": "truncated_mersenne_weight_closed_forms",
+      "relation": "finite_instance_of",
+      "basis": "the twelve certified seam weights and subset target at row 14 are the closed-form truncated Mersenne integers 4^s/(2^d - 1) evaluated at s = 14 and d = 2..13.",
+      "confidence": "medium"
+    },
+    {
+      "from": "depth18_selected_window_base",
+      "to": "full_strip_reachability_yields_257_counterexample",
+      "relation": "finite_instance_of",
+      "basis": "the depth-18 kernel-reflected table realises every terminal carry up to halfStripBound 18 = 12, i.e. HalfCarryFullStripReachabilityAt 18 - the predicate this conditional needs at every level, supplied here at exactly one level.",
+      "confidence": "high"
+    },
+    {
+      "from": "depth18_selected_window_base",
+      "to": "cofinal_admissibility_yields_257_counterexample",
+      "relation": "finite_instance_of",
+      "basis": "the twelve certified representatives are strip-admissible finite words at depth 18, one level of the cofinal-admissibility hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "depth26_two_carry_window_and_step",
+      "to": "cofinal_admissibility_yields_257_counterexample",
+      "relation": "finite_instance_of",
+      "basis": "the depth-26 and derived depth-27 tables give strip-admissible words at those two levels; note it is a window on carries 1 and 2 ONLY, so it instantiates cofinal admissibility but NOT full-strip reachability.",
+      "confidence": "high"
+    },
+    {
+      "from": "pre_feedback_run_to_depth_27",
+      "to": "full_strip_reachability_yields_257_counterexample",
+      "relation": "finite_instance_of",
+      "basis": "the run produces a full protected selected window on the whole square-root strip at every depth 18..27, i.e. HalfCarryFullStripReachabilityAt N for ten consecutive N and no more.",
+      "confidence": "high"
+    },
+    {
+      "from": "pre_feedback_run_to_depth_27",
+      "to": "selected_window_cofinal_consumer",
+      "relation": "finite_instance_of",
+      "basis": "the ten iterated Stage.step outputs are selected protected windows with positive radius at depths 18..27, instances of the cofinal window supply this consumer assumes from some N0 onward.",
+      "confidence": "high"
+    },
+    {
+      "from": "first_feedback_promotion_depth_27_to_29",
+      "to": "selected_window_cofinal_consumer",
+      "relation": "finite_instance_of",
+      "basis": "the promotion yields full protected selected windows at depths 28 and 29, two further instances of the same cofinal window supply.",
+      "confidence": "high"
+    },
+    {
+      "from": "first_feedback_promotion_depth_27_to_29",
+      "to": "full_strip_reachability_yields_257_counterexample",
+      "relation": "finite_instance_of",
+      "basis": "admissible words exist for every terminal carry of the strip at depths 28 and 29, i.e. full-strip reachability at two further levels.",
+      "confidence": "high"
+    },
+    {
+      "from": "certified_cylinder_run_to_depth_52",
+      "to": "selected_window_cofinal_consumer",
+      "relation": "finite_instance_of",
+      "basis": "the cutoff-25 stage advances through rows 30..51 and promotes to a full cylinder stage at depth 52, extending the supply of selected protected windows to depth 52; the consumer needs them at every depth beyond some N0.",
+      "confidence": "high"
+    },
+    {
+      "from": "certified_terminal_witnesses_51_52",
+      "to": "terminal_only_cofinal_yields_half",
+      "relation": "finite_instance_of",
+      "basis": "the depth-51 and depth-52 stages project to normalized finite words with terminal carry inside the square-root strip, i.e. the HalfCarryCofinalTerminalOnlyStrip witness at exactly two depths.",
+      "confidence": "high"
+    },
+    {
+      "from": "erdos249_period_kill_supply_restatement",
+      "to": "diagonal_kill_roster_finite_list",
+      "relation": "depends_on_open",
+      "basis": "the roster is the deepest realised production of this antecedent: certifiedKill (periodLcm t) (periodLcm t) L for the 22 literal scales t <= 43. Its own statement records that it ranges over a finite literal list and therefore cannot discharge 'for every t0 there exists t >= t0'.",
+      "confidence": "high"
+    },
+    {
+      "from": "erdos249_cone_supply_restatement",
+      "to": "finite_kill_deposits",
+      "relation": "depends_on_open",
+      "basis": "the only realised off-diagonal cone annihilators anywhere are the three cells (2,3,1), (3,2,2), (3,1,3) and the rank-2 kill (1,8,9) deposited here, all at t <= 3; nothing produces cells at arbitrarily large scale.",
+      "confidence": "high"
+    },
+    {
+      "from": "erdos249_cone_nonflat_supply_restatement",
+      "to": "finite_kill_deposits",
+      "relation": "depends_on_open",
+      "basis": "the only firing vertex menus in the corpus are the three deposited here at t = 1,2,3; the hypothesis needs one at arbitrarily large t and no node produces menus beyond these.",
+      "confidence": "high"
+    },
+    {
+      "from": "erdos249_gap_supply_restatement",
+      "to": "gap_denominator_rungs",
+      "relation": "depends_on_open",
+      "basis": "the rungs discharge the gap-certificate supply for all q up to 2.48e17 (K=120) and 7.96e34 (K=240) and are sharp there; beyond those denominators nothing in the corpus produces a window.",
+      "confidence": "high"
+    },
+    {
+      "from": "erdos249_certificate_supply_restatement",
+      "to": "arbitrarily_long_prescribed_omega_blocks",
+      "relation": "depends_on_open",
+      "basis": "the divisibility half of the block certificate is producible: this construction gives, for every K, an N with omega(N+r) >= r for r <= K, which with the first-block hinge forces 2^r | phi(N+r). The remaining half - a middle-window budget C with q*(C + (N+L+2)) < 2^L - has no producer anywhere, so the supply stays open.",
+      "confidence": "medium"
+    },
+    {
+      "from": "reduction_lcm_diagonal_supply",
+      "to": "diagonal_kill_roster_finite_list",
+      "relation": "depends_on_open",
+      "basis": "the roster is exactly this reduction's predicate P t realised on a finite literal list of 22 scales; it has the surface shape of the supply but quantifies over a list, so it produces no cofinal instance.",
+      "confidence": "high"
+    },
+    {
+      "from": "reduction_lcm_ray_supply",
+      "to": "diagonal_kill_roster_finite_list",
+      "relation": "depends_on_open",
+      "basis": "each diagonal kill in the roster is also a ray kill at N = periodLcm t, so the roster produces ray instances at 22 scales with N growing along them; it still does not give, for arbitrary t0 and N0, some t >= t0.",
+      "confidence": "medium"
+    },
+    {
+      "from": "reduction_pointwise_certificate_supply",
+      "to": "certified_kill_fixtures",
+      "relation": "depends_on_open",
+      "basis": "the fixtures produce certifiedKill h N L only at the two bases N = 12 and N = 14 and only for h <= 8 and h <= 16; the supply demands arbitrarily large N for every h, and no node supplies a further base for any h.",
+      "confidence": "high"
+    },
+    {
+      "from": "reduction_lcm_cone_supply",
+      "to": "certified_kill_fixtures",
+      "relation": "depends_on_open",
+      "basis": "the three killed lcm-cone cells here are the only certified annihilators on the cone outside the diagonal; they sit at bounded scale and produce nothing cofinal.",
+      "confidence": "high"
+    },
+    {
+      "from": "reduction_cone_nonflat_menu_supply",
+      "to": "certified_kill_fixtures",
+      "relation": "depends_on_open",
+      "basis": "the three certified non-flatness menus recorded here are the corpus's entire stock of firing menus; the supply needs one per arbitrarily large scale.",
+      "confidence": "high"
+    },
+    {
+      "from": "reduction_multiple_period_supply",
+      "to": "certified_kill_fixtures",
+      "relation": "depends_on_open",
+      "basis": "the endpoint and survivor kills recorded here are the only realised multiples m*h0 carrying a firing certificate, and they sit at two fixed positions; nothing produces a kill at arbitrarily large N for a general primitive period.",
+      "confidence": "medium"
+    },
+    {
+      "from": "reduction_rank2_qray_supply",
+      "to": "engine_strength_separations",
+      "relation": "depends_on_open",
+      "basis": "the only rank-two second-difference certificate exhibited anywhere is the single fixture cell recorded in this separation node (and its twin among the Z06 deposits); one cell does not produce a q-ray supply at arbitrarily large scale.",
+      "confidence": "medium"
+    },
+    {
+      "from": "supply_conditional_irrationality",
+      "to": "diagonal_kill_roster_finite_list",
+      "relation": "depends_on_open",
+      "basis": "the weakest of the eighteen antecedents is a cofinal supply of full-target misses, which by exact_full_target_pincer is cofinal non-integrality of the actual diagonal; the roster produces exactly that at 22 literal scales t <= 43 and, by its own statement, at no more.",
+      "confidence": "high"
+    },
+    {
+      "from": "finite_level_carry_anti_compression",
+      "to": "rationality_iff_tempered_orbit",
+      "relation": "depends_on_open",
+      "basis": "the free hypothesis IsTemperedBinaryOrbit phi v u is, by this equivalence instantiated at c = phi, logically equivalent to rationality of sum phi(n)/2^n, i.e. to the FAILURE of Erdos #249; so no producer can exist and the theorem is vacuous if #249 is true.",
+      "confidence": "high"
+    },
+    {
+      "from": "window_separated_pairs_implies_249",
+      "to": "certificate_supply_is_equivalent_to_249",
+      "relation": "depends_on_open",
+      "basis": "the separated-pairs socket is proved equivalent to #249 in its own zone, and this node proves the certificate supply equally equivalent to #249; the antecedent is therefore the open problem itself, not a weaker intermediate, and no producer strictly below #249 can exist.",
+      "confidence": "high"
+    },
+    {
+      "from": "nondyadic_scaled_series_gives_fixed_shift_socket",
+      "to": "unconditional_denominator_exclusion",
+      "relation": "depends_on_open",
+      "basis": "non-dyadicity of (2^h - 1)*S is produced here only at bounded dyadic depth: the exclusion rules out denominators dividing 2^12 (h<=8) and 2^14 (h<=16). No node excludes dyadic denominators of unbounded 2-adic height, so no h is known for which the antecedent holds.",
+      "confidence": "high"
+    },
+    {
+      "from": "rational_support_zero_window_lower_bound",
+      "to": "rationality_iff_tempered_support_carry_orbit",
+      "relation": "depends_on_open",
+      "basis": "the hypothesis erdosSupportSeries 2 A = p/(2^c v) is the left side of this equivalence; for infinite A its failure is exactly Erdos #257, and the equivalence shows the only route to it would be a tempered incidence carry orbit, which nothing constructs.",
+      "confidence": "high"
+    },
+    {
+      "from": "sublogarithmic_zero_window_bound",
+      "to": "rationality_iff_tempered_support_carry_orbit",
+      "relation": "depends_on_open",
+      "basis": "same rationality hypothesis; the equivalence identifies it with existence of a tempered incidence carry orbit, undecided for every infinite support in the corpus.",
+      "confidence": "high"
+    },
+    {
+      "from": "rational_value_constructs_odd_tail_state",
+      "to": "rationality_iff_tempered_orbit",
+      "relation": "depends_on_open",
+      "basis": "the free hypothesis is rationality of the #257 support series; instantiated at c = supportCoeff A this equivalence shows that is exactly existence of a tempered integer carry orbit, and it records that both sides are equally open. No producer exists.",
+      "confidence": "high"
+    },
+    {
+      "from": "rational_value_forces_order_wrap_ratio_bound",
+      "to": "rationality_iff_tempered_orbit",
+      "relation": "depends_on_open",
+      "basis": "the free hypothesis is rationality of the #257 support series; instantiated at c = supportCoeff A this equivalence shows that is exactly existence of a tempered integer carry orbit, and it records that both sides are equally open. No producer exists.",
+      "confidence": "high"
+    },
+    {
+      "from": "dyadic_denominator_forces_reciprocal_mass_above_one",
+      "to": "rationality_iff_tempered_orbit",
+      "relation": "depends_on_open",
+      "basis": "the free hypothesis is rationality of the #257 support series; instantiated at c = supportCoeff A this equivalence shows that is exactly existence of a tempered integer carry orbit, and it records that both sides are equally open. No producer exists.",
+      "confidence": "high"
+    },
+    {
+      "from": "carry_state_unbounded_at_common_multiples",
+      "to": "rationality_iff_tempered_orbit",
+      "relation": "depends_on_open",
+      "basis": "the free hypothesis is rationality of the #257 support series; instantiated at c = supportCoeff A this equivalence shows that is exactly existence of a tempered integer carry orbit, and it records that both sides are equally open. No producer exists.",
+      "confidence": "high"
+    },
+    {
+      "from": "half_value_forces_residual_reciprocal_mass_bound",
+      "to": "half_membership_iff_infinite_greedy_skips",
+      "relation": "depends_on_open",
+      "basis": "the hypothesis is that some support has value exactly 1/2; this equivalence pins that to infinitude of the greedy skipped support at 1/2 and states that neither side is decided anywhere, so the antecedent has no producer.",
+      "confidence": "high"
+    },
+    {
+      "from": "sunflower_conditional_irrationality",
+      "to": "support_coefficient_subpower_envelope",
+      "relation": "depends_on_open",
+      "basis": "the selector needs binaryCoeffTail (supportCoeff A) (N+K) <= 16, a CONSTANT bound. The nearest existing control is this uniform envelope T(M) <= 2*k^(2^k)*(M+1)^(1/k), which is unbounded in M for every k, so it cannot produce the selector; nothing else in the corpus bounds the incidence tail by a constant on any infinite support.",
+      "confidence": "medium"
+    },
+    {
+      "from": "denominator_shell_pressure_from_analytic_tail_bound",
+      "to": "subpower_tail_envelope_from_coefficient_bound",
+      "relation": "depends_on_open",
+      "basis": "the missing hypothesis is a denominator-uniform shell-plus-far-tail bound beta <= K/2^X + 2/2^(2X); this is the corpus's only unconditional binary-tail envelope and it is neither denominator-uniform nor of that shape, which is what the module docstring calls the global bottleneck.",
+      "confidence": "medium"
+    },
+    {
+      "from": "channel_cap_skip_transport",
+      "to": "unsafe_skip_forces_long_forced_take_block",
+      "relation": "depends_on_open",
+      "basis": "the nearest law bearing on the skip-branch cap: it converts a cap-violating skip into a forced take run of 2n+4 ranks, but it consumes the cap violation rather than producing the cap, and forced_take_block_depth_is_sharp shows the extracted block cannot be lengthened; so no cap hypothesis is produced.",
+      "confidence": "medium"
+    },
+    {
+      "from": "seam_gap_bound_yields_half",
+      "to": "two_sided_dyadic_invariant_under_cell_escape",
+      "relation": "depends_on_open",
+      "basis": "the nearest statement bounding the seam remainder by a dyadic power at every row; it delivers only min(remainder, overshoot) <= 2^s and is itself gated on the unproved SeamTwoSidedDyadicCellEscape, so it does not produce the one-sided bound rem(s) < 2^(s+1).",
+      "confidence": "medium"
+    },
+    {
+      "from": "canonical_even_seam_supply_route",
+      "to": "history_alternative_needs_canonical_seam_bridge",
+      "relation": "depends_on_open",
+      "basis": "the only route in the corpus toward an ACTUAL canonical one-hole even seam; it delivers one only after assuming the seam bridge from a scalar seam pair, itself unproved, so the canonical-seam supply has no unconditional producer.",
+      "confidence": "medium"
+    },
+    {
+      "from": "terminal_scaled_vanishing_yields_half",
+      "to": "certified_terminal_witnesses_51_52",
+      "relation": "depends_on_open",
+      "basis": "the deepest terminal witnesses produced anywhere sit at depths 51 and 52; the antecedent needs a sequence of depths tending to infinity, which two depths cannot supply.",
+      "confidence": "medium"
+    },
+    {
+      "from": "full_strip_reachability_yields_257_counterexample",
+      "to": "certified_cylinder_run_to_depth_52",
+      "relation": "depends_on_open",
+      "basis": "the certified run is the deepest producer of full-strip reachability, reaching depth 52; beyond that the continuation is gated on the unproved NextArithmetic cell of the profiled gap step, so reachability at every level is not produced.",
+      "confidence": "high"
+    },
+    {
+      "from": "cofinal_admissibility_yields_257_counterexample",
+      "to": "certified_cylinder_run_to_depth_52",
+      "relation": "depends_on_open",
+      "basis": "admissible finite words are produced at every depth up to 52 by this run and nowhere beyond, so cofinal admissibility is unproduced.",
+      "confidence": "high"
+    },
+    {
+      "from": "strip_admissible_branch_forces_half",
+      "to": "certified_cylinder_run_to_depth_52",
+      "relation": "depends_on_open",
+      "basis": "an infinite strip-admissible branch would follow by Koenig from admissibility at every level; the run supplies levels up to 52 only, so the branch hypothesis has no producer.",
+      "confidence": "medium"
+    },
+    {
+      "from": "terminal_only_cofinal_yields_half",
+      "to": "terminal_only_projection",
+      "relation": "depends_on_open",
+      "basis": "the projection is the general route producing terminal-only strip witnesses from windows, stages and realized seams; it converts whatever stage supply exists into this antecedent, but produces witnesses only at depths already reached, so it discharges nothing on its own.",
+      "confidence": "high"
+    },
+    {
+      "from": "last_skip_shift_geometry",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "depends_on_open",
+      "basis": "this classification proves 'a last greedy skip exists' equivalent to '1/2 is not in the Mersenne achievement set'; the hypothesis is therefore one branch of the open endpoint and has no producer.",
+      "confidence": "high"
+    },
+    {
+      "from": "unbounded_skipped_ranks_give_half_membership",
+      "to": "half_membership_seam_equivalence_ring",
+      "relation": "depends_on_open",
+      "basis": "the equivalence ring proves cofinal false terminal bits / unbounded skipped seam ranks equivalent to half-membership itself, so this node's antecedent is the open proposition in different coordinates and no weaker producer can exist.",
+      "confidence": "high"
+    },
+    {
+      "from": "largest_skip_late_step_socket_fan_in",
+      "to": "late_row_small_forces_middle_branch",
+      "relation": "depends_on_open",
+      "basis": "the nearest unconditional law giving the socket's disjunct SeamGreedyUpperOrMiddleAt: a late row whose remainder is below its row index cannot take the upper branch and so takes the middle. It fires only under the row-small precondition, which is what the socket would itself have to establish, so it does not produce the socket.",
+      "confidence": "medium"
+    },
+    {
+      "from": "finite_window_reduction_of_raw_half_residual",
+      "to": "greedy_mobius_carry_nonneg",
+      "relation": "depends_on_open",
+      "basis": "the only unconditional control on the actual greedy Moebius-centred carry; it supplies the LOWER half of the strip, while the hypothesis needs the upper bound (carry below the finite coefficient window), which that node explicitly records as open.",
+      "confidence": "medium"
+    },
+    {
+      "from": "final_middle_producer_must_violate_tail_inequality",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "depends_on_open",
+      "basis": "the all-right / eventually-right suffix hypothesis is proved by this classification to be equivalent to '1/2 is not in the Mersenne achievement set'; it is the negation of the open endpoint, assumed only for contradiction, so it has no producer and the conclusion is vacuous if 1/2 is achieved.",
+      "confidence": "high"
+    },
+    {
+      "from": "middle_then_allright_fatal_gap_and_landing_window",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "depends_on_open",
+      "basis": "the all-right / eventually-right suffix hypothesis is proved by this classification to be equivalent to '1/2 is not in the Mersenne achievement set'; it is the negation of the open endpoint, assumed only for contradiction, so it has no producer and the conclusion is vacuous if 1/2 is achieved.",
+      "confidence": "high"
+    },
+    {
+      "from": "eventual_right_tail_positive_excess",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "depends_on_open",
+      "basis": "the all-right / eventually-right suffix hypothesis is proved by this classification to be equivalent to '1/2 is not in the Mersenne achievement set'; it is the negation of the open endpoint, assumed only for contradiction, so it has no producer and the conclusion is vacuous if 1/2 is achieved.",
+      "confidence": "high"
+    },
+    {
+      "from": "final_middle_neg_two_phase_sieve",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "depends_on_open",
+      "basis": "the all-right / eventually-right suffix hypothesis is proved by this classification to be equivalent to '1/2 is not in the Mersenne achievement set'; it is the negation of the open endpoint, assumed only for contradiction, so it has no producer and the conclusion is vacuous if 1/2 is achieved.",
+      "confidence": "high"
+    },
+    {
+      "from": "last_false_terminal_exists_for_eventual_right",
+      "to": "fatal_gap_eventual_right_classification",
+      "relation": "depends_on_open",
+      "basis": "the all-right / eventually-right suffix hypothesis is proved by this classification to be equivalent to '1/2 is not in the Mersenne achievement set'; it is the negation of the open endpoint, assumed only for contradiction, so it has no producer and the conclusion is vacuous if 1/2 is achieved.",
+      "confidence": "high"
+    },
+    {
+      "from": "half_membership_conditional_endpoints",
+      "to": "upper_reset_band_escape_rows_13_to_30",
+      "relation": "depends_on_open",
+      "basis": "of the six sockets only SeamUpperResetDyadicBandEscape has any producer, and that producer verifies it for rows d = 13..30 only; the five middle-producer sockets have no producer anywhere.",
+      "confidence": "high"
+    },
+    {
+      "from": "fixed_coefficient_window_step",
+      "to": "literal_prefix_endpoint_run_law",
+      "relation": "depends_on_open",
+      "basis": "the nearest producer of a common next-row coefficient: before a row is reached by feedback the coefficient is fixed by the literal cutoff restriction, so representatives sharing that restriction share C. It stops exactly at the feedback rows, which is why hp_common is realised only at depths 18 and 26.",
+      "confidence": "medium"
+    },
+    {
+      "from": "full_strip_step_from_divisor_agreement",
+      "to": "cylinder_stage_advance_within_cutoff",
+      "relation": "depends_on_open",
+      "basis": "this is the bulk producer of next-row divisor agreement: whenever (N+1)/2 <= K the shared prefix forces a common coefficient and the stage advances unconditionally through the band to N = 2K+1. It produces agreement only inside a cutoff horizon, never at a feedback row.",
+      "confidence": "high"
+    },
+    {
+      "from": "selected_window_cofinal_consumer",
+      "to": "certified_cylinder_run_to_depth_52",
+      "relation": "depends_on_open",
+      "basis": "the run is the actual production route for the cofinal window supply and reaches depth 52; past that the continuation depends on the unproved NextArithmetic cell, so the supply from some N0 onward is not produced.",
+      "confidence": "high"
+    },
+    {
+      "from": "cofinal_protected_seam_consumer",
+      "to": "feedback_trichotomy_advance_or_seam",
+      "relation": "depends_on_open",
+      "basis": "the only law whose conclusion can be a realized localized one-hole protected even seam; it fires at one feedback row of an EXISTING full-strip stage, so it produces seams only as far as stages exist (depth 52), never cofinally.",
+      "confidence": "high"
+    },
+    {
+      "from": "mixed_cofinal_window_or_seam_consumer",
+      "to": "feedback_trichotomy_advance_or_seam",
+      "relation": "depends_on_open",
+      "basis": "the trichotomy delivers exactly this consumer's disjunction - a promoted full stage or a realized protected seam - at each feedback row, but only from an existing full-strip stage at an exact half-divisor horizon, so it produces the disjunction at reached depths only.",
+      "confidence": "high"
+    },
+    {
+      "from": "boundary_pair_supplies_unit_drop",
+      "to": "boundary_words_binary_consecutive",
+      "relation": "depends_on_open",
+      "basis": "the nearest producer of the boundary-pair shape: the two sheet boundary words are consecutive binary numerals. It does not give that the two adjacent rewind ancestors are the opposite terminal extensions of one common half-depth word, and boundary_pair_not_forced_by_scalar_seam refutes that at depth 26.",
+      "confidence": "medium"
+    },
+    {
+      "from": "rewind_seam_plus_unit_drop_realizes_protected_seam",
+      "to": "crossing_unit_drop_profile",
+      "relation": "depends_on_open",
+      "basis": "at a genuine endpoint crossing this produces the literal unit-drop coefficient profile c+1 / c at the doubled row - the shape RewindBaseUnitDropAt asserts - but for cylinder endpoints, not for the two adjacent rewind base ancestors, so it does not discharge the hypothesis.",
+      "confidence": "medium"
+    },
+    {
+      "from": "rewind_seam_transports_unit_drop_to_profile",
+      "to": "crossing_unit_drop_profile",
+      "relation": "depends_on_open",
+      "basis": "the same nearest producer of RewindBaseUnitDropAt: an endpoint crossing yields the literal c+1 / c profile at the doubled row, but on cylinder endpoints rather than on the two adjacent rewind base ancestors, so hbaseProfile is not produced for any cofinal family.",
+      "confidence": "medium"
+    },
+    {
+      "from": "dyadic_band_producer_gives_row_escape",
+      "to": "upper_reset_band_escape_rows_13_to_30",
+      "relation": "depends_on_open",
+      "basis": "the only producer of SeamUpperResetDyadicBandEscape anywhere: it verifies the disjunction for rows d = 13..30 and all j <= d, and stops there; the hypothesis quantifies over all d >= 13.",
+      "confidence": "high"
+    },
+    {
+      "from": "threshold_profile_realizes_protected_seam",
+      "to": "crossing_unit_drop_profile",
+      "relation": "depends_on_open",
+      "basis": "the corpus's only producer of a two-valued threshold coefficient profile (c+1 on the initial carry segment, c above); it requires a genuine endpoint crossing of the head weight, so it produces the profile at crossing feedback rows only, not across an arbitrary window.",
+      "confidence": "medium"
+    },
+    {
+      "from": "two_sheet_next_row_off_child_gap",
+      "to": "restriction_fixes_next_row_coefficient",
+      "relation": "depends_on_open",
+      "basis": "the only law producing equality of next-row coefficients: agreement on every divisor of the row forces equal support coefficients. Once a cutoff promotion gives the two sheets different prefixes the premise fails, which is exactly why HasCommonNextCoeff is proved only at the odd successor row.",
+      "confidence": "high"
+    },
+    {
+      "from": "common_next_coeff_gap_advance",
+      "to": "restriction_fixes_next_row_coefficient",
+      "relation": "depends_on_open",
+      "basis": "same producer and same limit: the shared-restriction premise is available below the half-depth cutoff and fails after promotion, so a genuinely common cross-sheet coefficient is not produced at later rows.",
+      "confidence": "high"
+    },
+    {
+      "from": "profiled_gap_advance",
+      "to": "divisor_pair_square_root_envelope",
+      "relation": "depends_on_open",
+      "basis": "the only unconditional control available for the NextArithmetic cell; it bounds each next-row coefficient by 2*sqrt(n) but says nothing about gap width, and gap_width_recurrence shows the child gap doubles each row while halfStripBound grows like 2*sqrt(N), so childHiStrip cannot be produced from it.",
+      "confidence": "medium"
+    },
+    {
+      "from": "rewind_history_promotion_dichotomy",
+      "to": "rewind_provenance_of_explicit_step",
+      "relation": "depends_on_open",
+      "basis": "this produces HasRewindRestrictionAt unconditionally along any chain of canonical fixed-coefficient steps, so the provenance half of the hypothesis is available on such chains; the width validity halfStripBound N <= denom cs at an arbitrary feedback row is produced nowhere.",
+      "confidence": "high"
+    },
+    {
+      "from": "cofinal_stages_conditional_export",
+      "to": "full_strip_step_from_divisor_agreement",
+      "relation": "depends_on_open",
+      "basis": "the nearest one-row advance law with a full-strip conclusion, which iterated would give stages at every depth; it is itself gated on next-row divisor agreement and produces selected windows rather than cylinder stages, so the cofinal-stage hypothesis is unproduced.",
+      "confidence": "medium"
+    }
+  ],
+  "no_producer": [
+    {
+      "node": "reduction_lcm_jump_supply",
+      "zone": "Z06",
+      "open_antecedent": "certifiedKill (periodLcm (t+1) - periodLcm t) (periodLcm t) L at cofinally many t",
+      "basis": "no kill at an lcm-jump shift is exhibited anywhere in the corpus, at any scale; the realised kills all sit on the diagonal, on q-rays or at the two fixed endpoint bases."
+    },
+    {
+      "node": "reduction_unit_gap_supply_projection",
+      "zone": "Z06",
+      "open_antecedent": "PrimitiveReducedDenominatorUnitGapSupply",
+      "basis": "the only unit-gap certificate anywhere is the single intra-zone instance at (u,N,K) = (3,3,5); no node in any other zone produces one."
+    },
+    {
+      "node": "curvature_supply_implies_249",
+      "zone": "Z09",
+      "open_antecedent": "SharpCurvatureSupply / SharpCurvatureAnyDepthSupply / CurvaturePhaseCertificateSupply",
+      "basis": "no curvature certificate is exhibited at any parameters anywhere in the corpus, in this zone or outside it."
+    },
+    {
+      "node": "three_transport_supply_implies_249",
+      "zone": "Z09",
+      "open_antecedent": "RoughnessBoundaryLatticeSupply",
+      "basis": "the only balanced-boundary certificate anywhere is the single intra-zone cell H=60, L=12; no cross-zone producer exists."
+    },
+    {
+      "node": "prime_jump_supply_implies_249",
+      "zone": "Z09",
+      "open_antecedent": "cofinal primeJumpSharpKill",
+      "basis": "the only prime-jump certificate anywhere is the single intra-zone cell H=12, p=5, L=15."
+    },
+    {
+      "node": "joint35_supply_implies_249",
+      "zone": "Z09",
+      "open_antecedent": "AnchoredJoint35ConeSupply",
+      "basis": "no joint (3,5) cone certificate is exhibited at any parameters anywhere."
+    },
+    {
+      "node": "exponent_only_three_transport_supply_implies_249",
+      "zone": "Z09",
+      "open_antecedent": "ExponentOnlyThreeTransportSupply on the 3^a tower",
+      "basis": "no non-integrality of the four-vertex commutator is established at any exponent a; the only related fixture is the intra-zone H=60 certificate, which is not on the 3^a tower."
+    },
+    {
+      "node": "prime_ray_cyclotomic_open_sockets",
+      "zone": "Z09",
+      "open_antecedent": "PrimeRayLayerSupply / BoundedDegreeOrderConsumer / FinitePrimeSupportEscape",
+      "basis": "all three predicates are, by the node's own record, proved nowhere and consumed nowhere; the Z04 cyclotomic theory concerns Mobius numerators at squarefree exponents, not layers along a prime ray, so it is not a producer."
+    },
+    {
+      "node": "first_harmonic_socket_implies_249",
+      "zone": "Z08",
+      "open_antecedent": "DTWFirstHarmonicNormGap / DTWPivotResidualDecorrelation",
+      "basis": "no cofinal analytic saving of any kind is established anywhere in the corpus; the lane contains only implications between unproved sockets."
+    },
+    {
+      "node": "adjacent_socket_implies_249",
+      "zone": "Z08",
+      "open_antecedent": "DTWAdjacentMiddleThirdSeparation / DTWAdjacentPhaseSeparation",
+      "basis": "no producer anywhere; the lane's only unconditional input is squaring-orbit expansivity, which needs the orbit never to reach 1, i.e. #249 itself."
+    },
+    {
+      "node": "pivot_fibre_socket_implies_249",
+      "zone": "Z08",
+      "open_antecedent": "eight cofinal pivot-fibre hypotheses",
+      "basis": "none of the eight is established at any parameters anywhere in the corpus."
+    },
+    {
+      "node": "point_escape_socket_implies_249",
+      "zone": "Z08",
+      "open_antecedent": "DTWNaturalPivotPointEscape / DTWNaturalPrimeTailOrbitGap",
+      "basis": "no single-base escape and no prime-indexed real-part gap is exhibited anywhere."
+    },
+    {
+      "node": "strict_prime_escape_socket_implies_249",
+      "zone": "Z08",
+      "open_antecedent": "DTWNaturalPrimeTailOrbitStrictGap",
+      "basis": "no prime is exhibited anywhere at which the strict gap Re < 9/10 is proved."
+    },
+    {
+      "node": "controlled_projection_miss_is_conditional",
+      "zone": "Z05",
+      "open_antecedent": "ControlledForeignProjection H D",
+      "basis": "the only route to it is the intra-zone tail-limit theorem, which itself assumes convergence; no node in any other zone bears on it."
+    },
+    {
+      "node": "tail_limit_supplies_controlled_projection",
+      "zone": "Z05",
+      "open_antecedent": "ForeignResidueTailLimit H D",
+      "basis": "convergence of the finite foreign residue windows to the omitted part of the actual defect is asserted nowhere in the corpus."
+    },
+    {
+      "node": "renormalized_residue_agreement_is_conditional",
+      "zone": "Z05",
+      "open_antecedent": "RenormalizedResidueAgreement H D",
+      "basis": "the agreement is written as an obligation and is proved at no scale anywhere."
+    },
+    {
+      "node": "unique_dyadic_terminal_parity",
+      "zone": "Z07",
+      "open_antecedent": "an index with strictly largest dyadic exponent and odd integer numerator in a #249 moment family",
+      "basis": "no Lean declaration anywhere instantiates s, u, e on #249 moment data, so the implication is never fired."
+    },
+    {
+      "node": "half_membership_from_actual_block_safety",
+      "zone": "Z10",
+      "open_antecedent": "the inline block-dyadic safety condition at every skipped rank",
+      "basis": "no producer anywhere; safe_bracket_plus_numerator_monotone_is_not_inductive refutes the obvious induction and raw_dyadic_safety_does_not_force_seam_escape blocks the seam route."
+    },
+    {
+      "node": "half_membership_from_skipped_excess_bound",
+      "zone": "Z10",
+      "open_antecedent": "HalfGreedySkippedExcessBound",
+      "basis": "no producer anywhere, and no finite computation can establish an every-rank bound."
+    },
+    {
+      "node": "half_membership_from_take_run_excess_bounds",
+      "zone": "Z10",
+      "open_antecedent": "HalfGreedyThreeDepthTakeRunExcessBound / HalfGreedyLongTakeRunExcessBound",
+      "basis": "no producer anywhere; the run-compressed form is proved equivalent to the unrestricted one, so the weakening buys nothing."
+    },
+    {
+      "node": "half_membership_from_raw_block_margin_supply",
+      "zone": "Z10",
+      "open_antecedent": "HalfGreedySkippedActualRawMarginSupply and its raw-block / unsafe-skip variants",
+      "basis": "no producer anywhere."
+    },
+    {
+      "node": "half_membership_from_gcd_overshoot_supply",
+      "zone": "Z10",
+      "open_antecedent": "HalfGreedyUnsafeSkipGcdOvershootSupply and its equivalent forms",
+      "basis": "no producer anywhere."
+    },
+    {
+      "node": "wrap_ratio_lower_bounds_reciprocal_mass",
+      "zone": "Z10",
+      "open_antecedent": "IsOddSupportTailState A p v u",
+      "basis": "its only producer is the intra-zone rational_value_constructs_odd_tail_state, which itself assumes rationality of the #257 series; there is no cross-zone producer and no unconditional one."
+    },
+    {
+      "node": "boolean_collision_surplus",
+      "zone": "Z10",
+      "open_antecedent": "IsOddSupportTailState (or its shifted form)",
+      "basis": "same: available only downstream of the open rationality hypothesis, and only intra-zone."
+    },
+    {
+      "node": "common_multiple_collision_strengthens_wrap_bound",
+      "zone": "Z10",
+      "open_antecedent": "IsOddSupportTailState / IsShiftedOddSupportTailState",
+      "basis": "same: available only downstream of the open rationality hypothesis, and only intra-zone."
+    },
+    {
+      "node": "half_prefix_forcing_chain_criterion",
+      "zone": "Z12",
+      "open_antecedent": "HalfPrefixForcingChain A",
+      "basis": "no normalized support whose correction and complement values are trapped in dyadic cells of unbounded depth is constructed anywhere."
+    },
+    {
+      "node": "tempered_mobius_carry_yields_half",
+      "zone": "Z12",
+      "open_antecedent": "temperedness of the Moebius-centred half carry, or the 2*sqrt(N)+4 bound on the greedy support",
+      "basis": "only the LOWER half of the strip is proved (greedy_mobius_carry_nonneg); the upper bound on the actual greedy carry is produced nowhere."
+    },
+    {
+      "node": "cofinal_strip_return_yields_half",
+      "zone": "Z12",
+      "open_antecedent": "GreedyHalfCarryCofinalStripReturn",
+      "basis": "no return of the actual greedy half carry into the square-root strip is exhibited beyond any index."
+    },
+    {
+      "node": "second_channel_phase_separation",
+      "zone": "Z12",
+      "open_antecedent": "the separation at every n (equivalently HalfSecondChannelSeparatedRat for all n >= 7)",
+      "basis": "the only production is the intra-zone decidable check at 1 <= n <= 6; nothing produces it at any n >= 7."
+    },
+    {
+      "node": "seam_subquadratic_along_yields_half",
+      "zone": "Z12",
+      "open_antecedent": "SeamGreedyRemainderSubquadraticAlong rows",
+      "basis": "no row sequence with seamIntegerGreedyRemainder / 4^s tending to zero is exhibited anywhere."
+    },
+    {
+      "node": "half_membership_from_frozen_margin_sockets",
+      "zone": "Z13",
+      "open_antecedent": "governed frozen-margin producer / full-shell nonnegativity / seam-alignment-zero / skip-conditioned seam escape",
+      "basis": "all four are defined and discharged nowhere; the implications between them are intra-zone and none has an unconditional producer in any zone."
+    },
+    {
+      "node": "two_sided_dyadic_invariant_under_cell_escape",
+      "zone": "Z14",
+      "open_antecedent": "SeamTwoSidedDyadicCellEscape",
+      "basis": "neither the middle-cell exclusion for cells -3,-2,-1 nor the right-transition upper-charge bound is produced anywhere; only the -3 cell is excluded unconditionally, and only for a LAST middle producer."
+    },
+    {
+      "node": "history_alternative_needs_canonical_seam_bridge",
+      "zone": "Z15",
+      "open_antecedent": "hseamBridge: a scalar seam pair is an actual canonical one-hole even seam",
+      "basis": "the bridge is assumed and is proved at no depth anywhere in the corpus."
+    },
+    {
+      "node": "boundary_pair_realizes_protected_seam",
+      "zone": "Z15",
+      "open_antecedent": "RewindBaseHalfDivisorBoundaryPairAt at cofinally many depths",
+      "basis": "the boundary-pair hypothesis is unproved in general and boundary_pair_not_forced_by_scalar_seam exhibits a depth-26 counter-instance, so no producer exists."
+    },
+    {
+      "node": "n243_boundednegative_rigidity",
+      "zone": "Z17",
+      "open_antecedent": "division-free normalized vanishing of the centered error, plus the bounded negative part",
+      "basis": "neither is established for any actual reciprocal orbit anywhere in the corpus."
+    },
+    {
+      "node": "n243_normalized_vanishing_subexp",
+      "zone": "Z17",
+      "open_antecedent": "normalized vanishing of the centered error",
+      "basis": "no orbit is exhibited anywhere for which it holds."
+    },
+    {
+      "node": "n243_gcd_stabilises",
+      "zone": "Z17",
+      "open_antecedent": "cofinally many uniformly bounded negative-state magnitudes",
+      "basis": "the node's own record says nothing in the corpus produces such indices for any actual reciprocal tail."
+    },
+    {
+      "node": "n243_no_cofinally_bounded_negative",
+      "zone": "Z17",
+      "open_antecedent": "bounded upward rise, cofinal bounded negative excursions, and divergence of the tail state",
+      "basis": "no orbit satisfying the conjunction is exhibited anywhere."
+    },
+    {
+      "node": "n243_gcd_growth_sublinear",
+      "zone": "Z17",
+      "open_antecedent": "subexponential tail growth and normalized vanishing of the centered error",
+      "basis": "both inputs are themselves unproduced; the chain is entirely intra-zone and terminates in unproved hypotheses."
+    }
+  ],
+  "no_cross_zone_family": [
+    {
+      "node": "generated_gap_window_checkers",
+      "zone": "Z01",
+      "basis": "the family it instantiates is the gap-certificate supply, which lives in the same zone; the only other gap production, the K=120/K=240 denominator rungs, is a sibling finite instance, not a family."
+    },
+    {
+      "node": "totient_value_tables",
+      "zone": "Z01",
+      "basis": "certificate scaffolding: exact totient values at fixed window slots. No node anywhere states an infinite family of window-totient reconstructions, so there is nothing to instantiate."
+    },
+    {
+      "node": "window_totient_reconstruction_t29",
+      "zone": "Z02",
+      "basis": "same: exact totient values on the two length-45 windows. The Euler-product reconstruction is a method, not a stated family; the sibling tables at other scales are sibling instances."
+    },
+    {
+      "node": "window_totient_reconstruction_t31",
+      "zone": "Z02",
+      "basis": "same, at the length-49 windows."
+    },
+    {
+      "node": "window_totient_reconstruction_t37",
+      "zone": "Z02",
+      "basis": "same, at the length-56 windows."
+    },
+    {
+      "node": "deep_window_totient_reconstruction",
+      "zone": "Z03",
+      "basis": "generated certificate scaffolding for the t=41 and t=43 windows; it asserts nothing about the objects of #249 and instantiates no stated family."
+    },
+    {
+      "node": "window_prime_leaf_primality",
+      "zone": "Z03",
+      "basis": "307 private norm_num primality facts about integers below 3.3e7; no family anywhere."
+    },
+    {
+      "node": "radical_shadow_denominator_fixtures",
+      "zone": "Z04",
+      "basis": "its family, the exact reduced denominator of the scaled Mobius shadow, is stated in the same zone."
+    },
+    {
+      "node": "cyclotomic_projection_anchors",
+      "zone": "Z04",
+      "basis": "elaboration anchors for T2 and T3, both stated in the same zone; the node's own scope says they carry no unbounded supply."
+    },
+    {
+      "node": "prime_jump_fixtures",
+      "zone": "Z04",
+      "basis": "instances of the cyclotomic jump recurrence T5, stated in the same zone. NOT related to the Z09 prime-jump commutator certificates, which concern totient tail differences, not cyclotomic numerators."
+    },
+    {
+      "node": "binary_factor_squarefree_sharpness",
+      "zone": "Z04",
+      "basis": "a sharpness witness for the binary unit theorem in the same zone."
+    },
+    {
+      "node": "lcm_height_five_fixtures",
+      "zone": "Z04",
+      "basis": "boundary instances of the LCM-height denominator theorems in the same zone."
+    },
+    {
+      "node": "finite_fixtures_and_boundary_evaluations",
+      "zone": "Z05",
+      "basis": "interface pinning for the power-of-two endpoint and edge-cylinder machinery, all stated in the same zone."
+    },
+    {
+      "node": "certificate_family_comparisons_at_cells",
+      "zone": "Z06",
+      "basis": "the engine families it separates are stated in the same zone; its cross-zone counterpart engine_strength_separations is a duplicate finite instance, a relation for the equivalence lens, not an instance-of edge."
+    },
+    {
+      "node": "unit_gap_strict_strengthening_instance",
+      "zone": "Z06",
+      "basis": "the unit-gap certificate family is stated in the same zone."
+    },
+    {
+      "node": "induced_run_layer_masses",
+      "zone": "Z07",
+      "basis": "its own scope caveat records that zeroRunMass and oneRunMass are definitions and that no decomposition of the #249 constant is proved anywhere; there is no family for it to instantiate."
+    },
+    {
+      "node": "three_transport_finite_certificate_60_12",
+      "zone": "Z09",
+      "basis": "the family (RoughnessBoundaryLatticeSupply) is stated in the same zone; the Z06 cone supplies quantify certifiedKill pairs, not four-vertex balanced words, so attaching it there would misdescribe the engine."
+    },
+    {
+      "node": "prime_jump_finite_certificate_12_5_15",
+      "zone": "Z09",
+      "basis": "the family (cofinal primeJumpSharpKill) is stated in the same zone."
+    },
+    {
+      "node": "migration_sign_reversal_fixture",
+      "zone": "Z09",
+      "basis": "an instance of the channel-migration identity in the same zone."
+    },
+    {
+      "node": "clean_square_cube_does_not_separate",
+      "zone": "Z09",
+      "basis": "two witnesses for the square-CRT localisation in the same zone; its scope caveat records that four of the six conjuncts are tautologies and that no general no-go follows."
+    },
+    {
+      "node": "dilation_layer_fixtures",
+      "zone": "Z10",
+      "basis": "instances of the dilation pullback and bounded-omega annihilation theorems in the same zone."
+    },
+    {
+      "node": "prime_power_layer_fixtures",
+      "zone": "Z10",
+      "basis": "instances of the exact prime-power valuation layer in the same zone."
+    },
+    {
+      "node": "composite_defect_fixtures",
+      "zone": "Z10",
+      "basis": "an instance of the composite dilation defect identity in the same zone."
+    },
+    {
+      "node": "order_wrap_finite_validation_table",
+      "zone": "Z10",
+      "basis": "validation of the wrap calculus and the one-wrap classification, both stated in the same zone."
+    },
+    {
+      "node": "three_fourths_excluded",
+      "zone": "Z12",
+      "basis": "an instance of certified greedy death soundness in the same zone."
+    },
+    {
+      "node": "two_thirds_escape_fixtures",
+      "zone": "Z12",
+      "basis": "fixtures for the post-take band and sliver dynamics in the same zone."
+    },
+    {
+      "node": "second_channel_separation_low_rank_instances",
+      "zone": "Z12",
+      "basis": "the bounded-n instance of a hypothesis stated in the same zone (separation for all n >= 7)."
+    },
+    {
+      "node": "initial_half_straddle_instances",
+      "zone": "Z12",
+      "basis": "base instances of the straddle criteria in the same zone."
+    },
+    {
+      "node": "depth14_even_seam_nonreachable_instance",
+      "zone": "Z12",
+      "basis": "an instance of the even-seam one-hole theorem in the same zone; it bears on the Z12 seam-escape hypothesis as a small-depth counter-instance, which is a barrier-lens relation, not an instance-of edge."
+    },
+    {
+      "node": "upper_reset_band_escape_row_thirteen",
+      "zone": "Z14",
+      "basis": "its family is stated in the same zone; the Z13 rows-13-to-30 computation strictly subsumes it, which is a supersedes relation for another lens."
+    },
+    {
+      "node": "final_middle_neg_two_survivor_count",
+      "zone": "Z14",
+      "basis": "a count of the residue classes surviving the phase sieve stated in the same zone."
+    },
+    {
+      "node": "depth29_cutoff25_normalisation",
+      "zone": "Z16",
+      "basis": "promotions of one cylinder stage at a fixed depth; the promotion laws are stated in the same zone and it reaches no new depth."
+    },
+    {
+      "node": "n251_small_gap_values",
+      "zone": "Z17",
+      "basis": "two prime gaps supporting the #251 lane in the same zone."
+    },
+    {
+      "node": "n269_kernel_235_values",
+      "zone": "Z17",
+      "basis": "the first {2,3,5} kernel values, feeding the #269 normal forms in the same zone."
+    },
+    {
+      "node": "n269_kernel_235_not_rank_one",
+      "zone": "Z17",
+      "basis": "a two-by-two non-degeneracy check on the same kernel."
+    },
+    {
+      "node": "n1049_seven_halves_certificates",
+      "zone": "Z17",
+      "basis": "two norm_num facts; its own scope caveat records that they formalise no irrationality statement at all, so there is no family."
+    }
+  ],
+  "coverage": {
+    "zones_read": [
+      "Z01",
+      "Z02",
+      "Z03",
+      "Z04",
+      "Z05",
+      "Z06",
+      "Z07",
+      "Z08",
+      "Z09",
+      "Z10",
+      "Z11",
+      "Z12",
+      "Z13",
+      "Z14",
+      "Z15",
+      "Z16",
+      "Z17"
+    ],
+    "statement_nodes_in_union": 673,
+    "finite_and_generated_nodes": 59,
+    "finite_nodes_attached_cross_zone": 23,
+    "finite_nodes_with_no_cross_zone_family": 36,
+    "conditional_nodes": 95,
+    "conditional_nodes_with_cross_zone_producer_or_identification": 57,
+    "conditional_nodes_with_no_producer_anywhere": 39
+  }
+}

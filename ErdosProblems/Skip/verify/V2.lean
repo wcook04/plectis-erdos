@@ -1,0 +1,37 @@
+import ErdosProblems.Skip.D2
+
+namespace Erdos249257
+namespace AngleD2
+
+#print axioms largestSkipLateAt_of_late_notMem
+#print axioms mem_of_late_of_not_largestSkipLateAt
+#print axioms halfRank_not_late
+#print axioms not_late_of_cofactor_ge_four
+#print axioms late_dvd_odd_eq_cofThree
+#print axioms late_dvd_even_eq_cofThree
+#print axioms late_dvd_cases
+#print axioms cofThreeOdd_mem_or_largestSkipLateAt
+#print axioms cofThreeEven_mem_or_largestSkipLateAt
+#print axioms cofRanks_subset_or_largestSkipLateAt
+#print axioms halfRank_mem_cofRanks_of_odd
+#print axioms half_mem_of_unboundedLargestSkipLate
+#print axioms unboundedLargestSkipLate_of_half_mem
+#print axioms half_mem_iff_unboundedLargestSkipLate
+#print axioms half_mem_or_eventually_lateZone_full
+#print axioms half_mem_or_eventually_cofRanks_even
+#print axioms not_largestSkipLateAt_of_eventuallyRight
+#print axioms eventuallyRight_largestSkipLate_bounded
+#print axioms not_unboundedLargestSkipLate_of_eventuallyRight
+#print axioms cofRanks_subset_of_eventuallyRight
+#print axioms seamGreedyEventuallyRight_of_half_not_mem
+#print axioms half_mem_or_eventually_cofRanks_subset
+#print axioms half_mem_or_eventually_seamExcess_ne_two
+
+-- Statement dumps for adversarial reading
+#print UnboundedLargestSkipLate
+#check @half_mem_iff_unboundedLargestSkipLate
+#check @half_mem_or_eventually_seamExcess_ne_two
+#check @half_mem_or_eventually_cofRanks_subset
+
+end AngleD2
+end Erdos249257

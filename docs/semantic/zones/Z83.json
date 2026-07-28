@@ -1,0 +1,104 @@
+{
+  "zone_id": "Z83",
+  "title": "Pointwise half-power normalization into Mersenne kernels",
+  "problem": "257",
+  "replaces_role_zone": "Z07",
+  "concepts": [
+    {
+      "id": "z83_half_power_mersenne_normalization",
+      "label": "half-power to Mersenne normalization",
+      "note": "At a positive index, binary half-powers and their geometric denominators rewrite exactly into powers of the Mersenne denominator 2^d-1."
+    },
+    {
+      "id": "z83_squared_mersenne_kernel_split",
+      "label": "squared Mersenne kernel split",
+      "note": "The normalized squared kernel separates into first- and second-order reciprocal Mersenne terms."
+    },
+    {
+      "id": "z83_pointwise_series_boundary",
+      "label": "pointwise versus series boundary",
+      "note": "These are finite real-algebra identities used inside Lambert evaluations, not summability or infinite-series conclusions."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "positive_binary_indices_convert_half_power_kernels_exactly_to_mersenne_denominators",
+      "canonical_statement": "For every positive natural d, 2^d-1 is positive and the following real identities hold: (1/2)^d divided by 1-(1/2)^d equals 1/(2^d-1); (1/2)^d divided by (1-(1/2)^d)^2 equals 2^d/(2^d-1)^2; and 2^d/(2^d-1)^2 equals 1/(2^d-1)+1/(2^d-1)^2.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "z83_half_power_mersenne_normalization",
+        "z83_squared_mersenne_kernel_split",
+        "z83_pointwise_series_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Positivity of 2^d above one for d>0, followed by denominator nonvanishing, field normalization, and a final ring identity.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "These are elementary geometric-denominator rewrites specialized to base two and the exact Lambert kernels used by the formal development; no novelty claim is made.",
+      "scope_caveat": "The identities are pointwise over the real numbers and require d>0. They do not prove summability, justify exchanging infinite sums, evaluate a Lambert series, establish coefficient positivity, decide an achievement-set membership, or imply irrationality for Erdős #249 or #257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "two_pow_sub_one_pos",
+          "module": "Erdos249257/MersenneLambertLadder.lean",
+          "line": 510
+        },
+        {
+          "declaration": "half_pow_term",
+          "module": "Erdos249257/MersenneLambertLadder.lean",
+          "line": 514
+        },
+        {
+          "declaration": "half_pow_sq_term",
+          "module": "Erdos249257/MersenneLambertLadder.lean",
+          "line": 528
+        },
+        {
+          "declaration": "mersenne_split",
+          "module": "Erdos249257/MersenneLambertLadder.lean",
+          "line": 543
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "two_pow_sub_one_pos",
+      "module": "Erdos249257/MersenneLambertLadder.lean",
+      "line": 510,
+      "role": "engine",
+      "statement_node": "positive_binary_indices_convert_half_power_kernels_exactly_to_mersenne_denominators",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Exact positivity evidence for the nonvanishing denominators used by all three normalization identities; replaces Z07's zone-only substrate receipt."
+    },
+    {
+      "declaration": "half_pow_term",
+      "module": "Erdos249257/MersenneLambertLadder.lean",
+      "line": 514,
+      "role": "representation",
+      "statement_node": "positive_binary_indices_convert_half_power_kernels_exactly_to_mersenne_denominators",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Exact pointwise conversion of the first geometric half-power kernel to a reciprocal Mersenne denominator; replaces Z07's zone-only substrate receipt."
+    },
+    {
+      "declaration": "half_pow_sq_term",
+      "module": "Erdos249257/MersenneLambertLadder.lean",
+      "line": 528,
+      "role": "representation",
+      "statement_node": "positive_binary_indices_convert_half_power_kernels_exactly_to_mersenne_denominators",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Exact pointwise conversion of the squared geometric denominator to the normalized squared Mersenne kernel; replaces Z07's zone-only substrate receipt."
+    },
+    {
+      "declaration": "mersenne_split",
+      "module": "Erdos249257/MersenneLambertLadder.lean",
+      "line": 543,
+      "role": "representation",
+      "statement_node": "positive_binary_indices_convert_half_power_kernels_exactly_to_mersenne_denominators",
+      "routing_origin": "authored_statement_replacement",
+      "routing_basis": "Exact algebraic split of the normalized squared Mersenne kernel into reciprocal first- and second-order terms; replaces Z07's zone-only substrate receipt."
+    }
+  ],
+  "intra_zone_relations": []
+}

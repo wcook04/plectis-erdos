@@ -1,0 +1,1084 @@
+{
+  "zone_id": "Z36",
+  "title": "Actual-LCM top-edge residue gaps, terminal compression, and conditional irrationality fan-in",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "linear_power_two_lcm_guard",
+      "label": "linear power-two LCM guard",
+      "note": "A factor-four central-binomial saving propagated through power-of-two doubling gives an exponent deficit 2a+4 and preserves the a+6 sign lookahead at cofinal scales."
+    },
+    {
+      "id": "first_certificate_terminal_compression",
+      "label": "first-certificate terminal compression",
+      "note": "A first dyadic certificate can be localized to a short terminal suffix whose minimum depth is controlled by the endpoint radius."
+    },
+    {
+      "id": "socket_or_mixed_guard",
+      "label": "two-level socket-or-mixed guard",
+      "note": "At the minimal b+2 terminal depth, certification is exactly classified by a local socket or a mixed-sign two-level guard, and this local data is equivalent to a guard-cylinder witness."
+    },
+    {
+      "id": "actual_lcm_top_edge_residue_gap",
+      "label": "actual-LCM top-edge residue gap",
+      "note": "A localized discrepancy residue lies outside the positive top-edge carry strip, providing a concrete nonintegrality certificate for the actual-LCM tail orbit."
+    },
+    {
+      "id": "actual_centered_magnitude_socket",
+      "label": "actual centered-magnitude socket",
+      "note": "The odd half-word top-edge band is equivalent, under the exact half-cell fit, to a lower bound on the magnitude of the true centered actual state."
+    },
+    {
+      "id": "terminal_carry_corridor",
+      "label": "exact terminal/carry corridor",
+      "note": "An integral actual-LCM orbit forces the doubled centered state into a strict open corridor determined by the terminal arithmetic letter and positive carry."
+    },
+    {
+      "id": "cofinal_top_edge_supply",
+      "label": "cofinal top-edge producer hierarchy",
+      "note": "Several increasingly flexible local witnesses transport to adjacent-suffix midbands, top-edge residue gaps, and cofinal actual-orbit nonintegrality."
+    },
+    {
+      "id": "conditional_totient_irrationality",
+      "label": "conditional totient-series irrationality",
+      "note": "Each cofinal nonintegrality producer has an exact theorem carrying it to irrationality of the totient series, but no producer hypothesis in this zone is proved unconditionally."
+    },
+    {
+      "id": "terminal_staircase_no_go",
+      "label": "terminal dyadic-staircase no-go",
+      "note": "A full terminal staircase at a modulus wider than the positive carry strip is impossible, so the retained implication from such a staircase is consumer-shaped but vacuous."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "power_two_lcm_guard_retains_linear_sign_lookahead",
+      "canonical_statement": "PROVED QUANTITATIVE GUARD: from a>=4, periodLcm(2^a) is strictly below 2^(2*2^a-(2a+4)); consequently, from a>=14 the odd-guarded canonical adjacent-suffix depth plus its successor and the full a+6 sign guard remain below 2*2^a.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "linear_power_two_lcm_guard"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "central-binomial factor-four saving propagated through the LCM doubling bound, followed by logarithmic depth arithmetic",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The central-binomial estimates are elementary; the node records their exact composition into the actual-LCM guard used downstream.",
+      "scope_caveat": "This is a quantitative room estimate. It supplies neither a residue gap nor any of the cofinal producer hypotheses required for irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "centralBinom_succ_le_four_mul",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 28
+        },
+        {
+          "declaration": "four_mul_centralBinom_le_four_pow",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 41
+        },
+        {
+          "declaration": "centralBinom_le_four_pow_pred",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 56
+        },
+        {
+          "declaration": "periodLcm_two_mul_le_periodLcm_mul_four_pow_pred",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 72
+        },
+        {
+          "declaration": "linearGuardExponent_succ",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 81
+        },
+        {
+          "declaration": "linearGuardDepth_add_signGuard_lt",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 95
+        },
+        {
+          "declaration": "periodLcm_pow_two_lt_two_pow_linearGuard",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 106
+        },
+        {
+          "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_powerTwo_succ_add_signGuard_lt",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 138
+        }
+      ]
+    },
+    {
+      "id": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix",
+      "canonical_statement": "PROVED LOCALISATION: every nonempty dyadic certificate set has a first depth; a sufficiently long first certificate compresses to a terminal certificate, whose minimum terminal depth is identified exactly and which yields an explicit terminal certificate witness.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "first_certificate_terminal_compression"
+      ],
+      "open_antecedents": [
+        "existence of at least one certified kill for the word under study"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "well-order the certificate depths, transport terminal residues through dyadic moduli, and use the first-failure edge arcs to compress the word",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made for this certificate-localisation argument.",
+      "scope_caveat": "The theorem localises a certificate once one exists. It does not prove cofinal existence of certificates for the actual-LCM word.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedKill_of_shifted_terminal",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 317
+        },
+        {
+          "declaration": "exists_firstCertifiedKill_of_exists_certifiedKill",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 378
+        },
+        {
+          "declaration": "FirstCertifiedKill.depth_floor",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 388
+        },
+        {
+          "declaration": "firstCertifiedKill_long_terminal",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 405
+        },
+        {
+          "declaration": "firstCertifiedKill_terminal_min",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 611
+        },
+        {
+          "declaration": "FirstCertifiedKill.exists_terminal_certificate",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 629
+        }
+      ]
+    },
+    {
+      "id": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification",
+      "canonical_statement": "PROVED EQUIVALENCE AND CLASSIFICATION: at terminal depth b+2, certification is equivalent to either a local socket or a mixed two-level sign guard; every first certificate yields one of these alternatives, and existence of some certificate is equivalent to existence of a finite guard-cylinder witness.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "first_certificate_terminal_compression",
+        "socket_or_mixed_guard"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "two consecutive affine residue updates classify the low/high edge arcs and package them into a finite cylinder witness",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. This node records the exact finite local normal form for the certificate search.",
+      "scope_caveat": "The equivalence is local and finite. It does not show that the actual arithmetic word meets either guard at arbitrarily large scales.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "certifiedDyadic_twoLevel_socket_or_mixed",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 651
+        },
+        {
+          "declaration": "certifiedKill_of_dyadicMixedGuard",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 742
+        },
+        {
+          "declaration": "certifiedKill_bplus2_iff_socket_or_mixed",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 767
+        },
+        {
+          "declaration": "FirstCertifiedKill.exists_socket_or_mixed",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 802
+        },
+        {
+          "declaration": "exists_certifiedKill_iff_guardCylinderWitness",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 844
+        }
+      ]
+    },
+    {
+      "id": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms",
+      "canonical_statement": "PROVED REPRESENTATION FAMILY: the actual-LCM top-edge residue-gap predicate is equivalent to a terminal suffix condition; diagonal suffix residue equals the corresponding window discrepancy; an adjacent-suffix midband forces a gap at one of two consecutive depths; and at the diagonal the gap is equivalent to the dedicated top-edge-gap predicate and is produced by either a fresh-loss residue certificate, an arithmetic kill, or a symmetric residue certificate.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_top_edge_residue_gap"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact terminal-residue transport and identification of the diagonal discrepancy with the actual arithmetic word",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made. These are exact normal forms connecting several internal certificate languages.",
+      "scope_caveat": "The equivalences and one-step producers do not establish a cofinal supply of any certificate family.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmTopEdgeResidueGap_iff_terminal",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 909
+        },
+        {
+          "declaration": "diagonalSuffixResidue_eq_windowDiscrepancy",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 933
+        },
+        {
+          "declaration": "actualLcmTopEdgeResidueGap_or_of_adjacentSuffixMidband",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 958
+        },
+        {
+          "declaration": "actualLcmTopEdgeResidueGap_zero_self_iff_lcmDiagonalTopEdgeGap",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1056
+        },
+        {
+          "declaration": "lcmDiagonalTopEdgeGap_of_diagonalFreshLossResidueCert",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1067
+        },
+        {
+          "declaration": "lcmDiagonalTopEdgeGap_of_lcmDiagonalArithmeticKill",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1079
+        },
+        {
+          "declaration": "actualLcmTopEdgeResidueGap_zero_self_of_diagonalSymmetricResidueCert",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1087
+        }
+      ]
+    },
+    {
+      "id": "localized_top_edge_gap_excludes_integral_actual_lcm_orbit",
+      "canonical_statement": "PROVED CONDITIONAL NONINTEGRALITY: at an admissible power-two scale inside the positive-sign corridor, one localized actual-LCM top-edge residue gap proves that the corresponding actual-LCM tail orbit value is not an integer.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_top_edge_residue_gap"
+      ],
+      "open_antecedents": [
+        "an actual-LCM top-edge residue gap at an admissible depth"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "an integral orbit would force the carry into the positive endpoint strip, contradicting the localized residue gap",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for this exact local consumer.",
+      "scope_caveat": "This is a one-scale implication. Erdős #249 requires a cofinal supply of such nonintegral orbit values, not a single certificate.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmTailOrbit_notMem_int_of_topEdgeResidueGap",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1314
+        }
+      ]
+    },
+    {
+      "id": "top_edge_half_word_band_is_exact_actual_centered_magnitude",
+      "canonical_statement": "PROVED EQUIVALENCE FAMILY: after centering the odd half-word residue and assuming the exact half-cell fit, membership in the top-edge band is equivalent to a lower bound on the magnitude of the true final centered state; the corresponding cofinal half-word-band supply is equivalent to the cofinal actual-final-centered-magnitude supply.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "249",
+      "concepts": [
+        "actual_centered_magnitude_socket",
+        "cofinal_top_edge_supply"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "center the residue modulo the odd half-word cell and identify it with the exact actual-state lift",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made. This is an exact translation between residue-band and actual-state languages.",
+      "scope_caveat": "The equivalence does not prove either cofinal supply. The centered-magnitude lower bound remains an open producer condition.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "centeredTopEdgeBand_iff_abs",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1360
+        },
+        {
+          "declaration": "twice_topEdgeHalfWordThreshold_le_fourPow",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1378
+        },
+        {
+          "declaration": "oddGuardTopEdgeHalfWordBand_iff_actualFinalCenteredMagnitude",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1406
+        },
+        {
+          "declaration": "oddHalfWordTopEdgeBand_iff_actualCenteredMagnitude_of_fit",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1443
+        },
+        {
+          "declaration": "topEdgeHalfWordBandSupply_iff_actualFinalCenteredMagnitudeSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1479
+        }
+      ]
+    },
+    {
+      "id": "terminal_carry_corridor_exactly_controls_integral_actual_orbits",
+      "canonical_statement": "PROVED CONDITIONAL CORRIDOR: an integral actual-LCM orbit yields an exact integer-scaled orbit difference and, under the terminal fit, places the doubled actual centered lift strictly between the terminal arithmetic letter minus the directed endpoint bound and the terminal letter; escape through either side, or terminal dominance alone, proves nonintegrality.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "terminal_carry_corridor",
+        "actual_centered_magnitude_socket"
+      ],
+      "open_antecedents": [
+        "an admissible odd rank whose actual centered state escapes the terminal/carry corridor"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact carry-orbit tracking and the identity relating twice the centered lift to the terminal arithmetic letter minus the true positive carry",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for this exact state/carry formulation.",
+      "scope_caveat": "The theorem is a local nonintegrality consumer. It does not prove that corridor escape or dominance occurs cofinally.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_int_scaled_actualLcmTailOrbit_sub_eq",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1501
+        },
+        {
+          "declaration": "exists_int_actualLcmTailOrbit_close_of_actualTerminalCarryCorridor",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1579
+        },
+        {
+          "declaration": "actualTerminalCarryCorridorEscape_of_actualLcmOrbitSeparation",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1650
+        },
+        {
+          "declaration": "two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1678
+        },
+        {
+          "declaration": "actualLcmTailOrbit_notMem_int_of_actualTerminalCarryCorridorEscape",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1824
+        },
+        {
+          "declaration": "actualLcmTailOrbit_notMem_int_of_actualTerminalDominance",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1880
+        }
+      ]
+    },
+    {
+      "id": "actual_centered_magnitude_transports_to_adjacent_midband",
+      "canonical_statement": "PROVED PRODUCER TRANSPORT: cofinal terminal dominance implies terminal/carry-corridor escape; cofinal centered magnitude also implies corridor escape; the canonical actual-final magnitude supply is a special case of the flexible odd-rank supply; and any flexible centered-magnitude supply produces the adjacent-suffix midband.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "actual_centered_magnitude_socket",
+        "terminal_carry_corridor",
+        "cofinal_top_edge_supply"
+      ],
+      "open_antecedents": [
+        "one of the stated cofinal dominance or centered-magnitude supplies"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "sign-split the exact centered magnitude against the terminal/carry corridor and translate the odd half-word band into the adjacent suffix residue",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made. These theorems compare internal producer strengths and do not establish any producer.",
+      "scope_caveat": "Every implication is conditional on a cofinal supply definition that remains unproved.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "flexibleActualTerminalCarryCorridorEscapeSupply_of_dominance",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1917
+        },
+        {
+          "declaration": "flexibleActualTerminalCarryCorridorEscapeSupply_of_magnitude",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1938
+        },
+        {
+          "declaration": "flexibleActualTopEdgeMagnitudeSupply_of_actualFinal",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 1991
+        },
+        {
+          "declaration": "powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2007
+        }
+      ]
+    },
+    {
+      "id": "half_word_or_adjacent_midband_supplies_top_edge_gap",
+      "canonical_statement": "PROVED PRODUCER CHAIN: the exact odd-guard top-edge half-word band supplies the adjacent-suffix midband; a cofinal adjacent midband supplies a cofinal actual-LCM top-edge residue gap at one of two adjacent depths; and the earlier odd-guard half-word-band supply reaches the same top-edge-gap supply using the linear LCM guard.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "linear_power_two_lcm_guard",
+        "actual_lcm_top_edge_residue_gap",
+        "cofinal_top_edge_supply"
+      ],
+      "open_antecedents": [
+        "cofinal odd-guard half-word-band or adjacent-midband supply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "adjacent-depth residue dichotomy plus the quantitative sign-buffer retained by the linear power-two LCM guard",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made. This is the exact conditional fan-in between the module's producer languages.",
+      "scope_caveat": "The source proves implications among supply predicates but no unconditional instance of any cofinal supply.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2057
+        },
+        {
+          "declaration": "powerTwoActualLcmTopEdgeResidueGapSupply_of_adjacentSuffixMidband",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2108
+        },
+        {
+          "declaration": "powerTwoActualLcmTopEdgeResidueGapSupply_of_oddGuardHalfWordBand",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2121
+        }
+      ]
+    },
+    {
+      "id": "top_edge_and_carry_supplies_give_cofinal_orbit_nonintegrality",
+      "canonical_statement": "PROVED CONDITIONAL FAN-IN: a cofinal top-edge residue-gap supply, flexible terminal-dominance supply, or flexible terminal/carry-corridor-escape supply each produces cofinally many power-two scales at which the actual-LCM tail orbit is nonintegral.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_top_edge_residue_gap",
+        "terminal_carry_corridor",
+        "cofinal_top_edge_supply"
+      ],
+      "open_antecedents": [
+        "one of the three cofinal local certificate supplies"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "apply the corresponding one-scale nonintegrality theorem at each cofinally supplied witness",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made for this internal supply-to-consumer transport.",
+      "scope_caveat": "Cofinal nonintegrality follows only under an unproved supply hypothesis.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "actualLcmOrbitNonintegralitySupply_of_topEdgeResidueGap",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2153
+        },
+        {
+          "declaration": "actualLcmOrbitNonintegralitySupply_of_flexibleActualTerminalDominance",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2163
+        },
+        {
+          "declaration": "actualLcmOrbitNonintegralitySupply_of_flexibleActualTerminalCarryCorridorEscape",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2174
+        }
+      ]
+    },
+    {
+      "id": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality",
+      "canonical_statement": "PROVED CONDITIONAL ENDPOINT FAMILY: each of seven cofinal producers—top-edge residue gap, adjacent-suffix midband, odd-guard top-edge half-word band, actual-final centered magnitude, flexible centered magnitude, flexible terminal dominance, or flexible terminal/carry-corridor escape—implies irrationality of the series sum phi(n)/2^n.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "cofinal_top_edge_supply",
+        "conditional_totient_irrationality"
+      ],
+      "open_antecedents": [
+        "an unconditional proof of at least one cofinal producer hypothesis"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "producer implications yield cofinal actual-LCM orbit nonintegrality, consumed by the established irrationality criterion",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "These are conditional formal endpoints for Erdős #249. No producer is proved and no claim is made that the open problem is solved.",
+      "scope_caveat": "All seven theorems are implications. The shared antecedent gap is substantive; counting multiple endpoint wrappers does not multiply mathematical progress or establish irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "irrational_totientSeries_of_topEdgeResidueGapSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2184
+        },
+        {
+          "declaration": "irrational_totientSeries_of_adjacentSuffixMidbandSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2191
+        },
+        {
+          "declaration": "irrational_totientSeries_of_oddGuardTopEdgeHalfWordBandSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2198
+        },
+        {
+          "declaration": "irrational_totientSeries_of_actualFinalTopEdgeMagnitudeSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2205
+        },
+        {
+          "declaration": "irrational_totientSeries_of_flexibleActualTopEdgeMagnitudeSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2213
+        },
+        {
+          "declaration": "irrational_totientSeries_of_flexibleActualTerminalDominanceSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2221
+        },
+        {
+          "declaration": "irrational_totientSeries_of_flexibleActualTerminalCarryCorridorEscapeSupply",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2230
+        }
+      ]
+    },
+    {
+      "id": "full_terminal_dyadic_staircase_is_an_empty_producer",
+      "canonical_statement": "PROVED BARRIER: a fixed small modulus always has a positive divisible representative inside a carry strip, while a full terminal dyadic staircase at a modulus wider than the positive directed room is inconsistent; the retained tail-difference and actual-orbit nonintegrality implications from such a staircase therefore have impossible hypotheses.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "terminal_staircase_no_go"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "positivity and the strict upper bound on the final arithmetic letter contradict divisibility by the wider dyadic modulus",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made. This node is a formal route-pruning result for the proposed producer.",
+      "scope_caveat": "The consumer-shaped nonintegrality theorems do not provide evidence for Erdős #249 because their terminal-staircase premise is inconsistent. Viable approaches must seek a nonzero residue gap rather than total dyadic annihilation.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "small_modulus_has_positive_divisible_candidate",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 165
+        },
+        {
+          "declaration": "actualLcmTailDiff_notMem_int_of_terminalDyadicStaircase",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2242
+        },
+        {
+          "declaration": "actualLcmTailOrbit_notMem_int_of_terminalDyadicStaircase",
+          "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+          "line": 2254
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "centralBinom_succ_le_four_mul",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 28,
+      "role": "engine",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "four_mul_centralBinom_le_four_pow",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 41,
+      "role": "engine",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "centralBinom_le_four_pow_pred",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 56,
+      "role": "engine",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "periodLcm_two_mul_le_periodLcm_mul_four_pow_pred",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 72,
+      "role": "statement",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "linearGuardExponent_succ",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 81,
+      "role": "engine",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "linearGuardDepth_add_signGuard_lt",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 95,
+      "role": "engine",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "periodLcm_pow_two_lt_two_pow_linearGuard",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 106,
+      "role": "statement",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "oddGuardedCanonicalAdjacentSuffixDepth_powerTwo_succ_add_signGuard_lt",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 138,
+      "role": "statement",
+      "statement_node": "power_two_lcm_guard_retains_linear_sign_lookahead"
+    },
+    {
+      "declaration": "certifiedKill_of_shifted_terminal",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 317,
+      "role": "statement",
+      "statement_node": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix"
+    },
+    {
+      "declaration": "exists_firstCertifiedKill_of_exists_certifiedKill",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 378,
+      "role": "statement",
+      "statement_node": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix"
+    },
+    {
+      "declaration": "FirstCertifiedKill.depth_floor",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 388,
+      "role": "statement",
+      "statement_node": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix"
+    },
+    {
+      "declaration": "firstCertifiedKill_long_terminal",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 405,
+      "role": "statement",
+      "statement_node": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix"
+    },
+    {
+      "declaration": "firstCertifiedKill_terminal_min",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 611,
+      "role": "statement",
+      "statement_node": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix"
+    },
+    {
+      "declaration": "FirstCertifiedKill.exists_terminal_certificate",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 629,
+      "role": "statement",
+      "statement_node": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix"
+    },
+    {
+      "declaration": "certifiedDyadic_twoLevel_socket_or_mixed",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 651,
+      "role": "statement",
+      "statement_node": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification"
+    },
+    {
+      "declaration": "certifiedKill_of_dyadicMixedGuard",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 742,
+      "role": "statement",
+      "statement_node": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification"
+    },
+    {
+      "declaration": "certifiedKill_bplus2_iff_socket_or_mixed",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 767,
+      "role": "statement",
+      "statement_node": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification"
+    },
+    {
+      "declaration": "FirstCertifiedKill.exists_socket_or_mixed",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 802,
+      "role": "statement",
+      "statement_node": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification"
+    },
+    {
+      "declaration": "exists_certifiedKill_iff_guardCylinderWitness",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 844,
+      "role": "statement",
+      "statement_node": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification"
+    },
+    {
+      "declaration": "actualLcmTopEdgeResidueGap_iff_terminal",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 909,
+      "role": "statement",
+      "statement_node": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms"
+    },
+    {
+      "declaration": "diagonalSuffixResidue_eq_windowDiscrepancy",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 933,
+      "role": "representation",
+      "statement_node": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms"
+    },
+    {
+      "declaration": "actualLcmTopEdgeResidueGap_or_of_adjacentSuffixMidband",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 958,
+      "role": "statement",
+      "statement_node": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms"
+    },
+    {
+      "declaration": "actualLcmTopEdgeResidueGap_zero_self_iff_lcmDiagonalTopEdgeGap",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1056,
+      "role": "statement",
+      "statement_node": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms"
+    },
+    {
+      "declaration": "lcmDiagonalTopEdgeGap_of_diagonalFreshLossResidueCert",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1067,
+      "role": "statement",
+      "statement_node": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms"
+    },
+    {
+      "declaration": "lcmDiagonalTopEdgeGap_of_lcmDiagonalArithmeticKill",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1079,
+      "role": "statement",
+      "statement_node": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms"
+    },
+    {
+      "declaration": "actualLcmTopEdgeResidueGap_zero_self_of_diagonalSymmetricResidueCert",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1087,
+      "role": "statement",
+      "statement_node": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_notMem_int_of_topEdgeResidueGap",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1314,
+      "role": "statement",
+      "statement_node": "localized_top_edge_gap_excludes_integral_actual_lcm_orbit"
+    },
+    {
+      "declaration": "centeredTopEdgeBand_iff_abs",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1360,
+      "role": "statement",
+      "statement_node": "top_edge_half_word_band_is_exact_actual_centered_magnitude"
+    },
+    {
+      "declaration": "twice_topEdgeHalfWordThreshold_le_fourPow",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1378,
+      "role": "engine",
+      "statement_node": "top_edge_half_word_band_is_exact_actual_centered_magnitude"
+    },
+    {
+      "declaration": "oddGuardTopEdgeHalfWordBand_iff_actualFinalCenteredMagnitude",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1406,
+      "role": "statement",
+      "statement_node": "top_edge_half_word_band_is_exact_actual_centered_magnitude"
+    },
+    {
+      "declaration": "oddHalfWordTopEdgeBand_iff_actualCenteredMagnitude_of_fit",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1443,
+      "role": "statement",
+      "statement_node": "top_edge_half_word_band_is_exact_actual_centered_magnitude"
+    },
+    {
+      "declaration": "topEdgeHalfWordBandSupply_iff_actualFinalCenteredMagnitudeSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1479,
+      "role": "statement",
+      "statement_node": "top_edge_half_word_band_is_exact_actual_centered_magnitude"
+    },
+    {
+      "declaration": "exists_int_scaled_actualLcmTailOrbit_sub_eq",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1501,
+      "role": "statement",
+      "statement_node": "terminal_carry_corridor_exactly_controls_integral_actual_orbits"
+    },
+    {
+      "declaration": "exists_int_actualLcmTailOrbit_close_of_actualTerminalCarryCorridor",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1579,
+      "role": "statement",
+      "statement_node": "terminal_carry_corridor_exactly_controls_integral_actual_orbits"
+    },
+    {
+      "declaration": "actualTerminalCarryCorridorEscape_of_actualLcmOrbitSeparation",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1650,
+      "role": "statement",
+      "statement_node": "terminal_carry_corridor_exactly_controls_integral_actual_orbits"
+    },
+    {
+      "declaration": "two_mul_actualOddHalfCenteredLift_eq_terminal_sub_trueCarry",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1678,
+      "role": "statement",
+      "statement_node": "terminal_carry_corridor_exactly_controls_integral_actual_orbits"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_notMem_int_of_actualTerminalCarryCorridorEscape",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1824,
+      "role": "statement",
+      "statement_node": "terminal_carry_corridor_exactly_controls_integral_actual_orbits"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_notMem_int_of_actualTerminalDominance",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1880,
+      "role": "statement",
+      "statement_node": "terminal_carry_corridor_exactly_controls_integral_actual_orbits"
+    },
+    {
+      "declaration": "flexibleActualTerminalCarryCorridorEscapeSupply_of_dominance",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1917,
+      "role": "statement",
+      "statement_node": "actual_centered_magnitude_transports_to_adjacent_midband"
+    },
+    {
+      "declaration": "flexibleActualTerminalCarryCorridorEscapeSupply_of_magnitude",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1938,
+      "role": "statement",
+      "statement_node": "actual_centered_magnitude_transports_to_adjacent_midband"
+    },
+    {
+      "declaration": "flexibleActualTopEdgeMagnitudeSupply_of_actualFinal",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 1991,
+      "role": "statement",
+      "statement_node": "actual_centered_magnitude_transports_to_adjacent_midband"
+    },
+    {
+      "declaration": "powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2007,
+      "role": "statement",
+      "statement_node": "actual_centered_magnitude_transports_to_adjacent_midband"
+    },
+    {
+      "declaration": "powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2057,
+      "role": "statement",
+      "statement_node": "half_word_or_adjacent_midband_supplies_top_edge_gap"
+    },
+    {
+      "declaration": "powerTwoActualLcmTopEdgeResidueGapSupply_of_adjacentSuffixMidband",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2108,
+      "role": "statement",
+      "statement_node": "half_word_or_adjacent_midband_supplies_top_edge_gap"
+    },
+    {
+      "declaration": "powerTwoActualLcmTopEdgeResidueGapSupply_of_oddGuardHalfWordBand",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2121,
+      "role": "statement",
+      "statement_node": "half_word_or_adjacent_midband_supplies_top_edge_gap"
+    },
+    {
+      "declaration": "actualLcmOrbitNonintegralitySupply_of_topEdgeResidueGap",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2153,
+      "role": "statement",
+      "statement_node": "top_edge_and_carry_supplies_give_cofinal_orbit_nonintegrality"
+    },
+    {
+      "declaration": "actualLcmOrbitNonintegralitySupply_of_flexibleActualTerminalDominance",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2163,
+      "role": "statement",
+      "statement_node": "top_edge_and_carry_supplies_give_cofinal_orbit_nonintegrality"
+    },
+    {
+      "declaration": "actualLcmOrbitNonintegralitySupply_of_flexibleActualTerminalCarryCorridorEscape",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2174,
+      "role": "statement",
+      "statement_node": "top_edge_and_carry_supplies_give_cofinal_orbit_nonintegrality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_topEdgeResidueGapSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2184,
+      "role": "statement",
+      "statement_node": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_adjacentSuffixMidbandSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2191,
+      "role": "statement",
+      "statement_node": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_oddGuardTopEdgeHalfWordBandSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2198,
+      "role": "statement",
+      "statement_node": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_actualFinalTopEdgeMagnitudeSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2205,
+      "role": "statement",
+      "statement_node": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_flexibleActualTopEdgeMagnitudeSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2213,
+      "role": "statement",
+      "statement_node": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_flexibleActualTerminalDominanceSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2221,
+      "role": "statement",
+      "statement_node": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_flexibleActualTerminalCarryCorridorEscapeSupply",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2230,
+      "role": "statement",
+      "statement_node": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality"
+    },
+    {
+      "declaration": "small_modulus_has_positive_divisible_candidate",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 165,
+      "role": "statement",
+      "statement_node": "full_terminal_dyadic_staircase_is_an_empty_producer"
+    },
+    {
+      "declaration": "actualLcmTailDiff_notMem_int_of_terminalDyadicStaircase",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2242,
+      "role": "statement",
+      "statement_node": "full_terminal_dyadic_staircase_is_an_empty_producer"
+    },
+    {
+      "declaration": "actualLcmTailOrbit_notMem_int_of_terminalDyadicStaircase",
+      "module": "Erdos249257/TotientActualLcmTopEdgeStaircase.lean",
+      "line": 2254,
+      "role": "statement",
+      "statement_node": "full_terminal_dyadic_staircase_is_an_empty_producer"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "first_dyadic_certificate_compresses_to_a_minimal_terminal_suffix",
+      "to": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification",
+      "relation": "implies",
+      "basis": "The first-certificate localisation reaches the minimal b+2 terminal depth, where the exact socket-or-mixed classification applies."
+    },
+    {
+      "from": "minimal_terminal_certificate_has_exact_socket_or_mixed_classification",
+      "to": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms",
+      "relation": "complements",
+      "basis": "The socket-or-mixed language classifies generic finite dyadic certificates, while the top-edge-gap language identifies the actual-LCM terminal residue and its arithmetic-kill producers."
+    },
+    {
+      "from": "localized_top_edge_gap_excludes_integral_actual_lcm_orbit",
+      "to": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms",
+      "relation": "implies",
+      "basis": "Any of the exact terminal or arithmetic-kill forms that produces a top-edge gap can be consumed by the local orbit-nonintegrality theorem."
+    },
+    {
+      "from": "top_edge_half_word_band_is_exact_actual_centered_magnitude",
+      "to": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms",
+      "relation": "reformulates",
+      "basis": "The centered-magnitude equivalence translates an exact half-word residue band into actual-state language before the adjacent-depth gap dichotomy is applied."
+    },
+    {
+      "from": "terminal_carry_corridor_exactly_controls_integral_actual_orbits",
+      "to": "localized_top_edge_gap_excludes_integral_actual_lcm_orbit",
+      "relation": "complements",
+      "basis": "Both are local nonintegrality consumers: one excludes the positive endpoint strip by a residue gap, while the other excludes the exact open strip forced by the true carry."
+    },
+    {
+      "from": "actual_centered_magnitude_transports_to_adjacent_midband",
+      "to": "terminal_carry_corridor_exactly_controls_integral_actual_orbits",
+      "relation": "implies",
+      "basis": "A magnitude or dominance witness escapes one side of the exact carry corridor and can also be translated into the adjacent-suffix residue language."
+    },
+    {
+      "from": "actual_centered_magnitude_transports_to_adjacent_midband",
+      "to": "top_edge_half_word_band_is_exact_actual_centered_magnitude",
+      "relation": "transport_of",
+      "basis": "The producer transport consumes the exact equivalence between the half-word top-edge band and the magnitude of the true centered state."
+    },
+    {
+      "from": "half_word_or_adjacent_midband_supplies_top_edge_gap",
+      "to": "power_two_lcm_guard_retains_linear_sign_lookahead",
+      "relation": "depends_on_open",
+      "basis": "The linear guard discharges the quantitative sign-buffer obligation, but the cofinal half-word or adjacent-midband producer itself remains open."
+    },
+    {
+      "from": "half_word_or_adjacent_midband_supplies_top_edge_gap",
+      "to": "actual_centered_magnitude_transports_to_adjacent_midband",
+      "relation": "implies",
+      "basis": "The flexible centered-magnitude route first yields an adjacent midband, which the adjacent-depth dichotomy converts into a top-edge gap."
+    },
+    {
+      "from": "top_edge_and_carry_supplies_give_cofinal_orbit_nonintegrality",
+      "to": "half_word_or_adjacent_midband_supplies_top_edge_gap",
+      "relation": "implies",
+      "basis": "A cofinal top-edge gap is one of the three exact supplies consumed to produce cofinal actual-orbit nonintegrality."
+    },
+    {
+      "from": "top_edge_and_carry_supplies_give_cofinal_orbit_nonintegrality",
+      "to": "terminal_carry_corridor_exactly_controls_integral_actual_orbits",
+      "relation": "implies",
+      "basis": "The cofinal dominance and corridor-escape supplies repeatedly instantiate the one-scale terminal/carry nonintegrality theorem."
+    },
+    {
+      "from": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality",
+      "to": "top_edge_and_carry_supplies_give_cofinal_orbit_nonintegrality",
+      "relation": "implies",
+      "basis": "The endpoint family factors through cofinal actual-LCM orbit nonintegrality and then the established totient-series irrationality consumer."
+    },
+    {
+      "from": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality",
+      "to": "half_word_or_adjacent_midband_supplies_top_edge_gap",
+      "relation": "depends_on_open",
+      "basis": "All endpoint wrappers still require an unproved cofinal producer; the top-edge-gap chain makes that common open antecedent explicit."
+    },
+    {
+      "from": "full_terminal_dyadic_staircase_is_an_empty_producer",
+      "to": "top_edge_gap_has_exact_terminal_and_arithmetic_kill_forms",
+      "relation": "barrier_for",
+      "basis": "The no-go rules out total terminal annihilation and redirects the search toward a nonzero residue gap or mixed terminal certificate."
+    },
+    {
+      "from": "full_terminal_dyadic_staircase_is_an_empty_producer",
+      "to": "seven_top_edge_supplies_each_conditionally_imply_totient_irrationality",
+      "relation": "barrier_for",
+      "basis": "The full staircase cannot serve as the missing cofinal antecedent for any irrationality endpoint, despite the retained implication-shaped wrapper."
+    }
+  ]
+}

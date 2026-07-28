@@ -88,6 +88,12 @@ Records a reviewed judgement about: Whether a formal proposition matches the int
 
 Does not decide: Whether the Lean kernel accepts the proof term.
 
+### Blinded recovery evaluation
+
+Decides: Whether an agent given the development as it stood before a declaration landed, and a stated subset of the derived layers, reconstructs that declaration's statement or proof mechanism. The holdout is a git checkout predating the target, so the target is absent by construction rather than by the agent's restraint.
+
+Does not decide: Whether the recovered statement is novel, significant, or correctly proved; whether the mechanism credited for the recovery is the one the original proof used; or whether a recovery generalises beyond the held-out case.
+
 ## Research and publication paths
 
 The machine source records two bounded paths. They are navigation and review order, not additional mathematical implications.

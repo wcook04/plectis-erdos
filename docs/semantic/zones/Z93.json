@@ -1,0 +1,233 @@
+{
+  "zone_id": "Z93",
+  "title": "Pair-balanced rational controls and affine tempered binary orbits",
+  "problem": "249",
+  "replaces_role_zone": "Z11",
+  "concepts": [
+    {
+      "id": "z93_pair_balanced_control",
+      "label": "pair-balanced coefficient control",
+      "note": "A bounded binary payload is moved between positions 2k and 2k+1 while preserving the total dyadic value of each pair."
+    },
+    {
+      "id": "z93_explicit_tempered_orbit",
+      "label": "explicit tempered carry orbit",
+      "note": "The coefficient control carries an explicit multiplier-nine integer orbit whose even coordinates retain the payload."
+    },
+    {
+      "id": "z93_affine_rank_two_control",
+      "label": "affine rank-two control",
+      "note": "Identity coefficients admit the multiplier-one orbit u(N)=N+2, separating temperedness from finite-rank or irrationality conclusions."
+    },
+    {
+      "id": "z93_control_boundary",
+      "label": "rational-control boundary",
+      "note": "These are rational control families in the generic linear-growth class; they are not Euler's totient coefficients or arbitrary infinite-support coefficients and prove neither Erdős 249 nor 257."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "pair_balanced_coefficients_and_orbits_have_exact_even_odd_coordinates",
+      "canonical_statement": "For the pair-balanced control, the coefficients are k-a(k) at index 2k and 2a(k) at index 2k+1. Its explicit multiplier-nine orbit is 3k+4+9a(k) at index 2k and 6k+8 at index 2k+1.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z93_pair_balanced_control",
+        "z93_explicit_tempered_orbit",
+        "z93_control_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Parity splitting and exact simplification of the two defining if-then-else expressions.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Exact evaluations of an explicit control family; no novelty claim is made.",
+      "scope_caveat": "The coordinate formulas concern an artificial rational control family, not the totient sequence, and do not imply an irrationality or nonintegrality statement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "globalBalancedCoeff_even",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 462
+        },
+        {
+          "declaration": "globalBalancedCoeff_odd",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 466
+        },
+        {
+          "declaration": "globalBalancedOrbit_even",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 471
+        },
+        {
+          "declaration": "globalBalancedOrbit_odd",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 475
+        }
+      ]
+    },
+    {
+      "id": "bounded_pair_payloads_have_a_tempered_orbit_and_fixed_value_four_ninths",
+      "canonical_statement": "If a(0)=0 and every payload digit a(k) is at most one, then the pair-balanced coefficient sequence satisfies c(n)≤n, its explicit multiplier-nine orbit is tempered, and the resulting binary coefficient series is exactly 4/9 for every such payload.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z93_pair_balanced_control",
+        "z93_explicit_tempered_orbit",
+        "z93_control_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The parity formulas give linear growth and the exact carry recurrence; an affine-over-geometric estimate proves temperedness, after which tail-orbit rigidity evaluates the series.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "An explicit rational control model used to test the strength of generic tail-orbit arguments.",
+      "scope_caveat": "The theorem demonstrates that rich bounded payloads can coexist with a fixed rational value. It does not construct a totient-series model, refute a valid totient-specific invariant, or decide Erdős 249.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "globalBalancedCoeff_le_self",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 482
+        },
+        {
+          "declaration": "globalBalancedOrbit_isTempered",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 499
+        },
+        {
+          "declaration": "globalBalancedCoeff_value",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 545
+        }
+      ]
+    },
+    {
+      "id": "the_pair_payload_is_recovered_exactly_from_even_carry_coordinates",
+      "canonical_statement": "At every even coordinate 2k, subtracting the zero-payload orbit from the orbit with payload a gives exactly 9a(k). Thus the arbitrary bounded payload remains explicitly visible in the carry even though every control has the same series value 4/9.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z93_pair_balanced_control",
+        "z93_explicit_tempered_orbit",
+        "z93_control_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Direct subtraction of the two exact even-coordinate orbit formulas.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "An exact payload-decoding identity for the explicit control family.",
+      "scope_caveat": "Payload recovery is a no-go witness for overly coarse generic state summaries only; it is not an obstruction theorem for the actual totient sequence.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "globalBalancedOrbit_even_payload",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 557
+        }
+      ]
+    },
+    {
+      "id": "identity_coefficients_have_an_affine_multiplier_one_tempered_orbit",
+      "canonical_statement": "The identity coefficient sequence c(n)=n has the explicit multiplier-one tempered orbit u(N)=N+2. Hence a coefficient family may have an affine, rank-two section structure while still satisfying the exact tempered carry recurrence.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z93_affine_rank_two_control",
+        "z93_control_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "A direct recurrence calculation followed by the classical limit N/2^N→0.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary affine control model.",
+      "scope_caveat": "The identity coefficients are not Euler's totient function. This control prevents finite-rank structure alone from being read as an irrationality criterion.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "idCoeff_temperedOrbit",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 564
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "globalBalancedCoeff_even",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 462,
+      "role": "representation",
+      "statement_node": "pair_balanced_coefficients_and_orbits_have_exact_even_odd_coordinates"
+    },
+    {
+      "declaration": "globalBalancedCoeff_odd",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 466,
+      "role": "representation",
+      "statement_node": "pair_balanced_coefficients_and_orbits_have_exact_even_odd_coordinates"
+    },
+    {
+      "declaration": "globalBalancedOrbit_even",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 471,
+      "role": "representation",
+      "statement_node": "pair_balanced_coefficients_and_orbits_have_exact_even_odd_coordinates"
+    },
+    {
+      "declaration": "globalBalancedOrbit_odd",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 475,
+      "role": "representation",
+      "statement_node": "pair_balanced_coefficients_and_orbits_have_exact_even_odd_coordinates"
+    },
+    {
+      "declaration": "globalBalancedCoeff_le_self",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 482,
+      "role": "engine",
+      "statement_node": "bounded_pair_payloads_have_a_tempered_orbit_and_fixed_value_four_ninths"
+    },
+    {
+      "declaration": "globalBalancedOrbit_isTempered",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 499,
+      "role": "engine",
+      "statement_node": "bounded_pair_payloads_have_a_tempered_orbit_and_fixed_value_four_ninths"
+    },
+    {
+      "declaration": "globalBalancedCoeff_value",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 545,
+      "role": "statement",
+      "statement_node": "bounded_pair_payloads_have_a_tempered_orbit_and_fixed_value_four_ninths"
+    },
+    {
+      "declaration": "globalBalancedOrbit_even_payload",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 557,
+      "role": "statement",
+      "statement_node": "the_pair_payload_is_recovered_exactly_from_even_carry_coordinates"
+    },
+    {
+      "declaration": "idCoeff_temperedOrbit",
+      "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+      "line": 564,
+      "role": "statement",
+      "statement_node": "identity_coefficients_have_an_affine_multiplier_one_tempered_orbit"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "pair_balanced_coefficients_and_orbits_have_exact_even_odd_coordinates",
+      "to": "bounded_pair_payloads_have_a_tempered_orbit_and_fixed_value_four_ninths",
+      "relation": "implies",
+      "basis": "The parity formulas supply the recurrence and growth calculations used by the tempered-orbit and fixed-value theorem."
+    },
+    {
+      "from": "the_pair_payload_is_recovered_exactly_from_even_carry_coordinates",
+      "to": "bounded_pair_payloads_have_a_tempered_orbit_and_fixed_value_four_ninths",
+      "relation": "barrier_for",
+      "basis": "It shows that the fixed rational value does not erase the arbitrary payload from the carry state."
+    }
+  ]
+}

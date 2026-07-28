@@ -1,0 +1,15 @@
+import ErdosProblems.Lift.Recon257
+
+open Erdos249257 Erdos249257.Recon257
+
+#print axioms ratchet_finite_core
+#print axioms ratchetRun_pos_of_survivorPhase
+#print axioms ratchetRun_eq_zero_of_not_survivorPhase
+#print axioms ratchet_excludes
+#print axioms finalMiddleCell_neg_two_survivorPhase
+#print axioms ratchetRun_bound
+#print axioms pulseFloor_le_belowPulse
+#print axioms seamExcess_landing_eq_two
+#print axioms survivorPhase_iff_mem_finalMiddleTwentySixPhaseSurvivors
+
+#print axioms Erdos249257.eventualRightTail_positive_affineExcess

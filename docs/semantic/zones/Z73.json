@@ -1,0 +1,169 @@
+{
+  "zone_id": "Z73",
+  "title": "Prime-ray order consumers, finite-support escape, and unbounded prime-divisor supply",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z73_bounded_degree_order_consumer",
+      "label": "bounded-degree exact-order consumer",
+      "note": "Every prime divisor of a layer C(mq) supplies a witness k between 1 and d with mq dividing p^k-1."
+    },
+    {
+      "id": "z73_finite_support_escape",
+      "label": "eventual escape from finite prime support",
+      "note": "Every prescribed finite set of rational primes is absent from sufficiently remote prime-ray layers."
+    },
+    {
+      "id": "z73_nontrivial_layer_supply",
+      "label": "eventual nontrivial clean layer supply",
+      "note": "At sufficiently large prime indices, C(mq) is nontrivial and coprime to mq."
+    },
+    {
+      "id": "z73_unbounded_prime_divisor_supply",
+      "label": "unbounded prime divisors on remote prime indices",
+      "note": "Beyond arbitrary size and index thresholds, a layer C(mq) has a prime divisor larger than the size threshold."
+    },
+    {
+      "id": "z73_conditional_authority_boundary",
+      "label": "abstract producer boundary",
+      "note": "The generic theorems transport order and layer-supply hypotheses; they do not establish those hypotheses for an arbitrary layer or prove a carry kill or irrationality."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "bounded_degree_order_witnesses_force_eventual_escape_from_every_finite_prime_set",
+      "canonical_statement": "Let m>0. If every prime divisor p of every prime-index layer C(mq) has some exact-order witness exponent k with 1≤k≤d and mq dividing p^k-1, then for every finite set S of primes there is a threshold Q₀ such that no p in S divides C(mq) whenever q is prime and q≥Q₀.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z73_bounded_degree_order_consumer",
+        "z73_finite_support_escape",
+        "z73_conditional_authority_boundary"
+      ],
+      "open_antecedents": [
+        "Instantiate BoundedDegreeOrderConsumer C m d for the layer family of interest; positivity of m is the theorem's explicit arithmetic side condition."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "For a finite support S, choose the index threshold above ∑_{p∈S} p^d. If p∈S divided a later layer, the order consumer would give mq≤p^k-1<q, contradicting q≤mq when m>0.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is the standard finiteness consequence of a uniform degree bound on multiplicative-order witnesses, packaged for the repository's prime-ray layer interface.",
+      "scope_caveat": "No nontrivial-layer or Archimedean growth hypothesis is needed for this exclusion step. Conversely, exclusion alone does not show that any layer has a prime divisor, produce a large divisor, prove a carry discrepancy, or imply irrationality.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "finitePrimeSupportEscape_of_orderConsumer",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 116
+        }
+      ]
+    },
+    {
+      "id": "nontrivial_layers_plus_finite_support_escape_force_remote_large_prime_divisors",
+      "canonical_statement": "If C has eventual nontrivial clean layers on the prime ray mq and those layers eventually escape every prescribed finite prime support, then for every size bound B and prime-index lower bound N₀ there are primes q≥N₀ and p>B such that p divides C(mq).",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z73_nontrivial_layer_supply",
+        "z73_finite_support_escape",
+        "z73_unbounded_prime_divisor_supply",
+        "z73_conditional_authority_boundary"
+      ],
+      "open_antecedents": [
+        "Instantiate PrimeRayLayerSupply C m, supplying eventual nontriviality of C(mq).",
+        "Instantiate FinitePrimeSupportEscape C m for the same layer family."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Apply finite-support escape to all naturals below B+1, choose a prime q above the supply, escape, and requested index thresholds, take a prime divisor of the nontrivial layer, and exclude that divisor from the bounded range.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The passage from eventual nontriviality plus escape from each finite support to unbounded prime divisors is an elementary compact finite-support argument.",
+      "scope_caveat": "The theorem consumes, rather than proves, both layer supply and finite-support escape. It is existential and supplies no effective least q or p; the coprimality component of PrimeRayLayerSupply is stronger than what this proof uses. No target avoidance, carry kill, or irrationality follows.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 144
+        }
+      ]
+    },
+    {
+      "id": "order_realisability_and_nontrivial_layer_supply_form_the_complete_abstract_prime_ray_producer",
+      "canonical_statement": "Let m>0. If C has eventual nontrivial clean layers on the prime ray mq and every prime divisor of C(mq) has an exact-order witness in some degree k≤d, then the prime divisors of those layers are unbounded even after imposing an arbitrary lower bound on the prime index q.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z73_bounded_degree_order_consumer",
+        "z73_nontrivial_layer_supply",
+        "z73_finite_support_escape",
+        "z73_unbounded_prime_divisor_supply",
+        "z73_conditional_authority_boundary"
+      ],
+      "open_antecedents": [
+        "Instantiate PrimeRayLayerSupply C m for the layer family of interest.",
+        "Instantiate BoundedDegreeOrderConsumer C m d for a uniform finite degree d; positivity of m is explicit."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Compose bounded-degree order realisability with finite-support escape, then compose that escape theorem with eventual nontrivial layer supply.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The result is a direct composition of the two exact generic interfaces. The X-2/Mersenne specialization is discharged unconditionally elsewhere; this node makes no broader polynomial-realisability claim.",
+      "scope_caveat": "For the concrete X-2 layer, Z35 records unconditional supply and degree-one order hypotheses. For arbitrary layers, polynomial/resultant order realisability and Archimedean nontriviality remain inputs. Even unbounded prime support supplies only arithmetic anchors, not cofinal certified kills or irrationality of the binary totient series.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "unboundedPrimeDivisorSupply_of_orderConsumer",
+          "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+          "line": 172
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "finitePrimeSupportEscape_of_orderConsumer",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 116,
+      "role": "statement",
+      "statement_node": "bounded_degree_order_witnesses_force_eventual_escape_from_every_finite_prime_set",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper-selected theorem is exact direct evidence for the first producer stage: bounded-degree order witnesses imply finite-support escape without a layer-supply assumption."
+    },
+    {
+      "declaration": "unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 144,
+      "role": "statement",
+      "statement_node": "nontrivial_layers_plus_finite_support_escape_force_remote_large_prime_divisors",
+      "routing_origin": "source_exact_direct_evidence",
+      "routing_basis": "This exact source theorem is the unlisted middle bridge needed to interpret the full structural family and the composition used by the paper-selected endpoint."
+    },
+    {
+      "declaration": "unboundedPrimeDivisorSupply_of_orderConsumer",
+      "module": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
+      "line": 172,
+      "role": "statement",
+      "statement_node": "order_realisability_and_nontrivial_layer_supply_form_the_complete_abstract_prime_ray_producer",
+      "routing_origin": "paper_selected_direct_evidence",
+      "routing_basis": "The paper-selected endpoint composes the two generic stages and is instantiated unconditionally for the X-2 layer in CyclotomicAnchoredKill."
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "order_realisability_and_nontrivial_layer_supply_form_the_complete_abstract_prime_ray_producer",
+      "to": "bounded_degree_order_witnesses_force_eventual_escape_from_every_finite_prime_set",
+      "relation": "generated_by",
+      "basis": "The complete producer first applies finitePrimeSupportEscape_of_orderConsumer to the bounded-degree order hypothesis."
+    },
+    {
+      "from": "order_realisability_and_nontrivial_layer_supply_form_the_complete_abstract_prime_ray_producer",
+      "to": "nontrivial_layers_plus_finite_support_escape_force_remote_large_prime_divisors",
+      "relation": "generated_by",
+      "basis": "The complete producer then supplies the derived finite-support escape and the assumed layer supply to the generic unbounded-prime-divisor bridge."
+    },
+    {
+      "from": "nontrivial_layers_plus_finite_support_escape_force_remote_large_prime_divisors",
+      "to": "bounded_degree_order_witnesses_force_eventual_escape_from_every_finite_prime_set",
+      "relation": "complements",
+      "basis": "The first theorem produces the finite-support escape interface from order witnesses; the second consumes that interface together with nontrivial layer supply."
+    }
+  ]
+}

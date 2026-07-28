@@ -1,0 +1,862 @@
+{
+  "lens": "barrier_engine",
+  "note": "Cross-zone only. 'edges' holds the closed-vocabulary relations (barrier_for, repair_of, supersedes) and is what scripts/build_semantic_corpus.py ingests. 'non_edges' holds the other half of this lens's mandate - the sibling engine, method or parameter family that a barrier demonstrably does NOT reach - under the relation name 'does_not_block'. That name is deliberately kept out of 'edges' because it is not in RELATIONS and scripts/check_semantic_corpus.py enforces the closed vocabulary; it is recorded here rather than left to the reader because a barrier whose unreached siblings are unrecorded is exactly the failure this layer exists to prevent. from_zone/to_zone follow relations_equivalence_reformulation.json and disambiguate the two node ids (lcm_cone_flatness_law, lcm_ray_window_structure) that occur in both Z01 and Z06.",
+  "barriers_without_cross_zone_relation": [
+    {
+      "node": "parity_does_not_decide_margin_socket",
+      "zone": "Z05",
+      "reason": "Structurally the closest analogue of the squarefree parity obstruction - one parity bit cannot decide the reduced margin socket - but everything it blocks and everything it leaves open (two or more bits, higher powers of two, sign information, non-bitwise arithmetic) lives inside Z05. The theorem is stated for an abstract (m, A) pair and is never instantiated at the actual t = 827 row, so no cross-zone object is reached either."
+    },
+    {
+      "node": "three_rank_window_core_no_go",
+      "zone": "Z05",
+      "reason": "Its one named unclosed sibling, the ThreeScaleAffineEscapeSupply engine, is recorded intra-zone via power_two_supply_ladder_equivalences. No cross-zone engine consumes the three-rank edge-tube window."
+    },
+    {
+      "node": "n243_bounded_rise_barrier",
+      "zone": "Z17",
+      "reason": "Erdos #243 is developed only in Z17, so its blocked regime (bounded rise of a reduced exact tail) and its unclosed siblings (unbounded increments, non-divergent tails, failed coprimality, unstable gcd) are all intra-zone. No #249/#257 engine consumes the product-cleared reciprocal-tail orbit."
+    }
+  ],
+  "edges": [
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "generic_coefficient_certificate_engine",
+      "to_zone": "Z01",
+      "relation": "barrier_for",
+      "basis": "not_exists_digitwise_certificates_squarefreeSupport: at the squarefree support and every even base b, no tuple (N,K,L,C) satisfies the digitwise weighted-coefficient block schema already at precision q = b^2; that schema is exactly the hypothesis consumed by irrational_coeff_series_of_weighted_coeff_block_certificates / irrational_erdosSupportSeries_of_weighted_coeff_certificates, the evidence of this engine node.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "carry_aware_certificate_engine",
+      "to_zone": "Z01",
+      "relation": "barrier_for",
+      "basis": "not_exists_carry_certificates_squarefreeSupport, via no_carry_block_certificate: the carried first block forces b to divide the last first-block coefficient (carry_block_forces_base_divides_last_coefficient), but the squarefree incidence is 2^omega(n) - 1, odd at every n >= 2 (squarefree_incidence_is_two_pow_omega_minus_one), so the aggregate divisibility hypothesis of irrational_coeff_series_of_weighted_coeff_carry_block_certificates has no instance at even b.",
+      "confidence": "high"
+    },
+    {
+      "from": "mobius_sign_truncation_overshoots_one_half",
+      "from_zone": "Z10",
+      "to": "lambert_rung_moebius_rational",
+      "to_zone": "Z07",
+      "relation": "barrier_for",
+      "basis": "tsum_negativeMobius_eq_half_add_positiveMobiusTail is literally the sign split of tsum_moebius_div_two_pow_sub_one_eq_half (sum mu(d)/(2^d - 1) = 1/2); half_lt_tsum_negativeMobius then shows the negative-Mobius Boolean truncation exceeds 1/2 by at least 1/63, so the rational Lambert rung cannot be converted into a Boolean Mersenne support realising 1/2.",
+      "confidence": "high"
+    },
+    {
+      "from": "mobius_sign_truncation_overshoots_one_half",
+      "from_zone": "Z10",
+      "to": "lambert_ladder_rational_rungs",
+      "to_zone": "Z01",
+      "relation": "barrier_for",
+      "basis": "Same sign split applied to the L(mu) = 1/2 rung recorded in this node: the Boolean-support reading of that rung overshoots its own value by at least 1/63 (half_add_one_div_sixty_three_le_tsum_negativeMobius), so the rung is not a route into the Mersenne achievement set.",
+      "confidence": "high"
+    },
+    {
+      "from": "primitive_euler_index_no_lift_barrier",
+      "from_zone": "Z07",
+      "to": "totient_series_moebius_square_lens",
+      "to_zone": "Z01",
+      "relation": "barrier_for",
+      "basis": "This node presents #249 as the Lambert value of the primitive-conductor weight A = phi * mu; no_fixed_integral_primitive_euler_index shows no horizon-independent positive integer clears the normalised coordinates A(n)/n, since every odd prime p <= N and every p^2 <= N must divide it. Any denominator-clearing attack mounted on that presentation must therefore be horizon-dependent. Scope: only the ordinary integral Euler/Witt normalisation is closed.",
+      "confidence": "medium"
+    },
+    {
+      "from": "n1049_three_halves_barrier",
+      "from_zone": "Z17",
+      "to": "generic_coefficient_certificate_engine",
+      "to_zone": "Z01",
+      "relation": "barrier_for",
+      "basis": "The coordinatewise corridor predicate (a^K divides Q*digit, 0 < digit <= N+K, Q*b^(N+K+1) < a^(K+1)) is the rational-base transcription of this engine's three clauses - first-block divisibility, the c(m) <= m growth envelope, and the height inequality. ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor shows it has no instance at base 3/2 once N >= 1 and K >= 1, via n1049_corridor_power_vs_linear. Scope: only the literal coordinatewise transfer at 3/2; the identification of the corridor with this engine's schema is a reviewed reading of the two Lean shapes, not a proved equivalence.",
+      "confidence": "medium"
+    },
+    {
+      "from": "exponential_depth_pays_budgets",
+      "from_zone": "Z08",
+      "to": "endpoint_certificate_depth_floor",
+      "to_zone": "Z06",
+      "relation": "repair_of",
+      "basis": "certifiedKill_depth_floor forbids only bounded or sub-logarithmic depth, requiring 2(N+h+L+2) < 2^L. exists_natural_window_depth_with_error produces, for any base and any positive error budget and beyond any prescribed threshold, a depth that satisfies the (strictly stronger) certificate room inequality and simultaneously drives the phase-truncation error below the budget, so the floor is met rather than violated.",
+      "confidence": "high"
+    },
+    {
+      "from": "tempered_orbit_rigidity",
+      "from_zone": "Z11",
+      "to": "n251_free_carry_barrier",
+      "to_zone": "Z17",
+      "relation": "repair_of",
+      "basis": "The barrier's freedom comes from an arbitrary integer carry K with no growth constraint (ErdosProblems.Erdos251.carryPartialSum_eq is a bare telescoping identity with no limit taken). temperedBinaryOrbit_eq_scaledTail proves that once c(n) <= n and u(N)/2^N -> 0 are imposed, u(N) = v * T_c(N) for every N, so exactly the freedom the barrier exploits is removed; the Z17 scope itself flags that the natural-valued version needs K(n+1) <= 2K(n).",
+      "confidence": "high"
+    },
+    {
+      "from": "in_strip_two_sheet_split",
+      "from_zone": "Z16",
+      "to": "raw_dyadic_safety_does_not_force_seam_escape",
+      "to_zone": "Z13",
+      "relation": "repair_of",
+      "basis": "The barrier's witness has scalar seam hole H = 3 lying inside the strip of half width eight, i.e. exactly the crossing case where the hole fails to escape. CylinderStage.feedbackAdvance_or_inStripTwoSheet proves that when the crossing hole stays inside the next strip the live words split into two exact endpoint cylinders rather than dying, so seam escape is not needed for the stage to survive.",
+      "confidence": "medium"
+    },
+    {
+      "from": "rewind_history_promotion_dichotomy",
+      "from_zone": "Z16",
+      "to": "boundary_pair_not_forced_by_scalar_seam",
+      "to_zone": "Z15",
+      "relation": "repair_of",
+      "basis": "The barrier shows one instance where exact rewind provenance plus a width-valid scalar seam pair does not entail RewindBaseHalfDivisorBoundaryPairAt. commonRestrictionAt_succ_or_rewindBaseHalfDivisorBoundaryPairAt replaces that unforced implication by a total dichotomy: either the suffix cylinder promotes through the next prefix bit, or the two adjacent base ancestors are literally the marked true/false boundary pair - so no route needs the boundary pair to be forced.",
+      "confidence": "high"
+    },
+    {
+      "from": "rational_denominator_divisor_survival",
+      "from_zone": "Z11",
+      "to": "scalar_localisation_height_barrier",
+      "to_zone": "Z09",
+      "relation": "repair_of",
+      "basis": "The barrier shows scalar clearing transfers the discarded reduced denominator into the coefficient (scalarLocalization_complement_dvd). survivingDivisor_dvd_scaled_divInt_den does that bookkeeping exactly rather than trying to avoid it: for C dividing D and coprime to |a|, C/gcd(C,h) divides the denominator of (h*a)/D, so a scalar multiplier h cancels precisely gcd(C,h) of C and no more.",
+      "confidence": "medium"
+    },
+    {
+      "from": "two_sheet_hole_only_reachability",
+      "from_zone": "Z16",
+      "to": "threshold_profile_realizes_protected_seam",
+      "to_zone": "Z15",
+      "relation": "supersedes",
+      "basis": "InStripTwoSheetStage.halfTerminalReachable_of_ne_hole realizes every terminal carry of the full square-root strip except the single hole - the Z16 node states this is strictly stronger than the protected 3..27 realization interface - and InStripTwoSheetStage.protectedEvenSeamRealizedAt reproduces the same consumer that protectedEvenSeamRealizedAt_succ_of_profile was built to feed, without the two-valued threshold-profile hypothesis.",
+      "confidence": "high"
+    },
+    {
+      "from": "feedback_trichotomy_advance_or_seam",
+      "from_zone": "Z16",
+      "to": "history_alternative_needs_canonical_seam_bridge",
+      "to_zone": "Z15",
+      "relation": "supersedes",
+      "basis": "SelectedHalfWindow.historyAlternative_of_rewindHistory delivers its disjunction only under an assumed, unproved bridge from the scalar seam pair to an actual canonical even seam. CylinderStage.feedbackStep_or_protectedSeam is total and unconditional at an exact half-divisor horizon: below, above or crossing, with the crossing branch routed through the unit-drop profile into protectedEvenSeamRealizedAt_succ_of_profile, and there is no fourth object-level case.",
+      "confidence": "high"
+    },
+    {
+      "from": "ready_cutoff_determines_per_sheet_coefficients",
+      "from_zone": "Z16",
+      "to": "fixed_coefficient_window_step",
+      "to_zone": "Z15",
+      "relation": "supersedes",
+      "basis": "The Z15 step requires all representatives of the window to share the SAME next-row proper-divisor coefficient C. ProfiledGapStage.hasNextCoeffProfile_of_ready derives each sheet's next-row coefficient from its own retained literal prefix whenever N <= 2M, producing the per-sheet profile automatically; the Z16 node records that this replaces the cross-sheet common-coefficient requirement and, unlike it, survives cutoff promotion.",
+      "confidence": "high"
+    }
+  ],
+  "non_edges": [
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "low_carry_certificate_engine",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "THE canonical unreached sibling, named with declaration and line in the barrier's own scope caveat: irrational_coeff_series_of_weighted_coeff_low_carry_block_certificates (CertificateKernel.lean:14707) imposes no first-block divisibility at all, only the height inequality q*(V*b^(L-K) + C + N+L+2) < b^L with V the carry residue mod b^K, so dvd_last_of_carry_block has nothing to attack, the parity of 2^omega(n) - 1 is irrelevant and the K <= 1 density step never triggers.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "gap_certificate_engine",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "The gap certificate replaces the bottom-band demand by avoidance of one thin top band (W + q*(C+N+L+2) < b^L) and carries no divisibility clause; by engine_subsumption_carry_low_carry_gap the low-carry certificate is its j = 0 case, so a fortiori the gap interface survives wherever the low-carry one does.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "engine_subsumption_carry_low_carry_gap",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "This node is the machine-checked ordering digitwise -> exact-carry -> low-carry -> gap; the barrier removes only the two strictly strongest links of that chain at the squarefree support, so the chain itself and its two weaker links stand. Reading the barrier as closing 'the block-certificate family' contradicts this node.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "lcm_gap_irrationality_theorem",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "Named explicitly in the barrier's scope caveat item (5): irrational_erdosSum_of_lcm_gap is entirely unaffected, since it goes through a denominator/lcm-gap criterion and never forms a block certificate.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "near_integer_irrationality_criterion",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "Named explicitly in the barrier's scope caveat item (5): the near-integer engine irrational_of_pow_mul_near_int is untouched; the barrier only shows one family of suppliers of near-integer witnesses is empty at this support, not that near-integer witnesses fail to exist.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "periodic_support_irrationality",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "Named explicitly in the barrier's scope caveat item (5): the periodic and residue-class specialisations of CertificateKernel are unaffected. Their supplier is a periodic divisor-orbit sieve (bpow_dvd_supportCoeff_of_periodic_exact_block), which manufactures divisibility from Euler cycles instead of assuming it of the given coefficient.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "periodic_weight_irrationality",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "Same scope clause: periodic weights are a different coefficient normalisation. The obstruction is a property of 2^omega(n) - 1, not of the support, so it does not transfer to any eventually periodic weight.",
+      "confidence": "high"
+    },
+    {
+      "from": "no_block_certificate_at_squarefree_support",
+      "from_zone": "Z10",
+      "to": "erdos_borwein_full_support_irrationality",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "The argument is about one specific support; the full support is proved irrational in the same kernel by tau_block_certificate_supply feeding the divisor block engine, so the barrier is silent about it (scope item 6).",
+      "confidence": "high"
+    },
+    {
+      "from": "lcm_gap_fails_at_full_support",
+      "from_zone": "Z01",
+      "to": "erdos_borwein_constant_irrational",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "lcm_gap_hypothesis_fails_full_support falsifies only the hypothesis of irrational_erdosSum_of_lcm_gap at the support a_k = k+1, because the prefix lcm already contains the coprime pair k-1, k. The value itself is proved irrational by the near-integer block-certificate engine (irrational_erdosBorweinMersenneConstant), so a dead engine is not a dead target.",
+      "confidence": "high"
+    },
+    {
+      "from": "period_four_sign_weight_zero_progression",
+      "from_zone": "Z01",
+      "to": "mobius_centered_carry_coboundary",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "The zero progression is produced by the divisor involution pairing opposite signs of the single period-four weight 1,0,-1,0. The Mobius baseline used to recentre the half carry has divisor sum 1 at every n >= 2 (signed_mobius_baseline_divisor_identity), so its coefficient never vanishes on a progression and the barrier's mechanism cannot apply to it.",
+      "confidence": "medium"
+    },
+    {
+      "from": "prime_adjunction_diamond_no_go",
+      "from_zone": "Z05",
+      "to": "joint35_cone_window_certificate",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier's entire content is upward propagation of the hit predicate (scaleFullTargetHit_mul), which collapses the four-hit square at H, pH, qH, pqH to its bottom vertex. The joint (3,5) cone observable R_(15H) - 3R_(3H) - 2R_(5H) + 4R_H is a two-prime diamond built from ACTUAL tail differences and certified by a window residue mod 2^L against a sharp radius (joint35Cone_notMem_int_of_cert); the barrier's scope explicitly exempts routes working with a projection of the actual state rather than with the hit predicate.",
+      "confidence": "high"
+    },
+    {
+      "from": "prime_adjunction_diamond_no_go",
+      "from_zone": "Z05",
+      "to": "prime_jump_supply_implies_249",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The prime-jump commutator J(H,p) = D(pH) - p D(H) is a single-prime, arity-one observable on the actual diagonal tail differences with its own sharp radius 3pH + (p+1)(L+2); the barrier's scope explicitly leaves obstructions at a single scale and diagrams of arity other than two open.",
+      "confidence": "high"
+    },
+    {
+      "from": "prime_adjunction_diamond_no_go",
+      "from_zone": "Z05",
+      "to": "exponent_only_three_transport_supply_implies_249",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The balanced four-vertex transport commutator is evaluated at the lcm heights periodLcm(3^a - 1), which are not a multiplicative ray of the form H -> kH, and it reads non-integrality of the actual word rather than a conjunction of hit predicates.",
+      "confidence": "medium"
+    },
+    {
+      "from": "explicit_shadow_transport_has_zero_diamond_curvature",
+      "from_zone": "Z05",
+      "to": "prime_jump_channel_migration",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier proves flatness only for the correction built from the explicit shadow (foreignTransportCorrection_primeAdjunction_flat), whose transport term is the endpoint coboundary Q_k(H)E_H - E_{kH}. residueHeckeDefect_eq_postJump_add_migration shows the actual-state channel commutator carries a pre-jump migration term beyond the post-jump value, and residueHeckeDefect_eq_zero_of_dvd localises the cancellation to carriers dividing H, so the actual state is not a coboundary of the explicit shadow.",
+      "confidence": "high"
+    },
+    {
+      "from": "explicit_shadow_transport_has_zero_diamond_curvature",
+      "from_zone": "Z05",
+      "to": "migration_sign_reversal_fixture",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "Kernel-checked counter-instance to any extension of the flatness verdict to the actual state: at d = 5, H = 12, p = 5 the transition channel is 10228/961 while its post-jump part alone is -12/31, so the migration term reverses the sign and the quantity is nonzero.",
+      "confidence": "high"
+    },
+    {
+      "from": "explicit_shadow_transport_has_zero_diamond_curvature",
+      "from_zone": "Z05",
+      "to": "upper_half_channel_survives_scaled_denominator",
+      "to_zone": "Z04",
+      "relation": "does_not_block",
+      "basis": "T4 (upperHalfChannel_survivorProduct_dvd_den) is a single-height statement about which Mersenne channels survive reduction of (h*M_r)/(2^r - 1); flatness of the two-prime transport correction constrains holonomy along scale rays only and says nothing about denominator survival at a fixed height.",
+      "confidence": "medium"
+    },
+    {
+      "from": "explicit_shadow_transport_has_zero_diamond_curvature",
+      "from_zone": "Z05",
+      "to": "lcm_height_denominator_lower_bound",
+      "to_zone": "Z04",
+      "relation": "does_not_block",
+      "basis": "lcmHeight_scaledMobiusShadow_den_lower_bound gives the reduced denominator of H_t * numericMobiusShadow H_t at least 2^(t/2), a height-wise growth statement about the same explicit shadow that is untouched by vanishing diamond curvature of its transport correction.",
+      "confidence": "medium"
+    },
+    {
+      "from": "envelope_only_no_go",
+      "from_zone": "Z05",
+      "to": "curvature_residue_gap_nonintegrality",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier rules out proofs whose only input about the corrections is a uniform magnitude envelope, and its witness is a constructed affine orbit, not the actual #249 orbit. The curvature certificate reads the exact integer window residue mod 2^L against the sharp radius 6H + 3L + 3, i.e. it consumes the arithmetic of the actual state, which the barrier's scope explicitly exempts.",
+      "confidence": "medium"
+    },
+    {
+      "from": "envelope_only_no_go",
+      "from_zone": "Z05",
+      "to": "certified_kill_soundness",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "Same reason: window, survivor and rank-two kills are decided from the actual totient window discrepancy modulo 2^L, not from a magnitude envelope on corrections; the barrier's countermodel orbits are constructed and make no claim about actual totient differences.",
+      "confidence": "medium"
+    },
+    {
+      "from": "endpoint_certificate_depth_floor",
+      "from_zone": "Z06",
+      "to": "diagonal_kill_t29",
+      "to_zone": "Z02",
+      "relation": "does_not_block",
+      "basis": "certifiedKill_depth_floor is a necessary condition 2(N+h+L+2) < 2^L on any FIRING certificate, so a firing certificate is a witness that the floor is satisfiable, not a casualty of it: the t = 29 diagonal fires at depth L = 45 with H = 2329089562800, i.e. at logarithmically scaled depth. The floor forbids only bounded or sub-logarithmic depth families.",
+      "confidence": "high"
+    },
+    {
+      "from": "endpoint_certificate_depth_floor",
+      "from_zone": "Z06",
+      "to": "diagonal_pincer_kill_t41",
+      "to_zone": "Z03",
+      "relation": "does_not_block",
+      "basis": "Same: certifiedKill H H 61 holds at H = 219060189739591200, so the depth-61 deep-window tranche satisfies the floor. The floor does not bound the minimal firing depth from above and so cannot obstruct the deep tranche.",
+      "confidence": "high"
+    },
+    {
+      "from": "endpoint_certificate_depth_floor",
+      "from_zone": "Z06",
+      "to": "first_harmonic_saving_forces_certificate",
+      "to_zone": "Z08",
+      "relation": "does_not_block",
+      "basis": "This engine already carries the strictly stronger room inequality 16(2X+h+L+2) <= 2^L as an explicit hypothesis of exists_certifiedKill_of_first_harmonic_gap, so the depth floor is subsumed by its own precondition rather than being an obstruction to it.",
+      "confidence": "high"
+    },
+    {
+      "from": "endpoint_certificate_depth_floor",
+      "from_zone": "Z06",
+      "to": "three_transport_window_certificate",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier's scope says it says nothing about other certificate families beyond their own analogous floors; the balanced four-ray family carries its own, sharpThreeTransportCert_depth_floor, proved inside Z09 and derived from its own radius 9H + 4L + 4.",
+      "confidence": "high"
+    },
+    {
+      "from": "barrier_finite_rank_shift_algebra",
+      "from_zone": "Z06",
+      "to": "window_totient_reconstruction_t29",
+      "to_zone": "Z02",
+      "relation": "does_not_block",
+      "basis": "The countermodel is explicitly synthetic and does not claim its compensation letters are realisable totient differences; the barrier's scope item (i) exempts arguments using the actual arithmetic of totient differences at non-anchor positions. The 90 totient values in the two length-45 windows are computed exactly from certified prime factorisations, so the certificate that consumes them is not factor-ideal-only data.",
+      "confidence": "high"
+    },
+    {
+      "from": "barrier_finite_rank_shift_algebra",
+      "from_zone": "Z06",
+      "to": "diagonal_pincer_kill_t41",
+      "to_zone": "Z03",
+      "relation": "does_not_block",
+      "basis": "Same reason at the deep tranche: the depth-61 kill is decided from 254 exactly reconstructed totient values, none of which is an anchor value of the LcmFactorIdealAnchorAdmissible package the barrier defeats.",
+      "confidence": "high"
+    },
+    {
+      "from": "barrier_finite_rank_shift_algebra",
+      "from_zone": "Z06",
+      "to": "prime_jump_channel_migration",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "Scope item (v) exempts the fresh Moebius channels that survive the two-divisible-axes cancellation threshold. residueHeckeDefect_eq_zero_of_dvd isolates exactly the channels that cancel (those dividing H) and residueHeckeDefect_eq_postJump_add_migration exhibits the surviving fresh contribution, so this route lies outside the closed hypothesis class.",
+      "confidence": "medium"
+    },
+    {
+      "from": "barrier_finite_rank_shift_algebra",
+      "from_zone": "Z06",
+      "to": "prime_jump_new_fibre",
+      "to_zone": "Z04",
+      "relation": "does_not_block",
+      "basis": "Adjoining a fresh prime p to r makes the geometric old-divisor block vanish in a genuinely new fibre m*p, which is precisely the fresh-channel behaviour scope item (v) names as unclosed; the barrier's countermodel absorbs only the homogeneous lower factor ideals phi(j) for j dividing lcm(1..t).",
+      "confidence": "medium"
+    },
+    {
+      "from": "unit_gap_prime_power_ceiling",
+      "from_zone": "Z06",
+      "to": "gap_certificate_engine",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "reducedDenominatorCandidateCount_prime_pow_le_one bounds only how many lattice points the unit-gap strengthening rescues over the ordinary empty-gap certificate at odd prime powers. The plain gap engine's single inequality W + q*(C+N+L+2) < b^L is not a unit-gap statement and is untouched.",
+      "confidence": "medium"
+    },
+    {
+      "from": "unit_gap_prime_power_ceiling",
+      "from_zone": "Z06",
+      "to": "totient_denominator_exclusion_ladder",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "The ladder is produced by ordinary gap windows at (N,K) = (1,120) and (1,240), whose sharpness is a Farey/mediant fact, not a unit-gap strengthening; the ceiling constrains only the strengthened certificate at odd prime-power reduced denominators.",
+      "confidence": "medium"
+    },
+    {
+      "from": "finite_atom_determinant_clearing_barrier",
+      "from_zone": "Z07",
+      "to": "den_gap_irrationality_criterion",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "The barrier's own scope item (b) states it bounds the cleared INTEGER from below by one and never the RATIO to the clearing product prod_j (2^(d_j) - 1) - and the ratio is exactly what a Diophantine argument needs. irrational_of_den_mul_abs_sub_tendsto_zero is precisely a ratio criterion (denominator times approximation error tending to zero), so it is the untouched engine.",
+      "confidence": "high"
+    },
+    {
+      "from": "finite_atom_determinant_clearing_barrier",
+      "from_zone": "Z07",
+      "to": "near_integer_irrationality_criterion",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "Scope item (f) exempts any non-determinantal certificate; irrational_of_int_mul_near_int and irrational_of_pow_mul_near_int use no minor at all.",
+      "confidence": "high"
+    },
+    {
+      "from": "finite_atom_determinant_clearing_barrier",
+      "from_zone": "Z07",
+      "to": "positive_rational_height_inequality",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "positiveRat_mersenne_height obtains a denominator lower bound from reduced numerator/denominator arithmetic on a single rational, not from a square minor of Mersenne tail atoms; the barrier's scope leaves non-determinantal and non-square routes open.",
+      "confidence": "medium"
+    },
+    {
+      "from": "moebius_incidence_unimodularity_barrier",
+      "from_zone": "Z07",
+      "to": "finite_level_dyadic_totient_independence",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier establishes only that one explicitly written unitriangular integer matrix is invertible, and its own MODELLING GAP notes that no Lean object identifies it with the jet matrix of any series. Z09's independence of the 2^e + 1 dyadic sections of phi is proved from actual arithmetic input (crt_dirichlet_parity_row supplies an odd n at which one channel is prime and the others carry distinct primes), so it is a different and genuinely instantiated route.",
+      "confidence": "medium"
+    },
+    {
+      "from": "moebius_incidence_unimodularity_barrier",
+      "from_zone": "Z07",
+      "to": "rationality_forces_unbounded_carry_rank",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier constrains only integer-linear relations among finitely many Mobius companion jets at a fixed horizon N, with no row for 1 or for the series value. not_irrational_totientSeries_implies_unbounded_carryRank works with the rational span of dyadic carry sections of an actual tempered orbit and is a rank-growth statement, not a rank-reduction one.",
+      "confidence": "medium"
+    },
+    {
+      "from": "primitive_euler_index_no_lift_barrier",
+      "from_zone": "Z07",
+      "to": "lcm_height_denominator_lower_bound",
+      "to_zone": "Z04",
+      "relation": "does_not_block",
+      "basis": "Scope item (a) exempts horizon-dependent indices explicitly (twoTierPrimorial N is itself a candidate at each finite N). The lcm-height denominator bound is a horizon-dependent quantity, at least 2^(t/2) at height t, so it lives entirely in the exempted regime.",
+      "confidence": "medium"
+    },
+    {
+      "from": "primitive_euler_index_no_lift_barrier",
+      "from_zone": "Z07",
+      "to": "upper_half_channel_survives_scaled_denominator",
+      "to_zone": "Z04",
+      "relation": "does_not_block",
+      "basis": "T4 never asks for simultaneous clearing of a family of normalised coordinates; it tracks which Mersenne channels survive a given scale h, which is scope item (d) - determinant/denominator realisations that never require simultaneous clearing.",
+      "confidence": "medium"
+    },
+    {
+      "from": "locked_residual_countermodel",
+      "from_zone": "Z07",
+      "to": "two_mode_variance_bound",
+      "to_zone": "Z08",
+      "relation": "does_not_block",
+      "basis": "The countermodel closes only residual-BLIND criteria (rank, determinant nonvanishing, determinant magnitude). pivotFiberReconstructionVariance_eq_twoMode bounds the fibre variance through the actual residual modes W0, W1 and C1 - an arithmetic coupling among the rows and an inspection of the residual values, both of which the barrier's scope explicitly exempts. Note also the barrier's own MODELLING GAP: ResidualGaugeObstruction.lean contains no #249 object, so no Lean link to this lane exists in either direction.",
+      "confidence": "medium"
+    },
+    {
+      "from": "locked_residual_countermodel",
+      "from_zone": "Z07",
+      "to": "finite_fibre_intake_forces_certificate",
+      "to_zone": "Z08",
+      "relation": "does_not_block",
+      "basis": "The descending chain of intake conditions (anchor defect, centred variance, pairwise energy, counted separated pairs) is stated on actual phase data and includes raw window-phase forms with no pivot weighting at all, so no branch of it is a residual-blind minor criterion.",
+      "confidence": "medium"
+    },
+    {
+      "from": "row_dependent_residual_countermodel",
+      "from_zone": "Z07",
+      "to": "fibre_variance_equals_pairwise_energy",
+      "to_zone": "Z08",
+      "relation": "does_not_block",
+      "basis": "The countermodel closes only fixed-rank nonzero-minor certificates blind to a row-dependent unit residual. Centred reconstruction-error energy equals normalised pairwise energy as an exact identity on the actual residuals, eliminating the unknown fibre mean without any minor; and the same MODELLING GAP applies - the module contains no #249 object.",
+      "confidence": "medium"
+    },
+    {
+      "from": "row_dependent_residual_countermodel",
+      "from_zone": "Z07",
+      "to": "first_harmonic_saving_forces_certificate",
+      "to_zone": "Z08",
+      "relation": "does_not_block",
+      "basis": "This engine is a contrapositive averaging bound on actual cosines under an explicit room inequality (exists_certifiedKill_of_first_harmonic_gap); it never asserts minor nonvanishing, so the Vandermonde reconstruction countermodel has no purchase on it.",
+      "confidence": "medium"
+    },
+    {
+      "from": "irrationality_implies_window_separated_pairs",
+      "from_zone": "Z08",
+      "to": "curvature_supply_implies_249",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier reaches only DTWWindowSeparatedPairs, via the scaled squaring orbit and the two-point sample {N, N+1}. No theorem in the corpus derives the sharp curvature socket from irrationality, so the verdict 'not a strictly weaker obligation' does not transfer to it and it remains a live intermediate target.",
+      "confidence": "medium"
+    },
+    {
+      "from": "irrationality_implies_window_separated_pairs",
+      "from_zone": "Z08",
+      "to": "prime_jump_supply_implies_249",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "Same: the sharp prime-jump certificate supply is nowhere shown to follow from irrationality of the #249 series, so it is not demonstrated to be a restatement of the target.",
+      "confidence": "medium"
+    },
+    {
+      "from": "fixed_precision_tropical_no_go",
+      "from_zone": "Z09",
+      "to": "foreign_pulse_sparsity_and_prime_confinement",
+      "to_zone": "Z05",
+      "relation": "does_not_block",
+      "basis": "The barrier treats the symbol word as free data at a FIXED precision u and explicitly exempts exact rough-prime or factorisation labels on the digits. This node supplies exactly such labels for the actual object: every nonzero foreign phase term has a squarefree index dividing exactly one endpoint and exceeding the scale t, with hit spacing at least d.",
+      "confidence": "medium"
+    },
+    {
+      "from": "fixed_precision_tropical_no_go",
+      "from_zone": "Z09",
+      "to": "diagonal_kill_t29",
+      "to_zone": "Z02",
+      "relation": "does_not_block",
+      "basis": "The barrier's scope states it excludes no certificate supply and settles nothing about whether the ACTUAL drive digits admit centred completions; the t = 29 kill is decided on the actual totient window discrepancy, so it is untouched.",
+      "confidence": "medium"
+    },
+    {
+      "from": "scalar_localisation_height_barrier",
+      "from_zone": "Z09",
+      "to": "upper_half_channel_survives_scaled_denominator",
+      "to_zone": "Z04",
+      "relation": "does_not_block",
+      "basis": "The barrier rules out SCALAR denominator clearing that discards the complementary reduced denominator. T4 discards nothing: it computes the surviving part C/gcd(C,h) of the channel product under an arbitrary scale h, which is the 'pay the cost' route the barrier's scope leaves open.",
+      "confidence": "high"
+    },
+    {
+      "from": "scalar_localisation_height_barrier",
+      "from_zone": "Z09",
+      "to": "dyadic_prefix_residual_denominator_sandwich",
+      "to_zone": "Z10",
+      "relation": "does_not_block",
+      "basis": "Subtracting r/D with D odd from a dyadic p/2^c leaves a numerator coprime to D, so the residual's reduced denominator is divisible by D and divides 2^c D. That is a survival statement, not an attempt at clearing, and it is exactly the accounting the barrier says cannot be evaded.",
+      "confidence": "medium"
+    },
+    {
+      "from": "mobius_sign_truncation_overshoots_one_half",
+      "from_zone": "Z10",
+      "to": "half_membership_iff_infinite_greedy_skips",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "Named in the barrier's scope: it does not touch the greedy Mersenne route. The greedy equivalence is a statement about the canonical greedy run at 1/2, which never selects a support by Mobius sign.",
+      "confidence": "high"
+    },
+    {
+      "from": "mobius_sign_truncation_overshoots_one_half",
+      "from_zone": "Z10",
+      "to": "fatal_half_gap_dichotomy",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "Same scope clause: the barrier rules out exactly one candidate support and leaves undecided whether some other infinite Boolean support sums to 1/2 - which is what this dichotomy is about.",
+      "confidence": "high"
+    },
+    {
+      "from": "mobius_sign_truncation_overshoots_one_half",
+      "from_zone": "Z10",
+      "to": "half_membership_from_frozen_margin_sockets",
+      "to_zone": "Z13",
+      "relation": "does_not_block",
+      "basis": "The frozen-margin sockets construct their support from the greedy orbit's skipped ranks, not from a sign condition on mu, so the 1/63 overshoot at d = 6 has no bearing on them.",
+      "confidence": "medium"
+    },
+    {
+      "from": "safe_bracket_plus_numerator_monotone_is_not_inductive",
+      "from_zone": "Z10",
+      "to": "scaled_uncentred_carry_antitone",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "The fixture refutes monotonicity of the DISPLAYED NUMERATOR under safe bracketing (state 7/34 takes rank 3, numerator rises, rank 4 is an unsafe skip). scaled_integerHalfCarry_antitone proves unconditional antitonicity in the rescaled carry coordinate for every support, so the monotone-invariant idea survives after change of coordinates.",
+      "confidence": "high"
+    },
+    {
+      "from": "safe_bracket_plus_numerator_monotone_is_not_inductive",
+      "from_zone": "Z10",
+      "to": "half_membership_from_frozen_margin_sockets",
+      "to_zone": "Z13",
+      "relation": "does_not_block",
+      "basis": "The barrier refutes only the specific conjunction (safe bracket and numerator nondecrease) at the exhibited states; the frozen-margin producers are stated on the centred half carry over a horizon window and are not implied by, nor imply, numerator monotonicity.",
+      "confidence": "medium"
+    },
+    {
+      "from": "raw_dyadic_safety_is_strictly_weaker_than_gcd_overshoot",
+      "from_zone": "Z10",
+      "to": "channel_cap_skip_transport",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "The barrier shows only that a proof of raw safety cannot be routed through the gcd-scaled criterion (state 7/15 at rank 2 is raw safe but fails gcd-scaled). The two-channel cap route tests the residual against 2^-(n+1) + (1/3)4^-(n+1) and never invokes the gcd-scaled overshoot.",
+      "confidence": "medium"
+    },
+    {
+      "from": "forced_take_block_depth_is_sharp",
+      "from_zone": "Z10",
+      "to": "forced_seam_ranks_two_three_six",
+      "to_zone": "Z14",
+      "relation": "does_not_block",
+      "basis": "The sharpness witness is a RELAXED real residual, not a residual known to occur on the greedy orbit for 1/2; the barrier's scope leaves open longer forced blocks derived from the actual greedy state. seamGreedy_head236_decisions forces ranks 2, 3 taken, 4, 5 skipped and 6 taken from row thirteen on by exact computation on the actual seam word.",
+      "confidence": "high"
+    },
+    {
+      "from": "forced_take_block_depth_is_sharp",
+      "from_zone": "Z10",
+      "to": "forced_seam_ranks_seven_through_twentysix",
+      "to_zone": "Z14",
+      "relation": "does_not_block",
+      "basis": "Same: the forced initial segment out to rank 26 is established row by row on the actual seam, not by the two-channel tail-mass comparison whose one-rank sharpness the barrier proves.",
+      "confidence": "high"
+    },
+    {
+      "from": "forced_take_block_depth_is_sharp",
+      "from_zone": "Z10",
+      "to": "aligned_positive_skip_forces_next_take",
+      "to_zone": "Z13",
+      "relation": "does_not_block",
+      "basis": "alignedPositiveSkip_forces_next_take derives a forced take from positivity of the integer greedy remainder on the actual aligned seam word, a different estimate from the Mersenne prefix-mass comparison the barrier shows cannot be extended.",
+      "confidence": "medium"
+    },
+    {
+      "from": "balanced_pulse_no_autonomous_finite_state",
+      "from_zone": "Z11",
+      "to": "suffix_cylinder_endpoint_propagation",
+      "to_zone": "Z16",
+      "relation": "does_not_block",
+      "basis": "The barrier's scope exempts input-driven or growing-depth state, and its witness sequences vanish at every index except m and m+1 so they are never a support coefficient f_A of an infinite support. SelectedHalfWindow.hasSuffixCylinderAt_stepExplicit is exactly an input-driven successor, E' = 2E - C with C the actual row divisor coefficient.",
+      "confidence": "high"
+    },
+    {
+      "from": "balanced_pulse_no_autonomous_finite_state",
+      "from_zone": "Z11",
+      "to": "head_threshold_promotion_criterion",
+      "to_zone": "Z16",
+      "relation": "does_not_block",
+      "basis": "commonRestrictionAt_succ_iff_endpoint_avoids_headThreshold decides the next common bit from the endpoint and the actual strip width, reading far more than a common pre-m history; the barrier's scope exempts decoders that read more than that history, and its hstate hypothesis (state r constant on the pulse family) has no analogue here.",
+      "confidence": "high"
+    },
+    {
+      "from": "balanced_pulse_no_autonomous_finite_state",
+      "from_zone": "Z11",
+      "to": "totient_carry_field_recurrences",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "The pulse witnesses are zero off two indices, and Euler phi is never zero on positive integers, so the family never confronts a #249 method. The totient carry residue field V_K(N) is driven by actual totient values and advances by an input-driven affine doubling map.",
+      "confidence": "high"
+    },
+    {
+      "from": "balanced_pulse_no_autonomous_finite_state",
+      "from_zone": "Z11",
+      "to": "integer_half_carry_calculus",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "K_{N+1} = 2K_N - supportCoeff(N+2) is input-driven by the actual support coefficient and depends only on the support below level N+1; the barrier's own scope concedes it rules out no method aimed at the actual problems.",
+      "confidence": "high"
+    },
+    {
+      "from": "balanced_pulse_no_autonomous_finite_state",
+      "from_zone": "Z11",
+      "to": "frozen_margin_integer_recurrence",
+      "to_zone": "Z13",
+      "relation": "does_not_block",
+      "basis": "M(k,J+1) = 2M(k,J) + (divisor count of row k+J+2 in the frozen greedy prefix) is again input-driven and its state grows with the horizon J, which the barrier's scope exempts under 'growing-depth state'.",
+      "confidence": "medium"
+    },
+    {
+      "from": "balanced_pulse_no_autonomous_finite_state",
+      "from_zone": "Z11",
+      "to": "rationality_iff_tempered_support_carry_orbit",
+      "to_zone": "Z10",
+      "relation": "does_not_block",
+      "basis": "The rationality criterion asks for an integer carry orbit with a temperedness condition, not for an autonomous finite-state successor; and its coefficient is the actual incidence sequence of a support, which the pulse family never realises.",
+      "confidence": "medium"
+    },
+    {
+      "from": "relation_invariant_channel_determinant_barrier",
+      "from_zone": "Z12",
+      "to": "parity_separated_determinant_criterion",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The barrier applies only to channels satisfying hker, i.e. annihilating every vector killed by scalar evaluation, and its own scope records that no declaration in the corpus instantiates such channels. paritySeparatedMatrix_det_ne_zero concerns point evaluations carrying per-column 2-adic depths, which do not factor through a single evaluation functional, and it is used to establish nonvanishing rather than to refute it.",
+      "confidence": "medium"
+    },
+    {
+      "from": "relation_invariant_channel_determinant_barrier",
+      "from_zone": "Z12",
+      "to": "positive_rational_height_inequality",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "Named class in the barrier's scope: height or adelic obstructions established by means other than a nonvanishing minor. positiveRat_mersenne_height derives a denominator lower bound from reduced numerator arithmetic and uses no determinant at all.",
+      "confidence": "medium"
+    },
+    {
+      "from": "relation_invariant_channel_determinant_barrier",
+      "from_zone": "Z12",
+      "to": "separated_minor_rank_criterion",
+      "to_zone": "Z09",
+      "relation": "does_not_block",
+      "basis": "The criterion establishes linear independence of a family of sequences from a nonzero evaluation determinant; the barrier's rank-one collapse requires the channels to factor through one surjective evaluation, which a family of distinct point evaluations does not.",
+      "confidence": "medium"
+    },
+    {
+      "from": "campbell_agp_parameter_barrier",
+      "from_zone": "Z12",
+      "to": "final_middle_neg_two_phase_sieve",
+      "to_zone": "Z14",
+      "relation": "does_not_block",
+      "basis": "The barrier refutes only the parameter conjunction 2 <= d, t <= d, P <= 4t, d^4 <= P forced by Campbell's delta = 1/4 AGP exponent. The phase sieve confines the last-producer depth D using forced ranks 2, 3, 6, 7, 14, 20, 21, 26 of the actual seam and no prime-progression estimate whatsoever, so the conjunction never arises.",
+      "confidence": "high"
+    },
+    {
+      "from": "campbell_agp_parameter_barrier",
+      "from_zone": "Z12",
+      "to": "largest_skip_late_step_socket_fan_in",
+      "to_zone": "Z13",
+      "relation": "does_not_block",
+      "basis": "Scope: the barrier does not rule out any other route to infinitely many greedy skips. The late largest-false-rank fan-in supplies cofinal skipped seam ranks from the two-thirds boundary crossing geometry, with no prime-progression input.",
+      "confidence": "medium"
+    },
+    {
+      "from": "campbell_agp_parameter_barrier",
+      "from_zone": "Z12",
+      "to": "dyadic_band_producer_gives_row_escape",
+      "to_zone": "Z14",
+      "relation": "does_not_block",
+      "basis": "Same scope clause: the dyadic upper-reset band producer is a purely arithmetic condition on reset charges from row thirteen on, and is a different route to the same conclusion.",
+      "confidence": "medium"
+    },
+    {
+      "from": "raw_dyadic_safety_does_not_force_seam_escape",
+      "from_zone": "Z13",
+      "to": "half_membership_from_raw_block_margin_supply",
+      "to_zone": "Z10",
+      "relation": "does_not_block",
+      "basis": "The barrier denies only the general lemma 'raw block-dyadic safety at a predecessor implies seam escape', on a single rank-three witness. The raw block margin supply remains a correct sufficient condition for block dyadic safety and hence for half membership; the barrier does not refute the supply.",
+      "confidence": "medium"
+    },
+    {
+      "from": "raw_dyadic_safety_does_not_force_seam_escape",
+      "from_zone": "Z13",
+      "to": "half_membership_from_gcd_overshoot_supply",
+      "to_zone": "Z10",
+      "relation": "does_not_block",
+      "basis": "Same: the gcd-scaled overshoot supply is an independent sufficient condition and the barrier's witness is one low-rank state with no cofinal family behind it.",
+      "confidence": "medium"
+    },
+    {
+      "from": "boundary_pair_not_forced_by_scalar_seam",
+      "from_zone": "Z15",
+      "to": "two_sheet_hole_only_reachability",
+      "to_zone": "Z16",
+      "relation": "does_not_block",
+      "basis": "The barrier closes only the implication into RewindBaseHalfDivisorBoundaryPairAt, at one instance whose radius R = 2 lies outside the cofinal consumer's regime R >= 14. InStripTwoSheetStage.protectedEvenSeamRealizedAt reaches the same protected consumer directly from the two-sheet state, with no boundary pair anywhere in its hypotheses.",
+      "confidence": "high"
+    },
+    {
+      "from": "boundary_pair_not_forced_by_scalar_seam",
+      "from_zone": "Z15",
+      "to": "feedback_trichotomy_advance_or_seam",
+      "to_zone": "Z16",
+      "relation": "does_not_block",
+      "basis": "CylinderStage.feedbackStep_or_protectedSeam routes its crossing branch through the unit-drop coefficient profile, not through the half-divisor boundary pair, so the unforced implication the barrier exhibits is not on its critical path.",
+      "confidence": "high"
+    },
+    {
+      "from": "boundary_pair_not_forced_by_scalar_seam",
+      "from_zone": "Z15",
+      "to": "terminal_only_cofinal_yields_half",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "The terminal-only interface asks only for normalized finite words with terminal carry inside the square-root strip at cofinally many depths; it consumes no rewind provenance, no seam pair and no boundary pair.",
+      "confidence": "medium"
+    },
+    {
+      "from": "depth29_cutoff26_promotion_impossible",
+      "from_zone": "Z16",
+      "to": "terminal_only_cofinal_yields_half",
+      "to_zone": "Z12",
+      "relation": "does_not_block",
+      "basis": "The barrier blocks one prefix-promotion step for one window. The terminal-only consumer needs no common prefix at all, only a terminal carry inside the strip at cofinally many depths, so a stalled cutoff cannot obstruct it.",
+      "confidence": "medium"
+    },
+    {
+      "from": "depth29_cutoff26_promotion_impossible",
+      "from_zone": "Z16",
+      "to": "selected_window_cofinal_consumer",
+      "to_zone": "Z15",
+      "relation": "does_not_block",
+      "basis": "The consumer requires a selected protected window of positive radius at each depth from some N0 on, not a promoted cutoff. The barrier's own scope notes the run continues at cutoff 25 unchanged to depth 51, so the window supply is not interrupted.",
+      "confidence": "medium"
+    },
+    {
+      "from": "depth29_cutoff26_promotion_impossible",
+      "from_zone": "Z16",
+      "to": "mixed_cofinal_window_or_seam_consumer",
+      "to_zone": "Z15",
+      "relation": "does_not_block",
+      "basis": "The mixed consumer accepts either a selected protected window or a localized realized one-hole seam at each scale; failure of one promotion criterion at endpoint 14 against head weight 8 rules out neither branch.",
+      "confidence": "medium"
+    },
+    {
+      "from": "n251_free_carry_barrier",
+      "from_zone": "Z17",
+      "to": "rationality_iff_tempered_orbit",
+      "to_zone": "Z11",
+      "relation": "does_not_block",
+      "basis": "The barrier's reading is 'rationality alone cannot force periodicity', with no growth or nonnegativity constraint on the carry. binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit proves both directions once c(n) <= n and u(N) = o(2^N) are imposed, so rationality does constrain the stream in the tempered category the actual problems live in.",
+      "confidence": "high"
+    },
+    {
+      "from": "n251_free_carry_barrier",
+      "from_zone": "Z17",
+      "to": "rationality_iff_tempered_support_carry_orbit",
+      "to_zone": "Z10",
+      "relation": "does_not_block",
+      "basis": "For a support the tempered carry orbit is unique with multiplier q and initial value p, and its differences are pinned by the incidence sequence; the free-carry telescoping identity exhibits no such orbit and takes no limit.",
+      "confidence": "medium"
+    },
+    {
+      "from": "n1049_three_halves_barrier",
+      "from_zone": "Z17",
+      "to": "self_reference_absorption_log_inversion",
+      "to_zone": "Z11",
+      "relation": "does_not_block",
+      "basis": "Scope: the barrier excludes only the literal coordinatewise corridor at base 3/2. The log-inversion route converts a window lower certificate plus a matching (1/k)-power tail envelope into a window-length bound and is not a corridor of any coordinatewise shape.",
+      "confidence": "medium"
+    },
+    {
+      "from": "n1049_three_halves_barrier",
+      "from_zone": "Z17",
+      "to": "gap_certificate_engine",
+      "to_zone": "Z01",
+      "relation": "does_not_block",
+      "basis": "The gap certificate carries no first-block divisibility clause at all - it lands the scaled shifted tail inside a consecutive-integer interval by avoiding one thin top band - so it is not the coordinatewise divisibility corridor whose base-3/2 instance threeHalves_no_coordinatewiseCorridor excludes.",
+      "confidence": "medium"
+    }
+  ]
+}

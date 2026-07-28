@@ -14,6 +14,7 @@ rev = "v4.29.1"
 [[lean_lib]]
 name = "Erdos249257"
 
+# Problem-centric statements, built on the shared machinery in Erdos249257.
 [[lean_lib]]
 name = "ErdosProblems"
 

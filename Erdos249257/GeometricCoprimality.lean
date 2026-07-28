@@ -399,6 +399,79 @@ theorem tsum_gcd_layer_pos_coprime_pow {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) :
   field_simp
   ring
 
+/-- **Rational geometric-model falsifier.**  Summing the Lambert kernel over
+strictly positive visible lattice points gives the elementary square
+`(r / (1-r))^2` for every `0 ≤ r < 1`.  Thus coprime restriction, exact
+Stern--Brocot splitting, and geometric cylinder decay alone cannot imply
+irrationality at a rational parameter. -/
+theorem tsum_pos_coprime_lambert_eq_sq
+    {r : ℝ} (hr0 : 0 ≤ r) (hr1 : r < 1) :
+    (∑' p : ℕ × ℕ,
+      if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2 then
+        r ^ (p.1 + p.2) / (1 - r ^ (p.1 + p.2))
+      else 0) =
+      (r / (1 - r)) ^ 2 := by
+  let F : (ℕ × ℕ) → ℕ → ℝ := fun p g =>
+    if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2 then
+      (r ^ (g + 1)) ^ (p.1 + p.2)
+    else 0
+  have hgeo : Summable (fun g : ℕ => r ^ g) :=
+    summable_geometric_of_lt_one hr0 hr1
+  have hpair := summable_pow_add hr0 hr1
+  have hmajorant : Summable (fun q : (ℕ × ℕ) × ℕ =>
+      r ^ (q.1.1 + q.1.2) * r ^ q.2) :=
+    hpair.mul_of_nonneg hgeo
+      (fun p => pow_nonneg hr0 _) (fun g => pow_nonneg hr0 _)
+  have hF : Summable (Function.uncurry F) := by
+    refine Summable.of_nonneg_of_le (fun q => ?_) (fun q => ?_) hmajorant
+    · rcases q with ⟨⟨a, b⟩, g⟩
+      simp only [Function.uncurry_apply_pair]
+      dsimp [F]
+      split_ifs <;> positivity
+    · rcases q with ⟨⟨a, b⟩, g⟩
+      simp only [Function.uncurry_apply_pair]
+      dsimp [F]
+      by_cases h : 0 < a ∧ 0 < b ∧ Nat.Coprime a b
+      · rw [if_pos h, ← pow_mul, ← pow_add]
+        apply pow_le_pow_of_le_one hr0 hr1.le
+        nlinarith [h.1, h.2.1]
+      · rw [if_neg h]
+        positivity
+  have hinner : ∀ p : ℕ × ℕ,
+      (∑' g : ℕ, F p g) =
+        (if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2 then
+          r ^ (p.1 + p.2) / (1 - r ^ (p.1 + p.2))
+        else 0) := by
+    intro p
+    by_cases hp : 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2
+    · rw [if_pos hp]
+      dsimp [F]
+      simp only [if_pos hp]
+      calc
+        (∑' g : ℕ, (r ^ (g + 1)) ^ (p.1 + p.2)) =
+            ∑' g : ℕ, (r ^ (p.1 + p.2)) ^ (g + 1) := by
+          apply tsum_congr
+          intro g
+          rw [← pow_mul, Nat.mul_comm, pow_mul]
+        _ = r ^ (p.1 + p.2) / (1 - r ^ (p.1 + p.2)) := by
+          apply tsum_pow_succ_geometric
+          · positivity
+          · exact pow_lt_one₀ hr0 hr1 (by omega)
+    · rw [if_neg hp]
+      simp [F, hp]
+  calc
+    (∑' p : ℕ × ℕ,
+      if 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2 then
+        r ^ (p.1 + p.2) / (1 - r ^ (p.1 + p.2))
+      else 0) = ∑' p : ℕ × ℕ, ∑' g : ℕ, F p g := by
+        apply tsum_congr
+        intro p
+        exact (hinner p).symm
+    _ = ∑' g : ℕ, ∑' p : ℕ × ℕ, F p g :=
+      Summable.tsum_comm hF.prod_symm
+    _ = (r / (1 - r)) ^ 2 := by
+      simpa only [F] using tsum_gcd_layer_pos_coprime_pow hr0 hr1
+
 /-- **The fair-coin gcd law is exactly normalized.**  At `r = 1/2` the layer
 masses are genuine probabilities — layer `g` is `P(gcd(X,Y) = g+1)` for
 independent fair-coin waiting times — and they sum to `1`: the gcd is finite
@@ -418,6 +491,7 @@ theorem tsum_gcd_layer_pos_coprime_half_eq_one :
 #print axioms tsum_coprime_pair_pow_eq_tsum_totient_mul_pow
 #print axioms tsum_pos_coprime_pair_pow
 #print axioms tsum_gcd_layer_pos_coprime_pow
+#print axioms tsum_pos_coprime_lambert_eq_sq
 #print axioms tsum_gcd_layer_pos_coprime_half_eq_one
 
 end GeometricCoprimality

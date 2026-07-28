@@ -20,13 +20,29 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "declaration_atlas.json"
+GENERATED_MANIFEST = ROOT / "docs" / "generated_certificate_manifest.json"
 
+# A Lean identifier may end in a prime or contain `?`/`!`.  The previous
+# pattern closed the name with `\b`, so `half_pow_term'` was recorded as
+# `half_pow_term` and `integerGreedyRemainder_lt_of_get?_eq_false` as
+# `integerGreedyRemainder_lt_of_get`.  Every citation of the real name then
+# failed to resolve against the atlas.  The name now runs to the first
+# character that cannot appear in an identifier.
 DECL_RE = re.compile(
     r"^\s*(?:@\[[^\]\n]*\]\s*)*"
     r"(?:(?:noncomputable|private|protected|scoped|local|partial|unsafe)\s+)*"
     r"(theorem|lemma|def|abbrev|instance|structure|class|inductive|opaque)\s+"
-    r"([A-Za-z0-9_'.]+)\b"
+    r"([A-Za-z_\u00c0-\u024f\u0370-\u03ff][^\s(){}\[\]:,]*)(?=$|[\s({:\[])"
 )
+KEYWORD_ONLY_RE = re.compile(
+    r"^\s*(?:@\[[^\]\n]*\]\s*)*"
+    r"(?:(?:noncomputable|private|protected|scoped|local|partial|unsafe)\s+)*"
+    r"(?:theorem|lemma|def|abbrev|instance|structure|class|inductive|opaque)\s*$"
+)
+# How far past a keyword-only line to look for the name it introduces.  Only
+# blank and line-comment lines are skipped, so the window stops at the first
+# line carrying content whatever that content turns out to be.
+HEAD_LOOKAHEAD = 3
 LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
 ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
 IMPORT_RE = re.compile(
@@ -44,6 +60,82 @@ def source_paths() -> list[Path]:
             *sorted((ROOT / library_root).rglob("*.lean")),
         )
     ]
+
+
+def code_lines(lines: list[str]) -> list[bool]:
+    """Mark which lines carry Lean code rather than comment prose.
+
+    ``DECL_RE`` matched anywhere, including inside docstrings, so a sentence
+    that wrapped onto a line beginning ``theorem says that`` or ``lemma used
+    by`` was extracted as a declaration named ``says`` or ``used``.  Those
+    phantoms inflated the declaration count and could never be owned by any
+    semantic node, because there is nothing there to own.
+
+    Lean block comments nest, so depth is tracked rather than toggled.
+    """
+    marks: list[bool] = []
+    depth = 0
+    for raw in lines:
+        start_depth = depth
+        index = 0
+        while index < len(raw) - 1:
+            pair = raw[index : index + 2]
+            if pair == "/-":
+                depth += 1
+                index += 2
+                continue
+            if pair == "-/" and depth:
+                depth -= 1
+                index += 2
+                continue
+            if pair == "--" and depth == 0:
+                break
+            index += 1
+        marks.append(start_depth == 0)
+    return marks
+
+
+def declaration_head(lines: list[str], index: int) -> tuple[str, str] | None:
+    """Return the ``(kind, name)`` the declaration head at ``index`` opens.
+
+    A head may wrap: the keyword on one line and the name on the next.  The
+    builder matched a single line at a time, so ``DECL_RE`` could never span
+    the newline its own pattern allows, and every wrapped declaration was
+    dropped from the atlas -- which made correct citations of it look
+    fabricated.  A keyword-only line therefore grows the window forward to the
+    first line that carries content.
+
+    An anonymous ``instance``, whose head is followed by binders rather than a
+    name, has nothing to record and yields ``None``.
+    """
+    match = DECL_RE.match(lines[index])
+    if match:
+        return match.group(1), match.group(2)
+    if not KEYWORD_ONLY_RE.match(lines[index]):
+        return None
+    for follow in lines[index + 1 : index + 1 + HEAD_LOOKAHEAD]:
+        stripped = follow.strip()
+        if not stripped or stripped.startswith("--"):
+            continue
+        match = DECL_RE.match(f"{lines[index].rstrip()} {stripped}")
+        return (match.group(1), match.group(2)) if match else None
+    return None
+
+
+def generated_modules() -> dict[str, str]:
+    """Map generated module path to the family that owns it.
+
+    Provenance is a contract, not a filename pattern.  The earlier heuristic
+    matched only ``/GeneratedCertificates`` and ``/DiagonalPincerPrimeCertificates/``
+    and therefore reported the eighteen emitted ``DiagonalPincerCertificates``
+    window modules -- 5,246 declarations -- as authored mathematics.
+    """
+    manifest = json.loads(GENERATED_MANIFEST.read_text(encoding="utf-8"))
+    return {
+        path: family["id"]
+        for family in manifest["families"]
+        for path in family["module_paths"]
+    }
 
 
 def module_id(path: Path) -> str:
@@ -74,12 +166,34 @@ def preceding_docstring(lines: list[str], start: int) -> str | None:
     if cursor < 0 or "-/" not in lines[cursor]:
         return None
     end = cursor
-    lower = max(-1, cursor - 40)
-    while cursor > lower and "/--" not in lines[cursor]:
-        cursor -= 1
-    if cursor <= lower or "/--" not in lines[cursor]:
+
+    # Walk backwards to the opener that matches the immediately preceding
+    # block-comment close.  The previous implementation searched up to forty
+    # lines for *any* `/--`; if the preceding block was a section comment
+    # (`/-! ... -/`), it crossed intervening Lean code and attached an older
+    # theorem's docstring and body to the next declaration.
+    depth = 0
+    opener_line: int | None = None
+    opener_column: int | None = None
+    for line_index in range(end, -1, -1):
+        tokens = list(re.finditer(r"/-|-/", lines[line_index]))
+        for token in reversed(tokens):
+            if token.group(0) == "-/":
+                depth += 1
+            else:
+                depth -= 1
+                if depth == 0:
+                    opener_line = line_index
+                    opener_column = token.start()
+                    break
+        if opener_line is not None:
+            break
+    if opener_line is None or opener_column is None:
         return None
-    text = " ".join(line.strip() for line in lines[cursor : end + 1])
+    if not lines[opener_line].startswith("/--", opener_column):
+        return None
+
+    text = " ".join(line.strip() for line in lines[opener_line : end + 1])
     text = text.replace("/--", "", 1).rsplit("-/", 1)[0]
     text = re.sub(r"\s+", " ", text).strip()
     return text[:1000] or None
@@ -93,6 +207,7 @@ def build() -> dict[str, object]:
             claim_refs.setdefault((decl["module"], decl["name"]), []).append(claim["id"])
 
     paths = source_paths()
+    generated_index = generated_modules()
     digest = hashlib.sha256()
     modules: list[dict[str, object]] = []
     declarations: list[dict[str, object]] = []
@@ -105,15 +220,16 @@ def build() -> dict[str, object]:
         digest.update(rel.encode("utf-8") + b"\0" + text.encode("utf-8") + b"\0")
         lines = text.splitlines()
         module_decls: list[dict[str, object]] = []
-        for index, line in enumerate(lines):
-            match = DECL_RE.match(line)
-            if not match:
+        is_code = code_lines(lines)
+        for index in range(len(lines)):
+            if not is_code[index]:
                 continue
-            kind, name = match.groups()
-            generated = (
-                "/GeneratedCertificates" in rel
-                or "/DiagonalPincerPrimeCertificates/" in rel
-            )
+            head = declaration_head(lines, index)
+            if head is None:
+                continue
+            kind, name = head
+            generated_family = generated_index.get(rel)
+            generated = generated_family is not None
             row: dict[str, object] = {
                 "id": f"{rel}:{index + 1}:{name}",
                 "name": name,
@@ -124,6 +240,8 @@ def build() -> dict[str, object]:
                 "generated_certificate": generated,
                 "claim_ids": claim_refs.get((rel, name), []),
             }
+            if generated:
+                row["generated_family"] = generated_family
             docstring = preceding_docstring(lines, index)
             if docstring:
                 row["docstring"] = docstring

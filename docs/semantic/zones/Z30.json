@@ -1,0 +1,686 @@
+{
+  "zone_id": "Z30",
+  "title": "Reciprocal-tail cancellation metabolism and finite negative-mass rigidity",
+  "problem": "243",
+  "concepts": [
+    {
+      "id": "dynamic_tail_cancellation",
+      "label": "dynamic reduced-tail cancellation",
+      "note": "Reduction by the changing tail gcd introduces a cancellation factor controlled by the overlap between the current multiplier and the reduced denominator."
+    },
+    {
+      "id": "strict_gcd_growth_budget",
+      "label": "strict gcd-growth budget",
+      "note": "Every strict step of a positive divisibility chain consumes at least one binary factor, converting subexponential size into sublinear strict-growth count."
+    },
+    {
+      "id": "late_constant_gcd_blocks",
+      "label": "arbitrarily late constant-gcd blocks",
+      "note": "A sublinear strict-growth count forces finite blocks of any prescribed length on which a positive divisibility chain is constant."
+    },
+    {
+      "id": "near_unit_tail_growth",
+      "label": "near-unit tail growth",
+      "note": "Division-free normalised error vanishing bounds every sufficiently late tail step by an arbitrarily close rational factor (q+1)/q."
+    },
+    {
+      "id": "subexponential_tail_bridge",
+      "label": "near-unit to subexponential bridge",
+      "note": "Uniform eventual near-unit bounds imply that every fixed power of the tail is eventually dominated by 2^n."
+    },
+    {
+      "id": "negative_relative_mass",
+      "label": "normalised negative relative mass",
+      "note": "The quantity (-E_n)_+/C_n measures precisely the multiplicative upward pressure exerted by negative centred-error excursions."
+    },
+    {
+      "id": "finite_negative_mass_endpoint",
+      "label": "finite negative-mass endpoint",
+      "note": "Summable negative relative mass bounds the integer tail; division-free normalised vanishing then forces the centred error and ultimately the Sylvester defect to vanish."
+    },
+    {
+      "id": "unbounded_excursion_frontier",
+      "label": "unbounded divergent-mass excursion frontier",
+      "note": "After the paper's exclusions, the surviving state-system regime has unbounded negative excursions along a cofinal set and divergent normalised negative mass; the bridge from the original analytic problem remains open."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "cancellation_factor_is_trapped_by_old_prime_overlap",
+      "canonical_statement": "PROVED EXACT BOUNDS: in one dynamically reduced exact-tail step between coprime state pairs, the old overlap d=gcd(a,v) divides the removed cancellation factor h and h divides d^2; moreover h=1 exactly when a and v are coprime.",
+      "logical_class": "equivalence_or_classification",
+      "problem": "243",
+      "concepts": [
+        "dynamic_tail_cancellation"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "coprimality cancellation applied to the two normalised step equations",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made. The result is an exact arithmetic interface internal to the dynamically reduced state system.",
+      "scope_caveat": "The sandwich controls one cancellation factor but does not force it to be one, make the tail gcd globally stable, or rule out an infinite non-Sylvester orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "cancellationFactor_sandwich",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1100
+        },
+        {
+          "declaration": "cancellationFactor_eq_one_iff",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1182
+        }
+      ]
+    },
+    {
+      "id": "strict_divisibility_growth_spends_exponential_size",
+      "canonical_statement": "PROVED BUDGET: if G is a positive divisibility chain, r strict increases before an endpoint force 2^r G(0)<=G(n), with the same bound after any shifted index; consequently, if every fixed power G(n)^K is eventually below 2^n, then the strict-growth count is sublinear in the division-free sense K r(n)<n.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "243",
+      "concepts": [
+        "strict_gcd_growth_budget"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "each strict divisibility step at least doubles the chain value, followed by comparison of powers of two",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The doubling budget is elementary. The contribution recorded here is its exact natural-number interface for tail-gcd growth, not a claim of a new density theorem.",
+      "scope_caveat": "The conclusion is density-zero/sublinear growth, not eventual constancy. It requires a positive divisibility chain and the stated power-versus-2^n subexponential input.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "strictGrowthCount",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1201
+        },
+        {
+          "declaration": "pow_strictGrowthCount_mul_le",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1219
+        },
+        {
+          "declaration": "pow_strictGrowthCountFrom_mul_le",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1244
+        },
+        {
+          "declaration": "strictGrowthCount_sublinear_of_subexponential",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1256
+        }
+      ]
+    },
+    {
+      "id": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks",
+      "canonical_statement": "PROVED COMPACTNESS SUBSTITUTE: if the strict-growth count of a positive divisibility chain is sublinear, then beyond every lower bound and for every finite length L there is a block of length L on which the chain is exactly constant.",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [
+        "strict_gcd_growth_budget",
+        "late_constant_gcd_blocks"
+      ],
+      "open_antecedents": [
+        "sublinear strict-growth count for the chain under study"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "pigeonhole over aligned blocks, then divisibility monotonicity upgrades absence of strict steps to equality",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "No priority claim is made. This is an elementary finite-block consequence of sublinear event count.",
+      "scope_caveat": "Arbitrarily late constant blocks of each finite length do not imply one infinite constant tail or eventual gcd stabilisation.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_aligned_noStrictGrowthBlock_of_count_bound",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1314
+        },
+        {
+          "declaration": "exists_arbitrarilyLate_noStrictGrowthBlock_of_sublinear",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1362
+        },
+        {
+          "declaration": "exists_arbitrarilyLate_constBlock_of_sublinear",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1394
+        }
+      ]
+    },
+    {
+      "id": "actual_tail_gcd_growth_has_exact_dynamic_reduction",
+      "canonical_statement": "PROVED REPRESENTATION AND CLASSIFICATION: reducing consecutive exact tail states by their actual gcds gives a dynamic normalised cocycle whose factor is the quotient of successive gcds; that factor lies between gcd(a,v) and its square and equals one exactly when the current multiplier is coprime to the reduced denominator.",
+      "logical_class": "representation_normalisation",
+      "problem": "243",
+      "concepts": [
+        "dynamic_tail_cancellation"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact division by consecutive tail gcds followed by the abstract cancellation-factor sandwich",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for this exact reduction of the paper's integer state.",
+      "scope_caveat": "The result describes each actual cancellation event but supplies no global anti-shadowing theorem and no termination of changing-gcd behaviour.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tailGcdGrowthFactor",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1469
+        },
+        {
+          "declaration": "dynamicReducedTail_step",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1481
+        },
+        {
+          "declaration": "tailGcdGrowthFactor_sandwich",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1547
+        },
+        {
+          "declaration": "tailGcdGrowthFactor_eq_one_iff",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1565
+        }
+      ]
+    },
+    {
+      "id": "normalised_error_vanishing_forces_subexponential_tail_growth",
+      "canonical_statement": "PROVED CONDITIONAL BRIDGE: the division-free bound K|E_n|<C_n gives the local inequality K C_(n+1)<(K+1)C_n; if such near-unit bounds eventually hold for every positive K, then every fixed power C_n^r is eventually below 2^n. Thus normalised centred-error vanishing implies subexponential tail growth for an exact orbit.",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [
+        "near_unit_tail_growth",
+        "subexponential_tail_bridge"
+      ],
+      "open_antecedents": [
+        "division-free normalised centred-error vanishing"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "iterate denominator-cleared near-unit inequalities, select a rational rate whose fixed power is slower than doubling, and absorb the finite prefix geometrically",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority claim is made. This is the formal analytic-accumulation bridge internal to the centred-state programme.",
+      "scope_caveat": "Normalised vanishing is assumed, not derived from rationality and a_(n+1)/a_n^2 tending to one. The theorem controls C but does not itself force E to vanish.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tailState_localNearUnitGrowth",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1898
+        },
+        {
+          "declaration": "tailState_eventually_localNearUnitGrowth_of_normalizedVanishes",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1923
+        },
+        {
+          "declaration": "exists_nearUnitPower_rate",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1940
+        },
+        {
+          "declaration": "subexponential_of_eventually_nearUnitGrowth",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 2017
+        },
+        {
+          "declaration": "tailState_subexponential_of_normalizedVanishes",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 2076
+        }
+      ]
+    },
+    {
+      "id": "normalised_vanishing_makes_tail_gcd_growth_sparse",
+      "canonical_statement": "PROVED CONDITIONAL CONSEQUENCE: along an exact positive natural tail, normalised centred-error vanishing makes strict growth of gcd(C_n,D_n) sublinear; therefore the actual tail gcd has arbitrarily late constant blocks of every prescribed finite length.",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [
+        "strict_gcd_growth_budget",
+        "late_constant_gcd_blocks",
+        "subexponential_tail_bridge"
+      ],
+      "open_antecedents": [
+        "division-free normalised centred-error vanishing"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "normalised vanishing gives subexponential tail size, which bounds the divisibility-chain event count and feeds the late constant-block theorem",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "No priority or novelty claim is made for the composed gcd-growth consequence.",
+      "scope_caveat": "Sparse gcd growth and arbitrarily long constant blocks do not imply eventual gcd constancy. They do not close the unbounded divergent-mass excursion regime.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "tailGcd_strictGrowthCount_sublinear_of_tailSubexponential",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 1439
+        },
+        {
+          "declaration": "tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 2092
+        },
+        {
+          "declaration": "tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes",
+          "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "line": 2108
+        }
+      ]
+    },
+    {
+      "id": "bounded_tail_plus_normalised_vanishing_forces_integral_zero",
+      "canonical_statement": "PROVED CONDITIONAL DISCRETENESS LEMMA: if a natural tail C is uniformly bounded by M and an integral error E vanishes relative to C in division-free form, then E_n=0 for all sufficiently large n.",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [
+        "finite_negative_mass_endpoint"
+      ],
+      "open_antecedents": [
+        "a uniform bound on the tail state",
+        "division-free normalised error vanishing"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "apply normalised vanishing at scale M+1 and use integrality to exclude every nonzero absolute error",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "This is an elementary bounded-integer consequence. No novelty claim is made.",
+      "scope_caveat": "The lemma does not supply the tail bound or normalised vanishing. Those are separate inputs in the finite negative-mass chain.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "eventually_zero_of_bounded_tail_normalizedVanishes",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "negative_relative_mass_bounds_each_tail_step",
+      "canonical_statement": "PROVED EXACT ONE-STEP BOUND: for positive C and C_(n+1)=C_n-E_n, defining delta_n=(-E_n)_+/C_n gives C_(n+1)<=C_n(1+delta_n); positive errors contribute zero mass and negative errors account exactly for the possible upward step.",
+      "logical_class": "representation_normalisation",
+      "problem": "243",
+      "concepts": [
+        "negative_relative_mass"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "sign split on E_n and exact rewriting of the centred-state update",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is the standard one-step estimate behind a convergent-product argument. No priority claim is made.",
+      "scope_caveat": "A pointwise growth bound does not imply that the product is bounded; summability of delta remains a separate hypothesis.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "negativeRelativeMass",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 39
+        },
+        {
+          "declaration": "tail_growth_le_one_add_negativeRelativeMass",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "id": "summable_relative_growth_bounds_tail_and_forces_zero",
+      "canonical_statement": "PROVED CONDITIONAL PRODUCT LEMMA: if nonnegative relative-growth factors delta_n are summable and C_(n+1)<=C_n(1+delta_n), then C is eventually uniformly bounded; with division-free normalised error vanishing, the integral error E is eventually zero.",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [
+        "negative_relative_mass",
+        "finite_negative_mass_endpoint"
+      ],
+      "open_antecedents": [
+        "summability of the supplied nonnegative relative-growth factors",
+        "division-free normalised error vanishing"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "bounded finite products of one-plus-a-summable-nonnegative-sequence followed by the bounded-tail discreteness lemma",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "The convergent-product argument is standard. The node records its exact Lean consumer interface and makes no novelty claim.",
+      "scope_caveat": "The theorem does not establish summability for the centred state of an Erdős #243 orbit.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "eventually_zero_of_summable_relativeGrowth",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 90
+        }
+      ]
+    },
+    {
+      "id": "finite_normalised_negative_mass_forces_eventual_zero",
+      "canonical_statement": "PROVED CONDITIONAL ENDPOINT: if C_n>0, C_(n+1)=C_n-E_n, the errors vanish relative to C in division-free form, and the series sum (-E_n)_+/C_n converges, then the integral error E_n is zero eventually.",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [
+        "negative_relative_mass",
+        "finite_negative_mass_endpoint",
+        "unbounded_excursion_frontier"
+      ],
+      "open_antecedents": [
+        "summability of normalised negative mass from the original sequence hypotheses",
+        "division-free normalised vanishing from the original sequence hypotheses"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "specialise the summable-relative-growth product lemma to negativeRelativeMass",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The paper cites stronger results of Erdős–Straus and Duverney but formalises neither; it makes no priority claim for this conditional state-system endpoint.",
+      "scope_caveat": "Normalised vanishing and summability remain assumed. This theorem constrains the exact integer state system and does not prove Erdős #243.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "eventually_zero_of_summable_negativeRelativeMass",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 155
+        }
+      ]
+    },
+    {
+      "id": "finite_negative_mass_exact_orbit_forces_sylvester_recurrence",
+      "canonical_statement": "PROVED CONDITIONAL PAPER ENDPOINT: for an exact positive reciprocal-tail state, finite normalised negative mass together with division-free normalised centred-error vanishing forces a_(n+1)=a_n^2-a_n+1 eventually.",
+      "logical_class": "conditional_implication",
+      "problem": "243",
+      "concepts": [
+        "finite_negative_mass_endpoint",
+        "unbounded_excursion_frontier"
+      ],
+      "open_antecedents": [
+        "the exact integer-tail model induced by the original reciprocal series",
+        "summability of normalised negative mass",
+        "division-free normalised centred-error vanishing"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "finite negative mass forces eventual centred-error zero, then the exact defect identity converts consecutive zeros into Sylvester steps",
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "The manuscript explicitly says this conditional theorem is weaker than cited results of Erdős–Straus and Duverney and recovers neither. No priority claim is made.",
+      "scope_caveat": "The state-system hypotheses are not derived from the growth and rationality assumptions of Erdős #243. The problem remains open; any surviving orbit must escape through divergent normalised negative mass or failure of an analytic bridge.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "sylvesterNext_eventually_of_summable_negativeRelativeMass",
+          "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "line": 175
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "cancellationFactor_sandwich",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1100,
+      "role": "statement",
+      "statement_node": "cancellation_factor_is_trapped_by_old_prime_overlap"
+    },
+    {
+      "declaration": "cancellationFactor_eq_one_iff",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1182,
+      "role": "statement",
+      "statement_node": "cancellation_factor_is_trapped_by_old_prime_overlap"
+    },
+    {
+      "declaration": "strictGrowthCount",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1201,
+      "role": "concept",
+      "statement_node": "strict_divisibility_growth_spends_exponential_size"
+    },
+    {
+      "declaration": "pow_strictGrowthCount_mul_le",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1219,
+      "role": "statement",
+      "statement_node": "strict_divisibility_growth_spends_exponential_size"
+    },
+    {
+      "declaration": "pow_strictGrowthCountFrom_mul_le",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1244,
+      "role": "statement",
+      "statement_node": "strict_divisibility_growth_spends_exponential_size"
+    },
+    {
+      "declaration": "strictGrowthCount_sublinear_of_subexponential",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1256,
+      "role": "statement",
+      "statement_node": "strict_divisibility_growth_spends_exponential_size"
+    },
+    {
+      "declaration": "exists_aligned_noStrictGrowthBlock_of_count_bound",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1314,
+      "role": "engine",
+      "statement_node": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks"
+    },
+    {
+      "declaration": "exists_arbitrarilyLate_noStrictGrowthBlock_of_sublinear",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1362,
+      "role": "statement",
+      "statement_node": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks"
+    },
+    {
+      "declaration": "exists_arbitrarilyLate_constBlock_of_sublinear",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1394,
+      "role": "statement",
+      "statement_node": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks"
+    },
+    {
+      "declaration": "tailGcdGrowthFactor",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1469,
+      "role": "concept",
+      "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
+    },
+    {
+      "declaration": "dynamicReducedTail_step",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1481,
+      "role": "representation",
+      "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
+    },
+    {
+      "declaration": "tailGcdGrowthFactor_sandwich",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1547,
+      "role": "statement",
+      "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
+    },
+    {
+      "declaration": "tailGcdGrowthFactor_eq_one_iff",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1565,
+      "role": "statement",
+      "statement_node": "actual_tail_gcd_growth_has_exact_dynamic_reduction"
+    },
+    {
+      "declaration": "tailState_localNearUnitGrowth",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1898,
+      "role": "engine",
+      "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
+    },
+    {
+      "declaration": "tailState_eventually_localNearUnitGrowth_of_normalizedVanishes",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1923,
+      "role": "statement",
+      "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
+    },
+    {
+      "declaration": "exists_nearUnitPower_rate",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1940,
+      "role": "engine",
+      "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
+    },
+    {
+      "declaration": "subexponential_of_eventually_nearUnitGrowth",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 2017,
+      "role": "statement",
+      "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
+    },
+    {
+      "declaration": "tailState_subexponential_of_normalizedVanishes",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 2076,
+      "role": "statement",
+      "statement_node": "normalised_error_vanishing_forces_subexponential_tail_growth"
+    },
+    {
+      "declaration": "tailGcd_strictGrowthCount_sublinear_of_tailSubexponential",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 1439,
+      "role": "statement",
+      "statement_node": "normalised_vanishing_makes_tail_gcd_growth_sparse"
+    },
+    {
+      "declaration": "tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 2092,
+      "role": "statement",
+      "statement_node": "normalised_vanishing_makes_tail_gcd_growth_sparse"
+    },
+    {
+      "declaration": "tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes",
+      "module": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+      "line": 2108,
+      "role": "statement",
+      "statement_node": "normalised_vanishing_makes_tail_gcd_growth_sparse"
+    },
+    {
+      "declaration": "eventually_zero_of_bounded_tail_normalizedVanishes",
+      "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "line": 21,
+      "role": "statement",
+      "statement_node": "bounded_tail_plus_normalised_vanishing_forces_integral_zero"
+    },
+    {
+      "declaration": "negativeRelativeMass",
+      "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "line": 39,
+      "role": "concept",
+      "statement_node": "negative_relative_mass_bounds_each_tail_step"
+    },
+    {
+      "declaration": "tail_growth_le_one_add_negativeRelativeMass",
+      "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "line": 45,
+      "role": "statement",
+      "statement_node": "negative_relative_mass_bounds_each_tail_step"
+    },
+    {
+      "declaration": "eventually_zero_of_summable_relativeGrowth",
+      "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "line": 90,
+      "role": "statement",
+      "statement_node": "summable_relative_growth_bounds_tail_and_forces_zero"
+    },
+    {
+      "declaration": "eventually_zero_of_summable_negativeRelativeMass",
+      "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "line": 155,
+      "role": "statement",
+      "statement_node": "finite_normalised_negative_mass_forces_eventual_zero"
+    },
+    {
+      "declaration": "sylvesterNext_eventually_of_summable_negativeRelativeMass",
+      "module": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+      "line": 175,
+      "role": "statement",
+      "statement_node": "finite_negative_mass_exact_orbit_forces_sylvester_recurrence"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "actual_tail_gcd_growth_has_exact_dynamic_reduction",
+      "to": "cancellation_factor_is_trapped_by_old_prime_overlap",
+      "relation": "specialises",
+      "basis": "The actual quotient of successive tail gcds satisfies the abstract reduced-step equations, so the cancellation sandwich and equality criterion apply verbatim."
+    },
+    {
+      "from": "strict_divisibility_growth_spends_exponential_size",
+      "to": "actual_tail_gcd_growth_has_exact_dynamic_reduction",
+      "relation": "complements",
+      "basis": "The dynamic reduction identifies what a gcd-growth event costs locally, while the strict-growth count bounds how many such events fit inside a subexponential global size budget."
+    },
+    {
+      "from": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks",
+      "to": "strict_divisibility_growth_spends_exponential_size",
+      "relation": "implies",
+      "basis": "The sublinear count produced by the exponential budget is exactly the hypothesis used to find arbitrarily late blocks without a strict step."
+    },
+    {
+      "from": "normalised_error_vanishing_forces_subexponential_tail_growth",
+      "to": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks",
+      "relation": "depends_on_open",
+      "basis": "Normalised vanishing supplies the subexponential input needed for sparse gcd growth, but deriving normalised vanishing from Erdős #243 remains open."
+    },
+    {
+      "from": "normalised_vanishing_makes_tail_gcd_growth_sparse",
+      "to": "normalised_error_vanishing_forces_subexponential_tail_growth",
+      "relation": "implies",
+      "basis": "Subexponential tail growth bounds the positive tail gcd and therefore makes its strict divisibility growth count sublinear."
+    },
+    {
+      "from": "normalised_vanishing_makes_tail_gcd_growth_sparse",
+      "to": "sublinear_strict_growth_forces_arbitrarily_late_constant_blocks",
+      "relation": "implies",
+      "basis": "The tail-gcd sublinear event count feeds the general constant-block theorem to produce actual late gcd plateaux."
+    },
+    {
+      "from": "negative_relative_mass_bounds_each_tail_step",
+      "to": "bounded_tail_plus_normalised_vanishing_forces_integral_zero",
+      "relation": "complements",
+      "basis": "The relative-mass estimate is the mechanism that will supply a uniform tail bound, while the discreteness lemma consumes that bound and normalised vanishing."
+    },
+    {
+      "from": "summable_relative_growth_bounds_tail_and_forces_zero",
+      "to": "negative_relative_mass_bounds_each_tail_step",
+      "relation": "generalises",
+      "basis": "The generic product lemma accepts any nonnegative summable relative-growth factor satisfying the same one-step multiplicative inequality."
+    },
+    {
+      "from": "summable_relative_growth_bounds_tail_and_forces_zero",
+      "to": "bounded_tail_plus_normalised_vanishing_forces_integral_zero",
+      "relation": "implies",
+      "basis": "Convergence of the finite products supplies the bounded-tail premise; the bounded integral state then forces eventual zero."
+    },
+    {
+      "from": "finite_normalised_negative_mass_forces_eventual_zero",
+      "to": "summable_relative_growth_bounds_tail_and_forces_zero",
+      "relation": "specialises",
+      "basis": "The finite-negative-mass theorem instantiates the generic relative-growth factor with negativeRelativeMass."
+    },
+    {
+      "from": "finite_normalised_negative_mass_forces_eventual_zero",
+      "to": "negative_relative_mass_bounds_each_tail_step",
+      "relation": "implies",
+      "basis": "The one-step negative-mass inequality verifies the growth hypothesis needed by the summable product theorem."
+    },
+    {
+      "from": "finite_negative_mass_exact_orbit_forces_sylvester_recurrence",
+      "to": "finite_normalised_negative_mass_forces_eventual_zero",
+      "relation": "implies",
+      "basis": "The paper-facing theorem first obtains eventual zero centred error from finite negative mass, then applies the already-authored defect-to-Sylvester recurrence theorem."
+    },
+    {
+      "from": "finite_negative_mass_exact_orbit_forces_sylvester_recurrence",
+      "to": "normalised_vanishing_makes_tail_gcd_growth_sparse",
+      "relation": "complements",
+      "basis": "Both consume normalised vanishing: one uses summable negative mass to force complete rigidity, while the other obtains long cancellation-free windows without assuming mass summability."
+    },
+    {
+      "from": "finite_negative_mass_exact_orbit_forces_sylvester_recurrence",
+      "to": "normalised_error_vanishing_forces_subexponential_tail_growth",
+      "relation": "depends_on_open",
+      "basis": "The shared analytic input, normalised vanishing, is explicit in both theorem families and remains unproved from the original Erdős #243 hypotheses."
+    }
+  ]
+}

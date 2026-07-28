@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -15,6 +16,8 @@ from publication_contract import normalize_latex_evidence
 ROOT = Path(__file__).resolve().parent.parent
 PAPER_PATH = ROOT / "paper" / "claim-faithful-publication-systems-paper.tex"
 EVIDENCE_PATH = ROOT / "docs" / "publication_evidence.json"
+CLAIMS_PATH = ROOT / "docs" / "claims.json"
+ERDOS_PROBLEMS_ROOT = ROOT / "ErdosProblems.lean"
 
 NUMBER_WORDS = {
     0: "zero",
@@ -40,12 +43,18 @@ def number_word(value: int) -> str:
 def validate_systems_paper_evidence(
     paper_text: str | None = None,
     evidence: dict[str, Any] | None = None,
+    claims: dict[str, Any] | None = None,
+    erdos_problems_root: str | None = None,
 ) -> list[str]:
     """Check the paper's outcome and ceilings against the typed receipt."""
     if paper_text is None:
         paper_text = PAPER_PATH.read_text(encoding="utf-8")
     if evidence is None:
         evidence = json.loads(EVIDENCE_PATH.read_text(encoding="utf-8"))
+    if claims is None:
+        claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
+    if erdos_problems_root is None:
+        erdos_problems_root = ERDOS_PROBLEMS_ROOT.read_text(encoding="utf-8")
 
     errors: list[str] = []
     normalized = normalize_latex_evidence(paper_text)
@@ -101,34 +110,102 @@ def validate_systems_paper_evidence(
         if "the edits were authored by the checker's author" not in normalized:
             errors.append("systems paper lost the mutation-author dependence ceiling")
 
+    finite_claim = next(
+        (
+            claim
+            for claim in claims.get("claims", [])
+            if claim.get("id") == "certified_kill_instances"
+        ),
+        None,
+    )
+    if finite_claim is None:
+        errors.append("claim registry lacks certified_kill_instances")
+    else:
+        declarations = finite_claim.get("declarations", [])
+        final_declaration = declarations[-1] if declarations else {}
+        if finite_claim.get("status") != "verified finite instance":
+            errors.append("finite certificate claim lost verified-finite status")
+        if re.search(
+            r"every[^;]*t ≤ 82",
+            str(finite_claim.get("bounded_domain", "")),
+        ) is None:
+            errors.append("finite certificate claim registry does not own the t ≤ 82 band")
+        if len(declarations) != 6:
+            errors.append("finite certificate claim must name exactly six declarations")
+        if (
+            final_declaration.get("name") != "exists_diagonalKill_le_82"
+            or final_declaration.get("module")
+            != "ErdosProblems/Skip/LadderT67.lean"
+        ):
+            errors.append("finite certificate claim does not terminate at the t ≤ 82 theorem")
+        if re.search(r"t\\le\s*82", normalized) is None:
+            errors.append("systems paper no longer states the registered t ≤ 82 band")
+        if r"no \(t=83\) or cofinal claim" not in normalized:
+            errors.append("systems paper lost the finite-band ceiling")
+        if "import ErdosProblems.Skip.LadderT67" not in erdos_problems_root:
+            errors.append("supported ErdosProblems root does not import the t ≤ 82 theorem")
+
     return errors
+
+
+def reflow_tolerant_replace(
+    source: str, phrase: str, replacement: str, count: int = 1
+) -> str:
+    """Replace ``phrase`` treating each gap between words as any whitespace.
+
+    LaTeX paragraphs get rewrapped freely, so a fixture anchored on a literal
+    line break stops mutating the moment the text reflows: the "mutated" copy
+    becomes byte-identical to the source and the check can no longer fail.
+    That is the silent-decay failure the paper itself warns about, and it has
+    happened here once.  Matching whitespace flexibly keeps every fixture armed
+    across rewrapping, and can only widen what the anchor finds, never narrow
+    it.  A phrase that is genuinely gone still leaves the source unchanged, so
+    the ``_anchor_missing`` detection below is preserved.
+    """
+    pattern = r"\s+".join(re.escape(word) for word in phrase.split())
+    return re.sub(pattern, lambda _match: replacement, source, count=count)
 
 
 def mutation_fixture_failures() -> list[str]:
     """Ensure known paper/evidence disagreements remain rejectable."""
     source = PAPER_PATH.read_text(encoding="utf-8")
+    logs_retained = reflow_tolerant_replace(
+        source,
+        "original run logs were not retained",
+        "original run logs were retained",
+        count=0,
+    )
     fixtures = {
-        "historical_outcome_inverted": source.replace(
+        "historical_outcome_inverted": reflow_tolerant_replace(
+            source,
             "nine of the ten edits were rejected",
             "all ten edits were rejected",
-            1,
         ),
-        "original_logs_claimed_retained": source.replace(
-            "original run logs were not retained",
-            "original run logs were retained",
-        ).replace(
+        "original_logs_claimed_retained": reflow_tolerant_replace(
+            logs_retained,
             "Original run logs were not retained",
             "Original run logs were retained",
+            count=0,
         ),
-        "post_repair_rerun_ceiling_removed": source.replace(
+        "post_repair_rerun_ceiling_removed": reflow_tolerant_replace(
+            source,
             "The other nine edits",
             "The other edits",
-            1,
         ),
-        "mutation_author_dependence_removed": source.replace(
-            "The edits were authored\nby the checker's author",
+        "mutation_author_dependence_removed": reflow_tolerant_replace(
+            source,
+            "The edits were authored by the checker's author",
             "The edits were independently authored",
-            1,
+        ),
+        "finite_band_regressed_to_64": re.sub(
+            r"t\\le\s*82",
+            r"t\\le64",
+            source,
+        ),
+        "finite_band_ceiling_removed": reflow_tolerant_replace(
+            source,
+            r"no \(t=83\) or cofinal claim",
+            "a cofinal claim",
         ),
     }
     failures: list[str] = []
@@ -156,8 +233,8 @@ def main() -> int:
             print(f"  FAIL fixture did not reject: {fixture}")
         return 1
     print(
-        "systems_paper_evidence: historical outcome and evidence ceilings "
-        "match; four opposing fixtures reject"
+        "systems_paper_evidence: central claim, historical outcome, and "
+        "evidence ceilings match; six opposing fixtures reject"
     )
     return 0
 

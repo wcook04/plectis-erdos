@@ -1,0 +1,85 @@
+{
+  "zone_id": "Z58",
+  "title": "Summable Mersenne-gap mass and explicit geometric tails",
+  "problem": "257",
+  "concepts": [
+    {"id":"z58_pointwise_gap_envelope","label":"two-scale pointwise gap envelope","note":"The explicit one-sided 4-adic and 8-adic upper envelope."},
+    {"id":"z58_shifted_gap_sum","label":"shifted Mersenne-gap series","note":"The scalar gap sequence strictly above a cutoff."},
+    {"id":"z58_gap_tail_budget","label":"remaining gap-mass budget","note":"The explicit geometric upper bound for the shifted gap sum."},
+    {"id":"z58_analytic_boundary","label":"analytic-only boundary","note":"Summed gap lengths do not encode which gaps the greedy orbit visits."}
+  ],
+  "statement_nodes": [
+    {
+      "id":"mersenne_gap_has_an_explicit_two_scale_pointwise_upper_envelope",
+      "canonical_statement":"For every positive n, mersenneGap n ≤ (2/3)*4^(-n)+3*8^(-n).",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"257",
+      "concepts":["z58_pointwise_gap_envelope","z58_analytic_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"upper half of the previously proved two-channel Mersenne-gap estimate",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Pure geometric specialization of the existing per-level Mersenne-gap estimate; no new arithmetic input or novelty claim.",
+      "scope_caveat":"This is only a one-sided upper bound for n>0, not an equality or a sharp asymptotic constant.",
+      "confidence":"high",
+      "evidence":[{"declaration":"mersenneGap_le","module":"Erdos249257/HalfGapMass.lean","line":40}]
+    },
+    {
+      "id":"every_shifted_mersenne_gap_sequence_is_summable",
+      "canonical_statement":"For every cutoff N, the nonnegative sequence k ↦ mersenneGap(N+k+1) is summable.",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"257",
+      "concepts":["z58_pointwise_gap_envelope","z58_shifted_gap_sum","z58_analytic_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"nonnegative domination by shifted 4-adic and 8-adic geometric envelopes",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Pure geometric summation of the existing per-level estimate; no new arithmetic input or novelty claim.",
+      "scope_caveat":"Scalar summability says nothing about which gaps are encountered by the greedy orbit and supplies no achievement-set membership or nonmembership result.",
+      "confidence":"high",
+      "evidence":[{"declaration":"summable_mersenneGap_shift","module":"Erdos249257/HalfGapMass.lean","line":69}]
+    },
+    {
+      "id":"remaining_mersenne_gap_mass_has_an_explicit_geometric_tail_bound",
+      "canonical_statement":"For every N, the infinite sum over k≥0 of mersenneGap(N+k+1) is at most (2/9)*4^(-N)+(3/7)*8^(-N). The summed indices are strictly beyond level N.",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"257",
+      "concepts":["z58_shifted_gap_sum","z58_gap_tail_budget","z58_analytic_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"summability, termwise comparison, and exact summation of the two geometric envelopes",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Pure geometric summation of the existing per-level estimate; no new arithmetic input or novelty claim.",
+      "scope_caveat":"The theorem gives an upper envelope, not a matching lower bound or the asymptotic equivalence (2/9)*4^(-N). It is not a measure, covering, Borel–Cantelli, category, or probabilistic theorem.",
+      "confidence":"high",
+      "evidence":[{"declaration":"mersenneGap_tail_le","module":"Erdos249257/HalfGapMass.lean","line":83}]
+    },
+    {
+      "id":"remaining_mersenne_gap_mass_tends_to_zero",
+      "canonical_statement":"As N tends to infinity, the shifted total gap mass ∑ k, mersenneGap(N+k+1) tends to zero.",
+      "logical_class":"unconditional_object_theorem",
+      "problem":"257",
+      "concepts":["z58_gap_tail_budget","z58_analytic_boundary"],
+      "open_antecedents":[],
+      "is_restatement_of_open_problem":false,
+      "engine":"squeeze between zero and the two explicit geometric terms",
+      "prior_art_state":"routine_corollary_or_specialisation",
+      "prior_art_note":"Pure geometric convergence of the explicit tail budget; no new arithmetic input or novelty claim.",
+      "scope_caveat":"This deterministic analytic budget is not a cofinal producer, certifies no real such as 1/2, and does not settle Erdős #257.",
+      "confidence":"high",
+      "evidence":[{"declaration":"tendsto_mersenneGap_tail_zero","module":"Erdos249257/HalfGapMass.lean","line":104}]
+    }
+  ],
+  "declaration_roles": [
+    {"declaration":"mersenneGap_le","module":"Erdos249257/HalfGapMass.lean","line":40,"role":"statement","statement_node":"mersenne_gap_has_an_explicit_two_scale_pointwise_upper_envelope"},
+    {"declaration":"summable_mersenneGap_shift","module":"Erdos249257/HalfGapMass.lean","line":69,"role":"statement","statement_node":"every_shifted_mersenne_gap_sequence_is_summable"},
+    {"declaration":"mersenneGap_tail_le","module":"Erdos249257/HalfGapMass.lean","line":83,"role":"statement","statement_node":"remaining_mersenne_gap_mass_has_an_explicit_geometric_tail_bound"},
+    {"declaration":"tendsto_mersenneGap_tail_zero","module":"Erdos249257/HalfGapMass.lean","line":104,"role":"statement","statement_node":"remaining_mersenne_gap_mass_tends_to_zero"}
+  ],
+  "intra_zone_relations": [
+    {"from":"every_shifted_mersenne_gap_sequence_is_summable","to":"mersenne_gap_has_an_explicit_two_scale_pointwise_upper_envelope","relation":"generated_by","basis":"Nonnegativity and domination by the two shifted geometric envelopes prove summability for every cutoff."},
+    {"from":"remaining_mersenne_gap_mass_has_an_explicit_geometric_tail_bound","to":"every_shifted_mersenne_gap_sequence_is_summable","relation":"generated_by","basis":"Summability licenses termwise comparison and splitting of the two geometric envelope sums."},
+    {"from":"remaining_mersenne_gap_mass_has_an_explicit_geometric_tail_bound","to":"mersenne_gap_has_an_explicit_two_scale_pointwise_upper_envelope","relation":"generated_by","basis":"Summing the pointwise 4-adic and 8-adic terms produces the constants 2/9 and 3/7."},
+    {"from":"remaining_mersenne_gap_mass_tends_to_zero","to":"remaining_mersenne_gap_mass_has_an_explicit_geometric_tail_bound","relation":"generated_by","basis":"The nonnegative gap tail is squeezed between zero and two geometric terms tending to zero."}
+  ]
+}

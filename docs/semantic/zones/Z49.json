@@ -1,0 +1,265 @@
+{
+  "zone_id": "Z49",
+  "title": "Totient tail carry period: no-go bounds, directed certificates, and mod-four pulse reduction",
+  "problem": "249",
+  "concepts": [
+    {
+      "id": "z49_absolute_adjugate_tail_cost",
+      "label": "absolute adjugate tail cost",
+      "note": "The crude two-tail error budget of an exact rational totient-isolating row."
+    },
+    {
+      "id": "z49_primitive_mersenne_no_go",
+      "label": "primitive-Mersenne congruence no-go",
+      "note": "A multiplicative rational control showing that a Mersenne divisor alone does not annihilate an integral shift."
+    },
+    {
+      "id": "z49_mod_four_totient_pulse",
+      "label": "cofinal mod-four totient pulse",
+      "note": "Prime positions at which a 4h-shifted totient increment is 2 modulo 4."
+    },
+    {
+      "id": "z49_directed_certificate",
+      "label": "directed central-arc certificate",
+      "note": "The asymmetric certificate retaining distinct lower and upper tail radii."
+    },
+    {
+      "id": "z49_cofinal_directed_lcm_supply",
+      "label": "cofinal directed LCM supply",
+      "note": "Directed kills at arbitrarily large diagonal periodLcm scales."
+    },
+    {
+      "id": "z49_mod_four_survivor_supply",
+      "label": "cofinal mod-four pulse-survivor supply",
+      "note": "The unresolved finite-state producer sufficient to convert cofinal arithmetic pulses into irrationality."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "absolute_adjugate_tail_estimates_have_a_universal_cost_floor",
+      "canonical_statement": "PROVED NO-GO: any finite rational row w that exactly isolates one totient channel, sum_i w_i*phi(x_i)=1, has totientAdjugateTailCost w x at least 3; therefore that cost can never satisfy the strict threshold cost<1.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z49_absolute_adjugate_tail_cost"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Triangle inequality, phi(x)<=x, and the coefficientwise two-tail reconstruction cost 3x+4.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked obstruction to the specific absolute-value adjugate estimate; no broader novelty claim is made.",
+      "scope_caveat": "This excludes only the crude termwise absolute-tail budget. It does not exclude cancellation-sensitive inverse methods, other reconstruction norms, or Erdős #249 itself.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "three_le_totientAdjugateTailCost",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 266
+        },
+        {
+          "declaration": "not_totientAdjugateTailCost_lt_one",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 307
+        }
+      ]
+    },
+    {
+      "id": "a_mersenne_divisor_does_not_annihilate_integral_tail_shifts_by_itself",
+      "canonical_statement": "PROVED CONTROL COUNTERMODEL: for every 0<K<q with q dividing 2^K-1, the completely multiplicative control c(n)=n has rational binary series value 2 and, at every N, an integral K-shift equal to K that is nonzero modulo q.",
+      "logical_class": "barrier_no_go",
+      "problem": "249",
+      "concepts": [
+        "z49_primitive_mersenne_no_go"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "The exact control tail binaryCoeffTail id N=N+2, so every K-shift equals K; the strict inequality K<q prevents q from dividing it.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project control example delimiting a proof strategy; no claim about the actual totient sequence is made.",
+      "scope_caveat": "The countermodel is c(n)=n, not phi(n). It proves that divisibility by a factor of 2^K-1 plus integrality alone is insufficient; a totient-specific restriction may still succeed.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "idCoeff_mersenneModulus_does_not_annihilate_tailShift",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 342
+        }
+      ]
+    },
+    {
+      "id": "positive_four_multiple_shifts_have_cofinally_many_mod_four_totient_pulses",
+      "canonical_statement": "PROVED ARITHMETIC SUPPLY: for every h>0 and threshold B, there is a prime p>B with deltaTotient (4*h) p congruent to 2 modulo 4.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z49_mod_four_totient_pulse"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Choose a fresh prime r congruent to 1 modulo 4 and use Dirichlet on a coprime progression forcing p congruent to 3 modulo 4 while r divides p+4h.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked CRT/Dirichlet totient pulse producer; no external priority claim is made.",
+      "scope_caveat": "The theorem supplies only the arithmetic pulse. It does not kill the finite candidate states left by the carry recurrence and therefore does not imply irrationality alone.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_prime_deltaTotient_four_mul_mod_four_two",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 384
+        }
+      ]
+    },
+    {
+      "id": "directed_certified_kill_is_the_asymmetric_central_arc_predicate",
+      "canonical_statement": "REPRESENTATION: directedCertifiedKill h N L requires the length-L discrepancy residue modulo 2^L to lie between the lower bound N+L+2 and the upper bound 2^L-(N+h+L+2), retaining the two directed tail radii separately.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z49_directed_certificate"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Explicit asymmetric finite residue interval.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific certificate representation.",
+      "scope_caveat": "The definition is decidable but does not assert that any cell fires. This selected role alone neither states soundness/completeness nor supplies a cofinal family.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "directedCertifiedKill",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 766
+        }
+      ]
+    },
+    {
+      "id": "cofinal_directed_lcm_certificate_supply_is_an_open_diagonal_predicate",
+      "canonical_statement": "OPEN PREDICATE: CofinalDirectedLcmCertificateSupply requires that beyond every t0 there is t>=t0 and a depth L for which directedCertifiedKill (periodLcm t) (periodLcm t) L holds.",
+      "logical_class": "infrastructure",
+      "problem": "249",
+      "concepts": [
+        "z49_directed_certificate",
+        "z49_cofinal_directed_lcm_supply"
+      ],
+      "open_antecedents": [
+        "A cofinal supply of directed certificate depths on the diagonal cells (periodLcm t, periodLcm t)."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Named packaging of a cofinal family of decidable directed certificate cells.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Project-specific open supply interface.",
+      "scope_caveat": "The definition has no inhabitant in this selected evidence. A later theorem in the source identifies its exact ceiling, but that theorem is outside this bounded role packet.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "CofinalDirectedLcmCertificateSupply",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 866
+        }
+      ]
+    },
+    {
+      "id": "cofinal_mod_four_pulse_survivor_kills_would_imply_irrationality",
+      "canonical_statement": "OPEN CONDITIONAL REDUCTION: if for every h>0 and threshold B there is a prime p>B with deltaTotient (4*h) p congruent to 2 modulo 4 and some finite modFourPulseSurvivorKill at (4*h,p), then the totient series is irrational.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z49_mod_four_totient_pulse",
+        "z49_mod_four_survivor_supply"
+      ],
+      "open_antecedents": [
+        "For every h>0 and B, a cofinal mod-four pulse prime p together with a finite K satisfying modFourPulseSurvivorKill (4*h) p K."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Rationality gives eventual integrality at a primitive period; multiplying the period by four and using the pulse forces a 2-mod-4 carry state, which the supplied finite survivor kill excludes.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "Lean-checked reduction to a project-specific finite-state producer; no producer or solution claim is made.",
+      "scope_caveat": "The arithmetic pulse theorem proves only the pulse part of the antecedent. The survivor-kill supply remains unproved, so this theorem does not settle Erdős #249.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "irrational_totientSeries_of_cofinal_modFourPulseSurvivorKill",
+          "module": "Erdos249257/TotientTailCarryPeriod.lean",
+          "line": 1066
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "three_le_totientAdjugateTailCost",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 266,
+      "role": "statement",
+      "statement_node": "absolute_adjugate_tail_estimates_have_a_universal_cost_floor"
+    },
+    {
+      "declaration": "not_totientAdjugateTailCost_lt_one",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 307,
+      "role": "statement",
+      "statement_node": "absolute_adjugate_tail_estimates_have_a_universal_cost_floor"
+    },
+    {
+      "declaration": "idCoeff_mersenneModulus_does_not_annihilate_tailShift",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 342,
+      "role": "statement",
+      "statement_node": "a_mersenne_divisor_does_not_annihilate_integral_tail_shifts_by_itself"
+    },
+    {
+      "declaration": "exists_prime_deltaTotient_four_mul_mod_four_two",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 384,
+      "role": "statement",
+      "statement_node": "positive_four_multiple_shifts_have_cofinally_many_mod_four_totient_pulses"
+    },
+    {
+      "declaration": "directedCertifiedKill",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 766,
+      "role": "concept",
+      "statement_node": "directed_certified_kill_is_the_asymmetric_central_arc_predicate"
+    },
+    {
+      "declaration": "CofinalDirectedLcmCertificateSupply",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 866,
+      "role": "concept",
+      "statement_node": "cofinal_directed_lcm_certificate_supply_is_an_open_diagonal_predicate"
+    },
+    {
+      "declaration": "irrational_totientSeries_of_cofinal_modFourPulseSurvivorKill",
+      "module": "Erdos249257/TotientTailCarryPeriod.lean",
+      "line": 1066,
+      "role": "statement",
+      "statement_node": "cofinal_mod_four_pulse_survivor_kills_would_imply_irrationality"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "cofinal_directed_lcm_certificate_supply_is_an_open_diagonal_predicate",
+      "to": "directed_certified_kill_is_the_asymmetric_central_arc_predicate",
+      "relation": "generated_by",
+      "basis": "The supply predicate quantifies the directed certificate over cofinally many diagonal LCM cells."
+    },
+    {
+      "from": "cofinal_mod_four_pulse_survivor_kills_would_imply_irrationality",
+      "to": "positive_four_multiple_shifts_have_cofinally_many_mod_four_totient_pulses",
+      "relation": "complements",
+      "basis": "The arithmetic theorem independently supplies the cofinal pulse-prime component, while the conditional reduction additionally requires the unproved finite survivor-kill component."
+    },
+    {
+      "from": "a_mersenne_divisor_does_not_annihilate_integral_tail_shifts_by_itself",
+      "to": "positive_four_multiple_shifts_have_cofinally_many_mod_four_totient_pulses",
+      "relation": "complements",
+      "basis": "The control countermodel shows why a homogeneous Mersenne divisor is insufficient, while the mod-four theorem supplies genuinely totient-specific residue information."
+    },
+    {
+      "from": "absolute_adjugate_tail_estimates_have_a_universal_cost_floor",
+      "to": "cofinal_mod_four_pulse_survivor_kills_would_imply_irrationality",
+      "relation": "complements",
+      "basis": "The first node closes a crude global reconstruction route; the latter isolates a different residue-and-finite-state route with an explicit open producer."
+    }
+  ]
+}

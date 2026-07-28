@@ -1,0 +1,2289 @@
+{
+ "zone_id": "Z22",
+ "title": "Bit-level remainder identities and scoped bad-run implication",
+ "problem": "257",
+ "concepts": [
+  {
+   "id": "audited_expansion_boundary",
+   "label": "audited expansion claim boundary",
+   "note": "A distinction between an exact Lean declaration, supporting proof substrate, finite checked instances, measurements, and any claim that would resolve an open Erdős problem."
+  }
+ ],
+ "statement_nodes": [
+  {
+   "id": "bad_run_pins_remainder_conditional",
+   "canonical_statement": "PROVED: badRun_pins_remainder pins the row-N remainder to a short interval when every row from N+1 through 3N+2 is bad and the terminal ceiling hypothesis holds.",
+   "logical_class": "conditional_implication",
+   "problem": "257",
+   "concepts": [
+    "audited_expansion_boundary"
+   ],
+   "open_antecedents": [
+    "hbad: every row from N+1 through 3N+2 fails LargestSkipLateAt",
+    "hceil: ObeysRemainderCeiling (3N+2)"
+   ],
+   "is_restatement_of_open_problem": false,
+   "engine": "iteration of the bit-level bad-row recurrence",
+   "prior_art_state": "not_assessed",
+   "prior_art_note": "No priority or novelty claim is made. This node records the exact scope needed for public claim hygiene.",
+   "scope_caveat": "The premise needs at least twelve consecutive bad rows in the relevant range; the audit found a maximum run of three in the measured data. The theorem therefore supplies no observed case.",
+   "confidence": "high",
+   "evidence": [
+    {
+     "declaration": "badRun_pins_remainder",
+     "module": "ErdosProblems/Bit/R2.lean",
+     "line": 443
+    }
+   ]
+  }
+ ],
+ "routing_bases": {},
+ "declaration_roles": [
+  {
+   "declaration": "mod_sub_of_le_mod",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 94,
+   "role": "substrate"
+  },
+  {
+   "declaration": "testBit_sub_of_le_mod",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 103,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 127,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_eq_zero",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 132,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_eq_cons",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 137,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_succ_le",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 142,
+   "role": "substrate"
+  },
+  {
+   "declaration": "three_mul_lateCorrection_add_four",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 150,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_lt_two_pow",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 169,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBitWord",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 187,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBitWord_eq_nil",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 196,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBitWord_eq_cons",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 201,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBitWord_congr",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 207,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBitWord_length",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 219,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateBitWord_getElem?",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 231,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedyBits_seamWeightsFrom_eq_lateBitWord",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 262,
+   "role": "substrate"
+  },
+  {
+   "declaration": "getElem?_eq_testBit",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 343,
+   "role": "substrate"
+  },
+  {
+   "declaration": "takes_iff_testBit",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 355,
+   "role": "substrate"
+  },
+  {
+   "declaration": "all_true_iff_forall_testBit",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 368,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedyBits_append",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 385,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_drop",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 403,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_eq_take_append",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 417,
+   "role": "substrate"
+  },
+  {
+   "declaration": "earlyWeights",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 427,
+   "role": "substrate"
+  },
+  {
+   "declaration": "earlyWeights_length",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 429,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 437,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamGreedyBits_split",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 442,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mem_seamGreedySupport_iff_getElem",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 450,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mem_seamGreedySupport_iff_testBit",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 485,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fourteen_is_first_late",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 506,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_twenty_fourteen",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 511,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateCorrection_twenty_fourteen",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 524,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hypotheses_hold",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 536,
+   "role": "substrate"
+  },
+  {
+   "declaration": "greedy_word",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 545,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bit_word",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 552,
+   "role": "substrate"
+  },
+  {
+   "declaration": "correspondence",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 563,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_twenty",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 579,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateEntryRemainder_twenty_fourteen",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 599,
+   "role": "substrate"
+  },
+  {
+   "declaration": "actual_hypotheses_hold",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 607,
+   "role": "substrate"
+  },
+  {
+   "declaration": "actual_late_word",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 615,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fourteen_mem_seamGreedySupport_twenty",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 621,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fifteen_not_mem_seamGreedySupport_twenty",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 633,
+   "role": "substrate"
+  },
+  {
+   "declaration": "fifteen_is_late",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 642,
+   "role": "substrate"
+  },
+  {
+   "declaration": "nineteen_not_mem_seamGreedySupport_twenty",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 644,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_twenty",
+   "module": "ErdosProblems/Bit/Corr1.lean",
+   "line": 657,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamSubsetTarget_succ",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 95,
+   "role": "substrate"
+  },
+  {
+   "declaration": "four_pow_eq_truncatedMersenneWeight_mul_add",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 110,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 134,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_succ_row",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 138,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_le_two",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 170,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mod_eq_pred_of_dvd",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 188,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mod_eq_sub_two_of_dvd",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 200,
+   "role": "substrate"
+  },
+  {
+   "declaration": "dvd_of_mod_eq_pred",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 219,
+   "role": "substrate"
+  },
+  {
+   "declaration": "dvd_of_mod_eq_sub_two",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 226,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_eq_two",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 234,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_eq_one",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 248,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_eq_zero",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 261,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_thirteen_three",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 282,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_thirteen_four",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 285,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_thirteen_five",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 288,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_fourteen_three",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 291,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamSubsetTarget_fifteen_recurrence",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 295,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_seamWeightsFrom_succ",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 304,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_length",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 342,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_succ_le",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 356,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftWeights",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 401,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedyBits_append",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 404,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedyBits_lift_split",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 432,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarriesFrom",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 476,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarriesFrom_eq_cons",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 481,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarriesFrom_eq_nil",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 485,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarriesFrom_length",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 488,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarriesFrom_sum_le",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 499,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeightsFrom_succ_row",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 513,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamGreedy_succ_first_difference",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 542,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_13",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 576,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_14",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 594,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_15",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 613,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamGreedyBits_13",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 633,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamGreedyBits_14",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 641,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamGreedyBits_15",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 649,
+   "role": "substrate"
+  },
+  {
+   "declaration": "first_difference_right_branch_thirteen",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 659,
+   "role": "substrate"
+  },
+  {
+   "declaration": "first_difference_left_branch_fourteen",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 670,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_14",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 676,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_15",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 682,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_recurrence_witness_fourteen",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 692,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_recurrence_defect_fourteen",
+   "module": "ErdosProblems/Bit/Corr2.lean",
+   "line": 696,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateFloor",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 128,
+   "role": "substrate"
+  },
+  {
+   "declaration": "runNeeded",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 132,
+   "role": "substrate"
+  },
+  {
+   "declaration": "late_iff_lateFloor_le",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 135,
+   "role": "substrate"
+  },
+  {
+   "declaration": "runNeeded_lower_bound",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 140,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topTaken",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 146,
+   "role": "substrate"
+  },
+  {
+   "declaration": "mem_of_topTaken",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 150,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topTaken_eq_false_of_notMem",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 160,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_iff_topTaken_false",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 178,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_iff_topRun_deficient",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 207,
+   "role": "substrate"
+  },
+  {
+   "declaration": "d0Table",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 229,
+   "role": "substrate"
+  },
+  {
+   "declaration": "d0At",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 275,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowOk",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 280,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowOk_of_chunk",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 285,
+   "role": "substrate"
+  },
+  {
+   "declaration": "chunk0",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 296,
+   "role": "substrate"
+  },
+  {
+   "declaration": "chunk1",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 299,
+   "role": "substrate"
+  },
+  {
+   "declaration": "chunk2",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 302,
+   "role": "substrate"
+  },
+  {
+   "declaration": "chunk3",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 305,
+   "role": "substrate"
+  },
+  {
+   "declaration": "chunk4",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 308,
+   "role": "substrate"
+  },
+  {
+   "declaration": "chunk5",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 311,
+   "role": "substrate"
+  },
+  {
+   "declaration": "chunk6",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 314,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowOk_of_block",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 317,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_largestFalseRank_of_rowOk",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 332,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRun_le_twelve_block",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 341,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_block",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 346,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topTaken_runNeeded_false_block",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 352,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRun_deficit",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 358,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRun_record_1148",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 372,
+   "role": "substrate"
+  },
+  {
+   "declaration": "highTable",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 380,
+   "role": "substrate"
+  },
+  {
+   "declaration": "pairOk",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 384,
+   "role": "substrate"
+  },
+  {
+   "declaration": "highAll",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 390,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_high",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 393,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_1148",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 405,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_8000",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 410,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topTaken_runNeeded_false_8000",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 413,
+   "role": "substrate"
+  },
+  {
+   "declaration": "runNeeded_8000",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 416,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRun_deficient_witness",
+   "module": "ErdosProblems/Bit/Corr3.lean",
+   "line": 420,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wbs_nil_weights",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 172,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wbs_nil_bits",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 175,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wbs_cons_true",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 178,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wbs_cons_false",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 181,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wbs_append",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 186,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lift_cons",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 209,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lift_nil_left",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 213,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftWeights_length",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 216,
+   "role": "substrate"
+  },
+  {
+   "declaration": "four_mul_wbs_le_lift",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 222,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wbs_lift_le",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 249,
+   "role": "substrate"
+  },
+  {
+   "declaration": "gapDominates_of_append_left",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 279,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftedRow",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 298,
+   "role": "substrate"
+  },
+  {
+   "declaration": "preBits",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 301,
+   "role": "substrate"
+  },
+  {
+   "declaration": "preSum",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 305,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftedRow_length",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 307,
+   "role": "substrate"
+  },
+  {
+   "declaration": "preBits_length",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 311,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_succ_split",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 314,
+   "role": "substrate"
+  },
+  {
+   "declaration": "greedy_succ_split",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 319,
+   "role": "substrate"
+  },
+  {
+   "declaration": "top_weight",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 327,
+   "role": "substrate"
+  },
+  {
+   "declaration": "top_mem_iff",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 338,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_step_of_top_mem",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 355,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ForcedRun",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 445,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_half_mem_iff_exists_forcedRun",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 448,
+   "role": "substrate"
+  },
+  {
+   "declaration": "top_mem_of_not_largestSkipLateAt",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 462,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_step_of_not_largestSkipLateAt",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 468,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_ascent",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 478,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_descent",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 486,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_window_miss",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 496,
+   "role": "substrate"
+  },
+  {
+   "declaration": "StepLaw",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 509,
+   "role": "substrate"
+  },
+  {
+   "declaration": "stepLaw_of_forcedRun",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 514,
+   "role": "substrate"
+  },
+  {
+   "declaration": "stepLaw_pow_add_two",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 523,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_stepLaw",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 531,
+   "role": "substrate"
+  },
+  {
+   "declaration": "forcedRun_defect_window",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 538,
+   "role": "substrate"
+  },
+  {
+   "declaration": "stepLaw_iterate",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 552,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_le_of_forcedRun_of_growth",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 580,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_ge_of_no_late_window",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 604,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_ge_of_forcedRun",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 641,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_largestSkipLateAt_of_remainder_small",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 647,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_band_of_forcedRun_of_growth",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 659,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remOf",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 669,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remOf_eq",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 672,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_remOf_ascent",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 676,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_remOf_descent",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 683,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_8",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 694,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_14",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 697,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_15",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 700,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_20",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 703,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_26",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 706,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_32",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 709,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_38",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 712,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_102",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 715,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_401",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 718,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_1500",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 724,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_1501",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 728,
+   "role": "substrate"
+  },
+  {
+   "declaration": "top_mem_eleven",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 741,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_step_eleven",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 746,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_largestSkipLateAt_twelve",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 754,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_step_eleven'",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 763,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_small_seven",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 770,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_late_in_window_seven",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 776,
+   "role": "substrate"
+  },
+  {
+   "declaration": "defect_window_eleven",
+   "module": "ErdosProblems/Bit/R1.lean",
+   "line": 782,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_upperOrMiddle",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 170,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_upperOrMiddle_of_not_largestSkipLateAt_succ",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 178,
+   "role": "substrate"
+  },
+  {
+   "declaration": "noLateSkip",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 187,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_largestSkipLateAt_of_noLateSkip",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 191,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_largestSkipLateAt_eleven",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 210,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_largestSkipLateAt_twelve",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 213,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_largestSkipLateAt_thirteen",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 216,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deficit_step",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 223,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deficit_iter",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 234,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_largestSkipLateAt_of_remainder_le_two_pow",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 259,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deficit_shrinks_along_rightRun",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 287,
+   "role": "substrate"
+  },
+  {
+   "declaration": "RemainderReachesHalfPointCofinally",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 299,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_remainderReachesHalfPointCofinally",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 306,
+   "role": "substrate"
+  },
+  {
+   "declaration": "surplus_step",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 320,
+   "role": "substrate"
+  },
+  {
+   "declaration": "surplus_iter",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 333,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ObeysRemainderCeiling",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 360,
+   "role": "substrate"
+  },
+  {
+   "declaration": "three_mul_remainder_lt_of_largestSkipLateAt",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 367,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_surplus_run",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 390,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_largestSkipLateAt_of_surplus",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 420,
+   "role": "substrate"
+  },
+  {
+   "declaration": "badRun_pins_remainder",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 443,
+   "role": "statement",
+   "statement_node": "bad_run_pins_remainder_conditional"
+  },
+  {
+   "declaration": "RemainderMissesHalfPointWindowCofinally",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 468,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_remainderMissesHalfPointWindowCofinally",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 476,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_six",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 500,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_six",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 509,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_nine",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 514,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_nine",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 527,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_ten",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 533,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_ten",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 547,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_five",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 553,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_five",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 561,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_seventeen",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 566,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_seventeen",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 591,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_upperOrMiddle_of_mem_succ",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 601,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_upperOrMiddle_six",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 608,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_upperOrMiddle_nine",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 612,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deficit_step_witness",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 621,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deficit_iter_witness",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 628,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deficit_shrinks_witness",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 641,
+   "role": "substrate"
+  },
+  {
+   "declaration": "surplus_step_witness",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 653,
+   "role": "substrate"
+  },
+  {
+   "declaration": "surplus_iter_witness",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 664,
+   "role": "substrate"
+  },
+  {
+   "declaration": "obeysRemainderCeiling_fourteen",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 683,
+   "role": "substrate"
+  },
+  {
+   "declaration": "obeysRemainderCeiling_seventeen",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 687,
+   "role": "substrate"
+  },
+  {
+   "declaration": "theoremB_witness",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 698,
+   "role": "substrate"
+  },
+  {
+   "declaration": "theoremA_witness",
+   "module": "ErdosProblems/Bit/R2.lean",
+   "line": 709,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_append_singleton",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 135,
+   "role": "substrate"
+  },
+  {
+   "declaration": "gapDominates_of_append",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 159,
+   "role": "substrate"
+  },
+  {
+   "declaration": "integerGreedyBits_singleton",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 173,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_succ_row",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 183,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_succ_row_true",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 216,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_succ_row_false",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 226,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_succ_top",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 239,
+   "role": "substrate"
+  },
+  {
+   "declaration": "greedyWord",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 250,
+   "role": "substrate"
+  },
+  {
+   "declaration": "greedySum",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 254,
+   "role": "substrate"
+  },
+  {
+   "declaration": "carryTaken",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 259,
+   "role": "substrate"
+  },
+  {
+   "declaration": "greedyWord_length",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 261,
+   "role": "substrate"
+  },
+  {
+   "declaration": "greedySum_add_remainder",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 264,
+   "role": "substrate"
+  },
+  {
+   "declaration": "carryTaken_le",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 271,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftedPrefix",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 275,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftedPrefix_length",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 278,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_succ_split",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 281,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_liftedPrefix",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 289,
+   "role": "substrate"
+  },
+  {
+   "declaration": "prefixSum_lower_bound",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 310,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRemainder",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 333,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRemainder_le",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 340,
+   "role": "substrate"
+  },
+  {
+   "declaration": "greedyWord_succ_split",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 353,
+   "role": "substrate"
+  },
+  {
+   "declaration": "getD_append_singleton",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 361,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRank_notMem_support",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 371,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_small_remainder",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 390,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_succ_le_of_large",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 401,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_succ_le_of_large'",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 430,
+   "role": "substrate"
+  },
+  {
+   "declaration": "dichotomy",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 440,
+   "role": "substrate"
+  },
+  {
+   "declaration": "deficit_grows",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 457,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_largestSkipLateAt_of_deficit",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 485,
+   "role": "substrate"
+  },
+  {
+   "declaration": "exists_largestSkipLateAt_of_remainder_lt",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 507,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_remainder_lt_cofinally",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 516,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_ge_of_half_notMem",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 529,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rem",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 544,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rem_eq",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 547,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_succ_of_rem",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 552,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_15",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 562,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_22",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 565,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_36",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 568,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_101",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 571,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_1201",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 575,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_3002",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 578,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_8001",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 581,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateAt_12003",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 585,
+   "role": "substrate"
+  },
+  {
+   "declaration": "escape_witness_20",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 593,
+   "role": "substrate"
+  },
+  {
+   "declaration": "escape_step_witness_19",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 608,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_lt_witness",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 619,
+   "role": "substrate"
+  },
+  {
+   "declaration": "criterion_not_necessary",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 639,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateSkip_does_not_give_escape",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 651,
+   "role": "substrate"
+  },
+  {
+   "declaration": "gap_is_two_pow_succ",
+   "module": "ErdosProblems/Bit/R3.lean",
+   "line": 659,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_append",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 136,
+   "role": "substrate"
+  },
+  {
+   "declaration": "gapDominates_of_append",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 160,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftWeights_length",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 172,
+   "role": "substrate"
+  },
+  {
+   "declaration": "four_mul_weightedBoolSum_le_lift",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 189,
+   "role": "substrate"
+  },
+  {
+   "declaration": "weightedBoolSum_lift_le",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 216,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topWeight_eq",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 246,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftedPrefix",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 255,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topEntry",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 259,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamWeights_succ_split",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 262,
+   "role": "substrate"
+  },
+  {
+   "declaration": "liftedPrefix_length",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 266,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topEntry_le",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 277,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamGreedyBits_succ_split",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 320,
+   "role": "substrate"
+  },
+  {
+   "declaration": "top_mem_iff",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 329,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_succ_of_remainder_le",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 350,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_gt_of_not_largestSkipLateAt",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 367,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_succ_add_le_of_not_largestSkipLateAt",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 376,
+   "role": "substrate"
+  },
+  {
+   "declaration": "cLoss",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 414,
+   "role": "substrate"
+  },
+  {
+   "declaration": "three_mul_cLoss_add_four",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 418,
+   "role": "substrate"
+  },
+  {
+   "declaration": "descent_iterate",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 429,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_ge_of_no_largestSkipLate",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 452,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_remainder_dips",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 476,
+   "role": "substrate"
+  },
+  {
+   "declaration": "half_mem_of_remainder_dips_strong",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 489,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_ge_of_half_not_mem",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 506,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_eq_wgt",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 522,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_seven",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 528,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_twelve",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 533,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_thirteen",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 538,
+   "role": "substrate"
+  },
+  {
+   "declaration": "criterion_hypothesis_seven",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 543,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_eight",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 548,
+   "role": "substrate"
+  },
+  {
+   "declaration": "criterion_hypothesis_fourteen",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 553,
+   "role": "substrate"
+  },
+  {
+   "declaration": "largestSkipLateAt_fifteen",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 556,
+   "role": "substrate"
+  },
+  {
+   "declaration": "criterion_fails_fifteen",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 561,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_largestSkipLateAt_twelve",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 568,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_largestSkipLateAt_thirteen",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 577,
+   "role": "substrate"
+  },
+  {
+   "declaration": "descent_twelve",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 585,
+   "role": "substrate"
+  },
+  {
+   "declaration": "descent_twelve_defect",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 593,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_gt_twelve",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 601,
+   "role": "substrate"
+  },
+  {
+   "declaration": "dip_witness",
+   "module": "ErdosProblems/Bit/R4.lean",
+   "line": 607,
+   "role": "substrate"
+  },
+  {
+   "declaration": "w",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 82,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wts",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 85,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wtsFrom",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 90,
+   "role": "substrate"
+  },
+  {
+   "declaration": "wtsEarly",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 93,
+   "role": "substrate"
+  },
+  {
+   "declaration": "tgt",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 95,
+   "role": "substrate"
+  },
+  {
+   "declaration": "grd",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 97,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rem",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 101,
+   "role": "substrate"
+  },
+  {
+   "declaration": "corr",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 106,
+   "role": "substrate"
+  },
+  {
+   "declaration": "entry",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 109,
+   "role": "substrate"
+  },
+  {
+   "declaration": "firstLate",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 112,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hyps",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 115,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_nineteen_not_mem",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 188,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_fifteen_not_mem",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 193,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_fourteen_mem",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 198,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_largestSkipLateAt_twenty",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 203,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_lateEntryRemainder_26",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 215,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_lateCorrection_26",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 233,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_hyps_26",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 242,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_25_not_mem_26",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 249,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe_largestSkipLateAt_26",
+   "module": "ErdosProblems/Bit/verify/B1.lean",
+   "line": 257,
+   "role": "substrate"
+  },
+  {
+   "declaration": "not_dvd_succ_of_dvd",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 107,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_eq_rowPulse",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 118,
+   "role": "substrate"
+  },
+  {
+   "declaration": "truncatedMersenneWeight_succ_row_is_corpus",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 132,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rowCarry_le_two_is_corpus",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 140,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamSubsetTarget_succ_is_corpus",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 149,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hyp_rowCarry_eq_two_holds",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 158,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hyp_rowCarry_eq_one_holds",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 159,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hyp_rowCarry_eq_zero_holds",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 160,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hyp_lift_split_holds",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 165,
+   "role": "substrate"
+  },
+  {
+   "declaration": "branches_both_realised",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 172,
+   "role": "substrate"
+  },
+  {
+   "declaration": "seamIntegerGreedyRemainder_13",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 189,
+   "role": "substrate"
+  },
+  {
+   "declaration": "remainder_bound_slack_thirteen",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 197,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bound_exceeds_smallest_weight_fourteen",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 212,
+   "role": "substrate"
+  },
+  {
+   "declaration": "headline_from_corpus_trichotomy",
+   "module": "ErdosProblems/Bit/verify/B2.lean",
+   "line": 229,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topRunOf",
+   "module": "ErdosProblems/Bit/verify/B3.lean",
+   "line": 81,
+   "role": "substrate"
+  },
+  {
+   "declaration": "d0Of",
+   "module": "ErdosProblems/Bit/verify/B3.lean",
+   "line": 85,
+   "role": "substrate"
+  },
+  {
+   "declaration": "probe",
+   "module": "ErdosProblems/Bit/verify/B3.lean",
+   "line": 88,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bitAt",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 163,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lfrOf",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 167,
+   "role": "substrate"
+  },
+  {
+   "declaration": "lateB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 171,
+   "role": "substrate"
+  },
+  {
+   "declaration": "topMemB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 177,
+   "role": "substrate"
+  },
+  {
+   "declaration": "corr",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 181,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ascB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 185,
+   "role": "substrate"
+  },
+  {
+   "declaration": "descB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 188,
+   "role": "substrate"
+  },
+  {
+   "declaration": "smallB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 191,
+   "role": "substrate"
+  },
+  {
+   "declaration": "noLateWindowB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 195,
+   "role": "substrate"
+  },
+  {
+   "declaration": "growthB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 199,
+   "role": "substrate"
+  },
+  {
+   "declaration": "bandB",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 202,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rows",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 206,
+   "role": "substrate"
+  },
+  {
+   "declaration": "noLateWindow_fails_at_five",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 301,
+   "role": "substrate"
+  },
+  {
+   "declaration": "noLateWindow_fails_at_thirteen",
+   "module": "ErdosProblems/Bit/verify/B4.lean",
+   "line": 307,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rightBranchB",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 83,
+   "role": "substrate"
+  },
+  {
+   "declaration": "belowHalfB",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 86,
+   "role": "substrate"
+  },
+  {
+   "declaration": "surplusBigB",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 89,
+   "role": "substrate"
+  },
+  {
+   "declaration": "ceilingB",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 92,
+   "role": "substrate"
+  },
+  {
+   "declaration": "inWindowB",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 96,
+   "role": "substrate"
+  },
+  {
+   "declaration": "rows",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 100,
+   "role": "substrate"
+  },
+  {
+   "declaration": "hits",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 101,
+   "role": "substrate"
+  },
+  {
+   "declaration": "count",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 102,
+   "role": "substrate"
+  },
+  {
+   "declaration": "longestRun",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 105,
+   "role": "substrate"
+  },
+  {
+   "declaration": "endpointWitnessB",
+   "module": "ErdosProblems/Bit/verify/B5.lean",
+   "line": 148,
+   "role": "substrate"
+  }
+ ],
+ "intra_zone_relations": []
+}
