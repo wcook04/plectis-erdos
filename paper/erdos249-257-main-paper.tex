@@ -4790,10 +4790,14 @@ Kova\v{c} and Tao verify, for every fixed integer $t\ge2$, that
 and deduce distinct Lambert subsums and a Cantor
 set~\cite[Remark~4.1, p.~13]{kovactao}. At
 $t=2$ this is the relevant Lambert-series instance of Kakeya's classical
-strict-tail criterion for subsum sets~\cite{kakeya1914}. What is checked here,
-beyond that cited geometry, is the greedy criterion, quantitative enclosure,
-and finite nonmembership certificates.  No historical-priority claim is made
-for those refinements, and they do not settle \#257.
+subsum-set theorem: an absolutely convergent series has a perfect achievement
+set, and the all-index strict-tail regime gives a nowhere-dense
+set~\cite[p.~251]{kakeya1914}.  Kakeya's closing broader characterization in
+terms of infinitely many strict-tail indices is explicitly left unproved
+there.  What is checked here, beyond the proved classical geometry, is the
+greedy criterion, quantitative enclosure, exact measure, and finite
+nonmembership certificates.  No historical-priority claim is made for those
+refinements, and they do not settle \#257.
 
 \begin{theorem}[superincreasing geometry and greedy membership]\label{res:greedy-details}
 For every $n\ge1$ the weight dominates the whole tail after it, $T(n)<w_n$,
@@ -4827,9 +4831,11 @@ and nowhere dense.  Its Lebesgue measure is exactly one.
 \lword{GreedyAchievementSet.lean}{1636}{isTotallyDisconnected_mersenneAchievementSet}{total disconnectedness},
 and
 \lword{GreedyAchievementSet.lean}{1645}{isNowhereDense_mersenneAchievementSet}{nowhere density}.
-Kova\v{c}--Tao supply the strict-tail Cantor-set context
-\cite[Remark~4.1, p.~13]{kovactao}.  The
-formalisation records these exact properties without making a novelty or
+Kakeya supplies the classical perfectness and all-index strict-tail
+nowhere-density statements~\cite[p.~251]{kakeya1914}, while
+Kova\v{c}--Tao verify the required strict-tail inequality in this Lambert
+family~\cite[Remark~4.1, p.~13]{kovactao}.  The formalisation records the exact
+properties, including the measure computation, without making a novelty or
 priority claim for them.
 
 \begin{proposition}[exact rational runs and finite nonmembership certificates]\label{res:death}
