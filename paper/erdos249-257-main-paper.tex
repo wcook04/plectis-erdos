@@ -3537,9 +3537,12 @@ producer inside the same integration manuscript.
 not add a mathematical conclusion to either reduction.
 
 \paragraph{Proof authority and source identity.}
-The Lean~4 proof assistant~\cite[abstract and \S1, pp.~625--626]{lean}
-and Mathlib library~\cite{mathlib} check
-the named results.  The source, links from prose to formal statements, and build
+The pinned Lean~4 toolchain and Mathlib revision check the named results.
+De Moura--Ullrich identify the Lean~4 system
+\cite[abstract and \S1, pp.~625--626]{lean}, while the Mathlib paper documents
+the library's historical Lean~3-era architecture
+\cite[abstract and \S1.1, p.~367]{mathlib}; it is not authority for the current
+pinned revision.  The source, links from prose to formal statements, and build
 instructions are available in the
 \href{https://github.com/wcook04/plectis-lean-erdos249-257}{public repository}.
 This paper fixes source revision \texttt{\commitshort}, published under
@@ -5115,8 +5118,13 @@ Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization
   in \emph{CADE-28}, LNCS 12699 (2021), 625--635,
   doi:\href{https://doi.org/10.1007/978-3-030-79876-5_37}
   {10.1007/978-3-030-79876-5\_37}.
-\bibitem{mathlib} The mathlib Community, \emph{The Lean mathematical library},
-  in \emph{CPP 2020}, ACM, 2020, 367--381, doi:\href{https://doi.org/10.1145/3372885.3373824}{10.1145/3372885.3373824}.
+\bibitem{mathlib} The mathlib Community,
+  \href{https://doi.org/10.1145/3372885.3373824}
+  {\emph{The Lean mathematical library}},
+  in \emph{CPP 2020}, ACM, 2020, 367--381,
+  doi:\href{https://doi.org/10.1145/3372885.3373824}
+  {10.1145/3372885.3373824}.  The article describes a December 2019
+  Lean~3-era snapshot; the repository lock owns the current revision.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/249}{\emph{Erd\H{o}s Problem \#249}} and
   \href{https://www.erdosproblems.com/257}{\emph{Erd\H{o}s Problem \#257}}\unskip,

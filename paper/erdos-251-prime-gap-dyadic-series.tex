@@ -193,10 +193,13 @@ contrapositive over the reals, and a local obstruction that converts an
 infinite-tail condition into a single comparison of gaps.
 Section~\ref{sec:carry} shows that the tail constraint does not by itself make
 the coefficient sequence eventually periodic, and Section~\ref{sec:open} states
-the remaining obligation.  The formal statements are checked by
-Lean~4~\cite[abstract and \S1, pp.~625--626]{lean4} against
-Mathlib~\cite{mathlib}; linked phrases open the corresponding declaration at
-the pinned source revision~\commitshort.
+the remaining obligation.  The pinned Lean~4 toolchain and Mathlib revision
+check the formal statements.  The cited system paper identifies Lean~4
+\cite[abstract and \S1, pp.~625--626]{lean4}, while the Mathlib paper documents
+the library's historical Lean~3-era architecture
+\cite[abstract and \S1.1, p.~367]{mathlib}; it is not authority for the current
+pinned revision.  Linked phrases open the corresponding declaration at the
+pinned source revision~\commitshort.
 
 \statusboundary
 
@@ -1119,8 +1122,13 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
   Lecture Notes in Comput. Sci. 12699, Springer, 2021, pp.~625--635,
   doi:\href{https://doi.org/10.1007/978-3-030-79876-5_37}
   {10.1007/978-3-030-79876-5\_37}.
-\bibitem{mathlib} The mathlib Community, \emph{The Lean mathematical library},
-  in CPP 2020, ACM, 2020, pp.~367--381.
+\bibitem{mathlib} The mathlib Community,
+  \href{https://doi.org/10.1145/3372885.3373824}
+  {\emph{The Lean mathematical library}},
+  in CPP 2020, ACM, 2020, pp.~367--381,
+  doi:\href{https://doi.org/10.1145/3372885.3373824}
+  {10.1145/3372885.3373824}.  The article describes a December 2019
+  Lean~3-era snapshot; the repository lock owns the current revision.
 \bibitem{maynard2015} J.~Maynard,
   \href{https://doi.org/10.4007/annals.2015.181.1.7}
   {\emph{Small gaps between primes}},
