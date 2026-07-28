@@ -95,9 +95,13 @@ Let $1\le a_1<a_2<\cdots$ be a sequence of integers with
 Then $a_n=a_{n-1}^{2}-a_{n-1}+1$ for all sufficiently large $n$.
 \end{problem}
 
-\noindent See~\cite[p.~64]{erdosgraham1980} and~\cite[p.~105]{erdos1988};
-numbering and status follow Bloom's catalogue~\cite{erdosproblems}.  The
-problem is open.  Below we index the same recurrence as
+\noindent See~\cite[p.~64]{erdosgraham1980} and~\cite[p.~105]{erdos1988}.
+Bloom's current catalogue record reproduces the displayed problem and labels
+it open, while explicitly warning that the status is the website owner's
+present assessment and may not reflect all relevant literature
+\cite{erdosproblems}.  We therefore use the catalogue for numbering and
+current reported status only; the original publications carry the
+mathematical claims.  Below we index the same recurrence as
 $a_{n+1}=a_n^{2}-a_n+1$, which is the shift the formal sources use; the two
 forms are the same statement.  Write $\sylnext(a)=a^{2}-a+1$, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{37}{sylvesterNext}{Sylvester
@@ -118,7 +122,11 @@ sum is rational, and $a_n$ does not satisfy the recurrence, then
  \left(\frac{a_{n+1}^{2}}{a_{n+2}}-1\right)>0,
 \]
 where $[a_1,\ldots,a_n]$ is the least common
-multiple~\cite[Theorem~3, p.~132]{erdosstraus1964}.  Duverney proved a conditional form of the
+multiple~\cite[Theorem~3, p.~132]{erdosstraus1964}.  This is the indexing in
+the original theorem.  The current catalogue summary instead prints
+$a_n^2/a_{n+1}-1$ in the second factor while retaining the same prefix-LCM
+quotient; that displayed summary is off by one and is not followed here
+\cite{erdosproblems}.  Duverney proved a conditional form of the
 problem itself: if $\sum_{n\ge0}\bigl(a_{n+1}/a_n^{2}-1\bigr)$ converges, then
 the reciprocal sum is rational if and only if the recurrence holds for all
 large $n$~\cite[Corollary~3.2, p.~287]{duverney2001}.  Neither is formalised
@@ -1356,7 +1364,11 @@ technique transfers to any forced orbit whose step is a polynomial division.
   Addison-Wesley, 1991.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/243}{\emph{Erd\H{o}s Problem \#243}},
-  \texttt{erdosproblems.com/243}, accessed 22 July 2026.
+  \texttt{erdosproblems.com/243}, accessed 28 July 2026 (page displays
+  ``last edited 21 January 2026'').  The current record labels the problem
+  open, cites \texttt{[ErGr80, p.~64]} and \texttt{[Er88c, p.~105]}, and
+  explicitly describes its status as the website owner's present assessment
+  rather than a literature-completeness guarantee.
 \bibitem{formalconjectures243} The Formal Conjectures Authors,
   \href{https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/243.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{243}}},
