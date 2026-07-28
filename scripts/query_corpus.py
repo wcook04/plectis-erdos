@@ -5262,32 +5262,97 @@ def summary_packet() -> dict[str, Any]:
 def is_repository_overview_query(query: str) -> bool:
     """Recognize ordinary cold-reader requests for corpus-wide coverage."""
     text = normalized_search_text(query)
-    return any(
+    whole_scope_phrases = (
+        "full coverage of everything here",
+        "complete overview of everything here",
+        "complete repository overview",
+        "full repository overview",
+        "overview of the whole repository",
+        "overview of the whole repo",
+        "everything interesting and non trivial in this repo",
+        "everything interesting and nontrivial in this repo",
+    )
+    if any(phrase in text for phrase in whole_scope_phrases):
+        return True
+
+    specific_subject_phrases = (
+        "erdos 249",
+        "erdos 257",
+        "half value",
+        "certificate supply",
+        "open proposition",
+        "theorem ",
+        "lemma ",
+        "claim ",
+        "declaration ",
+        "module ",
+        "proof of",
+        "mobius",
+        "lambert",
+        "curvature",
+    )
+    if any(phrase in text for phrase in specific_subject_phrases):
+        return False
+
+    generic_phrases = (
+        "what is in this repository",
+        "what is in this repo",
+        "whats in this repository",
+        "whats in this repo",
+        "what s in this repository",
+        "what s in this repo",
+        "what does this repository contain",
+        "what does this repo contain",
+        "show me what is here",
+        "show me whats here",
+        "tell me what is here",
+        "tell me whats here",
+        "lay of the land",
+        "what are the interesting and non trivial results",
+        "what are the interesting and nontrivial results",
+        "what has been formalized",
+        "what has been formalised",
+        "comprehensive tour",
+    )
+    if any(phrase in text for phrase in generic_phrases):
+        return True
+
+    repository_scope = any(
         phrase in text
         for phrase in (
-            "what is in this repository",
-            "what is in this repo",
-            "whats in this repository",
-            "whats in this repo",
-            "what s in this repository",
-            "what s in this repo",
-            "what does this repository contain",
-            "what does this repo contain",
-            "show me what is here",
-            "show me whats here",
-            "full coverage of everything here",
-            "complete overview of everything here",
-            "complete repository overview",
-            "full repository overview",
-            "overview of the whole repository",
-            "overview of the whole repo",
+            "repository",
+            "repo",
+            "codebase",
+            "this project",
+            "plectis lean",
+            "whole corpus",
         )
     )
+    overview_cue = any(
+        phrase in text
+        for phrase in (
+            "what is",
+            "whats",
+            "contain",
+            "explain",
+            "overview",
+            "tour",
+            "walk me through",
+            "interesting",
+            "non trivial",
+            "nontrivial",
+            "formalized",
+            "formalised",
+            "built",
+        )
+    )
+    return repository_scope and overview_cue
 
 
 def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
     """Return the bounded, coverage-accounted cold-clone overview."""
     packet = summary_packet()
+    publication = publication_architecture_packet()
     programmes = packet["mathematical_programmes"]
     status_taxonomy = packet["status_taxonomy"]
     open_propositions = packet["remaining_open_propositions"]
@@ -5329,6 +5394,11 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "publication_family_count": packet[
                     "publication_family_count"
                 ],
+                "publication_family_ids": [
+                    row["id"] for row in publication["family_index"]
+                ],
+                "principal_claim_count": len(packet["principal_claims"]),
+                "non_claim_count": len(packet["non_claims"]),
                 "complete_relative_to": [
                     "docs/orientation.json",
                     "docs/claims.json",
@@ -5343,6 +5413,67 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
                 "a typed handle.",
                 "Treat the Plectis link as an optional companion, never proof authority.",
             ],
+            "repository_map": [
+                {
+                    "surface": "formal_source",
+                    "path": "Erdos249257/",
+                    "role": "Lean declarations and proofs; kernel-checked proof authority",
+                },
+                {
+                    "surface": "claim_registry",
+                    "path": "docs/claims.json",
+                    "role": "claim identities, statuses, argument graph, and exact open propositions",
+                },
+                {
+                    "surface": "orientation",
+                    "path": "docs/orientation.json",
+                    "role": "bounded scale, programme, route, and non-claim projection",
+                },
+                {
+                    "surface": "methodology",
+                    "path": "docs/methodology.json",
+                    "role": "evidence responsibilities and claim-change rules",
+                },
+                {
+                    "surface": "papers",
+                    "path": "papers/",
+                    "role": "authored exposition and publication views within registered ceilings",
+                },
+                {
+                    "surface": "agent_queries",
+                    "path": "scripts/query_corpus.py",
+                    "role": "typed public navigation across claims, source, papers, and open work",
+                },
+            ],
+            "publication_architecture": publication["architecture"],
+            "publication_family_index": publication["family_index"],
+            "answer_contract": {
+                "purpose": (
+                    "compose a mathematically faithful repository-wide explanation, "
+                    "not a theorem-count report or a digest of only the flagship problems"
+                ),
+                "required_coverage": [
+                    "identify the repository, its authority order, and its source/paper/query layout",
+                    "cover every mathematical programme with focus, strongest progress, claim ceiling, and exact open boundary",
+                    "distinguish all claim-status classes and surface important no-go or obstruction results",
+                    "name every exact remaining-open proposition without implying it is solved",
+                    "explain the publication architecture and reciprocal Plectis companion boundary",
+                ],
+                "weighting_rule": (
+                    "weight mathematical substance, reusable reductions, and honest "
+                    "obstructions above raw declaration or theorem counts"
+                ),
+                "compression_rule": (
+                    "lead with identity and strongest results, then a compact row per "
+                    "programme; use typed handles for drilldown instead of dumping declarations"
+                ),
+                "forbidden_shortcuts": [
+                    "describing only Erdos 249 and 257",
+                    "using theorem counts as a proxy for mathematical significance",
+                    "promoting conditional, finite, or navigational evidence to a solved open problem",
+                    "treating authored prose or the Plectis companion as Lean proof authority",
+                ],
+            },
         }
     )
     return packet
@@ -5580,6 +5711,11 @@ def render_card(packet: dict[str, Any]) -> str:
                 (
                     f"companion | {companion['name']} | "
                     f"{companion['repository']} | not proof authority"
+                ),
+                (
+                    "answer | expand every programme handle; weight reductions, "
+                    "reusable interfaces, obstructions, and exact open boundaries "
+                    "above theorem counts"
                 ),
             )
         )

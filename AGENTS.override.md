@@ -22,9 +22,10 @@ Query the public corpus before reading papers or Lean source:
 python3 scripts/query_corpus.py --ask "<question>"
 ```
 
-For “what is in this repository?”, “what does this repo contain?”, or a request
-for full coverage, the ordinary-language query must resolve to the same complete
-bounded overview as:
+For “what is in this repository?”, “give me the lay of the land”, “walk me
+through this codebase”, “what are the interesting/non-trivial results?”, “what
+has been formalized?”, or a request for full coverage, the ordinary-language
+query must resolve to the same complete bounded overview as:
 
 ```sh
 python3 scripts/query_corpus.py --overview
@@ -33,7 +34,9 @@ python3 scripts/query_corpus.py --overview
 That overview covers every mathematical programme, all claim-status classes,
 every exact remaining-open proposition, the publication-family index, and the
 companion Plectis boundary. Do not answer a repository-wide question from one
-flagship problem or a theorem count.
+flagship problem or a theorem count. Follow its `answer_contract`: weight
+substantive reductions, reusable interfaces, and honest obstructions above raw
+volume, while retaining the exact open boundary.
 
 Follow the returned claim, remaining-open, declaration, module, and paper
 handles. For a corpus-wide progress review, the bounded route must include:
