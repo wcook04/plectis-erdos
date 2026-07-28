@@ -43,6 +43,9 @@ ANCHOR_GROUPS = {
         "five-line card",
         "The route logic names no specimen theorem or module",
         "projection schemas",
+        "--vocabulary",
+        "executable Rosetta surface",
+        "phrase luck",
     ),
     "authority_boundary": (
         "Navigation does not receive proof authority",

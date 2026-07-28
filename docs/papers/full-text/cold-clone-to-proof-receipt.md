@@ -79,6 +79,8 @@ Five intent lenses cover the main transitions:
 
 The route logic names no specimen theorem or module. Repository-specific mathematics enters through data: programme rows, claims, declaration records, and frontier propositions. This distinction matters. The mechanism is generic over the repository’s projection schemas, while the current projection content is intentionally specific to the mathematics it describes.
 
+Ordinary-language entry is likewise not an undocumented trigger list. The `--vocabulary` packet is an executable Rosetta surface: it publishes question operators, aliases, transparent expansions, typed route hints, and a route-discovery lexicon projected from `docs/claims.json::machine_readable_paper.entrypoints`. A unique exact authored term may take a constant-time fast path; ambiguous or unseen language falls through to visible vocabulary interpretation and ranked corpus search. Every search response records that interpretation, so an agent can inspect how its wording was translated instead of depending on phrase luck.
+
 The packet also answers four different cold readers. A research mathematician gets programmes, claim statuses, and surviving open propositions. A formalisation engineer gets declaration coordinates, exact value references, and a route into a checked change. An AI-lab researcher gets coverage and authority distinctions. An independent contributor gets the no-build orientation, changed-cone build route, and public handoff check. Each reader sees the same facts through a different question contract rather than a separate hard-coded example.
 
 <a id="sec:authority"></a>

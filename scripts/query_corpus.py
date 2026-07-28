@@ -3404,6 +3404,62 @@ def exact_discovery_route(
     }
 
 
+def has_exact_discovery_term(query: str, claims: dict[str, Any]) -> bool:
+    """Distinguish an ambiguous authored phrase from an unseen paraphrase."""
+    normalized_query = " ".join(query.casefold().split())
+    return any(
+        normalized_query
+        in {
+            " ".join(str(candidate).casefold().split())
+            for candidate in (row["id"], *row.get("discovery_terms", []))
+        }
+        for row in all_entrypoints(claims)
+    )
+
+
+def direct_route_search_packet(
+    query: str,
+    limit: int,
+    route: dict[str, Any],
+    *,
+    selection: str,
+) -> dict[str, Any]:
+    """Return one source-grounded route without paying the declaration scan."""
+    missing_registered_artifacts = [
+        row["artifact_handle"]
+        for row in artifact_inventory()
+        if row.get("availability") == "missing"
+    ]
+    return {
+        "kind": "search",
+        "authority_posture": "navigation_projection_not_proof_authority",
+        "query": query,
+        "query_interpretation": semantic_query_interpretation(query),
+        "match_count": 1,
+        "results": [route][:limit],
+        "omitted_match_count": 0 if limit else 1,
+        "limit": limit,
+        "routing_receipt": {
+            "selection": selection,
+            "declaration_scan_required": False,
+        },
+        "artifact_availability_receipt": {
+            "status": (
+                "partial_optional_artifacts_missing"
+                if missing_registered_artifacts
+                else "all_registered_artifacts_present"
+            ),
+            "missing_registered_artifacts": missing_registered_artifacts,
+            "effect_on_search": (
+                "missing authored artifacts are omitted from paper-anchor "
+                "indexing; claims, routes, open propositions, declarations, "
+                "modules, and present papers remain searchable"
+            ),
+        },
+        "next": "Use --route on this handle, then follow its bounded query and action steps.",
+    }
+
+
 def search_packet(query: str, limit: int) -> dict[str, Any]:
     query = query.strip()
     if not query:
@@ -3411,39 +3467,49 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     claims = load("docs/claims.json")
     exact_route = exact_discovery_route(query, claims)
     if exact_route is not None:
-        missing_registered_artifacts = [
-            row["artifact_handle"]
-            for row in artifact_inventory()
-            if row.get("availability") == "missing"
-        ]
-        return {
-            "kind": "search",
-            "authority_posture": "navigation_projection_not_proof_authority",
-            "query": query,
-            "query_interpretation": semantic_query_interpretation(query),
-            "match_count": 1,
-            "results": [exact_route][:limit],
-            "omitted_match_count": 0 if limit else 1,
-            "limit": limit,
-            "routing_receipt": {
-                "selection": "exact_authored_discovery_term",
-                "declaration_scan_required": False,
-            },
-            "artifact_availability_receipt": {
-                "status": (
-                    "partial_optional_artifacts_missing"
-                    if missing_registered_artifacts
-                    else "all_registered_artifacts_present"
-                ),
-                "missing_registered_artifacts": missing_registered_artifacts,
-                "effect_on_search": (
-                    "missing authored artifacts are omitted from paper-anchor "
-                    "indexing; claims, routes, open propositions, declarations, "
-                    "modules, and present papers remain searchable"
-                ),
-            },
-            "next": "Use --route on this handle, then follow its bounded query and action steps.",
-        }
+        return direct_route_search_packet(
+            query,
+            limit,
+            exact_route,
+            selection="exact_authored_discovery_term",
+        )
+    hinted_route_ids = [
+        handle
+        for (kind, handle), _priority in sorted(
+            semantic_hint_targets(query).items(), key=lambda item: item[1]
+        )
+        if kind == "reading_route"
+    ]
+    if (
+        len(hinted_route_ids) == 1
+        and not has_exact_discovery_term(query, claims)
+    ):
+        hinted_row = next(
+            (
+                row
+                for row in all_entrypoints(claims)
+                if row["id"] == hinted_route_ids[0]
+            ),
+            None,
+        )
+        if hinted_row is not None:
+            return direct_route_search_packet(
+                query,
+                limit,
+                {
+                    "kind": "reading_route",
+                    "id": hinted_row["id"],
+                    "route_kind": hinted_row.get(
+                        "route_kind", "reading_route"
+                    ),
+                    "title": hinted_row.get("title"),
+                    "intent": hinted_row["intent"],
+                    "problem_target_claim_ids": hinted_row.get(
+                        "problem_target_claim_ids", []
+                    ),
+                },
+                selection="controlled_vocabulary_route",
+            )
     claims_by_id = {row["id"]: row for row in claims["claims"]}
     atlas = load("docs/declaration_atlas.json")
     aliases = load("paper/module-aliases.json")["aliases"]

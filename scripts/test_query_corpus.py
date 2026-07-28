@@ -289,6 +289,19 @@ def validate_natural_language_search() -> None:
         "selection": "exact_authored_discovery_term",
         "declaration_scan_required": False,
     }
+    paraphrased_backlog = query(
+        "--search",
+        "where are the semantic coverage gaps in the papers",
+        "--limit",
+        "3",
+    )
+    assert paraphrased_backlog["results"][0]["id"] == (
+        "agent_native_corpus_navigation"
+    )
+    assert paraphrased_backlog["routing_receipt"] == {
+        "selection": "controlled_vocabulary_route",
+        "declaration_scan_required": False,
+    }
     portfolio_search = query(
         "--search", "what other exact mathematics is there", "--limit", "10"
     )

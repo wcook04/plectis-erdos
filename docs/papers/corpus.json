@@ -3393,7 +3393,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:f42ca74d6dcd638773e180486f7283e2108a68b5aaeeab8ea8c24a24da107671",
+      "source_sha256": "sha256:0d1dbcb72d58972db1e3c2dcf31aa34d429c08aac5f8eb7ddaf4e51f17f47757",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/cold-clone-to-proof-receipt.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/cold-clone-to-proof-receipt.tex",
       "section_count": 15,
@@ -3450,49 +3450,49 @@
           "level": 1,
           "id": "sec:authority",
           "title": "Crossing from navigation to authority",
-          "line": 84
+          "line": 86
         },
         {
           "level": 1,
           "id": "sec:incremental",
           "title": "Compilation after comprehension",
-          "line": 101
+          "line": 103
         },
         {
           "level": 1,
           "id": "sec:dogfood",
           "title": "Dogfood receipt",
-          "line": 113
+          "line": 115
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Relation to prior work",
-          "line": 123
+          "line": 125
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits and transfer conditions",
-          "line": 137
+          "line": 139
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Authority-preserving agent entry",
-          "line": 149
+          "line": 151
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproduction routes",
-          "line": 157
+          "line": 159
         }
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:8197a8cd35431a636d1649c062897d04943f4f77a9a383ed4eda7a30526a9ce6",
-      "pdf_byte_count": 61822,
+      "pdf_sha256": "sha256:95d3bb3e11ad7acf3fb5f5d57536566dead2c6cf4dcaed6209dd8b23e0bacd65",
+      "pdf_byte_count": 62595,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3510,17 +3510,17 @@
           {
             "id": "sec:authority",
             "title": "Crossing from navigation to authority",
-            "line": 84
+            "line": 86
           },
           {
             "id": "sec:incremental",
             "title": "Compilation after comprehension",
-            "line": 101
+            "line": 103
           },
           {
             "id": "sec:limits",
             "title": "Limits and transfer conditions",
-            "line": 137
+            "line": 139
           }
         ],
         "unresolved_count": 0
@@ -3540,10 +3540,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/plectis-public-system.md",
       "local_source": "docs/papers/mirror/plectis-public-system.tex",
-      "source_sha256": "sha256:9ff4bac32d6ba6b458c5991501ca871c5a830bb0c6a8034e5abf1afff0dedbd8",
+      "source_sha256": "sha256:8bbbb0654ebd719210cc510c7af491192c96498310272db46cc2044682796506",
       "canonical_source_url": "https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis/main/paper/plectis-public-system.tex",
-      "section_count": 28,
+      "section_count": 31,
       "sections": [
         {
           "level": 1,
@@ -3565,153 +3565,171 @@
         },
         {
           "level": 4,
+          "id": "who-made-the-decisions.",
+          "title": "Who made the decisions.",
+          "line": 29
+        },
+        {
+          "level": 4,
           "id": "what-i-examined.",
           "title": "What I examined.",
-          "line": 45
+          "line": 47
+        },
+        {
+          "level": 1,
+          "id": "sec:early-example",
+          "title": "One public test before the general design",
+          "line": 57
         },
         {
           "level": 1,
           "id": "sec:contract",
           "title": "The component contract",
-          "line": 55
+          "line": 85
         },
         {
           "level": 1,
           "id": "sec:run",
           "title": "One run, examined",
-          "line": 80
+          "line": 110
         },
         {
           "level": 1,
           "id": "sec:distinctions",
           "title": "Five distinctions",
-          "line": 140
+          "line": 170
         },
         {
           "level": 2,
           "id": "public-execution-versus-where-the-code-came-from",
           "title": "Public execution versus where the code came from",
-          "line": 146
+          "line": 176
         },
         {
           "level": 2,
           "id": "repeatability-versus-correctness",
           "title": "Repeatability versus correctness",
-          "line": 152
+          "line": 182
         },
         {
           "level": 2,
           "id": "a-validators-rule-versus-the-stated-claim",
           "title": "A validator\u2019s rule versus the stated claim",
-          "line": 158
+          "line": 188
         },
         {
           "level": 2,
           "id": "selected-cases-versus-general-behaviour",
           "title": "Selected cases versus general behaviour",
-          "line": 164
+          "line": 194
         },
         {
           "level": 2,
           "id": "risk-reduction-versus-guarantee",
           "title": "Risk reduction versus guarantee",
-          "line": 183
+          "line": 213
         },
         {
           "level": 1,
           "id": "sec:collection",
           "title": "What the collection contains",
-          "line": 198
+          "line": 228
         },
         {
           "level": 1,
           "id": "sec:hand",
           "title": "The author\u2019s hand",
-          "line": 241
+          "line": 271
         },
         {
           "level": 1,
           "id": "sec:stronger",
           "title": "What stronger evidence would look like",
-          "line": 255
+          "line": 285
+        },
+        {
+          "level": 2,
+          "id": "a-falsifiable-comparison",
+          "title": "A falsifiable comparison",
+          "line": 308
         },
         {
           "level": 2,
           "id": "how-the-record-should-age",
           "title": "How the record should age",
-          "line": 278
+          "line": 316
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 286
-        },
-        {
-          "level": 4,
-          "id": "a-first-review.",
-          "title": "A first review.",
-          "line": 296
+          "line": 324
         },
         {
           "level": 1,
           "id": "sec:appendix",
           "title": "Dated reproduction record",
-          "line": 318
+          "line": 334
+        },
+        {
+          "level": 4,
+          "id": "a-first-review.",
+          "title": "A first review.",
+          "line": 340
         },
         {
           "level": 4,
           "id": "names.",
           "title": "Names.",
-          "line": 324
+          "line": 362
         },
         {
           "level": 4,
           "id": "getting-the-code-and-running-without-installing.",
           "title": "Getting the code and running without installing.",
-          "line": 330
+          "line": 368
         },
         {
           "level": 4,
           "id": "installing.",
           "title": "Installing.",
-          "line": 345
+          "line": 383
         },
         {
           "level": 4,
           "id": "the-worked-example.",
           "title": "The worked example.",
-          "line": 356
+          "line": 394
         },
         {
           "level": 4,
           "id": "a-second-python-version.",
           "title": "A second Python version.",
-          "line": 362
+          "line": 400
         },
         {
           "level": 4,
           "id": "project-wide-checks.",
           "title": "Project-wide checks.",
-          "line": 368
+          "line": 406
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 374
+          "line": 412
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 378
+          "line": 416
         },
         {
           "level": 4,
           "id": "authority-boundary.",
           "title": "Authority boundary.",
-          "line": 384
+          "line": 422
         }
       ],
       "citations_rendered": 19,
@@ -3721,8 +3739,8 @@
       },
       "mirror_note": "generated copy; the manuscript is owned by plectis and authority does not move with the copy",
       "local_pdf": "docs/papers/mirror/plectis-public-system.pdf",
-      "pdf_sha256": "sha256:1766f00e08f3489c204a7a773d945c2734394a610c739db447364498a33763c4",
-      "pdf_byte_count": 132195,
+      "pdf_sha256": "sha256:434b247700bddced9e88637833f4a996f2a9a7736966dd44c11479009fdf4014",
+      "pdf_byte_count": 135323,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3735,7 +3753,7 @@
           {
             "id": "sec:distinctions",
             "title": "Five distinctions",
-            "line": 140
+            "line": 170
           }
         ],
         "unresolved_count": 0
