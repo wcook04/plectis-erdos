@@ -13,7 +13,8 @@
 % were simply absent from the note.
 %
 % Second correction.  The squarefree support was printed here as open.  It is
-% not open at base 2: Duverney and Tachiya settled it in 2019, and this note
+% known at every power-of-two base: Duverney and Tachiya settled the joint
+% family in 2019, and this note
 % had failed to cite them.  The section that claimed a frontier now records
 % what the position actually is -- a certificate engine failing on a value
 % that is known irrational, for a reason internal to a normalisation
@@ -74,7 +75,8 @@ denominator part $v>1$ is coprime to the numerator, rationality also forces
 Finally, rational values admit an exact Boolean--M\"obius scaled-tail
 characterisation from which the support is reconstructed.  These constraints
 are not known to be contradictory.  We also record the squarefree support,
-whose value at base~$2$ is known from the literature and on which two of the
+whose values at every power-of-two base are jointly controlled by the
+literature and on which two of the
 arguments used here fail for a reason internal to a normalisation rather than
 to the value itself.  We then record the achievement-set geometry and the exact
 status of the candidate $1/2$: membership would refute \#257, while
@@ -165,7 +167,7 @@ this note that quantifies over every support rather than sampling.
 Section~\ref{sec:map} gives representative supports already known to give
 irrational values, grouped by the argument that reaches them.
 Section~\ref{sec:squarefree} treats
-the squarefree support, whose value is known at base~$2$ and which two of the
+the squarefree support, whose values are known at every power-of-two base and which two of the
 arguments used here provably cannot reach at any even base.
 Section~\ref{sec:geometry} is the geometry of the set of attainable values, and
 the value $1/2$ inside it.  Section~\ref{sec:open} states what remains.
@@ -421,8 +423,9 @@ multiples of a fixed $d$ & every $b\ge2$ & dilation: the multiples series at
 \multicolumn{3}{@{}l}{\emph{Periodicity of the coefficient sequence}}\\
 eventually periodic & every $b\ge2$ &
   \mword{Erdos249257/CertificateKernel.lean}{11276}{irrational_erdosSupportSeries_eventuallyPeriodic}{checked here};
-  Luca--Tachiya restate a broader signed theorem for purely periodic integer
-  weights~\cite[Theorem~A, p.~139]{lucatachiya2017} \\
+  Luca--Tachiya prove the nonnegative purely-periodic case
+  \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017};
+  finite rational prefixes give the infinite eventual case \\
 a residue class; the odd numbers & every $b\ge2$ & special cases of the row
   above (\mword{Erdos249257/CertificateKernel.lean}{11344}{irrational_erdosSupportSeries_residueClass}{residue class},
   \mword{Erdos249257/CertificateKernel.lean}{11358}{irrational_erdosSupportSeries_odd}{odd}) \\
@@ -438,16 +441,17 @@ pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Multiplicative closure: Chowla--Erd\H{o}s, refined}}\\
 $F_s(E)$ and the monomial images
-  $\{j n^i:n\in F_s(E)\}$ & $b^L\le s$,
+  $\{j n^i:n\in F_s(E)\}$ & $b=q^j$ with $|q|^L\le s$,
   $L=\lcm(1,\dots,\ell)$ &
   Duverney--Tachiya~\cite[Cor.~1.2, author-preprint p.~4]{duverneytachiya};
   linear independence, not only irrationality; not formalised here \\
-$s$-free positive integers, with or without $1$ & $2\le b\le s$ &
-  \emph{ibid.}, with $E$ the primes and $\ell=i=j=1$;
+$s$-free positive integers, with or without $1$ &
+  $b=q^j$, $2\le |q|\le s$, $j\ge1$ &
+  \emph{ibid.}, with $E$ the primes and $\ell=i=1$;
   deleting $1$ changes the value by $1/(b-1)\in\Q$ \\
-squarefree & $b=2$ only &
+squarefree & every $b=2^j$, $j\ge1$ &
   Duverney--Tachiya~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya};
-  not formalised here \\
+  joint linear independence for every finite set of such bases; not formalised here \\
 coprime to a fixed $N$; sums of two squares & every $b\ge2$ &
   \emph{ibid.}, Examples 1.3 and 1.2; not formalised here \\
 \addlinespace
@@ -494,11 +498,12 @@ over $\Q$ whenever $|q|^{L}\le s$, with $L=\lcm(1,\dots,\ell)$ and $\ell$
 bounding the exponent $i$.  This is a
 row-generating theorem, not an isolated example: with $E$ the primes,
 $s=\infty$ returns the full support at every base, while $s=2$ returns the
-squarefree support.  The constraint is what confines the squarefree case to
-base~$2$, and it is sharp in an unusually rigid way: $s=2$ forces $\ell=1$ and
-then $|q|\le2$, so no integer base $b\ge3$ and no higher index $i\ge2$ is
-reachable for that support by this route.  Their conclusion is also stronger
-than irrationality, being linear independence of a whole family.
+squarefree support.  For \(s=2\), the constraint forces \(\ell=1\) and
+\(|q|\le2\), but the free exponent \(j\) gives every base \(b=2^j\).
+Thus this route excludes bases that are not powers of \(2\), rather than all
+bases \(b\ge3\); it also excludes higher monomial degrees \(i\ge2\).
+Their conclusion is stronger than irrationality, being linear independence of
+the whole finite family across the chosen exponents \(j\).
 
 \emph{The two analytic rows do not have the same standing.}  Theorem 1.3
 on p.~4, proved in Section~5 on pp.~44--56,
@@ -511,10 +516,11 @@ and only the first is proved.
 
 \emph{Formalisation is not priority.}  Rows marked ``checked here'' are Lean
 statements accepted by the pinned kernel.  For the full support that is a
-formalisation of Erd\H{o}s; for purely periodic integer weights Luca and
-Tachiya's open note restates a broader signed theorem by other methods
-\cite[Theorem~A, p.~139]{lucatachiya2017}.  No priority is claimed anywhere
-in this table.
+formalisation of Erd\H{o}s; Luca and Tachiya's RIMS paper already proves the
+nonnegative purely-periodic case and its finite rational-prefix extension
+\cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017}, while
+Theorem~A restates the broader signed purely-periodic theorem without
+reproducing its earlier proof.  No priority is claimed anywhere in this table.
 
 \begin{remark}[signed periodic weights: a gap in the method, not in the
 mathematics]\label{res:signed}
@@ -528,12 +534,12 @@ For a nonnegative support indicator the terminating alternative is excluded by
 the rows above; for mixed signs this argument does not exclude it.
 
 The terminating alternative never in fact occurs.  Theorem~A in Luca and
-Tachiya's later open note explicitly restates their earlier Theorem~1.1 in the
+Tachiya's 2017 RIMS paper explicitly restates their earlier Theorem~1.1 in the
 exact form needed here: $\sum_{n\ge1}a_n/(q^n-1)$ is irrational for every
 integer $q$ with $|q|>1$ and every nonzero purely periodic integer sequence
 $(a_n)$ \cite[Theorem~A, p.~139]{lucatachiya2017}.  Thus the disjunction above
 is an artefact of the route taken, not a feature of the problem: the second
-branch is empty, and their author restatement is what shows it.  The open note
+branch is empty, and their author restatement is what shows it.  The RIMS paper
 does not reproduce the earlier proof or verify the broader eventual-rational
 formulation, so neither is claimed here.  The local statement retains only
 the interest of being an independently checked argument with a visible
@@ -545,11 +551,11 @@ the same phenomenon.
 \label{sec:squarefree}
 
 Let $\Asf=\{d\ge2: d\text{ squarefree}\}$: a support of density $6/\pi^2$, far
-denser than the primes, and not periodic.  Its value at base~$2$ is irrational,
-by a theorem of Duverney and Tachiya recalled below.  This section establishes
-that two block-certificate arguments used here cannot reach that support at
-any even base, and that the reason lies in a normalisation rather than in the
-value.
+denser than the primes, and not periodic.  Its values at all power-of-two bases
+are jointly linearly independent with \(1\), by a theorem of Duverney and
+Tachiya recalled below.  This section establishes that two block-certificate
+arguments used here cannot reach that support at any even base, and that the
+reason lies in a normalisation rather than in the value.
 
 \begin{theorem}[squarefree divisor incidence]\label{res:sfcount}
 For every $n\ge1$ the number of squarefree divisors of $n$ is $2^{\omega(n)}$,
@@ -574,34 +580,41 @@ $\omega(n)\ge1$.  At $n=12=2^2\cdot3$ the squarefree divisors are $1,2,3,6$, so
 $\scA_{\Asf}(12)=3$; at $n=30$ they are the eight divisors of $30$ and
 $\scA_{\Asf}(30)=7$.
 
-\subsection{The value is known, at base 2}
+\subsection{The values are known at every power-of-two base}
 
 Duverney and Tachiya's Corollary~1.2, applied with $E$ the primes, $s=2$ and
-$\ell=1$, gives $L=\lcm(1)=1$ and the admissibility condition $|q|\le2$.  At
-$q=2$ their Example~1.1 reads: the numbers
+$\ell=1$, gives $L=\lcm(1)=1$ and the admissibility condition $|q|\le2$.
+The exponent \(j\) in their displayed family remains arbitrary.  Thus, for
+every \(h\ge1\), their Example~1.1 says that the numbers
 \[
-  1,\quad \sum_{n\ge1}\frac{|\mu(n)|}{2^n-1},\quad
-  \sum_{n\ge1}\frac{|\mu(n)|}{2^{2n}-1},\quad\dots
+  1,\qquad
+  \sum_{n\ge1}\frac{|\mu(n)|}{2^{jn}-1}\quad(1\le j\le h)
 \]
 are linearly independent over $\Q$
 ~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya}.  Since
 $|\mu|$ is the indicator of the squarefree integers including $n=1$, and
-$\Asf$ omits only $n=1$, whose weight is $1/(2^1-1)=1$,
+$\Asf$ omits only $n=1$, whose weight at base \(2^j\) is
+\((2^j-1)^{-1}\in\Q\),
 \[
-  X_{\Asf}
-  =\sum_{n\ge1}\frac{|\mu(n)|}{2^n-1}-1 ,
+  X_{\Asf}(2^j)
+  =\sum_{n\ge1}\frac{|\mu(n)|}{2^{jn}-1}-\frac1{2^j-1},
 \]
-and linear independence of $1$ and the first sum makes both irrational.
+and rational translation preserves the joint linear independence with \(1\).
 
-\begin{corollary}\label{res:sfsettled}
-$X_{\Asf}=\sum_{d\ \mathrm{squarefree},\ d\ge2}(2^d-1)^{-1}$ is irrational.
+\begin{corollary}[joint power-of-two-base theorem]\label{res:sfsettled}
+For every \(h\ge1\), the \(h+1\) numbers
+\[
+  1,\quad X_{\Asf}(2),\quad X_{\Asf}(4),\quad\ldots,\quad X_{\Asf}(2^h)
+\]
+are linearly independent over \(\Q\).  In particular, every
+\(X_{\Asf}(2^j)\), \(j\ge1\), is irrational.
 \end{corollary}
 
 \noindent Two boundaries on that.  It is a citation, not a formalisation:
-nothing in this development proves it.  And it is base~$2$ only.  The
-admissibility condition $|q|^L\le s$ fails at $s=2$ for every $|q|\ge3$, so
-the cited corollary does not cover the squarefree support at bases $b\ge3$;
-this note proves no result about those values.
+nothing in this development proves it.  The admissibility condition
+$|q|^L\le s$ at \(s=2\) allows only \(|q|=2\), so this citation covers the
+bases \(2^j\) and does not cover bases that are not powers of \(2\); this note
+proves no result about those remaining values.
 
 \subsection{Two block-certificate hypotheses have no instance}
 
@@ -746,7 +759,8 @@ So $\Ach$ is a fat Cantor set: strict tail domination
 $\sum_{\ell>n}\wgt\ell<\wgt n$ opens a gap at every level, while the total
 measure is not lost.  The division of credit is exact.  The strict inequality,
 the resulting distinctness of subsums over distinct supports, and the Cantor
-conclusion are Remark 4.1 (p.~13) of Kova\v{c} and Tao~\cite{kovactao}; no novelty is
+conclusion for every integer base are Remark 4.1 (p.~13) of Kova\v{c} and
+Tao~\cite{kovactao}; no novelty is
 claimed for any of the three.  That remark makes no metric assertion, and
 strict tail domination does not determine the measure: the weights $3^{-n}$
 satisfy $\sum_{\ell>n}3^{-\ell}=3^{-n}/2<3^{-n}$ and produce a null achievement
@@ -887,12 +901,12 @@ problem beside it.
   the form of one finite fatal gap.
 \end{enumerate}
 
-\noindent For scope, the squarefree value at base~$2$ is settled by
-Corollary~1.2 and Example~1.1 of
+\noindent For scope, all squarefree values at power-of-two bases, jointly in
+each finite family, are settled by Corollary~1.2 and Example~1.1 of
 ~\cite[author-preprint p.~4]{duverneytachiya}
 (Corollary~\ref{res:sfsettled}).  Their cited
-corollary does not cover bases $b\ge3$, and this note makes no global
-open-status or priority claim for those values.
+corollary does not cover bases that are not powers of \(2\), and this note
+makes no global open-status or priority claim for those values.
 
 \section*{Statements and declarations}
 
@@ -935,9 +949,9 @@ Erd\H{o}s Problem~\#257 remains open.
   Forum Math.\ 31 (2019), no.~6, 1557--1566,
   \href{https://doi.org/10.1515/forum-2018-0299}{DOI}.  Corollary 1.2 gives
   the general $F_s(E)$ theorem and its monomial images under
-  $|q|^{\lcm(1,\dots,\ell)}\le s$; Example 1.1 is the squarefree base-$2$
-  specialisation.  Both are on p.~4 of the linked author preprint; the proof
-  is on pp.~9--11.
+  $|q|^{\lcm(1,\dots,\ell)}\le s$; Example 1.1 gives the joint squarefree
+  family at all bases \(2^j\), \(j\ge1\).  Both are on p.~4 of the linked
+  author preprint; the proof is on pp.~9--11.
 \bibitem{taoteravainen2025} T.~Tao and J.~Ter\"av\"ainen,
   \emph{Quantitative correlations and some problems on prime factors of
   consecutive integers}, arXiv:2512.01739 (submitted December 2025, revised

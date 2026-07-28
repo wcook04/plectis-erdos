@@ -643,17 +643,17 @@ printed theorem on p.~222.  His next sentence says that pairwise coprimality
 can be removed by a more complicated argument, but the article omits that
 argument and p.~226 repeats the proof boundary; we therefore do not use the
 stronger extension. The lcm-gap named cases are (a) and (b), whose support gaps outgrow the
-running $\lcm$; the structured families are (c) and (e).\footnote{Theorem~A
-in Luca--Tachiya's later open note restates their broader signed result for
-every nonzero purely periodic integer coefficient sequence
-\cite[Theorem~A, p.~139]{lucatachiya2017}.  This directly covers periodic
-indicators; the checked finite-change theorem below handles an eventual
-prefix.  Their Remark~1 says that the earlier signed proof used the
+running $\lcm$; the structured families are (c) and (e).\footnote{Luca--Tachiya's
+Theorem~1 directly proves the nonnegative purely-periodic case; subtracting a
+finite rational prefix gives the eventual-support row
+\cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017}.  Their
+Theorem~A restates the broader signed purely-periodic theorem but does not
+reproduce its earlier proof \cite[Theorem~A, p.~139]{lucatachiya2017}.
+Remark~1 says that the earlier signed proof used the
 Alford--Granville--Pomerance large-modulus input, unlike their nonnegative
-proof \cite[p.~140]{lucatachiya2017}.  The same paper's Theorem~1 and
-Example~1 strengthen the nonnegative unit case to linear independence of
-every finite generalized-divisor ladder
-\cite[pp.~139--140; proof pp.~149--150]{lucatachiya2017}.}
+proof \cite[p.~140]{lucatachiya2017}.  Example~1 strengthens the nonnegative
+unit case to linear independence of every finite generalized-divisor ladder
+\cite[p.~140]{lucatachiya2017}.}
 \noindent Formalised case by case by the
 \lword{CertificateKernel.lean}{5707}{irrational_erdosSum_factorial_support}{factorial-support theorem},
 \lword{CertificateKernel.lean}{5731}{irrational_erdosSum_two_pow_support}{power-of-two-support theorem},
@@ -667,18 +667,24 @@ every base \(b\geq2\).
 
 There is also a decisive cited case outside that formalised list.  Let
 \(A_{\mathrm{sf}}=\{n\ge2:n\text{ is squarefree}\}\).  Duverney and Tachiya's
-Corollary~1.2 and Example~1.1 prove that
+Corollary~1.2 and Example~1.1 prove, for every \(h\ge1\), that
 \[
-  1,\qquad \sum_{n\ge1}\frac{|\mu(n)|}{2^n-1}
+  1,\qquad
+  \sum_{n\ge1}\frac{|\mu(n)|}{2^{jn}-1}\quad(1\le j\le h)
 \]
 are linearly independent over \(\Q\)
 ~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya}.  Since
-\(|\mu|\) is the squarefree indicator and the \(n=1\) term is the rational
-number \(1\), it follows that
-\(\sum_{n\in A_{\mathrm{sf}}}(2^n-1)^{-1}\) is irrational.  This result is not
-formalised here.  Its exact hypothesis \(|q|^L\le s\), specialised to
-\(s=2\) and \(L=1\), covers base \(2\) but not integer bases \(b\ge3\);
-neither those bases nor arbitrary infinite supports follow from the citation.
+\(|\mu|\) is the squarefree indicator and the omitted \(n=1\) term is the
+rational number \((2^j-1)^{-1}\), it follows that
+\[
+  1,\quad
+  \sum_{n\in A_{\mathrm{sf}}}\frac1{2^n-1},\quad
+  \sum_{n\in A_{\mathrm{sf}}}\frac1{4^n-1},\ \ldots,\
+  \sum_{n\in A_{\mathrm{sf}}}\frac1{(2^h)^n-1}
+\]
+are linearly independent.  This result is not formalised here.  It covers
+every power-of-two base, but neither other bases nor arbitrary infinite
+supports follow from the citation.
 
 The prime support is now known unconditionally: Tao and Ter\"av\"ainen proved
 that
@@ -3647,11 +3653,14 @@ not identically zero on its eventual period gives an irrational series.
 \end{theorem}
 \noindent Formalised:
 \lword{CertificateKernel.lean}{12483}{irrational_ratWeightSeries_eventuallyPeriodic}{eventually-periodic nonnegative criterion}.
-Luca--Tachiya's later open note restates the signed purely-periodic integer
-theorem: every nonzero such weight gives an irrational series for each integer
-base $|b|>1$ \cite[Theorem~A, p.~139]{lucatachiya2017}.  That source does not
-reproduce the earlier proof or verify the broader eventual-rational wording;
-the theorem above is supported by the local checked proof.
+Luca--Tachiya's 2017 open-access RIMS paper proves the nonnegative
+purely-periodic case \cite[Theorem~1, p.~139; proof
+pp.~149--150]{lucatachiya2017}.  Clearing the denominator of the finite
+rational period and subtracting the finite prefix gives the exact
+eventual-rational theorem above; the local checked proof is independent.  The
+same paper's Theorem~A restates the signed purely-periodic integer theorem for
+every integer base $|b|>1$, but does not reproduce that earlier proof
+\cite[Theorem~A, p.~139]{lucatachiya2017}.
 \begin{theorem}[periodic signed-weight dichotomy]\label{res:periodicsigned}
 For a periodic integer weight \(\gamma\), either \(L_b(\gamma)\) is irrational
 or \(b^kL_b(\gamma)\in\Z\) for some \(k\ge0\).  In the rational branch its
@@ -3762,7 +3771,8 @@ Write
 \(\zeta_q(2)=\sum_{n\ge1}nq^n/(1-q^n)\).
 Postelmans--Van Assche prove that \(1,\zeta_q(1),\zeta_q(2)\) are linearly
 independent over \(\Q\) for $q=1/p$ and every integer $p\ge2$
-~\cite[Theorem~1.3]{postelmansvanassche}.  Since
+~\cite[Theorem~1.3 in the published version; Theorem~3 on p.~4 and proof in
+Section~7, pp.~30--34, of the linked preprint]{postelmansvanassche}.  Since
 $L^{(2)}(\mathbf1)=\zeta_{1/2}(2)-\zeta_{1/2}(1)$, their theorem makes the
 constant-weight value irrational.  This cited conclusion is not formalised
 here and does not transfer to the M\"obius row $L^{(2)}(\mu)=S-\tfrac12$.
@@ -5129,6 +5139,9 @@ Campbell prime-progression incompatibility & \lrefx{CampbellShiftSynchronization
   \href{https://arxiv.org/abs/math/0604312v1}{\emph{Irrationality of $\zeta_q(1)$ and $\zeta_q(2)$}},
   J. Number Theory \textbf{126} (2007), no.~1, 119--154,
   doi:\href{https://doi.org/10.1016/j.jnt.2006.11.011}{10.1016/j.jnt.2006.11.011}.
+  The linear-independence statement is Theorem~1.3 in the published version
+  and Theorem~3 on p.~4 of the linked arXiv preprint; its preprint proof is
+  Section~7, pp.~30--34.
 \bibitem{lucatachiya2017} F.~Luca and Y.~Tachiya,
   \href{https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2014-14.pdf}
   {\emph{Linear independence results for the values of divisor functions

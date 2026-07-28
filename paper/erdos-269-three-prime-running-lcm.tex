@@ -136,10 +136,11 @@ That last remark is the one this note is closest to.  The running least common
 multiple is not injective in $n$: it is constant along stretches of the
 enumeration and changes only at certain points.  Removing duplicate summands
 means summing over the distinct values rather than over $n$.  Sections
-\ref{sec:cells} and~\ref{sec:fibre} make that reindexing exact, in the case
-$|P|=3$: they identify where the value is constant, by exactly what factor it
-changes when it changes, and what multiplicity each distinct value carries.
-They do not recover the irrationality proof Erd\H{o}s reported for the
+\ref{sec:cells} and~\ref{sec:fibre} make the finite ingredients of that
+reindexing exact, in the case $|P|=3$: they identify where the value is
+constant, by exactly what factor it changes when it changes, and give a finite
+rectangular-box fibre identity.  They do not justify the ordered infinite
+passage or recover the irrationality proof Erd\H{o}s reported for the
 de-duplicated sum, and they say nothing about the original sum.  We do not know
 of a published account of that proof.
 
@@ -272,6 +273,9 @@ Statement & Authority & Logical reach and boundary \\
 \bottomrule
 \endlastfoot
 Irrationality in any three-prime case & None & Open. \\
+Irrationality after deleting duplicate running-LCM values &
+Erd\H{o}s 1974 letter & Asserted on p.~335, but no proof is supplied there and
+none is recovered here. \\
 $\Lprefix(x)=\hgt(x)$ & Paper; Lean source & Unconditional for distinct primes; Theorem~\ref{res:lcm}.  The unrestricted identity is classical. \\
 $\hgt(x)\le x^{3}$ & Paper; Lean source & Unconditional; Proposition~\ref{res:cube}. \\
 Constancy on logarithmic cells & Paper; Lean source & Unconditional; Theorem~\ref{res:cell}. \\

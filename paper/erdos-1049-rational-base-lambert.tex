@@ -50,14 +50,15 @@ while preserving a nonzero, sufficiently small remainder; we count the four-jet
 target exactly and prove the concrete sufficient threshold \(M\ge 4R+2S\) on
 the number $M$ of coefficient pairs, at positive bottom depth $R$.
 
-We also record what the elementary route costs.  Erd\H{o}s's argument for the
-irrationality of $\sum_{n\ge1}c(n)b^{-n}$ at an integer base $b\ge2$ proceeds
-by clearing denominators at a cut level and trapping a positive integer below
-$1$.  At a rational base $r/s$ with $s\ge2$ the same clearing leaves a factor
-$s^{N+1}$ behind.  Writing a coordinatewise corridor for the surviving
-arithmetic, we prove that a corridor forces $s^{N+K+1}<r(N+K)$, and that at the
-base $3/2$ this is impossible once the shift and the cleared window are both
-nonempty.  We also prove the exact denominator-cleared tail recurrence
+We also record what a direct clearing route costs.  Erd\H{o}s's actual 1948
+integer-base proof instead constructs, by the Chinese remainder theorem,
+arbitrarily long blocks of zero base-$b$ digits and proves that the expansion
+does not terminate~\cite[pp.~63--66]{erdos1948}.  The separate cut-level
+clearing studied here leaves a factor $s^{N+1}$ behind at a rational base
+$r/s$ with $s\ge2$.  Writing a coordinatewise corridor for the surviving
+arithmetic, we prove that a corridor forces $s^{N+K+1}<r(N+K)$, and that at
+the base $3/2$ this is impossible once the shift and the cleared window are
+both nonempty.  We also prove the exact denominator-cleared tail recurrence
 $U_{N+1}=rU_N-Bc(N+1)s^{N+1}$ and the bound
 $2^{N+1}\le Bc(N+1)s^{N+1}$ for $s\ge2$ and positive data, against the exact
 collapse of that term to $Bc(N+1)$ at $s=1$.  The height criterion of Bundschuh
@@ -92,8 +93,9 @@ integer-base theorem~\cite{erdosproblems}.  The same record warns that its
 status is the website owner's current assessment and asks readers to cite the
 original Erd\H{o}s sources.  Accordingly, the catalogue is used here for
 numbering and current reported status, while the two original publications
-carry the mathematical claims.  For non-integer rational $t$ the problem is
-open.
+carry the mathematical claims.  The universal conjecture over all rational
+$t>1$ remains open; individual non-integral rational bases are known, including
+$7/2$ below.
 
 Write $t=r/s$ in lowest terms with $r>s\ge1$, so that $s=1$ is exactly the
 integer case Erd\H{o}s settled.  The resistant explicit base of least naive
@@ -120,8 +122,9 @@ $\sum_{n\ge1}(t^{n}+w)^{-1}$ at integer bases $t\ge2$, for every nonzero
 rational $w$ with $w\ne-t^m$ for all $m\ge1$, by Pad\'e approximation rather
 than by digit clearing; his estimates also show that these values are not
 Liouville numbers~\cite[Thm.~4, pp.~257--258]{borwein1991}.  In 2001 Van
-Assche recovered the integer-base irrationality and an irrationality-measure
-bound using little $q$-Legendre Pad\'e approximants
+Assche recovered the integer-base irrationality and the bound
+$\mu(F(p))\le 2\pi^2/(\pi^2-2)=2.50828\ldots$ using little $q$-Legendre
+Pad\'e approximants
 ~\cite[Thm.~1, p.~10; proof pp.~10--11]{vanassche2001}.  His more general
 Theorem~3 proves irrationality of
 $\sum_{k\ge1}(cp^k-1)^{-1}$ for an integer $p>1$ and fixed rational $c$
@@ -132,15 +135,17 @@ $\sum_{n\ge1}d(n)a_n/b^n$ is irrational whenever $b>1$ is an integer and
 $(a_n)$ ranges in a finite integer alphabet excluding zero; taking
 $a_n=(-1)^n$ completes the elementary digit method for negative integer
 bases~\cite[Thm.~1.2, p.~2]{vandehey2013}.  All
-three retain an integer base.  In 2004 Zudilin obtained integer-base
-irrationality-exponent estimates for $q$-harmonic series on a parameter cone,
-by way of Heine's basic transform and a permutation
-group~\cite[Secs.~4--5, pp.~159--162]{zudilin2004}.
+three retain an integer base.  In 2004 Zudilin obtained the uniform bound
+$\mu(F(p))\le2.46497868\ldots$ for every integer
+$p\notin\{0,\pm1\}$, by way of Heine's basic transform and a permutation
+group~\cite[Thm.~1, p.~154; Secs.~4--5, pp.~159--162]{zudilin2004}.
 The ordinary-hypergeometric antecedent is Rhin and Viola's $S_5$ action and
 twelve-coset denominator reduction for rational forms in
 $\zeta(2)$~\cite[Sec.~3, pp.~38--42; Sec.~4, pp.~46--51]{rhinviola1996}.
-The coefficient polynomials specialised in Section~\ref{sec:endpoints} are
-those of that construction.  The neighbouring problem of Lambert
+Those sources motivate the permutation, denominator and polynomial-
+specialisation architecture of Section~\ref{sec:endpoints}; the endpoint
+lemmas there are abstract and are not yet applied to either source's actual
+coefficient family.  The neighbouring problem of Lambert
 subseries $\sum_{n\in A}(t^{n}-1)^{-1}$ over a restricted index set $A$ is
 treated by Kova\v{c} and Tao~\cite{kovactao2024}.  The rational non-integer
 progress relevant here is instead the height criterion of Bundschuh and
@@ -148,14 +153,23 @@ V\"a\"an\"anen~\cite{bv1994}.  No claim of priority is made for anything below,
 which concerns the formal status of an argument rather than a new theorem
 about $F(t)$.
 
-\paragraph{The integer-base argument, in outline.}
-Let $b\ge2$ be an integer and suppose $F(b)=p/q$ for integers $p$ and $q\ge1$.
-Cut the series at a level $N$, multiply by $q b^{N}$, and
-subtract the cleared prefix.  What remains is a positive integer, since every
-term of the prefix has been cleared and the tail is positive; and it is smaller
-than $1$, since the tail of a geometric-type series is small.  A positive
-integer below $1$ does not exist.  The argument is elementary and it is
-sensitive in exactly one place: the clearing must remove every denominator.
+\paragraph{Erd\H{o}s's integer-base argument, in outline.}
+For an integer $b\ge2$, Erd\H{o}s rewrites
+$F(b)=\sum_{n\ge1}\tau(n)b^{-n}$.  A Chinese-remainder construction forces
+arbitrarily long blocks in which the divisor coefficients have the powers of
+$b$ needed to make the corresponding base-$b$ digits zero.  Explicit bounds
+control the middle and far tails, while positivity proves that the expansion
+does not terminate.  The resulting base-$b$ expansion has arbitrarily long
+zero blocks without being eventually zero and is therefore irrational
+~\cite[pp.~63--66]{erdos1948}.
+
+\paragraph{The direct cut-and-clear attempt studied here.}
+A more naive route is to suppose $F(b)=p/q$, cut at $N$, and multiply the
+remaining identity by $qb^N$.  This does not by itself trap a positive integer
+below $1$: the first uncleared tail contribution is
+$q\tau(N+1)/b$.  The sections below isolate additional corridor hypotheses
+under which a bounded-window version of this route would work, and then show
+why those hypotheses fail at $3/2$.
 
 Write $\beta=r/s$ for the base and $c(n)$ for the coefficient of $\beta^{-n}$,
 so that $c=\tau$ in the case at hand.  The term $c(n)\beta^{-n}$ is
@@ -791,9 +805,9 @@ recurrence}.
 
 The recurrence has a linear part $rU_N$ and a forcing term $Bc(N+1)s^{N+1}$,
 the inhomogeneous term the state receives at each step.
-The integer-base argument works by keeping the state in a bounded window, and
-the forcing term is what it must absorb.  Its size is what separates the two
-cases.
+The direct-clearing route studied here works only if the state remains in a
+bounded window, and the forcing term is what that window must absorb.  Its
+size is what separates the two denominator regimes.
 
 \begin{theorem}[the forcing term]\label{res:forcing}
 Let $s,B$ be natural numbers and $c:\N\to\N$, and put

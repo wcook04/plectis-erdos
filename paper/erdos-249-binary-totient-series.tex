@@ -280,16 +280,17 @@ five declarations; see the formal source notes below.}
 \textbf{Eventually periodic weights are settled.}  For every integer base
 $b\ge2$, if $\gamma\colon\N\to\Q$ is eventually periodic, nonnegative and
 positive at some positive index of its periodic part, then
-$\sum_{a}\gamma(a)/(b^a-1)$ is irrational.  Theorem~A in Luca and
-Tachiya's later open note restates their earlier signed theorem in the exact
-purely-periodic integer case: every nonzero purely periodic integer sequence
-gives an irrational Lambert value at every integer base $|q|>1$
-\cite[Theorem~A, p.~139]{lucatachiya2017}.  Their Theorem~1 strengthens the
-nonnegative case to linear independence of each finite divisor-convolution
-ladder \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017}.
-Neither statement by itself verifies the broader eventual-rational wording
-formerly attached here, so the eventual nonnegative rational claim above
-rests on the checked theorem.  By \ref{res:weight} the weight $\Aw$ is
+  $\sum_{a}\gamma(a)/(b^a-1)$ is irrational.  Theorem~A in Luca and
+  Tachiya's 2017 open-access RIMS paper restates their earlier signed theorem in the exact
+  purely-periodic integer case: every nonzero purely periodic integer sequence
+  gives an irrational Lambert value at every integer base $|q|>1$
+  \cite[Theorem~A, p.~139]{lucatachiya2017}.  Their Theorem~1 strengthens the
+  nonnegative case to linear independence of each finite divisor-convolution
+  ladder \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017}.
+  Clearing the common denominator of a rational period and subtracting the
+  finite rational prefix shows that Theorem~1 already proves the eventual
+  nonnegative rational claim above; the checked theorem gives an independent
+  formal proof.  By \ref{res:weight} the weight $\Aw$ is
 unbounded, hence not eventually periodic, so \#249 is outside this class.
 {\footnotesize\emph{Checked:}
 \mword{Erdos249257/CertificateKernel.lean}{12483}{irrational_ratWeightSeries_eventuallyPeriodic}{the periodic theorem}.}
@@ -369,7 +370,7 @@ constant, the weight $g=f*\mu$, and its status.
 $f$ & $\sum f(n)/2^n$ & weight $g=f*\mu$ & status \\
 \midrule
 $\tau$ & $1.6066951\ldots=\EB$ & $g\equiv1$ & The Erd\H{o}s--Borwein constant;
-  irrational (Erd\H{o}s 1948);
+  irrational~\cite[theorem on p.~63]{erdos1948};
   formalised here in the Lambert form $\sum_{d\ge1}(2^d-1)^{-1}$
   (\mword{Erdos249257/CertificateKernel.lean}{8007}{irrational_erdosBorwein_series}{checked}) \\
 $\omega$ & $0.5169428\ldots$ & $g=\mathbf 1_{\text{primes}}$ &
@@ -392,6 +393,14 @@ vanishes on $n\equiv2\pmod4$, while $\mathbf 1_{\text{primes}}$ is bounded but
 no more eventually periodic than $\Aw$ is, so the settled $\omega$ row is not
 an instance of \ref{res:periodic} either.  It was settled by a different
 method, discussed in Section~\ref{sec:open}.
+
+Luca and Tachiya's result is stronger than the single $\tau$ row:
+Example~1 makes \(1\) and every finite ladder of generalized-divisor-function
+values linearly independent
+~\cite[Example~1, p.~140; proof pp.~149--150]{lucatachiya2017}.
+Historically, Erd\H{o}s already singled out the totient series itself as a
+difficult analogue at the end of his 1948 paper~\cite[p.~66]{erdos1948};
+that remark supplies lineage, not a modern status proof.
 
 \paragraph{Exact identities and representations.}
 Several neighbouring Dirichlet-convolution identities are rational and
@@ -913,6 +922,12 @@ Erd\H{o}s Problem~\#249 remains open.
   Theorem~A on p.~139 explicitly restates their earlier Theorem~1.1 for
   nonzero purely periodic integer weights.  Theorem~1 is on p.~139, its
   examples are on p.~140, and its proof is on pp.~149--150.
+\bibitem{erdos1948} P.~Erd\H{o}s,
+  \href{https://users.renyi.hu/~p_erdos/1948-04.pdf}
+  {\emph{On arithmetical properties of Lambert series}},
+  J. Indian Math. Soc. (N.S.) \textbf{12} (1948), 63--66.
+  The integer-base full-support theorem is on p.~63; the proof is on
+  pp.~63--66, and the closing totient-series remark is on p.~66.
 \bibitem{erdosgraham1980} P.~Erd\H{o}s and R.~L.~Graham, \emph{Old and New
   Problems and Results in Combinatorial Number Theory}, 1980, p.~61.
 \bibitem{erdos1988} P.~Erd\H{o}s, \emph{On the irrationality of certain
