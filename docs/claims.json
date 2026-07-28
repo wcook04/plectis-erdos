@@ -6957,6 +6957,29 @@
           ]
         },
         {
+          "id": "ErdosProblems.DemandLedger.Basic",
+          "path": "ErdosProblems/DemandLedger/Basic.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Hyp",
+            "ErdosProblems.Erdos249.TotientStrictPrimeEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.Hyp",
+          "path": "ErdosProblems/DemandLedger/Hyp.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.DemandLedger.edges.Discharge1_G097",
+          "path": "ErdosProblems/DemandLedger/edges/Discharge1_G097.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.Basic"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos1049.RationalBaseLambert",
           "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
           "role": "Lean proof module",
@@ -7060,6 +7083,22 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Lift.CertT67",
+          "path": "ErdosProblems/Lift/CertT67.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.edges.Discharge1_G097"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Lift.Recon67",
+          "path": "ErdosProblems/Lift/Recon67.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.DemandLedger.edges.Discharge1_G097"
+          ]
+        },
+        {
           "id": "ErdosProblems.Root",
           "path": "ErdosProblems/Root.lean",
           "role": "Lean proof module",
@@ -7078,6 +7117,15 @@
             "ErdosProblems.Erdos1049.RationalBaseLambert",
             "ErdosProblems.Erdos1049.RationalPadeArithmetic",
             "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Skip.LadderT67",
+          "path": "ErdosProblems/Skip/LadderT67.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Lift.Recon67",
+            "ErdosProblems.Lift.CertT67"
           ]
         }
       ]
@@ -7679,7 +7727,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "234ced3455a73357c33113e8a285e1a3b3d411fb",
+      "ref": "1d53a792b7873ce6f0386b7aa2ee70021003e83f",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint"
@@ -9413,10 +9461,10 @@
     },
     {
       "id": "certified_kill_instances",
-      "label": "Initial certified-kill segment and generated certificates",
+      "label": "Certified-kill band and finite shards",
       "status": "verified finite instance",
-      "statement": "Kernel-checked certified kills for small periods and at 28 explicit lcm-diagonal scales through t = 64, plus finite certificate shards, each discharged by decide.",
-      "bounded_domain": "The explicitly listed small periods; the lcm-diagonal scales t in {1,2,3,4,5,7,8,9,11,13,16,17,19,23,25,27,29,31,32,37,41,43,47,49,53,59,61,64}; and the parameters encoded by the finite certificate shards.",
+      "statement": "Lean checks every lcm-diagonal scale t ≤ 82 and the listed finite shards. The historical 28 deposits through t = 64 already covered t ≤ 66 because periodLcm is constant between prime powers.",
+      "bounded_domain": "Listed small periods, every t ≤ 82, and finite-shard parameters; no t = 83 or cofinal claim.",
       "remaining_open_proposition_ids": [
         "remaining_open.unbounded_certificate_supply"
       ],
@@ -9447,6 +9495,11 @@
           "name": "certifiedKill_diagonal_all_imported_through_t64",
           "module": "Erdos249257/DiagonalPincerCertificatesT64.lean",
           "line": 1967
+        },
+        {
+          "name": "exists_diagonalKill_le_82",
+          "module": "ErdosProblems/Skip/LadderT67.lean",
+          "line": 71264
         }
       ]
     },
