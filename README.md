@@ -110,10 +110,9 @@ exactly once. These are navigation counts, not novelty claims.
 - **Mathematician:** start with the
   [Exposition PDF](erdos249-257-main-paper.pdf), then use
   [`docs/SOURCE_MAP.md`](docs/SOURCE_MAP.md) to follow one result into Lean.
-- **Coding agent:** read [`AGENTS.md`](AGENTS.md) and
-  [`docs/orientation.json`](docs/orientation.json); run
-  `python3 scripts/query_corpus.py --ask "<question>"` before papers or broad
-  source search.
+- **Coding agent:** start at [`AGENTS.override.md`](AGENTS.override.md), then
+  [`AGENTS.md`](AGENTS.md) and `docs/orientation.json`; run
+  `python3 scripts/query_corpus.py --ask "<question>"` before source.
 - **Exact boundary or claim status:** read [SCOPE.md](SCOPE.md), the human
   [orientation](docs/ORIENTATION.md), and [methodology](METHODOLOGY.md).
 - **Publication topology or contribution family:** run
