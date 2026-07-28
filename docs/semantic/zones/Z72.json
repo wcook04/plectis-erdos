@@ -145,9 +145,40 @@
           "line": 311
         }
       ]
+    },
+    {
+      "id": "homogeneous_three_two_evaluation_representation",
+      "canonical_statement": "For an integral polynomial P and declared width W, homEvalThreeTwo(W,P) is the integer homogeneous evaluation sum over 0<=i<=W of coeff(P,i)*3^i*2^(W-i). The bottom 3-adic and top 2-adic endpoint jets are reductions of this same integer.",
+      "logical_class": "representation_normalisation",
+      "problem": "1049",
+      "concepts": [
+        "z72_endpoint_local_obstruction",
+        "z72_authority_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the common integer endpoint evaluation",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A standard homogeneous polynomial evaluation specialised to (3,2); no novelty claim is made.",
+      "scope_caveat": "The coordinate definition supplies neither endpoint-unit hypotheses nor divisibility obstructions, coefficient constructions, analytic decay, or irrationality/transcendence conclusions.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "homEvalThreeTwo",
+          "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "line": 96
+        }
+      ]
     }
   ],
   "declaration_roles": [
+    {
+      "declaration": "homEvalThreeTwo",
+      "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+      "line": 96,
+      "role": "representation",
+      "statement_node": "homogeneous_three_two_evaluation_representation"
+    },
     {
       "declaration": "zudilinBottomExpTwice_at_a2",
       "module": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",

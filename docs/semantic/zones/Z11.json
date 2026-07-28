@@ -345,10 +345,34 @@
       "prior_art_note": "Textbook rational-arithmetic fact. Domain-neutral: it is consumed by the #257-side cyclotomic/Mersenne modules (CyclotomicProjectionOfShadow.lean:393, MersenneShadowCyclotomicNoncollapse.lean:599,609,776, which re-export it under the same two names), not by anything else in this zone; AdelicHeightObstruction.lean imports the module but does not reference either theorem by name.",
       "scope_caveat": "This node covers only the two named theorems. The module additionally contains seven unnamed `example` declarations (lines 79, 82, 87, 90, 93, 96, 99) which are outside docs/declaration_atlas.json entirely, because the atlas indexes named declarations only. They are recorded in declaration_roles below with synthetic identifiers of the form `example@<line>` and are NOT citable Lean names.",
       "confidence": "high"
+    },
+    {
+      "id": "binary_coefficient_series_representation",
+      "canonical_statement": "For a natural coefficient sequence c, binaryCoeffSeries c is the real series sum over n>=0 of c(n+1)/2^(n+1). It is the common binary generating-series interface instantiated by Euler's totient for Erdős #249 and by support coefficients for Erdős #257.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "binaryCoeffSeries",
+          "module": "Erdos249257/GenericTailOrbitRigidity.lean",
+          "line": 37
+        }
+      ],
+      "concepts": [
+        "binary_coefficient_series",
+        "binary_tail_state"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the common binary series",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A shared notation and indexing convention for the two problem-specific series; no novelty claim is made.",
+      "scope_caveat": "The definition supplies only the ambient real series. It does not assert convergence beyond the hypotheses used by downstream theorems, rationality, irrationality, or any property special to totients or support coefficients.",
+      "confidence": "high"
     }
   ],
   "declaration_roles": [
-    {"declaration": "binaryCoeffSeries", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 36, "role": "concept", "statement_node": null},
+    {"declaration": "binaryCoeffSeries", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 37, "role": "representation", "statement_node": "binary_coefficient_series_representation"},
     {"declaration": "binaryCoeffTail", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 40, "role": "concept", "statement_node": null},
     {"declaration": "HasRationalValue", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 46, "role": "concept", "statement_node": "rational_value_predicate_normalisation"},
     {"declaration": "hasRationalValue_iff_not_irrational", "module": "Erdos249257/GenericTailOrbitRigidity.lean", "line": 51, "role": "statement", "statement_node": "rational_value_predicate_normalisation"},

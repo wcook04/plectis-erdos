@@ -118,10 +118,20 @@
     },
     {
       "id": "first_harmonic_character_representation",
-      "canonical_statement": "The complex first character of the window residue has real part equal to the real first harmonic and unit norm, and it equals the character of the unreduced integer window discrepancy (reduction mod 2^L is invisible to the character).",
+      "canonical_statement": "Writing r for windowDiscrepancy(h,N,L) modulo 2^L, the real and complex first harmonics are exactly windowFirstCos(h,N,L) = cos(2πr/2^L) and windowFirstExp(h,N,L) = exp(i·2πr/2^L). The complex character has real part equal to the real first harmonic and unit norm, and it equals the character of the unreduced integer window discrepancy (reduction mod 2^L is invisible to the character).",
       "logical_class": "representation_normalisation",
       "problem": "249",
       "evidence": [
+        {
+          "declaration": "windowFirstCos",
+          "module": "Erdos249257/FirstHarmonicGap.lean",
+          "line": 27
+        },
+        {
+          "declaration": "windowFirstExp",
+          "module": "Erdos249257/FirstHarmonicPivot.lean",
+          "line": 38
+        },
         {
           "declaration": "windowFirstExp_re",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
@@ -1611,8 +1621,8 @@
       "declaration": "windowFirstCos",
       "module": "Erdos249257/FirstHarmonicGap.lean",
       "line": 27,
-      "role": "concept",
-      "statement_node": null
+      "role": "representation",
+      "statement_node": "first_harmonic_character_representation"
     },
     {
       "declaration": "nine_tenths_lt_cos_pi_div_eight",
@@ -1653,8 +1663,8 @@
       "declaration": "windowFirstExp",
       "module": "Erdos249257/FirstHarmonicPivot.lean",
       "line": 38,
-      "role": "concept",
-      "statement_node": null
+      "role": "representation",
+      "statement_node": "first_harmonic_character_representation"
     },
     {
       "declaration": "windowFirstExp_re",

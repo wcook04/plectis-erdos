@@ -1154,6 +1154,56 @@
       "prior_art_note": "The disjunctive interface matches the singleton-or-seam dichotomy, which is its point. But the proof extracts only one admissible word from either branch, so the consumer is strictly weaker than its name suggests: it is the statement 'cofinal admissibility implies the endpoint' with an elaborate antecedent.",
       "confidence": "high",
       "scope_caveat": ""
+    },
+    {
+      "id": "selected_window_history_alternative_interface",
+      "canonical_statement": "For a selected half window W at depth N, HistoryAlternative W is exactly the disjunction that either W already has next-row divisor agreement, or there are d, delta and c with N+1 = 2d for which the actual depth-d transition is a canonical even seam. This definition packages the two object-level branches; it does not assert that either branch holds for an arbitrary window.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "SelectedHalfWindow.HistoryAlternative",
+          "module": "Erdos249257/HalfCarrySelectedWindow.lean",
+          "line": 236
+        }
+      ],
+      "concepts": [
+        "selected_half_window",
+        "next_row_divisor_agreement",
+        "protected_even_seam"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is a named proposition interface, not a theorem establishing the disjunction. The later rewind-history theorem reaches it only after assuming a bridge from a scalar seam pair to an actual canonical even seam.",
+      "confidence": "high",
+      "scope_caveat": "No theorem proves HistoryAlternative for every selected window or supplies it at cofinally many depths. In particular, the definition itself provides neither next-row divisor agreement nor canonical-seam realization."
+    },
+    {
+      "id": "protected_even_seam_realization_interface",
+      "canonical_statement": "ProtectedEvenSeamRealizedAt N delta c means exactly that, for every carry k in the protected band 3 through 27, scalar reachability across the one-hole even seam with parameters delta and c implies terminal reachability by an admissible half word at depth N. It is only the forward realization implication on this finite band.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "evidence": [
+        {
+          "declaration": "ProtectedEvenSeamRealizedAt",
+          "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
+          "line": 18
+        }
+      ],
+      "concepts": [
+        "protected_even_seam",
+        "half_strip",
+        "half_word"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": null,
+      "prior_art_state": "not_assessed",
+      "prior_art_note": "This is the exact local receipt consumed by the protected-seam implications. It deliberately does not claim full-strip coverage, the converse from terminal reachability to seam reachability, escape from the seam, or a cofinal supply.",
+      "confidence": "high",
+      "scope_caveat": "The predicate records realization at specified N, delta and c; it proves no instance by itself. The corpus does not produce such receipts at cofinally many depths, so this node does not resolve the half-value endpoint or Erdős #257."
     }
   ],
   "declaration_roles": [
@@ -1260,7 +1310,7 @@
       "module": "Erdos249257/HalfCarrySelectedWindow.lean",
       "line": 236,
       "role": "concept",
-      "statement_node": null
+      "statement_node": "selected_window_history_alternative_interface"
     },
     {
       "declaration": "SelectedHalfWindow.stepOpaque",
@@ -1841,7 +1891,7 @@
       "module": "Erdos249257/HalfCarryProtectedSeamConsumer.lean",
       "line": 18,
       "role": "concept",
-      "statement_node": null
+      "statement_node": "protected_even_seam_realization_interface"
     },
     {
       "declaration": "HalfCarryCofinalProtectedEvenSeamRealization",

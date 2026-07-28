@@ -1256,6 +1256,29 @@
       "confidence": "high"
     },
     {
+      "id": "n1049_coordinatewise_corridor_definition",
+      "canonical_statement": "The coordinatewise rational-base corridor for natural parameters (a,b,N,K,Q,digit) is exactly the conjunction a > 0, Q > 0, digit > 0, digit <= N+K, a^K divides Q*digit, and Q*b^(N+K+1) < a^(K+1). It packages the simultaneous coordinate-clearing divisibility and subunit tail estimate used in the elementary rational-base obstruction.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos1049.CoordinatewiseCorridor",
+          "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+          "line": 106
+        }
+      ],
+      "concepts": [
+        "coordinatewise_corridor"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "A six-parameter predicate retaining exactly the positivity, coefficient-size, divisibility, and tail-smallness conditions of the coordinatewise clearing scheme.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "An exact packaging of the elementary coordinatewise clearing conditions used in the manuscript; no novelty claim is made for the definition.",
+      "scope_caveat": "This is a predicate, not an existence theorem. It neither supplies a corridor nor asserts anything about the Lambert series value; the separate no-go theorem excludes only this literal corridor shape at base 3/2.",
+      "confidence": "high"
+    },
+    {
       "id": "n1049_corridor_power_vs_linear",
       "canonical_statement": "If a coordinatewise rational-base corridor holds with numerator base a and denominator base b, i.e. a^K divides Q*digit with 0 < digit <= N+K and Q b^(N+K+1) < a^(K+1), then b^(N+K+1) < a (N+K): the corridor converts into a power-versus-linear inequality.",
       "logical_class": "reduction_or_transport",
@@ -1307,6 +1330,34 @@
       "confidence": "high"
     },
     {
+      "id": "n1049_rational_base_tail_coordinates",
+      "canonical_statement": "For rational r,s, an abstract coefficient sequence c and cutoff N, the rational-base prefix is P_N = sum over 0 <= m < N of c(m+1)*s^(m+1)/r^(m+1). Given rational B and a putative value F, the corresponding cleared-tail coordinate is U_N = B*r^N*(F-P_N).",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos1049.rationalBasePrefixQ",
+          "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+          "line": 161
+        },
+        {
+          "declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ",
+          "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+          "line": 174
+        }
+      ],
+      "concepts": [
+        "rational_base_cleared_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact finite-sum and denominator-cleared state coordinates over the rationals.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Standard partial-sum and cleared-tail coordinates, kept abstract in the coefficient sequence.",
+      "scope_caveat": "These are definitions for an arbitrary rational F and abstract coefficients. They do not identify F with an infinite Lambert series, prove convergence, make U_N integral or bounded, or establish irrationality.",
+      "confidence": "high"
+    },
+    {
       "id": "n1049_cleared_tail_recurrence",
       "canonical_statement": "Exact rational-base cleared-tail recurrence: with prefix sum of coeff(m+1) s^(m+1)/r^(m+1) and cleared tail B r^N (F - prefix), one has cleared(N+1) = r * cleared(N) - B coeff(N+1) s^(N+1). The forcing term carries the factor s^(N+1), which is the denominator-base tax absent from the integer-base case s = 1.",
       "logical_class": "representation_normalisation",
@@ -1335,6 +1386,29 @@
       "confidence": "high"
     },
     {
+      "id": "n1049_rational_base_forcing_magnitude",
+      "canonical_statement": "For natural denominator base s, clearing multiplier B, coefficient sequence c and cutoff N, the natural forcing magnitude is exactly G_N = B*c(N+1)*s^(N+1), the inhomogeneous term whose size is compared across integer and noninteger denominator bases.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos1049.rationalBaseForcingNat",
+          "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+          "line": 191
+        }
+      ],
+      "concepts": [
+        "rational_base_cleared_tail"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "A natural-valued coordinate isolating the absolute magnitude B*c(N+1)*s^(N+1) of the cleared recurrence's forcing term.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A direct coordinate definition extracted from the cleared-tail recurrence.",
+      "scope_caveat": "The definition imposes no positivity assumptions and proves no growth by itself. Its exponential lower bound for s >= 2 and collapse at s = 1 are separate theorems.",
+      "confidence": "high"
+    },
+    {
       "id": "n1049_forcing_term_growth",
       "canonical_statement": "For denominator base s >= 2, positive B and positive coefficients, the natural-valued forcing magnitude B * coeff(N+1) * s^(N+1) is at least 2^(N+1); in the integer-base case s = 1 it collapses to B * coeff(N+1).",
       "logical_class": "unconditional_object_theorem",
@@ -1360,6 +1434,39 @@
       "prior_art_state": "routine_corollary_or_specialisation",
       "prior_art_note": "A one-line monotonicity of powers. It quantifies the denominator-base tax but proves nothing about convergence, positivity or irrationality.",
       "scope_caveat": "A monotonicity of powers under s >= 2, 1 <= B, 1 <= coeff (N+1). It quantifies the denominator-base tax and nothing else: no convergence, no positivity of any remainder, and no irrationality follows, and the coefficients are abstract rather than the actual divisor function.",
+      "confidence": "high"
+    },
+    {
+      "id": "n1049_pade_exponent_coordinates",
+      "canonical_statement": "The doubled rational-Pade denominator coordinates are defined over the integers by E~(n) = 3n^2-n for the proposed common exponent, P~(n,k) = 2(k(n-k)+nk)+k(k-1) for a homogenised P summand, and, with j=n-m-1, Q~(n,m) = 2(n^2-n)+j^2+2jm+j-m^2+3m for the maximal Q-summand exponent.",
+      "logical_class": "representation_normalisation",
+      "problem": "shared_substrate",
+      "evidence": [
+        {
+          "declaration": "ErdosProblems.Erdos1049.rationalPadeDenExpTwice",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 19
+        },
+        {
+          "declaration": "ErdosProblems.Erdos1049.rationalPadePSummandDenExpTwice",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 24
+        },
+        {
+          "declaration": "ErdosProblems.Erdos1049.rationalPadeQMaxDenExpTwice",
+          "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "line": 46
+        }
+      ],
+      "concepts": [
+        "pade_exponent_bookkeeping"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Three exact integer-valued polynomial coordinates with exponents doubled to remove floors and parity bookkeeping.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The displayed exponent expressions are formalised exactly as manuscript coordinates. The manuscript explicitly does not derive them from a homogenised coefficient formula or claim a new Pade construction.",
+      "scope_caveat": "These definitions contain only exponent bookkeeping. They do not prove coefficient integrality, derive the expressions from a Pade construction, establish nonvanishing or positivity of a remainder, control its decay, or imply irrationality.",
       "confidence": "high"
     },
     {
@@ -2408,9 +2515,9 @@
     {
       "declaration": "ErdosProblems.Erdos1049.CoordinatewiseCorridor",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 41,
-      "role": "concept",
-      "statement_node": null
+      "line": 106,
+      "role": "representation",
+      "statement_node": "n1049_coordinatewise_corridor_definition"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.coordinatewiseCorridor_implies_pow_lt_linear",
@@ -2436,9 +2543,9 @@
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBasePrefixQ",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 96,
-      "role": "concept",
-      "statement_node": null
+      "line": 161,
+      "role": "representation",
+      "statement_node": "n1049_rational_base_tail_coordinates"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBasePrefixQ_succ",
@@ -2450,9 +2557,9 @@
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 109,
-      "role": "concept",
-      "statement_node": null
+      "line": 174,
+      "role": "representation",
+      "statement_node": "n1049_rational_base_tail_coordinates"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ",
@@ -2464,9 +2571,9 @@
     {
       "declaration": "ErdosProblems.Erdos1049.rationalBaseForcingNat",
       "module": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
-      "line": 126,
-      "role": "concept",
-      "statement_node": null
+      "line": 191,
+      "role": "representation",
+      "statement_node": "n1049_rational_base_forcing_magnitude"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat",
@@ -2485,16 +2592,16 @@
     {
       "declaration": "ErdosProblems.Erdos1049.rationalPadeDenExpTwice",
       "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
-      "line": 18,
-      "role": "concept",
-      "statement_node": null
+      "line": 19,
+      "role": "representation",
+      "statement_node": "n1049_pade_exponent_coordinates"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalPadePSummandDenExpTwice",
       "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
-      "line": 23,
-      "role": "concept",
-      "statement_node": null
+      "line": 24,
+      "role": "representation",
+      "statement_node": "n1049_pade_exponent_coordinates"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalPadePSummandDenExpTwice_le",
@@ -2506,9 +2613,9 @@
     {
       "declaration": "ErdosProblems.Erdos1049.rationalPadeQMaxDenExpTwice",
       "module": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
-      "line": 45,
-      "role": "concept",
-      "statement_node": null
+      "line": 46,
+      "role": "representation",
+      "statement_node": "n1049_pade_exponent_coordinates"
     },
     {
       "declaration": "ErdosProblems.Erdos1049.rationalPadeQMaxDenExpTwice_gap",

@@ -1,0 +1,198 @@
+{
+  "zone_id": "Z94",
+  "title": "Squared-Mersenne first-support enclosures and directed lattice separation",
+  "problem": "249",
+  "replaces_role_zone": "Z05",
+  "concepts": [
+    {
+      "id": "z94_affine_rational_denominator",
+      "label": "affine rational denominator cancellation",
+      "note": "An integral translation preserves a rational denominator, while integral scaling cancels exactly its gcd with the denominator."
+    },
+    {
+      "id": "z94_first_mobius_support",
+      "label": "first omitted Möbius support",
+      "note": "The first nonzero Möbius channel after a cutoff splits the squared-Mersenne tail into one signed leading term and a rigorously bounded remainder."
+    },
+    {
+      "id": "z94_directed_diagonal_interval",
+      "label": "directed diagonal interval",
+      "note": "Multiplying by the first channel's sign turns the leading term positive and gives a one-sided interval around the exact rational diagonal centre."
+    },
+    {
+      "id": "z94_separation_boundary",
+      "label": "conditional lattice-separation boundary",
+      "note": "A proved interval enclosure rules out a full-target hit only when a separate integer-lattice separation hypothesis is supplied."
+    }
+  ],
+  "statement_nodes": [
+    {
+      "id": "integral_affine_maps_cancel_exactly_the_gcd_from_a_rational_denominator",
+      "canonical_statement": "For integers z and c and a rational x, the reduced denominator of z+c·x is den(x)/gcd(den(x),|c|). In particular, the canonical Lambert-projected diagonal centre has the denominator of its squared-Möbius partial sum divided by the gcd with the diagonal coefficient.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "z94_affine_rational_denominator",
+        "z94_separation_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Exact reduced-denominator formulas for rational addition and multiplication, with coprimality cancelling the scaling gcd.",
+      "prior_art_state": "known_classical",
+      "prior_art_note": "Elementary rational-denominator arithmetic specialized to the canonical Lambert centre.",
+      "scope_caveat": "The formula computes the centre's denominator; it does not show that the actual diagonal avoids the integer lattice.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "rat_den_int_add_mul",
+          "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+          "line": 35
+        },
+        {
+          "declaration": "lambertProjectedDiagonalRat_den",
+          "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+          "line": 46
+        }
+      ]
+    },
+    {
+      "id": "the_first_omitted_mobius_channel_splits_and_directs_the_squared_tail",
+      "canonical_statement": "If n>D is the first nonzero Möbius channel after D, then the squared-Mersenne tail at D is exactly μ(n)/(2^n-1)^2 plus the tail after n. When |μ(n)|=1, multiplying by μ(n) places the whole tail between 1/(2^n-1)^2 minus and plus the explicit remainder radius 4/[3(2^(n+1)-1)^2].",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "concepts": [
+        "z94_first_mobius_support",
+        "z94_directed_diagonal_interval",
+        "z94_separation_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Split a summable series at its first nonzero omitted term, use μ(n)^2=1, and bound the remaining squared-Mersenne tail geometrically.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A first-support refinement of the elementary symmetric squared-Mersenne tail estimate.",
+      "scope_caveat": "The interval is conditional on the stated first-support data. It encloses the tail but does not by itself separate the corresponding diagonal from every integer.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "mobiusSquareTail_eq_first_support_add_tail",
+          "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+          "line": 244
+        },
+        {
+          "declaration": "mobiusSquareTail_directed_of_first_support",
+          "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+          "line": 313
+        }
+      ]
+    },
+    {
+      "id": "the_actual_diagonal_inherits_the_first_support_directed_interval",
+      "canonical_statement": "Under the same first-support hypotheses, the signed displacement of the actual scaled diagonal from its exact Lambert-projected rational centre lies between the directed lower and upper Lambert bounds obtained by multiplying the tail interval by the nonnegative diagonal coefficient.",
+      "logical_class": "reduction_or_transport",
+      "problem": "249",
+      "concepts": [
+        "z94_first_mobius_support",
+        "z94_directed_diagonal_interval",
+        "z94_separation_boundary"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Use the exact identity between diagonal displacement and diagonalCoefficient·mobiusSquareTail, then preserve inequalities under nonnegative scaling.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Direct transport of the squared-Mersenne tail enclosure to the actual diagonal coordinate.",
+      "scope_caveat": "This is an enclosure, not a nonintegrality theorem. The interval may still contain an integer-lattice displacement.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "scaleDiagonalTailDifference_directed_lambert_interval",
+          "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+          "line": 366
+        }
+      ]
+    },
+    {
+      "id": "directed_integer_lattice_separation_rules_out_a_full_target_hit",
+      "canonical_statement": "If every integer displacement from the Lambert-projected centre lies outside the directed first-support interval, then the actual scaled diagonal is not integral and the full-target hit predicate fails at that scale.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "concepts": [
+        "z94_directed_diagonal_interval",
+        "z94_separation_boundary"
+      ],
+      "open_antecedents": [
+        "The separation hypothesis hsep must exclude the directed interval for every integer z. The theorem does not produce hsep, prove it cofinally, or provide the unbounded certificate supply required for Erdős 249."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Assume a full-target hit, rewrite it as integrality, substitute the resulting integer into the proved directed enclosure, and contradict hsep.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "Elementary interval-versus-lattice separation consumer.",
+      "scope_caveat": "Conditional only. A single-scale miss, even when established, does not imply the cofinal supply needed by the #249 irrationality reduction.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "scaleFullTarget_miss_of_directed_lambert_interval",
+          "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+          "line": 387
+        }
+      ]
+    }
+  ],
+  "declaration_roles": [
+    {
+      "declaration": "rat_den_int_add_mul",
+      "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+      "line": 35,
+      "role": "engine",
+      "statement_node": "integral_affine_maps_cancel_exactly_the_gcd_from_a_rational_denominator"
+    },
+    {
+      "declaration": "lambertProjectedDiagonalRat_den",
+      "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+      "line": 46,
+      "role": "representation",
+      "statement_node": "integral_affine_maps_cancel_exactly_the_gcd_from_a_rational_denominator"
+    },
+    {
+      "declaration": "mobiusSquareTail_eq_first_support_add_tail",
+      "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+      "line": 244,
+      "role": "engine",
+      "statement_node": "the_first_omitted_mobius_channel_splits_and_directs_the_squared_tail"
+    },
+    {
+      "declaration": "mobiusSquareTail_directed_of_first_support",
+      "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+      "line": 313,
+      "role": "statement",
+      "statement_node": "the_first_omitted_mobius_channel_splits_and_directs_the_squared_tail"
+    },
+    {
+      "declaration": "scaleDiagonalTailDifference_directed_lambert_interval",
+      "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+      "line": 366,
+      "role": "engine",
+      "statement_node": "the_actual_diagonal_inherits_the_first_support_directed_interval"
+    },
+    {
+      "declaration": "scaleFullTarget_miss_of_directed_lambert_interval",
+      "module": "Erdos249257/SquaredMersenneDiagonalEnclosure.lean",
+      "line": 387,
+      "role": "statement",
+      "statement_node": "directed_integer_lattice_separation_rules_out_a_full_target_hit"
+    }
+  ],
+  "intra_zone_relations": [
+    {
+      "from": "the_first_omitted_mobius_channel_splits_and_directs_the_squared_tail",
+      "to": "the_actual_diagonal_inherits_the_first_support_directed_interval",
+      "relation": "implies",
+      "basis": "The actual diagonal displacement is exactly the squared tail multiplied by the diagonal coefficient."
+    },
+    {
+      "from": "the_actual_diagonal_inherits_the_first_support_directed_interval",
+      "to": "directed_integer_lattice_separation_rules_out_a_full_target_hit",
+      "relation": "implies",
+      "basis": "The lattice-separation consumer contradicts any integral displacement lying inside the proved interval."
+    }
+  ]
+}

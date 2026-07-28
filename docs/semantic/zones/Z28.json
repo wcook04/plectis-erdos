@@ -435,9 +435,72 @@
           "line": 637
         }
       ]
+    },
+    {
+      "id": "cofinal_short_arithmetic_kill_producer_contract",
+      "canonical_statement": "PowerTwoActualLcmShortArithmeticKillSupply is the proposition that beyond every cutoff a0 there are an exponent a and depth L with a0<=a, L<2*2^a, and a certified actual-LCM arithmetic kill at scale 2^a.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "actual_lcm_orbit",
+        "short_arithmetic_kill"
+      ],
+      "open_antecedents": [
+        "PowerTwoActualLcmShortArithmeticKillSupply"
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the cofinal producer interface",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A Lean interface isolating the exact finite-certificate producer consumed by the irrationality implication; no novelty claim is made.",
+      "scope_caveat": "OPEN PRODUCER. Naming this proposition does not prove that any witnesses exist beyond the two finite exponents already checked, does not establish cofinality, and does not prove Erdős #249.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "PowerTwoActualLcmShortArithmeticKillSupply",
+          "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+          "line": 2107
+        }
+      ]
+    },
+    {
+      "id": "parity_coboundary_weight_representation",
+      "canonical_statement": "The parity countermodel coefficient is parityBaseWeight(n) plus twice the sparse large-power-of-two marker at n, minus four times the preceding marker. Natural subtraction is exact because every negative spike occurs on base weight four.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "concepts": [
+        "coarse_invariant_countermodel"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the sparse coboundary perturbation",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A concrete coefficient definition for the proved rational countermodel; no novelty claim is made.",
+      "scope_caveat": "This is an artificial bounded sequence matching only selected coarse totient invariants. It is not Euler's totient sequence, and its rational series does not bear directly on the truth of Erdős #249.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "parityCoboundaryWeight",
+          "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+          "line": 59
+        }
+      ]
     }
   ],
   "declaration_roles": [
+    {
+      "declaration": "PowerTwoActualLcmShortArithmeticKillSupply",
+      "module": "Erdos249257/TotientActualLcmOrbitArithmetic.lean",
+      "line": 2107,
+      "role": "representation",
+      "statement_node": "cofinal_short_arithmetic_kill_producer_contract"
+    },
+    {
+      "declaration": "parityCoboundaryWeight",
+      "module": "Erdos249257/TotientParityCoboundaryCountermodel.lean",
+      "line": 59,
+      "role": "representation",
+      "statement_node": "parity_coboundary_weight_representation"
+    },
     {
       "declaration": "totient_carryShift_cast",
       "module": "Erdos249257/TotientTailCarryPeriod.lean",
