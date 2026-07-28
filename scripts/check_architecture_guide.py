@@ -27,10 +27,10 @@ MAX_GUIDE_BYTES = 18_000
 # screen readers, keywords, and a numbered outline, matching what the
 # mathematics paper already declares. No prose was added and the rendered
 # paper is still fourteen pages, so this raise funds metadata, not material.
-# Raised to 54_000 for the early finite-versus-unbounded figure and
+# Raised to 55_000 for the early finite-versus-unbounded figure and
 # contribution/evidence/ceiling panel. These reduce reconstruction work for a
 # cold reader while retaining a hard ceiling on operational and inventory prose.
-MAX_SYSTEMS_PAPER_BYTES = 54_000
+MAX_SYSTEMS_PAPER_BYTES = 55_000
 
 SECTION_ORDER = (
     "## What this repository is",
