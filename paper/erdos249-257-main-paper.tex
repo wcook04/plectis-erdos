@@ -728,7 +728,11 @@ and
 \lword{GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{greedy membership theorem}.
 Uniqueness is the
 \lword{GreedyAchievementSet.lean}{1527}{positiveMersenneSupportValue_injective_normalized}{support-coding theorem}.
-Kova\v{c}--Tao provide the strict-tail Cantor-set context~\cite[Remark~4.1]{kovactao}.
+Kova\v{c}--Tao provide the strict-tail Cantor-set
+context~\cite[Remark~4.1, p.~13]{kovactao}.  Their Theorem~2.3
+\cite[p.~5; proof pp.~13--14]{kovactao} constructs rational merged sums from
+several bases under a total-mass hypothesis, but it is not a counterexample
+for one fixed base.
 
 \paragraph{Geometric and finite-arithmetic consequences.}
 Proposition~\ref{res:greedytopology} proves that \(\mathcal A\) is compact,
@@ -1943,7 +1947,7 @@ The two transition propositions do not supply their coefficient inequalities,
 and the finite base does not supply witnesses at unbounded depths as required by
 Corollary~\ref{res:cofinalcylinder}.  The
 strict-tail achievement-set literature supplies the surrounding Cantor-set
-geometry~\cite[Remark~4.1]{kovactao}, not this finite carry recurrence; the comparison
+geometry~\cite[Remark~4.1, p.~13]{kovactao}, not this finite carry recurrence; the comparison
 record makes no novelty claim for the recurrence itself.
 
 \subsubsection{Verified finite suffix-cylinder stages}\label{res:prefeedback}
@@ -4385,7 +4389,8 @@ survival through any finite depth proves nothing.
 
 The prior-art boundary is theorem-family-specific. The integral carry
 recurrence has a direct antecedent in Wang~\cite[Section~3]{wang2026};
-the strict-tail geometry is recorded by Kova\v{c}--Tao~\cite[Remark~4.1]{kovactao};
+the strict-tail geometry is recorded by
+Kova\v{c}--Tao~\cite[Remark~4.1, p.~13]{kovactao};
 M\"obius inversion, repetend algebra, and divisor averaging are classical
 (see, for example, Apostol~\cite{apostol}). We make no claim of mathematical
 priority for the converse/rigidity, certificate-normal-form, or coupled
@@ -4770,7 +4775,8 @@ Kova\v{c} and Tao verify, for every fixed integer $t\ge2$, that
 \[
   \sum_{\ell>n}\frac1{t^\ell-1}<\frac1{t^n-1},
 \]
-and deduce distinct Lambert subsums and a Cantor set~\cite[Remark~4.1]{kovactao}. At
+and deduce distinct Lambert subsums and a Cantor
+set~\cite[Remark~4.1, p.~13]{kovactao}. At
 $t=2$ this is the relevant Lambert-series instance of Kakeya's classical
 strict-tail criterion for subsum sets~\cite{kakeya1914}. What is checked here,
 beyond that cited geometry, is the greedy criterion, quantitative enclosure,
@@ -4810,7 +4816,7 @@ and nowhere dense.  Its Lebesgue measure is exactly one.
 and
 \lword{GreedyAchievementSet.lean}{1645}{isNowhereDense_mersenneAchievementSet}{nowhere density}.
 Kova\v{c}--Tao supply the strict-tail Cantor-set context
-\cite[Remark~4.1]{kovactao}.  The
+\cite[Remark~4.1, p.~13]{kovactao}.  The
 formalisation records these exact properties without making a novelty or
 priority claim for them.
 
