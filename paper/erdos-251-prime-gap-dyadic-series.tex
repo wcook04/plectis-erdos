@@ -87,8 +87,12 @@ Let $p_n$ denote the $n$th prime.  Erd\H{o}s Problem~\#251 asks whether
  \Pi=\sum_{n\ge1}\frac{p_n}{2^{\,n}}
 \]
 is irrational~\cite[p.~94]{erdos1958}\cite[p.~62]{erdosgraham1980}%
-\cite[p.~103]{erdos1988}.  Numbering and status follow Bloom's
-catalogue~\cite{erdosproblems}.  The problem is open.  Numerically
+\cite[p.~103]{erdos1988}.  Bloom's current catalogue record reproduces this
+question and labels it open, while explicitly warning that the status is the
+website owner's present assessment and may omit relevant literature
+\cite{erdosproblems}.  We therefore use the catalogue for numbering and
+current reported status only; the three original publications carry the
+mathematical claims.  The problem is open.  Numerically
 $\Pi=2/2+3/4+5/8+7/16+11/32+\cdots=3.674643966\ldots$.
 
 Throughout the formal development the primes are indexed from zero, so that
@@ -142,7 +146,11 @@ $\sum_{n\ge1}p_n/(g_1\cdots g_n)$ is irrational whenever $g_n\ge2$ and
 $g_n=o(p_n)$~\cite[p.~103]{erdos1988}.  The latter expectation is false:
 ChatGPT~5.4 Pro, orchestrated by Vjeko Kova\v{c}, constructs such a sequence
 $(g_n)$ for which the sum is exactly $1$~\cite{kovac2026}.  That construction
-does not address the fixed-denominator dyadic series studied here.
+does not address the fixed-denominator dyadic series studied here.  The
+current catalogue record still repeats this variable-denominator expectation
+without mentioning the counterexample~\cite{erdosproblems}; its warning about
+possibly missing literature is therefore material here, not merely
+boilerplate.
 Problem~\#251 also appears as the unproved declaration
 \texttt{erdos\_251} in the \emph{Formal Conjectures}
 repository~\cite{formalconjectures251}.  Its zero-based Lean sum starts with
@@ -1155,7 +1163,13 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
   Ann. of Math. (2) \textbf{179} (2014), 1121--1174.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/251}{\emph{Erd\H{o}s Problem \#251}},
-  \texttt{erdosproblems.com/251}, accessed 22 July 2026.
+  \texttt{erdosproblems.com/251}, accessed 28 July 2026 (page displays
+  ``last edited 28 September 2025'').  The current record labels the main
+  dyadic problem open, cites \texttt{[Er58b]}, \texttt{[ErGr80, p.~62]} and
+  \texttt{[Er88c, p.~103]}, and explicitly describes its status as the
+  website owner's present assessment rather than a literature-completeness
+  guarantee; it does not mention the 2026 counterexample in
+  \cite{kovac2026} to the adjacent variable-denominator conjecture.
 \bibitem{kovac2026} ChatGPT~5.4 Pro (orchestrated by V.~Kova\v{c}),
   \href{https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf}
   {\emph{On the Erd\H{o}s problem \#251}},
