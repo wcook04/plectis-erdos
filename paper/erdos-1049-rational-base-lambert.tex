@@ -151,7 +151,10 @@ integer dividing it, which is a local gain, and its absolute value, which is an
 Archimedean cost; we call that comparison the \emph{local-to-Archimedean
 balance}.  The \emph{endpoints} of a coefficient polynomial, taken relative to
 the declared width $W$ of Section~\ref{sec:endpoints}, are its constant
-coefficient and its coefficient at $W$, and a \emph{unit} endpoint is one equal
+coefficient and its coefficient at $W$; we call these the \emph{constant
+endpoint} and the \emph{top endpoint}, so the top endpoint is the coefficient
+at $W$ and not the leading coefficient unless the two agree.  A \emph{unit}
+endpoint is one equal
 to $\pm1$, the units of $\Z$; Theorem~\ref{res:endpoints} is the reason only these
 two coefficients decide divisibility by $3$ and by $2$ after specialisation at
 $(3,2)$.  A \emph{jet} is a
@@ -921,8 +924,8 @@ $4=2\bigl(2+1\cdot0\bigr)$.
 \end{example}
 
 These are routine inequalities between polynomials in the exponents.  They
-establish that the proposed common denominator is large enough to clear the
-construction, and nothing further.  Positivity of the remainder, its rate of
+establish that the proposed exponent $\widetilde{E}_n$ dominates the two
+displayed summand exponent expressions, and nothing further.  Positivity of the remainder, its rate of
 decay, and the comparison of that rate against the denominator height are the
 analytic obligations, and none of them is treated here, so nothing in this
 section is an irrationality measure.
@@ -965,7 +968,7 @@ additive.  Devices outside that corollary are not addressed either way:
 inserting a multiplicative cyclotomic factor changes the coefficient
 polynomials rather than scaling a row, and cross-row common factors,
 determinant-specific arithmetic, additive combinations, and a different
-architecture all lie outside its two hypotheses.  A theorem showing that every
+architecture all lie outside the two devices it excludes.  A theorem showing that every
 available family is too small or too degenerate to meet the requirements of
 Problem~\ref{prob:kernel} would show that no argument of this shape can
 succeed.

@@ -106,7 +106,11 @@ successor}.
 \paragraph{Relation to prior work.}
 Two published results reach the original problem under analytic hypotheses that
 are not assumed below.  Their hypotheses are conditions on the sequence $(a_n)$
-itself, and are not comparable with the state-level hypotheses used here.
+itself.  Duverney's is not comparable with the state-level hypotheses used
+here; the Erd\H{o}s--Straus one, read through the dictionary of the next
+paragraph, is implied by nonnegativity of $E$, the hypothesis of
+Theorem~\ref{res:descent}, so that criterion already covers the descent proved
+below (see~\cite[Cor.~20(1) and Prop.~19(1)]{koizumi2025}).
 Erd\H{o}s and Straus proved that if $\lim a_n/a_{n-1}^{2}=1$, the reciprocal
 sum is rational, and $a_n$ does not satisfy the recurrence, then
 \[
@@ -114,7 +118,7 @@ sum is rational, and $a_n$ does not satisfy the recurrence, then
  \left(\frac{a_{n+1}^{2}}{a_{n+2}}-1\right)>0,
 \]
 where $[a_1,\ldots,a_n]$ is the least common
-multiple~\cite{erdosstraus1964}.  Duverney proved a conditional form of the
+multiple~\cite[Theorem~3, p.~132]{erdosstraus1964}.  Duverney proved a conditional form of the
 problem itself: if $\sum_{n\ge0}\bigl(a_{n+1}/a_n^{2}-1\bigr)$ converges, then
 the reciprocal sum is rational if and only if the recurrence holds for all
 large $n$~\cite{duverney2001}.  Neither is formalised
@@ -138,9 +142,11 @@ as $e_n=d_n-(a_n-1)c_n$, the second is Proposition~\ref{res:update}, the third
 is the denominator update, and the fourth is the tail update.  The lower-case
 $e_n$ of Section~\ref{sec:state} is $-E_n$, so it is the negative of Koizumi's
 $e_n$ at an index where the centred state is negative.  His Theorem~16 shows
-that termination of the pseudo-greedy expansion is equivalent to an affirmative
-answer to the question of Erd\H{o}s and Graham recorded as his Question~5,
-which is Problem~\ref{res:problem} above, cited from the same source and page.
+that his Conjecture~6 --- that for a positive rational $r$ whose gap sequence
+satisfies $\varepsilon_n\to0$ one has $\varepsilon_n=0$ for all large $n$ ---
+is equivalent to an affirmative answer to the question of Erd\H{o}s and Graham
+recorded as his Question~5, which is Problem~\ref{res:problem} above, cited
+from the same source and page.
 Two of the implications proved below have prior art in these canonical
 coordinates: his Lemma~13, that $\varepsilon_n=0$ forces $\varepsilon_{n+1}=0$,
 is the absorption of Theorem~\ref{res:absorb}, and his Proposition~19(2), that
@@ -215,7 +221,7 @@ Finite normalised negative mass & Excluded here; conditional & Theorem~\ref{res:
 Factorial residue reduction & Proved here; superseded for its original purpose & Theorem~\ref{res:residue}, Appendix~\ref{app:residue}. \\
 Strict centring, normalised vanishing & Assumed here; supplied by prior art & Section~\ref{sec:bounded}; derived in~\cite{koizumi2025}, see Section~\ref{sec:problem}. \\
 Unbounded, divergent-mass negative excursions & Open & Section~\ref{sec:open}; the surviving obstruction. \\
-Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; hypotheses not comparable with those here. \\
+Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; the Erd\H{o}s--Straus hypothesis is implied by that of Theorem~\ref{res:descent}. \\
 State system equals reciprocal tails & Not formalised & Section~\ref{sec:state}. \\
 \bottomrule
 \end{tabular}
@@ -690,8 +696,9 @@ already settled by Section~\ref{sec:descent}.
 On the canonical orbit of~\cite{koizumi2025}, read through the dictionary of
 Section~\ref{sec:problem}, the bound $e_n<a_n$ holds eventually.  Lemma~15(2)
 there gives the centring range $-C_n/2\le E_n<C_n/2$, so $e_n=|E_n|\le C_n/2$ at
-a negative index, and Lemma~15(3) gives the uniform bound
-$C_n\le C_1(3/2)^{n-1}$.  Against this, summability of $\sum1/a_n$ forces
+a negative index, and the proof of Lemma~15(3) gives $C_{n+1}\le\tfrac32C_n$,
+hence the uniform bound $C_n\le C_0(3/2)^{n}$.  Against this, summability of
+$\sum1/a_n$ forces
 $a_n\to\infty$, and the growth hypothesis $a_n^{2}/a_{n+1}\to1$ gives
 $a_{n+1}\ge a_n^{2}/2$ for all large $n$, hence $a_{n+1}\ge2a_n$ once
 $a_n\ge4$; so the multipliers grow at least geometrically with ratio $2$ and
@@ -1067,8 +1074,9 @@ these.
 \end{problem}
 
 \begin{remark}
-The centring hypotheses in Problem~\ref{res:excursions} are not decorative: the
-state recurrence alone admits unbounded divergent-mass excursions.  Put
+The hypotheses in Problem~\ref{res:excursions} beyond the state recurrence are
+not decorative: the recurrence alone admits unbounded divergent-mass
+excursions.  Put
 \[
  C_n=2^{n},\qquad b_0=2,\qquad b_{n+1}=\tfrac12 b_n(b_n+2),\qquad
  a_n=b_n+2,\qquad D_n=b_nC_n ,
@@ -1086,8 +1094,10 @@ diverges.  What fails is the centring: $|E_n|=C_n$ at every index, so strict
 centring fails at the boundary and normalised vanishing fails outright.  The
 multipliers satisfy $a_{n+1}=\tfrac12(a_n^{2}-2a_n+4)$, so
 $a_{n+1}/a_n^{2}\to\tfrac12$ and the growth hypothesis fails as well.  The
-example therefore says nothing about Problem~\ref{res:problem}; it is recorded
-only to show which hypotheses of Problem~\ref{res:excursions} are used.
+example therefore says nothing about Problem~\ref{res:problem}, and it does not
+isolate the centring hypotheses: $E_n=-C_n$ at every index forces that
+multiplier recurrence, so growth fails with them.  It is recorded only to show
+that the state recurrence alone is not enough.
 \end{remark}
 
 \begin{problem}[summable normalised negative mass]\label{res:masshyp}

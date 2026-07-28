@@ -858,9 +858,10 @@ g_{N+h+1}&\ne g_{N+1}.
 \]
 \end{problem}
 
-The two sums are adjacent $h$-shifts.  Theorem~\ref{res:smallpair} turns each
-instance of~\eqref{eq:smallpair} into a finite contradiction to
-simultaneous integrality.  A cofinal family of such pairs therefore proves
+The two sums are adjacent $h$-shifts.  Corollary~\ref{res:smallpair-real} turns
+each instance of~\eqref{eq:smallpair} into a finite contradiction to
+simultaneous integrality; Theorem~\ref{res:smallpair} is the Lean-checked
+rational case.  A cofinal family of such pairs therefore proves
 Problem~\ref{prob:escape}; Theorem~\ref{res:escape-irrational} then gives irrationality
 of the gap series, and Corollary~\ref{res:irr-equivalence} transfers it to
 $\Pi$.  This formulation deliberately asks only for sporadic adjacent pairs;
@@ -952,7 +953,7 @@ summability of the prime series as a hypothesis and does not define
 $\mathcal T_N$ by an infinite sum; the prime-number-theorem comparison and the
 identification of that concrete tail with the checked real recurrence are
 paper proofs, as is the real form of the small-shift obstruction in
-Corollary~\ref{res:smallpair-real}.  Its prime-gap tail domination and anti-concentration
+Corollary~\ref{res:smallpair-real}.  The local source's prime-gap tail domination and anti-concentration
 hypotheses also remain paper-level obligations.  No theorem supplies the cofinal pairs in
 \eqref{eq:smallpair}, and none of the prime-distribution estimates
 described above is claimed or formalised.
