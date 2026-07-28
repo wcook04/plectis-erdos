@@ -237,10 +237,13 @@ whether Lean accepts the formal statements and proofs; it never reads the
 README.  \texttt{python3 scripts/check\_release.py} asks whether the recorded
 relationships among source, record, public pages, and generated files still
 hold; it does not run Lean.  The workflow in
-\texttt{.github/workflows/lean.yml} runs them as two separate jobs on fresh
-copies of the revision~\cite{githubrunners}.  A checker error stops the
-program, and the workflow treats that exit as a failing job.  Repository
-settings decide whether failure blocks release; a pass proves no mathematics.
+\texttt{.github/workflows/lean.yml} runs them as two separate
+\texttt{ubuntu-latest} jobs.  GitHub documents that, except for single-CPU
+container runners, each hosted runner is a new virtual machine
+\cite{githubrunners}; these jobs therefore begin from separate checkouts of the
+revision.  A checker error stops the program, and the workflow treats that exit
+as a failing job.  Repository settings decide whether failure blocks release;
+a pass proves no mathematics.
 
 Generated views are rebuilt rather than edited and create no new mathematics.
 The complete file map, ownership table, and maintenance commands live in
@@ -694,8 +697,8 @@ claim.
 
 \paragraph{Proof blueprints.}
 A \emph{proof blueprint} pairs an informal outline with Lean declarations and
-records which results depend on which earlier results.  \texttt{leanblueprint}
-stores that outline in \TeX{} and checks that every named declaration
+uses author-supplied links to record which results depend on which earlier
+results.  \texttt{leanblueprint} stores that outline in \TeX{} and checks that every named declaration
 exists~\cite{leanblueprint}.  LeanArchitect attaches blueprint metadata to Lean
 source, infers dependencies and unfinished-proof status, and exports
 synchronised \TeX{}~\cite{leanarchitect}.  Text and unformalised nodes remain
