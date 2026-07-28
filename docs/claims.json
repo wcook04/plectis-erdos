@@ -10843,7 +10843,7 @@
       "ref": "1128d0858e1060c741f26460afac166f36801af9",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "relationship_to_last_tag": "post_tag_checkpoint"
+      "relationship_to_last_tag": "at_last_tag"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",

@@ -64,10 +64,10 @@ and the sharp first failure.
 [RESULTS](docs/RESULTS.md) gives the typed census and limits.
 
 This self-contained public Plectis checkout is not an entrypoint into any private
-development system. `v0.6.0` is the latest tagged release and citation anchor;
-[`docs/claims.json`](docs/claims.json) pins a post-tag formal-source checkpoint,
-not a new tagged release. Lean source checked by the pinned Lean kernel is
-proof authority; do not infer results from private or unreleased work.
+development system. `v0.7.0` is the release described by this checkout and its
+citation metadata. [`docs/claims.json`](docs/claims.json) pins the formal-source
+checkpoint carried by this release. Lean source checked by the pinned Lean
+kernel is proof authority; do not infer results from private or unreleased work.
 
 ## What the formal source establishes
 
@@ -266,7 +266,7 @@ hypothesis explicit and does not prove universal #257.
 
 ## Citation and licence
 
-Use [`CITATION.cff`](CITATION.cff) for `v0.6.0`.
+Use [`CITATION.cff`](CITATION.cff) for `v0.7.0`.
 Code, scripts, and documentation are Apache-2.0. The manuscript layer, including
 the paper source and rendered PDFs, is CC-BY-4.0.
 [`REUSE.toml`](REUSE.toml) is complete.
