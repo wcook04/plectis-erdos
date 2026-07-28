@@ -12,7 +12,7 @@ Lean 4 formal work on two unsolved irrationality problems.
 [**Mathematics paper**](erdos249-257-main-paper.pdf) ·
 [**Publication systems paper**](claim-faithful-publication-systems-paper.pdf) ·
 [All 3 papers, offline](docs/papers/) ·
-[Release v0.6.0](https://github.com/wcook04/plectis-lean-erdos249-257/releases/tag/v0.6.0) ·
+[Release v0.7.0](https://github.com/wcook04/plectis-lean-erdos249-257/releases/tag/v0.7.0) ·
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml) ·
 [Plectis](https://wcook04.github.io/plectis/)
 
@@ -33,10 +33,10 @@ Both remain open. **This project does not solve Erdős #249 or universal Erdős
 This self-contained public checkout is not an entrypoint into any private
 development system; do not infer results from private or unreleased work.
 
-`v0.6.0` is the latest tagged release and citation anchor.
-[`docs/claims.json`](docs/claims.json) pins the post-tag formal-source
-checkpoint, not a new tagged release. Lean source checked by the pinned Lean
-kernel is proof authority.
+`v0.7.0` is the release described by this checkout and its citation metadata.
+[`docs/claims.json`](docs/claims.json) pins the formal-source checkpoint carried
+by this release. Lean source checked by the pinned Lean kernel is proof
+authority.
 
 ## What the formal source establishes
 
@@ -232,7 +232,7 @@ not prove the still-open universal Erdős #257 statement.
 
 ## Citation and licence
 
-Use [`CITATION.cff`](CITATION.cff) for release `v0.6.0`; cite the included
+Use [`CITATION.cff`](CITATION.cff) for release `v0.7.0`; cite the included
 exposition for the mathematics.
 
 Code, scripts, and documentation are Apache-2.0. The manuscript layer, including

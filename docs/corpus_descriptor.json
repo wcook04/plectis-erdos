@@ -27,18 +27,18 @@
 "ref_kind": "commit",
 "resolved_commit": "77c12bc1dc30dc434d0a023f5bf9c1db67bd38cd",
 "publication_state": "published_committed_checkpoint",
-"relationship_to_last_tag": "post_tag_checkpoint",
+"relationship_to_last_tag": "at_last_tag",
 "last_release": {
-"version": "0.6.0",
-"tag": "v0.6.0"
+"version": "0.7.0",
+"tag": "v0.7.0"
 },
 "lean_toolchain": "leanprover/lean4:v4.29.1",
 "authority_role": "proof_bearing_committed_source_anchor"
 },
 "navigation_snapshot": {
-"commit": "dc6cbb62eac7f8bf12b9af0257bc7f679f615ce8",
+"commit": "f42ec31aff9e4d65d26a725b11351cb2a1873087",
 "authority_role": "machine_readable_navigation_anchor",
-"repository_resolution": "https://github.com/wcook04/plectis-lean-erdos249-257/tree/dc6cbb62eac7f8bf12b9af0257bc7f679f615ce8"
+"repository_resolution": "https://github.com/wcook04/plectis-lean-erdos249-257/tree/f42ec31aff9e4d65d26a725b11351cb2a1873087"
 },
 "content": {
 "machine_readable_paper": {
@@ -47,7 +47,7 @@
 },
 "claims_document": {
 "path": "docs/claims.json",
-"content_digest": "sha256:42a98b1ce9d5f7581c2bad22c2a5f2efa4442e5698ec1caee42046f430a08c27"
+"content_digest": "sha256:61575f90cefb4ba5221812a49ca61f40d5207d9e4e176d14f5a2273efc43bc56"
 },
 "declaration_atlas": {
 "path": "docs/declaration_atlas.json",
@@ -60,7 +60,7 @@
 },
 "bounded_orientation": {
 "path": "docs/orientation.json",
-"content_digest": "sha256:ede24a52227ab5f9310afd104cdb15af117618fa6baf52c197384c4ef28c2ddc"
+"content_digest": "sha256:0724f92ebab2e6208e0625e1d5bc5a2182fb965eb7b7a99d68bde93de0351922"
 },
 "human_exposition": {
 "source_path": "paper/erdos249-257-main-paper.tex",

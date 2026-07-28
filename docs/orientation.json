@@ -16,8 +16,8 @@
   "boundary": "The workflow provenance explains the release discipline; it does not imply hidden proof authority or equivalence with private work."
  },
  "release": {
-  "version": "0.6.0",
-  "tag": "v0.6.0",
+  "version": "0.7.0",
+  "tag": "v0.7.0",
   "lean_toolchain": "leanprover/lean4:v4.29.1",
   "formal_source_ref": "77c12bc1dc30dc434d0a023f5bf9c1db67bd38cd",
   "formal_source_publication_state": "published_committed_checkpoint"
@@ -569,7 +569,7 @@
  },
  "source_revision": {
   "formal_source_ref": "77c12bc1dc30dc434d0a023f5bf9c1db67bd38cd",
-  "committed_navigation_snapshot": "dc6cbb62eac7f8bf12b9af0257bc7f679f615ce8",
+  "committed_navigation_snapshot": "f42ec31aff9e4d65d26a725b11351cb2a1873087",
   "main_paper_source_digest": "sha256:be16021f0e006b9cb3c46cf2ab8d2794831064e35923c9447c5e4d1d71ecc0b7"
  },
  "reading_routes": [

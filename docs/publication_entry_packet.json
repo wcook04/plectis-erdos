@@ -108,7 +108,7 @@
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
     "claim-faithful-publication-systems-paper.pdf": "sha256:b8cb38376b3c49be36789e1b755d5652c9457f4a942e5594be257076ad26cd4b",
-    "docs/claims.json": "sha256:42a98b1ce9d5f7581c2bad22c2a5f2efa4442e5698ec1caee42046f430a08c27",
+    "docs/claims.json": "sha256:61575f90cefb4ba5221812a49ca61f40d5207d9e4e176d14f5a2273efc43bc56",
     "docs/methodology.json": "sha256:d2dab3ef7bd853be6bd086ad2ff448d97996280c648878f6aa5066e1616a722e",
     "docs/publication_contract.json": "sha256:e7ca03201bff4f8fe0f44d762f61d29933f2f0bc689a89b3f221836ab3aed424",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
@@ -312,12 +312,12 @@
       "publication_state": "published_committed_checkpoint",
       "ref": "77c12bc1dc30dc434d0a023f5bf9c1db67bd38cd",
       "ref_kind": "commit",
-      "relationship_to_last_tag": "post_tag_checkpoint"
+      "relationship_to_last_tag": "at_last_tag"
     },
     "lean_toolchain": "leanprover/lean4:v4.29.1",
-    "release_date": "2026-07-12",
-    "release_tag": "v0.6.0",
-    "release_version": "0.6.0",
+    "release_date": "2026-07-28",
+    "release_tag": "v0.7.0",
+    "release_version": "0.7.0",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "revision_embedding_boundary": "A tracked file cannot contain its own Git commit id without self-reference. Content freshness is enforced by the owner hashes below; agents query the checkout revision at runtime."
   },
