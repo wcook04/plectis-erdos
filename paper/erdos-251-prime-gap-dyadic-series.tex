@@ -682,6 +682,37 @@ small-mismatch theorem}; and the actual-prime-gap specialisation is the
 specialisation}.  Theorem~\ref{res:smallpair} is conditional on its two tail
 inequalities; no theorem asserting that such pairs occur is claimed here.
 
+All three are stated for a rational orbit, while the prime-gap tail
+$\mathcal T$ of Section~\ref{sec:tail} is real, so the rational statement does
+not on its own discharge the instances that arise downstream.  The same
+argument gives the real form directly.
+
+\begin{corollary}[adjacent small-shift obstruction, real form]\label{res:smallpair-real}
+Let $T:\N\to\R$ satisfy $T_{N+1}=2T_N-g_{N+1}$ with integer digits $g$, and
+write $\sigma_h(N)=T_{N+h}-T_N$.  Fix $h$ and $N$.  If
+\[
+ -1<\sigma_h(N)<1,\qquad -1<\sigma_h(N+1)<1,
+ \qquad g_{N+h+1}\ne g_{N+1},
+\]
+then $\sigma_h(N)$ and $\sigma_h(N+1)$ do not both lie in $\Z$.
+Consequently, if such a pair occurs beyond every threshold, the $h$-shift is
+not eventually integral.
+\end{corollary}
+
+\begin{proof}
+The real recurrence gives the same shift step identity
+$\sigma_h(N+1)=2\sigma_h(N)-\bigl(g_{N+h+1}-g_{N+1}\bigr)$, and an integer
+strictly between $-1$ and $1$ is zero.  If both shifts lay in $\Z$, both would
+therefore vanish, and substitution in that identity would give
+$g_{N+h+1}=g_{N+1}$, a contradiction.  The cofinal statement chooses one such
+adjacent pair after the alleged onset of integrality.
+\end{proof}
+
+\noindent Corollary~\ref{res:smallpair-real} is proved here and is not a
+declaration in the pinned Lean module, whose small-shift theorems are stated
+for the rational orbit.  It is the form that applies to the real tail, and it
+carries the same two unproved inequalities as its rational counterpart.
+
 The third hypothesis, on its own, is available.  For the actual gaps tabulated
 in Section~\ref{sec:problem} it reads $g_4=2\ne4=g_3$ at $h=1$, $N=2$; and
 Proposition~\ref{res:gap-nonperiodic} below says precisely that for each fixed
@@ -920,7 +951,8 @@ The local source still takes
 summability of the prime series as a hypothesis and does not define
 $\mathcal T_N$ by an infinite sum; the prime-number-theorem comparison and the
 identification of that concrete tail with the checked real recurrence are
-paper proofs.  Its prime-gap tail domination and anti-concentration
+paper proofs, as is the real form of the small-shift obstruction in
+Corollary~\ref{res:smallpair-real}.  Its prime-gap tail domination and anti-concentration
 hypotheses also remain paper-level obligations.  No theorem supplies the cofinal pairs in
 \eqref{eq:smallpair}, and none of the prime-distribution estimates
 described above is claimed or formalised.
@@ -1049,7 +1081,7 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
   doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
 \bibitem{erdosstraus1963} P.~Erd\H{o}s and E.~G. Straus, \emph{On the
   irrationality of certain Ahmes series}, J. Indian Math. Soc. (N.S.)
-  \textbf{27} (1963), 129--133.
+  \textbf{27} (1964), 129--133. MR~175848.
 \bibitem{fgkmt2018} K.~Ford, B.~Green, S.~Konyagin, J.~Maynard and T.~Tao,
   \emph{Long gaps between primes}, J. Amer. Math. Soc. \textbf{31} (2018),
   65--105.
@@ -1075,7 +1107,8 @@ finite-approximation certificate & \lrefx{Erdos251/PrimeGapDyadicTail.lean}{772}
 \bibitem{kovac2026} ChatGPT~5.4 Pro (orchestrated by V.~Kova\v{c}),
   \href{https://web.math.pmf.unizg.hr/~vjekovac/files/Erdos_problem_251.pdf}
   {\emph{On the Erd\H{o}s problem \#251}},
-  unpublished note, 2026.
+  unpublished note, 2026, hosted by the Department of Mathematics, University
+  of Zagreb, \texttt{web.math.pmf.unizg.hr}, accessed 28 July 2026.
 \bibitem{formalconjectures251} The Formal Conjectures Authors,
   \href{https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/ErdosProblems/251.lean}
   {\emph{FormalConjectures.ErdosProblems.\texttt{251}}},

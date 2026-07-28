@@ -39,16 +39,16 @@ paid for by exactly the same factor in the Archimedean determinant
 height.  Homogeneous
 specialisation at $(3,2)$ sees the constant endpoint modulo $3$ and the top
 endpoint modulo $2$, so unit endpoints exclude both primes from any common
-multiplier.  Together: when one entry of a coefficient pair has a unit top
+divisor.  Together: when one entry of a coefficient pair has a unit top
 endpoint and the other a unit constant endpoint, neither rowwise scalar content
-nor a common multiplier of the two specialised evaluations can manufacture the
+nor a common divisor of the two specialised evaluations can manufacture the
 two local primes required at $3/2$.  The missing local gain must therefore survive
 primitive normalisation.  What remains is a growing-rank additive kernel
 cancelling both endpoint jets (the residues of a specialised coefficient
 modulo $3^{R}$ and modulo $2^{S}$) in both specialised coefficient sequences
 while preserving a nonzero, sufficiently small remainder; we count the four-jet
-target exactly and prove the concrete sufficient threshold \(n\ge 4R+2S\) at
-positive bottom depth $R$.
+target exactly and prove the concrete sufficient threshold \(M\ge 4R+2S\) on
+the number $M$ of coefficient pairs, at positive bottom depth $R$.
 
 We also record what the elementary route costs.  Erd\H{o}s's argument for the
 irrationality of $\sum_{n\ge1}c(n)b^{-n}$ at an integer base $b\ge2$ proceeds
@@ -90,8 +90,8 @@ catalogue~\cite{erdosproblems}.  For non-integer rational $t$ the problem is
 open.
 
 Write $t=r/s$ in lowest terms with $r>s\ge1$, so that $s=1$ is exactly the
-integer case Erd\H{o}s settled.  The smallest resistant explicit base is
-$t=3/2$.  A published height criterion of Bundschuh and
+integer case Erd\H{o}s settled.  The resistant explicit base of least naive
+height $H(r/s)=\max(r,s)$ is $t=3/2$.  A published height criterion of Bundschuh and
 V\"a\"an\"anen~\cite{bv1994} settles a family of rational bases restricted by a
 height condition; that family contains $7/2$ and does not contain $3/2$.
 Between the two lies the question this note is about: what exactly stops the
@@ -149,9 +149,10 @@ rows is $U_{n}V_{m}-U_{m}V_{n}$, the determinant of the $2\times2$ matrix they
 form.  Two quantities attached to that determinant are compared throughout: an
 integer dividing it, which is a local gain, and its absolute value, which is an
 Archimedean cost; we call that comparison the \emph{local-to-Archimedean
-balance}.  The \emph{endpoints} of a coefficient polynomial are its constant
-coefficient and its top coefficient, and a \emph{unit} endpoint is one equal to
-$\pm1$, the units of $\Z$; Theorem~\ref{res:endpoints} is the reason only these
+balance}.  The \emph{endpoints} of a coefficient polynomial, taken relative to
+the declared width $W$ of Section~\ref{sec:endpoints}, are its constant
+coefficient and its coefficient at $W$, and a \emph{unit} endpoint is one equal
+to $\pm1$, the units of $\Z$; Theorem~\ref{res:endpoints} is the reason only these
 two coefficients decide divisibility by $3$ and by $2$ after specialisation at
 $(3,2)$.  A \emph{jet} is a
 residue of a specialised coefficient modulo a prime power: the bottom jet is
@@ -174,7 +175,7 @@ remain after the coefficient rows have been divided by their contents
 supplying that gain is excluded: rowwise content is exactly neutral, since it
 scales the exterior determinant and its absolute height by the same factor
 (Theorem~\ref{res:content}), and unit endpoints keep both $2$ and $3$ out of
-any common multiplier of the two specialised evaluations
+any common divisor of the two specialised evaluations
 (Theorem~\ref{res:endpoints} and Proposition~\ref{res:commonmult}).
 Corollary~\ref{res:nomult} states the two together.  Separately, the scalar
 parameter margin is negative under the assumed source inequality
@@ -215,9 +216,9 @@ Irrationality of $F(3/2)$ & Open & Not proved, and no partial result here bears 
 Irrationality at some rational non-integer base & Proved elsewhere & The height criterion of~\cite{bv1994}; cited, not formalised. \\
 Row content is neutral for the local-to-Archimedean balance & Proved here & Theorem~\ref{res:content}, including the absolute determinant height. \\
 Homogeneous endpoint residues at $(3,2)$ & Proved here & Theorem~\ref{res:endpoints}. \\
-Common multiplier of the two specialised evaluations avoids $2$ and $3$ & Proved here & Proposition~\ref{res:commonmult}; under unit endpoint hypotheses. \\
-No multiplicative local gain at $3/2$ & Deduced here & Corollary~\ref{res:nomult}; an ordinary deduction from the two preceding rows, not separately formalised. \\
-Four-jet collision at $n\ge4R+2S$ & Proved here & Theorem~\ref{res:jetkernel}; sufficient, at positive bottom depth. \\
+Common divisor of the two specialised evaluations avoids $2$ and $3$ & Proved here & Proposition~\ref{res:commonmult}; under unit endpoint hypotheses. \\
+No gain from row content or from a common divisor at $3/2$ & Deduced here & Corollary~\ref{res:nomult}; an ordinary deduction from the two preceding rows, not separately formalised. \\
+Four-jet collision at $M\ge4R+2S$ coefficient pairs & Proved here & Theorem~\ref{res:jetkernel}; sufficient, at positive bottom depth. \\
 Scalar margin on Zudilin's parameter cone & Negative under source input & Theorem~\ref{res:scalar}; the source inequality is assumed. \\
 Corridor forces $s^{N+K+1}<r(N+K)$ & Proved here & Theorem~\ref{res:corridorbound}. \\
 No corridor at base $3/2$ & Proved here & Theorem~\ref{res:nocorridor}; a statement about the clearing scheme. \\
@@ -235,8 +236,9 @@ Growing-rank simultaneous endpoint-jet kernel & Open & Section~\ref{sec:open}; t
 Section~\ref{sec:primitive} proves that rowwise content is neutral for the
 local-to-Archimedean balance.  Section~\ref{sec:endpoints} proves the endpoint
 congruences at $(3,2)$, deduces from them and from
-Section~\ref{sec:primitive} that no multiplicative device supplies the missing
-local gain, gives the four-jet collision count, and records one further
+Section~\ref{sec:primitive} that neither rowwise content nor a common divisor
+of the two specialised evaluations supplies the missing local gain, gives the
+four-jet collision count, and records one further
 exclusion on Zudilin's scalar parameters.
 Sections~\ref{sec:corridor} and~\ref{sec:tail} return to the elementary
 clearing scheme and record what the residue $s^{n}$ costs there, first as an
@@ -393,7 +395,7 @@ Let \(P=\sum_ip_iX^i\in\Z[X]\) and let \(W\ge0\).  Then
  H_W(P)\equiv p_W\,3^W\pmod 2.
 \]
 Consequently a unit constant coefficient prevents divisibility by \(3\), and
-a unit top coefficient prevents divisibility by \(2\).
+a unit coefficient at the declared width \(W\) prevents divisibility by \(2\).
 \end{theorem}
 
 \begin{proof}
@@ -406,6 +408,9 @@ Since \(2^{W}\) is invertible modulo \(3\) and \(3^{W}\) is invertible modulo
 \(2\), the two congruences say more than the stated consequence: divisibility
 of \(H_W(P)\) by \(3\) is decided by \(p_0\) alone, and divisibility by \(2\) by
 \(p_W\) alone.  The rest of the coefficient vector is invisible to both primes.
+The coefficient \(p_W\) is the top coefficient of \(P\) exactly when
+\(\deg P=W\), and is zero when \(\deg P<W\); the identity
+\(H_W(P)=2^{W}P(3/2)\) likewise holds only for \(\deg P\le W\).
 
 \begin{example}\label{ex:endpoints}
 Take \(W=2\).  The three polynomials below differ only at an endpoint.
@@ -443,7 +448,7 @@ modulo \(2\) only the top one does.  The two exclusions are therefore conditions
 at opposite ends of the coefficient vector, and the statement below imposes one
 at each end, on the two entries of a single coefficient pair.
 
-\begin{proposition}[common multiplier]\label{res:commonmult}
+\begin{proposition}[common divisor]\label{res:commonmult}
 Let \(U,V\in\Z[X]\) and let \(W\ge0\).  If \(U\) has unit top endpoint, \(V\)
 has unit constant endpoint, and an integer
 \(c\) divides both \(H_W(U)\) and \(H_W(V)\), then
@@ -453,7 +458,7 @@ has unit constant endpoint, and an integer
 \end{proposition}
 
 \noindent This is the checked
-\lword{Erdos1049/ZudilinConeArithmetic.lean}{293}{commonMultiplier_not_two_not_three_of_endpoint_units}{common-multiplier
+\lword{Erdos1049/ZudilinConeArithmetic.lean}{293}{commonMultiplier_not_two_not_three_of_endpoint_units}{common-divisor
 exclusion}.  The proposition does not say that the two evaluations are coprime;
 it says that whatever they share misses both of the primes that matter at
 \(3/2\).
@@ -464,13 +469,14 @@ constant endpoint of \(V\) are both \(1\), and
 \[
  H_2(U)=3\cdot4+1\cdot9=21,\qquad H_2(V)=1\cdot4+5\cdot9=49 .
 \]
-Here \(\gcd(21,49)=7\), so a common multiplier does exist and is not small; it
+Here \(\gcd(21,49)=7\), so a common divisor does exist and is not small; it
 is simply coprime to \(6\).
 \end{example}
 
-\begin{corollary}[no multiplicative local gain at \(3/2\)]\label{res:nomult}
+\begin{corollary}[no gain from row content or a common divisor at
+\(3/2\)]\label{res:nomult}
 Under the endpoint hypotheses of Proposition~\ref{res:commonmult}, neither
-rowwise scalar content nor a common multiplier of the two specialised
+rowwise scalar content nor a common divisor of the two specialised
 evaluations \(H_W(U)\) and \(H_W(V)\) can manufacture the two local primes
 required at \(3/2\).
 \end{corollary}
@@ -520,27 +526,27 @@ the displayed criteria it vanishes exactly when \(3^R\) divides both specialised
 entries and \(2^S\) divides both.
 
 This turns the missing local divisor into an additive
-congruence-kernel problem: what is sought is no longer a scalar multiplier of
+congruence-kernel problem: what is sought is no longer a common divisor of
 the two evaluations, but a vector of small integer coefficients on which four
 residues vanish at once.  Since \(H_W\) is linear in the coefficients of \(P\),
 the four-jet signature of a combination is the corresponding combination of
 signatures, which is what makes the following count possible.
 
 \begin{theorem}[binary four-jet collision]\label{res:jetkernel}
-Fix a width \(W\) and depths \(R,S\), and let \((U_j,V_j)_{j<n}\) be any \(n\)
-pairs of integral polynomials.  Call a subset of \(\{0,\dots,n-1\}\), equivalently
-a vector of \(\{0,1\}^n\), a \emph{binary selector}.  If the
-\(2^n\) binary selectors outnumber the finite four-jet target
+Fix a width \(W\) and depths \(R,S\), and let \((U_j,V_j)_{j<M}\) be any \(M\)
+pairs of integral polynomials.  Call a subset of \(\{0,\dots,M-1\}\), equivalently
+a vector of \(\{0,1\}^M\), a \emph{binary selector}.  If the
+\(2^M\) binary selectors outnumber the finite four-jet target
 \[
  (\Z/3^R\Z)^2\times(\Z/2^S\Z)^2,
 \]
 then two distinct subsets have the same four-jet sum.  Subtracting their
 indicator vectors gives a nonzero coefficient vector in
-\(\{-1,0,1\}^n\) cancelling all four jets.  The target has exact cardinality
+\(\{-1,0,1\}^M\) cancelling all four jets.  The target has exact cardinality
 \[
  (3^R)^2(2^S)^2.
 \]
-In particular, if \(R>0\) and \(4R+2S\le n\), such a collision exists.
+In particular, if \(R>0\) and \(4R+2S\le M\), such a collision exists.
 \end{theorem}
 
 \begin{proof}
@@ -549,7 +555,7 @@ The claimed cardinal inequality and the pigeonhole principle give two
 distinct selectors in the same fibre.  The cardinality formula is the product
 of the four cyclic-modulus cardinalities.  For \(R>0\),
 \[
- (3^R)^2(2^S)^2<(4^R)^2(2^S)^2=2^{4R+2S}\le2^n,
+ (3^R)^2(2^S)^2<(4^R)^2(2^S)^2=2^{4R+2S}\le2^M,
 \]
 which proves the stated sufficient threshold.
 \end{proof}
@@ -571,14 +577,14 @@ collision has nonzero polynomial pair or nonzero remainder.
 \begin{example}\label{ex:jetcount}
 At depths \(R=S=1\) the four-jet target is
 \((\Z/3\Z)^2\times(\Z/2\Z)^2\), of cardinality \(9\cdot4=36\), and the threshold
-reads \(n\ge4\cdot1+2\cdot1=6\).  With six pairs there are \(2^{6}=64\) binary
+reads \(M\ge4\cdot1+2\cdot1=6\).  With six pairs there are \(2^{6}=64\) binary
 selectors against \(36\) targets, so two of them collide and their difference
 is a vector in \(\{-1,0,1\}^{6}\), not identically zero, killing all four jets.
 \end{example}
 
 Informally, the theorem says only this: once there are at least \(4R+2S\) pairs
 and the bottom depth \(R\) is positive, some coefficient vector in
-\(\{-1,0,1\}^n\), not identically zero, kills all four jets of the
+\(\{-1,0,1\}^M\), not identically zero, kills all four jets of the
 corresponding combination.  It does not say that the combination is nonzero as
 a pair of polynomials, and it does not say that its remainder is nonzero.  Those
 are the two obligations Problem~\ref{prob:kernel} carries.
@@ -861,6 +867,14 @@ single common denominator.  The bookkeeping obligation is then to check that no
 summand needs a larger denominator than the one proposed, which is a comparison
 between the exponents alone.  This section does that comparison, and only that.
 
+No source construction is named here for the exponent expressions below, and
+they are checked as displayed polynomial identities rather than derived.
+Giving them Pad\'e-theoretic force would additionally require deriving the
+expressions from a stated homogenised coefficient formula, proving integrality
+of the coefficients after multiplication by the proposed common denominator,
+and establishing nonvanishing and decay of the associated remainder.  None of
+those three is claimed here.
+
 For a
 homogenised construction over integer parameters the proposed common
 denominator exponent is $E_n=(3n^{2}-n)/2$.  Since only doubled exponents
@@ -943,11 +957,15 @@ rank-saturated contiguous-shift family or a genuinely independent deformation
 would be a first candidate.
 \end{problem}
 
-Rescaling a row along a ray, letting the row contents grow, inserting a
-multiplicative cyclotomic factor, or computing a further common multiplier does
-not address the obstruction that survives Corollary~\ref{res:nomult}; each is
-again a multiplicative device, and what Problem~\ref{prob:kernel} asks for is
-additive.  A theorem showing that every
+Rescaling a row along a ray, letting the row contents grow, or computing a
+further common divisor of the two specialised evaluations does not address the
+obstruction that survives Corollary~\ref{res:nomult}; each is one of the two
+devices excluded there, and what Problem~\ref{prob:kernel} asks for is
+additive.  Devices outside that corollary are not addressed either way:
+inserting a multiplicative cyclotomic factor changes the coefficient
+polynomials rather than scaling a row, and cross-row common factors,
+determinant-specific arithmetic, additive combinations, and a different
+architecture all lie outside its two hypotheses.  A theorem showing that every
 available family is too small or too degenerate to meet the requirements of
 Problem~\ref{prob:kernel} would show that no argument of this shape can
 succeed.
@@ -1074,7 +1092,8 @@ three-halves scalar margin & \lrefx{Erdos1049/ZudilinConeArithmetic.lean}{323}{t
   Integers \textbf{13} (2013), Paper A58.
 \bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao,
   \href{https://arxiv.org/abs/2406.17593}{\emph{On several irrationality
-  problems for Ahmes series}}, arXiv:2406.17593, 2024.
+  problems for Ahmes series}}, Acta Math. Hungar. \textbf{175} (2025),
+  572--608; arXiv:2406.17593, 2024.
 \bibitem{erdosproblems} T.~F. Bloom,
   \href{https://www.erdosproblems.com/1049}{\emph{Erd\H{o}s Problem \#1049}},
   \texttt{erdosproblems.com/1049}, accessed 22 July 2026.

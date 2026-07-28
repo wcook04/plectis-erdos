@@ -51,9 +51,9 @@ All four letters already occur among the first five blocks: $\beta_0=2$,
 $\beta_1=6$, $\beta_2=10$ and $\beta_4=30$.  Second, the reciprocal of the running least common multiple
 at a smooth point is not a product of functions of the three exponents
 separately: on the smallest nontrivial two-by-two exponent rectangle its
-determinant is exactly $-1/15$.  Thus that matrix has rank two, which excludes
-every argument that first separates the three coordinates and then treats them
-one at a time.
+determinant is exactly $-1/15$.  Thus that matrix has rank two, so the kernel
+is not a single product of three one-variable functions on that rectangle and
+no argument may assume such a form for it.
 
 The structural spine of the note is the identification
 \[
@@ -67,7 +67,7 @@ classical prime-power decomposition of $\lcm(1,\ldots,N)$; we record it because
 every later statement in the formal development is derived from it.  It gives
 $\Lprefix(x)\le x^{3}$; constancy on each cell where the three integer
 logarithms are constant; multiplication by exactly the corresponding prime when
-exactly one logarithm advances by one; and exactly $3n+1$ distinct jump values
+exactly one logarithm advances by one; and exactly $3n+1$ distinct jump points
 from the first $n$ positive powers of each of the three primes together with the
 common origin $1$.  We also prove an exact finite normal form in which a
 rectangular lattice sum of reciprocal running values is grouped by its genuine
@@ -174,8 +174,10 @@ multipliers that occur in that block, takes one of the four
 values $2$, $6$, $10$, $30$ and no others.
 Theorem~\ref{res:rank} shows that the smallest two-by-two restriction of the
 kernel at $\{2,3,5\}$ has determinant $-1/15$ and hence rank two.  In
-particular, it is not a product $f(i)g(j)h(k)$, so every argument that first
-separates the three coordinates and then treats them one at a time is excluded.
+particular, it is not a product $f(i)g(j)h(k)$, so no argument may assume that
+form for the kernel on that rectangle.  A rank-two matrix is itself a sum of
+two rank-one matrices, so decompositions into several separable terms are not
+excluded; what is excluded is the single product form.
 The mechanism is a small computation: $\hgt(6)=4\cdot3\cdot5=60$ and not $6$,
 because the running least common multiple at a smooth cutoff already sees
 powers of the other primes that the cutoff itself does not contain.
@@ -259,7 +261,7 @@ $\Lprefix(x)=\hgt(x)$ & Paper; Lean source & Unconditional for distinct primes; 
 $\hgt(x)\le x^{3}$ & Paper; Lean source & Unconditional; Proposition~\ref{res:cube}. \\
 Constancy on logarithmic cells & Paper; Lean source & Unconditional; Theorem~\ref{res:cell}. \\
 Single-coordinate jump ratios & Paper; Lean source & Unconditional; Theorem~\ref{res:jump}. \\
-Exactly $3n+1$ jump values & Paper; Lean source & Unconditional; Theorem~\ref{res:count}. \\
+Exactly $3n+1$ jump points & Paper; Lean source & Unconditional; Theorem~\ref{res:count}. \\
 Height-fibre normal form & Paper; Lean source & Exact finite identity; Theorem~\ref{res:fibre}. \\
 Infinite limit of that expansion & None in this paper & Not proved here; Section~\ref{sec:fibre}. \\
 Shell multiplicity $9\,\#\mathcal S\le(j+3)^{2}$ & Paper; Lean source & Unconditional; Theorem~\ref{res:shell}. \\
@@ -370,7 +372,7 @@ majorant}, which needs no primality.  The exponent $3$ is the number of
 generating primes, and the bound is the reason the reciprocal kernel is
 comparable to $x^{-3}$ rather than to $x^{-1}$.
 
-\section{Constancy on logarithmic cells and the jump values}\label{sec:cells}
+\section{Constancy on logarithmic cells and the jump points}\label{sec:cells}
 
 By Theorem~\ref{res:lcm} the running value depends on $x$ only through the
 three integer logarithms.  It is therefore constant wherever none of them
@@ -427,7 +429,7 @@ height step}, the
 and the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{316}{threePrimeHeight_thirdLogStep}{third}.
 
-The jump values are therefore the pure prime powers, and they do not collide
+The jump points are therefore the pure prime powers, and they do not collide
 across channels.
 
 \begin{theorem}[jump count]\label{res:count}
@@ -680,8 +682,11 @@ sees powers of the other primes that the cutoff itself does not contain.  That
 is the mechanism behind the non-separation.
 
 A nonzero two-by-two minor rules out writing the kernel as
-$f(i)g(j)h(k)$ on this box, and hence rules out any argument that first
-separates the coordinates and then treats them one at a time.  It gives no
+$f(i)g(j)h(k)$ on this box, so no argument may assume that single product form
+here.  It rules out nothing further: a rank-two matrix is itself a sum of two
+rank-one matrices, so sums of separable terms, higher-rank decompositions,
+separable majorants, changes of variable, and one-dimensional estimates applied
+after a decomposition all remain available.  It gives no
 rank lower bound beyond two, and it is not an independence or irrationality
 statement.
 
@@ -738,7 +743,8 @@ $3$-channel and one for the $5$-channel.  Multiplying the terminal factor $2$
 by the selected channel factors gives exactly the displayed four cases.
 \end{proof}
 
-All four letters already occur among the first six blocks:
+All four letters already occur among the first five of the six blocks
+tabulated below:
 \[
 \begin{array}{c|c|c|c|c}
 a & (2^{a},2^{a+1}) & \text{internal }3\text{-power} & \text{internal }5\text{-power} & \beta_a\\ \hline
@@ -980,6 +986,11 @@ $W=\beta_1\beta_2=6\cdot10=60$; the forcing accumulated over the window is
 $F=47$; and $\operatorname{lpr}_{60}(-47)=13$, since $-47+60=13$, which exceeds
 the bound $K=9$.  The other two rows are read the same way, with
 $W=\beta_1\beta_2\beta_3=360$ and $W=\beta_1\beta_2\beta_3\beta_4=10800$.
+The third row lies outside the domain of the escape condition, since
+$\gcd(16,30)=2$ while both~\eqref{eq:escape} and
+Theorem~\ref{res:windowconsumer} quantify only over $B>0$ coprime to $30$.  It
+is displayed to illustrate the window arithmetic at greater depth, not as an
+instance of the escape condition.
 
 A fresh scan over every $B\le1000$ coprime to $30$ and every
 $100\le a\le500$ tested $106{,}666$ pairs.  In every case a window of length
@@ -1005,15 +1016,21 @@ theorem yet supplies that problem-specific carry identification or
 proves~\eqref{eq:escape}.
 
 \begin{problem}[cofinal local-window escape]\label{prob:producer}
-With $b_a=\beta_a\in\{2,6,10,30\}$ the block radix of
-Theorem~\ref{res:dyadic-alphabet}, and with $m_a$ and $K(B,a)$ as in the
-identification above, prove~\eqref{eq:escape}: for every $B>0$ coprime to $30$
+Let $b_a=\beta_a\in\{2,6,10,30\}$ be the block radix of
+Theorem~\ref{res:dyadic-alphabet}.  Fix an integer forcing word $(m_a)$
+attached block by block to the ordered jump word, and a function $K(B,n)$
+bounding the reduced carry at denominator $B$ and step $n$.  For that pair
+$(m,K)$, prove~\eqref{eq:escape}: for every $B>0$ coprime to $30$
 and every starting index there are a later $\ell$ and an $h>0$ with
 $|W_{\ell,h}|>0$ and
 \[
  \operatorname{lpr}_{|W_{\ell,h}|}(-BF_{\ell,h})>K(B,\ell+h).
 \]
 \end{problem}
+
+\noindent The problem is well posed for each pair $(m,K)$ meeting that
+interface, independently of whether the identification above is carried out.
+The case of interest is the pair that identification would supply.
 
 By Theorem~\ref{res:windowconsumer} a proof of Problem~\ref{prob:producer}
 rules out the corresponding positive reduced carry; together with the
@@ -1028,7 +1045,11 @@ digit and its carry into the residue class, and one seeks blocks for which the
 modulus $|W_{\ell,h}|$ grows faster than the carry window and the weighted
 forcing $-BF_{\ell,h}$ does not remain trapped in the two short arcs adjacent
 to $0$ modulo that modulus.  A theorem for one cofinal family is enough; no
-equidistribution of all windows is required.
+equidistribution of all windows is required.  The formal consumer does not in
+fact use cofinality: because the carry recurrence, positivity and bound are
+assumed at every index, one escaping window for each reduced denominator $B$
+already suffices, and cofinal escape is stated because it is the natural
+producer shape rather than because the consumer requires it.
 
 None of the following weaker statements suffices, and each removes a false
 version of~\eqref{eq:escape}.  Merely proving $2\le b_a\le30$ loses the exact
@@ -1047,9 +1068,10 @@ bypass~\eqref{eq:escape}, but it would still have to be joined to the
 denominator-clearing step in the same way.
 \end{problem}
 
-An analytic treatment of the three logarithmic coordinates would have to be
-genuinely three-dimensional: by Theorem~\ref{res:rank}, a preliminary
-separation into one-dimensional factors is unavailable even at $\{2,3,5\}$.
+An analytic treatment of the three logarithmic coordinates cannot begin by
+assuming that the kernel factors: by Theorem~\ref{res:rank}, a single product
+of three one-variable functions is unavailable even at $\{2,3,5\}$.  A
+decomposition into finitely many separable terms is not ruled out.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}

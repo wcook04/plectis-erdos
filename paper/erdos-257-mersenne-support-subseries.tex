@@ -22,7 +22,7 @@
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
 \hypersetup{
-  pdftitle={Exact denominator periods for finite Lambert subseries (Erdős Problem 257)},
+  pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
   pdfkeywords={irrationality, Mersenne numbers, Lambert series, divisor incidence, scaled tails, achievement sets, squarefree, Lean 4},
 }
@@ -32,9 +32,10 @@
 \newcommand{\scA}{\operatorname{sc}}
 \newcommand{\Asf}{A_{\mathrm{sf}}}
 
-\runninghead{Exact denominator periods for finite Lambert subseries}
-\title{Exact Denominator Periods for Finite Lambert Subseries}
-\subtitle{Erd\H{o}s Problem~\#257}
+\runninghead{Erd\H{o}s \#257: denominator periods and rational-value constraints}
+\title{Denominator Periods, Rational-Value Constraints and
+Achievement-Set Geometry}
+\subtitle{Mersenne subseries and Erd\H{o}s Problem~\#257}
 \author{Will Cook}
 \date{July 2026}
 
@@ -72,9 +73,12 @@ denominator part $v>1$ is coprime to the numerator, rationality also forces
 \]
 Finally, rational values admit an exact Boolean--M\"obius scaled-tail
 characterisation from which the support is reconstructed.  These constraints
-are not known to be contradictory.  We also record the achievement-set
-geometry and the exact status of the candidate $1/2$: membership would refute
-\#257, while non-membership would eliminate only this one candidate.
+are not known to be contradictory.  We also record the squarefree support,
+whose value at base~$2$ is known from the literature and on which two of the
+arguments used here fail for a reason internal to a normalisation rather than
+to the value, the achievement-set geometry, and the exact status of the
+candidate $1/2$: membership would refute \#257, while non-membership would
+eliminate only this one candidate.
 \end{abstract}
 
 \section{Introduction and main results}\label{sec:problem}
@@ -169,7 +173,7 @@ under its stated hypothesis $\lcm(F)\ge2$, gives a strict lower bound for the
 first.  The omitted boundary is genuine: at $b=2$ and $F=\{1\}$ the two
 quantities are both~$1$.
 
-Five instances at $b=2$, which also show what the hypothesis
+Six instances at $b=2$, which also show what the hypothesis
 $\lcm(F)\ge2$ is for:
 \begin{center}
 \begin{tabular}{@{}lllll@{}}
@@ -200,7 +204,8 @@ mechanism is that each selected exponent $n$ contributes, by the cyclotomic
 route, a prime-power modulus dividing $b^{n}-1$ on which $b$ has order exactly
 $n$; no single reduction can remove all of them at once.  Prime powers rather
 than primes is not a technicality.  At $(b,n)=(2,6)$ no prime divisor of
-$2^6-1=63$ has order $6$ --- the Zsigmondy exception --- while $9$ does, and it
+$2^6-1=63$ has order $6$ --- one of the exceptional cases in Zsigmondy's
+theorem --- while $9$ does, and it
 is the prime power that carries the witness.  The row $F=\{2,6\}$ above is that
 case in full: $D_F=63=9\cdot7$, and since $2$ has order $2$ modulo $3$ and
 order $3$ modulo $7$, the order $6$ can only come from $9$.  The growth clause
@@ -690,8 +695,7 @@ This is the second time in this note that a boundary turns out to belong to
 the method rather than to the mathematics.  In Remark~\ref{res:signed} the
 terminating alternative of the signed periodic dichotomy is empty, and a
 theorem of Luca and Tachiya is what shows it; here a parity obstruction
-survives only until the support is shifted by one element.  Both were
-originally written up as frontiers.  Neither was one, and in each case the
+survives only until the support is shifted by one element.  In each case the
 correction came from outside the development --- once from the literature, once
 from asking what the statement was invariant under.  A formalised no-go result
 carries exactly the authority of its hypotheses, and its hypotheses include the
@@ -888,9 +892,8 @@ Results attributed to Duverney and Tachiya, to Tao and
 Ter\"av\"ainen, to Luca and Tachiya, and to Kova\v{c}
 and Tao are cited from the literature and are not formalised here.
 
-\emph{Scope of the AI declaration.}  The note on the first page states that the
-prose was model-generated.  The scope is wider than that sentence alone
-conveys, and the wider statement is the accurate one: large-language-model
+\emph{Scope of the AI declaration.}  The declaration on the first page applies
+in full: large-language-model
 agents assisted throughout, drafting and revising this exposition, the Lean
 developments it links to, and the repository software that checks them.  Will
 Cook set the objectives, selected and reviewed the public claims, checked the

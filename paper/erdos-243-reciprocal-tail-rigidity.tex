@@ -104,12 +104,14 @@ forms are the same statement.  Write $\sylnext(a)=a^{2}-a+1$, the
 successor}.
 
 \paragraph{Relation to prior work.}
-Two results bound what is new here, and both are stronger than anything below.
+Two published results reach the original problem under analytic hypotheses that
+are not assumed below.  Their hypotheses are conditions on the sequence $(a_n)$
+itself, and are not comparable with the state-level hypotheses used here.
 Erd\H{o}s and Straus proved that if $\lim a_n/a_{n-1}^{2}=1$, the reciprocal
 sum is rational, and $a_n$ does not satisfy the recurrence, then
 \[
  \limsup_{n\to\infty}\ \frac{[a_1,\ldots,a_n]}{a_{n+1}}
- \left(\frac{a_n^{2}}{a_{n+1}}-1\right)>0,
+ \left(\frac{a_{n+1}^{2}}{a_{n+2}}-1\right)>0,
 \]
 where $[a_1,\ldots,a_n]$ is the least common
 multiple~\cite{erdosstraus1964}.  Duverney proved a conditional form of the
@@ -117,6 +119,35 @@ problem itself: if $\sum_{n\ge0}\bigl(a_{n+1}/a_n^{2}-1\bigr)$ converges, then
 the reciprocal sum is rational if and only if the recurrence holds for all
 large $n$~\cite{duverney2001}.  Neither is formalised
 here, and the results below do not recover either of them.
+
+Koizumi's work on doubly exponential sequences~\cite{koizumi2025} bears
+directly on the state system used below, and supplies the coordinates in which
+several of the statements of this note are most naturally read.  For a rational
+$r=p/q$ with pseudo-greedy expansion $(a_n)$, remainders $(x_n)$ and gap
+sequence $\varepsilon_n=x_n^{-1}+1-a_n$, his Lemma~15 produces integers $c_n>0$,
+$d_n$ and $e_n$ with $x_n=c_n/d_n$ and $\varepsilon_n=e_n/c_n$, satisfying
+\[
+ a_n=\frac{d_n-e_n}{c_n}+1,\qquad
+ c_{n+1}=c_n-e_n,\qquad
+ d_{n+1}=a_nd_n ,
+\]
+and the proof of that lemma also gives $c_{n+1}=a_nc_n-d_n$.  Under the
+dictionary $(C_n,D_n,E_n)=(c_n,d_n,e_n)$ these are exactly the objects of
+Section~\ref{sec:state}: the first relation is the centring map $\ctr$ rewritten
+as $e_n=d_n-(a_n-1)c_n$, the second is Proposition~\ref{res:update}, the third
+is the denominator update, and the fourth is the tail update.  The lower-case
+$e_n$ of Section~\ref{sec:state} is $-E_n$, so it is the negative of Koizumi's
+$e_n$ at an index where the centred state is negative.  His Theorem~16 shows
+that termination of the pseudo-greedy expansion is equivalent to an affirmative
+answer to the question of Erd\H{o}s and Graham recorded as his Question~5,
+which is Problem~\ref{res:problem} above, cited from the same source and page.
+Two of the implications proved below have prior art in these canonical
+coordinates: his Lemma~13, that $\varepsilon_n=0$ forces $\varepsilon_{n+1}=0$,
+is the absorption of Theorem~\ref{res:absorb}, and his Proposition~19(2), that
+$\varepsilon_n\ge0$ for all large $n$ forces $\varepsilon_n=0$ for all large
+$n$, is the descent of Theorem~\ref{res:descent}.  These appear in canonical
+coordinates in~\cite{koizumi2025}; no question of priority or independence is
+adjudicated here.
 
 The growth hypothesis in Problem~\ref{res:problem} is calibrated by two facts
 about Sylvester's sequence.  It satisfies $a_n\approx c_0^{2^{n}}$ with
@@ -182,9 +213,9 @@ Coprime-modulus barrier & Proved here & Theorem~\ref{res:barrier}. \\
 Bounded negative part & Excluded here; conditional & Theorem~\ref{res:bounded}; see its hypotheses. \\
 Finite normalised negative mass & Excluded here; conditional & Theorem~\ref{res:mass}, Section~\ref{sec:mass}; normalised vanishing remains an input. \\
 Factorial residue reduction & Proved here; superseded for its original purpose & Theorem~\ref{res:residue}, Appendix~\ref{app:residue}. \\
-Strict centring, normalised vanishing & Assumed, not derived & Section~\ref{sec:bounded}. \\
+Strict centring, normalised vanishing & Assumed here; supplied by prior art & Section~\ref{sec:bounded}; derived in~\cite{koizumi2025}, see Section~\ref{sec:problem}. \\
 Unbounded, divergent-mass negative excursions & Open & Section~\ref{sec:open}; the surviving obstruction. \\
-Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; both stronger than anything here. \\
+Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; hypotheses not comparable with those here. \\
 State system equals reciprocal tails & Not formalised & Section~\ref{sec:state}. \\
 \bottomrule
 \end{tabular}
@@ -655,6 +686,25 @@ assumed here and not derived.  The drift hypothesis $M>0$ is also used: a
 periodic magnitude with zero drift would be identically zero, which is the case
 already settled by Section~\ref{sec:descent}.
 
+\begin{remark}
+On the canonical orbit of~\cite{koizumi2025}, read through the dictionary of
+Section~\ref{sec:problem}, the bound $e_n<a_n$ holds eventually.  Lemma~15(2)
+there gives the centring range $-C_n/2\le E_n<C_n/2$, so $e_n=|E_n|\le C_n/2$ at
+a negative index, and Lemma~15(3) gives the uniform bound
+$C_n\le C_1(3/2)^{n-1}$.  Against this, summability of $\sum1/a_n$ forces
+$a_n\to\infty$, and the growth hypothesis $a_n^{2}/a_{n+1}\to1$ gives
+$a_{n+1}\ge a_n^{2}/2$ for all large $n$, hence $a_{n+1}\ge2a_n$ once
+$a_n\ge4$; so the multipliers grow at least geometrically with ratio $2$ and
+outgrow the bound on $C_n$, making $e_n/a_n$ eventually small.  Two caveats.
+Summability is used for this step, so the estimate is not available from the
+state recurrence alone; and the conclusion is eventual and not universal,
+whereas Theorem~\ref{res:periodic} imposes $e_n<a_n$ at every index, so it is
+the eventual form of the exclusion cited above that applies.  Under the
+periodicity hypothesis of Theorem~\ref{res:periodic} the estimate is in any
+case unnecessary, since a periodic magnitude is bounded while the multipliers
+tend to infinity.
+\end{remark}
+
 \section{Bounded rise cannot avoid coprime moduli}\label{sec:barrier}
 
 Periodicity is still a strong assumption.  Removing it needs a different kind
@@ -896,6 +946,26 @@ this note is the exclusion of constant and periodic negative magnitudes,
 Theorems~\ref{res:constant} and~\ref{res:periodic}, and the barrier itself,
 Theorem~\ref{res:barrier}.
 
+The conditionality can nevertheless be located precisely, because the missing
+inputs are supplied elsewhere.  With the results of~\cite{koizumi2025},
+Theorem~\ref{res:bounded} becomes a conditional theorem about
+Problem~\ref{res:problem} itself rather than about the state system alone.  Let
+$(a_n)$ satisfy the hypotheses of Problem~\ref{res:problem}.  After deleting a
+finite prefix, Corollary~10 of~\cite{koizumi2025} makes the sequence the
+pseudo-greedy expansion of its own reciprocal sum, and Lemma~15 there supplies
+the integers $c_n,d_n,e_n$ of Section~\ref{sec:problem}.  Hypothesis~(1) then
+holds: $c_n$ is a positive integer by Lemma~15(1), and $a_n>1$ after a further
+finite shift, because summability of $\sum1/a_n$ forces $a_n\to\infty$.
+Hypothesis~(2) is the pair of recurrences $c_{n+1}=a_nc_n-d_n$ and
+$d_{n+1}=a_nd_n$ of Lemma~15(2), and hypothesis~(3) is that lemma's
+$a_n=(d_n-e_n)/c_n+1$ read as $e_n=d_n-(a_n-1)c_n$, which is the map $\ctr$.
+Hypothesis~(4) holds at every index, not merely eventually, from the centring
+range $-c_n/2\le e_n<c_n/2$ of the same lemma.  Hypothesis~(6) is the vanishing
+of the gap sequence in Corollary~10, since $\varepsilon_n=e_n/c_n$.  The sole
+hypothesis not supplied is~(5), the eventual bound on the negative part;
+nothing in~\cite{koizumi2025} yields it and nothing here does either, so
+Problem~\#243 stays open.
+
 \section{Excluding finite normalised negative mass}\label{sec:mass}
 
 Theorem~\ref{res:bounded} uses a uniform bound on the negative part.  A
@@ -944,6 +1014,14 @@ Problem~\#243.  Normalised vanishing is still an input: it is what converts the
 bound on $C$ into a bound on $|E_n|$, and nothing here derives it from the
 growth condition of Problem~\ref{res:problem}.
 
+The transfer of the previous section applies here as well.  On the canonical
+orbit of Corollary~10 of~\cite{koizumi2025} the recurrence $C_{n+1}=C_n-E_n$
+holds with $C_n>0$ by Lemma~15, and normalised vanishing is the vanishing of
+the gap sequence, so Theorem~\ref{res:mass} is a conditional theorem about
+Problem~\ref{res:problem} whose sole remaining hypothesis is summability of
+$\sum_n(-E_n)_+/C_n$.  That hypothesis is not supplied there, and is the
+content of Problem~\ref{res:masshyp} below.
+
 \begin{example}[the product bound at a geometric rate]\label{ex:mass}
 Suppose $C_0=100$ and $(-E_n)_+/C_n\le2^{-n-1}$ for every $n$, so that the
 normalised negative mass is at most $1$; the constraint at $n=0$ still permits
@@ -972,9 +1050,11 @@ negative part cannot be bounded either, and by Theorem~\ref{res:mass}, under
 normalised vanishing, its normalised negative mass cannot be finite.  What
 remains is the following.
 
-\begin{problem}[unbounded divergent-mass negative excursions]
-Exclude, or construct, an exact orbit whose centred state is negative
-infinitely often with magnitudes unbounded along that cofinal set and
+\begin{problem}[unbounded divergent-mass negative excursions]\label{res:excursions}
+Exclude, or construct, an exact natural orbit $(a,D,C)$ with $a_n>1$ and
+$C_n>0$, whose multipliers satisfy $\lim_n a_{n+1}/a_n^{2}=1$ and whose centred
+state satisfies eventual strict centring and normalised vanishing, and which is
+negative infinitely often with magnitudes unbounded along that cofinal set and
 \[
  \sum_n\frac{(-E_n)_+}{C_n}=\infty .
 \]
@@ -986,7 +1066,31 @@ multiplicative growth as well.  An excursion of the kind described has none of
 these.
 \end{problem}
 
-\begin{problem}[summable normalised negative mass]
+\begin{remark}
+The centring hypotheses in Problem~\ref{res:excursions} are not decorative: the
+state recurrence alone admits unbounded divergent-mass excursions.  Put
+\[
+ C_n=2^{n},\qquad b_0=2,\qquad b_{n+1}=\tfrac12 b_n(b_n+2),\qquad
+ a_n=b_n+2,\qquad D_n=b_nC_n ,
+\]
+so that $(b_n)=2,4,12,84,3612,\ldots$ and $(a_n)=4,6,14,86,3614,\ldots$.  Every
+$b_n$ is a positive even integer, since $b_n=2k$ gives $b_{n+1}=2k(k+1)$, so all
+four sequences are $\N$-valued.  The orbit is exact:
+$C_{n+1}+D_n=2^{n}(2+b_n)=a_nC_n$ and
+$D_{n+1}=b_{n+1}2^{n+1}=b_n(b_n+2)2^{n}=a_nD_n$.  Its centred state is
+\[
+ E_n=D_n-(a_n-1)C_n=b_n2^{n}-(b_n+1)2^{n}=-C_n ,
+\]
+so the negative magnitudes $2^{n}$ are unbounded and $\sum_n(-E_n)_+/C_n$
+diverges.  What fails is the centring: $|E_n|=C_n$ at every index, so strict
+centring fails at the boundary and normalised vanishing fails outright.  The
+multipliers satisfy $a_{n+1}=\tfrac12(a_n^{2}-2a_n+4)$, so
+$a_{n+1}/a_n^{2}\to\tfrac12$ and the growth hypothesis fails as well.  The
+example therefore says nothing about Problem~\ref{res:problem}; it is recorded
+only to show which hypotheses of Problem~\ref{res:excursions} are used.
+\end{remark}
+
+\begin{problem}[summable normalised negative mass]\label{res:masshyp}
 Prove from the rapid-growth and rationality hypotheses of
 Problem~\ref{res:problem} that \(\sum_n(-E_n)_+/C_n<\infty\), or prove any
 uniform bound on the partial products \(\prod_{n<N}(1+(-E_n)_+/C_n)\); a bound
@@ -995,24 +1099,36 @@ of the form
  \sum_{n=N}^{M}\frac{(-E_n)_+}{C_n}\le B
  \quad\text{for all }M\ge N
 \]
-with explicit hypotheses would suffice.  A disproof should exhibit a coherent
-exact state orbit satisfying normalised vanishing while its negative mass
-diverges; a list of locally admissible defects is not enough, since local
-admissibility at each index does not produce a global orbit.
+with explicit hypotheses would suffice.  A disproof should exhibit a sequence
+satisfying the hypotheses of Problem~\ref{res:problem} whose exact state orbit
+has divergent normalised negative mass; an orbit satisfying normalised
+vanishing alone is not enough, since normalised vanishing is strictly weaker
+than those hypotheses, and neither is a list of locally admissible defects,
+since local admissibility at each index does not produce a global orbit.
 \end{problem}
 
-\begin{problem}[the two analytic hypotheses]
-Derive eventual strict centring and normalised vanishing from
-$a_{n+1}/a_n^{2}\to1$ and rationality, or show that they do not follow.  Until
-one or the other is done, Theorem~\ref{res:bounded} constrains the state
-system and not the original sequence.
-\end{problem}
+\begin{remark}
+One further question is not left open here, since it is answered
+in~\cite{koizumi2025}: whether eventual strict centring and normalised
+vanishing follow from $a_{n+1}/a_n^{2}\to1$ and rationality.  They do.  After
+deleting a finite prefix, Koizumi's Corollary~10 makes the sequence the pseudo-greedy expansion of its
+own reciprocal sum and gives $\varepsilon_n\to0$ under exactly the hypotheses of
+Problem~\ref{res:problem}; rationality is not needed for that step, only
+summability of $\sum1/a_n$.  Since $\varepsilon_n=E_n/C_n$ under the intended
+reading of Section~\ref{sec:state}, this is normalised vanishing.  Strict
+centring comes from the same source and is stronger than what
+Theorem~\ref{res:bounded} assumes: for a rational reciprocal sum, the range
+$-c_n/2\le e_n<c_n/2$ of his Lemma~15(2) gives $|E_n|<C_n$ at every index, not
+merely for all large $n$.  What remains unsupplied is hypothesis~(5), the bound
+on the negative part, which is why the theorem is still conditional.
+\end{remark}
 
 \begin{problem}[the two published criteria]
 Formalise the criterion of Erd\H{o}s and Straus stated in
 Section~\ref{sec:problem}, and Duverney's conditional characterisation, under
 explicit analytic hypotheses.  Both are cited here and neither is formalised;
-each is stronger than every statement in this note.
+each reaches the original problem under analytic hypotheses not assumed in this
+note.
 \end{problem}
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
@@ -1053,8 +1169,9 @@ the source.  The
 identification of any of these modules with reciprocal tails is the exposition
 of Section~\ref{sec:state} and is not a checked statement.  The periodic exclusion
 assumes the regime $e_n<a_n$.  And the final theorem assumes strict centring
-and normalised vanishing, which are hypotheses of the theorem and not
-consequences of the problem.
+and normalised vanishing, which are hypotheses of the theorem and are not
+derived in the formal source; for where they do come from,
+see Sections~\ref{sec:problem} and~\ref{sec:bounded}.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -1205,8 +1322,12 @@ technique transfers to any forced orbit whose step is a polynomial division.
   Theory}, Cambridge UP, 1988, pp.~102--109,
   doi:\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.
 \bibitem{kovactao2024} V.~Kova\v{c} and T.~Tao,
-  \href{https://arxiv.org/abs/2406.17593}{\emph{On the irrationality of Ahmes
-  series}}, arXiv:2406.17593 (2024).
+  \href{https://arxiv.org/abs/2406.17593}{\emph{On several irrationality
+  problems for Ahmes series}}, Acta Math. Hungar. \textbf{175} (2025),
+  572--608; preprint arXiv:2406.17593.
+\bibitem{koizumi2025} J.~Koizumi,
+  \href{https://arxiv.org/abs/2504.05933}{\emph{Irrationality of the reciprocal
+  sum of doubly exponential sequences}}, arXiv:2504.05933 (2025).
 \bibitem{concretemath} R.~L. Graham, D.~E. Knuth and O.~Patashnik,
   \emph{Concrete Mathematics}, Addison-Wesley, 1989, p.~109.
 \bibitem{vardi1991} I.~Vardi, \emph{Computational Recreations in Mathematica},
