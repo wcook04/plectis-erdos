@@ -3,10 +3,10 @@
 
 # Tail certificates and achievement-set geometry for Erdős Problems 249 and 257
 
-Lean 4 formal work on two open irrationality problems. Start with:
+Lean 4 work on two open irrationality problems. Start with:
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) →
 [PRIOR ART](docs/PRIOR_ART.md) → [SOURCE MAP](docs/SOURCE_MAP.md).
-[Architecture](ARCHITECTURE.md) covers checks.
+[architecture and repository guide](ARCHITECTURE.md).
 It assumes no Lean or project history.
 [agent-navigation paper](cold-clone-to-proof-receipt.pdf): navigation,
 receipts, incremental builds.
