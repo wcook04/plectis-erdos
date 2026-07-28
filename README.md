@@ -16,8 +16,9 @@ Lean 4 formal work on two unsolved irrationality problems.
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml) ·
 [Plectis](https://wcook04.github.io/plectis/)
 
-This repository and [Plectis](https://github.com/wcook04/plectis)
-demonstrate a private system: machinery there, mathematics here.
+Lean source and papers live here. [Plectis](https://github.com/wcook04/plectis)
+carries the runnable claim-checking tools. Neither describes the private
+development environment.
 
 ## The two problems
 
