@@ -1291,6 +1291,9 @@
     ],
     "module_graph": {
       "root": "Erdos249257.lean",
+      "additional_roots": [
+        "ErdosProblems.lean"
+      ],
       "nodes": [
         {
           "id": "Erdos249257.ActualForeignResidueProjection",
@@ -6904,6 +6907,104 @@
           "imports": [
             "Erdos249257.CurvatureCarry"
           ]
+        },
+        {
+          "id": "ErdosProblems.AxiomAudit",
+          "path": "ErdosProblems/AxiomAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Root"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.RationalBaseLambert",
+          "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+          "path": "ErdosProblems/Erdos1049/RationalPadeArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+          "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.DynamicCancellation",
+          "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos243.FiniteHorizonResidue",
+          "path": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+          "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.SparseResetRecovery",
+          "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+          "path": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.ResidueEscape",
+          "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.RestrictedFloorSum",
+          "path": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.ResidueEscape"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+          "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Root",
+          "path": "ErdosProblems/Root.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity",
+            "ErdosProblems.Erdos243.FiniteHorizonResidue",
+            "ErdosProblems.Erdos243.DynamicCancellation",
+            "ErdosProblems.Erdos243.SparseResetRecovery",
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
+            "ErdosProblems.Erdos269.ResidueEscape",
+            "ErdosProblems.Erdos269.RestrictedFloorSum",
+            "ErdosProblems.Erdos1049.RationalBaseLambert",
+            "ErdosProblems.Erdos1049.RationalPadeArithmetic",
+            "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
+          ]
         }
       ]
     },
@@ -7504,7 +7605,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "ebc98ee71f6819bd9fe344a0bb343542c604e533",
+      "ref": "77c12bc1dc30dc434d0a023f5bf9c1db67bd38cd",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint"
@@ -7540,7 +7641,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 3650
+        "line": 3655
       }
     },
     {
@@ -7551,7 +7652,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 3661
+        "line": 3666
       }
     },
     {
@@ -7562,7 +7663,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 3685
+        "line": 3690
       }
     },
     {
@@ -7573,7 +7674,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 3676
+        "line": 3681
       }
     }
   ],

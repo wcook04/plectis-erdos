@@ -304,7 +304,8 @@ def main() -> int:
     )
     module_graph = claims_document["machine_readable_paper"]["module_graph"]
     assert module_graph["root"] == "Erdos249257.lean"
-    assert summary["scale"]["module_count"] == len(module_graph["nodes"]) + 1
+    root_count = 1 + len(module_graph.get("additional_roots", []))
+    assert summary["scale"]["module_count"] == len(module_graph["nodes"]) + root_count
     descriptor = json.loads((ROOT / "docs" / "corpus_descriptor.json").read_text(encoding="utf-8"))
     formal_source = claims_document["release"]["formal_source"]
     publication_assembly = claims_document["machine_readable_paper"]["publication_assembly"]

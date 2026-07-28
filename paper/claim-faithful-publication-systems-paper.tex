@@ -152,7 +152,7 @@ and limits.
   lab/.style={font=\footnotesize, fill=white, inner sep=1.5pt}
 ]
 \node[artefact, text width=3.6cm] (lean) at (1.8, 0) {\textbf{Lean source}\\[1pt]
-  {\footnotesize\texttt{Erdos249257.lean}\\ \texttt{Erdos249257/*.lean}}\\[1pt]
+  {\footnotesize\texttt{Erdos249257.lean}\\ \texttt{ErdosProblems.lean}}\\[1pt]
   {\footnotesize\itshape proves the finite theorem\\ and the equivalence}};
 \node[artefact, text width=3.6cm] (claim) at (7.0, 0) {\textbf{claim record}\\[1pt]
   {\footnotesize\texttt{docs/claims.json}}\\[1pt]
@@ -712,13 +712,9 @@ checking must be separate and able to fail.  Every important recorded
 relationship needs an example that deliberately violates it, and the record
 must present its coverage as selective rather than complete.
 
-Stronger variants impose more structure.  A project could generate public
-wording from the record instead of anchoring authored prose; extract formal
-statements and assumptions instead of recording source lines; require an
-independent reviewer for designated claims; constrain critical claims to a
-controlled vocabulary; or use tools that interpret prose to propose discrepancies for
-human review.  This repository instead keeps unrestricted prose and an
-external record.
+Variants could generate wording from the record, extract formal statements,
+require independent review, or use a controlled vocabulary.  This repository
+keeps unrestricted prose and an external record.
 
 \paragraph{What is not established.}
 The architecture does not
@@ -729,16 +725,10 @@ independent or adequate; or that the design transfers to other projects with
 its behaviour intact.  A large number of passing comparisons measure none of
 those things.  What a passing workflow establishes is narrower: the
 configured jobs ran on the named revision, Lean accepted the formal proofs,
-and the release checker found every recorded relationship intact.  This paper
-is an architecture note with one bounded case study,
-not an empirical evaluation of the design.  A credible evaluation would need
-several stages, each with its own limit.  Records naming the reviewer, revision,
-and time could establish who checked which revision, when, and how often, but
-not effectiveness.  Deliberately wrong edits by people other than the checker's
-author could measure the response to unseen faults, but not
-behaviour in ordinary use.  Only after those stages would comparison with ordinary review
-on the same changes become meaningful.  None of those stages exists yet, and
-this paper claims none of them.
+and the release checker found every recorded relationship intact.  This is an
+architecture note with one bounded case study, not an empirical evaluation.
+No multi-project study, independent fault-injection study, or comparison with
+ordinary review has been run, so the paper claims no effectiveness result.
 
 \section{Related systems}\label{sec:related}
 
