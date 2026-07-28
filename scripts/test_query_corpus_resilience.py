@@ -211,6 +211,50 @@ def check_witness_carrying_semantic_slices() -> None:
     )
 
 
+def check_problem_progress_cold_start() -> None:
+    query = (
+        "For the system Lean paper, collate for each problem how far we "
+        "have got and denoise all non-trivial mathematical progress"
+    )
+    packet = query_corpus.semantic_slice_packet(query, 20)
+    assert packet["query_interpretation"]["operator"]["id"] == "digest"
+    assert {
+        row["id"]
+        for row in packet["query_interpretation"]["matched_vocabulary"]
+    } >= {"problem_progress_digest"}
+    assert [
+        (cell["kind"], cell["handle"], cell["selection_reason"])
+        for cell in packet["semantic_cells"]
+    ] == [
+        (
+            "reading_route",
+            "instant_orientation",
+            "controlled_vocabulary_route",
+        ),
+        (
+            "reading_route",
+            "erdos249_certificate_story",
+            "controlled_vocabulary_route",
+        ),
+        (
+            "reading_route",
+            "erdos257_half_story",
+            "controlled_vocabulary_route",
+        ),
+        (
+            "reading_route",
+            "browse_claim_status",
+            "controlled_vocabulary_route",
+        ),
+    ]
+    assert packet["operator_synthesis"]["kind"] == "digest_synthesis"
+    assert packet["minimal_witness_subgraph"]["edges"]
+    assert packet["authority_posture"] == (
+        "witness_carrying_navigation_projection_with_"
+        "non_substitutable_authority_planes"
+    )
+
+
 def check_elaborated_dependency_witnesses() -> None:
     neighbourhood = query_corpus.formal_dependency_neighbourhood(
         "Erdos249257.TotientTailPeriodKiller."
@@ -514,6 +558,7 @@ def main() -> int:
     check_dictionary_budget_and_shape()
     check_vocabulary_mismatch_queries()
     check_witness_carrying_semantic_slices()
+    check_problem_progress_cold_start()
     check_elaborated_dependency_witnesses()
     check_multihop_formal_dependency_reasoning()
     check_formal_goal_affordance_support()

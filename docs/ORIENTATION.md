@@ -11,6 +11,14 @@ This is the bounded first-read map for the public release. It is a navigation
 projection, not proof authority. The published Lean source checked by the pinned
 Lean kernel remains proof authority.
 
+## Agent first move
+
+For mathematics, Lean, status, or progress work, run
+`python3 scripts/query_corpus.py --ask "<question>"` before papers or broad source
+search. A broad progress request must recover `instant_orientation`,
+`erdos249_certificate_story`, `erdos257_half_story`, and `browse_claim_status`.
+The route uses tracked files only and requires no sibling repository or private state.
+
 ## Release provenance
 
 This checkout is a deliberately curated, independently verifiable public output of a larger ongoing formal-mathematics workflow. No public claim depends on private or unreleased work.
@@ -25,9 +33,9 @@ The workflow provenance explains the release discipline; it does not imply hidde
 |---|---:|
 | Lean modules | 635 |
 | Lean declarations | 12,577 |
-| Theorem-like declarations | 11,538 |
+| Theorem-like declarations | 11,539 |
 | Generated certificate declarations | 2,925 |
-| Principal claim links | 289 |
+| Principal claim links | 290 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json). Generated certificate
@@ -167,25 +175,12 @@ These authored surfaces remain distinct from Lean proof authority.
 
 ## Query one handle
 
-The read-only query helper returns bounded JSON by default:
-Module packets include authored roles and both sides of the direct import
-neighbourhood, with truncation receipts pointing to the exhaustive graph.
-Claim packets resolve adjacent argument edges into labels, statuses, and
-relation meanings, so each neighbour can be followed as another handle.
-Every exact remaining-open proposition ID is itself a typed handle whose
-packet preserves the open target and lists linked progress claims.
-Claim paper labels resolve to exact TeX files and lines across both papers;
-declaration packets add pinned Lean URLs, module context, and attached claims.
+The read-only helper returns bounded navigation JSON. Expand one typed handle
+at a time; claim, paper, and declaration handles never replace Lean authority.
 
 ```sh
-python3 scripts/query_corpus.py --format card
+python3 scripts/query_corpus.py --ask "<question>"
 python3 scripts/query_corpus.py --claim denominator_exclusion
-python3 scripts/query_corpus.py --paper-label res:farey
 python3 scripts/query_corpus.py --open remaining_open.unbounded_certificate_supply
 python3 scripts/query_corpus.py --declaration irrational_erdosSum_full_support
-python3 scripts/query_corpus.py --module Erdos249257/CertificateKernel.lean
-python3 scripts/query_corpus.py --module CerKer
-python3 scripts/query_corpus.py --route instant_orientation
-python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic
-python3 scripts/query_corpus.py --search "what remains open for 257" --limit 5
 ```

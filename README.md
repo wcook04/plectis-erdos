@@ -97,7 +97,7 @@ an unsafe band.
 | Library | Current size |
 |---|---:|
 | Lean modules | 635 |
-| Formal results and supporting lemmas | 11,530 |
+| Formal results and supporting lemmas | 11,539 |
 | Curated claim records | 99 |
 | Contribution families | 21 |
 
@@ -110,9 +110,10 @@ exactly once. These are navigation counts, not novelty claims.
 - **Mathematician:** start with the
   [Exposition PDF](erdos249-257-main-paper.pdf), then use
   [`docs/SOURCE_MAP.md`](docs/SOURCE_MAP.md) to follow one result into Lean.
-- **Coding agent:** read [`AGENTS.md`](AGENTS.md), then the bounded
-  [`docs/orientation.json`](docs/orientation.json). Select one mathematical
-  programme or claim before expanding the exhaustive registry.
+- **Coding agent:** read [`AGENTS.md`](AGENTS.md) and
+  [`docs/orientation.json`](docs/orientation.json); run
+  `python3 scripts/query_corpus.py --ask "<question>"` before papers or broad
+  source search.
 - **Exact boundary or claim status:** read [SCOPE.md](SCOPE.md), the human
   [orientation](docs/ORIENTATION.md), and [methodology](METHODOLOGY.md).
 - **Publication topology or contribution family:** run

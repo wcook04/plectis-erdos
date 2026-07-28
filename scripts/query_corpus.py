@@ -91,7 +91,18 @@ SEMANTIC_QUERY_OPERATORS = (
     {
         "id": "digest",
         "intent": "Return a bounded formal-plus-authored mathematical explanation.",
-        "cues": ("explain", "understand", "overview", "story"),
+        "cues": (
+            "explain",
+            "understand",
+            "overview",
+            "story",
+            "how far",
+            "progress",
+            "collate",
+            "summarize",
+            "summarise",
+            "denoise",
+        ),
     },
     {
         "id": "falsify",
@@ -147,6 +158,31 @@ SEMANTIC_VOCABULARY = (
         ),
         "route_hints": (
             "--route transport_curvature_programme",
+        ),
+    },
+    {
+        "id": "problem_progress_digest",
+        "vocabulary_kind": "intent",
+        "pref_label": "problem-by-problem mathematical progress",
+        "alt_labels": (
+            "how far have we got",
+            "how far we have got",
+            "how far we got",
+            "collate progress",
+            "mathematical progress",
+            "progress on each problem",
+            "for each problem",
+            "denoise progress",
+        ),
+        "query_expansions": (
+            "main results exact status open boundary",
+            "erdos 249 erdos 257 progress",
+        ),
+        "route_hints": (
+            "--route instant_orientation",
+            "--route erdos249_certificate_story",
+            "--route erdos257_half_story",
+            "--route browse_claim_status",
         ),
     },
     {
@@ -2950,7 +2986,21 @@ def semantic_query_operator(query: str) -> dict[str, Any]:
         operator_id = "support"
     elif any(cue in query_text for cue in ("why", "depends on", "builds on", "trace")):
         operator_id = "trace"
-    elif any(cue in query_text for cue in ("explain", "understand", "overview", "story")):
+    elif any(
+        cue in query_text
+        for cue in (
+            "explain",
+            "understand",
+            "overview",
+            "story",
+            "how far",
+            "progress",
+            "collate",
+            "summarize",
+            "summarise",
+            "denoise",
+        )
+    ):
         operator_id = "digest"
     else:
         operator_id = "locate"
@@ -4563,12 +4613,32 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
     interpretation = search["query_interpretation"]
     operator_id = interpretation["operator"]["id"]
-    hint_targets = set(semantic_hint_targets(query))
-    directly_routed = [
-        result
-        for result in search["results"]
-        if (result["kind"], semantic_result_handle(result)) in hint_targets
-    ]
+    hint_targets = semantic_hint_targets(query)
+    directly_routed: list[dict[str, Any]] = []
+    for target, _priority in sorted(
+        hint_targets.items(), key=lambda item: item[1]
+    ):
+        result = next(
+            (
+                row
+                for row in search["results"]
+                if (row["kind"], semantic_result_handle(row)) == target
+            ),
+            None,
+        )
+        if result is None:
+            result = next(
+                (
+                    row
+                    for row in search_packet(
+                        target[1], max(12, min(MAX_LIMIT, limit))
+                    )["results"]
+                    if (row["kind"], semantic_result_handle(row)) == target
+                ),
+                None,
+            )
+        if result is not None:
+            directly_routed.append(result)
     analogy_subjects = (
         analogy_subject_queries(query) if operator_id == "analogy" else []
     )

@@ -3,6 +3,38 @@
  "artifact_role": "bounded_first_read_navigation_projection",
  "authority_posture": "navigation_projection_not_proof_authority",
  "proof_authority": "Lean source checked by the pinned Lean kernel",
+ "agent_entry": {
+  "schema": "erdos249257-agent-entry/1",
+  "posture": "tracked_public_checkout_only",
+  "trigger_classes": [
+   "mathematics",
+   "Lean",
+   "claim or theorem status",
+   "problem-by-problem progress",
+   "remaining open work"
+  ],
+  "first_command": "python3 scripts/query_corpus.py --ask \"<question>\"",
+  "broad_progress_route_ids": [
+   "instant_orientation",
+   "erdos249_certificate_story",
+   "erdos257_half_story",
+   "browse_claim_status"
+  ],
+  "fallback": "Run the broad progress route IDs directly if free-text phrasing returns no semantic cells.",
+  "before": [
+   "authored paper reading",
+   "manuscript synthesis",
+   "broad source search"
+  ],
+  "forbidden_dependencies": [
+   "sibling ai_workflow repository",
+   "parent-directory helper",
+   "private cache",
+   "auto-memory",
+   "unpublished generated state"
+  ],
+  "authority_boundary": "The query result is navigation; named Lean source checked by the pinned Lean kernel remains proof authority."
+ },
  "release_provenance": {
   "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
   "meaning": "This checkout is a deliberately curated, independently verifiable public output of a larger ongoing formal-mathematics workflow. No public claim depends on private or unreleased work.",
@@ -25,17 +57,17 @@
  "scale": {
   "module_count": 635,
   "declaration_count": 12577,
-  "theorem_like_count": 11538,
+  "theorem_like_count": 11539,
   "generated_certificate_declaration_count": 2925,
-  "principal_claim_link_count": 289,
+  "principal_claim_link_count": 290,
   "kind_counts": {
    "abbrev": 9,
    "def": 992,
-   "inductive": 4,
+   "inductive": 3,
    "instance": 5,
    "lemma": 354,
    "structure": 29,
-   "theorem": 11184
+   "theorem": 11185
   }
  },
  "status_taxonomy": {
@@ -569,8 +601,8 @@
  },
  "source_revision": {
   "formal_source_ref": "c2c5c3f0151d58c3d8f21843a9fffead4b27f8e3",
-  "committed_navigation_snapshot": "8d2b1621207ac8e216e2be16f4e61dc9fc59ff9f",
-  "main_paper_source_digest": "sha256:58dfcc8651bdad2b709c7a9c0b22494288220ead8d9d698dc434dde22f3e5d32"
+  "committed_navigation_snapshot": "a085e433812f1bab0083db9023335a384ab1bf20",
+  "main_paper_source_digest": "sha256:dc41c3729171e479f663565f7ca245b8cb93f9f2e6462c6ecfaf118c03c3e322"
  },
  "reading_routes": [
   {

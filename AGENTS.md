@@ -11,6 +11,27 @@ larger ongoing formal-mathematics workflow: its release discipline, claim
 registry, graph structure, generated atlas, and adversarial checks are public
 evidence of that workflow. They do not create hidden proof authority.
 
+## Machine-first mathematics route
+
+For any task about the mathematics, Lean, theorem status, problem-by-problem
+progress, what remains open, or “how far we have got”, query the public corpus
+before reading a paper or synthesising prose:
+
+```sh
+python3 scripts/query_corpus.py --ask "<question>"
+```
+
+For a broad progress review, the returned bounded slice must route through
+`instant_orientation`, `erdos249_certificate_story`, and
+`erdos257_half_story`; follow their typed claim, open-proposition, declaration,
+and module handles before opening authored exposition. If free-text phrasing
+returns no semantic cells, use those three route IDs directly rather than
+substituting manuscript-only evidence.
+
+This first move is self-contained. It must work with only the tracked files in
+this checkout: no sibling `ai_workflow` repository, parent-directory helper,
+private cache, auto-memory, or unpublished generated state may be required.
+
 ## First read
 
 If the task is to understand the repository architecture, release

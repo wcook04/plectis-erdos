@@ -85,6 +85,50 @@ def is_ancestor(ancestor: str, descendant: str) -> bool:
     )
 
 
+def agent_entry_contract() -> dict[str, Any]:
+    """Return the standalone cold-clone route shared by agent providers."""
+    return {
+        "schema": "erdos249257-agent-entry/1",
+        "posture": "tracked_public_checkout_only",
+        "trigger_classes": [
+            "mathematics",
+            "Lean",
+            "claim or theorem status",
+            "problem-by-problem progress",
+            "remaining open work",
+        ],
+        "first_command": (
+            'python3 scripts/query_corpus.py --ask "<question>"'
+        ),
+        "broad_progress_route_ids": [
+            "instant_orientation",
+            "erdos249_certificate_story",
+            "erdos257_half_story",
+            "browse_claim_status",
+        ],
+        "fallback": (
+            "Run the broad progress route IDs directly if free-text phrasing "
+            "returns no semantic cells."
+        ),
+        "before": [
+            "authored paper reading",
+            "manuscript synthesis",
+            "broad source search",
+        ],
+        "forbidden_dependencies": [
+            "sibling ai_workflow repository",
+            "parent-directory helper",
+            "private cache",
+            "auto-memory",
+            "unpublished generated state",
+        ],
+        "authority_boundary": (
+            "The query result is navigation; named Lean source checked by the "
+            "pinned Lean kernel remains proof authority."
+        ),
+    }
+
+
 def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str, Any]:
     """Project a bounded first-read capsule from the exhaustive owners."""
     principal_claims = []
@@ -174,6 +218,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
         "artifact_role": "bounded_first_read_navigation_projection",
         "authority_posture": "navigation_projection_not_proof_authority",
         "proof_authority": "Lean source checked by the pinned Lean kernel",
+        "agent_entry": agent_entry_contract(),
         "release_provenance": claims["release"]["public_projection"],
         "release": {
             "version": claims["release"]["version"],
@@ -260,6 +305,14 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
         "This is the bounded first-read map for the public release. It is a navigation",
         "projection, not proof authority. The published Lean source checked by the pinned",
         "Lean kernel remains proof authority.",
+        "",
+        "## Agent first move",
+        "",
+        "For mathematics, Lean, status, or progress work, run",
+        f"`{orientation['agent_entry']['first_command']}` before papers or broad source",
+        "search. A broad progress request must recover `instant_orientation`,",
+        "`erdos249_certificate_story`, `erdos257_half_story`, and `browse_claim_status`.",
+        "The route uses tracked files only and requires no sibling repository or private state.",
         "",
         "## Release provenance",
         "",
@@ -388,27 +441,14 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "",
             "## Query one handle",
             "",
-            "The read-only query helper returns bounded JSON by default:",
-            "Module packets include authored roles and both sides of the direct import",
-            "neighbourhood, with truncation receipts pointing to the exhaustive graph.",
-            "Claim packets resolve adjacent argument edges into labels, statuses, and",
-            "relation meanings, so each neighbour can be followed as another handle.",
-            "Every exact remaining-open proposition ID is itself a typed handle whose",
-            "packet preserves the open target and lists linked progress claims.",
-            "Claim paper labels resolve to exact TeX files and lines across both papers;",
-            "declaration packets add pinned Lean URLs, module context, and attached claims.",
+            "The read-only helper returns bounded navigation JSON. Expand one typed handle",
+            "at a time; claim, paper, and declaration handles never replace Lean authority.",
             "",
             "```sh",
-            "python3 scripts/query_corpus.py --format card",
+            'python3 scripts/query_corpus.py --ask "<question>"',
             "python3 scripts/query_corpus.py --claim denominator_exclusion",
-            "python3 scripts/query_corpus.py --paper-label res:farey",
             "python3 scripts/query_corpus.py --open remaining_open.unbounded_certificate_supply",
             "python3 scripts/query_corpus.py --declaration irrational_erdosSum_full_support",
-            "python3 scripts/query_corpus.py --module Erdos249257/CertificateKernel.lean",
-            "python3 scripts/query_corpus.py --module CerKer",
-            "python3 scripts/query_corpus.py --route instant_orientation",
-            "python3 scripts/query_corpus.py --route erdos249_diagonal_arithmetic",
-            'python3 scripts/query_corpus.py --search "what remains open for 257" --limit 5',
             "```",
             "",
         ]
@@ -588,6 +628,7 @@ def build() -> dict[str, Any]:
             "semantic_bridge": "approximate correspondence only; never a proof edge",
             "methodology": "docs/methodology.json defines mathematical methodology and claim-transition requirements; it is not proof authority or claim-status authority",
         },
+        "agent_entry": orientation["agent_entry"],
         "identity": {
             "formal_source": {
                 "ref": formal_ref,
@@ -675,6 +716,7 @@ def build() -> dict[str, Any]:
             "registered_artifact_and_digest_resolution": True,
             "typed_mathematical_programme_routes": True,
             "typed_claim_status_lookup": True,
+            "standalone_cold_clone_agent_entry": True,
             "declaration_level_proof_dependencies": False,
             "typed_remaining_open_propositions": True,
             "claim_transition_requirements": True,

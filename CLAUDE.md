@@ -10,6 +10,9 @@ This file carries Claude-specific deltas only.
 
 - Start with the bounded `docs/orientation.json` capsule named by the imported
   instructions; expand one claim or route at a time.
+- For mathematics, Lean, status, or progress tasks, execute the shared
+  machine-first `query_corpus.py --ask` route before plans, subagents, paper
+  reading, or prose synthesis.
 - Open a mathematical programme with
   `python3 scripts/query_corpus.py --route <programme_route_id>`.
 - Treat auto-memory, plans, subagents, and model output as working aids, never

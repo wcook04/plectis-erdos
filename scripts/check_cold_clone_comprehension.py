@@ -132,6 +132,10 @@ PROOF_PLAN_QUERIES = {
         "(Nat.totient n : ℝ) / 2 ^ n) from a SharpCurvatureSupply"
     ),
 }
+PROBLEM_PROGRESS_QUERY = (
+    "For the system Lean paper, collate for each problem how far we have "
+    "got and denoise all non-trivial mathematical progress"
+)
 
 
 def read(rel: str) -> str:
@@ -398,6 +402,12 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
                 "claims, scale, and verification receipts instead"
             )
     for token in (
+        "Machine-first mathematics route",
+        'python3 scripts/query_corpus.py --ask "<question>"',
+        "instant_orientation",
+        "erdos249_certificate_story",
+        "erdos257_half_story",
+        "no sibling `ai_workflow` repository",
         "docs/orientation.json",
         "docs/claims.json",
         "Lean source checked by the pinned Lean kernel",
@@ -407,6 +417,8 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
     for token in (
         "@AGENTS.md",
         "Claude-specific deltas only",
+        "machine-first",
+        "query_corpus.py --ask",
         "docs/orientation.json",
         "mathematical programme",
         "larger ongoing formal-mathematics workflow",
@@ -414,6 +426,62 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
     ):
         assert contains_any(claude, [token]), f"CLAUDE.md lost native adapter token {token!r}"
     assert "## First read" not in claude, "CLAUDE.md duplicated the shared first-read manual"
+
+
+def validate_machine_agent_entry() -> None:
+    """Check the generated standalone contract seen by metadata-first agents."""
+    orientation = json.loads(read("docs/orientation.json"))
+    entry = orientation["agent_entry"]
+    assert entry["schema"] == "erdos249257-agent-entry/1"
+    assert entry["posture"] == "tracked_public_checkout_only"
+    assert entry["first_command"] == (
+        'python3 scripts/query_corpus.py --ask "<question>"'
+    )
+    assert entry["broad_progress_route_ids"] == [
+        "instant_orientation",
+        "erdos249_certificate_story",
+        "erdos257_half_story",
+        "browse_claim_status",
+    ]
+    assert {
+        "sibling ai_workflow repository",
+        "parent-directory helper",
+        "private cache",
+        "auto-memory",
+        "unpublished generated state",
+    } == set(entry["forbidden_dependencies"])
+    assert "Lean source checked by the pinned Lean kernel" in (
+        entry["authority_boundary"]
+    )
+    human = read("docs/ORIENTATION.md")
+    for token in (
+        "## Agent first move",
+        'query_corpus.py --ask "<question>"',
+        "requires no sibling repository or private state",
+    ):
+        assert contains_any(human, [token])
+
+
+def validate_problem_progress_packet(packet: dict[str, Any]) -> None:
+    """Ensure the real failed wording reaches every bounded progress owner."""
+    assert packet["kind"] == "semantic_slice"
+    assert packet["query"] == PROBLEM_PROGRESS_QUERY
+    assert packet["query_interpretation"]["operator"]["id"] == "digest"
+    assert {
+        row["id"]
+        for row in packet["query_interpretation"]["matched_vocabulary"]
+    } >= {"problem_progress_digest"}
+    assert [
+        (cell["kind"], cell["handle"])
+        for cell in packet["semantic_cells"]
+    ] == [
+        ("reading_route", "instant_orientation"),
+        ("reading_route", "erdos249_certificate_story"),
+        ("reading_route", "erdos257_half_story"),
+        ("reading_route", "browse_claim_status"),
+    ]
+    assert packet["operator_synthesis"]["kind"] == "digest_synthesis"
+    assert encoded_bytes(packet) <= SUMMARY_PACKET_BUDGET_BYTES
 
 
 def collect_proof_plan_packets() -> dict[str, Any]:
@@ -452,6 +520,11 @@ def collect_agent_packets() -> dict[str, Any]:
         "modules": {},
         "sigil_modules": {},
         "route": query_packet("--route", "instant_orientation"),
+        "problem_progress": query_packet(
+            "--ask",
+            PROBLEM_PROGRESS_QUERY,
+            budget_bytes=SUMMARY_PACKET_BUDGET_BYTES,
+        ),
         "publication_architecture": publication_architecture,
         "publication_families": {
             row["id"]: query_packet("--publication-family", row["id"])
@@ -567,6 +640,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert summary["publication_family_count"] > 0
     assert len(summary["mathematical_programmes"]) == len(STORY_ROUTES)
 
+    validate_problem_progress_packet(packets["problem_progress"])
     validate_proof_plan_packets(packets["proof_plans"])
 
     architecture = packets["publication_architecture"]
@@ -827,6 +901,7 @@ def run_quick_check() -> int:
     validate_human_first_contact(summary, human_surfaces)
     validate_gateway_opening(read(GATEWAY_PAPER))
     validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
+    validate_machine_agent_entry()
     print(
         "cold-clone quick check: committed human and agent first-contact "
         "projections verified; no Lean build or corpus-query sweep run"
@@ -871,6 +946,7 @@ def main(argv: list[str] | None = None) -> int:
     validate_human_first_contact(summary, human_surfaces)
     validate_gateway_opening(read(GATEWAY_PAPER))
     validate_cross_agent_entry(read("AGENTS.md"), read("CLAUDE.md"))
+    validate_machine_agent_entry()
     validate_agent_packets(packets)
     query_count = (
         1

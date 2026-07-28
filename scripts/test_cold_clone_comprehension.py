@@ -161,9 +161,37 @@ def main() -> int:
     else:
         raise AssertionError("Claude shared-instruction import deletion escaped")
 
+    try:
+        diagnostic.validate_cross_agent_entry(
+            agents.replace(
+                "## Machine-first mathematics route",
+                "## General reading",
+            ),
+            claude,
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("shared machine-first entry deletion escaped")
+
+    try:
+        diagnostic.validate_cross_agent_entry(
+            agents,
+            claude.replace("machine-first", "paper-first"),
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("Claude machine-first adapter deletion escaped")
+
     mutated = copy.deepcopy(packets)
     mutated["summary"]["proof_authority"] = "unverified"
     assert_rejected(mutated, "proof authority")
+    checks += 1
+
+    mutated = copy.deepcopy(packets)
+    mutated["problem_progress"]["semantic_cells"] = []
+    assert_rejected(mutated, "problem-progress machine-first route")
     checks += 1
 
     mutated = copy.deepcopy(packets)
