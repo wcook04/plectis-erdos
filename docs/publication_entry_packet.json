@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:e988f3c8a30f6f184892a60a2fdda3c8862064dc97c169eaab3e5943265b6f12",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:27f8bf4b77390e953f60fbf1162367d58c07bd2093a7c49cfc3c2b17671e51bb",
     "docs/claims.json": "sha256:84ad04b2055fa5bc62105cd68bb1419cce80a77d07148ad93d0295f28733a64f",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/publication_contract.json": "sha256:49eb0cb8bd8541f536df90b65e50246dd333720acc802669419f0d7c2c94160a",
+    "docs/publication_contract.json": "sha256:2a76053c0db084ba365c3366a81f35341320c20990898d9f13ac72ccb8770ea9",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:e9af0da0a06750a01cc5187e1efd4a8c01fc897a16a27453b401ab425982733a",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:1d6209bacf6a93203ee18cc3de756a1103dac410da718496d3f16572ea1c638f",
     "scripts/run_publication_mutations.py": "sha256:01834099e0b6897fabfe67d698fbe5a682f701ae54d367c0e35730e3b2ccd437"
   },
   "five_sentence_summary": [
