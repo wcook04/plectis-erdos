@@ -235,6 +235,13 @@ def check_elaborated_dependency_witnesses() -> None:
     assert neighbourhood["authority_posture"].startswith(
         "direct_constant_references_from_elaborated_Lean"
     )
+    problem_neighbourhood = query_corpus.formal_dependency_neighbourhood(
+        "ErdosProblems.Erdos243.rawNext_gcd_exact_overlap"
+    )
+    assert problem_neighbourhood["availability"] == "available"
+    assert problem_neighbourhood["source_ref"].startswith(
+        "ErdosProblems/Erdos243/DynamicCancellation.lean:"
+    )
     declaration = query_corpus.declaration_packet(
         "Erdos249257.integerGreedyRemainder_lt_of_get?_eq_false", 1
     )["matches"][0]

@@ -1,14 +1,18 @@
 import Erdos249257
+import ErdosProblems
 import Lean
 
 open Lean
+
+private def corpusRoots : Array Name := #[`Erdos249257, `ErdosProblems]
 
 private def moduleString (env : Environment) (name : Name) : String :=
   (env.getModuleFor? name).map (·.toString) |>.getD ""
 
 private def isCorpusConstant (env : Environment) (name : Name) : Bool :=
   match env.getModuleFor? name with
-  | some ownerModule => (`Erdos249257).isPrefixOf ownerModule
+  | some ownerModule =>
+      corpusRoots.any fun root => root.isPrefixOf ownerModule
   | none => false
 
 private def emitLine (stdout : IO.FS.Stream) (line : String) :

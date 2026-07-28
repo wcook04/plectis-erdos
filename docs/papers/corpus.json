@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:7429e6a90ad1f5fa1c439801a28612916a6f7a623b379443e6df748cc2f0bdf8",
+      "source_sha256": "sha256:6d606eacaba2045e7c23efdaaa1ee758f710e7f3554d56787f64d62e42722d6d",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 157,
@@ -984,8 +984,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:c616c4635e2992624718d5ef841e6eb3d9aa8b49d12a27a738dae0c7884c36ad",
-      "pdf_byte_count": 425133,
+      "pdf_sha256": "sha256:0f12985cca083bbfe421832107e3e9969b9cb8af3c0f4a96603b1b2048f74250",
+      "pdf_byte_count": 425049,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1189,7 +1189,7 @@
         "manuscript_title": "A Basis for the Dyadic Sections of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:d5a261ec048e07c06245b79a48dc5e49abcd3688da7565d8e9f4f1bef6cc19cb",
+      "pdf_sha256": "sha256:2bdfe3b96ea6e499ef93019672dc5bfdabddce96e4fbbffe6a07ed0ebe8985e0",
       "pdf_byte_count": 117291,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1354,7 +1354,7 @@
         "manuscript_title": "Forced Structure in Mersenne Subseries"
       },
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:60a9ed350a7175e27399b585a8dba6bc9968990e42e67d42f6edd0c5e2ab69e0",
+      "pdf_sha256": "sha256:74652b316231c56bc1495236be67d832c50818b5431bdbbc825cf68974bc559d",
       "pdf_byte_count": 104605,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1556,8 +1556,8 @@
       ],
       "citations_rendered": 15,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:394a2b269a07b12228d599dca4cf2ce719922823a02eda13a5ddbec5bdfbb0c0",
-      "pdf_byte_count": 103792,
+      "pdf_sha256": "sha256:b9073597dc49043a16ce193b01ca28321d2d2f86a8ddbee9768df185454208ab",
+      "pdf_byte_count": 103793,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",

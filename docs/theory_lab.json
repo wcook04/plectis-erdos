@@ -16,8 +16,8 @@
   "above": "docs/claims.json stays the curated publication ledger",
   "proof_authority": "Lean kernel; a mechanism is an explanation, never a proof"
  },
- "source_revision": "05613ae5c03ab390d4a992b100dde32fdec1ac05",
- "evidence_fingerprint": "sha256:d7b1de0441f42240961077bf094b80f1247014f087da18e25947d94de7eebca4",
+ "source_revision": "daff75b6881c36001c7b3a1907db8d6390fb057d",
+ "evidence_fingerprint": "sha256:692cff59a796165b79819895b9666a100d1533eff6ca676408194f8eadb82b65",
  "vocabularies": {
   "intervention_operators": [
    "change_base",
@@ -81,7 +81,7 @@
   "statement_nodes_total": 677,
   "statement_nodes_explained": 0,
   "explained_fraction": 0.0,
-  "authored_theorem_like": 141775,
+  "authored_theorem_like": 141820,
   "unexplained_by_logical_class": {
    "unconditional_object_theorem": 246,
    "reduction_or_transport": 47,
@@ -910,7 +910,7 @@
   }
  },
  "integrity": {
-  "declarations_known": 150886,
+  "declarations_known": 150935,
   "statement_nodes_known": 677,
   "mechanism_ids": [],
   "unknown_declaration_citations": [],

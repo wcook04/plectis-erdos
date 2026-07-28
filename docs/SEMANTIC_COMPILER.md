@@ -148,8 +148,20 @@ in its value or proof term, then joins public corpus constants back to exact
 atlas source coordinates. Corpus membership follows Lean's owning module
 rather than declaration namespace, so declarations intentionally living in
 top-level mathematical namespaces remain covered. The builder first runs the
-incremental `lake build Erdos249257` target so the loaded `.olean` environment
-is current with the source fingerprint. Version 3 of the index also stores
+incremental `lake build Erdos249257 ErdosProblems` targets so both supported
+compact-root `.olean` environments are current with the source fingerprint.
+The exhaustive declaration inventory remains the route for auxiliary forest
+modules that intentionally are not imported into a compact mathematical root:
+
+```sh
+python3 scripts/query_semantic.py inventory <text> \
+  --module <optional/path.lean> --role <optional-role> --zone <optional-zone>
+```
+
+That split is deliberate. Inventory gives every live Lean declaration a source
+route without inventing meaning; exact dependency neighborhoods are available
+where Lean has loaded the declaration into a supported compact root. Version 3
+of the dependency index also stores
 compact elaborated conclusion affordances and the unreduced outer binder
 telescope used by `--goal-support` and `--proof-plan`. Each binder records its
 name, explicitness, type head and constants, and whether Lean classifies its

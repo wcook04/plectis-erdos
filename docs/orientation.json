@@ -19,23 +19,23 @@
   "version": "0.6.0",
   "tag": "v0.6.0",
   "lean_toolchain": "leanprover/lean4:v4.29.1",
-  "formal_source_ref": "eeedb6307b45e64632e8435ecfa075e5b010c30a",
+  "formal_source_ref": "daff75b6881c36001c7b3a1907db8d6390fb057d",
   "formal_source_publication_state": "committed_checkpoint_pending_remote_publication"
  },
  "scale": {
-  "module_count": 989,
-  "declaration_count": 151706,
-  "theorem_like_count": 149762,
+  "module_count": 991,
+  "declaration_count": 151755,
+  "theorem_like_count": 149807,
   "generated_certificate_declaration_count": 8171,
   "principal_claim_link_count": 299,
   "kind_counts": {
    "abbrev": 11,
-   "def": 1892,
+   "def": 1896,
    "inductive": 3,
    "instance": 6,
    "lemma": 402,
    "structure": 32,
-   "theorem": 149360
+   "theorem": 149405
   }
  },
  "status_taxonomy": {
@@ -572,9 +572,9 @@
   "blocked_decisions": []
  },
  "source_revision": {
-  "formal_source_ref": "eeedb6307b45e64632e8435ecfa075e5b010c30a",
+  "formal_source_ref": "daff75b6881c36001c7b3a1907db8d6390fb057d",
   "committed_navigation_snapshot": "e46d862471f9764077c629cb09560ae84b92bb14",
-  "main_paper_source_digest": "sha256:7429e6a90ad1f5fa1c439801a28612916a6f7a623b379443e6df748cc2f0bdf8"
+  "main_paper_source_digest": "sha256:6d606eacaba2045e7c23efdaaa1ee758f710e7f3554d56787f64d62e42722d6d"
  },
  "reading_routes": [
   {
@@ -582,8 +582,7 @@
    "intent": "Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.",
    "read": [
     "docs/orientation.json",
-    "SCOPE.md",
-    "README.md"
+    "SCOPE.md"
    ]
   },
   {

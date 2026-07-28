@@ -43,10 +43,10 @@
           "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
           "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
           "present": true,
-          "line_count": 1581,
-          "declaration_count": 45,
-          "theorem_count": 40,
-          "content_digest": "sha256:f5add2b81059c557f467f725108e2df07080e0c9adf9e13b285f7ee7e6db4940"
+          "line_count": 2298,
+          "declaration_count": 73,
+          "theorem_count": 64,
+          "content_digest": "sha256:87c9f28c7e3629a4850a13288091e8561bd6402626fb7c55c5c07c8278572b77"
         },
         {
           "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",

@@ -24,6 +24,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LIMIT = 20
 MAX_LIMIT = 100
+MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
 OUTPUT_BUDGET_BYTES = 64_000
 SOURCE_LINE_WINDOW = 3
@@ -2726,6 +2727,7 @@ def connection_card(handle: str, limit: int, query: str = "") -> dict[str, Any]:
 
 
 def module_packet(handle: str, limit: int) -> dict[str, Any]:
+    packet_limit = min(limit, MODULE_PACKET_LIMIT)
     atlas = load("docs/declaration_atlas.json")
     claims = load("docs/claims.json")
     aliases = load("paper/module-aliases.json")["aliases"]
@@ -2777,24 +2779,37 @@ def module_packet(handle: str, limit: int) -> dict[str, Any]:
             (row["sigil"] for row in aliases if row["path"] == module["path"]), None
         ),
         "attached_claims": claim_rows,
-        "declaration_preview": [compact_declaration(row) for row in declarations[:limit]],
+        "declaration_preview": [
+            compact_declaration(row)
+            for row in declarations[:packet_limit]
+        ],
         "declaration_preview_receipt": {
             "total": len(declarations),
-            "emitted": min(len(declarations), limit),
-            "omitted": max(0, len(declarations) - limit),
+            "emitted": min(len(declarations), packet_limit),
+            "omitted": max(0, len(declarations) - packet_limit),
+            "requested_limit": limit,
+            "effective_limit": packet_limit,
             "expand": f"python3 scripts/query_corpus.py --search {module['path']} --limit {MAX_LIMIT}",
             "exhaustive": "docs/declaration_atlas.json",
         },
         "dependency_neighbourhood": {
-            "imports": [compact_module(row, roles) for row in imported_rows[:limit]],
-            "importers": [compact_module(row, roles) for row in importer_rows[:limit]],
+            "imports": [
+                compact_module(row, roles)
+                for row in imported_rows[:packet_limit]
+            ],
+            "importers": [
+                compact_module(row, roles)
+                for row in importer_rows[:packet_limit]
+            ],
             "receipt": {
                 "imports_total": len(imported_rows),
-                "imports_emitted": min(len(imported_rows), limit),
-                "imports_omitted": max(0, len(imported_rows) - limit),
+                "imports_emitted": min(len(imported_rows), packet_limit),
+                "imports_omitted": max(0, len(imported_rows) - packet_limit),
                 "importers_total": len(importer_rows),
-                "importers_emitted": min(len(importer_rows), limit),
-                "importers_omitted": max(0, len(importer_rows) - limit),
+                "importers_emitted": min(len(importer_rows), packet_limit),
+                "importers_omitted": max(0, len(importer_rows) - packet_limit),
+                "requested_limit": limit,
+                "effective_limit": packet_limit,
                 "exhaustive": "docs/claims.json::machine_readable_paper.module_graph",
             },
         },
@@ -3363,7 +3378,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                         "kind": "module",
                         "id": row["id"],
                         "path": row["path"],
-                        "authored_synopsis": synopsis,
+                        "authored_synopsis_excerpt": (
+                            synopsis[:480] if synopsis else None
+                        ),
                         "paper_sigil": sigil,
                         "role": roles.get(row["id"], "Unclassified module"),
                         "declaration_count": row["declaration_count"],

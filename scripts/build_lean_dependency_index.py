@@ -20,11 +20,12 @@ ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "lean_dependency_index.json"
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
 SCHEMA = "erdos249257-lean-dependency-index/3"
+LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 
 
 def ensure_elaborated_environment() -> None:
     completed = subprocess.run(
-        ["lake", "build", "Erdos249257"],
+        ["lake", "build", *LEAN_ROOT_TARGETS],
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,
@@ -165,6 +166,21 @@ def build_packet() -> dict[str, Any]:
         internal_omissions,
         environment_type_shapes,
     ) = export_environment()
+    loaded_library_roots = {
+        root
+        for root in LEAN_ROOT_TARGETS
+        if any(
+            owner_module == root
+            or owner_module.startswith(f"{root}.")
+            for owner_module in environment_nodes.values()
+        )
+    }
+    missing_library_roots = set(LEAN_ROOT_TARGETS) - loaded_library_roots
+    if missing_library_roots:
+        raise RuntimeError(
+            "Lean dependency exporter omitted supported library roots: "
+            f"{sorted(missing_library_roots)}"
+        )
     resolved_rows = {
         handle: rows_by_environment_identity[(handle, owner_module)]
         for handle, owner_module in environment_nodes.items()
@@ -358,10 +374,10 @@ def build_packet() -> dict[str, Any]:
         "source_fingerprint": atlas["source_fingerprint"],
         "formal_source": formal_source,
         "environment_validation": {
-            "command": "lake build Erdos249257",
+            "command": "lake build Erdos249257 ErdosProblems",
             "posture": (
-                "incremental_root_build_precedes_environment_export_so_"
-                "source_fingerprint_and_loaded_olean_state_are_current"
+                "both_supported_compact_roots_are_built_before_environment_"
+                "export_so_source_fingerprint_and_loaded_olean_state_are_current"
             ),
         },
         "operational_posture": (
@@ -373,6 +389,7 @@ def build_packet() -> dict[str, Any]:
             ),
             "externally_addressable_atlas_declaration_count": len(atlas_rows),
             "environment_public_corpus_constant_count": len(environment_nodes),
+            "loaded_library_roots": sorted(loaded_library_roots),
             "source_resolved_node_count": len(nodes),
             "environment_direct_reference_pair_count": len(
                 environment_relations

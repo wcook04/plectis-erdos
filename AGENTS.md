@@ -206,7 +206,19 @@ below is the bounded route into mathematical claims and Lean source.
    `ErdosProblems.lean` for the problem-owned expansion root. Kernel checking
    the expansion root does not promote its declarations into reviewed public
    claims. Use `docs/SOURCE_MAP.md` for intention-based routes and
-   `docs/WAVE_INDEX.md` for mathematical chronology.
+   `docs/WAVE_INDEX.md` for mathematical chronology. For arbitrary Lean,
+   including auxiliary modules intentionally excluded from compact import
+   roots, start with the module-agnostic inventory:
+
+   ```sh
+   python3 scripts/query_semantic.py inventory <text> \
+     --module <optional/path.lean> --role <optional-role> --zone <optional-zone>
+   ```
+
+   The inventory is exhaustive source navigation, not semantic interpretation.
+   Exact elaborated dependency neighborhoods cover declarations loaded through
+   either supported compact root. Authored statement-node links remain the only
+   statement-level semantic claims.
 
 For a bounded lookup, use `python3 scripts/query_corpus.py` with one typed
 handle:

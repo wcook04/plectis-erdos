@@ -783,23 +783,27 @@ def main() -> int:
     module = json.loads(module_run.stdout)
     assert module["module"]["declaration_count"] > 400
     assert any(row["id"] == "eb_full_support" for row in module["attached_claims"])
-    assert len(module["declaration_preview"]) == 20
+    assert len(module["declaration_preview"]) == 12
     assert module["declaration_preview_receipt"]["omitted"] > 0
+    assert module["declaration_preview_receipt"]["requested_limit"] == 20
+    assert module["declaration_preview_receipt"]["effective_limit"] == 12
     assert "declaration_kind" in module["declaration_preview"][0]
     assert module["module"]["role"] == "Assembled theorem kernel and headline interfaces"
     neighbourhood = module["dependency_neighbourhood"]
     receipt = neighbourhood["receipt"]
     assert receipt["imports_total"] == len(module["module"]["imports"])
     assert receipt["importers_total"] >= 9
-    assert len(neighbourhood["importers"]) == min(receipt["importers_total"], 20)
-    assert receipt["importers_omitted"] == max(receipt["importers_total"] - 20, 0)
+    assert len(neighbourhood["importers"]) == min(receipt["importers_total"], 12)
+    assert receipt["importers_omitted"] == max(receipt["importers_total"] - 12, 0)
+    assert receipt["requested_limit"] == 20
+    assert receipt["effective_limit"] == 12
 
     certificate_hub = query("--module", "Erdos249257.DiagonalPincerCertificates")
     hub_neighbourhood = certificate_hub["dependency_neighbourhood"]
     hub_receipt = hub_neighbourhood["receipt"]
     assert hub_receipt["importers_total"] >= 483
-    assert len(hub_neighbourhood["importers"]) == min(hub_receipt["importers_total"], 20)
-    assert hub_receipt["importers_omitted"] == max(hub_receipt["importers_total"] - 20, 0)
+    assert len(hub_neighbourhood["importers"]) == min(hub_receipt["importers_total"], 12)
+    assert hub_receipt["importers_omitted"] == max(hub_receipt["importers_total"] - 12, 0)
 
     root = query("--module", "Erdos249257.lean", "--limit", "3")
     assert root["module"]["role"] == "Supported package root import"

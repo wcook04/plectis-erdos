@@ -27,8 +27,7 @@
         ],
         "read": [
           "docs/orientation.json",
-          "SCOPE.md",
-          "README.md"
+          "SCOPE.md"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --format card",
@@ -7160,6 +7159,14 @@
           ]
         },
         {
+          "id": "Erdos249257.SuffixCylinderCarryPivot",
+          "path": "Erdos249257/SuffixCylinderCarryPivot.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.SuffixCylinderProfiledAdjacency"
+          ]
+        },
+        {
           "id": "Erdos249257.SuffixCylinderFeedbackFanIn",
           "path": "Erdos249257/SuffixCylinderFeedbackFanIn.lean",
           "role": "Lean proof module",
@@ -7813,6 +7820,14 @@
           "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos243.DynamicCancellation",
+          "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos243.FiniteHorizonResidue",
@@ -9872,15 +9887,13 @@
             "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "ErdosProblems.Erdos243.ReciprocalTailRigidity",
             "ErdosProblems.Erdos243.FiniteHorizonResidue",
+            "ErdosProblems.Erdos243.DynamicCancellation",
             "ErdosProblems.Erdos243.SparseResetRecovery",
-            "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
-            "ErdosProblems.Erdos249.FiniteEulerSieve",
-            "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
             "ErdosProblems.Erdos251.PrimeGapDyadicTail",
-            "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "ErdosProblems.Erdos257.SquarefreeSupportIncidence",
             "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "ErdosProblems.Erdos269.ResidueEscape",
+            "ErdosProblems.Erdos269.RestrictedFloorSum",
             "ErdosProblems.Erdos1049.RationalBaseLambert",
             "ErdosProblems.Erdos1049.RationalPadeArithmetic",
             "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
@@ -10725,7 +10738,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "eeedb6307b45e64632e8435ecfa075e5b010c30a",
+      "ref": "daff75b6881c36001c7b3a1907db8d6390fb057d",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint"

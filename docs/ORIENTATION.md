@@ -23,9 +23,9 @@ The workflow provenance explains the release discipline; it does not imply hidde
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 989 |
-| Lean declarations | 151,706 |
-| Theorem-like declarations | 149,762 |
+| Lean modules | 991 |
+| Lean declarations | 151,755 |
+| Theorem-like declarations | 149,807 |
 | Generated certificate declarations | 8,171 |
 | Principal claim links | 299 |
 
@@ -101,7 +101,7 @@ settle the open proposition attached to it.
 
 ## Read by intent
 
-- **Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.** (`instant_orientation`): `docs/orientation.json` → `SCOPE.md` → `README.md`
+- **Understand what this repository proves, reduces, cites, leaves open, and how its claims are partitioned.** (`instant_orientation`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route instant_orientation`
 - **Browse bounded claim handles by exact registry status.** (`browse_claim_status`): `docs/orientation.json` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route browse_claim_status`
