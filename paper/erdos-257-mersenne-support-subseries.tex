@@ -439,13 +439,14 @@ pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
 $F_s(E)$ and the monomial images
   $\{j n^i:n\in F_s(E)\}$ & $b^L\le s$,
   $L=\lcm(1,\dots,\ell)$ &
-  Duverney--Tachiya~\cite{duverneytachiya}, Cor.~1.2;
+  Duverney--Tachiya~\cite[Cor.~1.2, author-preprint p.~4]{duverneytachiya};
   linear independence, not only irrationality; not formalised here \\
 $s$-free positive integers, with or without $1$ & $2\le b\le s$ &
   \emph{ibid.}, with $E$ the primes and $\ell=i=j=1$;
   deleting $1$ changes the value by $1/(b-1)\in\Q$ \\
-squarefree & $b=2$ only & Duverney--Tachiya~\cite{duverneytachiya}, Cor.~1.2
-  with $F_2(P)$ and Ex.~1.1; not formalised here \\
+squarefree & $b=2$ only &
+  Duverney--Tachiya~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya};
+  not formalised here \\
 coprime to a fixed $N$; sums of two squares & every $b\ge2$ &
   \emph{ibid.}, Examples 1.3 and 1.2; not formalised here \\
 \addlinespace
@@ -483,7 +484,8 @@ reciprocals.  No list contains another, and their union does not exhaust the
 infinite supports.
 
 \emph{One theorem of Duverney and Tachiya generates several rows.}
-Their refinement of the Chowla--Erd\H{o}s method~\cite{duverneytachiya}
+Their refinement of the Chowla--Erd\H{o}s method
+~\cite[Cor.~1.2, author-preprint p.~4; proof pp.~9--11]{duverneytachiya}
 proves, for a pairwise coprime sequence $E$ of polynomial growth and the set
 $F_s(E)$ of products of its members with exponents below $s$, that
 $1$ and the values $\sum_{n\in F_s}(q^{jn^i}-1)^{-1}$ are linearly independent
@@ -577,8 +579,9 @@ $q=2$ their Example~1.1 reads: the numbers
   1,\quad \sum_{n\ge1}\frac{|\mu(n)|}{2^n-1},\quad
   \sum_{n\ge1}\frac{|\mu(n)|}{2^{2n}-1},\quad\dots
 \]
-are linearly independent over $\Q$~\cite{duverneytachiya}.  Since $|\mu|$ is
-the indicator of the squarefree integers including $n=1$, and
+are linearly independent over $\Q$
+~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya}.  Since
+$|\mu|$ is the indicator of the squarefree integers including $n=1$, and
 $\Asf$ omits only $n=1$, whose weight is $1/(2^1-1)=1$,
 \[
   X_{\Asf}
@@ -880,8 +883,10 @@ problem beside it.
   the form of one finite fatal gap.
 \end{enumerate}
 
-\noindent For scope, the squarefree value at base~$2$ is settled
-by~\cite{duverneytachiya} (Corollary~\ref{res:sfsettled}).  Their cited
+\noindent For scope, the squarefree value at base~$2$ is settled by
+Corollary~1.2 and Example~1.1 of
+~\cite[author-preprint p.~4]{duverneytachiya}
+(Corollary~\ref{res:sfsettled}).  Their cited
 corollary does not cover bases $b\ge3$, and this note makes no global
 open-status or priority claim for those values.
 
@@ -891,7 +896,9 @@ This manuscript is authored exposition, not proof authority.  The linked Lean
 snapshot is authoritative only for its exact propositions; kernel checking
 establishes that a proposition was proved, not that it is interesting, novel,
 or sufficient.  The proof of Corollary~\ref{res:blind}, the derivation of
-Corollary~\ref{res:sfsettled} from~\cite{duverneytachiya}, the finite-change
+Corollary~\ref{res:sfsettled} from
+~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya},
+the finite-change
 argument (from the two checked prefix lemmas), the shift identity and
 Chinese-remainder remark in Section~\ref{sec:squarefree}, and the restricted
 selector-injectivity sentence in Section~\ref{sec:geometry} are arguments in the
@@ -917,13 +924,16 @@ proposition; no model output carries any, and neither does this sentence.
 Erd\H{o}s Problem~\#257 remains open.
 
 \begin{thebibliography}{9}
-\bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya, \emph{Refinement of the
-  Chowla--Erd\H{o}s method and linear independence of certain Lambert series},
+\bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya,
+  \href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf}
+  {\emph{Refinement of the Chowla--Erd\H{o}s method and linear independence
+  of certain Lambert series}},
   Forum Math.\ 31 (2019), no.~6, 1557--1566,
   \href{https://doi.org/10.1515/forum-2018-0299}{DOI}.  Corollary 1.2 gives
   the general $F_s(E)$ theorem and its monomial images under
   $|q|^{\lcm(1,\dots,\ell)}\le s$; Example 1.1 is the squarefree base-$2$
-  specialisation.
+  specialisation.  Both are on p.~4 of the linked author preprint; the proof
+  is on pp.~9--11.
 \bibitem{taoteravainen2025} T.~Tao and J.~Ter\"av\"ainen,
   \emph{Quantitative correlations and some problems on prime factors of
   consecutive integers}, arXiv:2512.01739 (submitted December 2025, revised
