@@ -380,7 +380,11 @@ def validate_paper_semantic_citation_aliases() -> None:
     by_artifact = {row["artifact"]: row for row in packet["results"]}
     reciprocal = by_artifact["erdos_243_note"]
 
-    assert reciprocal["statement_nodes_reached"] > 0
+    assert reciprocal["authored_statement_nodes_reached"] > 0
+    assert (
+        reciprocal["all_tier_statement_nodes_reached"]
+        >= reciprocal["authored_statement_nodes_reached"]
+    )
     assert (
         "Erdos243/ReciprocalTailRigidity.lean:no_periodicNegative_orbit"
         in reciprocal["node_routed_citations"]
@@ -398,15 +402,15 @@ def validate_paper_semantic_citation_aliases() -> None:
         "12",
     )
     assert backlog["paper_count"] == 1
-    assert backlog["statement_unlinked_live_declaration_count"] > 0
+    assert backlog["authored_statement_backlog_declaration_count"] > 0
     paper = backlog["papers"][0]
-    assert paper["statement_unlinked_live_declaration_count"] > 0
+    assert paper["authored_statement_backlog_declaration_count"] > 0
     assert any(
         "TotientActualLcm" in group["module"]
         for group in paper["unlinked_module_groups"]
     )
     assert all(
-        candidate["statement_node"] is None
+        candidate["interpretation_tier"] != "authored_statement"
         for group in paper["unlinked_module_groups"]
         for candidate in group["candidates"]
     )

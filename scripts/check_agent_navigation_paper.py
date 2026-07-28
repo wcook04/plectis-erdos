@@ -33,9 +33,11 @@ ANCHOR_GROUPS = {
     "scale_and_coverage": (
         "991 Lean modules and 151,755 declarations",
         "8,772 source-resolved nodes and 38,844 direct",
-        "4,348 of 141,820 authored theorem-like declarations",
-        "137,472",
-        "2,201 are exact proposition evidence",
+        "141,820/141,820 theorem-like declarations linked",
+        "139,370 authored interpretations",
+        "2,895 direct evidence",
+        "136,475 bounded family context",
+        "2,450 remain exact source-structural families only",
         "100 claims; 10 programmes; 4 open propositions",
     ),
     "zero_build_tour": (
