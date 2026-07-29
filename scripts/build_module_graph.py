@@ -18,7 +18,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS = ROOT / "docs" / "claims.json"
-IMPORT_RE = re.compile(r"^import (Erdos249257(?:\.[A-Za-z0-9_]+)+)\s*$", re.M)
+LIBRARY_ROOTS = ("Erdos249257", "ErdosProblems")
+ROOT_FILES = tuple(f"{root}.lean" for root in LIBRARY_ROOTS)
+IMPORT_RE = re.compile(
+    rf"^import ((?:{'|'.join(LIBRARY_ROOTS)})(?:\.[A-Za-z0-9_]+)+)\s*$",
+    re.M,
+)
 
 NEW_ROLES = {
     "Erdos249257.ActualForeignResidueProjection": "Finite foreign-residue projection consumer",
@@ -107,7 +112,12 @@ def build_graph(data: dict[str, object]) -> dict[str, object]:
     current = machine["module_graph"]
     roles = {row["id"]: row["role"] for row in current["nodes"]}
     nodes = []
-    for path in sorted((ROOT / "Erdos249257").rglob("*.lean")):
+    source_paths = [
+        path
+        for library_root in LIBRARY_ROOTS
+        for path in sorted((ROOT / library_root).rglob("*.lean"))
+    ]
+    for path in source_paths:
         module = module_id(path)
         nodes.append(
             {
@@ -117,7 +127,11 @@ def build_graph(data: dict[str, object]) -> dict[str, object]:
                 "imports": IMPORT_RE.findall(path.read_text(encoding="utf-8")),
             }
         )
-    return {"root": "Erdos249257.lean", "nodes": nodes}
+    return {
+        "root": ROOT_FILES[0],
+        "additional_roots": list(ROOT_FILES[1:]),
+        "nodes": nodes,
+    }
 
 
 def main() -> int:
