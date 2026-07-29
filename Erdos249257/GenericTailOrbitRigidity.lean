@@ -1,4 +1,5 @@
 import Erdos249257.CertificateKernel
+import Erdos249257.MersenneTailAtoms
 
 /-!
 # Generic tempered tail-orbit rigidity
@@ -437,5 +438,147 @@ theorem not_irrational_binaryCoeffSeries_iff_exists_temperedBinaryOrbit
       ∃ v : ℕ, 0 < v ∧ ∃ u : ℕ → ℤ, IsTemperedBinaryOrbit c v u := by
   rw [← hasRationalValue_iff_not_irrational]
   exact binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit c hgrowth
+
+/-! ## Rational control models
+
+The controls below keep generic tail-orbit arguments honest.  The first one
+transports an arbitrary bounded payload through a family whose marked binary
+value is always `4/9`.  The second preserves the strongest elementary
+multiplicative model (`c(n)=n`) but has an affine, hence rank-two, section
+structure.  Neither theorem is an irrationality statement.
+-/
+
+/-- Pair-balanced coefficient family.  At positions `2k, 2k+1` the payload
+`a(k)` moves mass between the two binary digits without changing their total
+dyadic contribution. -/
+def globalBalancedCoeff (a : ℕ → ℕ) (n : ℕ) : ℕ :=
+  if n % 2 = 0 then n / 2 - a (n / 2) else 2 * a (n / 2)
+
+/-- Explicit multiplier-nine integer orbit for `globalBalancedCoeff`. -/
+def globalBalancedOrbit (a : ℕ → ℕ) (N : ℕ) : ℤ :=
+  if N % 2 = 0 then ((3 * (N / 2) + 4 + 9 * a (N / 2) : ℕ) : ℤ)
+  else ((6 * (N / 2) + 8 : ℕ) : ℤ)
+
+@[simp] theorem globalBalancedCoeff_even (a : ℕ → ℕ) (k : ℕ) :
+    globalBalancedCoeff a (2 * k) = k - a k := by
+  simp [globalBalancedCoeff]
+
+@[simp] theorem globalBalancedCoeff_odd (a : ℕ → ℕ) (k : ℕ) :
+    globalBalancedCoeff a (2 * k + 1) = 2 * a k := by
+  have hdiv : (2 * k + 1) / 2 = k := by omega
+  simp [globalBalancedCoeff, hdiv]
+
+@[simp] theorem globalBalancedOrbit_even (a : ℕ → ℕ) (k : ℕ) :
+    globalBalancedOrbit a (2 * k) = ((3 * k + 4 + 9 * a k : ℕ) : ℤ) := by
+  simp [globalBalancedOrbit]
+
+@[simp] theorem globalBalancedOrbit_odd (a : ℕ → ℕ) (k : ℕ) :
+    globalBalancedOrbit a (2 * k + 1) = ((6 * k + 8 : ℕ) : ℤ) := by
+  have hdiv : (2 * k + 1) / 2 = k := by omega
+  simp [globalBalancedOrbit, hdiv]
+
+/-- Bounded payloads keep the pair-balanced coefficients in the generic
+linear-growth class. -/
+theorem globalBalancedCoeff_le_self
+    {a : ℕ → ℕ} (ha0 : a 0 = 0) (ha : ∀ k, a k ≤ 1) :
+    ∀ n, globalBalancedCoeff a n ≤ n := by
+  intro n
+  rcases Nat.even_or_odd n with ⟨k, rfl⟩ | ⟨k, rfl⟩
+  · rw [show k + k = 2 * k by omega, globalBalancedCoeff_even]
+    omega
+  · by_cases hk : k = 0
+    · subst k
+      rw [globalBalancedCoeff_odd, ha0]
+      omega
+    · have hkpos : 1 ≤ k := Nat.one_le_iff_ne_zero.mpr hk
+      have hak := ha k
+      rw [globalBalancedCoeff_odd]
+      omega
+
+/-- The explicit orbit is tempered for every bounded payload. -/
+theorem globalBalancedOrbit_isTempered
+    {a : ℕ → ℕ} (ha : ∀ k, a k ≤ 1) :
+    IsTemperedBinaryOrbit (globalBalancedCoeff a) 9 (globalBalancedOrbit a) := by
+  constructor
+  · intro N
+    rcases Nat.even_or_odd N with ⟨k, rfl⟩ | ⟨k, rfl⟩
+    · rw [show k + k = 2 * k by omega]
+      simp only [globalBalancedOrbit_odd, globalBalancedOrbit_even,
+        globalBalancedCoeff_odd, Nat.cast_mul, Nat.cast_ofNat]
+      push_cast
+      ring
+    · have hak : a (k + 1) ≤ k + 1 := (ha (k + 1)).trans (by omega)
+      rw [show 2 * k + 1 + 1 = 2 * (k + 1) by omega]
+      simp only [globalBalancedOrbit_even, globalBalancedOrbit_odd,
+        globalBalancedCoeff_even, Nat.cast_mul, Nat.cast_ofNat]
+      push_cast [Nat.cast_sub hak]
+      ring
+  · have hnat : Tendsto (fun N : ℕ ↦ (N : ℝ) / (2 : ℝ) ^ N)
+        atTop (nhds 0) := by
+      simpa using tendsto_pow_const_div_const_pow_of_one_lt 1
+        (by norm_num : (1 : ℝ) < 2)
+    have hconst : Tendsto (fun N : ℕ ↦ (13 : ℝ) / (2 : ℝ) ^ N)
+        atTop (nhds 0) :=
+      tendsto_const_nhds.div_atTop
+        (tendsto_pow_atTop_atTop_of_one_lt (by norm_num : (1 : ℝ) < 2))
+    have hupper : Tendsto (fun N : ℕ ↦ ((6 : ℝ) * N + 13) / (2 : ℝ) ^ N)
+        atTop (nhds 0) := by
+      simpa [add_div, mul_div_assoc] using (hnat.const_mul 6).add hconst
+    apply squeeze_zero'
+      (Filter.Eventually.of_forall fun N ↦
+        div_nonneg (by
+          unfold globalBalancedOrbit
+          split <;> positivity) (by positivity))
+      (Filter.Eventually.of_forall fun N ↦ ?_)
+      hupper
+    apply div_le_div_of_nonneg_right _ (by positivity)
+    rcases Nat.even_or_odd N with ⟨k, rfl⟩ | ⟨k, rfl⟩
+    · rw [show k + k = 2 * k by omega, globalBalancedOrbit_even]
+      exact_mod_cast (show 3 * k + 4 + 9 * a k ≤ 6 * (2 * k) + 13 by
+        have := ha k
+        omega)
+    · rw [globalBalancedOrbit_odd]
+      exact_mod_cast (show 6 * k + 8 ≤ 6 * (2 * k + 1) + 13 by omega)
+
+/-- Every bounded payload with `a(0)=0` has the same rational marked value
+`4/9`; the payload survives in the even carry coordinates. -/
+theorem globalBalancedCoeff_value
+    {a : ℕ → ℕ} (ha0 : a 0 = 0) (ha : ∀ k, a k ≤ 1) :
+    binaryCoeffSeries (globalBalancedCoeff a) = 4 / 9 := by
+  have hgrowth := globalBalancedCoeff_le_self ha0 ha
+  have horbit := globalBalancedOrbit_isTempered ha
+  have hrigid := temperedBinaryOrbit_eq_scaledTail
+    (globalBalancedCoeff a) hgrowth horbit 0
+  simp [globalBalancedOrbit, ha0] at hrigid
+  norm_num at hrigid ⊢
+  linarith
+
+/-- The arbitrary payload is transported exactly into the even carry. -/
+theorem globalBalancedOrbit_even_payload (a : ℕ → ℕ) (k : ℕ) :
+    globalBalancedOrbit a (2 * k) -
+        globalBalancedOrbit (fun _ ↦ 0) (2 * k) = 9 * a k := by
+  simp
+
+/-- Identity coefficients have the affine multiplier-one tempered orbit
+`u(N)=N+2`, providing the multiplicative rank-two control. -/
+theorem idCoeff_temperedOrbit :
+    IsTemperedBinaryOrbit id 1 (fun N : ℕ ↦ ((N + 2 : ℕ) : ℤ)) := by
+  constructor
+  · intro N
+    simp
+    ring
+  · have hnat : Tendsto (fun N : ℕ ↦ (N : ℝ) / (2 : ℝ) ^ N)
+        atTop (nhds 0) := by
+      simpa using tendsto_pow_const_div_const_pow_of_one_lt 1
+        (by norm_num : (1 : ℝ) < 2)
+    have htwo : Tendsto (fun N : ℕ ↦ (2 : ℝ) / (2 : ℝ) ^ N)
+        atTop (nhds 0) :=
+      tendsto_const_nhds.div_atTop
+        (tendsto_pow_atTop_atTop_of_one_lt (by norm_num : (1 : ℝ) < 2))
+    simpa [Nat.cast_add, add_div] using hnat.add htwo
+
+#print axioms globalBalancedCoeff_value
+#print axioms globalBalancedOrbit_even_payload
+#print axioms idCoeff_temperedOrbit
 
 end Erdos249257
