@@ -7103,6 +7103,12 @@
           ]
         },
         {
+          "id": "Erdos249257.Primitive23Multiplicity",
+          "path": "Erdos249257/Primitive23Multiplicity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "Erdos249257.PrimitiveDeterminantLift",
           "path": "Erdos249257/PrimitiveDeterminantLift.lean",
           "role": "Lean proof module",
@@ -8023,7 +8029,8 @@
           "path": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
           "role": "Lean proof module",
           "imports": [
-            "Erdos249257.TerminalOnlyScaledVanishing"
+            "Erdos249257.TerminalOnlyScaledVanishing",
+            "Erdos249257.DyadicPrefixCompression"
           ]
         },
         {
@@ -10840,7 +10847,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "1128d0858e1060c741f26460afac166f36801af9",
+      "ref": "e52e55c5db4d2ca965be45f007d25d0586ad4a0e",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint"

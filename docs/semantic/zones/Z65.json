@@ -22,6 +22,21 @@
       "id": "problem_centric_counterexample_interface",
       "label": "problem-centric counterexample interface",
       "note": "The new ErdosProblems namespace wrapper around the existing terminal-scaled-vanishing consumer."
+    },
+    {
+      "id": "one_over_twenty_one_target",
+      "label": "one-over-twenty-one rational target",
+      "note": "The positive rational target 1/21, whose reduced denominator has odd doubling order six."
+    },
+    {
+      "id": "primitive_23_rank_cone",
+      "label": "primitive 2p+3q rank cone",
+      "note": "Positive coprime pairs (p,q) indexed by their rank 2p+3q in the proposed 1/21 expansion route."
+    },
+    {
+      "id": "booleanisation_gap",
+      "label": "Booleanisation gap",
+      "note": "The still-open requirement that an integer-multiplicity expansion be converted into a zero-one reciprocal-Mersenne support."
     }
   ],
   "statement_nodes": [
@@ -105,6 +120,113 @@
           "line": 37
         }
       ]
+    },
+    {
+      "id": "one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
+      "canonical_statement": "For every finite set F of ranks all at least two, finiteErdosSum F 2 is not equal to 1/21.",
+      "logical_class": "barrier_no_go",
+      "problem": "257",
+      "concepts": [
+        "one_over_twenty_one_target",
+        "rational_half_counterexample"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "reduced-denominator odd-doubling order forces lcm six, followed by exact exhaustion of the eight subsets of ranks two, three, and six",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This elementary exact obstruction is recorded as formalised route evidence; no novelty or priority claim is made.",
+      "scope_caveat": "The theorem proves only that a 1/21 representation cannot terminate. It neither constructs an infinite representation nor proves that 1/21 belongs to the Mersenne achievement set, so it does not refute Erdős #257.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "finiteErdosSum_ne_one_div_twenty_one",
+          "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+          "line": 59
+        }
+      ]
+    },
+    {
+      "id": "primitive_23_solution_is_a_positive_coprime_rank_decomposition",
+      "canonical_statement": "IsPrimitive23Solution n p q means that p and q are positive and coprime and satisfy 2p+3q=n.",
+      "logical_class": "representation_normalisation",
+      "problem": "257",
+      "concepts": [
+        "primitive_23_rank_cone",
+        "one_over_twenty_one_target"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "definition of the primitive rank cone used by the proposed 1/21 expansion route",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is a local definition of an elementary Diophantine representation and carries no novelty claim.",
+      "scope_caveat": "The definition records rank multiplicity only. It does not identify a reciprocal-Mersenne coefficient or prove an expansion identity.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "IsPrimitive23Solution",
+          "module": "Erdos249257/Primitive23Multiplicity.lean",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "id": "primitive_23_cone_covers_every_rank_from_eleven",
+      "canonical_statement": "Every natural number n at least eleven has a positive coprime representation n=2p+3q.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "primitive_23_rank_cone",
+        "one_over_twenty_one_target"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "explicit parity split with q equal to one, two, or four",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The theorem is elementary arithmetic formalised for this route; no novelty or priority claim is made.",
+      "scope_caveat": "Eventual rank coverage is not Booleanisation. It supplies primitive witnesses but does not show that the resulting multiplicities are all zero or one.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "exists_primitive23_solution_of_eleven_le",
+          "module": "Erdos249257/Primitive23Multiplicity.lean",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "id": "primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
+      "canonical_statement": "The primitive 2p+3q cone has no witness at rank ten, already has two distinct witnesses at rank eleven, and has at least two distinct witnesses at every rank 10k with k at least two.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "257",
+      "concepts": [
+        "primitive_23_rank_cone",
+        "booleanisation_gap",
+        "one_over_twenty_one_target"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "exact rank-ten exclusion and explicit coprime witness families for rank eleven and all later multiples of ten",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "These elementary multiplicity facts are formalised as diagnostics for the route; no novelty or priority claim is made.",
+      "scope_caveat": "The recurring collisions diagnose why the primitive expansion is not already Boolean. They do not provide the cancellations or carry recurrence required to construct a zero-one support.",
+      "confidence": "high",
+      "evidence": [
+        {
+          "declaration": "no_primitive23_solution_ten",
+          "module": "Erdos249257/Primitive23Multiplicity.lean",
+          "line": 26
+        },
+        {
+          "declaration": "exists_two_primitive23_solutions_eleven",
+          "module": "Erdos249257/Primitive23Multiplicity.lean",
+          "line": 38
+        },
+        {
+          "declaration": "exists_two_primitive23_solutions_mul_ten",
+          "module": "Erdos249257/Primitive23Multiplicity.lean",
+          "line": 86
+        }
+      ]
     }
   ],
   "declaration_roles": [
@@ -128,6 +250,48 @@
       "line": 37,
       "role": "statement",
       "statement_node": "terminal_scaled_vanishing_refutes_universal_mersenne_subseries_irrationality"
+    },
+    {
+      "declaration": "finiteErdosSum_ne_one_div_twenty_one",
+      "module": "ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean",
+      "line": 59,
+      "role": "statement",
+      "statement_node": "one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two"
+    },
+    {
+      "declaration": "IsPrimitive23Solution",
+      "module": "Erdos249257/Primitive23Multiplicity.lean",
+      "line": 20,
+      "role": "concept",
+      "statement_node": "primitive_23_solution_is_a_positive_coprime_rank_decomposition"
+    },
+    {
+      "declaration": "no_primitive23_solution_ten",
+      "module": "Erdos249257/Primitive23Multiplicity.lean",
+      "line": 26,
+      "role": "statement",
+      "statement_node": "primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity"
+    },
+    {
+      "declaration": "exists_two_primitive23_solutions_eleven",
+      "module": "Erdos249257/Primitive23Multiplicity.lean",
+      "line": 38,
+      "role": "statement",
+      "statement_node": "primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity"
+    },
+    {
+      "declaration": "exists_primitive23_solution_of_eleven_le",
+      "module": "Erdos249257/Primitive23Multiplicity.lean",
+      "line": 52,
+      "role": "statement",
+      "statement_node": "primitive_23_cone_covers_every_rank_from_eleven"
+    },
+    {
+      "declaration": "exists_two_primitive23_solutions_mul_ten",
+      "module": "Erdos249257/Primitive23Multiplicity.lean",
+      "line": 86,
+      "role": "statement",
+      "statement_node": "primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity"
     }
   ],
   "intra_zone_relations": [
@@ -148,6 +312,30 @@
       "to": "universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
       "relation": "complements",
       "basis": "The conclusion is exactly the negation of the universal predicate represented by the definition."
+    },
+    {
+      "from": "one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
+      "to": "universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
+      "relation": "complements",
+      "basis": "The theorem removes the finite-support loophole for one rational target but leaves both achievement-set membership and the universal assertion open."
+    },
+    {
+      "from": "primitive_23_cone_covers_every_rank_from_eleven",
+      "to": "primitive_23_solution_is_a_positive_coprime_rank_decomposition",
+      "relation": "generated_by",
+      "basis": "The coverage theorem constructs explicit witnesses satisfying the primitive-rank definition."
+    },
+    {
+      "from": "primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
+      "to": "primitive_23_solution_is_a_positive_coprime_rank_decomposition",
+      "relation": "generated_by",
+      "basis": "The defect and collision theorems are exact instance and infinite-family results for the same primitive-rank definition."
+    },
+    {
+      "from": "primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
+      "to": "one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
+      "relation": "complements",
+      "basis": "The finite-support obstruction shows what a successful 1/21 route must achieve, while the recurring primitive collisions identify the unresolved Booleanisation obstacle."
     }
   ]
 }

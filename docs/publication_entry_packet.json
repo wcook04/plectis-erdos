@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:1a2f82456b118b86672c2f6558f899da71e7d0a96678de4cacd823452fc4537f",
-    "docs/claims.json": "sha256:84ad04b2055fa5bc62105cd68bb1419cce80a77d07148ad93d0295f28733a64f",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:e7a6ba04f650c25890af9812eee97f1050009b21834820163ae2d2adaa01603b",
+    "docs/claims.json": "sha256:cda0d65f28da9cea0195a17910b8f587a9e19893620cacb1881559e97098c749",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/publication_contract.json": "sha256:f775e1f81cf70739666ed16d669e2d828cfc7ce2b31d32b3e44cc2afa60e522b",
+    "docs/publication_contract.json": "sha256:262e2f4270c83d253094a1f4e45d03957a43d529af9d22027351ea43443863ec",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:53cae935c1854d54eb0a590ccf0ac09a847b17ca39df7525159c4ebf85fb9220",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:e920b9c5b386224fb441217bd71721be996d81e19c8a63cb90c1b4d6b0874643",
     "scripts/run_publication_mutations.py": "sha256:01834099e0b6897fabfe67d698fbe5a682f701ae54d367c0e35730e3b2ccd437"
   },
   "five_sentence_summary": [
@@ -314,7 +314,7 @@
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
       "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "1128d0858e1060c741f26460afac166f36801af9",
+      "ref": "e52e55c5db4d2ca965be45f007d25d0586ad4a0e",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },
