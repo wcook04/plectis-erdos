@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:dc41c3729171e479f663565f7ca245b8cb93f9f2e6462c6ecfaf118c03c3e322",
+      "source_sha256": "sha256:2d8a3d81b05bdd81f897eb74f7e81c12b1a4d48a674fa520ca72f78d157afd7d",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 148,
@@ -930,8 +930,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry Lean-checked exact reductions for Erd\u0151s\u00a0#249 and the half-value branch of Erd\u0151s\u00a0#257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:e1dc23cf43a02e022a37313341d88681c936d41bdd96edea3d9e986e25743344",
-      "pdf_byte_count": 367217,
+      "pdf_sha256": "sha256:65c51df1db693af4035ede1372192ef355542e2658de8721a4d23c956e3e2d26",
+      "pdf_byte_count": 387741,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -3951,10 +3951,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:a4864ceacc7a195b184fdf2c940b76960bc00c582704caa6ff65dd34f0f948ab",
+      "source_sha256": "sha256:b9e411036db5cd4ee6cac36cdfec62e1452bd2c1e3f87c5dbd70066ebd2cd02e",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
-      "section_count": 20,
+      "section_count": 24,
       "sections": [
         {
           "level": 1,
@@ -3972,119 +3972,143 @@
           "level": 1,
           "id": "sec:gap",
           "title": "The publication gap",
-          "line": 11
+          "line": 13
         },
         {
           "level": 1,
           "id": "sec:picture",
           "title": "The release workflow",
-          "line": 25
+          "line": 29
         },
         {
           "level": 1,
           "id": "sec:example",
           "title": "One claim from Lean theorem to public page",
-          "line": 44
+          "line": 50
         },
         {
           "level": 2,
           "id": "sec:mathrole",
           "title": "What the certificates are for",
-          "line": 52
+          "line": 58
         },
         {
           "level": 2,
-          "id": "the-formal-evidence",
+          "id": "sec:formal-evidence",
           "title": "The formal evidence",
-          "line": 75
+          "line": 86
         },
         {
           "level": 2,
-          "id": "the-reviewed-record",
+          "id": "sec:record",
           "title": "The reviewed record",
-          "line": 81
+          "line": 92
         },
         {
           "level": 2,
           "id": "what-the-checker-verifies-here",
           "title": "What the checker verifies here",
-          "line": 106
+          "line": 119
         },
         {
           "level": 1,
           "id": "sec:trust",
           "title": "What the checks establish",
-          "line": 112
+          "line": 125
         },
         {
           "level": 1,
           "id": "sec:failure",
           "title": "A boundary the checklist missed",
-          "line": 137
+          "line": 154
+        },
+        {
+          "level": 4,
+          "id": "historical-exercise.",
+          "title": "Historical exercise.",
+          "line": 160
+        },
+        {
+          "level": 4,
+          "id": "repair-and-present-witness.",
+          "title": "Repair and present witness.",
+          "line": 168
+        },
+        {
+          "level": 4,
+          "id": "later-reconstruction.",
+          "title": "Later reconstruction.",
+          "line": 174
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Scope, reuse, and limits",
-          "line": 159
+          "line": 194
         },
         {
           "level": 4,
           "id": "the-failures-the-design-addresses.",
           "title": "The failures the design addresses.",
-          "line": 163
+          "line": 198
         },
         {
           "level": 4,
           "id": "the-failures-it-does-not-address.",
           "title": "The failures it does not address.",
-          "line": 169
+          "line": 204
         },
         {
           "level": 4,
-          "id": "essential-and-contingent-limits.",
-          "title": "Essential and contingent limits.",
-          "line": 175
+          "id": "limits-of-the-design-and-this-implementation.",
+          "title": "Limits of the design and this implementation.",
+          "line": 210
         },
         {
           "level": 4,
           "id": "reuse.",
           "title": "Reuse.",
-          "line": 181
+          "line": 216
         },
         {
           "level": 4,
           "id": "what-is-not-established.",
           "title": "What is not established.",
-          "line": 187
+          "line": 226
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Related systems",
-          "line": 193
+          "line": 232
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 199
+          "line": 248
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reproducibility",
-          "line": 211
+          "line": 258
+        },
+        {
+          "level": 4,
+          "id": "use-of-ai-assistance.",
+          "title": "Use of AI assistance.",
+          "line": 264
         }
       ],
-      "citations_rendered": 8,
+      "citations_rendered": 14,
       "fallback_title_drift": {
         "registry_fallback": "From Lean Proofs to Public Claims",
         "manuscript_title": "From Lean Proofs to Public Claims Release checks and trust boundaries in one formal mathematics repository"
       },
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:c192b1d48ff52755b0c42940efa2c8ed0a25ced499af9342d6d8a8e2bc72c2a8",
-      "pdf_byte_count": 129313,
+      "pdf_sha256": "sha256:7a4055a8e0789910077744ac11ce46d47974a820a341dfafe9f9c4d5b26eaa04",
+      "pdf_byte_count": 102858,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -4092,25 +4116,25 @@
           {
             "id": "sec:picture",
             "title": "The release workflow",
-            "line": 25
+            "line": 29
           },
           {
             "id": "sec:record",
-            "resolved": false,
-            "reason": "label not present in the current manuscript"
+            "title": "The reviewed record",
+            "line": 92
           },
           {
             "id": "sec:trust",
             "title": "What the checks establish",
-            "line": 112
+            "line": 125
           },
           {
             "id": "sec:limits",
             "title": "Scope, reuse, and limits",
-            "line": 159
+            "line": 194
           }
         ],
-        "unresolved_count": 1
+        "unresolved_count": 0
       }
     },
     {

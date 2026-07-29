@@ -87,9 +87,9 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **From Lean Proofs to Public Claims Release checks and trust boundaries in one formal mathematics repository**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 20 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../claim-faithful-publication-systems-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex) · 24 sections · `claim-faithful-publication-systems` · native to this repository
 
-The paper's own reading map sends a first pass to [The release workflow](full-text/claim-faithful-publication-systems-paper.md#sec:picture), [What the checks establish](full-text/claim-faithful-publication-systems-paper.md#sec:trust), [Scope, reuse, and limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
+The paper's own reading map sends a first pass to [The release workflow](full-text/claim-faithful-publication-systems-paper.md#sec:picture), [The reviewed record](full-text/claim-faithful-publication-systems-paper.md#sec:record), [What the checks establish](full-text/claim-faithful-publication-systems-paper.md#sec:trust), [Scope, reuse, and limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
 ### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
 
