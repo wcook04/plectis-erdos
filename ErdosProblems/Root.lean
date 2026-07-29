@@ -6,6 +6,7 @@ import ErdosProblems.Erdos249.RankOneSubrankObstruction
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos257.HalfCounterexampleFrontier
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Erdos257.SquarefreeSupportIncidence
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.FiniteHorizonResidue
 import ErdosProblems.Erdos243.DynamicCancellation
