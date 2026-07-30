@@ -593,6 +593,41 @@ def main() -> int:
         check(formal_source.get("relationship_to_last_tag") in {
             "at_last_tag", "post_tag_checkpoint",
         }, "release.formal_source has an unsupported relationship_to_last_tag")
+        public_tag = formal_source.get("public_tag")
+        check(
+            isinstance(public_tag, str)
+            and re.fullmatch(r"formal-source-\d{4}-\d{2}-\d{2}", public_tag) is not None,
+            "release.formal_source.public_tag must be a dated formal-source tag",
+        )
+        if isinstance(public_tag, str):
+            tag_kind = subprocess.run(
+                ["git", "cat-file", "-t", public_tag],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            check(
+                tag_kind.returncode == 0 and tag_kind.stdout.strip() == "tag",
+                "release.formal_source.public_tag must resolve to an annotated tag",
+            )
+            resolved_tag = subprocess.run(
+                ["git", "rev-parse", f"{public_tag}^{{}}"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            check(
+                resolved_tag.returncode == 0
+                and resolved_tag.stdout.strip() == formal_ref,
+                "release.formal_source.public_tag does not peel to formal_source.ref",
+            )
+            check(
+                formal_source.get("publication_state")
+                == "published_committed_checkpoint",
+                "a public formal-source tag requires published_committed_checkpoint state",
+            )
     public_projection = release.get("public_projection")
     check(isinstance(public_projection, dict),
           "release must name its public_projection provenance posture")

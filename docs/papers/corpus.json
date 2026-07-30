@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:fa4925ca544534390db6810a106eac887618b5edad315a66a368f1b3933685dd",
+      "source_sha256": "sha256:e532d1246fe188b387d379cc7e9f6f2266db8aab38ba3c9d02880bba91f68e1a",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 157,
@@ -984,8 +984,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:8489cdeb80e1fceb8a41063611be0130a21873c2ec393560a235665463c878aa",
-      "pdf_byte_count": 436666,
+      "pdf_sha256": "sha256:136e90cec46fd046454b73829c2550f002440e94eb6cb41aeb1a298c6f809204",
+      "pdf_byte_count": 436871,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1191,7 +1191,7 @@
       "title": "A Basis for the 2-Kernel of Euler\u2019s Totient",
       "title_source": "manuscript",
       "question_this_paper_answers": "What is proved about the dyadic sections of Euler's totient and the finite denominator bound, and what still blocks Erd\u0151s #249?",
-      "owns": "problem-specific mathematical exposition for Erd\u0151s #249: the basis theorem, denominator exclusion, method limits, and open edge",
+      "owns": "problem-specific mathematical exposition for Erd\u0151s #249: the exact finite-level rank, infinite-dimensionality consequence, denominator exclusion, method limits, and open edge",
       "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #249, which remains open",
       "publication_state": "active",
       "relation_to_this_repository": "native",
@@ -1334,7 +1334,7 @@
       ],
       "citations_rendered": 19,
       "fallback_title_drift": {
-        "registry_fallback": "A Basis for the Dyadic Sections of Euler's Totient",
+        "registry_fallback": "Exact Finite-Level Ranks in the 2-Kernel of Euler's Totient",
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
