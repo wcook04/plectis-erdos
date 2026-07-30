@@ -51,7 +51,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{1128d0858e1060c741f26460afac166f36801af9}
+\newcommand{\commit}{e52e55c5db4d2ca965be45f007d25d0586ad4a0e}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\lean}[2]{%
   \href{\repobase/\PK/#2}{\textsc{Lean source}}}
@@ -3385,7 +3385,35 @@ $\mathtt{erdosSupportSeries}\ 2\ A=1/2$
 module's own docstring states plainly that the producer sequence itself ``has only been checked to a
 large finite cutoff'': this is a restatement of the already-\ev{Open} O2 producer obligation in a new
 namespace, not a new result, and it duplicates \S O2's own logic (any HALF witness is $\neg\mathrm{U257}$)
-rather than extending it.
+rather than extending it.  The module now also proves an unconditional finite-support obstruction at
+the second rational target $1/21$:
+\[
+  F\subseteq\{n:n\ge2\}\quad\Longrightarrow\quad
+  \sum_{n\in F}\frac1{2^n-1}\ne\frac1{21}
+\]
+for every finite $F$
+(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{HalfCounterexampleFrontier.lean:59}, \ev{Lean},
+\scale{uniform}, \coord{finite-lcm}).  The denominator-order identity forces
+$\operatorname{lcm}(F)=6$, after which the eight subsets of $\{2,3,6\}$ are exact arithmetic.
+This removes finite termination for that target; it does not establish achievement-set membership.
+
+\subsubsection{New tree: \texttt{Erdos249257/Primitive23Multiplicity.lean}}
+
+This module records the exact arithmetic of the primitive cone
+$2p+3q=n$, $p,q>0$, $\gcd(p,q)=1$
+(\lean{IsPrimitive23Solution}{Primitive23Multiplicity.lean:20}).  It proves that every $n\ge11$
+has such a representation
+(\lean{exists\_primitive23\_solution\_of\_eleven\_le}{Primitive23Multiplicity.lean:52},
+\ev{Lean}, \scale{uniform}, \coord{finite-lcm}), while rank $10$ has none
+(\lean{no\_primitive23\_solution\_ten}{Primitive23Multiplicity.lean:26}, \ev{Lean}).
+Rank $11$ already has two distinct witnesses
+(\lean{exists\_two\_primitive23\_solutions\_eleven}{Primitive23Multiplicity.lean:38}, \ev{Lean}),
+and so does every rank $10k$ with $k\ge2$
+(\lean{exists\_two\_primitive23\_solutions\_mul\_ten}{Primitive23Multiplicity.lean:86},
+\ev{Lean}, \scale{uniform}, \coord{finite-lcm}).  These theorems are deliberately recorded as
+route diagnostics rather than as a counterexample: the file does not prove that the associated
+integer-multiplicity expansion of $1/21$ Booleanises.  The recurring multiplicities are precisely
+the unresolved collision data, not zero--one support digits.
 
 % ---- part a257_p2 ----
 \section{The scale ladder}

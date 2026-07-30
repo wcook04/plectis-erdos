@@ -202,6 +202,31 @@ SEMANTIC_VOCABULARY = (
         ),
     },
     {
+        "id": "one_over_twenty_one_frontier",
+        "vocabulary_kind": "entity",
+        "pref_label": "one-over-twenty-one achievement-set frontier",
+        "alt_labels": (
+            "1/21",
+            "1/21 problem",
+            "1/21 target",
+            "one over twenty one",
+            "one-over-twenty-one target",
+            "twenty one denominator",
+        ),
+        "query_expansions": (
+            "one over twenty one finite support obstruction",
+            "primitive 23 solutions mul ten",
+        ),
+        "route_hints": (
+            "--declaration finiteErdosSum_ne_one_div_twenty_one",
+            "--declaration exists_two_primitive23_solutions_mul_ten",
+        ),
+        "semantic_node_hints": (
+            "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
+            "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
+        ),
+    },
+    {
         "id": "formal_assumptions",
         "vocabulary_kind": "intent",
         "pref_label": "axiom footprint",
@@ -3179,6 +3204,13 @@ def semantic_query_interpretation(query: str) -> dict[str, Any]:
             for expansion in row["query_expansions"]
         )
     )
+    semantic_node_hints = list(
+        dict.fromkeys(
+            node_id
+            for row in matched_rows
+            for node_id in row.get("semantic_node_hints", ())
+        )
+    )
     return {
         "operator": semantic_query_operator(query),
         "matched_vocabulary": [
@@ -3196,6 +3228,16 @@ def semantic_query_interpretation(query: str) -> dict[str, Any]:
                 hint for row in routed_rows for hint in row["route_hints"]
             )
         ),
+        "authored_semantic_followups": [
+            {
+                "node_id": node_id,
+                "command": (
+                    "python3 scripts/query_semantic.py node "
+                    f"{node_id}"
+                ),
+            }
+            for node_id in semantic_node_hints
+        ],
         "authority_posture": (
             "authored_navigation_translation_not_proof_or_claim_status_authority"
         ),
@@ -6083,6 +6125,12 @@ def render_card(packet: dict[str, Any]) -> str:
         rows.extend(
             f"{cell['kind']} | {cell['handle']} | {cell['selection_reason']}"
             for cell in packet["semantic_cells"]
+        )
+        rows.extend(
+            f"semantic_node | {row['node_id']} | authored_semantic_followup"
+            for row in packet["query_interpretation"].get(
+                "authored_semantic_followups", []
+            )
         )
         rows.append(
             f"witness_edges={len(packet['minimal_witness_subgraph']['edges'])} "

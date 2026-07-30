@@ -124,6 +124,42 @@ def check_vocabulary_mismatch_queries() -> None:
         ("open_proposition", "remaining_open.half_value_membership"),
     ]
 
+    one_over_twenty_one = query_corpus.search_packet(
+        "what is the exact public status of one over twenty one "
+        "and what remains to prove",
+        5,
+    )
+    assert one_over_twenty_one["query_interpretation"]["operator"]["id"] == (
+        "frontier"
+    )
+    assert [
+        (row["kind"], row.get("name"))
+        for row in one_over_twenty_one["results"][:2]
+    ] == [
+        ("declaration", "finiteErdosSum_ne_one_div_twenty_one"),
+        ("declaration", "exists_two_primitive23_solutions_mul_ten"),
+    ]
+    assert [
+        row["node_id"]
+        for row in one_over_twenty_one["query_interpretation"][
+            "authored_semantic_followups"
+        ]
+    ] == [
+        "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
+        "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
+    ]
+    fractional_spelling = query_corpus.search_packet(
+        "what is the exact public status of 1/21 and what remains to prove",
+        5,
+    )
+    assert [
+        (row["kind"], row.get("name"))
+        for row in fractional_spelling["results"][:2]
+    ] == [
+        ("declaration", "finiteErdosSum_ne_one_div_twenty_one"),
+        ("declaration", "exists_two_primitive23_solutions_mul_ten"),
+    ]
+
 
 def check_witness_carrying_semantic_slices() -> None:
     rank_two = query_corpus.semantic_slice_packet(
@@ -166,6 +202,27 @@ def check_witness_carrying_semantic_slices() -> None:
         row["id"]
         for row in half_value["operator_synthesis"]["exact_open_records"]
     } >= {"remaining_open.half_value_membership"}
+
+    one_over_twenty_one = query_corpus.semantic_slice_packet(
+        "what is the exact public status of one over twenty one "
+        "and what remains to prove",
+        5,
+    )
+    assert [
+        cell["handle"]
+        for cell in one_over_twenty_one["semantic_cells"][:2]
+    ] == [
+        "finiteErdosSum_ne_one_div_twenty_one",
+        "exists_two_primitive23_solutions_mul_ten",
+    ]
+    finite_obstruction = one_over_twenty_one["semantic_cells"][0]
+    assert "automatically has infinite support" in (
+        finite_obstruction["content"]["authored_digest"]["text"]
+    )
+    multiplicity_obstruction = one_over_twenty_one["semantic_cells"][1]
+    assert multiplicity_obstruction["content"]["formal_witness"]["name"] == (
+        "exists_two_primitive23_solutions_mul_ten"
+    )
 
     analogy = query_corpus.semantic_slice_packet(
         "compare half carry compactness with the half achievement set route",

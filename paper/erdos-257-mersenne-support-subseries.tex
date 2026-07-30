@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{ae9ef27b040934b70f2418431d58d30a4b01974b}
-\renewcommand{\commitshort}{ae9ef27b0409}
+\renewcommand{\commit}{e52e55c5db4d2ca965be45f007d25d0586ad4a0e}
+\renewcommand{\commitshort}{e52e55c5db4d}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -971,6 +971,48 @@ positive M\"obius tail, hence at least $1/2+1/63$
 \mword{Erdos249257/MobiusSignSupportNoGo.lean}{150}{half_add_one_div_sixty_three_le_tsum_negativeMobius}{bound}).
 That closes the sign-truncation construction; it excludes no other support.
 
+\subsection{A second rational target}
+
+The target $1/21$ has a useful property that does not depend on any finite
+search.
+
+\begin{theorem}[finite-support obstruction at $1/21$]\label{res:one-over-twenty-one}
+For every finite set $F$ of exponents with $n\ge2$ for all $n\in F$,
+\[
+  \sum_{n\in F}\frac{1}{2^n-1}\ne\frac1{21}.
+\]
+\end{theorem}
+
+\noindent This is checked by
+\mword{Erdos257/HalfCounterexampleFrontier.lean}{59}{finiteErdosSum_ne_one_div_twenty_one}{the formal theorem}.
+The reduced denominator $21$ has doubling order $6$, so the exact
+denominator--lcm identity forces every selected exponent to divide $6$.
+The lower bound $n\ge2$ leaves only $2,3,6$, and the remaining eight subsets
+are discharged by exact rational arithmetic.  Thus any representation of
+$1/21$ along this rank-$\ge2$ route, if one exists, must be infinite.
+The theorem proves nontermination only: it does not prove that $1/21$ lies
+in $\Ach$.
+
+A separate arithmetic module isolates the primitive cone that appears in one
+candidate expansion route.  Write
+\[
+  \mathcal P_{23}(n)=
+  \{(p,q)\in\Npos^2:\gcd(p,q)=1,\ 2p+3q=n\}.
+\]
+Every $n\ge11$ has a member of $\mathcal P_{23}(n)$
+(\mword{Erdos249257/Primitive23Multiplicity.lean}{52}{exists_primitive23_solution_of_eleven_le}{checked}),
+whereas $\mathcal P_{23}(10)$ is empty
+(\mword{Erdos249257/Primitive23Multiplicity.lean}{26}{no_primitive23_solution_ten}{checked}).
+Multiplicity begins immediately at $11$, and every $10k$ with $k\ge2$ has
+at least two distinct primitive representations
+(\mword{Erdos249257/Primitive23Multiplicity.lean}{38}{exists_two_primitive23_solutions_eleven}{rank eleven},
+\mword{Erdos249257/Primitive23Multiplicity.lean}{86}{exists_two_primitive23_solutions_mul_ten}{multiples of ten}).
+These are exact Diophantine facts, not a counterexample construction.  In
+particular the recurring collisions show why primitive-cone coverage is not
+already a Boolean expansion: the missing step is a proof that the relevant
+integer multiplicities can be converted into zero--one reciprocal-Mersenne
+digits without changing the value.
+
 \section{Open problems}\label{sec:open}
 
 For the base-$2$ universal problem, two endpoint propositions organise the
@@ -998,6 +1040,12 @@ problem beside it.
   this exactly equivalent to infinitely many greedy skips, and to a fatal gap
   on the other side; neither is proved.  A proof of non-membership would take
   the form of one finite fatal gap.
+\item \textbf{Membership of $1/21$ in $\Ach$.}
+  Theorem~\ref{res:one-over-twenty-one} proves that the proposed
+  rank-$\ge2$ representation cannot terminate.  The primitive
+  $2p+3q$ cone has complete eventual rank coverage but recurrent
+  multiplicities; no Booleanisation or achievement-set membership theorem is
+  known.
 \end{enumerate}
 
 \noindent For scope, all squarefree values at power-of-two bases, jointly in

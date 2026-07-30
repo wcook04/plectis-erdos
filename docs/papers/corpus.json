@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:42952aa1988f546423cbe60f3cdbebf44702edcc163ac75c87af9a2e8ddd5ead",
+      "source_sha256": "sha256:fa4925ca544534390db6810a106eac887618b5edad315a66a368f1b3933685dd",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 157,
@@ -984,8 +984,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:dd079cb849915f1bf0966c786e056693768b556c5a91eba449042f6e4eb5e93f",
-      "pdf_byte_count": 436661,
+      "pdf_sha256": "sha256:8489cdeb80e1fceb8a41063611be0130a21873c2ec393560a235665463c878aa",
+      "pdf_byte_count": 436666,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1377,7 +1377,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:21d0f60ae3ccc4725e88cce370ae255300105c2d4dbebfd0a427c95787501c9f",
+      "source_sha256": "sha256:fa7317ae1449b675ea27fcc1cf51356e00c75119927dc69fa870d34d26c62f40",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-totient-reasoning-surface.tex",
       "section_count": 154,
@@ -2313,8 +2313,8 @@
         "manuscript_title": "The Binary Totient Series"
       },
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:bb18e022fa640178c25dc543dabfb6fef0362ebdd133663fc3f917cd1480d763",
-      "pdf_byte_count": 706685,
+      "pdf_sha256": "sha256:1146947faf4c019487de959a0db7a5c594620213750af2e58943a1389f314dfb",
+      "pdf_byte_count": 706691,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2532,10 +2532,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:0ba1c75cc820272d98bc7fc483ecba892bbb5e2590e7ac7e1892ec553ba8dac1",
+      "source_sha256": "sha256:8c8f98732d548f3a9bd6c56228a2a8b409b0049793c423232de2889fcfd789d5",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-257-mersenne-support-subseries.tex",
-      "section_count": 21,
+      "section_count": 22,
       "sections": [
         {
           "level": 1,
@@ -2652,16 +2652,22 @@
           "line": 441
         },
         {
+          "level": 2,
+          "id": "a-second-rational-target",
+          "title": "A second rational target",
+          "line": 467
+        },
+        {
           "level": 1,
           "id": "sec:open",
           "title": "Open problems",
-          "line": 467
+          "line": 491
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 479
+          "line": 505
         }
       ],
       "citations_rendered": 22,
@@ -2670,8 +2676,8 @@
         "manuscript_title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry"
       },
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:aaff74ea337f70e9dd7c5ecc4bcd2effda890c87ab91075196c5278a77b85094",
-      "pdf_byte_count": 127377,
+      "pdf_sha256": "sha256:15cd0f2bb6cfc4b252f082c483c28d14ac131550e3d9ad5995ae3f3cebf16c13",
+      "pdf_byte_count": 131153,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2694,7 +2700,7 @@
           {
             "id": "sec:open",
             "title": "Open problems",
-            "line": 467
+            "line": 491
           }
         ],
         "unresolved_count": 1
@@ -2714,10 +2720,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:c925f06aaeddb132c75c7d4d941c9dfd74afcf90aef4aabf8eca09da9d01f88a",
+      "source_sha256": "sha256:50172c673409f16aee76aaa11eba12a39023aa08026bd72cc82ede3bca5a5d90",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos257-mersenne-reasoning-surface.tex",
-      "section_count": 137,
+      "section_count": 138,
       "sections": [
         {
           "level": 1,
@@ -3152,394 +3158,400 @@
           "line": 2263
         },
         {
+          "level": 3,
+          "id": "new-tree-erdos249257primitive23multiplicity.lean",
+          "title": "New tree: Erdos249257/Primitive23Multiplicity.lean",
+          "line": 2274
+        },
+        {
           "level": 1,
           "id": "sec:scale-ladder",
           "title": "The scale ladder",
-          "line": 2269
+          "line": 2280
         },
         {
           "level": 1,
           "id": "sec:four-coordinates",
           "title": "One orbit in four coordinates",
-          "line": 2507
+          "line": 2518
         },
         {
           "level": 2,
           "id": "one-decision-stream-four-integerisations",
           "title": "One decision stream, four integerisations",
-          "line": 2511
+          "line": 2522
         },
         {
           "level": 2,
           "id": "the-truncation-rung-ladder",
           "title": "The truncation-rung ladder",
-          "line": 2561
+          "line": 2572
         },
         {
           "level": 1,
           "id": "interface-index-what-stands-between-the-corpus-and-a-proof",
           "title": "Interface index: what stands between the corpus and a proof",
-          "line": 2626
+          "line": 2637
         },
         {
           "level": 2,
           "id": "the-three-257-obligations-stated-exactly",
           "title": "The three #257 obligations, stated exactly",
-          "line": 2632
+          "line": 2643
         },
         {
           "level": 2,
           "id": "reading-a-row",
           "title": "Reading a row",
-          "line": 2654
+          "line": 2665
         },
         {
           "level": 2,
           "id": "reset-sixteen-near-misses",
           "title": "257-reset: sixteen near misses",
-          "line": 2660
+          "line": 2671
         },
         {
           "level": 2,
           "id": "cofinal-rows-thirteen-near-misses",
           "title": "257-cofinal-rows: thirteen near misses",
-          "line": 2777
+          "line": 2788
         },
         {
           "level": 2,
           "id": "universal-thirteen-near-misses",
           "title": "257-universal: thirteen near misses",
-          "line": 2875
+          "line": 2886
         },
         {
           "level": 2,
           "id": "three-theorems-assembled-from-the-interface-and-where-each-still-stops",
           "title": "Three theorems assembled from the interface, and where each still stops",
-          "line": 2978
+          "line": 2989
         },
         {
           "level": 2,
           "id": "route-collapse-findings-four-traps-to-name-explicitly",
           "title": "Route-collapse findings: four traps to name explicitly",
-          "line": 3002
+          "line": 3013
         },
         {
           "level": 1,
           "id": "closed-routes-with-the-mechanism-that-closed-them",
           "title": "Closed routes, with the mechanism that closed them",
-          "line": 3036
+          "line": 3047
         },
         {
           "level": 2,
           "id": "four-closed-attack-families-on-the-wall-itself",
           "title": "Four closed attack families on the wall itself",
-          "line": 3044
+          "line": 3055
         },
         {
           "level": 2,
           "id": "sec:branch-exclusions",
           "title": "Branch exclusions at the final producer: the exceptional dyadic cells",
-          "line": 3111
+          "line": 3122
         },
         {
           "level": 2,
           "id": "no-go-countermodel-and-rigidity-modules-that-bound-the-wall-from-outside",
           "title": "No-go, countermodel, and rigidity modules that bound the wall from outside",
-          "line": 3167
+          "line": 3178
         },
         {
           "level": 2,
           "id": "the-scalar-localisation-height-obstruction",
           "title": "The scalar-localisation height obstruction",
-          "line": 3206
+          "line": 3217
         },
         {
           "level": 2,
           "id": "the-final-skip-band-formula-and-what-it-does-not-show",
           "title": "The final-skip band formula, and what it does not show",
-          "line": 3228
+          "line": 3239
         },
         {
           "level": 1,
           "id": "sec:invent-257",
           "title": "The mathematics this problem still needs",
-          "line": 3265
+          "line": 3276
         },
         {
           "level": 2,
           "id": "sec:invent-R1",
           "title": "R1. Reset \\sqrt{\\ }-escape: anti-concentration of a logarithmically short divisor sum",
-          "line": 3285
+          "line": 3296
         },
         {
           "level": 3,
           "id": "the-statement-needed",
           "title": "The statement needed",
-          "line": 3289
+          "line": 3300
         },
         {
           "level": 3,
           "id": "what-kind-of-object-would-furnish-it-and-the-exact-arithmetic-of-theta_l",
           "title": "What kind of object would furnish it, and the exact arithmetic of \\Theta_L",
-          "line": 3325
+          "line": 3336
         },
         {
           "level": 3,
           "id": "the-specific-obstacle",
           "title": "The specific obstacle",
-          "line": 3361
+          "line": 3372
         },
         {
           "level": 3,
           "id": "swings",
           "title": "Swings",
-          "line": 3375
+          "line": 3386
         },
         {
           "level": 2,
           "id": "sec:invent-R2",
           "title": "R2. Strict endpoint progress: the one place canonicalisation does not bite",
-          "line": 3416
+          "line": 3427
         },
         {
           "level": 3,
           "id": "the-statement-needed-1",
           "title": "The statement needed",
-          "line": 3420
+          "line": 3431
         },
         {
           "level": 3,
           "id": "what-kind-of-object-would-furnish-it",
           "title": "What kind of object would furnish it",
-          "line": 3443
+          "line": 3454
         },
         {
           "level": 3,
           "id": "the-specific-obstacle-1",
           "title": "The specific obstacle",
-          "line": 3453
+          "line": 3464
         },
         {
           "level": 3,
           "id": "swings-1",
           "title": "Swings",
-          "line": 3461
+          "line": 3472
         },
         {
           "level": 2,
           "id": "sec:invent-R3",
           "title": "R3. Irrationality of \\sum_{p\\ \\mathrm{prime}} 1/(2^p-1)",
-          "line": 3478
+          "line": 3489
         },
         {
           "level": 3,
           "id": "the-statement-needed-2",
           "title": "The statement needed",
-          "line": 3482
+          "line": 3493
         },
         {
           "level": 3,
           "id": "what-kind-of-object-would-furnish-it-1",
           "title": "What kind of object would furnish it",
-          "line": 3491
+          "line": 3502
         },
         {
           "level": 3,
           "id": "the-specific-obstacle-and-a-correction-to-the-corpuss-own-recorded-repair",
           "title": "The specific obstacle \u2014 and a correction to the corpus\u2019s own recorded repair",
-          "line": 3507
+          "line": 3518
         },
         {
           "level": 3,
           "id": "swings-2",
           "title": "Swings",
-          "line": 3541
+          "line": 3552
         },
         {
           "level": 2,
           "id": "sec:invent-R4",
           "title": "R4. Landing the route-collapse equivalences, via perfect-square witness depths",
-          "line": 3557
+          "line": 3568
         },
         {
           "level": 3,
           "id": "the-statement-needed-3",
           "title": "The statement needed",
-          "line": 3561
+          "line": 3572
         },
         {
           "level": 3,
           "id": "the-object-and-the-swing-that-supplies-it",
           "title": "The object, and the swing that supplies it",
-          "line": 3580
+          "line": 3591
         },
         {
           "level": 3,
           "id": "why-this-is-a-result-and-not-bookkeeping",
           "title": "Why this is a result and not bookkeeping",
-          "line": 3612
+          "line": 3623
         },
         {
           "level": 2,
           "id": "sec:invent-R5",
           "title": "R5. The sparse/dense trichotomy \u2014 and a proof that the present engine cannot close it",
-          "line": 3620
+          "line": 3631
         },
         {
           "level": 3,
           "id": "the-statement-needed-4",
           "title": "The statement needed",
-          "line": 3624
+          "line": 3635
         },
         {
           "level": 3,
           "id": "what-kind-of-object-would-furnish-it-2",
           "title": "What kind of object would furnish it",
-          "line": 3645
+          "line": 3656
         },
         {
           "level": 3,
           "id": "the-specific-obstacle-proved",
           "title": "The specific obstacle, proved",
-          "line": 3651
+          "line": 3662
         },
         {
           "level": 3,
           "id": "swings-3",
           "title": "Swings",
-          "line": 3707
+          "line": 3718
         },
         {
           "level": 2,
           "id": "sec:invent-shape",
           "title": "What the shape of the wall suggests about the underlying object",
-          "line": 3723
+          "line": 3734
         },
         {
           "level": 3,
           "id": "the-half-value-branch-looks-pseudorandom-and-the-failures-are-the-evidence",
           "title": "The half-value branch looks pseudorandom, and the failures are the evidence",
-          "line": 3729
+          "line": 3740
         },
         {
           "level": 3,
           "id": "three-reasons-to-distrust-that-inference-stated-plainly",
           "title": "Three reasons to distrust that inference, stated plainly",
-          "line": 3741
+          "line": 3752
         },
         {
           "level": 3,
           "id": "the-universal-branch-reads-differently-and-this-weakens-the-one-wall-thesis",
           "title": "The universal branch reads differently, and this weakens the one-wall thesis",
-          "line": 3751
+          "line": 3762
         },
         {
           "level": 3,
           "id": "what-the-evidence-does-and-does-not-determine",
           "title": "What the evidence does and does not determine",
-          "line": 3759
+          "line": 3770
         },
         {
           "level": 1,
           "id": "what-is-open-stated-exactly",
           "title": "What is open, stated exactly",
-          "line": 3767
+          "line": 3778
         },
         {
           "level": 2,
           "id": "notation-fixed-for-this-section",
           "title": "Notation fixed for this section",
-          "line": 3773
+          "line": 3784
         },
         {
           "level": 2,
           "id": "target-o1-universal-erd\u0151s-257",
           "title": "Target O1 \u2014 Universal Erd\u0151s #257",
-          "line": 3782
+          "line": 3793
         },
         {
           "level": 2,
           "id": "target-o2-half-value-membership",
           "title": "Target O2 \u2014 Half-value membership",
-          "line": 3811
+          "line": 3822
         },
         {
           "level": 3,
           "id": "waypoints-that-are-actually-equivalent-to-o2-not-weaker",
           "title": "Waypoints that are actually EQUIVALENT to O2, not weaker",
-          "line": 3830
+          "line": 3841
         },
         {
           "level": 2,
           "id": "target-o3-cofinal-exact-local-mersenne-half-rows",
           "title": "Target O3 \u2014 Cofinal exact local Mersenne half rows",
-          "line": 3868
+          "line": 3879
         },
         {
           "level": 3,
           "id": "sharp-critical-capacity-conditions-the-booleanm\u00f6bius-lanes-producer-for-o3",
           "title": "Sharp critical-capacity conditions \u2014 the BooleanM\u00f6bius lane\u2019s producer for O3",
-          "line": 3885
+          "line": 3896
         },
         {
           "level": 2,
           "id": "sec:o4",
           "title": "Target O4 \u2014 Reset anti-concentration (sqrt-escape) and the R-run form",
-          "line": 3916
+          "line": 3927
         },
         {
           "level": 2,
           "id": "target-o5-the-remaining--2-1-middle-cell-exclusion",
           "title": "Target O5 \u2014 The remaining -2,-1 middle-cell exclusion",
-          "line": 3955
+          "line": 3966
         },
         {
           "level": 2,
           "id": "sec:v-table",
           "title": "Implication table",
-          "line": 3971
+          "line": 3982
         },
         {
           "level": 2,
           "id": "what-kind-of-new-mathematics-each-form-would-need",
           "title": "What kind of new mathematics each form would need",
-          "line": 4003
+          "line": 4014
         },
         {
           "level": 2,
           "id": "summary",
           "title": "Summary",
-          "line": 4015
+          "line": 4026
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 4021
+          "line": 4032
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 4025
+          "line": 4036
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 4031
+          "line": 4042
         },
         {
           "level": 4,
           "id": "authority-boundary.",
           "title": "Authority boundary.",
-          "line": 4037
+          "line": 4048
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 4043
+          "line": 4054
         }
       ],
       "citations_rendered": 0,
@@ -3548,8 +3560,8 @@
         "manuscript_title": "Reciprocal Mersenne Subseries"
       },
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:8036db8e36669b78385a6a88b140b218247aac61ee032f8d3c27695a299451d7",
-      "pdf_byte_count": 666882,
+      "pdf_sha256": "sha256:b2801c4017c0944fa8537fe01e0c25aaec685a2dd93d14d1c834fe9e59e2d396",
+      "pdf_byte_count": 670232,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3949,7 +3961,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:53cae935c1854d54eb0a590ccf0ac09a847b17ca39df7525159c4ebf85fb9220",
+      "source_sha256": "sha256:e920b9c5b386224fb441217bd71721be996d81e19c8a63cb90c1b4d6b0874643",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
       "section_count": 30,
@@ -4137,8 +4149,8 @@
       ],
       "citations_rendered": 18,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:1a2f82456b118b86672c2f6558f899da71e7d0a96678de4cacd823452fc4537f",
-      "pdf_byte_count": 117436,
+      "pdf_sha256": "sha256:e7a6ba04f650c25890af9812eee97f1050009b21834820163ae2d2adaa01603b",
+      "pdf_byte_count": 117457,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -4181,7 +4193,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:e8d1580d2fe1478af224ef2103cfdac5a4abd8b9fd632dd5f5579fa2bd02a51d",
+      "source_sha256": "sha256:70ae22f3bffb323293b4da2335f10cfc693374791b8c499695fcb94f958a69bc",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/cold-clone-to-proof-receipt.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/cold-clone-to-proof-receipt.tex",
       "section_count": 18,
@@ -4297,8 +4309,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:b8250d36d515c30354b19ca0c947ec4d617acaa1c3faf8f22bc1b430e5dc73d8",
-      "pdf_byte_count": 74783,
+      "pdf_sha256": "sha256:5629e749b83533126f0eb29c1d28081a29e5feddbccac28b43cda3686e68800a",
+      "pdf_byte_count": 74788,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",

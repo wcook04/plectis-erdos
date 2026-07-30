@@ -18,8 +18,8 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:682d2f18d6ed8f9899f374a999d1f68d187115a525e066aaab185f2335476b09",
-  "semantic_corpus_digest": "sha256:081034470324b19150728cb49a56a1c55bb58f1c26b43f08f39036da823c5d6c",
+  "declaration_atlas_digest": "sha256:5ac5d6afa1ecb90eb2f99258359bb91f46c4fc83de58dd15b57d34d0a4c89e44",
+  "semantic_corpus_digest": "sha256:aaa546fde4d25d68172eabe80c87ee9607e6f3835fe5347499ac1dcdd1a5279a",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -31,7 +31,7 @@
   "builder_digest": "sha256:2a6053910f1ac95809c754fec4e6f7f8b5e12e0b55839a8ec84ed4d52264c3e8",
   "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
  },
- "evidence_fingerprint": "sha256:10cdc49aa3ad961e32bf516324cb3c07de67f33ccb0d3f0454dc4dd1513efd19",
+ "evidence_fingerprint": "sha256:e9ae996276849cfc2299f71f1bfbb5a728a412c2c4f2e11355a4d9e77f8b9964",
  "vocabularies": {
   "intervention_operators": [
    "change_base",
@@ -93,18 +93,18 @@
   "failure_receipts": 3,
   "benchmark_items": 4,
   "benchmark_results": 0,
-  "statement_nodes_total": 4843,
+  "statement_nodes_total": 4847,
   "statement_nodes_explained": 8,
   "explained_fraction": 0.0017,
-  "authored_theorem_like": 141820,
+  "authored_theorem_like": 141825,
   "unexplained_by_logical_class": {
-   "unconditional_object_theorem": 348,
+   "unconditional_object_theorem": 350,
    "reduction_or_transport": 94,
    "finite_instance": 85,
    "classical_formalised": 44,
    "conditional_implication": 158,
-   "representation_normalisation": 158,
-   "barrier_no_go": 70,
+   "representation_normalisation": 159,
+   "barrier_no_go": 71,
    "equivalence_or_classification": 103,
    "infrastructure": 3771,
    "generated_certificate_instance": 4
@@ -619,7 +619,7 @@
   ],
   "unexplained_residual": {
    "rule": "Statement nodes no mechanism claims to explain. A large residual is a real finding about the basis, not a bookkeeping gap.",
-   "count": 4835,
+   "count": 4839,
    "nodes": [
     "Z01::bounded_crt_exact_valuation_frame",
     "Z01::canonical_witness_selector_reduction",
@@ -1599,6 +1599,10 @@
     "Z64::actual_lcm_tail_orbit_is_an_integer_translate_of_the_scaled_totient_series",
     "Z64::cofinal_actual_lcm_orbit_separation_conditionally_forces_totient_irrationality",
     "Z64::odd_rank_raw_block_approximates_the_actual_lcm_orbit_with_explicit_error",
+    "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
+    "Z65::primitive_23_cone_covers_every_rank_from_eleven",
+    "Z65::primitive_23_cone_has_rank_ten_defect_and_recurrent_multiplicity",
+    "Z65::primitive_23_solution_is_a_positive_coprime_rank_decomposition",
     "Z65::terminal_scaled_vanishing_refutes_universal_mersenne_subseries_irrationality",
     "Z65::terminal_scaled_vanishing_supplies_an_infinite_exact_half_support",
     "Z65::universal_mersenne_subseries_irrationality_is_the_erdos_257_assertion",
@@ -5464,8 +5468,8 @@
   }
  },
  "integrity": {
-  "declarations_known": 150935,
-  "statement_nodes_known": 4843,
+  "declarations_known": 150941,
+  "statement_nodes_known": 4847,
   "mechanism_ids": [
    "composite_dilation_defect_accounting",
    "dyadic_odd_core_basis",
