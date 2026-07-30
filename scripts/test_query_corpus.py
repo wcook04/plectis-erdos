@@ -250,6 +250,36 @@ def validate_natural_language_search() -> None:
             "selection": "exact_problem_registry_term",
             "declaration_scan_required": False,
         }
+    out_of_scope_question = (
+        "For Erdos 68, what does equality of two complementary "
+        "leave-one-out projections prove?"
+    )
+    boundary = query("--ask", out_of_scope_question, "--format", "json")
+    assert boundary["kind"] == "corpus_scope_boundary"
+    assert boundary["status"] == "explicit_problem_not_indexed"
+    assert boundary["requested_problem_numbers"] == [68]
+    assert boundary["out_of_scope_problem_numbers"] == [68]
+    assert boundary["covered_problem_numbers"] == []
+    assert boundary["indexed_problem_numbers"] == [
+        row["erdos_number"]
+        for row in load("docs/problems.json")["problems"]
+    ]
+    assert boundary["scope_source"] == "docs/problems.json"
+    assert boundary["match_count"] == 0
+    assert boundary["claim_effect"] == "none"
+    assert boundary["private_state_disclosure"] == "none"
+    boundary_card = run(
+        "--ask",
+        out_of_scope_question,
+        "--format",
+        "card",
+    )
+    assert boundary_card.returncode == 0
+    assert boundary_card.stdout.startswith(
+        "corpus scope boundary | status=explicit_problem_not_indexed "
+        "| requested=#68 | out_of_scope=#68 "
+    )
+    assert "claim_effect=none" in boundary_card.stdout
     dictionary = query("--vocabulary")
     assert dictionary["problem_registry_contract"]["source"] == "docs/problems.json"
     assert len(dictionary["problem_registry_contract"]["problems"]) == 6
