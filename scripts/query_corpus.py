@@ -3554,6 +3554,56 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
     }
 
 
+def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
+    """Reject explicit problem numbers absent from the live public registry."""
+    normalized_query = normalized_search_text(query)
+    requested_numbers = {
+        int(match)
+        for pattern in (
+            r"\berdos(?:\s+problem)?\s*#?\s*(\d+)\b",
+            r"\bproblem\s*#?\s*(\d+)\b(?!\s*/)",
+        )
+        for match in re.findall(pattern, normalized_query)
+    }
+    if not requested_numbers:
+        return None
+
+    indexed_numbers = {
+        int(row["erdos_number"])
+        for row in load("docs/problems.json").get("problems", [])
+    }
+    outside_numbers = sorted(requested_numbers - indexed_numbers)
+    if not outside_numbers:
+        return None
+
+    covered_numbers = sorted(requested_numbers & indexed_numbers)
+    return {
+        "kind": "corpus_scope_boundary",
+        "authority_posture": (
+            "public_corpus_coverage_receipt_not_claim_status_or_Lean_proof_authority"
+        ),
+        "query": query,
+        "status": (
+            "explicit_problem_partially_out_of_scope"
+            if covered_numbers
+            else "explicit_problem_not_indexed"
+        ),
+        "requested_problem_numbers": sorted(requested_numbers),
+        "out_of_scope_problem_numbers": outside_numbers,
+        "covered_problem_numbers": covered_numbers,
+        "indexed_problem_numbers": sorted(indexed_numbers),
+        "scope_source": "docs/problems.json",
+        "match_count": 0,
+        "claim_effect": "none",
+        "private_state_disclosure": "none",
+        "next": (
+            "Use a public corpus whose live problem registry includes the "
+            "requested problem; this corpus will not substitute ranked results "
+            "from other problems."
+        ),
+    }
+
+
 def direct_route_search_packet(
     query: str,
     limit: int,
@@ -3619,6 +3669,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     query = query.strip()
     if not query:
         raise ValueError("search query must not be empty")
+    scope_boundary = corpus_scope_boundary_packet(query)
+    if scope_boundary is not None:
+        return scope_boundary
     claims = load("docs/claims.json")
     problem_route = problem_registry_route(query)
     if problem_route is not None:
@@ -5084,6 +5137,9 @@ def best_reading_route_result(query: str) -> dict[str, Any] | None:
 
 def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     """Compile a question into a bounded, witness-carrying semantic subgraph."""
+    scope_boundary = corpus_scope_boundary_packet(query)
+    if scope_boundary is not None:
+        return scope_boundary
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
     interpretation = search["query_interpretation"]
     operator_id = interpretation["operator"]["id"]
@@ -6137,6 +6193,22 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| omitted={packet['omission_receipt'].get('omitted_match_count', 0)}"
         )
         return "\n".join(rows)
+    if kind == "corpus_scope_boundary":
+        requested = ",".join(
+            f"#{number}" for number in packet["requested_problem_numbers"]
+        )
+        outside = ",".join(
+            f"#{number}" for number in packet["out_of_scope_problem_numbers"]
+        )
+        indexed = ",".join(
+            f"#{number}" for number in packet["indexed_problem_numbers"]
+        )
+        return (
+            f"corpus scope boundary | status={packet['status']} "
+            f"| requested={requested} | out_of_scope={outside} "
+            f"| indexed={indexed} | source={packet['scope_source']} "
+            "| claim_effect=none"
+        )
     if kind == "claim_status":
         return (
             f"status {packet['status']} | claims={packet['claim_count']} "
