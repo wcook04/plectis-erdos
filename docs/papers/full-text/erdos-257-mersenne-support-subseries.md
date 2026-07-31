@@ -479,7 +479,7 @@ The target $`1/21`$ has a useful property that does not depend on any finite sea
 
 </div>
 
-This is checked by [the formal theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e52e55c5db4d2ca965be45f007d25d0586ad4a0e/Erdos257/HalfCounterexampleFrontier.lean#L59). The reduced denominator $`21`$ has doubling order $`6`$, so the exact denominator–lcm identity forces every selected exponent to divide $`6`$. The lower bound $`n\ge2`$ leaves only $`2,3,6`$, and the remaining eight subsets are discharged by exact rational arithmetic. Thus any representation of $`1/21`$ along this rank-$`\ge2`$ route, if one exists, must be infinite. The theorem proves nontermination only: it does not prove that $`1/21`$ lies in $`\mathcal A`$.
+This is checked by [the formal theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e52e55c5db4d2ca965be45f007d25d0586ad4a0e/ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean#L59). The reduced denominator $`21`$ has doubling order $`6`$, so the exact denominator–lcm identity forces every selected exponent to divide $`6`$. The lower bound $`n\ge2`$ leaves only $`2,3,6`$, and the remaining eight subsets are discharged by exact rational arithmetic. Thus any representation of $`1/21`$ along this rank-$`\ge2`$ route, if one exists, must be infinite. The theorem proves nontermination only: it does not prove that $`1/21`$ lies in $`\mathcal A`$.
 
 A separate arithmetic module isolates the primitive cone that appears in one candidate expansion route. Write
 ``` math

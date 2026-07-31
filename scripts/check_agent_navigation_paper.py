@@ -32,7 +32,7 @@ SECTION_ORDER = (
 ANCHOR_GROUPS = {
     "scale_and_coverage": (
         "992 Lean modules and 151,761 declarations",
-        "8,772 source-resolved nodes and 38,844 direct",
+        "9,261 source-resolved nodes and 48,781 direct",
         r"\SemanticAuthoredTheoremLike/\SemanticAuthoredTheoremLike",
         r"\SemanticAuthoredInterpreted\ authored interpretations",
         r"\SemanticDirectEvidence\ direct evidence",
