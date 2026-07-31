@@ -19,7 +19,7 @@
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
   "declaration_atlas_digest": "sha256:ed45896ae6d792222d79e913a9807e31985cfb63928216ca2ba93765e1bceaf8",
-  "semantic_corpus_digest": "sha256:5ea000e19a2b68837a92b5c59139ec50b98f91de200496389b53c7f320539299",
+  "semantic_corpus_digest": "sha256:768c2d2d097d1dadc4e7ea5e37e2423b2e39fa2aecf3a51f88c1310d2ab552d8",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -93,7 +93,7 @@
   "failure_receipts": 3,
   "benchmark_items": 4,
   "benchmark_results": 0,
-  "statement_nodes_total": 5206,
+  "statement_nodes_total": 5205,
   "statement_nodes_explained": 8,
   "explained_fraction": 0.0015,
   "authored_theorem_like": 142191,
@@ -106,7 +106,7 @@
    "representation_normalisation": 159,
    "barrier_no_go": 71,
    "equivalence_or_classification": 103,
-   "infrastructure": 4130,
+   "infrastructure": 4129,
    "generated_certificate_instance": 4
   },
   "outcome_states": {},
@@ -619,7 +619,7 @@
   ],
   "unexplained_residual": {
    "rule": "Statement nodes no mechanism claims to explain. A large residual is a real finding about the basis, not a bookkeeping gap.",
-   "count": 5198,
+   "count": 5197,
    "nodes": [
     "Z01::bounded_crt_exact_valuation_frame",
     "Z01::canonical_witness_selector_reduction",
@@ -3594,7 +3594,6 @@
     "structural::761f7494ebfce8d66f7d",
     "structural::764d6be8f14e2850cb36",
     "structural::7656aab1b2466aa3fe4f",
-    "structural::765725cb66f406f6ed4b",
     "structural::765a151db0c78422530f",
     "structural::767929ef4c620be6afd7",
     "structural::7696d4fa52e0611870c1",
@@ -5828,7 +5827,7 @@
  },
  "integrity": {
   "declarations_known": 151391,
-  "statement_nodes_known": 5206,
+  "statement_nodes_known": 5205,
   "mechanism_ids": [
    "composite_dilation_defect_accounting",
    "dyadic_odd_core_basis",

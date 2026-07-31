@@ -125,8 +125,8 @@
       "evidence": [
         {
           "declaration": "localMersenneQuotient_eq_two_pow_sub_of_half_lt",
-          "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-          "line": 72
+          "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+          "line": 26
         }
       ]
     },
@@ -247,8 +247,8 @@
     },
     {
       "declaration": "localMersenneQuotient_eq_two_pow_sub_of_half_lt",
-      "module": "Erdos249257/BooleanMobiusSkipRow.lean",
-      "line": 72,
+      "module": "Erdos249257/BooleanMobiusLocalRepair.lean",
+      "line": 26,
       "role": "statement",
       "statement_node": "upper_half_mersenne_quotients_are_pure_binary_coins"
     },
