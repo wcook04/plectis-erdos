@@ -220,6 +220,8 @@ SEMANTIC_VOCABULARY = (
         "route_hints": (
             "--declaration finiteErdosSum_ne_one_div_twenty_one",
             "--declaration exists_two_primitive23_solutions_mul_ten",
+            "--claim universal_257",
+            "--open remaining_open.universal_257_all_infinite_supports",
         ),
         "semantic_node_hints": (
             "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
@@ -3140,7 +3142,11 @@ def matched_semantic_vocabulary(query: str) -> list[dict[str, Any]]:
 def semantic_query_operator(query: str) -> dict[str, Any]:
     """Classify the question-shaped operator independently of result ranking."""
     query_text = normalized_search_text(query)
+    query_terms = search_terms(query)
     if (
+        "resolution_status" in query_terms
+        and query_terms & {"claim", "public", "release", "status"}
+    ) or (
         "what should i try next" in query_text
         or "what blocks" in query_text
         or "what remains" in query_text
@@ -3673,6 +3679,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     if scope_boundary is not None:
         return scope_boundary
     claims = load("docs/claims.json")
+    hint_targets = semantic_hint_targets(query)
     problem_route = problem_registry_route(query)
     if problem_route is not None:
         return direct_route_search_packet(
@@ -3698,7 +3705,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     hinted_route_ids = [
         handle
         for (kind, handle), _priority in sorted(
-            semantic_hint_targets(query).items(), key=lambda item: item[1]
+            hint_targets.items(), key=lambda item: item[1]
         )
         if kind == "reading_route"
     ]
@@ -3829,6 +3836,12 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         )
         if status_target and proposition["open_target_claim"] == status_target[0]:
             rank = -1
+        if (
+            hint_priority := hint_targets.get(
+                ("open_proposition", proposition["id"])
+            )
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             ranked.append(
                 (
@@ -3848,6 +3861,10 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 if value
             ),
         )
+        if (
+            hint_priority := hint_targets.get(("claim", claim["id"]))
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             ranked.append((rank, f"claim:{claim['id']}", {"kind": "claim", **compact_claim(claim)}))
 
@@ -3857,6 +3874,12 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             row["name"],
             " ".join(str(value) for value in (row["signature"], row.get("docstring"), row["module"]) if value),
         )
+        if (
+            hint_priority := hint_targets.get(
+                ("declaration", row["name"])
+            )
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             result = {"kind": "declaration", **compact_declaration(row)}
             if row.get("signature"):
@@ -4027,6 +4050,10 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             rank = -2
         elif generic_claim_status_query and row["id"] == "browse_claim_status":
             rank = -2
+        if (
+            hint_priority := hint_targets.get(("reading_route", row["id"]))
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             ranked.append(
                 (
@@ -4045,7 +4072,6 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
-    hint_targets = semantic_hint_targets(query)
     ranked = [
         (
             (
@@ -4677,27 +4703,45 @@ def operator_synthesis(
             ),
         }
     if operator_id == "frontier":
-        open_records = []
+        directly_selected_open_records = []
+        contextual_open_records = []
         advances = []
         for cell in cells:
             if cell["kind"] == "open_proposition":
-                open_records.append(cell["content"]["open_record"])
+                directly_selected_open_records.append(
+                    cell["content"]["open_record"]
+                )
                 advances.extend(cell["content"]["nearest_advances"])
             elif cell["kind"] == "reading_route":
                 programme = cell["content"].get("programme")
                 if programme:
-                    open_records.extend(
+                    contextual_open_records.extend(
                         programme["remaining_open_propositions"]
                     )
             elif cell["kind"] == "claim":
-                open_records.extend(
+                contextual_open_records.extend(
                     cell["content"]["remaining_open_propositions"]
                 )
+        exact_open_records = (
+            directly_selected_open_records or contextual_open_records
+        )
+        exact_open_ids = {
+            row["id"] for row in exact_open_records if row.get("id")
+        }
         return {
             "kind": "frontier_synthesis",
             "exact_open_records": list(
                 {
-                    row["id"]: row for row in open_records if row.get("id")
+                    row["id"]: row
+                    for row in exact_open_records
+                    if row.get("id")
+                }.values()
+            ),
+            "adjacent_open_records": list(
+                {
+                    row["id"]: row
+                    for row in contextual_open_records
+                    if row.get("id") and row["id"] not in exact_open_ids
                 }.values()
             ),
             "nearest_advances": advances,

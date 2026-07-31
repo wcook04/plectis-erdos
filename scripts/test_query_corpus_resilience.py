@@ -160,6 +160,34 @@ def check_vocabulary_mismatch_queries() -> None:
         ("declaration", "exists_two_primitive23_solutions_mul_ten"),
     ]
 
+    fixed_cut_boundary = query_corpus.semantic_slice_packet(
+        "Does the public Erdős 257 release claim that a denominator-21 "
+        "saturated transition reduces to a zero-pulse skip followed by a "
+        "local pulse at most one, or prove 1/21 membership?",
+        4,
+    )
+    assert fixed_cut_boundary["query_interpretation"]["operator"]["id"] == (
+        "frontier"
+    )
+    assert [
+        (cell["kind"], cell["handle"])
+        for cell in fixed_cut_boundary["semantic_cells"]
+    ] == [
+        ("declaration", "finiteErdosSum_ne_one_div_twenty_one"),
+        ("declaration", "exists_two_primitive23_solutions_mul_ten"),
+        ("claim", "universal_257"),
+        (
+            "open_proposition",
+            "remaining_open.universal_257_all_infinite_supports",
+        ),
+    ]
+    assert {
+        row["id"]
+        for row in fixed_cut_boundary["operator_synthesis"][
+            "exact_open_records"
+        ]
+    } == {"remaining_open.universal_257_all_infinite_supports"}
+
 
 def check_witness_carrying_semantic_slices() -> None:
     rank_two = query_corpus.semantic_slice_packet(

@@ -146,6 +146,7 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "tag": claims["release"]["tag"],
             "lean_toolchain": claims["release"]["lean_toolchain"],
             "formal_source_ref": claims["release"]["formal_source"]["ref"],
+            "formal_source_public_tag": claims["release"]["formal_source"]["public_tag"],
             "formal_source_publication_state": claims["release"]["formal_source"]["publication_state"],
         },
         "scale": atlas["summary"],
@@ -579,6 +580,7 @@ def build() -> dict[str, Any]:
                 "ref": formal_ref,
                 "ref_kind": formal_source["ref_kind"],
                 "resolved_commit": formal_commit,
+                "public_tag": formal_source["public_tag"],
                 "publication_state": formal_source["publication_state"],
                 "relationship_to_last_tag": formal_source["relationship_to_last_tag"],
                 "last_release": {
