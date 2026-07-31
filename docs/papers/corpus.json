@@ -1377,7 +1377,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:fa7317ae1449b675ea27fcc1cf51356e00c75119927dc69fa870d34d26c62f40",
+      "source_sha256": "sha256:86778b99c19874c36d2268ad73c9a48598006e4dfca4cfb146ff1752d1d0c2c2",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-totient-reasoning-surface.tex",
       "section_count": 154,
@@ -2313,8 +2313,8 @@
         "manuscript_title": "The Binary Totient Series"
       },
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:1146947faf4c019487de959a0db7a5c594620213750af2e58943a1389f314dfb",
-      "pdf_byte_count": 706691,
+      "pdf_sha256": "sha256:4d9694dbb7ef612f89795c6ab55883f0092a3178d437348bfc8586f3f24bd535",
+      "pdf_byte_count": 706731,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
