@@ -10,6 +10,7 @@ from pathlib import Path
 
 from check_problem_note_sources import (
     declarations_in,
+    declares_at,
     linked_declaration_keys,
     required_note_declaration_failures,
     validated_coverage_floor,
@@ -31,6 +32,12 @@ theorem live : True := by
   trivial
 """
     assert declarations_in(source) == ["live"]
+
+
+def test_split_declaration_head_resolves_at_keyword_line() -> None:
+    lines = ["theorem", "    splitHead", "    : True := by", "  trivial"]
+    assert declares_at(lines, 0, "splitHead")
+    assert not declares_at(lines, 0, "otherHead")
 
 
 def test_wrong_module_name_collision_is_not_coverage() -> None:
@@ -106,12 +113,13 @@ def test_erdos257_headline_anchors_are_required() -> None:
 
 def main() -> int:
     test_comment_injection_is_not_a_declaration()
+    test_split_declaration_head_resolves_at_keyword_line()
     test_wrong_module_name_collision_is_not_coverage()
     test_missing_required_anchor_is_rejected()
     test_invalid_coverage_floor_is_rejected()
     test_erdos257_headline_anchors_are_required()
     print(
-        "test_problem_note_sources: comment injection, module collisions, "
+        "test_problem_note_sources: comment injection, split heads, module collisions, "
         "required anchors, and invalid floors rejected"
     )
     return 0

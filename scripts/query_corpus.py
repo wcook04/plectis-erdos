@@ -1917,7 +1917,19 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             continue
         text = path.read_text(encoding="utf-8")
         lines = text.splitlines()
-        environments = set(re.findall(r"\\newtheorem\*?\{([^}]+)\}", text))
+        theorem_sources = [text]
+        for input_match in re.finditer(r"\\input\{([^}]+)\}", text):
+            input_path = path.parent / input_match.group(1)
+            if input_path.suffix == "":
+                input_path = input_path.with_suffix(".tex")
+            if input_path.is_file():
+                theorem_sources.append(input_path.read_text(encoding="utf-8"))
+        environments = set(
+            re.findall(
+                r"\\newtheorem\*?\{([^}]+)\}",
+                "\n".join(theorem_sources),
+            )
+        )
         starts: list[dict[str, Any]] = []
 
         section_pattern = re.compile(
@@ -1963,6 +1975,9 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
 
         starts.sort(key=lambda row: row["offset"])
         for index, start in enumerate(starts):
+            label_allowlist = paper_row.get("anchor_label_allowlist")
+            if label_allowlist is not None and start["label"] not in label_allowlist:
+                continue
             region_end = starts[index + 1]["offset"] if index + 1 < len(starts) else len(text)
             region = text[start["offset"]:region_end]
             line = text.count("\n", 0, start["offset"]) + 1
@@ -1984,17 +1999,28 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
 
             source_links = []
             for link in re.finditer(
-                r"\\(?P<macro>lref|lrefx|lword|lloc)"
+                r"\\(?P<macro>lref|lrefx|lword|mref|mword|lloc|mloc)"
                 r"\{(?P<file>[^}]+)\}\{(?P<line>\d+)\}"
                 r"(?:\{(?P<name>[^}]*)\})?"
-                r"(?:\{(?P<label>[^}]*)\})?",
+                r"(?:\{(?P<label>(?:[^{}]|\{[^{}]*\})*)\})?",
                 region,
             ):
-                module = f"Erdos249257/{link.group('file')}"
+                file_name = link.group("file")
+                macro = link.group("macro")
+                if file_name.startswith("Erdos249257/"):
+                    module = file_name
+                elif file_name.startswith("ErdosProblems/"):
+                    module = file_name
+                elif re.match(r"Erdos\d+/", file_name):
+                    module = f"ErdosProblems/{file_name}"
+                elif macro.startswith("m"):
+                    module = f"ErdosProblems/{file_name}"
+                else:
+                    module = f"Erdos249257/{file_name}"
                 source_links.append(
                     {
                         "edge_kind": "authored_source_link",
-                        "macro": link.group("macro"),
+                        "macro": macro,
                         "module": module,
                         "line": int(link.group("line")),
                         "source_ref": f"{module}:{link.group('line')}",
@@ -3298,10 +3324,9 @@ def semantic_dictionary_packet() -> dict[str, Any]:
         "problem_registry_contract": {
             "source": "docs/problems.json",
             "matching": (
-                "An exact accent-insensitive problem phrase, problem id, short "
-                "title, or full indexed question routes directly without scanning "
-                "the declaration atlas. Problem navigation does not confer reviewed "
-                "claim status or Lean proof authority."
+                "Exact accent-insensitive problem phrases, ids, short titles, and "
+                "indexed questions route without an atlas scan. Navigation grants "
+                "neither reviewed claim status nor Lean proof authority."
             ),
             "problems": [
                 {
@@ -3323,9 +3348,8 @@ def semantic_dictionary_packet() -> dict[str, Any]:
             ],
         },
         "consumer_action": (
-            "Load this bounded packet before free-text search, then follow one "
-            "typed route hint or inspect the transparent query interpretation "
-            "returned by --search."
+            "Load this packet first; follow a typed route hint or inspect the "
+            "transparent --search interpretation."
         ),
         "proof_authority": "Lean source checked by the pinned Lean kernel",
     }
@@ -3359,15 +3383,23 @@ def semantic_hint_targets(query: str) -> dict[tuple[str, str], int]:
     return targets
 
 
-def status_question_target(query: str) -> tuple[str, str] | None:
-    """Return the open-target claim and problem number for a status question."""
+def status_question_target(query: str) -> tuple[str, str, str] | None:
+    """Return the target claim, problem number, and principal open proposition."""
     terms = search_terms(query)
     if "resolution_status" not in terms:
         return None
     if "249" in terms:
-        return ("erdos_249", "249")
+        return (
+            "erdos_249",
+            "249",
+            "remaining_open.erdos_249_irrationality",
+        )
     if "257" in terms:
-        return ("universal_257", "257")
+        return (
+            "universal_257",
+            "257",
+            "remaining_open.universal_257_all_infinite_supports",
+        )
     return None
 
 
@@ -3835,7 +3867,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             ),
         )
         if status_target and proposition["open_target_claim"] == status_target[0]:
-            rank = -1
+            rank = -1 if proposition["id"] == status_target[2] else 0
         if (
             hint_priority := hint_targets.get(
                 ("open_proposition", proposition["id"])

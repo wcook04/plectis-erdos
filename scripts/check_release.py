@@ -1063,7 +1063,9 @@ def main() -> int:
     check(formal_tree_matches,
           formal_tree_detail or "current public Lean sources differ from formal-source checkpoint")
     for paper_path, paper_text in paper_sources:
-        m = re.search(r"\\newcommand\{\\commit\}\{([^}]+)\}", paper_text)
+        m = re.search(
+            r"\\(?:re)?newcommand\{\\commit\}\{([^}]+)\}", paper_text
+        )
         expected_pin = formal_ref
         check(m is not None and m.group(1) == expected_pin,
               f"{paper_path} \\commit pin {m.group(1) if m else '<missing>'} != expected {expected_pin}")
@@ -1145,15 +1147,20 @@ def main() -> int:
     for paper_path, paper_text in paper_sources:
         source_ref = formal_ref
         for macro, fname, line_s, name in re.findall(
-                r"\\(lref|lrefx|lword|lloc)\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
-            rel = f"Erdos249257/{fname}"
+                r"\\([lm](?:refx?|word|loc))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
+            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
+                rel = fname
+            elif "\\input{problem-note-preamble}" in paper_text:
+                rel = f"ErdosProblems/{fname}"
+            else:
+                rel = f"Erdos249257/{fname}"
             lines = module_lines(cache, rel, source_ref)
             if lines is None:
                 fail(f"{paper_path} \\{macro}: file {rel} not found at {source_ref}")
                 continue
             line = int(line_s)
             check(line <= len(lines), f"{paper_path} \\{macro}: {rel}:{line} beyond end of file")
-            if macro in ("lref", "lrefx", "lword") and name and line <= len(lines):
+            if macro in ("lref", "lrefx", "lword", "mref", "mword") and name and line <= len(lines):
                 check(name_at_line(lines, name, line),
                       f"{paper_path} \\{macro}: {name} not at {rel}:{line} (±{LINE_WINDOW})")
 

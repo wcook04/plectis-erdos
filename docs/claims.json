@@ -218,15 +218,17 @@
       {
         "id": "erdos257_half_story",
         "route_kind": "mathematical_programme",
-        "title": "Achievement-set geometry and the half-value seam",
-        "intent": "Follow the proved #257 half-value spine from unique greedy coding to the exact last-transition tail residual, without treating local dyadic-safety bounds as a solution.",
+        "title": "Achievement-set geometry and the 1/2 and 1/21 frontiers",
+        "intent": "Follow the proved #257 counterexample spine from unique greedy coding through the half-value seam and the exact fatal/cofinite/aligned frontier at 1/21, without treating either surviving arithmetic producer as a solution.",
         "discovery_terms": [
           "what remains open for 257",
           "achievement set topology",
-          "how close is the half-value case"
+          "how close is the half-value case",
+          "what is proved about one over twenty one",
+          "permanent affine supercapacity"
         ],
-        "mathematical_focus": "Greedy coding, exact achievement-set geometry, dyadic skip bands, seam classification, and the last-producer tail residual for the target 1/2.",
-        "claim_ceiling": "Exact geometry and reductions for the half-value branch; neither half-membership nor universal Erdős #257 is proved.",
+        "mathematical_focus": "Greedy coding, exact achievement-set geometry, dyadic skip bands and seam classification for 1/2, plus the canonical quotient-greedy, closed-row, and permanent affine-supercapacity frontier for 1/21.",
+        "claim_ceiling": "Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved.",
         "problem_target_claim_ids": [
           "universal_257"
         ],
@@ -235,12 +237,14 @@
           "half_greedy_two_thirds_band",
           "half_membership_seam_classification",
           "fatal_gap_right_tail_classification",
+          "twenty_one_quotient_greedy_frontier",
           "final_middle_cell_escape",
           "final_middle_neg_two_phase_sieve",
           "last_producer_tail_escape_reduction"
         ],
         "remaining_open_proposition_ids": [
           "remaining_open.half_value_membership",
+          "remaining_open.twenty_one_permanent_affine_supercapacity",
           "remaining_open.universal_257_all_infinite_supports"
         ],
         "related_route_ids": [
@@ -256,16 +260,19 @@
           "python3 scripts/query_corpus.py --claim half_greedy_two_thirds_band",
           "python3 scripts/query_corpus.py --claim half_membership_seam_classification",
           "python3 scripts/query_corpus.py --claim fatal_gap_right_tail_classification",
+          "python3 scripts/query_corpus.py --claim twenty_one_quotient_greedy_frontier",
           "python3 scripts/query_corpus.py --claim final_middle_cell_escape",
           "python3 scripts/query_corpus.py --claim final_middle_neg_two_phase_sieve",
           "python3 scripts/query_corpus.py --claim last_producer_tail_escape_reduction",
           "python3 scripts/query_corpus.py --open remaining_open.half_value_membership",
+          "python3 scripts/query_corpus.py --open remaining_open.twenty_one_permanent_affine_supercapacity",
           "python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports"
         ],
         "authority_owners": [
           "Erdos249257/GreedyAchievementSet.lean",
           "Erdos249257/HalfGreedyTwoThirdsBand.lean",
           "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "Erdos249257/TwentyOneQuotientGreedy.lean",
           "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
           "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
           "Erdos249257/HalfCylinderLastProducerContradiction.lean",
@@ -935,6 +942,16 @@
           "source": "paper/erdos257-mersenne-reasoning-surface.tex",
           "rendered": "erdos257-mersenne-reasoning-surface.pdf",
           "role": "Full problem-specific reasoning record for Erdős #257."
+        },
+        {
+          "title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry",
+          "source": "paper/erdos-257-mersenne-support-subseries.tex",
+          "rendered": "erdos-257-mersenne-support-subseries.pdf",
+          "role": "Standalone theorem-led problem note for Erdős #257 and the 1/21 frontier.",
+          "anchor_label_allowlist": [
+            "res:one-over-twenty-one-frontier",
+            "prob:one-over-twenty-one-membership"
+          ]
         }
       ]
     },
@@ -1123,13 +1140,14 @@
             "half_greedy_two_thirds_band",
             "mobius_sign_support_no_go",
             "half_second_channel_reduction",
-            "campbell_shift_synchronization_boundary"
+            "campbell_shift_synchronization_boundary",
+            "twenty_one_quotient_greedy_frontier"
           ],
-          "status_summary": "Classical geometry formalised, exact local bands, a conditional second channel, and scoped no-go boundaries.",
+          "status_summary": "Classical geometry formalised, exact local bands, a conditional second channel, scoped no-go boundaries, and the exact fatal/cofinite/aligned frontier at 1/21.",
           "prior_art_posture": "Kovač–Tao supply the strict-tail subsum geometry; the classical Lambert–Möbius identity is the baseline for the scoped sign-support no-go; Crandall and Campbell concern adjacent binary-digit questions and are not proof inputs. No priority claim is made for the sign separation.",
           "primary_narrative_owner": "paper/erdos249-257-main-paper.tex",
           "source_route": "python3 scripts/query_corpus.py --claim greedy_achievement_geometry",
-          "consumer_or_open_obligation": "Decide whether 1/2 belongs to the achievement set; positive membership refutes universal #257.",
+          "consumer_or_open_obligation": "Decide whether 1/2 belongs to the achievement set, and exclude permanent affine supercapacity at 1/21; positive membership at either target refutes universal #257.",
           "view_decision": "gateway_headline"
         },
         {
@@ -1731,7 +1749,8 @@
           "path": "Erdos249257/BooleanMobiusCarry.lean",
           "role": "Boolean-Mobius carry coordinates",
           "imports": [
-            "Erdos249257.GenericTailOrbitRigidity"
+            "Erdos249257.GenericTailOrbitRigidity",
+            "Erdos249257.GreedyAchievementSet"
           ]
         },
         {
@@ -7596,6 +7615,26 @@
           ]
         },
         {
+          "id": "Erdos249257.TwentyOneQuotientCompactness",
+          "path": "Erdos249257/TwentyOneQuotientCompactness.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusGlobalRepair"
+          ]
+        },
+        {
+          "id": "Erdos249257.TwentyOneQuotientGreedy",
+          "path": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TwentyOneQuotientCompactness",
+            "Erdos249257.BooleanMobiusGreedyReduction",
+            "Erdos249257.BooleanMobiusExactTransition",
+            "Erdos249257.HalfCutLocator",
+            "Erdos249257.HalfGreedyFatalGap"
+          ]
+        },
+        {
           "id": "ErdosProblems.AxiomAudit",
           "path": "ErdosProblems/AxiomAudit.lean",
           "role": "Lean proof module",
@@ -10373,6 +10412,21 @@
           "to": "greedy_achievement_geometry"
         },
         {
+          "from": "twenty_one_quotient_greedy_frontier",
+          "relation": "builds_on",
+          "to": "greedy_achievement_geometry"
+        },
+        {
+          "from": "twenty_one_quotient_greedy_frontier",
+          "relation": "advances_open_target",
+          "to": "universal_257",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.twenty_one_permanent_affine_supercapacity",
+            "operation": "narrows",
+            "statement": "Reduces 1/21 membership exactly to excluding one fatal/cofinite/aligned branch and identifies eventual permanent affine supercapacity as its sole late regime; no contradiction or unbounded closed-return producer is proved."
+          }
+        },
+        {
           "from": "half_membership_seam_classification",
           "relation": "builds_on",
           "to": "fatal_gap_right_tail_classification"
@@ -10847,11 +10901,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "e52e55c5db4d2ca965be45f007d25d0586ad4a0e",
+      "ref": "e5fd26a6d1b1a346430205eab5385b4c9565d004",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-07-30"
+      "public_tag": "formal-source-2026-07-31"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -10913,6 +10967,18 @@
       }
     },
     {
+      "id": "remaining_open.twenty_one_permanent_affine_supercapacity",
+      "status": "open",
+      "open_target_claim": "universal_257",
+      "statement": "Exclude the explicit fatal/cofinite/aligned branch for 1/21, equivalently contradict its eventual permanent affine-supercapacity recurrence or force an unbounded sequence of closed canonical quotient rows. This would prove 1/21 membership and refute universal #257; no such producer is proved.",
+      "paper_anchor": {
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "environment": "problem",
+        "title": "membership of 1/21 in the Mersenne achievement set",
+        "line": 1071
+      }
+    },
+    {
       "id": "remaining_open.universal_257_all_infinite_supports",
       "status": "open",
       "open_target_claim": "universal_257",
@@ -10937,7 +11003,7 @@
         {
           "name": "irrational_erdosSum_full_support",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8000
+          "line": 8281
         }
       ]
     },
@@ -10952,7 +11018,7 @@
         {
           "name": "irrational_erdosBorwein_series",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8007
+          "line": 8288
         }
       ]
     },
@@ -10970,17 +11036,17 @@
         {
           "name": "erdos257_family_factorial_instance",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5754
+          "line": 6035
         },
         {
           "name": "erdos257_family_two_pow_instance",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5762
+          "line": 6043
         },
         {
           "name": "irrational_erdosSupportSeries_pairwise_coprime",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10448
+          "line": 10729
         }
       ]
     },
@@ -10995,17 +11061,17 @@
         {
           "name": "irrational_weightedErdosSeries_periodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12370
+          "line": 12651
         },
         {
           "name": "irrational_weightedErdosSeries_eventuallyPeriodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12397
+          "line": 12678
         },
         {
           "name": "irrational_ratWeightSeries_eventuallyPeriodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12483
+          "line": 12764
         }
       ]
     },
@@ -11020,12 +11086,12 @@
         {
           "name": "irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13847
+          "line": 14128
         },
         {
           "name": "irrational_intWeightedErdosSeries_periodic_of_bpow_mul_ne_intCast",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13872
+          "line": 14153
         }
       ]
     },
@@ -11040,7 +11106,7 @@
         {
           "name": "intWeightedCoeff_periodFourSignWeight_eq_zero_of_mod_four_eq_three",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13898
+          "line": 14179
         }
       ]
     },
@@ -11135,47 +11201,47 @@
         {
           "name": "finiteFragment_dyadicPrefixCompression",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1481
+          "line": 1636
         },
         {
           "name": "halfGreedyThreeDepthTakeRunExcessBound_iff_skippedExcessBound",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2021
+          "line": 2176
         },
         {
           "name": "greedyHalf_badSkipCapViolation_iff_primitiveLattice",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2033
+          "line": 2188
         },
         {
           "name": "halfGreedyPrefixSupportTailGap_eq_excess_div_denominator",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2126
+          "line": 2281
         },
         {
           "name": "greedyHalf_badSkipCapViolation_iff_supportCoeffTailGap",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2164
+          "line": 2319
         },
         {
           "name": "rawSafe_but_not_gcdScaled_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3294
+          "line": 3449
         },
         {
           "name": "factorEleven_predecessorOvershoot_not_inductive_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3316
+          "line": 3471
         },
         {
           "name": "unsafeSkipGcdOvershootSupply_iff_primitive",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3577
+          "line": 4520
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3618
+          "line": 4561
         }
       ]
     },
@@ -11568,6 +11634,50 @@
           "name": "seamGreedyEventuallyRight_iff_exists_isLastHalfGreedySkip",
           "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
           "line": 802
+        }
+      ]
+    },
+    {
+      "id": "twenty_one_quotient_greedy_frontier",
+      "label": "Canonical quotient-greedy frontier at 1/21",
+      "status": "unconditional progress",
+      "statement": "Membership of 1/21 in the Mersenne achievement set is equivalent to excluding one explicit fatal/cofinite/aligned branch. Every closed Boolean quotient row is the deterministic quotient-greedy row, and any unbounded sequence of canonical rows with remainder at most 2^R already gives membership. On the complementary fatal branch the remainder is eventually strictly supercapacity, the boundary rank is always selected, and support and remainder follow one exact affine recurrence. An aligned crossing from saturation into supercapacity forces a one-third- or two-thirds-scale ancestor hole and a square-root-bounded skipped exponent. These results isolate permanent affine supercapacity as the exact surviving late regime; they do not contradict it or prove 1/21 membership.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.twenty_one_permanent_affine_supercapacity",
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:one-over-twenty-one-frontier",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "twentyOneClosedRow_forces_quotientGreedy",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 231
+        },
+        {
+          "name": "one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 3508
+        },
+        {
+          "name": "twentyOneAlignedSaturatedCrossing_forces_canonical_ancestor_hole",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 5178
+        },
+        {
+          "name": "twentyOneAlignedSaturatedCrossing_forces_scaled_greedy_skip",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 5222
+        },
+        {
+          "name": "twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 5553
+        },
+        {
+          "name": "twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 5657
         }
       ]
     },
@@ -12248,12 +12358,12 @@
         {
           "name": "tsum_totient_div_two_pow_sub_one_eq_two",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18101
+          "line": 18382
         },
         {
           "name": "totient_series_eq_half_add_moebius_mersenne_square",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18126
+          "line": 18407
         }
       ]
     },
@@ -12271,12 +12381,12 @@
         {
           "name": "totient_series_eq_half_add_visible_coprime_pairs",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18229
+          "line": 18510
         },
         {
           "name": "tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18244
+          "line": 18525
         }
       ]
     },
@@ -12507,7 +12617,7 @@
         {
           "name": "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18056
+          "line": 18337
         }
       ]
     },
@@ -13106,7 +13216,7 @@
         {
           "name": "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 948
+          "line": 949
         }
       ]
     },
@@ -13276,17 +13386,17 @@
         {
           "name": "HalfSecondChannelSeparatedRat",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2695
+          "line": 2846
         },
         {
           "name": "halfSecondChannelSeparatedRat_of_pos_le_six",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2723
+          "line": 2900
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2901
+          "line": 3078
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",

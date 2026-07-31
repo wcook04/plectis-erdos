@@ -23,11 +23,11 @@ The workflow provenance explains the release discipline; it does not imply hidde
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 992 |
-| Lean declarations | 151,761 |
-| Theorem-like declarations | 149,812 |
+| Lean modules | 994 |
+| Lean declarations | 152,215 |
+| Theorem-like declarations | 150,178 |
 | Generated certificate declarations | 8,171 |
-| Principal claim links | 300 |
+| Principal claim links | 306 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json). Generated certificate
@@ -53,6 +53,7 @@ The authored prior-art record, not this table, is the source for antecedents.
 - `remaining_open.erdos_249_irrationality` — Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.
 - `remaining_open.unbounded_certificate_supply` — Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.
 - `remaining_open.half_value_membership` — Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.
+- `remaining_open.twenty_one_permanent_affine_supercapacity` — Exclude the explicit fatal/cofinite/aligned branch for 1/21, equivalently contradict its eventual permanent affine-supercapacity recurrence or force an unbounded sequence of closed canonical quotient rows. This would prove 1/21 membership and refute universal #257; no such producer is proved.
 - `remaining_open.universal_257_all_infinite_supports` — Prove irrationality for every infinite support A, not only the named support families formalised here.
 
 ## Mathematical programmes
@@ -62,7 +63,7 @@ Each route states its mathematical focus and exact public claim ceiling.
 
 | Programme | Exact ceiling |
 |---|---|
-| **Achievement-set geometry and the half-value seam** (`erdos257_half_story`) | Exact geometry and reductions for the half-value branch; neither half-membership nor universal Erdős #257 is proved. |
+| **Achievement-set geometry and the 1/2 and 1/21 frontiers** (`erdos257_half_story`) | Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved. |
 | **#249 certificate and harmonic interface** (`erdos249_certificate_story`) | The certificate formulation is exact and finite instances are checked; the unbounded certificate supply and irrationality of S remain open. |
 | **Classical and structured support irrationality** (`structured_support_families`) | These are structured families, coefficient classes, and a conditional bouquet reduction; arbitrary infinite supports in universal Erdős #257 remain open. |
 | **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`) | Each interface sharpens or re-expresses the same supply problem; no unbounded avoidance, slack, or separated-projection supply is proved. |
@@ -82,10 +83,10 @@ programmes, and source owners without loading the exhaustive graph.
 
 | Claim | Status | Paper | First Lean anchor |
 |---|---|---|---|
-| `eb_full_support` | formalised here | `res:full` | `irrational_erdosSum_full_support` in `Erdos249257/CertificateKernel.lean:8000` |
-| `eb_constant` | formalised here | `res:full` | `irrational_erdosBorwein_series` in `Erdos249257/CertificateKernel.lean:8007` |
-| `support_families` | formalised here | `res:support` | `erdos257_family_factorial_instance` in `Erdos249257/CertificateKernel.lean:5754` |
-| `denominator_exclusion` | formalised here | `res:farey` | `tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053` in `Erdos249257/CertificateKernel.lean:18056` |
+| `eb_full_support` | formalised here | `res:full` | `irrational_erdosSum_full_support` in `Erdos249257/CertificateKernel.lean:8281` |
+| `eb_constant` | formalised here | `res:full` | `irrational_erdosBorwein_series` in `Erdos249257/CertificateKernel.lean:8288` |
+| `support_families` | formalised here | `res:support` | `erdos257_family_factorial_instance` in `Erdos249257/CertificateKernel.lean:6035` |
+| `denominator_exclusion` | formalised here | `res:farey` | `tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053` in `Erdos249257/CertificateKernel.lean:18337` |
 | `certificate_reduction` | conditional reduction | `res:diag` | `irrational_totient_series_of_certificate_supply` in `Erdos249257/TotientTailPeriodKiller.lean:394` |
 | `certificate_completeness` | proved here | `res:pointwisecomplete` | `exists_certifiedKill_iff_tail_diff_notMem_int` in `Erdos249257/LcmConeFlatness.lean:316` |
 | `certified_kill_instances` | verified finite instance | `res:deposits` | `certifiedKill_all_small` in `Erdos249257/TotientTailPeriodKiller.lean:404` |
@@ -111,8 +112,8 @@ settle the open proposition attached to it.
   - Route: `python3 scripts/query_corpus.py --route follow_one_claim`
 - **See how the #249 reduction, #257 families, carry trunk, and open targets relate.** (`understand_argument_topology`): `docs/orientation.json` → `docs/SOURCE_MAP.md`
   - Route: `python3 scripts/query_corpus.py --route understand_argument_topology`
-- **Achievement-set geometry and the half-value seam** (`erdos257_half_story`): `docs/orientation.json`
-  - Intent: Follow the proved #257 half-value spine from unique greedy coding to the exact last-transition tail residual, without treating local dyadic-safety bounds as a solution.
+- **Achievement-set geometry and the 1/2 and 1/21 frontiers** (`erdos257_half_story`): `docs/orientation.json`
+  - Intent: Follow the proved #257 counterexample spine from unique greedy coding through the half-value seam and the exact fatal/cofinite/aligned frontier at 1/21, without treating either surviving arithmetic producer as a solution.
   - Route: `python3 scripts/query_corpus.py --route erdos257_half_story`
 - **#249 certificate and harmonic interface** (`erdos249_certificate_story`): `docs/orientation.json`
   - Intent: Recover the denominator exclusion, exact certificate endpoint, certificate completeness, finite checked instances, first-harmonic consumer, and the still-open unbounded supply.

@@ -91,7 +91,7 @@ FIRST_MINUTE_CONTRACT = {
     "cold-clone-to-proof-receipt.pdf": {
         (1, 1): (
             "from a cold clone to a proof receipt",
-            "151,761 declarations",
+            "152,215 declarations",
             "navigation does not receive proof authority",
             "verdicts come from the pinned lean process",
             "not an autonomous theorem prover",
@@ -222,7 +222,9 @@ def rendered_source_link_errors(
 ) -> list[str]:
     """Require every authored Lean coordinate to survive as the pinned PDF URI."""
     source = tex.read_text(encoding="utf-8")
-    commit_match = re.search(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}", source)
+    commit_match = re.search(
+        r"\\(?:re)?newcommand\{\\commit\}\{([0-9a-f]{40})\}", source
+    )
     if commit_match is None:
         return [f"{tex.relative_to(ROOT)}: pinned source commit is missing"]
     commit = commit_match.group(1)

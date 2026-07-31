@@ -155,3 +155,5 @@ import Erdos249257.TotientFixedRankLcmAsymptotic
 import Erdos249257.TotientParityCoboundaryCountermodel
 import Erdos249257.TotientShiftedMobiusForeignBridge
 import Erdos249257.TotientTwoAdicPulseBlock
+import Erdos249257.TwentyOneQuotientCompactness
+import Erdos249257.TwentyOneQuotientGreedy
