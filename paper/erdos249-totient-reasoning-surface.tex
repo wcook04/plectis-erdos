@@ -53,8 +53,43 @@
 \newcommand{\PK}{Erdos249257}
 \newcommand{\commit}{e52e55c5db4d2ca965be45f007d25d0586ad4a0e}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
-\newcommand{\lean}[2]{%
-  \href{\repobase/\PK/#2}{\textsc{Lean source}}}
+% \lean declaration file:line forms a hyperlink to the pinned public
+% formal-source checkpoint. The second argument is a machine coordinate,
+% never typeset: \allowbreak and spaces are stripped, an ErdosProblems/
+% prefix links the ErdosProblems tree directly (otherwise the \PK tree is
+% used), a trailing :N becomes a GitHub #LN anchor, :N-M and :N--M become
+% range anchors #LN-LM, and comma-separated lists link the first line.
+\ExplSyntaxOn
+\tl_new:N \l__leanlink_arg_tl
+\tl_new:N \l__leanlink_url_tl
+\seq_new:N \l__leanlink_split_seq
+\cs_new_protected:Npn \leanlink #1
+  {
+    \tl_set:Nx \l__leanlink_arg_tl { \tl_to_str:n {#1} }
+    \regex_replace_all:nnN { \\allowbreak } { } \l__leanlink_arg_tl
+    \regex_replace_all:nnN { \s+ } { } \l__leanlink_arg_tl
+    \tl_set:Nx \l__leanlink_url_tl { \repobase }
+    \exp_args:NnV \regex_match:nnTF { \A (ErdosProblems|Erdos249257)/ } \l__leanlink_arg_tl
+      { }
+      { \tl_put_right:Nx \l__leanlink_url_tl { / \PK } }
+    \exp_args:NnV \regex_extract_once:nnNTF { (.*\.lean) :? (.*) } \l__leanlink_arg_tl \l__leanlink_split_seq
+      {
+        \tl_put_right:Nx \l__leanlink_url_tl { / \seq_item:Nn \l__leanlink_split_seq { 2 } }
+        \tl_set:Nx \l_tmpa_tl { \seq_item:Nn \l__leanlink_split_seq { 3 } }
+        \regex_replace_all:nnN { -- } { - } \l_tmpa_tl
+        \exp_args:NnV \regex_extract_once:nnNTF { ([0-9]+) (- ([0-9]+))? } \l_tmpa_tl \l__leanlink_split_seq
+          {
+            \tl_put_right:Nx \l__leanlink_url_tl { \c_hash_str L \seq_item:Nn \l__leanlink_split_seq { 2 } }
+            \str_if_eq:eeF { \seq_item:Nn \l__leanlink_split_seq { 4 } } { }
+              { \tl_put_right:Nx \l__leanlink_url_tl { -L \seq_item:Nn \l__leanlink_split_seq { 4 } } }
+          }
+          { }
+      }
+      { \tl_put_right:Nx \l__leanlink_url_tl { / \tl_use:N \l__leanlink_arg_tl } }
+    \href { \tl_use:N \l__leanlink_url_tl } { \textsc{Lean~source} }
+  }
+\newcommand{\lean}[2]{\leanlink{#2}}
+\ExplSyntaxOff
 
 % Declaration names are written \mathtt{...} in maths and, unavoidably, in
 % running prose too. Rather than police every occurrence, make the command
@@ -331,9 +366,9 @@ bound on the carry family
 Three independent re-encodings of $\mathrm{Sep}$ are proved \emph{equivalent}
 to $\mathrm{Irrational}(S)$, not merely sufficient for it: the period-multiple
 kill supply
-(\lean{periodMultipleKillSupply\_iff\_irrational}{PeriodMultipleEscape.lean:153}),
+(\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}),
 the directed-certificate supply and its LCM specialisation
-(\lean{Erdos257PeriodNoncollapse.CofinalDirectedLcmCertificateSupply}{TotientTailCarryPeriod.lean:829,875}),
+(\lean{Erdos257PeriodNoncollapse.CofinalDirectedLcmCertificateSupply}{TotientTailCarryPeriod.lean:866}),
 and the window-separated-pairs predicate
 (\lean{Erdos249257.dtwWindowSeparatedPairs\_iff\_irrational\_totient\_series}{PivotAntiReconstruction.lean:1775}).
 \coord{binary-digit} \scale{cofinal} \ev{Lean}
@@ -564,7 +599,7 @@ is never used as a premise elsewhere in this document.
 \item \emph{Certificate completeness.} Every certificate vocabulary is an
   \emph{iff} with the underlying non-integrality, so every re-encoding of
   $\mathrm{Sep}$ is equivalent to $\mathrm{Sep}$
-  (\lean{periodMultipleKillSupply\_iff\_irrational}{PeriodMultipleEscape.lean:153},
+  (\lean{periodMultipleKillSupply\_iff\_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153},
   forward at \texttt{:132}, converse at \texttt{:143}).
 \item \emph{Sample choice.} Any weakening in which the prover may \emph{choose}
   which indices to test collapses to $\mathrm{Irrational}(S)$ outright, because
@@ -743,7 +778,7 @@ Additionally, every strict-subrank monomial quotient in the M\"obius--Mersenne
 ladder overshoots its target by more than $1/480$, \emph{uniformly} --- every
 rung $r \ge 3$ lies in $[1429/1512, 1)$ and every prefix after four atoms is
 within $1/3584$ of its rung, so this is a uniform no-go rather than a census
-(\lean{rankOneSubrankQuotient\_sub\_theta\_two\_gt}{RankOneSubrankObstruction.lean:238}).
+(\lean{rankOneSubrankQuotient\_sub\_theta\_two\_gt}{ErdosProblems/Erdos249/RankOneSubrankObstruction.lean:238}).
 \textbf{Honest limit:} this is four checked truncations, not a proof that no
 finite-linear shortcut exists. Its correct reading is the one the source module
 gives: any winning finite-linear shortcut must live in a genuinely different
@@ -941,7 +976,7 @@ $16(2X{+}h{+}L{+}2) \le 2^{L}$, and all four of
 It implies $\mathrm{Irrational}(S)$.
 \coord{first-harmonic} \scale{cofinal} \ev{Lean}
 \lean{Erdos249257.DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:397}
-\lean{Erdos249257.irrational\_totient\_series\_of\_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:406}
+\lean{Erdos249257.irrational\_totient\_series\_of\_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:405}
 \end{defn}
 
 It inherits Survivor 1's evasions of B1, B4, B5, B6 and B7 verbatim: the four
@@ -986,8 +1021,8 @@ $h$ stays a \emph{fixed} distance
 $\ge \arccos(9/10)/2\pi \approx 0.0718$ from every integer.
 It implies $\mathrm{Irrational}(S)$.
 \coord{prime-pivot} \scale{cofinal} \ev{Lean}
-\lean{DTWNaturalPrimeTailOrbitStrictGap}{TotientStrictPrimeEscape.lean:18}
-\lean{irrational\_totient\_series\_of\_naturalPrimeTailOrbitStrictGap}{TotientStrictPrimeEscape.lean:66}
+\lean{DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:18}
+\lean{irrational\_totient\_series\_of\_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:66}
 \end{defn}
 
 It evades B1, B4, B5, B6 and B7 for the reasons given for Survivor 1: a
@@ -1019,22 +1054,22 @@ $\mathrm{certifiedKill}(td,\,N,\,td)$; unpacked,
 \]
 It implies $\mathrm{Irrational}(S)$.
 \coord{period-ray} \scale{cofinal} \ev{Lean}
-\lean{ApFullDepthEscape}{PeriodMultipleEscape.lean:162}
-\lean{irrational\_totient\_series\_of\_apFullDepthEscape}{PeriodMultipleEscape.lean:171}
+\lean{ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:162}
+\lean{irrational\_totient\_series\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:171}
 \end{defn}
 
 This is the shortest fully stated open inequality the programme has produced.
 Its evasion of B2 is recorded on disk rather than argued: its ambient parent
 $\mathrm{PeriodMultipleKillSupply}$ is \emph{proved} equivalent to
 $\mathrm{Irrational}(S)$ and $\mathrm{ApFullDepthEscape}$ implies it
-(\lean{periodMultipleKillSupply\_of\_apFullDepthEscape}{PeriodMultipleEscape.lean:165}),
+(\lean{periodMultipleKillSupply\_of\_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:165}),
 so it is at least as strong, and possibly strictly stronger --- the file's own
 docstring records ``sufficient for irrationality; not known necessary''. Being
 possibly strictly stronger, certificate completeness cannot collapse it back.
 It evades B1 (both $N$ and $t$ unbounded), B4 (locking depth to the period
 means the entire word accumulates and no letter is prescribed), B5 and B6 (no
 state, no rank). Its substance is pure anti-concentration: via
-\lean{windowDiscrepancy\_self\_eq\_totientBlock\_sub}{PeriodMultipleEscape.lean:67},
+\lean{windowDiscrepancy\_self\_eq\_totientBlock\_sub}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:67},
 the difference of two adjacent period blocks must have central residue mod
 $2^{h}$ at some multiple period $h = td$, and the room condition is automatic
 once $h$ is large, so nothing but the residue's position is at stake.
@@ -1356,7 +1391,7 @@ Consequently \emph{Erd\H{o}s \#249 $\iff$ $T:=\sum_{d\ge1}\mu(d)/(2^d-1)^2 \noti
 the single reduced target every other result in this subsection and
 \S\ref{ssec:lambert} feeds.
 \coord{mobius-mersenne} \scale{n/a} \ev{Lean}
-\lean{totientSeries_eq_pnat_half_pow}{SquaredMersenneDiagonalEnclosure.lean:50}
+\lean{totientSeries_eq_pnat_half_pow}{SquaredMersenneDiagonalEnclosure.lean:72}
 \lean{tsum_totient_half_pow_eq_half_add_moebius_sq}{MersenneLambertLadder.lean:665}
 \end{prop}
 
@@ -1505,7 +1540,7 @@ respectively (in the same order).
 &
 \scale{fixed}
 &
-\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2842}
+\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860}
 \lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2842}
 \lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844}
 \\
@@ -1635,7 +1670,7 @@ For every $t$ (no lower bound on $t$ needed for this direction): $\big(\mathrm{l
 
 \begin{prop}[mob:d3 --- signed dyadic sum nonvanishing, \texttt{scaled\_dyadic\_sum\_ne\_zero}]
 If a finite signed sum $\sum_{i \in s} u(i)\cdot 2^{e(m)-e(i)}$ (clearing dyadic denominators to a common exponent $e(m)$) has one index $m \in s$ with strictly maximal exponent $e(m)$ and odd coefficient $u(m)$, while every other index has strictly smaller exponent, then the cleared sum is $\equiv 1 \pmod 2$, hence nonzero. A positive finite-nonvanishing engine, produced via a rectangular Cauchy--Binet determinant expansion (\texttt{det\_mul\_rectangular}) applied to the signed-Hankel/$q$-moment construction (\texttt{hankelDet}, \texttt{truncatedMoment}); the underlying arithmetic is a $q=1/2$ Hankel-determinant framework for a possible Pad\'e route to \#249. No supply theorem is proved that such a unique-terminal configuration exists cofinally — this is a per-instance producer, not a cofinal producer.
-\par\noindent\ev{Lean} \scale{bounded} \coord{p-adic} \lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:95} \lean{det\_mul\_rectangular}{SignedQMomentObstruction.lean:28}
+\par\noindent\ev{Lean} \scale{bounded} \coord{p-adic} \lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:96} \lean{det\_mul\_rectangular}{SignedQMomentObstruction.lean:29}
 \end{prop}
 
 \begin{prop}[cert:a11 --- \texttt{certifiedKill\_all\_small}]
@@ -1650,7 +1685,7 @@ $\forall h \in [1,16]$ at exponent $14$: a wider, fully unconditional \texttt{de
 
 \begin{prop}[cert:b11 --- diagonal pincer finite deposits, THE DIAGONAL-PINCER IDENTITY]
 $\mathrm{certifiedKill\_diagonal\_all\_imported} : \forall t \in \{1,2,3,4,5,7,8,9,11,13,16,17,\dots\},\ \mathrm{certifiedKill}(\mathrm{periodLcm}(t))(\mathrm{periodLcm}(t))(\mathrm{diagonalPincerKillDepth}(t))$, with explicit certificate depths $[6,5,7,7,9,14,15,14,21,22,23,26,\dots]$, extended by sibling modules through $t=64$ (28 explicit deposits total, endpoint \texttt{certifiedKill\_diagonal\_t64}). Each instance is a finite \texttt{decide}/\texttt{norm\_num} computation on explicit \texttt{Nat.totient} values, factored via checked prime-power blocks (\texttt{FactorBlock}, \texttt{totient\_factorBlocks}, \texttt{prime\_dvd\_factorBlocks}) with Lucas-primality certificates for the primes involved. This is the concrete finite floor of the single-parameter diagonal sequence $P(t) := \exists L,\ \mathrm{certifiedKill}(\mathrm{periodLcm}(t))(\mathrm{periodLcm}(t))\,L$ (cert:b3 below): it produces $P(t)$ for these 28 explicit $t$, and does \emph{not} establish $P(t)$ for infinitely many $t$ — quantifier order is exact: a finite witnessed list, not a cofinal supply.
-\par\noindent\ev{Cert} \scale{fixed} \coord{other:lcm-diagonal} \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2842} \lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2870} \lean{certifiedKill\_diagonal\_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}
+\par\noindent\ev{Cert} \scale{fixed} \coord{other:lcm-diagonal} \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} \lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844} \lean{certifiedKill\_diagonal\_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}
 \end{prop}
 
 \subsection{Converters and exact identities}
@@ -1704,7 +1739,7 @@ $(\exists L,\ \mathrm{certifiedKill}(h,N,L)) \iff \mathrm{totientTail}(N+h) - \m
 
 \begin{defn}[cert:b1 --- \texttt{periodLcm}, the universal period ray]
 $\mathrm{periodLcm}(0) = 1$, $\mathrm{periodLcm}(t+1) = \mathrm{lcm}(\mathrm{periodLcm}(t), t+1)$, i.e.\ $\mathrm{periodLcm}(t) = \mathrm{lcm}(1,\dots,t)$; $t \le \mathrm{periodLcm}(t)$; every primitive period $h_0 \le t$ divides $\mathrm{periodLcm}(t)$. Pure number theory about $\mathrm{lcm}(1..t)$, zero totient content; directly reusable for \#257 or any period-search problem — "stand on the universal-period ray to remove one free parameter" is a general reduction technique.
-\par\noindent\ev{Lean} \scale{n/a} \coord{other:lcm-period-ray} \lean{periodLcm}{CarrySurvivorExtinction.lean:515} \lean{le\_periodLcm}{CarrySurvivorExtinction.lean:81}
+\par\noindent\ev{Lean} \scale{n/a} \coord{other:lcm-period-ray} \lean{periodLcm}{CarrySurvivorExtinction.lean:515} \lean{le\_periodLcm}{LcmDiagonalReduction.lean:81}
 \end{defn}
 
 \begin{prop}[cert:c1 --- \texttt{farey\_gap}, the mediant lemma]
@@ -1734,7 +1769,7 @@ For $\mathrm{pfx} < \mathrm{whole}:\mathbb{Q}$ (strict): $1/(\mathrm{whole.den}\
 
 \begin{prop}[mob:a1a --- the M\"obius--squared-Mersenne identity]
 $S = \sum_{n\ge1} \varphi(n)/2^n = \sum_{d\ge1}' \mu(d)\cdot 2^d/(2^d-1)^2 = \tfrac12 + \sum_{d\ge1}' \mu(d)/(2^d-1)^2$. Unconditional identity of convergent real series; this is the reduced target every M\"obius--Mersenne-lane result in this catalogue feeds.
-\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{tsum\_totient\_half\_pow\_eq\_half\_add\_moebius\_sq}{SquaredMersenneDiagonalEnclosure.lean:121} \lean{totientSeries\_eq\_pnat\_half\_pow}{SquaredMersenneDiagonalEnclosure.lean:50} \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:72}
+\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{tsum\_totient\_half\_pow\_eq\_half\_add\_moebius\_sq}{SquaredMersenneDiagonalEnclosure.lean:121} \lean{totientSeries\_eq\_pnat\_half\_pow}{SquaredMersenneDiagonalEnclosure.lean:72} \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:94}
 \end{prop}
 
 \begin{cor}[mob:a1b --- \#249 restated in the squared-Lambert coordinate]
@@ -1794,7 +1829,7 @@ For $r$ squarefree, the divisor-signed polynomial $\mathrm{mobiusNumeratorPolyno
 
 \begin{prop}[mob:b2 --- evaluation at $2$ recovers the integer numerator, \texttt{mobiusNumeratorPolynomial\_eval\_two}]
 $\mathrm{mobiusNumeratorPolynomial}(r).\mathrm{eval}\,2 = \mathrm{mobiusNumerator}(r)$ for $r$ squarefree, where $\mathrm{mobiusNumerator}(r) := \sum_{s \subseteq \mathrm{primeFactors}(r)} (-1)^{|s|}\cdot(r/d)\cdot(\mathrm{mersenne}(r)/\mathrm{mersenne}(d))$, $d = \prod s$. Bridges the polynomial (mob:b1) world to the integer arithmetic used by every denominator-survival theorem below.
-\par\noindent\ev{Lean} \scale{uniform} \coord{cyclotomic} \lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:320} \lean{mobiusNumerator}{RadicalMobiusShadow.lean:101}
+\par\noindent\ev{Lean} \scale{uniform} \coord{cyclotomic} \lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:445} \lean{mobiusNumerator}{RadicalMobiusShadow.lean:101}
 \end{prop}
 
 \begin{prop}[mob:b3 --- radical shadow scale decomposition]
@@ -1993,7 +2028,7 @@ negative-side residue independently — only the positive arc needs excluding. T
 \emph{weaker} target than the old symmetric certifiedKill band and is the genuinely easier open
 target of the whole batch.
 \scale{cofinal}\ \ev{Open}\ \coord{mobius-mersenne}\\
-\lean{PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:900,1260}
+\lean{PowerTwoActualLcmTopEdgeResidueGapSupply}{TotientActualLcmTopEdgeStaircase.lean:1325}
 \end{prop}
 
 \begin{prop}[The five-link equivalence chain below the residue-gap target]\label{prop:TE-05}
@@ -2074,7 +2109,7 @@ the symmetric certificate (kills $t=3$ at depth~6, one level earlier than the sy
 the file itself notes the improvement does not turn into an independent sieve theorem: supplying
 the cofinal predicate is exactly as hard as \#249 itself.
 \scale{uniform}\ \ev{Lean}\ \coord{seam-integer}\\
-\lean{CofinalDirectedLcmCertificateSupply}{TotientTailCarryPeriod.lean:766,829,875,845}
+\lean{CofinalDirectedLcmCertificateSupply}{TotientTailCarryPeriod.lean:866}
 \end{prop}
 
 \begin{prop}[Pulse-restricted survivor-search supply]\label{prop:CP-07}
@@ -3153,8 +3188,8 @@ Every prime divisor $p$ of $2^q-1$, for prime $q$, satisfies $q\mid p-1$
 $(\mathbb{Z}/p)^\times$); consequently the prime divisors appearing in the
 layers $\{2^n-1\}$ are unbounded, unconditionally, with no cyclotomic
 resultant hypothesis left open.
-\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.prime_index_dvd_pred}{CyclotomicAnchoredKill.lean:33}
-\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.mersenneLayer_unboundedPrimeDivisorSupply}{CyclotomicAnchoredKill.lean:105}
+\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.prime_index_dvd_pred}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:33}
+\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.mersenneLayer_unboundedPrimeDivisorSupply}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:105}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}.
 \end{thm}
 
@@ -3165,8 +3200,8 @@ coprime to $hq$, $hq\mid p-1$, and $p-1\ge N_0$. The characteristic-prime
 exceptional case in the cyclotomic order decomposition is eliminated
 directly, by choosing $q>2^h$ (rules out $p=q$) and $q>h$ (rules out
 $p\mid h$).
-\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor}{CyclotomicAnchoredKill.lean:1464}
-\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer_prime_order_decomposition}{CyclotomicAnchoredKill.lean:1390}
+\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.exists_clean_binaryCyclotomicAnchor}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1464}
+\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.binaryCyclotomicLayer_prime_order_decomposition}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:1390}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}.
 \end{thm}
 
@@ -3186,8 +3221,8 @@ The kernel decides two independent certificates at the composite cyclotomic
 anchor period $h=30$ (natural basepoint $N=300$, and the prime-anchored
 basepoint $N=330$), yielding a genuine new denominator exclusion:
 $S\ne r$ for every $r\in\mathbb{Q}$ with $r.\mathrm{den}\mid 2^{300}(2^{30}-1)$.
-\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_natural}{CyclotomicAnchoredKill.lean:3167}
-\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_den_dvd_30_300}{CyclotomicAnchoredKill.lean:3188}
+\lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.certifiedKill_cyclotomic_30_331_natural}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3167}
+\quad \lean{ErdosProblems.Erdos249.CyclotomicAnchoredKill.totient_series_ne_rat_of_den_dvd_30_300}{ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean:3188}
 \quad \ev{Cert} \quad \scale{fixed} \quad \coord{other:cyclotomic-anchor} --- a
 finite exclusion, not evidence toward the cofinal supply.
 \end{obs}
@@ -3202,8 +3237,8 @@ fixed finite set of primes $S$, all sufficiently large prime indices $q$
 avoid $S$ entirely on layer $C(mq)$; combined with a nontrivial-layer
 hypothesis this forces arbitrarily large new prime divisors on cofinally
 many prime indices.
-\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{PrimeRayCyclotomicCurvature.lean:116}
-\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{PrimeRayCyclotomicCurvature.lean:172}
+\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:116}
+\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:172}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}. This
 is the abstract producer instantiated unconditionally for $X-2$ in
 \S\ref{prime-ray-curvature}'s sibling result above; polynomial resultant
@@ -3227,8 +3262,8 @@ Every rank-one monomial Schur quotient built this way overshoots $\Theta_2 =
 S-1/2$ by a fixed positive margin, uniformly in $e$ and $Y$; the bound uses
 only two interval facts (every rung $r\ge 3$ lies in $[1429/1512,1)$, and
 every length-$\ge\!4$ prefix is within $1/3584$ of its rung).
-\lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt}{RankOneSubrankObstruction.lean:238}
-\quad \lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersenneTheta_ge_alpha}{RankOneSubrankObstruction.lean:163}
+\lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt}{ErdosProblems/Erdos249/RankOneSubrankObstruction.lean:238}
+\quad \lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.mobiusMersenneTheta_ge_alpha}{ErdosProblems/Erdos249/RankOneSubrankObstruction.lean:163}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:rank-one-subrank}.
 \end{thm}
 
@@ -3237,8 +3272,8 @@ For any nonempty finite positively-weighted family of admissible quotients,
 the weighted average still overshoots $\Theta_2$ by more than $1/480$; and
 every primitive integer linear form $q\Theta_2 - p$ realising such a
 quotient satisfies $|q\Theta_2 - p| > q/480$.
-\lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt}{RankOneSubrankObstruction.lean:300}
-\quad \lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt}{RankOneSubrankObstruction.lean:341}
+\lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt}{ErdosProblems/Erdos249/RankOneSubrankObstruction.lean:300}
+\quad \lean{ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt}{ErdosProblems/Erdos249/RankOneSubrankObstruction.lean:341}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:rank-one-subrank}.
 \end{prop}
 
@@ -3265,13 +3300,13 @@ $Q_{a+b,N} = 2^b Q_{a,N} + Q_{b,N+a}$ (block concatenation), so the order-4
 cyclotomic channel at height $h$ is literally the order-2 channel at height
 $2h$: the 2--3--4 fan of channels is a nested family along the tower
 $h,2h,4h,\dots$, not three unrelated moduli.
-\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_add}{PeriodMultipleEscape.lean:77}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_two_mul}{PeriodMultipleEscape.lean:94}
+\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_add}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:77}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totientBlock_two_mul}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:94}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:lcm-period-multiple}.
 \end{thm}
 
 \begin{obs}[Supply $\Leftrightarrow$ irrational --- reduction, not a result]
-\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational}{PeriodMultipleEscape.lean:153}
+\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}
 \quad \ev{Lean} (equivalence proved; both directions of the underlying
 predicate are exactly as open as \#249 itself)
 \quad \scale{cofinal} \quad \coord{other:lcm-period-multiple}. The paper's
@@ -3289,10 +3324,10 @@ including the Cole factors of $2^{67}-1$ and the Mersenne prime $2^{127}-1$.
 One of the eight is certified at its own locked depth $L=h=67$, the concrete
 instance of the sufficient (not known necessary) depth-equals-period form
 $\mathrm{ApFullDepthEscape}$.
-\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300}{PeriodMultipleEscape.lean:192}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300}{PeriodMultipleEscape.lean:211}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300_fullDepth}{PeriodMultipleEscape.lean:219}
-\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totient_series_ne_rat_of_den_dvd_127_300}{PeriodMultipleEscape.lean:255}
+\lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:192}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:211}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.certifiedKill_67_300_fullDepth}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:219}
+\quad \lean{ErdosProblems.Erdos249.PeriodMultipleEscape.totient_series_ne_rat_of_den_dvd_127_300}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:255}
 \quad \ev{Cert} \quad \scale{fixed} \quad \coord{other:lcm-period-multiple}
 --- eight finite exclusions, not evidence toward the cofinal supply.
 \end{obs}
@@ -3305,7 +3340,7 @@ adaptive truncation budget, and proves the sharper predicate still closes
 \#249 through the existing singleton-certificate endpoint. This is, exactly
 as its own comment states, a reduction: ``the producer itself remains
 unproved.''
-\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{TotientStrictPrimeEscape.lean:66}
+\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:66}
 \quad \ev{Lean} (implication proved; antecedent
 \ev{Open})
 \quad \scale{cofinal} \quad \coord{other:first-harmonic}.
@@ -3317,8 +3352,8 @@ behind the squared-Möbius Euler factor, with no transcendence claim
 asserted: $(1-2/p+1/p^2) = (1-1/p)^2$ and its degree-two analogue, and the
 second finite difference of $1+p+\cdots+p^{e}$ recovering
 $p^{e+1}(p-1)$, the prime-power totient row.
-\lean{ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_one}{FiniteEulerSieve.lean:28}
-\quad \lean{ErdosProblems.Erdos249.FiniteEulerSieve.sigmaPrimePow_secondDiff}{FiniteEulerSieve.lean:51}
+\lean{ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_one}{ErdosProblems/Erdos249/FiniteEulerSieve.lean:28}
+\quad \lean{ErdosProblems.Erdos249.FiniteEulerSieve.sigmaPrimePow_secondDiff}{ErdosProblems/Erdos249/FiniteEulerSieve.lean:51}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:euler-sieve}.
 
 % ---- part a249_p2 ----
@@ -3395,7 +3430,7 @@ finite-minor $\Rightarrow$ linear independence & \lean{linearIndependent\_of\_se
 dyadic totient-kernel rank $=2^e{+}1$ & \lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900} & uniform & $\forall e$ & other-dyadic-kernel-rank\\
 rationality forces unbounded carry-kernel rank & \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284} & uniform & $\lnot\mathrm{Irrational}\,S\to\exists v{>}0\,\exists u\,\forall e$ & other-carry-kernel-rank\\
 no fixed $D$ clears all primitive Euler jets & \lean{no\_fixed\_integral\_primitive\_euler\_index}{PrimitiveDeterminantLift.lean:169} & uniform & $\forall D{>}0$ & mobius-mersenne\\
-Mersenne–Lambert ladder value identities & \lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18063} & uniform & value identities, $L(\mu){=}\tfrac12$, $L(\varphi){=}2$, $L(1){=}$Erd\H{o}s--Borwein & mobius-mersenne\\
+Mersenne–Lambert ladder value identities & \lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18087} & uniform & value identities, $L(\mu){=}\tfrac12$, $L(\varphi){=}2$, $L(1){=}$Erd\H{o}s--Borwein & mobius-mersenne\\
 prime-power reduced-denom.\ unit-gap ceiling & \lean{reducedDenominatorUnitGapCert\_prime\_pow\_iff}{PrimitiveWeightCertificate.lean:54} & uniform & $\forall p\ \text{prime}\,\forall e{>}0$ & farey\\
 positive rational-difference lower bound & \lean{positive\_rational\_difference\_lower\_bound}{PrimitiveRationalGapSupply.lean:31} & uniform & $\forall\ \text{whole}\,\text{pfx}{:}\mathbb{Q},\ \text{pfx}{<}\text{whole}$ & n/a (generic)\\
 M\"obius-square identity ($S=\tfrac12+\Sigma$) & \lean{tsum\_totient\_half\_pow\_eq\_half\_add\_moebius\_sq}{SquaredMersenneDiagonalEnclosure.lean:50} & uniform & unconditional & mobius-mersenne\\
@@ -3408,14 +3443,14 @@ gcd-divisibility factorizes & \lean{tsum\_pos\_pair\_both\_dvd\_half\_eq\_inv\_m
 reduced-direction law $\Sigma=1$ & \lean{tsum\_pos\_coprime\_inv\_mersenne\_eq\_one}{GcdMomentCalculus.lean:349} & uniform & unconditional (sum over all coprime pairs) & probability\\
 Stern--Brocot cylinder recursion & \lean{cylinderMass\_split}{GcdMomentCalculus.lean:474} & uniform & $\forall a\,b{:}\mathbb{N}^+\,\forall\text{depth}\,d$ & other-stern-brocot\\
 repunit gcd-word T1 & \lean{mobiusNumeratorPolynomial\_eq\_gcdWord}{RepunitMobiusNumerator.lean:205} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)\,\forall k{<}r$ & cyclotomic\\
-eval-at-2 recovers numerator & \lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:320} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)$ & cyclotomic\\
+eval-at-2 recovers numerator & \lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:445} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)$ & cyclotomic\\
 radical-shadow scale decomposition & \lean{scaledMobiusShadow\_eq\_radicalBase}{RadicalMobiusShadow.lean:125} & uniform & $\forall H{>}0\,\forall r{>}0$ & mobius-mersenne\\
 cyclotomic congruence T2 & \lean{cyclotomic\_dvd\_mobiusNumeratorPolynomial\_sub}{CyclotomicProjectionOfShadow.lean:299} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)\,\forall m\,(m{\mid}r)$ & cyclotomic\\
 top-fibre survives T3 & \lean{mobiusNumerator\_gcd\_cyclotomicValue}{CyclotomicProjectionOfShadow.lean:350} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)$ & cyclotomic\\
 upper-half prime channel survival T4 & \lean{upperHalfChannel\_product\_dvd\_den\_of\_scale\_primeFactors\_le}{MersenneShadowCyclotomicNoncollapse.lean:809} & uniform & $\forall t\,\forall p\ \text{prime}\in(t/2,t]$, scale-coprime-to-$C$ & cyclotomic\\
 denominator lower bound / exact value & \lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147} & uniform & $\forall t$ (exact-value); $t{\ge}5$ (lower bound) & mobius-mersenne\\
 prime-power jump recurrence T5 & \lean{cyclotomic\_dvd\_primeJump\_new\_fibre}{PrimePowerJumpDynamics.lean:281} & uniform & $\forall p\ \text{prime}\,(p{\nmid}r)\,\forall m\,(m{\mid}r)$ & cyclotomic\\
-squared-Mersenne diagonal tail enclosure & \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:72} & uniform & $\forall D{:}\mathbb{N}$ & mobius-mersenne\\
+squared-Mersenne diagonal tail enclosure & \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:94} & uniform & $\forall D{:}\mathbb{N}$ & mobius-mersenne\\
 $(3,5)$ joint annihilator & \lean{joint35\_oldChannel\_zero}{JointExponentTransport.lean:71} & uniform & $\forall d{>}0\,(d{\mid}H)$; general: finite affine annihilator & other-lcm-diagonal\\
 composite-dilation defect identity & \lean{supportCoeff\_mul\_eq\_add\_defect}{CompositeDilationDefect.lean:30} & uniform & $\forall a{\in}A\,(a{>}0)\,\forall x{>}0$ & other-divisor-support-coeff\\
 sublogarithmic zero-window T11 & \lean{supportCoeffZeroWindow\_length\_le\_eps\_logb\_add}{SublogDivisorCoverage.lean:392} & uniform & $\forall \varepsilon{>}0\,\exists B$, given rationality of the base-2 support series & other-support-divisor-counting\\
@@ -3430,7 +3465,7 @@ explicit finite-block approximation & \lean{abs\_actualLcmTailOrbit\_sub\_rawApp
 guard-cylinder normal form & \lean{exists\_certifiedKill\_iff\_guardCylinderWitness}{TotientActualLcmTopEdgeStaircase.lean:844} & uniform & $\forall h\,N,\ \text{iff}$ & seam-integer\\
 fixedRankSecondDifference sign under extremality & \lean{fixedRankSecondDifference}{TotientFixedRankLcmAsymptotic.lean:256} & uniform & $\forall H\,j$, given MiddleRankTotientExtremal & other-fixed-rank-curvature\\
 dyadic fixture exactness (kernel-valuation sharpness) & \lean{fixedRankSecondDifference\_dyadic\_fixture\_exact}{TotientFixedRankLcmAsymptotic.lean:462} & uniform & $\forall n$ (closed-form) & other-fixed-rank-curvature\\
-parityCoboundaryWeight (def) & \lean{parityCoboundaryWeight}{TotientParityCoboundaryCountermodel.lean:37} & uniform & $\forall n$ (definition) & binary-digit\\
+parityCoboundaryWeight (def) & \lean{parityCoboundaryWeight}{TotientParityCoboundaryCountermodel.lean:59} & uniform & $\forall n$ (definition) & binary-digit\\
 totientTail $=$ positive foreign-residue kernel sum & \lean{totientTail\_eq\_tsum\_positiveForeignResidueKernel}{TotientShiftedMobiusForeignBridge.lean:52} & uniform & $\forall N$ & cyclotomic\\
 totientTail $=$ shifted M\"obius-pulse sum & \lean{totientTail\_eq\_tsum\_shiftedMobiusPulse}{TotientShiftedMobiusPulse.lean:535} & uniform & $\forall N$ & cyclotomic\\
 Lambert double-sum regroup engine & \lean{tsum\_lambert\_pair\_regroup\_if}{TotientShiftedMobiusPulse.lean:112} & uniform & $\forall w\,v{:}\mathbb{N}\to\mathbb{R}\,(|w(d)|{\le}d,\,|v(m)|{\le}m)$ & cyclotomic\\
@@ -3438,17 +3473,17 @@ carryShift-integrality iff & \lean{carryShift\_dvd\_iff\_tailDiff\_mem\_int}{Tot
 rationality $\Rightarrow$ periodicity \& unbounded rank & \lean{not\_irrational\_totientSeries\_implies\_mod\_period\_and\_unbounded\_rank}{TotientTailCarryPeriod.lean:224} & uniform & $\lnot\mathrm{Irrational}\,S\to\exists v\,u\,\forall e$ & seam-integer\\
 adjugate tail-cost floor $\ge 3$ & \lean{three\_le\_totientAdjugateTailCost}{TotientTailCarryPeriod.lean:266} & uniform & $\forall\ \text{finite}\ w{:}\iota\to\mathbb{Q}\,x{:}\iota\to\mathbb{N}$, given $\sum w_i\varphi(x_i){=}1$ & other-adjugate-linear-algebra\\
 directedCertifiedKill exact iff & \lean{directedCertifiedKill}{TotientTailCarryPeriod.lean:766} & uniform & $\forall h\,N\,L$ & seam-integer\\
-tempered orbit rigidity iff & \lean{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit}{GenericTailOrbitRigidity.lean:425} & uniform & $\forall c{:}\mathbb{N}\to\mathbb{N}\,(c(n){\le}n)$, iff & binary-digit\\
-doubling-orbit rigidity & \lean{doublingOrbit\_eq\_zero\_of\_tempered}{GenericTailOrbitRigidity.lean:314} & uniform & $\forall d{:}\mathbb{N}\to\mathbb{R}$, doubling $+$ tempered $\to d{\equiv}0$ & other-abstract-recursion\\
-finite-state no-go (unbounded state) & \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:246} & uniform & $\forall m\,\forall\mathrm{State}$, collapsing-state $\to$ no decoder & binary-digit\\
-fixed-depth affine reset & \lean{affineBinaryOrbit\_mod\_twoPow\_eq}{GenericTailOrbitRigidity.lean:306} & uniform & $\forall a{:}\mathbb{N}\to\mathbb{Z}\,\forall u_0\,v_0\,\forall L$ & binary-digit\\
+tempered orbit rigidity iff & \lean{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit}{GenericTailOrbitRigidity.lean:426} & uniform & $\forall c{:}\mathbb{N}\to\mathbb{N}\,(c(n){\le}n)$, iff & binary-digit\\
+doubling-orbit rigidity & \lean{doublingOrbit\_eq\_zero\_of\_tempered}{GenericTailOrbitRigidity.lean:315} & uniform & $\forall d{:}\mathbb{N}\to\mathbb{R}$, doubling $+$ tempered $\to d{\equiv}0$ & other-abstract-recursion\\
+finite-state no-go (unbounded state) & \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247} & uniform & $\forall m\,\forall\mathrm{State}$, collapsing-state $\to$ no decoder & binary-digit\\
+fixed-depth affine reset & \lean{affineBinaryOrbit\_mod\_twoPow\_eq}{GenericTailOrbitRigidity.lean:307} & uniform & $\forall a{:}\mathbb{N}\to\mathbb{Z}\,\forall u_0\,v_0\,\forall L$ & binary-digit\\
 signed dichotomy engine (full-block certs) & \lean{int\_coeff\_series\_irrational\_or\_bpow\_mul\_eq\_intCast\_of\_full\_block\_certificates}{CertificateKernel.lean:13606} & uniform & $\forall b{\ge}2\,\forall c\,\forall q$, given full-block certificate at $q$ & binary-digit\\
 Lambert double-sum regroup (dyadic forward-difference calc.) & \lean{dvd\_iteratedForwardDifference}{LcmFactorIdealPulseObstruction.lean:211} & uniform & $\forall f,c{:}\mathbb{N}\to\mathbb{Z}\,\forall\ \text{shift-lists}$ & binary-digit\\
 fair-coin coprimality bridge & \lean{tsum\_coprime\_pair\_pow\_eq\_tsum\_totient\_mul\_pow}{GeometricCoprimality.lean:120} & uniform & $\forall n$; $\forall r\in[0,1)$ & probability\\
 linear-descender rigidity & \lean{linearDescender\_eq\_smul\_eval}{AdelicHeightObstruction.lean:120} & uniform & $\forall V,W\,\forall\mathrm{ev}\,\forall L$, $\ker(\mathrm{ev}){\le}\ker(L)$ & p-adic\\
 rational denominator survival law & \lean{divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17} & uniform & $\forall D{>}0\,\forall m{\mid}D\,\forall a$ & p-adic\\
 scalar-localization complement-dvd (adelic height tax) & \lean{scalarLocalization\_complement\_dvd}{AdelicHeightObstruction.lean:23} & uniform & $\forall x{:}\mathbb{Q}\,\forall H\,(H{\mid}x.\mathrm{den})\,\forall c\,((cx).\mathrm{den}{\mid}H)$ & p-adic\\
-signed Hankel terminal-parity engine & \lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:95} & bounded & $\exists m{\in}s$ (strictly maximal, odd coeff), $\forall i{\ne}m\,e(i){<}e(m)$ & p-adic\\
+signed Hankel terminal-parity engine & \lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:96} & bounded & $\exists m{\in}s$ (strictly maximal, odd coeff), $\forall i{\ne}m\,e(i){<}e(m)$ & p-adic\\
 residual gauge obstruction (locked minors) & \lean{det\_residualMonomialMatrix}{ResidualGaugeObstruction.lean:47} & uniform & $\forall d\,\forall e{:}\mathrm{Fin}\,d{\to}\mathbb{N}\,\forall z{:}\mathrm{Fin}\,d{\to}\mathbb{C}$ ($z$ nonzero) & other-first-harmonic-phase\\
 incidence-quotient no compression & \lean{incidenceMobius\_det\_eq\_one}{IncidenceQuotientHermitePade.lean:56} & uniform & $\forall N{:}\mathbb{N}$ & mobius-mersenne\\
 
@@ -3483,7 +3518,7 @@ non-negative periodic $\Rightarrow$ irrational (unconditional) & \lean{irrationa
 all $h\in[1,8]$ kill certificate at depth 16, $N{=}12$ & \lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} & fixed & $\forall h\in[1,8]$, \texttt{certifiedKill}\,$h$\,12\,16 (by \texttt{decide}) & other-binary-window\\
 $h\in[1,16]$, exponent 14 kill table & \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:18562} & fixed & $\forall h\in[1,16]$, denominator exponent 14 (by \texttt{decide}) & other-binary-window\\
 rank-2 kill not shallower at $(h,N){=}(1,8)$ & \lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:18762} & fixed & measured over $t{\le}20$ (30/40 cells) & other-binary-window\\
-28-point diagonal pincer table through $t{=}64$ & \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2842} & fixed & $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$ (28 explicit values) & other-lcm-diagonal\\
+28-point diagonal pincer table through $t{=}64$ & \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} & fixed & $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$ (28 explicit values) & other-lcm-diagonal\\
 short kill at $a{=}4$ and $a{=}6$ & \lean{lcmDiagonalArithmeticKill\_two\_pow\_four}{TotientActualLcmShortKill.lean:18} & fixed & $a{=}4$, $a{=}6$ (concrete, kernel-checked) & mobius-mersenne\\
 square-CRT clean block: vanishing / nonvanishing witnesses & \lean{squareCRT\_clean\_block\_can\_vanish}{SquareCRTCube.lean:285} & fixed & witness $n{=}52$ (vanishes); witness $n{=}27$ (nonzero) & other-crt-dyadic-residue\\
 echo-vs-height two-front wall & prose:echo\_versus\_height\_two\_front\_wall & fixed & empirical over tested families only (not universal) & mobius-mersenne (q-Pad\'e, quantitative)\\
@@ -3535,7 +3570,7 @@ absence of search:
 
 \begin{enumerate}[leftmargin=*]
 \item \textbf{Finite certificate tables.} Results such as
-\lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2842} (28 explicit
+\lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} (28 explicit
 values of $t$ through $t{=}64$),
 \lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} ($h\in[1,8]$ at fixed depth
 16), and
@@ -3596,7 +3631,7 @@ core identity
   S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}=\frac12+\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}
 \]
 proved by \lean{tsum\_totient\_half\_pow\_eq\_half\_add\_moebius\_sq}{SquaredMersenneDiagonalEnclosure.lean:50}
-(consumed at \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:72})
+(consumed at \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:94})
 turns every binary-digit statement about $S$ into a statement about a squared M\"obius--Mersenne
 Lambert series, and back.
 
@@ -3604,7 +3639,7 @@ Lambert series, and back.
 $L(w)=\sum_n w(n)/(2^n-1)$ at $w=\mu,1,\varphi$, and the whole cyclotomic denominator-survival
 chain built on it. \emph{Transport to cyclotomic:} evaluating the M\"obius-numerator polynomial at
 $x=2$,
-\lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:320} together with the
+\lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:445} together with the
 definition \lean{mobiusNumerator}{RadicalMobiusShadow.lean:101}, moves the squared-denominator
 question into finite cyclotomic-polynomial arithmetic over $\mathbb{Z}$.
 
@@ -3673,7 +3708,7 @@ the classical Erd\H{o}s (1948) near-integer digit method. That method needs, in 
 automaton: a bounded amount of state carried forward from one digit block to the next, so that the
 value of a far-away digit block can be recovered from a bounded summary of everything before it. In
 the binary-digit coordinate this is exactly what fails, and it fails as a proved Lean theorem, not
-a heuristic remark: \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:246}
+a heuristic remark: \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247}
 shows that for a balanced-pulse family of radius $m$, any finite \texttt{State} type collapsing the
 family to a single autonomous summary must satisfy $|\mathrm{State}|\ge\lfloor m/2\rfloor+2$ —
 unbounded in $m$ — so no finite-state decoder can recover the shift $r$ from its collapsed state
@@ -3918,7 +3953,7 @@ $\mathtt{certifiedKill}$ needs the residue to avoid a \emph{symmetric} radius-$(
 neighbourhood of $0$ on both sides. SGN-01 gives positivity only. Its companion
 \lean{actualLcm_integral_forces_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211} proves that,
 under integrality, the consequence is not a kill but the opposite: the residue is forced to the
-\emph{top edge}, exactly $2^K - e$ where $e$ is the true carry orbit (\lean{carryOrbit}{}). So the
+\emph{top edge}, exactly $2^K - e$ where $e$ is the true carry orbit (\lean{carryOrbit}{CarrySurvivorExtinction.lean:387}). So the
 lower half of the certified-kill band is discharged unconditionally and cofinally by SGN-01; the
 upper half is untouched, and what remains open is a genuinely different, one-sided statement about
 the top edge --- row TE-04 below. The corpus's own normal-form tables tag this row
@@ -4096,7 +4131,7 @@ Consequently a cofinal $1/32$-separation of the raw approximant from every integ
 \#249. The corpus verifies the analogous kill \emph{unconditionally} at exactly two exponents,
 $a=4$ and $a=6$
 (\lean{actualLcmTailOrbit_four_and_six_notMem_int}{TotientActualLcmShortKill.lean:35}, \ev{Cert},
-\scale{fixed}, via \lean{certifiedKill_diagonal_t16}{} and
+\scale{fixed}, via \lean{certifiedKill_diagonal_t16}{DiagonalPincerCertificates.lean:2832} and
 \lean{certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}). Nothing beyond
 $a=6$ is proved. The depth $q$ is not free: the supply predicate pins $2q{+}1 =
 \mathtt{oddGuardedCanonicalAdjacentSuffixDepth}(2^a)$, so per scale $a$ there is exactly one
@@ -4304,29 +4339,29 @@ zero prefix and half-turn are imposed on the \emph{word}, not on one delta.
 \subsubsection{d-3a/d-3b --- cofinal jump positions, one unproved slack sign (\coord{lcm-jump-slack})}
 
 \begin{thm}[Cofinal producer, fully proved]
-\lean{exists_periodLcm_strict_jump_ge}{DiagonalFreshLossBridge.lean:2437}. \ev{Lean}.
+\lean{exists_periodLcm_strict_jump_ge}{DiagonalFreshLossBridge.lean:2635}. \ev{Lean}.
 \scale{cofinal} (proved, not open): $\forall t_0\ \exists t\ge t_0$ with
 $\mathtt{periodLcm}\ t < \mathtt{periodLcm}(t{+}1)$, witnessed by $p{-}1$ for any prime $p>t_0$.
 The power-of-two specialization
-\lean{CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2495} shows
+\lean{CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2693} shows
 the positions $t=2^a{-}1$ already suffice, so no position search is needed at all.
 \end{thm}
 
 \begin{defn}[The slack scalar and the open supply]
-\lean{canonicalAdjacentSuffixCentralSlack}{DiagonalFreshLossBridge.lean:2453}:
+\lean{canonicalAdjacentSuffixCentralSlack}{DiagonalFreshLossBridge.lean:2651}:
 \[
   \mathtt{canonicalAdjacentSuffixCentralSlack}\ t = \min\bigl(d-2^{m-5},\ (2^m-2^{m-5})-d\bigr),
 \]
 with $m$ the canonical adjacent-suffix depth and $d$ the residue at that depth. The open
 producers, both \ev{Open} \scale{cofinal}, are
-\lean{CanonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2488} (any strict
-jump) and \lean{CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2495}
+\lean{CanonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2686} (any strict
+jump) and \lean{CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2693}
 (power-of-two positions), each asking $0\le \mathtt{canonicalAdjacentSuffixCentralSlack}(t{+}1)$
 cofinally, and both compose to
 $\mathrm{Irrational}(S)$ at
-\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2739}
+\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2937}
 and
-\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2746}.
+\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2944}.
 \end{defn}
 
 \begin{rem}[Census evidence only]
@@ -4334,11 +4369,11 @@ and
 $\approx 0.000221$ of the modulus at $t=100$; the power-of-two endpoints $4,8,16,32$ pass with
 slack fractions $0.41,0.036,0.40,0.19$. Census, not theorem. The structural handle nobody has used:
 $\mathtt{periodLcm\_succ\_eq\_prime\_mul\_of\_strict\_jump}$
-(\lean{periodLcm_succ_eq_prime_mul_of_strict_jump}{DiagonalFreshLossBridge.lean:2134}) says a
+(\lean{periodLcm_succ_eq_prime_mul_of_strict_jump}{DiagonalFreshLossBridge.lean:2332}) says a
 strict jump at $t$ means $t{+}1=p^k$ and $\mathtt{periodLcm}(t{+}1) = p\cdot\mathtt{periodLcm}(t)$
 --- so the required statement is a transfer lemma for how the adjacent-suffix residue at height $H$
 moves under $H\mapsto pH$.
-\lean{canonicalAdjacentSuffixCentralSlack_eq_of_periodLcm_eq}{DiagonalFreshLossBridge.lean:2460}
+\lean{canonicalAdjacentSuffixCentralSlack_eq_of_periodLcm_eq}{DiagonalFreshLossBridge.lean:2658}
 already proves the slack is constant across each LCM plateau, so only jump indices matter.
 \end{rem}
 
@@ -4651,7 +4686,7 @@ cleanliness witnessed by \lean{squareCRT\_vanishing\_countermodel\_is\_clean}{Sq
 \lean{squareCRT\_nonzero\_countermodel\_is\_clean}{SquareCRTCube.lean:311}).
 \end{itemize}
 Both witnesses are exhibited alongside the positive achievability result
-\lean{exists\_squareCRT\_clean\_horizon}{SquareCRTCube.lean:198} (a bounded common base satisfying prescribed
+\lean{exists\_squareCRT\_clean\_horizon}{SquareCRTCube.lean:228} (a bounded common base satisfying prescribed
 CRT anchors/residues does exist). \ev{Cert} (theorem bodies not
 independently re-verified beyond signatures and docstring — flagged
 \texttt{DOCSTRING-SOURCED} in the source bank) \scale{fixed}
@@ -4758,9 +4793,9 @@ with strictly maximal exponent \(e(m)\) and odd coefficient \(u(m)\), while
 every other index has strictly smaller exponent, then the whole cleared sum
 is \(\equiv1\pmod2\), hence nonzero.
 \end{lem}
-\lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:95}, built from a fully generic rectangular
+\lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:96}, built from a fully generic rectangular
 Cauchy--Binet-style determinant-of-product expansion
-\lean{det\_mul\_rectangular}{SignedQMomentObstruction.lean:28} (\texttt{hankelDet}/\texttt{truncatedMoment} defs at
+\lean{det\_mul\_rectangular}{SignedQMomentObstruction.lean:29} (\texttt{hankelDet}/\texttt{truncatedMoment} defs at
 \lean{SignedQMomentObstruction.lean}{SignedQMomentObstruction.lean:107,116}). \ev{Lean} \scale{bounded}
 \coord{p-adic}.
 
@@ -5053,7 +5088,7 @@ long common tail) &
 For the affine binary orbit \(\mathrm{orbit}(0)=u_0\),
 \(\mathrm{orbit}(n{+}1)=2\,\mathrm{orbit}(n)-a(n{+}1)\) with common forcing
 word \(a\): \(\mathrm{orbit}_u(L)-\mathrm{orbit}_v(L)=2^L(u_0-v_0)\) exactly.
-\lean{Erdos249257.affineBinaryOrbit\_mod\_twoPow\_eq}{GenericTailOrbitRigidity.lean:306}. \ev{Lean}
+\lean{Erdos249257.affineBinaryOrbit\_mod\_twoPow\_eq}{GenericTailOrbitRigidity.lean:307}. \ev{Lean}
 \scale{uniform} \coord{binary-digit} &
 After \(L\) common steps the endpoint residue mod \(2^L\) is
 \emph{independent} of the initial carry — long common tails erase
@@ -5066,7 +5101,7 @@ For a balanced-pulse family at location \(m\) whose predecessor \texttt{State}
 is constant across the whole family, no \(\mathrm{decode}:\mathrm{State}\to
 \mathbb N\) recovers the radius parameter; any finite \texttt{Fintype State}
 needs \(\mathrm{card}\ge\lfloor m/2\rfloor+2\), unbounded in \(m\).
-\lean{Erdos249257.balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:246}. \ev{Lean}
+\lean{Erdos249257.balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247}. \ev{Lean}
 \scale{uniform} \coord{binary-digit} &
 Rules out, unconditionally, ANY proof strategy that defines a bounded or
 autonomous ``carry state'' summarising pre-\(m\) history and claims it
@@ -5094,7 +5129,7 @@ Certified finite-depth ``death'' certificates as a route to membership proofs
 (both problems) &
 \(\mathtt{CertifiedGreedyMersenneDeath}(x,\mathrm{level},\mathrm{lookahead})\)
 is a decidable, finite-depth certificate proving non-membership only
-(\lean{greedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1720}; witness
+(\lean{greedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1711}; witness
 \lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1742}, \(3/4\) certified dead at
 level 1). \ev{Cert} \scale{bounded} \coord{greedy-orbit} &
 Structural one-sidedness, recurring across the WHOLE certified-kill family
@@ -5317,7 +5352,7 @@ a resolution. \\
 NOT\_PROMOTABLE (partial mechanical content only). The dyadic restriction
 \(v=1\) is a call-site choice, not a proof constraint — the general-\(v\)
 conclusion is already landed for arbitrary \((v,h,L,F)\) at
-\lean{shiftedBooleanCollision\_wrap\_bound\_of\_common\_multiple}{RationalSupportCarrySkeleton.lean:1962} — but
+\lean{shiftedBooleanCollision\_wrap\_bound\_of\_common\_multiple}{RationalSupportCarrySkeleton.lean:1963} — but
 the strict form needed for non-dyadic targets requires one genuinely new
 auxiliary bound (a mean-least-residue estimate) not present in the corpus. \\
 257-universal & NM-12,
@@ -5421,7 +5456,7 @@ those is the per-problem directory, not \texttt{Erdos249257/}.
 
 Write $S=\sum_{n\ge 1}\varphi(n)/2^n$, $R_N=\sum_{m\ge 1}\varphi(N+m)/2^m$
 for the local tail
-(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak totientTail}{TotientTailPeriodKiller.\allowbreak lean:57}),
+(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak totientTail}{TotientTailPeriodKiller.lean:57}),
 and $\Phi_N=\sum_{n\le N}\varphi(n)2^{N-n}\in\Z$ for the integer prefix, so
 that $2^N S=\Phi_N+R_N$. For $h\ge 1$ set
 \[
@@ -5449,9 +5484,9 @@ the forward orbit of $\alpha_h \bmod 1$ under $x\mapsto 2x$.
 
 \noindent
 The second identity and the character form are landed:
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tail_diff_eq_scaled_\allowbreak totient_series_sub_prefix}{PivotAntiReconstruction.\allowbreak lean:54}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tail_diff_eq_scaled_\allowbreak totient_series_sub_prefix}{PivotAntiReconstruction.lean:54}
 and
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp}{PivotAntiReconstruction.\allowbreak lean:66}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp}{PivotAntiReconstruction.lean:66}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:binary-window}.
 The recurrence $R_{N+1}=2R_N-\varphi(N+1)$ is one line from the definition
 and is used below only for intuition \ev{Math}.
@@ -5477,26 +5512,26 @@ Fix $h\ge 1$ and $X_0$, and take $X$ as supplied. Choose $L$ with
 $2^{L}\ge 1024\,(2X+h+L+2)$; such $L$ exists because $2^L/L\to\infty$, and it
 satisfies the room inequality $16(2X+h+L+2)\le 2^L$ a fortiori. For every
 $N<2X$ the landed truncation bound
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak norm_windowFirstExp_\allowbreak sub_tailOrbitFirstExp_lt}{PivotAntiReconstruction.\allowbreak lean:202}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak norm_windowFirstExp_\allowbreak sub_tailOrbitFirstExp_lt}{PivotAntiReconstruction.lean:202}
 gives
 $\bigl\|\,\mathrm{windowFirstExp}(h,N,L)-e(2^N\alpha_h)\,\bigr\|
  < 2\pi(N+L+h+2)/2^{L} \le 2\pi/1024 < 1/100$,
 so by
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstCos_le_\allowbreak add_of_tailOrbitGap}{PivotAntiReconstruction.\allowbreak lean:221},
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstCos_le_\allowbreak add_of_tailOrbitGap}{PivotAntiReconstruction.lean:221},
 $\mathrm{windowFirstCos}(h,N,L)\le \cos(2\pi 2^N\alpha_h)+1/100$. Summing over
 the $X$ values $N\in[X,2X)$ gives
 $\sum_N \mathrm{windowFirstCos}(h,N,L)\le \tfrac{89}{100}X+\tfrac{1}{100}X
 =\tfrac{9}{10}X$, so
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap}{FirstHarmonicGap.\allowbreak lean:128}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap}{FirstHarmonicGap.lean:128}
 produces $N\in[X,2X)$ with $\mathrm{certifiedKill}(h,N,L)$, and $N\ge X\ge X_0$.
 This is exactly the certificate supply consumed by
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak irrational_totient_series_\allowbreak of_certificate_supply}{TotientTailPeriodKiller.\allowbreak lean:394}.
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak irrational_totient_series_\allowbreak of_certificate_supply}{TotientTailPeriodKiller.lean:394}.
 \end{proof}
 
 \noindent
 \ev{Math} \quad \scale{cofinal} \quad \coord{other:binary-window}. The proof
 uses only landed lemmas; formalising it is a variant of
-\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.\allowbreak lean:83}
+\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
 with the constant $21/25$ replaced by the real-part constant $89/100$ and the
 room factor $16$ by $1024$. Nothing here is an improvement of the analytic
 requirement; it is a change of coordinate that makes the requirement legible.
@@ -5568,9 +5603,9 @@ is developed in \S\ref{sub:shape}.
   \Bigl\|\sum_{N=X}^{2X-1} e\bigl(D(h,N,L)/2^{L}\bigr)\Bigr\|\le \tfrac{21}{25}X,
 \]
 where $D(h,N,L)=\sum_{j<L}\bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j}$.
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWFirstHarmonicNormGap}{FirstHarmonicPivot.\allowbreak lean:75},
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75},
 consumer
-\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.\allowbreak lean:83}
+\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
 \quad \ev{Open} \quad \scale{cofinal}. By Proposition~\ref{prop:transfer} the
 weaker real-part form with constant $89/100$ suffices.
 
@@ -5710,14 +5745,14 @@ $16(2X+h+L+2)\le 2^{L}$, and all four of
   &\qquad \bigl\|\mathrm{pivotNonSupplierContribution}\bigr\| &\le \tfrac{8}{25}X .
 \end{aligned}
 \]
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWPivotResidualDecorrelation}{FirstHarmonicPivot.\allowbreak lean:397},
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:397},
 consumer
-\lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.\allowbreak lean:405}
+\lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:405}
 \quad \ev{Open} \quad \scale{cofinal}. The decomposition is an exact identity,
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstExp_sum_\allowbreak eq_pivot_decomposition}{FirstHarmonicPivot.\allowbreak lean:342}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstExp_sum_\allowbreak eq_pivot_decomposition}{FirstHarmonicPivot.lean:342}
 \quad \ev{Lean}, and the supplier set at the canonical fibre is a membership
 equality with a shifted dyadic interval of primes,
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.\allowbreak lean:251}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:251}
 \quad \ev{Lean}.
 
 \paragraph{Two of the four budgets are classical. Here they are.}
@@ -5911,9 +5946,9 @@ many multiplicative values. \ev{Open}
   \ \wedge\
   \operatorname{Re}\bigl(\mathrm{tailOrbitFirstExp}(h,\,p-h-1)\bigr)<\tfrac{9}{10}.
 \]
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/\allowbreak Erdos249/\allowbreak TotientStrictPrimeEscape.\allowbreak lean:18},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:18},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/\allowbreak Erdos249/\allowbreak TotientStrictPrimeEscape.\allowbreak lean:66}
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:66}
 \quad \ev{Open} \quad \scale{cofinal}.
 
 \paragraph{What it says, after Lemma~\ref{lem:orbit}.}
@@ -5945,10 +5980,10 @@ obstacle is that nothing sees it.
 
 \paragraph{A swing: replace the pointwise demand by a canonical fibre.}
 The corpus warns against the subset consumer
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap_subset}{FirstHarmonicGap.\allowbreak lean:104}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap_subset}{FirstHarmonicGap.lean:104}
 because a predicate quantifying existentially over subsets
 $T\subseteq[X,2X)$ is collapse-exposed: the proved collapse
-\lean{Erdos249257.\allowbreak dtwWindowSeparatedPairs_iff_\allowbreak irrational_totient_series}{PivotAntiReconstruction.\allowbreak lean:1775}
+\lean{Erdos249257.\allowbreak dtwWindowSeparatedPairs_iff_\allowbreak irrational_totient_series}{PivotAntiReconstruction.lean:1775}
 works precisely by \emph{choosing} $T=\{N,N+1\}$. That warning applies to a
 free $T$. It does not apply to a $T$ named in advance as a function of
 $(h,X,L)$, and the corpus already contains the right one:
@@ -5957,7 +5992,7 @@ $(h,X,L)$, and the corpus already contains the right one:
   \;=\;\{\,N\in[X,2X)\ :\ N+h+1\ \text{prime}\,\},
 \]
 a membership equality rather than a sampled surrogate
-(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.\allowbreak lean:251},
+(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:251},
 \ev{Lean}). The proposal is to prove
 \begin{equation}\label{eq:primefibre}
   \forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
@@ -6002,11 +6037,11 @@ is itself a well-defined finite piece of work.
   \forall d\ge 1\ \forall N\ \exists t\ge 1:\ \mathrm{certifiedKill}(td,\,N,\,td),
 \]
 unpacked, $(N+2td+2:\Z)<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)$.
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/\allowbreak Erdos249/\allowbreak PeriodMultipleEscape.\allowbreak lean:162},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:162},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/\allowbreak Erdos249/\allowbreak PeriodMultipleEscape.\allowbreak lean:171},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:171},
 ambient equivalence
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/\allowbreak Erdos249/\allowbreak PeriodMultipleEscape.\allowbreak lean:153}
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}
 \quad \ev{Open} \quad \scale{cofinal}. It is the shortest fully stated open
 inequality the programme has produced.
 
@@ -6015,7 +6050,7 @@ of $S$ alone.}
 Writing $h=td$ and using
 $D(h,N,L)/2^{L}=(R_{N+h}-R_N)-(R_{N+L+h}-R_{N+L})/2^{L}$ at $L=h$, together
 with the landed strip $|R_{M+h}-R_M|<M+h+2$
-(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak abs_tail_\allowbreak diff_lt}{CarrySurvivorExtinction.\allowbreak lean:79},
+(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak abs_tail_\allowbreak diff_lt}{CarrySurvivorExtinction.lean:79},
 \ev{Lean}), applied at $M=N+h$, one gets:
 
 \begin{prop}\label{prop:route4}
@@ -6092,14 +6127,14 @@ where $X_c=\sum_{n\ge1}c(n)/2^{n}$,
 $\operatorname{rk}_e(u)=\dim_{\Q}\operatorname{span}_{\Q}\{n\mapsto u(2^{j}n+r)
 : 1\le j\le e,\ r<2^{j}\}$, or the same with $C$ replaced by any $g(e)=o(2^{e})$.
 It would contradict the landed floor
-\lean{Erdos249257.\allowbreak not_irrational_totientSeries_\allowbreak implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.\allowbreak lean:284}
+\lean{Erdos249257.\allowbreak not_irrational_totientSeries_\allowbreak implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:284}
 \quad \ev{Lean}, which gives $2^{e}-1\le\operatorname{rk}_e(u)$ for every $e$.
 
 \paragraph{First, the right vocabulary.}
 ``The $\Q$-span of all dyadic sections is finite-dimensional'' is, verbatim,
 the definition of a \emph{$2$-regular sequence} in the sense of Allouche and
 Shallit \ev{Cited}. In that vocabulary the corpus's unconditional theorem
-\lean{Erdos249257.\allowbreak not_finiteDimensional_\allowbreak span_fullTotientKernel}{TotientMahlerDefect.\allowbreak lean:1014}
+\lean{Erdos249257.\allowbreak not_finiteDimensional_\allowbreak span_fullTotientKernel}{TotientMahlerDefect.lean:1014}
 says: \emph{$\varphi$ is not $2$-regular}; and the obligation above says:
 \emph{a rational binary coefficient series with linear growth forces its
 carry orbit to be $2$-regular}. Naming this connects the lane to a mature
@@ -6115,7 +6150,7 @@ $c(n)=n-b(n)$. Then
       with $v=1$;
 \item $c$ is not $2$-regular, hence $\operatorname{rk}_e(c)\to\infty$ and, by
       the carry bridge
-      \lean{Erdos249257.\allowbreak totient_carryKernel_diff}{TotientCarryKernelRigidity.\allowbreak lean:94}
+      \lean{Erdos249257.\allowbreak totient_carryKernel_diff}{TotientCarryKernelRigidity.lean:94}
       in its coefficient-generic form --- which is the recurrence
       $v\,c(N+1)=2u(N)-u(N+1)$ read on each dyadic section, and uses nothing
       about $\varphi$ --- $\operatorname{rk}_e(u)\to\infty$.
@@ -6183,10 +6218,10 @@ density estimate stated).
 
 \paragraph{And the floor carries no information from rationality.}
 There is a second, independent reason to retire this route. The bridge
-\lean{Erdos249257.\allowbreak totient_carryKernel_diff}{TotientCarryKernelRigidity.\allowbreak lean:94}
+\lean{Erdos249257.\allowbreak totient_carryKernel_diff}{TotientCarryKernelRigidity.lean:94}
 places every positive-residue $\varphi$-section inside the span of two
 $u$-sections at the same level, and
-\lean{Erdos249257.\allowbreak not_finiteDimensional_\allowbreak span_fullTotientKernel}{TotientMahlerDefect.\allowbreak lean:1014}
+\lean{Erdos249257.\allowbreak not_finiteDimensional_\allowbreak span_fullTotientKernel}{TotientMahlerDefect.lean:1014}
 says that span is infinite-dimensional unconditionally. So the floor
 $2^{e}-1\le\operatorname{rk}_e(u)$ is nothing but the non-$2$-regularity of
 $\varphi$ transported through an exact identity: it uses rationality only to
@@ -6447,7 +6482,7 @@ t\ge N_0$ simultaneously, so a single diagonal witness at $t$ discharges
 lemma \lean{Erdos249257.irrational_totient_series_of_lcm_certificate_supply}{LcmDiagonalReduction.lean:92}
 which itself reduces to the multiple-period form above. $P(t)$ is verified
 at 28 explicit values of $t$ through $t=64$
-(\lean{Erdos249257.certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2842},
+(\lean{Erdos249257.certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860},
 depths $[6,5,7,7,9,14,15,14,21,22,23,26,\dots]$ for
 $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$; endpoint
 \lean{Erdos249257.certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928})
@@ -6668,7 +6703,7 @@ $H+q+2$:
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}. This is a substantially
 weaker demand than the earlier fixed $1/32$ central band elsewhere in the
 corpus. Sufficiency:
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand}{TotientActualLcmTopEdgeStaircase.lean:2121}.
+\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand}{TotientActualLcmTopEdgeStaircase.lean:2057}.
 
 \item[(iii)] $\mathrm{PowerTwoActualFinalTopEdgeMagnitudeSupply}$: the exact
 centered-lift restatement of (ii),
@@ -6692,7 +6727,7 @@ still fits the corridor (not forced to the canonical guarded depth):
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoFlexibleActualTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:1927}
 \ev{Open} \scale{cofinal} \coord{mobius-mersenne}. Sufficiency routes back
 through (i), not through the corridor-escape chain below:
-\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude}{TotientActualLcmTopEdgeStaircase.lean:1938}, direct endpoint
+\lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.powerTwoAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude}{TotientActualLcmTopEdgeStaircase.lean:2007}, direct endpoint
 \lean{Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_flexibleActualTopEdgeMagnitudeSupply}{TotientActualLcmTopEdgeStaircase.lean:2213}.
 
 \item[(v)] $\mathrm{PowerTwoFlexibleActualTerminalDominanceSupply}$: a
