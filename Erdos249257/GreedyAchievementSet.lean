@@ -2682,6 +2682,157 @@ def greedyMersenneSecondChannelPhaseRat (n : ℕ) : ℚ :=
     (2 * greedyMersenneRemainderRat (1 / 2 : ℚ) n
       - ((1 : ℚ) / 2) ^ n)
 
+/-- Expanded form of the rational second-channel coordinate. -/
+theorem greedyMersenneSecondChannelPhaseRat_eq_scaled_remainder (n : ℕ) :
+    greedyMersenneSecondChannelPhaseRat n =
+      2 * (4 : ℚ) ^ n *
+          greedyMersenneRemainderRat (1 / 2 : ℚ) n -
+        (2 : ℚ) ^ n := by
+  have hhalf :
+      ((1 : ℚ) / 2) ^ n * (4 : ℚ) ^ n = (2 : ℚ) ^ n := by
+    rw [← mul_pow]
+    norm_num
+  unfold greedyMersenneSecondChannelPhaseRat
+  calc
+    (4 : ℚ) ^ n *
+          (2 * greedyMersenneRemainderRat (1 / 2 : ℚ) n -
+            ((1 : ℚ) / 2) ^ n) =
+        2 * (4 : ℚ) ^ n *
+            greedyMersenneRemainderRat (1 / 2 : ℚ) n -
+          ((1 : ℚ) / 2) ^ n * (4 : ℚ) ^ n := by ring
+    _ = 2 * (4 : ℚ) ^ n *
+            greedyMersenneRemainderRat (1 / 2 : ℚ) n -
+          (2 : ℚ) ^ n := by rw [hhalf]
+
+/-- In the second-channel coordinate, the greedy branch decision is a single
+moving threshold.  This removes the residual from the dynamical system:
+rank `n+1` is selected exactly when
+`2^n / (2^(n+1)-1) ≤ φ_n`. -/
+theorem mersenneWeightRat_succ_le_half_iff_secondChannelPhaseRat
+    (n : ℕ) :
+    mersenneWeightRat (n + 1) ≤
+        greedyMersenneRemainderRat (1 / 2 : ℚ) n ↔
+      (2 : ℚ) ^ n / ((2 : ℚ) ^ (n + 1) - 1) ≤
+        greedyMersenneSecondChannelPhaseRat n := by
+  have hden : ((2 : ℚ) ^ (n + 1) - 1) ≠ 0 := by
+    have hpow : (1 : ℚ) < 2 ^ (n + 1) :=
+      one_lt_pow₀ (by norm_num) (by omega)
+    linarith
+  have hscale : 0 < 2 * (4 : ℚ) ^ n := by positivity
+  have hphase :
+      greedyMersenneSecondChannelPhaseRat n =
+        2 * (4 : ℚ) ^ n *
+            greedyMersenneRemainderRat (1 / 2 : ℚ) n -
+          (2 : ℚ) ^ n :=
+    greedyMersenneSecondChannelPhaseRat_eq_scaled_remainder n
+  have hweight :
+      2 * (4 : ℚ) ^ n * mersenneWeightRat (n + 1) =
+        (2 : ℚ) ^ n +
+          (2 : ℚ) ^ n / ((2 : ℚ) ^ (n + 1) - 1) := by
+    unfold mersenneWeightRat
+    have hfour :
+        (4 : ℚ) ^ n = (2 : ℚ) ^ n * (2 : ℚ) ^ n := by
+      rw [← mul_pow]
+      norm_num
+    field_simp [hden]
+    rw [pow_succ, hfour]
+    ring
+  constructor <;> intro h
+  · have hscaled := mul_le_mul_of_nonneg_left h hscale.le
+    rw [hweight] at hscaled
+    rw [hphase]
+    linarith
+  · have hscaled :
+        2 * (4 : ℚ) ^ n * mersenneWeightRat (n + 1) ≤
+          2 * (4 : ℚ) ^ n *
+            greedyMersenneRemainderRat (1 / 2 : ℚ) n := by
+      rw [hweight]
+      rw [hphase] at h
+      linarith
+    nlinarith
+
+/-- Exact branch dynamics of the rational second-channel phase.  A skipped
+weight applies the expanding affine map
+`φ ↦ 4 * φ + 2^(n+1)`.  A selected weight applies the same expansion
+together with the complete finite-level Mersenne correction; the final
+fraction is not an asymptotic error term. -/
+theorem greedyMersenneSecondChannelPhaseRat_succ (n : ℕ) :
+    greedyMersenneSecondChannelPhaseRat (n + 1) =
+      if (2 : ℚ) ^ n / ((2 : ℚ) ^ (n + 1) - 1) ≤
+          greedyMersenneSecondChannelPhaseRat n then
+        4 * greedyMersenneSecondChannelPhaseRat n
+          - (2 : ℚ) ^ (n + 1) - 2
+          - 2 / ((2 : ℚ) ^ (n + 1) - 1)
+      else
+        4 * greedyMersenneSecondChannelPhaseRat n
+          + (2 : ℚ) ^ (n + 1) := by
+  by_cases h :
+      mersenneWeightRat (n + 1) ≤
+        greedyMersenneRemainderRat (1 / 2 : ℚ) n
+  · have hphase :=
+      (mersenneWeightRat_succ_le_half_iff_secondChannelPhaseRat n).mp h
+    rw [if_pos hphase]
+    rw [greedyMersenneSecondChannelPhaseRat_eq_scaled_remainder (n + 1),
+      greedyMersenneSecondChannelPhaseRat_eq_scaled_remainder n,
+      greedyMersenneRemainderRat_succ, if_pos h]
+    have hden : ((2 : ℚ) ^ (n + 1) - 1) ≠ 0 := by
+      have hpow : (1 : ℚ) < 2 ^ (n + 1) :=
+        one_lt_pow₀ (by norm_num) (by omega)
+      linarith
+    have hfour :
+        (4 : ℚ) ^ n = (2 : ℚ) ^ (n * 2) := by
+      calc
+        (4 : ℚ) ^ n = ((2 : ℚ) ^ 2) ^ n := by norm_num
+        _ = (2 : ℚ) ^ (2 * n) := by rw [pow_mul]
+        _ = (2 : ℚ) ^ (n * 2) := by congr 1 <;> omega
+    unfold mersenneWeightRat
+    field_simp [hden]
+    simp only [pow_succ]
+    rw [hfour]
+    ring
+  · have hphase :
+        ¬ ((2 : ℚ) ^ n / ((2 : ℚ) ^ (n + 1) - 1) ≤
+          greedyMersenneSecondChannelPhaseRat n) := by
+      intro hphase
+      exact h
+        ((mersenneWeightRat_succ_le_half_iff_secondChannelPhaseRat n).mpr
+          hphase)
+    rw [if_neg hphase]
+    rw [greedyMersenneSecondChannelPhaseRat_eq_scaled_remainder (n + 1),
+      greedyMersenneSecondChannelPhaseRat_eq_scaled_remainder n,
+      greedyMersenneRemainderRat_succ, if_neg h]
+    simp only [pow_succ]
+    ring
+
+/-- Any hypothetical entry into the open unit interval has an exact
+one-step predecessor window.  The two alternatives retain the actual greedy
+branch condition, so this is a backward reachability statement rather than
+an unconstrained affine estimate. -/
+theorem secondChannelPhaseRat_unit_preimage
+    {n : ℕ}
+    (hzero : 0 < greedyMersenneSecondChannelPhaseRat (n + 1))
+    (hone : greedyMersenneSecondChannelPhaseRat (n + 1) < 1) :
+    (((2 : ℚ) ^ n / ((2 : ℚ) ^ (n + 1) - 1) ≤
+          greedyMersenneSecondChannelPhaseRat n) ∧
+        (2 : ℚ) ^ (n + 1) + 2 +
+            2 / ((2 : ℚ) ^ (n + 1) - 1) <
+          4 * greedyMersenneSecondChannelPhaseRat n ∧
+        4 * greedyMersenneSecondChannelPhaseRat n <
+          (2 : ℚ) ^ (n + 1) + 3 +
+            2 / ((2 : ℚ) ^ (n + 1) - 1)) ∨
+      (greedyMersenneSecondChannelPhaseRat n <
+          (2 : ℚ) ^ n / ((2 : ℚ) ^ (n + 1) - 1) ∧
+        -((2 : ℚ) ^ (n + 1)) <
+          4 * greedyMersenneSecondChannelPhaseRat n ∧
+        4 * greedyMersenneSecondChannelPhaseRat n <
+          1 - (2 : ℚ) ^ (n + 1)) := by
+  rw [greedyMersenneSecondChannelPhaseRat_succ] at hzero hone
+  split_ifs at hzero hone with hbranch
+  · left
+    exact ⟨hbranch, by linarith, by linarith⟩
+  · right
+    exact ⟨lt_of_not_ge hbranch, by linarith, by linarith⟩
+
 @[simp] theorem cast_greedyMersenneSecondChannelPhaseRat (n : ℕ) :
     ((greedyMersenneSecondChannelPhaseRat n : ℚ) : ℝ)
       = greedyMersenneSecondChannelPhase n := by
@@ -2695,6 +2846,32 @@ def greedyMersenneSecondChannelPhaseRat (n : ℕ) : ℚ :=
 def HalfSecondChannelSeparatedRat (n : ℕ) : Prop :=
   (1 / 6 : ℚ) + (37 / 56 : ℚ) * ((1 : ℚ) / 2) ^ n
     ≤ |greedyMersenneSecondChannelPhaseRat n - 1 / 3|
+
+/-- Avoiding the much simpler open unit interval already implies the exact
+shrinking-hole certificate from rank two onward.  Thus a global arithmetic
+proof may target the dichotomy `φ_n ≤ 0 ∨ 1 ≤ φ_n`; no estimate near the
+moving boundary of the original hole is then required. -/
+theorem halfSecondChannelSeparatedRat_of_outside_unit
+    {n : ℕ} (hn : 2 ≤ n)
+    (hout :
+      greedyMersenneSecondChannelPhaseRat n ≤ 0 ∨
+        1 ≤ greedyMersenneSecondChannelPhaseRat n) :
+    HalfSecondChannelSeparatedRat n := by
+  unfold HalfSecondChannelSeparatedRat
+  obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hn
+  have hk :
+      ((1 : ℚ) / 2) ^ k ≤ 1 :=
+    pow_le_one₀ (by norm_num) (by norm_num)
+  have hpow :
+      ((1 : ℚ) / 2) ^ (2 + k) ≤ 1 / 4 := by
+    rw [pow_add]
+    norm_num
+    nlinarith
+  rcases hout with hnonpos | hone
+  · rw [abs_of_nonpos (by linarith)]
+    nlinarith
+  · rw [abs_of_nonneg (by linarith)]
+    nlinarith
 
 instance (n : ℕ) : Decidable (HalfSecondChannelSeparatedRat n) :=
   by
