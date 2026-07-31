@@ -31,14 +31,14 @@ SECTION_ORDER = (
 
 ANCHOR_GROUPS = {
     "scale_and_coverage": (
-        "992 Lean modules and 151,761 declarations",
-        "9,261 source-resolved nodes and 48,781 direct",
+        "994 Lean modules and 152,215 declarations",
+        "9,715 source-resolved nodes and 51,427 direct",
         r"\SemanticAuthoredTheoremLike/\SemanticAuthoredTheoremLike",
         r"\SemanticAuthoredInterpreted\ authored interpretations",
         r"\SemanticDirectEvidence\ direct evidence",
         r"\SemanticContextual\ bounded family context",
         r"\SemanticStructuralOnly\ remain exact source-structural families only",
-        "100 claims; 10 programmes; 4 open propositions",
+        "101 claims; 10 programmes; 5 open propositions",
     ),
     "zero_build_tour": (
         "require no Lean build",
