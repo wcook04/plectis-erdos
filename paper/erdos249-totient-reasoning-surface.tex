@@ -174,8 +174,8 @@ reduction, never as progress toward a solution.
 Let $\varphi$ be Euler's totient function and put
 \[
   S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}}
-  \;=\; 1 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
-  \;=\; 1.6066\ldots
+  \;=\; \tfrac12 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
+  \;=\; 1.3676308\ldots
 \]
 The series converges absolutely because $\varphi(n) \le n$. Erd\H{o}s Problem
 \#249 asks whether $S$ is irrational. \emph{It is open.} Nothing in this
@@ -983,7 +983,7 @@ $\mathrm{Re}\,\mathrm{tailOrbitFirstExp}(h,\,p{-}h{-}1) < \tfrac{9}{10}$,
 where $\mathrm{tailOrbitFirstExp}(h,N) = e(R_{N+h} - R_N)$. Equivalently:
 cofinally many primes $p$ at which the totient tail difference across the shift
 $h$ stays a \emph{fixed} distance
-$\ge \arccos(9/10)/2\pi \approx 0.0722$ from every integer.
+$\ge \arccos(9/10)/2\pi \approx 0.0718$ from every integer.
 It implies $\mathrm{Irrational}(S)$.
 \coord{prime-pivot} \scale{cofinal} \ev{Lean}
 \lean{DTWNaturalPrimeTailOrbitStrictGap}{TotientStrictPrimeEscape.lean:18}
@@ -5533,7 +5533,7 @@ $h$ & $X$ & $\rho_h(X)$ & $X^{-1}\sum_{N\in[X,2X)}\cos(2\pi 2^N\alpha_h)$ & requ
 $1$ & $256$  & $0.4766$ & $\phantom{-}0.0037$ & $\le 0.89$ \\
 $1$ & $2048$ & $0.5073$ & $-0.0043$ & $\le 0.89$ \\
 $3$ & $256$  & $0.4648$ & $\phantom{-}0.0296$ & $\le 0.89$ \\
-$3$ & $2048$ & $0.5020$ & $\phantom{-}0.0028$ & $\le 0.89$ \\
+$3$ & $2048$ & $0.5020$ & $\phantom{-}0.0027$ & $\le 0.89$ \\
 $8$ & $2048$ & $0.5112$ & $-0.0088$ & $\le 0.89$ \\
 $13$& $2048$ & $0.5049$ & $-0.0195$ & $\le 0.89$ \\
 \hline
@@ -5541,9 +5541,9 @@ $13$& $2048$ & $0.5049$ & $-0.0195$ & $\le 0.89$ \\
 \caption{Block statistics for $\alpha_h=(2^h-1)S$, computed from the exact
 integer $\lfloor 2^{6000}S\rfloor$ (error $<1$ in the last bit, tail bound
 $(M+2)2^{-M}$ at $M=6080$). Over positions $1..5800$ the binary expansion of
-$\alpha_1$ has $2863$ runs, mean run length $2.0255$, longest run $13$; for
-$\alpha_3$, $2964$ runs, mean $1.9565$, longest $12$; for $\alpha_8$, $2926$
-runs, mean $1.9819$, longest $14$. A uniform digit model predicts mean run
+$\alpha_1$ has $2864$ runs, mean run length $2.0251$, longest run $13$; for
+$\alpha_3$, $2964$ runs, mean $1.9568$, longest $12$; for $\alpha_8$, $2927$
+runs, mean $1.9816$, longest $14$. A uniform digit model predicts mean run
 length $2$ and longest run $\approx\log_2 5800\approx 12.5$. \ev{Cert}}
 \label{tab:blocks}
 \end{table}
@@ -5752,7 +5752,7 @@ $y=\sqrt x$. Finally $\rho(2)=1-\log 2$.
 \noindent
 \ev{Math} (modulo the cited uniform estimate) \quad \scale{cofinal}. Two
 remarks. First, the budget $8/25$ evidently was chosen to sit just above
-$1-\log 2$: the slack is $0.0132$, four per cent of the budget. Second, the
+$1-\log 2$: the slack is $0.0131$, four per cent of the budget. Second, the
 approach to the limit is at rate $\asymp 1/\log X$, so the inequality is true
 but not observable. Exact computation gives non-supplier density $0.41795$ at
 $X=2\cdot 10^{4}$ and $0.40381$ at $X=8\cdot 10^{4}$ \ev{Cert}; extrapolating
@@ -5918,7 +5918,7 @@ consumer
 
 \paragraph{What it says, after Lemma~\ref{lem:orbit}.}
 $\operatorname{Re}e(2^{p-h-1}\alpha_h)<9/10$ says
-$\|2^{p-h-1}\alpha_h\|_{\R/\Z}>\arccos(9/10)/2\pi=0.07226\ldots$, so the
+$\|2^{p-h-1}\alpha_h\|_{\R/\Z}>\arccos(9/10)/2\pi=0.0717831\ldots$, so the
 requirement is: \emph{for each $h$, the binary expansion of $\alpha_h$ begins
 a run of at most three equal digits at position $p-h$, for cofinally many
 primes $p$}. It is a run-length bound at a prime-indexed subsequence of a

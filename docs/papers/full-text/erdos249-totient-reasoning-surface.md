@@ -33,8 +33,8 @@ Erdős Problem 249 is open. No section of this document claims otherwise, and a 
 Let $`\varphi`$ be Euler’s totient function and put
 ``` math
 S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}}
-  \;=\; 1 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
-  \;=\; 1.6066\ldots
+  \;=\; \tfrac12 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
+  \;=\; 1.3676308\ldots
 ```
 The series converges absolutely because $`\varphi(n) \le n`$. Erdős Problem \#249 asks whether $`S`$ is irrational. *It is open.* Nothing in this document decides it, no route recorded here is a proof, and no result here should be read as an approach that is close to working. What this document does is different in kind: it assembles every recorded failure, obstruction, countermodel and dead route the programme has produced against \#249, and classifies each one by the exact class of argument it eliminates. The claim being made is that those failures are not independent — they are repeated measurements of a single obstruction, and that obstruction has a shape which can be stated.
 
@@ -414,7 +414,7 @@ It inherits Survivor 1’s evasions of B1, B4, B5, B6 and B7 verbatim: the four 
 
 <div id="defn:primegap" class="defn">
 
-**Definition 28** ($`\mathrm{DTWNaturalPrimeTailOrbitStrictGap}`$). For every $`h \ge 1`$ and every $`N_0`$ there is a prime $`p`$ with $`\max(N_0{+}h{+}1,\, h{+}5) \le p`$ and $`\mathrm{Re}\,\mathrm{tailOrbitFirstExp}(h,\,p{-}h{-}1) < \tfrac{9}{10}`$, where $`\mathrm{tailOrbitFirstExp}(h,N) = e(R_{N+h} - R_N)`$. Equivalently: cofinally many primes $`p`$ at which the totient tail difference across the shift $`h`$ stays a *fixed* distance $`\ge \arccos(9/10)/2\pi \approx 0.0722`$ from every integer. It implies $`\mathrm{Irrational}(S)`$. <span class="sans-serif">coord:prime-pivot</span> <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Lean\]</span> [<span class="smallcaps">Lean source</span>](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e52e55c5db4d2ca965be45f007d25d0586ad4a0e/Erdos249257/TotientStrictPrimeEscape.lean:18) [<span class="smallcaps">Lean source</span>](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e52e55c5db4d2ca965be45f007d25d0586ad4a0e/Erdos249257/TotientStrictPrimeEscape.lean:66)
+**Definition 28** ($`\mathrm{DTWNaturalPrimeTailOrbitStrictGap}`$). For every $`h \ge 1`$ and every $`N_0`$ there is a prime $`p`$ with $`\max(N_0{+}h{+}1,\, h{+}5) \le p`$ and $`\mathrm{Re}\,\mathrm{tailOrbitFirstExp}(h,\,p{-}h{-}1) < \tfrac{9}{10}`$, where $`\mathrm{tailOrbitFirstExp}(h,N) = e(R_{N+h} - R_N)`$. Equivalently: cofinally many primes $`p`$ at which the totient tail difference across the shift $`h`$ stays a *fixed* distance $`\ge \arccos(9/10)/2\pi \approx 0.0718`$ from every integer. It implies $`\mathrm{Irrational}(S)`$. <span class="sans-serif">coord:prime-pivot</span> <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">\[Lean\]</span> [<span class="smallcaps">Lean source</span>](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e52e55c5db4d2ca965be45f007d25d0586ad4a0e/Erdos249257/TotientStrictPrimeEscape.lean:18) [<span class="smallcaps">Lean source</span>](https://github.com/wcook04/plectis-lean-erdos249-257/blob/e52e55c5db4d2ca965be45f007d25d0586ad4a0e/Erdos249257/TotientStrictPrimeEscape.lean:66)
 
 </div>
 
@@ -4051,11 +4051,11 @@ Then $`\mathrm{OrbitBlockGap}`$ implies that $`S`$ is irrational.*
 | $`1`$ | $`256`$ | $`0.4766`$ | $`\phantom{-}0.0037`$ | $`\le 0.89`$ |
 | $`1`$ | $`2048`$ | $`0.5073`$ | $`-0.0043`$ | $`\le 0.89`$ |
 | $`3`$ | $`256`$ | $`0.4648`$ | $`\phantom{-}0.0296`$ | $`\le 0.89`$ |
-| $`3`$ | $`2048`$ | $`0.5020`$ | $`\phantom{-}0.0028`$ | $`\le 0.89`$ |
+| $`3`$ | $`2048`$ | $`0.5020`$ | $`\phantom{-}0.0027`$ | $`\le 0.89`$ |
 | $`8`$ | $`2048`$ | $`0.5112`$ | $`-0.0088`$ | $`\le 0.89`$ |
 | $`13`$ | $`2048`$ | $`0.5049`$ | $`-0.0195`$ | $`\le 0.89`$ |
 
-Block statistics for $`\alpha_h=(2^h-1)S`$, computed from the exact integer $`\lfloor 2^{6000}S\rfloor`$ (error $`<1`$ in the last bit, tail bound $`(M+2)2^{-M}`$ at $`M=6080`$). Over positions $`1..5800`$ the binary expansion of $`\alpha_1`$ has $`2863`$ runs, mean run length $`2.0255`$, longest run $`13`$; for $`\alpha_3`$, $`2964`$ runs, mean $`1.9565`$, longest $`12`$; for $`\alpha_8`$, $`2926`$ runs, mean $`1.9819`$, longest $`14`$. A uniform digit model predicts mean run length $`2`$ and longest run $`\approx\log_2 5800\approx 12.5`$. <span class="sans-serif">\[Cert\]</span>
+Block statistics for $`\alpha_h=(2^h-1)S`$, computed from the exact integer $`\lfloor 2^{6000}S\rfloor`$ (error $`<1`$ in the last bit, tail bound $`(M+2)2^{-M}`$ at $`M=6080`$). Over positions $`1..5800`$ the binary expansion of $`\alpha_1`$ has $`2864`$ runs, mean run length $`2.0251`$, longest run $`13`$; for $`\alpha_3`$, $`2964`$ runs, mean $`1.9568`$, longest $`12`$; for $`\alpha_8`$, $`2927`$ runs, mean $`1.9816`$, longest $`14`$. A uniform digit model predicts mean run length $`2`$ and longest run $`\approx\log_2 5800\approx 12.5`$. <span class="sans-serif">\[Cert\]</span>
 
 </div>
 
@@ -4193,7 +4193,7 @@ so the required bound $`\tfrac{8}{25}X=0.32X`$ holds for all sufficiently large 
 
 </div>
 
-<span class="sans-serif">\[Math\]</span> (modulo the cited uniform estimate) . Two remarks. First, the budget $`8/25`$ evidently was chosen to sit just above $`1-\log 2`$: the slack is $`0.0132`$, four per cent of the budget. Second, the approach to the limit is at rate $`\asymp 1/\log X`$, so the inequality is true but not observable. Exact computation gives non-supplier density $`0.41795`$ at $`X=2\cdot 10^{4}`$ and $`0.40381`$ at $`X=8\cdot 10^{4}`$ <span class="sans-serif">\[Cert\]</span>; extrapolating the $`1/\log X`$ correction, the crossover below $`0.32`$ lies beyond $`X=10^{30}`$, plausibly near $`10^{40}`$ (order-of-magnitude extrapolation, not a computation). Any numerical sanity check of this budget will therefore appear to refute it.
+<span class="sans-serif">\[Math\]</span> (modulo the cited uniform estimate) . Two remarks. First, the budget $`8/25`$ evidently was chosen to sit just above $`1-\log 2`$: the slack is $`0.0131`$, four per cent of the budget. Second, the approach to the limit is at rate $`\asymp 1/\log X`$, so the inequality is true but not observable. Exact computation gives non-supplier density $`0.41795`$ at $`X=2\cdot 10^{4}`$ and $`0.40381`$ at $`X=8\cdot 10^{4}`$ <span class="sans-serif">\[Cert\]</span>; extrapolating the $`1/\log X`$ correction, the crossover below $`0.32`$ lies beyond $`X=10^{30}`$, plausibly near $`10^{40}`$ (order-of-magnitude extrapolation, not a computation). Any numerical sanity check of this budget will therefore appear to refute it.
 
 <div id="prop:badcof" class="prop">
 
@@ -4290,7 +4290,7 @@ with $`L_k`$ any admissible depth sequence, then infinitely many blocks satisfy 
 
 #### What it says, after Lemma <a href="#lem:orbit" data-reference-type="ref" data-reference="lem:orbit">270</a>.
 
-$`\operatorname{Re}e(2^{p-h-1}\alpha_h)<9/10`$ says $`\|2^{p-h-1}\alpha_h\|_{\mathbb{R}/\mathbb{Z}}>\arccos(9/10)/2\pi=0.07226\ldots`$, so the requirement is: *for each $`h`$, the binary expansion of $`\alpha_h`$ begins a run of at most three equal digits at position $`p-h`$, for cofinally many primes $`p`$*. It is a run-length bound at a prime-indexed subsequence of a $`\times2`$ orbit.
+$`\operatorname{Re}e(2^{p-h-1}\alpha_h)<9/10`$ says $`\|2^{p-h-1}\alpha_h\|_{\mathbb{R}/\mathbb{Z}}>\arccos(9/10)/2\pi=0.0717831\ldots`$, so the requirement is: *for each $`h`$, the binary expansion of $`\alpha_h`$ begins a run of at most three equal digits at position $`p-h`$, for cofinally many primes $`p`$*. It is a run-length bound at a prime-indexed subsequence of a $`\times2`$ orbit.
 
 <a id="the-specific-obstacle."></a>
 
