@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:e532d1246fe188b387d379cc7e9f6f2266db8aab38ba3c9d02880bba91f68e1a",
+      "source_sha256": "sha256:4d3132481c19ffbd24fb7e0825c07687b317a28376a4aa12f41778b6e265ff42",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 157,
@@ -984,8 +984,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:136e90cec46fd046454b73829c2550f002440e94eb6cb41aeb1a298c6f809204",
-      "pdf_byte_count": 436871,
+      "pdf_sha256": "sha256:325df9784b561d028e95d366b218fe58069a72e1617425fd52148307a346b8ce",
+      "pdf_byte_count": 436864,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1334,7 +1334,7 @@
       ],
       "citations_rendered": 19,
       "fallback_title_drift": {
-        "registry_fallback": "Exact Finite-Level Ranks in the 2-Kernel of Euler's Totient",
+        "registry_fallback": "A Basis for the 2-Kernel of Euler's Totient",
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
@@ -1377,7 +1377,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:fa7317ae1449b675ea27fcc1cf51356e00c75119927dc69fa870d34d26c62f40",
+      "source_sha256": "sha256:9875497f8c6d8fb656ff134e714d084dbca203dedce84554c12c859df6af8f50",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-totient-reasoning-surface.tex",
       "section_count": 154,
@@ -2308,13 +2308,9 @@
         }
       ],
       "citations_rendered": 0,
-      "fallback_title_drift": {
-        "registry_fallback": "The Binary Totient Series: a complete working record of Erd\u0151s Problem 249",
-        "manuscript_title": "The Binary Totient Series"
-      },
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:1146947faf4c019487de959a0db7a5c594620213750af2e58943a1389f314dfb",
-      "pdf_byte_count": 706691,
+      "pdf_sha256": "sha256:466623df2dab7055d327f387f6be4337a96f443ff91d15f631435a188d78ff1c",
+      "pdf_byte_count": 706728,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2532,7 +2528,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:8c8f98732d548f3a9bd6c56228a2a8b409b0049793c423232de2889fcfd789d5",
+      "source_sha256": "sha256:1b10fd1b3a52e205df7273038b80180ae21993b71dae6b474441d65f4f4bcfea",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-257-mersenne-support-subseries.tex",
       "section_count": 22,
@@ -2661,23 +2657,19 @@
           "level": 1,
           "id": "sec:open",
           "title": "Open problems",
-          "line": 491
+          "line": 507
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 505
+          "line": 527
         }
       ],
       "citations_rendered": 22,
-      "fallback_title_drift": {
-        "registry_fallback": "Settled Supports and Exact Finite Periods",
-        "manuscript_title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry"
-      },
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:15cd0f2bb6cfc4b252f082c483c28d14ac131550e3d9ad5995ae3f3cebf16c13",
-      "pdf_byte_count": 131153,
+      "pdf_sha256": "sha256:fb27ae1916d25df1668a6d56a32e6bf5feda382e1a21c7902845408765f804bf",
+      "pdf_byte_count": 134767,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2700,7 +2692,7 @@
           {
             "id": "sec:open",
             "title": "Open problems",
-            "line": 491
+            "line": 507
           }
         ],
         "unresolved_count": 1
@@ -2720,7 +2712,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:50172c673409f16aee76aaa11eba12a39023aa08026bd72cc82ede3bca5a5d90",
+      "source_sha256": "sha256:c65c9b71d5482c9ca34e39fed39cafa5630c45882a4a59d07989bbee7719aad0",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "section_count": 138,
@@ -3555,13 +3547,9 @@
         }
       ],
       "citations_rendered": 0,
-      "fallback_title_drift": {
-        "registry_fallback": "Reciprocal Mersenne Subseries: a complete working record of Erd\u0151s Problem 257",
-        "manuscript_title": "Reciprocal Mersenne Subseries"
-      },
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:b2801c4017c0944fa8537fe01e0c25aaec685a2dd93d14d1c834fe9e59e2d396",
-      "pdf_byte_count": 670232,
+      "pdf_sha256": "sha256:bc9043f9e7fbdd57b43bbd77ab5b5b76b43d0d650a77c8be41ab89729c3f607f",
+      "pdf_byte_count": 670213,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3961,7 +3949,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:e920b9c5b386224fb441217bd71721be996d81e19c8a63cb90c1b4d6b0874643",
+      "source_sha256": "sha256:1c3949ee067dcca3eaec67667d1ec93707d2edb27cdc78142484b645cdee4e2e",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
       "section_count": 30,
@@ -4149,8 +4137,8 @@
       ],
       "citations_rendered": 18,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:e7a6ba04f650c25890af9812eee97f1050009b21834820163ae2d2adaa01603b",
-      "pdf_byte_count": 117457,
+      "pdf_sha256": "sha256:dc0521beb6cb58d384a222586a3c9ee48c6324c88de74dac33a8e195c65f6abd",
+      "pdf_byte_count": 117461,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -4193,7 +4181,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:70ae22f3bffb323293b4da2335f10cfc693374791b8c499695fcb94f958a69bc",
+      "source_sha256": "sha256:3f33ec081624ca5bf5104da0d4b22dc9d75f7544daf91a861cee987b742b12c2",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/cold-clone-to-proof-receipt.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/cold-clone-to-proof-receipt.tex",
       "section_count": 18,
@@ -4309,8 +4297,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:5629e749b83533126f0eb29c1d28081a29e5feddbccac28b43cda3686e68800a",
-      "pdf_byte_count": 74788,
+      "pdf_sha256": "sha256:ebbd2e9caef51114171bfee2c73a339b81ef6548f1cf20ab4db5038959460b66",
+      "pdf_byte_count": 74782,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",

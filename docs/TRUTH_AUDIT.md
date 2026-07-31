@@ -41,7 +41,7 @@ At this checkpoint the semantic graph yields three diagnostic views across every
 | classical/prior-art formalisations | 1 | 36 | 0 | 23 | 0 | 1 | 0 | 40 | 101 |
 | bare open-problem equivalences | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 2 | 32 |
 
-The graph contains 1,105 authored statement nodes above 3,739 exact source-structural families. The views overlap and are not a partition of either tier.
+The graph contains 1,105 authored statement nodes above 4,098 exact source-structural families. The views overlap and are not a partition of either tier.
 
 The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 8-node public prior-art review queue. 228 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
 <!-- END semantic_public_census -->

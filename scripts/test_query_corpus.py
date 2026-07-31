@@ -33,9 +33,10 @@ SCRIPT = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
 PROGRAMME_EXPECTATIONS = {
     "erdos257_half_story": {
-        "title": "Achievement-set geometry and the half-value seam",
+        "title": "Achievement-set geometry and the 1/2 and 1/21 frontiers",
         "open_ids": {
             "remaining_open.half_value_membership",
+            "remaining_open.twenty_one_permanent_affine_supercapacity",
             "remaining_open.universal_257_all_infinite_supports",
         },
     },
@@ -386,7 +387,7 @@ def validate_indexed_declaration_lookup() -> None:
     bare = declaration_packet(name, 20)
     qualified = declaration_packet(qualified_name, 20)
     source = source_coordinate_packet(
-        "Erdos249257/CertificateKernel.lean:18055", 20
+        "Erdos249257/CertificateKernel.lean:18336", 20
     )
 
     assert bare == qualified
@@ -706,10 +707,12 @@ def main() -> int:
         "python3 scripts/query_corpus.py --claim half_greedy_two_thirds_band",
         "python3 scripts/query_corpus.py --claim half_membership_seam_classification",
         "python3 scripts/query_corpus.py --claim fatal_gap_right_tail_classification",
+        "python3 scripts/query_corpus.py --claim twenty_one_quotient_greedy_frontier",
         "python3 scripts/query_corpus.py --claim final_middle_cell_escape",
         "python3 scripts/query_corpus.py --claim final_middle_neg_two_phase_sieve",
         "python3 scripts/query_corpus.py --claim last_producer_tail_escape_reduction",
         "python3 scripts/query_corpus.py --open remaining_open.half_value_membership",
+        "python3 scripts/query_corpus.py --open remaining_open.twenty_one_permanent_affine_supercapacity",
         "python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports",
     ]
     band_claim = query("--claim", "half_greedy_two_thirds_band")
@@ -928,7 +931,7 @@ def main() -> int:
     assert paper_label["attached_claims"][0]["id"] == "denominator_exclusion"
     assert paper_label["anchor_class"] == "registered_claim_anchor"
     assert any(
-        row["source_ref"] == "Erdos249257/CertificateKernel.lean:18056"
+        row["source_ref"] == "Erdos249257/CertificateKernel.lean:18337"
         for row in paper_label["source_links"]
     )
     assert paper_label["lean_source_identity"] == adelic["lean_source_identity"]
@@ -941,6 +944,31 @@ def main() -> int:
     assert {row["id"] for row in shared_paper_label["attached_claims"]} == {
         "eb_constant",
         "eb_full_support",
+    }
+    twenty_one_paper = query("--paper-label", "res:one-over-twenty-one-frontier")
+    assert twenty_one_paper["paper"]["source"] == (
+        "paper/erdos-257-mersenne-support-subseries.tex"
+    )
+    assert twenty_one_paper["anchor_class"] == "registered_claim_anchor"
+    assert twenty_one_paper["attachment_receipt"] == {
+        "claim_count": 1,
+        "open_proposition_count": 0,
+        "source_link_count": 6,
+        "complete": True,
+        "owners": [
+            "paper/erdos-257-mersenne-support-subseries.tex",
+            "docs/claims.json",
+        ],
+    }
+    assert {
+        row["declaration"] for row in twenty_one_paper["source_links"]
+    } == {
+        "twentyOneClosedRow_forces_quotientGreedy",
+        "one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
+        "twentyOneAlignedSaturatedCrossing_forces_canonical_ancestor_hole",
+        "twentyOneAlignedSaturatedCrossing_forces_scaled_greedy_skip",
+        "twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows",
+        "twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
     }
     local_result = query("--paper-anchor", "res:lift")
     assert local_result["anchor_class"] == "authored_formal_anchor_without_registered_claim"
@@ -1005,6 +1033,10 @@ def main() -> int:
         "remaining_open.erdos_249_irrationality": ("erdos_249", 1),
         "remaining_open.unbounded_certificate_supply": ("erdos_249", 10),
         "remaining_open.half_value_membership": ("universal_257", 5),
+        "remaining_open.twenty_one_permanent_affine_supercapacity": (
+            "universal_257",
+            1,
+        ),
         "remaining_open.universal_257_all_infinite_supports": ("universal_257", 6),
     }
     for open_id, (target, advancing_count) in open_expectations.items():
@@ -1033,7 +1065,7 @@ def main() -> int:
     )
     assert declaration["match_count"] == 1
     assert declaration["matches"][0]["claim_ids"] == ["denominator_exclusion"]
-    assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18056"
+    assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18337"
     assert declaration["matches"][0]["source_url"].startswith(
         "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
         + formal_source["ref"]
@@ -1066,11 +1098,11 @@ def main() -> int:
     assert local_declaration["paper_anchors"][0]["canonical_handle"] == "res:lift"
 
     source_coordinate = query(
-        "--source", "Erdos249257/CertificateKernel.lean:18055"
+        "--source", "Erdos249257/CertificateKernel.lean:18336"
     )
     assert source_coordinate["kind"] == "source_coordinate"
     assert source_coordinate["source"]["source_url"].endswith(
-        "/Erdos249257/CertificateKernel.lean#L18055"
+        "/Erdos249257/CertificateKernel.lean#L18336"
     )
     assert source_coordinate["source"]["lean_source_identity"] == adelic["lean_source_identity"]
     source_declaration = source_coordinate["nearby_declarations"][0]

@@ -134,9 +134,9 @@ evidence, checked consumer, and endpoint-or-counterexample boundary—are in
 
 | Library | Current size |
 |---|---:|
-| Lean modules | 992 |
-| Formal results and supporting lemmas | 149,812 |
-| Curated claim records | 100 |
+| Lean modules | 994 |
+| Formal results and supporting lemmas | 150,178 |
+| Curated claim records | 101 |
 | Contribution families | 21 |
 
 Claim records span every status, including cited and open, and are partitioned
@@ -229,7 +229,11 @@ For a focused build, run
 `python3 scripts/lean_fast_build.py --jobs 2 [target]`. Add `--lake-staleness`
 with restored `.lake` outputs so it trusts Lake content traces, not checkout
 times. Without a target it checks both roots; `--plan` reports waves without
-building. A cold clone can navigate before this step; formal editing needs the
+building. Partial caches stay on that trace-aware path even when a root output
+is absent. One verbose no-build verdict identifies the stale frontier, which is
+expanded through local import dependents; same-wave targets then share Lake
+graph scans in batches capped by `--jobs`.
+A cold clone can navigate before this step; formal editing needs the
 pinned toolchain. Later builds reuse outputs and rebuild only the selected or
 stale dependency cone; `--changed-from <git-ref>` selects changed modules.
 The dependency-index validator stores an exact `.lake` receipt: unchanged

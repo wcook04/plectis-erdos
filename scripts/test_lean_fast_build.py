@@ -8,8 +8,6 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import tempfile
-import threading
-import time
 import unittest
 from unittest import mock
 
@@ -108,38 +106,74 @@ import Pkg.TooLate
             "Pkg.Good": ("Pkg.Good", 0, 0.1),
             "Pkg.Bad": ("Pkg.Bad", 1, 0.2),
         }
-        with mock.patch.object(
-            fast,
-            "build_one",
-            side_effect=lambda name, root=fast.ROOT: results[name],
+        with mock.patch.object(fast, "build_batch", return_value=(1, 0.3)), mock.patch.object(
+            fast, "build_one", side_effect=lambda name, root=fast.ROOT: results[name]
         ):
             self.assertEqual(
                 fast.build_wave(["Pkg.Good", "Pkg.Bad"], jobs=2),
                 ["Pkg.Bad"],
             )
 
-    def test_build_wave_enforces_the_worker_bound(self) -> None:
-        active = 0
-        maximum = 0
-        lock = threading.Lock()
+    def test_build_wave_batches_at_the_worker_bound(self) -> None:
+        batches: list[list[str]] = []
 
-        def build_one(name, root=fast.ROOT):
-            nonlocal active, maximum
-            with lock:
-                active += 1
-                maximum = max(maximum, active)
-            time.sleep(0.02)
-            with lock:
-                active -= 1
-            return name, 0, 0.02
+        def build_batch(names, root=fast.ROOT):
+            batches.append(list(names))
+            return 0, 0.02
 
-        with mock.patch.object(fast, "build_one", side_effect=build_one):
+        with mock.patch.object(fast, "build_batch", side_effect=build_batch):
             self.assertEqual(
                 fast.build_wave([f"Pkg.{name}" for name in "ABCD"], jobs=2),
                 [],
             )
 
-        self.assertEqual(maximum, 2)
+        self.assertEqual(batches, [["Pkg.A", "Pkg.B"], ["Pkg.C", "Pkg.D"]])
+
+    def test_partial_cache_still_uses_lake_trace_staleness(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "Pkg" / "Root.lean"
+            source.parent.mkdir()
+            source.write_text("-- source\n", encoding="utf-8")
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_stale_targets", return_value=["Pkg.Root"]
+            ) as stale_targets, mock.patch.object(
+                fast, "build_wave", return_value=[]
+            ), mock.patch.object(fast.subprocess, "run", return_value=completed):
+                self.assertEqual(
+                    fast.main(["Pkg.Root", "--lake-staleness"]),
+                    0,
+                )
+
+            stale_targets.assert_called_once_with(["Pkg.Root"], root)
+
+    def test_lake_stale_targets_parses_single_verbose_verdict(self) -> None:
+        output = """progress\nSome required targets logged failures:\n- Pkg.A\n- Pkg.B\n"""
+        completed = fast.subprocess.CompletedProcess([], 3, output, "")
+        with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
+            self.assertEqual(
+                fast.lake_stale_targets(["Pkg.Root"], Path("/tmp/pkg")),
+                ["Pkg.A", "Pkg.B"],
+            )
+
+        self.assertEqual(
+            run.call_args.args[0],
+            ["lake", "--rehash", "--no-build", "-v", "build", "+Pkg.Root"],
+        )
+
+    def test_stale_frontier_propagates_to_every_import_dependent(self) -> None:
+        graph = {
+            "Pkg.A": set(),
+            "Pkg.B": {"Pkg.A"},
+            "Pkg.C": set(),
+            "Pkg.Root": {"Pkg.B", "Pkg.C"},
+        }
+        build_waves = [["Pkg.A", "Pkg.C"], ["Pkg.B"], ["Pkg.Root"]]
+        self.assertEqual(
+            fast.propagate_stale_targets(["Pkg.A"], build_waves, graph),
+            {"Pkg.A", "Pkg.B", "Pkg.Root"},
+        )
 
     def test_plan_lines_are_compact_unless_verbose(self) -> None:
         waves = [["Pkg.A", "Pkg.B"], ["Pkg.Root"]]
@@ -270,15 +304,20 @@ import Pkg.TooLate
                 )
             )
 
-    def test_lake_stale_targets_bisects_to_only_invalid_targets(self) -> None:
+    def test_lake_stale_targets_falls_back_to_bisection(self) -> None:
         calls: list[tuple[list[str], bool]] = []
 
-        def up_to_date(names, root=fast.ROOT, *, rehash=True):
-            targets = list(names)
-            calls.append((targets, rehash))
-            return "Pkg.Bad" not in targets
+        def run(command, **kwargs):
+            targets = [arg.removeprefix("+") for arg in command if arg.startswith("+")]
+            calls.append((targets, "--rehash" in command))
+            return fast.subprocess.CompletedProcess(
+                command,
+                3 if "Pkg.Bad" in targets else 0,
+                "diagnostic without a failure summary",
+                "",
+            )
 
-        with mock.patch.object(fast, "lake_targets_up_to_date", side_effect=up_to_date):
+        with mock.patch.object(fast.subprocess, "run", side_effect=run):
             self.assertEqual(
                 fast.lake_stale_targets(["Pkg.A", "Pkg.Bad", "Pkg.C"]),
                 ["Pkg.Bad"],
@@ -310,14 +349,24 @@ import Pkg.TooLate
             output.write_text("olean\n", encoding="utf-8")
             completed = fast.subprocess.CompletedProcess([], 0, "", "")
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
-                fast, "lake_targets_up_to_date", return_value=True
-            ) as up_to_date, mock.patch.object(
+                fast, "lake_stale_targets", return_value=[]
+            ) as stale_targets, mock.patch.object(
                 fast, "build_wave", side_effect=AssertionError("cache hit must skip prebuild")
             ), mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
                 self.assertEqual(fast.main(["Pkg.Root", "--lake-staleness"]), 0)
 
-            up_to_date.assert_called_once_with(["Pkg.Root"], root)
-            self.assertEqual(run.call_args.args[0], ["lake", "build", "+Pkg.Root"])
+            stale_targets.assert_called_once_with(["Pkg.Root"], root)
+            self.assertEqual(
+                run.call_args.args[0],
+                [
+                    "lake",
+                    "--quiet",
+                    "--no-ansi",
+                    "--log-level=error",
+                    "build",
+                    "+Pkg.Root",
+                ],
+            )
 
     def test_default_main_serializes_every_public_root(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -330,18 +379,26 @@ import Pkg.TooLate
                 output.write_text("olean\n", encoding="utf-8")
             completed = fast.subprocess.CompletedProcess([], 0, "", "")
             with mock.patch.object(fast, "ROOT", root), mock.patch.object(
-                fast, "lake_targets_up_to_date", return_value=True
-            ) as up_to_date, mock.patch.object(
+                fast, "lake_stale_targets", return_value=[]
+            ) as stale_targets, mock.patch.object(
                 fast.subprocess, "run", return_value=completed
             ) as run:
                 self.assertEqual(fast.main(["--lake-staleness"]), 0)
 
-            up_to_date.assert_called_once_with(["Erdos249257", "ErdosProblems"], root)
+            stale_targets.assert_called_once_with(
+                ["Erdos249257", "ErdosProblems"], root
+            )
             self.assertEqual(
                 [call.args[0] for call in run.call_args_list],
                 [
-                    ["lake", "build", "+Erdos249257"],
-                    ["lake", "build", "+ErdosProblems"],
+                    [
+                        "lake", "--quiet", "--no-ansi", "--log-level=error",
+                        "build", "+Erdos249257",
+                    ],
+                    [
+                        "lake", "--quiet", "--no-ansi", "--log-level=error",
+                        "build", "+ErdosProblems",
+                    ],
                 ],
             )
 
@@ -368,7 +425,13 @@ import Pkg.TooLate
                 self.assertEqual(fast.main(["Pkg/Leaf.lean"]), 0)
 
             self.assertEqual(run.call_count, 1)
-            self.assertEqual(run.call_args.args[0], ["lake", "build", "+Pkg.Leaf"])
+            self.assertEqual(
+                run.call_args.args[0],
+                [
+                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    "build", "+Pkg.Leaf",
+                ],
+            )
             self.assertEqual(run.call_args.kwargs["cwd"], root)
 
     def test_final_authority_checks_focused_modules_serially(self) -> None:
@@ -378,7 +441,16 @@ import Pkg.TooLate
 
         self.assertEqual(
             [call.args[0] for call in run.call_args_list],
-            [["lake", "build", "+Pkg.A"], ["lake", "build", "+Pkg.B"]],
+            [
+                [
+                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    "build", "+Pkg.A",
+                ],
+                [
+                    "lake", "--quiet", "--no-ansi", "--log-level=error",
+                    "build", "+Pkg.B",
+                ],
+            ],
         )
 
 

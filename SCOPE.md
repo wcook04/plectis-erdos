@@ -48,6 +48,8 @@ Machine-resolvable open propositions:
   `python3 scripts/query_corpus.py --open remaining_open.unbounded_certificate_supply`
 - `remaining_open.half_value_membership`:
   `python3 scripts/query_corpus.py --open remaining_open.half_value_membership`
+- `remaining_open.twenty_one_permanent_affine_supercapacity`:
+  `python3 scripts/query_corpus.py --open remaining_open.twenty_one_permanent_affine_supercapacity`
 - `remaining_open.universal_257_all_infinite_supports`:
   `python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports`
 

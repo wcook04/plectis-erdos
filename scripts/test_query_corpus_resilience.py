@@ -223,7 +223,7 @@ def check_witness_carrying_semantic_slices() -> None:
         "Yes refutes universal #257; no closes only this route."
     )
     route_cell = half_value["semantic_cells"][0]
-    assert "neither half-membership" in (
+    assert "neither target membership" in (
         route_cell["content"]["programme"]["claim_ceiling"]
     )
     assert {

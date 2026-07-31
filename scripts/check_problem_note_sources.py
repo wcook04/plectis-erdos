@@ -211,6 +211,11 @@ def declares(line: str, name: str) -> bool:
     return False
 
 
+def declares_at(lines: list[str], index: int, name: str) -> bool:
+    """Accept a declaration whose keyword and name span adjacent lines."""
+    return declares(" ".join(line.strip() for line in lines[index : index + 4]), name)
+
+
 def links(text: str) -> list[tuple[str, int, str | None]]:
     found: list[tuple[str, int, str | None]] = []
     for match in LINK_RE.finditer(strip_comments(text)):
@@ -519,7 +524,7 @@ def main() -> int:
                         "pinned snapshot"
                     )
                 continue
-            if not declares(line, declaration):
+            if not declares_at(lines, line_number - 1, declaration):
                 errors.append(
                     f"{source}: {relative}:{line_number} does not declare "
                     f"{declaration!r}; the pinned line reads {line.strip()[:72]!r}"
