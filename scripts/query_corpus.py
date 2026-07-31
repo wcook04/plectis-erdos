@@ -3383,15 +3383,23 @@ def semantic_hint_targets(query: str) -> dict[tuple[str, str], int]:
     return targets
 
 
-def status_question_target(query: str) -> tuple[str, str] | None:
-    """Return the open-target claim and problem number for a status question."""
+def status_question_target(query: str) -> tuple[str, str, str] | None:
+    """Return the target claim, problem number, and principal open proposition."""
     terms = search_terms(query)
     if "resolution_status" not in terms:
         return None
     if "249" in terms:
-        return ("erdos_249", "249")
+        return (
+            "erdos_249",
+            "249",
+            "remaining_open.erdos_249_irrationality",
+        )
     if "257" in terms:
-        return ("universal_257", "257")
+        return (
+            "universal_257",
+            "257",
+            "remaining_open.universal_257_all_infinite_supports",
+        )
     return None
 
 
@@ -3859,7 +3867,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             ),
         )
         if status_target and proposition["open_target_claim"] == status_target[0]:
-            rank = -1
+            rank = -1 if proposition["id"] == status_target[2] else 0
         if (
             hint_priority := hint_targets.get(
                 ("open_proposition", proposition["id"])
