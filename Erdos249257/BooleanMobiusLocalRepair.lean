@@ -20,6 +20,55 @@ open scoped BigOperators
 def localMersenneQuotient (M d : ℕ) : ℕ :=
   2 ^ M / (2 ^ d - 1)
 
+/-- Above the half cutoff a Mersenne quotient is the corresponding pure
+power of two.  This belongs with the quotient coordinate itself: both the
+upper-word repair and the full-row greedy completion consume it. -/
+theorem localMersenneQuotient_eq_two_pow_sub_of_half_lt
+    {M d : ℕ} (hd2 : 2 ≤ d) (hhalf : M / 2 < d) (hdM : d ≤ M) :
+    localMersenneQuotient M d = 2 ^ (M - d) := by
+  let P := 2 ^ (M - d)
+  let q := 2 ^ d - 1
+  have hqpos : 0 < q := by
+    dsimp [q]
+    exact Nat.sub_pos_of_lt (one_lt_pow₀ (by omega) (by omega))
+  have hMd : M = (M - d) + d := by omega
+  have hpow : 2 ^ M = P * 2 ^ d := by
+    calc
+      2 ^ M = 2 ^ ((M - d) + d) := by congr 1
+      _ = 2 ^ (M - d) * 2 ^ d := by rw [pow_add]
+      _ = P * 2 ^ d := by rfl
+  have hdecomp : 2 ^ M = P * q + P := by
+    rw [hpow]
+    dsimp [q]
+    have hone : 1 ≤ 2 ^ d := Nat.one_le_pow _ _ (by norm_num)
+    calc
+      P * 2 ^ d = P * ((2 ^ d - 1) + 1) := by
+        rw [Nat.sub_add_cancel hone]
+      _ = P * (2 ^ d - 1) + P := by ring
+  have hPltq : P < q := by
+    have hMdle : M - d ≤ d - 1 := by omega
+    have hPle : P ≤ 2 ^ (d - 1) := by
+      dsimp [P]
+      exact Nat.pow_le_pow_right (by norm_num) hMdle
+    have hsplit : 2 ^ d = 2 ^ (d - 1) * 2 := by
+      calc
+        2 ^ d = 2 ^ ((d - 1) + 1) := by congr 1 <;> omega
+        _ = 2 ^ (d - 1) * 2 := by rw [pow_succ]
+    have htwo : 2 ≤ 2 ^ (d - 1) := by
+      simpa using
+        (Nat.pow_le_pow_right (by norm_num : 0 < 2) (by omega : 1 ≤ d - 1))
+    dsimp [q]
+    omega
+  unfold localMersenneQuotient
+  change 2 ^ M / q = P
+  apply Nat.div_eq_of_lt_le
+  · rw [hdecomp]
+    exact Nat.le_add_right _ _
+  · rw [hdecomp]
+    calc
+      P * q + P < P * q + q := Nat.add_lt_add_left hPltq _
+      _ = (P + 1) * q := by ring
+
 /-- The source-current fractional part of `2^M / (2^d - 1)` for `d ≥ 2`.
 The exponent is reduced modulo `d` before the division. -/
 def localMersenneFraction (M d : ℕ) : ℚ :=
@@ -769,5 +818,7 @@ theorem exists_upperHalf_boolean_replacement_of_boolean_suffix
     block hk hD hprefix hendpoint
       (UpperHalfCarryCapacity.of_boolean_coefficients hn ha hsuffix)
       hlen hblock
+
+#print axioms localMersenneQuotient_eq_two_pow_sub_of_half_lt
 
 end Erdos249257

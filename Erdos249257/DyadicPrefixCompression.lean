@@ -751,6 +751,161 @@ theorem greedyHalfRemainderRat_eq_displayed_divInt (n : ℕ) :
   push_cast
   ring
 
+/-- The rational second-channel phase is exactly the dyadically scaled
+integral excess divided by the inherited odd prefix denominator:
+
+`φ_n = 2^n E_n / D_n`.
+
+This is the missing coordinate bridge between the one-dimensional phase
+dynamics and the reduced prefix lattice. -/
+theorem greedyMersenneSecondChannelPhaseRat_eq_scaled_excess (n : ℕ) :
+    greedyMersenneSecondChannelPhaseRat n =
+      Rat.divInt
+        (((2 ^ n : ℕ) : ℤ) *
+          halfGreedyNextDyadicExcessNumerator n)
+        (halfGreedyPrefixDenominator n : ℤ) := by
+  rw [greedyMersenneSecondChannelPhaseRat_eq_scaled_remainder]
+  rw [greedyHalfRemainderRat_eq_displayed_divInt]
+  rw [Rat.divInt_eq_div, Rat.divInt_eq_div]
+  have hDnat : halfGreedyPrefixDenominator n ≠ 0 :=
+    Rat.den_nz (halfGreedyPrefixRat n)
+  have hD : ((halfGreedyPrefixDenominator n : ℕ) : ℚ) ≠ 0 := by
+    exact_mod_cast hDnat
+  have hfour :
+      (4 : ℚ) ^ n = (2 : ℚ) ^ (n * 2) := by
+    calc
+      (4 : ℚ) ^ n = ((2 : ℚ) ^ 2) ^ n := by norm_num
+      _ = (2 : ℚ) ^ (2 * n) := by rw [pow_mul]
+      _ = (2 : ℚ) ^ (n * 2) := by congr 1 <;> omega
+  simp only [halfGreedyNextDyadicExcessNumerator,
+    nextDyadicExcessIntNumerator]
+  field_simp [hD]
+  push_cast
+  rw [hfour]
+  ring
+
+/-- Consequently, avoiding the open unit interval is a division-free integer
+dichotomy.  On the positive branch it asks exactly for
+`D_n ≤ 2^n E_n`; the nonpositive branch is simply `E_n ≤ 0`. -/
+theorem secondChannelPhaseRat_outside_unit_iff_scaled_excess (n : ℕ) :
+    (greedyMersenneSecondChannelPhaseRat n ≤ 0 ∨
+        1 ≤ greedyMersenneSecondChannelPhaseRat n) ↔
+      (halfGreedyNextDyadicExcessNumerator n ≤ 0 ∨
+        (halfGreedyPrefixDenominator n : ℤ) ≤
+          ((2 ^ n : ℕ) : ℤ) *
+            halfGreedyNextDyadicExcessNumerator n) := by
+  have hDposNat : 0 < halfGreedyPrefixDenominator n :=
+    Rat.den_pos (halfGreedyPrefixRat n)
+  have hDpos :
+      (0 : ℚ) < ((halfGreedyPrefixDenominator n : ℤ) : ℚ) := by
+    exact_mod_cast hDposNat
+  rw [greedyMersenneSecondChannelPhaseRat_eq_scaled_excess,
+    Rat.divInt_eq_div]
+  constructor
+  · rintro (hneg | hpos)
+    · left
+      have hnum :
+          ((((2 ^ n : ℕ) : ℤ) *
+              halfGreedyNextDyadicExcessNumerator n : ℤ) : ℚ) ≤ 0 := by
+        have hcross := (div_le_iff₀ hDpos).mp hneg
+        simpa using hcross
+      have hnumInt :
+          ((2 ^ n : ℕ) : ℤ) *
+              halfGreedyNextDyadicExcessNumerator n ≤ 0 := by
+        exact_mod_cast hnum
+      have hpow : (0 : ℤ) < ((2 ^ n : ℕ) : ℤ) := by positivity
+      exact nonpos_of_mul_nonpos_left (by simpa [mul_comm] using hnumInt) hpow
+    · right
+      have hscaled :
+          (((halfGreedyPrefixDenominator n : ℤ) : ℚ) ≤
+            ((((2 ^ n : ℕ) : ℤ) *
+              halfGreedyNextDyadicExcessNumerator n : ℤ) : ℚ)) := by
+        have := (le_div_iff₀ hDpos).mp hpos
+        simpa using this
+      exact_mod_cast hscaled
+  · rintro (hneg | hscaled)
+    · left
+      have hpow : (0 : ℤ) ≤ ((2 ^ n : ℕ) : ℤ) := by positivity
+      have hnumInt :
+          ((2 ^ n : ℕ) : ℤ) *
+              halfGreedyNextDyadicExcessNumerator n ≤ 0 :=
+        mul_nonpos_of_nonneg_of_nonpos hpow hneg
+      have hnum :
+          ((((2 ^ n : ℕ) : ℤ) *
+              halfGreedyNextDyadicExcessNumerator n : ℤ) : ℚ) ≤ 0 := by
+        exact_mod_cast hnumInt
+      apply (div_le_iff₀ hDpos).2
+      simpa using hnum
+    · right
+      have hscaledRat :
+          (((halfGreedyPrefixDenominator n : ℤ) : ℚ) ≤
+            ((((2 ^ n : ℕ) : ℤ) *
+              halfGreedyNextDyadicExcessNumerator n : ℤ) : ℚ)) := by
+        exact_mod_cast hscaled
+      apply (le_div_iff₀ hDpos).2
+      simpa using hscaledRat
+
+/-- Division-free producer socket for the second-channel route.  It asks the
+actual reduced half-greedy prefix to avoid the single integer window
+
+`0 < 2^n E_n < D_n`
+
+from rank seven onward. -/
+def HalfGreedyScaledExcessOutsideUnit : Prop :=
+  ∀ n : ℕ, 7 ≤ n →
+    halfGreedyNextDyadicExcessNumerator n ≤ 0 ∨
+      (halfGreedyPrefixDenominator n : ℤ) ≤
+        ((2 ^ n : ℕ) : ℤ) *
+          halfGreedyNextDyadicExcessNumerator n
+
+/-- The outside-unit dichotomy is unconditional through rank twenty.  This
+includes the first transition at which the displayed residual numerator is
+not one, so the remaining producer is not concealing a unit-numerator base
+case. -/
+theorem halfGreedy_scaledExcessOutsideUnit_of_le_twenty
+    (n : ℕ) (hn : n ≤ 20) :
+    halfGreedyNextDyadicExcessNumerator n ≤ 0 ∨
+      (halfGreedyPrefixDenominator n : ℤ) ≤
+        ((2 ^ n : ℕ) : ℤ) *
+          halfGreedyNextDyadicExcessNumerator n := by
+  apply (secondChannelPhaseRat_outside_unit_iff_scaled_excess n).1
+  interval_cases n <;>
+    norm_num [greedyMersenneSecondChannelPhaseRat,
+      greedyMersenneRemainderRat, mersenneWeightRat]
+
+/-- The genuinely infinite arithmetic producer after discharging every rank
+through the first non-unit transition. -/
+def HalfGreedyScaledExcessOutsideUnitFromTwentyOne : Prop :=
+  ∀ n : ℕ, 21 ≤ n →
+    halfGreedyNextDyadicExcessNumerator n ≤ 0 ∨
+      (halfGreedyPrefixDenominator n : ℤ) ≤
+        ((2 ^ n : ℕ) : ℤ) *
+          halfGreedyNextDyadicExcessNumerator n
+
+/-- End-to-end integer consumer for the rational-half counterexample route.
+The finite ranks are discharged by the existing exact certificate; a proof
+that the actual reduced excess never enters `0 < 2^n E_n < D_n` would place
+`1/2` in the Mersenne achievement set. -/
+theorem half_mem_mersenneAchievementSet_of_scaledExcessOutsideUnit
+    (hout : HalfGreedyScaledExcessOutsideUnit) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
+  apply half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven
+  intro n hn
+  apply halfSecondChannelSeparatedRat_of_outside_unit (by omega)
+  exact (secondChannelPhaseRat_outside_unit_iff_scaled_excess n).2
+    (hout n hn)
+
+/-- End-to-end form with the complete finite prefix removed from the
+hypothesis.  Only ranks `n ≥ 21` remain. -/
+theorem half_mem_mersenneAchievementSet_of_scaledExcessOutsideUnitFromTwentyOne
+    (hout : HalfGreedyScaledExcessOutsideUnitFromTwentyOne) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
+  apply half_mem_mersenneAchievementSet_of_scaledExcessOutsideUnit
+  intro n hn
+  by_cases h20 : n ≤ 20
+  · exact halfGreedy_scaledExcessOutsideUnit_of_le_twenty n h20
+  · exact hout n (by omega)
+
 /-- The exact actual-orbit cap socket: the real two-channel cap is equivalent
 to a single integer inequality in the greedy prefix numerator and its odd
 denominator. -/
@@ -3346,6 +3501,794 @@ theorem gcd_dvd_predecessorOvershoot (p D c : ℕ) :
   · exact dvd_mul_of_dvd_right
       (Nat.gcd_dvd_right D (2 ^ (c - 1) - 1)) p
 
+/-- A reduced rational strictly between the Mersenne reciprocal at rank
+`c` and its dyadic cap has only one way for the next Mersenne gcd to fail
+the strict numerator bound.  Writing
+`delta = q - p(2^c - 1)`, the two adjacent gcds divide `delta` and
+`|p - 2 delta|`.  The latter vanishes only when coprimality collapses the
+state to the exact exceptional residual `2 / (2^(c+1) - 1)`. -/
+theorem unsafeMersenneSandwich_consecutive_gcd_lt_or_exception
+    {p q c : ℕ} (hcop : p.Coprime q)
+    (hskip : p * (2 ^ c - 1) < q)
+    (hunsafe : q < p * 2 ^ c) :
+    (p = 2 ∧ q = 2 ^ (c + 1) - 1) ∨
+      (Nat.gcd q (2 ^ c - 1) < p ∧
+        Nat.gcd q (2 ^ (c + 1) - 1) < p) := by
+  let M := 2 ^ c - 1
+  let delta := q - p * M
+  have hpowpos : 0 < 2 ^ c := pow_pos (by omega) c
+  have hMsucc : M + 1 = 2 ^ c := by
+    dsimp only [M]
+    exact Nat.sub_add_cancel hpowpos
+  have hskip' : p * M < q := by
+    simpa only [M] using hskip
+  have hbase : p * M ≤ q := hskip'.le
+  have hdeltaPos : 0 < delta := by
+    simpa only [delta] using Nat.sub_pos_of_lt hskip'
+  have hdeltaAdd : delta + p * M = q := by
+    simpa only [delta] using Nat.sub_add_cancel hbase
+  have hunsafe' : q < p * M + p := by
+    calc
+      q < p * 2 ^ c := hunsafe
+      _ = p * M + p := by rw [← hMsucc]; ring
+  have hdeltaLt : delta < p := by omega
+  have hfirstDvd : Nat.gcd q M ∣ delta := by
+    apply Nat.dvd_sub
+    · exact Nat.gcd_dvd_left q M
+    · exact dvd_mul_of_dvd_right (Nat.gcd_dvd_right q M) p
+  have hfirstLe : Nat.gcd q M ≤ delta :=
+    Nat.le_of_dvd hdeltaPos hfirstDvd
+  have hfirst : Nat.gcd q M < p := hfirstLe.trans_lt hdeltaLt
+
+  let Q := 2 ^ (c + 1) - 1
+  let g := Nat.gcd q Q
+  have hQ : Q = 2 * M + 1 := by
+    dsimp only [Q]
+    rw [pow_succ, ← hMsucc]
+    omega
+  have hbalance : p * Q + 2 * delta = 2 * q + p := by
+    rw [hQ]
+    calc
+      p * (2 * M + 1) + 2 * delta =
+          2 * (delta + p * M) + p := by ring
+      _ = 2 * q + p := by rw [hdeltaAdd]
+  have hgq : g ∣ q := Nat.gcd_dvd_left q Q
+  have hgQ : g ∣ Q := Nat.gcd_dvd_right q Q
+  have hgtwoq : g ∣ 2 * q := dvd_mul_of_dvd_right hgq 2
+  have hgpQ : g ∣ p * Q := dvd_mul_of_dvd_right hgQ p
+  by_cases heq : 2 * delta = p
+  · left
+    have hpdelta : p = 2 * delta := heq.symm
+    have hqeq : q = delta * Q := by
+      calc
+        q = delta + p * M := hdeltaAdd.symm
+        _ = delta * Q := by rw [hpdelta, hQ]; ring
+    have hdeltaDvdP : delta ∣ p := ⟨2, by omega⟩
+    have hdeltaDvdQ : delta ∣ q := ⟨Q, hqeq⟩
+    have hdeltaOne : delta = 1 :=
+      Nat.eq_one_of_dvd_coprimes hcop hdeltaDvdP hdeltaDvdQ
+    constructor
+    · omega
+    · simpa only [Q, hdeltaOne, one_mul] using hqeq
+  · right
+    refine ⟨hfirst, ?_⟩
+    rcases lt_or_gt_of_ne heq with hbelow | habove
+    · have hdvd : g ∣ p * Q - 2 * q := Nat.dvd_sub hgpQ hgtwoq
+      have heqDiff : p * Q - 2 * q = p - 2 * delta := by omega
+      have hpos : 0 < p * Q - 2 * q := by omega
+      have hle : g ≤ p * Q - 2 * q := Nat.le_of_dvd hpos hdvd
+      rw [heqDiff] at hle
+      simpa only [g] using (show g < p by omega)
+    · have hdvd : g ∣ 2 * q - p * Q := Nat.dvd_sub hgtwoq hgpQ
+      have heqDiff : 2 * q - p * Q = 2 * delta - p := by omega
+      have hpos : 0 < 2 * q - p * Q := by omega
+      have hle : g ≤ 2 * q - p * Q := Nat.le_of_dvd hpos hdvd
+      rw [heqDiff] at hle
+      simpa only [g] using (show g < p by omega)
+
+/-- Rational-coordinate form of
+`unsafeMersenneSandwich_consecutive_gcd_lt_or_exception`.  Every reduced
+rational in the open sliver between the dyadic cap `2^-c` and the
+Mersenne weight at rank `c` has either the unique exceptional reduced
+coordinates `(2, 2^(c+1)-1)`, or two consecutive Mersenne gcds strictly
+below its numerator. -/
+theorem rat_mem_mersenneDyadicSliver_consecutive_gcd_lt_or_exception
+    (x : ℚ) {c : ℕ} (hc : 0 < c)
+    (hdyadic : 1 / (2 : ℚ) ^ c < x)
+    (hskip : x < mersenneWeightRat c) :
+    (x.num.natAbs = 2 ∧ x.den = 2 ^ (c + 1) - 1) ∨
+      (Nat.gcd x.den (2 ^ c - 1) < x.num.natAbs ∧
+        Nat.gcd x.den (2 ^ (c + 1) - 1) < x.num.natAbs) := by
+  let p := x.num.natAbs
+  let q := x.den
+  let M := 2 ^ c - 1
+  have hxpos : 0 < x := by
+    have hcapPos : (0 : ℚ) < 1 / (2 : ℚ) ^ c := by positivity
+    exact hcapPos.trans hdyadic
+  have hnumPos : 0 < x.num := Rat.num_pos.mpr hxpos
+  have hpcastInt : (p : ℤ) = x.num := by
+    simpa only [p, Int.natAbs_of_nonneg hnumPos.le]
+  have hpcastRat : (p : ℚ) = (x.num : ℚ) := by
+    exact_mod_cast hpcastInt
+  have hqpos : 0 < q := by simpa only [q] using Rat.den_pos x
+  have hqposRat : (0 : ℚ) < q := by exact_mod_cast hqpos
+  have hMpos : 0 < M := by
+    dsimp only [M]
+    exact Nat.sub_pos_of_lt (one_lt_pow₀ (by omega) hc.ne')
+  have hMposRat : (0 : ℚ) < M := by exact_mod_cast hMpos
+  have hxform : x = (p : ℚ) / (q : ℚ) := by
+    rw [hpcastRat]
+    simpa only [q] using (Rat.num_div_den x).symm
+  have hMcast : (M : ℚ) = (2 : ℚ) ^ c - 1 := by
+    simpa only [M] using natCast_pow_sub_one 2 c (by omega)
+  have hskipForm : x < (1 : ℚ) / (M : ℚ) := by
+    rw [hMcast]
+    simpa only [mersenneWeightRat] using hskip
+  have hskipCrossRat : (p : ℚ) * (M : ℚ) < q := by
+    rw [hxform] at hskipForm
+    have hcross :=
+      (div_lt_div_iff₀ hqposRat hMposRat).mp hskipForm
+    simpa only [one_mul] using hcross
+  have hskipNat : p * M < q := by exact_mod_cast hskipCrossRat
+  have hpowpos : 0 < 2 ^ c := pow_pos (by omega) c
+  have hpowposRat : (0 : ℚ) < (2 ^ c : ℕ) := by
+    exact_mod_cast hpowpos
+  have hpowcast : (((2 ^ c : ℕ) : ℚ)) = (2 : ℚ) ^ c := by
+    norm_cast
+  have hdyadicForm :
+      (1 : ℚ) / (2 ^ c : ℕ) < (p : ℚ) / (q : ℚ) := by
+    rw [hpowcast, ← hxform]
+    exact hdyadic
+  have hunsafeCrossRat : (q : ℚ) < (p : ℚ) * (2 ^ c : ℕ) := by
+    have hcross :=
+      (div_lt_div_iff₀ hpowposRat hqposRat).mp hdyadicForm
+    simpa only [one_mul] using hcross
+  have hunsafeNat : q < p * 2 ^ c := by
+    exact_mod_cast hunsafeCrossRat
+  have hcop : p.Coprime q := by
+    simpa only [p, q] using x.reduced
+  simpa only [p, q, M] using
+    unsafeMersenneSandwich_consecutive_gcd_lt_or_exception
+      hcop hskipNat hunsafeNat
+
+/-- Exact `1/21` greedy-orbit specialization.  Thus any skipped target
+rank whose residual still exceeds the dyadic cap is forced into the
+uniform two-gcd obstruction, except for one explicit Mersenne residual. -/
+theorem greedyTwentyOne_unsafeSkip_consecutive_gcd_lt_or_exception
+    (n : ℕ)
+    (hdyadic :
+      1 / (2 : ℚ) ^ (n + 1) <
+        greedyMersenneRemainderRat (1 / 21 : ℚ) n)
+    (hskip :
+      greedyMersenneRemainderRat (1 / 21 : ℚ) n <
+        mersenneWeightRat (n + 1)) :
+    let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+    (x.num.natAbs = 2 ∧ x.den = 2 ^ (n + 2) - 1) ∨
+      (Nat.gcd x.den (2 ^ (n + 1) - 1) < x.num.natAbs ∧
+        Nat.gcd x.den (2 ^ (n + 2) - 1) < x.num.natAbs) := by
+  dsimp only
+  simpa only [Nat.add_assoc] using
+    rat_mem_mersenneDyadicSliver_consecutive_gcd_lt_or_exception
+      (greedyMersenneRemainderRat (1 / 21 : ℚ) n)
+      (c := n + 1) (by omega) hdyadic hskip
+
+/-- A prime power dividing a finite lcm already divides one of its nonzero
+rows.  The factorization-max row is the exact form needed for an
+`ExactOrderPrimePowerWitness`, including witnesses whose exponent is
+larger than one. -/
+theorem exists_primePow_dvd_of_primePow_dvd_finset_lcm
+    (E : Finset ℕ) (hE : E.Nonempty) (h0 : 0 ∉ E)
+    {q s : ℕ} (hq : Nat.Prime q)
+    (hdvd : q ^ s ∣ E.lcm id) :
+    ∃ d ∈ E, q ^ s ∣ d := by
+  obtain ⟨d, hdE, hfactor, _⟩ :=
+    exists_canonical_witness_selector_row E hE h0 q
+  have hD0 : E.lcm id ≠ 0 := by
+    rw [Ne, Finset.lcm_eq_zero_iff]
+    rintro ⟨a, haE, ha0⟩
+    rw [id_eq] at ha0
+    exact h0 (ha0 ▸ haE)
+  have hd0 : d ≠ 0 := fun hd => h0 (hd ▸ hdE)
+  have hsle : s ≤ (E.lcm id).factorization q :=
+    (hq.pow_dvd_iff_le_factorization hD0).mp hdvd
+  refine ⟨d, hdE, (hq.pow_dvd_iff_le_factorization hd0).mpr ?_⟩
+  rwa [hfactor]
+
+/-- The first five `1/21` greedy residuals still have reduced numerator
+one.  Hence any putative exceptional numerator-two residual occurs only
+after the exact-order argument has ranks `2` and `3` strictly behind it. -/
+theorem greedyTwentyOneResidual_num_ne_two_of_lt_five
+    (n : ℕ) (hn : n < 5) :
+    (greedyMersenneRemainderRat (1 / 21 : ℚ) n).num.natAbs ≠ 2 := by
+  interval_cases n <;>
+    norm_num [greedyMersenneRemainderRat, mersenneWeightRat]
+
+/-- The exceptional sliver coordinate can never occur on the `1/21`
+greedy orbit.  If the residual denominator were `2^(n+2)-1`, an
+exact-order prime power for exponent `n+2` would divide the lcm of
+denominators coming only from ranks `2`, `3`, and the selected ranks at
+most `n`.  A factorization-max row would then make `n+2` divide one of
+those strictly smaller ranks, a contradiction. -/
+theorem greedyTwentyOneResidual_not_mersenneException (n : ℕ) :
+    let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+    ¬ (x.num.natAbs = 2 ∧ x.den = 2 ^ (n + 2) - 1) := by
+  dsimp only
+  rintro ⟨hnum, hden⟩
+  have hn5 : 5 ≤ n := by
+    by_contra hn
+    exact greedyTwentyOneResidual_num_ne_two_of_lt_five n (by omega) hnum
+  let P := greedyMersennePrefixRat (1 / 21 : ℚ) n
+  let F := insert 2 (insert 3 P)
+  let E := F.image (fun k => 2 ^ k - 1)
+  let D := E.lcm id
+  have hP0 : 0 ∉ P := by
+    simpa only [P] using
+      zero_not_mem_greedyMersennePrefixRat (1 / 21 : ℚ) n
+  have hF0 : 0 ∉ F := by
+    intro hzero
+    rcases Finset.mem_insert.mp hzero with hzero | hzero
+    · norm_num at hzero
+    · rcases Finset.mem_insert.mp hzero with hzero | hzero
+      · norm_num at hzero
+      · exact hP0 hzero
+  have hEne : E.Nonempty := by
+    refine ⟨3, ?_⟩
+    simp only [E, F, Finset.mem_image, Finset.mem_insert]
+    exact ⟨2, Or.inl rfl, by norm_num⟩
+  have hE0 : 0 ∉ E := by
+    intro hzero
+    obtain ⟨k, hkF, hkzero⟩ := Finset.mem_image.mp hzero
+    have hk0 : k ≠ 0 := fun hk => hF0 (hk ▸ hkF)
+    have hkpos : 0 < 2 ^ k - 1 :=
+      pow_sub_one_pos_of_ne_zero 2 k (by omega) hk0
+    omega
+  have hthreeD : 3 ∣ D := by
+    apply Finset.dvd_lcm
+    show 3 ∈ E
+    simp only [E, F, Finset.mem_image, Finset.mem_insert]
+    exact ⟨2, Or.inl rfl, by norm_num⟩
+  have hsevenD : 7 ∣ D := by
+    apply Finset.dvd_lcm
+    show 7 ∈ E
+    simp only [E, F, Finset.mem_image, Finset.mem_insert]
+    exact ⟨3, Or.inr (Or.inl rfl), by norm_num⟩
+  have htwentyOneD : 21 ∣ D := by
+    have hlcm : Nat.lcm 3 7 ∣ D := Nat.lcm_dvd hthreeD hsevenD
+    norm_num at hlcm ⊢
+    exact hlcm
+  have hprefixTermLcmD :
+      P.lcm (fun k => 2 ^ k - 1) ∣ D := by
+    apply Finset.lcm_dvd
+    intro k hkP
+    apply Finset.dvd_lcm
+    show 2 ^ k - 1 ∈ E
+    exact Finset.mem_image.mpr
+      ⟨k, by simp only [F, Finset.mem_insert]; exact Or.inr (Or.inr hkP), rfl⟩
+  have hprefixDenD : (finiteErdosSum P 2).den ∣ D := by
+    exact (den_finiteErdosSum_dvd_termDenominatorLcm P 2 hP0 (by omega)).trans
+      hprefixTermLcmD
+  have htargetDen : (1 / 21 : ℚ).den = 21 := by norm_num
+  have hremEq :
+      greedyMersenneRemainderRat (1 / 21 : ℚ) n =
+        (1 / 21 : ℚ) - finiteErdosSum P 2 := by
+    simpa only [P] using
+      greedyMersenneRemainderRat_eq_sub_finiteErdosSum
+        (1 / 21 : ℚ) n
+  have hremDenD :
+      (greedyMersenneRemainderRat (1 / 21 : ℚ) n).den ∣ D := by
+    rw [hremEq]
+    exact (Rat.sub_den_dvd_lcm
+      (1 / 21 : ℚ) (finiteErdosSum P 2)).trans
+        (Nat.lcm_dvd (by simpa only [htargetDen] using htwentyOneD) hprefixDenD)
+  let m := n + 2
+  obtain ⟨q, s, hwit⟩ :=
+    exists_exactOrderPrimePowerWitness (b := 2) (n := m)
+      (by omega) (by omega)
+  have hqm : q ^ s ∣ 2 ^ m - 1 := (hwit.2.2 m).2 dvd_rfl
+  have hqrem :
+      q ^ s ∣ (greedyMersenneRemainderRat (1 / 21 : ℚ) n).den := by
+    rw [hden]
+    simpa only [m] using hqm
+  have hqD : q ^ s ∣ D := hqrem.trans hremDenD
+  obtain ⟨d, hdE, hqd⟩ :=
+    exists_primePow_dvd_of_primePow_dvd_finset_lcm
+      E hEne hE0 hwit.1 hqD
+  obtain ⟨k, hkF, rfl⟩ := Finset.mem_image.mp hdE
+  have hmk : m ∣ k := (hwit.2.2 k).1 hqd
+  rcases Finset.mem_insert.mp hkF with rfl | hkF
+  · have := Nat.le_of_dvd (by omega : 0 < 2) hmk
+    omega
+  · rcases Finset.mem_insert.mp hkF with rfl | hkP
+    · have := Nat.le_of_dvd (by omega : 0 < 3) hmk
+      omega
+    · unfold P at hkP
+      obtain ⟨j, hj, hkj⟩ := Finset.mem_image.mp hkP
+      have hjlt : j < n := by
+        exact Finset.mem_range.mp (Finset.mem_filter.mp hj).1
+      have hkpos : 0 < j + 1 := by omega
+      have hle := Nat.le_of_dvd hkpos (by simpa only [hkj] using hmk)
+      omega
+
+/-- The `1/21` target orbit therefore has no exceptional branch: every
+dyadically unsafe skipped rank forces both adjacent Mersenne gcds below
+the current reduced numerator. -/
+theorem greedyTwentyOne_unsafeSkip_consecutive_gcd_lt
+    (n : ℕ)
+    (hdyadic :
+      1 / (2 : ℚ) ^ (n + 1) <
+        greedyMersenneRemainderRat (1 / 21 : ℚ) n)
+    (hskip :
+      greedyMersenneRemainderRat (1 / 21 : ℚ) n <
+        mersenneWeightRat (n + 1)) :
+    let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+    Nat.gcd x.den (2 ^ (n + 1) - 1) < x.num.natAbs ∧
+      Nat.gcd x.den (2 ^ (n + 2) - 1) < x.num.natAbs := by
+  dsimp only
+  rcases greedyTwentyOne_unsafeSkip_consecutive_gcd_lt_or_exception
+      n hdyadic hskip with hexception | hgcd
+  · exact absurd hexception (greedyTwentyOneResidual_not_mersenneException n)
+  · exact hgcd
+
+/-- The dyadic lower edge of a positive rational interval is exactly the
+cross-multiplied upper bound on its reduced denominator. -/
+theorem rat_den_lt_num_natAbs_mul_twoPow_of_inv_twoPow_lt
+    (x : ℚ) {c : ℕ}
+    (hdyadic : 1 / (2 : ℚ) ^ c < x) :
+    x.den < x.num.natAbs * 2 ^ c := by
+  let p := x.num.natAbs
+  let q := x.den
+  have hxpos : 0 < x := by
+    have hcapPos : (0 : ℚ) < 1 / (2 : ℚ) ^ c := by positivity
+    exact hcapPos.trans hdyadic
+  have hnumPos : 0 < x.num := Rat.num_pos.mpr hxpos
+  have hpcastInt : (p : ℤ) = x.num := by
+    simpa only [p, Int.natAbs_of_nonneg hnumPos.le]
+  have hpcastRat : (p : ℚ) = (x.num : ℚ) := by
+    exact_mod_cast hpcastInt
+  have hqpos : 0 < q := by simpa only [q] using Rat.den_pos x
+  have hqposRat : (0 : ℚ) < q := by exact_mod_cast hqpos
+  have hpowpos : 0 < 2 ^ c := pow_pos (by omega) c
+  have hpowposRat : (0 : ℚ) < (2 ^ c : ℕ) := by
+    exact_mod_cast hpowpos
+  have hxform : x = (p : ℚ) / (q : ℚ) := by
+    rw [hpcastRat]
+    simpa only [q] using (Rat.num_div_den x).symm
+  have hpowcast : (((2 ^ c : ℕ) : ℚ)) = (2 : ℚ) ^ c := by
+    norm_cast
+  have hdyadicForm :
+      (1 : ℚ) / (2 ^ c : ℕ) < (p : ℚ) / (q : ℚ) := by
+    rw [hpowcast, ← hxform]
+    exact hdyadic
+  have hcross : (q : ℚ) < (p : ℚ) * (2 ^ c : ℕ) := by
+    have :=
+      (div_lt_div_iff₀ hpowposRat hqposRat).mp hdyadicForm
+    simpa only [one_mul] using this
+  exact_mod_cast hcross
+
+/-- After an unsafe skip, cancel from the next raw take the gcd already
+visible in the old denominator and the next Mersenne denominator.  The
+remaining primitive numerator is larger than the skipped Mersenne
+denominator.  Any further reduction must therefore come from a second
+gcd entirely inside that first cancellation factor. -/
+theorem unsafeMersenneSandwich_nextPrimitiveNumerator_gt
+    {p q c : ℕ} (hc : 0 < c)
+    (hunsafe : q < p * 2 ^ c)
+    (hglt : Nat.gcd q (2 ^ (c + 1) - 1) < p) :
+    2 ^ c - 1 <
+      (p * (2 ^ (c + 1) - 1) - q) /
+        Nat.gcd q (2 ^ (c + 1) - 1) := by
+  let T := 2 ^ c
+  let M := T - 1
+  let Q := 2 ^ (c + 1) - 1
+  let g := Nat.gcd q Q
+  let H := p * Q - q
+  have hTpos : 0 < T := by
+    simpa only [T] using pow_pos (by omega : 0 < 2) c
+  have hMpos : 0 < M := by
+    dsimp only [M, T]
+    exact Nat.sub_pos_of_lt (one_lt_pow₀ (by omega) hc.ne')
+  have hQdecomp : Q = T + M := by
+    dsimp only [Q, T, M]
+    rw [pow_succ]
+    omega
+  have hp : 0 < p := by
+    simpa only [g] using (lt_of_le_of_lt (Nat.zero_le g) hglt)
+  have hTltQ : T < Q := by omega
+  have hqRaw : q ≤ p * Q := by
+    have hpTQ : p * T < p * Q :=
+      Nat.mul_lt_mul_of_pos_left hTltQ hp
+    exact (hunsafe.trans hpTQ).le
+  have hHadd : H + q = p * Q := by
+    simpa only [H] using Nat.sub_add_cancel hqRaw
+  have hpQdecomp : p * Q = p * T + p * M := by
+    rw [hQdecomp]
+    ring
+  have hunsafeT : q < p * T := by
+    simpa only [T] using hunsafe
+  have hrawGt : p * M < H := by omega
+  have hgDvd : g ∣ H := by
+    dsimp only [g, H]
+    apply Nat.dvd_sub
+    · exact dvd_mul_of_dvd_right
+        (Nat.gcd_dvd_right q Q) p
+    · exact Nat.gcd_dvd_left q Q
+  have hfactor : g * (H / g) = H := Nat.mul_div_cancel' hgDvd
+  by_contra hnot
+  have hquotLe : H / g ≤ M := Nat.le_of_not_gt hnot
+  have hmulLe : g * (H / g) ≤ g * M :=
+    Nat.mul_le_mul_left g hquotLe
+  rw [hfactor] at hmulLe
+  have hgMlt : g * M < p * M :=
+    Nat.mul_lt_mul_of_pos_right (by simpa only [g] using hglt) hMpos
+  exact (not_lt_of_ge hmulLe) (hgMlt.trans hrawGt)
+
+/-- Actual-orbit form of the forced numerator jump.  At every unsafe
+skipped rank of the `1/21` greedy orbit, the next Mersenne take has
+first-stage primitive numerator strictly above the skipped denominator. -/
+theorem greedyTwentyOne_unsafeSkip_nextPrimitiveNumerator_gt
+    (n : ℕ)
+    (hdyadic :
+      1 / (2 : ℚ) ^ (n + 1) <
+        greedyMersenneRemainderRat (1 / 21 : ℚ) n)
+    (hskip :
+      greedyMersenneRemainderRat (1 / 21 : ℚ) n <
+        mersenneWeightRat (n + 1)) :
+    let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+    2 ^ (n + 1) - 1 <
+      (x.num.natAbs * (2 ^ (n + 2) - 1) - x.den) /
+        Nat.gcd x.den (2 ^ (n + 2) - 1) := by
+  dsimp only
+  let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+  have hunsafe :
+      x.den < x.num.natAbs * 2 ^ (n + 1) := by
+    exact rat_den_lt_num_natAbs_mul_twoPow_of_inv_twoPow_lt x hdyadic
+  have hglt :
+      Nat.gcd x.den (2 ^ (n + 2) - 1) < x.num.natAbs := by
+    have hg :=
+      greedyTwentyOne_unsafeSkip_consecutive_gcd_lt n hdyadic hskip
+    simpa only [x] using hg.2
+  simpa only [x, Nat.add_assoc] using
+    unsafeMersenneSandwich_nextPrimitiveNumerator_gt
+      (c := n + 1) (by omega) hunsafe hglt
+
+/-- Exact two-stage normalization of a positive rational residual after
+subtracting one reciprocal.  The first cancellation is
+`d = gcd(x.den,Q)`; after dividing it out, coprimality shows that every
+remaining cancellation is concentrated in the single factor
+`e = gcd(p*(Q/d)-q/d,d)`. -/
+theorem rat_sub_inv_nat_twoStage_normalForm
+    (x : ℚ) {Q : ℕ} (hQ : 0 < Q)
+    (htake : (1 : ℚ) / Q < x) :
+    let p := x.num.natAbs
+    let q := x.den
+    let d := Nat.gcd q Q
+    let q₁ := q / d
+    let Q₁ := Q / d
+    let A := p * Q₁ - q₁
+    let e := Nat.gcd A d
+    (x - (1 : ℚ) / Q).num.natAbs = A / e ∧
+      (x - (1 : ℚ) / Q).den = (d / e) * q₁ * Q₁ := by
+  dsimp only
+  let p := x.num.natAbs
+  let q := x.den
+  let d := Nat.gcd q Q
+  let q₁ := q / d
+  let Q₁ := Q / d
+  let A := p * Q₁ - q₁
+  let e := Nat.gcd A d
+  let B := (d / e) * q₁ * Q₁
+  have hxpos : 0 < x := by
+    exact (by positivity : (0 : ℚ) < (1 : ℚ) / Q).trans htake
+  have hnumPos : 0 < x.num := Rat.num_pos.mpr hxpos
+  have hpcastInt : (p : ℤ) = x.num := by
+    simpa only [p, Int.natAbs_of_nonneg hnumPos.le]
+  have hpcastRat : (p : ℚ) = (x.num : ℚ) := by
+    exact_mod_cast hpcastInt
+  have hqpos : 0 < q := by simpa only [q] using Rat.den_pos x
+  have hqposRat : (0 : ℚ) < q := by exact_mod_cast hqpos
+  have hQposRat : (0 : ℚ) < Q := by exact_mod_cast hQ
+  have hxform : x = (p : ℚ) / (q : ℚ) := by
+    rw [hpcastRat]
+    simpa only [q] using (Rat.num_div_den x).symm
+  have hcrossRat : (q : ℚ) < (p : ℚ) * Q := by
+    rw [hxform] at htake
+    have hcross := (div_lt_div_iff₀ hQposRat hqposRat).mp htake
+    simpa only [one_mul] using hcross
+  have hcross : q < p * Q := by exact_mod_cast hcrossRat
+  have hdpos : 0 < d := by
+    simpa only [d] using Nat.gcd_pos_of_pos_left Q hqpos
+  have hdq : d ∣ q := Nat.gcd_dvd_left q Q
+  have hdQ : d ∣ Q := Nat.gcd_dvd_right q Q
+  have hqfac : d * q₁ = q := by
+    simpa only [q₁] using Nat.mul_div_cancel' hdq
+  have hQfac : d * Q₁ = Q := by
+    simpa only [Q₁] using Nat.mul_div_cancel' hdQ
+  have hq₁pos : 0 < q₁ :=
+    Nat.div_pos (Nat.le_of_dvd hqpos hdq) hdpos
+  have hQ₁pos : 0 < Q₁ :=
+    Nat.div_pos (Nat.le_of_dvd hQ hdQ) hdpos
+  have hcrossScaled : d * q₁ < d * (p * Q₁) := by
+    calc
+      d * q₁ = q := hqfac
+      _ < p * Q := hcross
+      _ = d * (p * Q₁) := by rw [← hQfac]; ring
+  have hcross₁ : q₁ < p * Q₁ :=
+    (Nat.mul_lt_mul_left hdpos).mp hcrossScaled
+  have hApos : 0 < A := by
+    simpa only [A] using Nat.sub_pos_of_lt hcross₁
+  have hpq : p.Coprime (d * q₁) := by
+    rw [hqfac]
+    simpa only [p, q] using x.reduced
+  have hpq₁ : p.Coprime q₁ :=
+    hpq.coprime_dvd_right (dvd_mul_left q₁ d)
+  have hq₁Q₁ : q₁.Coprime Q₁ := by
+    simpa only [q₁, Q₁, d] using
+      Nat.coprime_div_gcd_div_gcd hdpos
+  have hpQ₁_q₁ : (p * Q₁).Coprime q₁ :=
+    hpq₁.mul_left hq₁Q₁.symm
+  have hAq₁ : A.Coprime q₁ := by
+    simpa only [A] using
+      (Nat.coprime_sub_self_left hcross₁.le).mpr hpQ₁_q₁
+  have hA_pQ₁ : A.Coprime (p * Q₁) := by
+    simpa only [A] using
+      (Nat.coprime_self_sub_left hcross₁.le).mpr hpQ₁_q₁.symm
+  have hAQ₁ : A.Coprime Q₁ :=
+    hA_pQ₁.coprime_dvd_right (dvd_mul_left Q₁ p)
+  have hepos : 0 < e := by
+    exact Nat.gcd_pos_of_pos_right A hdpos
+  have heA : e ∣ A := Nat.gcd_dvd_left A d
+  have hed : e ∣ d := Nat.gcd_dvd_right A d
+  have hdredpos : 0 < d / e :=
+    Nat.div_pos (Nat.le_of_dvd hdpos hed) hepos
+  have hAredTail : (A / e).Coprime (q₁ * Q₁) :=
+    (hAq₁.mul_right hAQ₁).coprime_dvd_left
+      (Nat.div_dvd_of_dvd heA)
+  have hAredDred : (A / e).Coprime (d / e) :=
+    Nat.coprime_div_gcd_div_gcd hepos
+  have hcopB : (A / e).Coprime B := by
+    simpa only [B, Nat.mul_assoc] using
+      hAredDred.mul_right hAredTail
+  have hBpos : 0 < B := by
+    exact Nat.mul_pos (Nat.mul_pos hdredpos hq₁pos) hQ₁pos
+  have hrawDen : ((d * q₁ * Q₁ : ℕ) : ℚ) ≠ 0 := by
+    exact_mod_cast (Nat.mul_pos (Nat.mul_pos hdpos hq₁pos) hQ₁pos).ne'
+  have hredDen : (B : ℚ) ≠ 0 := by exact_mod_cast hBpos.ne'
+  have hraw :
+      x - (1 : ℚ) / Q = (A : ℚ) / (d * q₁ * Q₁ : ℕ) := by
+    rw [hxform, ← hqfac, ← hQfac]
+    have hdq₁ : (((d * q₁ : ℕ) : ℚ)) ≠ 0 := by positivity
+    have hdQ₁ : (((d * Q₁ : ℕ) : ℚ)) ≠ 0 := by positivity
+    have hAcast : (A : ℚ) = (p : ℚ) * Q₁ - q₁ := by
+      change (((p * Q₁ - q₁ : ℕ) : ℚ)) =
+        (p : ℚ) * Q₁ - q₁
+      rw [Nat.cast_sub hcross₁.le]
+      push_cast
+      rfl
+    rw [hAcast]
+    field_simp [hdq₁, hdQ₁, hrawDen]
+    push_cast
+    ring
+  have hcrossReduced :
+      A * B = (A / e) * (d * q₁ * Q₁) := by
+    have hAe : e * (A / e) = A := Nat.mul_div_cancel' heA
+    have hde : e * (d / e) = d := Nat.mul_div_cancel' hed
+    calc
+      A * B = (e * (A / e)) * ((d / e) * q₁ * Q₁) := by rw [hAe]
+      _ = (A / e) * ((e * (d / e)) * q₁ * Q₁) := by ring
+      _ = (A / e) * (d * q₁ * Q₁) := by rw [hde]
+  have hred :
+      (A : ℚ) / (d * q₁ * Q₁ : ℕ) =
+        ((A / e : ℕ) : ℚ) / (B : ℚ) := by
+    rw [div_eq_div_iff hrawDen hredDen]
+    exact_mod_cast hcrossReduced
+  have hnormal :
+      x - (1 : ℚ) / Q =
+        ((A / e : ℕ) : ℚ) / (B : ℚ) := hraw.trans hred
+  have hnum :
+      (x - (1 : ℚ) / Q).num = (A / e : ℕ) := by
+    rw [hnormal]
+    have hcopInt :
+        Nat.Coprime (((A / e : ℕ) : ℤ).natAbs) ((B : ℤ).natAbs) := by
+      simpa using hcopB
+    simpa using Rat.num_div_eq_of_coprime
+      (a := ((A / e : ℕ) : ℤ)) (b := (B : ℤ))
+      (by exact_mod_cast hBpos) hcopInt
+  have hden :
+      (x - (1 : ℚ) / Q).den = B := by
+    rw [hnormal]
+    exact den_natCast_div_natCast_of_coprime
+      (A / e) B hBpos.ne' hcopB
+  refine ⟨?_, ?_⟩
+  · change (x - (1 : ℚ) / Q).num.natAbs = A / e
+    simpa using congrArg Int.natAbs hnum
+  · simpa only [B] using hden
+
+/-- The next Mersenne weight lies strictly below the current dyadic cap. -/
+theorem mersenneWeightRat_succ_lt_inv_twoPow
+    (c : ℕ) (hc : 0 < c) :
+    mersenneWeightRat (c + 1) < 1 / (2 : ℚ) ^ c := by
+  have hpowPos : (0 : ℚ) < (2 : ℚ) ^ c := by positivity
+  have hpowOne : (1 : ℚ) < (2 : ℚ) ^ c :=
+    one_lt_pow₀ (by norm_num) hc.ne'
+  have hden :
+      (2 : ℚ) ^ c < (2 : ℚ) ^ (c + 1) - 1 := by
+    rw [pow_succ]
+    nlinarith
+  unfold mersenneWeightRat
+  exact one_div_lt_one_div_of_lt hpowPos hden
+
+/-- Full actual-orbit normalization after an unsafe `1/21` skip.  The
+skipped rank leaves the residual unchanged; the dyadic lower edge forces
+the next rank to be taken; and the resulting reduced numerator is the
+first-stage primitive numerator divided by exactly one residual
+cancellation `e`.  Moreover `e` times that actual numerator is larger than
+the skipped Mersenne denominator. -/
+theorem greedyTwentyOne_unsafeSkip_nextResidual_twoStage
+    (n : ℕ)
+    (hdyadic :
+      1 / (2 : ℚ) ^ (n + 1) <
+        greedyMersenneRemainderRat (1 / 21 : ℚ) n)
+    (hskip :
+      greedyMersenneRemainderRat (1 / 21 : ℚ) n <
+        mersenneWeightRat (n + 1)) :
+    let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+    let Q := 2 ^ (n + 2) - 1
+    let d := Nat.gcd x.den Q
+    let q₁ := x.den / d
+    let Q₁ := Q / d
+    let A := x.num.natAbs * Q₁ - q₁
+    let e := Nat.gcd A d
+    let y := greedyMersenneRemainderRat (1 / 21 : ℚ) (n + 2)
+    y.num.natAbs = A / e ∧
+      y.den = (d / e) * q₁ * Q₁ ∧
+        2 ^ (n + 1) - 1 < e * y.num.natAbs := by
+  dsimp only
+  let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+  let Q := 2 ^ (n + 2) - 1
+  let d := Nat.gcd x.den Q
+  let q₁ := x.den / d
+  let Q₁ := Q / d
+  let A := x.num.natAbs * Q₁ - q₁
+  let e := Nat.gcd A d
+  let y := greedyMersenneRemainderRat (1 / 21 : ℚ) (n + 2)
+  have hskipNot : ¬ mersenneWeightRat (n + 1) ≤ x :=
+    not_le.mpr hskip
+  have hremSkip :
+      greedyMersenneRemainderRat (1 / 21 : ℚ) (n + 1) = x := by
+    rw [greedyMersenneRemainderRat_succ]
+    simp only [if_neg hskipNot, x]
+  have hweightNext :
+      mersenneWeightRat (n + 2) < x := by
+    exact (mersenneWeightRat_succ_lt_inv_twoPow
+      (n + 1) (by omega)).trans hdyadic
+  have htakeNext : mersenneWeightRat (n + 2) ≤ x :=
+    hweightNext.le
+  have hweightQ :
+      mersenneWeightRat (n + 2) = (1 : ℚ) / Q := by
+    simp [Q, mersenneWeightRat, natCast_pow_sub_one]
+  have hremTake : y = x - (1 : ℚ) / Q := by
+    dsimp only [y]
+    rw [show n + 2 = (n + 1) + 1 by omega,
+      greedyMersenneRemainderRat_succ, hremSkip,
+      if_pos htakeNext, hweightQ]
+  have hQpos : 0 < Q := by
+    dsimp only [Q]
+    exact pow_sub_one_pos_of_ne_zero 2 (n + 2) (by omega) (by omega)
+  have hnormal0 :=
+    rat_sub_inv_nat_twoStage_normalForm x hQpos
+      (by simpa only [hweightQ] using hweightNext)
+  have hnormal :
+      y.num.natAbs = A / e ∧
+        y.den = (d / e) * q₁ * Q₁ := by
+    rw [hremTake]
+    simpa only [d, q₁, Q₁, A, e] using hnormal0
+  have hfirst :
+      2 ^ (n + 1) - 1 <
+        (x.num.natAbs * Q - x.den) / d := by
+    simpa only [x, Q, d] using
+      greedyTwentyOne_unsafeSkip_nextPrimitiveNumerator_gt
+        n hdyadic hskip
+  have hdpos : 0 < d := by
+    have hxden : 0 < x.den := Rat.den_pos x
+    simpa only [d] using Nat.gcd_pos_of_pos_left Q hxden
+  have hdq : d ∣ x.den := by
+    exact Nat.gcd_dvd_left x.den Q
+  have hdQ : d ∣ Q := by
+    exact Nat.gcd_dvd_right x.den Q
+  have hqfac : d * q₁ = x.den := by
+    simpa only [q₁] using Nat.mul_div_cancel' hdq
+  have hQfac : d * Q₁ = Q := by
+    simpa only [Q₁] using Nat.mul_div_cancel' hdQ
+  have hcross :
+      x.den < x.num.natAbs * Q := by
+    have hpowCross :=
+      rat_den_lt_num_natAbs_mul_twoPow_of_inv_twoPow_lt x hdyadic
+    have hpowQ : 2 ^ (n + 1) < Q := by
+      have hpow : 1 < 2 ^ (n + 1) :=
+        one_lt_pow₀ (by omega) (by omega)
+      have hpowSucc :
+          2 ^ (n + 2) = 2 * 2 ^ (n + 1) := by
+        rw [show n + 2 = (n + 1) + 1 by omega, pow_succ]
+        ring
+      dsimp only [Q]
+      rw [hpowSucc]
+      omega
+    have hnumPos : 0 < x.num.natAbs := by
+      have hxpos : 0 < x := (by positivity : (0 : ℚ) <
+        1 / (2 : ℚ) ^ (n + 1)).trans hdyadic
+      exact Int.natAbs_pos.mpr (Rat.num_ne_zero.mpr hxpos.ne')
+    exact hpowCross.trans
+      (Nat.mul_lt_mul_of_pos_left hpowQ hnumPos)
+  have hrawFactor :
+      x.num.natAbs * Q - x.den = d * A := by
+    calc
+      x.num.natAbs * Q - x.den =
+          d * (x.num.natAbs * Q₁) - d * q₁ := by
+            rw [← hQfac, ← hqfac]
+            congr 1
+            ring
+      _ = d * (x.num.natAbs * Q₁ - q₁) := by
+            exact (Nat.mul_sub_left_distrib d
+              (x.num.natAbs * Q₁) q₁).symm
+      _ = d * A := by rfl
+  have hquotient :
+      (x.num.natAbs * Q - x.den) / d = A := by
+    rw [hrawFactor]
+    simpa only [mul_comm] using Nat.mul_div_left A hdpos
+  have hAgt : 2 ^ (n + 1) - 1 < A := by
+    rwa [hquotient] at hfirst
+  have heA : e ∣ A := Nat.gcd_dvd_left A d
+  have hfactor : e * (A / e) = A := Nat.mul_div_cancel' heA
+  refine ⟨hnormal.1, hnormal.2, ?_⟩
+  rw [hnormal.1, hfactor]
+  exact hAgt
+
+/-- The residual cancellation can be removed from the statement entirely.
+Since `e` divides the old/next denominator gcd and that gcd is strictly
+below the current numerator, every unsafe skip forces an exponential
+multiplicative jump across the forced next take. -/
+theorem greedyTwentyOne_unsafeSkip_numeratorProduct_gt
+    (n : ℕ)
+    (hdyadic :
+      1 / (2 : ℚ) ^ (n + 1) <
+        greedyMersenneRemainderRat (1 / 21 : ℚ) n)
+    (hskip :
+      greedyMersenneRemainderRat (1 / 21 : ℚ) n <
+        mersenneWeightRat (n + 1)) :
+    2 ^ (n + 1) - 1 <
+      (greedyMersenneRemainderRat (1 / 21 : ℚ) n).num.natAbs *
+        (greedyMersenneRemainderRat
+          (1 / 21 : ℚ) (n + 2)).num.natAbs := by
+  let x := greedyMersenneRemainderRat (1 / 21 : ℚ) n
+  let Q := 2 ^ (n + 2) - 1
+  let d := Nat.gcd x.den Q
+  let q₁ := x.den / d
+  let Q₁ := Q / d
+  let A := x.num.natAbs * Q₁ - q₁
+  let e := Nat.gcd A d
+  let y := greedyMersenneRemainderRat (1 / 21 : ℚ) (n + 2)
+  have htwo :=
+    greedyTwentyOne_unsafeSkip_nextResidual_twoStage n hdyadic hskip
+  have hprod : 2 ^ (n + 1) - 1 < e * y.num.natAbs := by
+    simpa only [x, Q, d, q₁, Q₁, A, e, y] using htwo.2.2
+  have hdpos : 0 < d := by
+    have hxden : 0 < x.den := Rat.den_pos x
+    have hQpos : 0 < Q := by
+      dsimp only [Q]
+      exact pow_sub_one_pos_of_ne_zero 2 (n + 2) (by omega) (by omega)
+    simpa only [d] using Nat.gcd_pos_of_pos_left Q hxden
+  have hed : e ∣ d := Nat.gcd_dvd_right A d
+  have heLeD : e ≤ d := Nat.le_of_dvd hdpos hed
+  have hdLtP : d < x.num.natAbs := by
+    have hg :=
+      greedyTwentyOne_unsafeSkip_consecutive_gcd_lt n hdyadic hskip
+    simpa only [x, Q, d] using hg.2
+  have heLeP : e ≤ x.num.natAbs := heLeD.trans hdLtP.le
+  have hmul :
+      e * y.num.natAbs ≤ x.num.natAbs * y.num.natAbs :=
+    Nat.mul_le_mul_right y.num.natAbs heLeP
+  simpa only [x, y] using hprod.trans_le hmul
+
 /-- An unsafe Mersenne sandwich forces both adjacent Mersenne gcds to be
 strictly smaller than the displayed numerator.  For the lower gcd this is
 the positive overshoot `delta = 2D - p(2^c - 1)`.  For the next gcd, the
@@ -3654,6 +4597,614 @@ theorem half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply
   half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply
     (unsafeSkipGcdOvershootSupply_of_eleven hsupply)
 
+/-! ## Cofinal selected ranks and canonical next-take blocks -/
+
+/-- The rational and real half-greedy residuals are strictly positive at
+every finite rank.  Nonnegativity is automatic from greedy subtraction, while
+the displayed numerator is odd and therefore cannot vanish.  This is the
+finite-prefix obstruction that prevents the half orbit from terminating. -/
+theorem greedyHalfRemainder_pos (n : ℕ) :
+    0 < greedyMersenneRemainder (1 / 2 : ℝ) n := by
+  have hp0 : 0 ≤ halfGreedyResidualDisplayedNumerator n :=
+    halfGreedyResidualDisplayedNumerator_nonneg n
+  have hpne : halfGreedyResidualDisplayedNumerator n ≠ 0 := by
+    intro hpzero
+    rcases halfGreedyResidualDisplayedNumerator_odd n with ⟨k, hk⟩
+    rw [hpzero] at hk
+    omega
+  have hp : 0 < halfGreedyResidualDisplayedNumerator n :=
+    lt_of_le_of_ne hp0 (Ne.symm hpne)
+  have hD : 0 < halfGreedyPrefixDenominator n :=
+    Rat.den_pos (halfGreedyPrefixRat n)
+  have hrat :
+      0 < greedyMersenneRemainderRat (1 / 2 : ℚ) n := by
+    rw [greedyHalfRemainderRat_eq_displayed_divInt, Rat.divInt_eq_div]
+    positivity
+  have hcast :
+      (0 : ℝ) <
+        ((greedyMersenneRemainderRat (1 / 2 : ℚ) n : ℚ) : ℝ) := by
+    exact_mod_cast hrat
+  simpa using hcast
+
+/-- If the greedy support has no selected exponent in the next `L` ranks,
+the real residual is unchanged across that block.  This local copy is kept
+in the dyadic-prefix module so the block decomposition does not depend on
+the later Boolean--Möbius layer. -/
+theorem greedyMersenneRemainder_add_eq_of_local_support_gap
+    (x : ℝ) (K : ℕ) :
+    ∀ L : ℕ,
+      (∀ n : ℕ, K < n → n ≤ K + L →
+        n ∉ greedyMersenneSupport x) →
+      greedyMersenneRemainder x (K + L) =
+        greedyMersenneRemainder x K := by
+  intro L
+  induction L with
+  | zero =>
+      simp
+  | succ L ih =>
+      intro hgap
+      have hprevGap :
+          ∀ n : ℕ, K < n → n ≤ K + L →
+            n ∉ greedyMersenneSupport x := by
+        intro n hKn hnKL
+        exact hgap n hKn (by omega)
+      have hprev := ih hprevGap
+      have hnot :
+          K + L + 1 ∉ greedyMersenneSupport x :=
+        hgap (K + L + 1) (by omega) (by omega)
+      have hskip :
+          ¬ mersenneWeight (K + L + 1) ≤
+            greedyMersenneRemainder x (K + L) := by
+        simpa only [succ_mem_greedyMersenneSupport_iff] using hnot
+      rw [show K + (L + 1) = K + L + 1 by omega,
+        greedyMersenneRemainder_succ, if_neg hskip, hprev]
+
+/-- Selected ranks of the actual half-greedy orbit are cofinal.  Otherwise
+the residual would freeze at a strictly positive value, while summability
+forces a later Mersenne weight below that value and hence forces a take. -/
+theorem greedyHalf_selectedRanks_cofinal (N : ℕ) :
+    ∃ c : ℕ, N < c ∧
+      c ∈ greedyMersenneSupport (1 / 2 : ℝ) := by
+  by_contra hcofinal
+  push_neg at hcofinal
+  have hremPos : 0 < greedyMersenneRemainder (1 / 2 : ℝ) N :=
+    greedyHalfRemainder_pos N
+  have hlim :=
+    summable_mersenneWeight.tendsto_atTop_zero
+  have hevent :
+      ∀ᶠ k : ℕ in Filter.atTop,
+        mersenneWeight (k + 1) <
+          greedyMersenneRemainder (1 / 2 : ℝ) N :=
+    hlim.eventually_mem (Iio_mem_nhds hremPos)
+  have hlarge : ∀ᶠ k : ℕ in Filter.atTop, N ≤ k :=
+    Filter.eventually_ge_atTop N
+  obtain ⟨k, hkWeight, hNk⟩ := (hevent.and hlarge).exists
+  have hgap :
+      ∀ m : ℕ, N < m → m ≤ k →
+        m ∉ greedyMersenneSupport (1 / 2 : ℝ) := by
+    intro m hNm _ hm
+    exact (hcofinal m hNm) hm
+  have hrem :
+      greedyMersenneRemainder (1 / 2 : ℝ) k =
+        greedyMersenneRemainder (1 / 2 : ℝ) N := by
+    obtain ⟨L, rfl⟩ := Nat.exists_eq_add_of_le hNk
+    exact greedyMersenneRemainder_add_eq_of_local_support_gap
+      (1 / 2 : ℝ) N L hgap
+  have htake :
+      mersenneWeight (k + 1) ≤
+        greedyMersenneRemainder (1 / 2 : ℝ) k := by
+    rw [hrem]
+    exact hkWeight.le
+  have hmem :
+      k + 1 ∈ greedyMersenneSupport (1 / 2 : ℝ) :=
+    (succ_mem_greedyMersenneSupport_iff (1 / 2 : ℝ) k).2 htake
+  exact (hcofinal (k + 1) (by omega)) hmem
+
+/-- The first selected half-greedy rank strictly after `N`.  Cofinality makes
+this a total canonical block endpoint rather than an advisory witness. -/
+noncomputable def nextHalfGreedyTakenRank (N : ℕ) : ℕ :=
+  by
+    classical
+    exact Nat.find (greedyHalf_selectedRanks_cofinal N)
+
+theorem nextHalfGreedyTakenRank_spec (N : ℕ) :
+    N < nextHalfGreedyTakenRank N ∧
+      nextHalfGreedyTakenRank N ∈
+        greedyMersenneSupport (1 / 2 : ℝ) := by
+  classical
+  unfold nextHalfGreedyTakenRank
+  exact Nat.find_spec (greedyHalf_selectedRanks_cofinal N)
+
+/-- No actual take lies strictly between a rank and its canonical next
+selected rank. -/
+theorem not_mem_greedyHalf_between_nextTakenRank
+    {N k : ℕ} (hNk : N < k)
+    (hkNext : k < nextHalfGreedyTakenRank N) :
+    k ∉ greedyMersenneSupport (1 / 2 : ℝ) := by
+  classical
+  unfold nextHalfGreedyTakenRank at hkNext
+  intro hk
+  exact (Nat.find_min (greedyHalf_selectedRanks_cofinal N) hkNext)
+    ⟨hNk, hk⟩
+
+/-- In the displayed state immediately after a selected rank `b`, the
+canonical next selected rank is exactly the first `BlockTakeAt` after `b`.
+All intervening actual skips keep the displayed numerator and denominator
+fixed, so the abstract block predicate and the real greedy orbit coincide. -/
+theorem nextHalfGreedyTakenRank_isFirstBlockTakeAfter
+    (b : ℕ)
+    (hbmem : b ∈ greedyMersenneSupport (1 / 2 : ℝ)) :
+    IsFirstBlockTakeAfter
+      (halfGreedyResidualDisplayedNumerator b).natAbs
+      (halfGreedyPrefixDenominator b)
+      b (nextHalfGreedyTakenRank b) := by
+  let c := nextHalfGreedyTakenRank b
+  have hcSpec :
+      b < c ∧ c ∈ greedyMersenneSupport (1 / 2 : ℝ) := by
+    simpa only [c] using nextHalfGreedyTakenRank_spec b
+  have hcoord :
+      ∀ m : ℕ, b ≤ m → m < c →
+        halfGreedyResidualDisplayedNumerator m =
+            halfGreedyResidualDisplayedNumerator b ∧
+          halfGreedyPrefixDenominator m =
+            halfGreedyPrefixDenominator b := by
+    intro m hbm hmc
+    have hrun := halfGreedy_coordinates_add_of_all_skips
+      b (m - b) (fun t ht ↦ ?_)
+    · simpa [Nat.add_sub_of_le hbm] using hrun
+    · have hbt : b < b + t + 1 := by omega
+      have htM : b + t + 1 ≤ m := by omega
+      have htC : b + t + 1 < c := lt_of_le_of_lt htM hmc
+      have hnot :=
+        not_mem_greedyHalf_between_nextTakenRank hbt (by
+          simpa only [c] using htC)
+      simpa only [succ_mem_greedyMersenneSupport_iff] using hnot
+  refine ⟨hcSpec.1, ?_, ?_⟩
+  · have hcpos : 0 < c := by omega
+    have hcIndex : c - 1 + 1 = c := by omega
+    have htake :
+        mersenneWeight c ≤
+          greedyMersenneRemainder (1 / 2 : ℝ) (c - 1) := by
+      have :=
+        (succ_mem_greedyMersenneSupport_iff
+          (1 / 2 : ℝ) (c - 1)).1 (by
+            simpa only [hcIndex] using hcSpec.2)
+      simpa only [hcIndex] using this
+    have hblock :=
+      (greedyHalf_take_iff_BlockTakeAt (c - 1)).1 (by
+        simpa only [hcIndex] using htake)
+    have hcoords := hcoord (c - 1) (by omega) (by omega)
+    rw [hcIndex] at hblock
+    simpa only [hcoords.1, hcoords.2] using hblock
+  · intro k hbk hkc hblock
+    have hkpos : 0 < k := by omega
+    have hkIndex : k - 1 + 1 = k := by omega
+    have hcoords := hcoord (k - 1) (by omega) (by omega)
+    have hblockActual :
+        BlockTakeAt
+          (halfGreedyResidualDisplayedNumerator (k - 1)).natAbs
+          (halfGreedyPrefixDenominator (k - 1)) k := by
+      simpa only [hcoords.1, hcoords.2] using hblock
+    have htake :=
+      (greedyHalf_take_iff_BlockTakeAt (k - 1)).2 (by
+        simpa only [hkIndex] using hblockActual)
+    have hmem0 :=
+      (succ_mem_greedyMersenneSupport_iff
+        (1 / 2 : ℝ) (k - 1)).2 (by
+          simpa only [hkIndex] using htake)
+    have hmem :
+        k ∈ greedyMersenneSupport (1 / 2 : ℝ) := by
+      simpa only [hkIndex] using hmem0
+    exact
+      (not_mem_greedyHalf_between_nextTakenRank
+        hbk (by simpa only [c] using hkc)) hmem
+
+/-- The single arithmetic margin attached to the actual consecutive-take
+block from selected rank `b` to the canonical next selected rank `c`.
+Adjacent takes carry no skipped decisions and therefore need no inequality. -/
+def HalfGreedyTakenBlockRawMargin (b c : ℕ) : Prop :=
+  c = b + 1 ∨
+    ((halfGreedyResidualDisplayedNumerator (b - 1)).natAbs *
+          (2 ^ b - 1) -
+        2 * halfGreedyPrefixDenominator (b - 1)) *
+          2 ^ (c - 1) ≤
+      2 * (halfGreedyPrefixDenominator (b - 1) *
+        (2 ^ b - 1))
+
+/-- One margin per selected rank, evaluated only at its actual next selected
+rank.  Unlike `HalfGreedyUnsafeSkipActualRawMarginSupply`, this does not
+repeat the same block witness once for every skipped decision in the block. -/
+def HalfGreedyConsecutiveTakeRawMarginSupply : Prop :=
+  ∀ b : ℕ,
+    b ∈ greedyMersenneSupport (1 / 2 : ℝ) →
+      HalfGreedyTakenBlockRawMargin b (nextHalfGreedyTakenRank b)
+
+/-- Reciprocal-floor form of the one-per-block producer.  At a nonadjacent
+consecutive selected pair `b<c`, the only forbidden value of the reciprocal
+floor in the post-`b` displayed state is the lower Mersenne integer
+`2^(c-1)-1`. -/
+def HalfGreedyConsecutiveTakeReciprocalFloorSupply : Prop :=
+  ∀ b : ℕ,
+    b ∈ greedyMersenneSupport (1 / 2 : ℝ) →
+      let c := nextHalfGreedyTakenRank b
+      c = b + 1 ∨
+        (2 * halfGreedyPrefixDenominator b) /
+            (halfGreedyResidualDisplayedNumerator b).natAbs ≠
+          2 ^ (c - 1) - 1
+
+/-- Exact arithmetic identification of the new block producer: the raw
+source margin and the post-take reciprocal-floor exclusion are equivalent
+on every actual consecutive-take block. -/
+theorem consecutiveTakeRawMarginSupply_iff_reciprocalFloor :
+    HalfGreedyConsecutiveTakeRawMarginSupply ↔
+      HalfGreedyConsecutiveTakeReciprocalFloorSupply := by
+  constructor
+  · intro hraw b hbmem
+    let c := nextHalfGreedyTakenRank b
+    by_cases hadj : c = b + 1
+    · exact Or.inl hadj
+    · right
+      have hbc : b < c := by
+        simpa only [c] using (nextHalfGreedyTakenRank_spec b).1
+      have hgap : b + 1 < c := by omega
+      have hbpos : 0 < b := by
+        apply Nat.pos_of_ne_zero
+        intro hbzero
+        apply zero_not_mem_greedyMersenneSupport (1 / 2 : ℝ)
+        simpa only [hbzero] using hbmem
+      have hbIndex : b - 1 + 1 = b := by omega
+      have htake :
+          mersenneWeight (b - 1 + 1) ≤
+            greedyMersenneRemainder (1 / 2 : ℝ) (b - 1) := by
+        exact (succ_mem_greedyMersenneSupport_iff
+          (1 / 2 : ℝ) (b - 1)).1 (by
+            simpa only [hbIndex] using hbmem)
+      obtain ⟨g, hg, hnum, hden⟩ :=
+        halfGreedy_take_raw_reduces_to_next (b - 1) htake
+      have hp :
+          0 < (halfGreedyResidualDisplayedNumerator b).natAbs := by
+        apply Int.natAbs_pos.mpr
+        intro hpzero
+        rcases halfGreedyResidualDisplayedNumerator_odd b with ⟨j, hj⟩
+        rw [hpzero] at hj
+        omega
+      have hfirst :
+          IsFirstBlockTakeAfter
+            (halfGreedyResidualDisplayedNumerator b).natAbs
+            (halfGreedyPrefixDenominator b) b c := by
+        simpa only [c] using
+          nextHalfGreedyTakenRank_isFirstBlockTakeAfter b hbmem
+      have hiff :=
+        takenBlock_rawMargin_iff_reducedReciprocalFloor_ne_mersenne
+          (p :=
+            (halfGreedyResidualDisplayedNumerator (b - 1)).natAbs)
+          (D := halfGreedyPrefixDenominator (b - 1))
+          (b := b) (g := g)
+          (p' := (halfGreedyResidualDisplayedNumerator b).natAbs)
+          (D' := halfGreedyPrefixDenominator b)
+          (c := c) hg hp (by simpa only [hbIndex] using hnum)
+            (by simpa only [hbIndex] using hden) hfirst hgap
+      have hmargin :
+          ((halfGreedyResidualDisplayedNumerator (b - 1)).natAbs *
+                (2 ^ b - 1) -
+              2 * halfGreedyPrefixDenominator (b - 1)) *
+                2 ^ (c - 1) ≤
+            2 * (halfGreedyPrefixDenominator (b - 1) *
+              (2 ^ b - 1)) := by
+        rcases hraw b hbmem with h | h
+        · exact False.elim (hadj (by simpa only [c] using h))
+        · simpa only [c] using h
+      exact hiff.1 hmargin
+  · intro hfloor b hbmem
+    let c := nextHalfGreedyTakenRank b
+    by_cases hadj : c = b + 1
+    · exact Or.inl (by simpa only [c] using hadj)
+    · right
+      have hbc : b < c := by
+        simpa only [c] using (nextHalfGreedyTakenRank_spec b).1
+      have hgap : b + 1 < c := by omega
+      have hbpos : 0 < b := by
+        apply Nat.pos_of_ne_zero
+        intro hbzero
+        apply zero_not_mem_greedyMersenneSupport (1 / 2 : ℝ)
+        simpa only [hbzero] using hbmem
+      have hbIndex : b - 1 + 1 = b := by omega
+      have htake :
+          mersenneWeight (b - 1 + 1) ≤
+            greedyMersenneRemainder (1 / 2 : ℝ) (b - 1) := by
+        exact (succ_mem_greedyMersenneSupport_iff
+          (1 / 2 : ℝ) (b - 1)).1 (by
+            simpa only [hbIndex] using hbmem)
+      obtain ⟨g, hg, hnum, hden⟩ :=
+        halfGreedy_take_raw_reduces_to_next (b - 1) htake
+      have hp :
+          0 < (halfGreedyResidualDisplayedNumerator b).natAbs := by
+        apply Int.natAbs_pos.mpr
+        intro hpzero
+        rcases halfGreedyResidualDisplayedNumerator_odd b with ⟨j, hj⟩
+        rw [hpzero] at hj
+        omega
+      have hfirst :
+          IsFirstBlockTakeAfter
+            (halfGreedyResidualDisplayedNumerator b).natAbs
+            (halfGreedyPrefixDenominator b) b c := by
+        simpa only [c] using
+          nextHalfGreedyTakenRank_isFirstBlockTakeAfter b hbmem
+      have hiff :=
+        takenBlock_rawMargin_iff_reducedReciprocalFloor_ne_mersenne
+          (p :=
+            (halfGreedyResidualDisplayedNumerator (b - 1)).natAbs)
+          (D := halfGreedyPrefixDenominator (b - 1))
+          (b := b) (g := g)
+          (p' := (halfGreedyResidualDisplayedNumerator b).natAbs)
+          (D' := halfGreedyPrefixDenominator b)
+          (c := c) hg hp (by simpa only [hbIndex] using hnum)
+            (by simpa only [hbIndex] using hden) hfirst hgap
+      apply hiff.2
+      rcases hfloor b hbmem with h | h
+      · exact False.elim (hadj (by simpa only [c] using h))
+      · simpa only [c] using h
+
+/-- A selected source rank below a skipped decision, together with the fact
+that no selection intervenes, determines the complete actual raw-margin
+witness from the one-per-block supply. -/
+theorem nonempty_actualRawMarginWitness_of_selected_source
+    {n b : ℕ} (hbpos : 0 < b) (hb : b < n + 1)
+    (htakeSource :
+      b ∈ greedyMersenneSupport (1 / 2 : ℝ))
+    (hgap : ∀ k : ℕ, b < k → k ≤ n + 1 →
+      k ∉ greedyMersenneSupport (1 / 2 : ℝ))
+    (hsupply : HalfGreedyConsecutiveTakeRawMarginSupply) :
+    Nonempty (HalfGreedySkippedActualRawMarginWitness n) := by
+  let c := nextHalfGreedyTakenRank b
+  have hcSpec :
+      b < c ∧ c ∈ greedyMersenneSupport (1 / 2 : ℝ) := by
+    simpa only [c] using nextHalfGreedyTakenRank_spec b
+  have hnc : n + 1 < c := by
+    by_contra hnot
+    exact hgap c hcSpec.1 (le_of_not_gt hnot) hcSpec.2
+  have hbIndex : b - 1 + 1 = b := by omega
+  have hcIndex : c - 1 + 1 = c := by omega
+  have htakeSource' :
+      mersenneWeight b ≤
+        greedyMersenneRemainder (1 / 2 : ℝ) (b - 1) := by
+    have htake :=
+      (succ_mem_greedyMersenneSupport_iff
+        (1 / 2 : ℝ) (b - 1)).1 (by
+          simpa only [hbIndex] using htakeSource)
+    simpa only [hbIndex] using htake
+  have htakeNext :
+      mersenneWeight c ≤
+        greedyMersenneRemainder (1 / 2 : ℝ) (c - 1) := by
+    have htake :=
+      (succ_mem_greedyMersenneSupport_iff
+        (1 / 2 : ℝ) (c - 1)).1 (by
+          simpa only [hcIndex] using hcSpec.2)
+    simpa only [hcIndex] using htake
+  have hskipBetween :
+      ∀ k : ℕ, b < k → k < c →
+        ¬ mersenneWeight k ≤
+          greedyMersenneRemainder (1 / 2 : ℝ) (k - 1) := by
+    intro k hbk hkc htake
+    have hkpos : 0 < k := by omega
+    have hkIndex : k - 1 + 1 = k := by omega
+    have hmem :
+        k ∈ greedyMersenneSupport (1 / 2 : ℝ) := by
+      have :=
+        (succ_mem_greedyMersenneSupport_iff
+          (1 / 2 : ℝ) (k - 1)).2 (by
+            simpa only [hkIndex] using htake)
+      simpa only [hkIndex] using this
+    exact
+      (not_mem_greedyHalf_between_nextTakenRank
+        hbk (by simpa only [c] using hkc)) hmem
+  refine ⟨{
+    sourceRank := b
+    nextRank := c
+    hbpos := hbpos
+    hb := hb
+    hc := hnc
+    htakeSource := htakeSource'
+    htakeNext := htakeNext
+    hskipBetween := hskipBetween
+    hmargin := ?_ }⟩
+  simpa only [HalfGreedyTakenBlockRawMargin, c] using
+    hsupply b htakeSource
+
+/-- Rank two is the first selected exponent of the half-greedy orbit. -/
+theorem two_mem_greedyHalfSupport :
+    2 ∈ greedyMersenneSupport (1 / 2 : ℝ) := by
+  have htake :
+      mersenneWeight 2 ≤
+        greedyMersenneRemainder (1 / 2 : ℝ) 1 := by
+    norm_num [mersenneWeight, greedyMersenneRemainder]
+  simpa using
+    (succ_mem_greedyMersenneSupport_iff (1 / 2 : ℝ) 1).2 htake
+
+/-- The one-per-consecutive-take-block raw margin is sufficient for exact
+half-membership.  For a putative unsafe skip at rank `n+1`, take the maximum
+selected exponent `b ≤ n`; cofinality supplies the canonical next selected
+rank `c`, and maximality/minimality put the skip inside the unique block
+`(b,c)`. -/
+theorem half_mem_mersenneAchievementSet_of_consecutiveTakeRawMarginSupply
+    (hsupply : HalfGreedyConsecutiveTakeRawMarginSupply) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
+  apply half_mem_mersenneAchievementSet_of_unsafeSkipActualRawMarginSupply
+  intro n hskip hunsafe
+  by_cases hn : 2 ≤ n
+  · classical
+    let F : Finset ℕ :=
+      (Finset.range (n + 1)).filter
+        (fun k ↦ k ∈ greedyMersenneSupport (1 / 2 : ℝ))
+    have hFne : F.Nonempty := by
+      refine ⟨2, Finset.mem_filter.mpr ⟨?_, two_mem_greedyHalfSupport⟩⟩
+      exact Finset.mem_range.mpr (by omega)
+    let b : ℕ := F.max' hFne
+    have hbF : b ∈ F := Finset.max'_mem F hFne
+    have hbData := Finset.mem_filter.mp hbF
+    have hbLe : b ≤ n := by
+      have := Finset.mem_range.mp hbData.1
+      omega
+    have hbTake :
+        b ∈ greedyMersenneSupport (1 / 2 : ℝ) := hbData.2
+    have hbpos : 0 < b := by
+      apply Nat.pos_of_ne_zero
+      intro hbzero
+      apply zero_not_mem_greedyMersenneSupport (1 / 2 : ℝ)
+      simpa only [hbzero] using hbTake
+    have hnNot :
+        n + 1 ∉ greedyMersenneSupport (1 / 2 : ℝ) := by
+      simpa only [succ_mem_greedyMersenneSupport_iff] using hskip
+    have hgap :
+        ∀ k : ℕ, b < k → k ≤ n + 1 →
+          k ∉ greedyMersenneSupport (1 / 2 : ℝ) := by
+      intro k hbk hkUpper hkTake
+      by_cases hkend : k = n + 1
+      · exact hnNot (by simpa only [hkend] using hkTake)
+      · have hklt : k < n + 1 := lt_of_le_of_ne hkUpper hkend
+        have hkF : k ∈ F := by
+          exact Finset.mem_filter.mpr
+            ⟨Finset.mem_range.mpr hklt, hkTake⟩
+        have hkle : k ≤ b := Finset.le_max' F k hkF
+        omega
+    exact nonempty_actualRawMarginWitness_of_selected_source
+      hbpos (by omega) hbTake hgap hsupply
+  · have hnlt : n < 2 := by omega
+    interval_cases n
+    · exfalso
+      apply hunsafe
+      norm_num [BlockDyadicSafeAt, halfGreedyResidualDisplayedNumerator,
+        halfGreedyPrefixDenominator, halfGreedyPrefixRat,
+        greedyMersennePrefixRat, finiteErdosSum]
+    · exfalso
+      apply hskip
+      norm_num [mersenneWeight, greedyMersenneRemainder]
+
+/-- Final reciprocal-floor endpoint: excluding one Mersenne integer at each
+nonadjacent consecutive-take block proves that one half belongs to the
+Mersenne achievement set. -/
+theorem
+    half_mem_mersenneAchievementSet_of_consecutiveTakeReciprocalFloorSupply
+    (hsupply : HalfGreedyConsecutiveTakeReciprocalFloorSupply) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
+  apply half_mem_mersenneAchievementSet_of_consecutiveTakeRawMarginSupply
+  exact consecutiveTakeRawMarginSupply_iff_reciprocalFloor.mpr hsupply
+
+/-! ### The consecutive-take reciprocal dynamical system -/
+
+/-- Reciprocal of a displayed residual `p/(2D)`. -/
+def blockReciprocalRat (p D : ℕ) : ℚ :=
+  (2 * D : ℚ) / p
+
+/-- Möbius update of the reciprocal residual after subtracting the
+Mersenne weight at rank `b`. -/
+def takenReciprocalMapRat (x : ℚ) (b : ℕ) : ℚ :=
+  x * (2 ^ b - 1) / ((2 ^ b - 1) - x)
+
+/-- Before fraction reduction, a positive taken residual evolves by the
+one-dimensional Möbius map on reciprocal coordinates. -/
+theorem rawTaken_blockReciprocalRat_eq_map
+    {p D b : ℕ} (hp : 0 < p)
+    (hraw : 0 < rawTakenResidualNumerator p D b) :
+    blockReciprocalRat
+        (rawTakenResidualNumerator p D b)
+        (rawTakenResidualDenominator D b) =
+      takenReciprocalMapRat (blockReciprocalRat p D) b := by
+  let q := 2 ^ b - 1
+  have hlt : 2 * D < p * q := by
+    unfold rawTakenResidualNumerator at hraw
+    simpa only [q, Nat.sub_pos_iff_lt] using hraw
+  have hle : 2 * D ≤ p * q := hlt.le
+  have hpQ : (p : ℚ) ≠ 0 := by exact_mod_cast hp.ne'
+  have hrawQ :
+      ((p * q - 2 * D : ℕ) : ℚ) ≠ 0 := by
+    exact_mod_cast (Nat.sub_pos_iff_lt.mpr hlt).ne'
+  have hpQpos : (0 : ℚ) < p := by exact_mod_cast hp
+  have hltQ : (2 * D : ℚ) < p * q := by exact_mod_cast hlt
+  have hdenPos :
+      0 < (q : ℚ) - (2 * D : ℚ) / p := by
+    rw [sub_pos, div_lt_iff₀ hpQpos]
+    simpa only [mul_comm] using hltQ
+  have hdenQ : (q : ℚ) - (2 * D : ℚ) / p ≠ 0 :=
+    hdenPos.ne'
+  have hqQ : (q : ℚ) = (2 : ℚ) ^ b - 1 := by
+    simp [q]
+  unfold blockReciprocalRat takenReciprocalMapRat
+  simp only [rawTakenResidualNumerator, rawTakenResidualDenominator]
+  rw [show 2 ^ b - 1 = q by rfl]
+  push_cast
+  rw [Nat.cast_sub hle]
+  rw [← hqQ]
+  field_simp [hpQ, hrawQ, hdenQ]
+  push_cast
+  ring
+
+/-- A positive common reduction factor does not change reciprocal
+coordinates. -/
+theorem blockReciprocalRat_commonFactor
+    {g p D : ℕ} (hg : 0 < g) (hp : 0 < p) :
+    blockReciprocalRat (g * p) (g * D) =
+      blockReciprocalRat p D := by
+  have hgQ : (g : ℚ) ≠ 0 := by exact_mod_cast hg.ne'
+  have hpQ : (p : ℚ) ≠ 0 := by exact_mod_cast hp.ne'
+  unfold blockReciprocalRat
+  push_cast
+  field_simp [hgQ, hpQ]
+
+/-- The displayed numerator of every finite half-greedy residual is
+strictly positive. -/
+theorem halfGreedyResidualDisplayedNumerator_natAbs_pos (n : ℕ) :
+    0 < (halfGreedyResidualDisplayedNumerator n).natAbs := by
+  apply Int.natAbs_pos.mpr
+  intro hz
+  rcases halfGreedyResidualDisplayedNumerator_odd n with ⟨j, hj⟩
+  rw [hz] at hj
+  omega
+
+/-- Reciprocal coordinate of the actual reduced half-greedy residual. -/
+def halfGreedyReciprocalRat (n : ℕ) : ℚ :=
+  blockReciprocalRat
+    (halfGreedyResidualDisplayedNumerator n).natAbs
+    (halfGreedyPrefixDenominator n)
+
+/-- Exact one-step recurrence at every selected rank.  Arbitrary gcd
+reduction in the displayed fraction cancels, leaving the same Möbius map
+as in the unreduced coordinates. -/
+theorem halfGreedyReciprocalRat_succ_of_take
+    (n : ℕ)
+    (htake : mersenneWeight (n + 1) ≤
+      greedyMersenneRemainder (1 / 2 : ℝ) n) :
+    halfGreedyReciprocalRat (n + 1) =
+      takenReciprocalMapRat (halfGreedyReciprocalRat n) (n + 1) := by
+  obtain ⟨g, hg, hnum, hden⟩ :=
+    halfGreedy_take_raw_reduces_to_next n htake
+  have hp := halfGreedyResidualDisplayedNumerator_natAbs_pos n
+  have hp' := halfGreedyResidualDisplayedNumerator_natAbs_pos (n + 1)
+  have hraw :
+      0 < rawTakenResidualNumerator
+        (halfGreedyResidualDisplayedNumerator n).natAbs
+        (halfGreedyPrefixDenominator n) (n + 1) := by
+    rw [hnum]
+    exact Nat.mul_pos hg hp'
+  unfold halfGreedyReciprocalRat
+  calc
+    blockReciprocalRat
+        (halfGreedyResidualDisplayedNumerator (n + 1)).natAbs
+        (halfGreedyPrefixDenominator (n + 1)) =
+      blockReciprocalRat
+        (rawTakenResidualNumerator
+          (halfGreedyResidualDisplayedNumerator n).natAbs
+          (halfGreedyPrefixDenominator n) (n + 1))
+        (rawTakenResidualDenominator
+          (halfGreedyPrefixDenominator n) (n + 1)) := by
+            rw [hnum, hden]
+            exact (blockReciprocalRat_commonFactor hg hp').symm
+    _ = takenReciprocalMapRat
+        (blockReciprocalRat
+          (halfGreedyResidualDisplayedNumerator n).natAbs
+          (halfGreedyPrefixDenominator n)) (n + 1) :=
+      rawTaken_blockReciprocalRat_eq_map hp hraw
+
 #print axioms half_mem_mersenneAchievementSet_of_actualBlockSafe
 #print axioms greedyHalf_take_iff_BlockTakeAt
 #print axioms halfGreedy_take_raw_reduces_to_next
@@ -3674,6 +5225,24 @@ theorem half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply
 #print axioms unsafeSkipGcdOvershootSupply_iff_primitive
 #print axioms half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply
 #print axioms half_mem_mersenneAchievementSet_of_unsafeSkipElevenGcdOvershootSupply
+#print axioms greedyHalfRemainder_pos
+#print axioms greedyHalf_selectedRanks_cofinal
+#print axioms nextHalfGreedyTakenRank_spec
+#print axioms not_mem_greedyHalf_between_nextTakenRank
+#print axioms nextHalfGreedyTakenRank_isFirstBlockTakeAfter
+#print axioms consecutiveTakeRawMarginSupply_iff_reciprocalFloor
+#print axioms nonempty_actualRawMarginWitness_of_selected_source
+#print axioms half_mem_mersenneAchievementSet_of_consecutiveTakeRawMarginSupply
+#print axioms half_mem_mersenneAchievementSet_of_consecutiveTakeReciprocalFloorSupply
+#print axioms rawTaken_blockReciprocalRat_eq_map
+#print axioms blockReciprocalRat_commonFactor
+#print axioms halfGreedyResidualDisplayedNumerator_natAbs_pos
+#print axioms halfGreedyReciprocalRat_succ_of_take
+#print axioms greedyMersenneSecondChannelPhaseRat_eq_scaled_excess
+#print axioms secondChannelPhaseRat_outside_unit_iff_scaled_excess
+#print axioms halfGreedy_scaledExcessOutsideUnit_of_le_twenty
+#print axioms half_mem_mersenneAchievementSet_of_scaledExcessOutsideUnit
+#print axioms half_mem_mersenneAchievementSet_of_scaledExcessOutsideUnitFromTwentyOne
 #print axioms nextDyadicExcessIntNumerator_succ
 #print axioms nextDyadicExcessIntNumerator_add
 #print axioms nextMersenneDecisionDefect_eq_two_excess_sub
