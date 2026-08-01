@@ -21,6 +21,9 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos269.dyadicBlockBase235_cases
 #print axioms ErdosProblems.Erdos269.dyadicBlockBase235_mem_interval
 #print axioms ErdosProblems.Erdos269.no_bounded_positive_state_of_residue_escape
+#print axioms ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape
+#print axioms ErdosProblems.Erdos269.localWindowEscape_of_cofinalLocalWindowEscape
+#print axioms ErdosProblems.Erdos269.no_positive_reducedCarry_of_localWindowEscape
 #print axioms ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor
 #print axioms ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ
 #print axioms ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat

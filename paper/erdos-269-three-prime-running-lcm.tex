@@ -150,10 +150,9 @@ unconditional structural statements; none is an irrationality theorem for a
 three-prime series.
 
 For the residue argument, suppose rationality produced a bounded integral carry
-with the required divisibility by the
-$\{2,3,5\}$-smooth part of its denominator, that factor could be cancelled and
-the remaining denominator $B$ would be coprime to $30$.  A suitable consecutive
-window would then force the reduced carry outside its bound.  Lean checks the
+divisible by the $\{2,3,5\}$-smooth part of its denominator.  That factor could
+then be cancelled, leaving a denominator $B$ coprime to $30$.  A suitable
+consecutive window would force the reduced carry outside its bound.  Lean checks the
 absorption-and-cancellation algebra and the implication from the stated
 local-window escape condition to nonexistence of the reduced carry.  It does
 not derive the actual carry or its divisibility from the series, and it does not
@@ -321,7 +320,7 @@ Canonical least-positive-residue arithmetic & \authlean & Unconditional finite l
 \addlinespace[2pt]
 \rowcolor{BurntOrange!7}
 \multicolumn{3}{@{}l}{\sffamily\bfseries\textcolor{BurntOrange!85!black}{C. Conditional bridge}}\\
-Carry contradiction assuming~\eqref{eq:escape} & \authlean & Conditional implication only; Theorem~\ref{res:windowconsumer}. \\
+Carry contradiction assuming one window per reduced denominator & \authlean & Conditional implication only; Theorem~\ref{res:windowconsumer}. \\
 Smooth-factor absorption and carry cancellation & \authlean & Conditional core; Theorem~\ref{res:denominator-reduction}.  Divisibility of the actual carry remains unproved. \\
 \addlinespace[2pt]
 \rowcolor{Violet!6}
@@ -759,11 +758,11 @@ cancelled from a hypothetical denominator, and exactly where that cancellation
 is still conditional (Theorem~\ref{res:denominator-reduction}).  Finally we
 leave the smooth numbers behind and argue with integer sequences alone: for a
 multiplier coprime to $30$, no positive sequence obeying the cleared recurrence
-can stay inside its bound once a certain residue condition holds arbitrarily
-far out (Theorem~\ref{res:windowconsumer}).  That residue condition,
-condition~\eqref{eq:escape} below, is the hypothesis; it is not proved here,
-and the closing subsection reports a finite computation, which is evidence for
-it and not a proof of it.
+can stay inside its bound once one window has the required residue escape
+(Theorem~\ref{res:windowconsumer}).  The stronger cofinal condition introduced
+below is a natural way to supply such a window.  Neither producer is proved
+here, and the closing subsection reports a finite computation rather than an
+unbounded theorem.
 
 \subsection{The four-element block alphabet}
 
@@ -942,9 +941,9 @@ $\operatorname{lpr}_C(x)$ by $|x|$ would not be a modular statement.
 Let $K(B,n)$ be a bound on the reduced carry at denominator $B$ and step $n$.
 It enters as a parameter: the statements below hold for whichever function $K$
 is supplied, and deriving the correct one for the actual series is part of the
-identification of Section~\ref{sec:open}.  Define
-\emph{cofinal local-window escape} to mean that for every $B>0$ coprime to
-$30$ and every $\ell_0$, there are $\ell\ge\ell_0$ and $h>0$ such that
+identification of Section~\ref{sec:open}.  Say that \emph{local-window escape}
+holds when, for every $B>0$ coprime to $30$, there are $\ell$ and $h>0$ such
+that
 \[
  C_{\ell,h}:=|W_{\ell,h}|>0
  \quad\text{and}\quad
@@ -953,13 +952,13 @@ $30$ and every $\ell_0$, there are $\ell\ge\ell_0$ and $h>0$ such that
 \tag{E}\label{eq:escape}
 \]
 Both the quantifier over $B$ and the dependence of $K$ on $B$ are part of the
-statement.  Informally, and separately for each fixed $B>0$ coprime to $30$:
-however far out one starts, some window has a nonzero accumulated base, and
-the least positive residue of its accumulated forcing, weighted by $-B$ and
-taken modulo that base, exceeds the carry bound at the endpoint of the window.
-The exact unproved proposition is the
+statement.  The exact minimal predicate is the
+\lword{Erdos269/RestrictedFloorSum.lean}{652}{LocalWindowEscape}{local-window
+escape condition}.  The stronger \emph{cofinal} version asks for such a window
+after every lower bound $\ell_0$; this is the
 \lword{Erdos269/RestrictedFloorSum.lean}{594}{CofinalLocalWindowEscape}{cofinal
-local-window escape condition}.
+local-window escape condition}.  Lean checks that the cofinal version implies
+the minimal one by taking $\ell_0=0$.
 
 The next statement is the finite core of the argument.  Informally, it says
 that a positive integer of size at most $K$ cannot be congruent modulo $C$ to a
@@ -990,8 +989,7 @@ form of the contradiction}.
 
 \begin{theorem}[a conditional contradiction for bounded carries]\label{res:windowconsumer}
 Let $(b_n)$, $(m_n)$ and $K$ be the radix word, the forcing word and the bound
-of this subsection, and assume the cofinal escape
-property~\eqref{eq:escape}.  Fix $B>0$ coprime to
+of this subsection, and assume local-window escape.  Fix $B>0$ coprime to
 $30$.  There is no integral sequence $d_n$ satisfying simultaneously
 \[
  d_{n+1}=b_nd_n-Bm_n,\qquad d_n>0,\qquad
@@ -1000,7 +998,7 @@ $30$.  There is no integral sequence $d_n$ satisfying simultaneously
 \end{theorem}
 
 \begin{proof}
-Choose one window supplied by~\eqref{eq:escape}.  The checked window identity
+Choose the window supplied for $B$.  The checked window identity
 gives
 \[
  d_{\ell+h}\equiv -BF_{\ell,h}\pmod{|W_{\ell,h}|}.
@@ -1011,12 +1009,14 @@ Theorem~\ref{res:consumer} is the contradiction.
 \end{proof}
 
 \noindent This is formalised as the
-\lword{Erdos269/RestrictedFloorSum.lean}{610}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}{reduced-carry
-extinction theorem}.  Coprimality with $30$ is used by~\eqref{eq:escape} to
-select a window; once a window has been chosen, the finite contradiction does
-not use it.  The formalisation carries the edge cases: $|W_{\ell,h}|=0$ is
-excluded, a zero residue is represented by the full modulus, and positivity
-prevents the endpoint carry from being zero.
+\lword{Erdos269/RestrictedFloorSum.lean}{677}{no_positive_reducedCarry_of_localWindowEscape}{minimal
+reduced-carry extinction theorem}.  The
+\lword{Erdos269/RestrictedFloorSum.lean}{666}{localWindowEscape_of_cofinalLocalWindowEscape}{cofinal-to-local
+implication} recovers the earlier cofinal formulation.  Coprimality with $30$
+is used to select a window; once a window has been chosen, the finite
+contradiction does not use it.  The formalisation carries the edge cases:
+$|W_{\ell,h}|=0$ is excluded, a zero residue is represented by the full
+modulus, and positivity prevents the endpoint carry from being zero.
 
 \subsection{A finite check of the escape condition}
 
@@ -1097,24 +1097,24 @@ $|W_{\ell,h}|>0$ and
 interface, independently of whether the identification above is carried out.
 The case of interest is the pair that identification would supply.
 
-By Theorem~\ref{res:windowconsumer} a proof of Problem~\ref{prob:producer}
-rules out the corresponding positive reduced carry; together with the
-identification above it supplies the missing contradiction for the three-prime
-case.  Until both pieces are present, Problem~\#269 remains open.
+Problem~\ref{prob:producer} implies the local hypothesis of
+Theorem~\ref{res:windowconsumer}, so it rules out the corresponding positive
+reduced carry.  Together with the identification above it would supply the
+missing contradiction for the three-prime case.  Until both pieces are present,
+Problem~\#269 remains open.
 
-For each $B$, condition~\eqref{eq:escape} asks only for a cofinal family of
-windows, that is, a family containing windows that start arbitrarily far out;
-it does not ask for every window to escape.  The radix word is
+For each $B$, Problem~\ref{prob:producer} asks for a cofinal family of windows
+satisfying~\eqref{eq:escape}, that is, a family containing windows that start
+arbitrarily far out; it does not ask for every window to escape.  The radix word is
 constrained to $\{2,6,10,30\}$, so the remaining arithmetic is in the block
 digit and its carry into the residue class, and one seeks blocks for which the
 modulus $|W_{\ell,h}|$ grows faster than the carry window and the weighted
 forcing $-BF_{\ell,h}$ does not remain trapped in the two short arcs adjacent
-to $0$ modulo that modulus.  A theorem for one cofinal family is enough; no
-equidistribution of all windows is required.  The formal consumer does not in
-fact use cofinality: because the carry recurrence, positivity and bound are
-assumed at every index, one escaping window for each reduced denominator $B$
-already suffices, and cofinal escape is stated because it is the natural
-producer shape rather than because the consumer requires it.
+to $0$ modulo that modulus.  No equidistribution of all windows is required.
+The formal consumer uses exactly one escaping window for each reduced
+denominator $B$, because the carry recurrence, positivity and bound hold at
+every index.  Cofinal escape is retained as the natural producer shape and is
+now connected to that minimal consumer by a separate Lean theorem.
 
 None of the following weaker statements suffices, and each removes a false
 version of~\eqref{eq:escape}.  Merely proving $2\le b_a\le30$ loses the exact
@@ -1175,9 +1175,10 @@ bases, while the statements about $\Lprefix$ need the three primes to be
 distinct.  The normal form of Section~\ref{sec:fibre} is a finite identity over
 a rectangular box, not a convergence theorem.  The smooth part of a
 hypothetical denominator can be cancelled only after divisibility of the actual
-carry states by that factor is proved.  And the formal cofinal-escape predicate
-is an unproved hypothesis of Theorem~\ref{res:windowconsumer}; its application
-to the actual $\{2,3,5\}$ word is not asserted.
+carry states by that factor is proved.  The local-window predicate is an
+unproved hypothesis of Theorem~\ref{res:windowconsumer}; the stronger cofinal
+predicate is a sufficient producer, and neither is asserted for the actual
+$\{2,3,5\}$ word.
 
 % The exhaustive source manifest is retained in the authored TeX for automated
 % validation, and kept outside the printed note.
@@ -1255,7 +1256,9 @@ common-factor cancellation & \lrefx{Erdos269/RestrictedFloorSum.lean}{546}{integ
 reduced bound transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{566}{reducedCarry_pos_le_of_commonFactor}\\
 reduced window transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{577}{reducedIntegralCarry_window}\\
 cofinal window producer & \lrefx{Erdos269/RestrictedFloorSum.lean}{594}{CofinalLocalWindowEscape}\\
-reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{610}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}\\
+minimal window producer & \lrefx{Erdos269/RestrictedFloorSum.lean}{652}{LocalWindowEscape}\\
+cofinal-to-minimal implication & \lrefx{Erdos269/RestrictedFloorSum.lean}{666}{localWindowEscape_of_cofinalLocalWindowEscape}\\
+reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{677}{no_positive_reducedCarry_of_localWindowEscape}\\
 \end{tabular}
 \fi
 

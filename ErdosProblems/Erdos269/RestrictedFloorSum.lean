@@ -645,4 +645,71 @@ theorem no_positive_reducedCarry_of_cofinalLocalWindowEscape
     (by simpa [W, F] using hresidueEscape)
     hmod
 
+/-- The minimal local-window producer consumed by the carry contradiction:
+one escaping window for each admissible reduced denominator.  No cofinality is
+required because the carry recurrence, positivity, and bound hold at every
+index. -/
+def LocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ) : Prop :=
+  ∀ B : ℕ, 0 < B → Nat.Coprime B 30 →
+    ∃ lo len : ℕ,
+      0 < len ∧
+      0 < Int.natAbs (windowBase (fun n => b n) lo len) ∧
+      shortBound B (lo + len) <
+        leastPositiveResidue
+          (Int.natAbs (windowBase (fun n => b n) lo len))
+          (-((B : ℤ) *
+            windowForcing (fun n => b n) (fun n => m n) lo len))
+
+/-- A cofinal producer supplies the single window needed by the minimal
+consumer, by taking the requested lower bound to be zero. -/
+theorem localWindowEscape_of_cofinalLocalWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ)
+    (hescape : CofinalLocalWindowEscape b m shortBound) :
+    LocalWindowEscape b m shortBound := by
+  intro B hBpos hBcoprime
+  rcases hescape B hBpos hBcoprime 0 with
+    ⟨lo, len, _hlo, hlen, hbasePos, hresidueEscape⟩
+  exact ⟨lo, len, hlen, hbasePos, hresidueEscape⟩
+
+/-- One denominator-dependent escaping window already rules out a positive
+reduced carry with the matching bound. -/
+theorem no_positive_reducedCarry_of_localWindowEscape
+    (b m : ℕ → ℕ) (shortBound : ℕ → ℕ → ℕ)
+    (hescape : LocalWindowEscape b m shortBound)
+    (B : ℕ) (hBpos : 0 < B) (hBcoprime : Nat.Coprime B 30)
+    (d : ℕ → ℤ)
+    (hrec : ∀ n,
+      d (n + 1) = (b n : ℤ) * d n - (B : ℤ) * (m n : ℤ))
+    (hpos : ∀ n, 0 < d n)
+    (hbound : ∀ n, Int.natAbs (d n) ≤ shortBound B n) :
+    False := by
+  rcases hescape B hBpos hBcoprime with
+    ⟨lo, len, _hlen, hbasePos, hresidueEscape⟩
+  let W : ℤ := windowBase (fun n => (b n : ℤ)) lo len
+  let F : ℤ := windowForcing
+    (fun n => (b n : ℤ)) (fun n => (m n : ℤ)) lo len
+  have hwindow :
+      d (lo + len) = W * d lo - (B : ℤ) * F := by
+    simpa [W, F] using
+      integralCarry_window d
+        (fun n => (b n : ℤ)) (fun n => (m n : ℤ))
+        (B : ℤ) lo len hrec
+  have hmodW :
+      Int.ModEq W (d (lo + len)) (-((B : ℤ) * F)) := by
+    rw [Int.modEq_iff_dvd]
+    refine ⟨-d lo, ?_⟩
+    rw [hwindow]
+    ring
+  have hmod :
+      Int.ModEq (Int.natAbs W)
+        (d (lo + len)) (-((B : ℤ) * F)) :=
+    (Int.modEq_natAbs).2 hmodW
+  exact no_bounded_positive_int_state_of_leastPositiveResidue
+    (by simpa [W] using hbasePos)
+    (hpos (lo + len))
+    (hbound (lo + len))
+    (by simpa [W, F] using hresidueEscape)
+    hmod
+
 end ErdosProblems.Erdos269
