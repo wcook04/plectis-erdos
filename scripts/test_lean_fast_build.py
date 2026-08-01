@@ -38,6 +38,18 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("use-mathlib-cache: auto", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
 
+    def test_ci_does_not_repeat_required_pr_checks_after_merge(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        triggers = workflow[workflow.index("on:\n") : workflow.index("concurrency:\n")]
+
+        self.assertIn("\n  pull_request:\n", triggers)
+        self.assertIn("\n  workflow_dispatch:\n", triggers)
+        self.assertNotIn("\n  push:\n", triggers)
+        self.assertIn("Main is protected with both jobs", workflow)
+        self.assertIn("If branch protection is relaxed, restore push validation", workflow)
+
     def test_reachable_and_waves_limit_focused_target(self) -> None:
         graph = {
             "Root": {"Left", "Right"},

@@ -4,22 +4,22 @@ name: Lean CI
 
 # Two lanes: the Lean build (developer convenience; the kernel check is the
 # proof authority) and the release-surface checks (claim registry, paper
-# links, citation metadata, scope, licences). Feature branches run through the
-# pull-request event only, avoiding a duplicate build for the same commit.
+# links, citation metadata, scope, licences). Main is protected with both jobs
+# as strict required checks, including for administrators, so every merge has
+# already passed this workflow on its pull request. Do not subscribe to push:
+# that needlessly repeated the same 90-minute proof/export run after merging.
+# If branch protection is relaxed, restore push validation before landing that
+# settings change.
 on:
-  push:
-    branches: [main]
   pull_request:
-  # Merge commits created through the GitHub web UI do not always start a run,
-  # which leaves the README badge reporting an older result than the branch.
-  # Manual dispatch re-runs the same two jobs on any ref without a dummy commit.
+  # Manual dispatch remains the explicit way to revalidate main, a tag, or any
+  # other ref without a dummy commit.
   workflow_dispatch:
 
 concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
   # A newer PR head covers the complete base-to-head diff, so its predecessor
-  # is redundant. Never cancel main runs: a later documentation-only push must
-  # not cancel validation of an earlier direct Lean push.
+  # is redundant. Explicit manual runs remain operator-owned receipts.
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
