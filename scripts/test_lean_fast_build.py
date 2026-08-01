@@ -29,18 +29,42 @@ class LeanFastBuildTests(unittest.TestCase):
             encoding="utf-8"
         )
         cache_step = workflow.index("- name: Restore project Lean cache")
-        dependency_step = workflow.index("- uses: leanprover/lean-action@")
+        toolchain_step = workflow.index("- name: Install pinned Lean toolchain")
         bounded_build = workflow.index(
             "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
         )
 
-        self.assertLess(cache_step, dependency_step)
-        self.assertLess(dependency_step, bounded_build)
+        self.assertLess(cache_step, toolchain_step)
+        self.assertLess(toolchain_step, bounded_build)
         self.assertIn("uses: actions/cache@", workflow)
         self.assertIn("# v5", workflow)
         self.assertIn("path: .lake", workflow)
-        self.assertIn("use-mathlib-cache: auto", workflow)
+        self.assertNotIn("leanprover/lean-action@", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
+
+    def test_ci_installs_lean_from_checksum_verified_primary_source(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        setup = workflow[
+            workflow.index("- name: Install pinned Lean toolchain") :
+            workflow.index("- name: Memory-bounded Lean build")
+        ]
+
+        self.assertIn("if: steps.lean-inputs.outputs.changed == 'true'", setup)
+        self.assertIn(
+            "https://github.com/leanprover/elan/releases/download/v4.2.3/"
+            "elan-x86_64-unknown-linux-gnu.tar.gz",
+            setup,
+        )
+        self.assertIn(
+            "df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2",
+            setup,
+        )
+        self.assertIn("sha256sum --check -", setup)
+        self.assertIn("--default-toolchain none --no-modify-path", setup)
+        self.assertIn('toolchain install "$(tr -d \'\\r\\n\' < lean-toolchain)"', setup)
+        self.assertIn('echo "$HOME/.elan/bin" >> "$GITHUB_PATH"', setup)
 
     def test_ci_pins_external_actions_to_full_commit_shas(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(

@@ -78,21 +78,30 @@ jobs:
         if: steps.lean-inputs.outputs.changed == 'true'
         uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
-          # Unlike lean-action's internal cache step, this top-level action
-          # saves after the later custom build has populated project OLeans.
-          # Keep lean-action's key shape so existing main-branch caches seed
-          # the first optimized run.
+          # This top-level action saves after the later custom build has
+          # populated project OLeans. Keep the historical lean-action key
+          # shape so existing main-branch caches seed the optimized run.
           path: .lake
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
             lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1
+      - name: Install pinned Lean toolchain
         if: steps.lean-inputs.outputs.changed == 'true'
-        with:
-          use-mathlib-cache: auto
-          use-github-cache: false
-          auto-config: false
-          build: false
+        env:
+          ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
+          ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/elan-x86_64-unknown-linux-gnu.tar.gz"
+          installer_dir="$RUNNER_TEMP/elan-installer"
+          mkdir -p "$installer_dir"
+          curl --fail --location --proto '=https' --tlsv1.2 \
+            --output "$archive" "$ELAN_ARCHIVE_URL"
+          printf '%s  %s\n' "$ELAN_ARCHIVE_SHA256" "$archive" | sha256sum --check -
+          tar --extract --gzip --file "$archive" --directory "$installer_dir"
+          "$installer_dir/elan-init" -y --default-toolchain none --no-modify-path
+          "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Memory-bounded Lean build
         if: steps.lean-inputs.outputs.changed == 'true'
         # Drain independent Lucas modules without Lake's unbounded ready-set
