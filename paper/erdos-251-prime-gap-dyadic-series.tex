@@ -8,19 +8,19 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #251 advances independently of the corpus
 % default, while the #249/#257 notes retain their own reviewed snapshot.
-\renewcommand{\commit}{d6d344d9557faee19276b01a1c1f20d7c08f03d5}
-\renewcommand{\commitshort}{d6d344d9557f}
+\renewcommand{\commit}{cb1110cf55a407543beabd0d84118abef12ab146}
+\renewcommand{\commitshort}{cb1110cf55a4}
 \hypersetup{
-  pdftitle={An integral-shift criterion for dyadic tail recurrences, and the prime-gap series of Erdős Problem 251},
+  pdftitle={The prime-gap dyadic series and its integral tail differences},
   pdfsubject={Erdős Problem Notes: Problem 251},
   pdfkeywords={irrationality, prime gaps, dyadic series, summation by parts, Lean 4},
 }
 
-\runninghead{Erd\H{o}s \#251: the prime-gap dyadic series}
-\title{An Integral-Shift Criterion for Dyadic Tail Recurrences}
-\subtitle{Erd\H{o}s Problem~\#251, with the principal statements checked in Lean~4}
+\runninghead{The prime-gap dyadic series}
+\title{The Prime-Gap Dyadic Series and Its Integral Tail Differences}
+\subtitle{An exact recurrence criterion for Erd\H{o}s Problem~\#251}
 \author{Will Cook}
-\date{July 2026}
+\date{August 2026}
 
 \begin{document}
 \maketitle
@@ -28,56 +28,36 @@
 
 \begin{abstract}
 \noindent
-Call a sequence $(T_N)_{N\ge0}$ of rational numbers a \emph{dyadic tail
-recurrence with digits $g$} when $T_{N+1}=2T_N-g_{N+1}$ for every $N$, the
-digits $g_N$ being arbitrary integers.  For any such sequence we prove the
-block identity
-$T_{N+h}=2^{h}T_N-B_{h,N}$, with $B_{h,N}=g_{N+1}2^{\,h-1}+\cdots+g_{N+h}$, and
-hence that the shift $T_{N+h}-T_N$ is an integer
-\emph{if and only if} $(2^{h}-1)T_N$ is; that integrality of one shift
-propagates to every later index; and, by Euler's congruence, that a term whose
-reduced denominator $d$ is odd has an integral shift of length $\ph(d)$, where
-$\ph$ denotes Euler's totient function.
-Consequently every such rational sequence has a fixed $h\ge1$ whose shifts are
-integers from some index onwards.  The contrapositive over the reals is an
-irrationality criterion: if a real sequence obeys the same recurrence with
-integer digits and, for every $h\ge1$, the shift $T_{N+h}-T_N$ fails to be an
-integer for arbitrarily large $N$, then $T_0$ is irrational.  The digits
-enter all of these statements only through the fact that they are integers.
-
-Let $p_0=2,p_1=3,\ldots$ enumerate the primes and let
-$g_n=p_{n+1}-p_n$.  We formalise in Lean both the exact finite identity
+Let a real state sequence satisfy $T_{N+1}=2T_N-g_{N+1}$, where every
+$g_N$ is an integer, and write $\sigma_h(N)=T_{N+h}-T_N$.  We prove the exact
+classification
 \[
- \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
- \;=\;2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}},
+ T_0\in\Q
+ \quad\Longleftrightarrow\quad
+ \exists h\ge1\ \exists N\quad \sigma_h(N)\in\Z
+ \quad\Longleftrightarrow\quad
+ \exists h\ge1\ \exists N_0\ \forall N\ge N_0\quad \sigma_h(N)\in\Z.
 \]
-and, conditional only on summability, the infinite identity and irrationality
-equivalence
-\[
- \sum_{i\ge0}\frac{p_i}{2^{\,i+1}}
- =2+\sum_{i\ge0}\frac{g_i}{2^{\,i+1}},\qquad
- \operatorname{Irr}\!\left(\sum_{i\ge0}\frac{p_i}{2^{\,i+1}}\right)
- \Longleftrightarrow
- \operatorname{Irr}\!\left(\sum_{i\ge0}\frac{g_i}{2^{\,i+1}}\right).
-\]
-The prime number theorem supplies the summability in ordinary mathematics;
-that external input is not formalised here and remains an explicit hypothesis
-of the Lean declarations.
+Equivalently, $T_0$ is irrational precisely when every positive-length tail
+difference is non-integral.  The proof is elementary and Lean-checked.  Its
+two ingredients are the block identity
+$\sigma_h(N)=(2^h-1)T_N-B_{h,N}$ with $B_{h,N}\in\Z$, and the exact removal of
+the power-of-two part of a rational denominator under repeated doubling.
 
-Problem~\#251 remains open.  The remaining obligation is now exact:
-rationality would force some fixed $h\ge1$ for which the actual tail shifts
-$T_{N+h}-T_N$ are integers at every sufficiently large $N$.  Thus it is enough
-to prove cofinal non-integrality for every fixed $h$.  We also prove a local
-obstruction: two adjacent shifts lying strictly between $-1$ and $1$ cannot
-both be integers when the corresponding prime gaps differ.  Consequently it
-is enough to produce such adjacent small-mismatch pairs cofinally.  The actual
-prime gaps are Lean-checked to be unbounded, hence not eventually periodic,
-but that fact alone gives no control on the size of a tail.  A telescoping
-identity supplies an explicit sequence of integers $\kappa_0,\kappa_1,\ldots$
-that is unbounded, hence not eventually periodic, and for which
-$\sum_{n\ge0}\kappa_n2^{-(n+1)}$ is rational.  Rationality of a dyadic sum
-therefore cannot by itself force its integer coefficients to be eventually
-periodic, and the missing theorem must control the full prime-gap tails.
+For the primes $p_0=2,p_1=3,\ldots$ and gaps $g_n=p_{n+1}-p_n$, summation by
+parts gives an exact finite identity with its endpoint term retained.  After
+passage to the limit, justified externally by the prime number theorem, the
+prime series $\sum p_n2^{-(n+1)}$ and the gap series
+$\sum g_n2^{-(n+1)}$ have the same irrationality status.  Thus Erd\H{o}s
+Problem~\#251 is equivalent to non-integrality of every positive difference
+of the rescaled prime-gap tails.
+
+The problem remains open.  We isolate a finite sufficient obstruction: two
+adjacent tail differences in $(-1,1)$ cannot both be integral when the
+corresponding gaps differ.  We also exhibit a positive, unbounded integer
+sequence with rational dyadic sum, showing why nonperiodicity of the prime gaps
+alone cannot settle the problem.  The missing input must control the tails,
+rather than the coefficient word alone.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
@@ -200,13 +180,14 @@ $(2^{\,n})^{1/2^{\,n}}\to1$, and every arithmetic constraint has to come from
 the numerators instead.
 
 What replaces growth control is denominator control on the sequence of
-rescaled tails.  Rationality of the sum turns out to be equivalent to an
-eventual integrality condition on differences of those tails, and that
-condition uses nothing about the numerators beyond the fact that they are
-integers.  The condition does not by itself force the numerators to repeat:
-Proposition~\ref{res:telescope}, applied to $K_n=n$, produces the integer
-sequence $\kappa_n=n-1$, which is unbounded and hence not eventually periodic,
-and whose dyadic sum $\sum_{n\ge0}\kappa_n2^{-(n+1)}$ is zero.
+rescaled tails.  Theorem~\ref{res:classification} says exactly that the sum is
+rational if and only if one positive-length difference of those tails is an
+integer.  The same difference is then integral at every later index.  This
+condition uses nothing about the coefficients beyond their integrality, and it
+does not force them to repeat: Proposition~\ref{res:telescope}, applied to
+$K_n=n+2$, produces the positive sequence $\kappa_n=n+1$, which is unbounded
+and hence not eventually periodic, while
+$\sum_{n\ge0}\kappa_n2^{-(n+1)}=2$.
 
 \paragraph{Outline.}
 Section~\ref{sec:parts} replaces the primes by their consecutive gaps, the
@@ -217,9 +198,9 @@ passage to the limit a matter of summability alone; the prime number theorem
 supplies that summability externally.
 Section~\ref{sec:tail} rescales the tails of a dyadic series into a recurrence
 and develops it: the block identity, the integral-shift criterion, the
-collapse of every rational solution onto an eventually integral shift, its
-contrapositive over the reals, and a local obstruction that converts an
-infinite-tail condition into a single comparison of gaps.
+exact rationality classification, its irrationality normal form, and a local
+obstruction that converts an infinite-tail condition into a single comparison
+of gaps.
 Section~\ref{sec:carry} shows that the tail constraint does not by itself make
 the coefficient sequence eventually periodic, and Section~\ref{sec:open} states
 the remaining obligation.  The pinned Lean~4 toolchain and Mathlib revision
@@ -251,7 +232,9 @@ Integral shift criterion & Proved here; an equivalence & Theorem~\ref{res:shifti
 Totient shift from an odd denominator & Proved here & Theorem~\ref{res:totient}. \\
 Propagation of an integral shift & Proved here & Theorem~\ref{res:propagate}. \\
 Eventual integral shift for every rational-valued recurrence & Lean-checked & Theorem~\ref{res:collapse}. \\
-Cofinal shift escape implies irrationality & Lean-checked abstractly & Theorem~\ref{res:escape-irrational}. \\
+Exact rationality classification by integral tail differences & Lean-checked abstractly & Theorem~\ref{res:classification}. \\
+Exact irrationality normal form & Lean-checked abstractly & Corollary~\ref{res:exact-irrational}. \\
+Cofinal shift escape implies irrationality & Lean-checked abstractly & Corollary~\ref{res:escape-irrational}. \\
 Actual prime gaps are unbounded and not eventually periodic & Lean-checked & Proposition~\ref{res:gap-nonperiodic}. \\
 Adjacent small-mismatch pair excludes simultaneous integrality & Lean-checked & Theorem~\ref{res:smallpair}. \\
 Concrete prime-gap tail recurrence & Paper-proved from PNT & Not yet instantiated as a Lean infinite sum. \\
@@ -309,7 +292,7 @@ For every rational sequence $P$ and every $n\ge0$,
 \end{proposition}
 
 \begin{proof}
-A routine induction on $n$.  At $n=0$ both sides equal $P(0)/2$.  For the step, adding
+Induct on $n$.  At $n=0$ both sides equal $P(0)/2$.  For the step, adding
 $P(n+1)/2^{\,n+2}$ to the left and
 $\bigl(P(n+1)-P(n)\bigr)/2^{\,n+1}$ to the difference sum changes the endpoint
 term from $P(n)/2^{\,n+1}$ to $P(n+1)/2^{\,n+2}$, and the two adjustments agree.
@@ -345,6 +328,21 @@ $p_n\le p_{n+1}$, the
 step}.  The leading $2$ is the first prime, not a normalising constant.
 At $n=2$, for instance, the left side is $2/2+3/4+5/8=19/8$ and the right side
 is $2+(1/2+2/4)-5/8=19/8$.
+
+The same numbers give a small model of the tail recurrence used below.  Extend
+the finite list $(2,3,5)$ by the constant continuation $6,6,\ldots$; this is a
+toy sequence, not a prime sequence.  Its difference word is
+$(1,2,1,0,0,\ldots)$.  For the rescaled difference tails of
+Section~\ref{sec:tail},
+\[
+ T_0=\frac22+\frac1{2^2}=\frac54,
+ \qquad T_1=\frac12,
+ \qquad T_2=0,
+\]
+and indeed $T_{N+1}=2T_N-g_{N+1}$.  The reduced denominators therefore run
+$4\to2\to1$: the first two doublings remove the dyadic part, after which the
+orbit is integral.  This finite example is the denominator-collapse mechanism
+in its smallest visible form.
 
 \subsection{The infinite identity and the irrationality equivalence}\label{sec:infinite}
 
@@ -494,7 +492,7 @@ let $B_{h,N}$ be as above.  For every $N$ and $h$,
 \end{theorem}
 
 \begin{proof}
-A routine induction on $h$; the step is one application of the recurrence together with
+Induct on $h$; the step is one application of the recurrence together with
 $2\cdot2^{h}=2^{h+1}$ and the recursion defining $B$.  The second identity is
 the first minus $T_N$.
 \end{proof}
@@ -633,16 +631,68 @@ state theorem}; and the quantified conclusion is the
 \lword{Erdos251/PrimeGapDyadicTail.lean}{477}{exists_eventually_integral_tailShift}{eventual
 integral-shift theorem}.
 
-The useful contrapositive is stated for a real recurrence.  Call its shifts
-\emph{cofinally non-integral} when, for every fixed $h\ge1$ and every
-threshold $N_0$, some $N\ge N_0$ has $\sigma_h(N)\notin\Z$.  This is precisely
-the negation of the conclusion of Theorem~\ref{res:collapse}: no shift length
-whatever becomes integral and stays integral.
+The denominator-collapse theorem has a converse once real-valued orbits are
+admitted; the digits remain integers.
 
-\begin{theorem}[cofinal shift escape implies irrationality]\label{res:escape-irrational}
+\begin{theorem}[exact rationality classification]\label{res:classification}
+Let $T:\N\to\R$ satisfy $T_{N+1}=2T_N-g_{N+1}$ with integer $g$.  Then
+\[
+ T_0\in\Q
+ \quad\Longleftrightarrow\quad
+ \exists h\ge1\ \exists N\quad \sigma_h(N)\in\Z
+ \quad\Longleftrightarrow\quad
+ \exists h\ge1\ \exists N_0\ \forall N\ge N_0\quad
+ \sigma_h(N)\in\Z .
+\]
+\end{theorem}
+
+\begin{proof}
+If $T_0$ is rational, the recurrence keeps every $T_N$ rational, and
+Theorem~\ref{res:collapse} gives the final condition.  That condition plainly
+gives one integral shift.  Conversely, suppose $h\ge1$ and
+$\sigma_h(N)=z\in\Z$.  The real block identity gives
+\[
+ T_N=\frac{z+B_{h,N}}{2^h-1}\in\Q ,
+\]
+because $2^h-1\ne0$.  Applying the block identity once more, now from $0$ to
+$N$, recovers $T_0=(T_N+B_{N,0})/2^N\in\Q$.
+\end{proof}
+
+\noindent The real block identity and its scaled-difference form are
+\lword{Erdos251/PrimeGapDyadicTail.lean}{786}{real_tail_iterate_eq_pow_mul_sub_block}{formalised here}
+and
+\lword{Erdos251/PrimeGapDyadicTail.lean}{800}{realTailShift_eq_scaled_sub_block}{here}.
+The two rationality equivalences are the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{812}{not_irrational_initial_iff_exists_integral_positive_tailShift}{single-shift classifier}
+and the
+\lword{Erdos251/PrimeGapDyadicTail.lean}{858}{not_irrational_initial_iff_exists_eventually_integral_positive_tailShift}{eventual classifier}.
+
+\begin{corollary}[exact irrationality normal form]\label{res:exact-irrational}
+Under the hypotheses of Theorem~\ref{res:classification},
+\[
+ T_0\notin\Q
+ \quad\Longleftrightarrow\quad
+ \forall h\ge1\ \forall N,\qquad \sigma_h(N)\notin\Z .
+\]
+\end{corollary}
+
+\begin{proof}
+Negate the middle condition in Theorem~\ref{res:classification}.
+\end{proof}
+
+\noindent Lean checks this equivalence as
+\lword{Erdos251/PrimeGapDyadicTail.lean}{884}{irrational_initial_iff_all_positive_tailShifts_nonintegral}{the exact irrationality normal form}.
+
+For a weaker but often more usable hypothesis, call the shifts
+\emph{cofinally non-integral} when, for every fixed $h\ge1$ and every threshold
+$N_0$, some $N\ge N_0$ has $\sigma_h(N)\notin\Z$.  Propagation shows that one
+integral shift would make every later shift of the same length integral, so
+cofinal non-integrality rules out the rational case.
+
+\begin{corollary}[cofinal shift escape implies irrationality]\label{res:escape-irrational}
 Let $T:\N\to\R$ satisfy $T_{N+1}=2T_N-g_{N+1}$ with integer $g$.  If its
 shifts are cofinally non-integral, then $T_0$ is irrational.
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
 If $T_0$ were rational, the whole real orbit would be the image in $\R$ of the
@@ -675,11 +725,13 @@ The prime number theorem gives convergence, and an index shift gives
 If $G=\sum_{n\ge0}g_n/2^{n+1}$, then
 $\mathcal T_0=2G-g_0=2G-1=2.349287932\ldots$.  Together with
 Theorem~\ref{res:infinite}, this shows that $\Pi$, $G$, and
-$\mathcal T_0$ have the same rationality status.  Thus
-Theorem~\ref{res:escape-irrational} applies directly to Problem~\#251 once cofinal
-shift escape is proved for $\mathcal T$.  This last analytic instantiation is
-proved here from the classical prime number theorem; it is not yet a Lean
-declaration.  The abstract theorem, including its real/rational transport, is
+$\mathcal T_0$ have the same rationality status.  Corollary~\ref{res:exact-irrational}
+therefore identifies the problem exactly: one must show that
+$\mathcal T_{N+h}-\mathcal T_N$ is non-integral for every $h\ge1$ and every
+$N$.  The weaker cofinal hypothesis in Corollary~\ref{res:escape-irrational}
+is a sufficient route because integrality propagates.  This analytic
+instantiation is proved here from the classical prime number theorem; it is
+not yet a Lean declaration.  The abstract recurrence theorems are
 kernel-checked.
 
 \subsection{Two adjacent small shifts cannot both be integral}\label{sec:local-certificate}
@@ -822,7 +874,7 @@ Let $K:\N\to\Q$ be arbitrary and $\kappa_n=2K_n-K_{n+1}$.  For every $n\ge0$,
 \end{proposition}
 
 \begin{proof}
-A routine induction on $n$; the added term is
+The summands telescope, since the term added at stage $n$ is
 $(2K_n-K_{n+1})/2^{\,n+1}=K_n/2^{\,n}-K_{n+1}/2^{\,n+1}$.
 \end{proof}
 
@@ -839,43 +891,45 @@ cast}.
 
 \paragraph{Consequence for the coefficients.}
 If $K_n2^{-n}\to0$, the emitted partial sums converge to $K_0$.  For the
-explicit choice $K_n=n$ one has
+explicit positive choice $K_n=n+2$ one has
 \[
- \kappa_n=n-1,\qquad
+ \kappa_n=n+1,\qquad
  \sum_{i=0}^{n-1}\frac{\kappa_i}{2^{\,i+1}}
-   =-\frac{n}{2^n}\longrightarrow0,
+   =2-\frac{n+2}{2^n}\longrightarrow2,
 \]
 that is, the first values are
 \[
  \begin{array}{c|ccccccc}
   n & 0&1&2&3&4&5&6\\\hline
-  \kappa_n & -1&0&1&2&3&4&5\\[2pt]
+  \kappa_n & 1&2&3&4&5&6&7\\[2pt]
   \displaystyle\sum_{i<n}\frac{\kappa_i}{2^{\,i+1}}
-    & 0&-\tfrac12&-\tfrac12&-\tfrac38&-\tfrac14&-\tfrac5{32}&-\tfrac3{32}
+    & 0&\tfrac12&1&\tfrac{11}{8}&\tfrac{13}{8}&\tfrac{57}{32}&\tfrac{15}{8}
  \end{array}
 \]
-converging to $0$.
+converging to $2$.
 The sequence $(\kappa_n)$ is unbounded and therefore not eventually periodic,
-although its dyadic sum is rational.  Thus rationality alone cannot imply
-eventual periodicity of an unrestricted integer coefficient sequence.
+although every coefficient is positive and its dyadic sum is rational.  Thus
+rationality alone cannot imply eventual periodicity even for positive integer
+coefficient sequences.
 Informally, an arbitrarily large value may be carried forward from level to
 level and still disappear in the limit, so rationality of a dyadic sum is
 compatible with arbitrarily large integer coefficients.  This
 does not classify which sequences occur, and it does not show that a prescribed
-prime-gap pattern is emitted by a bounded or nonnegative carry; here
-$K_1=1>0=2K_0$, so this example is not of the natural-number kind above, and
-indeed $\kappa_0=-1$.
+prime-gap pattern is emitted by a bounded carry.  Here
+$K_{n+1}=n+3\le2n+4=2K_n$, so the natural-number construction above applies
+without a sign exception.
 
 \section{Complements and further questions}\label{sec:open}
 
-Problem~\#251 is open.  Two statements would close it, and neither is proved
-here.  Both ask for indices beyond every threshold rather than for one index,
-because Theorem~\ref{res:collapse} produces integrality only from some
-unspecified point onwards; a single non-integral shift, however far out, is
-consistent with that conclusion.  Throughout, $g_i=p_{i+1}-p_i$ are the
-zero-based prime gaps of Section~\ref{sec:problem}.
+Problem~\#251 is open.  The first statement below is the exact tail-difference
+reformulation supplied by Theorem~\ref{res:classification}; the second is a
+stronger, local sufficient condition designed to prove it.  Both ask for
+indices beyond every threshold because a single non-integral shift, however
+far out, is compatible with rationality.  Throughout,
+$g_i=p_{i+1}-p_i$ are the zero-based prime gaps of
+Section~\ref{sec:problem}.
 
-\begin{problem}[minimal prime-gap shift escape]\label{prob:escape}
+\begin{problem}[exact prime-gap shift escape]\label{prob:escape}
 For every $h\ge1$ and every $N_0$, prove that some $N\ge N_0$ satisfies
 \[
  \sum_{j\ge1}
@@ -885,11 +939,13 @@ For every $h\ge1$ and every $N_0$, prove that some $N\ge N_0$ satisfies
 \end{problem}
 
 The series in~\eqref{eq:shift-escape} is exactly
-$\mathcal T_{N+h}-\mathcal T_N$.  Theorem~\ref{res:escape-irrational} therefore turns
-any solution of Problem~\ref{prob:escape} directly into irrationality of
-$\Pi$.  The quantifier over $h$ is essential: a hypothetical rational value
-chooses a shift length from the odd part of its reduced denominator, and that
-length is not known in advance.
+$\mathcal T_{N+h}-\mathcal T_N$.  Because integrality propagates forward,
+cofinal non-integrality is equivalent to non-integrality at every index;
+Corollary~\ref{res:exact-irrational} therefore makes
+Problem~\ref{prob:escape} equivalent to irrationality of $\Pi$.  The
+quantifier over $h$ is essential: a hypothetical rational value chooses a
+shift length from the odd part of its reduced denominator, and that length is
+not known in advance.
 
 \begin{problem}[cofinal adjacent small mismatch]\label{prob:smallpair}
 For every fixed $h\ge1$ and every $N_0$, prove that some $N\ge N_0$ satisfies
@@ -924,9 +980,11 @@ non-eventual-periodicity of the actual gaps, though now checked, do not imply
 the required small-tail recurrence.  In particular, Section~\ref{sec:carry}
 shows that no argument can deduce eventual periodicity from rationality alone.
 
-\paragraph{A finite truncation criterion.}
-Both problems above are stated in terms of infinite tails, but a dominated
-truncation reduces the first of them to a finite quantity.  For $L\ge1$ put
+\paragraph{A finite truncation certificate.}
+Both problems above concern infinite tails.  A dominated truncation supplies
+a finite certificate for one instance of the exact criterion; it is neither a
+replacement for the quantifiers in Problem~\ref{prob:escape} nor another
+equivalent formulation.  For $L\ge1$ put
 \[
  S_{h,N,L}=\sum_{j=1}^{L}
  \frac{g_{N+h+j}-g_{N+j}}{2^j},
@@ -1000,7 +1058,7 @@ chains of large gaps; the cited theorem itself supplies no residue-sensitive
 block estimate of the kind needed here.
 
 \paragraph{What remains to be formalised.}
-The abstract irrationality theorem and the prime-specific local
+The exact abstract classifier and the prime-specific local
 small-mismatch theorem are Lean-checked, as is the generic
 finite-approximation certificate used in Proposition~\ref{res:truncation}.
 The local source still takes
