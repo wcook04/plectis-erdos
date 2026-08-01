@@ -13,12 +13,32 @@ import ErdosProblems.Erdos243.DynamicCancellation
 import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos257.SquarefreeSupportIncidence
+import ErdosProblems.Erdos68.CanonicalFactorialDigits
+import ErdosProblems.Erdos68.ChannelBreakpointRigidity
+import ErdosProblems.Erdos68.ChannelIntegralCongruence
+import ErdosProblems.Erdos68.FactorialCarry
+import ErdosProblems.Erdos68.FactorialChannelCertificate
+import ErdosProblems.Erdos68.PrimeUnitTranslator
+import ErdosProblems.Erdos68.StrictSuccessorArithmetic
+import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FiniteDefectAutomaton
+import ErdosProblems.Erdos68.DivisorFactorialCentre
+import ErdosProblems.Erdos68.FactorialDigitRigidity
+import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
+import ErdosProblems.Erdos68.PrimeZeroBranch
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.ResidueEscape
 import ErdosProblems.Erdos269.RestrictedFloorSum
+import ErdosProblems.Erdos269.BoundedRadixTailEscape
+import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
+import ErdosProblems.Erdos269.CarryLiftExtinction
+import ErdosProblems.Erdos269.WeightedPhaseCarry
 import ErdosProblems.Erdos1049.RationalBaseLambert
 import ErdosProblems.Erdos1049.RationalPadeArithmetic
+import ErdosProblems.Erdos1049.ZudilinHeightRegion
+import ErdosProblems.Erdos1049.HermitePadeNoGo
 import ErdosProblems.Erdos1049.ZudilinConeArithmetic
+import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 
 /-!
 # Problem-centric Erdős formalization root

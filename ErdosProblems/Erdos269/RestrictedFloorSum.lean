@@ -491,6 +491,41 @@ theorem integralCarry_window
   rw [windowForcing_const_mul b m (-B) lo len]
   ring
 
+/-- If the endpoint carry is positive and lies in the canonical window for
+the accumulated base, then the window's least positive forcing residue is
+exactly that endpoint carry. -/
+theorem leastPositiveResidue_windowForcing_eq_carry
+    (c b m : ℕ → ℤ) (B : ℤ) (lo len : ℕ)
+    (hrec : ∀ n, c (n + 1) = b n * c n - B * m n)
+    (hWpos : 0 < windowBase b lo len)
+    (hcpos : 0 < c (lo + len))
+    (hcle :
+      Int.natAbs (c (lo + len)) ≤
+        Int.natAbs (windowBase b lo len)) :
+    leastPositiveResidue
+        (Int.natAbs (windowBase b lo len))
+        (-B * windowForcing b m lo len) =
+      Int.natAbs (c (lo + len)) := by
+  let W : ℤ := windowBase b lo len
+  let F : ℤ := windowForcing b m lo len
+  have hwindow :
+      c (lo + len) = W * c lo - B * F := by
+    simpa [W, F] using integralCarry_window c b m B lo len hrec
+  have hmodW :
+      Int.ModEq W (c (lo + len)) (-B * F) := by
+    rw [Int.modEq_iff_dvd]
+    refine ⟨-c lo, ?_⟩
+    rw [hwindow]
+    ring
+  have hmod :
+      Int.ModEq (Int.natAbs W) (c (lo + len)) (-B * F) :=
+    (Int.modEq_natAbs).2 hmodW
+  exact leastPositiveResidue_eq_natAbs_of_pos_le_modEq
+    (Int.natAbs_pos.mpr hWpos.ne')
+    hcpos
+    (by simpa [W] using hcle)
+    (by simpa [W, F] using hmod)
+
 /-- When shell multiplicities are exact differences of smooth-count
 potentials, the integral-carry window is an explicit weighted potential
 identity. -/

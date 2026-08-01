@@ -41,7 +41,8 @@ theorem leastPositiveResidue_pos_le
       omega
 
 /-- The canonical positive representative is congruent to the source
-integer. -/
+integer.  This is the bridge from an integer carry identity to the natural
+finite residue consumer below. -/
 theorem leastPositiveResidue_modEq
     {C : ℕ} (hC : 0 < C) (x : ℤ) :
     Int.ModEq C (leastPositiveResidue C x : ℤ) x := by
@@ -100,7 +101,9 @@ theorem residue_le_bound_of_bounded_positive_state
   exact no_bounded_positive_state_of_residue_escape
     hcpos hcbound ⟨Nat.lt_of_not_ge hnot, hresidueC⟩ hmod
 
-/-- Integer-valued form of the finite contradiction. -/
+/-- Integer-valued form of the finite contradiction.  A positive integral
+carry bounded by `bound` cannot be congruent to an integer whose canonical
+positive residue lies above that bound. -/
 theorem no_bounded_positive_int_state_of_leastPositiveResidue
     {C bound : ℕ} {x c : ℤ}
     (hC : 0 < C)
@@ -126,5 +129,35 @@ theorem no_bounded_positive_int_state_of_leastPositiveResidue
     hcbound
     ⟨hescape, hresidue.2⟩
     hmodNat
+
+/-- A positive carry already lying in the canonical interval is exactly the
+least positive representative of its congruence class.  This is the equality
+form of the finite residue consumer, rather than merely its escaping-window
+contradiction. -/
+theorem leastPositiveResidue_eq_natAbs_of_pos_le_modEq
+    {C : ℕ} (hC : 0 < C) {x c : ℤ}
+    (hcpos : 0 < c)
+    (hcle : Int.natAbs c ≤ C)
+    (hmod : Int.ModEq C c x) :
+    leastPositiveResidue C x = Int.natAbs c := by
+  have hresidue := leastPositiveResidue_pos_le hC x
+  have hresidue_le : leastPositiveResidue C x ≤ Int.natAbs c := by
+    by_contra hnot
+    exact no_bounded_positive_int_state_of_leastPositiveResidue
+      hC hcpos le_rfl (Nat.lt_of_not_ge hnot) hmod
+  have hmodInt :
+      ((leastPositiveResidue C x : ℕ) : ℤ) % (C : ℤ) =
+        ((Int.natAbs c : ℕ) : ℤ) % (C : ℤ) := by
+    have hcx :
+        Int.ModEq C ((Int.natAbs c : ℕ) : ℤ) x := by
+      simpa [Int.natAbs_of_nonneg hcpos.le] using hmod
+    exact ((leastPositiveResidue_modEq hC x).trans hcx.symm).eq
+  have hmodNat :
+      leastPositiveResidue C x % C = Int.natAbs c % C := by
+    exact_mod_cast hmodInt
+  have hc_le : Int.natAbs c ≤ leastPositiveResidue C x :=
+    residue_le_bound_of_bounded_positive_state
+      hresidue.1 le_rfl hcle hmodNat
+  omega
 
 end ErdosProblems.Erdos269
