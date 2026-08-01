@@ -240,7 +240,7 @@ Bounded negative part & Excluded here; conditional & Theorem~\ref{res:bounded}; 
 Finite normalised negative mass & Excluded here; conditional & Theorem~\ref{res:mass}, Section~\ref{sec:mass}; normalised vanishing remains an input. \\
 Factorial residue reduction & Proved here; superseded for its original purpose & Theorem~\ref{res:residue}, Appendix~\ref{app:residue}. \\
 Strict centring, normalised vanishing & Assumed here; supplied by prior art & Section~\ref{sec:bounded}; derived in~\cite{koizumi2025}, see Section~\ref{sec:problem}. \\
-Unbounded, divergent-mass negative excursions & Open & Section~\ref{sec:open}; the surviving obstruction. \\
+Unbounded, divergent-mass negative excursions & Surviving frontier profile & Section~\ref{sec:open}; consequences any counterexample must satisfy, not a separate open problem. \\
 Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; the Erd\H{o}s--Straus hypothesis is implied by that of Theorem~\ref{res:descent}. \\
 State system equals reciprocal tails & Not formalised & Section~\ref{sec:state}. \\
 \bottomrule
@@ -1070,30 +1070,43 @@ $(-E_n)_+/C_n$ and not a bound on it.
 Problem~\#243 is open.  The negative case has narrowed, and it is worth being
 precise about what is left.
 
-By Theorem~\ref{res:absorb} a counterexample has $E_n\ne0$ for every large $n$.
-By Theorem~\ref{res:descent} it cannot have $E$ eventually nonnegative.  By
-Theorems~\ref{res:constant} and~\ref{res:periodic} its negative magnitudes are
-neither eventually constant nor eventually periodic.  By
-Theorem~\ref{res:bounded}, if the analytic hypotheses~(4) and~(6) hold, the
-negative part cannot be bounded either, and by Theorem~\ref{res:mass}, under
-normalised vanishing, its normalised negative mass cannot be finite.  What
-remains is the following.
-
-\begin{problem}[unbounded divergent-mass negative excursions]\label{res:excursions}
-Exclude, or construct, an exact natural orbit $(a,D,C)$ with $a_n>1$ and
-$C_n>0$, whose multipliers satisfy $\lim_n a_{n+1}/a_n^{2}=1$ and whose centred
-state satisfies eventual strict centring and normalised vanishing, and which is
-negative infinitely often with magnitudes unbounded along that cofinal set and
+\begin{proposition}[frontier profile for a counterexample]\label{res:excursions}
+For the canonical integer state attached to any counterexample to
+Problem~\ref{res:problem},
 \[
- \sum_n\frac{(-E_n)_+}{C_n}=\infty .
+ E_n\ne0\quad\hbox{eventually},\qquad
+ \frac{|E_n|}{C_n}\longrightarrow0,
 \]
-Every
-argument in Sections~\ref{sec:constant}--\ref{sec:bounded} uses some
+and
+\[
+ \limsup_{\substack{n\to\infty\\E_n<0}}(-E_n)=\infty,
+ \qquad
+ \sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}=\infty .
+\]
+In particular, negative indices occur infinitely often.  Thus the remaining
+regime consists of globally coherent, unbounded negative excursions with
+divergent normalised negative mass.
+\end{proposition}
+
+\begin{proof}
+Koizumi's canonical-tail transfer gives strict centring and normalised
+vanishing after a finite shift.  Absorption then makes $E_n\ne0$ eventually,
+since eventual zero would give the Sylvester recurrence.  Descent excludes an
+eventually nonnegative state.  Theorem~\ref{res:bounded} excludes a bounded
+negative part, and Theorem~\ref{res:mass} excludes finite normalised negative
+mass.  These statements are unchanged by deleting a finite prefix.
+\end{proof}
+
+Put
+\[
+ \delta_n:=\frac{(-E_n)_+}{C_n}.
+\]
+Every argument in Sections~\ref{sec:constant}--\ref{sec:bounded} uses a
 finiteness hypothesis: a fixed set of prime divisors, a fixed period, or a
-fixed bound on the negative part.  Theorem~\ref{res:mass} uses a finite total
-multiplicative growth as well.  An excursion of the kind described has none of
-these.
-\end{problem}
+fixed bound on the negative part.  Theorem~\ref{res:mass} uses
+$\sum_n\delta_n<\infty$.  Proposition~\ref{res:excursions} records that a
+counterexample has none of them; it is a frontier statement, not an additional
+problem equivalent to the original one.
 
 \begin{remark}
 The hypotheses in Problem~\ref{res:excursions} beyond the state recurrence are
@@ -1122,22 +1135,83 @@ multiplier recurrence, so growth fails with them.  It is recorded only to show
 that the state recurrence alone is not enough.
 \end{remark}
 
-\begin{problem}[summable normalised negative mass]\label{res:masshyp}
-Prove from the rapid-growth and rationality hypotheses of
-Problem~\ref{res:problem} that \(\sum_n(-E_n)_+/C_n<\infty\), or prove any
-uniform bound on the partial products \(\prod_{n<N}(1+(-E_n)_+/C_n)\); a bound
-of the form
+\subsection{Global height and old-factor overlap}
+
+The main arithmetic gap is global.  Define the cumulative digit LCM and its
+overlap quotient by
 \[
- \sum_{n=N}^{M}\frac{(-E_n)_+}{C_n}\le B
- \quad\text{for all }M\ge N
+ L_0=D_0,\qquad L_{n+1}=\lcm(L_n,a_n),\qquad M_n=\frac{D_n}{L_n}.
 \]
-with explicit hypotheses would suffice.  A disproof should exhibit a sequence
-satisfying the hypotheses of Problem~\ref{res:problem} whose exact state orbit
-has divergent normalised negative mass; an orbit satisfying normalised
-vanishing alone is not enough, since normalised vanishing is strictly weaker
-than those hypotheses, and neither is a list of locally admissible defects,
-since local admissibility at each index does not produce a global orbit.
+Since $D_n=D_0\prod_{j<n}a_j$, the quotient is integral and
+$M_nL_n=D_n$.  It records the multiplicity lost when the full product scale
+is compressed to an LCM.
+
+\begin{problem}[global overlap-height growth]\label{res:lcmheight}
+For every nonterminal canonical orbit satisfying Problem~\ref{res:problem},
+must
+\[
+ \limsup_{n\to\infty}\frac{\log M_n}{n}>0?
+\]
+Equivalently, must there be a $K\ge1$ for which
+\[
+ 2^n\le M_n^K
+\]
+at infinitely many indices?
 \end{problem}
+
+\noindent The two displayed formulations are equivalent up to changing the
+positive constant; the second is not a weaker target.  A positive answer is
+not yet, by itself, a proof of Problem~\#243: the missing bridge is a comparison
+of $M_n$ with a subexponential state or exact cancellation-payment scale.
+No assertion such as $M_n\mid C_n$ or $M_n\le C_n$ is used here.  Proving such
+a bridge together with Problem~\ref{res:lcmheight} would collide with the
+subexponential tail-height budget forced by normalised vanishing.
+
+There is also a more local-looking question whose content is nevertheless the
+entire prefix.  Put $A_n=\prod_{j<n}a_j$, so $D_n=D_0A_n$.  From
+\[
+ D_0A_n=(a_n-1)C_n+E_n
+\]
+one immediately obtains
+\[
+ \gcd(A_n,a_n-1)\mid E_n.
+\]
+The checked
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2076}{tailState_subexponential_of_normalizedVanishes}{tail-height estimate}
+and normalised vanishing make $|E_n|$ subexponential in $n$.
+
+\begin{problem}[old-factor overlap]\label{res:prefixgcd}
+In every nonterminal canonical orbit satisfying Problem~\ref{res:problem}, is
+\[
+ \limsup_{n\to\infty}
+ \frac{\log\gcd(A_n,a_n-1)}{n}>0?
+\]
+Equivalently, do there exist $\eta>0$ and infinitely many $n$ such that
+$\gcd(A_n,a_n-1)\ge e^{\eta n}$?
+\end{problem}
+
+\noindent A positive answer contradicts the displayed divisibility and the
+subexponential error budget.  Arbitrarily long locally admissible blocks do
+not answer this question: the gcd uses the complete prefix.
+
+\subsection{The direct analytic question}
+
+\begin{problem}[summability from rationality]\label{res:masshyp}
+Let $(a_n)$ satisfy Problem~\ref{res:problem}, and let $(D_n,C_n,E_n)$ be its
+canonical integer state.  Must
+\[
+ \sum_{n=0}^{\infty}\delta_n
+ =\sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}<\infty ?
+\]
+\end{problem}
+
+\noindent An affirmative answer closes Problem~\#243 by
+Theorem~\ref{res:mass}.  Since $\delta_n\to0$, convergence is equivalently
+expressible as boundedness of the partial products
+$\prod_{n<N}(1+\delta_n)$; that is an explanatory reformulation, not a second
+success criterion.  A negative answer must be a sequence satisfying the full
+growth and rationality hypotheses, not merely a locally admissible state
+orbit.
 
 \begin{remark}
 One further question is not left open here, since it is answered
@@ -1157,13 +1231,33 @@ merely for all large $n$.  What remains unsupplied is hypothesis~(5), the bound
 on the negative part, which is why the theorem is still conditional.
 \end{remark}
 
-\begin{problem}[the two published criteria]
-Formalise the criterion of Erd\H{o}s and Straus stated in
-Section~\ref{sec:problem}, and Duverney's conditional characterisation, under
-explicit analytic hypotheses.  Both are cited here and neither is formalised;
-each reaches the original problem under analytic hypotheses not assumed in this
-note.
+\subsection{A barrier extension}
+
+\begin{problem}[variable-rise CRT barrier]\label{res:variablerise}
+Determine the weakest growth condition on the positive increments of $u_n$
+under which an unbounded integer sequence cannot permanently avoid infinitely
+many pairwise-coprime old moduli as in Theorem~\ref{res:barrier}.  In
+particular, does the conclusion remain valid under the candidate condition
+\[
+ (u_{n+1}-u_n)_+=o\bigl(\log\log(u_n+3)\bigr)?
+\]
 \end{problem}
+
+\noindent The displayed rate is a proposed threshold, not a proved sharp
+boundary.  Either an extension of the CRT barrier or a counterexample with
+this rise rate would be informative independently of Problem~\#243.
+
+\subsection*{Formalisation targets}
+
+\paragraph{Erd\H{o}s--Straus.}
+Formalise Theorem~3 of~\cite{erdosstraus1964}, with its prefix-LCM quotient
+and correctly indexed growth factor, under the published analytic hypotheses.
+
+\paragraph{Duverney.}
+Formalise Corollary~3.2 of~\cite{duverney2001}, including its signed
+numerators and absolute convergence hypothesis, and then recover the
+all-positive specialisation used here.  These are useful verification
+projects, but neither is an additional open mathematical problem.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}

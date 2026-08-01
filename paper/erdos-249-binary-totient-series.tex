@@ -27,6 +27,7 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+\renewcommand{\commit}{599f7e50a15b288f27f9b57ece16fdd396cb6d76}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -37,6 +38,7 @@
 \newcommand{\EB}{E}
 \newcommand{\Aw}{A}
 \newcommand{\Ker}{\mathcal K}
+\newtheorem{equivform}[theorem]{Equivalent formulation}
 
 % Status tag from the claim taxonomy, printed on every numbered result.
 \newcommand{\stag}[1]{{\normalfont\footnotesize\textsc{[#1]}}}
@@ -186,7 +188,7 @@ is an integer sequence $u$ satisfying
   \qquad
   \frac{u(N)}{2^N}\longrightarrow0
 \]
-(\mword{Erdos249257/GenericTailOrbitRigidity.lean}{66}{IsTemperedBinaryOrbit}{definition});
+(\mword{Erdos249257/GenericTailOrbitRigidity.lean}{67}{IsTemperedBinaryOrbit}{definition});
 for $c=\ph$ such a pair $(v,u)$ with $v\ge1$ exists exactly when $\Stot$ is
 rational (Section~\ref{sec:carry-rank}).
 
@@ -325,7 +327,7 @@ input.
 \mword{Erdos249257/LcmConeFlatness.lean}{399}{irrational_totient_series_iff_pointwise_certificates}{pointwise},
 \mword{Erdos249257/LcmConeFlatness.lean}{412}{irrational_totient_series_iff_certificate_supply}{cofinal at each shift},
 \mword{Erdos249257/LcmConeFlatness.lean}{426}{irrational_totient_series_iff_lcm_diagonal_certificate_supply}{$\lcm$ diagonal},
-\mword{Erdos249257/PivotAntiReconstruction.lean}{1744}{dtwWindowSeparatedPairs_iff_irrational_totient_series}{window-separated pairs}.}
+\mword{Erdos249257/PivotAntiReconstruction.lean}{1775}{dtwWindowSeparatedPairs_iff_irrational_totient_series}{window-separated pairs}.}
 
 \item\label{res:supply} \stag{conditional reduction}
 \textbf{A denominator-indexed gap-certificate hypothesis.}  Suppose that for
@@ -545,7 +547,7 @@ rational exactly when an integral scaled-tail sequence exists, that is, an
 integer sequence $u$ with
 $u(N+1)=2u(N)-v\,c(N+1)$ for every $N$ and $u(N)/2^N\to0$, for some integer
 $v\ge1$
-(\mword{Erdos249257/GenericTailOrbitRigidity.lean}{425}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{checked}).
+(\mword{Erdos249257/GenericTailOrbitRigidity.lean}{426}{binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit}{checked}).
 Transporting \ref{res:rank} through that recurrence gives \ref{res:carryrank}.
 The complementary finite-rank upper bound, which would make this a proof of
 irrationality, is not available.
@@ -759,47 +761,188 @@ recall from Section~\ref{sec:results} the tail
 $R_N=\sum_{m\ge1}\ph(N+m)/2^{m}$, which differs from $2^N\Stot$ by an integer
 (\mword{Erdos249257/TotientTailPeriodKiller.lean}{57}{totientTail}{definition}).
 
-\begin{problem}[cofinal diagonal escape]\label{prob:diagonal}
-For every $t_0$ there is a $t\ge t_0$ with $R_{2H_t}-R_{H_t}\notin\Z$.
-\end{problem}
+\subsection{Exact equivalent formulations}
 
-\noindent By \ref{res:equivalences}, Problem~\ref{prob:diagonal} is equivalent
-to irrationality of $\Stot$.  A finite list of successful certificates
-establishes the predicate only on its tested scales; it does not establish the
-quantified statement for arbitrarily large $t$.  In the opposite direction,
-one pair $h>0$, $N$ with $R_{N+h}-R_N\in\Z$ already makes $\Stot$ rational
+\begin{equivform}[lcm-diagonal escape]\label{prob:diagonal}
+For every $t_0$ there is a $t\ge t_0$ with $R_{2H_t}-R_{H_t}\notin\Z$.
+\end{equivform}
+
+\noindent By \ref{res:equivalences}, formulation~\ref{prob:diagonal} is
+equivalent to irrationality of $\Stot$.  It identifies an exact decidable
+witness family, but is not claimed to reduce the difficulty of Erd\H{o}s
+\#249.  A finite list of successful certificates establishes the predicate
+only on its tested scales.  Conversely, one pair $h>0$, $N$ with
+$R_{N+h}-R_N\in\Z$ already makes $\Stot$ rational
 (\mword{Erdos249257/LcmConeFlatness.lean}{357}{not_irrational_of_tail_diff_mem_int}{checked}).
 
-The certificate of Section~\ref{sec:results} is decidable at each $t$, and has
-been kernel-checked to fire at the $28$ scales
-(\mword{Erdos249257/DiagonalPincerCertificatesT64.lean}{1933}{diagonalPincerCertificateScalesThroughT64}{listed})
-lying between $t=1$ and $t=64$
-(\mword{Erdos249257/DiagonalPincerCertificatesT64.lean}{1967}{certifiedKill_diagonal_all_imported_through_t64}{checked}).
-Later work in the repository extends the checked band to every $t\le82$; the
-module proving it postdates this note's pinned snapshot and so is not linked
-here, and the claim registry records the wider band.  The theorem through
-$t=82$ supplies no instance at $t=83$ and therefore does not discharge the
-cofinal quantifier.
+The certificate is decidable at each $t$, and is kernel-checked at the $28$
+listed scales between $t=1$ and $t=64$
+(\mword{Erdos249257/DiagonalPincerCertificatesT64.lean}{1933}{diagonalPincerCertificateScalesThroughT64}{list},
+\mword{Erdos249257/DiagonalPincerCertificatesT64.lean}{1967}{certifiedKill_diagonal_all_imported_through_t64}{verification}).
+Later work extends the checked band to every $t\le82$; that module postdates
+this note's pinned snapshot, so the claim registry, rather than a source link
+here, records the wider band.  The theorem through $t=82$ supplies no instance
+at $t=83$ and does not discharge the cofinal quantifier.
 
-\paragraph{A first-harmonic sufficient condition.}
-A constant-saving first-harmonic bound on one dyadic block, or
-on any nonempty finite set of indices, already forces a certificate
-(\mword{Erdos249257/FirstHarmonicGap.lean}{104}{exists_certifiedKill_of_first_harmonic_gap_subset}{checked}).
-The block sum in question decomposes exactly into four named terms ---
-a centred supplier-fibre correlation, a fibre-mean contribution, a bad-set
-contribution and a non-supplier contribution
-(\mword{Erdos249257/FirstHarmonicPivot.lean}{342}{windowFirstExp_sum_eq_pivot_decomposition}{checked})
---- and meeting four explicit numerical bounds on those terms cofinally
-already gives irrationality
-(\mword{Erdos249257/FirstHarmonicPivot.lean}{405}{irrational_totient_series_of_pivotResidualDecorrelation}{checked}).
-Thus the sufficient condition is to beat four stated constants in an exact
-decomposition.
+The cyclotomic form exposes more arithmetic structure.  Write
+$C(n)=|\Phi_n(2)|$.
 
-A proof of Problem~\ref{prob:diagonal} gives irrationality of $\Stot$ by
+\begin{equivform}[cyclotomic-anchored phase escape]\label{prob:cyclotomic}
+For every $h\ge1$ and every $N_0$, there exist primes $q,p$ and $L\in\N$ such
+that
+\[
+ \gcd(p,hq)=1,\qquad p\mid C(hq),\qquad hq\mid p-1,
+ \qquad p-1\ge N_0,
+\]
+and $(hq,p-1,L)$ is a finite tail-difference certificate.
+\end{equivform}
+
+\noindent This is
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{3042}{CyclotomicAnchoredKillSupply}{CyclotomicAnchoredKillSupply}.
+For the binary layers, clean anchors satisfying every condition before the
+certificate are already supplied, and
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{3138}{binaryCyclotomicAnchoredKillSupply_iff_irrational}{the checked equivalence}
+identifies formulation~\ref{prob:cyclotomic} with irrationality of $\Stot$.
+The unknown is phase escape of the totient discrepancy modulo $2^L$, not
+large prime divisors or multiplicative order.  The checked $p=331$ instances
+are finite models of this exact predicate; unbounded support alone does not
+imply it.
+
+\subsection{Stronger sufficient producer problems}
+
+\begin{problem}[full-depth period-multiple escape]\label{prob:fulldepth}
+For every $d\ge1$ and every $N\in\N$, is there a $t\ge1$ such that
+$(td,N,td)$ is a finite tail-difference certificate?
+\end{problem}
+
+\noindent This is the depth-locked predicate
+\lword{Erdos249/PeriodMultipleEscape.lean}{162}{ApFullDepthEscape}{ApFullDepthEscape}.
+It is stronger than the exact period-multiple characterisation because the
+certificate depth is forced to equal the period.  A positive answer proves
+irrationality through
+\lword{Erdos249/PeriodMultipleEscape.lean}{171}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
+a negative answer eliminates this route only.
+
+\begin{problem}[first-harmonic anti-concentration on supplier fibres]
+\label{prob:firstharmonic}
+For each $h\ge1$, do there exist $s\ge1$ and $0<\eta<1$ such that, for every
+$X_0$, there are $X,L$ with
+\[
+ \max(X_0,1)\le X,\qquad h\le L-s,\qquad
+ 16(2X+h+L+2)\le2^L,
+\]
+for which the four bounds below hold?
+\end{problem}
+
+To make the question self-contained, put
+\[
+ \omega_N=\exp\!\left(2\pi i\,
+   \frac{D_{h,N,L}\bmod 2^L}{2^L}\right),\qquad X\le N<2X.
+\]
+At the pivot argument $N+L-s+1$, call $N$ a supplier when this integer factors
+as $mp$, where $p$ is its largest prime factor,
+$0<m\le\sqrt X/2$, and $p>2\sqrt X$.  Suppliers are good when
+$\eta m\le\ph(m)$ and bad otherwise; non-suppliers form the remaining set.
+For a supplier write $z_N$ for its explicit totient pivot phase,
+$w_N=\omega_N/z_N$, and $\bar z_m$ for the mean of $z_N$ on the fibre with
+cofactor $m$.  Define
+\[
+\begin{aligned}
+ \mathcal C&=\sum_{N\ {\mathrm{good}}}w_N(z_N-\bar z_m),&
+ \mathcal M&=\sum_{N\ {\mathrm{good}}}w_N\bar z_m,\\
+ \mathcal B&=\sum_{N\ {\mathrm{bad}}}\omega_N,&
+ \mathcal U&=\sum_{N\ {\mathrm{nonsupplier}}}\omega_N.
+\end{aligned}
+\]
+The exact identity is
+$\sum_{X\le N<2X}\omega_N=\mathcal C+\mathcal M+\mathcal B+\mathcal U$, and
+Problem~\ref{prob:firstharmonic} asks precisely for
+\[
+ \operatorname{Re}\mathcal C\le\frac{14}{25}X,\qquad
+ |\mathcal M|\le\frac1{100}X,\qquad
+ |\mathcal B|\le\frac1{100}X,\qquad
+ |\mathcal U|\le\frac8{25}X.
+\]
+The decomposition is
+\mword{Erdos249257/FirstHarmonicPivot.lean}{342}{windowFirstExp_sum_eq_pivot_decomposition}{checked},
+and the four budgets imply irrationality by
+\mword{Erdos249257/FirstHarmonicPivot.lean}{405}{irrational_totient_series_of_pivotResidualDecorrelation}{the checked consumer}.
+An obstruction showing that available first- and second-moment information
+cannot force this modulo-$2^L$ small-ball estimate would also decisively close
+the present harmonic route.
+
+\subsection{Structural and Diophantine routes}
+
+\begin{problem}[totient carry-rank compression]\label{prob:carryrank}
+Suppose $v\ge1$ and $u:\N\to\Z$ satisfy
+\[
+ u(N+1)=2u(N)-v\ph(N+1),\qquad \frac{u(N)}{2^N}\longrightarrow0.
+\]
+Must the span of the level-$e$ dyadic sections of $u$ have dimension less
+than $2^e-1$ for some $e$?
+\end{problem}
+
+\noindent Rationality of $\Stot$ would produce exactly such an integral
+tempered orbit, while the checked transport theorem forces its rank to be at
+least $2^e-1$ at every level.  Thus a positive answer proves irrationality.
+A negative answer should ideally construct a control recurrence with the same
+integrality and decay architecture and near-maximal dyadic rank; infinite
+dimension of the totient $2$-kernel alone is not enough.
+
+For a separate denominator-compression route, define the M\"obius--Mersenne
+ladder
+\[
+ \Theta_r=\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^r},
+ \qquad \Theta_2=\Stot-\frac12.
+\]
+The positive rank-one family has already been excluded at a quantitative
+scale: every admissible monomial quotient, and every positive finite average
+of them, exceeds $\Theta_2$ by more than $1/480$
+(\lword{Erdos249/RankOneSubrankObstruction.lean}{238}{rankOneSubrankQuotient_sub_theta_two_gt}{rank-one gap},
+\lword{Erdos249/RankOneSubrankObstruction.lean}{300}{positive_direct_sum_sub_theta_two_gt}{positive-sum gap}).
+
+\begin{problem}[genuinely coupled denominator compression]\label{prob:hankel}
+Construct integers $P_n$ and $Q_n>0$ from a genuinely off-diagonal,
+vector-valued, or signed-cancellation Hankel--Schur--Pad\'e kernel such that
+\[
+ 0<Q_n\left|\Theta_2-\frac{P_n}{Q_n}\right|\longrightarrow0.
+\]
+Alternatively, prove a structural no-go theorem for a clearly defined larger
+class of bounded-width coupled kernels.
+\end{problem}
+
+\noindent Ordinary convergence of rational approximants is insufficient; the
+scaled error is the Diophantine quantity.  The words ``genuinely coupled''
+exclude the positive rank-one and positive direct-sum mechanisms already
+separated from $\Theta_2$ by the uniform gap.
+
+\subsection{Independent extension}
+
+\begin{problem}[odd-prime totient kernels]\label{prob:oddprime}
+For a fixed odd prime $\ell$, determine for every $e$ the exact dimension
+\[
+ \dim_{\Q}\operatorname{span}_{\Q}
+ \{\,n\mapsto\ph(\ell^j n+r):0\le j\le e,
+       \ 0\le r<\ell^j\,\},
+\]
+and give an explicit basis and a complete normal form for all rational
+relations.  The first concrete case is $\ell=3$.
+\end{problem}
+
+\begin{remark}[excluded generic mechanisms]
+Unbounded prime support, exact multiplicative order, natural-boundary
+information, ordinary Hankel nonvanishing, and positive rank-one averaging do
+not supply the missing binary phase or denominator compression.  The finite
+Euler-factor and $2\times2$ mixed-difference identities of
+Section~\ref{sec:programmes} are tools rather than open endpoints; no
+growing-level Diophantine conclusion is claimed for them here.
+\end{remark}
+
+A proof of formulation~\ref{prob:diagonal} gives irrationality of $\Stot$ by
 \ref{res:equivalences}.  Its negation settles \#249 in the opposite direction:
 it supplies a positive-shift integral tail difference, which forces
-rationality.  By contrast, failure of the first-harmonic bounds would rule out
-only this sufficient criterion.
+rationality.  By contrast, failure of the sufficient producer bounds would
+rule out only their respective routes.
 
 \paragraph{The independent denominator exclusion.}
 The constant $7.96\times10^{34}$ of \ref{res:denominator} is the classical
@@ -812,17 +955,17 @@ Section~\ref{sec:open}.
 
 \begin{enumerate}
 \item Irrationality of $\Stot$ (\ref{res:open}).  No proof is claimed.
-\item The reformulations of \ref{res:equivalences} convert irrationality
-  into the existence of an unbounded family of finite tail-difference
-  certificates.  Finite instances are checked --- the $28$ diagonal scales of
-  Section~\ref{sec:frontier} --- and the unbounded family is not.
-  The equivalence fixes the exact missing quantifier but does not make that
-  quantifier easier to prove.  \ref{res:denominator} is a finite instance of a
-  \emph{different} family, the gap certificates of
-  \ref{res:supply}, which reach irrationality by a one-way implication; the two
-  families should not be counted together.
-\item The four pivot bounds of Section~\ref{sec:frontier}, and the
-  prime-orbit gap they refine, are unproved.
+\item The lcm-diagonal and clean cyclotomic-anchor statements are exact
+  equivalent formulations.  Their finite certificates are checked instances,
+  not evidence for the missing cofinal quantifier.
+\item Full-depth period-multiple escape and the four first-harmonic pivot
+  bounds are stronger sufficient producers.  Failure of either would refute
+  only that route.
+\item Carry-rank compression and genuinely coupled denominator compression
+  are separate contradiction targets.  No required upper bound or coupled
+  approximant family is proved.
+\item The odd-prime kernel question is independent of the irrationality
+  problem and carries no claimed answer or prior-art verdict.
 \end{enumerate}
 
 \noindent The correlation source that fits the normalised totient most

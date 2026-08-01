@@ -73,9 +73,9 @@ The hypothesis is asymptotic and the conclusion is exact, so the argument must c
 | Coprime-modulus barrier | Proved here | Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">16</a>. |
 | Bounded negative part | Excluded here; conditional | Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">20</a>; see its hypotheses. |
 | Finite normalised negative mass | Excluded here; conditional | Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a>, Section <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">9</a>; normalised vanishing remains an input. |
-| Factorial residue reduction | Proved here; superseded for its original purpose | Theorem <a href="#res:residue" data-reference-type="ref" data-reference="res:residue">27</a>, Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">12</a>. |
+| Factorial residue reduction | Proved here; superseded for its original purpose | Theorem <a href="#res:residue" data-reference-type="ref" data-reference="res:residue">29</a>, Appendix <a href="#app:residue" data-reference-type="ref" data-reference="app:residue">12</a>. |
 | Strict centring, normalised vanishing | Assumed here; supplied by prior art | Section <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a>; derived in \[koizumi2025\], see Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a>. |
-| Unbounded, divergent-mass negative excursions | Open | Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a>; the surviving obstruction. |
+| Unbounded, divergent-mass negative excursions | Surviving frontier profile | Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">10</a>; consequences any counterexample must satisfy, not a separate open problem. |
 | Erdős–Straus criterion; Duverney | Proved elsewhere | Cited, not formalised; the Erdős–Straus hypothesis is implied by that of Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">10</a>. |
 | State system equals reciprocal tails | Not formalised | Section <a href="#sec:state" data-reference-type="ref" data-reference="sec:state">2</a>. |
 
@@ -511,7 +511,7 @@ The product is bounded because $`\sum\delta_n`$ converges. Choose an integer $`M
 
 The product argument is the [summable relative growth](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/SparseResetRecovery.lean#L90); its specialisation to negative mass is the [vanishing from finite negative mass](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/SparseResetRecovery.lean#L155), and the statement giving the recurrence directly is the [Sylvester recurrence from summable negative mass](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/SparseResetRecovery.lean#L175). This is a checked implication about the state system, not a derivation of normalised vanishing from Problem #243. Normalised vanishing is still an input: it is what converts the bound on $`C`$ into a bound on $`|E_n|`$, and nothing here derives it from the growth condition of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
 
-The transfer of the previous section applies here as well. On the canonical orbit of Corollary 3 of \[koizumi2025, p. 9\] the recurrence $`C_{n+1}=C_n-E_n`$ holds with $`C_n>0`$ by Lemma 4  \[koizumi2025, pp. 11–12\], and normalised vanishing is the vanishing of the gap sequence, so Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a> is a conditional theorem about Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> whose sole remaining hypothesis is summability of $`\sum_n(-E_n)_+/C_n`$. That hypothesis is not supplied there, and is the content of Problem <a href="#res:masshyp" data-reference-type="ref" data-reference="res:masshyp">25</a> below.
+The transfer of the previous section applies here as well. On the canonical orbit of Corollary 3 of \[koizumi2025, p. 9\] the recurrence $`C_{n+1}=C_n-E_n`$ holds with $`C_n>0`$ by Lemma 4  \[koizumi2025, pp. 11–12\], and normalised vanishing is the vanishing of the gap sequence, so Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a> is a conditional theorem about Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> whose sole remaining hypothesis is summability of $`\sum_n(-E_n)_+/C_n`$. That hypothesis is not supplied there, and is the content of Problem <a href="#res:masshyp" data-reference-type="ref" data-reference="res:masshyp">27</a> below.
 
 <div id="ex:mass" class="example">
 
@@ -529,17 +529,34 @@ for every $`N`$. Normalised vanishing at $`K=272`$ then gives $`272|E_n|<C_n<272
 
 Problem #243 is open. The negative case has narrowed, and it is worth being precise about what is left.
 
-By Theorem <a href="#res:absorb" data-reference-type="ref" data-reference="res:absorb">9</a> a counterexample has $`E_n\ne0`$ for every large $`n`$. By Theorem <a href="#res:descent" data-reference-type="ref" data-reference="res:descent">10</a> it cannot have $`E`$ eventually nonnegative. By Theorems <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">12</a> and <a href="#res:periodic" data-reference-type="ref" data-reference="res:periodic">13</a> its negative magnitudes are neither eventually constant nor eventually periodic. By Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">20</a>, if the analytic hypotheses (4) and (6) hold, the negative part cannot be bounded either, and by Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a>, under normalised vanishing, its normalised negative mass cannot be finite. What remains is the following.
+<div id="res:excursions" class="proposition">
 
-<div id="res:excursions" class="problem">
-
-**Problem 24** (unbounded divergent-mass negative excursions). Exclude, or construct, an exact natural orbit $`(a,D,C)`$ with $`a_n>1`$ and $`C_n>0`$, whose multipliers satisfy $`\lim_n a_{n+1}/a_n^{2}=1`$ and whose centred state satisfies eventual strict centring and normalised vanishing, and which is negative infinitely often with magnitudes unbounded along that cofinal set and
+**Proposition 24** (frontier profile for a counterexample). *For the canonical integer state attached to any counterexample to Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>,
 ``` math
-\sum_n\frac{(-E_n)_+}{C_n}=\infty .
+E_n\ne0\quad\hbox{eventually},\qquad
+ \frac{|E_n|}{C_n}\longrightarrow0,
 ```
-Every argument in Sections <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>–<a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a> uses some finiteness hypothesis: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part. Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a> uses a finite total multiplicative growth as well. An excursion of the kind described has none of these.
+and
+``` math
+\limsup_{\substack{n\to\infty\\E_n<0}}(-E_n)=\infty,
+ \qquad
+ \sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}=\infty .
+```
+In particular, negative indices occur infinitely often. Thus the remaining regime consists of globally coherent, unbounded negative excursions with divergent normalised negative mass.*
 
 </div>
+
+<div class="proof">
+
+*Proof.* Koizumi’s canonical-tail transfer gives strict centring and normalised vanishing after a finite shift. Absorption then makes $`E_n\ne0`$ eventually, since eventual zero would give the Sylvester recurrence. Descent excludes an eventually nonnegative state. Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">20</a> excludes a bounded negative part, and Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a> excludes finite normalised negative mass. These statements are unchanged by deleting a finite prefix. ◻
+
+</div>
+
+Put
+``` math
+\delta_n:=\frac{(-E_n)_+}{C_n}.
+```
+Every argument in Sections <a href="#sec:constant" data-reference-type="ref" data-reference="sec:constant">5</a>–<a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">8</a> uses a finiteness hypothesis: a fixed set of prime divisors, a fixed period, or a fixed bound on the negative part. Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a> uses $`\sum_n\delta_n<\infty`$. Proposition <a href="#res:excursions" data-reference-type="ref" data-reference="res:excursions">24</a> records that a counterexample has none of them; it is a frontier statement, not an additional problem equivalent to the original one.
 
 <div class="remark">
 
@@ -556,16 +573,70 @@ so the negative magnitudes $`2^{n}`$ are unbounded and $`\sum_n(-E_n)_+/C_n`$ di
 
 </div>
 
-<div id="res:masshyp" class="problem">
+<a id="global-height-and-old-factor-overlap"></a>
 
-**Problem 25** (summable normalised negative mass). Prove from the rapid-growth and rationality hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> that $`\sum_n(-E_n)_+/C_n<\infty`$, or prove any uniform bound on the partial products $`\prod_{n<N}(1+(-E_n)_+/C_n)`$; a bound of the form
+## Global height and old-factor overlap
+
+The main arithmetic gap is global. Define the cumulative digit LCM and its overlap quotient by
 ``` math
-\sum_{n=N}^{M}\frac{(-E_n)_+}{C_n}\le B
- \quad\text{for all }M\ge N
+L_0=D_0,\qquad L_{n+1}=\operatorname{lcm}(L_n,a_n),\qquad M_n=\frac{D_n}{L_n}.
 ```
-with explicit hypotheses would suffice. A disproof should exhibit a sequence satisfying the hypotheses of Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> whose exact state orbit has divergent normalised negative mass; an orbit satisfying normalised vanishing alone is not enough, since normalised vanishing is strictly weaker than those hypotheses, and neither is a list of locally admissible defects, since local admissibility at each index does not produce a global orbit.
+Since $`D_n=D_0\prod_{j<n}a_j`$, the quotient is integral and $`M_nL_n=D_n`$. It records the multiplicity lost when the full product scale is compressed to an LCM.
+
+<div id="res:lcmheight" class="problem">
+
+**Problem 25** (global overlap-height growth). For every nonterminal canonical orbit satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, must
+``` math
+\limsup_{n\to\infty}\frac{\log M_n}{n}>0?
+```
+Equivalently, must there be a $`K\ge1`$ for which
+``` math
+2^n\le M_n^K
+```
+at infinitely many indices?
 
 </div>
+
+The two displayed formulations are equivalent up to changing the positive constant; the second is not a weaker target. A positive answer is not yet, by itself, a proof of Problem #243: the missing bridge is a comparison of $`M_n`$ with a subexponential state or exact cancellation-payment scale. No assertion such as $`M_n\mid C_n`$ or $`M_n\le C_n`$ is used here. Proving such a bridge together with Problem <a href="#res:lcmheight" data-reference-type="ref" data-reference="res:lcmheight">25</a> would collide with the subexponential tail-height budget forced by normalised vanishing.
+
+There is also a more local-looking question whose content is nevertheless the entire prefix. Put $`A_n=\prod_{j<n}a_j`$, so $`D_n=D_0A_n`$. From
+``` math
+D_0A_n=(a_n-1)C_n+E_n
+```
+one immediately obtains
+``` math
+\gcd(A_n,a_n-1)\mid E_n.
+```
+The checked [tail-height estimate](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2076) and normalised vanishing make $`|E_n|`$ subexponential in $`n`$.
+
+<div id="res:prefixgcd" class="problem">
+
+**Problem 26** (old-factor overlap). In every nonterminal canonical orbit satisfying Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, is
+``` math
+\limsup_{n\to\infty}
+ \frac{\log\gcd(A_n,a_n-1)}{n}>0?
+```
+Equivalently, do there exist $`\eta>0`$ and infinitely many $`n`$ such that $`\gcd(A_n,a_n-1)\ge e^{\eta n}`$?
+
+</div>
+
+A positive answer contradicts the displayed divisibility and the subexponential error budget. Arbitrarily long locally admissible blocks do not answer this question: the gcd uses the complete prefix.
+
+<a id="the-direct-analytic-question"></a>
+
+## The direct analytic question
+
+<div id="res:masshyp" class="problem">
+
+**Problem 27** (summability from rationality). Let $`(a_n)`$ satisfy Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>, and let $`(D_n,C_n,E_n)`$ be its canonical integer state. Must
+``` math
+\sum_{n=0}^{\infty}\delta_n
+ =\sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}<\infty ?
+```
+
+</div>
+
+An affirmative answer closes Problem #243 by Theorem <a href="#res:mass" data-reference-type="ref" data-reference="res:mass">22</a>. Since $`\delta_n\to0`$, convergence is equivalently expressible as boundedness of the partial products $`\prod_{n<N}(1+\delta_n)`$; that is an explanatory reformulation, not a second success criterion. A negative answer must be a sequence satisfying the full growth and rationality hypotheses, not merely a locally admissible state orbit.
 
 <div class="remark">
 
@@ -573,11 +644,36 @@ with explicit hypotheses would suffice. A disproof should exhibit a sequence sat
 
 </div>
 
-<div class="problem">
+<a id="a-barrier-extension"></a>
 
-**Problem 26** (the two published criteria). Formalise the criterion of Erdős and Straus stated in Section <a href="#sec:problem" data-reference-type="ref" data-reference="sec:problem">1</a>, and Duverney’s conditional characterisation, under explicit analytic hypotheses. Both are cited here and neither is formalised; each reaches the original problem under analytic hypotheses not assumed in this note.
+## A barrier extension
+
+<div id="res:variablerise" class="problem">
+
+**Problem 28** (variable-rise CRT barrier). Determine the weakest growth condition on the positive increments of $`u_n`$ under which an unbounded integer sequence cannot permanently avoid infinitely many pairwise-coprime old moduli as in Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">16</a>. In particular, does the conclusion remain valid under the candidate condition
+``` math
+(u_{n+1}-u_n)_+=o\bigl(\log\log(u_n+3)\bigr)?
+```
 
 </div>
+
+The displayed rate is a proposed threshold, not a proved sharp boundary. Either an extension of the CRT barrier or a counterexample with this rise rate would be informative independently of Problem #243.
+
+<a id="formalisation-targets"></a>
+
+## Formalisation targets
+
+<a id="erdősstraus."></a>
+
+#### Erdős–Straus.
+
+Formalise Theorem 3 of \[erdosstraus1964\], with its prefix-LCM quotient and correctly indexed growth factor, under the published analytic hypotheses.
+
+<a id="duverney."></a>
+
+#### Duverney.
+
+Formalise Corollary 3.2 of \[duverney2001\], including its signed numerators and absolute convergence hypothesis, and then recover the all-positive specialisation used here. These are useful verification projects, but neither is an additional open mathematical problem.
 
 <a id="statements-and-declarations"></a>
 
@@ -625,7 +721,7 @@ the [forced numerator](https://github.com/wcook04/plectis-lean-erdos249-257/blob
 
 <div id="res:residue" class="theorem">
 
-**Theorem 27** (factorial residue reduction). *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
+**Theorem 29** (factorial residue reduction). *For all $`h`$ and all integers $`a\equiv b \pmod{(h+1)!}`$, the orbit from $`a`$ survives $`h`$ forced updates exactly when the orbit from $`b`$ does.*
 
 </div>
 
@@ -637,7 +733,7 @@ the [forced numerator](https://github.com/wcook04/plectis-lean-erdos249-257/blob
 
 Formalised as the [factorial residue reduction](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L134), over the [shrinking-modulus transport](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L97), the [polynomial congruence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L26), and the [exact-division cancellation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L41); the modulus identifications are the [ascending-factorial form](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L59) and the [factorial value at the initial index](https://github.com/wcook04/plectis-lean-erdos249-257/blob/64f33f3a134d3414c18717d37ab8201e1dd1c98a/ErdosProblems/Erdos243/FiniteHorizonResidue.lean#L69).
 
-At $`h=1`$ the modulus is $`2!=2`$, and surviving one update means $`2\mid a^{2}-2a+3`$, which holds exactly for odd $`a`$: for instance $`\operatorname{num}(0,3)=6`$ but $`\operatorname{num}(0,4)=11`$. So one step of survival is decided by the parity of $`a`$ alone, which is Theorem <a href="#res:residue" data-reference-type="ref" data-reference="res:residue">27</a> at its smallest nontrivial horizon.
+At $`h=1`$ the modulus is $`2!=2`$, and surviving one update means $`2\mid a^{2}-2a+3`$, which holds exactly for odd $`a`$: for instance $`\operatorname{num}(0,3)=6`$ but $`\operatorname{num}(0,4)=11`$. So one step of survival is decided by the parity of $`a`$ alone, which is Theorem <a href="#res:residue" data-reference-type="ref" data-reference="res:residue">29</a> at its smallest nontrivial horizon.
 
 The search this supported is superseded. Running it over initial states below $`5000`$ produced forced prefixes of length $`17`$ and no longer, which was evidence and not a proof; Theorem <a href="#res:constant" data-reference-type="ref" data-reference="res:constant">12</a> now excludes the constant-negative case outright, for every seed and at every scale. The reduction is retained because it is exact, and because the shrinking-modulus technique transfers to any forced orbit whose step is a polynomial division.
 

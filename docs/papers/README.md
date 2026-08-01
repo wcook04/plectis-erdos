@@ -23,7 +23,7 @@ The paper's own reading map sends a first pass to [The two exact reductions](ful
 
 **Excluding the Bounded Negative Part**
 
-[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex) · 21 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
+[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex) · 27 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Excluding a bounded negative part](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [Complements and further questions](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
 
@@ -31,7 +31,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction](f
 
 **A Basis for the 2-Kernel of Euler’s Totient**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex) · 21 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../erdos-249-binary-totient-series.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex) · 24 sections · `erdos-249-binary-totient-series` · native to this repository
 
 This paper states no reading route. Its evidence boundary is in [Introduction and main results](full-text/erdos-249-binary-totient-series.md#sec:results), [Logical status and analytic input](full-text/erdos-249-binary-totient-series.md#sec:open).
 

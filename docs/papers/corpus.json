@@ -1027,10 +1027,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:d0cd974c36da76273172a136cb9236279ca7ab016a9b139cee2ac20c74c56e30",
+      "source_sha256": "sha256:8e6c463443b567b206ed4adf407152c25653068ef14c80cc865cf99ac098e32c",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "section_count": 21,
+      "section_count": 27,
       "sections": [
         {
           "level": 1,
@@ -1118,51 +1118,87 @@
         },
         {
           "level": 2,
+          "id": "global-height-and-old-factor-overlap",
+          "title": "Global height and old-factor overlap",
+          "line": 576
+        },
+        {
+          "level": 2,
+          "id": "the-direct-analytic-question",
+          "title": "The direct analytic question",
+          "line": 625
+        },
+        {
+          "level": 2,
+          "id": "a-barrier-extension",
+          "title": "A barrier extension",
+          "line": 647
+        },
+        {
+          "level": 2,
+          "id": "formalisation-targets",
+          "title": "Formalisation targets",
+          "line": 662
+        },
+        {
+          "level": 4,
+          "id": "erd\u0151sstraus.",
+          "title": "Erd\u0151s\u2013Straus.",
+          "line": 666
+        },
+        {
+          "level": 4,
+          "id": "duverney.",
+          "title": "Duverney.",
+          "line": 672
+        },
+        {
+          "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 582
+          "line": 678
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 586
+          "line": 682
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 592
+          "line": 688
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 598
+          "line": 694
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 604
+          "line": 700
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 610
+          "line": 706
         },
         {
           "level": 1,
           "id": "app:residue",
           "title": "A factorial residue reduction for forced orbits",
-          "line": 616
+          "line": 712
         }
       ],
-      "citations_rendered": 29,
+      "citations_rendered": 31,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:1c94d4b7af4c672ef23a2a9edad95a3d43238180737903d9f91e6ef6e7864025",
-      "pdf_byte_count": 146086,
+      "pdf_sha256": "sha256:46be8a022c1bcae6d1317318b788816cecbc422b791a995c46d6e9a45b5c6d64",
+      "pdf_byte_count": 152908,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1191,7 +1227,7 @@
       "title": "A Basis for the 2-Kernel of Euler\u2019s Totient",
       "title_source": "manuscript",
       "question_this_paper_answers": "What is proved about the dyadic sections of Euler's totient and the finite denominator bound, and what still blocks Erd\u0151s #249?",
-      "owns": "problem-specific mathematical exposition for Erd\u0151s #249: the basis theorem, denominator exclusion, method limits, and open edge",
+      "owns": "problem-specific mathematical exposition for Erd\u0151s #249: the exact finite-level rank, infinite-dimensionality consequence, denominator exclusion, method limits, and open edge",
       "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #249, which remains open",
       "publication_state": "active",
       "relation_to_this_repository": "native",
@@ -1200,10 +1236,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:4bd77f77e85cbdee774a71aed70b886ec71a900c100f958481868c2465c9172a",
+      "source_sha256": "sha256:f63a57187147eb2fe22059692376d7e4510b5361b07631bec42f06d71683a61c",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-249-binary-totient-series.tex",
-      "section_count": 21,
+      "section_count": 24,
       "sections": [
         {
           "level": 1,
@@ -1302,44 +1338,62 @@
           "line": 290
         },
         {
-          "level": 4,
-          "id": "a-first-harmonic-sufficient-condition.",
-          "title": "A first-harmonic sufficient condition.",
-          "line": 306
+          "level": 2,
+          "id": "exact-equivalent-formulations",
+          "title": "Exact equivalent formulations",
+          "line": 296
+        },
+        {
+          "level": 2,
+          "id": "stronger-sufficient-producer-problems",
+          "title": "Stronger sufficient producer problems",
+          "line": 325
+        },
+        {
+          "level": 2,
+          "id": "structural-and-diophantine-routes",
+          "title": "Structural and Diophantine routes",
+          "line": 371
+        },
+        {
+          "level": 2,
+          "id": "independent-extension",
+          "title": "Independent extension",
+          "line": 406
         },
         {
           "level": 4,
           "id": "the-independent-denominator-exclusion.",
           "title": "The independent denominator exclusion.",
-          "line": 314
+          "line": 430
         },
         {
           "level": 2,
           "id": "sec:open",
           "title": "Logical status and analytic input",
-          "line": 320
+          "line": 436
         },
         {
           "level": 1,
           "id": "formal-source-notes",
           "title": "Formal source notes",
-          "line": 340
+          "line": 460
         },
         {
           "level": 4,
           "id": "registry-coverage.",
           "title": "Registry coverage.",
-          "line": 344
+          "line": 464
         }
       ],
       "citations_rendered": 19,
       "fallback_title_drift": {
-        "registry_fallback": "A Basis for the Dyadic Sections of Euler's Totient",
+        "registry_fallback": "A Basis for the 2-Kernel of Euler's Totient",
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:330217a80db685b5f686c3c011b747933319636b47ce80f5d95fc7f5044f97fc",
-      "pdf_byte_count": 123262,
+      "pdf_sha256": "sha256:3d32a9ce3387a331bc50108580d7845860c6f4539f09eb1625cfea23c792db8c",
+      "pdf_byte_count": 134130,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1357,7 +1411,7 @@
           {
             "id": "sec:open",
             "title": "Logical status and analytic input",
-            "line": 320
+            "line": 436
           }
         ],
         "unresolved_count": 1
@@ -1368,7 +1422,7 @@
       "title": "The Binary Totient Series",
       "title_source": "manuscript",
       "question_this_paper_answers": "What has been tried on Erd\u0151s #249, which routes are closed, and what exact cofinal obligations remain?",
-      "owns": "the complete problem-specific reasoning record for Erd\u0151s #249: checked premises, finite certificates, closed routes, surviving obligations, and their exact evidence bands",
+      "owns": "a claim-bounded problem-specific reasoning surface for Erd\u0151s #249: selected checked premises, finite certificates, closed routes, surviving obligations, and their exact evidence bands",
       "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #249, which remains open",
       "publication_state": "active",
       "relation_to_this_repository": "native",
@@ -2308,10 +2362,6 @@
         }
       ],
       "citations_rendered": 0,
-      "fallback_title_drift": {
-        "registry_fallback": "The Binary Totient Series: a complete working record of Erd\u0151s Problem 249",
-        "manuscript_title": "The Binary Totient Series"
-      },
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
       "pdf_sha256": "sha256:1146947faf4c019487de959a0db7a5c594620213750af2e58943a1389f314dfb",
       "pdf_byte_count": 706691,
@@ -2671,10 +2721,6 @@
         }
       ],
       "citations_rendered": 22,
-      "fallback_title_drift": {
-        "registry_fallback": "Settled Supports and Exact Finite Periods",
-        "manuscript_title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry"
-      },
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
       "pdf_sha256": "sha256:15cd0f2bb6cfc4b252f082c483c28d14ac131550e3d9ad5995ae3f3cebf16c13",
       "pdf_byte_count": 131153,
@@ -2711,7 +2757,7 @@
       "title": "Reciprocal Mersenne Subseries",
       "title_source": "manuscript",
       "question_this_paper_answers": "What has been tried on Erd\u0151s #257, which routes are closed, and what exact universal and half-value obligations remain?",
-      "owns": "the complete problem-specific reasoning record for Erd\u0151s #257: checked premises, finite computations, closed routes, surviving obligations, and their exact evidence bands",
+      "owns": "a claim-bounded problem-specific reasoning surface for Erd\u0151s #257: selected checked premises, finite computations, closed routes, surviving obligations, and their exact evidence bands",
       "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #257, whose universal and half-value questions remain open",
       "publication_state": "active",
       "relation_to_this_repository": "native",
@@ -3555,10 +3601,6 @@
         }
       ],
       "citations_rendered": 0,
-      "fallback_title_drift": {
-        "registry_fallback": "Reciprocal Mersenne Subseries: a complete working record of Erd\u0151s Problem 257",
-        "manuscript_title": "Reciprocal Mersenne Subseries"
-      },
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
       "pdf_sha256": "sha256:b2801c4017c0944fa8537fe01e0c25aaec685a2dd93d14d1c834fe9e59e2d396",
       "pdf_byte_count": 670232,
@@ -3590,7 +3632,7 @@
       "title": "The Three-Prime Running Least Common Multiple",
       "title_source": "manuscript",
       "question_this_paper_answers": "What exact running-LCM structure is proved for Erd\u0151s #269, and which residue-escape conditions remain unproved?",
-      "owns": "the problem-specific exposition for Erd\u0151s #269: the product formula, cell and shell structure, non-separability, finite experiments, and the remaining cofinal escape condition",
+      "owns": "the problem-specific exposition for Erd\u0151s #269: the two-prime analytic deductions, three-prime product formula, cell and shell structure, non-separability, finite experiments, and remaining cofinal escape condition",
       "not_authority_for": "proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erd\u0151s #269, which remains open",
       "publication_state": "active",
       "relation_to_this_repository": "native",
@@ -4358,7 +4400,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/plectis-public-system.md",
       "local_source": "docs/papers/mirror/plectis-public-system.tex",
-      "source_sha256": "sha256:514ebcd7fcf438621ae07baad85f2ae6e14e69bc91d5cf56cc305ec1b8dc6f43",
+      "source_sha256": "sha256:a0e18f742b4c8521234ec160448ac3aaed6fbfa71668b52359a7ff9957921f11",
       "canonical_source_url": "https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis/main/paper/plectis-public-system.tex",
       "section_count": 30,
@@ -4547,8 +4589,8 @@
       "citations_rendered": 19,
       "mirror_note": "generated copy; the manuscript is owned by plectis and authority does not move with the copy",
       "local_pdf": "docs/papers/mirror/plectis-public-system.pdf",
-      "pdf_sha256": "sha256:d9743f14e5858302e081f949c0c84f3d6783dcff653830c8dd8915c36a142906",
-      "pdf_byte_count": 120683,
+      "pdf_sha256": "sha256:eded48e32438bdb4d1a02fff797df1ac68734ecfe9e5cc03935209c6dcc432de",
+      "pdf_byte_count": 120840,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
