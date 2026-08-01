@@ -45,22 +45,21 @@ ARCHITECTURE_PAPERS = (
 )
 ALIASES = ROOT / "paper" / "module-aliases.json"
 # Page bands are the reach a limiting statement must keep, not a layout record.
-# Adding the first-page provenance note in July 2026 consumed roughly five body
-# lines of page one in each paper, and pushed exactly one anchor in each across
-# a page boundary: "neither problem is settled" here, "both jobs pass?" in the
-# architecture paper. Their bands are widened by one page and no further; every
-# other anchor still has to land where it always did. The exchange is recorded
-# rather than absorbed, because the note buys the same thing the bands protect
-# -- a reader meeting the limits before the claims -- and page one still carries
-# the abstract's three statements that neither problem is settled.
+# The gateway's compressed abstract now spends page one on exact contribution
+# and non-contribution clauses for both problems; anchors therefore follow its
+# semantic statements rather than historical wording. One later limiting
+# sentence remains permitted on page two, but every headline boundary below
+# must still be visible before the reader leaves page one.
 FIRST_MINUTE_CONTRACT = {
     "erdos249-257-main-paper.pdf": {
         (1, 1): (
-            "q > q0",
-            "all positive exponents in every integer base",
-            "refute the universal assertion",
-            "certificate band, though contiguous, is bounded",
-            "values -2, -1 and a comparison with the unused tail remain unresolved",
+            "both remain open",
+            "q-basis of the full 2-kernel span",
+            "rank through level e ≥ 1 is exactly 2e + 1",
+            "lcm-diagonal certificates for every t ≤ 82",
+            "nowhere-dense achievement set with unique coding",
+            "both memberships remain open",
+            "this is not an irrationality theorem",
         ),
         (1, 2): ("neither problem is settled",),
         (2, 4): (
@@ -112,6 +111,7 @@ SOURCE_LINK_COORD_RE = re.compile(
     re.X,
 )
 HREF_RE = re.compile(r'href="([^"]+)"')
+VISIBLE_HREF_RE = re.compile(r"\\href\{[^{}]*\}\{")
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 HIDDEN_RE = re.compile(r"\\iffalse.*?\\fi", re.S)
 NEWCOMMAND_RE = re.compile(r"^\s*\\newcommand.*$", re.M)
@@ -131,6 +131,9 @@ def visible_tex(text: str) -> str:
     text = "\n".join(COMMENT_RE.sub("", line) for line in text.splitlines())
     text = HIDDEN_RE.sub("", text)
     text = LINK_MACRO_RE.sub("", text)
+    # Keep the human-facing label while removing the implementation coordinate
+    # carried only by the hyperlink argument.
+    text = VISIBLE_HREF_RE.sub("{", text)
     return NEWCOMMAND_RE.sub("", text)
 
 
@@ -232,6 +235,11 @@ def rendered_source_link_errors(
         "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
         f"{commit}/Erdos249257/"
     )
+    allowed_source_prefixes = (
+        prefix,
+        "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
+        f"{commit}/ErdosProblems/",
+    )
     expected: set[str] = set()
     for match in SOURCE_LINK_COORD_RE.finditer(source):
         file_name = (
@@ -262,7 +270,8 @@ def rendered_source_link_errors(
     stale = sorted(
         href
         for href in hrefs
-        if href.startswith(repository_blob_prefix) and not href.startswith(prefix)
+        if href.startswith(repository_blob_prefix)
+        and not any(href.startswith(allowed) for allowed in allowed_source_prefixes)
     )
     if stale:
         errors.append(

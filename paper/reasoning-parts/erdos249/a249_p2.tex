@@ -1,0 +1,390 @@
+\section{The scale ladder}\label{sec:249-scale-ladder}
+
+Every statement in the Erd\H{o}s \#249 corpus that this paper draws on is tagged with a
+\emph{scale}: \scale{fixed} (a finite, explicitly enumerated set of parameter values, typically
+closed by \texttt{decide}/\texttt{interval\_cases}), \scale{bounded} (holds for all parameter
+values on one side of a threshold, e.g.\ $\forall a\ge 8$, but the proof or the constants inside
+it do not survive removing the threshold), \scale{uniform} (holds unconditionally for every value
+of every free parameter, with no scale restriction at all), and \scale{cofinal} (an existential
+claim of the shape $\forall N_0\,\exists N\ge N_0,\ P(N)$ — infinitely often, arbitrarily far out).
+The source tables underlying this ladder also mark a handful of pure identities and converters
+\texttt{n/a} when they are not indexed by any problem-scale parameter at all (they are definitions
+or unconditional equivalences); for ladder purposes these are folded into \scale{uniform}, since an
+unconditional statement is, if anything, stronger than a uniform one. This convention is applied
+uniformly below and is stated here once rather than re-flagged on every row.
+
+\#249's own supply obligation is \emph{exactly} cofinal. The reduction chain
+(\S\ref{sec:249-scale-ladder}, and see \lean{irrational\_totientSeries\_iff\_actualLcmOrbitNonintegralitySupply}{TotientActualLcmOrbitNonintegrality.lean:37})
+shows
+\[
+  \mathrm{Irrational}\Bigl(\sum_{n\ge 1}\varphi(n)/2^n\Bigr) \iff \forall a_0\ \exists a\ge a_0,\ \texttt{actualLcmTailOrbit}\ a \notin \mathrm{range}(\mathbb{Z}\to\mathbb{R}),
+\]
+an \texttt{cofinal} statement in the exponent $a$ that indexes $H=\mathrm{periodLcm}(2^a)$. Nothing
+weaker in scale can close \#249; the entire question is whether the corpus's uniform, bounded, and
+fixed machinery can be pushed to cofinal. The table below lists every catalogued \#249 result,
+grouped by scale, with a horizontal rule separating everything that is \emph{proved} (uniform,
+bounded, fixed) from the handful of statements that are themselves the \emph{cofinal target} or
+consumers of it (below the rule). Quantifier prefixes are written out explicitly and exactly as
+recorded against the Lean source; nothing is compressed to ``$\forall\dots$'' where the source
+specifies bounds.
+
+\begingroup
+\fontsize{6}{7.2}\selectfont
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{3.2cm}p{2.7cm}p{1.1cm}p{5.8cm}p{1.4cm}}
+\caption{The \#249 scale ladder. Every row above the rule is proved; every row below it is the
+cofinal target or a direct consumer of it.}\\
+\toprule
+\textbf{Result} & \textbf{Lean site} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Result} & \textbf{Lean site} & \textbf{Scale} & \textbf{Quantifier prefix} & \textbf{Coordinate}\\
+\midrule
+\endhead
+\midrule \multicolumn{5}{r}{\emph{continued on next page}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+\multicolumn{5}{l}{\emph{-- \scale{uniform} (includes source-tagged \texttt{n/a} unconditional identities/converters) --}}\\
+totientTail well-defined & \lean{totientTail}{TotientTailPeriodKiller.lean:57} & uniform & $\forall N$ & binary-digit\\
+$2^N\!\cdot\! S$ split & \lean{two\_pow\_mul\_totient\_series\_eq}{TotientTailPeriodKiller.lean:150} & uniform & $\forall N$ & binary-digit\\
+windowDiscrepancy (def) & \lean{windowDiscrepancy}{TotientTailPeriodKiller.lean:66} & uniform & $\forall h\,\forall N\,\forall L$ & other-binary-window\\
+certifiedKill Sep$(h,N,L)$ (def) & \lean{certifiedKill}{TotientTailPeriodKiller.lean:72} & uniform & $\forall h\,\forall N\,\forall L$ & other-binary-window\\
+certificate depth floor & \lean{certifiedKill\_depth\_floor}{TotientTailPeriodKiller.lean:79} & uniform & $\forall h\,\forall N\,\forall L$, given \texttt{certifiedKill}$\,h\,N\,L$ & other-binary-window\\
+kill engine soundness & \lean{tail\_diff\_notMem\_int\_of\_certifiedKill}{TotientTailPeriodKiller.lean:262} & uniform & $\forall h\,\forall N\,\forall L$, given \texttt{certifiedKill} & other-binary-window\\
+certificates are complete receipts & \lean{exists\_certifiedKill\_iff\_tail\_diff\_notMem\_int}{LcmConeFlatness.lean:316} & uniform & $\forall h\,\forall N$ & other-binary-window\\
+forced integrality under den.\ divisibility & \lean{tail\_diff\_int\_of\_den\_dvd}{TotientTailPeriodKiller.lean:327} & uniform & $\forall N\,\forall h\,\forall r{:}\mathbb{Q}$, given $S=r$, $r.\mathrm{den}\mid 2^N(2^h{-}1)$ & binary-digit\\
+tail-period law & \lean{eventual\_period\_of\_not\_irrational}{TotientTailPeriodKiller.lean:358} & uniform & $\lnot\mathrm{Irrational}\,S\to\exists h{>}0\,\exists N_0\,\forall N{\ge}N_0$ & binary-digit\\
+periodLcm basic facts & \lean{periodLcm}{CarrySurvivorExtinction.lean:515} & uniform & $\forall t$ & other-lcm-period-ray\\
+non-divisor$<2t$ is a bare prime power & \lean{eq\_prime\_pow\_of\_not\_dvd\_periodLcm}{LcmDiagonalReduction.lean:137} & uniform & $\forall t\,\forall j\,(0{<}j{<}2t)$, given $j\nmid\mathrm{periodLcm}\,t$ & other-lcm-window\\
+LCM-ray multiplicative split & \lean{totient\_periodLcm\_ray\_split}{LcmDiagonalReduction.lean:208} & uniform & $\forall t\,\forall j\,\forall q$, given $j\mid\mathrm{periodLcm}\,t$, clean-divisor & other-lcm-window-multiplicative\\
+rationality flattens the whole LCM cone & \lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{CertificateKernel.lean:18955} & uniform & $\lnot\mathrm{Irrational}\,S\to\exists t_1\,\forall t{\ge}t_1\,\forall q{>}0\,\forall m$ & other-lcm-cone\\
+second-difference kill engine & \lean{second\_diff\_notMem\_int\_of\_certifiedRank2Kill}{LcmConeFlatness.lean:493} & uniform & $\forall h\,\forall N\,\forall L$, given \texttt{certifiedRank2Kill} & other-binary-window\\
+cone-menu nonintegral pair & \lean{exists\_nonintegral\_pair\_of\_coneNonflatCert}{LcmConeNonflat.lean:126} & uniform & $\forall H\,\forall L\,\forall Q{\ne}\emptyset$, given \texttt{coneNonflatCert} & other-lcm-cone-menu\\
+survivorKill engine (carry-orbit route) & \lean{tail\_diff\_notMem\_int\_of\_survivorKill}{CarrySurvivorExtinction.lean:428} & uniform & $\forall h\,\forall N\,\forall K$, given \texttt{survivorKill} & other-carry-orbit\\
+Farey neighbour denominator law & \lean{farey\_gap}{GapFareyBound.lean:51} & uniform & $\forall a\,b\,c\,d\,r\,s{:}\mathbb{Z}$, $b{>}0,d{>}0,bc{-}ad{=}1$, unimodular-between & farey\\
+Dirichlet near-integer criterion & \lean{irrational\_of\_den\_mul\_abs\_sub\_tendsto\_zero}{CertificateKernel.lean:5371} & uniform & $\forall u{:}\mathbb{N}\to\mathbb{Q}\,\forall x{:}\mathbb{R}$ & n/a (generic)\\
+Erd\H{o}s 1948 near-integer criterion & \lean{irrational\_of\_int\_mul\_near\_int}{CertificateKernel.lean:6073} & uniform & $\forall \xi{:}\mathbb{R}$, $\forall q{>}0\,\exists m\,z\,0{<}|m\xi{-}z|{<}1/q$ & n/a (generic)\\
+finite-minor $\Rightarrow$ linear independence & \lean{linearIndependent\_of\_separatedMinorCertificate}{TotientMahlerDefect.lean:81} & uniform & $\forall\,\mathrm{family}{:}\iota\to\mathbb{N}\to\mathbb{Q}$, given SeparatedMinorCertificate & n/a (generic)\\
+dyadic totient-kernel rank $=2^e{+}1$ & \lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900} & uniform & $\forall e$ & other-dyadic-kernel-rank\\
+rationality forces unbounded carry-kernel rank & \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284} & uniform & $\lnot\mathrm{Irrational}\,S\to\exists v{>}0\,\exists u\,\forall e$ & other-carry-kernel-rank\\
+no fixed $D$ clears all primitive Euler jets & \lean{no\_fixed\_integral\_primitive\_euler\_index}{PrimitiveDeterminantLift.lean:169} & uniform & $\forall D{>}0$ & mobius-mersenne\\
+Mersenne–Lambert ladder value identities & \lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18368} & uniform & value identities, $L(\mu){=}\tfrac12$, $L(\varphi){=}2$, $L(1){=}$Erd\H{o}s--Borwein & mobius-mersenne\\
+prime-power reduced-denom.\ unit-gap ceiling & \lean{reducedDenominatorUnitGapCert\_prime\_pow\_iff}{PrimitiveWeightCertificate.lean:54} & uniform & $\forall p\ \text{prime}\,\forall e{>}0$ & farey\\
+positive rational-difference lower bound & \lean{positive\_rational\_difference\_lower\_bound}{PrimitiveRationalGapSupply.lean:31} & uniform & $\forall\ \text{whole}\,\text{pfx}{:}\mathbb{Q},\ \text{pfx}{<}\text{whole}$ & n/a (generic)\\
+M\"obius-square identity ($S=\tfrac12+\Sigma$) & \lean{tsum\_totient\_half\_pow\_eq\_half\_add\_moebius\_sq}{MersenneLambertLadder.lean:665} & uniform & unconditional & mobius-mersenne\\
+squared-Lambert transfer engine & \lean{tsum\_lambert\_linear\_weight\_sq\_pure}{GcdMomentCalculus.lean:105} & uniform & $\forall w{:}\mathbb{N}\to\mathbb{R}\,(|w(d)|{\le}d)\,\forall r\in[0,1)$ & mobius-mersenne\\
+$L_2(\mu)=S-\tfrac12$ & prose:L2\_of\_mu\_is\_249 & uniform & unconditional & mobius-mersenne\\
+$L_2(1)=\zeta_q(2)-\zeta_q(1)$ identity & \lean{tsum\_one\_div\_mersenne\_sq\_eq\_sigma\_sub\_tau\_series}{GcdMomentCalculus.lean:216} & uniform & unconditional & mobius-mersenne\\
+$L_2(\varphi)$ = gcd moment & \lean{tsum\_totient\_div\_mersenne\_sq\_eq\_gcd\_moment\_series}{GcdMomentCalculus.lean:235} & uniform & unconditional & mobius-mersenne/probability\\
+level-mirror table & prose:level\_mirror\_table & uniform & unconditional & mobius-mersenne\\
+gcd-divisibility factorizes & \lean{tsum\_pos\_pair\_both\_dvd\_half\_eq\_inv\_mersenne\_sq}{GcdMomentCalculus.lean:266} & uniform & $\forall d{:}\mathbb{N},\,d{>}0$ & probability\\
+reduced-direction law $\Sigma=1$ & \lean{tsum\_pos\_coprime\_inv\_mersenne\_eq\_one}{GcdMomentCalculus.lean:349} & uniform & unconditional (sum over all coprime pairs) & probability\\
+Stern--Brocot cylinder recursion & \lean{cylinderMass\_split}{GcdMomentCalculus.lean:474} & uniform & $\forall a\,b{:}\mathbb{N}^+\,\forall\text{depth}\,d$ & other-stern-brocot\\
+repunit gcd-word T1 & \lean{mobiusNumeratorPolynomial\_eq\_gcdWord}{RepunitMobiusNumerator.lean:205} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)\,\forall k{<}r$ & cyclotomic\\
+eval-at-2 recovers numerator & \lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:445} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)$ & cyclotomic\\
+radical-shadow scale decomposition & \lean{scaledMobiusShadow\_eq\_radicalBase}{RadicalMobiusShadow.lean:125} & uniform & $\forall H{>}0\,\forall r{>}0$ & mobius-mersenne\\
+cyclotomic congruence T2 & \lean{cyclotomic\_dvd\_mobiusNumeratorPolynomial\_sub}{CyclotomicProjectionOfShadow.lean:299} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)\,\forall m\,(m{\mid}r)$ & cyclotomic\\
+top-fibre survives T3 & \lean{mobiusNumerator\_gcd\_cyclotomicValue}{CyclotomicProjectionOfShadow.lean:350} & uniform & $\forall r\,(\mathrm{Squarefree}\,r)$ & cyclotomic\\
+upper-half prime channel survival T4 & \lean{upperHalfChannel\_product\_dvd\_den\_of\_scale\_primeFactors\_le}{MersenneShadowCyclotomicNoncollapse.lean:809} & uniform & $\forall t\,\forall p\ \text{prime}\in(t/2,t]$, scale-coprime-to-$C$ & cyclotomic\\
+denominator lower bound / exact value & \lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147} & uniform & $\forall t$ (exact-value); $t{\ge}5$ (lower bound) & mobius-mersenne\\
+prime-power jump recurrence T5 & \lean{cyclotomic\_dvd\_primeJump\_new\_fibre}{PrimePowerJumpDynamics.lean:281} & uniform & $\forall p\ \text{prime}\,(p{\nmid}r)\,\forall m\,(m{\mid}r)$ & cyclotomic\\
+squared-Mersenne diagonal tail enclosure & \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:94} & uniform & $\forall D{:}\mathbb{N}$ & mobius-mersenne\\
+$(3,5)$ joint annihilator & \lean{joint35\_oldChannel\_zero}{JointExponentTransport.lean:71} & uniform & $\forall d{>}0\,(d{\mid}H)$; general: finite affine annihilator & other-lcm-diagonal\\
+composite-dilation defect identity & \lean{supportCoeff\_mul\_eq\_add\_defect}{CompositeDilationDefect.lean:30} & uniform & $\forall a{\in}A\,(a{>}0)\,\forall x{>}0$ & other-divisor-support-coeff\\
+sublogarithmic zero-window T11 & \lean{supportCoeffZeroWindow\_length\_le\_eps\_logb\_add}{SublogDivisorCoverage.lean:392} & uniform & $\forall \varepsilon{>}0\,\exists B$, given rationality of the base-2 support series & other-support-divisor-counting\\
+campbell shift $\leftrightarrow$ Mersenne endpoint (shared namespace, \#257-flavored) & \lean{shiftWindowZero\_iff\_half\_mem\_mersenneAchievementSet}{CampbellShiftSynchronization.lean:488} & uniform & iff, no extra parameter & other-greedy-mersenne-achievement\\
+totient overlap-factor multiplicativity & \lean{totient\_mul\_eq\_overlapFactor\_mul}{TotientActualLcmOrbitArithmetic.lean:43} & uniform & $\forall x{>}0$ ($j$ fixed) & other-totient-arithmetic\\
+totient relative-Euler-product split & \lean{totient\_mul\_eq\_totient\_mul\_relativeEulerProduct}{TotientActualLcmOrbitArithmetic.lean:100} & uniform & $\forall j\,x{>}0$ & other-totient-arithmetic\\
+lcmRayArithmeticLetter $=$ deltaTotient $=$ diagonalWindowIncrement & \lean{lcmRayArithmeticLetter\_eq\_deltaTotient}{TotientActualLcmOrbitArithmetic.lean:298} & uniform & $\forall t\,\forall j$ & mobius-mersenne\\
+lcmDiagonalArithmeticWord $=$ windowDiscrepancy & \lean{lcmDiagonalArithmeticWord\_eq\_windowDiscrepancy}{TotientActualLcmOrbitArithmetic.lean:1998} & uniform & $\forall t\,\forall L$ & mobius-mersenne\\
+\#249 $\iff$ cofinal actual-orbit nonintegrality & \lean{irrational\_totientSeries\_iff\_actualLcmOrbitNonintegralitySupply}{TotientActualLcmOrbitNonintegrality.lean:37} & uniform & iff & mobius-mersenne\\
+actualLcmTailOrbit $=$ scaled series $-$ prefix & \lean{actualLcmTailOrbit\_eq\_scaled\_totientSeries\_sub\_prefix}{TotientActualLcmOrbitSeparation.lean:68} & uniform & $\forall a$ & mobius-mersenne\\
+explicit finite-block approximation & \lean{abs\_actualLcmTailOrbit\_sub\_rawApprox\_lt}{TotientActualLcmOrbitSeparation.lean:141} & uniform & $\forall a\,\forall q$ & mobius-mersenne\\
+guard-cylinder normal form & \lean{exists\_certifiedKill\_iff\_guardCylinderWitness}{TotientActualLcmTopEdgeStaircase.lean:844} & uniform & $\forall h\,N,\ \text{iff}$ & seam-integer\\
+fixedRankSecondDifference sign under extremality & \lean{fixedRankSecondDifference}{TotientFixedRankLcmAsymptotic.lean:256} & uniform & $\forall H\,j$, given MiddleRankTotientExtremal & other-fixed-rank-curvature\\
+dyadic fixture exactness (kernel-valuation sharpness) & \lean{fixedRankSecondDifference\_dyadic\_fixture\_exact}{TotientFixedRankLcmAsymptotic.lean:462} & uniform & $\forall n$ (closed-form) & other-fixed-rank-curvature\\
+parityCoboundaryWeight (def) & \lean{parityCoboundaryWeight}{TotientParityCoboundaryCountermodel.lean:59} & uniform & $\forall n$ (definition) & binary-digit\\
+totientTail $=$ positive foreign-residue kernel sum & \lean{totientTail\_eq\_tsum\_positiveForeignResidueKernel}{TotientShiftedMobiusForeignBridge.lean:52} & uniform & $\forall N$ & cyclotomic\\
+totientTail $=$ shifted M\"obius-pulse sum & \lean{totientTail\_eq\_tsum\_shiftedMobiusPulse}{TotientShiftedMobiusPulse.lean:535} & uniform & $\forall N$ & cyclotomic\\
+Lambert double-sum regroup engine & \lean{tsum\_lambert\_pair\_regroup\_if}{TotientShiftedMobiusPulse.lean:112} & uniform & $\forall w\,v{:}\mathbb{N}\to\mathbb{R}\,(|w(d)|{\le}d,\,|v(m)|{\le}m)$ & cyclotomic\\
+carryShift-integrality iff & \lean{carryShift\_dvd\_iff\_tailDiff\_mem\_int}{TotientTailCarryPeriod.lean:77} & uniform & $\forall N\,k$, given tempered orbit & seam-integer\\
+rationality $\Rightarrow$ periodicity \& unbounded rank & \lean{not\_irrational\_totientSeries\_implies\_mod\_period\_and\_unbounded\_rank}{TotientTailCarryPeriod.lean:224} & uniform & $\lnot\mathrm{Irrational}\,S\to\exists v\,u\,\forall e$ & seam-integer\\
+adjugate tail-cost floor $\ge 3$ & \lean{three\_le\_totientAdjugateTailCost}{TotientTailCarryPeriod.lean:266} & uniform & $\forall\ \text{finite}\ w{:}\iota\to\mathbb{Q}\,x{:}\iota\to\mathbb{N}$, given $\sum w_i\varphi(x_i){=}1$ & other-adjugate-linear-algebra\\
+directedCertifiedKill exact iff & \lean{directedCertifiedKill}{TotientTailCarryPeriod.lean:766} & uniform & $\forall h\,N\,L$ & seam-integer\\
+tempered orbit rigidity iff & \lean{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit}{GenericTailOrbitRigidity.lean:426} & uniform & $\forall c{:}\mathbb{N}\to\mathbb{N}\,(c(n){\le}n)$, iff & binary-digit\\
+doubling-orbit rigidity & \lean{doublingOrbit\_eq\_zero\_of\_tempered}{GenericTailOrbitRigidity.lean:315} & uniform & $\forall d{:}\mathbb{N}\to\mathbb{R}$, doubling $+$ tempered $\to d{\equiv}0$ & other-abstract-recursion\\
+finite-state no-go (unbounded state) & \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247} & uniform & $\forall m\,\forall\mathrm{State}$, collapsing-state $\to$ no decoder & binary-digit\\
+fixed-depth affine reset & \lean{affineBinaryOrbit\_mod\_twoPow\_eq}{GenericTailOrbitRigidity.lean:307} & uniform & $\forall a{:}\mathbb{N}\to\mathbb{Z}\,\forall u_0\,v_0\,\forall L$ & binary-digit\\
+signed dichotomy engine (full-block certs) & \lean{int\_coeff\_series\_irrational\_or\_bpow\_mul\_eq\_intCast\_of\_full\_block\_certificates}{CertificateKernel.lean:13887} & uniform & $\forall b{\ge}2\,\forall c\,\forall q$, given full-block certificate at $q$ & binary-digit\\
+Lambert double-sum regroup (dyadic forward-difference calc.) & \lean{dvd\_iteratedForwardDifference}{LcmFactorIdealPulseObstruction.lean:211} & uniform & $\forall f,c{:}\mathbb{N}\to\mathbb{Z}\,\forall\ \text{shift-lists}$ & binary-digit\\
+fair-coin coprimality bridge & \lean{tsum\_coprime\_pair\_pow\_eq\_tsum\_totient\_mul\_pow}{GeometricCoprimality.lean:120} & uniform & $\forall n$; $\forall r\in[0,1)$ & probability\\
+linear-descender rigidity & \lean{linearDescender\_eq\_smul\_eval}{AdelicHeightObstruction.lean:120} & uniform & $\forall V,W\,\forall\mathrm{ev}\,\forall L$, $\ker(\mathrm{ev}){\le}\ker(L)$ & p-adic\\
+rational denominator survival law & \lean{divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17} & uniform & $\forall D{>}0\,\forall m{\mid}D\,\forall a$ & p-adic\\
+scalar-localization complement-dvd (adelic height tax) & \lean{scalarLocalization\_complement\_dvd}{AdelicHeightObstruction.lean:23} & uniform & $\forall x{:}\mathbb{Q}\,\forall H\,(H{\mid}x.\mathrm{den})\,\forall c\,((cx).\mathrm{den}{\mid}H)$ & p-adic\\
+signed Hankel terminal-parity engine & \lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:96} & bounded & $\exists m{\in}s$ (strictly maximal, odd coeff), $\forall i{\ne}m\,e(i){<}e(m)$ & p-adic\\
+residual gauge obstruction (locked minors) & \lean{det\_residualMonomialMatrix}{ResidualGaugeObstruction.lean:47} & uniform & $\forall d\,\forall e{:}\mathrm{Fin}\,d{\to}\mathbb{N}\,\forall z{:}\mathrm{Fin}\,d{\to}\mathbb{C}$ ($z$ nonzero) & other-first-harmonic-phase\\
+incidence-quotient no compression & \lean{incidenceMobius\_det\_eq\_one}{IncidenceQuotientHermitePade.lean:56} & uniform & $\forall N{:}\mathbb{N}$ & mobius-mersenne\\
+
+\multicolumn{5}{l}{\emph{-- \scale{bounded} --}}\\
+Farey window $K{=}240$ denominator bound & \lean{gap\_check\_window\_1\_240\_le\_79639646646701375323355774875831053}{GapFareyBound.lean:176} & bounded &
+$\forall q{:}\mathbb{N},\,0{<}q{\le}$\newline
+$79{,}639{,}646{,}646{,}701{,}$\newline
+$375{,}323{,}355{,}774{,}875{,}831{,}053$ & farey\\
+denominator lower bound $S{\ne}p/q$, $q{\le}Q_0$ & \lean{tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18337} & bounded & $\forall p{:}\mathbb{Q},\,p.\mathrm{den}{\le}Q_0$ & farey\\
+foreign-residue tail-limit converter & \lean{controlledForeignProjection\_of\_tail\_limit}{LambertDiagonalEnclosure.lean:31} & bounded & $\forall H\,D$ with $2H{\le}D$, given tail-limit convergence & mobius-mersenne\\
+fixed-precision tropical no-go & \lean{fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137} & bounded & $\forall u{>}0$ (fixed precision), $\forall$ finite carry word & p-adic\\
+$\mu$-clean-Pad\'e feasibility wall & prose:mu\_pollution\_qpade\_wall & bounded & claimed $\forall d$; machine-audited only $d{\le}12$ & mobius-mersenne (q-Pad\'e)\\
+iterated pullback / bounded-$\Omega$ vanishing & \lean{iteratedDilationDifference\_eq\_zero\_of\_cardFactors\_le}{SupportDilationDifferences.lean:250} & bounded & given $\Omega(a){\le}K\,\forall a{\in}A$ & other-support-divisor-counting\\
+rough-density $\Rightarrow$ totient $\ge\tfrac34 n$ & \lean{three\_quarters\_mul\_lt\_totient\_of\_rough\_lt\_two\_pow}{TotientActualLcmOrbitArithmetic.lean:768} & bounded & $\forall a{\ge}8\,\forall n{>}0$ ($n$ is $t$-rough, $t{=}2^a$, $n{<}2^{2\cdot2^a}$) & mobius-mersenne\\
+short-window sign fixed positive & \lean{lcmRayArithmeticLetter\_pos\_of\_lt\_two\_mul}{TotientActualLcmOrbitArithmetic.lean:1703} & bounded & $\forall a{\ge}8\,\forall j\,(0{<}j{<}2\cdot2^a)$ & mobius-mersenne\\
+unconditional lower-half positivity & \lean{actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39} & bounded$^\dagger$ & $\forall a{\ge}8\,\forall J\,(J{+}(a{+}6){<}2\cdot2^a)$, no rationality hypothesis & mobius-mersenne\\
+top-edge residue survivor negative & \lean{actualLcm\_trueEndpointSurvivor\_neg}{TotientActualLcmOrbitSign.lean:172} & bounded & $\forall a{\ge}8\,\forall J\,K$ (room bound) & mobius-mersenne\\
+integrality forces top-edge residue & \lean{actualLcm\_integral\_forces\_topEdgeResidue}{TotientActualLcmOrbitSign.lean:211} & bounded & $\forall a{\ge}8\,\forall J\,K$ (room, $2H{+}J{+}K{+}2{<}2^K$) & mobius-mersenne\\
+short-kill supply through $a{\le}6$ & \lean{powerTwoActualLcmShortArithmeticKillSupply\_through\_six}{TotientActualLcmShortKill.lean:54} & bounded & $\forall a_0{\le}6\,\exists a\,L$ & mobius-mersenne\\
+terminal dyadic staircase impossible with room & \lean{not\_actualLcmTerminalDyadicStaircase\_of\_room}{TotientActualLcmTopEdgeStaircase.lean:251} & bounded & $\forall a{\ge}8\,\forall J\,K\,m$ (room, modulus-wide) & mobius-mersenne\\
+punctured staircase penultimate pin & \lean{puncturedDyadicStaircase\_penultimate\_eq\_half}{TotientActualLcmTopEdgeStaircase.lean:1187} & bounded & $\forall a{\ge}8\,\forall J\,K\,m$ (room $+$ punctured hyp.) & mobius-mersenne\\
+top-edge residue-gap $\Rightarrow$ nonintegral & \lean{actualLcmTailDiff\_notMem\_int\_of\_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260} & bounded & $\forall a{\ge}8\,\forall J\,K\,m$ (room, one-sided) & mobius-mersenne\\
+odd-rank centred-lift $=$ terminal $-$ true carry & \lean{two\_mul\_actualOddHalfCenteredLift\_eq\_terminal\_sub\_trueCarry}{TotientActualLcmTopEdgeStaircase.lean:1678} & bounded & $\forall a{\ge}8\,\forall q$ (room, fit bound $2(H{+}q{+}2){\le}4^q$) & mobius-mersenne\\
+prime-power kernel valuation floor & \lean{two\_mul\_totient\_dvd\_fixedRankSecondDifference}{TotientFixedRankLcmAsymptotic.lean:519} & bounded & $\forall a{\ge}4\,\forall j{>}0\,(j^2{\le}2^a)$ & other-fixed-rank-curvature\\
+finite rational-separation $\Rightarrow$ $\lnot$ hit (\#257-flavored) & \lean{renormalizedResidueAgreement\_of\_twice\_le}{TotientShiftedMobiusForeignBridge.lean:329} & bounded & $\forall H{>}0\,\forall D{\ge}2H$, given finite separation & mobius-mersenne\\
+homogeneous Mersenne multiplier does not annihilate & \lean{idCoeff\_mersenneModulus\_does\_not\_annihilate\_tailShift}{TotientTailCarryPeriod.lean:342} & bounded & $\forall K,q\,(K{>}0,K{<}q,q{\mid}2^K{-}1)$ & mobius-mersenne\\
+numerator-gap $\Rightarrow$ $\lnot$ hit (\#257-flavored) & \lean{scaleFullTarget\_miss\_of\_lambert\_projected\_num\_gap}{LambertProjectedNumeratorGap.lean:23} & bounded & $\forall H,D$ fixed, given uniform numerator-gap bound & mobius-mersenne\\
+periodic-weight Lambert dichotomy & \lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14128} & bounded & $\forall b{\ge}2\,\forall m{>}0\,\forall w$ ($w(n{+}m){=}w(n)$) & mobius-mersenne\\
+non-negative periodic $\Rightarrow$ irrational (unconditional) & \lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14536} & bounded & $\forall b{\ge}2\,\forall m{>}0$, $w$ periodic, $\ge0$, frequently ${\ne}0$ & mobius-mersenne\\
+
+\multicolumn{5}{l}{\emph{-- \scale{fixed} --}}\\
+all $h\in[1,8]$ kill certificate at depth 16, $N{=}12$ & \lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} & fixed & $\forall h\in[1,8]$, \texttt{certifiedKill}\,$h$\,12\,16 (by \texttt{decide}) & other-binary-window\\
+$h\in[1,16]$, exponent 14 kill table & \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:18843} & fixed & $\forall h\in[1,16]$, denominator exponent 14 (by \texttt{decide}) & other-binary-window\\
+rank-2 kill not shallower at $(h,N){=}(1,8)$ & \lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19043} & fixed & measured over $t{\le}20$ (30/40 cells) & other-binary-window\\
+28-point diagonal pincer table through $t{=}64$ & \lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} & fixed & $t\in\{1,2,3,4,5,7,8,9,11,13,16,17,\dots\}$ (28 explicit values) & other-lcm-diagonal\\
+contiguous diagonal certificate band through $t{\le}82$ & \lean{ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82}{ErdosProblems/Skip/LadderT67.lean:71264} & bounded & $\forall t{\le}82\,\exists L$; no $t{=}83$ certificate claimed & other-lcm-diagonal\\
+short kill at $a{=}4$ and $a{=}6$ & \lean{lcmDiagonalArithmeticKill\_two\_pow\_four}{TotientActualLcmShortKill.lean:18} & fixed & $a{=}4$, $a{=}6$ (concrete, kernel-checked) & mobius-mersenne\\
+square-CRT clean block: vanishing / nonvanishing witnesses & \lean{squareCRT\_clean\_block\_can\_vanish}{SquareCRTCube.lean:285} & fixed & witness $n{=}52$ (vanishes); witness $n{=}27$ (nonzero) & other-crt-dyadic-residue\\
+echo-vs-height two-front wall & prose:echo\_versus\_height\_two\_front\_wall & fixed & empirical over tested families only (not universal) & mobius-mersenne (q-Pad\'e, quantitative)\\
+period-4 zeroset escape witness & \lean{intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14179} & fixed & $\forall n,\,n{\equiv}3\!\!\pmod 4$ (fixed weight $w$) & mobius-mersenne\\
+
+\midrule
+\multicolumn{5}{c}{\emph{--- frontier: everything below this line is the cofinal target or a direct consumer of it ---}}\\
+\midrule
+
+\multicolumn{5}{l}{\emph{-- \scale{cofinal} (OPEN) --}}\\
+\textbf{THE WALL} — certificate supply $\Rightarrow$ Irrational $S$ & \lean{irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394} & \textbf{cofinal} & $\forall h{\ge}1\,\forall N_0{\ge}0\,\exists N{\ge}N_0\,\exists L,\ \texttt{certifiedKill}\,h\,N\,L$ & other-binary-window\\
+multiple-certificate supply (weakened) & \lean{irrational\_totient\_series\_of\_multiple\_certificate\_supply}{CarrySurvivorExtinction.lean:502} & cofinal & $\forall h_0{>}0\,\forall N_0\,\exists m{>}0\,\exists N{\ge}N_0\,\exists L$ & other-lcm-period-multiple\\
+LCM-diagonal one-parameter restatement & \lean{irrational\_totient\_series\_of\_lcm\_diagonal\_certificate\_supply}{LcmDiagonalReduction.lean:112} & cofinal & $\forall t_0\,\exists t{\ge}t_0\,\exists L$ & other-lcm-diagonal\\
+LCM-cone window-kill supply (widest target) & \lean{irrational\_totient\_series\_of\_lcm\_cone\_window\_kill\_supply}{CertificateKernel.lean:18967} & cofinal & $\forall t_0\,\exists t{\ge}t_0\,\exists q{>}0\,\exists m\,\exists L$ & other-lcm-cone\\
+LCM diagonal/cone nonintegrality restatement & \lean{irrational\_totient\_series\_of\_lcm\_diagonal\_nonintegrality\_supply}{CertificateKernel.lean:18987} & cofinal & $\forall t_0\,\exists t{\ge}t_0$, $\texttt{totientTail}(2H_t){-}\texttt{totientTail}(H_t)\notin\mathbb{Z}$ & other-real-analytic-nonintegrality\\
+LCM cone-nonflat supply (sharpest depth-reduced form) & \lean{irrational\_totient\_series\_of\_lcm\_cone\_nonflat\_supply}{CertificateKernel.lean:19093} & cofinal & $\exists$ unbounded-scale menu $Q$ with \texttt{coneNonflatCert} firing & other-lcm-cone-menu\\
+first-harmonic norm-gap supply & \lean{irrational\_totient\_series\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:83} & cofinal & $\forall h{>}0\,\forall X_0\,\exists X{\ge}\max(X_0,1)\,\exists L$, room $16(2X{+}h{+}L{+}2){\le}2^L$ & binary-digit\\
+prime-jump sharp-kill supply & \lean{irrational\_totient\_series\_of\_primeJumpSharpKill\_supply}{PrimeJumpWindow.lean:193} & cofinal & $\forall t_0\,\exists t{\ge}t_0\,\exists p,L{>}0$ & binary-digit\\
+$a$-exponent short-arithmetic kill supply (the open trigger) & \lean{PowerTwoActualLcmShortArithmeticKillSupply}{TotientActualLcmOrbitArithmetic.lean:2107} & cofinal & $\forall a_0\,\exists a\,L,\ a_0{\le}a\land L{<}2\cdot2^a$ & mobius-mersenne\\
+actual-orbit separation supply & \lean{irrational\_totientSeries\_of\_actualLcmOrbitSeparationSupply}{TotientActualLcmOrbitSeparation.lean:305} & cofinal & cofinal $1/32{+}$error separation at guarded odd ranks & mobius-mersenne\\
+top-edge-residue-gap sufficiency chain (5 links, weakest first) & \lean{irrational\_totientSeries\_of\_flexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:2221} & cofinal & $\forall a_0\,\exists a{\ge}a_0\,\exists\langle\text{supply predicate}\rangle$ & mobius-mersenne\\
+rational countermodel refutes \{bound,parity,aperiodicity\} & \lean{exists\_totientParity\_arbitrarilyManySeparatedCarry\_rational\_countermodel}{TotientParityCoboundaryCountermodel.lean:637} & cofinal & $\exists c{:}\mathbb{N}\to\mathbb{N}$, $c{\le}6$, $c{\le}n$, $c{\equiv}\varphi\!\!\pmod2$, arbitrarily-separated blocks & binary-digit\\
+mod-4 pulse cofinal supply (via CRT+Dirichlet) & \lean{exists\_prime\_deltaTotient\_four\_mul\_mod\_four\_two}{TotientTailCarryPeriod.lean:384} & cofinal & $\forall h{>}0\,\forall B\,\exists\text{prime}\,p{>}B$ & mobius-mersenne\\
+mod-4 pulse survivor kill (fourfold reduction) & \lean{irrational\_totientSeries\_of\_cofinal\_modFourPulseSurvivorKill}{TotientTailCarryPeriod.lean:1066} & cofinal & given CP-05's cofinal supply & mobius-mersenne\\
+two-adic pulse at arbitrary depth $K$ & \lean{exists\_prime\_totient\_twoAdic\_pulse\_divisors}{TotientTwoAdicPulseBlock.lean:54} & cofinal & $\forall K{\ge}2\,\forall H{>}K\,\forall B\,\exists\text{cofinally many primes}\,p{>}B$ & p-adic\\
+two-adic pulse transfer (needs eventual integrality) & \lean{eventual\_integral\_tailDiff\_has\_cofinal\_twoAdic\_half\_pulse}{TotientTwoAdicPulseBlock.lean:327} & cofinal & $\forall K{\ge}2$, given TA-01 pulse $+$ eventual integrality & p-adic\\
+\end{longtable}
+\endgroup
+
+\noindent $^\dagger$ The source normal-form table tags \texttt{actualLcmTailDiff\_shift\_pos} \scale{bounded}
+because the window parameter $J$ is finite-range relative to $2\cdot2^a$; the exponent $a$ itself is
+completely unbounded ($\forall a\ge 8$), and this row's constants ($4$, $8$, $32$) do not degrade with
+$a$. It is flagged here, not silently re-tagged, because it is exactly the kind of row an automated
+promotion sweep must not misclassify — see the audit below.
+
+\subsection{Checked negative result: no free promotion from bounded to cofinal}
+
+A ladder like the one above invites an obvious question: is any \scale{bounded} result actually
+uniform in disguise, so that removing its threshold is a routine generalisation rather than new
+mathematics? This was checked directly rather than assumed. An audit read the Lean proof body
+behind every bounded-scale result in the \#249 corpus — eighteen candidates in total, spanning
+the near-miss list against the \#249-supply obligation catalogued in the interface index (fourteen
+rows, each independently checked against the exact cofinal target it is closest to) together with
+the remaining bounded/fixed rows in the certificate, M\"obius--Lambert, and actual-orbit banks
+above — and found \textbf{no} bounded result whose proof is uniform enough in its threshold
+parameter to promote to cofinal or uniform for free. Every candidate failed for one of three
+reasons, and the failure mode is worth recording because it is a checked negative result, not an
+absence of search:
+
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Finite certificate tables.} Results such as
+\lean{certifiedKill\_diagonal\_all\_imported}{DiagonalPincerCertificates.lean:2860} (28 explicit
+values of $t$ through $t{=}64$, now a strict subset of the aggregate
+$\forall t\le82$ band),
+\lean{certifiedKill\_all\_small}{TotientTailPeriodKiller.lean:404} ($h\in[1,8]$ at fixed depth
+16), and
+\lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:18843}
+($h\in[1,16]$ at exponent 14) are each a finite \emph{list} of independently verified rows, not a
+single argument instantiated at a free parameter. There is no uniform proof underneath to strip
+the bound from; each new row is a fresh finite computation.
+\item \textbf{\texttt{interval\_cases}/\texttt{decide} over a bounded range.} Results such as
+\lean{three\_quarters\_mul\_lt\_totient\_of\_rough\_lt\_two\_pow}{TotientActualLcmOrbitArithmetic.lean:768}
+($a{\ge}8$) and the entire
+\lean{actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39}/top-edge-staircase family
+(room conditions of the shape $J{+}(a{+}6){<}2\cdot2^a$) are proved by case-splitting a residue or
+a divisor structure that is only exhaustively enumerable inside the stated range; the mathematical
+content genuinely narrows as the range widens, so \texttt{decide} cannot simply be re-run at a
+larger bound without an exponential blow-up in the search space it certifies.
+\item \textbf{Constants that degrade with the parameter.} The clearest instance is the
+echo-versus-height wall (prose:echo\_versus\_height\_two\_front\_wall,
+\S5e--5f of the ambitious-modular-route note): height-optimal ladder families pay quadratic
+height $P(1)\sim 2^{K^2/2}$ matching
+\lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147}'s own
+growth rate, while height-minimal integer-relation minimizers regrow the echo term $E_R$ to match
+— for every tested family, the two costs cannot both be driven to zero as the scale parameter
+grows. The interface index records the same phenomenon for
+\texttt{HalfRung}$(J)$-shaped truncation rungs: the certificate window $B(J)$ is driven by
+$L_J=\mathrm{lcm}(2,\dots,J)$, which grows super-exponentially in $J$, so the per-$J$ constant
+degrades with the very parameter the cofinal claim needs to range over — ``the hallmark of a proof
+that does not survive bound removal'' (interface index, row \texttt{d-3a/d-3b}).
+\end{enumerate}
+
+None of the fourteen near-miss rows against the \#249-supply obligation is closed by a scale
+argument alone either: reading each one's own recorded \texttt{exact\_mismatch} shows the residual
+gap is a missing \emph{arithmetic input} (a constant-saving Weyl-sum bound for
+\texttt{e1-companion}; a one-sided top-edge residue gap for \texttt{TE-04}/\texttt{TE-05-weakest};
+an unbounded finite-rank compression on the rationality side for \texttt{d4/d5}), never a
+generalisable proof technique sitting one \texttt{omega} call away from cofinal. The one row where
+the source tag itself is imprecise — \texttt{SGN-01}, marked \scale{bounded} even though its
+underlying exponent $a$ is unbounded, see $^\dagger$ above — is precisely the kind of false
+positive the audit was built to catch, and even there what remains open is the \emph{other} half of
+the certificate band (the top-edge residue), not a scale defect in SGN-01 itself.
+
+\section{Coordinate atlas and transport maps}
+
+\#249 is not proved or disproved in a single representation. The corpus expresses
+$S=\sum_{n\ge1}\varphi(n)/2^n$ in at least eight distinct coordinates, and the central
+methodological lesson of the whole programme — flagged repeatedly in the source banks as
+AP17/AP18, ``obstructions are coordinate-relative'' — is that a mechanism which kills a proof
+strategy in one coordinate can be silent, or even actively helpful, in another. This section lists
+every coordinate used, gives at least one exact transport map out of it into another coordinate
+with its Lean site, and then makes the coordinate-relativity claim precise for the one pair where
+it matters most: binary-digit versus M\"obius--Mersenne.
+
+\begin{description}[leftmargin=*,style=nextline]
+
+\item[binary-digit] $S$ as the literal base-2 expansion object: \texttt{totientTail},
+\texttt{windowDiscrepancy}, \texttt{certifiedKill}. \emph{Transport to mobius-mersenne:} the
+core identity
+\[
+  S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}=\frac12+\sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}
+\]
+proved by \lean{tsum\_totient\_half\_pow\_eq\_half\_add\_moebius\_sq}{MersenneLambertLadder.lean:665}
+(consumed at \lean{mobius\_square\_series\_eq\_partial\_add\_tail}{SquaredMersenneDiagonalEnclosure.lean:94})
+turns every binary-digit statement about $S$ into a statement about a squared M\"obius--Mersenne
+Lambert series, and back.
+
+\item[mobius-mersenne] $S$ as $\tfrac12+\sum_d\mu(d)/(2^d-1)^2$, the Lambert ladder
+$L(w)=\sum_n w(n)/(2^n-1)$ at $w=\mu,1,\varphi$, and the whole cyclotomic denominator-survival
+chain built on it. \emph{Transport to cyclotomic:} evaluating the M\"obius-numerator polynomial at
+$x=2$,
+\lean{mobiusNumeratorPolynomial\_eval\_two}{RepunitMobiusNumerator.lean:445} together with the
+definition \lean{mobiusNumerator}{RadicalMobiusShadow.lean:101}, moves the squared-denominator
+question into finite cyclotomic-polynomial arithmetic over $\mathbb{Z}$.
+
+\item[probability/coprime-pair] $S-\tfrac12=\Pr(\gcd(X,Y)=1)$ for independent fair-coin waiting
+times $X,Y$. \emph{Transport from mobius-mersenne:} the gcd-divisibility factorisation
+\lean{tsum\_pos\_pair\_both\_dvd\_half\_eq\_inv\_mersenne\_sq}{GcdMomentCalculus.lean:266}
+($\Pr(d\mid X\wedge d\mid Y)=1/(2^d-1)^2$) together with the reduced-direction law
+\lean{tsum\_pos\_coprime\_inv\_mersenne\_eq\_one}{GcdMomentCalculus.lean:349} converts the
+squared-Lambert sum into a probability mass, and the independently-built
+\lean{tsum\_coprime\_pair\_pow\_eq\_tsum\_totient\_mul\_pow}{GeometricCoprimality.lean:120} gives
+the same bridge from the totient generating function directly.
+
+\item[cyclotomic] The T1--T6 chain: \texttt{mobiusNumeratorPolynomial}, its coefficients (an exact
+divisor-counting formula, \lean{mobiusNumeratorPolynomial\_coeff}{RepunitMobiusNumerator.lean:217}),
+cyclotomic-value survival
+(\lean{cyclotomicValue\_dvd\_baseMobiusShadow\_den}{CyclotomicProjectionOfShadow.lean:389}), and
+prime-power jump dynamics. \emph{Transport to mobius-mersenne (denominator growth):} the upper-half
+prime-channel survival theorem
+\lean{upperHalfChannel\_product\_dvd\_den\_of\_scale\_primeFactors\_le}{MersenneShadowCyclotomicNoncollapse.lean:809}
+feeds directly into the exact denominator-growth formula
+\lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147} in the
+Möbius--Mersenne coordinate.
+
+\item[p-adic] Fixed and growing 2-adic valuation-unit dynamics: the adelic height/denominator-tax
+law, the tropical fixed-precision no-go, the signed-Hankel terminal-parity engine, the two-adic
+pulse-block construction. \emph{Transport to farey:} the scalar-localisation complement-dvd law
+\lean{scalarLocalization\_complement\_dvd}{AdelicHeightObstruction.lean:23} together with the
+Mersenne-height corollary \lean{positiveRat\_mersenne\_height}{AdelicHeightObstruction.lean:103}
+($2^r\mid|x.\mathrm{num}|\wedge x<2/(2^n-1)\Rightarrow 2^r(2^n-1)<2\cdot x.\mathrm{den}$) is exactly
+a denominator lower bound of the same shape the Farey coordinate proves directly.
+
+\item[farey] Unimodular denominator exclusion:
+\lean{farey\_gap}{GapFareyBound.lean:51} and the committed $K{=}240$ window certificate
+\lean{gap\_check\_window\_1\_240\_le\_79639646646701375323355774875831053}{GapFareyBound.lean:176}
+giving $S\ne p/q$ for every $q\le Q_0\approx7.96\times10^{34}$. \emph{Transport to binary-digit:}
+the window bound is built directly from a committed $2^{240}$-scale totient residue
+$V$ for the window $(N,K)=(1,240)$ — a binary-digit object — via
+\lean{gap\_check\_window\_1\_240\_first\_failure}{GapFareyBound.lean:225}, which shows the bound
+is sharp at exactly the mediant $b_K+d_K$.
+
+\item[lcm-orbit] The \texttt{periodLcm}/LCM-diagonal/LCM-cone family:
+\lean{periodLcm}{CarrySurvivorExtinction.lean:515},
+\lean{eq\_prime\_pow\_of\_not\_dvd\_periodLcm}{LcmDiagonalReduction.lean:137}, the multiplicative ray
+split, and the cone-flatness/cone-nonflat producers. \emph{Transport to binary-digit:} the identity
+\lean{lcmRayArithmeticLetter\_eq\_deltaTotient}{TotientActualLcmOrbitArithmetic.lean:298} and
+\lean{diagonalWindowIncrement\_eq\_lcmRayArithmeticLetter}{TotientActualLcmOrbitArithmetic.lean:310}
+identifies the LCM-ray letter literally with a \texttt{deltaTotient}/\texttt{windowDiscrepancy}
+value, so every LCM-orbit statement is, term for term, a binary-digit statement in disguise.
+
+\item[first-harmonic/exponential-sum] Weyl-sum block cancellation over the totient window
+discrepancy: \lean{irrational\_totient\_series\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:83}
+and the unconditional companion at
+\lean{exists\_certifiedKill\_of\_first\_harmonic\_gap}{FirstHarmonicGap.lean:128} (any
+constant-saving cancellation, via $\cos(\pi/8)>9/10$ plus pigeonhole, forces a finite kill
+certificate). \emph{Transport to binary-digit:} by construction the exponential sum is literally
+$\sum_N \cos\bigl(2\pi\cdot(\texttt{windowDiscrepancy}\ h\ N\ L \bmod 2^L)/2^L\bigr)$ — a first-harmonic
+statistic \emph{of} the binary-digit residue, so a norm-gap in this coordinate is definitionally a
+statement about \texttt{windowDiscrepancy}.
+
+\end{description}
+
+\subsection{Obstructions are coordinate-relative: the binary-digit vs.\ M\"obius--Mersenne case}
+
+The clearest instance of coordinate-relative obstruction in the whole \#249 corpus is the fate of
+the classical Erd\H{o}s (1948) near-integer digit method. That method needs, in essence, a finite
+automaton: a bounded amount of state carried forward from one digit block to the next, so that the
+value of a far-away digit block can be recovered from a bounded summary of everything before it. In
+the binary-digit coordinate this is exactly what fails, and it fails as a proved Lean theorem, not
+a heuristic remark: \lean{balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247}
+shows that for a balanced-pulse family of radius $m$, any finite \texttt{State} type collapsing the
+family to a single autonomous summary must satisfy $|\mathrm{State}|\ge\lfloor m/2\rfloor+2$ —
+unbounded in $m$ — so no finite-state decoder can recover the shift $r$ from its collapsed state
+(\ev{Lean}, \scale{uniform}, coordinate \texttt{binary-digit}). This is the formal shadow of the
+elementary facts that $0\le\varphi(n)\le n$, that $\varphi$ is unbounded, and
+that $\varphi$ has average order $\tfrac6{\pi^2}n$, equivalently
+$\sum_{k\le x}\varphi(k)\sim\tfrac3{\pi^2}x^2$ (\ev{Math}),
+rather than any false pointwise estimate $\varphi(n)=\Theta(n)$: the digit-window discrepancy
+\texttt{windowDiscrepancy}$\,h\,N\,L$ genuinely needs $\Omega(m)$ bits of state to track as $N$
+grows, which is exactly why \#249's own binary-digit engine is forced into a \emph{cofinal
+certificate supply} (\lean{irrational\_totient\_series\_of\_certificate\_supply}{TotientTailPeriodKiller.lean:394})
+rather than a single finite-state argument: the same shape of no-go recurs at
+\lean{det\_residualMonomialMatrix}{ResidualGaugeObstruction.lean:47} (locked gauge defeats
+residual-blind rank certificates for the first-harmonic pivot) and at
+\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900} (the dyadic
+totient-kernel span is genuinely infinite-rank, not compressible to any fixed dimension).
+
+The M\"obius--Mersenne coordinate does not carry this obstruction, because it is built on a
+coefficient sequence, $\mu(d)\in\{-1,0,1\}$, that is bounded rather than growing with $d$. The
+squared-Lambert transfer engine
+\lean{tsum\_lambert\_linear\_weight\_sq\_pure}{GcdMomentCalculus.lean:105} takes any weight with
+$|w(d)|\le d$ — $\mu$ trivially qualifies with room to spare — and converts it into a
+divisor-convolution power series for free; no finite-state decoder is ever needed because the
+relevant recursion (the cyclotomic T1--T6 chain: \lean{mobiusNumeratorPolynomial\_eq\_gcdWord}{RepunitMobiusNumerator.lean:205}
+through \lean{cyclotomic\_dvd\_primeJump\_new\_fibre}{PrimePowerJumpDynamics.lean:281}) is a finite,
+exact polynomial identity at every squarefree radical $r$, uniform in $r$, with no growth-driven
+state explosion. This is precisely why the corpus's strongest \emph{unconditional} denominator
+result — the exact-value and lower-bound formulas of
+\lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147} and
+\lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60} — lives
+entirely in the M\"obius--Mersenne coordinate and is scale-\texttt{uniform}, while the sharpest
+\emph{conditional} route in the binary-digit coordinate is scale-\texttt{cofinal} and unclosed. The
+two coordinates are not equivalent representations of the same difficulty: the wall each one hits
+is a fact about that coordinate's own state-growth, not about \#249 itself, which is exactly the
+AP17/AP18 discipline this corpus was built to enforce — before reporting an obstruction, name the
+coordinate it was measured in, and test whether a re-representation removes it.

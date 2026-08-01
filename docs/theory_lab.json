@@ -19,7 +19,7 @@
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
   "declaration_atlas_digest": "sha256:ed45896ae6d792222d79e913a9807e31985cfb63928216ca2ba93765e1bceaf8",
-  "semantic_corpus_digest": "sha256:768c2d2d097d1dadc4e7ea5e37e2423b2e39fa2aecf3a51f88c1310d2ab552d8",
+  "semantic_corpus_digest": "sha256:84dc2bb9734ec29bc4fb548f18058af9afd5313fdfcf763562ec49688e2ed54e",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",

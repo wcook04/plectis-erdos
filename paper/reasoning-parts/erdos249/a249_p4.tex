@@ -1,0 +1,880 @@
+\section{Closed routes, with the mechanism that closed them}
+
+This section catalogues every no-go, countermodel, obstruction, and refuted
+proof strategy found in the \#249/\#257 corpus that bears on Erd\H{o}s \#249
+(\(S := \sum_{n\ge1}\varphi(n)/2^n\) irrational). Erd\H{o}s \#249 is
+\ev{Open}; nothing in this section decides it. What follows is a machinery
+inventory: for each dead route, the exact statement that closed it, the exact
+scope of the closure, and the exact machinery salvaged from the wreckage.
+The organising warning, stated once here and applicable to every item below:
+several of these ``obstructions'' are statements about a
+\emph{representation} of the problem (a proof strategy, a certificate
+family, a coordinate system) and not about the object \(S\) itself. Confusing
+the two is the single most common error this catalogue exists to prevent.
+
+\subsection{Meta-level: finite inspection cannot certify the supply (the
+\texorpdfstring{\(\gamma\)}{gamma}-splice remark)}
+
+\textbf{(a) Route as conceived.} Every unconditional route to \#249 in this
+corpus bottoms out in a \emph{certificate-supply} obligation of the shape
+\(\forall h\ge1\,\forall N_0\,\exists N\ge N_0\,\exists L,\ \mathrm{Sep}(h,N,L)\)
+(\lean{Erdos249257.irrational\_totient\_series\_iff\_certificate\_supply}{LcmConeFlatness.lean:412}, the exact
+open-obligation form quoted throughout the existing manuscript). A natural
+hope is that verifying \(\mathrm{Sep}\) — or its diagonal specialisation — at
+every scale up to some large, explicit bound \(B\) is evidence that the
+supply holds, and that pushing \(B\) far enough would eventually amount to a
+proof.
+
+\textbf{(b) Exact mechanism that closed it.} The manuscript's own remark
+(\ev{Math}, prose-only, not formalised in Lean:
+\emph{\S5.4, ``finite inspection cannot establish the supply''}) gives an
+explicit splice construction. Take any coefficient stream \(\gamma:\mathbb
+N\to\mathbb N\) that agrees with \(\varphi\) on every index \(\le B\), and
+alter \(\gamma\) at one residue class beyond \(B\) so that the resulting
+binary series \(\sum\gamma(n)/2^n\) is forced \emph{rational}. Such a
+\(\gamma\) exists for every \(B\) (this is the same coboundary-splice
+technique that produces \S\ref{sec:parity-countermodel}'s
+\texttt{parityCoboundaryWeight} witness, generalised: insert a lacunary
+zero-valued coboundary edit \(2/2^m - 4/2^{m+1} = 0\) at some \(m>B\)). Because
+\(\gamma\) agrees with \(\varphi\) on every index \(\le B\), \(\gamma\) passes
+every finite certificate that only inspects indices \(\le B\) — in
+particular every instance of \(\mathrm{Sep}(h,N,L)\) with \(N+L\le B\) that
+\(\varphi\) itself passes or fails. Yet \(\sum\gamma(n)/2^n\in\mathbb Q\) by
+construction.
+
+\textbf{(c) Precise scope.} This is a statement about \emph{proof method},
+not about \(\varphi\): it does not touch \(S\) at all. What it excludes is
+the inference ``\(\mathrm{Sep}\) verified up to bound \(B\), for arbitrarily
+large \(B\), therefore \(\mathrm{Sep}\) holds cofinally.'' The scope is
+exactly \(\scale{bounded}\) versus \(\scale{cofinal}\): any finite-B
+verification, however large, is compatible with both outcomes, because a
+rational stream can be built to survive any \emph{fixed} inspection horizon.
+It says nothing about whether \(\varphi\) itself is such a \(\gamma\) — only
+that no finite-horizon check can distinguish \(\varphi\) from a \(\gamma\)
+that is.
+
+\textbf{(d) Salvage.} The splice construction is exactly the mechanism
+underlying \S\ref{sec:parity-countermodel}'s Lean-formalised countermodel
+below, so its \emph{content} is not lost even though this specific remark is
+unformalised: everywhere a proof strategy in this corpus proposes to certify
+a supply by exhaustive finite search (the diagonal deposits at
+\(t\in\{1,\dots,64\}\), \lean{Erdos249257.certifiedKill\_diagonal\_all\_imported\_through\_t64}{DiagonalPincerCertificatesT64.lean:1967}; the row-200{,}000 sqrt-escape
+census on the \#257 side), this remark is the standing reason such a search,
+however large, is evidence and not proof. \ev{Math} \scale{n/a}
+\coord{binary-digit}.
+
+\subsection{The parity-aperiodicity countermodel
+(\texttt{TotientParityCoboundaryCountermodel})}
+\label{sec:parity-countermodel}
+
+\textbf{(a) Route as conceived.} A natural strengthening of \#249 attempts:
+show that any coefficient word \(c:\mathbb N\to\mathbb N\) that (i) is
+uniformly bounded, (ii) satisfies the trivial linear-growth bound
+\(c(n)\le n\), (iii) matches \(\varphi(n)\bmod 2\) exactly, and (iv) is not
+eventually periodic — even strengthened to \emph{cofinally, arbitrarily
+separated, arbitrarily long blocks} of non-periodicity — must have irrational
+binary series \(\sum c(n)/2^n\). This is the natural target for anyone
+trying to use only \(\varphi\)'s coarse parity/aperiodicity profile.
+
+\textbf{(b) Exact mechanism.} The construction
+\(\mathtt{parityCoboundaryWeight}(n) := \mathtt{parityBaseWeight}(n) +
+2\cdot\mathtt{largePowerTwoBit}(n) - 4\cdot\mathtt{largePowerTwoBit}(n-1)\),
+where \(\mathtt{parityBaseWeight}\) is the eventually-constant word
+\(0,1,1,2,4,4,4,\dots\) and \(\mathtt{largePowerTwoBit}(n)=1\) iff
+\(n=2^{k+3}\), is a lacunary zero-valued coboundary splice on top of an
+eventually-constant base. The strongest of five landed theorems,
+\begin{prop}[Totient-parity arbitrarily-many-separated-carry rational
+countermodel]
+There exists \(c:\mathbb N\to\mathbb N\) such that: \(c(n)\le6\) for all
+\(n\); \(c(n)\le n\); \(c(n)\equiv\varphi(n)\pmod2\) for every \(n\); for
+every \(N,G,K\) there is a block of \(K\) explicit \((6,0)\) carry-pulse
+pairs beyond \(N\), each pair separated by more than \(G\); and
+\(\sum_n c(n)/2^n = 3/2\).
+\end{prop}
+\lean{Erdos257PeriodNoncollapse.exists\_totientParity\_arbitrarilyManySeparatedCarry\_rational\_countermodel}{TotientParityCoboundaryCountermodel.lean:637}
+(sum computation \lean{tsum\_parityCoboundaryWeight\_eq\_three\_halves}{TotientParityCoboundaryCountermodel.lean:359}; non-periodicity
+\lean{parityCoboundaryWeight\_not\_eventually\_periodic}{TotientParityCoboundaryCountermodel.lean:487}; exact parity match
+\lean{parityCoboundaryWeight\_mod\_two\_eq\_totient}{TotientParityCoboundaryCountermodel.lean:194}). \ev{Lean} \scale{cofinal}
+\coord{binary-digit}.
+
+\textbf{(c) Precise scope.} This is an \emph{object}-level existence witness
+(\(c\ne\varphi\), only \(c\equiv\varphi\pmod2\)) that closes a
+\emph{proof-route}: it proves that the hypothesis set \(\{\)bounded, linear
+growth, \(\varphi\)-parity match, non-eventual-periodicity\(\}\), no matter
+how strongly the non-periodicity clause is strengthened (up to the
+arbitrarily-separated arbitrarily-numerous form above), can never entail
+irrationality of the associated binary series, because \(c\) satisfies every
+hypothesis and is rational. It says nothing about \(\varphi\) itself — the
+witness sequence \(c\) is a different, hand-built sequence. Any future
+sufficient-condition candidate stated purely in terms of \(\{\)coefficient
+boundedness, growth, parity, periodicity\(\}\) must be checked against this
+countermodel before being trusted, for \emph{either} \#249 or \#257.
+
+\textbf{(d) Salvage.} The lacunary coboundary-splice technique itself —
+inserting zero-valued edits \(2\cdot2^{-m}-4\cdot2^{-(m+1)}=0\) at sparse
+ranks to destroy periodicity while preserving the rational sum — is a fully
+general recipe for building rational-valued, non-eventually-periodic,
+bounded coefficient sequences matching \emph{any} parity template, and is
+literally the mechanism instantiated informally in
+Theorem~\ref{thm:gamma}'s \(\gamma\)-splice construction. It is also a
+ready-made stress-test fixture for any future parity-based sufficient
+condition proposed anywhere in the corpus. Confirms the corpus-wide lesson
+(project memory \texttt{feedback\_erdos\_reductions\_rejected\_bank\_real\_results}):
+only arguments using \emph{actual} quantitative totient/Mersenne size or
+residue information — as in the \texttt{TotientActualLcm*},
+\texttt{TotientFixedRank*} families below — can possibly close \#249; pure
+symbolic-word arguments cannot.
+
+\subsection{Two scoped \#249 no-go countermodels: square-CRT correction
+suppression is ambiguous}
+
+\textbf{(a) Route as conceived.} The totient prime-dilation cocycle
+\(\varphi(pm)=(p-1)\varphi(m)+[p\mid m]\varphi(m)\) carries a correction term
+whenever \(p\mid m\). A natural strategy imposes a square congruence
+\(n\equiv A+pa\pmod{p^2}\) with a ``clean'' shift \(h\) (\(p\nmid a+h\)) to
+suppress that correction on a finite horizon, then hopes that
+correction-suppression (``cleanliness'') is itself enough to guarantee that
+the resulting finite-difference cube is \emph{nonzero} — i.e. that cleaning
+away the correction term automatically leaves behind a genuine, nonvanishing
+arithmetic signal usable in a curvature argument.
+
+\textbf{(b) Exact mechanism that closed it.} Two explicit, opposite
+finite computations refute the hoped-for entailment simultaneously:
+\begin{itemize}[nosep]
+\item \emph{Vanishing witness.} The smallest returned countermodel has the
+\emph{entire} two-step finite block \(\mathtt{actualOneCubeCoeff}\) equal to
+zero at \(n=52\), \(r_0=13\), \(r_1=13/18\)
+(\lean{squareCRT\_clean\_block\_can\_vanish}{SquareCRTCube.lean:285}, kernel-\texttt{decide}d;
+cleanliness witnessed by \lean{squareCRT\_vanishing\_countermodel\_is\_clean}{SquareCRTCube.lean:294}).
+\item \emph{Nonvanishing witness.} A separate, nearby clean configuration at
+\(n=27\) has the same block \emph{nonzero}
+(\lean{squareCRT\_clean\_block\_can\_be\_nonzero}{SquareCRTCube.lean:303}; cleanliness witnessed by
+\lean{squareCRT\_nonzero\_countermodel\_is\_clean}{SquareCRTCube.lean:311}).
+\end{itemize}
+Both witnesses are exhibited alongside the positive achievability result
+\lean{exists\_squareCRT\_clean\_horizon}{SquareCRTCube.lean:228} (a bounded common base satisfying prescribed
+CRT anchors/residues does exist). \ev{Cert} (theorem bodies not
+independently re-verified beyond signatures and docstring — flagged
+\texttt{DOCSTRING-SOURCED} in the source bank) \scale{fixed}
+\coord{other:square-crt-cocycle}.
+
+\textbf{(c) Precise scope.} These are two \#249-scoped countermodels — the
+coordinate is the totient prime-dilation cocycle specifically, not a
+problem-agnostic phenomenon. Together they show that
+\emph{correction-suppression is logically independent of the
+sign/nonvanishing question it was hoped to settle}: ``clean'' (i.e.
+correction-free) is consistent with \emph{both} outcomes. This is a
+statement about a specific finite-difference construction (the
+representation), not about \(\varphi\): it does not exclude a nonvanishing
+finite-difference cube in general, only the inference from cleanliness
+\emph{alone} to nonvanishing.
+
+\textbf{(d) Salvage.} The general cocycle identity
+\(\varphi(pm)=(p-1)\varphi(m)+[p\mid m]\varphi(m)\)
+(\lean{totient\_mul\_prime\_cocycle}{SquareCRTCube.lean:34}) and the CRT-witness apparatus
+(\lean{exists\_squareCRT\_base}{SquareCRTCube.lean:131}, \lean{exists\_large\_squareCRT\_base}{SquareCRTCube.lean:164}) remain fully reusable for
+\emph{any} residue-forcing construction, in any coordinate. More valuably,
+the abstract cube-cancellation lemma extracted from the same file,
+\lean{alternating\_powerset\_sum\_eq\_zero\_of\_insert\_invariant}{SquareCRTCube.lean:264} — ``if inserting one
+coordinate never changes the value of \(f\), the alternating powerset sum of
+\(f\) vanishes'' — is completely divorced from totient/CRT content and is
+directly reusable for any Hilbert-cube or higher-difference argument on
+either problem. What remains as the honest open gap: an independent
+anti-concentration or residue-producer argument for why the clean residual
+does \emph{not} vanish, which this module explicitly does not supply.
+
+\subsection{The adelic height obstruction}
+\label{sec:adelic-height}
+
+\textbf{(a) Route as conceived.} Several proof strategies attempt to
+\emph{clear} an unwanted denominator factor from a rational value \(x\) by
+multiplying by a small integer coefficient \(c\), hoping to discard the
+complementary denominator information entirely (e.g. localising a diagonal
+tail difference to one LCM ray channel while dropping the rest).
+
+\textbf{(b) Exact mechanism.}
+\begin{lem}[Scalar-localisation complement divisibility]
+For \(x:\mathbb Q\), \(c:\mathbb Z\), \(H:\mathbb N\): if \(H\mid x.\mathrm{den}\)
+and \((c\cdot x).\mathrm{den}\mid H\), then \(x.\mathrm{den}/H \mid
+c.\mathrm{natAbs}\).
+\end{lem}
+\lean{Erdos249257.AdelicHeightObstruction.scalarLocalization\_complement\_dvd}{AdelicHeightObstruction.lean:23}. The equality
+strengthening, \(\exists t:\mathbb Z,\ H\cdot c\cdot x = t\cdot x.\mathrm{num}\), is
+\lean{Erdos249257.AdelicHeightObstruction.scalarLocalization\_integer\_eq\_mul\_num}{AdelicHeightObstruction.lean:56}. The
+Mersenne-scale corollary — for positive \(x\), if \(2^r\mid x.\mathrm{num.natAbs}\)
+and \(x<2/(2^n-1)\), then \(2^r(2^n-1)<2\cdot x.\mathrm{den}\) — is
+\lean{Erdos249257.AdelicHeightObstruction.positiveRat\_mersenne\_height}{AdelicHeightObstruction.lean:103} (generic form
+\lean{positiveRat\_numDivisor\_mul\_lt\_two\_mul\_den}{AdelicHeightObstruction.lean:77}). A companion rigidity fact
+rules out smuggling the discarded information back in through a linear
+channel: if a linear map \(\Lambda:V\to W\) factors through a surjective
+evaluation \(\mathrm{ev}\) (\(\ker\mathrm{ev}\le\ker\Lambda\)), then
+\(\Lambda\) is \emph{exactly} \(\mathrm{ev}(\cdot)\bullet w_0\) for a single
+fixed \(w_0\) —
+\lean{Erdos249257.AdelicHeightObstruction.linearDescender\_eq\_smul\_eval}{AdelicHeightObstruction.lean:120}. The upstream
+primitive these import,
+\lean{Erdos249257.RationalDenominatorSurvival.divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17} and
+\lean{survivingDivisor\_dvd\_scaled\_divInt\_den}{RationalDenominatorSurvival.lean:38}, gives the exact
+survival/cancellation law: a divisor \(m\mid D\) of a displayed denominator
+survives reduction of \(a/D\) iff \(m\) is coprime to \(a\); after scaling the
+numerator by \(h\), a surviving coprime divisor \(C\mid D\) shrinks to
+exactly \(C/\gcd(C,h)\), never further. \ev{Lean} \scale{uniform}
+\coord{other:rational-height}.
+
+\textbf{(c) Precise scope.} This is pure \(\mathbb Q\)-arithmetic with zero
+Mersenne or totient content — it is not a statement about \(S\) at all, but
+about \emph{any} rational-height bookkeeping argument. Its exact content:
+scalar denominator-clearing never \emph{erases} the complementary
+denominator; it moves that complement into the coefficient's (Archimedean)
+size. Any construction that tries to shrink a displayed denominator down to
+one surviving channel pays for it in coefficient growth. This directly
+explains \emph{why} denominator-compression strategies are structurally hard:
+the Mersenne-shadow denominator lower bound
+\(2^{t/2}\le\prod_{p\in\mathrm{upperHalfPrimes}\,t}\mathrm{mersenne}(p)\)
+(\lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60}) forces a
+quadratic-in-scale coefficient cost via this lemma if one tries to localise
+to a single channel.
+
+\textbf{(d) Salvage.} Fully problem-agnostic and directly reusable for \#257
+or any other Lambert-type denominator-survival argument as-is. It is the
+general mechanism underlying the corpus's Farey-gap denominator-exclusion
+family (Part C of the certificate bank,
+\lean{tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18337}, the strongest
+current unconditional statement about \(S\): if \(S\) is rational its
+reduced denominator exceeds \(79{,}639{,}646{,}646{,}701{,}375{,}323{,}355{,}774{,}875{,}831{,}053\approx7.96\times10^{34}\)).
+
+\subsection{The signed \(q\)-moment machinery — a positive tool, not an
+obstruction}
+
+\textbf{(a) Route as conceived.} A ``signed Hankel determinant'' /
+Hermite--Pad\'e style route to \#249 would exhibit a finite signed linear
+combination of dyadically-cleared totient terms and show it is provably
+nonzero, giving a nonvanishing certificate for a first-harmonic or
+Möbius-companion construction.
+
+\textbf{(b) Exact mechanism (a nonvanishing \emph{engine}, not a no-go).}
+\begin{lem}[Unique-terminal parity nonvanishing]
+If a finite signed sum \(\sum_{i\in s}u(i)\cdot2^{e(m)-e(i)}\), clearing
+dyadic denominators to a common exponent \(e(m)\), has one index \(m\in s\)
+with strictly maximal exponent \(e(m)\) and odd coefficient \(u(m)\), while
+every other index has strictly smaller exponent, then the whole cleared sum
+is \(\equiv1\pmod2\), hence nonzero.
+\end{lem}
+\lean{scaled\_dyadic\_sum\_ne\_zero}{SignedQMomentObstruction.lean:96}, built from a fully generic rectangular
+Cauchy--Binet-style determinant-of-product expansion
+\lean{det\_mul\_rectangular}{SignedQMomentObstruction.lean:29} (definitions
+\lean{truncatedMoment}{SignedQMomentObstruction.lean:108} and
+\lean{hankelDet}{SignedQMomentObstruction.lean:117}). \ev{Lean} \scale{bounded}
+\coord{p-adic}.
+
+\textbf{(c) Precise scope — the point this section exists to make.} Despite
+living in a file named alongside the corpus's ``obstruction'' modules, this
+is explicitly \emph{not} phrased as a no-go in its own docstring: it is the
+finite nonvanishing engine that a Hankel--Padé construction for \#249 would
+\emph{consume}. The parity lemma and the Cauchy--Binet expansion use no
+totient or Mersenne structure at all — pure linear algebra, fully
+problem-agnostic, directly transplantable to any base-\(q\) dyadic-clearing
+argument including \#257's series family. What is missing, and what
+prevents this from closing anything, is a \emph{supply} theorem: no result
+in the corpus proves that a unique-terminal configuration of this shape
+exists cofinally for the totient-derived family. The obstruction, such as it
+is, is not in this lemma but in the absence of its hypothesis's cofinal
+supply — exactly the same shape of gap as \S\ref{sec:mahler-defect}'s Mahler
+defect below.
+
+\textbf{(d) Salvage.} The entire lemma is reusable machinery, not wreckage —
+nothing here needs salvaging because nothing here failed. It stands ready
+for whichever future construction can supply the missing cofinal
+unique-terminal-configuration existence.
+
+\subsection{The residual-gauge obstruction}
+
+\textbf{(a) Route as conceived.} A ``first-harmonic pivot'' strategy for
+\#249 (via exponential/character-sum cancellation,
+\lean{FirstHarmonicPivot.lean}{FirstHarmonicPivot.lean}) might try to certify a nonzero determinant or
+full-rank minor of a residual-weighted monomial matrix as sufficient
+evidence that a genuine phase reconstruction (as opposed to a degenerate
+locked configuration) has occurred.
+
+\textbf{(b) Exact mechanism.}
+\begin{prop}[Locked reconstruction preserves a nonzero minor]
+For a monomial matrix \(\mathrm{residualMonomialMatrix}(e,r,z)(i,j) =
+r(i,j)\cdot z(j)^{e(i)}\) with all residual entries \(z(j)\ne0\) and
+\(e(i)=1\) for a distinguished row \(i\): \(\det(\mathrm{phasePowerMatrix})
+\ne0 \implies \det(\mathrm{residualMonomialMatrix})\ne0\), \emph{and} the
+distinguished row is identically \(1\) regardless.
+\end{prop}
+\lean{Erdos249257.locked\_reconstruction\_preserves\_nonzero\_minor}{ResidualGaugeObstruction.lean:94}
+(row-dependent relaxation \lean{rowResidualMonomialMatrix\_reconstructs\_phasePowerMatrix}{ResidualGaugeObstruction.lean:124}; the
+column-gauge identity underlying it,
+\(\det(\mathrm{residualMonomialMatrix}) =
+\det(\mathrm{phasePowerMatrix})\cdot\prod_j W(j)\), is
+\lean{det\_residualMonomialMatrix}{ResidualGaugeObstruction.lean:47}; a row-dependent relaxation still fails at
+\lean{rowReconstruction\_zero\_row\_one}{ResidualGaugeObstruction.lean:145}). \ev{Lean} \scale{uniform}
+\coord{other:first-harmonic-phase}.
+
+\textbf{(c) Precise scope.} Pure linear algebra over \(\mathbb C\), fully
+generic in dimension \(d\) and exponent function \(e\), zero \#249-specific
+content — this is a statement about \emph{residual-weighted monomial
+matrices as a representation}, not about the totient object. It rules out
+exactly one class of certificate: a residual-blind rank/determinant/
+conditioning test, used alone, cannot distinguish genuine phase
+reconstruction from an explicit ``locked'' degenerate configuration in which
+a residual weighting scales every column by \(W(j)=z(j)^{-1}\), collapsing
+the exponent-one row to the constant row \((1,\dots,1)\) while the
+determinant stays nonzero whenever the base (Vandermonde-shaped)
+\(\mathrm{phasePowerMatrix}\) determinant is nonzero. It does \emph{not}
+rule out determinants carrying an additional arithmetic coupling identity
+between rows.
+
+\textbf{(d) Salvage.} A hard requirement for any future first-harmonic
+determinant construction (Part E of the certificate bank,
+\lean{irrational\_totient\_series\_of\_first\_harmonic\_norm\_gap}{FirstHarmonicPivot.lean:83}): the construction \emph{must}
+couple rows by an extra arithmetic identity, not merely gauge-normalise
+columns. The diagonal-gauge-action technique itself is reusable for any
+determinant-based nonvanishing strategy in any coordinate.
+
+\subsection{Cone flatness and cone nonflatness}
+
+\textbf{(a) Route as conceived.} The diagonal certificate-supply obligation
+(\lean{Erdos249257.irrational\_totient\_series\_iff\_lcm\_diagonal\_certificate\_supply}{LcmConeFlatness.lean:426}) concerns only the pair \((H,2H)\) at LCM
+height \(H=\mathrm{periodLcm}(t)\). Two natural strengthenings: (i) show
+rationality of \(S\) is even more constrained than a single diagonal pair —
+it flattens an \emph{entire cone} of ratios; (ii) conversely, exhibit
+\emph{nonflatness} on a wider ``menu'' of cone vertices as a cheaper
+sufficient certificate than a single pairwise \(\mathrm{certifiedKill}\).
+
+\textbf{(b) Exact mechanism — flatness (necessary consequence of
+rationality).}
+\begin{prop}[Wave-24 LCM-cone flatness]
+\(\neg\mathrm{Irrational}(S) \implies \exists t_1,\ \forall t\ge t_1,\
+\forall q,m:\mathbb N,\ 0<q \implies \mathrm{totientTail}(q\cdot
+\mathrm{periodLcm}(t)+m\cdot\mathrm{periodLcm}(t)) -
+\mathrm{totientTail}(q\cdot\mathrm{periodLcm}(t)) \in
+\mathrm{range}((\uparrow):\mathbb Z\to\mathbb R)\).
+\end{prop}
+\lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{CertificateKernel.lean:18955} (body
+\texttt{LcmConeFlatness.lean}). \ev{Lean} \scale{uniform} (for all
+sufficiently large \(t\), \emph{given} rationality) \coord{other:lcm-ray-totient}.
+Rationality forces one fractional constant on the entire LCM cone
+\(\{k\cdot\mathrm{periodLcm}(t):k\ge1\}\) at every scale \(t\ge t_1\), not
+merely the single diagonal pair — the umbrella collapse theorem
+\lean{irrational\_totient\_series\_of\_lcm\_cone\_window\_kill\_supply}{CertificateKernel.lean:18967} shows any
+\(\mathrm{certifiedKill}\) \emph{anywhere} on the two-multiplier cone, at
+arbitrarily large \(t\), forces \(\mathrm{Irrational}(S)\).
+
+\textbf{(b\('\)) Exact mechanism — nonflatness (a sharper sufficient
+certificate).}
+\begin{prop}[Wave-25 cone-nonflat menu refuter]
+For a nonempty menu \(Q\) of positive vertex multipliers with a
+\emph{one-sided} floor \(\forall q\in Q,\ q\cdot H+L+2<2^L\) (half the
+pairwise floor of \(\mathrm{certifiedKill}\)): if \(\mathrm{coneNonflatCert}\,
+H\,L\,Q\) fires (an argmin/Helly-avoidance argument: the vertices cannot all
+share one fractional part, else the minimal-deep-tail vertex would be a
+common left endpoint of every arc), then \(\exists q_i,q_j\in Q,\
+\mathrm{totientTail}(q_j H)-\mathrm{totientTail}(q_i H)\notin
+\mathrm{range}((\uparrow):\mathbb Z\to\mathbb R)\).
+\end{prop}
+\lean{exists\_nonintegral\_pair\_of\_coneNonflatCert}{LcmConeNonflat.lean:126} (supply theorem
+\lean{irrational\_totient\_series\_of\_lcm\_cone\_nonflat\_supply}{CertificateKernel.lean:19093}). \ev{Lean}
+\scale{bounded} (proved for a given finite menu \(Q\); an
+\emph{unbounded}-scale menu is the open sufficient target)
+\coord{other:lcm-ray-totient}.
+
+\textbf{(c) Precise scope.} Flatness is a genuine \emph{necessary
+consequence} of rationality — it is a statement about what rationality of
+\(S\) would force, conditional on rationality, not an unconditional fact
+about \(S\). Nonflatness is an unconditional \emph{sufficient} certificate
+mechanism, information-theoretically half the depth floor of the pairwise
+\(\mathrm{certifiedKill}\) (one-sided versus two-sided radius charging), but
+it has been proved only for individual finite menus \(Q\); no menu of
+unbounded scale has been supplied. Neither direction decides \#249: flatness
+gives a contrapositive route (exhibit \emph{any} cone nonintegrality at
+arbitrarily large \(t\) and rationality is refuted) and nonflatness sharpens
+the certificate needed, but the underlying producer obligation — a
+nonintegral tail difference at cofinally many scales — is unchanged. Note
+also the coordinate warning from the manuscript's own Appendix C
+(\lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{LcmConeFlatness.lean:90}): cone flatness is a
+\emph{necessary} consequence, and only the sharper diagonal-pincer /
+full-target-avoidance normal forms
+(\lean{diagonal\_int\_iff\_foreignDiagonalDefect\_hits\_fullTarget}{DiagonalPincerDecomposition.lean:215},
+\lean{irrational\_totientSeries\_of\_full\_target\_avoidance\_supply}{DiagonalPincerDecomposition.lean:290}) are an exact
+\(\mathrm{iff}\) with irrationality.
+
+\textbf{(d) Salvage.} The argmin/Helly-avoidance combinatorial-geometry
+technique behind cone-nonflatness is a reusable pattern for any modular-residue
+pincer argument with more than two points, in any coordinate. The rank-2
+second-difference certificate family built on the same window apparatus was
+independently tested and found \emph{not} to be a shortcut over rank 1
+(measured, not merely conjectured: at \((h,N)=(1,8)\), rank-1 fires at depth
+8 while no rank-2 certificate exists at depth \(\le8\);
+\lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19043}) — an
+explicitly flagged dead end not to re-attempt without new information.
+
+\subsection{The Mahler defect: dyadic totient-kernel finite rank per level,
+infinite rank overall}
+\label{sec:mahler-defect}
+
+\textbf{(a) Route as conceived.} A finite-linear-algebra shortcut to \#249:
+find a bounded-depth linear relation among the dyadic totient-kernel
+channels \(n\mapsto\varphi(2^jn+r)\) that would compress the infinite
+family to a finite-dimensional space, from which a rationality-forcing
+contradiction (or a genuine rank obstruction) might be extracted.
+
+\textbf{(b) Exact mechanism.}
+\begin{thm}[Infinite dyadic totient-kernel rank]
+For every depth \(e\ge0\), the canonical family of \(2^e+1\) dyadic
+totient-kernel channels (\(\mathtt{card\_totientCanonicalIndex}\),
+\lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:51}) is linearly independent over
+\(\mathbb Q\), proved via a \texttt{SeparatedMinorCertificate} (an explicit
+finite evaluation-point assignment with nonzero determinant, forced by CRT +
+Dirichlet's theorem on primes in arithmetic progressions — one channel made
+prime, every other channel forced through a fresh prime \(\equiv1\bmod\) a
+large power of \(2\)).
+\end{thm}
+\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900}; consequently the full
+infinite family spans an infinite-dimensional \(\mathbb Q\)-space,
+\lean{not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1014}. A companion
+impossibility result closes the natural repair attempt directly: a bounded
+\emph{compressed-adjoint certificate} — a triple \((Q,A,\mathrm{boundary})\)
+with \(Q\cdot v\cdot A=\mathrm{boundary}\), \(|\mathrm{boundary}|<Q\cdot v\),
+\(A\ne0\) — is provably impossible,
+\lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051}. \ev{Lean}
+\scale{uniform} (holds for every \(e\); existence side is unconditional, via
+Mathlib's CRT + primes-in-AP machinery) \coord{binary-digit} (dyadic
+totient-kernel — \emph{not} the Möbius coordinate).
+
+\textbf{(c) Precise scope — coordinate-relative, stated explicitly by the
+source module.} This does \emph{not} show irrationality of \(S\). It proves
+the dyadic-kernel \emph{side} is infinite-rank; the module's own docstring
+names the missing input as ``a rationality-side finite-rank compression, or
+equivalent contradiction.'' The companion necessary-consequence-of-rationality
+theorem, \(\neg\mathrm{Irrational}(S) \implies \exists v>0,\exists U:\mathbb
+N\to\mathbb Z,\ \mathrm{IsTemperedBinaryOrbit}(\varphi,v,U)\wedge\forall
+e,\ 2^e-1\le\mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathrm{range}(
+\mathrm{canonicalCarryKernelFamily}(U,e)))\)
+(\lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284}),
+shows the SCALE side is finished — the \(2^e-1\) floor holds for all \(e\)
+with a uniform proof — but the opposite inequality (a rationality-side rank
+\emph{upper} bound) is exactly what is missing, and its absence is the
+entire open content here. A \emph{third}, independent coordinate exhibits
+the same coordinate-relative phenomenon: the Möbius-incidence companion
+matrix \(U_N(i,j)=\mu((i+1)/(j+1))\) if \((j+1)\mid(i+1)\) else \(0\) is
+lower triangular with diagonal \(1\), hence \(\det U_N=1\) for every \(N\),
+hence its jet-evaluation map is injective — a finite ``incidence quotient''
+compression is impossible at any finite horizon in the Möbius coordinate too
+(\lean{incidenceMobius\_det\_eq\_one}{IncidenceQuotientHermitePade.lean:56}). Both natural finite
+truncations — dyadic-residue and Möbius-incidence — turn out to have no
+nontrivial kernel, in two completely different coordinates. That is strong
+evidence any winning finite-linear-algebra shortcut, if one exists, must
+live in a genuinely third coordinate or use an infinite/growing-parameter
+construction, not evidence that no shortcut exists at all.
+
+\textbf{(d) Salvage.} \lean{SeparatedMinorCertificate}{TotientMahlerDefect.lean:73} and
+\lean{linearIndependent\_of\_separatedMinorCertificate}{TotientMahlerDefect.lean:81} are fully generic finite-rank
+linear-independence infrastructure — the indexed family is a free variable,
+reusable for any finite-rank obstruction argument on either problem (e.g.
+testing independence of Mersenne-indexed sequences for \#257 via an explicit
+nonzero minor). The CRT+Dirichlet evaluation-forcing technique (make one
+channel prime, force every other channel through a fresh arithmetic-progression
+prime) is a reusable construction pattern independent of the totient
+specifics.
+
+\subsection{Further closed routes, catalogued for completeness}
+
+The following additional no-gos and route-pruning results were read in full
+and are recorded here in compressed form; each follows the same (a)/(b)/(c)/(d)
+discipline as above but is presented as a table row for space.
+
+\begin{longtable}{p{0.16\linewidth}p{0.40\linewidth}p{0.36\linewidth}}
+\textbf{Route} & \textbf{Mechanism \& site} & \textbf{Scope / salvage} \\
+\hline\endhead
+Full terminal dyadic staircase (annihilate every suffix letter mod growing
+powers of 2) &
+\(a\ge8\), room bound \(\Rightarrow\) \texttt{ActualLcmTerminalDyadicStaircase}
+is false: the terminal letter would have to be positive (by short-window
+positivity) and strictly below a wider-than-itself modulus while divisible
+by it, forcing it to \(0\), contradicting positivity.
+\lean{not\_actualLcmTerminalDyadicStaircase\_of\_room}{TotientActualLcmTopEdgeStaircase.lean:251}.
+\ev{Lean} \scale{uniform} \coord{binary-digit} &
+Kills the FULL terminal-staircase proof strategy outright and
+unconditionally; the \emph{punctured} staircase (all but the last letter
+vanish) survives and is pinned exactly to the half-turn value \(2^{m-1}\) at
+the penultimate letter
+(\lean{puncturedDyadicStaircase\_penultimate\_eq\_half}{TotientActualLcmTopEdgeStaircase.lean:1187}). The
+generic mechanism (\(0<e<2^m\wedge2^m\mid e\Rightarrow e=0\)) is reusable
+anywhere a positive quantity is asked to vanish mod a wider modulus. \\
+\hline
+LCM factor-ideal retention (keep only the homogeneous ``factor-only'' part
+of an LCM-ray decomposition) &
+An explicit nonzero all-horizon countermodel, built from multiples of
+\(\varphi(\mathrm{periodLcm}(t))\), agrees with every exact whole-ray anchor
+\(\Delta\varphi(H,qH)=\varphi(H)\) for \(2\le q<t\) and survives every finite
+commensurate LCM-cube shift-polynomial, at every finite rank.
+\lean{LcmFactorIdealPulseObstruction.lean:1--24}{LcmFactorIdealPulseObstruction.lean:1-24} (module docstring;
+theorem bodies \ev{Cert}, DOCSTRING-SOURCED). \scale{uniform}
+\coord{other:lcm-ray-totient} &
+This is a \emph{representation}-level exclusion, not an object-level one: it
+shows the homogeneous factor-ideal projection discards fresh Möbius-channel
+information that can be adversarially reconstructed. Explicitly flagged
+SYNTHETIC — no claim that the compensation letters occur as actual totient
+differences. Salvage: a future factor-ideal argument must control the
+\emph{fresh} channel via
+\lean{totient\_eq\_sum\_mobiusTotientChannel}{LcmFactorIdealPulseObstruction.lean:328}, not just the old one. \\
+\hline
+Two-prime ``full-target diamond'' (four simultaneous ray hits certify more
+than one) &
+The four-hit diamond
+\(\mathrm{Hit}(H)\wedge\mathrm{Hit}(pH)\wedge\mathrm{Hit}(qH)\wedge
+\mathrm{Hit}(pqH)\) is logically equivalent to \(\mathrm{Hit}(H)\) alone, no
+primality of \(p,q\) needed — hits transport multiplicatively for free
+because \(\mathrm{Hit}(H)\iff\mathrm{IsIntegralValue}(\text{scaleDiagonalTailDifference}(H))\)
+and integrality transports affinely along every ray \(H\mapsto kH\).
+\lean{Erdos249257.fullTarget\_primeAdjunction\_diamond\_iff\_root}{FullTargetPrimeAdjunctionNoGo.lean:196}.
+\ev{Lean} \scale{uniform} \coord{other:mobius-mersenne} &
+The 4-condition diamond carries zero information beyond its base point — a
+``curvature-zero collapse'' of a multi-point certificate. Any future
+positive-holonomy argument needs an independently-defined projection of the
+foreign state \emph{plus} control of the discarded complement; a bare
+2/4-point diamond cannot supply new information beyond its own scale. \\
+\hline
+Fixed-precision local valuation-unit signature (2-adic ``tropical curvature
+carry'' attack) &
+For any finite word of odd-unit-part 2-adic symbols at fixed precision
+\(u>0\) and any starting carry state \(e\), there exists a compatible carry
+orbit realising the word with every intermediate state centred inside its
+symbol's dyadic radius.
+\lean{Erdos249257.TotientTailPeriodKiller.fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137}.
+\ev{Lean} \scale{bounded} \coord{p-adic} &
+Bounded LOCAL valuation-unit data at FIXED precision can never exclude all
+finite centred carry completions — no obstruction is derivable from a
+fixed-window local signature alone; growing precision, or extra arithmetic
+coupling, is required. Pure 2-adic dynamics, zero totient content, reusable
+against any similarly-shaped fixed-window carry-certificate attack. \\
+\hline
+Fixed-depth affine carry reset (distinguishing two carry histories after a
+long common tail) &
+For the affine binary orbit \(\mathrm{orbit}(0)=u_0\),
+\(\mathrm{orbit}(n{+}1)=2\,\mathrm{orbit}(n)-a(n{+}1)\) with common forcing
+word \(a\): \(\mathrm{orbit}_u(L)-\mathrm{orbit}_v(L)=2^L(u_0-v_0)\) exactly.
+\lean{Erdos249257.affineBinaryOrbit\_mod\_twoPow\_eq}{GenericTailOrbitRigidity.lean:307}. \ev{Lean}
+\scale{uniform} \coord{binary-digit} &
+After \(L\) common steps the endpoint residue mod \(2^L\) is
+\emph{independent} of the initial carry — long common tails erase
+predecessor information exactly, not approximately. Directly relevant to any
+argument hoping to distinguish two carry histories from a shared long
+suffix; the terminal forcing word alone determines the residue. \\
+\hline
+Bounded finite-state / autonomous successor decoder for the binary carry &
+For a balanced-pulse family at location \(m\) whose predecessor \texttt{State}
+is constant across the whole family, no \(\mathrm{decode}:\mathrm{State}\to
+\mathbb N\) recovers the radius parameter; any finite \texttt{Fintype State}
+needs \(\mathrm{card}\ge\lfloor m/2\rfloor+2\), unbounded in \(m\).
+\lean{Erdos249257.balancedPulse\_no\_autonomous\_decoder}{GenericTailOrbitRigidity.lean:247}. \ev{Lean}
+\scale{uniform} \coord{binary-digit} &
+Rules out, unconditionally, ANY proof strategy that defines a bounded or
+autonomous ``carry state'' summarising pre-\(m\) history and claims it
+exactly determines the post-\(m\) tail — independent of whether the
+coefficients are \(\varphi\) or a Möbius-support indicator. A hard stop
+against finite-automaton-computes-the-expansion style attacks on either
+problem. \\
+\hline
+Period-4 sign weight as a route to A7's ``frequently nonzero'' hypothesis for
+free &
+The divisor coefficient of the period-4 sign weight
+(\(w(a){=}1\) if \(a{\equiv}1\), \(-1\) if \(a{\equiv}3\), else \(0\), mod
+4) vanishes identically at every \(n\equiv3\pmod4\), via the divisor-pairing
+involution \(d\mapsto n/d\).
+\lean{Erdos249257.intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14179}.
+\ev{Lean} \scale{fixed} \coord{mobius-mersenne} &
+Witnesses that Dirichlet-convolution coefficients CAN vanish identically on
+an arithmetic progression, so the ``frequently nonzero'' hypothesis in the
+nonnegative-periodic irrationality closure
+(\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14536})
+is not free — it is why the corpus lands a dichotomy for general periodic
+signed weights rather than an unconditional supply theorem. \\
+\hline
+Certified finite-depth ``death'' certificates as a route to membership proofs
+(both problems) &
+\(\mathtt{CertifiedGreedyMersenneDeath}(x,\mathrm{level},\mathrm{lookahead})\)
+is a decidable, finite-depth certificate proving non-membership only
+(\lean{greedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1711}; witness
+\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1742}, \(3/4\) certified dead at
+level 1). \ev{Cert} \scale{bounded} \coord{greedy-orbit} &
+Structural one-sidedness, recurring across the WHOLE certified-kill family
+(\lean{TotientTailPeriodKiller.lean}{TotientTailPeriodKiller.lean}, \lean{LcmConeFlatness.lean}{LcmConeFlatness.lean}, this one):
+certified-death \(\Rightarrow\) non-membership, but absence of a found
+certificate, or survival through any finite depth, proves \emph{nothing}
+about membership or rationality. \\
+\hline
+Reconstructing one totient value from a two-tail absolute-value linear
+combination &
+For any finite \(w:\iota\to\mathbb Q\), \(x:\iota\to\mathbb N\) with
+\(\sum w_i\varphi(x_i)=1\) (exact isolation), the crude two-tail cost
+\(\sum|w_i|(2(x_i+1)+(x_i+2))\ge3\), using only \(\varphi(x)\le x\).
+\lean{Erdos257PeriodNoncollapse.three\_le\_totientAdjugateTailCost}{TotientTailCarryPeriod.lean:266}
+(closure \lean{not\_totientAdjugateTailCost\_lt\_one}{TotientTailCarryPeriod.lean:307}). \ev{Lean}
+\scale{uniform} \coord{other:totient-adjugate-linear-algebra} &
+The strategy needs cost \(<1\) and gets \(\ge3\) at ANY finite grid height —
+kills the entire ``isolate one coefficient via absolute-value two-tail
+bookkeeping'' family before it starts. The proof mechanism is problem-agnostic
+(any \(c(n)\le n\) sequence gets the same floor by the triangle inequality)
+and transfers verbatim to a \#257 reformulation. \\
+\hline
+Homogeneous Mersenne-primitive prime factor alone forces a contradiction &
+For the completely-multiplicative control \(c(n)=n\) (zero totient content):
+if \(K<q\), \(q\mid2^K-1\), the corresponding tail shift is integral at every
+\(N\) yet \(q\nmid K\). \lean{idCoeff\_mersenneModulus\_does\_not\_annihilate\_tailShift}{TotientTailCarryPeriod.lean:342}.
+\ev{Lean} \scale{n/a} \coord{other:mersenne-modulus} &
+A primitive prime factor of the homogeneous multiplier \(2^K-1\) alone
+supplies NO contradiction from tail integrality. A direct cross-problem
+warning: \#257's denominators \(2^n-1\) are literally this \(q\mid2^K-1\)
+object, so ``a large primitive Mersenne prime factor alone forces a
+contradiction'' should be checked against this lemma before being attempted
+on either problem. \\
+\hline
+Prime-power reduced-denominator unit-gap strengthening (rescuing extra Farey
+lattice points) &
+At a prime-power reduced denominator \(p^e\), the unit-gap refinement can
+rescue at most ONE additional candidate lattice point beyond the ordinary
+gap certificate. \lean{reducedDenominatorCandidateCount\_prime\_pow\_le\_one}{PrimitiveWeightCertificate.lean:111}
+(iff-characterisation \lean{reducedDenominatorUnitGapCert\_prime\_pow\_iff}{PrimitiveWeightCertificate.lean:54}). \ev{Lean}
+\scale{uniform} \coord{other:farey-gap} &
+A formal ceiling on how much this specific refinement can ever buy — a
+known dead end for extending the \(\approx7.96\times10^{34}\) Farey rung
+(\S\ref{sec:adelic-height}) unboundedly. Do not re-attempt this exact
+strengthening expecting more than +1 lattice point per prime power; the
+underlying reduced-denominator-implies-unit-numerator technique is reusable
+for other denominator-exclusion arguments. \\
+\hline
+Fixed rank-3 finite-difference kernel squeezing more than one dyadic bit of
+curvature information &
+\(\mathrm{fixedRankSecondDifference}(2^{n+1}\cdot2,\,2^{n+1}\cdot3)=-2^{n+1}\)
+exactly, for all \(n\): the two-adic valuation gained by the primitive
+kernel factor \(2\varphi(j)\) is exactly tight.
+\lean{fixedRankSecondDifference\_dyadic\_fixture\_exact}{TotientFixedRankLcmAsymptotic.lean:462}. \ev{Lean}
+\scale{n/a} \coord{binary-digit} &
+Route-pruning ammunition: rules out extracting more than one dyadic bit from
+the bare 3-rank affine kernel \((1,-2,1)\); any further progress on the
+fixed-rank curvature route needs new arithmetic input, not a sharper
+valuation squeeze from the same kernel. The affine rank-3 kernel
+classification itself
+(\lean{affine\_rank\_three\_kernel\_classification}{TotientFixedRankLcmAsymptotic.lean:338}, pure linear algebra
+over \(\mathbb Z\), zero number-theoretic content) is fully reusable for any
+3-point finite-difference argument on either problem. \\
+\end{longtable}
+
+\section{Why the bounds are load-bearing}
+\label{sec:promotion-audit}
+
+The near-miss interface between the corpus's proved results and the four
+open supply obligations — \(\#249\)-supply, \(\#257\)-reset,
+\(\#257\)-cofinal-rows, and \(\#257\)-universal — was swept for
+\emph{promotion candidates}: proved theorems whose \emph{stated} hypotheses
+looked, on a first read of the \texttt{yields} clause, close enough to the
+open obligation's shape that a routine strengthening (raising a scale bound,
+widening a hypothesis, or reindexing a quantifier) might close the gap
+without new mathematics. Fifty-six near-miss rows were catalogued across the
+four obligations; eighteen of them were flagged \texttt{promotable\_claimed:
+True} on this first pass. \textbf{Every one of the eighteen proofs was then
+opened and read in full}, not merely re-inspected at the statement level,
+and the promotion claim was checked against the actual proof body. The
+audit table below reports the verdict for all eighteen.
+
+Of the eighteen, \textbf{sixteen are conclusively NOT\_PROMOTABLE}: reading
+the proof body exposes a documented arithmetic, logical, or coordinate
+obstruction that a routine strengthening cannot cross, and the row's own
+record states exactly what new input would be required. \textbf{Two}
+(\texttt{NM-02}, \texttt{NM-03} in the \(\#257\)-universal obligation) are
+genuine exceptions: the auditor found the promotion is available with, in
+its own words, ``no new mathematics'' — a pure widening of an already-general
+proof to a wider stated target. Crucially, \emph{neither of these two closes
+anything}: they widen an equivalence or a corollary from one fixed target
+value to a family of targets, without touching the missing arithmetic
+content (a cofinal certificate supply, a rank upper bound, an anti-concentration
+estimate) that every genuine closure of \(\#249\) or \(\#257\) requires. So
+while the promotion audit is not literally eighteen-for-eighteen at the level
+of ``can this exact statement be re-derived for a wider scope,'' it is
+eighteen-for-eighteen at the level that matters for this paper's obligations:
+\textbf{no promotion candidate in the audited set supplies missing arithmetic
+content toward closing \#249 or \#257}. The two mechanically-widenable rows
+are recorded honestly below rather than folded into the sixteen, because
+collapsing that distinction would itself be exactly the kind of
+quantifier-slippage error this paper's accuracy rules forbid.
+
+\begin{longtable}{p{0.10\linewidth}p{0.14\linewidth}p{0.10\linewidth}p{0.58\linewidth}}
+\textbf{Obligation} & \textbf{Row / site} & \textbf{Gap kind} &
+\textbf{Verdict and exact blocker} \\
+\hline\endhead
+249-supply & e1-companion,
+\lean{exists\_certifiedKill\_of\_first\_harmonic\_gap}{FirstHarmonicGap.lean:128} & hypothesis\_strength &
+NOT\_PROMOTABLE. The consumer already has the obligation's exact quantifier
+shape; the missing input is a single unproved arithmetic fact — a
+constant-saving first-harmonic (Weyl-sum) cancellation bound
+\(\sum_{N\in[X,2X)}\cos(2\pi\cdot(\ldots)/2^L)\le(9/10)X\) — not proved at
+any \(X,h,L\) anywhere in the corpus. \\
+249-supply & SGN-01,
+\lean{actualLcmTailDiff\_shift\_pos}{TotientActualLcmOrbitSign.lean:39} & hypothesis\_strength &
+NOT\_PROMOTABLE. Positivity is exactly HALF of the needed certificate: the
+companion theorem in the same file proves integrality forces the residue to
+the TOP edge, not a kill — the lower half of the band is discharged
+unconditionally and cofinally, the upper half is untouched. \\
+249-supply & TE-04,
+\lean{actualLcmTailDiff\_notMem\_int\_of\_topEdgeResidueGap}{TotientActualLcmTopEdgeStaircase.lean:1260} & hypothesis\_strength &
+NOT\_PROMOTABLE. The consumer side is finished and cofinal (proved for
+every \(a\ge8\)); the residual is purely the one-sided residue-gap
+\emph{producer}, unconditionally unsupplied at even one large \(a\). \\
+249-supply & TE-05-weakest,
+\lean{PowerTwoFlexibleActualTerminalDominanceSupply}{TotientActualLcmTopEdgeStaircase.lean:1908} & hypothesis\_strength &
+NOT\_PROMOTABLE. The exact identity pinning the target shows the dominance
+inequality is equivalent to \(\mathrm{carryOrbit}\le0\), and the sign
+machinery (SGN-02) already proves the true carry orbit is strictly
+\emph{positive} under integrality — the corridor-escape branch the identity
+naturally supplies is exactly the branch already eliminated. \\
+249-supply & SEP-02,
+\lean{abs\_actualLcmTailOrbit\_sub\_rawApprox\_lt}{TotientActualLcmOrbitSeparation.lean:141} & scale\_only &
+NOT\_PROMOTABLE. The analytic tail is fully discharged with an explicit,
+uniform error radius; only two exponents (\(a=4,6\)) have the resulting
+finite distance-to-integer question verified unconditionally
+(\lean{actualLcmTailOrbit\_four\_and\_six\_notMem\_int}{TotientActualLcmShortKill.lean:35}); nothing beyond
+\(a=6\) is proved. \\
+249-supply & b7,
+\lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60} & coordinate\_only &
+NOT\_PROMOTABLE. The only proved unbounded-growth quantity in the
+Möbius--Mersenne coordinate, uniform in \(t\), but there is no landed
+transport from a denominator lower bound to \(\mathrm{certifiedKill}\) or to
+totient-tail non-integrality — a different coordinate from the obligation. \\
+249-supply & d4/d5,
+\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900}, \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284} &
+coordinate\_only & NOT\_PROMOTABLE. The scale side of a second, independent
+open obligation (unbounded carry-kernel rank forced by rationality) is
+finished uniformly in \(e\); the opposite (rationality-side rank upper
+bound) is missing, and one natural route to it is proved dead
+(\lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051}). \\
+257-reset & rc-2 / F4-adjacent,
+\lean{one\_third\_lt\_scaledMersenneTail\_floorWall}{HalfCylinderMiddleCarryLowerBound.lean:2308} & multiple &
+NOT\_PROMOTABLE. The excess-side run-length law is only half-assembled: an
+exact iterate identity exists, and an upper bound on the terminal excess
+exists separately, but no theorem in Lean composes the two into an
+excess-side run-length statement, even though every ingredient is present. \\
+257-reset & E1,
+\lean{SeamGreedyRemainderGapBound}{HalfCylinderSeamLimit.lean:192} & coordinate\_only &
+NOT\_PROMOTABLE. Supplies an UPPER bound on the remainder (the ceiling half
+of the picture); the obligation needs a LOWER bound on the deviation
+magnitude — the two do not compose without an additional input. \\
+257-reset & rc-8,
+prose \emph{erdos257\_reset\_crossing\_unification\_2026\_07\_24.md}\,\S6 &
+multiple & NOT\_PROMOTABLE. Two gaps at once: the sign law is
+\ev{Cert}/empirical only (flagged \ev{Open} as an unconditional lemma, not
+proved), and even if proved it delivers only the SIGN of the deviation, not
+its magnitude, which is what the obligation needs. \\
+257-cofinal-rows & TH-sharp-capacity-progress,
+\lean{exists\_exactRowStrictUpperFill\_of\_skippedCoreSharpCapacity}{BooleanMobiusSkipRow.lean:238} & hypothesis\_strength &
+NOT\_PROMOTABLE. Unconditional and strictly more general than every actual
+consumer, but it needs a per-\(c\) input
+(\(\mathrm{localBinarySuffix}\,D\,1\,(2c{-}2)<2^{c-2}\)) that the corpus
+only ever supplies through a route which then rigidly collapses onto one
+specific support family — the deficit hypothesis is a self-imposed
+restriction of the consumers, and the general input itself is unsupplied. \\
+257-cofinal-rows & precriticalSuffix\_lt\_of\_future\_skip\_after\_takenBlock,
+\lean{halfGreedy\_precriticalSuffix\_lt\_of\_future\_skip\_after\_takenBlock}{BooleanMobiusCriticalCapacityCofinal.lean:603} &
+hypothesis\_strength & NOT\_PROMOTABLE. Unconditional and uniform in both
+parameters \((c,t)\); the sole missing input is an orbit-level skip-gap
+bound on the rational half-greedy orbit, never proved and never previously
+isolated as a target anywhere in the banks. \\
+257-cofinal-rows & greedyHalfFrozenMargin\_nonneg,
+\lean{exists\_greedyHalfFrozenMargin\_nonneg\_of\_excess\_neg}{HalfCylinderFiniteShadow.lean:1198} & scale\_only &
+NOT\_PROMOTABLE. The margin-nonnegativity horizon is produced by a
+\emph{non-effective} limit argument (an existential horizon from a
+convergence fact); the exact-row route needs the SPECIFIC effective horizon
+\(J=k-2\), and effectivising it is explicitly recorded as unfinished
+bookkeeping, not new mathematics — but it is still unfinished. \\
+257-cofinal-rows & C4a,
+\lean{HalfCarryCofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:34} & multiple &
+NOT\_PROMOTABLE. Trades off against the obligation in the opposite
+direction on \emph{support locality}: tolerates any support inside a depth
+window but demands a carry inside a tight \(\sim2\sqrt M\) strip, where the
+obligation tolerates an exponentially looser carry but demands the support
+be confined to a lower window — the gap is support locality, not carry
+size, and neither socket implies the other. \\
+257-universal & NM-02,
+\lean{infinite\_greedyMersenneSkippedSupport\_of\_half\_mem}{GreedyAchievementSet.lean:2482} & scale\_only &
+\textbf{PROMOTABLE (no new mathematics), but does not close anything.}
+The proof was opened and found already uniform in the target in every
+internal step; only the statement's own quantifier is artificially pinned
+to \(t=1/2\). Promoting it converts the whole half-greedy refutation machine
+from a one-target equivalence to one covering every rational target — the
+highest-value mechanical promotion in the bank — but it supplies no new
+arithmetic content: it is a restatement, not a producer. \\
+257-universal & NM-03,
+\lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589} & scale\_only &
+\textbf{PROMOTABLE (no new mathematics), but does not close anything.} The
+headline is pinned to target \(1/2\) while its engine
+(\lean{finiteErdosSum\_den\_odd}{DyadicPrefixCompression.lean:1513}) is already fully general over
+finite supports; verbatim re-derivation at any even-denominator target is
+available with zero new arithmetic. Paired with NM-02: universal \#257 at
+\(b=2\) is false iff some rational \(t\) with even reduced denominator has
+an infinitely-skipping greedy Mersenne orbit — a genuine reformulation, not
+a resolution. \\
+257-universal & NM-04,
+\lean{dyadic\_support\_fraction\_reciprocalMass\_diverges\_or\_gt\_one}{RationalSupportCarrySkeleton.lean:2200} & coordinate\_only &
+NOT\_PROMOTABLE (partial mechanical content only). The dyadic restriction
+\(v=1\) is a call-site choice, not a proof constraint — the general-\(v\)
+conclusion is already landed for arbitrary \((v,h,L,F)\) at
+\lean{shiftedBooleanCollision\_wrap\_bound\_of\_common\_multiple}{RationalSupportCarrySkeleton.lean:1963} — but
+the strict form needed for non-dyadic targets requires one genuinely new
+auxiliary bound (a mean-least-residue estimate) not present in the corpus. \\
+257-universal & NM-12,
+\lean{half\_mem\_mersenneAchievementSet\_or\_exists\_fatal\_gap}{HalfCutLocator.lean:623} & scale\_only &
+NOT\_PROMOTABLE (unverified, not merely blocked). The killer and the
+dichotomy scaffold are already target-generic; the two endpoint kills that
+pin the dichotomy to \(1/2\) generalise on their face, but their proof
+bodies were explicitly \emph{not} read in this audit pass — recorded as a
+strong promotability hypothesis, not a verified promotion, since a
+\texttt{norm\_num}-style numeric step could hide a \(1/2\)-specific bound. \\
+\end{longtable}
+
+\subsection*{Classification of the sixteen genuine blockers}
+
+Reading all eighteen proof bodies rather than trusting the \texttt{yields}
+clause exposes a small, recurring taxonomy of blocker shapes, tagged by
+\texttt{gap\_kind} in the table above:
+
+\begin{itemize}[nosep]
+\item \textbf{hypothesis\_strength} (6 rows: e1-companion, SGN-01, TE-04,
+TE-05-weakest, TH-sharp-capacity-progress,
+precriticalSuffix\_lt\_of\_future\_skip\_after\_takenBlock). The consumer
+theorem is already at the obligation's exact quantifier shape; a single
+named arithmetic fact — a Weyl-sum cancellation bound, a one-sided residue
+gap, an orbit-level skip-gap bound — is missing and is not a re-derivation
+of anything on disk.
+\item \textbf{scale\_only} (5 rows: SEP-02, greedyHalfFrozenMargin\_nonneg,
+NM-02, NM-03, NM-12). The mathematics is either already general or reduces
+to a finite verified range; what is missing is either extending a finite
+census (SEP-02) or effectivising a non-constructive existence bound
+(greedyHalfFrozenMargin\_nonneg). NM-02 and NM-03 are the two genuine
+exceptions where scale widening costs nothing — and, being restatements, buy
+nothing toward closure either.
+\item \textbf{coordinate\_only} (4 rows: b7, d4/d5, E1, NM-04). A quantity
+is proved unconditionally in one coordinate (Möbius--Mersenne denominator
+growth, dyadic-kernel rank, remainder upper bound, dyadic support-fraction
+mass) with no landed transport into the coordinate the obligation is stated
+in.
+\item \textbf{multiple} (3 rows: rc-2/F4-adjacent, rc-8, C4a). More than
+one of the above simultaneously — typically an unassembled composition of
+two otherwise-landed halves, or two orthogonal deficiencies (empirical-only
+plus sign-not-magnitude) stacked on the same row.
+\end{itemize}
+
+No row in the audited eighteen falls under \texttt{quantifier\_order} — every
+row with a genuine quantifier-order mismatch (e.g. \texttt{a12}'s
+\(\exists N\,\exists L\,\forall h\) versus the obligation's
+\(\forall h\,\forall N_0\,\exists N\,\exists L\)) was judged NOT promotable
+at first read and excluded from the eighteen entirely, rather than surviving
+to a full proof-body audit. The eighteen audited here are precisely the rows
+whose \emph{stated} hypotheses looked closest to the obligation; that even
+this most-favourable subset yields sixteen genuine blockers and only two
+costless-but-empty restatements is the paper's evidence that the corpus's
+bounds are load-bearing in the strict sense: no amount of routine
+strengthening of what is already proved, at the level the audit checked,
+supplies the missing arithmetic content that \(\#249\) or \(\#257\)
+actually needs.

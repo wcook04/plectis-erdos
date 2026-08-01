@@ -10,17 +10,17 @@
 
 </div>
 
-This document is the complete working record of one attack on Erdős Problem 257: whether $`\sum_{n\in A}1/(2^n-1)`$ is irrational for every infinite $`A\subseteq\mathbb{N}`$. Both the universal question and the distinguished half-value question are open, and nothing here decides either. The document collects every result the project holds in a form that can be used directly as premises: the Lean-checked theorems with their exact hypotheses and source sites, the exact finite computations and their certified depths, the four integer coordinates in which one greedy orbit is measured, the attack families that have been closed together with the mechanism that closed each, and the exact statements that remain open. Results are sorted by the scale at which they are proved.
+For $`n\in\mathbb{N}_{>0}`$ let $`w_n=(2^n-1)^{-1}`$, and for $`J\subseteq\mathbb{N}_{>0}`$ let $`\mathcal A_J=\{\sum_{n\in J}\varepsilon_nw_n:\varepsilon_n\in\{0,1\}\}`$. Erdős Problem 257 asks whether every infinite-support sum is irrational. This paper is a Lean-backed structural audit, not a solution. Its unconditional checked content includes exact finite-denominator noncollapse; unique coding, compactness, and nowhere density for every restricted achievement set $`\mathcal A_J`$; perfectness when $`J`$ is infinite; and the measure dichotomy $`2^{-|F|}`$ when $`J^c=F`$ is finite, versus zero when $`J^c`$ is infinite. For squarefree support the divisor incidence is $`2^{\omega(n)}-1`$: at every even base this blocks two divisibility-first certificate schemas, while adjoining $`1`$ preserves the irrationality question and restores arbitrarily long base-$`2`$ opening blocks. Adjacent suffix-cylinder words also admit an exact carry-pivot normal form. The targets $`1/2`$ and $`1/21`$ have no finite-support representation in the stated normalisation and reduce to explicit infinite-orbit alternatives; neither membership question is decided. Published work independently settles prime support at base $`2`$ and squarefree support at every power-of-two base. We claim no priority for those cited results. Universal \#257 and both target membership questions remain open.
 
 <a id="how-to-read-this-document"></a>
 
 # How to read this document
 
-This is a working record, not a survey. It is written to be read in full before work begins on the problem, so that every statement the project has established is available as a premise rather than as a reference to be chased. Three conventions carry that load.
+This is a reasoning surface, not an exhaustive corpus export or a literature survey. It exposes the principal premises, method boundaries, and open interfaces; the machine-readable corpus remains the current inventory when later theorem waves outrun the exposition. Three conventions carry the paper’s claim boundary.
 
 *Evidence bands.* Every statement is tagged. <span class="sans-serif">\[Lean\]</span> means a proof term was checked by the pinned Lean kernel. <span class="sans-serif">\[Cert\]</span> means an exact finite computation, with no floating-point decision anywhere in it. <span class="sans-serif">\[Math\]</span> means proved in ordinary mathematics in the sources but not formalised. <span class="sans-serif">\[Cited\]</span> means established in the published literature. <span class="sans-serif">\[Open\]</span> means not proved. These are never blurred, and a statement carrying one band is never described in language belonging to another.
 
-*Scale.* Every parameter-indexed statement is tagged <span class="sans-serif">scale:fixed</span> (proved at specific listed values), <span class="sans-serif">scale:bounded</span> (proved below an explicit bound), <span class="sans-serif">scale:cofinal</span> (proved for arbitrarily large parameters), or <span class="sans-serif">scale:uniform</span> (proved for all parameters). This axis is the reason the problem is still open: the corpus proves at fixed and bounded scale, and the remaining obligation is cofinal. Sorting by scale puts that boundary where it can be seen.
+*Scale.* Every parameter-indexed statement is tagged <span class="sans-serif">scale:fixed</span> (proved at specific listed values), <span class="sans-serif">scale:bounded</span> (proved below an explicit bound), <span class="sans-serif">scale:cofinal</span> (proved for arbitrarily large parameters), or <span class="sans-serif">scale:uniform</span> (proved for all parameters). The corpus contains theorems at all four scales; the unresolved endpoints require particular infinite-orbit or cofinal producers that are not proved. Sorting by scale keeps that boundary visible.
 
 *Coordinates.* Every statement records the representation it is expressed in. An obstruction is a fact about a coordinate, not about the object, and a wall measured in one representation may simply not exist in another; the atlas section gives the transport maps, so any obstruction recorded here can be re-measured elsewhere.
 
@@ -83,7 +83,7 @@ Two one-sided rigidity results constrain a hypothetical rational-valued support,
 
 <div class="rem">
 
-*Remark 3* (What is *not* known in the universal direction). There is no theorem anywhere in the corpus for $`A =`$ the primes; the tree was searched and none exists. There is no theorem for a support of positive density that is not eventually periodic. There is no theorem covering any divisor-dense support outside the periodic families. The gap is not a gap in strength — it is the exact complement of the two-axis box.
+*Remark 3* (What is and is not covered in the universal direction). The pinned Lean corpus contains no theorem for $`A=`$ the primes, but this is a formalisation boundary, not a mathematical open case: Tao and Teräväinen prove the base-$`2`$ prime-support value irrational by first identifying it with $`\sum_{n\ge1}\omega(n)2^{-n}`$. Duverney and Tachiya likewise settle squarefree support at every power-of-two base. Neither result is formalised here. The corpus still has no general theorem for an arbitrary positive-density nonperiodic or divisor-dense support, and the universal statement remains open.
 
 </div>
 
@@ -100,7 +100,7 @@ Two one-sided rigidity results constrain a hypothetical rational-valued support,
 
 <div id="thm:supported-dichotomy" class="thm">
 
-**Theorem 5** (Support-restricted refinement). *For the achievement set built from a coordinate subset $`J \subseteq \mathbb{N}`$: either the omitted coordinate set is finite, and the volume is exactly $`2^{-|J^c|}`$, or infinitely many coordinates are omitted and the volume is $`0`$. Perfectness and injectivity survive the restriction. <span class="sans-serif">coord:achievement-set</span> <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span>\
+**Theorem 5** (Support-restricted refinement). *For the achievement set built from a coordinate subset $`J \subseteq \mathbb{N}`$: either the omitted coordinate set is finite, and the volume is exactly $`2^{-|J^c|}`$, or infinitely many coordinates are omitted and the volume is $`0`$. Injectivity survives every restriction; perfectness is proved when $`J`$ is infinite. No perfectness claim is made for finite $`J`$, whose coding range is finite. <span class="sans-serif">coord:achievement-set</span> <span class="sans-serif">scale:uniform</span> <span class="sans-serif">\[Lean\]</span>\
 **Sites:** , , , .*
 
 </div>
@@ -319,7 +319,7 @@ The parity route is the same fact by hand: “$`K(M)`$ even $`\iff`$ $`M`$ a per
 
 **Rules out.** Any plan to obtain (U) by instantiating the existing engine at a general infinite $`A`$. For a general support the divisibility conditions $`a \mid n`$, $`a \in A`$, are *entangled* through pairwise gcds, so no CRT construction can prescribe the incidence in a block, and the engine’s first hypothesis is unsatisfiable by construction rather than by search failure. It also rules out closing the gap by “removing the summability bound” from Erdős 1968: the bound is consumed at exactly one step, `CertificateKernel.lean:9586--9598`, as a global tail budget. Removing it is not weakening a hypothesis; it requires a different, windowed argument.
 
-**Explains.** The most natural uncovered class, the primes, is infinite and pairwise coprime — axis (i) is satisfied in the cleanest possible way, and makes the dilation algebra exact there — and yet no theorem exists, because $`\sum 1/p`$ diverges by Mertens and axis (ii) fails. That single divergence, not any difficulty of the primes, is why the corpus contains no prime-support theorem. It is also why the sunflower generalisation buys nothing in the divisor-dense regime: it inherits both axes.
+**Explains only a method boundary.** The primes are infinite and pairwise coprime — axis (i) is satisfied in the cleanest possible way, and makes the dilation algebra exact there — yet this certificate theorem does not apply because $`\sum1/p`$ diverges by Mertens and axis (ii) fails. This explains the absence of a *Lean theorem from this engine*; it does not make the base-$`2`$ value open, since Tao–Teräväinen settle it by a different analytic method. The sunflower generalisation inherits both axes and therefore does not recover that external theorem.
 
 <a id="what-the-six-barriers-converge-on"></a>
 
@@ -380,19 +380,16 @@ By Proposition <a href="#prop:canon" data-reference-type="ref" data-reference="
 
 <a id="ssec:route-3"></a>
 
-## Route 3: irrationality of $`\sum_{p\ \mathrm{prime}} 1/(2^p-1)`$
+## Route 3 audit: the prime-support theorem is known outside this formal corpus
 
-**What it needs.** Replace the global tail budget inside the pairwise-coprime certificate producer by a windowed one: for every $`\varepsilon > 0`$ there exist $`B, N, L`$ with
+The base-$`2`$ prime-support value is not an open target:
 ``` math
-\sum_{a \in A,\ B < a \le N+L} \Big(\frac{L}{a} + 1\Big) \;\le\; C
-  \qquad\text{and}\qquad
-  q\,(C + N + L + 2) \;<\; 2^{L},
+\sum_{p\ {\rm prime}}\frac1{2^p-1}
+  =\sum_{n\ge1}\frac{\omega(n)}{2^n}
 ```
-and verify it for $`A =`$ the primes using Mertens’ second theorem. Then instantiate the engine of — its *engine*, at the producer `CertificateKernel.lean:9574`, not its statement — to conclude irrationality. Secondary target with identical machinery: any infinite pairwise-coprime $`A`$ with divergent reciprocal sum.
+by expanding each reciprocal Mersenne term geometrically and collecting divisors. Tao and Teräväinen prove the right-hand series irrational in Theorem 1.3 of [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739). Their proof is analytic and is cited here; it is not formalised in the pinned Lean corpus.
 
-**Why it evades Barrier <a href="#bar:box" data-reference-type="ref" data-reference="bar:box">2.7</a>.** It sits cleanly inside axis (i) — the primes are pairwise coprime, the incidence is CRT-prescribable, and makes the dilation algebra exact — and fails only axis (ii), at exactly one identified proof step, `CertificateKernel.lean:9586--9598`. The engine permits $`N`$ and $`L`$ to be chosen *after* the threshold $`B`$, so a windowed budget suffices; and for the primes $`\sum_{B < p \le N+L} 1/p \approx \log\log(N+L) - \log\log B`$, which is controllable by taking $`L`$ small relative to $`B`$. The half-value machinery of Barriers <a href="#bar:canon" data-reference-type="ref" data-reference="bar:canon">2.2</a>, <a href="#bar:collapse" data-reference-type="ref" data-reference="bar:collapse">2.3</a>, <a href="#bar:asym" data-reference-type="ref" data-reference="bar:asym">2.5</a> and <a href="#bar:measure" data-reference-type="ref" data-reference="bar:measure">2.6</a> does not apply here at all: this is entirely on the universal side.
-
-**Why it is worth doing.** It is a named constant and a genuine theorem, not a reduction. It would be the first irrationality result for a divergent-reciprocal support, and the first outside the box.
+The local pairwise-coprime certificate theorem still does not cover the primes because it assumes summability of $`\sum_p1/p`$. That is a boundary of this engine, not a boundary of the mathematics. The previously proposed windowed-tail repair is therefore withdrawn as a research contribution. It may remain useful as an audit question about whether the existing Lean engine can reproduce the known theorem, but reproducing a cited result is not new progress on \#257. The authors mention broader base and prime-power extensions with modifications omitted in the cited version; this paper records only the fully proved base-$`2`$ theorem.
 
 <a id="ssec:route-4"></a>
 
@@ -601,10 +598,10 @@ $`K`$ is *row-independent*: it depends only on $`M`$, not on any seam row $`n`$.
 
 **Theorem 34** (Master seam identity). *For every seam row $`n \ge 6`$,
 ``` math
-\begin{equation}
+\begin{equation*}
 \Delta_n \;=\; K(2n) \;+\; \sum_{d \in \mathrm{Skip}_n} \left\lfloor \frac{4^n}{2^d-1} \right\rfloor.
 \tag{I}
-\end{equation}
+\end{equation*}
 ```
 **Hypotheses:** $`n \ge 6`$; $`\mathrm{rem}(n)`$, $`D_n`$, $`\mathrm{Skip}_n`$ as in the seam greedy process for target $`T_n`$ over weights $`w(n,d) = \lfloor 4^n/(2^d-1) \rfloor`$, $`d=2,\dots,n-1`$, ascending greedy. **Conclusion:** the entire $`2n`$-bit seam deviation collapses to one universal, row-independent recursion value $`K(2n)`$ plus a short sum restricted to the skipped ranks only – every rank the greedy *takes* drops out of the identity entirely. <span class="sans-serif">coord:seam-row / integer-greedy (Mersenne weights, binary digits of $`K`$)</span> <span class="sans-serif">scale:fixed</span> <span class="sans-serif">\[Math\]</span><span class="sans-serif">\[Cert\]</span>\
 **Proof sketch (shape preserved from the source record; the full two-line derivation lives in the source document and is not independently re-derived here):** unfold $`\mathrm{rem}(n) = T_n - \sum_{d \in D_n} w(n,d)`$ and compare the full-range sum $`\sum_{d=2}^{2n} \lfloor 4^n/(2^d-1)\rfloor`$ (the sum defining $`K(2n)`$, evaluated at $`M=2n`$ so that $`2^M = 4^n`$) against the seam row’s own sum over $`D_n \cup \mathrm{Skip}_n = \{2,\dots,n-1\}`$; the ranks $`d \ge n`$ present in $`K(2n)`$’s defining sum but absent from the row’s range, together with the taken ranks $`D_n`$, absorb exactly into $`T_n - 2^n = 2^{2n-1}-2^{n+1}`$ against $`K(2n)`$’s leading $`2^{2n-1}`$ term, leaving only the skipped-rank sum as residue. **Certification:** verified rows $`6\le n\le200`$, zero mismatches, independently reproduced by two subagents (§<a href="#ssec:anchors" data-reference-type="ref" data-reference="ssec:anchors">5.7</a>).\
@@ -624,11 +621,11 @@ C \;:=\; \sum_{d \ge 2} x_d \;-\; \tfrac12 \;=\; E - \tfrac32 \;=\; 0.1066951524
 ```
 where $`E`$ is the Erdős–Borwein constant. Then, for every seam row $`n \ge 6`$,
 ``` math
-\begin{equation}
+\begin{equation*}
 \Delta_n \;=\; 4^n \Big( \sum_{d \in \mathrm{Skip}_n} x_d \;-\; C \Big) \;+\; \eta_n, \qquad
 |\eta_n| < 2n+2.
 \tag{II}
-\end{equation}
+\end{equation*}
 ```
 **Hypotheses:** as Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">34</a>. **Conclusion:** escaping the wall (making $`\Delta_n`$ large, at scale $`2^{(n+5)/2}`$ or beyond – the exact target of Part 2’s Theorem A) is exactly the statement that the greedy skip-set’s real-valued partial sum $`\sum_{\mathrm{Skip}_n}
 x_d`$ never approximates the fixed constant $`C`$ to within roughly $`2^{-1.5n}`$, at the natural scale $`2^{-n}`$ set by $`4^n \cdot 2^{-n} = 2^n`$. <span class="sans-serif">coord:real/analytic (Erdős–Borwein tail); bridges the integer seam coordinate to a continuous Diophantine-approximation statement</span> <span class="sans-serif">scale:fixed</span> <span class="sans-serif">\[Math\]</span><span class="sans-serif">\[Cert\]</span>\
@@ -644,11 +641,11 @@ x_d`$ never approximates the fixed constant $`C`$ to within roughly $`2^{-1.5n}`
 
 **Theorem 36** (Deviation dynamics and the R/M/U branch structure). *Let $`\lambda_n := \Delta_n / 2^n`$. Then
 ``` math
-\begin{equation}
+\begin{equation*}
 \lambda_{n+1} \;=\; 2\lambda_n + 2e_n + \delta_n, \qquad e_n \in \{0,+1,-1\} \text{ for branches
 R/M/U respectively}, \qquad |\delta_n| \le \frac{2n+6}{2^n}.
 \tag{III}
-\end{equation}
+\end{equation*}
 ```
 **Hypotheses:** as Theorem <a href="#thm:master-identity" data-reference-type="ref" data-reference="thm:master-identity">34</a>. **Conclusion:** the deviation dynamics is a doubling map on $`\lambda_n`$ with a forced signed digit $`e_n`$ (recording which of three branches – Right/Middle/Upper – fires at each row) plus a vanishing correction $`\delta_n = O(n
 2^{-n})`$. **Measured bands** (rows $`14`$ through $`699`$, certified computation): branch R $`\lambda \in [-0.499189,\ 0.499846]`$; branch M $`\lambda \in [-0.998378,\ -0.501224]`$; branch U $`\lambda \in [0.501652,\ 0.999692]`$ – the three bands are disjoint and together nearly cover $`[-1,1]`$. <span class="sans-serif">coord:seam-affine dynamics (doubling map with signed digit $`e_n`$)</span> <span class="sans-serif">scale:bounded</span> <span class="sans-serif">\[Math\]</span><span class="sans-serif">\[Cert\]</span>\
@@ -2082,7 +2079,7 @@ so the doubled row is STRICTLY ABOVE half. Iterating the cheap (doubling) arm is
 ``` math
 \mathrm{CofinalPositiveHalfGreedySkips} \;\Longleftrightarrow\; (\mathrm{greedyMersenneSkippedSupport}(1/2)).\mathrm{Infinite},
 ```
-which 257bm:c20 (A6) proves EQUIVALENT to $`1/2\in\mathrm{mersenneAchievementSet}`$. Anyone attacking 257bm:c2’s hypothesis head-on is attacking \#257-false directly, with NO reduction whatsoever, despite the corpus’s own docstrings advertising it as "the shortest known path". The genuine escape is to abandon the greedy-orbit arm entirely (where 257rig:i3-wall forces canonicity and removes all freedom) and target the form-(★) socket of 257bm:c7 instead, whose cores are NOT forced to be greedy prefixes.
+which 257bm:c20 (A6) proves EQUIVALENT to $`1/2\in\mathrm{mersenneAchievementSet}`$. Anyone attacking 257bm:c2’s hypothesis head-on is attacking \#257-false directly, with NO reduction whatsoever, despite the corpus’s own docstrings advertising it as "the shortest known path". The genuine escape is to abandon the greedy-orbit arm entirely (where 257rig:i3-wall forces canonicity and removes all freedom) and target the form-$`(\star)`$ socket of 257bm:c7 instead, whose cores are NOT forced to be greedy prefixes.
 
 <span class="sans-serif">scale:cofinal</span> <span class="sans-serif">coord:greedy-orbit</span>
 
@@ -2179,7 +2176,7 @@ A parallel iff for the right branch: an overshoot witness $`\le2^s`$ produces a 
 
 <div class="obs">
 
-*Observation 180* (The reset-band socket has a certified base case). `SeamUpperResetDyadicBandEscape` (O5’s second socket, §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a>–<a href="#sec:o5" data-reference-type="ref" data-reference="sec:o5">[sec:o5]</a> above) is reduced by three new lemmas to a quarter-scale overshoot exclusion: the iff (<span class="sans-serif">\[Lean\]</span>) rewrites the reset-charge band as a successor-remainder avoidance; the identity (<span class="sans-serif">\[Lean\]</span>) rescales it by a factor of $`4`$; and (<span class="sans-serif">\[Lean\]</span>) derives the band from a quarter-scale overshoot exclusion plus the pulse bound $`\mathrm{abovePulse}\le
+*Observation 180* (The reset-band socket has a certified base case). `SeamUpperResetDyadicBandEscape` (O5’s second socket, discussed after §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> above) is reduced by three new lemmas to a quarter-scale overshoot exclusion: the iff (<span class="sans-serif">\[Lean\]</span>) rewrites the reset-charge band as a successor-remainder avoidance; the identity (<span class="sans-serif">\[Lean\]</span>) rescales it by a factor of $`4`$; and (<span class="sans-serif">\[Lean\]</span>) derives the band from a quarter-scale overshoot exclusion plus the pulse bound $`\mathrm{abovePulse}\le
 2(d-2)`$. Row $`d=13`$, the first row of the late regime, is then proved unconditionally to escape *every* band simultaneously: its successor remainder is exactly $`392`$ (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">\[Cert\]</span> for the numeral $`392`$). This is one certified row of a socket that is $`\forall
 d\ge13`$; it is evidence the base case is not itself an obstruction, nothing more.
 
@@ -2246,11 +2243,22 @@ One further declaration completes a chain the earlier parts cite only up to its 
 ```
 (, <span class="sans-serif">\[Lean\]</span>), proved via the pre-existing and the excess-sign equivalence already noted above. This is the module’s actual promised consumer; the antecedent’s own first-passage bound ($`J\le k+1`$, uniform) is <span class="sans-serif">\[Open\]</span> and has not been checked against any of O3–O5’s producer sockets.
 
+<a id="exact-carry-pivot-normal-form-suffixcylindercarrypivot.lean"></a>
+
+### Exact carry-pivot normal form (`SuffixCylinderCarryPivot.lean`)
+
+Numeral-adjacent boundary words have more structure than the previously used coefficient bound. If the lower suffix numeral is one larger than the upper suffix numeral, there is a unique carry pivot $`d`$: rank $`d`$ enters the lower support, every rank $`e`$ with $`d<e\le N`$ flips from lower-unselected to upper-selected, and all ranks below $`d`$ agree (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:uniform</span>, <span class="sans-serif">coord:support rigidity, half-carry</span>). Hence for every positive coefficient row $`m\ge1`$ the boundary discrepancy is the exact divisor-incidence identity
+``` math
+c_{\rm low}(m)+\#\{e:d<e\le N,\ e\mid m\}
+ =c_{\rm up}(m)+\mathbf 1_{d\mid m},
+```
+not merely an inequality (, <span class="sans-serif">\[Lean\]</span>). The stage-level theorem consumes adjacent profiled prefixes directly (, <span class="sans-serif">\[Lean\]</span>). This is a local normal form for the two-sheet boundary. It does not produce adjacent stages cofinally and therefore does not close HALF or universal \#257.
+
 <a id="new-tree-erdosproblemserdos257mersennesubseriesrigidity.lean"></a>
 
 ### New tree: `ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean`
 
-This module works in the new `ErdosProblems.Erdos257` namespace and states in its own header that its results “concern achievement-set geometry and do not settle the universal irrationality problem.” For an arbitrary support restriction $`J\subseteq\mathbb{N}`$, define $`\mathtt{supportedMersenneAchievementSet}\,J`$ as the range of Mersenne digit values supported on $`J`$ (). It is compact (, <span class="sans-serif">\[Lean\]</span>), nowhere dense for every $`J`$ (, <span class="sans-serif">\[Lean\]</span>), and perfect — compact with no isolated points — exactly when $`J`$ is infinite (, <span class="sans-serif">\[Lean\]</span>), via a Cantor-space no-isolated-point argument on the coding space itself (, <span class="sans-serif">\[Lean\]</span>).
+This module works in the new `ErdosProblems.Erdos257` namespace and states in its own header that its results “concern achievement-set geometry and do not settle the universal irrationality problem.” For an arbitrary support restriction $`J\subseteq\mathbb{N}`$, define $`\mathtt{supportedMersenneAchievementSet}\,J`$ as the range of Mersenne digit values supported on $`J`$ (). It is compact (, <span class="sans-serif">\[Lean\]</span>), nowhere dense for every $`J`$ (, <span class="sans-serif">\[Lean\]</span>), and perfect — compact with no isolated points — whenever $`J`$ is infinite (, <span class="sans-serif">\[Lean\]</span>), via a Cantor-space no-isolated-point argument on the coding space itself (, <span class="sans-serif">\[Lean\]</span>).
 
 <div class="prop">
 
@@ -2276,6 +2284,22 @@ for every finite $`F`$ (, <span class="sans-serif">\[Lean\]</span>, <span class=
 ### New tree: `Erdos249257/Primitive23Multiplicity.lean`
 
 This module records the exact arithmetic of the primitive cone $`2p+3q=n`$, $`p,q>0`$, $`\gcd(p,q)=1`$ (). It proves that every $`n\ge11`$ has such a representation (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:uniform</span>, <span class="sans-serif">coord:finite-lcm</span>), while rank $`10`$ has none (, <span class="sans-serif">\[Lean\]</span>). Rank $`11`$ already has two distinct witnesses (, <span class="sans-serif">\[Lean\]</span>), and so does every rank $`10k`$ with $`k\ge2`$ (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:uniform</span>, <span class="sans-serif">coord:finite-lcm</span>). These theorems are deliberately recorded as route diagnostics rather than as a counterexample: the file does not prove that the associated integer-multiplicity expansion of $`1/21`$ Booleanises. The recurring multiplicities are precisely the unresolved collision data, not zero–one support digits.
+
+<a id="current-121-frontier-erdos249257twentyonequotientgreedy.lean"></a>
+
+### Current $`1/21`$ frontier: `Erdos249257/TwentyOneQuotientGreedy.lean`
+
+The later quotient-greedy analysis removes the diffuse alternatives. Let `TwentyOneFatalAlignedBranch` denote the explicit branch consisting of a fatal greedy gap, finite skipped support (hence cofinite selection), eventual alignment between the quotient rows and the rational greedy prefix, and eventual visits to every doubling block. Then
+``` math
+\frac1{21}\in\mathtt{mersenneAchievementSet}
+ \quad\Longleftrightarrow\quad
+ \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
+```
+.
+
+On the fatal branch the canonical quotient remainder $`s_R`$ is eventually strictly above the closed capacity $`2^R`$ (), and thereafter the support appends $`R+1`$ while $`s_R`$ follows one explicit affine recurrence (). Conversely, closed rows $`s_R\le2^R`$ along any unbounded sequence decay after normalisation and put $`1/21`$ in the achievement set (; ).
+
+This is the exact current contribution: membership has been reduced to excluding one named permanent affine-supercapacity regime. No theorem excludes that regime, forces unbounded closed returns, or proves membership. Combined with the finite-support obstruction above, membership would provide an infinite-support rational counterexample to universal \#257; its present status remains <span class="sans-serif">\[Open\]</span>.
 
 <a id="sec:scale-ladder"></a>
 
@@ -2929,10 +2953,12 @@ N,K,L,C`$ with the same four clauses, from infinitude alone. The carry variant w
 
 <div class="obs">
 
-*Observation 234* (NM-06 / pairwise-coprime, excludes the primes). <span class="sans-serif">\[Lean\]</span> (producer ). **Yields:** $`\forall b\ge2,\ \forall A`$ infinite, pairwise coprime, with $`\mathrm{Summable}(\mathrm{indicator}\,A\,(1/a))`$: irrational. **Mismatch (`hypothesis_strength`):** the summability hypothesis excludes the single most natural uncovered support, $`A=`$ primes: infinite and pairwise coprime, satisfying every other hypothesis, but $`\sum 1/p`$ diverges (Mertens) — no prime-support theorem exists anywhere in the tree. $`A\subseteq`$primes is also the exact class where makes the dilation algebra exact, the class where the machinery is otherwise cleanest. **Closes it:** summability is used at exactly one place, a global tail budget $`\forall
-\varepsilon{>}0\ \exists B\ \forall`$ finite $`T\subseteq A\cap(B,\infty),\ \sum_{a\in T}1/a\le
-\varepsilon`$. A windowed replacement suffices: since $`N,L`$ may be chosen after $`B`$, it suffices that $`\forall\varepsilon{>}0\ \exists B\ \exists N,L`$ with $`\sum_{a\in A,\,B<a\le N+L}(L/a+1)\le C`$ and $`q(C{+}N{+}L{+}2)<b^L`$. For the primes $`\sum_{B<p\le N+L}1/p \approx \log\log(N{+}L) -
-\log\log B`$, controllable by choosing $`L`$ small relative to $`B`$ — the route is live, but a different argument, not the same one with a bound removed.
+*Observation 234* (NM-06 / pairwise-coprime engine excludes the primes, but the value is known). <span class="sans-serif">\[Lean\]</span><span class="sans-serif">\[Cited\]</span> (direct certificate producer ). **Yields:** for every $`b\ge2`$, an infinite pairwise-coprime support with summable reciprocal mass has irrational support series. **Method boundary:** the primes satisfy the other hypotheses but $`\sum_p1/p`$ diverges, so this Lean producer does not apply. It is false, however, to infer that the base-$`2`$ prime-support value is open. Tao–Teräväinen prove
+``` math
+\sum_{p\ {\rm prime}}\frac1{2^p-1}
+ =\sum_{n\ge1}\frac{\omega(n)}{2^n}
+```
+irrational in Theorem 1.3 of [their 2025 preprint](https://arxiv.org/abs/2512.01739). That result is cited, not formalised here. **What remains diagnostic:** replacing the global tail budget by a windowed one would ask whether this particular certificate engine can recover the known theorem. It is no longer an open mathematical target or a claimed new route for \#257.
 
 </div>
 
@@ -3488,88 +3514,32 @@ The doubling branch sends $`n\mapsto 2n-1`$ and the recycle branch sends $`n\map
 
 <a id="sec:invent-R3"></a>
 
-## R3. Irrationality of $`\sum_{p\ \mathrm{prime}} 1/(2^p-1)`$
+## R3. Prime support: a known theorem and an internal method boundary
 
-<a id="the-statement-needed-2"></a>
-
-### The statement needed
-
+The base-$`2`$ statement
 ``` math
-\mathrm{Irrational}\Bigl(\ \sum_{p\ \mathrm{prime}} \frac{1}{2^{p}-1}\ \Bigr).
+\mathrm{Irrational}\Bigl(\sum_{p\ {\rm prime}}\frac1{2^p-1}\Bigr)
 ```
-This is a named constant and a genuine theorem, not a reduction, and it is the most natural support class not covered by any landed result: the primes are infinite and pairwise coprime, so they satisfy every hypothesis of Erdős’s 1968 theorem (, <span class="sans-serif">\[Lean\]</span>) *except* summability of $`\sum 1/p`$, which diverges by Mertens. The class is also the one where the dilation algebra is exact (, <span class="sans-serif">\[Lean\]</span>).
-
-<a id="what-kind-of-object-would-furnish-it-1"></a>
-
-### What kind of object would furnish it
-
-Instantiate the engine, not the statement. The certificate consumed by (<span class="sans-serif">\[Lean\]</span>, universally quantified over the support — only its hypothesis is unsupplied) reads, at $`b=2`$ and $`A=\{\text{primes}\}`$, where $`\mathtt{supportCoeff}\,A\,n = \omega(n)`$:
+is known. Expanding geometrically and collecting divisors gives
 ``` math
-\begin{align}
-&\forall q>0\ \exists N,K,L,C\ \text{with}\ K\le L: \notag\\
-&\qquad (\mathrm{F})\quad \forall r\in[1,K]:\ 2^{r}\ \mid\ \omega(N+r), \label{eq:primeF}\\
-&\qquad (\mathrm{M})\quad \sum_{r=K+1}^{L}\omega(N+r)\,2^{\,L-r}\ \le\ C, \label{eq:primeM}\\
-&\qquad (\mathrm{T})\quad \exists t:\ \omega(N+L+1+t)>0,
-\qquad (\mathrm{H})\quad q\,(C+N+L+2)\ <\ 2^{L}. \label{eq:primeH}
-\end{align}
+\sum_{p\ {\rm prime}}\frac1{2^p-1}
+ =\sum_{n\ge1}\frac{\omega(n)}{2^n},
 ```
-(T) is trivial. (H) is a size condition. (M) is a bound on $`\omega`$ over a window. (F) is the whole difficulty, and it is an *exact* prescription of the number of distinct prime factors of $`K`$ consecutive integers.
+and Tao–Teräväinen prove the latter series irrational in Theorem 1.3 of [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739). This is a cited analytic result, not a theorem formalised in the pinned Lean corpus.
 
-<a id="the-specific-obstacle-and-a-correction-to-the-corpuss-own-recorded-repair"></a>
-
-### The specific obstacle — and a correction to the corpus’s own recorded repair
-
-The corpus records (interface index, row NM-06) that summability is consumed at exactly one place, as a global tail budget, and proposes replacing it by a windowed budget $`\sum_{a\in A,\ B<a\le N+L}(L/a+1)\le C`$, noting that for the primes $`\sum_{B<p\le N+L}1/p\approx\log\log(N+L)-\log\log B`$ is controllable by taking $`L`$ small relative to $`B`$. That diagnosis is right about where the hypothesis is used and wrong about where the difficulty lies, and the correction is the useful part of this subsection.
-
-<div id="prop:primesize" class="prop">
-
-**Proposition 269** (Forced size of a prime-support certificate). *In any certificate satisfying <a href="#eq:primeF" data-reference-type="eqref" data-reference="eq:primeF">[eq:primeF]</a> with $`K\ge1`$ and $`N+K\ge2`$ one has $`\omega(N+K)\ge 2^{K}`$, hence
+The existing pairwise-coprime Lean theorem does not recover it because that theorem assumes $`\sum_{a\in A}1/a<\infty`$, whereas $`\sum_p1/p`$ diverges. Its generic block-certificate engine would also demand, in the prime case,
 ``` math
-N+K\ \ge\ \prod_{j\le 2^{K}} p_j\ =\ \exp\bigl((1+o(1))\,2^{K}\,K\log 2\bigr),
+2^r\mid\omega(N+r)\qquad(1\le r\le K),
 ```
-and consequently, by <a href="#eq:primeH" data-reference-type="eqref" data-reference="eq:primeH">[eq:primeH]</a>, $`L>\log_2 N \gg 2^{K}K`$.*
+a simultaneous exact divisibility pattern far stronger than the input used by Tao–Teräväinen. Small computational witnesses for $`K=2,3`$ diagnose that the condition is not vacuous, but they neither prove the known theorem nor define a new open case.
 
-</div>
-
-<div class="proof">
-
-*Proof.* $`N+K\ge2`$ has at least one prime factor, so $`\omega(N+K)\ge1`$; $`2^{K}\mid\omega(N+K)`$ then forces $`\omega(N+K)\ge2^{K}`$. An integer with $`2^{K}`$ distinct prime factors is at least the product of the first $`2^{K}`$ primes, and $`\log\prod_{j\le m}p_j = \theta(p_m)\sim p_m\sim m\log m`$ with $`m=2^{K}`$. The last claim is <a href="#eq:primeH" data-reference-type="eqref" data-reference="eq:primeH">[eq:primeH]</a> with $`C\ge0`$. ◻
-
-</div>
-
-<span class="sans-serif">\[Math\]</span>.
-
-So the certificate window sits at height $`N\approx e^{2^{K}K\log2}`$ and has length $`L\approx 2^{K}K`$. Now compare the two hypotheses. The middle-window condition <a href="#eq:primeM" data-reference-type="eqref" data-reference="eq:primeM">[eq:primeM]</a> is *not* the obstacle: $`\omega(n)\le(1+o(1))\log n/\log\log n`$ uniformly, so
-``` math
-\sum_{r=K+1}^{L}\omega(N+r)2^{\,L-r}\ \le\ \Bigl(\max_{r\le L}\omega(N+r)\Bigr)\cdot 2^{\,L-K},
-```
-and $`C`$ is free up to $`2^{L}/q-N`$, which by Proposition <a href="#prop:primesize" data-reference-type="ref" data-reference="prop:primesize">269</a> leaves room by an exponential margin. The windowed-budget repair NM-06 proposes therefore repairs a step that does not need repairing.
-
-**The real obstacle is <a href="#eq:primeF" data-reference-type="eqref" data-reference="eq:primeF">[eq:primeF]</a>: no existing technique produces integers with a prescribed *exact* number of distinct prime factors at $`K`$ consecutive arguments.** Every constructive device available controls $`\omega`$ only from one side or only up to an interval. CRT prescribes divisibility by chosen primes, hence a lower bound on $`\omega`$, and says nothing about the cofactor. Sieve methods (Chen, Selberg, the linear sieve) produce almost-primes, i.e. $`\Omega(n)\le k`$, again an inequality. Making $`\omega(N+r)`$ *equal* to a prescribed value requires the cofactor of the prescribed part to be prime, or to have a prescribed number of factors — which for several linear forms simultaneously is exactly the Dickson–Hardy–Littlewood prime $`k`$-tuples problem, open. Moreover the prescription here is not one form but $`K`$ of them, at consecutive shifts, with the required values $`2,4,8,\dots,2^{K}`$ growing geometrically. The parity of $`\omega`$ alone — the $`r=1`$ case — is already the sign of a Liouville-type function, and although sign patterns of length up to three are now known to occur with positive lower density, the results are of “occurs infinitely often” type: they manufacture favourable indices and cannot deliver a *simultaneous* pattern at prescribed shifts with the higher congruences $`2^r\mid\omega`$ for $`r\ge2`$ imposed at the same time.
-
-That is a sharply stated obstruction to a named technique, and it converts “prove $`\sum_p 1/(2^p-1)`$ is irrational” into a recognisable problem: *produce, for every $`K`$, integers $`N`$ with $`2^{r}\mid\omega(N+r)`$ for $`r=1,\dots,K`$*.
-
-<a id="swings-2"></a>
-
-### Swings
-
-*Swing 6: the first-block condition is satisfiable at $`K=2`$ and $`K=3`$; here are witnesses.* <span class="sans-serif">\[Cert\]</span>.
-
-$`K=2`$: take $`N=208`$. Then $`209=11\cdot19`$ so $`\omega(N+1)=2`$ and $`2\mid2`$; and $`210=2\cdot3\cdot5\cdot7`$ so $`\omega(N+2)=4`$ and $`4\mid4`$.
-
-$`K=3`$: take $`N=989{,}368{,}377`$. Then $`\omega(N+1)=4`$, $`\omega(N+2)=4`$, $`\omega(N+3)=8`$, so $`2\mid\omega(N+1)`$, $`4\mid\omega(N+2)`$, $`8\mid\omega(N+3)`$; here $`N+3=102\cdot9699690`$ is a multiple of the primorial $`2\cdot3\cdots19`$. Further solutions of the same shape at $`N=1{,}212{,}461{,}247`$, $`2{,}764{,}411{,}647`$, $`3{,}520{,}987{,}467`$, $`10{,}136{,}176{,}047`$, $`11{,}474{,}733{,}267`$.
-
-The witnesses matter for two reasons. They show <a href="#eq:primeF" data-reference-type="eqref" data-reference="eq:primeF">[eq:primeF]</a> is not vacuous — the obstruction is the uniformity in $`K`$, not the existence of one instance — and they show the shape of a construction: fix $`N+K`$ to be a primorial multiple carrying the large prescribed value $`2^{K}`$, then solve the lower congruences by choosing the multiplier. That is a search over one free integer parameter, and it is the concrete first step: run it for $`K=4`$ (requiring $`\omega(N+4)\ge16`$, so $`N+4`$ a multiple of the primorial $`2\cdot3\cdots53`$) and see whether solutions persist at the density the Landau count $`\#\{n\le x:\omega(n)=k\}\sim x(\log\log x)^{k-1}/((k-1)!\log x)`$ predicts. If the density matches Landau, the route is a sieve problem with a plausible answer; if it collapses, there is an unrecorded arithmetic obstruction and finding it is itself a result.
-
-*Swing 7: the honest fallback target.* <span class="sans-serif">\[Open\]</span>.
-
-If <a href="#eq:primeF" data-reference-type="eqref" data-reference="eq:primeF">[eq:primeF]</a> for the primes is out of reach, the same analysis identifies a strictly easier and still uncovered class: infinite pairwise coprime $`A`$ with $`\sum_{a\in A}1/a=\infty`$ but with $`A`$ *thin enough that $`\mathtt{supportCoeff}\,A`$ is controllable* — for instance $`A=\{p^{k_p}\}`$ over primes $`p`$ with $`k_p\ge1`$ chosen so that the reciprocal sum still diverges. For such $`A`$ the first-block condition again reads $`2^r\mid \#\{p: p^{k_p}\mid N+r\}`$, but now the prescribed part can be built by CRT with cofactor freedom, because divisibility by $`p^{k_p}`$ is a condition one can impose without controlling the full factorisation. The concrete first step is to decide whether the $`K=2`$ analogue is provable unconditionally for one such $`A`$; that would be the first result in the corpus outside the two-axis box of divisor-independence plus global tail budget.
+Thus the contribution of this route audit is negative and coordinate-specific: it identifies why the present formal certificate engine fails to reproduce a theorem already available by quantitative correlation estimates. The earlier proposal to prove the prime-support irrationality as new mathematics is withdrawn. Extensions to other bases or prime-power supports are mentioned by the cited authors with proof modifications omitted; this paper promotes only the fully written base-$`2`$ theorem.
 
 <a id="sec:invent-R4"></a>
 
 ## R4. Landing the route-collapse equivalences, via perfect-square witness depths
 
-<a id="the-statement-needed-3"></a>
+<a id="the-statement-needed-2"></a>
 
 ### The statement needed
 
@@ -3594,7 +3564,7 @@ where $`G:=\mathtt{greedyMersenneSupport}(1/2)`$. The forward directions of (2)�
 
 <div id="lem:sqwitness" class="lem">
 
-**Lemma 270** (Perfect-square strip witness). *Let $`A\subseteq\mathbb{N}`$ with $`1\notin A`$ and $`\mathtt{erdosSupportSeries}\ 2\ A=1/2`$. Then for every $`k\ge1`$,
+**Lemma 269** (Perfect-square strip witness). *Let $`A\subseteq\mathbb{N}`$ with $`1\notin A`$ and $`\mathtt{erdosSupportSeries}\ 2\ A=1/2`$. Then for every $`k\ge1`$,
 ``` math
 \bigl(\mathtt{integerHalfCarry}\ A\ (k^{2}-1)\ :\ \mathbb{R}\bigr)
 \ =\ \mathtt{binaryCoeffTail}\ (\mathtt{supportCoeff}\ A)\ (k^{2})
@@ -3618,7 +3588,7 @@ and the first term vanishes by hypothesis. Take $`N=k^{2}-1`$, so $`N+1=k^{2}`$.
 
 <span class="sans-serif">\[Math\]</span>; every input is landed Lean and the composition is four lines.
 
-The point is narrow and entirely technical, which is why it is worth stating: the corpus’s recorded obstruction to closing (4) and (5) was the mismatch between $`\mathtt{Nat.sqrt}`$ (in $`\mathtt{halfStripBound}`$) and $`\mathtt{Real.sqrt}`$ (in the unconditional tail bound), for which Mathlib supplies only `Real.nat_sqrt_le_real_sqrt`, the wrong direction, and the recorded workaround was to widen the strip constant from $`4`$ to $`6`$. Restricting the cofinal witness depths to perfect squares dissolves the mismatch: at $`n=k^{2}`$ the two roots coincide exactly and no widening is needed. Applying Lemma <a href="#lem:sqwitness" data-reference-type="ref" data-reference="lem:sqwitness">270</a> along $`M=k^{2}-1`$ gives (4) directly; taking $`a`$ to be the indicator of an achieving support truncated to $`\mathtt{Fin}(M+1)`$ at $`M=k^{2}`$, and using together with $`1\notin A`$ (forced because $`\mathtt{mersenneWeight}\,1=1>1/2`$), gives the witness required by and hence (5).
+The point is narrow and entirely technical, which is why it is worth stating: the corpus’s recorded obstruction to closing (4) and (5) was the mismatch between $`\mathtt{Nat.sqrt}`$ (in $`\mathtt{halfStripBound}`$) and $`\mathtt{Real.sqrt}`$ (in the unconditional tail bound), for which Mathlib supplies only `Real.nat_sqrt_le_real_sqrt`, the wrong direction, and the recorded workaround was to widen the strip constant from $`4`$ to $`6`$. Restricting the cofinal witness depths to perfect squares dissolves the mismatch: at $`n=k^{2}`$ the two roots coincide exactly and no widening is needed. Applying Lemma <a href="#lem:sqwitness" data-reference-type="ref" data-reference="lem:sqwitness">269</a> along $`M=k^{2}-1`$ gives (4) directly; taking $`a`$ to be the indicator of an achieving support truncated to $`\mathtt{Fin}(M+1)`$ at $`M=k^{2}`$, and using together with $`1\notin A`$ (forced because $`\mathtt{mersenneWeight}\,1=1>1/2`$), gives the witness required by and hence (5).
 
 <a id="why-this-is-a-result-and-not-bookkeeping"></a>
 
@@ -3632,7 +3602,7 @@ Under the standing rule that a reduction is not a result, one might discount R4.
 
 ## R5. The sparse/dense trichotomy — and a proof that the present engine cannot close it
 
-<a id="the-statement-needed-4"></a>
+<a id="the-statement-needed-3"></a>
 
 ### The statement needed
 
@@ -3653,7 +3623,7 @@ The sparse branch is already closed twice over: it contradicts (<span class="san
 q\,(C+N+L+2)<2^{L}.
 ```
 
-<a id="what-kind-of-object-would-furnish-it-2"></a>
+<a id="what-kind-of-object-would-furnish-it-1"></a>
 
 ### What kind of object would furnish it
 
@@ -3667,69 +3637,25 @@ Here the honest answer is stronger than an obstacle: the dense branch as stated 
 
 <div id="prop:squarefree" class="prop">
 
-**Proposition 271** (The block-certificate engine is unsatisfiable at the squarefree support). *Let $`A=\{n\ge2 : n \text{ squarefree}\}`$. Then for every $`n\ge1`$,
+**Proposition 270** (Squarefree support: exact engine ceiling, not an open value). *Let $`A=\{n\ge2:n\text{ is squarefree}\}`$. Then
 ``` math
-\mathtt{supportCoeff}\,A\,(n)\ =\ 2^{\omega(n)}-1,
+\mathtt{supportCoeff}\,A\,(n)=2^{\omega(n)}-1,
 ```
-which is *odd* for every $`n\ge2`$. Consequently, for every $`q\ge2`$ there is no $`(N,K,L,C)`$ satisfying $`\mathrm{Cert}(A)`$ at $`q`$; that is, $`\mathrm{Cert}(A)`$ is false, and $`\mathrm{O1}'`$ is false.*
+which is odd for every $`n\ge2`$. Consequently neither the digitwise nor the carry-aware divisibility-first block-certificate schema has an instance at any even base. The two exact no-go theorems are and .*
 
 </div>
 
-<div class="proof">
+<span class="sans-serif">\[Lean\]</span> <span class="sans-serif">scale:uniform</span> <span class="sans-serif">coord:binary-digit</span>.
 
-*Proof.* The squarefree divisors of $`n`$ are exactly the $`2^{\omega(n)}`$ subsets of its prime support, and $`\mathtt{supportCoeff}\,A\,(n)`$ counts them with $`d=1`$ removed. For $`n\ge2`$, $`2^{\omega(n)}`$ is even, so $`2^{\omega(n)}-1`$ is odd.
-
-Suppose $`(N,K,L,C)`$ is a certificate at some $`q\ge2`$. If $`K\ge1`$, the first-block condition at $`r=1`$ requires $`2\mid\mathtt{supportCoeff}\,A\,(N+1)`$, impossible since $`N+1\ge2`$. If $`K=0`$, the first block is vacuous and the middle sum runs from $`r=1`$, so
+This does not leave the squarefree value open. Duverney–Tachiya’s Corollary 1.2 and Example 1.1 prove that, for every $`h\ge1`$,
 ``` math
-C\ \ge\ \sum_{r=1}^{L}\mathtt{supportCoeff}\,A\,(N+r)\,2^{\,L-r}\ \ge\ \mathtt{supportCoeff}\,A\,(N+1)\,2^{\,L-1}\ \ge\ 2^{\,L-1},
+1,\quad
+  \sum_{n\ {\rm squarefree}}\frac1{2^n-1},\quad\ldots,\quad
+  \sum_{n\ {\rm squarefree}}\frac1{2^{hn}-1}
 ```
-whence $`q(C+N+L+2)\ge 2\cdot 2^{L-1}=2^{L}`$, contradicting the height condition. ◻
+are linearly independent over $`\mathbb{Q}`$. After deleting the rational $`n=1`$ term, squarefree support is therefore irrational at every base $`2^j`$. This is cited mathematics, not formalised here. Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">270</a> is a failure of two proof schemas on a value already known to be irrational.
 
-</div>
-
-<span class="sans-serif">\[Math\]</span>; the identity $`\mathtt{supportCoeff}\,A = 2^{\omega}-1`$ was additionally checked by direct enumeration for $`1\le n\le 3000`$ with zero mismatches, <span class="sans-serif">\[Cert\]</span>.
-
-Three consequences, all of which matter more than the counterexample itself.
-
-First, the certificate engine is universally quantified over $`A`$ and therefore sound, but it is *not* complete: it cannot prove irrationality for the squarefree support even in principle. Whether $`\sum_{n\ \mathrm{squarefree},\,n\ge2} 1/(2^{n}-1)`$ is irrational is untouched by Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">271</a>; what is settled is that no instantiation of the present engine will decide it.
-
-Second, the failure is not an accident of one support. The mechanism is that $`\mathtt{supportCoeff}\,A`$ is forced into a fixed parity class by the multiplicative structure of $`A`$, and the engine’s first-block condition is a parity condition at $`r=1`$. The general form is worth recording, because it says exactly which supports are engine-blind.
-
-<div id="prop:parityrigid" class="prop">
-
-**Proposition 272** (Constant eventual parity pins the support). *Write $`c:=\mathtt{supportCoeff}\,A`$ and suppose $`c(n)\equiv\varepsilon\pmod 2`$ for all $`n>N_0`$, with $`\varepsilon\in\{0,1\}`$ fixed. Then for every $`n>1`$,
-``` math
-\mathbf{1}_A(n)\ \equiv\ \sum_{\substack{d\mid n\\ d\le N_0}}\mu(n/d)\,\bigl(c(d)-\varepsilon\bigr)\pmod 2 .
-```
-In particular, membership in $`A`$ above $`N_0`$ is completely determined, modulo $`2`$, by the finite vector $`\bigl(c(d)\bigr)_{d\le N_0}`$ together with $`\mu`$.*
-
-</div>
-
-<div class="proof">
-
-*Proof.* Möbius inversion gives $`\mathbf{1}_A(n)=\sum_{d\mid n}\mu(n/d)c(d)`$. Put $`g(d):=c(d)-\varepsilon`$; since $`\sum_{d\mid n}\mu(n/d)=0`$ for $`n>1`$, we get $`\mathbf{1}_A(n)=\sum_{d\mid n}\mu(n/d)g(d)`$. Every term with $`d>N_0`$ has $`g(d)`$ even. ◻
-
-</div>
-
-<span class="sans-serif">\[Math\]</span>. The squarefree support is the case $`N_0=1`$, $`\varepsilon=1`$: the proposition then reads $`\mathbf{1}_A(n)\equiv\mu(n)\cdot(c(1)-1)\equiv\mu(n)\pmod2`$, i.e. $`A`$ is exactly the squarefree numbers $`\ge2`$ — so the $`N_0=1`$ fixed point is unique, and it exists.
-
-Third, and this is the finding to carry forward: *the universal direction of \#257 has a structural obstruction that sits logically before the analytic one*. Even granting the short-window anti-concentration input of §<a href="#sec:invent-R1" data-reference-type="ref" data-reference="sec:invent-R1">11.1</a>, the present engine would not close the universal statement, because at some supports it has no certificate to find. That weakens — it does not refute — the thesis that both halves of \#257 face a single wall. The half-value branch’s difficulty is analytic (pseudorandomness of a divisor-driven digit stream); the universal branch’s difficulty is, at least in part, prior and combinatorial (the engine’s first-block parity condition is unsatisfiable on a natural divisor-dense class).
-
-<a id="swings-3"></a>
-
-### Swings
-
-*Swing 8: enumerate the engine-blind supports.* <span class="sans-serif">\[Open\]</span>, first step concrete.
-
-Proposition <a href="#prop:parityrigid" data-reference-type="ref" data-reference="prop:parityrigid">272</a> converts “which supports defeat the first-block condition?” into a finite-parameter fixed-point problem: for each $`N_0`$, the candidate supports are the solutions $`A`$ of $`\mathbf{1}_A(n)\equiv\sum_{d\mid n,\,d\le N_0}\mu(n/d)(c(d)-\varepsilon)`$ consistent with $`c=\mathbf{1}_A*\mathbf{1}`$ on $`[1,N_0]`$. The first actual step is to solve this for $`N_0=1,2,3,4`$ by brute force over the $`2^{N_0}`$ initial patterns and to check each candidate against the definition on $`[1,10^4]`$. Every solution found is another support the engine cannot touch; if the solution set is finite and explicit, then the engine, plus an exceptional-set argument for those finitely many families, is still a viable route to $`\mathrm{U257}`$, and that would be worth knowing before any further analytic effort is spent.
-
-*Swing 9: replace the first-block condition by a shifted-modulus one.* <span class="sans-serif">\[Open\]</span>.
-
-The parity failure above is a failure of $`2\mid c(N+1)`$, not of the underlying irrationality argument. The engine’s role for the first block is to force $`2^{L}`$ to divide a weighted prefix so that the certificate’s rational approximant has a controlled denominator. Nothing requires the modulus to be a power of the base $`2`$ at every slot; what is required is that the prefix contributes an integer after scaling. So the concrete replacement to attempt is a *$`\lambda`$-shifted* block condition
-``` math
-\forall r\in[1,K]:\quad 2^{r}\ \mid\ \bigl(\mathtt{supportCoeff}\,A\,(N+r)+\lambda_r\bigr),
-```
-with a fixed correction vector $`\lambda\in\mathbb{Z}^{K}`$ that is absorbed into $`C`$ and into the height condition, at cost $`\|\lambda\|_1 2^{\,L-K}`$ added to $`C`$. For $`A=\{n\ge2\ \text{squarefree}\}`$ one has $`c(n)+1=2^{\omega(n)}`$, so $`\lambda_r\equiv1`$ makes the first-block condition read $`2^{r}\mid 2^{\omega(N+r)}`$, i.e. $`\omega(N+r)\ge r`$ — which is trivially arrangeable by CRT. That is a complete first-block supply for the squarefree support with $`K`$ arbitrary, and it costs $`K\,2^{\,L-K}`$ in the budget, comfortably inside the height condition. Whether the rest of the engine survives the shift is exactly the question to check, and it is a self-contained modification of one Lean file rather than a new theory. If it does survive, the immediate corollary is irrationality of $`\sum_{n\ \mathrm{squarefree}} 1/(2^{n}-1)`$, which is a named constant and a genuine theorem.
+The coordinate dependence is exact. Adjoin $`1`$ to the support. The series changes by the rational number $`(b-1)^{-1}`$, so its irrationality is unchanged, while the incidence becomes $`2^{\omega(n)}`$: and . At base $`2`$, CRT then supplies arbitrarily long opening blocks with $`\omega(N+r)\ge r`$: and . The middle-window and height conditions remain; no certificate or new irrationality proof follows. The durable conclusion is methodological: test a no-go statement under rational finite changes before attributing it to the underlying value.
 
 <a id="sec:invent-shape"></a>
 
@@ -3763,9 +3689,9 @@ Third, and this is the sharpest internal check available: pseudorandomness is a 
 
 ### The universal branch reads differently, and this weakens the one-wall thesis
 
-Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">271</a> is the reason to separate the two halves rather than assimilate them. On the universal side the present obstruction is not analytic and not pseudorandomness: it is that the certificate engine’s first-block condition is a parity condition on $`\mathtt{supportCoeff}\,A`$, and there is an explicit natural support — the squarefree numbers — on which that parity is constantly wrong. Proposition <a href="#prop:parityrigid" data-reference-type="ref" data-reference="prop:parityrigid">272</a> shows the phenomenon is governed by a clean finite-parameter Möbius rigidity, not by randomness at all. So the universal branch’s near-term difficulty is combinatorial and *fixable in principle* (Swing 9 proposes the fix); the half-value branch’s difficulty is analytic and is not.
+Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">270</a> is a reason to separate the two halves rather than assimilate them. On the universal side the present certificate engine first meets a coordinate-dependent parity obstruction. The squarefree value is nevertheless already known to be irrational at power-of-two bases, and adjoining $`1`$ removes the opening-block obstruction without changing irrationality. Thus the no-go diagnoses this engine; it does not diagnose the value or the universal problem.
 
-The wall analysis’s claim that both halves converge on one missing object — short-window near-integer anti-concentration of a divisor-weighted sum — survives, but with a correction: on the universal side that object is the *second* obstruction, not the first, and it becomes relevant only after the engine is repaired. Reporting the convergence without that ordering would overstate the unity of the wall.
+The wall analysis’s claim that both halves converge on one missing object — short-window near-integer anti-concentration of a divisor-weighted sum — survives, but with a correction: on the universal side that object is the *second* obstruction, not the first, and it becomes relevant only after one chooses an engine whose opening condition is invariant under rational finite changes. Reporting the convergence without that ordering would overstate the unity of the wall.
 
 <a id="what-the-evidence-does-and-does-not-determine"></a>
 
@@ -3773,13 +3699,13 @@ The wall analysis’s claim that both halves converge on one missing object — 
 
 It does not determine whether a short proof exists. Nothing in a catalogue of failed methods bounds the length of a successful one, and this document should not pretend otherwise.
 
-It does determine, with proof rather than inference, where a short proof cannot be. It cannot proceed by finite inspection, by fixed-precision arithmetic, by a bounded carry state, by a measure or category argument, by an irrationality-measure bound on $`E`$ or any constant of that type, or — on the universal side, as of Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">271</a> — by instantiating the present block-certificate engine at a general support. Each of those is closed with a mechanism, and a mechanism is reusable in a way that a failed attempt is not. That is the contribution: not a proof, and not a reduction, but a map of the region in which a proof cannot live, drawn tightly enough that the remaining region is small and its coordinates are named.
+It does determine, with proof rather than inference, where a short proof cannot be. It cannot proceed by finite inspection, by fixed-precision arithmetic, by a bounded carry state, by a measure or category argument, by an irrationality-measure bound on $`E`$ or any constant of that type, or — on the universal side, as of Proposition <a href="#prop:squarefree" data-reference-type="ref" data-reference="prop:squarefree">270</a> — by instantiating the present block-certificate engine at a general support. Each of those is closed with a mechanism, and a mechanism is reusable in a way that a failed attempt is not. That is the contribution: not a proof, and not a reduction, but a map of the region in which a proof cannot live, drawn tightly enough that the remaining region is small and its coordinates are named.
 
 <a id="what-is-open-stated-exactly"></a>
 
 # What is open, stated exactly
 
-Erdős \#257 asks whether $`\sum_{n\in A}1/(2^n-1)`$ is irrational for *every* infinite $`A\subseteq\mathbb{N}_{\ge 1}`$. Nothing in this paper decides this, in either the universal form or the single-target half-value form below. Every corpus result surveyed in Parts I–IV is either a fixed/bounded-scale instance, a coordinate reduction, or a producer socket still lacking its supply. This section states the exact open targets, in display mathematics, with their Lean sites where formalised and their precise logical relationships to one another. **Read the implication table in §<a href="#sec:v-table" data-reference-type="ref" data-reference="sec:v-table">12.7</a> before attacking any single target below**: several apparent waypoints are *equivalent* to the full problem, not easier approaches to it.
+Erdős \#257 asks whether $`\sum_{n\in A}1/(2^n-1)`$ is irrational for *every* infinite $`A\subseteq\mathbb{N}_{\ge 1}`$. Nothing in this paper decides this, in either the universal form or the single-target half-value form below. Every corpus result surveyed in Parts I–IV is either a fixed/bounded-scale instance, a coordinate reduction, or a producer socket still lacking its supply. This section states the exact open targets, in display mathematics, with their Lean sites where formalised and their precise logical relationships to one another. **Read the implication table in §<a href="#sec:v-table" data-reference-type="ref" data-reference="sec:v-table">12.8</a> before attacking any single target below**: several apparent waypoints are *equivalent* to the full problem, not easier approaches to it.
 
 <a id="notation-fixed-for-this-section"></a>
 
@@ -3796,7 +3722,7 @@ The functional $`\mathtt{erdosSupportSeries}\ 2\ (-)`$ denotes the base-$`2`$ Er
 
 <div class="defn">
 
-**Definition 273** (Universal \#257).
+**Definition 271** (Universal \#257).
 ``` math
 \mathrm{U257} \;:=\; \forall\, A\subseteq\mathbb{N}_{\ge 1},\ A.\mathrm{Infinite} \;\Longrightarrow\;
 \mathrm{Irrational}\!\left(\mathtt{erdosSupportSeries}\ 2\ A\right).
@@ -3813,11 +3739,11 @@ This is the literal statement of Erdős \#257. <span class="sans-serif">\[Open\]
 \sum_{r=K+1}^{L}\mathtt{supportCoeff}\,A\,(N+r)\cdot 2^{L-r}\le C\ \wedge\
 \exists t,\ 0<\mathtt{supportCoeff}\,A\,(N+L+1+t)\ \wedge\ q(C+N+L+2)<2^L,
 ```
-with $`\mathrm{Cert}(A)\Rightarrow \mathrm{Irrational}(\mathtt{erdosSupportSeries}\ 2\ A)`$ already proved unconditionally for *every* $`A`$ (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:n/a</span> — the theorem is universally quantified over $`A`$; only its hypothesis is unsupplied). So $`\mathrm{U257}`$ reduces, with no loss, to:
+with $`\mathrm{Cert}(A)\Rightarrow \mathrm{Irrational}(\mathtt{erdosSupportSeries}\ 2\ A)`$ already proved unconditionally for *every* $`A`$ (, <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">scale:n/a</span> — the theorem is universally quantified over $`A`$; only its hypothesis is unsupplied). Therefore the stronger statement
 ``` math
 \mathrm{O1'}\ :=\ \forall A,\ A.\mathrm{Infinite}\Longrightarrow \mathrm{Cert}(A).
 ```
-$`\mathrm{O1'}`$ is <span class="sans-serif">\[Open\]</span> for arbitrary infinite $`A`$; it is proved for every named structured family in the corpus (full support, eventually periodic, pairwise-coprime with summable reciprocals, orthogonal petal bouquets, lcm-gap sequences) but each proof uses the family’s extra structure to manufacture the block certificate, and none of these routes covers, e.g., $`A=`$ the primes (divergent $`\sum 1/p`$ defeats the pairwise-coprime route ()) or any divisor-dense infinite $`A`$ (which defeats the only unconditional universal rigidity result, the sparse-side window bound , <span class="sans-serif">\[Lean\]</span>, <span class="sans-serif">coord:lcm-gap window</span>, <span class="sans-serif">scale:uniform</span>, which is vacuous once $`2\in A`$).
+would imply $`\mathrm{U257}`$, but the reduction is *not* lossless and $`\mathrm{O1'}`$ is actually false. For $`A=\{n\ge2:n\text{ squarefree}\}`$ the incidence is $`2^{\omega(n)}-1`$, hence odd for every $`n\ge2`$, and the digitwise certificate schema has no instance at any even base (, <span class="sans-serif">\[Lean\]</span>). This is a method ceiling, not a counterexample to irrationality: Duverney–Tachiya prove the squarefree value irrational at every power-of-two base. Likewise the pairwise-coprime producer does not cover the primes because $`\sum_p1/p`$ diverges, even though Tao–Teräväinen prove the base-$`2`$ prime-support value irrational. The honest universal target is $`\mathrm{U257}`$ itself; $`\mathrm{O1'}`$ is a rejected sufficient strengthening, not an open equivalent normal form.
 
 <a id="target-o2-half-value-membership"></a>
 
@@ -3825,7 +3751,7 @@ $`\mathrm{O1'}`$ is <span class="sans-serif">\[Open\]</span> for arbitrary infi
 
 <div class="defn">
 
-**Definition 274** (Half membership).
+**Definition 272** (Half membership).
 ``` math
 \mathrm{HALF}\ :=\ \left(\tfrac12:\mathbb{R}\right)\in\mathcal{A}.
 ```
@@ -3846,7 +3772,7 @@ Three named "producer sockets" that read as strictly easier routes to $`\mathrm{
 
 <div id="prop:cpgs-equiv" class="prop">
 
-**Proposition 275** (CofinalPositiveHalfGreedySkips is equivalent to HALF). *Define
+**Proposition 273** (CofinalPositiveHalfGreedySkips is equivalent to HALF). *Define
 ``` math
 \mathrm{CPGS}\ :=\ \forall N,\ \exists c\ge N,\ c\ \text{skipped by the rational half-greedy
 orbit}\ \wedge\ 0<\mathtt{greedyMersenneRemainderRat}(1/2)(c-1)
@@ -3862,7 +3788,7 @@ orbit}\ \wedge\ 0<\mathtt{greedyMersenneRemainderRat}(1/2)(c-1)
 
 <div id="prop:strip-equiv" class="prop">
 
-**Proposition 276** (The terminal-only cofinal strip is equivalent to HALF). *Let $`\mathtt{HalfCarryCofinalTerminalOnlyStrip}`$ be the socket that a finite normalised word $`a`$ at cofinally many depths $`M`$ satisfies $`|\mathtt{integerHalfCarry}(\mathtt{wordSupport}\,a)(M-1)|
+**Proposition 274** (The terminal-only cofinal strip is equivalent to HALF). *Let $`\mathtt{HalfCarryCofinalTerminalOnlyStrip}`$ be the socket that a finite normalised word $`a`$ at cofinally many depths $`M`$ satisfies $`|\mathtt{integerHalfCarry}(\mathtt{wordSupport}\,a)(M-1)|
 \le \mathtt{halfStripBound}\,M`$ where $`\mathtt{halfStripBound}\,n = 2\sqrt{n}+4`$ (). Widened to strip constant $`6`$ (i.e. $`2\cdot\mathtt{Nat.sqrt}\,n+6`$), this socket is logically equivalent to $`\mathrm{HALF}`$: every truncation of an achieving support is already a witness (not merely cofinally many), given three small mechanical lemmas not yet in the corpus (a general $`\mathtt{one\_notMem\_of\_erdosSupportSeries\_eq\_half}`$; the discrete envelope $`\mathtt{Real.sqrt}\,n\le\mathtt{Nat.sqrt}\,n+1`$; and an explicit $`\mathtt{HalfWord}`$ construction from $`A\cap\mathrm{Iic}\,M`$).*
 
 </div>
@@ -3871,7 +3797,7 @@ orbit}\ \wedge\ 0<\mathtt{greedyMersenneRemainderRat}(1/2)(c-1)
 
 <div class="obs">
 
-*Observation 277*. Neither Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">275</a> nor Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">276</a> narrows the search space for $`\mathrm{HALF}`$. Their value is negative: they retire two named targets from the "worth chasing as an easier waystation" list. A third socket, the hypothesis $`\forall N,\ \mathtt{mobiusCenteredHalfCarry}\,A\,N\le 2\sqrt N+4`$ of , is likewise proved EQUIVALENT to $`\mathrm{HALF}`$ for the specific support $`A=G`$ (Survivor 4, <span class="sans-serif">\[Math, adversarially verified, weakened\]</span>) — not, as originally claimed, for every $`A`$ with $`1\notin A`$; the general-$`A`$ version is only a one-sided implication ($`\mathrm{hbound}\Rightarrow
+*Observation 275*. Neither Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">273</a> nor Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">274</a> narrows the search space for $`\mathrm{HALF}`$. Their value is negative: they retire two named targets from the "worth chasing as an easier waystation" list. A third socket, the hypothesis $`\forall N,\ \mathtt{mobiusCenteredHalfCarry}\,A\,N\le 2\sqrt N+4`$ of , is likewise proved EQUIVALENT to $`\mathrm{HALF}`$ for the specific support $`A=G`$ (Survivor 4, <span class="sans-serif">\[Math, adversarially verified, weakened\]</span>) — not, as originally claimed, for every $`A`$ with $`1\notin A`$; the general-$`A`$ version is only a one-sided implication ($`\mathrm{hbound}\Rightarrow
 \mathtt{erdosSupportSeries}\ 2\ A\le 1/2`$).
 
 </div>
@@ -3882,7 +3808,7 @@ orbit}\ \wedge\ 0<\mathtt{greedyMersenneRemainderRat}(1/2)(c-1)
 
 <div class="defn">
 
-**Definition 278**.
+**Definition 276**.
 ``` math
 \mathrm{CofinalExactLocalMersenneHalfRows}\ :=\ \forall N,\ \exists n\ge N,\
 \mathtt{ExactLocalMersenneHalfRow}\ n
@@ -3915,7 +3841,7 @@ $`(\ast)`$ is proved unconditionally, uniform in $`c`$, no case split (, <span c
 \text{(O3-supply)}\qquad \forall N\ \exists c\ge N,\ \mathtt{localBinarySuffix}\ D\ 1\ (2c-2)\ \notin\
 \big[\,2^{c-2},\,2^{c-2}+c-3\,\big]
 ```
-— a band of width $`c-2`$ inside a range of size $`2^{c-2}`$, exponentially weaker than the reset $`\sqrt{\text{-escape}}`$ target of §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> (band width $`c`$ vs. width $`2^{(c+5)/2}`$). The generic (non-greedy) sharp-fill theorem itself is already unconditional and strictly more general than every consumer built on it: (<span class="sans-serif">\[Lean\]</span>) needs only $`(\ast\ast)`$ for *some* below-half core $`D`$, not a greedy prefix — this is the escape route named in Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">275</a>’s remark: abandoning the canonical greedy orbit (which forces $`\mathrm{CPGS}`$-equivalence) for an arbitrary below-half core is a genuinely different, still-open target.
+— a band of width $`c-2`$ inside a range of size $`2^{c-2}`$, exponentially weaker than the reset $`\sqrt{\text{-escape}}`$ target of §<a href="#sec:o4" data-reference-type="ref" data-reference="sec:o4">12.5</a> (band width $`c`$ vs. width $`2^{(c+5)/2}`$). The generic (non-greedy) sharp-fill theorem itself is already unconditional and strictly more general than every consumer built on it: (<span class="sans-serif">\[Lean\]</span>) needs only $`(\ast\ast)`$ for *some* below-half core $`D`$, not a greedy prefix — this is the escape route named in Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">273</a>’s remark: abandoning the canonical greedy orbit (which forces $`\mathrm{CPGS}`$-equivalence) for an arbitrary below-half core is a genuinely different, still-open target.
 
 The corpus’s complete inductive skeleton from the endpoint-six seed to O3 is already assembled (, <span class="sans-serif">\[Lean\]</span>); it consumes the sharp capacity input, in its reduced canonical form
 ``` math
@@ -3930,7 +3856,7 @@ The corpus’s complete inductive skeleton from the endpoint-six seed to O3 is a
 
 <div class="defn">
 
-**Definition 279** (Reset $`\sqrt{\text{-escape}}`$ from row 10).
+**Definition 277** (Reset $`\sqrt{\text{-escape}}`$ from row 10).
 ``` math
 \mathrm{SQRTESC}\ :=\ \forall r\ge 10,\ \big|\mathrm{rem}(r+1)-2^{r+1}\big|\ >\ 2^{(r+5)/2}
 \qquad\Big(\text{equivalently } \Delta_{r+1}^2 > 2^{r+5}\Big).
@@ -3953,13 +3879,13 @@ where $`L_r`$ is the length of the pure-R run following reset $`r`$. $`\mathrm{R
 
 <div class="obs">
 
-*Observation 280* (Sign law — a strictly weaker, still-open sub-target). At all $`1209`$ observed resets, the sign of the deviation is perfectly predicted by branch type (M$`\Rightarrow`$dev$`>0`$, U$`\Rightarrow`$dev$`<0`$, zero exceptions), and the margin over the threshold grows from $`1.11`$ bits at $`r=14`$ to $`\sim1246`$ bits by row $`2500`$ (<span class="sans-serif">\[Cert\]</span>). Proving the sign law unconditionally — $`\mathrm{M}\Rightarrow \mathrm{rem}(r+1)>2^{r+1}`$; $`\mathrm{U}\Rightarrow \mathrm{rem}(r+1)<2^{r+1}`$ — is a one-step branch-algebra statement in the coordinates of the already-proved affine recurrence, and would convert $`\mathrm{SQRTESC}`$ from one two-sided bound into two one-sided bounds. It is flagged in the source material itself as "worth attempting as a lemma before the inequality itself," and it remains <span class="sans-serif">\[Open\]</span>.
+*Observation 278* (Sign law — a strictly weaker, still-open sub-target). At all $`1209`$ observed resets, the sign of the deviation is perfectly predicted by branch type (M$`\Rightarrow`$dev$`>0`$, U$`\Rightarrow`$dev$`<0`$, zero exceptions), and the margin over the threshold grows from $`1.11`$ bits at $`r=14`$ to $`\sim1246`$ bits by row $`2500`$ (<span class="sans-serif">\[Cert\]</span>). Proving the sign law unconditionally — $`\mathrm{M}\Rightarrow \mathrm{rem}(r+1)>2^{r+1}`$; $`\mathrm{U}\Rightarrow \mathrm{rem}(r+1)<2^{r+1}`$ — is a one-step branch-algebra statement in the coordinates of the already-proved affine recurrence, and would convert $`\mathrm{SQRTESC}`$ from one two-sided bound into two one-sided bounds. It is flagged in the source material itself as "worth attempting as a lemma before the inequality itself," and it remains <span class="sans-serif">\[Open\]</span>.
 
 </div>
 
 <div class="obs">
 
-*Observation 281* (Dangerous-reset rigidity — Theorem B, not a proof). If reset $`r`$ is *dangerous* ($`|\mathrm{rem}(r+1)-2^{r+1}|\le2^{(r+5)/2}`$) and the preceding reset $`r_0`$ has a pure R-run of length $`L'=r-r_0-1>(r+5)/4`$, then $`w_{r_0+1}`$ is confined to at most two adjacent integers, determined by the divisor-pulse stream alone. A chain of $`n`$ consecutive dangerous resets with long runs forces $`n-1`$ nested exact congruence towers. This shows the failure mode is a tower of exact integer coincidences, not drift; it is <span class="sans-serif">\[Math\]</span>, and it does *not* by itself exclude the two pinned values — an isolated dangerous reset after a short run is untouched by this theorem.
+*Observation 279* (Dangerous-reset rigidity — Theorem B, not a proof). If reset $`r`$ is *dangerous* ($`|\mathrm{rem}(r+1)-2^{r+1}|\le2^{(r+5)/2}`$) and the preceding reset $`r_0`$ has a pure R-run of length $`L'=r-r_0-1>(r+5)/4`$, then $`w_{r_0+1}`$ is confined to at most two adjacent integers, determined by the divisor-pulse stream alone. A chain of $`n`$ consecutive dangerous resets with long runs forces $`n-1`$ nested exact congruence towers. This shows the failure mode is a tower of exact integer coincidences, not drift; it is <span class="sans-serif">\[Math\]</span>, and it does *not* by itself exclude the two pinned values — an isolated dangerous reset after a short run is untouched by this theorem.
 
 </div>
 
@@ -3969,7 +3895,7 @@ where $`L_r`$ is the length of the pure-R run following reset $`r`$. $`\mathrm{R
 
 <div class="defn">
 
-**Definition 282**. $`\mathtt{SeamTwoSidedDyadicCellEscape}`$ excludes three integer values of the middle coordinate, $`4\cdot\mathrm{rem}(s)-\mathrm{belowPulse}(s)-4\notin\{-3,-2,-1\}`$, plus one right-pulse-leak bound $`4\cdot\mathrm{overshoot}(s)+\mathrm{abovePulse}(s)\le2^{s+2}`$ under $`\mathrm{overshoot}(s)\le2^s`$ ().
+**Definition 280**. $`\mathtt{SeamTwoSidedDyadicCellEscape}`$ excludes three integer values of the middle coordinate, $`4\cdot\mathrm{rem}(s)-\mathrm{belowPulse}(s)-4\notin\{-3,-2,-1\}`$, plus one right-pulse-leak bound $`4\cdot\mathrm{overshoot}(s)+\mathrm{abovePulse}(s)\le2^{s+2}`$ under $`\mathrm{overshoot}(s)\le2^s`$ ().
 
 </div>
 
@@ -3977,6 +3903,20 @@ Granted this, induction from a `decide`-checked row-5 base propagates $`\forall 
 
 A distinct, exponentially cheaper tail-dominance socket targets the same downstream payoff via the upper-reset branch alone: $`\mathrm{SeamUpperResetDyadicBandEscape} := \forall d\ge13,\forall
 j\le d,\ 2^{d-j+1}<\mathrm{resetCharge}\vee\mathrm{resetCharge}+2(d+j)\le2^{d-j+1}`$ (, <span class="sans-serif">\[Open\]</span>, proved <span class="sans-serif">\[Cert\]</span> through row $`31`$ only by exhaustive computation ()). This band has *linear* width $`O(d)`$, not dyadic $`O(2^{d/2})`$ width — exponentially weaker than $`\mathrm{SQRTESC}`$ yet sufficient for the same conclusion $`\mathrm{HALF}`$ via $`\leanlink{HalfCylinderMiddleCarryLowerBound.lean:4790}`$. It is proved logically equivalent to a single-critical-index check per row (, <span class="sans-serif">\[Lean\]</span>), which is a genuine quantifier-complexity reduction, not a strength reduction.
+
+<a id="target-o2b-membership-of-121"></a>
+
+## Target O2b — Membership of $`1/21`$
+
+The second rational target has an exact current frontier:
+``` math
+\frac1{21}\in\mathcal A
+ \quad\Longleftrightarrow\quad
+ \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
+```
+. The fatal branch means a finite fatal greedy gap followed by cofinite exact selection, eventual quotient/rational alignment, and eventual visits to every doubling block. If it occurs, the canonical quotient remainder is eventually strictly larger than $`2^R`$ and follows one explicit affine recurrence: and . Any unbounded sequence of closed returns instead proves membership.
+
+No finite support on ranks at least $`2`$ sums to $`1/21`$ (). Thus membership would already be an infinite-support rational counterexample to $`\mathrm{U257}`$. The missing step is to exclude the fatal aligned affine-supercapacity branch (or force unbounded closed returns); neither is proved. <span class="sans-serif">\[Open\]</span>
 
 <a id="sec:v-table"></a>
 
@@ -3990,12 +3930,13 @@ Read left to right: an entry $`\Rightarrow`$ means the row target implies the co
 
 max width=
 
-| Target | Relation to HALF (O2) | Status |
+| Target | Relation to its endpoint | Status |
 |:---|:---|:---|
 | O1 U257 (universal) | O1 $`\Rightarrow`$ everything below is moot | <span class="sans-serif">\[Open\]</span> |
 | O2 HALF | pivot target; $`\neg`$O1 witness once true | <span class="sans-serif">\[Open\]</span> |
-| CPGS (Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">275</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
-| Terminal-only strip (Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">276</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
+| O2b $`1/21`$ membership | fatal-aligned branch exclusion; $`\neg`$O1 witness once true | <span class="sans-serif">\[Open\]</span> |
+| CPGS (Prop. <a href="#prop:cpgs-equiv" data-reference-type="ref" data-reference="prop:cpgs-equiv">273</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
+| Terminal-only strip (Prop. <a href="#prop:strip-equiv" data-reference-type="ref" data-reference="prop:strip-equiv">274</a>) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | mobiusCenteredHalfCarry sqrtBound (for $`A=G`$ only) | $`\Leftrightarrow`$ O2 | <span class="sans-serif">\[Open\]</span>, no shortcut |
 | O3 CofinalExactLocalMersenneHalfRows | $`\Rightarrow`$ O2 (strict, Lean) | <span class="sans-serif">\[Open\]</span> |
 | (O3-supply) linear-width capacity band | $`\Rightarrow`$ O3 (Lean, given lemma) | <span class="sans-serif">\[Open\]</span> |
@@ -4026,7 +3967,7 @@ None of the following is offered as a plan of attack, and none is close. Each is
 
 ## Summary
 
-Erdős \#257 is open, in both the universal form (O1) and the single-target half-value form (O2). Every route surveyed above either (a) is proved equivalent to O2 and therefore offers no reduction, (b) is a genuine strict weakening (O3, O4, O5, O3-supply) whose own supply is unproved at cofinal scale, or (c) is certified only on a finite initial segment, however large a margin that segment exhibits. Nothing in this paper closes any of these gaps, and no claim above should be read as progress toward doing so.
+Erdős \#257 is open in the universal form (O1), and both rational membership targets $`1/2`$ (O2) and $`1/21`$ (O2b) remain open. Every route surveyed above either (a) is proved equivalent to O2 and therefore offers no reduction, (b) is a genuine strict weakening (O3, O4, O5, O3-supply) whose own supply is unproved at cofinal scale, or (c) is certified only on a finite initial segment, however large a margin that segment exhibits. Nothing in this paper closes any of these gaps, and no claim above should be read as progress toward doing so.
 
 <a id="statements-and-declarations"></a>
 

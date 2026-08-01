@@ -932,16 +932,16 @@
       "claim_anchor_field": "paper_label",
       "companion_sources": [
         {
-          "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
+          "title": "The Binary Totient Series: a claim-bounded reasoning record for Erdős Problem 249",
           "source": "paper/erdos249-totient-reasoning-surface.tex",
           "rendered": "erdos249-totient-reasoning-surface.pdf",
-          "role": "Full problem-specific reasoning record for Erdős #249."
+          "role": "Claim-bounded #249 reasoning record: checked finite results, exact source coordinates, and explicitly surviving irrationality obligations."
         },
         {
-          "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
+          "title": "Reciprocal Mersenne Subseries: a claim-bounded reasoning record for Erdős Problem 257",
           "source": "paper/erdos257-mersenne-reasoning-surface.tex",
           "rendered": "erdos257-mersenne-reasoning-surface.pdf",
-          "role": "Full problem-specific reasoning record for Erdős #257."
+          "role": "Claim-bounded #257 reasoning record: checked structural reductions, exact source coordinates, and explicitly surviving universal, half-value, and 1/21 obligations."
         },
         {
           "title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry",
@@ -968,14 +968,14 @@
           {
             "id": "erdos_249_reasoning_record",
             "source": "paper/erdos249-totient-reasoning-surface.tex",
-            "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete working record for Erdős #249: checked premises, finite certificates, closed routes, evidence bands, and surviving obligations."
+            "decision": "retain_as_claim_bounded_reasoning_surface",
+            "thesis": "Claim-bounded reasoning surface for Erdős #249: selected checked premises, finite certificates through their exact ranges, closed routes, evidence bands, and the surviving unbounded-supply obligation."
           },
           {
             "id": "erdos_257_reasoning_record",
             "source": "paper/erdos257-mersenne-reasoning-surface.tex",
-            "decision": "retain_as_full_problem_reasoning_record",
-            "thesis": "Complete working record for Erdős #257: checked premises, finite computations, route relations, evidence bands, and surviving obligations."
+            "decision": "retain_as_claim_bounded_reasoning_surface",
+            "thesis": "Claim-bounded reasoning surface for Erdős #257: selected checked structural results, finite computations, route relations, evidence bands, and the surviving universal, half-value, and 1/21 obligations."
           }
         ],
         "problem_series": [
@@ -10939,7 +10939,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4229
+        "line": 4265
       }
     },
     {
@@ -10951,7 +10951,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4240
+        "line": 4276
       }
     },
     {
@@ -10963,7 +10963,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4264
+        "line": 4300
       }
     },
     {
@@ -10975,7 +10975,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1071
+        "line": 1073
       }
     },
     {
@@ -10987,7 +10987,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4255
+        "line": 4291
       }
     }
   ],
