@@ -127,7 +127,7 @@ def main() -> int:
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
         ".github/workflows/lean.yml"
-    ].replace("uses: actions/cache@v5", "uses: actions/cache@v0", 1)
+    ].replace("uses: actions/cache@", "uses: actions/cache-bypassed@", 1)
     try:
         diagnostic.validate_incremental_build_contract(mutated_incremental)
     except AssertionError:
