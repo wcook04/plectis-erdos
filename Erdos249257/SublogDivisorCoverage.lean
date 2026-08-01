@@ -478,6 +478,33 @@ theorem exists_uniform_supportCoeffZeroWindow_length_le_eps_logb_add
       (c := c) (N := N) (k := k) hkbound hinv
   simpa [B, D, L] using hfinal
 
+/-- Uniform `ε * log₂ N + O(1)` form of unconditional T11 for every positive
+starting index.  The additive constant depends only on `ε`, the dyadic shift
+`c`, and the odd denominator part `v`; it is independent of the support and
+numerator. -/
+theorem exists_uniform_supportCoeffZeroWindow_length_le_eps_logb
+    (c v : ℕ) (hv : 0 < v) (ε : ℝ) (hε : 0 < ε) :
+    ∃ B : ℝ, 0 ≤ B ∧
+      ∀ (A : Set ℕ) (p : ℤ),
+        (∃ a : ℕ, 0 < a ∧ a ∈ A) →
+        erdosSupportSeries 2 A =
+          (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ) →
+        ∀ N h : ℕ, 1 ≤ N →
+          SupportCoeffZeroWindow A (c + N) h →
+          (h : ℝ) ≤ ε * Real.logb 2 (N : ℝ) + B := by
+  obtain ⟨B, hB, hbound⟩ :=
+    exists_uniform_supportCoeffZeroWindow_length_le_eps_logb_add
+      c v hv ε hε
+  refine ⟨B + ε, add_nonneg hB hε.le, ?_⟩
+  intro A p hA hvalue N h hN hzero
+  calc
+    (h : ℝ) ≤ ε * Real.logb 2 (N + 1 : ℝ) + B :=
+      hbound A p hA hvalue N h hzero
+    _ ≤ ε * (1 + Real.logb 2 (N : ℝ)) + B := by
+      gcongr
+      exact logb_nat_succ_le_one_add N hN
+    _ = ε * Real.logb 2 (N : ℝ) + (B + ε) := by ring
+
 /-- Exact `ε * log₂ N + O(1)` form of unconditional T11 for every positive
 starting index. -/
 theorem supportCoeffZeroWindow_length_le_eps_logb
@@ -514,6 +541,7 @@ theorem supportCoeffZeroWindow_length_le_eps_logb
 #print axioms supportCoeffZeroWindow_length_le_logb_divisorSubpower
 #print axioms supportCoeffZeroWindow_length_le_eps_logb_add
 #print axioms exists_uniform_supportCoeffZeroWindow_length_le_eps_logb_add
+#print axioms exists_uniform_supportCoeffZeroWindow_length_le_eps_logb
 #print axioms supportCoeffZeroWindow_length_le_eps_logb
 
 end Erdos249257
