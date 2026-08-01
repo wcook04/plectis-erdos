@@ -779,4 +779,123 @@ theorem not_ratIntegral_of_approximation_gap
     simpa [abs_sub_comm] using herror
   exact (not_lt_of_ge hle) (hgap z)
 
+/-! ## Exact rationality classification for real dyadic tail orbits -/
+
+/-- Iterating a real dyadic tail recurrence produces the same integer block as
+in the rational orbit. -/
+theorem real_tail_iterate_eq_pow_mul_sub_block
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) (N h : ℕ) :
+    T (N + h) = 2 ^ h * T N - dyadicTailBlock g N h := by
+  induction h with
+  | zero => simp [dyadicTailBlock]
+  | succ h ih =>
+      rw [show N + (h + 1) = (N + h) + 1 by omega, hrec (N + h), ih]
+      simp only [dyadicTailBlock, pow_succ]
+      push_cast
+      ring
+
+/-- A real tail difference is a nonzero integer multiple of its initial state,
+up to the explicit integer block. -/
+theorem realTailShift_eq_scaled_sub_block
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) (N h : ℕ) :
+    realTailShift T h N =
+      ((2 ^ h : ℝ) - 1) * T N - dyadicTailBlock g N h := by
+  rw [realTailShift, real_tail_iterate_eq_pow_mul_sub_block hrec]
+  ring
+
+/-- Exact classifier for an integer-digit dyadic tail orbit: the initial state
+is rational if and only if one positive-length tail difference is integral.
+The forward direction uses denominator collapse; the reverse direction uses
+the nonzero multiplier `2^h - 1` in the block identity. -/
+theorem not_irrational_initial_iff_exists_integral_positive_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    ¬ Irrational (T 0) ↔
+      ∃ h N : ℕ, 0 < h ∧ RealIntegral (realTailShift T h N) := by
+  constructor
+  · intro hrat
+    obtain ⟨q, hq⟩ := exists_rat_of_not_irrational hrat
+    have hcast := realTail_eq_ratCast_rationalDyadicOrbit hrec q hq
+    obtain ⟨h, N, hh, hInt⟩ :=
+      exists_eventually_integral_tailShift
+        (rationalDyadicOrbit_recurrence g q)
+    refine ⟨h, N, hh, ?_⟩
+    obtain ⟨z, hz⟩ := hInt 0
+    refine ⟨z, ?_⟩
+    have hzR := congrArg ((↑) : ℚ → ℝ) hz
+    simpa [realTailShift, tailShift, hcast] using hzR
+  · rintro ⟨h, N, hh, z, hz⟩
+    have hpowNat : 1 < 2 ^ h := Nat.one_lt_two_pow hh.ne'
+    have hpowR : (1 : ℝ) < (2 : ℝ) ^ h := by exact_mod_cast hpowNat
+    have hfactor : (2 : ℝ) ^ h - 1 ≠ 0 :=
+      sub_ne_zero.mpr (ne_of_gt hpowR)
+    let qN : ℚ :=
+      ((z + dyadicTailBlock g N h : ℤ) : ℚ) / ((2 : ℚ) ^ h - 1)
+    have hTN : T N = (qN : ℝ) := by
+      rw [realTailShift_eq_scaled_sub_block hrec] at hz
+      dsimp [qN]
+      push_cast
+      field_simp [hfactor]
+      linarith
+    let q0 : ℚ :=
+      (qN + dyadicTailBlock g 0 N) / (2 : ℚ) ^ N
+    have hpow0 : (2 : ℝ) ^ N ≠ 0 := pow_ne_zero _ (by norm_num)
+    have hT0 : T 0 = (q0 : ℝ) := by
+      have hiterate := real_tail_iterate_eq_pow_mul_sub_block hrec 0 N
+      simp only [Nat.zero_add] at hiterate
+      dsimp [q0]
+      push_cast
+      field_simp [hpow0]
+      rw [hTN] at hiterate
+      linarith
+    rw [hT0]
+    exact q0.not_irrational
+
+/-- Equivalent eventual form of the classifier: rationality is exactly the
+existence of a fixed positive shift that is integral at every later index. -/
+theorem not_irrational_initial_iff_exists_eventually_integral_positive_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    ¬ Irrational (T 0) ↔
+      ∃ h N : ℕ, 0 < h ∧
+        ∀ k, RealIntegral (realTailShift T h (N + k)) := by
+  constructor
+  · intro hrat
+    obtain ⟨q, hq⟩ := exists_rat_of_not_irrational hrat
+    have hcast := realTail_eq_ratCast_rationalDyadicOrbit hrec q hq
+    obtain ⟨h, N, hh, hInt⟩ :=
+      exists_eventually_integral_tailShift
+        (rationalDyadicOrbit_recurrence g q)
+    refine ⟨h, N, hh, fun k => ?_⟩
+    obtain ⟨z, hz⟩ := hInt k
+    refine ⟨z, ?_⟩
+    have hzR := congrArg ((↑) : ℚ → ℝ) hz
+    simpa [realTailShift, tailShift, hcast] using hzR
+  · rintro ⟨h, N, hh, hInt⟩
+    exact
+      (not_irrational_initial_iff_exists_integral_positive_tailShift hrec).2
+        ⟨h, N, hh, hInt 0⟩
+
+/-- Exact irrationality normal form: an integer-digit dyadic tail starts at an
+irrational value exactly when none of its positive-length tail differences is
+an integer. -/
+theorem irrational_initial_iff_all_positive_tailShifts_nonintegral
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    Irrational (T 0) ↔
+      ∀ h : ℕ, 0 < h → ∀ N : ℕ,
+        ¬ RealIntegral (realTailShift T h N) := by
+  constructor
+  · intro hirr h hh N hInt
+    exact
+      (not_irrational_initial_iff_exists_integral_positive_tailShift hrec).2
+        ⟨h, N, hh, hInt⟩ hirr
+  · intro hnone
+    by_contra hrat
+    obtain ⟨h, N, hh, hInt⟩ :=
+      (not_irrational_initial_iff_exists_integral_positive_tailShift hrec).1 hrat
+    exact hnone h hh N hInt
+
 end ErdosProblems.Erdos251
