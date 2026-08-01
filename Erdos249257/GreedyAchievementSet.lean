@@ -1009,6 +1009,19 @@ theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
     simpa [mersenneCylinderStage, Function.comp_def] using hcont
   exact tendsto_nhds_unique hcont' tendsto_volume_mersenneCylinderStage_one
 
+/-- The natural ambient interval has strictly more than unit volume.  Thus
+`volume_mersenneAchievementSet = 1` is an absolute measure statement, not a
+claim that the Mersenne achievement set has full measure in its convex hull. -/
+theorem volume_mersenneAchievementSet_lt_volume_ambientInterval :
+    volume mersenneAchievementSet <
+      volume (Set.Icc (0 : ℝ) (mersenneTail 0)) := by
+  have hone : (1 : ℝ) < mersenneTail 0 := by
+    rw [mersenneTail_eq_weight_add]
+    norm_num [mersenneWeight]
+    exact mersenneTail_pos 1
+  rw [volume_mersenneAchievementSet, Real.volume_Icc, sub_zero]
+  exact ENNReal.one_lt_ofReal.mpr hone
+
 /-! ## Exact greedy recurrences -/
 
 /-- Real greedy residual after processing exponents `1, ..., n`. -/
@@ -3105,5 +3118,7 @@ theorem crossedBoundary_forceDepth_gt_iff
     {N v : ℕ} (hN : 1 < N) :
     N < 2 * N - v - 1 ↔ v < N - 1 := by
   omega
+
+#print axioms volume_mersenneAchievementSet_lt_volume_ambientInterval
 
 end Erdos249257
