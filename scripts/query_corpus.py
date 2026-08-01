@@ -5719,7 +5719,8 @@ def agent_tour_packet() -> dict[str, Any]:
             "maximum_encoded_bytes": agent_tour_budget_bytes(len(problems)),
             "policy": (
                 "18000 base bytes plus 2000 bytes per canonically indexed "
-                "problem; six problems currently yield a 30000-byte ceiling"
+                f"problem; {len(problems)} problems currently yield a "
+                f"{agent_tour_budget_bytes(len(problems))}-byte ceiling"
             ),
             "reason": (
                 "The registry map is material first-contact context. Its budget "

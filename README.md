@@ -1,9 +1,9 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Six open Erdős problems
+# Eight open Erdős problems
 
-Lean 4 on Erdős Problems 243, 249, 251, 257, 269, and 1049.
+Lean 4 on Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [architecture and repository guide](ARCHITECTURE.md).
 It assumes no Lean or project history.
@@ -13,20 +13,24 @@ It assumes no Lean or project history.
 
 Every covered Erdős problem has its own PDF:
 
+- [**#68 — factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf)
 - [**#243 — reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf)
 - [**#249 — dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [full working record](erdos249-totient-reasoning-surface.pdf)
 - [**#251 — prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf)
 - [**#257 — reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [full working record](erdos257-mersenne-reasoning-surface.pdf)
 - [**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf)
+- [**#1041 — short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf)
 - [**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf)
 
 | Problem | Mathematical statement | Public checked frontier; what remains |
 |---|---|---|
+| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | Exact factorial-successor and carry equivalences, integral-channel and projection consumers, and a finite denominator exclusion through `300000` are checked; no cofinal non-unit-carry or residual-nonintegrality producer is proved. |
 | **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? | Exact tail-state dynamics and bounded or periodic negative-state barriers are checked; unbounded cofinal negative excursions and the required analytic hypotheses remain open. |
 | **#249** | Is `∑ φ(n)/2ⁿ` irrational? | Exact dyadic-section ranks, a finite denominator window, certificate equivalences, and finite deposits are checked; no unbounded certificate producer is proved. |
 | **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | The summation-by-parts equivalence and integral-shift consumers are checked; cofinal actual-prime-gap nonintegrality and the infinite-sum bridge remain open. |
 | **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? | Full support, named families, finite periods, unique coding, and the restricted-set topology and measure dichotomy are checked; arbitrary infinite supports and the half-value seam remain open. |
 | **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | The three-prime lcm cells, jump and radix structure, kernel obstruction, and a carry consumer are checked; the actual cofinal window producer and unbounded exclusion remain open. |
+| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? | Newton-flow value decay, ray separation, the translation collision locus, and root-retention bounds are checked. The printed proof of a recent claimed spanning-tree decomposition has an invalid local saddle block; repairing the topology and metric gluing remains open. |
 | **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? | The failed integer-base transfer, exact rational-base recurrence, and local Padé arithmetic are checked; the primitive noncollapsed construction and analytic remainder control remain open. |
 
 This table is the blank-slate agent and reader inventory: no query is required
@@ -41,7 +45,7 @@ cache, or network access.
 
 ## Status
 
-All six problems remain open. **This project does not solve any of them.**
+All eight problems remain open. **This project does not solve any of them.**
 Each problem paper states the checked results, the evidence boundary, and the
 exact obligation that remains. Results stay within Lean source.
 
@@ -134,9 +138,9 @@ evidence, checked consumer, and endpoint-or-counterexample boundary—are in
 
 | Library | Current size |
 |---|---:|
-| Lean modules | 992 |
-| Formal results and supporting lemmas | 149,812 |
-| Curated claim records | 100 |
+| Lean modules | 1,014 |
+| Formal results and supporting lemmas | 150,941 |
+| Curated claim records | 101 |
 | Contribution families | 21 |
 
 Claim records span every status, including cited and open, and are partitioned
@@ -155,7 +159,7 @@ exactly once. These are navigation counts, not novelty claims.
   `python3 scripts/query_corpus.py --tour --format card`, then follow
   `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
   The no-build tour exposes corpus scale, the mathematical map, canonical
-  six-problem map, exact open frontier, and authority boundaries. Use
+  eight-problem map, exact open frontier, and authority boundaries. Use
   `query_semantic.py problem-registry` for every indexed problem and
   `structural-backlog` for authored replacement. Committed indexes expose every
   indexed declaration and exact dependencies for both loaded roots; coverage

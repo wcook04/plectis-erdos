@@ -10,7 +10,7 @@ This file carries Claude-specific deltas only.
 
 - Start with the bounded `docs/orientation.json` capsule named by the imported
   instructions; expand one claim or route at a time.
-- The imported six-problem cold-start card is the complete fleet inventory; do
+- The imported eight-problem cold-start card is the complete fleet inventory; do
   not query merely to learn which problems exist or what they ask. Query only
   after selecting a problem or mathematical lane from that card.
 - Open a mathematical programme with

@@ -167,7 +167,7 @@ def validate_agent_tour() -> None:
     assert packet["scale"]["mathematical_programme_count"] == len(
         PROGRAMME_EXPECTATIONS
     )
-    assert packet["scale"]["indexed_problem_count"] == 6
+    assert packet["scale"]["indexed_problem_count"] == 8
     assert packet["budget_contract"]["maximum_encoded_bytes"] == 30_000
     assert {row["erdos_number"] for row in packet["problem_map"]} == {
         243,

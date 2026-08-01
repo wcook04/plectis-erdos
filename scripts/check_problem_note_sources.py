@@ -208,6 +208,10 @@ def declares(line: str, name: str) -> bool:
                 rest = stripped[len(head) :].lstrip()
                 if re.match(rf"{re.escape(name)}(?![A-Za-z0-9_'])", rest):
                     return True
+    # Lean also permits the declaration keyword and name on consecutive
+    # lines. Authored links point at the name line in that layout.
+    if re.match(rf"{re.escape(name)}(?![A-Za-z0-9_'])\s*:", stripped):
+        return True
     return False
 
 
@@ -278,9 +282,11 @@ def declarations_for_module(relative: str, text: str) -> list[DeclarationKey]:
     return [(relative, name) for name in declarations_in(text)]
 
 
-def validated_coverage_floor(index: dict[str, Any]) -> tuple[float | None, list[str]]:
+def validated_coverage_floor(
+    owner: dict[str, Any], *, label: str = "note_coverage_floor"
+) -> tuple[float | None, list[str]]:
     """Return a finite coverage floor in `(0, 1]`, or a validation failure."""
-    value = index.get("note_coverage_floor")
+    value = owner.get("note_coverage_floor")
     if (
         isinstance(value, bool)
         or not isinstance(value, (int, float))
@@ -288,7 +294,7 @@ def validated_coverage_floor(index: dict[str, Any]) -> tuple[float | None, list[
         or not 0 < float(value) <= 1
     ):
         return None, [
-            "note_coverage_floor must be a finite number in the interval (0, 1]"
+            f"{label} must be a finite number in the interval (0, 1]"
         ]
     return float(value), []
 
@@ -416,11 +422,18 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
                 )
                 more = "" if len(missing) <= 6 else f", and {len(missing) - 6} more"
                 lines.append(f"      not reached by the note: {head}{more}")
-        if floor is not None and ratio < floor:
+        row_floor = floor
+        if "note_coverage_floor" in row:
+            row_floor, row_floor_failures = validated_coverage_floor(
+                row,
+                label=f"{row['problem_id']}.note_coverage_floor",
+            )
+            failures.extend(row_floor_failures)
+        if row_floor is not None and ratio < row_floor:
             failures.append(
                 f"{row['problem_id']}: note reaches {ratio:.0%} of current "
-                f"declarations, below the {floor:.0%} floor; rewrite the note "
-                f"and repin, or lower note_coverage_floor deliberately"
+                f"declarations, below the {row_floor:.0%} floor; rewrite the note "
+                f"and repin, or lower its note_coverage_floor deliberately"
             )
         # The floor is measured against this checkout, which is what the notes
         # are built from.  The library is also developed on another branch, and

@@ -218,15 +218,15 @@
       {
         "id": "erdos257_half_story",
         "route_kind": "mathematical_programme",
-        "title": "Achievement-set geometry and the half-value seam",
-        "intent": "Follow the proved #257 half-value spine from unique greedy coding to the exact last-transition tail residual, without treating local dyadic-safety bounds as a solution.",
+        "title": "Achievement-set geometry and the rational-target seams",
+        "intent": "Follow the proved #257 achievement-set spine from unique greedy coding through the half-value seam and the exact denominator-21 fatal-branch frontier, without treating finite recurrence data as a solution.",
         "discovery_terms": [
           "what remains open for 257",
           "achievement set topology",
           "how close is the half-value case"
         ],
-        "mathematical_focus": "Greedy coding, exact achievement-set geometry, dyadic skip bands, seam classification, and the last-producer tail residual for the target 1/2.",
-        "claim_ceiling": "Exact geometry and reductions for the half-value branch; neither half-membership nor universal Erdős #257 is proved.",
+        "mathematical_focus": "Greedy coding, exact achievement-set geometry, dyadic skip bands and seam classification for 1/2, plus the canonical quotient-greedy, scaled-remainder, final-skip and permanent affine-supercapacity frontier for 1/21.",
+        "claim_ceiling": "Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved.",
         "problem_target_claim_ids": [
           "universal_257"
         ],
@@ -235,12 +235,14 @@
           "half_greedy_two_thirds_band",
           "half_membership_seam_classification",
           "fatal_gap_right_tail_classification",
+          "twenty_one_quotient_greedy_frontier",
           "final_middle_cell_escape",
           "final_middle_neg_two_phase_sieve",
           "last_producer_tail_escape_reduction"
         ],
         "remaining_open_proposition_ids": [
           "remaining_open.half_value_membership",
+          "remaining_open.twenty_one_permanent_affine_supercapacity",
           "remaining_open.universal_257_all_infinite_supports"
         ],
         "related_route_ids": [
@@ -256,16 +258,20 @@
           "python3 scripts/query_corpus.py --claim half_greedy_two_thirds_band",
           "python3 scripts/query_corpus.py --claim half_membership_seam_classification",
           "python3 scripts/query_corpus.py --claim fatal_gap_right_tail_classification",
+          "python3 scripts/query_corpus.py --claim twenty_one_quotient_greedy_frontier",
           "python3 scripts/query_corpus.py --claim final_middle_cell_escape",
           "python3 scripts/query_corpus.py --claim final_middle_neg_two_phase_sieve",
           "python3 scripts/query_corpus.py --claim last_producer_tail_escape_reduction",
           "python3 scripts/query_corpus.py --open remaining_open.half_value_membership",
+          "python3 scripts/query_corpus.py --open remaining_open.twenty_one_permanent_affine_supercapacity",
           "python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports"
         ],
         "authority_owners": [
           "Erdos249257/GreedyAchievementSet.lean",
           "Erdos249257/HalfGreedyTwoThirdsBand.lean",
           "Erdos249257/HalfCylinderFatalGapRightTail.lean",
+          "Erdos249257/BooleanMobiusCarry.lean",
+          "Erdos249257/TwentyOneQuotientGreedy.lean",
           "Erdos249257/HalfCylinderFinalMiddleCellEscape.lean",
           "Erdos249257/HalfFinalMiddlePhaseSieve.lean",
           "Erdos249257/HalfCylinderLastProducerContradiction.lean",
@@ -963,6 +969,12 @@
         ],
         "problem_series": [
           {
+            "id": "erdos_68_note",
+            "source": "paper/erdos-68-factorial-denominator-irrationality.tex",
+            "decision": "retain_as_problem_owned_note",
+            "thesis": "The exact factorial-successor and carry normal forms, integral-channel and projection consumers, an unconditional finite denominator exclusion through 300000, and five quantified producer problems for the still-open factorial-denominator series."
+          },
+          {
             "id": "erdos_243_note",
             "source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
             "decision": "retain_as_problem_owned_note",
@@ -990,13 +1002,19 @@
             "id": "erdos_269_note",
             "source": "paper/erdos-269-three-prime-running-lcm.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The running least common multiple of a three-prime smooth prefix, its dyadic radix alphabet and finite height-fibre structure, and the conditional reduction from an arbitrary rational denominator to a coprime reduced carry; actual carry divisibility and cofinal window escape remain open."
+            "thesis": "The running least common multiple of a three-prime smooth prefix, its literal dyadic block digits and bounded radix, exact residue/coboundary carry forms, higher-rank block and observer obstructions, and the conditional reduction to a coprime reduced carry; actual carry divisibility and cofinal window escape remain open."
+          },
+          {
+            "id": "erdos_1041_note",
+            "source": "paper/erdos-1041-lemniscate-newton-flow.tex",
+            "decision": "retain_as_problem_owned_note",
+            "thesis": "Newton-flow value decay and critical-value ray separation, exact translation-collision geometry and root retention, plus a precise diagnosis of the invalid local saddle block in a recent claimed spanning-tree proof; the global topology and metric gluing remain open."
           },
           {
             "id": "erdos_1049_note",
             "source": "paper/erdos-1049-rational-base-lambert.tex",
             "decision": "retain_as_problem_owned_note",
-            "thesis": "The coordinatewise corridor and its impossibility at base three halves, the exact cleared-tail recurrence with its exponential forcing term, and the separation of two formalised arithmetic facts from the external analytic height criterion."
+            "thesis": "The coordinatewise corridor and its impossibility at base three halves, exact primitive-normalisation and endpoint-jet obstructions, the 81/200 external height region with checked parameter specialisations, and precise saturated Hermite-Pade and Mahler-system questions."
           }
         ],
         "problem_series_boundary": "A problem note expounds declarations of the ErdosProblems expansion root. Those declarations are exact Lean propositions and are not reviewed public claims; no note may be read as promoting one, and no Erdős problem it treats is closed.",
@@ -1731,7 +1749,8 @@
           "path": "Erdos249257/BooleanMobiusCarry.lean",
           "role": "Boolean-Mobius carry coordinates",
           "imports": [
-            "Erdos249257.GenericTailOrbitRigidity"
+            "Erdos249257.GenericTailOrbitRigidity",
+            "Erdos249257.GreedyAchievementSet"
           ]
         },
         {
@@ -7596,6 +7615,26 @@
           ]
         },
         {
+          "id": "Erdos249257.TwentyOneQuotientCompactness",
+          "path": "Erdos249257/TwentyOneQuotientCompactness.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusGlobalRepair"
+          ]
+        },
+        {
+          "id": "Erdos249257.TwentyOneQuotientGreedy",
+          "path": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TwentyOneQuotientCompactness",
+            "Erdos249257.BooleanMobiusGreedyReduction",
+            "Erdos249257.BooleanMobiusExactTransition",
+            "Erdos249257.HalfCutLocator",
+            "Erdos249257.HalfGreedyFatalGap"
+          ]
+        },
+        {
           "id": "ErdosProblems.AxiomAudit",
           "path": "ErdosProblems/AxiomAudit.lean",
           "role": "Lean proof module",
@@ -7912,6 +7951,18 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
+          "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.HermitePadeNoGo",
+          "path": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos1049.RationalBaseLambert",
           "path": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
           "role": "Lean proof module",
@@ -7928,6 +7979,14 @@
           "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
           "role": "Lean proof module",
           "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos1049.ZudilinHeightRegion",
+          "path": "ErdosProblems/Erdos1049/ZudilinHeightRegion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1049.RationalBaseLambert"
+          ]
         },
         {
           "id": "ErdosProblems.Erdos243.DynamicCancellation",
@@ -8050,6 +8109,20 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
+          "path": "ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.CarryLiftExtinction",
+          "path": "ErdosProblems/Erdos269/CarryLiftExtinction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.ThreeChannelBlockRigidity"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos269.ResidueEscape",
           "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
           "role": "Lean proof module",
@@ -8065,8 +8138,120 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos269.ThreeChannelBlockRigidity",
+          "path": "ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
           "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.WeightedPhaseCarry",
+          "path": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
+          "path": "ErdosProblems/Erdos68/CanonicalFactorialDigits.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
+          "path": "ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+          "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.ChannelBreakpointRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.DivisorFactorialCentre",
+          "path": "ErdosProblems/Erdos68/DivisorFactorialCentre.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FiniteDefectAutomaton"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
+          "path": "ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+            "ErdosProblems.Erdos68.FactorialChannelCertificate",
+            "ErdosProblems.Erdos68.FactorialZeroPlateau"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialCarry",
+          "path": "ErdosProblems/Erdos68/FactorialCarry.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialChannelCertificate",
+          "path": "ErdosProblems/Erdos68/FactorialChannelCertificate.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.FactorialCarry"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialDigitRigidity",
+          "path": "ErdosProblems/Erdos68/FactorialDigitRigidity.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FactorialZeroPlateau",
+          "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CanonicalFactorialDigits",
+            "ErdosProblems.Erdos68.PrimeUnitTranslator",
+            "ErdosProblems.Erdos68.StrictSuccessorArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.FiniteDefectAutomaton",
+          "path": "ErdosProblems/Erdos68/FiniteDefectAutomaton.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.CanonicalFactorialDigits"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PrimeUnitTranslator",
+          "path": "ErdosProblems/Erdos68/PrimeUnitTranslator.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.ChannelIntegralCongruence"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.PrimeZeroBranch",
+          "path": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
+          "path": "ErdosProblems/Erdos68/StrictSuccessorArithmetic.lean",
           "role": "Lean proof module",
           "imports": []
         },
@@ -10000,12 +10185,32 @@
             "ErdosProblems.Erdos243.SparseResetRecovery",
             "ErdosProblems.Erdos251.PrimeGapDyadicTail",
             "ErdosProblems.Erdos257.SquarefreeSupportIncidence",
+            "ErdosProblems.Erdos68.CanonicalFactorialDigits",
+            "ErdosProblems.Erdos68.ChannelBreakpointRigidity",
+            "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+            "ErdosProblems.Erdos68.FactorialCarry",
+            "ErdosProblems.Erdos68.FactorialChannelCertificate",
+            "ErdosProblems.Erdos68.PrimeUnitTranslator",
+            "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
+            "ErdosProblems.Erdos68.FactorialZeroPlateau",
+            "ErdosProblems.Erdos68.FiniteDefectAutomaton",
+            "ErdosProblems.Erdos68.DivisorFactorialCentre",
+            "ErdosProblems.Erdos68.FactorialDigitRigidity",
+            "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
+            "ErdosProblems.Erdos68.PrimeZeroBranch",
             "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "ErdosProblems.Erdos269.ResidueEscape",
             "ErdosProblems.Erdos269.RestrictedFloorSum",
+            "ErdosProblems.Erdos269.BoundedRadixTailEscape",
+            "ErdosProblems.Erdos269.ThreeChannelBlockRigidity",
+            "ErdosProblems.Erdos269.CarryLiftExtinction",
+            "ErdosProblems.Erdos269.WeightedPhaseCarry",
             "ErdosProblems.Erdos1049.RationalBaseLambert",
             "ErdosProblems.Erdos1049.RationalPadeArithmetic",
-            "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
+            "ErdosProblems.Erdos1049.ZudilinHeightRegion",
+            "ErdosProblems.Erdos1049.HermitePadeNoGo",
+            "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
+            "ErdosProblems.Erdos1041.NewtonFlowRaySeparation"
           ]
         },
         {
@@ -10371,6 +10576,21 @@
           "from": "fatal_gap_right_tail_classification",
           "relation": "builds_on",
           "to": "greedy_achievement_geometry"
+        },
+        {
+          "from": "twenty_one_quotient_greedy_frontier",
+          "relation": "builds_on",
+          "to": "greedy_achievement_geometry"
+        },
+        {
+          "from": "twenty_one_quotient_greedy_frontier",
+          "relation": "advances_open_target",
+          "to": "universal_257",
+          "remaining_open_effect": {
+            "remaining_open_proposition_id": "remaining_open.twenty_one_permanent_affine_supercapacity",
+            "operation": "narrows",
+            "statement": "Reduces 1/21 membership exactly to excluding one fatal/cofinite/aligned branch, equivalently to cofinally bounded scaled actual greedy remainders, and identifies eventual permanent affine supercapacity as the sole late fatal regime; no contradiction or cofinal return theorem is proved."
+          }
         },
         {
           "from": "half_membership_seam_classification",
@@ -10847,7 +11067,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "e52e55c5db4d2ca965be45f007d25d0586ad4a0e",
+      "ref": "d6b0a70fe9ad2638e5f8ff0310cedf16b7f715f5",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint"
@@ -10912,6 +11132,18 @@
       }
     },
     {
+      "id": "remaining_open.twenty_one_permanent_affine_supercapacity",
+      "status": "open",
+      "open_target_claim": "universal_257",
+      "statement": "Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.",
+      "paper_anchor": {
+        "source": "paper/erdos-257-mersenne-support-subseries.tex",
+        "environment": "problem",
+        "title": "permanent affine supercapacity",
+        "line": 1079
+      }
+    },
+    {
       "id": "remaining_open.universal_257_all_infinite_supports",
       "status": "open",
       "open_target_claim": "universal_257",
@@ -10936,7 +11168,7 @@
         {
           "name": "irrational_erdosSum_full_support",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8000
+          "line": 8281
         }
       ]
     },
@@ -10951,7 +11183,7 @@
         {
           "name": "irrational_erdosBorwein_series",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 8007
+          "line": 8288
         }
       ]
     },
@@ -10969,17 +11201,17 @@
         {
           "name": "erdos257_family_factorial_instance",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5754
+          "line": 6035
         },
         {
           "name": "erdos257_family_two_pow_instance",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 5762
+          "line": 6043
         },
         {
           "name": "irrational_erdosSupportSeries_pairwise_coprime",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 10448
+          "line": 10729
         }
       ]
     },
@@ -10994,17 +11226,17 @@
         {
           "name": "irrational_weightedErdosSeries_periodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12370
+          "line": 12651
         },
         {
           "name": "irrational_weightedErdosSeries_eventuallyPeriodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12397
+          "line": 12678
         },
         {
           "name": "irrational_ratWeightSeries_eventuallyPeriodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 12483
+          "line": 12764
         }
       ]
     },
@@ -11019,12 +11251,12 @@
         {
           "name": "irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13847
+          "line": 14128
         },
         {
           "name": "irrational_intWeightedErdosSeries_periodic_of_bpow_mul_ne_intCast",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13872
+          "line": 14153
         }
       ]
     },
@@ -11039,7 +11271,7 @@
         {
           "name": "intWeightedCoeff_periodFourSignWeight_eq_zero_of_mod_four_eq_three",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 13898
+          "line": 14179
         }
       ]
     },
@@ -11134,47 +11366,47 @@
         {
           "name": "finiteFragment_dyadicPrefixCompression",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 1481
+          "line": 1636
         },
         {
           "name": "halfGreedyThreeDepthTakeRunExcessBound_iff_skippedExcessBound",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2021
+          "line": 2176
         },
         {
           "name": "greedyHalf_badSkipCapViolation_iff_primitiveLattice",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2033
+          "line": 2188
         },
         {
           "name": "halfGreedyPrefixSupportTailGap_eq_excess_div_denominator",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2126
+          "line": 2281
         },
         {
           "name": "greedyHalf_badSkipCapViolation_iff_supportCoeffTailGap",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 2164
+          "line": 2319
         },
         {
           "name": "rawSafe_but_not_gcdScaled_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3294
+          "line": 3449
         },
         {
           "name": "factorEleven_predecessorOvershoot_not_inductive_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3316
+          "line": 3471
         },
         {
           "name": "unsafeSkipGcdOvershootSupply_iff_primitive",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3577
+          "line": 4520
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3618
+          "line": 4561
         }
       ]
     },
@@ -11567,6 +11799,70 @@
           "name": "seamGreedyEventuallyRight_iff_exists_isLastHalfGreedySkip",
           "module": "Erdos249257/HalfCylinderFatalGapRightTail.lean",
           "line": 802
+        }
+      ]
+    },
+    {
+      "id": "twenty_one_quotient_greedy_frontier",
+      "label": "Canonical quotient-greedy and scaled-remainder frontier at 1/21",
+      "status": "unconditional progress",
+      "statement": "Membership of 1/21 in the Mersenne achievement set is equivalent both to excluding one explicit fatal/cofinite/aligned branch and to cofinally bounded scaled actual greedy remainders. Every closed Boolean quotient row is the deterministic quotient-greedy row; any unbounded sequence of canonical rows with remainder at most 2^R gives membership. On the complementary fatal branch the remainder is eventually strictly supercapacity, the boundary rank is always selected, and support and remainder follow one exact affine recurrence. A final skipped exponent also forces a structured one-sided approximation to the Erdős–Borwein constant with exact denominator-order constraints. These results isolate permanent affine supercapacity as the surviving late regime; they do not contradict it or prove 1/21 membership.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.twenty_one_permanent_affine_supercapacity",
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:one-over-twenty-one-frontier",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "twentyOneEvenQuotientGreedySupport",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 32
+        },
+        {
+          "name": "twentyOneEvenQuotientGreedyRemainder",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 39
+        },
+        {
+          "name": "twentyOneGreedyDefect",
+          "module": "Erdos249257/BooleanMobiusCarry.lean",
+          "line": 1721
+        },
+        {
+          "name": "one_div_twenty_one_mem_iff_scaledGreedyRemainderCofinallyBounded",
+          "module": "Erdos249257/BooleanMobiusCarry.lean",
+          "line": 2715
+        },
+        {
+          "name": "one_div_twenty_one_mem_mersenneAchievementSet_of_defect_le_one_cofinally",
+          "module": "Erdos249257/BooleanMobiusCarry.lean",
+          "line": 2842
+        },
+        {
+          "name": "one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 3508
+        },
+        {
+          "name": "lastTwentyOneSkip_oddDoublingOrder_eq_lcm",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 3570
+        },
+        {
+          "name": "lastTwentyOneSkip_erdosBorwein_fatalInterval",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 3736
+        },
+        {
+          "name": "twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 5553
+        },
+        {
+          "name": "twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
+          "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
+          "line": 5657
         }
       ]
     },
@@ -12247,12 +12543,12 @@
         {
           "name": "tsum_totient_div_two_pow_sub_one_eq_two",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18101
+          "line": 18382
         },
         {
           "name": "totient_series_eq_half_add_moebius_mersenne_square",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18126
+          "line": 18407
         }
       ]
     },
@@ -12270,12 +12566,12 @@
         {
           "name": "totient_series_eq_half_add_visible_coprime_pairs",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18229
+          "line": 18510
         },
         {
           "name": "tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18244
+          "line": 18525
         }
       ]
     },
@@ -12506,7 +12802,7 @@
         {
           "name": "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053",
           "module": "Erdos249257/CertificateKernel.lean",
-          "line": 18056
+          "line": 18337
         }
       ]
     },
@@ -13105,7 +13401,7 @@
         {
           "name": "exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 948
+          "line": 949
         }
       ]
     },
@@ -13275,17 +13571,17 @@
         {
           "name": "HalfSecondChannelSeparatedRat",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2695
+          "line": 2846
         },
         {
           "name": "halfSecondChannelSeparatedRat_of_pos_le_six",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2723
+          "line": 2900
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2901
+          "line": 3078
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",

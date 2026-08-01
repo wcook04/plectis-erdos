@@ -52,7 +52,7 @@ INCREMENTAL_BUILD_SURFACES = (
 # prefix below. They prevent accidental bloat without making the next honest
 # sentence a release failure.
 HUMAN_SURFACE_BUDGET_BYTES = {
-    # The fixed prefix below protects the verdict and the direct six-problem
+    # The fixed prefix below protects the verdict and the direct eight-problem
     # mathematical card. Whole-file allowance scales with the canonical
     # problem registry instead of preserving the original two-lane ceiling.
     "README.md": 16_000 + 300 * INDEXED_PROBLEM_COUNT,
@@ -324,12 +324,14 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["not an entrypoint into any private development system"],
         ],
         "state_problem_frontier": [
-            ["All six problems remain open"],
+            ["All eight problems remain open"],
             ["S = ∑ φ(n)/2ⁿ"],
             ["∑_{n∈A} 1/(2ⁿ - 1)"],
             ["every infinite", "for every infinite"],
         ],
         "recover_blank_slate_problem_card": [
+            ["#68"],
+            ["n!−1", "n!-1"],
             ["#243"],
             ["rapidly growing"],
             ["Sylvester recurrence"],
@@ -341,6 +343,8 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["every infinite"],
             ["#269"],
             ["running lcms"],
+            ["#1041"],
+            ["lemniscate"],
             ["#1049"],
             ["rational bases"],
             ["no query is required"],
@@ -422,7 +426,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["--tour --format card"],
             ["corpus scale"],
             ["mathematical map"],
-            ["canonical six-problem map"],
+            ["canonical eight-problem map"],
             ["problem-registry"],
             ["exact open frontier"],
             ["agent_native_corpus_navigation"],
@@ -515,11 +519,13 @@ def validate_human_first_contact(
         in readme_prefix
     ), "README no longer exposes the cold-clone-to-proof-receipt paper"
     for problem, filename in (
+        ("#68", "erdos-68-factorial-denominator-irrationality.pdf"),
         ("#243", "erdos-243-reciprocal-tail-rigidity.pdf"),
         ("#249", "erdos-249-binary-totient-series.pdf"),
         ("#251", "erdos-251-prime-gap-dyadic-series.pdf"),
         ("#257", "erdos-257-mersenne-support-subseries.pdf"),
         ("#269", "erdos-269-three-prime-running-lcm.pdf"),
+        ("#1041", "erdos-1041-lemniscate-newton-flow.pdf"),
         ("#1049", "erdos-1049-rational-base-lambert.pdf"),
     ):
         assert problem in readme_prefix and f"]({filename})" in readme_prefix, (
@@ -839,20 +845,23 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
     for token in (
         "docs/orientation.json",
         "docs/claims.json",
-        "Six-problem cold-start card",
+        "Eight-problem cold-start card",
         "must not already know a query command",
-        "All six original problems remain open",
+        "All eight indexed problems remain open",
         "Sylvester recurrence",
         r"\sum_{n\ge1}\varphi(n)/2^n",
         r"\sum_{n\ge1}p_n/2^n",
         r"\sum_{n\in A}1/(2^n-1)",
         "running lcms of the smooth numbers",
+        "open unit lemniscate",
         "smallest resistant explicit base here is",
+        "erdos-68-factorial-denominator-irrationality.pdf",
         "erdos-243-reciprocal-tail-rigidity.pdf",
         "erdos-249-binary-totient-series.pdf",
         "erdos-251-prime-gap-dyadic-series.pdf",
         "erdos-257-mersenne-support-subseries.pdf",
         "erdos-269-three-prime-running-lcm.pdf",
+        "erdos-1041-lemniscate-newton-flow.pdf",
         "erdos-1049-rational-base-lambert.pdf",
         "no `ai_workflow`",
         "Lean source checked by the pinned Lean kernel",
@@ -864,7 +873,7 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "Claude-specific deltas only",
         "docs/orientation.json",
         "mathematical programme",
-        "six-problem cold-start card",
+        "eight-problem cold-start card",
         "do not query merely to learn which problems exist",
         "larger ongoing formal-mathematics workflow",
         "not an entrypoint into any private development system",
@@ -1184,7 +1193,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert tour["scale"]["remaining_open_proposition_count"] == len(
         summary["remaining_open_propositions"]
     )
-    assert tour["scale"]["indexed_problem_count"] == 6
+    assert tour["scale"]["indexed_problem_count"] == 8
     assert tour["budget_contract"]["maximum_encoded_bytes"] == (
         AGENT_TOUR_BUDGET_BYTES
     )
@@ -1238,15 +1247,15 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
 
     problem_registry = packets["problem_registry"]
     assert problem_registry["source"] == "docs/problems.json"
-    assert problem_registry["indexed_problem_count"] == 6
+    assert problem_registry["indexed_problem_count"] == 8
     assert {
         row["erdos_number"] for row in problem_registry["problems"]
-    } == {243, 249, 251, 257, 269, 1049}
+    } == {68, 243, 249, 251, 257, 269, 1041, 1049}
     dictionary = packets["semantic_dictionary"]
     assert dictionary["problem_registry_contract"]["source"] == (
         "docs/problems.json"
     )
-    assert len(dictionary["problem_registry_contract"]["problems"]) == 6
+    assert len(dictionary["problem_registry_contract"]["problems"]) == 8
     for problem_search in packets["problem_searches"].values():
         assert problem_search["routing_receipt"] == {
             "selection": "exact_problem_registry_term",

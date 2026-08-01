@@ -11,19 +11,21 @@ larger ongoing formal-mathematics workflow: its release discipline, claim
 registry, graph structure, generated atlas, and adversarial checks are public
 evidence of that workflow. They do not create hidden proof authority.
 
-## Six-problem cold-start card
+## Eight-problem cold-start card
 
 A blank-slate agent must receive the complete problem fleet here; it must not
 already know a query command or infer the fleet from directory names.
-**All six original problems remain open.**
+**All eight indexed problems remain open.**
 
 | Problem | Mathematical target | Checked frontier and live obstruction | Standalone paper |
 |---|---|---|---|
+| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | Lean checks exact factorial-successor and carry equivalences, integral-channel and projection consumers, and the reduction from a non-unit carry to a denominator bound. An exact finite certificate reaches `300000`; no cofinal non-unit-carry or residual-nonintegrality producer is proved. | `erdos-68-factorial-denominator-irrationality.pdf` |
 | **#243** | Under rapid growth of an integer sequence, does rationality of its reciprocal sum force the Sylvester recurrence eventually? | Lean checks the product-cleared tail dynamics, absorbing zero state, descent on nonnegative centred states, and several bounded or periodic negative-state barriers. The unbounded cofinal negative-excursion case and the derivation of strict centring plus normalised vanishing remain open. | `erdos-243-reciprocal-tail-rigidity.pdf` |
 | **#249** | Is \(\sum_{n\ge1}\varphi(n)/2^n\) irrational? | Lean checks exact dyadic-section ranks, the finite denominator window, certificate equivalences and finite deposits, plus several obstruction interfaces. An unbounded certificate producer—currently exposed through prime-tail, carry, and related supply problems—is not proved. | `erdos-249-binary-totient-series.pdf` |
 | **#251** | Is \(\sum_{n\ge1}p_n/2^n\) irrational, equivalently the associated consecutive-prime-gap dyadic series? | Lean checks finite summation by parts, the exact prime/prime-gap equivalence under summability, and integral-shift recurrence consumers. Cofinal nonintegrality or adjacent small-shift witnesses for the actual prime gaps, plus the concrete infinite-sum bridge, remain open. | `erdos-251-prime-gap-dyadic-series.pdf` |
 | **#257** | For every infinite \(A\subseteq\mathbb N_{>0}\), is \(\sum_{n\in A}1/(2^n-1)\) irrational? | Lean checks full support, named structured families, finite-period structure, hereditary unique coding, and the compactness, topology, and exact measure dichotomy of restricted achievement sets. No arithmetic obstruction covers every infinite support; the half-value seam and universal statement remain open. | `erdos-257-mersenne-support-subseries.pdf` |
 | **#269** | For a finite set of at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? This library treats the three-prime case. | Lean checks the exact three-prime lcm cell geometry, jump and radix structure, a rank-two kernel obstruction, and a denominator-dependent carry consumer. The actual cofinal residue-window producer, source-series bridge, and unbounded denominator exclusion remain open. | `erdos-269-three-prime-running-lcm.pdf` |
+| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length less than `2` inside its open unit lemniscate? | Lean checks Newton-flow value decay, ray separation, the translation collision locus, and root retention under small constant perturbations. A recent claimed global decomposition has an invalid printed local saddle block; repairing the topology and metric gluing remains open. | `erdos-1041-lemniscate-newton-flow.pdf` |
 | **#1049** | For which rational bases is the corresponding Lambert-type series irrational? The smallest resistant explicit base here is \(3/2\). | Lean checks why the integer-base clearing argument fails at noninteger bases, the exact rational-base tail recurrence, and the local Padé and endpoint arithmetic. A primitive-normalised noncollapsed coefficient family with surviving local gain and analytic remainder control remains open. | `erdos-1049-rational-base-lambert.pdf` |
 
 This static card is first-contact information, not a novelty claim or proof
@@ -36,7 +38,7 @@ Every route needed for that drilldown is tracked in this public repository; no
 ## Verdict first
 
 The likely cold-agent error here is to skim a large Lean corpus with two
-reviewed problem lanes and four problem-owned expansion lanes, then conclude
+reviewed problem lanes and six problem-owned expansion lanes, then conclude
 "restatements of the original problem." That conclusion is partly right and
 mostly wrong, and you do not have to guess which: the semantic graph classifies
 every statement, so ask it instead of reading modules.
