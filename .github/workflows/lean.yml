@@ -29,7 +29,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # change gate compares the complete PR or push range
       - name: Detect Lean-affecting changes
@@ -76,7 +76,7 @@ jobs:
         run: python3 scripts/test_lean_dependency_index_cache.py
       - name: Restore project Lean cache
         if: steps.lean-inputs.outputs.changed == 'true'
-        uses: actions/cache@v5
+        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           # Unlike lean-action's internal cache step, this top-level action
           # saves after the later custom build has populated project OLeans.
@@ -86,7 +86,7 @@ jobs:
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
             lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
-      - uses: leanprover/lean-action@v1
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1
         if: steps.lean-inputs.outputs.changed == 'true'
         with:
           use-mathlib-cache: auto
@@ -121,10 +121,10 @@ jobs:
   release-surfaces:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # corpus descriptor resolves the pinned proof-source tag
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
       - name: Install metadata validators

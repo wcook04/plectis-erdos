@@ -1,0 +1,17 @@
+version: 2
+
+# Full commit SHAs make workflow dependencies immutable. Dependabot keeps the
+# pinned commits aligned with upstream releases without weakening that property.
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci"
+    labels:
+      - dependencies
+    groups:
+      actions:
+        patterns:
+          - "*"

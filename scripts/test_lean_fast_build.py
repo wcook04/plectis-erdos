@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import re
 import tempfile
 import unittest
 from unittest import mock
@@ -26,17 +27,36 @@ class LeanFastBuildTests(unittest.TestCase):
             encoding="utf-8"
         )
         cache_step = workflow.index("- name: Restore project Lean cache")
-        dependency_step = workflow.index("- uses: leanprover/lean-action@v1")
+        dependency_step = workflow.index("- uses: leanprover/lean-action@")
         bounded_build = workflow.index(
             "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
         )
 
         self.assertLess(cache_step, dependency_step)
         self.assertLess(dependency_step, bounded_build)
-        self.assertIn("uses: actions/cache@v5", workflow)
+        self.assertIn("uses: actions/cache@", workflow)
+        self.assertIn("# v5", workflow)
         self.assertIn("path: .lake", workflow)
         self.assertIn("use-mathlib-cache: auto", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
+
+    def test_ci_pins_external_actions_to_full_commit_shas(self) -> None:
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        action_lines = [
+            line.strip() for line in workflow.splitlines() if "uses:" in line
+        ]
+
+        self.assertTrue(action_lines)
+        for line in action_lines:
+            if "uses: ./" in line:
+                continue
+            self.assertRegex(
+                line,
+                re.compile(r"uses:\s+[^\s@]+@[0-9a-f]{40}(?:\s+#\s+\S+)?$"),
+                f"external action is not pinned to a full commit SHA: {line}",
+            )
 
     def test_ci_does_not_repeat_required_pr_checks_after_merge(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
