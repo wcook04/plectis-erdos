@@ -86,6 +86,62 @@ theorem supportedMersenneAchievementSet_eq_image (J : Set ℕ) :
   · rintro ⟨b, hb, rfl⟩
     exact ⟨⟨b, hb⟩, rfl⟩
 
+/-- Arithmetic interpretation of the restricted achievement set.  Allowing
+the digit coordinates in `J` is exactly the same as allowing support exponents
+in the shifted set `Nat.succ '' J`; the analytically invisible exponent zero
+is excluded explicitly. -/
+theorem mem_supportedMersenneAchievementSet_iff_exists_support_series
+    (J : Set ℕ) (x : ℝ) :
+    x ∈ supportedMersenneAchievementSet J ↔
+      ∃ A : Set ℕ,
+        0 ∉ A ∧
+        A ⊆ Nat.succ '' J ∧
+        erdosSupportSeries 2 A = x := by
+  classical
+  constructor
+  · rintro ⟨b, rfl⟩
+    refine ⟨mersenneDigitSupport b.1,
+      zero_not_mem_mersenneDigitSupport b.1, ?_, ?_⟩
+    · intro n hn
+      rcases hn with ⟨k, rfl, hbk⟩
+      have hkJ : k ∈ J := by
+        by_contra hkJ
+        have hb0 := b.2 k hkJ
+        simp [hbk] at hb0
+      exact ⟨k, hkJ, rfl⟩
+    · calc
+        erdosSupportSeries 2 (mersenneDigitSupport b.1) =
+            positiveMersenneSupportValue (mersenneDigitSupport b.1) :=
+          (positiveMersenneSupportValue_eq_erdosSupportSeries _).symm
+        _ = positiveMersenneDigitValue b.1 :=
+          (positiveMersenneDigitValue_eq_supportValue b.1).symm
+        _ = supportedMersenneDigitValue J b := rfl
+  · rintro ⟨A, hA0, hAJ, hvalue⟩
+    let b : ℕ → Fin 2 := fun k => if k + 1 ∈ A then 1 else 0
+    have hb : ∀ k, k ∉ J → b k = 0 := by
+      intro k hkJ
+      have hkA : k + 1 ∉ A := by
+        intro hkA
+        rcases hAJ hkA with ⟨j, hjJ, hjk⟩
+        have hjkeq : j = k := by omega
+        exact hkJ (hjkeq ▸ hjJ)
+      simp [b, hkA]
+    have hsupport : mersenneDigitSupport b = A := by
+      ext n
+      cases n with
+      | zero => simp [hA0]
+      | succ k => simp [b]
+    refine ⟨⟨b, hb⟩, ?_⟩
+    calc
+      supportedMersenneDigitValue J ⟨b, hb⟩ =
+          positiveMersenneDigitValue b := rfl
+      _ = positiveMersenneSupportValue (mersenneDigitSupport b) :=
+        positiveMersenneDigitValue_eq_supportValue b
+      _ = positiveMersenneSupportValue A := by rw [hsupport]
+      _ = erdosSupportSeries 2 A :=
+        positiveMersenneSupportValue_eq_erdosSupportSeries A
+      _ = x := hvalue
+
 /-- Every support-restricted Mersenne achievement set is compact. -/
 theorem isCompact_supportedMersenneAchievementSet (J : Set ℕ) :
     IsCompact (supportedMersenneAchievementSet J) := by
