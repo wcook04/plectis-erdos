@@ -1087,8 +1087,10 @@ nor disprove $1/2 \in \mathcal{A}$; they exhaust only the structured-support cor
 $\mathcal{A}$ (Definition~\ref{defn:half-question}) is compact, closed, perfect, totally
 disconnected, and nowhere dense; its Lebesgue measure is exactly $1$:
 $\operatorname{volume}(\mathcal{A}) = 1$. \textbf{Hypotheses:} none. \textbf{Conclusion:}
-$\mathcal{A}$ is a Cantor-like set of full measure -- topologically thin (nowhere dense, totally
-disconnected) yet measure-theoretically as large as possible. \coord{achievement-set-topology}
+$\mathcal{A}$ is a fat Cantor set -- topologically thin (nowhere dense and totally
+disconnected) yet of positive finite measure.  The number $1$ here is an absolute Lebesgue
+measure, not a full-measure assertion: the convex hull has length
+$T_0=1+T_1>1$, and of course $\mathbb R$ has infinite measure. \coord{achievement-set-topology}
 \scale{n/a} \ev{Lean}\\
 \textbf{Site:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656--1024},
 \lean{isClosed\_mersenneAchievementSet}{GreedyAchievementSet.lean:656--1024},
@@ -1119,8 +1121,8 @@ reverse \lean{mem\_mersenneAchievementSet\_of\_greedy\_survival}{GreedyAchieveme
 \subsection{The greedy orbit, exactly}
 \label{ssec:greedy-orbit}
 
-Fix the target $1/2$ and the weights $x_n = 1/(2^n-1)$, $n \ge 2$ (rank $1$ contributes the
-undefined $x_1$ and is excluded by convention; all indexing below starts at rank $2$). The greedy
+Fix the target $1/2$ and the weights $x_n = 1/(2^n-1)$, $n \ge 1$.  Here $x_1=1$, so the
+target $1/2$ automatically skips rank $1$; the nontrivial orbit begins at rank $2$. The greedy
 orbit is the unique deterministic process forced by superincreasingness
 (Theorem~\ref{thm:greedy-survival-record}):
 
@@ -2132,12 +2134,14 @@ recovers the full-support series of Theorem~\ref{thm:full-support-catalogue}.
 \lean{supportCoeff}{CertificateKernel.lean:8650}
 \end{defn}
 
-\begin{prop}[Achievement-set topology: compact, closed, perfect, full measure]
+\begin{prop}[Achievement-set topology: compact, closed, perfect, measure one]
 \label{prop:achievement-set-topology}
 $\mathrm{mersenneAchievementSet}$ is compact (continuous image of the binary-sequence
 Cantor space $\mathbb N\to\mathrm{Fin}\,2$ under the product topology, via
 $\mathrm{positiveMersenneDigitValue}$), hence closed; it is also perfect, totally
 disconnected, and nowhere dense, with Lebesgue measure exactly $1$. The
+measure-one statement is absolute: it does not say that the set has full measure in
+$\mathbb R$ or in its convex hull, whose length is $T_0=1+T_1>1$. The
 compactness/closedness argument (binary coding $\to$ Cantor space $\to$ continuous image)
 is a fully generic technique for characterizing the achievement set of \emph{any}
 absolutely convergent digit-weighted series, not specific to Mersenne denominators —
