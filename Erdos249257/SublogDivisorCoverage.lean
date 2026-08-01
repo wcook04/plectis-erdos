@@ -430,6 +430,54 @@ theorem supportCoeffZeroWindow_length_le_eps_logb_add
       (c := c) (N := N) (k := k) hkbound hinv
   simpa [B, D, L] using hfinal
 
+/-- Uniform form of unconditional T11.  The additive constant is chosen before
+the support and numerator: it depends only on `ε`, the dyadic shift `c`, and
+the odd denominator part `v`.
+
+This theorem exposes a uniformity already present in the proof of
+`supportCoeffZeroWindow_length_le_eps_logb_add`, but not in that theorem's
+quantifier order. -/
+theorem exists_uniform_supportCoeffZeroWindow_length_le_eps_logb_add
+    (c v : ℕ) (hv : 0 < v) (ε : ℝ) (hε : 0 < ε) :
+    ∃ B : ℝ, 0 ≤ B ∧
+      ∀ (A : Set ℕ) (p : ℤ),
+        (∃ a : ℕ, 0 < a ∧ a ∈ A) →
+        erdosSupportSeries 2 A =
+          (p : ℝ) / ((2 ^ c * v : ℕ) : ℝ) →
+        ∀ N h : ℕ,
+          SupportCoeffZeroWindow A (c + N) h →
+          (h : ℝ) ≤ ε * Real.logb 2 (N + 1 : ℝ) + B := by
+  obtain ⟨k, hk, hinv⟩ := exists_nat_two_le_inv_sub_one_le hε
+  let L : ℝ := 2 * (v : ℝ) * (divisorSubpowerConst k : ℝ)
+  let D : ℝ := Real.logb 2 (L ^ k)
+  let B : ℝ :=
+    (Real.logb 2 (c + 1 : ℝ) + D) / ((k - 1 : ℕ) : ℝ)
+  have hL : 1 ≤ L := by
+    dsimp [L]
+    have hkpos : 0 < k := by omega
+    have hpos : 0 < 2 * v * divisorSubpowerConst k := by
+      dsimp [divisorSubpowerConst]
+      positivity
+    have hnat : 1 ≤ 2 * v * divisorSubpowerConst k := by omega
+    exact_mod_cast hnat
+  have hD : 0 ≤ D := by
+    dsimp [D]
+    exact Real.logb_nonneg (by norm_num) (one_le_pow₀ hL)
+  have hB : 0 ≤ B := by
+    dsimp [B]
+    apply div_nonneg
+    · exact add_nonneg (Real.logb_nonneg (by norm_num) (by norm_num)) hD
+    · positivity
+  refine ⟨B, hB, ?_⟩
+  intro A p hA hvalue N h hzero
+  have hkbound := supportCoeffZeroWindow_length_le_logb_divisorSubpower
+    A hA p c v N h k hv hk hvalue hzero
+  have hfinal :=
+    le_epsilon_mul_logb_add_constant_div_of_affine_log_bound
+      (ε := ε) (D := D) (x := (h : ℝ))
+      (c := c) (N := N) (k := k) hkbound hinv
+  simpa [B, D, L] using hfinal
+
 /-- Exact `ε * log₂ N + O(1)` form of unconditional T11 for every positive
 starting index. -/
 theorem supportCoeffZeroWindow_length_le_eps_logb
@@ -465,6 +513,7 @@ theorem supportCoeffZeroWindow_length_le_eps_logb
 #print axioms length_le_logb_of_pow_le_mul_add_invNat_rpow
 #print axioms supportCoeffZeroWindow_length_le_logb_divisorSubpower
 #print axioms supportCoeffZeroWindow_length_le_eps_logb_add
+#print axioms exists_uniform_supportCoeffZeroWindow_length_le_eps_logb_add
 #print axioms supportCoeffZeroWindow_length_le_eps_logb
 
 end Erdos249257
