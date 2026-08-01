@@ -1337,7 +1337,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:21d0f60ae3ccc4725e88cce370ae255300105c2d4dbebfd0a427c95787501c9f",
+      "source_sha256": "sha256:abfb70759896f10533fbf7d99a3c1adb787cc6b4b1111f821d4ee30a010034f3",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-totient-reasoning-surface.tex",
       "section_count": 155,
