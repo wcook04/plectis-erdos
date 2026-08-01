@@ -47,31 +47,30 @@ gives $E_n=D_n-(a_n-1)C_n$, with $C_{n+1}=C_n-E_n$; the question becomes
 whether $E$ can avoid vanishing.  When $E$ is nonnegative a one-line descent
 settles it.  This note is about the negative side.
 
-We formalise in Lean three increasingly general exclusions of a negative $E$.
-It cannot be constantly $-m$, at any magnitude and any scale:
-every multiplier would have to share a prime with the fixed $m$, and once a
-prime divides one multiplier every later multiplier is $1$ modulo it, so a
-fixed integer would need infinitely many distinct prime divisors.  It cannot be
-periodic with positive drift, by the same pigeonhole after a strong induction
-that removes common scale.  And, under eventual strict centring and normalised
-vanishing, it cannot have a bounded negative part:
-a bounded negative part makes $C$ rise by a bounded amount, normalised
-vanishing makes $C$ tend to infinity, the tail gcd stabilises so the orbit may
-be taken reduced, and in a reduced tail the multipliers are pairwise coprime
-and permanently avoided by the numerator, which a Chinese-remainder block of
-consecutive multiples forbids.  That last step is a statement about integer
-sequences alone: a sequence tending to infinity with upward steps bounded by
-$B$ cannot permanently avoid infinitely many pairwise coprime moduli.
-Together with an absorption lemma making
-$E_n=0$ propagate, this yields: under exact dynamics, eventual strict centring,
-an eventually bounded negative part, and normalised vanishing, $E$ vanishes
-eventually, and the sequence satisfies the Sylvester recurrence eventually.
+We formalise three arithmetic obstructions and two conditional consequences
+for the state system.  First, $E$ cannot be constantly $-m$, at any magnitude
+and any scale: every multiplier would have to share a prime with the fixed
+$m$, whereas a prime dividing one multiplier cannot divide any later one.
+Second, a periodic negative magnitude is impossible when the associated drift
+is positive and the magnitude at index $n$ is smaller than $a_n$.  Third, an
+integer sequence tending to infinity with upward steps bounded by $B$ cannot
+permanently avoid infinitely many pairwise coprime moduli; a Chinese-remainder
+block of consecutive multiples forces a hit.  This bounded-rise theorem does
+not depend on the reciprocal-tail dynamics.
+
+Applied to a reduced tail, the bounded-rise theorem gives one conditional
+endpoint: under exact dynamics, eventual strict centring, normalised
+vanishing, and an eventually bounded negative part, $E$ vanishes eventually.
+A separate summability argument gives another: under normalised vanishing,
+finite normalised negative mass also forces eventual vanishing.  These are
+parallel conclusions, not successive levels of generality.  In either case an
+absorption lemma then propagates $E_n=0$, and the sequence satisfies the
+Sylvester recurrence eventually.
 
 Problem~\#243 is open and this note does not close it.  The last theorem is
 conditional, and two of its hypotheses are analytic inputs that we assume
-rather than derive.  What the results remove is the bounded case and, more
-generally, the finite normalised negative-mass case.  Under normalised
-vanishing, summability of
+rather than derive.  The results separately remove the bounded case and the
+finite normalised negative-mass case.  Under normalised vanishing, summability of
 \(\sum_n(-E_n)_+/C_n\) makes \(C_n\) bounded and hence \(E_n\) eventually
 zero.  Thus any surviving exact state orbit must have negative excursions
 unbounded along a cofinal set and divergent normalised negative mass.
@@ -263,13 +262,15 @@ Section~\ref{sec:state} sets up the state system, and Section~\ref{sec:defect}
 proves the defect identity, from which eventual vanishing of $E$ forces the
 Sylvester recurrence and a single vanishing error propagates.
 Section~\ref{sec:descent} disposes of the case $E\ge0$ in three lines.  The
-rest of the note is the case $E<0$, in four widening steps: constant magnitude
-(Section~\ref{sec:constant}), periodic magnitude
-(Section~\ref{sec:periodic}), bounded magnitude via a coprimality barrier
-(Sections~\ref{sec:barrier} and~\ref{sec:bounded}), finite normalised negative
-mass (Section~\ref{sec:mass}), and what is left (Section~\ref{sec:open}).
-These sections contain the new content; a reader who wants only the strongest
-statements should read Sections~\ref{sec:bounded} and~\ref{sec:mass}, and then
+negative side then splits into distinct regimes.  Sections~\ref{sec:constant}
+and~\ref{sec:periodic} exclude two rigid patterns.  Section~\ref{sec:barrier}
+proves the dynamics-free bounded-rise theorem, and
+Section~\ref{sec:bounded} applies it to an eventually bounded negative part.
+Section~\ref{sec:mass} instead uses a summability argument; its endpoint is not
+presented as stronger than the bounded-negative-part theorem.  The exact
+remaining regime is recorded in Section~\ref{sec:open}.  A reader who wants
+only the two conditional state-level endpoints should read
+Sections~\ref{sec:bounded} and~\ref{sec:mass}, followed by
 Section~\ref{sec:open}.  Appendix~\ref{app:index} is a guide to the formal
 sources, and Appendix~\ref{app:residue} records an exact residue reduction that
 an earlier finite search used.  Linked phrases open the corresponding Lean
