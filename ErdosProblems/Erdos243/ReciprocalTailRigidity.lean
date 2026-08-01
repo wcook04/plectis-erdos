@@ -2295,4 +2295,88 @@ theorem eventuallyBoundedNegativePart_eventually_zero
   have hKk : K ≤ k := by omega
   simpa [hNk] using hK k hKk
 
+/-- A sequence tending to infinity cannot have uniformly bounded upward
+increments while permanently avoiding divisibility by infinitely many fresh
+pairwise-coprime moduli.  This is the exact nondivisibility form of the
+bounded-rise barrier; `no_boundedRise_of_tailAvoidance` records the stronger
+coprimality hypothesis used by reduced exact tails. -/
+theorem no_boundedRise_of_tailNondivisibility
+    (u m : ℕ → ℕ) (N B : ℕ)
+    (hB : 0 < B)
+    (hm : ∀ n, N ≤ n → 1 < m n)
+    (hpair : ∀ {i j : ℕ}, N ≤ i → N ≤ j → i ≠ j →
+      Nat.Coprime (m i) (m j))
+    (havoid : ∀ {i t : ℕ}, N ≤ i → i < t →
+      ¬ m i ∣ u t)
+    (hrise : ∀ n, N ≤ n → u (n + 1) ≤ u n + B)
+    (huTop : Filter.Tendsto u Filter.atTop Filter.atTop) :
+    False := by
+  let selected : Fin B → ℕ := fun i ↦ m (N + i.1)
+  have hselected : ∀ i, 1 < selected i := by
+    intro i
+    exact hm (N + i.1) (by omega)
+  have hselectedPair : ∀ i j, i ≠ j →
+      Nat.Coprime (selected i) (selected j) := by
+    intro i j hij
+    apply hpair (by omega) (by omega)
+    intro hindex
+    apply hij
+    apply Fin.ext
+    omega
+  let T := N + B
+  obtain ⟨x, hxT, hxDiv⟩ :=
+    exists_shifted_consecutiveMultiples selected hselected hselectedPair (u T)
+  have hforbidden : ∀ t, T ≤ t →
+      ¬ (x ≤ u t ∧ u t < x + B) := by
+    intro t ht ⟨hxu, huTopBlock⟩
+    let rNat := u t - x
+    have hrLt : rNat < B := by
+      dsimp [rNat]
+      omega
+    let r : Fin B := ⟨rNat, hrLt⟩
+    have hxr : x + r.1 = u t := by
+      dsimp [r, rNat]
+      omega
+    have hmodDvd : m (N + r.1) ∣ u t := by
+      rw [← hxr]
+      exact hxDiv r
+    have hindexLt : N + r.1 < t := by
+      dsimp [T] at ht
+      have hr := r.2
+      omega
+    exact havoid (by omega) hindexLt hmodDvd
+  obtain ⟨K, hK⟩ := (Filter.tendsto_atTop_atTop.mp huTop) (x + B)
+  let t0 := max K (T + 1)
+  have ht0T : T < t0 := by
+    dsimp [t0]
+    exact lt_of_lt_of_le (Nat.lt_succ_self T) (le_max_right K (T + 1))
+  have hu0 : x + B ≤ u t0 := hK t0 (le_max_left K (T + 1))
+  let P : ℕ → Prop := fun t ↦ T < t ∧ x + B ≤ u t
+  have hP : ∃ t, P t := ⟨t0, ht0T, hu0⟩
+  let t := Nat.find hP
+  have htP : P t := Nat.find_spec hP
+  have htPrev : T ≤ t - 1 := by
+    dsimp [P] at htP
+    omega
+  have htSucc : t - 1 + 1 = t := by
+    dsimp [P] at htP
+    omega
+  have huPrevTop : u (t - 1) < x + B := by
+    by_contra hnot
+    have hge : x + B ≤ u (t - 1) := by omega
+    by_cases heq : t - 1 = T
+    · rw [heq] at hge
+      omega
+    · have hTlt : T < t - 1 := by omega
+      have hmin : t ≤ t - 1 := Nat.find_min' hP ⟨hTlt, hge⟩
+      omega
+  have huPrevBelow : u (t - 1) < x := by
+    by_contra hnot
+    have hxle : x ≤ u (t - 1) := by omega
+    exact hforbidden (t - 1) htPrev ⟨hxle, huPrevTop⟩
+  have hRise := hrise (t - 1) (le_trans (by omega) htPrev)
+  rw [htSucc] at hRise
+  dsimp [P] at htP
+  omega
+
 end ErdosProblems.Erdos243
