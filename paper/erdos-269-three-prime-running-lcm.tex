@@ -13,9 +13,9 @@
 \renewcommand{\commit}{d6d344d9557faee19276b01a1c1f20d7c08f03d5}
 \renewcommand{\commitshort}{d6d344d9557f}
 \hypersetup{
-  pdftitle={The running least common multiple of a three-prime smooth prefix: Lean-checked structure for Erdős Problem 269},
+  pdftitle={Running least common multiples of smooth numbers: a two-prime transcendence theorem and exact three-prime obstructions},
   pdfsubject={Erdős Problem Notes: Problem 269},
-  pdfkeywords={irrationality, least common multiple, smooth numbers, lattice sums, Lean 4},
+  pdfkeywords={transcendence, least common multiple, smooth numbers, Sturmian words, Hecke--Mahler series, Lean 4},
 }
 
 % The three pure-power coordinates and the running height.
@@ -30,10 +30,9 @@
 \newcommand{\authexternal}{\textcolor{Violet!80!black}{\sffamily\bfseries Paper + external theorem}}
 \newcommand{\authcompute}{\textcolor{Violet!80!black}{\sffamily\bfseries Direct computation}}
 
-\runninghead{Erd\H{o}s \#269: three-prime running lcm}
-\title{The Three-Prime Running Least Common Multiple}
-\subtitle{A two-prime transcendence theorem, exact three-prime structure,
-and a conditional residue criterion}
+\runninghead{Erd\H{o}s \#269: smooth-number running lcms}
+\title{Running Least Common Multiples of Smooth Numbers}
+\subtitle{A two-prime transcendence theorem and exact three-prime obstructions}
 \author{Will Cook}
 \date{July 2026}
 
@@ -43,75 +42,33 @@ and a conditional residue criterion}
 
 \begin{abstract}
 \noindent
-Let $p,q,r$ be pairwise distinct primes and let $\Lprefix(x)$ denote the least
-common multiple of all $\{p,q,r\}$-smooth numbers not exceeding $x$.  We prove
-two exact statements in the smallest case $\{2,3,5\}$.  First, group the jumps
-of $\Lprefix$, that is, the points at which its value increases, into the blocks
-cut out by consecutive powers of two.  Each open
-block $(2^{a},2^{a+1})$ contains at most one pure $3$-power and at most one
-pure $5$-power, so the block radix $\beta_a$, the product of the terminal factor
-$2$ with a factor $3$ when the block contains an internal $3$-power and a factor
-$5$ when it contains an internal $5$-power, belongs to the exact four-element
-alphabet $\{2,6,10,30\}$, rather than merely lying in a coarse bounded interval.
-All four letters already occur among the first five blocks: $\beta_0=2$,
-$\beta_1=6$, $\beta_2=10$ and $\beta_4=30$.  Second, the reciprocal of the running least common multiple
-at a smooth point is not a product of functions of the three exponents
-separately: on the smallest nontrivial two-by-two exponent rectangle its
-determinant is exactly $-1/15$.  Thus that matrix has rank two, so the kernel
-is not a single product of three one-variable functions on that rectangle and
-no argument may assume such a form for it.
+For distinct primes $p$ and $q$, retain one reciprocal for each distinct value
+of the running least common multiple of the $\{p,q\}$-smooth numbers.  We prove
+that the resulting series is transcendental for every pair $p\ne q$.  The
+ordered jumps form a shift of a lower mechanical Sturmian word.  This gives an
+exact affine expression for the series in terms of a Hecke--Mahler value, to
+which a theorem of Bugeaud and Laurent applies.  The result settles the
+two-prime de-duplicated series, but not the original series with repetitions.
 
-The structural spine of the note is the identification
-\[
- \Lprefix(x)=p^{\lfloor\log_p x\rfloor}q^{\lfloor\log_q x\rfloor}
- r^{\lfloor\log_r x\rfloor}
- \qquad(x\ge1),
-\]
-so the running least common multiple is the product of the three maximal pure
-prime powers below the cutoff.  This is the $P$-restricted form of the
-classical prime-power decomposition of $\lcm(1,\ldots,N)$; we record it because
-every later statement in the formal development is derived from it.  It gives
-$\Lprefix(x)\le x^{3}$; constancy on each cell where the three integer
-logarithms are constant; multiplication by exactly the corresponding prime when
-exactly one logarithm advances by one; and exactly $3n+1$ distinct jump points
-from the first $n$ positive powers of each of the three primes together with the
-common origin $1$.  We also prove an exact finite normal form in which a
-rectangular lattice sum of reciprocal running values is grouped by its genuine
-height, each coefficient being the number of lattice points that share that
-height, and a uniform bound $9\,\#\mathcal S\le(j+3)^{2}$, where $\#\mathcal S$
-counts the exponent triples of a box that a multiplicative interval of width at
-most $r$ can collect, $j$ is the sum of the three box exponents, and those
-exponents are assumed nondecreasing in the order $p,q,r$; that ordering is a
-hypothesis and not a relabelling, since the shell is not symmetric in the three
-bases.
+For three primes we establish exact structure rather than irrationality.  The
+running least common multiple below $x$ is the product of the three largest pure
+prime powers below $x$.  In the case $\{2,3,5\}$, compressing its jumps between
+successive powers of two gives precisely the radix alphabet
+$\{2,6,10,30\}$.  The smallest nontrivial restriction of the reciprocal kernel
+has determinant $-1/15$, ruling out a single product of three one-variable
+factors.  We also give an exact finite height-fibre normal form and a quadratic
+shell-multiplicity bound.  These claims are linked to Lean declarations; the
+two-prime transcendence argument uses an external analytic theorem and is not
+formalised here.
 
-For comparison, we settle the de-duplicated problem when there are exactly two
-primes.  If one retains one reciprocal for each distinct running-LCM value,
-the resulting sum is transcendental for every pair of distinct primes.  The
-proof orders the two pure-power channels by a Beatty word, writes the sum as a
-nonconstant algebraic affine function of a Hecke--Mahler value, and invokes
-Bugeaud--Laurent's transcendence theorem for that value.  This conclusion is
-stronger than the irrationality asserted, without proof, in Erd\H{o}s's 1974
-letter, but it applies neither to the repeated series nor to three primes.
-
-Problem~\#269 is open and nothing here decides it.  We prove no irrationality
-or transcendence statement in any three-prime case.  What we prove towards it
-is conditional: after cancellation of the $\{2,3,5\}$-smooth part of a
-hypothetical denominator, the remaining denominator $B$ is coprime to $30$,
-and a denominator-dependent cofinal local-window residue escape rules out every
-positive integer solution $d_n$ of the cleared recurrence
-$d_{n+1}=b_nd_n-Bm_n$ that obeys the bound clearing the denominator delivers,
-where $(b_n)$ is a radix word and $(m_n)$ a forcing word.  Lean checks the
-algebraic core of that reduction, namely that a fixed $\{2,3,5\}$-smooth factor
-is absorbed into the running height and that a common factor cancels from the
-carry recurrence, together with the resulting implication.  An
-integer-only checker constructs the corresponding block digits, reproduces
-three small certificates, and finds an escaping window of length at most $18$
-for each of $106{,}666$ tested denominator/start pairs.  This is finite
-experimental evidence, not a cofinal theorem.  Two problem-specific statements
-are not proved here: the rationality-to-carry identification, including the
-divisibility needed to perform that cancellation, and the cofinal escape
-property itself.
+The remaining three-prime route is conditional.  Once a bounded integral carry
+with the required smooth-factor divisibility is available, a
+denominator-dependent local-window residue escape forces a contradiction.  We
+check the algebraic cancellation and the conditional consumer, and an
+integer-only scan finds such a window for $106{,}666$ tested denominator/start
+pairs.  The scan is finite evidence.  The rationality-to-carry bridge, including
+the needed divisibility, and an unbounded escape producer are not proved.
+Consequently Erd\H{o}s Problem~\#269 remains open.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
@@ -136,132 +93,174 @@ primes greater than one as a probable extension, not as a theorem; the current
 open status is supplied by the catalogue rather than inferred from that
 conjectural wording.
 
-Three things are known and fix the shape of the question.  The restriction
-$|P|\ge2$ is necessary: for $P=\{p\}$ the enumeration is $a_n=p^{\,n-1}$, so
-$[a_1,\ldots,a_n]=p^{\,n-1}$ and the sum is $p/(p-1)$, which is rational.  For
-that reason we use the modern restriction $|P|\ge2$; the 1974 letter itself
-writes ``given primes $p_1,\ldots,p_r$'' without explicitly restricting $r$.
-For
-infinite $P$ the sum is always irrational, which Erd\H{o}s calls a simple
-exercise~\cite[p.~106]{erdos1988}.  And in a letter of 1 January 1973 he
-recorded that he could prove irrationality once duplicate running-LCM values
-are removed~\cite[p.~335]{erdos1974letter}; the one-page letter states this
-result but does not include its proof.
+For one prime, $a_n=p^{n-1}$ and the series is the rational number $p/(p-1)$.
+For infinitely many primes, Erd\H{o}s calls irrationality a simple exercise
+\cite[p.~106]{erdos1988}.  In a letter dated 1 January 1973 he also stated that
+irrationality follows after repeated running-LCM values are deleted
+\cite[p.~335]{erdos1974letter}, but the one-page letter gives no proof.
 
-That last remark is the one this note is closest to.  The running least common
-multiple is not injective in $n$: it is constant along stretches of the
-enumeration and changes only at certain points.  Removing duplicate summands
-means summing over the distinct values rather than over $n$.
-Section~\ref{sec:two-prime} proves that this de-duplicated sum is in fact
-transcendental when $|P|=2$, by reducing it to the Hecke--Mahler value covered
-by Bugeaud and Laurent's Theorem~1.1
-\cite[p.~61, Theorem~1.1]{bugeaudlaurent2023}.  This is an independent modern
-route, not a recovery of the unprinted argument in the letter.  Sections
-\ref{sec:cells} and~\ref{sec:fibre} make the finite ingredients of the
-three-prime reindexing exact: they identify where the value is constant, by
-exactly what factor it changes when it changes, and give a finite
-rectangular-box fibre identity.  They do not establish the ordered three-prime
-infinite passage and say nothing about the original series with repetitions.
+When $|P|=2$, that de-duplicated series is transcendental for every pair of
+distinct primes.  Section~\ref{sec:two-prime} reads the interlacing pure-power
+channels as a shifted lower mechanical Sturmian word and reduces the series to
+the Hecke--Mahler value covered by Bugeaud and Laurent's Theorem~1.1
+\cite[p.~61, Theorem~1.1]{bugeaudlaurent2023}.  This is an independent argument,
+not a reconstruction of Erd\H{o}s's unpublished proof.  It does not cover the
+original series, where a running value is repeated for every smooth integer in
+the corresponding cell, and it does not extend to three primes.
 
-Throughout, $p,q,r$ are pairwise distinct primes, and a \emph{pure power} is a
-power $b^{e}$ of a single base; a \emph{pure $3$-power} is a power of $3$, and
-similarly for the other bases.  Call $n$ \emph{smooth} when
+For the three-prime analysis, fix pairwise distinct primes $p,q,r$.  Call $n$
+\emph{smooth} when
 $n=p^{i}q^{j}r^{k}$ for some $i,j,k\ge0$; this is the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{31}{smooth3Val}{smooth lattice
-value}.  For $x\ge1$ write
+value}.  For $x\ge1$ put
 \[
  \Lprefix(x)=\lcm\{\,n\le x:\ n\ \text{smooth}\,\},
  \qquad
- \hgt(x)=p^{\lfloor\log_p x\rfloor}\,q^{\lfloor\log_q x\rfloor}\,
- r^{\lfloor\log_r x\rfloor},
+ \hgt(x)=p^{\lfloor\log_p x\rfloor}q^{\lfloor\log_q x\rfloor}
+ r^{\lfloor\log_r x\rfloor}.
 \]
-the
+These are the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{53}{smoothPrefixLcm}{running least
 common multiple} and the
 \lword{Erdos269/ThreePrimeRunningLcm.lean}{36}{threePrimeHeight}{pure-power
-height}, where $\lfloor\log_b x\rfloor$ is the integer logarithm, the largest
-$e$ with $b^{e}\le x$.  Since $a_1,\ldots,a_n$ are exactly the smooth numbers
-up to $a_n$, we have $[a_1,\ldots,a_n]=\Lprefix(a_n)$, and the summands of the
-problem are the reciprocals of $\Lprefix$ along the enumeration.  The
-reciprocal of the height at a smooth point is the
-\lword{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}{lattice
-kernel}
+height}.  Here $\lfloor\log_b x\rfloor$ is the largest $e$ for which
+$b^e\le x$.  Since $a_1,\ldots,a_n$ are exactly the smooth numbers up to
+$a_n$, the original summand is $1/\Lprefix(a_n)$.  At a smooth point the
+reciprocal kernel is
 \[
- \Kernel(i,j,k)=\frac{1}{\hgt(p^{i}q^{j}r^{k})} .
+ \Kernel(i,j,k)=\frac{1}{\hgt(p^{i}q^{j}r^{k})},
 \]
-For $b\in\{p,q,r\}$ we call the set of positive powers of $b$ the \emph{$b$-channel}.
+the
+\lword{Erdos269/ThreePrimeRunningLcm.lean}{40}{threePrimeKernelQ}{lattice
+kernel}.  We call the positive powers of a base its \emph{channel}.
 
-We treat $|P|=3$ throughout, writing $P=\{p,q,r\}$, and the smallest instance is
-$\{2,3,5\}$.  Two of the statements proved here are unconditional and exact
-rather than approximate.  Theorem~\ref{res:dyadic-alphabet} determines exactly
-the alphabet of the dyadic compression of the \emph{jump word}, that is, of the
-sequence of prime multipliers of $\Lprefix$ read in increasing order of the
-points where $\Lprefix$ increases (Section~\ref{sec:cells}): the radix
-$\beta_a$ of the block between $2^{a}$ and $2^{a+1}$, meaning the product of the
-multipliers that occur in that block, takes one of the four
-values $2$, $6$, $10$, $30$ and no others.
-Theorem~\ref{res:rank} shows that the smallest two-by-two restriction of the
-kernel at $\{2,3,5\}$ has determinant $-1/15$ and hence rank two.  In
-particular, it is not a product $f(i)g(j)h(k)$, so no argument may assume that
-form for the kernel on that rectangle.  A rank-two matrix is itself a sum of
-two rank-one matrices, so decompositions into several separable terms are not
-excluded; what is excluded is the single product form.
-The mechanism is a small computation: $\hgt(6)=4\cdot3\cdot5=60$ and not $6$,
-because the running least common multiple at a smooth cutoff already sees
-powers of the other primes that the cutoff itself does not contain.
-The two-prime proof of Section~\ref{sec:two-prime} does not require such a
-separation.
+All later formal statements use the elementary identity
+$\Lprefix(x)=\hgt(x)$.  It is the finite-$P$ restriction of the classical
+prime-power decomposition of $\lcm(1,\ldots,N)$, so no novelty is claimed for
+the identity itself
+\cite[Ex.~1.21(a), p.~22]{apostol1976}\cite[p.~183,
+Exercise~6.2.7]{montgomeryvaughan2007}.  The running value is constant on
+logarithmic cells and changes by one prime at each pure-power jump.  For
+$\{2,3,5\}$, grouping those jumps between
+successive powers of two gives the exact block alphabet $\{2,6,10,30\}$.
+Separability fails at the first nontrivial rectangle: the corresponding
+$2\times2$ minor of the reciprocal kernel is $-1/15$.  We also derive the
+finite height-fibre normal form and its quadratic shell bound.  These are
+unconditional structural statements; none is an irrationality theorem for a
+three-prime series.
 
-The identification $\Lprefix(x)=\hgt(x)$ of Theorem~\ref{res:lcm} is what makes
-every statement about $\Lprefix$ below computable from three integer
-logarithms.  In the unrestricted case that identification follows by
-iterating the prime-exponent maximum rule for least common multiples:
-$\lcm(1,\ldots,N)=\prod_{t\le N}t^{\lfloor\log_t N\rfloor}$, the product
-being over the primes $t\le N$~\cite[Ex.~1.21(a), p.~22]{apostol1976}.
-Chebyshev's function is the corresponding prime-power sum, so equivalently
-$\log\lcm(1,\ldots,N)=\psi(N)$
-~\cite[\S4.2, p.~75]{apostol1976}; Montgomery--Vaughan state this exact
-identity directly in Exercise~6.2.7~\cite[p.~183]{montgomeryvaughan2007}.
-We record the $P$-restricted form because
-every later statement in the formal development is derived from it, and we
-claim nothing new for it.
+For the residue argument, suppose rationality produced a bounded integral carry
+with the required divisibility by the
+$\{2,3,5\}$-smooth part of its denominator, that factor could be cancelled and
+the remaining denominator $B$ would be coprime to $30$.  A suitable consecutive
+window would then force the reduced carry outside its bound.  Lean checks the
+absorption-and-cancellation algebra and the implication from the stated
+local-window escape condition to nonexistence of the reduced carry.  It does
+not derive the actual carry or its divisibility from the series, and it does not
+produce escaping windows cofinally.  The finite scan reported below probes the
+second gap only; it cannot fill either one.
 
-The line of argument developed below has four stages.  First, identify
-$\Lprefix$ exactly as a product of three pure powers, so that every later
-statement is a statement about three integer logarithms.  Second, compress its
-jump word into dyadic blocks, whose radix takes only the four values of
-Theorem~\ref{res:dyadic-alphabet}.  Third, assume the sum rational with reduced
-denominator $D$, factor $D=D_{\mathrm{sm}}B$ where every prime divisor of
-$D_{\mathrm{sm}}$ lies in $\{2,3,5\}$ and $\gcd(B,30)=1$, prove that the
-integral carry states, the integers the argument tracks from step to step
-(Section~\ref{sec:escape}), share the factor $D_{\mathrm{sm}}$, cancel it, and
-obtain a positive reduced carry $d_n$ bounded by a denominator-dependent
-$K(B,n)$ and satisfying
-$d_{n+1}=b_nd_n-Bm_n$.  Fourth, find a stretch of consecutive steps over which
-the accumulated base and forcing put the residue of that carry above the bound,
-which is impossible.
-The first two stages and the finite core of the fourth are proved and
-formalised here.  The algebraic absorption-and-cancellation core of the third
-stage is also checked, but the problem-specific claim that the actual carry
-shares $D_{\mathrm{sm}}$ is not.  That rationality-to-carry instantiation and
-the cofinal existence of windows in the fourth stage are the two obligations
-of Section~\ref{sec:open}.  The third and fourth stages follow a pattern
-standard in irrationality proofs; what is specific here is that the radix word
-driving the carry is the block alphabet of
-Theorem~\ref{res:dyadic-alphabet}.
+The statement of Problem~\#269 also appears as an unproved conjecture in the
+\emph{Formal Conjectures} collection~\cite{formalconjectures269}.  Its
+Nat-indexed normalisation includes the empty-prefix term, and its principal
+assertions end in \texttt{sorry}.  The declarations linked in this note prove
+auxiliary propositions about the same objects; they do not solve the
+conjecture.  Kova\v{c} and Tao~\cite{kovactao2024} treat other Erd\H{o}s unit
+fraction problems by elementary means, but their arguments are not used here.
+We give no numerical estimate for the value of the original series.
 
-The statement of Problem~\#269 has been formalised before, as a conjecture with
-an unfilled proof, in the \emph{Formal Conjectures}
-collection~\cite{formalconjectures269}.  That is a formal statement of the
-question up to a harmless rational normalisation: its Nat-indexed series
-includes the empty-prefix least-common-multiple term.  Its rational,
-irrational, and infinite-prime assertions all end in \texttt{sorry}.
-The declarations described below are propositions about the objects
-the question is posed over.  No claim of priority is made for any of these
-declarations.  Kova\v{c} and Tao~\cite{kovactao2024} treat several
-irrationality problems of Erd\H{o}s for series of unit fractions by elementary
-means; nothing from that work is used here.  We offer no numerical evidence
-about the value of the sum itself.
+\section{The de-duplicated two-prime sum is transcendental}
+\label{sec:two-prime}
+
+Let $P=\{p,q\}$ with $p<q$, and write
+\[
+ L_{p,q}(t)=p^{\lfloor\log_p t\rfloor}q^{\lfloor\log_q t\rfloor}.
+\]
+The elementary least-common-multiple argument used later in
+Theorem~\ref{res:lcm}, with one coordinate omitted, identifies $L_{p,q}(t)$ as
+the running least common multiple of the $\{p,q\}$-smooth numbers up to $t$.
+Define
+\[
+ \mathcal D_{p,q}
+ =1+\sum_{t\in\{p,p^2,\ldots\}\cup\{q,q^2,\ldots\}}
+       \frac1{L_{p,q}(t)} .
+\]
+Thus $\mathcal D_{p,q}$ contains the initial value and exactly one reciprocal
+for every later distinct running-LCM value.
+
+\begin{theorem}[two-prime de-duplicated transcendence]
+\label{res:two-prime-transcendence}
+For every pair of distinct primes $p,q$, the number $\mathcal D_{p,q}$ is
+transcendental.
+\end{theorem}
+
+\begin{proof}
+Interchanging the primes if necessary, assume $p<q$, and set
+\[
+ \theta=\frac{\log p}{\log q},\qquad x=\frac1p,\qquad y=\frac1q,\qquad
+ m_n=\lfloor n\theta\rfloor,\qquad
+ \delta_n=m_{n+1}-m_n .
+\]
+Here $0<\theta<1$, and $\theta$ is irrational: a rational relation would give
+$p^b=q^a$ for positive integers $a,b$.  Consequently
+$\delta_n\in\{0,1\}$.  The word $(\delta_n)_{n\ge0}$ is a shift of the lower
+mechanical Sturmian word of slope $\theta$; the floor-increment formula is all
+that the proof needs.
+
+The initial value together with the $p$-channel contributes
+\[
+ A=\sum_{n\ge0}x^ny^{m_n}.
+\]
+There is a $q$-power strictly between $p^n$ and $p^{n+1}$ exactly when
+$\delta_n=1$; it is then $q^{m_n+1}$, and its post-jump reciprocal is
+$x^ny^{m_n+1}$.  Hence the $q$-channel contributes
+\[
+ B=\sum_{n\ge0}\delta_nx^ny^{m_n+1},
+ \qquad \mathcal D_{p,q}=A+B.
+\]
+All series here converge absolutely.  Since
+$y^{m_{n+1}}-y^{m_n}=\delta_n y^{m_n}(y-1)$, shifting the sum for $A$ gives
+\[
+ A-1-xA
+ =x(y-1)\sum_{n\ge0}\delta_nx^ny^{m_n}.
+\]
+It follows that
+\begin{equation}\label{eq:two-prime-affine}
+ \mathcal D_{p,q}
+ =\frac{y-x}{x(y-1)}A-\frac{y}{x(y-1)}.
+\end{equation}
+
+In the notation
+\[
+ F_\theta(x,y)
+ =\sum_{n\ge1}\sum_{k=1}^{\lfloor n\theta\rfloor}x^ny^k
+\]
+for the Hecke--Mahler series, a finite geometric sum gives
+\begin{equation}\label{eq:hecke-mahler-boundary}
+ A=\frac1{1-x}-\frac{1-y}{y}F_\theta(x,y).
+\end{equation}
+Bugeaud and Laurent's Theorem~1.1 states, in particular, that
+$F_\theta(\beta,\alpha)$ is transcendental when $\theta\in(0,1)$ is
+irrational, $\alpha,\beta$ are nonzero algebraic numbers,
+$|\beta\alpha^\theta|<1$, and $|\beta|<1$
+\cite[p.~61, Theorem~1.1]{bugeaudlaurent2023}.  We may take
+$(\beta,\alpha)=(x,y)$, because
+\[
+ |xy^\theta|=\frac1p\left(\frac1q\right)^{\log p/\log q}
+ =\frac1{p^2}<1.
+\]
+Thus $F_\theta(x,y)$ is transcendental, and
+\eqref{eq:hecke-mahler-boundary} makes $A$ transcendental.  Finally the
+coefficient of $A$ in~\eqref{eq:two-prime-affine} is a nonzero algebraic
+number, since $x\ne y$; therefore $\mathcal D_{p,q}$ is transcendental.
+\end{proof}
+
+\noindent
+This proves more than the irrationality claimed for the de-duplicated sum in
+Erd\H{o}s's letter, but only when $|P|=2$.  The repeated sum assigns a
+multiplicity to each running value, and a third prime replaces the single
+Sturmian boundary by a genuinely two-dimensional ordering problem; neither is
+covered by Theorem~\ref{res:two-prime-transcendence}.
 
 \statusboundary
 
@@ -334,11 +333,10 @@ Local-window escape for the actual $\{2,3,5\}$ word & \authnone & Open; Problem~
 }
 
 \subsection*{Structure}
-Section~\ref{sec:lcm} identifies the running value.
-Section~\ref{sec:cells} develops its jump structure, and
-Section~\ref{sec:two-prime} uses that structure to prove transcendence of the
-de-duplicated two-prime sum.  Section~\ref{sec:fibre} gives the finite
-three-prime normal form, Section~\ref{sec:shell} bounds fibre multiplicity, and
+Section~\ref{sec:two-prime} proves the unconditional transcendence theorem.
+Sections~\ref{sec:lcm} and~\ref{sec:cells} then identify the three-prime running
+value and its jumps.  Section~\ref{sec:fibre} gives the finite three-prime
+normal form, Section~\ref{sec:shell} bounds fibre multiplicity, and
 Section~\ref{sec:rank} records the obstruction to separating the kernel.
 Section~\ref{sec:escape} determines the block alphabet, proves the conditional
 contradiction, and states the remaining unproved hypothesis.
@@ -534,97 +532,6 @@ increasing order are $2,3,4,5,8,9,16,25,27,32,\ldots$, so the jump word begins
 \]
 where the grouping is the one used in Section~\ref{sec:escape}: each group ends
 at a power of two.
-
-\section{The de-duplicated two-prime sum is transcendental}
-\label{sec:two-prime}
-
-The jump description gives a complete result in rank two.  Temporarily let
-$P=\{p,q\}$ with $p<q$, and write
-\[
- L_{p,q}(t)=p^{\lfloor\log_p t\rfloor}q^{\lfloor\log_q t\rfloor}.
-\]
-The argument of Theorem~\ref{res:lcm}, with one coordinate omitted, identifies
-this as the running least common multiple of the $\{p,q\}$-smooth numbers up
-to $t$.  Let
-\[
- \mathcal D_{p,q}
- =1+\sum_{t\in\{p,p^2,\ldots\}\cup\{q,q^2,\ldots\}}
-       \frac1{L_{p,q}(t)} .
-\]
-Thus $\mathcal D_{p,q}$ retains the initial value and exactly one reciprocal
-for every later distinct running-LCM value.
-
-\begin{theorem}[two-prime de-duplicated transcendence]
-\label{res:two-prime-transcendence}
-For every pair of distinct primes $p,q$, the number $\mathcal D_{p,q}$ is
-transcendental.
-\end{theorem}
-
-\begin{proof}
-Interchanging the primes if necessary, assume $p<q$, and set
-\[
- \theta=\frac{\log p}{\log q},\qquad x=\frac1p,\qquad y=\frac1q,\qquad
- m_n=\lfloor n\theta\rfloor,\qquad
- \delta_n=m_{n+1}-m_n .
-\]
-Here $0<\theta<1$, and $\theta$ is irrational: a rational relation would give
-$p^b=q^a$ for positive integers $a,b$.  Consequently
-$\delta_n\in\{0,1\}$.
-
-The initial value together with the $p$-channel contributes
-\[
- A=\sum_{n\ge0}x^ny^{m_n}.
-\]
-There is a $q$-power strictly between $p^n$ and $p^{n+1}$ exactly when
-$\delta_n=1$; it is then $q^{m_n+1}$, and its post-jump reciprocal is
-$x^ny^{m_n+1}$.  Hence the $q$-channel contributes
-\[
- B=\sum_{n\ge0}\delta_nx^ny^{m_n+1},
- \qquad \mathcal D_{p,q}=A+B.
-\]
-All series here converge absolutely.  Since
-$y^{m_{n+1}}-y^{m_n}=\delta_n y^{m_n}(y-1)$, shifting the sum for $A$ gives
-\[
- A-1-xA
- =x(y-1)\sum_{n\ge0}\delta_nx^ny^{m_n}.
-\]
-It follows that
-\begin{equation}\label{eq:two-prime-affine}
- \mathcal D_{p,q}
- =\frac{y-x}{x(y-1)}A-\frac{y}{x(y-1)}.
-\end{equation}
-
-In the notation
-\[
- F_\theta(x,y)
- =\sum_{n\ge1}\sum_{k=1}^{\lfloor n\theta\rfloor}x^ny^k
-\]
-for the Hecke--Mahler series, a finite geometric sum gives
-\begin{equation}\label{eq:hecke-mahler-boundary}
- A=\frac1{1-x}-\frac{1-y}{y}F_\theta(x,y).
-\end{equation}
-Bugeaud and Laurent's Theorem~1.1 states, in particular, that
-$F_\theta(\beta,\alpha)$ is transcendental when $\theta\in(0,1)$ is
-irrational, $\alpha,\beta$ are nonzero algebraic numbers,
-$|\beta\alpha^\theta|<1$, and $|\beta|<1$
-\cite[p.~61, Theorem~1.1]{bugeaudlaurent2023}.  We may take
-$(\beta,\alpha)=(x,y)$, because
-\[
- |xy^\theta|=\frac1p\left(\frac1q\right)^{\log p/\log q}
- =\frac1{p^2}<1.
-\]
-Thus $F_\theta(x,y)$ is transcendental, and
-\eqref{eq:hecke-mahler-boundary} makes $A$ transcendental.  Finally the
-coefficient of $A$ in~\eqref{eq:two-prime-affine} is a nonzero algebraic
-number, since $x\ne y$; therefore $\mathcal D_{p,q}$ is transcendental.
-\end{proof}
-
-\noindent
-This proves more than the irrationality claimed for the de-duplicated sum in
-Erd\H{o}s's letter, but only when $|P|=2$.  The repeated sum assigns a
-multiplicity to each running value, and a third prime replaces the one
-Beatty boundary by a genuinely two-dimensional ordering problem; neither is
-covered by Theorem~\ref{res:two-prime-transcendence}.
 
 \section{The height-fibre normal form}\label{sec:fibre}
 
