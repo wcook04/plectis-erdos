@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #243's finite-negative-mass results advance
 % independently of the corpus default.
-\renewcommand{\commit}{d6d344d9557faee19276b01a1c1f20d7c08f03d5}
-\renewcommand{\commitshort}{d6d344d9557f}
+\renewcommand{\commit}{69f870a9a5398e1373953ece77b1b28ba09ea5ba}
+\renewcommand{\commitshort}{69f870a9a539}
 \hypersetup{
   pdftitle={Excluding the bounded negative part: Lean-checked rigidity for Erdős Problem 243},
   pdfsubject={Erdős Problem Notes: Problem 243},
@@ -772,16 +772,22 @@ such that $m_i\nmid u_t$ whenever $i<t$.
 \end{theorem}
 
 \begin{proof}
-Take $B$ of the moduli, from indices beyond any chosen point, and use
-Lemma~\ref{res:crt} to find $t$ far out with the $i$th of them dividing $t+i$.
-The interval $[t,t+B)$ has length $B$, and $u$ climbs by at most $B$ per step
-while tending to infinity, so some $u_s$ lands in it.  Then $u_s=t+i$ for some
-$i<B$, and the $i$th modulus divides $u_s$, against avoidance.
+Choose a tail index $N$, take the $B$ moduli
+$m_N,\ldots,m_{N+B-1}$, and put $T=N+B$.  Lemma~\ref{res:crt} gives an
+$x>u_T$ such that $m_{N+i}\mid x+i$ for $0\le i<B$.  Since $u$ tends to
+infinity, there is a first $s>T$ with $u_s\ge x+B$.  Minimality gives
+$u_{s-1}<x+B$.  In fact $u_{s-1}<x$: otherwise
+$u_{s-1}=x+i$ for some $i<B$, so $m_{N+i}\mid u_{s-1}$, while
+$N+i<T\le s-1$, contradicting tail avoidance.  The rise bound now gives
+$u_s\le u_{s-1}+B<x+B$, contrary to the choice of $s$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{897}{no_boundedRise_of_tailAvoidance}{bounded-rise
-barrier}.  The key point is that the two hypotheses pull against each other
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2303}{no_boundedRise_of_tailNondivisibility}{bounded-rise
+nondivisibility barrier}.  The earlier application-ready coprimality hypothesis
+is retained as the corollary
+\lword{Erdos243/ReciprocalTailRigidity.lean}{897}{no_boundedRise_of_tailAvoidance}{coprime-tail
+avoidance}.  The key point is that the two hypotheses pull against each other
 exactly: divergence forces $u$ to travel arbitrarily far, and bounded rise
 forbids it from stepping over a window of width $B$.  Uniformity of the bound
 is what the proof uses, and it is the hypothesis that cannot be relaxed by this
@@ -1236,7 +1242,8 @@ phase-primitive exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{548}{no
 periodic exclusion at every scale & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{690}{no_periodicNegative_orbit}\\
 eventual periodic exclusion & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{796}{no_eventuallyPeriodicNegative_orbit}\\
 shifted consecutive multiples & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{833}{exists_shifted_consecutiveMultiples}\\
-bounded-rise barrier & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{897}{no_boundedRise_of_tailAvoidance}\\
+bounded-rise nondivisibility barrier & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2303}{no_boundedRise_of_tailNondivisibility}\\
+coprime-tail avoidance corollary & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{897}{no_boundedRise_of_tailAvoidance}\\
 step coprimality & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{983}{reducedStep_coprime_currentFactor}\\
 pairwise coprimality & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1010}{reducedTail_pairwiseCoprime}\\
 whole-modulus avoidance & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1024}{reducedTail_wholeModulusAvoidance}\\
