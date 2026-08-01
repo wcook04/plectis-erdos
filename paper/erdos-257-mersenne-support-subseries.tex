@@ -23,7 +23,7 @@
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
 \renewcommand{\commit}{e5fd26a6d1b1a346430205eab5385b4c9565d004}
-\renewcommand{\commitshort}{e02206e2685b}
+\renewcommand{\commitshort}{e5fd26a6d1b1}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -48,41 +48,28 @@ Achievement-Set Geometry}
 
 \begin{abstract}
 \noindent
-Let $F\subseteq\Npos$ be finite and nonempty, let $b\ge2$, and write
-\[
-  \sum_{n\in F}\frac1{b^n-1}=\frac{N_F}{D_F}
-  \qquad (\gcd(N_F,D_F)=1,\ D_F>0).
-\]
-The lead result is the exact identity
-$\operatorname{ord}_{D_F}(b)=\lcm(F)$, with the convention
-$\operatorname{ord}_1(b)=1$.  If $\lcm(F)\ge2$, then also
-$\lcm(F)<D_F$.  Without that hypothesis the conclusion can fail: at
-$b=2$ and $F=\{1\}$ one has $D_F=1$.
+For finite nonempty $F\subseteq\Npos$ at base $b\ge2$, let $D_F$ be the
+reduced denominator of $\sum_{n\in F}(b^n-1)^{-1}$.  The checked lead theorem is
+$\operatorname{ord}_{D_F}(b)=\lcm(F)$.  If $\lcm(F)\ge2$, then
+$\lcm(F)<D_F$; the case $b=2$, $F=\{1\}$ shows why that hypothesis is needed.
 
-Erd\H{o}s~\#257 asks whether
-$X_A=\sum_{a\in A}(2^a-1)^{-1}$ is irrational for every infinite
-$A\subseteq\Npos$.  It remains open.  The coordinate used here is the divisor
-incidence $\scA_A(n)=\#\{d\mid n:d\in A\}$, for which
-$X_A=\sum_{n\ge1}\scA_A(n)2^{-n}$; these coefficients are nonnegative divisor
-counts and need not be binary digits.  If $X_A$ is rational, its integral
-scaled-tail sequence satisfies an exact long-division recurrence.  For
-infinite $A$ that sequence is unbounded, and every zero window of
-$\scA_A$ at $c+N$ has length at most
-$\varepsilon\log_2(N+1)+O_{\varepsilon,c,v}(1)$.  Under the additional
-hypotheses that $\sum_{a\in A}1/a$ converges and that the reduced odd
-denominator part $v>1$ is coprime to the numerator, rationality also forces
-\[
-  \sum_{a\in A}\frac1a\ge\frac1{\operatorname{ord}_v(2)}.
-\]
-Finally, rational values admit an exact Boolean--M\"obius scaled-tail
-characterisation from which the support is reconstructed.  These constraints
-are not known to be contradictory.  We also record the squarefree support,
-whose values at every power-of-two base are jointly controlled by the
-literature and on which two of the
-arguments used here fail for a reason internal to a normalisation rather than
-to the value itself.  We then record the achievement-set geometry and the exact
-status of the candidate $1/2$: membership would refute \#257, while
-non-membership would eliminate only this one candidate.
+Erd\H{o}s~\#257 asks whether every infinite-support value
+$X_A=\sum_{a\in A}(2^a-1)^{-1}$ is irrational.  It remains open.  This note's
+checked contribution is an exact structural record: hypothetical rational
+values have an unbounded scaled-tail recurrence, sublogarithmic zero windows,
+and Boolean--M\"obius reconstruction; every restriction to allowed exponents
+$J$ preserves unique coding, compactness, and nowhere density, is perfect for
+infinite $J$, and has measure $2^{-|F|}$ when $J^c=F$ is finite and zero when
+$J^c$ is infinite.  For squarefree support the incidence is
+$2^{\omega(n)}-1$; at every even base two divisibility-first certificate
+hypotheses fail already at precision $b^2$, while adjoining $1$ preserves
+irrationality and restores arbitrarily long base-$2$ opening blocks.  Finite
+support represents neither $1/2$ nor $1/21$: the first target is equivalent to
+unbounded greedy skips, and the second to excluding one explicit fatal aligned
+branch whose eventual affine-supercapacity regime remains possible.
+Tao--Ter\"av\"ainen's base-$2$ prime-support theorem and Duverney--Tachiya's
+power-of-two squarefree theorem are cited prior work, not formalised here.
+These classifications and scoped frontiers do not solve \#257 or either target.
 \end{abstract}
 
 \section{Introduction and main results}\label{sec:problem}
@@ -171,8 +158,9 @@ irrational values, grouped by the argument that reaches them.
 Section~\ref{sec:squarefree} treats
 the squarefree support, whose values are known at every power-of-two base and which two of the
 arguments used here provably cannot reach at any even base.
-Section~\ref{sec:geometry} is the geometry of the set of attainable values, and
-the value $1/2$ inside it.  Section~\ref{sec:open} states what remains.
+Section~\ref{sec:geometry} gives the unrestricted and support-restricted
+topology and measure classifications, followed by the exact $1/2$ and $1/21$
+frontiers.  Section~\ref{sec:open} states what remains.
 
 \section{Finite-support denominator periods}\label{sec:period}
 
@@ -699,9 +687,12 @@ $3b^2>b$; if $N=0$ and $L\ge2$, the $r=2$ term gives
 $C\ge b^{L-2}$ and hence $qC\ge b^L$.  These exhaust the cases.
 \end{proof}
 
-\noindent This is an argument in the prose, drawn from the checked incidence
-and parity lemmas, and is marked as such in
-\emph{Statements and declarations}.
+\noindent The two engine-facing nonexistence statements are checked directly as
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{274}{not_exists_carry_certificates_squarefreeSupport}{the carry-aware no-go}
+and
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{292}{not_exists_digitwise_certificates_squarefreeSupport}{the digitwise no-go}.
+The displayed proof is retained to expose the empty- and one-position-block
+boundary cases rather than leaving the scope hidden behind the interfaces.
 
 \subsection{The obstruction is a normalisation, not the value}
 
@@ -719,10 +710,19 @@ so the two supports pose the same irrationality question at every base, while
 the divisor incidence changes from $2^{\omega(n)}-1$ to $2^{\omega(n)}$ ---
 from odd to even at every $n\ge2$.  The parity obstruction of
 Corollary~\ref{res:blind} evaporates under a shift that provably cannot change
-the answer.  More is true: the shifted first-block condition at base~$2$ asks for
+the answer.  The shifted coefficient identity and the exact equivalence of the
+two irrationality questions are checked as
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{314}{supportCoeff_squarefreeShiftedSupport}{$2^{\omega(n)}$ incidence}
+and
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{335}{irrational_erdosSupportSeries_squarefreeSupport_iff_shifted}{the shift iff}.
+More is true: the shifted first-block condition at base~$2$ asks for
 $2^{r}\mid 2^{\omega(N+r)}$, that is $\omega(N+r)\ge r$ for $1\le r\le K$, and
 a Chinese-remainder construction reserving $r$ fresh primes for each shift $r$
-supplies such an $N$ for every $K$.
+supplies such an $N$ for every $K$.  This is checked both as the arithmetic
+block theorem
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{441}{exists_omega_ge_block}{for $\omega$}
+and in the engine-facing form
+\lword{Erdos257/SquarefreeSupportIncidence.lean}{485}{exists_digitwise_block_squarefreeShiftedSupport}{for the shifted incidence}.
 
 It does \emph{not} follow that either argument certifies the shifted support:
 the opening block is one of the conditions listed above, and the middle bound
@@ -1050,8 +1050,10 @@ skipped exponent with square-root-bounded defect
 (\mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5178}{twentyOneAlignedSaturatedCrossing_forces_canonical_ancestor_hole}{ancestor hole},
 \mword{Erdos249257/TwentyOneQuotientGreedy.lean}{5222}{twentyOneAlignedSaturatedCrossing_forces_scaled_greedy_skip}{scaled skip}).
 These conclusions remove alternative late Boolean branches; they do not
-contradict the permanent affine-supercapacity regime.  Membership of $1/21$
-therefore remains open at precisely that recurrence.
+exclude the full fatal/cofinite/aligned branch.  On that branch the permanent
+affine-supercapacity recurrence is forced, so a contradiction of the
+recurrence would be sufficient, but the recurrence alone is not the exact
+membership endpoint.
 
 \section{Open problems}\label{sec:open}
 
@@ -1071,8 +1073,10 @@ problem beside it.
 \begin{problem}[membership of 1/21 in the Mersenne achievement set]
 \label{prob:one-over-twenty-one-membership}
 Exclude the explicit fatal/cofinite/aligned branch $\mathcal F_{21}$.
-Equivalently, contradict its eventual permanent affine-supercapacity
-recurrence or force an unbounded sequence of closed canonical quotient rows.
+It is sufficient either to contradict the eventual permanent
+affine-supercapacity recurrence forced by that branch or to force an unbounded
+sequence of closed canonical quotient rows; neither sufficient route is
+claimed to be equivalent by itself.
 \end{problem}
 
 \begin{enumerate}
@@ -1091,9 +1095,10 @@ recurrence or force an unbounded sequence of closed canonical quotient rows.
 \item \textbf{Problem~\ref{prob:one-over-twenty-one-membership}.}
   Theorem~\ref{res:one-over-twenty-one} rules out finite support, while
   Theorem~\ref{res:one-over-twenty-one-frontier} reduces membership exactly
-  to excluding $\mathcal F_{21}$.  Equivalently, it remains to contradict the
-  eventual permanent affine-supercapacity recurrence or to produce
-  arbitrarily deep closed canonical rows.  Neither input is known.
+  to excluding $\mathcal F_{21}$.  Contradicting its forced eventual
+  affine-supercapacity recurrence or producing arbitrarily deep closed
+  canonical rows would suffice.  Neither input is known, and neither is
+  promoted to an equivalence.
 \end{enumerate}
 
 \noindent For scope, all squarefree values at power-of-two bases, jointly in
@@ -1108,15 +1113,15 @@ makes no global open-status or priority claim for those values.
 This manuscript is authored exposition, not proof authority.  The linked Lean
 snapshot is authoritative only for its exact propositions; kernel checking
 establishes that a proposition was proved, not that it is interesting, novel,
-or sufficient.  The proof of Corollary~\ref{res:blind}, the derivation of
-Corollary~\ref{res:sfsettled} from
+or sufficient.  The displayed proof of Corollary~\ref{res:blind}, the
+derivation of Corollary~\ref{res:sfsettled} from
 ~\cite[Cor.~1.2 and Ex.~1.1, author-preprint p.~4]{duverneytachiya},
-the finite-change
-argument (from the two checked prefix lemmas), the shift identity and
-Chinese-remainder remark in Section~\ref{sec:squarefree}, and the restricted
-selector-injectivity sentence in Section~\ref{sec:geometry} are arguments in the
-prose rather than checked statements; each is drawn from the checked lemmas
-cited beside it or from the cited literature.  The numerical instances --- the
+and the general finite-change argument (from the two checked prefix lemmas) are
+expository arguments rather than named checked statements.  The squarefree
+no-go interfaces, shifted coefficient, shift equivalence, Chinese-remainder
+block supply, and restricted-selector injectivity are directly checked
+statements linked at their use; they are not prose-only claims.  The numerical
+instances --- the
 table of finite supports in Section~\ref{sec:period}, the incidence and
 zero-window examples, the reciprocal-mass and Boolean--M\"obius instances, the
 $3/4$ certificate, and the greedy expansion of $1/2$ through level~$21$ ---

@@ -1488,6 +1488,41 @@ def main() -> int:
     check(coordinate_check.returncode == 0,
           f"source-coordinate drift: {coordinate_check.stdout.strip() or coordinate_check.stderr.strip()}")
 
+    reasoning_coordinate_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "refresh_reasoning_source_coordinates.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        reasoning_coordinate_check.returncode == 0,
+        "reasoning source-coordinate drift: "
+        + (
+            reasoning_coordinate_check.stdout.strip()
+            or reasoning_coordinate_check.stderr.strip()
+        ),
+    )
+    reasoning_coordinate_test = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "test_reasoning_source_coordinates.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        reasoning_coordinate_test.returncode == 0,
+        "reasoning source-coordinate regression: "
+        + (
+            reasoning_coordinate_test.stdout.strip()
+            or reasoning_coordinate_test.stderr.strip()
+        ),
+    )
+
     corpus_check = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "build_corpus_descriptor.py"), "--check"],
         cwd=ROOT,
@@ -1507,6 +1542,25 @@ def main() -> int:
     )
     check(paper_alias_check.returncode == 0,
           f"paper module alias drift: {paper_alias_check.stdout.strip() or paper_alias_check.stderr.strip()}")
+    reasoning_assembly_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        reasoning_assembly_check.returncode == 0,
+        "reasoning-surface assembly drift: "
+        + (
+            reasoning_assembly_check.stdout.strip()
+            or reasoning_assembly_check.stderr.strip()
+        ),
+    )
     boundary = subprocess.run(
         [
             sys.executable,

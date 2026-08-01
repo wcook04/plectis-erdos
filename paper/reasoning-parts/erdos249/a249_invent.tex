@@ -1,0 +1,838 @@
+\section{The mathematics this problem still needs}
+
+Everything in Parts I--IV of this document is either a theorem about
+$\varphi$ or a theorem about proof methods for $\varphi$. Nothing in it
+decides Erd\H{o}s \#249, and this section does not either. What this section
+does is different in kind from the rest: it takes each route that survives
+the barrier classification, states the missing mathematics as an exact
+sentence, identifies the shape of argument that could supply it, names the
+precise point at which the nearest existing technique fails, and --- where
+the evidence permits --- attempts the construction rather than describing it.
+
+Four things are new here and are marked as such. (i) An exact normal form
+that turns every surviving \#249 route into a statement about the binary
+expansion of one explicit real number, with the thresholds computed
+(Lemma~\ref{lem:orbit}, Proposition~\ref{prop:transfer},
+Corollary~\ref{cor:digitform}). (ii) A proof that the first-harmonic gap is
+strictly stronger than irrationality, by an explicit witness inside the same
+coefficient class (Theorem~\ref{thm:lacunary}); the corpus had this only as
+a plausibility argument. (iii) A one-sided smooth-number majorant for the
+non-supplier budget and a bad-cofactor estimate, with their remaining
+uniformity hypotheses exposed (Propositions~\ref{prop:dickman} and
+\ref{prop:badcof}); the quantifier audit also shows that the proposed
+shallow-modulus Siegel--Walfisz route does not fit the predicate. (iv) An
+audit of the rationality-side rank route: its proposed generic counterexample
+loses one zero-residue section per level, so it neither refutes nor retires
+the route.
+
+Where a claim is proved it is marked \ev{Math}; where it is checked by exact
+or floating-point computation, \ev{Cert}; where it is quoted, \ev{Cited};
+where it is a proposal, \ev{Open}. No proposal below is offered as progress
+towards a solution. Two of them are reductions, and a reduction is not a
+result.
+
+\begin{rem}
+Declarations in the shared tree are cited as
+\texttt{Erdos249257.name} with file and line. Declarations in the newer
+per-problem tree are cited with their path from the repository root,
+\texttt{ErdosProblems/Erdos249/File.lean:line}; the hyperlink target for
+those is the per-problem directory, not \texttt{Erdos249257/}.
+\end{rem}
+
+\subsection{One identity, and what it does to every surviving route}
+
+Write $S=\sum_{n\ge 1}\varphi(n)/2^n$, $R_N=\sum_{m\ge 1}\varphi(N+m)/2^m$
+for the local tail
+(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak totientTail}{TotientTailPeriodKiller.lean:57}),
+and $\Phi_N=\sum_{n\le N}\varphi(n)2^{N-n}\in\Z$ for the integer prefix, so
+that $2^N S=\Phi_N+R_N$. For $h\ge 1$ set
+\[
+  \alpha_h \;:=\; (2^h-1)\,S .
+\]
+
+\begin{lem}[Doubling normal form]\label{lem:orbit}
+For all $N\ge 0$ and $h\ge 1$,
+\[
+  R_{N+1}=2R_N-\varphi(N+1),
+  \qquad
+  R_{N+h}-R_N \;=\; 2^N\alpha_h-\bigl(\Phi_{N+h}-\Phi_N\bigr),
+\]
+so $R_{N+h}-R_N \equiv 2^N\alpha_h \pmod 1$, and consequently the exact
+first character of the tail difference is the $\times 2$ orbit of one real
+number:
+\[
+  \mathrm{tailOrbitFirstExp}(h,N)
+  \;=\; e\bigl(2^N\alpha_h\bigr),
+  \qquad e(x):=\exp(2\pi i x).
+\]
+Hence, for fixed $h$, the phases $\{\,R_{N+h}-R_N \bmod 1\,\}_{N\ge 0}$ are
+the forward orbit of $\alpha_h \bmod 1$ under $x\mapsto 2x$.
+\end{lem}
+
+\noindent
+The second identity and the character form are landed:
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tail_diff_eq_scaled_\allowbreak totient_series_sub_prefix}{PivotAntiReconstruction.lean:54}
+and
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak tailOrbitFirstExp_eq_scaledTotientSeriesFirstExp}{PivotAntiReconstruction.lean:66}
+\quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:binary-window}.
+The recurrence $R_{N+1}=2R_N-\varphi(N+1)$ is one line from the definition
+and is used below only for intuition \ev{Math}.
+
+This is not a new fact --- it is two landed Lean theorems read together ---
+but reading them together has a consequence the corpus never draws. The
+first-harmonic block sum, which is the analytic frontier of \#249, is a
+\emph{lacunary exponential sum in a single real variable}. The following
+proposition makes the transfer exact, including the truncation budget.
+
+\begin{prop}[Orbit transfer]\label{prop:transfer}
+Define
+\[
+  \mathrm{OrbitBlockGap} :\equiv
+  \forall h\ge 1\ \forall X_0\ \exists X\ge \max(X_0,1):\quad
+  \sum_{N=X}^{2X-1}\cos\bigl(2\pi\,2^{N}\alpha_h\bigr)\;\le\;\tfrac{89}{100}\,X .
+\]
+Then $\mathrm{OrbitBlockGap}$ implies that $S$ is irrational.
+\end{prop}
+
+\begin{proof}
+Fix $h\ge 1$ and $X_0$, and take $X$ as supplied. Choose $L$ with
+$2^{L}\ge 1024\,(2X+h+L+2)$; such $L$ exists because $2^L/L\to\infty$, and it
+satisfies the room inequality $16(2X+h+L+2)\le 2^L$ a fortiori. For every
+$N<2X$ the landed truncation bound
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak norm_windowFirstExp_\allowbreak sub_tailOrbitFirstExp_lt}{PivotAntiReconstruction.lean:202}
+gives
+$\bigl\|\,\mathrm{windowFirstExp}(h,N,L)-e(2^N\alpha_h)\,\bigr\|
+ < 2\pi(N+L+h+2)/2^{L} \le 2\pi/1024 < 1/100$,
+so by
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstCos_le_\allowbreak add_of_tailOrbitGap}{PivotAntiReconstruction.lean:221},
+$\mathrm{windowFirstCos}(h,N,L)\le \cos(2\pi 2^N\alpha_h)+1/100$. Summing over
+the $X$ values $N\in[X,2X)$ gives
+$\sum_N \mathrm{windowFirstCos}(h,N,L)\le \tfrac{89}{100}X+\tfrac{1}{100}X
+=\tfrac{9}{10}X$, so
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap}{FirstHarmonicGap.lean:128}
+produces $N\in[X,2X)$ with $\mathrm{certifiedKill}(h,N,L)$, and $N\ge X\ge X_0$.
+This is exactly the certificate supply consumed by
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak irrational_totient_series_\allowbreak of_certificate_supply}{TotientTailPeriodKiller.lean:394}.
+\end{proof}
+
+\noindent
+\ev{Math} \quad \scale{cofinal} \quad \coord{other:binary-window}. The proof
+uses only landed lemmas; formalising it is a variant of
+\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
+with the constant $21/25$ replaced by the real-part constant $89/100$ and the
+room factor $16$ by $1024$. Nothing here is an improvement of the analytic
+requirement; it is a change of coordinate that makes the requirement legible.
+
+\begin{cor}[Digit form of the analytic requirement]\label{cor:digitform}
+Let $\rho_h(X)$ denote the proportion of $N\in[X,2X)$ with
+$\|2^N\alpha_h\|_{\R/\Z}\ge 1/4$. If for every $h\ge 1$ there are cofinally
+many $X$ with $\rho_h(X)\ge 11/100$, then $S$ is irrational.
+Equivalently, when $\alpha_h$ is not a dyadic rational: if for every $h$
+there are cofinally many dyadic blocks $[X,2X)$ in which the binary
+expansion of $\alpha_h$ contains at least $0.11X$ digit changes --- that is,
+in which the mean binary run length is at most $9.1$ --- then $S$ is
+irrational.
+\end{cor}
+
+\begin{proof}
+$\|x\|\ge 1/4$ forces $\cos 2\pi x\le 0$, and the remaining terms are at most
+$1$, so $\sum_{N}\cos(2\pi 2^N\alpha_h)\le (1-\rho_h(X))X$; require
+$1-\rho\le 89/100$ and apply Proposition~\ref{prop:transfer}. For the digit
+reading, $\|2^N\alpha_h\|\ge 1/4$ holds exactly when the binary digits of
+$\alpha_h$ in positions $N+1,N+2$ differ.
+\end{proof}
+
+\noindent
+\ev{Math}. This threshold is worth staring at. A single digit change in
+every ninth position, in one block per scale, for each fixed $h$, would
+settle Erd\H{o}s \#249. What is actually true, numerically, is far stronger.
+
+\begin{table}[h]\centering
+\begin{tabular}{r r r r r}
+\hline
+$h$ & $X$ & $\rho_h(X)$ & $X^{-1}\sum_{N\in[X,2X)}\cos(2\pi 2^N\alpha_h)$ & required \\
+\hline
+$1$ & $256$  & $0.4766$ & $\phantom{-}0.0037$ & $\le 0.89$ \\
+$1$ & $2048$ & $0.5073$ & $-0.0043$ & $\le 0.89$ \\
+$3$ & $256$  & $0.4648$ & $\phantom{-}0.0296$ & $\le 0.89$ \\
+$3$ & $2048$ & $0.5020$ & $\phantom{-}0.0027$ & $\le 0.89$ \\
+$8$ & $2048$ & $0.5112$ & $-0.0088$ & $\le 0.89$ \\
+$13$& $2048$ & $0.5049$ & $-0.0195$ & $\le 0.89$ \\
+\hline
+\end{tabular}
+\caption{Block statistics for $\alpha_h=(2^h-1)S$, computed from the exact
+integer $\lfloor 2^{6000}S\rfloor$ (error $<1$ in the last bit, tail bound
+$(M+2)2^{-M}$ at $M=6080$). Over positions $1..5800$ the binary expansion of
+$\alpha_1$ has $2864$ runs, mean run length $2.0251$, longest run $13$; for
+$\alpha_3$, $2964$ runs, mean $1.9568$, longest $12$; for $\alpha_8$, $2927$
+runs, mean $1.9816$, longest $14$. A uniform digit model predicts mean run
+length $2$ and longest run $\approx\log_2 5800\approx 12.5$. \ev{Cert}}
+\label{tab:blocks}
+\end{table}
+
+\begin{obs}\label{obs:allroutes}
+Under Lemma~\ref{lem:orbit} every route that survives the barrier
+classification becomes a statement about the binary expansion of $S$ or of
+some $\alpha_h$. Routes 1 and 2 ask for a positive proportion of digit
+changes in a block; Route 3 asks for one short run at a prime-indexed
+position; Route 4 asks that two blocks of digits of $S$ at distance $h$
+disagree early. The routes differ in \emph{which positions} they interrogate
+and \emph{how uniform} the margin must be, not in what they are about. This
+is developed in \S\ref{sub:shape}.
+\end{obs}
+
+\subsection{Route 1: a constant-saving cancellation over a dyadic block}
+
+\paragraph{The exact statement needed.}
+\[
+  \forall h\ge 1\ \forall X_0\ \exists X,L:\quad
+  \max(X_0,1)\le X,\quad 16(2X+h+L+2)\le 2^{L},\quad
+  \Bigl\|\sum_{N=X}^{2X-1} e\bigl(D(h,N,L)/2^{L}\bigr)\Bigr\|\le \tfrac{21}{25}X,
+\]
+where $D(h,N,L)=\sum_{j<L}\bigl(\varphi(N+h+1+j)-\varphi(N+1+j)\bigr)2^{L-1-j}$.
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWFirstHarmonicNormGap}{FirstHarmonicPivot.lean:75},
+consumer
+\lean{Erdos249257.\allowbreak irrational_totient_series_of_\allowbreak first_harmonic_norm_gap}{FirstHarmonicPivot.lean:83}
+\quad \ev{Open} \quad \scale{cofinal}. By Proposition~\ref{prop:transfer} the
+weaker real-part form with constant $89/100$ suffices.
+
+\paragraph{What $D$ is, as an arithmetic object.}
+Dividing by $2^L$ and reindexing the two ranges onto a common variable
+$t$, with $m=N+t$,
+\begin{equation}\label{eq:window}
+  \frac{D(h,N,L)}{2^{L}}
+  =\underbrace{-\sum_{t=1}^{h}\frac{\varphi(N+t)}{2^{t}}}_{\text{head}}
+  \;+\;\underbrace{(2^{h}-1)\sum_{t=h+1}^{L}\frac{\varphi(N+t)}{2^{t}}}_{\text{body}}
+  \;+\;\underbrace{\sum_{t=L+1}^{L+h}\frac{\varphi(N+t)}{2^{t-h}}}_{\text{tail}} .
+\end{equation}
+So the phase is a \emph{geometrically weighted linear form in $\varphi$ at
+$L+h$ consecutive arguments}, with the value at offset $t$ entering modulo
+$2^{t}$ and with an odd multiplier $2^h-1$ throughout the body. Two features
+control everything that follows. First, the weight at offset $t$ has
+denominator exactly $2^{t}$, so offset $t$ contributes nothing unless
+$v_2(\varphi(N+t))<t$: the $2$-adic valuation of the totient is the gate.
+Second, $2^h-1$ is odd, so the multiplier never closes a gate that
+$\varphi$ leaves open.
+
+\paragraph{Which technique family is even the right shape.}
+Four candidates, in decreasing order of relevance.
+
+\emph{Weyl differencing and van der Corput} are the wrong shape and can be
+dismissed exactly. Both require the phase to be a smooth or polynomial
+function of the summation variable so that a difference operator lowers its
+degree. Here $N\mapsto D(h,N,L)/2^{L}$ is, by Lemma~\ref{lem:orbit}, the
+$\times 2$ orbit map: differencing in $N$ multiplies the phase by $2$ and
+subtracts an integer, so the difference operator is an exact isometry of the
+problem and lowers nothing. This is not a heuristic --- it is
+$R_{N+1}=2R_N-\varphi(N+1)$ read modulo $1$.
+
+\emph{The large sieve} needs a family of well-separated frequencies and a
+sum over both the frequencies and the variable. Here there is one frequency
+per $N$ and no family: the sum is over a single orbit. A large-sieve
+inequality could be applied after introducing an artificial family (for
+example, over the $h$ parameter), but the predicate quantifies $h$
+universally, so an average over $h$ is not admissible.
+
+\emph{Vaughan/Vinogradov bilinear decomposition} is the right shape, and is
+what Route 2 already implements: decompose the argument $N+t$ at a large
+prime factor, use $\varphi(mp)=\varphi(m)(p-1)$ to linearise the phase in
+$p$, and sum over primes. \S\ref{sub:pivot} carries this as far as it goes.
+
+\emph{Erd\H{o}s's 1948 digit method}, which proved irrationality of
+$E=\sum_n 1/(2^n-1)=\sum_N d(N)/2^N$, is the right shape for the
+\coord{mobius-mersenne} coordinate. That coordinate exists here and is
+exact: from $\varphi=\mu * \mathrm{id}$,
+\begin{equation}\label{eq:mobmers}
+  S=\sum_{d\ge 1}\mu(d)\,\frac{2^{d}}{(2^{d}-1)^{2}}
+  \qquad (\ev{Math};\ \text{verified to }16\ \text{digits},\ S=1.3676308019850223\ldots,\ \ev{Cert}).
+\end{equation}
+But the method does not transfer, for a reason that can be stated
+quantitatively rather than vaguely. Erd\H{o}s's argument for $E$ exploits
+that the coefficient $d(N)$ has enormous multiplicative fluctuation: over
+$N\le Y$ the ratio of its maximum to its typical value is
+$Y^{(\log 2+o(1))/\log\log Y}$, so certain highly composite $N$ deposit
+identifiable spikes into the digit stream. The coefficient here is
+$\varphi(N)$, which satisfies $\varphi(N)/N\in[c/\log\log N,1]$: its
+multiplicative fluctuation over $N\le Y$ is a factor $e^{\gamma}\log\log Y$,
+that is, $\log\log Y$ rather than $Y^{c/\log\log Y}$. There are no spikes to
+find. In the M\"obius--Mersenne coordinate \eqref{eq:mobmers} the situation is
+worse rather than better: the coefficients $\mu(d)$ change sign, so the
+digit blocks contributed by successive $d$ cancel rather than accumulate,
+and there is no positivity to run a block argument on. This is, as far as
+the evidence in this corpus goes, the specific reason \#249 is harder than
+its Erd\H{o}s--Borwein ancestor.
+
+\paragraph{The specific obstacle: what the estimate cannot be deduced from.}
+The corpus records that no theorem proves the first-harmonic gap
+inequivalent to irrationality, and argues the point from the structure of a
+collapse proof. It can be settled outright, and the witness lives in the
+same coefficient class that carries barriers B1 and B7.
+
+\begin{thm}[The gap is strictly stronger than irrationality]\label{thm:lacunary}
+Let $c(n)=1$ if $n=k!$ for some $k\ge 1$ and $c(n)=0$ otherwise, so
+$0\le c(n)\le n$ for all $n\ge 1$, and let $\beta=\sum_{n\ge1}c(n)/2^{n}
+=\sum_{k\ge 1}2^{-k!}$. Then $\beta$ is irrational, and for every $h\ge 1$
+and every $X\ge 81(h+5)$,
+\[
+  \sum_{N=X}^{2X-1}\cos\bigl(2\pi\,2^{N}(2^{h}-1)\beta\bigr) \;>\; \tfrac{9}{10}X .
+\]
+Consequently the block-gap requirement fails at \emph{every} scale for
+$\beta$, while $\beta$ is irrational. No proof of the block gap for $S$ can
+therefore proceed from the irrationality of $S$ together with the growth
+bound $c(n)\le n$; it must use arithmetic of $\varphi$.
+\end{thm}
+
+\begin{proof}
+Irrationality of $\beta$ is Liouville's criterion. Write
+$\gamma=(2^{h}-1)\beta=\sum_{k}(2^{h-k!}-2^{-k!})$, so for every $k$ with
+$k!>2h$ the binary expansion of $\gamma$ carries ones exactly in the
+positions $k!-h+1,\dots,k!$ and zeros between consecutive such blocks. If
+$N\le k!-h-5$ for the least $k$ with $k!>N$, then
+$\{2^{N}\gamma\}\le 2\cdot 2^{-5}=1/16$, whence $\|2^{N}\gamma\|\le 1/16$ and
+$\cos(2\pi 2^{N}\gamma)\ge\cos(\pi/8)>0.9239$. The remaining $N$ lie in
+$(k!-h-5,\,k!]$, at most $h+5$ values per factorial, and consecutive
+factorials differ by a factor exceeding $2$ from $k\ge 3$, so the window
+$[X,2X)$ meets at most one such interval. Therefore the sum exceeds
+$0.9239\,(X-h-5)-(h+5)$, which exceeds $\tfrac{9}{10}X$ once
+$X\ge 81(h+5)$.
+\end{proof}
+
+\noindent
+\ev{Math} \quad \scale{cofinal} \quad \coord{other:binary-window}. This
+upgrades the corpus's ``no collapse mechanism is known to apply'' to ``no
+collapse mechanism can exist''. It also says precisely what the missing
+input must do: it must rule out that $S$ behaves, in its doubling orbit,
+like a Liouville number. That is the content of Corollary~\ref{cor:digitform},
+and it is why the requirement is a digit-statistics statement and not an
+irrationality statement.
+
+\paragraph{Size of the quantity, honestly calibrated.}
+Under any model in which the binary digits of $\alpha_h$ behave like fair
+coin flips, $\rho_h(X)\to 1/2$ and the block sum is $O(\sqrt{X\log\log X})$
+by the Erd\H{o}s--G\'al law of the iterated logarithm for lacunary series
+\ev{Cited}. The requirement is $\rho_h\ge 0.11$ and a saving of a constant
+factor. The measured values in Table~\ref{tab:blocks} are $\rho_h\approx 0.50$ and a block
+average of order $X^{-1/2}$. So the analytic requirement is weaker than the
+apparent truth by a factor $\sqrt X$, and the difficulty is entirely that no
+technique produces \emph{any} nontrivial digit statistic for an explicit
+constant of this kind. That is a statement about technology, and it is worth
+separating from a statement about $S$.
+
+\subsection{Route 2: the four-term pivot budget}\label{sub:pivot}
+
+\paragraph{The exact statement needed.}
+For every $h\ge 1$ there must exist $s\ge 1$ and $\eta\in(0,1)$ such that for
+every $X_0$ there are $X\ge\max(X_0,1)$ and $L$ with $h\le L-s$,
+$16(2X+h+L+2)\le 2^{L}$, and all four of
+\[
+\begin{aligned}
+  \operatorname{Re}\bigl(\mathrm{pivotCenteredCorrelation}\bigr) &\le \tfrac{14}{25}X,
+  &\qquad \bigl\|\mathrm{pivotFiberMeanContribution}\bigr\| &\le \tfrac{1}{100}X,\\
+  \bigl\|\mathrm{pivotBadContribution}\bigr\| &\le \tfrac{1}{100}X,
+  &\qquad \bigl\|\mathrm{pivotNonSupplierContribution}\bigr\| &\le \tfrac{8}{25}X .
+\end{aligned}
+\]
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:397},
+consumer
+\lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:405}
+\quad \ev{Open} \quad \scale{cofinal}. The decomposition is an exact identity,
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstExp_sum_\allowbreak eq_pivot_decomposition}{FirstHarmonicPivot.lean:342}
+\quad \ev{Lean}, and the supplier set at the canonical fibre is a membership
+equality with a shifted dyadic interval of primes,
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:251}
+\quad \ev{Lean}.
+
+\paragraph{One budget has a classical one-sided majorant.}
+The non-supplier term is not identified exactly by smooth numbers.  What the
+factorisation gives is the one-way containment needed for an upper bound.
+
+\begin{prop}[Non-suppliers: the valid one-sided estimate]\label{prop:dickman}
+Choose the admissible depth $L$ minimally for each large $X$, with the
+predicate's previously fixed $h$ and $s$.  If
+$n=N+L-s+1$ is not a supplier, then its largest prime factor satisfies
+\[
+  P(n)\le (4+o(1))\sqrt X .
+\]
+Therefore
+\[
+  \#\{N\in[X,2X):\neg\,\mathrm{pivotSupplier}(X,L,s,N)\}
+  \le
+  \Psi(2X+O(\log X),(4+o(1))\sqrt X)
+  -\Psi(X+O(\log X),(4+o(1))\sqrt X).
+\]
+A uniform smooth-number asymptotic for this shifted interval would make the
+right side $(1-\log2+o(1))X<\tfrac8{25}X$ and would discharge the budget.
+\end{prop}
+
+\begin{proof}
+Let $p=P(n)$ and $m=n/p$.  Supplier failure means either
+$p\le2\lfloor\sqrt X\rfloor$ or $m>\lfloor\sqrt X\rfloor/2$ (up to the
+definition's exact floor and positivity clauses).  In the second case
+$p=n/m\le(4+o(1))\sqrt X$, because minimal admissible $L$ gives
+$L-s+1=O(\log X)$ and hence $n<2X+O(\log X)$.  Thus every non-supplier lies in
+the displayed smooth-number set.  This proves only an upper bound, not an
+asymptotic equality for the non-supplier count.
+\end{proof}
+
+\noindent
+\ev{Math} for the containment; \ev{Cited} for the smooth-number estimate
+needed to finish the numerical budget.  In particular the earlier identity
+with Dickman density, and numerical extrapolations of an exact crossover
+scale, are not claimed.  The implication is sufficient if the required
+uniform shifted-interval estimate is supplied.
+
+\begin{prop}[The bad-cofactor budget]\label{prop:badcof}
+For $\eta\in(0,1)$ let $B(\eta)=\{m:\varphi(m)<\eta m\}$, with natural density
+$D(\eta)$; by Schoenberg's theorem $D$ exists, is continuous, and
+$D(0+)=0$ \ev{Cited}. Then
+\[
+  \#\{N\in[X,2X): N\ \text{a supplier with cofactor}\ m\in B(\eta)\}
+  \;\le\;\bigl(D(\eta)+o(1)\bigr)X ,
+\]
+so a single choice of $\eta$ with $D(\eta)<1/200$ meets the $\tfrac{1}{100}X$
+budget for all large $X$. Since $\eta$ is quantified existentially before
+$X_0$, and a smaller $\eta$ only enlarges the good set, this choice costs
+nothing elsewhere in the budget.
+\end{prop}
+
+\begin{proof}[Proof sketch]
+Suppliers with cofactor $m$ number $\pi(2X/m)-\pi(X/m)$, which is at most
+$(2X/m)/\log X$ up to $1+o(1)$ because $m\le\sqrt X/2$ forces
+$\log(X/m)\ge\tfrac12\log X$. Sum over $m\in B(\eta)$ with $m\le\sqrt X/2$
+and use that the logarithmic density of $B(\eta)$ tends to $D(\eta)$.
+\end{proof}
+
+\noindent
+\ev{Math} \quad \scale{cofinal}. The choice is not tight: the least element
+of $B(1/5)$ is $2\cdot3\cdot5\cdot7\cdot11\cdot13=30030$, with
+$\varphi(m)/m=5760/30030=0.19181$, and the logarithmic density of $B(1/5)$ up
+to $3\cdot10^{5}$ is $3\cdot 10^{-5}$ \ev{Cert}. So $\eta=1/5$ is already
+defensible pending an explicit numerical bound on $D(1/5)$, and that bound is
+itself a finite computation a reader could start today.
+
+\paragraph{The pivot quantifiers force a deep modulus.}
+The pivot sits at offset $t=L-s+1$ in \eqref{eq:window}.  Crucially, the
+definition of \texttt{DTWPivotResidualDecorrelation} chooses $s$ once, after
+$h$ and before the universal threshold $X_0$.  Thus $s$ is fixed as
+$X\to\infty$; it cannot be increased with $X$ to make $t$ shallow.  The room
+condition gives
+\[
+  2^L\ge16(2X+h+L+2),\qquad
+  t=L-s+1\ge\log_2X-O_{h,s}(1).
+\]
+After removing the $2$-part of the coefficient, the prime-progression modulus
+is still typically of order $X$ up to subpolynomial factors, not
+$(\log X)^A$.  Standard Siegel--Walfisz therefore does not reach the
+quantifier order of the stated predicate; choosing a hypothetical
+$t=O(\log\log X)$ would amount to choosing $s$ after $X$, which the predicate
+forbids.
+
+The exact $2$-adic triviality observation remains useful: if
+$v_2(\varphi(m))\ge t$, then the pivot phase is $1$.  It does not create a
+nonempty analytic window under the actual quantifiers.  Hence the claimed
+shallow-modulus route is withdrawn.  This does not disprove the pivot
+predicate; it says only that the proposed prime-distribution argument does
+not supply it. \ev{Math} \scale{cofinal}.
+
+\paragraph{The specific obstacle: the weight is neither Type I nor Type II.}
+Propositions~\ref{prop:dickman} and \ref{prop:badcof} isolate possible
+bookkeeping bounds, subject to their stated uniform estimates.  The
+fixed-$s$ quantifier leaves the fibre-mean modulus deep, and the centred term
+has a separate correlation obstruction.  Factoring the pivot argument as
+$n=mp$ and dividing out the pivot phase leaves
+\[
+  \operatorname{Re}\sum_{m}\ \sum_{p\,:\,mp\in[X,2X)+t}
+    w(mp)\,\bigl(e\bigl(a_m(p-1)/2^{t}\bigr)-\overline{e}_m\bigr)
+  \;\le\;\tfrac{14}{25}X ,
+  \qquad |w|\equiv 1 ,
+\]
+where $\overline{e}_m$ is the fibre mean and, by \eqref{eq:window}, $w(n)$ is
+the character of the same weighted totient sum with the single offset $t$
+deleted. Vinogradov's bilinear method requires that, after the decomposition
+$n=mp$, the summand split as $\alpha_m\beta_p$ (Type II) or be independent of
+$p$ given $m$ (Type I), up to boundedly many pieces. The weight $w(mp)$ is
+neither: it is a function of the totients of the $L+h$ integers
+\emph{adjacent} to $mp$, and $\varphi(mp+j)$ for $j\ne0$ bears no relation to
+the factorisation $mp$ --- it is not a function of $m$, not a function of
+$p$, and not a product of the two. No device is known that converts a weight
+of this shape into bilinear form.
+
+At $h=1$ and the canonical pivot the required estimate becomes fully
+explicit. There $e\bigl((p-1)/4\bigr)=i^{\,p-1}=\chi_{-4}(p)$, so what is
+needed is
+\[
+  \operatorname{Re}\sum_{X<p\le 2X}\chi_{-4}(p)\,
+    e\Bigl(\frac{\varphi(p+1)}{8}+\frac{\varphi(p+2)}{16}+\cdots\Bigr)
+  \;\le\;\Bigl(\frac{9}{10}-\delta\Bigr)\,\bigl(\pi(2X)-\pi(X)\bigr).
+\]
+The missing input is thus a \emph{non-correlation between a fixed quadratic
+character at $p$ and the $2$-adic behaviour of $\varphi$ at the shifts
+$p+1,p+2,\dots$}: a correlation statement for two arithmetic functions at
+shifted arguments, of Chowla--Elliott type. The unconditional results in that
+family --- Matom\"aki--Radziwi\l{}\l{} in almost all short intervals, Tao's
+logarithmically averaged Chowla, Tao--Ter\"av\"ainen for odd order
+\ev{Cited} --- are averaged, never pointwise at a single scale.
+
+\paragraph{A swing: the predicate needs only cofinally many $X$, so average
+over $X$.} This is the one place where the shape of the obligation is a gift.
+Both $\mathrm{DTWFirstHarmonicNormGap}$ and
+$\mathrm{DTWPivotResidualDecorrelation}$ ask for \emph{some} $X$ beyond each
+$X_0$, never for all $X$. Hence it suffices to prove a logarithmically
+averaged bound: if
+\[
+  \sum_{k\le K}\ \frac{1}{2^{k}}
+  \Bigl|\sum_{N\in[2^{k},2^{k+1})}e\bigl(D(h,N,L_k)/2^{L_k}\bigr)\Bigr|
+  \;=\;o(K)
+  \quad\text{for each }h,
+\]
+with $L_k$ any admissible depth sequence, then infinitely many blocks satisfy
+the gap and Proposition~\ref{prop:transfer} applies. Logarithmic averaging is
+exactly the regime in which the entropy-decrement method operates. The first
+concrete step is not to prove this but to decide whether the method reaches
+it: the phase $e\bigl(D(h,N,L)/2^{L}\bigr)$ is not multiplicative, but it is
+a bounded \emph{local function of a multiplicative function} --- a fixed
+continuous function of $\bigl(\varphi(N+1)/2,\dots,\varphi(N+L)/2^{L}\bigr)$
+read modulo $1$ --- whereas entropy decrement is stated for correlations of
+bounded multiplicative functions along fixed shifts. The precise question to
+settle, and it can be started on immediately, is whether the decrement
+survives when the observable is a local function of $\varphi$ with a growing
+number of coordinates $L\approx\log_2X$ rather than a product of boundedly
+many multiplicative values. \ev{Open}
+
+\subsection{Route 3: uniform quantitative escape at primes}
+
+\paragraph{The exact statement needed.}
+\[
+  \forall h\ge 1\ \forall N_0\ \exists p\ \text{prime}:\quad
+  \max(N_0+h+1,\,h+5)\le p
+  \ \wedge\
+  \operatorname{Re}\bigl(\mathrm{tailOrbitFirstExp}(h,\,p-h-1)\bigr)<\tfrac{9}{10}.
+\]
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:18},
+consumer
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:66}
+\quad \ev{Open} \quad \scale{cofinal}.
+
+\paragraph{What it says, after Lemma~\ref{lem:orbit}.}
+$\operatorname{Re}e(2^{p-h-1}\alpha_h)<9/10$ says
+$\|2^{p-h-1}\alpha_h\|_{\R/\Z}>\arccos(9/10)/2\pi=0.0717831\ldots$, so the
+requirement is exactly: \emph{for each $h$, the indicated prime-indexed
+$\times2$ orbit point stays more than $0.0717831\ldots$ from the nearest
+integer, for cofinally many primes $p$}.  A short-run condition on the binary
+digits can be a sufficient proxy for this circle-distance inequality, but it
+is not equivalent to it; a run-length description alone does not determine
+the residual position inside the dyadic cylinder.
+
+\paragraph{The specific obstacle.} Two, stacked. First, this is a
+\emph{pointwise} demand: it names an index, and the promotion audit records
+that no pointwise producer in this programme has ever been supplied at even
+one large index, across seven independent attempts, while the single audited
+row whose missing input is a block average is the first-harmonic row.
+Second, and sharper: digit behaviour \emph{along the primes} is strictly
+harder than digit behaviour on average even for constants where the average
+case is settled. The only constants whose digits are understood at all along a sparse
+subsequence are ones built for the purpose (Champernowne;
+Copeland--Erd\H{o}s) \ev{Cited}. No technique reads the digits of an
+explicit constant at prime positions.
+
+\paragraph{Numerical calibration.} Among the $501$ primes in $[1000,5000)$,
+the proportion with $\operatorname{Re}e(2^{p-h-1}\alpha_h)<9/10$ is $0.8623$
+for $h=1$, $0.8503$ for $h=2$, $0.8583$ for $h=5$, with minima below
+$-0.9999$ \ev{Cert}. The cofinal supply is thus met by about six primes in
+seven at these scales. As with Route 1, the requirement is very weak and the
+obstacle is that nothing sees it.
+
+\paragraph{A swing: replace the pointwise demand by a canonical fibre.}
+The corpus warns against the subset consumer
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap_subset}{FirstHarmonicGap.lean:104}
+because a predicate quantifying existentially over subsets
+$T\subseteq[X,2X)$ is collapse-exposed: the proved collapse
+\lean{Erdos249257.\allowbreak dtwWindowSeparatedPairs_iff_\allowbreak irrational_totient_series}{PivotAntiReconstruction.lean:1775}
+works precisely by \emph{choosing} $T=\{N,N+1\}$. That warning applies to a
+free $T$. It does not apply to a $T$ named in advance as a function of
+$(h,X,L)$, and the corpus already contains the right one:
+\[
+  T_{h,X,L}\;:=\;\mathrm{pivotFiber}(X,L,L-h,1)
+  \;=\;\{\,N\in[X,2X)\ :\ N+h+1\ \text{prime}\,\},
+\]
+a membership equality rather than a sampled surrogate
+(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:251},
+\ev{Lean}). The proposal is to prove
+\begin{equation}\label{eq:primefibre}
+  \forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
+  16(2X+h+L+2)\le 2^{L}
+  \ \wedge\
+  \sum_{N\in T_{h,X,L}}\mathrm{windowFirstCos}(h,N,L)\ \le\ \tfrac{9}{10}\,\bigl|T_{h,X,L}\bigr| ,
+\end{equation}
+which by the landed subset consumer yields a certificate at some
+$N\ge X\ge X_0$, hence irrationality. \ev{Open}
+
+Three features make this the sharpest available target. (i) On this fibre the
+cofactor is $m=1$, so the pivot coefficient is $(2^{h}-1)\varphi(1)=2^{h}-1$,
+which is \emph{odd}, so the $2$-adic triviality described above cannot occur.
+(ii) The pivot modulus is
+$2^{h+1}$, \emph{fixed} once $h$ is fixed, so the fibre-mean term is governed
+by the prime number theorem in progressions to a fixed power of two, where
+the Ramanujan main term $c_{2^{h+1}}(2^{h}-1)=\mu(2^{h+1})=0$ vanishes for
+every $h\ge1$ and the error term is effective; the fixed-$s$ deep-modulus
+obstruction does not apply to this separately defined canonical fibre.
+(iii) The bookkeeping budgets of \S\ref{sub:pivot} disappear:
+inside $T$ there are no non-suppliers and no bad cofactors. What remains is
+exactly one estimate --- decorrelation of the fixed phase
+$e\bigl((2^{h}-1)(p-1)/2^{h+1}\bigr)$ from the residual totient weight --- and
+it is the same estimate isolated at the end of \S\ref{sub:pivot}. This does
+not make that estimate easier. It removes everything that is not that
+estimate.
+
+\begin{rem}
+Honesty about \eqref{eq:primefibre}: it is not proved to be strictly stronger
+than irrationality, and no collapse is proved either. What can be said is
+that the one collapse mechanism that exists in this lane consumes the freedom
+to choose the sample, and \eqref{eq:primefibre} has no such freedom. Deciding
+this either way --- exhibiting a collapse, or a witness in the coefficient
+class of Theorem~\ref{thm:lacunary} that separates it from irrationality ---
+is itself a well-defined finite piece of work.
+\end{rem}
+
+\subsection{Route 4: depth-locked full-depth escape}
+
+\paragraph{The exact statement needed.}
+\[
+  \mathrm{ApFullDepthEscape} :\equiv
+  \forall d\ge 1\ \forall N\ \exists t\ge 1:\ \mathrm{certifiedKill}(td,\,N,\,td),
+\]
+unpacked, $(N+2td+2:\Z)<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)$.
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:162},
+consumer
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:171},
+ambient equivalence
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}
+\quad \ev{Open} \quad \scale{cofinal}. It is the shortest fully stated open
+inequality the programme has produced.
+
+\paragraph{What it says: an anti-self-similarity statement about the digits
+of $S$ alone.}
+Writing $h=td$ and using
+$D(h,N,L)/2^{L}=(R_{N+h}-R_N)-(R_{N+L+h}-R_{N+L})/2^{L}$ at $L=h$, together
+with the landed strip $|R_{M+h}-R_M|<M+h+2$
+(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak abs_tail_\allowbreak diff_lt}{CarrySurvivorExtinction.lean:79},
+\ev{Lean}), applied at $M=N+h$, one gets:
+
+\begin{prop}\label{prop:route4}
+$\mathrm{certifiedKill}(h,N,h)$ holds whenever
+$\bigl\|2^{N+h}S-2^{N}S\bigr\|_{\R/\Z}>2(N+2h+2)/2^{h}$.
+\end{prop}
+
+\begin{proof}
+$\|D(h,N,h)/2^{h}\|\ge\|R_{N+h}-R_N\|-|R_{N+2h}-R_{N+h}|/2^{h}
+ >2(N+2h+2)/2^{h}-(N+2h+2)/2^{h}=(N+2h+2)/2^{h}$, and
+$R_{N+h}-R_N\equiv 2^{N}(2^{h}-1)S=2^{N+h}S-2^{N}S\pmod 1$ by
+Lemma~\ref{lem:orbit}. A residue at distance more than $(N+2h+2)/2^{h}$ from
+$\Z$ is exactly a certified kill at depth $h$.
+\end{proof}
+
+\noindent
+\ev{Math}. So Route 4 asks: \emph{for every ray $d$ and every basepoint $N$,
+some multiple $h=td$ is such that the tail of the binary expansion of $S$
+beginning at position $N+1$ and the tail beginning at position $N+h+1$, read
+as reals in $[0,1)$, are more than $2(N+2h+2)/2^{h}$ apart in $\R/\Z$.} Two
+things follow. First, unlike Routes 1--3, this involves only $S$ itself, not
+the multiples $\alpha_h$. Second, the required precision grows only like
+$\log_2(N+2h)$ while the available depth grows linearly in $t$: the demand
+weakens rapidly along each ray.
+
+\paragraph{Which technique family fits, and why it is unavailable.}
+A statement that a sequence does not almost repeat at some multiple of every
+gap, to logarithmic precision, is a \emph{subword-complexity} statement, and
+the mature technology for such statements about a specific real number is the
+Adamczewski--Bugeaud method: the Schmidt subspace theorem applied to the
+$b$-ary expansion, which shows that an algebraic irrational cannot have too
+many long repetitions \ev{Cited}. The shape fits exactly. The hypothesis does
+not: the method conditions on algebraicity, and $S$ is not known to be
+algebraic --- indeed it is not known to be irrational, which is the whole
+problem. There is no version of the method that runs from an analytic
+description of the constant. That is the entire obstruction, and it is worth
+stating plainly because it explains why Route 4 looks so much easier than it
+is: the required combinatorial property is weak, but the only machine that
+produces such properties needs an input we do not have.
+
+\paragraph{What the data says.}
+At $N=300$, the least $t$ with $\mathrm{certifiedKill}(td,300,td)$ exists
+and is small for every ray $d\le 24$: $t=10$ for $d=1$, $t=5$ for $d=2$,
+$t=4$ for $d=3$, $t=3$ for $d=4$, $t=2$ for $5\le d\le 9$, and $t=1$ for
+$10\le d\le 24$ --- in every case at or near the first depth admitted by the
+room floor. The residues are not marginal: $r/2^{h}=0.3594$ at $d=1$,
+$0.5977$ at $d=3$, $0.6853$ at $d=7$, $0.2620$ at $d=17$, $0.5887$ at
+$d=23$, against edge radii $3.1\cdot10^{-1}$, $8.0\cdot10^{-2}$,
+$2.0\cdot10^{-2}$, $2.6\cdot10^{-3}$, $4.1\cdot10^{-5}$ \ev{Cert}. This is a
+floor, not a trend, exactly as barrier B1 requires; it decides nothing.
+
+\paragraph{A heuristic size computation.}
+Under a uniform model for $\|2^{N}(2^{h}-1)S\|$ the failure probability at
+depth $h=td$ is $\approx 4(N+2h+2)/2^{h}$, which is $\approx 1$ at the first
+admissible $t$ and falls by a factor $2^{d}$ at each subsequent $t$. The
+probability that a given $(d,N)$ fails at every $t$ is therefore a product
+$\prod_{j\ge0}\min(1,\,c\,2^{-jd})$, super-exponentially small, and the
+expected number of failing pairs $(d,N)$ over all $N$ converges. At $d=1$,
+$N=300$ the product evaluates to about $10^{-5}$, and the observed value is a
+success at the very first admissible depth. The model therefore predicts
+Route 4 holds with enormous margin --- which is precisely why no finite
+computation will ever be evidence for it. \ev{Open} (heuristic).
+
+\subsection{Route 5: the rationality-side rank bound remains open}
+
+\paragraph{The exact statement that was wanted.}
+\[
+  \exists C\ \forall c:\N\to\N\ \bigl(c(n)\le n,\ \neg\,\mathrm{Irrational}(X_c)\bigr)
+  \ \forall v>0\ \forall u\ \mathrm{IsTemperedBinaryOrbit}(c,v,u)\ \forall e:\quad
+  \operatorname{rk}_e(u)\le C ,
+\]
+where $X_c=\sum_{n\ge1}c(n)/2^{n}$ and $\operatorname{rk}_e(u)$ is the
+dimension of the span of the dyadic sections of $u$ through level $e$.
+A suitable subexponential upper bound would also contradict the landed
+$\varphi$-specific floor
+\lean{Erdos249257.\allowbreak not_irrational_totientSeries_\allowbreak implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:284}
+\quad \ev{Lean}.  No such rationality-side upper bound is proved.
+
+\paragraph{The right vocabulary, and the audited gap.}
+Finite-dimensional span of all dyadic sections is the definition of a
+$2$-regular sequence in the sense of Allouche and Shallit \ev{Cited}.  The
+unconditional theorem
+\lean{Erdos249257.\allowbreak not_finiteDimensional_\allowbreak span_fullTotientKernel}{TotientMahlerDefect.lean:1014}
+says that $\varphi$ is not $2$-regular.  An attempted generic counterexample
+chose a coefficient sequence $c(n)\le n$ with rational binary series and
+non-$2$-regular dyadic kernel.  Those facts do not refute the desired bound
+for its carry orbit.
+
+The generic recurrence
+\[
+  v\,c(N+1)=2u(N)-u(N+1)
+\]
+does express each \emph{positive-residue} level-$j$ section of $c$ as a
+linear combination of two level-$j$ sections of $u$.  It does not control the
+zero-residue section at each level.  Across levels $1,\ldots,e$ those omitted
+sections can contribute up to $e$ new directions, not a fixed $O(1)$ error.
+Consequently non-$2$-regularity of $c$ alone does not imply unbounded
+$\operatorname{rk}_e(u)$, and the previously claimed bound
+$\operatorname{rk}_e(u)\ge2^{e-1}-3$ has no valid proof here.  The proposed
+greedy set construction therefore supplies neither a counterexample nor a
+reason to retire the route. \ev{Gap} \scale{uniform}
+\coord{other:carry-kernel}.
+
+The Lean theorem for $\varphi$ remains valid: it uses the special structure
+and independently proved linear independence of the totient kernel, not the
+invalid generic $O(1)$ bridge.  The honest status is thus asymmetric.  The
+large $\varphi$-specific rank floor is proved; a rationality-driven ceiling is
+open; and the generic countermodel attempt is inconclusive.
+
+\subsection{What the shape of the wall suggests about the object}\label{sub:shape}
+
+Everything in this subsection is inference from the assembled evidence, not
+theorem. It is written because the assembly makes one inference available
+that no individual reformulation does, and because refusing to draw it would
+be a different kind of dishonesty than drawing it carelessly.
+
+\paragraph{First, a fact rather than an inference: the routes are one route
+in five coordinates.}
+Lemma~\ref{lem:orbit} collapses the coordinate spread that made the corpus
+look like many independent attacks.
+
+\begin{center}
+\begin{tabular}{p{0.16\linewidth} p{0.44\linewidth} p{0.32\linewidth}}
+\hline
+Route & What it asks of the binary expansion & Positions interrogated \\
+\hline
+1, 2 & at least $11\%$ of positions carry a digit change; mean run length
+$\le 9.1$ in one block per scale & a full dyadic block of $\alpha_h$ \\
+3 & one run of length $\le 3$ & positions $p-h$, $p$ prime, in $\alpha_h$ \\
+4 & the tails at gap $h$ differ by more than $2(N+2h+2)2^{-h}$ & every
+basepoint, some multiple of every ray, in $S$ \\
+5 & an open rationality-side upper bound on the carry-orbit kernel rank &
+all dyadic sections through level $e$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+This is the honest content of the operator's ``hundred measurements of one
+wall''. The measurements are of one thing, and the thing is the binary digit
+sequence of $S$ and of its multiples $(2^{h}-1)S$. The routes differ in which
+positions they interrogate and how uniform a margin they demand; they do not
+differ in subject.
+
+\paragraph{Second: the wall is a wall about explicit constants, not about
+$\varphi$.}
+Of the seven barriers, six --- B1, B2, B3, B5, B6, B7 --- are statements that
+a class of proof cannot see the digits: bounded inspection, retargeting,
+strengthening, bounded state, finite linear compression, coarse invariants.
+None asserts that the digits misbehave. Only B4 is internal to the object,
+and even B4 says that one engineering scheme self-cancels, not that the
+quantity being engineered is unattainable. Meanwhile the two object-level
+witnesses the corpus can produce --- the $\gamma$-splice of B1, the parity
+coboundary of B7 --- and the one produced here
+(Theorem~\ref{thm:lacunary}) are all lacunary or eventually periodic:
+constructed, measure-zero, and highly structured. In two centuries nobody has
+exhibited a naturally occurring constant with Liouville-type digit behaviour;
+every known example is built to have it. So the shape of the barrier set
+points at our technology, not at $S$.
+
+\paragraph{Third: is the object behind the measurements simple or complex?}
+The evidence available leans one way, and I will say how far it leans.
+
+\emph{For ``generic, and the difficulty is entirely ours''.} (a) Every
+statistic measurable is indistinguishable from a fair-coin digit model:
+$\rho_h(X)\approx0.50$ against a required $0.11$; mean run length
+$1.96$--$2.03$ against a permitted $9.1$; longest run $12$--$14$ over $5800$
+positions against a model prediction of $\approx12.5$; block sums of order
+$X^{-1/2}$ against a permitted $0.89$ (Table~\ref{tab:blocks}, \ev{Cert}). (b) The
+requirements are weaker than the apparent truth by a factor $\sqrt X$; a
+proof does not need to understand the digits, only to exclude a pathology.
+(c) All countermodels are constructed lacunary objects. (d) The one
+coordinate in which $S$ has classical structure --- the M\"obius--Mersenne
+form \eqref{eq:mobmers} --- is an alternating sum of rational functions of
+$2^{d}$ with no functional equation, no modularity, no continued-fraction
+structure, and no algebraicity: there is no hidden object to find, which is
+consistent with genericity.
+
+\emph{Against, or at least complicating.} (a) B4's self-cancellation is
+exact, unconditional, and holds at every depth $K$: the cost of forcing a
+depth-$K$ residue by a Dirichlet prime is $p\ge1+2^{K-1}$ while the payoff is
+amplitude $2^{K-1}$, so the trade is precisely null. An exact null of that
+form is a structural fact and not an accident of parametrisation, and it is
+the one place where the object itself pushes back. (b) The exact census
+records residues approaching the forbidden edge --- a closest central margin
+of about $2.2\cdot10^{-4}$ of the modulus at $t=100$ --- which is what a
+uniform model predicts and which rules out, permanently, any argument that
+proceeds by a crude uniform margin. (c) Proposition~\ref{prop:dickman} shows
+that even the pieces of the frontier that are provable become true only past
+$X\approx10^{30}$--$10^{40}$; a genuinely simple object would not usually
+require asymptotics that begin so late.
+
+\emph{Verdict, flagged as inference.} The evidence supports ``the digits of
+$S$ are generic and the wall is technological'' over ``the object is
+subtle'', but it does not determine it, and the reason it cannot is
+structural: every test performed is a test a generic object passes, so
+passing them is weak evidence, and the only tests that would discriminate are
+exactly the ones no technique can run. What the evidence \emph{does} determine
+is narrower and firmer: the difficulty of \#249 is not located in $\varphi$'s
+irregularity --- $\varphi$ is the smoothest interesting multiplicative
+function, with multiplicative fluctuation $\log\log Y$ where $d(n)$ has
+$Y^{c/\log\log Y}$ --- but in the fact that we possess no method whatsoever
+for lower-bounding digit changes of a constant that was not designed to have
+them. That is why the Erd\H{o}s--Borwein constant fell in 1948 and this one
+has not: $d(n)$ has spikes to deposit into the digit stream and $\varphi(n)$
+does not, and in the M\"obius coordinate the signs cancel.
+
+\paragraph{What would actually change the picture.}
+One theorem, of any strength, giving a nontrivial digit statistic for $S$ or
+for some $\alpha_h$: an upper bound $o(N)$ on the longest binary run in the
+first $N$ positions would not by itself decide \#249, but it would be the
+first evidence that the object is legible at all, and by
+Corollary~\ref{cor:digitform} any bound strong enough to give a positive
+proportion of digit changes in one block per scale would decide it. Failing
+that, the two concrete openings identified above are: the logarithmically
+averaged form of the block gap, where the entropy-decrement method is at
+least in the right regime (\S\ref{sub:pivot}); and the canonical prime fibre
+\eqref{eq:primefibre}, where every budget except one decorrelation estimate
+has been discharged. Neither is close. Both are well posed, and both can be
+started on today.

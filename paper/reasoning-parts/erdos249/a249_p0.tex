@@ -1,0 +1,452 @@
+\section{The object, the target, and the exact record}
+
+This part fixes the object of Erd\H{o}s Problem \#249, states exactly what is
+open about it, and records every unconditional numeral, identity and
+Lean-checked bound the corpus currently holds. Nothing in this part decides
+irrationality. Every result below is either an identity (no hypothesis, holds
+unconditionally), a finite computation (holds up to an explicitly stated
+bound), or is flagged \ev{Cited}/\ev{Open} where that is the honest status.
+
+\subsection{The object}
+
+\begin{defn}[The Erd\H{o}s--249 constant]
+\label{defn:S}
+Let $\varphi$ denote Euler's totient function. Define
+\[
+S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}} \;=\; \sum_{n : \mathbb{N}} \frac{\varphi(n)}{2^{n}},
+\]
+the two forms coinciding because $\varphi(0)=0$; the second, $\mathbb{N}$-indexed
+form is the one carried in the Lean source. The series converges absolutely
+since $\varphi(n) = O(n)$. \emph{Erd\H{o}s \#249 asks whether $S$ is irrational.
+This is OPEN.} Nothing in this paper decides it; every claim below is either an
+unconditional identity, a finite computation with an explicitly stated range,
+or is marked \ev{Cited}/\ev{Open}.
+\end{defn}
+
+\begin{rem}[Status]
+No proof or disproof of $\mathrm{Irrational}(S)$ exists anywhere in the corpus,
+formal or informal. What exists is: one large unconditional finite denominator
+exclusion (\S\ref{ssec:farey}), several exact reformulations of $S$ that
+relocate the same open question onto different coordinates without touching
+its truth value (\S\ref{ssec:coprime}--\S\ref{ssec:lambert}), and a certificate
+apparatus whose cofinal supply obligation is the precise open target
+(recorded in full in Part~1 of this paper; only its finite, checked instances
+are catalogued here, \S\ref{ssec:certtable}).
+\end{rem}
+
+\subsection{The binary-digit reduction}
+
+\begin{prop}[Digit-shift identity]
+\label{prop:shift}
+For every $N : \mathbb{N}$,
+\[
+2^{N} \cdot S \;=\; \Phi_N + R_N,
+\]
+where $\Phi_N := \sum_{n \le N} \varphi(n) \cdot 2^{N-n} \in \mathbb{N}$ (the
+integer prefix) and $R_N := \sum_{j \ge 0} \varphi(N+1+j)/2^{j+1}$ (the
+fractional tail, \texttt{totientTail} in Lean).
+\coord{binary-digit} \scale{uniform} \ev{Lean}
+\lean{two_pow_mul_totient_series_eq}{TotientTailPeriodKiller.lean:150}
+\end{prop}
+
+\begin{proof}[Consequence]
+Rationality and eventual periodicity of the base-2 expansion of $S$ is
+\emph{exactly} a statement about the tail $R_N$: $S \in \mathbb{Q}$ forces
+(by Euler's theorem applied to the odd part of the denominator) a period
+$h>0$ and pre-period $N_0$ with $R_{N+h}-R_N \in \mathbb{Z}$ for all
+$N \ge N_0$ (\texttt{eventual_period_of_not_irrational},
+\lean{eventual_period_of_not_irrational}{TotientTailPeriodKiller.lean:358},
+\ev{Lean}, explicit witness $h=\varphi(\mathrm{oddPart}(r.\mathrm{den}))$,
+$N_0=v_2(r.\mathrm{den})$). Nothing in the corpus supplies the converse
+cofinally; this is the certificate wall documented in full in Part~1 and is
+not restated here beyond this pointer.
+\end{proof}
+
+\subsection{The unconditional denominator floor}
+\label{ssec:farey}
+
+The strongest \emph{unconditional} fact the corpus holds about $S$ is a lower
+bound on its denominator should it happen to be rational. It is obtained by a
+completely elementary Farey/mediant argument, entirely free of any certificate
+or period apparatus, and is therefore logically independent of the open
+certificate-supply obligation.
+
+\begin{lem}[Farey gap, fully general]
+\label{lem:farey}
+For integers $a,b,c,d,r,s$ with $b>0$, $d>0$, $bc-ad=1$ (i.e.\ $a/b$ and
+$c/d$ are unimodular Farey neighbours), and $as < rb$, $rd < cs$ (i.e.\ $r/s$
+lies strictly between them): $b+d \le s$.
+\coord{farey} \scale{n/a} \ev{Lean}
+\lean{farey_gap}{GapFareyBound.lean:51}
+\end{lem}
+
+This lemma is a classical Stern--Brocot fact with zero totient or Mersenne
+content; it is the generic engine underneath every Farey-gap bound in the
+corpus, for either open problem.
+
+\begin{prop}[The wave-17 gap certificate at window $K=240$]
+\label{prop:gapwindow}
+Let $V$ be the explicit committed totient residue for window $(N,K)=(1,240)$.
+For every $q : \mathbb{N}$ with
+\[
+0 < q \;\le\; Q_0 := 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053 \;\;(\approx 7.96\times 10^{34}),
+\]
+\[
+(q \cdot V) \bmod 2^{240} \;+\; 243\,q \;<\; 2^{240}.
+\]
+This bound is \emph{sharp}: $q = Q_0+1 = 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,054$
+is the exact first failing denominator, exhibited as the mediant of two
+explicit unimodular Farey neighbours.
+\coord{farey} \scale{bounded} \ev{Lean}
+\lean{gap_check_window_1_240_le_79639646646701375323355774875831053}{GapFareyBound.lean:176}
+\lean{gap_check_window_1_240_first_failure}{GapFareyBound.lean:225}
+\end{prop}
+
+\begin{thm}[Erd\H{o}s \#249 denominator exclusion --- the headline unconditional result]
+\label{thm:denom-record}
+For every $p \in \mathbb{Q}$ with reduced denominator $p.\mathrm{den} \le Q_0$,
+\[
+S \;\neq\; p.
+\]
+Equivalently: \emph{if $S$ is rational, its reduced denominator exceeds}
+$Q_0 \approx 7.96 \times 10^{34}$.
+\coord{farey} \scale{bounded} \ev{Lean}
+\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18337}
+\end{thm}
+
+\begin{rem}[What this does and does not say]
+Theorem~\ref{thm:denom-record} is a complete, unconditional finite fact: no rational
+of small denominator equals $S$. It says nothing about arbitrarily large
+denominators and is not itself a route to irrationality. The docstring behind
+Proposition~\ref{prop:gapwindow} states the honest open question this leaves:
+whether $\sup_K (b+d)(K)$ (the growing analogue of $Q_0$ as the window $K$
+grows) is unbounded as $K \to \infty$ --- which would close \#249 through this
+theorem's consumer, entirely independently of the certificate-supply
+obligation of Proposition~\ref{prop:shift}. \ev{Open}; not claimed or proved
+anywhere in the corpus.
+\end{rem}
+
+\begin{rem}[Ladder of prior rungs]
+$Q_0$ is the current end of an explicit sequence of increasingly wide Farey
+windows computed by the same mechanism: $4838 \to 2^{22} \to 2.49\times10^{17}$
+(window $K=120$) $\to Q_0$ (window $K=240$). Each rung is a finite,
+independently checked instance of Lemma~\ref{lem:farey} and
+Proposition~\ref{prop:gapwindow}'s pattern at a larger $K$; none is claimed to
+extrapolate.
+\end{rem}
+
+\subsection{The same record, transported: the M\"obius-square and coprimality-probability forms}
+\label{ssec:coprime}
+
+The exact finite Farey record behind Theorem~\ref{thm:denom-record} is not tied to
+the $\varphi(n)/2^n$ presentation of $S$; it transfers verbatim to two other
+exact reformulations of the same constant, at exactly half the bound.
+
+\begin{prop}[Fair-coin coprimality form]
+\label{prop:coprime}
+Let $X,Y$ be independent random variables with $\Pr(X=n)=\Pr(Y=n)=2^{-n}$
+for $n \ge 1$ (independent fair-coin waiting times). Then
+\[
+S \;=\; \tfrac12 \;+\; \Pr\bigl(\gcd(X,Y)=1\bigr)
+\;=\; \tfrac12 \;+\; \sum_{\substack{a,b\ge 1\\ \gcd(a,b)=1}} 2^{-(a+b)}.
+\]
+Equivalently, on the visible lattice: summing $2^{-(a+b)}$ over the half-open
+coprime pairs ($a\ge1$, $b\ge0$, $\gcd(a,b)=1$) recovers $\sum_n \varphi(n)/2^n$
+exactly, with no boundary correction, because the visible-point count on the
+half-open antidiagonal at height $n$ equals $\varphi(n)$ for every $n$,
+including $n=0,1$.
+\coord{probability} \scale{n/a} \ev{Lean}
+\lean{tsum_visible_coprime_pairs_eq_totient_series}{CertificateKernel.lean:18497}
+\lean{totient_series_eq_half_add_visible_coprime_pairs}{CertificateKernel.lean:18510}
+\end{prop}
+
+\begin{prop}[The gcd-layer normalisation]
+\label{prop:gcdlayer}
+For independent fair-coin waiting times as above, $\sum_{g\ge1}\Pr(\gcd(X,Y)=g)=1$
+exactly; and for every $d>0$, $\Pr(d\mid X \wedge d\mid Y) = 1/(2^d-1)^2$.
+\coord{probability} \scale{uniform} \ev{Lean}
+\lean{tsum_pos_coprime_inv_mersenne_eq_one}{GcdMomentCalculus.lean:349}
+\lean{tsum_pos_pair_both_dvd_half_eq_inv_mersenne_sq}{GcdMomentCalculus.lean:266}
+\end{prop}
+
+\begin{thm}[Denominator exclusion for the coprimality-probability form]
+\label{thm:denomcoprime}
+Let
+\[
+Q_1 := \left\lfloor \frac{Q_0}{2} \right\rfloor = 39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526.
+\]
+For every $a\in\mathbb{Z}$, $d\in\mathbb{N}$ with $0<d\le Q_1$: the visible
+coprime-pair probability $\Pr(\gcd(X,Y)=1)$ is not equal to $a/d$.
+\coord{farey} \scale{bounded} \ev{Lean}
+\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18525}
+\end{thm}
+
+\begin{thm}[Denominator exclusion for the M\"obius-square form]
+\label{thm:denommobsq}
+With $Q_1$ as in Theorem~\ref{thm:denomcoprime}: for every $a\in\mathbb{Z}$,
+$d\in\mathbb{N}$ with $0<d\le Q_1$, the signed series
+$T := \sum_{d\ge1} \mu(d)/(2^d-1)^2 = S - \tfrac12$ (see \S\ref{ssec:mobius})
+is not equal to $a/d$.
+\coord{farey} \scale{bounded} \ev{Lean}
+\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18440}
+\end{thm}
+
+\begin{rem}[Why the bound halves, and why this is not new information]
+$Q_1 = \lfloor Q_0/2 \rfloor$ arithmetically: $Q_0$ is odd
+($Q_0 = 79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053$), so
+$Q_0/2 = 39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526.5$ and
+$Q_1$ is its floor. The halving is the cost of transporting the known bound
+through the affine shift
+$S = \tfrac12 + T$ (resp.\ $S = \tfrac12 + \Pr(\gcd(X,Y)=1)$) on a
+denominator-exclusion statement: excluding all denominators $\le Q_1$ for $T$
+follows from excluding all denominators $\le Q_0$ for $S$ (a denominator-$d$
+value of $T$ with $d\le Q_1$ yields a
+denominator dividing $2d\le Q_0$ for $S$). Theorems~\ref{thm:denomcoprime}
+and~\ref{thm:denommobsq} are therefore the \emph{same} finite Farey record as
+Theorem~\ref{thm:denom-record}, transported through Proposition~\ref{prop:coprime}
+and Proposition~\ref{prop:mobsq} respectively --- not independent evidence.
+The converse finite implication is not asserted: subtracting $1/2$ can double
+a denominator, so the $Q_1$ exclusion for $T$ alone need not recover the full
+$Q_0$ exclusion for $S$.
+\end{rem}
+
+\subsection{The M\"obius--Mersenne identity and why bounded coefficients matter}
+\label{ssec:mobius}
+
+\begin{prop}[M\"obius-square reduction]
+\label{prop:mobsq}
+\[
+S \;=\; \sum_{n\ge1}\frac{\varphi(n)}{2^n} \;=\; \frac12 \;+\; \sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2},
+\]
+where $\mu$ is the M\"obius function, so $\mu(d)\in\{-1,0,1\}$ for every $d$.
+Consequently \emph{Erd\H{o}s \#249 $\iff$ $T:=\sum_{d\ge1}\mu(d)/(2^d-1)^2 \notin \mathbb{Q}$},
+the single reduced target every other result in this subsection and
+\S\ref{ssec:lambert} feeds.
+\coord{mobius-mersenne} \scale{n/a} \ev{Lean}
+\lean{totientSeries_eq_pnat_half_pow}{SquaredMersenneDiagonalEnclosure.lean:72}
+\lean{tsum_totient_half_pow_eq_half_add_moebius_sq}{MersenneLambertLadder.lean:665}
+\end{prop}
+
+\begin{rem}[Why the bounded coefficients matter --- the Erd\H{o}s-1948 regime]
+The identity of Proposition~\ref{prop:mobsq} rewrites $S$ (equivalently $T$)
+as a \emph{M\"obius-twisted Lambert-squared series}: the numerator weight
+$\mu(d)$ is bounded, $|\mu(d)|\le1$ for every $d$, uniformly in $d$. This
+places $T$ in exactly the coefficient regime of the classical Erd\H{o}s (1948)
+near-integer irrationality criterion and of the level-1 sibling identity
+$L(\mu):=\sum_d \mu(d)/(2^d-1) = \tfrac12$ (rational, trivially) alongside
+$L(1) = \sum_d 1/(2^d-1) = E$, the Erd\H{o}s--Borwein constant, which
+\emph{is} proved irrational in this same kernel
+(\lean{irrational_erdosBorwein_series}{CertificateKernel.lean:8288}, \ev{Lean}).
+This is the opposite regime from Proposition~\ref{prop:shift}'s
+\textbf{binary-digit coordinate}, where the corresponding weight satisfies
+$0\le\varphi(n)\le n$ and is unbounded.  The function $\varphi$ has average
+order $6n/\pi^2$, equivalently
+$\sum_{k\le x}\varphi(k)\sim 3x^2/\pi^2$, but there is no pointwise estimate
+$\varphi(n)=\Theta(n)$. A
+near-integer/Dirichlet-approximation argument of Erd\H{o}s-1948 shape
+(formalised generically as
+\lean{irrational_of_int_mul_near_int}{CertificateKernel.lean:6073} and its
+base-power specialisation
+\lean{irrational_of_pow_mul_near_int}{CertificateKernel.lean:6102}, both
+\ev{Lean}, \coord{n/a}, fully coordinate-free) has a genuine chance of
+transferring to $T$ precisely because its weight is bounded, in a way it does
+not have a chance of transferring directly to the raw $\varphi(n)/2^n$ series.
+No such transfer is proved; \S\ref{ssec:mobius} below (cross-referenced
+here, developed in Part~2 of this paper) records exactly why the transfer has
+so far failed (the ``$\mu$-pollution'' obstruction) rather than merely
+asserting the analogy.
+\end{rem}
+
+\subsection{The squared-Lambert gcd-moment identities}
+\label{ssec:lambert}
+
+\begin{prop}[Squared-Lambert transfer engine]
+\label{prop:lambertengine}
+For $w:\mathbb{N}\to\mathbb{R}$ with $|w(d)|\le d$ for all $d>0$, and $0\le r<1$:
+\[
+\sum_{d\ge1} w(d)\left(\frac{r^d}{1-r^d}\right)^2 \;=\; \sum_{n\ge1}\left(\sum_{e\mid n} w(e)\Bigl(\tfrac{n}{e}-1\Bigr)\right) r^n.
+\]
+\coord{mobius-mersenne} \scale{uniform} \ev{Lean}
+\lean{tsum_lambert_linear_weight_sq_pure}{GcdMomentCalculus.lean:105}
+\end{prop}
+
+This one identity, at $r=1/2$, specialises to every squared-Lambert rung the
+corpus computes; two instances are exact and directly relevant to \#249's
+weight structure:
+
+\begin{prop}[The known $\zeta_q$-rung]
+\label{prop:zetaq}
+\[
+\sum_{d\ge1} \frac{1}{(2^d-1)^2} \;=\; \sum_{n\ge1} \frac{\sigma(n)-\tau(n)}{2^n} \;=\; \zeta_q(2)-\zeta_q(1) \text{ at } q=\tfrac12,
+\]
+where $\sigma$ is the sum-of-divisors function and $\tau$ the number-of-divisors
+function. The \emph{identity} is machine-checked (\ev{Lean}); irrationality of
+the \emph{value} $\zeta_q(2)-\zeta_q(1)$ is \ev{Cited} (Postelmans--Van Assche
+$q$-Pad\'e), \emph{not} formalised in this corpus.
+\coord{mobius-mersenne} \scale{n/a}
+\lean{tsum_one_div_mersenne_sq_eq_sigma_sub_tau_series}{GcdMomentCalculus.lean:216}
+\end{prop}
+
+\begin{prop}[The Pillai/gcd-moment rung]
+\label{prop:pillai}
+\[
+\sum_{d\ge1} \frac{\varphi(d)}{(2^d-1)^2} \;=\; \sum_{n\ge1} \bigl(P(n)-n\bigr)\cdot 2^{-n} \;=\; \mathbb{E}[\gcd(X,Y)],
+\]
+where $P(n) := \sum_{e\mid n}\varphi(e)\cdot(n/e) = (\varphi * \mathrm{Id})(n)$
+is Pillai's gcd-sum function and $X,Y$ are the independent fair-coin waiting
+times of Proposition~\ref{prop:coprime}. The identity itself is
+machine-checked (\ev{Lean}); the value $\mathbb{E}[\gcd(X,Y)]$ is \ev{Open} ---
+a cousin rung to \#249, not \#249 itself.
+\coord{mobius-mersenne} \scale{n/a}
+\lean{tsum_totient_div_mersenne_sq_eq_gcd_moment_series}{GcdMomentCalculus.lean:235}
+\end{prop}
+
+\begin{rem}[The level mirror]
+Writing $L(f):=\sum_d f(d)/(2^d-1)$ (level 1) and $L_2(f):=\sum_d f(d)/(2^d-1)^2$
+(level 2): $L(\mu)=\tfrac12$ (rational, trivial), $L(1)=E$ (Erd\H{o}s--Borwein,
+irrational, \ev{Lean}), $L(\varphi)=2$ (rational); $L_2(\mu)=S-\tfrac12$
+(\ev{Open}, this is \#249), $L_2(1)=\zeta_q(2)-\zeta_q(1)$ (\ev{Cited}
+irrational, Proposition~\ref{prop:zetaq}), $L_2(\varphi)=\mathbb{E}[\gcd(X,Y)]$
+(\ev{Open}, Proposition~\ref{prop:pillai}). At level 1 the M\"obius rung is
+trivial and the $\zeta$-rung is the hard classical case; at level 2 the
+$\zeta$-rung is known and the M\"obius rung \emph{is} \#249. M\"obius
+projection is the one wall repeated at both levels of the ladder.
+\end{rem}
+
+\subsection{The exact certificate record: the contiguous band through $t\le82$}
+\label{ssec:certtable}
+
+The certificate apparatus itself (the predicate \texttt{certifiedKill}, its
+soundness/completeness theorems, and the cofinal supply obligation that is the
+actual open target) is developed in full in Part~1 of this paper. What is
+recorded here is a representative historical set of machine-checked anchors,
+together with the current aggregate theorem closing every scale $t\le82$.
+The declaration inventory, rather than this table, is authoritative for all
+individual certificate shards; no extrapolation beyond the stated band is
+implied.
+
+\paragraph{Certificate object.} For $h,N,L : \mathbb{N}$, define the window
+discrepancy $\Delta_{h,N,L} := \sum_{j<L} (\varphi(N+h+1+j)-\varphi(N+1+j))\cdot 2^{L-1-j} \in \mathbb{Z}$
+(\lean{windowDiscrepancy}{TotientTailPeriodKiller.lean:66}, \ev{Lean}), and
+\[
+\mathrm{Sep}(h,N,L) \;:\equiv\; (N+h+L+2) < \Delta_{h,N,L} \bmod 2^{L} < 2^{L}-(N+h+L+2),
+\]
+(\lean{certifiedKill}{TotientTailPeriodKiller.lean:72}, \ev{Lean}, decidable). By
+completeness (\lean{exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316},
+\ev{Lean}), $(\exists L,\ \mathrm{Sep}(h,N,L)) \iff R_{N+h}-R_N \notin \mathbb{Z}$
+for every $h,N$: an unbounded (cofinal, over $h$ and $N$) supply of
+$\mathrm{Sep}$ is exactly equivalent to $\mathrm{Irrational}(S)$. The table
+below records the principal $(h,N,L)$-shaped and $t$-shaped anchors; none of
+them is cofinal, and none is presented as deciding \#249.
+
+\small
+\begin{longtable}{p{0.20\linewidth} p{0.40\linewidth} p{0.13\linewidth} p{0.20\linewidth}}
+\textbf{Anchor} & \textbf{Exact statement of what was checked} & \textbf{Scale} & \textbf{Site} \\
+\hline
+\endhead
+Fixed-window deposit, depth 16
+&
+$\mathrm{Sep}(h,12,16)$ holds for every $h \in \{1,\dots,8\}$ (by \texttt{decide},
+$256$ totient values below $37$); consequently $S \ne r$ for every
+$r\in\mathbb{Q}$ with $1\le h\le 8$ and $r.\mathrm{den} \mid 2^{12}(2^h-1)$.
+&
+\scale{fixed}
+&
+\lean{certifiedKill_all_small}{TotientTailPeriodKiller.lean:404}
+\lean{totient_series_ne_rat_of_den_dvd}{TotientTailPeriodKiller.lean:416}
+\\
+Fixed-window deposit, depth 9, wider net
+&
+$\mathrm{Sep}(h,14,9)$ holds for every
+$h\in\{1,\dots,16\}$: $S \ne r$ for every $r\in\mathbb{Q}$ with $1\le h\le16$
+and $r.\mathrm{den}\mid 2^{14}(2^h-1)$.
+&
+\scale{fixed}
+&
+\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:18843}
+\\
+Diagonal-pincer certificates, base 12 scales
+&
+$\mathrm{Sep}\bigl(H_t, H_t, D(t)\bigr)$, $H_t := \mathrm{lcm}(1,\dots,t)$,
+holds (by explicit \texttt{decide}/\texttt{norm_num} on checked
+\texttt{Nat.totient} values, via factored prime-power blocks with
+Lucas-primality certificates) for $t \in \{1,2,3,4,5,7,8,9,11,13,16,17\}$
+with certificate depths $D(t) \in \{6,5,7,7,9,14,15,14,21,22,23,26\}$
+respectively (in the same order).
+&
+\scale{fixed}
+&
+\lean{certifiedKill_diagonal_all_imported}{DiagonalPincerCertificates.lean:2860}
+\lean{diagonalPincerCertificateScales}{DiagonalPincerCertificates.lean:2842}
+\lean{diagonalPincerKillDepth}{DiagonalPincerCertificates.lean:2844}
+\\
+Diagonal-pincer certificates, extended scales through $t=64$
+&
+The same predicate $\mathrm{Sep}(H_t,H_t,D(t))$ is additionally checked, one
+sibling module per scale, at
+$t \in \{19,\allowbreak23,\allowbreak25,\allowbreak27,\allowbreak29,\allowbreak31,
+\allowbreak32,\allowbreak37,\allowbreak41,\allowbreak43,\allowbreak47,\allowbreak49,
+\allowbreak53,\allowbreak59,\allowbreak61,\allowbreak64\}$
+(16 further explicit values). Together with the base 12 scales above this is
+\textbf{28 explicit values of $t$ in total}, the complete list being
+$\{1,\allowbreak2,\allowbreak3,\allowbreak4,\allowbreak5,\allowbreak7,
+\allowbreak8,\allowbreak9,\allowbreak11,\allowbreak13,\allowbreak16,\allowbreak17,
+\allowbreak19,\allowbreak23,\allowbreak25,\allowbreak27,\allowbreak29,\allowbreak31,
+\allowbreak32,\allowbreak37,\allowbreak41,\allowbreak43,\allowbreak47,\allowbreak49,
+\allowbreak53,\allowbreak59,\allowbreak61,\allowbreak64\}$.
+This does \emph{not} establish $\mathrm{Sep}(H_t,H_t,\cdot)$ for infinitely
+many $t$; these 28 deposits are a historical strict subset of the contiguous
+band in the next row.
+&
+\scale{fixed}
+&
+Per-scale Lean modules; endpoint
+\lean{certifiedKill_diagonal_t64}{DiagonalPincerCertificateT64Endpoint.lean:1928}
+\\
+Contiguous lcm-diagonal band through $t\le82$
+&
+For every natural $t\le82$ there exists a depth $L$ with
+$\mathrm{Sep}(H_t,H_t,L)$.  This closes every scale in the finite interval,
+including plateau transfers, with no holes.  The next lcm jump is at the prime
+$83$; no certificate at $t=83$ is claimed, and any such certificate must have
+depth at least $125$.
+&
+\scale{bounded}
+&
+\lean{ErdosProblems.Skip.LadderT67.exists_diagonalKill_le_82}{ErdosProblems/Skip/LadderT67.lean:71264}
+\lean{ErdosProblems.Skip.LadderT67.t83_depth_floor}{ErdosProblems/Skip/LadderT67.lean:71294}
+\\
+Farey denominator floor
+&
+Every $q\in\mathbb{N}$ with $0<q\le Q_0=79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053$
+satisfies the window-$(N,K)=(1,240)$ gap certificate; $q=Q_0+1$ is the exact
+first failure.
+&
+\scale{bounded}
+&
+\lean{gap_check_window_1_240_le_79639646646701375323355774875831053}{GapFareyBound.lean:176}
+\\
+Coprimality-probability / M\"obius-square Farey floor
+&
+Every $d\in\mathbb{N}$ with $0<d\le Q_1=39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526$
+(exactly $\lfloor Q_0/2\rfloor$) is excluded as a denominator of
+$\Pr(\gcd(X,Y)=1)$ and, separately, of $T=\sum_d\mu(d)/(2^d-1)^2$.
+&
+\scale{bounded}
+&
+\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18525}
+\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18440}
+\\
+\end{longtable}
+\normalsize
+
+\begin{rem}[What this table is not]
+No row above is cofinal in its indexing parameter ($h$, $t$, or the
+denominator bound), and no row is claimed to extrapolate. The historical
+diagonal-pincer depths are irregular and nonmonotone
+($6,5,7,7,9,14,15,14,21,22,23,26,\dots$); no closed-form growth rate for
+$D(t)$ is proved or conjectured in the corpus. This table records the
+historical 28-scale bank through $t=64$; the later aggregate theorem for every
+$t\le82$ is stated above and is not itemised row by row here.  Neither bounded
+record supplies the cofinal obligation developed in Part~1.
+\end{rem}

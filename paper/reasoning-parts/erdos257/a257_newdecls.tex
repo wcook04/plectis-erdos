@@ -1,0 +1,280 @@
+\subsection{Recently published declarations}
+
+The modules surveyed above were read at an earlier snapshot. Four already-public modules have
+since grown by union merge, and one wholly new problem-centric tree,
+\texttt{ErdosProblems/Erdos257/}, has been published alongside the legacy \texttt{Erdos249257}
+namespace. This subsection catalogues only the declarations the earlier parts do not cite. None
+of it decides O1--O5 above; it fills in machinery that those targets' own producer chains were
+stated abstractly against.
+
+\subsubsection{The middle-cell update-step chain (\texttt{HalfCylinderMiddleCarryLowerBound.lean})}
+
+The O5 discussion above states \texttt{SeamTwoSidedDyadicCellEscape} and
+\texttt{SeamUpperResetDyadicBandEscape} as named hypotheses without exposing the per-row update
+machinery that actually produces and consumes them. That machinery is present in the live file.
+
+\begin{prop}[The unsafe middle range is exactly three integers]
+For $s\ge5$, writing $R=(\text{seamAdjacentCut } s\ hs).\mathrm{remainder}$ and
+$P=(\ldots).\mathrm{belowPulse}$,
+\[
+\neg(4R-P-4\le-4\ \vee\ 0\le 4R-P-4)\ \Longleftrightarrow\ 4R-P-4\in\{-3,-2,-1\}
+\]
+\end{prop}
+(\lean{seamMiddleCoordinate\_not\_safe\_iff\_three\_cells}{HalfCylinderMiddleCarryLowerBound.lean:4125},
+\ev{Lean}, \scale{uniform}, \coord{mobius-mersenne}, proved by \texttt{omega} from the integer
+definitions). This is the exact unconditional source of the "three integer values" language used
+above for O5; it was previously asserted in prose only.
+
+Two companion bounds pin the scaled rational residual inside a genuine middle transition:
+$4\cdot\mathtt{seamGreedyFloorZ}\,s\le c$ from a cell label $4R=P+c$
+(\lean{seamMiddleCell\_four\_mul\_floorZ\_le}{HalfCylinderMiddleCarryLowerBound.lean:4142}, \ev{Lean}),
+and, combining it with the successor floor-$Z$ recurrence, $4^{s+1}\cdot
+\mathtt{seamWordRationalRemainder}(\mathtt{seamGreedyWord}(s+1))\le 2^{s+2}+c$
+(\lean{seamMiddleCell\_scaledRationalRemainder\_le}{HalfCylinderMiddleCarryLowerBound.lean:4167},
+\ev{Lean}). The module's own remark is that for the first exceptional cell ($c=-3$, i.e.\ the cell
+already closed by \lean{finalMiddleCell\_neg\_three\_not\_last}{HalfCylinderFinalMiddleCellEscape.lean:587})
+this leaves margin exactly $1$ against a needed correction-tail slack of $4/3+\varepsilon$ --- a
+concrete near-miss, not a proof, and it does not extend to the two open cells $-2,-1$.
+
+A parallel iff for the right branch: an overshoot witness $\le2^s$ produces a pulse leak above
+$2^{s+2}$ exactly when the overshoot sits within an explicit distance $k$ of $2^s$ with
+$4k<\mathrm{abovePulse}$ (\lean{seamRightPulseLeak\_iff\_distanceCell}{HalfCylinderMiddleCarryLowerBound.lean:4202},
+\ev{Lean}). A new one-coordinate normal form, $\mathtt{seamPureHalfPrefixRemainder}\,s :=
+\mathtt{integerGreedyRemainder}(\mathtt{seamWeights}\,s)(2^{2s-1})$
+(\lean{seamPureHalfPrefixRemainder}{HalfCylinderMiddleCarryLowerBound.lean:4232}), is given an exact
+case-split closed form (\lean{seamPureHalfPrefixRemainder\_eq\_ite}{HalfCylinderMiddleCarryLowerBound.lean:4238},
+\ev{Lean}) that the file states is equivalent to the two-sided invariant, but this equivalence is not
+itself yet packaged as a separate reusable lemma beyond
+\lean{seamPureHalfPrefixRemainder\_le\_iff\_twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4356} (\ev{Lean}).
+
+\begin{obs}[The reset-band socket has a certified base case]
+\texttt{SeamUpperResetDyadicBandEscape} (O5's second socket, discussed after \S\ref{sec:o4} above) is
+reduced by three new lemmas to a quarter-scale overshoot exclusion: the iff
+\lean{seamUpperReset\_band\_iff\_successorRemainder\_avoids}{HalfCylinderMiddleCarryLowerBound.lean:4469}
+(\ev{Lean}) rewrites the reset-charge band as a successor-remainder avoidance; the identity
+\lean{upperResetCharge\_dyadicDistance\_add\_abovePulse}{HalfCylinderMiddleCarryLowerBound.lean:4490}
+(\ev{Lean}) rescales it by a factor of $4$; and
+\lean{seamUpperReset\_band\_of\_overshoot\_band}{HalfCylinderMiddleCarryLowerBound.lean:4514} (\ev{Lean})
+derives the band from a quarter-scale overshoot exclusion plus the pulse bound $\mathrm{abovePulse}\le
+2(d-2)$. Row $d=13$, the first row of the late regime, is then proved unconditionally to escape
+\emph{every} band simultaneously: its successor remainder is exactly $392$
+(\lean{seamUpperResetDyadicBandEscape\_at\_thirteen}{HalfCylinderMiddleCarryLowerBound.lean:4547},
+\ev{Lean}, \ev{Cert} for the numeral $392$). This is one certified row of a socket that is $\forall
+d\ge13$; it is evidence the base case is not itself an obstruction, nothing more.
+\end{obs}
+
+\subsubsection{Forgetting witnesses: the terminal-only bridge (\texttt{SuffixCylinderTerminalOnlyBridge.lean})}
+
+This entire file is new and previously uncited. It is a lossy-projection bridge: every object in
+the corpus's much richer suffix-cylinder stage machinery (\texttt{CylinderStage},
+\texttt{InStripTwoSheetStage}, \texttt{ProfiledGapStage}) is shown to already contain a
+terminal-only strip witness, the weaker object the compactness-based O3/O2 consumer actually needs.
+
+\begin{prop}
+Every \texttt{CylinderStage} at depth $N$ yields \texttt{HalfTerminalOnlyStripWitness}\ $N$
+(\lean{CylinderStage.halfTerminalOnlyStripWitness}{SuffixCylinderTerminalOnlyBridge.lean:63}, \ev{Lean},
+\coord{support rigidity, half-carry}), and at a feedback row this survives \emph{both} outputs of
+the corpus's total feedback theorem --- full-cylinder advance or a localized one-hole seam, which
+can delete at most one of carries $3,4$
+(\lean{CylinderStage.halfTerminalOnlyStripWitness\_after\_feedback}{SuffixCylinderTerminalOnlyBridge.lean:140},
+\ev{Lean}).
+\end{prop}
+Four concrete certified instances follow at depths $51$--$54$
+(\lean{fullCylinderStage51\_halfTerminalOnlyStripWitness}{SuffixCylinderTerminalOnlyBridge.lean:231},
+\lean{fullCylinderStage54\_halfTerminalOnlyStripWitness}{SuffixCylinderTerminalOnlyBridge.lean:257},
+\ev{Lean}, \ev{Cert} for the underlying stage), which is a finite witness chain, not a cofinal one.
+
+\begin{obs}[A new named producer socket for HALF, not yet in the implication table]
+The end-to-end consumer
+\[
+\left(\forall N,\ \exists M,K,\ \max(N,1)\le M\wedge\mathrm{Nonempty}(\mathtt{CylinderStage}\ K\ M)\right)
+\ \Longrightarrow\ \exists A,\ A.\mathrm{Infinite}\wedge \mathtt{erdosSupportSeries}\ 2\ A=1/2
+\]
+is proved unconditionally
+(\lean{exists\_infinite\_support\_half\_of\_cofinalCylinderStages}{SuffixCylinderTerminalOnlyBridge.lean:277},
+\ev{Lean}), with a positive-support refinement using the same odd-denominator lemma
+\lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589} already used for O2 above
+(\lean{exists\_infinite\_positive\_support\_half\_of\_cofinalCylinderStages}{SuffixCylinderTerminalOnlyBridge.lean:287},
+\ev{Lean}). The hypothesis, cofinal nonempty full-cylinder stages, is a genuinely new named socket
+for HALF: it has not been checked against O3's \texttt{CofinalExactLocalMersenneHalfRows} or O4's
+\texttt{SQRTESC}, and its own supply is \ev{Open}. It is only a sufficient condition, proved in one
+direction; no equivalence claim is made anywhere in the file.
+\end{obs}
+
+\subsubsection{A strict weakening chain for the last-producer socket (\texttt{HalfCylinderLastProducerContradiction.lean})}
+
+Five declarations extend the already-cited \texttt{SeamMiddleProducerSqrtEscape} socket with a
+genuine strength reduction, wiring the $-3$ cell closure into the producer chain rather than
+leaving it as an isolated fact.
+
+\begin{defn}
+$\mathrm{SeamMiddleProducerTailEscape}$ is the exact hypothesis that at every genuine middle
+transition ($s\ge13$, no successor carry, below the terminal-weight threshold) the terminal-augmented
+binary coefficient tail is strictly below the producer carry
+(\lean{SeamMiddleProducerTailEscape}{HalfCylinderLastProducerContradiction.lean:34}).
+$\mathrm{SeamMiddleProducerTailEscapeExceptNegThree}$ is the same hypothesis restricted to cells
+$\ne-3$ (\lean{SeamMiddleProducerTailEscapeExceptNegThree}{HalfCylinderLastProducerContradiction.lean:54}).
+\end{defn}
+The reduction $\mathrm{TailEscape}\Rightarrow\mathrm{ExceptNegThree}$ is trivial by hypothesis-dropping
+(\lean{SeamMiddleProducerTailEscape.toExceptNegThree}{HalfCylinderLastProducerContradiction.lean:76},
+\ev{Lean}); the substance is in the converse direction of the fan-in. The reduced socket, with cell
+$-3$ discharged by the already-proved
+\lean{middleProducer\_neg\_three\_not\_last}{HalfCylinderLastProducerContradiction.lean:364}, already
+suffices to close HALF:
+\[
+\mathrm{SeamMiddleProducerTailEscapeExceptNegThree}\ \Longrightarrow\ (1/2:\mathbb{R})\in\mathcal{A}
+\]
+(\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerTailEscapeExceptNegThree}{HalfCylinderLastProducerContradiction.lean:436},
+\ev{Lean}), with the unreduced socket and the already-cited square-root majorant both routing through
+it (\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerTailEscape}{HalfCylinderLastProducerContradiction.lean:451},
+\ev{Lean}). So the chain now reads $\mathrm{SqrtEscape}\Rightarrow\mathrm{TailEscape}\Rightarrow
+\mathrm{ExceptNegThree}\Rightarrow\mathrm{HALF}$, three strictly decreasing sockets where previously
+only the endpoints were exposed; all three antecedents remain \ev{Open}.
+
+\subsubsection{The governed frozen-margin producer (\texttt{HalfCylinderFiniteShadow.lean})}
+
+One further declaration completes a chain the earlier parts cite only up to its antecedent
+equivalence (\lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1229}).
+
+\begin{defn}[$\mathrm{HalfGreedyGovernedFrozenMarginProducer}$]
+For every $k$ with $\mathtt{mersenneWeight}(k+1)$ exceeding the current greedy remainder, some
+$J\le k+1$ gives a nonnegative frozen margin
+(\lean{HalfGreedyGovernedFrozenMarginProducer}{HalfCylinderFiniteShadow.lean:1267}).
+\end{defn}
+\[
+\mathrm{HalfGreedyGovernedFrozenMarginProducer}\ \Longrightarrow\ (1/2:\mathbb{R})\in\mathcal{A}
+\]
+(\lean{half\_mem\_mersenneAchievementSet\_of\_governedFrozenMarginProducer}{HalfCylinderFiniteShadow.lean:1274},
+\ev{Lean}), proved via the pre-existing
+\lean{half\_mem\_mersenneAchievementSet\_of\_skipped\_dyadicCap}{GreedyAchievementSet.lean:1431} and the
+excess-sign equivalence already noted above. This is the module's actual promised consumer; the
+antecedent's own first-passage bound ($J\le k+1$, uniform) is \ev{Open} and has not been checked
+against any of O3--O5's producer sockets.
+
+\subsubsection{Exact carry-pivot normal form
+(\texttt{SuffixCylinderCarryPivot.lean})}
+
+Numeral-adjacent boundary words have more structure than the previously used
+coefficient bound.  If the lower suffix numeral is one larger than the upper
+suffix numeral, there is a unique carry pivot $d$: rank $d$ enters the lower
+support, every rank $e$ with $d<e\le N$ flips from lower-unselected to
+upper-selected, and all ranks below $d$ agree
+(\lean{exists\_carry\_pivot\_of\_wordSuffixNumeral\_succ}{SuffixCylinderCarryPivot.lean:141},
+\ev{Lean}, \scale{uniform}, \coord{support rigidity, half-carry}).  Hence for
+every positive coefficient row $m\ge1$ the boundary discrepancy is the exact divisor-incidence
+identity
+\[
+ c_{\rm low}(m)+\#\{e:d<e\le N,\ e\mid m\}
+ =c_{\rm up}(m)+\mathbf 1_{d\mid m},
+\]
+not merely an inequality
+(\lean{supportCoeff\_add\_deepDivisorCount\_eq\_of\_carry\_pivot}{SuffixCylinderCarryPivot.lean:163},
+\ev{Lean}).  The stage-level theorem consumes adjacent profiled prefixes directly
+(\lean{profiledGapStage\_carry\_pivot\_of\_hasAdjacentPrefixes}{SuffixCylinderCarryPivot.lean:228},
+\ev{Lean}).  This is a local normal form for the two-sheet boundary.  It does
+not produce adjacent stages cofinally and therefore does not close HALF or
+universal \#257.
+
+\subsubsection{New tree: \texttt{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean}}
+
+This module works in the new \texttt{ErdosProblems.Erdos257} namespace and states in its own header
+that its results ``concern achievement-set geometry and do not settle the universal irrationality
+problem.'' For an arbitrary support restriction $J\subseteq\mathbb{N}$, define
+$\mathtt{supportedMersenneAchievementSet}\,J$ as the range of Mersenne digit values supported on $J$
+(\lean{supportedMersenneAchievementSet}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:76}). It is compact
+(\lean{isCompact\_supportedMersenneAchievementSet}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:90}, \ev{Lean}),
+nowhere dense for every $J$ (\lean{isNowhereDense\_supportedMersenneAchievementSet}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:112},
+\ev{Lean}), and perfect --- compact with no isolated points --- whenever $J$ is infinite
+(\lean{perfect\_supportedMersenneAchievementSet}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:167}, \ev{Lean}), via a
+Cantor-space no-isolated-point argument on the coding space itself
+(\lean{preperfect\_supportedMersenneDigitSet}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:120}, \ev{Lean}).
+
+\begin{prop}[Exact Lebesgue-measure dichotomy]
+Either $J=F^c$ for a finite $F$, and $\mathrm{vol}(\mathtt{supportedMersenneAchievementSet}\,J)=2^{-|F|}$
+exactly, or $J^c$ is infinite and the volume is exactly $0$.
+\end{prop}
+(\lean{volume\_supportedMersenneAchievementSet\_dichotomy}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:397}, \ev{Lean},
+\scale{uniform}, \coord{mobius-mersenne}). The finite case is an exact doubling induction over inserted
+coordinates (\lean{volume\_supportedMersenneAchievementSet\_insert}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:286},
+\ev{Lean}, using disjointness of the two coordinate-split faces,
+\lean{disjoint\_supportedMersenneAchievementSet\_translate}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:262}, \ev{Lean},
+which is exactly where unique binary coding is spent). None of this module touches irrationality of any
+subseries value; it is a self-contained measure-and-topology classification of achievement sets, orthogonal
+to O1--O5.
+
+\subsubsection{New tree: \texttt{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean}}
+
+This short module restates $\mathrm{U257}$ in the new namespace
+(\lean{UniversalMersenneSubseriesIrrationality}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:26}) and gives it a
+problem-centric interface to the legacy half-terminal producer already used for O2 above: any
+\texttt{HalfTerminalOnlyScaledVanishingSequence} witness gives an infinite $A$ with
+$\mathtt{erdosSupportSeries}\ 2\ A=1/2$
+(\lean{exists\_rational\_half\_counterexample\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:31},
+\ev{Lean}), hence refutes $\mathrm{U257}$ outright
+(\lean{not\_universal\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:38}, \ev{Lean}). The
+module's own docstring states plainly that the producer sequence itself ``has only been checked to a
+large finite cutoff'': this is a restatement of the already-\ev{Open} O2 producer obligation in a new
+namespace, not a new result, and it duplicates \S O2's own logic (any HALF witness is $\neg\mathrm{U257}$)
+rather than extending it.  The module now also proves an unconditional finite-support obstruction at
+the second rational target $1/21$:
+\[
+  F\subseteq\{n:n\ge2\}\quad\Longrightarrow\quad
+  \sum_{n\in F}\frac1{2^n-1}\ne\frac1{21}
+\]
+for every finite $F$
+(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:59}, \ev{Lean},
+\scale{uniform}, \coord{finite-lcm}).  The denominator-order identity forces
+$\operatorname{lcm}(F)=6$, after which the eight subsets of $\{2,3,6\}$ are exact arithmetic.
+This removes finite termination for that target; it does not establish achievement-set membership.
+
+\subsubsection{New tree: \texttt{Erdos249257/Primitive23Multiplicity.lean}}
+
+This module records the exact arithmetic of the primitive cone
+$2p+3q=n$, $p,q>0$, $\gcd(p,q)=1$
+(\lean{IsPrimitive23Solution}{Primitive23Multiplicity.lean:20}).  It proves that every $n\ge11$
+has such a representation
+(\lean{exists\_primitive23\_solution\_of\_eleven\_le}{Primitive23Multiplicity.lean:52},
+\ev{Lean}, \scale{uniform}, \coord{finite-lcm}), while rank $10$ has none
+(\lean{no\_primitive23\_solution\_ten}{Primitive23Multiplicity.lean:26}, \ev{Lean}).
+Rank $11$ already has two distinct witnesses
+(\lean{exists\_two\_primitive23\_solutions\_eleven}{Primitive23Multiplicity.lean:38}, \ev{Lean}),
+and so does every rank $10k$ with $k\ge2$
+(\lean{exists\_two\_primitive23\_solutions\_mul\_ten}{Primitive23Multiplicity.lean:86},
+\ev{Lean}, \scale{uniform}, \coord{finite-lcm}).  These theorems are deliberately recorded as
+route diagnostics rather than as a counterexample: the file does not prove that the associated
+integer-multiplicity expansion of $1/21$ Booleanises.  The recurring multiplicities are precisely
+the unresolved collision data, not zero--one support digits.
+
+\subsubsection{Current $1/21$ frontier:
+\texttt{Erdos249257/TwentyOneQuotientGreedy.lean}}
+
+The later quotient-greedy analysis removes the diffuse alternatives.  Let
+\texttt{TwentyOneFatalAlignedBranch} denote the explicit branch consisting
+of a fatal greedy gap, finite skipped support (hence cofinite selection),
+eventual alignment between the quotient rows and the rational greedy prefix,
+and eventual visits to every doubling block.  Then
+\[
+ \frac1{21}\in\mathtt{mersenneAchievementSet}
+ \quad\Longleftrightarrow\quad
+ \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
+\]
+\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3508}
+\quad\ev{Lean}\quad\scale{uniform}\quad\coord{greedy-orbit}.
+
+On the fatal branch the canonical quotient remainder $s_R$ is eventually
+strictly above the closed capacity $2^R$
+(\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5624}),
+and thereafter the support appends $R+1$ while $s_R$ follows one explicit
+affine recurrence
+(\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5657}).
+Conversely, closed rows $s_R\le2^R$ along any unbounded sequence decay after
+normalisation and put $1/21$ in the achievement set
+(\lean{twentyOneCofinalEvenQuotientGreedyDecay\_of\_closedRows}{TwentyOneQuotientGreedy.lean:5553};
+\lean{one\_div\_twenty\_one\_mem\_mersenneAchievementSet\_of\_cofinalGreedyDecay}{TwentyOneQuotientGreedy.lean:5457}).
+
+This is the exact current contribution: membership has been reduced to
+excluding one named permanent affine-supercapacity regime.  No theorem
+excludes that regime, forces unbounded closed returns, or proves membership.
+Combined with the finite-support obstruction above, membership would provide
+an infinite-support rational counterexample to universal \#257; its present
+status remains \ev{Open}.
