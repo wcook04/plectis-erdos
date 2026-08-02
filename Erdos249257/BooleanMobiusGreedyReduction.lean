@@ -214,8 +214,8 @@ decreasing_by omega
 /-! ## The even half-cutoff terminal state -/
 
 /-- The strict even-row local quotients are exactly the older seam weights.
-This identifies the new approximate-row frontier with the established
-first-wrap recurrence instead of creating a second arithmetic sequence. -/
+This identity relates the approximate row to the established first-wrap
+recurrence instead of introducing a second arithmetic sequence. -/
 theorem localMersenneQuotient_two_mul_eq_truncatedMersenneWeight
     (R d : ℕ) :
     localMersenneQuotient (2 * R) d =
@@ -495,8 +495,8 @@ After scaling by `2^M`, the prefix and candidate split into integral
 quotients plus strictly positive Mersenne fractions.  Hence rational
 admissibility forces the two integral quotients to lie *strictly* below
 `2^(M-1)`.  The candidate quotient therefore fits in the remaining Boolean
-suffix.  This is the one-sided comparison needed in the horizon-stability
-endgame: any divergence between quotient greedy and rational greedy can only
+suffix.  This is the one-sided comparison needed for horizon stability: any
+divergence between quotient greedy and rational greedy can only
 be a false take, never a false skip. -/
 theorem localMersenneQuotient_le_localBinarySuffix_of_rational_take
     {D : Finset ℕ} {M d : ℕ}
@@ -755,7 +755,8 @@ fills the half target at endpoint `M`, it suffices to control only its lower
 word through any cutoff `R ≥ M/2`.  The entire unprocessed upper word is
 mechanical binary completion, so its remainder vanishes automatically.
 
-At the canonical cutoff `R=M/2`, the sole arithmetic frontier is therefore
+At the canonical cutoff `R=M/2`, the sole remaining arithmetic condition is
+therefore
 the strict inequality
 
 `integerGreedyRemainder (localMersenneWeights M (M/2)) C
@@ -911,7 +912,7 @@ theorem eq_integerGreedyBits_of_remainder_lt_gap
     hgap hdom hlen hadm hne
   omega
 
-/-- Exact unique-window hinge.  Under gap dominance, a given admissible word
+/-- Exact unique-window equivalence.  Under gap dominance, a given admissible word
 has a defect inside the binary upper window iff it is the integer-greedy word
 and the deterministic greedy remainder lies in that window. -/
 theorem remainder_lt_gap_iff_eq_integerGreedyBits
@@ -931,7 +932,7 @@ theorem remainder_lt_gap_iff_eq_integerGreedyBits
   · rintro ⟨rfl, hwindow⟩
     exact hwindow
 
-/-- Consumer form for the Boolean Möbius repair.  If the chosen lower word
+/-- Boolean--Möbius specialization.  If the chosen lower word
 and its binary suffix `A` exactly fill `C`, and `A` lies in the parity-uniform
 upper window, then the lower word is forced to be integer greedy and `A` is
 literally the integer-greedy remainder. -/
@@ -1102,8 +1103,8 @@ def RepairLoadSafe (load A : ℕ) : Prop :=
 
 /-- Once the lower-window uniqueness theorem is available, proving the load
 cap for the deterministic greedy word is enough for every filled predecessor
-in that window.  This theorem intentionally retains that greedy cap as a
-hypothesis: it is the genuine arithmetic hinge. -/
+in that window.  This theorem intentionally retains the greedy cap as its
+remaining arithmetic hypothesis. -/
 theorem repairLoadSafe_of_greedy
     {M R C A : ℕ} {weights : List ℕ} {bits : List Bool}
     (endpointLoad : List Bool → ℕ)
@@ -1120,7 +1121,7 @@ theorem repairLoadSafe_of_greedy
     hwindowPos hdom hlen hfill hA
   exact hgreedy
 
-/-- Exact iff form of the remaining hinge, assuming the greedy remainder is
+/-- Exact equivalence for the remaining condition, assuming the greedy remainder is
 itself in the upper window. -/
 theorem all_filled_lower_words_repairLoadSafe_iff_greedy
     {M R C : ℕ} {weights : List ℕ}
