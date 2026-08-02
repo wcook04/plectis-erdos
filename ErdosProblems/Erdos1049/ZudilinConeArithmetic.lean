@@ -4,7 +4,7 @@ import Mathlib.Data.ZMod.Basic
 import Mathlib.Tactic
 
 /-!
-# Erdős #1049: endpoint arithmetic for the Heine--Zudilin cone
+# Erdős #1049: endpoint arithmetic at the rational base `3 / 2`
 
 Homogeneous evaluation at `(3,2)` sees the constant coefficient modulo `3`
 and the coefficient at the declared top width modulo `2`. A unit at the first
@@ -329,6 +329,26 @@ theorem commonMultiplier_not_two_not_three_of_endpoint_units
   · intro hthree
     exact three_not_dvd_homEvalThreeTwo_of_const_unit W V hVconst
       (dvd_trans hthree hcV)
+
+/-- Exact coprimality form of the endpoint exclusion: under the opposite unit
+endpoint hypotheses, every common multiplier of the two homogeneous
+evaluations is coprime to `6`. -/
+theorem commonMultiplier_isCoprime_six_of_endpoint_units
+    (c : ℤ) (W : ℕ) (U V : Polynomial ℤ)
+    (hUtop : U.coeff W = 1 ∨ U.coeff W = -1)
+    (hVconst : V.coeff 0 = 1 ∨ V.coeff 0 = -1)
+    (hcU : c ∣ homEvalThreeTwo W U)
+    (hcV : c ∣ homEvalThreeTwo W V) :
+    IsCoprime c 6 := by
+  have hlocal := commonMultiplier_not_two_not_three_of_endpoint_units
+    c W U V hUtop hVconst hcU hcV
+  have htwo : IsCoprime c (2 : ℤ) := by
+    rw [isCoprime_comm, (show Prime (2 : ℤ) by norm_num).coprime_iff_not_dvd]
+    exact hlocal.1
+  have hthree : IsCoprime c (3 : ℤ) := by
+    rw [isCoprime_comm, (show Prime (3 : ℤ) by norm_num).coprime_iff_not_dvd]
+    exact hlocal.2
+  exact htwo.mul_right hthree
 
 /-- The only analytic input needed from an irrationality-exponent argument:
 if an irrational number has exponent at least `2` and a source construction

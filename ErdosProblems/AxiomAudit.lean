@@ -43,6 +43,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.fourJetSignature_card
 #print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank
 #print axioms ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units
+#print axioms ErdosProblems.Erdos1049.commonMultiplier_isCoprime_six_of_endpoint_units
 #print axioms ErdosProblems.Erdos1049.commonFactorSeven_fixture
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
