@@ -7,8 +7,8 @@
 % Build from the public paper directory with `make`.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0}
-\renewcommand{\commitshort}{76b5b0a7ed5d}
+\renewcommand{\commit}{8c455842bcc5d17e861816391ec75e85e76a57d3}
+\renewcommand{\commitshort}{8c455842bcc5}
 \usepackage{longtable}
 \hypersetup{
   pdftitle={Factorial carries and finite channel obstructions for Erdős Problem 68},
@@ -170,16 +170,30 @@ digit to vanish.  These are
 \pdecl{canonicalDigit_nonneg},
 \pdecl{canonicalDigit_lt_radix},
 \pdecl{canonicalRemainder_recurrence},
-\pdecl{factorial_expansion_partial}, and
-\pdecl{zero_remainder_forces_zero_digit_tail}; they hold for every real $x$,
+the
+\lword{Erdos68/CanonicalFactorialDigits.lean}{196}{factorial_expansion_partial}{finite
+factorial expansion}, and the
+\lword{Erdos68/CanonicalFactorialDigits.lean}{269}{zero_remainder_forces_zero_digit_tail}{zero-remainder
+termination theorem}; they hold for every real $x$,
 not only for $\Ser$.
 
-The returned derivation adds the criterion that makes the representation
-useful: the digits $d_m(\Ser)$ are eventually zero if and only if $\Ser$ is
-rational, and this is equivalent to eventual integrality of the factorial tail
-state.  That equivalence is complete on the return and is not yet kernel-checked
-here.  We state it as an equivalence because that is what the derivation gives;
-we do not use it below as though it were checked.
+The rational direction is also kernel-checked.  If $q>0$ and $q\le n$, then
+\[
+ \operatorname{facFloor}(a/q,n)=((n!/q):\Z)a,
+\]
+and the canonical digit at radix $n+1$ vanishes.  These are the
+\lword{Erdos68/CanonicalFactorialDigits.lean}{47}{facFloor_rat_eq_cleared}{cleared-floor
+formula} and the
+\lword{Erdos68/CanonicalFactorialDigits.lean}{81}{canonicalDigit_eq_zero_of_rational}{rational-input
+termination theorem}.  They imply that every rational input has an eventually
+zero canonical factorial-digit expansion.  They do not decide whether $\Ser$
+is rational and supply no recurrence estimate for its digits or remainders.
+
+The returned derivation additionally gives the converse for this particular
+representation: the digits $d_m(\Ser)$ are eventually zero only if $\Ser$ is
+rational, equivalently the factorial tail state is eventually integral.  That
+converse is not yet kernel-checked here, and nothing below uses it as though it
+were.
 
 Note what the criterion is not.  Canonical normalisation is an exact
 reformulation of rationality.  It does not by itself supply an obstruction, and
@@ -1207,10 +1221,11 @@ $Z_m/m!\to\Ser$, and the exact equivalence between irrationality and cofinally
 many non-unit carries.  The exact
 GMP carry certificate through $m=300000$ is separately regenerated and
 hash-bound; combined with the checked carry theorem it gives $q\ge300000$,
-but it is not itself a Lean evaluation.  The digit--rationality equivalence, the weighted primitive support
-decomposition, and the determinant-quotient reduction are returned derivations
-that have not been kernel-checked here, and are labelled as such wherever they
-appear.  The factorial-gap lcm growth bound is derived here from
+but it is not itself a Lean evaluation.  The converse direction of the
+digit--rationality equivalence, the weighted primitive support decomposition,
+and the determinant-quotient reduction are returned derivations that have not
+been kernel-checked here, and are labelled as such wherever they appear.  The
+factorial-gap lcm growth bound is derived here from
 the exact factorial-congruence multiplicity theorem of Garaev--Luca--Shparlinski
 \cite[arXiv v1, Thm.~12, p.~16]{garaev-luca-shparlinski}; it is source-verified,
 not a verbatim theorem of that paper, not kernel-checked here, and load-bearing
@@ -1240,40 +1255,40 @@ pinned to the shared formal-source commit used throughout this problem-note
 series.
 
 \begin{itemize}[leftmargin=*]
-\item \lref{Erdos68/FactorialZeroPlateau.lean}{1060}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
-\item \lref{Erdos68/FactorialZeroPlateau.lean}{923}{irrational_factorialGapSeries_of_cofinal_nonunit_carries}
-\item \lref{Erdos68/PrimeZeroBranch.lean}{6081}{factorialGap_zero_branch_iff_lower_endpoint_cylinder}
-\item \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4737}{factorialBlock_unitFactorPairFloor_scale_iff}
-\item \lref{Erdos68/PrimeUnitTranslator.lean}{1542}{exists_cramerFactorialGridResidual_eq_det_mul_factorialGapSeries_add_int}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{17}{residualCentreTerm}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{22}{factorialCoeffTerm}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{27}{residualCentre}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{32}{factorialCoeffRat}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{35}{factorial_eq_mul_pred_factorial}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{43}{pred_div_eq_of_not_dvd}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{57}{pred_div_add_one_eq_of_dvd}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{84}{residualCentreTerm_of_not_dvd}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{101}{residualCentreTerm_of_dvd}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{125}{residualCentreTerm_self}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{134}{factorialCoeffTerm_self}
-\item \lref{Erdos68/DivisorFactorialCentre.lean}{143}{residualCentre_recurrence}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{15}{factorial_pow_floor_dvd_factorial}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{29}{channelWeight}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{33}{channelWeight_mul_denominator}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{41}{channelNumerator}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{45}{factorialMoment}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{49}{channelEvent}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{55}{channelEvent_eq_zero_of_not_dvd}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{91}{lambda34}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{95}{lambda34_apply_three}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{99}{lambda34_apply_four}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{102}{lambda34_channel_two}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{109}{lambda34_factorialMoment}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{116}{lambda34_channel_three}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{123}{lambda34_channel_four}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{130}{lambda34_channel_ge_five}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{141}{lambda34ResidualOfTail}
-\item \lref{Erdos68/FactorialChannelCertificate.lean}{146}{lambda34_residual_bounds}
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{1090}{irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses}
+\item \lref{Erdos68/FactorialZeroPlateau.lean}{953}{irrational_factorialGapSeries_of_cofinal_nonunit_carries}
+\item \lref{Erdos68/PrimeZeroBranch.lean}{6099}{factorialGap_zero_branch_iff_lower_endpoint_cylinder}
+\item \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4766}{factorialBlock_unitFactorPairFloor_scale_iff}
+\item \lref{Erdos68/PrimeUnitTranslator.lean}{1559}{exists_cramerFactorialGridResidual_eq_det_mul_factorialGapSeries_add_int}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{32}{residualCentreTerm}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{37}{factorialCoeffTerm}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{42}{residualCentre}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{47}{factorialCoeffRat}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{50}{factorial_eq_mul_pred_factorial}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{58}{pred_div_eq_of_not_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{72}{pred_div_add_one_eq_of_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{99}{residualCentreTerm_of_not_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{116}{residualCentreTerm_of_dvd}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{140}{residualCentreTerm_self}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{149}{factorialCoeffTerm_self}
+\item \lref{Erdos68/DivisorFactorialCentre.lean}{158}{residualCentre_recurrence}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{25}{factorial_pow_floor_dvd_factorial}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{39}{channelWeight}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{43}{channelWeight_mul_denominator}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{51}{channelNumerator}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{55}{factorialMoment}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{59}{channelEvent}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{65}{channelEvent_eq_zero_of_not_dvd}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{101}{lambda34}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{105}{lambda34_apply_three}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{109}{lambda34_apply_four}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{112}{lambda34_channel_two}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{119}{lambda34_factorialMoment}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{126}{lambda34_channel_three}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{133}{lambda34_channel_four}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{140}{lambda34_channel_ge_five}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{151}{lambda34ResidualOfTail}
+\item \lref{Erdos68/FactorialChannelCertificate.lean}{156}{lambda34_residual_bounds}
 \end{itemize}
 
 \clearpage
