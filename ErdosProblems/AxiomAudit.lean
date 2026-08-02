@@ -5,6 +5,7 @@ import Erdos249257.HalfGreedyUnitPrefix
 import Erdos249257.CertificateKernel
 import Erdos249257.BooleanMobiusLocalRepair
 import Erdos249257.BooleanMobiusGlobalRepair
+import Erdos249257.TwentyOneQuotientCompactness
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -603,3 +604,5 @@ problem-centric wave.
 #print axioms Erdos249257.globalRepairStageValue_tendsto_half
 #print axioms Erdos249257.globalRepairEvenStageValue_tendsto_limit
 #print axioms Erdos249257.infinite_support_half_of_globalBooleanMobiusRepair
+#print axioms Erdos249257.abs_localMersennePrefixValue_sub_one_div_twenty_one_le
+#print axioms Erdos249257.one_div_twenty_one_mem_mersenneAchievementSet_of_evenQuotientWindow
