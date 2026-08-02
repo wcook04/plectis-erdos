@@ -21,6 +21,8 @@ import ErdosProblems.Erdos257.SquarefreeSupportIncidence
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos243.FiniteHorizonResidue
 import ErdosProblems.Erdos243.DynamicCancellation
+import ErdosProblems.Erdos243.FeedbackRealizability
+import ErdosProblems.Erdos243.GlobalLcmHeight
 import ErdosProblems.Erdos243.PrimitivePrefixRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery
 import ErdosProblems.Erdos243.LcmCriticalBoundary

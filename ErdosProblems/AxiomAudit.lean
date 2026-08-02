@@ -610,3 +610,17 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.no_boundedNegative_lcmState_of_oldPrimeSupply
 #print axioms ErdosProblems.Erdos243.lcmState_weightedBlock_telescope
 #print axioms ErdosProblems.Erdos243.eventually_zero_of_weightedBlockDebt
+#print axioms ErdosProblems.Erdos243.feedback_transport_defect
+#print axioms ErdosProblems.Erdos243.feedback_denominator_transport
+#print axioms ErdosProblems.Erdos243.feedback_denominator_transport_iff
+#print axioms ErdosProblems.Erdos243.primitive_squareRoot_feedback
+#print axioms ErdosProblems.Erdos243.primitive_squareRoot_norm
+#print axioms ErdosProblems.Erdos243.artificial_squareUnit_true_nextMultiplier
+#print axioms ErdosProblems.Erdos243.artificial_squareUnit_not_realizable
+#print axioms ErdosProblems.Erdos243.cumulativeOverlapDebt_mul_lcm_eq_productScale
+#print axioms ErdosProblems.Erdos243.globalLcm_numerator_update
+#print axioms ErdosProblems.Erdos243.globalContent_gcd_split
+#print axioms ErdosProblems.Erdos243.reducedCancellation_split_global_local
+#print axioms ErdosProblems.Erdos243.globalNegativeMass_step_bound
+#print axioms ErdosProblems.Erdos243.globalPositiveCentered_strict_payment_descent
+#print axioms ErdosProblems.Erdos243.returnedError_step
