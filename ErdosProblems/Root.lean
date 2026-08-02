@@ -1,12 +1,3 @@
-
-/-!
-# Problem-centric Erdős formalization root
-
-This root is intentionally separate from the historical `Erdos249257`
-namespace. New research is grouped by the actual problem and mathematical
-object without forcing a repository-wide rename.
--/
-
 import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 import ErdosProblems.Erdos1049.HermitePadeNoGo
 import ErdosProblems.Erdos1049.RationalBaseLambert
@@ -52,3 +43,11 @@ import ErdosProblems.Erdos68.FiniteDefectAutomaton
 import ErdosProblems.Erdos68.PrimeUnitTranslator
 import ErdosProblems.Erdos68.PrimeZeroBranch
 import ErdosProblems.Erdos68.StrictSuccessorArithmetic
+
+/-!
+# Problem-centric Erdős formalization root
+
+This root is intentionally separate from the historical `Erdos249257`
+namespace. New research is grouped by the actual problem and mathematical
+object without forcing a repository-wide rename.
+-/

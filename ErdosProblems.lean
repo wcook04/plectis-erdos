@@ -14,15 +14,15 @@
 -- Keep the reviewed finite `t ≤ 82` certificate band inside the supported
 -- root closure, so a clean root build re-elaborates its proof authority.
 
+import ErdosProblems.AxiomAudit
+import ErdosProblems.DemandLedger
+import ErdosProblems.Erdos269.RestrictedFloorSum
+import ErdosProblems.Root
+import ErdosProblems.Skip.LadderT67
+
 /-!
 # Problem-centric Erdős research library
 
 This is the supported root for the problem-owned modules. The `Erdos249257`
 library remains available as the reviewed #249/#257 corpus.
 -/
-
-import ErdosProblems.AxiomAudit
-import ErdosProblems.DemandLedger
-import ErdosProblems.Erdos269.RestrictedFloorSum
-import ErdosProblems.Root
-import ErdosProblems.Skip.LadderT67
