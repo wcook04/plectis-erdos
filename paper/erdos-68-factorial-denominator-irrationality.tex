@@ -42,7 +42,7 @@ Erd\H{o}s asked whether
 is irrational.  The problem remains open.  Put
 $H_m=\sum_{2\le n\le m}(n!-1)^{-1}$ and let
 $Z_m=\lfloor m!H_m\rfloor+1$ be its strict factorial successor.  Write $b_m$
-for the integer in $Z_m=mZ_{m-1}+1-b_m$.  The central checked equivalence is
+for the integer in $Z_m=mZ_{m-1}+1-b_m$.  The central formal equivalence is
 \[
   \Ser\notin\mathbb Q
   \quad\Longleftrightarrow\quad
@@ -112,9 +112,8 @@ same one that makes the Erd\H{o}s--Borwein constant hard: the denominators
 $n!-1$ grow fast enough that convergence is trivial and slow enough, in the
 arithmetic sense, that no single congruence controls them.
 
-This note is one of the problem-owned series.  It repeats the definitions and
-the claim boundary it needs, so that a reader who arrives at \#68 alone does
-not have to assemble them from the joint integration monograph.
+The definitions and claim boundary are repeated here so that the note is
+self-contained.
 
 \statusboundary
 
@@ -936,7 +935,7 @@ $q\ge300000$.
 
 None of these changes a quantifier.
 
-\section{Complements and further questions}\label{sec:open}
+\section{The missing cofinal inputs}\label{sec:open}
 
 The exact frontier comes first:
 \[
@@ -947,9 +946,38 @@ The exact frontier comes first:
  (\forall B)(\exists m>B)\;b_m\ne1.
 \tag{9.1}\label{eq:exact-frontier68}
 \]
-This is Lean-checked, not a heuristic reduction.  Each problem below is a
-sufficient input for~\eqref{eq:exact-frontier68}; none is presented as an
-equivalent reformulation.
+This is a formal theorem, not a heuristic reduction.  The remaining gap is
+quantified: the finite mechanisms in the preceding sections need one of the
+following cofinal inputs.  The table separates those missing inputs from the
+formal results that would consume them.
+
+\begin{center}
+\small
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.28\linewidth}
+  >{\raggedright\arraybackslash}p{0.31\linewidth}
+  >{\raggedright\arraybackslash}p{0.33\linewidth}@{}}
+\toprule
+Missing input & Available consequence & Present limitation \\
+\midrule
+Cofinal non-unit carries, or equivalently cofinal misses $m\nmid Z_m$
+  & Irrationality by~\eqref{eq:exact-frontier68}
+  & Only isolated finite misses are known. \\
+Cofinal quantitative private-residue and collision-scale bounds
+  & Endpoint exclusion on an unbounded family of prime blocks
+  & Private-prime hits are qualitative; no required lower bound is proved. \\
+Cofinal lower-endpoint escape or failure of both doubled-prime branches
+  & A non-unit carry at each selected index
+  & The relevant cylinder and branch theorems are conditional. \\
+Cofinal strictly nonzero translated Cramer residuals
+  & Remote finite channel cancellation without integral collapse
+  & Rounding gives absolute value at most $1/2$, but the residual may be zero. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Each problem below gives a sufficient input for~\eqref{eq:exact-frontier68};
+none is an equivalent reformulation.
 
 \subsection*{1. Weighted collision mass and the complementary residue}
 
@@ -1155,16 +1183,6 @@ Nor does simply asking for $\det(A_{n,t})\Ser\notin\Z$ add information to the
 original scalar problem.  A solution must use an exact determinant or
 finite-difference identity, a valuation or parity obstruction, a cancellation
 bound, or a gcd-of-minors argument controlling the finite oscillatory block.
-
-\subsection*{Longer-term directions}
-
-Two broader programmes remain after the five quantified conditions: find an
-invariant of the true divisor-factorial coefficients that rules out eventual
-unit carries and is absent from the synthetic countermodels; or construct an
-$N$-dependent, denominator-resonant, strict-subrank vector
-Hermite--Pad\'e system that neither factors through scalar evaluation at
-$z=1$ nor reassembles the full factorial-gap lcm.  These are directions, not
-substitutes for one of the displayed sufficient conditions.
 
 Erd\H{o}s~\#68 remains open.  No statement above proves irrationality or
 excludes every rational value.  The finite checked consequence is nevertheless
