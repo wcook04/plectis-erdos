@@ -102,6 +102,13 @@ jobs:
           "$installer_dir/elan-init" -y --default-toolchain none --no-modify-path
           "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Materialize pinned Lake dependencies
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # A cold cache must populate the shared package checkout once, before
+        # the bounded planner starts concurrent Lean workers.  The Mathlib
+        # cache command follows the committed manifest and also restores its
+        # compiled dependency outputs.
+        run: lake exe cache get
       - name: Memory-bounded Lean build
         if: steps.lean-inputs.outputs.changed == 'true'
         # Drain independent Lucas modules without Lake's unbounded ready-set

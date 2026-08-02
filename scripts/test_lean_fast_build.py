@@ -30,15 +30,20 @@ class LeanFastBuildTests(unittest.TestCase):
         )
         cache_step = workflow.index("- name: Restore project Lean cache")
         toolchain_step = workflow.index("- name: Install pinned Lean toolchain")
+        dependencies_step = workflow.index(
+            "- name: Materialize pinned Lake dependencies"
+        )
         bounded_build = workflow.index(
             "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
         )
 
         self.assertLess(cache_step, toolchain_step)
-        self.assertLess(toolchain_step, bounded_build)
+        self.assertLess(toolchain_step, dependencies_step)
+        self.assertLess(dependencies_step, bounded_build)
         self.assertIn("uses: actions/cache@", workflow)
         self.assertIn("# v5", workflow)
         self.assertIn("path: .lake", workflow)
+        self.assertIn("run: lake exe cache get", workflow)
         self.assertNotIn("leanprover/lean-action@", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
 
