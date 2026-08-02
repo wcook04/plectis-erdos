@@ -1,4 +1,5 @@
 import ErdosProblems.Root
+import Erdos249257.RationalSupportCarrySkeleton
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -181,6 +182,10 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos257.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted
 #print axioms ErdosProblems.Erdos257.exists_omega_ge_block
 #print axioms ErdosProblems.Erdos257.exists_digitwise_block_squarefreeShiftedSupport
+#print axioms Erdos249257.tendsto_shiftedOddTailExcess_mean
+#print axioms Erdos249257.one_lt_of_tendsto_cesaroMean_of_positive_two_spikes
+#print axioms Erdos249257.one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem
+#print axioms Erdos249257.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one
 #print axioms ErdosProblems.Erdos251.real_tail_iterate_eq_pow_mul_sub_block
 #print axioms ErdosProblems.Erdos251.not_irrational_initial_iff_exists_integral_positive_tailShift
 #print axioms ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift
