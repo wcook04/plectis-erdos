@@ -5946,10 +5946,15 @@ Three consequences, all of which matter more than the counterexample itself.
 First, the certificate engine
 \lean{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{CertificateKernel.lean:8703}
 is universally quantified over $A$ and therefore sound, but it is \emph{not} complete: it cannot
-prove irrationality for the squarefree support even in principle. Whether
-$\sum_{n\ \mathrm{squarefree},\,n\ge2} 1/(2^{n}-1)$ is irrational is untouched by
-Proposition~\ref{prop:squarefree}; what is settled is that no instantiation of the present engine
-will decide it.
+prove irrationality for the squarefree support even in principle.  This is a
+method failure against an already known value, not an open squarefree case:
+Duverney and Tachiya prove joint linear independence with $1$ for the
+squarefree sums at every base $2^j$, $j\ge1$ (\emph{Forum Math.} 31 (2019),
+Corollary~1.2 and Example~1.1).  Thus in particular the displayed base-$2$
+sum is irrational.  Proposition~\ref{prop:squarefree} settles only that no
+instantiation of the present certificate engine can reprove it; among the
+integer bases, the cited squarefree theorem leaves the non-powers of two
+uncovered.
 
 Second, the failure is not an accident of one support. The mechanism is that
 $\mathtt{supportCoeff}\,A$ is forced into a fixed parity class by the multiplicative structure of
@@ -6017,8 +6022,10 @@ That is a complete first-block supply for the squarefree support with $K$ arbitr
 $K\,2^{\,L-K}$ in the budget, comfortably inside the height condition. Whether the rest of the
 engine survives the shift is exactly the question to check, and it is a self-contained
 modification of one Lean file rather than a new theory. If it does survive, the immediate corollary
-is irrationality of $\sum_{n\ \mathrm{squarefree}} 1/(2^{n}-1)$, which is a named constant and a
-genuine theorem.
+would be an alternative certificate proof of the already known irrationality of
+$\sum_{n\ \mathrm{squarefree}} 1/(2^{n}-1)$, together with a reusable shifted engine.
+It would not settle a new squarefree value at a power-of-two base; extension to
+non-powers of two would require additional mathematics.
 
 \subsection{What the shape of the wall suggests about the underlying object}
 \label{sec:invent-shape}

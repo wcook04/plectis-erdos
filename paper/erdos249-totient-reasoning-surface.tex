@@ -177,7 +177,7 @@ reduction, never as progress toward a solution.
 Let $\varphi$ be Euler's totient function and put
 \[
   S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}}
-  \;=\; 1 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
+  \;=\; \tfrac12 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
   \;=\; 1.3676308019850223\ldots
 \]
 The series converges absolutely because $\varphi(n) \le n$. Erd\H{o}s Problem
@@ -6832,13 +6832,14 @@ socket at a logarithmic scale plus a two-bit mixed-guard cylinder
 ($01$ or $10$). This is directly reusable, unchanged, for any binary-series
 tail-difference problem, including \#257's own denominators.
 
-\subsection{Two further, logically independent obligations}
+\subsection{One live Farey obligation and one retired rank shortcut}
 
-Two more open statements would \emph{also} close \#249, each living in a
-genuinely different coordinate from the certificate/residue coordinate
-above, and each finished on exactly one side of an inequality.
+The Farey growth law below is a genuinely independent live obligation.  The
+rank statement is retained only to record a counterfactual sufficient input
+and the reason that the generic compression route to it is closed; it is not a
+second live frontier.
 
-\paragraph{Obligation 2 (rank compression).}
+\paragraph{Counterfactual rank route (generic compression retired).}
 Unconditionally, for every level $e$, the dyadic totient-kernel family of
 $2^e+1$ channels is linearly independent over $\mathbb{Q}$ (via CRT and
 Dirichlet's theorem on primes in arithmetic progression):
@@ -6851,16 +6852,19 @@ orbit $u$ with
 \]
 \lean{Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:284}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:carry-kernel-rank}.
-The missing input is the opposite inequality — a rationality-side rank
-\emph{upper} bound:
+An opposite inequality — a rationality-side rank \emph{upper} bound — would
+of course contradict the displayed lower bound:
 \[
   \exists C,\quad \forall\text{ tempered integral binary carry orbit } u
   \text{ for a rational } S,\quad
   \forall e,\quad \operatorname{rank}_{\mathbb{Q}}\operatorname{span}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr) \le C
 \]
-(or any bound growing slower than $2^e-1$). \ev{Open}
-\scale{cofinal} \coord{other:carry-kernel-rank}. One natural route to it is
-proved dead: no \texttt{CompressedAdjointCertificate} ($Q\cdot v\cdot A =
+(or any bound growing slower than $2^e-1$).  This is a logically sufficient
+new theorem schema, not an existing programme obligation: the corpus gives no
+reason rationality should force it, and explicit finite-rank
+shift-polynomial countermodels show that periodic denominator data alone do
+not.  The most direct generic route is also proved dead: no
+\texttt{CompressedAdjointCertificate} ($Q\cdot v\cdot A =
 \mathrm{boundary}$ with $|\mathrm{boundary}|<Q\cdot v$ and $A\ne0$) can
 exist —
 \lean{Erdos249257.false_of_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051}
