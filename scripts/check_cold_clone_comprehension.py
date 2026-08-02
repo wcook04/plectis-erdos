@@ -28,6 +28,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import check_architecture_guide
 import query_corpus
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -40,7 +41,12 @@ QUERY = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
 EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
 SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
-HUMAN_SURFACES = ("README.md", "SCOPE.md", "docs/ORIENTATION.md")
+HUMAN_SURFACES = (
+    "README.md",
+    "ARCHITECTURE.md",
+    "SCOPE.md",
+    "docs/ORIENTATION.md",
+)
 # Volatile semantic counts live on the audit surfaces, not the compact README.
 CENSUS_SURFACES = ("docs/RESULTS.md", "docs/TRUTH_AUDIT.md")
 INCREMENTAL_BUILD_SURFACES = (
@@ -56,6 +62,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # mathematical card. Whole-file allowance scales with the canonical
     # problem registry instead of preserving the original two-lane ceiling.
     "README.md": 16_000 + 300 * INDEXED_PROBLEM_COUNT,
+    "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
 }
@@ -429,7 +436,10 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["mathematical map"],
             ["canonical eight-problem map"],
             ["problem-registry"],
-            ["exact open frontier"],
+            [
+                "distinct reviewed #249/#257 open-proposition frontier",
+                "exact open frontier",
+            ],
             ["agent_native_corpus_navigation"],
             ["every indexed declaration"],
             ["exact dependencies for both loaded roots"],
@@ -503,6 +513,8 @@ def validate_human_first_contact(
                 f"{path} uses self-appraisal phrase {phrase!r}; expose objective "
                 "mathematical and formal facts instead"
             )
+
+    check_architecture_guide.validate_guide(surfaces["ARCHITECTURE.md"])
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     section_order = (
@@ -1195,7 +1207,18 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert tour["scale"]["remaining_open_proposition_count"] == len(
         summary["remaining_open_propositions"]
     )
+    assert tour["scale"]["reviewed_remaining_open_proposition_count"] == len(
+        summary["remaining_open_propositions"]
+    )
     assert tour["scale"]["indexed_problem_count"] == 8
+    assert tour["scale"]["indexed_open_problem_count"] == 8
+    assert tour["open_frontier_contract"]["indexed_open_problem_count"] == 8
+    assert tour["open_frontier_contract"][
+        "reviewed_remaining_open_proposition_count"
+    ] == len(summary["remaining_open_propositions"])
+    assert tour["open_frontier_contract"]["reviewed_scope"] == (
+        "reviewed #249/#257 claim registry"
+    )
     assert tour["budget_contract"]["maximum_encoded_bytes"] == (
         AGENT_TOUR_BUDGET_BYTES
     )

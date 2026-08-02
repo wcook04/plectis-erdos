@@ -159,7 +159,8 @@ exactly once. These are navigation counts, not novelty claims.
   `python3 scripts/query_corpus.py --tour --format card`, then follow
   `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
   The no-build tour exposes corpus scale, the mathematical map, canonical
-  eight-problem map, exact open frontier, and authority boundaries. Use
+  eight-problem map, the distinct reviewed #249/#257 open-proposition
+  frontier, and authority boundaries. Use
   `query_semantic.py problem-registry` for every indexed problem and
   `structural-backlog` for authored replacement. Committed indexes expose every
   indexed declaration and exact dependencies for both loaded roots; coverage

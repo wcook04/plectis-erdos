@@ -3,13 +3,16 @@
 
 # How this repository works
 
-This is a public Lean project about two unsolved problems in mathematics. It
+This is a public Lean project about six unsolved problems in mathematics. It
 contains formal source code, papers and summaries for readers, and a set of
-checks that keep those different descriptions aligned.
+checks that keep those different descriptions aligned. The reviewed claim
+registry covers #249 and #257; a problem-owned expansion library covers #243,
+#251, #269, and #1049 without silently promoting their declarations into that
+reviewed record.
 
-Both mathematical problems remain open. The repository proves intermediate
-results, exact reformulations, and bounded examples around them. It does not
-claim a solution to either problem.
+All six original mathematical problems remain open. The repository proves
+intermediate results, exact reformulations, and bounded examples around them.
+It does not claim a solution to any of them.
 
 You do not need to know Lean, the project history, or any internal naming
 scheme to use this guide.
