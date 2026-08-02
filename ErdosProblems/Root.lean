@@ -23,6 +23,7 @@ import ErdosProblems.Erdos243.FiniteHorizonResidue
 import ErdosProblems.Erdos243.DynamicCancellation
 import ErdosProblems.Erdos243.PrimitivePrefixRigidity
 import ErdosProblems.Erdos243.SparseResetRecovery
+import ErdosProblems.Erdos243.LcmCriticalBoundary
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.ResidueEscape

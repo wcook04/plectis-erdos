@@ -606,3 +606,7 @@ problem-centric wave.
 #print axioms Erdos249257.infinite_support_half_of_globalBooleanMobiusRepair
 #print axioms Erdos249257.abs_localMersennePrefixValue_sub_one_div_twenty_one_le
 #print axioms Erdos249257.one_div_twenty_one_mem_mersenneAchievementSet_of_evenQuotientWindow
+#print axioms ErdosProblems.Erdos243.no_boundedRise_of_strictRiseAvoidance
+#print axioms ErdosProblems.Erdos243.no_boundedNegative_lcmState_of_oldPrimeSupply
+#print axioms ErdosProblems.Erdos243.lcmState_weightedBlock_telescope
+#print axioms ErdosProblems.Erdos243.eventually_zero_of_weightedBlockDebt
