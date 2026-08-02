@@ -144,15 +144,15 @@ finite computations refute the hoped-for entailment simultaneously:
 \item \emph{Vanishing witness.} The smallest returned countermodel has the
 \emph{entire} two-step finite block \(\mathtt{actualOneCubeCoeff}\) equal to
 zero at \(n=52\), \(r_0=13\), \(r_1=13/18\)
-(\lean{squareCRT\_clean\_block\_can\_vanish}{SquareCRTCube.lean:285}, kernel-\texttt{decide}d;
-cleanliness witnessed by \lean{squareCRT\_vanishing\_countermodel\_is\_clean}{SquareCRTCube.lean:294}).
+(\lean{squareCRT\_clean\_block\_can\_vanish}{SquareCRTCube.lean:459}, kernel-\texttt{decide}d;
+cleanliness witnessed by \lean{squareCRT\_vanishing\_countermodel\_is\_clean}{SquareCRTCube.lean:468}).
 \item \emph{Nonvanishing witness.} A separate, nearby clean configuration at
 \(n=27\) has the same block \emph{nonzero}
-(\lean{squareCRT\_clean\_block\_can\_be\_nonzero}{SquareCRTCube.lean:303}; cleanliness witnessed by
-\lean{squareCRT\_nonzero\_countermodel\_is\_clean}{SquareCRTCube.lean:311}).
+(\lean{squareCRT\_clean\_block\_can\_be\_nonzero}{SquareCRTCube.lean:477}; cleanliness witnessed by
+\lean{squareCRT\_nonzero\_countermodel\_is\_clean}{SquareCRTCube.lean:485}).
 \end{itemize}
 Both witnesses are exhibited alongside the positive achievability result
-\lean{exists\_squareCRT\_clean\_horizon}{SquareCRTCube.lean:228} (a bounded common base satisfying prescribed
+\lean{exists\_squareCRT\_clean\_horizon}{SquareCRTCube.lean:327} (a bounded common base satisfying prescribed
 CRT anchors/residues does exist). \ev{Cert} (theorem bodies not
 independently re-verified beyond signatures and docstring — flagged
 \texttt{DOCSTRING-SOURCED} in the source bank) \scale{fixed}
@@ -171,11 +171,11 @@ finite-difference cube in general, only the inference from cleanliness
 
 \textbf{(d) Salvage.} The general cocycle identity
 \(\varphi(pm)=(p-1)\varphi(m)+[p\mid m]\varphi(m)\)
-(\lean{totient\_mul\_prime\_cocycle}{SquareCRTCube.lean:34}) and the CRT-witness apparatus
-(\lean{exists\_squareCRT\_base}{SquareCRTCube.lean:131}, \lean{exists\_large\_squareCRT\_base}{SquareCRTCube.lean:164}) remain fully reusable for
+(\lean{totient\_mul\_prime\_cocycle}{SquareCRTCube.lean:38}) and the CRT-witness apparatus
+(\lean{exists\_squareCRT\_base}{SquareCRTCube.lean:230}, \lean{exists\_large\_squareCRT\_base}{SquareCRTCube.lean:263}) remain fully reusable for
 \emph{any} residue-forcing construction, in any coordinate. More valuably,
 the abstract cube-cancellation lemma extracted from the same file,
-\lean{alternating\_powerset\_sum\_eq\_zero\_of\_insert\_invariant}{SquareCRTCube.lean:264} — ``if inserting one
+\lean{alternating\_powerset\_sum\_eq\_zero\_of\_insert\_invariant}{SquareCRTCube.lean:363} — ``if inserting one
 coordinate never changes the value of \(f\), the alternating powerset sum of
 \(f\) vanishes'' — is completely divorced from totient/CRT content and is
 directly reusable for any Hilbert-cube or higher-difference argument on
@@ -238,7 +238,7 @@ to a single channel.
 or any other Lambert-type denominator-survival argument as-is. It is the
 general mechanism underlying the corpus's Farey-gap denominator-exclusion
 family (Part C of the certificate bank,
-\lean{tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18337}, the strongest
+\lean{tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18384}, the strongest
 current unconditional statement about \(S\): if \(S\) is rational its
 reduced denominator exceeds \(79{,}639{,}646{,}646{,}701{,}375{,}323{,}355{,}774{,}875{,}831{,}053\approx7.96\times10^{34}\)).
 
@@ -352,13 +352,13 @@ rationality).}
 \mathrm{totientTail}(q\cdot\mathrm{periodLcm}(t)) \in
 \mathrm{range}((\uparrow):\mathbb Z\to\mathbb R)\).
 \end{prop}
-\lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{CertificateKernel.lean:18955} (body
+\lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{CertificateKernel.lean:19002} (body
 \texttt{LcmConeFlatness.lean}). \ev{Lean} \scale{uniform} (for all
 sufficiently large \(t\), \emph{given} rationality) \coord{other:lcm-ray-totient}.
 Rationality forces one fractional constant on the entire LCM cone
 \(\{k\cdot\mathrm{periodLcm}(t):k\ge1\}\) at every scale \(t\ge t_1\), not
 merely the single diagonal pair — the umbrella collapse theorem
-\lean{irrational\_totient\_series\_of\_lcm\_cone\_window\_kill\_supply}{CertificateKernel.lean:18967} shows any
+\lean{irrational\_totient\_series\_of\_lcm\_cone\_window\_kill\_supply}{CertificateKernel.lean:19014} shows any
 \(\mathrm{certifiedKill}\) \emph{anywhere} on the two-multiplier cone, at
 arbitrarily large \(t\), forces \(\mathrm{Irrational}(S)\).
 
@@ -375,7 +375,7 @@ common left endpoint of every arc), then \(\exists q_i,q_j\in Q,\
 \mathrm{range}((\uparrow):\mathbb Z\to\mathbb R)\).
 \end{prop}
 \lean{exists\_nonintegral\_pair\_of\_coneNonflatCert}{LcmConeNonflat.lean:126} (supply theorem
-\lean{irrational\_totient\_series\_of\_lcm\_cone\_nonflat\_supply}{CertificateKernel.lean:19093}). \ev{Lean}
+\lean{irrational\_totient\_series\_of\_lcm\_cone\_nonflat\_supply}{CertificateKernel.lean:19140}). \ev{Lean}
 \scale{bounded} (proved for a given finite menu \(Q\); an
 \emph{unbounded}-scale menu is the open sufficient target)
 \coord{other:lcm-ray-totient}.
@@ -407,7 +407,7 @@ second-difference certificate family built on the same window apparatus was
 independently tested and found \emph{not} to be a shortcut over rank 1
 (measured, not merely conjectured: at \((h,N)=(1,8)\), rank-1 fires at depth
 8 while no rank-2 certificate exists at depth \(\le8\);
-\lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19043}) — an
+\lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19090}) — an
 explicitly flagged dead end not to re-attempt without new information.
 
 \subsection{The Mahler defect: dyadic totient-kernel finite rank per level,
@@ -424,21 +424,21 @@ contradiction (or a genuine rank obstruction) might be extracted.
 \begin{thm}[Infinite dyadic totient-kernel rank]
 For every depth \(e\ge0\), the canonical family of \(2^e+1\) dyadic
 totient-kernel channels (\(\mathtt{card\_totientCanonicalIndex}\),
-\lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:51}) is linearly independent over
+\lean{card\_totientCanonicalIndex}{TotientMahlerDefect.lean:61}) is linearly independent over
 \(\mathbb Q\), proved via a \texttt{SeparatedMinorCertificate} (an explicit
 finite evaluation-point assignment with nonzero determinant, forced by CRT +
 Dirichlet's theorem on primes in arithmetic progressions — one channel made
 prime, every other channel forced through a fresh prime \(\equiv1\bmod\) a
 large power of \(2\)).
 \end{thm}
-\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900}; consequently the full
+\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}; consequently the full
 infinite family spans an infinite-dimensional \(\mathbb Q\)-space,
-\lean{not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1014}. A companion
+\lean{not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1145}. A companion
 impossibility result closes the natural repair attempt directly: a bounded
 \emph{compressed-adjoint certificate} — a triple \((Q,A,\mathrm{boundary})\)
 with \(Q\cdot v\cdot A=\mathrm{boundary}\), \(|\mathrm{boundary}|<Q\cdot v\),
 \(A\ne0\) — is provably impossible,
-\lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051}. \ev{Lean}
+\lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}. \ev{Lean}
 \scale{uniform} (holds for every \(e\); existence side is unconditional, via
 Mathlib's CRT + primes-in-AP machinery) \coord{binary-digit} (dyadic
 totient-kernel — \emph{not} the Möbius coordinate).
@@ -452,7 +452,7 @@ theorem, \(\neg\mathrm{Irrational}(S) \implies \exists v>0,\exists U:\mathbb
 N\to\mathbb Z,\ \mathrm{IsTemperedBinaryOrbit}(\varphi,v,U)\wedge\forall
 e,\ 2^e-1\le\mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathrm{range}(
 \mathrm{canonicalCarryKernelFamily}(U,e)))\)
-(\lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284}),
+(\lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300}),
 shows the SCALE side is finished — the \(2^e-1\) floor holds for all \(e\)
 with a uniform proof — but the opposite inequality (a rationality-side rank
 \emph{upper} bound) is exactly what is missing, and its absence is the
@@ -469,8 +469,8 @@ evidence any winning finite-linear-algebra shortcut, if one exists, must
 live in a genuinely third coordinate or use an infinite/growing-parameter
 construction, not evidence that no shortcut exists at all.
 
-\textbf{(d) Salvage.} \lean{SeparatedMinorCertificate}{TotientMahlerDefect.lean:73} and
-\lean{linearIndependent\_of\_separatedMinorCertificate}{TotientMahlerDefect.lean:81} are fully generic finite-rank
+\textbf{(d) Salvage.} \lean{SeparatedMinorCertificate}{TotientMahlerDefect.lean:83} and
+\lean{linearIndependent\_of\_separatedMinorCertificate}{TotientMahlerDefect.lean:91} are fully generic finite-rank
 linear-independence infrastructure — the indexed family is a free variable,
 reusable for any finite-rank obstruction argument on either problem (e.g.
 testing independence of Mersenne-indexed sequences for \#257 via an explicit
@@ -584,12 +584,12 @@ The divisor coefficient of the period-4 sign weight
 (\(w(a){=}1\) if \(a{\equiv}1\), \(-1\) if \(a{\equiv}3\), else \(0\), mod
 4) vanishes identically at every \(n\equiv3\pmod4\), via the divisor-pairing
 involution \(d\mapsto n/d\).
-\lean{Erdos249257.intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14179}.
+\lean{Erdos249257.intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14226}.
 \ev{Lean} \scale{fixed} \coord{mobius-mersenne} &
 Witnesses that Dirichlet-convolution coefficients CAN vanish identically on
 an arithmetic progression, so the ``frequently nonzero'' hypothesis in the
 nonnegative-periodic irrationality closure
-(\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14536})
+(\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14583})
 is not free — it is why the corpus lands a dichotomy for general periodic
 signed weights rather than an unconditional supply theorem. \\
 \hline
@@ -597,8 +597,8 @@ Certified finite-depth ``death'' certificates as a route to membership proofs
 (both problems) &
 \(\mathtt{CertifiedGreedyMersenneDeath}(x,\mathrm{level},\mathrm{lookahead})\)
 is a decidable, finite-depth certificate proving non-membership only
-(\lean{greedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1711}; witness
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1742}, \(3/4\) certified dead at
+(\lean{greedyMersenneDeath\_not\_mem}{GreedyAchievementSet.lean:1724}; witness
+\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1755}, \(3/4\) certified dead at
 level 1). \ev{Cert} \scale{bounded} \coord{greedy-orbit} &
 Structural one-sidedness, recurring across the WHOLE certified-kill family
 (\lean{TotientTailPeriodKiller.lean}{TotientTailPeriodKiller.lean}, \lean{LcmConeFlatness.lean}{LcmConeFlatness.lean}, this one):
@@ -744,12 +744,12 @@ Möbius--Mersenne coordinate, uniform in \(t\), but there is no landed
 transport from a denominator lower bound to \(\mathrm{certifiedKill}\) or to
 totient-tail non-integrality — a different coordinate from the obligation. \\
 249-supply & d4/d5,
-\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900}, \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284} &
+\lean{linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}, \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300} &
 coordinate\_only & NOT\_PROMOTABLE. The scale side of a second, independent
 open obligation (unbounded carry-kernel rank forced by rationality) is
 finished uniformly in \(e\); the opposite (rationality-side rank upper
 bound) is missing, and one natural route to it is proved dead
-(\lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051}). \\
+(\lean{false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}). \\
 257-reset & rc-2 / F4-adjacent,
 \lean{one\_third\_lt\_scaledMersenneTail\_floorWall}{HalfCylinderMiddleCarryLowerBound.lean:2308} & multiple &
 NOT\_PROMOTABLE. The excess-side run-length law is only half-assembled: an
@@ -797,7 +797,7 @@ obligation tolerates an exponentially looser carry but demands the support
 be confined to a lower window — the gap is support locality, not carry
 size, and neither socket implies the other. \\
 257-universal & NM-02,
-\lean{infinite\_greedyMersenneSkippedSupport\_of\_half\_mem}{GreedyAchievementSet.lean:2482} & scale\_only &
+\lean{infinite\_greedyMersenneSkippedSupport\_of\_half\_mem}{GreedyAchievementSet.lean:2495} & scale\_only &
 \textbf{PROMOTABLE (no new mathematics), but does not close anything.}
 The proof was opened and found already uniform in the target in every
 internal step; only the statement's own quantifier is artificially pinned
@@ -816,11 +816,11 @@ available with zero new arithmetic. Paired with NM-02: universal \#257 at
 an infinitely-skipping greedy Mersenne orbit — a genuine reformulation, not
 a resolution. \\
 257-universal & NM-04,
-\lean{dyadic\_support\_fraction\_reciprocalMass\_diverges\_or\_gt\_one}{RationalSupportCarrySkeleton.lean:2200} & coordinate\_only &
+\lean{dyadic\_support\_fraction\_reciprocalMass\_diverges\_or\_gt\_one}{RationalSupportCarrySkeleton.lean:2210} & coordinate\_only &
 NOT\_PROMOTABLE (partial mechanical content only). The dyadic restriction
 \(v=1\) is a call-site choice, not a proof constraint — the general-\(v\)
 conclusion is already landed for arbitrary \((v,h,L,F)\) at
-\lean{shiftedBooleanCollision\_wrap\_bound\_of\_common\_multiple}{RationalSupportCarrySkeleton.lean:1963} — but
+\lean{shiftedBooleanCollision\_wrap\_bound\_of\_common\_multiple}{RationalSupportCarrySkeleton.lean:1968} — but
 the strict form needed for non-dyadic targets requires one genuinely new
 auxiliary bound (a mean-least-residue estimate) not present in the corpus. \\
 257-universal & NM-12,

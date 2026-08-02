@@ -272,7 +272,7 @@ If
 \forall N,\quad \mathrm{mobiusCenteredHalfCarry}(\mathrm{greedySupport}(1/2),N) \;\le\; 2\sqrt N + 4,
 \]
 then the greedy skipped support is infinite and $\mathrm{erdosSupportSeries}(2,\mathrm{greedyMersenneSupport}(1/2)) = 1/2$. Nonnegativity of the left side is unconditional (see 257bm:i-carry below); ONLY the upper $2\sqrt N+4$ bound remains open. Distinct from 257bm:c11's dyadic-band route and from 257bm:c7's largest-skip socket — the corpus records this as a genuinely independent square-root-scale frontier.
-\par\noindent\ev{Open} \scale{cofinal} \coord{other:sqrt-carry-growth} \lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:788} \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:805}
+\par\noindent\ev{Open} \scale{cofinal} \coord{other:sqrt-carry-growth} \lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:816} \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:833}
 \end{thm}
 
 \begin{thm}[257rig:c17 --- \texttt{exists\_infinite\_support\_half\_of\_cofinalTerminalOnlyStrip}]
@@ -325,7 +325,7 @@ $\mathrm{CofinalPositiveHalfGreedySkips} \Leftrightarrow (\mathrm{greedyMersenne
 which this theorem proves equivalent to $1/2\in\mathrm{mersenneAchievementSet}$ directly — the
 consumer 257bm:c2 chains into is, once unwound, this exact equivalence. See 257bm:k5 for why
 this makes 257bm:c2 a trap, not a shortcut.
-\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2514} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1515}
+\par\noindent\ev{Lean} \scale{cofinal} \coord{other:topological-achievement-set} \lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527} \lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1528}
 \end{thm}
 
 \subsection{Invariants}
@@ -545,7 +545,7 @@ mass, plus an explicit two-spike construction at $\mathrm{lcm}(a,b)$ for any two
 positive support elements. Directly excludes any candidate infinite support with SMALL
 (convergent, $\le1$) reciprocal mass — e.g. any support sparse enough for the lcm-gap engine's
 irrationality instances — from also being a dyadic-rational counterexample.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:cesaro-tail} \lean{dyadic\_support\_fraction\_reciprocalMass\_diverges\_or\_gt\_one}{RationalSupportCarrySkeleton.lean:2200} \lean{one\_lt\_reciprocalMass\_of\_dyadic\_support\_fraction\_of\_two\_pos\_mem}{RationalSupportCarrySkeleton.lean:2116}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:cesaro-tail} \lean{dyadic\_support\_fraction\_reciprocalMass\_diverges\_or\_gt\_one}{RationalSupportCarrySkeleton.lean:2210} \lean{one\_lt\_reciprocalMass\_of\_dyadic\_support\_fraction\_of\_two\_pos\_mem}{RationalSupportCarrySkeleton.lean:2124}
 \end{thm}
 
 \begin{thm}[257rig:i3 --- \texttt{shifted\_state\_unbounded\_of\_infinite\_support} (T13)]
@@ -557,7 +557,7 @@ unbounded-but-tempered orbit is possible, and is exactly what T7 constructs when
 rational. The proof selects $2B+1$ positive support elements and uses their product as an
 explicit common multiple forcing $\mathrm{supportCoeff}$ mass $\ge2B+1$ there — a technique
 fully portable to any Dirichlet-incidence-style coefficient forced by an infinite index set.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:common-multiple-forcing} \lean{shifted\_state\_unbounded\_of\_infinite\_support}{RationalSupportCarrySkeleton.lean:2320} \lean{exists\_unbounded\_shifted\_odd\_tail\_nat\_state\_of\_support\_fraction}{RationalSupportCarrySkeleton.lean:2377} \lean{one\_add\_mul\_card\_le\_two\_mul\_shifted\_state}{RationalSupportCarrySkeleton.lean:2228}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:common-multiple-forcing} \lean{shifted\_state\_unbounded\_of\_infinite\_support}{RationalSupportCarrySkeleton.lean:2327} \lean{exists\_unbounded\_shifted\_odd\_tail\_nat\_state\_of\_support\_fraction}{RationalSupportCarrySkeleton.lean:2383} \lean{one\_add\_mul\_card\_le\_two\_mul\_shifted\_state}{RationalSupportCarrySkeleton.lean:2237}
 \end{thm}
 
 \begin{thm}[257rig:i4a --- \texttt{supportCoeffZeroWindow\_length\_le\_eps\_logb} (T11)]
@@ -632,7 +632,7 @@ constructs, and since \#249 ($\varphi/2^n$) is itself built from a M\"obius/divi
 structure ($\varphi=\mu*\mathrm{id}$), this carry-nonnegativity mechanism is a strong candidate
 for direct reuse or close adaptation on the \#249 side. The analytic half of 257bm:k12's
 contradiction machine below; also the base case consumed by 257rig:c16's sqrt-bound route.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:mobius-centred-carry} \lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:842} \lean{mobiusCenteredHalfCarry\_nonneg\_of\_supportSeries\_lt\_half}{HalfCylinderFinalMiddleCellEscape.lean:94}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:mobius-centred-carry} \lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:870} \lean{mobiusCenteredHalfCarry\_nonneg\_of\_supportSeries\_lt\_half}{HalfCylinderFinalMiddleCellEscape.lean:94}
 \end{thm}
 
 \begin{thm}[257hg:i7 --- \texttt{halfGreedy\_skipped\_endpoint\_trichotomy} (G5)]
@@ -652,7 +652,7 @@ split inside the negative cell that the corpus has managed to exclude so far.
 \begin{defn}[257hg:i1 --- \texttt{mersenneGap}]
 $\mathrm{mersenneGap}(n) := \mathrm{mersenneWeight}(n) - \mathrm{mersenneTail}(n) > 0$, the
 per-level shortfall between a single weight and the true tail sum beyond it.
-\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2301} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2310}
+\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{mersenneGap}{GreedyAchievementSet.lean:2314} \lean{mersenneGap\_pos}{GreedyAchievementSet.lean:2323}
 \end{defn}
 
 \begin{thm}[257hg:i2 --- \texttt{mersenneGap\_tail\_le}, \texttt{tendsto\_mersenneGap\_tail\_zero}]
@@ -674,7 +674,7 @@ level $N$ is small", e.g.\ a measure-theoretic rather than single-point argument
 \begin{defn}[257hg:i3 --- \texttt{mersenneTailLB3}, the three-channel Lambert lower bound]
 $\mathrm{mersenneTailLB3}(k) := 1/2^k + 1/(3\cdot4^k) + 1/(7\cdot8^k) < \mathrm{mersenneTail}(k)$
 — a strict rational lower bound obtained by truncating the Lambert-type series at three terms.
-\par\noindent\ev{Lean} \scale{n/a} \coord{other:lambert-bound} \lean{mersenneTailLB3}{HalfGreedyFatalGap.lean:52} \lean{three\_div\_lt\_mersenneTailLB3}{HalfGreedyFatalGap.lean:66} \lean{mersenneTailLB3\_lt\_mersenneTail}{HalfGreedyFatalGap.lean:212}
+\par\noindent\ev{Lean} \scale{n/a} \coord{other:lambert-bound} \lean{mersenneTailLB3}{HalfGreedyFatalGap.lean:56} \lean{three\_div\_lt\_mersenneTailLB3}{HalfGreedyFatalGap.lean:70} \lean{mersenneTailLB3\_lt\_mersenneTail}{HalfGreedyFatalGap.lean:216}
 \end{defn}
 
 \begin{thm}[257hg:i4 --- \texttt{skipSafe\_of\_two\_mul\_le\_three\_mul}, the sharp $2u\le3a$ criterion]
@@ -693,7 +693,7 @@ supersedes two-thirds\," / "\,frontier $3a\ge2u$\," language on the UNCONDITIONA
 infinite $A$) \#257 track recorded in project memory; whether it is the same theorem or an
 independently-proved analogue on this half-membership track is UNVERIFIED, flagged
 \texttt{reported\_prior}, not re-verified equivalence.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:lambert-bound} \lean{skipSafe\_of\_two\_mul\_le\_three\_mul}{HalfGreedyFatalGap.lean:103} \lean{sharp\_of\_dyadic}{HalfGreedyFatalGap.lean:193} \lean{sharp\_strictly\_stronger}{HalfGreedyFatalGap.lean:196} \lean{skipSafe\_actualTail\_of\_two\_mul\_le\_three\_mul}{HalfGreedyFatalGap.lean:231}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:lambert-bound} \lean{skipSafe\_of\_two\_mul\_le\_three\_mul}{HalfGreedyFatalGap.lean:107} \lean{sharp\_of\_dyadic}{HalfGreedyFatalGap.lean:197} \lean{sharp\_strictly\_stronger}{HalfGreedyFatalGap.lean:200} \lean{skipSafe\_actualTail\_of\_two\_mul\_le\_three\_mul}{HalfGreedyFatalGap.lean:235}
 \end{thm}
 
 \begin{prop}[257hg:i5 --- unconditional safety corollaries]
@@ -703,7 +703,7 @@ unconditionally ($\mathtt{two\_le\_of\_fatal}$) and $u\ge3$ once $u$ is odd
 ($\mathtt{three\_le\_of\_fatal\_of\_odd}$). Mirror statements
 $\mathtt{unitNumerator\_skipSafe\_actualTail}$, $\mathtt{three\_mul\_lt\_two\_mul\_of\_actualTail\_fatal}$, $\mathtt{three\_le\_of\_actualTail\_fatal\_of\_odd}$ hold for the actual (not merely
 three-channel-bounded) Mersenne tail.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:lambert-bound} \lean{unitNumerator\_skipSafe}{HalfGreedyFatalGap.lean:131} \lean{two\_le\_of\_fatal}{HalfGreedyFatalGap.lean:157} \lean{three\_le\_of\_fatal\_of\_odd}{HalfGreedyFatalGap.lean:169} \lean{unitNumerator\_skipSafe\_actualTail}{HalfGreedyFatalGap.lean:242}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:lambert-bound} \lean{unitNumerator\_skipSafe}{HalfGreedyFatalGap.lean:135} \lean{two\_le\_of\_fatal}{HalfGreedyFatalGap.lean:161} \lean{three\_le\_of\_fatal\_of\_odd}{HalfGreedyFatalGap.lean:173} \lean{unitNumerator\_skipSafe\_actualTail}{HalfGreedyFatalGap.lean:246}
 \end{prop}
 
 \subsubsection*{Two-sided dyadic-scale control (\texttt{HalfCylinderMiddleCarryLowerBound}, feeds \texttt{HalfUpperResetCriticalBand})}

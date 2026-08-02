@@ -192,7 +192,7 @@ One certified kill \emph{anywhere} on the two-multiplier LCM cone, at arbitraril
 suffices; the diagonal (Prop.~\ref{prop:B3}) is the cell $q=m=1$. This is the widest known
 target still logically equivalent-in-strength to Prop.~\ref{prop:A10}.
 \scale{cofinal}\ \ev{Open}\ \coord{mobius-mersenne}\\
-\lean{irrational_totient_series_of_lcm_cone_window_kill_supply}{CertificateKernel.lean:18967}
+\lean{irrational_totient_series_of_lcm_cone_window_kill_supply}{CertificateKernel.lean:19014}
 \end{prop}
 
 \begin{prop}[Menu non-flatness supply — sharper than pairwise]\label{prop:B10}
@@ -206,7 +206,7 @@ while every pair is separately consistent), \#249 follows via Prop.~\ref{prop:B7
 argmin/Helly-avoidance proof technique is a reusable combinatorial-geometry pattern for any
 modular-residue pincer with more than two points.
 \scale{cofinal}\ \ev{Open}\ \coord{mobius-mersenne}\\
-\lean{irrational_totient_series_of_lcm_cone_nonflat_supply}{CertificateKernel.lean:19093}
+\lean{irrational_totient_series_of_lcm_cone_nonflat_supply}{CertificateKernel.lean:19140}
 \end{prop}
 
 \begin{prop}[Unbounded Farey growth — a second independent wall]\label{prop:C2sup}
@@ -236,7 +236,7 @@ shortcut (Observation~\ref{prop:B4b-kill}). Thus the displayed upper bound is on
 sufficient new input, not a third live frontier and not evidence that existing rank machinery is
 close to a contradiction.
 \scale{cofinal}\ \ev{Open}\ \coord{other:carry-kernel-rank}\\
-\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:284}
+\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
 \end{prop}
 
 \begin{prop}[Alternative coordinate: bounded carry-orbit survivor supply]\label{prop:B12cons}
@@ -487,7 +487,7 @@ at every scale $t\ge t_1$, not just the diagonal pair — a strict generalisatio
 Prop.~\ref{prop:A9-inv}. Any certificate anywhere on the cone therefore kills \#249
 (Prop.~\ref{prop:B7}).
 \scale{n/a}\ \ev{Lean}\ \coord{mobius-mersenne}\\
-\lean{rational_totient_series_forces_lcm_cone_flatness}{CertificateKernel.lean:18955}
+\lean{rational_totient_series_forces_lcm_cone_flatness}{CertificateKernel.lean:19002}
 \end{prop}
 
 \begin{prop}[Unconditional $(2^e{+}1)$-dimensional dyadic kernel — the rank floor]\label{prop:D4-inv}
@@ -497,7 +497,7 @@ made prime, every other channel gets a fresh prime $\equiv1\bmod$ a large power 
 proved fact, needing no rationality hypothesis at all, and it is the fixed lower bound that
 Prop.~\ref{prop:D5cons} would have to contradict.
 \scale{n/a}\ \ev{Lean}\ \coord{other:carry-kernel-rank}\\
-\lean{card_totientCanonicalIndex}{TotientMahlerDefect.lean:51}
+\lean{card_totientCanonicalIndex}{TotientMahlerDefect.lean:61}
 \end{prop}
 
 \begin{prop}[Sharp Farey rung — concrete necessary floor at $K=240$]\label{prop:C2-inv}
@@ -517,7 +517,7 @@ necessary condition on any hypothetical rational value, logically independent of
 certificate-supply wall (Prop.~\ref{prop:A10}); it excludes small denominators outright, without
 needing a period at all.
 \scale{fixed}\ \ev{Lean}\ \coord{other:farey-gap}\\
-\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18337}
+\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
 \end{prop}
 
 \begin{prop}[The two foundational irrationality engines]\label{prop:D1D2-inv}
@@ -541,7 +541,7 @@ Nesterenko 1996 (cited, not formalised). Any proof of \#249 sits on this Dirichl
 ladder next to a proved irrational neighbour ($L(1)$) and a proved rational neighbour
 ($L(\varphi)$); this is the clearest bridge into \#257's native Lambert-series coordinate.
 \scale{n/a}\ \ev{Lean, Cited}\ \coord{mobius-mersenne}\\
-\lean{tsum_totient_div_pow_two_eq_pnat_half_pow}{CertificateKernel.lean:18368}
+\lean{tsum_totient_div_pow_two_eq_pnat_half_pow}{CertificateKernel.lean:18415}
 \end{prop}
 
 \begin{prop}[Generic rational-gap adapter]\label{prop:D9-inv}
@@ -696,7 +696,7 @@ a shortcut over rank-1 (rank-1 at least as shallow in $30/40$ probed cells for $
 \textbf{Kills}: expecting a depth improvement from moving to second differences. Explicitly flagged
 as a dead end — do not re-attempt this exact refinement without new information.
 \scale{n/a}\ \ev{Cert}\ \coord{mobius-mersenne}\\
-\lean{totient_tail_rank_two_kill_sound_but_not_shallower_cell}{CertificateKernel.lean:19043}
+\lean{totient_tail_rank_two_kill_sound_but_not_shallower_cell}{CertificateKernel.lean:19090}
 \end{obs}
 
 \begin{obs}[Unit-gap strengthening rescues at most one lattice point]\label{prop:D8cert-kill}
@@ -752,7 +752,7 @@ vanish identically, while a separate clean witness shows it can also be nonzero 
 correction term; an additional anti-concentration or residue producer is still needed, exactly as
 the module's own docstring states.
 \scale{n/a}\ \ev{Lean (docstring-sourced)}\ \coord{other:square-crt-cocycle}\\
-\lean{squareCRT_clean_block_can_vanish}{SquareCRTCube.lean:285}
+\lean{squareCRT_clean_block_can_vanish}{SquareCRTCube.lean:459}
 \end{obs}
 
 \begin{obs}[No fixed integer clears every normalised primitive-Euler coordinate]\label{prop:D6-kill}
@@ -782,5 +782,5 @@ search over any of the certificate families above as evidence toward rationality
 finite prefix of confirmed kills (Prop.~\ref{prop:SK-01-inv}, Prop.~\ref{prop:B11-inv}) as
 anything more than a floor to extend.
 \scale{n/a}\ \ev{Lean (structural caveat, cross-problem)}\ \coord{n/a}\\
-\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1720}
+\lean{CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1733}
 \end{obs}

@@ -10,8 +10,8 @@
 \usepackage{colortbl}
 % Problem-specific source pin: #269's local-window consumer advances
 % independently of the corpus default.
-\renewcommand{\commit}{5b1e6c05c1c5485ba40dec8ba3dcc94c134f026b}
-\renewcommand{\commitshort}{5b1e6c05c1c5}
+\renewcommand{\commit}{76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0}
+\renewcommand{\commitshort}{76b5b0a7ed5d}
 \hypersetup{
   pdftitle={A two-prime transcendence theorem and exact three-prime structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
@@ -1433,6 +1433,10 @@ lift error grow by the exact product of the successive bases; bases at least
 two make its absolute value at least $2^N$, contradicting even a single
 index-$N$ bound strictly below $2^N$
 (\lword{Erdos269/CarryLiftExtinction.lean}{176}{no_carryLift_of_errorBound_below_twoPow}{one-index
+extinction}).  A single index therefore already suffices, and consequently no
+uniform bound on the lift error can hold either: under the same hypotheses a
+nonzero initial error is incompatible with any bound valid at every index
+(\lword{Erdos269/CarryLiftExtinction.lean}{236}{no_bounded_carryLift_of_blockNull_twoAnchors}{uniform
 extinction}).
 A separate four-state calculation reaches the obstruction earlier: four real
 states in $(0,1)$ with unit-accuracy integral lifts and the two anchor

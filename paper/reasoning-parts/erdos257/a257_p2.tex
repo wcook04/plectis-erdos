@@ -102,7 +102,7 @@ decision procedure (\S\ref{sec:four-coordinates}, Theorem~\ref{thm:tr-finite-dec
 \multicolumn{4}{|l|}{\emph{Uniform — unconditional for every $n$ past an explicit threshold}} \\
 \hline
 Master achievement/greedy-survival criterion.
-\lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1445} \ev{Lean}
+\lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1458} \ev{Lean}
 & \scale{uniform} & $\forall x\ \forall n$ (iff) & \coord{greedy-orbit} \\
 \hline
 Membership iff every actually-skipped rank survives.
@@ -134,17 +134,17 @@ Parity kill: no finite support hits $1/2$ exactly. \lean{finite\_boolSupport\_ne
 & \scale{uniform} & $\forall A$ finite, $0\notin A$ & \coord{other:denominator-parity} \\
 \hline
 Erdős--Borwein irrationality at every integer base.
-\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8288} \ev{Lean}
+\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335} \ev{Lean}
 & \scale{uniform} & $\forall b\ge2$ & \coord{mobius-mersenne} \\
 \hline
 Erdős 1968: any infinite, pairwise-coprime, reciprocal-summable index set gives an irrational
-support series. \lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10729}
+support series. \lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10776}
 \ev{Lean}
 & \scale{uniform} & $\forall b\ge2\ \forall A$ (infinite, coprime, summable) & \coord{mobius-mersenne} \\
 \hline
 Generic block-certificate engine (problem-agnostic): weighted-coefficient series is irrational
 given a per-precision divisibility/window certificate.
-\lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8618}
+\lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8665}
 \ev{Lean}
 & \scale{uniform} & $\forall b\ge2\ \forall c\,(\forall m,c(m)\le m)$, given $\forall q\,\exists N,K,L,C$
 & \coord{binary-digit} \\
@@ -182,7 +182,7 @@ Payoff theorem consuming the row above, with zero further combinatorial search o
 & \scale{cofinal} & given $\forall N\,\exists c\ge N(\ldots)$ & \coord{greedy-orbit} \\
 \hline
 Master half-branch dichotomy: membership iff the greedy skip set is infinite.
-\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2514}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2527}
 \ev{Lean} (iff proved; both sides cofinal-shaped)
 & \scale{cofinal} & iff $(\mathrm{skippedSupport}).\mathrm{Infinite}$ & \coord{greedy-orbit} \\
 \hline
@@ -296,7 +296,7 @@ the take comparison is never a tie.
 \emph{Skip-safety boundary excluded (irrationality).} The tail past rank $k$ is
 $T_{k+1}=E-1-\sum_{2\le j\le k}x_j$, where $E=\sum_{n\ge1}1/(2^n-1)$ is the Erdős--Borwein
 constant: a rational shift of $E$. Erdős's own 1948 theorem gives $E$ irrational
-(\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8288}, instantiated at $b=2$), so
+(\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335}, instantiated at $b=2$), so
 $T_{k+1}$ is irrational for every $k$. The residual $\rho$ arising from any finite Boolean prefix
 is rational. An irrational number never equals a rational one, so $\rho=T_{k+1}$ is impossible at
 any rank — the skip-safety comparison is never a tie either.

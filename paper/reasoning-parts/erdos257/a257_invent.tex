@@ -446,7 +446,7 @@ $k\ge1$,
 \]
 \end{lem}
 \begin{proof}
-By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lean:842} (\ev{Lean}),
+By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lean:870} (\ev{Lean}),
 \[
 \bigl(\mathtt{integerHalfCarry}\ A\ N:\R\bigr)
 = 2^{\,N+1}\Bigl(\tfrac12-\mathtt{erdosSupportSeries}\ 2\ A\Bigr)
@@ -488,13 +488,13 @@ $\Pi^0_1$ goal.
 
 \textbf{Scope limits to be stated verbatim in the docstrings.} (1) does \emph{not} extend to every
 $A$ with $1\notin A$: without
-\lean{erdosSupportSeries_greedyMersenneSupport_le}{HalfCarryReachability.lean:859} (which supplies
+\lean{erdosSupportSeries_greedyMersenneSupport_le}{HalfCarryReachability.lean:887} (which supplies
 $\delta:=1/2-S_G\ge0$ for the greedy support specifically) one obtains only the one-sided
 equivalence $\text{hbound}\iff(1/2-S_A)\le0$. The mechanism in all five cases is the same and
 should be recorded once: $2^{\,N+1}\delta$ dominates any $\sqrt{N}$ envelope, so a strip
 hypothesis forces $\delta=0$; and $\delta=0$ makes the unconditional tail bound supply the strip.
 Membership is then read off by
-\lean{mem_mersenneAchievementSet_iff_greedy_survival}{GreedyAchievementSet.lean:1445} (\ev{Lean}).
+\lean{mem_mersenneAchievementSet_iff_greedy_survival}{GreedyAchievementSet.lean:1458} (\ev{Lean}).
 
 \subsection{R5. The sparse/dense trichotomy --- and a proof that the present engine cannot close it}
 \label{sec:invent-R5}
@@ -510,7 +510,7 @@ Membership is then read off by
 The sparse branch is already closed twice over: it contradicts
 \lean{supportCoeffZeroWindow_length_le_eps_logb}{SublogDivisorCoverage.lean:435} (\ev{Lean},
 unconditional and uniform in $A$) whenever the series is rational, and the far sparse edge is
-covered outright by \lean{irrational_erdosSum_of_lcm_gap}{CertificateKernel.lean:5836} (\ev{Lean}).
+covered outright by \lean{irrational_erdosSum_of_lcm_gap}{CertificateKernel.lean:5883} (\ev{Lean}).
 The dense branch is the missing producer: for $A$ whose divisor incidence is bounded below
 infinitely often, construct
 \[
@@ -650,7 +650,7 @@ a small modulus predicts. That datum does not discriminate.
 Third, and this is the sharpest internal check available: pseudorandomness is a claim about the
 \emph{absence} of structure, and the corpus contains an unmistakable piece of \emph{present}
 structure --- strict superincreasingness of the Mersenne weights, which forces the digit coding to
-be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1546},
+be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1559},
 \ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
 coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
 description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The

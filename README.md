@@ -138,8 +138,8 @@ evidence, checked consumer, and endpoint-or-counterexample boundary—are in
 
 | Library | Current size |
 |---|---:|
-| Lean modules | 1,013 |
-| Formal results and supporting lemmas | 150,934 |
+| Lean modules | 1,019 |
+| Formal results and supporting lemmas | 151,028 |
 | Curated claim records | 101 |
 | Contribution families | 21 |
 

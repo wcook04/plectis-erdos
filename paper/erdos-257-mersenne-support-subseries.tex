@@ -22,8 +22,8 @@
 % useful one.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{5b1e6c05c1c5485ba40dec8ba3dcc94c134f026b}
-\renewcommand{\commitshort}{5b1e6c05c1c5}
+\renewcommand{\commit}{60d53202f730a177cfb8390c69903cce3d642c3d}
+\renewcommand{\commitshort}{60d53202f730}
 \hypersetup{
   pdftitle={Denominator periods, rational-value constraints and achievement-set geometry for Mersenne subseries (Erdős Problem 257)},
   pdfsubject={Erdős Problem Notes: Problem 257},
@@ -288,7 +288,7 @@ and $u$ is unbounded.
 \end{theorem}
 
 \noindent Checked as
-\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2377}{exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction}{Lean}.
+\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2383}{exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction}{Lean}.
 The useful clause is exact: these scaled-tail states cannot remain bounded.
 In particular they cannot eventually cycle through a finite set of states.
 
@@ -331,7 +331,7 @@ $X_A=p/(2^cv)$ with $v>1$ odd and $\gcd(p,v)=1$.  Then
 \end{theorem}
 
 \noindent Checked as
-\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{1478}{one_div_oddOrder_le_reciprocalMass_of_support_fraction}{Lean}.
+\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{1480}{one_div_oddOrder_le_reciprocalMass_of_support_fraction}{Lean}.
 A finite support already supplies an instance: $A=\{2,3\}$ has $X_A=10/21$, so
 $c=0$, $v=21$, $\gcd(p,v)=1$ and $\operatorname{ord}_{21}(2)=6$, and the bound
 reads $\tfrac12+\tfrac13\ge\tfrac16$.
@@ -353,7 +353,7 @@ or
 \end{theorem}
 
 \noindent Checked as
-\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2200}{dyadic_support_fraction_reciprocalMass_diverges_or_gt_one}{Lean}.
+\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2210}{dyadic_support_fraction_reciprocalMass_diverges_or_gt_one}{Lean}.
 The two alternatives are an exact necessary consequence of a dyadic rational
 value.  They do not contradict rationality by themselves: a contradiction
 requires separate proofs that the reciprocal terms are summable and that the
@@ -450,20 +450,20 @@ Support $A$ & Bases & Mechanism and authority \\
 \midrule
 \multicolumn{3}{@{}l}{\emph{Classical full support, and base change into it}}\\
 all of $\Npos$ & every $b\ge2$ & Erd\H{o}s 1948~\cite{erdos1948};
-  \mword{Erdos249257/CertificateKernel.lean}{8998}{irrational_erdosSupportSeries_univ}{formalised here} \\
+  \mword{Erdos249257/CertificateKernel.lean}{9045}{irrational_erdosSupportSeries_univ}{formalised here} \\
 multiples of a fixed $d$ & every $b\ge2$ & dilation: the multiples series at
   base $b$ \emph{is} the full-support series at base $b^d$
-  (\mword{Erdos249257/CertificateKernel.lean}{9056}{irrational_erdosSupportSeries_multiples}{checked}) \\
+  (\mword{Erdos249257/CertificateKernel.lean}{9103}{irrational_erdosSupportSeries_multiples}{checked}) \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Periodicity of the coefficient sequence}}\\
 eventually periodic & every $b\ge2$ &
-  \mword{Erdos249257/CertificateKernel.lean}{11557}{irrational_erdosSupportSeries_eventuallyPeriodic}{checked here};
+  \mword{Erdos249257/CertificateKernel.lean}{11604}{irrational_erdosSupportSeries_eventuallyPeriodic}{checked here};
   Luca--Tachiya prove the nonnegative purely-periodic case
   \cite[Theorem~1, p.~139; proof pp.~149--150]{lucatachiya2017};
   finite rational prefixes give the infinite eventual case \\
 a residue class; the odd numbers & every $b\ge2$ & special cases of the row
-  above (\mword{Erdos249257/CertificateKernel.lean}{11625}{irrational_erdosSupportSeries_residueClass}{residue class},
-  \mword{Erdos249257/CertificateKernel.lean}{11639}{irrational_erdosSupportSeries_odd}{odd});
+  above (\mword{Erdos249257/CertificateKernel.lean}{11672}{irrational_erdosSupportSeries_residueClass}{residue class},
+  \mword{Erdos249257/CertificateKernel.lean}{11686}{irrational_erdosSupportSeries_odd}{odd});
   Luca--Tachiya's Example~2 strengthens the odd row to joint linear
   independence of every finite divisor-convolution ladder, also for negative
   integer bases with absolute value greater than one
@@ -471,12 +471,12 @@ a residue class; the odd numbers & every $b\ge2$ & special cases of the row
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Denominator gaps along a sparse support}}\\
 factorials $\{n!\}$ & every $b\ge2$ &
-  \mword{Erdos249257/CertificateKernel.lean}{5988}{irrational_erdosSum_factorial_support}{checked here} \\
+  \mword{Erdos249257/CertificateKernel.lean}{6035}{irrational_erdosSum_factorial_support}{checked here} \\
 powers of two $\{2^k\}$ & every $b\ge2$ &
-  \mword{Erdos249257/CertificateKernel.lean}{6012}{irrational_erdosSum_two_pow_support}{checked here} \\
+  \mword{Erdos249257/CertificateKernel.lean}{6059}{irrational_erdosSum_two_pow_support}{checked here} \\
 pairwise coprime, $\sum_{a\in A}a^{-1}<\infty$ & every $b\ge2$ &
   Erd\H{o}s~\cite{erdos1968}, theorem on p.~222;
-  \mword{Erdos249257/CertificateKernel.lean}{10729}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here} \\
+  \mword{Erdos249257/CertificateKernel.lean}{10776}{irrational_erdosSupportSeries_pairwise_coprime}{formalised here} \\
 \addlinespace
 \multicolumn{3}{@{}l}{\emph{Multiplicative closure: Chowla--Erd\H{o}s, refined}}\\
 $F_s(E)$ and the monomial images
@@ -522,7 +522,7 @@ rows do not, and this is not merely an artefact of how they were proved.  The
 denominator-gap criterion behind the factorial and power-of-two rows
 \emph{provably cannot} reach the full support: the prefix lcm grows too slowly
 for its hypothesis to hold
-(\mword{Erdos249257/CertificateKernel.lean}{6225}{lcm_gap_hypothesis_fails_full_support}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{6272}{lcm_gap_hypothesis_fails_full_support}{checked}).
 Conversely the analytic method of~\cite{taoteravainen2025} reaches the primes,
 which are neither eventually periodic nor pairwise coprime with summable
 reciprocals.  No list contains another, and their union does not exhaust the
@@ -584,7 +584,7 @@ exact about where.  For $u\colon\Npos\to\Z$ periodic and
 $b\ge2$, what is checked here is a \emph{dichotomy}: the series
 $\sum_{n\ge1}u(n)/(b^n-1)$ is irrational, \emph{or} some power of $b$ times
 its value is an integer
-(\mword{Erdos249257/CertificateKernel.lean}{14128}{irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{14175}{irrational_or_bpow_mul_eq_intCast_intWeightedErdosSeries_periodic}{checked}).
 For a nonnegative support indicator the terminating alternative is excluded by
 the rows above; for mixed signs this argument does not exclude it.
 
@@ -784,9 +784,9 @@ $A\mathbin{\triangle}B$ is finite, choose $M$ above all of its elements.
 The two support series then have the same tail beyond $M$, while each omitted
 prefix is rational.  The two directions of this argument are exactly the
 checked prefix lemmas
-\mword{Erdos249257/CertificateKernel.lean}{9420}{irrational_erdosSupportSeries_of_tail}{Lean}
+\mword{Erdos249257/CertificateKernel.lean}{9467}{irrational_erdosSupportSeries_of_tail}{Lean}
 and
-\mword{Erdos249257/CertificateKernel.lean}{9429}{irrational_erdosSupportSeries_tail_of_irrational}{Lean}.
+\mword{Erdos249257/CertificateKernel.lean}{9476}{irrational_erdosSupportSeries_tail_of_irrational}{Lean}.
 Thus $X_A(b)$ is irrational if and only if $X_B(b)$ is irrational for every
 integer $b\ge2$.  The present shift is the smallest instance of a general
 checked finite-change principle.
@@ -817,9 +817,9 @@ Lebesgue measure~$1$.
 
 \noindent Checked as
 \mword{Erdos249257/GreedyAchievementSet.lean}{656}{isCompact_mersenneAchievementSet}{compact},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1620}{perfect_mersenneAchievementSet}{perfect},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1636}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
-\mword{Erdos249257/GreedyAchievementSet.lean}{1645}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1633}{perfect_mersenneAchievementSet}{perfect},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1649}{isTotallyDisconnected_mersenneAchievementSet}{totally disconnected},
+\mword{Erdos249257/GreedyAchievementSet.lean}{1658}{isNowhereDense_mersenneAchievementSet}{nowhere dense},
 and
 \mword{Erdos249257/GreedyAchievementSet.lean}{996}{volume_mersenneAchievementSet}{of measure one}.
 So $\Ach$ is a fat Cantor set: strict tail domination
@@ -849,7 +849,7 @@ the remainder unchanged otherwise; call a level at which nothing is subtracted
 \emph{skipped}.  Say that the expansion \emph{survives} level $n$ if the
 remainder after that level is at most the remaining mass $T_n$.  Then
 $x\in\Ach$ if and only if $x\ge0$ and the expansion survives every level
-(\mword{Erdos249257/GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}).
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1458}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}).
 Non-membership of a nonnegative target is therefore visible at a single level,
 and for a rational target strict failure can be certified effectively:
 rational upper bounds for the remaining tail converge to $T_n$, so once one
@@ -858,7 +858,7 @@ example below uses an exact rational upper bound.  For
 $x=3/4$, the greedy algorithm skips $\wgt1=1$ and leaves residual $3/4$,
 while the exact zero-lookahead upper bound for the remaining tail is
 $2\wgt2=2/3<3/4$; hence $3/4\notin\Ach$
-(\mword{Erdos249257/GreedyAchievementSet.lean}{1748}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
+(\mword{Erdos249257/GreedyAchievementSet.lean}{1761}{three_fourths_not_mem_mersenneAchievementSet}{Lean}).
 
 The selector-to-subsum map sending a $0/1$ string $(\varepsilon_n)$ to
 $\sum_n\varepsilon_n\wgt n$, which the strict tail inequality makes injective,
@@ -995,7 +995,7 @@ Moreover no finite support has value $1/2$.
 \end{theorem}
 
 \noindent Checked as
-\mword{Erdos249257/GreedyAchievementSet.lean}{2514}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form},
+\mword{Erdos249257/GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{the greedy form},
 \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{the terminal-bit form},
 \mword{Erdos249257/HalfCylinderHalfMembershipClassification.lean}{213}{half_mem_mersenneAchievementSet_iff_exists_unboundedSkippedRanksAlong}{the skipped-rank form},
 \mword{Erdos249257/HalfCylinderFatalGapRightTail.lean}{781}{seamGreedyEventuallyRight_iff_existsFatalHalfGap}{the fatal-gap equivalence},
@@ -1032,7 +1032,7 @@ For every finite set $F$ of exponents with $n\ge2$ for all $n\in F$,
 \end{theorem}
 
 \noindent This is checked by
-\lword{Erdos257/HalfCounterexampleFrontier.lean}{59}{finiteErdosSum_ne_one_div_twenty_one}{the formal theorem}.
+\lword{Erdos257/HalfCounterexampleFrontier.lean}{61}{finiteErdosSum_ne_one_div_twenty_one}{the formal theorem}.
 The reduced denominator $21$ has doubling order $6$, so the exact
 denominator--lcm identity forces every selected exponent to divide $6$.
 The lower bound $n\ge2$ leaves only $2,3,6$, and the remaining eight subsets

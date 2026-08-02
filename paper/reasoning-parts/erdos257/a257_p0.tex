@@ -54,11 +54,11 @@ For every integer $b \ge 2$,
 \textbf{Hypotheses:} $b \in \mathbb{N}$, $b \ge 2$. \textbf{Conclusion:} unconditional irrationality
 of the full-support Erd\H{o}s--Borwein-type series at every base, not merely base $2$.
 \coord{full-support} \scale{uniform} \ev{Lean}\\
-\textbf{Site:} \lean{irrational\_erdosSum\_full\_support}{CertificateKernel.lean:8281}
+\textbf{Site:} \lean{irrational\_erdosSum\_full\_support}{CertificateKernel.lean:8328}
 (`$b : \mathbb{N}$, hb : $2 \le b$'), landed via a certificate machine (bounded Bertrand/CRT
 first-block frame, middle-window divisor-pair average with pigeonhole selection, explicit parameter
 closure). The base-$2$ instance recovering the classical Erd\H{o}s--Borwein constant's irrationality
-is \lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8288}, a one-line corollary.
+is \lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8335}, a one-line corollary.
 \end{thm}
 
 This is the base-$b$ generalization of Erd\H{o}s's original 1948 irrationality theorem for
@@ -75,7 +75,7 @@ For every $b \ge 2$, every modulus $m \ge 1$, and every $m$-periodic $A \subsete
 $n+m \in A \Leftrightarrow n \in A$ for all $n$) containing a positive element, the support series
 $\sum_{a \in A} 1/(b^a-1)$ is irrational. \textbf{Hypotheses:} $b \ge 2$, $m \ge 1$, $A$
 $m$-periodic, $\exists a > 0,\ a \in A$. \coord{periodic-support} \scale{uniform} \ev{Lean}\\
-\textbf{Site:} \lean{irrational\_erdosSupportSeries\_periodic}{CertificateKernel.lean:11543}.
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_periodic}{CertificateKernel.lean:11590}.
 \end{thm}
 
 \begin{thm}[Eventually periodic support]
@@ -85,13 +85,13 @@ $\sum_{a \in A} 1/(b^a-1)$ is irrational -- proved by transferring irrationality
 symmetric difference from the shifted purely periodic set $A_{\mathrm{pure}} := \{n : n + m N_0 \in
 A\}$. \textbf{Hypotheses:} $b \ge 2$, $m \ge 1$, $N_0 \in \mathbb{N}$, eventual $m$-periodicity from
 $N_0$, $A$ infinite. \coord{eventually-periodic-support} \scale{uniform} \ev{Lean}\\
-\textbf{Site:} \lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11557}.
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11604}.
 \end{thm}
 
 \begin{thm}[Residue-class support]
 For every $b \ge 2$, modulus $m \ge 1$, and residue $c$: $\sum_{n \equiv c \pmod m} 1/(b^n-1)$ is
 irrational. \coord{residue-class-support} \scale{uniform} \ev{Lean}\\
-\textbf{Site:} \lean{irrational\_erdosSupportSeries\_residueClass}{CertificateKernel.lean:11625}
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_residueClass}{CertificateKernel.lean:11672}
 (specializes purely periodic support).
 \end{thm}
 
@@ -100,7 +100,7 @@ For every $b \ge 2$: $\sum_{n \text{ odd}} 1/(b^n-1)$ is irrational. This is the
 class with natural density strictly between $0$ and $1$ (odd $n$ has density $1/2$ inside
 $\mathbb{N}$), as opposed to the density-$1$ full-support case or density-$1/m$ residue classes for
 large $m$. \coord{odd-support} \scale{uniform} \ev{Lean}\\
-\textbf{Site:} \lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11639}
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11686}
 (specializes residue-class support at $m=2,c=1$).
 \end{thm}
 
@@ -124,9 +124,9 @@ measure in its ambient interval $[0,E]$, whose length is $E\approx1.6067$.
 \scale{n/a} \ev{Lean}\\
 \textbf{Site:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656},
 \lean{isClosed\_mersenneAchievementSet}{GreedyAchievementSet.lean:660},
-\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1620},
-\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1636},
-\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1645},
+\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1633},
+\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1649},
+\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1658},
 \lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}. The proofs use only
 superincreasingness of $\{x_n\}$ and summability, so the argument transfers verbatim to any strictly
 superincreasing weight series.\\
@@ -143,9 +143,9 @@ full remaining tail. \textbf{Hypotheses:} none (unconditional biconditional). \t
 membership in $\mathcal{A}$ is exactly the statement that the greedy process never enters a fatal
 state at any rank -- this is the master theorem underlying every sufficient-condition result for
 $1/2 \in \mathcal{A}$ used later in this paper. \coord{greedy-survival} \scale{uniform} \ev{Lean}\\
-\textbf{Site:} \lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1445}
-(forward direction \lean{greedy\_survives\_of\_mem\_mersenneAchievementSet}{GreedyAchievementSet.lean:1362},
-reverse \lean{mem\_mersenneAchievementSet\_of\_greedy\_survival}{GreedyAchievementSet.lean:1381}).
+\textbf{Site:} \lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1458}
+(forward direction \lean{greedy\_survives\_of\_mem\_mersenneAchievementSet}{GreedyAchievementSet.lean:1375},
+reverse \lean{mem\_mersenneAchievementSet\_of\_greedy\_survival}{GreedyAchievementSet.lean:1394}).
 \end{thm}
 
 \subsection{The greedy orbit, exactly}
