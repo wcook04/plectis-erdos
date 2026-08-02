@@ -17,7 +17,12 @@ def check_dictionary_budget_and_shape() -> None:
     encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")).encode(
         "utf-8"
     )
-    assert len(encoded) <= 12_000
+    # The dictionary is a first-contact packet, so it stays small enough to read
+    # in one pass. The ceiling was 12,000 for a six-problem corpus; #68 and
+    # #1041 add their own routes and the packet is now 12.7 KiB. Raised rather
+    # than trimmed: dropping routes to fit would make the dictionary silently
+    # incomplete, which is the failure the budget exists to prevent.
+    assert len(encoded) <= 14_000
     assert {row["id"] for row in packet["operators"]} == {
         "analogy",
         "digest",
@@ -244,7 +249,9 @@ def check_witness_carrying_semantic_slices() -> None:
         "exists_two_primitive23_solutions_mul_ten",
     ]
     finite_obstruction = one_over_twenty_one["semantic_cells"][0]
-    assert "automatically has infinite support" in (
+    # Same consequence, restated by the source-fidelity pass: the theorem rules
+    # finite support out rather than asserting infinite support outright.
+    assert "rules out finite support" in (
         finite_obstruction["content"]["authored_digest"]["text"]
     )
     multiplicity_obstruction = one_over_twenty_one["semantic_cells"][1]
@@ -314,6 +321,14 @@ def check_witness_carrying_semantic_slices() -> None:
 
 
 def check_elaborated_dependency_witnesses() -> None:
+    # These handles are namespace-qualified, not module-qualified, so they
+    # survive a declaration moving between files: the specimen below now lives
+    # in Erdos249257/CurvatureCarry.lean rather than TotientTailPeriodKiller
+    # .lean, while the Erdos249257.TotientTailPeriodKiller namespace is
+    # unchanged. Keep the assertions unconditional -- a committed
+    # docs/lean_dependency_index.json older than the Lean tree makes every
+    # neighbourhood report itself unavailable, and that is a repository defect
+    # the build job fails on, not a state this check should tolerate.
     neighbourhood = query_corpus.formal_dependency_neighbourhood(
         "Erdos249257.TotientTailPeriodKiller."
         "irrational_totientSeries_of_sharpCurvatureSupply"

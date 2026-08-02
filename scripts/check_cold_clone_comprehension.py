@@ -32,11 +32,13 @@ import check_architecture_guide
 import query_corpus
 
 ROOT = Path(__file__).resolve().parent.parent
-INDEXED_PROBLEM_COUNT = len(
-    json.loads((ROOT / "docs" / "problems.json").read_text(encoding="utf-8"))[
-        "problems"
-    ]
+INDEXED_PROBLEM_NUMBERS = frozenset(
+    row["erdos_number"]
+    for row in json.loads(
+        (ROOT / "docs" / "problems.json").read_text(encoding="utf-8")
+    )["problems"]
 )
+INDEXED_PROBLEM_COUNT = len(INDEXED_PROBLEM_NUMBERS)
 QUERY = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
 EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
@@ -61,7 +63,12 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # The fixed prefix below protects the verdict and the direct eight-problem
     # mathematical card. Whole-file allowance scales with the canonical
     # problem registry instead of preserving the original two-lane ceiling.
-    "README.md": 16_000 + 300 * INDEXED_PROBLEM_COUNT,
+    # 300 bytes per problem was measured against shorter rows; the eight-problem
+    # table states each checked frontier and what remains, which runs longer.
+    # Measured at eight problems: 18,569 bytes, or 321 bytes per problem above
+    # the 16,000 fixed prefix. 400 leaves room for one further problem without
+    # reopening this line, and still fails on a runaway projection.
+    "README.md": 16_000 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
@@ -71,7 +78,10 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # screen.
 README_FIRST_CONTACT_BUDGET_BYTES = 16_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
-PACKET_BUDGET_BYTES = 16_384
+# Sized when the corpus indexed six problems. #68 and #1041 bring their own
+# vocabulary routes, so the dictionary packet grew past it. Raised rather than
+# trimmed: dropping routes to fit would make the packet silently incomplete.
+PACKET_BUDGET_BYTES = 20_480
 AGENT_TOUR_BUDGET_BYTES = query_corpus.agent_tour_budget_bytes(
     INDEXED_PROBLEM_COUNT
 )
@@ -484,7 +494,9 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "# v5",
         "path: .lake",
         "restore-keys:",
-        "python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness",
+        # Two workers, not four: four exhausted the runner while compiling
+        # FactorialZeroPlateau.
+        "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness",
         "python3 scripts/build_lean_dependency_index.py --check",
         "No Lean source or proof-environment input changed; compilation is unchanged.",
         "This is already a default root.",
@@ -1041,7 +1053,17 @@ def collect_agent_packets() -> dict[str, Any]:
 
 
 def validate_proof_plan_packets(proof_plans: dict[str, Any]) -> None:
-    """Validate application boundaries and exact spines independently."""
+    """Validate application boundaries and exact spines independently.
+
+    These assertions are unconditional on purpose. Proof plans read the
+    elaborated dependency index, and a committed index that predates the Lean
+    tree makes every plan report itself unavailable -- which is honest, but it
+    is a repository defect, not a supported state. `build_lean_dependency_index
+    .py --check` in the build job fails on exactly that, and both jobs are
+    required on protected main, so a released checkout always carries a current
+    index. Skipping when a plan is unavailable would convert that hard failure
+    into a silent pass and the spine below would never be checked again.
+    """
     blocked = proof_plans["blocked_integer_tail"]
     assert blocked["kind"] == "formal_proof_plan"
     assert blocked["availability"] == "available"
@@ -1222,14 +1244,15 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert tour["budget_contract"]["maximum_encoded_bytes"] == (
         AGENT_TOUR_BUDGET_BYTES
     )
-    assert {row["erdos_number"] for row in tour["problem_map"]} == {
-        243,
-        249,
-        251,
-        257,
-        269,
-        1049,
-    }
+    # Read from the problem registry rather than a third literal list. The
+    # count above was updated to eight when #68 and #1041 were indexed and
+    # this set was not, so the tour and the registry disagreed for a whole
+    # release. Deriving both from docs/problems.json keeps the real check --
+    # that the tour routes every indexed problem and invents none -- while
+    # removing the copy that goes stale.
+    assert {
+        row["erdos_number"] for row in tour["problem_map"]
+    } == set(INDEXED_PROBLEM_NUMBERS)
     assert tour["formal_dependency_graph"]["loaded_library_roots"] == [
         "Erdos249257",
         "ErdosProblems",

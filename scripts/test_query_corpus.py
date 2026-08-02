@@ -273,15 +273,17 @@ def validate_natural_language_search() -> None:
             "selection": "exact_problem_registry_term",
             "declaration_scan_required": False,
         }
+    # Erdős 300 is not in the indexed corpus. This used to name #68, which the
+    # eight-problem corpus now answers rather than refuses.
     out_of_scope_question = (
-        "For Erdos 68, what does equality of two complementary "
+        "For Erdos 300, what does equality of two complementary "
         "leave-one-out projections prove?"
     )
     boundary = query("--ask", out_of_scope_question, "--format", "json")
     assert boundary["kind"] == "corpus_scope_boundary"
     assert boundary["status"] == "explicit_problem_not_indexed"
-    assert boundary["requested_problem_numbers"] == [68]
-    assert boundary["out_of_scope_problem_numbers"] == [68]
+    assert boundary["requested_problem_numbers"] == [300]
+    assert boundary["out_of_scope_problem_numbers"] == [300]
     assert boundary["covered_problem_numbers"] == []
     assert boundary["indexed_problem_numbers"] == [
         row["erdos_number"]
@@ -300,7 +302,7 @@ def validate_natural_language_search() -> None:
     assert boundary_card.returncode == 0
     assert boundary_card.stdout.startswith(
         "corpus scope boundary | status=explicit_problem_not_indexed "
-        "| requested=#68 | out_of_scope=#68 "
+        "| requested=#300 | out_of_scope=#300 "
     )
     assert "claim_effect=none" in boundary_card.stdout
     dictionary = query("--vocabulary")
@@ -409,7 +411,7 @@ def validate_indexed_declaration_lookup() -> None:
     bare = declaration_packet(name, 20)
     qualified = declaration_packet(qualified_name, 20)
     source = source_coordinate_packet(
-        "Erdos249257/CertificateKernel.lean:18337", 20
+        "Erdos249257/CertificateKernel.lean:18384", 20
     )
 
     assert bare == qualified
@@ -897,7 +899,7 @@ def main() -> int:
     assert square_crt_claim["claim"]["declarations"][0] == {
         "name": "exists_squareCRT_clean_totient_family",
         "module": "Erdos249257/SquareCRTCube.lean",
-        "line": 198,
+        "line": 297,
     }
     assert square_crt_claim["lean_source_identity"] == adelic["lean_source_identity"]
 
@@ -922,7 +924,7 @@ def main() -> int:
     assert dyadic_totient_claim["claim"]["declarations"][0] == {
         "name": "exists_separatedMinorCertificate_totientAffineOddFamily",
         "module": "Erdos249257/TotientMahlerDefect.lean",
-        "line": 847,
+        "line": 882,
     }
     assert any(
         row["name"] == "not_finiteDimensional_span_fullTotientKernel"
@@ -953,7 +955,7 @@ def main() -> int:
     assert paper_label["attached_claims"][0]["id"] == "denominator_exclusion"
     assert paper_label["anchor_class"] == "registered_claim_anchor"
     assert any(
-        row["source_ref"] == "Erdos249257/CertificateKernel.lean:18337"
+        row["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
         for row in paper_label["source_links"]
     )
     assert paper_label["lean_source_identity"] == adelic["lean_source_identity"]
@@ -1087,7 +1089,7 @@ def main() -> int:
     )
     assert declaration["match_count"] == 1
     assert declaration["matches"][0]["claim_ids"] == ["denominator_exclusion"]
-    assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18337"
+    assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
     assert declaration["matches"][0]["source_url"].startswith(
         "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
         + formal_source["ref"]
@@ -1120,11 +1122,11 @@ def main() -> int:
     assert local_declaration["paper_anchors"][0]["canonical_handle"] == "res:lift"
 
     source_coordinate = query(
-        "--source", "Erdos249257/CertificateKernel.lean:18336"
+        "--source", "Erdos249257/CertificateKernel.lean:18383"
     )
     assert source_coordinate["kind"] == "source_coordinate"
     assert source_coordinate["source"]["source_url"].endswith(
-        "/Erdos249257/CertificateKernel.lean#L18336"
+        "/Erdos249257/CertificateKernel.lean#L18383"
     )
     assert source_coordinate["source"]["lean_source_identity"] == adelic["lean_source_identity"]
     source_declaration = source_coordinate["nearby_declarations"][0]

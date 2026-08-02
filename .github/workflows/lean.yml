@@ -6,13 +6,14 @@ name: Lean CI
 # proof authority) and the release-surface checks (claim registry, paper
 # links, citation metadata, scope, licences). Feature branches run through the
 # pull-request event only, avoiding a duplicate build for the same commit.
+# Main is protected with both jobs required, so every commit that reaches it has
+# already passed them on its pull request and a push-triggered rerun would only
+# repeat work. If branch protection is relaxed, restore push validation before
+# landing anything directly.
 on:
-  push:
-    branches: [main]
   pull_request:
-  # Merge commits created through the GitHub web UI do not always start a run,
-  # which leaves the README badge reporting an older result than the branch.
-  # Manual dispatch re-runs the same two jobs on any ref without a dummy commit.
+  # Manual dispatch remains the explicit way to revalidate main, a tag, or any
+  # other ref without a dummy commit.
   workflow_dispatch:
 
 concurrency:
