@@ -11,24 +11,25 @@ import Mathlib.Tactic.Ring
 /-!
 # Erdős #243: reciprocal-tail rigidity
 
-This module owns the exact centered integer dynamics behind the rational case.
+This module develops the exact centered integer dynamics behind the rational case.
 It proves the algebraic defect identity and the well-founded stabilization step:
 if the centered errors are eventually nonnegative, the natural tail state is
 nonincreasing and the errors eventually vanish.  It excludes both constant
 negative centered states and, in the natural tail regime, every positive
-eventually periodic negative-state magnitude.  It also proves the arithmetic
-core of the stronger bounded-aperiodic route: an exact reduced tail tending to
-infinity cannot have bounded upward increments.  That proof combines exact
-coprimality, whole-modulus avoidance, a shifted CRT barrier, and first crossing.
+eventually periodic negative-state magnitude.
 
-It does not settle the unrestricted problem, whose live obstruction is an
-integer centered state with cofinally unbounded negative excursions.  The full
-bounded-negative-part regime is closed below without a periodicity hypothesis.
-For the remaining branch, dynamic gcd reduction is also made exact: every gcd
-growth factor is paid for by old-prime overlap.  Normalized centered-state
-vanishing now yields local near-unit tail growth, explicit subexponential tail
-growth, and hence sublinear strict gcd growth through the finite `2^r` budget.
-The residual is to turn sparse old-prime reuse into a contradiction.
+The bounded-negative analysis has two distinct endpoints.  Cofinally bounded
+negative magnitudes force eventual stabilization of the exact tail gcd; exact
+coprimality, whole-modulus avoidance, a shifted CRT construction, and first
+crossing then contradict bounded upward increments.  Normalized centered-state
+vanishing alone gives a weaker conclusion: local near-unit tail growth implies
+subexponential tail growth, so strict tail-gcd changes have density zero and
+constant-gcd blocks of every prescribed finite length occur arbitrarily late.
+This finite-block conclusion is not eventual stabilization.
+
+The unrestricted case with cofinally unbounded negative excursions remains
+open.  The results below isolate sparse reuse of old prime factors as the
+remaining arithmetic phenomenon not excluded by the present estimates.
 -/
 
 namespace ErdosProblems.Erdos243
@@ -87,8 +88,8 @@ identity becomes
 On the other hand, `Dₙ₊₁ = aₙ Dₙ` makes every `Dₙ` with `n ≥ 1`
 divisible by `a₀`.  Evaluating the displayed identity at `n = a₀ - 1`
 would make both `Dₙ` and `Dₙ + 1` divisible by `a₀`, impossible for
-`a₀ ≥ 2`.  This consumes the exact multiplicative denominator update above
-and closes the normalized branch explored by `FiniteHorizonResidue`.
+`a₀ ≥ 2`.  Thus the exact multiplicative denominator update excludes the
+normalized constant-negative case.
 -/
 
 /-- No infinite natural orbit can simultaneously satisfy the multiplicative
@@ -821,12 +822,13 @@ theorem no_eventuallyPeriodicNegative_orbit
   · intro n
     simpa only [Nat.add_assoc] using hphase n
 
-/-! ## The bounded aperiodic route: a CRT barrier
+/-! ## A CRT barrier for bounded upward increments
 
-Periodicity is not needed once the reduced exact tail supplies infinitely many
-pairwise-coprime moduli which every later numerator must avoid.  The finite
-producer below places a consecutive forbidden block past any prescribed
-height. -/
+When the reduced exact tail supplies infinitely many pairwise-coprime moduli
+that every later numerator must avoid, the Chinese remainder theorem assigns
+those moduli to consecutive forbidden values.  The resulting block can be
+placed beyond any prescribed height, and first crossing contradicts a uniform
+bound on upward increments. -/
 
 /-- Pairwise-coprime moduli can be assigned to consecutive integers, and the
 resulting block can be shifted beyond any prescribed lower bound. -/
@@ -1084,15 +1086,17 @@ theorem no_eventuallyBoundedRise_reducedTail
       hrise (n + N) (by omega)
   · exact (Filter.tendsto_add_atTop_iff_nat N).mpr huTop
 
-/-! The remaining bounded-negative wrapper needs the tail gcd to stabilise.
-The next lemmas kernel-check that exact arithmetic reduction. -/
+/-! The cofinally bounded-negative argument requires stabilization of the tail
+gcd.  Consecutive gcd reduction introduces a growth factor controlled by the
+overlap between the current multiplier and the reduced denominator; this makes
+strict tail-gcd growth susceptible to arithmetic counting. -/
 
-/-! ## Dynamic cancellation and the gcd-growth budget
+/-! ## Dynamic cancellation and tail-gcd growth
 
 Before the tail gcd stabilises, reduction at consecutive indices introduces a
 growth factor `h`.  The exact normalized step below shows that `h` is paid for
 by overlap between the current multiplier and the reduced denominator.  The
-finite counting lemmas then quantify how expensive strict gcd growth is.
+counting lemmas then bound the number of indices at which the gcd can grow.
 -/
 
 /-- At one dynamically reduced step, the gcd-growth factor is trapped between
@@ -1743,8 +1747,9 @@ theorem tailState_tendsto_atTop_of_nonzero_normalizedVanishes
     Nat.le_mul_of_pos_right (bound + 1) (hmagnitude n)
   exact le_trans (by omega) (le_trans hscale (Nat.le_of_lt (hN n hn)))
 
-/-- Division-free normalized vanishing closes the cofinally bounded negative
-branch by supplying the tail divergence needed above. -/
+/-- If the normalized nonzero magnitudes vanish, then `C n → ∞`; the preceding
+bounded-rise contradiction therefore excludes cofinally bounded negative
+magnitudes. -/
 theorem no_cofinallyBoundedNegative_of_normalizedVanishes
     (a C D magnitude : ℕ → ℕ) (B : ℕ)
     (hB : 0 < B)
@@ -1764,8 +1769,9 @@ theorem no_cofinallyBoundedNegative_of_normalizedVanishes
     (tailState_tendsto_atTop_of_nonzero_normalizedVanishes
       C magnitude hmagnitude hvanish)
 
-/-- Exact defect equation from the packet:
-`Δₙ Cₙ₊₁ = aₙ² Eₙ - Eₙ₊₁`. -/
+/-- The defect identity
+`Δₙ Cₙ₊₁ = aₙ² Eₙ - Eₙ₊₁` relates consecutive centered errors to the
+failure of the denominator sequence to follow the Sylvester recurrence. -/
 theorem sylvesterDefect_mul_nextTailState
     (a aNext D C : ℤ) :
     sylvesterDefect a aNext * nextTailState a D C =
@@ -1918,8 +1924,7 @@ theorem tailState_localNearUnitGrowth
 
 /-- Along the exact natural tail orbit, division-free normalized vanishing
 eventually makes every one-step tail growth arbitrarily close to unit from
-above.  This is the local input for the remaining analytic accumulation
-step toward subexponential tail growth. -/
+above.  Iterating these bounds yields the subexponential estimate below. -/
 theorem tailState_eventually_localNearUnitGrowth_of_normalizedVanishes
     (a C D : ℕ → ℕ) (E : ℕ → ℤ)
     (hC : ∀ n, C (n + 1) + D n = a n * C n)
@@ -2009,11 +2014,10 @@ theorem eventually_const_mul_pow_lt_const_mul_pow
     simpa [mul_assoc, mul_left_comm, mul_comm] using hratio
   exact_mod_cast hreal
 
-/-- The analytic accumulation bridge.  If every prescribed integer rate
-eventually bounds one-step growth by `(q + 1) / q`, then every fixed power of
-the sequence is eventually dominated by `2^n`.  The proof iterates a fully
-denominator-cleared inequality and absorbs the finite prefix by geometric
-domination. -/
+/-- If every prescribed integer rate eventually bounds one-step growth by
+`(q + 1) / q`, then every fixed power of the sequence is eventually dominated
+by `2^n`.  The proof iterates a denominator-cleared inequality and absorbs the
+finite prefix by geometric domination. -/
 theorem subexponential_of_eventually_nearUnitGrowth
     (C : ℕ → ℕ)
     (hnear : ∀ q, 0 < q → ∃ N, ∀ n, N ≤ n →
@@ -2071,8 +2075,8 @@ theorem subexponential_of_eventually_nearUnitGrowth
         ring
   exact (Nat.mul_lt_mul_left (pow_pos hQ m)).mp hchain
 
-/-- Exact-orbit specialization of the analytic accumulation bridge: normalized
-centered-state vanishing forces power-vs-`2^n` subexponential tail growth. -/
+/-- For an exact tail orbit, normalized centered-state vanishing forces
+power-versus-`2^n` subexponential tail growth. -/
 theorem tailState_subexponential_of_normalizedVanishes
     (a C D : ℕ → ℕ) (E : ℕ → ℤ)
     (hC : ∀ n, C (n + 1) + D n = a n * C n)
@@ -2085,10 +2089,10 @@ theorem tailState_subexponential_of_normalizedVanishes
   exact tailState_eventually_localNearUnitGrowth_of_normalizedVanishes
     a C D E hC hE hvanish q
 
-/-- The complete budget consumer: along an exact positive natural tail,
-normalized centered-state vanishing makes strict tail-gcd growth sublinear.
-This composes local near-unit growth, analytic accumulation, and the finite
-`2^r` divisibility-chain budget. -/
+/-- Along an exact positive natural tail, normalized centered-state vanishing
+makes strict tail-gcd growth sublinear.  Local near-unit growth gives the
+subexponential estimate, while the divisibility-chain bound converts that
+estimate into a density bound for strict gcd changes. -/
 theorem tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes
     (a C D : ℕ → ℕ) (E : ℕ → ℤ)
     (hCpos : ∀ n, 0 < C n)
@@ -2103,8 +2107,10 @@ theorem tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes
     a C D hCpos hC hD
     (tailState_subexponential_of_normalizedVanishes a C D E hC hE hvanish)
 
-/-- Normalized centered-state vanishing forces arbitrarily late finite blocks
-on which the exact tail gcd is constant. -/
+/-- For every lower bound `B` and length `L`, normalized centered-state
+vanishing gives an index `n ≥ B` at which the `L + 1` states from `n` through
+`n + L` have the same exact tail gcd.  These are arbitrarily late finite
+constant blocks, not an assertion of eventual constancy. -/
 theorem tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes
     (a C D : ℕ → ℕ) (E : ℕ → ℤ)
     (hCpos : ∀ n, 0 < C n)
