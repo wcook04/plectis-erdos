@@ -5943,7 +5943,7 @@ direct enumeration for $1\le n\le 3000$ with zero mismatches, \ev{Cert}.
 
 Three consequences, all of which matter more than the counterexample itself.
 
-First, the certificate engine
+First, the block-certificate theorem
 \lean{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{CertificateKernel.lean:8703}
 is universally quantified over $A$ and therefore sound, but it is \emph{not} complete: it cannot
 prove irrationality for the squarefree support even in principle.  This is a
@@ -5952,7 +5952,7 @@ Duverney and Tachiya prove joint linear independence with $1$ for the
 squarefree sums at every base $2^j$, $j\ge1$ (\emph{Forum Math.} 31 (2019),
 Corollary~1.2 and Example~1.1).  Thus in particular the displayed base-$2$
 sum is irrational.  Proposition~\ref{prop:squarefree} settles only that no
-instantiation of the present certificate engine can reprove it; among the
+instantiation of the present block-certificate argument can reprove it; among the
 integer bases, the cited squarefree theorem leaves the non-powers of two
 uncovered.
 
@@ -6023,7 +6023,7 @@ $K\,2^{\,L-K}$ in the budget, comfortably inside the height condition. Whether t
 engine survives the shift is exactly the question to check, and it is a self-contained
 modification of one Lean file rather than a new theory. If it does survive, the immediate corollary
 would be an alternative certificate proof of the already known irrationality of
-$\sum_{n\ \mathrm{squarefree}} 1/(2^{n}-1)$, together with a reusable shifted engine.
+$\sum_{n\ \mathrm{squarefree}} 1/(2^{n}-1)$, together with a reusable shifted block argument.
 It would not settle a new squarefree value at a power-of-two base; extension to
 non-powers of two would require additional mathematics.
 
