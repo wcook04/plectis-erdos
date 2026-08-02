@@ -23,7 +23,6 @@ import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos68.FiniteDefectAutomaton
 import ErdosProblems.Erdos68.DivisorFactorialCentre
-import ErdosProblems.Erdos68.FactorialDigitRigidity
 import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
 import ErdosProblems.Erdos68.PrimeZeroBranch
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
