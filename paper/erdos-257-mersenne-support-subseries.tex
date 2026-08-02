@@ -68,12 +68,16 @@ counts and need not be binary digits.  If $X_A$ is rational, its integral
 scaled-tail sequence satisfies an exact long-division recurrence.  For
 infinite $A$ that sequence is unbounded, and every zero window of
 $\scA_A$ at $c+N$ has length at most
-$\varepsilon\log_2(N+1)+O_{\varepsilon,c,v}(1)$.  Under the additional
+$\varepsilon\log_2(N+1)+O_{A,p,\varepsilon,c,v}(1)$.  Under the additional
 hypotheses that $\sum_{a\in A}1/a$ converges and that the reduced odd
 denominator part $v>1$ is coprime to the numerator, rationality also forces
 \[
   \sum_{a\in A}\frac1a\ge\frac1{\operatorname{ord}_v(2)}.
 \]
+At the dyadic endpoint $X_A=p/2^c$, an infinite support instead forces either
+nonsummability of the reciprocal support terms or reciprocal mass greater
+than $1$.  This becomes a contradiction only after an independent proof of
+summability and mass at most $1$.
 Finally, rational values admit an exact Boolean--M\"obius scaled-tail
 characterisation from which the support is reconstructed.  These constraints
 are not known to be contradictory.  We also record the squarefree support,
@@ -289,13 +293,14 @@ most $1$: one of any two consecutive integers is even.
 
 \begin{theorem}[sublogarithmic zero windows]\label{res:sublog}
 Let $A\subseteq\Npos$ be nonempty with $X_A=p/(2^cv)$, $v\ge1$.  For every
-$\varepsilon>0$ there is a constant $B$, depending only on $\varepsilon$, $c$
-and $v$, such that every zero window of $\scA_A$ at $c+N$ has length
+$\varepsilon>0$ there is a constant $B$, depending on
+$A,p,\varepsilon,c$ and $v$, such that every zero window of $\scA_A$ at
+$c+N$ has length
 \[
   h\le\varepsilon\log_2(N+1)+B .
 \]
-The bound is uniform in the support $A$, in the numerator $p$, and in $N$
-and $h$.
+For fixed $A,p,c,v$ and $\varepsilon$, the same $B$ works uniformly in $N$
+and $h$; no common constant over supports or numerators is asserted.
 \end{theorem}
 
 \noindent Checked as
@@ -328,8 +333,27 @@ $1/\operatorname{ord}_v(2)$.  The statement does not apply when the reciprocal
 sum diverges, and it gives no positive lower bound uniform in $v$; it
 constrains the pair (support, denominator) jointly.
 
+The critical dyadic case has a different endpoint.
+
+\begin{theorem}[dyadic reciprocal-mass endpoint]\label{res:dyadicmass}
+Let $A\subseteq\Npos$ be infinite and suppose $X_A=p/2^c$ for some
+$p\in\Z$ and $c\in\N$.  Then the reciprocal support terms are not summable,
+or
+\[
+  \sum_{a\in A}\frac1a>1.
+\]
+\end{theorem}
+
+\noindent Checked as
+\mword{Erdos249257/RationalSupportCarrySkeleton.lean}{2200}{dyadic_support_fraction_reciprocalMass_diverges_or_gt_one}{Lean}.
+The two alternatives are an exact necessary consequence of a dyadic rational
+value.  They do not contradict rationality by themselves: a contradiction
+requires separate proofs that the reciprocal terms are summable and that the
+mass is at most $1$.  The formal nonsummability alternative also does not, by
+itself, assert a particular asymptotic law for the partial sums.
+
 \paragraph{A Boolean--M\"obius characterisation.}
-The three theorems above give necessary conditions.  The next statement is an
+The preceding theorems give necessary conditions.  The next statement is an
 equivalence, and is the sharpest description of rational-valued supports the
 development has.  It removes the support from the description altogether, which
 is possible because the support can always be read back off the incidence
@@ -394,10 +418,11 @@ Taken together: a counterexample to Problem~\ref{res:problem} would have an
 unbounded scaled-tail sequence obeying an exact linear recurrence and
 sublogarithmic divisor-coverage gaps.  If its reciprocal sum converged and its
 reduced odd denominator part were greater than~$1$, it would also satisfy
-Theorem~\ref{res:mass}.  Theorem~\ref{res:bmc} reconstructs every rational
-value, but by itself does not force the reconstructed support to be infinite.
-These qualifications matter: the four statements have different hypotheses,
-and no jointly contradictory combination has been proved.
+Theorem~\ref{res:mass}; at a dyadic rational value it would instead satisfy
+Theorem~\ref{res:dyadicmass}.  Theorem~\ref{res:bmc} reconstructs every
+rational value, but by itself does not force the reconstructed support to be
+infinite.  These qualifications matter: the statements have different
+hypotheses, and no jointly contradictory combination has been proved.
 
 \section{Representative known irrational supports}\label{sec:map}
 
@@ -806,7 +831,10 @@ remainder after that level is at most the remaining mass $T_n$.  Then
 $x\in\Ach$ if and only if $x\ge0$ and the expansion survives every level
 (\mword{Erdos249257/GreedyAchievementSet.lean}{1445}{mem_mersenneAchievementSet_iff_greedy_survival}{Lean}).
 Non-membership of a nonnegative target is therefore visible at a single level,
-and for a rational target the check is exact rational arithmetic.  For
+and for a rational target strict failure can be certified effectively:
+rational upper bounds for the remaining tail converge to $T_n$, so once one
+lies below the rational residual the fatal inequality is proved.  The finite
+example below uses an exact rational upper bound.  For
 $x=3/4$, the greedy algorithm skips $\wgt1=1$ and leaves residual $3/4$,
 while the exact zero-lookahead upper bound for the remaining tail is
 $2\wgt2=2/3<3/4$; hence $3/4\notin\Ach$
