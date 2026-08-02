@@ -2,11 +2,18 @@ import Erdos249257.TropicalCurvatureCarry
 import Mathlib.Tactic
 
 /-!
-# Erdős #249: prime-ray cyclotomic curvature interfaces
+# Erdős #249: prime-ray cyclotomic curvature
 
-Problem-owned algebraic producer/consumer interfaces extracted from the
-legacy curvature programme.  Polynomial resultant realisability and
-Archimedean growth remain explicit upstream obligations.
+This module isolates finite consequences of two explicit hypotheses.
+`BoundedDegreeOrderConsumer C m d` gives bounded-degree multiplicative-order
+witnesses for prime divisors of `C (m*q)`, while `PrimeRayLayerSupply C m`
+asserts that nontrivial layers persist along a prime ray.  The first
+hypothesis forces quantitative growth and escape from every fixed finite
+prime support; together the two hypotheses give unbounded prime divisors.
+
+Neither hypothesis is constructed here for the totient series.  In
+particular, these results provide no carry escape, tail discrepancy,
+irrationality theorem, or solution of Erdős #249.
 -/
 
 namespace ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
@@ -98,6 +105,39 @@ def BoundedDegreeOrderConsumer
     q.Prime → p.Prime → p ∣ C (m * q) →
       ∃ k : ℕ, 1 ≤ k ∧ k ≤ d ∧ m * q ∣ p ^ k - 1
 
+/-- If a prime `p` divides `C (m*q)`, then a bounded-degree order witness
+forces the exact natural-number inequality `m * q < p ^ d`. -/
+theorem primeRay_divisor_pow_gt
+    {C : ℕ → ℕ} {m d q p : ℕ}
+    (horder : BoundedDegreeOrderConsumer C m d)
+    (hq : q.Prime)
+    (hp : p.Prime)
+    (hpC : p ∣ C (m * q)) :
+    m * q < p ^ d := by
+  obtain ⟨k, hk1, hkd, horderDvd⟩ := horder q p hq hp hpC
+  have hpk_sub_pos : 0 < p ^ k - 1 :=
+    Nat.sub_pos_of_lt (one_lt_pow₀ hp.one_lt (by omega))
+  have hmq_le : m * q ≤ p ^ k - 1 :=
+    Nat.le_of_dvd hpk_sub_pos horderDvd
+  have hpk_le_hpd : p ^ k ≤ p ^ d :=
+    Nat.pow_le_pow_right hp.pos hkd
+  omega
+
+/-- If in addition `B ^ d ≤ m * q`, then the prime divisor `p` is strictly
+larger than `B`. -/
+theorem primeRay_divisor_gt_of_pow_le
+    {C : ℕ → ℕ} {m d q p B : ℕ}
+    (horder : BoundedDegreeOrderConsumer C m d)
+    (hq : q.Prime)
+    (hp : p.Prime)
+    (hpC : p ∣ C (m * q))
+    (hB : B ^ d ≤ m * q) :
+    B < p := by
+  have hpow : B ^ d < p ^ d :=
+    hB.trans_lt (primeRay_divisor_pow_gt horder hq hp hpC)
+  by_contra hBp
+  exact (not_lt_of_ge (Nat.pow_le_pow_left (Nat.le_of_not_gt hBp) d)) hpow
+
 /-- Large prime-ray layers escape every prescribed finite prime support. -/
 def FinitePrimeSupportEscape (C : ℕ → ℕ) (m : ℕ) : Prop :=
   ∀ S : Finset ℕ, ∃ Q₀ : ℕ, ∀ q : ℕ,
@@ -123,20 +163,12 @@ theorem finitePrimeSupportEscape_of_orderConsumer
   refine ⟨B + 1, ?_⟩
   intro q hq hqB p hpS hp
   intro hpC
-  obtain ⟨k, hk1, hkd, horderDvd⟩ := horder q p hq hp hpC
   have hpd_le_B : p ^ d ≤ B := by
     dsimp [B]
     exact Finset.single_le_sum (fun x _ => Nat.zero_le (x ^ d)) hpS
   have hpd_lt_q : p ^ d < q := by omega
-  have hpk_le_hpd : p ^ k ≤ p ^ d :=
-    Nat.pow_le_pow_right hp.pos hkd
-  have hpk_sub_pos : 0 < p ^ k - 1 :=
-    Nat.sub_pos_of_lt (one_lt_pow₀ hp.one_lt (by omega))
-  have hmq_le : m * q ≤ p ^ k - 1 :=
-    Nat.le_of_dvd hpk_sub_pos horderDvd
-  have hpk_sub_lt_q : p ^ k - 1 < q := by
-    exact (Nat.sub_le (p ^ k) 1).trans_lt (hpk_le_hpd.trans_lt hpd_lt_q)
-  have hmq_lt_q : m * q < q := hmq_le.trans_lt hpk_sub_lt_q
+  have hmq_lt_q : m * q < q :=
+    (primeRay_divisor_pow_gt horder hq hp hpC).trans hpd_lt_q
   exact (not_lt_of_ge (Nat.le_mul_of_pos_left q hm)) hmq_lt_q
 
 /-- Nontrivial layers together with finite-support escape force genuinely new,
@@ -166,9 +198,8 @@ theorem unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape
     omega
   exact ⟨q, p, hq, hN₀q, hp, hpC, hBp⟩
 
-/-- The packet's complete abstract producer: bounded-degree exact-order
-realisability supplies finite-support escape, and nontrivial prime-ray layers
-then force unbounded prime divisors. -/
+/-- Bounded-degree order witnesses give finite-support escape; if nontrivial
+prime-ray layers are also supplied, their prime divisors are unbounded. -/
 theorem unboundedPrimeDivisorSupply_of_orderConsumer
     {C : ℕ → ℕ} {m d : ℕ}
     (hm : 0 < m)

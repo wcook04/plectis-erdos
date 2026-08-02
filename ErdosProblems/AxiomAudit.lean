@@ -542,6 +542,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.checkerboard_unique
 #print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.fourPoint_layer_identity
 #print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.residueClass_step_has_centred_completion
+#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.primeRay_divisor_pow_gt
+#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.primeRay_divisor_gt_of_pow_le
 #print axioms ErdosProblems.Erdos257.selectedMersenneTail_lt_weight
 #print axioms ErdosProblems.Erdos257.supportedMersenneDigitValue_injective
 #print axioms ErdosProblems.Erdos257.mem_supportedMersenneAchievementSet_iff_exists_support_series
