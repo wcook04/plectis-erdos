@@ -1245,7 +1245,7 @@ makes it integral at every later index.  Thus a direct solution of
 Problem~\ref{prob:tails269}, joined to Problem~\ref{prob:bridge269}, bypasses
 all residue-window machinery.
 
-The newly public bounded-radix theorem gives a useful exact reduction.  Since
+The bounded-radix theorem gives a useful exact reduction.  Since
 $2\le\beta_a\le30$, any real affine tail orbit either hits an integer or is,
 cofinally often, at distance at least $1/31$ from every integer
 (\lword{Erdos269/BoundedRadixTailEscape.lean}{80}{boundedRadix_zero_or_cofinal_far}{checked}).
@@ -1297,8 +1297,9 @@ $(W,F,B)=(60,47,37)$,
 so a fixed window has no denominator-independent positive residue lower
 bound.  Therefore the window may genuinely depend on $B$; neither a fixed
 finite computation nor a universal bounded-length guess addresses the
-unbounded denominator and cofinal-start quantifiers.  The finite checker is a
-regression test for proposed producers, not evidence for either shortcut.
+unbounded denominator and cofinal-start quantifiers.  The finite checker can
+reject a proposed sufficient condition, but supplies no evidence for either
+shortcut.
 
 \subsection{A literal two-dimensional analytic route}
 
@@ -1331,7 +1332,7 @@ specified finite-dimensional class.
 
 Pairwise irrationality of $\theta_3$ and $\theta_5$ is not silently promoted
 to the orbit-closure or equidistribution hypothesis a two-dimensional theorem
-may need.  The newly public observer formalisation isolates the precise
+may need.  The finite-observer formalisation isolates the precise
 faithfulness requirement: equality in a finite observer must imply equality
 after symbolic realisation, and a genuine finite-dimensional factorisation
 forces the realised symbolic span to be finite-dimensional
@@ -1356,16 +1357,17 @@ The nontrivial question is quantitative: prove effective recurrence or
 discrepancy for the actual four-letter $\{2,6,10,30\}$ word, an asymptotic
 formula with an error term for the restricted two-dimensional shell counts
 that generate $m_a^{235}$, or the exact finite-separation rank of the literal
-three-prime kernel under a specified family of shifts.  The newly public
-three-channel rigidity and carry-lift extinction theorems already exclude one
-false route: ordinary block-nullity plus the two genuine anchors kills the
+three-prime kernel under a specified family of shifts.  The three-channel
+rigidity and carry-lift extinction theorems already exclude one false route:
+ordinary block-nullity plus the two genuine anchors kills the
 perturbation and is incompatible with the required bounded lift
 (\lword{Erdos269/ThreeChannelBlockRigidity.lean}{61}{channelBlockNull_iff_channelPotential}{rigidity},
 \lword{Erdos269/CarryLiftExtinction.lean}{236}{no_bounded_carryLift_of_blockNull_twoAnchors}{extinction}).
-The actual carry supplies a weighted block defect instead, so a producer must
-use that weighted identity or construct a different faithful lift.
+The actual carry supplies a weighted block defect instead, so any successful
+argument must use that weighted identity or construct a different faithful
+lift.
 
-Until the bridge and either the direct tail problem or an adequate producer
+Until the bridge and either the direct tail problem or an adequate substitute
 are proved, Problem~\#269 remains open.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
@@ -1474,7 +1476,7 @@ representative congruence & \lrefx{Erdos269/ResidueEscape.lean}{46}{leastPositiv
 escape condition & \lrefx{Erdos269/ResidueEscape.lean}{66}{ResidueEscapesWindow}\\
 finite natural-state contradiction & \lrefx{Erdos269/ResidueEscape.lean}{72}{no_bounded_positive_state_of_residue_escape}\\
 contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{93}{residue_le_bound_of_bounded_positive_state}\\
-integer least-positive-residue consumer & \lrefx{Erdos269/ResidueEscape.lean}{107}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
+integer least-positive-residue obstruction & \lrefx{Erdos269/ResidueEscape.lean}{107}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
 window base & \lrefx{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}\\
 window forcing & \lrefx{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}\\
 affine window identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{455}{affineRecurrence_window}\\
@@ -1484,7 +1486,7 @@ absorbed smooth factor & \lrefx{Erdos269/RestrictedFloorSum.lean}{548}{smooth3Va
 common-factor cancellation & \lrefx{Erdos269/RestrictedFloorSum.lean}{581}{integralCarry_cancel_commonFactor}\\
 reduced bound transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{601}{reducedCarry_pos_le_of_commonFactor}\\
 reduced window transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{612}{reducedIntegralCarry_window}\\
-cofinal window producer & \lrefx{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}\\
+cofinal window hypothesis & \lrefx{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}\\
 reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}\\
 \end{tabular}
 \fi
