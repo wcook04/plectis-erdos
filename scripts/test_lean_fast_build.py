@@ -64,6 +64,27 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn('toolchain install "$(tr -d \'\\r\\n\' < lean-toolchain)"', setup)
         self.assertIn('echo "$HOME/.elan/bin" >> "$GITHUB_PATH"', setup)
 
+    def test_ci_fetches_dependency_artifacts_before_the_bounded_build(self) -> None:
+        # A cold Actions cache must not fall through to compiling Mathlib from
+        # source: that cannot finish inside the runner job ceiling, so the
+        # required build check becomes structurally unsatisfiable. The fetch
+        # uses Lake's own tooling, keeping the no-composite-action contract.
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        toolchain_step = workflow.index("- name: Install pinned Lean toolchain")
+        artifact_fetch = workflow.index(
+            "- name: Fetch pinned dependency build artifacts"
+        )
+        bounded_build = workflow.index(
+            "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
+        )
+
+        self.assertLess(toolchain_step, artifact_fetch)
+        self.assertLess(artifact_fetch, bounded_build)
+        self.assertIn("lake exe cache get", workflow)
+        self.assertNotIn("leanprover/lean-action@", workflow)
+
     def test_ci_pins_external_actions_to_full_commit_shas(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"

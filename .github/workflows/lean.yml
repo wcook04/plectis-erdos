@@ -102,6 +102,18 @@ jobs:
           "$installer_dir/elan-init" -y --default-toolchain none --no-modify-path
           "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned dependency build artifacts
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # Mathlib's own `cache` executable, run by the pinned Lake toolchain
+        # rather than a third-party composite action. It fetches oleans only
+        # for the dependency revisions already fixed in lake-manifest.json;
+        # this repository's own Lean sources are still elaborated locally by
+        # the pinned kernel, so proof authority is unchanged. Without it a
+        # cold Actions cache must compile Mathlib from source, which cannot
+        # finish inside the runner job ceiling.
+        run: |
+          set -euo pipefail
+          lake exe cache get
       - name: Memory-bounded Lean build
         if: steps.lean-inputs.outputs.changed == 'true'
         # Drain independent Lucas modules without Lake's unbounded ready-set
