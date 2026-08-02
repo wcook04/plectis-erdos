@@ -67,6 +67,12 @@ $E_n=0$ propagate, this yields: under exact dynamics, eventual strict centring,
 an eventually bounded negative part, and normalised vanishing, $E$ vanishes
 eventually, and the sequence satisfies the Sylvester recurrence eventually.
 
+There is also a weaker conclusion from normalised vanishing alone.  It makes
+strict increases of $\gcd(C_n,D_n)$ sublinear in number and forces constant-gcd
+blocks of every prescribed finite length arbitrarily far out.  It does not
+make the gcd eventually constant; that stronger conclusion uses cofinally
+bounded negative magnitudes.
+
 Problem~\#243 is open and this note does not close it.  The last theorem is
 conditional, and two of its hypotheses are analytic inputs that we assume
 rather than derive.  What the results remove is the bounded case and, more
@@ -237,10 +243,11 @@ Constantly negative $E$ & Excluded here & Theorem~\ref{res:constant}, at any mag
 Periodic negative magnitude & Excluded here & Theorem~\ref{res:periodic}, in the regime $e_n<a_n$ and with positive drift $M>0$. \\
 Coprime-modulus barrier & Proved here & Theorem~\ref{res:barrier}. \\
 Bounded negative part & Excluded here; conditional & Theorem~\ref{res:bounded}; see its hypotheses. \\
+Normalised vanishing alone & Gcd changes are sparse & Proposition~\ref{res:gcdsparse}; arbitrarily late finite constant blocks, not eventual constancy. \\
 Finite normalised negative mass & Excluded here; conditional & Theorem~\ref{res:mass}, Section~\ref{sec:mass}; normalised vanishing remains an input. \\
 Factorial residue reduction & Proved here; superseded for its original purpose & Theorem~\ref{res:residue}, Appendix~\ref{app:residue}. \\
 Strict centring, normalised vanishing & Assumed here; supplied by prior art & Section~\ref{sec:bounded}; derived in~\cite{koizumi2025}, see Section~\ref{sec:problem}. \\
-Unbounded, divergent-mass negative excursions & Surviving frontier profile & Section~\ref{sec:open}; consequences any counterexample must satisfy, not a separate open problem. \\
+Unbounded, divergent-mass negative excursions & Necessary counterexample conditions & Section~\ref{sec:open}; consequences any counterexample must satisfy, not a separate open problem. \\
 Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; the Erd\H{o}s--Straus hypothesis is implied by that of Theorem~\ref{res:descent}. \\
 State system equals reciprocal tails & Not formalised & Section~\ref{sec:state}. \\
 \bottomrule
@@ -881,6 +888,42 @@ boundedness \emph{along a cofinal set} and not
 boundedness at every index.  That is what the situation gives: the tail gcd is
 controlled only at the negative indices, and cofinally many of them is all the
 divisibility chain needs.
+
+Normalised vanishing by itself gives a different, strictly weaker conclusion.
+For an exact natural orbit with $C_n>0$, put
+\[
+ G_n=\gcd(C_n,D_n),\qquad
+ \Gamma(N)=\#\{0\le j<N:G_j<G_{j+1}\}.
+\]
+
+\begin{proposition}[normalised vanishing makes strict gcd changes sparse]
+\label{res:gcdsparse}
+Assume
+\[
+  (\forall K\ge1)(\exists N)(\forall n\ge N)\qquad
+  K|E_n|<C_n.
+\]
+Then, for every $K\ge1$, eventually $K\Gamma(N)<N$.  Moreover, for every
+starting bound $B$ and block length $L$, some $n\ge B$ satisfies
+\[
+  G_n=G_{n+1}=\cdots=G_{n+L}.
+\]
+\end{proposition}
+
+\noindent The first assertion is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2092}{tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes}{sublinear
+strict-growth theorem}; the second is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2108}{tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes}{arbitrarily
+late constant-block theorem}.  The proof first converts normalised vanishing
+into subexponential growth of $C_n$, then charges every strict divisibility
+increase of $G_n$ against a finite power-of-two budget.  Sparse strict changes
+force long finite gaps between them.
+
+The quantifiers matter.  Proposition~\ref{res:gcdstab} uses cofinally bounded
+negative magnitudes and yields eventual constancy.  Proposition~\ref{res:gcdsparse}
+uses only normalised vanishing and yields arbitrarily late constant blocks of
+each prescribed finite length.  It does not yield one infinite constant tail,
+and it does not exclude cofinally unbounded negative excursions.
 
 \section{Excluding a bounded negative part}\label{sec:bounded}
 
