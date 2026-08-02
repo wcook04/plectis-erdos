@@ -20,6 +20,8 @@ import ErdosProblems.Erdos269.ResidueEscape
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Erdos1049.RationalBaseLambert
 import ErdosProblems.Erdos1049.RationalPadeArithmetic
+import ErdosProblems.Erdos1049.ZudilinHeightRegion
+import ErdosProblems.Erdos1049.HermitePadeNoGo
 import ErdosProblems.Erdos1049.ZudilinConeArithmetic
 
 /-!

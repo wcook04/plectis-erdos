@@ -37,6 +37,13 @@ theorem sevenHalves_rational_margin :
     (7 : ℚ) / 18 = 1 / 2 - 1 / 9 := by
   norm_num
 
+/-- The height region in the Bundschuh--Väänänen theorem, written for a
+positive reduced rational base `a / b`.  This definition records only the
+elementary parameter inequality; it does not internalize the external
+analytic irrationality theorem. -/
+def BundschuhVaananenHeightRegion (a b : ℕ) : Prop :=
+  Real.log b / Real.log a < 1 / 2 - 1 / Real.pi ^ 2
+
 /-- The power certificate implies the strict logarithmic ratio bound. -/
 theorem sevenHalves_log_ratio_lt :
     Real.log 2 / Real.log 7 < (7 : ℝ) / 18 := by
