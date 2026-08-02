@@ -29,60 +29,32 @@ Problem~\#1049}
 \begin{abstract}
 \noindent
 Let $F(t)=\sum_{n\ge1}(t^{n}-1)^{-1}$.  At the rational base $3/2$ we prove
-two scoped arithmetic obstructions and formalise them in Lean: one concerns
-primitive coefficient rows and their endpoint congruences, and the other a
-coordinatewise clearing scheme.  Neither is a statement about every possible
-linear-form construction.  Rowwise content (the greatest common divisor of the
-two entries of a coefficient row) scales the analytic error and the
-exterior determinant by exactly the same factors, including the absolute
-determinant height, so a local divisor supplied only by the two row contents is
-paid for by exactly the same factor in the Archimedean determinant
-height.  Homogeneous
-specialisation at $(3,2)$ sees the constant endpoint modulo $3$ and the top
-endpoint modulo $2$, so unit endpoints exclude both primes from any common
-divisor.  Together: when one entry of a coefficient pair has a unit top
-endpoint and the other a unit constant endpoint, neither rowwise scalar content
-nor a common divisor of the two specialised evaluations supplies $2$- or
-$3$-primary gain.  Thus any argument based on this particular local-divisibility
-strategy must obtain that gain after primitive normalisation.  A possible next
-step is a growing-rank additive kernel
-cancelling both endpoint jets (the residues of a specialised coefficient
-modulo $3^{R}$ and modulo $2^{S}$) in both specialised coefficient sequences
-while preserving a nonzero, sufficiently small remainder; we count the four-jet
-target exactly and prove the concrete sufficient threshold \(M\ge 4R+2S\) on
-the number $M$ of coefficient pairs, at positive bottom depth $R$.
+two scoped arithmetic obstructions.  First, rowwise content scales both the
+analytic error and the exterior determinant by the same factors.  Homogeneous
+specialisation at $(3,2)$ detects the constant endpoint modulo $3$ and the top
+endpoint modulo $2$; under unit-endpoint hypotheses, neither prime can divide
+both specialised evaluations.  Thus an argument using this particular
+local-divisibility strategy must obtain its $2$- and $3$-primary gain after
+primitive normalisation.  We also give a finite-group collision lemma that
+cancels four prescribed endpoint residues once $M\ge4R+2S$.  This congruence
+statement does not ensure that the resulting polynomial pair or analytic
+remainder is nonzero.
 
-We also record what a direct clearing route costs.  Erd\H{o}s's actual 1948
-integer-base proof instead constructs, by the Chinese remainder theorem,
-arbitrarily long blocks of zero base-$b$ digits and proves that the expansion
-does not terminate~\cite[pp.~63--66]{erdos1948}.  The separate cut-level
-clearing studied here leaves a factor $s^{N+1}$ behind at a rational base
-$r/s$ with $s\ge2$.  Writing a coordinatewise corridor for the surviving
-arithmetic, we prove that a corridor forces $s^{N+K+1}<r(N+K)$, and that at
-the base $3/2$ this is impossible once the shift and the cleared window are
-both nonempty.  We also prove the exact denominator-cleared tail recurrence
-$U_{N+1}=rU_N-Bc(N+1)s^{N+1}$ and the bound
-$2^{N+1}\le Bc(N+1)s^{N+1}$ for $s\ge2$ and positive data, against the exact
-collapse of that term to $Bc(N+1)$ at $s=1$.  The height criterion of Bundschuh
-and V\"a\"an\"anen (1994), which settles a restricted family of rational bases
-containing $7/2$, is used as an external theorem.  We formalise the complete
-elementary Archimedean height inequality required at $7/2$, while leaving the
-source theorem's analytic irrationality argument external.  Separately we
-check polynomial bounds on the denominator exponents of a homogenised Pad\'e
-construction, with the analytic remainder left untouched.
+Second, we isolate a six-condition coordinatewise clearing scheme at a
+rational base $r/s$.  Its hypotheses force
+$s^{N+K+1}<r(N+K)$, which is impossible at $3/2$ when the shift and cleared
+window are nonempty.  The associated cleared-tail recurrence
+$U_{N+1}=rU_N-Bc(N+1)s^{N+1}$ is recorded as an explanatory identity; it is
+not derived from rationality and does not exclude other clearing or
+linear-form constructions.
 
-We also isolate the elementary logarithmic region
-$\log b/\log a<81/200$.  Lean checks that $31/4$ and all its positive powers
-lie in this region; it checks separately that $31/4$ lies outside the earlier
-region.  The base $3/2$ lies outside both because
-$81/200<\log2/\log3$.  No analytic irrationality theorem for the $81/200$
-region is cited or formalised here: the formal claims are only the displayed
-inequalities, memberships, and exclusions.
-
-Problem~\#1049 is open, and nothing here decides it.  The results are
-exclusions of particular constructions, not statements about the arithmetic
-nature of any value: we do not prove irrationality at $3/2$, at any other
-rational base, or in the unrestricted problem.
+For comparison, Bundschuh and V\"a\"an\"anen's published theorem settles a
+restricted family containing $7/2$; Lean checks only the elementary height
+inequality needed for that application.  We also verify elementary membership
+and exclusion statements for the logarithmic region
+$\log b/\log a<81/200$, but cite no analytic irrationality theorem for that
+cutoff.  Problem~\#1049 remains open: nothing here proves rationality or
+irrationality at $3/2$, or supplies a method-wide obstruction.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
