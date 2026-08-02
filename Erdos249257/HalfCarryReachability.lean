@@ -612,6 +612,34 @@ theorem finite_boolSupport_ne_half
   norm_num at hk
   omega
 
+/-- Membership of `1/2` in the Mersenne achievement set is exactly the
+existence of an infinite positive-index support with support-series value
+`1/2`.  Finiteness is excluded arithmetically by the odd reduced denominator
+of every finite Mersenne subsum. -/
+theorem half_mem_mersenneAchievementSet_iff_exists_infinite_support :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet ↔
+      ∃ A : Set ℕ,
+        0 ∉ A ∧
+        A.Infinite ∧
+        erdosSupportSeries 2 A = (1 : ℝ) / 2 := by
+  constructor
+  · rintro ⟨A, hA0, hvalue⟩
+    have hseries : erdosSupportSeries 2 A = (1 : ℝ) / 2 := by
+      calc
+        erdosSupportSeries 2 A = positiveMersenneSupportValue A :=
+          (positiveMersenneSupportValue_eq_erdosSupportSeries A).symm
+        _ = (1 : ℝ) / 2 := hvalue.symm
+    have hAinf : A.Infinite := by
+      intro hfinite
+      exact finite_boolSupport_ne_half A hfinite hA0 hseries
+    exact ⟨A, hA0, hAinf, hseries⟩
+  · rintro ⟨A, hA0, _hAinf, hseries⟩
+    refine ⟨A, hA0, ?_⟩
+    calc
+      (1 : ℝ) / 2 = erdosSupportSeries 2 A := hseries.symm
+      _ = positiveMersenneSupportValue A :=
+        (positiveMersenneSupportValue_eq_erdosSupportSeries A).symm
+
 /-! ## Möbius-centred carry intake
 
 The exact signed baseline `s₁ = 0`, `sₙ = -μ(n)` for `n ≥ 2` has divisor
@@ -1063,5 +1091,6 @@ theorem exists_infinite_support_half_of_evenSeamSupply_escape
 #print axioms cofinalAdmissibility_of_canonicalEvenSeamSupply
 #print axioms exists_infinite_support_half_of_canonicalEvenSeamSupply
 #print axioms exists_infinite_support_half_of_evenSeamSupply_escape
+#print axioms half_mem_mersenneAchievementSet_iff_exists_infinite_support
 
 end Erdos249257.HalfCarryReachability

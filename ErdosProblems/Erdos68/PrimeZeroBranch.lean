@@ -6,18 +6,30 @@ import Mathlib.NumberTheory.Wilson
 /-!
 # Erdős #68: the prime zero branch
 
-This module relates the strict successors of the literal factorial-gap
-prefixes to the canonical factorial digits of the full series.  The exact
-scaled tail decides whether the strict successor is the canonical floor or
-the following integer.  Consequently a unit carry has only two possible
-canonical branches: zero digit with two zero flags, or maximal digit with
-two one flags.
+This module develops three linked layers of the factorial-gap series.
 
-The result does not prove irrationality.  It separates the only branch
-compatible with eventual rationality from the maximal-digit branch.
+First, exact prefix identities express the step carry through a binary
+endpoint flag and the canonical factorial digit.  A unit carry is therefore
+equivalent to one of two endpoint cylinders: a zero digit with two zero
+flags, or the maximal digit with two one flags.
+
+Second, reduced predecessor fractions are followed prime by prime.  The
+formalized arithmetic includes prefix-private prime powers, accumulated
+denominator factors, collision and residual cofactors, and exact finite
+records at the primes `107` and `971`.  In particular, prefix-private
+factorial-gap hits occur cofinally and the corresponding numerator
+projections are nonzero under the stated divisibility hypotheses.
+
+Third, a family of conditional theorems shows that sufficiently large
+predecessor residues, supplied cofinally, would force irrationality.  The
+module does **not** prove those quantitative lower bounds: a nonzero residue
+is not enough.  It therefore proves no unconditional irrationality theorem
+and does not settle Erdős #68.
 -/
 
 namespace ErdosProblems.Erdos68
+
+/-! ## Scaled tails and endpoint flags -/
 
 /-- The exact tail after `m`, scaled by `m!`. -/
 noncomputable def factorialGapScaledTail (m : ℕ) : ℝ :=
@@ -205,6 +217,8 @@ theorem factorialGapScaledTail_pred_recurrence
     _ = 1 + 1 / ((m.factorial : ℝ) - 1) +
           (m.factorial : ℝ) *
             _root_.Erdos68.factorialGapTail m := by rw [hfrac]
+
+/-! ## The reduced rational predecessor state -/
 
 /-- Exact rational version of the predecessor gap.  This is executable:
 it uses only the finite prefix through `m - 1` and rational floor. -/
@@ -426,8 +440,8 @@ theorem factorialGapPredecessorGapNumerator_le_den (m : ℕ) :
           ring
     _ ≤ q.den := by linarith
 
-/-- The reduced upper-grid residue numerator is coprime to its denominator.
-This is the exact CRT interface for the finite-prefix gap. -/
+/-- The reduced upper-grid residue numerator is coprime to its denominator,
+which is the coprimality needed for the later finite CRT arguments. -/
 theorem factorialGapPredecessorGapNumerator_isCoprime_den (m : ℕ) :
     IsCoprime
       (factorialGapPredecessorGapNumerator m)
@@ -800,8 +814,8 @@ theorem
 
 /-- At a newly adjoined divisor `d | m!-1`, the normalized next numerator
 has a completely explicit congruence: multiplying it by the transition
-normalizer gives `-v_m` modulo `d`.  This records the reduction factor
-that was invisible in the earlier nonvanishing-only interface. -/
+normalizer gives `-v_m` modulo `d`.  The identity retains the reduction
+factor omitted by the earlier qualitative nonvanishing statement. -/
 theorem
     transitionNormalizer_mul_predecessorGapNumerator_modEq_neg_den
     {m d : ℕ} (hm : 2 ≤ m)
@@ -1023,6 +1037,8 @@ theorem dvd_factorialGapPredecessorScaledRat_succ_den_of_coprime
         (m.factorial - 1) :=
     hdm.dvd_of_dvd_mul_left hdAll
   exact hdA.dvd_of_dvd_mul_right hdRest
+
+/-! ## Prime-power persistence in consecutive denominators -/
 
 /-- Prime-factor form of denominator persistence.  A prime already present
 in `v_m` survives in `v_(m+1)` unless it is absorbed by `m` or by the new
@@ -1320,6 +1336,8 @@ theorem prefixPrivate_primeFinset_two_step_crt_anchors
       factorialGapPredecessorGapNumeratorNat_mod_primeFinset_prod_ne_zero
         hs hprime hnext⟩
 
+/-! ## Prefix-private moduli and finite CRT anchors -/
+
 /-- The canonical finite set of prime factors of `m! - 1` that are larger
 than `m + 1` and absent from every earlier factorial gap. -/
 def factorialGapLargePrefixPrivatePrimes (m : ℕ) : Finset ℕ :=
@@ -1395,10 +1413,9 @@ theorem factorialGapLargePrefixPrivatePowerModulus_dvd_gap
       (hqPrime.pow_dvd_iff_le_factorization hgapNe).2 le_rfl
 
 /-- Every prime power in the canonical large prefix-private modulus survives
-to full multiplicity inside the single private quotient owned by `m` on the
-tailored block with parameter `m / 2 + 1`.  Thus the canonical source-backed
-product is already a legitimate factor of one owner quotient; no second
-moving owner is needed for the split-factor CRT route. -/
+to full multiplicity inside the private quotient indexed by `m` in the
+tailored block with parameter `m / 2 + 1`.  Hence the whole product divides
+one quotient in that block. -/
 theorem factorialGapLargePrefixPrivatePowerModulus_dvd_tailoredBlockPrivateQuotient
     {m : ℕ} (hm : 2 ≤ m) :
     factorialGapLargePrefixPrivatePowerModulus m ∣
@@ -1480,9 +1497,8 @@ theorem mem_factorialGapLargePrefixPrivatePrimes_dvd_tailoredBlockPrivateModulus
         (factorialGapLargePrefixPrivatePowerModulus_dvd_tailoredBlockPrivateModulus
           hm))
 
-/-- Two distinct source-selected primes now instantiate the exact coprime
-factor interface of the branch-free split-factor consumer, even though both
-factors may live in the same moving owner quotient. -/
+/-- Two distinct selected primes give coprime factors of the tailored-block
+private modulus, even when both divide the same private quotient. -/
 theorem factorialGapLargePrefixPrivatePrimes_distinct_factor_pair_tailoredBlock
     {m q r : ℕ} (hm : 2 ≤ m)
     (hqMem : q ∈ factorialGapLargePrefixPrivatePrimes m)
@@ -1502,9 +1518,9 @@ theorem factorialGapLargePrefixPrivatePrimes_distinct_factor_pair_tailoredBlock
         hm hrMem,
       (Nat.coprime_primes hqData.1 hrData.1).2 hqr⟩
 
-/-- In fact one source-selected prime already supplies the coprime factor
-interface: the factors `1` and `q` give projection moduli `R` and `R / q`,
-whose lcm recovers `R`.  Two nontrivial selected primes are unnecessary. -/
+/-- In fact one selected prime is enough: the factors `1` and `q` give
+projection moduli `R` and `R / q`, whose lcm recovers `R`.  Two nontrivial
+selected primes are unnecessary. -/
 theorem factorialGapLargePrefixPrivatePrimes_unit_factor_pair_tailoredBlock
     {m q : ℕ} (hm : 2 ≤ m)
     (hqMem : q ∈ factorialGapLargePrefixPrivatePrimes m) :
@@ -1517,10 +1533,9 @@ theorem factorialGapLargePrefixPrivatePrimes_unit_factor_pair_tailoredBlock
         hm hqMem,
       Nat.coprime_one_left q⟩
 
-/-- The remaining tailored-block producer can therefore be stated with only
-one source-selected prefix-private prime.  Its membership automatically makes
-the private modulus nontrivial; the sole extra arithmetic input is the exact
-branch-free factor-pair scale inequality for `(1,q)`. -/
+/-- A single selected prefix-private prime makes the private modulus
+nontrivial.  Under the displayed cofinal factor-pair scale inequality for
+`(1,q)`, this suffices for irrationality. -/
 theorem irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitFactorPairFloor
     (hcert :
       ∀ B : ℕ, ∃ m q : ℕ,
@@ -1553,10 +1568,9 @@ theorem irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitFactorPa
     ⟨m / 2 + 1, 1, q, by omega, hmLarge,
       one_dvd _, hqDvd, Nat.coprime_one_left q, hR, hscale⟩
 
-/-- The one-prime irrationality consumer with its quantitative premise
-fully split.  The global complementary residue and the local collision cap
-are the two exact surviving inputs; no opaque factor-pair floor remains in
-the producer statement. -/
+/-- A one-prime conditional irrationality theorem with its quantitative
+hypothesis split into a global complementary-residue bound and a local
+collision-cap bound. -/
 theorem irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitScaleSplit
     (hcert :
       ∀ B : ℕ, ∃ m q : ℕ,
@@ -1837,9 +1851,9 @@ theorem
         hmodOne hden.2⟩
 
 /-- A cofinal supply of factorial gaps with a prime divisor beyond the
-source index yields cofinally many actual large-prime anchors in the
-reduced predecessor denominators.  The factorial-sized source request
-forces the least hit past the requested cutoff. -/
+index yields cofinally many large-prime divisors of reduced predecessor
+denominators.  The factorial-sized lower bound forces the least hit beyond
+the requested cutoff. -/
 theorem cofinal_large_prime_factorialGap_denominator_anchors
     (hsource :
       ∀ A : ℕ, ∃ q n : ℕ,
@@ -1926,10 +1940,9 @@ theorem cofinal_large_prime_factorialGap_two_step_denominator_anchors
       prefixPrivate_prime_dvd_factorialGapPredecessorScaledRat_succ_succ_den
         hm2 hq hmOneQ hqHit hprefix⟩
 
-/-- The same cofinal source input populates the canonical large
-prefix-private modulus, not merely one existential prime.  Consequently
-the canonical squarefree product gives two consecutive actual denominator
-anchors with nonzero combined numerator projections cofinally often. -/
+/-- Under the same cofinal hypothesis, the canonical large prefix-private
+modulus—not merely one prime—divides two consecutive reduced denominators,
+with nonzero combined numerator projections. -/
 theorem cofinal_largePrefixPrivateModulus_two_step_crt_anchors
     (hsource :
       ∀ A : ℕ, ∃ q n : ℕ,
@@ -1980,9 +1993,9 @@ theorem cofinal_largePrefixPrivateModulus_two_step_crt_anchors
       factorialGapLargePrefixPrivateModulus_two_step_crt_anchors
         hm2 hs⟩
 
-/-- The cofinal source-backed denominator anchors automatically carry
-nonzero projected numerators.  What remains open is a quantitative lower
-bound for these nonzero residues. -/
+/-- The conditional cofinal denominator divisors automatically give nonzero
+projected numerators.  This is qualitative: no lower bound for the nonzero
+residues follows. -/
 theorem cofinal_large_prime_factorialGap_nonzero_numerator_projections
     (hsource :
       ∀ A : ℕ, ∃ q n : ℕ,
@@ -2004,6 +2017,8 @@ theorem cofinal_large_prime_factorialGap_nonzero_numerator_projections
     ⟨m, q, hmLarge, hq, hmq, hqDen,
       factorialGapPredecessorGapNumeratorNat_mod_ne_zero_of_prime_dvd_den
         hq hqDen⟩
+
+/-! ## Accumulated private powers across finite intervals -/
 
 /-- The full composite-divisor persistence law iterates across any finite
 interval on which the divisor is coprime to every intervening radix and
@@ -2343,6 +2358,8 @@ theorem
     factorialGapPredecessorGapNumeratorNat_mod_ne_zero_of_one_lt_dvd_den
       (one_lt_factorialGapAccumulatedPrivatePowerModulus hnonempty)
       factorialGapAccumulatedPrivatePowerModulus_dvd_den
+
+/-! ## Componentwise private-prime sources -/
 
 /-- A source-gap/prime pair.  The second coordinate is a prime selected
 from the canonical private set born at the first coordinate. -/
@@ -2916,6 +2933,8 @@ theorem prime_dvd_unselectedBirthCofactor_boundary_or_repeat
       hnotCoprime
         (hq.coprime_iff_not_dvd.mpr hnotDvd)
 
+/-! ## Cofinal private hits and reflected collisions -/
+
 /-- Every prime `q ≥ 5` is an automatic linear-size divisor of the
 factorial gap two indices earlier: `q ∣ (q - 2)! - 1`.  This Wilson
 boundary family explains why an upper bound of shape
@@ -2981,10 +3000,9 @@ theorem factorialGapDenominatorProduct_pos (B : ℕ) :
 distinct primes has product larger than all gaps through `B`, at least
 one of those primes has not occurred in any factorial gap through `B`.
 
-This is the exact finite bridge behind the asymptotic first-hit strategy:
-prime-product growth can be compared with the elementary size of
-`factorialGapDenominatorProduct B`, without assuming a large prime factor
-at a preselected index. -/
+This finite pigeonhole statement compares prime-product growth with the
+elementary size of `factorialGapDenominatorProduct B`, without assuming a
+large prime factor at a preselected index. -/
 theorem exists_prime_avoiding_factorialGapProduct_of_lt
     {B : ℕ} {s : Finset ℕ}
     (hprime : ∀ q ∈ s, q.Prime)
@@ -3073,10 +3091,9 @@ cutoff `B`, choose a prime `q ≥ B! + 5`; Wilson supplies the hit at `q - 2`.
 The least hit for `q` cannot occur at or below `B`, since then the prime
 would be at most `B! - 1`.
 
-This removes the need for an external large-prime-factor theorem when the
-consumer asks only for cofinal private support.  Quantitative consumers
-must still use a sharper input, such as the prime-product pigeonhole above,
-to retain useful upper control on `q` relative to its least hit. -/
+Thus cofinal private support needs no external large-prime-factor theorem.
+Quantitative applications still need a sharper estimate, such as the
+prime-product pigeonhole above, to control `q` relative to its least hit. -/
 theorem cofinal_prefixPrivate_factorialGap_hits :
     ∀ B : ℕ, ∃ q m : ℕ,
       B < m ∧
@@ -3209,9 +3226,8 @@ theorem prime_dvd_factorialBlockCollisionCore_of_odd_reflection
   simpa using htwo
 
 /-- A reflected upper-half collision survives predecessor-factorial
-normalization.  This composes the Wilson-reflection collision theorem with
-the exact upper-hit normalization bridge: the same prime `q` therefore lies
-in the normalized collision core, not only in the unnormalised core. -/
+normalization: the same prime `q` lies in the normalized collision core,
+not only in the unnormalised core. -/
 theorem prime_dvd_factorialBlockNormalizedCollisionCore_of_odd_reflection
     {p q n : ℕ}
     (hq : q.Prime)
@@ -3232,8 +3248,7 @@ theorem prime_dvd_factorialBlockNormalizedCollisionCore_of_odd_reflection
         hq hn hpn hnmem hrefmem hqUpper hqdvd)
 
 /-- Incidence-count form of the reflected collision: the prime `q` hits at
-least two displayed factorial gaps in the block.  This is the exact input
-shape needed by source-level hit-count estimates for the normalized core. -/
+least two displayed factorial gaps in the block. -/
 theorem one_lt_factorialBlockPrimeHitCount_of_odd_reflection
     {p q n : ℕ}
     (hq : q.Prime)
@@ -3453,7 +3468,7 @@ theorem square_dvd_mul_sub_one_iff_quotient_balance
     rw [ht]
     ring
 
-/-- Source-facing nonterminal square-lift criterion.  If a prime `q`
+/-- Nonterminal square-lift criterion.  If a prime `q`
 already divides both factorial gaps at `k<n`, then the intervening
 descending factorial is also `1` modulo `q`.  The later hit lifts from
 `q` to `q²` exactly when the two first-order quotient residues—one from
@@ -3550,9 +3565,8 @@ theorem prime_not_mem_largePrefixPrivatePrimes_of_dvd_unselectedBirthCofactor
   omega
 
 /-- The unselected cofactor retains the complete current-gap valuation of
-each prime in its support.  Thus its remaining difficulty is genuinely
-multiplicity-sensitive: no fraction of a repeated prime power was silently
-removed by the selected birth product. -/
+each prime in its support: no part of a repeated prime power is removed by
+the selected birth product. -/
 theorem primePower_dvd_unselectedBirthCofactor_of_prime_dvd
     {n q : ℕ} (hn : 2 ≤ n) (hq : q.Prime)
     (hqBirth : q ∣ factorialGapUnselectedBirthCofactor n) :
@@ -3596,6 +3610,8 @@ theorem primePower_dvd_unselectedBirthCofactor_of_prime_dvd
     (hqCoprimeSelected.pow_left
       ((n.factorial - 1).factorization q)).dvd_of_dvd_mul_left
         hpowDvdMul
+
+/-! ## Killed multiplicities and residual-cofactor recurrences -/
 
 /-- Every killed source prime divides its complete source power. -/
 theorem prime_dvd_factorialGapPrivatePrimeSourcePower_of_mem_killed
@@ -3851,8 +3867,8 @@ theorem
 
 /-- At a repeated-birth prime, every active old component with that label
 is killed, so the complete old accumulator valuation is exactly the killed
-valuation.  This is the multiplicity interface needed to distinguish old
-residual mass from canonical mass removed by the transition. -/
+valuation.  This separates the old residual multiplicity from the
+multiplicity removed by the transition. -/
 theorem
     factorialGapComponentwiseAccumulatedPrivatePowerModulus_factorization_eq_killed_of_prime_dvd_birth
     {n q : ℕ} (hn : 2 ≤ n) (hq : q.Prime)
@@ -4453,8 +4469,8 @@ theorem
   omega
 
 /-- Every repeated-birth prime either grows in the residual cofactor or is
-present in the reduced outflow.  Thus failure of residual growth has an
-exact cancellation certificate. -/
+present in the reduced outflow.  Hence failure of residual growth forces
+divisibility of the reduced transition normalizer. -/
 theorem
     prime_dvd_reducedTransitionNormalizer_of_prime_dvd_birth_of_not_residual_growth
     {n q : ℕ} (hn : 2 ≤ n) (hq : q.Prime)
@@ -5031,7 +5047,7 @@ theorem
       (factorialGap_repeatedRecordPrimePower_dvd_succ_den
         hn hq hqGap hrepeat hrecord)
 
-/-- A source-facing square criterion with no reduced-denominator
+/-- A square criterion with no reduced-denominator
 hypothesis.  If `p²` first appears in a factorial gap at `n`, while `p`
 already appeared at one earlier gap, then `p²` enters the next residual
 cofactor and actual denominator and has a nonzero reduced-numerator
@@ -5095,13 +5111,14 @@ theorem factorialGap_firstRepeatedPrimeSquare_entry
         (by nlinarith [hp.two_le])
         hsqDen⟩
 
+/-! ## Wilson quotients and finite repeated-prime records -/
+
 /-- The natural Wilson quotient.  Wilson's theorem makes the displayed
 division exact whenever `p` is prime. -/
 def factorialWilsonQuotient (p : ℕ) : ℕ :=
   ((p - 1).factorial + 1) / p
 
-/-- Wilson's theorem in the divisibility form used by the quotient
-crosswalk below. -/
+/-- Wilson's theorem in the divisibility form used below. -/
 theorem prime_dvd_factorial_pred_factorial_add_one
     {p : ℕ} (hp : p.Prime) :
     p ∣ (p - 1).factorial + 1 := by
@@ -5177,7 +5194,7 @@ theorem factorialWilsonQuotient_balance
       rw [Nat.mul_sub_left_distrib]
       simp
 
-/-- Source-facing Wilson criterion.  For every prime `p`, the congruence
+/-- Wilson criterion.  For every prime `p`, the congruence
 `W_p ≡ 1 (mod p)` is equivalent to a square hit in the factorial gap at
 `p - 2`.  Thus the higher-order Wilson condition is exactly the
 valuation-amplification trigger used below, rather than merely a numerical
@@ -5255,14 +5272,14 @@ theorem factorialGap_halfFactorial_Wilson_record_entry
   simpa only [hindex] using hentry
 
 /-- Before endpoint `105`, no factorial gap carries two factors of `107`.
-This is a kernel-checked finite residue calculation, not a cofinal claim. -/
+This is a finite residue calculation, not a cofinal claim. -/
 theorem oneHundredSeven_sq_not_dvd_factorialGap_before_105
     {k : ℕ} (hk2 : 2 ≤ k) (hk105 : k < 105) :
     ¬107 ^ 2 ∣ k.factorial - 1 := by
   interval_cases k <;> norm_num [Nat.factorial]
 
-/-- The first exact repeated-valuation-record certificate found by the
-componentwise diagnostic: `107` occurs at exponent one in `53! - 1` and
+/-- An exact repeated-valuation record: `107` occurs at exponent one in
+`53! - 1` and
 at exponent at least two in `105! - 1`, exceeding every prior valuation. -/
 theorem oneHundredSeven_repeatedRecord_at_105 :
     (107 : ℕ).Prime ∧
@@ -5312,9 +5329,9 @@ theorem oneHundredSeven_factorialWilsonQuotient_modEq_one :
       (by norm_num : (107 : ℕ).Prime)).2
   norm_num [Nat.factorial]
 
-/-- At `p = 107`, the half-factorial hit and Wilson-quotient congruence,
-together with the finite first-square certificate, instantiate the joint
-source pattern and force a square in the actual denominator at `106`. -/
+/-- At `p = 107`, the half-factorial hit, Wilson-quotient congruence, and
+finite first-square record force a square in the reduced denominator at
+`106`. -/
 theorem oneHundredSeven_halfFactorial_Wilson_record_entry :
     107 ^ 2 ∣ factorialGapComponentwiseResidualCofactor 106 ∧
       107 ^ 2 ∣ (factorialGapPredecessorScaledRat 106).den ∧
@@ -5368,8 +5385,8 @@ theorem predecessorGapNumeratorNat_mod_oneHundredSeven_sq_at_106_ne_zero :
       hdivDen
 
 /-- Before the nonterminal record index `609`, no factorial gap carries
-two factors of `971`.  This is a kernel-checked finite residue
-calculation, not a cofinal claim. -/
+two factors of `971`.  This is a finite residue calculation, not a cofinal
+claim. -/
 theorem nineHundredSeventyOne_sq_not_dvd_factorialGap_before_609
     {k : ℕ} (hk2 : 2 ≤ k) (hk609 : k < 609) :
     ¬971 ^ 2 ∣ k.factorial - 1 := by
@@ -5393,6 +5410,8 @@ theorem nineHundredSeventyOne_firstRepeatedPrimeSquare_entry :
     exact
       nineHundredSeventyOne_sq_not_dvd_factorialGap_before_609
         hj2 hj609
+
+/-! ## Repeated-birth amplification and interval persistence -/
 
 /-- Repeated-birth primes whose current factorial-gap multiplicity strictly
 exceeds their complete multiplicity in the old reduced denominator. -/
@@ -5686,8 +5705,8 @@ theorem prime_dvd_new_residualCofactor_interval_collision
     prime_dvd_unselectedBirthCofactor_interval_collision
       hn hq hqBirth
 
-/-- Every genuinely new prime in the next residual cofactor has one of the
-two exact inflow certificates.  Either it comes from repeated factorial-gap
+/-- Every genuinely new prime in the next residual cofactor has one of two
+possible origins.  Either it comes from repeated factorial-gap
 support, with a nonadjacent descending-factorial collision and power bound,
 or it is the label of a killed old source component colliding with the
 current radix or gap. -/
@@ -5884,10 +5903,10 @@ theorem predecessorGapNumeratorNat_mod_primeFinset_prod_ne_zero_of_interval_avoi
     primeFinset_prod_dvd_den_of_interval_avoidance
       hm hmn hprime hstart havoid
 
-/-- Exact bridge from the reduced predecessor residue to the endpoint gap
-used by the factorial-block CRT argument.  The latter is what remains after
-the residue, normalized by `(p-1)!`, pays for the displayed block
-`p, ..., 2p-1`. -/
+/-! ## Endpoint cylinders and the exact carry dichotomy -/
+
+/-- The endpoint gap is the reduced predecessor residue after normalization
+by `(p-1)!` and subtraction of the displayed block `p, ..., 2p-1`. -/
 theorem factorialBlockEndpointGap_eq_predecessorGapRat_sub_block
     (p : ℕ) :
     factorialBlockEndpointGap p =
@@ -5901,7 +5920,7 @@ theorem factorialBlockEndpointGap_eq_predecessorGapRat_sub_block
   field_simp
   ring
 
-/-- The same endpoint bridge entirely in terms of the coprime integer pair
+/-- The same endpoint identity entirely in terms of the coprime integer pair
 `(u_p,v_p)` attached to the reduced predecessor prefix. -/
 theorem factorialBlockEndpointGap_eq_predecessorNumerator_sub_block
     (p : ℕ) :
@@ -5918,8 +5937,7 @@ theorem factorialBlockEndpointGap_eq_predecessorNumerator_sub_block
   ring
 
 /-- Consequently the full endpoint window is exactly a thin rational
-cylinder for the reduced predecessor residue.  This is the direct interface
-between the new `u_p/v_p` certificate and the existing block CRT closers. -/
+cylinder for the reduced predecessor residue `u_p/v_p`. -/
 theorem factorialBlockEndpointWindow_iff_predecessorNumerator_cylinder
     (p : ℕ) :
     factorialBlockEndpointWindow p ↔
@@ -6243,9 +6261,10 @@ theorem factorialGap_maximal_branch_iff_upper_endpoint_cylinder
         hprevGe
     exact ⟨hdigit, hprev, hcurr⟩
 
-/-- Exact endpoint-cylinder dichotomy for a unit carry.  Only the lower
-cylinder, of length `factorialGapScaledTail m / m`, is compatible with an
-eventually rational canonical factorial expansion. -/
+/-- Exact endpoint-cylinder dichotomy for a unit carry.  The theorem is
+pointwise and leaves both the lower and upper cylinders possible.  In the
+later conditional contradiction, rationality separately forces sufficiently
+late canonical remainders and digits to vanish. -/
 theorem factorialGapStepCarry_eq_one_iff_endpoint_cylinders
     {m : ℕ} (hm : 3 ≤ m) :
     factorialGapStepCarry m = 1 ↔
@@ -6533,10 +6552,9 @@ theorem predecessorGapNumerator_threshold_iff_cleared
     dsimp [M, F, U, V]
     convert h' using 1 <;> ring
 
-/-- A modular projection of the positive numerator can certify the full
+/-- A modular projection of the positive numerator can imply the full
 cleared threshold: its least nonnegative residue is never larger than the
-numerator itself.  This is the direct consumer for a lower bound modulo a
-prime dividing the reduced denominator. -/
+numerator itself. -/
 theorem predecessorGapNumerator_mod_threshold_forces_nonunit_or_maximal_digit
     {m q : ℕ} (hm : 3 ≤ m)
     (hthreshold :
@@ -6645,9 +6663,11 @@ theorem canonicalRemainder_eq_zero_of_eq_rat
   rw [canonicalRemainder_eq_fract, hgrid]
   exact Int.fract_intCast _
 
-/-- A cofinal family of the explicit rational predecessor-gap threshold
-certificates proves Erdős #68.  This is a tail-free sufficient producer:
-all quantities in the hypothesis are computed from the finite prefix. -/
+/-! ## Conditional cofinal criteria for irrationality -/
+
+/-- If the explicit rational predecessor-gap threshold holds cofinally,
+then the factorial-gap series is irrational.  Every quantity in the
+hypothesis is computed from a finite prefix. -/
 theorem irrational_factorialGapSeries_of_cofinal_predecessorGap_threshold
     (hthreshold :
       ∀ B : ℕ, ∃ m : ℕ,
@@ -6691,9 +6711,9 @@ theorem irrational_factorialGapSeries_of_cofinal_predecessorGap_threshold
     rw [hdigit] at hmax
     omega
 
-/-- A cofinal family of exact reduced-numerator certificates proves Erdős
-#68.  This is the congruence-ready producer: it mentions neither the
-infinite series nor any real-valued floor or tail. -/
+/-- If the exact reduced-numerator threshold holds cofinally, then the
+factorial-gap series is irrational.  The hypothesis mentions neither the
+infinite series nor a real-valued floor or tail. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_predecessorGapNumerator_threshold
     (hthreshold :
@@ -6719,10 +6739,9 @@ theorem
     Rat.cast_le.mpr hmThreshold
   simpa using hcast
 
-/-- Cofinal lower bounds for the predecessor numerator projected modulo
-large divisors of its reduced denominator prove Erdős #68.  This is the
-CRT-modulus producer: the modular bound promotes to the full numerator
-threshold. -/
+/-- If the displayed modular lower bound holds cofinally for divisors of
+the reduced denominator, then the factorial-gap series is irrational.  The
+modular bound promotes to the full numerator threshold. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_predecessorGapNumerator_modulus_threshold
     (hthreshold :
@@ -6772,9 +6791,9 @@ theorem
           factorialGapPredecessorGapNumerator m := by
       rw [factorialGapPredecessorGapNumeratorNat_cast]
 
-/-- Concrete surviving-prime-set form of the CRT closer.  Pointwise prime
-divisibility is enough: Lean assembles the distinct primes into a divisor
-of the actual reduced denominator before consuming the residue bound. -/
+/-- Finite-prime-set form of the modular criterion.  Pointwise prime
+divisibility assembles the distinct primes into a divisor of the reduced
+denominator before the residue bound is applied. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_predecessorGapNumerator_primeFinset_threshold
     (hthreshold :
@@ -6810,9 +6829,9 @@ theorem
         hprime hdiv,
       hmodThreshold⟩
 
-/-- Canonical same-gap CRT closer.  It is enough to prove the quantitative
-projected-residue threshold for the product of all large prefix-private
-prime factors of `m! - 1` at the first endpoint where they enter. -/
+/-- Same-gap squarefree-modulus criterion.  The required hypothesis is the
+quantitative projected-residue threshold for the product of all large
+prefix-private prime factors of `m! - 1` at their first endpoint. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_largePrefixPrivateModulus_threshold
     (hthreshold :
@@ -6848,9 +6867,9 @@ theorem
     ⟨m + 1, factorialGapLargePrefixPrivateModulus m,
       by omega, by omega, hmodOne, hmodDen, hmodThreshold⟩
 
-/-- Multiplicity-sensitive canonical same-gap closer.  The analytic
-producer may use every prefix-private prime to its complete valuation in
-`m! - 1`, rather than paying the squarefree-radical loss. -/
+/-- Multiplicity-sensitive same-gap criterion.  Its hypothesis retains each
+prefix-private prime to its complete valuation in `m! - 1`, avoiding the
+squarefree-radical loss. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_largePrefixPrivatePowerModulus_threshold
     (hthreshold :
@@ -6878,10 +6897,9 @@ theorem
       factorialGapLargePrefixPrivatePowerModulus_dvd_succ_den hm,
       hmodThreshold⟩
 
-/-- Canonical accumulated-modulus closer.  All algebraic entry,
-pairwise-coprimality, and transport obligations have been discharged in
-the definition of the active source set; the remaining producer is the
-cofinal quantitative residue inequality for this explicit divisor. -/
+/-- Accumulated-modulus criterion.  The active-source construction supplies
+the algebraic entry, coprimality, and transport facts; the displayed
+cofinal quantitative residue inequality remains an assumption. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_accumulatedPrivatePowerModulus_threshold
     (hthreshold :
@@ -6908,7 +6926,7 @@ theorem
       factorialGapAccumulatedPrivatePowerModulus_dvd_den,
       hmodThreshold⟩
 
-/-- Componentwise canonical accumulated-modulus closer.  This retains
+/-- Componentwise accumulated-modulus criterion.  This retains
 each private prime power independently, so a later collision at one prime
 does not erase the surviving contributions born at the same source gap. -/
 theorem
@@ -6938,9 +6956,9 @@ theorem
       factorialGapComponentwiseAccumulatedPrivatePowerModulus_dvd_den,
       hmodThreshold⟩
 
-/-- Prime-modulus form of the same closer.  It is useful only when a
-single prime captures enough of the reduced denominator; in general the
-large-divisor CRT form above is the operative interface. -/
+/-- Prime-modulus form of the same criterion.  It is useful only when a
+single prime captures enough of the reduced denominator; in general a
+larger composite divisor is needed. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_predecessorGapNumerator_mod_threshold
     (hthreshold :
@@ -6995,27 +7013,8 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   norm_num at hpEscape
   linarith
 
-#print axioms factorialGapScaledTail_pos
-#print axioms factorialGapScaledTail_lt_one
-#print axioms factorialGapScaledTail_lt_two_div
-#print axioms factorialGapPredecessorGapRat_cast
-#print axioms factorialBlockCoefficient_cast_eq_strictFacTopRat
-#print axioms rat_finset_sum_den_dvd_prod_den
-#print axioms rat_finset_sum_den_dvd_of_dvd
-#print axioms factorialGapReciprocal_den
-#print axioms factorialGapPrefix_den_dvd_gapProduct
-#print axioms factorialGapPrefix_den_dvd_prefixLCM
-#print axioms factorialGapPredecessorScaledRat_den_dvd_prefixLCM
-#print axioms finset_lcm_factorization_lt_of_all_lt
-#print axioms factorialGapPredecessorGapRat_den
 #print axioms
   not_dvd_factorialGapPredecessorScaledRat_den_of_prefixPrivate
-#print axioms factorialGapPredecessorGapNumerator_pos
-#print axioms factorialGapPredecessorGapNumerator_le_den
-#print axioms factorialGapPredecessorGapNumerator_isCoprime_den
-#print axioms factorialGapPredecessorGapRat_eq_numerator_div_den
-#print axioms factorialGapPredecessorGapRat_succ_recurrence
-#print axioms factorialGapPredecessorGapNumerator_succ_recurrence
 #print axioms
   factorialGapPredecessorScaledRat_succ_den_dvd_den_mul_gap
 #print axioms
@@ -7036,14 +7035,12 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   factorialGapPredecessorGapNumeratorNat_mod_ne_zero_of_prime_dvd_den
 #print axioms
   primeFinset_prod_dvd_factorialGapPredecessorScaledRat_den
-#print axioms one_lt_primeFinset_prod
 #print axioms
   factorialGapPredecessorGapNumeratorNat_mod_primeFinset_prod_ne_zero
 #print axioms
   factorialGapPredecessorScaledRat_den_dvd_radix_gap_succ_den
 #print axioms
   dvd_factorialGapPredecessorScaledRat_succ_den_of_coprime
-#print axioms prime_dvd_factorialGapPredecessorScaledRat_succ_den
 #print axioms
   prime_dvd_factorialGapPredecessorScaledRat_succ_den_of_dvd_gap
 #print axioms
@@ -7056,9 +7053,6 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   prefixPrivate_prime_dvd_factorialGapPredecessorScaledRat_succ_succ_den
 #print axioms
   prefixPrivate_prime_pow_dvd_factorialGapPredecessorScaledRat_two_step_den
-#print axioms prefixPrivate_primeFinset_crt_entry
-#print axioms prefixPrivate_primeFinset_two_step_crt_anchors
-#print axioms mem_factorialGapLargePrefixPrivatePrimes_iff
 #print axioms
   factorialGapLargePrefixPrivatePowerModulus_dvd_gap
 #print axioms
@@ -7091,7 +7085,6 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   factorialGapLargePrefixPrivatePowerModulus_two_step_den_anchors
 #print axioms
   one_lt_factorialGapLargePrefixPrivatePowerModulus
-#print axioms factorialGapLargePrefixPrivatePrimes_nonempty
 #print axioms
   factorialGapLargePrefixPrivateModulus_two_step_crt_anchors
 #print axioms
@@ -7152,7 +7145,6 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   prime_dvd_unselectedBirthCofactor_of_repeat
 #print axioms
   prime_dvd_unselectedBirthCofactor_interval_collision
-#print axioms square_dvd_mul_sub_one_iff_quotient_balance
 #print axioms
   factorialGap_square_dvd_later_iff_blockQuotient_balance
 #print axioms
@@ -7191,13 +7183,8 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   factorialGapComponentwiseResidualCofactor_succ_factorization_eq_of_not_dvd_outflow
 #print axioms
   factorialGapComponentwiseResidualCofactor_factorization_lt_succ_of_prime_dvd_birth_not_outflow
-#print axioms prime_dvd_factorial_two_before_sub_one
-#print axioms factorialGapDenominatorProduct_pos
-#print axioms exists_prime_avoiding_factorialGapProduct_of_lt
 #print axioms
   exists_late_prefixPrivate_factorialGap_hit_of_primeProduct_lt
-#print axioms cofinal_prefixPrivate_factorialGap_hits
-#print axioms prime_dvd_reflected_factorialGap_of_odd
 #print axioms
   prime_dvd_factorialBlockCollisionCore_of_odd_reflection
 #print axioms
@@ -7228,17 +7215,12 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   factorialGap_repeatedRecordPrimePower_dvd_succ_den
 #print axioms
   predecessorGapNumeratorNat_mod_repeatedRecordPrimePower_ne_zero
-#print axioms factorialGap_firstRepeatedPrimeSquare_entry
 #print axioms
   factorialWilsonQuotient_modEq_one_iff_square_dvd_gap
 #print axioms
   factorialGap_halfFactorial_Wilson_record_entry
 #print axioms
   oneHundredSeven_sq_not_dvd_factorialGap_before_105
-#print axioms oneHundredSeven_repeatedRecord_at_105
-#print axioms oneHundredSeven_factorialWilsonQuotient_modEq_one
-#print axioms oneHundredSeven_halfFactorial_Wilson_record_entry
-#print axioms oneHundredSeven_sq_dvd_residualCofactor_106
 #print axioms
   predecessorGapNumeratorNat_mod_oneHundredSeven_sq_at_106_ne_zero
 #print axioms
@@ -7273,33 +7255,20 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_lower_endpoint_escape
   predecessorGapNumeratorNat_mod_componentwiseAccumulatedPrivatePowerModulus_ne_zero
 #print axioms
   prime_dvd_factorialGapPredecessorScaledRat_den_of_interval_avoidance
-#print axioms primeFinset_prod_dvd_den_of_interval_avoidance
 #print axioms
   predecessorGapNumeratorNat_mod_primeFinset_prod_ne_zero_of_interval_avoidance
-#print axioms factorialBlockEndpointGap_eq_predecessorGapRat_sub_block
-#print axioms factorialBlockEndpointGap_eq_predecessorNumerator_sub_block
 #print axioms
   factorialBlockEndpointWindow_iff_predecessorNumerator_cylinder
 #print axioms
   strictFacTop_factorialGapPrefix_eq_facFloor_add_endpointFlag
-#print axioms factorialGapStepCarry_eq_digit_flag_expression
-#print axioms factorialGapStepCarry_eq_one_iff_zero_or_maximal_branch
-#print axioms factorialGap_zero_branch_iff_lower_endpoint_cylinder
-#print axioms factorialGap_maximal_branch_iff_upper_endpoint_cylinder
-#print axioms factorialGapStepCarry_eq_one_iff_endpoint_cylinders
-#print axioms lower_endpoint_escape_forces_nonunit_or_maximal_digit
 #print axioms
   factorialGapPredecessorGap_eq_scaledTail_sub_remainder_add_flag
-#print axioms factorialGap_zero_branch_iff_predecessorGap_lower_window
 #print axioms
   predecessorGap_tailfree_threshold_forces_nonunit_or_maximal_digit
 #print axioms
   predecessorGapNumerator_threshold_forces_nonunit_or_maximal_digit
-#print axioms predecessorGapNumerator_threshold_iff_cleared
 #print axioms
   predecessorGapNumerator_mod_threshold_forces_nonunit_or_maximal_digit
-#print axioms predecessorGapNumerator_modulus_large_of_mod_threshold
-#print axioms canonicalRemainder_eq_zero_of_eq_rat
 #print axioms
   irrational_factorialGapSeries_of_cofinal_predecessorGap_threshold
 #print axioms

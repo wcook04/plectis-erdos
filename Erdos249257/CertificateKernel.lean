@@ -5639,52 +5639,222 @@ theorem rational_erdosSum_prefix_tail_lower
           simpa [hu] using one_div_den_mul_den_le_abs_sub hqu
     _ = ∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1) := habs
 
-/-- **Pointwise reduced-denominator saturation.**  A rational value forces
-the actual reduced denominator `Qₖ` of every prefix to satisfy
-`b ^ a(k) ≤ 4 * den(q) * Qₖ`.  This is the quantitative lower bound hidden
-behind the subsequence irrationality criterion, not merely its asymptotic
-contrapositive. -/
-theorem rational_erdosSum_prefix_denominator_saturation
-    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
+/-- **Sharp geometric tail envelope.**  A strictly increasing exponent tail
+is strictly smaller than the geometric series whose first term is the actual
+first Mersenne denominator.  This replaces the coarse factor-four bound by
+an asymptotically optimal factor `b / (b - 1)`. -/
+theorem erdos_tail_lt_first_term_geometric
+    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ)
+    (ha : StrictMono a) (ha0 : 1 ≤ a 0) (k : ℕ) :
+    ∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1)
+      < (b : ℝ) /
+          (((b : ℝ) - 1) * ((b : ℝ) ^ (a k) - 1)) := by
+  have hb_pos : (0 : ℝ) < (b : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by omega : 0 < 2) hb)
+  have hb_one : (1 : ℝ) < (b : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by omega : 1 < 2) hb)
+  have hr0 : (0 : ℝ) ≤ 1 / (b : ℝ) := by positivity
+  have hr1 : (1 : ℝ) / (b : ℝ) < 1 := by
+    rw [div_lt_one hb_pos]
+    exact hb_one
+  have hak : 1 ≤ a k := le_trans ha0 (ha.monotone (Nat.zero_le k))
+  have hfirst_pos : (0 : ℝ) < (b : ℝ) ^ (a k) - 1 := by
+    have : (1 : ℝ) < (b : ℝ) ^ (a k) := by
+      calc
+        (1 : ℝ) = (b : ℝ) ^ 0 := by simp
+        _ < (b : ℝ) ^ (a k) :=
+          pow_lt_pow_right₀ hb_one (by omega)
+    linarith
+  have hterm :
+      ∀ i,
+        (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1)
+          ≤ (1 / ((b : ℝ) ^ (a k) - 1)) *
+              ((1 : ℝ) / b) ^ i := by
+    intro i
+    have hshift : a k + i ≤ a (i + k) := by
+      have h := strictMono_add_le_apply ha k i
+      have hcomm : a (k + i) = a (i + k) := by rw [Nat.add_comm]
+      omega
+    have hpow :
+        (b : ℝ) ^ (a k + i) ≤ (b : ℝ) ^ (a (i + k)) := by
+      exact pow_le_pow_right₀ hb_one.le hshift
+    have hbi_one : (1 : ℝ) ≤ (b : ℝ) ^ i :=
+      one_le_pow₀ hb_one.le
+    have hden :
+        (b : ℝ) ^ i * ((b : ℝ) ^ (a k) - 1)
+          ≤ (b : ℝ) ^ (a (i + k)) - 1 := by
+      rw [mul_sub, ← pow_add]
+      rw [Nat.add_comm i (a k)]
+      nlinarith
+    have hprod_pos :
+        (0 : ℝ) <
+          (b : ℝ) ^ i * ((b : ℝ) ^ (a k) - 1) :=
+      mul_pos (pow_pos hb_pos _) hfirst_pos
+    calc
+      (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1)
+          ≤ 1 /
+              ((b : ℝ) ^ i * ((b : ℝ) ^ (a k) - 1)) := by
+            exact one_div_le_one_div_of_le hprod_pos hden
+      _ = (1 / ((b : ℝ) ^ (a k) - 1)) *
+              ((1 : ℝ) / b) ^ i := by
+            rw [div_pow, one_pow]
+            field_simp [ne_of_gt hb_pos, ne_of_gt hfirst_pos]
+  have hg :
+      Summable
+        (fun i =>
+          (1 / ((b : ℝ) ^ (a k) - 1)) *
+            ((1 : ℝ) / b) ^ i) :=
+    (summable_geometric_of_lt_one hr0 hr1).mul_left _
+  have hnonneg :
+      ∀ i, (0 : ℝ) ≤
+        (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1) :=
+    fun i => (erdos_term_pos b hb a ha ha0 (i + k)).le
+  have hstrict :
+      (1 : ℝ) / ((b : ℝ) ^ (a (1 + k)) - 1)
+        < (1 / ((b : ℝ) ^ (a k) - 1)) *
+            ((1 : ℝ) / b) ^ 1 := by
+    have hshift : a k + 1 ≤ a (1 + k) := by
+      have h := strictMono_add_le_apply ha k 1
+      have hcomm : a (k + 1) = a (1 + k) := by rw [Nat.add_comm]
+      omega
+    have hpow :
+        (b : ℝ) ^ (a k + 1) ≤ (b : ℝ) ^ (a (1 + k)) :=
+      pow_le_pow_right₀ hb_one.le hshift
+    have hden :
+        (b : ℝ) ^ 1 * ((b : ℝ) ^ (a k) - 1)
+          < (b : ℝ) ^ (a (1 + k)) - 1 := by
+      rw [pow_one, mul_sub, ← pow_succ']
+      nlinarith
+    have hprod_pos :
+        (0 : ℝ) <
+          (b : ℝ) ^ 1 * ((b : ℝ) ^ (a k) - 1) :=
+      mul_pos (pow_pos hb_pos _) hfirst_pos
+    calc
+      (1 : ℝ) / ((b : ℝ) ^ (a (1 + k)) - 1)
+          < 1 /
+              ((b : ℝ) ^ 1 * ((b : ℝ) ^ (a k) - 1)) :=
+            one_div_lt_one_div_of_lt hprod_pos hden
+      _ = (1 / ((b : ℝ) ^ (a k) - 1)) *
+              ((1 : ℝ) / b) ^ 1 := by
+            rw [div_pow, one_pow]
+            field_simp [ne_of_gt hb_pos, ne_of_gt hfirst_pos]
+  have hsum :
+      (∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1))
+        < ∑' i,
+            (1 / ((b : ℝ) ^ (a k) - 1)) *
+              ((1 : ℝ) / b) ^ i :=
+    Summable.tsum_lt_tsum_of_nonneg (i := 1)
+      hnonneg hterm hstrict hg
+  calc
+    ∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1)
+        < ∑' i,
+            (1 / ((b : ℝ) ^ (a k) - 1)) *
+              ((1 : ℝ) / b) ^ i := hsum
+    _ = (1 / ((b : ℝ) ^ (a k) - 1)) *
+          ∑' i, ((1 : ℝ) / b) ^ i := tsum_mul_left
+    _ = (1 / ((b : ℝ) ^ (a k) - 1)) *
+          (1 - 1 / (b : ℝ))⁻¹ := by
+            rw [tsum_geometric_of_lt_one hr0 hr1]
+    _ = (b : ℝ) /
+          (((b : ℝ) - 1) * ((b : ℝ) ^ (a k) - 1)) := by
+            field_simp [ne_of_gt hb_pos, ne_of_gt hfirst_pos,
+              ne_of_gt (sub_pos.mpr hb_one)]
+
+/-- **Sharp rational-support saturation.**  Rationality forces
+`(b - 1) * (b ^ a(k) - 1) < b * den(q) * Qₖ` at every prefix. -/
+theorem rational_erdosSum_prefix_denominator_saturation_sharp
+    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ)
+    (ha : StrictMono a) (ha0 : 1 ≤ a 0)
     (q : ℚ)
     (hq : (∑' j, (1 : ℝ) / ((b : ℝ) ^ (a j) - 1)) = (q : ℝ))
     (k : ℕ) :
-    (b : ℝ) ^ (a k) ≤
-      4 * (q.den : ℝ) *
-        ((finiteErdosSum ((Finset.range k).image a) b).den : ℝ) := by
+    ((b : ℝ) - 1) * ((b : ℝ) ^ (a k) - 1)
+      < (b : ℝ) * (q.den : ℝ) *
+          ((finiteErdosSum ((Finset.range k).image a) b).den : ℝ) := by
   set u : ℚ := finiteErdosSum ((Finset.range k).image a) b with hu
   have hfrac :
       (1 : ℝ) / ((q.den : ℝ) * (u.den : ℝ))
-        ≤ 4 / ((b : ℝ) ^ (a k)) := by
-    calc
-      (1 : ℝ) / ((q.den : ℝ) * (u.den : ℝ))
-          ≤ ∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + k)) - 1) := by
-            simpa [hu] using
-              rational_erdosSum_prefix_tail_lower b hb a ha ha0 q hq k
-      _ ≤ 4 * ((1 : ℝ) / b) ^ (a k) :=
-            erdos_tail_le b hb a ha ha0 k
-      _ = 4 / ((b : ℝ) ^ (a k)) := by
-            rw [div_pow, one_pow]
-            ring
-  have hden_pos : (0 : ℝ) < (q.den : ℝ) * (u.den : ℝ) := by positivity
+        < (b : ℝ) /
+            (((b : ℝ) - 1) * ((b : ℝ) ^ (a k) - 1)) := by
+    exact lt_of_le_of_lt
+      (by
+        simpa [hu] using
+          rational_erdosSum_prefix_tail_lower b hb a ha ha0 q hq k)
+      (erdos_tail_lt_first_term_geometric b hb a ha ha0 k)
   have hb_pos : (0 : ℝ) < (b : ℝ) := by
     exact_mod_cast (lt_of_lt_of_le (by omega : 0 < 2) hb)
-  have hpow_pos : (0 : ℝ) < (b : ℝ) ^ (a k) := pow_pos hb_pos _
-  rw [div_le_div_iff₀ hden_pos hpow_pos] at hfrac
+  have hb_one : (1 : ℝ) < (b : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by omega : 1 < 2) hb)
+  have hak : 1 ≤ a k := le_trans ha0 (ha.monotone (Nat.zero_le k))
+  have hpow_pos : (0 : ℝ) < (b : ℝ) ^ (a k) - 1 := by
+    have : (1 : ℝ) < (b : ℝ) ^ (a k) := by
+      calc
+        (1 : ℝ) = (b : ℝ) ^ 0 := by simp
+        _ < (b : ℝ) ^ (a k) :=
+          pow_lt_pow_right₀ hb_one (by omega)
+    linarith
+  have hleft_pos :
+      (0 : ℝ) < (q.den : ℝ) * (u.den : ℝ) := by positivity
+  have hright_pos :
+      (0 : ℝ) <
+        ((b : ℝ) - 1) * ((b : ℝ) ^ (a k) - 1) :=
+    mul_pos (sub_pos.mpr hb_one) hpow_pos
+  rw [div_lt_div_iff₀ hleft_pos hright_pos] at hfrac
   simpa [hu, mul_assoc] using hfrac
 
-/-- **Rational-support saturation package.**  At every nonempty prefix, a
-hypothetical rational Erdős sum forces one and the same reduced denominator
-to be exponentially large at the next support scale, to have exact
-multiplicative order equal to the exponent lcm, and to divide the lcm of the
-displayed Mersenne term denominators. -/
-theorem rational_erdosSum_prefix_saturation_order_lcm
-    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
+/-- At base two, rationality forces the strict inequality
+`2 ^ a(k) - 1 < 2 * den(q) * Qₖ`. -/
+theorem rational_erdosSum_prefix_denominator_saturation_sharp_two
+    (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
+    (q : ℚ)
+    (hq : (∑' j, (1 : ℝ) / ((2 : ℝ) ^ (a j) - 1)) = (q : ℝ))
+    (k : ℕ) :
+    (2 : ℝ) ^ (a k) - 1
+      < 2 * (q.den : ℝ) *
+          ((finiteErdosSum ((Finset.range k).image a) 2).den : ℝ) := by
+  have h :=
+    rational_erdosSum_prefix_denominator_saturation_sharp
+      2 (by omega) a ha ha0 q hq k
+  norm_num at h ⊢
+  exact h
+
+/-- Integrality removes the residual `-1`: the clean base-two saturation law
+is `2 ^ a(k) ≤ 2 * den(q) * Qₖ`, exactly halving the coarse coefficient. -/
+theorem rational_erdosSum_prefix_denominator_saturation_sharp_two_nat
+    (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
+    (q : ℚ)
+    (hq : (∑' j, (1 : ℝ) / ((2 : ℝ) ^ (a j) - 1)) = (q : ℝ))
+    (k : ℕ) :
+    2 ^ (a k)
+      ≤ 2 * q.den *
+          (finiteErdosSum ((Finset.range k).image a) 2).den := by
+  have hreal :=
+    rational_erdosSum_prefix_denominator_saturation_sharp_two
+      a ha ha0 q hq k
+  have hpow_one : 1 ≤ 2 ^ (a k) := Nat.one_le_pow _ _ (by omega)
+  have hreal' :
+      (((2 ^ (a k) - 1 : ℕ) : ℝ))
+        < (((2 * q.den *
+            (finiteErdosSum ((Finset.range k).image a) 2).den : ℕ) : ℝ)) := by
+    simpa [Nat.cast_sub hpow_one] using hreal
+  have hnat :
+      2 ^ (a k) - 1
+        < 2 * q.den *
+            (finiteErdosSum ((Finset.range k).image a) 2).den := by
+    exact_mod_cast hreal'
+  omega
+
+/-- The sharp saturation inequality, exact multiplicative order, and
+term-denominator LCM divisibility hold simultaneously at every nonempty
+prefix. -/
+theorem rational_erdosSum_prefix_saturation_sharp_order_lcm
+    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ)
+    (ha : StrictMono a) (ha0 : 1 ≤ a 0)
     (q : ℚ)
     (hq : (∑' j, (1 : ℝ) / ((b : ℝ) ^ (a j) - 1)) = (q : ℝ))
     (k : ℕ) (hk : 0 < k) :
-    (b : ℝ) ^ (a k) ≤
-        4 * (q.den : ℝ) *
+    ((b : ℝ) - 1) * ((b : ℝ) ^ (a k) - 1)
+        < (b : ℝ) * (q.den : ℝ) *
           ((finiteErdosSum ((Finset.range k).image a) b).den : ℝ) ∧
       orderOf
           (ZMod.unitOfCoprime b
@@ -5697,135 +5867,12 @@ theorem rational_erdosSum_prefix_saturation_order_lcm
     ⟨a 0, Finset.mem_image.mpr ⟨0, Finset.mem_range.mpr hk, rfl⟩⟩
   have h0 := zero_not_mem_image_range_of_strictMono_pos a ha ha0 k
   exact ⟨
-    rational_erdosSum_prefix_denominator_saturation b hb a ha ha0 q hq k,
-    finite_period_noncollapse_rat_den ((Finset.range k).image a) b hF h0 hb,
+    rational_erdosSum_prefix_denominator_saturation_sharp
+      b hb a ha ha0 q hq k,
+    finite_period_noncollapse_rat_den
+      ((Finset.range k).image a) b hF h0 hb,
     den_finiteErdosSum_dvd_termDenominatorLcm
       ((Finset.range k).image a) b h0 hb⟩
-
-/-- **Exact reduced-denominator subsequence criterion.**  Let `Qₖ` be the
-actual reduced denominator of the finite support sum through any selected
-prefix `κ k`.  If `Qₖ · b ^ (-a (κ k))` tends to zero, then the infinite
-Erdős support sum is irrational.
-
-This is strictly more flexible than the exponent-lcm criterion below: it uses
-`Rat.den` itself rather than an upper common denominator, and it only needs a
-successful subsequence of prefixes rather than a full-sequence gap law. -/
-theorem irrational_erdosSum_of_reducedDenominator_subsequence_gap
-    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
-    (κ : ℕ → ℕ)
-    (hgap : Tendsto
-      (fun k =>
-        ((finiteErdosSum ((Finset.range (κ k)).image a) b).den : ℝ) *
-          ((1 : ℝ) / b) ^ (a (κ k)))
-      atTop (nhds 0)) :
-    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (a k) - 1)) := by
-  have hsum : Summable (fun j => (1 : ℝ) / ((b : ℝ) ^ (a j) - 1)) :=
-    summable_erdos_term b hb a ha ha0
-  set x : ℝ := ∑' k, (1 : ℝ) / ((b : ℝ) ^ (a k) - 1) with hx
-  set u : ℕ → ℚ :=
-    fun k => finiteErdosSum ((Finset.range (κ k)).image a) b with hu
-  have hval : ∀ k, x - ((u k : ℚ) : ℝ)
-      = ∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + κ k)) - 1) := by
-    intro k
-    have hsplit := hsum.sum_add_tsum_nat_add (κ k)
-    have hcast := finiteErdosSum_image_range_cast b a ha (κ k)
-    have huk : ((u k : ℚ) : ℝ)
-        = ∑ i ∈ Finset.range (κ k), (1 : ℝ) / ((b : ℝ) ^ (a i) - 1) := by
-      rw [hu]
-      exact hcast
-    rw [huk]
-    linarith
-  have hne : ∀ k, ((u k : ℚ) : ℝ) ≠ x := by
-    intro k hEq
-    have h1 := hval k
-    rw [hEq] at h1
-    have h2 := erdos_tail_pos b hb a ha ha0 (κ k)
-    simp only [sub_self] at h1
-    linarith
-  apply irrational_of_den_mul_abs_sub_tendsto_zero
-    (Filter.Eventually.of_forall hne)
-  have hlim : Tendsto
-      (fun k =>
-        4 * (((u k).den : ℝ) * ((1 : ℝ) / b) ^ (a (κ k))))
-      atTop (nhds 0) := by
-    have hgap' : Tendsto
-        (fun k => ((u k).den : ℝ) * ((1 : ℝ) / b) ^ (a (κ k)))
-        atTop (nhds 0) := by
-      simpa [hu] using hgap
-    simpa using hgap'.const_mul (4 : ℝ)
-  apply squeeze_zero'
-    (Filter.Eventually.of_forall fun k =>
-      mul_nonneg (Nat.cast_nonneg _) (abs_nonneg _))
-    (Filter.Eventually.of_forall fun k => ?_) hlim
-  have htail_pos := erdos_tail_pos b hb a ha ha0 (κ k)
-  have htail_le := erdos_tail_le b hb a ha ha0 (κ k)
-  have habs : |x - ((u k : ℚ) : ℝ)|
-      = ∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + κ k)) - 1) := by
-    rw [hval k]
-    exact abs_of_pos htail_pos
-  calc
-    ((u k).den : ℝ) * |x - ((u k : ℚ) : ℝ)|
-        = ((u k).den : ℝ) *
-            ∑' i, (1 : ℝ) / ((b : ℝ) ^ (a (i + κ k)) - 1) := by
-              rw [habs]
-    _ ≤ ((u k).den : ℝ) * (4 * ((1 : ℝ) / b) ^ (a (κ k))) := by
-          exact mul_le_mul_of_nonneg_left htail_le (Nat.cast_nonneg _)
-    _ = 4 * (((u k).den : ℝ) * ((1 : ℝ) / b) ^ (a (κ k))) := by ring
-
-/-- **Mersenne-term-lcm subsequence criterion.**  The reduced denominator
-criterion follows already when the lcm of the *displayed term denominators*
-`b ^ a(i) - 1` has sufficiently small product with the next geometric scale
-along any sequence of prefixes.  This is sharper than replacing that lcm by
-the larger common denominator `b ^ lcm(a(i)) - 1`. -/
-theorem irrational_erdosSum_of_termDenominatorLcm_subsequence_gap
-    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
-    (κ : ℕ → ℕ)
-    (hgap : Tendsto
-      (fun k =>
-        ((((Finset.range (κ k)).image a).lcm (fun n => b ^ n - 1) : Nat) : ℝ) *
-          ((1 : ℝ) / b) ^ (a (κ k)))
-      atTop (nhds 0)) :
-    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (a k) - 1)) := by
-  apply irrational_erdosSum_of_reducedDenominator_subsequence_gap
-    b hb a ha ha0 κ
-  apply squeeze_zero'
-    (Filter.Eventually.of_forall fun k =>
-      mul_nonneg (Nat.cast_nonneg _) (by positivity))
-    (Filter.Eventually.of_forall fun k => ?_) hgap
-  have h0F : 0 ∉ (Finset.range (κ k)).image a := by
-    intro hmem
-    obtain ⟨i, _, hi⟩ := Finset.mem_image.mp hmem
-    have hai : 1 ≤ a i := le_trans ha0 (ha.monotone (Nat.zero_le i))
-    omega
-  have hL_ne :
-      ((Finset.range (κ k)).image a).lcm (fun n => b ^ n - 1) ≠ 0 := by
-    rw [Ne, Finset.lcm_eq_zero_iff]
-    rintro ⟨n, hn, hzero⟩
-    have hn0 : n ≠ 0 := fun hnEq => h0F (hnEq ▸ hn)
-    have hpos := pow_sub_one_pos_of_ne_zero b n hb hn0
-    omega
-  have hdvd := den_finiteErdosSum_dvd_termDenominatorLcm
-    ((Finset.range (κ k)).image a) b h0F hb
-  have hden_le :
-      ((finiteErdosSum ((Finset.range (κ k)).image a) b).den : ℝ) ≤
-        ((((Finset.range (κ k)).image a).lcm
-          (fun n => b ^ n - 1) : Nat) : ℝ) := by
-    exact_mod_cast Nat.le_of_dvd (Nat.pos_of_ne_zero hL_ne) hdvd
-  exact mul_le_mul_of_nonneg_right hden_le (by positivity)
-
-/-- Full-sequence wrapper for
-`irrational_erdosSum_of_reducedDenominator_subsequence_gap`. -/
-theorem irrational_erdosSum_of_reducedDenominator_gap
-    (b : ℕ) (hb : 2 ≤ b) (a : ℕ → ℕ) (ha : StrictMono a) (ha0 : 1 ≤ a 0)
-    (hgap : Tendsto
-      (fun k =>
-        ((finiteErdosSum ((Finset.range k).image a) b).den : ℝ) *
-          ((1 : ℝ) / b) ^ (a k))
-      atTop (nhds 0)) :
-    Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (a k) - 1)) := by
-  simpa using
-    irrational_erdosSum_of_reducedDenominator_subsequence_gap
-      b hb a ha ha0 id hgap
 
 /-- **Infinite bridge, class form.**  For every base `b ≥ 2` and every
 strictly monotone support `a` with `a 0 ≥ 1`, if the gap between `a k` and

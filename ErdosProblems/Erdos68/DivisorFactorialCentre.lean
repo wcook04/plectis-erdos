@@ -2,11 +2,26 @@ import ErdosProblems.Erdos68.FiniteDefectAutomaton
 import Mathlib.Tactic
 
 /-!
-# Erdős #68: divisor-factorial residual centre
+# Erdős problem 68: divisor-factorial residual centre
 
-This module formalizes the finite divisor-factorial centre from the returned
-packet and proves its exact recurrence.  It supplies the series-specific
-premise consumed by `FiniteDefectAutomaton`.
+For each `m`, this module defines the finite rational sum
+
+`F_m = m! * sum_{2 <= n <= m} 1 / ((n!)^(floor(m/n)) (n!-1))`
+
+and the divisor sum
+
+`C_m = sum_{2 <= n <= m, n | m} m! / (n!)^(m/n)`.
+
+Splitting the summands according to whether `n` divides `m` gives the exact
+identity
+
+`F_m = m F_(m-1) + 1 + 1/(m!-1) - C_m`
+
+for `m >= 3`.  This is a rational finite-sum recurrence.  The file does not
+prove that `C_m` is the cast of an integer sequence, so it does not by itself
+instantiate the integer defect code from `FiniteDefectAutomaton`.  It also
+does not identify `F_m` with a remainder of the infinite series or prove an
+orbit, tail estimate, or irrationality statement.
 -/
 
 namespace ErdosProblems.Erdos68
@@ -96,7 +111,7 @@ theorem residualCentreTerm_of_not_dvd (m n : ℕ)
   rw [hfac, hdiv]
   ring
 
-/-- At a proper divisor of `m`, increasing the exponent removes exactly the
+/-- At a divisor of `m`, increasing the exponent removes exactly the
 corresponding divisor-factorial coefficient term. -/
 theorem residualCentreTerm_of_dvd (m n : ℕ)
     (hn : 2 ≤ n) (hnm : n ≤ m) (hdvd : n ∣ m) :
@@ -121,7 +136,7 @@ theorem residualCentreTerm_of_dvd (m n : ℕ)
   field_simp
   ring
 
-/-- The diagonal centre term is the packet's factorial error. -/
+/-- The diagonal centre term is the factorial error `1 / (m! - 1)`. -/
 theorem residualCentreTerm_self (m : ℕ) (hm : 2 ≤ m) :
     residualCentreTerm m m = factorialEpsilon m := by
   have hmpos : 0 < m := by omega
@@ -139,7 +154,7 @@ theorem factorialCoeffTerm_self (m : ℕ) (hm : 1 ≤ m) :
   rw [Nat.div_self hmpos, pow_one]
   exact div_self hfac
 
-/-- Exact finite-sum recurrence for the packet's residual centre. -/
+/-- Exact finite-sum recurrence for the residual centre. -/
 theorem residualCentre_recurrence (m : ℕ) (hm : 3 ≤ m) :
     residualCentre m =
       (m : ℚ) * residualCentre (m - 1) + 1 +

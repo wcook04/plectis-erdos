@@ -8,13 +8,40 @@ import Mathlib.Data.Nat.Prime.Basic
 import Mathlib.Data.Nat.Prime.Factorial
 
 /-!
-# Erdős 68: weighted private-support projections
+# Erdős #68: collision cores, private residues, and factorial-block endpoints
 
-This module formalizes the deterministic CRT projection core for bounded
-factorial-tail endpoint numerators.
+For a finite denominator family, the pairwise collision core records the
+prime powers shared by at least two denominators.  Dividing each denominator
+by its part inside this core produces pairwise-coprime private quotients.
+Their product is the private modulus `R`; a weighted leave-one-out numerator
+is coprime to `R`, so the displayed endpoint numerator has a nonzero residue
+whenever `R > 1`.
+
+The abstract part of the file develops these finite gcd, lcm, CRT, and
+projection identities.  The factorial-block specialization takes the
+denominators `n! - 1` for `p ≤ n < 2p`, identifies the strict-successor
+coefficient at `p - 1`, and defines an endpoint window.  Unit carries on the
+whole interval `[p,2p]` force that window; so does any rational value whose
+denominator is already cleared by `(p-1)!`.
+
+The later theorems give several exact ways to refute the window: a large
+private residue, unequal leave-one-out projections, coprime factor-pair
+floors, or a uniquely supported prime with a sufficiently large residue.
+Cofinal families of any of the stated certificates imply cofinally many
+non-unit carries or rational-prefix divisibility failures, and hence imply
+irrationality through the earlier carry criterion.
+
+Every irrationality conclusion in this file is conditional.  No theorem
+constructs the required cofinal certificate family, proves the needed
+projection disagreement or size inequality for arbitrarily large blocks,
+or supplies cofinally many uniquely supported factorial-gap primes.  The
+finite CRT identities and endpoint reductions therefore do not by themselves
+prove the irrationality of the factorial-gap series or solve Erdős #68.
 -/
 
 namespace ErdosProblems.Erdos68
+
+/-! ## Collision cores for finite denominator families -/
 
 /-- Every prime divisor of a factorial gap `n! - 1` is strictly larger than
 the source index `n`.  This is the basic support separation behind the
@@ -454,8 +481,8 @@ theorem finset_lcm_gcd_left
 
 /-- Adjoining one denominator updates the pairwise collision core by the
 lcm of the old core and the new denominator's collisions with the old
-family.  This is the exact finite-family recurrence used by the incremental
-Erdős 68 collision scan; it replaces a quadratic rescan by one new lcm. -/
+family.  The recurrence updates the collision core using one new lcm rather
+than recomputing all pairs. -/
 theorem pairwiseCollisionCore_insert
     {ι : Type*} [DecidableEq ι]
     {s : Finset ι} {d : ι → ℕ} {a : ι}
@@ -524,8 +551,8 @@ theorem pairwiseCollisionCore_insert
         haj
 
 /-- Sharpened one-step collision recurrence.  For positive denominators,
-the entire new collision inflow is the single repeated part
-`gcd (d a) (s.lcm d)`, so no pairwise rescan remains. -/
+the entire new collision contribution is the single repeated part
+`gcd (d a) (s.lcm d)`. -/
 theorem pairwiseCollisionCore_insert_gcd_lcm
     {ι : Type*} [DecidableEq ι]
     {s : Finset ι} {d : ι → ℕ} {a : ι}
@@ -539,8 +566,8 @@ theorem pairwiseCollisionCore_insert_gcd_lcm
   rw [pairwiseCollisionCore_insert ha,
     finset_lcm_gcd_left hda hpos]
 
-/-- The same one-step recurrence after adjoining the distinguished base.
-This is the form consumed by the literal factorial-block collision core. -/
+/-- The same one-step recurrence after adjoining the distinguished base;
+the factorial-block collision core below is an instance of this identity. -/
 theorem collisionCore_insert
     {ι : Type*} [DecidableEq ι]
     {base : ℕ} {s : Finset ι} {d : ι → ℕ} {a : ι}
@@ -768,8 +795,8 @@ theorem primePower_dvd_collisionCore_div_base_iff
 
 /-- Product/lcm control in the normalized endpoint form: after cancelling
 the distinguished base, the remaining collision core times the denominator
-lcm divides the literal denominator product.  This is the interface for
-combining factorial-gap lcm estimates with collision-cap bounds. -/
+lcm divides the denominator product.  Thus lcm estimates give corresponding
+upper bounds for the normalized collision core. -/
 theorem collisionCore_div_base_mul_denominatorLcm_dvd_denominatorProd
     {ι : Type*} [DecidableEq ι]
     {base : ℕ} {s : Finset ι} {d : ι → ℕ}
@@ -787,8 +814,8 @@ theorem collisionCore_div_base_mul_denominatorLcm_dvd_denominatorProd
 
 /-- Every positive prime power visible in the pairwise collision core is
 visible to full multiplicity in two distinct denominators.  This is the
-valuation-sensitive converse to `gcd_dvd_pairwiseCollisionCore` and is the
-interface needed by prime-power hit-count estimates. -/
+valuation-sensitive converse to `gcd_dvd_pairwiseCollisionCore`; later
+prime-power hit counts apply it one exponent at a time. -/
 theorem exists_pairwise_primePower_support_of_dvd_pairwiseCollisionCore
     {ι : Type*} [DecidableEq ι]
     {s : Finset ι} {d : ι → ℕ}
@@ -1002,6 +1029,8 @@ theorem prime_not_dvd_collisionCore_of_unique_support
     (prime_not_dvd_pairwiseCollisionCore_of_unique_support
       hq hunique)
 
+/-! ## Private quotients and weighted CRT numerators -/
+
 /-- Removing from every positive denominator the portion visible in the
 finite collision core produces a pairwise-coprime family.  This is the
 finite-family form of the private-support separation theorem. -/
@@ -1119,9 +1148,8 @@ theorem prime_dvd_privateQuotient_of_unique_support
   exact (hq.dvd_mul.mp hqProduct).resolve_left hqGcd
 
 /-- Unique support preserves the complete displayed prime power, not only
-one copy of its prime.  This is the multiplicity-sensitive bridge needed
-to feed a canonical prefix-private power modulus into a split-factor CRT
-certificate. -/
+one copy of its prime.  Hence a prefix-private power remains present in the
+corresponding private quotient with its full multiplicity. -/
 theorem primePow_dvd_privateQuotient_of_unique_support
     {ι : Type*} [DecidableEq ι]
     {base : ℕ} {s : Finset ι} {d : ι → ℕ}
@@ -1735,9 +1763,9 @@ theorem endpointNumerator_coprime_privateModulus
   exact collisionWeightedPrivateNumerator_coprime_privateModulus hpos
 
 /-- A large prime divisor of a factorial gap becomes prefix-private at its
-first occurrence. The size bound transfers from the source index `n` to the
-minimal hit `m`, which is the bridge needed to turn large-prime-divisor
-results for `n! - 1` into weighted private-support anchors. -/
+first occurrence. The size bound transfers from the index `n` to the
+minimal hit `m`, producing a factorial gap where the prime is genuinely
+prefix-private. -/
 theorem exists_large_prefix_private_factorialGap_hit
     {p n C : ℕ}
     (hp : p.Prime)
@@ -1795,6 +1823,8 @@ theorem prime_not_dvd_succ_factorial_sub_one_of_dvd
     exact (Nat.dvd_add_iff_right hqFirst).mpr hqSucc
   exact (Nat.not_dvd_of_pos_of_lt (by omega)
     (prime_dvd_factorial_sub_one_gt hq hqdvd)) hqn
+
+/-! ## Endpoint residues and finite projection bounds -/
 
 /-- Canonical projection of a weighted support numerator modulo `Q`. -/
 def projectedResidue (T Q : ℕ) : ℕ :=
@@ -2067,8 +2097,8 @@ theorem endpointPrivateResidue_owner_lower_bound
       hbase hpos htail hi hq)
     howner
 
-/-- Integral Archimedean--CRT closing criterion: an upper bound on a scaled
-endpoint numerator is incompatible with a larger scaled least residue. -/
+/-- An upper bound on a scaled endpoint numerator is incompatible with a
+strictly larger scaled least residue. -/
 theorem scaled_endpoint_upper_bound_excluded_by_residue
     {ρ Z L scale budget : ℕ}
     (hρZ : ρ ≤ Z)
@@ -2079,8 +2109,7 @@ theorem scaled_endpoint_upper_bound_excluded_by_residue
     Nat.mul_le_mul_left scale hρZ
   omega
 
-/-- Collision-core specialization of the integral closing criterion.  This
-is the direct formal target for a factorial-block residue estimate. -/
+/-- Collision-core specialization of the preceding incompatibility. -/
 theorem endpoint_scaled_upper_bound_false_of_privateResidue
     {ι : Type*} [DecidableEq ι]
     {K base scale budget : ℕ}
@@ -2385,8 +2414,7 @@ theorem projection_disagreement_excludes_bounded_endpoint
     large_projection_identifies_endpoint hmod hQ₂R hZle hBQ₂
   exact hneq (h₁.trans h₂.symm)
 
-/-- Leave-one-out form consumed by the weighted private-support endpoint
-construction. -/
+/-- Leave-one-out specialization for the weighted endpoint numerator. -/
 theorem leaveOneOut_disagreement_excludes_bounded_endpoint
     {Z T R r₁ r₂ B : ℕ}
     (hmod : Z ≡ T [MOD R])
@@ -2402,6 +2430,8 @@ theorem leaveOneOut_disagreement_excludes_bounded_endpoint
   apply projection_disagreement_excludes_bounded_endpoint
     hmod (Nat.div_dvd_of_dvd hr₁) (Nat.div_dvd_of_dvd hr₂)
     hZle hB₁ hB₂ hneq
+
+/-! ## The factorial-block endpoint window -/
 
 /-- Splitting off the first omitted factorial-gap term advances the
 universal tail cutoff by one. -/
@@ -2426,7 +2456,7 @@ theorem factorialGapTail_eq_next_add_tail (D : ℕ) :
   simpa [source, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using
     hsplit.symm
 
-/-- Literal reciprocal-denominator index block for the prime-endpoint route:
+/-- Reciprocal-denominator index block for the factorial endpoint:
 `2, …, 2p-1`. -/
 def factorialBlockIndices (p : ℕ) : Finset ℕ :=
   Finset.Icc 2 (2 * p - 1)
@@ -2470,9 +2500,9 @@ theorem prefixPrivate_factorialGap_unique_in_tailoredBlock
     simpa [factorialGapDenominator, hmEq] using
       prime_not_dvd_succ_factorial_sub_one_of_dvd hq (by omega) hqdvd
 
-/-- The least-hit bridge therefore promotes every large shifted-factorial
-prime supplied by an external source to a uniquely supported upper-half
-prime on an explicit tailored endpoint block. -/
+/-- Passing to the least factorial-gap hit turns any prime satisfying the
+displayed size hypotheses into a uniquely supported upper-half prime on an
+explicit tailored endpoint block. -/
 theorem exists_large_unique_factorialBlock_hit
     {q n C : ℕ}
     (hq : q.Prime)
@@ -2499,7 +2529,7 @@ theorem exists_large_unique_factorialBlock_hit
 
 /-- A cofinal supply of prime divisors `q > n` of factorial gaps promotes
 to cofinally many tailored blocks with a uniquely supported upper-half
-prime.  The factorial threshold in the source request forces the least hit
+prime.  The factorial threshold in the hypothesis forces the least hit
 past `2B+1`, hence its tailored block parameter past `B`. -/
 theorem cofinal_unique_factorialBlock_hits_of_cofinal_large_primes
     (hsource :
@@ -2643,8 +2673,7 @@ theorem factorialGapDenominator_dvd_factorialBlockBase_of_lt
 /-- Every fixed factorial-gap owner is eventually absorbed by the growing
 base: for all `p > n! - 1`, its literal private quotient is exactly one.
 Thus a cofinal two-owner argument must use indices (or prime factors)
-escaping with the block parameter rather than a fixed pair seen in a finite
-scan. -/
+escaping with the block parameter rather than remaining fixed. -/
 theorem factorialBlockPrivateQuotient_eq_one_of_gap_lt
     {p n : ℕ}
     (hn : 2 ≤ n)
@@ -2716,7 +2745,7 @@ def factorialBlockPrivateOwnerTerm (p n : ℕ) : ℕ :=
         (factorialBlockIndices p)
         factorialGapDenominator)
 
-/-- Exact scale `2p²(2p-1)!` in the integral endpoint closing test. -/
+/-- Exact scale `2p²(2p-1)!` in the endpoint comparison. -/
 def factorialBlockScale (p : ℕ) : ℕ :=
   2 * p ^ 2 * (2 * p - 1).factorial
 
@@ -2967,7 +2996,7 @@ theorem strictFacTop_factorialGapPrefix_pos
     · exact (not_lt_of_ge hfacPos.le hneg.2).elim
   exact_mod_cast hstrictR
 
-/-- The natural coefficient wrapper does not alter the positive strict
+/-- Conversion to a natural coefficient does not alter the positive strict
 successor at the predecessor prefix. -/
 theorem factorialBlockCoefficient_cast_eq_strictFacTop
     {p : ℕ} :
@@ -3102,7 +3131,7 @@ theorem factorialBlockEndpointWindow_of_unitCarryBlock
 /-- If a displayed rational denominator already clears at `(p-1)!`, then
 the literal strict-successor endpoint is the series itself.  Consequently
 its gap above the prefix through `2p-1` is exactly the analytic tail and
-lies in the endpoint window consumed by the private-projection criteria. -/
+therefore lies in the endpoint window used below. -/
 theorem factorialBlockEndpointWindow_of_series_eq_rat
     {p q : ℕ}
     {a : ℤ}
@@ -3234,7 +3263,9 @@ theorem factorialBlockEndpointWindow_of_series_eq_rat
           rw [hgapReal]
           exact htailUpper.le)
 
-/-- Casting a literal factorial-gap denominator into the rationals
+/-! ## Normalized collision arithmetic in a factorial block -/
+
+/-- Casting a factorial-gap denominator into the rationals
 recovers the denominator appearing in the Erdős #68 prefix. -/
 theorem factorialGapDenominator_cast
     {n : ℕ} :
@@ -3291,9 +3322,8 @@ theorem
     exact factorialGapDenominator_pos_of_mem hn
 
 /-- Explicit upper-bound form of the factorial-block product/lcm
-divisibility.  Any stronger lower estimate for the literal factorial-gap
-lcm now feeds directly into an upper estimate for the normalized collision
-core. -/
+divisibility.  Any stronger lower estimate for the factorial-gap lcm gives
+a corresponding upper estimate for the normalized collision core. -/
 theorem factorialBlockNormalizedCollisionCore_le_gapProd_div_gapLcm
     {p : ℕ} :
     factorialBlockNormalizedCollisionCore p ≤
@@ -3359,8 +3389,8 @@ theorem factorialBlockNormalizedCollisionCore_pos
 
 /-- The factorial-block normalized collision valuation is exactly the
 pairwise repeated-support valuation above the amount already carried by
-the predecessor-factorial base.  This is the valuation interface for
-prime-power incidence estimates. -/
+the predecessor-factorial base; it is the valuation formula used by the
+prime-power incidence estimates below. -/
 theorem factorialBlockNormalizedCollisionCore_factorization
     {p q : ℕ} :
     (factorialBlockNormalizedCollisionCore p).factorization q =
@@ -3378,8 +3408,7 @@ theorem factorialBlockNormalizedCollisionCore_factorization
 
 /-- A normalized factorial-block prime power is exactly a repeated
 factorial-gap hit at the exponent obtained by adding the full
-predecessor-factorial base valuation.  This is the direct bridge from
-normalized collision growth to prime-power incidence estimates. -/
+predecessor-factorial base valuation. -/
 theorem
     factorialBlock_primePower_dvd_normalizedCollisionCore_iff_two_hits
     {p q e : ℕ}
@@ -3470,9 +3499,8 @@ theorem factorialBlock_prime_hitPair_distance_gt_exponent
   exact (not_lt_of_ge (hpairBound.trans hgapPowLe)) hjPowLtQPow
 
 /-- Above the displayed block endpoint, every pair of `q^e` factorial-gap
-hits—not merely one selected pair—is separated by more than `e` indices.
-This is the universal packing interface for bounding high prime-power hit
-counts inside a factorial block. -/
+hits—not merely one selected pair—is separated by more than `e` indices,
+which bounds how many such hits fit inside a factorial block. -/
 theorem factorialBlock_hitPair_distance_gt_exponent_of_endpoint_lt_base
     {p q e i j : ℕ}
     (he : 0 < e)
@@ -3636,8 +3664,7 @@ theorem factorialBlock_primePowerHitCount_mul_succ_le
 /-- Distance-sensitive witness for a normalized collision prime power.
 The full surviving exponent together with the predecessor-factorial base
 valuation divides two displayed gaps, hence is bounded by the intervening
-descending-factorial collision cost.  This is the explicit pair-spacing
-interface behind general-modulus factorial-hit estimates. -/
+descending-factorial collision cost. -/
 theorem
     exists_factorialBlock_hitPair_with_normalizedPrimePower_le_gapPow
     {p q e : ℕ}
@@ -3666,8 +3693,8 @@ theorem
 
 /-- A normalized collision prime power that exceeds the `d`-th power of the
 block endpoint can only be witnessed by hits more than `d` indices apart.
-Thus a source-level bound on the spacing of prime-power factorial hits gives
-exactly the kind of collision exclusion needed by the private-modulus route. -/
+Thus any independent spacing bound for prime-power factorial hits gives a
+corresponding exclusion from the private modulus. -/
 theorem
     exists_factorialBlock_hitPair_distance_gt_of_endpointPow_lt_normalizedPrimePower
     {p q e d : ℕ}
@@ -4317,7 +4344,9 @@ theorem factorialBlock_globalComplementaryTail_inequality_of_ceilingGap
         simpa [mul_assoc] using hmul
   exact_mod_cast hlargeQ
 
-/-- Every private quotient indexed by the literal block divides the full
+/-! ## Leave-one-out and factor-pair projection bounds -/
+
+/-- Every private quotient indexed by the factorial block divides the full
 private modulus. -/
 theorem factorialBlockPrivateQuotient_dvd_privateModulus
     {p n : ℕ}
@@ -4565,7 +4594,7 @@ theorem factorialBlock_leaveOneOut_lcm_eq_privateModulus
 /-- For two distinct literal owners, equality of the coefficient-free
 leave-one-out projections means that their common value is exactly the
 global complementary residue.  Together with the disagreement theorem,
-this identifies the two exhaustive CRT branches used by the finite scan. -/
+this covers the equality and disagreement cases. -/
 theorem factorialBlock_complementaryLeaveOneOut_eq_global_of_eq
     {p i j : ℕ}
     (hi : i ∈ factorialBlockIndices p)
@@ -4665,7 +4694,7 @@ def factorialBlockComplementaryFactorPairFloor
       (factorialBlockFactorProjectionModulus p a)
       (factorialBlockFactorProjectionModulus p b)
 
-/-- For the source-natural unit factor pair `(1,q)`, the branch-free floor
+/-- For the unit factor pair `(1,q)`, the resulting floor
 is exactly the minimum of the global complementary residue and `R_p / q`.
 Thus its scale condition is transparently the conjunction of a global
 residue bound and a collision-cap bound for `q`. -/
@@ -4960,7 +4989,9 @@ theorem factorialBlock_complementaryPairFloor_le_global
     hprojJ
   ] using hfloor
 
-/-- Literal leave-one-out projections of the least private residue can be
+/-! ## Prime-power incidence and uniquely supported factors -/
+
+/-- Leave-one-out projections of the least private residue can be
 computed directly from the displayed endpoint numerator. -/
 theorem factorialBlockPrivateResidue_projected_eq_endpointNumerator
     {p n : ℕ}
@@ -4992,8 +5023,8 @@ theorem factorialBlockPrime_not_dvd_base_of_upper_hit
   omega
 
 /-- A collision prime that also hits an upper-half factorial gap survives
-predecessor-factorial normalization.  This is the direct consumer for a
-source-supplied repeated upper-half hit: collision membership plus the
+predecessor-factorial normalization.  Thus an assumed repeated upper-half
+hit supplies collision membership plus the
 automatic omission from `(p - 1)!` puts the prime into `Ctilde_p`. -/
 theorem
     factorialBlockPrime_dvd_normalizedCollisionCore_of_upper_hit_of_dvd_collisionCore
@@ -5017,8 +5048,7 @@ theorem
 
 /-- A prime power in the literal block collision core, when its prime also
 hits an upper-half factorial gap, must occur to full multiplicity in two
-distinct displayed factorial gaps.  This is the exact bridge from the
-collision core to general-modulus hit counts. -/
+distinct displayed factorial gaps. -/
 theorem exists_two_factorialBlock_hits_of_primePower_dvd_collisionCore
     {p n q e : ℕ}
     (hq : q.Prime)
@@ -5132,7 +5162,7 @@ theorem
   simp only [Finset.mem_filter]
   aesop
 
-/-- A source-level bound of at most one `q^e`-hit on the block excludes
+/-- At most one `q^e`-hit on the block excludes
 `q^e` from the normalized collision core. -/
 theorem
     factorialBlock_primePower_not_dvd_normalizedCollisionCore_of_hitCount_le_one
@@ -5151,7 +5181,7 @@ theorem
   ]
   omega
 
-/-- Valuation form of the hit-count consumer: an at-most-one incidence
+/-- Valuation form of the hit-count consequence: an at-most-one incidence
 bound at exponent `e` forces the normalized collision valuation below
 `e`. -/
 theorem
@@ -5284,8 +5314,8 @@ theorem
 /-- Whenever `q` is absent from the predecessor-factorial base, base
 normalization is invisible at every positive `q`-power.  Thus `q^e`
 survives in the normalized collision core exactly when two displayed
-factorial gaps contain that full power.  This is the anchor-free interface
-for all base-omitted primes, not only primes above the block endpoint. -/
+factorial gaps contain that full power.  No preselected upper-half hit is
+needed. -/
 theorem
     factorialBlock_primePower_dvd_normalizedCollisionCore_iff_one_lt_hitCount_of_not_dvd_base
     {p q e : ℕ}
@@ -5354,8 +5384,8 @@ theorem
 /-- Above the displayed endpoint, predecessor-factorial normalization is
 invisible at `q`.  Consequently a positive `q^e`-layer survives in the
 normalized collision core exactly when that layer hits two displayed
-factorial gaps.  Unlike the upper-hit interface, this requires no chosen
-anchor: it applies to every endpoint prime in the collision core. -/
+factorial gaps.  This applies to every endpoint prime in the collision core,
+without a chosen upper-half hit. -/
 theorem
     factorialBlock_primePower_dvd_normalizedCollisionCore_iff_one_lt_hitCount_of_endpoint_lt_base
     {p q e : ℕ}
@@ -5462,7 +5492,7 @@ theorem factorialBlockPrivateModulus_one_lt_of_unique_upper_prime
 
 /-- Unique support of an upper-half prime makes its literal one-owner
 projection automatically nonzero.  No separate residue hypothesis is
-needed in the one-owner closing criterion. -/
+needed for the one-factor endpoint exclusion. -/
 theorem factorialBlockPrivateOwnerTerm_mod_pos_of_unique_upper_prime
     {p n q : ℕ}
     (hq : q.Prime)
@@ -5612,7 +5642,9 @@ theorem factorialBlockEndpointNumerator_div_endpointLcm_eq_gap
     factorialBlockEndpointGap
   ] using hident
 
-/-- The literal scale in the endpoint window is positive for every
+/-! ## Endpoint-window exclusions and conditional irrationality criteria -/
+
+/-- The scale in the endpoint window is positive for every
 nonzero block parameter. -/
 theorem factorialBlockScale_pos
     {p : ℕ} (hp : 0 < p) :
@@ -5620,8 +5652,8 @@ theorem factorialBlockScale_pos
   unfold factorialBlockScale
   positivity
 
-/-- The analytic upper endpoint of the literal window cross-multiplies
-exactly to the natural inequality consumed by the CRT closing theorem. -/
+/-- The analytic upper endpoint of the window cross-multiplies exactly to
+the natural inequality used in the CRT contradiction. -/
 theorem factorialBlock_scaled_upper_bound_of_endpointWindow
     {p : ℕ}
     (hp : 0 < p)
@@ -5697,7 +5729,7 @@ theorem factorialBlock_scaled_upper_bound_false
 
 /-- Once the literal endpoint window holds, its positivity and upper
 endpoint are internal: only nontrivial private support and the strict
-residue lower bound remain as closing inputs. -/
+residue lower bound remain as hypotheses. -/
 theorem factorialBlock_endpointWindow_false_of_privateResidue
     {p : ℕ}
     (hp : 0 < p)
@@ -5718,7 +5750,7 @@ theorem factorialBlock_endpointWindow_false_of_privateResidue
       factorialBlock_scaled_upper_bound_of_endpointWindow hp hwindow
   · exact hlarge
 
-/-- Coefficient-free global form of the literal closing criterion.  The
+/-- Coefficient-free global endpoint exclusion.  The
 strict-successor coefficient disappears entirely: only the reciprocal-tail
 numerator and the private modulus remain. -/
 theorem factorialBlock_endpointWindow_false_of_global_complementaryTail
@@ -5768,7 +5800,7 @@ theorem exists_nonunitCarry_in_primeBlock_of_global_complementaryTail
       (factorialBlockEndpointWindow_of_unitCarryBlock hp hunit)
       hlarge
 
-/-- Fractional-part specialization of the carry bridge.  A collision-scaled
+/-- Fractional-part specialization of the carry implication.  A collision-scaled
 prefix that stays above the explicit ceiling-gap threshold certifies a
 non-unit carry in the same dyadic prime block. -/
 theorem exists_nonunitCarry_in_primeBlock_of_collisionCeilingGap
@@ -5791,7 +5823,7 @@ theorem exists_nonunitCarry_in_primeBlock_of_collisionCeilingGap
     factorialBlock_globalComplementaryTail_inequality_of_ceilingGap
       hR hgap
 
-/-- Exact rational-prefix form of the collision-ceiling bridge.  The same
+/-- Exact rational-prefix form of the collision-ceiling criterion.  The same
 certificate produces an index in the prime block at which the computable
 strict successor is not divisible by its index. -/
 theorem exists_not_dvd_strictFacTopRat_in_primeBlock_of_collisionCeilingGap
@@ -5822,9 +5854,8 @@ theorem exists_not_dvd_strictFacTopRat_in_primeBlock_of_collisionCeilingGap
   exact hdvd
 
 /-- Two unequal literal leave-one-out projections turn their smaller
-modulus into a certified lower bound for the true private residue.  This
-is the direct two-projection closing criterion for the Erdős #68 endpoint
-window. -/
+modulus into a lower bound for the true private residue, yielding a
+two-projection contradiction to the Erdős #68 endpoint window. -/
 theorem factorialBlock_endpointWindow_false_of_leaveOneOut_disagreement
     {p i j : ℕ}
     (hp : 0 < p)
@@ -5883,7 +5914,7 @@ theorem factorialBlock_endpointWindow_false_of_leaveOneOut_disagreement
       (leaveOneOut_disagreement_forces_min_modulus_le_residue
         hneqPrivate))
 
-/-- Fully computable two-projection form: disagreement is checked on the
+/-- Explicit two-projection form: disagreement is checked on the
 complementary reciprocal-tail projections, which do not contain the
 strict-successor coefficient. -/
 theorem factorialBlock_endpointWindow_false_of_complementary_leaveOneOut_disagreement
@@ -6016,7 +6047,7 @@ theorem factorialBlock_endpointWindow_false_of_complementary_factor_disagreement
         hneqPrivate))
 
 /-- Quotient-cancelled factor-level criterion.  The selected factors may
-split a single moving owner quotient, so the remaining producer no longer
+split a single moving private quotient, so the hypothesis no longer
 requires two moving denominator indices. -/
 theorem factorialBlock_endpointWindow_false_of_complementary_factor_disagreement_collisionCap
     {p a b : ℕ}
@@ -6075,7 +6106,7 @@ theorem factorialBlock_endpointWindow_false_of_complementary_disagreement_collis
       (factorialBlock_scaled_min_leaveOneOut_of_collisionCap
         hi hj hcap)
 
-/-- Unconditional factor-pair closing criterion.  Coprimality makes the
+/-- Factor-pair endpoint-window exclusion.  Coprimality makes the
 two factor projections jointly recover `R_p`; the pair floor then handles
 both equality and disagreement without requiring distinct owner indices. -/
 theorem factorialBlock_endpointWindow_false_of_complementaryFactorPairFloor
@@ -6101,7 +6132,7 @@ theorem factorialBlock_endpointWindow_false_of_complementaryFactorPairFloor
       (factorialBlock_complementaryFactorPairFloor_le_global
         ha hb hab hR))
 
-/-- Unconditional two-owner closing criterion.  The pair floor internally
+/-- Two-index endpoint-window exclusion.  The pair floor
 chooses the exact equality or disagreement branch, so callers only provide
 two distinct owners and one coefficient-free scale inequality. -/
 theorem factorialBlock_endpointWindow_false_of_complementaryPairFloor
@@ -6128,8 +6159,8 @@ theorem factorialBlock_endpointWindow_false_of_complementaryPairFloor
         hi hj hij hR))
 
 /-- A cofinal lower bound for the single coefficient-free complementary
-tail residue is already sufficient for irrationality.  This is the most
-compressed global residue producer exposed by the literal block route. -/
+tail residue is already sufficient for irrationality.  This is the shortest
+global residue hypothesis stated in the module. -/
 theorem irrational_factorialGapSeries_of_cofinal_global_complementaryTail
     (hcert :
       ∀ B : ℕ, ∃ p : ℕ,
@@ -6188,8 +6219,7 @@ theorem cofinal_nonunitCarries_of_cofinal_collisionCeilingGap
   exact ⟨m, by omega, hne⟩
 
 /-- Cofinal collision-ceiling certificates produce cofinally many failures
-of the exact rational-prefix divisibility test.  This is the direct
-integral producer consumed by
+of the exact rational-prefix divisibility test, exactly the predicate in
 `irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses`. -/
 theorem cofinal_strictFacTopRat_misses_of_cofinal_collisionCeilingGap
     (hcert :
@@ -6218,7 +6248,7 @@ theorem cofinal_strictFacTopRat_misses_of_cofinal_collisionCeilingGap
     (factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat
       (m := m) (by omega)).2 hdvd
 
-/-- Fractional-part form of the complete irrationality reduction.  It is
+/-- Fractional-part form of a conditional irrationality criterion.  It is
 enough to prove cofinally that the collision-scaled genuine prefix stays
 far enough below its next integer. -/
 theorem irrational_factorialGapSeries_of_cofinal_collisionCeilingGap
@@ -6240,9 +6270,8 @@ theorem irrational_factorialGapSeries_of_cofinal_collisionCeilingGap
     cofinal_nonunitCarries_of_cofinal_collisionCeilingGap hcert
 
 /-- A cofinal family of literal two-projection certificates proves the
-irrationality of the Erdős #68 series.  All analytic and rational-grid
-steps are discharged here; the remaining producer is purely integral:
-find arbitrarily large prime blocks with two disagreeing complementary
+irrationality of the Erdős #68 series.  The remaining hypothesis is purely
+integral: arbitrarily large prime blocks must have two disagreeing complementary
 leave-one-out projections and the displayed scale separation. -/
 theorem irrational_factorialGapSeries_of_cofinal_complementary_leaveOneOut_disagreement
     (hcert :
@@ -6282,8 +6311,8 @@ theorem irrational_factorialGapSeries_of_cofinal_complementary_leaveOneOut_disag
     factorialBlock_endpointWindow_false_of_complementary_leaveOneOut_disagreement
       hpPrime.pos hi hj hR hwindow hneq hscale
 
-/-- Complete quotient-cancelled irrationality reduction.  The remaining
-cofinal producer now has no full private modulus or endpoint lcm: it asks
+/-- Quotient-cancelled conditional irrationality criterion.  Its cofinal
+hypothesis has no full private modulus or endpoint lcm: it asks
 for two disagreeing coefficient-free projections and the local bound
 `(2p+1) C_p max(r_i,r_j) < 2p^2(2p-1)!`. -/
 theorem irrational_factorialGapSeries_of_cofinal_complementary_disagreement_collisionCap
@@ -6359,8 +6388,8 @@ theorem
       (factorialBlock_factorCollisionCap_of_normalizedCollisionCap
         hpPrime.pos hcap)
 
-/-- Base-cancelled form of the complete two-projection reduction.  Its
-quantitative producer compares only the normalized collision core against
+/-- Base-cancelled form of the two-projection criterion.  Its quantitative
+hypothesis compares only the normalized collision core against
 the upper factorial block `p⋯(2p-1)`. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_complementary_disagreement_normalizedCollisionCap
@@ -6430,7 +6459,7 @@ theorem irrational_factorialGapSeries_of_cofinal_complementaryFactorPairFloor_na
 
 /-- Cofinal coprime factor-pair floors on prime parameters prove
 irrationality.  This compatibility form retains the historical
-prime-endpoint interface; the natural-parameter theorem above is strictly
+prime-parameter formulation; the natural-parameter theorem above is strictly
 more general and accepts tailored least-hit blocks. -/
 theorem irrational_factorialGapSeries_of_cofinal_complementaryFactorPairFloor
     (hcert :
@@ -6458,8 +6487,8 @@ theorem irrational_factorialGapSeries_of_cofinal_complementaryFactorPairFloor
       (factorialBlock_complementaryFactorPairFloor_le_global
         ha hb hab hR))
 
-/-- Cofinal unconditional pair-floor certificates prove irrationality.
-Unlike the older two-projection interface, this producer does not require
+/-- Cofinal pair-floor certificates prove irrationality.
+Unlike the older two-projection formulation, this theorem does not require
 the caller to establish projection disagreement: equality is converted
 exactly into the global complementary residue branch. -/
 theorem irrational_factorialGapSeries_of_cofinal_complementaryPairFloor
@@ -6544,8 +6573,8 @@ theorem factorialBlock_not_unique_owner_projection_of_lcm_ge
     (factorialBlock_unique_owner_projection_lcm_ceiling
       hn hqden hlarge)
 
-/-- One uniquely supported upper-half prime now gives a fully explicit
-single-projection closing criterion.  Its owner residue is automatically
+/-- One uniquely supported upper-half prime gives an explicit
+single-projection endpoint-window exclusion.  Its residue is automatically
 nonzero; only the final integer comparison remains to be estimated. -/
 theorem factorialBlock_endpointWindow_false_of_unique_owner_projection
     {p n q : ℕ}
@@ -6613,8 +6642,8 @@ theorem exists_not_dvd_strictFacTopRat_in_primeBlock_of_unique_owner_projection
       (factorialBlockEndpointWindow_of_unitCarryBlock hp hunit)
       hlarge
 
-/-- Cofinal uniquely supported owner-size certificates land directly in
-the exact cofinal miss predicate equivalent to Erdős #68. -/
+/-- Cofinal uniquely supported size certificates imply the exact cofinal
+miss predicate equivalent to the irrationality assertion in Erdős #68. -/
 theorem cofinal_strictFacTopRat_misses_of_cofinal_unique_owner_projection
     (hcert :
       ∀ B : ℕ, ∃ p n q : ℕ,
@@ -6641,190 +6670,5 @@ theorem cofinal_strictFacTopRat_misses_of_cofinal_unique_owner_projection
       (by omega) hq hpn hn hqden hunique hlarge
   have hmBounds := Finset.mem_Icc.mp hm
   exact ⟨m, by omega, hmiss⟩
-
-#print axioms prime_dvd_factorial_sub_one_gt
-#print axioms prime_not_dvd_succ_factorial_sub_one_of_dvd
-#print axioms prefixPrivate_factorialGap_unique_in_tailoredBlock
-#print axioms exists_large_unique_factorialBlock_hit
-#print axioms cofinal_unique_factorialBlock_hits_of_cofinal_large_primes
-#print axioms gcd_factorial_sub_one_eq_descFactorial_sub_one
-#print axioms privateQuotients_coprime_of_gcd_dvd_core
-#print axioms factorialGap_privateQuotients_coprime_of_collision
-#print axioms finset_lcm_factorization_lt_of_all_lt
-#print axioms gcd_dvd_pairwiseCollisionCore
-#print axioms gcd_dvd_collisionCore
-#print axioms exists_pairwise_primePower_support_of_dvd_pairwiseCollisionCore
-#print axioms exists_pairwise_primePower_support_of_dvd_collisionCore
-#print axioms primePower_dvd_pairwiseCollisionCore_iff
-#print axioms primePower_dvd_collisionCore_iff
-#print axioms prime_not_dvd_pairwiseCollisionCore_of_unique_support
-#print axioms prime_not_dvd_collisionCore_of_unique_support
-#print axioms pairwiseCollisionCore_pos
-#print axioms collisionCore_pos
-#print axioms pairwiseCollisionCore_dvd_denominatorLcm
-#print axioms collisionCore_dvd_endpointDenominatorLcm
-#print axioms collisionCore_privateQuotients_pairwise_coprime
-#print axioms privateQuotient_eq_one_of_dvd_base
-#print axioms privateQuotient_lcm_eq_privateModulus
-#print axioms privateModulus_pos
-#print axioms prime_dvd_privateQuotient_of_unique_support
-#print axioms primePow_dvd_privateQuotient_of_unique_support
-#print axioms privateModulus_one_lt_of_unique_prime_support
-#print axioms weightedPrivateNumerator_modEq_owner
-#print axioms weightedPrivateNumerator_coprime_product
-#print axioms collisionWeightedPrivateNumerator_modEq_owner
-#print axioms privateWeight_coprime_privateQuotient
-#print axioms privateOwnerTerm_mod_prime_pos
-#print axioms collisionWeightedPrivateNumerator_coprime_privateModulus
-#print axioms lcm_div_gcd_right_distrib
-#print axioms finset_lcm_div_gcd_right_distrib
-#print axioms privateModulus_eq_lcm_div_gcd_collisionCore
-#print axioms privateModulus_eq_endpointDenominatorLcm_div_collisionCore
-#print axioms privateModulus_dvd_endpointDenominatorLcm_div_base
-#print axioms privateModulus_dvd_endpointBaseNumerator
-#print axioms endpointDenominatorTerm_eq_privateWeight_mul_leaveOneOut
-#print axioms endpointTailNumerator_eq_collisionWeightedPrivateNumerator
-#print axioms endpointNumerator_add_tail_eq_endpointBaseNumerator
-#print axioms endpointNumerator_add_tail_modEq_zero
-#print axioms endpointNumerator_add_collisionWeightedPrivateNumerator_modEq_zero
-#print axioms coprime_left_of_add_modEq_zero
-#print axioms endpointNumerator_coprime_privateModulus
-#print axioms projectedResidue_eq_complementary_of_add_modEq_zero
-#print axioms projectedResidue_endpointPrivateResidue_eq_of_dvd
-#print axioms projectedResidue_bounds_of_coprime
-#print axioms complementaryProjectedResidue_eq_sub_of_coprime
-#print axioms add_complementaryProjectedResidue_eq_succ_div_mul
-#print axioms endpointPrivateResidue_bounds
-#print axioms endpointPrivateResidue_add_tail_modEq_zero
-#print axioms endpointPrivateResidue_add_owner_modEq_zero
-#print axioms endpointPrivateResidue_add_owner_modEq_zero_of_dvd
-#print axioms complementary_residue_lower_bound
-#print axioms endpointPrivateResidue_owner_lower_bound
-#print axioms scaled_endpoint_upper_bound_excluded_by_residue
-#print axioms endpoint_scaled_upper_bound_false_of_privateResidue
-#print axioms min_leaveOneOutModulus_mul_max_eq
-#print axioms leaveOneOut_lcm_eq_of_coprime_divisors
-#print axioms projectedResidue_complementaryProjectedResidue_eq_of_dvd
-#print axioms projectedResidue_eq_residue_of_eq_of_lcm
-#print axioms projectionPairFloor_full_divisor_eq_min
-#print axioms lt_mul_min_iff
-#print axioms projectionPairFloor_le_residue_of_lt_of_lcm
-#print axioms factorialBlock_min_factorProjection_mul_max_eq_privateModulus
-#print axioms factorialBlock_scaled_min_factorProjection_of_collisionCap
-#print axioms factorialBlock_factorProjection_lcm_eq_privateModulus
-#print axioms factorialBlock_min_leaveOneOut_mul_max_privateQuotient_eq_privateModulus
-#print axioms factorialBlock_scaled_min_leaveOneOut_of_collisionCap
-#print axioms factorialBlock_leaveOneOut_lcm_eq_privateModulus
-#print axioms factorialBlock_complementaryLeaveOneOut_eq_global_of_eq
-#print axioms factorialBlock_unitFactorPairFloor_eq_min
-#print axioms factorialBlock_unitFactorPairFloor_scale_iff
-#print axioms factorialBlock_complementaryFactorPairFloor_le_global
-#print axioms factorialBlock_complementaryPairFloor_le_global
-#print axioms factorialBlock_endpointWindow_false_of_complementary_factor_disagreement
-#print axioms factorialBlock_endpointWindow_false_of_complementary_factor_disagreement_collisionCap
-#print axioms factorialBlock_endpointWindow_false_of_complementary_disagreement_collisionCap
-#print axioms factorialBlock_endpointWindow_false_of_complementaryFactorPairFloor
-#print axioms factorialBlock_endpointWindow_false_of_complementaryPairFloor
-#print axioms irrational_factorialGapSeries_of_cofinal_complementary_factor_disagreement_normalizedCollisionCap
-#print axioms irrational_factorialGapSeries_of_cofinal_complementary_disagreement_collisionCap
-#print axioms irrational_factorialGapSeries_of_cofinal_complementary_disagreement_normalizedCollisionCap
-#print axioms irrational_factorialGapSeries_of_cofinal_complementaryFactorPairFloor_nat
-#print axioms irrational_factorialGapSeries_of_cofinal_complementaryFactorPairFloor
-#print axioms irrational_factorialGapSeries_of_cofinal_complementaryPairFloor
-#print axioms factorialGapTail_eq_next_add_tail
-#print axioms factorialGapTail_lt_factorialBlockEndpointUpperBound
-#print axioms factorialBlock_addedTerm_add_gridCell_le_endpointUpperBound
-#print axioms strictFacTop_factorialGapPrefix_pos
-#print axioms factorialBlockCoefficient_cast_eq_strictFacTop
-#print axioms factorialBlockEndpointWindow_of_unitCarryBlock
-#print axioms factorialBlockEndpointWindow_of_series_eq_rat
-#print axioms factorialGapDenominator_pos_of_mem
-#print axioms factorialBlockPrivateModulus_pos
-#print axioms factorialBlockNormalizedCollisionCore_mul_gapLcm_dvd_gapProd
-#print axioms factorialBlockNormalizedCollisionCore_le_gapProd_div_gapLcm
-#print axioms factorialBlockNormalizedCollisionCore_pos
-#print axioms collisionCore_div_base_eq_pairwiseCollisionCore_div_gcd
-#print axioms collisionCore_div_base_factorization
-#print axioms primePower_dvd_collisionCore_div_base_iff
-#print axioms factorialBlockNormalizedCollisionCore_factorization
-#print axioms factorialBlock_primePower_dvd_normalizedCollisionCore_iff_two_hits
-#print axioms factorialBlock_primePower_le_gapPow_of_two_hits
-#print axioms factorialBlock_prime_hitPair_distance_gt_exponent
-#print axioms factorialBlock_hitPair_distance_gt_exponent_of_endpoint_lt_base
-#print axioms factorialBlock_primePowerHitCount_mul_succ_le
-#print axioms factorialBlock_primePowerHitCount_mul_succ_le_of_endpoint_lt_base
-#print axioms exists_factorialBlock_hitPair_with_normalizedPrimePower_le_gapPow
-#print axioms exists_factorialBlock_hitPair_distance_gt_of_endpointPow_lt_normalizedPrimePower
-#print axioms factorialBlock_normalizedCollision_exponent_add_base_factorization_lt_prime
-#print axioms factorialBlock_normalizedCollision_factorization_add_base_lt_prime
-#print axioms factorialBlock_normalizedCollision_exponent_add_base_factorization_lt_blockDiameter
-#print axioms factorialBlock_normalizedCollision_factorization_add_base_lt_blockDiameter
-#print axioms factorialBlock_normalizedCollision_factorization_lt_blockDiameter_of_endpoint_lt_prime
-#print axioms factorialBlock_base_factorization_lt_pred_of_dvd_normalizedCollisionCore
-#print axioms factorialBlock_prime_mul_pred_gt_pred_of_dvd_normalizedCollisionCore
-#print axioms factorialBlock_prime_sq_gt_pred_of_dvd_normalizedCollisionCore
-#print axioms factorialBlockNormalizedCollisionCore_coprime_factorial_of_mul_pred_le
-#print axioms factorialBlockBase_mul_normalizedCollisionCore
-#print axioms factorialBlockBase_mul_upperDescFactorial
-#print axioms factorialBlock_factorCollisionCap_of_normalizedCollisionCap
-#print axioms factorialBlock_collisionCap_of_normalizedCollisionCap
-#print axioms factorialBlockCollisionCore_mul_privateModulus
-#print axioms lcm_gcd_left_distrib
-#print axioms finset_lcm_gcd_left
-#print axioms pairwiseCollisionCore_insert
-#print axioms pairwiseCollisionCore_insert_gcd_lcm
-#print axioms collisionCore_insert
-#print axioms collisionCore_insert_gcd_lcm
-#print axioms pairwiseCollisionCore_mul_denominatorLcm_dvd_denominatorProd
-#print axioms collisionCore_div_base_dvd_pairwiseCollisionCore
-#print axioms collisionCore_div_base_mul_denominatorLcm_dvd_denominatorProd
-#print axioms factorialBlockTailNumerator_div_privateModulus_eq_collisionScaledPrefix
-#print axioms factorialBlockTailNumerator_coprime_privateModulus
-#print axioms factorialBlock_complementaryTailFraction_eq_ceilingGap
-#print axioms factorialBlock_globalComplementaryTail_inequality_of_ceilingGap
-#print axioms factorialGapDenominator_dvd_factorialBlockBase_of_lt
-#print axioms factorialBlockPrivateQuotient_eq_one_of_gap_lt
-#print axioms factorialBlockParameter_le_gap_of_privateQuotient_ne_one
-#print axioms factorialBlockFixedPairPrivateQuotients_eq_one
-#print axioms factorialBlockPrivateQuotient_dvd_privateModulus
-#print axioms factorialBlockFactorProjectionModulus_dvd_privateModulus
-#print axioms factorialBlockLeaveOneOutModulus_dvd_privateModulus
-#print axioms factorialBlockPrivateResidue_projected_eq_endpointNumerator
-#print axioms factorialBlockEndpointNumerator_projected_eq_complementaryTail
-#print axioms factorialBlockPrivateResidue_eq_complementaryTail
-#print axioms factorialBlockPrime_not_dvd_base_of_upper_hit
-#print axioms factorialBlockPrime_dvd_normalizedCollisionCore_of_upper_hit_of_dvd_collisionCore
-#print axioms exists_two_factorialBlock_hits_of_primePower_dvd_collisionCore
-#print axioms factorialBlock_primePower_dvd_collisionCore_iff_two_hits
-#print axioms factorialBlock_primePower_dvd_normalizedCollisionCore_iff_of_upper_hit
-#print axioms factorialBlock_primePower_dvd_normalizedCollisionCore_iff_one_lt_hitCount
-#print axioms factorialBlock_primePower_not_dvd_normalizedCollisionCore_of_hitCount_le_one
-#print axioms factorialBlock_normalizedCollisionCore_factorization_lt_of_hitCount_le_one
-#print axioms factorialBlock_normalizedCollisionCore_factorization_eq_repeatedHitLayerCount
-#print axioms factorialBlock_normalizedCollisionCore_factorization_eq_truncatedRepeatedHitLayerCount
-#print axioms factorialBlockPrime_dvd_privateQuotient_of_unique_upper_prime
-#print axioms factorialBlockPrivateModulus_one_lt_of_unique_upper_prime
-#print axioms factorialBlockPrivateOwnerTerm_mod_pos_of_unique_upper_prime
-#print axioms factorialBlockPrivateResidue_owner_lower_bound_of_unique_upper_prime
-#print axioms factorialBlockEndpointNumerator_div_endpointLcm_eq_gap
-#print axioms factorialBlock_scaled_upper_bound_of_endpointWindow
-#print axioms factorialBlock_scaled_upper_bound_false
-#print axioms factorialBlock_endpointWindow_false_of_privateResidue
-#print axioms factorialBlock_endpointWindow_false_of_global_complementaryTail
-#print axioms exists_nonunitCarry_in_primeBlock_of_global_complementaryTail
-#print axioms exists_nonunitCarry_in_primeBlock_of_collisionCeilingGap
-#print axioms exists_not_dvd_strictFacTopRat_in_primeBlock_of_collisionCeilingGap
-#print axioms factorialBlock_endpointWindow_false_of_leaveOneOut_disagreement
-#print axioms factorialBlock_endpointWindow_false_of_complementary_leaveOneOut_disagreement
-#print axioms irrational_factorialGapSeries_of_cofinal_global_complementaryTail
-#print axioms cofinal_nonunitCarries_of_cofinal_collisionCeilingGap
-#print axioms cofinal_strictFacTopRat_misses_of_cofinal_collisionCeilingGap
-#print axioms irrational_factorialGapSeries_of_cofinal_collisionCeilingGap
-#print axioms irrational_factorialGapSeries_of_cofinal_complementary_leaveOneOut_disagreement
-#print axioms factorialBlock_unique_owner_projection_lcm_ceiling
-#print axioms factorialBlock_not_unique_owner_projection_of_lcm_ge
-#print axioms factorialBlock_endpointWindow_false_of_unique_owner_projection
-#print axioms exists_not_dvd_strictFacTopRat_in_primeBlock_of_unique_owner_projection
-#print axioms cofinal_strictFacTopRat_misses_of_cofinal_unique_owner_projection
 
 end ErdosProblems.Erdos68

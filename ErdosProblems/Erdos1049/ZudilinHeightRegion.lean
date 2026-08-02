@@ -2,22 +2,23 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 import Mathlib.Analysis.Real.Pi.Bounds
 
 /-!
-# Erdős #1049: exact certificate for the enlarged Zudilin height region
+# Erdős #1049: elementary height-region certificates
 
-The source-backed hypergeometric argument in the returned research packet has
-analytic threshold `C₀ / C₁ > 81 / 200`.  This module kernel-checks the entire
-elementary specialization at base `31 / 4`, and also proves that this base lies
-strictly outside the older Bundschuh--Väänänen height region.
+Define the height region by
+`log b / log a < 81 / 200`.  Exact integer and logarithmic inequalities place
+`31 / 4` and all its positive powers inside this region, place `31 / 4`
+outside the Bundschuh--Väänänen region, and place `3 / 2` outside both.
 
-No external hypergeometric asymptotic is introduced as an axiom: combining
-`thirtyoneFour_mem_zudilinHeightRegion` with that audited source theorem is a
-separate claim transition.
+These are elementary parameter inequalities.  No hypergeometric asymptotic or
+irrationality theorem is imported as an axiom.  Membership becomes useful only
+after a separate analytic theorem is applied, while failure of membership is
+method inapplicability and proves neither rationality nor irrationality.
 -/
 
 namespace ErdosProblems.Erdos1049
 
-/-- Rational subregion certified by the exact lower bound
-`C₀ / C₁ > 81 / 200` in the returned Zudilin homogenisation. -/
+/-- The parameter region cut out by the single inequality
+`log b / log a < 81 / 200`; no analytic hypotheses are included. -/
 def ZudilinHeightRegion (a b : ℕ) : Prop :=
   Real.log b / Real.log a < (81 : ℝ) / 200
 
@@ -40,15 +41,12 @@ theorem thirtyoneFour_log_ratio_lt_eightyOne_twoHundredths :
   apply (div_lt_iff₀ hlog31).2
   nlinarith
 
-/-- Fully kernel-checked parameter membership for the first explicit base in
-the new source-backed region. -/
+/-- The base `31 / 4` lies in the height region. -/
 theorem thirtyoneFour_mem_zudilinHeightRegion :
     ZudilinHeightRegion 31 4 :=
   thirtyoneFour_log_ratio_lt_eightyOne_twoHundredths
 
-/-- The logarithmic height ratio is invariant under a common positive power.
-This is the elementary bridge from one rational base to its entire power
-family. -/
+/-- The logarithmic height ratio is invariant under a common positive power. -/
 theorem zudilinHeightRegion_pow (a b r : ℕ) (hr : 0 < r)
     (h : ZudilinHeightRegion a b) :
     ZudilinHeightRegion (a ^ r) (b ^ r) := by
@@ -57,13 +55,13 @@ theorem zudilinHeightRegion_pow (a b r : ℕ) (hr : 0 < r)
   rw [mul_div_mul_left _ _ (by exact_mod_cast hr.ne')]
   exact h
 
-/-- Every positive power of `31 / 4` satisfies the same source-backed
-Zudilin height threshold. -/
+/-- Every positive power of `31 / 4` satisfies the same height threshold. -/
 theorem thirtyoneFour_power_mem_zudilinHeightRegion (r : ℕ) (hr : 0 < r) :
     ZudilinHeightRegion (31 ^ r) (4 ^ r) :=
   zudilinHeightRegion_pow 31 4 r hr thirtyoneFour_mem_zudilinHeightRegion
 
-/-- The same base is beyond the convenient rational boundary `2 / 5`. -/
+/-- The rational number `2 / 5` is a strict lower bound for
+`log 4 / log 31`. -/
 theorem twoFifths_lt_thirtyoneFour_log_ratio :
     (2 : ℝ) / 5 < Real.log 4 / Real.log 31 := by
   have hpows : (31 : ℝ) ^ 2 < (4 : ℝ) ^ 5 := by norm_num
@@ -89,8 +87,7 @@ theorem bundschuhVaananenMargin_lt_twoFifths :
     one_div_lt_one_div_of_lt hpiSqPos hpiSq
   nlinarith
 
-/-- The explicit `31 / 4` certificate strictly enlarges the previously
-formalized parameter region. -/
+/-- The base `31 / 4` lies outside the Bundschuh--Väänänen height region. -/
 theorem thirtyoneFour_outside_bundschuhVaananenHeightRegion :
     ¬ BundschuhVaananenHeightRegion 31 4 := by
   intro h
@@ -98,8 +95,8 @@ theorem thirtyoneFour_outside_bundschuhVaananenHeightRegion :
     (bundschuhVaananenMargin_lt_twoFifths.trans
       twoFifths_lt_thirtyoneFour_log_ratio).le) h
 
-/-- The exact integer comparison placing `3 / 2` beyond the enlarged
-Zudilin height threshold. -/
+/-- The exact integer comparison placing `3 / 2` beyond the `81 / 200`
+threshold defined above. -/
 theorem threeHalves_zudilin_power_obstruction :
     3 ^ 81 < 2 ^ 200 := by
   norm_num
@@ -119,17 +116,17 @@ theorem eightyOneTwoHundredths_lt_threeHalves_log_ratio :
   apply (lt_div_iff₀ hlog3).2
   nlinarith
 
-/-- Consequently the enlarged source-backed Zudilin criterion does not cover
-the requested base `3 / 2`.  This is a boundary theorem, not an irrationality
-result for the corresponding Lambert value. -/
+/-- The height region defined above does not contain `3 / 2`.  This is a
+method boundary, not a rationality or irrationality theorem for the
+corresponding Lambert value. -/
 theorem threeHalves_outside_zudilinHeightRegion :
     ¬ ZudilinHeightRegion 3 2 := by
   intro h
   exact (not_lt_of_ge
     eightyOneTwoHundredths_lt_threeHalves_log_ratio.le) h
 
-/-- The older Bundschuh--Väänänen criterion also excludes `3 / 2`; its margin
-is smaller than the Zudilin threshold already crossed above. -/
+/-- The Bundschuh--Väänänen height region also does not contain `3 / 2`; its
+margin is smaller than the threshold already crossed above. -/
 theorem threeHalves_outside_bundschuhVaananenHeightRegion :
     ¬ BundschuhVaananenHeightRegion 3 2 := by
   intro h

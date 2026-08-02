@@ -21,14 +21,17 @@ open scoped BigOperators
 /-!
 # Erdős #251: prime-gap dyadic tails
 
-Rationality controls the fractional part of a scaled tail, not the prime-gap
-word itself.  This module records the exact dyadic coboundary which exposes the
-free integer carry and proves its finite telescoping identity.  It is the
-formal no-go behind attempts to deduce eventual periodicity or automaticity of
-prime gaps from a periodic fractional orbit.
+Finite summation by parts rewrites the prime series in terms of consecutive
+prime gaps.  An elementary polynomial bound for the `n`th prime then proves
+unconditional convergence of both series and the exact infinite identity.
 
-The remaining analytic producer is growing-block dyadic anti-concentration for
-the actual consecutive prime gaps.
+If the prime-gap sum is rational, its scaled tails form a rational dyadic
+recurrence.  Denominator arithmetic forces one positive fixed tail shift to be
+eventually integral, while the factorial construction proves that the actual
+prime gaps are unbounded and not eventually periodic.  These facts do not by
+themselves prove irrationality: a contradiction still requires smallness, or
+cofinally many adjacent small mismatches, for the same fixed shift.  Neither
+unboundedness nor nonperiodicity supplies that missing estimate.
 -/
 
 namespace ErdosProblems.Erdos251
@@ -204,11 +207,10 @@ theorem primeGapDyadicTerm_eq (n : ℕ) :
   simp only [pow_succ]
   field_simp
 
-/-- Any polynomial upper bound on the `n`th prime is already enough to close
-the convergence interface for the normalized prime series.  This theorem
-keeps the analytic reduction independent of a particular formalization of
-prime-number growth: a checked Chebyshev or prime-number-theorem bound can be
-plugged in later without changing the tail argument. -/
+/-! ### Unconditional convergence -/
+
+/-- Any polynomial upper bound on the `n`th prime implies convergence of the
+normalized prime series. -/
 theorem summable_primeDyadicTerm_of_polynomial_growth
     (C k : ℕ)
     (hgrowth : ∀ n, prime0 n ≤ C * (n + 1) ^ k) :
@@ -372,16 +374,14 @@ theorem prime0_le_polynomial (n : ℕ) :
     _ ≤ 2 * (5 * (n + 1)) ^ 4 := Nat.mul_le_mul_left 2 hpow
     _ = 1250 * (n + 1) ^ 4 := by ring
 
-/-- The normalized prime series converges unconditionally.  The proof uses
-only the preceding elementary polynomial bound, not the prime number theorem
-or any unproved analytic input. -/
+/-- The normalized prime series converges unconditionally, using the explicit
+elementary polynomial bound above. -/
 theorem summable_primeDyadicTerm :
     Summable primeDyadicTerm :=
   summable_primeDyadicTerm_of_polynomial_growth 1250 4 prime0_le_polynomial
 
-/-- Summability of the normalized prime series automatically supplies
-summability of the actual prime-gap series.  This closes the analytic
-interface left implicit by the finite summation-by-parts identity. -/
+/-- Summability of the normalized prime series implies summability of the
+corresponding consecutive-prime-gap series. -/
 theorem summable_primeGapDyadicTerm_of_summable_primeDyadicTerm
     (hprime : Summable primeDyadicTerm) :
     Summable primeGapDyadicTerm := by
@@ -489,9 +489,8 @@ summability or identification of `S` with an infinite sum is assumed. -/
 noncomputable def rationalPrimeGapTailState (S : ℚ) (N : ℕ) : ℚ :=
   2 ^ (N + 1) * (S - primeGapPartialSumQ (N + 1))
 
-/-- If the genuine real prime-gap sum is rational, the algebraic candidate
-state is exactly the scaled real tail.  This discharges the real-to-rational
-interface: all remaining work is about the behavior of these scaled tails. -/
+/-- If the genuine real prime-gap sum equals the rational number `S`, the
+algebraic candidate state is exactly the corresponding scaled real tail. -/
 theorem cast_rationalPrimeGapTailState_eq_scaled_tsum_nat_add
     (S : ℚ)
     (hS : (S : ℝ) = ∑' n : ℕ, primeGapDyadicTerm n)
@@ -522,10 +521,9 @@ theorem exists_rationalPrimeGapTailState_representation_of_not_irrational
     S hS.symm N
 
 /-- The proposed rational prime-gap tail satisfies the actual prime-gap
-recurrence identically.  Thus the abstract carry machinery below applies
-directly to every rational candidate `S`; the remaining analytic work is to
-show that the genuine infinite series supplies such an `S` and the required
-small-shift certificates. -/
+recurrence identically.  Under non-irrationality the preceding existence
+theorem identifies this candidate with every scaled real tail; a contradiction
+still requires a smallness statement for a suitable fixed shift. -/
 theorem rationalPrimeGapTailState_recurrence (S : ℚ) :
     DyadicTailRecurrence (fun n => (primeGap0 n : ℤ))
       (rationalPrimeGapTailState S) := by
@@ -797,9 +795,10 @@ theorem ratIntegral_multiplier_tail_at_twoExponent
       push_cast
       ring
 
+/-! ### Denominator arithmetic and integral shifts -/
+
 /-- Exact algebraic core of the integral-shift criterion: one tail shift is
-integral exactly when `(2^h - 1) * T_N` is integral.  Connecting `T_N` to the
-actual infinite prime-gap series remains a separate analytic interface. -/
+integral exactly when `(2^h - 1) * T_N` is integral. -/
 theorem tailShift_integral_iff_scaledTail
     {g : ℕ → ℤ} {T : ℕ → ℚ}
     (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
@@ -939,9 +938,8 @@ theorem tailShift_eventually_zero_of_eventually_integral_of_eventually_small
     (hsmall N ((le_max_right _ _).trans hN)).2
 
 /-- For an integer-digit dyadic recurrence, eventual integrality plus an
-eventually small fixed shift forces the digit word to be eventually periodic
-with that shift.  This is a strong global route; the adjacent-pair consumer
-below isolates a weaker cofinal local supply. -/
+eventually small fixed shift forces the digit sequence to be eventually
+periodic with that shift. -/
 theorem digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small
     {g : ℕ → ℤ} {T : ℕ → ℚ}
     (hrec : DyadicTailRecurrence g T) (h : ℕ)
@@ -960,8 +958,8 @@ theorem digits_eventually_periodic_of_eventually_integralTailShift_of_eventually
     linarith
   exact_mod_cast hcast
 
-/-- Contrapositive consumer: if the digit word is not eventually periodic
-with shift `h`, then an eventually small `h`-shift cannot also be eventually
+/-- Contrapositive form: if the digit sequence is not eventually periodic
+with shift `h`, an eventually small `h`-shift cannot also be eventually
 integral. -/
 theorem not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic
     {g : ℕ → ℤ} {T : ℕ → ℚ}
@@ -976,9 +974,8 @@ theorem not_eventuallyIntegralTailShift_of_eventually_small_of_not_periodic
     (digits_eventually_periodic_of_eventually_integralTailShift_of_eventually_small
       hrec h hInt hsmall)
 
-/-- A single adjacent pair of small shifts with a mismatching digit difference
-already excludes simultaneous integrality.  This is the shortest finite
-consumer for a growing-block anti-concentration certificate. -/
+/-- A single adjacent pair of small shifts with unequal corresponding digits
+already excludes simultaneous integrality. -/
 theorem tailShift_not_both_integral_of_small_pair_of_digit_ne
     {g : ℕ → ℤ} {T : ℕ → ℚ}
     (hrec : DyadicTailRecurrence g T) (h N : ℕ)
@@ -1003,9 +1000,9 @@ theorem tailShift_not_both_integral_of_small_pair_of_digit_ne
     linarith
   exact_mod_cast hcast
 
-/-- Cofinal finite-certificate consumer.  To rule out eventual integrality of
-a fixed shift it is enough to find, beyond every level, one adjacent pair of
-strictly small shifts whose corresponding digits differ. -/
+/-- To rule out eventual integrality of a fixed shift, it is enough to find
+beyond every level one adjacent pair of strictly small shifts whose
+corresponding digits differ. -/
 theorem not_eventuallyIntegralTailShift_of_cofinal_small_mismatch
     {g : ℕ → ℤ} {T : ℕ → ℚ}
     (hrec : DyadicTailRecurrence g T) (h : ℕ)
@@ -1056,10 +1053,9 @@ theorem primeGap0_not_eventually_periodic
   rw [hkEq] at hkBound
   omega
 
-/-- Prime-specific global exclusion of eventual integral tail shifts.
-Eventual strict smallness would force periodicity, which the factorial gap
-theorem rules out.  The next theorem uses only cofinally many local
-small-mismatch certificates. -/
+/-- For the actual prime gaps, an eventually small positive tail shift cannot
+also be eventually integral: together those properties would force eventual
+periodicity, contradicting the factorial gap theorem. -/
 theorem primeGapTailShift_not_eventuallyIntegral_of_eventually_small
     {T : ℕ → ℚ} {h : ℕ}
     (hrec : DyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) T)
@@ -1076,10 +1072,9 @@ theorem primeGapTailShift_not_eventuallyIntegral_of_eventually_small
   exact_mod_cast hperiodic N hN
 
 /-- No rational candidate with odd reduced denominator can have an eventually
-small Euler-period tail shift along the actual consecutive prime gaps.  This
-is the direct odd-denominator specialization of the full decomposition below.
-Turning either form into Erdős #251 still requires identifying the genuine
-infinite sum with the candidate state and proving the needed smallness. -/
+small Euler-period tail shift along the actual consecutive prime gaps.  Under
+non-irrationality this candidate is the genuine scaled tail, but no theorem
+here supplies the required eventual smallness. -/
 theorem rationalPrimeGapTailShift_not_eventually_small_of_odd_den
     (S : ℚ) (hodd : Odd S.den) :
     ¬ ∃ N₀, ∀ N, N₀ ≤ N →
@@ -1094,10 +1089,11 @@ theorem rationalPrimeGapTailShift_not_eventually_small_of_odd_den
   exact ⟨0, fun N _hN =>
     rationalPrimeGapTailShift_integral_of_odd_den S hodd N⟩
 
-/-- Full-denominator candidate obstruction.  Every rational `S` has some
-positive fixed tail shift which cannot eventually remain in the open unit
-interval: denominator arithmetic makes that shift eventually integral, while
-eventual smallness would force the actual prime gaps to become periodic. -/
+/-- Every rational `S` has some positive fixed tail shift which cannot
+eventually remain in the open unit interval: denominator arithmetic makes that
+shift eventually integral, while eventual smallness would force the actual
+prime gaps to become periodic.  This is compatible with rationality; it
+identifies a shift for which smallness must fail. -/
 theorem rationalPrimeGapTail_has_positive_shift_not_eventually_small
     (S : ℚ) :
     ∃ h, 0 < h ∧
@@ -1112,7 +1108,7 @@ theorem rationalPrimeGapTail_has_positive_shift_not_eventually_small
     primeGapTailShift_not_eventuallyIntegral_of_eventually_small
       (rationalPrimeGapTailState_recurrence S) hpos hsmall hInt
 
-/-- Actual-prime-gap version of the cofinal finite-certificate consumer. -/
+/-- Actual-prime-gap specialization of the cofinal small-mismatch criterion. -/
 theorem primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
     {T : ℕ → ℚ} (h : ℕ)
     (hrec : DyadicTailRecurrence (fun n => (primeGap0 n : ℤ)) T)
@@ -1126,6 +1122,8 @@ theorem primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
   obtain ⟨N, hN, hsmall, hdigit⟩ := hsupply N₀
   refine ⟨N, hN, hsmall, ?_⟩
   exact_mod_cast hdigit
+
+/-! ## Unrestricted carries need not produce periodic coefficients -/
 
 /-- The coefficient emitted by an unrestricted integer carry. -/
 def carryCoeff (K : ℕ → ℚ) (n : ℕ) : ℚ :=
@@ -1184,5 +1182,403 @@ theorem natCarryCoeff_cast
     (natCarryCoeff K n : ℚ) =
       carryCoeff (fun j => (K j : ℚ)) n := by
   simp [natCarryCoeff, carryCoeff, Nat.cast_sub hK]
+
+/-! ## Denominator normal forms for rational tail recurrences -/
+
+/-- Doubling a reduced rational removes exactly the common factor of its
+denominator with `2`. -/
+theorem den_two_mul (x : ℚ) :
+    ((2 : ℚ) * x).den = x.den / Nat.gcd 2 x.den := by
+  rw [Rat.mul_den]
+  simp only [Rat.den_ofNat, Rat.num_ofNat, one_mul, Int.natAbs_mul]
+  change x.den / Nat.gcd (2 * x.num.natAbs) x.den =
+    x.den / Nat.gcd 2 x.den
+  congr 1
+  apply Nat.dvd_antisymm
+  · apply Nat.dvd_gcd
+    · have hgprod :
+          Nat.gcd (2 * x.num.natAbs) x.den ∣
+            2 * x.num.natAbs := Nat.gcd_dvd_left _ _
+      have hgden :
+          Nat.gcd (2 * x.num.natAbs) x.den ∣ x.den :=
+        Nat.gcd_dvd_right _ _
+      have hcop :
+          Nat.Coprime (Nat.gcd (2 * x.num.natAbs) x.den)
+            x.num.natAbs :=
+        (x.reduced.of_dvd_right hgden).symm
+      exact hcop.dvd_mul_right.mp hgprod
+    · exact Nat.gcd_dvd_right _ _
+  · apply Nat.dvd_gcd
+    · exact (Nat.gcd_dvd_left 2 x.den).mul_right x.num.natAbs
+    · exact Nat.gcd_dvd_right _ _
+
+/-- Exact one-step denominator dynamics for a rational dyadic tail: the next
+denominator is the current denominator divided by its gcd with `2`. -/
+theorem tail_den_succ
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N : ℕ) :
+    (T (N + 1)).den = (T N).den / Nat.gcd 2 (T N).den := by
+  have hden := congrArg Rat.den (hrec N)
+  simpa [den_two_mul] using hden
+
+/-- An odd rational tail denominator is unchanged by the next recurrence
+step. Since it remains odd, the same conclusion can then be iterated. -/
+theorem tail_den_succ_eq_of_odd
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N : ℕ)
+    (hodd : Odd (T N).den) :
+    (T (N + 1)).den = (T N).den := by
+  rw [tail_den_succ hrec]
+  rw [hodd.coprime_two_left.gcd_eq_one, Nat.div_one]
+
+/-- An even rational tail denominator loses exactly one factor of `2` at the
+next recurrence step. -/
+theorem tail_den_succ_eq_half_of_even
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N : ℕ)
+    (heven : Even (T N).den) :
+    (T (N + 1)).den = (T N).den / 2 := by
+  rw [tail_den_succ hrec]
+  rw [Nat.gcd_eq_left_iff_dvd.mpr (even_iff_two_dvd.mp heven)]
+
+/-- A rational number is integral exactly when its reduced denominator is
+one. -/
+theorem ratIntegral_iff_den_eq_one (x : ℚ) :
+    RatIntegral x ↔ x.den = 1 := by
+  constructor
+  · rintro ⟨z, rfl⟩
+    simp
+  · intro hden
+    refine ⟨x.num, ?_⟩
+    exact (Rat.den_eq_one_iff x).mp hden |>.symm
+
+/-- Multiplication by a natural number clears a rational denominator exactly
+when that denominator divides the multiplier. -/
+theorem ratIntegral_nat_mul_iff_den_dvd (x : ℚ) (m : ℕ) :
+    RatIntegral ((m : ℚ) * x) ↔ x.den ∣ m := by
+  rw [ratIntegral_iff_den_eq_one]
+  have hrepr :
+      (m : ℚ) * x =
+        ((((m : ℤ) * x.num : ℤ) : ℚ) / (x.den : ℤ)) := by
+    calc
+      (m : ℚ) * x =
+          (m : ℚ) * ((x.num : ℚ) / (x.den : ℚ)) := by
+            rw [Rat.num_div_den]
+      _ = ((((m : ℤ) * x.num : ℤ) : ℚ) / (x.den : ℤ)) := by
+            push_cast
+            ring
+  rw [hrepr, Rat.den_div_intCast_eq_one_iff _ _]
+  · rw [Int.natCast_dvd]
+    simp only [Int.natAbs_mul, Int.natAbs_natCast]
+    exact x.reduced.symm.dvd_mul_right
+  · exact Int.ofNat_ne_zero.mpr x.den_ne_zero
+
+/-- Exact denominator classification of all integral shift lengths.  A shift
+by `h` steps is integral precisely when the reduced denominator of the current
+tail divides the Mersenne number `2^h - 1`. -/
+theorem tailShift_integral_iff_den_dvd_mersenne
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    RatIntegral (tailShift T h N) ↔ (T N).den ∣ 2 ^ h - 1 := by
+  rw [tailShift_integral_iff_scaledTail hrec]
+  have hone : 1 ≤ 2 ^ h := Nat.one_le_two_pow
+  simpa [Nat.cast_sub hone] using
+    (ratIntegral_nat_mul_iff_den_dvd (T N) (2 ^ h - 1))
+
+/-- Congruence form of the exact shift-length classification: the integral
+shifts are precisely the exponents for which `2^h` is congruent to `1` modulo
+the current reduced denominator. -/
+theorem tailShift_integral_iff_two_pow_modEq_one
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    RatIntegral (tailShift T h N) ↔
+      2 ^ h ≡ 1 [MOD (T N).den] := by
+  rw [tailShift_integral_iff_den_dvd_mersenne hrec]
+  have hone : 1 ≤ 2 ^ h := Nat.one_le_two_pow
+  constructor
+  · intro hdiv
+    exact ((Nat.modEq_iff_dvd' hone).mpr hdiv).symm
+  · intro hmod
+    exact (Nat.modEq_iff_dvd' hone).mp hmod.symm
+
+/-- Repeated doubling removes the entire power-of-two part of a rational
+denominator.  The remaining reduced denominator is therefore odd. -/
+theorem exists_twoPow_mul_odd_den (q : ℚ) :
+    ∃ k : ℕ, Odd (((2 : ℚ) ^ k * q).den) := by
+  obtain ⟨k, m, hm, hden⟩ :=
+    Nat.exists_eq_two_pow_mul_odd q.den_ne_zero
+  have hm0 : m ≠ 0 := by
+    intro hmzero
+    simp [hmzero] at hden
+  have hdenQ : (q.den : ℚ) = (2 : ℚ) ^ k * m := by
+    exact_mod_cast hden
+  have hq :
+      (2 : ℚ) ^ k * q = (q.num : ℚ) / (m : ℚ) := by
+    calc
+      (2 : ℚ) ^ k * q =
+          (2 : ℚ) ^ k * ((q.num : ℚ) / (q.den : ℚ)) := by
+            rw [q.num_div_den]
+      _ = (q.num : ℚ) / (m : ℚ) := by
+        rw [hdenQ]
+        field_simp [hm0]
+  have hcoprime : Nat.Coprime q.num.natAbs m := by
+    exact q.reduced.of_dvd_right ⟨2 ^ k, by rw [hden, Nat.mul_comm]⟩
+  refine ⟨k, ?_⟩
+  rw [hq]
+  have hdenm :
+      ((q.num : ℚ) / (m : ℚ)).den = m := by
+    have hdenmZ := Rat.den_div_eq_of_coprime
+      (a := q.num) (b := (m : ℤ))
+      (by simpa only [Int.natCast_pos] using Nat.pos_of_ne_zero hm0)
+      (by simpa using hcoprime)
+    exact_mod_cast hdenmZ
+  rw [hdenm]
+  exact hm
+
+/-- Every rational-valued dyadic tail recurrence has an odd-denominator state.
+The index is exactly the number of doublings needed to clear the initial
+power-of-two denominator. -/
+theorem exists_odd_den_state
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) :
+    ∃ N : ℕ, Odd (T N).den := by
+  obtain ⟨N, hodd⟩ := exists_twoPow_mul_odd_den (T 0)
+  refine ⟨N, ?_⟩
+  have hstate := tail_iterate_eq_pow_mul_sub_block hrec 0 N
+  have hdenEq :
+      (T N).den = (((2 : ℚ) ^ N * T 0).den) := by
+    simpa using congrArg Rat.den hstate
+  rw [hdenEq]
+  exact hodd
+
+/-- Rationality forces one fixed positive shift to be integral from some point
+onwards.  This is the rational-side obstruction paired with any
+prime-specific cofinal nonintegrality theorem. -/
+theorem exists_eventually_integral_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) :
+    ∃ h N : ℕ, 0 < h ∧
+      ∀ k, RatIntegral (tailShift T h (N + k)) := by
+  obtain ⟨N, hodd⟩ := exists_odd_den_state hrec
+  let h := (T N).den.totient
+  have hh : 0 < h := Nat.totient_pos.mpr (T N).den_pos
+  refine ⟨h, N, hh, ?_⟩
+  exact tailShift_integral_add hrec
+    (tailShift_integral_totient_of_odd_den hrec N hodd)
+
+/-! ## Real tail orbits -/
+
+/-- Real-valued version of the dyadic tail recurrence. -/
+def RealDyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℝ) : Prop :=
+  ∀ N, T (N + 1) = 2 * T N - g (N + 1)
+
+/-- Difference between two real tail states separated by `h` steps. -/
+def realTailShift (T : ℕ → ℝ) (h N : ℕ) : ℝ :=
+  T (N + h) - T N
+
+/-- A real number is integral when it is the cast of an integer. -/
+def RealIntegral (x : ℝ) : Prop :=
+  ∃ z : ℤ, x = z
+
+/-- Rational orbit with prescribed initial state and integer digits. -/
+def rationalDyadicOrbit (g : ℕ → ℤ) (q : ℚ) : ℕ → ℚ
+  | 0 => q
+  | N + 1 => 2 * rationalDyadicOrbit g q N - g (N + 1)
+
+theorem rationalDyadicOrbit_recurrence (g : ℕ → ℤ) (q : ℚ) :
+    DyadicTailRecurrence g (rationalDyadicOrbit g q) := by
+  intro N
+  rfl
+
+/-- A real recurrence with rational initial state is the real cast of the
+corresponding rational recurrence at every later index. -/
+theorem realTail_eq_ratCast_rationalDyadicOrbit
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) (q : ℚ)
+    (hzero : T 0 = q) :
+    ∀ N, T N = (rationalDyadicOrbit g q N : ℝ)
+  | 0 => by simpa [rationalDyadicOrbit] using hzero
+  | N + 1 => by
+      rw [hrec N, rationalDyadicOrbit,
+        realTail_eq_ratCast_rationalDyadicOrbit hrec q hzero N]
+      push_cast
+      rfl
+
+/-- Cofinal failure of integral shifts for every fixed positive length. -/
+def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
+  ∀ h, 0 < h → ∀ N₀, ∃ N, N₀ ≤ N ∧
+    ¬RealIntegral (realTailShift T h N)
+
+/-- Cofinal nonintegrality for every fixed positive shift rules out a rational
+initial state: rationality produces one fixed positive shift that is integral
+at every sufficiently late index.  The converse is recorded after the
+pointwise classifier below. -/
+theorem irrational_initial_of_cofinalNonintegralTailShifts
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T)
+    (hescape : CofinalNonintegralTailShifts T) :
+    Irrational (T 0) := by
+  by_contra hnot
+  obtain ⟨q, hq⟩ := exists_rat_of_not_irrational hnot
+  have hcast := realTail_eq_ratCast_rationalDyadicOrbit hrec q hq
+  obtain ⟨h, N₀, hh, hInt⟩ :=
+    exists_eventually_integral_tailShift
+      (rationalDyadicOrbit_recurrence g q)
+  obtain ⟨N, hN, hnon⟩ := hescape h hh N₀
+  obtain ⟨k, rfl⟩ := Nat.exists_eq_add_of_le hN
+  apply hnon
+  obtain ⟨z, hz⟩ := hInt k
+  refine ⟨z, ?_⟩
+  have hzR := congrArg ((↑) : ℚ → ℝ) hz
+  simpa [realTailShift, tailShift, hcast] using hzR
+
+/-- A finite approximation certifies nonintegrality when its error is no
+larger than `R` and the approximation stays farther than `R` from every
+integer. -/
+theorem not_ratIntegral_of_approximation_gap
+    (full approx R : ℚ)
+    (herror : |full - approx| ≤ R)
+    (hgap : ∀ z : ℤ, R < |approx - z|) :
+    ¬ RatIntegral full := by
+  rintro ⟨z, rfl⟩
+  have hle : |approx - (z : ℚ)| ≤ R := by
+    simpa [abs_sub_comm] using herror
+  exact (not_lt_of_ge hle) (hgap z)
+
+/-! ## Exact rationality classification for real dyadic tail orbits -/
+
+/-- Iterating a real dyadic tail recurrence produces the same integer block as
+in the rational orbit. -/
+theorem real_tail_iterate_eq_pow_mul_sub_block
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) (N h : ℕ) :
+    T (N + h) = 2 ^ h * T N - dyadicTailBlock g N h := by
+  induction h with
+  | zero => simp [dyadicTailBlock]
+  | succ h ih =>
+      rw [show N + (h + 1) = (N + h) + 1 by omega, hrec (N + h), ih]
+      simp only [dyadicTailBlock, pow_succ]
+      push_cast
+      ring
+
+/-- A real tail difference is a nonzero integer multiple of its initial state,
+up to the explicit integer block. -/
+theorem realTailShift_eq_scaled_sub_block
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) (N h : ℕ) :
+    realTailShift T h N =
+      ((2 ^ h : ℝ) - 1) * T N - dyadicTailBlock g N h := by
+  rw [realTailShift, real_tail_iterate_eq_pow_mul_sub_block hrec]
+  ring
+
+/-- Exact classifier for an integer-digit dyadic tail orbit: the initial state
+is rational if and only if one positive-length tail difference is integral.
+For a rational state, choose `h` so that the Mersenne multiplier `2^h - 1`
+clears the odd part of its denominator.  Conversely, the block identity has
+nonzero multiplier `2^h - 1`, so one integral shift recovers rationality. -/
+theorem not_irrational_initial_iff_exists_integral_positive_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    ¬ Irrational (T 0) ↔
+      ∃ h N : ℕ, 0 < h ∧ RealIntegral (realTailShift T h N) := by
+  constructor
+  · intro hrat
+    obtain ⟨q, hq⟩ := exists_rat_of_not_irrational hrat
+    have hcast := realTail_eq_ratCast_rationalDyadicOrbit hrec q hq
+    obtain ⟨h, N, hh, hInt⟩ :=
+      exists_eventually_integral_tailShift
+        (rationalDyadicOrbit_recurrence g q)
+    refine ⟨h, N, hh, ?_⟩
+    obtain ⟨z, hz⟩ := hInt 0
+    refine ⟨z, ?_⟩
+    have hzR := congrArg ((↑) : ℚ → ℝ) hz
+    simpa [realTailShift, tailShift, hcast] using hzR
+  · rintro ⟨h, N, hh, z, hz⟩
+    have hpowNat : 1 < 2 ^ h := Nat.one_lt_two_pow hh.ne'
+    have hpowR : (1 : ℝ) < (2 : ℝ) ^ h := by exact_mod_cast hpowNat
+    have hfactor : (2 : ℝ) ^ h - 1 ≠ 0 :=
+      sub_ne_zero.mpr (ne_of_gt hpowR)
+    let qN : ℚ :=
+      ((z + dyadicTailBlock g N h : ℤ) : ℚ) / ((2 : ℚ) ^ h - 1)
+    have hTN : T N = (qN : ℝ) := by
+      rw [realTailShift_eq_scaled_sub_block hrec] at hz
+      dsimp [qN]
+      push_cast
+      field_simp [hfactor]
+      linarith
+    let q0 : ℚ :=
+      (qN + dyadicTailBlock g 0 N) / (2 : ℚ) ^ N
+    have hpow0 : (2 : ℝ) ^ N ≠ 0 := pow_ne_zero _ (by norm_num)
+    have hT0 : T 0 = (q0 : ℝ) := by
+      have hiterate := real_tail_iterate_eq_pow_mul_sub_block hrec 0 N
+      simp only [Nat.zero_add] at hiterate
+      dsimp [q0]
+      push_cast
+      field_simp [hpow0]
+      rw [hTN] at hiterate
+      linarith
+    rw [hT0]
+    exact q0.not_irrational
+
+/-- Equivalent eventual form of the classifier: rationality is exactly the
+existence of a fixed positive shift that is integral at every later index. -/
+theorem not_irrational_initial_iff_exists_eventually_integral_positive_tailShift
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    ¬ Irrational (T 0) ↔
+      ∃ h N : ℕ, 0 < h ∧
+        ∀ k, RealIntegral (realTailShift T h (N + k)) := by
+  constructor
+  · intro hrat
+    obtain ⟨q, hq⟩ := exists_rat_of_not_irrational hrat
+    have hcast := realTail_eq_ratCast_rationalDyadicOrbit hrec q hq
+    obtain ⟨h, N, hh, hInt⟩ :=
+      exists_eventually_integral_tailShift
+        (rationalDyadicOrbit_recurrence g q)
+    refine ⟨h, N, hh, fun k => ?_⟩
+    obtain ⟨z, hz⟩ := hInt k
+    refine ⟨z, ?_⟩
+    have hzR := congrArg ((↑) : ℚ → ℝ) hz
+    simpa [realTailShift, tailShift, hcast] using hzR
+  · rintro ⟨h, N, hh, hInt⟩
+    exact
+      (not_irrational_initial_iff_exists_integral_positive_tailShift hrec).2
+        ⟨h, N, hh, hInt 0⟩
+
+/-- Exact irrationality normal form: an integer-digit dyadic tail starts at an
+irrational value exactly when none of its positive-length tail differences is
+an integer. -/
+theorem irrational_initial_iff_all_positive_tailShifts_nonintegral
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    Irrational (T 0) ↔
+      ∀ h : ℕ, 0 < h → ∀ N : ℕ,
+        ¬ RealIntegral (realTailShift T h N) := by
+  constructor
+  · intro hirr h hh N hInt
+    exact
+      (not_irrational_initial_iff_exists_integral_positive_tailShift hrec).2
+        ⟨h, N, hh, hInt⟩ hirr
+  · intro hnone
+    by_contra hrat
+    obtain ⟨h, N, hh, hInt⟩ :=
+      (not_irrational_initial_iff_exists_integral_positive_tailShift hrec).1 hrat
+    exact hnone h hh N hInt
+
+/-- Exact cofinal form of the irrationality classifier.  For an integer-digit
+dyadic tail recurrence, irrationality of the initial state is equivalent to
+finding, beyond every basepoint, a nonintegral tail difference of each fixed
+positive length. -/
+theorem irrational_initial_iff_cofinalNonintegralTailShifts
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    Irrational (T 0) ↔ CofinalNonintegralTailShifts T := by
+  constructor
+  · intro hirr h hh N₀
+    refine ⟨N₀, le_rfl, ?_⟩
+    exact
+      (irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1
+        hirr h hh N₀
+  · exact irrational_initial_of_cofinalNonintegralTailShifts hrec
 
 end ErdosProblems.Erdos251

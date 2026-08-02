@@ -1009,6 +1009,19 @@ theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
     simpa [mersenneCylinderStage, Function.comp_def] using hcont
   exact tendsto_nhds_unique hcont' tendsto_volume_mersenneCylinderStage_one
 
+/-- The natural ambient interval has strictly more than unit volume.  Thus
+`volume_mersenneAchievementSet = 1` is an absolute measure statement, not a
+claim that the Mersenne achievement set has full measure in its convex hull. -/
+theorem volume_mersenneAchievementSet_lt_volume_ambientInterval :
+    volume mersenneAchievementSet <
+      volume (Set.Icc (0 : ℝ) (mersenneTail 0)) := by
+  have hone : (1 : ℝ) < mersenneTail 0 := by
+    rw [mersenneTail_eq_weight_add]
+    norm_num [mersenneWeight]
+    exact mersenneTail_pos 1
+  rw [volume_mersenneAchievementSet, Real.volume_Icc, sub_zero]
+  exact ENNReal.one_lt_ofReal.mpr hone
+
 /-! ## Exact greedy recurrences -/
 
 /-- Real greedy residual after processing exponents `1, ..., n`. -/
@@ -2635,10 +2648,9 @@ noncomputable def greedyMersenneSecondChannelPhase (n : ℕ) : ℝ :=
     (2 * greedyMersenneRemainder (1 / 2 : ℝ) n
       - ((1 : ℝ) / 2) ^ n)
 
-/-- The existing skipped-branch two-channel cap is exactly the one-sided
-second-channel phase inequality `φ_n ≤ 1 / 6`.  No skip hypothesis is needed
-for this algebraic equivalence; the arithmetic producer is proving the
-inequality at every actual skipped rank. -/
+/-- The two-channel cap is exactly the one-sided phase inequality
+`greedyMersenneSecondChannelPhase n ≤ 1 / 6`.  This is an algebraic
+equivalence and assumes no greedy branch decision. -/
 theorem greedyMersenneSecondChannelPhase_le_one_six_iff_twoChannelCap
     (n : ℕ) :
     greedyMersenneSecondChannelPhase n ≤ 1 / 6 ↔
@@ -2674,9 +2686,8 @@ theorem greedyMersenneSecondChannelPhase_le_one_six_iff_twoChannelCap
     rw [← sub_nonpos, hid]
     exact mul_nonpos_of_nonneg_of_nonpos hscale.le hnonpos
 
-/-- Exact rational model of the second-channel phase.  The unresolved
-separation producer is arithmetic over `ℚ`; real analysis is needed only by
-its already-landed consumer. -/
+/-- Rational form of the second-channel phase.  Its branch arithmetic can be
+proved over `ℚ` and then transferred to the real coordinate below. -/
 def greedyMersenneSecondChannelPhaseRat (n : ℕ) : ℚ :=
   (4 : ℚ) ^ n *
     (2 * greedyMersenneRemainderRat (1 / 2 : ℚ) n
@@ -2847,10 +2858,9 @@ def HalfSecondChannelSeparatedRat (n : ℕ) : Prop :=
   (1 / 6 : ℚ) + (37 / 56 : ℚ) * ((1 : ℚ) / 2) ^ n
     ≤ |greedyMersenneSecondChannelPhaseRat n - 1 / 3|
 
-/-- Avoiding the much simpler open unit interval already implies the exact
-shrinking-hole certificate from rank two onward.  Thus a global arithmetic
-proof may target the dichotomy `φ_n ≤ 0 ∨ 1 ≤ φ_n`; no estimate near the
-moving boundary of the original hole is then required. -/
+/-- From rank two onward, avoiding the open unit interval implies the exact
+shrinking-hole separation condition.  This is only a sufficient reduction:
+the theorem does not prove that the actual phase orbit avoids `(0, 1)`. -/
 theorem halfSecondChannelSeparatedRat_of_outside_unit
     {n : ℕ} (hn : 2 ≤ n)
     (hout :
@@ -2872,6 +2882,13 @@ theorem halfSecondChannelSeparatedRat_of_outside_unit
     nlinarith
   · rw [abs_of_nonneg (by linarith)]
     nlinarith
+
+/-!
+The recurrence and predecessor windows above identify an exact arithmetic
+frontier, but they do not rule out visits to `(0, 1)`.  Consequently they do
+not prove that one half is absent from the Mersenne achievement set and do not
+settle Erdős #257.
+-/
 
 instance (n : ℕ) : Decidable (HalfSecondChannelSeparatedRat n) :=
   by
@@ -3282,5 +3299,7 @@ theorem crossedBoundary_forceDepth_gt_iff
     {N v : ℕ} (hN : 1 < N) :
     N < 2 * N - v - 1 ↔ v < N - 1 := by
   omega
+
+#print axioms volume_mersenneAchievementSet_lt_volume_ambientInterval
 
 end Erdos249257

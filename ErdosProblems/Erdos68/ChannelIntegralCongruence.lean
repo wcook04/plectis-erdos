@@ -13,8 +13,22 @@ import Mathlib.Tactic.Ring
 /-!
 # Integral channel congruence for Erdős problem 68
 
-This module isolates the support-independent congruence between each channel
-numerator and the factorial moment.
+This module compares a channel numerator with the corresponding factorial
+moment modulo `d! - 1`.  The congruence holds for every support index, so
+simultaneous cancellation of the channels `2, ..., D` makes their least common
+multiple divide the factorial moment.
+
+The second part estimates that least common multiple.  Consecutive numbers
+`m! - 1` are compared through their pairwise gcds; this gives an explicit
+finite lower bound after the gcd losses are counted.  Consequently, if a
+positive integer `M` is divisible by the channel lcm and is smaller than
+`(R+1)! - 1`, then `R` must grow at least cubically along `D = 2t^2`.  A later
+estimate improves the explicit constant to `R+1 > (3/2)t^3` for `t >= 2^32`.
+
+All conclusions after the congruence theorem retain these stated hypotheses.
+In particular, this file does not construct `M` or `R` from the series in
+Erdős problem 68, prove that its channels vanish, or decide the rationality of
+that series.
 -/
 
 namespace Erdos68
@@ -126,8 +140,8 @@ theorem exists_channelCorrection
     _ = factorialMoment coeff index - (((d.factorial : ℤ) - 1) * z) := by rw [hz]
     _ = factorialMoment coeff index + ((d.factorial : ℤ) - 1) * (-z) := by ring
 
-/-- In particular, every zero-moment support variation changes a normalized
-channel contribution by an integer only. -/
+/-- If the factorial moment is zero, the channel numerator is an integral
+multiple of `d! - 1`. -/
 theorem channelNumerator_eq_modulus_mul_of_moment_zero
     {ι : Type*} [Fintype ι]
     (coeff : ι → ℤ) (index : ι → ℕ)
@@ -138,7 +152,7 @@ theorem channelNumerator_eq_modulus_mul_of_moment_zero
   rcases exists_channelCorrection coeff index hd with ⟨k, hk⟩
   exact ⟨k, by simpa [hmoment] using hk⟩
 
-/-! ## Product versus lcm with explicit collision cost -/
+/-! ## Product versus lcm with explicit gcd loss -/
 
 /-- Product of all pairwise gcd collision terms in a list, with each
 unordered pair counted once. -/
@@ -171,8 +185,8 @@ theorem gcd_list_prod_dvd_prod_gcd (a : ℕ) (values : List ℕ) :
         (mul_dvd_mul_left (Nat.gcd a b) ih)
 
 /-- The product of a finite list divides its lcm times the product of all
-pairwise gcds.  This is the exact bookkeeping lemma behind the factorial-gap
-segment bound. -/
+pairwise gcds.  This records precisely the gcd loss used in the
+factorial-gap estimate below. -/
 theorem list_prod_dvd_lcm_mul_pairwiseGCDProduct (values : List ℕ) :
     values.prod ∣ listLCM values * pairwiseGCDProduct values := by
   induction values with
@@ -237,12 +251,12 @@ theorem gcd_factorial_sub_one_dvd_descFactorial_sub_one
       m.factorial * n.descFactorial (n - m) = n.factorial := by
     have h := Nat.factorial_mul_descFactorial hk
     simpa [Nat.sub_sub_self (Nat.le_of_lt hmn)] using h
-  have hbridge :
+  have hfactorMod :
       n.factorial ≡ n.descFactorial (n - m) [MOD g] := by
     simpa [hfactorial] using
       hmMod.mul_right (n.descFactorial (n - m))
   have hQMod : n.descFactorial (n - m) ≡ 1 [MOD g] :=
-    hbridge.symm.trans hnMod
+    hfactorMod.symm.trans hnMod
   have hQpos : 1 ≤ n.descFactorial (n - m) := by
     exact Nat.one_le_iff_ne_zero.mpr
       (Nat.ne_of_gt (Nat.descFactorial_pos.mpr hk))
@@ -514,9 +528,8 @@ theorem factorialGapSegment_prod_le_channelLCM_mul_pow_choose
   simpa [pairDistanceExponent_eq_choose] using
     factorialGapSegment_prod_le_channelLCM_mul_pow hkD
 
-/-- Exact finite lower constraint on the channel lcm.  Combining the
-smallest gap in the final `k`-block with the collision upper bound gives a
-pre-asymptotic form of the one-kernel radius obstruction. -/
+/-- Exact finite lower constraint on the channel lcm.  It combines the
+smallest gap in the final `k`-block with the pairwise-gcd upper bound. -/
 theorem factorialGapSegment_base_pow_le_channelLCM_mul_pow_choose
     {D k : ℕ} (hkD : k < D) :
     ((D + 1 - k).factorial - 1) ^ k ≤
@@ -528,9 +541,9 @@ theorem factorialGapSegment_base_pow_le_channelLCM_mul_pow_choose
     _ ≤ channelLCM D * D ^ ((k + 1).choose 3) :=
       factorialGapSegment_prod_le_channelLCM_mul_pow_choose hkD
 
-/-- Arithmetic bridge used by any absolute-tail one-kernel argument: if a
-positive moment is a multiple of the channel lcm and is smaller than the
-radius factorial gap, then the channel lcm is smaller than that gap too. -/
+/-- If a positive integer is a multiple of the channel lcm and is smaller
+than the factorial gap at `R+1`, then the channel lcm is smaller than that gap
+as well. -/
 theorem channelLCM_lt_radiusFactorial_sub_one_of_dvd_of_lt
     {D M R : ℕ}
     (hMpos : 0 < M)
@@ -539,8 +552,8 @@ theorem channelLCM_lt_radiusFactorial_sub_one_of_dvd_of_lt
     channelLCM D < (R + 1).factorial - 1 :=
   lt_of_le_of_lt (Nat.le_of_dvd hMpos hdiv) hsmall
 
-/-- Fully explicit pre-asymptotic radius constraint obtained by combining
-the channel divisibility/tail hypothesis with the final-block lcm bound. -/
+/-- Finite radius constraint obtained by combining divisibility by the
+channel lcm with the final-block estimate. -/
 theorem factorialGapSegment_base_pow_lt_radiusFactorial_mul_pow
     {D k M R : ℕ}
     (hkD : k < D)
@@ -637,10 +650,9 @@ theorem log_factorial_sub_one_upper_bound
   have hlog := Real.log_le_log hgapPos hcast
   simpa [Real.log_pow] using hlog
 
-/-- Explicit Stirling-strengthened finite radius obstruction.  This removes
-all factorials and logarithms of factorial gaps from the exact bridge; the
-only remaining optimization is the elementary choice of `k` and comparison
-of the two sides. -/
+/-- Explicit finite radius constraint after applying the stated Stirling
+bounds.  The conclusion contains no factorials or logarithms of factorial
+gaps. -/
 theorem factorialGapSegment_stirling_radius_constraint
     {D k M R : ℕ}
     (hkD : k < D)
@@ -700,10 +712,7 @@ theorem radiusOptimizationWindow_lt
   rw [radiusOptimizationWindow, Nat.sqrt_lt']
   nlinarith
 
-/-- The exact Stirling constraint at the asymptotically optimal final-block
-length `⌊√(2D)⌋`.  This is the formal endpoint of the elementary finite
-argument; converting it to a little-o statement is now a pure asymptotic
-analysis layer. -/
+/-- The Stirling constraint at the final-block length `⌊√(2D)⌋`. -/
 theorem optimized_stirling_radius_constraint
     {D M R : ℕ}
     (hD : 3 ≤ D)
@@ -854,9 +863,8 @@ theorem square_subsequence_radius_cubic_of_log_constraint
   rw [hlogD] at hcollision
   nlinarith
 
-/-- A nonzero multiple of the channel lcm cannot fit below a factorial radius
-that is subcubic on the square subsequence `D = 2t²`.  This is the first
-fully explicit asymptotic consequence of the factorial-gap collision method. -/
+/-- On `D = 2t²`, the divisibility and factorial-gap hypotheses force the
+explicit lower bound `t³ < 8(R+1)`. -/
 theorem square_subsequence_radius_cubic_lower
     {t M R : ℕ} (ht : 4096 ≤ t)
     (hMpos : 0 < M)
@@ -872,9 +880,8 @@ theorem square_subsequence_radius_cubic_lower
       (D := 2 * t ^ 2) (k := 2 * t) hkD hMpos hdiv hsmall
   simpa [Nat.cast_mul] using hconstraint
 
-/-- Sequence-level no-go: under the channel-lcm and factorial-radius
-hypotheses at every sufficiently large square-subsequence parameter, the
-upper bound `8(R(t)+1) ≤ t³` cannot itself hold eventually. -/
+/-- Under the channel-lcm and factorial-gap hypotheses for every sufficiently
+large `t`, the reverse cubic bound `8(R(t)+1) ≤ t³` cannot hold eventually. -/
 theorem no_eventual_square_subsequence_cubic_upper
     (M R : ℕ → ℕ)
     (hMpos : ∀ t, 4096 ≤ t → 0 < M t)
@@ -1072,8 +1079,8 @@ theorem square_subsequence_radius_three_halves_of_log_constraint
   rw [hlogD] at hcollision
   nlinarith
 
-/-- The channel hypotheses therefore force the explicit near-sharp rational
-constant `R + 1 > (3/2)t³` on `D = 2t²`. -/
+/-- The channel hypotheses force the explicit bound
+`R + 1 > (3/2)t³` on `D = 2t²`. -/
 theorem square_subsequence_radius_three_halves_lower
     {t M R : ℕ} (ht : 2 ^ 32 ≤ t)
     (hMpos : 0 < M)

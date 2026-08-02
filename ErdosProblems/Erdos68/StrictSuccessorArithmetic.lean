@@ -4,14 +4,15 @@ import Mathlib.Tactic
 /-!
 # Erdős #68: strict-successor arithmetic
 
-Problem-owned landing surface for the exact strict-successor recurrence from
-the returned packets.  The theorem here is the arithmetic hinge behind the
-prime endpoint strategy: once the rounding digit is known to lie in its sharp
-interval, divisibility of the strict successor by the current index is
-equivalent to that digit being exactly one.
+Let `N = m Nprev + 1 - b`, with `b` confined to the full rounding interval
+`[-1,m-1]`.  Divisibility of `N` by `m` is then equivalent to the single value
+`b = 1`.  At a dilated index `k p`, divisibility by `p^k` separates further
+into a finite choice of digit slots and one predecessor congruence.  The case
+`k = 2` leaves two explicit branches.
 
-No declaration here proves the unbounded prime escape needed to settle the
-irrationality problem.
+These are local arithmetic equivalences.  They do not show that either branch
+fails at infinitely many primes, which is the global input still needed by
+the prime-endpoint approach to Erdős #68.
 -/
 
 namespace ErdosProblems.Erdos68
@@ -21,7 +22,7 @@ namespace ErdosProblems.Erdos68
 `N = m * Nprev + 1 - b`
 
 with the sharp digit bounds `-1 ≤ b ≤ m - 1` and `m ≥ 3`, then `m ∣ N`
-holds exactly when `b = 1`.  The result is stated over `ℤ` because the packet's
+holds exactly when `b = 1`.  The result is stated over `ℤ` because the
 rounding digit can attain `-1` at the lower endpoint. -/
 theorem dvd_strictSuccessor_iff_roundingDigit_eq_one
     {m N Nprev b : ℤ}

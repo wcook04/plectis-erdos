@@ -3,7 +3,16 @@ import Mathlib.Tactic
 /-!
 # Erdős #269: bounded-radix tail escape
 
-Generic real affine-tail rigidity for the bounded one-block radix word.
+Consider an affine orbit
+`x (n + 1) = P n * x n - c n` with integral `c n` and radices
+`2 ≤ P n ≤ 30`.  If the orbit is eventually always within `1/31` of an
+integer, the corresponding errors grow by at least a factor of two at every
+step; hence one of the states is itself integral.  Otherwise the orbit is at
+least `1/31` from every integer at arbitrarily late indices.
+
+The integral state in the first alternative need not be zero.  The theorem
+also makes no assertion that the separated indices are eventually all
+indices, have positive density, or have unbounded distance from the integers.
 -/
 
 namespace ErdosProblems.Erdos269
@@ -75,8 +84,8 @@ theorem affine_nearInteger_error_mul
   ring
 
 /-- A real affine orbit with integral digits and radices in `[2,30]` either
-hits an integer or returns cofinally often to distance at least `1/31` from
-every integer. -/
+has an integral state or returns cofinally often to distance at least `1/31`
+from every integer. -/
 theorem boundedRadix_zero_or_cofinal_far
     (P : ℕ → ℕ) (c : ℕ → ℤ) (x : ℕ → ℝ)
     (hPlo : ∀ a, 2 ≤ P a)

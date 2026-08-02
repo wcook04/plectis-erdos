@@ -1,43 +1,3 @@
-import ErdosProblems.Erdos249.FiniteEulerSieve
-import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
-import ErdosProblems.Erdos249.CyclotomicAnchoredKill
-import ErdosProblems.Erdos249.PeriodMultipleEscape
-import ErdosProblems.Erdos249.RankOneSubrankObstruction
-import ErdosProblems.Erdos249.TotientStrictPrimeEscape
-import ErdosProblems.Erdos249.LcmJumpKillFromDiagonal
-import ErdosProblems.Erdos257.HalfCounterexampleFrontier
-import ErdosProblems.Erdos257.MersenneSubseriesRigidity
-import ErdosProblems.Erdos243.ReciprocalTailRigidity
-import ErdosProblems.Erdos243.FiniteHorizonResidue
-import ErdosProblems.Erdos243.DynamicCancellation
-import ErdosProblems.Erdos243.SparseResetRecovery
-import ErdosProblems.Erdos251.PrimeGapDyadicTail
-import ErdosProblems.Erdos257.SquarefreeSupportIncidence
-import ErdosProblems.Erdos68.CanonicalFactorialDigits
-import ErdosProblems.Erdos68.ChannelBreakpointRigidity
-import ErdosProblems.Erdos68.ChannelIntegralCongruence
-import ErdosProblems.Erdos68.FactorialCarry
-import ErdosProblems.Erdos68.FactorialChannelCertificate
-import ErdosProblems.Erdos68.PrimeUnitTranslator
-import ErdosProblems.Erdos68.StrictSuccessorArithmetic
-import ErdosProblems.Erdos68.FactorialZeroPlateau
-import ErdosProblems.Erdos68.FiniteDefectAutomaton
-import ErdosProblems.Erdos68.DivisorFactorialCentre
-import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
-import ErdosProblems.Erdos68.PrimeZeroBranch
-import ErdosProblems.Erdos269.ThreePrimeRunningLcm
-import ErdosProblems.Erdos269.ResidueEscape
-import ErdosProblems.Erdos269.RestrictedFloorSum
-import ErdosProblems.Erdos269.BoundedRadixTailEscape
-import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
-import ErdosProblems.Erdos269.CarryLiftExtinction
-import ErdosProblems.Erdos269.WeightedPhaseCarry
-import ErdosProblems.Erdos1049.RationalBaseLambert
-import ErdosProblems.Erdos1049.RationalPadeArithmetic
-import ErdosProblems.Erdos1049.ZudilinHeightRegion
-import ErdosProblems.Erdos1049.HermitePadeNoGo
-import ErdosProblems.Erdos1049.ZudilinConeArithmetic
-import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
 
 /-!
 # Problem-centric Erdős formalization root
@@ -46,3 +6,49 @@ This root is intentionally separate from the historical `Erdos249257`
 namespace. New research is grouped by the actual problem and mathematical
 object without forcing a repository-wide rename.
 -/
+
+import ErdosProblems.Erdos1041.NewtonFlowRaySeparation
+import ErdosProblems.Erdos1049.HermitePadeNoGo
+import ErdosProblems.Erdos1049.RationalBaseLambert
+import ErdosProblems.Erdos1049.RationalPadeArithmetic
+import ErdosProblems.Erdos1049.ZudilinConeArithmetic
+import ErdosProblems.Erdos1049.ZudilinHeightRegion
+import ErdosProblems.Erdos243.DynamicCancellation
+import ErdosProblems.Erdos243.FeedbackRealizability
+import ErdosProblems.Erdos243.FiniteHorizonResidue
+import ErdosProblems.Erdos243.GlobalLcmHeight
+import ErdosProblems.Erdos243.LcmCriticalBoundary
+import ErdosProblems.Erdos243.PrimitivePrefixRigidity
+import ErdosProblems.Erdos243.ReciprocalTailRigidity
+import ErdosProblems.Erdos243.SparseResetRecovery
+import ErdosProblems.Erdos243.WeightedCRTRepair
+import ErdosProblems.Erdos249.CyclotomicAnchoredKill
+import ErdosProblems.Erdos249.FiniteEulerSieve
+import ErdosProblems.Erdos249.LcmJumpKillFromDiagonal
+import ErdosProblems.Erdos249.PeriodMultipleEscape
+import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
+import ErdosProblems.Erdos249.RankOneSubrankObstruction
+import ErdosProblems.Erdos249.TotientStrictPrimeEscape
+import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos257.HalfCounterexampleFrontier
+import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Erdos257.SquarefreeSupportIncidence
+import ErdosProblems.Erdos269.BoundedRadixTailEscape
+import ErdosProblems.Erdos269.CarryLiftExtinction
+import ErdosProblems.Erdos269.ResidueEscape
+import ErdosProblems.Erdos269.RestrictedFloorSum
+import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
+import ErdosProblems.Erdos269.ThreePrimeRunningLcm
+import ErdosProblems.Erdos269.WeightedPhaseCarry
+import ErdosProblems.Erdos68.CanonicalFactorialDigits
+import ErdosProblems.Erdos68.ChannelBreakpointRigidity
+import ErdosProblems.Erdos68.ChannelIntegralCongruence
+import ErdosProblems.Erdos68.DivisorFactorialCentre
+import ErdosProblems.Erdos68.EndpointWeightedPrivateSupport
+import ErdosProblems.Erdos68.FactorialCarry
+import ErdosProblems.Erdos68.FactorialChannelCertificate
+import ErdosProblems.Erdos68.FactorialZeroPlateau
+import ErdosProblems.Erdos68.FiniteDefectAutomaton
+import ErdosProblems.Erdos68.PrimeUnitTranslator
+import ErdosProblems.Erdos68.PrimeZeroBranch
+import ErdosProblems.Erdos68.StrictSuccessorArithmetic

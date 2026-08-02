@@ -2,21 +2,25 @@ import ErdosProblems.Erdos68.CanonicalFactorialDigits
 import Mathlib.Data.Rat.Floor
 
 /-!
-# Erdős #68: finite residual-centre defect automaton
+# Erdős problem 68: ceiling defect recurrence
 
-The returned packet introduces a finite rational centre `F_m`, its ceiling
-`Z_m`, gap `delta_m = Z_m - F_m`, and an integer code
+Let `F_m` be a rational sequence, let `Z_m = ceil(F_m)`, and put
+`delta_m = Z_m - F_m`.  For an integer sequence `C_m`, define
 
 `q_m = m Z_(m-1) + 1 - C_m - Z_m`.
 
-This module isolates and kernel-checks the complete algebraic transport from
-the centre recurrence
+If the sequences satisfy
 
 `F_m = m F_(m-1) + 1 + epsilon_m - C_m`
 
-to the floor code and gap recurrence.  The theorem is stated for arbitrary
-exact rational centre and coefficient sequences, so the later series-specific
-finite-sum identity can plug into it without repeating any rounding argument.
+then `0 <= delta_m < 1`, the integer `q_m` is the floor of
+`m delta_(m-1) - epsilon_m`, and subtracting that floor gives the exact
+recurrence for `delta_m`.  The final two theorems specialize
+`epsilon_m` to `1/(m!-1)`.
+
+The hypotheses are abstract: this file does not construct the finite centres
+or coefficients attached to Erdős problem 68, prove that they satisfy the
+displayed recurrence, or derive a finite-state orbit or irrationality result.
 -/
 
 namespace ErdosProblems.Erdos68
@@ -34,7 +38,7 @@ coefficient sequence. -/
 def centreDefectCode (F : ℕ → ℚ) (C : ℕ → ℤ) (m : ℕ) : ℤ :=
   (m : ℤ) * centreCeil F (m - 1) + 1 - C m - centreCeil F m
 
-/-- The packet's explicit factorial error term. -/
+/-- The factorial error term `1 / (m! - 1)`. -/
 def factorialEpsilon (m : ℕ) : ℚ :=
   1 / ((m.factorial : ℚ) - 1)
 

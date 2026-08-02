@@ -3,10 +3,20 @@ import Mathlib.Data.Finsupp.Basic
 import Mathlib.Tactic
 
 /-!
-# Erdős 68: factorial-channel certificates
+# Erdős #68: factorial-channel certificates
 
-This module formalizes the floor-factorial channel arithmetic and the first
-exact finite subunit certificate from the primitive-cofactor return.
+For each divisor channel `d`, the weight
+
+`i! / (d!)^(⌊i/d⌋)`
+
+is integral, and consecutive weights obey the factorial recurrence except at
+indices divisible by `d`.  The coefficient vector `λ = 2e₃ - e₄` then gives
+an explicit finite certificate: its channel values and factorial moment can be
+computed exactly, and the stated elementary enclosure for the remaining tail
+places its residual strictly between `-1` and `0`.
+
+This is a single finite certificate.  It does not supply a cofinal family of
+nonzero residuals or prove irrationality of the Erdős #68 series.
 -/
 
 namespace ErdosProblems.Erdos68
@@ -86,8 +96,8 @@ theorem channelEvent_eq_zero_of_not_dvd
     exact (Nat.mul_div_assoc n hdenDvd).symm
   simp [channelEvent, hweight]
 
-/-- The first exact primitive-cofactor certificate, supported on indices
-`3,4` with coefficients `2,-1`. -/
+/-- The coefficient vector supported on indices `3,4` with coefficients
+`2,-1`. -/
 noncomputable def lambda34 : ℕ →₀ ℤ :=
   Finsupp.single 3 2 - Finsupp.single 4 1
 
@@ -141,8 +151,8 @@ theorem lambda34_channel_ge_five
 def lambda34ResidualOfTail (theta : ℚ) : ℚ :=
   9 / 115 - 12 * theta
 
-/-- The elementary factorial-tail enclosure from the return gives a strict
-nonzero subunit residual for the `(3,4)` certificate. -/
+/-- The stated elementary factorial-tail enclosure gives a strict nonzero
+subunit residual for the `(3,4)` certificate. -/
 theorem lambda34_residual_bounds
     (theta : ℚ)
     (hlower : 1 / 119 < theta)

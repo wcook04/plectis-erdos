@@ -4,14 +4,23 @@ import Mathlib.Data.Nat.Factorial.Basic
 /-!
 # Channel breakpoint rigidity for Erdős problem 68
 
-This module records an exact obstruction for the primitive channel-determinant
-route.  Proof-bearing declarations are added after the claimed-path connection
-card has been consumed.
+For a finite coefficient family whose indices all lie in one quotient band
+`[k d, (k + 1) d)`, every factorial coefficient is the same fixed multiple
+`(d!)^k` of its `d`-channel coefficient.  Hence cancellation of that channel
+forces cancellation of the factorial moment.  In the first band, a nonzero
+factorial moment together with channel cancellation requires at least one
+support index to reach the breakpoint `2d`.
+
+The namespace `Erdos68` is the finite-family presentation; it is distinct
+from the Finsupp presentation in `ErdosProblems.Erdos68`.  No declaration
+constructs a cancelling coefficient family, treats several channels
+simultaneously, estimates a residual, or decides rationality of the #68
+series.
 -/
 
 namespace Erdos68
 
-/-- The factorial moment whose nonvanishing excludes rank-one tail identities. -/
+/-- Factorial-weighted sum of a finite coefficient family. -/
 def factorialMoment {ι : Type*} [Fintype ι] (coeff : ι → ℤ) (index : ι → ℕ) : ℤ :=
   ∑ j, coeff j * (index j).factorial
 
@@ -77,9 +86,8 @@ theorem factorialMoment_eq_factorial_pow_mul_channelNumerator_band
   rw [hcast]
   ac_rfl
 
-/-- Channel annihilation inside one quotient band always has zero factorial
-moment, hence cannot satisfy the non-rank-one condition of the #68 closing
-criterion. -/
+/-- Channel cancellation inside one quotient band forces the corresponding
+factorial moment to vanish. -/
 theorem factorialMoment_eq_zero_of_channelNumerator_eq_zero_band
     {ι : Type*} [Fintype ι] (coeff : ι → ℤ) (index : ι → ℕ) (d k : ℕ)
     (hlo : ∀ j, k * d ≤ index j) (hhi : ∀ j, index j < (k + 1) * d)
@@ -88,8 +96,8 @@ theorem factorialMoment_eq_zero_of_channelNumerator_eq_zero_band
   rw [factorialMoment_eq_factorial_pow_mul_channelNumerator_band
     coeff index d k hlo hhi, hchannel, mul_zero]
 
-/-- First-band channel annihilation is necessarily rank-one-degenerate: the
-factorial moment is `d!` times the `d`-channel numerator. -/
+/-- In the first quotient band, the factorial moment is `d!` times the
+`d`-channel numerator. -/
 theorem factorialMoment_eq_factorial_mul_channelNumerator_firstBand
     {ι : Type*} [Fintype ι] (coeff : ι → ℤ) (index : ι → ℕ) (d : ℕ)
     (hlo : ∀ j, d ≤ index j) (hhi : ∀ j, index j < 2 * d) :
@@ -108,8 +116,7 @@ theorem factorialMoment_eq_factorial_mul_channelNumerator_firstBand
   rw [hcast]
   ac_rfl
 
-/-- Consequently, a determinant certificate with nonzero factorial moment must
-place some support index at or beyond the first breakpoint `2d`. -/
+/-- First-band channel cancellation forces the factorial moment to vanish. -/
 theorem factorialMoment_eq_zero_of_channelNumerator_eq_zero_firstBand
     {ι : Type*} [Fintype ι] (coeff : ι → ℤ) (index : ι → ℕ) (d : ℕ)
     (hlo : ∀ j, d ≤ index j) (hhi : ∀ j, index j < 2 * d)
@@ -118,7 +125,8 @@ theorem factorialMoment_eq_zero_of_channelNumerator_eq_zero_firstBand
   rw [factorialMoment_eq_factorial_mul_channelNumerator_firstBand
     coeff index d hlo hhi, hchannel, mul_zero]
 
-/-- Contrapositive form used to prune primitive-cofactor searches. -/
+/-- If every support index is at least `d`, channel cancellation and a nonzero
+factorial moment force some support index to be at least `2d`. -/
 theorem exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero
     {ι : Type*} [Fintype ι] [Nonempty ι]
     (coeff : ι → ℤ) (index : ι → ℕ) (d : ℕ)

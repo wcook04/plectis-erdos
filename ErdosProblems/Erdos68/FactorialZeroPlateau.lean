@@ -4,21 +4,47 @@ import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 import Mathlib.NumberTheory.Real.Irrational
 
 /-!
-# Erdős #68: rational-grid zero plateaux
+# Erdős #68: factorial-grid plateaux and the exact carry criterion
 
-Exact floor arithmetic behind the fact that a zero-cylinder hit persists
-along a rational factorial grid until its first crossing.
+Let `S` be the factorial-gap series and let `H_n` be its rational prefix
+through index `n`.  The integer
+
+`strictFacTop H_n n = floor(n! H_n) + 1`
+
+is the first point of the `1 / n!` grid above `H_n`.  The first part of this
+file proves that a rational value `S = a / q` forces this grid point to equal
+the cleared numerator `(n! / q) a` once `n!` clears `q`.  In particular,
+rationality forces explicit prime-power divisibility at suitable indices.
+
+The second part compares consecutive grid points.  Their exact recurrence
+has an integer carry `factorialGapStepCarry m`; rationality forces this carry
+to be one eventually, and eventual unit carries conversely make the
+normalized grid points stationary.  Thus the series is irrational exactly
+when non-unit carries occur cofinally.  Exact computations at indices
+`51`, `60`, and `67` give finite denominator lower bounds, but not the
+required cofinal family.
+
+The remaining theorems reformulate individual divisibility hits, doubled
+prime square hits, and rational first crossings.  They also record two
+generic coboundary lemmas and an independent factorial interval inequality.
+
+The central open point is explicit: this file does not prove cofinally many
+non-unit carries or strict-successor divisibility failures.  Consequently it
+does not prove the irrationality of the factorial-gap series and does not
+solve Erdős #68.
 -/
 
 namespace ErdosProblems.Erdos68
+
+/-! ## Factorial grid arithmetic -/
 
 /-- Strict successor of the factorially scaled prefix. -/
 noncomputable def strictFacTop (x : ℝ) (n : ℕ) : ℤ :=
   ⌊(n.factorial : ℝ) * x⌋ + 1
 
 /-- Computable rational form of `strictFacTop`, used for exact finite
-certificates without changing the real statement consumed by the analytic
-reduction. -/
+certificates while retaining the real-valued statement needed for the
+series. -/
 def strictFacTopRat (x : ℚ) (n : ℕ) : ℤ :=
   ⌊(n.factorial : ℚ) * x⌋ + 1
 
@@ -54,7 +80,7 @@ theorem strictFacTop_div_factorial_bounds (x : ℝ) (n : ℕ) :
           (n.factorial : ℝ) := by
             field_simp
 
-/-- Algebraic core of the grid criterion.  If `q*S` is obtained from
+/-- Algebraic form of the grid crossing.  If `q*S` is obtained from
 `q*H = k+r` by adding the scaled tail `u`, then the next `q⁻¹` grid point
 lies below `S` exactly when the fractional pieces cross one. -/
 theorem rationalGridPoint_le_iff_crosses
@@ -122,8 +148,8 @@ theorem factorialGrid_plateau
 /-- If a rational target with denominator `q` lies above a prefix by less
 than one factorial grid unit, then at every dilated prime index `k p`
 whose factorial clears `q`, the strict factorial successor is divisible by
-`p^k`.  This is the exact rationality-to-prime-power bridge used by the
-Erdős #68 miss criterion. -/
+`p^k`.  Thus a rational value of the series imposes a prime-power
+divisibility condition on the strict factorial successor. -/
 theorem prime_pow_dvd_strictFacTop_of_rational_target
     {p k q : ℕ} {a : ℤ}
     (hp : p.Prime)
@@ -201,6 +227,8 @@ theorem firstExit_carry_rigid
   have hfloor2 : ⌊δ⌋ < 2 := Int.floor_lt.mpr hδ2
   omega
 
+/-! ## Exact prefixes and prime-power divisibility -/
+
 /-- Finite geometric peeling of a factorial-gap denominator.  The first `K`
 terms are pure powers of `x`; all non-factorial denominator content is
 confined to the final residual. -/
@@ -251,7 +279,7 @@ theorem factorialGapPrefix_cast (n : ℕ) :
   push_cast
   rfl
 
-/-- A rational value for the literal Erdős #68 series forces the expected
+/-- A rational value for the Erdős #68 series forces the expected
 `p^k` divisibility of the actual prefix strict successor at every
 factorial index `k p` clearing the denominator and coprime to it. -/
 theorem prime_pow_dvd_strictFacTop_factorialGapPrefix_of_series_eq_rat
@@ -305,7 +333,7 @@ theorem prime_pow_dvd_strictFacTop_factorialGapPrefix_of_series_eq_rat
     hp hq hqn hpq hH hscaled
 
 /-- Once `n!` clears a displayed rational denominator, the strict successor
-of the literal Erdős #68 prefix is exactly the corresponding cleared
+of the Erdős #68 prefix is exactly the corresponding cleared
 rational grid integer. -/
 theorem strictFacTop_factorialGapPrefix_eq_cleared_rational
     {n q : ℕ} {a : ℤ}
@@ -440,7 +468,7 @@ theorem sixty_four_not_dvd_strictFacTop_factorialGapPrefix :
   norm_num [strictFacTopRat, factorialGapPrefix,
     Finset.sum_Icc_succ_top, Rat.floor_def']
 
-/-- The direct certificate engine still reaches the prime index `67`,
+/-- Direct exact computation at the prime index `67` excludes the
 excluding the prime-divisibility pattern forced by rationality there. -/
 theorem sixty_seven_not_dvd_strictFacTop_factorialGapPrefix :
     ¬(67 : ℤ) ∣
@@ -495,6 +523,8 @@ theorem irrational_factorialGapSeries_of_cofinal_prime_power_misses
     hp r.den_pos hqn hpq
   rw [hr, Rat.cast_def]
 
+/-! ## The carry recurrence and the exact irrationality criterion -/
+
 /-- Adding the endpoint `τ` to the actual factorial-gap prefix contributes
 exactly `1 / (τ! - 1)`. -/
 theorem factorialGapPrefix_eq_prev_add
@@ -523,12 +553,12 @@ noncomputable def factorialGapPredecessorGap (m : ℕ) : ℝ :=
       ((factorialGapPrefix (m - 1) : ℚ) : ℝ)
 
 /-- The exact rounding carry in the strict-successor recurrence for the
-literal Erdős #68 prefixes. -/
+Erdős #68 prefixes. -/
 noncomputable def factorialGapStepCarry (m : ℕ) : ℤ :=
   -⌊1 + 1 / ((m.factorial : ℝ) - 1) -
       (m : ℝ) * factorialGapPredecessorGap m⌋
 
-/-- The strict factorial successors of consecutive literal prefixes satisfy
+/-- The strict factorial successors of consecutive prefixes satisfy
 an exact radix recurrence with `factorialGapStepCarry` as rounding digit. -/
 theorem strictFacTop_factorialGapPrefix_step
     {m : ℕ} (hm : 2 ≤ m) :
@@ -679,9 +709,9 @@ theorem strictFacTop_factorialGapPrefix_carry_expansion
                 (m.factorial : ℝ) := by
                   rw [hIcc, Finset.sum_insert (by simp)]
 
-/-- The normalized strict successor of the literal prefix converges to the
-literal Erdős #68 series.  This is the analytic bridge that turns an
-eventually stationary normalized carry recurrence into rationality. -/
+/-- The normalized strict successor of the prefix converges to the Erdős #68
+series.  Hence an eventually stationary normalized carry recurrence has the
+series itself as its rational stationary value. -/
 theorem tendsto_strictFacTop_factorialGapPrefix_div_factorial :
     Filter.Tendsto
       (fun n : ℕ =>
@@ -731,7 +761,7 @@ theorem tendsto_strictFacTop_factorialGapPrefix_div_factorial :
       _root_.Erdos68.factorialGapTail_pos hn
     linarith
 
-/-- If the literal Erdős #68 series has a displayed rational value `a / q`,
+/-- If the Erdős #68 series has a displayed rational value `a / q`,
 then every carry after the denominator threshold is exactly one. -/
 theorem factorialGapStepCarry_eq_one_of_series_eq_rat
     {m q : ℕ} {a : ℤ}
@@ -771,7 +801,7 @@ theorem factorialGapStepCarry_eq_one_of_series_eq_rat
   rw [hcurr, hprev, hscale] at hrec
   omega
 
-/-- If the literal carry sequence is eventually one, then the normalized
+/-- If the carry sequence is eventually one, then the normalized
 strict-successor recurrence is eventually constant.  Its independently
 proved limit is the original series, so the series is rational. -/
 theorem not_irrational_factorialGapSeries_of_eventually_unit_carries
@@ -820,8 +850,8 @@ theorem not_irrational_factorialGapSeries_of_eventually_unit_carries
   rw [hseriesEq, ← hr]
   exact Rat.not_irrational r
 
-/-- Exact carry characterization of the only possible rationality
-obstruction: the literal series is non-irrational exactly when its carry
+/-- Exact carry characterization of rationality: the series is
+non-irrational exactly when its carry
 sequence is eventually one. -/
 theorem not_irrational_factorialGapSeries_iff_eventually_unit_carries :
     ¬Irrational _root_.Erdos68.factorialGapSeries ↔
@@ -842,7 +872,7 @@ theorem not_irrational_factorialGapSeries_iff_eventually_unit_carries :
       not_irrational_factorialGapSeries_of_eventually_unit_carries
 
 /-- A single exact non-unit carry at index `m` forces every displayed
-rational denominator of the literal series to be at least `m`. -/
+rational denominator of the series to be at least `m`. -/
 theorem rational_denominator_ge_of_nonunit_carry
     {m q : ℕ} {a : ℤ}
     (hm : 3 ≤ m)
@@ -881,7 +911,7 @@ theorem factorialGapStepCarry_sixty_ne_one :
   rw [hrec]
   ring
 
-/-- Every displayed rational representation of the literal Erdős #68
+/-- Every displayed rational representation of the Erdős #68
 series has denominator at least `51`. -/
 theorem fifty_one_le_rational_denominator
     {q : ℕ} {a : ℤ}
@@ -905,8 +935,8 @@ theorem sixty_le_rational_denominator
   rational_denominator_ge_of_nonunit_carry
     (by norm_num) factorialGapStepCarry_sixty_ne_one hq hseries
 
-/-- The prime-index certificate at `67` gives the strongest currently
-kernel-checked universal lower bound for a displayed rational denominator. -/
+/-- The prime-index certificate at `67` gives the largest universal lower
+bound for a displayed rational denominator proved in this module. -/
 theorem sixty_seven_le_rational_denominator
     {q : ℕ} {a : ℤ}
     (hq : 0 < q)
@@ -919,7 +949,7 @@ theorem sixty_seven_le_rational_denominator
     sixty_seven_not_dvd_strictFacTop_factorialGapPrefix hseries
 
 /-- Arbitrarily late failures of the unit-carry condition prove the
-irrationality of the literal Erdős #68 series. -/
+irrationality of the Erdős #68 series. -/
 theorem irrational_factorialGapSeries_of_cofinal_nonunit_carries
     (hmiss : ∀ B : ℕ, ∃ m : ℕ,
       B < m ∧ factorialGapStepCarry m ≠ 1) :
@@ -1026,8 +1056,8 @@ theorem factorialGapStepCarry_bounds
     omega
 
 /-- The unit-carry condition is exactly divisibility of the computable
-rational strict successor by its index.  This removes the real predecessor
-gap and its floor from the remaining producer: at every `m ≥ 3`, a unit
+rational strict successor by its index.  This eliminates the real predecessor
+gap and its floor: at every `m ≥ 3`, a unit
 carry occurs precisely when the exact integer
 `strictFacTopRat (factorialGapPrefix m) m` is a multiple of `m`. -/
 theorem factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat
@@ -1078,6 +1108,8 @@ theorem irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses :
     intro hmCarry
     exact hmDvd
       ((factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat hm3).1 hmCarry)
+
+/-! ## Coefficient bounds and generic coboundary lemmas -/
 
 /-- The ordinary-factorial-series coefficient `1 - factorialGapStepCarry m`
 has at most linear growth.  This is the pointwise estimate needed for the
@@ -1138,9 +1170,9 @@ theorem tendsto_abs_one_sub_factorialGapStepCarry_div :
         push_cast
         field_simp
 
-/-- The elementary state-bound wrapper for the Erdős--Straus coboundary
-recurrence.  If the coefficient lies in the factorial-gap window
-`2 - m ≤ d m ≤ 2` and the next state is in the source theorem's half-radix
+/-- A state bound for the Erdős--Straus coboundary recurrence.  If the
+coefficient lies in the factorial-gap window `2 - m ≤ d m ≤ 2` and the next
+state satisfies the assumed half-radix
 window, then every sufficiently late state lies in the canonical interval
 `(-B, 0]`.
 
@@ -1216,9 +1248,7 @@ theorem eventually_bounded_coboundary_state
 /-- Once an Erdős--Straus coboundary state lies in the canonical interval
 `(-B, 0]`, its recurrence has no nonzero infinite trajectory.  At a large
 index divisible by `B`, the next state is a multiple of `B` in that
-interval and hence zero; zero then remains absorbing.  This is the
-finite-residue core behind the collapse of the source criterion to
-eventually zero carry defects. -/
+interval and hence zero; zero then remains absorbing. -/
 theorem eventually_zero_of_bounded_coboundary_core
     {B N : ℕ} (hB : 0 < B) {d c : ℕ → ℤ}
     (hrec : ∀ m : ℕ, N ≤ m →
@@ -1311,8 +1341,10 @@ theorem eventually_zero_of_bounded_coboundary_core
     simpa [hcm, hcSucc] using hmRec
   exact (mul_eq_zero.mp hmul).resolve_left (ne_of_gt hBInt)
 
-/-- At the literal doubled-prime index, a square divisibility hit has
-exactly two surviving branches.  This is the actual-series specialization
+/-! ## Doubled-prime and single-power divisibility criteria -/
+
+/-- At a doubled-prime index, a square divisibility hit has exactly two
+surviving branches.  This is the exact series specialization
 of the abstract two-stage strict-successor criterion: a proof of
 irrationality may now rule out either a unit carry together with a
 predecessor multiple, or the exceptional carry `1 + p` together with its
@@ -1350,10 +1382,10 @@ theorem sq_dvd_double_strictFacTop_factorialGapPrefix_iff
       hbLower
       (by simpa only [Nat.cast_mul, Nat.cast_ofNat] using hbUpper)
 
-/-- A cofinal family of odd primes at which both literal doubled-index
+/-- A cofinal family of odd primes at which both doubled-index
 square-hit branches fail proves the original Erdős #68 series irrational.
-This packages the remaining exponent-two producer entirely in terms of the
-actual carry and predecessor strict successor. -/
+The hypothesis is stated entirely in terms of the actual carry and
+predecessor strict successor; no such cofinal family is constructed here. -/
 theorem
     irrational_factorialGapSeries_of_cofinal_double_prime_branch_failures
     (hmiss : ∀ B : ℕ, ∃ p : ℕ,
@@ -1380,9 +1412,9 @@ theorem
   rw [sq_dvd_double_strictFacTop_factorialGapPrefix_iff hp hpTwo]
   exact hbranches
 
-/-- A divisibility hit at an actual index `m` is exactly a hit of one
-explicit short interval by the predecessor strict-successor gap.  Thus the
-remaining `k = 1` producer is no longer a floor or carry statement. -/
+/-- Divisibility at an index `m` is equivalent to the predecessor gap lying
+in one explicit short interval.  This removes the floor and carry from the
+single-power (`k = 1`) condition. -/
 theorem dvd_strictFacTop_factorialGapPrefix_iff_predecessorGap_window
     {m : ℕ} (hm : 3 ≤ m) :
     (m : ℤ) ∣
@@ -1418,6 +1450,8 @@ theorem dvd_strictFacTop_factorialGapPrefix_iff_predecessorGap_window
       · norm_num
         linarith
     omega
+
+/-! ## Rational first crossings -/
 
 /-- At any genuine first crossing of a rational grid level by the actual
 Erdős #68 prefixes, the exit gap is positive and at most the newly added
@@ -1622,6 +1656,8 @@ theorem actualFirstCrossing_negCarry_denominator_ge
   rw [← hgapReal]
   simpa [Nat.cast_mul, Nat.cast_sub hfac.le] using hsmall
 
+/-! ## An independent factorial interval inequality -/
+
 /-- For `n ≥ 8`, the factorial already dominates the exact polynomial
 coefficient that appears when one specializes the Kovač--Tao Type-2 interval
 overlap test to the factorial gaps `n! - 1` with width `n^2 + 1`. -/
@@ -1665,10 +1701,11 @@ whose upper endpoint is `n! - 1` and whose width is `n^2 + 1`.  For every
 `n ≥ 8`, the single interval at stage `n+1` already contributes more tail
 length than the largest reciprocal gap at stage `n`.
 
-This is the elementary arithmetic input for the source-derived statement
-that a rational reciprocal series exists with denominators lying between
-`n! - n^2 - 2` and `n! - 1`.  It does not assert rationality or
-irrationality of the unperturbed Erdős #68 series. -/
+Together with the analytic hypotheses of Kovač--Tao, Lemma 5.1, this is the
+elementary interval inequality used to construct a rational reciprocal series
+with denominators between `n! - n^2 - 2` and `n! - 1`.  The theorem below is
+only that inequality: it proves neither the existence statement nor the
+rationality or irrationality of the unperturbed Erdős #68 series. -/
 theorem factorialGap_typeTwo_nextInterval_overlap
     {n : ℕ} (hn : 8 ≤ n) :
     (((n + 1).factorial : ℤ) - ((n + 1 : ℤ) ^ 2 + 2)) *
@@ -1715,60 +1752,5 @@ theorem factorialGap_typeTwo_nextInterval_overlap
           (((N + 1) * x) - 1))
   rw [hidentity]
   exact add_pos hprod hP
-
-#print axioms firstExitDelta_ge_one_iff
-#print axioms firstExit_carry_eq_neg_one_iff
-#print axioms positive_fraction_denominator_ge
-#print axioms factorialGapPrefix_eq_prev_add
-#print axioms actualFirstCrossing_gap_bounds
-#print axioms actualFirstCrossing_denominator_ge
-#print axioms actualFirstCrossing_scaledOffset_eq
-#print axioms actualFirstCrossing_delta_lt_two
-#print axioms positive_real_fraction_denominator_ge
-#print axioms actualFirstCrossing_negCarry_denominator_ge
-#print axioms prime_pow_dvd_strictFacTop_of_rational_target
-#print axioms factorialGapPrefix_cast
-#print axioms strictFacTop_ratCast
-#print axioms prime_pow_dvd_strictFacTop_factorialGapPrefix_of_series_eq_rat
-#print axioms rational_denominator_ge_of_prime_miss
-#print axioms five_not_dvd_strictFacTop_factorialGapPrefix
-#print axioms eleven_not_dvd_strictFacTop_factorialGapPrefix
-#print axioms fifty_one_not_dvd_strictFacTop_factorialGapPrefix
-#print axioms sixty_not_dvd_strictFacTop_factorialGapPrefix
-#print axioms sixty_four_not_dvd_strictFacTop_factorialGapPrefix
-#print axioms sixty_seven_not_dvd_strictFacTop_factorialGapPrefix
-#print axioms eleven_le_rational_denominator
-#print axioms irrational_factorialGapSeries_of_cofinal_prime_power_misses
-#print axioms factorialGapPredecessorGap_pos_le_one
-#print axioms strictFacTop_factorialGapPrefix_step
-#print axioms strictFacTop_factorialGapPrefix_div_factorial_step
-#print axioms strictFacTop_factorialGapPrefix_carry_expansion
-#print axioms strictFacTop_div_factorial_bounds
-#print axioms tendsto_strictFacTop_factorialGapPrefix_div_factorial
-#print axioms factorialGapStepCarry_bounds
-#print axioms factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat
-#print axioms irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses
-#print axioms abs_one_sub_factorialGapStepCarry_le
-#print axioms tendsto_abs_one_sub_factorialGapStepCarry_div
-#print axioms eventually_bounded_coboundary_state
-#print axioms eventually_zero_of_bounded_coboundary_core
-#print axioms sq_dvd_double_strictFacTop_factorialGapPrefix_iff
-#print axioms irrational_factorialGapSeries_of_cofinal_double_prime_branch_failures
-#print axioms dvd_strictFacTop_factorialGapPrefix_iff_predecessorGap_window
-#print axioms strictFacTop_factorialGapPrefix_eq_cleared_rational
-#print axioms factorialGapStepCarry_eq_one_of_series_eq_rat
-#print axioms not_irrational_factorialGapSeries_of_eventually_unit_carries
-#print axioms not_irrational_factorialGapSeries_iff_eventually_unit_carries
-#print axioms rational_denominator_ge_of_nonunit_carry
-#print axioms irrational_factorialGapSeries_of_cofinal_nonunit_carries
-#print axioms irrational_factorialGapSeries_iff_cofinal_nonunit_carries
-#print axioms factorialGapStepCarry_fifty_one_ne_one
-#print axioms factorialGapStepCarry_sixty_ne_one
-#print axioms fifty_one_le_rational_denominator
-#print axioms sixty_le_rational_denominator
-#print axioms sixty_seven_le_rational_denominator
-#print axioms one_div_sub_one_geometric_split
-#print axioms typeTwoOverlapCoefficient_lt_factorial
-#print axioms factorialGap_typeTwo_nextInterval_overlap
 
 end ErdosProblems.Erdos68

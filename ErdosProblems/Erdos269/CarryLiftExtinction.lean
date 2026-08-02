@@ -3,14 +3,15 @@ import ErdosProblems.Erdos269.ThreeChannelBlockRigidity
 /-!
 # Erdős #269: carry-lift extinction
 
-This module formalizes the exact consumer left by the carry-to-coboundary
-audit.  A carry lift naturally satisfies a weighted error recurrence.  If its
-induced perturbation were nevertheless block-null and had the two genuine
-anchors, the existing three-channel rigidity theorem would kill the
-perturbation and force exponential error growth.
+An integral lift of the carry recurrence has a weighted error recurrence.  If
+its induced perturbation is block-null and vanishes at transitions `2 → 3`
+and `2 → 5`, three-channel rigidity makes the perturbation identically zero.
+Any nonzero initial lift error then grows by the product of the later bases,
+and hence at least exponentially when every base is at least two.
 
-No declaration constructs the missing bounded residue lift or asserts
-irrationality of the `{2,3,5}` running-LCM series.
+No declaration constructs a lift, verifies block-nullity for the actual
+ordered-power recurrence, supplies the two anchors, or asserts irrationality
+of the `{2,3,5}` running-LCM series.
 -/
 
 namespace ErdosProblems.Erdos269
@@ -62,8 +63,9 @@ theorem sum_Ico_sub_succ
         subst a
         simp
 
-/-- Summing the carry recurrence gives the exact weighted block defect.  The
-last sum is the obstruction to obtaining ordinary `ChannelBlockNull`. -/
+/-- Summing the carry recurrence gives the exact weighted block defect.  Both
+the endpoint-error difference and the weighted interior-error sum must be
+controlled before an ordinary zero block sum can follow. -/
 theorem carryLift_blockDefect
     (D : ℤ)
     (base digit z carry : ℕ → ℤ)
@@ -107,8 +109,8 @@ theorem carryLift_blockDefect
 
 /-! ## Two-anchor extinction and exponential error growth -/
 
-/-- Direct consumer of the checked channel-potential classification and
-two-anchor extinction theorem. -/
+/-- Block-nullity gives a channel potential; the two zero anchors make its
+associated perturbation vanish at every index. -/
 theorem perturbation_eq_zero_of_blockNull_twoAnchors
     {jumpBase : ℕ → Prime235}
     {ε : ℕ → ℤ}
@@ -171,8 +173,8 @@ theorem two_pow_le_natAbs_prod_range
         simpa [Int.natAbs_of_nonneg hbnonneg] using hbaseTwo N
       exact_mod_cast hbcast
 
-/-- Complete extinction consumer with an arbitrary error bound.  It suffices
-that the proposed bound falls below `2^N` once. -/
+/-- Under block-nullity and the two zero anchors, any nonzero initial error is
+incompatible with an error bound that falls below `2^N` at one index. -/
 theorem no_carryLift_of_errorBound_below_twoPow
     (D : ℤ)
     (base digit z carry : ℕ → ℤ)
@@ -300,9 +302,9 @@ theorem binaryLift_twoAnchors_force_firstBlock_sum_one
         rcases hz3 with hz3 | hz3
   all_goals omega
 
-/-- Representation-independent four-state obstruction: no lift accurate to
-within one at four states in `(0,1)` can have both anchors and a null first
-`2`-block. -/
+/-- Four-state obstruction under the stated hypotheses: if all four real
+states lie in `(0,1)` and the integral lifts approximate them within one,
+the two anchor equalities are incompatible with a null first `2`-block. -/
 theorem no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull
     (T0 T1 T2 T3 : ℝ)
     (z0 z1 z2 z3 : ℤ)

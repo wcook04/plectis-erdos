@@ -5,14 +5,16 @@ import Mathlib.Tactic
 /-!
 # Erdős #269: signed three-channel block rigidity
 
-This problem-owned module consumes the returned signed-block packet.  It
-isolates the algebraic theorem from the still-open analytic residue escape:
-if every block between two occurrences of the same channel has signed sum
-zero, then the word is a coboundary of a potential on the three channels.
+If every block between two occurrences of the same channel has signed sum
+zero, then the signed word is a coboundary of a potential on the channel
+space.  For three channels, zero perturbation at transitions `2 → 3` and
+`2 → 5` makes that potential constant and therefore makes the entire signed
+word zero.
 
 No declaration here asserts irrationality of the `{2,3,5}` running-LCM
-series.  The missing producer is still cofinal residue escape, equivalently a
-sufficient anti-approximation theorem for the exact scalar tail.
+series.  In particular, the file neither constructs the ordered-power jump
+word nor proves that its induced perturbation is block-null.  Those are
+separate problem-specific inputs.
 -/
 
 namespace ErdosProblems.Erdos269
@@ -50,14 +52,10 @@ theorem sum_range_channelCoboundary {ι G : Type*} [AddCommGroup G]
       rw [Finset.sum_range_succ, ih]
       abel
 
-/-- Signed three-channel rigidity in its natural general form.  If every
-channel occurs and all complete same-channel blocks have zero signed sum,
-then the word is exactly a channel coboundary.  Conversely every channel
-coboundary has zero sum on such blocks.
-
-For the ordered union of the positive powers of `2`, `3`, and `5`, the
-surjectivity hypothesis is immediate: every channel occurs infinitely often.
--/
+/-- If every channel occurs and all complete same-channel blocks have zero
+signed sum, then the word is exactly a channel coboundary.  Conversely every
+channel coboundary has zero sum on such blocks.  The surjectivity hypothesis
+is an explicit assumption; this theorem does not construct a channel word. -/
 theorem channelBlockNull_iff_channelPotential
     {ι G : Type*} [AddCommGroup G]
     (jumpBase : ℕ → ι) (ε : ℕ → G)
@@ -97,10 +95,9 @@ inductive Prime235
   | five
   deriving DecidableEq
 
-/-- Two anchored transitions `2 → 3` and `2 → 5` kill the two-dimensional
-freedom in a three-channel coboundary, forcing the entire signed word to be
-zero.  This is the abstract algebraic content of the packet's two-anchor
-reconstruction theorem. -/
+/-- Two zero perturbations at transitions `2 → 3` and `2 → 5` identify all
+three potential values.  The resulting channel coboundary is therefore zero
+at every index. -/
 theorem channelCoboundary_eq_zero_of_two_anchors
     {G : Type*} [AddCommGroup G]
     {jumpBase : ℕ → Prime235} {ε : ℕ → G} {C : Prime235 → G}

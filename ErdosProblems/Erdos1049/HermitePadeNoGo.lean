@@ -1,34 +1,39 @@
 import Mathlib.Analysis.Real.Pi.Bounds
 
 /-!
-# Erdős #1049: rectangular Hermite--Padé threshold no-go
+# Erdős #1049: a rectangular Hermite--Padé threshold comparison
 
-This module formalizes the exact optimisation returned in the research packet
-for the standard rectangular two-function Hermite--Padé family.  Its decay,
-height, and cyclotomic-saving exponents give a rational-base threshold which
-never exceeds the classical one-function margin `1 / 2 - 1 / pi^2`.
+The functions below encode the decay, height, and cyclotomic-saving exponents
+of one rectangular two-function Hermite--Padé model.  In the admissible region
+`rho ≥ 0` and `sigma ≥ 1 + rho`, its threshold never exceeds the classical
+one-function margin `1 / 2 - 1 / π²`.  Equality occurs only at
+`rho = 0`, `sigma = 1`; no upper bound on `rho` is needed.
 
-The formal result is slightly stronger than the packet formulation: the upper
-bound `rho <= 1` is unnecessary.  For every `rho >= 0` and
-`sigma >= 1 + rho`, equality occurs only at the one-function endpoint
-`rho = 0`, `sigma = 1`.
+This is a comparison theorem for the explicit exponent model defined here.
+It constructs no approximating polynomials or remainders, does not show that
+every rational-base method has this form, and does not decide the arithmetic
+nature of the Lambert value at `3 / 2`.
 -/
 
 namespace ErdosProblems.Erdos1049
 
-/-- Quadratic Archimedean decay exponent of the rectangular family. -/
+/-- Quadratic Archimedean decay expression in the rectangular exponent
+model. -/
 noncomputable def hpDecay (rho sigma : ℝ) : ℝ :=
   (1 + rho ^ 2) / 2 + sigma
 
-/-- Homogeneous polynomial-width exponent of the rectangular family. -/
+/-- Homogeneous polynomial-width expression in the rectangular exponent
+model. -/
 noncomputable def hpHeight (rho sigma : ℝ) : ℝ :=
   (1 + rho) ^ 2 / 2 + sigma * (1 + rho)
 
-/-- Cyclotomic denominator saving in the rectangular family. -/
+/-- Cyclotomic denominator-saving expression in the rectangular exponent
+model. -/
 noncomputable def hpCyclotomicSaving (sigma : ℝ) : ℝ :=
   3 * sigma ^ 2 / Real.pi ^ 2
 
-/-- Rational-base height threshold produced by the rectangular family. -/
+/-- Rational-base height threshold associated with the explicit exponent
+model above. -/
 noncomputable def hpThreshold (rho sigma : ℝ) : ℝ :=
   (hpDecay rho sigma - hpCyclotomicSaving sigma) /
     (hpHeight rho sigma + hpDecay rho sigma)
@@ -48,7 +53,7 @@ theorem hpClearedGap_expansion (rho u : ℝ) :
   unfold hpClearedGap hpDecay hpHeight
   ring
 
-/-- In the admissible rectangular regime, every term in the cleared gap is
+/-- If `rho ≥ 0` and `sigma ≥ 1 + rho`, then the cleared threshold gap is
 nonpositive. -/
 theorem hpClearedGap_nonpos (rho sigma : ℝ)
     (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
@@ -93,9 +98,8 @@ theorem hpClearedGap_eq_zero_iff (rho sigma : ℝ)
     unfold hpClearedGap hpDecay hpHeight
     ring
 
-/-- The standard rectangular two-function Hermite--Padé threshold is never
-better than the classical one-function threshold.  No hypothesis
-`rho <= 1` is needed. -/
+/-- In the explicit rectangular regime above, the two-function threshold is
+never larger than the classical one-function threshold. -/
 theorem rectangular_hp_threshold_le_classical (rho sigma : ℝ)
     (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
     hpThreshold rho sigma ≤ 1 / 2 - 1 / Real.pi ^ 2 := by
@@ -117,7 +121,8 @@ theorem rectangular_hp_threshold_le_classical (rho sigma : ℝ)
     field_simp
     nlinarith) hpiSqPos
 
-/-- Equality in the threshold bound characterizes the classical endpoint. -/
+/-- Equality holds exactly at the classical endpoint
+`rho = 0`, `sigma = 1`. -/
 theorem rectangular_hp_threshold_eq_classical_iff (rho sigma : ℝ)
     (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
     hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔

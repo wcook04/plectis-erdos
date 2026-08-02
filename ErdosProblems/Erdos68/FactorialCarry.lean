@@ -18,11 +18,14 @@ produces the integral coefficient
 
 `C_m = ∑_{d ∣ m, 2 ≤ d} m! / (d!)^(m/d)`.
 
-This module begins the kernel-checked arithmetic layer of that reduction.  It
-proves the multinomial divisibility behind integrality and isolates the exact
-prime-window consumer.  The remaining producer is an unbounded supply of
-missed windows for the actual centres and radii; no irrationality conclusion
-is claimed here.
+The multinomial divisibility proved below shows directly that every summand is
+an integer.  The same arithmetic leads to a finite interval question at prime
+dilations: an integral carry must lie in a prescribed residue class inside a
+rational window.  A missed window therefore excludes that carry, and a window
+of length less than one contains at most one possible integer.
+
+These statements do not prove that the windows arising from the series are
+missed for infinitely many primes, and they do not prove irrationality.
 -/
 
 namespace ErdosProblems.Erdos68

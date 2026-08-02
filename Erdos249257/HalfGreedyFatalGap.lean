@@ -5,24 +5,27 @@ import Erdos249257.GreedyAchievementSet
 
 Fix the Mersenne weights `x k = 1 / (2 ^ k - 1)` and the tails `T k = ∑_{j ≥ k} x j`.  The
 half-greedy process for `1 / 2` skips rank `k` when the residual `ρ` satisfies `ρ < x k`, and
-after a skip the process can still reach `0` exactly when `ρ ≤ T (k + 1)` — the skipped rank is
-gone forever, so the budget is the tail *strictly after* `k`.  Since `x k > T (k + 1)` for every
-`k`, there is a genuine **fatal gap** `(T (k+1), x k)`: a skipped residual landing strictly
+after a skip completion is impossible whenever `ρ > T (k + 1)` — the skipped rank is gone
+forever, so the available mass is the tail *strictly after* `k`.  The reverse implication is
+not asserted: `ρ ≤ T (k + 1)` clears this total-mass obstruction but does not by itself represent
+`ρ` by the remaining weights.  Since `x k > T (k + 1)` for every `k`, the interval
+`(T (k+1), x k)` is nevertheless a genuine **fatal gap**: a skipped residual landing strictly
 inside it can never be completed.
 
-Earlier work in this development certified skip-safety through the *dyadic* bound
+Earlier work in this development ruled out this tail-mass obstruction through the *dyadic* bound
 `ρ ≤ 2 ^ (-k)`.  That test is strictly too strong, because `T (k + 1) > 2 ^ (-k)`.  Writing a
 residual in lowest terms as `ρ = u / (2 * L)` with `u`, `L` odd and setting
 
 `a := 2 * L - (2 ^ k - 1) * u`   (so `0 < a` is exactly the skip condition),
 
-the dyadic test is `u ≤ a`, whereas the true fatal threshold is governed by
+the dyadic test is `u ≤ a`, whereas the tail-mass fatal threshold is governed by
 
 `θ k := 1 / T (k + 1) - (2 ^ k - 1)`,
 
 and the main theorem here is that `θ k < 2 / 3` for every `k ≥ 1`.  Consequently `2 * u ≤ 3 * a`
-already certifies safety: the obstruction is **one third smaller** than the dyadic test reports,
-and the entire content of that improvement is the inequality `2 * 2 ^ k > 3`.
+already certifies that the residual is below the available tail mass: this obstruction is
+**one third smaller** than the dyadic test reports, and the entire content of that improvement
+is the inequality `2 * 2 ^ k > 3`.
 
 The key arithmetic identity, with `t = 2 ^ k`, is exact:
 
@@ -34,11 +37,12 @@ since `9 * 4 ^ k - 1 > 9 * 4 ^ k` is false.
 
 ## Scope
 
-These are statements about a single skipped rank.  They do **not** assert that the actual
-half-greedy orbit avoids the fatal gap, and they are **not** a proof of half-membership.  The
-arithmetic core keeps the analytic input explicit as `mersenneTailLB3 k ≤ T`.  The final section
-discharges that input for the actual Mersenne tail using the existing exact three-channel tail
-expansion; it does not prove that the actual greedy orbit avoids the remaining fatal region.
+These are total-mass statements about a single skipped rank.  They do **not** assert that every
+residual below the remaining tail is representable, that the actual half-greedy orbit avoids the
+fatal gap, or that `1 / 2` belongs to the achievement set.  The arithmetic core keeps the
+analytic input explicit as `mersenneTailLB3 k ≤ T`.  The final section discharges that input for
+the actual Mersenne tail using the existing exact three-channel tail expansion; it does not
+construct a completion or prove that the orbit avoids the remaining fatal region.
 -/
 
 namespace Erdos249257
@@ -94,9 +98,9 @@ condition.
 
 variable {k u L a : ℕ}
 
-/-- **Sharp skip-safety.**  If `2 * u ≤ 3 * a` then the skipped residual `u / (2 * L)` lies
-strictly below the three-channel tail bound, hence below the true tail: the remaining Mersenne
-mass can still cover it.
+/-- **Sharp tail-mass safety.**  If `2 * u ≤ 3 * a` then the skipped residual `u / (2 * L)`
+lies strictly below the three-channel tail bound, hence below the true tail.  This rules out the
+total-mass fatality; it does not construct a representation by the remaining weights.
 
 This is the one-third improvement.  The dyadic criterion demands `u ≤ a`; this demands only
 `2 * u ≤ 3 * a`. -/
@@ -123,8 +127,8 @@ theorem skipSafe_of_two_mul_le_three_mul
     linarith [hkey]
   exact lt_of_le_of_lt hrho (three_div_lt_mersenneTailLB3 hk)
 
-/-- **Unit numerators are unconditionally safe.**  When `u = 1` the skip condition alone forces
-`a ≥ 1`, hence `3 * a ≥ 3 > 2 = 2 * u`.
+/-- **Unit numerators are never tail-mass fatal.**  When `u = 1` the skip condition alone
+forces `a ≥ 1`, hence `3 * a ≥ 3 > 2 = 2 * u`.
 
 This replaces any bespoke unit-residual argument: the whole proof is that a positive integer is
 at least `1`, and `3 > 2`. -/
@@ -227,7 +231,7 @@ theorem mersenneTailLB3_lt_mersenneTail (k : ℕ) :
   norm_num [div_pow, hfour, height, ← pow_mul] at hthird ⊢
   nlinarith
 
-/-- Sharp skip-safety for the actual future Mersenne mass. -/
+/-- Sharp safety against exceeding the actual future Mersenne mass. -/
 theorem skipSafe_actualTail_of_two_mul_le_three_mul
     {k u L a : ℕ}
     (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
@@ -238,7 +242,7 @@ theorem skipSafe_actualTail_of_two_mul_le_three_mul
     (skipSafe_of_two_mul_le_three_mul hk hu ha hdecomp hsharp)
     (mersenneTailLB3_lt_mersenneTail k)
 
-/-- Unit-numerator skips are unconditionally safe for the actual future Mersenne mass. -/
+/-- Unit-numerator skips lie strictly below the actual future Mersenne mass. -/
 theorem unitNumerator_skipSafe_actualTail
     {k L a : ℕ}
     (hk : 1 ≤ k) (ha : 0 < a)
@@ -247,7 +251,8 @@ theorem unitNumerator_skipSafe_actualTail
   lt_trans (unitNumerator_skipSafe hk ha hdecomp)
     (mersenneTailLB3_lt_mersenneTail k)
 
-/-- A skip that is fatal for the actual Mersenne tail lies in the strict region `3a < 2u`. -/
+/-- A skip whose residual exceeds the actual Mersenne tail lies in the strict region
+`3a < 2u`. -/
 theorem three_mul_lt_two_mul_of_actualTail_fatal
     {k u L a : ℕ}
     (hk : 1 ≤ k) (hu : 0 < u) (ha : 0 < a)
@@ -266,12 +271,6 @@ theorem three_le_of_actualTail_fatal_of_odd
     3 ≤ u :=
   three_le_of_fatal_of_odd hk hu ha hodd hdecomp (mersenneTail k)
     (mersenneTailLB3_lt_mersenneTail k).le hfatal
-
-#print axioms mersenneTailLB3_lt_mersenneTail
-#print axioms skipSafe_actualTail_of_two_mul_le_three_mul
-#print axioms unitNumerator_skipSafe_actualTail
-#print axioms three_mul_lt_two_mul_of_actualTail_fatal
-#print axioms three_le_of_actualTail_fatal_of_odd
 
 end ActualMersenneTail
 

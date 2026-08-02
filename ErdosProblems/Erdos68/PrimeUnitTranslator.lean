@@ -15,8 +15,26 @@ import Mathlib.Topology.Algebra.InfiniteSum.Ring
 /-!
 # Prime unit translator for Erdős problem 68
 
-The prime-pair support is the smallest exact integer-translation direction in
-the channel kernel.
+For a prime `p`, the coefficient pair `(p,-1)` on the indices `(p-1,p)` has
+zero factorial moment and annihilates every channel except the `p`-channel.
+At that channel its numerator is exactly `p!-1`; consequently its normalized
+infinite residual is `1`.  Appending an integer multiple of this pair therefore
+translates any finite-support residual by the same integer without changing
+the lower channels or the factorial moment.
+
+The module also classifies every finite-support residual modulo integers as
+its factorial moment times the factorial-gap tail.  A Cramer construction on
+an explicit factorial grid supplies, beyond any prescribed support threshold,
+integer coefficient vectors with zero channels through a chosen cutoff and
+nonzero factorial moment.  Appending a prime translator reduces their
+residual to absolute value at most `1/2`.
+
+The last reduction is not an irrationality argument by itself: the reduced
+residual may be zero.  The strict version assumes that the original residual
+is not an integer, and no theorem here proves that assumption for the Cramer
+vectors.  There is also no coefficient-size estimate, no nonzero lower bound
+for the reduced residual, and no irrationality theorem for the factorial-gap
+series.
 -/
 
 namespace Erdos68
@@ -601,9 +619,8 @@ theorem channelResidualTerm_eq_moment_mul_tail_add_correction
   · simp [channelResidualTerm, factorialGapTailTerm,
       finiteChannelCorrection, hDd]
 
-/-- Universal scalar classification of every finite-support residual.  Modulo
-integers, the only surviving coordinate is the factorial moment multiplied
-by the universal factorial-gap tail. -/
+/-- For a finite coefficient family, the residual differs from its factorial
+moment times the factorial-gap tail by an integer. -/
 theorem exists_channelResidual_eq_moment_mul_factorialGapTail_add_int
     {ι : Type*} [Fintype ι]
     (D : ℕ) (coeff : ι → ℤ) (index : ι → ℕ) (hD : 1 ≤ D) :
@@ -1025,10 +1042,10 @@ theorem exists_primeTranslator_residual_abs_le_half
   rw [channelResidual_appendPrimeTranslator coeff index (-round x) hD hp hDp]
   simpa [x, sub_eq_add_neg] using abs_sub_round x
 
-/-- Conditional rank-two rounding package: a nonzero-moment vector in the
-finite channel kernel can be enlarged by a prime unit translator while
-preserving all requested zero channels and the nonzero moment, and its full
-residual can be reduced to absolute value at most `1/2`. -/
+/-- A nonzero-moment vector in the finite channel kernel can be enlarged by a
+prime unit translator while preserving the requested zero channels and the
+nonzero moment; its residual can then be reduced to absolute value at most
+`1/2`. -/
 theorem exists_primeTranslator_reduced_kernel
     {ι : Type*} [Fintype ι]
     (coeff : ι → ℤ) (index : ι → ℕ) {D p : ℕ}
@@ -1536,9 +1553,9 @@ theorem cramerFactorialGrid_moment_ne_zero
   rw [factorialMoment_cramerChannelKernel]
   exact augmentedFactorialGridMatrix_det_ne_zero n t
 
-/-- The complete scalar classification for the uniform factorial-grid Cramer
-kernel: modulo integers, its residual is the nonzero augmented determinant
-times the original Erdős #68 series. -/
+/-- For the factorial-grid Cramer vector, the residual differs from the
+nonzero augmented determinant times the Erdős problem 68 series by an
+integer. -/
 theorem exists_cramerFactorialGridResidual_eq_det_mul_factorialGapSeries_add_int
     (n t : ℕ) :
     ∃ K : ℤ,
@@ -1591,10 +1608,9 @@ theorem cramerFactorialGrid_channelNumerator_ne_zero_of_max_lt
   rw [cramerFactorialGrid_channelNumerator_eq_moment_of_max_lt n t d hmax]
   exact cramerFactorialGrid_moment_ne_zero n t
 
-/-- Uniform rank-two Archimedean reduction: every factorial-grid Cramer
-vector can be enlarged by a prime translator above the cutoff, preserving all
-zero channels and its nonzero moment while reducing the full residual to
-absolute value at most `1/2`. -/
+/-- Every factorial-grid Cramer vector can be enlarged by a prime translator
+above the cutoff, preserving its zero channels and nonzero moment while
+reducing the residual to absolute value at most `1/2`. -/
 theorem exists_factorialGrid_primeTranslator_reduced_kernel
     (n t : ℕ) {p : ℕ}
     (hp : p.Prime) (hDp : n + 2 < p) :
@@ -1635,9 +1651,9 @@ theorem factorialGridIndex_gt
   unfold factorialGridIndex
   omega
 
-/-- Uniform remote-support rank-two reduction for every cutoff and threshold.
-The labelled disjoint support consists of the factorial-grid block and a
-prime translator pair; all labels lie above `B`. -/
+/-- For every cutoff and support threshold, a factorial-grid block and a prime
+translator pair can be chosen entirely above the threshold, with the stated
+zero-channel, nonzero-moment, and residual bounds. -/
 theorem exists_remote_factorialGrid_primeTranslator_reduction
     (n B : ℕ) :
     ∃ p : ℕ, ∃ z : ℤ,
