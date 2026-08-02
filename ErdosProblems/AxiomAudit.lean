@@ -47,6 +47,11 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos68.centreGap_recurrence
 #print axioms ErdosProblems.Erdos68.centreDefectCode_eq_factorial_floor
 #print axioms ErdosProblems.Erdos68.centreGap_factorial_recurrence
+#print axioms ErdosProblems.Erdos68.residualCentreTerm_of_not_dvd
+#print axioms ErdosProblems.Erdos68.residualCentreTerm_of_dvd
+#print axioms ErdosProblems.Erdos68.residualCentreTerm_self
+#print axioms ErdosProblems.Erdos68.factorialCoeffTerm_self
+#print axioms ErdosProblems.Erdos68.residualCentre_recurrence
 #print axioms ErdosProblems.Erdos269.threePrimeHeight_le_cube
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell

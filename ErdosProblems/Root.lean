@@ -4,6 +4,7 @@ import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 import ErdosProblems.Erdos68.ChannelBreakpointRigidity
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
 import ErdosProblems.Erdos68.FiniteDefectAutomaton
+import ErdosProblems.Erdos68.DivisorFactorialCentre
 import ErdosProblems.Erdos249.FiniteEulerSieve
 import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
