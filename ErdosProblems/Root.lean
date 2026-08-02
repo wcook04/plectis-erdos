@@ -18,6 +18,8 @@ import ErdosProblems.Erdos251.PrimeGapDyadicTail
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import ErdosProblems.Erdos269.ResidueEscape
 import ErdosProblems.Erdos269.RestrictedFloorSum
+import ErdosProblems.Erdos269.BoundedRadixTailEscape
+import ErdosProblems.Erdos269.CarryLiftExtinction
 import ErdosProblems.Erdos1049.RationalBaseLambert
 import ErdosProblems.Erdos1049.RationalPadeArithmetic
 import ErdosProblems.Erdos1049.ZudilinHeightRegion
