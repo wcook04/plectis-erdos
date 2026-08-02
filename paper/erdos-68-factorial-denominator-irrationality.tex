@@ -1202,7 +1202,7 @@ for nothing above.  The finite computations are finite.
 \section{Guide to the formal sources}\label{app:sources}
 
 The public \texttt{ErdosProblems.Erdos68} package contains the checked source
-for this note.  The release snapshot contains thirteen modules:
+for this note.  The release snapshot contains twelve cited modules:
 \texttt{CanonicalFactorialDigits},
 \texttt{ChannelBreakpointRigidity},
 \texttt{ChannelIntegralCongruence},
@@ -1210,13 +1210,14 @@ for this note.  The release snapshot contains thirteen modules:
 \texttt{EndpointWeightedPrivateSupport},
 \texttt{FactorialCarry},
 \texttt{FactorialChannelCertificate},
-\texttt{FactorialDigitRigidity},
 \texttt{FactorialZeroPlateau},
 \texttt{FiniteDefectAutomaton},
 \texttt{PrimeUnitTranslator},
 \texttt{PrimeZeroBranch}, and
 \texttt{StrictSuccessorArithmetic}.
-The release root imports every cited module.  The declaration table below is
+Only these public modules belong to the manuscript source surface; no private
+auxiliary digit-rigidity file is cited or projected.  The release root imports
+every cited module.  The declaration table below is
 pinned to the shared formal-source commit used throughout this problem-note
 series.
 
@@ -1226,14 +1227,6 @@ series.
 \item \lref{Erdos68/PrimeZeroBranch.lean}{6081}{factorialGap_zero_branch_iff_lower_endpoint_cylinder}
 \item \lref{Erdos68/EndpointWeightedPrivateSupport.lean}{4737}{factorialBlock_unitFactorPairFloor_scale_iff}
 \item \lref{Erdos68/PrimeUnitTranslator.lean}{1542}{exists_cramerFactorialGridResidual_eq_det_mul_factorialGapSeries_add_int}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{21}{strictSuccessor}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{27}{strictSuccessor_sub_int}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{34}{canonicalFactorialDigit}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{40}{factorial_scaled_rational_eq_intCast}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{63}{canonicalFactorialDigit_eq_zero_of_rational}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{92}{prime_pow_dvd_factorial_dilation}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{102}{prime_pow_dvd_factorial_dilation_div}
-\item \lref{Erdos68/FactorialDigitRigidity.lean}{115}{prime_pow_dvd_cleared_rational_numerator}
 \item \lref{Erdos68/DivisorFactorialCentre.lean}{17}{residualCentreTerm}
 \item \lref{Erdos68/DivisorFactorialCentre.lean}{22}{factorialCoeffTerm}
 \item \lref{Erdos68/DivisorFactorialCentre.lean}{27}{residualCentre}
