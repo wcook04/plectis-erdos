@@ -14,6 +14,12 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos68.dvd_strictSuccessor_iff_roundingDigit_eq_one
 #print axioms ErdosProblems.Erdos68.pow_dvd_dilation_strictSuccessor_iff
 #print axioms ErdosProblems.Erdos68.sq_dvd_double_strictSuccessor_prime_iff
+#print axioms ErdosProblems.Erdos68.factorial_pow_dvd_factorial_of_dvd
+#print axioms ErdosProblems.Erdos68.factorial_pow_floor_dvd_factorial
+#print axioms ErdosProblems.Erdos68.channelEvent_eq_zero_of_not_dvd
+#print axioms ErdosProblems.Erdos68.lambda34_channel_two
+#print axioms ErdosProblems.Erdos68.lambda34_factorialMoment
+#print axioms ErdosProblems.Erdos68.lambda34_residual_bounds
 #print axioms ErdosProblems.Erdos269.threePrimeHeight_le_cube
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell
