@@ -246,7 +246,7 @@ Eventual integral shift for every rational-valued recurrence & Lean-checked & Th
 Rationality/integral-shift classification & Lean-checked abstractly; an equivalence & Theorem~\ref{res:escape-irrational}. \\
 Actual prime gaps are unbounded and not eventually periodic & Lean-checked & Proposition~\ref{res:gap-nonperiodic}. \\
 Adjacent small-mismatch pair excludes simultaneous integrality & Lean-checked & Theorem~\ref{res:smallpair}. \\
-Concrete prime-gap tail recurrence and rational-candidate bridge & Lean-checked unconditionally & The actual scaled tail is represented at every index under non-irrationality. \\
+Concrete prime-gap tail recurrence and rational-candidate bridge & Paper-level recurrence; Lean-checked conditional bridge & The rational candidate recurrence is unconditional; its representation of the actual scaled tail assumes non-irrationality. \\
 Rationality alone forces periodic integer coefficients & False & Section~\ref{sec:carry}, Proposition~\ref{res:telescope}. \\
 Cofinal adjacent small-mismatch hypothesis & Proposed sufficient theorem & Problem~\ref{prob:smallpair}; not proved. \\
 \bottomrule
@@ -656,7 +656,10 @@ cofinally non-integral.
 \end{theorem}
 
 \begin{proof}
-Theorem~\ref{res:collapse} gives \textup{(i)}$\Rightarrow$\textup{(iii)}, and
+For \textup{(i)}$\Rightarrow$\textup{(iii)}, choose $q\in\Q$ whose real cast
+is $T_0$.  The real block identity identifies the whole orbit with the cast of
+the rational recurrence starting at $q$; Theorem~\ref{res:collapse} applied to
+that rational orbit then gives \textup{(iii)}.  The implication
 \textup{(iii)}$\Rightarrow$\textup{(ii)} is immediate.  For
 \textup{(ii)}$\Rightarrow$\textup{(i)}, the real block identity gives
 \[
@@ -689,8 +692,8 @@ Define, at paper level,
 \[
  \mathcal T_N=\sum_{j\ge1}\frac{g_{N+j}}{2^j}.
 \]
-The Lean-checked polynomial prime bound gives convergence, and an index shift
-gives
+The Lean-checked polynomial prime bound gives convergence.  A paper-level
+index shift, justified by that convergence, gives
 \[
  \mathcal T_{N+1}=2\mathcal T_N-g_{N+1}.
 \]
@@ -698,11 +701,13 @@ If $G=\sum_{n\ge0}g_n/2^{n+1}$, then
 $\mathcal T_0=2G-g_0=2G-1=2.349287932\ldots$.  Together with
 Theorem~\ref{res:infinite}, this shows that $\Pi$, $G$, and
 $\mathcal T_0$ have the same rationality status.  Thus
-Theorem~\ref{res:escape-irrational} identifies Problem~\#251 exactly with cofinal
-shift escape for $\mathcal T$.  The concrete tail, its recurrence,
-and the bridge from a hypothetical rational value to every scaled real tail
-are kernel-checked.  What is not proved is the cofinal non-integrality needed
-by Theorem~\ref{res:escape-irrational}.
+Theorem~\ref{res:escape-irrational} identifies Problem~\#251 exactly with
+cofinal shift escape for $\mathcal T$.  Lean checks the rational candidate
+recurrence unconditionally and, under non-irrationality of the series, its
+representation of every scaled real tail.  The displayed recurrence for
+$\mathcal T$ is the elementary index-shift deduction above.  What is not
+proved is the cofinal non-integrality needed by
+Theorem~\ref{res:escape-irrational}.
 
 \subsection{Two adjacent small shifts cannot both be integral}\label{sec:local-certificate}
 
