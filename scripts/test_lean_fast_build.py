@@ -11,6 +11,7 @@ import re
 import tempfile
 import threading
 import time
+import tomllib
 import unittest
 from unittest import mock
 
@@ -18,6 +19,22 @@ import lean_fast_build as fast
 
 
 class LeanFastBuildTests(unittest.TestCase):
+    def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
+        lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
+            encoding="utf-8"
+        ))
+        problem_libraries = [
+            library
+            for library in lakefile["lean_lib"]
+            if library.get("name") == "ErdosProblems"
+        ]
+
+        self.assertEqual(len(problem_libraries), 1)
+        self.assertEqual(
+            problem_libraries[0].get("weakLeanArgs"),
+            ["--tstack=65536"],
+        )
+
     def test_automatic_worker_default_is_memory_bounded(self) -> None:
         with mock.patch.dict(os.environ, {}, clear=True), mock.patch.object(
             fast.os, "cpu_count", return_value=64
