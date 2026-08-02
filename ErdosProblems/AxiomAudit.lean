@@ -135,6 +135,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos257.selectedMersenneTail_lt_weight
 #print axioms ErdosProblems.Erdos257.supportedMersenneDigitValue_injective
 #print axioms ErdosProblems.Erdos257.mem_supportedMersenneAchievementSet_iff_exists_support_series
+#print axioms ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_pos_iff_compl_finite
 #print axioms ErdosProblems.Erdos257.card_squarefreeDivisors
 #print axioms ErdosProblems.Erdos257.squarefreeIncidence_eq
 #print axioms ErdosProblems.Erdos257.odd_squarefreeIncidence

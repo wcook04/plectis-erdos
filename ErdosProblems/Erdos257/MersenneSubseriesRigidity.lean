@@ -3,9 +3,16 @@ import Erdos249257.GreedyAchievementSet
 /-!
 # Erdős #257: hereditary Mersenne subseries rigidity
 
-Problem-owned consequences of the strict Mersenne tail inequality.  These
-results concern achievement-set geometry and do not settle the universal
-irrationality problem.
+Let `J` be the set of allowed Mersenne coordinates.  This module proves that
+the corresponding subseries still has unique binary coding and a compact,
+nowhere-dense achievement set.  If `J` is infinite, that set is perfect.  Its
+Lebesgue measure is positive exactly when only finitely many coordinates are
+forbidden; omitting a finite set `F` gives measure `2^(-|F|)`, while omitting
+infinitely many coordinates gives measure zero.
+
+The arithmetic bridge identifies this achievement set with convergent
+support-restricted Mersenne subseries.  These hereditary geometric results do
+not settle the universal irrationality problem.
 -/
 
 namespace ErdosProblems.Erdos257
@@ -473,5 +480,26 @@ theorem volume_supportedMersenneAchievementSet_dichotomy (J : Set ℕ) :
     exact ⟨hinfinite,
       volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
         hinfinite⟩
+
+/-- A supported Mersenne achievement set has positive Lebesgue measure if and
+only if the set of forbidden coordinates is finite. -/
+theorem volume_supportedMersenneAchievementSet_pos_iff_compl_finite
+    (J : Set ℕ) :
+    0 < volume (supportedMersenneAchievementSet J) ↔ Jᶜ.Finite := by
+  classical
+  constructor
+  · intro hvolume
+    by_contra hfinite
+    have hinfinite : Jᶜ.Infinite := hfinite
+    rw [volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
+      hinfinite] at hvolume
+    exact (lt_irrefl 0) hvolume
+  · intro hfinite
+    let F := hfinite.toFinset
+    have hF : (↑F : Set ℕ)ᶜ = J := by
+      change (↑hfinite.toFinset : Set ℕ)ᶜ = J
+      rw [hfinite.coe_toFinset, compl_compl]
+    rw [← hF, volume_supportedMersenneAchievementSet_finset_compl]
+    exact ENNReal.inv_pos.mpr (by simp)
 
 end ErdosProblems.Erdos257
