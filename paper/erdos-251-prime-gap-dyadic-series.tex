@@ -46,13 +46,14 @@ integer for arbitrarily large $N$, then $T_0$ is irrational.  The digits
 enter all of these statements only through the fact that they are integers.
 
 Let $p_0=2,p_1=3,\ldots$ enumerate the primes and let
-$g_n=p_{n+1}-p_n$.  We formalise in Lean both the exact finite identity
+$g_n=p_{n+1}-p_n$.  We formalise in Lean the elementary bound
+$p_n\le1250(n+1)^4$, hence convergence of both dyadic series, as well as the
+exact finite identity
 \[
  \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
  \;=\;2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}},
 \]
-and, conditional only on summability, the infinite identity and irrationality
-equivalence
+and the unconditional infinite identity and irrationality equivalence
 \[
  \sum_{i\ge0}\frac{p_i}{2^{\,i+1}}
  =2+\sum_{i\ge0}\frac{g_i}{2^{\,i+1}},\qquad
@@ -60,9 +61,8 @@ equivalence
  \Longleftrightarrow
  \operatorname{Irr}\!\left(\sum_{i\ge0}\frac{g_i}{2^{\,i+1}}\right).
 \]
-The prime number theorem supplies the summability in ordinary mathematics;
-that external input is not formalised here and remains an explicit hypothesis
-of the Lean declarations.
+The prime number theorem remains useful context, but it is not a proof
+dependency of the formal statements in this note.
 
 Problem~\#251 remains open.  The remaining obligation is now exact:
 rationality would force some fixed $h\ge1$ for which the actual tail shifts
@@ -71,8 +71,13 @@ to prove cofinal non-integrality for every fixed $h$.  We also prove a local
 obstruction: two adjacent shifts lying strictly between $-1$ and $1$ cannot
 both be integers when the corresponding prime gaps differ.  Consequently it
 is enough to produce such adjacent small-mismatch pairs cofinally.  The actual
-prime gaps are Lean-checked to be unbounded, hence not eventually periodic,
-but that fact alone gives no control on the size of a tail.  A telescoping
+prime gaps are Lean-checked to be unbounded, hence not eventually periodic.
+For every rational candidate, the checked denominator argument selects a
+positive fixed shift which is eventually integral but not eventually confined
+to $(-1,1)$.  This is compatible with rationality, not a contradiction: it
+identifies a shift for which eventual smallness fails.  No theorem supplies
+either eventual smallness or cofinally many adjacent small mismatches for that
+same shift.  A telescoping
 identity supplies an explicit sequence of integers $\kappa_0,\kappa_1,\ldots$
 that is unbounded, hence not eventually periodic, and for which
 $\sum_{n\ge0}\kappa_n2^{-(n+1)}$ is rational.  Rationality of a dyadic sum
@@ -213,8 +218,8 @@ Section~\ref{sec:parts} replaces the primes by their consecutive gaps, the
 natural increments studied by prime-distribution theory.  Summation by parts
 with the endpoint retained gives an exact finite identity, and the termwise
 relation $v_n=2u_{n+1}-u_n$ between the gap terms and the prime terms makes the
-passage to the limit a matter of summability alone; the prime number theorem
-supplies that summability externally.
+passage to the limit a matter of summability alone; the explicit polynomial
+prime bound supplies that summability inside the formal development.
 Section~\ref{sec:tail} rescales the tails of a dyadic series into a recurrence
 and develops it: the block identity, the integral-shift criterion, the
 collapse of every rational solution onto an eventually integral shift, its
@@ -244,8 +249,8 @@ Statement & Status & Treatment here \\
 \midrule
 Irrationality of $\Pi$ & Open & Not proved. \\
 Finite prime-gap identity & Proved here & Theorem~\ref{res:parts}, with the endpoint retained. \\
-Infinite prime-gap identity & Lean-checked conditionally & Theorem~\ref{res:infinite}; the prime number theorem supplies the hypothesis externally. \\
-Prime-series/gap-series irrationality equivalence & Lean-checked conditionally & Corollary~\ref{res:irr-equivalence}. \\
+Infinite prime-gap identity & Lean-checked unconditionally & Theorem~\ref{res:infinite}, with summability discharged by the polynomial prime bound. \\
+Prime-series/gap-series irrationality equivalence & Lean-checked unconditionally & Corollary~\ref{res:irr-equivalence}. \\
 Block identity for the tail recurrence & Proved here & Theorem~\ref{res:block}. \\
 Integral shift criterion & Proved here; an equivalence & Theorem~\ref{res:shiftiff}. \\
 Totient shift from an odd denominator & Proved here & Theorem~\ref{res:totient}. \\
@@ -254,7 +259,7 @@ Eventual integral shift for every rational-valued recurrence & Lean-checked & Th
 Cofinal shift escape implies irrationality & Lean-checked abstractly & Theorem~\ref{res:escape-irrational}. \\
 Actual prime gaps are unbounded and not eventually periodic & Lean-checked & Proposition~\ref{res:gap-nonperiodic}. \\
 Adjacent small-mismatch pair excludes simultaneous integrality & Lean-checked & Theorem~\ref{res:smallpair}. \\
-Concrete prime-gap tail recurrence & Paper-proved from PNT & Not yet instantiated as a Lean infinite sum. \\
+Concrete prime-gap tail recurrence and rational-candidate bridge & Lean-checked unconditionally & The actual scaled tail is represented at every index under non-irrationality. \\
 Rationality alone forces periodic integer coefficients & False & Section~\ref{sec:carry}, Proposition~\ref{res:telescope}. \\
 Cofinal adjacent small-mismatch hypothesis & Proposed sufficient theorem & Problem~\ref{prob:smallpair}; not proved. \\
 \bottomrule
@@ -268,12 +273,9 @@ proved in the text; each such statement also carries a link to a Lean
 declaration where it appears below.
 \emph{Lean-checked} marks a statement the pinned kernel accepts, in the exact
 sense fixed by the Status paragraph above.  The modifier
-\emph{conditionally} marks a hypothesis that the Lean statement carries and
-that ordinary mathematics discharges from outside the formal development;
 \emph{abstractly} marks a statement proved for an arbitrary integer digit
-sequence rather than for the actual prime gaps.  \emph{Paper-proved from PNT}
-marks a statement proved in the text from the prime number theorem and not
-formalised.  \emph{Proposed sufficient theorem} marks an unproved statement
+sequence rather than for the actual prime gaps.  \emph{Proposed sufficient
+theorem} marks an unproved statement
 which, if proved, would give irrationality of $\Pi$.
 \end{minipage}
 \end{table}
@@ -657,7 +659,8 @@ Define, at paper level,
 \[
  \mathcal T_N=\sum_{j\ge1}\frac{g_{N+j}}{2^j}.
 \]
-The prime number theorem gives convergence, and an index shift gives
+The Lean-checked polynomial prime bound gives convergence, and an index shift
+gives
 \[
  \mathcal T_{N+1}=2\mathcal T_N-g_{N+1}.
 \]
@@ -666,10 +669,10 @@ $\mathcal T_0=2G-g_0=2G-1=2.349287932\ldots$.  Together with
 Theorem~\ref{res:infinite}, this shows that $\Pi$, $G$, and
 $\mathcal T_0$ have the same rationality status.  Thus
 Theorem~\ref{res:escape-irrational} applies directly to Problem~\#251 once cofinal
-shift escape is proved for $\mathcal T$.  This last analytic instantiation is
-proved here from the classical prime number theorem; it is not yet a Lean
-declaration.  The abstract theorem, including its real/rational transport, is
-kernel-checked.
+shift escape is proved for $\mathcal T$.  The concrete tail, its recurrence,
+and the bridge from a hypothetical rational value to every scaled real tail
+are kernel-checked.  What is not proved is the cofinal non-integrality needed
+by Theorem~\ref{res:escape-irrational}.
 
 \subsection{Two adjacent small shifts cannot both be integral}\label{sec:local-certificate}
 
@@ -855,6 +858,14 @@ identity, and the real-to-rational scaled-tail representation
 It also proves that every rational candidate supplies one positive fixed shift
 which is integral at every sufficiently late tail index
 (\lword{Erdos251/PrimeGapDyadicTail.lean}{854}{rationalPrimeGapTailShift_eventuallyIntegral}{checked}).
+The denominator construction selects that same shift so that prime-gap
+nonperiodicity also rules out its eventual confinement to the open unit
+interval
+(\lword{Erdos251/PrimeGapDyadicTail.lean}{1101}{rationalPrimeGapTail_has_positive_shift_not_eventually_small}{not eventually small}).
+This conclusion is compatible with rationality: it says that the rationally
+forced shift cannot support an eventual-smallness contradiction.  It supplies
+neither eventual smallness nor cofinally many adjacent small mismatches for
+that shift.
 The remaining issue is recurrence or anti-concentration of the \emph{actual}
 prime-gap shifts.  Throughout, $g_i=p_{i+1}-p_i$ are the zero-based prime gaps
 of Section~\ref{sec:problem}.  Write $\mathsf E(h)$ for the cofinal escape
