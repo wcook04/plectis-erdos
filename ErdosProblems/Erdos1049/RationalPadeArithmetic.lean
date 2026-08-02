@@ -5,16 +5,17 @@ import Mathlib.Tactic.Ring
 /-!
 # Erdős #1049: finite arithmetic for rational Padé homogenisation
 
-This module isolates the polynomial denominator-exponent calculations in the
-rational-base Padé packet.  Every exponent is doubled, so the statements live
-over `ℤ` and contain no floor or parity bookkeeping.  They certify only the
-finite homogenisation arithmetic; positivity of the Padé remainder and its
-asymptotics remain separate analytic obligations.
+This module isolates formal denominator-exponent calculations for rational-base
+Padé homogenisation.  Every exponent is doubled, so the statements live over
+`ℤ` and contain no floor or parity bookkeeping.  It also records elementary
+content and sign identities for a `2 × 2` determinant of integer coefficient
+pairs.  No concrete coefficient family, integrality theorem, remainder
+estimate, or sign theorem is supplied here.
 -/
 
 namespace ErdosProblems.Erdos1049
 
-/-- Twice the proposed common denominator exponent
+/-- Twice a proposed common denominator exponent
 `Eₙ = (3n² - n) / 2`. -/
 def rationalPadeDenExpTwice (n : ℤ) : ℤ :=
   3 * n * n - n
@@ -70,9 +71,9 @@ theorem rationalPadeQMaxDenExpTwice_le
 noncomputable def rationalPadeError (S : ℝ) (U V : ℤ) : ℝ :=
   (U : ℝ) * S - (V : ℝ)
 
-/-- The exterior determinant of two integer Padé coefficient pairs.
+/-- The `2 × 2` determinant of two integer Padé coefficient pairs.
 
-For the adjacent Zudilin construction this is
+For coefficient pairs indexed by `n` and `m`, this is
 `Uₙ Vₘ - Uₘ Vₙ`.  Unlike either individual coefficient pair, the determinant
 can inherit every divisor common to the two `U` coefficients and every divisor
 common to the two `V` coefficients. -/
@@ -129,9 +130,8 @@ theorem rationalPadeExteriorDet_cast_eq
   simp [rationalPadeExteriorDet, rationalPadeError]
   ring
 
-/-- A divisor common to the two `U` coefficients divides their exterior
-determinant.  This is the abstract arithmetic core of the returned common
-`3`-adic gain. -/
+/-- A divisor common to the two `U` coefficients divides their `2 × 2`
+determinant. -/
 theorem commonU_dvd_rationalPadeExteriorDet
     {d Un Vn Um Vm : ℤ} (hUn : d ∣ Un) (hUm : d ∣ Um) :
     d ∣ rationalPadeExteriorDet Un Vn Um Vm := by
@@ -141,9 +141,8 @@ theorem commonU_dvd_rationalPadeExteriorDet
   simp [rationalPadeExteriorDet]
   ring
 
-/-- A divisor common to the two `V` coefficients also divides their exterior
-determinant.  This is the companion interface for local factors carried by the
-second coefficient channel. -/
+/-- A divisor common to the two `V` coefficients also divides their `2 × 2`
+determinant. -/
 theorem commonV_dvd_rationalPadeExteriorDet
     {d Un Vn Um Vm : ℤ} (hVn : d ∣ Vn) (hVm : d ∣ Vm) :
     d ∣ rationalPadeExteriorDet Un Vn Um Vm := by
@@ -195,8 +194,9 @@ theorem rationalPadeExteriorDet_neg_of_left_pos_right_neg
     linarith
   exact_mod_cast hdetR
 
-/-- Positive errors and alternating coefficient signs rule out cancellation in
-the adjacent exterior determinant. -/
+/-- Under the displayed positivity and alternating-sign hypotheses, the
+adjacent determinant cannot vanish.  This theorem does not produce those
+hypotheses for a concrete Padé sequence. -/
 theorem rationalPadeExteriorDet_ne_zero_of_left_neg_right_pos
     {S : ℝ} {Un Vn Um Vm : ℤ}
     (hLn : 0 < rationalPadeError S Un Vn)
@@ -207,8 +207,8 @@ theorem rationalPadeExteriorDet_ne_zero_of_left_neg_right_pos
     (rationalPadeExteriorDet_pos_of_left_neg_right_pos
       hLn hLm hUn hUm)
 
-/-- The other alternating coefficient-sign configuration also rules out
-cancellation. -/
+/-- The reversed alternating-sign configuration likewise prevents
+cancellation, provided both errors are positive. -/
 theorem rationalPadeExteriorDet_ne_zero_of_left_pos_right_neg
     {S : ℝ} {Un Vn Um Vm : ℤ}
     (hLn : 0 < rationalPadeError S Un Vn)

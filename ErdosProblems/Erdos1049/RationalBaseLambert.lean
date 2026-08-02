@@ -13,20 +13,20 @@ open scoped BigOperators
 # Erdős #1049: rational-base Lambert arithmetic
 
 The published Bundschuh--Väänänen theorem supplies irrationality for a
-height-restricted family of rational bases, including `7/2`. This module
-formalizes the complete elementary Archimedean height inequality needed at
-`7/2`, as well as an obstruction independent of that analytic theorem: a
-literal coordinatewise transfer of the integer-base Erdős corridor would force
-an impossible power-versus-linear inequality at `3/2`.
+height-restricted family of rational bases, including `7/2`.  This module
+proves the elementary Archimedean height inequality needed at `7/2` and a
+separate finite statement at `3/2`: six explicit coordinatewise clearing
+conditions are mutually inconsistent once the shift and cleared window are
+nonempty.
 
 The analytic irrationality theorem itself remains external. This module does
-not assert irrationality at `3/2`, nor the unrestricted rational-base
-conjecture.
+not assert irrationality at `3/2`, nor does it prove that rationality or every
+candidate proof method would supply the six coordinatewise conditions.
 -/
 
 namespace ErdosProblems.Erdos1049
 
-/-! ## Exact arithmetic certificate for the published `7/2` lane -/
+/-! ## Elementary height inequality at `7/2` -/
 
 /-- The integer-power comparison underlying the logarithmic height bound. -/
 theorem sevenHalves_power_certificate : 2 ^ 18 < 7 ^ 7 := by
@@ -101,8 +101,9 @@ theorem sevenHalves_archimedean_height_condition :
     (by norm_num : (2 : ℝ) ≠ 0)]
   simpa [div_eq_mul_inv, mul_comm] using hdiv
 
-/-- The finite arithmetic core of a coordinatewise rational-base corridor.
-`digit` abstracts the final divisor coefficient that is individually cleared. -/
+/-- Six arithmetic conditions for coordinatewise clearing at a rational base.
+Here `digit` is the final divisor coefficient cleared individually.  This
+predicate is not asserted to follow from rationality of the Lambert value. -/
 def CoordinatewiseCorridor
     (a b N K Q digit : ℕ) : Prop :=
   0 < a ∧ 0 < Q ∧ 0 < digit ∧ digit ≤ N + K ∧
@@ -143,8 +144,8 @@ theorem three_mul_lt_two_pow_succ {x : ℕ} (hx : 2 ≤ x) :
       rw [pow_succ]
       omega
 
-/-- The literal coordinatewise Erdős corridor cannot occur at base `3/2` once
-both the shift and cleared window are nonempty. -/
+/-- The six conditions in `CoordinatewiseCorridor 3 2 N K Q digit` are
+inconsistent once both `N` and `K` are positive. -/
 theorem threeHalves_no_coordinatewiseCorridor
     {N K Q digit : ℕ} (hN : 1 ≤ N) (hK : 1 ≤ K) :
     ¬ CoordinatewiseCorridor 3 2 N K Q digit := by
@@ -175,8 +176,8 @@ def rationalBaseClearedTailQ
     (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
 
-/-- Exact rational-base recurrence.  The forcing term contains `s^(N+1)`;
-this is the denominator-base tax absent from the integer-base case `s = 1`. -/
+/-- Exact rational-base recurrence.  Its forcing term contains `s^(N+1)`;
+when `s = 1`, that factor is identically one. -/
 theorem rationalBaseClearedTailQ_succ
     {r s B F : ℚ} {coeff : ℕ → ℚ} (hr : r ≠ 0) (N : ℕ) :
     rationalBaseClearedTailQ r s B F coeff (N + 1) =
@@ -192,8 +193,10 @@ def rationalBaseForcingNat
     (s B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) : ℕ :=
   B * coeff (N + 1) * s ^ (N + 1)
 
-/-- At every genuine noninteger denominator base `s ≥ 2`, positive
-coefficients force at least exponential `2^(N+1)` growth. -/
+/-- At every denominator base `s ≥ 2`, positive coefficients make the forcing
+term at least `2^(N+1)`.  This lower bound alone gives no integrality,
+boundedness, sign, nonvanishing, or cancellation property of the cleared-tail
+states. -/
 theorem twoPow_le_rationalBaseForcingNat
     {s B : ℕ} {coeff : ℕ → ℕ} {N : ℕ}
     (hs : 2 ≤ s) (hB : 1 ≤ B) (hc : 1 ≤ coeff (N + 1)) :
@@ -207,7 +210,7 @@ theorem twoPow_le_rationalBaseForcingNat
     _ = rationalBaseForcingNat s B coeff N := by
       simp [rationalBaseForcingNat, mul_assoc]
 
-/-- In the integer-base case the denominator-base tax collapses exactly. -/
+/-- At denominator base one, the exponential factor collapses exactly. -/
 @[simp] theorem rationalBaseForcingNat_one
     (B : ℕ) (coeff : ℕ → ℕ) (N : ℕ) :
     rationalBaseForcingNat 1 B coeff N = B * coeff (N + 1) := by

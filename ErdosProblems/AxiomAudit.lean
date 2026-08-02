@@ -41,6 +41,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.twoPow_le_rationalBaseForcingNat
 #print axioms ErdosProblems.Erdos1049.sevenHalves_power_certificate
 #print axioms ErdosProblems.Erdos1049.sevenHalves_rational_margin
+#print axioms ErdosProblems.Erdos1049.sevenHalves_archimedean_height_condition
 #print axioms ErdosProblems.Erdos1049.rationalPadePSummandDenExpTwice_le
 #print axioms ErdosProblems.Erdos1049.rationalPadeQMaxDenExpTwice_le
 #print axioms ErdosProblems.Erdos1049.rationalPadeExteriorDet_cast_eq
@@ -54,9 +55,12 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.rationalPadeExteriorDet_ne_zero_of_left_pos_right_neg
 #print axioms ErdosProblems.Erdos1049.fourJetSignature_card
 #print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank
+#print axioms ErdosProblems.Erdos1049.homEvalThreeTwo_mod_three
+#print axioms ErdosProblems.Erdos1049.homEvalThreeTwo_mod_two
 #print axioms ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units
 #print axioms ErdosProblems.Erdos1049.commonMultiplier_isCoprime_six_of_endpoint_units
 #print axioms ErdosProblems.Erdos1049.commonFactorSeven_fixture
+#print axioms ErdosProblems.Erdos1049.three_two_scalar_margin_neg
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
 #print axioms ErdosProblems.Erdos251.prime0DisplayedPartialSumQ_eq_two_mul

@@ -6,28 +6,29 @@ import Mathlib.Tactic
 /-!
 # Erdős #1049: endpoint arithmetic at the rational base `3 / 2`
 
-Homogeneous evaluation at `(3,2)` sees the constant coefficient modulo `3`
-and the coefficient at the declared top width modulo `2`. A unit at the first
-endpoint excludes a factor `3`; a unit at the second excludes a factor `2`.
-For a pair of coefficient channels with the corresponding opposite endpoint
-units, every common multiplier is therefore coprime to `6`.
+For arbitrary integer polynomials, homogeneous evaluation at `(3,2)` sees the
+constant coefficient modulo `3` and the coefficient at the declared top width
+modulo `2`.  A unit at the first endpoint excludes a factor `3`; a unit at the
+second excludes a factor `2`.  For a pair of coefficient channels with the
+corresponding opposite endpoint units, every common multiplier is therefore
+coprime to `6`.
 
-This is a local-prime exclusion, not a coprimality theorem. The explicit pair
+This is a local-prime exclusion, not a coprimality theorem.  The explicit pair
 `X^2 + 3` and `5X^2 + 1` evaluates to `21` and `49`, so the two channels can
-still share the factor `7`. The four-jet construction below records the
-additive congruence problem that remains after common scalar content has been
-ruled out as a source of the needed `2`- and `3`-adic gain. The module does
-not construct the Zudilin coefficient polynomials or import their analytic
-asymptotics.
+still share the factor `7`.  The finite selector theorem below supplies
+distinct selectors with equal simultaneous endpoint residues.  It does not
+show that their polynomial difference or analytic remainder is nonzero.  The
+module neither constructs a published Zudilin coefficient family nor imports
+its analytic asymptotics.
 -/
 
 namespace ErdosProblems.Erdos1049
 
 open Polynomial
 
-/-- Twice the normalising exponent used in the finite Heine--Zudilin
-coefficient calculation.  Doubling removes every parity and integer-division
-side condition from the algebraic certificate. -/
+/-- Twice a formal normalising exponent for the displayed parameter tuple.
+Doubling removes every parity and integer-division side condition from the
+algebraic identity. -/
 def zudilinNormExpTwice (a0 a1 a2 b : ℤ) : ℤ :=
   a1 * (a1 - 1) + 2 * a0 * a1 + 2 * (b - a2) * (a2 - a1)
 
@@ -67,8 +68,8 @@ theorem zudilinBottomExpTwice_succ_sub (a0 a1 a2 b k : ℤ) :
     zudilinNormExpTwice]
   ring
 
-/-- Inside the source cone, bottom exponents strictly increase from `a₂`
-onward. -/
+/-- Under `b ≤ a₀ + a₂`, the formal bottom exponents strictly increase from
+`a₂` onward. -/
 theorem zudilinBottomExpTwice_strict_step
     {a0 a1 a2 b k : ℤ}
     (hcone : b ≤ a0 + a2) (hk : a2 ≤ k) :
@@ -85,8 +86,8 @@ theorem zudilinRawDegreeTwice_succ_sub (a0 a1 a2 b k : ℤ) :
   simp [zudilinRawDegreeTwice, zudilinPartialFractionExpTwice]
   ring
 
-/-- Inside the source cone, raw summand degrees strictly increase through
-the last allowed index `b-1`. -/
+/-- Under the displayed parameter inequalities, the formal raw degrees
+strictly increase through the last allowed index `b-1`. -/
 theorem zudilinRawDegreeTwice_strict_step
     {a0 a1 a2 b k : ℤ}
     (ha1 : 0 < a1) (hcone : b ≤ a0 + a2) (hk : k ≤ b - 2) :
@@ -156,12 +157,11 @@ theorem fourJetSignature_card (R S : ℕ) :
       (3 ^ R) ^ 2 * (2 ^ S) ^ 2 := by
   simp [FourJetSignature, ZMod.card, pow_two]
 
-/-- Once the binary selector space is larger than the four-jet target, two
-distinct subsets have the same simultaneous endpoint signature.  Subtracting
-their indicator vectors gives a nonzero coefficient vector in
-`{-1,0,1}` whose four endpoint jets cancel.  This theorem supplies kernel
-existence only; it does not prove that the resulting analytic remainder is
-nonzero or that its height beats the local gain. -/
+/-- Once the binary selector space is larger than the simultaneous endpoint
+residue space, two distinct subsets have the same residue sum.  Subtracting
+their indicator vectors gives a nonzero coefficient vector in `{-1,0,1}`
+whose four endpoint residues cancel.  The resulting polynomial pair or
+analytic remainder may nevertheless vanish. -/
 theorem exists_distinct_binary_selectors_same_fourJet
     {n R S W : ℕ}
     (forms : Fin n → Polynomial ℤ × Polynomial ℤ)
@@ -309,12 +309,9 @@ theorem not_three_dvd_both_homEval_of_right_const_unit
   intro h
   exact three_not_dvd_homEvalThreeTwo_of_const_unit W V hunit h.2
 
-/-- A genuine common multiplier of the two specialised coefficient channels
-cannot contain either local prime needed at the rational base `3 / 2`, provided
-the left channel has a unit top endpoint and the right channel has a unit
-bottom endpoint.  Hence any useful `2`-adic or `3`-adic gain must survive
-rowwise primitive normalisation; it cannot be manufactured by common content
-of one Padé pair. -/
+/-- If the left channel has a unit top coefficient and the right channel has a
+unit constant coefficient, a common multiplier of their homogeneous
+evaluations is divisible by neither `2` nor `3`. -/
 theorem commonMultiplier_not_two_not_three_of_endpoint_units
     (c : ℤ) (W : ℕ) (U V : Polynomial ℤ)
     (hUtop : U.coeff W = 1 ∨ U.coeff W = -1)
@@ -350,9 +347,7 @@ theorem commonMultiplier_isCoprime_six_of_endpoint_units
     exact hlocal.2
   exact htwo.mul_right hthree
 
-/-- The only analytic input needed from an irrationality-exponent argument:
-if an irrational number has exponent at least `2` and a source construction
-bounds that exponent by `C₁ / C₀`, then `2 C₀ ≤ C₁`. -/
+/-- If `C₀ > 0`, `2 ≤ μ`, and `μ ≤ C₁ / C₀`, then `2 C₀ ≤ C₁`. -/
 theorem twice_le_of_irrationalityExponent_bounds
     {μ C0 C1 : ℝ} (hC0 : 0 < C0)
     (hlower : 2 ≤ μ) (hupper : μ ≤ C1 / C0) :
@@ -360,11 +355,8 @@ theorem twice_le_of_irrationalityExponent_bounds
   apply (le_div_iff₀ hC0).mp
   exact hlower.trans hupper
 
-/-- The parameter inequality forced by an integer-base
-irrationality-exponent estimate makes the rational-base `3/2`
-product-formula margin strictly negative.  The theorem deliberately consumes
-the source-backed inequality as a hypothesis rather than importing the
-analytic construction. -/
+/-- If `C₁ > 0` and either `C₀ ≤ 0` or `2 C₀ ≤ C₁`, then the scalar margin
+`C₀ log 3 - C₁ log 2` is strictly negative. -/
 theorem three_two_scalar_margin_neg
     {C0 C1 : ℝ} (hC1 : 0 < C1)
     (hsource : C0 ≤ 0 ∨ 2 * C0 ≤ C1) :
