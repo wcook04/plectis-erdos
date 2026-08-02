@@ -624,3 +624,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.globalNegativeMass_step_bound
 #print axioms ErdosProblems.Erdos243.globalPositiveCentered_strict_payment_descent
 #print axioms ErdosProblems.Erdos243.returnedError_step
+#print axioms ErdosProblems.Erdos243.survivor_interval_dvd_denominator
+#print axioms ErdosProblems.Erdos243.repairedFamily_lcm_sq_dvd_scaleGrowth
+#print axioms ErdosProblems.Erdos243.firstCrossing_repairTransversal_floor
+#print axioms ErdosProblems.Erdos243.prefixMultiplierProduct_le_cube
+#print axioms ErdosProblems.Erdos243.trueDeletion_halves_primitiveNumerator
