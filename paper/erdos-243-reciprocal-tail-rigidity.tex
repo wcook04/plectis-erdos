@@ -58,10 +58,10 @@ vanishing, it cannot have a bounded negative part:
 a bounded negative part makes $C$ rise by a bounded amount, normalised
 vanishing makes $C$ tend to infinity, the tail gcd stabilises so the orbit may
 be taken reduced, and in a reduced tail the multipliers are pairwise coprime
-and permanently avoided by the numerator, which a Chinese-remainder block of
+and coprime to every later numerator, which a Chinese-remainder block of
 consecutive multiples forbids.  That last step is a statement about integer
 sequences alone: a sequence tending to infinity with upward steps bounded by
-$B$ cannot permanently avoid infinitely many pairwise coprime moduli.
+$B$ cannot remain coprime to a fresh pairwise-coprime modulus at every stage.
 Together with an absorption lemma making
 $E_n=0$ propagate, this yields: under exact dynamics, eventual strict centring,
 an eventually bounded negative part, and normalised vanishing, $E$ vanishes
@@ -740,7 +740,7 @@ case unnecessary, since a periodic magnitude is bounded while the multipliers
 tend to infinity.
 \end{remark}
 
-\section{Bounded rise cannot avoid coprime moduli}\label{sec:barrier}
+\section{Bounded rise is incompatible with fresh coprimality}\label{sec:barrier}
 
 Periodicity is still a strong assumption.  Removing it needs a different kind
 of obstruction, and the one used here is a counting argument about where an
@@ -771,11 +771,10 @@ least $3$, that value is at most $5$, and every member of $\{3,4,5\}$ is
 divisible by one of the three moduli.
 \end{example}
 
-\begin{theorem}[bounded rise cannot avoid fresh moduli]\label{res:barrier}
+\begin{theorem}[bounded rise cannot maintain fresh coprimality]\label{res:barrier}
 Let $u:\N\to\N$ tend to infinity with $u_{n+1}\le u_n+B$ for a fixed $B>0$.
-Then $u$ cannot permanently avoid infinitely many fresh pairwise coprime
-moduli: there is no family of pairwise coprime $m_i\ge2$, one for each index,
-such that $m_i\nmid u_t$ whenever $i<t$.
+Then there is no family of pairwise coprime $m_i\ge2$, one for each index,
+such that $\gcd(m_i,u_t)=1$ whenever $i<t$.
 \end{theorem}
 
 \begin{proof}
@@ -783,7 +782,8 @@ Take $B$ of the moduli, from indices beyond any chosen point, and use
 Lemma~\ref{res:crt} to find $t$ far out with the $i$th of them dividing $t+i$.
 The interval $[t,t+B)$ has length $B$, and $u$ climbs by at most $B$ per step
 while tending to infinity, so some $u_s$ lands in it.  Then $u_s=t+i$ for some
-$i<B$, and the $i$th modulus divides $u_s$, against avoidance.
+$i<B$, and the $i$th modulus divides $u_s$.  Since that modulus is at least
+$2$, this contradicts $\gcd(m_i,u_s)=1$.
 \end{proof}
 
 \noindent Formalised as the
@@ -794,7 +794,7 @@ forbids it from stepping over a window of width $B$.  Uniformity of the bound
 is what the proof uses, and it is the hypothesis that cannot be relaxed by this
 argument: a rise bounded only along a subsequence leaves the intervening steps
 free to jump the window.  We have not looked for a sequence of unbounded rise
-avoiding every modulus.  The statement is elementary and we are not aware of a
+remaining coprime to every fresh modulus.  The statement is elementary and we are not aware of a
 prior published form of it, but we would not be surprised if one exists.
 
 The moduli are indexed by the same set as the sequence, and the $i$th of them
@@ -1278,7 +1278,7 @@ on the negative part, which is why the theorem is still conditional.
 
 \begin{problem}[variable-rise CRT barrier]\label{res:variablerise}
 Determine the weakest growth condition on the positive increments of $u_n$
-under which an unbounded integer sequence cannot permanently avoid infinitely
+under which an unbounded integer sequence cannot remain coprime to infinitely
 many pairwise-coprime old moduli as in Theorem~\ref{res:barrier}.  In
 particular, does the conclusion remain valid under the candidate condition
 \[
