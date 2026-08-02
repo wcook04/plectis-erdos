@@ -58,14 +58,20 @@ vanishing, it cannot have a bounded negative part:
 a bounded negative part makes $C$ rise by a bounded amount, normalised
 vanishing makes $C$ tend to infinity, the tail gcd stabilises so the orbit may
 be taken reduced, and in a reduced tail the multipliers are pairwise coprime
-and permanently avoided by the numerator, which a Chinese-remainder block of
+and coprime to every later numerator, which a Chinese-remainder block of
 consecutive multiples forbids.  That last step is a statement about integer
 sequences alone: a sequence tending to infinity with upward steps bounded by
-$B$ cannot permanently avoid infinitely many pairwise coprime moduli.
+$B$ cannot remain coprime to a fresh pairwise-coprime modulus at every stage.
 Together with an absorption lemma making
 $E_n=0$ propagate, this yields: under exact dynamics, eventual strict centring,
 an eventually bounded negative part, and normalised vanishing, $E$ vanishes
 eventually, and the sequence satisfies the Sylvester recurrence eventually.
+
+There is also a weaker conclusion from normalised vanishing alone.  It makes
+strict increases of $\gcd(C_n,D_n)$ sublinear in number and forces constant-gcd
+blocks of every prescribed finite length arbitrarily far out.  It does not
+make the gcd eventually constant; that stronger conclusion uses cofinally
+bounded negative magnitudes.
 
 Problem~\#243 is open and this note does not close it.  The last theorem is
 conditional, and two of its hypotheses are analytic inputs that we assume
@@ -237,10 +243,11 @@ Constantly negative $E$ & Excluded here & Theorem~\ref{res:constant}, at any mag
 Periodic negative magnitude & Excluded here & Theorem~\ref{res:periodic}, in the regime $e_n<a_n$ and with positive drift $M>0$. \\
 Coprime-modulus barrier & Proved here & Theorem~\ref{res:barrier}. \\
 Bounded negative part & Excluded here; conditional & Theorem~\ref{res:bounded}; see its hypotheses. \\
+Normalised vanishing alone & Gcd changes are sparse & Proposition~\ref{res:gcdsparse}; arbitrarily late finite constant blocks, not eventual constancy. \\
 Finite normalised negative mass & Excluded here; conditional & Theorem~\ref{res:mass}, Section~\ref{sec:mass}; normalised vanishing remains an input. \\
 Factorial residue reduction & Proved here; superseded for its original purpose & Theorem~\ref{res:residue}, Appendix~\ref{app:residue}. \\
 Strict centring, normalised vanishing & Assumed here; supplied by prior art & Section~\ref{sec:bounded}; derived in~\cite{koizumi2025}, see Section~\ref{sec:problem}. \\
-Unbounded, divergent-mass negative excursions & Surviving frontier profile & Section~\ref{sec:open}; consequences any counterexample must satisfy, not a separate open problem. \\
+Unbounded, divergent-mass negative excursions & Necessary counterexample conditions & Section~\ref{sec:open}; consequences any counterexample must satisfy, not a separate open problem. \\
 Erd\H{o}s--Straus criterion; Duverney & Proved elsewhere & Cited, not formalised; the Erd\H{o}s--Straus hypothesis is implied by that of Theorem~\ref{res:descent}. \\
 State system equals reciprocal tails & Not formalised & Section~\ref{sec:state}. \\
 \bottomrule
@@ -733,7 +740,7 @@ case unnecessary, since a periodic magnitude is bounded while the multipliers
 tend to infinity.
 \end{remark}
 
-\section{Bounded rise cannot avoid coprime moduli}\label{sec:barrier}
+\section{Bounded rise is incompatible with fresh coprimality}\label{sec:barrier}
 
 Periodicity is still a strong assumption.  Removing it needs a different kind
 of obstruction, and the one used here is a counting argument about where an
@@ -764,11 +771,10 @@ least $3$, that value is at most $5$, and every member of $\{3,4,5\}$ is
 divisible by one of the three moduli.
 \end{example}
 
-\begin{theorem}[bounded rise cannot avoid fresh moduli]\label{res:barrier}
+\begin{theorem}[bounded rise cannot maintain fresh coprimality]\label{res:barrier}
 Let $u:\N\to\N$ tend to infinity with $u_{n+1}\le u_n+B$ for a fixed $B>0$.
-Then $u$ cannot permanently avoid infinitely many fresh pairwise coprime
-moduli: there is no family of pairwise coprime $m_i\ge2$, one for each index,
-such that $m_i\nmid u_t$ whenever $i<t$.
+Then there is no family of pairwise coprime $m_i\ge2$, one for each index,
+such that $\gcd(m_i,u_t)=1$ whenever $i<t$.
 \end{theorem}
 
 \begin{proof}
@@ -776,7 +782,8 @@ Take $B$ of the moduli, from indices beyond any chosen point, and use
 Lemma~\ref{res:crt} to find $t$ far out with the $i$th of them dividing $t+i$.
 The interval $[t,t+B)$ has length $B$, and $u$ climbs by at most $B$ per step
 while tending to infinity, so some $u_s$ lands in it.  Then $u_s=t+i$ for some
-$i<B$, and the $i$th modulus divides $u_s$, against avoidance.
+$i<B$, and the $i$th modulus divides $u_s$.  Since that modulus is at least
+$2$, this contradicts $\gcd(m_i,u_s)=1$.
 \end{proof}
 
 \noindent Formalised as the
@@ -787,7 +794,7 @@ forbids it from stepping over a window of width $B$.  Uniformity of the bound
 is what the proof uses, and it is the hypothesis that cannot be relaxed by this
 argument: a rise bounded only along a subsequence leaves the intervening steps
 free to jump the window.  We have not looked for a sequence of unbounded rise
-avoiding every modulus.  The statement is elementary and we are not aware of a
+remaining coprime to every fresh modulus.  The statement is elementary and we are not aware of a
 prior published form of it, but we would not be surprised if one exists.
 
 The moduli are indexed by the same set as the sequence, and the $i$th of them
@@ -881,6 +888,42 @@ boundedness \emph{along a cofinal set} and not
 boundedness at every index.  That is what the situation gives: the tail gcd is
 controlled only at the negative indices, and cofinally many of them is all the
 divisibility chain needs.
+
+Normalised vanishing by itself gives a different, strictly weaker conclusion.
+For an exact natural orbit with $C_n>0$, put
+\[
+ G_n=\gcd(C_n,D_n),\qquad
+ \Gamma(N)=\#\{0\le j<N:G_j<G_{j+1}\}.
+\]
+
+\begin{proposition}[normalised vanishing makes strict gcd changes sparse]
+\label{res:gcdsparse}
+Assume
+\[
+  (\forall K\ge1)(\exists N)(\forall n\ge N)\qquad
+  K|E_n|<C_n.
+\]
+Then, for every $K\ge1$, eventually $K\Gamma(N)<N$.  Moreover, for every
+starting bound $B$ and block length $L$, some $n\ge B$ satisfies
+\[
+  G_n=G_{n+1}=\cdots=G_{n+L}.
+\]
+\end{proposition}
+
+\noindent The first assertion is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2092}{tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes}{sublinear
+strict-growth theorem}; the second is the
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2108}{tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes}{arbitrarily
+late constant-block theorem}.  The proof first converts normalised vanishing
+into subexponential growth of $C_n$, then charges every strict divisibility
+increase of $G_n$ against a finite power-of-two budget.  Sparse strict changes
+force long finite gaps between them.
+
+The quantifiers matter.  Proposition~\ref{res:gcdstab} uses cofinally bounded
+negative magnitudes and yields eventual constancy.  Proposition~\ref{res:gcdsparse}
+uses only normalised vanishing and yields arbitrarily late constant blocks of
+each prescribed finite length.  It does not yield one infinite constant tail,
+and it does not exclude cofinally unbounded negative excursions.
 
 \section{Excluding a bounded negative part}\label{sec:bounded}
 
@@ -1235,7 +1278,7 @@ on the negative part, which is why the theorem is still conditional.
 
 \begin{problem}[variable-rise CRT barrier]\label{res:variablerise}
 Determine the weakest growth condition on the positive increments of $u_n$
-under which an unbounded integer sequence cannot permanently avoid infinitely
+under which an unbounded integer sequence cannot remain coprime to infinitely
 many pairwise-coprime old moduli as in Theorem~\ref{res:barrier}.  In
 particular, does the conclusion remain valid under the candidate condition
 \[
