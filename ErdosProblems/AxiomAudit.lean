@@ -8,6 +8,12 @@ it and records the assumptions of the main results brought in by the first
 problem-centric wave.
 -/
 
+#print axioms ErdosProblems.Erdos68.canonicalRemainder_recurrence
+#print axioms ErdosProblems.Erdos68.factorial_expansion_partial
+#print axioms ErdosProblems.Erdos68.zero_remainder_forces_zero_digit_tail
+#print axioms ErdosProblems.Erdos68.dvd_strictSuccessor_iff_roundingDigit_eq_one
+#print axioms ErdosProblems.Erdos68.pow_dvd_dilation_strictSuccessor_iff
+#print axioms ErdosProblems.Erdos68.sq_dvd_double_strictSuccessor_prime_iff
 #print axioms ErdosProblems.Erdos269.threePrimeHeight_le_cube
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell

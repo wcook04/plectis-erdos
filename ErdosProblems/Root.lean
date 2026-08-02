@@ -1,3 +1,5 @@
+import ErdosProblems.Erdos68.CanonicalFactorialDigits
+import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 import ErdosProblems.Erdos249.FiniteEulerSieve
 import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
 import ErdosProblems.Erdos249.CyclotomicAnchoredKill
