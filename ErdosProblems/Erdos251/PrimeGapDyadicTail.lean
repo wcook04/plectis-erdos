@@ -18,14 +18,22 @@ open scoped BigOperators
 /-!
 # Erdős #251: prime-gap dyadic tails
 
-Rationality controls the fractional part of a scaled tail, not the prime-gap
-word itself. This module records the exact dyadic coboundary which exposes the
-free integer carry and proves its finite telescoping identity. It is the
-formal no-go behind attempts to deduce eventual periodicity or automaticity of
-prime gaps from a periodic fractional orbit.
+For a rational dyadic tail state with reduced denominator `d`, a shift of
+length `h` is integral exactly when `d ∣ 2^h - 1`, equivalently when
+`2^h ≡ 1 (mod d)`. Thus the possible integral shifts are classified by the
+arithmetic of the current denominator, rather than by a heuristic analogy
+with periodic digit words. Integrality then propagates to every later state.
 
-The remaining analytic producer is growing-block dyadic anti-concentration for
-the actual consecutive prime gaps.
+For real-valued recurrences, the initial state is irrational exactly when
+every positive tail shift is nonintegral; rationality is equivalent to the
+existence of a positive shift that is eventually integral. The module also
+proves the exact summation-by-parts reduction from the prime series to the
+consecutive-prime-gap series and proves that the prime-gap word is not
+eventually periodic.
+
+What remains for the original problem is the analytic input: cofinally many
+small, nonintegral shifts for the actual consecutive prime gaps. The finite
+consumers for such an input are formalized below.
 -/
 
 namespace ErdosProblems.Erdos251
@@ -346,6 +354,38 @@ theorem ratIntegral_sub_int_iff (x : ℚ) (z : ℤ) :
     push_cast
     ring
 
+/-- A rational number is integral exactly when its reduced denominator is
+one. -/
+theorem ratIntegral_iff_den_eq_one (x : ℚ) :
+    RatIntegral x ↔ x.den = 1 := by
+  constructor
+  · rintro ⟨z, rfl⟩
+    simp
+  · intro hden
+    refine ⟨x.num, ?_⟩
+    exact (Rat.den_eq_one_iff x).mp hden |>.symm
+
+/-- Multiplication by a natural number clears a rational denominator exactly
+when that denominator divides the multiplier. -/
+theorem ratIntegral_nat_mul_iff_den_dvd (x : ℚ) (m : ℕ) :
+    RatIntegral ((m : ℚ) * x) ↔ x.den ∣ m := by
+  rw [ratIntegral_iff_den_eq_one]
+  have hrepr :
+      (m : ℚ) * x =
+        ((((m : ℤ) * x.num : ℤ) : ℚ) / (x.den : ℤ)) := by
+    calc
+      (m : ℚ) * x =
+          (m : ℚ) * ((x.num : ℚ) / (x.den : ℚ)) := by
+            rw [Rat.num_div_den]
+      _ = ((((m : ℤ) * x.num : ℤ) : ℚ) / (x.den : ℤ)) := by
+            push_cast
+            ring
+  rw [hrepr, Rat.den_div_intCast_eq_one_iff _ _]
+  · rw [Int.natCast_dvd]
+    simp only [Int.natAbs_mul, Int.natAbs_natCast]
+    exact x.reduced.symm.dvd_mul_right
+  · exact Int.ofNat_ne_zero.mpr x.den_ne_zero
+
 /-- Euler's congruence turns an odd reduced denominator into an explicit
 integral multiplier: if `d = x.den` is odd, then
 `(2^(phi d) - 1) * x` is an integer. -/
@@ -384,6 +424,34 @@ theorem tailShift_integral_iff_scaledTail
       RatIntegral (((2 ^ h : ℚ) - 1) * T N) := by
   rw [tailShift_eq_scaled_sub_block hrec]
   exact ratIntegral_sub_int_iff _ _
+
+/-- Exact denominator classification of all integral shift lengths.  A shift
+by `h` steps is integral precisely when the reduced denominator of the current
+tail divides the Mersenne number `2^h - 1`. -/
+theorem tailShift_integral_iff_den_dvd_mersenne
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    RatIntegral (tailShift T h N) ↔ (T N).den ∣ 2 ^ h - 1 := by
+  rw [tailShift_integral_iff_scaledTail hrec]
+  have hone : 1 ≤ 2 ^ h := Nat.one_le_two_pow
+  simpa [Nat.cast_sub hone] using
+    (ratIntegral_nat_mul_iff_den_dvd (T N) (2 ^ h - 1))
+
+/-- Congruence form of the exact shift-length classification: the integral
+shifts are precisely the exponents for which `2^h` is congruent to `1` modulo
+the current reduced denominator. -/
+theorem tailShift_integral_iff_two_pow_modEq_one
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N h : ℕ) :
+    RatIntegral (tailShift T h N) ↔
+      2 ^ h ≡ 1 [MOD (T N).den] := by
+  rw [tailShift_integral_iff_den_dvd_mersenne hrec]
+  have hone : 1 ≤ 2 ^ h := Nat.one_le_two_pow
+  constructor
+  · intro hdiv
+    exact ((Nat.modEq_iff_dvd' hone).mpr hdiv).symm
+  · intro hmod
+    exact (Nat.modEq_iff_dvd' hone).mp hmod.symm
 
 /-- If one tail state has odd reduced denominator `d`, its shift by
 `Nat.totient d` steps is integral.  This is the explicit finite-algebraic

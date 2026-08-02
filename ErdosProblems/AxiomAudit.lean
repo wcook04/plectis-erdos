@@ -53,6 +53,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
 #print axioms ErdosProblems.Erdos251.tailShift_integral_add
 #print axioms ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail
+#print axioms ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne
+#print axioms ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one
 #print axioms ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den
 #print axioms ErdosProblems.Erdos251.natCarryCoeff_cast
 #print axioms ErdosProblems.Erdos243.sylvesterDefect_mul_nextTailState
