@@ -655,11 +655,10 @@ def CofinalNonintegralTailShifts (T : ℕ → ℝ) : Prop :=
   ∀ h, 0 < h → ∀ N₀, ∃ N, N₀ ≤ N ∧
     ¬RealIntegral (realTailShift T h N)
 
-/-- Exact proof consumer: to prove the initial value irrational, it is enough
-to rule out eventual integrality cofinally for every fixed positive shift.
-Rationality would produce a rational orbit, and the denominator-collapse
-theorem above produces one fixed shift integral at every sufficiently late
-index. -/
+/-- Cofinal nonintegrality for every fixed positive shift rules out a rational
+initial state: rationality produces one fixed positive shift that is integral
+at every sufficiently late index.  The converse is recorded after the
+pointwise classifier below. -/
 theorem irrational_initial_of_cofinalNonintegralTailShifts
     {g : ℕ → ℤ} {T : ℕ → ℝ}
     (hrec : RealDyadicTailRecurrence g T)
@@ -933,8 +932,9 @@ theorem realTailShift_eq_scaled_sub_block
 
 /-- Exact classifier for an integer-digit dyadic tail orbit: the initial state
 is rational if and only if one positive-length tail difference is integral.
-The forward direction uses denominator collapse; the reverse direction uses
-the nonzero multiplier `2^h - 1` in the block identity. -/
+For a rational state, choose `h` so that the Mersenne multiplier `2^h - 1`
+clears the odd part of its denominator.  Conversely, the block identity has
+nonzero multiplier `2^h - 1`, so one integral shift recovers rationality. -/
 theorem not_irrational_initial_iff_exists_integral_positive_tailShift
     {g : ℕ → ℤ} {T : ℕ → ℝ}
     (hrec : RealDyadicTailRecurrence g T) :
@@ -1023,5 +1023,21 @@ theorem irrational_initial_iff_all_positive_tailShifts_nonintegral
     obtain ⟨h, N, hh, hInt⟩ :=
       (not_irrational_initial_iff_exists_integral_positive_tailShift hrec).1 hrat
     exact hnone h hh N hInt
+
+/-- Exact cofinal form of the irrationality classifier.  For an integer-digit
+dyadic tail recurrence, irrationality of the initial state is equivalent to
+finding, beyond every basepoint, a nonintegral tail difference of each fixed
+positive length. -/
+theorem irrational_initial_iff_cofinalNonintegralTailShifts
+    {g : ℕ → ℤ} {T : ℕ → ℝ}
+    (hrec : RealDyadicTailRecurrence g T) :
+    Irrational (T 0) ↔ CofinalNonintegralTailShifts T := by
+  constructor
+  · intro hirr h hh N₀
+    refine ⟨N₀, le_rfl, ?_⟩
+    exact
+      (irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1
+        hirr h hh N₀
+  · exact irrational_initial_of_cofinalNonintegralTailShifts hrec
 
 end ErdosProblems.Erdos251
