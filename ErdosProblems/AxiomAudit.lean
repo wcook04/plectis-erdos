@@ -41,6 +41,12 @@ problem-centric wave.
 #print axioms Erdos68.not_isLittleO_square_subsequence_radius
 #print axioms Erdos68.square_subsequence_radius_three_halves_lower
 #print axioms Erdos68.no_eventual_square_subsequence_three_halves_upper
+#print axioms ErdosProblems.Erdos68.centreGap_nonneg
+#print axioms ErdosProblems.Erdos68.centreGap_lt_one
+#print axioms ErdosProblems.Erdos68.centreDefectCode_eq_floor
+#print axioms ErdosProblems.Erdos68.centreGap_recurrence
+#print axioms ErdosProblems.Erdos68.centreDefectCode_eq_factorial_floor
+#print axioms ErdosProblems.Erdos68.centreGap_factorial_recurrence
 #print axioms ErdosProblems.Erdos269.threePrimeHeight_le_cube
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell
