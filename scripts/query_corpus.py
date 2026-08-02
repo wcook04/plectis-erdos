@@ -220,6 +220,8 @@ SEMANTIC_VOCABULARY = (
         "route_hints": (
             "--declaration finiteErdosSum_ne_one_div_twenty_one",
             "--declaration exists_two_primitive23_solutions_mul_ten",
+            "--claim universal_257",
+            "--open remaining_open.universal_257_all_infinite_supports",
         ),
         "semantic_node_hints": (
             "Z65::one_over_twenty_one_has_no_finite_support_on_ranks_at_least_two",
@@ -1915,7 +1917,19 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             continue
         text = path.read_text(encoding="utf-8")
         lines = text.splitlines()
-        environments = set(re.findall(r"\\newtheorem\*?\{([^}]+)\}", text))
+        theorem_sources = [text]
+        for input_match in re.finditer(r"\\input\{([^}]+)\}", text):
+            input_path = path.parent / input_match.group(1)
+            if input_path.suffix == "":
+                input_path = input_path.with_suffix(".tex")
+            if input_path.is_file():
+                theorem_sources.append(input_path.read_text(encoding="utf-8"))
+        environments = set(
+            re.findall(
+                r"\\newtheorem\*?\{([^}]+)\}",
+                "\n".join(theorem_sources),
+            )
+        )
         starts: list[dict[str, Any]] = []
 
         section_pattern = re.compile(
@@ -1961,6 +1975,9 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
 
         starts.sort(key=lambda row: row["offset"])
         for index, start in enumerate(starts):
+            label_allowlist = paper_row.get("anchor_label_allowlist")
+            if label_allowlist is not None and start["label"] not in label_allowlist:
+                continue
             region_end = starts[index + 1]["offset"] if index + 1 < len(starts) else len(text)
             region = text[start["offset"]:region_end]
             line = text.count("\n", 0, start["offset"]) + 1
@@ -1982,17 +1999,28 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
 
             source_links = []
             for link in re.finditer(
-                r"\\(?P<macro>lref|lrefx|lword|lloc)"
+                r"\\(?P<macro>lref|lrefx|lword|mref|mword|lloc|mloc)"
                 r"\{(?P<file>[^}]+)\}\{(?P<line>\d+)\}"
                 r"(?:\{(?P<name>[^}]*)\})?"
-                r"(?:\{(?P<label>[^}]*)\})?",
+                r"(?:\{(?P<label>(?:[^{}]|\{[^{}]*\})*)\})?",
                 region,
             ):
-                module = f"Erdos249257/{link.group('file')}"
+                file_name = link.group("file")
+                macro = link.group("macro")
+                if file_name.startswith("Erdos249257/"):
+                    module = file_name
+                elif file_name.startswith("ErdosProblems/"):
+                    module = file_name
+                elif re.match(r"Erdos\d+/", file_name):
+                    module = f"ErdosProblems/{file_name}"
+                elif macro.startswith("m"):
+                    module = f"ErdosProblems/{file_name}"
+                else:
+                    module = f"Erdos249257/{file_name}"
                 source_links.append(
                     {
                         "edge_kind": "authored_source_link",
-                        "macro": link.group("macro"),
+                        "macro": macro,
                         "module": module,
                         "line": int(link.group("line")),
                         "source_ref": f"{module}:{link.group('line')}",
@@ -3140,7 +3168,11 @@ def matched_semantic_vocabulary(query: str) -> list[dict[str, Any]]:
 def semantic_query_operator(query: str) -> dict[str, Any]:
     """Classify the question-shaped operator independently of result ranking."""
     query_text = normalized_search_text(query)
+    query_terms = search_terms(query)
     if (
+        "resolution_status" in query_terms
+        and query_terms & {"claim", "public", "release", "status"}
+    ) or (
         "what should i try next" in query_text
         or "what blocks" in query_text
         or "what remains" in query_text
@@ -3292,10 +3324,9 @@ def semantic_dictionary_packet() -> dict[str, Any]:
         "problem_registry_contract": {
             "source": "docs/problems.json",
             "matching": (
-                "An exact accent-insensitive problem phrase, problem id, short "
-                "title, or full indexed question routes directly without scanning "
-                "the declaration atlas. Problem navigation does not confer reviewed "
-                "claim status or Lean proof authority."
+                "Exact accent-insensitive problem phrases, ids, short titles, and "
+                "indexed questions route without an atlas scan. Navigation grants "
+                "neither reviewed claim status nor Lean proof authority."
             ),
             "problems": [
                 {
@@ -3317,9 +3348,8 @@ def semantic_dictionary_packet() -> dict[str, Any]:
             ],
         },
         "consumer_action": (
-            "Load this bounded packet before free-text search, then follow one "
-            "typed route hint or inspect the transparent query interpretation "
-            "returned by --search."
+            "Load this packet first; follow a typed route hint or inspect the "
+            "transparent --search interpretation."
         ),
         "proof_authority": "Lean source checked by the pinned Lean kernel",
     }
@@ -3353,15 +3383,23 @@ def semantic_hint_targets(query: str) -> dict[tuple[str, str], int]:
     return targets
 
 
-def status_question_target(query: str) -> tuple[str, str] | None:
-    """Return the open-target claim and problem number for a status question."""
+def status_question_target(query: str) -> tuple[str, str, str] | None:
+    """Return the target claim, problem number, and principal open proposition."""
     terms = search_terms(query)
     if "resolution_status" not in terms:
         return None
     if "249" in terms:
-        return ("erdos_249", "249")
+        return (
+            "erdos_249",
+            "249",
+            "remaining_open.erdos_249_irrationality",
+        )
     if "257" in terms:
-        return ("universal_257", "257")
+        return (
+            "universal_257",
+            "257",
+            "remaining_open.universal_257_all_infinite_supports",
+        )
     return None
 
 
@@ -3554,6 +3592,56 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
     }
 
 
+def corpus_scope_boundary_packet(query: str) -> dict[str, Any] | None:
+    """Reject explicit problem numbers absent from the live public registry."""
+    normalized_query = normalized_search_text(query)
+    requested_numbers = {
+        int(match)
+        for pattern in (
+            r"\berdos(?:\s+problem)?\s*#?\s*(\d+)\b",
+            r"\bproblem\s*#?\s*(\d+)\b(?!\s*/)",
+        )
+        for match in re.findall(pattern, normalized_query)
+    }
+    if not requested_numbers:
+        return None
+
+    indexed_numbers = {
+        int(row["erdos_number"])
+        for row in load("docs/problems.json").get("problems", [])
+    }
+    outside_numbers = sorted(requested_numbers - indexed_numbers)
+    if not outside_numbers:
+        return None
+
+    covered_numbers = sorted(requested_numbers & indexed_numbers)
+    return {
+        "kind": "corpus_scope_boundary",
+        "authority_posture": (
+            "public_corpus_coverage_receipt_not_claim_status_or_Lean_proof_authority"
+        ),
+        "query": query,
+        "status": (
+            "explicit_problem_partially_out_of_scope"
+            if covered_numbers
+            else "explicit_problem_not_indexed"
+        ),
+        "requested_problem_numbers": sorted(requested_numbers),
+        "out_of_scope_problem_numbers": outside_numbers,
+        "covered_problem_numbers": covered_numbers,
+        "indexed_problem_numbers": sorted(indexed_numbers),
+        "scope_source": "docs/problems.json",
+        "match_count": 0,
+        "claim_effect": "none",
+        "private_state_disclosure": "none",
+        "next": (
+            "Use a public corpus whose live problem registry includes the "
+            "requested problem; this corpus will not substitute ranked results "
+            "from other problems."
+        ),
+    }
+
+
 def direct_route_search_packet(
     query: str,
     limit: int,
@@ -3619,7 +3707,11 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     query = query.strip()
     if not query:
         raise ValueError("search query must not be empty")
+    scope_boundary = corpus_scope_boundary_packet(query)
+    if scope_boundary is not None:
+        return scope_boundary
     claims = load("docs/claims.json")
+    hint_targets = semantic_hint_targets(query)
     problem_route = problem_registry_route(query)
     if problem_route is not None:
         return direct_route_search_packet(
@@ -3645,7 +3737,7 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
     hinted_route_ids = [
         handle
         for (kind, handle), _priority in sorted(
-            semantic_hint_targets(query).items(), key=lambda item: item[1]
+            hint_targets.items(), key=lambda item: item[1]
         )
         if kind == "reading_route"
     ]
@@ -3775,7 +3867,13 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             ),
         )
         if status_target and proposition["open_target_claim"] == status_target[0]:
-            rank = -1
+            rank = -1 if proposition["id"] == status_target[2] else 0
+        if (
+            hint_priority := hint_targets.get(
+                ("open_proposition", proposition["id"])
+            )
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             ranked.append(
                 (
@@ -3795,6 +3893,10 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 if value
             ),
         )
+        if (
+            hint_priority := hint_targets.get(("claim", claim["id"]))
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             ranked.append((rank, f"claim:{claim['id']}", {"kind": "claim", **compact_claim(claim)}))
 
@@ -3804,6 +3906,12 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             row["name"],
             " ".join(str(value) for value in (row["signature"], row.get("docstring"), row["module"]) if value),
         )
+        if (
+            hint_priority := hint_targets.get(
+                ("declaration", row["name"])
+            )
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             result = {"kind": "declaration", **compact_declaration(row)}
             if row.get("signature"):
@@ -3974,6 +4082,10 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
             rank = -2
         elif generic_claim_status_query and row["id"] == "browse_claim_status":
             rank = -2
+        if (
+            hint_priority := hint_targets.get(("reading_route", row["id"]))
+        ) is not None:
+            rank = -10 + hint_priority
         if rank is not None:
             ranked.append(
                 (
@@ -3992,7 +4104,6 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 )
             )
 
-    hint_targets = semantic_hint_targets(query)
     ranked = [
         (
             (
@@ -4624,27 +4735,45 @@ def operator_synthesis(
             ),
         }
     if operator_id == "frontier":
-        open_records = []
+        directly_selected_open_records = []
+        contextual_open_records = []
         advances = []
         for cell in cells:
             if cell["kind"] == "open_proposition":
-                open_records.append(cell["content"]["open_record"])
+                directly_selected_open_records.append(
+                    cell["content"]["open_record"]
+                )
                 advances.extend(cell["content"]["nearest_advances"])
             elif cell["kind"] == "reading_route":
                 programme = cell["content"].get("programme")
                 if programme:
-                    open_records.extend(
+                    contextual_open_records.extend(
                         programme["remaining_open_propositions"]
                     )
             elif cell["kind"] == "claim":
-                open_records.extend(
+                contextual_open_records.extend(
                     cell["content"]["remaining_open_propositions"]
                 )
+        exact_open_records = (
+            directly_selected_open_records or contextual_open_records
+        )
+        exact_open_ids = {
+            row["id"] for row in exact_open_records if row.get("id")
+        }
         return {
             "kind": "frontier_synthesis",
             "exact_open_records": list(
                 {
-                    row["id"]: row for row in open_records if row.get("id")
+                    row["id"]: row
+                    for row in exact_open_records
+                    if row.get("id")
+                }.values()
+            ),
+            "adjacent_open_records": list(
+                {
+                    row["id"]: row
+                    for row in contextual_open_records
+                    if row.get("id") and row["id"] not in exact_open_ids
                 }.values()
             ),
             "nearest_advances": advances,
@@ -5084,6 +5213,9 @@ def best_reading_route_result(query: str) -> dict[str, Any] | None:
 
 def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     """Compile a question into a bounded, witness-carrying semantic subgraph."""
+    scope_boundary = corpus_scope_boundary_packet(query)
+    if scope_boundary is not None:
+        return scope_boundary
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
     interpretation = search["query_interpretation"]
     operator_id = interpretation["operator"]["id"]
@@ -5719,8 +5851,7 @@ def agent_tour_packet() -> dict[str, Any]:
             "maximum_encoded_bytes": agent_tour_budget_bytes(len(problems)),
             "policy": (
                 "18000 base bytes plus 2000 bytes per canonically indexed "
-                f"problem; {len(problems)} problems currently yield a "
-                f"{agent_tour_budget_bytes(len(problems))}-byte ceiling"
+                "problem; six problems currently yield a 30000-byte ceiling"
             ),
             "reason": (
                 "The registry map is material first-contact context. Its budget "
@@ -6138,6 +6269,22 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| omitted={packet['omission_receipt'].get('omitted_match_count', 0)}"
         )
         return "\n".join(rows)
+    if kind == "corpus_scope_boundary":
+        requested = ",".join(
+            f"#{number}" for number in packet["requested_problem_numbers"]
+        )
+        outside = ",".join(
+            f"#{number}" for number in packet["out_of_scope_problem_numbers"]
+        )
+        indexed = ",".join(
+            f"#{number}" for number in packet["indexed_problem_numbers"]
+        )
+        return (
+            f"corpus scope boundary | status={packet['status']} "
+            f"| requested={requested} | out_of_scope={outside} "
+            f"| indexed={indexed} | source={packet['scope_source']} "
+            "| claim_effect=none"
+        )
     if kind == "claim_status":
         return (
             f"status {packet['status']} | claims={packet['claim_count']} "
@@ -6362,11 +6509,7 @@ def main() -> int:
     if output_format == "card":
         print(render_card(packet))
     else:
-        # The semantic dictionary has the stricter 16 KiB cold-clone packet
-        # budget.  Compact its whitespace without dropping any routes or
-        # changing the parsed public schema.
-        indent = 1 if args.vocabulary else 2
-        encoded = json.dumps(packet, ensure_ascii=False, indent=indent) + "\n"
+        encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
             print(
                 f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; lower --limit or use --format card",

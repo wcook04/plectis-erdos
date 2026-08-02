@@ -20,10 +20,11 @@ CLAIMS = ROOT / "docs" / "claims.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
 PAPERS = (
     ROOT / "paper" / "erdos249-257-main-paper.tex",
+    ROOT / "paper" / "erdos-257-mersenne-support-subseries.tex",
 )
 LINK_RE = re.compile(
-    r"\\(lrefx?|lword)\{([^}]+)\}\{\d+\}\{([^}]+)\}"
-    r"(?:\{([^{}]*)\})?"
+    r"\\([lm](?:refx?|word))\{([^}]+)\}\{\d+\}\{([^}]+)\}"
+    r"(?:\{((?:[^{}]|\{[^{}]*\})*)\})?"
 )
 
 
@@ -69,11 +70,21 @@ def render() -> tuple[str, dict[Path, str]]:
 
     def replace(match: re.Match[str]) -> str:
         macro, filename, name, label = match.groups()
-        key = (f"Erdos249257/{filename}", name)
+        if filename.startswith("Erdos249257/"):
+            module = filename
+        elif filename.startswith("ErdosProblems/"):
+            module = filename
+        elif re.match(r"Erdos\d+/", filename):
+            module = f"ErdosProblems/{filename}"
+        elif macro.startswith("m"):
+            module = f"ErdosProblems/{filename}"
+        else:
+            module = f"Erdos249257/{filename}"
+        key = (module, name)
         if key not in lines:
             raise RuntimeError(f"paper declaration absent from atlas: {key}")
         rendered = f"\\{macro}{{{filename}}}{{{lines[key]}}}{{{name}}}"
-        if macro == "lword":
+        if macro.endswith("word"):
             if label is None:
                 raise RuntimeError(f"semantic paper link lacks a label: {key}")
             rendered += f"{{{label}}}"

@@ -1162,6 +1162,7 @@ def collect() -> dict:
             "formal_source": {
                 "ref": claims["release"]["formal_source"]["ref"],
                 "ref_kind": claims["release"]["formal_source"]["ref_kind"],
+                "public_tag": claims["release"]["formal_source"]["public_tag"],
                 "publication_state": claims["release"]["formal_source"][
                     "publication_state"
                 ],

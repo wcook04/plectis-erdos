@@ -38,11 +38,14 @@ integer digits $g_N$.  Its block identity is
 Thus $T_{N+h}-T_N$ is integral exactly when $(2^h-1)T_N$ is.  Integrality of
 one shift propagates forward, and Euler's congruence shows that a rational
 term with odd reduced denominator $d$ has an integral shift of length
-$\ph(d)$.  More precisely, the initial state is rational if and only if one
+$\ph(d)$.  More precisely, for a real sequence obeying the same recurrence
+with integer digits, the initial state is rational if and only if one
 positive-length shift is integral at one index, equivalently if and only if
 one positive shift is eventually integral.  Dually, the initial state is
 irrational exactly when every positive shift is non-integral at every index,
-equivalently when every fixed shift is non-integral cofinally.
+equivalently when every fixed shift is non-integral cofinally.  This abstract
+criterion is proved; the required cofinal property for the actual prime-gap
+tails is not.
 
 Let $p_0=2,p_1=3,\ldots$ enumerate the primes and let
 $g_n=p_{n+1}-p_n$.  The polynomial bound $p_n\le1250(n+1)^4$ gives summability
@@ -66,10 +69,10 @@ not eventually confined to $(-1,1)$.  This is compatible with rationality,
 not a contradiction.  A contradiction would require eventual smallness for
 that shift, or cofinally many adjacent small shifts at indices where the prime
 gaps differ; neither is proved.  Unboundedness and nonperiodicity of the prime
-gaps do not supply either property.  Indeed, an explicit unbounded,
-non-eventually-periodic integer sequence has a rational dyadic sum, so the
-missing argument must control the full prime-gap tails rather than the
-coefficients alone.
+gaps, although both Lean-checked, do not supply either property.  Indeed, an
+explicit unbounded, non-eventually-periodic integer sequence has a rational
+dyadic sum, so the missing argument must control the full prime-gap tails
+rather than the coefficients alone.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
@@ -143,7 +146,10 @@ $(g_n)$ for which the sum is exactly $1$
 hypotheses that $(g_n)$ is strictly increasing and
 $g_n=O(n\log^k n)$, Erd\H{o}s had already classified the rational cases:
 rationality holds exactly when $g_n=q p_n+1$ eventually for one fixed integer
-$q>1$~\cite[pp.~96--99]{erdos1958}.  The counterexample evades those
+$q\ge1$~\cite[pp.~96--99]{erdos1958}.  The endpoint $q=1$ is included: if
+$G_n=\prod_{j=1}^{n}(p_j+1)$, then
+$p_n/G_n=1/G_{n-1}-1/G_n$, so the corresponding series telescopes to $1$.
+The counterexample evades those
 hypotheses.  It
 does not address the fixed-denominator dyadic series studied here.  The
 current catalogue record still repeats this variable-denominator expectation
@@ -244,6 +250,7 @@ Totient shift from an odd denominator & Proved here & Theorem~\ref{res:totient}.
 Propagation of an integral shift & Proved here & Theorem~\ref{res:propagate}. \\
 Eventual integral shift for every rational-valued recurrence & Lean-checked & Theorem~\ref{res:collapse}. \\
 Rationality/integral-shift classification & Lean-checked abstractly; an equivalence & Theorem~\ref{res:escape-irrational}. \\
+Finite-approximation gap & Paper-level & Elementary inference used in Proposition~\ref{res:truncation}; not a named Lean declaration at the pinned revision. \\
 Actual prime gaps are unbounded and not eventually periodic & Lean-checked & Proposition~\ref{res:gap-nonperiodic}. \\
 Adjacent small-mismatch pair excludes simultaneous integrality & Lean-checked & Theorem~\ref{res:smallpair}. \\
 Concrete prime-gap tail recurrence and rational-candidate bridge & Paper-level recurrence; Lean-checked conditional bridge & The rational candidate recurrence is unconditional; its representation of the actual scaled tail assumes non-irrationality. \\
@@ -1032,7 +1039,10 @@ $S_{h,N,L}=2/5$ and $R_{h,N,L}(M)=1/20$, the full sum lies within $1/20$ of
 $2/5$ and so at distance at least $7/20$ from every integer, which settles
 \eqref{eq:shift-escape} at that $N$.  The prime-gap tail
 bound, the convergence used above, and the existence of blocks satisfying
-\eqref{eq:truncation} are not consequences of that formal theorem.
+\eqref{eq:truncation} are not consequences of that inference.  The
+proposition's full sum is moreover real-valued, so the reverse-triangle step
+used here is a paper proof and not an instance of any rational-valued formal
+declaration.
 
 \noindent Taking the classical bound $M(n)\ll n\log n$, a choice
 $L=\lceil A\log_2(N+h+2)\rceil$ with any fixed $A>1$ makes the right side a
@@ -1066,15 +1076,19 @@ block estimate of the kind needed here.
 
 \paragraph{What remains to be formalised.}
 Unconditional convergence, the infinite series identity, the actual rational
-scaled-tail state and its recurrence, the eventual-integral-shift theorem,
-and the prime-specific local small-mismatch theorem are Lean-checked.  The
-abstract real-recurrence contrapositive, the modular rewriting by
-$D_{h,N,L}$, the finite-approximation observation, and the positive carry
-countermodel above are paper-level direct calculations.
+scaled-tail state and its recurrence, the eventual-integral-shift theorem, the
+abstract rationality classification, and the prime-specific local
+small-mismatch theorem are Lean-checked.  Paper-level are the modular
+rewriting by $D_{h,N,L}$, the finite-approximation inference, the positive
+carry countermodel above, the identification of the concrete tail
+$\mathcal T$ with the checked recurrence, and the real form of the small-shift
+obstruction in Corollary~\ref{res:smallpair-real}.
 The missing statements are the multiple-in-shift lemma used by
 Problem~\ref{prob:divisor-hit}, a prime-gap tail domination sharp enough for a
 certificate, and a cofinal anti-concentration or adjacent-mismatch theorem.
-No cited prime-distribution estimate is claimed to supply those statements.
+No theorem supplies the cofinal pairs in~\eqref{eq:smallpair}, and no cited
+prime-distribution estimate is claimed or formalised as supplying those
+statements.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
 \subsection*{Statements and declarations}

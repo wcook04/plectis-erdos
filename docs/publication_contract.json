@@ -17,7 +17,7 @@
       "rendered_path": "erdos249-257-main-paper.pdf",
       "rendered_content_digest": "sha256:4840c6a98542a55a0b621e6a3648ca11915a4a786d4a735576bf86d09c48faaf",
       "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority",
-      "claim_scope": "Mathematical exposition of claims and open boundaries owned by docs/claims.json and checked against the pinned Lean source.",
+      "claim_scope": "Gateway exposition for Erdős Problems 249 and 257. For #249 it records the exact dyadic-section rank 2^e+1 for e >= 1, infinite-dimensionality, the explicit finite Farey denominator exclusion, and diagonal certificates through t = 82, but no instance at t = 83 or unbounded family. For #257 it records checked restricted-support geometry and the remaining half-value and 1/21 branches. Both problems remain open, and the shared Lambert-series change of variables transfers no irrationality theorem.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.canonical_gateway",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -82,14 +82,14 @@
     },
     {
       "id": "erdos_249_reasoning_record",
-      "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
+      "title": "The Binary Totient Series: a claim-bounded reasoning record for Erdős Problem 249",
       "artifact_class": "mathematical_companion",
       "source_path": "paper/erdos249-totient-reasoning-surface.tex",
       "source_content_digest": "sha256:fa7317ae1449b675ea27fcc1cf51356e00c75119927dc69fa870d34d26c62f40",
       "rendered_path": "erdos249-totient-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:31c5c5a853a865b50f7485e29b6b60bc14dd0b62dac4f4db3bcb7cb7964157ff",
-      "authority_posture": "authored_full_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Full working record for Erdős Problem 249: checked premises, finite certificates, closed routes, surviving obligations, evidence bands, and Lean coordinates. The problem remains open.",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Claim-bounded reasoning record for Erdős Problem 249. It distinguishes checked premises and finite certificates from open obligations: the level-e dyadic-section rank is 2^e+1 only for e >= 1; the full span is infinite-dimensional; the finite Farey computation excludes denominators up to the stated bound; and diagonal certificates exist through t = 82, with neither t = 83 nor an unbounded family supplied. Irrationality remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -100,14 +100,14 @@
     },
     {
       "id": "erdos_257_reasoning_record",
-      "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
+      "title": "Reciprocal Mersenne Subseries: a claim-bounded reasoning record for Erdős Problem 257",
       "artifact_class": "mathematical_companion",
       "source_path": "paper/erdos257-mersenne-reasoning-surface.tex",
       "source_content_digest": "sha256:50172c673409f16aee76aaa11eba12a39023aa08026bd72cc82ede3bca5a5d90",
       "rendered_path": "erdos257-mersenne-reasoning-surface.pdf",
       "rendered_content_digest": "sha256:08770b5261a806369c4fc336d8fbf34e1ee7574e0dc8e0da00010b857f091021",
-      "authority_posture": "authored_full_problem_reasoning_record_not_Lean_proof_authority",
-      "claim_scope": "Full working record for Erdős Problem 257: checked premises, finite computations, equivalent and weaker routes, surviving obligations, evidence bands, and Lean coordinates. The record includes the finite-support obstruction at 1/21 and exact primitive 2p+3q rank-cone coverage and multiplicity facts, while keeping the missing Booleanisation step explicit. The universal, half-value, and 1/21 membership questions remain open.",
+      "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
+      "claim_scope": "Claim-bounded reasoning record for Erdős Problem 257. It separates checked finite-support and restricted-achievement-set structure from the missing Booleanisation and tail steps. No finite rank-at-least-two support represents 1/21; the primitive 2p+3q cone has the stated coverage and recurrent multiplicities, but the eventual affine-supercapacity regime survives. The universal, half-value, and 1/21 membership questions remain open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",
       "entry_route_id": "follow_one_claim",
       "validation": [
@@ -125,7 +125,7 @@
       "rendered_path": "erdos-249-binary-totient-series.pdf",
       "rendered_content_digest": "sha256:7d800e8bef4f1314c77d56e4c8d0391ce6ae458edeb0d976add66a5c80275f08",
       "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
-      "claim_scope": "Standalone exposition of Erdős Problem 249, ordered unconditional results first: the exact level-e dyadic totient section rank 2^e+1 and the resulting infinite-dimensionality, the explicit denominator exclusion (whose Farey provenance is stated rather than implied), the phi*mu Lambert weight that separates #249 from the settled omega/Omega/tau series, and two scoped method no-go theorems. Every remaining obligation is named and the problem remains open.",
+      "claim_scope": "Standalone exposition of Erdős Problem 249, ordered unconditional results first: the exact level-e dyadic totient section rank 2^e+1 for e >= 1 and the resulting infinite-dimensionality; the explicit finite-Farey denominator exclusion; the phi*mu Lambert weight separating #249 from the settled omega/Omega/tau series; and scoped method no-go theorems. Lean checks diagonal certificates for every t <= 82, but supplies neither t = 83 nor the unbounded family equivalent to irrationality. The problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
@@ -143,7 +143,7 @@
       "rendered_path": "erdos-257-mersenne-support-subseries.pdf",
       "rendered_content_digest": "sha256:fc9485d602d9806d69eed075add4f67d7e3414ce9fe48e91243c53b7f898754a",
       "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority",
-      "claim_scope": "Standalone exposition of Erdős Problem 257 led by exact finite-period noncollapse, necessary structure for any rational-valued infinite support, and achievement-set geometry. Duverney–Tachiya's full-text Corollary 1.2 and Example 1.1 settle the squarefree support at base 2, but not at bases b≥3; the manuscript separately proves that two divisibility-first certificate engines miss this settled value and that irrationality is invariant under finite support changes via checked prefix/tail lemmas. It also records that no finite rank-at-least-two support sums to 1/21 and that the associated primitive 2p+3q cone covers every rank from eleven while retaining recurrent multiplicities; achievement-set membership and Booleanisation remain open. Tao–Teräväinen prove the prime-support case at base 2; broader base and prime-power extensions are remarks rather than proved theorems there. Universal Erdős #257 and the half-value test remain open.",
+      "claim_scope": "Standalone exposition of Erdős Problem 257 led by exact finite-period noncollapse, necessary structure for any rational-valued infinite support, and achievement-set geometry. Duverney–Tachiya settle squarefree support for every power-of-two base, including base 2; this does not cover arbitrary bases b >= 3. The manuscript separately proves that two divisibility-first certificate engines miss this settled value and that irrationality is invariant under finite support changes via checked prefix/tail lemmas. No finite rank-at-least-two support sums to 1/21, while the quotient-greedy classification leaves an eventual affine-supercapacity regime unexcluded. Tao–Teräväinen prove prime support at base 2. Universal Erdős #257, the half-value test, and 1/21 membership remain open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
@@ -179,7 +179,7 @@
       "rendered_path": "erdos-243-reciprocal-tail-rigidity.pdf",
       "rendered_content_digest": "sha256:629806736c143a1986d7707316be787eb68353292026c3010e4bf26bfbf82fe4",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks that finite normalised negative centred-defect mass, together with the exact tail dynamics, positivity, and normalised vanishing, forces eventual Sylvester recurrence. The analytic bridge and the unbounded divergent-mass branch remain open; Erdős Problem 243 remains open.",
+      "claim_scope": "Exposition of the ErdosProblems.Erdos243 modules. Lean checks constant- and scoped periodic-negative exclusions, eventual vanishing from an eventually bounded negative part plus normalised vanishing, and exclusion of finite normalised negative mass. Eventual strict centring is not an independent hypothesis because normalised vanishing supplies it after a finite shift. Koizumi supplies normalised vanishing for the canonical orbit; boundedness of its negative part is not supplied. Mixed-sign classification and the unbounded divergent-mass branch remain open, so Erdős Problem 243 remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
@@ -215,7 +215,7 @@
       "rendered_path": "erdos-269-three-prime-running-lcm.pdf",
       "rendered_content_digest": "sha256:626eab853615afba7dd3e0524cb9e3904eaff5169a54a6afd3f249fd21a4668c",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos269 modules. Lean checks the exact dyadic block radix alphabet {2,6,10,30}, least-positive-residue arithmetic, the residue-digit plus coboundary carry form, three-channel block-nullity and carry-lift extinction consumers, and a function-faithful observer finite-span consequence. The paper gives the literal actual block digit and exact tail state and an integer-only checker supplies finite exact evidence for 106,666 denominator/start pairs. The hypothetical-rationality bridge, including the divisibility needed to cancel the absorbed smooth denominator factor, the actual-word hypotheses of the abstract consumers, and cofinal residue escape are not proved; Erdős Problem 269 remains open.",
+      "claim_scope": "The paper proves, using Bugeaud–Laurent's external Hecke–Mahler theorem, that for every pair of distinct primes both the de-duplicated and repeated-running-LCM sums are transcendental; these analytic deductions are not Lean-formalised. For three primes, Lean checks exact logarithmic-cell and finite height-fibre structure, the dyadic block alphabet {2,6,10,30}, residue arithmetic, and the conditional absorption-and-cancellation core. The scan over 106,666 denominator/start pairs is bounded evidence only. Rationality-to-carry identification, the required divisibility, and a cofinal escape producer are unproved; Problem 269 remains open from three primes onward.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [
@@ -251,7 +251,7 @@
       "rendered_path": "erdos-1049-rational-base-lambert.pdf",
       "rendered_content_digest": "sha256:8947f19951dfc4273c3c706f5a5fdb84010b161e9127135d3e61670aa17634e4",
       "authority_posture": "authored_mathematical_exposition_of_an_unregistered_expansion_module_not_Lean_proof_authority",
-      "claim_scope": "Exposition of the ErdosProblems.Erdos1049 modules. Lean checks that rowwise contents scale the Padé error, exterior determinant, and absolute determinant height by exactly the same factors; under unit endpoint hypotheses a common specialised multiplier contains neither two nor three. It also checks the homogeneous endpoint obstruction, the negative scalar margin implication at three halves, the exact four-jet target cardinality, and the sufficient collision threshold n >= 4R+2S for positive R. The primary Zudilin theorem remains integer-base and external; a sufficiently large primitive non-collapsed family, surviving local gain after primitive normalisation, and a collision with nonzero polynomial pair and remainder are not proved. Erdős Problem 1049 remains open.",
+      "claim_scope": "Exposition of scoped no-go and counting results for Erdős Problem 1049, not an irrationality theorem. Lean checks scalar-content neutrality, the endpoint exclusion of 2 and 3 under unit hypotheses, four-jet cancellation at the stated rank threshold, a coordinatewise-clearing corridor obstruction and tail recurrence at 3/2, and the elementary height inequality needed by Bundschuh–Väänänen's external criterion at 7/2. The external analytic argument is not formalised. Polynomial-factor, cross-row, primitive-family, nonzero-pair, and analytic-remainder routes remain untreated; the rational-base problem remains open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.problem_series",
       "entry_route_id": "read_one_problem_note",
       "validation": [

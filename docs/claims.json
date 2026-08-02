@@ -223,7 +223,9 @@
         "discovery_terms": [
           "what remains open for 257",
           "achievement set topology",
-          "how close is the half-value case"
+          "how close is the half-value case",
+          "what is proved about one over twenty one",
+          "permanent affine supercapacity"
         ],
         "mathematical_focus": "Greedy coding, exact achievement-set geometry, dyadic skip bands and seam classification for 1/2, plus the canonical quotient-greedy, scaled-remainder, final-skip and permanent affine-supercapacity frontier for 1/21.",
         "claim_ceiling": "Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved.",
@@ -1137,11 +1139,12 @@
         {
           "id": "achievement_geometry_and_half_target_interface",
           "claim_ids": [
+            "campbell_shift_synchronization_boundary",
             "greedy_achievement_geometry",
             "half_greedy_two_thirds_band",
-            "mobius_sign_support_no_go",
             "half_second_channel_reduction",
-            "campbell_shift_synchronization_boundary"
+            "mobius_sign_support_no_go",
+            "twenty_one_quotient_greedy_frontier"
           ],
           "status_summary": "Classical geometry formalised, exact local bands, a conditional second channel, and scoped no-go boundaries.",
           "prior_art_posture": "Kovač–Tao supply the strict-tail subsum geometry; the classical Lambert–Möbius identity is the baseline for the scoped sign-support no-go; Crandall and Campbell concern adjacent binary-digit questions and are not proof inputs. No priority claim is made for the sign separation.",

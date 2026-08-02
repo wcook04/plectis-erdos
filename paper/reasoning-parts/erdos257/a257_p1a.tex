@@ -1,0 +1,893 @@
+\section{Catalogue of usable premises}
+
+This section catalogues machinery for Erd\H{o}s \#257 (is $\sum_{n\in A} 1/(2^n-1)$
+irrational for every infinite $A\subseteq\mathbb{N}$?) drawn from the half-membership
+route (is $1/2$ in the Mersenne achievement set?) and the support-rigidity /
+full-support route (irrationality of $\sum_{a\in A} 1/(2^a-1)$ for named families $A$).
+Every entry states exact hypotheses, exact conclusion, coordinate, scale, evidence band,
+and Lean site. Nothing below decides \#257; the problem remains open. Entries are grouped
+\textbf{Producers} (hypothesis $\Rightarrow$ conclusion, including conditional sockets
+whose hypothesis is itself an open sub-obligation, always flagged) and \textbf{Converters
+and exact identities} (iff-reformulations, structural invariants, definitions, exact
+numerals). Within each subsection entries are ordered by scale:
+fixed $<$ bounded $<$ cofinal $<$ uniform $<$ n/a.
+
+\subsection{Producers}
+
+\begin{thm}[Cofinal skip forces half-membership]
+\label{thm:fatal-absorbing}
+Fatality is absorbing for the greedy Mersenne recursion at target $x\ge 0$: once
+\emph{GreedyMersenneFatalAt x n} holds it holds at every $n+k$, and forces every later
+exponent selected, so a fatal state leaves only finitely many omitted exponents.
+Contrapositively: if the greedy skipped support (the set of ranks the greedy process
+does \emph{not} select) is infinite, then $x$ lies in the Mersenne achievement set.
+\par\ev{Lean}\scale{cofinal}\coord{greedy-orbit}
+\lean{mem\_mersenneAchievementSet\_of\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:1515}
+\end{thm}
+
+\begin{thm}[Seam-limit convergence route to $1/2$]
+\label{thm:seam-limit}
+Let \emph{seamGreedyFiniteValue s} be the real point coded by the finite integer seam
+word at row $s$ (always achieved) and \emph{seamGreedyNormalizedRemainder s} the seam
+integer remainder rescaled by $4^{-s}$. If there is a cofinal sequence of rows
+\emph{rows} along which the normalized remainder tends to $0$
+(\emph{SeamGreedyRemainderSubquadraticAlong rows}), then
+\emph{seamGreedyFiniteValue(rows j)}$\to 1/2$ and, by closedness of the achievement set,
+$1/2$ is achieved.
+\par\ev{Lean}\scale{cofinal}\coord{seam-integer}
+\lean{half\_mem\_mersenneAchievementSet\_of\_subquadraticAlong}{HalfCylinderSeamLimit.lean:179}
+\end{thm}
+
+\begin{thm}[Two-channel and dyadic cap sufficiency]
+\label{thm:two-channel-cap}
+If, at every rank $n$ the greedy process for target $1/2$ actually skips, the residual
+\emph{greedyMersenneRemainder(1/2) n} is bounded above by the explicit rational envelope
+\emph{halfTwoChannelCap(n+1)} (resp.\ the coarser \emph{halfDyadicCap(n+1)}), then
+$1/2\in\mathrm{mersenneAchievementSet}$. It therefore suffices to control the residual
+only at actually-skipped ranks, not at every rank.
+\par\ev{Lean}\scale{uniform}\coord{two-channel-dyadic-cap}
+\lean{half\_mem\_mersenneAchievementSet\_of\_skipped\_twoChannelCap}{GreedyAchievementSet.lean:1412}
+\lean{half\_mem\_mersenneAchievementSet\_of\_skipped\_dyadicCap}{GreedyAchievementSet.lean:1431}
+\end{thm}
+
+\begin{thm}[Second-channel phase separation sufficiency]
+\label{thm:second-channel}
+If the greedy second-channel phase (\emph{greedyMersenneSecondChannelPhaseRat}) stays
+separated (\emph{HalfSecondChannelSeparatedRat}) at every skipped rank, then
+$1/2\in\mathrm{mersenneAchievementSet}$; a rational specialization discharges the
+hypothesis from row $7$ on.
+\par\ev{Lean}\scale{uniform}\coord{second-channel-phase}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparation}{GreedyAchievementSet.lean:3045}
+\lean{half\_mem\_mersenneAchievementSet\_of\_secondChannelSeparationRat\_from\_seven}{GreedyAchievementSet.lean:3078}
+\end{thm}
+
+\begin{thm}[Straddle-prefix closed-set criterion]
+\label{thm:straddle-closed-set}
+If for every depth $d$ there exists a finite word $u$ (all exponents $\le d$) straddling
+target $t$ — meaning $\mathrm{value}(u)\le t\le \mathrm{value}(u)+\mathrm{mersenneTail}(d)$
+— then $t\in\mathrm{mersenneAchievementSet}$. The proof needs only compactness of the
+achievement set, no coinductive machinery.
+\par\ev{Lean}\scale{uniform}\coord{dedekind-cut}
+\lean{mem\_mersenneAchievementSet\_of\_straddle\_all\_depths}{HalfCutLocator.lean:173}
+\end{thm}
+
+\begin{thm}[Largest-skip-late induction: single-socket reduction]
+\label{thm:largest-skip-late}
+Define \emph{LargestSkipLateAt s} as ``row $s$'s largest false rank $d$ satisfies
+$2s<3d$'' and \emph{LargestSkipLateStepSocket} as the universally quantified one-step
+arithmetic implication $\forall s\ge 14,\,d,\; \mathrm{IsLargestFalseRank}(\mathrm{seamGreedyWord}\, s)\,d
+\to 2s<3d \to (2(s+1)<3d \lor \mathrm{SeamGreedyUpperOrMiddleAt}\,s\,\_)$. Given this
+socket, plus the base case at row $14$ (kernel-verified by \texttt{decide}), the
+late-largest-skip invariant propagates to every row $\ge 14$ by induction, supplying a
+cofinal sequence of unboundedly skipped ranks, hence $1/2\in\mathrm{mersenneAchievementSet}$.
+This is the single cleanest remaining reduction of the whole half-branch: closing it
+factors entirely through one local arithmetic step.
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{half\_mem\_mersenneAchievementSet\_of\_largestSkipLateStepSocket}{HalfCylinderLargestSkipInduction.lean:167}
+\lean{largestSkipLateAt\_fourteen}{HalfCylinderLargestSkipInduction.lean:73}
+\end{thm}
+
+\begin{thm}[Middle-producer card/row escape sockets]
+\label{thm:middle-producer-escape}
+If, at every late middle-branch row, $\mathrm{card}(\mathrm{support})+\mathrm{belowPulse}+5
+< 4\cdot\mathrm{remainder}$ (\emph{SeamMiddleProducerCardEscape}), then
+$1/2\in\mathrm{mersenneAchievementSet}$. The strictly weaker-hypothesis, stronger-conclusion
+socket \emph{SeamMiddleProducerRowEscape} ($s\le\mathrm{remainder}$ at every late middle
+row) implies the card escape and hence also closes the branch.
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerCardEscape}{HalfCylinderMiddleCarryLowerBound.lean:2364}
+\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerRowEscape}{HalfCylinderMiddleCarryLowerBound.lean:2371}
+\end{thm}
+
+\begin{thm}[Middle all-right tail forces strict defect]
+\label{thm:middle-allright-defect}
+If a middle transition at row $D\ge 13$ (with $\neg\mathrm{carries}$) is followed by an
+all-right (eventually every rank selected) tail, then the producer carry is strictly
+below its complete future incidence tail: equivalently \emph{seamGreedyFloorZ D}
+$<$ \emph{seamTakeThreshold D}, equivalently a strict rational-skip defect. This
+overconstrains the ``last transition is middle, then forever right'' scenario, feeding
+the final-middle-cell exclusion (Theorem~\ref{thm:final-middle-cell}).
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{middleProducer\_allRight\_forces\_carry\_lt\_tail}{HalfCylinderMiddleCarryLowerBound.lean:1814}
+\lean{middleProducer\_allRight\_forces\_rational\_skip}{HalfCylinderMiddleCarryLowerBound.lean:1888}
+\end{thm}
+
+\begin{thm}[Two-sided dyadic cell escape: global remainder control]
+\label{thm:two-sided-dyadic}
+\emph{SeamTwoSidedDyadicCellEscape} is a minimal local socket (it excludes exactly three
+exceptional middle cells at signed coordinate $-3,-2,-1$, plus one right-pulse-leak
+bound). Granted this socket, plus a kernel-verified base case at row $5$, induction gives
+the universal two-sided bound $\forall s\ge 5,\;
+\mathrm{seamIntegerGreedyRemainder}\,s\le 2^s \lor \mathrm{overshoot}\,s\le 2^s$ —
+a global dyadic-scale control on the seam orbit independent of which branch fires at each
+row.
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{SeamTwoSidedDyadicCellEscape.twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4448}
+\lean{seamTwoSidedDyadicAt\_five}{HalfCylinderMiddleCarryLowerBound.lean:4431}
+\end{thm}
+
+\begin{thm}[Upper-reset dyadic-band escape, with rows $13$--$31$ certified]
+\label{thm:upper-reset-band}
+\emph{SeamUpperResetDyadicBandEscape} says: for every $d\ge 13$ and every $j\le d$, the
+reset charge avoids a linear-width band immediately below the dyadic power
+$2^{d-j+1}$ ($2^{d-j+1}<\mathrm{resetCharge}$ or
+$\mathrm{resetCharge}+2(d+j)\le 2^{d-j+1}$). Granted this, $1/2\in
+\mathrm{mersenneAchievementSet}$. Rows $13$ through $31$ are unconditionally certified by
+kernel \texttt{decide} computation of the exact remainder at each row (e.g.\ row $14\to
+392$, row $31\to 4187487147$; none failing) — the current computational frontier of this
+sub-route.
+\par\ev{Lean}\scale{uniform}\coord{dyadic-boundary}
+\lean{half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}
+\lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}
+\end{thm}
+
+\begin{thm}[M\"obius-centred carry nonnegativity below $1/2$]
+\label{thm:mobius-centred-nonneg}
+For a support $A$ with $1\notin A$: if $\mathrm{erdosSupportSeries}\,2\,A<1/2$, then
+$0\le\mathrm{mobiusCenteredHalfCarry}\,A\,N$ for every $N$. Proof: the identity
+$\mathrm{integerHalfCarry}\,A\,N = 2^{N+1}(1/2-\mathrm{seriesValue}) +
+\mathrm{binaryCoeffTail}(\dots)$ writes the carry as a sum of two manifestly nonnegative
+terms. Stated over the generic divisor-incidence function \emph{supportCoeff}, not over
+Mersenne weights directly — since $\varphi=\mu * \mathrm{id}$ is itself
+M\"obius-built, this is a strong candidate for adaptation to \#249.
+\par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
+\lean{mobiusCenteredHalfCarry\_nonneg\_of\_supportSeries\_lt\_half}{HalfCylinderFinalMiddleCellEscape.lean:94}
+\lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:842}
+\end{thm}
+
+\begin{thm}[Square-root carry-growth route: current open numeric-analytic frontier]
+\label{thm:sqrt-bound-route}
+Nonnegativity of the M\"obius-centred carry of the actual canonical greedy support for
+$1/2$ is unconditional (Theorem~\ref{thm:mobius-centred-nonneg} plus two supporting
+lemmas). \emph{If in addition} the pointwise upper bound
+$\mathrm{mobiusCenteredHalfCarry}(\mathrm{greedySupport}(1/2))\,N\le 2\sqrt N+4$ holds for
+every $N$, then the greedy skipped support is infinite and the greedy value equals
+exactly $1/2$. Only the upper bound remains open; a distinct socket from the dyadic-band
+(Theorem~\ref{thm:upper-reset-band}) and largest-skip-late
+(Theorem~\ref{thm:largest-skip-late}) routes. A separate project-memory note records a
+\emph{different} sqrt-escape wall on the unconditional ($\forall$ infinite $A$) \#257
+track; whether that wall bears on this half-membership socket is unverified — treat any
+connection as \texttt{hypothesis}, not established.
+\par\ev{Lean}\scale{uniform}\coord{greedy-orbit}
+\lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:805}
+\lean{infinite\_support\_half\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:788}
+\end{thm}
+
+\begin{thm}[Governed frozen-margin producer family: three graded sockets]
+\label{thm:frozen-margin}
+Three sufficient sockets, strongest to weakest hypothesis, all funnel into
+$1/2\in\mathrm{mersenneAchievementSet}$: (i) \emph{HalfGreedySkippedFullShellNonnegative}
+(at every skipped rank, $0\le\mathrm{greedyHalfFrozenMargin}(n-1)\,n$), direct and
+seam-free; (ii) \emph{HalfGreedySkippedSeamAlignmentZero} (the seam remainder is exactly
+$0$ whenever the actual word equals the seam-greedy word), proved \emph{equivalent} to
+(i); (iii) \emph{HalfGreedySkippedSeamEscape} ($\mathrm{halfStripBound}(2n)<
+\mathrm{seamIntegerGreedyRemainder}\,n$ at every skipped rank), strictly sufficient for
+(i) but not equivalent.
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{half\_mem\_mersenneAchievementSet\_of\_skippedFullShellNonnegative}{HalfCylinderFullShellSeamBridge.lean:633}
+\lean{skippedSeamAlignmentZero\_iff\_skippedFullShellNonnegative}{HalfCylinderFullShellSeamBridge.lean:671}
+\lean{half\_mem\_mersenneAchievementSet\_of\_skippedSeamEscape}{HalfCylinderFullShellSeamBridge.lean:722}
+\end{thm}
+
+\begin{thm}[Erd\H{o}s--Borwein full-support irrationality, unconditional]
+\label{thm:full-support-catalogue}
+For every base $b\ge 2$: $\sum'_{n\ge 1} 1/(b^n-1)$ is irrational, unconditionally. No
+open obligations. Base $2$ is the classical Erd\H{o}s--Borwein constant. This is the
+terminal target every other rigidity/support theorem in this catalogue is measured
+against.
+\par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
+\lean{irrational\_erdosSum\_full\_support}{CertificateKernel.lean:8281}
+\lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8288}
+\end{thm}
+
+\begin{thm}[Pairwise-coprime support irrationality, Erd\H{o}s 1968]
+\label{thm:pairwise-coprime}
+For every base $b\ge 2$ and every infinite pairwise-coprime support $A\subseteq\mathbb N$
+with summable reciprocals, $\sum_{a\in A} 1/(b^a-1)$ is irrational.
+\par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
+\lean{irrational\_erdosSupportSeries\_pairwise\_coprime}{CertificateKernel.lean:10729}
+\end{thm}
+
+\begin{thm}[Generic weighted-coefficient block-certificate engine]
+\label{thm:weighted-coeff-engine}
+For base $b\ge 2$ and coefficient $c:\mathbb N\to\mathbb N$ with $c(m)\le m$: if a
+weighted block certificate exists at every precision $q$ (an explicit
+$\exists N,K,L,C$ package: block-divisibility, bounded middle window, far-tail
+positivity, height inequality $q(C+N+L+2)<b^L$), then $\sum'_m c(m{+}1)/b^{m+1}$ is
+irrational. This is the single engine both the full-support theorem
+(Theorem~\ref{thm:full-support-catalogue}, via $c=\tau$, the divisor-count function) and the
+\#249 sockets ($c=\varphi$) instantiate; certificate supply is proved for $\tau$
+and left open for $\varphi$ — exactly why \#249 stays open where \#257 full-support
+closes.
+\par\ev{Lean}\scale{uniform}\coord{binary-digit}
+\lean{irrational\_coeff\_series\_of\_weighted\_coeff\_block\_certificates}{CertificateKernel.lean:8618}
+\end{thm}
+
+\begin{thm}[LCM-gap irrationality engine]
+\label{thm:lcm-gap-engine}
+For base $b\ge 2$ and strictly monotone support $a:\mathbb N\to\mathbb N$ with $a(0)\ge
+1$: if $a(k)-\mathrm{lcm}(a(0),\dots,a(k-1))\to\infty$, then $\sum'_k 1/(b^{a(k)}-1)$ is
+irrational. Pure statement about any strictly increasing exponent sequence and any base;
+no Mersenne-specific content.
+\par\ev{Lean}\scale{uniform}\coord{lcm-gap}
+\lean{irrational\_erdosSum\_of\_lcm\_gap}{CertificateKernel.lean:5836}
+\end{thm}
+
+\begin{thm}[Factorial-support and $2^k$-support instances]
+\label{thm:factorial-twopow-support}
+For every $b\ge 2$: $\sum'_k 1/(b^{(k+1)!}-1)$ is irrational, and $\sum'_k
+1/(b^{2^k}-1)$ is irrational. Explicitly flagged in-source as \emph{instances} of the
+\#257 statement family, not the universal theorem — the universal problem (every
+infinite $A$) remains open.
+\par\ev{Lean}\scale{uniform}\coord{lcm-gap}
+\lean{irrational\_erdosSum\_factorial\_support}{CertificateKernel.lean:5988}
+\lean{irrational\_erdosSum\_two\_pow\_support}{CertificateKernel.lean:6012}
+\end{thm}
+
+\begin{thm}[Multiples-support irrationality via dilation]
+\label{thm:multiples-support}
+For every $b\ge 2$, $d\ge 1$: $\sum_{a\in d\mathbb N} 1/(b^a-1)$ is irrational, via the
+exact identity $\mathrm{erdosSupportSeries}\,b\,\{n:d\mid n\} = \sum'_k
+1/((b^d)^{k+1}-1)$ — dilation to base $b^d$ full support, reducing directly to
+Theorem~\ref{thm:full-support-catalogue}.
+\par\ev{Lean}\scale{uniform}\coord{dilation}
+\lean{irrational\_erdosSupportSeries\_multiples}{CertificateKernel.lean:9056}
+\lean{erdosSupportSeries\_multiples\_eq\_pow\_base\_full\_support}{CertificateKernel.lean:9007}
+\end{thm}
+
+\begin{thm}[Periodic-support irrationality: the periodic divisor-orbit sieve]
+\label{thm:periodic-support}
+For every $b\ge 2$ and every $m$-periodic support $A$ ($\forall n,\, n{+}m\in A
+\leftrightarrow n\in A$) containing a positive element: $\mathrm{erdosSupportSeries}\,b\,A$
+is irrational. At $m=1$ recovers full support; residue classes, unions of residue
+classes, and gcd-pattern supports are all instances. Mechanism: a prime $p\nmid m$ makes
+the divisor ray $d,pd,p^2d,\dots$ sweep residues mod $m$ periodically; a prime with exact
+valuation $b\varphi(m)-1$ splits every divisor ray into complete residue cycles repeated
+a multiple of $b$ times, reusing the same bounded Bertrand/CRT frame as full support with
+exponent $b-1\to b\varphi(m)-1$.
+\par\ev{Lean}\scale{uniform}\coord{periodic-sieve}
+\lean{irrational\_erdosSupportSeries\_periodic}{CertificateKernel.lean:11543}
+\end{thm}
+
+\begin{thm}[Eventually-periodic support irrationality]
+\label{thm:eventually-periodic}
+For every $b\ge 2$: an infinite support whose membership is $m$-periodic from some
+threshold $N_0$ on has $\mathrm{erdosSupportSeries}\,b\,A$ irrational.
+\par\ev{Lean}\scale{uniform}\coord{periodic-sieve}
+\lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11557}
+\end{thm}
+
+\begin{thm}[Residue-class and odd-support irrationality]
+\label{thm:residue-odd}
+For every $b\ge 2$, modulus $m\ge 1$, residue $c$: $\sum_{n\equiv c\,(m)} 1/(b^n-1)$ is
+irrational. Specializing $m=2,c=1$: $\sum_{n\text{ odd}} 1/(b^n-1)$ is irrational for
+every $b\ge 2$ — the first support class of density strictly between $0$ and $1$ to
+land.
+\par\ev{Lean}\scale{uniform}\coord{periodic-sieve}
+\lean{irrational\_erdosSupportSeries\_residueClass}{CertificateKernel.lean:11625}
+\lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11639}
+\end{thm}
+
+\begin{thm}[Signed periodic-weight dichotomy and its unconditional one-sided closures]
+\label{thm:signed-periodic}
+For base $b\ge 2$ and any $m$-periodic integer-valued signed weight $w$: the weighted
+series $\sum w(a)/(b^a-1)$ is either irrational or base-$b$ terminating ($b^k\cdot x=z$
+for some integer $k,z$), unconditionally, mixed signs allowed. If additionally the
+divisor-coefficient \emph{intWeightedCoeff w} is one-sided (all nonnegative, or all
+nonpositive) and not eventually zero, the terminating branch is excluded and the series
+is unconditionally irrational.
+\par\ev{Lean}\scale{uniform}\coord{signed-divisor-calculus}
+\lean{irrational\_or\_bpow\_mul\_eq\_intCast\_intWeightedErdosSeries\_periodic}{CertificateKernel.lean:14128}
+\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonneg\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14536}
+\lean{irrational\_intWeightedErdosSeries\_periodic\_of\_coeff\_nonpos\_of\_frequently\_ne\_zero}{CertificateKernel.lean:14596}
+\end{thm}
+
+\begin{thm}[Mersenne-channel denominator survival, T4]
+\label{thm:mersenne-channel-survival}
+For a finite family $P$ of ``upper-half'' primes (each $p$ with $t<2p$ for scale $t$,
+each dividing a squarefree radical $r$ all of whose prime factors are $\le t$): the
+pairwise-coprime Mersenne product $C=\prod_{p\in P}(2^p-1)$ survives fraction reduction —
+$C/\gcd(C,h)\mid (h\cdot\mathrm{mobiusNumerator}(r)/\mathrm{mersenne}(r))\mathrm{.den}$
+— exactly when $C$ is coprime to scale $h$ (or, weaker, when every prime factor of $h$ is
+$\le t$). This is the load-bearing quantitative step behind
+Theorem~\ref{thm:full-support-catalogue}.
+\par\ev{Lean}\scale{uniform}\coord{cyclotomic}
+\lean{upperHalfChannel\_survivorProduct\_dvd\_den}{MersenneShadowCyclotomicNoncollapse.lean:766}
+\lean{upperHalfChannel\_product\_dvd\_den\_of\_coprime\_scale}{MersenneShadowCyclotomicNoncollapse.lean:795}
+\end{thm}
+
+\begin{thm}[Mersenne-channel exponential denominator growth]
+\label{thm:mersenne-channel-growth}
+Via Bertrand's postulate, at every scale $t\ge 5$ there is an upper-half prime $p$ with
+$2^{t/2}\le 2^{p-1}\le\mathrm{mersenne}(p)$, giving the explicit exponential lower bound
+$2^{t/2}\le(\text{reduced denominator of the scaled M\"obius shadow at LCM-height }t)$.
+The exact reduced denominator at every LCM height is also computed in closed form.
+\par\ev{Lean}\scale{uniform}\coord{cyclotomic}
+\lean{upperHalfMersenneProduct\_lower\_bound}{MersenneShadowDenominatorGrowth.lean:60}
+\lean{lcmHeight\_scaledMobiusShadow\_den\_exact}{MersenneShadowDenominatorGrowth.lean:147}
+\end{thm}
+
+\subsection{Converters and exact identities}
+
+\begin{obs}[Half-greedy regression fixtures: exact rational checkpoints]
+\label{obs:half-regression}
+Three closed numeric facts, \texttt{norm\_num}/\texttt{decide}-checked: $1/2 -
+W(\{2,3,6,7\}) = 1/16002$ exactly (\emph{finiteErdosSum}); $\mathrm{mersenneCorrectionTail}(1)
+\le 5/42$; $3/8 < 1/2 - \mathrm{mersenneCorrectionTail}(1)$. Anchors for validating any
+new automated fatal-gap search at small depth.
+\par\ev{Cert}\scale{fixed}\coord{regression-fixture}
+\lean{half\_sub\_four\_term\_prefix\_eq}{HalfCutLocator.lean:664}
+\lean{mersenneCorrectionTail\_one\_le}{HalfCutLocator.lean:670}
+\end{obs}
+
+\begin{obs}[Period-4 sign weight vanishes on a residue class]
+\label{obs:period-four-obstruction}
+The explicit period-$4$ sign pattern $1,0,-1,0$ (\emph{periodFourSignWeight}) has
+$\mathrm{intWeightedCoeff}\,w\,n = 0$ identically for every $n\equiv 3\pmod 4$, via the
+divisor-involution $d\mapsto n/d$. This is exactly why the general signed-periodic case
+(Theorem~\ref{thm:signed-periodic}) only reaches a dichotomy rather than an unconditional
+theorem: no residue-blind selection can force a nonzero protected residue for every
+periodic signed weight.
+\par\ev{Lean}\scale{fixed}\coord{signed-divisor-calculus}
+\lean{intWeightedCoeff\_periodFourSignWeight\_eq\_zero\_of\_mod\_four\_eq\_three}{CertificateKernel.lean:14179}
+\end{obs}
+
+\begin{thm}[M\"obius--Mersenne Lambert identity]
+\label{thm:mobius-lambert-identity}
+$\sum'_{d:\mathbb N^+} \mu(d)/(2^d-1) = 1/2$ exactly (imported as
+\emph{MersenneLambertLadder.tsum\_moebius\_div\_two\_pow\_sub\_one\_eq\_half}). A signed
+(not Boolean) series over Mersenne denominators hitting the target value exactly — a
+landmark calibration point for rigidity arguments bounding how close a Boolean infinite
+support can get to $1/2$.
+\par\ev{Cited}\scale{fixed}\coord{mobius-mersenne}
+\lean{tsum\_moebius\_div\_two\_pow\_sub\_one\_eq\_half}{MersenneLambertLadder.lean:587}
+\end{thm}
+
+\begin{cor}[Negative-M\"obius Boolean support overshoots $1/2$]
+\label{cor:negative-mobius-overshoot}
+Consequently the negative-M\"obius Boolean support $N=\{d\ge 2:\mu(d)=-1\}$
+\emph{overshoots} $1/2$: $\sum_{d\in N} 1/(2^d-1) = 1/2 + (\text{positive-M\"obius tail})
+\ge 1/2 + 1/63$ (using the $d=6$ term, $\mu(6)=1$). A route-sufficiency no-go only: it
+rules out this one natural candidate construction, not the general question of whether
+some infinite Boolean support sums to exactly $1/2$.
+\par\ev{Lean}\scale{fixed}\coord{mobius-mersenne}
+\lean{half\_lt\_tsum\_negativeMobius}{MobiusSignSupportNoGo.lean:164}
+\lean{tsum\_negativeMobius\_eq\_half\_add\_positiveMobiusTail}{MobiusSignSupportNoGo.lean:111}
+\end{cor}
+
+\begin{obs}[Skip-block invariant failure: two explicit fixtures]
+\label{obs:skip-block-non-invariant}
+Two explicit witness states show ``safe bracket $+$ numerator monotone'' is \emph{not}
+an inductive invariant across skip-blocks in the dyadic-prefix reformulation: the
+transition $7/17\to 15/119$, and a full-LCM-saturated state
+$12149/1240155$. A negative calibration fact for anyone attempting to induct directly on
+that pair of properties.
+\par\ev{Cert}\scale{fixed}\coord{seam-integer}
+\lean{safeBracket\_and\_numeratorMonotone\_not\_inductive\_fixture}{DyadicPrefixCompression.lean:622}
+\lean{lcmSaturated\_safeBracket\_not\_inductive\_fixture}{DyadicPrefixCompression.lean:647}
+\end{obs}
+
+\begin{thm}[The half-skip dichotomy via Erd\H{o}s--Borwein irrationality]
+\label{thm:half-skip-dichotomy}
+$1/2\in\mathrm{mersenneAchievementSet} \iff (\mathrm{greedyMersenneSkippedSupport}(1/2))
+\text{ is infinite}$. Forward direction uses irrationality of the Erd\H{o}s--Borwein
+constant (\emph{erdosBorweinMersenneConstant} $=\mathrm{mersenneTail}\,0$, unconditional):
+if only finitely many exponents were skipped, the constant would equal $1/2$ plus a
+finite rational, contradicting irrationality. The mechanism (rational/finite-representable
+target, irrational full-series baseline $\Rightarrow$ complement support infinite) is
+fully general and would restate for \#249's own baseline constant if one exists.
+\par\ev{Lean}\scale{cofinal}\coord{greedy-orbit}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_greedySkippedSupport\_infinite}{GreedyAchievementSet.lean:2514}
+\lean{irrational\_erdosBorweinMersenneConstant}{GreedyAchievementSet.lean:2433}
+\end{thm}
+
+\begin{thm}[The nine-way half-membership classification hub]
+\label{thm:nine-way-hub}
+$1/2\in\mathrm{mersenneAchievementSet}$ is equivalent to \emph{all} of: (1)
+$\neg$\emph{SeamGreedyEventuallyRight}; (2) \emph{SeamGreedyUnboundedTerminalFalse} (false
+successor terminal bits beyond every bound); (3) \emph{SeamGreedyUnboundedUpperOrMiddle}
+(U/M events beyond every bound); (4) \emph{SeamGreedyCofinalTerminalFalse} (one cofinal
+sequence of false terminals); (5) $\exists\,\mathrm{rows},\,
+\mathrm{SeamGreedyUnboundedSkippedRanksAlong}\,\mathrm{rows}$; (6) the greedy skipped
+support is infinite (Theorem~\ref{thm:half-skip-dichotomy}); (7) no last half-greedy skip
+exists (Theorem~\ref{thm:last-skip-iff-fatal}). The central hub of the whole half-branch:
+every sufficient-condition theorem elsewhere in this catalogue is secretly proving one of
+these seven equivalent forms; a disproof of any one (a bounded/eventually-right
+certificate) closes the branch.
+\par\ev{Lean}\scale{cofinal}\coord{seam-integer}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_not\_seamGreedyEventuallyRight}{HalfCylinderHalfMembershipClassification.lean:112}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_exists\_unboundedSkippedRanksAlong}{HalfCylinderHalfMembershipClassification.lean:213}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_no\_lastHalfGreedySkip}{HalfCylinderHalfMembershipClassification.lean:235}
+\end{thm}
+
+\begin{lem}[Eventually-right seam tail is analytically impossible for $1/2$]
+\label{lem:eventually-right-impossible}
+If the seam eventually always extends ``true'' (right branch) from some row $S$ on with a
+fixed lower prefix $u$, the resulting cofinite-support value stays strictly below $1/2$
+(\emph{prefix\_add\_mersenneTail\_lt\_half\_of\_eventually\_right}); the matching
+alternative ``upper competitor'' word gives a strict excess \emph{above} $1/2$
+(\emph{half\_lt\_upper\_competitor\_of\_eventually\_right}). An eventually-right tail can
+therefore never land exactly on $1/2$ — it always undershoots or overshoots. The analytic
+engine behind the final-middle-cell exclusion (Theorem~\ref{thm:final-middle-cell}).
+\par\ev{Lean}\scale{cofinal}\coord{seam-integer}
+\lean{prefix\_add\_mersenneTail\_lt\_half\_of\_eventually\_right}{HalfCylinderFatalGapRightTail.lean:402}
+\lean{half\_lt\_upper\_competitor\_of\_eventually\_right}{HalfCylinderFatalGapRightTail.lean:627}
+\end{lem}
+
+\begin{lem}[Mersenne weight/tail: strict superincreasingness]
+\label{lem:mersenne-tail-weight}
+$\mathrm{mersenneWeight}\,n = 1/(2^n-1)$; $\mathrm{mersenneTail}\,n = \sum'_k
+\mathrm{mersenneWeight}(n{+}k{+}1)$; $\mathrm{mersenneTail}\,n =
+\mathrm{mersenneWeight}(n{+}1)+\mathrm{mersenneTail}(n{+}1)$; and for $n>0$,
+$\mathrm{mersenneTail}\,n<\mathrm{mersenneWeight}\,n$ (strict superincreasingness), with
+the two-sided envelope $\mathrm{mersenneTail}\,n\le
+2\cdot\mathrm{mersenneWeight}(n{+}1)$. The whole superincreasing-series machinery
+downstream is built on the strict inequality. The proof pattern (remaining tail after
+rank $n$ strictly smaller than weight $n$) is a fully generic superincreasing-series fact,
+directly relevant to \#249's own $\varphi(n)/2^n$ series.
+\par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
+\lean{mersenneTail\_lt\_weight}{GreedyAchievementSet.lean:180}
+\lean{mersenneTail\_le\_two\_mul\_weight}{GreedyAchievementSet.lean:155}
+\end{lem}
+
+\begin{thm}[Greedy survival criterion --- the master theorem]
+\label{thm:greedy-survival-catalogue}
+$x\in\mathrm{mersenneAchievementSet} \iff 0\le x \land \forall n,\,
+\mathrm{greedyMersenneRemainder}\,x\,n \le \mathrm{mersenneTail}\,n$, where
+\emph{greedyMersenneRemainder} is the canonical take-if-possible greedy recursion.
+Membership is exactly ``every greedy residual survives (stays $\le$ the full remaining
+tail)''. The proof pattern (fatal-state absorption plus convergence-from-survival) is a
+completely generic superincreasing-series fact; only \emph{mersenneWeight}/
+\emph{mersenneTail} are Mersenne-specific inputs. The canonical entry point for every
+half-membership sufficient-condition theorem in this catalogue.
+\par\ev{Lean}\scale{uniform}\coord{greedy-orbit}
+\lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1445}
+\end{thm}
+
+\begin{lem}[Rank-step trichotomy of the Dedekind cut]
+\label{lem:rank-step-trichotomy}
+From a depth-$d$ straddle of target $t$, exactly one of: (a) still straddles at $d{+}1$
+without taking $d{+}1$; (b) straddles at $d{+}1$ after taking $d{+}1$; (c) $t$ sits in the
+fatal gap $(\mathrm{value}(u)+\mathrm{mersenneTail}(d{+}1),\,
+\mathrm{value}(u)+\mathrm{mersenneWeight}(d{+}1))$. Specialized to $t=1/2$, branches (a)
+and (b) are proved mutually exclusive (\emph{half\_step\_forced}), since both boundary
+equalities are impossible for $1/2$
+(Lemma~\ref{lem:half-endpoint-kills}). A pure consequence of superincreasingness plus
+$\mathrm{mersenneTail}\,n = \mathrm{mersenneWeight}(n{+}1)+\mathrm{mersenneTail}(n{+}1)$.
+\par\ev{Lean}\scale{uniform}\coord{dedekind-cut}
+\lean{isStraddlePrefix\_step\_trichotomy}{HalfCutLocator.lean:205}
+\lean{IsStraddlePrefix.half\_step\_forced}{HalfCutLocator.lean:301}
+\end{lem}
+
+\begin{lem}[Fatal-gap exclusion: kills every support, not just greedy]
+\label{lem:fatal-gap-exclusion}
+If $t$ lies strictly inside the rank-$(d{+}1)$ gap
+$(\mathrm{mersenneSupportPrefix}\,A\,d + \mathrm{mersenneTail}(d{+}1),\,
+\mathrm{mersenneSupportPrefix}\,A\,d + \mathrm{mersenneWeight}(d{+}1))$ for a fixed prefix
+mass, then $\mathrm{positiveMersenneSupportValue}\,A\ne t$ for \emph{every} support $A$
+achieving that prefix, not merely the greedy orbit. Pure consequence of
+superincreasingness, no Mersenne-specific arithmetic beyond the weight function. The
+``kill certificate'' primitive: any concrete numeric interval computation landing inside a
+fatal gap immediately falsifies half-membership via this lemma.
+\par\ev{Lean}\scale{uniform}\coord{dedekind-cut}
+\lean{positiveMersenneSupportValue\_ne\_of\_rank\_gap}{HalfCutLocator.lean:380}
+\end{lem}
+
+\begin{lem}[Half endpoint kills: no finite word hits $1/2$ exactly]
+\label{lem:half-endpoint-kills}
+No finite positive-support word has value exactly $1/2$
+(\emph{positiveMersenneSupportValue\_coe\_finset\_ne\_half}, via the odd reduced
+denominator of the finite Erd\H{o}s sum). No finite word plus a complete tail equals
+$1/2$ either (\emph{half\_ne\_coe\_finset\_add\_mersenneTail}, via irrationality of the
+Erd\H{o}s--Borwein constant, same mechanism as Theorem~\ref{thm:half-skip-dichotomy}).
+Discharges the two boundary branches of the rank-step trichotomy
+(Lemma~\ref{lem:rank-step-trichotomy}), forcing every macrostep to be a strict trichotomy
+with no equality case.
+\par\ev{Lean}\scale{uniform}\coord{parity-irrationality}
+\lean{positiveMersenneSupportValue\_coe\_finset\_ne\_half}{HalfCutLocator.lean:243}
+\lean{half\_ne\_coe\_finset\_add\_mersenneTail}{HalfCutLocator.lean:263}
+\end{lem}
+
+\begin{lem}[Straddle words are canonical: they agree with the greedy prefix]
+\label{lem:straddle-agrees-greedy}
+Every half-straddling word agrees with the actual canonical greedy word through the same
+depth: $\forall n\le d,\, n>0,\; (n\in u \leftrightarrow n\in
+\mathrm{greedyMersenneSupport}(1/2))$, by induction on $d$ using the backward step
+\emph{erase\_top}. Straddle words are not an independent search tree — they are forced to
+\emph{be} the greedy prefix. This is what lets the word-level fatal-gap exclusion
+(Lemma~\ref{lem:fatal-gap-exclusion}, valid for any support) be applied specifically to
+rule out the actual greedy orbit's half-representation.
+\par\ev{Lean}\scale{uniform}\coord{greedy-orbit}
+\lean{IsStraddlePrefix.half\_agrees\_greedy}{HalfCutLocator.lean:442}
+\lean{IsStraddlePrefix.erase\_top}{HalfCutLocator.lean:334}
+\end{lem}
+
+\begin{thm}[Last-skip iff local fatality: half-membership as an infinite pointwise conjunction]
+\label{thm:last-skip-iff-fatal}
+$\mathrm{IsLastHalfGreedySkip}\,M \iff M\in\mathrm{greedyMersenneSkippedSupport}(1/2)
+\land \mathrm{GreedyMersenneFatalAt}(1/2)\,M$. Equivalently: no last skip exists iff every
+actual skip survives, giving
+$1/2\in\mathrm{mersenneAchievementSet} \iff \forall M\in
+\mathrm{greedyMersenneSkippedSupport}(1/2),\, \mathrm{greedyMersenneRemainder}(1/2)\,M\le
+\mathrm{mersenneTail}\,M$. Turns half-membership into an infinite conjunction over
+\emph{actually skipped} ranks only — the reduction from a global fatal-state statement to
+a rank-local pointwise inequality is a generic greedy-recursion fact.
+\par\ev{Lean}\scale{uniform}\coord{greedy-orbit}
+\lean{half\_mem\_iff\_every\_actual\_skip\_survives}{HalfCylinderFixedTailSocket.lean:73}
+\lean{isLastHalfGreedySkip\_iff\_skip\_and\_fatal}{HalfCylinderFixedTailSocket.lean:22}
+\end{thm}
+
+\begin{lem}[Seam upper-or-middle classification]
+\label{lem:seam-upper-or-middle}
+For row $s\ge 5$: the empirical ``false successor terminal bit'' event is exactly the
+arithmetic disjunction $\mathrm{SeamGreedyUpperOrMiddleAt}\,s\,hs :=
+(\mathrm{seamAdjacentCut}\,s\,hs).\mathrm{successorCarries} \lor (\neg\mathrm{carries}
+\land 4\cdot\mathrm{remainder}+\mathrm{gap}-\mathrm{belowPulse} <
+\mathrm{terminalWeight})$. The empirical U/M/R label at each seam row is removable in
+favor of pure arithmetic on \emph{seamAdjacentCut}; the seam-arithmetic analogue of the
+rank-step trichotomy (Lemma~\ref{lem:rank-step-trichotomy}).
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{seamGreedy\_terminal\_false\_iff\_upperOrMiddle}{HalfCylinderHalfMembershipClassification.lean:57}
+\end{lem}
+
+\begin{lem}[Largest-false-rank algebra: exact weight identity and branch propagation]
+\label{lem:largest-false-rank-algebra}
+Exact identity linking the largest-false-rank's lower vs.\ upper word weights: $3\cdot
+\mathrm{lowerWeight} + \mathrm{exactLateGap} = \mathrm{upperWeight}$. Successor
+propagation: the right branch \emph{preserves} the same largest-false rank $d$
+(\emph{IsLargestFalseRank.seamGreedyWord\_succ\_of\_rightBranch}); the upper/middle
+branches \emph{reset} it to the new terminal rank $s$
+(\emph{seamGreedyWord\_succ\_isLargestFalseRank\_terminal\_of\_upperOrMiddle}). The exact
+bookkeeping consumed inside the largest-skip-late induction
+(Theorem~\ref{thm:largest-skip-late}).
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{three\_mul\_largestSkipLowerWeight\_add\_exactLateGap\_eq\_upperWeight}{HalfCylinderLargestSkipGap.lean:259}
+\lean{IsLargestFalseRank.seamGreedyWord\_succ\_of\_rightBranch}{HalfCylinderLargestSkipGap.lean:339}
+\end{lem}
+
+\begin{thm}[Critical dyadic-band index: a problem-agnostic quantifier collapse]
+\label{thm:critical-dyadic-band}
+\emph{CriticalDyadicBandIndex}$\,d\,E\,j$ picks out the unique nearest dyadic power
+$2^{d-j+1}\ge E$. Fully abstract, pure $\mathbb N$ arithmetic, zero seam content:
+$\mathrm{DyadicBandEscape}\,d\,E \iff \exists j,\,\mathrm{CriticalDyadicBandIndex}\,d\,E\,j
+\land E+2(d+j)\le 2^{d-j+1}$ — the $\forall j$ band-avoidance condition collapses to
+checking exactly \emph{one} critical index, reducing a check of $d{+}1$ separate
+inequalities to one nearest-boundary check per row. Specialized to the seam reset charge
+(with $E\le 2^{d+1}$ automatically supplied by Theorem~\ref{thm:two-sided-dyadic}), the
+reduced socket \emph{SeamUpperResetCriticalBandEscape} is proved logically equivalent to
+Theorem~\ref{thm:upper-reset-band}'s band-avoidance hypothesis.
+\par\ev{Lean}\scale{uniform}\coord{dyadic-boundary}
+\lean{dyadicBandEscape\_iff\_exists\_critical}{HalfUpperResetCriticalBand.lean:108}
+\lean{seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:883}
+\end{thm}
+
+\begin{thm}[Final-middle-cell $-3$ excluded]
+\label{thm:final-middle-cell}
+The first of three exceptional final-middle integer cells (coordinate
+$4\cdot\mathrm{remainder}-\mathrm{belowPulse}-4=-3$) cannot be the actual last transition
+before an all-right tail. Combines the analytic strict inequality of
+Lemma~\ref{lem:eventually-right-impossible} with a two-step M\"obius-carry recurrence
+forcing the centred carry to zero then strictly negative within two more coefficient
+rows, contradicting the nonnegativity of Theorem~\ref{thm:mobius-centred-nonneg}. One of
+three exceptional cells ($-3,-2,-1$); the companion file records the analogous
+\emph{binaryCoeffTail} inequalities for cells $-2$ and $-1$ — closing all three fully
+resolves the final-middle producer.
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{finalMiddleCell\_neg\_three\_not\_last}{HalfCylinderFinalMiddleCellEscape.lean:587}
+\lean{mobiusCenteredHalfCarry\_add\_two}{HalfCylinderFinalMiddleCellEscape.lean:39}
+\end{thm}
+
+\begin{lem}[Skipped-endpoint trichotomy: frozen-margin sign classification]
+\label{lem:skipped-endpoint-trichotomy}
+At every genuinely skipped rank $s\ge 5$, the frozen margin
+$\mathrm{greedyHalfFrozenMargin}(s{-}1)\,s$ is in exactly one of three signed cells:
+negative (actual word $=$ seam-greedy word, remainder $\ge 1$, margin $=
+-\mathrm{remainder}$); zero (actual word $=$ seam-greedy word, remainder $=0$); positive
+(actual word $=$ the seam ``above'' word, margin $=\mathrm{overshoot}$). The zero cell is
+provably safe; only the negative cell needs excluding, and it is exactly the case-split
+that Theorem~\ref{thm:final-middle-cell}'s three exceptional cells live inside.
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{halfGreedy\_skipped\_endpoint\_trichotomy}{HalfCylinderSkippedEndpointClassifier.lean:246}
+\end{lem}
+
+\begin{lem}[Reverse carry-word overlap spacing: zero Mersenne content]
+\label{lem:reverse-carry-word}
+A \emph{ReverseCarryWord} is $(\mathrm{coeff},\mathrm{bit},\mathrm{carry}:\mathbb
+N\to\mathbb Z)$ with $\mathrm{bit}(m)+2\cdot\mathrm{carry}(m) =
+\mathrm{coeff}(m)+\mathrm{carry}(m{+}1)$. If two such words share a $1/0$ seam and then
+agree on both coefficients and bits for \emph{length} further positions, their carry
+difference at the far end is exactly $2^{\mathrm{length}}$ times an odd integer.
+Combined with a common Archimedean bound on both terminal carries, this forces
+$2^{\mathrm{length}}\le\mathrm{bound}$. Fully abstract: no Mersenne, base-$4$, or seam
+structure at all — pure integer-sequence recurrence, directly portable to \#249's own
+digit-carry structure if given an analogous reverse-carry presentation.
+\par\ev{Lean}\scale{uniform}\coord{binary-digit}
+\lean{overlappingReverseCarryWords\_carryDifference\_eq\_twoPow\_mul\_odd}{HalfTrappingReturnCarry.lean:124}
+\lean{overlappingReverseCarryWords\_twoPow\_le\_realBound}{HalfTrappingReturnCarry.lean:191}
+\end{lem}
+
+\begin{lem}[Relation-invariant linear channels force a rank-one determinant collapse]
+\label{lem:linear-channel-nogo}
+If a finite family of linear channels $\mathrm{channel}:\iota\to V\to_{\mathbb Q}
+\mathbb Q$ all vanish on $\ker(\mathrm{ev})$ and $\exists e,\,\mathrm{ev}\,e=1$, then the
+evaluation matrix $(i,j)\mapsto\mathrm{channel}\,j\,(\mathrm{row}\,i)$ has rank $\le 1$ for
+\emph{every} finite index type $\iota$ with $[\mathrm{Nontrivial}\,\iota]$ — hence every
+square minor of size $\ge 2$ has determinant zero, at all ranks simultaneously (previously
+checked only experimentally at ranks 2--4). Pure linear algebra over $\mathbb
+Q$-vector spaces, zero arithmetic content specific to Mersenne or \#257; closes an entire
+family of ``maybe there's a determinant obstruction at some higher rank'' hopes in one
+shot.
+\par\ev{Lean}\scale{uniform}\coord{linear-algebra}
+\lean{relationInvariantLinearChannels\_det\_eq\_zero}{HalfTrappingReturnCarry.lean:42}
+\end{lem}
+
+\begin{thm}[Two-thirds band: exact localisation of post-take skip-unsafety]
+\label{thm:two-thirds-band}
+Writing a greedy residual as $\mathrm{rem}=1/R$: a skip at rank $k$ is dyadically safe
+iff $R\ge 2^k$. For a take-skip-take run with pre-take reciprocal $R$, take at $b$
+($q=2^b-1$), next take at $c$ ($m=2^{c-1}$), the exact localisation
+$\mathrm{PostTakeUnsafeAt}\,R\,q\,m \iff \mathrm{Band}\,R\,q\,m$ holds, with band width
+exactly $q^2/((q{+}m)(q{+}m{-}1))$. Specializing to a single-skip run ($m=2q{+}2$) gives
+the two-thirds band, width exactly $q^2/((3q{+}1)(3q{+}2))<1/9$, pinning $2q<3R<2q+2/3$.
+Two unconditional corollaries: an integral $R$ is never unsafe; for $\mathrm{rem}=p/(2D)$
+in lowest terms with $p,D,q$ odd, an unsafe run forces $p\ge 7$ (via a $2$-adic parity
+argument on the band defect, $4\mid\Delta$). Entirely general to any greedy expansion
+using the dyadic-safety test, not specific to Mersenne weights, but dyadic safety is
+sufficient, not proved necessary, for the true greedy process to survive: $(p,D,b)=
+(17,41,3)$ is an explicit odd-coprime example that \emph{is} dyadically unsafe, and
+nothing here asserts the actual half-greedy orbit avoids the band.
+\par\ev{Lean}\scale{uniform}\coord{rational-band}
+\lean{postTakeUnsafeAt\_iff\_band}{HalfGreedyTwoThirdsBand.lean:88}
+\lean{seven\_le\_of\_intBand\_odd}{HalfGreedyTwoThirdsBand.lean:231}
+\lean{not\_twoThirdsBand\_of\_int}{HalfGreedyTwoThirdsBand.lean:185}
+\end{thm}
+
+\begin{thm}[Sharp two-thirds fatal gap: the true-tail-safe criterion]
+\label{thm:sharp-fatal-gap}
+For a skipped residual $\rho=u/(2L)$ at rank $k$, writing the skip margin as
+$2^k u+a=2L+u$ (so $0<a\Leftrightarrow$ skip): the dyadic safety test
+(Theorem~\ref{thm:two-thirds-band}) is $u\le a$, but the \emph{true} tail-based safety
+test only needs $2u\le 3a$, proved via the explicit three-channel Lambert lower bound
+$\mathrm{mersenneTailLB3}\,k = 1/2^k+1/(3\cdot 4^k)+1/(7\cdot 8^k) <
+\mathrm{mersenneTail}\,k$. Unconditional corollaries: unit numerators ($u=1$) are always
+safe; fatality forces $3a<2u$, hence $u\ge 2$ unconditionally and $u\ge 3$ once $u$ is
+odd. Dyadic-safe $\Rightarrow$ sharp-safe strictly: $(u,a)=(3,2)$ is sharp-safe but not
+dyadic-safe. One-third tighter than the dyadic test, discharged against the actual
+Mersenne tail, not just the three-channel lower bound. A separate project-memory note
+records matching ``$2u\le 3a$'' language on the \emph{unconditional} ($\forall$ infinite
+$A$) \#257 track; whether that is the same theorem or an independently proved analogue on
+this half-membership track is unverified — flag as \texttt{reported\_prior}.
+\par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
+\lean{skipSafe\_of\_two\_mul\_le\_three\_mul}{HalfGreedyFatalGap.lean:103}
+\lean{sharp\_strictly\_stronger}{HalfGreedyFatalGap.lean:196}
+\lean{three\_le\_of\_fatal\_of\_odd}{HalfGreedyFatalGap.lean:169}
+\end{thm}
+
+\begin{lem}[Total gap-mass summability beyond any level]
+\label{lem:gap-mass-summability}
+$\mathrm{mersenneGap}\,n := \mathrm{mersenneWeight}\,n-\mathrm{mersenneTail}\,n>0$. The
+total gap mass strictly beyond level $N$ is summable and explicitly bounded:
+$\sum'_k\mathrm{mersenneGap}(N{+}k{+}1) \le (2/9)(1/4)^N+(3/7)(1/8)^N\to 0$, obtained by
+summing the pre-existing per-level asymptotic bound geometrically. \textbf{Scope
+caveat} (explicit in the source file header): bounds gap \emph{mass} only — says
+nothing about which reals the greedy run reaches, does not certify membership or
+nonmembership of any point, and in particular says nothing about $1/2$ directly.
+\par\ev{Lean}\scale{uniform}\coord{mobius-mersenne}
+\lean{mersenneGap\_tail\_le}{HalfGapMass.lean:83}
+\lean{tendsto\_mersenneGap\_tail\_zero}{HalfGapMass.lean:104}
+\end{lem}
+
+\begin{lem}[Half-divisor unit drop: smallest single-bit coefficient producer]
+\label{lem:half-divisor-unit-drop}
+At row $2(N{+}1)$, changing only exponent $N{+}1$ from \emph{false} to \emph{true} in a
+\emph{HalfWord N} adds exactly the half-divisor incidence to \emph{supportCoeff}:
+$\mathrm{supportCoeff}(\mathrm{wordSupport}(\mathrm{extend}\,a\,\mathrm{true}))(2(N{+}1)) =
+\mathrm{supportCoeff}(\mathrm{wordSupport}(\mathrm{extend}\,a\,\mathrm{false}))(2(N{+}1))
++ 1$. The smallest possible ``flip one bit, coefficient changes by exactly $1$''
+producer. The mechanism (flipping a single word-bit changes a divisor-incidence sum by
+exactly the number of new divisor relations created) is a generic digit/divisor-incidence
+fact, restating for any base-$2$ divisor-coefficient bookkeeping, including \#249's own
+divisor sums.
+\par\ev{Lean}\scale{uniform}\coord{divisor-incidence}
+\lean{supportCoeff\_extend\_true\_eq\_false\_add\_one\_at\_double}{HalfDivisorUnitDrop.lean:20}
+\end{lem}
+
+\begin{thm}[Tempered-orbit rigidity: the shared \#249/\#257 trunk]
+\label{thm:tempered-orbit-rigidity}
+For any nonnegative-integer coefficient sequence $c:\mathbb N\to\mathbb N$ with $c(n)\le
+n$: the binary coefficient series $X_c = \sum'_{n\ge 1} c(n)/2^n$ is rational iff there
+exists a positive integer multiplier $v$ and an integer orbit $u:\mathbb N\to\mathbb Z$
+satisfying the exact carry recurrence $u(N{+}1)=2u(N)-v\cdot c(N{+}1)$ together with the
+tempered (subexponential) growth condition $u(N)/2^N\to 0$. Every such tempered orbit is
+\emph{rigid}: $u(N) = v\cdot T_c(N)$ exactly, where $T_c(N)=\sum_{j\ge 1} c(N{+}j)/2^j$ is
+the scaled tail — there is at most one tempered orbit up to the multiplier $v$, and it
+equals the analytic tail exactly, not just asymptotically. Positivity of the orbit alone
+is deliberately \emph{not} used as an equivalent criterion: a homogeneous $2^N$-scaled
+perturbation can be added to any orbit without breaking the recurrence, so only
+temperedness is load-bearing. Explicitly asserted in-source as the shared binary carry
+trunk for \#249 and \#257: $c=\tau$ restricted to support (\#257's \emph{supportCoeff})
+and $c=\varphi$ (\#249) are both literal instances with no adaptation needed.
+\par\ev{Lean}\scale{uniform}\coord{binary-digit}
+\lean{binaryCoeffSeries\_rational\_iff\_exists\_temperedBinaryOrbit}{GenericTailOrbitRigidity.lean:426}
+\lean{temperedBinaryOrbit\_eq\_scaledTail}{GenericTailOrbitRigidity.lean:339}
+\end{thm}
+
+\begin{lem}[Finite symmetric-difference tail-transfer of irrationality]
+\label{lem:tail-transfer}
+If $\mathrm{erdosSupportSeries}\,b\,A$ is irrational and $A,B$ differ by a finite
+symmetric difference, then $\mathrm{erdosSupportSeries}\,b\,B$ is irrational too.
+Irrationality of a support series is invariant under changing finitely many support
+elements. Fully general; likely reusable for \#249 tails as well. Feeds the
+eventually-periodic theorem (Theorem~\ref{thm:eventually-periodic}).
+\par\ev{Lean}\scale{uniform}\coord{tail-transfer}
+\lean{irrational\_erdosSupportSeries\_tail\_of\_irrational}{CertificateKernel.lean:9429}
+\end{lem}
+
+\begin{lem}[Dyadic-vs-Mersenne exact excess reformulation]
+\label{lem:dyadic-excess-reformulation}
+The greedy-toward-$1/2$ decision at rank $n{+}1$ (take the next Mersenne weight
+$1/(2^{n+1}-1)$ or skip it) is exactly equivalent, with no real-analytic approximation, to
+an integer sign test on the excess numerator $\mathrm{nextDyadicExcessIntNumerator}\,p\,n\,L
+:= 2^n p - L$ for a displayed residual $p/(2L)$: $p/(2L)\le 1/2^{n+1} \iff
+\mathrm{nextDyadicExcessIntNumerator}\,p\,n\,L\le 0$. The forbidden ``Mersenne--dyadic
+sliver'' (skip is dyadically unsafe) is exactly $0<E\land 2E<p$.
+\par\ev{Lean}\scale{uniform}\coord{seam-integer}
+\lean{divInt\_le\_nextDyadic\_iff\_excess\_nonpos}{DyadicPrefixCompression.lean:198}
+\lean{greedyHalf\_mem\_nextMersenneDyadicSliver\_iff\_excess}{DyadicPrefixCompression.lean:1044}
+\end{lem}
+
+\begin{lem}[Denominator sandwich: odd-part survival, domain-neutral]
+\label{lem:denominator-sandwich}
+Subtracting an odd reduced fraction $r/D$ from a dyadic $p/2^c$ leaves a residual whose
+reduced denominator sandwiches the original: $D\mid(\mathrm{residual}).\mathrm{den}\mid
+2^c\cdot D$. Pure \texttt{Rat.divInt} denominator-reduction algebra, independent of the
+greedy/Mersenne setting; directly reusable anywhere a base-$2$ rational minus an
+odd-denominator rational needs its reduced denominator tracked, including \#249's own
+carry bookkeeping.
+\par\ev{Lean}\scale{uniform}\coord{denominator-algebra}
+\lean{dyadicResidual\_denominator\_sandwich}{DyadicPrefixCompression.lean:118}
+\end{lem}
+
+\begin{lem}[Rational denominator survival: general-purpose fraction-reduction algebra]
+\label{lem:denominator-survival}
+If $m\mid D$ and $m$ is coprime to numerator $a$, then $m\mid(a/D\text{ as }
+\mathrm{Rat}).\mathrm{den}$. Scaled variant: if $C\mid D$ and $C$ is coprime to $a$, then
+$C/\gcd(C,h)\mid((h\cdot a)/D\text{ as }\mathrm{Rat}).\mathrm{den}$ — a divisor of the
+displayed denominator survives rational reduction up to exactly the part the scale
+multiplier can cancel. Zero domain content: the general-purpose ``which prime power
+survives fraction reduction'' lemma, feeding Theorem~\ref{thm:mersenne-channel-survival}
+directly, and equally applicable to any future \#249 denominator-tracking argument.
+\par\ev{Lean}\scale{uniform}\coord{denominator-algebra}
+\lean{divisor\_dvd\_divInt\_den}{RationalDenominatorSurvival.lean:17}
+\lean{survivingDivisor\_dvd\_scaled\_divInt\_den}{RationalDenominatorSurvival.lean:38}
+\end{lem}
+
+\begin{lem}[Two-prime exact-valuation layer commutation]
+\label{lem:mixed-prime-power-layer}
+For an integer-valued support-coefficient function and two distinct primes $p\ne q$ with
+exponents $e,f>0$: the iterated exact-level-difference operator (\emph{primePowerLayer})
+commutes across the two primes, and two nested layers extract exactly the iterated
+exact-valuation pullback of the support:
+$\mathrm{mixedPrimePowerLayerTwo}\,p\,e\,q\,f\,(\mathrm{supportCoeffInt}\,A)\,n =
+\mathrm{supportCoeffInt}\,(\mathrm{pullback}_{q,f}(\mathrm{pullback}_{p,e}\,A))\,n$ for
+$n$ coprime to $pq$. Extends the single-prime layer theory to two primes; purely
+algebraic, supplies no transport from rationality through multiplicative decimation and
+asserts no bounded-$\Omega$ endpoint on its own.
+\par\ev{Lean}\scale{uniform}\coord{p-adic}
+\lean{mixedPrimePowerLayerTwo\_supportCoeffInt}{MaximalOmegaLayer.lean:39}
+\lean{primePowerLayer\_comm}{MaximalOmegaLayer.lean:29}
+\end{lem}
+
+\begin{defn}[The Mersenne achievement set and the support-series object]
+\label{defn:achievement-set}
+$\mathrm{mersenneAchievementSet} := \{x\in\mathbb R \mid \exists A\subseteq\mathbb N,\,
+0\notin A \land x = \mathrm{positiveMersenneSupportValue}\,A\}$, where
+$\mathrm{positiveMersenneSupportValue}\,A = \sum'_k \mathrm{indicator}\,A\,
+\mathrm{mersenneWeight}(k{+}1)$ — the set of reals representable as a sum of a
+\emph{subset} of positive-index Mersenne weights, ranging over all supports $A$, not only
+infinite ones. The general-$b$, general-support object used throughout the support-family
+route is $\mathrm{erdosSupportSeries}\,b\,A := \sum'_n \mathrm{indicator}\,A\,
+(1/(b^n-1))\,n$, with $\mathrm{supportCoeff}\,A\,n := \#\{d\mid n : d\in A\}$ (the
+Dirichlet incidence $1_A * 1$, \#257's analogue of $\tau$); $A=\mathrm{Set.univ}$
+recovers the full-support series of Theorem~\ref{thm:full-support-catalogue}.
+\par\ev{Lean}\scale{n/a}\coord{binary-digit}
+\lean{mersenneAchievementSet}{GreedyAchievementSet.lean:571}
+\lean{erdosSupportSeries}{CertificateKernel.lean:8850}
+\lean{supportCoeff}{CertificateKernel.lean:8809}
+\end{defn}
+
+\begin{prop}[Achievement-set topology: compact, closed, perfect, measure exactly one]
+\label{prop:achievement-set-topology}
+$\mathrm{mersenneAchievementSet}$ is compact (continuous image of the binary-sequence
+Cantor space $\mathbb N\to\mathrm{Fin}\,2$ under the product topology, via
+$\mathrm{positiveMersenneDigitValue}$), hence closed; it is also perfect, totally
+disconnected, and nowhere dense, with Lebesgue measure exactly $1$. The
+compactness/closedness argument (binary coding $\to$ Cantor space $\to$ continuous image)
+is a fully generic technique for characterizing the achievement set of \emph{any}
+absolutely convergent digit-weighted series, not specific to Mersenne denominators —
+directly reusable for a \#249-style $\varphi(n)/2^n$ series after checking summability
+and superincreasingness. Closedness alone is what powers every ``limit of a sequence of
+achieved points is achieved'' argument in this catalogue (e.g.\
+Theorem~\ref{thm:seam-limit}, Theorem~\ref{thm:straddle-closed-set}).
+\par\ev{Lean}\scale{n/a}\coord{binary-digit}
+\lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656}
+\lean{isClosed\_mersenneAchievementSet}{GreedyAchievementSet.lean:660}
+\lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}
+\end{prop}
+
+\begin{thm}[The master dichotomy: fatal-gap existence iff half-nonmembership]
+\label{thm:master-dichotomy}
+$\mathrm{ExistsFatalHalfGap} := \exists u,d,\; (\text{bounds}) \land
+\mathrm{value}(u)+\mathrm{mersenneTail}(d{+}1) < 1/2 \land 1/2 <
+\mathrm{value}(u)+\mathrm{mersenneWeight}(d{+}1)$. \textbf{Theorem:}
+$\mathrm{ExistsFatalHalfGap} \iff 1/2\notin\mathrm{mersenneAchievementSet}$,
+equivalently $1/2\in\mathrm{mersenneAchievementSet} \iff \neg\mathrm{ExistsFatalHalfGap}$
+— the complete unconditional dichotomy: one of the two disjuncts always holds. The whole
+of the half-branch of \#257 reduces to a search for one finite, checkable, numerically
+verifiable fatal-gap witness $(u,d)$ — a completely finite existence statement, versus its
+negation, which by the straddle machinery
+(Lemma~\ref{lem:rank-step-trichotomy}--\ref{lem:straddle-agrees-greedy}) is equivalent to
+membership. The shape of this dichotomy (finite fatal-gap certificate exists, or the
+closed achievement set contains the target) is the generic Dedekind-cut-in-a-
+superincreasing-series pattern, directly portable to \#249 given its own analogues of
+Lemma~\ref{lem:half-endpoint-kills} and Proposition~\ref{prop:achievement-set-topology}.
+\par\ev{Lean}\scale{n/a}\coord{dedekind-cut}
+\lean{half\_mem\_mersenneAchievementSet\_iff\_no\_existsFatalHalfGap}{HalfCutLocator.lean:654}
+\lean{half\_mem\_mersenneAchievementSet\_or\_exists\_fatal\_gap}{HalfCutLocator.lean:623}
+\end{thm}
+
+\begin{defn}[Perturbed family and adjacent cut: the abstract seam gadget]
+\label{defn:perturbed-family}
+$\mathrm{structure}\;\mathrm{PerturbedFamily}(\alpha)$ where
+$\mathrm{oldSum}:\alpha\to\mathbb N$; $\mathrm{pulse}:\alpha\to\mathbb N$;
+$\mathrm{gap},\mathrm{pulseCap}:\mathbb N$; with axioms $\mathrm{gap\_pos}$,
+$\mathrm{pulse\_le}$, $\mathrm{oldSum\_injective}$, a superincreasing-gap
+\emph{separated} condition, and $\mathrm{pulseCap} < 3\cdot\mathrm{gap}$. Derived:
+$\mathrm{newSum}\,x := 4\cdot\mathrm{oldSum}\,x+\mathrm{pulse}\,x$;
+$\mathrm{structure}\;\mathrm{AdjacentCut}(C)$ packages a ``best subset $\le C$, best
+subset $>C$'' adjacent pair with admissibility/maximality/strictness axioms. No Mersenne
+content whatsoever: $\alpha$, $\mathrm{oldSum}$, $\mathrm{pulse}$ are all free
+parameters — this is the general theory that $\mathrm{seamPerturbedFamily}$/
+$\mathrm{seamAdjacentCut}$ (used throughout the seam files) are specific instances of.
+\par\ev{Lean}\scale{n/a}\coord{abstract-perturbed-greedy}
+\lean{PerturbedFamily}{HalfCylinderIntegerGreedy.lean:1286}
+\lean{AdjacentCut}{HalfCylinderIntegerGreedy.lean:1320}
+\end{defn}
+
+\begin{thm}[Perturbed-family maximality and the three-branch recurrence]
+\label{thm:perturbed-family-maximality}
+$\mathrm{successorCarries} := 4\cdot\mathrm{overshoot}+\mathrm{abovePulse} \le
+\mathrm{gap}$; $\mathrm{prefixChoice} := \mathrm{if}\ \mathrm{successorCarries}\
+\mathrm{then}\ \mathrm{above}\ \mathrm{else}\ \mathrm{below}$ is provably maximal among
+all $x$ with $\mathrm{newSum}\,x\le\mathrm{newCapacity}$
+(\emph{prefixChoice\_maximal}); \emph{nextRemainder\_trichotomy} gives the exact
+three-branch (carry / middle / right) recurrence for the next remainder. Proved once and
+for all at the abstract \emph{PerturbedFamily} level
+(Definition~\ref{defn:perturbed-family}); the single most reusable abstract result in
+this catalogue — any future formalization of a different base-$b$ greedy digit process
+needing a maximality-of-greedy-choice theorem can instantiate this structure directly
+instead of re-proving maximality from scratch.
+\par\ev{Lean}\scale{n/a}\coord{abstract-perturbed-greedy}
+\lean{prefixChoice\_maximal}{HalfCylinderIntegerGreedy.lean:1390}
+\lean{nextRemainder\_trichotomy}{HalfCylinderIntegerGreedy.lean:1463}
+\end{thm}

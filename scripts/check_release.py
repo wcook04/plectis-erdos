@@ -593,6 +593,41 @@ def main() -> int:
         check(formal_source.get("relationship_to_last_tag") in {
             "at_last_tag", "post_tag_checkpoint",
         }, "release.formal_source has an unsupported relationship_to_last_tag")
+        public_tag = formal_source.get("public_tag")
+        check(
+            isinstance(public_tag, str)
+            and re.fullmatch(r"formal-source-\d{4}-\d{2}-\d{2}", public_tag) is not None,
+            "release.formal_source.public_tag must be a dated formal-source tag",
+        )
+        if isinstance(public_tag, str):
+            tag_kind = subprocess.run(
+                ["git", "cat-file", "-t", public_tag],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            check(
+                tag_kind.returncode == 0 and tag_kind.stdout.strip() == "tag",
+                "release.formal_source.public_tag must resolve to an annotated tag",
+            )
+            resolved_tag = subprocess.run(
+                ["git", "rev-parse", f"{public_tag}^{{}}"],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            check(
+                resolved_tag.returncode == 0
+                and resolved_tag.stdout.strip() == formal_ref,
+                "release.formal_source.public_tag does not peel to formal_source.ref",
+            )
+            check(
+                formal_source.get("publication_state")
+                == "published_committed_checkpoint",
+                "a public formal-source tag requires published_committed_checkpoint state",
+            )
     public_projection = release.get("public_projection")
     check(isinstance(public_projection, dict),
           "release must name its public_projection provenance posture")
@@ -1028,7 +1063,9 @@ def main() -> int:
     check(formal_tree_matches,
           formal_tree_detail or "current public Lean sources differ from formal-source checkpoint")
     for paper_path, paper_text in paper_sources:
-        m = re.search(r"\\newcommand\{\\commit\}\{([^}]+)\}", paper_text)
+        m = re.search(
+            r"\\(?:re)?newcommand\{\\commit\}\{([^}]+)\}", paper_text
+        )
         expected_pin = formal_ref
         check(m is not None and m.group(1) == expected_pin,
               f"{paper_path} \\commit pin {m.group(1) if m else '<missing>'} != expected {expected_pin}")
@@ -1110,15 +1147,20 @@ def main() -> int:
     for paper_path, paper_text in paper_sources:
         source_ref = formal_ref
         for macro, fname, line_s, name in re.findall(
-                r"\\(lref|lrefx|lword|lloc)\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
-            rel = f"Erdos249257/{fname}"
+                r"\\([lm](?:refx?|word|loc))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
+            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
+                rel = fname
+            elif "\\input{problem-note-preamble}" in paper_text:
+                rel = f"ErdosProblems/{fname}"
+            else:
+                rel = f"Erdos249257/{fname}"
             lines = module_lines(cache, rel, source_ref)
             if lines is None:
                 fail(f"{paper_path} \\{macro}: file {rel} not found at {source_ref}")
                 continue
             line = int(line_s)
             check(line <= len(lines), f"{paper_path} \\{macro}: {rel}:{line} beyond end of file")
-            if macro in ("lref", "lrefx", "lword") and name and line <= len(lines):
+            if macro in ("lref", "lrefx", "lword", "mref", "mword") and name and line <= len(lines):
                 check(name_at_line(lines, name, line),
                       f"{paper_path} \\{macro}: {name} not at {rel}:{line} (±{LINE_WINDOW})")
 
@@ -1446,6 +1488,41 @@ def main() -> int:
     check(coordinate_check.returncode == 0,
           f"source-coordinate drift: {coordinate_check.stdout.strip() or coordinate_check.stderr.strip()}")
 
+    reasoning_coordinate_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "refresh_reasoning_source_coordinates.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        reasoning_coordinate_check.returncode == 0,
+        "reasoning source-coordinate drift: "
+        + (
+            reasoning_coordinate_check.stdout.strip()
+            or reasoning_coordinate_check.stderr.strip()
+        ),
+    )
+    reasoning_coordinate_test = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "test_reasoning_source_coordinates.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        reasoning_coordinate_test.returncode == 0,
+        "reasoning source-coordinate regression: "
+        + (
+            reasoning_coordinate_test.stdout.strip()
+            or reasoning_coordinate_test.stderr.strip()
+        ),
+    )
+
     corpus_check = subprocess.run(
         [sys.executable, str(ROOT / "scripts" / "build_corpus_descriptor.py"), "--check"],
         cwd=ROOT,
@@ -1465,6 +1542,25 @@ def main() -> int:
     )
     check(paper_alias_check.returncode == 0,
           f"paper module alias drift: {paper_alias_check.stdout.strip() or paper_alias_check.stderr.strip()}")
+    reasoning_assembly_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "assemble_reasoning_surfaces.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        reasoning_assembly_check.returncode == 0,
+        "reasoning-surface assembly drift: "
+        + (
+            reasoning_assembly_check.stdout.strip()
+            or reasoning_assembly_check.stderr.strip()
+        ),
+    )
     boundary = subprocess.run(
         [
             sys.executable,

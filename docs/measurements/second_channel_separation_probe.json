@@ -4,7 +4,7 @@
  "question_id": "XQ257-second-channel-separation",
  "source_contract": {
   "source_path": "Erdos249257/GreedyAchievementSet.lean",
-  "source_sha256": "sha256:6de75131fcafcd72450ae43af9c44717bbfbd9ee6967acaa6d87dced55cb4dad",
+  "source_sha256": "sha256:1407eefd1202e3d4ed54bb8096e3254e771a361ead7c250bdb21689785434adb",
   "definitions": [
    {
     "declaration": "mersenneWeightRat",
@@ -23,7 +23,7 @@
    },
    {
     "declaration": "HalfSecondChannelSeparatedRat",
-    "line": 2695,
+    "line": 2846,
     "fragment_sha256": "sha256:dbf42a1c959a38c62ae4fca7ad9dd413ec745b7eead86189548e9e3c79f9b4a9"
    }
   ],

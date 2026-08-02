@@ -1,0 +1,348 @@
+\section{The object, the two questions, and the exact record}
+
+\subsection{The object}
+
+Fix the Mersenne weight function $x_n := 1/(2^n-1)$ for integers $n \ge 2$. For a set
+$A \subseteq \{2,3,4,\dots\}$, write $x_A := \sum_{n \in A} x_n$ when the sum converges (it always
+does, since $x_n = O(2^{-n})$). Erd\H{o}s's Problem \#257 asks about the family of series
+$\{x_A : A \text{ infinite}\}$.
+
+\begin{defn}[Universal Problem \#257]
+\textbf{Is $x_A = \sum_{n \in A} 1/(2^n-1)$ irrational for \emph{every} infinite
+$A \subseteq \mathbb{N}$?}
+This is a single universally-quantified statement over all infinite subsets of $\mathbb{N}$. It is
+\textbf{OPEN}. \ev{Open}
+\end{defn}
+
+The record in this paper does \emph{not} decide universal \#257. Everything that follows is either
+(i) a proof of irrationality for specific, named infinite-support families -- which narrows but
+does not close the universal statement, since infinitely many other supports remain unchecked -- or
+(ii) an attack on one specific, maximally symmetric candidate counterexample, described next.
+
+\begin{defn}[The distinguished half-value question]
+\label{defn:half-question}
+Define the \emph{Mersenne achievement set}
+$\mathcal{A} := \{\,y \in \mathbb{R} : \exists A \subseteq \mathbb{N},\ 0 \notin A,\ y =
+\sum_{n \in A} x_n\,\}$, the set of reals realizable as a subset sum of the positive-index Mersenne
+weights $\{x_n\}_{n \ge 1}$. \textbf{Is $1/2 \in \mathcal{A}$?} This is \textbf{OPEN}. \ev{Open}
+\end{defn}
+
+\begin{obs}[Why the half-value question controls universal \#257]
+\label{obs:half-controls-universal}
+Any finite subset sum of $\{x_n\}$ has odd reduced denominator, since every $2^n - 1$ is odd; hence
+no finite $A$ can sum to $1/2$ (\lean{positiveMersenneSupportValue_coe_finset_ne_half}{HalfCutLocator.lean:243}).
+Consequently, \emph{if} $1/2 \in \mathcal{A}$, the witnessing support $A$ is necessarily infinite, and
+$x_A = 1/2$ is rational. Such an $A$ is then a single infinite set for which the universal-\#257
+sum is rational -- an outright refutation of universal \#257. Conversely, universal \#257 being true
+forces $1/2 \notin \mathcal{A}$ as one instance among uncountably many. The half-value question is
+thus the maximally symmetric, most heavily studied test case for universal \#257's negation, not a
+restatement of it: proving $1/2 \notin \mathcal{A}$ leaves universal \#257 completely open (all other
+infinite $A$ remain unchecked), while proving $1/2 \in \mathcal{A}$ closes universal \#257
+immediately, in the negative. \scale{n/a} \ev{Math}
+\end{obs}
+
+\subsection{What is proved}
+
+\subsubsection{Full-support irrationality, for every base}
+
+\begin{thm}[Full-support irrationality, unconditional, every base $b \ge 2$]
+\label{thm:full-support}
+For every integer $b \ge 2$,
+\[
+\sum_{k=0}^{\infty} \frac{1}{b^{k+1}-1} \quad \text{is irrational.}
+\]
+\textbf{Hypotheses:} $b \in \mathbb{N}$, $b \ge 2$. \textbf{Conclusion:} unconditional irrationality
+of the full-support Erd\H{o}s--Borwein-type series at every base, not merely base $2$.
+\coord{full-support} \scale{uniform} \ev{Lean}\\
+\textbf{Site:} \lean{irrational\_erdosSum\_full\_support}{CertificateKernel.lean:8281}
+(`$b : \mathbb{N}$, hb : $2 \le b$'), landed via a certificate machine (bounded Bertrand/CRT
+first-block frame, middle-window divisor-pair average with pigeonhole selection, explicit parameter
+closure). The base-$2$ instance recovering the classical Erd\H{o}s--Borwein constant's irrationality
+is \lean{irrational\_erdosBorwein\_series}{CertificateKernel.lean:8288}, a one-line corollary.
+\end{thm}
+
+This is the base-$b$ generalization of Erd\H{o}s's original 1948 irrationality theorem for
+$\sum 1/(2^n-1)$ (cited, in its base-$2$ form, as an input at Remark~\ref{rem:no-ties} below); its
+Lean form removes the base restriction entirely and is landed with no open hypotheses.
+
+\subsubsection{Named infinite-support families}
+
+Beyond full support ($A = \{1,2,3,\dots\}$, i.e.\ $m=1$ below), the following named infinite
+families are each proved irrational unconditionally, for every base $b \ge 2$:
+
+\begin{thm}[Purely periodic support]
+For every $b \ge 2$, every modulus $m \ge 1$, and every $m$-periodic $A \subseteq \mathbb{N}$ (i.e.\
+$n+m \in A \Leftrightarrow n \in A$ for all $n$) containing a positive element, the support series
+$\sum_{a \in A} 1/(b^a-1)$ is irrational. \textbf{Hypotheses:} $b \ge 2$, $m \ge 1$, $A$
+$m$-periodic, $\exists a > 0,\ a \in A$. \coord{periodic-support} \scale{uniform} \ev{Lean}\\
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_periodic}{CertificateKernel.lean:11543}.
+\end{thm}
+
+\begin{thm}[Eventually periodic support]
+For every $b \ge 2$: if $A \subseteq \mathbb{N}$ is infinite and its membership is $m$-periodic from
+some threshold $N_0$ on (i.e.\ $n+m \in A \Leftrightarrow n \in A$ for all $n \ge N_0$), then
+$\sum_{a \in A} 1/(b^a-1)$ is irrational -- proved by transferring irrationality across the finite
+symmetric difference from the shifted purely periodic set $A_{\mathrm{pure}} := \{n : n + m N_0 \in
+A\}$. \textbf{Hypotheses:} $b \ge 2$, $m \ge 1$, $N_0 \in \mathbb{N}$, eventual $m$-periodicity from
+$N_0$, $A$ infinite. \coord{eventually-periodic-support} \scale{uniform} \ev{Lean}\\
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_eventuallyPeriodic}{CertificateKernel.lean:11557}.
+\end{thm}
+
+\begin{thm}[Residue-class support]
+For every $b \ge 2$, modulus $m \ge 1$, and residue $c$: $\sum_{n \equiv c \pmod m} 1/(b^n-1)$ is
+irrational. \coord{residue-class-support} \scale{uniform} \ev{Lean}\\
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_residueClass}{CertificateKernel.lean:11625}
+(specializes purely periodic support).
+\end{thm}
+
+\begin{thm}[Odd support -- first density-strictly-between-0-and-1 class]
+For every $b \ge 2$: $\sum_{n \text{ odd}} 1/(b^n-1)$ is irrational. This is the first landed support
+class with natural density strictly between $0$ and $1$ (odd $n$ has density $1/2$ inside
+$\mathbb{N}$), as opposed to the density-$1$ full-support case or density-$1/m$ residue classes for
+large $m$. \coord{odd-support} \scale{uniform} \ev{Lean}\\
+\textbf{Site:} \lean{irrational\_erdosSupportSeries\_odd}{CertificateKernel.lean:11639}
+(specializes residue-class support at $m=2,c=1$).
+\end{thm}
+
+None of these families contains $A$ of the shape produced by a candidate half-value witness (the
+greedy support for $1/2$, described in \S\ref{ssec:greedy-orbit}, is not eventually periodic in any
+landed sense) -- so Theorem~\ref{thm:full-support} and its periodic-family corollaries neither prove
+nor disprove $1/2 \in \mathcal{A}$; they exhaust only the structured-support corner of universal
+\#257's infinite search space.
+
+\subsubsection{Topology and measure of the achievement set}
+
+\begin{thm}[Achievement-set topology and measure]
+\label{thm:topology}
+$\mathcal{A}$ (Definition~\ref{defn:half-question}) is compact, closed, perfect, totally
+disconnected, and nowhere dense; its Lebesgue measure is exactly $1$:
+$\operatorname{volume}(\mathcal{A}) = 1$. \textbf{Hypotheses:} none. \textbf{Conclusion:}
+$\mathcal{A}$ is a Cantor-like set of Lebesgue measure exactly $1$ -- topologically thin
+(nowhere dense and totally disconnected), but neither full measure in $\mathbb R$ nor full
+measure in its ambient interval $[0,E]$, whose length is $E\approx1.6067$.
+\coord{achievement-set-topology}
+\scale{n/a} \ev{Lean}\\
+\textbf{Site:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656},
+\lean{isClosed\_mersenneAchievementSet}{GreedyAchievementSet.lean:660},
+\lean{perfect\_mersenneAchievementSet}{GreedyAchievementSet.lean:1620},
+\lean{isTotallyDisconnected\_mersenneAchievementSet}{GreedyAchievementSet.lean:1636},
+\lean{isNowhereDense\_mersenneAchievementSet}{GreedyAchievementSet.lean:1645},
+\lean{volume\_mersenneAchievementSet}{GreedyAchievementSet.lean:996}. The proofs use only
+superincreasingness of $\{x_n\}$ and summability, so the argument transfers verbatim to any strictly
+superincreasing weight series.\\
+\textbf{Chains with:} Theorem~\ref{thm:greedy-survival-record} below (compactness is exactly what powers
+every ``limit of achieved points is achieved'' argument used downstream, including the seam-limit
+route of Part~2).
+\end{thm}
+
+\begin{thm}[Membership equals greedy survival at every level]
+\label{thm:greedy-survival-record}
+$x \in \mathcal{A} \iff 0 \le x \wedge \forall n,\ \rho(x,n) \le T_{n+1}$, where $\rho(x,n)$ is the
+canonical greedy (take-if-possible) residual after rank $n$ and $T_{n+1} := \sum_{j>n} x_j$ is the
+full remaining tail. \textbf{Hypotheses:} none (unconditional biconditional). \textbf{Conclusion:}
+membership in $\mathcal{A}$ is exactly the statement that the greedy process never enters a fatal
+state at any rank -- this is the master theorem underlying every sufficient-condition result for
+$1/2 \in \mathcal{A}$ used later in this paper. \coord{greedy-survival} \scale{uniform} \ev{Lean}\\
+\textbf{Site:} \lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1445}
+(forward direction \lean{greedy\_survives\_of\_mem\_mersenneAchievementSet}{GreedyAchievementSet.lean:1362},
+reverse \lean{mem\_mersenneAchievementSet\_of\_greedy\_survival}{GreedyAchievementSet.lean:1381}).
+\end{thm}
+
+\subsection{The greedy orbit, exactly}
+\label{ssec:greedy-orbit}
+
+Fix the target $1/2$ and the weights $x_n = 1/(2^n-1)$, $n \ge 2$ (rank $1$ contributes the
+undefined $x_1$ and is excluded by convention; all indexing below starts at rank $2$). The greedy
+orbit is the unique deterministic process forced by superincreasingness
+(Theorem~\ref{thm:greedy-survival-record}):
+
+\begin{defn}[The half-value greedy orbit]
+\label{defn:greedy-orbit}
+Let $\rho_1 := 1/2$ (the residual entering rank $2$). At rank $k \ge 2$, given residual $\rho_k$:
+\begin{itemize}[nosep]
+\item \textbf{Take} iff $\rho_k \ge x_k$; if taken, $\rho_{k+1} := \rho_k - x_k$.
+\item \textbf{Skip} otherwise; $\rho_{k+1} := \rho_k$.
+\end{itemize}
+A skip at rank $k$ is:
+\begin{itemize}[nosep]
+\item \textbf{safe} iff $\rho_k \le T_{k+1} := \sum_{j>k} x_j$ (the residual still fits inside the
+remaining tail, so future ranks can still reach it);
+\item \textbf{fatal} iff $\rho_k \in (T_{k+1}, x_k)$ (the residual is too large for the remaining
+tail to ever reach, yet too small to have been taken at $k$ -- an impossible gap).
+\end{itemize}
+\end{defn}
+
+By Theorem~\ref{thm:greedy-survival-record}, $1/2 \in \mathcal{A}$ iff no rank of this orbit is ever fatal.
+Two boundary degeneracies are excluded unconditionally and independently of any open hypothesis:
+
+\begin{rem}[No-ties: both greedy-orbit boundaries are strict]
+\label{rem:no-ties}
+(a) $\rho_k \ne x_k$ at any rank: a finite Mersenne sum has odd reduced denominator (each $2^n-1$ is
+odd), so no finite prefix mass can equal $x_k$ exactly, sharpening the general
+denominator-parity fact used in Observation~\ref{obs:half-controls-universal}.
+(b) $\rho_k \ne T_{k+1}$ at any rank: the tail $T_{k+1} = E - 1 - \sum_{2 \le j \le k} x_j$, where
+$E := \sum_{n\ge1} x_n$ is the Erd\H{o}s--Borwein constant, is irrational by Erd\H{o}s's own 1948
+theorem (the base-$2$ case of Theorem~\ref{thm:full-support}), while $\rho_k$ is always rational;
+equality is impossible. \textbf{Conclusion:} both greedy-orbit boundaries are provably strict at
+every rank, so the orbit's decisions stabilize after finitely many strict inequalities at any fixed
+truncation depth. \coord{no-ties} \scale{uniform} \ev{Math}
+\end{rem}
+
+\subsection{The seam model and the master identity}
+\label{ssec:seam-model}
+
+The seam model is a base-$4$ rescaled integer reformulation of Definition~\ref{defn:greedy-orbit},
+built so that every quantity involved is an exact natural number (no real-number or limiting
+arithmetic). Fix a row $n \ge 6$. The seam weights at row $n$ are
+\[
+w(n,d) := \left\lfloor \frac{4^n}{2^d-1} \right\rfloor, \qquad d = 2,\dots,n-1,
+\]
+and the seam target is $T_n := 2^{2n-1} - 2^n$. The seam greedy process takes ranks $d = 2,\dots,n-1$
+in ascending order against $T_n$ exactly as in Definition~\ref{defn:greedy-orbit}, producing a take
+set $D_n \subseteq \{2,\dots,n-1\}$ and skip set
+$\mathrm{Skip}_n := \{2,\dots,n-1\} \mathbin{\backslash} D_n$.
+Define the \emph{seam remainder} $\mathrm{rem}(n) := T_n - \sum_{d \in D_n} w(n,d)$ and the
+\emph{seam deviation} $\Delta_n := \mathrm{rem}(n) - 2^n$.
+
+\begin{defn}[The universal recursion $K(M)$]
+For $M \ge 2$, define
+\[
+K(M) := 2^{M-1} - \sum_{d=2}^{M} \left\lfloor \frac{2^M}{2^d-1} \right\rfloor.
+\]
+$K$ is \emph{row-independent}: it depends only on $M$, not on any seam row $n$. It satisfies the
+recursion $K(2) = 1$, $K(M+1) = 2K(M) - (\tau(M+1)-1)$, where $\tau$ is the number-of-divisors
+function (so $\tau(M+1)-1$ is the count of proper divisors of $M+1$). \coord{universal-recursion}
+\scale{n/a} \ev{Cert}
+\end{defn}
+
+\begin{thm}[Master seam identity]
+\label{thm:master-identity}
+For every seam row $n \ge 6$,
+\begin{equation*}
+\Delta_n \;=\; K(2n) \;+\; \sum_{d \in \mathrm{Skip}_n} \left\lfloor \frac{4^n}{2^d-1} \right\rfloor.
+\tag{I}
+\end{equation*}
+\textbf{Hypotheses:} $n \ge 6$; $\mathrm{rem}(n)$, $D_n$, $\mathrm{Skip}_n$ as in the seam greedy
+process for target $T_n$ over weights $w(n,d) = \lfloor 4^n/(2^d-1) \rfloor$, $d=2,\dots,n-1$,
+ascending greedy. \textbf{Conclusion:} the entire $2n$-bit seam deviation collapses to one universal,
+row-independent recursion value $K(2n)$ plus a short sum restricted to the skipped ranks only --
+every rank the greedy \emph{takes} drops out of the identity entirely.
+\coord{seam-row / integer-greedy (Mersenne weights, binary digits of $K$)} \scale{fixed} \ev{Math}\ev{Cert}\\
+\textbf{Proof sketch (shape preserved from the source record; the full two-line derivation lives in
+the source document and is not independently re-derived here):} unfold
+$\mathrm{rem}(n) = T_n - \sum_{d \in D_n} w(n,d)$ and compare the full-range sum
+$\sum_{d=2}^{2n} \lfloor 4^n/(2^d-1)\rfloor$ (the sum defining $K(2n)$, evaluated at $M=2n$ so that
+$2^M = 4^n$) against the seam row's own sum over $D_n \cup \mathrm{Skip}_n = \{2,\dots,n-1\}$; the
+ranks $d \ge n$ present in $K(2n)$'s defining sum but absent from the row's range, together with the
+taken ranks $D_n$, absorb exactly into $T_n - 2^n = 2^{2n-1}-2^{n+1}$ against $K(2n)$'s leading
+$2^{2n-1}$ term, leaving only the skipped-rank sum as residue. \textbf{Certification:} verified rows
+$6\le n\le200$, zero mismatches, independently reproduced by two subagents (\S\ref{ssec:anchors}).\\
+\textbf{Chains with:} any statement about $\tau(M+1)$ parity/growth, or about the binary digit stream
+of $K(M)$, composes directly through (I).
+\end{thm}
+
+\subsection{The real form and the master identity's analytic reading}
+
+\begin{thm}[Real (non-integer) form of the master identity]
+\label{thm:real-form}
+Let $x_d := 1/(2^d-1)$ and define the constant
+\[
+C \;:=\; \sum_{d \ge 2} x_d \;-\; \tfrac12 \;=\; E - \tfrac32 \;=\; 0.1066951524152917\ldots,
+\]
+where $E$ is the Erd\H{o}s--Borwein constant. Then, for every seam row $n \ge 6$,
+\begin{equation*}
+\Delta_n \;=\; 4^n \Big( \sum_{d \in \mathrm{Skip}_n} x_d \;-\; C \Big) \;+\; \eta_n, \qquad
+|\eta_n| < 2n+2.
+\tag{II}
+\end{equation*}
+\textbf{Hypotheses:} as Theorem~\ref{thm:master-identity}. \textbf{Conclusion:} escaping the wall
+(making $\Delta_n$ large, at scale $2^{(n+5)/2}$ or beyond -- the exact target of Part~2's Theorem A)
+is exactly the statement that the greedy skip-set's real-valued partial sum $\sum_{\mathrm{Skip}_n}
+x_d$ never approximates the fixed constant $C$ to within roughly $2^{-1.5n}$, at the natural scale
+$2^{-n}$ set by $4^n \cdot 2^{-n} = 2^n$. \coord{real/analytic (Erd\H{o}s--Borwein tail); bridges the
+integer seam coordinate to a continuous Diophantine-approximation statement} \scale{fixed}
+\ev{Math}\ev{Cert}\\
+\textbf{Note:} $C = E - 3/2$ is Mersenne-specific, but the shape ``scaled deviation $=$
+$4^n \cdot$(finite skip-sum $-$ target constant) $+ O(n)$'' is a template, not yet matched to any
+analogous constant on the \#249 side.
+\end{thm}
+
+\subsection{Dynamics}
+
+\begin{thm}[Deviation dynamics and the R/M/U branch structure]
+\label{thm:dynamics}
+Let $\lambda_n := \Delta_n / 2^n$. Then
+\begin{equation*}
+\lambda_{n+1} \;=\; 2\lambda_n + 2e_n + \delta_n, \qquad e_n \in \{0,+1,-1\} \text{ for branches
+R/M/U respectively}, \qquad |\delta_n| \le \frac{2n+6}{2^n}.
+\tag{III}
+\end{equation*}
+\textbf{Hypotheses:} as Theorem~\ref{thm:master-identity}. \textbf{Conclusion:} the deviation
+dynamics is a doubling map on $\lambda_n$ with a forced signed digit $e_n$ (recording which of three
+branches -- Right/Middle/Upper -- fires at each row) plus a vanishing correction $\delta_n = O(n
+2^{-n})$. \textbf{Measured bands} (rows $14$ through $699$, certified computation): branch R
+$\lambda \in [-0.499189,\ 0.499846]$; branch M $\lambda \in [-0.998378,\ -0.501224]$; branch U
+$\lambda \in [0.501652,\ 0.999692]$ -- the three bands are disjoint and together nearly cover
+$[-1,1]$. \coord{seam-affine dynamics (doubling map with signed digit $e_n$)} \scale{bounded}
+\ev{Math}\ev{Cert}\\
+\textbf{Consequence:} the target statement (escaping the wall) is equivalent to: the R-run (maximal
+run of consecutive R branches) after each reset row $r \ge 31$ has length $L_r < (r-3)/2$; a long
+R-run is exactly what is dangerous, and any $L_r = o(r)$ closes it, while a \emph{uniform} constant
+bound on run length is empirically \textbf{false} (observed run lengths grow like
+$\log_2(\text{row})$, \S\ref{ssec:anchors}).\\
+\textbf{Chains with:} this is the exact object whose long-run/anti-concentration behavior is the
+paper's central open producer (Part~2 develops it in full; the shape recurs, independently derived,
+under the coordinate name $w_n = \mathrm{rem}(n) - 2^n$ in the reset-crossing unification record).
+\end{thm}
+
+\subsection{Every anchor}
+\label{ssec:anchors}
+
+The following are exact, certified numerical facts about the seam orbit of
+\S\ref{ssec:seam-model}--\S\ref{ssec:seam-model}, stated literally so they can be used as
+regression fixtures without re-running any computation.
+
+\begin{obs}[Exact low-row values]
+\label{obs:anchors-low}
+At row $n=14$: $\mathrm{rem}(14) = 392$, with take set $D_{14} = \{2,3,6,7\}$. At row $n=15$:
+$\mathrm{rem}(15) = 34333$. At row $n=32$: $\mathrm{rem}(32) = 3865046005$ and $\Delta_{32} =
+-429921291$. \coord{seam row, exact integer} \scale{fixed} \ev{Cert}\\
+\textbf{Site:} the row-$14$ through row-$31$ range, including $\mathrm{rem}(14)=392$, additionally
+carries independent \ev{Lean} confirmation via the kernel-computed certificate
+\lean{seamUpperResetDyadicBandEscape\_through\_thirty}{HalfCylinderUpperResetBandCertificates.lean:78},
+which lists the exact seam remainder at every row $13$--$31$ by `decide`-checked kernel computation
+and finds none violating the dyadic band-escape condition.
+\end{obs}
+
+\begin{obs}[Certified computation depth, all four coordinates]
+\label{obs:anchors-depth}
+The master identity (Theorem~\ref{thm:master-identity}) is verified rows $6 \le n \le 200$ with zero
+mismatches, independently reproduced by two subagents, and the seam orbit itself is extended and
+certified to row $2500$ (and separately, in a longer single run, to row $200{,}000$ -- \S SE-7 of the
+underlying record, $207.7\mathrm{s}$ runtime, branch counts $\mathrm{R{:}M{:}U} =
+100197{:}49899{:}49898$, TARGET failing at exactly one reset row $\le 200{,}000$, namely $r=7$).
+\coord{multiple: seam row, binary digit stream of $C$, greedy set $G$} \scale{fixed} \ev{Cert}
+\end{obs}
+
+\begin{obs}[The four coordinate depths, side by side]
+\label{obs:anchors-coords}
+Definition~\ref{defn:greedy-orbit}'s single orbit is independently certified in four distinct
+integerizations, to the following depths: truncation rung $J = 3,\dots,22$ (all $20$ rungs proved to
+survive, not merely computed -- Part~3 of the truncation-rung record); seam row $6 \le n \le 2500$
+(Theorem~\ref{thm:master-identity}/\ref{thm:dynamics}); integer margin scan to $m_c = 5\times10^5$
+(advisory Type~B scan, not yet promoted to a certified theorem); sharp tail margin, ranks $2$ through
+$3000$ (no fatal skip at any rank; take fraction $0.4992$; tightest certified take-margin
+$0.0340$ bits at rank $7$, the near-tie $1/126 \ge 1/127$). \coord{meta: all four coordinates}
+\scale{fixed} \ev{Cert}\\
+\textbf{Chains with:} these four depths measure the \emph{same} greedy decision stream in different
+coordinates. They do not make the finite certificate families equivalent and do not give a
+semi-decision procedure for the universal problem. A certificate at one depth in one coordinate
+does not, by itself, extend to another coordinate without an explicit transport or stabilization
+theorem.
+\end{obs}
+
+The record above is exhaustive at the level of exact statements and sites available in the premise
+bank for this Part; no numeral in this section was recomputed independently by the present writer --
+each is either directly Lean-kernel-checked (as flagged) or reported as a certified-computation
+result from the source record, and every scale/evidence tag reflects only what its cited source
+claims for it.

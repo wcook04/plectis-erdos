@@ -16,7 +16,6 @@ the exact module names are needed for diagnosis.
 from __future__ import annotations
 
 import argparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import os
 from pathlib import Path
 import re
@@ -335,11 +334,45 @@ def lake_stale_targets(
     *,
     rehash: bool = True,
 ) -> list[str]:
-    """Bisect a target batch using Lake's content-addressed trace verdicts."""
+    """Return Lake's complete stale local-module set in one graph traversal.
+
+    With ``--no-build -v``, Lake ends a failed authority check with a stable
+    ``Some required targets logged failures`` list.  That list contains every
+    stale module in the requested import closure, so parsing it avoids the
+    former logarithmic bisection's repeated workspace and graph scans.  Fall
+    back to bisection if a future Lake changes the diagnostic format.
+    """
 
     targets = list(names)
-    if not targets or lake_targets_up_to_date(targets, root, rehash=rehash):
+    if not targets:
         return []
+    command = ["lake"]
+    if rehash:
+        command.append("--rehash")
+    command.extend(["--no-build", "-v", "build", *(f"+{name}" for name in targets)])
+    result = subprocess.run(
+        command,
+        cwd=root,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        check=False,
+    )
+    if result.returncode == 0:
+        return []
+
+    marker = "Some required targets logged failures:"
+    if marker in result.stdout:
+        failures = []
+        for line in result.stdout.split(marker, 1)[1].splitlines():
+            match = re.fullmatch(r"- ([A-Za-z0-9_.]+)", line.strip())
+            if match:
+                failures.append(match.group(1))
+        if failures:
+            return failures
+
+    # Diagnostic compatibility fallback.  Do not rehash again: the failed
+    # verbose query above has already refreshed Lake's content hashes.
     if len(targets) == 1:
         return targets
     midpoint = len(targets) // 2
@@ -348,33 +381,97 @@ def lake_stale_targets(
     ) + lake_stale_targets(targets[midpoint:], root, rehash=False)
 
 
+def propagate_stale_targets(
+    initial: Iterable[str],
+    build_waves: Iterable[Iterable[str]],
+    graph: dict[str, set[str]],
+) -> set[str]:
+    """Expand a Lake stale frontier through all local import dependents."""
+
+    stale = set(initial)
+    for wave in build_waves:
+        for name in wave:
+            if name in stale or graph[name] & stale:
+                stale.add(name)
+    return stale
+
+
 def build_one(name: str, root: Path = ROOT) -> tuple[str, int, float]:
     started = time.monotonic()
-    result = subprocess.run(["lake", "build", f"+{name}"], cwd=root, check=False)
+    result = subprocess.run(
+        [
+            "lake",
+            "--quiet",
+            "--no-ansi",
+            "--log-level=error",
+            "build",
+            f"+{name}",
+        ],
+        cwd=root,
+        check=False,
+    )
     return name, result.returncode, time.monotonic() - started
 
 
-def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
-    """Build one dependency wave with at most ``jobs`` Lake processes.
+def build_batch(names: Iterable[str], root: Path = ROOT) -> tuple[int, float]:
+    """Build a bounded target batch in one Lake graph traversal."""
 
-    A multi-target Lake invocation can schedule its own wide worker set, so
-    batching targets does not actually enforce the wrapper's memory bound.
-    Independent single-target invocations give this function a real process
-    ceiling while keeping failures attributable to their exact module.
+    modules = list(names)
+    if not modules:
+        return 0, 0.0
+    started = time.monotonic()
+    result = subprocess.run(
+        [
+            "lake",
+            "--quiet",
+            "--no-ansi",
+            "--log-level=error",
+            "build",
+            *(f"+{name}" for name in modules),
+        ],
+        cwd=root,
+        check=False,
+    )
+    return result.returncode, time.monotonic() - started
+
+
+def build_wave(names: Iterable[str], jobs: int, root: Path = ROOT) -> list[str]:
+    """Build one dependency wave in batches of at most ``jobs`` modules.
+
+    Earlier dependency waves are already current, so Lake can elaborate at
+    most the modules named in each batch. This preserves the memory/process
+    ceiling while amortizing Lake's workspace and dependency-graph scan across
+    up to ``jobs`` targets. A failed batch is retried one module at a time so
+    the final diagnostic still names the exact failures.
     """
 
     modules = list(names)
     failed: list[str] = []
     if not modules:
         return failed
-    print(f"lean-fast-build: prebuilding {len(modules)} module(s), max {jobs} concurrent")
-    with ThreadPoolExecutor(max_workers=jobs) as executor:
-        futures = {executor.submit(build_one, name, root): name for name in modules}
-        for future in as_completed(futures):
-            name, code, duration = future.result()
-            print(f"lean-fast-build: {name} -> {code} ({duration:.1f}s)")
-            if code:
-                failed.append(name)
+    print(
+        f"lean-fast-build: prebuilding {len(modules)} module(s), "
+        f"batches of at most {jobs}",
+        flush=True,
+    )
+    for offset in range(0, len(modules), jobs):
+        batch = modules[offset : offset + jobs]
+        code, duration = build_batch(batch, root)
+        label = ",".join(batch)
+        print(
+            f"lean-fast-build: [{label}] -> {code} ({duration:.1f}s)",
+            flush=True,
+        )
+        if code:
+            for name in batch:
+                name, single_code, single_duration = build_one(name, root)
+                print(
+                    f"lean-fast-build: retry {name} -> {single_code} "
+                    f"({single_duration:.1f}s)",
+                    flush=True,
+                )
+                if single_code:
+                    failed.append(name)
     return failed
 
 
@@ -398,7 +495,18 @@ def run_final_authority_check(
     if not target_list:
         raise ValueError("final authority check requires at least one target")
     for name in target_list:
-        result = subprocess.run(["lake", "build", f"+{name}"], cwd=root, check=False)
+        result = subprocess.run(
+            [
+                "lake",
+                "--quiet",
+                "--no-ansi",
+                "--log-level=error",
+                "build",
+                f"+{name}",
+            ],
+            cwd=root,
+            check=False,
+        )
         if result.returncode:
             return result.returncode
     return 0
@@ -443,12 +551,19 @@ def main(argv: list[str] | None = None) -> int:
                 parser.error("positional targets and --changed-from are mutually exclusive")
             changed_paths = changed_lean_paths(args.changed_from, root)
             if not changed_paths:
-                print(f"lean-fast-build: no changed Lean modules relative to {args.changed_from}")
+                print(
+                    f"lean-fast-build: no changed Lean modules relative to {args.changed_from}",
+                    flush=True,
+                )
                 return 0
             modules = discover(root)
             target_modules = changed_targets_from_paths(changed_paths, modules, root)
             if not target_modules:
-                print(f"lean-fast-build: no changed local Lean modules relative to {args.changed_from}")
+                print(
+                    "lean-fast-build: no changed local Lean modules relative to "
+                    f"{args.changed_from}",
+                    flush=True,
+                )
                 return 0
         else:
             modules = discover(root)
@@ -457,21 +572,19 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(str(error))
     graph = reachable_graph(target_modules, modules)
     build_waves = waves(reachable(target_modules, graph), graph)
-    use_lake_staleness = args.lake_staleness and all(
-        olean(name, root).exists() for name in target_modules
-    )
-    if args.lake_staleness and not use_lake_staleness:
-        print("lean-fast-build: no complete restored target cache; using mtime planner")
+    use_lake_staleness = args.lake_staleness
 
     if use_lake_staleness:
-        # The public root being current proves its complete import cone is
-        # current, so the common documentation-only/cache-hit case needs one
-        # Lake query rather than one query per topological wave.
-        pending = (
-            []
-            if lake_targets_up_to_date(target_modules, root)
-            else [lake_stale_targets(wave, root) for wave in build_waves]
+        # One verbose Lake authority query reports the complete stale import
+        # closure.  Partition that verdict into topological waves locally.
+        stale_targets = propagate_stale_targets(
+            lake_stale_targets(target_modules, root), build_waves, graph
         )
+        pending = [
+            [name for name in wave if name in stale_targets]
+            for wave in build_waves
+        ]
+        pending = [wave for wave in pending if wave]
     else:
         output_mtimes: dict[str, int | None] = {}
         config_mtime = project_config_mtime_ns(root)
@@ -494,16 +607,17 @@ def main(argv: list[str] | None = None) -> int:
     print(
         f"lean-fast-build: targets={','.join(target_modules)}; "
         f"{sum(map(len, pending))} stale/missing module(s), jobs={args.jobs}, "
-        f"staleness={'lake-trace' if use_lake_staleness else 'mtime'}"
+        f"staleness={'lake-trace' if use_lake_staleness else 'mtime'}",
+        flush=True,
     )
     if args.plan:
         for line in plan_lines(pending, verbose=args.verbose_plan):
-            print(line)
+            print(line, flush=True)
         return 0
 
     for wave in pending:
         current = (
-            lake_stale_targets(wave, root)
+            wave
             if use_lake_staleness
             else [name for name in wave if stale(name, modules, graph, root)]
         )
@@ -511,7 +625,7 @@ def main(argv: list[str] | None = None) -> int:
         if failed:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
-    print("lean-fast-build: final serialized Lake authority check")
+    print("lean-fast-build: final serialized Lake authority check", flush=True)
     return run_final_authority_check(target_modules, root)
 
 

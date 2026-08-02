@@ -23,6 +23,10 @@ NOTES = erdos-68-factorial-denominator-irrationality \
   erdos-1049-rational-base-lambert
 ALIASES = module-aliases.tex
 PREAMBLE = problem-note-preamble.tex
+REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
+REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
+REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
+REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
 
 .PHONY: all check clean sync-root
 
@@ -39,8 +43,18 @@ sync-root: $(PAPERS:%=%.pdf)
 	done
 
 check: all
+	python3 $(REASONING_COORDINATES) --check
+	python3 $(REASONING_ASSEMBLER) --check
 	python3 ../scripts/check_rendered_paper_boundary.py
 	python3 ../scripts/check_problem_note_sources.py
+
+# The public reasoning manuscripts are flat generated projections. Their
+# authored parts remain small enough for focused mathematical review.
+erdos249-totient-reasoning-surface.tex: $(REASONING_249_PARTS) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 249
+
+erdos257-mersenne-reasoning-surface.tex: $(REASONING_257_PARTS) $(REASONING_ASSEMBLER)
+	python3 $(REASONING_ASSEMBLER) --write --paper 257
 
 # The notes share one preamble, so a change there rebuilds all of them.
 $(NOTES:%=%.pdf): $(PREAMBLE)

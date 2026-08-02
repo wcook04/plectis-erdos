@@ -102,6 +102,7 @@ STORY_CLAIMS = (
     "half_greedy_two_thirds_band",
     "half_membership_seam_classification",
     "fatal_gap_right_tail_classification",
+    "twenty_one_quotient_greedy_frontier",
     "final_middle_cell_escape",
     "final_middle_neg_two_phase_sieve",
     "last_producer_tail_escape_reduction",
@@ -1427,8 +1428,9 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         step.rsplit(" ", 1)[-1]
         for step in story_routes["erdos257_half_story"]["route"]["query_steps"]
     ] == [
-        *STORY_CLAIMS[:7],
+        *STORY_CLAIMS[:8],
         "remaining_open.half_value_membership",
+        "remaining_open.twenty_one_permanent_affine_supercapacity",
         "remaining_open.universal_257_all_infinite_supports",
     ]
     assert [

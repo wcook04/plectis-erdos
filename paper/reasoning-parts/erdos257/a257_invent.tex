@@ -1,0 +1,691 @@
+\section{The mathematics this problem still needs}
+\label{sec:invent-257}
+
+Everything in Parts I--IV of this document is either an unconditional theorem at a fixed or
+bounded scale, an exact reformulation, or a producer socket whose supply is missing. None of it
+decides Erd\H{o}s \#257, and the wall analysis explains why in a way that is more useful than
+``the problem is hard'': the recorded failures are not a hundred separate defeats but repeated
+measurements of one obstruction, and the obstruction has a shape. This section takes the next
+step, which the rest of the corpus did not take. For each surviving route it states the exact
+statement that is missing, says what \emph{kind} of mathematical object would furnish it, names
+the technique family that is closest and the precise reason that technique does not reach, and
+where possible attempts an actual construction, estimate or reduction. Attempts are banded
+honestly: \ev{Math} where the argument is complete ordinary mathematics, \ev{Cert} where the
+support is exact computation, \ev{Open} where the item is a proposal and nothing more.
+
+The organising fact, established in the wall analysis and not repeated here, is that both halves
+of \#257 --- the universal statement and the half-value instance --- converge on one missing
+object. It has a name in this section:
+
+\begin{defn}[The short-window divisor phase]
+\label{defn:theta}
+For $M\ge 1$ and $L\ge 1$ put
+\[
+\Theta_L(M)\ :=\ \sum_{i=1}^{L}\bigl(\tau(M+i)-1\bigr)\,2^{-i}\ \in\ \Q_{\ge 0},
+\]
+where $\tau$ is the number-of-divisors function, so that $\tau(n)-1=\#\{d\ge 2: d\mid n\}$ counts
+the divisors of $n$ other than $1$.
+\end{defn}
+
+$\Theta_L$ is the analytic content of the universal recursion $K(2)=1$,
+$K(M+1)=2K(M)-(\tau(M+1)-1)$ that carries the seam deviation (Part~II, master identity
+$\Delta_n = K(2n)+\sum_{d\in\mathrm{Skip}_n}\lfloor 4^n/(2^d-1)\rfloor$). It is also, in a sense
+made precise in \S\ref{sec:invent-R5}, the universal-direction obstruction written in the divisor
+incidence coordinate. Every route below either needs a lower bound on
+$\mathrm{dist}(\Theta_L(M),\Z)$ at a growing precision, or needs to explain why it does not.
+
+\subsection{R1. Reset \texorpdfstring{\(\sqrt{\ }\)}{square-root}-escape:
+anti-concentration of a logarithmically short divisor sum}
+\label{sec:invent-R1}
+
+\subsubsection*{The statement needed}
+
+Three forms, in decreasing strength; each closes the half-value branch, i.e.\ yields
+$(1/2:\R)\in\mathcal{A}$ and hence a counterexample to universal \#257.
+
+\emph{Form (i), the run-length form.} Writing $\mathrm{rem}(s)$ for the integer seam greedy
+remainder at row $s$, $w_s := \mathrm{rem}(s)-2^{s}$ for the deviation, and $L_r$ for the length
+of the maximal pure-$R$ run of the branch word beginning at a reset row $r$:
+\[
+\forall\, r\ \text{a reset row},\ r\ge 31:\qquad L_r\ <\ \frac{r-3}{2},
+\]
+equivalently
+\[
+\bigl|\,\mathrm{rem}(r+1)-2^{\,r+1}\,\bigr|\ >\ 2^{(r+5)/2}.
+\]
+Any bound $L_r=o(r)$ suffices. A uniform constant bound is \emph{false}: runs grow like
+$\log_2 r$ (\ev{Cert}, maximal observed run $19$ at row $158{,}096$).
+
+\emph{Form (ii), the Lean-facing form already fanned in.}
+\[
+\mathtt{SeamUpperResetDyadicBandEscape}\ :=\ \forall d\ge 13,\ \bigl(\mathtt{seamAdjacentCut}\ d\bigr).\mathtt{successorCarries}\ \Longrightarrow\ \forall j\le d,
+\]
+\[
+2^{\,d-j+1} < E_d\quad\lor\quad E_d + 2(d+j)\ \le\ 2^{\,d-j+1},
+\qquad
+E_d := 4\cdot\mathtt{overshoot}_d+\mathtt{abovePulse}_d,
+\]
+(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}), with the
+closed consumer
+\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790},
+\ev{Lean}. The $\forall j\le d$ band check collapses to a single nearest-boundary index per row by
+\lean{dyadicBandEscape_iff_exists_critical}{HalfUpperResetCriticalBand.lean:108}, and rows
+$13\le d\le 30$ are kernel-verified by
+\lean{seamUpperResetDyadicBandEscape_through_thirty}{HalfCylinderUpperResetBandCertificates.lean:78}.
+
+\emph{Form (iii), the sign law --- strictly weaker, and the right first target.}
+\[
+\forall\ \text{reset rows } r:\qquad
+r \text{ is an } M\text{-reset}\Rightarrow w_{r+1}>0,
+\qquad
+r \text{ is a } U\text{-reset}\Rightarrow w_{r+1}<0 .
+\]
+\ev{Cert}: perfect over all $1209$ resets in rows $6..2500$, $605/605$ and $604/604$, no zero
+deviations. \ev{Open} as a theorem.
+
+\subsubsection*{What kind of object would furnish it, and the exact arithmetic of $\Theta_L$}
+
+The first thing to say is what the quantity actually is, because the corpus states it in seam
+coordinates and that hides its arithmetic nature. The following identity is elementary and
+exact, and it is the reason this route is an analytic-number-theory problem rather than a
+combinatorial one.
+
+\begin{lem}[Divisor-residue form of the short-window phase]
+\label{lem:odometer}
+For all $M,L\ge 1$,
+\[
+\Theta_L(M)\ =\ \sum_{d\ge 2}\ \sum_{\substack{1\le i\le L\\ i\,\equiv\,-M\ (\mathrm{mod}\ d)}} 2^{-i}
+\ =\ \sum_{d\ge 2}\ 2^{-i_d(M)}\cdot\frac{1-2^{-d\,m_d}}{1-2^{-d}},
+\]
+where $i_d(M)\in[1,d]$ is the least $i\ge1$ with $d\mid M+i$ (so $i_d(M)$ depends only on
+$M \bmod d$), $m_d := \#\{i\le L: d\mid M+i\}$, and terms with $i_d(M)>L$ are empty. In
+particular $\Theta_L(M)$ is a function of the residues of $M$ modulo every $d\le M+L$, and
+nothing else.
+\end{lem}
+\begin{proof}
+$\tau(n)-1=\sum_{d\ge2}[\,d\mid n\,]$; exchange the order of summation and sum the geometric
+progression $i_d, i_d+d, i_d+2d,\dots$ inside $[1,L]$.
+\end{proof}
+\ev{Math}, and verified exactly as rationals at $(M,L)\in\{1000,10001,123456\}\times\{12,20\}$
+\ev{Cert}.
+
+Lemma~\ref{lem:odometer} says the object is the evaluation of a \emph{fixed} function on the
+profinite integers along the $+1$-orbit. Define
+\[
+\Psi:\widehat{\Z}\to\R\cup\{\infty\},\qquad
+\Psi(x)\ :=\ \sum_{d\ge2}\frac{2^{-i_d(x)}}{1-2^{-d}},\qquad i_d(x)\in[1,d],\ i_d(x)\equiv -x\ (\mathrm{mod}\ d),
+\]
+truncated at level $L$ in the obvious way. Then $\Theta_L(M)=\Psi_L(M)$ where $M$ is viewed in
+$\widehat{\Z}$, and the map $M\mapsto M+1$ is the odometer, which is uniquely ergodic with respect
+to Haar measure. The corpus's own Reduction~(A), $F(n)=\sum_{d\in D_n} 2^{\,d-i_d(n)}/(2^d-1)$,
+is \emph{the same functional} $\sum_d 2^{-i_d}/(1-2^{-d})$ restricted to the greedy take-set
+$D_n$ instead of to all $d\ge2$. That two reductions derived years and coordinates apart are one
+functional on $\widehat{\Z}$ evaluated on two divisor sets is, to my knowledge, not recorded
+anywhere in the corpus; it is the cleanest available statement of what the two halves of the seam
+identity share. \ev{Math} for the identification; \ev{Open} for any consequence.
+
+So the object required is: \emph{an effective equidistribution statement for the odometer orbit
+against $\Psi$, with the precision growing linearly in the index.} Unique ergodicity gives
+equidistribution with no rate. What is needed is a rate, pointwise along a sparse subsequence
+(the reset rows), at scale $2^{-r/2}$ where $r$ is the index. Equivalently, in the form a
+specialist will recognise: a lower bound for $\mathrm{dist}(\Theta_L(M),\Z)$ with
+$L\asymp \log_2 M$, valid for all large $M$ in a specified set, at precision $2^{-L/2}$.
+
+Three technique families are the plausible shapes, and it is worth being explicit about which.
+\emph{(a) Voronoi summation / delta method for the divisor function.} $\tau$ has an exact Voronoi
+expansion, and the natural attack is to bound
+$\sum_{M\in[X,2X]} e\bigl(a\,\Theta_L(M)\bigr)$ for $1\le|a|\le 2^{L}$ by opening each
+$\tau(M+i)$ and estimating the resulting Kloosterman-type sums. \emph{(b) Fourier analysis on
+$\widehat{\Z}$ / Ramanujan expansions.} By Lemma~\ref{lem:odometer} the phase is a function of
+$M$ modulo the $d$'s, so its Fourier expansion is over the characters of $\Z/d$, i.e.\ over
+Ramanujan sums $c_d(\cdot)$; the required estimate becomes decay of the Ramanujan coefficients of
+$\Psi_L$ plus a bound on their tails. \emph{(c) Second-moment / local-limit machinery.} Prove
+that the vector $(\tau(M+1),\dots,\tau(M+L))$, $L\asymp\log M$, obeys a \emph{local} limit
+theorem strong enough to give anti-concentration of the weighted sum at scale $2^{-L/2}$.
+
+\subsubsection*{The specific obstacle}
+
+This is the paragraph worth the most, so it is stated as sharply as the evidence permits.
+
+\textbf{The interval is logarithmically short, and every unconditional result for divisor sums in
+short intervals requires the interval to be a power of the modulus.} The window
+$[M+1,M+L]$ has length $L\asymp\log_2 M$. Voronoi-based technology for $\sum_{M<n\le M+H}\tau(n)$
+--- including the Kloosterman-refined results of Deshouillers--Iwaniec type and every subsequent
+improvement --- produces an asymptotic only for $H\ge M^{\theta}$ with $\theta>0$ fixed, because
+the dual sum after Voronoi runs to length $\sim M/H$ and the error term is controlled only when
+that dual length is a power saving against $M$. At $H=\log M$ the dual sum is of length $M/\log M$
+and there is no saving at all: the method returns the trivial bound. This is not a deficiency of
+one paper; it is the reason short-interval divisor problems are stated with power-length windows.
+Technique family (a) is therefore not merely unproved here, it is out of range by an
+\emph{exponential} amount in the window length, and no quantitative improvement in Kloosterman
+bounds changes that, because the obstruction is the length of the dual sum, not the quality of
+its estimate.
+
+\textbf{The one technology that does reach sub-power windows delivers the wrong quantifier and
+the wrong class of function.} Matom\"aki--Radziwi\l{}\l{} theory shows that a multiplicative
+function bounded by $1$ has, in almost all windows $[x,x+h]$ with $h\to\infty$ arbitrarily
+slowly, essentially its long average. Two mismatches, both fatal as stated. First, the conclusion
+is \emph{almost all} $x$, whereas the seam needs \emph{every} reset row $r\ge31$; a set of
+exceptional $x$ of density zero can still contain every reset row, because the reset rows are
+themselves a density-zero set defined by the orbit rather than independently of it. Second,
+$\tau$ is not bounded by $1$ and the relevant statistic is not an average of a multiplicative
+function but the distance to $\Z$ of a \emph{dyadically weighted} sum of $\tau$-values; the
+weights $2^{-i}$ mean that a single value $\tau(M+1)$ contributes half the phase, so no averaging
+statement over the window can control it. Anything that averages within the window destroys the
+quantity, exactly as the wall analysis says of every scale-mismatched tool.
+
+\textbf{The joint-distribution literature is at CLT scale, not local scale.} Erd\H{o}s--Kac and
+its descendants, and the Hildebrand--Elliott-type results on the joint normality of
+$\omega(n),\omega(n+1)$, give distribution functions to accuracy $o(1)$ and average over
+$n\le X$. The requirement here is anti-concentration to accuracy $2^{-L/2}$ for a fixed
+$L$-tuple of consecutive arguments, i.e.\ a local limit theorem with an error term
+exponentially small in $L$ where $L\asymp\log M$. No result of that strength is known even for
+$L=2$.
+
+\textbf{Why the barrier catalogue predicts exactly this.} The wall analysis states that the two
+available information classes are fixed-precision local arithmetic (killed by
+\lean{affineBinaryOrbit_mod_twoPow_eq}{GenericTailOrbitRigidity.lean:307},
+\lean{balancedPulse_no_autonomous_decoder}{GenericTailOrbitRigidity.lean:247},
+\lean{fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137}, all \ev{Lean}) and global
+Diophantine averages (killed by the exponent-budget computation against $\mu(E)$). The
+intermediate scale between them is precisely ``divisor statistics in logarithmically short
+windows'', and the three paragraphs above are the reason there is nothing there. The barrier
+catalogue and the analytic literature agree, independently, on where the gap is.
+
+\subsubsection*{Swings}
+
+\emph{Swing 1: the exponent $(r+5)/2$ is forced, and can be derived in four lines.} \ev{Math},
+modulo the recorded window-width constant.
+
+The exact $R$-branch recursion in deviation coordinates is $w\mapsto 4w-4-p$ with
+$0\le p\le 2(s-2)$ (Part~II, transition laws). Iterating $L$ steps from a reset row $r$,
+\[
+|w_{r+L}|\ \ge\ 4^{L}\,|w_r|\;-\;\sum_{j<L}4^{\,L-1-j}\bigl(4+p_j\bigr)
+\ \ge\ 4^{L}\Bigl(|w_r| - \tfrac{4+2(r+L)}{3}\Bigr).
+\]
+An $R$ branch at row $s$ requires $\mathrm{rem}(s)$ to lie in the pinned window of width
+$\approx 2^{s}+\tfrac23 4^{\,s-d}$, so in particular the run must terminate once
+$|w_s|\gtrsim 2^{s}$. Setting $s=r+L$ gives $4^{L}|w_r|\lesssim 2^{\,r+L}$, that is
+\[
+L\ \lesssim\ r-\log_2|w_r|.
+\]
+This reproduces, with no fitting, the empirical law recorded at maximal slack $0.0$ over rows
+$14..1500$. A socket-violating run needs $L\ge (r-3)/2$, hence
+$\log_2|w_r|\le (r+3)/2$; the corpus's threshold $2^{(r+5)/2}$ is this bound with one bit of
+safety. The value of the derivation is that it shows the exponent is not a tuning parameter: any
+proof of Form~(i) must produce a $\sqrt{\ }$-scale lower bound on the reset deviation and nothing
+weaker will do, because the doubling rate of the $R$ branch is exactly $4$ against a window that
+grows like $2^{s}$.
+
+\emph{Swing 2: measure the limit law of the phase, and compute the Borel--Cantelli budget.}
+\ev{Cert} for the measurement, \ev{Open} for the conclusion.
+
+Sieving $\tau$ over $[10^6,\,1.2\times10^6]$ and evaluating $\Theta_{40}(M)$ for $200{,}000$
+consecutive $M$ gives the following profile for $P\bigl(\mathrm{dist}(\Theta_{40}(M),\Z)<t\bigr)$:
+\begin{center}
+\begin{tabular}{lccccc}
+\hline
+$t$ & $2^{-6}$ & $2^{-8}$ & $2^{-10}$ & $2^{-12}$ & $2^{-14}$\\
+\hline
+$P$ & $0.035415$ & $0.009290$ & $0.002455$ & $0.000625$ & $0.000185$\\
+$P/t$ & $2.267$ & $2.378$ & $2.514$ & $2.560$ & $3.031$\\
+\hline
+\end{tabular}
+\end{center}
+The observed median of $\mathrm{dist}$ is $0.24471$ against $0.25$ for the uniform law, and
+$P/t$ hovers near $2$, the exact value for a uniform fractional part. Truncation is irrelevant at
+this range: the quantiles at $L=16,24,32$ agree to three significant figures. So the fractional
+part of $\Theta_L$ behaves like Haar measure with a mildly heavy near-integer tail of constant
+$c\approx 2.5$. Feeding the required precision $2^{-(r-5)/2}$ into that profile,
+\[
+\sum_{r\ge 31} c\cdot 2^{-(r-5)/2}\ \approx\ 2.5\cdot 2^{5/2}\cdot\frac{2^{-31/2}}{1-2^{-1/2}}
+\ \approx\ 1.0\times 10^{-3},
+\]
+so under the Haar model the expected number of reset rows beyond the certified range that violate
+$\sqrt{\ }$-escape is about $10^{-3}$, and Borel--Cantelli gives ``finitely many failures'' with
+room to spare. This is consistent with, and independently derived from, the corpus's own
+$\approx 2\times10^{-4}$ digit-model estimate. It is a heuristic. Its only rigorous content is
+that the required inequality is not delicate: it asks for a bound $2^{15}$ times weaker at
+$r=31$, and exponentially weaker thereafter, than what the measured law delivers. That is a
+useful thing for a specialist to know before deciding whether to spend effort here.
+
+\emph{Swing 3: attack the sign law first, and here is the reduction to try.} \ev{Open}.
+
+Form~(iii) asks only for a sign, not a magnitude, and a sign is a statement about which side of
+the branch threshold the remainder falls on. In deviation coordinates the $M$ branch fires iff
+$4\,\mathrm{rem}(s)<2^{\,s+1}+4+p$ and then $\mathrm{rem}(s+1)=4\,\mathrm{rem}(s)+2^{\,s+1}-p$;
+the $U$ branch carries. Substituting $\mathrm{rem}=w+2^{s}$ turns the $M$-branch update into
+$w_{s+1}=4w_s+2^{\,s+1}-p$ and the $R$-branch update into $w_{s+1}=4w_s-4-p$. The concrete first
+step is: prove that the $M$-branch firing condition and the reset condition together force
+$w_{s+1}>0$ by a purely algebraic inequality in $(w_s,p,s)$, with $p\le 2(s-2)$ the only input
+about the pulse. If that closes, the same computation with the $U$-branch carry condition should
+give the negative sign, and the pair is a genuine lemma one rung below $\sqrt{\ }$-escape. If it
+does not close, the residual is a bound on $p$ that is sharper than $p\le2(s-2)$, which is itself
+a short-window divisor count and hence lands back on $\Theta$ --- which would be informative,
+because it would show the sign law is not strictly easier. Either outcome is a result; the
+computation is an afternoon's work and needs no new theory.
+
+\subsection{R2. Strict endpoint progress: the one place canonicalisation does not bite}
+\label{sec:invent-R2}
+
+\subsubsection*{The statement needed}
+
+The exact-row transition
+\lean{exactLocalMersenneHalfRow_double_or_recycle}{BooleanMobiusExactRowDichotomy.lean:26}
+(\ev{Lean}) says every exact row $n\ge6$ either doubles to $2n-1$ or recycles to $2c-2$ for some
+$4\le c\le n$. Cofinality of exact rows --- which gives $\mathrm{HALF}$ --- needs the recycle
+branch not to return to a bounded endpoint forever. Three sufficient forms:
+\[
+\text{(a)}\quad
+\mathtt{SkippedCoreCriticalQuotientSupply}:\ \forall D\subseteq[2,c),\ 4\le c,\
+v(D)<\tfrac12\ \wedge\ \tfrac12-v(D)<\mathtt{mersenneWeightRat}\,c
+\]
+\[
+\Longrightarrow\quad 2^{\,(2c-2)-1}\ \le\ \mathtt{localPrefixQuotient}\,(\{c\}\cup D)\,(2c-2),
+\]
+where $v(D):=\mathtt{localMersennePrefixValue}\ D$
+(\lean{SkippedCoreCriticalQuotientSupply}{BooleanMobiusCriticalCapacityCofinal.lean:30});
+\[
+\text{(b)}\quad
+\text{the crossing rank } c \text{ produced by the recycle branch does not repeat a bounded value infinitely often};
+\]
+\[
+\text{(c)}\quad
+\text{a growth law } c\ \ge\ g(n)\ \text{with}\ g\ \text{unbounded, for the recycle branch at incoming endpoint } n.
+\]
+
+\subsubsection*{What kind of object would furnish it}
+
+This route is different in kind from R1, and the difference is worth stating because it is the
+only place in the half-value branch where the witness space is not a singleton.
+
+Canonicalisation --- the fact that every straddling word equals the canonical greedy prefix
+(\lean{IsStraddlePrefix.half_agrees_greedy}{HalfCutLocator.lean:442}) --- applies to conditions
+phrased as \emph{real-valued straddles}, because it consumes both $v(D)<1/2$ and the deficit
+clause $1/2-v(D)<w_c$. The predicate $\mathtt{ExactLocalMersenneHalfRow}\ n$ imposes neither: it
+is an \emph{integer floor-quotient hit},
+$\mathtt{localPrefixQuotient}\ D\ n = 2^{\,n-1}-1$, and floor division is not injective. So the
+per-endpoint witness space is an exponential search over $D\subseteq[2,n]$ and is decidable for
+each $n$. That is the only genuine degree of freedom left anywhere on this side.
+
+The object required is therefore a \emph{monotone quantity} --- a potential function on exact
+rows that the recycle branch is forced to increase. In the language of the transition, one wants
+a function $\Phi$ on pairs (endpoint, witness core) with $\Phi(\text{recycle image})>\Phi(n)$,
+whose unboundedness forces $c\to\infty$. The technique family is not analytic here: it is the
+theory of \emph{well-founded transition systems} and, arithmetically, the capacity accounting of
+Boolean subset sums against a superincreasing weight sequence. The corpus already has the sharp
+capacity test in exact form: by
+\lean{localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff}{BooleanMobiusSkippedCoreCriticalCapacity.lean:22},
+form (a) is exactly the statement that the $c-2$-bit suffix capacity
+$\mathtt{localBinarySuffix}\,D\,1\,(2c-2)<2^{\,c-2}$ is met.
+
+\subsubsection*{The specific obstacle}
+
+The obstruction here is isolated, formalised, and the sharpest of its kind in the corpus: the
+transition schema \emph{plus} a seed provably does not give cofinality. The theorem
+\lean{exists_seeded_bounded_double_or_recycle_model}{BooleanMobiusExactRowDichotomy.lean:91}
+(\ev{Lean}) exhibits the one-point predicate $P(n):=(n=6)$, which satisfies the seed
+(\lean{exactLocalMersenneHalfRow_six}{BooleanMobiusExactRowSeed.lean:34}, the explicit witness
+$\{2,3,6\}$) and the exact shape of the transition, and is not cofinal. So no argument that uses
+only the dichotomy and the base case can work, however cleverly the induction is arranged. Any
+proof must consume arithmetic content of $\mathtt{ExactLocalMersenneHalfRow}$ that the abstract
+schema does not see.
+
+There is a second, more specific trap, and it is also formalised. The natural sufficient
+condition via fractional split mass is \emph{not necessary}: the fixture
+\lean{splitFractionMass_one_bound_not_necessary_fixture}{BooleanMobiusSkippedCoreCriticalCapacity.lean:183}
+(\ev{Lean}, at $D=\{2,3\}$, $c=5$) exhibits a real crossing core violating it. So the fractional
+mass route is closed with a witness, not merely unattempted.
+
+\subsubsection*{Swings}
+
+\emph{Swing 4: use canonicalisation as a help rather than an obstruction.} \ev{Math} for the
+observation, \ev{Open} for the outcome.
+
+Form (a) is universally quantified over cores $D$, which looks like an exponential obligation.
+It is not. Its hypotheses are exactly those of
+\lean{eq_halfGreedyPrefixSupport_of_critical_crossing}{BooleanMobiusCriticalCapacityCofinal.lean:50}
+(\ev{Lean}), which forces $D=\mathtt{halfGreedyPrefixSupport}(c-1)$. So the $\forall D$ collapses
+to a single orbit and form (a) is a statement to be checked along \emph{one} sequence indexed by
+$c$, namely
+\[
+\forall c\ge 4:\qquad
+\mathtt{localBinarySuffix}\ \bigl(\mathtt{halfGreedyPrefixSupport}(c-1)\bigr)\ 1\ (2c-2)\ <\ 2^{\,c-2}.
+\]
+That is a one-parameter arithmetic inequality about the canonical half-greedy prefix, decidable
+for each $c$, and it is the correct object to compute before any theory is attempted. The first
+actual step is to evaluate the left-hand side for $c=4,\dots,200$ and read off whether the margin
+$2^{c-2}-\mathtt{localBinarySuffix}(\cdots)$ grows, stays proportional, or approaches zero. Those
+three outcomes select three different proofs, and no one has published the table.
+
+\emph{Swing 5: the potential function to try.} \ev{Open}.
+
+The doubling branch sends $n\mapsto 2n-1$ and the recycle branch sends $n\mapsto 2c-2$ with
+$c\le n$. Set $\Phi(n):=$ the largest rank in the canonical core at endpoint $n$. On the doubling
+branch $\Phi$ at least doubles. The recycle branch is the only danger, and its image endpoint
+$2c-2$ is determined by the \emph{first crossing rank} $c$ of the core. So the entire question is
+whether the first crossing rank of the canonical prefix can stay bounded while the endpoint grows
+--- which, by the collapse above, is a question about one explicit greedy orbit. The concrete
+statement to attempt is: \emph{the first crossing rank of
+$\mathtt{halfGreedyPrefixSupport}(m)$ is non-decreasing in $m$ and unbounded}. If true it closes
+form (c) directly; if false, the counterexample is a finite object and worth having.
+
+\subsection{R3. Prime support: a known theorem and an internal method boundary}
+\label{sec:invent-R3}
+
+The base-$2$ statement
+\[
+\mathrm{Irrational}\Bigl(\sum_{p\ {\rm prime}}\frac1{2^p-1}\Bigr)
+\]
+is known.  Expanding geometrically and collecting divisors gives
+\[
+ \sum_{p\ {\rm prime}}\frac1{2^p-1}
+ =\sum_{n\ge1}\frac{\omega(n)}{2^n},
+\]
+and Tao--Ter\"av\"ainen prove the latter series irrational in Theorem~1.3
+of
+\href{https://arxiv.org/abs/2512.01739}{\emph{Quantitative correlations and
+some problems on prime factors of consecutive integers}}.  This is a cited
+analytic result, not a theorem formalised in the pinned Lean corpus.
+
+The existing pairwise-coprime Lean theorem does not recover it because that
+theorem assumes $\sum_{a\in A}1/a<\infty$, whereas $\sum_p1/p$ diverges.  Its
+generic block-certificate engine would also demand, in the prime case,
+\[
+  2^r\mid\omega(N+r)\qquad(1\le r\le K),
+\]
+a simultaneous exact divisibility pattern far stronger than the input used
+by Tao--Ter\"av\"ainen.  Small computational witnesses for $K=2,3$ diagnose
+that the condition is not vacuous, but they neither prove the known theorem
+nor define a new open case.
+
+Thus the contribution of this route audit is negative and
+coordinate-specific: it identifies why the present formal certificate
+engine fails to reproduce a theorem already available by quantitative
+correlation estimates.  The earlier proposal to prove the prime-support
+irrationality as new mathematics is withdrawn.  Extensions to other bases
+or prime-power supports are mentioned by the cited authors with proof
+modifications omitted; this paper promotes only the fully written base-$2$
+theorem.
+
+\subsection{R4. Landing the route-collapse equivalences, via perfect-square witness depths}
+\label{sec:invent-R4}
+
+\subsubsection*{The statement needed}
+
+Five biconditionals, each with $(1/2:\R)\in\mathcal{A}$ on the right:
+\[
+\text{(1)}\ \ \forall N,\ \mathtt{mobiusCenteredHalfCarry}\,G\,N\ \le\ 2\sqrt{N}+4;
+\qquad
+\text{(2)}\ \ \mathtt{CofinalPositiveHalfGreedySkips};
+\]
+\[
+\text{(3)}\ \ \mathtt{CofinalExactLocalMersenneHalfRows};
+\qquad
+\text{(4)}\ \ \mathtt{GreedyHalfCarryCofinalStripReturn};
+\qquad
+\text{(5)}\ \ \mathtt{HalfCarryCofinalTerminalOnlyStrip},
+\]
+where $G:=\mathtt{greedyMersenneSupport}(1/2)$. The forward directions of (2)--(5) are landed
+Lean (\lean{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73},
+\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
+\lean{half_mem_mersenneAchievementSet_of_cofinalStripReturn}{CofinalStripReturn.lean:157},
+\lean{half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:134},
+all \ev{Lean}). What is missing is the reverse directions, and they all run through one lemma.
+
+\subsubsection*{The object, and the swing that supplies it}
+
+\begin{lem}[Perfect-square strip witness]
+\label{lem:sqwitness}
+Let $A\subseteq\N$ with $1\notin A$ and $\mathtt{erdosSupportSeries}\ 2\ A=1/2$. Then for every
+$k\ge1$,
+\[
+\bigl(\mathtt{integerHalfCarry}\ A\ (k^{2}-1)\ :\ \R\bigr)
+\ =\ \mathtt{binaryCoeffTail}\ (\mathtt{supportCoeff}\ A)\ (k^{2})
+\ \le\ 2k+4\ =\ \mathtt{halfStripBound}\ (k^{2}).
+\]
+\end{lem}
+\begin{proof}
+By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lean:842} (\ev{Lean}),
+\[
+\bigl(\mathtt{integerHalfCarry}\ A\ N:\R\bigr)
+= 2^{\,N+1}\Bigl(\tfrac12-\mathtt{erdosSupportSeries}\ 2\ A\Bigr)
++\mathtt{binaryCoeffTail}\ (\mathtt{supportCoeff}\ A)\ (N+1),
+\]
+and the first term vanishes by hypothesis. Take $N=k^{2}-1$, so $N+1=k^{2}$. By
+\lean{binaryCoeffTail_supportCoeff_le_two_sqrt_add_four}{BooleanMobiusCarry.lean:290} (\ev{Lean},
+unconditional) the tail at $k^2$ is at most $2\sqrt{k^{2}}+4=2k+4$, and by
+\lean{halfStripBound}{HalfCarryReachability.lean:32}, $\mathtt{halfStripBound}\ n
+= 2\,\mathtt{Nat.sqrt}\ n+4$, which at $n=k^{2}$ equals $2k+4$ exactly. Non-negativity of the tail
+(\lean{binaryCoeffTail_nonneg}{GenericTailOrbitRigidity.lean:78}, \ev{Lean}) gives the lower side.
+\end{proof}
+\ev{Math}; every input is landed Lean and the composition is four lines.
+
+The point is narrow and entirely technical, which is why it is worth stating: the corpus's
+recorded obstruction to closing (4) and (5) was the mismatch between $\mathtt{Nat.sqrt}$ (in
+$\mathtt{halfStripBound}$) and $\mathtt{Real.sqrt}$ (in the unconditional tail bound), for which
+Mathlib supplies only \texttt{Real.nat\_sqrt\_le\_real\_sqrt}, the wrong direction, and the
+recorded workaround was to widen the strip constant from $4$ to $6$. Restricting the cofinal
+witness depths to perfect squares dissolves the mismatch: at $n=k^{2}$ the two roots coincide
+exactly and no widening is needed. Applying Lemma~\ref{lem:sqwitness} along $M=k^{2}-1$ gives (4)
+directly; taking $a$ to be the indicator of an achieving support truncated to
+$\mathtt{Fin}(M+1)$ at $M=k^{2}$, and using
+\lean{integerHalfCarry_inter_Iic_eq_of_succ_le}{HalfCarryReachability.lean:49} together with
+$1\notin A$ (forced because $\mathtt{mersenneWeight}\,1=1>1/2$), gives the witness required by
+\lean{HalfTerminalOnlyStripWitness}{TerminalOnlyCofinal.lean:24} and hence (5).
+
+\subsubsection*{Why this is a result and not bookkeeping}
+
+Under the standing rule that a reduction is not a result, one might discount R4. That would be a
+mistake, and the reason is the organising thesis of this document. Each biconditional is a
+theorem, not a reduction: it says a named producer socket is \emph{equivalent} to the goal, hence
+permanently not easier, hence removable from the list of things worth attempting directly. Five
+such theorems are a systematic elimination, and a systematic elimination is a statement about the
+problem. In particular (3) settles the advertised weakening --- that no compatibility is required
+between witness supports at different endpoints --- as buying nothing: incompatible witnesses do
+not create flexibility, because the resulting $\Pi^0_2$ statement still collapses to the
+$\Pi^0_1$ goal.
+
+\textbf{Scope limits to be stated verbatim in the docstrings.} (1) does \emph{not} extend to every
+$A$ with $1\notin A$: without
+\lean{erdosSupportSeries_greedyMersenneSupport_le}{HalfCarryReachability.lean:859} (which supplies
+$\delta:=1/2-S_G\ge0$ for the greedy support specifically) one obtains only the one-sided
+equivalence $\text{hbound}\iff(1/2-S_A)\le0$. The mechanism in all five cases is the same and
+should be recorded once: $2^{\,N+1}\delta$ dominates any $\sqrt{N}$ envelope, so a strip
+hypothesis forces $\delta=0$; and $\delta=0$ makes the unconditional tail bound supply the strip.
+Membership is then read off by
+\lean{mem_mersenneAchievementSet_iff_greedy_survival}{GreedyAchievementSet.lean:1445} (\ev{Lean}).
+
+\subsection{R5. The sparse/dense trichotomy --- and a proof that the present engine cannot close it}
+\label{sec:invent-R5}
+
+\subsubsection*{The statement needed}
+
+\[
+\forall A\subseteq\N_{\ge1}:\quad A.\mathrm{Infinite}\ \Longrightarrow\
+\underbrace{\bigl(\text{cofinally many super-logarithmic zero windows in } \mathtt{supportCoeff}\,A\bigr)}_{\text{sparse branch}}
+\ \lor\
+\underbrace{\mathrm{Cert}(A)}_{\text{dense branch}} .
+\]
+The sparse branch is already closed twice over: it contradicts
+\lean{supportCoeffZeroWindow_length_le_eps_logb}{SublogDivisorCoverage.lean:435} (\ev{Lean},
+unconditional and uniform in $A$) whenever the series is rational, and the far sparse edge is
+covered outright by \lean{irrational_erdosSum_of_lcm_gap}{CertificateKernel.lean:5836} (\ev{Lean}).
+The dense branch is the missing producer: for $A$ whose divisor incidence is bounded below
+infinitely often, construct
+\[
+\exists N,K,L,C,\quad K\le L,\quad
+\forall r\in[1,K]:\ 2^{r}\mid \mathtt{supportCoeff}\,A\,(N+r),
+\]
+\[
+\sum_{r=K+1}^{L}\mathtt{supportCoeff}\,A\,(N+r)\,2^{\,L-r}\le C,
+\qquad
+q\,(C+N+L+2)<2^{L}.
+\]
+
+\subsubsection*{What kind of object would furnish it}
+
+$\mathtt{supportCoeff}\,A = \mathbf{1}_A * \mathbf{1}$ is a Dirichlet convolution, so the dense
+branch asks: for an \emph{arbitrary} $0$--$1$ arithmetic function, find a block of consecutive
+arguments on which the convolution with $\mathbf{1}$ is $2$-adically aligned. M\"obius inversion
+$\mathbf{1}_A = \mu * \mathtt{supportCoeff}\,A$ is exact and costs nothing, which makes the
+$2$-adic structure of the incidence directly readable, and that is the technique family to use:
+$2$-adic M\"obius/Dirichlet algebra on the divisor lattice, not analysis. The reason the corpus's
+landed theorems all live inside the two-axis box (divisor independence \emph{and} a global tail
+budget) is that CRT prescribes an incidence pattern only when the divisibility conditions
+$a\mid n$ for $a\in A$ are independent; for general $A$ they are entangled through pairwise gcds
+and CRT has nothing to prescribe.
+
+\subsubsection*{The specific obstacle, proved}
+
+Here the honest answer is stronger than an obstacle: the dense branch as stated is \emph{false},
+and the falsifier is an explicit, natural, divisor-dense support. This also corrects the reduction
+recorded earlier in this document, that universal \#257 passes ``with no loss'' to
+$\mathrm{O1}' := \forall A\ \text{infinite},\ \mathrm{Cert}(A)$.
+
+\begin{prop}[Squarefree support: exact engine ceiling, not an open value]
+\label{prop:squarefree}
+Let $A=\{n\ge2:n\text{ is squarefree}\}$.  Then
+\[
+  \mathtt{supportCoeff}\,A\,(n)=2^{\omega(n)}-1,
+\]
+which is odd for every $n\ge2$.  Consequently neither the digitwise nor the
+carry-aware divisibility-first block-certificate schema has an instance at
+any even base.  The two exact no-go theorems are
+\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.not_exists_carry_certificates_squarefreeSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:274}
+and
+\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.not_exists_digitwise_certificates_squarefreeSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:292}.
+\end{prop}
+\ev{Lean} \scale{uniform} \coord{binary-digit}.
+
+This does not leave the squarefree value open.  Duverney--Tachiya's
+Corollary~1.2 and Example~1.1 prove that, for every $h\ge1$,
+\[
+  1,\quad
+  \sum_{n\ {\rm squarefree}}\frac1{2^n-1},\quad\ldots,\quad
+  \sum_{n\ {\rm squarefree}}\frac1{2^{hn}-1}
+\]
+are linearly independent over $\Q$.  After deleting the rational $n=1$
+term, squarefree support is therefore irrational at every base $2^j$.
+Among the integer bases, the cited theorem leaves the non-powers of two
+uncovered.  This is cited mathematics, not formalised here.  Proposition~\ref{prop:squarefree}
+is a failure of two proof schemas on a value already known to be irrational.
+
+The coordinate dependence is exact.  Adjoin $1$ to the support.  The series
+changes by the rational number $(b-1)^{-1}$, so its irrationality is
+unchanged, while the incidence becomes $2^{\omega(n)}$:
+\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.supportCoeff_squarefreeShiftedSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:314}
+and
+\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:335}.
+At base $2$, CRT then supplies arbitrarily long opening blocks with
+$\omega(N+r)\ge r$:
+\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.exists_omega_ge_block}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:441}
+and
+\lean{ErdosProblems.Erdos257.SquarefreeSupportIncidence.exists_digitwise_block_squarefreeShiftedSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:485}.
+The middle-window and height conditions remain; no certificate or new
+irrationality proof follows.  The durable conclusion is methodological:
+test a no-go statement under rational finite changes before attributing it
+to the underlying value.
+
+\subsection{What the shape of the wall suggests about the underlying object}
+\label{sec:invent-shape}
+
+Everything in this subsection is inference from the accumulated failures, not theorem. It is
+labelled that way throughout, and where the evidence does not determine the answer it says so
+rather than manufacturing a story.
+
+\subsubsection*{The half-value branch looks pseudorandom, and the failures are the evidence}
+
+The strongest available inference is about the \emph{kind} of difficulty, and it comes from the
+manner in which the attacks failed rather than the fact that they failed.
+
+When a hard problem conceals structure, partial attacks typically return partial information: a
+bias, a correlation, an exceptional set, a bound with the wrong constant. That is not what
+happened here. Parity returned a tautology --- the identity $J(M+1)\equiv\delta(M+1)\pmod2$ holds
+for \emph{any} digit stream obeying the recursion shape, so it forbids no residue and no run.
+Fixed-precision valuation data returned a proved no-go: for any starting carry and any word of
+odd-unit symbols, a compatible centred completion exists
+(\lean{fixedPrecisionTropicalNoGo}{TropicalCurvatureCarry.lean:137}, \ev{Lean}). Bounded carry
+state returned an unbounded fan-out
+(\lean{balancedPulse_no_autonomous_decoder}{GenericTailOrbitRigidity.lean:247}, \ev{Lean}). Long
+common suffixes returned exact erasure of the predecessor
+(\lean{affineBinaryOrbit_mod_twoPow_eq}{GenericTailOrbitRigidity.lean:307}, \ev{Lean}).
+Prime-doubling returned a witness where three primes sit inside an eleven-step quiet run. These
+are not near misses. They are the signature of a coordinate in which there is no arithmetic bias
+to find --- which is what one expects if the digit stream really is pseudorandom.
+
+The positive measurements point the same way and are quantitative. The branch counts over
+$200{,}000$ seam rows are $R:M:U = 100197:49899:49898$, matching the balanced-signed-digit
+prediction to within sampling noise. The run-length histogram is geometric with ratio $\approx2$.
+The binary expansion of $C=E-3/2$ agrees bit-for-bit with OEIS A211706 and has longest equal run
+$15$ in $40{,}000$ bits. And the measurement in Swing~2 above shows the fractional part of the
+short-window divisor phase $\Theta_L$ is, to three significant figures, Haar-distributed, with a
+near-integer tail constant $c\approx2.5$ against the uniform value $2$.
+
+\emph{Inference (not theorem).} The object behind the half-value branch is most likely
+\textbf{simple in description and pseudorandom in behaviour}. Its description is two lines:
+$K(2)=1$, $K(M+1)=2K(M)-(\tau(M+1)-1)$, together with a superincreasing greedy orbit. Its
+behaviour is, on every statistic yet measured, indistinguishable from a fair coin. If that is
+right, then the missing theorem is a \emph{pseudorandomness} statement about an explicit
+deterministic sequence, and it belongs to the same family as normality of specific constants, or
+Chowla-type independence: elegant to state, and hard for the structural reason that there is no
+structure to exploit. On this reading the wall is not hiding a mechanism; it is the absence of
+one.
+
+\subsubsection*{Three reasons to distrust that inference, stated plainly}
+
+First, coordinate-relativity. Obstructions are relative to a representation, and all nine
+coordinates the corpus built --- rung, seam row, integer margin, sharp tail margin, half-carry,
+reverse-carry word, Boolean--M\"obius exact row, fatal-cell packing, Dedekind cut-locator --- are
+descendants of one family, the superincreasing greedy carry. Their agreement is therefore
+\emph{not} nine independent votes. A genuinely foreign coordinate (a $p$-adic dynamical one, a
+representation-theoretic one, an automatic-sequence one) has not been tried, and ``no bias in
+these nine'' is weaker evidence than it looks.
+
+Second, the single exception. Exactly one row of the real orbit fails $\sqrt{\ }$-escape, $r=7$,
+which is also the site of the only real $R$-branch crossing ever observed, at $(s,d)=(10,7)$. A
+lone low-lying exception is what a random model predicts; it is also what a hidden structure with
+a small modulus predicts. That datum does not discriminate.
+
+Third, and this is the sharpest internal check available: pseudorandomness is a claim about the
+\emph{absence} of structure, and the corpus contains an unmistakable piece of \emph{present}
+structure --- strict superincreasingness of the Mersenne weights, which forces the digit coding to
+be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1546},
+\ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
+coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
+description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The
+rigidity is why every soft method fails (there is no ensemble to average over: $\mathcal{A}$ has
+Lebesgue measure exactly $1$ inside an interval of length $E\approx1.6067$ and is nowhere dense,
+and the two standard notions of ``typical''
+disagree on it); the pseudorandomness is why every arithmetic method returns no information.
+
+\subsubsection*{The universal branch reads differently, and this weakens the one-wall thesis}
+
+Proposition~\ref{prop:squarefree} is a reason to separate the two halves
+rather than assimilate them.  On the universal side the present
+certificate engine first meets a coordinate-dependent parity obstruction.
+The squarefree value is nevertheless already known to be irrational at
+power-of-two bases, and adjoining $1$ removes the opening-block obstruction
+without changing irrationality.  Thus the no-go diagnoses this engine; it
+does not diagnose the value or the universal problem.
+
+The wall analysis's claim that both halves converge on one missing object --- short-window
+near-integer anti-concentration of a divisor-weighted sum --- survives, but with a correction: on
+the universal side that object is the \emph{second} obstruction, not the first, and it becomes
+relevant only after one chooses an engine whose opening condition is
+invariant under rational finite changes. Reporting the convergence without
+that ordering would overstate the unity of the wall.
+
+\subsubsection*{What the evidence does and does not determine}
+
+It does not determine whether a short proof exists. Nothing in a catalogue of failed methods
+bounds the length of a successful one, and this document should not pretend otherwise.
+
+It does determine, with proof rather than inference, where a short proof cannot be. It cannot
+proceed by finite inspection, by fixed-precision arithmetic, by a bounded carry state, by a
+measure or category argument, by an irrationality-measure bound on $E$ or any constant of that
+type, or --- on the universal side, as of Proposition~\ref{prop:squarefree} --- by instantiating
+the present block-certificate engine at a general support. Each of those is closed with a
+mechanism, and a mechanism is reusable in a way that a failed attempt is not. That is the
+contribution: not a proof, and not a reduction, but a map of the region in which a proof cannot
+live, drawn tightly enough that the remaining region is small and its coordinates are named.

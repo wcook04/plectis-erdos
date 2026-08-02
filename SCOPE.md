@@ -48,6 +48,8 @@ Machine-resolvable open propositions:
   `python3 scripts/query_corpus.py --open remaining_open.unbounded_certificate_supply`
 - `remaining_open.half_value_membership`:
   `python3 scripts/query_corpus.py --open remaining_open.half_value_membership`
+- `remaining_open.twenty_one_permanent_affine_supercapacity`:
+  `python3 scripts/query_corpus.py --open remaining_open.twenty_one_permanent_affine_supercapacity`
 - `remaining_open.universal_257_all_infinite_supports`:
   `python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports`
 
@@ -55,9 +57,6 @@ Finite instances, conditional reductions, cited neighbours, and named
 infinite-support families do not discharge these propositions. Only a future
 claim transition recorded against the exact identifier, with the evidence
 required by `docs/methodology.json`, can change this boundary.
-
-Expert handoffs: `python3 scripts/query_expert_handoffs.py`; each row gives its
-OPEN ask, current guess, alternatives, discriminator, consumer, and boundary.
 
 ## Machine identifiers
 

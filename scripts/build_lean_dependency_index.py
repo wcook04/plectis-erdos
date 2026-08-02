@@ -23,6 +23,7 @@ OUTPUT = ROOT / "docs" / "lean_dependency_index.json"
 EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
+LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
 CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
 CHECK_RECEIPT_SCHEMA = "erdos249257-lean-dependency-index-check/1"
 CHECK_INPUT_FILES = (
@@ -34,6 +35,7 @@ CHECK_INPUT_FILES = (
     "scripts/build_declaration_atlas.py",
     "scripts/build_lean_dependency_index.py",
     "scripts/export_lean_dependency_edges.lean",
+    "scripts/lean_fast_build.py",
 )
 QUERY_CORPUS_DEPENDENCY_HELPERS = (
     "atlas_declarations",
@@ -181,7 +183,12 @@ def write_check_receipt(
 
 def ensure_elaborated_environment() -> None:
     completed = subprocess.run(
-        ["lake", "build", *LEAN_ROOT_TARGETS],
+        [
+            sys.executable,
+            str(LEAN_FAST_BUILD),
+            "--lake-staleness",
+            *LEAN_ROOT_TARGETS,
+        ],
         cwd=ROOT,
         text=True,
         stdout=subprocess.PIPE,
@@ -191,7 +198,7 @@ def ensure_elaborated_environment() -> None:
     if completed.returncode:
         sys.stderr.write(completed.stdout)
         raise RuntimeError(
-            f"Lean root build exited {completed.returncode}"
+            f"bounded Lean root build exited {completed.returncode}"
         )
 
 

@@ -10,6 +10,7 @@ import importlib.util
 import json
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -126,11 +127,25 @@ def check_receipt_uses_verified_snapshot() -> None:
         assert receipt["input_fingerprint"] == "sha256:verified-at-start"
 
 
+def check_environment_build_is_bounded() -> None:
+    with patch.object(builder.subprocess, "run") as run:
+        run.return_value.returncode = 0
+        builder.ensure_elaborated_environment()
+    assert run.call_args.args[0] == [
+        builder.sys.executable,
+        str(builder.LEAN_FAST_BUILD),
+        "--lake-staleness",
+        *builder.LEAN_ROOT_TARGETS,
+    ]
+    assert run.call_args.kwargs["cwd"] == builder.ROOT
+
+
 def main() -> int:
     check_exact_receipt_contract()
     check_live_input_surface()
     check_cached_output_rejection()
     check_receipt_uses_verified_snapshot()
+    check_environment_build_is_bounded()
     print("lean dependency index cache: PASS")
     return 0
 

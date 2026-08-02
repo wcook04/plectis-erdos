@@ -104,63 +104,33 @@ authors.  See \emph{Statements and declarations}.}
 
 \begin{abstract}
 \noindent
-Let $S=\sum_{n\geq1}\ph(n)/2^n$, and for $A\subseteq\Npos$ let
-$X_A=\sum_{n\in A}(2^n-1)^{-1}$.  Erd\H{o}s asked whether $S$ is
-irrational (Problem~\#249) and whether $X_A$ is irrational for every
-infinite $A$ (Problem~\#257).  Both problems remain open and nothing here
-settles either.
+Let $S=\sum_{n\ge1}\ph(n)/2^n$ and
+$X_A=\sum_{n\in A}(2^n-1)^{-1}$ for $A\subseteq\Npos$. Erd\H{o}s
+Problems~\#249 and~\#257 ask whether $S$ is irrational and whether every
+infinite-support $X_A$ is irrational. Both remain open.
 
-We separate what is proved outright from what is only restated.  Proved
-outright, and independent of any open hypothesis: irrationality of the
-full-support series in every integer base $b\geq2$ (classical, formalised
-here), strict-tail uniqueness at base~$2$, an exact classification of when
-the value $1/2$ is attainable, the exclusion of one branch of the
-governing recurrence together with the integer remainder $-3$, and an
-explicit denominator exclusion for $S$.  Restated rather than advanced: two
-exact reductions identifying an equivalent unbounded condition in each
-question.  Being equivalences, they relocate the difficulty instead of
-reducing it, and we label them so throughout rather than presenting them as
-progress.
+For \#249, Lean proves that the two zero-residue sections
+$\ph_{0,0},\ph_{1,0}$ and all odd-residue dyadic sections form a $\Q$-basis of
+the full $2$-kernel span of Euler's totient. Its rank through level $e\ge1$
+is exactly $2^e+1$, and the full span is infinite-dimensional. This is not an
+irrationality theorem. Any rational representation $S=p/q$ has
+$q>\Qzero\approx7.96\times10^{34}$; the bound comes from a finite Farey
+window. Lean also checks lcm-diagonal certificates for every $t\le82$. This
+bounded computation gives no unbounded supply, although such a supply is
+exactly equivalent to irrationality.
 
-For \#249, any rational representation $S=p/q$ has
-$q>\Qzero\approx7.96\times10^{34}$, and at the lcm scales
-$M_t=\lcm(1,\ldots,t)$ Lean checks a finite certificate at every scale
-$t\le82$.  We state the ceiling on both at once: the denominator constant is
-what the classical Farey/mediant argument returns for its window, with a
-window length that is a free parameter, so it measures computation rather
-than progress; and the certificate band, though contiguous, is bounded, so
-nothing is asserted at $t=83$.  Irrationality of $S$ is \emph{equivalent} to
-the existence, beyond every bound, of such a certificate --- a finite integer
-calculation plus a rigorous tail estimate showing that two shifted binary
-tails differ by a non-integer.  That equivalence is exact and it is not
-progress: it is the same difficulty in new coordinates.
-
-For \#257, we formalise the classical irrationality theorem for the sum over
-all positive exponents in every integer base $b\geq2$, together with several
-previously known structured choices of infinite $A$.  At base $2$, each weight exceeds the
-sum of all later weights, so every attainable value has a unique choice of exponents.
-The value $1/2$ is attainable exactly when its greedy expansion omits weights
-at arbitrarily large ranks; this would refute the universal assertion in
-\#257.  Nonattainment is equivalent to a final omission.  After a putative
-final omission, the next-step recurrence has two branches.  We exclude one
-branch and the integer remainder $-3$ in the other; the values $-2,-1$ and a
-comparison with the unused tail remain unresolved.
-
-An exact change of variables places both series in one common formula, but
-transfers no irrationality theorem between them.  Two things are therefore
-offered, and we do not want them confused.  The first is the unconditional
-mathematics listed above, which stands on its own.  The second is a negative
-result about method: a Lean-checked map of where reformulation stops paying,
-in which the reductions that look like progress are certified equivalent to
-the problems they came from.  Recording that a route is exactly as hard as
-its target is a finding, but it is a finding about the route and not about
-the problem, and it is reported here as such.  This edition also assimilates
-six returned research packets into distinct theorem-producing programmes:
-five for \#249 and a hereditary Mersenne-support programme for \#257.  Their exact formal interfaces,
-analytic targets, finite evidence, and failed bridges are retained here in full
-and repeated in the standalone problem notes.  We prove neither the
-irrationality of $S$ nor the
-universal assertion in \#257, and we do not decide whether $1/2$ is attainable.
+For \#257, we formalise the classical full-support theorem for every integer
+base $b\ge2$ and known structured-support results. At base $2$, restricting
+digits to $J\subseteq\N$ gives a compact, totally disconnected, nowhere-dense
+achievement set with unique coding, perfect when $J$ is infinite, and of
+measure $2^{-|J^c|}$ for finite $J^c$ and $0$ otherwise. This does not exclude
+rational points. Membership of $1/2$ is equivalent to infinitely many greedy
+omissions; we exclude the upper final branch and cell $-3$, leaving cells
+$-2,-1$ and a tail comparison open. No finite support on ranks at least two
+represents $1/21$; the quotient-greedy classification leaves one eventual
+affine-supercapacity regime unexcluded. Both memberships remain open. A
+shared Lambert-series change of variables transfers no irrationality theorem
+between the problems.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -169,44 +139,39 @@ We study two questions.  The first asks whether
 $S=\sum_{n\ge1}\ph(n)/2^n$ is irrational (\#249).  The second asks whether
 $\sum_{n\in A}(2^n-1)^{-1}$ is irrational
 for every infinite $A\subseteq\Npos$ (\#257).
-Here \(\ph(n)\) is Euler's totient, the number
-of integers from \(1\) to \(n\) that are coprime to \(n\).  Problem \#249
+Here \(\ph(n)\) is Euler's totient.  Problem \#249
 appears on p.~61 of Erd\H{o}s--Graham and p.~102 of Erd\H{o}s's
 survey~\cite[p.~61]{erdosgraham1980}\cite[p.~102]{erdos1988}; problem
 \#257 appears on pp.~62 and 105, respectively~\cite[p.~62]{erdosgraham1980}
-\cite[p.~105]{erdos1988}.  Bloom's current catalogue records reproduce both
-questions and label them open, while explicitly warning that those labels are
-the website owner's present assessments and may omit relevant literature
-\cite{erdosproblems}.  We therefore use the catalogue for numbering and
-current reported status only; the original publications and later cited
-papers carry the mathematical claims.  Neither problem is settled.
+\cite[p.~105]{erdos1988}.  Bloom's catalogue records both as open, with the
+qualification that its labels may omit relevant literature
+\cite{erdosproblems}.  We use it only for numbering and status; the
+cited literature carries the mathematical claims.  Neither problem is settled.
 
-Throughout, \(\N=\{0,1,2,\ldots\}\) and
-\(\Npos=\{1,2,3,\ldots\}\).  A \emph{support} \(A\subseteq\Npos\)
-is the set of selected exponents; the set of all resulting sums is the
-\emph{achievement set} \(\mathcal A\).  Exponent \(0\) is excluded because
-\(2^0-1=0\).  An infinite support with sum \(1/2\) would therefore refute
-the universal assertion in \#257.
+Throughout, \(\N=\{0,1,2,\ldots\}\),
+\(\Npos=\{1,2,3,\ldots\}\), and a \emph{support} is a set of selected
+exponents.  Their sums form the \emph{achievement set} \(\mathcal A\).
+Exponent \(0\) is excluded because \(2^0-1=0\).  An infinite support summing
+to \(1/2\) would refute the universal assertion in \#257.
 
 \subsection*{What is proved}
 
-Taken unconditionally, and depending on no open hypothesis: for every integer
-base \(b\geq2\) the full-support series \(\sum_{n\geq1}(b^n-1)^{-1}\) is
-irrational (classical, formalised here), together with several named
-infinite-support families; at base \(2\) every attainable value has a unique
-support, recovered greedily; the value \(1/2\) admits an exact attainability
-classification; one branch of the governing recurrence and the integer
-remainder \(-3\) are excluded outright; and any rational \(S=p/q\) has
-\(q>\Qzero\).  These are theorems.  A reader who wants to know what this
-development contributes beyond restating two open problems should read that
-list, and Section~\ref{sec:249} for the dyadic-section rank theorem.
+Taken unconditionally, and depending on no open hypothesis: the full dyadic
+totient kernel has the explicit odd-core basis stated in the abstract, with
+exact rank \(2^e+1\) through level \(e\ge1\); any rational \(S=p/q\) has
+\(q>\Qzero\); the base-\(2\) Mersenne achievement set and all its
+support-restricted faces have the topology, coding, and measure classification
+stated above; the targets \(1/2\) and \(1/21\) admit exact branch
+classifications; and the upper final-producer branch and middle cell \(-3\)
+are excluded outright.  The full-support and named-support irrationality
+theorems are prior mathematics formalised or cited here.  None of these
+statements settles either open problem, and no novelty claim is made for a
+cited result.
 
-What follows in this subsection is of a different kind, and we keep the two
-apart.  Each question is reduced to a finite Lean-checkable calculation and one
-unbounded condition that remains open.  A reduction to an \emph{equivalent}
-condition moves the difficulty without lowering it; we record such reductions
-because knowing precisely which routes are equivalent to their target is
-useful, not because they constitute progress.  For \#249, a \emph{certificate} is a
+Separately, each question is reduced to a finite Lean-checkable calculation and
+one unbounded condition that remains open.  An \emph{equivalent} condition
+relocates the difficulty; it is useful as an exact route, not progress by
+itself.  For \#249, a \emph{certificate} is a
 finite integer calculation plus a rigorous bound on the omitted tail.  Put
 \(M_t=\lcm(1,\ldots,t)\), the least common multiple of \(1,\ldots,t\), and
 \(R_N=\sum_{m\geq1}\ph(N+m)2^{-m}\), the original series tail after
@@ -256,12 +221,15 @@ to the other; Section~\ref{sec:architecture} gives the exact map.
 Question or result & Mathematical status & Treatment in this paper \\
 \midrule
 Irrationality in \#249 & Open & No proof of \(S\notin\Q\) is claimed. \\
+Dyadic totient-section basis & Proved here & The full odd-core family is a rational basis; through every level \(e\ge1\), the rank is \(2^e+1\).  This is a coefficient theorem, not irrationality of \(S\). \\
 Denominator exclusion & Proved & If \(S=p/q\), then \(q>\Qzero\). \\
 Tail differences and \(M_t\)-diagonal certificates & Exact equivalences & The unbounded supply is equivalent to \(S\notin\Q\), but remains open. \\
 Diagonal computation & Finite evidence & Lean checks a diagonal certificate at every scale \(t\le82\); the band is contiguous but bounded, not an unbounded family. \\
 Universal assertion in \#257 & Open & No proof covers every infinite support. \\
-Structural/support results & Explicit rank theorem; Prior work/formalised & Exact totient-section ranks sharpen known nonregularity in a different form; strict-tail support coding and named irrational supports have prior-work context.  None settles \#257. \\
+Known support families & Prior work/formalised or cited & Full support and several structured infinite supports are irrational; no closure principle extends them to arbitrary \(A\). \\
+Support-restricted geometry & Proved here & Compact and nowhere dense for every allowed-coordinate set; perfect for infinite support; exact finite-complement/zero measure dichotomy. \\
 Membership of \(1/2\) & Open; exact reductions & Greedy and recurrence laws give exact equivalences without proving either event. \\
+Membership of \(1/21\) & Open; finite obstruction and exact frontier & Finite support is impossible on ranks at least two; one permanent affine-supercapacity regime remains. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -787,6 +755,33 @@ novelty claim is made for the strict-tail geometry.  Before specialising to
 \(X_A\in\mathcal A\); these are necessary conditions in the universal
 direction, not yet a contradiction.
 
+The same strict-tail coding gives a hereditary refinement that was absent
+from earlier versions of this manuscript.  For \(J\subseteq\N\), let
+\(\mathcal A_J\) be the range of binary digit strings whose \(k\)-th digit
+may be nonzero only when \(k\in J\), with that digit multiplying
+\(w_{k+1}\).
+
+\begin{theorem}[support-restricted geometry]\label{res:supportedgeometry}
+For every \(J\subseteq\N\), the set \(\mathcal A_J\) is compact and nowhere
+dense, and its binary coding is injective.  If \(J\) is infinite, then
+\(\mathcal A_J\) is perfect.  Moreover,
+\[
+ \operatorname{vol}(\mathcal A_J)=
+ \begin{cases}
+   2^{-|F|},&J=F^c\text{ for a finite set }F,\\
+   0,&J^c\text{ is infinite}.
+ \end{cases}
+\]
+\end{theorem}
+\noindent Compactness, nowhere density, and the infinitude hypothesis on
+perfectness are the
+\href{\repobase/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean\#L90}{support-restricted topology theorems};
+the exact measure statement is the
+\href{\repobase/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean\#L397}{finite-complement/zero dichotomy}.
+The theorem classifies sets of possible values; positive measure, zero
+measure, and perfectness do not decide whether any particular rational value
+belongs to one of them.
+
 \subsection{Rigidity of a hypothetical rational support}
 
 For \(A\subseteq\Npos\), define
@@ -1193,6 +1188,40 @@ Together they establish the global hypothesis of
 Corollary~\ref{res:taildominance}; only then does
 Corollary~\ref{res:halfcounterexample} produce an infinite rational-valued
 support and a counterexample to the universal \#257 statement.
+
+\subsection{A second rational target: \(1/21\)}
+\label{sec:twenty-one-frontier}
+
+The target \(1/21\) supplies a second one-sided test of universal \#257.
+It is not known to belong to \(\mathcal A\), but the finite loophole and the
+late branch structure can both be described exactly.
+
+\begin{theorem}[finite obstruction and quotient-greedy frontier at \(1/21\)]
+\label{res:twentyonefrontier}
+No finite set \(F\subseteq\{2,3,\ldots\}\) satisfies
+\[
+ \sum_{n\in F}\frac1{2^n-1}=\frac1{21}.
+\]
+For the canonical quotient-greedy remainder \(s_R\) at even depth \(2R\),
+membership of \(1/21\) is equivalent to failure of one explicit
+fatal/cofinite/aligned branch \(\mathcal F_{21}\).  An unbounded sequence of
+closed rows with \(s_R\le2^R\) implies membership.  On
+\(\mathcal F_{21}\), the remainder is eventually strictly above \(2^R\), the
+boundary rank is selected, and the support and remainder follow one exact
+affine recurrence.
+\end{theorem}
+\noindent The finite obstruction is
+\href{\repobase/ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean\#L59}{kernel checked}.
+The exact membership classification, closed-row consumer, and surviving
+affine regime are respectively the
+\href{\repobase/\PK/TwentyOneQuotientGreedy.lean\#L3508}{fatal-branch equivalence},
+\href{\repobase/\PK/TwentyOneQuotientGreedy.lean\#L5553}{cofinal closed-row theorem},
+and
+\href{\repobase/\PK/TwentyOneQuotientGreedy.lean\#L5657}{eventual affine-supercapacity theorem}.
+These statements isolate the final late regime; they do not contradict it.
+Thus \(1/21\in\mathcal A\) remains open.  If membership were proved, the
+finite obstruction would make its representing support infinite and hence
+refute universal \#257.  Nonmembership would close only this target.
 
 \long\def\HalfValueTechnicalAppendix{
 
@@ -2111,7 +2140,7 @@ not decide half-membership.
 
 \subsection{What remains open}
 
-The two directions remain separate.
+Three endpoint questions remain separate.
 \begin{enumerate}[label=\textup{(\alph*)},leftmargin=2.2em]
 \item The universal problem is to prove \(X_A\notin\Q\) for every infinite
 \(A\subseteq\Npos\).  Theorem~\ref{res:support} proves several
@@ -2128,11 +2157,17 @@ actual middle transition had \(C_D=-2\) or \(-1\), and if every remaining
 middle transition with \(C_D\geq0\) satisfied
 \(\Theta_D<C_D\), comparing its full future tail to its transition carry
 as in~\textup{(4.2)}.  Neither statement is proved.
+\item The second rational-target route asks whether \(1/21\in\mathcal A\).
+Theorem~\ref{res:twentyonefrontier} rules out finite support and reduces
+membership exactly to excluding \(\mathcal F_{21}\).  Contradicting the
+eventual affine-supercapacity recurrence forced by \(\mathcal F_{21}\), or
+producing closed canonical rows at unbounded depth, would suffice; neither is
+proved, and neither sufficient route is asserted to be equivalent by itself.
 \end{enumerate}
 Appendix~\ref{app:half-technical} records the exact local reductions,
 conditional compactness criteria, finite certificates, counterexamples to
 stronger local assertions, and failed strategies.  These narrow the remaining
-cases but decide neither open \#257 question.
+cases but decide none of the three endpoints.
 
 \section{The totient constant $S$ (Erd\H{o}s \#249)}\label{sec:249}
 
@@ -3522,20 +3557,21 @@ offset set $J$,
 This hereditary inequality makes the digit map on every support injective:
 the first differing digit outweighs every possible later disagreement.
 
-The packet's analytic continuation is a full geometry-and-measure
-classification.  Every infinite $\mathcal A_A$ should be a compact perfect
-totally disconnected set.  If the complement of $A$ has finite size $c$, its
-Lebesgue measure should be $2^{-c}$; if the complement is infinite, the measure
-should be zero.  Fair Bernoulli digits should give normalized Lebesgue measure
-on $\mathcal A_A$ exactly in the cofinite case, while every biased or
-infinite-complement law should be singular.  A stride support
-$A=\{r,r+d,r+2d,\ldots\}$ should have Hausdorff dimension $1/d$, with the
-biased Bernoulli dimension governed by entropy divided by $d\log2$.
+The topology-and-measure classification is now formalised in
+Theorem~\ref{res:supportedgeometry}: every restricted set is compact and
+nowhere dense, every infinite allowed support gives a perfect set, and the
+Lebesgue measure is exactly \(2^{-c}\) when the complement has finite size
+\(c\), versus zero when the complement is infinite.
 Equation~\eqref{eq:packet-hereditary-tail} supplies the disjoint-cylinder
-geometry, but the topology, measure, and dimension theorems remain to be
-formalised in this wave.
+geometry.  What remains unformalised in this packet is the finer probability
+and dimension layer: whether fair Bernoulli digits give normalized Lebesgue
+measure exactly in the cofinite case, the singularity of biased or
+infinite-complement laws, and the expected Hausdorff-dimension formula
+\(1/d\) for stride supports \(A=\{r,r+d,r+2d,\ldots\}\) together with its
+entropy refinement.
 
-Even their completion would not prove universal \#257.  A null or
+Neither the proved geometry nor completion of that finer layer would prove
+universal \#257.  A null or
 positive-measure Cantor set may contain rational points, and neither the
 absolutely continuous nor singular phase says anything about the all-ones
 endpoint selected by a fixed support.  The missing bridge must be
@@ -3592,7 +3628,7 @@ instructions are available in the
 \href{https://github.com/wcook04/plectis-lean-erdos249-257}{public repository}.
 This paper fixes source revision \texttt{\commitshort}, published under
 the tag
-\href{https://github.com/wcook04/plectis-lean-erdos249-257/tree/formal-source-2026-07-18}{\texttt{formal-source-2026-07-18}}.
+\href{https://github.com/wcook04/plectis-lean-erdos249-257/tree/formal-source-2026-07-31}{\texttt{formal-source-2026-07-31}}.
 The blue links resolve to immutable source files at that checkpoint.
 The release also fixes the Lean and Mathlib
 versions; the toolchain is Lean \texttt{v4.29.1}.
@@ -4270,6 +4306,14 @@ statement; a negative answer would decide only this distinguished
 point-membership question.
 \end{problem}
 
+\paragraph{The \(1/21\) counterexample route.}
+Decide whether \(1/21\in\mathcal A\).  By
+Theorem~\ref{res:twentyonefrontier}, this is equivalent to excluding the
+fatal/cofinite/aligned branch \(\mathcal F_{21}\).  That branch forces an
+eventual affine-supercapacity recurrence, so contradicting the recurrence is
+a sufficient way to exclude it, not a second equivalence.  A positive
+answer would give an infinite rational-valued support and refute universal
+\#257; a negative answer would decide only this target.
 \paragraph{Conclusion: what the reductions change.}
 The paper is an obstruction atlas: it records finite certificates and local
 no-go results while converting each problem into an exact after-every-cutoff
@@ -4279,7 +4323,9 @@ rigidity---forcing witnesses arbitrarily far out.  For \#249 this means
 unbounded certificate supply, in pointwise or lcm-diagonal form.  For the
 half-value route it means infinitely many terminal zeros, or equivalently no
 final skip; the values \(-2,-1\) and a future-tail inequality remain open.
-A negative half-value answer would not prove universal \#257.
+For the \(1/21\) route it means escaping the permanent affine-supercapacity
+regime or producing closed canonical rows at unbounded depth.  A negative
+answer for either rational target would not prove universal \#257.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}\subsection*{Statements and declarations}
 

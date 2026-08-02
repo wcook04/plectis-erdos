@@ -55,8 +55,8 @@ unreadable to the next human or reasoning agent. This paper presents a
 repository architecture that separates first-contact comprehension from proof
 checking. At the audited revision, a cold clone exposes a bounded six-line
 tour over 992 Lean modules and 151,761 declarations, a mathematical map of ten
-programmes, 100 curated claims, four explicit open propositions, and an
-elaborated loaded-root graph with 8,772 source-resolved nodes and 38,844 direct
+programmes, 101 curated claims, five explicit open propositions, and an
+elaborated loaded-root graph with 9,715 source-resolved nodes and 51,427 direct
 value-reference edges. These are committed navigation products: they require
 no Lean build and make omissions and authority boundaries explicit.
 
@@ -135,9 +135,9 @@ of understanding.
 \node[branch, fill=TealBlue!5, below left=12mm and -5.34cm of atlas.south] (dep)
   {{\scriptsize\sffamily\bfseries\color{gray!68!black} FORMAL STRUCTURE}\\[2pt]
    \textbf{Loaded-root dependency index}\\[2pt]
-   \textcolor{TealBlue!75!black}{\textbf{8,772 nodes \(\cdot\) 38,844 direct edges}}\\[3pt]
-   \footnotesize Exact type/value references joined to source. Reports 3,074
-   unresolved atlas rows and 5,800 unresolved public edge pairs.};
+   \textcolor{TealBlue!75!black}{\textbf{9,715 nodes \(\cdot\) 51,427 direct edges}}\\[3pt]
+   \footnotesize Exact type/value references joined to source. Reports 2,591
+   unresolved atlas rows and 6,097 unresolved public edge pairs.};
 \node[branch, fill=BurntOrange!6, below right=12mm and -5.34cm of atlas.south] (semantic)
   {{\scriptsize\sffamily\bfseries\color{gray!68!black} AUTHORED MEANING}\\[2pt]
    \textbf{Tiered semantic graph}\\[2pt]
@@ -149,7 +149,7 @@ of understanding.
 \node[wide, fill=ForestGreen!6, below=12mm of $(dep.south)!0.5!(semantic.south)$] (claims)
   {{\scriptsize\sffamily\bfseries\color{gray!68!black} PUBLICATION SURFACE}\\[2pt]
    \textbf{Reviewed public claim map}\hfill
-   \textcolor{ForestGreen!70!black}{\footnotesize\textbf{100 claims; 10 programmes; 4 open propositions}}\\[2pt]
+   \textcolor{ForestGreen!70!black}{\footnotesize\textbf{101 claims; 10 programmes; 5 open propositions}}\\[2pt]
    \footnotesize Public wording, status, evidence, claim ceiling, and the
    stronger adjacent statement.};
 \coordinate (fork) at ($(atlas.south)+(0,-4mm)$);
