@@ -13,9 +13,9 @@
 \renewcommand{\commit}{76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0}
 \renewcommand{\commitshort}{76b5b0a7ed5d}
 \hypersetup{
-  pdftitle={The running least common multiple of a three-prime smooth prefix: Lean-checked structure for Erdős Problem 269},
+  pdftitle={A two-prime transcendence theorem and exact three-prime structure for Erdős Problem 269},
   pdfsubject={Erdős Problem Notes: Problem 269},
-  pdfkeywords={irrationality, least common multiple, smooth numbers, lattice sums, Lean 4},
+  pdfkeywords={transcendence, Hecke-Mahler values, least common multiple, smooth numbers, lattice sums, Lean 4},
 }
 
 % The three pure-power coordinates and the running height.
@@ -43,8 +43,18 @@ and a conditional residue criterion}
 
 \begin{abstract}
 \noindent
-Let $p,q,r$ be pairwise distinct primes and let $\Lprefix(x)$ denote the least
-common multiple of all $\{p,q,r\}$-smooth numbers not exceeding $x$.  We prove
+For two distinct primes, retain one reciprocal for each distinct value of the
+running least common multiple, rather than repeating that reciprocal at every
+smooth integer.  We prove that the resulting de-duplicated sum is
+transcendental.  The proof orders the two pure-power channels by a Beatty word,
+writes the sum as a nonconstant algebraic affine function of a Hecke--Mahler
+value, and invokes Bugeaud--Laurent's transcendence theorem.  This is the
+unconditional irrationality conclusion of the note.  It applies neither to
+the original series with repetitions nor to any three-prime instance.
+
+We then turn to the smallest three-prime case.  Let $p,q,r$ be pairwise
+distinct primes and let $\Lprefix(x)$ denote the least common multiple of all
+$\{p,q,r\}$-smooth numbers not exceeding $x$.  We prove
 two exact statements in the smallest case $\{2,3,5\}$.  First, group the jumps
 of $\Lprefix$, that is, the points at which its value increases, into the blocks
 cut out by consecutive powers of two.  Each open
@@ -84,15 +94,6 @@ most $r$ can collect, $j$ is the sum of the three box exponents, and those
 exponents are assumed nondecreasing in the order $p,q,r$; that ordering is a
 hypothesis and not a relabelling, since the shell is not symmetric in the three
 bases.
-
-For comparison, we settle the de-duplicated problem when there are exactly two
-primes.  If one retains one reciprocal for each distinct running-LCM value,
-the resulting sum is transcendental for every pair of distinct primes.  The
-proof orders the two pure-power channels by a Beatty word, writes the sum as a
-nonconstant algebraic affine function of a Hecke--Mahler value, and invokes
-Bugeaud--Laurent's transcendence theorem for that value.  This conclusion is
-stronger than the irrationality asserted, without proof, in Erd\H{o}s's 1974
-letter, but it applies neither to the repeated series nor to three primes.
 
 Problem~\#269 is open and nothing here decides it.  We prove no irrationality
 or transcendence statement in any three-prime case.  What we prove towards it
@@ -1081,6 +1082,22 @@ contradiction}; the integer carry version is the
 \lword{Erdos269/ResidueEscape.lean}{107}{no_bounded_positive_int_state_of_leastPositiveResidue}{integer
 form of the contradiction}.
 
+The same finite arithmetic gives an exact classifier, not merely a
+contradiction.  If $C>0$, $c>0$, $|c|\le C$, and
+$c\equiv x\pmod C$, then
+\[
+  \operatorname{lpr}_C(x)=|c|.
+\]
+This includes the endpoint correctly: the zero congruence class is represented
+by $C$, so $c=C$ gives $\operatorname{lpr}_C(x)=C$, not zero.  Lean checks this
+as
+\lword{Erdos269/ResidueEscape.lean}{137}{leastPositiveResidue_eq_natAbs_of_pos_le_modEq}{exact
+least-positive-residue classifier}.  This is only a finite theorem.  Applying
+it to the series still requires two independent results: rationality
+must produce a positive bounded integral carry with the required
+smooth-divisibility congruence, and one must construct arbitrarily late
+escaping windows.
+
 \begin{theorem}[a conditional contradiction for bounded carries]\label{res:windowconsumer}
 Let $(b_n)$, $(m_n)$ and $K$ be the radix word, the forcing word and the bound
 of this subsection, and assume the cofinal escape
@@ -1244,7 +1261,7 @@ makes it integral at every later index.  Thus a direct solution of
 Problem~\ref{prob:tails269}, joined to Problem~\ref{prob:bridge269}, bypasses
 all residue-window machinery.
 
-The newly public bounded-radix theorem gives a useful exact reduction.  Since
+The bounded-radix theorem gives a useful exact reduction.  Since
 $2\le\beta_a\le30$, any real affine tail orbit either hits an integer or is,
 cofinally often, at distance at least $1/31$ from every integer
 (\lword{Erdos269/BoundedRadixTailEscape.lean}{80}{boundedRadix_zero_or_cofinal_far}{checked}).
@@ -1296,8 +1313,9 @@ $(W,F,B)=(60,47,37)$,
 so a fixed window has no denominator-independent positive residue lower
 bound.  Therefore the window may genuinely depend on $B$; neither a fixed
 finite computation nor a universal bounded-length guess addresses the
-unbounded denominator and cofinal-start quantifiers.  The finite checker is a
-regression test for proposed producers, not evidence for either shortcut.
+unbounded denominator and cofinal-start quantifiers.  The finite checker can
+reject a proposed sufficient condition, but supplies no evidence for either
+shortcut.
 
 \subsection{A literal two-dimensional analytic route}
 
@@ -1330,7 +1348,7 @@ specified finite-dimensional class.
 
 Pairwise irrationality of $\theta_3$ and $\theta_5$ is not silently promoted
 to the orbit-closure or equidistribution hypothesis a two-dimensional theorem
-may need.  The newly public observer formalisation isolates the precise
+may need.  The finite-observer formalisation isolates the precise
 faithfulness requirement: equality in a finite observer must imply equality
 after symbolic realisation, and a genuine finite-dimensional factorisation
 forces the realised symbolic span to be finite-dimensional
@@ -1355,16 +1373,42 @@ The nontrivial question is quantitative: prove effective recurrence or
 discrepancy for the actual four-letter $\{2,6,10,30\}$ word, an asymptotic
 formula with an error term for the restricted two-dimensional shell counts
 that generate $m_a^{235}$, or the exact finite-separation rank of the literal
-three-prime kernel under a specified family of shifts.  The newly public
-three-channel rigidity and carry-lift extinction theorems already exclude one
-false route: ordinary block-nullity plus the two genuine anchors kills the
-perturbation and is incompatible with the required bounded lift
-(\lword{Erdos269/ThreeChannelBlockRigidity.lean}{61}{channelBlockNull_iff_channelPotential}{rigidity},
-\lword{Erdos269/CarryLiftExtinction.lean}{236}{no_bounded_carryLift_of_blockNull_twoAnchors}{extinction}).
-The actual carry supplies a weighted block defect instead, so a producer must
-use that weighted identity or construct a different faithful lift.
+three-prime kernel under a specified family of shifts.
 
-Until the bridge and either the direct tail problem or an adequate producer
+The three-channel rigidity and carry-lift extinction theorems already exclude
+one false route in four exact steps.  Under channel surjectivity, ordinary
+block-nullity is equivalent to the perturbation being a coboundary of a
+channel potential
+(\lword{Erdos269/ThreeChannelBlockRigidity.lean}{61}{channelBlockNull_iff_channelPotential}{potential
+classifier}).  Zero perturbations on genuine $2\to3$ and $2\to5$ transitions
+then identify all three potential values and force the perturbation to vanish
+at every index.  For an integral lift, that vanishing makes a nonzero initial
+lift error grow by the exact product of the successive bases; bases at least
+two make its absolute value at least $2^N$, contradicting even a single
+index-$N$ bound strictly below $2^N$
+(\lword{Erdos269/CarryLiftExtinction.lean}{176}{no_carryLift_of_errorBound_below_twoPow}{one-index
+extinction}).
+A separate four-state calculation reaches the obstruction earlier: four real
+states in $(0,1)$ with unit-accuracy integral lifts and the two anchor
+equalities force the first complete $2$-block sum to be $1$, hence that block
+cannot be null
+(\lword{Erdos269/CarryLiftExtinction.lean}{287}{binaryLift_twoAnchors_force_firstBlock_sum_one}{first-block
+sum},
+\lword{Erdos269/CarryLiftExtinction.lean}{306}{no_unitAccurateLift_with_twoAnchors_and_firstTwoBlockNull}{four-state
+obstruction}).
+
+These conclusions remain conditional.  No theorem constructs the
+actual \#269 orbit, its ordered-power word, an integral carry lift, the two
+anchors, or block-nullity.  The affine alternative above may produce an
+arbitrary integral state, not necessarily zero; its cofinal $1/31$ separation
+is neither eventual nor positive-density and gives no unbounded distance.
+The four-state calculation supplies no cofinal windows, and
+\texttt{rational\_of\_scaledTail\_integer} classifies no denominators.  The
+actual carry supplies a weighted block defect instead, so any successful
+argument must use that weighted identity or construct a different faithful
+lift.  None of these results is an irrationality theorem for \#269.
+
+Until the bridge and either the direct tail problem or an adequate substitute
 are proved, Problem~\#269 remains open.
 
 \pdfbookmark[1]{Statements and declarations}{statements-declarations}
@@ -1473,7 +1517,7 @@ representative congruence & \lrefx{Erdos269/ResidueEscape.lean}{46}{leastPositiv
 escape condition & \lrefx{Erdos269/ResidueEscape.lean}{66}{ResidueEscapesWindow}\\
 finite natural-state contradiction & \lrefx{Erdos269/ResidueEscape.lean}{72}{no_bounded_positive_state_of_residue_escape}\\
 contrapositive form & \lrefx{Erdos269/ResidueEscape.lean}{93}{residue_le_bound_of_bounded_positive_state}\\
-integer least-positive-residue consumer & \lrefx{Erdos269/ResidueEscape.lean}{107}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
+integer least-positive-residue obstruction & \lrefx{Erdos269/ResidueEscape.lean}{107}{no_bounded_positive_int_state_of_leastPositiveResidue}\\
 window base & \lrefx{Erdos269/RestrictedFloorSum.lean}{417}{windowBase}\\
 window forcing & \lrefx{Erdos269/RestrictedFloorSum.lean}{422}{windowForcing}\\
 affine window identity & \lrefx{Erdos269/RestrictedFloorSum.lean}{455}{affineRecurrence_window}\\
@@ -1483,7 +1527,7 @@ absorbed smooth factor & \lrefx{Erdos269/RestrictedFloorSum.lean}{548}{smooth3Va
 common-factor cancellation & \lrefx{Erdos269/RestrictedFloorSum.lean}{581}{integralCarry_cancel_commonFactor}\\
 reduced bound transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{601}{reducedCarry_pos_le_of_commonFactor}\\
 reduced window transfer & \lrefx{Erdos269/RestrictedFloorSum.lean}{612}{reducedIntegralCarry_window}\\
-cofinal window producer & \lrefx{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}\\
+cofinal window hypothesis & \lrefx{Erdos269/RestrictedFloorSum.lean}{629}{CofinalLocalWindowEscape}\\
 reduced-carry extinction & \lrefx{Erdos269/RestrictedFloorSum.lean}{645}{no_positive_reducedCarry_of_cofinalLocalWindowEscape}\\
 \end{tabular}
 \fi
