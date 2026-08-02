@@ -6,15 +6,19 @@ import Mathlib.Tactic
 /-!
 # Erdős #1049: endpoint arithmetic for the Heine--Zudilin cone
 
-This module isolates the source-independent arithmetic behind the returned
-scalar-cone obstruction at the rational base `3 / 2`.  It does not construct
-the Zudilin coefficient polynomials or import their analytic asymptotics.
+Homogeneous evaluation at `(3,2)` sees the constant coefficient modulo `3`
+and the coefficient at the declared top width modulo `2`. A unit at the first
+endpoint excludes a factor `3`; a unit at the second excludes a factor `2`.
+For a pair of coefficient channels with the corresponding opposite endpoint
+units, every common multiplier is therefore coprime to `6`.
 
-The key finite observation is that homogeneous evaluation at `(3,2)` sees the
-bottom polynomial endpoint modulo `3` and the top endpoint modulo `2`.
-Consequently a unit at either endpoint prevents a common local factor.  The
-endpoint-jet definitions record the exact additive congruence problem left
-after scalar and multiplicative deformations have been exhausted.
+This is a local-prime exclusion, not a coprimality theorem. The explicit pair
+`X^2 + 3` and `5X^2 + 1` evaluates to `21` and `49`, so the two channels can
+still share the factor `7`. The four-jet construction below records the
+additive congruence problem that remains after common scalar content has been
+ruled out as a source of the needed `2`- and `3`-adic gain. The module does
+not construct the Zudilin coefficient polynomials or import their analytic
+asymptotics.
 -/
 
 namespace ErdosProblems.Erdos1049
@@ -95,6 +99,27 @@ theorem zudilinRawDegreeTwice_strict_step
 using the declared ambient width `W`. -/
 def homEvalThreeTwo (W : ℕ) (P : Polynomial ℤ) : ℤ :=
   ∑ i ∈ Finset.range (W + 1), P.coeff i * 3 ^ i * 2 ^ (W - i)
+
+/-- Left coefficient polynomial in the common-factor-seven fixture. -/
+noncomputable def commonFactorSevenLeft : Polynomial ℤ :=
+  X ^ 2 + C 3
+
+/-- Right coefficient polynomial in the common-factor-seven fixture. -/
+noncomputable def commonFactorSevenRight : Polynomial ℤ :=
+  C 5 * X ^ 2 + 1
+
+/-- Unit endpoints do not imply coprime homogeneous evaluations. At width
+`2`, the fixture polynomials have the required opposite unit endpoints, but
+evaluate to `21` and `49`, both divisible by `7`. -/
+theorem commonFactorSeven_fixture :
+    commonFactorSevenLeft.coeff 2 = 1 ∧
+    commonFactorSevenRight.coeff 0 = 1 ∧
+    homEvalThreeTwo 2 commonFactorSevenLeft = 21 ∧
+    homEvalThreeTwo 2 commonFactorSevenRight = 49 ∧
+    (7 : ℤ) ∣ homEvalThreeTwo 2 commonFactorSevenLeft ∧
+    (7 : ℤ) ∣ homEvalThreeTwo 2 commonFactorSevenRight := by
+  norm_num [commonFactorSevenLeft, commonFactorSevenRight, homEvalThreeTwo,
+    Finset.sum_range_succ, Polynomial.coeff_C, Polynomial.coeff_one]
 
 /-- The bottom `3`-adic endpoint jet of depth `R`. -/
 def bottomJet3 (R W : ℕ) (P : Polynomial ℤ) : ZMod (3 ^ R) :=
