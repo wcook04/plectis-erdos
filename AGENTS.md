@@ -42,11 +42,17 @@ mostly wrong, and you do not have to guess which: the semantic graph classifies
 every statement, so ask it instead of reading modules.
 
 ```sh
-python3 scripts/query_semantic.py nonrecurring        # unconditional or barrier results
-python3 scripts/query_semantic.py classical           # known theorems re-formalised here
-python3 scripts/query_semantic.py bare-equivalences   # restatements of the open difficulty
+python3 scripts/query_semantic.py nonrecurring --problem 257 --limit 12
+python3 scripts/query_semantic.py classical --problem 257 --limit 12
+python3 scripts/query_semantic.py bare-equivalences --problem 257 --limit 12
 python3 scripts/query_expert_handoffs.py              # asks, guesses, alternatives, tests
 ```
+
+The first three commands use #257 as a concrete example. Substitute the
+problem selected from the cold-start card, and keep a small `--limit` on the
+first pass. Omit the problem filter only for an explicit whole-corpus audit;
+otherwise the exhaustive semantic graph is a drilldown, not an orientation
+surface.
 
 The current all-problem counts are builder-owned in
 `docs/semantic_corpus.json::summary.public_semantic_census` and projected into
@@ -113,8 +119,9 @@ python3 scripts/query_corpus.py --tour --format card
 ```
 
 The six-line tour reports the full scale, canonical all-problem map, exact
-loaded-root dependency graph, open frontier, authority boundary, and the next
-intent choices. Then run
+loaded-root dependency graph, authority boundary, and next command. It keeps
+the all-problem open fleet distinct from the reviewed #249/#257 open-
+proposition frontier. Then run
 `python3 scripts/query_corpus.py --route agent_native_corpus_navigation` for
 the generic declaration, connection, proof-cone, workbench, and focused-build
 commands. All navigation reads committed JSON and therefore works in a cold

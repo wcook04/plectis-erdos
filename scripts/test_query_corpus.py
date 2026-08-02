@@ -169,6 +169,20 @@ def validate_agent_tour() -> None:
         PROGRAMME_EXPECTATIONS
     )
     assert packet["scale"]["indexed_problem_count"] == 6
+    assert packet["scale"]["indexed_open_problem_count"] == 6
+    assert packet["scale"]["reviewed_remaining_open_proposition_count"] == len(
+        packet["frontier"]
+    )
+    assert packet["open_frontier_contract"] == {
+        "indexed_open_problem_count": 6,
+        "reviewed_remaining_open_proposition_count": len(packet["frontier"]),
+        "reviewed_scope": "reviewed #249/#257 claim registry",
+        "distinction": (
+            "Open-proposition rows describe the reviewed #249/#257 claim "
+            "frontier; they are not a count of the canonically indexed open "
+            "Erdős problems."
+        ),
+    }
     assert packet["budget_contract"]["maximum_encoded_bytes"] == 30_000
     assert {row["erdos_number"] for row in packet["problem_map"]} == {
         243,
@@ -212,11 +226,15 @@ def validate_agent_tour() -> None:
     lines = card.stdout.strip().splitlines()
     assert len(lines) == 6
     assert lines[0].startswith("corpus tour | modules=")
-    assert lines[1].startswith("problem map | indexed=6")
+    assert "reviewed_open_propositions=" in lines[0]
+    assert lines[1].startswith("problem map | indexed=6 | open=6")
     assert lines[2].startswith("formal graph | roots=")
     assert lines[3].startswith("authority | navigation=")
-    assert lines[4].startswith("frontier | ")
-    assert lines[5].startswith("start | ")
+    assert lines[4].startswith("reviewed frontier | scope=#249/#257")
+    assert lines[5] == (
+        "next | command=python3 scripts/query_corpus.py --route "
+        "agent_native_corpus_navigation | requires_lean_build=false"
+    )
 
 
 def validate_natural_language_search() -> None:

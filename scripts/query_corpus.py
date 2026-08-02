@@ -5843,6 +5843,9 @@ def agent_tour_packet() -> dict[str, Any]:
     coverage = dependency["coverage"]
     programmes = orientation["mathematical_programmes"]
     open_rows = orientation["remaining_open_propositions"]
+    indexed_open_problem_count = sum(
+        row.get("status") == "open" for row in problems
+    )
     return {
         "kind": "agent_corpus_tour",
         "schema_version": "agent-corpus-tour/1",
@@ -5867,7 +5870,9 @@ def agent_tour_packet() -> dict[str, Any]:
                 assembly["contribution_families"]
             ),
             "remaining_open_proposition_count": len(open_rows),
+            "reviewed_remaining_open_proposition_count": len(open_rows),
             "indexed_problem_count": len(problems),
+            "indexed_open_problem_count": indexed_open_problem_count,
         },
         "formal_dependency_graph": {
             "loaded_library_roots": coverage["loaded_library_roots"],
@@ -5904,6 +5909,16 @@ def agent_tour_packet() -> dict[str, Any]:
             }
             for row in problems
         ],
+        "open_frontier_contract": {
+            "indexed_open_problem_count": indexed_open_problem_count,
+            "reviewed_remaining_open_proposition_count": len(open_rows),
+            "reviewed_scope": "reviewed #249/#257 claim registry",
+            "distinction": (
+                "Open-proposition rows describe the reviewed #249/#257 claim "
+                "frontier; they are not a count of the canonically indexed "
+                "open Erdős problems."
+            ),
+        },
         "mathematical_map": [
             {
                 "id": row["id"],
@@ -6341,10 +6356,12 @@ def render_card(packet: dict[str, Any]) -> str:
                     f"| curated_claims={scale['curated_claim_count']} "
                     f"| programmes={scale['mathematical_programme_count']} "
                     f"| contribution_families={scale['contribution_family_count']} "
-                    f"| open={scale['remaining_open_proposition_count']}"
+                    f"| reviewed_open_propositions="
+                    f"{scale['reviewed_remaining_open_proposition_count']}"
                 ),
                 (
                     f"problem map | indexed={scale['indexed_problem_count']} "
+                    f"| open={scale['indexed_open_problem_count']} "
                     f"| ids={problem_ids} "
                     "| route=python3 scripts/query_semantic.py problem-registry"
                 ),
@@ -6359,10 +6376,14 @@ def render_card(packet: dict[str, Any]) -> str:
                     "authority | navigation=committed projections/no build "
                     "| proof=pinned Lean kernel | public meaning=maintainer review"
                 ),
-                f"frontier | {frontier}",
                 (
-                    "start | choose mathematical_map.id or intent_lenses.intent "
-                    "| expand=--route agent_native_corpus_navigation"
+                    "reviewed frontier | scope=#249/#257 "
+                    f"| propositions={scale['reviewed_remaining_open_proposition_count']} "
+                    f"| ids={frontier}"
+                ),
+                (
+                    "next | command=python3 scripts/query_corpus.py --route "
+                    "agent_native_corpus_navigation | requires_lean_build=false"
                 ),
             )
         )
