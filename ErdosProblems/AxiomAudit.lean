@@ -2,6 +2,7 @@ import ErdosProblems.Root
 import Erdos249257.RationalSupportCarrySkeleton
 import Erdos249257.HalfGreedyFatalGap
 import Erdos249257.HalfGreedyUnitPrefix
+import Erdos249257.CertificateKernel
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -587,3 +588,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift
 #print axioms ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral
 #print axioms ErdosProblems.Erdos251.irrational_initial_iff_cofinalNonintegralTailShifts
+#print axioms Erdos249257.erdos_tail_lt_first_term_geometric
+#print axioms Erdos249257.rational_erdosSum_prefix_denominator_saturation_sharp
+#print axioms Erdos249257.rational_erdosSum_prefix_denominator_saturation_sharp_two
+#print axioms Erdos249257.rational_erdosSum_prefix_denominator_saturation_sharp_two_nat
+#print axioms Erdos249257.rational_erdosSum_prefix_saturation_sharp_order_lcm
