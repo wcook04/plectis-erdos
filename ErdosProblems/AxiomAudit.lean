@@ -1,5 +1,6 @@
 import ErdosProblems.Root
 import Erdos249257.RationalSupportCarrySkeleton
+import Erdos249257.HalfGreedyFatalGap
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -549,6 +550,11 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos257.mem_supportedMersenneAchievementSet_iff_exists_support_series
 #print axioms ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_pos_iff_compl_finite
 #print axioms ErdosProblems.Erdos257.finiteErdosSum_ne_one_div_twenty_one
+#print axioms Erdos249257.HalfGreedyFatalGap.mersenneTailLB3_lt_mersenneTail
+#print axioms Erdos249257.HalfGreedyFatalGap.skipSafe_actualTail_of_two_mul_le_three_mul
+#print axioms Erdos249257.HalfGreedyFatalGap.unitNumerator_skipSafe_actualTail
+#print axioms Erdos249257.HalfGreedyFatalGap.three_mul_lt_two_mul_of_actualTail_fatal
+#print axioms Erdos249257.HalfGreedyFatalGap.three_le_of_actualTail_fatal_of_odd
 #print axioms Erdos249257.mersenneWeightRat_succ_le_half_iff_secondChannelPhaseRat
 #print axioms Erdos249257.greedyMersenneSecondChannelPhaseRat_succ
 #print axioms Erdos249257.secondChannelPhaseRat_unit_preimage
