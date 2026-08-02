@@ -51,7 +51,7 @@ for the integer in $Z_m=mZ_{m-1}+1-b_m$.  The central formal equivalence is
   (\forall B)(\exists m>B)\;m\nmid Z_m .
 \]
 An independently regenerated exact GMP certificate supplies a miss at
-$m=300000$; the corresponding Lean-checked implication proves that
+$m=300000$; the corresponding Lean theorem proves that
 every representation $\Ser=a/q$ with $q>0$ has $q\ge300000$.
 
 The finite channel algebra gives a second rigorous layer.  In each channel
@@ -283,7 +283,7 @@ channel event
   \qquad\text{whenever } d\nmid n .
 \]
 So the channel weight is arithmetically inert except at multiples of $d$.
-The checked source statements are
+The formal statements are
 \pdecl{factorial_pow_floor_dvd_factorial},
 \pdecl{channelWeight_mul_denominator}, and
 \pdecl{channelEvent_eq_zero_of_not_dvd}.
@@ -324,7 +324,7 @@ returned analysis proposes the quantitative form
   \log \lcm_{2\le n\le N}(n!-1)\ \gg\ N^{4/3}\log N
   \qquad(N\to\infty).
 \]
-Here is the source-checked derivation.  Put
+For the derivation from the cited multiplicity theorem, put
 \[
   Q_N=\prod_{2\le n\le N}(n!-1),
   \qquad
@@ -353,7 +353,7 @@ corollary; the latter is derived here and is not kernel-checked.  It is recorded
 because it is the shape of the obstruction the returns describe, and it is used
 nowhere below.
 
-The primitive lcm divisibility after cofactor removal is also checked:
+The primitive lcm divisibility after cofactor removal is
 factorial valuations do not remove the obstruction once every common cofactor
 divisor has been removed.  A separate corank-one cofactor/determinant argument
 for constructing such primitive kernels remains advisory pending Lean
@@ -372,7 +372,7 @@ every channel $d>p$ vanishes, because both indices lie below $d$; and the
 $p$-channel numerator is exactly $p!-1$.
 \end{theorem}
 
-\noindent This is checked in full for every prime, not sampled.  Its use is
+\noindent The theorem holds for every prime, not merely for sampled primes.  Its use is
 arithmetic rather than analytic: it supplies, at cost zero in the moment, a unit
 in the $p$-channel.  Adding an integer multiple of this corrector to any
 candidate kernel shifts the $p$-channel numerator by multiples of $p!-1$ and
@@ -398,12 +398,12 @@ also checks the factorial plateau theorem: if $H<G\le \Ser$, if $n!G$ is
 integral, and if $n!(\Ser-H)<1$, then the strict successor of $n!H$ and the
 canonical floor of $n!\Ser$ are the same grid integer.
 
-Two rigidity statements follow, both checked.  Consecutive plateau floors,
+Two rigidity statements follow.  Consecutive plateau floors,
 scaled by the next radix, force the canonical factorial digit to vanish.  And
 any first-exit offset $\delta\in[0,2)$ with carry $b=-\lfloor\delta\rfloor$
 satisfies $b\in\{0,-1\}$: the exit is rigid, with exactly two alternatives.
 
-The checked first-crossing argument continues from the exit to a denominator
+The first-crossing argument continues from the exit to a denominator
 lower bound.  For a rational grid level $G$, suppose that $\tau$ is its first
 crossing by the literal partial sums and write
 \[
@@ -441,7 +441,7 @@ If $\Ser=a/q$ and $m-1\ge q$, the plateau theorem identifies
 \]
 so necessarily $b_m=1$.  Hence one exact non-unit carry at index $m$ forces
 $q\ge m$.  Conversely, if $b_m=1$ eventually, then $Z_m/m!$ is eventually
-constant.  The checked one-cell bound
+constant.  The one-cell bound
 \[
   H_m<\frac{Z_m}{m!}\le H_m+\frac1{m!}
 \]
@@ -489,7 +489,7 @@ carry cells for $3\le m\le300000$.  Its unit carries occur exactly at
 \]
 so no further unit carry occurs through the endpoint, where
 $b_{300000}\ne1$.  Feeding that exact finite
-fact to the checked non-unit-carry theorem strengthens the bound to
+fact to the non-unit-carry theorem strengthens the bound to
 \[
   \Ser=\frac aq,\ q>0 \quad\Longrightarrow\quad q\ge300000.
 \]
@@ -498,7 +498,7 @@ Python driver, and GMP backend are hash-bound in the companion research
 packet.  This remains a finite exclusion.  The new target is to rule out an
 eventual all-unit carry tail.
 
-There is also a checked finite peeling identity.  For $x\ne0,1$ and $K\ge0$,
+There is also a finite peeling identity.  For $x\ne0,1$ and $K\ge0$,
 \[
   \frac1{x-1}
   =\sum_{j=1}^{K}\frac1{x^j}
@@ -515,7 +515,7 @@ and $m=591$.  Only the Archimedean first-crossing lower bound survives.
 
 \section{Weighted projection rigidity}\label{sec:projection}
 
-The third checked layer converts modular disagreement into exclusion.
+The third formal layer converts modular disagreement into exclusion.
 
 \begin{theorem}[projection rigidity]\label{res:projection}
 Suppose the natural endpoint numerator $Z$ is congruent to a weighted numerator
@@ -525,19 +525,19 @@ residues exclude any such bounded endpoint; and unequal projections force
 $\min(Q_1,Q_2)\le T$.
 \end{theorem}
 
-\noindent The leave-one-out specialisation $Q=R/r$ is also checked.  More
+\noindent The leave-one-out specialisation $Q=R/r$ also follows.  More
 generally, let $a,b$ divide $R$ and take the complementary projection moduli
 $R/a$ and $R/b$.  Lean checks the same quotient cancellation and
 collision-cap comparison for these factor projections.  If $\gcd(a,b)=1$,
 then $\lcm(R/a,R/b)=R$, and the resulting branch-free factor-pair floor is at
 most the global complementary residue.  The factors $a,b$ may both divide one
-private quotient.  Thus the checked reduction needs no analytic input and no
+private quotient.  Thus the reduction needs no analytic input and no
 pair of distinct denominator indices, only suitable factors whose projections
 or factor-pair floor satisfy the stated bound.  This is checked in
 \pdecl{factorialBlock_factorProjection_lcm_eq_privateModulus} and
 \pdecl{factorialBlock_complementaryFactorPairFloor_le_global}.
 
-The transport to the literal factorial block is now checked rather than
+The transport to the literal factorial block is established directly rather than
 advisory.  Lean builds the collision core $C$, private quotients $r_i$, private
 modulus $R$, and weighted numerator $T$ for the actual denominators $i!-1$,
 and proves both the endpoint congruence modulo $R$ and the required
@@ -546,7 +546,7 @@ then their complete prime-power product divides the single quotient owned by
 $m$ on the tailored block with parameter $\lfloor m/2\rfloor+1$, hence divides
 that block's $R$.
 
-The collision core itself now has an exact incremental law.  For the positive
+The collision core itself has an exact incremental law.  For the positive
 factorial-gap denominators, adjoining $d_a$ to an old finite family $S$ gives
 \[
  C(S\cup\{a\})
@@ -560,7 +560,7 @@ adjoining the distinguished base; see
 \pdecl{collisionCore_insert_gcd_lcm}.  Thus each step needs only the old
 denominator lcm and the old collision core, with no pairwise rescan.
 
-There is now also an exact product--lcm bound.  If
+There is also an exact product--lcm bound.  If
 $\widetilde C(S)$ denotes the collision core after cancelling a positive
 distinguished base, while
 $L(S)=\lcm_{j\in S}d_j$ and $P(S)=\prod_{j\in S}d_j$, then Lean proves
@@ -986,7 +986,7 @@ $\widetilde C_p$ be the normalised collision core and put
 \[
  h_{r,e}(p)=\#\{i\in I_p:r^e\mid i!-1\}.
 \]
-The checked spacing bound is
+The formal spacing bound is
 \[
  h_{r,e}(p)(e+1)\le2p+e-2,
 \]
@@ -1022,7 +1022,7 @@ inequalities cofinally.
 The first inequality is the local collision-core half of the exact factor-pair
 scale split; the second is its Archimedean half.  A count of collisions without
 the weights $\log r$, a terminal Wilson event by itself, or a fixed finite scan
-does not answer the problem.  Nor may reflected hits be discarded: the checked
+does not answer the problem.  Nor may reflected hits be discarded: the
 reflection theorem shows that they can contribute genuine collision primes.
 
 \subsection*{2. Nonterminal prime-power amplification}
@@ -1031,7 +1031,7 @@ Write the reduced predecessor gap as
 \[
  \Delta_n=\frac{u_n}{v_n},
 \]
-and let $B_n$ be the repeated-support part of $n!-1$.  The checked amplification
+and let $B_n$ be the repeated-support part of $n!-1$.  The amplification
 modulus is
 \[
  A_n=\prod_{\substack{q\mid B_n\\
@@ -1075,7 +1075,7 @@ Let
 \[
  \mathcal E_p=p!\sum_{n>p}\frac1{n!-1}.
 \]
-The checked lower unit-carry branch is exactly
+The lower unit-carry branch is exactly
 \[
  1+\frac1{p!-1}<p\Delta_p
  \le1+\frac1{p!-1}+\mathcal E_p,
@@ -1105,7 +1105,7 @@ Archimedean cylinder.
 
 \subsection*{4. Failure of the two exact doubled-prime branches}
 
-For every odd prime $p$, the checked specialisation is
+For every odd prime $p$, the specialisation is
 \[
  p^2\mid Z_{2p}
  \quad\Longleftrightarrow\quad
@@ -1147,7 +1147,7 @@ $c_{n,t}$ be its Cramer vector, and
  N_d(n,t)=
  \det\!\bigl(A_{n,t}\text{ with its moment row replaced by the $d$-channel row}\bigr).
 \]
-The checked determinant identities give
+The determinant identities give
 \[
  \mathcal R_{n,t}
  =\sum_{d>n+2}\frac{N_d(n,t)}{d!-1}
