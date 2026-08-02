@@ -47,7 +47,6 @@
         "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
         "ErdosProblems.Erdos68.FactorialCarry",
         "ErdosProblems.Erdos68.FactorialChannelCertificate",
-        "ErdosProblems.Erdos68.FactorialDigitRigidity",
         "ErdosProblems.Erdos68.FiniteDefectAutomaton",
         "ErdosProblems.Erdos68.PrimeUnitTranslator",
         "ErdosProblems.Erdos68.PrimeZeroBranch",
@@ -428,34 +427,34 @@
           "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
           "declaration": "selectedMersenneTail_lt_weight"
         },
-    {
-      "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
-      "declaration": "supportedMersenneDigitValue_injective"
-    },
-    {
-      "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
-      "declaration": "volume_supportedMersenneAchievementSet_dichotomy"
-    }
-  ],
-  "what_is_checked": [
-    "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
-    "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
-    "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
-  ],
-  "what_is_not_checked": [
-    "The universal irrationality problem, or irrationality for any new infinite support.",
-    "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
-    "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
+        {
+          "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+          "declaration": "supportedMersenneDigitValue_injective"
+        },
+        {
+          "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+          "declaration": "volume_supportedMersenneAchievementSet_dichotomy"
+        }
+      ],
+      "what_is_checked": [
+        "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
+        "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
+        "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
+      ],
+      "what_is_not_checked": [
+        "The universal irrationality problem, or irrationality for any new infinite support.",
+        "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
+        "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
       ],
       "open_obligations": [
         {
           "id": "arithmetic_rigidity_for_thin_supports",
           "statement": "Convert hereditary unique coding into an arithmetic obstruction to rational values for every infinite support, including zero-measure Cantor supports."
         },
-    {
-      "id": "formalise_measure_and_stride_geometry",
-      "statement": "Extend the measure dichotomy to Bernoulli laws and periodic-stride dimensions without implying arithmetic consequences."
-    }
+        {
+          "id": "formalise_measure_and_stride_geometry",
+          "statement": "Extend the measure dichotomy to Bernoulli laws and periodic-stride dimensions without implying arithmetic consequences."
+        }
       ],
       "finite_search": null
     },

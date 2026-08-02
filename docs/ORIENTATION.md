@@ -23,9 +23,9 @@ The workflow provenance explains the release discipline; it does not imply hidde
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 1,014 |
-| Lean declarations | 153,132 |
-| Theorem-like declarations | 150,941 |
+| Lean modules | 1,013 |
+| Lean declarations | 153,123 |
+| Theorem-like declarations | 150,934 |
 | Generated certificate declarations | 8,171 |
 | Principal claim links | 310 |
 
@@ -53,7 +53,7 @@ The authored prior-art record, not this table, is the source for antecedents.
 - `remaining_open.erdos_249_irrationality` — Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.
 - `remaining_open.unbounded_certificate_supply` — Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.
 - `remaining_open.half_value_membership` — Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.
-- `remaining_open.twenty_one_permanent_affine_supercapacity` — Decide the exact 1/21 branch: equivalently, exclude the explicit fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.
+- `remaining_open.twenty_one_permanent_affine_supercapacity` — Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.
 - `remaining_open.universal_257_all_infinite_supports` — Prove irrationality for every infinite support A, not only the named support families formalised here.
 
 ## Mathematical programmes
@@ -63,7 +63,7 @@ Each route states its mathematical focus and exact public claim ceiling.
 
 | Programme | Exact ceiling |
 |---|---|
-| **Achievement-set geometry and the 1/2 and 1/21 frontiers** (`erdos257_half_story`) | Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved. |
+| **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`) | Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved. |
 | **#249 certificate and harmonic interface** (`erdos249_certificate_story`) | The certificate formulation is exact and finite instances are checked; the unbounded certificate supply and irrationality of S remain open. |
 | **Classical and structured support irrationality** (`structured_support_families`) | These are structured families, coefficient classes, and a conditional bouquet reduction; arbitrary infinite supports in universal Erdős #257 remain open. |
 | **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`) | Each interface sharpens or re-expresses the same supply problem; no unbounded avoidance, slack, or separated-projection supply is proved. |
@@ -112,8 +112,8 @@ settle the open proposition attached to it.
   - Route: `python3 scripts/query_corpus.py --route follow_one_claim`
 - **See how the #249 reduction, #257 families, carry trunk, and open targets relate.** (`understand_argument_topology`): `docs/orientation.json` → `docs/SOURCE_MAP.md`
   - Route: `python3 scripts/query_corpus.py --route understand_argument_topology`
-- **Achievement-set geometry and the 1/2 and 1/21 frontiers** (`erdos257_half_story`): `docs/orientation.json`
-  - Intent: Follow the proved #257 achievement-set spine from unique greedy coding through the half-value seam and the exact fatal/cofinite/aligned frontier at 1/21, without treating finite recurrence data or either surviving arithmetic producer as a solution.
+- **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`): `docs/orientation.json`
+  - Intent: Follow the proved #257 achievement-set spine from unique greedy coding through the half-value seam and the exact denominator-21 fatal-branch frontier, without treating finite recurrence data as a solution.
   - Route: `python3 scripts/query_corpus.py --route erdos257_half_story`
 - **#249 certificate and harmonic interface** (`erdos249_certificate_story`): `docs/orientation.json`
   - Intent: Recover the denominator exclusion, exact certificate endpoint, certificate completeness, finite checked instances, first-harmonic consumer, and the still-open unbounded supply.

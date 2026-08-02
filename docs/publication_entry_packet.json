@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:36d3f33ddac3e0cf8b75a7b99e56e0c182771f36044f88ce3ab69eff7c860353",
-    "docs/claims.json": "sha256:b235ce5de45c35c061f90efdd9ecbc39f72d83c7622ab04a907d40b3676ee444",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:ecd31f1db376714bea3cfabf82b0e84243c5c61d36c37611409b34760971fab3",
+    "docs/claims.json": "sha256:1275b70f29505a39d6edf974c0283e563b86d9845cd7a458e0a614aee174a65f",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/publication_contract.json": "sha256:e8bc26e7cd4decb5bcbdc29d9529653d4d20c75eeda9379cb804f69b35fc9a9a",
+    "docs/publication_contract.json": "sha256:cbc0eb0475b96b3fc341ad09046f0467db7ea4a71dd0219a942b0d289f20a646",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:5bcb52ac5e40ba17b5c479bcc0899d51f141b260f72a8b31380e2f3932312368",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:ad7a8f88f80e5494d6df2b00112287d343bb6f3f206f7e88ba66f19cc2d84835",
     "scripts/run_publication_mutations.py": "sha256:01834099e0b6897fabfe67d698fbe5a682f701ae54d367c0e35730e3b2ccd437"
   },
   "five_sentence_summary": [
@@ -265,7 +265,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4229,
+        "line": 4265,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "Erd\\H{o}s \\#249"
       },
@@ -277,7 +277,7 @@
       "open_target_claim": "erdos_249",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4240,
+        "line": 4276,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "unbounded certificate supply"
       },
@@ -289,7 +289,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4264,
+        "line": 4300,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "the half-value counterexample route"
       },
@@ -301,7 +301,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1079,
+        "line": 1198,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "permanent affine supercapacity"
       },
@@ -313,7 +313,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 4255,
+        "line": 4291,
         "source": "paper/erdos249-257-main-paper.tex",
         "title": "universal Erd\\H{o}s \\#257"
       },
@@ -325,8 +325,9 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "publication_state": "committed_checkpoint_pending_remote_publication",
-      "ref": "d6b0a70fe9ad2638e5f8ff0310cedf16b7f715f5",
+      "public_tag": "formal-source-2026-08-02",
+      "publication_state": "published_committed_checkpoint",
+      "ref": "5b1e6c05c1c5485ba40dec8ba3dcc94c134f026b",
       "ref_kind": "commit",
       "relationship_to_last_tag": "post_tag_checkpoint"
     },

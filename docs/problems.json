@@ -112,15 +112,6 @@
           "content_digest": "sha256:48c470a384b28ce3734ec8a697f1cd3daf50a9f2cc3a228d7cda60044eb89e96"
         },
         {
-          "module": "ErdosProblems.Erdos68.FactorialDigitRigidity",
-          "path": "ErdosProblems/Erdos68/FactorialDigitRigidity.lean",
-          "present": true,
-          "line_count": 122,
-          "declaration_count": 8,
-          "theorem_count": 6,
-          "content_digest": "sha256:23a39810f47f393046be2075423c646fdfaddb1f6e35e92fd71c4cf6bca7d215"
-        },
-        {
           "module": "ErdosProblems.Erdos68.FiniteDefectAutomaton",
           "path": "ErdosProblems/Erdos68/FiniteDefectAutomaton.lean",
           "present": true,

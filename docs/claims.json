@@ -8213,12 +8213,6 @@
           ]
         },
         {
-          "id": "ErdosProblems.Erdos68.FactorialDigitRigidity",
-          "path": "ErdosProblems/Erdos68/FactorialDigitRigidity.lean",
-          "role": "Lean proof module",
-          "imports": []
-        },
-        {
           "id": "ErdosProblems.Erdos68.FactorialZeroPlateau",
           "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
           "role": "Lean proof module",
@@ -10198,7 +10192,6 @@
             "ErdosProblems.Erdos68.FactorialZeroPlateau",
             "ErdosProblems.Erdos68.FiniteDefectAutomaton",
             "ErdosProblems.Erdos68.DivisorFactorialCentre",
-            "ErdosProblems.Erdos68.FactorialDigitRigidity",
             "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
             "ErdosProblems.Erdos68.PrimeZeroBranch",
             "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
@@ -11070,10 +11063,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "d6b0a70fe9ad2638e5f8ff0310cedf16b7f715f5",
+      "ref": "5b1e6c05c1c5485ba40dec8ba3dcc94c134f026b",
       "ref_kind": "commit",
-      "publication_state": "committed_checkpoint_pending_remote_publication",
-      "relationship_to_last_tag": "post_tag_checkpoint"
+      "publication_state": "published_committed_checkpoint",
+      "relationship_to_last_tag": "post_tag_checkpoint",
+      "public_tag": "formal-source-2026-08-02"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -11107,7 +11101,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4229
+        "line": 4265
       }
     },
     {
@@ -11119,7 +11113,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4240
+        "line": 4276
       }
     },
     {
@@ -11131,7 +11125,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4264
+        "line": 4300
       }
     },
     {
@@ -11143,7 +11137,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "permanent affine supercapacity",
-        "line": 1079
+        "line": 1198
       }
     },
     {
@@ -11155,7 +11149,7 @@
         "source": "paper/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4255
+        "line": 4291
       }
     }
   ],
@@ -11845,27 +11839,27 @@
         {
           "name": "one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
           "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
-          "line": 3508
+          "line": 3507
         },
         {
           "name": "lastTwentyOneSkip_oddDoublingOrder_eq_lcm",
           "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
-          "line": 3570
+          "line": 3569
         },
         {
           "name": "lastTwentyOneSkip_erdosBorwein_fatalInterval",
           "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
-          "line": 3736
+          "line": 3735
         },
         {
           "name": "twentyOneCofinalEvenQuotientGreedyDecay_of_closedRows",
           "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
-          "line": 5553
+          "line": 5554
         },
         {
           "name": "twentyOneFatalAlignedBranch_eventually_affine_supercapacity",
           "module": "Erdos249257/TwentyOneQuotientGreedy.lean",
-          "line": 5657
+          "line": 5658
         }
       ]
     },

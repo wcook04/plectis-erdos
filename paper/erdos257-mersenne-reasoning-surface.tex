@@ -52,7 +52,7 @@
 % are handled locally so authors may write names verbatim.
 % ---------------------------------------------------------------------------
 \newcommand{\PK}{Erdos249257}
-\newcommand{\commit}{e5fd26a6d1b1a346430205eab5385b4c9565d004}
+\newcommand{\commit}{5b1e6c05c1c5485ba40dec8ba3dcc94c134f026b}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 % \lean declaration file:line forms a hyperlink to the pinned public
 % formal-source checkpoint. The second argument is a machine coordinate,
@@ -464,7 +464,7 @@ is equivalent to being the integer greedy bit-word.
 \coord{straddle-prefix / integer-greedy} \scale{uniform} \ev{Lean}\\
 \textbf{Sites:} \lean{IsStraddlePrefix.half\_agrees\_greedy}{HalfCutLocator.lean:442};
 \lean{eq\_halfGreedyPrefixSupport\_of\_critical\_crossing}{BooleanMobiusCriticalCapacityCofinal.lean:50};
-\lean{remainder\_lt\_gap\_iff\_eq\_integerGreedyBits}{BooleanMobiusGreedyReduction.lean:917}.
+\lean{remainder\_lt\_gap\_iff\_eq\_integerGreedyBits}{BooleanMobiusGreedyReduction.lean:918}.
 \end{prop}
 
 \textbf{Rules out.} Every argument whose leverage comes from \emph{choosing} a favourable witness:
@@ -2727,7 +2727,7 @@ separation gap. Whenever the separation gap dominates there is exactly ONE admis
 word achieving a given target defect — the greedy word. The "superincreasing weight sequence $+$
 below-gap remainder $\Rightarrow$ unique greedy word" technique is standard and fully general,
 independent of the Mersenne instantiation.
-\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{remainder\_lt\_gap\_iff\_eq\_integerGreedyBits}{BooleanMobiusGreedyReduction.lean:917}
+\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{remainder\_lt\_gap\_iff\_eq\_integerGreedyBits}{BooleanMobiusGreedyReduction.lean:918}
 \end{thm}
 
 \begin{prop}[257bm:i11b --- gap-dominance facts]
@@ -2735,14 +2735,14 @@ independent of the Mersenne instantiation.
 \texttt{\_gapDominates\_even} / \texttt{\_gapDominates\_odd}, established from
 \texttt{three\_mul\_sub\_two\_lt\_two\_pow\_pred}-style elementary slack bounds — the concrete
 hypotheses 257bm:i11a needs, discharged unconditionally at every relevant endpoint parity.
-\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneWeightsFrom\_gapDominates}{BooleanMobiusGreedyReduction.lean:684} \lean{localMersenneWeights\_gapDominates\_even}{BooleanMobiusGreedyReduction.lean:845} \lean{localMersenneWeights\_gapDominates\_odd}{BooleanMobiusGreedyReduction.lean:854}
+\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneWeightsFrom\_gapDominates}{BooleanMobiusGreedyReduction.lean:684} \lean{localMersenneWeights\_gapDominates\_even}{BooleanMobiusGreedyReduction.lean:846} \lean{localMersenneWeights\_gapDominates\_odd}{BooleanMobiusGreedyReduction.lean:855}
 \end{prop}
 
 \begin{prop}[257bm:i11c --- \texttt{localMersenneHalfTarget\_lower\_word\_eq\_greedy\_and\_remainder\_eq}]
 Consumer form of 257bm:i11a specialised to the half-target: the lower word of any exact
 half-target construction is forced to equal the greedy word, remainder identity included. This
 is the general uniqueness principle instantiated by 257rig:i3 (the wall).
-\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneHalfTarget\_lower\_word\_eq\_greedy\_and\_remainder\_eq}{BooleanMobiusGreedyReduction.lean:996}
+\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneHalfTarget\_lower\_word\_eq\_greedy\_and\_remainder\_eq}{BooleanMobiusGreedyReduction.lean:997}
 \end{prop}
 
 \subsubsection*{Geometric normal form (\texttt{BooleanMobiusCriticalCapacityGeometric})}
@@ -3506,19 +3506,19 @@ and eventual visits to every doubling block.  Then
  \quad\Longleftrightarrow\quad
  \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
 \]
-\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3508}
+\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3507}
 \quad\ev{Lean}\quad\scale{uniform}\quad\coord{greedy-orbit}.
 
 On the fatal branch the canonical quotient remainder $s_R$ is eventually
 strictly above the closed capacity $2^R$
-(\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5624}),
+(\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5625}),
 and thereafter the support appends $R+1$ while $s_R$ follows one explicit
 affine recurrence
-(\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5657}).
+(\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5658}).
 Conversely, closed rows $s_R\le2^R$ along any unbounded sequence decay after
 normalisation and put $1/21$ in the achievement set
-(\lean{twentyOneCofinalEvenQuotientGreedyDecay\_of\_closedRows}{TwentyOneQuotientGreedy.lean:5553};
-\lean{one\_div\_twenty\_one\_mem\_mersenneAchievementSet\_of\_cofinalGreedyDecay}{TwentyOneQuotientGreedy.lean:5457}).
+(\lean{twentyOneCofinalEvenQuotientGreedyDecay\_of\_closedRows}{TwentyOneQuotientGreedy.lean:5554};
+\lean{one\_div\_twenty\_one\_mem\_mersenneAchievementSet\_of\_cofinalGreedyDecay}{TwentyOneQuotientGreedy.lean:5458}).
 
 This is the exact current contribution: membership has been reduced to
 excluding one named permanent affine-supercapacity regime.  No theorem
@@ -6391,15 +6391,15 @@ The second rational target has an exact current frontier:
  \quad\Longleftrightarrow\quad
  \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
 \]
-\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3508}
+\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3507}
 \quad\ev{Lean}.  The fatal branch means a finite fatal greedy gap followed
 by cofinite exact selection, eventual quotient/rational alignment, and
 eventual visits to every doubling block.  If it occurs, the canonical
 quotient remainder is eventually strictly larger than $2^R$ and follows one
 explicit affine recurrence:
-\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5624}
+\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5625}
 and
-\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5657}.
+\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5658}.
 Any unbounded sequence of closed returns instead proves membership.
 
 No finite support on ranks at least $2$ sums to $1/21$

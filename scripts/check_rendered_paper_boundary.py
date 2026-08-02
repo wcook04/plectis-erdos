@@ -90,7 +90,7 @@ FIRST_MINUTE_CONTRACT = {
     "cold-clone-to-proof-receipt.pdf": {
         (1, 1): (
             "from a cold clone to a proof receipt",
-            "152,215 declarations",
+            "153,123 declarations",
             "navigation does not receive proof authority",
             "verdicts come from the pinned lean process",
             "not an autonomous theorem prover",

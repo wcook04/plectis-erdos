@@ -461,7 +461,7 @@ separation gap. Whenever the separation gap dominates there is exactly ONE admis
 word achieving a given target defect — the greedy word. The "superincreasing weight sequence $+$
 below-gap remainder $\Rightarrow$ unique greedy word" technique is standard and fully general,
 independent of the Mersenne instantiation.
-\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{remainder\_lt\_gap\_iff\_eq\_integerGreedyBits}{BooleanMobiusGreedyReduction.lean:917}
+\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{remainder\_lt\_gap\_iff\_eq\_integerGreedyBits}{BooleanMobiusGreedyReduction.lean:918}
 \end{thm}
 
 \begin{prop}[257bm:i11b --- gap-dominance facts]
@@ -469,14 +469,14 @@ independent of the Mersenne instantiation.
 \texttt{\_gapDominates\_even} / \texttt{\_gapDominates\_odd}, established from
 \texttt{three\_mul\_sub\_two\_lt\_two\_pow\_pred}-style elementary slack bounds — the concrete
 hypotheses 257bm:i11a needs, discharged unconditionally at every relevant endpoint parity.
-\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneWeightsFrom\_gapDominates}{BooleanMobiusGreedyReduction.lean:684} \lean{localMersenneWeights\_gapDominates\_even}{BooleanMobiusGreedyReduction.lean:845} \lean{localMersenneWeights\_gapDominates\_odd}{BooleanMobiusGreedyReduction.lean:854}
+\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneWeightsFrom\_gapDominates}{BooleanMobiusGreedyReduction.lean:684} \lean{localMersenneWeights\_gapDominates\_even}{BooleanMobiusGreedyReduction.lean:846} \lean{localMersenneWeights\_gapDominates\_odd}{BooleanMobiusGreedyReduction.lean:855}
 \end{prop}
 
 \begin{prop}[257bm:i11c --- \texttt{localMersenneHalfTarget\_lower\_word\_eq\_greedy\_and\_remainder\_eq}]
 Consumer form of 257bm:i11a specialised to the half-target: the lower word of any exact
 half-target construction is forced to equal the greedy word, remainder identity included. This
 is the general uniqueness principle instantiated by 257rig:i3 (the wall).
-\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneHalfTarget\_lower\_word\_eq\_greedy\_and\_remainder\_eq}{BooleanMobiusGreedyReduction.lean:996}
+\par\noindent\ev{Lean} \scale{uniform} \coord{greedy-orbit} \lean{localMersenneHalfTarget\_lower\_word\_eq\_greedy\_and\_remainder\_eq}{BooleanMobiusGreedyReduction.lean:997}
 \end{prop}
 
 \subsubsection*{Geometric normal form (\texttt{BooleanMobiusCriticalCapacityGeometric})}

@@ -18,8 +18,8 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:05994f57a32627e4c363467636b3e976eb6a2b7222d922e5b346f2f429d1d943",
-  "semantic_corpus_digest": "sha256:ff7b2c08c3d0ac73d304d19e10776115e0d53f07dcc11d61e8afbe3d0961258e",
+  "declaration_atlas_digest": "sha256:18584427c70d5a54d75e64560f06ec82a0ec633aa19b39a91ad06d3ecffbaaf0",
+  "semantic_corpus_digest": "sha256:60ae5508f33f8a5d10dc96d3f19346228060078ed16d39d6c8dd852275d7dccc",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
@@ -31,7 +31,7 @@
   "builder_digest": "sha256:2a6053910f1ac95809c754fec4e6f7f8b5e12e0b55839a8ec84ed4d52264c3e8",
   "git_commit_not_embedded_reason": "Generated projections cannot contain the commit that first contains their own bytes; exact input digests are the stable provenance."
  },
- "evidence_fingerprint": "sha256:87a664de052cb9b57364caa283f8d0445a9c758b76fdc400c33f48a55fc37f1c",
+ "evidence_fingerprint": "sha256:224aba849282839a5445b5e7c434ba41eb25c1fdd453ab9dfbb51f6267463692",
  "vocabularies": {
   "intervention_operators": [
    "change_base",
@@ -93,10 +93,10 @@
   "failure_receipts": 3,
   "benchmark_items": 4,
   "benchmark_results": 0,
-  "statement_nodes_total": 5956,
+  "statement_nodes_total": 5949,
   "statement_nodes_explained": 8,
   "explained_fraction": 0.0013,
-  "authored_theorem_like": 142954,
+  "authored_theorem_like": 142947,
   "unexplained_by_logical_class": {
    "unconditional_object_theorem": 350,
    "reduction_or_transport": 94,
@@ -106,7 +106,7 @@
    "representation_normalisation": 159,
    "barrier_no_go": 71,
    "equivalence_or_classification": 103,
-   "infrastructure": 4880,
+   "infrastructure": 4873,
    "generated_certificate_instance": 4
   },
   "outcome_states": {},
@@ -619,7 +619,7 @@
   ],
   "unexplained_residual": {
    "rule": "Statement nodes no mechanism claims to explain. A large residual is a real finding about the basis, not a bookkeeping gap.",
-   "count": 5948,
+   "count": 5941,
    "nodes": [
     "Z01::bounded_crt_exact_valuation_frame",
     "Z01::canonical_witness_selector_reduction",
@@ -3333,7 +3333,6 @@
     "structural::54be9f78e6b33d58bb4b",
     "structural::54ce9daa23005aebe5f2",
     "structural::54d82e18f3ad72933081",
-    "structural::54e1fad61b953d544fb1",
     "structural::54efc2bf0a0dd1733ddd",
     "structural::54f59e2c164f746ba7ab",
     "structural::551df0b37fbdd2ef11ee",
@@ -3948,7 +3947,6 @@
     "structural::761f7494ebfce8d66f7d",
     "structural::764d6be8f14e2850cb36",
     "structural::7656aab1b2466aa3fe4f",
-    "structural::765725cb66f406f6ed4b",
     "structural::765a151db0c78422530f",
     "structural::767929ef4c620be6afd7",
     "structural::767c3b200c21a4af09c8",
@@ -4650,7 +4648,6 @@
     "structural::9bdc37aaa4e17b0e6e30",
     "structural::9c0521d8758a5060ca01",
     "structural::9c175224c7cfae03a6e7",
-    "structural::9c2524c519efebd11e92",
     "structural::9c344e0f08acea0b44b8",
     "structural::9c34a2e5d66d1d70aef4",
     "structural::9c733f3d8b3e53a6359e",
@@ -4702,7 +4699,6 @@
     "structural::9e9a2aeabbd623648cf3",
     "structural::9ec62ec01256bd5447fb",
     "structural::9ecb63157d9e54c030ac",
-    "structural::9ecf3166a125351cd32e",
     "structural::9eeba2fa82038084516c",
     "structural::9eebd187996a9cb9534b",
     "structural::9f5df96b149f0abc96cb",
@@ -4893,7 +4889,6 @@
     "structural::a9858e512d1312299f57",
     "structural::a9869c8fd37357fe6798",
     "structural::a98b28540346d0adbdd3",
-    "structural::a9a15a19875cd0279d50",
     "structural::a9a73db67555d53529fa",
     "structural::a9b1df39507decf7062d",
     "structural::a9b5fa003ad233a587ad",
@@ -5218,7 +5213,6 @@
     "structural::ba0727b340866cc1c506",
     "structural::ba138f5f358e2de88aaa",
     "structural::ba14763757550bc67188",
-    "structural::ba152a15e5c69fd2ddb4",
     "structural::ba1e8815d962524704b2",
     "structural::ba40148f8c7e31a9dc5d",
     "structural::ba4391a8180eca18477b",
@@ -5811,7 +5805,6 @@
     "structural::d7c596dd63fe986eac69",
     "structural::d7ca90be601fc040a5a2",
     "structural::d7d1089ab05f9d91adcb",
-    "structural::d7d2b3f4fc38f3dd1f17",
     "structural::d7d53d9b5473c037db18",
     "structural::d7d6a0da2634deff7589",
     "structural::d7f8cd89dd13dffa843c",
@@ -6577,8 +6570,8 @@
   }
  },
  "integrity": {
-  "declarations_known": 152303,
-  "statement_nodes_known": 5956,
+  "declarations_known": 152295,
+  "statement_nodes_known": 5949,
   "mechanism_ids": [
    "composite_dilation_defect_accounting",
    "dyadic_odd_core_basis",
