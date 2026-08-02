@@ -3,6 +3,7 @@ import ErdosProblems.Erdos68.FactorialChannelCertificate
 import ErdosProblems.Erdos68.StrictSuccessorArithmetic
 import ErdosProblems.Erdos68.ChannelBreakpointRigidity
 import ErdosProblems.Erdos68.ChannelIntegralCongruence
+import ErdosProblems.Erdos68.PrimeUnitTranslator
 import ErdosProblems.Erdos68.FiniteDefectAutomaton
 import ErdosProblems.Erdos68.DivisorFactorialCentre
 import ErdosProblems.Erdos249.FiniteEulerSieve
