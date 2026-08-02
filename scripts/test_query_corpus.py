@@ -33,9 +33,10 @@ SCRIPT = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_SCRIPT = ROOT / "scripts" / "query_semantic.py"
 PROGRAMME_EXPECTATIONS = {
     "erdos257_half_story": {
-        "title": "Achievement-set geometry and the half-value seam",
+        "title": "Achievement-set geometry and the rational-target seams",
         "open_ids": {
             "remaining_open.half_value_membership",
+            "remaining_open.twenty_one_permanent_affine_supercapacity",
             "remaining_open.universal_257_all_infinite_supports",
         },
     },
@@ -168,13 +169,17 @@ def validate_agent_tour() -> None:
         PROGRAMME_EXPECTATIONS
     )
     assert packet["scale"]["indexed_problem_count"] == 8
-    assert packet["budget_contract"]["maximum_encoded_bytes"] == 30_000
+    assert packet["budget_contract"]["maximum_encoded_bytes"] == (
+        query_corpus.agent_tour_budget_bytes(8)
+    )
     assert {row["erdos_number"] for row in packet["problem_map"]} == {
+        68,
         243,
         249,
         251,
         257,
         269,
+        1041,
         1049,
     }
     assert packet["formal_dependency_graph"]["source_resolved_node_count"] > 0
@@ -211,7 +216,7 @@ def validate_agent_tour() -> None:
     lines = card.stdout.strip().splitlines()
     assert len(lines) == 6
     assert lines[0].startswith("corpus tour | modules=")
-    assert lines[1].startswith("problem map | indexed=6")
+    assert lines[1].startswith("problem map | indexed=8")
     assert lines[2].startswith("formal graph | roots=")
     assert lines[3].startswith("authority | navigation=")
     assert lines[4].startswith("frontier | ")
@@ -252,7 +257,7 @@ def validate_natural_language_search() -> None:
         }
     dictionary = query("--vocabulary")
     assert dictionary["problem_registry_contract"]["source"] == "docs/problems.json"
-    assert len(dictionary["problem_registry_contract"]["problems"]) == 6
+    assert len(dictionary["problem_registry_contract"]["problems"]) == 8
     natural_language_routes = {
         "how close is problem 249": "erdos249_certificate_story",
         "what remains open for 257": "erdos257_half_story",
@@ -356,7 +361,7 @@ def validate_indexed_declaration_lookup() -> None:
     bare = declaration_packet(name, 20)
     qualified = declaration_packet(qualified_name, 20)
     source = source_coordinate_packet(
-        "Erdos249257/CertificateKernel.lean:18055", 20
+        "Erdos249257/CertificateKernel.lean:18337", 20
     )
 
     assert bare == qualified
