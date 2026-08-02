@@ -23,6 +23,11 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos68.lambda34_channel_two
 #print axioms ErdosProblems.Erdos68.lambda34_factorialMoment
 #print axioms ErdosProblems.Erdos68.lambda34_residual_bounds
+#print axioms Erdos68.factorial_pow_dvd_factorial_mul
+#print axioms Erdos68.channel_coefficient_band
+#print axioms Erdos68.factorialMoment_eq_factorial_pow_mul_channelNumerator_band
+#print axioms Erdos68.factorialMoment_eq_zero_of_channelNumerator_eq_zero_band
+#print axioms Erdos68.exists_index_ge_two_mul_of_factorialMoment_ne_zero_of_channel_eq_zero
 #print axioms ErdosProblems.Erdos269.threePrimeHeight_le_cube
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight
 #print axioms ErdosProblems.Erdos269.smoothPrefixLcm_eq_of_sameLogCell
