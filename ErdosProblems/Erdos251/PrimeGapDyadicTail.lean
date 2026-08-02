@@ -22,7 +22,9 @@ For a rational dyadic tail state with reduced denominator `d`, a shift of
 length `h` is integral exactly when `d ∣ 2^h - 1`, equivalently when
 `2^h ≡ 1 (mod d)`. Thus the possible integral shifts are classified by the
 arithmetic of the current denominator, rather than by a heuristic analogy
-with periodic digit words. Integrality then propagates to every later state.
+with periodic digit words. One recurrence step replaces `d` by
+`d / gcd(2, d)`: an even denominator is halved, while an odd denominator is
+unchanged. Integrality then propagates to every later state.
 
 For real-valued recurrences, the initial state is irrational exactly when
 every positive tail shift is nonintegral; rationality is equivalent to the
@@ -289,6 +291,62 @@ def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=
 /-- Difference between two tail states separated by `h` steps. -/
 def tailShift (T : ℕ → ℚ) (h N : ℕ) : ℚ :=
   T (N + h) - T N
+
+/-- Doubling a reduced rational removes exactly the common factor of its
+denominator with `2`. -/
+theorem den_two_mul (x : ℚ) :
+    ((2 : ℚ) * x).den = x.den / Nat.gcd 2 x.den := by
+  rw [Rat.mul_den]
+  simp only [Rat.den_ofNat, Rat.num_ofNat, one_mul, Int.natAbs_mul]
+  change x.den / Nat.gcd (2 * x.num.natAbs) x.den =
+    x.den / Nat.gcd 2 x.den
+  congr 1
+  apply Nat.dvd_antisymm
+  · apply Nat.dvd_gcd
+    · have hgprod :
+          Nat.gcd (2 * x.num.natAbs) x.den ∣
+            2 * x.num.natAbs := Nat.gcd_dvd_left _ _
+      have hgden :
+          Nat.gcd (2 * x.num.natAbs) x.den ∣ x.den :=
+        Nat.gcd_dvd_right _ _
+      have hcop :
+          Nat.Coprime (Nat.gcd (2 * x.num.natAbs) x.den)
+            x.num.natAbs :=
+        (x.reduced.of_dvd_right hgden).symm
+      exact hcop.dvd_mul_right.mp hgprod
+    · exact Nat.gcd_dvd_right _ _
+  · apply Nat.dvd_gcd
+    · exact (Nat.gcd_dvd_left 2 x.den).mul_right x.num.natAbs
+    · exact Nat.gcd_dvd_right _ _
+
+/-- Exact one-step denominator dynamics for a rational dyadic tail: the next
+denominator is the current denominator divided by its gcd with `2`. -/
+theorem tail_den_succ
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N : ℕ) :
+    (T (N + 1)).den = (T N).den / Nat.gcd 2 (T N).den := by
+  have hden := congrArg Rat.den (hrec N)
+  simpa [den_two_mul] using hden
+
+/-- An odd rational tail denominator is unchanged by the next recurrence
+step. Since it remains odd, the same conclusion can then be iterated. -/
+theorem tail_den_succ_eq_of_odd
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N : ℕ)
+    (hodd : Odd (T N).den) :
+    (T (N + 1)).den = (T N).den := by
+  rw [tail_den_succ hrec]
+  rw [hodd.coprime_two_left.gcd_eq_one, Nat.div_one]
+
+/-- An even rational tail denominator loses exactly one factor of `2` at the
+next recurrence step. -/
+theorem tail_den_succ_eq_half_of_even
+    {g : ℕ → ℤ} {T : ℕ → ℚ}
+    (hrec : DyadicTailRecurrence g T) (N : ℕ)
+    (heven : Even (T N).den) :
+    (T (N + 1)).den = (T N).den / 2 := by
+  rw [tail_den_succ hrec]
+  rw [Nat.gcd_eq_left_iff_dvd.mpr (even_iff_two_dvd.mp heven)]
 
 /-- The exact propagation identity for a fixed tail shift. -/
 theorem tailShift_succ

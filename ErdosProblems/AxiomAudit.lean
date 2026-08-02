@@ -51,6 +51,9 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_small_mismatch
 #print axioms ErdosProblems.Erdos251.primeGap0_not_eventually_periodic
 #print axioms ErdosProblems.Erdos251.primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch
+#print axioms ErdosProblems.Erdos251.tail_den_succ
+#print axioms ErdosProblems.Erdos251.tail_den_succ_eq_of_odd
+#print axioms ErdosProblems.Erdos251.tail_den_succ_eq_half_of_even
 #print axioms ErdosProblems.Erdos251.tailShift_integral_add
 #print axioms ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail
 #print axioms ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne
