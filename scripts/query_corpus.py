@@ -6362,7 +6362,11 @@ def main() -> int:
     if output_format == "card":
         print(render_card(packet))
     else:
-        encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
+        # The semantic dictionary has the stricter 16 KiB cold-clone packet
+        # budget.  Compact its whitespace without dropping any routes or
+        # changing the parsed public schema.
+        indent = 1 if args.vocabulary else 2
+        encoded = json.dumps(packet, ensure_ascii=False, indent=indent) + "\n"
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
             print(
                 f"query_corpus: response exceeds {OUTPUT_BUDGET_BYTES} bytes; lower --limit or use --format card",
