@@ -139,6 +139,10 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.tailGcd_dvd_succ
 #print axioms ErdosProblems.Erdos243.tailGcd_strictGrowthCount_sublinear_of_tailSubexponential
 #print axioms ErdosProblems.Erdos243.dynamicReducedTail_step
+#print axioms ErdosProblems.Erdos243.primitiveBlock_transfer
+#print axioms ErdosProblems.Erdos243.primitiveBlock_approximation_exact
+#print axioms ErdosProblems.Erdos243.primitivePrefix_gcd_dvd_error
+#print axioms ErdosProblems.Erdos243.primitiveDigit_gcd_dvd_error
 #print axioms ErdosProblems.Erdos243.tailGcdGrowthFactor_sandwich
 #print axioms ErdosProblems.Erdos243.tailGcdGrowthFactor_eq_one_iff
 #print axioms ErdosProblems.Erdos243.tailGcd_eq_gcd_negativeMagnitude
