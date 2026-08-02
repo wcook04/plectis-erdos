@@ -3,6 +3,8 @@ import Erdos249257.RationalSupportCarrySkeleton
 import Erdos249257.HalfGreedyFatalGap
 import Erdos249257.HalfGreedyUnitPrefix
 import Erdos249257.CertificateKernel
+import Erdos249257.BooleanMobiusLocalRepair
+import Erdos249257.BooleanMobiusGlobalRepair
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -593,3 +595,11 @@ problem-centric wave.
 #print axioms Erdos249257.rational_erdosSum_prefix_denominator_saturation_sharp_two
 #print axioms Erdos249257.rational_erdosSum_prefix_denominator_saturation_sharp_two_nat
 #print axioms Erdos249257.rational_erdosSum_prefix_saturation_sharp_order_lcm
+#print axioms Erdos249257.localMersenneQuotient_eq_two_pow_sub_of_half_lt
+#print axioms Erdos249257.scaled_localMersennePrefixValue
+#print axioms Erdos249257.localRepairInteger_nonneg_of_exponential_endpoint_bound
+#print axioms Erdos249257.exists_upperHalf_boolean_replacement_of_boolean_suffix
+#print axioms Erdos249257.BooleanMobiusGlobalRepairTrajectory.bit_stable
+#print axioms Erdos249257.globalRepairStageValue_tendsto_half
+#print axioms Erdos249257.globalRepairEvenStageValue_tendsto_limit
+#print axioms Erdos249257.infinite_support_half_of_globalBooleanMobiusRepair
