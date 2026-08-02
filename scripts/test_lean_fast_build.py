@@ -34,7 +34,7 @@ class LeanFastBuildTests(unittest.TestCase):
             "- name: Materialize pinned Lake dependencies"
         )
         bounded_build = workflow.index(
-            "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
+            "run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness"
         )
 
         self.assertLess(cache_step, toolchain_step)
