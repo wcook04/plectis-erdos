@@ -29,31 +29,28 @@
 \begin{abstract}
 \noindent
 Call a sequence $(T_N)_{N\ge0}$ of rational numbers a \emph{dyadic tail
-recurrence with digits $g$} when $T_{N+1}=2T_N-g_{N+1}$ for every $N$, the
-digits $g_N$ being arbitrary integers.  For any such sequence we prove the
-block identity
-$T_{N+h}=2^{h}T_N-B_{h,N}$, with $B_{h,N}=g_{N+1}2^{\,h-1}+\cdots+g_{N+h}$, and
-hence that the shift $T_{N+h}-T_N$ is an integer
-\emph{if and only if} $(2^{h}-1)T_N$ is; that integrality of one shift
-propagates to every later index; and, by Euler's congruence, that a term whose
-reduced denominator $d$ is odd has an integral shift of length $\ph(d)$, where
-$\ph$ denotes Euler's totient function.
-Consequently every such rational sequence has a fixed $h\ge1$ whose shifts are
-integers from some index onwards.  The contrapositive over the reals is an
-irrationality criterion: if a real sequence obeys the same recurrence with
-integer digits and, for every $h\ge1$, the shift $T_{N+h}-T_N$ fails to be an
-integer for arbitrarily large $N$, then $T_0$ is irrational.  The digits
-enter all of these statements only through the fact that they are integers.
+recurrence with digits $g$} when $T_{N+1}=2T_N-g_{N+1}$ for every $N$, with
+integer digits $g_N$.  Its block identity is
+\[
+ T_{N+h}=2^{h}T_N-
+ \bigl(g_{N+1}2^{h-1}+\cdots+g_{N+h}\bigr).
+\]
+Thus $T_{N+h}-T_N$ is integral exactly when $(2^h-1)T_N$ is.  Integrality of
+one shift propagates forward, and Euler's congruence shows that a rational
+term with odd reduced denominator $d$ has an integral shift of length
+$\ph(d)$.  Hence every rational sequence of this kind has one fixed positive
+shift that is eventually integral.  Conversely, cofinal non-integrality for
+every fixed shift is an irrationality criterion.
 
 Let $p_0=2,p_1=3,\ldots$ enumerate the primes and let
-$g_n=p_{n+1}-p_n$.  We formalise in Lean the elementary bound
-$p_n\le1250(n+1)^4$, hence convergence of both dyadic series, as well as the
-exact finite identity
+$g_n=p_{n+1}-p_n$.  The polynomial bound $p_n\le1250(n+1)^4$ gives summability
+of the prime and gap terms.  Summation by parts, with the endpoint retained,
+yields
 \[
  \sum_{i=0}^{n}\frac{p_i}{2^{\,i+1}}
  \;=\;2+\sum_{i=0}^{n-1}\frac{g_i}{2^{\,i+1}}-\frac{p_n}{2^{\,n+1}},
 \]
-and the unconditional infinite identity and irrationality equivalence
+and therefore the unconditional identity and irrationality equivalence
 \[
  \sum_{i\ge0}\frac{p_i}{2^{\,i+1}}
  =2+\sum_{i\ge0}\frac{g_i}{2^{\,i+1}},\qquad
@@ -61,28 +58,16 @@ and the unconditional infinite identity and irrationality equivalence
  \Longleftrightarrow
  \operatorname{Irr}\!\left(\sum_{i\ge0}\frac{g_i}{2^{\,i+1}}\right).
 \]
-The prime number theorem remains useful context, but it is not a proof
-dependency of the formal statements in this note.
-
-Problem~\#251 remains open.  The remaining obligation is now exact:
-rationality would force some fixed $h\ge1$ for which the actual tail shifts
-$T_{N+h}-T_N$ are integers at every sufficiently large $N$.  Thus it is enough
-to prove cofinal non-integrality for every fixed $h$.  We also prove a local
-obstruction: two adjacent shifts lying strictly between $-1$ and $1$ cannot
-both be integers when the corresponding prime gaps differ.  Consequently it
-is enough to produce such adjacent small-mismatch pairs cofinally.  The actual
-prime gaps are Lean-checked to be unbounded, hence not eventually periodic.
-For every rational candidate, the checked denominator argument selects a
-positive fixed shift which is eventually integral but not eventually confined
-to $(-1,1)$.  This is compatible with rationality, not a contradiction: it
-identifies a shift for which eventual smallness fails.  No theorem supplies
-either eventual smallness or cofinally many adjacent small mismatches for that
-same shift.  A telescoping
-identity supplies an explicit sequence of integers $\kappa_0,\kappa_1,\ldots$
-that is unbounded, hence not eventually periodic, and for which
-$\sum_{n\ge0}\kappa_n2^{-(n+1)}$ is rational.  Rationality of a dyadic sum
-therefore cannot by itself force its integer coefficients to be eventually
-periodic, and the missing theorem must control the full prime-gap tails.
+Problem~\#251 remains open.  Under non-irrationality, the denominator
+decomposition selects a positive fixed shift that is eventually integral but
+not eventually confined to $(-1,1)$.  This is compatible with rationality,
+not a contradiction.  A contradiction would require eventual smallness for
+that shift, or cofinally many adjacent small shifts at indices where the prime
+gaps differ; neither is proved.  Unboundedness and nonperiodicity of the prime
+gaps do not supply either property.  Indeed, an explicit unbounded,
+non-eventually-periodic integer sequence has a rational dyadic sum, so the
+missing argument must control the full prime-gap tails rather than the
+coefficients alone.
 \end{abstract}
 
 \section{Introduction}\label{sec:problem}
