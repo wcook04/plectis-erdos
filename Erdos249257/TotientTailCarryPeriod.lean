@@ -5,7 +5,7 @@ import Erdos249257.TotientCarryKernelRigidity
 /-!
 # Rational totient tails as periodic carry quotients
 
-The finite-rank route for Erdős #249 stops at a genuine boundary: rationality
+The finite-rank approach to Erdős #249 stops at a genuine boundary: rationality
 of one binary value does not make its coefficient generating function
 rational, so it does not bound the rational rank of the carry's dyadic
 sections.  This file records the exact positive statement that rationality
@@ -22,8 +22,12 @@ is equivalent to divisibility of the carry displacement
 Consequently the eventual tail period makes every dyadic carry section
 eventually periodic modulo the same multiplier `v`, uniformly in its level.
 The same carry nevertheless has rank at least `2^e-1` through level `e`.
-This is the precise quotient-compression/torsion-free-rank separation that a
-future totient-specific contradiction must cross.
+
+Periodicity modulo `v` alone is much weaker.  The scaled coefficient sequence
+`u(n) = v φ(n)` is zero modulo `v` at every index, so all of its dyadic
+sections have every period; nevertheless it fails the carry recurrence already
+at `n=0`.  Thus any contradiction must retain the exact orbit equation, not
+only the quotient-periodicity it implies.
 -/
 
 namespace Erdos249257
@@ -194,6 +198,32 @@ theorem carrySectionsEventuallyPeriodicMod_of_shift_dvd
   rw [show 2 ^ j * (n + h) + r =
       (2 ^ j * n + r) + 2 ^ j * h by ring]
   exact hdvd
+
+/-- Quotient-periodicity does not characterize a totient carry.  For the
+scaled coefficient sequence `u(n) = v φ(n)`, every state is zero modulo `v`,
+so every dyadic section has every period `h` beyond every threshold `N₀`.
+But the required carry recurrence at `n=0` would read `v = -v`, which is
+impossible for a positive multiplier.
+
+In particular, this sequence is not a rationality-supplied tempered orbit;
+the example isolates exactly the information lost on passing to residues
+modulo `v`. -/
+theorem scaledTotient_mod_period_without_orbit_closure
+    (v h N₀ : ℕ) (hv : 0 < v) :
+    CarrySectionsEventuallyPeriodicMod v h N₀
+        (fun n : ℕ => (v : ℤ) * (Nat.totient n : ℤ)) ∧
+      ¬ IsTemperedBinaryOrbit Nat.totient v
+        (fun n : ℕ => (v : ℤ) * (Nat.totient n : ℤ)) := by
+  constructor
+  · apply carrySectionsEventuallyPeriodicMod_of_shift_dvd
+    intro N _
+    refine ⟨(Nat.totient (N + h) : ℤ) - (Nat.totient N : ℤ), ?_⟩
+    ring
+  · rintro ⟨hrec, _⟩
+    have hzero : (v : ℤ) = -(v : ℤ) := by
+      simpa using hrec 0
+    have hvZ : (0 : ℤ) < (v : ℤ) := by exact_mod_cast hv
+    omega
 
 /-- Rationality supplies one positive-multiplier tempered carry whose dyadic
 sections are uniformly eventually periodic modulo the multiplier. -/
@@ -541,7 +571,7 @@ theorem integral_four_mul_tailDiff_mod_four_two_of_delta_pulse
   exact ⟨d₂, hd₂, hd₂mod⟩
 
 /-- **Cofinal mod-four tail-orbit pulse.**  If the `4h` tail difference is
-eventually integral, the preceding arithmetic producer forces cofinally many
+eventually integral, the preceding arithmetic theorem gives cofinally many
 prime positions where its integer representative is `2 mod 4`.
 
 The first recurrence step makes the predecessor representative even because
@@ -867,7 +897,7 @@ def CofinalDirectedLcmCertificateSupply : Prop :=
   ∀ t₀ : ℕ, ∃ t, t₀ ≤ t ∧ ∃ L : ℕ,
     directedCertifiedKill (periodLcm t) (periodLcm t) L
 
-/-- **Exact ceiling of the directed LCM route.**  Cofinal directed
+/-- **Exact ceiling of the directed LCM method.**  Cofinal directed
 certificates are equivalent to Erdős #249 itself.  The asymmetric strip is a
 real finite-depth improvement, but the current LCM diagonal does not turn it
 into an independent sieve theorem: proving its cofinal supply is already
@@ -1061,7 +1091,7 @@ theorem tail_diff_ne_int_of_modFourPulseSurvivorKill
 
 /-- **Pulse-prime survivor reduction for Erdős #249.**  It is enough to
 kill the `2 mod 4` candidate states at one cofinal arithmetic-pulse prime for
-each putative primitive period.  Every cell of the remaining producer is
+each putative primitive period.  Every cell of the remaining condition is
 finite and decidable. -/
 theorem irrational_totientSeries_of_cofinal_modFourPulseSurvivorKill
     (hsupply : ∀ h : ℕ, 0 < h → ∀ B : ℕ,
@@ -1102,6 +1132,7 @@ theorem irrational_totientSeries_of_cofinal_modFourPulseCertificateSupply
 
 #print axioms carryShift_dvd_iff_tailDiff_mem_int
 #print axioms carrySectionsEventuallyPeriodicMod_of_shift_dvd
+#print axioms scaledTotient_mod_period_without_orbit_closure
 #print axioms not_irrational_totientSeries_implies_mod_period_and_unbounded_rank
 #print axioms not_totientAdjugateTailCost_lt_one
 #print axioms idCoeff_mersenneModulus_does_not_annihilate_tailShift
