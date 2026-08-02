@@ -35,6 +35,64 @@ noncomputable def canonicalDigit (x : ℝ) (m : ℕ) : ℤ :=
 noncomputable def canonicalRemainder (x : ℝ) (m : ℕ) : ℝ :=
   (m.factorial : ℝ) * x - (facFloor x m : ℝ)
 
+/-! ## Rational inputs
+
+For a rational number `a / q`, factorial scaling is integral once `q ≤ n`.
+Consequently the canonical digit at radix `n + 1` vanishes.  This is a
+termination criterion for rational inputs; it does not assert that the Erdős
+#68 series is rational or supply recurrence estimates for its partial sums. -/
+
+/-- Once `q ≤ n`, the floor of `n! (a / q)` is the explicitly cleared
+integer `(n! / q) a`. -/
+theorem facFloor_rat_eq_cleared
+    (a : ℤ) {q n : ℕ}
+    (hq : 0 < q) (hqn : q ≤ n) :
+    facFloor (((a : ℚ) / (q : ℚ)) : ℝ) n =
+      ((n.factorial / q : ℕ) : ℤ) * a := by
+  have hqfac : q ∣ n.factorial := Nat.dvd_factorial hq hqn
+  have hq0 : (q : ℚ) ≠ 0 := by
+    exact Nat.cast_ne_zero.mpr (Nat.ne_of_gt hq)
+  have hcastDiv : (((n.factorial / q : ℕ) : ℚ)) =
+      (n.factorial : ℚ) / (q : ℚ) :=
+    Nat.cast_div hqfac hq0
+  have hscaledQ :
+      ((n.factorial : ℚ) * ((a : ℚ) / (q : ℚ))) =
+        (((n.factorial / q : ℕ) : ℤ) * a : ℤ) := by
+    calc
+      ((n.factorial : ℚ) * ((a : ℚ) / (q : ℚ))) =
+          (a : ℚ) * ((n.factorial : ℚ) / (q : ℚ)) := by
+        field_simp [hq0]
+      _ = (a : ℚ) * ((n.factorial / q : ℕ) : ℚ) := by
+        rw [hcastDiv]
+      _ = ((((n.factorial / q : ℕ) : ℤ) * a : ℤ) : ℚ) := by
+        have h := congrArg (fun z : ℤ => (z : ℚ))
+          (mul_comm a ((n.factorial / q : ℕ) : ℤ))
+        simpa only [Int.cast_mul, Int.cast_natCast] using h
+  have hscaledR :
+      (n.factorial : ℝ) * (((a : ℚ) / (q : ℚ)) : ℝ) =
+        ((((n.factorial / q : ℕ) : ℤ) * a : ℤ) : ℝ) := by
+    exact_mod_cast hscaledQ
+  unfold facFloor
+  rw [hscaledR]
+  exact Int.floor_intCast _
+
+/-- Every rational number has an eventually zero canonical factorial-digit
+tail, with its displayed denominator as an explicit threshold. -/
+theorem canonicalDigit_eq_zero_of_rational
+    (a : ℤ) {q n : ℕ}
+    (hq : 0 < q) (hqn : q ≤ n) :
+    canonicalDigit (((a : ℚ) / (q : ℚ)) : ℝ) (n + 1) = 0 := by
+  have hqfac : q ∣ n.factorial := Nat.dvd_factorial hq hqn
+  have hdiv : (n + 1).factorial / q =
+      (n + 1) * (n.factorial / q) := by
+    rw [Nat.factorial_succ, Nat.mul_div_assoc _ hqfac]
+  unfold canonicalDigit
+  rw [Nat.add_sub_cancel]
+  rw [facFloor_rat_eq_cleared a hq (by omega),
+    facFloor_rat_eq_cleared a hq hqn, hdiv]
+  push_cast
+  ring
+
 private theorem factorial_eq_mul_pred_factorial (m : ℕ) (hm : 1 ≤ m) :
     m.factorial = m * (m - 1).factorial := by
   have hmsucc : m - 1 + 1 = m := by omega

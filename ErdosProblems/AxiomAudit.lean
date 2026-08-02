@@ -11,6 +11,8 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos68.canonicalRemainder_recurrence
 #print axioms ErdosProblems.Erdos68.factorial_expansion_partial
 #print axioms ErdosProblems.Erdos68.zero_remainder_forces_zero_digit_tail
+#print axioms ErdosProblems.Erdos68.facFloor_rat_eq_cleared
+#print axioms ErdosProblems.Erdos68.canonicalDigit_eq_zero_of_rational
 #print axioms ErdosProblems.Erdos68.dvd_strictSuccessor_iff_roundingDigit_eq_one
 #print axioms ErdosProblems.Erdos68.pow_dvd_dilation_strictSuccessor_iff
 #print axioms ErdosProblems.Erdos68.sq_dvd_double_strictSuccessor_prime_iff
