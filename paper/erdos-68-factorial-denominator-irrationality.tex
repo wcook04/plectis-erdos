@@ -143,7 +143,7 @@ Factor-split projection reduction & Checked & Two divisor factors of one private
 Zero plateau and first-exit carry & Checked & Grid threshold, plateau equality of grid integers, forced zero digit, carry $b\in\{0,-1\}$. \\
 Prime-power prefix obstruction & Checked & Rationality forces $p^k$ to divide the strict successor at $kp$ whenever the factorial clears the denominator and $p$ is coprime to it. \\
 Exact carry characterization & Checked & The normalized strict successors converge to $\Ser$; $\Ser$ is rational exactly when $b_m=1$ eventually, equivalently $\Ser$ is irrational exactly when non-unit carries occur cofinally. \\
-Explicit denominator bound & Checked implication; exact finite certificate & Exact reduction gives $60\nmid Z_{60}$, $64\nmid Z_{64}$, and $67\nmid Z_{67}$.  An exact GMP computation certifies all carries through $300000$ and $b_{300000}\ne1$; the Lean-checked carry consumer gives $q\ge300000$ in every rational representation $\Ser=a/q$ with $q>0$. \\
+Explicit denominator bound & Checked implication; exact finite certificate & Exact reduction gives $60\nmid Z_{60}$, $64\nmid Z_{64}$, and $67\nmid Z_{67}$.  An exact GMP computation certifies all carries through $300000$ and $b_{300000}\ne1$; the Lean-checked carry theorem gives $q\ge300000$ in every rational representation $\Ser=a/q$ with $q>0$. \\
 Digits eventually zero $\iff$ $\Ser$ rational & Returned derivation & Complete on the return; not yet kernel-checked here. \\
 Factorial-gap lcm growth $\gg N^{4/3}\log N$ & Derived, source-verified & Derived below from a cited factorial-congruence theorem; not kernel-checked and not used as an input to any claim below. \\
 Finite certificates ($D=3$, $D=9$, $D\le12$) & Verified finite instances & Each excludes only the denominators it names. \\
@@ -240,7 +240,7 @@ $\sum_n1/a_n$ when $a_n^{1/2^n}\to\infty$, whereas
 \]
 for the present choice $a_n=n!-1$
 \cite[Theorems~2--3, pp.~2--4]{barreto-et-al}.  The proof nevertheless
-identifies a useful exact interface: Mahler's elementary rationality floor is
+identifies a useful exact criterion: Mahler's elementary rationality floor is
 contradicted by prefix-clearing integers $D_N$ for which the cleared positive
 tails satisfy $\liminf_ND_Nr_N=0$
 \cite[Lemma~8 and Proposition~12, pp.~6, 9--12]{barreto-et-al}.  The ordinary
@@ -265,7 +265,7 @@ series \cite[Theorem~3.1 and Corollary~3.1, pp.~390--391]
 {hancl-tijdeman}.  Their denominator is the cumulative linear product
 $\prod_{n\le N}(an+b)$, not the individual number $N!-1$.  Applied to the
 display above, the classical Cantor--Oppenheim criterion still needs
-$1-b_m\ne0$ infinitely often---precisely the cofinal non-unit-carry producer
+$1-b_m\ne0$ infinitely often---precisely the missing cofinal non-unit-carry assertion
 that remains open.  The identity is therefore a rigorous literature bridge,
 not a hidden solution.
 
@@ -313,8 +313,8 @@ $\chn d\lambda=M(\lambda)+(d!-1)k$.
 
 \noindent Theorem~\ref{res:normalform} is the sharper of the two for design
 purposes.  It says that every zero-moment variation of the support changes the
-normalised $d$-th channel contribution by an integer only.  The support-matroid
-layer therefore cannot manufacture an extra fractional cancellation coordinate:
+normalised $d$-th channel contribution by an integer only.  Zero-moment
+variations therefore cannot manufacture an extra fractional cancellation coordinate:
 the congruence forces every normalised channel defect to be integral.
 
 Theorem~\ref{res:congruence} is an obstruction rather than a source of
@@ -466,7 +466,7 @@ checked bound
   \Ser=\frac aq,\ q>0 \quad\Longrightarrow\quad q\ge67.
 \]
 
-There is a second, more arithmetic producer at doubled prime indices.  For
+There is a second, more arithmetic mechanism at doubled prime indices.  For
 every odd prime $p$, the kernel now specializes the strict-successor
 prime-power criterion to the literal prefixes:
 \[
@@ -480,9 +480,9 @@ Consequently, failure of both displayed branches for a cofinal family of odd
 primes proves $\Ser$ irrational.  This is a sharper two-stage target than a
 bare square nondivisibility assertion: it exposes separately the only two
 carry values and predecessor residues that can survive.  It remains a
-criterion, not yet the missing cofinal producer.
+criterion, not the missing cofinal input.
 
-The formal consumer is not restricted to those hand-reduced indices.  A
+The formal theorem is not restricted to those hand-reduced indices.  A
 separately implemented exact GMP integer computation certifies all $299998$
 carry cells for $3\le m\le300000$.  Its unit carries occur exactly at
 \[
@@ -760,13 +760,13 @@ More generally the endpoint inequality can be replaced by the exact condition
 $q\nmid(p-1)!$.  For every such prime and every $e>0$, Lean proves the same
 hit-count equivalence; see
 \pdecl{factorialBlock_primePower_dvd_normalizedCollisionCore_iff_one_lt_hitCount_of_not_dvd_base}.
-Its at-most-one consumer cuts the normalized valuation below $e$, and its
+The at-most-one estimate cuts the normalized valuation below $e$, and its
 $e=2$ specialization gives conditional squarefreeness; see
 \pdecl{factorialBlock_normalizedCollisionCore_factorization_lt_of_not_dvd_base_of_hitCount_le_one}
 and
 \pdecl{factorialBlock_normalizedCollisionCore_factorization_le_one_of_not_dvd_base_of_primeSqHitCount_le_one}.
 Every prime $q\ge p$ is absent from $(p-1)!$, so this covers the entire moving
-prime range at and above the block parameter.  It remains an interface:
+prime range at and above the block parameter.  The result remains conditional:
 no theorem here supplies the uniform prime-square incidence premise or the
 global weighted product estimate.
 The squarefreeness premise is not proved.  An exhaustive modular scan through
@@ -845,17 +845,17 @@ Lean records this as the exact equivalence
  \end{cases}
 \]
 see \pdecl{factorialBlock_unitFactorPairFloor_scale_iff}.  Thus the
-unit-factor reduction has no opaque floor premise left: the two surviving
+factor reduction has no opaque floor premise left: the two surviving
 arithmetic estimates are exposed independently and neither follows merely
 from the existence of the selected prime.
-The irrationality consumer also works for every natural block parameter at
+The irrationality implication also works for every natural block parameter at
 least three, not only prime parameters.  What remains open is the arithmetic
-producer.  Wilson supplies cofinal prefix-private factors without analytic
+input.  Wilson supplies cofinal prefix-private factors without analytic
 input.  The stronger source-backed large-prime selection remains relevant
 because it supplies a positive-density family and a linear lower bound for
 $q$ relative to the original hit; neither result proves the global
 complementary-residue bound or the local collision-core bound.  The surviving
-obligation in this interface is therefore to prove both sides of this exact
+obligation is therefore to prove both sides of this exact
 branch-free scale split cofinally, packaged by
 \pdecl{irrational_factorialGapSeries_of_cofinal_largePrefixPrivate_unitScaleSplit}.
 
@@ -883,9 +883,9 @@ attached to it.
   Exact first-order interpolation, scalar residue weighting, the natural
   Wronskian, and rank-saturated consecutive jets all reassemble the same
   prohibitive denominator.
-\item The support-matroid layer cannot create an additional fractional
+\item Zero-moment variations cannot create an additional fractional
   cancellation coordinate (\S\ref{sec:channels}), and factorial valuations
-  cannot absorb the channel LCM tax.
+  cannot absorb the channel LCM obstruction.
 \item A fixed pair of low-index private owners cannot make the projection
   route cofinal.  If the owner index $n$ is fixed and $p>n!-1$, then
   $n!-1\mid(p-1)!$, so its private quotient in the factorial block at $p$ is
@@ -948,7 +948,7 @@ The exact frontier comes first:
 \tag{9.1}\label{eq:exact-frontier68}
 \]
 This is Lean-checked, not a heuristic reduction.  Each problem below is a
-sufficient producer for~\eqref{eq:exact-frontier68}; none is presented as an
+sufficient input for~\eqref{eq:exact-frontier68}; none is presented as an
 equivalent reformulation.
 
 \subsection*{1. Weighted collision mass and the complementary residue}
@@ -991,7 +991,7 @@ An average-over-$p$ theorem is admissible if its constants force these strict
 inequalities cofinally.
 \end{problem}
 
-The first inequality is the local collision-core half of the exact unit-factor
+The first inequality is the local collision-core half of the exact factor-pair
 scale split; the second is its Archimedean half.  A count of collisions without
 the weights $\log r$, a terminal Wilson event by itself, or a fixed finite scan
 does not answer the problem.  Nor may reflected hits be discarded: the checked
@@ -1019,7 +1019,7 @@ $n$ such that
  \log A_n\ge\eta\log v_{n+1},
 \tag{9.4}\label{eq:amplification-mass68}
 \]
-or, closer to the endpoint consumer, that with $m=n+1$ and $d=A_n$,
+or, closer to the endpoint criterion, that with $m=n+1$ and $d=A_n$,
 \[
  \bigl((m+2)m!-2\bigr)v_m
  \le m^2(m!-1)(u_m\bmod d).
@@ -1041,7 +1041,7 @@ Mere nonzero projection is insufficient: the least representative in
 Fixed-modulus $q$-adic convergence and finitely many record events do not
 change the quantifier.
 
-\subsection*{3. Escape from the lower endpoint cylinder}
+\subsection*{3. Escape from the lower endpoint interval}
 
 Let
 \[
@@ -1054,7 +1054,7 @@ The checked lower unit-carry branch is exactly
  \qquad \mathcal E_p<\frac2p.
 \]
 
-\begin{problem}[cofinal lower-cylinder escape]\label{prob:lower-cylinder68}
+\begin{problem}[cofinal lower-endpoint escape]\label{prob:lower-cylinder68}
 Prove for infinitely many primes $p$ that
 \[
  1+\frac1{p!-1}+\frac2p\le p\Delta_p.
@@ -1069,7 +1069,7 @@ or a growing-modulus version with $u_p$ replaced by
 $u_p\bmod d_p$ for a specified divisor $d_p\mid v_p$.
 \end{problem}
 
-Any positive answer feeds the exact carry consumer directly and proves
+Any positive answer yields a non-unit carry directly and proves
 irrationality.  Congruence recurrences alone do not count: synthetic models
 satisfy the available congruences while remaining in the unit-carry branch.
 Nor is a zero canonical digit the same statement as membership in this narrow
@@ -1102,9 +1102,9 @@ uses the checked unique-slot prime-power criterion.
 \end{problem}
 
 Controlling only the predecessor residue or only the possible Archimedean
-carry does not meet this consumer; the theorem must couple them.
+carry does not meet the hypotheses; the theorem must couple them.
 
-\subsection*{5. The finite floor-discontinuous Cramer block}
+\subsection*{5. A finite Cramer block across floor discontinuities}
 
 For $n,t\ge0$, put $s_n=((n+2)!)^2$ and
 $i_{n,t}(j)=(t+j)s_n$ for $0\le j\le n+1$.  Let $A_{n,t}$ be the
@@ -1128,7 +1128,7 @@ The checked determinant identities give
 \tag{9.9}\label{eq:cramer-residual68}
 \]
 and $N_d(n,t)=\det(A_{n,t})\ne0$ after the largest support index.  The finite
-intermediate block is floor-discontinuous and has genuine sign changes.
+intermediate block crosses floor discontinuities and has genuine sign changes.
 
 \begin{problem}[Cramer residual nonintegrality]\label{prob:cramer68}
 Construct an unbounded family $(n,t)$ for which
@@ -1158,13 +1158,13 @@ bound, or a gcd-of-minors argument controlling the finite oscillatory block.
 
 \subsection*{Longer-term directions}
 
-Two broader programmes remain after the five quantified producers: find an
+Two broader programmes remain after the five quantified conditions: find an
 invariant of the true divisor-factorial coefficients that rules out eventual
 unit carries and is absent from the synthetic countermodels; or construct an
 $N$-dependent, denominator-resonant, strict-subrank vector
 Hermite--Pad\'e system that neither factors through scalar evaluation at
 $z=1$ nor reassembles the full factorial-gap lcm.  These are directions, not
-substitutes for one of the displayed producer theorems.
+substitutes for one of the displayed sufficient conditions.
 
 Erd\H{o}s~\#68 remains open.  No statement above proves irrationality or
 excludes every rational value.  The finite checked consequence is nevertheless
@@ -1188,7 +1188,7 @@ finite factorial-series expansion in the carry defects $1-b_m$, the convergence
 $Z_m/m!\to\Ser$, and the exact equivalence between irrationality and cofinally
 many non-unit carries.  The exact
 GMP carry certificate through $m=300000$ is separately regenerated and
-hash-bound; combined with the checked carry consumer it gives $q\ge300000$,
+hash-bound; combined with the checked carry theorem it gives $q\ge300000$,
 but it is not itself a Lean evaluation.  The digit--rationality equivalence, the weighted primitive support
 decomposition, and the determinant-quotient reduction are returned derivations
 that have not been kernel-checked here, and are labelled as such wherever they
