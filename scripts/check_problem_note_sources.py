@@ -54,6 +54,12 @@ COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
 NOTE_COMMIT_RE = re.compile(
     r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}"
 )
+COMMIT_SHORT_RE = re.compile(
+    r"\\newcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
+)
+NOTE_COMMIT_SHORT_RE = re.compile(
+    r"\\renewcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
+)
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 LINK_RE = re.compile(
     r"""\\[lm]word\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
@@ -149,10 +155,43 @@ def pinned_commit() -> str:
     return match.group(1)
 
 
+def pinned_commitshort() -> str:
+    match = COMMIT_SHORT_RE.search(PREAMBLE.read_text(encoding="utf-8"))
+    if match is None:
+        raise SystemExit(
+            f"{PREAMBLE.relative_to(ROOT)}: no pinned \\commitshort is declared"
+        )
+    return match.group(1)
+
+
 def note_pinned_commit(note_text: str, default_commit: str) -> str:
     """Return a note-local source pin, falling back to the corpus default."""
     match = NOTE_COMMIT_RE.search(strip_comments(note_text))
     return default_commit if match is None else match.group(1)
+
+
+def note_pinned_commitshort(note_text: str, default_commitshort: str) -> str:
+    """Return a note-local display pin, falling back to the corpus default."""
+    match = NOTE_COMMIT_SHORT_RE.search(strip_comments(note_text))
+    return default_commitshort if match is None else match.group(1)
+
+
+def source_pin_failure(
+    source: str,
+    note_text: str,
+    default_commit: str,
+    default_commitshort: str,
+) -> str | None:
+    """Reject a displayed short pin that does not name the effective commit."""
+    commit = note_pinned_commit(note_text, default_commit)
+    commitshort = note_pinned_commitshort(note_text, default_commitshort)
+    expected = commit[:12]
+    if commitshort == expected:
+        return None
+    return (
+        f"{source}: displayed \\commitshort {commitshort} does not match "
+        f"the effective \\commit prefix {expected}"
+    )
 
 
 def snapshot_lines(
@@ -482,6 +521,7 @@ def main() -> int:
         return 0
 
     default_commit = pinned_commit()
+    default_commitshort = pinned_commitshort()
     cache: dict[tuple[str, str], list[str]] = {}
     errors: list[str] = []
     checked = 0
@@ -493,6 +533,11 @@ def main() -> int:
             errors.append(f"{source}: registered problem note is missing")
             continue
         note_text = path.read_text(encoding="utf-8")
+        pin_failure = source_pin_failure(
+            source, note_text, default_commit, default_commitshort
+        )
+        if pin_failure is not None:
+            errors.append(pin_failure)
         commit = note_pinned_commit(note_text, default_commit)
         resolved_commits.add(commit)
         if (

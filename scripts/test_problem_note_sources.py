@@ -12,6 +12,7 @@ from check_problem_note_sources import (
     declarations_in,
     linked_declaration_keys,
     required_note_declaration_failures,
+    source_pin_failure,
     validated_coverage_floor,
 )
 
@@ -104,15 +105,46 @@ def test_erdos257_headline_anchors_are_required() -> None:
     }
 
 
+def test_mismatched_note_commitshort_is_rejected() -> None:
+    note = r"""
+\renewcommand{\commit}{76b5b0a7ed5da7ebf3b9ed3bfd2fb480b6c38ee0}
+\renewcommand{\commitshort}{08d83b6689c8}
+"""
+    assert source_pin_failure(
+        "paper/synthetic.tex",
+        note,
+        "571ec44f2aad2a1497098971a91858f527038b55",
+        "571ec44f2aad",
+    ) == (
+        "paper/synthetic.tex: displayed \\commitshort 08d83b6689c8 "
+        "does not match the effective \\commit prefix 76b5b0a7ed5d"
+    )
+
+
+def test_commit_override_without_matching_short_is_rejected() -> None:
+    note = r"\renewcommand{\commit}{599f7e50a15b288f27f9b57ece16fdd396cb6d76}"
+    assert source_pin_failure(
+        "paper/synthetic.tex",
+        note,
+        "571ec44f2aad2a1497098971a91858f527038b55",
+        "571ec44f2aad",
+    ) == (
+        "paper/synthetic.tex: displayed \\commitshort 571ec44f2aad "
+        "does not match the effective \\commit prefix 599f7e50a15b"
+    )
+
+
 def main() -> int:
     test_comment_injection_is_not_a_declaration()
     test_wrong_module_name_collision_is_not_coverage()
     test_missing_required_anchor_is_rejected()
     test_invalid_coverage_floor_is_rejected()
     test_erdos257_headline_anchors_are_required()
+    test_mismatched_note_commitshort_is_rejected()
+    test_commit_override_without_matching_short_is_rejected()
     print(
         "test_problem_note_sources: comment injection, module collisions, "
-        "required anchors, and invalid floors rejected"
+        "required anchors, invalid floors, and mismatched source pins rejected"
     )
     return 0
 
