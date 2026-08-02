@@ -1879,6 +1879,94 @@ theorem natDen_eq_nextDenState
   have hCast := congrArg (fun x : ℕ ↦ (x : ℤ)) (hD n)
   simpa only [Nat.cast_mul, nextDenState] using hCast
 
+/-! ## Realizing an exact tail as a reciprocal series
+
+The two natural recurrences also recover the reciprocal series itself.  After
+division by the denominator state, one step removes exactly `1 / aₙ` from the
+tail ratio.  Iteration gives a finite telescoping identity, and convergence of
+the remaining ratio to zero identifies the infinite sum.
+
+These statements construct no orbit and supply no growth or centering
+hypothesis.  In particular, they do not exclude the unbounded negative branch
+and do not prove irrationality or resolve Erdős #243.
+-/
+
+/-- The real ratio represented by the natural tail state. -/
+noncomputable def tailRatio (C D : ℕ → ℕ) (n : ℕ) : ℝ :=
+  C n / D n
+
+/-- One exact tail step removes the reciprocal term `1 / aₙ`. -/
+theorem tailRatio_eq_reciprocal_add_next
+    (a C D : ℕ → ℕ)
+    (ha : ∀ n, 0 < a n)
+    (hDpos : ∀ n, 0 < D n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (n : ℕ) :
+    tailRatio C D n =
+      1 / (a n : ℝ) + tailRatio C D (n + 1) := by
+  have ha_ne : (a n : ℝ) ≠ 0 := by
+    exact_mod_cast (Nat.ne_of_gt (ha n))
+  have hD_ne : (D n : ℝ) ≠ 0 := by
+    exact_mod_cast (Nat.ne_of_gt (hDpos n))
+  have hC_real :
+      (C (n + 1) : ℝ) + D n = a n * C n := by
+    exact_mod_cast hC n
+  have hD_real :
+      (D (n + 1) : ℝ) = a n * D n := by
+    exact_mod_cast hD n
+  simp only [tailRatio, hD_real]
+  field_simp [ha_ne, hD_ne]
+  linarith
+
+/-- Finite telescoping leaves exactly the tail ratio at the endpoint. -/
+theorem tailRatio_eq_partialReciprocalSum_add
+    (a C D : ℕ → ℕ)
+    (ha : ∀ n, 0 < a n)
+    (hDpos : ∀ n, 0 < D n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (N : ℕ) :
+    tailRatio C D 0 =
+      (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) + tailRatio C D N := by
+  induction N with
+  | zero => simp
+  | succ N ih =>
+      calc
+        tailRatio C D 0 =
+            (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) +
+              tailRatio C D N := ih
+        _ = (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) +
+              (1 / (a N : ℝ) + tailRatio C D (N + 1)) := by
+                rw [tailRatio_eq_reciprocal_add_next a C D ha hDpos hC hD N]
+        _ = (∑ n ∈ Finset.range (N + 1), 1 / (a n : ℝ)) +
+              tailRatio C D (N + 1) := by
+                rw [Finset.sum_range_succ]
+                ring
+
+/-- If the endpoint tail ratio tends to zero, the reciprocal series sums to
+the initial tail ratio. -/
+theorem reciprocalSeries_hasSum_of_tailRatio_tendsto_zero
+    (a C D : ℕ → ℕ)
+    (ha : ∀ n, 0 < a n)
+    (hDpos : ∀ n, 0 < D n)
+    (hC : ∀ n, C (n + 1) + D n = a n * C n)
+    (hD : ∀ n, D (n + 1) = a n * D n)
+    (hzero :
+      Filter.Tendsto (tailRatio C D) Filter.atTop (𝓝 0)) :
+    HasSum (fun n ↦ 1 / (a n : ℝ)) (tailRatio C D 0) := by
+  refine (hasSum_iff_tendsto_nat_of_nonneg ?_ _).2 ?_
+  · intro n
+    positivity
+  have hpartial : ∀ N,
+      (∑ n ∈ Finset.range N, 1 / (a n : ℝ)) =
+        tailRatio C D 0 - tailRatio C D N := by
+    intro N
+    have hfinite :=
+      tailRatio_eq_partialReciprocalSum_add a C D ha hDpos hC hD N
+    linarith
+  simpa only [hpartial] using tendsto_const_nhds.sub hzero
+
 /-- Along an exact natural orbit, the signed centered state gives the integer
 tail identity `Cₙ₊₁ = Cₙ - Eₙ`. -/
 theorem natTail_eq_sub_centeredState
