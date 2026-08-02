@@ -132,7 +132,7 @@ authors. See \emph{Statements and declarations}.
 \end{quote}
 
 \begin{abstract}
-This document is the complete working record of one attack on Erd\H{o}s Problem 249: whether $S=\sum_{n\ge1}\ph(n)/2^n$ is irrational.  The problem is open, and nothing here decides it.  What the document does is collect, in one place and in a form that can be used directly as premises, every result the project holds: the Lean-checked theorems with their exact hypotheses and source sites, the exact finite computations, the coordinates in which the constant can be written, the routes that have been closed and the mechanism that closed each one, and the exact statements that remain open.  Results are sorted by the scale at which they are proved, because that is where the problem stands or falls: everything proved here holds at fixed or bounded scale, while the remaining obligation is cofinal.
+This document is the complete working record of one attack on Erd\H{o}s Problem 249: whether $S=\sum_{n\ge1}\ph(n)/2^n$ is irrational.  The problem is open, and nothing here decides it.  What the document does is collect, in one place and in a form that can be used directly as premises, every result the project holds: the Lean-checked theorems with their exact hypotheses and source sites, the exact finite computations, the coordinates in which the constant can be written, the routes that have been closed and the mechanism that closed each one, and the exact statements that remain open.  Results are sorted by the scale at which they are proved, because that is where the problem stands or falls.  The corpus contains uniform and cofinal structural theorems as well as fixed computations; what it does not contain is a cofinal supply for any sufficient irrationality criterion.
 \end{abstract}
 
 \section*{How to read this document}
@@ -154,8 +154,11 @@ language belonging to another.
 at specific listed values), \scale{bounded} (proved below an explicit bound),
 \scale{cofinal} (proved for arbitrarily large parameters), or \scale{uniform}
 (proved for all parameters).  This axis is the reason the problem is still open:
-the corpus proves at fixed and bounded scale, and the remaining obligation is
-cofinal.  Sorting by scale puts that boundary where it can be seen.
+the direct certificate deposits are fixed or bounded, while several structural
+producers and transport theorems are uniform or cofinal.  None supplies the
+cofinal arithmetic separation needed to settle the problem.  Sorting by scale
+puts that boundary where it can be seen without erasing the stronger structural
+results.
 
 \emph{Coordinates.}  Every statement records the representation it is expressed
 in.  An obstruction is a fact about a coordinate, not about the object, and a
@@ -175,7 +178,7 @@ Let $\varphi$ be Euler's totient function and put
 \[
   S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}}
   \;=\; 1 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
-  \;=\; 1.6066\ldots
+  \;=\; 1.3676308019850223\ldots
 \]
 The series converges absolutely because $\varphi(n) \le n$. Erd\H{o}s Problem
 \#249 asks whether $S$ is irrational. \emph{It is open.} Nothing in this
@@ -1092,12 +1095,13 @@ is an audit and is labelled as evidence every time it is used.
 document. \scale{fixed} means one instance; \scale{bounded} means every
 instance up to an explicit bound; \scale{cofinal} means infinitely often past
 every threshold; \scale{uniform} means for all parameters with no dependence.
-The single most important structural fact about the corpus is that
-\emph{everything unconditional and quantitative sits on the fixed or bounded
-side, while $\mathrm{Sep}$ is cofinal}. Theorem~\ref{thm:gamma} says that gap
-is one of kind and not of degree: no accumulation of bounded verification, at
-any bound, is evidence that the cofinal statement holds. Read every result's
-\texttt{scale} tag before reading its content.
+The single most important structural fact about the corpus is narrower:
+\emph{every direct certificate deposit for $\mathrm{Sep}$ is fixed or bounded,
+although the corpus also contains uniform and cofinal structural theorems}.
+Those stronger-scale results do not produce $\mathrm{Sep}$. Theorem~\ref{thm:gamma}
+says that no accumulation of bounded verification, at any bound, is evidence
+that the cofinal statement holds. Read every result's \texttt{scale} tag before
+reading its content.
 
 \paragraph{Coordinates, and why obstructions are relative to them.} Every
 obstruction carries a \texttt{coord} tag, because an obstruction is always an
@@ -1599,7 +1603,7 @@ If $S$ is rational then a period exists: $\neg\mathrm{Irrational}(S) \to \exists
 \end{thm}
 
 \begin{thm}[cert:d5 --- \texttt{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}]
-$\neg\mathrm{Irrational}(S) \to \exists v>0,\, \exists u:\mathbb{N}\to\mathbb{Z},\, \mathrm{IsTemperedBinaryOrbit}\,\varphi\,v\,u \wedge \forall e,\ 2^e-1 \le \mathrm{finrank}_{\mathbb{Q}}(\mathrm{span}(\mathrm{range}(\mathrm{canonicalCarryKernelFamily}\,u\,e)))$. Rationality of $S$ forces its associated tempered integral binary-carry orbit to have unboundedly rich dyadic-section rank; a second, coordinate-independent necessary condition on rationality, parallel to cert:a9 but in the carry-kernel-rank coordinate rather than the binary-digit-periodicity coordinate. Explicitly flagged in its own docstring as not by itself an irrationality proof: a separate rationality-side rank-compression theorem (contradicting cert:d4 below) would still be needed.
+$\neg\mathrm{Irrational}(S) \to \exists v>0,\, \exists u:\mathbb{N}\to\mathbb{Z},\, \mathrm{IsTemperedBinaryOrbit}\,\varphi\,v\,u \wedge \forall e,\ 2^e-1 \le \mathrm{finrank}_{\mathbb{Q}}(\mathrm{span}(\mathrm{range}(\mathrm{canonicalCarryKernelFamily}\,u\,e)))$. Rationality of $S$ forces its associated tempered integral binary-carry orbit to have unboundedly rich dyadic-section rank; this is a second, coordinate-independent necessary condition on rationality, parallel to cert:a9 but in the carry-kernel-rank coordinate rather than the binary-digit-periodicity coordinate. It is not by itself an irrationality proof. In particular, the later countermodels rule out treating generic finite-rank shift-polynomial or compressed-adjoint observations as the missing opposite inequality; an actual-totient-specific upper bound would be a genuinely new theorem, not a surviving consequence of the present rank machinery.
 \par\noindent\ev{Lean} \scale{uniform} \coord{other:carry-kernel-rank} \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284}
 \end{thm}
 
@@ -2156,15 +2160,19 @@ certificate-supply wall. No unboundedness claim is proved or attempted in the co
 \lean{gap\_check\_window\_1\_240\_le\_79639646646701375323355774875831053}{GapFareyBound.lean:176,225}
 \end{prop}
 
-\begin{prop}[Finite-rank compression — a third independent wall]\label{prop:D5cons}
+\begin{prop}[Rank lower bound; the generic compression shortcut is retired]\label{prop:D5cons}
 By Prop.~\ref{prop:D4-inv}, the canonical dyadic totient-kernel family is unconditionally
 $(2^e+1)$-dimensional at every level $e$. Rationality of $S$ forces an associated tempered
-carry orbit with $\mathbb Q$-rank $\ge 2^e-1$ at every level (Prop.~\ref{prop:CP-02}). A theorem
+carry orbit with $\mathbb Q$-rank $\ge 2^e-1$ at every level (Prop.~\ref{prop:CP-02}). Formally, a theorem
 \[
 \text{bounding the dyadic-section rank of \emph{every} rationality-supplied tempered carry}
 \]
-would contradict the unconditional lower bound and close \#249 by a linear-algebraic coordinate
-wholly distinct from the binary-window certificate coordinate of Props.~\ref{prop:A10}-\ref{prop:B10}.
+would contradict this lower bound and close \#249. The corpus supplies no such theorem or
+mechanism. More strongly, its compressed-adjoint impossibility result and its explicit
+all-horizon finite-rank shift-polynomial countermodel retire the generic finite-compression
+shortcut (Observation~\ref{prop:B4b-kill}). Thus the displayed upper bound is only a logically
+sufficient new input, not a third live frontier and not evidence that existing rank machinery is
+close to a contradiction.
 \scale{cofinal}\ \ev{Open}\ \coord{other:carry-kernel-rank}\\
 \lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:284}
 \end{prop}
@@ -2336,7 +2344,8 @@ rank grows exponentially in level), \emph{yet} $u$'s dyadic sections are uniform
 periodic modulo $v$ ($\mathtt{CarrySectionsEventuallyPeriodicMod}$). Rationality buys
 quotient-mod-$v$ periodicity but does \emph{not} buy any bound on $\mathbb Q$-rank — this is
 precisely the boundary any Mersenne-specific residue argument (mod-4 pulse, two-adic pulse) exists
-to cross, and it is the exact hypothesis feeding Prop.~\ref{prop:D5cons}'s third independent wall.
+to cross. Proposition~\ref{prop:D5cons} records the rank lower bound while explicitly retiring
+generic finite-rank compression as a live shortcut.
 \scale{uniform}\ \ev{Lean}\ \coord{other:carry-kernel-rank}\\
 \lean{not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}{TotientTailCarryPeriod.lean:224}
 \end{prop}
@@ -3568,8 +3577,7 @@ that does not survive bound removal'' (interface index, row \texttt{d-3a/d-3b}).
 None of the fourteen near-miss rows against the \#249-supply obligation is closed by a scale
 argument alone either: reading each one's own recorded \texttt{exact\_mismatch} shows the residual
 gap is a missing \emph{arithmetic input} (a constant-saving Weyl-sum bound for
-\texttt{e1-companion}; a one-sided top-edge residue gap for \texttt{TE-04}/\texttt{TE-05-weakest};
-an unbounded finite-rank compression on the rationality side for \texttt{d4/d5}), never a
+\texttt{e1-companion}; a one-sided top-edge residue gap for \texttt{TE-04}/\texttt{TE-05-weakest}), never a
 generalisable proof technique sitting one \texttt{omega} call away from cofinal. The one row where
 the source tag itself is imprecise — \texttt{SGN-01}, marked \scale{bounded} even though its
 underlying exponent $a$ is unbounded, see $^\dagger$ above — is precisely the kind of false

@@ -154,8 +154,10 @@ language belonging to another.
 at specific listed values), \scale{bounded} (proved below an explicit bound),
 \scale{cofinal} (proved for arbitrarily large parameters), or \scale{uniform}
 (proved for all parameters).  This axis is the reason the problem is still open:
-the corpus proves at fixed and bounded scale, and the remaining obligation is
-cofinal.  Sorting by scale puts that boundary where it can be seen.
+the direct half-value computations are fixed or bounded, while the corpus also
+contains uniform structural theorems and conditional cofinal consumers. None
+constructs the missing global support or orbit behaviour. Sorting by scale puts
+that boundary where it can be seen without understating the structural results.
 
 \emph{Coordinates.}  Every statement records the representation it is expressed
 in.  An obstruction is a fact about a coordinate, not about the object, and a
@@ -666,7 +668,7 @@ arguments have nothing to range over. It also rules out deciding (U) by showing 
 this split: under a Bernoulli$(1/2)$ digit model the expected number of counterexamples with
 $n \ge 32$ is about $2 \times 10^{-4}$, i.e.\ the model predicts $1/2 \in \mathcal{A}$. That
 estimate is worth exactly as much as the model, and the model is a measure-side object that cannot
-see a specific point of a measure-one nowhere-dense set. \ev{Cert}
+see a specific point of a nowhere-dense set having Lebesgue measure exactly $1$. \ev{Cert}
 
 \subsection{Barrier 6: the two-axis certificate box (universal direction)}
 \label{bar:box}
@@ -1087,8 +1089,10 @@ nor disprove $1/2 \in \mathcal{A}$; they exhaust only the structured-support cor
 $\mathcal{A}$ (Definition~\ref{defn:half-question}) is compact, closed, perfect, totally
 disconnected, and nowhere dense; its Lebesgue measure is exactly $1$:
 $\operatorname{volume}(\mathcal{A}) = 1$. \textbf{Hypotheses:} none. \textbf{Conclusion:}
-$\mathcal{A}$ is a Cantor-like set of full measure -- topologically thin (nowhere dense, totally
-disconnected) yet measure-theoretically as large as possible. \coord{achievement-set-topology}
+$\mathcal{A}$ is a Cantor-like set of Lebesgue measure exactly $1$ -- topologically thin
+(nowhere dense and totally disconnected), but neither full measure in $\mathbb R$ nor full
+measure in its ambient interval $[0,E]$, whose length is $E\approx1.6067$.
+\coord{achievement-set-topology}
 \scale{n/a} \ev{Lean}\\
 \textbf{Site:} \lean{isCompact\_mersenneAchievementSet}{GreedyAchievementSet.lean:656--1024},
 \lean{isClosed\_mersenneAchievementSet}{GreedyAchievementSet.lean:656--1024},
@@ -1302,10 +1306,11 @@ survive, not merely computed -- Part~3 of the truncation-rung record); seam row 
 $3000$ (no fatal skip at any rank; take fraction $0.4992$; tightest certified take-margin
 $0.0340$ bits at rank $7$, the near-tie $1/126 \ge 1/127$). \coord{meta: all four coordinates}
 \scale{fixed} \ev{Cert}\\
-\textbf{Chains with:} these four depths are four coordinatizations of the \emph{same} decision
-stream (Theorem C-style co-semi-decidability, developed fully in Part~2); a certificate at one depth
-in one coordinate does not, by itself, extend to another coordinate without the explicit
-stabilization argument that the wider record supplies.
+\textbf{Chains with:} these four depths measure the \emph{same} greedy decision stream in different
+coordinates. They do not make the finite certificate families equivalent and do not give a
+semi-decision procedure for the universal problem. A certificate at one depth in one coordinate
+does not, by itself, extend to another coordinate without an explicit transport or stabilization
+theorem.
 \end{obs}
 
 The record above is exhaustive at the level of exact statements and sites available in the premise
@@ -2132,7 +2137,7 @@ recovers the full-support series of Theorem~\ref{thm:full-support-catalogue}.
 \lean{supportCoeff}{CertificateKernel.lean:8650}
 \end{defn}
 
-\begin{prop}[Achievement-set topology: compact, closed, perfect, full measure]
+\begin{prop}[Achievement-set topology: compact, closed, perfect, measure exactly one]
 \label{prop:achievement-set-topology}
 $\mathrm{mersenneAchievementSet}$ is compact (continuous image of the binary-sequence
 Cantor space $\mathbb N\to\mathrm{Fin}\,2$ under the product topology, via
@@ -4680,29 +4685,22 @@ sqrt-escape therefore requires an exact integer-coincidence tower, not a generic
 small errors — the open step is excluding the two pinned values (RC-5's own closing condition).
 \end{thm}
 
-\begin{thm}[C — co-semi-decidability of the four certificate families]
-If \#257 is false at $x=1/2$ (equivalently the half-greedy orbit survives forever, by
-\lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1445}), that
-survival is witnessed at a \emph{finite, computable rank} exactly when the greedy sqrt-escape
-route succeeds early: every certificate depth in the corpus (the reset-crossing certificates of
-Part I, the truncation-rung ladder TR-5/TR-6, and the sharp-capacity fill of ($\star$)) is a
-\emph{lower bound} on that rank, not an independent estimate of it. This is visible directly at
-the consumer layer: \lean{LargestSkipLateStepSocket}{HalfCylinderLargestSkipInduction.lean:34}
-and \lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:3531} both
-route, through their respective consumers, into the same greedy-survival dichotomy that
+\begin{thm}[C — the one-sided finite decision boundary]
+The checked equivalence
 \lean{mem\_mersenneAchievementSet\_iff\_greedy\_survival}{GreedyAchievementSet.lean:1445}
-already states as an iff. So the four certificate families — reset-crossing (Part I), truncation
-rungs (TR ladder), sharp-capacity fill (this section), and the direct greedy-survival test — are
-not four unrelated attacks; they are \emph{one semi-decision procedure} viewed in four
-coordinates, each of which halts (finds a certificate) if and only if the others eventually
-would, because each is checking a lower bound on the same underlying finite rank. This makes
-"\#257 is false" semi-decidable via any one of the four routes (run the certificate search; if it
-halts, \#257 is false), while "\#257 is true" is not shown semi-decidable by any route in this
-corpus — the co- half of co-semi-decidability is exactly the open reset-anti-concentration
-statement of Theorem A. Practical consequence for the interface as a whole: a negative result
-(more certificate search, deeper truncation rungs, more reset rows) can never by itself prove
-\#257 true, however far it is pushed — this is the same quantifier trap SE-7/RC-7 warn against,
-restated as a decidability fact rather than a scope caveat.
+separates two logically different kinds of evidence. A fatal greedy gap found at a finite rank is
+a finite certificate that $1/2\notin\mathcal A$. By contrast, membership requires survival at
+every rank; the corpus supplies no finite certificate that the orbit survives forever and no
+completion theorem turning a long surviving prefix into membership.
+
+The reset-crossing sockets, truncation-rung ladder, and sharp-capacity inequalities feed
+sufficient conditions for a finite fatal gap. They are not proved equivalent to one another,
+nor is failure to find one at a given depth evidence of survival. Consequently these searches
+give at most a semi-decision procedure for \emph{nonmembership of the specific value $1/2$}.
+Halting does not prove the universal statement in \#257, and non-halting does not prove that
+$1/2$ is represented. In particular, neither truth nor falsity of the universal problem is
+shown semi-decidable here. Deeper negative search alone establishes nothing beyond the tested
+finite ranks; this is the quantifier boundary recorded by SE-7/RC-7.
 \end{thm}
 
 \subsection{Route-collapse findings: four traps to name explicitly}
@@ -6090,7 +6088,8 @@ be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.l
 coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
 description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The
 rigidity is why every soft method fails (there is no ensemble to average over: $\mathcal{A}$ has
-measure $1$ in its span and is nowhere dense, and the two standard notions of ``typical''
+Lebesgue measure exactly $1$ inside an interval of length $E\approx1.6067$ and is nowhere dense,
+and the two standard notions of ``typical''
 disagree on it); the pseudorandomness is why every arithmetic method returns no information.
 
 \subsubsection*{The universal branch reads differently, and this weakens the one-wall thesis}
