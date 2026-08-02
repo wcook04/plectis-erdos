@@ -469,7 +469,8 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         )
 
     for token in (
-        "uses: actions/cache@v5",
+        "uses: actions/cache@",
+        "# v5",
         "path: .lake",
         "restore-keys:",
         "python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness",
