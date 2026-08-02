@@ -11,7 +11,7 @@
 \renewcommand{\commitshort}{76b5b0a7ed5d}
 \usepackage{longtable}
 \hypersetup{
-  pdftitle={Integral channels and the prime unit translator: a denominator-obstruction programme for Erdős Problem 68},
+  pdftitle={Factorial carries and finite channel obstructions for Erdős Problem 68},
   pdfsubject={Erdős Problem Notes: Problem 68},
   pdfkeywords={irrationality, factorial denominators, Lambert-type series, least common multiple, Hermite-Pade, Lean 4},
 }
@@ -23,9 +23,9 @@
 \newcommand{\chn}[2]{V_{#1}(#2)}
 \newcommand{\Lc}{L}
 
-\runninghead{Erd\H{o}s \#68: integral channels and the prime unit translator}
-\title{Integral Channels and the Prime Unit Translator}
-\subtitle{A denominator-obstruction programme for Erd\H{o}s Problem~\#68}
+\runninghead{Erd\H{o}s \#68: factorial carries and finite channel obstructions}
+\title{Factorial Carries and Finite Channel Obstructions}
+\subtitle{Arithmetic reductions for Erd\H{o}s Problem~\#68}
 \author{Will Cook}
 \date{July 2026}
 
@@ -41,28 +41,34 @@ Erd\H{o}s asked whether
 \]
 is irrational.  The problem remains open.  Put
 $H_m=\sum_{2\le n\le m}(n!-1)^{-1}$ and let
-$Z_m=\lfloor m!H_m\rfloor+1$ be its strict factorial successor.  The cleanest
-checked contribution is the exact integral normal form
+$Z_m=\lfloor m!H_m\rfloor+1$ be its strict factorial successor.  Write $b_m$
+for the integer in $Z_m=mZ_{m-1}+1-b_m$.  The central checked equivalence is
 \[
   \Ser\notin\mathbb Q
+  \quad\Longleftrightarrow\quad
+  (\forall B)(\exists m>B)\;b_m\ne1
   \quad\Longleftrightarrow\quad
   (\forall B)(\exists m>B)\;m\nmid Z_m .
 \]
 An independently regenerated exact GMP certificate supplies a miss at
-$m=300000$; the Lean-checked consumer therefore proves unconditionally that
+$m=300000$; the corresponding Lean-checked implication proves that
 every representation $\Ser=a/q$ with $q>0$ has $q\ge300000$.
 
-Two further checked layers expose possible closing mechanisms.  Integral
-channels impose an explicit lcm tax, while a uniform remote-support
-construction and a prime translator produce a nonzero-moment kernel whose
-residual has absolute value at most $1/2$.  Weighted projection rigidity
-excludes a bounded endpoint provided the endpoint congruence holds and two
-divisor moduli exceed the endpoint bound with unequal projected residues.
-What is not proved is equally precise: no theorem supplies cofinally many
-integral misses, makes the rounded residual strictly nonzero cofinally, or
-establishes the two remaining projection scale bounds.  Thus this note gives
-an exact normal form, checked structural reductions, and a finite denominator
-exclusion---not an irrationality proof.
+The finite channel algebra gives a second rigorous layer.  In each channel
+$d$, the channel numerator is congruent to the factorial moment modulo
+$d!-1$; simultaneous cancellation through a cutoff $D$ therefore forces a
+specified least common multiple to divide that moment.  A two-term prime
+correction isolates one channel, and a Cramer construction gives arbitrarily
+remote finite supports that cancel any prescribed finite set of channels and
+have residual of absolute value at most $1/2$.  That rounded residual may be
+zero.  Separately, endpoint congruences turn sufficiently large residues or
+disagreement between two projections into finite exclusions.
+
+No theorem constructs cofinally many non-unit carries, a cofinal family of
+strictly nonzero translated residuals, or the quantitative residue and scale
+bounds required by the endpoint arguments.  The note therefore proves a carry
+normal form, finite channel obstructions, and a denominator exclusion---not
+irrationality of $\Ser$.
 \end{abstract}
 
 \section{The problem}\label{sec:problem}
@@ -85,7 +91,7 @@ Contribution & Exact scope \\
 \midrule
 Denominator exclusion & If $\Ser=a/q$ with $q>0$, then $q\ge300000$. \\
 Integral frontier & $\Ser\notin\mathbb Q$ iff for every $B$ some $m>B$ satisfies $m\nmid Z_m$. \\
-Structural reductions & Checked channel/translator and endpoint-projection consumers isolate explicit missing inputs. \\
+Structural reductions & Finite channel congruences, a two-term prime corrector, and endpoint projections isolate explicit missing inputs. \\
 Not a contribution & No cofinal miss, cofinal strict residual nonvanishing, or irrationality theorem is proved. \\
 \bottomrule
 \end{tabular}
@@ -130,8 +136,8 @@ Statement & Status & Exact boundary \\
 Irrationality of $\Ser$ & Open & No proof is claimed. \\
 Canonical factorial digit kernel & Checked & Floor formula, digit bounds, remainder recurrence, finite expansion, zero-tail propagation. \\
 Channel integrality & Checked & $(d!)^{\lfloor i/d\rfloor}\mid i!$, with exact denominator cancellation. \\
-Channel congruence and LCM tax & Checked & $\chn d\lambda\equiv M\pmod{d!-1}$; annihilating channels through $D$ forces $\Lc_D\mid M$. \\
-Prime unit translator & Checked & The pair $(p,-1)$ on $(p-1,p)$ has moment $0$, all channels $0$ except $d=p$, and $p$-channel numerator $p!-1$. \\
+Channel congruence and LCM obstruction & Checked & $\chn d\lambda\equiv M\pmod{d!-1}$; annihilating channels through $D$ forces $\Lc_D\mid M$. \\
+Two-term prime channel corrector & Checked & The pair $(p,-1)$ on $(p-1,p)$ has moment $0$, all channels $0$ except $d=p$, and $p$-channel numerator $p!-1$. \\
 Weighted projection rigidity & Checked & If $Z\equiv T\pmod R$, $Q_i\mid R$, and $Z\le B<Q_i$, then unequal residues $T\bmod Q_1$ and $T\bmod Q_2$ exclude that endpoint. \\
 Factor-split projection reduction & Checked & Two divisor factors of one private modulus support the same cancellation and disagreement bounds; coprime factors give a branch-free floor and may lie in one private quotient. \\
 Zero plateau and first-exit carry & Checked & Grid threshold, plateau equality of grid integers, forced zero digit, carry $b\in\{0,-1\}$. \\
@@ -263,7 +269,7 @@ $1-b_m\ne0$ infinitely often---precisely the cofinal non-unit-carry producer
 that remains open.  The identity is therefore a rigorous literature bridge,
 not a hidden solution.
 
-\section{Integral channels and the LCM tax}\label{sec:channels}
+\section{Finite channel congruences and the LCM obstruction}\label{sec:channels}
 
 Fix $d\ge2$.  The kernel proves the divisibility
 \[
@@ -311,10 +317,10 @@ normalised $d$-th channel contribution by an integer only.  The support-matroid
 layer therefore cannot manufacture an extra fractional cancellation coordinate:
 the congruence forces every normalised channel defect to be integral.
 
-The key point is that Theorem~\ref{res:congruence} is a tax, not a tool.  A
-localiser that kills the low channels in order to isolate the tail pays $\Lc_D$
-in its moment, and $\Lc_D$ grows faster than the tail shrinks.  The returned
-analysis proposes the quantitative form
+Theorem~\ref{res:congruence} is an obstruction rather than a source of
+cancellation.  Any finite family that kills the low channels must have moment
+divisible by $\Lc_D$, and $\Lc_D$ grows faster than the tail shrinks.  The
+returned analysis proposes the quantitative form
 \[
   \log \lcm_{2\le n\le N}(n!-1)\ \gg\ N^{4/3}\log N
   \qquad(N\to\infty).
@@ -349,18 +355,17 @@ because it is the shape of the obstruction the returns describe, and it is used
 nowhere below.
 
 The primitive lcm divisibility after cofactor removal is also checked:
-factorial valuations do not absorb the tax once every common cofactor divisor
-has been removed.  The separate corank-one cofactor/determinant construction
-that is meant to produce such primitive kernels remains an advisory returned
-reduction pending Lean formalisation; the checked divisibility must not be read
-as checking that producer.
+factorial valuations do not remove the obstruction once every common cofactor
+divisor has been removed.  A separate corank-one cofactor/determinant argument
+for constructing such primitive kernels remains advisory pending Lean
+formalisation; the divisibility theorem does not establish that construction.
 
-\section{The prime unit translator}\label{sec:translator}
+\section{A two-term prime channel corrector}\label{sec:translator}
 
-The channel tax raises an obvious question: is there any support that pays the
-tax at exactly one channel?  There is, and it is explicit.
+The channel obstruction raises a natural question: can a finite support affect
+exactly one channel?  The following two-term construction does so.
 
-\begin{theorem}[prime unit translator]\label{res:translator}
+\begin{theorem}[two-term prime channel corrector]\label{res:translator}
 Let $p$ be prime and take the coefficient--index pair $(p,-1)$ on the indices
 $(p-1,p)$.  Then the factorial moment is $0$; every channel $d<p$ vanishes,
 by the exact quotient identity $\lfloor(p-1)/d\rfloor=\lfloor p/d\rfloor$;
@@ -370,13 +375,13 @@ $p$-channel numerator is exactly $p!-1$.
 
 \noindent This is checked in full for every prime, not sampled.  Its use is
 arithmetic rather than analytic: it supplies, at cost zero in the moment, a unit
-in the $p$-channel.  Adding an integer multiple of the translator to any
+in the $p$-channel.  Adding an integer multiple of this corrector to any
 candidate kernel shifts the $p$-channel numerator by multiples of $p!-1$ and
 leaves every other channel and the moment untouched.
 
 The consequence is already uniform in the support location.  For every channel
 rank and every prescribed cutoff, Lean constructs a factorial-grid kernel and
-a remote prime-translator pair entirely beyond that cutoff, with all requested
+a remote prime-corrector pair entirely beyond that cutoff, with all requested
 low channels zero, nonzero factorial moment, and residual in $[-1/2,1/2]$;
 see \pdecl{exists_remote_factorialGrid_primeTranslator_reduction}.  What is not
 available is strict nonvanishing: nothing proved here rules out the rounded
