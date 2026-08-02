@@ -1,6 +1,7 @@
 import ErdosProblems.Root
 import Erdos249257.RationalSupportCarrySkeleton
 import Erdos249257.HalfGreedyFatalGap
+import Erdos249257.HalfGreedyUnitPrefix
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -555,6 +556,10 @@ problem-centric wave.
 #print axioms Erdos249257.HalfGreedyFatalGap.unitNumerator_skipSafe_actualTail
 #print axioms Erdos249257.HalfGreedyFatalGap.three_mul_lt_two_mul_of_actualTail_fatal
 #print axioms Erdos249257.HalfGreedyFatalGap.three_le_of_actualTail_fatal_of_odd
+#print axioms Erdos249257.blockDyadicSafeAt_of_unit_skip
+#print axioms Erdos249257.halfGreedy_skip_dyadic_safe_of_unit_numerator
+#print axioms Erdos249257.halfGreedyResidualDisplayedNumerator_eq_one_of_le_19
+#print axioms Erdos249257.halfGreedy_actualBlockSafe_of_le_19
 #print axioms Erdos249257.mersenneWeightRat_succ_le_half_iff_secondChannelPhaseRat
 #print axioms Erdos249257.greedyMersenneSecondChannelPhaseRat_succ
 #print axioms Erdos249257.secondChannelPhaseRat_unit_preimage
