@@ -548,6 +548,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos257.supportedMersenneDigitValue_injective
 #print axioms ErdosProblems.Erdos257.mem_supportedMersenneAchievementSet_iff_exists_support_series
 #print axioms ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_pos_iff_compl_finite
+#print axioms ErdosProblems.Erdos257.finiteErdosSum_ne_one_div_twenty_one
 #print axioms Erdos249257.mersenneWeightRat_succ_le_half_iff_secondChannelPhaseRat
 #print axioms Erdos249257.greedyMersenneSecondChannelPhaseRat_succ
 #print axioms Erdos249257.secondChannelPhaseRat_unit_preimage
