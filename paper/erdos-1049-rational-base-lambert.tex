@@ -918,11 +918,17 @@ No bibliographic source for an analytic irrationality theorem at this cutoff is
 asserted here.  The Lean module instead treats the displayed inequality as a
 definition and proves elementary memberships and exclusions.  In particular,
 \[
- 4^{200}<31^{81}
- \quad\Longrightarrow\quad
- \frac{\log4}{\log31}<\frac{81}{200},
+ \frac25
+ <\frac{\log4}{\log31}
+ <\frac{81}{200}
+ <\frac{\log2}{\log3}.
 \]
-so $31/4$, and every positive power $(31/4)^r$, lies in the enlarged region
+The first two comparisons come respectively from $31^2<4^5$ and
+$4^{200}<31^{81}$; the last comes from $3^{81}<2^{200}$.  The lower bound is
+the checked theorem
+\lword{Erdos1049/ZudilinHeightRegion.lean}{67}{twoFifths_lt_thirtyoneFour_log_ratio}{two-fifths
+lower bound}.  Consequently $31/4$, and every positive power $(31/4)^r$, lies
+in the enlarged region
 (\lword{Erdos1049/ZudilinHeightRegion.lean}{45}{thirtyoneFour_mem_zudilinHeightRegion}{checked},
 \lword{Erdos1049/ZudilinHeightRegion.lean}{62}{thirtyoneFour_power_mem_zudilinHeightRegion}{power family}).
 The same base lies strictly outside the earlier
@@ -1191,14 +1197,25 @@ rational function.
 \subsection{The quantitative height frontier}
 
 The module \texttt{HermitePadeNoGo} defines an explicit rectangular
-two-parameter exponent model.  Within that model, the displayed threshold
-never exceeds the classical one-function margin, with equality only at the
-classical endpoint
+two-parameter exponent model.  Writing $\sigma=1+\rho+u$, its
+denominator-cleared gap has the exact expansion
+\[
+ -\pi^2\rho^2-\pi^2\rho u-2\pi^2\rho-2\rho^2-10\rho u
+ -4\rho-6u^2-8u.
+\]
+Thus for $\rho\ge0$ and $\sigma\ge1+\rho$ the cleared gap is nonpositive, and
+it vanishes exactly when $\rho=0$ and $\sigma=1$
+(\lword{Erdos1049/HermitePadeNoGo.lean}{43}{hpClearedGap_expansion}{exact expansion},
+\lword{Erdos1049/HermitePadeNoGo.lean}{53}{hpClearedGap_nonpos}{nonpositivity},
+\lword{Erdos1049/HermitePadeNoGo.lean}{70}{hpClearedGap_eq_zero_iff}{equality case}).
+Equivalently, within that model the displayed threshold never exceeds the
+classical one-function margin, with equality only at the classical endpoint
 (\lword{Erdos1049/HermitePadeNoGo.lean}{99}{rectangular_hp_threshold_le_classical}{bound},
 \lword{Erdos1049/HermitePadeNoGo.lean}{121}{rectangular_hp_threshold_eq_classical_iff}{equality}).
-This is an algebraic theorem about the four defined exponent expressions.  It
-does not construct polynomials or remainders, prove integrality or a
-determinant estimate, or establish the asymptotics of a Hermite--Pad\'e family.
+This is an algebraic theorem about the four defined exponent expressions and
+only that explicit rectangular model.  It does not construct polynomials,
+remainders, integrality, a determinant, or asymptotics, and it is not a
+method-universal no-go theorem.
 The separate $81/200$ cutoff of the preceding section satisfies
 \[
  \frac{81}{200}<\frac{\log2}{\log3}.
