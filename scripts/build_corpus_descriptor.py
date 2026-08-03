@@ -422,10 +422,13 @@ def render_readme_scale_strip(
             f"| Curated claim records | {len(claims['claims']):,} |",
             f"| Contribution families | {len(contribution_families):,} |",
             "",
-            f"Of the formal results above, {scale['generated_certificate_declaration_count']:,} are machine-generated",
-            "certificate shards, counted as formal source and never as separate mathematical",
-            "claims. Claim records span every status, including cited and open, and are",
-            "partitioned exactly once. These are navigation counts, not novelty claims.",
+            f"Most of the corpus is generated-then-checked rather than written by hand;",
+            f"the certificate provenance contract explicitly marks {scale['generated_certificate_declaration_count']:,} declarations,",
+            "and the largest historical certificate families predate its markers, so the",
+            "marked figure is a floor, not the share. Generated shards are counted as",
+            "formal source and never as separate mathematical claims. Claim records span",
+            "every status, including cited and open, and are partitioned exactly once.",
+            "These are navigation counts, not novelty claims.",
             README_SCALE_END,
         ]
     )

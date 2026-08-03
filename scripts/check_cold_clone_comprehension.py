@@ -68,7 +68,10 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # Measured at eight problems: 18,569 bytes, or 321 bytes per problem above
     # the 16,000 fixed prefix. 400 leaves room for one further problem without
     # reopening this line, and still fails on a runaway projection.
-    "README.md": 16_000 + 400 * INDEXED_PROBLEM_COUNT,
+    # 2026-08-03: fixed prefix 16_000 -> 16_450 to fund the honest
+    # generated-share sentence (floor-not-share wording) in the corpus strip;
+    # counts must never ship implying the unmarked remainder is hand-written.
+    "README.md": 16_450 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,

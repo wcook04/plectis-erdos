@@ -24,9 +24,9 @@ these with `python3 scripts/query_semantic.py <shape>`.
 
 | Shape | Count | Meaning |
 |---|---:|---|
-| `nonrecurring` | 187 | substantive content, weighted to #257 (117) over #249 (54) |
-| `classical` | 70 | already in the literature or matched to prior art; formalisation value only |
-| `bare-equivalences` | 24 | restatements, labelled by this project's own audit |
+| `nonrecurring` | 280 | substantive content, weighted to #257 (168) over #249 (85) |
+| `classical` | 101 | already in the literature or matched to prior art; formalisation value only |
+| `bare-equivalences` | 32 | restatements, labelled by this project's own audit |
 
 Neither count asserts novelty: `nonrecurring` means a statement does not recur
 inside this corpus, not that it is new to mathematics. That judgement is a human

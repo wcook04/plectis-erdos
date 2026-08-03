@@ -114,7 +114,7 @@ authority for the six expansion problems.
   theorem about the coefficient sequence, not about irrationality of `S`.
   Claim `dyadic_totient_certificate_interface` (the basis declarations at
   `:1265`, `:1380`, `:1392` — registry: none).
-- Irrationality of `S` has five checked exact characterisations, from
+- Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
   `Erdos249257/PivotAntiReconstruction.lean:1775`; claims
@@ -122,9 +122,10 @@ authority for the six expansion problems.
 - Finite: the classical Farey/mediant window at `K = 240` excludes reduced
   denominators through `7.96 × 10³⁴` — improvement over the classical bound:
   zero (claim `denominator_exclusion`) — and diagonal certificates exist at
-  every `t ≤ 82` with a proved wall at `t = 83`
-  (`ErdosProblems/Skip/LadderT67.lean:71264`, `:71288`; claim
-  `certified_kill_instances`).
+  every `t ≤ 82`, with the plateau broken at `t = 83` and a proved depth
+  floor of `125` there (`ErdosProblems/Skip/LadderT67.lean:71264`, `:71285`,
+  `:71294`; claim `certified_kill_instances`; no certificate at `t = 83` is
+  claimed).
 - Open: the unbounded certificate supply, which is equivalent to #249 itself;
   a checked splice construction shows no finite inspection can settle it.
 
@@ -133,9 +134,12 @@ authority for the six expansion problems.
 - Unconditional: `pₙ ≤ 1250(n+1)⁴` by an elementary argument, so the series
   is summable and equals `2 +` the prime-gap dyadic series with no external
   input (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:360`, `:379`,
-  `:427`); irrationality is exactly equivalent to cofinal non-integral tail
-  shifts (`irrational_initial_iff_cofinalNonintegralTailShifts`, `:1572`).
-  Checked theorems; exact equivalence; registry: none.
+  `:427`); and for any sequence obeying the checked integer-digit dyadic
+  tail recurrence, irrationality is exactly equivalent to cofinal
+  non-integral tail shifts
+  (`irrational_initial_iff_cofinalNonintegralTailShifts`, `:1572`) — the
+  identification of the concrete prime tail with that recurrence is
+  paper-level. Checked theorems; registry: none.
 - A checked countermodel closes the periodicity route: an explicit unbounded,
   non-eventually-periodic digit sequence with rational dyadic sum
   (`carryCoeff_natCast_not_eventually_periodic`, `:1163`).
@@ -146,8 +150,8 @@ authority for the six expansion problems.
 **#257 — is `∑_{n∈A} 1/(2ⁿ−1)` irrational for every infinite `A`? (reviewed
 core)**
 
-- Native unconditional: for every finite nonempty support `F` and every base
-  `b ≥ 2`, the reduced denominator of `∑_{n∈F} 1/(bⁿ−1)` is coprime to `b`
+- Native unconditional: for every finite nonempty support `F` of positive
+  exponents and every base `b ≥ 2`, the reduced denominator of `∑_{n∈F} 1/(bⁿ−1)` is coprime to `b`
   and has multiplicative order exactly `lcm F` — `finite_period_noncollapse`,
   `Erdos249257/CertificateKernel.lean:5091`, with no witness-supply
   hypothesis. Checked theorem; registry: none.
@@ -158,17 +162,18 @@ core)**
 - The base-2 Mersenne achievement set — all subsums of `∑ 1/(2ⁿ−1)` — is
   compact, perfect, totally disconnected, nowhere dense, and of Lebesgue
   measure one (strict-tail Cantor structure after Kovač–Tao, Remark 4.1; the
-  measure clause proved here) — `Erdos249257/GreedyAchievementSet.lean:996`,
+  measure clause is proved here, with no novelty claim) —
+  `Erdos249257/GreedyAchievementSet.lean:996`,
   `:1633–1658`; claim `greedy_achievement_geometry`. Membership of `1/2` is
   equivalent to infinitely many greedy skips (`:2527`) and to the absence of
-  a fatal half-gap (`Erdos249257/HalfCutLocator.lean:643`); a positive answer
+  a fatal half-gap (`Erdos249257/HalfCutLocator.lean:654`); a positive answer
   would refute universal #257.
 - Methodological: a formalised squarefree-support no-go theorem is shown to
   be an artefact of normalisation — adjoining `1` to the support shifts the
   value by a rational and flips the divisor-incidence parity, and the
   finite-change principle is itself checked
-  (`ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean`;
-  `Erdos249257/CertificateKernel.lean:9467`, `:9476`). The squarefree value
+  (`ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:94`, `:111`,
+  `:140`; `Erdos249257/CertificateKernel.lean:9467`, `:9476`). The squarefree value
   itself is settled at power-of-two bases in the literature (Duverney–Tachiya
   2019; cited, not formalised). Registry: none.
 - Open: universal #257, and the `1/2` and `1/21` memberships.
@@ -179,8 +184,9 @@ core)**
   running-lcm reciprocal sums are transcendental — a paper argument in the
   problem note whose transcendence engine is Bugeaud–Laurent (Theorem 1.1);
   deliberately not a Lean theorem, and the note says so. Settles every
-  two-prime instance and upgrades the unproved assertion in Erdős's 1973
-  letter; the reduction is proved in the note, novelty unestablished.
+  two-prime instance, upgrading the letter's unproved assertion — which
+  Erdős stated for arbitrarily many primes — at exactly its two-prime
+  instances; the reduction is proved in the note, novelty unestablished.
 - Lean-checked: the exact running-lcm product
   `L(x) = p^⌊log_p x⌋ q^⌊log_q x⌋ r^⌊log_r x⌋`
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:123`; formalisation of a
