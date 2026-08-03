@@ -55,8 +55,18 @@ def main() -> int:
 
     mutations = (
         (
-            guide.replace("Both mathematical problems remain open", ""),
+            guide.replace(
+                "All six original mathematical problems remain open", ""
+            ),
             "open-problem boundary removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "reviewed claim registry covers #249 and #257",
+                "claim registry covers the project",
+            ),
+            "reviewed-versus-expansion boundary removed",
         ),
         (
             guide.replace("Lean decides whether a formal proof", "Software decides"),

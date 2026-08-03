@@ -41,8 +41,10 @@ SECTION_ORDER = (
 
 REQUIRED_ANCHOR_GROUPS = {
     "purpose_and_boundary": (
-        "Both mathematical problems remain open",
-        "does not claim a solution to either problem",
+        "six unsolved problems in mathematics",
+        "reviewed claim registry covers #249 and #257",
+        "All six original mathematical problems remain open",
+        "does not claim a solution to any of them",
         "self-contained public release",
     ),
     "three_decisions": (
