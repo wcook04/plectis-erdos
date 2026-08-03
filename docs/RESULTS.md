@@ -4,8 +4,9 @@
 # Results and limits
 
 This repository formalises finite results, reductions, equivalences, and
-obstructions related to Erdős Problems 249 and 257. It does not solve either
-problem.
+obstructions related to eight Erdős problems — #68, #243, #249, #251, #257,
+#269, #1041, and #1049 — with #249 and #257 as the two reviewed core
+programmes. It does not solve any of them.
 
 Lean source checked by the pinned Lean kernel is proof authority. The audit log
 reports the headline declarations below with kernel assumptions
@@ -14,9 +15,9 @@ the displayed implication; it does not prove that its hypotheses occur.
 
 ## Ten-minute verdict
 
-Both Erdős problems remain open. The development is neither a partial solution
-nor an empty collection of restatements. Its checked non-restatement centre
-includes:
+All eight Erdős problems remain open. The development is neither a partial
+solution nor an empty collection of restatements. For the two reviewed
+programmes, its checked non-restatement centre includes:
 
 - for #257, exact finite-period noncollapse, eventually-periodic support
   irrationality, a signed periodic-weight dichotomy, feedback and rank-gap
@@ -61,6 +62,173 @@ python3 scripts/query_semantic.py bare-equivalences
 python3 scripts/query_semantic.py classical
 python3 scripts/query_semantic.py open-antecedents
 ```
+
+## Strongest checked results by problem
+
+One entry per problem: the strongest checked statements, their exact status,
+and where to verify them. Each item carries the independent labels used across
+this repository: what Lean checked, what the statement changes, and its
+literature relationship. `formalised here` renders known mathematics;
+`proved here` makes no novelty claim — that judgement is a human number
+theorist's, and no query here supplies it. Reduction targets are named with
+their own status in the same sentence. The reviewed claim registry
+([`docs/claims.json`](claims.json)) covers the #249/#257 core; entries marked
+*registry: none* are kernel-checked source whose reviewed claim rows do not
+yet exist, and [`docs/problems.json`](problems.json) is the per-problem
+authority for the six expansion problems.
+
+**#68 — is `∑_{n≥2} 1/(n!−1)` irrational?**
+
+- Irrationality is equivalent, with no hypotheses, to one integer
+  divisibility test on exact rational prefixes failing infinitely often —
+  `irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses`,
+  `ErdosProblems/Erdos68/FactorialZeroPlateau.lean:1090`. Checked theorem;
+  exact equivalence, transporting the difficulty without reducing it;
+  registry: none.
+- The kernel-internal denominator bound is `q ≥ 67` (`:940`); the `300000`
+  exclusion is a checked implication (`:876`) whose evaluation is an external
+  computation, not a kernel result.
+- Open: produce infinitely many non-unit carries.
+
+**#243 — does rationality force eventual Sylvester recurrence?**
+
+- A divergent natural sequence with upward steps bounded by `B` cannot stay
+  coprime to an infinite family of fresh pairwise-coprime moduli —
+  `no_boundedRise_of_tailAvoidance`,
+  `ErdosProblems/Erdos243/ReciprocalTailRigidity.lean:897`. Checked theorem;
+  reusable obstruction; registry: none.
+- Given normalised vanishing — supplied for the canonical orbit by Koizumi
+  (Integers 26 (2026), A28; cited, prose bridge) — a bounded negative part or
+  finite normalised negative mass forces the error to vanish and the
+  Sylvester recurrence to begin (`:2177`, `:2264`;
+  `SparseResetRecovery.lean:155`, `:175`). Checked conditional theorems; the
+  note concedes its absorption and descent lemmas as Koizumi prior art.
+- Open: the unbounded mixed-sign regime.
+
+**#249 — is `∑ φ(n)/2ⁿ` irrational? (reviewed core)**
+
+- Unconditional: the dyadic sections `n ↦ φ(2ʲn+r)` of Euler's totient have
+  an explicit rational basis, and the level-`e` span has dimension exactly
+  `2ᵉ + 1` — `finrank_canonicalTotientKernel_eq`,
+  `Erdos249257/TotientMahlerDefect.lean:989`; basis object at `:1392`. A
+  theorem about the coefficient sequence, not about irrationality of `S`.
+  Claim `dyadic_totient_certificate_interface` (the basis declarations at
+  `:1265`, `:1380`, `:1392` — registry: none).
+- Irrationality of `S` has five checked exact characterisations, from
+  tail-difference certificates through the lcm-diagonal form to
+  window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
+  `Erdos249257/PivotAntiReconstruction.lean:1775`; claims
+  `certificate_completeness`, `certificate_reduction`.
+- Finite: the classical Farey/mediant window at `K = 240` excludes reduced
+  denominators through `7.96 × 10³⁴` — improvement over the classical bound:
+  zero (claim `denominator_exclusion`) — and diagonal certificates exist at
+  every `t ≤ 82` with a proved wall at `t = 83`
+  (`ErdosProblems/Skip/LadderT67.lean:71264`, `:71288`; claim
+  `certified_kill_instances`).
+- Open: the unbounded certificate supply, which is equivalent to #249 itself;
+  a checked splice construction shows no finite inspection can settle it.
+
+**#251 — is `∑ pₙ/2ⁿ` irrational?**
+
+- Unconditional: `pₙ ≤ 1250(n+1)⁴` by an elementary argument, so the series
+  is summable and equals `2 +` the prime-gap dyadic series with no external
+  input (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:360`, `:379`,
+  `:427`); irrationality is exactly equivalent to cofinal non-integral tail
+  shifts (`irrational_initial_iff_cofinalNonintegralTailShifts`, `:1572`).
+  Checked theorems; exact equivalence; registry: none.
+- A checked countermodel closes the periodicity route: an explicit unbounded,
+  non-eventually-periodic digit sequence with rational dyadic sum
+  (`carryCoeff_natCast_not_eventually_periodic`, `:1163`).
+- Open: cofinally many adjacent index pairs with small tail shifts and
+  differing gaps; each smallness condition constrains a complete infinite
+  tail.
+
+**#257 — is `∑_{n∈A} 1/(2ⁿ−1)` irrational for every infinite `A`? (reviewed
+core)**
+
+- Native unconditional: for every finite nonempty support `F` and every base
+  `b ≥ 2`, the reduced denominator of `∑_{n∈F} 1/(bⁿ−1)` is coprime to `b`
+  and has multiplicative order exactly `lcm F` — `finite_period_noncollapse`,
+  `Erdos249257/CertificateKernel.lean:5091`, with no witness-supply
+  hypothesis. Checked theorem; registry: none.
+- Formalised known results: the full-support series is irrational in every
+  base `b ≥ 2` (Erdős 1948; claim `eb_full_support`), as are pairwise-coprime
+  supports with summable reciprocals (Erdős 1968) and eventually periodic
+  supports.
+- The base-2 Mersenne achievement set — all subsums of `∑ 1/(2ⁿ−1)` — is
+  compact, perfect, totally disconnected, nowhere dense, and of Lebesgue
+  measure one (strict-tail Cantor structure after Kovač–Tao, Remark 4.1; the
+  measure clause proved here) — `Erdos249257/GreedyAchievementSet.lean:996`,
+  `:1633–1658`; claim `greedy_achievement_geometry`. Membership of `1/2` is
+  equivalent to infinitely many greedy skips (`:2527`) and to the absence of
+  a fatal half-gap (`Erdos249257/HalfCutLocator.lean:643`); a positive answer
+  would refute universal #257.
+- Methodological: a formalised squarefree-support no-go theorem is shown to
+  be an artefact of normalisation — adjoining `1` to the support shifts the
+  value by a rational and flips the divisor-incidence parity, and the
+  finite-change principle is itself checked
+  (`ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean`;
+  `Erdos249257/CertificateKernel.lean:9467`, `:9476`). The squarefree value
+  itself is settled at power-of-two bases in the literature (Duverney–Tachiya
+  2019; cited, not formalised). Registry: none.
+- Open: universal #257, and the `1/2` and `1/21` memberships.
+
+**#269 — are reciprocal sums of running lcms irrational?**
+
+- For every pair of distinct primes, both the de-duplicated and the repeated
+  running-lcm reciprocal sums are transcendental — a paper argument in the
+  problem note whose transcendence engine is Bugeaud–Laurent (Theorem 1.1);
+  deliberately not a Lean theorem, and the note says so. Settles every
+  two-prime instance and upgrades the unproved assertion in Erdős's 1973
+  letter; the reduction is proved in the note, novelty unestablished.
+- Lean-checked: the exact running-lcm product
+  `L(x) = p^⌊log_p x⌋ q^⌊log_q x⌋ r^⌊log_r x⌋`
+  (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:123`; formalisation of a
+  classical identity), the four-letter block alphabet `{2, 6, 10, 30}`
+  (`:699`), and a rank-two kernel obstruction (`:479`, `:721`).
+- Open: any three-prime case; the rationality-to-carry bridge and the
+  cofinal window escape.
+
+**#1041 — short connections inside polynomial lemniscates?**
+
+- Checked: quantitative root retention under constant perturbation
+  (`constant_perturbation_roots_in_unitDisk`,
+  `ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean:287`) and arbitrarily
+  small translations separating all pairwise ray arguments (`:197`). The
+  ray-separation exclusion is checked in consumer form only: the
+  exponential-decay connection equation is its hypothesis, not a theorem
+  (`:315`). Registry: none.
+- The note's main independent contribution is prose, not Lean: a specific
+  invalid three-ended local block at an interior Morse saddle in a recent
+  manuscript's load-bearing Proposition 12 — identified as a proof gap, not
+  a counterexample.
+- Open: repair or refute that decomposition; the planar topology and length
+  bookkeeping.
+
+**#1049 — Lambert series at rational bases, beginning with `3/2`?**
+
+- Checked exclusions at `3/2`, each of one named mechanism only: the
+  coordinatewise clearing scheme is impossible for all parameters
+  (`threeHalves_no_coordinatewiseCorridor`,
+  `ErdosProblems/Erdos1049/RationalBaseLambert.lean:155`), scalar content is
+  neutral for the local-to-Archimedean balance, and unit endpoints exclude
+  both `2` and `3` from a common divisor
+  (`ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean:293`). Registry: none.
+- The elementary height inequality used by Bundschuh–Väänänen's external
+  irrationality criterion at `7/2` is checked (`RationalBaseLambert.lean:83`);
+  the analytic theorem itself remains external. Formalisation of known
+  inputs.
+- Open: irrationality at `3/2`; the primitive noncollapsed construction;
+  analytic remainder control. The note proves no irrationality result and
+  says so.
+
+The semantic corpus marks exactly eight statements `candidate_new_statement` —
+the only machine novelty marks in this release, against 5,460 of 6,036
+statement nodes still `not_assessed`. They concentrate in the #249/#257 core
+(the totient Möbius-numerator normal form, a rank-one overshoot barrier, and
+the `1/2` tail-escape and middle-producer family). Reproduce the list from
+`docs/semantic_corpus.json` (`statement_nodes[].prior_art_state`); candidate
+status is a search outcome recorded for triage, not a novelty claim.
 
 ## What is proved
 

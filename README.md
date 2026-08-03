@@ -24,13 +24,13 @@ Every covered Erdős problem has its own PDF:
 
 | Problem | Mathematical statement | Public checked frontier; what remains |
 |---|---|---|
-| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | Exact factorial-successor and carry equivalences, integral-channel and projection consumers, and a finite denominator exclusion through `300000` are checked; no cofinal non-unit-carry or residual-nonintegrality producer is proved. |
+| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | A checked hypothesis-free equivalence reduces irrationality to one integer divisibility test failing infinitely often. The kernel-internal denominator bound is `67`; the `300000` exclusion is a checked implication evaluated externally. Producing infinitely many failures remains open. |
 | **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? | Koizumi supplies normalised vanishing for the canonical orbit. Lean then excludes a bounded negative part and finite normalised negative mass; the missing negative-part bound and the unbounded mixed-sign regime remain open. |
 | **#249** | Is `∑ φ(n)/2ⁿ` irrational? | The dyadic-section span has rank `2^e+1` for every `e≥1` and is infinite-dimensional. Reduced denominators through `79,639,646,646,701,375,323,355,774,875,831,053` and diagonal scales through `t=82` are excluded; no `t=83` or unbounded producer is proved. |
-| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | Lean checks the finite identity, the infinite equivalence conditional on summability, and the integral-shift consumer; the prime number theorem supplies summability externally, and the concrete infinite-sum bridge remains open. No theorem produces the required cofinal adjacent small-mismatch gap pairs. |
+| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | Summability and the prime-gap identity are checked unconditionally via an elementary polynomial prime bound, and irrationality is exactly equivalent to cofinal non-integral tail shifts. The concrete prime-tail bridge remains open; no theorem produces the required cofinal adjacent small-mismatch gap pairs. |
 | **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? | Lean checks full support, finite-period noncollapse, and exact restricted-set coding, topology, perfectness, and measure. Prime support at base `2` and squarefree support at power-of-two bases are cited prior results. Universal #257 and the `1/2` and `1/21` targets remain open. |
 | **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | For every two-prime set, both the de-duplicated and repeated sums are proved transcendental by a paper argument using Bugeaud–Laurent. From three primes onward the problem remains open; Lean checks exact structure and a conditional carry consumer, not the rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion. |
-| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? | Newton-flow value decay, ray separation, the translation collision locus, and root-retention bounds are checked. The printed proof of a recent claimed spanning-tree decomposition has an invalid local saddle block; repairing the topology and metric gluing remains open. |
+| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? | Newton-flow value decay, the ray-separation consumer (connection decay is its hypothesis), the translation collision locus, and quantitative root-retention bounds are checked. The printed proof of a recent claimed spanning-tree decomposition has an invalid local saddle block; repairing the topology and metric gluing remains open. |
 | **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? | Lean checks construction-specific no-go theorems, four-jet cancellation, and direct-clearing obstructions at `3/2`, plus the elementary height inequality used by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality result; `3/2`, the primitive noncollapsed construction, and analytic remainder control remain open. |
 
 This table is the blank-slate agent and reader inventory: no query is required
@@ -65,7 +65,8 @@ The finite #249 result is the classical Farey/mediant bound at `K=240`
 (numerical delta `0`); Farey's method supplies the number directly. The local
 contribution is checked arithmetic, transfers,
 and the sharp first failure.
-[RESULTS](docs/RESULTS.md) gives the typed census and limits.
+[RESULTS](docs/RESULTS.md) gives the strongest checked results for each of
+the eight problems, then the typed census and limits.
 
 This self-contained public Plectis checkout is not an entrypoint into any private
 development system. `v0.6.0` is the latest tagged release and citation anchor;
@@ -114,8 +115,9 @@ Five further obstructions are stated with their limits in
 An exact final-skip band formula does not show that the actual orbit avoids
 an unsafe band.
 
-[Orientation](docs/ORIENTATION.md) routes claims; the
-[mathematics paper](erdos249-257-main-paper.pdf) owns the exposition.
+[Orientation](docs/ORIENTATION.md) routes claims; the retained
+[mathematics paper](erdos249-257-main-paper.pdf) preserves the joint
+#249/#257 exposition.
 
 ## What remains open
 

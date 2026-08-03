@@ -11,7 +11,7 @@ this directory are authored papers with narrower jobs.
 Each covered Erdős problem has its own short problem note. Problems #249 and
 #257 also have full working-record papers. `erdos249-257-main-paper.tex` is the
 retained joint exposition of those two reviewed lanes; it is not the index for
-the other four problems.
+the other six problems.
 
 Every formal statement links to the exact source
 line on GitHub, pinned to the formal-source checkpoint named in
@@ -35,13 +35,15 @@ joint paper.
 
 ## Erdős Problem Notes
 
-The six standalone notes
+The eight standalone notes
 
 - `erdos-249-binary-totient-series.tex`
 - `erdos-257-mersenne-support-subseries.tex`
+- `erdos-68-factorial-denominator-irrationality.tex`
 - `erdos-243-reciprocal-tail-rigidity.tex`
 - `erdos-251-prime-gap-dyadic-series.tex`
 - `erdos-269-three-prime-running-lcm.tex`
+- `erdos-1041-lemniscate-newton-flow.tex`
 - `erdos-1049-rational-base-lambert.tex`
 
 are the problem-owned series. One note owns one Erdős problem, and each covers

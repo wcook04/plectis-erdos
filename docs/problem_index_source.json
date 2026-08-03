@@ -126,8 +126,17 @@
       "directory": "ErdosProblems/Erdos243",
       "principal_module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
       "companion_modules": [
-        "ErdosProblems.Erdos243.FiniteHorizonResidue"
+        "ErdosProblems.Erdos243.FiniteHorizonResidue",
+        "ErdosProblems.Erdos243.SparseResetRecovery",
+        "ErdosProblems.Erdos243.DynamicCancellation",
+        "ErdosProblems.Erdos243.FeedbackRealizability",
+        "ErdosProblems.Erdos243.GlobalLcmHeight",
+        "ErdosProblems.Erdos243.LcmCriticalBoundary",
+        "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
+        "ErdosProblems.Erdos243.WeightedCRTRepair"
       ],
+      "note_coverage_floor": 0.35,
+      "note_coverage_rationale": "The note pins the complete result spine in ReciprocalTailRigidity and SparseResetRecovery, including every headline declaration. The other seven modules in the build closure are supporting integer-dynamics machinery reached through those checked consumers; naming them here (they were previously absent from this index despite being imported by ErdosProblems/Root.lean) enlarged the coverage denominator from two modules to nine without any change to the note. The floor is recorded at the honest new denominator rather than kept high by re-hiding modules.",
       "note_artifact_id": "erdos_243_note",
       "required_note_declarations": [
         {
@@ -392,7 +401,7 @@
       ],
       "what_is_not_checked": [
         "The target irrationality.",
-        "Summability of the concrete prime series and the definition and recurrence of its concrete prime-gap tail as Lean infinite sums; the note supplies these at paper level from the prime number theorem.",
+        "The definition and recurrence of the concrete prime-gap tail as Lean infinite sums; the note supplies these at paper level. Summability of the concrete prime series is Lean-checked unconditionally via an elementary polynomial prime bound.",
         "A theorem supplying cofinally many adjacent actual-prime-gap tail shifts in the open unit interval with the required gap mismatch.",
         "Any theorem forcing periodicity or automaticity of the prime gaps from rationality; the free-carry identity disconfirms that route."
       ],

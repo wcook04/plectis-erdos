@@ -56,6 +56,25 @@ attribution evidence only.
 | H. Wang and J. M. Grau Ribas, [*Positive dyadic density for rational weighted binary expansions* (arXiv, 2026)](https://arxiv.org/abs/2606.24972) | Direct antecedent for the rationality-forced integral carry recurrence in the weighted-binary special case (c(n)=n d_n). | The public generic criterion is a formalisation/abstraction; its converse and rigidity make no priority claim. The source's positive-density theorem and Erdős #260 corollary are neither used nor formalised here. |
 | R. Crandall, [*The googol-th bit of the Erdős--Borwein constant* (2012)](https://doi.org/10.1515/integers-2012-0007); J. M. Campbell, [*On the binary digits of the Erdős--Borwein constant* (arXiv, 2026)](https://arxiv.org/abs/2605.24160) | Adjacent work on binary digits of the full-support constant; Campbell resolves Crandall's question on infinitely many occurrences of the block \(11\). | Neither result is formalised or used by this release, and neither changes its irrationality or open-problem claims. |
 
+## Expansion-note principal sources (#68, #243, #251, #269, #1041, #1049)
+
+The same contract as above applies: relationship, not proof authority, and no
+row widens a release claim. Each source below is load-bearing for exactly the
+stated use in its problem note, where the full statement-level comparison is
+recorded.
+
+| Source | Problem | Relationship to this release | Boundary |
+|---|---|---|---|
+| K. Koizumi, *Irrationality of the reciprocal sum of doubly exponential sequences* (Integers 26 (2026), A28; [arXiv:2504.05933](https://arxiv.org/abs/2504.05933)) | #243 | Supplies normalised vanishing for the canonical orbit, the sole hypothesis of the note's headline conditional theorems not proved in Lean; its Lemma 3 and Proposition 1(2) are conceded in-note as prior art for the note's absorption and descent lemmas. | The bridge is prose; only the integer state-system theorems are kernel-checked here, and no priority or independence is adjudicated. |
+| Y. Bugeaud and M. Laurent, Hecke–Mahler transcendence (Theorem 1.1 as cited in the #269 note) | #269 | External transcendence engine for the note's two-prime theorems: both the de-duplicated and repeated running-lcm reciprocal sums are transcendental for every pair of distinct primes, by a paper argument. | The two-prime theorems are deliberately not Lean declarations; nothing follows for three or more primes. |
+| P. Erdős, letter of 1 January 1973 (printed p. 335 as cited in the #269 note) | #269 | Asserted the de-duplicated two-prime irrationality without a printed proof; the note's route is an independent modern argument, not a recovery of the unprinted one. | Historical formulation and priority context only. |
+| V. Kovač, counterexample to Erdős's variable-denominator expectation (2026, Theorem 1) | #251 | Refutes the 1988 expectation that `∑ p_n/(g_1⋯g_n)` is irrational whenever `g_n ≥ 2`, `g_n = o(p_n)`; the note records that the live catalogue still repeats the refuted expectation. | Concerns the variable-denominator variant, not the fixed dyadic series studied here. |
+| Y. Zhang (2014); J. Maynard (2015); Ford–Green–Konyagin–Maynard–Tao (2018) | #251 | Bounded-gap and large-gap prime results, cited and each shown insufficient for the required joint dyadic distribution of a logarithmic block of gap differences. | Context; none is used as a proof input. |
+| P. Bundschuh and K. Väänänen, *Compositio Math.* 91 (1994), Theorem 2 | #1049 | External irrationality criterion at base `7/2`; the release checks only its elementary Archimedean height inequality. | The analytic argument remains external, and nothing follows at `3/2`. |
+| P. Erdős, F. Herzog, and G. Piranian, *Metric properties of polynomials* (J. Analyse Math. 6 (1958), Problem 5, p. 139) | #1041 | Original problem source, including the known input that one lemniscate component contains at least two zeros. | Formulation, not proof; the note's saddle-block diagnosis of a recent manuscript is prose, not Lean. |
+| Koepf–Schmersau; D. Duverney (2001); Barreto–Kang–Kim–Kovač–Zhang (2026); Hančl–Tijdeman | #68 | Four cited irrationality criteria, each checked in the note *not* to apply to `∑ 1/(n!−1)` at a named boundary. | Non-applicability results; no criterion is claimed to transfer. |
+| Garaev–Luca–Shparlinski (Trans. AMS 356); C. L. Stewart (Publ. Math. Debrecen 65) | #68 | Growth and divisor inputs for the collision-core layer, derived and source-verified in the note. | Not kernel-checked; explicitly load-bearing for nothing beyond the stated uses. |
+
 ## Provisional theorem-specific comparisons
 
 These local rows come after the direct antecedents on purpose. They record

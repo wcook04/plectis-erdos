@@ -56,7 +56,7 @@ def main() -> int:
     mutations = (
         (
             guide.replace(
-                "All six original mathematical problems remain open", ""
+                "All eight mathematical problems remain open", ""
             ),
             "open-problem boundary removed",
         ),
