@@ -13,8 +13,8 @@ apparent waypoints are \emph{equivalent} to the full problem, not easier approac
 
 The functional $\mathtt{erdosSupportSeries}\ 2\ (-)$ denotes the base-$2$ Erd\H{o}s support series
 $\mathtt{erdosSupportSeries}\ 2\ A := \sum_{n\in A} 1/(2^n-1)$
-(\lean{erdosSupportSeries}{CertificateKernel.lean:8850}). $\mathtt{supportCoeff}\ A\ n :=
-|\{d\mid n : d\in A\}|$ (\lean{supportCoeff}{CertificateKernel.lean:8809}) is the divisor-indicator
+(\lean{erdosSupportSeries}{CertificateKernel.lean:8897}). $\mathtt{supportCoeff}\ A\ n :=
+|\{d\mid n : d\in A\}|$ (\lean{supportCoeff}{CertificateKernel.lean:8856}) is the divisor-indicator
 coefficient whose generating tail feeds every certificate below. $\mathcal{A} :=
 \mathtt{mersenneAchievementSet} = \{x\mid \exists A,\ 0\notin A\wedge x =
 \mathtt{positiveMersenneSupportValue}\ A\}$ (\lean{mersenneAchievementSet}{GreedyAchievementSet.lean:571}).
@@ -43,7 +43,7 @@ engine is
 \]
 with $\mathrm{Cert}(A)\Rightarrow \mathrm{Irrational}(\mathtt{erdosSupportSeries}\ 2\ A)$
 already proved unconditionally for \emph{every} $A$
-(\lean{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{CertificateKernel.lean:8984},
+(\lean{irrational_erdosSupportSeries_of_weighted_coeff_certificates}{CertificateKernel.lean:9031},
 \ev{Lean}, \scale{n/a} --- the theorem is universally quantified over $A$; only its hypothesis is
 unsupplied).  Therefore the stronger statement
 \[
@@ -81,7 +81,7 @@ unconditional Lean iff, to a purely combinatorial statement about one fixed orbi
 \[
 \mathrm{HALF}\ \Longleftrightarrow\ \left(\mathtt{greedyMersenneSkippedSupport}(1/2)\right).\mathrm{Infinite}
 \]
-(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2514},
+(\lean{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{GreedyAchievementSet.lean:2527},
 \ev{Lean}, \scale{uniform}, coordinate \coord{mobius-mersenne}, target-generic in the reverse
 direction --- the forward direction uses only that the target is rational, so the same theorem
 holds verbatim for every rational $t\ge 0$ in place of $1/2$).
@@ -134,7 +134,7 @@ socket carries no strategic advantage over proving $\mathrm{HALF}$ outright.
 Neither Prop.~\ref{prop:cpgs-equiv} nor Prop.~\ref{prop:strip-equiv} narrows the search space for
 $\mathrm{HALF}$. Their value is negative: they retire two named targets from the "worth chasing as
 an easier waystation" list. A third socket, the hypothesis $\forall N,\ \mathtt{mobiusCenteredHalfCarry}\,A\,N\le 2\sqrt N+4$
-of \lean{greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound}{HalfCarryReachability.lean:805},
+of \lean{greedy_half_infinite_of_mobiusCenteredHalfCarry_sqrtBound}{HalfCarryReachability.lean:833},
 is likewise proved EQUIVALENT to $\mathrm{HALF}$ for the specific support $A=G$ (Survivor 4,
 \ev{Math, adversarially verified, weakened}) --- not, as originally claimed, for every $A$ with
 $1\notin A$; the general-$A$ version is only a one-sided implication ($\mathrm{hbound}\Rightarrow
@@ -312,19 +312,19 @@ The second rational target has an exact current frontier:
  \quad\Longleftrightarrow\quad
  \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
 \]
-\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3508}
+\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3507}
 \quad\ev{Lean}.  The fatal branch means a finite fatal greedy gap followed
 by cofinite exact selection, eventual quotient/rational alignment, and
 eventual visits to every doubling block.  If it occurs, the canonical
 quotient remainder is eventually strictly larger than $2^R$ and follows one
 explicit affine recurrence:
-\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5624}
+\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5625}
 and
-\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5657}.
+\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5658}.
 Any unbounded sequence of closed returns instead proves membership.
 
 No finite support on ranks at least $2$ sums to $1/21$
-(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:59}).
+(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:61}).
 Thus membership would already be an infinite-support rational counterexample
 to $\mathrm{U257}$.  The missing step is to exclude the fatal aligned
 affine-supercapacity branch (or force unbounded closed returns); neither is

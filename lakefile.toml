@@ -17,6 +17,10 @@ name = "Erdos249257"
 # Problem-centric statements, built on the shared machinery in Erdos249257.
 [[lean_lib]]
 name = "ErdosProblems"
+# FactorialZeroPlateau's exact gcd certificates exceed Lean's default
+# interpreter stack on the public Linux runner.  This is a compile-time
+# resource bound only, so keep it weak rather than invalidating proof traces.
+weakLeanArgs = ["--tstack=65536"]
 
 # Downstream consumer example (examples/Examples.lean). Not a default target:
 # CI builds it explicitly with `lake build Examples` after the library.

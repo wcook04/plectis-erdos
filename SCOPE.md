@@ -3,8 +3,8 @@
 
 # Scope of this release
 
-This release does not prove Erdős #243, #249, #251, #257, #269, or #1049.
-All six remain open; their papers state only partial checked results and
+This release does not prove Erdős #68, #243, #249, #251, #257, #269, #1041,
+or #1049. All eight remain open; their papers give checked results and
 surviving obligations. Claims apply only to the source and dependencies at the
 immutable formal-source checkpoint in
 [`docs/claims.json`](docs/claims.json). The last release tag remains the

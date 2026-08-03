@@ -233,7 +233,7 @@ def main() -> int:
         raise AssertionError("Claude shared-instruction import deletion escaped")
 
     for token, label in (
-        ("## Six-problem cold-start card", "agent direct fleet card"),
+        ("## Eight-problem cold-start card", "agent direct fleet card"),
         (r"\sum_{n\ge1}p_n/2^n", "agent #251 mathematical statement"),
         ("`ai_workflow`", "agent standalone boundary"),
     ):

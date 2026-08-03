@@ -4,7 +4,7 @@ Let $\varphi$ be Euler's totient function and put
 \[
   S \;:=\; \sum_{n \ge 1} \frac{\varphi(n)}{2^{n}}
   \;=\; \tfrac12 + \tfrac14 + \tfrac{2}{8} + \tfrac{2}{16} + \tfrac{4}{32} + \cdots
-  \;=\; 1.3676308\ldots
+  \;=\; 1.3676308019850223\ldots
 \]
 The series converges absolutely because $\varphi(n) \le n$. Erd\H{o}s Problem
 \#249 asks whether $S$ is irrational. \emph{It is open.} Nothing in this
@@ -89,7 +89,7 @@ The bound is sharp for the method: $q = Q_0 + 1$ is the exact first failing
 denominator, exhibited as the mediant of two explicit unimodular Farey
 neighbours.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{Erdos249257.tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18337}
+\lean{Erdos249257.tsum\_totient\_div\_pow\_two\_ne\_ratCast\_of\_den\_le\_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
 \lean{Erdos249257.gap\_check\_window\_1\_240\_first\_failure}{GapFareyBound.lean:225}
 \end{thm}
 
@@ -136,13 +136,13 @@ certificate needs and provably cannot supply the other.
 \label{prop:rank}
 If $S$ is rational then, for every $e$, the dyadic carry-kernel family at
 level $e$ has $\Q$-rank at least $2^{e}-1$
-(\lean{Erdos249257.not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:284}).
+(\lean{Erdos249257.not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300}).
 The scale side is complete and uniform in $e$: the canonical family of
 $2^{e}+1$ dyadic totient-kernel channels is linearly independent over $\Q$ at
 every depth, via CRT plus Dirichlet
-(\lean{Erdos249257.linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900}),
+(\lean{Erdos249257.linearIndependent\_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}),
 so the full family spans an infinite-dimensional space
-(\lean{Erdos249257.not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1014}).
+(\lean{Erdos249257.not\_finiteDimensional\_span\_fullTotientKernel}{TotientMahlerDefect.lean:1145}).
 \coord{carry-rank} \scale{uniform} \ev{Lean}
 \end{prop}
 
@@ -553,7 +553,7 @@ kernel has trivial kernel:
   linearly independent over $\Q$ at every depth
   (Proposition~\ref{prop:rank}), and the natural repair --- a bounded
   compressed-adjoint certificate --- is impossible
-  (\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051},
+  (\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183},
   structure at \texttt{:1039}).
 \item \emph{M\"obius incidence.} $U_N(i,j) = \mu((i{+}1)/(j{+}1))$ when
   $(j{+}1) \mid (i{+}1)$ and $0$ otherwise is lower triangular with unit
@@ -902,7 +902,7 @@ and uniform in $e$ (Proposition~\ref{prop:rank}).
 
 \textbf{Honest flag, and it is severe.} B6 partly indicts this route from
 inside. The most natural approach to the upper bound is dead
-(\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051}),
+(\lean{Erdos249257.false\_of\_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183}),
 and what rationality actually buys --- uniform eventual periodicity of the
 carry's dyadic sections mod $v$ --- provably does not promote to a $\Q$-rank
 bound (Proposition~\ref{prop:period-not-rank}). So this survivor is genuinely
@@ -927,12 +927,13 @@ is an audit and is labelled as evidence every time it is used.
 document. \scale{fixed} means one instance; \scale{bounded} means every
 instance up to an explicit bound; \scale{cofinal} means infinitely often past
 every threshold; \scale{uniform} means for all parameters with no dependence.
-The single most important structural fact about the corpus is that
-\emph{everything unconditional and quantitative sits on the fixed or bounded
-side, while $\mathrm{Sep}$ is cofinal}. Theorem~\ref{thm:gamma} says that gap
-is one of kind and not of degree: no accumulation of bounded verification, at
-any bound, is evidence that the cofinal statement holds. Read every result's
-\texttt{scale} tag before reading its content.
+The single most important structural fact about the corpus is narrower:
+\emph{every direct certificate deposit for $\mathrm{Sep}$ is fixed or bounded,
+although the corpus also contains uniform and cofinal structural theorems}.
+Those stronger-scale results do not produce $\mathrm{Sep}$. Theorem~\ref{thm:gamma}
+says that no accumulation of bounded verification, at any bound, is evidence
+that the cofinal statement holds. Read every result's \texttt{scale} tag before
+reading its content.
 
 \paragraph{Coordinates, and why obstructions are relative to them.} Every
 obstruction carries a \texttt{coord} tag, because an obstruction is always an

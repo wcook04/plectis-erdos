@@ -156,7 +156,7 @@ def main() -> int:
     try:
         checker.validate_entry_links(
             readme.replace(
-                "All six problems remain open.",
+                "All eight problems remain open.",
                 "A conditional producer would be required",
             ),
             agents,

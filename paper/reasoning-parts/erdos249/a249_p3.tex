@@ -481,7 +481,7 @@ depth --- exactly the shape a doubling-orbit equidistribution argument would pro
 
 \begin{thm}
 \lean{certifiedKill_all_upto_sixteen}{CarrySurvivorExtinction.lean:574} and
-\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:18843}
+\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:18890}
 (shallower sibling \lean{certifiedKill_all_small}{TotientTailPeriodKiller.lean:404}). \ev{Cert}.
 \scale{fixed}.
 \[
@@ -513,7 +513,7 @@ per-period search.
 \subsubsection{c3 --- the Farey denominator floor and its stalled growth law (\coord{farey-window})}
 
 \begin{thm}
-\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18337},
+\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384},
 built from the classical mediant lemma \lean{farey_gap}{GapFareyBound.lean:51} and the window
 sharpness certificate \lean{gap_check_window_1_240_le_79639646646701375323355774875831053}{GapFareyBound.lean:176}
 / \lean{gap_check_window_1_240_first_failure}{GapFareyBound.lean:225}. \ev{Lean} for the general
@@ -717,14 +717,14 @@ attributed the two theorems below to swapped files; direct reads this session co
 attribution is as given.
 
 \begin{thm}
-\lean{linearIndependent_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:900}. \ev{Lean}.
+\lean{linearIndependent_canonicalTotientKernelFamily}{TotientMahlerDefect.lean:935}. \ev{Lean}.
 \scale{uniform}. Unconditional and uniform in $e$: the dyadic totient-kernel family is linearly
 independent at every depth $e$ (dimension exactly $2^e{+}1$, via CRT and Dirichlet on primes in
 arithmetic progression).
 \end{thm}
 
 \begin{thm}
-\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:284}.
+\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}.
 \ev{Lean}. \scale{uniform}. If $S$ is rational there is a tempered integral carry orbit $u$ with
 \[
   2^e - 1 \;\le\; \mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathtt{canonicalCarryKernelFamily}\ u\ e)
@@ -737,9 +737,9 @@ So: rationality forces \emph{unbounded} carry-kernel rank, and the $2^e{-}1$ flo
 $e$ with a uniform proof. What is missing is the opposite inequality --- a rationality-side rank
 upper bound, which would contradict the floor and close \#249. The corpus proves one natural route
 to it is dead:
-\lean{false_of_compressedAdjointCertificate}{TotientMahlerDefect.lean:1051} (\ev{Lean},
+\lean{false_of_compressedAdjointCertificate}{TotientMahlerDefect.lean:1183} (\ev{Lean},
 \scale{n/a}) shows no
-\lean{CompressedAdjointCertificate}{TotientMahlerDefect.lean:1039} ($Q\cdot v\cdot A = $ boundary
+\lean{CompressedAdjointCertificate}{TotientMahlerDefect.lean:1171} ($Q\cdot v\cdot A = $ boundary
 with $|\mathrm{boundary}| < Q\cdot v$ and $A\ne 0$) can exist, and
 \texttt{not\_finiteDimensional\_span\_fullTotientKernel} (immediately above it in the same file)
 shows the full family spans an infinite-dimensional space. Cross-checked against a separate row,

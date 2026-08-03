@@ -5,16 +5,16 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # Erdős #257: the rational-half counterexample frontier
 
-The legacy half-carry development contains a much stronger endpoint than the
-problem-centric packet previously exposed.  A cofinal family of finite words
-with terminal carry negligible on the binary scale produces an infinite
-support whose reciprocal-Mersenne subseries is exactly `1/2`.  Hence that
-producer would *disprove*, rather than prove, the universal irrationality
-assertion.
+This module records two distinct boundary results.  First, a
+`HalfTerminalOnlyScaledVanishingSequence` would produce an infinite support
+whose reciprocal-Mersenne subseries is exactly `1/2`, and would therefore
+refute the universal irrationality assertion.  No such sequence is
+constructed here; finite suffix-cylinder computations do not supply the
+required cofinal hypothesis.
 
-This module gives that endpoint a short problem-centric interface.  It does
-not assert the remaining producer: the deterministic suffix-cylinder orbit
-has only been checked to a large finite cutoff.
+Second, no finite Boolean support using ranks at least two can sum to
+`1/21`.  This does not construct a representation of `1/21` or prove its
+membership in the achievement set.  Neither result settles Erdős #257.
 -/
 
 namespace ErdosProblems.Erdos257
@@ -34,7 +34,8 @@ theorem exists_rational_half_counterexample_of_terminalScaledVanishing
       erdosSupportSeries 2 A = (1 : ℝ) / 2 :=
   exists_infinite_support_half_of_terminalScaledVanishing S
 
-/-- The same producer negates the original universal irrationality claim. -/
+/-- The same conditional hypothesis negates the universal irrationality
+claim. -/
 theorem not_universal_of_terminalScaledVanishing
     (S : HalfTerminalOnlyScaledVanishingSequence) :
     ¬ UniversalMersenneSubseriesIrrationality := by
@@ -54,8 +55,9 @@ sum to `1/21`.  The reduced-denominator order theorem forces the support lcm
 to be six, hence every selected rank is one of `2`, `3`, or `6`; the eight
 remaining finite possibilities are then exact arithmetic.
 
-Consequently, any achievement-set construction of `1/21` automatically has
-infinite support. -/
+Consequently, if a representation of `1/21` is first reduced to Boolean
+support using only ranks at least two, this theorem rules out finite support.
+The existence of such a representation is not proved here. -/
 theorem finiteErdosSum_ne_one_div_twenty_one
     (F : Finset ℕ) (hF : ∀ n ∈ F, 2 ≤ n) :
     finiteErdosSum F 2 ≠ (1 : ℚ) / 21 := by

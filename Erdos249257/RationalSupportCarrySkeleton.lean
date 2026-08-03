@@ -3,35 +3,37 @@ import Mathlib.Analysis.Normed.Group.Tannery
 import Mathlib.Analysis.Asymptotics.SpecificAsymptotics
 
 /-!
-# Rational-support carry skeleton: residue wraps and reciprocal mass
+# Rational support, doubling residues, and reciprocal mass
 
-This module formalizes the formal development.s T9 order-wrap layer, T10
-Boolean-collision strengthening, and T13 common-multiple carry
-unboundedness for Erdős #257.  Its finite algebra begins with the binary
-repetend identity: the least positive residues in a complete doubling cycle
-satisfy
+Suppose the base-two support series has a rational value whose denominator is
+written as `2^c * v`, with `v` odd.  Clearing that denominator produces a
+positive integer tail state.  Modulo `v`, the state follows a doubling orbit,
+and the wrap digits record exactly when doubling crosses the modulus.  The
+finite arithmetic begins with the identity
 
 `sum residues = odd modulus * number of wraps`.
 
-The analytic bridge identifies the Cesàro mean of the true support tails
-with the reciprocal mass `sum_{a in A} 1/a`.  Together these give the
-order-sensitive lower bound and the exact excess-mean identity.  The
-one-wrap case is classified algebraically, not by the earlier 446-orbit
-finite check; those checks are validation only.
+When the reciprocal support terms are summable, the Cesàro mean of the support
+tails is their sum `reciprocalMass A`.  Combining this mean identity with the
+periodic residue arithmetic gives quantitative lower bounds from wrap
+frequency and from Boolean collisions.  Common multiples also force every
+positive tail state attached to an infinite support to be unbounded.
 
-Exponent zero remains excluded from literal support semantics.  No novelty or priority claim is made for the new
-theorems in this file.  Nothing here proves or refutes
-universal Erdős #257, and Erdős #249 also remains open.
+These are conditional obstructions, not a solution of Erdős #257.  They do
+not exclude every rational denominator, and the nonsummable alternative below
+is not stated as convergence of partial sums to `+∞`.  Exponent zero remains
+excluded from the literal support semantics.  The finite computations at the
+end only check examples; the general theorems are proved independently.
 -/
 
 namespace Erdos249257
 
 open ArithmeticFunction Filter Set
 
-/-! ## Canonical doubling residues and wrap digits -/
+/-! ## Doubling residues and wrap digits -/
 
-/-- Least nonnegative residue of `p*2^n` modulo `v`.  Under the T9
-coprimality hypotheses it is automatically the least *positive* residue. -/
+/-- Least nonnegative residue of `p * 2^n` modulo `v`.  When `v` is odd and
+`p` is coprime to `v`, this residue is strictly positive. -/
 def doublingResidue (p v n : ℕ) : ℕ := (p * 2 ^ n) % v
 
 /-- The quotient expelled when a least residue is doubled.  Since the
@@ -43,8 +45,8 @@ def doublingWrapDigit (p v n : ℕ) : ℕ :=
 def doublingWrapCount (p v h : ℕ) : ℕ :=
   ∑ n ∈ Finset.range h, doublingWrapDigit p v n
 
-/-- The formal development.s period hypothesis, separated from minimality: `h>0` and
-`2^h = 1 (mod v)`.  Substituting the multiplicative order supplies this. -/
+/-- A period condition, without a minimality requirement: `h > 0` and
+`2^h ≡ 1 (mod v)`.  The multiplicative order is one admissible choice. -/
 def IsDoublingPeriod (v h : ℕ) : Prop :=
   0 < h ∧ Nat.ModEq v (2 ^ h) 1
 
@@ -474,7 +476,8 @@ theorem oddOrder_doublingWrapCount_pos
   exact doublingWrapCount_pos p hv hvodd hpv
     (oddDoublingOrder_isPeriod hv hvodd)
 
-/-- Order-instantiated one-wrap classification in the notation of T9. -/
+/-- The one-wrap classification specialized to the multiplicative order of
+two modulo the odd modulus. -/
 theorem one_oddOrder_doublingWrap_classification
     (p : ℕ) {v : ℕ} (hv : 1 < v) (hvodd : Odd v)
     (hpv : p.Coprime v)
@@ -524,8 +527,8 @@ theorem oddSupportTail_eq_residue_div_add_excess
 
 /-- Exact block identity: a complete residue cycle contributes its wrap
 count, and every additional lift of a tail state contributes one nonnegative
-integer.  This is the finite algebra behind both the order lower bound and
-the formal development.s exact excess-mean identity. -/
+integer.  This is the finite algebra behind both the periodic lower bound and
+the exact excess-mean identity. -/
 theorem sum_supportTail_block_eq_wrapCount_add_excess
     (A : Set ℕ) (p : ℕ) {v h : ℕ} (hv : 0 < v)
     (hperiod : IsDoublingPeriod v h) (u : ℕ → ℕ)
@@ -940,8 +943,8 @@ theorem tsum_divisorFrequency_eq_supportCoeff_mean (A : Set ℕ) (N : ℕ) :
     have hdiv : N / a = 0 := Nat.div_eq_of_lt (by omega)
     simp [divisorFrequency, hdiv]
 
-/-- **Analytic T9 core.** For a support with summable reciprocals, the
-Cesàro mean of its divisor-count coefficient tends exactly to `ρ(A)`. -/
+/-- If the reciprocal support terms are summable, the Cesàro mean of the
+divisor-count coefficients tends to `reciprocalMass A`. -/
 theorem tendsto_supportCoeff_mean_reciprocalMass
     (A : Set ℕ) (hsum : Summable (reciprocalSupportTerm A)) :
     Tendsto
@@ -1029,10 +1032,10 @@ theorem tendsto_binaryCoeffTail_supportCoeff_div_nat_zero (A : Set ℕ) :
         (by positivity))
     hupper
 
-/-- The Cesàro mean of scaled binary support tails has the same limit as
-the coefficient mean, namely reciprocal mass.  This is the direct T9
-interface because a rational carry decomposes each tail into a periodic
-residue fraction plus a nonnegative integral excess. -/
+/-- The Cesàro mean of the scaled binary support tails has the same limit as
+the coefficient mean, namely `reciprocalMass A`.  A rational tail state can
+then be decomposed into a periodic residue fraction and a nonnegative integer
+excess. -/
 theorem tendsto_binaryCoeffTail_supportCoeff_mean_reciprocalMass
     (A : Set ℕ) (hsum : Summable (reciprocalSupportTerm A)) :
     Tendsto (cesaroMean (binaryCoeffTail (supportCoeff A))) atTop
@@ -1115,8 +1118,8 @@ theorem div_le_of_tendsto_cesaroMean_of_block_lower_bound
   exact ge_of_tendsto (hlimit.comp hmulTop)
     ((eventually_gt_atTop (0 : ℕ)).mono fun M hM => hmean M hM)
 
-/-- Direct T9 handoff: a length-`h` block lower bound `w` on genuine
-support tails yields `ρ(A) ≥ w/h`. -/
+/-- A lower bound `w` on every length-`h` block of support tails yields
+`reciprocalMass A ≥ w / h`. -/
 theorem wrapRatio_le_reciprocalMass_of_binaryCoeffTail_blocks
     (A : Set ℕ) (hsum : Summable (reciprocalSupportTerm A))
     (h w : ℕ) (hh : 0 < h)
@@ -1328,9 +1331,8 @@ theorem tendsto_cesaroMean_normalizedDoublingResidue
         push_cast
         field_simp
 
-/-- The formal development.s exact mean-excess statement in its strongest canonical
-form: the mean excess exists automatically and its limit is
-`ρ(A) - w/h`. -/
+/-- The Cesàro mean of the odd-tail excess exists and equals
+`reciprocalMass A - doublingWrapCount p v h / h`. -/
 theorem tendsto_oddTailExcess_mean
     (A : Set ℕ) (hsum : Summable (reciprocalSupportTerm A))
     (p : ℕ) {v h : ℕ} (hv : 0 < v)
@@ -1600,7 +1602,7 @@ theorem exists_shifted_oddTailExcess_mean_of_support_fraction
   exact tendsto_shifted_tail_excess_mean
     A hsum c p.toNat hv hperiod u htail hmod
 
-/-! ## Boolean-collision strengthening (T10) -/
+/-! ## Boolean-collision lower bounds -/
 
 /-- The natural-number realization of `ceil ((m - 1) / 2)` for positive
 cardinalities.  For `m > 0`, this is exactly `m / 2`. -/
@@ -1698,8 +1700,8 @@ theorem supportCoeff_add_oddTailExcess_succ_eq_wrap_add_two_excess
     Nat.add_right_cancel hmulPlus
   exact Nat.eq_of_mul_eq_mul_left hv hmul
 
-/-- At every common multiple of a finite support fragment, the preceding
-odd-tail excess carries the formal development.s collision surplus. -/
+/-- At every common multiple of a finite support subset, the preceding
+odd-tail excess is at least its Boolean collision surplus. -/
 theorem booleanCollisionSurplus_le_oddTailExcess
     (A : Set ℕ) (F : Finset ℕ) (p : ℕ) {v : ℕ} (hv : 0 < v)
     (u : ℕ → ℕ) (hstate : IsOddSupportTailState A p v u)
@@ -1932,7 +1934,9 @@ theorem booleanCollisionSurplus_le_shiftedOddTailExcess
       shiftedSupportCoeff_add_oddTailExcess_succ_eq_wrap_add_two_excess
         A p c hv u hstate (n - c - 1)
 
-/-- The shifted odd-tail excess has limit `rho(A) - w/h`. -/
+/-- Under summability, the Cesàro mean of the shifted odd-tail excess is
+`reciprocalMass A` minus the average wrap frequency
+`doublingWrapCount p v h / h`. -/
 theorem tendsto_shiftedOddTailExcess_mean
     (A : Set ℕ) (hsum : Summable (reciprocalSupportTerm A))
     (p c : ℕ) {v h : ℕ} (hv : 0 < v)
@@ -1957,9 +1961,10 @@ theorem tendsto_shiftedOddTailExcess_mean
       linarith [shiftedOddSupportTail_eq_residue_div_add_excess
         A p c hv u hstate n])
 
-/-- Full shifted T10 inequality for a displayed denominator `2^c v`.
-The hypothesis says `L` is a common multiple of the marked support
-fragment; taking `L = lcm(F)` gives the finite statement. -/
+/-- Suppose every marked support element divides `L`.  Boolean collisions
+then force a fixed excess on one arithmetic progression, contributing
+`booleanCollisionSurplus F.card / L` to the Cesàro mean above the periodic
+wrap contribution. -/
 theorem shiftedBooleanCollision_wrap_bound_of_common_multiple
     (A : Set ℕ) (F : Finset ℕ) (p c : ℕ)
     (hsum : Summable (reciprocalSupportTerm A))
@@ -2008,8 +2013,9 @@ theorem shiftedBooleanCollision_wrap_bound_of_common_multiple
     L (booleanCollisionSurplus F.card) r hL hspike hexcess
   linarith
 
-/-- Analytic fan-in matching the exact T10 inequality once a carry excess
-has a spike on one residue class modulo `L`. -/
+/-- An abstract Cesàro bound: a lower bound `q` for the odd-tail excess on one
+residue class modulo `L` contributes `q / L` above the periodic wrap ratio.
+The odd-tail state and the spike family are assumptions here, not outputs. -/
 theorem wrapRatio_add_collisionSurplus_div_le_reciprocalMass
     (A : Set ℕ) (hsum : Summable (reciprocalSupportTerm A))
     (p : ℕ) {v h : ℕ} (hv : 0 < v)
@@ -2031,9 +2037,10 @@ theorem wrapRatio_add_collisionSurplus_div_le_reciprocalMass
       L q r hL hr hspike hexcess
   linarith
 
-/-- Canonical unshifted T10 theorem.  If every element of `F` divides
-`L`, then collisions at the positive multiples of `L` force the full
-`ceil ((|F|-1)/2) / L` gain above the residue-wrap mean. -/
+/-- Unshifted common-multiple specialization.  If every element of `F`
+divides `L`, the positive multiples of `L` realize the collision surplus and
+force a gain of `booleanCollisionSurplus F.card / L` above the periodic wrap
+ratio. -/
 theorem booleanCollision_wrap_bound_of_common_multiple
     (A : Set ℕ) (F : Finset ℕ) (p : ℕ)
     (hsum : Summable (reciprocalSupportTerm A))
@@ -2067,10 +2074,11 @@ theorem booleanCollision_wrap_bound_of_common_multiple
     intro a ha
     exact dvd_trans (hFL a ha) (dvd_mul_left L (j + 1))
 
-/-! ### Strict dyadic corollary -/
+/-! ### Dyadic-rational values and reciprocal mass -/
 
-/-- A positive integer sequence with a density-`1/L` family of values at
-least two has Cesaro limit strictly greater than one. -/
+/-- Abstract positive-integer Cesàro lemma.  A positive integer sequence with
+a density-`1/L` family of values at least two has Cesàro limit strictly greater
+than one.  This statement is independent of support-series arithmetic. -/
 theorem one_lt_of_tendsto_cesaroMean_of_positive_two_spikes
     (k : ℕ → ℕ) (limit : ℝ) (L r : ℕ) (hL : 0 < L)
     (hpos : ∀ n : ℕ, 0 < k n)
@@ -2110,9 +2118,9 @@ theorem one_lt_of_tendsto_cesaroMean_of_positive_two_spikes
   have hinv : (0 : ℝ) < (1 : ℝ) / (L : ℝ) := div_pos one_pos hLR
   linarith
 
-/-- A dyadic support fraction with two distinct positive support elements
-has reciprocal mass strictly greater than one whenever that mass is
-summable. -/
+/-- If `A` contains two distinct positive elements, the reciprocal support
+terms are summable, and `erdosSupportSeries 2 A = p / 2^c`, then
+`reciprocalMass A > 1`. -/
 theorem one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem
     (A : Set ℕ) (hsum : Summable (reciprocalSupportTerm A))
     (p : ℤ) (c : ℕ) {a b : ℕ}
@@ -2193,10 +2201,12 @@ theorem one_lt_reciprocalMass_of_dyadic_support_fraction_of_two_pos_mem
   exact one_lt_of_tendsto_cesaroMean_of_positive_two_spikes
     u (reciprocalMass A) L r hL hpos hspike hmean
 
-/-- Dyadic consequence, stated without abusing the real `tsum`
-convention in the divergent case: an infinite dyadic-rational support has
-divergent reciprocal mass or finite reciprocal mass strictly greater than
-one. -/
+/-- For infinite `A`, a dyadic-rational value of `erdosSupportSeries 2 A`
+implies that either the reciprocal support terms are not summable or their
+`tsum` is strictly greater than one.
+
+This becomes a contradiction only after a separate argument proves both
+summability and `reciprocalMass A ≤ 1`; neither conclusion is supplied here. -/
 theorem dyadic_support_fraction_reciprocalMass_diverges_or_gt_one
     (A : Set ℕ) (hAinf : A.Infinite) (p : ℤ) (c : ℕ)
     (hvalue : erdosSupportSeries 2 A =
@@ -2219,12 +2229,11 @@ theorem dyadic_support_fraction_reciprocalMass_diverges_or_gt_one
       A hsum p c ha (Nat.pos_of_ne_zero hb0) hba.symm haA hbA hvalue
   · exact Or.inl hsum
 
-/-! ## Carry unbounded at common multiples (T13) -/
+/-! ## Unbounded tail states from common multiples -/
 
-/-- The division-free local T13 inequality.  A finite marked support
-fragment contributes at least its cardinality to the coefficient at a
-common multiple, while positivity of the next carry contributes the extra
-one.  The shifted index is `L - c - 1`, not `L - 1`. -/
+/-- A finite marked subset of the support contributes at least its cardinality
+to the coefficient at a common multiple.  Positivity of the next tail state
+contributes the additional one.  The shifted index is `L - c - 1`. -/
 theorem one_add_mul_card_le_two_mul_shifted_state
     (A : Set ℕ) (F : Finset ℕ) (c v L : ℕ) (u : ℕ → ℕ)
     (hcL : c < L) (hpos : ∀ n : ℕ, 0 < u n)
@@ -2260,7 +2269,7 @@ theorem one_add_mul_card_le_two_mul_state
   · exact hFA
   · exact hFdvd
 
-/-- Natural ceiling form of the shifted T13 inequality. -/
+/-- Natural-number ceiling form of the shifted common-multiple inequality. -/
 theorem one_add_mul_card_ceil_half_le_shifted_state
     (A : Set ℕ) (F : Finset ℕ) (c v L : ℕ) (u : ℕ → ℕ)
     (hcL : c < L) (hpos : ∀ n : ℕ, 0 < u n)
@@ -2272,7 +2281,7 @@ theorem one_add_mul_card_ceil_half_le_shifted_state
     A F c v L u hcL hpos hrec hFA hFdvd
   omega
 
-/-- Ordinary real half form of the shifted T13 inequality. -/
+/-- Real-valued half form of the shifted common-multiple inequality. -/
 theorem one_add_mul_card_half_le_shifted_state
     (A : Set ℕ) (F : Finset ℕ) (c v L : ℕ) (u : ℕ → ℕ)
     (hcL : c < L) (hpos : ∀ n : ℕ, 0 < u n)
@@ -2288,9 +2297,8 @@ theorem one_add_mul_card_half_le_shifted_state
     exact_mod_cast hraw
   linarith
 
-/-- Fraction-facing local T13 wrapper.  It preserves every clause of the
-existing shifted natural-state constructor and adds the raw common-multiple
-bound without changing that constructor's API. -/
+/-- A rational support value produces a positive shifted integer tail state
+that also satisfies the common-multiple lower bound. -/
 theorem exists_shifted_odd_tail_nat_state_with_common_multiple_bound_of_support_fraction
     (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
     (F : Finset ℕ) (p : ℤ) (c v L : ℕ)
@@ -2313,10 +2321,9 @@ theorem exists_shifted_odd_tail_nat_state_with_common_multiple_bound_of_support_
   exact one_add_mul_card_le_two_mul_shifted_state
     A F c v L u hcL hpos hrec hFA hFdvd
 
-/-- The complete T13 core: every positive shifted recurrence over an
-infinite support is globally unbounded.  The proof selects `2B+1` positive
-support elements and uses their product, multiplied by `c+1`, as an
-explicit common multiple. -/
+/-- Every positive shifted recurrence over an infinite support is unbounded.
+For a proposed bound `B`, select `2B + 1` positive support elements and use
+their product, multiplied by `c + 1`, as a common multiple. -/
 theorem shifted_state_unbounded_of_infinite_support
     (A : Set ℕ) (hAinf : A.Infinite) (c v : ℕ) (hv : 0 < v)
     (u : ℕ → ℕ) (hpos : ∀ n : ℕ, 0 < u n)
@@ -2371,9 +2378,8 @@ theorem shifted_state_unbounded_of_infinite_support
   refine ⟨L - c - 1, ?_⟩
   omega
 
-/-- Canonical fraction-facing T13 theorem.  Every infinite rational support
-admits the existing shifted natural tail state, and that state is globally
-unbounded. -/
+/-- If an infinite support has the displayed rational value, its positive
+shifted integer tail state is unbounded. -/
 theorem exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction
     (A : Set ℕ) (hAinf : A.Infinite) (p : ℤ) (c v : ℕ) (hv : 0 < v)
     (hvalue : erdosSupportSeries 2 A =
@@ -2395,9 +2401,9 @@ theorem exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction
   exact shifted_state_unbounded_of_infinite_support
     A hAinf c v hv u hpos hrec
 
-/-- Every tested common multiple in the formal development.s `{2,3}` regression family
-hits the exact preceding carry value `26`.  The range `0 ≤ k < 66`
-corresponds to the 66 checked indices `6(k+1)-1`. -/
+/-- In the finite `{2, 3}` example, each of the first 66 tested common
+multiples gives the same preceding carry value `26`; the checked indices are
+`6 * (k + 1) - 1` for `0 ≤ k < 66`. -/
 theorem carryOrbit23_common_multiple_bound_validation66 :
     ∀ k ∈ Finset.range 66,
       (1 : ℤ) + 21 * ({2, 3} : Finset ℕ).card ≤
@@ -2406,7 +2412,7 @@ theorem carryOrbit23_common_multiple_bound_validation66 :
   have hmod : (6 * k + 5) % 6 = 5 := by omega
   simp [carryOrbit23, hmod]
 
-/-! ## Kernel-checked finite validation from the formal development -/
+/-! ## Lean-checked finite validation -/
 
 /-- Reduced numerator starts modulo `v`, represented as a computable list for
 the native finite certificate. -/
@@ -2455,8 +2461,8 @@ theorem orderWrapValidation446_passes :
     orderWrapValidation446 = true := by decide
 
 set_option maxRecDepth 100000 in
-/-- The formal development.s minimum ratios are respectively
-`1/2, 2/4, 1/3, 1/4, 1/5`. -/
+/-- The checked minimum wrap ratios are respectively
+`1/2`, `2/4`, `1/3`, `1/4`, and `1/5`. -/
 theorem orderWrap_minima_table_passes :
     wrapMinimumCertificate 3 2 1 = true ∧
     wrapMinimumCertificate 5 4 2 = true ∧

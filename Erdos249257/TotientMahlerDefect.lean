@@ -6,26 +6,26 @@ import Mathlib.NumberTheory.LSeries.PrimesInAP
 import Mathlib.NumberTheory.PrimesCongruentOne
 
 /-!
-# Exact dyadic totient-kernel interfaces
+# Exact ranks of dyadic totient kernels
 
-This module records the proof-bearing part of the quantitative dyadic-kernel
-route for Erdős #249.  It deliberately separates three layers:
+For `K_{j,r}(n) = φ(2^j n + r)`, this module proves two unconditional rank
+statements relevant to Erdős #249:
 
-* elementary reduction of every even residue channel to an odd channel;
-* a finite determinant certificate which is sufficient for linear
-  independence of any chosen family of kernel channels;
-* the exact contradiction consumer needed by a future compressed-adjoint
-  or finite-rank compression construction.
+* the complete kernel through every positive level `e` has dimension
+  exactly `2^e+1` over `ℚ`;
+* the kernel containing all dyadic levels is infinite-dimensional.
 
-The all-level producer is proved here by CRT plus Dirichlet's theorem on primes
-in arithmetic progressions: one affine channel is made prime and every other
-channel receives a fresh prime divisor congruent to one modulo a large power
-of two.  The resulting parity-separated evaluation matrix has nonzero
-determinant.
+The proof first removes the repeated even-residue channels.  It then proves
+linear independence of the remaining canonical family by constructing a
+nonzero evaluation minor: CRT and Dirichlet's theorem make one affine channel
+prime while forcing a fresh prime divisor in every other channel.  The exact
+rank of the complete truncation follows because the removed channels reduce
+recursively to lower-level canonical channels.
 
-This proves unconditional finite-level kernel independence.  It is not yet a
-proof that the totient series is irrational: the missing theorem is a
-rationality-side finite-rank compression or equivalent contradiction.
+These are structural theorems about Euler's totient sequence, not a proof that
+the totient series is irrational.  A rationality argument would still have to
+produce a finite-rank compression, or an equivalent contradiction object,
+from the assumed rationality of that series.
 -/
 
 namespace Erdos249257
@@ -46,6 +46,16 @@ def canonicalTotientKernelFamily (e : ℕ) :
     TotientCanonicalIndex e → ℕ → ℚ
   | Sum.inl i => totientKernelSeq i.val 0
   | Sum.inr ⟨j, r⟩ => totientKernelSeq (j.val + 1) (2 * r.val + 1)
+
+/-- Every dyadic totient channel at levels `0,...,e`, before removing the
+even-residue repetitions. -/
+abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
+  Σ j : Fin (e + 1), Fin (2 ^ j.val)
+
+/-- The complete finite dyadic kernel through level `e`. -/
+def totientKernelThroughLevelFamily (e : ℕ) :
+    TotientKernelThroughLevelIndex e → ℕ → ℚ
+  | ⟨j, r⟩ => totientKernelSeq j.val r.val
 
 /-- The canonical family has exactly `2^e+1` channels. -/
 theorem card_totientCanonicalIndex (e : ℕ) :
@@ -182,6 +192,31 @@ theorem totientKernel_even_residue_reduce
         rw [pow_succ]
         ring
   exact (hevenPow.mul_right n).add_odd hs
+
+/-- Removing one factor of two from a positive-level even residue channel
+either preserves the channel or doubles it, according to the parity of the
+reduced residue. -/
+theorem totientKernel_even_residue_step (j s : ℕ) (hj : 0 < j) :
+    totientKernelSeq (j + 1) (2 * s) =
+      if Odd s then totientKernelSeq j s else
+        (2 : ℚ) • totientKernelSeq j s := by
+  funext n
+  have hpowEven : Even (2 ^ j * n) := by
+    exact Even.mul_right (even_two.pow_of_ne_zero (Nat.ne_of_gt hj)) n
+  simp only [totientKernelSeq, Pi.smul_apply, smul_eq_mul, ite_apply]
+  rw [show 2 ^ (j + 1) * n + 2 * s = 2 * (2 ^ j * n + s) by
+    rw [pow_succ]
+    ring]
+  by_cases hs : Odd s
+  · rw [if_pos hs]
+    norm_cast
+    exact Nat.totient_two_mul_of_odd (hpowEven.add_odd hs)
+  · rw [if_neg hs]
+    norm_cast
+    apply Nat.totient_two_mul_of_even
+    obtain ⟨a, ha⟩ := hpowEven
+    obtain ⟨b, hb⟩ := Nat.not_odd_iff_even.mp hs
+    exact ⟨a + b, by omega⟩
 
 /-! ## The normalized odd-input affine family -/
 
@@ -957,6 +992,102 @@ theorem finrank_canonicalTotientKernel_eq (e : ℕ) :
   finrank_canonicalTotientKernel_eq_of_linearIndependent e
     (linearIndependent_canonicalTotientKernelFamily e)
 
+/-! ## The exact rank of the complete finite truncation -/
+
+/-- Every channel through a positive depth belongs to the span of the
+canonical channels at that depth.  Thus deleting even-residue repetitions
+does not discard any direction in the complete finite kernel. -/
+theorem totientKernelSeq_mem_span_canonical_of_le {e j r : ℕ}
+    (he : 1 ≤ e) (hj : j ≤ e) (hr : r < 2 ^ j) :
+    totientKernelSeq j r ∈
+      Submodule.span ℚ (Set.range (canonicalTotientKernelFamily e)) := by
+  induction j generalizing r with
+  | zero =>
+      have hr0 : r = 0 := by simpa using hr
+      subst r
+      exact Submodule.subset_span ⟨Sum.inl (0 : Fin 2), rfl⟩
+  | succ j ih =>
+      by_cases hr0 : r = 0
+      · subst r
+        have hbase : totientKernelSeq 1 0 ∈
+            Submodule.span ℚ (Set.range (canonicalTotientKernelFamily e)) :=
+          Submodule.subset_span ⟨Sum.inl (1 : Fin 2), rfl⟩
+        have hzero : totientKernelSeq (j + 1) 0 =
+            (2 ^ j : ℚ) • totientKernelSeq 1 0 := by
+          funext n
+          simpa [Pi.smul_apply, smul_eq_mul] using
+            totientKernel_zero_residue j n
+        rw [hzero]
+        exact Submodule.smul_mem _ _ hbase
+      · by_cases hj0 : j = 0
+        · subst j
+          have hr1 : r = 1 := by norm_num at hr; omega
+          subst r
+          exact Submodule.subset_span
+            ⟨Sum.inr ⟨⟨0, he⟩, ⟨0, by simp⟩⟩, rfl⟩
+        · by_cases hodd : Odd r
+          · obtain ⟨q, hq⟩ := hodd
+            have hjlt : j < e := by omega
+            have hqBound : q < 2 ^ j := by
+              rw [pow_succ] at hr
+              omega
+            refine Submodule.subset_span
+              ⟨Sum.inr ⟨⟨j, hjlt⟩, ⟨q, hqBound⟩⟩, ?_⟩
+            simp only [canonicalTotientKernelFamily]
+            congr 1
+            omega
+          · obtain ⟨s, hs⟩ := Nat.not_odd_iff_even.mp hodd
+            have hsBound : s < 2 ^ j := by
+              rw [pow_succ] at hr
+              omega
+            have hlower := ih (by omega) hsBound
+            have hstep := totientKernel_even_residue_step j s
+              (Nat.pos_of_ne_zero hj0)
+            rw [show r = 2 * s by omega, hstep]
+            split_ifs
+            · exact hlower
+            · exact Submodule.smul_mem _ _ hlower
+
+/-- At positive depth, every canonical channel occurs literally in the
+complete truncation. -/
+theorem range_canonicalTotientKernelFamily_subset_throughLevel
+    (e : ℕ) (he : 1 ≤ e) :
+    Set.range (canonicalTotientKernelFamily e) ⊆
+      Set.range (totientKernelThroughLevelFamily e) := by
+  rintro _ ⟨i, rfl⟩
+  cases i with
+  | inl i =>
+      refine ⟨⟨⟨i.val, by omega⟩, ⟨0, by positivity⟩⟩, rfl⟩
+  | inr i =>
+      rcases i with ⟨j, r⟩
+      refine ⟨⟨⟨j.val + 1, by omega⟩, ⟨2 * r.val + 1, ?_⟩⟩, rfl⟩
+      rw [pow_succ]
+      omega
+
+/-- The complete kernel through a positive level and its deduplicated
+canonical family span exactly the same subspace. -/
+theorem span_totientKernelThroughLevelFamily_eq_canonical
+    (e : ℕ) (he : 1 ≤ e) :
+    Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e)) =
+      Submodule.span ℚ (Set.range (canonicalTotientKernelFamily e)) := by
+  apply le_antisymm
+  · rw [Submodule.span_le]
+    rintro _ ⟨⟨j, r⟩, rfl⟩
+    exact totientKernelSeq_mem_span_canonical_of_le he
+      (Nat.le_of_lt_succ j.isLt) r.isLt
+  · exact Submodule.span_mono
+      (range_canonicalTotientKernelFamily_subset_throughLevel e he)
+
+/-- **Exact rank of the actual finite truncation.**  For every `e ≥ 1`, the
+span of all channels `n ↦ φ(2^j n + r)` with `j ≤ e` and `r < 2^j` has
+dimension exactly `2^e+1`. -/
+theorem finrank_totientKernelThroughLevelFamily_eq (e : ℕ) (he : 1 ≤ e) :
+    finrank ℚ
+      (Submodule.span ℚ (Set.range (totientKernelThroughLevelFamily e))) =
+        2 ^ e + 1 := by
+  rw [span_totientKernelThroughLevelFamily_eq_canonical e he]
+  exact finrank_canonicalTotientKernel_eq e
+
 /-! ## The full dyadic kernel is infinite-dimensional -/
 
 /-- The full dyadic kernel index, with the canonical residue range
@@ -1033,6 +1164,7 @@ theorem not_finiteDimensional_span_fullTotientKernel :
   exact (not_le_of_gt (Nat.lt_succ_of_le (nat_le_two_pow_self d))) hmono
 
 #print axioms not_finiteDimensional_span_fullTotientKernel
+#print axioms finrank_totientKernelThroughLevelFamily_eq
 
 /-- The exact proof object required from a future totient-specific compressed
 adjoint construction. -/

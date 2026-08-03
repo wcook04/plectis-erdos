@@ -5,11 +5,11 @@ import Erdos249257.HalfCutLocator
 import Erdos249257.HalfGreedyFatalGap
 
 /-!
-# The canonical quotient-greedy producer at `1/21`
+# The canonical quotient-greedy construction at `1/21`
 
 The compactness criterion in `TwentyOneQuotientCompactness` asks for one
-finite quotient row at every even depth.  This file removes all freedom from
-that producer: run the ordinary descending integer-greedy algorithm on the
+finite quotient row at every even depth.  This file makes that row
+deterministic: run the ordinary descending integer-greedy algorithm on the
 quotient weights for ranks `2,…,R`.
 
 The decoded support is automatically admissible, and its quotient defect is
@@ -397,7 +397,7 @@ theorem localMersenneQuotient_two_mul_pred_pred_le
       2 ^ (R + 2) + 21 := by
   by_cases hR4 : R = 4
   · subst R
-    decide
+    norm_num [localMersenneQuotient]
   · have hR5 : 5 ≤ R := by omega
     let P := 2 ^ (R - 2)
     have hP : 8 ≤ P := by
@@ -985,9 +985,9 @@ theorem mem_lowerSupportFromBits_rationalMersenneGreedyBitsFrom_iff
             exact htake (hbit.1 heA)
           exact ⟨by omega, by omega, heA⟩
 
-/-- The audited rational prefix is exactly the bounded part of the real
-greedy support.  This packages the cast agreement of every individual
-decision into the finite-support interface used by the quotient recurrence. -/
+/-- The rational prefix is exactly the bounded part of the real greedy
+support.  This packages the cast agreement of every individual decision into
+the finite-support formulation used by the quotient recurrence. -/
 theorem mem_greedyMersennePrefixRat_iff_real_support
     {x : ℚ} {n d : ℕ} :
     d ∈ greedyMersennePrefixRat x n ↔
@@ -1013,7 +1013,7 @@ theorem mem_greedyMersennePrefixRat_iff_real_support
 
 /-- For the target `1/21`, the rational word may start at rank two because
 rank one is forced to be absent.  Decoding through rank `R` is therefore
-exactly the audited rational prefix. -/
+exactly the rational prefix. -/
 theorem lowerSupportFromBits_rationalTwentyOne_eq_greedyMersennePrefixRat
     (R : ℕ) :
     lowerSupportFromBits 2
@@ -1835,7 +1835,7 @@ state-space facts:
 * if it saturates the window, the endpoint divisor pulse absorbs the target
   pulse.
 
-Thus the only remaining boundary socket is the explicitly named saturated
+Thus the only remaining boundary case is the explicitly named saturated
 state; every strict interior state continues automatically. -/
 theorem exists_twentyOneRow_defect_le_one_of_closedState
     {D : Finset ℕ} {R b e : ℕ} (hR : 1 ≤ R)
@@ -2111,7 +2111,7 @@ theorem card_boundaryLowerSupport_le_scalar
     rw [if_neg htake, if_neg htake]
     exact hsafe
 
-/-- **Lossless recursive socket.**  A closed lower state propagates to rank
+/-- **Lossless recursive step.**  A closed lower state propagates to rank
 `R+1` provided only:
 
 * the saturated state absorbs all but at most one unit of the target pulse,
@@ -2280,7 +2280,7 @@ theorem card_le_twentyOneUpperExtensionCarry
     localPrefixTwoStepPulse_le_three_mul_card D (2 * R)
   omega
 
-/-- Equivalent recursive interface with the automatic no-take branch
+/-- Equivalent recurrence with the automatic no-take branch
 removed.  The sole interior obstruction is now the explicit *take gap*. -/
 theorem exists_twentyOneClosedLowerState_succ_of_takeGap
     {D : Finset ℕ} {R s : ℕ} (hR : 1 ≤ R)
@@ -2366,7 +2366,7 @@ theorem twentyOneTargetTwoStepPulse_even_eq_three_iff (R : ℕ) :
         have hK := ih K (by omega)
         simpa [Nat.add_mod] using hK
 
-/-- Therefore the saturated socket is automatic unless the target pulse is
+/-- Therefore the saturated transition is automatic unless the target pulse is
 the unique nonzero value, in which case exactly three endpoint-divisor bits
 are sufficient. -/
 theorem twentyOneSaturatedPulse_iff
@@ -2379,7 +2379,7 @@ theorem twentyOneSaturatedPulse_iff
   · simp [h]
   · simp [h]
 
-/-- Exact saturated socket for the lower-state transition.  The boundary
+/-- Exact saturated case for the lower-state transition.  The boundary
 coin contributes one unit beyond its binary skeleton, so at the unique
 nonzero target pulse only two endpoint-divisor units, rather than three,
 are required to preserve the closed state. -/
@@ -2444,7 +2444,7 @@ crossing residue as `R = 3a+2`.  The second endpoint in the crossing pulse is
 Both `a+1` and `2(a+1)` divide that endpoint.  Since a crossing has total
 two-step support pulse at most one, at least one of those two ancestor ranks
 is absent.  This is the one-third-scale obstruction attached to the actual
-entrance into supercapacity, rather than to a later saturated socket. -/
+entrance into supercapacity, rather than to a later saturated transition. -/
 theorem twentyOneSaturatedBoundary_crossing_forces_ancestor_hole
     {D : Finset ℕ} {R s : ℕ}
     (hsaturated : s = 2 ^ R)
@@ -2507,7 +2507,7 @@ theorem twentyOneSaturatedBoundary_crossing_forces_ancestor_hole
 /-- **Two-pulse normal form of the only bad saturated transition.**  Start
 from a strict lower state and suppose the next boundary decision lands
 exactly on the closed endpoint.  If that endpoint would fail the following
-saturated socket, then:
+saturated transition, then:
 
 * the pulse which created the endpoint was zero;
 * the incoming carry was the exact skip value `2^(R+1)`;
@@ -2583,7 +2583,7 @@ theorem twentyOneBadSaturatedTransition_forces_sparse_twoPulse
   refine ⟨hcurrent, by simpa [C] using hC, by simpa [E, C] using hE, ?_⟩
   simpa [hE] using hnextPulse
 
-/-- **Margin normal form of a bad saturation.**  A failed saturated socket
+/-- **Margin normal form of a failed saturation.**  A failed saturated transition
 can occur only in half-depth residue class `1 mod 3`.  Its incoming divisor
 pulse must be a multiple of four and must exactly complement four times the
 old capacity margin to `2^(R+1)`, while the following pulse has size at most
@@ -2917,7 +2917,7 @@ theorem twentyOneEvenFullQuotientGreedyRemainder_le_one_of_coreBound
   · simpa only [show 2 * R + 1 - (R + 1) = R by omega] using
       twentyOneEvenQuotientGreedyRemainder_le_of_coreBound hR hcore
 
-/-- The genuinely coarse terminal producer.  It retains the twice-last-coin
+/-- The genuinely coarse terminal condition.  It retains the twice-last-coin
 ceiling but deliberately imposes no avoidance of the six constant-width
 fringe states. -/
 def TwentyOneEvenQuotientPreterminalCoarseBound : Prop :=
@@ -2934,9 +2934,9 @@ def TwentyOneEvenQuotientPreterminalNextCoinBound : Prop :=
     twentyOneEvenQuotientPreterminalRemainder R <
       localMersenneQuotient (2 * R) (R - 2)
 
-/-- The next-coin producer leaves the half-row remainder below twice the
-binary window.  The constant quotient excess is absorbed here rather than
-being exposed as a hardcoded producer cap. -/
+/-- The next-coin hypothesis leaves the half-row remainder below twice the
+binary window.  The constant quotient excess is absorbed directly into this
+bound. -/
 theorem twentyOneEvenQuotientGreedyRemainder_le_double_of_preterminalNextCoin
     {R : ℕ} (hR : 4 ≤ R)
     (hnext :
@@ -3139,7 +3139,7 @@ theorem two_mul_sub_two_le_two_pow (R : ℕ) :
                 (show 1 ≤ R + 1 by omega))
           omega
 
-/-- One-sided full-row producer.  No bound on the deterministic quotient
+/-- One-sided full-row criterion.  No bound on the deterministic quotient
 remainder is assumed: it is enough that an unbounded sequence of admissible
 full greedy rows reaches the rational target from above. -/
 def TwentyOneCofinalEvenFullQuotientOvershoot : Prop :=
@@ -3150,7 +3150,7 @@ def TwentyOneCofinalEvenFullQuotientOvershoot : Prop :=
         localMersennePrefixValue
           (twentyOneEvenFullQuotientGreedySupport (R k))
 
-/-- Boolean form of the cofinal full-row producer.  A row qualifies exactly
+/-- Boolean form of the cofinal full-row criterion.  A row qualifies exactly
 when quotient rounding has forced a decision different from exact rational
 greedy by the same horizon. -/
 def TwentyOneCofinalEvenFullQuotientRationalDivergence : Prop :=
@@ -3374,9 +3374,8 @@ theorem one_div_twenty_one_mem_or_eventuallyFullQuotientRationalAlignment :
 criterion, absorbing fatality, quotient/rational alignment, and the
 correction-boundary doubling-block split.
 
-This is deliberately redundant as a research interface: it records both the
-fatal witness and its two concrete consequences, so later arithmetic can use
-the most convenient formulation without rebuilding the logical fan-in. -/
+The definition records the fatal witness together with the eventual alignment
+and doubling-block conditions used below. -/
 def TwentyOneFatalAlignedBranch : Prop :=
   ∃ n R₀ : ℕ,
     GreedyMersenneFatalAt (1 / 21 : ℝ) n ∧
@@ -3390,7 +3389,7 @@ def TwentyOneFatalAlignedBranch : Prop :=
           rationalMersenneGreedyBitsFrom 2 (2 * R - 1) (1 / 21 : ℚ)) ∧
       TwentyOneGreedyEventuallyHitsDoublingBlocks
 
-/-- **The fatal branch cannot sustain a late bad saturated socket.**  Full
+/-- **The fatal branch cannot sustain a late failed saturated transition.**  Full
 quotient/rational alignment identifies the canonical lower word with the
 actual greedy support.  Cofinite selection then fills both ancestor digits
 forced by a sufficiently late scale `R = 3a+1`, contradicting the
@@ -3480,7 +3479,7 @@ theorem twentyOneFatalAlignedBranch_of_not_mem
     fun k => mem_greedyMersenneSupport_of_fatalAt_add_succ hfatal k,
     halign, hhits⟩
 
-/-- **Exact surviving-frontier theorem.**  Solving `1/21` is now equivalent
+/-- **Exact membership dichotomy.**  Membership of `1/21` is equivalent
 to excluding one explicit fatal/cofinite/aligned branch; every other
 asymptotic behavior already lands in the achievement set. -/
 theorem one_div_twenty_one_mem_or_fatalAlignedBranch :
@@ -3490,8 +3489,8 @@ theorem one_div_twenty_one_mem_or_fatalAlignedBranch :
   · exact Or.inl hmem
   · exact Or.inr (twentyOneFatalAlignedBranch_of_not_mem hmem)
 
-/-- The surviving frontier is not merely necessary: its fatal witness makes
-it exactly equivalent to non-membership. -/
+/-- The displayed branch is not merely necessary: its fatal witness makes it
+exactly equivalent to non-membership. -/
 theorem twentyOneFatalAlignedBranch_iff_not_mem :
     TwentyOneFatalAlignedBranch ↔
       (1 / 21 : ℝ) ∉ mersenneAchievementSet := by
@@ -4280,7 +4279,7 @@ theorem lastTwentyOneSkip_adjacent_gcd_parity
     simpa only [Nat.succ_eq_add_one, x, p, q, T, hpowNext] using hgeneric
 
 /-- A hypothetical final denominator-`21` skip is automatically a
-dyadically invalid skip.  The existing primitive-normalization theorem then
+dyadically unsafe skip.  The existing primitive-normalization theorem then
 forces an exponential product across the reduced numerators immediately
 before and after its forced successor take. -/
 theorem lastTwentyOneSkip_unsafe_numeratorProduct_gt
@@ -4469,7 +4468,7 @@ theorem twentyOne_not_mem_forces_erdosBorwein_fatalInterval
       (lastTwentyOneSkip_erdosBorwein_fatalInterval hlast).1,
       (lastTwentyOneSkip_erdosBorwein_fatalInterval hlast).2⟩
 
-/-- Exact rational form of the fatal interval.  This is the interface for
+/-- Exact rational form of the fatal interval.  This is the form used by
 any height-aware irrationality-measure or primitive-denominator argument:
 the approximant is literally `1/21` plus a finite Mersenne sum, and its
 greatest denominator exponent is the final actual skip. -/
@@ -4610,14 +4609,14 @@ theorem twentyOneFatalAlignedBranch_rightBoundary_power_dvd
         (greedyMersenneSupport (1 / 21 : ℝ)) n + 1,
     h⟩
 
-/-- The true full-row producer: only the coarse strict-core ceiling remains.
+/-- The full-row condition: only the coarse strict-core ceiling remains.
 The former exact-state exclusion has disappeared. -/
 def TwentyOneEvenFullQuotientCoreBound : Prop :=
   ∀ R : ℕ, 2 ≤ R →
     twentyOneEvenQuotientCoreRemainder R < 2 * 2 ^ R + 1
 
 /-- The two finite rows below the preterminal range are exact, so the coarse
-producer gives a uniform defect-three full row at every required depth. -/
+condition gives a uniform defect-three full row at every required depth. -/
 theorem twentyOneEvenFullQuotientGreedyRemainder_le_three_of_coarseBound
     (hpre : TwentyOneEvenQuotientPreterminalCoarseBound) :
     ∀ R : ℕ, 2 ≤ R →
@@ -4629,26 +4628,28 @@ theorem twentyOneEvenFullQuotientGreedyRemainder_le_three_of_coarseBound
         hR4 (hpre R hR4)
   · obtain rfl | rfl : R = 2 ∨ R = 3 := by omega
     · have hweights : localMersenneWeights 4 4 = [5, 2, 1] := by
-        unfold localMersenneWeights
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 2 ≤ 4)]
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 3 ≤ 4)]
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 4 ≤ 4)]
-        rw [localMersenneWeightsFrom_eq_nil (by norm_num : 4 < 5)]
+        rw [localMersenneWeights,
+          localMersenneWeightsFrom_eq_cons (by omega : 2 ≤ 4),
+          localMersenneWeightsFrom_eq_cons (by omega : 3 ≤ 4),
+          localMersenneWeightsFrom_eq_cons (by omega : 4 ≤ 4),
+          localMersenneWeightsFrom_eq_nil (by omega : 4 < 5)]
         norm_num [localMersenneQuotient]
-      norm_num [twentyOneEvenFullQuotientGreedyRemainder,
-        twentyOneQuotientTarget, hweights, integerGreedyRemainder,
+      unfold twentyOneEvenFullQuotientGreedyRemainder
+      rw [hweights]
+      norm_num [twentyOneQuotientTarget, integerGreedyRemainder,
         integerGreedyBits, weightedBoolSum]
     · have hweights : localMersenneWeights 6 6 = [21, 9, 4, 2, 1] := by
-        unfold localMersenneWeights
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 2 ≤ 6)]
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 3 ≤ 6)]
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 4 ≤ 6)]
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 5 ≤ 6)]
-        rw [localMersenneWeightsFrom_eq_cons (by norm_num : 6 ≤ 6)]
-        rw [localMersenneWeightsFrom_eq_nil (by norm_num : 6 < 7)]
+        rw [localMersenneWeights,
+          localMersenneWeightsFrom_eq_cons (by omega : 2 ≤ 6),
+          localMersenneWeightsFrom_eq_cons (by omega : 3 ≤ 6),
+          localMersenneWeightsFrom_eq_cons (by omega : 4 ≤ 6),
+          localMersenneWeightsFrom_eq_cons (by omega : 5 ≤ 6),
+          localMersenneWeightsFrom_eq_cons (by omega : 6 ≤ 6),
+          localMersenneWeightsFrom_eq_nil (by omega : 6 < 7)]
         norm_num [localMersenneQuotient]
-      norm_num [twentyOneEvenFullQuotientGreedyRemainder,
-        twentyOneQuotientTarget, hweights, integerGreedyRemainder,
+      unfold twentyOneEvenFullQuotientGreedyRemainder
+      rw [hweights]
+      norm_num [twentyOneQuotientTarget, integerGreedyRemainder,
         integerGreedyBits, weightedBoolSum]
 
 /-- **Bounded full-row endpoint.**  A uniform defect bound of three already
@@ -4853,7 +4854,7 @@ theorem twentyOneSuccessorQuotientPrefixSupport_eq_greedyMersennePrefixRat
   rw [← hprefixQ, halignSucc, hprefixRat]
 
 /-- Once a full quotient row aligns with exact rational greedy, its lower
-support is not merely pointwise compatible: it is the exact audited greedy
+support is not merely pointwise compatible: it is the exact greedy
 prefix through rank `R`. -/
 theorem twentyOneEvenQuotientGreedySupport_eq_greedyMersennePrefixRat_of_fullAlignment
     {R : ℕ} (hR : 2 ≤ R)
@@ -4894,7 +4895,7 @@ theorem twentyOneEvenQuotientGreedySupport_eq_greedyMersennePrefixRat_of_fullAli
         hR hd2 hdR halign).2 hactualR
 
 /-- Aligned quotient supports inherit the exact rational greedy
-undershoot.  The proof uses the nonnegative residual in the audited
+undershoot.  The proof uses the nonnegative residual in the exact
 rational telescoping identity, so it does not assume membership of the
 infinite target. -/
 theorem localMersennePrefixValue_twentyOneEvenQuotientGreedySupport_le_of_fullAlignment
@@ -5335,7 +5336,7 @@ theorem twentyOneQuotientDefect_greedySupport
     localPrefixQuotient_twentyOneEvenQuotientGreedySupport_add_remainder hR
   omega
 
-/-- The sole arithmetic producer obligation after canonicalization. -/
+/-- The sole arithmetic condition remaining after canonicalization. -/
 def TwentyOneEvenQuotientGreedyWindow : Prop :=
   ∀ R : ℕ, 2 ≤ R →
     twentyOneEvenQuotientGreedyRemainder R < 2 ^ R
@@ -5734,7 +5735,7 @@ theorem one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalCoreControl
 /-- **Canonical next-coin endpoint.**  It is enough to prove the ordinary
 greedy invariant that every preterminal state lies below the next quotient
 coin.  No fixed fringe width, exact equality exclusion, or full-row defect
-cap remains in the producer. -/
+cap remains in the hypothesis. -/
 theorem one_div_twenty_one_mem_mersenneAchievementSet_of_preterminalNextCoin
     (hnext : TwentyOneEvenQuotientPreterminalNextCoinBound) :
     (1 / 21 : ℝ) ∈ mersenneAchievementSet :=

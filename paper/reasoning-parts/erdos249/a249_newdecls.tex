@@ -332,12 +332,14 @@ control and separation hypotheses are exactly the two remaining open
 obligations; the consumer is a real theorem, not a claim they hold.
 \end{prop}
 
-\subsubsection{Geometric coprimality: a coordinate that provably cannot decide \#249 alone}
+\subsubsection{Geometric coprimality: a lattice coordinate, and a classical identity beside it}
 
 \texttt{GeometricCoprimality} relocates \#249 onto the visible-lattice-point
-mass of coprime pairs, and then proves that this specific coordinate change,
-by itself, cannot decide irrationality at any rational parameter --- a
-genuine proved barrier against an entire family of approaches.
+mass of coprime pairs. Beside that bridge it formalises the classical
+gcd-layering identity for the Lambert-weighted coprime sum. That identity is
+an elementary rational function of its parameter, so it cannot distinguish
+rational from irrational inputs; and it carries a different summand weight
+from $S$, so it is not a statement about \#249.
 
 \begin{thm}[Visible-point count is the totient, uniformly]
 For every $n\in\mathbb{N}$, $\#\{(a,b): a+b=n,\ 0<a,\ \gcd(a,b)=1\} =
@@ -359,27 +361,36 @@ finite gcd almost surely).
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:coprime-lattice}.
 \end{prop}
 
-\begin{thm}[Rational geometric-model falsifier --- a proved barrier]
+\begin{thm}[The classical visible-point Lambert identity]
 For every $0\le r<1$, $\sum_{(a,b)\ \mathrm{coprime},\, a,b\ge 1}
 \dfrac{r^{a+b}}{1-r^{a+b}} = \Bigl(\dfrac{r}{1-r}\Bigr)^2$, an elementary
 rational function of $r$, hence rational at every rational $r$ including
-$r=1/2$.
+$r=1/2$. This is the classical visible-point identity, and the Lean
+declaration is a formalisation of it rather than a new result: writing each
+pair $(A,B)$ of positive integers uniquely as $g\cdot(a,b)$ with
+$\gcd(a,b)=1$ converts the quadrant sum $\sum_{A,B\ge1}r^{A+B}=(r/(1-r))^2$
+into the displayed sum over visible points, which is the $\gcd$-layering
+already recorded in the bridges above. Its summand weight is the Lambert
+weight $r^{a+b}/(1-r^{a+b})$, not the plain weight $r^{a+b}$ under which the
+same index set sums to $\sum_n\varphi(n)r^n$; the two sums share an index set
+and differ in weight, and only the second is $S$.
 \lean{GeometricCoprimality.tsum_pos_coprime_lambert_eq_sq}{GeometricCoprimality.lean:407}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:coprime-lattice}.
 \end{thm}
 
 \begin{obs}
-This is a proved barrier, not an observed pattern: it names exactly the
-class of argument it rules out. Coprime-pair restriction, exact
-Stern--Brocot-type splitting by $\gcd$, and geometric cylinder decay of the
-summand under the map $n\mapsto r^n/(1-r^n)$, used together and evaluated at
-a rational $r$, cannot imply irrationality of the resulting sum, because the
-identical construction is provably rational at \emph{every} rational $r$ in
-$[0,1)$ --- the mechanism has zero sensitivity to whether $r$ itself is
-rational. Any future argument built on this specific coordinate must use
-some further feature of $r=1/2$ beyond coprimality, gcd-layering, and
-geometric decay; the coordinate change is real and interesting, but this
-particular route through it is closed.
+The consequence to draw is narrow, and it is about the Lambert-weighted sum
+rather than about $S$. Coprime-pair restriction, exact Stern--Brocot-type
+splitting by $\gcd$, and geometric cylinder decay of the summand under the
+map $n\mapsto r^n/(1-r^n)$, used together and evaluated at a rational $r$,
+cannot imply irrationality of the resulting sum, because the identical
+construction is provably rational at \emph{every} rational $r$ in $[0,1)$ ---
+the mechanism has zero sensitivity to whether $r$ itself is rational. This
+closes one route through the coprime-lattice coordinate; it does not close
+the coordinate, and it is not evidence about the plain-weight sum that
+actually equals $S$. Any future argument built on this specific route must
+use some further feature of $r=1/2$ beyond coprimality, gcd-layering, and
+geometric decay.
 \end{obs}
 
 \subsubsection{The lcm-diagonal collapse: reduced to one \texorpdfstring{$\mathbb{N}$}{N}-indexed predicate}
@@ -488,8 +499,8 @@ fixed finite set of primes $S$, all sufficiently large prime indices $q$
 avoid $S$ entirely on layer $C(mq)$; combined with a nontrivial-layer
 hypothesis this forces arbitrarily large new prime divisors on cofinally
 many prime indices.
-\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:116}
-\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:172}
+\lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.finitePrimeSupportEscape_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:156}
+\quad \lean{ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.unboundedPrimeDivisorSupply_of_orderConsumer}{ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean:203}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:cyclotomic-anchor}. This
 is the abstract producer instantiated unconditionally for $X-2$ in
 \S\ref{prime-ray-curvature}'s sibling result above; polynomial resultant
@@ -500,10 +511,9 @@ upstream obligations, not proved here.
 \subsubsection{Rank-one subrank obstruction: a uniform proved barrier}
 \label{rank-one-subrank}
 
-\texttt{RankOneSubrankObstruction} is, together with the coprimality
-falsifier above, the sharpest new barrier in this batch: it names an entire
-family of candidate linear-form constructions and proves, uniformly, that
-none of them can work.
+\texttt{RankOneSubrankObstruction} is a uniform proved barrier: it names an
+entire family of candidate linear-form constructions and proves, uniformly,
+that none of them can work.
 
 \begin{thm}[Uniform rank-one no-go]
 Let $\Theta_r$ be the Möbius--Mersenne ladder rung and let $t(Y,r)$ be its

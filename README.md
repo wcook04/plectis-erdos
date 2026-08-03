@@ -1,9 +1,9 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Six open Erdős problems
+# Eight open Erdős problems
 
-Lean 4 on Erdős Problems 243, 249, 251, 257, 269, and 1049.
+Lean 4 on Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [architecture and repository guide](ARCHITECTURE.md).
 It assumes no Lean or project history.
@@ -13,21 +13,25 @@ It assumes no Lean or project history.
 
 Every covered Erdős problem has its own PDF:
 
+- [**#68 — factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf)
 - [**#243 — reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf)
 - [**#249 — dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [claim-bounded reasoning surface](erdos249-totient-reasoning-surface.pdf)
 - [**#251 — prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf)
 - [**#257 — reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [claim-bounded reasoning surface](erdos257-mersenne-reasoning-surface.pdf)
 - [**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf)
+- [**#1041 — short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf)
 - [**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf)
 
 | Problem | Mathematical statement | Public checked frontier; what remains |
 |---|---|---|
+| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | Exact factorial-successor and carry equivalences, integral-channel and projection consumers, and a finite denominator exclusion through `300000` are checked; no cofinal non-unit-carry or residual-nonintegrality producer is proved. |
 | **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? | Koizumi supplies normalised vanishing for the canonical orbit. Lean then excludes a bounded negative part and finite normalised negative mass; the missing negative-part bound and the unbounded mixed-sign regime remain open. |
 | **#249** | Is `∑ φ(n)/2ⁿ` irrational? | The dyadic-section span has rank `2^e+1` for every `e≥1` and is infinite-dimensional. Reduced denominators through `79,639,646,646,701,375,323,355,774,875,831,053` and diagonal scales through `t=82` are excluded; no `t=83` or unbounded producer is proved. |
-| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | Lean checks the finite identity, the infinite equivalence conditional on summability, and the integral-shift consumer; the prime number theorem supplies summability externally. No theorem produces the required cofinal adjacent small-mismatch gap pairs. |
-| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? | Lean checks finite-period noncollapse and exact restricted-set coding, topology, perfectness, and measure. Prime support at base `2` and squarefree support at power-of-two bases are cited prior results. Universal #257 and the `1/2` and `1/21` targets remain open. |
-| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | For every two-prime set, both the de-duplicated and repeated sums are proved transcendental by a paper argument using Bugeaud–Laurent. From three primes onward the problem remains open; Lean checks exact structure and a conditional carry consumer, not the rationality-to-carry bridge or cofinal escape. |
-| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? | Lean checks construction-specific no-go theorems, four-jet cancellation, and direct-clearing obstructions at `3/2`, plus the elementary height inequality used by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality result, and `3/2` remains open. |
+| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | Lean checks the finite identity, the infinite equivalence conditional on summability, and the integral-shift consumer; the prime number theorem supplies summability externally, and the concrete infinite-sum bridge remains open. No theorem produces the required cofinal adjacent small-mismatch gap pairs. |
+| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? | Lean checks full support, finite-period noncollapse, and exact restricted-set coding, topology, perfectness, and measure. Prime support at base `2` and squarefree support at power-of-two bases are cited prior results. Universal #257 and the `1/2` and `1/21` targets remain open. |
+| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | For every two-prime set, both the de-duplicated and repeated sums are proved transcendental by a paper argument using Bugeaud–Laurent. From three primes onward the problem remains open; Lean checks exact structure and a conditional carry consumer, not the rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion. |
+| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? | Newton-flow value decay, ray separation, the translation collision locus, and root-retention bounds are checked. The printed proof of a recent claimed spanning-tree decomposition has an invalid local saddle block; repairing the topology and metric gluing remains open. |
+| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? | Lean checks construction-specific no-go theorems, four-jet cancellation, and direct-clearing obstructions at `3/2`, plus the elementary height inequality used by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality result; `3/2`, the primitive noncollapsed construction, and analytic remainder control remain open. |
 
 This table is the blank-slate agent and reader inventory: no query is required
 to discover which problems exist or what they ask. It is navigation, not proof
@@ -41,7 +45,7 @@ cache, or network access.
 
 ## Status
 
-All six problems remain open. **This project does not solve any of them.**
+All eight problems remain open. **This project does not solve any of them.**
 Each problem paper states the checked results, the evidence boundary, and the
 exact obligation that remains. Results stay within Lean source.
 
@@ -134,8 +138,8 @@ evidence, checked consumer, and endpoint-or-counterexample boundary—are in
 
 | Library | Current size |
 |---|---:|
-| Lean modules | 994 |
-| Formal results and supporting lemmas | 150,178 |
+| Lean modules | 1,019 |
+| Formal results and supporting lemmas | 151,028 |
 | Curated claim records | 101 |
 | Contribution families | 21 |
 
@@ -155,8 +159,8 @@ exactly once. These are navigation counts, not novelty claims.
   `python3 scripts/query_corpus.py --tour --format card`, then follow
   `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.
   The no-build tour exposes corpus scale, the mathematical map, canonical
-  six-problem map, the distinct reviewed #249/#257 open-proposition frontier,
-  and authority boundaries. Use
+  eight-problem map, the distinct reviewed #249/#257 open-proposition
+  frontier, and authority boundaries. Use
   `query_semantic.py problem-registry` for every indexed problem and
   `structural-backlog` for authored replacement. Committed indexes expose every
   indexed declaration and exact dependencies for both loaded roots; coverage

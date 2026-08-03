@@ -12,11 +12,15 @@ PAPERS = erdos249-257-main-paper claim-faithful-publication-systems-paper \
   cold-clone-to-proof-receipt erdos249-totient-reasoning-surface \
   erdos257-mersenne-reasoning-surface \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
+  erdos-68-factorial-denominator-irrationality \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
-  erdos-269-three-prime-running-lcm erdos-1049-rational-base-lambert
-NOTES = erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
+  erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
+  erdos-1049-rational-base-lambert
+NOTES = erdos-68-factorial-denominator-irrationality \
+  erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
-  erdos-269-three-prime-running-lcm erdos-1049-rational-base-lambert
+  erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
+  erdos-1049-rational-base-lambert
 ALIASES = module-aliases.tex
 PREAMBLE = problem-note-preamble.tex
 REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py

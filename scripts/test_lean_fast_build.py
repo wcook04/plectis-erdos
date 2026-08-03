@@ -9,6 +9,9 @@ import os
 from pathlib import Path
 import re
 import tempfile
+import threading
+import time
+import tomllib
 import unittest
 from unittest import mock
 
@@ -16,6 +19,22 @@ import lean_fast_build as fast
 
 
 class LeanFastBuildTests(unittest.TestCase):
+    def test_problem_library_preserves_interpreter_stack_headroom(self) -> None:
+        lakefile = tomllib.loads((fast.ROOT / "lakefile.toml").read_text(
+            encoding="utf-8"
+        ))
+        problem_libraries = [
+            library
+            for library in lakefile["lean_lib"]
+            if library.get("name") == "ErdosProblems"
+        ]
+
+        self.assertEqual(len(problem_libraries), 1)
+        self.assertEqual(
+            problem_libraries[0].get("weakLeanArgs"),
+            ["--tstack=65536"],
+        )
+
     def test_automatic_worker_default_is_memory_bounded(self) -> None:
         with mock.patch.dict(os.environ, {}, clear=True), mock.patch.object(
             fast.os, "cpu_count", return_value=64
@@ -28,15 +47,22 @@ class LeanFastBuildTests(unittest.TestCase):
         )
         cache_step = workflow.index("- name: Restore project Lean cache")
         toolchain_step = workflow.index("- name: Install pinned Lean toolchain")
+        dependencies_step = workflow.index(
+            "- name: Fetch pinned dependency build artifacts"
+        )
         bounded_build = workflow.index(
-            "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
+            "run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness"
         )
 
         self.assertLess(cache_step, toolchain_step)
-        self.assertLess(toolchain_step, bounded_build)
+        self.assertLess(toolchain_step, dependencies_step)
+        self.assertLess(dependencies_step, bounded_build)
         self.assertIn("uses: actions/cache@", workflow)
         self.assertIn("# v5", workflow)
         self.assertIn("path: .lake", workflow)
+        # The fetch step is a multi-line `run: |` block since #41, so pin the
+        # command itself rather than one YAML rendering of it.
+        self.assertIn("lake exe cache get", workflow)
         self.assertNotIn("leanprover/lean-action@", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
 
@@ -77,7 +103,7 @@ class LeanFastBuildTests(unittest.TestCase):
             "- name: Fetch pinned dependency build artifacts"
         )
         bounded_build = workflow.index(
-            "run: python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness"
+            "run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness"
         )
 
         self.assertLess(toolchain_step, artifact_fetch)

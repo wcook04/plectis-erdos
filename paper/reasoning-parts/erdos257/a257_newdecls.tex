@@ -146,7 +146,7 @@ $J\le k+1$ gives a nonnegative frozen margin
 \]
 (\lean{half\_mem\_mersenneAchievementSet\_of\_governedFrozenMarginProducer}{HalfCylinderFiniteShadow.lean:1274},
 \ev{Lean}), proved via the pre-existing
-\lean{half\_mem\_mersenneAchievementSet\_of\_skipped\_dyadicCap}{GreedyAchievementSet.lean:1431} and the
+\lean{half\_mem\_mersenneAchievementSet\_of\_skipped\_dyadicCap}{GreedyAchievementSet.lean:1444} and the
 excess-sign equivalence already noted above. This is the module's actual promised consumer; the
 antecedent's own first-passage bound ($J\le k+1$, uniform) is \ev{Open} and has not been checked
 against any of O3--O5's producer sockets.
@@ -211,7 +211,7 @@ problem-centric interface to the legacy half-terminal producer already used for 
 $\mathtt{erdosSupportSeries}\ 2\ A=1/2$
 (\lean{exists\_rational\_half\_counterexample\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:31},
 \ev{Lean}), hence refutes $\mathrm{U257}$ outright
-(\lean{not\_universal\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:38}, \ev{Lean}). The
+(\lean{not\_universal\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:39}, \ev{Lean}). The
 module's own docstring states plainly that the producer sequence itself ``has only been checked to a
 large finite cutoff'': this is a restatement of the already-\ev{Open} O2 producer obligation in a new
 namespace, not a new result, and it duplicates \S O2's own logic (any HALF witness is $\neg\mathrm{U257}$)
@@ -222,7 +222,7 @@ the second rational target $1/21$:
   \sum_{n\in F}\frac1{2^n-1}\ne\frac1{21}
 \]
 for every finite $F$
-(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:59}, \ev{Lean},
+(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:61}, \ev{Lean},
 \scale{uniform}, \coord{finite-lcm}).  The denominator-order identity forces
 $\operatorname{lcm}(F)=6$, after which the eight subsets of $\{2,3,6\}$ are exact arithmetic.
 This removes finite termination for that target; it does not establish achievement-set membership.
@@ -258,19 +258,19 @@ and eventual visits to every doubling block.  Then
  \quad\Longleftrightarrow\quad
  \neg\,\mathtt{TwentyOneFatalAlignedBranch}.
 \]
-\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3508}
+\lean{one\_div\_twenty\_one\_mem\_iff\_not\_fatalAlignedBranch}{TwentyOneQuotientGreedy.lean:3507}
 \quad\ev{Lean}\quad\scale{uniform}\quad\coord{greedy-orbit}.
 
 On the fatal branch the canonical quotient remainder $s_R$ is eventually
 strictly above the closed capacity $2^R$
-(\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5624}),
+(\lean{twentyOneFatalAlignedBranch\_eventually\_strict\_supercapacity}{TwentyOneQuotientGreedy.lean:5625}),
 and thereafter the support appends $R+1$ while $s_R$ follows one explicit
 affine recurrence
-(\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5657}).
+(\lean{twentyOneFatalAlignedBranch\_eventually\_affine\_supercapacity}{TwentyOneQuotientGreedy.lean:5658}).
 Conversely, closed rows $s_R\le2^R$ along any unbounded sequence decay after
 normalisation and put $1/21$ in the achievement set
-(\lean{twentyOneCofinalEvenQuotientGreedyDecay\_of\_closedRows}{TwentyOneQuotientGreedy.lean:5553};
-\lean{one\_div\_twenty\_one\_mem\_mersenneAchievementSet\_of\_cofinalGreedyDecay}{TwentyOneQuotientGreedy.lean:5457}).
+(\lean{twentyOneCofinalEvenQuotientGreedyDecay\_of\_closedRows}{TwentyOneQuotientGreedy.lean:5554};
+\lean{one\_div\_twenty\_one\_mem\_mersenneAchievementSet\_of\_cofinalGreedyDecay}{TwentyOneQuotientGreedy.lean:5458}).
 
 This is the exact current contribution: membership has been reduced to
 excluding one named permanent affine-supercapacity regime.  No theorem

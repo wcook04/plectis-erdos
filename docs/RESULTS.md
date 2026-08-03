@@ -37,11 +37,11 @@ on either endpoint.
 <!-- BEGIN semantic_public_census -->
 Only after those theorem-level facts comes the corpus census. The current semantic graph provides three diagnostic views across every indexed Erdős problem:
 
-| View | #243 | #249 | #251 | #257 | #269 | #1049 | both | shared | total |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| mechanically nonrecurring candidates | 3 | 85 | 0 | 168 | 0 | 5 | 0 | 19 | 280 |
-| classical/prior-art formalisations | 1 | 36 | 0 | 23 | 0 | 1 | 0 | 40 | 101 |
-| bare open-problem equivalences | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 2 | 32 |
+| View | #68 | #243 | #249 | #251 | #257 | #269 | #1041 | #1049 | both | shared | total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| mechanically nonrecurring candidates | 0 | 3 | 85 | 0 | 168 | 0 | 0 | 5 | 0 | 19 | 280 |
+| classical/prior-art formalisations | 0 | 1 | 36 | 0 | 23 | 0 | 0 | 1 | 0 | 40 | 101 |
+| bare open-problem equivalences | 0 | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 0 | 2 | 32 |
 
 The nonrecurring view contains 180 unconditional object theorems, 54 scoped barriers, and 46 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
 

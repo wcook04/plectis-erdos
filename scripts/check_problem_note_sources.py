@@ -54,6 +54,12 @@ COMMIT_RE = re.compile(r"\\newcommand\{\\commit\}\{([0-9a-f]{40})\}")
 NOTE_COMMIT_RE = re.compile(
     r"\\renewcommand\{\\commit\}\{([0-9a-f]{40})\}"
 )
+COMMIT_SHORT_RE = re.compile(
+    r"\\newcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
+)
+NOTE_COMMIT_SHORT_RE = re.compile(
+    r"\\renewcommand\{\\commitshort\}\{([0-9a-f]{12})\}"
+)
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
 LINK_RE = re.compile(
     r"""\\[lm]word\{(?P<word_file>[^{}]+)\}\{(?P<word_line>\d+)\}
@@ -149,10 +155,43 @@ def pinned_commit() -> str:
     return match.group(1)
 
 
+def pinned_commitshort() -> str:
+    match = COMMIT_SHORT_RE.search(PREAMBLE.read_text(encoding="utf-8"))
+    if match is None:
+        raise SystemExit(
+            f"{PREAMBLE.relative_to(ROOT)}: no pinned \\commitshort is declared"
+        )
+    return match.group(1)
+
+
 def note_pinned_commit(note_text: str, default_commit: str) -> str:
     """Return a note-local source pin, falling back to the corpus default."""
     match = NOTE_COMMIT_RE.search(strip_comments(note_text))
     return default_commit if match is None else match.group(1)
+
+
+def note_pinned_commitshort(note_text: str, default_commitshort: str) -> str:
+    """Return a note-local display pin, falling back to the corpus default."""
+    match = NOTE_COMMIT_SHORT_RE.search(strip_comments(note_text))
+    return default_commitshort if match is None else match.group(1)
+
+
+def source_pin_failure(
+    source: str,
+    note_text: str,
+    default_commit: str,
+    default_commitshort: str,
+) -> str | None:
+    """Reject a displayed short pin that does not name the effective commit."""
+    commit = note_pinned_commit(note_text, default_commit)
+    commitshort = note_pinned_commitshort(note_text, default_commitshort)
+    expected = commit[:12]
+    if commitshort == expected:
+        return None
+    return (
+        f"{source}: displayed \\commitshort {commitshort} does not match "
+        f"the effective \\commit prefix {expected}"
+    )
 
 
 def snapshot_lines(
@@ -208,6 +247,10 @@ def declares(line: str, name: str) -> bool:
                 rest = stripped[len(head) :].lstrip()
                 if re.match(rf"{re.escape(name)}(?![A-Za-z0-9_'])", rest):
                     return True
+    # Lean also permits the declaration keyword and name on consecutive
+    # lines. Authored links point at the name line in that layout.
+    if re.match(rf"{re.escape(name)}(?![A-Za-z0-9_'])\s*:", stripped):
+        return True
     return False
 
 
@@ -283,9 +326,11 @@ def declarations_for_module(relative: str, text: str) -> list[DeclarationKey]:
     return [(relative, name) for name in declarations_in(text)]
 
 
-def validated_coverage_floor(index: dict[str, Any]) -> tuple[float | None, list[str]]:
+def validated_coverage_floor(
+    owner: dict[str, Any], *, label: str = "note_coverage_floor"
+) -> tuple[float | None, list[str]]:
     """Return a finite coverage floor in `(0, 1]`, or a validation failure."""
-    value = index.get("note_coverage_floor")
+    value = owner.get("note_coverage_floor")
     if (
         isinstance(value, bool)
         or not isinstance(value, (int, float))
@@ -293,7 +338,7 @@ def validated_coverage_floor(index: dict[str, Any]) -> tuple[float | None, list[
         or not 0 < float(value) <= 1
     ):
         return None, [
-            "note_coverage_floor must be a finite number in the interval (0, 1]"
+            f"{label} must be a finite number in the interval (0, 1]"
         ]
     return float(value), []
 
@@ -421,11 +466,18 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
                 )
                 more = "" if len(missing) <= 6 else f", and {len(missing) - 6} more"
                 lines.append(f"      not reached by the note: {head}{more}")
-        if floor is not None and ratio < floor:
+        row_floor = floor
+        if "note_coverage_floor" in row:
+            row_floor, row_floor_failures = validated_coverage_floor(
+                row,
+                label=f"{row['problem_id']}.note_coverage_floor",
+            )
+            failures.extend(row_floor_failures)
+        if row_floor is not None and ratio < row_floor:
             failures.append(
                 f"{row['problem_id']}: note reaches {ratio:.0%} of current "
-                f"declarations, below the {floor:.0%} floor; rewrite the note "
-                f"and repin, or lower note_coverage_floor deliberately"
+                f"declarations, below the {row_floor:.0%} floor; rewrite the note "
+                f"and repin, or lower its note_coverage_floor deliberately"
             )
         # The floor is measured against this checkout, which is what the notes
         # are built from.  The library is also developed on another branch, and
@@ -474,6 +526,7 @@ def main() -> int:
         return 0
 
     default_commit = pinned_commit()
+    default_commitshort = pinned_commitshort()
     cache: dict[tuple[str, str], list[str]] = {}
     errors: list[str] = []
     checked = 0
@@ -485,6 +538,11 @@ def main() -> int:
             errors.append(f"{source}: registered problem note is missing")
             continue
         note_text = path.read_text(encoding="utf-8")
+        pin_failure = source_pin_failure(
+            source, note_text, default_commit, default_commitshort
+        )
+        if pin_failure is not None:
+            errors.append(pin_failure)
         commit = note_pinned_commit(note_text, default_commit)
         resolved_commits.add(commit)
         if (

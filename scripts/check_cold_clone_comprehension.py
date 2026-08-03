@@ -32,11 +32,13 @@ import check_architecture_guide
 import query_corpus
 
 ROOT = Path(__file__).resolve().parent.parent
-INDEXED_PROBLEM_COUNT = len(
-    json.loads((ROOT / "docs" / "problems.json").read_text(encoding="utf-8"))[
-        "problems"
-    ]
+INDEXED_PROBLEM_NUMBERS = frozenset(
+    row["erdos_number"]
+    for row in json.loads(
+        (ROOT / "docs" / "problems.json").read_text(encoding="utf-8")
+    )["problems"]
 )
+INDEXED_PROBLEM_COUNT = len(INDEXED_PROBLEM_NUMBERS)
 QUERY = ROOT / "scripts" / "query_corpus.py"
 SEMANTIC_QUERY = ROOT / "scripts" / "query_semantic.py"
 EXPERT_HANDOFF_QUERY = ROOT / "scripts" / "query_expert_handoffs.py"
@@ -58,10 +60,15 @@ INCREMENTAL_BUILD_SURFACES = (
 # prefix below. They prevent accidental bloat without making the next honest
 # sentence a release failure.
 HUMAN_SURFACE_BUDGET_BYTES = {
-    # The fixed prefix below protects the verdict and the direct six-problem
+    # The fixed prefix below protects the verdict and the direct eight-problem
     # mathematical card. Whole-file allowance scales with the canonical
     # problem registry instead of preserving the original two-lane ceiling.
-    "README.md": 16_000 + 300 * INDEXED_PROBLEM_COUNT,
+    # 300 bytes per problem was measured against shorter rows; the eight-problem
+    # table states each checked frontier and what remains, which runs longer.
+    # Measured at eight problems: 18,569 bytes, or 321 bytes per problem above
+    # the 16,000 fixed prefix. 400 leaves room for one further problem without
+    # reopening this line, and still fails on a runaway projection.
+    "README.md": 16_000 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
@@ -71,7 +78,10 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # screen.
 README_FIRST_CONTACT_BUDGET_BYTES = 16_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
-PACKET_BUDGET_BYTES = 16_384
+# Sized when the corpus indexed six problems. #68 and #1041 bring their own
+# vocabulary routes, so the dictionary packet grew past it. Raised rather than
+# trimmed: dropping routes to fit would make the packet silently incomplete.
+PACKET_BUDGET_BYTES = 20_480
 AGENT_TOUR_BUDGET_BYTES = query_corpus.agent_tour_budget_bytes(
     INDEXED_PROBLEM_COUNT
 )
@@ -332,12 +342,14 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["not an entrypoint into any private development system"],
         ],
         "state_problem_frontier": [
-            ["All six problems remain open"],
+            ["All eight problems remain open"],
             ["S = ∑ φ(n)/2ⁿ"],
             ["∑_{n∈A} 1/(2ⁿ - 1)"],
             ["every infinite", "for every infinite"],
         ],
         "recover_blank_slate_problem_card": [
+            ["#68"],
+            ["n!−1", "n!-1"],
             ["#243"],
             ["rapidly growing"],
             ["Sylvester recurrence"],
@@ -349,6 +361,8 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["every infinite"],
             ["#269"],
             ["running lcms"],
+            ["#1041"],
+            ["lemniscate"],
             ["#1049"],
             ["rational bases"],
             ["no query is required"],
@@ -430,7 +444,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["--tour --format card"],
             ["corpus scale"],
             ["mathematical map"],
-            ["canonical six-problem map"],
+            ["canonical eight-problem map"],
             ["problem-registry"],
             [
                 "distinct reviewed #249/#257 open-proposition frontier",
@@ -480,7 +494,9 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "# v5",
         "path: .lake",
         "restore-keys:",
-        "python3 scripts/lean_fast_build.py --jobs 4 --lake-staleness",
+        # Two workers, not four: four exhausted the runner while compiling
+        # FactorialZeroPlateau.
+        "python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness",
         "python3 scripts/build_lean_dependency_index.py --check",
         "No Lean source or proof-environment input changed; compilation is unchanged.",
         "This is already a default root.",
@@ -529,11 +545,13 @@ def validate_human_first_contact(
         in readme_prefix
     ), "README no longer exposes the cold-clone-to-proof-receipt paper"
     for problem, filename in (
+        ("#68", "erdos-68-factorial-denominator-irrationality.pdf"),
         ("#243", "erdos-243-reciprocal-tail-rigidity.pdf"),
         ("#249", "erdos-249-binary-totient-series.pdf"),
         ("#251", "erdos-251-prime-gap-dyadic-series.pdf"),
         ("#257", "erdos-257-mersenne-support-subseries.pdf"),
         ("#269", "erdos-269-three-prime-running-lcm.pdf"),
+        ("#1041", "erdos-1041-lemniscate-newton-flow.pdf"),
         ("#1049", "erdos-1049-rational-base-lambert.pdf"),
     ):
         assert problem in readme_prefix and f"]({filename})" in readme_prefix, (
@@ -853,20 +871,23 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
     for token in (
         "docs/orientation.json",
         "docs/claims.json",
-        "Six-problem cold-start card",
+        "Eight-problem cold-start card",
         "must not already know a query command",
-        "All six original problems remain open",
+        "All eight indexed problems remain open",
         "Sylvester recurrence",
         r"\sum_{n\ge1}\varphi(n)/2^n",
         r"\sum_{n\ge1}p_n/2^n",
         r"\sum_{n\in A}1/(2^n-1)",
         "running lcms of the smooth numbers",
+        "open unit lemniscate",
         "smallest resistant explicit base here is",
+        "erdos-68-factorial-denominator-irrationality.pdf",
         "erdos-243-reciprocal-tail-rigidity.pdf",
         "erdos-249-binary-totient-series.pdf",
         "erdos-251-prime-gap-dyadic-series.pdf",
         "erdos-257-mersenne-support-subseries.pdf",
         "erdos-269-three-prime-running-lcm.pdf",
+        "erdos-1041-lemniscate-newton-flow.pdf",
         "erdos-1049-rational-base-lambert.pdf",
         "no `ai_workflow`",
         "Lean source checked by the pinned Lean kernel",
@@ -878,7 +899,7 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
         "Claude-specific deltas only",
         "docs/orientation.json",
         "mathematical programme",
-        "six-problem cold-start card",
+        "eight-problem cold-start card",
         "do not query merely to learn which problems exist",
         "larger ongoing formal-mathematics workflow",
         "not an entrypoint into any private development system",
@@ -1032,7 +1053,17 @@ def collect_agent_packets() -> dict[str, Any]:
 
 
 def validate_proof_plan_packets(proof_plans: dict[str, Any]) -> None:
-    """Validate application boundaries and exact spines independently."""
+    """Validate application boundaries and exact spines independently.
+
+    These assertions are unconditional on purpose. Proof plans read the
+    elaborated dependency index, and a committed index that predates the Lean
+    tree makes every plan report itself unavailable -- which is honest, but it
+    is a repository defect, not a supported state. `build_lean_dependency_index
+    .py --check` in the build job fails on exactly that, and both jobs are
+    required on protected main, so a released checkout always carries a current
+    index. Skipping when a plan is unavailable would convert that hard failure
+    into a silent pass and the spine below would never be checked again.
+    """
     blocked = proof_plans["blocked_integer_tail"]
     assert blocked["kind"] == "formal_proof_plan"
     assert blocked["availability"] == "available"
@@ -1201,9 +1232,9 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert tour["scale"]["reviewed_remaining_open_proposition_count"] == len(
         summary["remaining_open_propositions"]
     )
-    assert tour["scale"]["indexed_problem_count"] == 6
-    assert tour["scale"]["indexed_open_problem_count"] == 6
-    assert tour["open_frontier_contract"]["indexed_open_problem_count"] == 6
+    assert tour["scale"]["indexed_problem_count"] == 8
+    assert tour["scale"]["indexed_open_problem_count"] == 8
+    assert tour["open_frontier_contract"]["indexed_open_problem_count"] == 8
     assert tour["open_frontier_contract"][
         "reviewed_remaining_open_proposition_count"
     ] == len(summary["remaining_open_propositions"])
@@ -1213,14 +1244,15 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
     assert tour["budget_contract"]["maximum_encoded_bytes"] == (
         AGENT_TOUR_BUDGET_BYTES
     )
-    assert {row["erdos_number"] for row in tour["problem_map"]} == {
-        243,
-        249,
-        251,
-        257,
-        269,
-        1049,
-    }
+    # Read from the problem registry rather than a third literal list. The
+    # count above was updated to eight when #68 and #1041 were indexed and
+    # this set was not, so the tour and the registry disagreed for a whole
+    # release. Deriving both from docs/problems.json keeps the real check --
+    # that the tour routes every indexed problem and invents none -- while
+    # removing the copy that goes stale.
+    assert {
+        row["erdos_number"] for row in tour["problem_map"]
+    } == set(INDEXED_PROBLEM_NUMBERS)
     assert tour["formal_dependency_graph"]["loaded_library_roots"] == [
         "Erdos249257",
         "ErdosProblems",
@@ -1263,15 +1295,15 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
 
     problem_registry = packets["problem_registry"]
     assert problem_registry["source"] == "docs/problems.json"
-    assert problem_registry["indexed_problem_count"] == 6
+    assert problem_registry["indexed_problem_count"] == 8
     assert {
         row["erdos_number"] for row in problem_registry["problems"]
-    } == {243, 249, 251, 257, 269, 1049}
+    } == {68, 243, 249, 251, 257, 269, 1041, 1049}
     dictionary = packets["semantic_dictionary"]
     assert dictionary["problem_registry_contract"]["source"] == (
         "docs/problems.json"
     )
-    assert len(dictionary["problem_registry_contract"]["problems"]) == 6
+    assert len(dictionary["problem_registry_contract"]["problems"]) == 8
     for problem_search in packets["problem_searches"].values():
         assert problem_search["routing_receipt"] == {
             "selection": "exact_problem_registry_term",
