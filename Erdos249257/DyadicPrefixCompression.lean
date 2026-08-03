@@ -3366,8 +3366,8 @@ theorem halfGreedy_BlockSafe_of_rawBlockWitness
     h.hg h.hnum h.hden h.hfirst).2 h.hmargin
   exact hall (n + 1) h.hb h.hc
 
-/-- A universal actual raw taken-block margin supply closes exact
-half-membership. -/
+/-- A universal actual raw taken-block margin supply implies exact
+half-membership.  The supply itself remains unproved. -/
 theorem half_mem_mersenneAchievementSet_of_skippedRawBlockMarginSupply
     (hsupply : HalfGreedySkippedRawBlockMarginSupply) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
@@ -3386,9 +3386,10 @@ theorem half_mem_mersenneAchievementSet_of_skippedActualRawMarginSupply
   rcases hsupply n hskip with ⟨h⟩
   exact halfGreedy_rawBlockWitness_of_actualRawMarginWitness h
 
-/-- The minimal unsafe-skip actual raw-margin producer closes exact
+/-- The minimal unsafe-skip actual raw-margin supply implies exact
 half-membership: a witness converts through actual state/cancellation into
-the generic raw theorem and contradicts the alleged unsafe state. -/
+the generic raw theorem and contradicts the alleged unsafe state.  The
+supply itself remains unproved. -/
 theorem half_mem_mersenneAchievementSet_of_unsafeSkipActualRawMarginSupply
     (hsupply : HalfGreedyUnsafeSkipActualRawMarginSupply) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by
@@ -4473,8 +4474,8 @@ def HalfGreedyUnsafeSkipGcdOvershootSupply : Prop :=
           (halfGreedyResidualDisplayedNumerator n).natAbs *
             (2 ^ (n + 1) - 1)
 
-/-- The primitive overshoot producer excludes every unsafe skip and hence
-closes exact half-membership. -/
+/-- The primitive overshoot supply excludes every unsafe skip and hence
+implies exact half-membership.  The supply itself remains unproved. -/
 theorem half_mem_mersenneAchievementSet_of_unsafeSkipGcdOvershootSupply
     (hsupply : HalfGreedyUnsafeSkipGcdOvershootSupply) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by

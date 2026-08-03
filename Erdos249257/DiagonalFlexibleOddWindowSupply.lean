@@ -132,7 +132,8 @@ theorem diagonalAdjacentSuffixGapSupply_of_powerTwoOddGuardThreeRankBand
   · exact diagonalAdjacentSuffixGapWitness_of_powerTwoOddHalfWordBandAt
       ha2 (by omega) hwidth2 hq2
 
-/-- The flexible three-rank band producer therefore closes Erdős #249. -/
+/-- The flexible three-rank band supply implies irrationality of the totient
+series.  The supply itself remains unproved. -/
 theorem irrational_totientSeries_of_powerTwoOddGuardThreeRankBandSupply
     (hsupply : PowerTwoOddGuardThreeRankBandSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by

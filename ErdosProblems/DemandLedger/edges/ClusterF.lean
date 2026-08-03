@@ -33,7 +33,8 @@ This file establishes that the four are **totally ordered**, in the chain
 
 so `G091` is a weakest member in the implication order proved here:
 a proof of `G091` discharges nothing else, but a proof of any of the other three
-discharges `G091`, and `G091` alone already closes #249 through
+discharges `G091`, and a proof of `G091` alone would already give the #249
+irrationality through
 `Erdos249257.irrational_tsum_totient_div_pow_two_of_gap_certificate_supply`.
 No strict non-implication between these statements is proved by this chain.
 

@@ -16017,7 +16017,7 @@ theorem totient_gap_certificate_of_low_carry_certificate (q N K : ℕ)
   rw [Nat.mod_eq_of_lt hlt]
   omega
 
-/-- **Gap-certificate supply closes Erdős #249.**  If every denominator `q`
+/-- **Gap-certificate supply implies irrationality.**  If every denominator `q`
 admits one window `(N, K)` whose residue avoids the thin top band — width
 `q·(N+K+2)` out of `2^K`, versus the bottom band's required width — then
 `∑_{n≥0} φ(n)/2^n` is irrational.  This is the (strictly weaker) remaining
