@@ -44,7 +44,7 @@ Three consequences fall out of this inversion:
 | Session notary | What did the agent observe, conjecture, probe, and establish — and can a stranger replay it byte-for-byte? | `python3 scripts/proof_workbench.py {open,note,probe,claim,close,replay,show}` |
 | Blind harness | Can a candidate bridge be kernel-checked in a historical parent environment that provably lacks the future answer? | `python3 scripts/historical_bridge_experiment.py --compact` |
 | Static semantic compiler | Which declarations are structurally relevant to this goal (nomination only — never applicability)? | `python3 scripts/query_corpus.py` |
-| The corpus itself | More than 150,000 indexed declarations across the reviewed library, problem-owned expansion, and auxiliary inventory forest; exact dependency neighborhoods cover both compact roots | `Erdos249257/`, `ErdosProblems/`, and `python3 scripts/query_semantic.py inventory` |
+| The corpus itself | More than 150,000 indexed declarations — 8,171 of them generated certificate shards, counted as source rather than as claims — across the reviewed library, problem-owned expansion, and auxiliary inventory forest; exact dependency neighborhoods cover both compact roots | `Erdos249257/`, `ErdosProblems/`, and `python3 scripts/query_semantic.py inventory` |
 
 The last row is the quiet load-bearing one. This environment is deep
 rather than broad: decades-hard problems, attacked far past the first

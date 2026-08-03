@@ -19,20 +19,6 @@ Public evidence of that release workflow: pinned formal-source identity; claim a
 
 The workflow provenance explains the release discipline; it does not imply hidden proof authority or equivalence with private work.
 
-## Scale
-
-| Surface | Count |
-|---|---:|
-| Lean modules | 1,019 |
-| Lean declarations | 153,238 |
-| Theorem-like declarations | 151,028 |
-| Generated certificate declarations | 8,171 |
-| Principal claim links | 310 |
-
-The exhaustive declaration and import index is
-[`docs/declaration_atlas.json`](declaration_atlas.json). Generated certificate
-shards are counted as formal source, not as separate mathematical claims.
-
 ## What a claim status asserts
 
 A status states the exact public evidence claim, not a priority or novelty claim.
@@ -55,6 +41,32 @@ The authored prior-art record, not this table, is the source for antecedents.
 - `remaining_open.half_value_membership` — Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.
 - `remaining_open.twenty_one_permanent_affine_supercapacity` — Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.
 - `remaining_open.universal_257_all_infinite_supports` — Prove irrationality for every infinite support A, not only the named support families formalised here.
+
+## Where the substance is
+
+- Both working records close with a section titled "The wall": every
+  attempted argument class stopped by a stated bound, recorded with
+  what it does not rule out.
+- The mathematics paper closes with "What we need from a mathematician":
+  four self-contained problems; a refuted route is withdrawn and the
+  refutation credited in the next edition.
+- [`docs/RESULTS.md`](RESULTS.md) opens with a ten-minute verdict.
+
+## Scale
+
+Navigation inventory, not results. Generated certificate shards are
+counted as formal source, never as separate mathematical claims.
+
+| Surface | Count |
+|---|---:|
+| Lean modules | 1,019 |
+| Lean declarations | 153,238 |
+| Theorem-like declarations | 151,028 |
+| Generated certificate declarations | 8,171 |
+| Principal claim links | 310 |
+
+The exhaustive declaration and import index is
+[`docs/declaration_atlas.json`](declaration_atlas.json).
 
 ## Mathematical programmes
 

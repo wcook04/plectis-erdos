@@ -121,8 +121,8 @@ PAPER_SECTION_ORDER = (
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
         "Lean verifies that a proof establishes the formal statement written in the source",
-        "Both problems remain open",
-        "does not claim a solution to either problem",
+        "All eight problems remain open",
+        "does not claim a solution to any of them",
     ),
     "five_real_parts": (
         "Lean source",
