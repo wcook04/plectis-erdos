@@ -48,7 +48,7 @@ class LeanFastBuildTests(unittest.TestCase):
         cache_step = workflow.index("- name: Restore project Lean cache")
         toolchain_step = workflow.index("- name: Install pinned Lean toolchain")
         dependencies_step = workflow.index(
-            "- name: Materialize pinned Lake dependencies"
+            "- name: Fetch pinned dependency build artifacts"
         )
         bounded_build = workflow.index(
             "run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness"
@@ -60,7 +60,9 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("uses: actions/cache@", workflow)
         self.assertIn("# v5", workflow)
         self.assertIn("path: .lake", workflow)
-        self.assertIn("run: lake exe cache get", workflow)
+        # The fetch step is a multi-line `run: |` block since #41, so pin the
+        # command itself rather than one YAML rendering of it.
+        self.assertIn("lake exe cache get", workflow)
         self.assertNotIn("leanprover/lean-action@", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
 
@@ -87,6 +89,27 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("--default-toolchain none --no-modify-path", setup)
         self.assertIn('toolchain install "$(tr -d \'\\r\\n\' < lean-toolchain)"', setup)
         self.assertIn('echo "$HOME/.elan/bin" >> "$GITHUB_PATH"', setup)
+
+    def test_ci_fetches_dependency_artifacts_before_the_bounded_build(self) -> None:
+        # A cold Actions cache must not fall through to compiling Mathlib from
+        # source: that cannot finish inside the runner job ceiling, so the
+        # required build check becomes structurally unsatisfiable. The fetch
+        # uses Lake's own tooling, keeping the no-composite-action contract.
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        toolchain_step = workflow.index("- name: Install pinned Lean toolchain")
+        artifact_fetch = workflow.index(
+            "- name: Fetch pinned dependency build artifacts"
+        )
+        bounded_build = workflow.index(
+            "run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness"
+        )
+
+        self.assertLess(toolchain_step, artifact_fetch)
+        self.assertLess(artifact_fetch, bounded_build)
+        self.assertIn("lake exe cache get", workflow)
+        self.assertNotIn("leanprover/lean-action@", workflow)
 
     def test_ci_pins_external_actions_to_full_commit_shas(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
