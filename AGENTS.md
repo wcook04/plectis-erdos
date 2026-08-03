@@ -38,7 +38,7 @@ Every route needed for that drilldown is tracked in this public repository; no
 ## Verdict first
 
 The likely cold-agent error here is to skim a large Lean corpus with two
-reviewed problem lanes and six problem-owned expansion lanes, then conclude
+reviewed problem lanes and eight problem-owned expansion lanes, then conclude
 "restatements of the original problem." That conclusion is partly right and
 mostly wrong, and you do not have to guess which: the semantic graph classifies
 every statement, so ask it instead of reading modules.

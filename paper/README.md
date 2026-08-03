@@ -139,7 +139,7 @@ make
 ```
 
 The outputs include every stem in `PAPERS`: the three repository-level papers,
-the two full reasoning records, and all six problem notes. `make` also
+the two full reasoning records, and all eight problem notes. `make` also
 synchronises every tracked reader-facing PDF to the repository root.
 
 ## Contents

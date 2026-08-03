@@ -240,20 +240,6 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
         + ".",
         "",
         orientation["release_provenance"]["boundary"],
-        "",
-        "## Scale",
-        "",
-        "| Surface | Count |",
-        "|---|---:|",
-        f"| Lean modules | {scale['module_count']:,} |",
-        f"| Lean declarations | {scale['declaration_count']:,} |",
-        f"| Theorem-like declarations | {scale['theorem_like_count']:,} |",
-        f"| Generated certificate declarations | {scale['generated_certificate_declaration_count']:,} |",
-        f"| Principal claim links | {scale['principal_claim_link_count']:,} |",
-        "",
-        "The exhaustive declaration and import index is",
-        "[`docs/declaration_atlas.json`](declaration_atlas.json). Generated certificate",
-        "shards are counted as formal source, not as separate mathematical claims.",
     ]
     # REUSE-IgnoreEnd
     lines.extend(
@@ -273,6 +259,36 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
     lines.extend(["", "## Exact open boundary", ""])
     for row in orientation["remaining_open_propositions"]:
         lines.append(f"- `{row['id']}` — {row['statement']}")
+    lines.extend(
+        [
+            "",
+            "## Where the substance is",
+            "",
+            '- Both working records close with a section titled "The wall": every',
+            "  attempted argument class stopped by a stated bound, recorded with",
+            "  what it does not rule out.",
+            '- The mathematics paper closes with "What we need from a mathematician":',
+            "  four self-contained problems; a refuted route is withdrawn and the",
+            "  refutation credited in the next edition.",
+            "- [`docs/RESULTS.md`](RESULTS.md) opens with a ten-minute verdict.",
+            "",
+            "## Scale",
+            "",
+            "Navigation inventory, not results. Generated certificate shards are",
+            "counted as formal source, never as separate mathematical claims.",
+            "",
+            "| Surface | Count |",
+            "|---|---:|",
+            f"| Lean modules | {scale['module_count']:,} |",
+            f"| Lean declarations | {scale['declaration_count']:,} |",
+            f"| Theorem-like declarations | {scale['theorem_like_count']:,} |",
+            f"| Generated certificate declarations | {scale['generated_certificate_declaration_count']:,} |",
+            f"| Principal claim links | {scale['principal_claim_link_count']:,} |",
+            "",
+            "The exhaustive declaration and import index is",
+            "[`docs/declaration_atlas.json`](declaration_atlas.json).",
+        ]
+    )
     lines.extend(
         [
             "",
@@ -406,8 +422,10 @@ def render_readme_scale_strip(
             f"| Curated claim records | {len(claims['claims']):,} |",
             f"| Contribution families | {len(contribution_families):,} |",
             "",
-            "Claim records span every status, including cited and open, and are partitioned",
-            "exactly once. These are navigation counts, not novelty claims.",
+            f"Of the formal results above, {scale['generated_certificate_declaration_count']:,} are machine-generated",
+            "certificate shards, counted as formal source and never as separate mathematical",
+            "claims. Claim records span every status, including cited and open, and are",
+            "partitioned exactly once. These are navigation counts, not novelty claims.",
             README_SCALE_END,
         ]
     )

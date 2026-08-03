@@ -9,7 +9,7 @@ public repositories. A retired manuscript that remains shipped as a root
 PDF is carried only by its home repository for provenance; it is not
 mirrored or restored to an active publication route.
 
-This checkout carries 11 active papers and 1 retired provenance paper. Pick the question you are actually asking:
+This checkout carries 13 active papers and 1 retired provenance paper. Pick the question you are actually asking:
 
 ### What is mathematically proved about Erdős #249 and #257, and what exactly remains open?
 
@@ -18,6 +18,14 @@ This checkout carries 11 active papers and 1 retired provenance paper. Pick the 
 [full text](full-text/erdos249-257-main-paper.md) · [PDF](../../erdos249-257-main-paper.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex) · 159 sections · `erdos249-257-main` · native to this repository
 
 The paper's own reading map sends a first pass to [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
+
+### What exact denominator obstructions are checked for Erdős #68, and which quantified producer could still prove irrationality?
+
+**Factorial Carries and Finite Channel Obstructions**
+
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex) · 17 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+
+This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [Finite channel congruences and the LCM obstruction](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Weighted projection rigidity](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [The missing cofinal inputs](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
 ### Which bounded negative-error behaviours can be excluded for Erdős #243, and which analytic hypotheses still keep it open?
 
@@ -75,6 +83,14 @@ This paper states no reading route. Its evidence boundary is in [The problem, an
 
 This paper states no reading route. Its evidence boundary is in [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [The running least common multiple as a product of pure powers](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [Dyadic blocks and a conditional carry contradiction](full-text/erdos-269-three-prime-running-lcm.md#sec:escape), [Complements and further questions](full-text/erdos-269-three-prime-running-lcm.md#sec:open).
 
+### Which Newton-flow separation facts are checked for Erdős #1041, and what exactly fails in the recent claimed global decomposition?
+
+**Newton Flow and Critical-Value Ray Separation**
+
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex) · 14 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+
+This paper states no reading route. Its evidence boundary is in [The problem](full-text/erdos-1041-lemniscate-newton-flow.md#sec:problem), [The Newton value equation](full-text/erdos-1041-lemniscate-newton-flow.md#sec:newton), [A proof gap in the unrestricted argument](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [Complements and further questions](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
+
 ### Which linear-form constructions fail at the rational base 3/2 for Erdős #1049, and what primitive kernel is still needed?
 
 **Arithmetic Boundaries at Base 3/2**
@@ -103,7 +119,7 @@ This paper states no reading route. Its evidence boundary is in [The cold-clone 
 
 **Plectis: What a Stranger Can Check**
 
-[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 30 sections · `plectis-public-system` · mirror to this repository
+[full text](full-text/plectis-public-system.md) · [PDF](mirror/plectis-public-system.pdf) · [LaTeX source](https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex) · 31 sections · `plectis-public-system` · mirror to this repository
 
 This paper states no reading route. Its evidence boundary is in [The problem](full-text/plectis-public-system.md#sec:problem), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions).
 
@@ -115,6 +131,7 @@ is proof authority. In order:
 > checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition.
 
 - `erdos249-257-main` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, and public claim status, which belongs to docs/claims.json.
+- `erdos-68-factorial-denominator-irrationality` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #68, which remains open.
 - `erdos-243-reciprocal-tail-rigidity` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #243, which remains open.
 - `erdos-249-binary-totient-series` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
 - `erdos249-totient-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #249, which remains open.
@@ -122,6 +139,7 @@ is proof authority. In order:
 - `erdos-257-mersenne-support-subseries` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, which remains open.
 - `erdos257-mersenne-reasoning-surface` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #257, whose universal and half-value questions remain open.
 - `erdos-269-three-prime-running-lcm` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #269, which remains open.
+- `erdos-1041-lemniscate-newton-flow` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1041, which remains open.
 - `erdos-1049-rational-base-lambert` is not authority for proof validity, which belongs to Lean source checked by the pinned kernel, or a solution to Erdős #1049, which remains open.
 - `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.

@@ -73,7 +73,7 @@ FIRST_MINUTE_CONTRACT = {
         (1, 2): (
             "from lean proofs to public claims",
             "lean verifies that a proof establishes the formal statement written in the source",
-            "both problems remain open",
+            "eight problems remain open",
             "finite certificate at every lcm-diagonal scale",
             "t ≤ 82",
             "beyond every fixed cutoff",
@@ -90,7 +90,7 @@ FIRST_MINUTE_CONTRACT = {
     "cold-clone-to-proof-receipt.pdf": {
         (1, 1): (
             "from a cold clone to a proof receipt",
-            "153,123 declarations",
+            "153,238 declarations",
             "navigation does not receive proof authority",
             "verdicts come from the pinned lean process",
             "not an autonomous theorem prover",
