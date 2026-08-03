@@ -8243,7 +8243,8 @@
           "path": "ErdosProblems/Erdos68/DivisorFactorialCentre.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos68.FiniteDefectAutomaton"
+            "ErdosProblems.Erdos68.FiniteDefectAutomaton",
+            "ErdosProblems.Erdos68.FactorialCarry"
           ]
         },
         {
@@ -11120,17 +11121,17 @@
     }
   },
   "release": {
-    "version": "0.6.0",
-    "tag": "v0.6.0",
-    "date": "2026-07-12",
+    "version": "0.7.0",
+    "tag": "v0.7.0",
+    "date": "2026-08-03",
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "d52755f4b3131beacf9affcfc3a7404f55412bfe",
+      "ref": "63a7f05c17da22556344c74f871bbf34f0c1ede6",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "at_last_tag",
-      "public_tag": "formal-source-2026-08-02"
+      "public_tag": "formal-source-2026-08-03"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -11451,22 +11452,22 @@
         {
           "name": "rawSafe_but_not_gcdScaled_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3449
+          "line": 3450
         },
         {
           "name": "factorEleven_predecessorOvershoot_not_inductive_fixture",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 3471
+          "line": 3472
         },
         {
           "name": "unsafeSkipGcdOvershootSupply_iff_primitive",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4520
+          "line": 4521
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_unsafeSkipPrimitiveOvershootSupply",
           "module": "Erdos249257/DyadicPrefixCompression.lean",
-          "line": 4561
+          "line": 4562
         }
       ]
     },
@@ -11517,12 +11518,12 @@
         {
           "name": "cofinalAdmissibility_of_canonicalEvenSeamSupply",
           "module": "Erdos249257/HalfCarryReachability.lean",
-          "line": 1027
+          "line": 1028
         },
         {
           "name": "exists_infinite_support_half_of_canonicalEvenSeamSupply",
           "module": "Erdos249257/HalfCarryReachability.lean",
-          "line": 1055
+          "line": 1056
         }
       ]
     },
@@ -11634,7 +11635,7 @@
         {
           "name": "half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer",
           "module": "Erdos249257/HalfCylinderFiniteShadow.lean",
-          "line": 1274
+          "line": 1275
         }
       ]
     },
@@ -11892,12 +11893,12 @@
         {
           "name": "one_div_twenty_one_mem_iff_scaledGreedyRemainderCofinallyBounded",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 2715
+          "line": 2716
         },
         {
           "name": "one_div_twenty_one_mem_mersenneAchievementSet_of_defect_le_one_cofinally",
           "module": "Erdos249257/BooleanMobiusCarry.lean",
-          "line": 2842
+          "line": 2843
         },
         {
           "name": "one_div_twenty_one_mem_iff_not_fatalAlignedBranch",
@@ -13108,7 +13109,7 @@
         {
           "name": "irrational_totientSeries_of_powerTwoOddGuardThreeRankBandSupply",
           "module": "Erdos249257/DiagonalFlexibleOddWindowSupply.lean",
-          "line": 136
+          "line": 137
         }
       ]
     },
@@ -13220,7 +13221,7 @@
         {
           "name": "irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply",
           "module": "Erdos249257/DiagonalFreshLossBridge.lean",
-          "line": 2929
+          "line": 2932
         }
       ]
     },
@@ -13888,17 +13889,17 @@
         {
           "name": "exists_certifiedKill_of_pivotFiberSeparatedPairs",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1136
+          "line": 1125
         },
         {
           "name": "irrational_totient_series_of_pivotAntiReconstruction",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1533
+          "line": 1523
         },
         {
           "name": "dtwWindowSeparatedPairs_iff_irrational_totient_series",
           "module": "Erdos249257/PivotAntiReconstruction.lean",
-          "line": 1775
+          "line": 1765
         }
       ]
     },

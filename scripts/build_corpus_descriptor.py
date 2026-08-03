@@ -282,7 +282,7 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             f"| Lean modules | {scale['module_count']:,} |",
             f"| Lean declarations | {scale['declaration_count']:,} |",
             f"| Theorem-like declarations | {scale['theorem_like_count']:,} |",
-            f"| Generated certificate declarations | {scale['generated_certificate_declaration_count']:,} |",
+            f"| Manifest-marked generated declarations (a floor, not the share) | {scale['generated_certificate_declaration_count']:,} |",
             f"| Principal claim links | {scale['principal_claim_link_count']:,} |",
             "",
             "The exhaustive declaration and import index is",
@@ -511,8 +511,9 @@ def render_wave_package_shape(atlas: dict[str, Any]) -> str:
             "aggregators rather than presented as separate mathematical claims.",
             f"- Entire checked corpus: {scale['module_count']:,} modules, "
             f"{scale['declaration_count']:,} declarations, {scale['theorem_like_count']:,} theorem-like "
-            f"declarations, and {scale['generated_certificate_declaration_count']:,} generated-certificate "
-            "declarations. The release gate rejects `sorry`, `admit`, custom `axiom` declarations, and "
+            f"declarations, and {scale['generated_certificate_declaration_count']:,} manifest-marked "
+            "generated-certificate declarations (a classification floor, not the generated share). "
+            "The release gate rejects `sorry`, `admit`, custom `axiom` declarations, and "
             "`native_decide`.",
             "",
             "These are generated inventory facts, not mathematical claim counts. The declaration atlas",

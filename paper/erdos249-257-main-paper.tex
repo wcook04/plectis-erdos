@@ -35,8 +35,8 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public formal-source checkpoint used by this paper.
-\newcommand{\commit}{d52755f4b3131beacf9affcfc3a7404f55412bfe}
-\newcommand{\commitshort}{d52755f4b313}
+\newcommand{\commit}{63a7f05c17da22556344c74f871bbf34f0c1ede6}
+\newcommand{\commitshort}{63a7f05c17da}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
 \newcommand{\rootbase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main}
@@ -1377,10 +1377,10 @@ parent words at depth $2d$ that realises this one-hole pattern.  The unproved
 supply hypothesis gives one at every $2d$,
 $d\geq10$.  Choose $k=1$, except $k=2$ when the hole is $1$; this gives words
 at unbounded depths
-(\lword{HalfCarryReachability.lean}{1027}{cofinalAdmissibility_of_canonicalEvenSeamSupply}{the unbounded-depth admissibility implication}).
+(\lword{HalfCarryReachability.lean}{1028}{cofinalAdmissibility_of_canonicalEvenSeamSupply}{the unbounded-depth admissibility implication}).
 Restriction fills earlier depths, and K\"onig compactness gives one infinite
 support of value $1/2$
-(\lword{HalfCarryReachability.lean}{1055}{exists_infinite_support_half_of_canonicalEvenSeamSupply}{the half-value conclusion}).
+(\lword{HalfCarryReachability.lean}{1056}{exists_infinite_support_half_of_canonicalEvenSeamSupply}{the half-value conclusion}).
 The seam supply is unproved, so Erd\H{o}s~\#257 remains undecided.
 
 \paragraph{Arbitrarily late strip returns.}  Let $A_g$ be the canonical greedy support
@@ -1497,7 +1497,7 @@ the selected support $A$ through $k$ and let $K$ be its centred carry.  The
 sole input is that $m_0=-K$, $m_{J+1}=2m_J+f_A(k+J+2)$ reaches $m_J\geq0$
 for some $J\leq k+1$; the first $J$ future rows then cover $K$.  This unproved
 hypothesis implies $1/2$-membership
-(\lword{HalfCylinderFiniteShadow.lean}{1274}{half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer}{half-membership}),
+(\lword{HalfCylinderFiniteShadow.lean}{1275}{half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer}{half-membership}),
 but the hypothesis is not proved here.
 
 \subsubsection{Fixed-coefficient rewind}\label{res:fixedcoeffrewind}
@@ -2841,7 +2841,7 @@ yields the required adjacent-suffix gap condition,
 \lword{DiagonalFlexibleOddWindowSupply.lean}{93}{diagonalAdjacentSuffixGapSupply_of_powerTwoOddGuardThreeRankBand}{three-rank suffix-gap implication}.
 Thus success of this three-rank test for arbitrarily large $a$ implies
 irrationality,
-\lword{DiagonalFlexibleOddWindowSupply.lean}{136}{irrational_totientSeries_of_powerTwoOddGuardThreeRankBandSupply}{unbounded three-rank criterion};
+\lword{DiagonalFlexibleOddWindowSupply.lean}{137}{irrational_totientSeries_of_powerTwoOddGuardThreeRankBandSupply}{unbounded three-rank criterion};
 that supply is not proved.
 
 \paragraph{Exact affine form and bounded zero-orbit obstruction.}\label{res:flexibleoddaffine}
@@ -3989,7 +3989,7 @@ If, for every $t_0$, there is a $t\ge\max\{3,t_0\}$ such that
 then $S$ is irrational.
 \end{corollary}
 \noindent This implication is the
-\lword{DiagonalFreshLossBridge.lean}{2929}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{strict-jump slack irrationality criterion}.
+\lword{DiagonalFreshLossBridge.lean}{2932}{irrational_totientSeries_of_canonicalAdjacentSuffixJumpSlackSupply}{strict-jump slack irrationality criterion}.
 The proposition is a fixed-\(t\) equivalence; the corollary gives only
 sufficiency.  No converse is known: completeness may choose a depth from the
 tail difference, whereas this criterion fixes \(m_t\).  Persistent negative
@@ -4139,24 +4139,24 @@ that is, \(R_{N+h}-R_N\) lies at distance at least
 \(\arccos(4/5)/(2\pi)=0.10241\ldots\) from the nearest integer, for one shift
 whose index \(N+h+1\) is prime, beyond every cutoff.  This is the formal
 hypothesis
-\lword{PivotAntiReconstruction.lean}{1267}{DTWNaturalPrimeTailOrbitGap}{DTWNaturalPrimeTailOrbitGap};
+\lword{PivotAntiReconstruction.lean}{1256}{DTWNaturalPrimeTailOrbitGap}{DTWNaturalPrimeTailOrbitGap};
 the strict variant~\eqref{eq:packet-prime-gap} at threshold \(9/10\) is
 equally good, since the surplus is absorbed into the truncation budget.
 
 \emph{Already checked.}  The implication from this hypothesis to
 irrationality is proved end to end
-(\lword{PivotAntiReconstruction.lean}{1583}{irrational_totient_series_of_naturalPrimeTailOrbitGap}{prime-orbit endpoint}),
+(\lword{PivotAntiReconstruction.lean}{1574}{irrational_totient_series_of_naturalPrimeTailOrbitGap}{prime-orbit endpoint}),
 through a singleton bridge
-(\lword{PivotAntiReconstruction.lean}{1277}{naturalPivotPointEscape_of_naturalPrimeTailOrbitGap}{prime-to-point bridge})
+(\lword{PivotAntiReconstruction.lean}{1266}{naturalPivotPointEscape_of_naturalPrimeTailOrbitGap}{prime-to-point bridge})
 and a point-escape consumer
-(\lword{PivotAntiReconstruction.lean}{1559}{irrational_totient_series_of_naturalPivotPointEscape}{point-escape consumer}).
+(\lword{PivotAntiReconstruction.lean}{1550}{irrational_totient_series_of_naturalPivotPointEscape}{point-escape consumer}).
 The truncation accounting is proved as well: an infinite-orbit gap survives
 finite windows with an explicit error budget
-(\lword{PivotAntiReconstruction.lean}{221}{windowFirstCos_le_add_of_tailOrbitGap}{window transfer}),
+(\lword{PivotAntiReconstruction.lean}{220}{windowFirstCos_le_add_of_tailOrbitGap}{window transfer}),
 exponential depth pays that budget past any prescribed depth
-(\lword{PivotAntiReconstruction.lean}{258}{exists_natural_window_depth_with_error}{depth selection}),
+(\lword{PivotAntiReconstruction.lean}{257}{exists_natural_window_depth_with_error}{depth selection}),
 and the \(4/5\) gap becomes the \(9/10\) window gap
-(\lword{PivotAntiReconstruction.lean}{234}{windowFirstCos_le_nine_tenths_of_tailOrbitGap}{threshold transfer}).
+(\lword{PivotAntiReconstruction.lean}{233}{windowFirstCos_le_nine_tenths_of_tailOrbitGap}{threshold transfer}).
 No window, dyadic-room, or supplier bookkeeping is left: the arithmetic gap
 is the only unproved input.  Section~\ref{sec:packet-prime-tail} records why
 an almost-everywhere Riesz-product statement cannot be substituted, since the

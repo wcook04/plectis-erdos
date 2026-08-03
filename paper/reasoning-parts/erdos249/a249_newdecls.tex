@@ -294,8 +294,8 @@ such). The exact algebraic core underneath is reusable:
 $\mathrm{firstHarmonicAnchorDefect}(h,L,T) = \sum_{N\in T}\|
 \mathrm{windowFirstExp}(h,N,L) - 1\|^2$, and it equals
 $2|T| - 2\sum_{N\in T}\mathrm{windowFirstCos}(h,N,L)$.
-\lean{Erdos249257.TotientTailPeriodKiller.firstHarmonicAnchorDefect_eq_sum_norm_sq}{PivotAntiReconstruction.lean:563}
-\quad \lean{Erdos249257.TotientTailPeriodKiller.firstHarmonicAnchorDefect_eq}{PivotAntiReconstruction.lean:551}
+\lean{Erdos249257.TotientTailPeriodKiller.firstHarmonicAnchorDefect_eq_sum_norm_sq}{PivotAntiReconstruction.lean:562}
+\quad \lean{Erdos249257.TotientTailPeriodKiller.firstHarmonicAnchorDefect_eq}{PivotAntiReconstruction.lean:550}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:pivot-fiber}.
 \end{prop}
 
@@ -303,7 +303,7 @@ $2|T| - 2\sum_{N\in T}\mathrm{windowFirstCos}(h,N,L)$.
 For a finite family $z:T\to\mathbb{C}$ and any set of pairs $P\subseteq
 T\times T$ each separated by $\ge\delta$, $|P|\cdot\delta^2 \le
 \sum_{i,j\in T}\|z_i-z_j\|^2$.
-\lean{Erdos249257.TotientTailPeriodKiller.card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs}{PivotAntiReconstruction.lean:724}
+\lean{Erdos249257.TotientTailPeriodKiller.card_mul_sq_le_sum_pairwise_norm_sq_of_separatedPairs}{PivotAntiReconstruction.lean:720}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:pivot-fiber}.
 \end{lem}
 
@@ -602,7 +602,7 @@ adaptive truncation budget, and proves the sharper predicate still closes
 \#249 through the existing singleton-certificate endpoint. This is, exactly
 as its own comment states, a reduction: ``the producer itself remains
 unproved.''
-\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:66}
+\lean{ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:205}
 \quad \ev{Lean} (implication proved; antecedent
 \ev{Open})
 \quad \scale{cofinal} \quad \coord{other:first-harmonic}.

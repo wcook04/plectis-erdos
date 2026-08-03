@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:96f7f32d9ea7cf3c7590fc8f2f7283dd71ad655cc2a53c155cbb36eaa600aeae",
+      "source_sha256": "sha256:9bf8254f4c90f8007138f5e393e6342a071ad26d5405595a758f50d28f0a9d6a",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 159,
@@ -996,8 +996,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:e5110fd306cdff1a8f116821444d2c5cde505d18d5a2d9a2eed66801900c8ee1",
-      "pdf_byte_count": 440385,
+      "pdf_sha256": "sha256:3cf8c1c6170496ce36246cda22db04ddfac972c417081fb21cdd6b7f470f3615",
+      "pdf_byte_count": 440403,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1153,8 +1153,8 @@
         "manuscript_title": "Factorial Carries and Finite Channel Obstructions"
       },
       "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:f764bb429047b30ed3adb8cb16cc1b35a229f8b78b752fe23f8e6d3e8bb5c4c3",
-      "pdf_byte_count": 136224,
+      "pdf_sha256": "sha256:98075690589401304163fed6e8ce24500069e6cfbf4c07f6ffbfb146d01e5556",
+      "pdf_byte_count": 136223,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1197,7 +1197,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
       "local_source": "paper/erdos-243-reciprocal-tail-rigidity.tex",
-      "source_sha256": "sha256:ce9d95fca5d2ca0e5ee42104a0f4c0144990c1c1e96837712015b4308991b978",
+      "source_sha256": "sha256:b15eed5d707c9106a33a6cba64f83807f1ee24e19b460004e9d26a0997a1f4f9",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-243-reciprocal-tail-rigidity.tex",
       "section_count": 27,
@@ -1367,8 +1367,8 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:6575c324dfb3e30acfaf1d9968635df17df6e1fabdcb6e72bf44ddea1e1c0711",
-      "pdf_byte_count": 159713,
+      "pdf_sha256": "sha256:fd1db0fef235043283d959448791f01f3b12f053fe65b04e59ff1f812bea9316",
+      "pdf_byte_count": 159647,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1562,7 +1562,7 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:3dcbd8805dd0a87b85e64a40214ecc596017addc084f0c437719c0357ef353b3",
+      "pdf_sha256": "sha256:cde5b9d0e4a6be9acc8c28ec0810c4569b919837007da604f96dcefc58b77603",
       "pdf_byte_count": 136323,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1601,7 +1601,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:0cbce6da7f416e4ed1195585da5f4b5e6b3c043c99ff7e19ad1f0ea6692319ff",
+      "source_sha256": "sha256:692dc03ec9f912cd790d33caad107d2f81eb896ce4a14eb636c19552293c7fbe",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-totient-reasoning-surface.tex",
       "section_count": 153,
@@ -2527,8 +2527,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:b2a79b5423b3f2586c4e59feb9f7063132a9212561121a6ad017307b8fc02724",
-      "pdf_byte_count": 702930,
+      "pdf_sha256": "sha256:54d8ab0a63a6c585fb602fb63ff0faee8e011eac66d9148d7f261a2fac03751b",
+      "pdf_byte_count": 702917,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2707,8 +2707,8 @@
       ],
       "citations_rendered": 22,
       "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:398437812e3f16f0e16006f838b85ea457329745aa8db56e8c777d7e754a77a8",
-      "pdf_byte_count": 133508,
+      "pdf_sha256": "sha256:e7b1e8b0b35dbfdd97efc525759fc68e732cd58854ca2cc64ad5ac9cec7590ab",
+      "pdf_byte_count": 133507,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2746,7 +2746,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:0d53c0b95d6fdba7fe7c48730f02ea8f6f9c901677c12b56dae20d239848b3e7",
+      "source_sha256": "sha256:fd396f4aaae2c11c2018aa182a319bbe0e5e150c57a8a79a407ac6236215b107",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-257-mersenne-support-subseries.tex",
       "section_count": 23,
@@ -2892,7 +2892,7 @@
       ],
       "citations_rendered": 22,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:ee6accba99c8d966a48f91281d7f64733b4dd5f0c03e53146ec97ae3cc9b4751",
+      "pdf_sha256": "sha256:21832cf3f74600826518f55b231d95f3a805f4c6e53cd3364467eb5e7c722ac7",
       "pdf_byte_count": 154223,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2936,7 +2936,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:31848cf275902ac5f4d2c0e6ca276914c038080991a21ca042e4be73e99b4009",
+      "source_sha256": "sha256:bdce80fd47061bf11ddc870dcda220109a995faecbe8190d9881972cef15c760",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "section_count": 136,
@@ -3760,8 +3760,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:3ec207fe8ca0afcec77e78f85ce94e28f7f869d4a58bd35d05ea862259a4d30c",
-      "pdf_byte_count": 658817,
+      "pdf_sha256": "sha256:8e9557cbae164d5de7646ab86f6df1d4a2096058fa6a24a6097eb283c67c0ccb",
+      "pdf_byte_count": 658813,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3799,7 +3799,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:d58497ea32a53a1fafbc51f2fd596353499d8cfe68ffd72966e9e2db2e9e92ad",
+      "source_sha256": "sha256:956c5f81b7213f00636f443a9b6182050fef515bca41cc053842b8a73dfba9d8",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-269-three-prime-running-lcm.tex",
       "section_count": 26,
@@ -3961,10 +3961,10 @@
           "line": 834
         }
       ],
-      "citations_rendered": 13,
+      "citations_rendered": 16,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:7d4bf77200d6e87de77fd6a951de1e229642db0a44748b3c7bdc23619242fce9",
-      "pdf_byte_count": 163018,
+      "pdf_sha256": "sha256:4944f424c9fe49b71ac79beb12e8ada83ac0eb841d4bdb3b78faa6d1a553fc96",
+      "pdf_byte_count": 165367,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4007,7 +4007,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
       "local_source": "paper/erdos-1041-lemniscate-newton-flow.tex",
-      "source_sha256": "sha256:843f4d82aa5d4b4fe672b0a61b69a2908822b4a9b65f38097ee3573606ea0161",
+      "source_sha256": "sha256:2553aa4b8c5830522939980c8629a4dce02d3bd055a987b0291024f0581ddec0",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1041-lemniscate-newton-flow.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-1041-lemniscate-newton-flow.tex",
       "section_count": 14,
@@ -4099,8 +4099,8 @@
       ],
       "citations_rendered": 6,
       "local_pdf": "erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:7575a8c893089057c268d6f3d497cbd6ce90b21ac4bdee56f4e656ffee329e4d",
-      "pdf_byte_count": 79137,
+      "pdf_sha256": "sha256:539f6187aa3289e3b34b1d6efae2387c71681fdf41bfcaa0da3488f781b2dab3",
+      "pdf_byte_count": 80180,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4323,8 +4323,8 @@
         "manuscript_title": "Arithmetic Boundaries at Base 3/2"
       },
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:9b25be837a8cd9b56117ccdd3f2e62e48666ee851653739db7eaf3a2741d78a4",
-      "pdf_byte_count": 153097,
+      "pdf_sha256": "sha256:fd1d3b61597f514f03baff768019514468d4549f8d51f4c4a02a059b432e113c",
+      "pdf_byte_count": 153098,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4367,7 +4367,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:59ffe9e268b5284d9aa1bde0e54d737ceb789ec819f2a7785b137854fd1b7f72",
+      "source_sha256": "sha256:a53ea57982478d6b252dae7f6928e18607e719168125465c8beb4456f1846da3",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/claim-faithful-publication-systems-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/claim-faithful-publication-systems-paper.tex",
       "section_count": 30,
@@ -4555,7 +4555,7 @@
       ],
       "citations_rendered": 18,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:5155ed424603a43a5e8148b0a61d9403379c0985fa56aaba000e9e0d5d0a11bb",
+      "pdf_sha256": "sha256:c6d7a008d1d05bcfa1dd65f23c71c902c4e6e1f71338759fa2828c7b0f952212",
       "pdf_byte_count": 117372,
       "first_pass": {
         "stated_by_the_paper": true,
@@ -4599,7 +4599,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:a341d857badb70c48f53ed91fc055caa41923f9a36fc156e5a567abc6033f1da",
+      "source_sha256": "sha256:d8cdc205ac11aaa23b47442a24724854999235867fd17c31e275559f8f2a48a1",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/cold-clone-to-proof-receipt.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/cold-clone-to-proof-receipt.tex",
       "section_count": 18,
@@ -4715,8 +4715,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:c55bc8ec280f632a604bad8b2ccf35d38c32c375eb416ff66f7a6a8d974cba14",
-      "pdf_byte_count": 75265,
+      "pdf_sha256": "sha256:fbe3ce0c63d7a0c42b96ca80acffb6a610a4481a18c9899e6928999229946c2c",
+      "pdf_byte_count": 75481,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4764,10 +4764,10 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/plectis-public-system.md",
       "local_source": "docs/papers/mirror/plectis-public-system.tex",
-      "source_sha256": "sha256:8a6b18c8c51d6271b09630e189c4d1f3bcb3cc40cf5e52d0f4384d573d449e13",
+      "source_sha256": "sha256:a0e18f742b4c8521234ec160448ac3aaed6fbfa71668b52359a7ff9957921f11",
       "canonical_source_url": "https://github.com/wcook04/plectis/blob/main/paper/plectis-public-system.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis/main/paper/plectis-public-system.tex",
-      "section_count": 31,
+      "section_count": 30,
       "sections": [
         {
           "level": 1,
@@ -4873,94 +4873,88 @@
         },
         {
           "level": 2,
-          "id": "sec:hypothesis-handoff",
-          "title": "From an open question to a falsifiable handoff",
-          "line": 312
-        },
-        {
-          "level": 2,
           "id": "how-the-record-should-age",
           "title": "How the record should age",
-          "line": 340
+          "line": 312
         },
         {
           "level": 1,
           "id": "sec:conclusion",
           "title": "Conclusion",
-          "line": 348
+          "line": 320
         },
         {
           "level": 1,
           "id": "sec:appendix",
           "title": "Dated reproduction record",
-          "line": 358
+          "line": 330
         },
         {
           "level": 4,
           "id": "a-first-review.",
           "title": "A first review.",
-          "line": 366
+          "line": 336
         },
         {
           "level": 4,
           "id": "names.",
           "title": "Names.",
-          "line": 388
+          "line": 358
         },
         {
           "level": 4,
           "id": "getting-the-code-and-running-without-installing.",
           "title": "Getting the code and running without installing.",
-          "line": 394
+          "line": 364
         },
         {
           "level": 4,
           "id": "installing.",
           "title": "Installing.",
-          "line": 409
+          "line": 379
         },
         {
           "level": 4,
           "id": "the-worked-example.",
           "title": "The worked example.",
-          "line": 420
+          "line": 390
         },
         {
           "level": 4,
           "id": "a-second-python-version.",
           "title": "A second Python version.",
-          "line": 426
+          "line": 396
         },
         {
           "level": 4,
           "id": "project-wide-checks.",
           "title": "Project-wide checks.",
-          "line": 432
+          "line": 402
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 438
+          "line": 408
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 442
+          "line": 412
         },
         {
           "level": 4,
           "id": "authority-boundary.",
           "title": "Authority boundary.",
-          "line": 448
+          "line": 418
         }
       ],
       "citations_rendered": 19,
       "mirror_note": "generated copy; the manuscript is owned by plectis and authority does not move with the copy",
       "local_pdf": "docs/papers/mirror/plectis-public-system.pdf",
-      "pdf_sha256": "sha256:e673cd0cb30f8329684c15ee12c758064b9e6843f52fb719a064b68849d2b0bd",
-      "pdf_byte_count": 125110,
+      "pdf_sha256": "sha256:eded48e32438bdb4d1a02fff797df1ac68734ecfe9e5cc03935209c6dcc432de",
+      "pdf_byte_count": 120840,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
