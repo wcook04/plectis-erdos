@@ -5,10 +5,11 @@ import Mathlib.Tactic
 /-!
 # Shifted Möbius pulses for the totient tail
 
-This file begins the exact analytic identification of the foreign term in the
-LCM-diagonal decomposition.  For `d > 0`, let `r_d(N)` be the least positive
-integer for which `d ∣ N + r_d(N)`.  The contribution of the multiples of `d`
-to the shifted totient tail is the geometric-linear fibre
+For `d > 0`, let `r_d(N)` be the least positive integer for which
+`d ∣ N + r_d(N)`, and put `q_d(N) = N / d + 1`.  Thus
+`1 ≤ r_d(N) ≤ d`, `N + r_d(N) = d * q_d(N)`, and `r_d(N) = d`
+when `d ∣ N`.  The contribution of the multiples of `d` to the shifted
+totient tail is the geometric-linear fibre
 
 `sum_k μ(d) * (N / d + 1 + k) / 2^(r_d(N) + d*k)`.
 
@@ -17,9 +18,20 @@ Mersenne pulse
 
 `μ(d) * 2^(d-r_d(N)) * ((N/d+1)/(2^d-1) + 1/(2^d-1)^2)`.
 
-Unlike the existing `foreignDiagonalDefect`, this is not a definition by
-subtraction from the target.  It is the unconditional local identity needed
-to identify that defect with the genuinely foreign divisor cone.
+The proof has three distinct steps.  Absolute summability permits a Lambert
+double series, optionally restricted by a predicate on the product index, to
+be regrouped over divisors.  Each fixed-`d` fibre is then evaluated by a
+geometric-linear summation.  Finally Möbius inversion and multiplication by
+`2^N` identify the resulting series with the literal totient tail:
+
+`totientTail N = ∑' d : ℕ+, shiftedMobiusPulseTerm N d`.
+
+This is an exact expansion, not an estimate.  A fibre may vanish because
+`μ(d) = 0`, and fibres of opposite sign may cancel.  The module proves no
+non-vanishing, sign or dominance statement, no effective remainder or tail
+difference lower bound, no residue or carry escape, and no irrationality
+conclusion for Erdős 249.  A separate bridge compares this expansion with the
+residue-coordinate decomposition.
 -/
 
 namespace Erdos249257.TotientShiftedMobiusPulse
