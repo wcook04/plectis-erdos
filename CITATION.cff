@@ -3,19 +3,19 @@
 cff-version: 1.2.0
 type: software
 message: "If you use this release, please cite the software metadata below. For the mathematical exposition, cite the paper included in the release (paper/erdos249-257-main-paper.tex)."
-title: "Erdős #249/#257 Lean formalisation"
-version: "0.6.0"
-date-released: "2026-07-12"
+title: "Erdős #249/#257 Lean formalisation (eight-problem corpus)"
+version: "0.7.0"
+date-released: "2026-08-03"
 authors:
   - family-names: "Cook"
     given-names: "Will"
 license: Apache-2.0
-abstract: "A Lean 4 formalisation of Erdős–Borwein support-family irrationality results, unconditional denominator exclusions for the Erdős #249 totient series, exact diagonal-pincer and fresh-loss reductions with finite certificates through t=43, Mersenne achievement-set geometry, and rationality-forced carry constraints. It does not solve Erdős #249 or the universal #257 problem."
+abstract: "A Lean 4 / Mathlib corpus of kernel-checked results around eight Erdős problems (#68, #243, #249, #251, #257, #269, #1041, #1049), with #249 and #257 as the reviewed core: exact finite-period noncollapse for every finite support and every base b ≥ 2, an explicit rational basis of dimension 2^e+1 for the dyadic sections of Euler's totient, Mersenne achievement-set geometry including the measure-one clause, six exact characterisations of #249 irrationality, unconditional denominator exclusions, diagonal certificates through t=82, and checked reductions, equivalences, and obstructions for the six expansion problems, bound to source by a reviewed claim registry. It does not solve Erdős #249 or the universal #257 problem. All eight problems remain open."
 repository-code: "https://github.com/wcook04/plectis-lean-erdos249-257"
 url: "https://github.com/wcook04/plectis-lean-erdos249-257"
 identifiers:
   - type: url
-    value: "https://github.com/wcook04/plectis-lean-erdos249-257/releases/tag/v0.6.0"
+    value: "https://github.com/wcook04/plectis-lean-erdos249-257/releases/tag/v0.7.0"
     description: "The tagged release this metadata describes"
 keywords:
   - "Lean 4"

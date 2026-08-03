@@ -2337,9 +2337,10 @@ theorem twentyOneGreedyCarry_scaled_tendsto_zero_of_cofinalLinearReturn
   change dist (f N) 0 < ε
   simpa [Real.dist_eq, abs_of_nonneg hfnonneg] using hfN
 
-/-- Any subexponential upper bound closes the prescribed-point problem.  The
-lower squeeze bound is supplied by `twentyOneGreedyCarry_nonneg`, so the only
-remaining mathematical burden is an upper estimate. -/
+/-- Any subexponential upper bound implies the prescribed-point membership.
+The lower squeeze bound is supplied by `twentyOneGreedyCarry_nonneg`, so the
+only remaining mathematical burden is an upper estimate, and that estimate
+remains unproved. -/
 theorem one_div_twenty_one_mem_mersenneAchievementSet_of_carry_tendsto
     (hcarry : Tendsto
       (fun N : ℕ =>
@@ -2361,8 +2362,8 @@ theorem one_div_twenty_one_mem_mersenneAchievementSet_of_carry_tendsto
     norm_num
   exact ⟨A, zero_not_mem_greedyMersenneSupport _, hpositive.symm⟩
 
-/-- A cofinal sequence of merely linear returns already closes the
-prescribed-point endpoint. -/
+/-- A cofinal sequence of merely linear returns already implies the
+prescribed-point membership.  The return condition remains unproved. -/
 theorem one_div_twenty_one_mem_mersenneAchievementSet_of_cofinalLinearReturn
     (hreturn : TwentyOneGreedyCarryCofinalLinearReturn) :
     (1 / 21 : ℝ) ∈ mersenneAchievementSet := by

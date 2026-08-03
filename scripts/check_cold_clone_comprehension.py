@@ -374,7 +374,7 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
         "distinguish_release_source_and_authority": [
             ["latest tagged release and citation anchor"],
             ["formal-source checkpoint"],
-            ["not a new tagged release"],
+            ["this release ships", "not a new tagged release"],
             [PROOF_AUTHORITY],
         ],
         "recover_headline_statuses": [

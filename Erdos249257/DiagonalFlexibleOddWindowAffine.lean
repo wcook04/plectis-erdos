@@ -360,8 +360,9 @@ theorem powerTwoOddGuardThreeRankBandSupply_iff_threeScaleAffineEscapeSupply :
     exact ⟨a, q, ha, hdepth,
       (threeRankBandAt_iff_threeScaleAffineEscapeAt ha2 hdepth).mpr hescape⟩
 
-/-- The exact affine escape supply closes Erdős #249 through the already
-landed flexible three-rank consumer. -/
+/-- The exact affine escape supply implies irrationality of the totient
+series through the flexible three-rank route.  The supply itself remains
+unproved. -/
 theorem irrational_totientSeries_of_threeScaleAffineEscapeSupply
     (hsupply : ThreeScaleAffineEscapeSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by

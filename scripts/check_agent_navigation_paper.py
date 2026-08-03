@@ -31,8 +31,8 @@ SECTION_ORDER = (
 
 ANCHOR_GROUPS = {
     "scale_and_coverage": (
-        "1,019 Lean modules and 153,238 declarations",
-        "503 of those modules and 8,171 of those declarations are machine-generated",
+        "1,019 Lean modules and 153,253 declarations",
+        "503 of those modules and 8,171 of those declarations are explicitly marked",
         "counted as formal source and never as separate mathematical claims",
         "Unresolved atlas rows and edge pairs are reported, never treated as independence",
         r"\SemanticAuthoredTheoremLike/\SemanticAuthoredTheoremLike",

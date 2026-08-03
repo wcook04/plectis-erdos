@@ -1270,7 +1270,8 @@ def HalfGreedyGovernedFrozenMarginProducer : Prop :=
         greedyMersenneRemainder (1 / 2 : ℝ) k →
       ∃ J : ℕ, J ≤ k + 1 ∧ 0 ≤ greedyHalfFrozenMargin k J
 
-/-- The governed first-passage producer closes exact half-membership. -/
+/-- The governed first-passage condition implies exact half-membership.
+The condition itself remains unproved. -/
 theorem half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer
     (hproducer : HalfGreedyGovernedFrozenMarginProducer) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by

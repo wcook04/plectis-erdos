@@ -289,7 +289,7 @@ $\operatorname{ihc}(A,N)$ denote the integer half-carry at level $N$. Then
 \]
 where $\mathrm{T}$ is the binary coefficient tail of $\operatorname{sc}_A$.
 \coord{half-carry} \scale{uniform} \ev{Lean}\\
-\textbf{Sites:} \lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:870};
+\textbf{Sites:} \lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:871};
 \lean{binaryCoeffTail\_nonneg}{GenericTailOrbitRigidity.lean:78};
 \lean{binaryCoeffTail\_supportCoeff\_le\_two\_sqrt\_add\_four}{BooleanMobiusCarry.lean:290}.
 \end{lem}
@@ -303,7 +303,7 @@ strip of width $O(\sqrt{N})$ forces $\delta = 0$.
 \begin{proof}
 By Lemma~\ref{lem:collapse-mech}, $2^{N+1}\delta = \operatorname{ihc}(A,N) - \mathrm{T}(N+1)$.
 For the greedy support of $1/2$ one has $x_G \le 1/2$, hence $\delta \ge 0$
-(\lean{erdosSupportSeries\_greedyMersenneSupport\_le}{HalfCarryReachability.lean:887}). If
+(\lean{erdosSupportSeries\_greedyMersenneSupport\_le}{HalfCarryReachability.lean:888}). If
 $\operatorname{ihc}(A,N) \le c\sqrt{N} + c'$ for cofinally many $N$, then
 $2^{N+1}\delta \le c\sqrt{N} + c'$ along that sequence; since $2^{N+1}$ outgrows any $\sqrt{N}$
 envelope and $\delta \ge 0$ is a fixed real, $\delta = 0$. Conversely $\delta = 0$ makes
@@ -344,8 +344,8 @@ $1 \notin A$ (which holds since $x_1 = 1 > 1/2$).
 Each of the following is logically \emph{equivalent} to $1/2 \in \mathcal{A}$, not strictly weaker:
 \begin{enumerate}[nosep,label=(\alph*)]
 \item the \texttt{hbound} hypothesis of
-  \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:833}
-  and of \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_upperBound}{HalfCarryReachability.lean:952};
+  \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_sqrtBound}{HalfCarryReachability.lean:834}
+  and of \lean{greedy\_half\_infinite\_of\_mobiusCenteredHalfCarry\_upperBound}{HalfCarryReachability.lean:953};
 \item \lean{CofinalPositiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:22};
 \item \lean{CofinalExactLocalMersenneHalfRows}{BooleanMobiusCofinalExactRows.lean:38}, including its
   advertised weakening that \emph{no} compatibility is required between witness supports at
@@ -695,7 +695,7 @@ side: the \texttt{hbound} hypothesis of the two \texttt{mobiusCenteredHalfCarry}
 \texttt{GreedyHalfCarryCofinalStripReturn}; \texttt{HalfCarryCofinalTerminalOnlyStrip}. The forward
 directions are landed. Every reverse direction runs through Lemma~\ref{lem:sqrt-witness}, stated
 once, whose only inputs are
-\lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:870},
+\lean{integerHalfCarry\_eq\_scaled\_residual\_add\_tail}{HalfCarryReachability.lean:871},
 \lean{binaryCoeffTail\_nonneg}{GenericTailOrbitRigidity.lean:78},
 \lean{binaryCoeffTail\_supportCoeff\_le\_two\_sqrt\_add\_four}{BooleanMobiusCarry.lean:290}, and the
 evaluation of the square root at a perfect square. The scope limit of

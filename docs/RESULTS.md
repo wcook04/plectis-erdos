@@ -111,7 +111,10 @@ authority for the six expansion problems.
   an explicit rational basis, and the level-`e` span has dimension exactly
   `2ᵉ + 1` — `finrank_canonicalTotientKernel_eq`,
   `Erdos249257/TotientMahlerDefect.lean:989`; basis object at `:1392`. A
-  theorem about the coefficient sequence, not about irrationality of `S`.
+  theorem about the coefficient sequence, not about irrationality of `S`;
+  it quantifies the known qualitative fact that `φ` is not 2-regular
+  (Coons 2008, arXiv:0810.3709, via ζ zero-density — no exact rank appears
+  there).
   Claim `dyadic_totient_certificate_interface` (the basis declarations at
   `:1265`, `:1380`, `:1392` — registry: none).
 - Irrationality of `S` has six checked exact characterisations, from
@@ -162,12 +165,15 @@ core)**
 - The base-2 Mersenne achievement set — all subsums of `∑ 1/(2ⁿ−1)` — is
   compact, perfect, totally disconnected, nowhere dense, and of Lebesgue
   measure one (strict-tail Cantor structure after Kovač–Tao, Remark 4.1; the
-  measure clause is proved here, with no novelty claim) —
+  measure clause is proved here; positive measure was asserted informally by
+  Kovač on the erdosproblems.com #257 discussion page in August 2025, and no
+  published source computes the exact value) —
   `Erdos249257/GreedyAchievementSet.lean:996`,
   `:1633–1658`; claim `greedy_achievement_geometry`. Membership of `1/2` is
   equivalent to infinitely many greedy skips (`:2527`) and to the absence of
-  a fatal half-gap (`Erdos249257/HalfCutLocator.lean:654`); a positive answer
-  would refute universal #257.
+  a fatal half-gap (`Erdos249257/HalfCutLocator.lean:654`); the dyadic
+  membership question was posed publicly by Kovač in the same discussion,
+  and a positive answer would refute universal #257.
 - Methodological: a formalised squarefree-support no-go theorem is shown to
   be an artefact of normalisation — adjoining `1` to the support shifts the
   value by a rational and flips the divisor-incidence parity, and the
@@ -182,11 +188,13 @@ core)**
 
 - For every pair of distinct primes, both the de-duplicated and the repeated
   running-lcm reciprocal sums are transcendental — a paper argument in the
-  problem note whose transcendence engine is Bugeaud–Laurent (Theorem 1.1);
-  deliberately not a Lean theorem, and the note says so. Settles every
-  two-prime instance, upgrading the letter's unproved assertion — which
-  Erdős stated for arbitrarily many primes — at exactly its two-prime
-  instances; the reduction is proved in the note, novelty unestablished.
+  problem note; the transcendence engine is Loxton–van der Poorten 1977,
+  quoted in the modern Bugeaud–Laurent form (Theorem 1.1); deliberately not a
+  Lean theorem, and the note says so. Independently found and not first: the
+  same reduction and conclusion were posted by Steve Fan on the
+  erdosproblems.com #269 discussion page on 26 June 2026, before the note was
+  finalised, with follow-ups there extending it to arbitrary coprime pairs;
+  the note acknowledges this.
 - Lean-checked: the exact running-lcm product
   `L(x) = p^⌊log_p x⌋ q^⌊log_q x⌋ r^⌊log_r x⌋`
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:123`; formalisation of a

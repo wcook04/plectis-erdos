@@ -79,10 +79,10 @@
           "module": "ErdosProblems.Erdos68.DivisorFactorialCentre",
           "path": "ErdosProblems/Erdos68/DivisorFactorialCentre.lean",
           "present": true,
-          "line_count": 244,
-          "declaration_count": 12,
-          "theorem_count": 8,
-          "content_digest": "sha256:c7775977f9f1a85167c9a1678c2da7d9353ca62811cc7effb6d6ba44e0edb3c5"
+          "line_count": 303,
+          "declaration_count": 18,
+          "theorem_count": 13,
+          "content_digest": "sha256:9fea8662f744c1d4bd948065e7a024315620bec3b3714c82fedea7f1b3de656b"
         },
         {
           "module": "ErdosProblems.Erdos68.EndpointWeightedPrivateSupport",
@@ -209,10 +209,10 @@
           "module": "ErdosProblems.Erdos243.ReciprocalTailRigidity",
           "path": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
           "present": true,
-          "line_count": 2298,
-          "declaration_count": 73,
-          "theorem_count": 64,
-          "content_digest": "sha256:87c9f28c7e3629a4850a13288091e8561bd6402626fb7c55c5c07c8278572b77"
+          "line_count": 2386,
+          "declaration_count": 77,
+          "theorem_count": 67,
+          "content_digest": "sha256:3145b8a5a4c3783fa4c79b726e20f55285a7a43ec58a5e876bf3e4a3d1f88ff9"
         },
         {
           "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
@@ -343,10 +343,10 @@
           "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
           "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
           "present": true,
-          "line_count": 72,
-          "declaration_count": 3,
-          "theorem_count": 2,
-          "content_digest": "sha256:9361d904a02a52e115aebefcea9b5a329f079b6f3f417188ac74945484876fa7"
+          "line_count": 211,
+          "declaration_count": 8,
+          "theorem_count": 5,
+          "content_digest": "sha256:15ebe7ae1ad1fc8c12c85ca4a162689cf29bbe23b4280bb3452e0987694dbbe8"
         },
         {
           "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -623,7 +623,7 @@
         "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
       ],
       "what_is_not_checked": [
-        "Irrationality or transcendence in any three-prime case. Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Bugeaud-Laurent as the external engine; that argument is deliberately not formalised here and no Lean declaration asserts it.",
+        "Irrationality or transcendence in any three-prime case. Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it.",
         "The derivation of the actual bounded positive carry, including the divisibility required to cancel the absorbed smooth denominator factor, from a hypothetical rational value of the original series.",
         "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
         "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",

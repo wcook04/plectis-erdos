@@ -1,4 +1,5 @@
 import ErdosProblems.Erdos68.FiniteDefectAutomaton
+import ErdosProblems.Erdos68.FactorialCarry
 import Mathlib.Tactic
 
 /-!
@@ -17,11 +18,12 @@ identity
 
 `F_m = m F_(m-1) + 1 + 1/(m!-1) - C_m`
 
-for `m >= 3`.  This is a rational finite-sum recurrence.  The file does not
-prove that `C_m` is the cast of an integer sequence, so it does not by itself
-instantiate the integer defect code from `FiniteDefectAutomaton`.  It also
-does not identify `F_m` with a remainder of the infinite series or prove an
-orbit, tail estimate, or irrationality statement.
+for `m >= 3`.  Multinomial divisibility shows that every summand of `C_m` is
+an integer.  The recurrence therefore instantiates the integer defect code
+from `FiniteDefectAutomaton`, giving an exact floor formula and fractional
+recurrence for the concrete finite centres.  The file does not identify
+`F_m` with a remainder of the infinite series or prove a finite-state orbit,
+tail estimate, or irrationality statement.
 -/
 
 namespace ErdosProblems.Erdos68
@@ -46,6 +48,34 @@ def residualCentre (m : ℕ) : ℚ :=
 `sum_{n | m, n >= 2} m! / (n!)^(m/n)`. -/
 def factorialCoeffRat (m : ℕ) : ℚ :=
   ∑ n ∈ (Finset.Icc 2 m).filter (· ∣ m), factorialCoeffTerm m n
+
+/-- Integer form of the divisor-factorial coefficient. -/
+def factorialCoeffNat (m : ℕ) : ℕ :=
+  ∑ n ∈ (Finset.Icc 2 m).filter (· ∣ m),
+    m.factorial / (n.factorial ^ (m / n))
+
+/-- Each rational divisor-factorial summand is the cast of its exact natural
+quotient. -/
+theorem factorialCoeffTerm_eq_natCast_of_dvd (m n : ℕ) (hdvd : n ∣ m) :
+    factorialCoeffTerm m n =
+      (m.factorial / (n.factorial ^ (m / n)) : ℕ) := by
+  have hdiv : n.factorial ^ (m / n) ∣ m.factorial :=
+    factorial_pow_dvd_factorial_of_dvd hdvd
+  have hne : ((n.factorial ^ (m / n) : ℕ) : ℚ) ≠ 0 := by
+    positivity
+  unfold factorialCoeffTerm
+  rw [← Nat.cast_pow]
+  exact (Nat.cast_div hdiv hne).symm
+
+/-- The rational divisor-factorial coefficient is the cast of the integer
+coefficient with the same support. -/
+theorem factorialCoeffRat_eq_natCast (m : ℕ) :
+    factorialCoeffRat m = (factorialCoeffNat m : ℚ) := by
+  unfold factorialCoeffRat factorialCoeffNat
+  rw [Nat.cast_sum]
+  apply Finset.sum_congr rfl
+  intro n hn
+  exact factorialCoeffTerm_eq_natCast_of_dvd m n (Finset.mem_filter.mp hn).2
 
 private theorem factorial_eq_mul_pred_factorial (m : ℕ) (hm : 1 ≤ m) :
     m.factorial = m * (m - 1).factorial := by
@@ -240,5 +270,34 @@ theorem residualCentre_recurrence (m : ℕ) (hm : 3 ≤ m) :
     residualCentreTerm_self m (by omega),
     factorialCoeffTerm_self m (by omega)]
   ring
+
+/-- Integer-coefficient form of the concrete finite-centre recurrence. -/
+theorem residualCentre_recurrence_int (m : ℕ) (hm : 3 ≤ m) :
+    residualCentre m =
+      (m : ℚ) * residualCentre (m - 1) + 1 + factorialEpsilon m -
+        ((factorialCoeffNat m : ℤ) : ℚ) := by
+  simpa [factorialCoeffRat_eq_natCast] using residualCentre_recurrence m hm
+
+/-- The concrete residual centre instantiates the integer factorial defect
+code: its code is the floor of the preceding rescaled gap. -/
+theorem residualCentre_defectCode_eq_factorial_floor
+    (m : ℕ) (hm : 3 ≤ m) :
+    centreDefectCode residualCentre (fun k => (factorialCoeffNat k : ℤ)) m =
+      ⌊(m : ℚ) * centreGap residualCentre (m - 1) -
+        1 / ((m.factorial : ℚ) - 1)⌋ := by
+  apply centreDefectCode_eq_factorial_floor
+  exact residualCentre_recurrence_int m hm
+
+/-- Exact fractional recurrence for the gap of the concrete finite residual
+centre. -/
+theorem residualCentre_gap_factorial_recurrence
+    (m : ℕ) (hm : 3 ≤ m) :
+    centreGap residualCentre m =
+      (m : ℚ) * centreGap residualCentre (m - 1) -
+        1 / ((m.factorial : ℚ) - 1) -
+          (centreDefectCode residualCentre
+            (fun k => (factorialCoeffNat k : ℤ)) m : ℚ) := by
+  apply centreGap_factorial_recurrence
+  exact residualCentre_recurrence_int m hm
 
 end ErdosProblems.Erdos68
