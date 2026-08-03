@@ -3,14 +3,14 @@
 
 # How this repository works
 
-This is a public Lean project about six unsolved problems in mathematics. It
+This is a public Lean project about eight unsolved problems in mathematics. It
 contains formal source code, papers and summaries for readers, and a set of
 checks that keep those different descriptions aligned. The reviewed claim
-registry covers #249 and #257; a problem-owned expansion library covers #243,
-#251, #269, and #1049 without silently promoting their declarations into that
-reviewed record.
+registry covers #249 and #257; a problem-owned expansion library covers #68,
+#243, #251, #269, #1041, and #1049 without silently promoting their
+declarations into that reviewed record.
 
-All six original mathematical problems remain open. The repository proves
+All eight mathematical problems remain open. The repository proves
 intermediate results, exact reformulations, and bounded examples around them.
 It does not claim a solution to any of them.
 
@@ -137,11 +137,12 @@ about it has a row in `docs/claims.json`, a status, declaration coordinates, and
 a place in the gateway paper.
 
 `ErdosProblems.lean` is the problem-owned expansion library, currently covering
-Erdős problems 243, 251, 269, and 1049. Its declarations are checked by the same
+Erdős problems 68, 243, 251, 269, 1041, and 1049, plus unpromoted expansion
+lanes for the two reviewed problems. Its declarations are checked by the same
 kernel, and they are **not** reviewed public claims: the claim registry has no
 row for them. Building that root proves that its propositions elaborate; it does
 not say that they are the interesting propositions, that they are new, or that
-any of those four problems is closer to being solved. Each of the four has a
+any of those six problems is closer to being solved. Each of the six has a
 short paper of its own, an Erdős Problem Note in `paper/`, which states its
 checked results and, in the same voice, the obligation that survives them.
 `docs/problems.json` is the machine-readable form of the same thing.

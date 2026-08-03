@@ -222,6 +222,69 @@
           "declaration_count": 10,
           "theorem_count": 7,
           "content_digest": "sha256:61d3b9deeb41875b031a0b50a27b336d3ebbbfe7111eda14450227c142d13006"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.SparseResetRecovery",
+          "path": "ErdosProblems/Erdos243/SparseResetRecovery.lean",
+          "present": true,
+          "line_count": 208,
+          "declaration_count": 6,
+          "theorem_count": 5,
+          "content_digest": "sha256:74685dc6ad5abceedd76ea3928b25845a3bdf6070aaa96344d5ac5996a96187a"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.DynamicCancellation",
+          "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
+          "present": true,
+          "line_count": 399,
+          "declaration_count": 15,
+          "theorem_count": 15,
+          "content_digest": "sha256:82f16b7f678b422b2c939a1587d27c0fc8c3be08272079e6965eb184bb28d2d6"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.FeedbackRealizability",
+          "path": "ErdosProblems/Erdos243/FeedbackRealizability.lean",
+          "present": true,
+          "line_count": 165,
+          "declaration_count": 7,
+          "theorem_count": 7,
+          "content_digest": "sha256:b5244899b15e5554ca45d0079023b9ec50622569c607b8ebaaf13ba2eba7c8e3"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.GlobalLcmHeight",
+          "path": "ErdosProblems/Erdos243/GlobalLcmHeight.lean",
+          "present": true,
+          "line_count": 152,
+          "declaration_count": 13,
+          "theorem_count": 9,
+          "content_digest": "sha256:9b9d070b01a39b6685f9aee7b7669e22589b2a2a5dbf57a9c299879429711d02"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.LcmCriticalBoundary",
+          "path": "ErdosProblems/Erdos243/LcmCriticalBoundary.lean",
+          "present": true,
+          "line_count": 388,
+          "declaration_count": 15,
+          "theorem_count": 14,
+          "content_digest": "sha256:da5323838ee6412f15f2a9a169188edd46d105ba5a9b36a4161a1ca3cff33fbe"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.PrimitivePrefixRigidity",
+          "path": "ErdosProblems/Erdos243/PrimitivePrefixRigidity.lean",
+          "present": true,
+          "line_count": 136,
+          "declaration_count": 6,
+          "theorem_count": 4,
+          "content_digest": "sha256:5bb23f80d66cb863e4504775476f0633d6814a749fe26a586596d390a0385327"
+        },
+        {
+          "module": "ErdosProblems.Erdos243.WeightedCRTRepair",
+          "path": "ErdosProblems/Erdos243/WeightedCRTRepair.lean",
+          "present": true,
+          "line_count": 333,
+          "declaration_count": 17,
+          "theorem_count": 11,
+          "content_digest": "sha256:7bd0b18c719d15929bcee8039eb56cc7692853e917853f25e5f74065f603a763"
         }
       ],
       "note": {
@@ -393,7 +456,7 @@
       ],
       "what_is_not_checked": [
         "The target irrationality.",
-        "Summability of the concrete prime series and the definition and recurrence of its concrete prime-gap tail as Lean infinite sums; the note supplies these at paper level from the prime number theorem.",
+        "The definition and recurrence of the concrete prime-gap tail as Lean infinite sums; the note supplies these at paper level. Summability of the concrete prime series is Lean-checked unconditionally via an elementary polynomial prime bound.",
         "A theorem supplying cofinally many adjacent actual-prime-gap tail shifts in the open unit interval with the required gap mismatch.",
         "Any theorem forcing periodicity or automaticity of the prime gaps from rationality; the free-carry identity disconfirms that route."
       ],
@@ -560,7 +623,7 @@
         "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
       ],
       "what_is_not_checked": [
-        "Irrationality or transcendence in any three-prime case.",
+        "Irrationality or transcendence in any three-prime case. Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Bugeaud-Laurent as the external engine; that argument is deliberately not formalised here and no Lean declaration asserts it.",
         "The derivation of the actual bounded positive carry, including the divisibility required to cancel the absorbed smooth denominator factor, from a hypothetical rational value of the original series.",
         "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
         "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
