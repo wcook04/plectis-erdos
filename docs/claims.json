@@ -11126,10 +11126,10 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "60d53202f730a177cfb8390c69903cce3d642c3d",
+      "ref": "d52755f4b3131beacf9affcfc3a7404f55412bfe",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
-      "relationship_to_last_tag": "post_tag_checkpoint",
+      "relationship_to_last_tag": "at_last_tag",
       "public_tag": "formal-source-2026-08-02"
     },
     "public_projection": {

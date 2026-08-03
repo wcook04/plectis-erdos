@@ -30,7 +30,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-257-main-paper.md",
       "local_source": "paper/erdos249-257-main-paper.tex",
-      "source_sha256": "sha256:01366c8b85b0c9456a73a3b350ac8257adb77d667b6e11e52f7a0807d31d487b",
+      "source_sha256": "sha256:c3004ddf426fb75587cfb1db15663f0fead821e6ad8b293dfb904c3a74e99e9e",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-257-main-paper.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-257-main-paper.tex",
       "section_count": 159,
@@ -996,8 +996,8 @@
         "manuscript_title": "Tail Certificates and Achievement-Set Geometry for Erd\u0151s Problems 249 and 257"
       },
       "local_pdf": "erdos249-257-main-paper.pdf",
-      "pdf_sha256": "sha256:622b756ea49af7b770769b74e8d733bc8d2b410703625a0ec2ffe00a8fb1dae1",
-      "pdf_byte_count": 440379,
+      "pdf_sha256": "sha256:14e04db539f1d5b19694567634b517a8d12cbcfc208bd2c4a8d1e4fcbb6c575c",
+      "pdf_byte_count": 440409,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -1209,7 +1209,7 @@
       ],
       "citations_rendered": 31,
       "local_pdf": "erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:477c59c7cadd380c087d930d6f5dba556ef5ef86c7c4f639e21f1f669478f309",
+      "pdf_sha256": "sha256:52f5ca851ea0b8dd290b4abcba257f83cbc872bde8beeca80c36b6cd152366d4",
       "pdf_byte_count": 159713,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1404,7 +1404,7 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:88ece21c5aa21c214d7db63faa6abeb627923acc1283c23865ff9b97ddb6170e",
+      "pdf_sha256": "sha256:ec74b8062553eb289820efd5cb72327a43c1174398e909c5f6317f0724ec0638",
       "pdf_byte_count": 136323,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1443,7 +1443,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos249-totient-reasoning-surface.md",
       "local_source": "paper/erdos249-totient-reasoning-surface.tex",
-      "source_sha256": "sha256:bc7257df9021c10847d512461f8da2479681d8023d88581565f5dffe3fbb57aa",
+      "source_sha256": "sha256:0cbce6da7f416e4ed1195585da5f4b5e6b3c043c99ff7e19ad1f0ea6692319ff",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos249-totient-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos249-totient-reasoning-surface.tex",
       "section_count": 153,
@@ -2369,8 +2369,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:212b493101fca23cdd1212df10150f3762fdd49038c8adde128a3dd4ab268d33",
-      "pdf_byte_count": 702919,
+      "pdf_sha256": "sha256:87620375483546bc7370d9a74e71464d1809420bd1fe60a1aec919406ab80542",
+      "pdf_byte_count": 702930,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2549,8 +2549,8 @@
       ],
       "citations_rendered": 22,
       "local_pdf": "erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:0e5431a1f719348e7bb4901ef4b64a48bd41c3f6148895679be8f77aa2f61744",
-      "pdf_byte_count": 133508,
+      "pdf_sha256": "sha256:5bab87cb23c3c88ff364adc6e0276f1574965d08c59601dae22a31b337a546a5",
+      "pdf_byte_count": 133507,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -2588,7 +2588,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:e6391fd050ab87957964ba93192970deebf60fed342a9c8b27356e8e1aebf694",
+      "source_sha256": "sha256:0d53c0b95d6fdba7fe7c48730f02ea8f6f9c901677c12b56dae20d239848b3e7",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-257-mersenne-support-subseries.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-257-mersenne-support-subseries.tex",
       "section_count": 23,
@@ -2734,7 +2734,7 @@
       ],
       "citations_rendered": 22,
       "local_pdf": "erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:364602cbb52beeea65c23ab7ae30dd940b6f4c6582c4a33266a28e9ce5c7d2c1",
+      "pdf_sha256": "sha256:2636e10e0119b60dafbd8a0eafaf6b6b3d5e9d60699e5563437436275dcc72c2",
       "pdf_byte_count": 154223,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -2778,7 +2778,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:393a58156c532172faec7299a03431a260c3ea87e2539b51de93616b5460cb54",
+      "source_sha256": "sha256:31848cf275902ac5f4d2c0e6ca276914c038080991a21ca042e4be73e99b4009",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos257-mersenne-reasoning-surface.tex",
       "section_count": 136,
@@ -3602,8 +3602,8 @@
       ],
       "citations_rendered": 0,
       "local_pdf": "erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:ddc5b31c53869ccfea0fd15cad4591d1db11a2dfbb693f5b3e9f3e26dc98e84b",
-      "pdf_byte_count": 658811,
+      "pdf_sha256": "sha256:58856e0aa8436e458096fdfd95b3d1045f2d2f3db18df8443332bcee501a8785",
+      "pdf_byte_count": 658818,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -3805,8 +3805,8 @@
       ],
       "citations_rendered": 13,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:75578ad8e13d6c19d46c2d15654200ba98fc2af3578e2f8aeac424db57383e33",
-      "pdf_byte_count": 163018,
+      "pdf_sha256": "sha256:b87360dda0cbd20db272ef63d5a07839bc7455e6033cef54bd7f7cf8e5cf2019",
+      "pdf_byte_count": 163016,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4029,7 +4029,7 @@
         "manuscript_title": "Arithmetic Boundaries at Base 3/2"
       },
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:3fdcd86cab51b810a1d0fc835d8f7a3b0a1f5141ef78767e444517be79b0800a",
+      "pdf_sha256": "sha256:c9e7097c17b5989dd11b626a1a8fc40d4389470d1528bacbd019cc25088c832e",
       "pdf_byte_count": 153098,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4261,8 +4261,8 @@
       ],
       "citations_rendered": 18,
       "local_pdf": "claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:1cc05d04ff1aecf21fce30a2a23790c2800977b1c1743cdc1c5bc20856b5b175",
-      "pdf_byte_count": 117459,
+      "pdf_sha256": "sha256:8fe686463abf7e3ec4d04bdbc81e2fbe756db7fce12aa21068a052ce2224524a",
+      "pdf_byte_count": 117460,
       "first_pass": {
         "stated_by_the_paper": true,
         "provenance": "the paper's own stated reading route",
@@ -4421,8 +4421,8 @@
       ],
       "citations_rendered": 10,
       "local_pdf": "cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:49236957785f07fb5fe336a870ea744cf3bd46d81e269d5341fbe524b1fe4dca",
-      "pdf_byte_count": 74701,
+      "pdf_sha256": "sha256:2722e76edbf386efd5803a1de6187e700f61fe6dbd83c465f1abcd4b33943eab",
+      "pdf_byte_count": 74702,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
