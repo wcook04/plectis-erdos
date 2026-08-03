@@ -1953,7 +1953,7 @@ theorem reciprocalSeries_hasSum_of_tailRatio_tendsto_zero
     (hC : ∀ n, C (n + 1) + D n = a n * C n)
     (hD : ∀ n, D (n + 1) = a n * D n)
     (hzero :
-      Filter.Tendsto (tailRatio C D) Filter.atTop (𝓝 0)) :
+      Filter.Tendsto (tailRatio C D) Filter.atTop (nhds 0)) :
     HasSum (fun n ↦ 1 / (a n : ℝ)) (tailRatio C D 0) := by
   refine (hasSum_iff_tendsto_nat_of_nonneg ?_ _).2 ?_
   · intro n
@@ -1965,7 +1965,7 @@ theorem reciprocalSeries_hasSum_of_tailRatio_tendsto_zero
     have hfinite :=
       tailRatio_eq_partialReciprocalSum_add a C D ha hDpos hC hD N
     linarith
-  simpa only [hpartial] using tendsto_const_nhds.sub hzero
+  simpa only [hpartial, sub_zero] using tendsto_const_nhds.sub hzero
 
 /-- Along an exact natural orbit, the signed centered state gives the integer
 tail identity `Cₙ₊₁ = Cₙ - Eₙ`. -/

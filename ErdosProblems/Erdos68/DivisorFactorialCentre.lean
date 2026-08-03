@@ -1,8 +1,5 @@
 import ErdosProblems.Erdos68.FiniteDefectAutomaton
-<<<<<<< HEAD
-=======
 import ErdosProblems.Erdos68.FactorialCarry
->>>>>>> pr-30
 import Mathlib.Tactic
 
 /-!
@@ -21,20 +18,12 @@ identity
 
 `F_m = m F_(m-1) + 1 + 1/(m!-1) - C_m`
 
-<<<<<<< HEAD
-for `m >= 3`.  This is a rational finite-sum recurrence.  The file does not
-prove that `C_m` is the cast of an integer sequence, so it does not by itself
-instantiate the integer defect code from `FiniteDefectAutomaton`.  It also
-does not identify `F_m` with a remainder of the infinite series or prove an
-orbit, tail estimate, or irrationality statement.
-=======
 for `m >= 3`.  Multinomial divisibility shows that every summand of `C_m` is
 an integer.  The recurrence therefore instantiates the integer defect code
 from `FiniteDefectAutomaton`, giving an exact floor formula and fractional
 recurrence for the concrete finite centres.  The file does not identify
 `F_m` with a remainder of the infinite series or prove a finite-state orbit,
 tail estimate, or irrationality statement.
->>>>>>> pr-30
 -/
 
 namespace ErdosProblems.Erdos68
@@ -60,8 +49,6 @@ def residualCentre (m : ℕ) : ℚ :=
 def factorialCoeffRat (m : ℕ) : ℚ :=
   ∑ n ∈ (Finset.Icc 2 m).filter (· ∣ m), factorialCoeffTerm m n
 
-<<<<<<< HEAD
-=======
 /-- Integer form of the divisor-factorial coefficient. -/
 def factorialCoeffNat (m : ℕ) : ℕ :=
   ∑ n ∈ (Finset.Icc 2 m).filter (· ∣ m),
@@ -90,7 +77,6 @@ theorem factorialCoeffRat_eq_natCast (m : ℕ) :
   intro n hn
   exact factorialCoeffTerm_eq_natCast_of_dvd m n (Finset.mem_filter.mp hn).2
 
->>>>>>> pr-30
 private theorem factorial_eq_mul_pred_factorial (m : ℕ) (hm : 1 ≤ m) :
     m.factorial = m * (m - 1).factorial := by
   have hs : m - 1 + 1 = m := by omega
@@ -285,8 +271,6 @@ theorem residualCentre_recurrence (m : ℕ) (hm : 3 ≤ m) :
     factorialCoeffTerm_self m (by omega)]
   ring
 
-<<<<<<< HEAD
-=======
 /-- Integer-coefficient form of the concrete finite-centre recurrence. -/
 theorem residualCentre_recurrence_int (m : ℕ) (hm : 3 ≤ m) :
     residualCentre m =
@@ -316,5 +300,4 @@ theorem residualCentre_gap_factorial_recurrence
   apply centreGap_factorial_recurrence
   exact residualCentre_recurrence_int m hm
 
->>>>>>> pr-30
 end ErdosProblems.Erdos68
