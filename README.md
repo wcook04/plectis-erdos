@@ -50,9 +50,6 @@ exact obligation that remains. Results stay within Lean source.
 ## External verification
 
 [YAML](formalization.yaml) and [packet](docs/EXTERNAL_VERIFICATION.md) cover all eight problem programmes.
-[Independent replay and immutable release identity](docs/EXTERNAL_VERIFICATION_REPLAY.md)
-separate a reviewer-run one-interface check from CI and specify the durable
-receipt assets required at release cut.
 **Ten-minute verdict.** Checked non-restatement centre:
 
 - #257 has exact finite-period noncollapse, irrationality for eventually
