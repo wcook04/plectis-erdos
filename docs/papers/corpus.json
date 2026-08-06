@@ -1060,91 +1060,91 @@
           "level": 1,
           "id": "sec:digits",
           "title": "Canonical factorial digits",
-          "line": 87
+          "line": 86
         },
         {
           "level": 1,
           "id": "sec:channels",
           "title": "Finite channel congruences and the LCM obstruction",
-          "line": 147
+          "line": 146
         },
         {
           "level": 1,
           "id": "sec:translator",
           "title": "A two-term prime channel corrector",
-          "line": 212
+          "line": 211
         },
         {
           "level": 1,
           "id": "sec:plateau",
           "title": "Zero plateaux, first exit, and denominator bounds",
-          "line": 228
+          "line": 227
         },
         {
           "level": 1,
           "id": "sec:projection",
           "title": "Weighted projection rigidity",
-          "line": 313
+          "line": 312
         },
         {
           "level": 1,
           "id": "sec:nogo",
           "title": "What the returns rule out",
-          "line": 463
+          "line": 462
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "Finite certificates",
-          "line": 481
+          "line": 480
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The missing cofinal inputs",
-          "line": 499
+          "line": 498
         },
         {
           "level": 2,
           "id": "weighted-collision-mass-and-the-complementary-residue",
           "title": "1. Weighted collision mass and the complementary residue",
-          "line": 527
+          "line": 526
         },
         {
           "level": 2,
           "id": "nonterminal-prime-power-amplification",
           "title": "2. Nonterminal prime-power amplification",
-          "line": 567
+          "line": 566
         },
         {
           "level": 2,
           "id": "escape-from-the-lower-endpoint-interval",
           "title": "3. Escape from the lower endpoint interval",
-          "line": 608
+          "line": 607
         },
         {
           "level": 2,
           "id": "failure-of-the-two-exact-doubled-prime-branches",
           "title": "4. Failure of the two exact doubled-prime branches",
-          "line": 641
+          "line": 640
         },
         {
           "level": 2,
           "id": "a-finite-cramer-block-across-floor-discontinuities",
           "title": "5. A finite Cramer block across floor discontinuities",
-          "line": 672
+          "line": 671
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 721
+          "line": 720
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 727
+          "line": 726
         }
       ],
       "citations_rendered": 12,
@@ -1167,17 +1167,17 @@
           {
             "id": "sec:channels",
             "title": "Finite channel congruences and the LCM obstruction",
-            "line": 147
+            "line": 146
           },
           {
             "id": "sec:projection",
             "title": "Weighted projection rigidity",
-            "line": 313
+            "line": 312
           },
           {
             "id": "sec:open",
             "title": "The missing cofinal inputs",
-            "line": 499
+            "line": 498
           }
         ],
         "unresolved_count": 0
@@ -3820,145 +3820,145 @@
           "level": 2,
           "id": "structure",
           "title": "Structure",
-          "line": 98
+          "line": 97
         },
         {
           "level": 1,
           "id": "sec:lcm",
           "title": "The running least common multiple as a product of pure powers",
-          "line": 106
+          "line": 105
         },
         {
           "level": 1,
           "id": "sec:cells",
           "title": "Constancy on logarithmic cells and the jump points",
-          "line": 154
+          "line": 153
         },
         {
           "level": 1,
           "id": "sec:two-prime",
           "title": "The two-prime sums are transcendental",
-          "line": 212
+          "line": 211
         },
         {
           "level": 1,
           "id": "sec:fibre",
           "title": "The height-fibre normal form",
-          "line": 333
+          "line": 332
         },
         {
           "level": 1,
           "id": "sec:shell",
           "title": "A quadratic bound for smooth exponent shells",
-          "line": 380
+          "line": 379
         },
         {
           "level": 1,
           "id": "sec:rank",
           "title": "Non-separability of the three-prime kernel",
-          "line": 435
+          "line": 434
         },
         {
           "level": 1,
           "id": "sec:escape",
           "title": "Dyadic blocks and a conditional carry contradiction",
-          "line": 463
+          "line": 462
         },
         {
           "level": 2,
           "id": "the-four-element-block-alphabet",
           "title": "The four-element block alphabet",
-          "line": 469
+          "line": 468
         },
         {
           "level": 2,
           "id": "the-denominator-reduction-and-its-boundary",
           "title": "The denominator reduction and its boundary",
-          "line": 513
+          "line": 512
         },
         {
           "level": 2,
           "id": "the-window-recurrence-and-the-residue-contradiction",
           "title": "The window recurrence and the residue contradiction",
-          "line": 546
+          "line": 545
         },
         {
           "level": 2,
           "id": "a-finite-check-of-the-escape-condition",
           "title": "A finite check of the escape condition",
-          "line": 627
+          "line": 626
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 644
+          "line": 643
         },
         {
           "level": 2,
           "id": "the-actual-block-data-and-the-missing-bridge",
           "title": "The actual block data and the missing bridge",
-          "line": 650
+          "line": 649
         },
         {
           "level": 2,
           "id": "the-intrinsic-tail-question",
           "title": "The intrinsic tail question",
-          "line": 707
+          "line": 706
         },
         {
           "level": 2,
           "id": "a-denominator-adaptive-sufficient-criterion",
           "title": "A denominator-adaptive sufficient criterion",
-          "line": 729
+          "line": 728
         },
         {
           "level": 2,
           "id": "a-literal-two-dimensional-analytic-route",
           "title": "A literal two-dimensional analytic route",
-          "line": 765
+          "line": 764
         },
         {
           "level": 2,
           "id": "the-structural-frontier",
           "title": "The structural frontier",
-          "line": 795
+          "line": 794
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 812
+          "line": 811
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 816
+          "line": 815
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 822
+          "line": 821
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 828
+          "line": 827
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 834
+          "line": 833
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 840
+          "line": 839
         }
       ],
       "citations_rendered": 16,
@@ -3977,17 +3977,17 @@
           {
             "id": "sec:lcm",
             "title": "The running least common multiple as a product of pure powers",
-            "line": 106
+            "line": 105
           },
           {
             "id": "sec:escape",
             "title": "Dyadic blocks and a conditional carry contradiction",
-            "line": 463
+            "line": 462
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 644
+            "line": 643
           }
         ],
         "unresolved_count": 0

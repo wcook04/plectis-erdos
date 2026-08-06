@@ -32,6 +32,21 @@ OUTPUTS = {
 }
 
 IMPORT_LINE_RE = re.compile(r"^import\s+([^\n]+)$", re.M)
+PRIOR_RESULT_RE = re.compile(r"formalisation|known geometry", re.I)
+
+
+def canonical_claim_status(result: dict) -> str:
+    """Keep Comparator selection distinct from canonical claim registration."""
+    return (
+        f"supports_registered_claim_family:{result['claim_id']}"
+        if result.get("claim_id")
+        else "comparator_interface_not_registered_as_canonical_claim"
+    )
+
+
+def source_fidelity(packet: dict, row_id: str) -> dict | None:
+    mapping = packet.get("source_fidelity", {}).get(row_id)
+    return mapping if isinstance(mapping, dict) else None
 
 
 def imports_in_text(text: str) -> list[str]:
@@ -130,6 +145,16 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
         family = matrix_by_problem.get(result["problem"], {}).get(result.get("review_family"))
         if family is None:
             errors.append(f"Comparator result {result['id']} lacks a review_matrix family owner")
+        if "original theoretical result" in result.get("contribution_class", "").lower():
+            errors.append(
+                f"result {result['id']} infers originality from local proof provenance"
+            )
+        if PRIOR_RESULT_RE.search(result.get("contribution_class", "")):
+            mapping = source_fidelity(packet, result["id"]) or source_fidelity(
+                packet, result.get("review_family", "")
+            )
+            if not mapping or not mapping.get("source_statement") or not mapping.get("mapping"):
+                errors.append(f"prior-result interface {result['id']} lacks source fidelity")
         claim_id = result.get("claim_id")
         claim = claim_by_id.get(claim_id) if claim_id else None
         if claim_id and claim is None:
@@ -148,6 +173,18 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
         for wrapper_source in wrapper_sources:
             if not declaration_exists(wrapper_source, wrapper):
                 errors.append(f"missing wrapper {wrapper} in {wrapper_source}")
+
+    for problem, families in matrix_by_problem.items():
+        for family_id, family in families.items():
+            contribution_class = family.get("contribution_class", "")
+            if "original theoretical result" in contribution_class.lower():
+                errors.append(
+                    f"family {problem}/{family_id} infers originality from local proof provenance"
+                )
+            if PRIOR_RESULT_RE.search(contribution_class):
+                mapping = source_fidelity(packet, family_id)
+                if not mapping or not mapping.get("source_statement") or not mapping.get("mapping"):
+                    errors.append(f"prior-result family {problem}/{family_id} lacks source fidelity")
 
     for row in problem_source["problems"]:
         required = row.get("required_note_declarations", [])
@@ -263,12 +300,29 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
             lines.append(f"        - {quote(axiom)}")
         lines.extend([
             f"      comparator_config: {quote(packet['comparator']['config'])}",
-            "      literature_dependencies: []",
+            f"      canonical_claim_status: {quote(canonical_claim_status(row))}",
+            "      local_proof_provenance: \"proved_in_this_repository\"",
+            "      novelty_status: \"unassessed_no_priority_claim\"",
             f"      contribution_class: {quote(row['contribution_class'])}",
             f"      statement: {quote(row['statement'])}",
             f"      boundary: {quote(row['boundary'])}",
             f"      comparator_declaration: {quote(row['wrapper_declaration'])}",
         ])
+        fidelity = source_fidelity(packet, row["id"]) or source_fidelity(
+            packet, row.get("review_family", "")
+        )
+        lines.append("      literature_dependencies:")
+        if fidelity:
+            for reference in fidelity.get("references", []):
+                lines.append(f"        - {quote(reference)}")
+            lines.extend([
+                f"      source_statement: {quote(fidelity['source_statement'])}",
+                f"      source_mapping: {quote(fidelity['mapping'])}",
+                f"      historical_attribution: {quote(fidelity['historical_attribution'])}",
+                f"      logical_dependency: {quote(fidelity['logical_dependency'])}",
+            ])
+        else:
+            lines[-1] = "      literature_dependencies: []"
     lines.extend([
         "automation:",
         "  methods:",
@@ -311,6 +365,14 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
                 f"        summary: {quote(family['summary'])}",
                 f"        boundary: {quote(family['boundary'])}",
             ])
+            fidelity = source_fidelity(packet, family["id"])
+            if fidelity:
+                lines.extend([
+                    f"        source_statement: {quote(fidelity['source_statement'])}",
+                    f"        source_mapping: {quote(fidelity['mapping'])}",
+                    f"        historical_attribution: {quote(fidelity['historical_attribution'])}",
+                    f"        logical_dependency: {quote(fidelity['logical_dependency'])}",
+                ])
     lines.extend([
         "acknowledgements: null",
         "external_verification:",
@@ -351,9 +413,11 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
         )
     flags = []
     for row in packet["main_results"]:
+        status = canonical_claim_status(row)
         flags.append(
             f"- `{row['wrapper_declaration']}` — {row['contribution_class']}: "
-            f"{row['statement']} **Boundary:** {row['boundary']}"
+            f"{row['statement']} **Canonical claim status:** `{status}`. "
+            f"**Novelty:** unassessed; no priority claim. **Boundary:** {row['boundary']}"
         )
     family_rows = []
     for problem in packet["review_matrix"]:
@@ -385,11 +449,12 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
         "|---|---|---|---|---|---|---|",
         *family_rows,
         "",
-        "## Statement-isolated Comparator review unit",
+        "## Nineteen statement-isolated Comparator interfaces",
         "",
         *flags,
         "",
-        "The nineteen exact interfaces cover all eight programmes. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.",
+        "The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.",
+        "The nineteen exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.",
         "The proof-bearing modules occur only in `ExternalVerification.Solution`.",
         "CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.",
         "",
@@ -430,6 +495,10 @@ def render_packet(
     config_bytes: bytes,
 ) -> str:
     result = json.loads(json.dumps(packet))
+    for row in result["main_results"]:
+        row["canonical_claim_status"] = canonical_claim_status(row)
+        row["local_proof_provenance"] = "proved_in_this_repository"
+        row["novelty_status"] = "unassessed_no_priority_claim"
     result["authority_posture"] = "generated_projection_not_proof_or_claim_authority"
     result["source_owner"] = "docs/claims.json::external_verification_packet"
     result["problem_index"] = {

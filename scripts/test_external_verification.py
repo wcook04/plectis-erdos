@@ -8,9 +8,10 @@ from __future__ import annotations
 import json
 import subprocess
 import unittest
+from copy import deepcopy
 from pathlib import Path
 
-from build_external_verification import imports_in_text
+from build_external_verification import imports_in_text, load_owner, validate
 from run_external_verification import EXPECTED_MISMATCH, is_expected_negative_rejection
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,6 +57,22 @@ class ExternalVerificationContractTest(unittest.TestCase):
             (result["problem"], result["review_family"]) in family_ids
             for result in packet["main_results"]
         ))
+        registered = [row for row in packet["main_results"] if row.get("claim_id")]
+        unregistered = [row for row in packet["main_results"] if not row.get("claim_id")]
+        self.assertEqual(len(registered), 4)
+        self.assertEqual(len(unregistered), 15)
+        self.assertTrue(all(
+            row["canonical_claim_status"].startswith("supports_registered_claim_family:")
+            for row in registered
+        ))
+        self.assertEqual(
+            {row["canonical_claim_status"] for row in unregistered},
+            {"comparator_interface_not_registered_as_canonical_claim"},
+        )
+        self.assertEqual(
+            {row["novelty_status"] for row in packet["main_results"]},
+            {"unassessed_no_priority_claim"},
+        )
         challenge = (ROOT / "ExternalVerification/Challenge.lean").read_text()
         solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
@@ -73,6 +90,32 @@ class ExternalVerificationContractTest(unittest.TestCase):
                 "Mathlib",
             ],
         )
+
+    def test_local_proof_provenance_cannot_assert_originality(self) -> None:
+        _, packet, source, _ = load_owner()
+        adversarial = deepcopy(packet)
+        adversarial["main_results"][0]["contribution_class"] = (
+            "original theoretical result"
+        )
+        _, errors = validate(adversarial, source)
+        self.assertTrue(any("infers originality" in error for error in errors))
+
+    def test_prior_result_requires_exact_source_mapping(self) -> None:
+        _, packet, source, _ = load_owner()
+        adversarial = deepcopy(packet)
+        adversarial["source_fidelity"].pop("prime_gap_unboundedness")
+        _, errors = validate(adversarial, source)
+        self.assertIn(
+            "prior-result interface prime_gap_unboundedness lacks source fidelity",
+            errors,
+        )
+
+    def test_unknown_claim_id_cannot_promote_an_interface(self) -> None:
+        _, packet, source, _ = load_owner()
+        adversarial = deepcopy(packet)
+        adversarial["main_results"][0]["claim_id"] = "not_a_registered_claim"
+        _, errors = validate(adversarial, source)
+        self.assertIn("unknown claim_id: not_a_registered_claim", errors)
 
     def test_negative_fixture_is_a_real_statement_mismatch(self) -> None:
         positive = json.loads((ROOT / "verification/comparator.json").read_text())
@@ -100,6 +143,14 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertNotIn("ExternalVerification", core_gate)
         self.assertIn("id: external-inputs", workflow)
         self.assertIn("steps.external-inputs.outputs.changed == 'true'", workflow)
+        self.assertIn(
+            "ref: ${{ github.event.pull_request.head.sha || github.sha }}", workflow
+        )
+        self.assertIn("--expected-commit", workflow)
+        self.assertIn(
+            "external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}",
+            workflow,
+        )
 
         prepare = workflow.index("- name: Prepare trusted challenge inputs")
         compare = workflow.index("- name: Run positive and adversarial Comparator checks")

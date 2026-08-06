@@ -37,6 +37,7 @@ def is_expected_negative_rejection(exit_code: int, log_text: str) -> bool:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", default="final")
+    parser.add_argument("--expected-commit")
     parser.add_argument("--positive-exit", type=int, default=-999)
     parser.add_argument("--negative-exit", type=int, default=-999)
     parser.add_argument("--positive-log", type=Path)
@@ -74,6 +75,11 @@ def main() -> int:
         "lean4export": digest(args.lean4export_bin),
         "landrun": digest(args.landrun_bin),
     }
+    repository_commit = git("rev-parse", "HEAD")
+    repository_tree = git("rev-parse", "HEAD^{tree}")
+    expected_commit_matches = (
+        args.expected_commit is None or repository_commit == args.expected_commit
+    )
     pins_match = observed_revisions == owner["comparator"]["pins"]
     negative_text = (
         args.negative_log.read_text(encoding="utf-8", errors="replace")
@@ -92,6 +98,7 @@ def main() -> int:
         and negative_semantic_rejection
         and pins_match
         and all(binary_digests.values())
+        and expected_commit_matches
         and args.sandbox_mode in {"user-manager", "system-manager-nonprivileged-unit", "local-fake-landrun-smoke"}
         and all_statuses_open
     )
@@ -99,8 +106,10 @@ def main() -> int:
         "schema": "erdos-external-verification-runtime-receipt/1",
         "result": "pass" if passed else "fail",
         "phase": args.phase,
-        "repository_commit": git("rev-parse", "HEAD"),
-        "repository_tree": git("rev-parse", "HEAD^{tree}"),
+        "repository_commit": repository_commit,
+        "repository_tree": repository_tree,
+        "expected_repository_commit": args.expected_commit,
+        "repository_commit_matches_expected": expected_commit_matches,
         "generated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "ci": {
             "repository": os.environ.get("GITHUB_REPOSITORY"),

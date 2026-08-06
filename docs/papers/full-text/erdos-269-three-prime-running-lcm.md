@@ -66,7 +66,6 @@ The table records two independent facts. The *authority* column says whether the
 
 | **Statement** | **Authority** | **Logical reach and nearest boundary** |
 |:---|:---|:---|
-| **Statement** | **Authority** | **Logical reach and nearest boundary** |
 |  |  |  |
 |  |  |  |
 | Irrationality in any three-prime case | <span style="color: BrickRed!75!black">**No result here**</span> | Open. |

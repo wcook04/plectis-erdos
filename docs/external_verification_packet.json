@@ -42,28 +42,97 @@
       "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
     }
   },
+  "claim_status_contract": {
+    "registered_claim": "A selected interface with claim_id supports an existing reviewed claim family; Comparator selection does not widen that family.",
+    "unregistered_interface": "A selected interface without claim_id is an executable review interface, not a canonical reviewed claim.",
+    "local_proof_provenance": "Every selected solution is proved in this repository and accepted by the pinned Lean kernel.",
+    "novelty": "Local proof provenance is not priority evidence. Novelty is unassessed unless a separate source-comparison review says otherwise."
+  },
+  "source_fidelity": {
+    "prime_gap_unboundedness": {
+      "source_statement": "The gaps between consecutive primes are unbounded; the elementary factorial construction gives arbitrarily long prime-free intervals.",
+      "mapping": "The local theorem uses the zero-based consecutive-prime gap sequence and proves that for every bound B some indexed gap exceeds B. This is the same unboundedness statement after the repository's indexing convention is unfolded.",
+      "references": [
+        "docs/PRIOR_ART.md#expansion-note-principal-sources-68-243-251-269-1041-1049",
+        "paper/erdos-251-prime-gap-dyadic-series.tex"
+      ],
+      "historical_attribution": "Classical elementary factorial prime-free interval argument; modern large-gap theorems in the paper are contextual and strictly stronger.",
+      "logical_dependency": "The Lean proof reconstructs an elementary argument locally; no external prime-gap theorem is imported as a proof dependency."
+    },
+    "eventually_periodic_lambert": {
+      "source_statement": "For an eventually periodic sequence of nonnegative rational coefficients that is not eventually zero, the associated Lambert series at an integer base b at least 2 is irrational.",
+      "mapping": "The local theorem formalises the nonnegative rational eventually-periodic coefficient case. Its coefficient, base, sign, and non-eventual-zero hypotheses are kept explicit; it does not claim the broader mixed-sign theorem.",
+      "references": [
+        "https://doi.org/10.1142/S1793042113501121",
+        "docs/PRIOR_ART.md"
+      ],
+      "historical_attribution": "Luca and Tachiya, Irrationality of Lambert series associated with a periodic sequence (2014), with the later RIMS exposition used for statement comparison.",
+      "logical_dependency": "The local Lean proof uses a separate periodic-divisor certificate route; the cited paper establishes attribution and source fidelity, not a kernel dependency."
+    },
+    "known_irrational_supports": {
+      "source_statement": "Several structured support families for the Mersenne reciprocal subseries are known to give irrational sums, including full support and other classical or later special families.",
+      "mapping": "The review family is an aggregate disclosure. Each local theorem retains its own support predicate; the Comparator row selects only full support, reindexed as exponents k+1 for k in Nat and generalised to every integer base b at least 2.",
+      "references": [
+        "https://users.renyi.hu/~p_erdos/1948-04.pdf",
+        "https://users.renyi.hu/~p_erdos/1969-09.pdf",
+        "https://doi.org/10.1142/S1793042113501121",
+        "https://arxiv.org/abs/2512.01739v2",
+        "docs/PRIOR_ART.md"
+      ],
+      "historical_attribution": "Erdos (1948) for full support; Erdos (1968), Luca--Tachiya, and Tao--Teravainen for the specific additional families identified in the paper and prior-art ledger.",
+      "logical_dependency": "The full-support Comparator theorem is proved locally in Lean. Other family rows have their stated local or cited proof boundaries; historical attribution is not an imported Lean dependency."
+    },
+    "achievement_set_geometry": {
+      "source_statement": "Kakeya's strict-tail criterion places rapidly decreasing subsum sets in the Cantor-set regime; for the fixed-base Mersenne sequence, Kovač--Tao verify the strict-tail inequality and distinct subsums.",
+      "mapping": "At base 2 the local development formalises compactness, perfection, total disconnectedness, nowhere density, and measure one. The strict-tail Cantor geometry aligns with the cited antecedents; the measure-one clause is locally derived and carries no novelty assertion.",
+      "references": [
+        "https://doi.org/10.11429/ptmps1907.7.14_250",
+        "https://doi.org/10.1007/s10474-025-01528-0",
+        "docs/PRIOR_ART.md"
+      ],
+      "historical_attribution": "Kakeya (1914) for the strict-tail subsum-set criterion and Kovač--Tao (2025), Remark 4.1, for the fixed-base Mersenne antecedent.",
+      "logical_dependency": "The topology and measure theorem are proved locally in Lean; the cited sources fix historical/source alignment and are not imported proof objects."
+    },
+    "erdos_borwein_full_support": {
+      "source_statement": "For every integer b at least 2, the full-support Lambert--Mersenne series sum over n at least 1 of 1/(b^n-1) is irrational.",
+      "mapping": "The local theorem uses Nat indexing with exponent k+1, which is exactly the source sum after reindexing n=k+1; the base assumption is the same integer condition b at least 2.",
+      "references": [
+        "https://users.renyi.hu/~p_erdos/1948-04.pdf",
+        "docs/PRIOR_ART.md",
+        "paper/erdos-257-mersenne-subseries.tex"
+      ],
+      "historical_attribution": "Erdos, On arithmetical properties of Lambert series (1948), theorem on p. 63 as recorded in the repository's prior-art ledger.",
+      "logical_dependency": "The theorem is independently represented and proved in Lean in this repository; the historical source is attribution and fidelity evidence, not an imported kernel dependency."
+    }
+  },
   "main_results": [
     {
       "id": "factorial_strict_successor_equivalence",
       "problem": 68,
       "review_family": "factorial_carry_characterisation",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
       "statement": "Irrationality is equivalent to cofinally many strict-successor divisibility failures.",
-      "boundary": "The equivalence does not prove that the cofinal failures occur."
+      "boundary": "The equivalence does not prove that the cofinal failures occur.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "factorial_nonunit_carry_equivalence",
       "problem": 68,
       "review_family": "factorial_carry_characterisation",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
       "original_source": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
       "statement": "Irrationality is equivalent to cofinally many non-unit carries.",
-      "boundary": "The equivalence does not supply a cofinal carry producer."
+      "boundary": "The equivalence does not supply a cofinal carry producer.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "bounded_negative_exclusion",
@@ -74,7 +143,10 @@
       "original_source": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
       "statement": "Normalised vanishing and bounded rise exclude a cofinally bounded negative part.",
-      "boundary": "All dynamics, bounded-rise, positivity, and vanishing hypotheses remain explicit."
+      "boundary": "All dynamics, bounded-rise, positivity, and vanishing hypotheses remain explicit.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "eventually_periodic_negative_no_go",
@@ -85,42 +157,54 @@
       "original_source": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
       "statement": "An eventually periodic negative-error orbit with positive phase growth is impossible.",
-      "boundary": "The theorem does not cover arbitrary unbounded negative behaviour."
+      "boundary": "The theorem does not cover arbitrary unbounded negative behaviour.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "totient_kernel_finite_rank",
       "problem": 249,
       "review_family": "totient_kernel_rank",
       "claim_id": "dyadic_totient_certificate_interface",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "Erdos249257.finrank_totientKernelThroughLevelFamily_eq",
       "original_source": "Erdos249257/TotientMahlerDefect.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
       "statement": "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e + 1.",
-      "boundary": "This does not prove irrationality of the totient series."
+      "boundary": "This does not prove irrationality of the totient series.",
+      "canonical_claim_status": "supports_registered_claim_family:dyadic_totient_certificate_interface",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "totient_kernel_infinite_rank",
       "problem": 249,
       "review_family": "totient_kernel_rank",
       "claim_id": "dyadic_totient_certificate_interface",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "Erdos249257.not_finiteDimensional_span_fullTotientKernel",
       "original_source": "Erdos249257/TotientMahlerDefect.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
       "statement": "The rational span of the full dyadic totient kernel is not finite-dimensional.",
-      "boundary": "No rationality-to-finite-rank bridge is proved."
+      "boundary": "No rationality-to-finite-rank bridge is proved.",
+      "canonical_claim_status": "supports_registered_claim_family:dyadic_totient_certificate_interface",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "totient_kernel_basis",
       "problem": 249,
       "review_family": "totient_kernel_basis",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "Erdos249257.totientDyadicSectionBasis",
       "original_source": "Erdos249257/TotientMahlerDefect.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
       "statement": "The full dyadic totient kernel span admits the explicit odd-core-indexed basis.",
-      "boundary": "The basis theorem does not connect rationality to finite kernel rank."
+      "boundary": "The basis theorem does not connect rationality to finite kernel rank.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "prime_gap_unboundedness",
@@ -131,30 +215,39 @@
       "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.exists_primeGap0_gt",
       "statement": "The consecutive prime gaps are unbounded.",
-      "boundary": "Unbounded coefficients alone do not force irrationality."
+      "boundary": "Unbounded coefficients alone do not force irrationality.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "prime_gap_irrationality_equivalence",
       "problem": 251,
       "review_family": "prime_gap_reformulation",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational.",
-      "boundary": "The equivalence does not prove irrationality of either series."
+      "boundary": "The equivalence does not prove irrationality of either series.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "mersenne_achievement_measure_one",
       "problem": 257,
       "review_family": "achievement_set_geometry",
       "claim_id": "greedy_achievement_geometry",
-      "contribution_class": "formalisation of known achievement-set geometry",
+      "contribution_class": "mixed prior-art geometry and locally proved metric result; novelty unassessed",
       "original_declaration": "Erdos249257.volume_mersenneAchievementSet",
       "original_source": "Erdos249257/GreedyAchievementSet.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
       "statement": "The base-2 Mersenne achievement set has Lebesgue measure exactly one.",
-      "boundary": "This does not decide whether every infinite-support sum is irrational."
+      "boundary": "This does not decide whether every infinite-support sum is irrational.",
+      "canonical_claim_status": "supports_registered_claim_family:greedy_achievement_geometry",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "erdos_borwein_full_support",
@@ -166,29 +259,38 @@
       "original_source": "Erdos249257/CertificateKernel.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
       "statement": "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.",
-      "boundary": "This is the classical full-support theorem, not universal Erdos #257."
+      "boundary": "This is the classical full-support theorem, not universal Erdos #257.",
+      "canonical_claim_status": "supports_registered_claim_family:eb_full_support",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "finite_period_noncollapse",
       "problem": 257,
       "review_family": "finite_period_noncollapse",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "Erdos249257.finite_period_noncollapse_rat_den",
       "original_source": "Erdos249257/CertificateKernel.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
       "statement": "For a reduced finite Mersenne sum, the base order modulo the denominator equals the support lcm.",
-      "boundary": "The finite-support theorem does not settle any infinite-support sum."
+      "boundary": "The finite-support theorem does not settle any infinite-support sum.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "supported_achievement_measure_dichotomy",
       "problem": 257,
       "review_family": "restricted_achievement_sets",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos257.volume_supportedMersenneAchievementSet_dichotomy",
       "original_source": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
       "statement": "A support-restricted Mersenne achievement set has exact finite-complement measure or measure zero for infinite complement.",
-      "boundary": "The measure dichotomy does not classify rational points."
+      "boundary": "The measure dichotomy does not classify rational points.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "three_prime_kernel_minor",
@@ -199,40 +301,52 @@
       "original_source": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
       "statement": "The smallest displayed 2,3,5 kernel minor is exactly -1/15.",
-      "boundary": "Failure of rank one does not imply irrationality."
+      "boundary": "Failure of rank one does not imply irrationality.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "three_prime_running_lcm",
       "problem": 269,
       "review_family": "three_prime_lcm_cells",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight",
       "original_source": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
       "statement": "The running lcm of the three-prime smooth prefix equals the exact coordinatewise height.",
-      "boundary": "The identity does not supply the missing irrationality bridge."
+      "boundary": "The identity does not supply the missing irrationality bridge.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "newton_small_translation",
       "problem": 1041,
       "review_family": "translation_avoidance",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos1041.exists_small_translation_separating_arguments",
       "original_source": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
       "statement": "An arbitrarily small common translation separates a finite injective family from zero and from shared positive rays.",
-      "boundary": "Finite-family avoidance does not provide the global topological or metric gluing."
+      "boundary": "Finite-family avoidance does not provide the global topological or metric gluing.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "newton_root_retention",
       "problem": 1041,
       "review_family": "root_retention",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos1041.constant_perturbation_roots_in_unitDisk",
       "original_source": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
       "statement": "A quantified small constant perturbation keeps every polynomial root inside the open unit disc.",
-      "boundary": "Root retention is only one input to an incomplete global route."
+      "boundary": "Root retention is only one input to an incomplete global route.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "three_halves_corridor_no_go",
@@ -243,18 +357,24 @@
       "original_source": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
       "statement": "The coordinatewise divisibility corridor is impossible at base 3/2.",
-      "boundary": "This excludes one proof architecture and proves no irrationality statement."
+      "boundary": "This excludes one proof architecture and proves no irrationality statement.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     },
     {
       "id": "rational_base_tail_recurrence",
       "problem": 1049,
       "review_family": "rational_base_tail_recurrence",
-      "contribution_class": "original theoretical result",
+      "contribution_class": "locally proved result; novelty unassessed",
       "original_declaration": "ErdosProblems.Erdos1049.rationalBaseClearedTailQ_succ",
       "original_source": "ErdosProblems/Erdos1049/RationalBaseLambert.lean",
       "wrapper_declaration": "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
       "statement": "The rational-base cleared tail obeys its exact first-order recurrence.",
-      "boundary": "The recurrence is not derived from a rationality contradiction."
+      "boundary": "The recurrence is not derived from a rationality contradiction.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     }
   ],
   "review_matrix": [
@@ -264,7 +384,7 @@
       "families": [
         {
           "id": "factorial_carry_characterisation",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Exact equivalence between irrationality, cofinally many non-unit carries, and cofinal strict-successor divisibility failures.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -276,7 +396,7 @@
         },
         {
           "id": "factorial_channel_and_projection_rigidity",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Finite channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_isolated_headline",
@@ -314,7 +434,7 @@
       "families": [
         {
           "id": "centered_state_dynamics",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Exact update and defect identities, scale equivariance, zero absorption, and eventual recovery of the Sylvester recurrence.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_selected_boundary_theorems",
@@ -330,7 +450,7 @@
         },
         {
           "id": "bounded_rise_coprimality",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "A bounded-rise sequence cannot remain coprime to fresh pairwise-coprime moduli; reduced tails inherit this obstruction.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_stronger_selected_boundary_theorem",
@@ -360,7 +480,7 @@
       "families": [
         {
           "id": "totient_kernel_basis",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "An explicit odd-core basis and relation normal form for the full dyadic totient kernel.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -368,7 +488,7 @@
         },
         {
           "id": "totient_kernel_rank",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Exact finite-level rank 2^e+1 and infinite-dimensionality of the full kernel.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -392,7 +512,7 @@
         },
         {
           "id": "totient_lambert_coefficients",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "The totient series is rewritten as a Lambert series with explicit nonnegative, unbounded prime-power coefficients.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_basis_and_rank_targets",
@@ -422,7 +542,7 @@
       "families": [
         {
           "id": "prime_gap_reformulation",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Exact finite summation by parts, the unconditional infinite prime-gap identity, and irrationality equivalence.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -430,7 +550,7 @@
         },
         {
           "id": "integral_shift_classification",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Block identities and exact denominator criteria classify rationality through integral positive tail shifts.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "not_selected_abstract_family_represented_in_manifest",
@@ -438,7 +558,7 @@
         },
         {
           "id": "totient_shift_propagation",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_integral_shift_family",
@@ -468,7 +588,7 @@
       "families": [
         {
           "id": "finite_period_noncollapse",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "The multiplicative order of the base modulo a reduced finite-sum denominator is the support lcm, forcing denominator growth.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -500,7 +620,7 @@
         },
         {
           "id": "achievement_set_geometry",
-          "contribution_class": "formalisation of known geometry with local metric clause",
+          "contribution_class": "mixed prior-art geometry and locally proved metric result; novelty unassessed",
           "summary": "Compactness, perfectness, total disconnectedness, nowhere density, and measure one for the unrestricted achievement set.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted_measure_theorem",
@@ -508,7 +628,7 @@
         },
         {
           "id": "restricted_achievement_sets",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Support-restricted coding is injective and the associated achievement set has exact finite-complement measure or zero for infinite complement.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted_measure_dichotomy",
@@ -530,7 +650,7 @@
       "families": [
         {
           "id": "three_prime_lcm_cells",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Exact running-LCM product, logarithmic-cell constancy, coordinate jump ratios, and jump count.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted_running_lcm_identity",
@@ -546,7 +666,7 @@
         },
         {
           "id": "height_fibre_and_shell",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_three_prime_structure_target",
@@ -562,7 +682,7 @@
         },
         {
           "id": "dyadic_block_alphabet",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "The exact dyadic block alphabet is 2, 6, 10, and 30.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_three_prime_structure_target",
@@ -592,7 +712,7 @@
       "families": [
         {
           "id": "newton_value_decay",
-          "contribution_class": "original theoretical result and formalised calculus",
+          "contribution_class": "locally proved result and formalised calculus; novelty unassessed",
           "summary": "The Newton value equation and its exponential first integral are checked exactly.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "not_selected_compact_calculus_family",
@@ -600,7 +720,7 @@
         },
         {
           "id": "ray_separation",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Distinct positive rays exclude a finite Newton connection.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_translation_avoidance_targets",
@@ -608,7 +728,7 @@
         },
         {
           "id": "translation_avoidance",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Collision translations are parameterised by real affine lines and an arbitrarily small common translation avoids finitely many of them.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -616,7 +736,7 @@
         },
         {
           "id": "root_retention",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "A quantified small constant perturbation keeps every polynomial root inside the open unit disc.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -662,7 +782,7 @@
         },
         {
           "id": "four_jet_collision",
-          "contribution_class": "original theoretical result and no-go result",
+          "contribution_class": "locally proved result and no-go result; novelty unassessed",
           "summary": "Binary selectors collide in the four-jet signature at the stated rank and depth.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "not_selected_finite_combinatorial_family",
@@ -678,7 +798,7 @@
         },
         {
           "id": "rational_base_tail_recurrence",
-          "contribution_class": "original theoretical result",
+          "contribution_class": "locally proved result; novelty unassessed",
           "summary": "The exact rational-base cleared-tail recurrence exposes exponential denominator-base forcing absent at integer bases.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
@@ -694,7 +814,7 @@
         },
         {
           "id": "height_and_pade_arithmetic",
-          "contribution_class": "original theoretical result and finite arithmetic",
+          "contribution_class": "locally proved result and finite arithmetic; novelty unassessed",
           "summary": "Exact height-region inclusions and exclusions, Padé denominator-exponent bounds, and a rectangular Hermite-Padé threshold no-go are checked.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "not_selected_multiple_scoped_arithmetic_families",

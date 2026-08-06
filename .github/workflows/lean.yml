@@ -147,6 +147,10 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          # A pull-request checkout otherwise resolves to GitHub's synthetic
+          # merge commit. Comparator receipts are source-review artefacts, so
+          # bind them to the contributor-visible head commit instead.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
       - name: Detect external-verification inputs
@@ -295,6 +299,7 @@ jobs:
           [[ -n "$negative_exit" ]] || negative_exit=-999
           python3 scripts/run_external_verification.py \
             --phase final \
+            --expected-commit '${{ github.event.pull_request.head.sha || github.sha }}' \
             --positive-exit "$positive_exit" \
             --negative-exit "$negative_exit" \
             --positive-log artifacts-positive.log \
@@ -314,7 +319,7 @@ jobs:
         if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: external-verification-receipt-${{ github.sha }}
+          name: external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}
           path: artifacts/external-verification-receipt.json
           if-no-files-found: error
 
