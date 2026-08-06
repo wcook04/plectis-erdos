@@ -168,15 +168,33 @@ def prepare_source(
     return source
 
 
-def prepare_tools(workspace: Path, contract: dict[str, Any]) -> dict[str, Path]:
+def prepare_tools(
+    workspace: Path, contract: dict[str, Any]
+) -> tuple[dict[str, Path], dict[str, str]]:
     pins = contract["toolchain"]
     comparator = workspace / "comparator"
     lean4export = workspace / "lean4export"
     landrun_source = workspace / "landrun-source"
-    for repository, revision, destination in (
-        ("https://github.com/leanprover/comparator.git", pins["comparator"], comparator),
-        ("https://github.com/leanprover/lean4export.git", pins["lean4export"], lean4export),
-        ("https://github.com/zouuup/landrun.git", pins["landrun"], landrun_source),
+    observed_revisions = {}
+    for name, repository, revision, destination in (
+        (
+            "comparator",
+            "https://github.com/leanprover/comparator.git",
+            pins["comparator"],
+            comparator,
+        ),
+        (
+            "lean4export",
+            "https://github.com/leanprover/lean4export.git",
+            pins["lean4export"],
+            lean4export,
+        ),
+        (
+            "landrun",
+            "https://github.com/zouuup/landrun.git",
+            pins["landrun"],
+            landrun_source,
+        ),
     ):
         checked_run(
             ["git", "clone", "--filter=blob:none", "--no-checkout", repository, str(destination)],
@@ -184,7 +202,8 @@ def prepare_tools(workspace: Path, contract: dict[str, Any]) -> dict[str, Path]:
             timeout=300,
         )
         checked_run(["git", "checkout", "--detach", revision], cwd=destination)
-        if git(destination, "rev-parse", "HEAD") != revision:
+        observed_revisions[name] = git(destination, "rev-parse", "HEAD")
+        if observed_revisions[name] != revision:
             raise ReplayError(f"tool checkout does not match pin: {destination.name}")
     checked_run(["lake", "build", "comparator"], cwd=comparator, timeout=1200)
     checked_run(["lake", "build", "lean4export"], cwd=lean4export, timeout=1200)
@@ -194,11 +213,14 @@ def prepare_tools(workspace: Path, contract: dict[str, Any]) -> dict[str, Path]:
         cwd=landrun_source,
         timeout=600,
     )
-    return {
-        "comparator": comparator / ".lake/build/bin/comparator",
-        "lean4export": lean4export / ".lake/build/bin/lean4export",
-        "landrun": landrun,
-    }
+    return (
+        {
+            "comparator": comparator / ".lake/build/bin/comparator",
+            "lean4export": lean4export / ".lake/build/bin/lean4export",
+            "landrun": landrun,
+        },
+        observed_revisions,
+    )
 
 
 def sandbox_mode(source: Path) -> str:
@@ -312,7 +334,7 @@ def execute(
         if positive.get("permitted_axioms") != source_contract["replay"]["permitted_axioms"]:
             raise ReplayError("positive replay axiom budget differs from contract")
         checked_run(["lake", "exe", "cache", "get"], cwd=source, timeout=1200)
-        tools = prepare_tools(workspace, source_contract)
+        tools, observed_revisions = prepare_tools(workspace, source_contract)
         mode = sandbox_mode(source)
         positive_command, environment = comparator_command(
             source=source,
@@ -348,10 +370,18 @@ def execute(
                     "repository": source_contract["repository"],
                     "commit": source_commit,
                     "tree": source_tree,
+                    "expected_commit": source_commit,
+                    "observed_commit": git(source, "rev-parse", "HEAD^{commit}"),
+                    "expected_tree": source_tree,
+                    "observed_tree": git(source, "rev-parse", "HEAD^{tree}"),
+                    "identity_verified": True,
                     "contract_sha256": sha256_file(source / CONTRACT_RELATIVE),
                 },
                 "toolchain": {
-                    "revisions": source_contract["toolchain"],
+                    "expected_revisions": source_contract["toolchain"],
+                    "observed_revisions": observed_revisions,
+                    "revisions_match": observed_revisions
+                    == source_contract["toolchain"],
                     "binary_digests": {
                         name: sha256_file(path) for name, path in tools.items()
                     },
