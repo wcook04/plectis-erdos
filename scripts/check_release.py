@@ -551,6 +551,21 @@ def main() -> int:
         "external-verification projection or statement-isolation check failed: "
         f"{external_verification_check.stdout.strip() or external_verification_check.stderr.strip()}",
     )
+    external_verification_release_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "test_external_verification_release.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        external_verification_release_check.returncode == 0,
+        "external-verification replay or immutable release-identity contract failed: "
+        f"{external_verification_release_check.stdout.strip() or external_verification_release_check.stderr.strip()}",
+    )
     note_source_check = subprocess.run(
         [
             sys.executable,

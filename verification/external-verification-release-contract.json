@@ -39,6 +39,9 @@
   "tracked_artifacts": [
     "README.md",
     "docs/EXTERNAL_VERIFICATION_REPLAY.md",
+    "docs/FORMAL_CONJECTURES_CROSSWALK.md",
+    "docs/formal_conjectures_crosswalk.json",
+    "docs/papers/corpus.json",
     "formalization.yaml",
     "docs/external_verification_packet.json",
     "docs/EXTERNAL_VERIFICATION.md",
