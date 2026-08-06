@@ -11121,9 +11121,9 @@
     }
   },
   "release": {
-    "version": "0.7.0",
-    "tag": "v0.7.0",
-    "date": "2026-08-03",
+    "version": "0.8.0",
+    "tag": "v0.8.0",
+    "date": "2026-08-06",
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {

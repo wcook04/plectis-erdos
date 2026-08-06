@@ -1652,7 +1652,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:9d511b10d6f1ec9ebeb2e48fb9508274e3f8a84bf0bea3cf8b72222da260f346",
+    "lakefile.toml": "sha256:657ef477569cfda3b785bec790377daa16382b51e1ec7086c220fafe82a48af3",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

@@ -70,7 +70,7 @@ and the sharp first failure.
 the eight problems, then the typed census and limits.
 
 This self-contained public Plectis checkout is not an entrypoint into any private
-development system. `v0.7.0` is the latest tagged release and citation anchor;
+development system. `v0.8.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](docs/claims.json) pins the exact formal-source checkpoint
 this release ships. Lean source checked by the pinned Lean kernel is
 proof authority; do not infer results from private or unreleased work.
@@ -288,7 +288,7 @@ hypothesis explicit and does not prove universal #257.
 
 ## Citation and licence
 
-Use [`CITATION.cff`](CITATION.cff) for `v0.7.0`.
+Use [`CITATION.cff`](CITATION.cff) for `v0.8.0`.
 Code, scripts, and documentation are Apache-2.0. The manuscript layer, including
 the paper source and rendered PDFs, is CC-BY-4.0.
 [`REUSE.toml`](REUSE.toml) is complete.

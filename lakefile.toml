@@ -1,5 +1,5 @@
 name = "erdos249257"
-version = "0.7.0"
+version = "0.8.0"
 keywords = ["math", "erdos249", "erdos257", "lean4", "mathlib", "formalized-mathematics"]
 defaultTargets = ["Erdos249257", "ErdosProblems"]
 
