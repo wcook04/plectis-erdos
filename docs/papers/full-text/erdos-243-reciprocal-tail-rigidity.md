@@ -16,6 +16,12 @@ There is also a weaker conclusion from normalised vanishing alone. It makes stri
 
 Problem #243 is open and this note does not close it. The last theorem is conditional: its centring and normalised-vanishing hypotheses are analytic inputs that we assume rather than derive. For the canonical orbit attached to a sequence in Erdős’s problem, Koizumi’s results provide normalised vanishing and a stronger centring range, so the bounded-negative theorem applies conditionally, with boundedness of the negative part as the missing hypothesis. What the results remove is the bounded case and, more generally, the finite normalised negative-mass case. Under normalised vanishing, summability of $`\sum_n(-E_n)_+/C_n`$ makes $`C_n`$ bounded and hence $`E_n`$ eventually zero. Any surviving canonical orbit must therefore have negative excursions unbounded along a cofinal set and divergent normalised negative mass.
 
+> **Contribution.** The paper develops the exact centred-state recurrence, proves zero-state absorption, excludes constant and periodic negative magnitudes, and conditionally excludes the entire cofinally bounded negative branch.
+>
+> **Relation to the open problem.** The last theorem retains positivity, bounded-rise, and normalised-vanishing hypotheses. The mixed-sign and unbounded-negative regimes keep Problem #243 open.
+>
+> **Executable review object.** Comparator selects the eventually periodic negative-orbit obstruction and the conditional exclusion of a cofinally bounded negative state, with every hypothesis present in the challenge statement. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
 <a id="sec:problem"></a>
 
 # Introduction

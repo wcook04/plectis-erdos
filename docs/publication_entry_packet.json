@@ -107,10 +107,10 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:c6d7a008d1d05bcfa1dd65f23c71c902c4e6e1f71338759fa2828c7b0f952212",
-    "docs/claims.json": "sha256:5ab82f65c7cb2e8e4d090ceb6f3fc3fc0cdc201691817e0012bbc50a5c97c017",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:ab10d8ec33efe369052f04f373833d811e93629bc9f4a1ae3bbcea4b10e69da5",
+    "docs/claims.json": "sha256:e4874430775d6f4c0ee58d7a5da7e30f507b247d1b68324d2c43929e3ab7ab3b",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/publication_contract.json": "sha256:dad76fa985e1dafd0dc0bcdc350975290bfdcd779868e9f0ec3100d2a1481cde",
+    "docs/publication_contract.json": "sha256:936a7386c730464188174ecfabf51b0dcb265898457ba9aa80916cccea017c70",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
@@ -301,7 +301,7 @@
       "open_target_claim": "universal_257",
       "paper_anchor": {
         "environment": "problem",
-        "line": 1162,
+        "line": 1173,
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "title": "membership of 1/21 in the Mersenne achievement set"
       },

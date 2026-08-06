@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # change gate compares the complete PR or push range
-      - name: Detect Lean-affecting changes
+      - name: Detect supported-root Lean changes
         id: lean-inputs
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -56,12 +56,13 @@ jobs:
           if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
             changed=true
           elif git diff --quiet "$base" "$head" -- \
-            '*.lean' \
+            Erdos249257.lean 'Erdos249257/**' \
+            ErdosProblems.lean 'ErdosProblems/**' \
             lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
-            docs/claims.json docs/declaration_atlas.json \
-            docs/generated_certificate_manifest.json \
             scripts/build_declaration_atlas.py \
             scripts/build_lean_dependency_index.py \
+            scripts/export_lean_dependency_edges.lean \
+            scripts/lean_fast_build.py \
             scripts/query_corpus.py; then
             changed=false
           else
@@ -148,15 +149,51 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Detect external-verification inputs
+        id: external-inputs
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            changed=true
+          else
+            base="$PR_BASE_SHA"
+            head="$PR_HEAD_SHA"
+            if [[ -z "$base" || -z "$head" ]]; then
+              changed=true
+            elif git diff --quiet "$base" "$head" -- \
+              Erdos249257.lean 'Erdos249257/**' \
+              ErdosProblems.lean 'ErdosProblems/**' \
+              ExternalVerification 'verification/**' \
+              lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
+              docs/claims.json docs/problem_index_source.json docs/problems.json \
+              docs/EXTERNAL_VERIFICATION.md docs/external_verification_packet.json \
+              formalization.yaml \
+              scripts/build_external_verification.py \
+              scripts/run_external_verification.py \
+              scripts/test_external_verification.py \
+              .github/workflows/lean.yml; then
+              changed=false
+            else
+              changed=true
+            fi
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "External-verification inputs changed: $changed"
       - name: Initialize failure-safe verification receipt
+        if: steps.external-inputs.outputs.changed == 'true'
         run: |
           mkdir -p artifacts
           python3 scripts/run_external_verification.py --phase initialized || true
       - uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6.0.0
+        if: steps.external-inputs.outputs.changed == 'true'
         with:
           go-version: "1.24.x"
           cache: false
       - name: Install pinned Lean toolchain
+        if: steps.external-inputs.outputs.changed == 'true'
         env:
           ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
           ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
@@ -172,11 +209,13 @@ jobs:
           "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Prepare trusted challenge inputs
+        if: steps.external-inputs.outputs.changed == 'true'
         run: |
           set -euo pipefail
           lake exe cache get
           python3 scripts/test_external_verification.py
       - name: Build pinned Comparator toolchain
+        if: steps.external-inputs.outputs.changed == 'true'
         id: tools
         env:
           COMPARATOR_REV: 789279735fe44c1c05dc54bb9f46ba4d9b8c7611
@@ -201,6 +240,7 @@ jobs:
           echo "landrun_rev=$LANDRUN_REV" >> "$GITHUB_OUTPUT"
           echo "comparator_lean_toolchain=$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")" >> "$GITHUB_OUTPUT"
       - name: Run positive and adversarial Comparator checks
+        if: steps.external-inputs.outputs.changed == 'true'
         id: comparator
         continue-on-error: true
         run: |
@@ -247,7 +287,7 @@ jobs:
           cat artifacts-negative.log
           exit 0
       - name: Write and enforce commit-bound verification receipt
-        if: ${{ always() && !cancelled() }}
+        if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
         run: |
           positive_exit='${{ steps.comparator.outputs.positive_exit }}'
           negative_exit='${{ steps.comparator.outputs.negative_exit }}'
@@ -268,9 +308,10 @@ jobs:
             --lean4export-bin "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
             --landrun-bin "$RUNNER_TEMP/landrun"
       - name: Print post-verification axiom audit
+        if: steps.external-inputs.outputs.changed == 'true'
         run: lake build ExternalVerification.AxiomAudit
       - name: Upload external-verification receipt
-        if: ${{ always() }}
+        if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: external-verification-receipt-${{ github.sha }}

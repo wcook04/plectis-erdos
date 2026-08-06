@@ -41,8 +41,25 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertEqual(
             packet["challenge_import_closure"]["proof_bearing_internal_import_count"], 0
         )
-        self.assertEqual(len(packet["main_results"]), 4)
-        self.assertEqual({row["problem"] for row in packet["main_results"]}, {249, 257})
+        self.assertEqual(len(packet["main_results"]), 19)
+        self.assertEqual(
+            {row["problem"] for row in packet["main_results"]},
+            {68, 243, 249, 251, 257, 269, 1041, 1049},
+        )
+        self.assertEqual(len(packet["review_matrix"]), 8)
+        family_ids = {
+            (problem["problem"], family["id"])
+            for problem in packet["review_matrix"]
+            for family in problem["families"]
+        }
+        self.assertTrue(all(
+            (result["problem"], result["review_family"]) in family_ids
+            for result in packet["main_results"]
+        ))
+        challenge = (ROOT / "ExternalVerification/Challenge.lean").read_text()
+        solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
+        self.assertEqual(challenge.count("sorry"), 1)
+        self.assertNotIn("sorry", solution)
 
     def test_multi_module_import_lines_cannot_evade_isolation_parser(self) -> None:
         self.assertEqual(
@@ -72,6 +89,24 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertTrue(is_expected_negative_rejection(1, EXPECTED_MISMATCH))
         self.assertFalse(is_expected_negative_rejection(125, "systemd unavailable"))
         self.assertFalse(is_expected_negative_rejection(127, "landrun: command not found"))
+
+    def test_ci_separates_core_builds_from_external_and_paper_only_changes(self) -> None:
+        workflow = (ROOT / ".github/workflows/lean.yml").read_text()
+        core_gate = workflow.split("- name: Detect supported-root Lean changes", 1)[1]
+        core_gate = core_gate.split("- name: Test pinned proof-environment lock", 1)[0]
+        self.assertNotIn("'*.lean'", core_gate)
+        self.assertIn("Erdos249257.lean 'Erdos249257/**'", core_gate)
+        self.assertIn("ErdosProblems.lean 'ErdosProblems/**'", core_gate)
+        self.assertNotIn("ExternalVerification", core_gate)
+        self.assertIn("id: external-inputs", workflow)
+        self.assertIn("steps.external-inputs.outputs.changed == 'true'", workflow)
+
+        prepare = workflow.index("- name: Prepare trusted challenge inputs")
+        compare = workflow.index("- name: Run positive and adversarial Comparator checks")
+        audit = workflow.index("- name: Print post-verification axiom audit")
+        self.assertLess(prepare, compare)
+        self.assertLess(compare, audit)
+        self.assertNotIn("AxiomAudit", workflow[prepare:compare])
 
 
 if __name__ == "__main__":

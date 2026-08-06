@@ -110,33 +110,40 @@ def validate(packet: dict, problem_source: dict) -> tuple[list[Path], list[str]]
     errors: list[str] = []
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))["claims"]
     claim_by_id = {row["id"]: row for row in claims}
-    expected_results = [
-        "totient_kernel_finite_rank",
-        "totient_kernel_infinite_rank",
-        "mersenne_achievement_measure_one",
-        "erdos_borwein_full_support",
-    ]
-    if [row.get("id") for row in packet.get("main_results", [])] != expected_results:
-        errors.append(f"flagship result set drifted from the exact four-result contract: {expected_results}")
-    if {row.get("problem") for row in packet.get("main_results", [])} != {249, 257}:
-        errors.append("flagship Comparator results must remain scoped to problems 249 and 257")
+    expected_problems = {68, 243, 249, 251, 257, 269, 1041, 1049}
+    results = packet.get("main_results", [])
+    if len(results) < len(expected_problems):
+        errors.append("Comparator must expose at least one exact interface for every problem")
+    if {row.get("problem") for row in results} != expected_problems:
+        errors.append("Comparator result coverage must equal the eight-problem portfolio")
+    matrix_by_problem = {
+        row["problem"]: {family["id"]: family for family in row.get("families", [])}
+        for row in packet.get("review_matrix", [])
+    }
+    if set(matrix_by_problem) != expected_problems:
+        errors.append("review_matrix coverage must equal the eight-problem portfolio")
     wrapper_sources = {
         "ExternalVerification/Challenge.lean",
         "ExternalVerification/Solution.lean",
     }
-    for result in packet["main_results"]:
-        claim = claim_by_id.get(result["claim_id"])
-        if claim is None:
-            errors.append(f"unknown flagship claim_id: {result['claim_id']}")
-            continue
+    for result in results:
+        family = matrix_by_problem.get(result["problem"], {}).get(result.get("review_family"))
+        if family is None:
+            errors.append(f"Comparator result {result['id']} lacks a review_matrix family owner")
+        claim_id = result.get("claim_id")
+        claim = claim_by_id.get(claim_id) if claim_id else None
+        if claim_id and claim is None:
+            errors.append(f"unknown claim_id: {claim_id}")
         original = result["original_declaration"]
         source = result["original_source"]
         if not declaration_exists(source, original):
             errors.append(f"missing original declaration {original} in {source}")
         short_original = original.rsplit(".", 1)[-1]
-        if not any(d.get("name") == short_original and d.get("module") == source
-                   for d in claim.get("declarations", [])):
-            errors.append(f"flagship {result['id']} is not owned by claim {result['claim_id']}")
+        if claim is not None and not any(
+            d.get("name") == short_original and d.get("module") == source
+            for d in claim.get("declarations", [])
+        ):
+            errors.append(f"result {result['id']} is not owned by claim {claim_id}")
         wrapper = result["wrapper_declaration"]
         for wrapper_source in wrapper_sources:
             if not declaration_exists(wrapper_source, wrapper):
@@ -187,11 +194,14 @@ def comparator_config(packet: dict) -> dict:
 
 
 def negative_config(packet: dict) -> dict:
-    first = packet["main_results"][0]
+    fixture = next(
+        row for row in packet["main_results"]
+        if row["id"] == "totient_kernel_finite_rank"
+    )
     return {
         "challenge_module": packet["comparator"]["challenge_module"],
         "solution_module": "ExternalVerification.NegativeSolution",
-        "theorem_names": [first["wrapper_declaration"]],
+        "theorem_names": [fixture["wrapper_declaration"]],
         "permitted_axioms": packet["comparator"]["permitted_axioms"],
         "enable_nanoda": False,
     }
@@ -232,10 +242,11 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
         "    All eight covered Erdős problems remain open. This repository checks",
         "    subsidiary theorems, formalises selected known results, verifies finite",
         "    instances, and records conditional reductions and method barriers.",
-        "  sorry_count: 4",
+        "  proof_corpus_sorry_count: 0",
+        "  sorry_count: 1",
         "  sorry_in_definitions: 0",
-        "  trusted_challenge_sorry_count: 4",
-        "  sorry_boundary: \"All four sorries occur only in the statement-isolated Comparator challenge; every listed result declaration and solution wrapper has sorry_count 0.\"",
+        "  trusted_challenge_sorry_count: 1",
+        "  sorry_boundary: \"The only sorry is the trusted proposition package in the statement-isolated Comparator challenge. It is the fixture against which Comparator checks the proof-bearing solution; the proof corpus and every solution wrapper have sorry_count 0.\"",
         "  axioms:",
     ]
     for axiom in packet["comparator"]["permitted_axioms"]:
@@ -286,8 +297,22 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
             "      status: \"proved\"",
             f"      note: {quote(row['boundary'])}",
         ])
+    lines.append("claim_review_matrix:")
+    for problem in packet["review_matrix"]:
+        lines.append(f"  - problem: {problem['problem']}")
+        lines.append(f"    paper: {quote(problem['paper'])}")
+        lines.append("    families:")
+        for family in problem["families"]:
+            lines.extend([
+                f"      - id: {quote(family['id'])}",
+                f"        contribution_class: {quote(family['contribution_class'])}",
+                f"        evidence_mode: {quote(family['evidence_mode'])}",
+                f"        comparator_disposition: {quote(family['comparator_disposition'])}",
+                f"        summary: {quote(family['summary'])}",
+                f"        boundary: {quote(family['boundary'])}",
+            ])
     lines.extend([
-        "acknowledgements: \"Michael Rothgang identified contribution clarity and cheap external proof inspection as necessary review surfaces.\"",
+        "acknowledgements: null",
         "external_verification:",
         "  owner: \"docs/claims.json::external_verification_packet\"",
         f"  problem_index: {quote(packet['problem_index_projection'])}",
@@ -305,7 +330,7 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
             f"      claim_registry_status: {quote(problem['claim_registry_status'])}",
         ])
     lines.extend([
-        "  trusted_challenge_holes: 4",
+        "  trusted_challenge_holes: 1",
         "  packet: \"docs/EXTERNAL_VERIFICATION.md\"",
         "  receipt_contract: \"docs/external_verification_packet.json::receipt_contract\"",
         "",
@@ -330,6 +355,15 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
             f"- `{row['wrapper_declaration']}` — {row['contribution_class']}: "
             f"{row['statement']} **Boundary:** {row['boundary']}"
         )
+    family_rows = []
+    for problem in packet["review_matrix"]:
+        for family in problem["families"]:
+            family_rows.append(
+                f"| #{problem['problem']} | `{family['id']}` | "
+                f"{family['contribution_class']} | {family['summary']} | "
+                f"{family['evidence_mode']} | `{family['comparator_disposition']}` | "
+                f"{family['boundary']} |"
+            )
     return "\n".join([
         "<!-- Generated by scripts/build_external_verification.py; do not edit. -->",
         "# External Verification Packet",
@@ -343,11 +377,19 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
         "|---|---|---|---|",
         *rows,
         "",
+        "## Contribution and evidence matrix",
+        "",
+        "Every substantial contribution family is listed here. Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.",
+        "",
+        "| Problem | Family | Contribution class | What is contributed | Evidence | Comparator disposition | Boundary |",
+        "|---|---|---|---|---|---|---|",
+        *family_rows,
+        "",
         "## Statement-isolated Comparator review unit",
         "",
         *flags,
         "",
-        "The trusted challenge imports only `ExternalVerification.Statements` and Mathlib.",
+        "The nineteen exact interfaces cover all eight programmes. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.",
         "The proof-bearing modules occur only in `ExternalVerification.Solution`.",
         "CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.",
         "",

@@ -14,6 +14,12 @@ Second, we isolate a six-condition coordinatewise clearing scheme at a rational 
 
 For comparison, Bundschuh and Väänänen’s published theorem settles a restricted family containing $`7/2`$; Lean checks only the elementary height inequality required by that 1994 criterion \[bv1994\], leaving its analytic irrationality argument external. Polynomial denominator-exponent bounds for a homogenised Padé construction likewise leave the analytic remainder untreated. We also verify elementary membership and exclusion statements for the logarithmic region $`\log b/\log a<81/200`$, but cite no analytic irrationality theorem for that cutoff. Problem #1049 remains open: nothing here proves rationality or irrationality at $`3/2`$, or supplies a method-wide obstruction.
 
+> **Contribution.** The paper proves the exact rational-base tail recurrence, rules out literal coordinatewise clearing at $`3/2`$, and checks endpoint, Padé, collision, and height obstructions for several proposed proof architectures.
+>
+> **Relation to the open problem.** These are scoped no-go and arithmetic statements. They prove no irrationality result and leave Problem #1049 open.
+>
+> **Executable review object.** Comparator selects the exact rational-base cleared-tail recurrence and the $`3/2`$ coordinatewise-corridor exclusion with its nonempty-shift and nonempty-window hypotheses. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
 <a id="sec:problem"></a>
 
 # Introduction

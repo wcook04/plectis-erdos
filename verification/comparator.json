@@ -2,10 +2,25 @@
   "challenge_module": "ExternalVerification.Challenge",
   "solution_module": "ExternalVerification.Solution",
   "theorem_names": [
+    "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
+    "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries",
+    "Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes",
+    "Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit",
     "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
     "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+    "Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis",
+    "Erdos249257.ExternalVerification.exists_primeGap0_gt",
+    "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
-    "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+    "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+    "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
+    "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",
+    "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen",
+    "Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight",
+    "Erdos249257.ExternalVerification.exists_small_translation_separating_arguments",
+    "Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk",
+    "Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor",
+    "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ"
   ],
   "permitted_axioms": [
     "propext",

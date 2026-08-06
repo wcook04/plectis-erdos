@@ -14,6 +14,12 @@ Along a trajectory of the complex Newton field $`-f/f'`$ the polynomial value sa
 
 What remains is the planar topology and the length bookkeeping. Neither is proved here, and Erdős \#1041 is not settled.
 
+> **Contribution.** The paper checks exponential Newton-value decay, parameterises positive-ray collisions, constructs arbitrarily small translations avoiding all collisions in a finite family, and proves root retention under a quantified constant perturbation.
+>
+> **Relation to the open problem.** These are dynamical and perturbative inputs. They do not repair the global topology and metric gluing needed for a curve of length less than $`2`$, so Problem #1041 remains open.
+>
+> **Executable review object.** Comparator selects the finite-family small-translation theorem and the quantified root-retention theorem. The literature diagnosis and finite computation remain separate evidence classes. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
 <a id="sec:problem"></a>
 
 # The problem

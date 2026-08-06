@@ -26,6 +26,12 @@ The finite channel algebra gives a second rigorous layer. In each channel $`d`$,
 
 No theorem constructs cofinally many non-unit carries, a cofinal family of strictly nonzero translated residuals, or the quantitative residue and scale bounds required by the endpoint arguments. The note therefore proves a carry normal form, finite channel obstructions, and a denominator exclusion—not irrationality of $`S`$.
 
+> **Contribution.** The paper proves exact carry and divisibility equivalences for the factorial-gap series and records a finite denominator exclusion through $`q<300000`$, whose arithmetic certificate is checked outside Lean.
+>
+> **Relation to the open problem.** The equivalences identify the missing cofinal input without supplying it. A finite denominator exclusion does not change the quantifier, and Problem #68 remains open.
+>
+> **Executable review object.** Comparator selects both exact equivalences: cofinal failure of the strict factorial-successor divisibility test and cofinally many non-unit carries. The mixed Lean-plus-certificate denominator computation is reported separately. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
 <a id="sec:problem"></a>
 
 # The problem
