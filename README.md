@@ -11,8 +11,6 @@ It assumes no Lean or project history.
 
 ## Problem papers
 
-Every covered Erdős problem has its own PDF:
-
 - [**#68 — factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf)
 - [**#243 — reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf)
 - [**#249 — dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [claim-bounded reasoning surface](erdos249-totient-reasoning-surface.pdf)
@@ -49,6 +47,9 @@ All eight problems remain open. **This project does not solve any of them.**
 Each problem paper states the checked results, the evidence boundary, and the
 exact obligation that remains. Results stay within Lean source.
 
+## External verification
+
+[YAML](formalization.yaml) and [packet](docs/EXTERNAL_VERIFICATION.md) cover all eight problem programmes.
 **Ten-minute verdict.** Checked non-restatement centre:
 
 - #257 has exact finite-period noncollapse, irrationality for eventually

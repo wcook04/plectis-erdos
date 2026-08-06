@@ -27,3 +27,9 @@ weakLeanArgs = ["--tstack=65536"]
 [[lean_lib]]
 name = "Examples"
 srcDir = "examples"
+
+# Statement-isolated modules used by the external Comparator packet.  This is
+# intentionally not a default target: Challenge contains the trusted statement
+# holes, while CI asks Comparator to check Solution against them explicitly.
+[[lean_lib]]
+name = "ExternalVerification"

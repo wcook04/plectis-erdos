@@ -18,8 +18,8 @@
  },
  "source_provenance": {
   "identity_kind": "content_addressed_input_set",
-  "declaration_atlas_digest": "sha256:074a75c68319a926c98a628288624a0120d76376ff6903311d20489b12f4cd2d",
-  "semantic_corpus_digest": "sha256:6f3af0b9201b1d9b7fa21801143ab1d8dfe793afdc0a520fe518b9c11e8d7244",
+  "declaration_atlas_digest": "sha256:966dbd64d02c8b56ae596e2ea41bc655e5dd550adffda176b7ab70cbf62ad178",
+  "semantic_corpus_digest": "sha256:0a09e29b277cef3b2f711bac2f8a298004479ae386c59ee4b5ec6c4e9c0c03a0",
   "authored_lab_source_digests": {
    "docs/semantic/lab/benchmark_items.json": "sha256:51e9f9fde535fdb0e526f0826239eace0cfa478a6f30b37d663c1432bd1f984f",
    "docs/semantic/lab/benchmark_results.json": "sha256:37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",

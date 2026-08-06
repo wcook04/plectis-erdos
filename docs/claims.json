@@ -11155,6 +11155,121 @@
     "cited only": "External theorem used for positioning, not formalised",
     "open": "Not proved by this release"
   },
+  "external_verification_packet": {
+    "schema": "erdos-external-verification-packet/1",
+    "scope": "all_eight_public_problem_programmes",
+    "purpose": "Give a cold mathematical reviewer a whole-repository disclosure layer plus a deliberately small statement-isolated executable review unit.",
+    "boundary": "All eight covered Erdős problems remain open. Comparator checks exact Lean statements, configured axioms, and kernel acceptance; it does not assess novelty, significance, source fidelity, or whether any open problem is solved.",
+    "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
+    "automation": {
+      "posture": "Substantial language-model and agent assistance was used in formalisation, proof engineering, checking, and exposition.",
+      "human_responsibility": "Will Cook selected the public scope, accepts responsibility for the claims and correspondence, and does not present CI as mathematical peer review."
+    },
+    "formalization_schema": {
+      "version": "v0.3",
+      "repository": "https://github.com/mathlib-initiative/formalization.yaml",
+      "commit": "fab03cbbed1a5857de17af32de30421a734c77c6"
+    },
+    "problem_index_owner": "docs/problem_index_source.json",
+    "problem_index_projection": "docs/problems.json",
+    "problem_ids": [
+      "erdos_68",
+      "erdos_243",
+      "erdos_249",
+      "erdos_251",
+      "erdos_257",
+      "erdos_269",
+      "erdos_1041",
+      "erdos_1049"
+    ],
+    "comparator": {
+      "config": "verification/comparator.json",
+      "challenge_module": "ExternalVerification.Challenge",
+      "solution_module": "ExternalVerification.Solution",
+      "challenge_trust_boundary": "ExternalVerification/Statements.lean and its Mathlib-only import closure, plus the pinned lakefile.toml, lean-toolchain, and lake-manifest.json build inputs required by Comparator's threat model",
+      "permitted_axioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "enable_nanoda": false,
+      "pins": {
+        "comparator": "789279735fe44c1c05dc54bb9f46ba4d9b8c7611",
+        "lean4export": "6f4e21dd70c3c11d7fbd07d39e3192792c657448",
+        "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+      }
+    },
+    "main_results": [
+      {
+        "id": "totient_kernel_finite_rank",
+        "problem": 249,
+        "claim_id": "dyadic_totient_certificate_interface",
+        "contribution_class": "local subsidiary theorem",
+        "original_declaration": "Erdos249257.finrank_totientKernelThroughLevelFamily_eq",
+        "original_source": "Erdos249257/TotientMahlerDefect.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+        "statement": "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e + 1.",
+        "boundary": "This does not prove irrationality of the totient series."
+      },
+      {
+        "id": "totient_kernel_infinite_rank",
+        "problem": 249,
+        "claim_id": "dyadic_totient_certificate_interface",
+        "contribution_class": "local subsidiary theorem",
+        "original_declaration": "Erdos249257.not_finiteDimensional_span_fullTotientKernel",
+        "original_source": "Erdos249257/TotientMahlerDefect.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+        "statement": "The rational span of the full dyadic totient kernel is not finite-dimensional.",
+        "boundary": "No rationality-to-finite-rank bridge is proved."
+      },
+      {
+        "id": "mersenne_achievement_measure_one",
+        "problem": 257,
+        "claim_id": "greedy_achievement_geometry",
+        "contribution_class": "formalisation of known achievement-set geometry",
+        "original_declaration": "Erdos249257.volume_mersenneAchievementSet",
+        "original_source": "Erdos249257/GreedyAchievementSet.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+        "statement": "The base-2 Mersenne achievement set has Lebesgue measure exactly one.",
+        "boundary": "This does not decide whether every infinite-support sum is irrational."
+      },
+      {
+        "id": "erdos_borwein_full_support",
+        "problem": 257,
+        "claim_id": "eb_full_support",
+        "contribution_class": "formalisation of an existing theorem",
+        "original_declaration": "Erdos249257.irrational_erdosSum_full_support",
+        "original_source": "Erdos249257/CertificateKernel.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
+        "statement": "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.",
+        "boundary": "This is the classical full-support theorem, not universal Erdos #257."
+      }
+    ],
+    "receipt_contract": {
+      "runtime_output": "artifacts/external-verification-receipt.json",
+      "binds": [
+        "repository commit",
+        "Lean and mathlib pins",
+        "Comparator, lean4export, and landrun revisions",
+        "observed Comparator, lean4export, and landrun binary digests",
+        "config digest",
+        "challenge import-closure digest",
+        "named theorem set and permitted axioms",
+        "Comparator exit status",
+        "exact negative statement-mismatch diagnostic",
+        "CI run identity and timestamp"
+      ],
+      "public_wording": "Comparator-checked against a separately declared statement and axiom budget",
+      "forbidden_wording": "independently verified"
+    },
+    "projections": [
+      "formalization.yaml",
+      "verification/comparator.json",
+      "docs/external_verification_packet.json",
+      "docs/EXTERNAL_VERIFICATION.md",
+      "docs/OUTREACH_EVIDENCE_CAPSULES.md"
+    ]
+  },
   "remaining_open_propositions": [
     {
       "id": "remaining_open.erdos_249_irrationality",
@@ -13393,6 +13508,11 @@
           "name": "finrank_canonicalTotientKernel_eq",
           "module": "Erdos249257/TotientMahlerDefect.lean",
           "line": 989
+        },
+        {
+          "name": "finrank_totientKernelThroughLevelFamily_eq",
+          "module": "Erdos249257/TotientMahlerDefect.lean",
+          "line": 1084
         },
         {
           "name": "not_finiteDimensional_span_fullTotientKernel",

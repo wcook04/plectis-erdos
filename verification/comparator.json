@@ -1,0 +1,16 @@
+{
+  "challenge_module": "ExternalVerification.Challenge",
+  "solution_module": "ExternalVerification.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+    "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel",
+    "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+    "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

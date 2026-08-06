@@ -1,0 +1,186 @@
+# Generated from docs/claims.json::external_verification_packet.
+# Refresh: python3 scripts/build_external_verification.py
+version: "v0.3"
+project:
+  name: "Eight open Erdős problems: checked subsidiary mathematics"
+  authors:
+    - "Will Cook"
+  license: "Apache-2.0"
+  repository: "https://github.com/wcook04/plectis-lean-erdos249-257"
+sources:
+  - title: "Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049"
+    authors:
+      - "Paul Erdős and collaborators"
+    id: "https://www.erdosproblems.com/"
+    type: "open-problem index"
+    license: "external source; see source site"
+    author_contacted: "n/a"
+  - title: "Repository problem notes and cited-source registry"
+    authors:
+      - "Will Cook"
+    id: "docs/papers/corpus.json"
+    type: "source registry and mathematical exposition"
+    license: "CC-BY-4.0"
+    author_contacted: "n/a"
+status:
+  scope: >-
+    All eight covered Erdős problems remain open. This repository checks
+    subsidiary theorems, formalises selected known results, verifies finite
+    instances, and records conditional reductions and method barriers.
+  sorry_count: 4
+  sorry_in_definitions: 0
+  trusted_challenge_sorry_count: 4
+  sorry_boundary: "All four sorries occur only in the statement-isolated Comparator challenge; every listed result declaration and solution wrapper has sorry_count 0."
+  axioms:
+    - "propext"
+    - "Quot.sound"
+    - "Classical.choice"
+  main_results:
+    - declaration: "Erdos249257.finrank_totientKernelThroughLevelFamily_eq"
+      file: "Erdos249257/TotientMahlerDefect.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      literature_dependencies: []
+      contribution_class: "local subsidiary theorem"
+      statement: "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e + 1."
+      boundary: "This does not prove irrationality of the totient series."
+      comparator_declaration: "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq"
+    - declaration: "Erdos249257.not_finiteDimensional_span_fullTotientKernel"
+      file: "Erdos249257/TotientMahlerDefect.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      literature_dependencies: []
+      contribution_class: "local subsidiary theorem"
+      statement: "The rational span of the full dyadic totient kernel is not finite-dimensional."
+      boundary: "No rationality-to-finite-rank bridge is proved."
+      comparator_declaration: "Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel"
+    - declaration: "Erdos249257.volume_mersenneAchievementSet"
+      file: "Erdos249257/GreedyAchievementSet.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      literature_dependencies: []
+      contribution_class: "formalisation of known achievement-set geometry"
+      statement: "The base-2 Mersenne achievement set has Lebesgue measure exactly one."
+      boundary: "This does not decide whether every infinite-support sum is irrational."
+      comparator_declaration: "Erdos249257.ExternalVerification.volume_mersenneAchievementSet"
+    - declaration: "Erdos249257.irrational_erdosSum_full_support"
+      file: "Erdos249257/CertificateKernel.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      literature_dependencies: []
+      contribution_class: "formalisation of an existing theorem"
+      statement: "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational."
+      boundary: "This is the classical full-support theorem, not universal Erdos #257."
+      comparator_declaration: "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+automation:
+  methods:
+    - method: "agent"
+      models: ["OpenAI Codex and other disclosed agent systems"]
+      framework: "agent-assisted Lean formalisation and proof engineering"
+      tool_setup: "Repository-specific generators, release guards, and focused Lean builds"
+    - method: "other"
+      framework: "Pinned Lean kernel and statement-isolated Comparator CI"
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: "self-assessed and agent-checked; no human mathematical peer review is claimed"
+fidelity:
+  divergences: >-
+    The checked results are subsidiary results or formalised prior mathematics; none is the open problem statement. Comparator checks formal statement identity and axioms, not informal significance, novelty, or source fidelity.
+alignment:
+  namespace: "Erdos249257.ExternalVerification"
+  statements:
+    - source: "For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e + 1."
+      lean: "Erdos249257.finrank_totientKernelThroughLevelFamily_eq"
+      module: "Erdos249257/TotientMahlerDefect.lean"
+      status: "proved"
+      note: "This does not prove irrationality of the totient series."
+    - source: "The rational span of the full dyadic totient kernel is not finite-dimensional."
+      lean: "Erdos249257.not_finiteDimensional_span_fullTotientKernel"
+      module: "Erdos249257/TotientMahlerDefect.lean"
+      status: "proved"
+      note: "No rationality-to-finite-rank bridge is proved."
+    - source: "The base-2 Mersenne achievement set has Lebesgue measure exactly one."
+      lean: "Erdos249257.volume_mersenneAchievementSet"
+      module: "Erdos249257/GreedyAchievementSet.lean"
+      status: "proved"
+      note: "This does not decide whether every infinite-support sum is irrational."
+    - source: "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational."
+      lean: "Erdos249257.irrational_erdosSum_full_support"
+      module: "Erdos249257/CertificateKernel.lean"
+      status: "proved"
+      note: "This is the classical full-support theorem, not universal Erdos #257."
+acknowledgements: "Michael Rothgang identified contribution clarity and cheap external proof inspection as necessary review surfaces."
+external_verification:
+  owner: "docs/claims.json::external_verification_packet"
+  problem_index: "docs/problems.json"
+  problem_index_digest: "sha256:b4826623720f6d857dbbe4edfbc9a8fd1c4ccd2c4ef33f70deff55e8ef93f0a7"
+  problem_count: 8
+  problems:
+    - id: "erdos_68"
+      erdos_number: 68
+      status: "open"
+      checked_frontier: "The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally."
+      open_frontier: "Irrationality of the factorial-denominator series."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+    - id: "erdos_243"
+      erdos_number: 243
+      status: "open"
+      checked_frontier: "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables."
+      open_frontier: "The unrestricted problem."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+    - id: "erdos_249"
+      erdos_number: 249
+      status: "open"
+      checked_frontier: "Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint."
+      open_frontier: "The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+    - id: "erdos_251"
+      erdos_number: 251
+      status: "open"
+      checked_frontier: "The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise."
+      open_frontier: "The target irrationality."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+    - id: "erdos_257"
+      erdos_number: 257
+      status: "open"
+      checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
+      open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+    - id: "erdos_269"
+      erdos_number: 269
+      status: "open"
+      checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
+      open_frontier: "Irrationality or transcendence in any three-prime case. Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+    - id: "erdos_1041"
+      erdos_number: 1041
+      status: "open"
+      checked_frontier: "Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w."
+      open_frontier: "Erdos Problem 1041 in unrestricted degree."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+    - id: "erdos_1049"
+      erdos_number: 1049
+      status: "open"
+      checked_frontier: "That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves."
+      open_frontier: "Irrationality at base three halves, or for any rational base."
+      claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
+  trusted_challenge_holes: 4
+  packet: "docs/EXTERNAL_VERIFICATION.md"
+  receipt_contract: "docs/external_verification_packet.json::receipt_contract"
