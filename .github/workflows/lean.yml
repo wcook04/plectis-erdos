@@ -15,6 +15,16 @@ on:
   # Manual dispatch remains the explicit way to revalidate main, a tag, or any
   # other ref without a dummy commit.
   workflow_dispatch:
+    inputs:
+      scope:
+        description: "Validation scope for an immutable release or diagnostic replay"
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - external-verification-only
+          - release-surfaces-only
 
 concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
@@ -28,6 +38,7 @@ permissions:
 
 jobs:
   build:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -142,6 +153,7 @@ jobs:
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."
 
   external-verification:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -324,6 +336,7 @@ jobs:
           if-no-files-found: error
 
   release-surfaces:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7

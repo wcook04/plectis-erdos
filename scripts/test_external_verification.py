@@ -151,6 +151,10 @@ class ExternalVerificationContractTest(unittest.TestCase):
             "external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}",
             workflow,
         )
+        self.assertIn("external-verification-only", workflow)
+        self.assertIn("release-surfaces-only", workflow)
+        self.assertIn("inputs.scope == 'external-verification-only'", workflow)
+        self.assertIn("inputs.scope == 'release-surfaces-only'", workflow)
 
         prepare = workflow.index("- name: Prepare trusted challenge inputs")
         compare = workflow.index("- name: Run positive and adversarial Comparator checks")
