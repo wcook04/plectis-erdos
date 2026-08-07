@@ -446,19 +446,24 @@ def _details_block(summary: str, body_lines: list[str]) -> list[str]:
     ]
 
 
-def _render_family(family: dict) -> list[str]:
+def _render_family_item(family: dict) -> list[str]:
+    """One Markdown list item = one family; hard breaks keep fields grouped."""
+    label = _family_display_label(family["id"])
+    evidence = f"{family['contribution_class']} · {family['evidence_mode']}"
     return [
-        f"**{_family_display_label(family['id'])}**",
-        f"`{family['id']}`",
+        f"- **{label}**  ",
+        f"  {family['summary']}  ",
+        f"  **Boundary.** {family['boundary']}  ",
+        f"  *Evidence.* {evidence}",
         "",
-        f"**Contribution.** {family['summary']}",
-        "",
-        (
-            f"**Class / evidence.** {family['contribution_class']} · "
-            f"{family['evidence_mode']} · Comparator: `{family['comparator_disposition']}`"
-        ),
-        "",
-        f"**Boundary.** {family['boundary']}",
+    ]
+
+
+def _render_routing_item(family: dict) -> list[str]:
+    """Sibling machine-routing lane; order matches the human family list."""
+    return [
+        f"- {_md_breakable_code(family['id'])}  ",
+        f"  Comparator: {_md_breakable_code(family['comparator_disposition'])}",
         "",
     ]
 
@@ -486,11 +491,15 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
             representative["module"].rsplit(".", 1)[0] + "." + representative["declaration"]
         )
         families = families_by_problem[number]
-        family_body: list[str] = []
+        family_items: list[str] = []
+        routing_items: list[str] = []
         for family in families:
-            family_body.extend(_render_family(family))
-        if family_body and family_body[-1] == "":
-            family_body.pop()
+            family_items.extend(_render_family_item(family))
+            routing_items.extend(_render_routing_item(family))
+        if family_items and family_items[-1] == "":
+            family_items.pop()
+        if routing_items and routing_items[-1] == "":
+            routing_items.pop()
 
         dossier_blocks.extend(
             [
@@ -521,12 +530,16 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
             _details_block(
                 f"Contribution families ({len(families)})",
                 [
-                    "Comparator is used only for exact Lean-owned propositions that can be "
-                    "isolated without importing their proofs; paper deductions, cited theorems, "
-                    "and external computations retain their own evidence classes.",
+                    "Exact registry keys and Comparator routing are listed separately.",
                     "",
-                    *family_body,
+                    *family_items,
                 ],
+            )
+        )
+        dossier_blocks.extend(
+            _details_block(
+                f"Technical registry and Comparator routing ({len(families)})",
+                routing_items,
             )
         )
         dossier_blocks.append("---")
@@ -586,6 +599,11 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
             ),
             "## Verification contract and replay",
             "",
+            (
+                "Comparator is used only for exact Lean-owned propositions that can be isolated "
+                "without importing their proofs; paper deductions, cited theorems, and external "
+                "computations retain their own evidence classes."
+            ),
             (
                 "The `main_results` key in `formalization.yaml` is the format's list of selected "
                 "executable interfaces. It is not the canonical claim registry and does not make "
