@@ -74,12 +74,28 @@ class ExternalVerificationContractTest(unittest.TestCase):
             {"unassessed_no_priority_claim"},
         )
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
-        self.assertIn("## Programme disclosure", human)
-        self.assertIn("### #68", human)
+        self.assertIn("> [!IMPORTANT]", human)
+        self.assertIn("## #68 — Factorial-denominator series", human)
+        self.assertIn("## #269 — Three-prime running least common multiples", human)
+        self.assertIn("**Checked frontier.**", human)
+        self.assertIn("**Open boundary.**", human)
+        self.assertIn("<details>", human)
+        self.assertIn("<summary>Representative checked declaration</summary>", human)
+        self.assertIn("<summary>Contribution families (5)</summary>", human)
+        self.assertIn("## Comparator interface appendix", human)
+        self.assertIn("<summary>Show all 19 statement-isolated interfaces</summary>", human)
         self.assertIn("<wbr>", human)
+        self.assertIn("Source and priority note", human)
+        self.assertIn("Steve Fan", human)
+        self.assertIn("**Programmes.**", human)
+        self.assertIn("#programme-68", human)
+        # Human-first dossiers: no serial two-pass headings, no snake_case H4s, no table era.
+        self.assertNotIn("## Programme disclosure", human)
+        self.assertNotIn("## Contribution and evidence matrix", human)
+        self.assertNotIn("eight-programme rows", human)
+        self.assertNotIn("#### `factorial_carry_characterisation`", human)
         self.assertNotIn("cold mathematical reviewer", human)
         self.assertNotIn("cold mathematical reviewer", packet["purpose"])
-        # Long unbroken Lean names in a markdown table force GitHub horizontal overflow.
         self.assertNotIn(
             "| Problem | Representative checked declaration | Checked frontier | Still open |",
             human,
@@ -88,6 +104,19 @@ class ExternalVerificationContractTest(unittest.TestCase):
             "| Problem | Family | Contribution class | What is contributed | Evidence | Comparator disposition | Boundary |",
             human,
         )
+        # Lossless inventory: every family id and every interface wrapper remain present once.
+        _, owner, _, _ = load_owner()
+        family_ids = [
+            family["id"]
+            for problem in owner["review_matrix"]
+            for family in problem["families"]
+        ]
+        self.assertEqual(len(family_ids), len(set(family_ids)))
+        for family_id in family_ids:
+            self.assertEqual(human.count(f"`{family_id}`"), 1, family_id)
+        searchable = human.replace("<wbr>", "")
+        for row in owner["main_results"]:
+            self.assertIn(row["wrapper_declaration"], searchable)
         challenge = (ROOT / "ExternalVerification/Challenge.lean").read_text()
         solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)

@@ -851,9 +851,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:7a8d5894f430b7dd96609b095aae8edee7bd6c1261db16d05981029666a5538c",
+    "owner_digest": "sha256:a41a3deda46b9f0c9805e32fdae4eaf2ef3ab4fe14c3f2fe07e050f00aed1f53",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:b4826623720f6d857dbbe4edfbc9a8fd1c4ccd2c4ef33f70deff55e8ef93f0a7",
+    "projection_digest": "sha256:14780f0421025b1106b7e764d1cd1ac7094fde895bb9a57fdbdba4707d6223dc",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1452,7 +1452,7 @@
           "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
         ],
         "what_is_not_checked": [
-          "Irrationality or transcendence in any three-prime case. Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it.",
+          "Irrationality or transcendence in any three-prime case.",
           "The derivation of the actual bounded positive carry, including the divisibility required to cancel the absorbed smooth denominator factor, from a hypothetical rational value of the original series.",
           "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
           "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",

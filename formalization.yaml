@@ -809,7 +809,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:b4826623720f6d857dbbe4edfbc9a8fd1c4ccd2c4ef33f70deff55e8ef93f0a7"
+  problem_index_digest: "sha256:14780f0421025b1106b7e764d1cd1ac7094fde895bb9a57fdbdba4707d6223dc"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -846,7 +846,7 @@ external_verification:
       erdos_number: 269
       status: "open"
       checked_frontier: "That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff."
-      open_frontier: "Irrationality or transcendence in any three-prime case. Every two-prime case is settled at transcendence level by a paper argument in the problem note, with Loxton-van der Poorten 1977 (quoted in Bugeaud-Laurent form) as the external engine; the same argument was posted publicly by Steve Fan on the problem's erdosproblems.com discussion page on 26 June 2026, before the note was finalised, so the note claims no priority. The argument is deliberately not formalised here and no Lean declaration asserts it."
+      open_frontier: "Irrationality or transcendence in any three-prime case."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
     - id: "erdos_1041"
       erdos_number: 1041

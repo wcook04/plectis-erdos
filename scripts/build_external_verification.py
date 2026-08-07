@@ -415,77 +415,204 @@ def _md_breakable_code(name: str) -> str:
     )
 
 
+def _programme_display_title(short_title: str) -> str:
+    """Reuse the reviewed short title as a heading, without a leading article."""
+    title = short_title.strip()
+    if title[:4].lower() == "the ":
+        title = title[4:]
+    return title[:1].upper() + title[1:] if title else title
+
+
+def _family_display_label(family_id: str) -> str:
+    """Display-only sentence label for a snake_case family key (not a new claim title)."""
+    words = family_id.replace("_", " ").strip()
+    return words[:1].upper() + words[1:] if words else family_id
+
+
+def _programme_anchor(erdos_number: int) -> str:
+    return f"programme-{erdos_number}"
+
+
+def _details_block(summary: str, body_lines: list[str]) -> list[str]:
+    """Sibling <details> only; blank lines keep GitHub Markdown parsing stable."""
+    return [
+        "<details>",
+        f"<summary>{summary}</summary>",
+        "",
+        *body_lines,
+        "",
+        "</details>",
+        "",
+    ]
+
+
+def _render_family(family: dict) -> list[str]:
+    return [
+        f"**{_family_display_label(family['id'])}**",
+        f"`{family['id']}`",
+        "",
+        f"**Contribution.** {family['summary']}",
+        "",
+        (
+            f"**Class / evidence.** {family['contribution_class']} · "
+            f"{family['evidence_mode']} · Comparator: `{family['comparator_disposition']}`"
+        ),
+        "",
+        f"**Boundary.** {family['boundary']}",
+        "",
+    ]
+
+
 def render_human(packet: dict, problem_source: dict, problem_projection: dict) -> str:
     source_by_id = {row["problem_id"]: row for row in problem_source["problems"]}
-    programme_blocks: list[str] = []
+    families_by_problem = {
+        int(problem["problem"]): problem["families"] for problem in packet["review_matrix"]
+    }
+    interfaces_by_problem: dict[int, list[dict]] = {}
+    for row in packet["main_results"]:
+        interfaces_by_problem.setdefault(int(row["problem"]), []).append(row)
+
+    index_links: list[str] = []
+    dossier_blocks: list[str] = []
     for row in problem_projection["problems"]:
         source = source_by_id[row["problem_id"]]
+        number = int(row["erdos_number"])
+        title = _programme_display_title(row["short_title"])
+        anchor = _programme_anchor(number)
+        index_links.append(f"[#{number} — {title}](#{anchor})")
+
         representative = source["required_note_declarations"][0]
-        full_name = representative["module"].rsplit(".", 1)[0] + "." + representative["declaration"]
-        programme_blocks.extend(
+        full_name = (
+            representative["module"].rsplit(".", 1)[0] + "." + representative["declaration"]
+        )
+        families = families_by_problem[number]
+        family_body: list[str] = []
+        for family in families:
+            family_body.extend(_render_family(family))
+        if family_body and family_body[-1] == "":
+            family_body.pop()
+
+        dossier_blocks.extend(
             [
-                f"### #{row['erdos_number']}",
+                f'<a id="{anchor}"></a>',
+                f"## #{number} — {title}",
                 "",
-                f"- **Representative checked declaration:** {_md_breakable_code(full_name)}",
-                f"- **Checked frontier:** {row['what_is_checked'][0]}",
-                f"- **Still open:** {row['what_is_not_checked'][0]}",
+                f"**Checked frontier.** {row['what_is_checked'][0]}",
+                "",
+                f"**Open boundary.** {row['what_is_not_checked'][0]}",
                 "",
             ]
         )
-    flags = []
-    for row in packet["main_results"]:
-        status = canonical_claim_status(row)
-        flags.append(
-            f"- {_md_breakable_code(row['wrapper_declaration'])} — {row['contribution_class']}: "
-            f"{row['statement']} **Canonical claim status:** `{status}`. "
-            f"**Novelty:** unassessed; no priority claim. **Boundary:** {row['boundary']}"
+        priority_note = source.get("source_priority_note")
+        if isinstance(priority_note, str) and priority_note.strip():
+            dossier_blocks.extend(
+                _details_block(
+                    "Source and priority note",
+                    [priority_note.strip()],
+                )
+            )
+        dossier_blocks.extend(
+            _details_block(
+                "Representative checked declaration",
+                [_md_breakable_code(full_name)],
+            )
         )
-    family_blocks: list[str] = []
-    for problem in packet["review_matrix"]:
-        family_blocks.extend([f"### #{problem['problem']}", ""])
-        for family in problem["families"]:
-            family_blocks.extend(
+        dossier_blocks.extend(
+            _details_block(
+                f"Contribution families ({len(families)})",
                 [
-                    f"#### `{family['id']}`",
+                    "Comparator is used only for exact Lean-owned propositions that can be "
+                    "isolated without importing their proofs; paper deductions, cited theorems, "
+                    "and external computations retain their own evidence classes.",
                     "",
-                    f"- **Contribution class:** {family['contribution_class']}",
-                    f"- **What is contributed:** {family['summary']}",
-                    f"- **Evidence:** {family['evidence_mode']}",
-                    f"- **Comparator disposition:** `{family['comparator_disposition']}`",
-                    f"- **Boundary:** {family['boundary']}",
+                    *family_body,
+                ],
+            )
+        )
+        dossier_blocks.append("---")
+        dossier_blocks.append("")
+
+    interface_body: list[str] = []
+    for row in problem_projection["problems"]:
+        number = int(row["erdos_number"])
+        title = _programme_display_title(row["short_title"])
+        interfaces = interfaces_by_problem.get(number, [])
+        if not interfaces:
+            continue
+        interface_body.extend([f"**#{number} — {title}**", ""])
+        for item in interfaces:
+            status = canonical_claim_status(item)
+            interface_body.extend(
+                [
+                    f"- {_md_breakable_code(item['wrapper_declaration'])}",
+                    f"  - **Class.** {item['contribution_class']}",
+                    f"  - **Statement.** {item['statement']}",
+                    f"  - **Canonical claim status.** `{status}`",
+                    "  - **Novelty.** unassessed; no priority claim",
+                    f"  - **Boundary.** {item['boundary']}",
                     "",
                 ]
             )
-    return "\n".join([
-        "<!-- Generated by scripts/build_external_verification.py; do not edit. -->",
-        "# External Verification Packet",
-        "",
-        "**Scope:** all eight public problem programmes. **Status:** all eight remain open.",
-        "The eight-programme rows below are projected from `docs/problems.json`; they are a navigation disclosure, not a promotion of unregistered expansion declarations into reviewed claims.",
-        "",
-        "## Programme disclosure",
-        "",
-        *programme_blocks,
-        "## Contribution and evidence matrix",
-        "",
-        "Every substantial contribution family is listed here. Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.",
-        "",
-        *family_blocks,
-        "## Nineteen statement-isolated Comparator interfaces",
-        "",
-        *flags,
-        "",
-        "The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.",
-        "The nineteen exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.",
-        "The proof-bearing modules occur only in `ExternalVerification.Solution`.",
-        "CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.",
-        "For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.",
-        "",
-        "Use the precise phrase **Comparator-checked against a separately declared statement and axiom budget** only when the receipt for the displayed commit is green. Do not replace it with “independently verified”.",
-        "",
-        f"Review posture: {packet['review_status']}.",
-        "",
-    ])
+
+    return "\n".join(
+        [
+            "<!-- Generated by scripts/build_external_verification.py; do not edit. -->",
+            "# External Verification Packet",
+            "",
+            "> [!IMPORTANT]",
+            "> **Status:** All eight public problem programmes remain open.",
+            f"> **Review posture:** {packet['review_status'][0].upper() + packet['review_status'][1:]}.",
+            "",
+            (
+                "**Scope.** Eight public problem programmes. "
+                "“Checked frontier” states what has been verified; "
+                "“Open boundary” states what remains unresolved. "
+                "Programme dossiers are projected from `docs/problems.json` and "
+                "`docs/claims.json::external_verification_packet`; they are a navigation "
+                "disclosure, not a promotion of unregistered expansion declarations into "
+                "reviewed claims."
+            ),
+            "",
+            "**Programmes.** " + " · ".join(index_links),
+            "",
+            "---",
+            "",
+            *dossier_blocks,
+            "## Comparator interface appendix",
+            "",
+            *_details_block(
+                f"Show all {len(packet['main_results'])} statement-isolated interfaces",
+                interface_body,
+            ),
+            "## Verification contract and replay",
+            "",
+            (
+                "The `main_results` key in `formalization.yaml` is the format's list of selected "
+                "executable interfaces. It is not the canonical claim registry and does not make "
+                "an unregistered declaration a principal result."
+            ),
+            (
+                f"The {len(packet['main_results'])} exact interfaces cover all eight programmes. "
+                "Local proof provenance is recorded separately from novelty, which remains "
+                "unassessed unless a source-fidelity row says otherwise. The trusted challenge "
+                "contains one proposition-package fixture and imports only "
+                "`ExternalVerification.Statements` and Mathlib."
+            ),
+            "The proof-bearing modules occur only in `ExternalVerification.Solution`.",
+            "CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.",
+            (
+                "For a reviewer-run Linux check and the immutable release-asset contract, see "
+                "`docs/EXTERNAL_VERIFICATION_REPLAY.md`."
+            ),
+            "",
+            (
+                "Use the precise phrase **Comparator-checked against a separately declared "
+                "statement and axiom budget** only when the receipt for the displayed commit is "
+                "green. Do not replace it with “independently verified”."
+            ),
+            "",
+        ]
+    )
 
 
 def render_outreach(packet: dict) -> str:
