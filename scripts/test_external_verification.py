@@ -77,6 +77,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("## Programme disclosure", human)
         self.assertIn("### #68", human)
         self.assertIn("<wbr>", human)
+        self.assertNotIn("cold mathematical reviewer", human)
+        self.assertNotIn("cold mathematical reviewer", packet["purpose"])
         # Long unbroken Lean names in a markdown table force GitHub horizontal overflow.
         self.assertNotIn(
             "| Problem | Representative checked declaration | Checked frontier | Still open |",

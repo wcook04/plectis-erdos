@@ -1,7 +1,7 @@
 {
   "schema": "erdos-external-verification-packet/1",
   "scope": "all_eight_public_problem_programmes",
-  "purpose": "Give a cold mathematical reviewer a whole-repository disclosure layer plus a deliberately small statement-isolated executable review unit.",
+  "purpose": "Disclose the checked frontier for each of the eight public problem programmes, and isolate a small Comparator-executable review unit with a separately declared statement and axiom budget.",
   "boundary": "All eight covered Erdős problems remain open. Comparator checks exact Lean statements, configured axioms, and kernel acceptance; it does not assess novelty, significance, source fidelity, or whether any open problem is solved.",
   "review_status": "self-assessed and agent-checked; no human mathematical peer review is claimed",
   "automation": {
