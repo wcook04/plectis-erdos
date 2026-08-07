@@ -73,6 +73,21 @@ class ExternalVerificationContractTest(unittest.TestCase):
             {row["novelty_status"] for row in packet["main_results"]},
             {"unassessed_no_priority_claim"},
         )
+        human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
+        self.assertIn("## Programme disclosure", human)
+        self.assertIn("### #68", human)
+        self.assertIn("<wbr>", human)
+        self.assertNotIn("cold mathematical reviewer", human)
+        self.assertNotIn("cold mathematical reviewer", packet["purpose"])
+        # Long unbroken Lean names in a markdown table force GitHub horizontal overflow.
+        self.assertNotIn(
+            "| Problem | Representative checked declaration | Checked frontier | Still open |",
+            human,
+        )
+        self.assertNotIn(
+            "| Problem | Family | Contribution class | What is contributed | Evidence | Comparator disposition | Boundary |",
+            human,
+        )
         challenge = (ROOT / "ExternalVerification/Challenge.lean").read_text()
         solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
