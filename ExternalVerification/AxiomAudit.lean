@@ -1,0 +1,30 @@
+/-
+Copyright (c) 2026 Will Cook. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Will Cook
+-/
+import ExternalVerification.Solution
+
+namespace Erdos249257.ExternalVerification
+
+#print axioms irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses
+#print axioms irrational_factorialGapSeries_iff_cofinal_nonunit_carries
+#print axioms no_cofinallyBoundedNegative_of_normalizedVanishes
+#print axioms no_eventuallyPeriodicNegative_orbit
+#print axioms finrank_totientKernelThroughLevelFamily_eq
+#print axioms not_finiteDimensional_span_fullTotientKernel
+#print axioms exists_totientDyadicSectionBasis
+#print axioms exists_primeGap0_gt
+#print axioms irrational_tsum_primeDyadicTerm_iff_primeGap
+#print axioms volume_mersenneAchievementSet
+#print axioms irrational_erdosSum_full_support
+#print axioms finite_period_noncollapse_rat_den_interface
+#print axioms volume_supportedMersenneAchievementSet_dichotomy
+#print axioms kernel_235_minor_eq_neg_one_fifteen
+#print axioms smoothPrefixLcm_eq_threePrimeHeight
+#print axioms exists_small_translation_separating_arguments
+#print axioms constant_perturbation_roots_in_unitDisk
+#print axioms threeHalves_no_coordinatewiseCorridor
+#print axioms rationalBaseClearedTailQ_succ
+
+end Erdos249257.ExternalVerification

@@ -535,6 +535,37 @@ def main() -> int:
         "generated problem-index freshness failed: "
         f"{problem_index_check.stdout.strip() or problem_index_check.stderr.strip()}",
     )
+    external_verification_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "build_external_verification.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        external_verification_check.returncode == 0,
+        "external-verification projection or statement-isolation check failed: "
+        f"{external_verification_check.stdout.strip() or external_verification_check.stderr.strip()}",
+    )
+    external_verification_release_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts" / "test_external_verification_release.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        external_verification_release_check.returncode == 0,
+        "external-verification replay or immutable release-identity contract failed: "
+        f"{external_verification_release_check.stdout.strip() or external_verification_release_check.stderr.strip()}",
+    )
     note_source_check = subprocess.run(
         [
             sys.executable,
@@ -1180,6 +1211,14 @@ def main() -> int:
           "README must state the open boundary in plain language")
     check("METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
+    check(
+        "formalization.yaml" in readme and "docs/EXTERNAL_VERIFICATION.md" in readme,
+        "README must route readers to the external verification packet",
+    )
+    check(
+        "cover all eight problem programmes" in flattened(readme),
+        "README must state the all-eight external-verification scope",
+    )
     leaked_identifier = re.search(r"method_axiom\.|anti_principle\.|principle\.[a-z_]|transition\.[a-z_]", readme)
     check(leaked_identifier is None,
           f"README leaks a methodology machine identifier: {leaked_identifier.group(0) if leaked_identifier else ''}")

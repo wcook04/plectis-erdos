@@ -19,6 +19,12 @@ This yields the logarithmic cells and jump ratios, a finite height-fibre normal 
 
 Problem #269 remains open from three primes onward: we prove no irrationality or transcendence statement in any three-prime case. What we prove towards it is conditional: after cancellation of the $`\{2,3,5\}`$-smooth part of a hypothetical denominator, the remaining denominator $`B`$ is coprime to $`30`$, and a denominator-dependent cofinal local-window residue escape rules out every positive integer solution $`d_n`$ of the cleared recurrence $`d_{n+1}=b_nd_n-Bm_n`$ that obeys the bound clearing the denominator delivers, where $`(b_n)`$ is a radix word and $`(m_n)`$ a forcing word. Lean checks the algebraic core of that reduction, namely that a fixed $`\{2,3,5\}`$-smooth factor is absorbed into the running height and that a common factor cancels from the carry recurrence, together with the resulting implication. An integer-only checker constructs the corresponding block digits, reproduces three small certificates, and finds an escaping window of length at most $`18`$ for each of $`106{,}666`$ tested denominator/start pairs. This is finite experimental evidence, not a cofinal theorem. Two problem-specific statements are not proved here: the rationality-to-carry identification, including the divisibility needed to perform that cancellation, and the cofinal escape property itself.
 
+> **Contribution.** The paper proves two-prime transcendence using an external analytic theorem, then develops exact three-prime running-LCM cells, quadratic shell bounds, a rank-two kernel obstruction, and a conditional carry criterion.
+>
+> **Relation to the open problem.** The two-prime result has paper-plus-external-theorem authority. The three-prime structure does not supply the missing divisibility bridge, so the three-prime problem remains open.
+>
+> **Executable review object.** Comparator selects the exact running-LCM identity and the smallest rank-two kernel minor. It deliberately does not badge the paper-authored two-prime transcendence argument. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
 <a id="sec:problem"></a>
 
 # Introduction
@@ -60,7 +66,6 @@ The table records two independent facts. The *authority* column says whether the
 
 | **Statement** | **Authority** | **Logical reach and nearest boundary** |
 |:---|:---|:---|
-| **Statement** | **Authority** | **Logical reach and nearest boundary** |
 |  |  |  |
 |  |  |  |
 | Irrationality in any three-prime case | <span style="color: BrickRed!75!black">**No result here**</span> | Open. |

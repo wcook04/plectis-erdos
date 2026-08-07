@@ -111,3 +111,21 @@ See \emph{Statements and declarations}.}}
   novelty, or the original problem.  The unresolved obligations are named
   exactly, in their own section, and none of the finite computations,
   reductions, or no-go results here removes one of them.}
+
+% Compact opening card for the separately stated Comparator theorem selected
+% from each problem note.  The prose supplied by each note owns the
+% contribution and relevance judgements; the shared final sentence states the
+% mechanical assurance boundary once and points to the public evidence owner.
+\newcommand{\externalreviewobject}[3]{%
+  \begin{quote}\small
+  \textbf{Contribution.} #1\par
+  \textbf{Relation to the open problem.} #2\par
+  \textbf{Executable review object.} #3  The repository's
+  external-verification job compares these exact Lean propositions with
+  separately declared challenge statements and an axiom budget, then asks
+  Lean's kernel to check the submitted proofs.  The
+  \href{https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml}%
+  {formalisation manifest} and the commit-bound CI receipt record that check;
+  they do not assess novelty, significance, or whether the original problem is
+  solved.
+  \end{quote}}

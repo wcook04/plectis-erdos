@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification.Challenge",
+  "solution_module": "ExternalVerification.Solution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}

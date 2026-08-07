@@ -63,7 +63,7 @@ counted as formal source, never as separate mathematical claims.
 | Lean declarations | 153,253 |
 | Theorem-like declarations | 151,039 |
 | Manifest-marked generated declarations (a floor, not the share) | 8,171 |
-| Principal claim links | 310 |
+| Principal claim links | 311 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json).

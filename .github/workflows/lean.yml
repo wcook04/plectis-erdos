@@ -15,6 +15,16 @@ on:
   # Manual dispatch remains the explicit way to revalidate main, a tag, or any
   # other ref without a dummy commit.
   workflow_dispatch:
+    inputs:
+      scope:
+        description: "Validation scope for an immutable release or diagnostic replay"
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - external-verification-only
+          - release-surfaces-only
 
 concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
@@ -28,12 +38,13 @@ permissions:
 
 jobs:
   build:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # change gate compares the complete PR or push range
-      - name: Detect Lean-affecting changes
+      - name: Detect supported-root Lean changes
         id: lean-inputs
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -56,12 +67,13 @@ jobs:
           if [[ -z "$base" || "$base" =~ ^0+$ ]]; then
             changed=true
           elif git diff --quiet "$base" "$head" -- \
-            '*.lean' \
+            Erdos249257.lean 'Erdos249257/**' \
+            ErdosProblems.lean 'ErdosProblems/**' \
             lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
-            docs/claims.json docs/declaration_atlas.json \
-            docs/generated_certificate_manifest.json \
             scripts/build_declaration_atlas.py \
             scripts/build_lean_dependency_index.py \
+            scripts/export_lean_dependency_edges.lean \
+            scripts/lean_fast_build.py \
             scripts/query_corpus.py; then
             changed=false
           else
@@ -140,7 +152,191 @@ jobs:
         if: steps.lean-inputs.outputs.changed != 'true'
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."
 
+  external-verification:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # A pull-request checkout otherwise resolves to GitHub's synthetic
+          # merge commit. Comparator receipts are source-review artefacts, so
+          # bind them to the contributor-visible head commit instead.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Detect external-verification inputs
+        id: external-inputs
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            changed=true
+          else
+            base="$PR_BASE_SHA"
+            head="$PR_HEAD_SHA"
+            if [[ -z "$base" || -z "$head" ]]; then
+              changed=true
+            elif git diff --quiet "$base" "$head" -- \
+              Erdos249257.lean 'Erdos249257/**' \
+              ErdosProblems.lean 'ErdosProblems/**' \
+              ExternalVerification 'verification/**' \
+              lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
+              docs/claims.json docs/problem_index_source.json docs/problems.json \
+              docs/EXTERNAL_VERIFICATION.md docs/external_verification_packet.json \
+              formalization.yaml \
+              scripts/build_external_verification.py \
+              scripts/run_external_verification.py \
+              scripts/test_external_verification.py \
+              .github/workflows/lean.yml; then
+              changed=false
+            else
+              changed=true
+            fi
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "External-verification inputs changed: $changed"
+      - name: Initialize failure-safe verification receipt
+        if: steps.external-inputs.outputs.changed == 'true'
+        run: |
+          mkdir -p artifacts
+          python3 scripts/run_external_verification.py --phase initialized || true
+      - uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6.0.0
+        if: steps.external-inputs.outputs.changed == 'true'
+        with:
+          go-version: "1.24.x"
+          cache: false
+      - name: Install pinned Lean toolchain
+        if: steps.external-inputs.outputs.changed == 'true'
+        env:
+          ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz
+          ELAN_ARCHIVE_SHA256: df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/elan-x86_64-unknown-linux-gnu.tar.gz"
+          installer_dir="$RUNNER_TEMP/elan-installer"
+          mkdir -p "$installer_dir"
+          curl --fail --location --proto '=https' --tlsv1.2 --output "$archive" "$ELAN_ARCHIVE_URL"
+          printf '%s  %s\n' "$ELAN_ARCHIVE_SHA256" "$archive" | sha256sum --check -
+          tar --extract --gzip --file "$archive" --directory "$installer_dir"
+          "$installer_dir/elan-init" -y --default-toolchain none --no-modify-path
+          "$HOME/.elan/bin/elan" toolchain install "$(tr -d '\r\n' < lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Prepare trusted challenge inputs
+        if: steps.external-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake exe cache get
+          python3 scripts/test_external_verification.py
+      - name: Build pinned Comparator toolchain
+        if: steps.external-inputs.outputs.changed == 'true'
+        id: tools
+        env:
+          COMPARATOR_REV: 789279735fe44c1c05dc54bb9f46ba4d9b8c7611
+          LEAN4EXPORT_REV: 6f4e21dd70c3c11d7fbd07d39e3192792c657448
+          LANDRUN_REV: 811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/leanprover/comparator.git "$RUNNER_TEMP/comparator"
+          git -C "$RUNNER_TEMP/comparator" checkout --detach "$COMPARATOR_REV"
+          test "$(git -C "$RUNNER_TEMP/comparator" rev-parse HEAD)" = "$COMPARATOR_REV"
+          (cd "$RUNNER_TEMP/comparator" && lake build comparator)
+          git clone --filter=blob:none https://github.com/leanprover/lean4export.git "$RUNNER_TEMP/lean4export"
+          git -C "$RUNNER_TEMP/lean4export" checkout --detach "$LEAN4EXPORT_REV"
+          test "$(git -C "$RUNNER_TEMP/lean4export" rev-parse HEAD)" = "$LEAN4EXPORT_REV"
+          (cd "$RUNNER_TEMP/lean4export" && lake build lean4export)
+          git clone --filter=blob:none https://github.com/zouuup/landrun.git "$RUNNER_TEMP/landrun-src"
+          git -C "$RUNNER_TEMP/landrun-src" checkout --detach "$LANDRUN_REV"
+          test "$(git -C "$RUNNER_TEMP/landrun-src" rev-parse HEAD)" = "$LANDRUN_REV"
+          (cd "$RUNNER_TEMP/landrun-src" && go build -o "$RUNNER_TEMP/landrun" cmd/landrun/main.go)
+          echo "comparator_rev=$COMPARATOR_REV" >> "$GITHUB_OUTPUT"
+          echo "lean4export_rev=$LEAN4EXPORT_REV" >> "$GITHUB_OUTPUT"
+          echo "landrun_rev=$LANDRUN_REV" >> "$GITHUB_OUTPUT"
+          echo "comparator_lean_toolchain=$(tr -d '\r\n' < "$RUNNER_TEMP/comparator/lean-toolchain")" >> "$GITHUB_OUTPUT"
+      - name: Run positive and adversarial Comparator checks
+        if: steps.external-inputs.outputs.changed == 'true'
+        id: comparator
+        continue-on-error: true
+        run: |
+          set +e
+          export COMPARATOR_LANDRUN="$RUNNER_TEMP/landrun"
+          export COMPARATOR_LEAN4EXPORT="$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export"
+          comparator="$RUNNER_TEMP/comparator/.lake/build/bin/comparator"
+          systemctl --user show-environment > systemd-user-preflight.log 2>&1
+          if [[ $? -eq 0 ]]; then
+            sandbox_mode=user-manager
+          elif sudo -n systemctl show-environment > systemd-system-preflight.log 2>&1; then
+            sandbox_mode=system-manager-nonprivileged-unit
+          else
+            sandbox_mode=unavailable
+          fi
+          echo "sandbox_mode=$sandbox_mode" >> "$GITHUB_OUTPUT"
+          run_comparator() {
+            config="$1"
+            if [[ "$sandbox_mode" == user-manager ]]; then
+              timeout 20m systemd-run --property=RestrictAddressFamilies=~AF_UNIX --user --pipe \
+                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
+                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
+                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
+            elif [[ "$sandbox_mode" == system-manager-nonprivileged-unit ]]; then
+              timeout 20m sudo -n systemd-run --property=RestrictAddressFamilies=~AF_UNIX \
+                --uid="$(id -un)" --gid="$(id -gn)" --pipe \
+                -E PATH="$PATH" -E COMPARATOR_LANDRUN="$COMPARATOR_LANDRUN" \
+                -E COMPARATOR_LEAN4EXPORT="$COMPARATOR_LEAN4EXPORT" \
+                --working-directory="$(pwd)" -- lake env "$comparator" "$config"
+            else
+              printf '%s\n' "No usable systemd transient-unit manager; refusing an insecure fallback."
+              return 125
+            fi
+          }
+          run_comparator verification/comparator.json \
+            > artifacts-positive.log 2>&1
+          positive_exit=$?
+          run_comparator verification/comparator-negative-mismatch.json \
+            > artifacts-negative.log 2>&1
+          negative_exit=$?
+          echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
+          echo "negative_exit=$negative_exit" >> "$GITHUB_OUTPUT"
+          cat artifacts-positive.log
+          cat artifacts-negative.log
+          exit 0
+      - name: Write and enforce commit-bound verification receipt
+        if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
+        run: |
+          positive_exit='${{ steps.comparator.outputs.positive_exit }}'
+          negative_exit='${{ steps.comparator.outputs.negative_exit }}'
+          [[ -n "$positive_exit" ]] || positive_exit=-999
+          [[ -n "$negative_exit" ]] || negative_exit=-999
+          python3 scripts/run_external_verification.py \
+            --phase final \
+            --expected-commit '${{ github.event.pull_request.head.sha || github.sha }}' \
+            --positive-exit "$positive_exit" \
+            --negative-exit "$negative_exit" \
+            --positive-log artifacts-positive.log \
+            --negative-log artifacts-negative.log \
+            --comparator-rev '${{ steps.tools.outputs.comparator_rev }}' \
+            --lean4export-rev '${{ steps.tools.outputs.lean4export_rev }}' \
+            --landrun-rev '${{ steps.tools.outputs.landrun_rev }}' \
+            --comparator-lean-toolchain '${{ steps.tools.outputs.comparator_lean_toolchain }}' \
+            --sandbox-mode '${{ steps.comparator.outputs.sandbox_mode }}' \
+            --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
+            --lean4export-bin "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
+            --landrun-bin "$RUNNER_TEMP/landrun"
+      - name: Print post-verification axiom audit
+        if: steps.external-inputs.outputs.changed == 'true'
+        run: lake build ExternalVerification.AxiomAudit
+      - name: Upload external-verification receipt
+        if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/external-verification-receipt.json
+          if-no-files-found: error
+
   release-surfaces:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7

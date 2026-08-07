@@ -1,0 +1,70 @@
+{
+  "schema": "erdos-external-verification-release-contract/1",
+  "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
+  "identity": {
+    "source_ref_kind": "full_git_commit",
+    "source_tree_required": true,
+    "forbidden_floating_refs": [
+      "HEAD",
+      "main",
+      "master"
+    ],
+    "github_pull_request_merge_sha_forbidden": true
+  },
+  "toolchain": {
+    "comparator": "789279735fe44c1c05dc54bb9f46ba4d9b8c7611",
+    "lean4export": "6f4e21dd70c3c11d7fbd07d39e3192792c657448",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4"
+  },
+  "replay": {
+    "positive_config": "verification/comparator-replay.json",
+    "negative_config": "verification/comparator-negative-mismatch.json",
+    "theorem": "Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq",
+    "expected_negative_diagnostic": "Challenge and solution theorem statement do not match: 'Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq'",
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "sandbox_modes": [
+      "user-manager",
+      "system-manager-nonprivileged-unit"
+    ]
+  },
+  "release_assets": {
+    "runtime_receipt_pattern": "external-verification-receipt-{source_commit}.json",
+    "manifest_pattern": "external-verification-release-manifest-{source_commit}.json",
+    "retention": "attach_both_files_to_the_immutable_release_not_only_to_a_90_day_actions_run"
+  },
+  "tracked_artifacts": [
+    "README.md",
+    "docs/EXTERNAL_VERIFICATION_REPLAY.md",
+    "docs/FORMAL_CONJECTURES_CROSSWALK.md",
+    "docs/formal_conjectures_crosswalk.json",
+    "docs/papers/corpus.json",
+    "formalization.yaml",
+    "docs/external_verification_packet.json",
+    "docs/EXTERNAL_VERIFICATION.md",
+    "verification/comparator.json",
+    "verification/comparator-replay.json",
+    "verification/comparator-negative-mismatch.json",
+    "ExternalVerification/Statements.lean",
+    "ExternalVerification/Challenge.lean",
+    "ExternalVerification/Solution.lean",
+    "ExternalVerification/NegativeSolution.lean",
+    "scripts/external_verification_release.py",
+    "scripts/replay_external_verification.py",
+    "scripts/test_external_verification_release.py",
+    "lean-toolchain",
+    "lake-manifest.json",
+    "lakefile.toml",
+    "erdos-68-factorial-denominator-irrationality.pdf",
+    "erdos-243-reciprocal-tail-rigidity.pdf",
+    "erdos-249-binary-totient-series.pdf",
+    "erdos-251-prime-gap-dyadic-series.pdf",
+    "erdos-257-mersenne-support-subseries.pdf",
+    "erdos-269-three-prime-running-lcm.pdf",
+    "erdos-1041-lemniscate-newton-flow.pdf",
+    "erdos-1049-rational-base-lambert.pdf"
+  ]
+}

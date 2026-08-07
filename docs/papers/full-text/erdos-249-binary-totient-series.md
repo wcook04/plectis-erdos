@@ -24,6 +24,12 @@ the sharp exclusion for the chosen $`240`$-binary-digit Farey window. The curren
 
 We also record exact equivalences between irrationality of $`S`$ and cofinal tail-nonintegrality or certificate supplies. These are lossless reformulations of the open problem, not evidence for the missing cofinal producer. Erdős Problem #249 remains open; formalisation alone is not presented as a novelty claim.
 
+> **Contribution.** The paper gives an explicit basis for the full dyadic totient kernel, proves level rank $`2^e+1`$ and infinite-dimensionality, and checks a finite denominator exclusion together with its first failing certificate scale.
+>
+> **Relation to the open problem.** The rank theorems do not supply a rationality-to-finite-rank bridge, while the finite certificate does not supply an unbounded producer. Problem #249 remains open.
+>
+> **Executable review object.** Comparator selects the explicit odd-core basis, the exact finite-level rank theorem, and infinite-dimensionality of the full kernel. The finite arithmetic certificate retains its separate evidence route. The repository’s external-verification job compares these exact Lean propositions with separately declared challenge statements and an axiom budget, then asks Lean’s kernel to check the submitted proofs. The [formalisation manifest](https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/formalization.yaml) and the commit-bound CI receipt record that check; they do not assess novelty, significance, or whether the original problem is solved.
+
 <a id="sec:results"></a>
 
 # Introduction and main results
