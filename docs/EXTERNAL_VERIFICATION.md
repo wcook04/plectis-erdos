@@ -28,52 +28,52 @@
 <details>
 <summary>Contribution families (5)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Factorial carry characterisation**
-`factorial_carry_characterisation`
+- **Factorial carry characterisation**  
+  Exact equivalence between irrationality, cofinally many non-unit carries, and cofinal strict-successor divisibility failures.  
+  **Boundary.** An exact reformulation does not supply the required cofinal failures.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Contribution.** Exact equivalence between irrationality, cofinally many non-unit carries, and cofinal strict-successor divisibility failures.
+- **Factorial channel and projection rigidity**  
+  Finite channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.  
+  **Boundary.** These finite and structural results do not produce a cofinal obstruction.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
+- **Factorial conditional producers**  
+  Cofinal zero-branch or large private-factor hypotheses imply the required irrationality conclusion.  
+  **Boundary.** The producer hypotheses are unproved.  
+  *Evidence.* conditional reduction · Lean kernel
 
-**Boundary.** An exact reformulation does not supply the required cofinal failures.
+- **Factorial finite certificates**  
+  Lean checks small exact misses; a hash-bound GMP scan reaches index 300000 and yields the corresponding finite denominator exclusion.  
+  **Boundary.** Finite computation does not change the cofinal quantifier.  
+  *Evidence.* finite computation · Lean finite theorem plus external exact certificate
 
-**Factorial channel and projection rigidity**
-`factorial_channel_and_projection_rigidity`
+- **Factorial lcm growth**  
+  A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem.  
+  **Boundary.** Comparator cannot certify the cited input or authored deduction.  
+  *Evidence.* paper plus external theorem · paper argument plus cited theorem
 
-**Contribution.** Finite channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.
+</details>
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_isolated_headline`
+<details>
+<summary>Technical registry and Comparator routing (5)</summary>
 
-**Boundary.** These finite and structural results do not produce a cofinal obstruction.
+- <code>factorial_<wbr>carry_<wbr>characterisation</code>  
+  Comparator: <code>targeted</code>
 
-**Factorial conditional producers**
-`factorial_conditional_producers`
+- <code>factorial_<wbr>channel_<wbr>and_<wbr>projection_<wbr>rigidity</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>isolated_<wbr>headline</code>
 
-**Contribution.** Cofinal zero-branch or large private-factor hypotheses imply the required irrationality conclusion.
+- <code>factorial_<wbr>conditional_<wbr>producers</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>project_<wbr>predicate_<wbr>stack</code>
 
-**Class / evidence.** conditional reduction · Lean kernel · Comparator: `not_selected_deep_project_predicate_stack`
+- <code>factorial_<wbr>finite_<wbr>certificates</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>to_<wbr>external_<wbr>execution</code>
 
-**Boundary.** The producer hypotheses are unproved.
-
-**Factorial finite certificates**
-`factorial_finite_certificates`
-
-**Contribution.** Lean checks small exact misses; a hash-bound GMP scan reaches index 300000 and yields the corresponding finite denominator exclusion.
-
-**Class / evidence.** finite computation · Lean finite theorem plus external exact certificate · Comparator: `not_applicable_to_external_execution`
-
-**Boundary.** Finite computation does not change the cofinal quantifier.
-
-**Factorial lcm growth**
-`factorial_lcm_growth`
-
-**Contribution.** A paper deduction gives a lower bound for the lcm of factorial-gap denominators using an external multiplicity theorem.
-
-**Class / evidence.** paper plus external theorem · paper argument plus cited theorem · Comparator: `not_applicable_not_a_lean_declaration`
-
-**Boundary.** Comparator cannot certify the cited input or authored deduction.
+- <code>factorial_<wbr>lcm_<wbr>growth</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>declaration</code>
 
 </details>
 
@@ -96,52 +96,52 @@ Comparator is used only for exact Lean-owned propositions that can be isolated w
 <details>
 <summary>Contribution families (5)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Centered state dynamics**
-`centered_state_dynamics`
+- **Centered state dynamics**  
+  Exact update and defect identities, scale equivariance, zero absorption, and eventual recovery of the Sylvester recurrence.  
+  **Boundary.** The recovery theorem requires eventual centred-state vanishing.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Contribution.** Exact update and defect identities, scale equivariance, zero absorption, and eventual recovery of the Sylvester recurrence.
+- **Negative orbit no go**  
+  Constant, eventually constant, periodic, and eventually periodic negative-error orbits are excluded in their stated regimes.  
+  **Boundary.** The exclusions do not cover arbitrary unbounded negative behaviour.  
+  *Evidence.* no-go result · Lean kernel plus Comparator
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_selected_boundary_theorems`
+- **Bounded rise coprimality**  
+  A bounded-rise sequence cannot remain coprime to fresh pairwise-coprime moduli; reduced tails inherit this obstruction.  
+  **Boundary.** The required bounded-rise input is not automatic for the original sequence.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Boundary.** The recovery theorem requires eventual centred-state vanishing.
+- **Bounded negative exclusion**  
+  Normalised vanishing excludes a cofinally bounded negative part and forces eventual Sylvester behaviour.  
+  **Boundary.** Every positivity, dynamics, bounded-rise, and vanishing hypothesis remains explicit.  
+  *Evidence.* conditional reduction and no-go result · Lean kernel plus Comparator
 
-**Negative orbit no go**
-`negative_orbit_no_go`
+- **Negative mass recovery**  
+  Finite normalised negative mass forces eventual zero and hence the Sylvester recurrence.  
+  **Boundary.** Summability of the negative mass is unproved for the original problem.  
+  *Evidence.* conditional reduction · Lean kernel
 
-**Contribution.** Constant, eventually constant, periodic, and eventually periodic negative-error orbits are excluded in their stated regimes.
+</details>
 
-**Class / evidence.** no-go result · Lean kernel plus Comparator · Comparator: `targeted_representative_periodic_theorem`
+<details>
+<summary>Technical registry and Comparator routing (5)</summary>
 
-**Boundary.** The exclusions do not cover arbitrary unbounded negative behaviour.
+- <code>centered_<wbr>state_<wbr>dynamics</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>selected_<wbr>boundary_<wbr>theorems</code>
 
-**Bounded rise coprimality**
-`bounded_rise_coprimality`
+- <code>negative_<wbr>orbit_<wbr>no_<wbr>go</code>  
+  Comparator: <code>targeted_<wbr>representative_<wbr>periodic_<wbr>theorem</code>
 
-**Contribution.** A bounded-rise sequence cannot remain coprime to fresh pairwise-coprime moduli; reduced tails inherit this obstruction.
+- <code>bounded_<wbr>rise_<wbr>coprimality</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>stronger_<wbr>selected_<wbr>boundary_<wbr>theorem</code>
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_stronger_selected_boundary_theorem`
+- <code>bounded_<wbr>negative_<wbr>exclusion</code>  
+  Comparator: <code>targeted</code>
 
-**Boundary.** The required bounded-rise input is not automatic for the original sequence.
-
-**Bounded negative exclusion**
-`bounded_negative_exclusion`
-
-**Contribution.** Normalised vanishing excludes a cofinally bounded negative part and forces eventual Sylvester behaviour.
-
-**Class / evidence.** conditional reduction and no-go result · Lean kernel plus Comparator · Comparator: `targeted`
-
-**Boundary.** Every positivity, dynamics, bounded-rise, and vanishing hypothesis remains explicit.
-
-**Negative mass recovery**
-`negative_mass_recovery`
-
-**Contribution.** Finite normalised negative mass forces eventual zero and hence the Sylvester recurrence.
-
-**Class / evidence.** conditional reduction · Lean kernel · Comparator: `not_selected_deep_state_vocabulary`
-
-**Boundary.** Summability of the negative mass is unproved for the original problem.
+- <code>negative_<wbr>mass_<wbr>recovery</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>state_<wbr>vocabulary</code>
 
 </details>
 
@@ -164,70 +164,68 @@ Comparator is used only for exact Lean-owned propositions that can be isolated w
 <details>
 <summary>Contribution families (7)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Totient kernel basis**
-`totient_kernel_basis`
+- **Totient kernel basis**  
+  An explicit odd-core basis and relation normal form for the full dyadic totient kernel.  
+  **Boundary.** The basis theorem does not connect rationality of the series to finite kernel rank.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Contribution.** An explicit odd-core basis and relation normal form for the full dyadic totient kernel.
+- **Totient kernel rank**  
+  Exact finite-level rank 2^e+1 and infinite-dimensionality of the full kernel.  
+  **Boundary.** No rationality-to-finite-rank bridge is proved.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
+- **Totient finite denominator exclusion**  
+  A Farey denominator exclusion through 7.96e34, sharp for its selected window, and diagonal certificates through t=82.  
+  **Boundary.** The selected finite window and certificate ceiling do not imply an unbounded producer.  
+  *Evidence.* finite computation · Lean kernel and generated finite certificates
 
-**Boundary.** The basis theorem does not connect rationality of the series to finite kernel rank.
+- **Totient carry rank**  
+  Rationality forces a tempered integral tail orbit with unbounded finite-level carry rank.  
+  **Boundary.** This is a necessary consequence, not a contradiction.  
+  *Evidence.* conditional reduction · Lean kernel
 
-**Totient kernel rank**
-`totient_kernel_rank`
+- **Totient lambert coefficients**  
+  The totient series is rewritten as a Lambert series with explicit nonnegative, unbounded prime-power coefficients.  
+  **Boundary.** The coefficient identities do not prove irrationality.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Contribution.** Exact finite-level rank 2^e+1 and infinite-dimensionality of the full kernel.
+- **Eventually periodic lambert**  
+  Eventually periodic nonnegative rational weights give an irrational Lambert series.  
+  **Boundary.** The totient-derived weights are not eventually periodic.  
+  *Evidence.* Lean formalisation of existing result · Lean kernel
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
+- **Totient certificate equivalences**  
+  Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are exact or sufficient reformulations.  
+  **Boundary.** Equivalent producer statements are as hard as the unresolved target.  
+  *Evidence.* exact equivalence and conditional reduction · Lean kernel
 
-**Boundary.** No rationality-to-finite-rank bridge is proved.
+</details>
 
-**Totient finite denominator exclusion**
-`totient_finite_denominator_exclusion`
+<details>
+<summary>Technical registry and Comparator routing (7)</summary>
 
-**Contribution.** A Farey denominator exclusion through 7.96e34, sharp for its selected window, and diagonal certificates through t=82.
+- <code>totient_<wbr>kernel_<wbr>basis</code>  
+  Comparator: <code>targeted</code>
 
-**Class / evidence.** finite computation · Lean kernel and generated finite certificates · Comparator: `not_selected_finite_family_has_separate_receipt`
+- <code>totient_<wbr>kernel_<wbr>rank</code>  
+  Comparator: <code>targeted</code>
 
-**Boundary.** The selected finite window and certificate ceiling do not imply an unbounded producer.
+- <code>totient_<wbr>finite_<wbr>denominator_<wbr>exclusion</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>finite_<wbr>family_<wbr>has_<wbr>separate_<wbr>receipt</code>
 
-**Totient carry rank**
-`totient_carry_rank`
+- <code>totient_<wbr>carry_<wbr>rank</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>orbit_<wbr>vocabulary</code>
 
-**Contribution.** Rationality forces a tempered integral tail orbit with unbounded finite-level carry rank.
+- <code>totient_<wbr>lambert_<wbr>coefficients</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>basis_<wbr>and_<wbr>rank_<wbr>targets</code>
 
-**Class / evidence.** conditional reduction · Lean kernel · Comparator: `not_selected_deep_orbit_vocabulary`
+- <code>eventually_<wbr>periodic_<wbr>lambert</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>prior_<wbr>result</code>
 
-**Boundary.** This is a necessary consequence, not a contradiction.
-
-**Totient lambert coefficients**
-`totient_lambert_coefficients`
-
-**Contribution.** The totient series is rewritten as a Lambert series with explicit nonnegative, unbounded prime-power coefficients.
-
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_basis_and_rank_targets`
-
-**Boundary.** The coefficient identities do not prove irrationality.
-
-**Eventually periodic lambert**
-`eventually_periodic_lambert`
-
-**Contribution.** Eventually periodic nonnegative rational weights give an irrational Lambert series.
-
-**Class / evidence.** Lean formalisation of existing result · Lean kernel · Comparator: `not_selected_prior_result`
-
-**Boundary.** The totient-derived weights are not eventually periodic.
-
-**Totient certificate equivalences**
-`totient_certificate_equivalences`
-
-**Contribution.** Pointwise, cofinal, lcm-diagonal, and separated-window certificate supplies are exact or sufficient reformulations.
-
-**Class / evidence.** exact equivalence and conditional reduction · Lean kernel · Comparator: `not_selected_deep_certificate_vocabulary`
-
-**Boundary.** Equivalent producer statements are as hard as the unresolved target.
+- <code>totient_<wbr>certificate_<wbr>equivalences</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>certificate_<wbr>vocabulary</code>
 
 </details>
 
@@ -250,52 +248,52 @@ Comparator is used only for exact Lean-owned propositions that can be isolated w
 <details>
 <summary>Contribution families (5)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Prime gap reformulation**
-`prime_gap_reformulation`
+- **Prime gap reformulation**  
+  Exact finite summation by parts, the unconditional infinite prime-gap identity, and irrationality equivalence.  
+  **Boundary.** The equivalence does not prove irrationality of either series.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Contribution.** Exact finite summation by parts, the unconditional infinite prime-gap identity, and irrationality equivalence.
+- **Integral shift classification**  
+  Block identities and exact denominator criteria classify rationality through integral positive tail shifts.  
+  **Boundary.** The concrete prime-gap producer remains missing.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
+- **Totient shift propagation**  
+  Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.  
+  **Boundary.** This describes rational states and supplies no contradiction for actual prime gaps.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Boundary.** The equivalence does not prove irrationality of either series.
+- **Small mismatch criterion**  
+  Cofinal adjacent small mismatches would rule out eventual integral shifts for the prime-gap tail.  
+  **Boundary.** The cofinal mismatch producer is unproved.  
+  *Evidence.* conditional reduction · Lean kernel
 
-**Integral shift classification**
-`integral_shift_classification`
+- **Coefficient only no go**  
+  Prime gaps are unbounded and non-eventually-periodic, while an explicit nonperiodic unbounded countermodel still has rational sum.  
+  **Boundary.** Comparator checks the exact theorem, not the broader methodological interpretation.  
+  *Evidence.* no-go result · Lean kernel plus authored synthesis
 
-**Contribution.** Block identities and exact denominator criteria classify rationality through integral positive tail shifts.
+</details>
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `not_selected_abstract_family_represented_in_manifest`
+<details>
+<summary>Technical registry and Comparator routing (5)</summary>
 
-**Boundary.** The concrete prime-gap producer remains missing.
+- <code>prime_<wbr>gap_<wbr>reformulation</code>  
+  Comparator: <code>targeted</code>
 
-**Totient shift propagation**
-`totient_shift_propagation`
+- <code>integral_<wbr>shift_<wbr>classification</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>abstract_<wbr>family_<wbr>represented_<wbr>in_<wbr>manifest</code>
 
-**Contribution.** Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.
+- <code>totient_<wbr>shift_<wbr>propagation</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>integral_<wbr>shift_<wbr>family</code>
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_integral_shift_family`
+- <code>small_<wbr>mismatch_<wbr>criterion</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>open_<wbr>producer_<wbr>hypothesis</code>
 
-**Boundary.** This describes rational states and supplies no contradiction for actual prime gaps.
-
-**Small mismatch criterion**
-`small_mismatch_criterion`
-
-**Contribution.** Cofinal adjacent small mismatches would rule out eventual integral shifts for the prime-gap tail.
-
-**Class / evidence.** conditional reduction · Lean kernel · Comparator: `not_selected_open_producer_hypothesis`
-
-**Boundary.** The cofinal mismatch producer is unproved.
-
-**Coefficient only no go**
-`coefficient_only_no_go`
-
-**Contribution.** Prime gaps are unbounded and non-eventually-periodic, while an explicit nonperiodic unbounded countermodel still has rational sum.
-
-**Class / evidence.** no-go result · Lean kernel plus authored synthesis · Comparator: `targeted_unboundedness_theorem_only`
-
-**Boundary.** Comparator checks the exact theorem, not the broader methodological interpretation.
+- <code>coefficient_<wbr>only_<wbr>no_<wbr>go</code>  
+  Comparator: <code>targeted_<wbr>unboundedness_<wbr>theorem_<wbr>only</code>
 
 </details>
 
@@ -318,70 +316,68 @@ Comparator is used only for exact Lean-owned propositions that can be isolated w
 <details>
 <summary>Contribution families (7)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Finite period noncollapse**
-`finite_period_noncollapse`
+- **Finite period noncollapse**  
+  The multiplicative order of the base modulo a reduced finite-sum denominator is the support lcm, forcing denominator growth.  
+  **Boundary.** A finite-support denominator theorem does not settle an infinite-support sum.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Contribution.** The multiplicative order of the base modulo a reduced finite-sum denominator is the support lcm, forcing denominator growth.
+- **Rational support constraints**  
+  Rational infinite supports force unbounded scaled tails, sublogarithmic zero windows, and reciprocal-mass constraints.  
+  **Boundary.** The constraints do not exclude every infinite support.  
+  *Evidence.* conditional reduction · Lean kernel
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
+- **Known irrational supports**  
+  Full, factorial, power-of-two, multiple, pairwise-coprime, eventually periodic, residue-class, and odd supports are formalised.  
+  **Boundary.** Structured known families do not cover arbitrary infinite supports.  
+  *Evidence.* Lean formalisation of existing results · Lean kernel plus Comparator for full support
 
-**Boundary.** A finite-support denominator theorem does not settle an infinite-support sum.
+- **Squarefree support**  
+  Lean checks squarefree incidence and no-go statements; the irrationality conclusion uses an external analytic theorem in the paper.  
+  **Boundary.** Comparator must not badge the paper-plus-external conclusion.  
+  *Evidence.* Lean structure plus paper and external theorem · Lean kernel plus paper argument plus cited theorem
 
-**Rational support constraints**
-`rational_support_constraints`
+- **Achievement set geometry**  
+  Compactness, perfectness, total disconnectedness, nowhere density, and measure one for the unrestricted achievement set.  
+  **Boundary.** Geometry of the full set does not decide irrationality of every coded point.  
+  *Evidence.* mixed prior-art geometry and locally proved metric result; novelty unassessed · Lean kernel plus Comparator
 
-**Contribution.** Rational infinite supports force unbounded scaled tails, sublogarithmic zero windows, and reciprocal-mass constraints.
+- **Restricted achievement sets**  
+  Support-restricted coding is injective and the associated achievement set has exact finite-complement measure or zero for infinite complement.  
+  **Boundary.** The measure dichotomy does not classify rational points.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Class / evidence.** conditional reduction · Lean kernel · Comparator: `not_selected_deep_support_vocabulary`
+- **Half and twenty one frontiers**  
+  Exact greedy characterisations and finite-support exclusions isolate the remaining 1/2 and 1/21 alternatives.  
+  **Boundary.** Neither membership question is decided.  
+  *Evidence.* conditional reduction and no-go result · Lean kernel
 
-**Boundary.** The constraints do not exclude every infinite support.
+</details>
 
-**Known irrational supports**
-`known_irrational_supports`
+<details>
+<summary>Technical registry and Comparator routing (7)</summary>
 
-**Contribution.** Full, factorial, power-of-two, multiple, pairwise-coprime, eventually periodic, residue-class, and odd supports are formalised.
+- <code>finite_<wbr>period_<wbr>noncollapse</code>  
+  Comparator: <code>targeted</code>
 
-**Class / evidence.** Lean formalisation of existing results · Lean kernel plus Comparator for full support · Comparator: `targeted_full_support_representative`
+- <code>rational_<wbr>support_<wbr>constraints</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>support_<wbr>vocabulary</code>
 
-**Boundary.** Structured known families do not cover arbitrary infinite supports.
+- <code>known_<wbr>irrational_<wbr>supports</code>  
+  Comparator: <code>targeted_<wbr>full_<wbr>support_<wbr>representative</code>
 
-**Squarefree support**
-`squarefree_support`
+- <code>squarefree_<wbr>support</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>to_<wbr>external_<wbr>irrationality_<wbr>input</code>
 
-**Contribution.** Lean checks squarefree incidence and no-go statements; the irrationality conclusion uses an external analytic theorem in the paper.
+- <code>achievement_<wbr>set_<wbr>geometry</code>  
+  Comparator: <code>targeted_<wbr>measure_<wbr>theorem</code>
 
-**Class / evidence.** Lean structure plus paper and external theorem · Lean kernel plus paper argument plus cited theorem · Comparator: `not_applicable_to_external_irrationality_input`
+- <code>restricted_<wbr>achievement_<wbr>sets</code>  
+  Comparator: <code>targeted_<wbr>measure_<wbr>dichotomy</code>
 
-**Boundary.** Comparator must not badge the paper-plus-external conclusion.
-
-**Achievement set geometry**
-`achievement_set_geometry`
-
-**Contribution.** Compactness, perfectness, total disconnectedness, nowhere density, and measure one for the unrestricted achievement set.
-
-**Class / evidence.** mixed prior-art geometry and locally proved metric result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted_measure_theorem`
-
-**Boundary.** Geometry of the full set does not decide irrationality of every coded point.
-
-**Restricted achievement sets**
-`restricted_achievement_sets`
-
-**Contribution.** Support-restricted coding is injective and the associated achievement set has exact finite-complement measure or zero for infinite complement.
-
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted_measure_dichotomy`
-
-**Boundary.** The measure dichotomy does not classify rational points.
-
-**Half and twenty one frontiers**
-`half_and_twenty_one_frontiers`
-
-**Contribution.** Exact greedy characterisations and finite-support exclusions isolate the remaining 1/2 and 1/21 alternatives.
-
-**Class / evidence.** conditional reduction and no-go result · Lean kernel · Comparator: `not_selected_deep_greedy_state_vocabulary`
-
-**Boundary.** Neither membership question is decided.
+- <code>half_<wbr>and_<wbr>twenty_<wbr>one_<wbr>frontiers</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>greedy_<wbr>state_<wbr>vocabulary</code>
 
 </details>
 
@@ -411,70 +407,68 @@ Every two-prime case is settled at transcendence level by a paper argument in th
 <details>
 <summary>Contribution families (7)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Three prime lcm cells**
-`three_prime_lcm_cells`
+- **Three prime lcm cells**  
+  Exact running-LCM product, logarithmic-cell constancy, coordinate jump ratios, and jump count.  
+  **Boundary.** Cell structure alone does not prove irrationality.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Contribution.** Exact running-LCM product, logarithmic-cell constancy, coordinate jump ratios, and jump count.
+- **Two prime transcendence**  
+  Both two-prime running-lcm series are proved transcendental by an authored deduction from an external theorem.  
+  **Boundary.** Comparator cannot certify the external analytic input.  
+  *Evidence.* paper plus external theorem · paper argument plus cited theorem
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted_running_lcm_identity`
+- **Height fibre and shell**  
+  Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.  
+  **Boundary.** The fibre bounds do not provide the missing divisibility bridge.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Boundary.** Cell structure alone does not prove irrationality.
+- **Rank two kernel no go**  
+  The 2,3,5 kernel is not rank one and its smallest displayed minor equals -1/15.  
+  **Boundary.** Failure of rank one does not itself imply irrationality.  
+  *Evidence.* no-go result · Lean kernel plus Comparator
 
-**Two prime transcendence**
-`two_prime_transcendence`
+- **Dyadic block alphabet**  
+  The exact dyadic block alphabet is 2, 6, 10, and 30.  
+  **Boundary.** The finite alphabet does not supply the needed carry escape.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Contribution.** Both two-prime running-lcm series are proved transcendental by an authored deduction from an external theorem.
+- **Conditional carry escape**  
+  Cofinal local-window residue escape would rule out bounded positive carries after an unproved rationality-to-carry bridge.  
+  **Boundary.** The producer and actual-series identification are missing.  
+  *Evidence.* conditional reduction · Lean kernel
 
-**Class / evidence.** paper plus external theorem · paper argument plus cited theorem · Comparator: `not_applicable_not_a_lean_declaration`
+- **Three prime finite search**  
+  A local-window checker searches 106666 denominator and start pairs and records small certificates.  
+  **Boundary.** Finite search is not a cofinal statement.  
+  *Evidence.* finite computation · external exact computation
 
-**Boundary.** Comparator cannot certify the external analytic input.
+</details>
 
-**Height fibre and shell**
-`height_fibre_and_shell`
+<details>
+<summary>Technical registry and Comparator routing (7)</summary>
 
-**Contribution.** Finite height-fibre normal form and a quadratic smooth-shell multiplicity bound.
+- <code>three_<wbr>prime_<wbr>lcm_<wbr>cells</code>  
+  Comparator: <code>targeted_<wbr>running_<wbr>lcm_<wbr>identity</code>
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_three_prime_structure_target`
+- <code>two_<wbr>prime_<wbr>transcendence</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>declaration</code>
 
-**Boundary.** The fibre bounds do not provide the missing divisibility bridge.
+- <code>height_<wbr>fibre_<wbr>and_<wbr>shell</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>three_<wbr>prime_<wbr>structure_<wbr>target</code>
 
-**Rank two kernel no go**
-`rank_two_kernel_no_go`
+- <code>rank_<wbr>two_<wbr>kernel_<wbr>no_<wbr>go</code>  
+  Comparator: <code>targeted</code>
 
-**Contribution.** The 2,3,5 kernel is not rank one and its smallest displayed minor equals -1/15.
+- <code>dyadic_<wbr>block_<wbr>alphabet</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>three_<wbr>prime_<wbr>structure_<wbr>target</code>
 
-**Class / evidence.** no-go result · Lean kernel plus Comparator · Comparator: `targeted`
+- <code>conditional_<wbr>carry_<wbr>escape</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>unproved_<wbr>bridge_<wbr>and_<wbr>deep_<wbr>predicates</code>
 
-**Boundary.** Failure of rank one does not itself imply irrationality.
-
-**Dyadic block alphabet**
-`dyadic_block_alphabet`
-
-**Contribution.** The exact dyadic block alphabet is 2, 6, 10, and 30.
-
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_three_prime_structure_target`
-
-**Boundary.** The finite alphabet does not supply the needed carry escape.
-
-**Conditional carry escape**
-`conditional_carry_escape`
-
-**Contribution.** Cofinal local-window residue escape would rule out bounded positive carries after an unproved rationality-to-carry bridge.
-
-**Class / evidence.** conditional reduction · Lean kernel · Comparator: `not_selected_unproved_bridge_and_deep_predicates`
-
-**Boundary.** The producer and actual-series identification are missing.
-
-**Three prime finite search**
-`three_prime_finite_search`
-
-**Contribution.** A local-window checker searches 106666 denominator and start pairs and records small certificates.
-
-**Class / evidence.** finite computation · external exact computation · Comparator: `not_applicable_not_a_lean_theorem`
-
-**Boundary.** Finite search is not a cofinal statement.
+- <code>three_<wbr>prime_<wbr>finite_<wbr>search</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>theorem</code>
 
 </details>
 
@@ -497,61 +491,60 @@ Comparator is used only for exact Lean-owned propositions that can be isolated w
 <details>
 <summary>Contribution families (6)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Newton value decay**
-`newton_value_decay`
+- **Newton value decay**  
+  The Newton value equation and its exponential first integral are checked exactly.  
+  **Boundary.** Value decay alone does not give a short connecting curve.  
+  *Evidence.* locally proved result and formalised calculus; novelty unassessed · Lean kernel
 
-**Contribution.** The Newton value equation and its exponential first integral are checked exactly.
+- **Ray separation**  
+  Distinct positive rays exclude a finite Newton connection.  
+  **Boundary.** The result is a route obstruction, not the global theorem.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel
 
-**Class / evidence.** locally proved result and formalised calculus; novelty unassessed · Lean kernel · Comparator: `not_selected_compact_calculus_family`
+- **Translation avoidance**  
+  Collision translations are parameterised by real affine lines and an arbitrarily small common translation avoids finitely many of them.  
+  **Boundary.** The finite-family avoidance theorem does not perform the global topology or metric gluing.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Boundary.** Value decay alone does not give a short connecting curve.
+- **Root retention**  
+  A quantified small constant perturbation keeps every polynomial root inside the open unit disc.  
+  **Boundary.** Root retention is one input to a still-incomplete route.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Ray separation**
-`ray_separation`
+- **Published proof gap**  
+  The paper identifies an invalid local saddle block in a claimed unrestricted proof.  
+  **Boundary.** The diagnosis does not prove that no repair exists.  
+  *Evidence.* paper diagnosis · authored source analysis
 
-**Contribution.** Distinct positive rays exclude a finite Newton connection.
+- **Lemniscate finite search**  
+  A bounded search records finite geometric evidence.  
+  **Boundary.** Finite evidence does not settle the universal problem.  
+  *Evidence.* finite computation · external computation
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel · Comparator: `represented_by_translation_avoidance_targets`
+</details>
 
-**Boundary.** The result is a route obstruction, not the global theorem.
+<details>
+<summary>Technical registry and Comparator routing (6)</summary>
 
-**Translation avoidance**
-`translation_avoidance`
+- <code>newton_<wbr>value_<wbr>decay</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>compact_<wbr>calculus_<wbr>family</code>
 
-**Contribution.** Collision translations are parameterised by real affine lines and an arbitrarily small common translation avoids finitely many of them.
+- <code>ray_<wbr>separation</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>translation_<wbr>avoidance_<wbr>targets</code>
 
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
+- <code>translation_<wbr>avoidance</code>  
+  Comparator: <code>targeted</code>
 
-**Boundary.** The finite-family avoidance theorem does not perform the global topology or metric gluing.
+- <code>root_<wbr>retention</code>  
+  Comparator: <code>targeted</code>
 
-**Root retention**
-`root_retention`
+- <code>published_<wbr>proof_<wbr>gap</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>proposition</code>
 
-**Contribution.** A quantified small constant perturbation keeps every polynomial root inside the open unit disc.
-
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
-
-**Boundary.** Root retention is one input to a still-incomplete route.
-
-**Published proof gap**
-`published_proof_gap`
-
-**Contribution.** The paper identifies an invalid local saddle block in a claimed unrestricted proof.
-
-**Class / evidence.** paper diagnosis · authored source analysis · Comparator: `not_applicable_not_a_lean_proposition`
-
-**Boundary.** The diagnosis does not prove that no repair exists.
-
-**Lemniscate finite search**
-`lemniscate_finite_search`
-
-**Contribution.** A bounded search records finite geometric evidence.
-
-**Class / evidence.** finite computation · external computation · Comparator: `not_applicable_not_a_lean_theorem`
-
-**Boundary.** Finite evidence does not settle the universal problem.
+- <code>lemniscate_<wbr>finite_<wbr>search</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>theorem</code>
 
 </details>
 
@@ -574,70 +567,68 @@ Comparator is used only for exact Lean-owned propositions that can be isolated w
 <details>
 <summary>Contribution families (7)</summary>
 
-Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
+Exact registry keys and Comparator routing are listed separately.
 
-**Scalar content no go**
-`scalar_content_no_go`
+- **Scalar content no go**  
+  Integer scalar content changes analytic error and exterior determinant by matching factors, yielding no margin by itself.  
+  **Boundary.** The conclusion is scoped to one normalisation strategy.  
+  *Evidence.* no-go result · Lean kernel
 
-**Contribution.** Integer scalar content changes analytic error and exterior determinant by matching factors, yielding no margin by itself.
+- **Endpoint residues**  
+  Endpoint residues at 2 and 3 exclude a common multiplier under unit-endpoint hypotheses.  
+  **Boundary.** Other local or cross-row arithmetic remains possible.  
+  *Evidence.* no-go result · Lean kernel
 
-**Class / evidence.** no-go result · Lean kernel · Comparator: `represented_by_selected_coordinatewise_no_go`
+- **Four jet collision**  
+  Binary selectors collide in the four-jet signature at the stated rank and depth.  
+  **Boundary.** A signed relation is not nonzero analytic data.  
+  *Evidence.* locally proved result and no-go result; novelty unassessed · Lean kernel
 
-**Boundary.** The conclusion is scoped to one normalisation strategy.
+- **Coordinatewise corridor no go**  
+  The coordinatewise corridor forces a power-versus-linear inequality and cannot occur at base 3/2.  
+  **Boundary.** This excludes one proof architecture and proves no irrationality statement.  
+  *Evidence.* no-go result · Lean kernel plus Comparator
 
-**Endpoint residues**
-`endpoint_residues`
+- **Rational base tail recurrence**  
+  The exact rational-base cleared-tail recurrence exposes exponential denominator-base forcing absent at integer bases.  
+  **Boundary.** The recurrence is not derived from a rationality contradiction.  
+  *Evidence.* locally proved result; novelty unassessed · Lean kernel plus Comparator
 
-**Contribution.** Endpoint residues at 2 and 3 exclude a common multiplier under unit-endpoint hypotheses.
+- **Seven halves irrationality**  
+  Irrationality at 7/2 is obtained from an external analytic criterion whose elementary height hypothesis is checked in Lean.  
+  **Boundary.** Comparator may check the height inequality, not the cited theorem application.  
+  *Evidence.* paper plus external theorem · paper argument plus cited theorem and Lean arithmetic
 
-**Class / evidence.** no-go result · Lean kernel · Comparator: `represented_by_selected_coordinatewise_no_go`
+- **Height and pade arithmetic**  
+  Exact height-region inclusions and exclusions, Padé denominator-exponent bounds, and a rectangular Hermite-Padé threshold no-go are checked.  
+  **Boundary.** The analytic remainder and nonvanishing input remain untreated.  
+  *Evidence.* locally proved result and finite arithmetic; novelty unassessed · Lean kernel
 
-**Boundary.** Other local or cross-row arithmetic remains possible.
+</details>
 
-**Four jet collision**
-`four_jet_collision`
+<details>
+<summary>Technical registry and Comparator routing (7)</summary>
 
-**Contribution.** Binary selectors collide in the four-jet signature at the stated rank and depth.
+- <code>scalar_<wbr>content_<wbr>no_<wbr>go</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>selected_<wbr>coordinatewise_<wbr>no_<wbr>go</code>
 
-**Class / evidence.** locally proved result and no-go result; novelty unassessed · Lean kernel · Comparator: `not_selected_finite_combinatorial_family`
+- <code>endpoint_<wbr>residues</code>  
+  Comparator: <code>represented_<wbr>by_<wbr>selected_<wbr>coordinatewise_<wbr>no_<wbr>go</code>
 
-**Boundary.** A signed relation is not nonzero analytic data.
+- <code>four_<wbr>jet_<wbr>collision</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>finite_<wbr>combinatorial_<wbr>family</code>
 
-**Coordinatewise corridor no go**
-`coordinatewise_corridor_no_go`
+- <code>coordinatewise_<wbr>corridor_<wbr>no_<wbr>go</code>  
+  Comparator: <code>targeted</code>
 
-**Contribution.** The coordinatewise corridor forces a power-versus-linear inequality and cannot occur at base 3/2.
+- <code>rational_<wbr>base_<wbr>tail_<wbr>recurrence</code>  
+  Comparator: <code>targeted</code>
 
-**Class / evidence.** no-go result · Lean kernel plus Comparator · Comparator: `targeted`
+- <code>seven_<wbr>halves_<wbr>irrationality</code>  
+  Comparator: <code>not_<wbr>applicable_<wbr>to_<wbr>external_<wbr>irrationality_<wbr>conclusion</code>
 
-**Boundary.** This excludes one proof architecture and proves no irrationality statement.
-
-**Rational base tail recurrence**
-`rational_base_tail_recurrence`
-
-**Contribution.** The exact rational-base cleared-tail recurrence exposes exponential denominator-base forcing absent at integer bases.
-
-**Class / evidence.** locally proved result; novelty unassessed · Lean kernel plus Comparator · Comparator: `targeted`
-
-**Boundary.** The recurrence is not derived from a rationality contradiction.
-
-**Seven halves irrationality**
-`seven_halves_irrationality`
-
-**Contribution.** Irrationality at 7/2 is obtained from an external analytic criterion whose elementary height hypothesis is checked in Lean.
-
-**Class / evidence.** paper plus external theorem · paper argument plus cited theorem and Lean arithmetic · Comparator: `not_applicable_to_external_irrationality_conclusion`
-
-**Boundary.** Comparator may check the height inequality, not the cited theorem application.
-
-**Height and pade arithmetic**
-`height_and_pade_arithmetic`
-
-**Contribution.** Exact height-region inclusions and exclusions, Padé denominator-exponent bounds, and a rectangular Hermite-Padé threshold no-go are checked.
-
-**Class / evidence.** locally proved result and finite arithmetic; novelty unassessed · Lean kernel · Comparator: `not_selected_multiple_scoped_arithmetic_families`
-
-**Boundary.** The analytic remainder and nonvanishing input remain untreated.
+- <code>height_<wbr>and_<wbr>pade_<wbr>arithmetic</code>  
+  Comparator: <code>not_<wbr>selected_<wbr>multiple_<wbr>scoped_<wbr>arithmetic_<wbr>families</code>
 
 </details>
 
@@ -802,6 +793,7 @@ Comparator is used only for exact Lean-owned propositions that can be isolated w
 
 ## Verification contract and replay
 
+Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
 The 19 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.

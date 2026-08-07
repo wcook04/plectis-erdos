@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import unittest
 from copy import deepcopy
@@ -82,6 +83,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("<details>", human)
         self.assertIn("<summary>Representative checked declaration</summary>", human)
         self.assertIn("<summary>Contribution families (5)</summary>", human)
+        self.assertIn("<summary>Technical registry and Comparator routing (5)</summary>", human)
         self.assertIn("## Comparator interface appendix", human)
         self.assertIn("<summary>Show all 19 statement-isolated interfaces</summary>", human)
         self.assertIn("<wbr>", human)
@@ -89,11 +91,16 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("Steve Fan", human)
         self.assertIn("**Programmes.**", human)
         self.assertIn("#programme-68", human)
+        self.assertIn("- **Factorial carry characterisation**", human)
+        self.assertIn("*Evidence.*", human)
+        self.assertIn("Exact registry keys and Comparator routing are listed separately.", human)
         # Human-first dossiers: no serial two-pass headings, no snake_case H4s, no table era.
         self.assertNotIn("## Programme disclosure", human)
         self.assertNotIn("## Contribution and evidence matrix", human)
         self.assertNotIn("eight-programme rows", human)
         self.assertNotIn("#### `factorial_carry_characterisation`", human)
+        self.assertNotIn("**Contribution.**", human)
+        self.assertNotIn("**Class / evidence.**", human)
         self.assertNotIn("cold mathematical reviewer", human)
         self.assertNotIn("cold mathematical reviewer", packet["purpose"])
         self.assertNotIn(
@@ -104,17 +111,31 @@ class ExternalVerificationContractTest(unittest.TestCase):
             "| Problem | Family | Contribution class | What is contributed | Evidence | Comparator disposition | Boundary |",
             human,
         )
-        # Lossless inventory: every family id and every interface wrapper remain present once.
+        # Sibling disclosures only: no nested <details>.
+        self.assertNotIn("<details>\n<details>", human)
+        self.assertNotIn("</details>\n<details>\n<details>", human)
+        # Comparator policy appears once at contract level, not inside every family disclosure.
+        policy = (
+            "Comparator is used only for exact Lean-owned propositions that can be isolated "
+            "without importing their proofs"
+        )
+        self.assertEqual(human.count(policy), 1)
+        # Lossless inventory: every family id and disposition once; every interface preserved.
         _, owner, _, _ = load_owner()
-        family_ids = [
-            family["id"]
+        family_rows = [
+            family
             for problem in owner["review_matrix"]
             for family in problem["families"]
         ]
+        family_ids = [family["id"] for family in family_rows]
         self.assertEqual(len(family_ids), len(set(family_ids)))
-        for family_id in family_ids:
-            self.assertEqual(human.count(f"`{family_id}`"), 1, family_id)
         searchable = human.replace("<wbr>", "")
+        code_spans = re.findall(r"<code>(.*?)</code>", searchable, flags=re.S)
+        for family in family_rows:
+            self.assertEqual(code_spans.count(family["id"]), 1, family["id"])
+            self.assertIn(family["comparator_disposition"], code_spans)
+            self.assertIn(family["boundary"], human)
+            self.assertIn(family["summary"], human)
         for row in owner["main_results"]:
             self.assertIn(row["wrapper_declaration"], searchable)
         challenge = (ROOT / "ExternalVerification/Challenge.lean").read_text()
