@@ -518,9 +518,35 @@ unbounded in $e$.  Knowing that a span is not finitely generated says nothing
 about its dimension at a given truncation, nor about which relations hold
 there; what is added here is that
 the dimension through level $e$ is exactly $2^e+1$, that an explicit family is
-a basis, and that the two elementary reductions generate every relation.  We
-found no prior source giving any of those three for $\ph$; that is the outcome
-of a search, not a proof of non-existence, and no priority is claimed.
+a basis, and that the two elementary reductions generate every relation.
+
+Two boundaries must be drawn more carefully than an earlier version of this
+note drew them.  First, the relation to Coons is weaker than infinite-rank
+language suggests.  For a family of integer-valued sequences, finite generation
+of the $\mathbb Z$-module it spans is \emph{equivalent} to finite dimensionality
+of its $\mathbb Q$-span: evaluating at $d$ coordinates on which the span injects
+sends the module isomorphically onto a subgroup of $\mathbb Z^d$, and subgroups
+of $\mathbb Z^d$ are finitely generated.  Coons's theorem therefore already
+gives that the $\mathbb Q$-span of the full $2$-kernel of $\ph$ is
+infinite-dimensional.  The residual content here is the exact growth $2^e+1$,
+the explicit basis, and the relation normal form, not infinite-dimensionality
+itself.
+
+Second, the independence step has an antecedent.  Martin proves that for
+positive affine forms $a_in+b_i$ with $a_ib_j\ne a_jb_i$ for all $i<j$, and for
+\emph{any} constant $C>0$, the set of $n$ at which the consecutive ratios
+$\ph(a_in+b_i)/\ph(a_{i+1}n+b_{i+1})$ all exceed $C$ has positive lower
+density~\cite[Theorem~1]{martin}.  Given a vanishing rational combination
+$\sum_ic_i\ph(L_i(n))=0$ with some $c_s\ne0$, ordering $L_s$ first and taking
+$C>\sum_{i\ne s}|c_i|/|c_s|$ makes the $s$ term exceed the sum of the others in
+absolute value, a contradiction; so totient values along pairwise
+non-proportional affine forms are rationally independent.  That is the
+independence used below, obtained from an existing theorem.  Martin does not
+mention $k$-kernels and does not state a rank formula, and we have not located a
+source recording this corollary; but the mechanism is his, and no priority is
+claimed for it.  The evaluation-matrix argument of the next subsection is an
+independent and more constructive route to the same independence, which is why
+it is retained.
 
 \subsection{Parity-separated evaluation matrices}
 
@@ -1071,12 +1097,15 @@ $(1,12,16)$, the first values of $\Aw$, the $p=3$ Euler-factor calculation,
 the mixed-difference table, and the values of $H_t$ --- are computations from
 the definitions and checked identities beside them, and are not separate
 checked propositions.  Results attributed to
-Allouche and Shallit, to Coons, to Bell and Smertnig, to Kaneko, Suzuki and
+Allouche and Shallit, to Coons, to Martin, to Bell and Smertnig, to Kaneko,
+Suzuki and
 Tachiya, to Luca and Tachiya, and to Tao and Ter\"av\"ainen are cited from the
-literature and are not formalised here; the assessment that no prior source
-gives an explicit basis, an exact finite-level dimension formula, or a
-relation normal form for the totient $2$-kernel is the outcome of a literature
-search and is not a proof of non-existence.
+literature and are not formalised here.  The independence of totient values
+along pairwise non-proportional affine forms is Martin's Theorem~1 and is not
+claimed here; the assessment that no prior source records the resulting
+$k$-kernel corollary --- the explicit basis, the exact finite-level dimension
+formula, and the relation normal form --- is the outcome of a literature search
+and is not a proof of non-existence.
 
 \emph{Scope of the AI declaration.}  Large-language-model agents assisted
 throughout, drafting and revising this exposition, the Lean developments it
@@ -1103,6 +1132,14 @@ Erd\H{o}s Problem~\#249 remains open.
   \href{https://arxiv.org/abs/0810.3709}{arXiv:0810.3709}.  Theorem~3.2,
   pp.~348--349, in the published version (Theorem~3.3, pp.~8--9, in the
   preprint): $\ph$ is not $k$-regular for any $k\ge2$.
+\bibitem{martin} G.~Martin, \emph{Simultaneous inequalities among values of
+  the Euler $\varphi$-function}, 2006,
+  \href{https://doi.org/10.48550/arXiv.math/0603053}{arXiv:math/0603053}.
+  Theorem~1: for positive affine forms $a_in+b_i$ with $a_ib_j\ne a_jb_i$
+  whenever $i<j$, and for any constant $C>0$, the set of $n$ at which every
+  consecutive ratio $\ph(a_in+b_i)/\ph(a_{i+1}n+b_{i+1})$ exceeds $C$ has
+  positive lower density.  The hypotheses are symmetric in the forms, so any
+  prescribed ordering may be arranged.
 \bibitem{bell-smertnig} J.~Bell and D.~Smertnig, \emph{Mahler series with
   multiplicative coefficient sequences}, 2026,
   \href{https://doi.org/10.48550/arXiv.2603.23456}{arXiv:2603.23456}.  The
