@@ -68,10 +68,11 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # Measured at eight problems: 18,569 bytes, or 321 bytes per problem above
     # the 16,000 fixed prefix. 400 leaves room for one further problem without
     # reopening this line, and still fails on a runaway projection.
-    # 2026-08-03: fixed prefix 16_000 -> 16_450 to fund the honest
-    # generated-share sentence (floor-not-share wording) in the corpus strip;
-    # counts must never ship implying the unmarked remainder is hand-written.
-    "README.md": 16_450 + 400 * INDEXED_PROBLEM_COUNT,
+    # 2026-08-11: raised to fund the measured generated-share denominator,
+    # first-screen AI-assistance boundary, and falsifiable #269 chronology.
+    # Attribution and trust calibration outrank byte thrift; the ceiling still
+    # fails on a runaway projection.
+    "README.md": 18_900 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
@@ -79,7 +80,10 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # This prefix window is the actual newcomer contract: later growth cannot move
 # the problem statements, authority boundary, or semantic routes off the first
 # screen.
-README_FIRST_CONTACT_BUDGET_BYTES = 16_000
+# 2026-08-11: 16_000 -> 17_000, tracking the whole-file raise above. The status
+# verdict, eight-problem card, and #269 priority credit must all remain inside
+# this window without pushing the agent/verify routes out of first contact.
+README_FIRST_CONTACT_BUDGET_BYTES = 17_000
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than

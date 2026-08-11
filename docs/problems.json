@@ -748,10 +748,10 @@
           "module": "ErdosProblems.Erdos1049.ZudilinConeArithmetic",
           "path": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean",
           "present": true,
-          "line_count": 345,
-          "declaration_count": 29,
-          "theorem_count": 19,
-          "content_digest": "sha256:7c5542b1d2d9951ce43f5f92f43dc0884f079620c9805ddc96b4dd856d5f36d3"
+          "line_count": 450,
+          "declaration_count": 36,
+          "theorem_count": 25,
+          "content_digest": "sha256:9001917590300c4f10a049af0dc56192f9db95f2700b9cfac5ac88b31505b7d0"
         },
         {
           "module": "ErdosProblems.Erdos1049.HermitePadeNoGo",

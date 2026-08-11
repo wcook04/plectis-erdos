@@ -1409,7 +1409,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:6f0c0c83d8f12c0dcb8e38cccd16550dbd4ccfe710ec2343e3f1efb66f225858",
+      "source_sha256": "sha256:c01516fd7abc8f9e03bca73d624320b088b45252c50d8b7fcba93d0d640d6419",
       "canonical_source_commit": null,
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-249-binary-totient-series.tex",
@@ -1539,25 +1539,25 @@
           "level": 4,
           "id": "the-independent-denominator-exclusion.",
           "title": "The independent denominator exclusion.",
-          "line": 473
+          "line": 475
         },
         {
           "level": 2,
           "id": "sec:open",
           "title": "Logical status and analytic input",
-          "line": 479
+          "line": 481
         },
         {
           "level": 1,
           "id": "formal-source-notes",
           "title": "Formal source notes",
-          "line": 503
+          "line": 505
         },
         {
           "level": 4,
           "id": "registry-coverage.",
           "title": "Registry coverage.",
-          "line": 507
+          "line": 509
         }
       ],
       "citations_rendered": 21,
@@ -1566,8 +1566,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:9628930bc1abeaf8fb406ce0d4252ae5392992a96a7d2b79fdd59092100d2d19",
-      "pdf_byte_count": 147347,
+      "pdf_sha256": "sha256:273cda78ffb24e33035d72ed953babe38939345241c7ea5073d937ab47801022",
+      "pdf_byte_count": 148015,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1585,7 +1585,7 @@
           {
             "id": "sec:open",
             "title": "Logical status and analytic input",
-            "line": 479
+            "line": 481
           }
         ],
         "unresolved_count": 1
@@ -3807,7 +3807,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
       "local_source": "paper/erdos-269-three-prime-running-lcm.tex",
-      "source_sha256": "sha256:35b576d14f1663b454d5d4e1ee429485cb70b202ed6a0dae3f78d98f48b6f338",
+      "source_sha256": "sha256:ef3c636dd3aca2f93848754fd95cbe7a1bec2fcba6f71b4679209ea8b2893cbc",
       "canonical_source_commit": null,
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-269-three-prime-running-lcm.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-269-three-prime-running-lcm.tex",
@@ -3972,8 +3972,8 @@
       ],
       "citations_rendered": 16,
       "local_pdf": "erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:47e5bc7fe8fb49dadaca96f247d407b3e95034693e8ee3ec59fbe1670bfe1718",
-      "pdf_byte_count": 166834,
+      "pdf_sha256": "sha256:cafe7a09ca2d4bc5653fbb391df66a86836d28e2f733d93a5626efbaebc6c20c",
+      "pdf_byte_count": 167088,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4153,7 +4153,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
       "local_source": "paper/erdos-1049-rational-base-lambert.tex",
-      "source_sha256": "sha256:dd3d79537ffef9cd67745c13c99abfe44b4baec15b001eb7381cf9b010ebdaaf",
+      "source_sha256": "sha256:eeeebe76966e451fa8b41be09ec56679acff093549d7b3a8a21c1d09cad579e9",
       "canonical_source_commit": null,
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-1049-rational-base-lambert.tex",
       "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-lean-erdos249-257/main/paper/erdos-1049-rational-base-lambert.tex",
@@ -4181,161 +4181,161 @@
           "level": 4,
           "id": "erd\u0151ss-integer-base-argument-in-outline.",
           "title": "Erd\u0151s\u2019s integer-base argument, in outline.",
-          "line": 45
+          "line": 55
         },
         {
           "level": 4,
           "id": "the-direct-cut-and-clear-attempt-studied-here.",
           "title": "The direct cut-and-clear attempt studied here.",
-          "line": 51
+          "line": 61
         },
         {
           "level": 4,
           "id": "terminology.",
           "title": "Terminology.",
-          "line": 59
+          "line": 69
         },
         {
           "level": 4,
           "id": "the-shortfall-at-32.",
           "title": "The shortfall at 3/2.",
-          "line": 65
+          "line": 75
         },
         {
           "level": 4,
           "id": "sharpness.",
           "title": "Sharpness.",
-          "line": 71
+          "line": 81
         },
         {
           "level": 4,
           "id": "structure.",
           "title": "Structure.",
-          "line": 104
+          "line": 114
         },
         {
           "level": 1,
           "id": "sec:primitive",
           "title": "Integer scalar content is neutral",
-          "line": 112
+          "line": 122
         },
         {
           "level": 1,
           "id": "sec:endpoints",
           "title": "Endpoint residues at (3,2) and the four-jet kernel",
-          "line": 173
+          "line": 183
         },
         {
           "level": 1,
           "id": "sec:corridor",
           "title": "Failure of coordinatewise clearing at 3/2",
-          "line": 344
+          "line": 354
         },
         {
           "level": 1,
           "id": "sec:tail",
           "title": "The cleared-tail recurrence and the size of the forcing term",
-          "line": 421
+          "line": 431
         },
         {
           "level": 1,
           "id": "sec:sevenhalves",
           "title": "The height criterion at 7/2",
-          "line": 483
+          "line": 493
         },
         {
           "level": 2,
           "id": "the-81200-logarithmic-region",
           "title": "The 81/200 logarithmic region",
-          "line": 514
+          "line": 524
         },
         {
           "level": 1,
           "id": "sec:pade",
           "title": "Denominator exponents for a homogenised Pad\u00e9 construction",
-          "line": 540
+          "line": 550
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Complements and further questions",
-          "line": 580
+          "line": 590
         },
         {
           "level": 2,
           "id": "exact-kernel-escape",
           "title": "Exact kernel escape",
-          "line": 628
+          "line": 638
         },
         {
           "level": 2,
           "id": "the-first-falsifiable-families",
           "title": "The first falsifiable families",
-          "line": 693
+          "line": 703
         },
         {
           "level": 2,
           "id": "asymptotic-adequacy-after-kernel-escape",
           "title": "Asymptotic adequacy after kernel escape",
-          "line": 719
+          "line": 729
         },
         {
           "level": 2,
           "id": "one-exact-alternative-criterion-test",
           "title": "One exact alternative-criterion test",
-          "line": 739
+          "line": 749
         },
         {
           "level": 2,
           "id": "the-quantitative-height-frontier",
           "title": "The quantitative height frontier",
-          "line": 764
+          "line": 774
         },
         {
           "level": 2,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 792
+          "line": 802
         },
         {
           "level": 4,
           "id": "artefact-and-data-availability.",
           "title": "Artefact and data availability.",
-          "line": 796
+          "line": 806
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 802
+          "line": 812
         },
         {
           "level": 4,
           "id": "funding-and-competing-interests.",
           "title": "Funding and competing interests.",
-          "line": 808
+          "line": 818
         },
         {
           "level": 4,
           "id": "acknowledgements.",
           "title": "Acknowledgements.",
-          "line": 814
+          "line": 824
         },
         {
           "level": 1,
           "id": "app:index",
           "title": "Guide to the formal sources",
-          "line": 820
+          "line": 830
         }
       ],
-      "citations_rendered": 32,
+      "citations_rendered": 34,
       "fallback_title_drift": {
         "registry_fallback": "Multiplicative Obstructions at Base 3/2",
         "manuscript_title": "Arithmetic Boundaries at Base 3/2"
       },
       "local_pdf": "erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:b29cc750ae1a2806ba03391050d02f4e44178640af3e5d715c6265c7c0e9f734",
-      "pdf_byte_count": 163000,
+      "pdf_sha256": "sha256:7a724f59eec2f5e9b2cef5c4276ffcb5835aa471b37bbb1d4bc3d119ce2d06b3",
+      "pdf_byte_count": 165644,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -4348,17 +4348,17 @@
           {
             "id": "sec:primitive",
             "title": "Integer scalar content is neutral",
-            "line": 112
+            "line": 122
           },
           {
             "id": "sec:endpoints",
             "title": "Endpoint residues at (3,2) and the four-jet kernel",
-            "line": 173
+            "line": 183
           },
           {
             "id": "sec:open",
             "title": "Complements and further questions",
-            "line": 580
+            "line": 590
           }
         ],
         "unresolved_count": 0

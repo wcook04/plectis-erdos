@@ -3,11 +3,30 @@
 
 # Eight open Erdős problems
 
-Lean 4 on Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
+Lean 4 formalisation work on Erdős Problems 68, 243, 249, 251, 257, 269, 1041,
+and 1049. **All eight problems remain open. This project does not solve any of
+them.** Each problem paper states the checked results, the evidence boundary,
+and the exact obligation that remains. Results stay within Lean source.
+
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
+→ [prior art and attribution](docs/PRIOR_ART.md)
 → [architecture and repository guide](ARCHITECTURE.md).
 It assumes no Lean or project history.
 [agent-navigation paper](cold-clone-to-proof-receipt.pdf).
+
+The repository was created for #249 and #257 and keeps that name so existing
+citations and links continue to resolve; it now covers eight problems. The
+companion [Plectis](https://github.com/wcook04/plectis) repository owns the
+runnable tooling and claims no proof authority here; the
+[website](https://wcook04.github.io/plectis/) links both.
+
+**AI assistance and responsibility.** Large-language-model agents drafted and
+revised prose, Lean proofs, and repository software. Will Cook set the
+objectives, selected and reviewed the public claims and the cited sources, and
+is responsible for the release; the tools are not authors. The pinned Lean
+kernel checks the exact formal propositions. It does not establish that a
+proposition expresses the intended mathematics, that a result is new, or that it
+matters: those remain authored judgements, and the papers state them per result.
 
 ## Problem papers
 
@@ -27,7 +46,7 @@ It assumes no Lean or project history.
 | **#249** | Is `∑ φ(n)/2ⁿ` irrational? | The dyadic-section span has rank `2^e+1` for every `e≥1` and is infinite-dimensional. Reduced denominators through `79,639,646,646,701,375,323,355,774,875,831,053` and diagonal scales through `t=82` are excluded; no `t=83` or unbounded producer is proved. |
 | **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | Summability and the prime-gap identity are checked unconditionally via an elementary polynomial prime bound; for any sequence obeying the checked tail recurrence, irrationality is exactly equivalent to cofinal non-integral tail shifts. The concrete prime-tail bridge remains open; no theorem produces the required cofinal adjacent small-mismatch gap pairs. |
 | **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? | Lean checks full support, finite-period noncollapse, and exact restricted-set coding, topology, perfectness, and measure. Prime support at base `2` and squarefree support at power-of-two bases are cited prior results. Universal #257 and the `1/2` and `1/21` targets remain open. |
-| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | For every two-prime set, both the de-duplicated and repeated sums are proved transcendental by a paper argument using Bugeaud–Laurent. From three primes onward the problem remains open; Lean checks exact structure and a conditional carry consumer, not the rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion. |
+| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | For every two-prime set, both the de-duplicated and repeated sums are transcendental, by a paper argument using Loxton–van der Poorten in the Bugeaud–Laurent form. **This is not first and not formalised.** Steve Fan posted the same factorisation and conclusion on the erdosproblems.com #269 discussion page on 26 June 2026; this note was first released publicly on 22 July 2026. This project therefore claims no priority for the two-prime theorem, and no Lean declaration asserts it. From three primes onward the problem remains open; Lean checks exact structure and a conditional carry consumer, not the rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion. |
 | **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? | Newton-flow value decay, the ray-separation consumer (connection decay is its hypothesis), the translation collision locus, and quantitative root-retention bounds are checked. The printed proof of a recent claimed spanning-tree decomposition has an invalid local saddle block (a proof gap, not a counterexample); repairing the topology and metric gluing remains open. |
 | **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? | Lean checks construction-specific no-go theorems, four-jet cancellation, and direct-clearing obstructions at `3/2`, plus the elementary height inequality used by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality result; `3/2`, the primitive noncollapsed construction, and analytic remainder control remain open. |
 
@@ -69,6 +88,9 @@ and the sharp first failure.
 [RESULTS](docs/RESULTS.md) gives the strongest checked results for each of
 the eight problems, then the typed census and limits.
 
+Where a result restates prior work, [prior art](docs/PRIOR_ART.md) records whose
+it is; #269's two-prime case in particular is not first (see the table above).
+
 This self-contained public Plectis checkout is not an entrypoint into any private
 development system. `v0.8.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](docs/claims.json) pins the exact formal-source checkpoint
@@ -77,13 +99,16 @@ proof authority; do not infer results from private or unreleased work.
 
 ## What the formal source establishes
 
-Labels are descriptions, not scores. **Verified finite instance** means
+Labels are descriptions, not scores. **Formalised here** means a statement
+rendered and kernel-checked in Lean, which for a known theorem is a checked
+rendering and not a priority claim; **proved here** means the argument is this
+project's. **Verified finite instance** means
 Lean checked only the listed inputs; **conditional reduction** means the
 conclusion depends on a named open condition.
 
 | Status | Result |
 |---|---|
-| **formalised here** | For every integer `b ≥ 2`, the full-support series `∑ 1/(bⁿ - 1)` is irrational. Several named infinite-support families are also formalised; this does not cover every infinite support. |
+| **formalised here** | For every integer `b ≥ 2`, the full-support series `∑ 1/(bⁿ - 1)` is irrational — Erdős (1948), a checked rendering rather than a new result. Several named infinite-support families are also formalised; this does not cover every infinite support. |
 | **formalised here** | The base-2 Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level. |
 | **proved here** | For the #257 test value `1/2`, achievement-set membership is equivalent to infinitely many greedy skips and would produce an infinite support of rational sum, refuting universal #257. Under the last-skip schema's hypotheses (a rank floor, a carry condition, and a strict middle-cell inequality), the upper branch and the middle coordinate `-3` are impossible. |
 | **conditional reduction** | Within that same last-skip contradiction schema, the two still-unexcluded middle coordinates, `-2` and `-1`, would also be ruled out if one current contribution were larger than the sum of all later possible contributions. That inequality is not proved. |
@@ -144,19 +169,20 @@ the next edition and the refutation credited.
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
 ## Corpus at a glance
 
-| Library | Current size |
+The layer a mathematician should judge is small: 101 curated claim records in 21 contribution families, reaching Lean source through 311 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
+
+The rest is engineering inventory. About 93% of the 153,273 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+
+| Engineering inventory | Current size |
 |---|---:|
-| Lean modules | 1,019 |
-| Formal results and supporting lemmas | 151,039 |
+| Lean modules (the two library roots) | 1,020 |
+| Formal results and supporting lemmas | 151,056 |
 | Curated claim records | 101 |
 | Contribution families | 21 |
 
-Most of the corpus is generated-then-checked rather than written by hand;
-the certificate provenance contract explicitly marks 8,171 declarations,
-and the largest historical certificate families predate its markers, so the
-marked figure is a floor, not the share. Generated shards are counted as
-formal source and never as separate mathematical claims. Claim records span
-every status, including cited and open, and are partitioned exactly once.
+Generated shards are counted as formal source and never as separate
+mathematical claims. Claim records span every status, including cited and
+open, and are partitioned exactly once.
 These are navigation counts, not novelty claims.
 <!-- END generated_corpus_at_a_glance -->
 

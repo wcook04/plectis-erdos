@@ -7571,6 +7571,12 @@
           ]
         },
         {
+          "id": "Erdos249257.TotientKernelReduction",
+          "path": "Erdos249257/TotientKernelReduction.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "Erdos249257.TotientMahlerDefect",
           "path": "Erdos249257/TotientMahlerDefect.lean",
           "role": "Finite dyadic-totient rank and certificate interface",
@@ -7660,7 +7666,9 @@
           "path": "ErdosProblems/AxiomAudit.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Root"
+            "ErdosProblems.Root",
+            "Erdos249257.FirstHarmonicPivot",
+            "Erdos249257.TotientKernelReduction"
           ]
         },
         {
@@ -11127,11 +11135,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "63a7f05c17da22556344c74f871bbf34f0c1ede6",
+      "ref": "3f2e72a49e0f3d0e4e8f4881fc8f98ccf62c2492",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
-      "relationship_to_last_tag": "at_last_tag",
-      "public_tag": "formal-source-2026-08-03"
+      "relationship_to_last_tag": "post_tag_checkpoint",
+      "public_tag": "formal-source-2026-08-11"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -14626,27 +14634,27 @@
         {
           "name": "windowFirstExp_sum_eq_pivot_decomposition",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 342
+          "line": 508
         },
         {
           "name": "PivotBudgetAt",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 371
+          "line": 537
         },
         {
           "name": "first_harmonic_gap_of_pivotBudgetAt",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 377
+          "line": 543
         },
         {
           "name": "DTWPivotResidualDecorrelation",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 397
+          "line": 563
         },
         {
           "name": "irrational_totient_series_of_pivotResidualDecorrelation",
           "module": "Erdos249257/FirstHarmonicPivot.lean",
-          "line": 405
+          "line": 571
         }
       ]
     },

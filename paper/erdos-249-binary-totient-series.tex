@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{599f7e50a15b288f27f9b57ece16fdd396cb6d76}
-\renewcommand{\commitshort}{599f7e50a15b}
+\renewcommand{\commit}{3f2e72a49e0f3d0e4e8f4881fc8f98ccf62c2492}
+\renewcommand{\commitshort}{3f2e72a49e0f}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -561,6 +561,9 @@ a basis, and that the two elementary reductions generate every relation.  We
 found no prior source giving any of those three for $\ph$; that is the outcome
 of a search, not a proof of non-existence, and no priority is claimed.
 
+The evaluation-matrix argument of the next subsection is an independent and
+more constructive route to the same independence, which is why it is retained.
+
 \subsection{Parity-separated evaluation matrices}
 
 \ref{res:rank} is proved by exhibiting a square matrix of values of the
@@ -989,8 +992,15 @@ separated from $\Theta_2$ by the uniform gap.
 
 This subsection previously posed the odd-prime kernel dimension as an open
 problem.  It is now a theorem, and for every integer base rather than for odd
-primes only.  The statement below is a paper proof; it is \emph{not} formalised,
-and no Lean declaration in this release asserts it.
+primes only.  The statement below combines a Lean-checked arithmetic spanning
+layer with a paper-level independence argument.  Lean proves the zero-residue
+relation
+(\mword{Erdos249257/TotientKernelReduction.lean}{60}{totient_pow_mul_eq}{checked})
+and the exact division-free composite-base reduction
+(\mword{Erdos249257/TotientKernelReduction.lean}{117}{totient_pow_mul_affine_gcd_cross_eq}{checked}).
+The final all-base independence and basis theorem is not a single Lean
+declaration: it uses Martin's external positive-density theorem through the
+elementary linear-independence consequence recorded above.
 
 \begin{theorem}[exact rank of every totient $k$-kernel truncation]
 \label{thm:kkernelrank}
@@ -1014,6 +1024,12 @@ $t=\max\{s:k^s\mid r\}\ge1$ and $k\nmid u$, then
  C_k(t,u)=k^t\prod_{\substack{p\mid k\\ p\nmid u}}\Bigl(1-\tfrac1p\Bigr).
 \]
 \end{theorem}
+
+The checked composite-base statement is deliberately cross-multiplied by
+$\ph(\gcd(k,u))$; the displayed scalar is the equivalent paper-level
+normalisation after exact division.  Thus the zero channel and the arithmetic
+reduction have kernel receipts, while Martin remains the external authority for
+the last independence step.
 
 The selection condition is $k\nmid r$, not $\gcd(k,r)=1$; for composite $k$ a
 basis residue may share prime factors with $k$.  Independence is obtained by
@@ -1079,10 +1095,11 @@ Section~\ref{sec:open}.
   are separate contradiction targets.  No required upper bound or coupled
   approximant family is proved.
 \item The $k$-kernel rank statement of Theorem~\ref{thm:kkernelrank} is
-  independent of the irrationality problem and settles nothing about it.  It is
-  a paper proof, not formalised, and it carries no prior-art verdict: its
-  independence input is Martin's Theorem~1, and no source was located for the
-  rank, basis, or normal form themselves.
+  independent of the irrationality problem and settles nothing about it.  Its
+  zero-residue and composite-base arithmetic layers are Lean-checked, but the
+  final all-base independence step remains a paper deduction from Martin's
+  Theorem~1.  No source was located for the rank, basis, or normal form
+  themselves; that search result is not a priority verdict.
 \end{enumerate}
 
 \noindent The correlation source that fits the normalised totient most

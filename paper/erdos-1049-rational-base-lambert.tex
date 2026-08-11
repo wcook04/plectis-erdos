@@ -148,7 +148,37 @@ Theorem~3 proves irrationality of
 $\sum_{k\ge1}(cp^k-1)^{-1}$ for an integer $p>1$ and fixed rational $c$
 away from the poles~\cite[Thm.~3, p.~14]{vanassche2001}; it does not cover a
 rational noninteger base $t$ in $F(t)$, because the multiplier needed to
-write $t^k$ over an integer base varies with $k$.  In 2013 Vandehey proved that
+write $t^k$ over an integer base varies with $k$.
+
+The same Lambert value was already the target of Amdeberhan and
+Zeilberger's $q$-WZ construction~\cite{az1998}.  These constructions share a
+bivariate little $q$-Legendre Pad\'e kernel, but not one scalar recurrence:
+Amdeberhan--Zeilberger use the moving diagonal $P_n(p^{n+1}\mid p^{-1})$,
+whereas Van Assche uses $P_n(p^n\mid p^{-1})$.  Van Assche also records, citing
+Borwein's 1992 Lemma~2, the neighbouring evaluation
+$P_{n-1}(c p^{n+1}\mid p^{-1})$~\cite{borwein1992,vanassche2001}.
+The shared kernel therefore does not license transfer of recurrence,
+endpoint, lattice, or valuation claims between the diagonals.  Indeed, if
+$A_n(p)=P_n(p^n\mid p^{-1})$, exact substitution at $n=0$ into the
+Amdeberhan--Zeilberger operator leaves
+\[
+ -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2),
+\]
+which is nonzero for every real $p>1$.  One nonzero residual is decisive for
+non-transfer.  The accompanying symbolic receipt also checks the common-kernel
+identity and the distinct endpoint patterns over the displayed finite ranges;
+those range checks are evidence, not all-$n$ theorems.  At $(p,q)=(3,2)$ the
+$q$-WZ denominator has unit homogeneous endpoints, while Van Assche's diagonal
+has a zero constant term and a factor $p$ (measured $v_3=1$ over the checked
+range).
+
+There is a second distinction at rational base $3/2$.  Over the checked range,
+the raw rational approximation errors decrease while the selected cleared
+integer forms grow from $n\ge2$.  This says that the chosen integerisation does
+not produce small linear forms; it does \emph{not} say that the raw approximants
+fail to converge.
+
+In 2013 Vandehey proved that
 $\sum_{n\ge1}d(n)a_n/b^n$ is irrational whenever $b>1$ is an integer and
 $(a_n)$ ranges in a finite integer alphabet excluding zero; taking
 $a_n=(-1)^n$ completes the elementary digit method for integer bases
@@ -1505,6 +1535,17 @@ equality case for the exponent model & \lrefx{Erdos1049/HermitePadeNoGo.lean}{12
   $\sum1/(q^{n}+r)$},
   J. Number Theory \textbf{37} (1991), no.~3, 253--259,
   doi:\href{https://doi.org/10.1016/S0022-314X(05)80041-1}{10.1016/S0022-314X(05)80041-1}.
+\bibitem{borwein1992} P.~B. Borwein, \emph{On the irrationality of certain
+  series}, Math. Proc. Cambridge Philos. Soc. \textbf{112} (1992), no.~1,
+  141--146,
+  doi:\href{https://doi.org/10.1017/S030500410007081X}{10.1017/S030500410007081X}.
+  Van Assche cites Lemma~2 for the neighbouring little-$q$-Legendre
+  evaluation used above.
+\bibitem{az1998} T.~Amdeberhan and D.~Zeilberger, \emph{$q$-Ap\'ery
+  irrationality proofs by $q$-WZ pairs}, Adv. Appl. Math. \textbf{20} (1998),
+  no.~2, 275--283,
+  \href{https://arxiv.org/abs/math/9804122}{arXiv:math/9804122},
+  doi:\href{https://doi.org/10.1006/aama.1997.0565}{10.1006/aama.1997.0565}.
 \bibitem{bv1994} P.~Bundschuh and K.~V\"a\"an\"anen,
   \href{https://numdam.org/item/CM_1994__91_2_175_0.pdf}{\emph{Arithmetical
   investigations of a certain infinite product}},

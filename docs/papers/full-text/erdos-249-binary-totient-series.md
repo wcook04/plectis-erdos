@@ -434,7 +434,7 @@ Ordinary convergence of rational approximants is insufficient; the scaled error 
 
 ## Independent extension
 
-This subsection previously posed the odd-prime kernel dimension as an open problem. It is now a theorem, and for every integer base rather than for odd primes only. The statement below is a paper proof; it is *not* formalised, and no Lean declaration in this release asserts it.
+This subsection previously posed the odd-prime kernel dimension as an open problem. It is now a theorem, and for every integer base rather than for odd primes only. The statement below combines a Lean-checked arithmetic spanning layer with a paper-level independence argument. Lean proves the zero-residue relation ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/599f7e50a15b288f27f9b57ece16fdd396cb6d76/Erdos249257/TotientKernelReduction.lean#L60)) and the exact division-free composite-base reduction ([checked](https://github.com/wcook04/plectis-lean-erdos249-257/blob/599f7e50a15b288f27f9b57ece16fdd396cb6d76/Erdos249257/TotientKernelReduction.lean#L117)). The final all-base independence and basis theorem is not a single Lean declaration: it uses Martin’s external positive-density theorem through the elementary linear-independence consequence recorded above.
 
 <div id="thm:kkernelrank" class="theorem">
 
@@ -457,6 +457,8 @@ F^{(k)}_{j,r}=C_k(t,u)\,F^{(k)}_{j-t,u},
 ```*
 
 </div>
+
+The checked composite-base statement is deliberately cross-multiplied by $`\varphi(\gcd(k,u))`$; the displayed scalar is the equivalent paper-level normalisation after exact division. Thus the zero channel and the arithmetic reduction have kernel receipts, while Martin remains the external authority for the last independence step.
 
 The selection condition is $`k\nmid r`$, not $`\gcd(k,r)=1`$; for composite $`k`$ a basis residue may share prime factors with $`k`$. Independence is obtained by restricting to $`n=km+1`$, where the surviving channels become the affine forms $`L_0(m)=km+1`$ and $`L_{j,r}(m)=k^{j+1}m+(k^j+r)`$ with $`k\nmid r`$. These have positive slopes and satisfy $`a_ib_j\neq a_jb_i`$, so Martin’s Theorem 1 \[martin-phi-inequalities\] applies through the linear-independence consequence recorded in the prior-work subsection. The two zero-residue channels are proportional on that progression and are separated afterwards by evaluating at $`n=k`$, using $`\varphi(k^2)=k\varphi(k)`$ and $`\varphi(k)<k`$.
 
@@ -488,7 +490,7 @@ The constant $`7.96\times10^{34}`$ of <a href="#res:denominator" data-reference-
 
 4.  Carry-rank compression and genuinely coupled denominator compression are separate contradiction targets. No required upper bound or coupled approximant family is proved.
 
-5.  The $`k`$-kernel rank statement of Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">7</a> is independent of the irrationality problem and settles nothing about it. It is a paper proof, not formalised, and it carries no prior-art verdict: its independence input is Martin’s Theorem 1, and no source was located for the rank, basis, or normal form themselves.
+5.  The $`k`$-kernel rank statement of Theorem <a href="#thm:kkernelrank" data-reference-type="ref" data-reference="thm:kkernelrank">7</a> is independent of the irrationality problem and settles nothing about it. Its zero-residue and composite-base arithmetic layers are Lean-checked, but the final all-base independence step remains a paper deduction from Martin’s Theorem 1. No source was located for the rank, basis, or normal form themselves; that search result is not a priority verdict.
 
 The correlation source that fits the normalised totient most directly is Balasubramanian–Giri–Srivastav \[bgs2017\], not a direct transfer of the Tao–Teräväinen method. Write
 ``` math
