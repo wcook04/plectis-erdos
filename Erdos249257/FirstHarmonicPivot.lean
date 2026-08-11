@@ -183,6 +183,41 @@ theorem pivotCofactor_eq_one_of_pivotArgument_prime {N L s : ℕ}
   rw [pivotCofactor, pivotPrime_eq_pivotArgument_of_prime hp,
     Nat.div_self hp.pos]
 
+/-- If `p` is larger than a positive cofactor `m`, then the canonical
+maximum-prime-factor selector on the product `m*p` is exactly `p`. -/
+theorem pivotPrime_eq_of_argument_eq_mul_prime
+    {N L s m p : ℕ} (hm : 0 < m) (hp : p.Prime) (hmp : m < p)
+    (harg : pivotArgument N L s = m * p) :
+    pivotPrime N L s = p := by
+  let factors := (m * p).primeFactors.toList
+  have hprod : m * p ≠ 0 := mul_ne_zero hm.ne' hp.ne_zero
+  have hpFactors : p ∈ factors := by
+    simp only [factors, Finset.mem_toList]
+    exact hp.mem_primeFactors (dvd_mul_left p m) hprod
+  have hmax : factors.max (List.ne_nil_of_mem hpFactors) = p := by
+    apply (List.max_eq_iff (List.ne_nil_of_mem hpFactors)).2
+    refine ⟨hpFactors, ?_⟩
+    intro q hq
+    have hqFactors : q ∈ (m * p).primeFactors := by
+      simpa [factors] using hq
+    have hqPrime := Nat.prime_of_mem_primeFactors hqFactors
+    have hqDvd := Nat.dvd_of_mem_primeFactors hqFactors
+    rcases hqPrime.dvd_mul.mp hqDvd with hqm | hqp
+    · exact le_trans (Nat.le_of_dvd hm hqm) (Nat.le_of_lt hmp)
+    · exact le_of_eq ((Nat.prime_dvd_prime_iff_eq hqPrime hp).mp hqp)
+  rw [pivotPrime, harg]
+  change factors.foldl Nat.max 1 = p
+  rw [List.foldl_max_eq_max (List.ne_nil_of_mem hpFactors), hmax,
+    Nat.max_eq_right hp.one_le]
+
+/-- The corresponding canonical cofactor is the original `m`. -/
+theorem pivotCofactor_eq_of_argument_eq_mul_prime
+    {N L s m p : ℕ} (hm : 0 < m) (hp : p.Prime) (hmp : m < p)
+    (harg : pivotArgument N L s = m * p) :
+    pivotCofactor N L s = m := by
+  rw [pivotCofactor, pivotPrime_eq_of_argument_eq_mul_prime hm hp hmp harg,
+    harg, Nat.mul_div_cancel _ hp.pos]
+
 /-- Decidable clean-supplier predicate.  The explicit multiplication receipt
 avoids relying on division simplification outside this definition. -/
 def pivotSupplier (X L s N : ℕ) : Prop :=
@@ -244,6 +279,137 @@ theorem totient_pivotArgument_eq_mul {X L s N : ℕ}
 
 def pivotFiber (X L s m : ℕ) : Finset ℕ :=
   (pivotSupplierBases X L s).filter fun N => pivotCofactor N L s = m
+
+/-- The finite prime interval which parametrises one supplier fibre.  The
+upper `range` bound is only a finiteness witness; membership is the two exact
+product inequalities. -/
+def pivotSupplierPrimes (X L s m : ℕ) : Finset ℕ :=
+  (Finset.range (2 * X + pivotOffset L s + 1)).filter fun p =>
+    p.Prime ∧ X + pivotOffset L s ≤ m * p ∧
+      m * p < 2 * X + pivotOffset L s
+
+/-- Convert a prime in the product interval back to its window base. -/
+def pivotBaseOfPrime (L s m p : ℕ) : ℕ := m * p - pivotOffset L s
+
+/-- Exact membership form of the supplier-fibre parametrisation.
+
+For a positive cofactor `m ≤ sqrt(X)/2`, a prime `p` in the shifted product
+interval maps to `N = m*p - pivotOffset L s`.  Conversely every member of the
+canonical largest-prime supplier fibre arises uniquely this way. -/
+theorem mem_pivotFiber_iff_exists_supplierPrime
+    {X L s m N : ℕ} (hm : 0 < m) (hmsmall : m ≤ Nat.sqrt X / 2) :
+    N ∈ pivotFiber X L s m ↔
+      ∃ p ∈ pivotSupplierPrimes X L s m,
+        pivotBaseOfPrime L s m p = N := by
+  let t := pivotOffset L s
+  constructor
+  · intro hN
+    have hfiber := Finset.mem_filter.mp hN
+    have hsupplierBase := Finset.mem_filter.mp hfiber.1
+    have hIco := Finset.mem_Ico.mp hsupplierBase.1
+    have hsupplier := hsupplierBase.2
+    change (pivotPrime N L s).Prime ∧
+      pivotCofactor N L s * pivotPrime N L s = pivotArgument N L s ∧
+      0 < pivotCofactor N L s ∧
+      pivotCofactor N L s ≤ Nat.sqrt X / 2 ∧
+      2 * Nat.sqrt X < pivotPrime N L s at hsupplier
+    let p := pivotPrime N L s
+    have hcofactor : pivotCofactor N L s = m := hfiber.2
+    have hmul : m * p = N + t := by
+      simpa [p, t, pivotArgument, hcofactor] using hsupplier.2.1
+    have hpRange : p < 2 * X + t + 1 := by
+      have hp_le : p ≤ m * p := by
+        calc
+          p = 1 * p := by simp
+          _ ≤ m * p := Nat.mul_le_mul_right p hm
+      omega
+    refine ⟨p, Finset.mem_filter.mpr ⟨Finset.mem_range.mpr hpRange,
+      hsupplier.1, ?_, ?_⟩, ?_⟩
+    · omega
+    · omega
+    · simp only [pivotBaseOfPrime]
+      omega
+  · rintro ⟨p, hpSet, rfl⟩
+    have hpData := (Finset.mem_filter.mp hpSet).2
+    rcases hpData with ⟨hp, hlower, hupper⟩
+    have htpos : 0 < t := by simp [t, pivotOffset]
+    have ht_le : t ≤ m * p := by omega
+    have hbaseLower : X ≤ m * p - t := by omega
+    have hbaseUpper : m * p - t < 2 * X := by omega
+    have htwo_m : 2 * m ≤ Nat.sqrt X := by omega
+    have hpLarge : 2 * Nat.sqrt X < p := by
+      by_contra hnot
+      have hp_le : p ≤ 2 * Nat.sqrt X := by omega
+      have hprod_le : m * p ≤ X := by
+        nlinarith [Nat.sqrt_le X]
+      omega
+    have hmp : m < p := by omega
+    have harg :
+        pivotArgument (pivotBaseOfPrime L s m p) L s = m * p := by
+      simp only [pivotArgument, pivotBaseOfPrime]
+      exact Nat.sub_add_cancel ht_le
+    have hpivot := pivotPrime_eq_of_argument_eq_mul_prime hm hp hmp harg
+    have hcofactor := pivotCofactor_eq_of_argument_eq_mul_prime hm hp hmp harg
+    apply Finset.mem_filter.mpr
+    refine ⟨Finset.mem_filter.mpr ⟨Finset.mem_Ico.mpr
+      ⟨hbaseLower, hbaseUpper⟩, ?_⟩, hcofactor⟩
+    change (pivotPrime (pivotBaseOfPrime L s m p) L s).Prime ∧
+      pivotCofactor (pivotBaseOfPrime L s m p) L s *
+          pivotPrime (pivotBaseOfPrime L s m p) L s =
+        pivotArgument (pivotBaseOfPrime L s m p) L s ∧
+      0 < pivotCofactor (pivotBaseOfPrime L s m p) L s ∧
+      pivotCofactor (pivotBaseOfPrime L s m p) L s ≤ Nat.sqrt X / 2 ∧
+      2 * Nat.sqrt X < pivotPrime (pivotBaseOfPrime L s m p) L s
+    rw [hpivot, hcofactor, harg]
+    exact ⟨hp, rfl, hm, hmsmall, hpLarge⟩
+
+/-- The prime-to-base map is injective on the exact supplier interval. -/
+theorem pivotBaseOfPrime_injective_on_supplierPrimes
+    {X L s m p q : ℕ} (hm : 0 < m)
+    (hp : p ∈ pivotSupplierPrimes X L s m)
+    (hq : q ∈ pivotSupplierPrimes X L s m)
+    (heq : pivotBaseOfPrime L s m p = pivotBaseOfPrime L s m q) :
+    p = q := by
+  have hpLower := (Finset.mem_filter.mp hp).2.2.1
+  have hqLower := (Finset.mem_filter.mp hq).2.2.1
+  have hproducts : m * p = m * q := by
+    simp only [pivotBaseOfPrime] at heq
+    omega
+  exact Nat.mul_left_cancel hm hproducts
+
+/-- Set-level form of the exact bijection between supplier primes and one
+canonical fibre.  Together with
+`pivotBaseOfPrime_injective_on_supplierPrimes`, this is a genuine bijection,
+not merely a surjective parametrisation. -/
+theorem image_pivotSupplierPrimes_eq_pivotFiber
+    {X L s m : ℕ} (hm : 0 < m) (hmsmall : m ≤ Nat.sqrt X / 2) :
+    (pivotSupplierPrimes X L s m).image (pivotBaseOfPrime L s m) =
+      pivotFiber X L s m := by
+  ext N
+  rw [Finset.mem_image, mem_pivotFiber_iff_exists_supplierPrime hm hmsmall]
+
+/-- Supplier primes are not automatically isolated from all other arguments
+in the same window.  Here the pivot is `38 = 2*19`, while the same prime also
+divides the distinct window argument `18+1 = 19`. -/
+theorem supplierPrime_not_globally_isolated_counterexample :
+    pivotOffset 20 1 = 20 ∧
+    18 ∈ pivotFiber 16 20 1 2 ∧
+    pivotPrime 18 20 1 = 19 ∧
+    19 ∣ pivotArgument 18 20 1 ∧
+    19 ∣ 18 + 1 := by
+  have hp : Nat.Prime 19 := by native_decide
+  have harg : pivotArgument 18 20 1 = 2 * 19 := by
+    norm_num [pivotArgument, pivotOffset]
+  have hpivot : pivotPrime 18 20 1 = 19 :=
+    pivotPrime_eq_of_argument_eq_mul_prime (by norm_num) hp (by norm_num) harg
+  have hpSet : 19 ∈ pivotSupplierPrimes 16 20 1 2 := by
+    native_decide
+  have hfiber : 18 ∈ pivotFiber 16 20 1 2 :=
+    (mem_pivotFiber_iff_exists_supplierPrime (by norm_num) (by native_decide)).2
+      ⟨19, hpSet, by norm_num [pivotBaseOfPrime, pivotOffset]⟩
+  exact ⟨by norm_num [pivotOffset], hfiber, hpivot, by
+    rw [harg]
+    exact dvd_mul_left 19 2, by norm_num⟩
 
 /-- The canonical natural fibre `m=1, s=L-h` is literally the shifted
 dyadic interval of primes.  This is a membership equality for the actual

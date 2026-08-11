@@ -1,4 +1,6 @@
 import ErdosProblems.Root
+import Erdos249257.FirstHarmonicPivot
+import Erdos249257.TotientKernelReduction
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -40,6 +42,12 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.fourJetSignature_card
 #print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank
 #print axioms ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units
+#print axioms ErdosProblems.Erdos1049.cyclotomicHomEval_isCoprime_mul
+#print axioms Erdos249257.totient_pow_mul_eq
+#print axioms Erdos249257.totient_pow_mul_gcd_cross_eq
+#print axioms Erdos249257.totient_pow_mul_affine_gcd_cross_eq
+#print axioms Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber
+#print axioms Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
 #print axioms ErdosProblems.Erdos251.prime0DisplayedPartialSumQ_eq_two_mul
