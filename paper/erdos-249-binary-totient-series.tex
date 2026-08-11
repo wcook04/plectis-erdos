@@ -510,6 +510,29 @@ coefficients has a $k$-regular coefficient sequence in an explicit closed form,
 and that the totient generating series is not $k$-Mahler for any $k\ge2$
 follows directly from the closed form~\cite{bell-smertnig}.
 
+A separate line of work settles linear independence of totient values along
+affine progressions, and settles it more strongly than anything proved here.
+Martin~\cite{martin-phi-inequalities} assumes only that $a_1,\dots,a_m$ are
+positive integers and that $a_ib_j\neq a_jb_i$ for $i\neq j$, and proves in his
+Theorem~1 that for every constant $C>0$ the simultaneous ratio gaps
+\[
+ \frac{\ph(a_1n+b_1)}{\ph(a_2n+b_2)}>C,\quad\dots,\quad
+ \frac{\ph(a_{m-1}n+b_{m-1})}{\ph(a_mn+b_m)}>C
+\]
+hold on a set of positive lower density; he also notes that the hypotheses are
+symmetric in the forms, so every one of the $m!$ orderings occurs on such a set.
+Taking $C>\bigl(\sum_{i\neq t}|c_i|\bigr)/|c_t|$ after moving a channel with
+$c_t\neq0$ to the front shows at once that
+\[
+ \bigl\{n\mapsto\ph(a_in+b_i)\bigr\}_{i=1}^m
+\]
+is linearly independent over $\R$, hence over $\Q$.  His Corollary~4 carries
+Theorem~1 and its corollaries to $\sigma$.  Every affine-totient independence
+statement used below is therefore a consequence of Martin's theorem, and no
+originality is claimed for it; what the present section adds is the exact
+finite-level rank, an explicit basis, and the complete relation normal form,
+none of which follows from Martin, Coons, or Bell--Smertnig.
+
 Coons's statement is about the union over all levels: no finite set of sections
 generates the rest.  Bell and Smertnig's is about a functional equation.
 \ref{res:basis} and \ref{res:rank} are complementary positive statements at
@@ -948,16 +971,52 @@ separated from $\Theta_2$ by the uniform gap.
 
 \subsection{Independent extension}
 
-\begin{problem}[odd-prime totient kernels]\label{prob:oddprime}
-For a fixed odd prime $\ell$, determine for every $e$ the exact dimension
+This subsection previously posed the odd-prime kernel dimension as an open
+problem.  It is now a theorem, and for every integer base rather than for odd
+primes only.  The statement below is a paper proof; it is \emph{not} formalised,
+and no Lean declaration in this release asserts it.
+
+\begin{theorem}[exact rank of every totient $k$-kernel truncation]
+\label{thm:kkernelrank}
+Let $k\ge2$ and $e\ge1$ be integers, write $F^{(k)}_{j,r}(n)=\ph(k^jn+r)$, and put
 \[
- \dim_{\Q}\operatorname{span}_{\Q}
- \{\,n\mapsto\ph(\ell^j n+r):0\le j\le e,
-       \ 0\le r<\ell^j\,\},
+ V_{k,e}=\operatorname{span}_{\Q}
+ \{\,F^{(k)}_{j,r}:0\le j\le e,\ 0\le r<k^j\,\}.
 \]
-and give an explicit basis and a complete normal form for all rational
-relations.  The first concrete case is $\ell=3$.
-\end{problem}
+Then $\dim_{\Q}V_{k,e}=k^e+1$, and
+\[
+ \mathcal B_{k,e}
+ =\{F^{(k)}_{0,0},F^{(k)}_{1,0}\}
+ \cup\{\,F^{(k)}_{j,r}:1\le j\le e,\ 1\le r<k^j,\ k\nmid r\,\}
+\]
+is a basis.  Every omitted section reduces to a basis element by an explicit
+scalar: $F^{(k)}_{j,0}=k^{j-1}F^{(k)}_{1,0}$ for $j\ge1$, and if $r=k^tu$ with
+$t=\max\{s:k^s\mid r\}\ge1$ and $k\nmid u$, then
+\[
+ F^{(k)}_{j,r}=C_k(t,u)\,F^{(k)}_{j-t,u},
+ \qquad
+ C_k(t,u)=k^t\prod_{\substack{p\mid k\\ p\nmid u}}\Bigl(1-\tfrac1p\Bigr).
+\]
+\end{theorem}
+
+The selection condition is $k\nmid r$, not $\gcd(k,r)=1$; for composite $k$ a
+basis residue may share prime factors with $k$.  Independence is obtained by
+restricting to $n=km+1$, where the surviving channels become the affine forms
+$L_0(m)=km+1$ and $L_{j,r}(m)=k^{j+1}m+(k^j+r)$ with $k\nmid r$.  These have
+positive slopes and satisfy $a_ib_j\neq a_jb_i$, so Martin's
+Theorem~1~\cite{martin-phi-inequalities} applies through the linear-independence
+consequence recorded in the prior-work subsection.  The two zero-residue channels
+are proportional on that progression and are separated afterwards by evaluating
+at $n=k$, using $\ph(k^2)=k\ph(k)$ and $\ph(k)<k$.
+
+At $k=2$ this recovers the dyadic rank theorem of Section~\ref{sec:rank}; at
+$k=\ell$ an odd prime it gives the case first posed here.  Neither Coons's
+non-$k$-regularity theorem nor the Bell--Smertnig Mahler classification supplies
+a finite-level rank, a basis, or the relations, so
+Theorem~\ref{thm:kkernelrank} is not a consequence of either.  A targeted
+literature search located no source stating the exact rank, the basis, or the
+normal form; that is a search result and not a novelty claim, and the statement
+remains subject to specialist review.
 
 \begin{remark}[excluded generic mechanisms]
 Unbounded prime support, exact multiplicative order, natural-boundary
@@ -1003,8 +1062,11 @@ Section~\ref{sec:open}.
 \item Carry-rank compression and genuinely coupled denominator compression
   are separate contradiction targets.  No required upper bound or coupled
   approximant family is proved.
-\item The odd-prime kernel question is independent of the irrationality
-  problem and carries no claimed answer or prior-art verdict.
+\item The $k$-kernel rank statement of Theorem~\ref{thm:kkernelrank} is
+  independent of the irrationality problem and settles nothing about it.  It is
+  a paper proof, not formalised, and it carries no prior-art verdict: its
+  independence input is Martin's Theorem~1, and no source was located for the
+  rank, basis, or normal form themselves.
 \end{enumerate}
 
 \noindent The correlation source that fits the normalised totient most
@@ -1103,6 +1165,15 @@ Erd\H{o}s Problem~\#249 remains open.
   \href{https://arxiv.org/abs/0810.3709}{arXiv:0810.3709}.  Theorem~3.2,
   pp.~348--349, in the published version (Theorem~3.3, pp.~8--9, in the
   preprint): $\ph$ is not $k$-regular for any $k\ge2$.
+\bibitem{martin-phi-inequalities} G.~Martin, \emph{Simultaneous inequalities
+  among values of the Euler phi-function}, 2 March 2006,
+  \href{https://arxiv.org/abs/math/0603053}{arXiv:math/0603053};
+  \href{https://doi.org/10.48550/arXiv.math/0603053}{doi:10.48550/arXiv.math/0603053}.
+  Theorem~1: for positive integers $a_1,\dots,a_k$ and integers $b_1,\dots,b_k$
+  with $a_ib_j\neq a_jb_i$, and every $C>0$, the simultaneous ratio gaps
+  $\ph(a_1n+b_1)/\ph(a_2n+b_2)>C,\dots$ hold on a set of positive lower density;
+  Corollary~4 carries this to $\sigma$.  Cited here as a public preprint: a
+  separate journal publication was not located.
 \bibitem{bell-smertnig} J.~Bell and D.~Smertnig, \emph{Mahler series with
   multiplicative coefficient sequences}, 2026,
   \href{https://doi.org/10.48550/arXiv.2603.23456}{arXiv:2603.23456}.  The
