@@ -535,9 +535,25 @@ none of which follows from Martin, Coons, or Bell--Smertnig.
 
 Coons's statement is about the union over all levels: no finite set of sections
 generates the rest.  Bell and Smertnig's is about a functional equation.
-\ref{res:basis} and \ref{res:rank} are complementary positive statements at
-each finite level, and are consistent with both precisely because the rank is
-unbounded in $e$.  Knowing that a span is not finitely generated says nothing
+
+One consequence of Coons's theorem should be recorded explicitly, because it
+bounds what the present section may claim.  For a subgroup $M\subseteq\Z^{\N}$
+of integer-valued sequences, finite generation over $\Z$ is \emph{equivalent} to
+finite dimension of its $\Q$-span.  One direction is immediate.  For the other,
+choose $\Q$-independent $m_1,\dots,m_d\in M$ and evaluation points
+$n_1,\dots,n_d$ with $D:=\det[m_i(n_j)]\neq0$, necessarily a nonzero integer;
+for $x\in M$ Cramer's rule applied to the integer system
+$x(n_j)=\sum_i a_im_i(n_j)$ places every $a_i$ in $\tfrac1D\Z$, so
+$M\subseteq\tfrac1D\bigl(\Z m_1+\dots+\Z m_d\bigr)$, and over the principal
+ideal domain $\Z$ a submodule of a finitely generated module is finitely
+generated.  (The familiar obstruction, that $\Z[\tfrac12]$ has rank one without
+being finitely generated, cannot occur here: an integer-valued sequence bounds
+its own denominators through its values at small indices.)
+
+Hence \emph{infinite-dimensionality of the full totient kernel is not an
+independent contribution of this release}: it is equivalent to Coons's
+non-$k$-regularity and follows from it.  Only the finite-level statements are
+additional.  Knowing that a span is not finitely generated says nothing
 about its dimension at a given truncation, nor about which relations hold
 there; what is added here is that
 the dimension through level $e$ is exactly $2^e+1$, that an explicit family is
