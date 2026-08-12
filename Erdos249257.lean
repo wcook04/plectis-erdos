@@ -153,6 +153,7 @@ import Erdos249257.TotientActualLcmTopEdgeStaircase
 import Erdos249257.TotientCarryKernelRigidity
 import Erdos249257.TotientFixedRankLcmAsymptotic
 import Erdos249257.TotientMahlerDefect
+import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientKernelIndex
 import Erdos249257.TotientKernelReduction
 import Erdos249257.TotientParityCoboundaryCountermodel
