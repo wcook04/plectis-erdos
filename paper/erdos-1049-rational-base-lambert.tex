@@ -150,8 +150,9 @@ write $t^k$ over an integer base varies with $k$.
 The same Lambert value was already the target of Amdeberhan and
 Zeilberger's $q$-WZ construction~\cite{az1998}.  Here $p>1$ is the integer-base
 parameter and the little-$q$ kernel uses $q=p^{-1}$.  The two constructions
-share that bivariate little-$q$-Legendre Pad\'e kernel, but not one scalar
-recurrence: Amdeberhan--Zeilberger use the moving diagonal
+share that bivariate little-$q$-Legendre Pad\'e kernel, but Van Assche's
+diagonal does not satisfy the Amdeberhan--Zeilberger scalar recurrence.
+Amdeberhan--Zeilberger use the moving diagonal
 $P_n(p^{n+1}\mid p^{-1})$, whereas Van Assche uses
 $P_n(p^n\mid p^{-1})$.  Van Assche also records, citing
 Borwein's 1992 Lemma~2, the neighbouring evaluation
@@ -164,9 +165,14 @@ Amdeberhan--Zeilberger operator leaves
  -p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2),
 \]
 which is nonzero for every real $p>1$.  One nonzero residual is decisive for
-non-transfer.  No recurrence, endpoint, lattice, or valuation statement for
-one diagonal is used for the other; the displayed exact residual is the sole
-claim made here about their incompatibility.
+non-transfer of that recurrence.  Lean checks the
+\lword{Erdos1049/QAperyDiagonalNonEquivalence.lean}{67}{vanAsscheQAperyResidualAtZero_eq}{exact
+residual factorisation} and its
+\lword{Erdos1049/QAperyDiagonalNonEquivalence.lean}{94}{vanAsscheQAperyResidualAtZero_ne_zero}{nonvanishing
+for $p>1$}.  These are finite statements at $n=0$; they do not supply a
+recurrence for either diagonal.  No recurrence, endpoint, lattice, or
+valuation statement for one diagonal is used for the other; the displayed
+exact residual is the sole claim made here about their incompatibility.
 
 There is a second distinction at rational base $3/2$.  Over the checked range,
 the raw rational approximation errors decrease while the selected cleared
@@ -1457,13 +1463,14 @@ Erd\H{o}s Problems catalogue maintained by Thomas Bloom~\cite{erdosproblems}.
 \section{Guide to the formal sources}\label{app:index}
 
 Each linked phrase opens its Lean declaration at the pinned source
-revision~\commitshort.  The declarations of this note live in five modules:
-\texttt{RationalBaseLambert}, \texttt{RationalPadeArithmetic},
-\texttt{ZudilinConeArithmetic}, \texttt{ZudilinHeightRegion}, and
-\texttt{HermitePadeNoGo}.  The first contains the corridor, cleared-tail
-recurrence, and elementary $7/2$ certificate; the remaining four separate the
-Pad\'e exponent arithmetic, endpoint arithmetic, logarithmic comparisons, and
-rectangular exponent model.  The link
+revision~\commitshort.  The declarations of this note live in six modules:
+\texttt{RationalBaseLambert}, \texttt{QAperyDiagonalNonEquivalence},
+\texttt{RationalPadeArithmetic}, \texttt{ZudilinConeArithmetic},
+\texttt{ZudilinHeightRegion}, and \texttt{HermitePadeNoGo}.  The first contains
+the corridor, cleared-tail recurrence, and elementary $7/2$ certificate; the
+second checks the finite $n=0$ diagonal residual; the remaining four separate
+the Pad\'e exponent arithmetic, endpoint arithmetic, logarithmic comparisons,
+and rectangular exponent model.  The link
 coordinates are validated against that pinned revision, so they remain correct
 as later work moves lines in the working tree.
 
@@ -1473,6 +1480,9 @@ as later work moves lines in the working tree.
 
 \begin{tabular}{@{}ll@{}}
 informal statement & linked Lean source\\
+Van Assche diagonal initial values & \lrefx{Erdos1049/QAperyDiagonalNonEquivalence.lean}{33}{vanAsscheDiagonal_initial_values}\\
+exact $n=0$ residual factorisation & \lrefx{Erdos1049/QAperyDiagonalNonEquivalence.lean}{67}{vanAsscheQAperyResidualAtZero_eq}\\
+nonzero $n=0$ residual for $p>1$ & \lrefx{Erdos1049/QAperyDiagonalNonEquivalence.lean}{94}{vanAsscheQAperyResidualAtZero_ne_zero}\\
 corridor predicate & \lrefx{Erdos1049/RationalBaseLambert.lean}{113}{CoordinatewiseCorridor}\\
 corridor bound & \lrefx{Erdos1049/RationalBaseLambert.lean}{121}{coordinatewiseCorridor_implies_pow_lt_linear}\\
 exponential comparison & \lrefx{Erdos1049/RationalBaseLambert.lean}{142}{three_mul_lt_two_pow_succ}\\
