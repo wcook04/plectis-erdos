@@ -646,7 +646,7 @@ def render_outreach(packet: dict) -> str:
         "",
         "## #249 boundary capsule",
         "",
-        "> The checked local result is the exact rank `2^e+1` of the dyadic totient kernel through level `e`; the full-kernel infinite-dimensionality declaration is also kernel-checked, but is recorded as a formalised consequence of Coons rather than an independent contribution. For every base `k >= 2`, Lean separately checks the arithmetic reductions, exact finite residue coordinates, and cardinality `k^e+1` of the proposed index. The paper's all-base independence and basis step uses Martin externally and is not a Lean declaration. Comparator checks its selected statements and axiom budget. The missing rationality-to-finite-rank or unbounded-certificate bridge remains open, so Erdős #249 is not solved.",
+        "> The checked local result is the exact rank `2^e+1` of the dyadic totient kernel through level `e`; the full-kernel infinite-dimensionality declaration is also kernel-checked, but is recorded as a formalised consequence of Coons rather than an independent contribution. For every base `k >= 2`, Lean separately checks the arithmetic reduction, exact finite residue coordinates, unconditional spanning by the canonical family, and exact rank `k^e+1` conditional on that family being linearly independent. Martin supplies the paper's all-base independence step externally and is not formalised. Comparator checks its selected statements and axiom budget. The missing rationality-to-finite-rank or unbounded-certificate bridge remains open, so Erdős #249 is not solved.",
         "",
         "## #257 boundary capsule",
         "",
