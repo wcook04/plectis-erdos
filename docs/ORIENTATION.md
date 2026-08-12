@@ -59,11 +59,11 @@ counted as formal source, never as separate mathematical claims.
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 1,019 |
-| Lean declarations | 153,253 |
-| Theorem-like declarations | 151,039 |
+| Lean modules | 1,021 |
+| Lean declarations | 153,297 |
+| Theorem-like declarations | 151,074 |
 | Manifest-marked generated declarations (a floor, not the share) | 8,171 |
-| Principal claim links | 311 |
+| Principal claim links | 323 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json).
@@ -104,6 +104,7 @@ programmes, and source owners without loading the exhaustive graph.
 | `certified_kill_instances` | verified finite instance | `res:deposits` | `certifiedKill_all_small` in `Erdos249257/TotientTailPeriodKiller.lean:404` |
 | `diagonal_pincer_reduction` | conditional reduction | `res:fulltargetavoidance` | `diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget` in `Erdos249257/DiagonalPincerDecomposition.lean:215` |
 | `adelic_height_obstruction` | proved here | `res:adelic` | `scalarLocalization_complement_dvd` in `Erdos249257/AdelicHeightObstruction.lean:23` |
+| `all_base_totient_kernel_index_reduction` | proved here | `None` | `totient_pow_mul_eq` in `Erdos249257/TotientKernelReduction.lean:60` |
 | `sublog_zero_windows` | proved here | `res:sublog` | `supportCoeffZeroWindow_length_le_eps_logb_add` in `Erdos249257/SublogDivisorCoverage.lean:392` |
 | `greedy_achievement_geometry` | formalised here | `res:greedy` | `volume_mersenneAchievementSet` in `Erdos249257/GreedyAchievementSet.lean:996` |
 
@@ -154,7 +155,7 @@ settle the open proposition attached to it.
 - **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`): `docs/orientation.json`
   - Intent: Follow exact arithmetic enclosures and denominator lower bounds, finite square-CRT suppression, dyadic moment and certificate interfaces, and gauge countermodels that delimit several plausible #249 routes.
   - Route: `python3 scripts/query_corpus.py --route arithmetic_obstruction_interfaces`
-- **Understand the cited mathematical sources, their precise relationship to the release, and the priority boundary.** (`trace_prior_art`): `docs/PRIOR_ART.md` → `docs/orientation.json`
+- **Understand the cited mathematical sources, their precise relationship to the release, and the priority boundary.** (`trace_prior_art`): `docs/PRIOR_ART.md`
   - Route: `python3 scripts/query_corpus.py --route trace_prior_art`
 - **Understand the mathematical method, the evidence required for claim transitions, and the exact remaining open propositions.** (`understand_methodology_and_open_boundary`): `METHODOLOGY.md` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route understand_methodology_and_open_boundary`

@@ -153,6 +153,8 @@ import Erdos249257.TotientActualLcmTopEdgeStaircase
 import Erdos249257.TotientCarryKernelRigidity
 import Erdos249257.TotientFixedRankLcmAsymptotic
 import Erdos249257.TotientMahlerDefect
+import Erdos249257.TotientKernelIndex
+import Erdos249257.TotientKernelReduction
 import Erdos249257.TotientParityCoboundaryCountermodel
 import Erdos249257.TotientShiftedMobiusForeignBridge
 import Erdos249257.TotientTwoAdicPulseBlock

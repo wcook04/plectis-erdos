@@ -1,6 +1,8 @@
 import Mathlib.Algebra.Polynomial.Eval.Defs
 import Mathlib.Data.Fintype.Pigeonhole
+import Mathlib.Data.ZMod.Coprime
 import Mathlib.Data.ZMod.Basic
+import Mathlib.RingTheory.Polynomial.Cyclotomic.Basic
 import Mathlib.Tactic
 
 /-!
@@ -209,6 +211,109 @@ theorem homEvalThreeTwo_mod_three (W : ℕ) (P : Polynomial ℤ) :
       rw [show (3 : ZMod 3) = 0 by decide, zero_pow hipos.ne']
     simp [hthree]
   · simp
+
+/-! ## Generic homogeneous evaluation and the cyclotomic endpoint theorem -/
+
+/-- Integer homogeneous evaluation at a reduced numerator--denominator pair.
+
+The existing `homEvalThreeTwo` is the specialization `(a,b) = (3,2)`.  This
+generic form is the arithmetic object used in Proposition 3.6 of the paper. -/
+def homEval (a b W : ℕ) (P : Polynomial ℤ) : ℤ :=
+  ∑ i ∈ Finset.range (W + 1), P.coeff i * a ^ i * b ^ (W - i)
+
+/-- Modulo the numerator, homogeneous evaluation retains only the constant
+coefficient.  No primality assumption on the modulus is needed. -/
+theorem homEval_mod_left (a b W : ℕ) (P : Polynomial ℤ) :
+    (homEval a b W P : ZMod a) = (P.coeff 0 : ZMod a) * b ^ W := by
+  simp only [homEval, Int.cast_sum, Int.cast_mul, Int.cast_pow]
+  rw [Finset.sum_eq_single 0]
+  · simp
+  · intro i hi hi0
+    have hipos : 0 < i := Nat.pos_of_ne_zero hi0
+    simp [zero_pow hipos.ne']
+  · simp
+
+/-- Modulo the denominator, homogeneous evaluation retains only the
+coefficient at the declared top width. -/
+theorem homEval_mod_right (a b W : ℕ) (P : Polynomial ℤ) :
+    (homEval a b W P : ZMod b) = (P.coeff W : ZMod b) * a ^ W := by
+  simp only [homEval, Int.cast_sum, Int.cast_mul, Int.cast_pow]
+  rw [Finset.sum_eq_single W]
+  · simp
+  · intro i hi hiW
+    have hi_le : i ≤ W := by
+      have hi_lt : i < W + 1 := Finset.mem_range.mp hi
+      omega
+    have hi_lt : i < W := lt_of_le_of_ne hi_le hiW
+    have hsub : 0 < W - i := Nat.sub_pos_of_lt hi_lt
+    simp [zero_pow hsub.ne']
+  · simp
+
+/-- A unit constant coefficient makes the homogeneous value coprime to the
+numerator whenever the numerator and denominator are coprime. -/
+theorem homEval_isCoprime_left_of_const_unit
+    {a b W : ℕ} (P : Polynomial ℤ)
+    (hab : a.Coprime b)
+    (hconst : P.coeff 0 = 1 ∨ P.coeff 0 = -1) :
+    IsCoprime (homEval a b W P) (a : ℤ) := by
+  rw [isCoprime_comm]
+  apply (ZMod.coe_int_isUnit_iff_isCoprime (homEval a b W P) a).mp
+  rw [homEval_mod_left]
+  have hb : IsUnit (b : ZMod a) :=
+    (ZMod.isUnit_iff_coprime b a).2 hab.symm
+  have hc : IsUnit (P.coeff 0 : ZMod a) := by
+    rcases hconst with h | h <;> simp [h]
+  exact hc.mul (hb.pow W)
+
+/-- A unit top coefficient makes the homogeneous value coprime to the
+denominator whenever the numerator and denominator are coprime. -/
+theorem homEval_isCoprime_right_of_top_unit
+    {a b W : ℕ} (P : Polynomial ℤ)
+    (hab : a.Coprime b)
+    (htop : P.coeff W = 1 ∨ P.coeff W = -1) :
+    IsCoprime (homEval a b W P) (b : ℤ) := by
+  rw [isCoprime_comm]
+  apply (ZMod.coe_int_isUnit_iff_isCoprime (homEval a b W P) b).mp
+  rw [homEval_mod_right]
+  have ha : IsUnit (a : ZMod b) :=
+    (ZMod.isUnit_iff_coprime a b).2 hab
+  have hc : IsUnit (P.coeff W : ZMod b) := by
+    rcases htop with h | h <;> simp [h]
+  exact hc.mul (ha.pow W)
+
+/-- Unit endpoints make one homogeneous evaluation coprime to the full
+numerator--denominator product. -/
+theorem homEval_isCoprime_mul_of_endpoint_units
+    {a b W : ℕ} (P : Polynomial ℤ)
+    (hab : a.Coprime b)
+    (htop : P.coeff W = 1 ∨ P.coeff W = -1)
+    (hconst : P.coeff 0 = 1 ∨ P.coeff 0 = -1) :
+    IsCoprime (homEval a b W P) ((a * b : ℕ) : ℤ) := by
+  rw [Nat.cast_mul]
+  exact (homEval_isCoprime_left_of_const_unit P hab hconst).mul_right
+    (homEval_isCoprime_right_of_top_unit P hab htop)
+
+/-- Proposition 3.6: for a reduced rational base, every positive-index
+homogenized cyclotomic value is coprime to the numerator and denominator.
+
+The order assumptions `a > b ≥ 1` used in the paper identify a rational base
+greater than one; the coprimality conclusion itself needs only `Coprime a b`.
+-/
+theorem cyclotomicHomEval_isCoprime_mul
+    {a b m : ℕ} (hm : 0 < m) (hab : a.Coprime b) :
+    IsCoprime
+      (homEval a b (Nat.totient m) (Polynomial.cyclotomic m ℤ))
+      ((a * b : ℕ) : ℤ) := by
+  apply homEval_isCoprime_mul_of_endpoint_units _ hab
+  · left
+    rw [← Polynomial.natDegree_cyclotomic m ℤ]
+    exact (Polynomial.cyclotomic.monic m ℤ).coeff_natDegree
+  · by_cases hm1 : m = 1
+    · subst m
+      right
+      simp [Polynomial.cyclotomic_one]
+    · left
+      exact Polynomial.cyclotomic_coeff_zero ℤ (by omega)
 
 /-- Modulo `2`, homogeneous evaluation retains only the coefficient at the
 declared top width. -/

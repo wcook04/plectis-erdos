@@ -918,7 +918,7 @@ def main() -> int:
 
     dyadic_totient_claim = query("--claim", "dyadic_totient_certificate_interface")
     assert dyadic_totient_claim["claim"]["status"] == "unconditional progress"
-    assert "full dyadic totient kernel is not finite-dimensional" in (
+    assert "full dyadic kernel span is not finite-dimensional" in (
         dyadic_totient_claim["claim"]["statement"]
     )
     assert dyadic_totient_claim["claim"]["declarations"][0] == {

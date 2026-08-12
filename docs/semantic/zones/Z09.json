@@ -9,6 +9,11 @@
       "description": "The family of arithmetic sections n |-> phi(2^j n + r) of Euler's totient, viewed as vectors over the rationals."
     },
     {
+      "id": "all_base_totient_kernel_index",
+      "label": "All-base totient-kernel finite index",
+      "description": "The canonical two-head plus level/residue index for totient sections in an arbitrary integer base k, together with its arithmetic reduction identities and exact k^e + 1 cardinality."
+    },
+    {
       "id": "odd_core_channel",
       "label": "Odd-core channel",
       "description": "A dyadic section with odd residue, plus the two zero-residue base channels phi(n) and phi(2n)."
@@ -327,6 +332,49 @@
       "prior_art_state": "not_assessed",
       "prior_art_note": "docs/claims.json records this family as 'unconditional progress' and makes no novelty claim; no external comparison was performed here.",
       "scope_caveat": "",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_totient_kernel_arithmetic_index",
+      "canonical_statement": "For every integer base k at least two, Lean proves the zero-residue scaling identity, an exact division-free composite-base reduction, unique quotient/nonzero-digit coordinates for each positive fixed-level residue not divisible by k, and cardinality k^e + 1 of the resulting finite-level index.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "totient_pow_mul_eq",
+          "module": "Erdos249257/TotientKernelReduction.lean",
+          "line": 60
+        },
+        {
+          "declaration": "totient_pow_mul_affine_gcd_cross_eq",
+          "module": "Erdos249257/TotientKernelReduction.lean",
+          "line": 117
+        },
+        {
+          "declaration": "totientKernelSectionIndex_spec",
+          "module": "Erdos249257/TotientKernelIndex.lean",
+          "line": 118
+        },
+        {
+          "declaration": "existsUnique_totientKernelResidueAtLevel",
+          "module": "Erdos249257/TotientKernelIndex.lean",
+          "line": 207
+        },
+        {
+          "declaration": "card_totientKernelIndex",
+          "module": "Erdos249257/TotientKernelIndex.lean",
+          "line": 266
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Totient prime-support reduction, Euclidean quotient/nonzero-digit coordinates, and a telescoping finite cardinality calculation",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "These are arithmetic and finite-index components of the paper's all-base rank theorem. Martin remains the external authority for affine-section independence; Coons supplies the prior global non-regularity consequence. No novelty claim is made for this formalisation layer.",
+      "scope_caveat": "This node does not assert all-base linear independence, span equality, a basis of section functions, finite-level rank, Martin's positive-density theorem, or irrationality of the totient series.",
       "confidence": "high"
     },
     {
@@ -3217,6 +3265,69 @@
       "line": 51,
       "role": "statement",
       "statement_node": "euler_sieve_local_identities"
+    },
+    {
+      "declaration": "totient_pow_mul_eq",
+      "module": "Erdos249257/TotientKernelReduction.lean",
+      "line": 60,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "totient_pow_mul_affine_gcd_cross_eq",
+      "module": "Erdos249257/TotientKernelReduction.lean",
+      "line": 117,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "totientKernelSectionIndex_spec",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "line": 118,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "totientKernelResidueAtLevel_injective",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "line": 184,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "existsUnique_totientKernelResidueAtLevel",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "line": 207,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "card_totientKernelSectionLevel",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "line": 235,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "card_totientKernelSectionIndex",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "line": 243,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "card_totientKernelIndex_eq_two_add_sum",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "line": 255,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
+    },
+    {
+      "declaration": "card_totientKernelIndex",
+      "module": "Erdos249257/TotientKernelIndex.lean",
+      "line": 266,
+      "role": "statement",
+      "statement_node": "all_base_totient_kernel_arithmetic_index"
     }
   ],
   "intra_zone_relations": [
