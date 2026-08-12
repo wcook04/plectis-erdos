@@ -177,9 +177,9 @@ Exact registry keys and Comparator routing are listed separately.
   *Evidence.* mixed local finite-level theorem and formalised prior consequence · Lean kernel plus Comparator
 
 - **Totient kernel all base index**<br>
-  For every base k at least 2, Lean checks the zero-channel and composite-base reductions, exact nonmultiple-residue coordinates, and cardinality k^e+1 of the canonical candidate finite-level index.<br>
-  **Boundary.** Lean does not prove all-base affine-section independence, the resulting basis theorem, or the all-base rank theorem; those paper conclusions use Martin externally.<br>
-  *Evidence.* partly formalised paper theorem with external independence input · Lean kernel for arithmetic and finite indexing; paper argument plus Martin's cited theorem for independence
+  For every base k at least 2, Lean checks the arithmetic reduction, exact nonmultiple-residue coordinates, unconditional canonical spanning, and exact rank k^e+1 conditional on canonical-family linear independence.<br>
+  **Boundary.** Lean does not prove all-base affine-section independence or formalise Martin's theorem. The unconditional basis and rank conclusions in the paper use that external input.<br>
+  *Evidence.* formalised unconditional spanning and conditional rank with external independence input · Lean kernel for arithmetic, finite indexing, spanning, and the conditional-rank theorem; paper argument plus Martin's cited theorem for independence
 
 - **Totient finite denominator exclusion**<br>
   A Farey denominator exclusion through 7.96e34, sharp for its selected window, and diagonal certificates through t=82.<br>

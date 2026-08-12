@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{c2b44eb0409067724b9d7e8d61b95366f3ad833f}
-\renewcommand{\commitshort}{c2b44eb04090}
+\renewcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
+\renewcommand{\commitshort}{9e231ce4371f}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -98,7 +98,8 @@ rationality-to-finite-rank bridge, while the finite certificate does not
 supply an unbounded producer.  Problem~\#249 remains open.}{Comparator selects
 the explicit odd-core basis and the exact dyadic finite-level rank theorem.
 Full-kernel infinite-dimensionality is prior-art context from Coons, while the
-all-base independence step uses Martin externally.  The finite arithmetic
+all-base linear-independence input uses Martin externally; Lean checks the
+rank conclusion conditional on that explicit input.  The finite arithmetic
 certificate retains its separate evidence route.}
 
 \section{Introduction and main results}\label{sec:results}
@@ -1002,20 +1003,24 @@ separated from $\Theta_2$ by the uniform gap.
 
 This subsection previously posed the odd-prime kernel dimension as an open
 problem.  It is now a theorem, and for every integer base rather than for odd
-primes only.  The statement below combines Lean-checked arithmetic and
-finite-index layers with a paper-level independence argument.  Lean proves the zero-residue
+primes only.  The statement below combines Lean-checked arithmetic, spanning,
+and conditional-rank layers with a paper-level independence argument.  Lean proves the zero-residue
 relation
 (\mword{Erdos249257/TotientKernelReduction.lean}{60}{totient_pow_mul_eq}{checked})
 and the exact division-free composite-base reduction
 (\mword{Erdos249257/TotientKernelReduction.lean}{117}{totient_pow_mul_affine_gcd_cross_eq}{checked}).
 It also proves unique quotient/nonzero-digit coordinates for each admissible
 fixed-level residue and that the resulting finite index has cardinality
-$k^e+1$.  These are combinatorial statements about the proposed basis index;
-they do not identify its coordinates with linearly independent section
-functions.
-The final all-base independence and basis theorem is not a single Lean
-declaration: it uses Martin's external positive-density theorem through the
-elementary linear-independence consequence recorded above.
+$k^e+1$.  The new conditional layer proves that the canonical family spans
+the complete truncation and that its linear independence implies exact rank
+$k^e+1$.  These are respectively
+\texttt{span\_allBaseTotientKernelThroughLevelFamily\_eq\_canonical} and
+\texttt{finrank\_allBaseTotientKernelThroughLevelFamily\_eq\_of\_linearIndependent}
+in \texttt{Erdos249257/TotientKernelConditional.lean}; their immutable source
+links are added after the module lands in the paper's pinned snapshot.
+The antecedent of the second statement is explicit and is not discharged in
+Lean.  The paper obtains it from Martin's external positive-density theorem
+through the elementary linear-independence consequence recorded above.
 
 \begin{theorem}[exact rank of every totient $k$-kernel truncation]
 \label{thm:kkernelrank}
@@ -1042,9 +1047,14 @@ $t=\max\{s:k^s\mid r\}\ge1$ and $k\nmid u$, then
 
 The checked composite-base statement is deliberately cross-multiplied by
 $\ph(\gcd(k,u))$; the displayed scalar is the equivalent paper-level
-normalisation after exact division.  Thus the zero channel, arithmetic
-reduction, and finite-index/cardinality layers have kernel receipts, while
-Martin remains the external authority for the last independence step.
+normalisation after exact division.  Lean also checks that this scalar is
+nonzero and gives the exact one-step functional reduction
+\texttt{allBaseTotientKernelSeq\_mul\_residue\_step} in
+\texttt{Erdos249257/TotientKernelConditional.lean}.
+Thus the zero channel, arithmetic reduction, finite-index/cardinality,
+spanning, and conditional-rank layers have kernel receipts.  Martin remains
+the external authority for the linear-independence input and hence for the
+unconditional basis and rank conclusion of Theorem~\ref{thm:kkernelrank}.
 
 The selection condition is $k\nmid r$, not $\gcd(k,r)=1$; for composite $k$ a
 basis residue may share prime factors with $k$.  Independence is obtained by
@@ -1111,10 +1121,11 @@ Section~\ref{sec:open}.
   approximant family is proved.
 \item The $k$-kernel rank statement of Theorem~\ref{thm:kkernelrank} is
   independent of the irrationality problem and settles nothing about it.  Its
-  zero-residue, composite-base arithmetic, and finite-index/cardinality layers
-  are Lean-checked, but the
-  final all-base independence step remains a paper deduction from Martin's
-  Theorem~1.  No source was located for the rank, basis, or normal form
+  zero-residue, composite-base arithmetic, finite-index/cardinality, and
+  spanning layers are Lean-checked.  Lean also checks the exact-rank theorem
+  under an explicit linear-independence hypothesis.  That hypothesis remains
+  a paper deduction from Martin's Theorem~1; Martin's theorem is not
+  formalised.  No source was located for the rank, basis, or normal form
   themselves; that search result is not a priority verdict.
 \end{enumerate}
 
@@ -1186,7 +1197,10 @@ Martin, Coons, Bell and Smertnig, Kaneko--Suzuki--Tachiya, Luca--Tachiya, and
 Tao--Ter\"av\"ainen are cited from the literature.  This development does not
 formalise Martin's positive-density theorem or Coons's non-regularity theorem.
 It does kernel-check an independent dyadic basis/rank proof and a full-kernel
-infinite-dimensionality consequence that Coons already implies.  The
+infinite-dimensionality consequence that Coons already implies.  For every
+base it also kernel-checks the arithmetic reduction, unconditional canonical
+spanning, and the exact-rank conclusion conditional on an explicit
+linear-independence hypothesis; it does not prove that hypothesis.  The
 assessment that no prior source gives an explicit basis, an exact finite-level
 dimension formula, or a relation normal form for the totient $2$-kernel is the
 outcome of a literature search and is not a proof of non-existence.

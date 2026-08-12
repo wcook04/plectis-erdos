@@ -59,11 +59,11 @@ counted as formal source, never as separate mathematical claims.
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 1,021 |
-| Lean declarations | 153,297 |
-| Theorem-like declarations | 151,074 |
+| Lean modules | 1,023 |
+| Lean declarations | 153,320 |
+| Theorem-like declarations | 151,085 |
 | Manifest-marked generated declarations (a floor, not the share) | 8,171 |
-| Principal claim links | 323 |
+| Principal claim links | 329 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json).

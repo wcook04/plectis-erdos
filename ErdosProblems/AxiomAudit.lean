@@ -1,5 +1,6 @@
 import ErdosProblems.Root
 import Erdos249257.FirstHarmonicPivot
+import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientKernelIndex
 import Erdos249257.TotientKernelReduction
 
@@ -44,11 +45,17 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank
 #print axioms ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units
 #print axioms ErdosProblems.Erdos1049.cyclotomicHomEval_isCoprime_mul
+#print axioms ErdosProblems.Erdos1049.vanAsscheDiagonal_initial_values
+#print axioms ErdosProblems.Erdos1049.vanAsscheQAperyResidualAtZero_eq
+#print axioms ErdosProblems.Erdos1049.vanAsscheQAperyResidualAtZero_ne_zero
 #print axioms Erdos249257.totient_pow_mul_eq
 #print axioms Erdos249257.totient_pow_mul_gcd_cross_eq
 #print axioms Erdos249257.totient_pow_mul_affine_gcd_cross_eq
 #print axioms Erdos249257.existsUnique_totientKernelResidueAtLevel
 #print axioms Erdos249257.card_totientKernelIndex
+#print axioms Erdos249257.allBaseTotientKernelSeq_mul_residue_step
+#print axioms Erdos249257.span_allBaseTotientKernelThroughLevelFamily_eq_canonical
+#print axioms Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
 #print axioms Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber
 #print axioms Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq

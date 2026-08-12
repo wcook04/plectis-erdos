@@ -11,7 +11,7 @@
     {
       "id": "all_base_totient_kernel_index",
       "label": "All-base totient-kernel finite index",
-      "description": "The canonical two-head plus level/residue index for totient sections in an arbitrary integer base k, together with its arithmetic reduction identities and exact k^e + 1 cardinality."
+      "description": "The canonical two-head plus level/residue index for totient sections in an arbitrary integer base k, together with its arithmetic reduction identities, unconditional spanning theorem, exact k^e + 1 cardinality, and rank conclusion conditional on explicit linear independence."
     },
     {
       "id": "odd_core_channel",
@@ -375,6 +375,171 @@
       "prior_art_state": "formalisation_only",
       "prior_art_note": "These are arithmetic and finite-index components of the paper's all-base rank theorem. Martin remains the external authority for affine-section independence; Coons supplies the prior global non-regularity consequence. No novelty claim is made for this formalisation layer.",
       "scope_caveat": "This node does not assert all-base linear independence, span equality, a basis of section functions, finite-level rank, Martin's positive-density theorem, or irrationality of the totient series.",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_totient_reduction_scalar_nonzero",
+      "canonical_statement": "For every positive integer base k and every residue r, the rational scalar phi(k) gcd(k,r) / phi(gcd(k,r)) is nonzero.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "totientKernelReductionScalar_ne_zero",
+          "module": "Erdos249257/TotientKernelConditional.lean",
+          "line": 35
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Positivity of phi(k), gcd(k,r), and phi(gcd(k,r)) for k > 0, followed by nonvanishing of a rational quotient.",
+      "prior_art_state": "routine_corollary_or_specialisation",
+      "prior_art_note": "A direct positivity consequence of the arithmetic scalar already exposed by the composite-base totient reduction; no novelty claim is made.",
+      "scope_caveat": "Nonvanishing of the scalar is an arithmetic fact. It does not assert spanning, linear independence, rank, a basis, or irrationality.",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_totient_residue_scalar_step",
+      "canonical_statement": "For every positive integer base k, level j at least one, and residue r, the function n |-> phi(k^(j+1)n + kr) equals the constant rational scalar phi(k) gcd(k,r) / phi(gcd(k,r)) times the function n |-> phi(k^j n + r).",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "allBaseTotientKernelSeq_mul_residue_step",
+          "module": "Erdos249257/TotientKernelConditional.lean",
+          "line": 54
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Cast the division-free affine gcd identity to the rationals and divide by the nonzero totient of gcd(k,r).",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is the function-level exact-division form of the checked composite-base arithmetic identity. Martin is not used.",
+      "scope_caveat": "The identity holds for every residue r, including r = 0. It is one reduction step and does not by itself assert termination, independence, rank, or irrationality.",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_totient_channel_mem_canonical_span",
+      "canonical_statement": "Let k be at least two. If j is at most e and r is below k^j, then the base-k totient section n |-> phi(k^j n + r) belongs to the rational span of the canonical family indexed by TotientKernelIndex k e.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "allBaseTotientKernelSeq_mem_span_canonical_of_le",
+          "module": "Erdos249257/TotientKernelConditional.lean",
+          "line": 102
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Induction on the level: zero residues use the zero channel, residues divisible by k use the exact scalar step, and nonmultiples use the unique quotient/nonzero-digit coordinate.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This formalises the unconditional spanning reduction used in the all-base paper argument. It does not use Martin's affine-ordering theorem.",
+      "scope_caveat": "Membership in the canonical span gives no linear independence and no rank lower bound.",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_canonical_range_in_full_truncation",
+      "canonical_statement": "For every integer base k at least two and positive depth e, every member of the canonical all-base totient family occurs literally among the complete base-k kernel sections through level e.",
+      "logical_class": "representation_normalisation",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "range_canonicalAllBaseTotientKernelFamily_subset_throughLevel",
+          "module": "Erdos249257/TotientKernelConditional.lean",
+          "line": 165
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Embed the two head channels at levels zero and one and each section coordinate at its certified level and residue.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "A direct inclusion between the explicit finite index families; no novelty claim is made.",
+      "scope_caveat": "This is the easy range inclusion. It does not prove that the complete truncation lies in the canonical span or that either family is independent.",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_totient_canonical_span_equality",
+      "canonical_statement": "For every integer base k at least two and positive depth e, the rational span of every base-k totient section through level e equals the rational span of the canonical family indexed by TotientKernelIndex k e.",
+      "logical_class": "unconditional_object_theorem",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "span_allBaseTotientKernelThroughLevelFamily_eq_canonical",
+          "module": "Erdos249257/TotientKernelConditional.lean",
+          "line": 185
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [],
+      "is_restatement_of_open_problem": false,
+      "engine": "Combine recursive membership of every full-kernel channel in the canonical span with literal inclusion of every canonical channel in the full truncation.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is the unconditional spanning half of the paper's all-base theorem. Martin is not used.",
+      "scope_caveat": "Span equality supplies an upper bound from the canonical index. It does not prove that the canonical family is linearly independent or that the rank is k^e + 1.",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_totient_canonical_rank_of_linear_independence",
+      "canonical_statement": "For every integer base k at least two and every depth e, if the canonical all-base totient family indexed by TotientKernelIndex k e is linearly independent over the rationals, then the rank of its rational span is exactly k^e + 1.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "finrank_canonicalAllBaseTotientKernel_eq_of_linearIndependent",
+          "module": "Erdos249257/TotientKernelConditional.lean",
+          "line": 203
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [
+        "hcanon : LinearIndependent Q (canonicalAllBaseTotientKernelFamily k e). This is a free theorem hypothesis. The corpus does not prove it for arbitrary k; the paper derives it from Martin's external positive-density theorem, which is not formalised."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "The standard finrank-of-span theorem for a finite linearly independent family, followed by the checked cardinality Fintype.card (TotientKernelIndex k e) = k^e + 1.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "The implication is Lean-checked; its linear-independence antecedent remains external at general base. No claim is made that Martin's theorem has been formalised.",
+      "scope_caveat": "This theorem does not prove its linear-independence hypothesis. It therefore does not establish unconditional all-base rank or a basis and has no consequence for irrationality of the totient series.",
+      "confidence": "high"
+    },
+    {
+      "id": "all_base_totient_truncation_rank_of_linear_independence",
+      "canonical_statement": "For every integer base k at least two and positive depth e, if the canonical all-base totient family is linearly independent over the rationals, then the rational span of all base-k totient sections through level e has rank exactly k^e + 1.",
+      "logical_class": "conditional_implication",
+      "problem": "249",
+      "evidence": [
+        {
+          "declaration": "finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+          "module": "Erdos249257/TotientKernelConditional.lean",
+          "line": 215
+        }
+      ],
+      "concepts": [
+        "all_base_totient_kernel_index"
+      ],
+      "open_antecedents": [
+        "hcanon : LinearIndependent Q (canonicalAllBaseTotientKernelFamily k e). This is a free theorem hypothesis. The corpus does not prove it for arbitrary k; the paper derives it from Martin's external positive-density theorem, which is not formalised."
+      ],
+      "is_restatement_of_open_problem": false,
+      "engine": "Rewrite the full-truncation span by the unconditional canonical span equality, then apply the conditional cardinality-sized rank theorem.",
+      "prior_art_state": "formalisation_only",
+      "prior_art_note": "This is the precise formal boundary of the all-base rank result: spanning and the conditional implication are checked, while general-base independence is external.",
+      "scope_caveat": "The conclusion is conditional on explicit linear independence. Lean does not discharge that hypothesis, formalise Martin's theorem, construct an unconditional all-base basis, or prove irrationality of the totient series.",
       "confidence": "high"
     },
     {
@@ -3267,6 +3432,90 @@
       "statement_node": "euler_sieve_local_identities"
     },
     {
+      "declaration": "allBaseTotientKernelSeq",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 25,
+      "role": "concept",
+      "statement_node": "all_base_totient_residue_scalar_step"
+    },
+    {
+      "declaration": "totientKernelReductionScalar",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 30,
+      "role": "concept",
+      "statement_node": "all_base_totient_reduction_scalar_nonzero"
+    },
+    {
+      "declaration": "totientKernelReductionScalar_ne_zero",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 35,
+      "role": "statement",
+      "statement_node": "all_base_totient_reduction_scalar_nonzero"
+    },
+    {
+      "declaration": "allBaseTotientKernelSeq_mul_residue_step",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 54,
+      "role": "statement",
+      "statement_node": "all_base_totient_residue_scalar_step"
+    },
+    {
+      "declaration": "canonicalAllBaseTotientKernelFamily",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 81,
+      "role": "concept",
+      "statement_node": "all_base_totient_channel_mem_canonical_span"
+    },
+    {
+      "declaration": "AllBaseTotientKernelThroughLevelIndex",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 90,
+      "role": "concept",
+      "statement_node": "all_base_canonical_range_in_full_truncation"
+    },
+    {
+      "declaration": "allBaseTotientKernelThroughLevelFamily",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 94,
+      "role": "concept",
+      "statement_node": "all_base_totient_canonical_span_equality"
+    },
+    {
+      "declaration": "allBaseTotientKernelSeq_mem_span_canonical_of_le",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 102,
+      "role": "statement",
+      "statement_node": "all_base_totient_channel_mem_canonical_span"
+    },
+    {
+      "declaration": "range_canonicalAllBaseTotientKernelFamily_subset_throughLevel",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 165,
+      "role": "statement",
+      "statement_node": "all_base_canonical_range_in_full_truncation"
+    },
+    {
+      "declaration": "span_allBaseTotientKernelThroughLevelFamily_eq_canonical",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 185,
+      "role": "statement",
+      "statement_node": "all_base_totient_canonical_span_equality"
+    },
+    {
+      "declaration": "finrank_canonicalAllBaseTotientKernel_eq_of_linearIndependent",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 203,
+      "role": "statement",
+      "statement_node": "all_base_totient_canonical_rank_of_linear_independence"
+    },
+    {
+      "declaration": "finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent",
+      "module": "Erdos249257/TotientKernelConditional.lean",
+      "line": 215,
+      "role": "statement",
+      "statement_node": "all_base_totient_truncation_rank_of_linear_independence"
+    },
+    {
       "declaration": "totient_pow_mul_eq",
       "module": "Erdos249257/TotientKernelReduction.lean",
       "line": 60,
@@ -3331,6 +3580,66 @@
     }
   ],
   "intra_zone_relations": [
+    {
+      "from": "all_base_totient_reduction_scalar_nonzero",
+      "to": "all_base_totient_kernel_arithmetic_index",
+      "relation": "specialises",
+      "basis": "The nonzero rational scalar is obtained by exact division of the arithmetic node's cross-multiplied composite-base identity; positivity of its denominator justifies the division."
+    },
+    {
+      "from": "all_base_totient_residue_scalar_step",
+      "to": "all_base_totient_kernel_arithmetic_index",
+      "relation": "reformulates",
+      "basis": "The function equality is the exact rational-division form of the cross-multiplied affine gcd identity, with the coefficient constant along the section."
+    },
+    {
+      "from": "all_base_totient_channel_mem_canonical_span",
+      "to": "all_base_totient_residue_scalar_step",
+      "relation": "generated_by",
+      "basis": "The recursive spanning proof lowers every residue divisible by k using the scalar step until a head channel or a nonmultiple coordinate is reached."
+    },
+    {
+      "from": "all_base_totient_channel_mem_canonical_span",
+      "to": "all_base_totient_kernel_arithmetic_index",
+      "relation": "generated_by",
+      "basis": "The nonmultiple branch uses the arithmetic node's unique quotient/nonzero-digit coordinate theorem."
+    },
+    {
+      "from": "all_base_canonical_range_in_full_truncation",
+      "to": "all_base_totient_kernel_arithmetic_index",
+      "relation": "generated_by",
+      "basis": "The certified level and residue bounds embed every canonical coordinate into the complete through-level index."
+    },
+    {
+      "from": "all_base_totient_canonical_span_equality",
+      "to": "all_base_totient_channel_mem_canonical_span",
+      "relation": "generated_by",
+      "basis": "One inclusion is exactly the theorem that every complete-kernel channel belongs to the canonical span."
+    },
+    {
+      "from": "all_base_totient_canonical_span_equality",
+      "to": "all_base_canonical_range_in_full_truncation",
+      "relation": "generated_by",
+      "basis": "The reverse inclusion follows from the literal occurrence of every canonical channel in the complete truncation."
+    },
+    {
+      "from": "all_base_totient_canonical_rank_of_linear_independence",
+      "to": "all_base_totient_kernel_arithmetic_index",
+      "relation": "depends_on_open",
+      "basis": "The checked index cardinality gives k^e + 1 once the theorem's explicit, externally discharged linear-independence hypothesis is supplied."
+    },
+    {
+      "from": "all_base_totient_truncation_rank_of_linear_independence",
+      "to": "all_base_totient_canonical_rank_of_linear_independence",
+      "relation": "generated_by",
+      "basis": "After rewriting the full span as the canonical span, the conditional canonical rank theorem gives the result."
+    },
+    {
+      "from": "all_base_totient_truncation_rank_of_linear_independence",
+      "to": "all_base_totient_canonical_span_equality",
+      "relation": "generated_by",
+      "basis": "The unconditional span equality transports the conditional exact-rank conclusion from the canonical family to the actual complete truncation."
+    },
     {
       "from": "dyadic_channel_odd_core_reduction",
       "to": "totient_two_adic_scaling",
