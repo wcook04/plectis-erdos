@@ -44,6 +44,9 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank
 #print axioms ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units
 #print axioms ErdosProblems.Erdos1049.cyclotomicHomEval_isCoprime_mul
+#print axioms ErdosProblems.Erdos1049.vanAsscheDiagonal_initial_values
+#print axioms ErdosProblems.Erdos1049.vanAsscheQAperyResidualAtZero_eq
+#print axioms ErdosProblems.Erdos1049.vanAsscheQAperyResidualAtZero_ne_zero
 #print axioms Erdos249257.totient_pow_mul_eq
 #print axioms Erdos249257.totient_pow_mul_gcd_cross_eq
 #print axioms Erdos249257.totient_pow_mul_affine_gcd_cross_eq
