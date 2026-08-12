@@ -749,9 +749,10 @@ memory). The source was copied without version-control metadata or a prior
 `.lake` directory:
 
 ```sh
-repro_dir=$(mktemp -d /private/tmp/plectis-repro.XXXXXX)
-rsync -a --exclude '.git/' --exclude '.lake/' \
-  /Users/willcook/src/plectis-erdos-papers/ "$repro_dir"/
+# Run from anywhere inside a clone of this repository.
+repo_root=$(git rev-parse --show-toplevel)
+repro_dir=$(mktemp -d)
+rsync -a --exclude '.git/' --exclude '.lake/' "$repo_root"/ "$repro_dir"/
 cd "$repro_dir"
 lake exe cache get
 lake build
