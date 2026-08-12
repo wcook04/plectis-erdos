@@ -60,8 +60,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         ))
         registered = [row for row in packet["main_results"] if row.get("claim_id")]
         unregistered = [row for row in packet["main_results"] if not row.get("claim_id")]
-        self.assertEqual(len(registered), 4)
-        self.assertEqual(len(unregistered), 15)
+        self.assertEqual(len(registered), 5)
+        self.assertEqual(len(unregistered), 14)
         self.assertTrue(all(
             row["canonical_claim_status"].startswith("supports_registered_claim_family:")
             for row in registered
