@@ -447,13 +447,13 @@ def _details_block(summary: str, body_lines: list[str]) -> list[str]:
 
 
 def _render_family_item(family: dict) -> list[str]:
-    """One Markdown list item = one family; hard breaks keep fields grouped."""
+    """One Markdown list item = one family; explicit breaks keep fields grouped."""
     label = _family_display_label(family["id"])
     evidence = f"{family['contribution_class']} · {family['evidence_mode']}"
     return [
-        f"- **{label}**  ",
-        f"  {family['summary']}  ",
-        f"  **Boundary.** {family['boundary']}  ",
+        f"- **{label}**<br>",
+        f"  {family['summary']}<br>",
+        f"  **Boundary.** {family['boundary']}<br>",
         f"  *Evidence.* {evidence}",
         "",
     ]
@@ -462,7 +462,7 @@ def _render_family_item(family: dict) -> list[str]:
 def _render_routing_item(family: dict) -> list[str]:
     """Sibling machine-routing lane; order matches the human family list."""
     return [
-        f"- {_md_breakable_code(family['id'])}  ",
+        f"- {_md_breakable_code(family['id'])}<br>",
         f"  Comparator: {_md_breakable_code(family['comparator_disposition'])}",
         "",
     ]
@@ -646,7 +646,7 @@ def render_outreach(packet: dict) -> str:
         "",
         "## #249 boundary capsule",
         "",
-        "> The checked result is the exact rank `2^e+1` of the dyadic totient kernel through level `e`, together with infinite-dimensionality of the full kernel. Comparator checks those statements and their axiom budget. The missing step is still a rationality-to-finite-rank or unbounded-certificate bridge; Erdős #249 remains open.",
+        "> The checked local result is the exact rank `2^e+1` of the dyadic totient kernel through level `e`; the full-kernel infinite-dimensionality declaration is also kernel-checked, but is recorded as a formalised consequence of Coons rather than an independent contribution. For every base `k >= 2`, Lean separately checks the arithmetic reductions, exact finite residue coordinates, and cardinality `k^e+1` of the proposed index. The paper's all-base independence and basis step uses Martin externally and is not a Lean declaration. Comparator checks its selected statements and axiom budget. The missing rationality-to-finite-rank or unbounded-certificate bridge remains open, so Erdős #249 is not solved.",
         "",
         "## #257 boundary capsule",
         "",

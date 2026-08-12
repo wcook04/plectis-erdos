@@ -59,11 +59,11 @@ counted as formal source, never as separate mathematical claims.
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 1,020 |
-| Lean declarations | 153,273 |
-| Theorem-like declarations | 151,056 |
+| Lean modules | 1,021 |
+| Lean declarations | 153,297 |
+| Theorem-like declarations | 151,074 |
 | Manifest-marked generated declarations (a floor, not the share) | 8,171 |
-| Principal claim links | 311 |
+| Principal claim links | 323 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json).
@@ -104,6 +104,7 @@ programmes, and source owners without loading the exhaustive graph.
 | `certified_kill_instances` | verified finite instance | `res:deposits` | `certifiedKill_all_small` in `Erdos249257/TotientTailPeriodKiller.lean:404` |
 | `diagonal_pincer_reduction` | conditional reduction | `res:fulltargetavoidance` | `diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget` in `Erdos249257/DiagonalPincerDecomposition.lean:215` |
 | `adelic_height_obstruction` | proved here | `res:adelic` | `scalarLocalization_complement_dvd` in `Erdos249257/AdelicHeightObstruction.lean:23` |
+| `all_base_totient_kernel_index_reduction` | proved here | `None` | `totient_pow_mul_eq` in `Erdos249257/TotientKernelReduction.lean:60` |
 | `sublog_zero_windows` | proved here | `res:sublog` | `supportCoeffZeroWindow_length_le_eps_logb_add` in `Erdos249257/SublogDivisorCoverage.lean:392` |
 | `greedy_achievement_geometry` | formalised here | `res:greedy` | `volume_mersenneAchievementSet` in `Erdos249257/GreedyAchievementSet.lean:996` |
 

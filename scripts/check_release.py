@@ -627,8 +627,13 @@ def main() -> int:
         public_tag = formal_source.get("public_tag")
         check(
             isinstance(public_tag, str)
-            and re.fullmatch(r"formal-source-\d{4}-\d{2}-\d{2}", public_tag) is not None,
-            "release.formal_source.public_tag must be a dated formal-source tag",
+            and re.fullmatch(
+                r"formal-source-\d{4}-\d{2}-\d{2}(?:-r[1-9]\d*)?",
+                public_tag,
+            )
+            is not None,
+            "release.formal_source.public_tag must be a dated formal-source "
+            "tag, optionally with a positive correction revision",
         )
         if isinstance(public_tag, str):
             tag_kind = subprocess.run(

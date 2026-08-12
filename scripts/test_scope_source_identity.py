@@ -56,7 +56,8 @@ def main() -> int:
     assert re.fullmatch(r"[0-9a-f]{40}", formal_source["ref"])
     assert formal_source["ref_kind"] == "commit"
     assert re.fullmatch(
-        r"formal-source-\d{4}-\d{2}-\d{2}", formal_source["public_tag"]
+        r"formal-source-\d{4}-\d{2}-\d{2}(?:-r[1-9]\d*)?",
+        formal_source["public_tag"],
     )
     assert formal_source["publication_state"] == "published_committed_checkpoint"
     assert formal_source["relationship_to_last_tag"] in {"at_last_tag", "post_tag_checkpoint"}

@@ -332,14 +332,14 @@ $16(2X+h+L+2)\le 2^{L}$, and all four of
   &\qquad \bigl\|\mathrm{pivotNonSupplierContribution}\bigr\| &\le \tfrac{8}{25}X .
 \end{aligned}
 \]
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:397},
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak DTWPivotResidualDecorrelation}{FirstHarmonicPivot.lean:569},
 consumer
-\lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:405}
+\lean{Erdos249257.\allowbreak irrational_totient_\allowbreak series_of_pivotResidualDecorrelation}{FirstHarmonicPivot.lean:577}
 \quad \ev{Open} \quad \scale{cofinal}. The decomposition is an exact identity,
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstExp_sum_\allowbreak eq_pivot_decomposition}{FirstHarmonicPivot.lean:342}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstExp_sum_\allowbreak eq_pivot_decomposition}{FirstHarmonicPivot.lean:514}
 \quad \ev{Lean}, and the supplier set at the canonical fibre is a membership
 equality with a shifted dyadic interval of primes,
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:251}
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:423}
 \quad \ev{Lean}.
 
 \paragraph{One budget has a classical one-sided majorant.}
@@ -556,7 +556,7 @@ $(h,X,L)$, and the corpus already contains the right one:
   \;=\;\{\,N\in[X,2X)\ :\ N+h+1\ \text{prime}\,\},
 \]
 a membership equality rather than a sampled surrogate
-(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:251},
+(\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak mem_pivotFiber_\allowbreak one_overlap_iff}{FirstHarmonicPivot.lean:423},
 \ev{Lean}). The proposal is to prove
 \begin{equation}\label{eq:primefibre}
   \forall h\ge1\ \forall X_0\ \exists X\ge X_0,\ L:\quad
