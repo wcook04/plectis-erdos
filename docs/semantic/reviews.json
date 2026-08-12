@@ -118,6 +118,17 @@
     },
     {
       "subject_kind": "statement_node",
+      "subject_id": "Z09::all_base_totient_kernel_arithmetic_index",
+      "reviewer": "Codex Type A (GPT-5.6)",
+      "reviewer_type": "ai_semantic_consistency_review",
+      "reviewed_revision": "c2b44eb0409067724b9d7e8d61b95366f3ad833f",
+      "reviewed_at": "2026-08-12",
+      "evidence_digest": "sha256:f531efebd95a3cb00b9ce22e5417468ac199d0310a14d910fe997511eea008f4",
+      "review_scope": "Canonical arithmetic-and-index wording checked against the five cited declaration signatures and the nine-declaration all_base_totient_kernel_index_reduction headline boundary.",
+      "claim_ceiling": "Arithmetic reduction, unique quotient/nonzero-digit coordinates, and finite-index cardinality only; not all-base affine-section independence, basis, rank, Martin's theorem, irrationality, Lean proof authority, independent human review, or novelty assessment."
+    },
+    {
+      "subject_kind": "statement_node",
       "subject_id": "Z12::mersenne_support_coding_normalisation",
       "reviewer": "Codex Type A (GPT-5.6)",
       "reviewer_type": "ai_semantic_consistency_review",

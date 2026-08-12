@@ -840,8 +840,7 @@
           "which results need novelty review"
         ],
         "read": [
-          "docs/PRIOR_ART.md",
-          "docs/orientation.json"
+          "docs/PRIOR_ART.md"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --artifact docs/PRIOR_ART.md",
@@ -932,6 +931,16 @@
       "principal_declaration_index_label": "app:index",
       "claim_anchor_field": "paper_label",
       "companion_sources": [
+        {
+          "title": "A Basis for the 2-Kernel of Euler's Totient",
+          "source": "paper/erdos-249-binary-totient-series.tex",
+          "rendered": "erdos-249-binary-totient-series.pdf",
+          "role": "Standalone theorem-led problem note for Erdős #249 and the dyadic/all-base totient-kernel boundary.",
+          "anchor_label_allowlist": [
+            "res:basis",
+            "res:rank"
+          ]
+        },
         {
           "title": "The Binary Totient Series: a complete working record of Erdős Problem 249",
           "source": "paper/erdos249-totient-reasoning-surface.tex",
@@ -1364,15 +1373,17 @@
             "adelic_height_obstruction",
             "square_crt_correction_suppression",
             "signed_dyadic_moment_substrate",
+            "dyadic_totient_basis",
             "dyadic_totient_certificate_interface",
+            "all_base_totient_kernel_index_reduction",
             "residual_gauge_obstruction",
             "totient_carry_kernel_anti_compression"
           ],
-          "status_summary": "Exact finite obstructions and interfaces with one conditional rank consequence.",
-          "prior_art_posture": "Classical Euler/Möbius, CRT, determinant, and Lambert tools; the selected tail-atom boundary is elementary column-denominator clearing. No completed endpoint or priority claim.",
+          "status_summary": "Exact finite obstructions and interfaces, a constructive dyadic basis, and an all-base arithmetic/index layer whose final rank theorem remains Martin-dependent.",
+          "prior_art_posture": "Classical Euler/Möbius, CRT, determinant, and Lambert tools; Coons already implies full-kernel infinite rank, and Martin supplies the external all-base affine-independence step. No completed irrationality endpoint or priority claim.",
           "primary_narrative_owner": "docs/claims.json::claims",
           "source_route": "python3 scripts/query_corpus.py --route lambert_obstruction_interfaces",
-          "consumer_or_open_obligation": "Additional all-level independence or arithmetic coupling would be needed.",
+          "consumer_or_open_obligation": "No rationality-to-finite-rank bridge is proved; all-base independence, basis, and span rank remain external to Lean.",
           "view_decision": "gateway_selected_boundaries_and_living_reference_detail"
         },
         {

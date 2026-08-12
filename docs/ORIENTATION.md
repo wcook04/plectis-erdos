@@ -155,7 +155,7 @@ settle the open proposition attached to it.
 - **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`): `docs/orientation.json`
   - Intent: Follow exact arithmetic enclosures and denominator lower bounds, finite square-CRT suppression, dyadic moment and certificate interfaces, and gauge countermodels that delimit several plausible #249 routes.
   - Route: `python3 scripts/query_corpus.py --route arithmetic_obstruction_interfaces`
-- **Understand the cited mathematical sources, their precise relationship to the release, and the priority boundary.** (`trace_prior_art`): `docs/PRIOR_ART.md` → `docs/orientation.json`
+- **Understand the cited mathematical sources, their precise relationship to the release, and the priority boundary.** (`trace_prior_art`): `docs/PRIOR_ART.md`
   - Route: `python3 scripts/query_corpus.py --route trace_prior_art`
 - **Understand the mathematical method, the evidence required for claim transitions, and the exact remaining open propositions.** (`understand_methodology_and_open_boundary`): `METHODOLOGY.md` → `SCOPE.md`
   - Route: `python3 scripts/query_corpus.py --route understand_methodology_and_open_boundary`

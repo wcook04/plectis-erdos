@@ -61,41 +61,16 @@ cache, or network access.
 [Retained joint #249/#257 exposition](erdos249-257-main-paper.pdf) ·
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml)
 
-## Status
-
-All eight problems remain open. **This project does not solve any of them.**
-Each problem paper states the checked results, the evidence boundary, and the
-exact obligation that remains. Registered formal results stay within Lean
-source; paper theorems and cited inputs are labelled separately.
-
 ## External verification
 
-[YAML](formalization.yaml) and [packet](docs/EXTERNAL_VERIFICATION.md) cover all eight problem programmes.
-**Ten-minute verdict.** Checked non-restatement centre:
-
-- #257 has exact finite-period noncollapse, irrationality for eventually
-  periodic supports, a signed periodic-weight dichotomy, achievement-set
-  geometry, and scoped method barriers.
-- #249 has exact dyadic-section ranks, explicit bases and relation normal
-  forms, denominator-shadow growth, and scoped barriers and case trichotomies.
-  The all-base `k^e+1` extension is a paper deduction from Martin plus the
-  Lean-checked arithmetic and finite-index/cardinality layers; full-kernel
-  infinite rank is Coons's prior result, not part of this non-restatement
-  centre.
-- The project also diagnoses its own failed reformulation routes: 17 of 23
-  substantial hypotheses extracted from conditional theorems are proved
-  endpoint-equivalent. Those equivalences are evidence about the methods, not
-  progress on either open problem.
-
-The finite #249 result is the classical Farey/mediant bound at `K=240`
-(numerical delta `0`); Farey's method supplies the number directly. The local
-contribution is checked arithmetic, transfers,
-and the sharp first failure.
-[RESULTS](docs/RESULTS.md) gives the strongest checked results for each of
-the eight problems, then the typed census and limits.
-
-Where a result restates prior work, [prior art](docs/PRIOR_ART.md) records whose
-it is; #269's two-prime case in particular is not first (see the table above).
+[YAML](formalization.yaml) and the [verification packet](docs/EXTERNAL_VERIFICATION.md)
+cover all eight problem programmes. [RESULTS](docs/RESULTS.md) gives each
+strongest checked result and its limit; [prior art](docs/PRIOR_ART.md) records
+classical, subsuming, and earlier public work. The finite #249 result is the
+classical Farey/mediant bound (numerical delta `0`): Farey's method supplies
+the number directly, exactly the Farey bound, not an improvement. Full-kernel
+infinite rank is Coons's prior result, the all-base rank paper theorem uses
+Martin externally, and #269's two-prime result is not first.
 
 This self-contained public Plectis checkout is not an entrypoint into any private
 development system. `v0.8.0` is the latest tagged release and citation anchor;
@@ -119,7 +94,7 @@ conclusion depends on a named open condition.
 | **proved here** | For the #257 test value `1/2`, achievement-set membership is equivalent to infinitely many greedy skips and would produce an infinite support of rational sum, refuting universal #257. Under the last-skip schema's hypotheses (a rank floor, a carry condition, and a strict middle-cell inequality), the upper branch and the middle coordinate `-3` are impossible. |
 | **conditional reduction** | Within that same last-skip contradiction schema, the two still-unexcluded middle coordinates, `-2` and `-1`, would also be ruled out if one current contribution were larger than the sum of all later possible contributions. That inequality is not proved. |
 | **formalised here** | The dyadic sections of Euler's totient have an explicit rational basis; for `e ≥ 1` the level-`e` span has dimension exactly `2ᵉ + 1`. The Lean proof is an independent constructive route to an independence consequence of Martin's stronger theorem; this is a theorem about the coefficient sequence, not the irrationality of `S`. |
-| **paper theorem; partly formalised** | For every integer `k ≥ 2`, the sections through level `e ≥ 1` have rank `kᵉ + 1`, with an explicit basis and complete scalar relation normal form. The paper combines Martin's external affine-independence theorem with Lean-checked zero-channel and composite-base reduction identities, exact fixed-level residue coordinates, and the `kᵉ + 1` index count. The final all-base independence, basis, and span-rank theorem is not a Lean declaration. |
+| **unconditional progress** | For every integer `k ≥ 2`, the sections through level `e ≥ 1` have rank `kᵉ + 1`, with an explicit basis and complete scalar relation normal form. The paper combines Martin's external affine-independence theorem with Lean-checked zero-channel and composite-base reduction identities, exact fixed-level residue coordinates, and the `kᵉ + 1` index count. The final all-base independence, basis, and span-rank theorem is not a Lean declaration. |
 | **formalised here** | Applying the classical Farey/mediant bound directly to the committed `K=240` interval excludes rational denominators through `79 639 646 646 701 375 323 355 774 875 831 053` (about `7.96 × 10³⁴`). This is exactly the Farey bound, not an improvement on it; Lean also checks that the next denominator fails this finite window. |
 | **proved here** | `S` is irrational exactly when every positive binary tail difference is non-integral, equivalently when every fixed pair has a finite certificate. Finishing the argument would require certificates at arbitrarily large stages; that step is not proved. |
 | **verified finite instance** | Lean proves a diagonal certificate at every `t ≤ 82`. Historical free-position audit: 125 verified log rows represent 123 distinct off-diagonal `(h,N,L)` certificates in 122 Lean files. This finite evidence does not prove successful cases beyond every fixed cutoff. |

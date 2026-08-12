@@ -1947,6 +1947,26 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 }
             )
 
+        # Standalone problem notes may present their result inventory as
+        # labelled enumerate items rather than theorem environments.  Scan
+        # those only when the paper row supplies an explicit allowlist: this
+        # makes the selected claim anchors queryable without turning every
+        # incidental list item in every companion into a public paper anchor.
+        if paper_row.get("anchor_label_allowlist") is not None:
+            item_pattern = re.compile(
+                r"\\item(?:\[[^]]*\])?[^\n]*?\\label\{(?P<label>[^}]+)\}"
+            )
+            for match in item_pattern.finditer(text):
+                starts.append(
+                    {
+                        "offset": match.start(),
+                        "anchor_kind": "enumerated_result",
+                        "title": None,
+                        "label": match.group("label"),
+                        "environment": None,
+                    }
+                )
+
         if environments:
             environment_pattern = re.compile(
                 r"\\begin\{(?P<environment>"
