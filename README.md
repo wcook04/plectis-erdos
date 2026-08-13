@@ -20,9 +20,8 @@ The repository was created for #249 and #257 and keeps that name so existing
 citations and links continue to resolve; it now covers eight problems. The
 companion [Plectis](https://github.com/wcook04/plectis) repository owns the
 runnable tooling and claims no proof authority here; the
-[website](https://wcook04.github.io/plectis/) links both, and the
-[front door](https://wcook04.github.io/) lists them beside the papers and the
-recorded demonstrations.
+[website](https://wcook04.github.io/plectis/) links both. The
+[front door](https://wcook04.github.io/) lists it all.
 
 **AI assistance and responsibility.** Large-language-model agents drafted and
 revised prose, Lean proofs, and repository software. Will Cook set the
