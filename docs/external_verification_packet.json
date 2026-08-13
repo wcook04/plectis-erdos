@@ -99,7 +99,7 @@
       "references": [
         "https://users.renyi.hu/~p_erdos/1948-04.pdf",
         "docs/PRIOR_ART.md",
-        "paper/erdos-257-mersenne-subseries.tex"
+        "paper/erdos-257-mersenne-support-subseries.tex"
       ],
       "historical_attribution": "Erdos, On arithmetical properties of Lambert series (1948), theorem on p. 63 as recorded in the repository's prior-art ledger.",
       "logical_dependency": "The theorem is independently represented and proved in Lean in this repository; the historical source is attribution and fidelity evidence, not an imported kernel dependency."

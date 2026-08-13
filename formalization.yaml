@@ -244,7 +244,7 @@ status:
       literature_dependencies:
         - "https://users.renyi.hu/~p_erdos/1948-04.pdf"
         - "docs/PRIOR_ART.md"
-        - "paper/erdos-257-mersenne-subseries.tex"
+        - "paper/erdos-257-mersenne-support-subseries.tex"
       source_statement: "For every integer b at least 2, the full-support Lambert--Mersenne series sum over n at least 1 of 1/(b^n-1) is irrational."
       source_mapping: "The local theorem uses Nat indexing with exponent k+1, which is exactly the source sum after reindexing n=k+1; the base assumption is the same integer condition b at least 2."
       historical_attribution: "Erdos, On arithmetical properties of Lambert series (1948), theorem on p. 63 as recorded in the repository's prior-art ledger."
