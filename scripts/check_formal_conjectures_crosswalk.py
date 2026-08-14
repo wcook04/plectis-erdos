@@ -343,36 +343,59 @@ def render_markdown(
         "",
         "**Boundary:** this is statement-identity and adapter-review metadata, not a Lean equivalence proof, novelty finding, contribution claim, or submission-readiness decision. Every problem remains open. Every row is `not_ready_to_submit`.",
         "",
-        "| Problem | Formal Conjectures source | Primary declaration | Comparison | Adapter |",
-        "|---:|---|---|---|---|",
+        "| Problem | Upstream primary declaration | Adapter |",
+        "|---:|---|---|",
     ]
     for row in manifest["problems"]:
-        problem = row["problem"]
         source = row["upstream_source"]
-        source_url = f"{repository}/blob/{commit}/{source['path']}#L{source['declaration_line']}"
-        adapter = row["adapter"]["status"]
         lines.append(
-            f"| #{problem} | [`{source['path']}`]({source_url})<br>`sha256:{source['sha256']}` | "
-            f"`{source['primary_declaration']}` | `{row['comparison']['conservative_verdict']}` | "
-            f"`{adapter}` |"
+            f"| #{row['problem']} | `{source['primary_declaration']}` "
+            f"| `{row['adapter']['status']}` |"
         )
 
-    lines.extend(["", "## Per-problem comparison", ""])
+    # The source paths and hashes are unbreakable tokens: in a table cell they
+    # set a column floor wide enough to squash every other column and force a
+    # horizontal scrollbar. A fenced block scrolls inside itself, keeps the
+    # hashes copy-paste clean, and gathers them into one verification surface.
+    lines.extend(
+        [
+            "",
+            "## Pinned upstream sources",
+            "",
+            "Each file is read at the commit above. Each hash is SHA-256 over exact "
+            "file bytes; the per-problem sections below link the exact declaration line.",
+            "",
+            "```text",
+        ]
+    )
+    for row in manifest["problems"]:
+        source = row["upstream_source"]
+        label = f"#{row['problem']}"
+        lines.append(f"{label:<7}{source['path']}")
+        lines.append(f"{'':<7}sha256:{source['sha256']}")
+    lines.extend(["```", ""])
+
+    lines.extend(["## Per-problem comparison", ""])
     for row in manifest["problems"]:
         problem = row["problem"]
         source = row["upstream_source"]
         comparison = row["comparison"]
+        source_url = (
+            f"{repository}/blob/{commit}/{source['path']}"
+            f"#L{source['declaration_line']}"
+        )
         lines.extend(
             [
                 f"### Erdős #{problem}",
                 "",
                 f"Local question: {indexed[problem]['question']}",
                 "",
-                f"- Upstream declaration: `{source['primary_declaration']}` at `{source['path']}:{source['declaration_line']}`; proof status `{source['proof_status']}`.",
+                f"- Upstream declaration: [`{source['primary_declaration']}`]({source_url}) at `{source['path']}:{source['declaration_line']}`; proof status `{source['proof_status']}`.",
                 f"- Statement scope: {comparison['statement_scope']}",
                 f"- Indexing: {comparison['indexing']}",
                 f"- Casts and ambient types: {comparison['casts_and_ambient_types']}",
                 f"- Answer/proof status: {comparison['answer_and_proof_status']}",
+                f"- Conservative verdict: `{comparison['conservative_verdict']}`.",
                 f"- Machine-checked equivalence: `{comparison['machine_checked_equivalence']}`.",
                 f"- Submission status: `{row['submission_status']}`.",
                 "",

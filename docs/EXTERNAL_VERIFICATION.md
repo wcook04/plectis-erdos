@@ -23,7 +23,7 @@
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos68.<wbr>irrational_<wbr>factorialGapSeries_<wbr>iff_<wbr>cofinal_<wbr>strictFacTopRat_<wbr>misses</code>
+<code>ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses</code>
 
 </details>
 
@@ -62,20 +62,20 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (5)</summary>
 
-- <code>factorial_<wbr>carry_<wbr>characterisation</code><br>
+- <code>factorial_carry_characterisation</code><br>
   Comparator: <code>targeted</code>
 
-- <code>factorial_<wbr>channel_<wbr>and_<wbr>projection_<wbr>rigidity</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>isolated_<wbr>headline</code>
+- <code>factorial_channel_and_projection_rigidity</code><br>
+  Comparator: <code>represented_by_isolated_headline</code>
 
-- <code>factorial_<wbr>conditional_<wbr>producers</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>project_<wbr>predicate_<wbr>stack</code>
+- <code>factorial_conditional_producers</code><br>
+  Comparator: <code>not_selected_deep_project_predicate_stack</code>
 
-- <code>factorial_<wbr>finite_<wbr>certificates</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>to_<wbr>external_<wbr>execution</code>
+- <code>factorial_finite_certificates</code><br>
+  Comparator: <code>not_applicable_to_external_execution</code>
 
-- <code>factorial_<wbr>lcm_<wbr>growth</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>declaration</code>
+- <code>factorial_lcm_growth</code><br>
+  Comparator: <code>not_applicable_not_a_lean_declaration</code>
 
 </details>
 
@@ -91,7 +91,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos243.<wbr>nextTailState_<wbr>eq_<wbr>sub_<wbr>centered</code>
+<code>ErdosProblems.Erdos243.nextTailState_eq_sub_centered</code>
 
 </details>
 
@@ -130,20 +130,20 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (5)</summary>
 
-- <code>centered_<wbr>state_<wbr>dynamics</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>selected_<wbr>boundary_<wbr>theorems</code>
+- <code>centered_state_dynamics</code><br>
+  Comparator: <code>represented_by_selected_boundary_theorems</code>
 
-- <code>negative_<wbr>orbit_<wbr>no_<wbr>go</code><br>
-  Comparator: <code>targeted_<wbr>representative_<wbr>periodic_<wbr>theorem</code>
+- <code>negative_orbit_no_go</code><br>
+  Comparator: <code>targeted_representative_periodic_theorem</code>
 
-- <code>bounded_<wbr>rise_<wbr>coprimality</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>stronger_<wbr>selected_<wbr>boundary_<wbr>theorem</code>
+- <code>bounded_rise_coprimality</code><br>
+  Comparator: <code>represented_by_stronger_selected_boundary_theorem</code>
 
-- <code>bounded_<wbr>negative_<wbr>exclusion</code><br>
+- <code>bounded_negative_exclusion</code><br>
   Comparator: <code>targeted</code>
 
-- <code>negative_<wbr>mass_<wbr>recovery</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>state_<wbr>vocabulary</code>
+- <code>negative_mass_recovery</code><br>
+  Comparator: <code>not_selected_deep_state_vocabulary</code>
 
 </details>
 
@@ -159,7 +159,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos249.<wbr>irrational_<wbr>totient_<wbr>series_<wbr>of_<wbr>naturalPrimeTailOrbitStrictGap</code>
+<code>ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap</code>
 
 </details>
 
@@ -213,29 +213,29 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (8)</summary>
 
-- <code>totient_<wbr>kernel_<wbr>basis</code><br>
+- <code>totient_kernel_basis</code><br>
   Comparator: <code>targeted</code>
 
-- <code>totient_<wbr>kernel_<wbr>rank</code><br>
+- <code>totient_kernel_rank</code><br>
   Comparator: <code>targeted</code>
 
-- <code>totient_<wbr>kernel_<wbr>all_<wbr>base_<wbr>index</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>external_<wbr>independence_<wbr>boundary</code>
+- <code>totient_kernel_all_base_index</code><br>
+  Comparator: <code>not_selected_external_independence_boundary</code>
 
-- <code>totient_<wbr>finite_<wbr>denominator_<wbr>exclusion</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>finite_<wbr>family_<wbr>has_<wbr>separate_<wbr>receipt</code>
+- <code>totient_finite_denominator_exclusion</code><br>
+  Comparator: <code>not_selected_finite_family_has_separate_receipt</code>
 
-- <code>totient_<wbr>carry_<wbr>rank</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>orbit_<wbr>vocabulary</code>
+- <code>totient_carry_rank</code><br>
+  Comparator: <code>not_selected_deep_orbit_vocabulary</code>
 
-- <code>totient_<wbr>lambert_<wbr>coefficients</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>basis_<wbr>and_<wbr>rank_<wbr>targets</code>
+- <code>totient_lambert_coefficients</code><br>
+  Comparator: <code>represented_by_basis_and_rank_targets</code>
 
-- <code>eventually_<wbr>periodic_<wbr>lambert</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>prior_<wbr>result</code>
+- <code>eventually_periodic_lambert</code><br>
+  Comparator: <code>not_selected_prior_result</code>
 
-- <code>totient_<wbr>certificate_<wbr>equivalences</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>certificate_<wbr>vocabulary</code>
+- <code>totient_certificate_equivalences</code><br>
+  Comparator: <code>not_selected_deep_certificate_vocabulary</code>
 
 </details>
 
@@ -251,7 +251,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos251.<wbr>dyadicPartialSumQ_<wbr>eq_<wbr>start_<wbr>add_<wbr>differences</code>
+<code>ErdosProblems.Erdos251.dyadicPartialSumQ_eq_start_add_differences</code>
 
 </details>
 
@@ -290,20 +290,20 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (5)</summary>
 
-- <code>prime_<wbr>gap_<wbr>reformulation</code><br>
+- <code>prime_gap_reformulation</code><br>
   Comparator: <code>targeted</code>
 
-- <code>integral_<wbr>shift_<wbr>classification</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>abstract_<wbr>family_<wbr>represented_<wbr>in_<wbr>manifest</code>
+- <code>integral_shift_classification</code><br>
+  Comparator: <code>not_selected_abstract_family_represented_in_manifest</code>
 
-- <code>totient_<wbr>shift_<wbr>propagation</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>integral_<wbr>shift_<wbr>family</code>
+- <code>totient_shift_propagation</code><br>
+  Comparator: <code>represented_by_integral_shift_family</code>
 
-- <code>small_<wbr>mismatch_<wbr>criterion</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>open_<wbr>producer_<wbr>hypothesis</code>
+- <code>small_mismatch_criterion</code><br>
+  Comparator: <code>not_selected_open_producer_hypothesis</code>
 
-- <code>coefficient_<wbr>only_<wbr>no_<wbr>go</code><br>
-  Comparator: <code>targeted_<wbr>unboundedness_<wbr>theorem_<wbr>only</code>
+- <code>coefficient_only_no_go</code><br>
+  Comparator: <code>targeted_unboundedness_theorem_only</code>
 
 </details>
 
@@ -319,7 +319,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos257.<wbr>selectedMersenneTail_<wbr>lt_<wbr>weight</code>
+<code>ErdosProblems.Erdos257.selectedMersenneTail_lt_weight</code>
 
 </details>
 
@@ -368,26 +368,26 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (7)</summary>
 
-- <code>finite_<wbr>period_<wbr>noncollapse</code><br>
+- <code>finite_period_noncollapse</code><br>
   Comparator: <code>targeted</code>
 
-- <code>rational_<wbr>support_<wbr>constraints</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>support_<wbr>vocabulary</code>
+- <code>rational_support_constraints</code><br>
+  Comparator: <code>not_selected_deep_support_vocabulary</code>
 
-- <code>known_<wbr>irrational_<wbr>supports</code><br>
-  Comparator: <code>targeted_<wbr>full_<wbr>support_<wbr>representative</code>
+- <code>known_irrational_supports</code><br>
+  Comparator: <code>targeted_full_support_representative</code>
 
-- <code>squarefree_<wbr>support</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>to_<wbr>external_<wbr>irrationality_<wbr>input</code>
+- <code>squarefree_support</code><br>
+  Comparator: <code>not_applicable_to_external_irrationality_input</code>
 
-- <code>achievement_<wbr>set_<wbr>geometry</code><br>
-  Comparator: <code>targeted_<wbr>measure_<wbr>theorem</code>
+- <code>achievement_set_geometry</code><br>
+  Comparator: <code>targeted_measure_theorem</code>
 
-- <code>restricted_<wbr>achievement_<wbr>sets</code><br>
-  Comparator: <code>targeted_<wbr>measure_<wbr>dichotomy</code>
+- <code>restricted_achievement_sets</code><br>
+  Comparator: <code>targeted_measure_dichotomy</code>
 
-- <code>half_<wbr>and_<wbr>twenty_<wbr>one_<wbr>frontiers</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>deep_<wbr>greedy_<wbr>state_<wbr>vocabulary</code>
+- <code>half_and_twenty_one_frontiers</code><br>
+  Comparator: <code>not_selected_deep_greedy_state_vocabulary</code>
 
 </details>
 
@@ -410,7 +410,7 @@ Every two-prime case is settled at transcendence level by a paper argument in th
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos269.<wbr>smoothPrefixLcm_<wbr>eq_<wbr>threePrimeHeight</code>
+<code>ErdosProblems.Erdos269.smoothPrefixLcm_eq_threePrimeHeight</code>
 
 </details>
 
@@ -459,26 +459,26 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (7)</summary>
 
-- <code>three_<wbr>prime_<wbr>lcm_<wbr>cells</code><br>
-  Comparator: <code>targeted_<wbr>running_<wbr>lcm_<wbr>identity</code>
+- <code>three_prime_lcm_cells</code><br>
+  Comparator: <code>targeted_running_lcm_identity</code>
 
-- <code>two_<wbr>prime_<wbr>transcendence</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>declaration</code>
+- <code>two_prime_transcendence</code><br>
+  Comparator: <code>not_applicable_not_a_lean_declaration</code>
 
-- <code>height_<wbr>fibre_<wbr>and_<wbr>shell</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>three_<wbr>prime_<wbr>structure_<wbr>target</code>
+- <code>height_fibre_and_shell</code><br>
+  Comparator: <code>represented_by_three_prime_structure_target</code>
 
-- <code>rank_<wbr>two_<wbr>kernel_<wbr>no_<wbr>go</code><br>
+- <code>rank_two_kernel_no_go</code><br>
   Comparator: <code>targeted</code>
 
-- <code>dyadic_<wbr>block_<wbr>alphabet</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>three_<wbr>prime_<wbr>structure_<wbr>target</code>
+- <code>dyadic_block_alphabet</code><br>
+  Comparator: <code>represented_by_three_prime_structure_target</code>
 
-- <code>conditional_<wbr>carry_<wbr>escape</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>unproved_<wbr>bridge_<wbr>and_<wbr>deep_<wbr>predicates</code>
+- <code>conditional_carry_escape</code><br>
+  Comparator: <code>not_selected_unproved_bridge_and_deep_predicates</code>
 
-- <code>three_<wbr>prime_<wbr>finite_<wbr>search</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>theorem</code>
+- <code>three_prime_finite_search</code><br>
+  Comparator: <code>not_applicable_not_a_lean_theorem</code>
 
 </details>
 
@@ -494,7 +494,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos1041.<wbr>newtonFlow_<wbr>value_<wbr>hasDerivAt</code>
+<code>ErdosProblems.Erdos1041.newtonFlow_value_hasDerivAt</code>
 
 </details>
 
@@ -538,23 +538,23 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (6)</summary>
 
-- <code>newton_<wbr>value_<wbr>decay</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>compact_<wbr>calculus_<wbr>family</code>
+- <code>newton_value_decay</code><br>
+  Comparator: <code>not_selected_compact_calculus_family</code>
 
-- <code>ray_<wbr>separation</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>translation_<wbr>avoidance_<wbr>targets</code>
+- <code>ray_separation</code><br>
+  Comparator: <code>represented_by_translation_avoidance_targets</code>
 
-- <code>translation_<wbr>avoidance</code><br>
+- <code>translation_avoidance</code><br>
   Comparator: <code>targeted</code>
 
-- <code>root_<wbr>retention</code><br>
+- <code>root_retention</code><br>
   Comparator: <code>targeted</code>
 
-- <code>published_<wbr>proof_<wbr>gap</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>proposition</code>
+- <code>published_proof_gap</code><br>
+  Comparator: <code>not_applicable_not_a_lean_proposition</code>
 
-- <code>lemniscate_<wbr>finite_<wbr>search</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>not_<wbr>a_<wbr>lean_<wbr>theorem</code>
+- <code>lemniscate_finite_search</code><br>
+  Comparator: <code>not_applicable_not_a_lean_theorem</code>
 
 </details>
 
@@ -570,7 +570,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.<wbr>Erdos1049.<wbr>threeHalves_<wbr>no_<wbr>coordinatewiseCorridor</code>
+<code>ErdosProblems.Erdos1049.threeHalves_no_coordinatewiseCorridor</code>
 
 </details>
 
@@ -619,26 +619,26 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Technical registry and Comparator routing (7)</summary>
 
-- <code>scalar_<wbr>content_<wbr>no_<wbr>go</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>selected_<wbr>coordinatewise_<wbr>no_<wbr>go</code>
+- <code>scalar_content_no_go</code><br>
+  Comparator: <code>represented_by_selected_coordinatewise_no_go</code>
 
-- <code>endpoint_<wbr>residues</code><br>
-  Comparator: <code>represented_<wbr>by_<wbr>selected_<wbr>coordinatewise_<wbr>no_<wbr>go</code>
+- <code>endpoint_residues</code><br>
+  Comparator: <code>represented_by_selected_coordinatewise_no_go</code>
 
-- <code>four_<wbr>jet_<wbr>collision</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>finite_<wbr>combinatorial_<wbr>family</code>
+- <code>four_jet_collision</code><br>
+  Comparator: <code>not_selected_finite_combinatorial_family</code>
 
-- <code>coordinatewise_<wbr>corridor_<wbr>no_<wbr>go</code><br>
+- <code>coordinatewise_corridor_no_go</code><br>
   Comparator: <code>targeted</code>
 
-- <code>rational_<wbr>base_<wbr>tail_<wbr>recurrence</code><br>
+- <code>rational_base_tail_recurrence</code><br>
   Comparator: <code>targeted</code>
 
-- <code>seven_<wbr>halves_<wbr>irrationality</code><br>
-  Comparator: <code>not_<wbr>applicable_<wbr>to_<wbr>external_<wbr>irrationality_<wbr>conclusion</code>
+- <code>seven_halves_irrationality</code><br>
+  Comparator: <code>not_applicable_to_external_irrationality_conclusion</code>
 
-- <code>height_<wbr>and_<wbr>pade_<wbr>arithmetic</code><br>
-  Comparator: <code>not_<wbr>selected_<wbr>multiple_<wbr>scoped_<wbr>arithmetic_<wbr>families</code>
+- <code>height_and_pade_arithmetic</code><br>
+  Comparator: <code>not_selected_multiple_scoped_arithmetic_families</code>
 
 </details>
 
@@ -651,14 +651,14 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#68 — Factorial-denominator series**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>irrational_<wbr>factorialGapSeries_<wbr>iff_<wbr>cofinal_<wbr>strictFacTopRat_<wbr>misses</code>
+- <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** Irrationality is equivalent to cofinally many strict-successor divisibility failures.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The equivalence does not prove that the cofinal failures occur.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>irrational_<wbr>factorialGapSeries_<wbr>iff_<wbr>cofinal_<wbr>nonunit_<wbr>carries</code>
+- <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** Irrationality is equivalent to cofinally many non-unit carries.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
@@ -667,14 +667,14 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#243 — Reciprocal-tail rigidity near the Sylvester recurrence**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>no_<wbr>cofinallyBoundedNegative_<wbr>of_<wbr>normalizedVanishes</code>
+- <code>Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes</code>
   - **Class.** conditional reduction and no-go result
   - **Statement.** Normalised vanishing and bounded rise exclude a cofinally bounded negative part.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** All dynamics, bounded-rise, positivity, and vanishing hypotheses remain explicit.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>no_<wbr>eventuallyPeriodicNegative_<wbr>orbit</code>
+- <code>Erdos249257.ExternalVerification.no_eventuallyPeriodicNegative_orbit</code>
   - **Class.** no-go result
   - **Statement.** An eventually periodic negative-error orbit with positive phase growth is impossible.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
@@ -683,21 +683,21 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#249 — Binary totient series**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>finrank_<wbr>totientKernelThroughLevelFamily_<wbr>eq</code>
+- <code>Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e + 1.
   - **Canonical claim status.** `supports_registered_claim_family:dyadic_totient_certificate_interface`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** This does not prove irrationality of the totient series.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>not_<wbr>finiteDimensional_<wbr>span_<wbr>fullTotientKernel</code>
+- <code>Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel</code>
   - **Class.** Lean formalisation of an existing consequence of Coons
   - **Statement.** The rational span of the full dyadic totient kernel is not finite-dimensional.
   - **Canonical claim status.** `supports_registered_claim_family:dyadic_totient_certificate_interface`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>exists_<wbr>totientDyadicSectionBasis</code>
+- <code>Erdos249257.ExternalVerification.exists_totientDyadicSectionBasis</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** The full dyadic totient kernel span admits the explicit odd-core-indexed basis.
   - **Canonical claim status.** `supports_registered_claim_family:dyadic_totient_basis`
@@ -706,14 +706,14 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#251 — Prime-gap dyadic series**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>exists_<wbr>primeGap0_<wbr>gt</code>
+- <code>Erdos249257.ExternalVerification.exists_primeGap0_gt</code>
   - **Class.** formalisation of existing result
   - **Statement.** The consecutive prime gaps are unbounded.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** Unbounded coefficients alone do not force irrationality.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>irrational_<wbr>tsum_<wbr>primeDyadicTerm_<wbr>iff_<wbr>primeGap</code>
+- <code>Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
@@ -722,28 +722,28 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#257 — Reciprocal sums over infinite exponent supports**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>volume_<wbr>mersenneAchievementSet</code>
+- <code>Erdos249257.ExternalVerification.volume_mersenneAchievementSet</code>
   - **Class.** mixed prior-art geometry and locally proved metric result; novelty unassessed
   - **Statement.** The base-2 Mersenne achievement set has Lebesgue measure exactly one.
   - **Canonical claim status.** `supports_registered_claim_family:greedy_achievement_geometry`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** This does not decide whether every infinite-support sum is irrational.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>irrational_<wbr>erdosSum_<wbr>full_<wbr>support</code>
+- <code>Erdos249257.ExternalVerification.irrational_erdosSum_full_support</code>
   - **Class.** formalisation of an existing theorem
   - **Statement.** For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.
   - **Canonical claim status.** `supports_registered_claim_family:eb_full_support`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** This is the classical full-support theorem, not universal Erdos #257.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>finite_<wbr>period_<wbr>noncollapse_<wbr>rat_<wbr>den_<wbr>interface</code>
+- <code>Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** For a reduced finite Mersenne sum, the base order modulo the denominator equals the support lcm.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The finite-support theorem does not settle any infinite-support sum.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>volume_<wbr>supportedMersenneAchievementSet_<wbr>dichotomy</code>
+- <code>Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** A support-restricted Mersenne achievement set has exact finite-complement measure or measure zero for infinite complement.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
@@ -752,14 +752,14 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#269 — Three-prime running least common multiples**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>kernel_<wbr>235_<wbr>minor_<wbr>eq_<wbr>neg_<wbr>one_<wbr>fifteen</code>
+- <code>Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen</code>
   - **Class.** no-go result
   - **Statement.** The smallest displayed 2,3,5 kernel minor is exactly -1/15.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** Failure of rank one does not imply irrationality.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>smoothPrefixLcm_<wbr>eq_<wbr>threePrimeHeight</code>
+- <code>Erdos249257.ExternalVerification.smoothPrefixLcm_eq_threePrimeHeight</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** The running lcm of the three-prime smooth prefix equals the exact coordinatewise height.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
@@ -768,14 +768,14 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#1041 — Short connections inside polynomial lemniscates**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>exists_<wbr>small_<wbr>translation_<wbr>separating_<wbr>arguments</code>
+- <code>Erdos249257.ExternalVerification.exists_small_translation_separating_arguments</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** An arbitrarily small common translation separates a finite injective family from zero and from shared positive rays.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** Finite-family avoidance does not provide the global topological or metric gluing.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>constant_<wbr>perturbation_<wbr>roots_<wbr>in_<wbr>unitDisk</code>
+- <code>Erdos249257.ExternalVerification.constant_perturbation_roots_in_unitDisk</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** A quantified small constant perturbation keeps every polynomial root inside the open unit disc.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
@@ -784,14 +784,14 @@ Exact registry keys and Comparator routing are listed separately.
 
 **#1049 — Lambert-type series at rational bases**
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>threeHalves_<wbr>no_<wbr>coordinatewiseCorridor</code>
+- <code>Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor</code>
   - **Class.** no-go result
   - **Statement.** The coordinatewise divisibility corridor is impossible at base 3/2.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** This excludes one proof architecture and proves no irrationality statement.
 
-- <code>Erdos249257.<wbr>ExternalVerification.<wbr>rationalBaseClearedTailQ_<wbr>succ</code>
+- <code>Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** The rational-base cleared tail obeys its exact first-order recurrence.
   - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`

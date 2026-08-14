@@ -80,13 +80,16 @@ single file that is authoritative for everything.
 
 | Question | Authoritative source | What it controls |
 |---|---|---|
-| What has been formally checked? | [`Erdos249257.lean`](Erdos249257.lean), [`ErdosProblems.lean`](ErdosProblems.lean), and the Lean modules they import, at the fixed source version named in [`docs/claims.json`](docs/claims.json) | Formal statements and proofs; kernel checking alone does not create a reviewed public claim |
+| What has been formally checked? | [`Erdos249257.lean`](Erdos249257.lean), [`ErdosProblems.lean`](ErdosProblems.lean), and the Lean modules they import | Formal statements and proofs; kernel checking alone does not create a reviewed public claim |
 | What may the project publicly say about a result? | [`docs/claims.json`](docs/claims.json) | Claim wording, status, supporting Lean names, bounded ranges, and the exact questions that remain open |
 | What evidence and review are required when a claim changes? | [`docs/methodology.json`](docs/methodology.json) | Change classes and review requirements |
 | What does a reader see? | [`README.md`](README.md), [`SCOPE.md`](SCOPE.md), and authored papers such as [`paper/erdos249-257-main-paper.tex`](paper/erdos249-257-main-paper.tex) | Human explanation; these files must stay within the claim record |
 | Which manuscripts are shipped? | [`docs/publication_contract.json`](docs/publication_contract.json) | Paper inventory, file identities, entry routes, and evidence boundaries |
 | What evidence supports the historical checker example? | [`docs/publication_evidence.json`](docs/publication_evidence.json) | The recorded exercise and its limitations |
 | How are releases blocked? | [`scripts/check_release.py`](scripts/check_release.py) and [`.github/workflows/lean.yml`](.github/workflows/lean.yml) | Local release checks and continuous integration |
+
+The first row refers to those files at the fixed source version named in
+[`docs/claims.json`](docs/claims.json).
 
 Some other files are generated views. For example,
 [`docs/ORIENTATION.md`](docs/ORIENTATION.md),

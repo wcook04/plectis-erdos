@@ -73,18 +73,26 @@ The exhaustive declaration and import index is
 These are reading routes through the checked corpus, not extra claims.
 Each route states its mathematical focus and exact public claim ceiling.
 
-| Programme | Exact ceiling |
-|---|---|
-| **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`) | Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved. |
-| **#249 certificate and harmonic interface** (`erdos249_certificate_story`) | The certificate formulation is exact and finite instances are checked; the unbounded certificate supply and irrationality of S remain open. |
-| **Classical and structured support irrationality** (`structured_support_families`) | These are structured families, coefficient classes, and a conditional bouquet reduction; arbitrary infinite supports in universal Erdős #257 remain open. |
-| **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`) | Each interface sharpens or re-expresses the same supply problem; no unbounded avoidance, slack, or separated-projection supply is proved. |
-| **Boolean Möbius carry and global rationality constraints** (`boolean_mobius_constraints`) | These are exact characterisations and necessary consequences of rationality; they do not contradict every hypothetical rational value or settle universal Erdős #257. |
-| **Transport, curvature, phase separation, and no-go results** (`transport_curvature_programme`) | The consumers and countermodels are exact, but no cofinal curvature, transport, phase-separation, or anti-reconstruction producer is proved. |
-| **Mersenne–Lambert identities and obstruction interfaces** (`lambert_obstruction_interfaces`) | These are exact identities, obstruction theorems, and one conditional rank consequence; they do not form an irrationality criterion for S. |
-| **Coprimality probability, gcd moments, and Stern–Brocot geometry** (`probabilistic_gcd_geometry`) | Exact identities, denominator transfer, convergence, and combinatorial stability only; no irrationality or novelty claim. |
-| **Half-carry compactness, windows, seams, and finite propagation** (`half_carry_compactness_programme`) | The closure implications, local propagation laws, and bounded stages are exact; no cofinal or coherent unbounded window family is proved, so neither half-membership nor universal Erdős #257 follows. |
-| **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`) | These are exact arithmetic interfaces, finite mechanisms, and obstruction theorems; they do not supply an unbounded certificate family or an irrationality criterion for the totient constant. |
+- **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`)
+  - Ceiling: Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved.
+- **#249 certificate and harmonic interface** (`erdos249_certificate_story`)
+  - Ceiling: The certificate formulation is exact and finite instances are checked; the unbounded certificate supply and irrationality of S remain open.
+- **Classical and structured support irrationality** (`structured_support_families`)
+  - Ceiling: These are structured families, coefficient classes, and a conditional bouquet reduction; arbitrary infinite supports in universal Erdős #257 remain open.
+- **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`)
+  - Ceiling: Each interface sharpens or re-expresses the same supply problem; no unbounded avoidance, slack, or separated-projection supply is proved.
+- **Boolean Möbius carry and global rationality constraints** (`boolean_mobius_constraints`)
+  - Ceiling: These are exact characterisations and necessary consequences of rationality; they do not contradict every hypothetical rational value or settle universal Erdős #257.
+- **Transport, curvature, phase separation, and no-go results** (`transport_curvature_programme`)
+  - Ceiling: The consumers and countermodels are exact, but no cofinal curvature, transport, phase-separation, or anti-reconstruction producer is proved.
+- **Mersenne–Lambert identities and obstruction interfaces** (`lambert_obstruction_interfaces`)
+  - Ceiling: These are exact identities, obstruction theorems, and one conditional rank consequence; they do not form an irrationality criterion for S.
+- **Coprimality probability, gcd moments, and Stern–Brocot geometry** (`probabilistic_gcd_geometry`)
+  - Ceiling: Exact identities, denominator transfer, convergence, and combinatorial stability only; no irrationality or novelty claim.
+- **Half-carry compactness, windows, seams, and finite propagation** (`half_carry_compactness_programme`)
+  - Ceiling: The closure implications, local propagation laws, and bounded stages are exact; no cofinal or coherent unbounded window family is proved, so neither half-membership nor universal Erdős #257 follows.
+- **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`)
+  - Ceiling: These are exact arithmetic interfaces, finite mechanisms, and obstruction theorems; they do not supply an unbounded certificate family or an irrationality criterion for the totient constant.
 
 Open one programme with
 `python3 scripts/query_corpus.py --route <programme_route_id>`.
@@ -93,25 +101,78 @@ programmes, and source owners without loading the exhaustive graph.
 
 ## Principal claim routes
 
-| Claim | Status | Paper | First Lean anchor |
-|---|---|---|---|
-| `eb_full_support` | formalised here | `res:full` | `irrational_erdosSum_full_support` in `Erdos249257/CertificateKernel.lean:8328` |
-| `eb_constant` | formalised here | `res:full` | `irrational_erdosBorwein_series` in `Erdos249257/CertificateKernel.lean:8335` |
-| `support_families` | formalised here | `res:support` | `erdos257_family_factorial_instance` in `Erdos249257/CertificateKernel.lean:6082` |
-| `denominator_exclusion` | formalised here | `res:farey` | `tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053` in `Erdos249257/CertificateKernel.lean:18384` |
-| `certificate_reduction` | conditional reduction | `res:diag` | `irrational_totient_series_of_certificate_supply` in `Erdos249257/TotientTailPeriodKiller.lean:394` |
-| `certificate_completeness` | proved here | `res:pointwisecomplete` | `exists_certifiedKill_iff_tail_diff_notMem_int` in `Erdos249257/LcmConeFlatness.lean:316` |
-| `certified_kill_instances` | verified finite instance | `res:deposits` | `certifiedKill_all_small` in `Erdos249257/TotientTailPeriodKiller.lean:404` |
-| `diagonal_pincer_reduction` | conditional reduction | `res:fulltargetavoidance` | `diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget` in `Erdos249257/DiagonalPincerDecomposition.lean:215` |
-| `adelic_height_obstruction` | proved here | `res:adelic` | `scalarLocalization_complement_dvd` in `Erdos249257/AdelicHeightObstruction.lean:23` |
-| `all_base_totient_kernel_index_reduction` | proved here | `None` | `totient_pow_mul_eq` in `Erdos249257/TotientKernelReduction.lean:60` |
-| `sublog_zero_windows` | proved here | `res:sublog` | `supportCoeffZeroWindow_length_le_eps_logb_add` in `Erdos249257/SublogDivisorCoverage.lean:392` |
-| `greedy_achievement_geometry` | formalised here | `res:greedy` | `volume_mersenneAchievementSet` in `Erdos249257/GreedyAchievementSet.lean:996` |
+| Claim | Status | Paper |
+|---|---|---|
+| `eb_full_support` | formalised here | `res:full` |
+| `eb_constant` | formalised here | `res:full` |
+| `support_families` | formalised here | `res:support` |
+| `denominator_exclusion` | formalised here | `res:farey` |
+| `certificate_reduction` | conditional reduction | `res:diag` |
+| `certificate_completeness` | proved here | `res:pointwisecomplete` |
+| `certified_kill_instances` | verified finite instance | `res:deposits` |
+| `diagonal_pincer_reduction` | conditional reduction | `res:fulltargetavoidance` |
+| `adelic_height_obstruction` | proved here | `res:adelic` |
+| `all_base_totient_kernel_index_reduction` | proved here | `None` |
+| `sublog_zero_windows` | proved here | `res:sublog` |
+| `greedy_achievement_geometry` | formalised here | `res:greedy` |
 
 Each row is only an entry handle. Read the claim statement and every attached
 declaration in [`docs/claims.json`](claims.json), then follow the paper label into
 the authored exposition. A conditional reduction or finite instance does not
 settle the open proposition attached to it.
+
+The first Lean anchor of each claim, in table order, as claim id,
+declaration name, then source coordinate:
+
+```text
+eb_full_support
+    irrational_erdosSum_full_support
+    Erdos249257/CertificateKernel.lean:8328
+
+eb_constant
+    irrational_erdosBorwein_series
+    Erdos249257/CertificateKernel.lean:8335
+
+support_families
+    erdos257_family_factorial_instance
+    Erdos249257/CertificateKernel.lean:6082
+
+denominator_exclusion
+    tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
+    Erdos249257/CertificateKernel.lean:18384
+
+certificate_reduction
+    irrational_totient_series_of_certificate_supply
+    Erdos249257/TotientTailPeriodKiller.lean:394
+
+certificate_completeness
+    exists_certifiedKill_iff_tail_diff_notMem_int
+    Erdos249257/LcmConeFlatness.lean:316
+
+certified_kill_instances
+    certifiedKill_all_small
+    Erdos249257/TotientTailPeriodKiller.lean:404
+
+diagonal_pincer_reduction
+    diagonal_int_iff_foreignDiagonalDefect_hits_fullTarget
+    Erdos249257/DiagonalPincerDecomposition.lean:215
+
+adelic_height_obstruction
+    scalarLocalization_complement_dvd
+    Erdos249257/AdelicHeightObstruction.lean:23
+
+all_base_totient_kernel_index_reduction
+    totient_pow_mul_eq
+    Erdos249257/TotientKernelReduction.lean:60
+
+sublog_zero_windows
+    supportCoeffZeroWindow_length_le_eps_logb_add
+    Erdos249257/SublogDivisorCoverage.lean:392
+
+greedy_achievement_geometry
+    volume_mersenneAchievementSet
+    Erdos249257/GreedyAchievementSet.lean:996
+```
 
 ## Read by intent
 

@@ -49,33 +49,85 @@ matters: those remain authored judgements, and the papers state them per result.
 
 ## Problem papers
 
-- [**#68 — factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf)
-- [**#243 — reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf)
-- [**#249 — dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [claim-bounded reasoning surface](erdos249-totient-reasoning-surface.pdf)
-- [**#251 — prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf)
-- [**#257 — reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [claim-bounded reasoning surface](erdos257-mersenne-reasoning-surface.pdf)
-- [**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf)
-- [**#1041 — short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf)
-- [**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf)
-
 [`docs/papers/corpus.json`](docs/papers/corpus.json) indexes them by machine.
 
-| Problem | Mathematical statement | Public checked frontier; what remains |
-|---|---|---|
-| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | A checked hypothesis-free equivalence reduces irrationality to one integer divisibility test failing infinitely often. The kernel-internal denominator bound is `67`; the `300000` exclusion is a checked implication evaluated externally. Producing infinitely many failures remains open. |
-| **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? | Koizumi supplies normalised vanishing for the canonical orbit. Lean then excludes a bounded negative part and finite normalised negative mass; the missing negative-part bound and the unbounded mixed-sign regime remain open. |
-| **#249** | Is `∑ φ(n)/2ⁿ` irrational? | For every `k≥2`, the paper derives section-span rank `k^e+1`, explicit bases, and the relation normal form from Martin plus elementary reductions. Lean checks the dyadic theorem and all-base arithmetic, residue coordinates, canonical spanning, and exact rank conditional on linear independence; Martin and that independence are not formalised. Coons already implies infinite rank. Reduced denominators through `79,639,646,646,701,375,323,355,774,875,831,053` and diagonal scales through `t=82` are excluded; no `t=83` or unbounded producer is proved. |
-| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? | Summability and the prime-gap identity are checked unconditionally via an elementary polynomial prime bound; for any sequence obeying the checked tail recurrence, irrationality is exactly equivalent to cofinal non-integral tail shifts. The concrete prime-tail bridge remains open; no theorem produces the required cofinal adjacent small-mismatch gap pairs. |
-| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? | Lean checks full support, finite-period noncollapse, and exact restricted-set coding, topology, perfectness, and measure. Prime support at base `2` and squarefree support at power-of-two bases are cited prior results. Universal #257 and the `1/2` and `1/21` targets remain open. |
-| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? | For every two-prime set, both the de-duplicated and repeated sums are transcendental, by a paper argument using Loxton–van der Poorten in the Bugeaud–Laurent form. **This is not first and not formalised.** Steve Fan posted the same factorisation and conclusion on the erdosproblems.com #269 discussion page on 26 June 2026; this note was first released publicly on 22 July 2026. This project therefore claims no priority for the two-prime theorem, and no Lean declaration asserts it. From three primes onward the problem remains open; Lean checks exact structure and a conditional carry consumer, not the rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion. |
-| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? | Newton-flow value decay, the ray-separation consumer (connection decay is its hypothesis), the translation collision locus, and quantitative root-retention bounds are checked. The printed proof of a recent claimed spanning-tree decomposition has an invalid local saddle block (a proof gap, not a counterexample); repairing the topology and metric gluing remains open. |
-| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? | Lean checks construction-specific no-go theorems, four-jet cancellation, and direct-clearing obstructions at `3/2`, plus the elementary height inequality used by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality result; `3/2`, the primitive noncollapsed construction, and analytic remainder control remain open. |
+| Problem | Mathematical statement |
+|---|---|
+| **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? |
+| **#243** | Does rationality of a rapidly growing integer sequence's reciprocal sum force eventual Sylvester recurrence? |
+| **#249** | Is `∑ φ(n)/2ⁿ` irrational? |
+| **#251** | Is `∑ p_n/2ⁿ` irrational, equivalently the consecutive-prime-gap dyadic series? |
+| **#257** | Is `∑_{n∈A} 1/(2ⁿ-1)` irrational for every infinite `A ⊆ ℕ_{>0}`? |
+| **#269** | For at least two primes, is the reciprocal sum of running lcms of the smooth numbers irrational? |
+| **#1041** | Must two roots of a monic polynomial in the unit disc admit a curve of length `<2` inside its open unit lemniscate? |
+| **#1049** | For which rational bases is the corresponding Lambert-type series irrational, beginning with `3/2`? |
 
 This table is the blank-slate agent and reader inventory: no query is required
 to discover which problems exist or what they ask. It is navigation, not proof
 authority or a novelty claim. Drilldown is optional and uses only tracked
 public files; it does not require `ai_workflow`, a sibling checkout, a private
 cache, or network access.
+
+### Public checked frontier; what remains
+
+[**#68 — factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf).
+A checked hypothesis-free equivalence reduces irrationality to one integer
+divisibility test failing infinitely often. The kernel-internal denominator
+bound is `67`; the `300000` exclusion is a checked implication evaluated
+externally. Producing infinitely many failures remains open.
+
+[**#243 — reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf).
+Koizumi supplies normalised vanishing for the canonical orbit. Lean then
+excludes a bounded negative part and finite normalised negative mass; the
+missing negative-part bound and the unbounded mixed-sign regime remain open.
+
+[**#249 — dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [claim-bounded reasoning surface](erdos249-totient-reasoning-surface.pdf).
+For every `k≥2`, the paper derives section-span rank `k^e+1`, explicit bases,
+and the relation normal form from Martin plus elementary reductions. Lean checks
+the dyadic theorem and all-base arithmetic, residue coordinates, canonical
+spanning, and exact rank conditional on linear independence; Martin and that
+independence are not formalised. Coons already implies infinite rank. Reduced
+denominators through `79,639,646,646,701,375,323,355,774,875,831,053` and
+diagonal scales through `t=82` are excluded; no `t=83` or unbounded producer is
+proved.
+
+[**#251 — prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf).
+Summability and the prime-gap identity are checked unconditionally via an
+elementary polynomial prime bound; for any sequence obeying the checked tail
+recurrence, irrationality is exactly equivalent to cofinal non-integral tail
+shifts. The concrete prime-tail bridge remains open; no theorem produces the
+required cofinal adjacent small-mismatch gap pairs.
+
+[**#257 — reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [claim-bounded reasoning surface](erdos257-mersenne-reasoning-surface.pdf).
+Lean checks full support, finite-period noncollapse, and exact restricted-set
+coding, topology, perfectness, and measure. Prime support at base `2` and
+squarefree support at power-of-two bases are cited prior results. Universal #257
+and the `1/2` and `1/21` targets remain open.
+
+[**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf).
+For every two-prime set, both the de-duplicated and repeated sums are
+transcendental, by a paper argument using Loxton–van der Poorten in the
+Bugeaud–Laurent form. **This is not first and not formalised.** Steve Fan posted
+the same factorisation and conclusion on the erdosproblems.com #269 discussion
+page on 26 June 2026; this note was first released publicly on 22 July 2026.
+This project therefore claims no priority for the two-prime theorem, and no Lean
+declaration asserts it. From three primes onward the problem remains open; Lean
+checks exact structure and a conditional carry consumer, not the
+rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion.
+
+[**#1041 — short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf).
+Newton-flow value decay, the ray-separation consumer (connection decay is its
+hypothesis), the translation collision locus, and quantitative root-retention
+bounds are checked. The printed proof of a recent claimed spanning-tree
+decomposition has an invalid local saddle block (a proof gap, not a
+counterexample); repairing the topology and metric gluing remains open.
+
+[**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf).
+Lean checks construction-specific no-go theorems, four-jet cancellation, and
+direct-clearing obstructions at `3/2`, plus the elementary height inequality used
+by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality
+result; `3/2`, the primitive noncollapsed construction, and analytic remainder
+control remain open.
 
 [Retained joint #249/#257 exposition](erdos249-257-main-paper.pdf) ·
 [![Lean CI](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml/badge.svg)](https://github.com/wcook04/plectis-lean-erdos249-257/actions/workflows/lean.yml)

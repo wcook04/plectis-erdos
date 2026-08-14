@@ -446,6 +446,14 @@ jobs:
           python3 scripts/check_erdos269_dyadic_windows.py
           python3 scripts/check_farey_denominator_scaling.py
           python3 scripts/check_formal_conjectures_crosswalk.py
+      # GitHub renders markdown in a 1012px column and a table has no wrapping
+      # escape, so a long declaration name in a cell pushes the table past the
+      # column and the reader gets a horizontal scrollbar with every other
+      # column squashed.  `<wbr>` and `style` are both stripped by GitHub's
+      # sanitiser, so the only fix is structural and the only guard is a check.
+      - name: Markdown tables fit the rendered column
+        if: ${{ !cancelled() }}
+        run: python3 scripts/check_markdown_table_render.py --fail-on overflow .
       # The freshness comparison above is only meaningful if a projection is a
       # pure function of the committed tree.  This job checks `main` out as a
       # local branch and a pull request out as a topic branch, so a builder that

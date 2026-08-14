@@ -303,15 +303,14 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "These are reading routes through the checked corpus, not extra claims.",
             "Each route states its mathematical focus and exact public claim ceiling.",
             "",
-            "| Programme | Exact ceiling |",
-            "|---|---|",
         ]
     )
+    # Every ceiling is a full sentence, so a two-column table would be a stack of
+    # paragraphs wearing a grid. The same route id, title, and ceiling read as a
+    # list, in the shape the reading routes below already use.
     for route in orientation["mathematical_programmes"]:
-        lines.append(
-            f"| **{route['title']}** (`{route['id']}`) | "
-            f"{route['claim_ceiling']} |"
-        )
+        lines.append(f"- **{route['title']}** (`{route['id']}`)")
+        lines.append(f"  - Ceiling: {route['claim_ceiling']}")
     lines.extend(
         [
             "",
@@ -324,15 +323,13 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
     lines.extend(["", "## Principal claim routes", ""])
     lines.extend(
         [
-            "| Claim | Status | Paper | First Lean anchor |",
-            "|---|---|---|---|",
+            "| Claim | Status | Paper |",
+            "|---|---|---|",
         ]
     )
     for claim in orientation["principal_claims"]:
-        first = claim["declarations"][0]
-        anchor = f"`{first['name']}` in `{first['module']}:{first['line']}`"
         lines.append(
-            f"| `{claim['id']}` | {claim['status']} | `{claim['paper_label']}` | {anchor} |"
+            f"| `{claim['id']}` | {claim['status']} | `{claim['paper_label']}` |"
         )
     lines.extend(
         [
@@ -341,6 +338,27 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "declaration in [`docs/claims.json`](claims.json), then follow the paper label into",
             "the authored exposition. A conditional reduction or finite instance does not",
             "settle the open proposition attached to it.",
+            "",
+            "The first Lean anchor of each claim, in table order, as claim id,",
+            "declaration name, then source coordinate:",
+            "",
+            "```text",
+        ]
+    )
+    # A declaration name is an unbreakable token, so it sets a table column floor
+    # wide enough to squash every other column. A fenced block scrolls inside
+    # itself and keeps the name copy-paste clean.
+    # Same order as the table above; the claim id is the shared key.
+    for index, claim in enumerate(orientation["principal_claims"]):
+        if index:
+            lines.append("")
+        first = claim["declarations"][0]
+        lines.append(claim["id"])
+        lines.append(f"    {first['name']}")
+        lines.append(f"    {first['module']}:{first['line']}")
+    lines.extend(
+        [
+            "```",
             "",
             "## Read by intent",
             "",

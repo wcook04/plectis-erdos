@@ -400,19 +400,18 @@ def render_formalization(packet: dict, problem_projection: dict) -> str:
     return "\n".join(lines)
 
 
-def _md_breakable_code(name: str) -> str:
-    """Render a long Lean path so GitHub can wrap it instead of overflowing."""
-    # GitHub strips most CSS, but <wbr> inside <code> is kept and wraps at dots.
+def _md_code(name: str) -> str:
+    """Render an identifier verbatim, so a reviewer can copy it and it still compiles.
+
+    GitHub's HTML sanitiser strips <wbr>, and zero-width or soft-hyphen breaks
+    survive but corrupt copy-paste, so no break markup is inserted at all.
+    """
     escaped = (
         name.replace("&", "&amp;")
         .replace("<", "&lt;")
         .replace(">", "&gt;")
     )
-    return (
-        "<code>"
-        + escaped.replace(".", ".<wbr>").replace("_", "_<wbr>")
-        + "</code>"
-    )
+    return "<code>" + escaped + "</code>"
 
 
 def _programme_display_title(short_title: str) -> str:
@@ -462,8 +461,8 @@ def _render_family_item(family: dict) -> list[str]:
 def _render_routing_item(family: dict) -> list[str]:
     """Sibling machine-routing lane; order matches the human family list."""
     return [
-        f"- {_md_breakable_code(family['id'])}<br>",
-        f"  Comparator: {_md_breakable_code(family['comparator_disposition'])}",
+        f"- {_md_code(family['id'])}<br>",
+        f"  Comparator: {_md_code(family['comparator_disposition'])}",
         "",
     ]
 
@@ -523,7 +522,7 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
         dossier_blocks.extend(
             _details_block(
                 "Representative checked declaration",
-                [_md_breakable_code(full_name)],
+                [_md_code(full_name)],
             )
         )
         dossier_blocks.extend(
@@ -557,7 +556,7 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
             status = canonical_claim_status(item)
             interface_body.extend(
                 [
-                    f"- {_md_breakable_code(item['wrapper_declaration'])}",
+                    f"- {_md_code(item['wrapper_declaration'])}",
                     f"  - **Class.** {item['contribution_class']}",
                     f"  - **Statement.** {item['statement']}",
                     f"  - **Canonical claim status.** `{status}`",
