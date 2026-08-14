@@ -24,7 +24,7 @@ these with `python3 scripts/query_semantic.py <shape>`.
 
 | Shape | Count | Meaning |
 |---|---:|---|
-| `nonrecurring` | 280 | substantive content, weighted to #257 (168) over #249 (85) |
+| `nonrecurring` | 283 | substantive content, weighted to #257 (168) over #249 (88) |
 | `classical` | 101 | already in the literature or matched to prior art; formalisation value only |
 | `bare-equivalences` | 32 | restatements, labelled by this project's own audit |
 

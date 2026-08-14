@@ -27,7 +27,7 @@
     },
     {
       "id": "repository_architecture_guide",
-      "title": "How a Lean Repository Turns Formal Proofs into a Checked Public Release",
+      "title": "From Lean Proofs to Public Claims",
       "artifact_class": "repository_architecture_guide",
       "source_path": "paper/claim-faithful-publication-systems-paper.tex",
       "source_content_digest": "sha256:f352b41f998417637669b8763fa2afb3a311fff7810b513975d513dff0d01812",
@@ -82,7 +82,7 @@
     },
     {
       "id": "erdos_249_reasoning_record",
-      "title": "The Binary Totient Series: a claim-bounded reasoning record for Erd\u0151s Problem 249",
+      "title": "The Binary Totient Series",
       "artifact_class": "mathematical_companion",
       "source_path": "paper/erdos249-totient-reasoning-surface.tex",
       "source_content_digest": "sha256:3791c2f8319372eff4b7e7a247b788983ad195af0ec21addfe9d5e9126da6f28",
@@ -100,7 +100,7 @@
     },
     {
       "id": "erdos_257_reasoning_record",
-      "title": "Reciprocal Mersenne Subseries: a claim-bounded reasoning record for Erd\u0151s Problem 257",
+      "title": "Reciprocal Mersenne Subseries",
       "artifact_class": "mathematical_companion",
       "source_path": "paper/erdos257-mersenne-reasoning-surface.tex",
       "source_content_digest": "sha256:3baddc326432cae58d4e17d092987bd2491a200573c3ec9525f551fd82033ec4",
@@ -118,7 +118,7 @@
     },
     {
       "id": "erdos_249_note",
-      "title": "Exact Ranks for the Dyadic Sections of Euler\u2019s Totient",
+      "title": "A Basis for the 2-Kernel of Euler's Totient",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-249-binary-totient-series.tex",
       "source_content_digest": "sha256:a96cc9413cb362cabe150b6aa6e84049c2277491c4cb7aef6fdda783ff2843fc",
@@ -136,7 +136,7 @@
     },
     {
       "id": "erdos_257_note",
-      "title": "Forced Structure in Mersenne Subseries",
+      "title": "Denominator Periods, Rational-Value Constraints and Achievement-Set Geometry",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-257-mersenne-support-subseries.tex",
       "source_content_digest": "sha256:03784e9745e6f92fef3b72808666c97ee17be0fdc32d725a92e55833272e5a17",
@@ -154,7 +154,7 @@
     },
     {
       "id": "erdos_68_note",
-      "title": "Integral Channels and the Prime Unit Translator",
+      "title": "Factorial Carries and Finite Channel Obstructions",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-68-factorial-denominator-irrationality.tex",
       "source_content_digest": "sha256:7a79a936a41e08af7c2267cecd994e4a7fa9ffd21ef602fc77df91b6e0763ecf",
@@ -190,7 +190,7 @@
     },
     {
       "id": "erdos_251_note",
-      "title": "The Prime-Gap Equivalence and the Integral-Shift Frontier",
+      "title": "An Integral-Shift Criterion for Dyadic Tail Recurrences",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-251-prime-gap-dyadic-series.tex",
       "source_content_digest": "sha256:90e3d359d43cd7b9cf7f3239f901a2814a20fa59a4b374d9e85dd9f1500c5559",
@@ -244,7 +244,7 @@
     },
     {
       "id": "erdos_1049_note",
-      "title": "Rational Bases and the Integer-Base Argument",
+      "title": "Arithmetic Boundaries at Base 3/2",
       "artifact_class": "problem_note",
       "source_path": "paper/erdos-1049-rational-base-lambert.tex",
       "source_content_digest": "sha256:012dab93eebf3478bd31ab41faf4d55ff5f8538e1eb982c20183bd116ba44e77",

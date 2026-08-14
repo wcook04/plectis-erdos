@@ -894,6 +894,79 @@ def validate_publication_entry_packet(
     return errors
 
 
+def manuscript_title(source_text: str) -> str | None:
+    """The rendered title a reader sees, read from the manuscript's own ``\\title``.
+
+    Brace-matched rather than regex-terminated, because a title may contain
+    braces. Returns ``None`` when no title can be read, which is not an error
+    here: an unparseable title is a weaker signal than a wrong one.
+    """
+    match = re.search(r"\\title\{", source_text)
+    if match is None:
+        return None
+    depth, index = 1, match.end()
+    start = index
+    while index < len(source_text) and depth:
+        if source_text[index] == "{":
+            depth += 1
+        elif source_text[index] == "}":
+            depth -= 1
+        index += 1
+    if depth:
+        return None
+    return source_text[start : index - 1]
+
+
+def comparable_title(text: str) -> str:
+    """Reduce a title to what a reader sees, so LaTeX spelling is not a diff.
+
+    ``\\\\`` is a line break inside a title, not a word boundary; ``$3/2$``
+    renders as ``3/2``; and the two apostrophes are the same character to a
+    reader. Comparing raw strings would report those as drift and train the
+    next person to ignore this check.
+    """
+    text = re.sub(r"\\\\", " ", text).replace("$", "")
+    text = text.replace("\\H{o}", "ő").replace("\\H o", "ő")
+    text = re.sub(r"\\[A-Za-z]+\s*", "", text)
+    text = text.replace("{", "").replace("}", "").replace("\u2019", "'")
+    return re.sub(r"\s+", " ", text).strip().casefold()
+
+
+def manuscript_title_errors(
+    reader: RepositoryReader, artifacts: list[dict[str, Any]]
+) -> list[str]:
+    """Refuse a contract that titles a manuscript differently from the manuscript.
+
+    The contract's ``title`` is what ``docs/problems.json``, the external
+    verification packet, and the public site all print for a paper, so a stale
+    one labels a link with one title and opens a PDF with another -- and a
+    reader cannot tell which is the real paper. Earned 2026-08-14: eight of the
+    thirteen registered titles had drifted from their own ``\\title`` after the
+    manuscripts were retitled, and nothing here compared them.
+    """
+    errors: list[str] = []
+    for artifact in artifacts:
+        source = artifact.get("source_path")
+        declared = artifact.get("title")
+        if not isinstance(source, str) or not source.endswith(".tex"):
+            continue
+        if not isinstance(declared, str):
+            continue
+        try:
+            source_text = reader.read_text(source)
+        except (FileNotFoundError, UnicodeError):
+            continue
+        actual = manuscript_title(source_text)
+        if actual is None:
+            continue
+        if comparable_title(actual) != comparable_title(declared):
+            errors.append(
+                f"artifact {artifact.get('id')!r} is titled {declared!r} but "
+                f"{source} carries {' '.join(actual.split())!r}"
+            )
+    return errors
+
+
 def validate_publication_contract(
     reader: RepositoryReader,
     *,
@@ -932,6 +1005,7 @@ def validate_publication_contract(
         errors.append("publication contract contains duplicate source paths")
     if len(rendered_paths) != len(set(rendered_paths)):
         errors.append("publication contract contains duplicate rendered paths")
+    errors.extend(manuscript_title_errors(reader, artifacts))
 
     route_ids = {
         row.get("id") for row in all_entrypoints(claims, contract) if row.get("id")
