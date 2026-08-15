@@ -67,8 +67,9 @@ release carrying the external-verification claim must attach both:
 - `external-verification-release-manifest-<source-commit>.json`, the digest
   crosswalk for the receipt, manifest, Comparator inputs, public packet, and all
   eight problem papers. The same manifest binds the machine-readable paper
-  inventory and the exact Formal Conjectures statement crosswalk used to place
-  the eight programmes against the upstream corpus.
+  inventory and the exact [Formal Conjectures statement
+  crosswalk](FORMAL_CONJECTURES_CROSSWALK.md) used to place the eight
+  programmes against the upstream corpus.
 
 The source commit must already be tagged, and the tag must resolve to that exact
 commit. From the tagged checkout, build the manifest with:

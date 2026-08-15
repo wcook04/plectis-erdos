@@ -64,10 +64,23 @@ cache, or network access.
 
 ## External verification
 
-[YAML](formalization.yaml) and the [verification packet](docs/EXTERNAL_VERIFICATION.md)
-cover all eight problem programmes. [RESULTS](docs/RESULTS.md) gives each
-strongest checked result and its limit; [prior art](docs/PRIOR_ART.md) records
-classical, subsuming, and earlier public work. The finite #249 result is the
+Nineteen selected Lean propositions are declared a second time, without proofs,
+in [`ExternalVerification/Statements.lean`](ExternalVerification/Statements.lean).
+Comparator checks the proof-bearing module against those separate declarations
+and against a fixed axiom budget of `propext`, `Quot.sound`, and
+`Classical.choice`; an adversarial fixture alters one statement and must be
+rejected. [`formalization.yaml`](formalization.yaml) records, per selected
+result, the contribution class, exact statement, source declaration, boundary,
+`sorry` count, and axioms. Manifest and [verification packet](docs/EXTERNAL_VERIFICATION.md)
+cover all eight problem programmes; [replay](docs/EXTERNAL_VERIFICATION_REPLAY.md)
+gives the reviewer-run Linux route. The same check runs in continuous
+integration against the reviewed source commit. Comparator checks propositions
+only: no paper deduction, cited theorem, external computation, intended
+meaning, novelty, or significance.
+
+[RESULTS](docs/RESULTS.md) gives each strongest checked result and its limit;
+[prior art](docs/PRIOR_ART.md) records classical, subsuming, and earlier public
+work. The finite #249 result is the
 classical Farey/mediant bound (numerical delta `0`): Farey's method supplies
 the number directly, exactly the Farey bound, not an improvement. Full-kernel
 infinite rank is Coons's prior result, the all-base rank paper theorem uses
@@ -274,8 +287,12 @@ python3 scripts/check_release.py
 python3 scripts/test_methodology_contract.py
 ```
 
-The pinned public Lean source contains no `sorry`, `admit`, project-defined
+The pinned public Lean proof corpus contains no `sorry`, `admit`, project-defined
 `axiom`, or `native_decide`; finite computations use kernel-checked `decide`.
+One deliberate exception is outside the default build:
+[`ExternalVerification/Challenge.lean`](ExternalVerification/Challenge.lean)
+states the trusted propositions Comparator checks the solution against; they
+carry `sorry` by construction.
 
 ## Use as a Lean package
 

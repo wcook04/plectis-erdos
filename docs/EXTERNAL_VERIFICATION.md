@@ -7,6 +7,8 @@
 
 **Scope.** Eight public problem programmes. “Checked frontier” states what has been verified; “Open boundary” states what remains unresolved. Programme dossiers are projected from `docs/problems.json` and `docs/claims.json::external_verification_packet`; they are a navigation disclosure, not a promotion of unregistered expansion declarations into reviewed claims.
 
+**Comparator.** Comparator is a second checker, maintained in the `leanprover` organisation and pinned to a fixed revision, run here alongside the Lean kernel. Selected propositions are declared a second time, without their proofs, in `ExternalVerification/Statements.lean`. Comparator checks the proof-bearing module against those separate declarations and against a fixed axiom budget of `propext`, `Quot.sound`, and `Classical.choice`; an adversarial fixture that alters one statement must be rejected. It checks propositions only, and assesses no paper deduction, cited theorem, external computation, intended meaning, novelty, or significance. Per-interface detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+
 **Programmes.** [#68 — Factorial-denominator series](#programme-68) · [#243 — Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249 — Binary totient series](#programme-249) · [#251 — Prime-gap dyadic series](#programme-251) · [#257 — Reciprocal sums over infinite exponent supports](#programme-257) · [#269 — Three-prime running least common multiples](#programme-269) · [#1041 — Short connections inside polynomial lemniscates](#programme-1041) · [#1049 — Lambert-type series at rational bases](#programme-1049)
 
 ---

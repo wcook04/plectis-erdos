@@ -158,15 +158,22 @@ def source_map_entry_errors(source_map: str) -> list[str]:
         "Lean source checked by the pinned Lean kernel is proof authority",
         "Erdős #249",
         "universal form of #257 remain open",
-        "for every\n  natural `t ≤ 82`",
+        "for every natural `t ≤ 82`",
         "supplies nothing at `t = 83`",
     )
+    # Compare through flattened() on both sides. These are prose-presence
+    # requirements, so the property is "the document still says this", not
+    # "the document wraps this line where it wrapped in 2026". Matching raw
+    # text pinned one requirement to an accidental markdown wrap position
+    # ("for every\n  natural `t <= 82`"), which would have failed on a pure
+    # reflow that changed no meaning. (2026-08-15)
+    flat_source_map = flattened(source_map)
     errors = [
         f"docs/SOURCE_MAP.md lost bounded first-contact route: {phrase}"
         for phrase in required
-        if phrase not in source_map
+        if flattened(phrase) not in flat_source_map
     ]
-    if "Read `Erdos249257.lean` or `ErdosProblems.lean` only when package topology" not in source_map:
+    if "Read `Erdos249257.lean` or `ErdosProblems.lean` only when package topology" not in flat_source_map:
         errors.append(
             "docs/SOURCE_MAP.md must not send first-contact readers directly "
             "into the full import graph"
@@ -1220,9 +1227,32 @@ def main() -> int:
         "formalization.yaml" in readme and "docs/EXTERNAL_VERIFICATION.md" in readme,
         "README must route readers to the external verification packet",
     )
+    # Derive the scope sentence from the problem registry rather than pinning
+    # one fixed English sentence. The property is "the README states that the
+    # manifest and packet cover every indexed problem programme". Matching the
+    # literal "cover all eight problem programmes" both broke on an honest
+    # rewording ("covers") and would have stayed silent if a ninth problem were
+    # indexed while the sentence still said eight. (2026-08-15)
+    indexed_problem_count = int(
+        json.loads(read(ROOT / "docs" / "problems.json")).get("problem_count", 0)
+    )
+    count_words = {
+        1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+        6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+    }
+    count_word = count_words.get(indexed_problem_count, "")
+    count_pattern = "|".join(
+        re.escape(token) for token in (count_word, str(indexed_problem_count)) if token
+    )
     check(
-        "cover all eight problem programmes" in flattened(readme),
-        "README must state the all-eight external-verification scope",
+        bool(
+            re.search(
+                rf"covers?\s+all\s+(?:{count_pattern})\s+problem\s+programmes",
+                flattened(readme),
+            )
+        ),
+        "README must state that the external-verification packet covers all "
+        f"{indexed_problem_count} indexed problem programmes",
     )
     leaked_identifier = re.search(r"method_axiom\.|anti_principle\.|principle\.[a-z_]|transition\.[a-z_]", readme)
     check(leaked_identifier is None,
@@ -1230,6 +1260,35 @@ def main() -> int:
     for phrase in README_BANNED_PHRASES:
         check(phrase not in flattened(readme),
               f"README contains banned drift phrase: {phrase!r}")
+    # docs/external_verification_packet.json already declares the wording that
+    # must never describe Comparator, and docs/EXTERNAL_VERIFICATION.md repeats
+    # it as guidance, but nothing enforced it: the README could have claimed
+    # "independently verified" and passed every release check. Source the phrase
+    # from the packet so the gate tracks the contract instead of duplicating it.
+    # A negation ("this is not independently verified") is an honest disclaimer
+    # and stays legal; only an affirmative claim fails. (2026-08-15)
+    forbidden_wording = (
+        json.loads(read(ROOT / "docs" / "external_verification_packet.json"))
+        .get("receipt_contract", {})
+        .get("forbidden_wording", "")
+    )
+    if forbidden_wording:
+        flat_readme = flattened(readme)
+        negations = ("not", "never", "no", "without", "cannot", "nor", "neither")
+        asserted = [
+            match.start()
+            for match in re.finditer(re.escape(forbidden_wording), flat_readme, re.I)
+            if not any(
+                re.search(rf"\b{negation}\b", flat_readme[max(0, match.start() - 40):match.start()], re.I)
+                for negation in negations
+            )
+        ]
+        check(
+            not asserted,
+            "README asserts the forbidden external-verification wording "
+            f"{forbidden_wording!r}; Comparator is a second checker, not an "
+            "independent verification of the mathematics",
+        )
     # Check only the first column of the canonical Status/Result table. Other
     # README tables legitimately bold identifiers such as the six problem
     # numbers, so a document-wide first-column scan produces false failures.
