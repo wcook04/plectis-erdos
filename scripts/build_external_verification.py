@@ -586,6 +586,27 @@ def render_human(packet: dict, problem_source: dict, problem_projection: dict) -
                 "reviewed claims."
             ),
             "",
+            # The dossiers below use "Comparator" from their first line onward.
+            # Before this paragraph existed the term appeared roughly ninety
+            # times and was only explained in the closing section, so a reviewer
+            # met it as undefined jargon for the whole document. Define it once,
+            # here, ahead of first use. (2026-08-15)
+            (
+                "**Comparator.** Comparator is a second checker, maintained in the "
+                "`leanprover` organisation and pinned to a fixed revision, run here "
+                "alongside the Lean kernel. Selected propositions are declared a "
+                "second time, without their proofs, in "
+                "`ExternalVerification/Statements.lean`. Comparator checks the "
+                "proof-bearing module against those separate declarations and "
+                "against a fixed axiom budget of `propext`, `Quot.sound`, and "
+                "`Classical.choice`; an adversarial fixture that alters one "
+                "statement must be rejected. It checks propositions only, and "
+                "assesses no paper deduction, cited theorem, external computation, "
+                "intended meaning, novelty, or significance. Per-interface detail "
+                "is in the [Comparator interface appendix]"
+                "(#comparator-interface-appendix)."
+            ),
+            "",
             "**Programmes.** " + " · ".join(index_links),
             "",
             "---",

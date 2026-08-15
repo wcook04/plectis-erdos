@@ -33,7 +33,10 @@ and citation metadata.
   Erdős #249 and the universal #257 remain open; wording that blurs that is a
   defect, not an improvement.
 - No `sorry`, `admit`, new `axiom`, or `native_decide` anywhere in the Lean
-  sources, including `examples/`.
+  proof corpus, including `examples/`. One deliberate exception sits outside
+  the default build: `ExternalVerification/Challenge.lean` states the trusted
+  propositions Comparator checks the solution against, so it carries `sorry`
+  by construction.
 - The paper pins every source link to the release tag. Changes that move
   declaration line numbers require regenerating those pins as part of a new
   release, not as a drive-by edit.

@@ -72,7 +72,17 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # first-screen AI-assistance boundary, and falsifiable #269 chronology.
     # Attribution and trust calibration outrank byte thrift; the ceiling still
     # fails on a runaway projection.
-    "README.md": 18_900 + 400 * INDEXED_PROBLEM_COUNT,
+    # 2026-08-15: raised to fund the external-verification mechanism on the
+    # first screen. The section named "External verification" previously spent
+    # every byte on prior-art boundaries and release identity and never said
+    # what the verification is, so a reviewer could not learn from the README
+    # that nineteen propositions are separately declared, Comparator-checked
+    # against a fixed axiom budget, and covered by an adversarial fixture, nor
+    # that the same check runs in continuous integration. "Has anyone actually
+    # run this?" is the first question a sceptical reviewer asks. A cheap
+    # inspection route is what a formal-methods reviewer asks for first; the
+    # ceiling still fails on a runaway projection.
+    "README.md": 20_100 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
@@ -83,7 +93,10 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # 2026-08-11: 16_000 -> 17_000, tracking the whole-file raise above. The status
 # verdict, eight-problem card, and #269 priority credit must all remain inside
 # this window without pushing the agent/verify routes out of first contact.
-README_FIRST_CONTACT_BUDGET_BYTES = 17_000
+# 2026-08-15: 17_000 -> 17_800. Naming the external-verification mechanism on
+# the first screen pushed the no-build navigation route past the window, which
+# the assertion below caught. The window still fails on a runaway projection.
+README_FIRST_CONTACT_BUDGET_BYTES = 17_800
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
