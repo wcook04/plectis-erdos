@@ -89,8 +89,16 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # at the front page could not learn that agent sessions here are append-only
     # ledgers, that stored probes replay, or that a kernel-checked module was
     # derived inside one. Reviewers judge the claim discipline as much as the
-    # mathematics; the ceiling still fails on a runaway projection.
-    "README.md": 21_100 + 400 * INDEXED_PROBLEM_COUNT,
+    # mathematics. Funded with slack rather than to the byte: a ceiling that
+    # leaves four spare bytes makes the next honest sentence a release failure,
+    # which is how a budget stops guarding prose and starts shaping it. The
+    # ceiling still fails on a runaway projection.
+    # Also funds naming the Formal Conjectures crosswalk and the related-problem
+    # map, which were reachable only from the replay document and a verification
+    # contract despite answering a reviewer's first two questions: how do these
+    # statements line up with the public benchmark, and what is already known
+    # about the neighbouring problems.
+    "README.md": 22_000 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
