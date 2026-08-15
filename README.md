@@ -14,7 +14,8 @@ Lean source; paper theorems and cited inputs are labelled separately.
 → [architecture and repository guide](ARCHITECTURE.md) ·
 [printable PDF](claim-faithful-publication-systems-paper.pdf).
 It assumes no Lean or project history.
-[agent-navigation paper](cold-clone-to-proof-receipt.pdf).
+[agent-navigation paper](cold-clone-to-proof-receipt.pdf), which audits the
+cold-clone route and the recorded workbench session.
 
 The repository was created for #249 and #257 and keeps that name so existing
 citations and links continue to resolve; it now covers eight problems. The
@@ -201,6 +202,19 @@ These are navigation counts, not novelty claims.
   indexed declaration and exact dependencies for both loaded roots; coverage
   keeps direct evidence, family context, and structural discovery distinct.
   These are navigation projections, not proof authority.
+- **Agent working inside the corpus:** [the Agent Workbench](docs/AGENT_WORKBENCH.md)
+  gives the instrument panel, the typed move grammar, and the three-rung
+  invention ladder that fixes what a session may claim. Sessions are append-only
+  ledgers under `workbench/sessions/`; `python3 scripts/proof_workbench.py replay
+  <slug>` re-runs their stored probes and reports whether the recorded verdicts
+  still hold. The one landed prospective session,
+  [`carry_pivot_2026_07_27`](workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
+  produced [`SuffixCylinderCarryPivot.lean`](Erdos249257/SuffixCylinderCarryPivot.lean).
+  Only kernel receipts assert; ledger notes and static nominations stay advisory.
+  [The proof-state compiler](docs/PROOF_STATE_COMPILER.md) asks the pinned Lean
+  environment which candidate applications it actually accepts from a goal, and
+  [the semantic compiler](docs/SEMANTIC_COMPILER.md) nominates declarations
+  structurally without claiming they apply.
 - **Publication topology:** run
   `python3 scripts/query_corpus.py --publication-architecture` or
   `python3 scripts/query_corpus.py --publication-family <id>`.

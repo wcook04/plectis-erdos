@@ -82,7 +82,15 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # run this?" is the first question a sceptical reviewer asks. A cheap
     # inspection route is what a formal-methods reviewer asks for first; the
     # ceiling still fails on a runaway projection.
-    "README.md": 20_100 + 400 * INDEXED_PROBLEM_COUNT,
+    # 2026-08-15: raised to name the Agent Workbench on the reader surface. The
+    # workbench, its typed move grammar, the three-rung invention ladder, and
+    # the one landed prospective session were documented in docs/ and in
+    # AGENTS.md but appeared nowhere in the README, so a human reviewer arriving
+    # at the front page could not learn that agent sessions here are append-only
+    # ledgers, that stored probes replay, or that a kernel-checked module was
+    # derived inside one. Reviewers judge the claim discipline as much as the
+    # mathematics; the ceiling still fails on a runaway projection.
+    "README.md": 21_100 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
