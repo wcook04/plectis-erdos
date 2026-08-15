@@ -141,6 +141,23 @@ Lean build when a result must be checked.
    claim exactly once into a contribution family with a narrative owner,
    prior-art posture, consumer or open obligation, and rendered-view decision.
    Do not load its exhaustive module graph merely to orient.
+
+   To take a single claim all the way down in one command, use
+
+   ```sh
+   python3 scripts/verify_claims.py --list
+   python3 scripts/verify_claims.py --claim <claim_id>
+   ```
+
+   It prints the public statement, re-reads each declaration out of the Lean
+   source at its recorded position rather than reprinting the register's
+   coordinates, and ends on the typed boundary: what the status is allowed to
+   mean, which open propositions still target the claim, and what the release
+   does not assert. `query_corpus.py --claim` remains the route for argument
+   -graph neighbours and paper labels; this is the route for reading the proof
+   text and the limit together. On a shallow clone it exits 2 and says so,
+   because a truncated history cannot answer questions about pinned identity
+   and must never be read as a failed claim.
 3. Read `docs/methodology.json` before changing a public claim. It defines
    the evidence responsibilities, change classes, required reviews, and local
    claim, guard, and negative-fixture references for each rule.
