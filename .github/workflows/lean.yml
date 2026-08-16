@@ -365,6 +365,28 @@ jobs:
       - name: Cross-surface release checks (proof trust, claims, projections)
         if: ${{ !cancelled() }}
         run: python3 scripts/check_release.py
+      # Most committed `check_*.py` gates are reached transitively: check_release
+      # subprocesses the problem-note, semantic-corpus, theory-lab, and rendered
+      # -paper checks, and test_check_release_ref imports the release-ref wrapper.
+      # The five below were reached by nothing, so only habit kept them current.
+      # check_cold_clone_comprehension is the one that stings: it is the gate
+      # that tests the published first-contact promise -- clone this, follow a
+      # claim -- and it was the least enforced check in the repository.
+      - name: Cold-clone comprehension (guards the published first-contact test)
+        if: ${{ !cancelled() }}
+        run: python3 scripts/check_cold_clone_comprehension.py
+      - name: Test the claim-following verb reports drift
+        if: ${{ !cancelled() }}
+        run: python3 scripts/test_verify_claims.py
+      - name: Publication contract
+        if: ${{ !cancelled() }}
+        run: python3 scripts/check_publication_contract.py
+      - name: Problem-specific frontier checks
+        if: ${{ !cancelled() }}
+        run: |
+          python3 scripts/check_erdos269_dyadic_windows.py
+          python3 scripts/check_farey_denominator_scaling.py
+          python3 scripts/check_formal_conjectures_crosswalk.py
       # The freshness comparison above is only meaningful if a projection is a
       # pure function of the committed tree.  This job checks `main` out as a
       # local branch and a pull request out as a topic branch, so a builder that
