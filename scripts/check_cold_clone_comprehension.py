@@ -613,6 +613,57 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         assert token in planner, f"build planner lost incremental contract: {token}"
 
 
+# What the README's opening tells a reader the first command will show, and the
+# marker in that command's actual output that makes the promise true. Every link
+# checker in this repository would stay green while these drifted apart, because
+# nothing here is a link: the README describes *output*, and output changes
+# without the sentence describing it changing. The 2026-08-16 instance was the
+# reverse direction — the command started naming the Comparator interface and
+# the write-up, and the sentence still said it printed the statement, the source
+# and the receipts.
+FIRST_COMMAND_PROMISES = (
+    ("Comparator interface", ("SECOND FORMAL CHECK", "[BOUND]")),
+    ("the paper that", ("WRITTEN UP IN", "paper/")),
+    ("re-resolves the declaration", ("SOURCE (", "re-resolved in this checkout")),
+    ("release receipts", ("RECEIPTS",)),
+    ("where the claim\nstops", ("WHERE THIS CLAIM STOPS",)),
+)
+
+# The exact invocation the README puts in front of a reader who has not decided
+# to read yet. Running any other one would test a command nobody was offered.
+FIRST_COMMAND_ARGV = ("--claim", "eb_full_support")
+
+
+def validate_first_command_keeps_its_promise(readme_prefix: str) -> None:
+    """Run the advertised first command and require the promised output.
+
+    A promise is only checked when the README still makes it, because dropping a
+    capability and its description together is a coherent change. What must never
+    happen is the description outliving the behaviour.
+    """
+    completed = subprocess.run(
+        [sys.executable, "scripts/verify_claims.py", *FIRST_COMMAND_ARGV],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, (
+        "the command the README puts on its first screen exits "
+        f"{completed.returncode}: {(completed.stderr or completed.stdout).strip()[:300]}"
+    )
+    output = completed.stdout
+    for promise, markers in FIRST_COMMAND_PROMISES:
+        if promise not in readme_prefix:
+            continue
+        for marker in markers:
+            assert marker in output, (
+                f"README's first screen promises {promise!r}, but "
+                f"`verify_claims.py {' '.join(FIRST_COMMAND_ARGV)}` prints no "
+                f"{marker!r}; the description has outlived the behaviour"
+            )
+
+
 def validate_human_first_contact(
     summary: dict[str, Any], surfaces: dict[str, str]
 ) -> None:
@@ -668,6 +719,8 @@ def validate_human_first_contact(
         "this repository is worth their time meets an inventory before they meet "
         "anything they can run"
     )
+    validate_first_command_keeps_its_promise(readme_prefix)
+
     assert (
         "[agent-navigation paper](cold-clone-to-proof-receipt.pdf)"
         in readme_prefix
