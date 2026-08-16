@@ -185,6 +185,16 @@ These are navigation counts, not novelty claims.
 
 ## Read or run it
 
+- **Follow one claim, without installing Lean:**
+  `python3 scripts/verify_claims.py --claim eb_full_support` prints the public
+  statement, re-resolves its declaration in this checkout, shows the Lean proof
+  text, the release receipts, and the exact point where the claim stops.
+  `--verify-all` re-resolves all 103 claims and 335 declarations in well under a
+  second; both work on a `git clone --depth 1` checkout. Run it with no
+  argument for the environment check, which exits `2` and prints
+  `git fetch --unshallow` when a truncated history cannot reach the gates that
+  read pinned commits — never `1`, so a shallow clone can never be misread as a
+  claim that failed. `check_release.py` remains the authority for locators.
 - **Mathematician:** use the top reading route, then follow one result from
   [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The [Exposition PDF](erdos249-257-main-paper.pdf)
   is the longer route, not the truth-status entrypoint.
@@ -281,11 +291,16 @@ order without asking you to decode Lean declaration names first.
 
 ## Build and verify
 
-[`lake-manifest.json`](lake-manifest.json) pins Mathlib for
-`leanprover/lean4:v4.29.1`.
+Everything above this heading runs with Python alone. Building the Lean source
+needs the toolchain, and `lake` arrives with it: install `elan`, Lean's
+toolchain manager, from the
+[Lean setup guide](https://leanprover-community.github.io/get_started.html).
+`elan` then reads [`lean-toolchain`](lean-toolchain) and selects
+`leanprover/lean4:v4.29.1`; [`lake-manifest.json`](lake-manifest.json) pins the
+matching Mathlib.
 
 ```sh
-lake exe cache get
+lake exe cache get   # fetches the pinned Mathlib build: several GB, once
 lake build
 ```
 

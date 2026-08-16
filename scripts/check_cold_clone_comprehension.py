@@ -98,7 +98,19 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # contract despite answering a reviewer's first two questions: how do these
     # statements line up with the public benchmark, and what is already known
     # about the neighbouring problems.
-    "README.md": 22_000 + 400 * INDEXED_PROBLEM_COUNT,
+    # 2026-08-16: raised to fund two first-contact repairs a cold clone proved
+    # were missing. The README sent a newcomer to `lake exe cache get` without
+    # ever saying where `lake` comes from: `elan` appeared nowhere in this
+    # repository's documentation, so the first build command a reader was given
+    # was `command not found` unless they already had the toolchain. The
+    # setup-guide pointer and the toolchain sentence are the fix, and they must
+    # sit above the command rather than eighteen lines below it. The second is
+    # `scripts/verify_claims.py`, which landed with CI enforcement and an entry
+    # in AGENTS.md but nothing on the reader surface: the repository's cheapest
+    # concrete verb -- follow one claim to its source, receipts, and stopping
+    # point, in under a second, with no Lean installed -- was invisible to the
+    # human it was built for. Funded with slack, per the note above.
+    "README.md": 23_500 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,
@@ -112,7 +124,15 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # 2026-08-15: 17_000 -> 17_800. Naming the external-verification mechanism on
 # the first screen pushed the no-build navigation route past the window, which
 # the assertion below caught. The window still fails on a runaway projection.
-README_FIRST_CONTACT_BUDGET_BYTES = 17_800
+# 2026-08-16: 17_800 -> 18_600. Naming `verify_claims.py` as the first entry
+# under "Read or run it" pushed the no-build navigation route 63 bytes past the
+# window, which this assertion caught for the second release running. The new
+# route belongs in front of the others precisely because it is the one that
+# returns a result rather than a reading list, so the window grew to keep both
+# rather than trading one first-contact route for another. Funded with slack:
+# the anchor now sits about 700 bytes inside the window, and it still fails on
+# a runaway projection.
+README_FIRST_CONTACT_BUDGET_BYTES = 18_600
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
@@ -524,6 +544,31 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         assert normalized(token) in readme_flat, (
             f"README lost incremental-build contract: {token}"
         )
+
+    # A newcomer meets `lake` before they ever meet Lean. Until 2026-08-16 the
+    # README opened its build section on `lake exe cache get` and the string
+    # "elan" appeared nowhere in this repository's documentation, so the first
+    # build command a reader was handed was `command not found` unless they
+    # already had the toolchain. Nothing caught it because every check that
+    # runs here has the toolchain installed by the time it runs.
+    #
+    # This is deliberately a positional contract rather than a keyword one: a
+    # prerequisite named eighteen lines below the command it is a prerequisite
+    # for is not a prerequisite, and the previous README did carry a toolchain
+    # sentence — just underneath the command that needed it.
+    toolchain_guide = readme.find(
+        "https://leanprover-community.github.io/get_started.html"
+    )
+    first_lake_command = readme.find("lake exe cache get")
+    assert toolchain_guide >= 0, (
+        "README no longer tells a reader where the Lean toolchain comes from"
+    )
+    assert first_lake_command >= 0, "README lost its Mathlib cache command"
+    assert toolchain_guide < first_lake_command, (
+        "README names the Lean setup guide only after the first lake command; "
+        "a reader without elan hits `command not found` before they reach it"
+    )
+    assert "elan" in readme, "README no longer names Lean's toolchain manager"
 
     for token in (
         "uses: actions/cache@",
