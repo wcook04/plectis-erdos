@@ -1,6 +1,29 @@
+# The package name is historical: this library began as two problems and the
+# module namespace `Erdos249257` is imported by every downstream file. Renaming
+# it to match the current eight-problem scope would rewrite the import graph of
+# the whole repository for cosmetic gain, so the name stays and the description
+# carries the current scope instead.
 name = "erdos249257"
 version = "0.8.0"
-keywords = ["math", "erdos249", "erdos257", "lean4", "mathlib", "formalized-mathematics"]
+description = "Lean 4 formalisation work on eight open Erdős problems — 68, 243, 249, 251, 257, 269, 1041, and 1049. All eight remain open. The library states what is checked and where each result stops."
+homepage = "https://github.com/wcook04/plectis-lean-erdos249-257"
+license = "Apache-2.0"
+licenseFiles = ["LICENSE"]
+readmeFile = "README.md"
+# Keywords are navigation, not claims. They name the mathematical territory the
+# eight problems actually occupy, which the previous list -- two problem numbers
+# from the original scope -- no longer did.
+keywords = [
+  "erdos-problems",
+  "number-theory",
+  "irrationality",
+  "series",
+  "prime-gaps",
+  "totient",
+  "lean4",
+  "mathlib",
+  "formalized-mathematics",
+]
 defaultTargets = ["Erdos249257", "ErdosProblems"]
 
 [leanOptions]

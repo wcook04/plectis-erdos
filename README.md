@@ -58,6 +58,8 @@ matters: those remain authored judgements, and the papers state them per result.
 - [**#1041 — short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf)
 - [**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf)
 
+[`docs/papers/corpus.json`](docs/papers/corpus.json) indexes them by machine.
+
 | Problem | Mathematical statement | Public checked frontier; what remains |
 |---|---|---|
 | **#68** | Is `∑_{n≥2} 1/(n!−1)` irrational? | A checked hypothesis-free equivalence reduces irrationality to one integer divisibility test failing infinitely often. The kernel-internal denominator bound is `67`; the `300000` exclusion is a checked implication evaluated externally. Producing infinitely many failures remains open. |
