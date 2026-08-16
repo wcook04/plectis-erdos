@@ -171,6 +171,12 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
             "exhaustive_declarations": "docs/declaration_atlas.json",
             "mathematical_methodology": "docs/methodology.json",
             "human_exposition": "erdos249-257-main-paper.pdf",
+            # human_exposition is one digest-bound manuscript, and it is the one
+            # the corpus marks retired. An agent that started here could reach
+            # it and nothing else: the thirteen active manuscripts, and the
+            # bounded index that names what each one answers and is not
+            # authority for, were unreachable from the first-read projection.
+            "paper_corpus": "docs/papers/corpus.json",
             "paper_source_sigils": "paper/module-aliases.json",
             "source_by_question": "docs/SOURCE_MAP.md",
             "development_chronology": "docs/WAVE_INDEX.md",

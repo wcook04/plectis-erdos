@@ -1267,28 +1267,60 @@ def main() -> int:
     # from the packet so the gate tracks the contract instead of duplicating it.
     # A negation ("this is not independently verified") is an honest disclaimer
     # and stays legal; only an affirmative claim fails. (2026-08-15)
+    #
+    # The contract governs how Comparator may be described, not where. Scanning
+    # only the README left every other surface a reader meets first -- the agent
+    # entries, the architecture guide, the whole of docs/ -- free to make the
+    # claim the README could not. Widened to the repository's own prose.
+    # (2026-08-16)
+    #
+    # Authored manuscripts are excluded on purpose rather than by oversight:
+    # paper/ and docs/papers/ use "independently verified" in its ordinary
+    # mathematical sense, for finite tables of separately checked rows, and one
+    # paper discusses NASA's IV&V criteria by name. That prose is authored
+    # exposition under its own review, and this gate does not rewrite it.
     forbidden_wording = (
         json.loads(read(ROOT / "docs" / "external_verification_packet.json"))
         .get("receipt_contract", {})
         .get("forbidden_wording", "")
     )
     if forbidden_wording:
-        flat_readme = flattened(readme)
         negations = ("not", "never", "no", "without", "cannot", "nor", "neither")
-        asserted = [
-            match.start()
-            for match in re.finditer(re.escape(forbidden_wording), flat_readme, re.I)
-            if not any(
-                re.search(rf"\b{negation}\b", flat_readme[max(0, match.start() - 40):match.start()], re.I)
-                for negation in negations
+        own_prose = [
+            ROOT / name
+            for name in (
+                "README.md",
+                "AGENTS.md",
+                "AGENTS.override.md",
+                "CLAUDE.md",
+                "CODEX.md",
+                "ARCHITECTURE.md",
+                "METHODOLOGY.md",
+                "SCOPE.md",
+                "CONTRIBUTING.md",
+                "SECURITY.md",
             )
         ]
-        check(
-            not asserted,
-            "README asserts the forbidden external-verification wording "
-            f"{forbidden_wording!r}; Comparator is a second checker, not an "
-            "independent verification of the mathematics",
-        )
+        own_prose.extend(sorted((ROOT / "docs").glob("*.md")))
+        for path in own_prose:
+            if not path.is_file():
+                continue
+            flat = flattened(read(path))
+            asserted = [
+                match.start()
+                for match in re.finditer(re.escape(forbidden_wording), flat, re.I)
+                if not any(
+                    re.search(rf"\b{negation}\b", flat[max(0, match.start() - 40):match.start()], re.I)
+                    for negation in negations
+                )
+            ]
+            check(
+                not asserted,
+                f"{path.relative_to(ROOT)} asserts the forbidden "
+                f"external-verification wording {forbidden_wording!r}; Comparator "
+                "is a second checker, not an independent verification of the "
+                "mathematics",
+            )
     # Check only the first column of the canonical Status/Result table. Other
     # README tables legitimately bold identifiers such as the six problem
     # numbers, so a document-wide first-column scan produces false failures.

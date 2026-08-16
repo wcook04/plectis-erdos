@@ -216,7 +216,11 @@ Lean build when a result must be checked.
    covered by the `ErdosProblems` expansion library. It is the generated,
    bounded problem-owned index: one row per currently indexed problem giving
    its modules with declaration counts, its Erdős Problem Note, what is
-   checked, what is not checked, and the obligation that survives. The #249
+   checked, what is not checked, the obligation that survives, the standalone
+   paper that writes the problem up, and the Comparator disposition of every
+   contribution family. The last two are joins into `docs/papers/corpus.json`
+   and the review matrix in `docs/claims.json`; a disposition says whether
+   Comparator was asked to check that family, not whether it is true. The #249
    and #257 rows index expansion modules and do not replace the separately
    reviewed `Erdos249257` claim registry.
    Its authored source is `docs/problem_index_source.json` and it is rebuilt by
