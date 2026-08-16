@@ -29,6 +29,15 @@ is that a reader gets the re-derived source text, the docstring, the receipts,
 and the boundary on one screen from one command, instead of a JSON projection
 they must go and confirm by hand.
 
+A claim does not stop at its Lean declaration, and neither does this command.
+The register already recorded two further links and kept them in sibling keys
+nothing joined: which selected Comparator interface restates the result under a
+fixed axiom budget, and which write-up carries the result's label. Both are now
+resolved on the same screen, and both are typed when they are thin -- most
+claims are bound to no Comparator interface, which is a design state the
+register itself defines rather than a gap, so that sentence is quoted from the
+register instead of paraphrased here.
+
 Two failure modes are separated on purpose, because conflating them is what
 makes a hostile reading go wrong.
 
@@ -56,6 +65,7 @@ import re
 import shutil
 import subprocess
 import sys
+import textwrap
 from pathlib import Path
 from typing import Any
 
@@ -112,6 +122,16 @@ HISTORY_DEPENDENT_GATES = frozenset(
 
 # Gates that need a third-party tool the repository does not vendor.
 OPTIONAL_TOOL_GATES = {"check_metadata.py": "cffconvert"}
+
+# A claim's `paper_label` is the LaTeX label of the result in the write-up, so
+# the paper that carries the claim is found by looking for that label rather
+# than by keeping a second list that can drift away from the first.
+PAPER_SUBDIR = "paper"
+LABEL_PATTERN = re.compile(r"\\label\{([^}]+)\}")
+
+# `follow_claim` scans the paper sources once per call unless a caller that is
+# following every claim hands it an index it already built.
+_BUILD_INDEX = object()
 
 
 def load_claims() -> dict[str, Any]:
@@ -274,6 +294,90 @@ def resolve_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+def index_paper_labels() -> dict[str, list[str]] | None:
+    """Index every ``\\label`` in the paper sources, or report that they are absent.
+
+    Returns None when this checkout has no paper directory. That distinction
+    matters: a checkout that cannot see the write-ups cannot answer where a
+    claim is explained, and reporting that silence as a broken claim would be
+    the same category error the module separates everywhere else.
+    """
+    paper_dir = REPO_ROOT / PAPER_SUBDIR
+    if not paper_dir.is_dir():
+        return None
+    index: dict[str, list[str]] = {}
+    for tex in sorted(paper_dir.rglob("*.tex")):
+        text = tex.read_text(encoding="utf-8", errors="replace")
+        relative = str(tex.relative_to(REPO_ROOT))
+        for match in LABEL_PATTERN.finditer(text):
+            carriers = index.setdefault(match.group(1), [])
+            if relative not in carriers:
+                carriers.append(relative)
+    return index
+
+
+def exposition_for(
+    claim: dict[str, Any], label_index: dict[str, list[str]] | None
+) -> dict[str, Any]:
+    """Resolve a claim's paper label to the write-up that actually carries it.
+
+    The register already records the label. What it does not record is which
+    paper holds it, so a reader who wanted the prose behind a claim had to guess
+    among the write-ups. A label carried by two papers is not a fault: the
+    per-problem paper and the combined paper both state some results.
+    """
+    label = claim.get("paper_label")
+    if not label:
+        return {"status": "no_label_registered", "label": None, "papers": []}
+    if label_index is None:
+        return {"status": "paper_sources_absent", "label": label, "papers": []}
+    papers = label_index.get(label, [])
+    if not papers:
+        return {"status": "label_resolves_to_no_paper", "label": label, "papers": []}
+    status = "resolved" if len(papers) == 1 else "resolved_in_several_papers"
+    return {"status": status, "label": label, "papers": papers}
+
+
+def comparator_for(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
+    """Report whether a selected Comparator interface is bound to this claim.
+
+    Comparator is a second *formal* channel, not a second opinion: it checks a
+    separately declared statement under a fixed axiom budget. Most claims are
+    not bound to one, and that is a design state rather than a gap, so the
+    register's own contract sentence is quoted here instead of paraphrased --
+    a paraphrase would be this module inventing claim language, which is the
+    exact failure the register exists to prevent.
+    """
+    packet = claims.get("external_verification_packet") or {}
+    if not packet:
+        return {"status": "packet_absent", "interfaces": []}
+    selected = packet.get("main_results", [])
+    config = packet.get("comparator", {})
+    interfaces = [
+        {
+            "id": row.get("id"),
+            "problem": row.get("problem"),
+            "wrapper_declaration": row.get("wrapper_declaration"),
+            "original_declaration": row.get("original_declaration"),
+            "boundary": row.get("boundary"),
+        }
+        for row in selected
+        if row.get("claim_id") == claim_id
+    ]
+    return {
+        "status": "bound" if interfaces else "not_bound",
+        "interfaces": interfaces,
+        "selected_total": len(selected),
+        "bound_total": sum(1 for row in selected if row.get("claim_id")),
+        "permitted_axioms": config.get("permitted_axioms", []),
+        "config": config.get("config"),
+        "unregistered_contract": packet.get("claim_status_contract", {}).get(
+            "unregistered_interface"
+        ),
+        "boundary": packet.get("boundary"),
+    }
+
+
 def boundary_for(claim: dict[str, Any], claims: dict[str, Any]) -> dict[str, Any]:
     """Assemble the typed statement of where this claim stops."""
     taxonomy = claims.get("status_taxonomy", {})
@@ -292,14 +396,19 @@ def boundary_for(claim: dict[str, Any], claims: dict[str, Any]) -> dict[str, Any
     }
 
 
-def follow_claim(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
-    """Resolve one claim into source, receipts, and boundary."""
+def follow_claim(
+    claim_id: str, claims: dict[str, Any], label_index: Any = _BUILD_INDEX
+) -> dict[str, Any]:
+    """Resolve one claim into source, second formal check, write-up, and boundary."""
     for candidate in claims.get("claims", []):
         if candidate.get("id") == claim_id:
             claim = candidate
             break
     else:
         raise KeyError(claim_id)
+
+    if label_index is _BUILD_INDEX:
+        label_index = index_paper_labels()
 
     declarations = [resolve_declaration(dec) for dec in claim.get("declarations", [])]
     boundary = boundary_for(claim, claims)
@@ -314,6 +423,8 @@ def follow_claim(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
         "statement": claim.get("statement"),
         "paper_label": claim.get("paper_label"),
         "declarations": declarations,
+        "comparator": comparator_for(claim_id, claims),
+        "exposition": exposition_for(claim, label_index),
         "release": claims.get("release", {}),
         "boundary": boundary,
         "verified": not broken and boundary["status_in_taxonomy"],
@@ -348,6 +459,50 @@ def render_claim(report: dict[str, Any]) -> str:
             out.append(f"         doc: {doc[:400]}{'...' if len(doc) > 400 else ''}")
     out.append("")
 
+    def quoted(text: str | None, indent: str = "         ") -> list[str]:
+        """Wrap a sentence taken verbatim from the register."""
+        if not text:
+            return []
+        return textwrap.wrap(text, width=88, initial_indent=indent, subsequent_indent=indent)
+
+    comparator = report["comparator"]
+    if comparator["status"] != "packet_absent":
+        out.append("SECOND FORMAL CHECK (Comparator, separately declared statement)")
+        if comparator["status"] == "bound":
+            for interface in comparator["interfaces"]:
+                out.append(f"  [BOUND] {interface['id']}")
+                out.append(f"         restates  {interface['original_declaration']}")
+                out.append(f"         as        {interface['wrapper_declaration']}")
+                if interface.get("boundary"):
+                    out.append("         boundary:")
+                    out.extend(quoted(interface["boundary"], "           "))
+            out.append(f"  axioms   {', '.join(comparator['permitted_axioms']) or '(none recorded)'}")
+            out.append(f"  config   {comparator['config']}")
+        else:
+            out.append("  [NOT BOUND] no selected interface carries this claim id")
+            out.append(
+                f"         {comparator['selected_total']} interfaces are selected; "
+                f"{comparator['bound_total']} carry a claim id"
+            )
+            out.extend(quoted(comparator["unregistered_contract"]))
+        out.append("  what Comparator does and does not settle:")
+        out.extend(quoted(comparator["boundary"], "           "))
+        out.append("")
+
+    exposition = report["exposition"]
+    out.append("WRITTEN UP IN")
+    if exposition["status"] in {"resolved", "resolved_in_several_papers"}:
+        for index, paper in enumerate(exposition["papers"]):
+            prefix = "  paper    " if index == 0 else "  also in  "
+            out.append(f"{prefix}{paper}  (\\label{{{exposition['label']}}})")
+    elif exposition["status"] == "no_label_registered":
+        out.append("  no paper label is registered for this claim")
+    elif exposition["status"] == "paper_sources_absent":
+        out.append(f"  paper sources are absent from this checkout; label {exposition['label']} unresolved")
+    else:
+        out.append(f"  !! label {exposition['label']} is registered but no paper carries it")
+    out.append("")
+
     release = report["release"]
     formal = release.get("formal_source", {})
     out.append("RECEIPTS")
@@ -378,8 +533,11 @@ def verify_all_claims(claims: dict[str, Any]) -> dict[str, Any]:
     """Re-resolve every locator in the register. This is the drift gate."""
     problems: list[dict[str, Any]] = []
     declaration_count = 0
+    label_index = index_paper_labels()
+    written_up = 0
+    comparator_bound = 0
     for claim in claims.get("claims", []):
-        report = follow_claim(claim["id"], claims)
+        report = follow_claim(claim["id"], claims, label_index)
         declaration_count += len(report["declarations"])
         for dec in report["declarations"]:
             if dec["status"] in {"module_missing", "declaration_missing", "drifted"}:
@@ -387,15 +545,50 @@ def verify_all_claims(claims: dict[str, Any]) -> dict[str, Any]:
         if not report["boundary"]["status_in_taxonomy"]:
             problems.append({"claim": claim["id"], "status": "status_outside_taxonomy"})
 
+        # A registered label that no paper carries sends a reader after prose
+        # that is not there. Absent paper sources are an environment fact, not a
+        # claim fault, so they are not counted against the register.
+        exposition = report["exposition"]
+        if exposition["status"] in {"resolved", "resolved_in_several_papers"}:
+            written_up += 1
+        elif exposition["status"] == "label_resolves_to_no_paper":
+            problems.append(
+                {
+                    "claim": claim["id"],
+                    "status": "paper_label_resolves_to_no_paper",
+                    "paper_label": exposition["label"],
+                }
+            )
+        if report["comparator"]["status"] == "bound":
+            comparator_bound += 1
+
     known = {claim.get("id") for claim in claims.get("claims", [])}
     for prop in claims.get("remaining_open_propositions", []):
         target = prop.get("open_target_claim")
         if target and target not in known:
             problems.append({"claim": target, "status": "open_proposition_targets_unknown_claim"})
 
+    # The sibling of the check above, on the other edge into the register: a
+    # Comparator interface may name a claim id, and that binding must not
+    # outlive the claim any more than an open proposition may.
+    packet = claims.get("external_verification_packet") or {}
+    for row in packet.get("main_results", []):
+        target = row.get("claim_id")
+        if target and target not in known:
+            problems.append(
+                {
+                    "claim": target,
+                    "status": "comparator_interface_targets_unknown_claim",
+                    "interface": row.get("id"),
+                }
+            )
+
     return {
         "claim_count": len(claims.get("claims", [])),
         "declaration_count": declaration_count,
+        "written_up_count": written_up,
+        "comparator_bound_count": comparator_bound,
+        "paper_sources_present": label_index is not None,
         "problems": problems,
         "verified": not problems,
     }
@@ -501,6 +694,12 @@ def main() -> int:
                 f"verify_claims: {report['claim_count']} claims, "
                 f"{report['declaration_count']} declarations re-resolved against Lean source"
             )
+            if report["paper_sources_present"]:
+                print(
+                    f"  {report['written_up_count']} of {report['claim_count']} claims "
+                    f"resolve to a paper; {report['comparator_bound_count']} are bound to a "
+                    "selected Comparator interface"
+                )
             for problem in report["problems"]:
                 print(f"  FAIL {problem}")
             if report["verified"]:

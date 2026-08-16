@@ -17,8 +17,10 @@ python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
 It prints the published statement, re-resolves the declaration in this
-checkout, and shows the release receipts and the exact point where the claim
-stops. `--verify-all` does the same for all 103 claims and 335 declarations in
+checkout, names the Comparator interface that restates it and the paper that
+writes it up — or says plainly there is no such interface, which is true of
+most claims — and shows the release receipts and the exact point where the
+claim stops. `--verify-all` does the same for all 103 claims and 335 declarations in
 about a fifth of a second. [Read or run it](#read-or-run-it) has every other
 route, including the ones that do need Lean.
 
