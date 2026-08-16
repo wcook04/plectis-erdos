@@ -335,6 +335,65 @@ jobs:
           path: artifacts/external-verification-receipt.json
           if-no-files-found: error
 
+  first-contact:
+    # The published invitation, run the way a stranger runs it: clone it, no
+    # Lean, no toolchain, no pinned interpreter. Every other job in this file
+    # is ubuntu-latest with a Python it installs itself, so nothing here had
+    # ever executed a reader-facing command on macOS or on whatever `python3`
+    # a reader happens to have. The reader-facing surfaces are pure Python and
+    # the claim is that they need nothing else; this is where that is tested
+    # rather than assumed.
+    name: First contact without Lean (${{ matrix.os }})
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["macos-latest", "ubuntu-latest"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0 # the pinned-history gates resolve the formal-source commit
+      - name: Report the interpreter a reader would actually use
+        run: python3 -VV
+      - name: Follow one claim to its source, its receipts, and its limit
+        run: |
+          python3 scripts/verify_claims.py --claim eb_full_support
+          python3 scripts/verify_claims.py --verify-all
+      - name: Navigate the corpus with no Lean build
+        run: |
+          python3 scripts/query_corpus.py --tour --format card
+          python3 scripts/check_cold_clone_comprehension.py --quick
+
+  shallow-clone-is-an-environment-problem:
+    # `git clone --depth 1` truncates history, and the gates that read pinned
+    # commits then report the formal-source commit as absent -- which reads to
+    # a newcomer like a claim that does not hold. verify_claims exits 2 and
+    # prints the remedy instead of exiting 1. That distinction is only worth
+    # stating on the README if something checks it, and a job that cannot be
+    # shown failing checks nothing, so this asserts the exact code.
+    name: A truncated clone exits 2, never 1
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 1 # deliberately truncated: this is the condition under test
+      - name: The environment check names the remedy and exits 2
+        run: |
+          set +e
+          output="$(python3 scripts/verify_claims.py 2>&1)"
+          code=$?
+          set -e
+          printf '%s\n' "$output" | head -n 3
+          echo "exit code: $code"
+          test "$code" -eq 2
+          printf '%s' "$output" | grep -q 'git fetch --unshallow'
+      - name: Following one claim still works on a truncated clone
+        run: |
+          python3 scripts/verify_claims.py --claim eb_full_support
+          python3 scripts/verify_claims.py --verify-all
+
   release-surfaces:
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
     runs-on: ubuntu-latest
