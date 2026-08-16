@@ -110,6 +110,18 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # concrete verb -- follow one claim to its source, receipts, and stopping
     # point, in under a second, with no Lean installed -- was invisible to the
     # human it was built for. Funded with slack, per the note above.
+    # 2026-08-16, later the same day: the verb moved from that route list onto
+    # the first screen, and this ceiling did not move to pay for it. Naming it
+    # under "Read or run it" made it findable by a reader already committed to
+    # reading; a reader still deciding met eight problem papers, an
+    # external-verification account, a formal-results table, an open-wall
+    # section and a corpus census before anything they could run. Stating the
+    # command under the opening verdict made the paragraph that introduced it
+    # 15,000 bytes later redundant, and deleting that paid for the move with
+    # ~230 bytes to spare. Prefer that trade to a raise: a budget raised for
+    # every honest sentence stops being a budget. The positional assertion in
+    # `validate_human_first_contact` now pins the verb above the first heading,
+    # so a future raise cannot quietly buy the old ordering back.
     "README.md": 23_500 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
@@ -132,7 +144,15 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # rather than trading one first-contact route for another. Funded with slack:
 # the anchor now sits about 700 bytes inside the window, and it still fails on
 # a runaway projection.
-README_FIRST_CONTACT_BUDGET_BYTES = 18_600
+# 2026-08-16, later: 18_600 -> 19_400, funding the runnable command in the
+# opening. Two cheaper repairs were tried first and both were wrong. Deleting
+# the paragraph that introduced the command 15,000 bytes down reclaimed enough
+# for the whole file but not for this window. Reordering the routes so the
+# no-build tour came first only moved which anchor fell out — `AGENTS.md`
+# instead of `every indexed declaration` — which is the tell that the window,
+# not the ordering, was the binding constraint. A first-contact window that
+# cannot hold a runnable command is mis-sized for what it claims to protect.
+README_FIRST_CONTACT_BUDGET_BYTES = 19_400
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
@@ -621,6 +641,33 @@ def validate_human_first_contact(
         f"README first-contact surface lost section sequence {section_order}"
     )
     assert positions == sorted(positions), "README first-contact sections are out of order"
+
+    # The four sections above are the mathematician's reading order and they are
+    # correct as an order. What they cannot do is answer "is any of this real?"
+    # for someone who has not yet decided to read. Until 2026-08-16 the first
+    # command in this README appeared at byte 15,345 — after the eight problem
+    # papers, the external-verification account, the formal-results table, the
+    # open-wall section and the corpus census — so every route that returned a
+    # result was priced behind four screens of inventory.
+    #
+    # Positional, not keyword: `verify_claims.py` was already named under "Read
+    # or run it" when this was written, and being named there did not put it in
+    # front of anyone. The contract is that the cheapest runnable verb precedes
+    # the first section heading, i.e. it is inside the opening a reader always
+    # sees. Raising a byte budget to fund a new section must not quietly buy
+    # that back.
+    first_section = readme_prefix.find("\n## ")
+    first_command = readme_prefix.find("python3 scripts/")
+    assert first_command >= 0, (
+        "README first-contact surface no longer contains a runnable command"
+    )
+    assert first_section >= 0, "README first-contact surface lost its section headings"
+    assert first_command < first_section, (
+        f"README puts its first runnable command at byte {first_command}, below the "
+        f"first section heading at byte {first_section}; a reader deciding whether "
+        "this repository is worth their time meets an inventory before they meet "
+        "anything they can run"
+    )
     assert (
         "[agent-navigation paper](cold-clone-to-proof-receipt.pdf)"
         in readme_prefix

@@ -9,12 +9,25 @@ them.** Each problem paper states the checked results, the evidence boundary,
 and the exact obligation that remains. Registered formal results stay within
 Lean source; paper theorems and cited inputs are labelled separately.
 
+**Check one of those claims before you read any of this.** No Lean, no build,
+no install — a clone and Python 3:
+
+```bash
+python3 scripts/verify_claims.py --claim eb_full_support
+```
+
+It prints the published statement, re-resolves the declaration in this
+checkout, and shows the release receipts and the exact point where the claim
+stops. `--verify-all` does the same for all 103 claims and 335 declarations in
+about a fifth of a second. [Read or run it](#read-or-run-it) has every other
+route, including the ones that do need Lean.
+
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [prior art and attribution](docs/PRIOR_ART.md)
 → [architecture and repository guide](ARCHITECTURE.md) ·
 [printable PDF](claim-faithful-publication-systems-paper.pdf).
-It assumes no Lean or project history.
-[agent-navigation paper](cold-clone-to-proof-receipt.pdf), which audits the
+It assumes no Lean or project history. The
+[agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
 cold-clone route and the recorded workbench session.
 
 The repository was created for #249 and #257 and keeps that name so existing
@@ -185,12 +198,9 @@ These are navigation counts, not novelty claims.
 
 ## Read or run it
 
-- **Follow one claim, without installing Lean:**
-  `python3 scripts/verify_claims.py --claim eb_full_support` prints the public
-  statement, re-resolves its declaration in this checkout, shows the Lean proof
-  text, the release receipts, and the exact point where the claim stops.
-  `--verify-all` re-resolves all 103 claims and 335 declarations in well under a
-  second; both work on a `git clone --depth 1` checkout. Run it with no
+- **Follow one claim, without installing Lean:** `verify_claims.py`, above, also
+  shows the Lean proof text, and both it and `--verify-all` work on a
+  `git clone --depth 1` checkout. Run it with no
   argument for the environment check, which exits `2` and prints
   `git fetch --unshallow` when a truncated history cannot reach the gates that
   read pinned commits — never `1`, so a shallow clone can never be misread as a
