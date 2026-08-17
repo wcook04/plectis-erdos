@@ -225,8 +225,14 @@ def main() -> int:
     else:
         raise AssertionError("gateway source-inventory leak escaped")
 
+    # Delete the import the contract actually requires. This mutated
+    # "@AGENTS.md", which is not a substring of "@AGENTS.override.md", so once
+    # CLAUDE.md imported the compact entry the replace became a no-op and the
+    # harness was asserting against an unmutated file.
     try:
-        diagnostic.validate_cross_agent_entry(agents, claude.replace("@AGENTS.md", ""))
+        diagnostic.validate_cross_agent_entry(
+            agents, claude.replace("@AGENTS.override.md", "")
+        )
     except AssertionError:
         checks += 1
     else:
