@@ -264,9 +264,9 @@ These are navigation counts, not novelty claims.
 - **Mathematician:** use the top reading route, then follow one result from
   [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The [Exposition PDF](erdos249-257-main-paper.pdf)
   is the longer route, not the truth-status entrypoint.
-- **Coding agent:** read [`AGENTS.md`](AGENTS.md), then the bounded
-  [`docs/orientation.json`](docs/orientation.json); select one programme or
-  claim before expanding the registry.
+- **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), then the
+  bounded [`docs/orientation.json`](docs/orientation.json); select one programme
+  or claim before expanding the registry. [`AGENTS.md`](AGENTS.md) is the deep one.
 - **Whole-corpus agent navigation, without a Lean build:** run
   `python3 scripts/query_corpus.py --tour --format card`, then follow
   `python3 scripts/query_corpus.py --route agent_native_corpus_navigation`.

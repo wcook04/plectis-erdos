@@ -1093,7 +1093,17 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
     ):
         assert contains_any(agents, [token]), f"AGENTS.md lost shared invariant {token!r}"
     for token in (
-        "@AGENTS.md",
+        # This used to read "@AGENTS.md", and it was the reason the drift held.
+        # scripts/test_compact_agent_entry.py asserts the opposite -- that every
+        # adapter imports the compact entry -- but that test is wired into no
+        # workflow, no Makefile target and not check_release.py, so it sat red
+        # while this list, which does run on every pull request, pinned CLAUDE.md
+        # to the 31KB deep contract. Claude Code auto-loads CLAUDE.md, so a cold
+        # clone opened straight into the file the compact entry exists to defer.
+        # CODEX.md and the Plectis adapters already route to the compact entry;
+        # this token now agrees with them and with AGENTS.override.md's own
+        # description of itself as the first-contact contract.
+        "@AGENTS.override.md",
         "Claude-specific deltas only",
         "docs/orientation.json",
         "mathematical programme",
