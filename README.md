@@ -262,8 +262,8 @@ These are navigation counts, not novelty claims.
   read pinned commits — never `1`, so a shallow clone can never be misread as a
   claim that failed. `check_release.py` remains the authority for locators.
 - **Mathematician:** use the top reading route, then follow one result from
-  [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The [Exposition PDF](erdos249-257-main-paper.pdf)
-  is the longer route, not the truth-status entrypoint.
+  [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers are the
+  live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
 - **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), then the
   bounded [`docs/orientation.json`](docs/orientation.json); select one programme
   or claim before expanding the registry. [`AGENTS.md`](AGENTS.md) is the deep one.

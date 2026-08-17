@@ -509,7 +509,14 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
             ["python3 scripts/query_expert_handoffs.py"],
         ],
         "choose_a_next_read": [
-            ["Exposition PDF"],
+            # The anchor is "a route into the manuscripts exists", not the name
+            # of one manuscript. This read ["Exposition PDF"] alone, which is
+            # the label of the joint #249/#257 paper -- the single manuscript
+            # docs/papers/corpus.json records as retired, whose "problem-specific
+            # successors are the active reader routes". So the gate required the
+            # reader's next-read bullet to name the superseded paper, and
+            # naming the live per-problem route instead failed it.
+            ["per-problem papers", "Exposition PDF", "joint PDF", "docs/papers"],
             ["AGENTS.md"],
             ["docs/orientation.json"],
             ["docs/SOURCE_MAP.md"],

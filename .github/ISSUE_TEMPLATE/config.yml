@@ -5,6 +5,12 @@ contact_links:
   - name: Security or sensitive report (private)
     url: https://github.com/wcook04/plectis-lean-erdos249-257/security/advisories/new
     about: Supply-chain, CI, or leaked-material concerns. Not for mathematical errors.
-  - name: The exposition (PDF)
-    url: https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/erdos249-257-main-paper.pdf
-    about: Read the full argument in ordinary notation before filing a discrepancy.
+  # This pointed at erdos249-257-main-paper.pdf, which docs/papers/corpus.json
+  # records as retired: "its problem-specific successors are the active reader
+  # routes". So the one surface a reader meets while about to report a
+  # mathematical discrepancy sent them to the single superseded manuscript, and
+  # told them to read it first. The guide indexes the active papers, one per
+  # problem, and names what each establishes.
+  - name: The papers (one per problem)
+    url: https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/docs/papers/README.md
+    about: Read the paper for that problem in ordinary notation, and what it states as still open, before filing a discrepancy.
