@@ -58,8 +58,30 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertLess(toolchain_step, dependencies_step)
         self.assertLess(dependencies_step, bounded_build)
         self.assertIn("uses: actions/cache@", workflow)
-        self.assertIn("# v5", workflow)
+        # The contract is that the cache action is pinned to a commit and
+        # annotated with the version that commit is, so a reader can tell what
+        # a forty-character hex string is without leaving the file. It is not
+        # that the version is any particular number: this line asserted
+        # "# v5" literally, so Dependabot bumping the cache action to v6 failed
+        # four jobs with the message "Lean CI lost cache/build contract" —
+        # which was not true, and pointed at the workflow rather than at the
+        # assertion. Every other token in this contract describes behaviour.
+        self.assertRegex(workflow, r"uses: actions/cache@[0-9a-f]{40} # v\d")
         self.assertIn("path: .lake", workflow)
+        # Sibling sweep: the same supply-chain policy applies to every action
+        # this workflow uses, and only the cache line was ever checked.
+        for line in workflow.splitlines():
+            stripped = line.strip()
+            if not stripped.startswith(("- uses: actions/", "uses: actions/")):
+                continue
+            self.assertRegex(
+                stripped,
+                r"uses: actions/[\w-]+@[0-9a-f]{40} # v[\d.]+$",
+                msg=(
+                    "workflow action is not pinned to a commit with a version "
+                    f"comment: {stripped}"
+                ),
+            )
         # The fetch step is a multi-line `run: |` block since #41, so pin the
         # command itself rather than one YAML rendering of it.
         self.assertIn("lake exe cache get", workflow)

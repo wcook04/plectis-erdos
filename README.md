@@ -9,12 +9,27 @@ them.** Each problem paper states the checked results, the evidence boundary,
 and the exact obligation that remains. Registered formal results stay within
 Lean source; paper theorems and cited inputs are labelled separately.
 
+**Check one of those claims before you read any of this.** No Lean, no build,
+no install — a clone and Python 3:
+
+```bash
+python3 scripts/verify_claims.py --claim eb_full_support
+```
+
+It prints the published statement, re-resolves the declaration in this
+checkout, names the Comparator interface that restates it and the paper that
+writes it up — or says plainly there is no such interface, which is true of
+most claims — and shows the release receipts and the exact point where the
+claim stops. `--verify-all` does the same for all 103 claims and 335 declarations in
+about a fifth of a second. [Read or run it](#read-or-run-it) has every other
+route, including the ones that do need Lean.
+
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [prior art and attribution](docs/PRIOR_ART.md)
 → [architecture and repository guide](ARCHITECTURE.md) ·
 [printable PDF](claim-faithful-publication-systems-paper.pdf).
-It assumes no Lean or project history.
-[agent-navigation paper](cold-clone-to-proof-receipt.pdf), which audits the
+It assumes no Lean or project history. The
+[agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
 cold-clone route and the recorded workbench session.
 
 The repository was created for #249 and #257 and keeps that name so existing
@@ -42,6 +57,8 @@ matters: those remain authored judgements, and the papers state them per result.
 - [**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf)
 - [**#1041 — short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf)
 - [**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf)
+
+[`docs/papers/corpus.json`](docs/papers/corpus.json) indexes them by machine.
 
 | Problem | Mathematical statement | Public checked frontier; what remains |
 |---|---|---|
@@ -185,12 +202,9 @@ These are navigation counts, not novelty claims.
 
 ## Read or run it
 
-- **Follow one claim, without installing Lean:**
-  `python3 scripts/verify_claims.py --claim eb_full_support` prints the public
-  statement, re-resolves its declaration in this checkout, shows the Lean proof
-  text, the release receipts, and the exact point where the claim stops.
-  `--verify-all` re-resolves all 103 claims and 335 declarations in well under a
-  second; both work on a `git clone --depth 1` checkout. Run it with no
+- **Follow one claim, without installing Lean:** `verify_claims.py`, above, also
+  shows the Lean proof text, and both it and `--verify-all` work on a
+  `git clone --depth 1` checkout. Run it with no
   argument for the environment check, which exits `2` and prints
   `git fetch --unshallow` when a truncated history cannot reach the gates that
   read pinned commits — never `1`, so a shallow clone can never be misread as a

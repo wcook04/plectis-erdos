@@ -50,8 +50,12 @@ BETA_LINE = 10
 TAXONOMY = {"proved here": "Lean theorem in the committed formal-source checkpoint"}
 
 
-def build_register(claims: list[dict], open_props: list[dict] | None = None) -> dict:
-    return {
+def build_register(
+    claims: list[dict],
+    open_props: list[dict] | None = None,
+    main_results: list[dict] | None = None,
+) -> dict:
+    register = {
         "schema": "erdos249257-claims/3",
         "release": {"version": "test", "formal_source": {}},
         "status_taxonomy": TAXONOMY,
@@ -59,15 +63,28 @@ def build_register(claims: list[dict], open_props: list[dict] | None = None) -> 
         "remaining_open_propositions": open_props or [],
         "claims": claims,
     }
+    if main_results is not None:
+        register["external_verification_packet"] = {
+            "boundary": "Comparator checks statements, not significance.",
+            "comparator": {"permitted_axioms": ["propext"], "config": "verification/comparator.json"},
+            "claim_status_contract": {"unregistered_interface": "Not a canonical reviewed claim."},
+            "main_results": main_results,
+        }
+    return register
 
 
-def claim(decl_name: str, line: int, status: str = "proved here") -> dict:
+def claim(
+    decl_name: str,
+    line: int,
+    status: str = "proved here",
+    paper_label: str | None = None,
+) -> dict:
     return {
         "id": "sample_claim",
         "label": "Sample",
         "status": status,
         "statement": "A sample statement.",
-        "paper_label": None,
+        "paper_label": paper_label,
         "declarations": [
             {"name": decl_name, "module": "Sample.lean", "line": line}
         ],
@@ -130,13 +147,60 @@ def main() -> int:
         if "open_proposition_targets_unknown_claim" not in statuses(report):
             failures.append(f"orphaned open proposition not reported: {report['problems']}")
 
+        # The same edge on the Comparator side: a selected interface may name a
+        # claim id, and that binding must not outlive the claim either.
+        report = run_case(
+            root,
+            build_register(
+                [claim("Sample.alpha", ALPHA_KEYWORD_LINE)],
+                main_results=[{"id": "iface", "claim_id": "deleted_claim"}],
+            ),
+        )
+        if "comparator_interface_targets_unknown_claim" not in statuses(report):
+            failures.append(f"orphaned Comparator binding not reported: {report['problems']}")
+
+        # A claim whose paper label no paper carries sends a reader after prose
+        # that is not there.
+        (root / "paper").mkdir(exist_ok=True)
+        (root / "paper" / "sample.tex").write_text(
+            "\\label{res:present}\n", encoding="utf-8"
+        )
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:absent")]),
+        )
+        if "paper_label_resolves_to_no_paper" not in statuses(report):
+            failures.append(f"unresolvable paper label not reported: {report['problems']}")
+
+        # ...and a label a paper does carry is not reported.
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:present")]),
+        )
+        if not report["verified"]:
+            failures.append(f"resolvable paper label reported as broken: {report['problems']}")
+
+        # Absent paper sources are an environment fact, not a claim fault. A
+        # checkout without the write-ups must still verify, or the exposition
+        # check would convert a truncated clone into a broken register -- the
+        # exact conflation this module separates everywhere else.
+        (root / "paper" / "sample.tex").unlink()
+        (root / "paper").rmdir()
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:absent")]),
+        )
+        if not report["verified"]:
+            failures.append(f"absent paper sources reported as a claim fault: {report['problems']}")
+
     if failures:
         for failure in failures:
             print(f"  FAIL {failure}")
         return 1
     print(
-        "test_verify_claims: drift, renames, undeclared statuses, and orphaned "
-        "open propositions are each reported"
+        "test_verify_claims: drift, renames, undeclared statuses, orphaned open "
+        "propositions, orphaned Comparator bindings, and unresolvable paper "
+        "labels are each reported; absent paper sources are not"
     )
     return 0
 

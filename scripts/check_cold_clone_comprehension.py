@@ -110,6 +110,18 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # concrete verb -- follow one claim to its source, receipts, and stopping
     # point, in under a second, with no Lean installed -- was invisible to the
     # human it was built for. Funded with slack, per the note above.
+    # 2026-08-16, later the same day: the verb moved from that route list onto
+    # the first screen, and this ceiling did not move to pay for it. Naming it
+    # under "Read or run it" made it findable by a reader already committed to
+    # reading; a reader still deciding met eight problem papers, an
+    # external-verification account, a formal-results table, an open-wall
+    # section and a corpus census before anything they could run. Stating the
+    # command under the opening verdict made the paragraph that introduced it
+    # 15,000 bytes later redundant, and deleting that paid for the move with
+    # ~230 bytes to spare. Prefer that trade to a raise: a budget raised for
+    # every honest sentence stops being a budget. The positional assertion in
+    # `validate_human_first_contact` now pins the verb above the first heading,
+    # so a future raise cannot quietly buy the old ordering back.
     "README.md": 23_500 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
@@ -132,7 +144,15 @@ HUMAN_SURFACE_BUDGET_BYTES = {
 # rather than trading one first-contact route for another. Funded with slack:
 # the anchor now sits about 700 bytes inside the window, and it still fails on
 # a runaway projection.
-README_FIRST_CONTACT_BUDGET_BYTES = 18_600
+# 2026-08-16, later: 18_600 -> 19_400, funding the runnable command in the
+# opening. Two cheaper repairs were tried first and both were wrong. Deleting
+# the paragraph that introduced the command 15,000 bytes down reclaimed enough
+# for the whole file but not for this window. Reordering the routes so the
+# no-build tour came first only moved which anchor fell out — `AGENTS.md`
+# instead of `every indexed declaration` — which is the tell that the window,
+# not the ordering, was the binding constraint. A first-contact window that
+# cannot hold a runnable command is mis-sized for what it claims to protect.
+README_FIRST_CONTACT_BUDGET_BYTES = 19_400
 SUMMARY_PACKET_BUDGET_BYTES = 32_256
 # Sized when the corpus indexed six problems. #68 and #1041 bring their own
 # vocabulary routes, so the dictionary packet grew past it. Raised rather than
@@ -570,9 +590,14 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     )
     assert "elan" in readme, "README no longer names Lean's toolchain manager"
 
+    # Every token below describes something the workflow *does*. "# v5" sat in
+    # this list too, and it describes only which version of the cache action
+    # was current when the list was written — so a routine bump to v6 failed
+    # this check with "Lean CI lost cache/build contract", naming a contract
+    # that had not changed. The policy is asserted below instead: pinned to a
+    # commit, annotated with the version that commit is.
     for token in (
         "uses: actions/cache@",
-        "# v5",
         "path: .lake",
         "restore-keys:",
         # Two workers, not four: four exhausted the runner while compiling
@@ -584,6 +609,18 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     ):
         assert token in workflow, f"Lean CI lost cache/build contract: {token}"
 
+    unpinned = [
+        line.strip()
+        for line in workflow.splitlines()
+        if line.strip().startswith(("- uses: actions/", "uses: actions/"))
+        and not re.search(r"uses: actions/[\w-]+@[0-9a-f]{40} # v[\d.]+$", line.strip())
+    ]
+    assert not unpinned, (
+        "Lean CI uses an action that is not pinned to a commit with a version "
+        "comment, so a reader cannot tell what it resolves to: "
+        + "; ".join(unpinned)
+    )
+
     for token in (
         '"--changed-from"',
         '"--lake-staleness"',
@@ -591,6 +628,57 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "no changed Lean modules relative to",
     ):
         assert token in planner, f"build planner lost incremental contract: {token}"
+
+
+# What the README's opening tells a reader the first command will show, and the
+# marker in that command's actual output that makes the promise true. Every link
+# checker in this repository would stay green while these drifted apart, because
+# nothing here is a link: the README describes *output*, and output changes
+# without the sentence describing it changing. The 2026-08-16 instance was the
+# reverse direction — the command started naming the Comparator interface and
+# the write-up, and the sentence still said it printed the statement, the source
+# and the receipts.
+FIRST_COMMAND_PROMISES = (
+    ("Comparator interface", ("SECOND FORMAL CHECK", "[BOUND]")),
+    ("the paper that", ("WRITTEN UP IN", "paper/")),
+    ("re-resolves the declaration", ("SOURCE (", "re-resolved in this checkout")),
+    ("release receipts", ("RECEIPTS",)),
+    ("where the claim\nstops", ("WHERE THIS CLAIM STOPS",)),
+)
+
+# The exact invocation the README puts in front of a reader who has not decided
+# to read yet. Running any other one would test a command nobody was offered.
+FIRST_COMMAND_ARGV = ("--claim", "eb_full_support")
+
+
+def validate_first_command_keeps_its_promise(readme_prefix: str) -> None:
+    """Run the advertised first command and require the promised output.
+
+    A promise is only checked when the README still makes it, because dropping a
+    capability and its description together is a coherent change. What must never
+    happen is the description outliving the behaviour.
+    """
+    completed = subprocess.run(
+        [sys.executable, "scripts/verify_claims.py", *FIRST_COMMAND_ARGV],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, (
+        "the command the README puts on its first screen exits "
+        f"{completed.returncode}: {(completed.stderr or completed.stdout).strip()[:300]}"
+    )
+    output = completed.stdout
+    for promise, markers in FIRST_COMMAND_PROMISES:
+        if promise not in readme_prefix:
+            continue
+        for marker in markers:
+            assert marker in output, (
+                f"README's first screen promises {promise!r}, but "
+                f"`verify_claims.py {' '.join(FIRST_COMMAND_ARGV)}` prints no "
+                f"{marker!r}; the description has outlived the behaviour"
+            )
 
 
 def validate_human_first_contact(
@@ -621,6 +709,35 @@ def validate_human_first_contact(
         f"README first-contact surface lost section sequence {section_order}"
     )
     assert positions == sorted(positions), "README first-contact sections are out of order"
+
+    # The four sections above are the mathematician's reading order and they are
+    # correct as an order. What they cannot do is answer "is any of this real?"
+    # for someone who has not yet decided to read. Until 2026-08-16 the first
+    # command in this README appeared at byte 15,345 — after the eight problem
+    # papers, the external-verification account, the formal-results table, the
+    # open-wall section and the corpus census — so every route that returned a
+    # result was priced behind four screens of inventory.
+    #
+    # Positional, not keyword: `verify_claims.py` was already named under "Read
+    # or run it" when this was written, and being named there did not put it in
+    # front of anyone. The contract is that the cheapest runnable verb precedes
+    # the first section heading, i.e. it is inside the opening a reader always
+    # sees. Raising a byte budget to fund a new section must not quietly buy
+    # that back.
+    first_section = readme_prefix.find("\n## ")
+    first_command = readme_prefix.find("python3 scripts/")
+    assert first_command >= 0, (
+        "README first-contact surface no longer contains a runnable command"
+    )
+    assert first_section >= 0, "README first-contact surface lost its section headings"
+    assert first_command < first_section, (
+        f"README puts its first runnable command at byte {first_command}, below the "
+        f"first section heading at byte {first_section}; a reader deciding whether "
+        "this repository is worth their time meets an inventory before they meet "
+        "anything they can run"
+    )
+    validate_first_command_keeps_its_promise(readme_prefix)
+
     assert (
         "[agent-navigation paper](cold-clone-to-proof-receipt.pdf)"
         in readme_prefix

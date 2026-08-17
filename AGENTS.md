@@ -151,11 +151,16 @@ Lean build when a result must be checked.
 
    It prints the public statement, re-reads each declaration out of the Lean
    source at its recorded position rather than reprinting the register's
-   coordinates, and ends on the typed boundary: what the status is allowed to
-   mean, which open propositions still target the claim, and what the release
-   does not assert. `query_corpus.py --claim` remains the route for argument
-   -graph neighbours and paper labels; this is the route for reading the proof
-   text and the limit together. On a shallow clone it exits 2 and says so,
+   coordinates, names the Comparator interface that restates the result under a
+   fixed axiom budget or reports that no selected interface carries this claim
+   id, resolves the claim's paper label to the write-up that carries it, and
+   ends on the typed boundary: what the status is allowed to mean, which open
+   propositions still target the claim, and what the release does not assert.
+   Do not read a Comparator binding as independent verification: it checks a
+   separately declared statement under configured axioms, and the register's own
+   boundary sentence is printed alongside it. `query_corpus.py --claim` remains
+   the route for argument-graph neighbours; this is the route for reading the
+   proof text, the second formal check, and the limit together. On a shallow clone it exits 2 and says so,
    because a truncated history cannot answer questions about pinned identity
    and must never be read as a failed claim.
 3. Read `docs/methodology.json` before changing a public claim. It defines
@@ -211,7 +216,11 @@ Lean build when a result must be checked.
    covered by the `ErdosProblems` expansion library. It is the generated,
    bounded problem-owned index: one row per currently indexed problem giving
    its modules with declaration counts, its Erdős Problem Note, what is
-   checked, what is not checked, and the obligation that survives. The #249
+   checked, what is not checked, the obligation that survives, the standalone
+   paper that writes the problem up, and the Comparator disposition of every
+   contribution family. The last two are joins into `docs/papers/corpus.json`
+   and the review matrix in `docs/claims.json`; a disposition says whether
+   Comparator was asked to check that family, not whether it is true. The #249
    and #257 rows index expansion modules and do not replace the separately
    reviewed `Erdos249257` claim registry.
    Its authored source is `docs/problem_index_source.json` and it is rebuilt by
