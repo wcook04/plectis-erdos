@@ -32,10 +32,32 @@ PROBLEM_INDEX_PATH = ROOT / "docs" / "problem_index_source.json"
 
 SCHEMA = "formal-conjectures-crosswalk/1"
 UPSTREAM_REPOSITORY = "https://github.com/google-deepmind/formal-conjectures"
-UPSTREAM_COMMIT = "37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8"
+UPSTREAM_COMMIT = "398958d3964d738886bd24433918c365df4a2aab"
 EXPECTED_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
 ADAPTER_CANDIDATES = {257, 1049}
 NOT_READY = "not_ready_to_submit"
+
+# Submission status ladder.  The earlier contract fixed every row at
+# NOT_READY, which was correct while no adapter existed but made the true
+# state unrecordable once one did: a check that can only ever be satisfied by
+# the absence of work pins the absence in place.  The rungs above NOT_READY
+# are therefore reachable, but only against evidence this checker verifies --
+# see ``checked_equivalence_errors``.
+ADAPTER_CHECKED = "adapter_checked_pending_external_process"
+SUBMITTED = "submitted_upstream"
+SUBMISSION_LADDER = (NOT_READY, ADAPTER_CHECKED, SUBMITTED)
+# Every rung past the first requires a verified machine-checked equivalence.
+EVIDENCE_BEARING_STATUSES = frozenset({ADAPTER_CHECKED, SUBMITTED})
+
+CHECKED_EQUIVALENCE_KEYS = {
+    "adapter_module",
+    "adapter_declaration",
+    "checked_in_environment",
+    "axioms",
+    "upstream_declaration",
+}
+# A Lean proof that typechecks while depending on sorryAx proves nothing.
+FORBIDDEN_AXIOMS = frozenset({"sorryAx"})
 REQUIRED_COMPARISON_AXES = {
     "statement_scope",
     "indexing",
@@ -101,6 +123,83 @@ EXPECTED_ADAPTER_TARGETS = {
     1049: "Erdos1049.erdos_1049.variants.geq_2_integer",
 }
 
+# Upstream declarations this library can discharge that sit under a problem
+# number it does not itself work on.  The original crosswalk was indexed by
+# local problem, so a match like this had nowhere to live and went unrecorded
+# for as long as the index shape decided what was expressible.  Mathematics
+# does not respect the local problem list, so cross-index matches get their own
+# section keyed by the upstream declaration.
+EXPECTED_CROSS_INDEX: dict[str, dict[str, Any]] = {
+    "Erdos258.erdos_258.variants.constant": {
+        "upstream_problem": 258,
+        "path": "FormalConjectures/ErdosProblems/258.lean",
+        "sha256": "8fa3fb3984e277b62647271e18d28db00815fc73b3e2149bb6472ddd6c2cd2f8",
+        "declaration_line": 65,
+        "outside_local_problem_list": True,
+    },
+}
+
+
+def checked_equivalence_errors(
+    label: str, value: Any, root: Path
+) -> list[str]:
+    """Verify a machine-checked-equivalence claim against artifacts on disk.
+
+    ``"none"`` is always acceptable and asserts nothing.  Any other value must
+    name an adapter module that exists in this repository and states the
+    declaration being claimed, and must report an axiom budget free of
+    ``sorryAx``.  The point is that the claim is refused unless the artifact
+    backing it is present -- not that the claim is refused on principle.
+    """
+    if value == "none":
+        return []
+    if not isinstance(value, dict):
+        return [f"{label}: machine_checked_equivalence must be 'none' or an object"]
+
+    errors: list[str] = []
+    missing = sorted(CHECKED_EQUIVALENCE_KEYS - set(value))
+    if missing:
+        errors.append(
+            f"{label}: checked equivalence missing keys: {', '.join(missing)}"
+        )
+        return errors
+
+    module = value["adapter_module"]
+    declaration = value["adapter_declaration"]
+    module_path = root / module
+    if not module_path.is_file():
+        errors.append(f"{label}: adapter module {module} is absent from this repository")
+        return errors
+
+    # The adapter states its theorems inside an opened namespace, so the source
+    # carries the final component only.  Requiring the enclosing namespace as
+    # well keeps the match from succeeding against a same-named theorem
+    # declared somewhere else.
+    text = module_path.read_text(encoding="utf-8")
+    namespace, _, token = declaration.rpartition(".")
+    if not namespace:
+        errors.append(f"{label}: adapter declaration must be namespace-qualified")
+        return errors
+    if not re.search(rf"^namespace\s+{re.escape(namespace)}\s*$", text, re.MULTILINE):
+        errors.append(
+            f"{label}: adapter module {module} does not open namespace {namespace}"
+        )
+    if not re.search(rf"^theorem\s+{re.escape(token)}\b", text, re.MULTILINE):
+        errors.append(
+            f"{label}: adapter module {module} does not state theorem {token}"
+        )
+
+    axioms = value.get("axioms")
+    if not isinstance(axioms, list) or not axioms:
+        errors.append(f"{label}: checked equivalence must report an axiom budget")
+    else:
+        forbidden = FORBIDDEN_AXIOMS.intersection(axioms)
+        if forbidden:
+            errors.append(
+                f"{label}: axiom budget contains {', '.join(sorted(forbidden))}"
+            )
+    return errors
+
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -141,10 +240,69 @@ def local_evidence_errors(evidence: dict[str, Any]) -> list[str]:
     return errors
 
 
+def cross_index_errors(manifest: dict[str, Any], root: Path) -> list[str]:
+    """Validate matches recorded outside the eight local problem numbers."""
+    errors: list[str] = []
+    rows = manifest.get("cross_index_matches")
+    if rows is None:
+        errors.append("manifest must carry a cross_index_matches section")
+        return errors
+    if not isinstance(rows, list):
+        errors.append("cross_index_matches must be a list")
+        return errors
+
+    seen = {row.get("upstream_declaration") for row in rows if isinstance(row, dict)}
+    missing = sorted(set(EXPECTED_CROSS_INDEX) - seen)
+    if missing:
+        errors.append(f"cross index missing: {', '.join(missing)}")
+    unexpected = sorted(name for name in seen if name not in EXPECTED_CROSS_INDEX)
+    if unexpected:
+        errors.append(f"cross index has unrecognised entries: {', '.join(unexpected)}")
+
+    for row in rows:
+        name = row.get("upstream_declaration")
+        expected = EXPECTED_CROSS_INDEX.get(name)
+        if expected is None:
+            continue
+        label = f"cross index {name}"
+        for key, value in expected.items():
+            if row.get(key) != value:
+                errors.append(f"{label}: {key} drifted")
+        errors.extend(
+            checked_equivalence_errors(
+                label, row.get("machine_checked_equivalence"), root
+            )
+        )
+        status = row.get("submission_status")
+        if status not in SUBMISSION_LADDER:
+            errors.append(f"{label}: submission status must be a ladder rung")
+        elif (
+            status in EVIDENCE_BEARING_STATUSES
+            and row.get("machine_checked_equivalence") == "none"
+        ):
+            errors.append(
+                f"{label}: submission status {status} requires a verified "
+                "machine-checked equivalence"
+            )
+    return errors
+
+
+def render_checked(value: Any) -> str:
+    """Render an equivalence claim for the human projection."""
+    if value == "none":
+        return "`none`."
+    return (
+        f"`{value['adapter_declaration']}` in `{value['adapter_module']}`, "
+        f"checked in {value['checked_in_environment']}; "
+        f"axioms {', '.join(f'`{a}`' for a in value['axioms'])}."
+    )
+
+
 def crosswalk_errors(
     manifest: dict[str, Any],
     problem_index: dict[str, Any],
     projection_text: str | None,
+    root: Path = ROOT,
 ) -> list[str]:
     """Return offline contract and projection failures."""
     errors: list[str] = []
@@ -166,8 +324,16 @@ def crosswalk_errors(
         errors.append("policy must require human semantic review")
     if policy.get("automated_submission_readiness") is not False:
         errors.append("automated submission readiness must remain false")
-    if policy.get("only_submission_status") != NOT_READY:
-        errors.append(f"only submission status must be {NOT_READY}")
+    # The status a row may carry is bounded by the ladder, not fixed at its
+    # bottom rung.  Reaching a higher rung still requires verified evidence,
+    # enforced per row below.
+    declared_ladder = policy.get("submission_status_ladder")
+    if declared_ladder != list(SUBMISSION_LADDER):
+        errors.append(
+            "policy must declare the submission status ladder "
+            + ", ".join(SUBMISSION_LADDER)
+        )
+    errors.extend(cross_index_errors(manifest, root))
 
     indexed = {
         row.get("erdos_number"): row for row in problem_index.get("problems", [])
@@ -215,10 +381,12 @@ def crosswalk_errors(
         if not REQUIRED_COMPARISON_AXES.issubset(comparison):
             missing = sorted(REQUIRED_COMPARISON_AXES - set(comparison))
             errors.append(f"{label}: missing comparison axes: {', '.join(missing)}")
-        if comparison.get("machine_checked_equivalence") != "none":
-            errors.append(f"{label}: crosswalk must not claim checked equivalence")
+        checked = comparison.get("machine_checked_equivalence")
+        errors.extend(checked_equivalence_errors(label, checked, root))
         expected_verdict = (
             "candidate_adapter_alignment_requires_human_review"
+            if problem in ADAPTER_CANDIDATES and checked == "none"
+            else "adapter_checked_upstream_process_pending"
             if problem in ADAPTER_CANDIDATES
             else "statement_level_alignment_only"
         )
@@ -227,13 +395,26 @@ def crosswalk_errors(
 
         if row.get("human_semantic_review_required") is not True:
             errors.append(f"{label}: human semantic review must remain required")
-        if row.get("submission_status") != NOT_READY:
-            errors.append(f"{label}: submission status must be {NOT_READY}")
+        status = row.get("submission_status")
+        if status not in SUBMISSION_LADDER:
+            errors.append(f"{label}: submission status must be one of the ladder rungs")
+        elif status in EVIDENCE_BEARING_STATUSES and checked == "none":
+            # The gate that matters: a row may only climb the ladder while
+            # carrying an equivalence this checker has verified on disk.
+            errors.append(
+                f"{label}: submission status {status} requires a verified "
+                "machine-checked equivalence"
+            )
 
         adapter = row.get("adapter", {})
         if problem in ADAPTER_CANDIDATES:
-            if adapter.get("status") != "candidate_requires_human_semantic_review":
-                errors.append(f"{label}: adapter must require human semantic review")
+            expected_adapter_status = (
+                "candidate_requires_human_semantic_review"
+                if checked == "none"
+                else "checked_against_upstream_statement"
+            )
+            if adapter.get("status") != expected_adapter_status:
+                errors.append(f"{label}: adapter status drifted")
             if adapter.get("target_declaration") != EXPECTED_ADAPTER_TARGETS[problem]:
                 errors.append(f"{label}: adapter target drifted")
             if adapter.get("candidate_is_a_proof") is not False:
@@ -396,7 +577,7 @@ def render_markdown(
                 f"- Casts and ambient types: {comparison['casts_and_ambient_types']}",
                 f"- Answer/proof status: {comparison['answer_and_proof_status']}",
                 f"- Conservative verdict: `{comparison['conservative_verdict']}`.",
-                f"- Machine-checked equivalence: `{comparison['machine_checked_equivalence']}`.",
+                f"- Machine-checked equivalence: {render_checked(comparison['machine_checked_equivalence'])}",
                 f"- Submission status: `{row['submission_status']}`.",
                 "",
             ]
@@ -411,7 +592,14 @@ def render_markdown(
             [
                 f"### Erdős #{row['problem']}: `{adapter['target_declaration']}`",
                 "",
-                "Candidate only; human semantic review is required and this is not ready to submit.",
+                (
+                    "Candidate only; human semantic review is required and this is "
+                    "not ready to submit."
+                    if row["submission_status"] == NOT_READY
+                    else "The upstream proposition is stated verbatim in the adapter "
+                    "and derived from this library. Human semantic review is still "
+                    "required, and nothing has been offered upstream."
+                ),
                 "",
                 "Local evidence:",
                 "",
@@ -425,6 +613,35 @@ def render_markdown(
         for obligation in adapter["unproved_bridge_obligations"]:
             lines.append(f"- {obligation}")
         lines.append("")
+
+    lines.extend(
+        [
+            "## Cross-index matches",
+            "",
+            "Upstream declarations this library can discharge that sit under a "
+            "problem number it does not work on. An index keyed by local problem "
+            "cannot hold these, so they are keyed by the upstream declaration.",
+            "",
+        ]
+    )
+    for row in manifest["cross_index_matches"]:
+        source_url = (
+            f"{manifest['upstream']['repository']}/blob/"
+            f"{manifest['upstream']['commit']}/{row['path']}"
+            f"#L{row['declaration_line']}"
+        )
+        lines.extend(
+            [
+                f"### Upstream #{row['upstream_problem']}: "
+                f"[`{row['upstream_declaration']}`]({source_url})",
+                "",
+                f"- Recorded here because: {row['why_recorded_here']}",
+                f"- Machine-checked equivalence: "
+                f"{render_checked(row['machine_checked_equivalence'])}",
+                f"- Submission status: `{row['submission_status']}`.",
+                "",
+            ]
+        )
 
     lines.extend(
         [
@@ -493,9 +710,21 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     suffix = " with exact upstream byte verification" if args.upstream_checkout else ""
+    all_rows = manifest["problems"] + manifest["cross_index_matches"]
+    checked_rows = sum(
+        1
+        for row in all_rows
+        if row.get("comparison", row).get("machine_checked_equivalence") != "none"
+    )
+    cross_rows = len(manifest["cross_index_matches"])
+    submitted = sum(1 for row in all_rows if row.get("submission_status") == SUBMITTED)
     print(
+        # Counted from the manifest rather than asserted, so the summary cannot
+        # keep reporting a state the crosswalk has moved on from.
         "Formal Conjectures crosswalk is current: 8/8 problems, exact commit pin, "
-        f"2 human-review-only adapter candidates, 0 submission-ready rows{suffix}"
+        f"{checked_rows} row(s) with a verified checked equivalence, "
+        f"{cross_rows} cross-index match(es), "
+        f"{submitted} row(s) submitted upstream{suffix}"
     )
     return 0
 

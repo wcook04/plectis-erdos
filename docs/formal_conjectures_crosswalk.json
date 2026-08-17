@@ -5,14 +5,14 @@
   "purpose": "Bind the eight public Erdős programmes to the exact Formal Conjectures source snapshot and record the indexing, ambient-type, cast, and proof-status differences a human reviewer must inspect.",
   "upstream": {
     "repository": "https://github.com/google-deepmind/formal-conjectures",
-    "commit": "37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8",
-    "commit_url": "https://github.com/google-deepmind/formal-conjectures/commit/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8",
+    "commit": "398958d3964d738886bd24433918c365df4a2aab",
+    "commit_url": "https://github.com/google-deepmind/formal-conjectures/commit/398958d3964d738886bd24433918c365df4a2aab",
     "license": "Apache-2.0",
     "source_root": "FormalConjectures/ErdosProblems"
   },
   "local_question_owner": "docs/problem_index_source.json",
   "policy": {
-    "equivalence_boundary": "Every comparison below is an authored statement-level reading. No Lean adapter or equivalence theorem has been checked unless a row explicitly names one, and no row currently does.",
+    "equivalence_boundary": "Every comparison below is an authored statement-level reading unless the row names a machine-checked equivalence. A row may only name one while an adapter module stating that exact declaration is present in this repository and its axiom budget is free of sorryAx; scripts/check_formal_conjectures_crosswalk.py verifies both.",
     "source_hash_rule": "SHA-256 is over the exact upstream file bytes at the pinned commit.",
     "adapter_candidate_problems": [
       257,
@@ -21,7 +21,12 @@
     "adapter_candidate_boundary": "Candidate means only that a specific local theorem appears capable of discharging a specific upstream sorry after explicit bridge work. It does not mean the bridge is correct, policy-compliant, accepted upstream, or ready to submit.",
     "human_semantic_review_required": true,
     "automated_submission_readiness": false,
-    "only_submission_status": "not_ready_to_submit"
+    "submission_status_ladder": [
+      "not_ready_to_submit",
+      "adapter_checked_pending_external_process",
+      "submitted_upstream"
+    ],
+    "ladder_boundary": "adapter_checked_pending_external_process means the upstream proposition is stated verbatim here and derived from this library. It does not mean the contribution has been offered, reviewed, or accepted upstream, and it makes no novelty claim."
   },
   "problems": [
     {
@@ -185,11 +190,22 @@
         "indexing": "The upstream support may contain exponent zero. Its n = 0 summand is 1 / 0 = 0 under Lean's division convention, so zero is analytically invisible; a formal adapter must still normalize Set Nat and subtype indexing explicitly.",
         "casts_and_ambient_types": "The denominator power is inferred in Real from the explicit numerator cast. The solved variant instead sums Nat divisor counts coerced to Real.",
         "answer_and_proof_status": "The universal theorem and solved-variant irrationality theorem are sorry; the Lambert identity tsum_top_eq is proved upstream.",
-        "conservative_verdict": "candidate_adapter_alignment_requires_human_review",
-        "machine_checked_equivalence": "none"
+        "conservative_verdict": "adapter_checked_upstream_process_pending",
+        "machine_checked_equivalence": {
+          "upstream_declaration": "Erdos257.erdos_257.variants.tsum_top",
+          "adapter_module": "adapters/FormalConjecturesAdapter.lean",
+          "adapter_declaration": "Erdos249257.FormalConjecturesAdapter.erdos_257_variants_tsum_top",
+          "checked_in_environment": "this repository at leanprover/lean4:v4.29.1, and independently at Formal Conjectures' own leanprover/lean4:v4.27.0 with the corpus theorems supplied as axioms so that the bridge alone was checked",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "corpus_input": "Erdos249257.irrational_erdosSum_full_support"
+        }
       },
       "adapter": {
-        "status": "candidate_requires_human_semantic_review",
+        "status": "checked_against_upstream_statement",
         "target_declaration": "Erdos257.erdos_257.variants.tsum_top",
         "local_evidence": [
           {
@@ -211,7 +227,7 @@
         "candidate_is_a_proof": false
       },
       "human_semantic_review_required": true,
-      "submission_status": "not_ready_to_submit"
+      "submission_status": "adapter_checked_pending_external_process"
     },
     {
       "problem": 269,
@@ -326,11 +342,22 @@
         "indexing": "The upstream sums use positive naturals. The local full-support theorem uses k : Nat with exponent k + 1; an explicit equivalence between those index types is required.",
         "casts_and_ambient_types": "The upstream open base is Rational and the solved variant is Integer, both cast into Real powers. The local theorem takes b : Nat and casts it to Real, so Integer-to-Nat and cast/power normalization must be checked.",
         "answer_and_proof_status": "The rational-base conjecture and integer-base variant have sorry proofs. The upstream Lambert identity is proved, including branches outside the t > 1 problem regime that rely on Lean's nonsummable-tsum convention.",
-        "conservative_verdict": "candidate_adapter_alignment_requires_human_review",
-        "machine_checked_equivalence": "none"
+        "conservative_verdict": "adapter_checked_upstream_process_pending",
+        "machine_checked_equivalence": {
+          "upstream_declaration": "Erdos1049.erdos_1049.variants.geq_2_integer",
+          "adapter_module": "adapters/FormalConjecturesAdapter.lean",
+          "adapter_declaration": "Erdos249257.FormalConjecturesAdapter.erdos_1049_variants_geq_2_integer",
+          "checked_in_environment": "this repository at leanprover/lean4:v4.29.1, and independently at Formal Conjectures' own leanprover/lean4:v4.27.0 with the corpus theorems supplied as axioms so that the bridge alone was checked",
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "corpus_input": "Erdos249257.irrational_erdosSum_full_support"
+        }
       },
       "adapter": {
-        "status": "candidate_requires_human_semantic_review",
+        "status": "checked_against_upstream_statement",
         "target_declaration": "Erdos1049.erdos_1049.variants.geq_2_integer",
         "local_evidence": [
           {
@@ -348,7 +375,31 @@
         "candidate_is_a_proof": false
       },
       "human_semantic_review_required": true,
-      "submission_status": "not_ready_to_submit"
+      "submission_status": "adapter_checked_pending_external_process"
+    }
+  ],
+  "cross_index_matches": [
+    {
+      "upstream_declaration": "Erdos258.erdos_258.variants.constant",
+      "upstream_problem": 258,
+      "path": "FormalConjectures/ErdosProblems/258.lean",
+      "sha256": "8fa3fb3984e277b62647271e18d28db00815fc73b3e2149bb6472ddd6c2cd2f8",
+      "declaration_line": 65,
+      "outside_local_problem_list": true,
+      "why_recorded_here": "This library does not work on Erdos #258, so an index keyed by local problem number had nowhere to put this match and did not record it. The upstream statement is the same mathematics as the #257 and #1049 targets in a third coefficient convention.",
+      "machine_checked_equivalence": {
+        "upstream_declaration": "Erdos258.erdos_258.variants.constant",
+        "adapter_module": "adapters/FormalConjecturesAdapter.lean",
+        "adapter_declaration": "Erdos249257.FormalConjecturesAdapter.erdos_258_variants_constant",
+        "checked_in_environment": "this repository at leanprover/lean4:v4.29.1, and independently at Formal Conjectures' own leanprover/lean4:v4.27.0 with the corpus theorems supplied as axioms so that the bridge alone was checked",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "corpus_input": "Erdos249257.irrational_erdosSum_full_support"
+      },
+      "submission_status": "adapter_checked_pending_external_process"
     }
   ]
 }

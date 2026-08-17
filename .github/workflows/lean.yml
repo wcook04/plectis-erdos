@@ -143,6 +143,13 @@ jobs:
       - name: Build downstream consumer example
         if: steps.lean-inputs.outputs.changed == 'true'
         run: lake build Examples
+      - name: Build foreign-corpus statement adapters
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # These restate another corpus's propositions verbatim and derive them
+        # from this library, so an external `formal_proof` link points at them.
+        # They are not a default target, so without an explicit build a change
+        # here would break the link target silently.
+        run: lake build FormalConjecturesAdapter
       - name: Verify elaborated dependency index
         if: steps.lean-inputs.outputs.changed == 'true'
         # The first changed environment performs the full export and writes an
@@ -458,6 +465,11 @@ jobs:
           python3 scripts/check_erdos269_dyadic_windows.py
           python3 scripts/check_farey_denominator_scaling.py
           python3 scripts/check_formal_conjectures_crosswalk.py
+          # The crosswalk checker decides what the crosswalk may claim, and its
+          # own unit tests are what decide that the checker still refuses an
+          # unevidenced claim.  They were never run here, so a checker that had
+          # stopped refusing anything would have gone unnoticed.
+          python3 -m unittest scripts.test_formal_conjectures_crosswalk -v
       # GitHub renders markdown in a 1012px column and a table has no wrapping
       # escape, so a long declaration name in a cell pushes the table past the
       # column and the reader gets a horizontal scrollbar with every other
