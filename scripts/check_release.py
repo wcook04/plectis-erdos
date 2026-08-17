@@ -604,6 +604,40 @@ def main() -> int:
         "generated paper-corpus freshness failed: "
         f"{paper_corpus_check.stdout.strip() or paper_corpus_check.stderr.strip()}",
     )
+    # Freshness is not the only way the corpus can mislead. Nothing here has
+    # been externally reviewed and nothing carries an archival identifier; a
+    # field claiming either would read as a credential at publication stage.
+    publication_taxonomy_check = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        publication_taxonomy_check.returncode == 0,
+        "paper publication-taxonomy honesty failed: "
+        f"{publication_taxonomy_check.stdout.strip() or publication_taxonomy_check.stderr.strip()}",
+    )
+    publication_taxonomy_current = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "docs" / "papers" / "build_publication_taxonomy.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    check(
+        publication_taxonomy_current.returncode == 0,
+        "paper publication-taxonomy projection is stale: "
+        f"{publication_taxonomy_current.stdout.strip() or publication_taxonomy_current.stderr.strip()}",
+    )
     if ERRORS:
         print(
             "check_release: "

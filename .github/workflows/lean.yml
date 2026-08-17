@@ -509,6 +509,15 @@ jobs:
       - name: Test clone-local paper corpus is current
         if: ${{ !cancelled() }}
         run: python3 docs/papers/check_paper_corpus.py
+      # Nothing in this corpus has been externally reviewed and nothing carries
+      # an archival identifier. A field that said otherwise would be read as a
+      # credential, so the corpus is checked for that claim directly.
+      - name: Test paper corpus claims no review or identifier it lacks
+        if: ${{ !cancelled() }}
+        run: python3 docs/papers/check_publication_taxonomy.py
+      - name: Test publication taxonomy is the current projection
+        if: ${{ !cancelled() }}
+        run: python3 docs/papers/build_publication_taxonomy.py --check
       - name: Test ordinary-language status questions
         if: ${{ !cancelled() }}
         run: python3 scripts/test_status_question_search.py
