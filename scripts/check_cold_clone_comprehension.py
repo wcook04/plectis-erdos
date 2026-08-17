@@ -590,9 +590,14 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     )
     assert "elan" in readme, "README no longer names Lean's toolchain manager"
 
+    # Every token below describes something the workflow *does*. "# v5" sat in
+    # this list too, and it describes only which version of the cache action
+    # was current when the list was written — so a routine bump to v6 failed
+    # this check with "Lean CI lost cache/build contract", naming a contract
+    # that had not changed. The policy is asserted below instead: pinned to a
+    # commit, annotated with the version that commit is.
     for token in (
         "uses: actions/cache@",
-        "# v5",
         "path: .lake",
         "restore-keys:",
         # Two workers, not four: four exhausted the runner while compiling
@@ -603,6 +608,18 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "This is already a default root.",
     ):
         assert token in workflow, f"Lean CI lost cache/build contract: {token}"
+
+    unpinned = [
+        line.strip()
+        for line in workflow.splitlines()
+        if line.strip().startswith(("- uses: actions/", "uses: actions/"))
+        and not re.search(r"uses: actions/[\w-]+@[0-9a-f]{40} # v[\d.]+$", line.strip())
+    ]
+    assert not unpinned, (
+        "Lean CI uses an action that is not pinned to a commit with a version "
+        "comment, so a reader cannot tell what it resolves to: "
+        + "; ".join(unpinned)
+    )
 
     for token in (
         '"--changed-from"',
