@@ -37,16 +37,54 @@ Three consequences fall out of this inversion:
 
 ## The instrument panel
 
-| Instrument | Question it answers exactly | Entry |
-|---|---|---|
-| Proof-state compiler | Which candidate applications does Lean actually accept from this exact goal, and what are the exact resulting obligations? | `python3 scripts/proof_state_compiler.py --pilot-controls` |
-| Blocker algebra | Three non-interchangeable projections: per-plan AND residuals (`plan_blocker_sets`), smallest additions completing some route (`minimal_missing_interventions`), smallest removals defeating every known route (`minimal_blocker_cuts`) | packet fields + `blocker_algebra_semantics` |
-| Session notary | What did the agent observe, conjecture, probe, and establish — and can a stranger replay it byte-for-byte? | `python3 scripts/proof_workbench.py {open,note,probe,claim,close,replay,show}` |
-| Blind harness | Can a candidate bridge be kernel-checked in a historical parent environment that provably lacks the future answer? | `python3 scripts/historical_bridge_experiment.py --compact` |
-| Static semantic compiler | Which declarations are structurally relevant to this goal (nomination only — never applicability)? | `python3 scripts/query_corpus.py` |
-| The corpus itself | More than 150,000 indexed declarations — 8,171 of them explicitly marked as generated certificate shards (a floor: further emitted families predate the markers), counted as source rather than as claims — across the reviewed library, problem-owned expansion, and auxiliary inventory forest; exact dependency neighborhoods cover both compact roots | `Erdos249257/`, `ErdosProblems/`, and `python3 scripts/query_semantic.py inventory` |
+Six instruments. Each states the question it answers exactly, then its entry
+point.
 
-The last row is the quiet load-bearing one. This environment is deep
+**Proof-state compiler.** Which candidate applications does Lean actually
+accept from this exact goal, and what are the exact resulting obligations?
+
+```sh
+python3 scripts/proof_state_compiler.py --pilot-controls
+```
+
+**Blocker algebra.** Three non-interchangeable projections: per-plan AND
+residuals (`plan_blocker_sets`), smallest additions completing some route
+(`minimal_missing_interventions`), smallest removals defeating every known
+route (`minimal_blocker_cuts`). Entry: packet fields + `blocker_algebra_semantics`.
+
+**Session notary.** What did the agent observe, conjecture, probe, and
+establish — and can a stranger replay it byte-for-byte?
+
+```sh
+python3 scripts/proof_workbench.py {open,note,probe,claim,close,replay,show}
+```
+
+**Blind harness.** Can a candidate bridge be kernel-checked in a historical
+parent environment that provably lacks the future answer?
+
+```sh
+python3 scripts/historical_bridge_experiment.py --compact
+```
+
+**Static semantic compiler.** Which declarations are structurally relevant to
+this goal (nomination only — never applicability)?
+
+```sh
+python3 scripts/query_corpus.py
+```
+
+**The corpus itself.** More than 150,000 indexed declarations — 8,171 of them
+explicitly marked as generated certificate shards (a floor: further emitted
+families predate the markers), counted as source rather than as claims —
+across the reviewed library, problem-owned expansion, and auxiliary inventory
+forest; exact dependency neighborhoods cover both compact roots. Entry:
+`Erdos249257/`, `ErdosProblems/`, and:
+
+```sh
+python3 scripts/query_semantic.py inventory
+```
+
+The corpus is the quiet load-bearing one. This environment is deep
 rather than broad: decades-hard problems, attacked far past the first
 wall, with the failures formalized alongside the successes. Depth is
 what makes probes decisive. When an agent conjectures here, the corpus

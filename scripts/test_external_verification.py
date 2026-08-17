@@ -86,7 +86,13 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("<summary>Technical registry and Comparator routing (5)</summary>", human)
         self.assertIn("## Comparator interface appendix", human)
         self.assertIn("<summary>Show all 19 statement-isolated interfaces</summary>", human)
-        self.assertIn("<wbr>", human)
+        # Identifiers are emitted verbatim: <wbr> is stripped by GitHub's HTML
+        # sanitiser, and zero-width or soft-hyphen breaks survive but corrupt
+        # copy-paste of a Lean declaration name.
+        self.assertNotIn("<wbr>", human)
+        self.assertNotIn("&shy;", human)
+        self.assertNotIn("\u00ad", human)
+        self.assertNotIn("\u200b", human)
         self.assertIn("Source and priority note", human)
         self.assertIn("Steve Fan", human)
         self.assertIn("**Programmes.**", human)
@@ -129,15 +135,16 @@ class ExternalVerificationContractTest(unittest.TestCase):
         ]
         family_ids = [family["id"] for family in family_rows]
         self.assertEqual(len(family_ids), len(set(family_ids)))
-        searchable = human.replace("<wbr>", "")
-        code_spans = re.findall(r"<code>(.*?)</code>", searchable, flags=re.S)
+        code_spans = re.findall(r"<code>(.*?)</code>", human, flags=re.S)
         for family in family_rows:
             self.assertEqual(code_spans.count(family["id"]), 1, family["id"])
             self.assertIn(family["comparator_disposition"], code_spans)
             self.assertIn(family["boundary"], human)
             self.assertIn(family["summary"], human)
+        # Each identifier is a whole code span, so copying it yields a name that
+        # still compiles and greps.
         for row in owner["main_results"]:
-            self.assertIn(row["wrapper_declaration"], searchable)
+            self.assertIn(row["wrapper_declaration"], code_spans)
         challenge = (ROOT / "ExternalVerification/Challenge.lean").read_text()
         solution = (ROOT / "ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)

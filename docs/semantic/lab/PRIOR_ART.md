@@ -13,16 +13,89 @@ Searched 25 July 2026. A dated negative search result is not a novelty claim.
 
 ## What is not new
 
-| Layer | Verdict | Prior art |
-|---|---|---|
-| Exhaustive declaration atlas with provenance | **Not novel.** Standard 2024–2026 tooling. | LeanGraph / TheoremGraph, [2606.25363](https://arxiv.org/abs/2606.25363) — 388,105 declaration nodes, 11.3M typed edges over 25 Lean projects. *The Network Structure of Mathlib*, [2604.24797](https://arxiv.org/abs/2604.24797) — 308,129 declarations. LeanExplore, [2506.11085](https://arxiv.org/abs/2506.11085), whose `StatementGroup` is the same dedup idea. |
-| Statement graph with typed logical relations | **Core already done twice, larger.** | Equational Theories Project, [2512.07087](https://arxiv.org/abs/2512.07087) — 4,694 mathematically distinct nodes, **all 22,028,942 implication and anti-implication edges resolved**, anti-implications witnessed by explicit magmas, open frontier tracked as a graph, Lean-validated. Reverse Mathematics Zoo and π-Base do implications *and* non-implications with automated closure. MMT/OMDoc theory graphs supply typed truth-preserving morphisms. |
-| Mechanism records (invariant + transformation + controlled observable) | **The schema is thirty years old.** | Bundy's proof planning: *methods* are declarative preconditions + tactic + postconditions, *critics* are declarative specifications of **when a method fails** plus a patch. **Rippling** is literally skeleton-preservation as invariant, wave rules as transformation, annotation as controlled observable. Ireland & Bundy, [*Productive Use of Failure in Inductive Proof*](https://link.springer.com/article/10.1007/BF00244460), JAR 16:79–111 (1996); Ireland & Stark, [*Invariant Discovery via Failed Proof Attempts*](https://link.springer.com/chapter/10.1007/3-540-48958-4_15), LOPSTR 1998; *Rippling*, CUP 2005. See also Bundy's own [*A Critique of Proof Planning*](https://www.inf.ed.ac.uk/publications/online/1311.pdf) on why it underdelivered. |
-| Corpus-induced abstraction validated by downstream success | **Done, and it works.** | TacMiner, [2503.24036](https://arxiv.org/abs/2503.24036) — abstractions mined from Tactic Dependence Graphs, +172% relative downstream proof success in Rocq. Strat2Rocq, [2510.10131](https://arxiv.org/abs/2510.10131). LEGO-Prover, [2310.00656](https://arxiv.org/abs/2310.00656). |
-| Typed interventions on statements, Lean-checked | **Done, at far larger scale.** | *Learning to Disprove*, [2603.19514](https://arxiv.org/html/2603.19514v1) — hypothesis-dropping with redundancy stripped first, 575K problems, Lean 4 verified. Alchemy, [2410.15748](https://arxiv.org/abs/2410.15748) — 110k → 6M by equivalent-form rewriting. ALF, [2606.12594](https://arxiv.org/html/2606.12594v1) — five typed variant categories. Trocq (TOPLAS 2025) and Isabelle `Transfer` mechanise transport; Pumpkin Pi mechanises repair. |
-| Temporal holdout by commit date in a Lean library | **Canonical method, must be cited.** | miniCTX / miniCTX-v2, [2408.03350](https://arxiv.org/html/2408.03350v2), ICLR 2025 oral — holdout by first-commit timestamp, ablation over preceding file context. APE-Bench, SorryDB, RLMEval ([2510.25427](https://arxiv.org/abs/2510.25427)), ArXivLean all do commit- or publication-date splits. |
-| An Erdős corpus in Lean with reformulations and variants | **Not novel.** | Formal Conjectures, [2605.13171](https://arxiv.org/html/2605.13171v1) — **1,318 Erdős-derived Lean statements across 353 problems**, with disproof first-class via `answer(sorry)`. And [2605.22763](https://arxiv.org/abs/2605.22763) reports an agent resolving **9 open Erdős problems** in Lean. |
-| Negative space as typed records | **Partially done.** | OProofs/OProver, [2605.17283](https://arxiv.org/abs/2605.17283) — 869k failure-conditioned proofs, ablated at 6–9 points, but **explicitly declines to impose a taxonomy**. *Negative Knowledge as Failure-aware Shared Memory*, [2606.21024](https://arxiv.org/html/2606.21024v1) — closed five-field failure taxonomy with `ruled_out_routes`, measured transfer; non-formal and non-mathematical. |
+| Layer | Verdict |
+|---|---|
+| Exhaustive declaration atlas with provenance | **Not novel.** Standard 2024–2026 tooling. |
+| Statement graph with typed logical relations | **Core already done twice, larger.** |
+| Mechanism records (invariant + transformation + controlled observable) | **The schema is thirty years old.** |
+| Corpus-induced abstraction validated by downstream success | **Done, and it works.** |
+| Typed interventions on statements, Lean-checked | **Done, at far larger scale.** |
+| Temporal holdout by commit date in a Lean library | **Canonical method, must be cited.** |
+| An Erdős corpus in Lean with reformulations and variants | **Not novel.** |
+| Negative space as typed records | **Partially done.** |
+
+The prior art behind each verdict, in the same order.
+
+### Exhaustive declaration atlas with provenance
+
+LeanGraph / TheoremGraph, [2606.25363](https://arxiv.org/abs/2606.25363) —
+388,105 declaration nodes, 11.3M typed edges over 25 Lean projects. *The Network
+Structure of Mathlib*, [2604.24797](https://arxiv.org/abs/2604.24797) — 308,129
+declarations. LeanExplore, [2506.11085](https://arxiv.org/abs/2506.11085), whose
+`StatementGroup` is the same dedup idea.
+
+### Statement graph with typed logical relations
+
+Equational Theories Project, [2512.07087](https://arxiv.org/abs/2512.07087) —
+4,694 mathematically distinct nodes, **all 22,028,942 implication and
+anti-implication edges resolved**, anti-implications witnessed by explicit
+magmas, open frontier tracked as a graph, Lean-validated. Reverse Mathematics
+Zoo and π-Base do implications *and* non-implications with automated closure.
+MMT/OMDoc theory graphs supply typed truth-preserving morphisms.
+
+### Mechanism records (invariant + transformation + controlled observable)
+
+Bundy's proof planning: *methods* are declarative preconditions + tactic +
+postconditions, *critics* are declarative specifications of **when a method
+fails** plus a patch. **Rippling** is literally skeleton-preservation as
+invariant, wave rules as transformation, annotation as controlled observable.
+Ireland & Bundy, [*Productive Use of Failure in Inductive
+Proof*](https://link.springer.com/article/10.1007/BF00244460), JAR 16:79–111
+(1996); Ireland & Stark, [*Invariant Discovery via Failed Proof
+Attempts*](https://link.springer.com/chapter/10.1007/3-540-48958-4_15), LOPSTR
+1998; *Rippling*, CUP 2005. See also Bundy's own [*A Critique of Proof
+Planning*](https://www.inf.ed.ac.uk/publications/online/1311.pdf) on why it
+underdelivered.
+
+### Corpus-induced abstraction validated by downstream success
+
+TacMiner, [2503.24036](https://arxiv.org/abs/2503.24036) — abstractions mined
+from Tactic Dependence Graphs, +172% relative downstream proof success in Rocq.
+Strat2Rocq, [2510.10131](https://arxiv.org/abs/2510.10131). LEGO-Prover,
+[2310.00656](https://arxiv.org/abs/2310.00656).
+
+### Typed interventions on statements, Lean-checked
+
+*Learning to Disprove*, [2603.19514](https://arxiv.org/html/2603.19514v1) —
+hypothesis-dropping with redundancy stripped first, 575K problems, Lean 4
+verified. Alchemy, [2410.15748](https://arxiv.org/abs/2410.15748) — 110k → 6M by
+equivalent-form rewriting. ALF, [2606.12594](https://arxiv.org/html/2606.12594v1)
+— five typed variant categories. Trocq (TOPLAS 2025) and Isabelle `Transfer`
+mechanise transport; Pumpkin Pi mechanises repair.
+
+### Temporal holdout by commit date in a Lean library
+
+miniCTX / miniCTX-v2, [2408.03350](https://arxiv.org/html/2408.03350v2), ICLR
+2025 oral — holdout by first-commit timestamp, ablation over preceding file
+context. APE-Bench, SorryDB, RLMEval
+([2510.25427](https://arxiv.org/abs/2510.25427)), ArXivLean all do commit- or
+publication-date splits.
+
+### An Erdős corpus in Lean with reformulations and variants
+
+Formal Conjectures, [2605.13171](https://arxiv.org/html/2605.13171v1) — **1,318
+Erdős-derived Lean statements across 353 problems**, with disproof first-class
+via `answer(sorry)`. And [2605.22763](https://arxiv.org/abs/2605.22763) reports
+an agent resolving **9 open Erdős problems** in Lean.
+
+### Negative space as typed records
+
+OProofs/OProver, [2605.17283](https://arxiv.org/abs/2605.17283) — 869k
+failure-conditioned proofs, ablated at 6–9 points, but **explicitly declines to
+impose a taxonomy**. *Negative Knowledge as Failure-aware Shared Memory*,
+[2606.21024](https://arxiv.org/html/2606.21024v1) — closed five-field failure
+taxonomy with `ruled_out_routes`, measured transfer; non-formal and
+non-mathematical.
 
 ## What appears uncovered
 

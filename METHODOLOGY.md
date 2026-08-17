@@ -200,15 +200,21 @@ Lean source checked by the pinned Lean kernel remains proof authority. `docs/cla
 
 `METHODOLOGY.md` is generated from `docs/methodology.json`; run `python3 scripts/build_methodology.py` after changing the source. `python3 scripts/check_release.py` checks the source schema, typed claim-transition requirements, the change-class matrix, local references, exact Markdown projection, descriptor registration, and entry routes.
 
-Machine identifiers for the standing rules:
+Machine identifiers for the standing rules, in the order the rules appear above:
 
-| Standing rule | Machine identifier |
-|---|---|
-| 1. A formal result is the exact proposition Lean checked | `method_axiom.proof_is_exact_checked_proposition` |
-| 2. Formal validity and mathematical faithfulness are separate questions | `method_axiom.formal_proof_does_not_verify_intended_meaning` |
-| 3. A public claim crosses representations only through proved transport | `method_axiom.representation_changes_require_proved_transport` |
-| 4. A reduction keeps the remaining hypothesis visible | `method_axiom.reduction_states_remaining_open_hypothesis` |
-| 5. Finite verification does not change quantifiers | `method_axiom.finite_results_remain_finite_without_uniform_theorem` |
-| 6. A claim of progress names both the theorem and the outstanding obligation | `method_axiom.open_problem_progress_names_changed_open_proposition` |
+```text
+1. A formal result is the exact proposition Lean checked
+   method_axiom.proof_is_exact_checked_proposition
+2. Formal validity and mathematical faithfulness are separate questions
+   method_axiom.formal_proof_does_not_verify_intended_meaning
+3. A public claim crosses representations only through proved transport
+   method_axiom.representation_changes_require_proved_transport
+4. A reduction keeps the remaining hypothesis visible
+   method_axiom.reduction_states_remaining_open_hypothesis
+5. Finite verification does not change quantifiers
+   method_axiom.finite_results_remain_finite_without_uniform_theorem
+6. A claim of progress names both the theorem and the outstanding obligation
+   method_axiom.open_problem_progress_names_changed_open_proposition
+```
 
 Principles, rejected inferences, change classes, review triggers, forbidden effects, and claim-transition contracts keep their full identifiers and machine fields in `docs/methodology.json`.

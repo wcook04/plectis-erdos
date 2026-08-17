@@ -540,14 +540,15 @@ def render_markdown(methodology: dict[str, Any], claims: dict[str, Any]) -> str:
             "",
             "`METHODOLOGY.md` is generated from `docs/methodology.json`; run `python3 scripts/build_methodology.py` after changing the source. `python3 scripts/check_release.py` checks the source schema, typed claim-transition requirements, the change-class matrix, local references, exact Markdown projection, descriptor registration, and entry routes.",
             "",
-            "Machine identifiers for the standing rules:",
+            "Machine identifiers for the standing rules, in the order the rules appear above:",
             "",
-            "| Standing rule | Machine identifier |",
-            "|---|---|",
+            "```text",
         ]
     )
     for index, axiom in enumerate(methodology["method_axioms"], start=1):
-        lines.append(f"| {index}. {axiom['human_name']} | `{axiom['id']}` |")
+        lines.append(f"{index}. {axiom['human_name']}")
+        lines.append(f"   {axiom['id']}")
+    lines.append("```")
     lines.extend(
         [
             "",
