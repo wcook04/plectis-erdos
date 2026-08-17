@@ -364,6 +364,14 @@ jobs:
         run: |
           python3 scripts/query_corpus.py --tour --format card
           python3 scripts/check_cold_clone_comprehension.py --quick
+      # This test asserts that every provider adapter imports the compact entry
+      # rather than the deep contract. It was written, it was correct, and no
+      # lane ran it: not this workflow, not check_release.py, not any Makefile
+      # target. It sat red on main while CLAUDE.md imported AGENTS.md, so Claude
+      # Code opened a cold clone straight into the 31KB deep contract that the
+      # compact entry exists to defer. First contact is what this job is for.
+      - name: Every provider adapter routes to the compact entry
+        run: python3 scripts/test_compact_agent_entry.py
 
   shallow-clone-is-an-environment-problem:
     # `git clone --depth 1` truncates history, and the gates that read pinned

@@ -3,10 +3,13 @@
 
 # Claude Code entry
 
-@AGENTS.md
+@AGENTS.override.md
 
-`AGENTS.md` is the shared project instruction and authority-routing surface.
-This file carries Claude-specific deltas only.
+`AGENTS.override.md` is the compact cold-clone entry and the first-contact
+contract; `AGENTS.md` is the deep change, authority, and validation contract,
+opened after the compact router names the section you need. Importing the deep
+contract here spent a whole context window on the file the compact entry exists
+to defer. This file carries Claude-specific deltas only.
 
 - Start with the bounded `docs/orientation.json` capsule named by the imported
   instructions; expand one claim or route at a time.
