@@ -4,7 +4,7 @@
 # the whole repository for cosmetic gain, so the name stays and the description
 # carries the current scope instead.
 name = "erdos249257"
-version = "0.8.0"
+version = "0.9.0"
 description = "Lean 4 formalisation work on eight open Erdős problems — 68, 243, 249, 251, 257, 269, 1041, and 1049. All eight remain open. The library states what is checked and where each result stops."
 homepage = "https://github.com/wcook04/plectis-lean-erdos249-257"
 license = "Apache-2.0"

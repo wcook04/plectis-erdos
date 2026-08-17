@@ -157,7 +157,7 @@ infinite rank is Coons's prior result, the all-base rank paper theorem uses
 Martin externally, and #269's two-prime result is not first.
 
 This self-contained public Plectis checkout is not an entrypoint into any private
-development system. `v0.8.0` is the latest tagged release and citation anchor;
+development system. `v0.9.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](docs/claims.json) pins the exact formal-source checkpoint
 this release ships. Lean source checked by the pinned Lean kernel is
 proof authority; do not infer results from private or unreleased work.
@@ -262,8 +262,8 @@ These are navigation counts, not novelty claims.
   read pinned commits — never `1`, so a shallow clone can never be misread as a
   claim that failed. `check_release.py` remains the authority for locators.
 - **Mathematician:** use the top reading route, then follow one result from
-  [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The [Exposition PDF](erdos249-257-main-paper.pdf)
-  is the longer route, not the truth-status entrypoint.
+  [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers are the
+  live route; the [joint PDF](erdos249-257-main-paper.pdf) is retired.
 - **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), then the
   bounded [`docs/orientation.json`](docs/orientation.json); select one programme
   or claim before expanding the registry. [`AGENTS.md`](AGENTS.md) is the deep one.
@@ -419,7 +419,7 @@ hypothesis explicit and does not prove universal #257.
 
 ## Citation and licence
 
-Use [`CITATION.cff`](CITATION.cff) for `v0.8.0`.
+Use [`CITATION.cff`](CITATION.cff) for `v0.9.0`.
 Code, scripts, and documentation are Apache-2.0. The manuscript layer, including
 the paper source and rendered PDFs, is CC-BY-4.0.
 [`REUSE.toml`](REUSE.toml) is complete.

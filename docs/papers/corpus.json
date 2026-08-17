@@ -73,8 +73,8 @@
       "source": "CITATION.cff",
       "describes": "this repository as released software, not the individual manuscripts it carries",
       "title": "Erd\u0151s #249/#257 Lean formalisation (eight-problem corpus)",
-      "version": "0.8.0",
-      "date_released": "2026-08-06",
+      "version": "0.9.0",
+      "date_released": "2026-08-17",
       "license": "Apache-2.0",
       "type": "software",
       "author": "Will Cook"

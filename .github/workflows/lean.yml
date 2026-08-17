@@ -40,6 +40,7 @@ jobs:
   build:
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 210
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -346,6 +347,7 @@ jobs:
     name: First contact without Lean (${{ matrix.os }})
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
@@ -383,6 +385,7 @@ jobs:
     name: A truncated clone exits 2, never 1
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -405,6 +408,7 @@ jobs:
   release-surfaces:
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
