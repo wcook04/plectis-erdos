@@ -49,11 +49,14 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
             {
                 row["problem"]
                 for row in self.manifest["problems"]
-                if row["adapter"]["status"]
-                == "candidate_requires_human_semantic_review"
+                if row["adapter"]["status"] == "checked_against_upstream_statement"
             },
             {257, 1049},
         )
+        # The adapter discharges upstream's stated variants. Both problems
+        # themselves remain open, and the crosswalk must keep saying so.
+        for row in self.manifest["problems"]:
+            self.assertNotEqual(row["submission_status"], crosswalk.SUBMITTED)
 
     def test_commit_pin_mutation_is_rejected(self) -> None:
         mutated = copy.deepcopy(self.manifest)
@@ -74,13 +77,103 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
             any("missing comparison axes" in error for error in self.errors(mutated))
         )
 
-    def test_checked_equivalence_claim_is_rejected(self) -> None:
+    def test_bare_checked_equivalence_string_is_rejected(self) -> None:
+        """A claim that carries no evidence at all is still refused.
+
+        The earlier contract refused every checked-equivalence claim outright.
+        That was right while no adapter existed, but it also made the true
+        state unrecordable once one did, so the rule is now that a claim must
+        be evidenced rather than that it must be absent.  This test pins the
+        half that must not weaken.
+        """
         mutated = copy.deepcopy(self.manifest)
-        mutated["problems"][1]["comparison"]["machine_checked_equivalence"] = (
-            "proved"
+        mutated["problems"][1]["comparison"]["machine_checked_equivalence"] = "proved"
+        self.assertTrue(
+            any(
+                "must be 'none' or an object" in error
+                for error in self.errors(mutated)
+            )
+        )
+
+    def test_checked_equivalence_needs_an_adapter_module_on_disk(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        claim = mutated["problems"][4]["comparison"]["machine_checked_equivalence"]
+        claim["adapter_module"] = "adapters/DoesNotExist.lean"
+        self.assertTrue(
+            any("is absent from this repository" in e for e in self.errors(mutated))
+        )
+
+    def test_checked_equivalence_needs_the_named_theorem(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        claim = mutated["problems"][4]["comparison"]["machine_checked_equivalence"]
+        claim["adapter_declaration"] = (
+            "Erdos249257.FormalConjecturesAdapter.theorem_that_was_never_written"
         )
         self.assertTrue(
-            any("must not claim checked equivalence" in error for error in self.errors(mutated))
+            any("does not state theorem" in e for e in self.errors(mutated))
+        )
+
+    def test_checked_equivalence_needs_the_named_namespace(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        claim = mutated["problems"][4]["comparison"]["machine_checked_equivalence"]
+        claim["adapter_declaration"] = (
+            "Some.Other.Namespace.erdos_257_variants_tsum_top"
+        )
+        self.assertTrue(
+            any("does not open namespace" in e for e in self.errors(mutated))
+        )
+
+    def test_sorry_ax_in_the_axiom_budget_is_rejected(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        claim = mutated["problems"][4]["comparison"]["machine_checked_equivalence"]
+        claim["axioms"] = list(claim["axioms"]) + ["sorryAx"]
+        self.assertTrue(
+            any("axiom budget contains sorryAx" in e for e in self.errors(mutated))
+        )
+
+    def test_ladder_cannot_be_climbed_without_evidence(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        row = mutated["problems"][0]
+        self.assertEqual(row["comparison"]["machine_checked_equivalence"], "none")
+        row["submission_status"] = "adapter_checked_pending_external_process"
+        self.assertTrue(
+            any(
+                "requires a verified machine-checked equivalence" in e
+                for e in self.errors(mutated)
+            )
+        )
+
+    def test_invented_submission_status_is_rejected(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        mutated["problems"][0]["submission_status"] = "accepted_by_deepmind"
+        self.assertTrue(
+            any("must be one of the ladder rungs" in e for e in self.errors(mutated))
+        )
+
+    def test_cross_index_section_cannot_be_dropped(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        del mutated["cross_index_matches"]
+        self.assertTrue(
+            any("must carry a cross_index_matches" in e for e in self.errors(mutated))
+        )
+
+    def test_cross_index_match_cannot_be_invented(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        invented = copy.deepcopy(mutated["cross_index_matches"][0])
+        invented["upstream_declaration"] = "Erdos999.erdos_999.variants.imagined"
+        mutated["cross_index_matches"].append(invented)
+        self.assertTrue(
+            any("unrecognised entries" in e for e in self.errors(mutated))
+        )
+
+    def test_cross_index_ladder_also_needs_evidence(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        mutated["cross_index_matches"][0]["machine_checked_equivalence"] = "none"
+        self.assertTrue(
+            any(
+                "requires a verified machine-checked equivalence" in e
+                for e in self.errors(mutated)
+            )
         )
 
     def test_non_candidate_cannot_be_promoted(self) -> None:

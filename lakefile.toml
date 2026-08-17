@@ -56,3 +56,13 @@ srcDir = "examples"
 # holes, while CI asks Comparator to check Solution against them explicitly.
 [[lean_lib]]
 name = "ExternalVerification"
+
+# Statement forms belonging to other formal corpora, restated verbatim here and
+# derived from this library, so that an external `formal_proof` link resolves to
+# the exact proposition that corpus carries rather than a nearby one.  Not a
+# default target and not part of the mathematical corpus: these modules add no
+# mathematics, so counting their declarations among this library's own would
+# overstate it.  CI builds this explicitly after Erdos249257.
+[[lean_lib]]
+name = "FormalConjecturesAdapter"
+srcDir = "adapters"

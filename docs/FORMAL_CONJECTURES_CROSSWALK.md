@@ -3,7 +3,7 @@
 
 Bind the eight public Erdős programmes to the exact Formal Conjectures source snapshot and record the indexing, ambient-type, cast, and proof-status differences a human reviewer must inspect.
 
-**Upstream:** [https://github.com/google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures) at exact commit [`37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8`](https://github.com/google-deepmind/formal-conjectures/commit/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8). Source hashes are SHA-256 over exact file bytes.
+**Upstream:** [https://github.com/google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures) at exact commit [`398958d3964d738886bd24433918c365df4a2aab`](https://github.com/google-deepmind/formal-conjectures/commit/398958d3964d738886bd24433918c365df4a2aab). Source hashes are SHA-256 over exact file bytes.
 
 **Boundary:** this is statement-identity and adapter-review metadata, not a Lean equivalence proof, novelty finding, contribution claim, or submission-readiness decision. Every problem remains open. Every row is `not_ready_to_submit`.
 
@@ -13,10 +13,10 @@ Bind the eight public Erdős programmes to the exact Formal Conjectures source s
 | #243 | `Erdos243.erdos_243` | `not_a_candidate` |
 | #249 | `Erdos249.erdos_249` | `not_a_candidate` |
 | #251 | `Erdos251.erdos_251` | `not_a_candidate` |
-| #257 | `Erdos257.erdos_257` | `candidate_requires_human_semantic_review` |
+| #257 | `Erdos257.erdos_257` | `checked_against_upstream_statement` |
 | #269 | `Erdos269.erdos_269.variants.irrational` | `not_a_candidate` |
 | #1041 | `Erdos1041.erdos_1041` | `not_a_candidate` |
-| #1049 | `Erdos1049.erdos_1049` | `candidate_requires_human_semantic_review` |
+| #1049 | `Erdos1049.erdos_1049` | `checked_against_upstream_statement` |
 
 ## Pinned upstream sources
 
@@ -47,7 +47,7 @@ Each file is read at the commit above. Each hash is SHA-256 over exact file byte
 
 Local question: Is the series sum_{n >= 2} 1/(n! - 1) irrational?
 
-- Upstream declaration: [`Erdos68.erdos_68`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/68.lean#L33) at `FormalConjectures/ErdosProblems/68.lean:33`; proof status `sorry`.
+- Upstream declaration: [`Erdos68.erdos_68`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/68.lean#L33) at `FormalConjectures/ErdosProblems/68.lean:33`; proof status `sorry`.
 - Statement scope: The same displayed factorial-denominator irrationality question.
 - Indexing: Formal Conjectures sums over n : Nat after the explicit shift n + 2; the displayed local question sums over integers n >= 2.
 - Casts and ambient types: The summand is explicitly real after casting (n + 2).factorial into Real in the denominator.
@@ -60,7 +60,7 @@ Local question: Is the series sum_{n >= 2} 1/(n! - 1) irrational?
 
 Local question: Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?
 
-- Upstream declaration: [`Erdos243.erdos_243`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/243.lean#L38) at `FormalConjectures/ErdosProblems/243.lean:38`; proof status `sorry`.
+- Upstream declaration: [`Erdos243.erdos_243`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/243.lean#L38) at `FormalConjectures/ErdosProblems/243.lean:38`; proof status `sorry`.
 - Statement scope: The rapid-growth, rational reciprocal-sum, eventual-Sylvester question is represented, but the local work proves only conditional state-system consequences.
 - Indexing: The upstream sequence is zero-based and refers to a (n - 1), using truncated Nat subtraction; comparison with a traditional sequence starting at a_1 requires discarding a finite prefix.
 - Casts and ambient types: The growth limit is Real-valued, while ha₂ is Summable for a Rational-valued reciprocal sequence. This asserts a Rational sum exists and must be related explicitly to a Real rationality premise.
@@ -73,7 +73,7 @@ Local question: Under a rapid-growth hypothesis on an integer sequence, does rat
 
 Local question: Is the binary Lambert series sum phi(n)/2^n irrational?
 
-- Upstream declaration: [`Erdos249.erdos_249`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/249.lean#L35) at `FormalConjectures/ErdosProblems/249.lean:35`; proof status `sorry`.
+- Upstream declaration: [`Erdos249.erdos_249`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/249.lean#L35) at `FormalConjectures/ErdosProblems/249.lean:35`; proof status `sorry`.
 - Statement scope: The binary totient-series irrationality question is represented; neither corpus solves it.
 - Indexing: Formal Conjectures sums from n = 0. The n = 0 totient term is zero, so the displayed positive-index series is expected to agree, but this crosswalk contains no Lean reindexing proof.
 - Casts and ambient types: Irrational forces a Real-valued sum and Lean inserts coercions for Nat totients and powers; the surface syntax leaves those casts implicit.
@@ -86,7 +86,7 @@ Local question: Is the binary Lambert series sum phi(n)/2^n irrational?
 
 Local question: Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
 
-- Upstream declaration: [`Erdos251.erdos_251`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/251.lean#L31) at `FormalConjectures/ErdosProblems/251.lean:31`; proof status `sorry`.
+- Upstream declaration: [`Erdos251.erdos_251`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/251.lean#L31) at `FormalConjectures/ErdosProblems/251.lean:31`; proof status `sorry`.
 - Statement scope: The same dyadic prime-series irrationality question is represented.
 - Indexing: Nat.nth Nat.Prime is zero-based and the denominator is 2^n. Relative to the displayed convention p_1 / 2^1 + p_2 / 2^2 + ..., the upstream value is multiplied by 2; irrationality should be invariant under that nonzero rational factor, but no adapter theorem is recorded here.
 - Casts and ambient types: The prime and power expressions are Nat-valued surface syntax coerced into the Real-valued sum required by Irrational.
@@ -99,20 +99,20 @@ Local question: Is the dyadic series sum p_n/2^n over consecutive primes irratio
 
 Local question: Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?
 
-- Upstream declaration: [`Erdos257.erdos_257`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/257.lean#L35) at `FormalConjectures/ErdosProblems/257.lean:35`; proof status `sorry`.
+- Upstream declaration: [`Erdos257.erdos_257`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/257.lean#L35) at `FormalConjectures/ErdosProblems/257.lean:35`; proof status `sorry`.
 - Statement scope: The upstream open theorem quantifies over every infinite Nat support. The local expansion studies the same positive-exponent Mersenne support problem without proving the universal endpoint.
 - Indexing: The upstream support may contain exponent zero. Its n = 0 summand is 1 / 0 = 0 under Lean's division convention, so zero is analytically invisible; a formal adapter must still normalize Set Nat and subtype indexing explicitly.
 - Casts and ambient types: The denominator power is inferred in Real from the explicit numerator cast. The solved variant instead sums Nat divisor counts coerced to Real.
 - Answer/proof status: The universal theorem and solved-variant irrationality theorem are sorry; the Lambert identity tsum_top_eq is proved upstream.
-- Conservative verdict: `candidate_adapter_alignment_requires_human_review`.
-- Machine-checked equivalence: `none`.
-- Submission status: `not_ready_to_submit`.
+- Conservative verdict: `adapter_checked_upstream_process_pending`.
+- Machine-checked equivalence: `Erdos249257.FormalConjecturesAdapter.erdos_257_variants_tsum_top` in `adapters/FormalConjecturesAdapter.lean`, checked in this repository at leanprover/lean4:v4.29.1, and independently at Formal Conjectures' own leanprover/lean4:v4.27.0 with the corpus theorems supplied as axioms so that the bridge alone was checked; axioms `propext`, `Classical.choice`, `Quot.sound`.
+- Submission status: `adapter_checked_pending_external_process`.
 
 ### Erdős #269
 
 Local question: For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.
 
-- Upstream declaration: [`Erdos269.erdos_269.variants.irrational`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/269.lean#L73) at `FormalConjectures/ErdosProblems/269.lean:73`; proof status `sorry`.
+- Upstream declaration: [`Erdos269.erdos_269.variants.irrational`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/269.lean#L73) at `FormalConjectures/ErdosProblems/269.lean:73`; proof status `sorry`.
 - Statement scope: Formal Conjectures states finite-prime rational and irrational variants and an infinite-prime theorem. The local programme proves only subsidiary structure for the three-prime case.
 - Indexing: The upstream series includes n = 0 and its empty-prefix lcm term; comparison with a convention beginning at the first nonempty prefix differs by a finite rational normalization that is not formalized here.
 - Casts and ambient types: partialLcm is Nat-valued and coerced into a Real reciprocal. The rational variant expresses rationality using existence of q : Rational equal to the Real series through coercion.
@@ -125,7 +125,7 @@ Local question: For a finite set of at least two primes, is the sum of reciproca
 
 Local question: For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?
 
-- Upstream declaration: [`Erdos1041.erdos_1041`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/1041.lean#L67) at `FormalConjectures/ErdosProblems/1041.lean:67`; proof status `sorry`.
+- Upstream declaration: [`Erdos1041.erdos_1041`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/1041.lean#L67) at `FormalConjectures/ErdosProblems/1041.lean:67`; proof status `sorry`.
 - Statement scope: Both surfaces ask for two roots connected inside the open unit lemniscate by a curve with a bound below two, but the exact formal notion of length needs review.
 - Indexing: There is no series indexing issue. The upstream theorem quantifies polynomial degree n >= 2 and selects roots through multiset containment, including multiplicity.
 - Casts and ambient types: The path lies in Complex; length is defined as one-dimensional Hausdorff measure of the path range in ENNReal, not directly as parameterized rectifiable path length.
@@ -138,20 +138,20 @@ Local question: For a monic polynomial whose roots lie in the open unit disc, mu
 
 Local question: For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.
 
-- Upstream declaration: [`Erdos1049.erdos_1049`](https://github.com/google-deepmind/formal-conjectures/blob/37993ec3ed2163822e02bb32eef0fc8c9a9dc7b8/FormalConjectures/ErdosProblems/1049.lean#L40) at `FormalConjectures/ErdosProblems/1049.lean:40`; proof status `sorry`.
+- Upstream declaration: [`Erdos1049.erdos_1049`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/1049.lean#L40) at `FormalConjectures/ErdosProblems/1049.lean:40`; proof status `sorry`.
 - Statement scope: The upstream open theorem asks for every rational t > 1. The local programme does not prove that endpoint, but its full-support theorem covers positive integer bases and may discharge the upstream solved integer-base variant after adapters.
 - Indexing: The upstream sums use positive naturals. The local full-support theorem uses k : Nat with exponent k + 1; an explicit equivalence between those index types is required.
 - Casts and ambient types: The upstream open base is Rational and the solved variant is Integer, both cast into Real powers. The local theorem takes b : Nat and casts it to Real, so Integer-to-Nat and cast/power normalization must be checked.
 - Answer/proof status: The rational-base conjecture and integer-base variant have sorry proofs. The upstream Lambert identity is proved, including branches outside the t > 1 problem regime that rely on Lean's nonsummable-tsum convention.
-- Conservative verdict: `candidate_adapter_alignment_requires_human_review`.
-- Machine-checked equivalence: `none`.
-- Submission status: `not_ready_to_submit`.
+- Conservative verdict: `adapter_checked_upstream_process_pending`.
+- Machine-checked equivalence: `Erdos249257.FormalConjecturesAdapter.erdos_1049_variants_geq_2_integer` in `adapters/FormalConjecturesAdapter.lean`, checked in this repository at leanprover/lean4:v4.29.1, and independently at Formal Conjectures' own leanprover/lean4:v4.27.0 with the corpus theorems supplied as axioms so that the bridge alone was checked; axioms `propext`, `Classical.choice`, `Quot.sound`.
+- Submission status: `adapter_checked_pending_external_process`.
 
 ## Adapter candidates
 
 ### Erdős #257: `Erdos257.erdos_257.variants.tsum_top`
 
-Candidate only; human semantic review is required and this is not ready to submit.
+The upstream proposition is stated verbatim in the adapter and derived from this library. Human semantic review is still required, and nothing has been offered upstream.
 
 Local evidence:
 
@@ -166,7 +166,7 @@ Unproved bridge obligations:
 
 ### Erdős #1049: `Erdos1049.erdos_1049.variants.geq_2_integer`
 
-Candidate only; human semantic review is required and this is not ready to submit.
+The upstream proposition is stated verbatim in the adapter and derived from this library. Human semantic review is still required, and nothing has been offered upstream.
 
 Local evidence:
 
@@ -178,6 +178,16 @@ Unproved bridge obligations:
 - Reindex the positive-natural upstream sum to the local Nat successor sum.
 - Confirm that the proof uses only upstream-compatible imports and does not accidentally rely on the irrelevant nonsummable branches of the upstream Lambert identity.
 - Review theorem attribution, contribution scope, licensing, automation disclosure, and upstream contribution policy with a human before any patch is prepared.
+
+## Cross-index matches
+
+Upstream declarations this library can discharge that sit under a problem number it does not work on. An index keyed by local problem cannot hold these, so they are keyed by the upstream declaration.
+
+### Upstream #258: [`Erdos258.erdos_258.variants.constant`](https://github.com/google-deepmind/formal-conjectures/blob/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems/258.lean#L65)
+
+- Recorded here because: This library does not work on Erdos #258, so an index keyed by local problem number had nowhere to put this match and did not record it. The upstream statement is the same mathematics as the #257 and #1049 targets in a third coefficient convention.
+- Machine-checked equivalence: `Erdos249257.FormalConjecturesAdapter.erdos_258_variants_constant` in `adapters/FormalConjecturesAdapter.lean`, checked in this repository at leanprover/lean4:v4.29.1, and independently at Formal Conjectures' own leanprover/lean4:v4.27.0 with the corpus theorems supplied as axioms so that the bridge alone was checked; axioms `propext`, `Classical.choice`, `Quot.sound`.
+- Submission status: `adapter_checked_pending_external_process`.
 
 ## Reproduction
 
