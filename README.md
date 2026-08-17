@@ -32,6 +32,13 @@ It assumes no Lean or project history. The
 [agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
 cold-clone route and the recorded workbench session.
 
+**If you build proof search.** `hypOf%` lifts an unresolved hypothesis out of
+binder position into a `Prop`, so whether a sketch's remaining obligation
+differs from its target becomes a question for the kernel rather than for a
+rater — the failure [AlphaProof Nexus](https://arxiv.org/abs/2605.22763)
+reports prompting could not prevent.
+[The evaluator, its fixtures, and what it refuses to decide](docs/RESIDUAL_PROGRESS.md).
+
 The repository was created for #249 and #257 and keeps that name so existing
 citations and links continue to resolve; it now covers eight problems. The
 companion [Plectis](https://github.com/wcook04/plectis) repository owns the

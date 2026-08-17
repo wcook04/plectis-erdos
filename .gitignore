@@ -2,3 +2,8 @@
 build/
 __pycache__/
 state/
+
+# Transient probe file written by scripts/residual_evaluator.py, one probe at a
+# time. It is the question put to the kernel on the last iteration, not a
+# source file, and the run overwrites it.
+_residual_probe.lean
