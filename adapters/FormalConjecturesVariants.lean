@@ -306,3 +306,55 @@ theorem fullTotientKernelFamily_eq :
     Nat.fullTotientKernelFamily = fullTotientKernelFamily := rfl
 
 end Erdos249257.FormalConjecturesErdos249
+
+
+/-! ## Erdős 257, over the vocabulary upstream would own
+
+The finite-period theorem above is stated over
+`ExternalVerification.finiteErdosSum`.  Formal Conjectures cannot import that
+module.  The support this statement needs is one definition, and it belongs in
+the problem file rather than in `FormalConjecturesForMathlib`: a finite sum over
+a `Finset`, nothing reusable across problems.
+
+Copying that definition across a repository boundary is where a `formal_proof`
+link stops being exact.  Two textually identical definitions in two repositories
+are two different constants.  What follows declares the same object a second
+time, in the namespace an upstream `257.lean` would use, and restates the
+proposition over *that* constant.  The proof is the theorem above, accepted with
+no bridging step.
+
+The coprimality hypothesis is retained.  Discharging it is a reduced-denominator
+argument already proved in this corpus, but it is not a one-line Mathlib fact,
+and the Formal Conjectures statement should not grow a rational-arithmetic
+development just to hide a hypothesis the reader can see.
+
+Mutating the conclusion from `F.lcm id` to `F.lcm id + 1` is a type mismatch. -/
+
+namespace Erdos257
+
+/-- The finite Erdős support series at integer base `b`, summed over a finite
+set of exponents. -/
+def finiteErdosSum (F : Finset ℕ) (b : ℕ) : ℚ :=
+  ∑ n ∈ F, 1 / ((b : ℚ) ^ n - 1)
+
+end Erdos257
+
+namespace Erdos249257.FormalConjecturesErdos257
+
+open Erdos249257.ExternalVerification
+
+/-- `Erdos257.erdos_257.variants.finite_period_noncollapse`, over the constant
+an upstream problem file would own. -/
+theorem erdos_257_variants_finite_period_noncollapse
+    (F : Finset ℕ) (b : ℕ)
+    (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)
+    (hcop : Nat.Coprime b (Erdos257.finiteErdosSum F b).den) :
+    orderOf (ZMod.unitOfCoprime b hcop) = F.lcm id :=
+  FormalConjecturesVariants.erdos_257_variants_finite_period_noncollapse
+    F b hF h0 hb hcop
+
+/-- The upstream finite-sum definition is this repository's. -/
+theorem finiteErdosSum_eq (F : Finset ℕ) (b : ℕ) :
+    Erdos257.finiteErdosSum F b = finiteErdosSum F b := rfl
+
+end Erdos249257.FormalConjecturesErdos257
