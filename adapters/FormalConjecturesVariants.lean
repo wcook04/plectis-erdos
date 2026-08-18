@@ -572,6 +572,41 @@ theorem erdos_257_variants_support_measure_dichotomy (J : Set ℕ) :
         volume (Erdos257.supportedMersenneAchievementSet J) = 0) :=
   volume_supportedMersenneAchievementSet_dichotomy J
 
+/-! ### Geometry of the same restricted sets
+
+The measure above says how big these sets are; this says what shape they are,
+over the same six definitions and with no further upstream cost.
+
+Five predicates, and no sixth.  `IsClosed` is not a conjunct: the set is a
+compact subset of `ℝ`, and `Perfect` carries closedness in its own first
+component, so stating it would be padding rather than content.  `Perfect` is
+the one predicate that needs `J.Infinite` -- a finite `J` admits finitely many
+digit strings, so the set is finite and every point of it is isolated.
+
+Total disconnectedness is stated for arbitrary `J` rather than only for the
+full set.  `IsTotallyDisconnected s` unfolds to a condition quantified over
+subsets of `s`, so it descends along `⊆` with no work, exactly as nowhere
+density already does.  That is what makes a separate full-set geometry offer
+redundant instead of merely overlapping: at `J = Set.univ` this theorem is the
+full-set statement, since `supportedMersenneAchievementSet Set.univ =
+mersenneAchievementSet`, and unique coding is the injectivity conjunct.  One
+theorem, not two. -/
+
+/-- `Erdos257.erdos_257.variants.supported_achievement_set_geometry`, over the
+constants an upstream support file would own. -/
+theorem erdos_257_variants_supported_achievement_set_geometry (J : Set ℕ) :
+    Function.Injective (Erdos257.supportedMersenneDigitValue J) ∧
+      IsCompact (Erdos257.supportedMersenneAchievementSet J) ∧
+        IsTotallyDisconnected (Erdos257.supportedMersenneAchievementSet J) ∧
+          IsNowhereDense (Erdos257.supportedMersenneAchievementSet J) ∧
+            (J.Infinite → Perfect (Erdos257.supportedMersenneAchievementSet J)) :=
+  ⟨ErdosProblems.Erdos257.supportedMersenneDigitValue_injective J,
+    ErdosProblems.Erdos257.isCompact_supportedMersenneAchievementSet J,
+    fun _ hsub => Erdos249257.isTotallyDisconnected_mersenneAchievementSet _
+      (hsub.trans (ErdosProblems.Erdos257.supportedMersenneAchievementSet_subset J)),
+    ErdosProblems.Erdos257.isNowhereDense_supportedMersenneAchievementSet J,
+    fun hJ => ErdosProblems.Erdos257.perfect_supportedMersenneAchievementSet hJ⟩
+
 /-- The upstream weight definition is this repository's. -/
 theorem mersenneWeight_eq (n : ℕ) :
     Erdos257.mersenneWeight n = mersenneWeight n := rfl
@@ -580,5 +615,58 @@ theorem mersenneWeight_eq (n : ℕ) :
 theorem supportedMersenneAchievementSet_eq (J : Set ℕ) :
     Erdos257.supportedMersenneAchievementSet J =
       supportedMersenneAchievementSet J := rfl
+
+
+/-! ### Settled infinite-support families
+
+`erdos_257` asks whether *every* infinite support gives an irrational sum.
+These four say yes for four named families, in the shape the open statement
+itself uses -- `∑' n : A, 1 / (b ^ n - 1)` over a subtype -- so they need no
+upstream vocabulary at all.  `tsum_subtype` is the whole bridge from this
+corpus's indicator-indexed `erdosSupportSeries`.
+
+The two explicitly-indexed families are stated over `k` rather than over
+`Set.range`, matching the checked source exactly; reindexing them through the
+range set would add an injectivity obligation and buy nothing.
+
+None of this is new mathematics.  Eventually periodic supports are the `0`-`1`
+coefficient case of Luca-Tachiya; pairwise-coprime supports are Erdős (1968);
+the factorial and powers-of-two families sit in the Erdős-Straus rapid-growth
+framework, and Duverney later proved the powers-of-two value transcendental. -/
+
+/-- Eventually periodic infinite supports. -/
+theorem erdos_257_variants_eventually_periodic_support
+    (b m N₀ : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hm : 0 < m)
+    (hper : ∀ n : ℕ, N₀ ≤ n → (n + m ∈ A ↔ n ∈ A)) (hA : A.Infinite) :
+    Irrational (∑' n : A, (1 : ℝ) / ((b : ℝ) ^ (n : ℕ) - 1)) := by
+  have h : (∑' n : A, (1 : ℝ) / ((b : ℝ) ^ (n : ℕ) - 1))
+      = Erdos249257.erdosSupportSeries b A :=
+    tsum_subtype A fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)
+  rw [h]
+  exact Erdos249257.irrational_erdosSupportSeries_eventuallyPeriodic
+    b m N₀ A hb hm hper hA
+
+/-- Infinite pairwise-coprime supports with summable reciprocals. -/
+theorem erdos_257_variants_pairwise_coprime_support
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hpair : A.Pairwise Nat.Coprime)
+    (hsum : Summable fun a : A => (1 : ℝ) / (a : ℕ)) :
+    Irrational (∑' n : A, (1 : ℝ) / ((b : ℝ) ^ (n : ℕ) - 1)) := by
+  have h : (∑' n : A, (1 : ℝ) / ((b : ℝ) ^ (n : ℕ) - 1))
+      = Erdos249257.erdosSupportSeries b A :=
+    tsum_subtype A fun a : ℕ => (1 : ℝ) / ((b : ℝ) ^ a - 1)
+  rw [h]
+  exact Erdos249257.irrational_erdosSupportSeries_pairwise_coprime b A hb hA hpair
+    (summable_subtype_iff_indicator.mp hsum)
+
+/-- The positive factorials as support. -/
+theorem erdos_257_variants_factorial_support (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (Nat.factorial (k + 1)) - 1)) :=
+  Erdos249257.irrational_erdosSum_factorial_support b hb
+
+/-- The powers of two as support. -/
+theorem erdos_257_variants_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (2 ^ k) - 1)) :=
+  Erdos249257.irrational_erdosSum_two_pow_support b hb
 
 end Erdos249257.FormalConjecturesErdos257
