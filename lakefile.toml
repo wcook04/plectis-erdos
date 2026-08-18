@@ -66,6 +66,11 @@ name = "ExternalVerification"
 [[lean_lib]]
 name = "FormalConjecturesAdapter"
 srcDir = "adapters"
+# `FormalConjecturesVariants` is the other direction: statements upstream does
+# not carry at all, offered as new `variants.*` declarations rather than as
+# proofs of existing holes. Same reason it is not a default target and not
+# counted as this library's own mathematics.
+globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants"]
 
 # Ground-truth fixtures for semantic residual evaluation.  Eight labelled proof
 # sketches over two elementary targets, including deliberate target-restatement

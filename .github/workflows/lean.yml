@@ -150,6 +150,14 @@ jobs:
         # They are not a default target, so without an explicit build a change
         # here would break the link target silently.
         run: lake build FormalConjecturesAdapter
+      - name: Build foreign-corpus variant candidates
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # Named separately rather than left to the line above: the library and
+        # one of its modules share the name `FormalConjecturesAdapter`, so that
+        # target resolves to the module and would build this file only by
+        # accident. These are the statements offered upstream as new
+        # `variants.*` declarations, and each is a `formal_proof` link target.
+        run: lake build FormalConjecturesVariants
       - name: Build residual-evaluation fixtures
         if: steps.lean-inputs.outputs.changed == 'true'
         # Ground truth for `scripts/residual_evaluator.py`.  Also not a default
