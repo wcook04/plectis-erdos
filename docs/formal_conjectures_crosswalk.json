@@ -5,8 +5,8 @@
   "purpose": "Bind the eight public Erdős programmes to the exact Formal Conjectures source snapshot and record the indexing, ambient-type, cast, and proof-status differences a human reviewer must inspect.",
   "upstream": {
     "repository": "https://github.com/google-deepmind/formal-conjectures",
-    "commit": "398958d3964d738886bd24433918c365df4a2aab",
-    "commit_url": "https://github.com/google-deepmind/formal-conjectures/commit/398958d3964d738886bd24433918c365df4a2aab",
+    "commit": "f2de2ed5841e2105009be778ada0c40c08980125",
+    "commit_url": "https://github.com/google-deepmind/formal-conjectures/commit/f2de2ed5841e2105009be778ada0c40c08980125",
     "license": "Apache-2.0",
     "source_root": "FormalConjectures/ErdosProblems"
   },
@@ -227,7 +227,16 @@
         "candidate_is_a_proof": false
       },
       "human_semantic_review_required": true,
-      "submission_status": "adapter_checked_pending_external_process"
+      "submission_status": "submitted_upstream",
+      "submission": {
+        "pull_request": 5033,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/5033",
+        "branch": "formal-proof-erdos-257-tsum-top",
+        "head": "9ccc2d7ef85080ffb3b3e17304f6b2e7fb5202df",
+        "offers": "a formal_proof attribute pointing at this repository; the upstream sorry is retained, per upstream policy for proofs longer than 25-50 lines",
+        "state_when_recorded": "open",
+        "boundary": "Offered upstream. Not reviewed, not accepted, and not a novelty claim. Live state is whatever the pull request says now, not this field."
+      }
     },
     {
       "problem": 269,
@@ -375,7 +384,16 @@
         "candidate_is_a_proof": false
       },
       "human_semantic_review_required": true,
-      "submission_status": "adapter_checked_pending_external_process"
+      "submission_status": "submitted_upstream",
+      "submission": {
+        "pull_request": 5032,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/5032",
+        "branch": "formal-proof-erdos-1049-integer-base",
+        "head": "5f8b8a785c00c2ea1295d523146da27242f1f7b2",
+        "offers": "a formal_proof attribute pointing at this repository; the upstream sorry is retained, per upstream policy for proofs longer than 25-50 lines",
+        "state_when_recorded": "open",
+        "boundary": "Offered upstream. Not reviewed, not accepted, and not a novelty claim. Live state is whatever the pull request says now, not this field."
+      }
     }
   ],
   "cross_index_matches": [
@@ -399,7 +417,16 @@
         ],
         "corpus_input": "Erdos249257.irrational_erdosSum_full_support"
       },
-      "submission_status": "adapter_checked_pending_external_process"
+      "submission_status": "submitted_upstream",
+      "submission": {
+        "pull_request": 5034,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/5034",
+        "branch": "formal-proof-erdos-258-constant-base",
+        "head": "531905f271fef660309c1432110416c58b9f1985",
+        "offers": "a formal_proof attribute pointing at this repository; the upstream sorry is retained, per upstream policy for proofs longer than 25-50 lines",
+        "state_when_recorded": "open",
+        "boundary": "Offered upstream. Not reviewed, not accepted, and not a novelty claim. Live state is whatever the pull request says now, not this field."
+      }
     }
   ]
 }
