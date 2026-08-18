@@ -70,6 +70,8 @@ jobs:
           elif git diff --quiet "$base" "$head" -- \
             Erdos249257.lean 'Erdos249257/**' \
             ErdosProblems.lean 'ErdosProblems/**' \
+            'adapters/**' 'ExternalVerification/**' \
+            'examples/**' 'residualbench/**' \
             lakefile.toml lakefile.lean lake-manifest.json lean-toolchain \
             scripts/build_declaration_atlas.py \
             scripts/build_lean_dependency_index.py \
