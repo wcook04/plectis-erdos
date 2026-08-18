@@ -55,8 +55,26 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
         )
         # The adapter discharges upstream's stated variants. Both problems
         # themselves remain open, and the crosswalk must keep saying so.
+        #
+        # This previously asserted that no row had reached SUBMITTED, which
+        # was true only while nothing had been offered upstream; as a contract
+        # it forbade the very outcome the ladder exists to record. What must
+        # actually hold is that offering a variant upstream never becomes a
+        # claim on the open problem, and that a submission names the pull
+        # request carrying it.
         for row in self.manifest["problems"]:
-            self.assertNotEqual(row["submission_status"], crosswalk.SUBMITTED)
+            self.assertFalse(
+                row["adapter"].get("candidate_is_a_proof", False),
+                f"problem {row['problem']} must not claim to prove the open problem",
+            )
+            self.assertTrue(row["human_semantic_review_required"])
+            if row["submission_status"] == crosswalk.SUBMITTED:
+                submission = row.get("submission")
+                self.assertIsInstance(submission, dict)
+                self.assertIsInstance(submission["pull_request"], int)
+                self.assertTrue(
+                    submission["url"].startswith(crosswalk.UPSTREAM_PR_PREFIX)
+                )
 
     def test_commit_pin_mutation_is_rejected(self) -> None:
         mutated = copy.deepcopy(self.manifest)
@@ -142,6 +160,33 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
                 for e in self.errors(mutated)
             )
         )
+
+    def test_submitted_without_a_pull_request_is_rejected(self) -> None:
+        """SUBMITTED asserts an outward act; it must name what carries it.
+
+        Without a reference the status is unfalsifiable -- a reader has
+        nothing to open and nothing to disagree with.
+        """
+        mutated = copy.deepcopy(self.manifest)
+        row = next(
+            r for r in mutated["problems"]
+            if r["submission_status"] == crosswalk.SUBMITTED
+        )
+        row.pop("submission", None)
+        errors = self.errors(mutated)
+        self.assertTrue(
+            any("submission block" in e for e in errors), errors
+        )
+
+    def test_submitted_pointing_off_upstream_is_rejected(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        row = next(
+            r for r in mutated["problems"]
+            if r["submission_status"] == crosswalk.SUBMITTED
+        )
+        row["submission"]["url"] = "https://example.com/pull/1"
+        errors = self.errors(mutated)
+        self.assertTrue(any("submission.url" in e for e in errors), errors)
 
     def test_invented_submission_status_is_rejected(self) -> None:
         mutated = copy.deepcopy(self.manifest)

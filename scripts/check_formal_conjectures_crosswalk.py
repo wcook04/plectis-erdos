@@ -32,7 +32,7 @@ PROBLEM_INDEX_PATH = ROOT / "docs" / "problem_index_source.json"
 
 SCHEMA = "formal-conjectures-crosswalk/1"
 UPSTREAM_REPOSITORY = "https://github.com/google-deepmind/formal-conjectures"
-UPSTREAM_COMMIT = "398958d3964d738886bd24433918c365df4a2aab"
+UPSTREAM_COMMIT = "f2de2ed5841e2105009be778ada0c40c08980125"
 EXPECTED_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
 ADAPTER_CANDIDATES = {257, 1049}
 NOT_READY = "not_ready_to_submit"
@@ -284,6 +284,41 @@ def cross_index_errors(manifest: dict[str, Any], root: Path) -> list[str]:
                 f"{label}: submission status {status} requires a verified "
                 "machine-checked equivalence"
             )
+        errors.extend(submission_reference_errors(label, row))
+    return errors
+
+
+UPSTREAM_PR_PREFIX = "https://github.com/google-deepmind/formal-conjectures/pull/"
+
+
+def submission_reference_errors(label: str, row: Any) -> list[str]:
+    """A row claiming SUBMITTED must name the pull request that carries it.
+
+    Without this, ``submitted_upstream`` is unfalsifiable: it asserts an
+    outward act with nothing a reader can open. The status is only as good as
+    the reference, so the reference is required, must be an integer, and must
+    point at the upstream repository rather than anywhere else.
+    """
+    if row.get("submission_status") != SUBMITTED:
+        return []
+    submission = row.get("submission")
+    if not isinstance(submission, dict):
+        return [f"{label}: {SUBMITTED} requires a submission block naming the PR"]
+    errors = []
+    number = submission.get("pull_request")
+    if not isinstance(number, int):
+        errors.append(f"{label}: submission.pull_request must be an integer")
+    url = submission.get("url")
+    if not isinstance(url, str) or not url.startswith(UPSTREAM_PR_PREFIX):
+        errors.append(
+            f"{label}: submission.url must point at {UPSTREAM_PR_PREFIX}<n>"
+        )
+    elif isinstance(number, int) and url != f"{UPSTREAM_PR_PREFIX}{number}":
+        errors.append(f"{label}: submission.url does not match pull_request {number}")
+    if not submission.get("boundary"):
+        errors.append(
+            f"{label}: submission must record that offering is not acceptance"
+        )
     return errors
 
 
@@ -405,6 +440,7 @@ def crosswalk_errors(
                 f"{label}: submission status {status} requires a verified "
                 "machine-checked equivalence"
             )
+        errors.extend(submission_reference_errors(label, row))
 
         adapter = row.get("adapter", {})
         if problem in ADAPTER_CANDIDATES:
