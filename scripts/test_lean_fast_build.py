@@ -163,6 +163,52 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("Main is protected with both jobs", workflow)
         self.assertIn("If branch protection is relaxed, restore push validation", workflow)
 
+    def test_a_separate_workflow_warms_the_main_cache(self) -> None:
+        """`lean.yml` has no push trigger, so something else must warm main.
+
+        `actions/cache` scopes an entry to the ref that saved it: a branch
+        reads its own caches and the default branch's, never a sibling's. With
+        nothing running on main, nothing saves a cache there, and every branch
+        cut from main restores whatever main last managed to store. That is not
+        hypothetical -- the newest `refs/heads/main` entry sat at 2026-08-03
+        while main moved through six merges, and a one-module adapter change
+        paid 44 minutes to rebuild the corpus and 47 more to re-export the
+        dependency index.
+
+        The warm workflow is the fix, and it is only a fix while its cache key
+        still matches the one `lean.yml` restores from.
+        """
+        warm_path = fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml"
+        self.assertTrue(
+            warm_path.exists(),
+            "no workflow warms main's Lean cache; every branch will rebuild "
+            "the corpus from whatever main last stored",
+        )
+        warm = warm_path.read_text(encoding="utf-8")
+        lean = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("\n  push:\n", warm)
+        self.assertIn("- main", warm)
+
+        key = (
+            "lake-${{ runner.os }}-${{ runner.arch }}-"
+            "${{ hashFiles('lean-toolchain') }}-"
+            "${{ hashFiles('lake-manifest.json') }}"
+        )
+        self.assertIn(key, warm, "warm cache key diverged from lean.yml's")
+        self.assertIn(key, lean)
+
+        # The saved cache is only useful if it carries what the slow steps
+        # consume: project OLeans and the dependency-index receipt.
+        self.assertIn("lean_fast_build.py", warm)
+        self.assertIn("build_lean_dependency_index.py", warm)
+
+        # It must not become a second copy of the required PR checks, which is
+        # what test_ci_does_not_repeat_required_pr_checks_after_merge forbids.
+        self.assertNotIn("check_release.py", warm)
+
     def test_reachable_and_waves_limit_focused_target(self) -> None:
         graph = {
             "Root": {"Left", "Right"},
