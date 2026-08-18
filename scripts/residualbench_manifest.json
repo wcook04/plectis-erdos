@@ -1,0 +1,65 @@
+{
+  "module": "ResidualBench",
+  "provenance": {
+    "motivation": "AlphaProof Nexus (arXiv:2605.22763) failure analysis: the search 'frequently offloaded a problem's core difficulty into a single sorry within a helper lemma that reiterated the target statement in a slightly different form', and 'explicitly prompting against this behavior failed to prevent it'. Its raters score 'the plausibility of remaining goals'.",
+    "expectation_rule": "Every 'expect' below is set from mathematical ground truth about the propositions, before any probe was run. Where the derived verdict disagrees, the finding is recorded against the tactic budget; the expectation is not edited to match the output."
+  },
+  "sketches": [
+    {
+      "sketch_id": "A_notation",
+      "target": "OddSum",
+      "residuals": ["A_residual"],
+      "expect": "endpoint_equivalent",
+      "note": "n^2 written as n*n. The difficulty has not moved. Purest form of the reported failure mode."
+    },
+    {
+      "sketch_id": "B_reassociation",
+      "target": "OddSum",
+      "residuals": ["B_residual"],
+      "expect": "endpoint_equivalent",
+      "note": "Reindexed to Finset.Ico and addends swapped. Looks further from the target than A; is not."
+    },
+    {
+      "sketch_id": "C_induction",
+      "target": "OddSum",
+      "residuals": ["C_residual_base", "C_residual_step"],
+      "expect": "strict_decomposition_candidate",
+      "note": "Base case plus inductive step. Neither residual is equivalent to the target. Soundness needs induction, which is inside budget v1."
+    },
+    {
+      "sketch_id": "D_self_assumption",
+      "target": "OddSum",
+      "residuals": ["D_residual"],
+      "expect": "unknown_relation",
+      "note": "Residual is OddSum -> OddSum: a tautology, so it is equivalent to True and not to the target. The sketch establishes nothing, but it does not launder either — laundering needs the residual to imply the target back, and a tautology implies nothing. CORRECTED: this row first expected endpoint_equivalent, which was a mathematical error on the author's part, not an evaluator failure. The residual being vacuous is a real defect the current probe set does not name; distinguishing 'residual is empty' from 'budget decided nothing' needs a separate probe."
+    },
+    {
+      "sketch_id": "E_hallucinated",
+      "target": "OddSum",
+      "residuals": ["E_residual"],
+      "expect": "residual_refuted",
+      "note": "Cited as a known closed form and false (n^2 + 1). A rater judging plausibility cannot see this; the kernel refutes it at n = 0."
+    },
+    {
+      "sketch_id": "F_strengthening",
+      "target": "OddSum",
+      "residuals": ["F_residual"],
+      "expect": "strict_decomposition_candidate",
+      "note": "NEGATIVE CONTROL. General arithmetic-progression sum: implies the target at a=1,d=2; the target does not imply it. Flagging this as laundering would be the expensive error."
+    },
+    {
+      "sketch_id": "G_hyperbola",
+      "target": "DivisorCount",
+      "residuals": ["G_residual"],
+      "expect": "endpoint_equivalent",
+      "note": "Same identity with the sides exchanged. Representation change with zero reduction."
+    },
+    {
+      "sketch_id": "H_incomparable",
+      "target": "DivisorCount",
+      "residuals": ["H_residual"],
+      "expect": "unknown_relation",
+      "note": "NEGATIVE CONTROL. True, relevant, and neither implies nor follows from the target. The evaluator must abstain rather than guess."
+    }
+  ]
+}

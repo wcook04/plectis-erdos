@@ -122,7 +122,15 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # every honest sentence stops being a budget. The positional assertion in
     # `validate_human_first_contact` now pins the verb above the first heading,
     # so a future raise cannot quietly buy the old ordering back.
-    "README.md": 23_500 + 400 * INDEXED_PROBLEM_COUNT,
+    # 2026-08-18: raised to name the residual evaluator on the reader surface.
+    # The note above warned that a ceiling with four spare bytes makes the next
+    # honest sentence a release failure; this one had nine, and the sentence it
+    # refused was the one telling a proof-search reader that `hypOf%` turns "did
+    # this sketch reduce the target or rename it" into a question for the
+    # kernel. That reader is the one most likely to have the failure the tool
+    # addresses, and every route to it ran through a document they had no
+    # reason to open. Six lines, funded with slack rather than to the byte.
+    "README.md": 24_200 + 400 * INDEXED_PROBLEM_COUNT,
     "ARCHITECTURE.md": 18_000,
     "SCOPE.md": 4_000,
     "docs/ORIENTATION.md": 18_000,

@@ -150,6 +150,21 @@ jobs:
         # They are not a default target, so without an explicit build a change
         # here would break the link target silently.
         run: lake build FormalConjecturesAdapter
+      - name: Build foreign-corpus variant candidates
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # Named separately rather than left to the line above: the library and
+        # one of its modules share the name `FormalConjecturesAdapter`, so that
+        # target resolves to the module and would build this file only by
+        # accident. These are the statements offered upstream as new
+        # `variants.*` declarations, and each is a `formal_proof` link target.
+        run: lake build FormalConjecturesVariants
+      - name: Build residual-evaluation fixtures
+        if: steps.lean-inputs.outputs.changed == 'true'
+        # Ground truth for `scripts/residual_evaluator.py`.  Also not a default
+        # target: without an explicit build, the evaluator would start reporting
+        # that it could not decide anything, and the cause would look like a
+        # tactic-budget limit rather than a missing module.
+        run: lake build ResidualBench
       - name: Verify elaborated dependency index
         if: steps.lean-inputs.outputs.changed == 'true'
         # The first changed environment performs the full export and writes an
@@ -470,6 +485,13 @@ jobs:
           # unevidenced claim.  They were never run here, so a checker that had
           # stopped refusing anything would have gone unnoticed.
           python3 -m unittest scripts.test_formal_conjectures_crosswalk -v
+          # The residual evaluator issues kernel-backed vetoes, so what needs
+          # guarding is the classification itself: that restatement is judged
+          # per residual in both directions, that nothing proved stays an
+          # abstention, and that each tactic gets its own declaration because
+          # `first` does not recover past a nested elaboration error.  These
+          # checks need no Lean.
+          python3 scripts/test_residual_evaluator.py
       # GitHub renders markdown in a 1012px column and a table has no wrapping
       # escape, so a long declaration name in a cell pushes the table past the
       # column and the reader gets a horizontal scrollbar with every other

@@ -66,3 +66,19 @@ name = "ExternalVerification"
 [[lean_lib]]
 name = "FormalConjecturesAdapter"
 srcDir = "adapters"
+# `FormalConjecturesVariants` is the other direction: statements upstream does
+# not carry at all, offered as new `variants.*` declarations rather than as
+# proofs of existing holes. Same reason it is not a default target and not
+# counted as this library's own mathematics.
+globs = ["FormalConjecturesAdapter", "FormalConjecturesVariants"]
+
+# Ground-truth fixtures for semantic residual evaluation.  Eight labelled proof
+# sketches over two elementary targets, including deliberate target-restatement
+# and false-residual specimens, used by `scripts/residual_evaluator.py` to check
+# that the evaluator vetoes what it should and abstains where it must.  Not a
+# default target and not part of the mathematical corpus: these are test
+# specimens, so counting their declarations among this library's own would
+# overstate it.  CI builds this explicitly.
+[[lean_lib]]
+name = "ResidualBench"
+srcDir = "residualbench"
