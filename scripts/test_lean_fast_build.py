@@ -163,6 +163,57 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("Main is protected with both jobs", workflow)
         self.assertIn("If branch protection is relaxed, restore push validation", workflow)
 
+    def test_every_lake_library_root_is_watched_by_some_ci_gate(self) -> None:
+        """A Lean library nobody watches is a Lean library CI never compiles.
+
+        `lean.yml` decides whether to build from a pathspec, so a library whose
+        source root is absent from every gate is silently exempt: its `.lean`
+        files can stop compiling and every required check still reports green.
+        That is how `adapters/` -- the modules an upstream `formal_proof` link
+        actually resolves to -- went unbuilt while its permalinks were being
+        published.
+
+        The two gates are not interchangeable. `lean-inputs` drives the core
+        build; `external-inputs` drives the Comparator packet, and
+        `test_external_verification.py` requires that `ExternalVerification`
+        appear only in the latter. So the contract is coverage by *some* gate,
+        with that one library pinned to its own.
+        """
+        lakefile = tomllib.loads(
+            (fast.ROOT / "lakefile.toml").read_text(encoding="utf-8")
+        )
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+
+        roots = [
+            library.get("srcDir") or library["name"]
+            for library in lakefile["lean_lib"]
+        ]
+        self.assertGreaterEqual(len(roots), 6, "lakefile declares too few libraries")
+
+        core = workflow.split("- name: Detect supported-root Lean changes", 1)[1]
+        core = core.split("- name: Test pinned proof-environment lock", 1)[0]
+        external = workflow.split("id: external-inputs", 1)[1]
+        external = external.split("- name: Initialize failure-safe", 1)[0]
+
+        for root in roots:
+            with self.subTest(root=root):
+                self.assertTrue(
+                    root in core or root in external,
+                    f"lake library root {root!r} is in no CI gate, so changes "
+                    f"to it never trigger a Lean build",
+                )
+
+        self.assertNotIn(
+            "ExternalVerification",
+            core,
+            "ExternalVerification belongs to external-inputs; putting it in the "
+            "core gate makes every packet edit a full corpus rebuild and fails "
+            "test_external_verification.py",
+        )
+        self.assertIn("adapters", core)
+
     def test_a_separate_workflow_warms_the_main_cache(self) -> None:
         """`lean.yml` has no push trigger, so something else must warm main.
 
