@@ -358,3 +358,227 @@ theorem finiteErdosSum_eq (F : Finset ℕ) (b : ℕ) :
     Erdos257.finiteErdosSum F b = finiteErdosSum F b := rfl
 
 end Erdos249257.FormalConjecturesErdos257
+
+/-! ## Erdős 251, over the vocabulary upstream already owns
+
+The transfer theorem at the top of this file pairs the *displayed* prime series
+with the *normalized* gap series, so its two sides carry different denominators
+and it exposes a `Summable` premise that the corpus has since proved
+unconditionally.  Neither belongs in a statement offered upstream.
+
+Upstream already owns the gap object: `FormalConjecturesForMathlib/
+NumberTheory/PrimeGap.lean` defines `primeGap n = (n + 1).nth Nat.Prime -
+n.nth Nat.Prime`, and `FormalConjecturesUtil` re-exports it.  So unlike the 249
+and 257 blocks above, this one contributes *no* support vocabulary: the
+definition below is upstream's, reproduced here only so the restatement
+elaborates against a constant with upstream's body.
+
+`erdos_251` sums `Nat.nth Nat.Prime n / 2 ^ n` from `n = 0`, so its first term
+is `p₀ / 2⁰ = 2`; the classical one-based series is half of it.  Summation by
+parts against that zero-based convention gives the constant `4`, not `2`.
+Mutating `4` to `5`, or `primeGap n` to `primeGap (n + 1)`, is a type mismatch.
+-/
+
+/-- The prime gap: the difference between the `n+1`-th and `n`-th prime.
+Upstream's definition, reproduced verbatim. -/
+noncomputable def primeGap (n : ℕ) : ℕ := (n + 1).nth Nat.Prime - n.nth Nat.Prime
+
+namespace Erdos249257.FormalConjecturesErdos251
+
+open ErdosProblems.Erdos251
+
+/-- Summation by parts for the zero-based dyadic prime series, with the
+denominator convention `erdos_251` displays on both sides. -/
+theorem erdos_251_variants_prime_gap_identity :
+    (∑' n : ℕ, (Nat.nth Nat.Prime n : ℝ) / (2 ^ n)) =
+      4 + ∑' n : ℕ, (primeGap n : ℝ) / (2 ^ n) := by
+  -- The corpus identity pairs the displayed prime series with the *normalized*
+  -- gap series, whose denominator is `2 ^ (n + 1)`; the displayed gap term is
+  -- twice it, which absorbs the `2 *`.
+  have hterm : ∀ n : ℕ,
+      (primeGap n : ℝ) / 2 ^ n = 2 * primeGapDyadicTerm n := by
+    intro n
+    rw [primeGapDyadicTerm, primeGap, pow_succ]
+    norm_num [primeGap0, prime0]
+    ring
+  have hsum :
+      (∑' n : ℕ, (primeGap n : ℝ) / 2 ^ n) =
+        2 * ∑' n : ℕ, primeGapDyadicTerm n := by
+    simpa only [hterm] using
+      (summable_primeGapDyadicTerm.hasSum.mul_left 2).tsum_eq
+  rw [hsum]
+  simpa only [primeDisplayedDyadicTerm, prime0] using
+    tsum_primeDisplayedDyadicTerm_eq_four_add_two_primeGap
+      summable_primeDyadicTerm
+
+/-- Erdős 251 is exactly equivalent to irrationality of the corresponding
+consecutive-prime-gap dyadic series.  No summability premise: convergence
+follows inside the proof from the elementary bound `pₙ ≤ 1250 (n + 1) ^ 4`. -/
+theorem erdos_251_variants_prime_gap_transfer :
+    Irrational (∑' n : ℕ, (Nat.nth Nat.Prime n : ℝ) / (2 ^ n)) ↔
+      Irrational (∑' n : ℕ, (primeGap n : ℝ) / (2 ^ n)) := by
+  rw [erdos_251_variants_prime_gap_identity]
+  exact irrational_natCast_add_iff
+
+/-- Upstream's gap definition is this repository's. -/
+theorem primeGap_eq (n : ℕ) : primeGap n = primeGap0 n := rfl
+
+end Erdos249257.FormalConjecturesErdos251
+
+/-! ## Erdős 68, over the vocabulary upstream would own
+
+The two `erdos_68_variants_*` theorems above are the same theorem in different
+clothes.  The corpus bridge gives, for every `m ≥ 3`,
+
+  `factorialGapStepCarry m = 1  ↔  (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m`
+
+and both variants quantify cofinally, so the finitely many indices below `3`
+cannot separate them.  Only one belongs upstream.
+
+The divisibility form is the one to offer.  Its statement is purely integral —
+an exact rational prefix, its strict factorial-grid successor, and a
+divisibility test — so a reader can evaluate it without meeting the carry's
+real-valued predecessor gap, and the support surface is two definitions rather
+than five.  The carry form stays here as the internal exposition interface.
+
+Upstream's `68.lean` opens `namespace Erdos68`, which is also where this
+corpus keeps `factorialGapSeries`, so the two definitions below land in the
+namespace an upstream support file would own.
+
+`erdos_68` sums `1 / ((n + 2)! - 1)` from `n = 0`; this corpus writes the same
+series as the universal tail after cutoff `1`.  The reindexing `1 + 1 + k =
+k + 2` is the one non-definitional step below.  Mutating `Icc` to `Ico`, the
+successor's `+ 1` to `+ 2`, or the divisor `m` to `m + 1` breaks the
+restatement. -/
+
+namespace Erdos68
+
+/-- The exact rational prefix `∑ k ∈ {2, …, n}, 1 / (k! - 1)` of the
+factorial-gap series. -/
+def factorialGapPrefix (n : ℕ) : ℚ :=
+  ∑ k ∈ Finset.Icc 2 n, 1 / ((k.factorial : ℚ) - 1)
+
+/-- The first integer strictly greater than `n! * x`. -/
+def strictFacTopRat (x : ℚ) (n : ℕ) : ℤ :=
+  ⌊(n.factorial : ℚ) * x⌋ + 1
+
+end Erdos68
+
+namespace Erdos249257.FormalConjecturesErdos68
+
+open Erdos249257.ExternalVerification
+
+/-- This corpus writes the Erdős 68 series as the universal factorial-gap tail
+after cutoff `1`; upstream writes it as a sum indexed from `n = 0` with
+summand `1 / ((n + 2)! - 1)`.  They are the same real number. -/
+theorem factorialGapSeries_eq_shifted_tsum :
+    Erdos68.factorialGapSeries =
+      ∑' n : ℕ, 1 / ((n + 2).factorial - 1 : ℝ) := by
+  rw [Erdos68.factorialGapSeries, Erdos68.factorialGapTail_eq_shifted_tsum]
+  apply tsum_congr
+  intro n
+  have h : 1 + 1 + n = n + 2 := by omega
+  rw [h]
+  push_cast
+  ring
+
+/-- `Erdos68.erdos_68.variants.iff_cofinal_divisibility_miss`, over upstream's
+literal series and the two constants an upstream support file would own. -/
+theorem erdos_68_variants_iff_cofinal_divisibility_miss :
+    Irrational (∑' n : ℕ, 1 / ((n + 2).factorial - 1 : ℝ)) ↔
+      ∀ B : ℕ, ∃ m : ℕ,
+        B < m ∧
+          ¬ ((m : ℤ) ∣
+            Erdos68.strictFacTopRat (Erdos68.factorialGapPrefix m) m) := by
+  rw [← factorialGapSeries_eq_shifted_tsum]
+  exact irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses
+
+/-- The upstream prefix definition is this repository's. -/
+theorem factorialGapPrefix_eq (n : ℕ) :
+    Erdos68.factorialGapPrefix n = factorialGapPrefix n := rfl
+
+/-- The upstream strict-successor definition is this repository's. -/
+theorem strictFacTopRat_eq (x : ℚ) (n : ℕ) :
+    Erdos68.strictFacTopRat x n = strictFacTopRat x n := rfl
+
+end Erdos249257.FormalConjecturesErdos68
+
+/-! ## Erdős 257 measure, over the vocabulary upstream would own
+
+Two candidates were prepared here: `volume mersenneAchievementSet = 1`, and
+the support-restricted classification.  Only the second is offered.
+
+The first is the second's `F = ∅` case.  Taking `J = Set.univ` in the
+dichotomy below gives `F = ∅` and `volume = ((2 : ℝ≥0∞) ^ 0)⁻¹ = 1`, and this
+corpus proves `supportedMersenneAchievementSet Set.univ = mersenneAchievementSet`
+(`ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean`).  Offering both would
+present one classification as two advances and would cost three further
+definitions upstream for a strictly weaker statement.
+
+`J` is the set of **allowed** coordinates; the omitted ones are `Jᶜ`.
+Coordinate `k` carries exponent `k + 1`, so exponent `0` — whose Mersenne
+weight is `1 / (2⁰ - 1)`, zero under Lean's division convention — never
+enters.  Deleting finitely many coordinates costs one binary branch each,
+giving `2⁻|F|`; deleting infinitely many drives the measure to `0`.
+
+Six definitions are needed to state it, and none of the certificate-kernel,
+sunflower, or half-counterexample machinery appears in its import closure.
+Mutating `mersenneWeight (k + 1)` to `mersenneWeight k`, or `F.card` to
+`F.card + 1`, breaks the restatement. -/
+
+namespace Erdos257
+
+/-- The real Mersenne weight `1 / (2 ^ n - 1)`. -/
+noncomputable def mersenneWeight (n : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ n - 1)
+
+/-- The contribution of coordinate `k`, carrying exponent `k + 1`. -/
+noncomputable def mersenneDigitTerm (k : ℕ) (b : ℕ → Fin 2) : ℝ :=
+  ((b k : ℕ) : ℝ) * mersenneWeight (k + 1)
+
+/-- The Mersenne subseries value coded by a binary digit string. -/
+noncomputable def positiveMersenneDigitValue (b : ℕ → Fin 2) : ℝ :=
+  ∑' k : ℕ, mersenneDigitTerm k b
+
+/-- Binary digit strings whose nonzero coordinates lie in `J`. -/
+def SupportedMersenneDigits (J : Set ℕ) :=
+  {b : ℕ → Fin 2 // ∀ k, k ∉ J → b k = 0}
+
+/-- The Mersenne digit map restricted to the allowed coordinates `J`. -/
+noncomputable def supportedMersenneDigitValue
+    (J : Set ℕ) (b : SupportedMersenneDigits J) : ℝ :=
+  positiveMersenneDigitValue b.1
+
+/-- All Mersenne subseries sums using only coordinates from `J`. -/
+def supportedMersenneAchievementSet (J : Set ℕ) : Set ℝ :=
+  Set.range (supportedMersenneDigitValue J)
+
+end Erdos257
+
+namespace Erdos249257.FormalConjecturesErdos257
+
+open MeasureTheory
+open scoped ENNReal
+open Erdos249257.ExternalVerification
+
+/-- `Erdos257.erdos_257.variants.support_measure_dichotomy`, over the constants
+an upstream support file would own. -/
+theorem erdos_257_variants_support_measure_dichotomy (J : Set ℕ) :
+    (∃ F : Finset ℕ,
+        J = (↑F : Set ℕ)ᶜ ∧
+          volume (Erdos257.supportedMersenneAchievementSet J) =
+            ((2 : ℝ≥0∞) ^ F.card)⁻¹) ∨
+      (Jᶜ.Infinite ∧
+        volume (Erdos257.supportedMersenneAchievementSet J) = 0) :=
+  volume_supportedMersenneAchievementSet_dichotomy J
+
+/-- The upstream weight definition is this repository's. -/
+theorem mersenneWeight_eq (n : ℕ) :
+    Erdos257.mersenneWeight n = mersenneWeight n := rfl
+
+/-- The upstream support-restricted achievement set is this repository's. -/
+theorem supportedMersenneAchievementSet_eq (J : Set ℕ) :
+    Erdos257.supportedMersenneAchievementSet J =
+      supportedMersenneAchievementSet J := rfl
+
+end Erdos249257.FormalConjecturesErdos257
