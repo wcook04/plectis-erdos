@@ -185,4 +185,124 @@ theorem erdos_1041_variants_perturbed_roots_in_unit_disk
   constant_perturbation_roots_in_unitDisk f hf hdeg hsplit hρ hroots hε
     hmargin hshift
 
+/-! ## Erdős 249, over the vocabulary upstream would own
+
+The two theorems above are stated over `ExternalVerification.Statements`, this
+repository's Mathlib-only statement vocabulary.  Formal Conjectures cannot
+import that module.  A statement contributed upstream has to be built out of
+constants upstream owns, which for these two means a support file of its own --
+`totientKernelSeq` and the five index and family objects around it.
+
+Copying definitions across a repository boundary is where a `formal_proof` link
+stops being exact.  Two textually identical definitions in two repositories are
+two different constants, and a theorem about one is not, on its face, a theorem
+about the other.  Prose asserting they agree is not a proof, and not needing to
+take prose for it is the whole point of the link.
+
+What follows closes that gap the only way that is checkable.  It declares the
+same six objects a second time, in the namespace and with the bodies the
+upstream support file uses, and restates the two propositions over *those*
+constants.  The proofs are the two theorems above, accepted with no bridging
+step: the vocabularies are definitionally equal, so a proof of one proposition
+is a proof of the other, and the type checker is what says so.
+
+A reviewer can diff the block below against the upstream support file character
+by character, and read the two restatements as the ones the upstream
+declarations carry.
+
+Mutating either half breaks it, which is what makes the arrangement worth
+anything.  Changing the rank to `2 ^ e + 2`, or the channel to
+`2 ^ j * n + r + 1`, is a type mismatch rather than a warning. -/
+
 end Erdos249257.FormalConjecturesVariants
+
+open scoped Nat
+
+namespace Nat
+
+/-- The `(j, r)` dyadic channel of Euler's totient: the rational-valued
+sequence `n ↦ φ (2 ^ j * n + r)`. -/
+def totientKernelSeq (j r : ℕ) : ℕ → ℚ := fun n =>
+  φ (2 ^ j * n + r)
+
+@[simp]
+theorem totientKernelSeq_apply (j r n : ℕ) :
+    totientKernelSeq j r n = φ (2 ^ j * n + r) := rfl
+
+/-- The level-`0` channel is the totient sequence itself. -/
+theorem totientKernelSeq_zero_zero : totientKernelSeq 0 0 = fun n => (φ n : ℚ) := by
+  funext n
+  simp
+
+/-- The index of the dyadic totient channels of level at most `e`: a level
+`j ≤ e` together with a residue modulo `2 ^ j`. -/
+abbrev TotientKernelThroughLevelIndex (e : ℕ) :=
+  Σ j : Fin (e + 1), Fin (2 ^ j.val)
+
+/-- Every dyadic totient channel of level at most `e`. -/
+def totientKernelThroughLevelFamily (e : ℕ) :
+    TotientKernelThroughLevelIndex e → ℕ → ℚ
+  | ⟨j, r⟩ => totientKernelSeq j.val r.val
+
+@[simp]
+theorem totientKernelThroughLevelFamily_apply (e : ℕ)
+    (j : Fin (e + 1)) (r : Fin (2 ^ j.val)) :
+    totientKernelThroughLevelFamily e ⟨j, r⟩ = totientKernelSeq j.val r.val := rfl
+
+/-- The index of all dyadic totient channels: a level `j` together with a
+residue modulo `2 ^ j`. -/
+abbrev TotientDyadicKernelIndex := Σ j : ℕ, Fin (2 ^ j)
+
+/-- Every dyadic totient channel. -/
+def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
+  | ⟨j, r⟩ => totientKernelSeq j r.val
+
+@[simp]
+theorem fullTotientKernelFamily_apply (j : ℕ) (r : Fin (2 ^ j)) :
+    fullTotientKernelFamily ⟨j, r⟩ = totientKernelSeq j r.val := rfl
+
+/-- The index type of the odd-core description of the dyadic totient span: two
+exceptional generators together with one generator per dyadic channel. -/
+abbrev TotientOddCoreIndex := Fin 2 ⊕ Σ j : ℕ, Fin (2 ^ j)
+
+end Nat
+
+namespace Erdos249257.FormalConjecturesErdos249
+
+open Erdos249257.ExternalVerification
+
+/-- `Erdos249.erdos_249.variants.dyadic_kernel_rank`, over the constants an
+upstream support file would own. -/
+theorem erdos_249_variants_dyadic_kernel_rank (e : ℕ) (he : 1 ≤ e) :
+    Module.finrank ℚ
+        (Submodule.span ℚ (Set.range (Nat.totientKernelThroughLevelFamily e))) =
+      2 ^ e + 1 :=
+  FormalConjecturesVariants.erdos_249_variants_kernel_rank e he
+
+/-- `Erdos249.erdos_249.variants.odd_core_basis`, over the constants an upstream
+support file would own. -/
+theorem erdos_249_variants_odd_core_basis :
+    Nonempty
+      (Module.Basis Nat.TotientOddCoreIndex ℚ
+        (Submodule.span ℚ (Set.range Nat.fullTotientKernelFamily))) :=
+  FormalConjecturesVariants.erdos_249_variants_odd_core_basis
+
+/-! ### The two vocabularies agree
+
+The restatements above are accepted with no bridging step, which already says
+the vocabularies are definitionally equal.  These say it outright, so the fact
+is visible rather than implicit in a type-check. -/
+
+/-- The upstream channel definition is this repository's. -/
+theorem totientKernelSeq_eq (j r : ℕ) :
+    Nat.totientKernelSeq j r = totientKernelSeq j r := rfl
+
+/-- The upstream level-`e` family is this repository's. -/
+theorem totientKernelThroughLevelFamily_eq (e : ℕ) :
+    Nat.totientKernelThroughLevelFamily e = totientKernelThroughLevelFamily e := rfl
+
+/-- The upstream full family is this repository's. -/
+theorem fullTotientKernelFamily_eq :
+    Nat.fullTotientKernelFamily = fullTotientKernelFamily := rfl
+
+end Erdos249257.FormalConjecturesErdos249
