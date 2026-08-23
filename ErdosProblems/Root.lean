@@ -22,6 +22,9 @@ import ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
 import ErdosProblems.Erdos249.RankOneSubrankObstruction
 import ErdosProblems.Erdos249.TotientStrictPrimeEscape
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
+import ErdosProblems.Erdos251.OrderLatticeDiagonal
+import ErdosProblems.Erdos251.AffineShiftEscape
+import ErdosProblems.Erdos251.AffineCylinderCollapse
 import ErdosProblems.Erdos257.HalfCounterexampleFrontier
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
 import ErdosProblems.Erdos257.SquarefreeSupportIncidence

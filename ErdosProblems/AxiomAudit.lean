@@ -70,6 +70,11 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos251.tailShift_integral_iff_scaledTail
 #print axioms ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den
 #print axioms ErdosProblems.Erdos251.natCarryCoeff_cast
+#print axioms ErdosProblems.Erdos251.tailShift_integral_iff_orderOf_dvd
+#print axioms ErdosProblems.Erdos251.irrational_initial_iff_all_factorialDiagonal_nonintegral
+#print axioms ErdosProblems.Erdos251.ratAffinePowTwo_iff_evenIntegral
+#print axioms ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
+#print axioms ErdosProblems.Erdos251.cofinal_blockResidue_escape_iff_not_eventuallyIntegral
 #print axioms ErdosProblems.Erdos243.sylvesterDefect_mul_nextTailState
 #print axioms ErdosProblems.Erdos243.no_normalizedConstantNegative_orbit
 #print axioms ErdosProblems.Erdos243.no_scalePrimitiveConstantNegative_orbit
