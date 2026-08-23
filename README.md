@@ -47,6 +47,9 @@ kernel checks the exact formal propositions. It does not establish that a
 proposition expresses the intended mathematics, that a result is new, or that it
 matters: those remain authored judgements, and the papers state them per result.
 
+Routes: [mathematics](docs/RESULTS.md) · [verification](docs/EXTERNAL_VERIFICATION.md)
+· [systems](ARCHITECTURE.md) · `query_corpus.py --overview` / `--papers`.
+
 ## Problem papers
 
 [`docs/papers/corpus.json`](docs/papers/corpus.json) indexes them by machine.
