@@ -241,6 +241,35 @@ def validate_agent_tour() -> None:
     )
 
 
+def validate_paper_guide() -> None:
+    packet = query("--papers", "--format", "json")
+    corpus = load("docs/papers/corpus.json")
+    assert packet["kind"] == "paper_reading_guide"
+    assert packet["paper_count"] == corpus["paper_count"]
+    assert [row["paper_id"] for row in packet["papers"]] == [
+        row["paper_id"] for row in corpus["papers"]
+    ]
+    assert all(row["preferred_read_path"] for row in packet["papers"])
+    assert all(
+        row["full_text_available_in_checkout"] for row in packet["papers"]
+    )
+    assert all(row["not_authority_for"] for row in packet["papers"])
+
+    card = run("--papers", "--format", "card")
+    assert card.returncode == 0
+    assert card.stdout.startswith(
+        f"paper reading guide | papers={corpus['paper_count']} "
+    )
+    assert "papers are exposition" in card.stdout
+    assert len(card.stdout.strip().splitlines()) == corpus["paper_count"] + 2
+
+    natural = query("--ask", "which papers should I read?")
+    assert natural["kind"] == "paper_reading_guide"
+    assert [row["paper_id"] for row in natural["papers"]] == [
+        row["paper_id"] for row in packet["papers"]
+    ]
+
+
 def validate_natural_language_search() -> None:
     assert query_corpus.search_rank("exact_id", "exact_id", "body") == 0
     assert query_corpus.search_rank("exact", "exact_id", "body") == 1
@@ -585,6 +614,7 @@ def validate_claim_status_packets() -> None:
 def main() -> int:
     validate_programme_routes()
     validate_agent_tour()
+    validate_paper_guide()
     validate_natural_language_search()
     validate_indexed_declaration_lookup()
     validate_connection_query_ranking()
@@ -1447,6 +1477,7 @@ if __name__ == "__main__":
     if sys.argv[1:] == ["--programme-routes-only"]:
         validate_programme_routes()
         validate_agent_tour()
+        validate_paper_guide()
         validate_natural_language_search()
         print(
             "test_query_corpus: "

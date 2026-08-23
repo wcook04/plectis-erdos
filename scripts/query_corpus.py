@@ -3162,6 +3162,47 @@ def normalized_search_text(value: str) -> str:
     return " ".join(re.findall(r"[a-z0-9]+", folded))
 
 
+def is_repository_overview_query(query: str) -> bool:
+    """Recognise ordinary whole-repository orientation questions."""
+    text = normalized_search_text(query)
+    if re.search(r"\b(?:erdos|problem)\s*\d+\b", text) or "theorem " in text:
+        return False
+    exact_cues = (
+        "what is in this repository",
+        "what s in this repo",
+        "what does this repo contain",
+        "complete repository overview",
+        "tell me what is here",
+        "lay of the land",
+        "walk me through this codebase",
+        "what are the interesting and non trivial results",
+        "explain this project to me",
+        "what has been formalized",
+        "comprehensive tour",
+        "what is plectis lean",
+        "everything interesting and non trivial in this repo",
+    )
+    return any(cue in text for cue in exact_cues)
+
+
+def is_paper_reading_query(query: str) -> bool:
+    """Recognise requests for the complete question-first paper guide."""
+    text = normalized_search_text(query)
+    if "paper" not in text and "manuscript" not in text:
+        return False
+    return any(
+        cue in text
+        for cue in (
+            "which",
+            "what does",
+            "where",
+            "read",
+            "reading order",
+            "start",
+        )
+    )
+
+
 @lru_cache(maxsize=256)
 def matched_semantic_vocabulary(query: str) -> list[dict[str, Any]]:
     """Return the small authored translation rows activated by one question."""
@@ -5236,6 +5277,10 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     scope_boundary = corpus_scope_boundary_packet(query)
     if scope_boundary is not None:
         return scope_boundary
+    if is_repository_overview_query(query):
+        return repository_overview_packet(query)
+    if is_paper_reading_query(query):
+        return paper_reading_guide_packet()
     search = search_packet(query, max(12, min(MAX_LIMIT, limit)))
     interpretation = search["query_interpretation"]
     operator_id = interpretation["operator"]["id"]
@@ -5845,6 +5890,217 @@ def publication_architecture_packet() -> dict[str, Any]:
     }
 
 
+def companion_repository_packet() -> dict[str, Any]:
+    return {
+        "name": "plectis",
+        "repository": "https://github.com/wcook04/plectis",
+        "relationship": (
+            "Public systems and software companion, not dependency; this "
+            "mathematical checkout remains self-contained."
+        ),
+    }
+
+
+def paper_reading_guide_packet() -> dict[str, Any]:
+    """Return the complete bounded reading guide for shipped manuscripts."""
+    corpus = load("docs/papers/corpus.json")
+    contract = load("docs/publication_contract.json")
+    artifacts = []
+    for row in contract["artifacts"]:
+        source = ROOT / row["source_path"]
+        rendered = ROOT / row["rendered_path"]
+        artifacts.append(
+            {
+                "id": row["id"],
+                "artifact_class": row["artifact_class"],
+                "source_path": row["source_path"],
+                "rendered_path": row["rendered_path"],
+                "source_available_in_checkout": source.is_file(),
+                "rendered_available_in_checkout": rendered.is_file(),
+            }
+        )
+    artifact_index = {row["id"]: row for row in artifacts}
+    papers = []
+    for row in corpus["papers"]:
+        full_text_available = (ROOT / row["local_full_text"]).is_file()
+        pdf_available = (ROOT / row["local_pdf"]).is_file()
+        preferred_read_path = (
+            row["local_full_text"] if full_text_available else row["local_pdf"]
+        )
+        papers.append(
+            {
+                "paper_id": row["paper_id"],
+                "title": row["title"],
+                "question_this_paper_answers": row[
+                    "question_this_paper_answers"
+                ],
+                "publication_class": row["publication_class"],
+                "publication_state": row["publication_state"],
+                "manuscript_status": row["manuscript_status"],
+                "peer_review_state": row["peer_review_state"],
+                "preferred_read_path": preferred_read_path,
+                "full_text_available_in_checkout": full_text_available,
+                "pdf_available_in_checkout": pdf_available,
+                "local_source": row.get("local_source"),
+                "first_pass": row.get("first_pass", []),
+                "not_authority_for": row["not_authority_for"],
+            }
+        )
+    default_gateway = artifact_index["human_exposition"]
+    return {
+        "kind": "paper_reading_guide",
+        "schema_version": "erdos249257-paper-reading-guide/1",
+        "authority_posture": (
+            "generated_paper_navigation_not_Lean_proof_or_claim_status_authority"
+        ),
+        "paper_count": len(papers),
+        "papers": papers,
+        "default_gateway": default_gateway,
+        "recommended_routes": {
+            "understand_the_mathematics": [
+                {
+                    "artifact_id": "human_exposition",
+                    "reason": "Start with the retained mathematical gateway.",
+                },
+                {
+                    "path": "docs/RESULTS.md",
+                    "reason": "Read the strongest checked result and limit per problem.",
+                },
+                {
+                    "path": "docs/papers/README.md",
+                    "reason": "Choose a problem-owned note by the question it answers.",
+                },
+            ],
+            "audit_public_claims": [
+                {
+                    "artifact_id": "repository_architecture_guide",
+                    "reason": "Inspect the proof, claim, exposition, and release boundary.",
+                },
+                {
+                    "path": "docs/EXTERNAL_VERIFICATION.md",
+                    "reason": "Inspect the Comparator interface and axiom boundary.",
+                },
+            ],
+            "work_from_a_cold_clone": [
+                {
+                    "artifact_id": "agent_native_navigation_guide",
+                    "reason": "Cross from bounded navigation to a Lean proof receipt.",
+                }
+            ],
+        },
+        "registered_publication_artifacts": artifacts,
+        "clone_local_paper_index": "docs/papers/README.md",
+        "machine_inventory": "docs/papers/corpus.json",
+        "companion_repository": companion_repository_packet(),
+        "authority_order": corpus["authority_order"],
+        "verification_boundary": corpus["verification_boundary"],
+        "next": (
+            "Choose the question first; then follow the selected paper's "
+            "claim, open-proposition, declaration, or source handles."
+        ),
+    }
+
+
+def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
+    """Return complete bounded coverage for an unfamiliar public reader."""
+    orientation = load("docs/orientation.json")
+    claims = load("docs/claims.json")
+    problems = load("docs/problems.json").get("problems", [])
+    assembly = claims["machine_readable_paper"]["publication_assembly"]
+    programmes = orientation["mathematical_programmes"]
+    open_rows = orientation["remaining_open_propositions"]
+    families = assembly["contribution_families"]
+    statuses = orientation["status_taxonomy"]
+    principal_claims = orientation["principal_claims"]
+    packet = {
+        "kind": "repository_overview",
+        "schema_version": "erdos249257-repository-overview/1",
+        "authority_posture": "bounded_public_orientation_not_proof_authority",
+        "coverage_receipt": {
+            "mathematical_programme_count": len(programmes),
+            "mathematical_programme_ids": [row["id"] for row in programmes],
+            "claim_status_class_count": len(statuses),
+            "claim_status_classes": list(statuses),
+            "remaining_open_proposition_count": len(open_rows),
+            "remaining_open_proposition_ids": [row["id"] for row in open_rows],
+            "publication_family_count": len(families),
+            "publication_family_ids": [row["id"] for row in families],
+            "curated_claim_count": len(claims["claims"]),
+            "principal_claim_count": len(principal_claims),
+            "indexed_problem_count": len(problems),
+        },
+        "problem_fleet": [
+            {
+                "erdos_number": row["erdos_number"],
+                "title": row["short_title"],
+                "status": row["status"],
+                "note": row.get("note"),
+                "open_obligation_ids": [
+                    item["id"] for item in row.get("open_obligations", [])
+                ],
+            }
+            for row in problems
+        ],
+        "mathematical_programmes": [
+            {
+                "id": row["id"],
+                "title": row["title"],
+                "mathematical_focus": row["mathematical_focus"],
+                "claim_ceiling": row["claim_ceiling"],
+                "remaining_open_proposition_ids": row[
+                    "remaining_open_proposition_ids"
+                ],
+            }
+            for row in programmes
+        ],
+        "claim_status_taxonomy": statuses,
+        "principal_claims": principal_claims,
+        "remaining_open_propositions": open_rows,
+        "publication_family_index": [
+            {
+                "id": row["id"],
+                "status_summary": row["status_summary"],
+                "primary_narrative_owner": row["primary_narrative_owner"],
+                "view_decision": row["view_decision"],
+            }
+            for row in families
+        ],
+        "repository_map": [
+            {"layer": "proof", "owner": "Lean source and pinned kernel"},
+            {"layer": "public_status", "owner": "docs/claims.json"},
+            {"layer": "methodology", "owner": "docs/methodology.json"},
+            {"layer": "papers", "owner": "docs/papers/corpus.json"},
+            {"layer": "navigation", "owner": "generated docs projections"},
+            {"layer": "verification", "owner": "release checks and Comparator CI"},
+        ],
+        "answer_contract": {
+            "required_coverage": [
+                "all mathematical programmes",
+                "all claim-status classes",
+                "every exact remaining-open proposition",
+                "the complete publication-family index",
+                "the companion Plectis boundary",
+            ],
+            "weighting": (
+                "Weight reductions, reusable interfaces, and honest "
+                "obstructions above raw theorem or file volume."
+            ),
+        },
+        "companion_repository": companion_repository_packet(),
+        "next": {
+            "papers": "python3 scripts/query_corpus.py --papers",
+            "problem": "python3 scripts/query_corpus.py --search 'Erdős problem <n>'",
+            "claim": "python3 scripts/verify_claims.py --claim <claim_id>",
+        },
+    }
+    if query is not None:
+        packet["query_interpretation"] = {
+            "query": query,
+            "routed_by": "ordinary_cold_reader_phrase",
+        }
+    return packet
+
+
 def agent_tour_packet() -> dict[str, Any]:
     """Return a scale-first, corpus-derived tour for an unfamiliar agent.
 
@@ -6361,6 +6617,39 @@ def render_card(packet: dict[str, Any]) -> str:
             f"| retained_companions={len(architecture['retained_companions'])} "
             f"| families={len(packet['family_index'])}"
         )
+    if kind == "repository_overview":
+        coverage = packet["coverage_receipt"]
+        return "\n".join(
+            (
+                (
+                    "repository overview | "
+                    f"problems={coverage['indexed_problem_count']} "
+                    f"| programmes={coverage['mathematical_programme_count']} "
+                    f"| claims={coverage['curated_claim_count']} "
+                    f"| exact_open={coverage['remaining_open_proposition_count']}"
+                ),
+                (
+                    "reading rule | weight reductions, reusable interfaces, "
+                    "and honest obstructions above raw theorem or file volume"
+                ),
+                "papers | command=python3 scripts/query_corpus.py --papers",
+            )
+        )
+    if kind == "paper_reading_guide":
+        rows = [
+            f"paper reading guide | papers={packet['paper_count']} "
+            f"| index={packet['clone_local_paper_index']}",
+            (
+                "authority | papers are exposition; Lean source proves, "
+                "docs/claims.json declares public status"
+            ),
+        ]
+        rows.extend(
+            f"paper {row['paper_id']} | {row['publication_state']} "
+            f"| {row['title']} | read={row['preferred_read_path']}"
+            for row in packet["papers"]
+        )
+        return "\n".join(rows)
     if kind == "agent_corpus_tour":
         scale = packet["scale"]
         graph = packet["formal_dependency_graph"]
@@ -6450,6 +6739,8 @@ def main() -> int:
     group.add_argument("--status", metavar="CLAIM_STATUS")
     group.add_argument("--publication-family", metavar="ID")
     group.add_argument("--publication-architecture", action="store_true")
+    group.add_argument("--overview", action="store_true")
+    group.add_argument("--papers", action="store_true")
     group.add_argument("--tour", action="store_true")
     group.add_argument("--vocabulary", action="store_true")
     group.add_argument("--search", metavar="TEXT")
@@ -6470,12 +6761,21 @@ def main() -> int:
         choices=("json", "card"),
         default=None,
         help=(
-            "output encoding; bare --ask defaults to a bounded card, while all "
-            "other routes default to JSON"
+            "output encoding; bare --ask defaults to a bounded card except for "
+            "overview and paper-reading questions, whose complete packets default "
+            "to JSON; all explicit routes also default to JSON"
         ),
     )
     args = parser.parse_args()
-    output_format = args.format or ("card" if args.ask else "json")
+    if args.format:
+        output_format = args.format
+    elif args.ask and not (
+        is_repository_overview_query(args.ask)
+        or is_paper_reading_query(args.ask)
+    ):
+        output_format = "card"
+    else:
+        output_format = "json"
     if not 1 <= args.limit <= MAX_LIMIT:
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
     if not 1 <= args.depth <= 8:
@@ -6534,6 +6834,10 @@ def main() -> int:
             packet = publication_family_packet(args.publication_family)
         elif args.publication_architecture:
             packet = publication_architecture_packet()
+        elif args.overview:
+            packet = repository_overview_packet()
+        elif args.papers:
+            packet = paper_reading_guide_packet()
         elif args.tour:
             packet = agent_tour_packet()
         elif args.vocabulary:
