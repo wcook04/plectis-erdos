@@ -1,7 +1,56 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Eight open Erdős problems
+# Plectis mathematical research corpus
+
+Plectis is an AI assisted research system that moves hard questions through
+mathematical construction, formal checking, exposition and public review. This
+repository is its proof bearing public corpus for eight Erdős programmes. The
+system has produced exact reductions, conditional mechanisms, countermodels,
+route killing results and finite certificates. All eight original problems
+remain open.
+
+Publication and a green Lean build are not mathematical peer review or
+community acceptance. Each public object states its evidence class and its
+limit.
+
+## Inspect first
+
+Four source current objects give the shortest route into the mathematics:
+
+- **#68, exact endpoint.** Irrationality is equivalent to cofinal failure of one
+  strict successor divisibility test. No cofinal failure producer is known.
+- **#249, canonical reduction.** The target is equivalent to one universal
+  forced basepoint Mersenne residue gap. The universal gap supply is open.
+- **#251, coordinate theorem.** Summation by parts identifies the original
+  prime series with a weighted tail of actual consecutive prime gaps. No
+  infinite obstruction for that genuine tail is known.
+- **#257, canonical normal form.** A nonnegative rational belongs to the
+  Mersenne achievement set exactly when its canonical greedy orbit skips
+  beyond every cutoff. No such producer is proved for the unresolved targets.
+
+These are internal review candidates selected for explanatory value. The list
+does not assert novelty, importance, priority or acceptance.
+
+## Eight programme map
+
+| Programme | Current representative | Open boundary |
+|---|---|---|
+| **#68** | Cofinal carry and divisibility equivalence | Produce cofinal strict successor misses. |
+| **#243** | Conditional extinction of a bounded negative tail | Prove the actual orbit has the required lower bound. |
+| **#249** | Universal forced basepoint residue gap equivalence | Produce the strict gap for every denominator shape. |
+| **#251** | Prime series to consecutive gap tail coordinate theorem | Control the actual infinite gap tail. |
+| **#257** | Rational membership to canonical cofinal skipping | Produce cofinal skips for an unresolved target. |
+| **#269** | Rationality forces a collision of normalized tail states | Prove all scale separation or exclude integral tails. |
+| **#1041** | All degree constant factor component path theorem under review | Obtain the sharp constant and original lemniscate. |
+| **#1049** | Effective height budget for a possible auxiliary family | Construct one family meeting every budget obligation. |
+
+[Read the problem papers](#problem-papers) or open the
+[human verification route](docs/EXTERNAL_VERIFICATION.md). Detailed registries,
+commands and counts follow the mathematical map.
+
+<details>
+<summary>Repository scope and one quick verification command</summary>
 
 Lean 4 formalisation work on Erdős Problems 68, 243, 249, 251, 257, 269, 1041,
 and 1049. **All eight problems remain open. This project does not solve any of
@@ -49,6 +98,8 @@ matters: those remain authored judgements, and the papers state them per result.
 
 Routes: [mathematics](docs/RESULTS.md) · [verification](docs/EXTERNAL_VERIFICATION.md)
 · [systems](ARCHITECTURE.md) · `query_corpus.py --overview` / `--papers`.
+
+</details>
 
 ## Problem papers
 
@@ -240,12 +291,12 @@ the next edition and the refutation credited.
 
 The layer a mathematician should judge is small: 103 curated claim records in 21 contribution families, reaching Lean source through 333 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-The rest is engineering inventory. About 93% of the 153,320 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 93% of the 153,325 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
 | Lean modules (the two library roots) | 1,023 |
-| Formal results and supporting lemmas | 151,085 |
+| Formal results and supporting lemmas | 151,090 |
 | Curated claim records | 103 |
 | Contribution families | 21 |
 
