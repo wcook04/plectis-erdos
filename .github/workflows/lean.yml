@@ -370,7 +370,7 @@ jobs:
             --comparator-bin "$RUNNER_TEMP/comparator/.lake/build/bin/comparator" \
             --lean4export-bin "$RUNNER_TEMP/lean4export/.lake/build/bin/lean4export" \
             --landrun-bin "$RUNNER_TEMP/landrun"
-      - name: Enforce the #1049 programme-local packet
+      - name: "Enforce the #1049 programme-local packet"
         if: steps.external-inputs.outputs.changed == 'true'
         run: |
           test '${{ steps.comparator.outputs.local_1049_positive_exit }}' = 0
