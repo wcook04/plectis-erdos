@@ -1,25 +1,26 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Eight open Erdős problems
+# Plectis: a public frontier across eight open Erdős problems
 
-Lean 4 formalisation work on Erdős Problems 68, 243, 249, 251, 257, 269, 1041,
-and 1049. **All eight problems remain open. This project does not solve any of
-them.** Each problem paper states the checked results, the evidence boundary,
-and the exact obligation that remains. Registered formal results stay within
-Lean source; paper theorems and cited inputs are labelled separately.
+Plectis is an AI-assisted mathematical research system. This repository is its
+public proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
+1049. The work includes exact reductions, positive model families, structural
+theorems, countermodels, method boundaries, and finite certificates. **All
+eight problems remain open.** Each programme names what is checked and the
+precise mathematical step that still blocks the original question.
 
-**Check one of those claims before you read any of this.** No Lean, no build,
-no install — a clone and Python 3:
+**Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
+then inspect one proof handle. No Lean build is needed for the first check:
 
 ```bash
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-It prints the published statement, re-resolves the declaration in this
+The command prints the published statement, re-resolves the declaration in this
 checkout, names the Comparator interface that restates it and the paper that
-writes it up — or says plainly there is no such interface, which is true of
-most claims — and shows the release receipts and the exact point where the
+writes it up, or says plainly there is no such interface, which is true of
+most claims, and shows the release receipts and the exact point where the
 claim stops. `--verify-all` does the same for all 103 claims and 335 declarations in
 about a fifth of a second. [Read or run it](#read-or-run-it) has every other
 route, including the ones that do need Lean.
@@ -32,12 +33,12 @@ It assumes no Lean or project history. The
 [agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
 cold-clone route and the recorded workbench session.
 
-The repository was created for #249 and #257 and keeps that name so existing
-citations and links continue to resolve; it now covers eight problems. The
-companion [Plectis](https://github.com/wcook04/plectis) repository owns the
-runnable tooling and claims no proof authority here; the
-[website](https://wcook04.github.io/plectis/) links both. The
-[front door](https://wcook04.github.io/) lists it all.
+The repository began with #249 and #257 and keeps that name so old citations
+continue to resolve. Those are reviewed headline programmes, not the whole
+corpus. The companion [Plectis](https://github.com/wcook04/plectis) repository
+owns the runnable research tooling and claims no proof authority here. The
+[art-led public front door](https://wcook04.github.io/) explains how the system,
+the eight programmes, the papers, and this proof corpus fit together.
 
 **AI assistance and responsibility.** Large-language-model agents drafted and
 revised prose, Lean proofs, and repository software. Will Cook set the
@@ -73,18 +74,18 @@ cache, or network access.
 
 ### Public checked frontier; what remains
 
-[**#68 — factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf).
+[**#68: factorial-denominator irrationality**](erdos-68-factorial-denominator-irrationality.pdf).
 A checked hypothesis-free equivalence reduces irrationality to one integer
 divisibility test failing infinitely often. The kernel-internal denominator
 bound is `67`; the `300000` exclusion is a checked implication evaluated
 externally. Producing infinitely many failures remains open.
 
-[**#243 — reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf).
+[**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf).
 Koizumi supplies normalised vanishing for the canonical orbit. Lean then
 excludes a bounded negative part and finite normalised negative mass; the
 missing negative-part bound and the unbounded mixed-sign regime remain open.
 
-[**#249 — dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [claim-bounded reasoning surface](erdos249-totient-reasoning-surface.pdf).
+[**#249: dyadic sections of Euler's totient**](erdos-249-binary-totient-series.pdf) · [claim-bounded reasoning surface](erdos249-totient-reasoning-surface.pdf).
 For every `k≥2`, the paper derives section-span rank `k^e+1`, explicit bases,
 and the relation normal form from Martin plus elementary reductions. Lean checks
 the dyadic theorem and all-base arithmetic, residue coordinates, canonical
@@ -94,20 +95,20 @@ denominators through `79,639,646,646,701,375,323,355,774,875,831,053` and
 diagonal scales through `t=82` are excluded; no `t=83` or unbounded producer is
 proved.
 
-[**#251 — prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf).
+[**#251: prime-gap dyadic series**](erdos-251-prime-gap-dyadic-series.pdf).
 Summability and the prime-gap identity are checked unconditionally via an
 elementary polynomial prime bound; for any sequence obeying the checked tail
 recurrence, irrationality is exactly equivalent to cofinal non-integral tail
 shifts. The concrete prime-tail bridge remains open; no theorem produces the
 required cofinal adjacent small-mismatch gap pairs.
 
-[**#257 — reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [claim-bounded reasoning surface](erdos257-mersenne-reasoning-surface.pdf).
+[**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [claim-bounded reasoning surface](erdos257-mersenne-reasoning-surface.pdf).
 Lean checks full support, finite-period noncollapse, and exact restricted-set
 coding, topology, perfectness, and measure. Prime support at base `2` and
 squarefree support at power-of-two bases are cited prior results. Universal #257
 and the `1/2` and `1/21` targets remain open.
 
-[**#269 — three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf).
+[**#269: three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf).
 For every two-prime set, both the de-duplicated and repeated sums are
 transcendental, by a paper argument using Loxton–van der Poorten in the
 Bugeaud–Laurent form. **This is not first and not formalised.** Steve Fan posted
@@ -118,14 +119,14 @@ declaration asserts it. From three primes onward the problem remains open; Lean
 checks exact structure and a conditional carry consumer, not the
 rationality-to-carry bridge, cofinal escape, or unbounded denominator exclusion.
 
-[**#1041 — short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf).
+[**#1041: short connections inside polynomial lemniscates**](erdos-1041-lemniscate-newton-flow.pdf).
 Newton-flow value decay, the ray-separation consumer (connection decay is its
 hypothesis), the translation collision locus, and quantitative root-retention
 bounds are checked. The printed proof of a recent claimed spanning-tree
 decomposition has an invalid local saddle block (a proof gap, not a
 counterexample); repairing the topology and metric gluing remains open.
 
-[**#1049 — multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf).
+[**#1049: multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf).
 Lean checks construction-specific no-go theorems, four-jet cancellation, and
 direct-clearing obstructions at `3/2`, plus the elementary height inequality used
 by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality
@@ -176,7 +177,7 @@ conclusion depends on a named open condition.
 
 | Status | Result |
 |---|---|
-| **formalised here** | For every integer `b ≥ 2`, the full-support series `∑ 1/(bⁿ - 1)` is irrational — Erdős (1948), a checked rendering rather than a new result. Several named infinite-support families are also formalised; this does not cover every infinite support. |
+| **formalised here** | For every integer `b ≥ 2`, the full-support series `∑ 1/(bⁿ - 1)` is irrational; Erdős (1948) is a checked rendering rather than a new result. Several named infinite-support families are also formalised; this does not cover every infinite support. |
 | **formalised here** | The base-2 Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level. |
 | **proved here** | For the #257 test value `1/2`, achievement-set membership is equivalent to infinitely many greedy skips and would produce an infinite support of rational sum, refuting universal #257. Under the last-skip schema's hypotheses (a rank floor, a carry condition, and a strict middle-cell inequality), the upper branch and the middle coordinate `-3` are impossible. |
 | **conditional reduction** | Within that same last-skip contradiction schema, the two still-unexcluded middle coordinates, `-2` and `-1`, would also be ruled out if one current contribution were larger than the sum of all later possible contributions. That inequality is not proved. |
@@ -228,8 +229,9 @@ attempted argument class is stopped by a stated bound, recorded with what it
 does not rule out.
 
 [`SCOPE.md`](SCOPE.md) is the short boundary statement. The exact expert
-handoffs—what input is requested, current guess, alternatives, discriminating
-evidence, checked consumer, and endpoint-or-counterexample boundary—are in
+handoffs, including the requested input, current guess, alternatives,
+discriminating evidence, checked consumer, and endpoint-or-counterexample
+boundary, are in
 [RESULTS](docs/RESULTS.md#exact-questions-for-a-human-expert) and
 `python3 scripts/query_expert_handoffs.py`. A refuted route is withdrawn in
 the next edition and the refutation credited.
@@ -262,7 +264,7 @@ These are navigation counts, not novelty claims.
   `git clone --depth 1` checkout. Run it with no
   argument for the environment check, which exits `2` and prints
   `git fetch --unshallow` when a truncated history cannot reach the gates that
-  read pinned commits — never `1`, so a shallow clone can never be misread as a
+  read pinned commits; never `1`, so a shallow clone can never be misread as a
   claim that failed. `check_release.py` remains the authority for locators.
 - **Mathematician:** use the top reading route, then follow one result from
   [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers are the
@@ -293,7 +295,7 @@ These are navigation counts, not novelty claims.
 - **Building proof search:** `hypOf%` lifts an unresolved hypothesis out of
   binder position into a `Prop`, so whether a sketch's remaining obligation
   differs from the target it started from becomes a question for the kernel
-  rather than for a rater — the failure
+  rather than for a rater; the failure
   [AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
   not prevent. [Deciding whether a sketch reduced its target or renamed
   it](docs/RESIDUAL_PROGRESS.md) has the evaluator, its eight labelled fixtures,
@@ -345,7 +347,7 @@ The source has five reader-facing layers:
   necessary conditions, not the universal #257 theorem.
 - **Navigation.** The atlas finds every declaration and import. Selected
   semantic meanings carry scoped reviews (`python3 scripts/query_semantic.py
-  semantic-reviews`)—not human, novelty, or proof authority. The theory lab
+  semantic-reviews`), not human, novelty, or proof authority. The theory lab
   adds nine mechanisms, nine transfer capsules, and three failure receipts;
   four holdouts have no results, so no measured transfer is claimed.
 - **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded

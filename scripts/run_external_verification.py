@@ -18,6 +18,10 @@ EXPECTED_MISMATCH = (
     "Challenge and solution theorem statement do not match: "
     "'Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq'"
 )
+EXPECTED_1049_MISMATCH = (
+    "Challenge and solution theorem statement do not match: "
+    "'Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight'"
+)
 
 
 def digest(path: Path | None) -> str | None:
@@ -30,8 +34,10 @@ def git(*args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
 
 
-def is_expected_negative_rejection(exit_code: int, log_text: str) -> bool:
-    return exit_code != 0 and EXPECTED_MISMATCH in log_text
+def is_expected_negative_rejection(
+    exit_code: int, log_text: str, expected: str = EXPECTED_MISMATCH
+) -> bool:
+    return exit_code != 0 and expected in log_text
 
 
 def main() -> int:
@@ -42,6 +48,10 @@ def main() -> int:
     parser.add_argument("--negative-exit", type=int, default=-999)
     parser.add_argument("--positive-log", type=Path)
     parser.add_argument("--negative-log", type=Path)
+    parser.add_argument("--local-1049-positive-exit", type=int, default=-999)
+    parser.add_argument("--local-1049-negative-exit", type=int, default=-999)
+    parser.add_argument("--local-1049-positive-log", type=Path)
+    parser.add_argument("--local-1049-negative-log", type=Path)
     parser.add_argument("--comparator-rev")
     parser.add_argument("--lean4export-rev")
     parser.add_argument("--landrun-rev")
@@ -89,6 +99,17 @@ def main() -> int:
     negative_semantic_rejection = is_expected_negative_rejection(
         args.negative_exit, negative_text
     )
+    local_1049_negative_text = (
+        args.local_1049_negative_log.read_text(encoding="utf-8", errors="replace")
+        if args.local_1049_negative_log is not None
+        and args.local_1049_negative_log.is_file()
+        else ""
+    )
+    local_1049_negative_semantic_rejection = is_expected_negative_rejection(
+        args.local_1049_negative_exit,
+        local_1049_negative_text,
+        EXPECTED_1049_MISMATCH,
+    )
     all_statuses_open = all(
         row["status"] == "open" for row in packet["problem_index"]["problems"]
     )
@@ -96,6 +117,8 @@ def main() -> int:
         projection_check == 0
         and args.positive_exit == 0
         and negative_semantic_rejection
+        and args.local_1049_positive_exit == 0
+        and local_1049_negative_semantic_rejection
         and pins_match
         and all(binary_digests.values())
         and expected_commit_matches
@@ -153,6 +176,21 @@ def main() -> int:
             "negative_log_digest": digest(args.negative_log),
             "negative_fixture_rejected": negative_semantic_rejection,
             "negative_expected_diagnostic": EXPECTED_MISMATCH,
+        },
+        "programme_local_checks": {
+            "erdos_1049_numerical_height": {
+                "headline_interface_count_changed": False,
+                "config": "verification/comparator-1049-numerical-height.json",
+                "config_digest": digest(
+                    ROOT / "verification/comparator-1049-numerical-height.json"
+                ),
+                "positive_comparator_exit": args.local_1049_positive_exit,
+                "positive_log_digest": digest(args.local_1049_positive_log),
+                "negative_mismatch_comparator_exit": args.local_1049_negative_exit,
+                "negative_log_digest": digest(args.local_1049_negative_log),
+                "negative_fixture_rejected": local_1049_negative_semantic_rejection,
+                "negative_expected_diagnostic": EXPECTED_1049_MISMATCH,
+            }
         },
     }
     output = args.output if args.output.is_absolute() else ROOT / args.output

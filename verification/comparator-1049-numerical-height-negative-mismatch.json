@@ -1,0 +1,13 @@
+{
+  "challenge_module": "ExternalVerification1049.Challenge",
+  "solution_module": "ExternalVerification1049.NegativeSolution",
+  "theorem_names": [
+    "Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": false
+}
