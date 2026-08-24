@@ -2541,6 +2541,32 @@ theorem rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
   · exact mem_mersenneAchievementSet_of_greedySkippedSupport_infinite
       (by exact_mod_cast hq)
 
+/-- A greedy skipped support is infinite exactly when it contains skipped
+ranks beyond every cutoff. -/
+theorem greedyMersenneSkippedSupport_infinite_iff_cofinal_skips (x : ℝ) :
+    (greedyMersenneSkippedSupport x).Infinite ↔
+      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+        ¬ mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n := by
+  constructor
+  · intro hinfinite K
+    have hexists : ∃ m : ℕ, K + 1 ≤ m ∧
+        m ∈ greedyMersenneSkippedSupport x := by
+      by_contra hK
+      apply hinfinite
+      refine (Set.finite_Iio (K + 1)).subset ?_
+      intro m hm
+      by_contra hmlt
+      exact hK ⟨m, Nat.le_of_not_gt hmlt, hm⟩
+    obtain ⟨m, hKm, hm⟩ := hexists
+    obtain ⟨n, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : m ≠ 0)
+    exact ⟨n, by omega,
+      (succ_mem_greedyMersenneSkippedSupport_iff x n).mp hm⟩
+  · intro hcofinal hfinite
+    obtain ⟨B, hB⟩ := hfinite.bddAbove
+    obtain ⟨n, hBn, hn⟩ := hcofinal B
+    have hnB := hB ((succ_mem_greedyMersenneSkippedSupport_iff x n).mpr hn)
+    omega
+
 /-- A nonnegative rational target belongs to the Mersenne achievement set
 exactly when its canonical greedy orbit skips at arbitrarily late ranks. -/
 theorem rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips
