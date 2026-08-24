@@ -6,9 +6,8 @@
 Plectis is an AI-assisted mathematical research system. This is its public
 proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
 It contains exact reductions, model families, structural theorems,
-countermodels, method boundaries, and certificates. **All eight problems
-remain open.** Each programme states what is checked and what still blocks the
-question.
+countermodels, method boundaries, and certificates. **All eight problems remain open.**
+Each programme states what is checked and what still blocks the question.
 
 **Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
 then inspect one proof handle. No Lean build is needed for the first check:
