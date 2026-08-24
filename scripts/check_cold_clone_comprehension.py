@@ -418,133 +418,43 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
     within one group permit harmless wording changes; satisfying one task with
     tokens scattered across three documents is deliberately impossible.
     """
-    open_rows = {row["id"]: row for row in summary["remaining_open_propositions"]}
     return {
         "identity_and_public_boundary": [
-            ["self-contained public"],
             ["Plectis"],
-            ["not an entrypoint into any private development system"],
+            ["AI assisted research system", "AI-assisted research system"],
+            ["proof bearing public corpus", "proof-bearing public corpus"],
+            ["All eight original problems remain open", "All eight problems remain open"],
         ],
-        "state_problem_frontier": [
-            ["All eight problems remain open"],
-            ["S = ∑ φ(n)/2ⁿ"],
-            ["∑_{n∈A} 1/(2ⁿ - 1)"],
-            ["every infinite", "for every infinite"],
+        "show_scarce_attention_first": [
+            ["## Inspect first"],
+            ["#68, exact endpoint"],
+            ["#249, canonical reduction"],
+            ["#251, coordinate theorem"],
+            ["#257, canonical normal form"],
+            ["does not assert novelty", "not claims of novelty"],
         ],
-        "recover_blank_slate_problem_card": [
+        "recover_eight_problem_map": [
+            ["## Eight programme map"],
             ["#68"],
-            ["n!−1", "n!-1"],
             ["#243"],
-            ["rapidly growing"],
-            ["Sylvester recurrence"],
             ["#249"],
-            ["∑ φ(n)/2ⁿ"],
             ["#251"],
-            ["∑ p_n/2ⁿ"],
             ["#257"],
-            ["every infinite"],
             ["#269"],
-            ["running lcms"],
             ["#1041"],
-            ["lemniscate"],
             ["#1049"],
-            ["rational bases"],
-            ["no query is required"],
-            ["does not require `ai_workflow`", "does not require ai_workflow"],
         ],
-        "distinguish_release_source_and_authority": [
-            ["latest tagged release and citation anchor"],
-            ["formal-source checkpoint"],
-            ["this release ships", "not a new tagged release"],
-            [PROOF_AUTHORITY],
-        ],
-        "recover_headline_statuses": [
-            ["formalised here"],
-            ["conditional reduction"],
-            ["verified finite instance"],
-            ["does not show that the actual orbit avoids", "does not show the actual orbit avoids"],
-            ["does not prove successful cases beyond every fixed cutoff"],
-        ],
-        "recover_farey_boundary": [
-            ["classical Farey/mediant bound"],
-            ["Farey's method supplies the number directly"],
-            ["numerical delta `0`", "numerical delta 0"],
-            ["exactly the Farey bound, not an improvement"],
-        ],
-        "recover_breadth_beyond_headlines": [
-            ["eventually-periodic nonnegative weighted irrationality"],
-            ["signed irrational-or-base-terminating dichotomy"],
-            [
-                "five binary-carry criteria/consequences",
-                "five binary-carry criteria or consequences",
-            ],
-            ["two scoped #249 no-go countermodels"],
-        ],
-        "recover_independent_exact_packages": [
-            ["fair-coin coprimality", "P(gcd(X,Y)=1)"],
-            ["squared-Lambert gcd moments"],
-            ["Stern–Brocot cylinder law"],
-            ["(2/3)^d"],
-            ["Fibonacci/continuant run stability"],
-            ["F_{r+3}"],
-            ["tempered binary tail rigidity"],
-            ["exact Möbius-shadow denominator"],
-            ["scalar-localisation height obstruction"],
-        ],
-        "recover_scale_and_assembly": [
-            ["Lean modules"],
-            ["Formal results and supporting lemmas"],
-            ["Curated claim records"],
-            ["Contribution families"],
-            ["navigation counts, not novelty claims"],
-        ],
-        "name_exact_open_frontier": [
-            [open_rows["remaining_open.erdos_249_irrationality"]["statement"],
-             "Prove that `S = ∑ φ(n)/2ⁿ` is irrational"],
-            [open_rows["remaining_open.unbounded_certificate_supply"]["statement"],
-             "Produce the unbounded certificate supply"],
-            [open_rows["remaining_open.universal_257_all_infinite_supports"]["statement"],
-             "Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite"],
-        ],
-        "route_exact_expert_handoffs": [
-            ["exact expert handoffs"],
-            ["what input is requested"],
-            ["current guess"],
-            ["alternatives"],
-            ["discriminating evidence"],
-            ["checked consumer"],
-            ["endpoint-or-counterexample boundary"],
-            ["python3 scripts/query_expert_handoffs.py"],
+        "route_human_review": [
+            ["Read the problem papers"],
+            ["human verification route"],
+            ["python3 scripts/verify_claims.py --claim"],
+            ["Comparator checks propositions only"],
         ],
         "choose_a_next_read": [
-            # The anchor is "a route into the manuscripts exists", not the name
-            # of one manuscript. This read ["Exposition PDF"] alone, which is
-            # the label of the joint #249/#257 paper -- the single manuscript
-            # docs/papers/corpus.json records as retired, whose "problem-specific
-            # successors are the active reader routes". So the gate required the
-            # reader's next-read bullet to name the superseded paper, and
-            # naming the live per-problem route instead failed it.
-            ["per-problem papers", "Exposition PDF", "joint PDF", "docs/papers"],
-            ["AGENTS.md"],
-            ["docs/orientation.json"],
-            ["docs/SOURCE_MAP.md"],
-        ],
-        "navigate_without_compiling": [
-            ["Whole-corpus agent navigation"],
-            ["without a Lean build"],
-            ["--tour --format card"],
-            ["corpus scale"],
-            ["mathematical map"],
-            ["canonical eight-problem map"],
-            ["problem-registry"],
-            [
-                "distinct reviewed #249/#257 open-proposition frontier",
-                "exact open frontier",
-            ],
-            ["agent_native_corpus_navigation"],
-            ["every indexed declaration"],
-            ["exact dependencies for both loaded roots"],
-            ["navigation projections, not proof authority"],
+            ["## Problem papers"],
+            ["docs/papers/corpus.json"],
+            ["## What remains open"],
+            ["## Read or run it"],
         ],
     }
 

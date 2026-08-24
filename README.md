@@ -6,7 +6,7 @@
 Plectis is an AI assisted research system that moves hard questions through
 mathematical construction, formal checking, exposition and public review. This
 repository is its proof bearing public corpus for eight Erdős programmes. The
-system has produced exact reductions, conditional mechanisms, countermodels,
+system has produced exact reductions, conditional reductions, countermodels,
 route killing results and finite certificates. All eight original problems
 remain open.
 
