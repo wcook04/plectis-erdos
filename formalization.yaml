@@ -862,7 +862,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:a91eeb3ecf19c4a287ea987d6913500dd2b612d40a3557e75947ccfe6ba4aa17"
+  problem_index_digest: "sha256:54de46e58704ef2f12ba37bfee3178ca11e0c7bb11a5ac8bf928c1a1723760a3"
   problem_count: 8
   problems:
     - id: "erdos_68"

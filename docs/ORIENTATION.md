@@ -60,8 +60,8 @@ counted as formal source, never as separate mathematical claims.
 | Surface | Count |
 |---|---:|
 | Lean modules | 1,023 |
-| Lean declarations | 153,320 |
-| Theorem-like declarations | 151,085 |
+| Lean declarations | 153,325 |
+| Theorem-like declarations | 151,090 |
 | Manifest-marked generated declarations (a floor, not the share) | 8,171 |
 | Principal claim links | 333 |
 

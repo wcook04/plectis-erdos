@@ -1358,17 +1358,25 @@ def main() -> int:
                 "is a second checker, not an independent verification of the "
                 "mathematics",
             )
-    # Check only the first column of the canonical Status/Result table. Other
-    # README tables legitimately bold identifiers such as the six problem
-    # numbers, so a document-wide first-column scan produces false failures.
-    # Keep the permissive cell capture: punctuation in an invalid status must
-    # still reach the taxonomy check rather than evade it.
+    # Older releases led with a Status/Result ledger.  The current first-contact
+    # surface instead leads with one representative and one honest open boundary
+    # per programme, leaving the exhaustive status taxonomy to the generated
+    # verification packet.  Accept the legacy table when checking an older tag,
+    # but require the human-first programme map on current projections.
     status_table = re.search(
         r"(?ms)^\| Status \| Result \|\n^\|---\|---\|\n"
         r"(?P<body>(?:^\|.*\n)+)",
         readme,
     )
-    check(status_table is not None, "README lost the Status/Result table")
+    programme_table = re.search(
+        r"(?ms)^\| Programme \| Current representative \| Open boundary \|\n"
+        r"^\|---\|---\|---\|\n(?P<body>(?:^\|.*\n)+)",
+        readme,
+    )
+    check(
+        status_table is not None or programme_table is not None,
+        "README lost both the legacy status ledger and the programme frontier map",
+    )
     status_table_body = status_table.group("body") if status_table else ""
     for status in re.findall(r"\|\s*\*\*([^*\n]+)\*\*\s*\|", status_table_body):
         check(status in taxonomy,

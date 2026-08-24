@@ -896,7 +896,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:1c4be29d54b0043c1fb3c93e64aa0042976df04a4468ea34c2b2e7d643314272",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:a91eeb3ecf19c4a287ea987d6913500dd2b612d40a3557e75947ccfe6ba4aa17",
+    "projection_digest": "sha256:54de46e58704ef2f12ba37bfee3178ca11e0c7bb11a5ac8bf928c1a1723760a3",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1511,11 +1511,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 7,
+          "family_count": 8,
           "by_class": {
             "not_applicable": 1,
             "not_selected": 2,
-            "targeted": 4
+            "targeted": 5
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
@@ -1523,6 +1523,7 @@
             "known_irrational_supports": "targeted_full_support_representative",
             "squarefree_support": "not_applicable_to_external_irrationality_input",
             "achievement_set_geometry": "targeted_measure_theorem",
+            "canonical_greedy_membership": "targeted_bundled_equivalence",
             "restricted_achievement_sets": "targeted_measure_dichotomy",
             "half_and_twenty_one_frontiers": "not_selected_deep_greedy_state_vocabulary"
           }
