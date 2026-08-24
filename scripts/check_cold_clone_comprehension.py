@@ -714,8 +714,10 @@ def validate_human_first_contact(
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     section_order = (
+        "## Inspect first",
+        "## Eight programme map",
         "## Problem papers",
-        "## What the formal source establishes",
+        "## External verification",
         "## What remains open",
         "## Read or run it",
     )
@@ -725,12 +727,12 @@ def validate_human_first_contact(
     )
     assert positions == sorted(positions), "README first-contact sections are out of order"
 
-    # The four sections above are the mathematician's reading order and they are
-    # correct as an order. What they cannot do is answer "is any of this real?"
+    # The sections above are the mathematician's progressive-disclosure order.
+    # What they cannot do is answer "is any of this real?"
     # for someone who has not yet decided to read. Until 2026-08-16 the first
     # command in this README appeared at byte 15,345 — after the eight problem
     # papers, the external-verification account, the formal-results table, the
-    # open-wall section and the corpus census — so every route that returned a
+    # open-wall section and the corpus census, so every route that returned a
     # result was priced behind four screens of inventory.
     #
     # Positional, not keyword: `verify_claims.py` was already named under "Read
