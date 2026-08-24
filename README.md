@@ -52,11 +52,11 @@ commands and counts follow the mathematical map.
 <details>
 <summary>Repository scope and one quick verification command</summary>
 
-Lean 4 formalisation work on Erdős Problems 68, 243, 249, 251, 257, 269, 1041,
-and 1049. **All eight problems remain open. This project does not solve any of
-them.** Each problem paper states the checked results, the evidence boundary,
-and the exact obligation that remains. Registered formal results stay within
-Lean source; paper theorems and cited inputs are labelled separately.
+Plectis is an AI-assisted mathematical research system. Its public
+proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
+It contains exact reductions, model families, theorems,
+countermodels, method boundaries, and certificates. **It does not solve them. All eight problems remain open.**
+Each programme states what is checked and what still blocks the question.
 
 **Check one of those claims before you read any of this.** No Lean, no build,
 no install: a clone and Python 3:
@@ -81,12 +81,12 @@ It assumes no Lean or project history. The
 [agent-navigation paper](cold-clone-to-proof-receipt.pdf) audits the
 cold-clone route and the recorded workbench session.
 
-The repository was created for #249 and #257 and keeps that name so existing
-citations and links continue to resolve; it now covers eight problems. The
-companion [Plectis](https://github.com/wcook04/plectis) repository owns the
-runnable tooling and claims no proof authority here; the
-[website](https://wcook04.github.io/plectis/) links both. The
-[front door](https://wcook04.github.io/) lists it all.
+The repository began with #249 and #257 and keeps that name so old citations
+continue to resolve. Those are reviewed headline programmes, not the whole
+corpus. The companion [Plectis](https://github.com/wcook04/plectis) repository
+owns the runnable research tooling and claims no proof authority here. The
+[art-led public front door](https://wcook04.github.io/) explains how the system,
+the eight programmes, the papers, and this proof corpus fit together.
 
 **AI assistance and responsibility.** Large-language-model agents drafted and
 revised prose, Lean proofs, and repository software. Will Cook set the
@@ -279,8 +279,9 @@ attempted argument class is stopped by a stated bound, recorded with what it
 does not rule out.
 
 [`SCOPE.md`](SCOPE.md) is the short boundary statement. The exact expert
-handoffs,what input is requested, current guess, alternatives, discriminating
-evidence, checked consumer, and endpoint-or-counterexample boundary,are in
+handoffs state what input is requested, current guess, alternatives,
+discriminating evidence, checked consumer, and endpoint-or-counterexample
+boundary. See
 [RESULTS](docs/RESULTS.md#exact-questions-for-a-human-expert) and
 `python3 scripts/query_expert_handoffs.py`. A refuted route is withdrawn in
 the next edition and the refutation credited.
@@ -313,7 +314,7 @@ These are navigation counts, not novelty claims.
   `git clone --depth 1` checkout. Run it with no
   argument for the environment check, which exits `2` and prints
   `git fetch --unshallow` when a truncated history cannot reach the gates that
-  read pinned commits: never `1`, so a shallow clone can never be misread as a
+  read pinned commits; never `1`, so a shallow clone can never be misread as a
   claim that failed. `check_release.py` remains the authority for locators.
 - **Mathematician:** use the top reading route, then follow one result from
   [SOURCE MAP](docs/SOURCE_MAP.md) into Lean. The per-problem papers are the
@@ -344,7 +345,7 @@ These are navigation counts, not novelty claims.
 - **Building proof search:** `hypOf%` lifts an unresolved hypothesis out of
   binder position into a `Prop`, so whether a sketch's remaining obligation
   differs from the target it started from becomes a question for the kernel
-  rather than for a rater: the failure
+  rather than for a rater; the failure
   [AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
   not prevent. [Deciding whether a sketch reduced its target or renamed
   it](docs/RESIDUAL_PROGRESS.md) has the evaluator, its eight labelled fixtures,
@@ -396,7 +397,7 @@ The source has five reader-facing layers:
   necessary conditions, not the universal #257 theorem.
 - **Navigation.** The atlas finds every declaration and import. Selected
   semantic meanings carry scoped reviews (`python3 scripts/query_semantic.py
-  semantic-reviews`),not human, novelty, or proof authority. The theory lab
+  semantic-reviews`), not human, novelty, or proof authority. The theory lab
   adds nine mechanisms, nine transfer capsules, and three failure receipts;
   four holdouts have no results, so no measured transfer is claimed.
 - **Problem-owned expansion.** `ErdosProblems/Erdos<N>/` contains bounded

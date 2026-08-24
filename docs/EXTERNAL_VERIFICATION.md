@@ -28,16 +28,20 @@ Read the [problem papers](../README.md#problem-papers) for mathematical motivati
 
 **Scope.** Eight public problem programmes. “Checked frontier” states what has been verified; “Open boundary” states what remains unresolved. Programme dossiers are projected from `docs/problems.json` and `docs/claims.json::external_verification_packet`; they are a navigation disclosure, not a promotion of unregistered expansion declarations into reviewed claims.
 
-**Comparator.** Comparator is a second checker, maintained in the `leanprover` organisation and pinned to a fixed revision, run here alongside the Lean kernel. Selected propositions are declared a second time, without their proofs, in `ExternalVerification/Statements.lean`. Comparator checks the proof-bearing module against those separate declarations and against a fixed axiom budget of `propext`, `Quot.sound`, and `Classical.choice`; an adversarial fixture that alters one statement must be rejected. It checks propositions only, and assesses no paper deduction, cited theorem, external computation, intended meaning, novelty, or significance. Per-interface detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** Twenty selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 ---
 
 <a id="programme-68"></a>
 ## #68: Factorial-denominator series
 
+**Question.** Is the series sum_{n >= 2} 1/(n! - 1) irrational?
+
 **Checked frontier.** The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally.
 
 **Open boundary.** Irrationality of the factorial-denominator series.
+
+**Read.** [Programme paper](../erdos-68-factorial-denominator-irrationality.pdf) · [Lean source](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -103,9 +107,13 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-243"></a>
 ## #243: Reciprocal-tail rigidity near the Sylvester recurrence
 
+**Question.** Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?
+
 **Checked frontier.** The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.
 
 **Open boundary.** The unrestricted problem.
+
+**Read.** [Programme paper](../erdos-243-reciprocal-tail-rigidity.pdf) · [Lean source](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -171,9 +179,13 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-249"></a>
 ## #249: Binary totient series
 
+**Question.** Is the binary Lambert series sum phi(n)/2^n irrational?
+
 **Checked frontier.** Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.
 
 **Open boundary.** The strict prime-tail orbit gap, which is the unproved producer consumed by the conditional endpoint.
+
+**Read.** [Programme paper](../erdos-249-binary-totient-series.pdf) · [Lean source](../ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -263,9 +275,13 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-251"></a>
 ## #251: Prime-gap dyadic series
 
+**Question.** Is the dyadic series sum p_n/2^n over consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?
+
 **Checked frontier.** The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise.
 
 **Open boundary.** The target irrationality.
+
+**Read.** [Programme paper](../erdos-251-prime-gap-dyadic-series.pdf) · [Lean source](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -331,9 +347,13 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-257"></a>
 ## #257: Reciprocal sums over infinite exponent supports
 
+**Question.** Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?
+
 **Checked frontier.** For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff.
 
 **Open boundary.** Cofinal actual skips for 1/2, 1/21, or any other unresolved target; the universal irrationality problem also remains open.
+
+**Read.** [Programme paper](../erdos-257-mersenne-support-subseries.pdf) · [Lean source](../ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -423,9 +443,13 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-269"></a>
 ## #269: Three-prime running least common multiples
 
+**Question.** For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.
+
 **Checked frontier.** That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.
 
 **Open boundary.** Irrationality or transcendence in any three-prime case.
+
+**Read.** [Programme paper](../erdos-269-three-prime-running-lcm.pdf) · [Lean source](../ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean)
 
 <details>
 <summary>Source and priority note</summary>
@@ -514,9 +538,13 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-1041"></a>
 ## #1041: Short connections inside polynomial lemniscates
 
+**Question.** For a monic polynomial whose roots lie in the open unit disc, must two roots be joinable by a curve of length less than two inside the open unit lemniscate?
+
 **Checked frontier.** Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.
 
 **Open boundary.** Erdos Problem 1041 in unrestricted degree.
+
+**Read.** [Programme paper](../erdos-1041-lemniscate-newton-flow.pdf) · [Lean source](../ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
@@ -590,9 +618,13 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-1049"></a>
 ## #1049: Lambert-type series at rational bases
 
+**Question.** For which rational bases is the corresponding series irrational? The smallest resistant explicit base is three halves.
+
 **Checked frontier.** That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
 
 **Open boundary.** Irrationality at base three halves, or for any rational base.
+
+**Read.** [Programme paper](../erdos-1049-rational-base-lambert.pdf) · [Lean source](../ErdosProblems/Erdos1049/RationalBaseLambert.lean)
 
 <details>
 <summary>Representative checked declaration</summary>
