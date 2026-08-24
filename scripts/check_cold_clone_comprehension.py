@@ -738,19 +738,19 @@ def validate_human_first_contact(
     # Positional, not keyword: `verify_claims.py` was already named under "Read
     # or run it" when this was written, and being named there did not put it in
     # front of anyone. The contract is that the cheapest runnable verb precedes
-    # the first section heading, i.e. it is inside the opening a reader always
-    # sees. Raising a byte budget to fund a new section must not quietly buy
-    # that back.
-    first_section = readme_prefix.find("\n## ")
+    # the detailed problem-paper inventory. A short thesis, a scarce-attention
+    # shortlist and the eight-programme map may come first because they answer
+    # what the corpus is and where a mathematician should begin.
+    first_inventory = readme_prefix.find("\n## Problem papers")
     first_command = readme_prefix.find("python3 scripts/")
     assert first_command >= 0, (
         "README first-contact surface no longer contains a runnable command"
     )
-    assert first_section >= 0, "README first-contact surface lost its section headings"
-    assert first_command < first_section, (
+    assert first_inventory >= 0, "README first-contact surface lost its paper inventory"
+    assert first_command < first_inventory, (
         f"README puts its first runnable command at byte {first_command}, below the "
-        f"first section heading at byte {first_section}; a reader deciding whether "
-        "this repository is worth their time meets an inventory before they meet "
+        f"paper inventory at byte {first_inventory}; a reader deciding whether "
+        "this repository is worth their time meets detailed inventory before "
         "anything they can run"
     )
     validate_first_command_keeps_its_promise(readme_prefix)

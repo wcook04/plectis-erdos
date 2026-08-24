@@ -11,10 +11,10 @@ Plectis is an AI-assisted mathematical research system. This repository is its p
 
 These four public objects are the shortest route into the mathematics. They are internal review priorities, not claims of novelty, importance, peer review, or community acceptance.
 
-- **#68, the exact carry endpoint.** Irrationality is equivalent to cofinal strict-successor divisibility failure. The missing step is the cofinal arithmetic producer.
-- **#249, the universal residue-gap endpoint.** Irrationality is equivalent to one forced-basepoint Mersenne residue-gap supply. The universal strict-gap producer remains open.
-- **#251, summation by parts with the endpoint retained.** Lean moves the prime series exactly to its consecutive-gap tail. No theorem yet controls the actual tail strongly enough.
-- **#257, canonical greedy membership.** For nonnegative rational targets, membership is equivalent to actual skips beyond every cutoff. No unresolved target has a proved cofinal-skip producer.
+- [**#68, the exact carry endpoint.**](#programme-68) Irrationality is equivalent to cofinal strict-successor divisibility failure. The missing step is the cofinal arithmetic producer.
+- [**#249, the universal residue-gap endpoint.**](#programme-249) Irrationality is equivalent to one forced-basepoint Mersenne residue-gap supply. The universal strict-gap producer remains open.
+- [**#251, summation by parts with the endpoint retained.**](#programme-251) Lean moves the prime series exactly to its consecutive-gap tail. No theorem yet controls the actual tail strongly enough.
+- [**#257, canonical greedy membership.**](#programme-257) For nonnegative rational targets, membership is equivalent to actual skips beyond every cutoff. No unresolved target has a proved cofinal-skip producer.
 
 ## Eight programme map
 
