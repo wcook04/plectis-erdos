@@ -14558,7 +14558,7 @@
         {
           "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2527
+          "line": 2585
         },
         {
           "name": "finite_boolSupport_ne_half",
@@ -14629,17 +14629,17 @@
         {
           "name": "HalfSecondChannelSeparatedRat",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2857
+          "line": 2915
         },
         {
           "name": "halfSecondChannelSeparatedRat_of_pos_le_six",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2917
+          "line": 2975
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 3095
+          "line": 3153
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",
@@ -14649,7 +14649,7 @@
         {
           "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2527
+          "line": 2585
         }
       ]
     },
