@@ -1,0 +1,25 @@
+{
+  "schema": "plectis-programme-local-comparator/1",
+  "problem": 1049,
+  "title": "The 7/2 numerical height certificate",
+  "disposition": "programme_local_comparator_packet",
+  "headline_interface_count_changed": false,
+  "formal_statement": "Real.log 2 / Real.log 7 < 1 / 2 - 1 / Real.pi ^ 2",
+  "source_declaration": "ErdosProblems.Erdos1049.sevenHalves_bundschuhVaananen_margin",
+  "comparator_declaration": "Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight",
+  "checked_claim": "Lean checks the displayed numerical inequality and Comparator checks its transport to a Mathlib-only statement.",
+  "external_boundary": "The Bundschuh-Väänänen irrationality theorem, its complete hypotheses, and its application at 7/2 remain externally sourced and are not Lean-badged.",
+  "open_boundary": "The requested base 3/2 problem remains open.",
+  "novelty": "Routine exact formalisation of one numerical hypothesis; no novelty or priority claim.",
+  "tao_pipeline_receipt": {
+    "input_stage": "verified public Lean certificate",
+    "output_stage": "statement-isolated verification and reader exposition",
+    "artifact": "ExternalVerification1049 plus the programme-local metadata and reviewer guide",
+    "human_understanding_delta": "Separates the elementary inequality from the external analytic theorem that consumes it.",
+    "verification_state": "Positive transport, trusted challenge, named negative mismatch, and axiom audit are release gates.",
+    "publication_or_review_state": "Prepared for protected-branch review; no independent mathematical peer review is claimed.",
+    "canonicalization_state": "One programme-local packet; the nineteen-interface headline packet is unchanged.",
+    "unresolved_downstream_bottleneck": "External review of the cited analytic theorem's applicability and the open base 3/2 mathematics.",
+    "next_stage_owner": "Public release owner and external mathematical reviewer"
+  }
+}

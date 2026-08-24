@@ -5,7 +5,7 @@
 # carries the current scope instead.
 name = "erdos249257"
 version = "0.9.0"
-description = "Lean 4 formalisation work on eight open Erdős problems — 68, 243, 249, 251, 257, 269, 1041, and 1049. All eight remain open. The library states what is checked and where each result stops."
+description = "Lean 4 formalisation work on eight open Erdős problems: 68, 243, 249, 251, 257, 269, 1041, and 1049. All eight remain open. The library states what is checked and where each result stops."
 homepage = "https://github.com/wcook04/plectis-lean-erdos249-257"
 license = "Apache-2.0"
 licenseFiles = ["LICENSE"]
@@ -56,6 +56,12 @@ srcDir = "examples"
 # holes, while CI asks Comparator to check Solution against them explicitly.
 [[lean_lib]]
 name = "ExternalVerification"
+
+# A programme-local packet for one exact #1049 numerical certificate. It is
+# separate from the nineteen-interface headline packet so adding a focused
+# reviewer handle does not silently change the reviewed headline count.
+[[lean_lib]]
+name = "ExternalVerification1049"
 
 # Statement forms belonging to other formal corpora, restated verbatim here and
 # derived from this library, so that an external `formal_proof` link resolves to

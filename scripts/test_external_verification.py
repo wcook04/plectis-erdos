@@ -13,7 +13,11 @@ from copy import deepcopy
 from pathlib import Path
 
 from build_external_verification import imports_in_text, load_owner, validate
-from run_external_verification import EXPECTED_MISMATCH, is_expected_negative_rejection
+from run_external_verification import (
+    EXPECTED_1049_MISMATCH,
+    EXPECTED_MISMATCH,
+    is_expected_negative_rejection,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -76,8 +80,12 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
         self.assertIn("> [!IMPORTANT]", human)
-        self.assertIn("## #68 — Factorial-denominator series", human)
-        self.assertIn("## #269 — Three-prime running least common multiples", human)
+        self.assertIn("# Plectis verification: eight open Erdős programmes", human)
+        self.assertIn("## #68: Factorial-denominator series", human)
+        self.assertIn("## #269: Three-prime running least common multiples", human)
+        self.assertIn("**Question.** Is the series", human)
+        self.assertIn("**Read.** [Programme paper]", human)
+        self.assertIn("[Lean source]", human)
         self.assertIn("**Checked frontier.**", human)
         self.assertIn("**Open boundary.**", human)
         self.assertIn("<details>", human)
@@ -93,6 +101,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertNotIn("&shy;", human)
         self.assertNotIn("\u00ad", human)
         self.assertNotIn("\u200b", human)
+        self.assertNotIn("—", human)
         self.assertIn("Source and priority note", human)
         self.assertIn("Steve Fan", human)
         self.assertIn("**Programmes.**", human)
@@ -200,8 +209,38 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertNotIn("sorry", text)
         self.assertIn("2 ^ e + 2", text)
 
+    def test_1049_programme_packet_is_exactly_scoped(self) -> None:
+        positive = json.loads(
+            (ROOT / "verification/comparator-1049-numerical-height.json").read_text()
+        )
+        negative = json.loads(
+            (ROOT / "verification/comparator-1049-numerical-height-negative-mismatch.json").read_text()
+        )
+        metadata = json.loads(
+            (ROOT / "verification/comparator-1049-numerical-height.metadata.json").read_text()
+        )
+        self.assertEqual(positive["challenge_module"], "ExternalVerification1049.Challenge")
+        self.assertEqual(positive["solution_module"], "ExternalVerification1049.Solution")
+        self.assertEqual(negative["challenge_module"], positive["challenge_module"])
+        self.assertNotEqual(negative["solution_module"], positive["solution_module"])
+        self.assertFalse(metadata["headline_interface_count_changed"])
+        self.assertEqual(metadata["disposition"], "programme_local_comparator_packet")
+        statement = (ROOT / "ExternalVerification1049/Statements.lean").read_text()
+        challenge = (ROOT / "ExternalVerification1049/Challenge.lean").read_text()
+        solution = (ROOT / "ExternalVerification1049/Solution.lean").read_text()
+        mismatch = (ROOT / "ExternalVerification1049/NegativeSolution.lean").read_text()
+        self.assertEqual(challenge.count("sorry"), 1)
+        self.assertNotIn("sorry", solution)
+        self.assertNotIn("ErdosProblems", statement)
+        self.assertIn("sevenHalves_bundschuhVaananen_margin", solution)
+        self.assertIn("≤", mismatch)
+        self.assertNotIn("irrational", challenge.lower())
+
     def test_infrastructure_failure_cannot_masquerade_as_negative_rejection(self) -> None:
         self.assertTrue(is_expected_negative_rejection(1, EXPECTED_MISMATCH))
+        self.assertTrue(
+            is_expected_negative_rejection(1, EXPECTED_1049_MISMATCH, EXPECTED_1049_MISMATCH)
+        )
         self.assertFalse(is_expected_negative_rejection(125, "systemd unavailable"))
         self.assertFalse(is_expected_negative_rejection(127, "landrun: command not found"))
 
@@ -227,6 +266,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
         self.assertIn("release-surfaces-only", workflow)
         self.assertIn("inputs.scope == 'external-verification-only'", workflow)
         self.assertIn("inputs.scope == 'release-surfaces-only'", workflow)
+        self.assertIn("ExternalVerification1049", workflow)
+        self.assertIn("comparator-1049-numerical-height.json", workflow)
 
         prepare = workflow.index("- name: Prepare trusted challenge inputs")
         compare = workflow.index("- name: Run positive and adversarial Comparator checks")
