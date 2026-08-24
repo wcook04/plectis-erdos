@@ -872,7 +872,7 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:91e736e61ea48639060b89bc8887335010eb6796eaed37a27b1a58ded9af79d6",
+    "owner_digest": "sha256:3964308e8d80645d8c69f92516f22f59d321cca3c5244553d3aabb223f6e8f0f",
     "projection": "docs/problems.json",
     "projection_digest": "sha256:a91eeb3ecf19c4a287ea987d6913500dd2b612d40a3557e75947ccfe6ba4aa17",
     "schema": "erdos249257-problem-index/1",

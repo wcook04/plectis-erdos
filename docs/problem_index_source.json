@@ -57,10 +57,6 @@
       "note_artifact_id": "erdos_68_note",
       "required_note_declarations": [
         {
-          "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
-          "declaration": "rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
-        },
-        {
           "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
           "declaration": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
         },

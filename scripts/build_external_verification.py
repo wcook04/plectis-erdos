@@ -761,7 +761,13 @@ def build_outputs(
         OUTPUTS["packet"]: render_packet(
             packet, problem_source, problem_projection, closure, config_bytes
         ).encode(),
-        OUTPUTS["human"]: render_human(packet, problem_source, problem_projection).encode(),
+        OUTPUTS["human"]: (
+            render_human(packet, problem_source, problem_projection)
+            .replace(" — ", ": ")
+            .replace("—", ",")
+            .replace("–", "-")
+            .encode()
+        ),
         OUTPUTS["outreach"]: render_outreach(packet).encode(),
     }
 

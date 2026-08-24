@@ -18,7 +18,7 @@ These four public objects are the shortest route into the mathematics. They are 
 
 ## Eight programme map
 
-**Programmes.** [#68 — Factorial-denominator series](#programme-68) · [#243 — Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249 — Binary totient series](#programme-249) · [#251 — Prime-gap dyadic series](#programme-251) · [#257 — Reciprocal sums over infinite exponent supports](#programme-257) · [#269 — Three-prime running least common multiples](#programme-269) · [#1041 — Short connections inside polynomial lemniscates](#programme-1041) · [#1049 — Lambert-type series at rational bases](#programme-1049)
+**Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
 ## Papers and review
 
@@ -33,7 +33,7 @@ Read the [problem papers](../README.md#problem-papers) for mathematical motivati
 ---
 
 <a id="programme-68"></a>
-## #68 — Factorial-denominator series
+## #68: Factorial-denominator series
 
 **Checked frontier.** The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally.
 
@@ -42,7 +42,7 @@ Read the [problem papers](../README.md#problem-papers) for mathematical motivati
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips</code>
+<code>ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses</code>
 
 </details>
 
@@ -101,7 +101,7 @@ Exact registry keys and Comparator routing are listed separately.
 ---
 
 <a id="programme-243"></a>
-## #243 — Reciprocal-tail rigidity near the Sylvester recurrence
+## #243: Reciprocal-tail rigidity near the Sylvester recurrence
 
 **Checked frontier.** The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.
 
@@ -169,7 +169,7 @@ Exact registry keys and Comparator routing are listed separately.
 ---
 
 <a id="programme-249"></a>
-## #249 — Binary totient series
+## #249: Binary totient series
 
 **Checked frontier.** Conditionally: a cofinal strict 9/10 gap for the exact natural prime-tail orbit supplies the existing finite pivot-point escape and hence the reviewed irrationality endpoint.
 
@@ -261,7 +261,7 @@ Exact registry keys and Comparator routing are listed separately.
 ---
 
 <a id="programme-251"></a>
-## #251 — Prime-gap dyadic series
+## #251: Prime-gap dyadic series
 
 **Checked frontier.** The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise.
 
@@ -329,7 +329,7 @@ Exact registry keys and Comparator routing are listed separately.
 ---
 
 <a id="programme-257"></a>
-## #257 — Reciprocal sums over infinite exponent supports
+## #257: Reciprocal sums over infinite exponent supports
 
 **Checked frontier.** For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff.
 
@@ -413,7 +413,7 @@ Exact registry keys and Comparator routing are listed separately.
 ---
 
 <a id="programme-269"></a>
-## #269 — Three-prime running least common multiples
+## #269: Three-prime running least common multiples
 
 **Checked frontier.** That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.
 
@@ -504,7 +504,7 @@ Exact registry keys and Comparator routing are listed separately.
 ---
 
 <a id="programme-1041"></a>
-## #1041 — Short connections inside polynomial lemniscates
+## #1041: Short connections inside polynomial lemniscates
 
 **Checked frontier.** Along a trajectory tangent to the complex Newton vector field -f/f', the polynomial value satisfies w' = -w.
 
@@ -580,7 +580,7 @@ Exact registry keys and Comparator routing are listed separately.
 ---
 
 <a id="programme-1049"></a>
-## #1049 — Lambert-type series at rational bases
+## #1049: Lambert-type series at rational bases
 
 **Checked frontier.** That a literal coordinatewise transfer of the integer-base clearing argument forces a power-versus-linear inequality, and that this inequality is impossible at base three halves.
 
@@ -668,7 +668,7 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Show all 19 statement-isolated interfaces</summary>
 
-**#68 — Factorial-denominator series**
+**#68: Factorial-denominator series**
 
 - <code>Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses</code>
   - **Class.** locally proved result; novelty unassessed
@@ -684,7 +684,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The equivalence does not supply a cofinal carry producer.
 
-**#243 — Reciprocal-tail rigidity near the Sylvester recurrence**
+**#243: Reciprocal-tail rigidity near the Sylvester recurrence**
 
 - <code>Erdos249257.ExternalVerification.no_cofinallyBoundedNegative_of_normalizedVanishes</code>
   - **Class.** conditional reduction and no-go result
@@ -700,7 +700,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The theorem does not cover arbitrary unbounded negative behaviour.
 
-**#249 — Binary totient series**
+**#249: Binary totient series**
 
 - <code>Erdos249257.ExternalVerification.finrank_totientKernelThroughLevelFamily_eq</code>
   - **Class.** locally proved result; novelty unassessed
@@ -723,7 +723,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The basis theorem does not connect rationality to finite kernel rank.
 
-**#251 — Prime-gap dyadic series**
+**#251: Prime-gap dyadic series**
 
 - <code>Erdos249257.ExternalVerification.exists_primeGap0_gt</code>
   - **Class.** formalisation of existing result
@@ -739,7 +739,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The equivalence does not prove irrationality of either series.
 
-**#257 — Reciprocal sums over infinite exponent supports**
+**#257: Reciprocal sums over infinite exponent supports**
 
 - <code>Erdos249257.ExternalVerification.volume_mersenneAchievementSet</code>
   - **Class.** mixed prior-art geometry and locally proved metric result; novelty unassessed
@@ -769,7 +769,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The measure dichotomy does not classify rational points.
 
-**#269 — Three-prime running least common multiples**
+**#269: Three-prime running least common multiples**
 
 - <code>Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen</code>
   - **Class.** no-go result
@@ -785,7 +785,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** The identity does not supply the missing irrationality bridge.
 
-**#1041 — Short connections inside polynomial lemniscates**
+**#1041: Short connections inside polynomial lemniscates**
 
 - <code>Erdos249257.ExternalVerification.exists_small_translation_separating_arguments</code>
   - **Class.** locally proved result; novelty unassessed
@@ -801,7 +801,7 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** Root retention is only one input to an incomplete global route.
 
-**#1049 — Lambert-type series at rational bases**
+**#1049: Lambert-type series at rational bases**
 
 - <code>Erdos249257.ExternalVerification.threeHalves_no_coordinatewiseCorridor</code>
   - **Class.** no-go result
