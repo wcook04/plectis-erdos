@@ -3,12 +3,12 @@
 
 # Plectis: a public frontier across eight open Erdős problems
 
-Plectis is an AI-assisted mathematical research system. This repository is its
-public proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
-1049. The work includes exact reductions, positive model families, structural
-theorems, countermodels, method boundaries, and finite certificates. **All
-eight problems remain open.** Each programme names what is checked and the
-precise mathematical step that still blocks the original question.
+Plectis is an AI-assisted mathematical research system. This is its public
+proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
+It contains exact reductions, model families, structural theorems,
+countermodels, method boundaries, and certificates. **All eight problems
+remain open.** Each programme states what is checked and what still blocks the
+question.
 
 **Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
 then inspect one proof handle. No Lean build is needed for the first check:
@@ -17,13 +17,11 @@ then inspect one proof handle. No Lean build is needed for the first check:
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-The command prints the published statement, re-resolves the declaration in this
-checkout, names the Comparator interface that restates it and the paper that
-writes it up, or says plainly there is no such interface, which is true of
-most claims, and shows the release receipts and the exact point where the
-claim stops. `--verify-all` does the same for all 103 claims and 335 declarations in
-about a fifth of a second. [Read or run it](#read-or-run-it) has every other
-route, including the ones that do need Lean.
+The command prints the statement, re-resolves its declaration, names any
+Comparator interface and paper, shows the release receipts, and states where
+the claim stops. Most claims intentionally have no Comparator interface.
+`--verify-all` checks all 103 claims and 335 declarations in about a fifth of a
+second. [Read or run it](#read-or-run-it) lists the routes that do need Lean.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [prior art and attribution](docs/PRIOR_ART.md)
@@ -229,9 +227,9 @@ attempted argument class is stopped by a stated bound, recorded with what it
 does not rule out.
 
 [`SCOPE.md`](SCOPE.md) is the short boundary statement. The exact expert
-handoffs, including the requested input, current guess, alternatives,
+handoffs state what input is requested, current guess, alternatives,
 discriminating evidence, checked consumer, and endpoint-or-counterexample
-boundary, are in
+boundary. See
 [RESULTS](docs/RESULTS.md#exact-questions-for-a-human-expert) and
 `python3 scripts/query_expert_handoffs.py`. A refuted route is withdrawn in
 the next edition and the refutation credited.
