@@ -57,6 +57,10 @@
       "note_artifact_id": "erdos_68_note",
       "required_note_declarations": [
         {
+          "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+          "declaration": "rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
+        },
+        {
           "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
           "declaration": "irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses"
         },
@@ -448,16 +452,21 @@
         }
       ],
       "what_is_checked": [
+        "For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff.",
         "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
         "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
         "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
       ],
       "what_is_not_checked": [
-        "The universal irrationality problem, or irrationality for any new infinite support.",
+        "Cofinal actual skips for 1/2, 1/21, or any other unresolved target; the universal irrationality problem also remains open.",
         "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
         "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
       ],
       "open_obligations": [
+        {
+          "id": "cofinal_actual_greedy_skips",
+          "statement": "Produce actual canonical greedy skips beyond every cutoff for 1/2, 1/21, or another unresolved rational target. Arbitrary omitted supports and finite traces do not satisfy this quantifier."
+        },
         {
           "id": "arithmetic_rigidity_for_thin_supports",
           "statement": "Convert hereditary unique coding into an arithmetic obstruction to rational values for every infinite support, including zero-measure Cantor supports."

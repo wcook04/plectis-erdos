@@ -835,7 +835,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:e13e80b5cd74acba27587d4e067e4b9ae9f02160bf706da5bd54da6a7aa780d8"
+  problem_index_digest: "sha256:a91eeb3ecf19c4a287ea987d6913500dd2b612d40a3557e75947ccfe6ba4aa17"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -865,8 +865,8 @@ external_verification:
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
-      checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
-      open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
+      checked_frontier: "For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff."
+      open_frontier: "Cofinal actual skips for 1/2, 1/21, or any other unresolved target; the universal irrationality problem also remains open."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
     - id: "erdos_269"
       erdos_number: 269

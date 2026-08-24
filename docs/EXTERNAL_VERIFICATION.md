@@ -23,7 +23,7 @@
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses</code>
+<code>ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips</code>
 
 </details>
 
@@ -312,9 +312,9 @@ Exact registry keys and Comparator routing are listed separately.
 <a id="programme-257"></a>
 ## #257 — Reciprocal sums over infinite exponent supports
 
-**Checked frontier.** That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.
+**Checked frontier.** For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff.
 
-**Open boundary.** The universal irrationality problem, or irrationality for any new infinite support.
+**Open boundary.** Cofinal actual skips for 1/2, 1/21, or any other unresolved target; the universal irrationality problem also remains open.
 
 <details>
 <summary>Representative checked declaration</summary>
