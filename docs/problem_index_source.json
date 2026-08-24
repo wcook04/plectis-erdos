@@ -436,7 +436,7 @@
       "required_note_declarations": [
         {
           "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
-          "declaration": "selectedMersenneTail_lt_weight"
+          "declaration": "rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
         },
         {
           "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",

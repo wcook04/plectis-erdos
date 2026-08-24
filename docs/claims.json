@@ -11433,6 +11433,17 @@
         "boundary": "This does not decide whether every infinite-support sum is irrational."
       },
       {
+        "id": "rational_greedy_cofinal_skip_membership",
+        "problem": 257,
+        "review_family": "canonical_greedy_membership",
+        "contribution_class": "exact conditional equivalence; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+        "original_source": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+        "statement": "For every nonnegative rational target, Mersenne achievement-set membership is equivalent to the canonical greedy orbit making actual skips beyond every cutoff.",
+        "boundary": "The equivalence supplies no cofinal-skip producer for 1/2, 1/21, or another unresolved target."
+      },
+      {
         "id": "erdos_borwein_full_support",
         "problem": 257,
         "review_family": "known_irrational_supports",
@@ -11789,6 +11800,14 @@
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted_measure_theorem",
             "boundary": "Geometry of the full set does not decide irrationality of every coded point."
+          },
+          {
+            "id": "canonical_greedy_membership",
+            "contribution_class": "exact conditional equivalence; novelty unassessed",
+            "summary": "For each nonnegative rational target, achievement-set membership is exactly cofinal actual skipping by its canonical greedy orbit.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted_bundled_equivalence",
+            "boundary": "The theorem does not produce cofinal skips for any unresolved target."
           },
           {
             "id": "restricted_achievement_sets",

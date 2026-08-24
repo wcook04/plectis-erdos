@@ -92,6 +92,13 @@ theorem irrational_tsum_primeDyadicTerm_iff_primeGap
 theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 :=
   (portfolioClaims Unit).problem257Measure
 
+theorem rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips
+    (q : ℚ) (hq : 0 ≤ q) :
+    (q : ℝ) ∈ mersenneAchievementSet ↔
+      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+        ¬ mersenneWeight (n + 1) ≤ greedyMersenneRemainder (q : ℝ) n :=
+  (portfolioClaims Unit).problem257CofinalGreedySkips q hq
+
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) :=
   (portfolioClaims Unit).problem257FullSupport b hb

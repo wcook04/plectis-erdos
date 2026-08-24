@@ -701,7 +701,7 @@ def render_outreach(packet: dict) -> str:
         "",
         "## #257 boundary capsule",
         "",
-        "> The checked result is the measure-one geometry of the Mersenne achievement set, plus a separate formalisation of the classical full-support Erdős–Borwein irrationality theorem. Comparator checks those statements and their axiom budget. Universal Erdős #257, including the rational targets `1/2` and `1/21`, remains open.",
+        "> The checked result is the measure-one geometry of the Mersenne achievement set, plus a separate formalisation of the classical full-support Erdős-Borwein irrationality theorem. Comparator checks those statements and their axiom budget. Universal Erdős #257, including the rational targets `1/2` and `1/21`, remains open.",
         "",
     ])
 

@@ -338,12 +338,12 @@ Exact registry keys and Comparator routing are listed separately.
 <details>
 <summary>Representative checked declaration</summary>
 
-<code>ErdosProblems.Erdos257.selectedMersenneTail_lt_weight</code>
+<code>ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips</code>
 
 </details>
 
 <details>
-<summary>Contribution families (7)</summary>
+<summary>Contribution families (8)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -372,6 +372,11 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** Geometry of the full set does not decide irrationality of every coded point.<br>
   *Evidence.* mixed prior-art geometry and locally proved metric result; novelty unassessed · Lean kernel plus Comparator
 
+- **Canonical greedy membership**<br>
+  For each nonnegative rational target, achievement-set membership is exactly cofinal actual skipping by its canonical greedy orbit.<br>
+  **Boundary.** The theorem does not produce cofinal skips for any unresolved target.<br>
+  *Evidence.* exact conditional equivalence; novelty unassessed · Lean kernel plus Comparator
+
 - **Restricted achievement sets**<br>
   Support-restricted coding is injective and the associated achievement set has exact finite-complement measure or zero for infinite complement.<br>
   **Boundary.** The measure dichotomy does not classify rational points.<br>
@@ -385,7 +390,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (7)</summary>
+<summary>Technical registry and Comparator routing (8)</summary>
 
 - <code>finite_period_noncollapse</code><br>
   Comparator: <code>targeted</code>
@@ -401,6 +406,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>achievement_set_geometry</code><br>
   Comparator: <code>targeted_measure_theorem</code>
+
+- <code>canonical_greedy_membership</code><br>
+  Comparator: <code>targeted_bundled_equivalence</code>
 
 - <code>restricted_achievement_sets</code><br>
   Comparator: <code>targeted_measure_dichotomy</code>
@@ -666,7 +674,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 19 statement-isolated interfaces</summary>
+<summary>Show all 20 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -748,6 +756,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** This does not decide whether every infinite-support sum is irrational.
 
+- <code>Erdos249257.ExternalVerification.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips</code>
+  - **Class.** exact conditional equivalence; novelty unassessed
+  - **Statement.** For every nonnegative rational target, Mersenne achievement-set membership is equivalent to the canonical greedy orbit making actual skips beyond every cutoff.
+  - **Canonical claim status.** `comparator_interface_not_registered_as_canonical_claim`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** The equivalence supplies no cofinal-skip producer for 1/2, 1/21, or another unresolved target.
+
 - <code>Erdos249257.ExternalVerification.irrational_erdosSum_full_support</code>
   - **Class.** formalisation of an existing theorem
   - **Statement.** For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.
@@ -824,7 +839,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 19 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 20 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.

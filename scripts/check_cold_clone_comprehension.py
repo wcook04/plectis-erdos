@@ -76,7 +76,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # first screen. The section named "External verification" previously spent
     # every byte on prior-art boundaries and release identity and never said
     # what the verification is, so a reviewer could not learn from the README
-    # that nineteen propositions are separately declared, Comparator-checked
+    # that twenty propositions are separately declared, Comparator-checked
     # against a fixed axiom budget, and covered by an adversarial fixture, nor
     # that the same check runs in continuous integration. "Has anyone actually
     # run this?" is the first question a sceptical reviewer asks. A cheap

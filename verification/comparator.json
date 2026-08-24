@@ -12,6 +12,7 @@
     "Erdos249257.ExternalVerification.exists_primeGap0_gt",
     "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
     "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
+    "Erdos249257.ExternalVerification.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
     "Erdos249257.ExternalVerification.irrational_erdosSum_full_support",
     "Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface",
     "Erdos249257.ExternalVerification.volume_supportedMersenneAchievementSet_dichotomy",

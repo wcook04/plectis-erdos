@@ -17,7 +17,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose nineteen existing results through the Mathlib-only
+These thin wrappers expose twenty existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -82,6 +82,14 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       Erdos249257.positiveMersenneSupportValue,
       Erdos249257.mersenneWeight] using
       Erdos249257.volume_mersenneAchievementSet
+  · intro q hq
+    simpa [mersenneAchievementSet, positiveMersenneSupportValue,
+      greedyMersenneRemainder, mersenneWeight,
+      Erdos249257.mersenneAchievementSet,
+      Erdos249257.positiveMersenneSupportValue,
+      Erdos249257.greedyMersenneRemainder,
+      Erdos249257.mersenneWeight] using
+      ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips q hq
   · intro b hb
     simpa using Erdos249257.irrational_erdosSum_full_support b hb
   · intro F b hF h0 hb hcop
@@ -194,6 +202,13 @@ theorem volume_mersenneAchievementSet : volume mersenneAchievementSet = 1 := by
     Erdos249257.positiveMersenneSupportValue,
     Erdos249257.mersenneWeight] using
     Erdos249257.volume_mersenneAchievementSet
+
+theorem rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips
+    (q : ℚ) (hq : 0 ≤ q) :
+    (q : ℝ) ∈ mersenneAchievementSet ↔
+      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+        ¬ mersenneWeight (n + 1) ≤ greedyMersenneRemainder (q : ℝ) n :=
+  (portfolioClaims Unit).problem257CofinalGreedySkips q hq
 
 theorem irrational_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
     Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1)) := by
