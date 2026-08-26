@@ -98,13 +98,13 @@ This is the factorial base taken in its canonical form. The kernel checks the fl
 x=\lfloor x\rfloor+\sum_{m=2}^{N}\frac{d_m}{m!}
    +\frac{\theta_N}{N!},
 ```
-and the propagation rule: a zero remainder at one index forces every later digit to vanish. These are *canonical digit eq floor mul remainder*, *canonical digit nonneg*, *canonical digit lt radix*, *canonical remainder recurrence*, the [finite factorial expansion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L196), and the [zero-remainder termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L269); they hold for every real $`x`$, not only for $`S`$.
+and the propagation rule: a zero remainder at one index forces every later digit to vanish. These are *canonical digit eq floor mul remainder*, *canonical digit nonneg*, *canonical digit lt radix*, *canonical remainder recurrence*, the [finite factorial expansion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L196), and the [zero-remainder termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L269); they hold for every real $`x`$, not only for $`S`$.
 
 The rational direction is also kernel-checked. If $`q>0`$ and $`q\le n`$, then
 ``` math
 \operatorname{facFloor}(a/q,n)=((n!/q):\mathbb{Z})a,
 ```
-and the canonical digit at radix $`n+1`$ vanishes. These are the [cleared-floor formula](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47) and the [rational-input termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L81). They imply that every rational input has an eventually zero canonical factorial-digit expansion. They do not decide whether $`S`$ is rational and supply no recurrence estimate for its digits or remainders.
+and the canonical digit at radix $`n+1`$ vanishes. These are the [cleared-floor formula](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L47) and the [rational-input termination theorem](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/CanonicalFactorialDigits.lean#L81). They imply that every rational input has an eventually zero canonical factorial-digit expansion. They do not decide whether $`S`$ is rational and supply no recurrence estimate for its digits or remainders.
 
 The returned derivation additionally gives the converse for this particular representation: the digits $`d_m(S)`$ are eventually zero only if $`S`$ is rational, equivalently the factorial tail state is eventually integral. That converse is not yet kernel-checked here, and nothing below uses it as though it were.
 
@@ -735,73 +735,73 @@ Lean does not authorise the exposition, the citation choices, or the interpretat
 
 The public `ErdosProblems.Erdos68` package contains the checked source for this note. The release snapshot contains twelve cited modules: `CanonicalFactorialDigits`, `ChannelBreakpointRigidity`, `ChannelIntegralCongruence`, `DivisorFactorialCentre`, `EndpointWeightedPrivateSupport`, `FactorialCarry`, `FactorialChannelCertificate`, `FactorialZeroPlateau`, `FiniteDefectAutomaton`, `PrimeUnitTranslator`, `PrimeZeroBranch`, and `StrictSuccessorArithmetic`. Only these public modules belong to the manuscript source surface; no private auxiliary digit-rigidity file is cited or projected. The release root imports every cited module. The declaration table below is pinned to the shared formal-source commit used throughout this problem-note series.
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1163)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L953)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1026)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L6099)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L6146)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/EndpointWeightedPrivateSupport.lean#L4766)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/PrimeUnitTranslator.lean#L1559)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L32)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L34)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L37)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L39)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L42)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L44)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L47)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L49)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L50)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L80)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L58)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L88)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L72)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L102)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L99)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L129)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L116)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L146)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L140)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L170)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L149)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L179)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L158)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/DivisorFactorialCentre.lean#L188)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L25)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L28)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L39)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L42)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L43)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L46)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L51)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L54)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L55)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L58)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L59)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L62)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L65)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L68)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L101)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L104)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L105)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L108)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L109)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L112)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L112)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L115)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L119)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L122)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L126)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L129)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L133)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L136)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L140)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L143)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L151)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L154)
 
-- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L156)
+- [](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8757777b0e944daaa526d3632023be962d204463/ErdosProblems/Erdos68/FactorialChannelCertificate.lean#L159)
 
 <div class="thebibliography">
 

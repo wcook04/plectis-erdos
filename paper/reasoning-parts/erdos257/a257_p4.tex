@@ -193,7 +193,7 @@ inequality on the right branch:
 where we write $C_s := 4\cdot\mathrm{rem}(s) - \mathrm{belowPulse}(s) - 4$ for the integer coordinate that
 appears on the middle branch of the seam recursion (the same quantity that, along an all-right run,
 is the affine excess $\mathrm{rem}(s)-2^s$ one step later — Part I, RC-2).
-\lean{Erdos249257.SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4374}
+\lean{Erdos249257.SeamTwoSidedDyadicCellEscape}{HalfCylinderMiddleCarryLowerBound.lean:4760}
 
 \begin{prop}[The upper (carries) successor needs no exceptional-cell exclusion]
 \label{prop:upper-unconditional}
@@ -203,9 +203,9 @@ no hypothesis beyond \texttt{hcarry} itself:
 \[
   \mathrm{successorCarries} \implies \mathrm{rem}(s+1) \le 2^{s+1}.
 \]
-\lean{Erdos249257.seamUpperBranch\_nextRemainder\_le\_pow}{HalfCylinderMiddleCarryLowerBound.lean:3924}
+\lean{Erdos249257.seamUpperBranch\_nextRemainder\_le\_pow}{HalfCylinderMiddleCarryLowerBound.lean:3969}
 (from
-\lean{Erdos249257.seamUpperBranch\_remainder\_add\_resetCharge\_eq}{HalfCylinderMiddleCarryLowerBound.lean:3542},
+\lean{Erdos249257.seamUpperBranch\_remainder\_add\_resetCharge\_eq}{HalfCylinderMiddleCarryLowerBound.lean:3554},
 closed by \texttt{omega}). In this precise sense — no cell exclusion is ever needed on this branch
 of the step — the upper successor contributes nothing to the exceptional-cell inventory: it is
 "impossible" for the upper branch to be a source of an exceptional cell in the induction step,
@@ -354,10 +354,10 @@ denominator.
 \lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589}. Separately,
 $\mathsf{CertifiedGreedyMersenneDeath}$ is a decidable, finite-depth certificate proving a real $x$
 is \emph{not} in $\mathcal A$ (e.g.\ $3/4$ is machine-certified dead at level 1, lookahead 0:
-\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1755}), and this
+\lean{three\_fourths\_certifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1763}), and this
 one-sidedness is structural: \textbf{absence} of a found death certificate, or survival through any
 finite depth, proves \emph{nothing} about membership.
-\lean{Erdos249257.CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1733}.
+\lean{Erdos249257.CertifiedGreedyMersenneDeath}{GreedyAchievementSet.lean:1741}.
 
 \textbf{Scope.} The odd-denominator fact rules out every finite support as a $1/2$-witness,
 unconditionally (this is exactly B4/C3 of Part~I/III's cut-locator machinery, and it is why any
@@ -456,11 +456,11 @@ height-transport toolkit.
   \ \lor\
   4\cdot\mathrm{overshoot}(d)+\mathrm{abovePulse}(d)+2(d+j) \le 2^{d-j+1}.
 \]
-\lean{Erdos249257.SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}.
+\lean{Erdos249257.SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4952}.
 In words: at every upper-reset row $d\ge13$, the reset charge must avoid a linear-width forbidden
 band immediately below every dyadic threshold $2^{d-j+1}$, for every $j\le d$ simultaneously.
 Granted this socket,
-\lean{Erdos249257.half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790}
+\lean{Erdos249257.half\_mem\_mersenneAchievementSet\_of\_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5384}
 gives $1/2\in\mathcal A$ outright.
 \end{defn}
 
@@ -474,7 +474,7 @@ concrete seam reset charge, $\mathsf{SeamUpperResetCriticalBandEscape}$ is prove
 \emph{equivalent} to Definition~\ref{defn:band-escape}'s socket.
 \lean{Erdos249257.dyadicBandEscape\_iff\_exists\_critical}{HalfUpperResetCriticalBand.lean:108}
 (seam specialisation
-\lean{Erdos249257.seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:883}).
+\lean{Erdos249257.seamUpperResetCriticalBandEscape\_iff}{HalfUpperResetCriticalBand.lean:1565}).
 Zero Mersenne/seam content in the core lemma — pure $(d,E,j)$ arithmetic over powers of 2.
 \coord{dyadic-boundary, generic}\ \ev{Lean}\scale{n/a}
 \end{prop}

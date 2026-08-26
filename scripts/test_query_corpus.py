@@ -439,9 +439,11 @@ def validate_indexed_declaration_lookup() -> None:
 
     bare = declaration_packet(name, 20)
     qualified = declaration_packet(qualified_name, 20)
-    source = source_coordinate_packet(
-        "Erdos249257/CertificateKernel.lean:18384", 20
-    )
+    # Exercise the source-coordinate route at the declaration selected by the
+    # current atlas.  A hard-coded historical line made this cache/index test
+    # fail whenever checked source grew, even though the lookup itself was
+    # correct and the refreshed atlas exposed the new exact coordinate.
+    source = source_coordinate_packet(bare["matches"][0]["source_ref"], 20)
 
     assert bare == qualified
     assert source["nearby_declarations"][0]["qualified_name"] == qualified_name
@@ -984,8 +986,17 @@ def main() -> int:
     assert paper_label["paper"] == claim["paper"]
     assert paper_label["attached_claims"][0]["id"] == "denominator_exclusion"
     assert paper_label["anchor_class"] == "registered_claim_anchor"
+    exclusion_decl = next(
+        row
+        for row in claim["claim"]["declarations"]
+        if row["name"]
+        == "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
+    )
+    exclusion_source_ref = (
+        f"{exclusion_decl['module']}:{exclusion_decl['line']}"
+    )
     assert any(
-        row["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
+        row["source_ref"] == exclusion_source_ref
         for row in paper_label["source_links"]
     )
     assert paper_label["lean_source_identity"] == adelic["lean_source_identity"]
@@ -1119,7 +1130,7 @@ def main() -> int:
     )
     assert declaration["match_count"] == 1
     assert declaration["matches"][0]["claim_ids"] == ["denominator_exclusion"]
-    assert declaration["matches"][0]["source_ref"] == "Erdos249257/CertificateKernel.lean:18384"
+    assert declaration["matches"][0]["source_ref"] == exclusion_source_ref
     assert declaration["matches"][0]["source_url"].startswith(
         "https://github.com/wcook04/plectis-lean-erdos249-257/blob/"
         + formal_source["ref"]

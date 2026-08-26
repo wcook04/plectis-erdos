@@ -65,9 +65,9 @@ $\log_2 r$ (\ev{Cert}, maximal observed run $19$ at row $158{,}096$).
 \qquad
 E_d := 4\cdot\mathtt{overshoot}_d+\mathtt{abovePulse}_d,
 \]
-(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4566}), with the
+(\lean{SeamUpperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4952}), with the
 closed consumer
-\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:4790},
+\lean{half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape}{HalfCylinderMiddleCarryLowerBound.lean:5384},
 \ev{Lean}. The $\forall j\le d$ band check collapses to a single nearest-boundary index per row by
 \lean{dyadicBandEscape_iff_exists_critical}{HalfUpperResetCriticalBand.lean:108}, and rows
 $13\le d\le 30$ are kernel-verified by
@@ -428,7 +428,7 @@ Five biconditionals, each with $(1/2:\R)\in\mathcal{A}$ on the right:
 \]
 where $G:=\mathtt{greedyMersenneSupport}(1/2)$. The forward directions of (2)--(5) are landed
 Lean (\lean{half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips}{BooleanMobiusSkipRowCofinal.lean:73},
-\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:71},
+\lean{half_mem_mersenneAchievementSet_of_cofinalExactLocalRows}{BooleanMobiusCofinalExactRows.lean:431},
 \lean{half_mem_mersenneAchievementSet_of_cofinalStripReturn}{CofinalStripReturn.lean:157},
 \lean{half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip}{TerminalOnlyCofinal.lean:134},
 all \ev{Lean}). What is missing is the reverse directions, and they all run through one lemma.
@@ -446,7 +446,7 @@ $k\ge1$,
 \]
 \end{lem}
 \begin{proof}
-By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lean:871} (\ev{Lean}),
+By \lean{integerHalfCarry_eq_scaled_residual_add_tail}{HalfCarryReachability.lean:842} (\ev{Lean}),
 \[
 \bigl(\mathtt{integerHalfCarry}\ A\ N:\R\bigr)
 = 2^{\,N+1}\Bigl(\tfrac12-\mathtt{erdosSupportSeries}\ 2\ A\Bigr)
@@ -488,13 +488,13 @@ $\Pi^0_1$ goal.
 
 \textbf{Scope limits to be stated verbatim in the docstrings.} (1) does \emph{not} extend to every
 $A$ with $1\notin A$: without
-\lean{erdosSupportSeries_greedyMersenneSupport_le}{HalfCarryReachability.lean:888} (which supplies
+\lean{erdosSupportSeries_greedyMersenneSupport_le}{HalfCarryReachability.lean:859} (which supplies
 $\delta:=1/2-S_G\ge0$ for the greedy support specifically) one obtains only the one-sided
 equivalence $\text{hbound}\iff(1/2-S_A)\le0$. The mechanism in all five cases is the same and
 should be recorded once: $2^{\,N+1}\delta$ dominates any $\sqrt{N}$ envelope, so a strip
 hypothesis forces $\delta=0$; and $\delta=0$ makes the unconditional tail bound supply the strip.
 Membership is then read off by
-\lean{mem_mersenneAchievementSet_iff_greedy_survival}{GreedyAchievementSet.lean:1458} (\ev{Lean}).
+\lean{mem_mersenneAchievementSet_iff_greedy_survival}{GreedyAchievementSet.lean:1445} (\ev{Lean}).
 
 \subsection{R5. The sparse/dense trichotomy --- and a proof that the present engine cannot close it}
 \label{sec:invent-R5}
@@ -510,7 +510,7 @@ Membership is then read off by
 The sparse branch is already closed twice over: it contradicts
 \lean{supportCoeffZeroWindow_length_le_eps_logb}{SublogDivisorCoverage.lean:435} (\ev{Lean},
 unconditional and uniform in $A$) whenever the series is rational, and the far sparse edge is
-covered outright by \lean{irrational_erdosSum_of_lcm_gap}{CertificateKernel.lean:5883} (\ev{Lean}).
+covered outright by \lean{irrational_erdosSum_of_lcm_gap}{CertificateKernel.lean:6071} (\ev{Lean}).
 The dense branch is the missing producer: for $A$ whose divisor incidence is bounded below
 infinitely often, construct
 \[
@@ -650,7 +650,7 @@ a small modulus predicts. That datum does not discriminate.
 Third, and this is the sharpest internal check available: pseudorandomness is a claim about the
 \emph{absence} of structure, and the corpus contains an unmistakable piece of \emph{present}
 structure --- strict superincreasingness of the Mersenne weights, which forces the digit coding to
-be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1559},
+be injective (\lean{positiveMersenneDigitValue_injective}{GreedyAchievementSet.lean:1567},
 \ev{Lean}), collapses every witness space to a singleton, and makes the static adversarial tier
 coincide with the dynamic greedy orbit. That structure is rigid, not random. So the honest
 description is a hybrid: a rigid skeleton with a pseudorandom digit stream running along it. The

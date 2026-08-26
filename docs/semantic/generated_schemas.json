@@ -89,9 +89,9 @@
           ]
         ]
       },
-      "generator": "ai_workflow/tools/meta/factory/run_formal_math_erdos257_period_noncollapse_strike.py \u2014 NOT in this repository",
+      "generator": "<private-generator-repository>/run_formal_math_erdos257_period_noncollapse_strike.py \u2014 NOT in this repository",
       "generator_evidence": "`_render_direct_prime_generated_certificate_module(..., header=\"-- Generated direct-prime emitted certificate aggregate.\")` at line 2513 of the strike script; the row/def/orderOf name templates `emittedCertificate_b{b}_L{L}_A{A}` and `orderOf_b{b}_mod{Q}_eq_{L}_from_emittedCertificate_denNorm` appear verbatim at lines 840-841.",
-      "provenance_evidence": "Line 1 of the module is the literal comment `-- Generated direct-prime emitted certificate aggregate.`, followed by `import Erdos249257.CertificateKernel` and one import per emitted shard. The module sets `set_option linter.unusedTactic false` / `linter.unreachableTactic false`, the emitter's characteristic linter suppression. The byte-identical upstream file exists at <generator-repo>/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeneratedCertificates.lean modulo the namespace rename Erdos257PeriodNoncollapse -> Erdos249257 (verified by diff).",
+      "provenance_evidence": "Line 1 of the module is the literal comment `-- Generated direct-prime emitted certificate aggregate.`, followed by `import Erdos249257.CertificateKernel` and one import per emitted shard. The module sets `set_option linter.unusedTactic false` / `linter.unreachableTactic false`, the emitter's characteristic linter suppression. The byte-identical upstream file exists at <private-source-tree>/GeneratedCertificates.lean modulo the namespace rename Erdos257PeriodNoncollapse -> Erdos249257 (verified by diff).",
       "declaration_shapes": [
         {
           "name_pattern": "concrete_generated_bN_FN_AN_pN_prime_witness",
@@ -177,9 +177,9 @@
           "b2_L210_A21371": 11
         }
       },
-      "generator": "ai_workflow/tools/meta/factory/run_formal_math_erdos257_period_noncollapse_strike.py \u2014 NOT in this repository",
+      "generator": "<private-generator-repository>/run_formal_math_erdos257_period_noncollapse_strike.py \u2014 NOT in this repository",
       "generator_evidence": "`_render_direct_prime_generated_certificate_shard_module` (line 2448, header f\"-- Generated direct-prime emitted certificate shard: {spec_id}.\") and `_render_direct_prime_generated_certificate_manifest_shard_module` (line 2457, header \"-- Generated direct-prime emitted certificate shard from manifest: ...\"), with spec_id built as f\"b{b}_L{L}_A{A}\" at line 6475.",
-      "provenance_evidence": "Line 1 of each module is `-- Generated direct-prime emitted certificate shard: b10_L6_A11.` or `-- Generated direct-prime emitted certificate shard from manifest: b2_L105_A75047.`; each imports only Erdos249257.CertificateKernel and carries the same two linter suppressions. Byte-identical upstream copies exist under <generator-repo>/formal_math/erdos257_period_noncollapse/Erdos257PeriodNoncollapse/GeneratedCertificates/ modulo the namespace rename (verified by diff on b10_L6_A11.lean).",
+      "provenance_evidence": "Line 1 of each module is `-- Generated direct-prime emitted certificate shard: b10_L6_A11.` or `-- Generated direct-prime emitted certificate shard from manifest: b2_L105_A75047.`; each imports only Erdos249257.CertificateKernel and carries the same two linter suppressions. Byte-identical upstream copies exist under <private-source-tree>/GeneratedCertificates/ modulo the namespace rename (verified by diff on b10_L6_A11.lean).",
       "declaration_shapes": [
         {
           "name_pattern": "concrete_generated_bN_FN_AN_pN_prime_witness",
@@ -256,7 +256,7 @@
           "17": 26
         }
       },
-      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
+      "generator": "<private-generator-repository>/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
       "generator_evidence": "OUTPUT = .../DiagonalPincerCertificates.lean at line 33 of the builder; the module docstring text \"This generated module materializes the kernel-safe prefix of finite\" is emitted at line 136; LANDED_MAX_T = 17 at line 57.",
       "provenance_evidence": "Module docstring reads `This generated module materializes the kernel-safe prefix of finite certifiedKill (periodLcm t) (periodLcm t) L_min rows in the imported pincer table: 12 distinct scales through t = 17`, and pins two input hashes: `Results input SHA-256: 1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd` and `Factorization input SHA-256: 4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d` (the upstream JSON artifacts erdos249_pincer_results_t83.json / erdos249_pincer_factorisations_t83.json). Ends with `#print axioms certifiedKill_diagonal_all_imported`.",
       "declaration_shapes": [
@@ -432,7 +432,7 @@
           "64": 0
         }
       },
-      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
+      "generator": "<private-generator-repository>/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
       "generator_evidence": "T19_OUTPUT..T64_OUTPUT constants at lines 37-53 and the `build_scale_extension(...)` calls at lines ~720-1360; the emitted docstring template f\"This generated extension consumes {len(new_large_primes)} new large-prime Lucas roots\" is at line 1083 and the theorem-name template f\"theorem certifiedKill_diagonal_t{scale} :\" at line 1140 (with `axiom_target = f\"certifiedKill_diagonal_t{scale}\"` at line 1182).",
       "provenance_evidence": "Each module's docstring is an instance of `This generated extension consumes <n> ... Lucas certificates/roots ..., reconstructs all <k> Euler totients in the t=<t> window, and proves the <ordinal> finite diagonal kill without native evaluation/native_decide`, followed by the emitter's fixed option block `set_option maxRecDepth 100000` + `linter.unusedTactic/unreachableTactic/unnecessarySeqFocus false` and a section header `/-! ## Prime leaves used by the t=<t> window -/`. Each ends with `#print axioms certifiedKill_diagonal_t{t}`. From t = 47 on, large primality is taken from the single shared closure module instead of per-prime imports.",
       "declaration_shapes": [
@@ -492,7 +492,7 @@
         "totient_rows": 186,
         "prime_leaf_source": "Erdos249257.DiagonalPincerPrimeCertificates.ClosureT64"
       },
-      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
+      "generator": "<private-generator-repository>/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
       "generator_evidence": "T64_ENDPOINT_OUTPUT at line 54; emitted by `build_scale_extension(SIXTEENTH_EXTENSION_T, None, preexisting_primes, \"standalone exponent-six\", shared_prime_closure=t64_prime_closure, include_aggregate=False)` at lines 1360-1367.",
       "provenance_evidence": "Docstring is the extension template with the ordinal slot filled by `standalone exponent-six`: `This generated extension consumes 175 new large-prime Lucas roots and 1067 recursive Pratt dependencies, reuses 0 earlier certificates, reconstructs all 186 Euler totients in the t=64 window, and proves the standalone exponent-six finite diagonal kill without native_decide.` Section header `/-! ## The standalone exponent-six finite diagonal certificate -/` precedes the theorem; module ends with `#print axioms certifiedKill_diagonal_t64`. Imports only DiagonalPincerCertificates and DiagonalPincerPrimeCertificates.ClosureT64.",
       "declaration_shapes": [
@@ -547,9 +547,9 @@
         "declarations_per_module": 1,
         "recursive_pratt_dependencies": "115 of the 480 leaf modules import at least one other leaf module as a Pratt sub-certificate"
       },
-      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
+      "generator": "<private-generator-repository>/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
       "generator_evidence": "PRIME_OUTPUT_DIR at line 36; the per-module docstring f\"/-! A bounded Lucas certificate for one t={scale} prime leaf. -/\" is emitted at line 473 with namespace lines `Erdos257PeriodNoncollapse` / `TotientTailPeriodKiller` at 475-476.",
-      "provenance_evidence": "Every module's line 3 is the one-line docstring `/-! A bounded Lucas certificate for one t=<t> prime leaf. -/` (10 distinct t values: 19,23,25,27,29,31,32,37,41,43); all 481 files in the directory import `Erdos249257.DiagonalPincerCertificates` and set `maxRecDepth 100000` / `maxHeartbeats 1000000`. Prime100979387.lean is byte-identical to its upstream counterpart under <generator-repo>/formal_math/erdos257_period_noncollapse/ modulo the namespace rename (verified by diff).",
+      "provenance_evidence": "Every module's line 3 is the one-line docstring `/-! A bounded Lucas certificate for one t=<t> prime leaf. -/` (10 distinct t values: 19,23,25,27,29,31,32,37,41,43); all 481 files in the directory import `Erdos249257.DiagonalPincerCertificates` and set `maxRecDepth 100000` / `maxHeartbeats 1000000`. Prime100979387.lean is byte-identical to its upstream counterpart under <private-source-tree>/ modulo the namespace rename (verified by diff).",
       "declaration_shapes": [
         {
           "name_pattern": "prime_lucas_N",
@@ -598,7 +598,7 @@
           64
         ]
       },
-      "generator": "ai_workflow/tools/meta/factory/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
+      "generator": "<private-generator-repository>/build_erdos249_diagonal_pincer_certificates.py \u2014 NOT in this repository",
       "generator_evidence": "T64_PRIME_CLOSURE_OUTPUT = PRIME_OUTPUT_DIR / \"ClosureT64.lean\" at line 55; the docstring line \"This generated module is the compressed primality dependency surface for\" is emitted at line 673 with the namespace lines at 680-681; it is threaded into build_scale_extension as `shared_prime_closure=t64_prime_closure` for t = 47,49,53,59,61,64.",
       "provenance_evidence": "Module docstring: `# Shared Lucas closure through t=64 / This generated module is the compressed primality dependency surface for the t=47,49,53,59,61,64 diagonal-pincer certificates.  Dependencies are declared before consumers.  Each modular congruence is reduced through the logarithmic binaryPowMod recurrence and checked by kernel decide; lucas_primality remains the proof-producing theorem.` Options `maxRecDepth 100000` / `maxHeartbeats 2000000` (double the per-leaf value).",
       "declaration_shapes": [
@@ -647,7 +647,7 @@
     "Only 5 of the 8,171 generated declarations are linked to docs/claims.json: certifiedKill_diagonal_t64 (endpoint), certifiedKill_diagonal_all_imported_through_t64, prime_lucas_2364533768205644535022723273, and 2 authored declarations in DiagonalPincerDecomposition.lean."
   ],
   "risks_and_caveats": [
-    "Neither generator lives in this repository. Both are in <generator-repo>/tools/meta/factory/, and the diagonal-pincer generator reads two JSON artifacts under <generator-repo>/state/formal_math_research_operations/pilots/erdos249/typeb_artifacts_2026_07_10/ that are not vendored here. A cold clone of this repository cannot regenerate or re-verify the provenance of 503 of its 650 modules; only the two SHA-256 input hashes recorded in DiagonalPincerCertificates.lean tie the output to its inputs.",
+    "Neither generator lives in this repository. Both are in a private generator repository, and the diagonal-pincer generator reads two private JSON evidence artifacts that are not vendored here. A cold clone of this repository cannot regenerate or re-verify the provenance of 503 of its 650 modules; only the two SHA-256 input hashes recorded in DiagonalPincerCertificates.lean tie the output to its inputs.",
     "The generated layer is a leaf in the import graph. Only the root aggregation module Erdos249257.lean imports it (20 direct edges). No authored mathematical module depends on any generated declaration, so removing the whole generated layer would not break a single authored proof.",
     "Erdos249257.TotientTailPeriodKiller.certifiedKill_diagonal_t64 is declared twice (DiagonalPincerCertificatesT64.lean:1928 and DiagonalPincerCertificateT64Endpoint.lean:1928) with identical statements, and Erdos249257.lean imports both modules.",
     "63.8% of the corpus by declaration count (8,171 of 12,809) is emitted certificate text. Any statistic quoted over 'declarations' in this repository is dominated by finite instances of two schemas unless the generated layer is excluded."

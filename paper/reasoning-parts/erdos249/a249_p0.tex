@@ -111,7 +111,7 @@ S \;\neq\; p.
 Equivalently: \emph{if $S$ is rational, its reduced denominator exceeds}
 $Q_0 \approx 7.96 \times 10^{34}$.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
+\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18572}
 \end{thm}
 
 \begin{rem}[What this does and does not say]
@@ -156,8 +156,8 @@ exactly, with no boundary correction, because the visible-point count on the
 half-open antidiagonal at height $n$ equals $\varphi(n)$ for every $n$,
 including $n=0,1$.
 \coord{probability} \scale{n/a} \ev{Lean}
-\lean{tsum_visible_coprime_pairs_eq_totient_series}{CertificateKernel.lean:18544}
-\lean{totient_series_eq_half_add_visible_coprime_pairs}{CertificateKernel.lean:18557}
+\lean{tsum_visible_coprime_pairs_eq_totient_series}{CertificateKernel.lean:18732}
+\lean{totient_series_eq_half_add_visible_coprime_pairs}{CertificateKernel.lean:18745}
 \end{prop}
 
 \begin{prop}[The gcd-layer normalisation]
@@ -178,7 +178,7 @@ Q_1 := \left\lfloor \frac{Q_0}{2} \right\rfloor = 39\,819\,823\,323\,350\,687\,6
 For every $a\in\mathbb{Z}$, $d\in\mathbb{N}$ with $0<d\le Q_1$: the visible
 coprime-pair probability $\Pr(\gcd(X,Y)=1)$ is not equal to $a/d$.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18572}
+\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18760}
 \end{thm}
 
 \begin{thm}[Denominator exclusion for the M\"obius-square form]
@@ -188,7 +188,7 @@ $d\in\mathbb{N}$ with $0<d\le Q_1$, the signed series
 $T := \sum_{d\ge1} \mu(d)/(2^d-1)^2 = S - \tfrac12$ (see \S\ref{ssec:mobius})
 is not equal to $a/d$.
 \coord{farey} \scale{bounded} \ev{Lean}
-\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18487}
+\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18675}
 \end{thm}
 
 \begin{rem}[Why the bound halves, and why this is not new information]
@@ -236,7 +236,7 @@ near-integer irrationality criterion and of the level-1 sibling identity
 $L(\mu):=\sum_d \mu(d)/(2^d-1) = \tfrac12$ (rational, trivially) alongside
 $L(1) = \sum_d 1/(2^d-1) = E$, the Erd\H{o}s--Borwein constant, which
 \emph{is} proved irrational in this same kernel
-(\lean{irrational_erdosBorwein_series}{CertificateKernel.lean:8335}, \ev{Lean}).
+(\lean{irrational_erdosBorwein_series}{CertificateKernel.lean:8523}, \ev{Lean}).
 This is the opposite regime from Proposition~\ref{prop:shift}'s
 \textbf{binary-digit coordinate}, where the corresponding weight satisfies
 $0\le\varphi(n)\le n$ and is unbounded.  The function $\varphi$ has average
@@ -245,9 +245,9 @@ $\sum_{k\le x}\varphi(k)\sim 3x^2/\pi^2$, but there is no pointwise estimate
 $\varphi(n)=\Theta(n)$. A
 near-integer/Dirichlet-approximation argument of Erd\H{o}s-1948 shape
 (formalised generically as
-\lean{irrational_of_int_mul_near_int}{CertificateKernel.lean:6120} and its
+\lean{irrational_of_int_mul_near_int}{CertificateKernel.lean:6308} and its
 base-power specialisation
-\lean{irrational_of_pow_mul_near_int}{CertificateKernel.lean:6149}, both
+\lean{irrational_of_pow_mul_near_int}{CertificateKernel.lean:6337}, both
 \ev{Lean}, \coord{n/a}, fully coordinate-free) has a genuine chance of
 transferring to $T$ precisely because its weight is bounded, in a way it does
 not have a chance of transferring directly to the raw $\varphi(n)/2^n$ series.
@@ -363,7 +363,7 @@ and $r.\mathrm{den}\mid 2^{14}(2^h-1)$.
 &
 \scale{fixed}
 &
-\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:18890}
+\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:19078}
 \\
 Diagonal-pincer certificates, base 12 scales
 &
@@ -434,8 +434,8 @@ $\Pr(\gcd(X,Y)=1)$ and, separately, of $T=\sum_d\mu(d)/(2^d-1)^2$.
 &
 \scale{bounded}
 &
-\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18572}
-\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18487}
+\lean{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18760}
+\lean{tsum_moebius_div_two_pow_sub_one_sq_ne_int_div_of_den_le_39819823323350687661677887437915526}{CertificateKernel.lean:18675}
 \\
 \end{longtable}
 \normalsize
