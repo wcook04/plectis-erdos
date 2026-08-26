@@ -874,7 +874,7 @@
     "owner": "docs/problem_index_source.json",
     "owner_digest": "sha256:76129111c39b0624183cc6934f841f1e17279f3e32f81a19282d8ee182be3e91",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:e13e80b5cd74acba27587d4e067e4b9ae9f02160bf706da5bd54da6a7aa780d8",
+    "projection_digest": "sha256:bb3e5906f0d5130b4da94fd77695f20ec49e5bcf4741e4104d168d8c86ab5cbe",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -893,10 +893,10 @@
             "module": "ErdosProblems.Erdos68.FactorialZeroPlateau",
             "path": "ErdosProblems/Erdos68/FactorialZeroPlateau.lean",
             "present": true,
-            "line_count": 1756,
-            "declaration_count": 63,
-            "theorem_count": 57,
-            "content_digest": "sha256:00225da717d14e616b606a98dbca4469edd31e4bb83ae1504591e45e68755fbf"
+            "line_count": 1829,
+            "declaration_count": 67,
+            "theorem_count": 61,
+            "content_digest": "sha256:2d6bf8d6048d6247a1ce3793f6506146bc1d899facfab1f50e6be574304027aa"
           },
           {
             "module": "ErdosProblems.Erdos68.CanonicalFactorialDigits",
@@ -920,10 +920,10 @@
             "module": "ErdosProblems.Erdos68.ChannelIntegralCongruence",
             "path": "ErdosProblems/Erdos68/ChannelIntegralCongruence.lean",
             "present": true,
-            "line_count": 1133,
-            "declaration_count": 55,
-            "theorem_count": 46,
-            "content_digest": "sha256:ea7c7f97d774c1cbb9021eb6708da60dcc09ecf6e3c872323aef312b6a026c97"
+            "line_count": 1273,
+            "declaration_count": 57,
+            "theorem_count": 48,
+            "content_digest": "sha256:39461fdf3fa1ff404e6b9ae3ba5e642c88250f62edde20216e1cd65563bd2227"
           },
           {
             "module": "ErdosProblems.Erdos68.DivisorFactorialCentre",
@@ -947,19 +947,19 @@
             "module": "ErdosProblems.Erdos68.FactorialCarry",
             "path": "ErdosProblems/Erdos68/FactorialCarry.lean",
             "present": true,
-            "line_count": 101,
+            "line_count": 103,
             "declaration_count": 8,
             "theorem_count": 5,
-            "content_digest": "sha256:45438410c87c1e0e21e1157cb75e067adf467f89ec0d836d0ab2c569b64da730"
+            "content_digest": "sha256:221c60e6c65a1ffea3efe652c06bbf152ef6b7ae80463bac690077a62e01c5f8"
           },
           {
             "module": "ErdosProblems.Erdos68.FactorialChannelCertificate",
             "path": "ErdosProblems/Erdos68/FactorialChannelCertificate.lean",
             "present": true,
-            "line_count": 172,
+            "line_count": 175,
             "declaration_count": 17,
             "theorem_count": 11,
-            "content_digest": "sha256:170b6eadada6558fb37892ff30e4fbdb1e1c2474db33241da38867dcbd4213a6"
+            "content_digest": "sha256:a294061b7c2a716f4c30ad22641b977fb2b44ad35b8e292affba8db05a9f7d0c"
           },
           {
             "module": "ErdosProblems.Erdos68.FiniteDefectAutomaton",
@@ -983,10 +983,10 @@
             "module": "ErdosProblems.Erdos68.PrimeZeroBranch",
             "path": "ErdosProblems/Erdos68/PrimeZeroBranch.lean",
             "present": true,
-            "line_count": 7293,
-            "declaration_count": 187,
-            "theorem_count": 155,
-            "content_digest": "sha256:de5508cb858fdaaa5d9c4b40bcb65a6960f8c7ebb6209887bd57e800c6674900"
+            "line_count": 7340,
+            "declaration_count": 188,
+            "theorem_count": 156,
+            "content_digest": "sha256:ce7b4a2de42aadf1401e5558bdb12c19994fa4add0f6ddbe0982d7549eda9849"
           },
           {
             "module": "ErdosProblems.Erdos68.StrictSuccessorArithmetic",
@@ -1093,10 +1093,10 @@
             "module": "ErdosProblems.Erdos243.FiniteHorizonResidue",
             "path": "ErdosProblems/Erdos243/FiniteHorizonResidue.lean",
             "present": true,
-            "line_count": 141,
+            "line_count": 140,
             "declaration_count": 10,
             "theorem_count": 7,
-            "content_digest": "sha256:61d3b9deeb41875b031a0b50a27b336d3ebbbfe7111eda14450227c142d13006"
+            "content_digest": "sha256:49d16c244d9b88ebd121bbee594f42a34b2d0f1fe6e2e853ddfe494fe74d7ef6"
           },
           {
             "module": "ErdosProblems.Erdos243.SparseResetRecovery",
@@ -1111,10 +1111,10 @@
             "module": "ErdosProblems.Erdos243.DynamicCancellation",
             "path": "ErdosProblems/Erdos243/DynamicCancellation.lean",
             "present": true,
-            "line_count": 399,
-            "declaration_count": 15,
-            "theorem_count": 15,
-            "content_digest": "sha256:82f16b7f678b422b2c939a1587d27c0fc8c3be08272079e6965eb184bb28d2d6"
+            "line_count": 624,
+            "declaration_count": 21,
+            "theorem_count": 21,
+            "content_digest": "sha256:0da6cf5dd09100a815d79fce850ad458b4a492ccc1206573741f93f7752fdf76"
           },
           {
             "module": "ErdosProblems.Erdos243.FeedbackRealizability",
@@ -1156,10 +1156,10 @@
             "module": "ErdosProblems.Erdos243.WeightedCRTRepair",
             "path": "ErdosProblems/Erdos243/WeightedCRTRepair.lean",
             "present": true,
-            "line_count": 333,
+            "line_count": 309,
             "declaration_count": 17,
             "theorem_count": 11,
-            "content_digest": "sha256:7bd0b18c719d15929bcee8039eb56cc7692853e917853f25e5f74065f603a763"
+            "content_digest": "sha256:1e4c1c72b98ca529897115ca67b29ef0a41c7ed0ae715596885dcc1d38973e83"
           }
         ],
         "note": {
@@ -1242,28 +1242,28 @@
             "module": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
             "path": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
             "present": true,
-            "line_count": 211,
-            "declaration_count": 8,
-            "theorem_count": 5,
-            "content_digest": "sha256:15ebe7ae1ad1fc8c12c85ca4a162689cf29bbe23b4280bb3452e0987694dbbe8"
+            "line_count": 72,
+            "declaration_count": 3,
+            "theorem_count": 2,
+            "content_digest": "sha256:a01c70a582415fe4d7b7d001f43235d60be9aba9c3d5328010c9d247576ed171"
           },
           {
             "module": "ErdosProblems.Erdos249.FiniteEulerSieve",
             "path": "ErdosProblems/Erdos249/FiniteEulerSieve.lean",
             "present": true,
-            "line_count": 69,
+            "line_count": 71,
             "declaration_count": 6,
             "theorem_count": 4,
-            "content_digest": "sha256:a0172184d831cb4d6004781027464922460d762c4a93b17b04fefc950dd62e93"
+            "content_digest": "sha256:b5adbefa9222d83a433b207389a7f605ba1704e84088c32485c9bbe78cad988d"
           },
           {
             "module": "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
             "path": "ErdosProblems/Erdos249/PrimeRayCyclotomicCurvature.lean",
             "present": true,
-            "line_count": 215,
+            "line_count": 217,
             "declaration_count": 14,
             "theorem_count": 9,
-            "content_digest": "sha256:cf342e0c75045d92e8de7630c704f0ab2ee5035b4d9c40d60540390074258f7e"
+            "content_digest": "sha256:5758eaa29ede0846efb37057e2a08d036fe73e6c077e33a1f69bd4c974790a21"
           }
         ],
         "note": {
@@ -1440,10 +1440,10 @@
             "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
             "present": true,
-            "line_count": 421,
-            "declaration_count": 28,
-            "theorem_count": 23,
-            "content_digest": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419"
+            "line_count": 442,
+            "declaration_count": 29,
+            "theorem_count": 24,
+            "content_digest": "sha256:248b0eb519c2879619b111026c1824277766078f50351342018f60b955f89e58"
           }
         ],
         "note": {
@@ -1515,19 +1515,19 @@
             "module": "ErdosProblems.Erdos269.ThreePrimeRunningLcm",
             "path": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
             "present": true,
-            "line_count": 729,
-            "declaration_count": 50,
-            "theorem_count": 34,
-            "content_digest": "sha256:b3279ce084c98e4e7521e0bb94d3e366de010a30548fab0b326390da16ff6c3c"
+            "line_count": 912,
+            "declaration_count": 55,
+            "theorem_count": 39,
+            "content_digest": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036"
           },
           {
             "module": "ErdosProblems.Erdos269.ResidueEscape",
             "path": "ErdosProblems/Erdos269/ResidueEscape.lean",
             "present": true,
-            "line_count": 164,
-            "declaration_count": 8,
-            "theorem_count": 6,
-            "content_digest": "sha256:826a3dd901c86f1876c7e03011447dafef8d3cb139a673227e921bef3a9dfe87"
+            "line_count": 187,
+            "declaration_count": 9,
+            "theorem_count": 7,
+            "content_digest": "sha256:a9ecacf70d358918e3135c39eb9e6c5c3587d99bc46b8726daba4fc8dd315e7e"
           },
           {
             "module": "ErdosProblems.Erdos269.RestrictedFloorSum",
@@ -1551,28 +1551,28 @@
             "module": "ErdosProblems.Erdos269.CarryLiftExtinction",
             "path": "ErdosProblems/Erdos269/CarryLiftExtinction.lean",
             "present": true,
-            "line_count": 351,
+            "line_count": 357,
             "declaration_count": 14,
             "theorem_count": 12,
-            "content_digest": "sha256:ace522da1f0a6833a200efbe18d5961cf3562e1e6756055427b85140d25aae4b"
+            "content_digest": "sha256:7e768fef18077987b9da628ce2414776ee8e23d78258cc282fbb945c6c1503d1"
           },
           {
             "module": "ErdosProblems.Erdos269.ThreeChannelBlockRigidity",
             "path": "ErdosProblems/Erdos269/ThreeChannelBlockRigidity.lean",
             "present": true,
-            "line_count": 128,
+            "line_count": 129,
             "declaration_count": 6,
             "theorem_count": 4,
-            "content_digest": "sha256:5dbd4a448520c6c4de924480e381ee5408a4724a3081837d04bfb4ac1186ae5f"
+            "content_digest": "sha256:2c9d599188304481e3489a22ff2b2dd5204a0383bb6eb808b1ab50a672a18825"
           },
           {
             "module": "ErdosProblems.Erdos269.WeightedPhaseCarry",
             "path": "ErdosProblems/Erdos269/WeightedPhaseCarry.lean",
             "present": true,
-            "line_count": 371,
-            "declaration_count": 23,
-            "theorem_count": 14,
-            "content_digest": "sha256:ef3e57a4728534e108bb4e668ceef2cc102c2cf001673d59d9c15cff7f0beb9e"
+            "line_count": 393,
+            "declaration_count": 24,
+            "theorem_count": 15,
+            "content_digest": "sha256:dfed95906a65288ea8b29213bcb996c1ca0832cfc10da01ab37aa868f2d7cef3"
           }
         ],
         "note": {
@@ -1667,10 +1667,10 @@
             "module": "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
             "path": "ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean",
             "present": true,
-            "line_count": 323,
-            "declaration_count": 21,
-            "theorem_count": 18,
-            "content_digest": "sha256:8736b05c24517e4568cfdfc49f0180089951cc6397ad720d20271fbc9e5e7351"
+            "line_count": 391,
+            "declaration_count": 26,
+            "theorem_count": 23,
+            "content_digest": "sha256:b3cde5cb40fb93fbbd410e8931cd9ae6fcb4e30e1346ac62d62ebaee55f65fb1"
           }
         ],
         "note": {
@@ -1780,7 +1780,7 @@
             "line_count": 450,
             "declaration_count": 36,
             "theorem_count": 25,
-            "content_digest": "sha256:9001917590300c4f10a049af0dc56192f9db95f2700b9cfac5ac88b31505b7d0"
+            "content_digest": "sha256:c03e39bf88456705456d19c473cdc4fbb0cc3f1ab3dd4fa825ba7ba056d9907b"
           },
           {
             "module": "ErdosProblems.Erdos1049.HermitePadeNoGo",
