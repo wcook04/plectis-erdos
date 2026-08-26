@@ -30,7 +30,7 @@ If $S$ is rational then a period exists: $\neg\mathrm{Irrational}(S) \to \exists
 
 \begin{thm}[cert:d5 --- \texttt{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}]
 $\neg\mathrm{Irrational}(S) \to \exists v>0,\, \exists u:\mathbb{N}\to\mathbb{Z},\, \mathrm{IsTemperedBinaryOrbit}\,\varphi\,v\,u \wedge \forall e,\ 2^e-1 \le \mathrm{finrank}_{\mathbb{Q}}(\mathrm{span}(\mathrm{range}(\mathrm{canonicalCarryKernelFamily}\,u\,e)))$. Rationality of $S$ forces its associated tempered integral binary-carry orbit to have unboundedly rich dyadic-section rank; this is a second, coordinate-independent necessary condition on rationality, parallel to cert:a9 but in the carry-kernel-rank coordinate rather than the binary-digit-periodicity coordinate. It is not by itself an irrationality proof. In particular, the later countermodels rule out treating generic finite-rank shift-polynomial or compressed-adjoint observations as the missing opposite inequality; an actual-totient-specific upper bound would be a genuinely new theorem, not a surviving consequence of the present rank machinery.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:carry-kernel-rank} \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:300}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:carry-kernel-rank} \lean{not\_irrational\_totientSeries\_implies\_unbounded\_carryRank\_unconditional}{TotientCarryKernelRigidity.lean:285}
 \end{thm}
 
 \begin{thm}[cert:d4 --- \texttt{linearIndependent\_canonicalTotientKernelFamily}]
@@ -80,7 +80,7 @@ The basepoint $N=14$ yields the denominator factor $2^{14}$; the certificate
 depth is $L=9$.  Consequence:
 $\forall r:\mathbb{Q},\ 1\le h\le 16,\ r.\mathrm{den}\mid
 2^{14}\cdot(2^h-1) \to S \ne r$.
-\par\noindent\ev{Cert} \scale{fixed} \coord{other:binary-window} \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:18890}
+\par\noindent\ev{Cert} \scale{fixed} \coord{other:binary-window} \lean{totient\_series\_ne\_rat\_of\_den\_dvd\_pow\_two\_mul\_mersenne\_upto\_sixteen}{CertificateKernel.lean:19078}
 \end{prop}
 
 \begin{prop}[cert:b11 --- diagonal pincer finite deposits, historical bank and current band]
@@ -160,7 +160,7 @@ If $u:\mathbb{N}\to\mathbb{Q}$ is eventually never equal to $x:\mathbb{R}$, and 
 
 \begin{prop}[cert:d2 --- \texttt{irrational\_of\_int\_mul\_near\_int}, classical near-integer criterion]
 If $\forall q>0,\ \exists m,z:\mathbb{Z},\ 0 < |m\cdot\xi - z| < 1/q$, then $\mathrm{Irrational}(\xi)$. The classical Erd\H{o}s-1948-shape criterion behind digit/carry irrationality proofs. Base-power specialisation $\mathrm{irrational\_of\_pow\_mul\_near\_int}$ (witnesses of form $b^n\cdot\xi$) directly matches a digit/carry construction in any base $b$, hence directly usable for \#257's $b^n-1$ denominators. Together with cert:d1 these are the only two general-purpose irrationality criteria in the whole kernel; everything else exists to supply or substitute for their hypotheses.
-\par\noindent\ev{Lean} \scale{n/a} \coord{n/a} \lean{irrational\_of\_int\_mul\_near\_int}{CertificateKernel.lean:6120} \lean{irrational\_of\_pow\_mul\_near\_int}{CertificateKernel.lean:6149}
+\par\noindent\ev{Lean} \scale{n/a} \coord{n/a} \lean{irrational\_of\_int\_mul\_near\_int}{CertificateKernel.lean:6308} \lean{irrational\_of\_pow\_mul\_near\_int}{CertificateKernel.lean:6337}
 \end{prop}
 
 \begin{prop}[cert:d3 --- \texttt{SeparatedMinorCertificate}, linear independence from a nonzero minor]
@@ -170,7 +170,7 @@ For an indexed family $\mathrm{family}: \iota\to\mathbb{N}\to\mathbb{Q}$: a $\ma
 
 \begin{prop}[cert:d9 --- \texttt{positive\_rational\_difference\_lower\_bound}]
 For $\mathrm{pfx} < \mathrm{whole}:\mathbb{Q}$ (strict): $1/(\mathrm{whole.den}\cdot\mathrm{pfx.den}) \le (\mathrm{whole}:\mathbb{R}) - (\mathrm{pfx}:\mathbb{R})$. A positive rational difference is bounded below by the reciprocal of the product of the two \emph{actual} reduced denominators, not a displayed/guessed one. Fully general; feeds \texttt{prefixDenominator\_shell\_power\_bound\_of\_rational\_difference} and \texttt{nextSupport\_power\_bound\_of\_rational\_difference}, converting any analytic upper bound on a rational gap into a denominator-growth lower bound — plug in any tail estimate from either open problem's coordinate.
-\par\noindent\ev{Lean} \scale{n/a} \coord{n/a} \lean{positive\_rational\_difference\_lower\_bound}{PrimitiveRationalGapSupply.lean:31}
+\par\noindent\ev{Lean} \scale{n/a} \coord{n/a} \lean{positive\_rational\_difference\_lower\_bound}{PrimitiveRationalGapSupply.lean:32}
 \end{prop}
 
 \begin{prop}[mob:a1a --- the M\"obius--squared-Mersenne identity]
@@ -260,7 +260,7 @@ Adjoining a new prime $p \nmid r$: on an old fibre $m$ (with $m \mid r$), $\Phi_
 
 \begin{prop}[cert:d7 --- the Mersenne--Lambert ladder identities]
 Define $L(f) := \sum_{n\ge1} f(n)/(2^n-1)$ (level 1, no square). Writing $A := \varphi*\mu$ (the primitive Euler weight, $\alpha$ in prose): the Dirichlet-convolution identities $A*\zeta = \varphi$ and $\varphi*\zeta = \mathrm{Id}$ separate five exact values of $L$ along one ladder, each obtained by factoring $L(f)$ as a divisor-transform $(f*1)$ followed by binary evaluation, $L(f) = \sum_n (f*1)(m)/2^m$. $S$ sits inside this ladder as $L(A)$: this is \#249 restated in positive Erd\H{o}s--Borwein form.
-\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18415}
+\par\noindent\ev{Lean} \scale{n/a} \coord{mobius-mersenne} \lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18603}
 \end{prop}
 
 \begin{longtable}{@{}l l l@{}}
@@ -279,7 +279,7 @@ $A = \varphi*\mu$ & $L(A) = S$ & \textbf{OPEN} — this is \#249 \\
 \end{longtable}
 
 \begin{rem}[cert:d7 --- reading the ladder]
-This is the single clearest bridge placing \#249 inside \#257's native Mersenne-Lambert coordinate ($\sum f(n)/(b^n-1)$, here $b=2$): if the \#257 lane's Mersenne-coordinate machinery (achievement sets, greedy orbits) can say anything about the sign or density structure of $A = \varphi*\mu$ specifically, it transfers here for free via this ladder identity. Conversely, any \#249 result about $L(A)$ phrased purely in Lambert-series terms (not totient terms) is directly \#257-lane-portable. The `evaluated' identity confirming $S$'s $\mathbb{N}$-indexed form equals its $\mathbb{N}^+$/Lambert-indexed form is the one row here checked directly against source (\lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18415}); the body machinery in \texttt{MersenneLambertLadder.lean} establishing the other four rows was read only via this docstring and is flagged \ev{Cited}/\ev{Math} accordingly except where a specific declaration is named above.
+This is the single clearest bridge placing \#249 inside \#257's native Mersenne-Lambert coordinate ($\sum f(n)/(b^n-1)$, here $b=2$): if the \#257 lane's Mersenne-coordinate machinery (achievement sets, greedy orbits) can say anything about the sign or density structure of $A = \varphi*\mu$ specifically, it transfers here for free via this ladder identity. Conversely, any \#249 result about $L(A)$ phrased purely in Lambert-series terms (not totient terms) is directly \#257-lane-portable. The `evaluated' identity confirming $S$'s $\mathbb{N}$-indexed form equals its $\mathbb{N}^+$/Lambert-indexed form is the one row here checked directly against source (\lean{tsum\_totient\_div\_pow\_two\_eq\_pnat\_half\_pow}{CertificateKernel.lean:18603}); the body machinery in \texttt{MersenneLambertLadder.lean} establishing the other four rows was read only via this docstring and is flagged \ev{Cited}/\ev{Math} accordingly except where a specific declaration is named above.
 \end{rem}
 
 \begin{prop}[mob:e3 --- joint-35 cone annihilator, \texttt{oldChannel\_affine\_moment\_annihilation} / \texttt{joint35\_oldChannel\_zero}]
@@ -328,22 +328,22 @@ On a clean divisor $j \mid \mathrm{periodLcm}(t)$ (every prime factor of $j$ sti
 
 \begin{thm}[cert:b6 --- lcm-cone flatness law, wave-24, \texttt{rational\_totient\_series\_forces\_lcm\_cone\_flatness}]
 $\neg\mathrm{Irrational}(S) \to \exists t_1,\ \forall t\ge t_1,\ \forall q,m:\mathbb{N},\ 0<q \to \mathrm{totientTail}(q\cdot\mathrm{periodLcm}(t) + m\cdot\mathrm{periodLcm}(t)) - \mathrm{totientTail}(q\cdot\mathrm{periodLcm}(t)) \in \mathrm{range}((\uparrow):\mathbb{Z}\to\mathbb{R})$. Rationality forces one fractional constant on the \emph{entire} lcm cone $\{k\cdot\mathrm{periodLcm}(t):k\ge1\}$ at every scale $t\ge t_1$, not just the diagonal pair — a strict generalisation of cert:a9's hypothesis-generating side. Any certificate anywhere on the cone kills \#249 (cert:b7).
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:lcm-cone} \lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{CertificateKernel.lean:19002}
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:lcm-cone} \lean{rational\_totient\_series\_forces\_lcm\_cone\_flatness}{CertificateKernel.lean:19190}
 \end{thm}
 
 \begin{thm}[cert:b7 --- cone collapse, wave-24, annihilator umbrella, \texttt{irrational\_totient\_series\_of\_lcm\_cone\_window\_kill\_supply}]
 $\big(\forall t_0:\mathbb{N},\ \exists t\ge t_0,\ \exists q,m,L:\mathbb{N},\ 0<q \wedge \mathrm{certifiedKill}(m\cdot\mathrm{periodLcm}(t),\, q\cdot\mathrm{periodLcm}(t),\, L)\big) \to \mathrm{Irrational}(S)$. One certified kill anywhere on the two-multiplier lcm cone, at arbitrarily large $t$, suffices. Diagonal (cert:b3) is the cell $q=m=1$; $q$-ray steps are $m=1$; prime-jump pairs are $(q,m)=(1,p-1)$. The widest known target still logically equivalent-in-strength to cert:a10.
-\par\noindent\ev{Lean} (implication proved; hypothesis \ev{Open}) \scale{cofinal} \coord{other:lcm-cone} \lean{irrational\_totient\_series\_of\_lcm\_cone\_window\_kill\_supply}{CertificateKernel.lean:19014}
+\par\noindent\ev{Lean} (implication proved; hypothesis \ev{Open}) \scale{cofinal} \coord{other:lcm-cone} \lean{irrational\_totient\_series\_of\_lcm\_cone\_window\_kill\_supply}{CertificateKernel.lean:19202}
 \end{thm}
 
 \begin{cor}[cert:b8 --- pure non-integrality frontier forms, no certificate vocabulary]
 Diagonal: $\big(\forall t_0,\ \exists t\ge t_0,\ \mathrm{totientTail}(2\cdot\mathrm{periodLcm}(t)) - \mathrm{totientTail}(\mathrm{periodLcm}(t)) \notin \mathrm{range}((\uparrow):\mathbb{Z}\to\mathbb{R})\big) \to \mathrm{Irrational}(S)$; cone form is the $(q,m)$ generalisation identical in shape. Via cert:a7's iff these hypotheses are \emph{exactly} equivalent to cert:b3/cert:b7 respectively. \textbf{The frontier of \#249 stripped of certificate vocabulary}: does $\mathrm{totientTail}(2H_t) - \mathrm{totientTail}(H_t) \notin \mathbb{Z}$ for infinitely many $t$, $H_t = \mathrm{lcm}(1..t)$?
-\par\noindent\ev{Lean} (implication proved; hypothesis \ev{Open}) \scale{cofinal} \coord{other:real-analytic-nonintegrality} \lean{irrational\_totient\_series\_of\_lcm\_diagonal\_nonintegrality\_supply}{CertificateKernel.lean:19034} \lean{irrational\_totient\_series\_of\_lcm\_cone\_nonintegrality\_supply}{CertificateKernel.lean:19046}
+\par\noindent\ev{Lean} (implication proved; hypothesis \ev{Open}) \scale{cofinal} \coord{other:real-analytic-nonintegrality} \lean{irrational\_totient\_series\_of\_lcm\_diagonal\_nonintegrality\_supply}{CertificateKernel.lean:19222} \lean{irrational\_totient\_series\_of\_lcm\_cone\_nonintegrality\_supply}{CertificateKernel.lean:19234}
 \end{cor}
 
 \begin{prop}[cert:b9a --- second-difference certificates, sound but measured not shallower, \texttt{second\_diff\_notMem\_int\_of\_certifiedRank2Kill}]
 $\mathrm{certifiedRank2Kill}(h,N,L) \to \big(\mathrm{totientTail}(N+2h)-\mathrm{totientTail}(N+h)\big) - \big(\mathrm{totientTail}(N+h)-\mathrm{totientTail}(N)\big) \notin \mathrm{range}((\uparrow):\mathbb{Z}\to\mathbb{R})$. Sound second-difference non-integrality via a doubled band radius. Measured cell $(h,N)=(1,8)$: rank-1 fires at depth 8, no rank-2 certificate exists at depth $\le8$, rank-2 first fires at depth 9 — a probe over $t\le20$ finds rank-1 at least as shallow in 30/40 cells. This route is empirically \emph{not} a shortcut over rank-1; flagged do-not-re-attempt without new information.
-\par\noindent\ev{Lean} \scale{uniform} \coord{other:binary-window} \lean{second\_diff\_notMem\_int\_of\_certifiedRank2Kill}{LcmConeFlatness.lean:493} (measured verdict: \lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19090})
+\par\noindent\ev{Lean} \scale{uniform} \coord{other:binary-window} \lean{second\_diff\_notMem\_int\_of\_certifiedRank2Kill}{LcmConeFlatness.lean:493} (measured verdict: \lean{totient\_tail\_rank\_two\_kill\_sound\_but\_not\_shallower\_cell}{CertificateKernel.lean:19278})
 \end{prop}
 
 \begin{thm}[cert:b10a --- cone non-flatness menu refuter, wave-25, sharper than pairwise, \texttt{exists\_nonintegral\_pair\_of\_coneNonflatCert}]
@@ -353,7 +353,7 @@ For a nonempty menu $Q$ of positive vertex multipliers with the one-sided floor 
 
 \begin{thm}[cert:b10b --- cone non-flat supply, wave-25, \texttt{irrational\_totient\_series\_of\_lcm\_cone\_nonflat\_supply}]
 If $\mathrm{coneNonflatCert}$ fires (via cert:b10a) on a menu whose scale is unbounded, then $\mathrm{Irrational}(S)$. The sharpest known certificate-depth-reduced restatement of the wall; for $|Q|\ge3$ genuinely joint (menu inconsistent while every pair consistent) this is the best-known target for a search-based attempt at supplying cert:a10/cert:b3/cert:b7.
-\par\noindent\ev{Lean} (implication proved; supply \ev{Open}) \scale{cofinal} \coord{other:lcm-cone-menu} \lean{irrational\_totient\_series\_of\_lcm\_cone\_nonflat\_supply}{CertificateKernel.lean:19140}
+\par\noindent\ev{Lean} (implication proved; supply \ev{Open}) \scale{cofinal} \coord{other:lcm-cone-menu} \lean{irrational\_totient\_series\_of\_lcm\_cone\_nonflat\_supply}{CertificateKernel.lean:19328}
 \end{thm}
 
 \begin{prop}[cert:b12 --- survivorKill, alternative certificate via bounded carry orbit]

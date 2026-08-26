@@ -23,7 +23,7 @@ import Erdos249257.DiagonalPincerPrimeCertificates.Prime10708457791
 This generated extension consumes seventeen new isolated Lucas certificates
 plus the reused t=19 certificate for 232792561, reconstructs all 70 Euler
 totients in the t=23 window, and proves the fourteenth finite diagonal kill
-without `native evaluation`.
+without `native_decide`.
 -/
 
 namespace Erdos249257

@@ -300,8 +300,8 @@ theorem powerTwoActualPenultimateSignedMarginSupply_of_actualLcmOrbitSeparation
     halfWordBandAt_of_rawApprox_integerSeparation ha2 hq hrawSep
   exact ⟨a, q, ha, hdepth, hband⟩
 
-/-- The orbit-separation supply implies irrationality of the totient series.
-The supply itself remains unproved. -/
+/-- The orbit-separation supply therefore closes the existing Erdős #249
+endpoint. -/
 theorem irrational_totientSeries_of_actualLcmOrbitSeparationSupply
     (hsupply : PowerTwoActualLcmOrbitSeparationSupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) := by

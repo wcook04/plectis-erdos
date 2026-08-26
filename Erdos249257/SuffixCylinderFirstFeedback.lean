@@ -157,7 +157,7 @@ theorem depth27_commonRestrictionAt_fourteen :
     (by norm_num) (by unfold halfStripBound; omega)
   · exact depth27SelectedHalfWindow_hasSuffixCylinderAt_thirteen
   · rw [stage27_endpoint_eq]
-    have hB : halfStripBound 27 = 14 := by decide +kernel
+    have hB : halfStripBound 27 = 14 := by decide
     rw [hB]
     norm_num
 

@@ -1252,7 +1252,7 @@
     },
     {
       "id": "cofinal_stages_conditional_export",
-      "canonical_statement": "Conditional export to the #257-side target. If full cylinder stages exist at cofinally many depths, then terminal-only square-root-strip witnesses exist at cofinally many depths, and hence there is an infinite set A of exponents, with 0 excluded, whose Mersenne support series sums exactly to 1/2. The construction supplies such stages only at the finitely many depths reached so far (through 52); the cofinality hypothesis is exactly the open crux of the whole programme and is proved nowhere in the corpus.",
+      "canonical_statement": "Conditional export to the #257-side target. If full cylinder stages exist at cofinally many depths, then terminal-only square-root-strip witnesses exist at cofinally many depths, and hence there is an infinite set A of exponents whose Mersenne support series sums exactly to 1/2. The construction supplies such stages only at the finitely many depths reached so far (through 52); the cofinality hypothesis is exactly the open crux of the whole programme and is proved nowhere in the corpus.",
       "logical_class": "conditional_implication",
       "problem": "257",
       "evidence": [
@@ -1265,11 +1265,6 @@
           "declaration": "exists_infinite_support_half_of_cofinalCylinderStages",
           "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
           "line": 138
-        },
-        {
-          "declaration": "exists_infinite_positive_support_half_of_cofinalCylinderStages",
-          "module": "Erdos249257/SuffixCylinderTerminalOnlyBridge.lean",
-          "line": 148
         }
       ],
       "concepts": [

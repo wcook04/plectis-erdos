@@ -14,8 +14,9 @@ open Erdos249257.HalfCarrySelectedWindow
 
 /-- Computable divisor coefficient of one finite Boolean word. -/
 def wordCoeff {N : ℕ} (a : HalfWord N) (n : ℕ) : ℕ :=
-  (n.divisors.filter fun d ↦
-    if h : d < N + 1 then a ⟨d, h⟩ = true else False).card
+  if n = 0 then 0
+  else ((Finset.range (N + 1)).filter fun d ↦
+    if h : d < N + 1 then d ∣ n ∧ a ⟨d, h⟩ = true else False).card
 
 /-- The computable finite-word coefficient is the existing support
 coefficient of `wordSupport a`. -/
@@ -24,18 +25,20 @@ theorem wordCoeff_eq_supportCoeff_wordSupport
     wordCoeff a n = supportCoeff (wordSupport a) n := by
   classical
   rw [wordCoeff, supportCoeff_eq_card_filter]
-  congr 1
-  ext d
-  simp only [Finset.mem_filter]
-  constructor
-  · rintro ⟨hddiv, hdword⟩
-    refine ⟨hddiv, ?_⟩
-    by_cases hdN : d < N + 1
-    · exact ⟨hdN, by simpa [hdN] using hdword⟩
-    · simp [hdN] at hdword
-  · rintro ⟨hddiv, hdword⟩
-    rcases hdword with ⟨hdN, hbit⟩
-    exact ⟨hddiv, by simp [hdN, hbit]⟩
+  by_cases hn : n = 0
+  · simp [hn]
+  · rw [if_neg hn]
+    congr 1
+    ext d
+    simp only [Finset.mem_filter, Finset.mem_range, Nat.mem_divisors]
+    constructor
+    · rintro ⟨hdN, hdword⟩
+      have hdata : d ∣ n ∧ a ⟨d, hdN⟩ = true := by
+        simpa [hdN] using hdword
+      exact ⟨⟨hdata.1, hn⟩, ⟨hdN, hdata.2⟩⟩
+    · rintro ⟨⟨hddiv, _⟩, hdword⟩
+      rcases hdword with ⟨hdN, hbit⟩
+      exact ⟨hdN, by simp [hdN, hddiv, hbit]⟩
 
 /-- Executable integer half carry driven by `wordCoeff`. -/
 def wordCarry {N : ℕ} (a : HalfWord N) : ℕ → ℤ
@@ -61,23 +64,55 @@ def depth18Word (k : ℕ) : HalfWord 18 := fun i ↦
     decide (((17 - k) / 2 ^ (18 - i.val)) % 2 = 1)
   else false
 
+/-- Transparent lookup for the square-root strip on rows `1,...,18`.
+Keeping the finite certificate independent of the opaque implementation of
+`Nat.sqrt` lets the kernel reduce the entire Boolean table. -/
+def depth18KernelBound (n : ℕ) : ℕ :=
+  if n < 4 then 6
+  else if n < 9 then 8
+  else if n < 16 then 10
+  else 12
+
+theorem depth18KernelBound_eq_halfStripBound
+    {n : ℕ} (hn : 1 ≤ n) (hn18 : n ≤ 18) :
+    depth18KernelBound n = halfStripBound n := by
+  unfold depth18KernelBound halfStripBound
+  split
+  · have hsqrt : Nat.sqrt n = 1 := by
+      symm
+      exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+    simp [hsqrt]
+  · split
+    · have hsqrt : Nat.sqrt n = 2 := by
+        symm
+        exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+      simp [hsqrt]
+    · split
+      · have hsqrt : Nat.sqrt n = 3 := by
+          symm
+          exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+        simp [hsqrt]
+      · have hsqrt : Nat.sqrt n = 4 := by
+          symm
+          exact Nat.eq_sqrt.2 ⟨by omega, by omega⟩
+        simp [hsqrt]
+
 /-- Fully computable strip and terminal check for one depth-18 word. -/
 def depth18EntryCheck (k : ℕ) : Bool :=
   ((List.range 18).all fun j ↦
     decide (
       (1 : ℤ) ≤ wordCarry (depth18Word k) j ∧
-        wordCarry (depth18Word k) j ≤ halfStripBound (j + 1))) &&
+        wordCarry (depth18Word k) j ≤ depth18KernelBound (j + 1))) &&
   decide (wordCarry (depth18Word k) 17 = (k : ℤ))
 
 /-- One Boolean table covers all twelve carries in the depth-18 strip. -/
 def depth18TableCheck : Bool :=
   (List.range 12).all fun j ↦ depth18EntryCheck (j + 1)
 
-/-- Kernel-reflected evaluation of the complete depth-18 table.  The strip
-bound calls `Nat.sqrt`, whose well-founded recursion the elaborator will not
-unfold, so the goal is discharged by kernel reduction rather than `decide`. -/
+set_option maxRecDepth 100000 in
+/-- Kernel-reflected evaluation of the complete depth-18 table. -/
 theorem depth18TableCheck_eq_true : depth18TableCheck = true := by
-  decide +kernel
+  decide
 
 theorem depth18EntryCheck_eq_true
     {k : ℕ} (hk : 1 ≤ k) (hk12 : k ≤ 12) :
@@ -99,7 +134,7 @@ theorem depth18Word_carry_bounds
   have hrows : ((List.range 18).all fun j ↦
       decide (
         (1 : ℤ) ≤ wordCarry (depth18Word k) j ∧
-          wordCarry (depth18Word k) j ≤ halfStripBound (j + 1))) = true :=
+          wordCarry (depth18Word k) j ≤ depth18KernelBound (j + 1))) = true :=
     (Bool.and_eq_true_iff.mp hentry).1
   have hpred : n - 1 ∈ List.range 18 := by
     rw [List.mem_range]
@@ -108,9 +143,10 @@ theorem depth18Word_carry_bounds
   have hdecoded :
       (1 : ℤ) ≤ wordCarry (depth18Word k) (n - 1) ∧
         wordCarry (depth18Word k) (n - 1) ≤
-          halfStripBound ((n - 1) + 1) :=
+          depth18KernelBound ((n - 1) + 1) :=
     of_decide_eq_true hrow
-  simpa [Nat.sub_add_cancel hn] using hdecoded
+  simpa [Nat.sub_add_cancel hn,
+    depth18KernelBound_eq_halfStripBound hn hn18] using hdecoded
 
 theorem depth18Word_terminal
     {k : ℕ} (hk : 1 ≤ k) (hk12 : k ≤ 12) :

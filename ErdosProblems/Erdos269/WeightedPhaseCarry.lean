@@ -1,6 +1,7 @@
 import ErdosProblems.Erdos269.ThreePrimeRunningLcm
 import Mathlib.Algebra.Order.Floor.Ring
 import Mathlib.LinearAlgebra.FiniteDimensional.Basic
+import Mathlib.LinearAlgebra.Quotient.Basic
 import Mathlib.Tactic
 
 /-!
@@ -367,5 +368,26 @@ theorem finite_realisedSpan_of_factorisation
     exact congrArg
       (fun z : LinearMap.range readout => (z : Func)) hxy
   exact FiniteDimensional.of_injective inclusion hinj
+
+/-- A finite-dimensional function-faithful observer already forces the
+realised symbolic span to be finite-dimensional; no chosen readout map is
+needed.  The realization descends to the quotient by the observer kernel,
+which embeds in the finite-dimensional observer range. -/
+theorem finite_realisedSpan_of_functionFaithfulObserver
+    {𝕜 State Func E : Type*}
+    [DivisionRing 𝕜]
+    [AddCommGroup State] [Module 𝕜 State]
+    [AddCommGroup Func] [Module 𝕜 Func]
+    [AddCommGroup E] [Module 𝕜 E]
+    [FiniteDimensional 𝕜 E]
+    (realise : State →ₗ[𝕜] Func)
+    (C : State →ₗ[𝕜] E)
+    (hfaith : FunctionFaithfulObserver realise C) :
+    FiniteDimensional 𝕜 (LinearMap.range realise) := by
+  letI : FiniteDimensional 𝕜 (State ⧸ LinearMap.ker C) :=
+    FiniteDimensional.of_injective
+      C.quotKerEquivRange.toLinearMap C.quotKerEquivRange.injective
+  rw [← Submodule.range_liftQ (LinearMap.ker C) realise hfaith]
+  infer_instance
 
 end ErdosProblems.Erdos269

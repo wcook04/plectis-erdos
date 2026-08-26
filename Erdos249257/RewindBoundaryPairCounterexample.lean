@@ -44,7 +44,7 @@ def depth26FirstTwoCheck : Bool :=
   (List.range 2).all fun j ↦ depth26EntryCheck (j + 1)
 
 theorem depth26FirstTwoCheck_eq_true : depth26FirstTwoCheck = true := by
-  decide +kernel
+  decide
 
 theorem depth26EntryCheck_eq_true
     {k : ℕ} (hk : 1 ≤ k) (hk2 : k ≤ 2) :

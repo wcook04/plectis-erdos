@@ -196,7 +196,7 @@ def HalfGreedySkippedPrecriticalSuffixSupply : Prop :=
 
 /-- The genuinely residual part of the predecessor supply: only a skipped
 rank immediately before an actual take is exposed.  Consecutive skipped
-ranks have a uniform finite-lookahead proof below. -/
+ranks admit a uniform finite-lookahead proof below. -/
 def HalfGreedyPreTakePrecriticalSuffixSupply : Prop :=
   ∀ c : ℕ,
     6 ≤ c →
@@ -740,94 +740,12 @@ theorem halfGreedySkippedPrecriticalSuffixSupply_of_preTake
     rcases hcSmall with rfl | rfl
     · have hprefix :
           halfGreedyPrefixSupport (4 - 1) = ({2, 3} : Finset ℕ) := by
-        have e0 : greedyMersenneRemainderRat (1 / 2 : ℚ) 0 = 1 / 2 := rfl
-        have e1 : greedyMersenneRemainderRat (1 / 2 : ℚ) 1 = 1 / 2 := by
-          rw [greedyMersenneRemainderRat_succ, e0,
-            if_neg (by norm_num [mersenneWeightRat])]
-        have e2 : greedyMersenneRemainderRat (1 / 2 : ℚ) 2 = 1 / 6 := by
-          rw [greedyMersenneRemainderRat_succ, e1,
-            if_pos (by norm_num [mersenneWeightRat])]
-          norm_num [mersenneWeightRat]
-        show greedyMersennePrefixRat (1 / 2 : ℚ) 3 = ({2, 3} : Finset ℕ)
-        have hfilter :
-            (Finset.range 3).filter
-                (fun k => mersenneWeightRat (k + 1) ≤
-                  greedyMersenneRemainderRat (1 / 2 : ℚ) k) =
-              ({1, 2} : Finset ℕ) := by
-          have h0 : ¬ mersenneWeightRat (0 + 1) ≤
-              greedyMersenneRemainderRat (1 / 2 : ℚ) 0 := by
-            rw [e0]; norm_num [mersenneWeightRat]
-          have h1 : mersenneWeightRat (1 + 1) ≤
-              greedyMersenneRemainderRat (1 / 2 : ℚ) 1 := by
-            rw [e1]; norm_num [mersenneWeightRat]
-          have h2 : mersenneWeightRat (2 + 1) ≤
-              greedyMersenneRemainderRat (1 / 2 : ℚ) 2 := by
-            rw [e2]; norm_num [mersenneWeightRat]
-          ext a
-          simp only [Finset.mem_filter, Finset.mem_range, Finset.mem_insert,
-            Finset.mem_singleton]
-          constructor
-          · rintro ⟨ha, hcond⟩
-            interval_cases a
-            · exact absurd hcond h0
-            · left; rfl
-            · right; rfl
-          · rintro (rfl | rfl)
-            · exact ⟨by norm_num, h1⟩
-            · exact ⟨by norm_num, h2⟩
-        unfold greedyMersennePrefixRat
-        rw [hfilter]
         decide
       rw [hprefix]
       norm_num [localBinarySuffix, localPrefixQuotient,
         localMersenneQuotient]
     · have hprefix :
           halfGreedyPrefixSupport (5 - 1) = ({2, 3} : Finset ℕ) := by
-        have e0 : greedyMersenneRemainderRat (1 / 2 : ℚ) 0 = 1 / 2 := rfl
-        have e1 : greedyMersenneRemainderRat (1 / 2 : ℚ) 1 = 1 / 2 := by
-          rw [greedyMersenneRemainderRat_succ, e0,
-            if_neg (by norm_num [mersenneWeightRat])]
-        have e2 : greedyMersenneRemainderRat (1 / 2 : ℚ) 2 = 1 / 6 := by
-          rw [greedyMersenneRemainderRat_succ, e1,
-            if_pos (by norm_num [mersenneWeightRat])]
-          norm_num [mersenneWeightRat]
-        have e3 : greedyMersenneRemainderRat (1 / 2 : ℚ) 3 = 1 / 42 := by
-          rw [greedyMersenneRemainderRat_succ, e2,
-            if_pos (by norm_num [mersenneWeightRat])]
-          norm_num [mersenneWeightRat]
-        show greedyMersennePrefixRat (1 / 2 : ℚ) 4 = ({2, 3} : Finset ℕ)
-        have hfilter :
-            (Finset.range 4).filter
-                (fun k => mersenneWeightRat (k + 1) ≤
-                  greedyMersenneRemainderRat (1 / 2 : ℚ) k) =
-              ({1, 2} : Finset ℕ) := by
-          have h0 : ¬ mersenneWeightRat (0 + 1) ≤
-              greedyMersenneRemainderRat (1 / 2 : ℚ) 0 := by
-            rw [e0]; norm_num [mersenneWeightRat]
-          have h1 : mersenneWeightRat (1 + 1) ≤
-              greedyMersenneRemainderRat (1 / 2 : ℚ) 1 := by
-            rw [e1]; norm_num [mersenneWeightRat]
-          have h2 : mersenneWeightRat (2 + 1) ≤
-              greedyMersenneRemainderRat (1 / 2 : ℚ) 2 := by
-            rw [e2]; norm_num [mersenneWeightRat]
-          have h3 : ¬ mersenneWeightRat (3 + 1) ≤
-              greedyMersenneRemainderRat (1 / 2 : ℚ) 3 := by
-            rw [e3]; norm_num [mersenneWeightRat]
-          ext a
-          simp only [Finset.mem_filter, Finset.mem_range, Finset.mem_insert,
-            Finset.mem_singleton]
-          constructor
-          · rintro ⟨ha, hcond⟩
-            interval_cases a
-            · exact absurd hcond h0
-            · left; rfl
-            · right; rfl
-            · exact absurd hcond h3
-          · rintro (rfl | rfl)
-            · exact ⟨by norm_num, h1⟩
-            · exact ⟨by norm_num, h2⟩
-        unfold greedyMersennePrefixRat
-        rw [hfilter]
         decide
       rw [hprefix]
       norm_num [localBinarySuffix, localPrefixQuotient,

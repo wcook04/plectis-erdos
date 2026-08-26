@@ -167,6 +167,65 @@ noncomputable def CylinderStage.promoteLow
       S.window hK1N hR S.cylinder hbelow
   exact ⟨hK1N, S.window, S.endpoint, hpromote.1, hpromote.2⟩
 
+/-- Center the odd-row endpoint at the newly exposed head weight. -/
+def centeredThresholdDelta (k endpoint oddCoeff : ℕ) : ℤ :=
+  2 * (endpoint : ℤ) - (oddCoeff : ℤ) - (2 : ℤ) ^ k
+
+/-- Exact two-row centered recurrence.  The Boolean is the boundary decision:
+`true` subtracts the newly exposed head weight, while `false` retains it. -/
+theorem centeredThresholdDelta_step
+    (k endpoint nextEndpoint oddCoeff evenCoeff nextOddCoeff : ℕ)
+    (bit : Bool)
+    (hstep :
+      (nextEndpoint : ℤ) =
+        4 * (endpoint : ℤ) - 2 * (oddCoeff : ℤ) -
+          (if bit then (2 : ℤ) ^ (k + 1) else 0) -
+          (evenCoeff : ℤ)) :
+    centeredThresholdDelta (k + 1) nextEndpoint nextOddCoeff =
+      4 * centeredThresholdDelta k endpoint oddCoeff +
+        (if bit then -(2 : ℤ) ^ (k + 1) else (2 : ℤ) ^ (k + 1)) -
+        2 * (evenCoeff : ℤ) - (nextOddCoeff : ℤ) := by
+  unfold centeredThresholdDelta
+  rw [hstep]
+  split <;> ring
+
+/-- From cutoff two onward, any next centered value lies in one residue class
+modulo eight determined by the three adjacent support coefficients.  This is
+a necessary filter for a future crossing, not a no-crossing theorem. -/
+theorem eight_dvd_centeredThresholdDelta_step_pulse
+    (k endpoint nextEndpoint oddCoeff evenCoeff nextOddCoeff : ℕ)
+    (bit : Bool)
+    (hk : 2 ≤ k)
+    (hstep :
+      (nextEndpoint : ℤ) =
+        4 * (endpoint : ℤ) - 2 * (oddCoeff : ℤ) -
+          (if bit then (2 : ℤ) ^ (k + 1) else 0) -
+          (evenCoeff : ℤ)) :
+    (8 : ℤ) ∣
+      centeredThresholdDelta (k + 1) nextEndpoint nextOddCoeff +
+        2 * (evenCoeff : ℤ) + (nextOddCoeff : ℤ) -
+        4 * (oddCoeff : ℤ) := by
+  obtain ⟨j, rfl⟩ := Nat.exists_eq_add_of_le hk
+  rw [centeredThresholdDelta_step
+    (k := 2 + j) (endpoint := endpoint) (nextEndpoint := nextEndpoint)
+    (oddCoeff := oddCoeff) (evenCoeff := evenCoeff)
+    (nextOddCoeff := nextOddCoeff) bit hstep]
+  unfold centeredThresholdDelta
+  have hpow : (2 : ℤ) ^ (2 + j) = 4 * (2 : ℤ) ^ j := by
+    rw [pow_add]
+    norm_num
+  have hpowSucc : (2 : ℤ) ^ (2 + j + 1) = 8 * (2 : ℤ) ^ j := by
+    rw [show 2 + j + 1 = 3 + j by omega, pow_add]
+    norm_num
+  rw [hpow, hpowSucc]
+  by_cases hbit : bit
+  · rw [if_pos hbit]
+    refine ⟨(endpoint : ℤ) - (oddCoeff : ℤ) - 3 * (2 : ℤ) ^ j, ?_⟩
+    ring
+  · rw [if_neg hbit]
+    refine ⟨(endpoint : ℤ) - (oddCoeff : ℤ) - (2 : ℤ) ^ j, ?_⟩
+    ring
+
 /-- **Total feedback step.** At an exact half-divisor horizon, every full
 suffix-cylinder stage either promotes through the new bit and advances one
 row, or emits a realized localized one-hole seam.  There is no fourth
@@ -196,6 +255,8 @@ theorem CylinderStage.feedbackStep_or_protectedSeam
 #print axioms supportCoeff_profile_of_crossingSuffixCylinder
 #print axioms protectedEvenSeamRealizedAt_succ_of_crossingSuffixCylinder
 #print axioms CylinderStage.promoteLow
+#print axioms centeredThresholdDelta_step
+#print axioms eight_dvd_centeredThresholdDelta_step_pulse
 #print axioms CylinderStage.feedbackStep_or_protectedSeam
 
 end Erdos249257.SuffixCylinderGlobalProducer

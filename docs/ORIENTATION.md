@@ -59,11 +59,11 @@ counted as formal source, never as separate mathematical claims.
 
 | Surface | Count |
 |---|---:|
-| Lean modules | 1,023 |
-| Lean declarations | 153,320 |
-| Theorem-like declarations | 151,085 |
+| Lean modules | 1,209 |
+| Lean declarations | 155,721 |
+| Theorem-like declarations | 152,983 |
 | Manifest-marked generated declarations (a floor, not the share) | 8,171 |
-| Principal claim links | 333 |
+| Principal claim links | 332 |
 
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json).
@@ -127,19 +127,19 @@ declaration name, then source coordinate:
 ```text
 eb_full_support
     irrational_erdosSum_full_support
-    Erdos249257/CertificateKernel.lean:8328
+    Erdos249257/CertificateKernel.lean:8516
 
 eb_constant
     irrational_erdosBorwein_series
-    Erdos249257/CertificateKernel.lean:8335
+    Erdos249257/CertificateKernel.lean:8523
 
 support_families
     erdos257_family_factorial_instance
-    Erdos249257/CertificateKernel.lean:6082
+    Erdos249257/CertificateKernel.lean:6270
 
 denominator_exclusion
     tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053
-    Erdos249257/CertificateKernel.lean:18384
+    Erdos249257/CertificateKernel.lean:18572
 
 certificate_reduction
     irrational_totient_series_of_certificate_supply

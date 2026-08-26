@@ -8,8 +8,8 @@
 \input{problem-note-preamble}
 % Problem-specific source pin: #243's finite-negative-mass results advance
 % independently of the corpus default.
-\renewcommand{\commit}{64f33f3a134d3414c18717d37ab8201e1dd1c98a}
-\renewcommand{\commitshort}{64f33f3a134d}
+\renewcommand{\commit}{8757777b0e944daaa526d3632023be962d204463}
+\renewcommand{\commitshort}{8757777b0e94}
 \hypersetup{
   pdftitle={Excluding the bounded negative part: Lean-checked rigidity for Erdős Problem 243},
   pdfsubject={Erdős Problem Notes: Problem 243},
@@ -393,7 +393,7 @@ realisation, for which the bridging identities are the
 realisation}, the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1875}{natDen_eq_nextDenState}{denominator
 realisation}, and the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{1884}{natTail_eq_sub_centeredState}{signed
+\lword{Erdos243/ReciprocalTailRigidity.lean}{1972}{natTail_eq_sub_centeredState}{signed
 update law}.  A reader should treat the identification with reciprocal tails as
 motivation for the definitions and not as a checked step.
 
@@ -521,9 +521,9 @@ $|E_{n+1}|<C_{n+1}$ by hypothesis.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2133}{centeredState_zero_absorbing}{absorption
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2221}{centeredState_zero_absorbing}{absorption
 of a vanishing centred state}, with the companion
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2160}{eventually_nonzero_of_zero_absorbing}{contrapositive
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2248}{eventually_nonzero_of_zero_absorbing}{contrapositive
 along a tail}: if zero is absorbing beyond some index and $E$ does not vanish
 eventually, then $E$ is nowhere zero beyond that index.
 
@@ -931,9 +931,9 @@ starting bound $B$ and block length $L$, some $n\ge B$ satisfies
 \end{proposition}
 
 \noindent The first assertion is the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2092}{tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes}{sublinear
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2180}{tailGcd_strictGrowthCount_sublinear_of_normalizedVanishes}{sublinear
 strict-growth theorem}; the second is the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2108}{tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes}{arbitrarily
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2196}{tailGcd_exists_arbitrarilyLate_constBlock_of_normalizedVanishes}{arbitrarily
 late constant-block theorem}.  The proof first converts normalised vanishing
 into subexponential growth of $C_n$, then charges every strict divisibility
 increase of $G_n$ against a finite power-of-two budget.  Sparse strict changes
@@ -1004,10 +1004,10 @@ nowhere-vanishing.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2177}{boundedNegativePart_eventually_zero}{bounded-negative-part
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2265}{boundedNegativePart_eventually_zero}{bounded-negative-part
 rigidity}, with the eventual form, in which the centring and the bound need
 only hold from some index, as the
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2264}{eventuallyBoundedNegativePart_eventually_zero}{eventual
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2352}{eventuallyBoundedNegativePart_eventually_zero}{eventual
 bounded-negative-part rigidity}.  The two auxiliary results it uses are the
 \lword{Erdos243/ReciprocalTailRigidity.lean}{1733}{tailState_tendsto_atTop_of_nonzero_normalizedVanishes}{divergence
 from normalised vanishing} and the
@@ -1270,7 +1270,7 @@ one immediately obtains
  \gcd(A_n,a_n-1)\mid E_n.
 \]
 The checked
-\lword{Erdos243/ReciprocalTailRigidity.lean}{2076}{tailState_subexponential_of_normalizedVanishes}{tail-height estimate}
+\lword{Erdos243/ReciprocalTailRigidity.lean}{2164}{tailState_subexponential_of_normalizedVanishes}{tail-height estimate}
 and normalised vanishing make $|E_n|$ subexponential in $n$.
 
 \begin{problem}[old-factor overlap]\label{res:prefixgcd}
@@ -1447,21 +1447,21 @@ eventual constancy & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1819}{antitone
 stabilisation of the nonnegative error & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1837}{centeredState_eventually_zero}\\
 tail realisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1863}{natTail_eq_nextTailState}\\
 denominator realisation & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1875}{natDen_eq_nextDenState}\\
-signed update law & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1884}{natTail_eq_sub_centeredState}\\
-absorption of a vanishing centred state & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2133}{centeredState_zero_absorbing}\\
-contrapositive along a tail & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2160}{eventually_nonzero_of_zero_absorbing}\\
-bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2177}{boundedNegativePart_eventually_zero}\\
-eventual bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2264}{eventuallyBoundedNegativePart_eventually_zero}\\
+signed update law & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{1972}{natTail_eq_sub_centeredState}\\
+absorption of a vanishing centred state & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2221}{centeredState_zero_absorbing}\\
+contrapositive along a tail & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2248}{eventually_nonzero_of_zero_absorbing}\\
+bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2265}{boundedNegativePart_eventually_zero}\\
+eventual bounded-negative-part rigidity & \lrefx{Erdos243/ReciprocalTailRigidity.lean}{2352}{eventuallyBoundedNegativePart_eventually_zero}\\
 forced numerator & \lrefx{Erdos243/FiniteHorizonResidue.lean}{22}{forcedNumerator}\\
 polynomial congruence & \lrefx{Erdos243/FiniteHorizonResidue.lean}{26}{forcedNumerator_modEq}\\
-exact-division cancellation & \lrefx{Erdos243/FiniteHorizonResidue.lean}{41}{quotient_modEq_of_modEq_mul}\\
-horizon modulus & \lrefx{Erdos243/FiniteHorizonResidue.lean}{53}{horizonModulus}\\
-ascending-factorial form & \lrefx{Erdos243/FiniteHorizonResidue.lean}{59}{horizonModulus_eq_ascFactorial}\\
-factorial value at the initial index & \lrefx{Erdos243/FiniteHorizonResidue.lean}{69}{horizonModulus_zero_eq_factorial}\\
-survival predicate & \lrefx{Erdos243/FiniteHorizonResidue.lean}{75}{ForcedSurvives}\\
-quotient transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{85}{forcedQuotient_modEq}\\
-shrinking-modulus transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{97}{forcedSurvives_iff_of_modEq}\\
-factorial residue reduction & \lrefx{Erdos243/FiniteHorizonResidue.lean}{134}{forcedSurvives_iff_of_modEq_factorial}\\
+exact-division cancellation & \lrefx{Erdos243/FiniteHorizonResidue.lean}{42}{quotient_modEq_of_modEq_mul}\\
+horizon modulus & \lrefx{Erdos243/FiniteHorizonResidue.lean}{52}{horizonModulus}\\
+ascending-factorial form & \lrefx{Erdos243/FiniteHorizonResidue.lean}{58}{horizonModulus_eq_ascFactorial}\\
+factorial value at the initial index & \lrefx{Erdos243/FiniteHorizonResidue.lean}{68}{horizonModulus_zero_eq_factorial}\\
+survival predicate & \lrefx{Erdos243/FiniteHorizonResidue.lean}{74}{ForcedSurvives}\\
+quotient transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{84}{forcedQuotient_modEq}\\
+shrinking-modulus transport & \lrefx{Erdos243/FiniteHorizonResidue.lean}{96}{forcedSurvives_iff_of_modEq}\\
+factorial residue reduction & \lrefx{Erdos243/FiniteHorizonResidue.lean}{133}{forcedSurvives_iff_of_modEq_factorial}\\
 \end{tabular}
 \fi
 
@@ -1478,7 +1478,7 @@ the
 \lword{Erdos243/FiniteHorizonResidue.lean}{22}{forcedNumerator}{forced
 numerator}, and the divisor is $n+2$.  The orbit survives a step when that
 division is exact, giving a survival predicate, the
-\lword{Erdos243/FiniteHorizonResidue.lean}{75}{ForcedSurvives}{survival
+\lword{Erdos243/FiniteHorizonResidue.lean}{74}{ForcedSurvives}{survival
 predicate}.  Example~\ref{ex:shape} is the forced orbit from $a=3$ read this
 way: $\fnum(0,3)=6$ is divisible by $2$ and gives $a_1=3$, while
 $\fnum(1,3)=13$ is not divisible by $3$, so the orbit stops there.  Deciding
@@ -1500,17 +1500,17 @@ and modulus leaves the inductive hypothesis at $M(h,i+1)$.
 \end{proof}
 
 \noindent Formalised as the
-\lword{Erdos243/FiniteHorizonResidue.lean}{134}{forcedSurvives_iff_of_modEq_factorial}{factorial
+\lword{Erdos243/FiniteHorizonResidue.lean}{133}{forcedSurvives_iff_of_modEq_factorial}{factorial
 residue reduction}, over the
-\lword{Erdos243/FiniteHorizonResidue.lean}{97}{forcedSurvives_iff_of_modEq}{shrinking-modulus
+\lword{Erdos243/FiniteHorizonResidue.lean}{96}{forcedSurvives_iff_of_modEq}{shrinking-modulus
 transport}, the
 \lword{Erdos243/FiniteHorizonResidue.lean}{26}{forcedNumerator_modEq}{polynomial
 congruence}, and the
-\lword{Erdos243/FiniteHorizonResidue.lean}{41}{quotient_modEq_of_modEq_mul}{exact-division
+\lword{Erdos243/FiniteHorizonResidue.lean}{42}{quotient_modEq_of_modEq_mul}{exact-division
 cancellation}; the modulus identifications are the
-\lword{Erdos243/FiniteHorizonResidue.lean}{59}{horizonModulus_eq_ascFactorial}{ascending-factorial
+\lword{Erdos243/FiniteHorizonResidue.lean}{58}{horizonModulus_eq_ascFactorial}{ascending-factorial
 form} and the
-\lword{Erdos243/FiniteHorizonResidue.lean}{69}{horizonModulus_zero_eq_factorial}{factorial
+\lword{Erdos243/FiniteHorizonResidue.lean}{68}{horizonModulus_zero_eq_factorial}{factorial
 value at the initial index}.
 
 At $h=1$ the modulus is $2!=2$, and surviving one update means

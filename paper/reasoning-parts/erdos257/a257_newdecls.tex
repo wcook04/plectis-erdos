@@ -20,17 +20,17 @@ $P=(\ldots).\mathrm{belowPulse}$,
 \neg(4R-P-4\le-4\ \vee\ 0\le 4R-P-4)\ \Longleftrightarrow\ 4R-P-4\in\{-3,-2,-1\}
 \]
 \end{prop}
-(\lean{seamMiddleCoordinate\_not\_safe\_iff\_three\_cells}{HalfCylinderMiddleCarryLowerBound.lean:4125},
+(\lean{seamMiddleCoordinate\_not\_safe\_iff\_three\_cells}{HalfCylinderMiddleCarryLowerBound.lean:4170},
 \ev{Lean}, \scale{uniform}, \coord{mobius-mersenne}, proved by \texttt{omega} from the integer
 definitions). This is the exact unconditional source of the "three integer values" language used
 above for O5; it was previously asserted in prose only.
 
 Two companion bounds pin the scaled rational residual inside a genuine middle transition:
 $4\cdot\mathtt{seamGreedyFloorZ}\,s\le c$ from a cell label $4R=P+c$
-(\lean{seamMiddleCell\_four\_mul\_floorZ\_le}{HalfCylinderMiddleCarryLowerBound.lean:4142}, \ev{Lean}),
+(\lean{seamMiddleCell\_four\_mul\_floorZ\_le}{HalfCylinderMiddleCarryLowerBound.lean:4528}, \ev{Lean}),
 and, combining it with the successor floor-$Z$ recurrence, $4^{s+1}\cdot
 \mathtt{seamWordRationalRemainder}(\mathtt{seamGreedyWord}(s+1))\le 2^{s+2}+c$
-(\lean{seamMiddleCell\_scaledRationalRemainder\_le}{HalfCylinderMiddleCarryLowerBound.lean:4167},
+(\lean{seamMiddleCell\_scaledRationalRemainder\_le}{HalfCylinderMiddleCarryLowerBound.lean:4553},
 \ev{Lean}). The module's own remark is that for the first exceptional cell ($c=-3$, i.e.\ the cell
 already closed by \lean{finalMiddleCell\_neg\_three\_not\_last}{HalfCylinderFinalMiddleCellEscape.lean:587})
 this leaves margin exactly $1$ against a needed correction-tail slack of $4/3+\varepsilon$ --- a
@@ -38,27 +38,27 @@ concrete near-miss, not a proof, and it does not extend to the two open cells $-
 
 A parallel iff for the right branch: an overshoot witness $\le2^s$ produces a pulse leak above
 $2^{s+2}$ exactly when the overshoot sits within an explicit distance $k$ of $2^s$ with
-$4k<\mathrm{abovePulse}$ (\lean{seamRightPulseLeak\_iff\_distanceCell}{HalfCylinderMiddleCarryLowerBound.lean:4202},
+$4k<\mathrm{abovePulse}$ (\lean{seamRightPulseLeak\_iff\_distanceCell}{HalfCylinderMiddleCarryLowerBound.lean:4588},
 \ev{Lean}). A new one-coordinate normal form, $\mathtt{seamPureHalfPrefixRemainder}\,s :=
 \mathtt{integerGreedyRemainder}(\mathtt{seamWeights}\,s)(2^{2s-1})$
-(\lean{seamPureHalfPrefixRemainder}{HalfCylinderMiddleCarryLowerBound.lean:4232}), is given an exact
-case-split closed form (\lean{seamPureHalfPrefixRemainder\_eq\_ite}{HalfCylinderMiddleCarryLowerBound.lean:4238},
+(\lean{seamPureHalfPrefixRemainder}{HalfCylinderMiddleCarryLowerBound.lean:4618}), is given an exact
+case-split closed form (\lean{seamPureHalfPrefixRemainder\_eq\_ite}{HalfCylinderMiddleCarryLowerBound.lean:4624},
 \ev{Lean}) that the file states is equivalent to the two-sided invariant, but this equivalence is not
 itself yet packaged as a separate reusable lemma beyond
-\lean{seamPureHalfPrefixRemainder\_le\_iff\_twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4356} (\ev{Lean}).
+\lean{seamPureHalfPrefixRemainder\_le\_iff\_twoSided}{HalfCylinderMiddleCarryLowerBound.lean:4742} (\ev{Lean}).
 
 \begin{obs}[The reset-band socket has a certified base case]
 \texttt{SeamUpperResetDyadicBandEscape} (O5's second socket, discussed after \S\ref{sec:o4} above) is
 reduced by three new lemmas to a quarter-scale overshoot exclusion: the iff
-\lean{seamUpperReset\_band\_iff\_successorRemainder\_avoids}{HalfCylinderMiddleCarryLowerBound.lean:4469}
+\lean{seamUpperReset\_band\_iff\_successorRemainder\_avoids}{HalfCylinderMiddleCarryLowerBound.lean:4855}
 (\ev{Lean}) rewrites the reset-charge band as a successor-remainder avoidance; the identity
-\lean{upperResetCharge\_dyadicDistance\_add\_abovePulse}{HalfCylinderMiddleCarryLowerBound.lean:4490}
+\lean{upperResetCharge\_dyadicDistance\_add\_abovePulse}{HalfCylinderMiddleCarryLowerBound.lean:4876}
 (\ev{Lean}) rescales it by a factor of $4$; and
-\lean{seamUpperReset\_band\_of\_overshoot\_band}{HalfCylinderMiddleCarryLowerBound.lean:4514} (\ev{Lean})
+\lean{seamUpperReset\_band\_of\_overshoot\_band}{HalfCylinderMiddleCarryLowerBound.lean:4900} (\ev{Lean})
 derives the band from a quarter-scale overshoot exclusion plus the pulse bound $\mathrm{abovePulse}\le
 2(d-2)$. Row $d=13$, the first row of the late regime, is then proved unconditionally to escape
 \emph{every} band simultaneously: its successor remainder is exactly $392$
-(\lean{seamUpperResetDyadicBandEscape\_at\_thirteen}{HalfCylinderMiddleCarryLowerBound.lean:4547},
+(\lean{seamUpperResetDyadicBandEscape\_at\_thirteen}{HalfCylinderMiddleCarryLowerBound.lean:4933},
 \ev{Lean}, \ev{Cert} for the numeral $392$). This is one certified row of a socket that is $\forall
 d\ge13$; it is evidence the base case is not itself an obstruction, nothing more.
 \end{obs}
@@ -91,10 +91,7 @@ The end-to-end consumer
 \ \Longrightarrow\ \exists A,\ A.\mathrm{Infinite}\wedge \mathtt{erdosSupportSeries}\ 2\ A=1/2
 \]
 is proved unconditionally
-(\lean{exists\_infinite\_support\_half\_of\_cofinalCylinderStages}{SuffixCylinderTerminalOnlyBridge.lean:277},
-\ev{Lean}), with a positive-support refinement using the same odd-denominator lemma
-\lean{finite\_boolSupport\_ne\_half}{HalfCarryReachability.lean:589} already used for O2 above
-(\lean{exists\_infinite\_positive\_support\_half\_of\_cofinalCylinderStages}{SuffixCylinderTerminalOnlyBridge.lean:287},
+(\lean{exists\_infinite\_support\_half\_of\_cofinalCylinderStages}{SuffixCylinderTerminalOnlyBridge.lean:302},
 \ev{Lean}). The hypothesis, cofinal nonempty full-cylinder stages, is a genuinely new named socket
 for HALF: it has not been checked against O3's \texttt{CofinalExactLocalMersenneHalfRows} or O4's
 \texttt{SQRTESC}, and its own supply is \ev{Open}. It is only a sufficient condition, proved in one
@@ -119,14 +116,14 @@ The reduction $\mathrm{TailEscape}\Rightarrow\mathrm{ExceptNegThree}$ is trivial
 (\lean{SeamMiddleProducerTailEscape.toExceptNegThree}{HalfCylinderLastProducerContradiction.lean:76},
 \ev{Lean}); the substance is in the converse direction of the fan-in. The reduced socket, with cell
 $-3$ discharged by the already-proved
-\lean{middleProducer\_neg\_three\_not\_last}{HalfCylinderLastProducerContradiction.lean:364}, already
+\lean{middleProducer\_neg\_three\_not\_last}{HalfCylinderLastProducerContradiction.lean:365}, already
 suffices to close HALF:
 \[
 \mathrm{SeamMiddleProducerTailEscapeExceptNegThree}\ \Longrightarrow\ (1/2:\mathbb{R})\in\mathcal{A}
 \]
-(\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerTailEscapeExceptNegThree}{HalfCylinderLastProducerContradiction.lean:436},
+(\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerTailEscapeExceptNegThree}{HalfCylinderLastProducerContradiction.lean:437},
 \ev{Lean}), with the unreduced socket and the already-cited square-root majorant both routing through
-it (\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerTailEscape}{HalfCylinderLastProducerContradiction.lean:451},
+it (\lean{half\_mem\_mersenneAchievementSet\_of\_middleProducerTailEscape}{HalfCylinderLastProducerContradiction.lean:452},
 \ev{Lean}). So the chain now reads $\mathrm{SqrtEscape}\Rightarrow\mathrm{TailEscape}\Rightarrow
 \mathrm{ExceptNegThree}\Rightarrow\mathrm{HALF}$, three strictly decreasing sockets where previously
 only the endpoints were exposed; all three antecedents remain \ev{Open}.
@@ -134,19 +131,19 @@ only the endpoints were exposed; all three antecedents remain \ev{Open}.
 \subsubsection{The governed frozen-margin producer (\texttt{HalfCylinderFiniteShadow.lean})}
 
 One further declaration completes a chain the earlier parts cite only up to its antecedent
-equivalence (\lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1229}).
+equivalence (\lean{exists\_greedyHalfFrozenMargin\_nonneg\_iff\_excess\_neg}{HalfCylinderFiniteShadow.lean:1227}).
 
 \begin{defn}[$\mathrm{HalfGreedyGovernedFrozenMarginProducer}$]
 For every $k$ with $\mathtt{mersenneWeight}(k+1)$ exceeding the current greedy remainder, some
 $J\le k+1$ gives a nonnegative frozen margin
-(\lean{HalfGreedyGovernedFrozenMarginProducer}{HalfCylinderFiniteShadow.lean:1267}).
+(\lean{HalfGreedyGovernedFrozenMarginProducer}{HalfCylinderFiniteShadow.lean:1265}).
 \end{defn}
 \[
 \mathrm{HalfGreedyGovernedFrozenMarginProducer}\ \Longrightarrow\ (1/2:\mathbb{R})\in\mathcal{A}
 \]
-(\lean{half\_mem\_mersenneAchievementSet\_of\_governedFrozenMarginProducer}{HalfCylinderFiniteShadow.lean:1275},
+(\lean{half\_mem\_mersenneAchievementSet\_of\_governedFrozenMarginProducer}{HalfCylinderFiniteShadow.lean:1272},
 \ev{Lean}), proved via the pre-existing
-\lean{half\_mem\_mersenneAchievementSet\_of\_skipped\_dyadicCap}{GreedyAchievementSet.lean:1444} and the
+\lean{half\_mem\_mersenneAchievementSet\_of\_skipped\_dyadicCap}{GreedyAchievementSet.lean:1431} and the
 excess-sign equivalence already noted above. This is the module's actual promised consumer; the
 antecedent's own first-passage bound ($J\le k+1$, uniform) is \ev{Open} and has not been checked
 against any of O3--O5's producer sockets.
@@ -193,7 +190,7 @@ Cantor-space no-isolated-point argument on the coding space itself
 Either $J=F^c$ for a finite $F$, and $\mathrm{vol}(\mathtt{supportedMersenneAchievementSet}\,J)=2^{-|F|}$
 exactly, or $J^c$ is infinite and the volume is exactly $0$.
 \end{prop}
-(\lean{volume\_supportedMersenneAchievementSet\_dichotomy}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:397}, \ev{Lean},
+(\lean{volume\_supportedMersenneAchievementSet\_dichotomy}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:418}, \ev{Lean},
 \scale{uniform}, \coord{mobius-mersenne}). The finite case is an exact doubling induction over inserted
 coordinates (\lean{volume\_supportedMersenneAchievementSet\_insert}{ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:286},
 \ev{Lean}, using disjointness of the two coordinate-split faces,
@@ -205,13 +202,13 @@ to O1--O5.
 \subsubsection{New tree: \texttt{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean}}
 
 This short module restates $\mathrm{U257}$ in the new namespace
-(\lean{UniversalMersenneSubseriesIrrationality}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:26}) and gives it a
+(\lean{UniversalMersenneSubseriesIrrationality}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:34}) and gives it a
 problem-centric interface to the legacy half-terminal producer already used for O2 above: any
 \texttt{HalfTerminalOnlyScaledVanishingSequence} witness gives an infinite $A$ with
 $\mathtt{erdosSupportSeries}\ 2\ A=1/2$
-(\lean{exists\_rational\_half\_counterexample\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:31},
+(\lean{exists\_rational\_half\_counterexample\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:39},
 \ev{Lean}), hence refutes $\mathrm{U257}$ outright
-(\lean{not\_universal\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:39}, \ev{Lean}). The
+(\lean{not\_universal\_of\_terminalScaledVanishing}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:47}, \ev{Lean}). The
 module's own docstring states plainly that the producer sequence itself ``has only been checked to a
 large finite cutoff'': this is a restatement of the already-\ev{Open} O2 producer obligation in a new
 namespace, not a new result, and it duplicates \S O2's own logic (any HALF witness is $\neg\mathrm{U257}$)
@@ -222,7 +219,7 @@ the second rational target $1/21$:
   \sum_{n\in F}\frac1{2^n-1}\ne\frac1{21}
 \]
 for every finite $F$
-(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:61}, \ev{Lean},
+(\lean{finiteErdosSum\_ne\_one\_div\_twenty\_one}{ErdosProblems/Erdos257/HalfCounterexampleFrontier.lean:1040}, \ev{Lean},
 \scale{uniform}, \coord{finite-lcm}).  The denominator-order identity forces
 $\operatorname{lcm}(F)=6$, after which the eight subsets of $\{2,3,6\}$ are exact arithmetic.
 This removes finite termination for that target; it does not establish achievement-set membership.

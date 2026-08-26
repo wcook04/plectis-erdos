@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
-\renewcommand{\commitshort}{9e231ce4371f}
+\renewcommand{\commit}{8757777b0e944daaa526d3632023be962d204463}
+\renewcommand{\commitshort}{8757777b0e94}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -256,8 +256,8 @@ shifted by one --- in the sense that the next integer up is the exact first
 denominator at which that window's certificate fails.  The method is the
 classical Farey mediant argument (Section~\ref{sec:denominator}).
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{18371}{tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053}{exclusion},
-\mword{Erdos249257/CertificateKernel.lean}{18384}{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{reduced-denominator form},
+\mword{Erdos249257/CertificateKernel.lean}{18559}{tsum_totient_div_pow_two_ne_int_div_of_den_le_79639646646701375323355774875831053}{exclusion},
+\mword{Erdos249257/CertificateKernel.lean}{18572}{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{reduced-denominator form},
 \mword{Erdos249257/GapFareyBound.lean}{225}{gap_check_window_1_240_first_failure}{first failure}.
 \emph{Registry:} the row owns the reduced-denominator form only.}
 
@@ -274,7 +274,7 @@ only through the Lambert weight, the coprimality identity, or tail differences.
 It is not an irrationality criterion, because no finite-rank upper bound is
 proved for the scaled-tail sequences supplied by rationality.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/TotientCarryKernelRigidity.lean}{300}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
+\mword{Erdos249257/TotientCarryKernelRigidity.lean}{285}{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{the barrier},
 \mword{Erdos249257/TotientCarryKernelRigidity.lean}{211}{finrank_canonicalCarryKernel_ge_of_linearIndependent}{rank transport from \ref{res:rank}}.}
 
 \item\label{res:weight} \stag{checked; no registry row}
@@ -284,7 +284,7 @@ $\Aw(n)=\sum_{d\mid n}\ph(d)\mu(n/d)$; here $\Aw\ge0$, $\Aw(p)=p-2$,
 $\Aw(p^k)=\ph(p^k)-\ph(p^{k-1})$, and $\Aw$ is unbounded.  Its values at
 $n=1,\dots,10$ are $1,0,1,1,3,0,5,2,4,0$.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{18445}{tsum_primWeight_div_two_pow_sub_one_eq_totient_series}{identity},
+\mword{Erdos249257/CertificateKernel.lean}{18633}{tsum_primWeight_div_two_pow_sub_one_eq_totient_series}{identity},
 \mword{Erdos249257/MersenneLambertLadder.lean}{370}{primWeight_nonneg}{sign},
 \mword{Erdos249257/MersenneLambertLadder.lean}{297}{primWeight_apply_prime}{primes},
 \mword{Erdos249257/MersenneLambertLadder.lean}{272}{primWeight_apply_prime_pow}{prime powers},
@@ -309,7 +309,7 @@ positive at some positive index of its periodic part, then
   formal proof.  By \ref{res:weight} the weight $\Aw$ is
 unbounded, hence not eventually periodic, so \#249 is outside this class.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{12811}{irrational_ratWeightSeries_eventuallyPeriodic}{the periodic theorem}.}
+\mword{Erdos249257/CertificateKernel.lean}{12999}{irrational_ratWeightSeries_eventuallyPeriodic}{the periodic theorem}.}
 
 \item\label{res:primindex} \stag{proved here}
 \textbf{No fixed common denominator clears the normalised weight.}  For every integer
@@ -341,7 +341,7 @@ input.
 \mword{Erdos249257/LcmConeFlatness.lean}{399}{irrational_totient_series_iff_pointwise_certificates}{pointwise},
 \mword{Erdos249257/LcmConeFlatness.lean}{412}{irrational_totient_series_iff_certificate_supply}{cofinal at each shift},
 \mword{Erdos249257/LcmConeFlatness.lean}{426}{irrational_totient_series_iff_lcm_diagonal_certificate_supply}{$\lcm$ diagonal},
-\mword{Erdos249257/PivotAntiReconstruction.lean}{1765}{dtwWindowSeparatedPairs_iff_irrational_totient_series}{window-separated pairs}.}
+\mword{Erdos249257/PivotAntiReconstruction.lean}{1775}{dtwWindowSeparatedPairs_iff_irrational_totient_series}{window-separated pairs}.}
 
 \item\label{res:supply} \stag{conditional reduction}
 \textbf{A denominator-indexed gap-certificate hypothesis.}  Suppose that for
@@ -352,7 +352,7 @@ the one of \ref{res:equivalences}: the band scales with $q$, and the family is
 indexed by denominators rather than by shifts.  The converse is not proved and
 is not claimed.
 {\footnotesize\emph{Checked:}
-\mword{Erdos249257/CertificateKernel.lean}{16025}{irrational_tsum_totient_div_pow_two_of_gap_certificate_supply}{the supply implication}.
+\mword{Erdos249257/CertificateKernel.lean}{16213}{irrational_tsum_totient_div_pow_two_of_gap_certificate_supply}{the supply implication}.
 \emph{Registry:} no row currently owns this declaration.}
 
 \item\label{res:open} \stag{open}
@@ -389,7 +389,7 @@ $f$ & $\sum f(n)/2^n$ & weight $g=f*\mu$ & status \\
 $\tau$ & $1.6066951\ldots=\EB$ & $g\equiv1$ & The Erd\H{o}s--Borwein constant;
   irrational~\cite[theorem on p.~63]{erdos1948};
   formalised here in the Lambert form $\sum_{d\ge1}(2^d-1)^{-1}$
-  (\mword{Erdos249257/CertificateKernel.lean}{8335}{irrational_erdosBorwein_series}{checked}) \\
+  (\mword{Erdos249257/CertificateKernel.lean}{8523}{irrational_erdosBorwein_series}{checked}) \\
 $\omega$ & $0.5169428\ldots$ & $g=\mathbf 1_{\text{primes}}$ &
   Irrational at base $2$: Tao--Ter\"av\"ainen, Thm.~1.3, p.~4;
   proof pp.~44--56~\cite{taoteravainen2025} \\
@@ -446,9 +446,9 @@ misidentification; it does not settle or reduce the displayed problem.
 Several neighbouring Dirichlet-convolution identities are rational and
 exactly computable.  Writing $L(g):=\sum_{d\ge1}g(d)/(2^d-1)$, we have
 $\sum_{d\ge1}\mu(d)/(2^d-1)=\tfrac12$
-(\mword{Erdos249257/CertificateKernel.lean}{18434}{tsum_moebius_div_two_pow_sub_one_eq_half}{checked})
+(\mword{Erdos249257/CertificateKernel.lean}{18622}{tsum_moebius_div_two_pow_sub_one_eq_half}{checked})
 and $\sum_{d\ge1}\ph(d)/(2^d-1)=2$
-(\mword{Erdos249257/CertificateKernel.lean}{18429}{tsum_totient_div_two_pow_sub_one_eq_two}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{18617}{tsum_totient_div_two_pow_sub_one_eq_two}{checked}).
 These belong to two distinct one-step M\"obius-convolution chains:
 \[
   L(\mathbf 1)=\EB \ \longmapsto\ L(\mu)=\tfrac12,
@@ -459,7 +459,7 @@ Thus $\Stot$ is one convolution step from the rational value $L(\ph)=2$, not
 from $\EB$; the parallel chains show that this transformation need not
 preserve rationality.  The squared-denominator representation
 $\Stot=\tfrac12+\sum_{d\ge1}\mu(d)/(2^d-1)^2$
-(\mword{Erdos249257/CertificateKernel.lean}{18454}{totient_series_eq_half_add_moebius_mersenne_square}{checked})
+(\mword{Erdos249257/CertificateKernel.lean}{18642}{totient_series_eq_half_add_moebius_mersenne_square}{checked})
 converges fast enough to recompute the decimal above.
 
 There is also an exact probabilistic reading, and it is more than a gloss.
@@ -468,7 +468,7 @@ Then
 \[
   \Stot=\tfrac12+\Pr[\gcd(X,Y)=1]
 \]
-(\mword{Erdos249257/CertificateKernel.lean}{18557}{totient_series_eq_half_add_visible_coprime_pairs}{checked}),
+(\mword{Erdos249257/CertificateKernel.lean}{18745}{totient_series_eq_half_add_visible_coprime_pairs}{checked}),
 the probability being the visible-coprime-pair series
 $\sum_{\gcd(m,n)=1}2^{-(m+n)}$.  That probability is related to a distribution
 over the Stern--Brocot tree in a completely explicit way.  For positive
@@ -641,7 +641,7 @@ $b+d$.  The excluded range is therefore $q\le b+d-1$, which is the printed
 constant
 (\mword{Erdos249257/GapFareyBound.lean}{176}{gap_check_window_1_240_le_79639646646701375323355774875831053}{checked}),
 and the transport to the series is a tail estimate
-(\mword{Erdos249257/CertificateKernel.lean}{15986}{tsum_totient_div_pow_two_ne_int_div_of_totient_gap_certificate}{checked}).
+(\mword{Erdos249257/CertificateKernel.lean}{16174}{tsum_totient_div_pow_two_ne_int_div_of_totient_gap_certificate}{checked}).
 \emph{The method is standard, and we claim no novelty for it.}
 
 Two things should be read off correctly.  First, the scale.  A window of $K$
@@ -659,7 +659,7 @@ is where we would ask a sceptical reader to look.
 The bound transfers to the coprimality form of Section~\ref{sec:family} with
 the constant halved: the visible-coprime-pair series has no representation
 $a/d$ with $d\le39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526$
-(\mword{Erdos249257/CertificateKernel.lean}{18572}{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{checked}),
+(\mword{Erdos249257/CertificateKernel.lean}{18760}{tsum_visible_coprime_pairs_ne_int_div_of_den_le_39819823323350687661677887437915526}{checked}),
 that number being $(q_0-1)/2$ for the constant $q_0$ of
 \ref{res:denominator}.
 
@@ -706,12 +706,12 @@ Each states its unproved hypotheses explicitly.
 
 \paragraph{A prime-orbit sufficient condition.}
 The hypothesis
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{157}{DTWNaturalPrimeTailOrbitStrictGap}{asks}
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{18}{DTWNaturalPrimeTailOrbitStrictGap}{asks}
 for cofinally many primes $p$ at which the first tail-orbit exponential has
 real part strictly below $9/10$.  Granting it,
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{166}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{a positive adaptive truncation budget}
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{27}{naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap}{a positive adaptive truncation budget}
 follows, and then
-\lword{Erdos249/TotientStrictPrimeEscape.lean}{205}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{$\Stot$ is irrational}.
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{66}{irrational_totient_series_of_naturalPrimeTailOrbitStrictGap}{$\Stot$ is irrational}.
 The $9/10$ hypothesis is weaker than the earlier $4/5$ hypothesis, but no
 instance of this cofinal hypothesis is proved.
 Section~\ref{sec:frontier} states the sharper form
@@ -732,20 +732,20 @@ $\sigma_p(e)=1+p+\cdots+p^e$.  The two local Euler factors are
       =\left(1-\frac1{p^2}\right)^2
 \]
 at
-\lword{Erdos249/FiniteEulerSieve.lean}{28}{muSqEulerFactor_one}{$s=1$}
+\lword{Erdos249/FiniteEulerSieve.lean}{30}{muSqEulerFactor_one}{$s=1$}
 and
-\lword{Erdos249/FiniteEulerSieve.lean}{36}{muSqEulerFactor_two}{$s=2$}.
+\lword{Erdos249/FiniteEulerSieve.lean}{38}{muSqEulerFactor_two}{$s=2$}.
 On the prime-power divisor-sum row,
 \[
   \sigma_p(1)-2\sigma_p(0)=p-1
 \]
-(\lword{Erdos249/FiniteEulerSieve.lean}{44}{sigmaPrimePow_firstDiff}{first difference}),
+(\lword{Erdos249/FiniteEulerSieve.lean}{46}{sigmaPrimePow_firstDiff}{first difference}),
 and for every $e\ge0$,
 \[
   \sigma_p(e+2)-2\sigma_p(e+1)+\sigma_p(e)
     =p^{e+1}(p-1)
 \]
-(\lword{Erdos249/FiniteEulerSieve.lean}{51}{sigmaPrimePow_secondDiff}{second difference}).
+(\lword{Erdos249/FiniteEulerSieve.lean}{53}{sigmaPrimePow_secondDiff}{second difference}).
 For example, at $p=3$ the values
 $\sigma_3(0),\ldots,\sigma_3(3)=1,4,13,40$ give
 $4-2=2$ and $40-2\cdot13+4=18=3^2(3-1)$.  Thus convolution with
@@ -891,11 +891,11 @@ $(td,N,td)$ is a finite tail-difference certificate?
 \end{problem}
 
 \noindent This is the depth-locked predicate
-\lword{Erdos249/PeriodMultipleEscape.lean}{162}{ApFullDepthEscape}{ApFullDepthEscape}.
+\lword{Erdos249/PeriodMultipleEscape.lean}{359}{ApFullDepthEscape}{ApFullDepthEscape}.
 It is stronger than the exact period-multiple characterisation because the
 certificate depth is forced to equal the period.  A positive answer proves
 irrationality through
-\lword{Erdos249/PeriodMultipleEscape.lean}{171}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
+\lword{Erdos249/PeriodMultipleEscape.lean}{368}{irrational_totient_series_of_apFullDepthEscape}{the checked consumer};
 a negative answer eliminates this route only.
 
 \begin{problem}[first-harmonic anti-concentration on supplier fibres]

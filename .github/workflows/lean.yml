@@ -25,6 +25,7 @@ on:
           - all
           - external-verification-only
           - release-surfaces-only
+          - dependency-index-refresh
 
 concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
@@ -38,7 +39,7 @@ permissions:
 
 jobs:
   build:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'dependency-index-refresh' }}
     runs-on: ubuntu-latest
     timeout-minutes: 210
     steps:
@@ -99,7 +100,7 @@ jobs:
           path: .lake
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
-            lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
+            lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ hashFiles('Erdos249257.lean', 'Erdos249257/**/*.lean', 'ErdosProblems.lean', 'ErdosProblems/**/*.lean', 'adapters/**/*.lean', 'examples/**/*.lean', 'residualbench/**/*.lean') }}
       - name: Install pinned Lean toolchain
         if: steps.lean-inputs.outputs.changed == 'true'
         env:
@@ -167,11 +168,21 @@ jobs:
         # tactic-budget limit rather than a missing module.
         run: lake build ResidualBench
       - name: Verify elaborated dependency index
-        if: steps.lean-inputs.outputs.changed == 'true'
+        if: ${{ steps.lean-inputs.outputs.changed == 'true' && inputs.scope != 'dependency-index-refresh' }}
         # The first changed environment performs the full export and writes an
         # exact receipt into .lake. An exact cache restore reuses that receipt;
         # changed formal/exporter inputs force a fresh export.
         run: python3 scripts/build_lean_dependency_index.py --check
+      - name: Regenerate elaborated dependency index
+        if: ${{ steps.lean-inputs.outputs.changed == 'true' && inputs.scope == 'dependency-index-refresh' }}
+        run: python3 scripts/build_lean_dependency_index.py
+      - name: Upload regenerated dependency index
+        if: ${{ steps.lean-inputs.outputs.changed == 'true' && inputs.scope == 'dependency-index-refresh' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lean-dependency-index-${{ github.sha }}
+          path: docs/lean_dependency_index.json
+          if-no-files-found: error
       - name: Record documentation-only build skip
         if: steps.lean-inputs.outputs.changed != 'true'
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."

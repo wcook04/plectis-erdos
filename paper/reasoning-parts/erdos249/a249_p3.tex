@@ -481,7 +481,7 @@ depth --- exactly the shape a doubling-orbit equidistribution argument would pro
 
 \begin{thm}
 \lean{certifiedKill_all_upto_sixteen}{CarrySurvivorExtinction.lean:574} and
-\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:18890}
+\lean{totient_series_ne_rat_of_den_dvd_pow_two_mul_mersenne_upto_sixteen}{CertificateKernel.lean:19078}
 (shallower sibling \lean{certifiedKill_all_small}{TotientTailPeriodKiller.lean:404}). \ev{Cert}.
 \scale{fixed}.
 \[
@@ -513,7 +513,7 @@ per-period search.
 \subsubsection{c3 --- the Farey denominator floor and its stalled growth law (\coord{farey-window})}
 
 \begin{thm}
-\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384},
+\lean{tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18572},
 built from the classical mediant lemma \lean{farey_gap}{GapFareyBound.lean:51} and the window
 sharpness certificate \lean{gap_check_window_1_240_le_79639646646701375323355774875831053}{GapFareyBound.lean:176}
 / \lean{gap_check_window_1_240_first_failure}{GapFareyBound.lean:225}. \ev{Lean} for the general
@@ -618,9 +618,9 @@ jump) and \lean{CanonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFres
 (power-of-two positions), each asking $0\le \mathtt{canonicalAdjacentSuffixCentralSlack}(t{+}1)$
 cofinally, and both compose to
 $\mathrm{Irrational}(S)$ at
-\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2941}
+\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2937}
 and
-\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2948}.
+\lean{irrational_totientSeries_of_canonicalAdjacentSuffixPowerTwoPostJumpSlackSupply}{DiagonalFreshLossBridge.lean:2944}.
 \end{defn}
 
 \begin{rem}[Census evidence only]
@@ -724,7 +724,7 @@ arithmetic progression).
 \end{thm}
 
 \begin{thm}
-\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}.
+\lean{not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:285}.
 \ev{Lean}. \scale{uniform}. If $S$ is rational there is a tempered integral carry orbit $u$ with
 \[
   2^e - 1 \;\le\; \mathrm{finrank}_{\mathbb Q}\,\mathrm{span}(\mathtt{canonicalCarryKernelFamily}\ u\ e)

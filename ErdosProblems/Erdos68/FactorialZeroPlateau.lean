@@ -334,12 +334,16 @@ theorem prime_pow_dvd_strictFacTop_factorialGapPrefix_of_series_eq_rat
 
 /-- Once `n!` clears a displayed rational denominator, the strict successor
 of the Erdős #68 prefix is exactly the corresponding cleared
-rational grid integer. -/
-theorem strictFacTop_factorialGapPrefix_eq_cleared_rational
+rational grid integer.
+
+The hypothesis is divisibility `q ∣ n!`, not the cruder size bound `q ≤ n`.
+Only the divisibility is used, and it is strictly weaker: every `q ≤ n`
+divides `n!`, but so does every `n`-smooth `q` of any magnitude. -/
+theorem strictFacTop_factorialGapPrefix_eq_cleared_rational_of_dvd
     {n q : ℕ} {a : ℤ}
     (hn : 2 ≤ n)
     (hq : 0 < q)
-    (hqn : q ≤ n)
+    (hqfac : q ∣ n.factorial)
     (hseries :
       _root_.Erdos68.factorialGapSeries =
         (a : ℝ) / (q : ℝ)) :
@@ -371,8 +375,6 @@ theorem strictFacTop_factorialGapPrefix_eq_cleared_rational
     rw [htailEq]
     have hmul := mul_lt_mul_of_pos_left htailLt hfacPos
     simpa [ne_of_gt hfacPos] using hmul
-  have hqfac : q ∣ n.factorial :=
-    Nat.dvd_factorial hq hqn
   have hfac :
       q * (n.factorial / q) = n.factorial :=
     Nat.mul_div_cancel' hqfac
@@ -392,6 +394,21 @@ theorem strictFacTop_factorialGapPrefix_eq_cleared_rational
       _ = (((n.factorial / q : ℕ) : ℤ) * a : ℤ) := by
         simp only [Int.cast_mul, Int.cast_natCast]
   exact (factorialGrid_plateau hH le_rfl hscaled hgrid).1
+
+/-- Size-bound corollary of the divisibility form, kept so the existing
+consumers are unchanged. -/
+theorem strictFacTop_factorialGapPrefix_eq_cleared_rational
+    {n q : ℕ} {a : ℤ}
+    (hn : 2 ≤ n)
+    (hq : 0 < q)
+    (hqn : q ≤ n)
+    (hseries :
+      _root_.Erdos68.factorialGapSeries =
+        (a : ℝ) / (q : ℝ)) :
+    strictFacTop ((factorialGapPrefix n : ℚ) : ℝ) n =
+      (((n.factorial / q : ℕ) : ℤ) * a : ℤ) :=
+  strictFacTop_factorialGapPrefix_eq_cleared_rational_of_dvd
+    hn hq (Nat.dvd_factorial hq hqn) hseries
 
 /-- One exact missed prime already gives a quantitative obstruction: the
 denominator of any displayed rational value of the Erdős #68 series must be
@@ -763,25 +780,25 @@ theorem tendsto_strictFacTop_factorialGapPrefix_div_factorial :
 
 /-- If the Erdős #68 series has a displayed rational value `a / q`,
 then every carry after the denominator threshold is exactly one. -/
-theorem factorialGapStepCarry_eq_one_of_series_eq_rat
+theorem factorialGapStepCarry_eq_one_of_dvd_pred_factorial
     {m q : ℕ} {a : ℤ}
     (hm : 3 ≤ m)
     (hq : 0 < q)
-    (hqm : q ≤ m - 1)
+    (hqfac : q ∣ (m - 1).factorial)
     (hseries :
       _root_.Erdos68.factorialGapSeries =
         (a : ℝ) / (q : ℝ)) :
     factorialGapStepCarry m = 1 := by
+  have hpredDvd : (m - 1).factorial ∣ m.factorial :=
+    Nat.factorial_dvd_factorial (by omega)
   have hprev :=
-    strictFacTop_factorialGapPrefix_eq_cleared_rational
+    strictFacTop_factorialGapPrefix_eq_cleared_rational_of_dvd
       (n := m - 1) (q := q) (a := a)
-      (by omega) hq hqm hseries
+      (by omega) hq hqfac hseries
   have hcurr :=
-    strictFacTop_factorialGapPrefix_eq_cleared_rational
+    strictFacTop_factorialGapPrefix_eq_cleared_rational_of_dvd
       (n := m) (q := q) (a := a)
-      (by omega) hq (by omega) hseries
-  have hqfac : q ∣ (m - 1).factorial :=
-    Nat.dvd_factorial hq hqm
+      (by omega) hq (hqfac.trans hpredDvd) hseries
   have hfac :
       m.factorial = m * (m - 1).factorial := by
     have hmSucc : m - 1 + 1 = m := by omega
@@ -800,6 +817,20 @@ theorem factorialGapStepCarry_eq_one_of_series_eq_rat
     strictFacTop_factorialGapPrefix_step (show 2 ≤ m by omega)
   rw [hcurr, hprev, hscale] at hrec
   omega
+
+/-- Size-bound corollary of the divisibility form, kept so the existing
+consumers are unchanged. -/
+theorem factorialGapStepCarry_eq_one_of_series_eq_rat
+    {m q : ℕ} {a : ℤ}
+    (hm : 3 ≤ m)
+    (hq : 0 < q)
+    (hqm : q ≤ m - 1)
+    (hseries :
+      _root_.Erdos68.factorialGapSeries =
+        (a : ℝ) / (q : ℝ)) :
+    factorialGapStepCarry m = 1 :=
+  factorialGapStepCarry_eq_one_of_dvd_pred_factorial
+    hm hq (Nat.dvd_factorial hq hqm) hseries
 
 /-- If the carry sequence is eventually one, then the normalized
 strict-successor recurrence is eventually constant.  Its independently
@@ -887,6 +918,29 @@ theorem rational_denominator_ge_of_nonunit_carry
   exact factorialGapStepCarry_eq_one_of_series_eq_rat
     hm hq (by omega) hseries
 
+/-- A single exact non-unit carry at index `m` excludes every displayed
+rational denominator dividing `(m-1)!`.
+
+This is strictly stronger than `rational_denominator_ge_of_nonunit_carry`,
+which only excludes `q ≤ m - 1`.  The size bound leaves every `q > m - 1`
+open, including the `(m-1)`-smooth ones such as `(m-1)!` itself and the
+primorial below `m`; the divisibility form excludes all of them at once.
+Equivalently, the Smarandache function (also called the Kempner function)
+`min {k : q ∣ k!}` of any displayed denominator is at least `m`, so `q` carries a prime power `p ^ e` with
+`e` exceeding the multiplicity of `p` in `(m-1)!`. -/
+theorem rational_denominator_not_dvd_pred_factorial_of_nonunit_carry
+    {m q : ℕ} {a : ℤ}
+    (hm : 3 ≤ m)
+    (hmiss : factorialGapStepCarry m ≠ 1)
+    (hq : 0 < q)
+    (hseries :
+      _root_.Erdos68.factorialGapSeries =
+        (a : ℝ) / (q : ℝ)) :
+    ¬ (q ∣ (m - 1).factorial) := fun hdvd =>
+  hmiss
+    (factorialGapStepCarry_eq_one_of_dvd_pred_factorial
+      hm hq hdvd hseries)
+
 /-- The exact prefix computation at index `51` is a non-unit carry. -/
 theorem factorialGapStepCarry_fifty_one_ne_one :
     factorialGapStepCarry 51 ≠ 1 := by
@@ -947,6 +1001,25 @@ theorem sixty_seven_le_rational_denominator
   rational_denominator_ge_of_prime_miss
     (by norm_num) hq
     sixty_seven_not_dvd_strictFacTop_factorialGapPrefix hseries
+
+/-- The index-`60` certificate in its divisibility form: no displayed
+rational denominator of the series divides `59!`.
+
+`sixty_le_rational_denominator` extracts only `60 ≤ q` from the same
+certificate.  That leaves `59!` itself, and every other `59`-smooth
+denominator, unexcluded; this statement removes all of them. -/
+theorem rational_denominator_not_dvd_fiftynine_factorial
+    {q : ℕ} {a : ℤ}
+    (hq : 0 < q)
+    (hseries :
+      _root_.Erdos68.factorialGapSeries =
+        (a : ℝ) / (q : ℝ)) :
+    ¬ (q ∣ Nat.factorial 59) := by
+  have h :=
+    rational_denominator_not_dvd_pred_factorial_of_nonunit_carry
+      (m := 60) (by norm_num)
+      factorialGapStepCarry_sixty_ne_one hq hseries
+  simpa using h
 
 /-- Arbitrarily late failures of the unit-carry condition prove the
 irrationality of the Erdős #68 series. -/

@@ -107,14 +107,14 @@
   },
   "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_historical_evidence_authority",
   "content_hashes": {
-    "claim-faithful-publication-systems-paper.pdf": "sha256:5a58bb85bf049c231880802971498f657262d151586ce5afb4ce40c2d6f21d65",
-    "docs/claims.json": "sha256:4982d46cbd6df85ce64440b4b540d4e39d55e1e508250e0dcadc8a43aaa27e5c",
+    "claim-faithful-publication-systems-paper.pdf": "sha256:4ef7f23bb71dad39b63336a5c8500aac3af027bcb70f73761e41498ead9175ec",
+    "docs/claims.json": "sha256:d707b09c66cff6560c8bb4639f41a9b4a52f6b3d8a815e66d52840058b126bc2",
     "docs/methodology.json": "sha256:9b36418c39186fe7705bb17d173c9c6eea094a5c854e46445b3c2a1946be9ca0",
-    "docs/publication_contract.json": "sha256:8a1c56e79ffc4ab769f1d0fa5422c52009cac919485ad5fb7df1f9404e700c30",
+    "docs/publication_contract.json": "sha256:5d81ef2b00c22bbbfaf369a55416014d0bc2d1938bf30f12c50bdd4381c3ce73",
     "docs/publication_entry_source.json": "sha256:31004274bba09a44cfeac3aa82ec2748fa225c395bd292e0002091a620137550",
     "docs/publication_evidence.json": "sha256:769f80218d977471ed8a5d6422064668ab7df2ef90b066ae6bcc72fa069a7688",
     "experiments/publication_mutations.json": "sha256:9243e270257869e7a191c7598e917457cab61194299d1651e21bbc45a2d4c1e3",
-    "paper/claim-faithful-publication-systems-paper.tex": "sha256:7233962699c0db9f7ba3082a0f3fd8c13b0c7bfedcec48443badf775c1937880",
+    "paper/claim-faithful-publication-systems-paper.tex": "sha256:5cb8ed86f706a5cc61820960ad59fedab612cd8761b60ce2268847bdcbdcff86",
     "scripts/run_publication_mutations.py": "sha256:01834099e0b6897fabfe67d698fbe5a682f701ae54d367c0e35730e3b2ccd437"
   },
   "five_sentence_summary": [
@@ -325,11 +325,11 @@
     "current_checkout_revision_command": "git rev-parse HEAD",
     "evaluation_checkpoint": "0e5aaf9b2f81912d477fa43b8a3bfa993155a68c",
     "formal_source": {
-      "public_tag": "formal-source-2026-08-12-r2",
+      "public_tag": "formal-source-2026-08-26-r1",
       "publication_state": "published_committed_checkpoint",
-      "ref": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
+      "ref": "8757777b0e944daaa526d3632023be962d204463",
       "ref_kind": "commit",
-      "relationship_to_last_tag": "post_tag_checkpoint"
+      "relationship_to_last_tag": "at_last_tag"
     },
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "release_date": "2026-08-17",

@@ -2,7 +2,9 @@ import Mathlib.Data.Int.ModEq
 import Mathlib.Data.Nat.Choose.Multinomial
 import Mathlib.Data.Rat.Lemmas
 import Mathlib.NumberTheory.Divisors
-import Mathlib.Tactic
+import Lean.Elab.Tactic.Omega
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
 
 open scoped BigOperators
 

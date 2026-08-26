@@ -5,33 +5,9 @@ open scoped BigOperators
 /-!
 # Erdős 243: valuation-weighted CRT repair
 
-This module separates three finite mechanisms that are easy to conflate in
-informal arguments.
-
-First, exact denominator deletion is tracked prime-power by prime-power.  If
-a modulus has been fully deleted, then a finite family of such moduli charges
-the square of its lcm—not their product—into the accumulated scale growth.
-This is the correct accounting when the moduli overlap.
-
-Second, a bounded-jump first crossing through an abstract CRT barrier selects
-a repaired slot in every complete jump-width block, provided unrepaired slots
-are explicitly forbidden.  The conclusion is a finite transversal.  The
-barrier does not require its moduli to be distinct or pairwise coprime, the
-selected slots are not proved injective, and no lower bound for their lcm is
-deduced here.
-
-Third, two independent estimates record what would make repeated repair
-expensive: an assumed cubic lacunarity law controls multiplier products, and
-a genuine deletion of size at least two more than halves the primitive
-numerator.
-
-All recurrences, barriers, crossings, repair predicates, square payments,
-lacunarity assumptions, and genuine deletion events remain hypotheses.  The
-module constructs none of them for the Erdős 243 orbit.  In particular it
-proves no cofinal repair supply, global descent, eventual rigidity, zero
-state, termination, contradiction, or solution of the problem.  Its import
-of `DynamicCancellation` supplies the surrounding arithmetic environment;
-no theorem below derives the abstract hypotheses from that module.
+This module formalizes the honest repaired-transversal consequences of the
+exact cancellation payment.  It deliberately does not claim that the
+unrestricted Erdős 243 orbit terminates.
 -/
 
 namespace ErdosProblems.Erdos243

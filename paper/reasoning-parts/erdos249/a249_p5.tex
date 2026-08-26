@@ -50,7 +50,7 @@ non-integrality, not merely sufficient ones:
 \]
 \lean{Erdos249257.exists_certifiedKill_iff_tail_diff_notMem_int}{LcmConeFlatness.lean:316}
 (wrapped as \texttt{totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\allowbreak\_not\_int} at
-\lean{Erdos249257.totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\_not\_int}{CertificateKernel.lean:19025})
+\lean{Erdos249257.totient\_tail\_window\_kill\_exists\_iff\_tail\_diff\_not\_int}{CertificateKernel.lean:19213})
 \quad \ev{Lean} \quad \scale{uniform} (holds for all $h,N$)
 \quad \coord{other:binary-window}.
 
@@ -155,7 +155,7 @@ is claimed.
     \mathrm{certifiedKill}(m\cdot H_t,\, q\cdot H_t,\, L)
   \ \Longrightarrow\ \mathrm{Irrational}(S).
 \]
-\lean{Erdos249257.irrational_totient_series_of_lcm_cone_window_kill_supply}{CertificateKernel.lean:19014}
+\lean{Erdos249257.irrational_totient_series_of_lcm_cone_window_kill_supply}{CertificateKernel.lean:19202}
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:lcm-cone}. The
 diagonal form above is exactly the cell $q=m=1$, so any diagonal witness
 trivially witnesses the cone form.  The cone predicate is therefore a
@@ -166,7 +166,7 @@ strengthening of the tail-period law, \emph{lcm-cone flatness}: if $S$ is
 rational there is $t_1$ such that for every $t\ge t_1$ and every $q>0,m$,
 $R_{qH_t+mH_t}-R_{qH_t}\in\mathbb{Z}$ — rationality flattens the
 \emph{whole} cone $\{k H_t : k\ge 1\}$, not just one difference
-(\lean{Erdos249257.rational_totient_series_forces_lcm_cone_flatness}{CertificateKernel.lean:19002},
+(\lean{Erdos249257.rational_totient_series_forces_lcm_cone_flatness}{CertificateKernel.lean:19190},
 \ev{Lean}, unconditional). A sharper cone-form producer,
 \texttt{coneNonflatCert}, needs only a \emph{one-sided} radius per vertex —
 information-theoretically half of \texttt{certifiedKill}'s pairwise floor —
@@ -174,7 +174,7 @@ and proves that some pair in a finite multiplier menu $Q$ is non-integral;
 the corresponding supply,
 $\exists$ an unbounded-scale menu $Q$ with \texttt{coneNonflatCert} firing,
 is \ev{Open}, \scale{cofinal},
-\lean{Erdos249257.irrational_totient_series_of_lcm_cone_nonflat_supply}{CertificateKernel.lean:19140}.
+\lean{Erdos249257.irrational_totient_series_of_lcm_cone_nonflat_supply}{CertificateKernel.lean:19328}.
 
 \paragraph{Pure non-integrality form — certificate vocabulary stripped out.}
 Via the completeness iff above, the diagonal and cone forms restate,
@@ -184,9 +184,9 @@ Via the completeness iff above, the diagonal and cone forms restate,
   \ \Longleftrightarrow\ \text{diagonal obligation above}
   \ \Longrightarrow\ \mathrm{Irrational}(S),
 \]
-\lean{Erdos249257.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply}{CertificateKernel.lean:19034}
+\lean{Erdos249257.irrational_totient_series_of_lcm_diagonal_nonintegrality_supply}{CertificateKernel.lean:19222}
 (cone analogue at
-\lean{Erdos249257.irrational\_totient\_series\_of\_lcm\_cone\_nonintegrality\_supply}{CertificateKernel.lean:19046})
+\lean{Erdos249257.irrational\_totient\_series\_of\_lcm\_cone\_nonintegrality\_supply}{CertificateKernel.lean:19234})
 \quad \ev{Lean} \quad \scale{cofinal} \quad \coord{other:real-analytic-nonintegrality}.
 This is the frontier of \#249 with every piece of certificate machinery
 removed: \emph{does $R_{2H_t}-R_{H_t}\notin\mathbb{Z}$ for infinitely many
@@ -539,7 +539,7 @@ orbit $u$ with
 \[
   \forall e,\quad 2^e-1 \le \operatorname{rank}_{\mathbb{Q}}\operatorname{span}\bigl(\mathrm{canonicalCarryKernelFamily}(u,e)\bigr).
 \]
-\lean{Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
+\lean{Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:285}
 \quad \ev{Lean} \quad \scale{uniform} \quad \coord{other:carry-kernel-rank}.
 An opposite inequality — a rationality-side rank \emph{upper} bound — would
 of course contradict the displayed lower bound:
@@ -576,7 +576,7 @@ a Farey-gap denominator exclusion at a single fixed window $K=240$:
   \forall p\in\mathbb{Q},\quad p.\mathrm{den} \le 79639646646701375323355774875831053
   \ \Longrightarrow\ S\ne p.
 \]
-\lean{Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18384}
+\lean{Erdos249257.tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053}{CertificateKernel.lean:18572}
 \quad \ev{Lean} \quad \scale{bounded} \quad \coord{farey}. This bound is
 \emph{sharp} at $K=240$ — the mediant $q=79639646646701375323355774875831054$
 is proved to be the exact first failing denominator

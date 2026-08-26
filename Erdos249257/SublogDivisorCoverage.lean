@@ -341,7 +341,7 @@ theorem pow_le_divisorSubpower_of_support_fraction_zeroWindow
       rw [show c + N + h + 1 = c + N + 1 + h by omega]
       ring
 
-/-! ## Rationality-conditional T11 -/
+/-! ## Unconditional T11 -/
 
 /-- Parameterized fixed-`k` T11 theorem.  This is the load-bearing form from
 which the every-`ε` statement follows. -/
@@ -383,12 +383,12 @@ theorem supportCoeffZeroWindow_length_le_logb_divisorSubpower
     (c + N) h k hlower (Nat.cast_nonneg v) henvelope hk hLC
   simpa [L, mul_assoc, mul_left_comm, mul_comm] using htransfer
 
-/-- **Rationality-conditional T11.**  For every positive `ε`, the displayed
-rational support-series hypothesis forces every support-coefficient zero window
-to have length at most `ε * log₂(N+1)` plus a constant.  The proof constructs
-that constant from `ε`, `v`, and `c`; because `A` and `p` precede the existential
-in this theorem's signature, this declaration does not export one common
-constant quantified uniformly across all supports and numerators. -/
+/-- **Unconditional T11.**  For every positive `ε`, a rational support-series
+value forces every support-coefficient zero window to have length at most
+`ε * log₂(N+1)` plus a constant depending only on `ε`, `v`, and `c`.
+
+The bound is uniform in the support `A`, numerator `p`, starting index `N`,
+and window length `h`. -/
 theorem supportCoeffZeroWindow_length_le_eps_logb_add
     (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
     (p : ℤ) (c v : ℕ) (hv : 0 < v)
@@ -430,8 +430,8 @@ theorem supportCoeffZeroWindow_length_le_eps_logb_add
       (c := c) (N := N) (k := k) hkbound hinv
   simpa [B, D, L] using hfinal
 
-/-- Exact `ε * log₂ N + O(1)` form of rationality-conditional T11 for every
-positive starting index. -/
+/-- Exact `ε * log₂ N + O(1)` form of unconditional T11 for every positive
+starting index. -/
 theorem supportCoeffZeroWindow_length_le_eps_logb
     (A : Set ℕ) (hA : ∃ a : ℕ, 0 < a ∧ a ∈ A)
     (p : ℤ) (c v : ℕ) (hv : 0 < v)

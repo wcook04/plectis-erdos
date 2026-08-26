@@ -1623,7 +1623,7 @@
     },
     {
       "id": "seam_base_row_certificates",
-      "canonical_statement": "Explicit certified values at the base rows: the twelve seam weights and subset target at row 14, the greedy bit list at row 14, the false terminal at row 13, rank 13 not selected at row 14, the row-thirteen remainder at least 13, and the two-sided dyadic cut at row 5.",
+      "canonical_statement": "Explicit certified values at the base rows: the twelve seam weights and subset target at row 14, the greedy bit list at row 14, rank 13 not selected at row 14, the row-thirteen remainder at least 13, and the two-sided dyadic cut at row 5.",
       "logical_class": "finite_instance",
       "problem": "257",
       "evidence": [
@@ -1656,11 +1656,6 @@
           "declaration": "lastProducer_integerGreedyBits_fourteen",
           "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
           "line": 159
-        },
-        {
-          "declaration": "terminal_false_thirteen",
-          "module": "Erdos249257/HalfCylinderLastProducerContradiction.lean",
-          "line": 167
         }
       ],
       "concepts": [

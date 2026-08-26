@@ -253,22 +253,6 @@ theorem finrank_canonicalCarryKernel_ge_of_certificate
     (linearIndependent_of_separatedMinorCertificate
       (canonicalTotientKernelFamily e) cert)
 
-/-- **Universal finite-level carry anti-compression.**  Every positive-scale
-tempered totient orbit retains at least `2^e-1` dimensions among its canonical
-carry sections through level `e`.
-
-The bound is unconditional once the orbit is given: the CRT--Dirichlet minor
-has already discharged the coefficient-side independence hypothesis.
-Rationality is used only downstream to produce such an orbit. -/
-theorem finrank_canonicalCarryKernel_ge
-    {v : ℕ} {u : ℕ → ℤ} (hv : 0 < v)
-    (hu : IsTemperedBinaryOrbit Nat.totient v u) (e : ℕ) :
-    2 ^ e - 1 ≤
-      finrank ℚ
-        (Submodule.span ℚ (Set.range (canonicalCarryKernelFamily u e))) :=
-  finrank_canonicalCarryKernel_ge_of_linearIndependent hv hu e
-    (linearIndependent_canonicalTotientKernelFamily e)
-
 /-- Rationality of the totient coefficient series, together with an all-level
 canonical independence producer, yields one tempered integral carry whose
 finite-level section ranks grow at least as `2^e-1`. -/
@@ -293,7 +277,8 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank
 minor.**  If the totient series were rational, its tempered integral carry
 would have unbounded dyadic section rank.
 
-This does not by itself prove irrationality: a separate theorem bounding the
+This is the strongest current consumer of the separated-minor producer.  It
+does not by itself prove irrationality: a separate theorem bounding the
 dyadic section rank of every rationality-supplied tempered carry is still
 required, and no such finite-rank compression theorem follows from the
 recurrence and temperedness alone. -/
@@ -308,7 +293,5 @@ theorem not_irrational_totientSeries_implies_unbounded_carryRank_unconditional
                 (Set.range (canonicalCarryKernelFamily u e))) :=
   not_irrational_totientSeries_implies_unbounded_carryRank
     linearIndependent_canonicalTotientKernelFamily hirr
-
-#print axioms finrank_canonicalCarryKernel_ge
 
 end Erdos249257

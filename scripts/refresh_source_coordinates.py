@@ -18,14 +18,29 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS = ROOT / "docs" / "claims.json"
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
-PAPERS = (
-    ROOT / "paper" / "erdos249-257-main-paper.tex",
-    ROOT / "paper" / "erdos-257-mersenne-support-subseries.tex",
-)
+PUBLICATION_CONTRACT = ROOT / "docs" / "publication_contract.json"
 LINK_RE = re.compile(
     r"\\([lm](?:refx?|word))\{([^}]+)\}\{\d+\}\{([^}]+)\}"
     r"(?:\{((?:[^{}]|\{[^{}]*\})*)\})?"
 )
+
+
+def paper_paths() -> tuple[Path, ...]:
+    """Return every authored gateway/problem note governed by the contract.
+
+    Keeping a hand-written two-paper tuple let newly registered problem notes
+    retain stale Lean coordinates after their pinned formal source advanced.
+    The publication contract is already the authoritative note inventory, so
+    coordinate refresh must consume it instead of maintaining a second list.
+    """
+    contract = json.loads(PUBLICATION_CONTRACT.read_text(encoding="utf-8"))
+    selected = {
+        str(artifact["source_path"])
+        for artifact in contract.get("artifacts", [])
+        if artifact.get("artifact_class") in {"mathematical_gateway", "problem_note"}
+        and str(artifact.get("source_path", "")).endswith(".tex")
+    }
+    return tuple(ROOT / path for path in sorted(selected))
 
 
 def paper_anchor_line(anchor: dict[str, object]) -> int:
@@ -71,18 +86,28 @@ def render() -> tuple[str, dict[Path, str]]:
     def replace(match: re.Match[str]) -> str:
         macro, filename, name, label = match.groups()
         if filename.startswith("Erdos249257/"):
-            module = filename
+            candidates = (filename,)
         elif filename.startswith("ErdosProblems/"):
-            module = filename
+            candidates = (filename,)
         elif re.match(r"Erdos\d+/", filename):
-            module = f"ErdosProblems/{filename}"
-        elif macro.startswith("m"):
-            module = f"ErdosProblems/{filename}"
+            candidates = (f"ErdosProblems/{filename}",)
         else:
-            module = f"Erdos249257/{filename}"
-        key = (module, name)
-        if key not in lines:
-            raise RuntimeError(f"paper declaration absent from atlas: {key}")
+            # Short paths predate the expansion library.  Macro spelling is
+            # not reliable authority for their library: later notes kept
+            # ``\lword`` while citing ``ErdosProblems/Skip``.  Resolve the
+            # authored declaration against both public libraries and require
+            # a unique match instead of silently manufacturing a prefix.
+            candidates = (
+                f"Erdos249257/{filename}",
+                f"ErdosProblems/{filename}",
+            )
+        matches = [(module, name) for module in candidates if (module, name) in lines]
+        if len(matches) != 1:
+            raise RuntimeError(
+                f"paper declaration must resolve uniquely in the atlas: "
+                f"{filename!r}::{name} (matches={matches})"
+            )
+        key = matches[0]
         rendered = f"\\{macro}{{{filename}}}{{{lines[key]}}}{{{name}}}"
         if macro.endswith("word"):
             if label is None:
@@ -92,7 +117,7 @@ def render() -> tuple[str, dict[Path, str]]:
 
     papers = {
         path: LINK_RE.sub(replace, path.read_text(encoding="utf-8"))
-        for path in PAPERS
+        for path in paper_paths()
     }
     return json.dumps(claims, ensure_ascii=False, indent=2) + "\n", papers
 

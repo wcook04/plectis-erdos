@@ -104,7 +104,7 @@ gives
 $\bigl\|\,\mathrm{windowFirstExp}(h,N,L)-e(2^N\alpha_h)\,\bigr\|
  < 2\pi(N+L+h+2)/2^{L} \le 2\pi/1024 < 1/100$,
 so by
-\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstCos_le_\allowbreak add_of_tailOrbitGap}{PivotAntiReconstruction.lean:220},
+\lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak windowFirstCos_le_\allowbreak add_of_tailOrbitGap}{PivotAntiReconstruction.lean:221},
 $\mathrm{windowFirstCos}(h,N,L)\le \cos(2\pi 2^N\alpha_h)+1/100$. Summing over
 the $X$ values $N\in[X,2X)$ gives
 $\sum_N \mathrm{windowFirstCos}(h,N,L)\le \tfrac{89}{100}X+\tfrac{1}{100}X
@@ -508,9 +508,9 @@ many multiplicative values. \ev{Open}
   \ \wedge\
   \operatorname{Re}\bigl(\mathrm{tailOrbitFirstExp}(h,\,p-h-1)\bigr)<\tfrac{9}{10}.
 \]
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:157},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak DTWNaturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:18},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:205}
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak irrational_totient_\allowbreak series_of_naturalPrimeTailOrbitStrictGap}{ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:66}
 \quad \ev{Open} \quad \scale{cofinal}.
 
 \paragraph{What it says, after Lemma~\ref{lem:orbit}.}
@@ -547,7 +547,7 @@ The corpus warns against the subset consumer
 \lean{Erdos249257.\allowbreak TotientTailPeriodKiller.\allowbreak exists_certifiedKill_of_\allowbreak first_harmonic_gap_subset}{FirstHarmonicGap.lean:104}
 because a predicate quantifying existentially over subsets
 $T\subseteq[X,2X)$ is collapse-exposed: the proved collapse
-\lean{Erdos249257.\allowbreak dtwWindowSeparatedPairs_iff_\allowbreak irrational_totient_series}{PivotAntiReconstruction.lean:1765}
+\lean{Erdos249257.\allowbreak dtwWindowSeparatedPairs_iff_\allowbreak irrational_totient_series}{PivotAntiReconstruction.lean:1775}
 works precisely by \emph{choosing} $T=\{N,N+1\}$. That warning applies to a
 free $T$. It does not apply to a $T$ named in advance as a function of
 $(h,X,L)$, and the corpus already contains the right one:
@@ -602,11 +602,11 @@ is itself a well-defined finite piece of work.
   \forall d\ge 1\ \forall N\ \exists t\ge 1:\ \mathrm{certifiedKill}(td,\,N,\,td),
 \]
 unpacked, $(N+2td+2:\Z)<D(td,N,td)\bmod 2^{td}<2^{td}-(N+2td+2)$.
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:162},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak ApFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:359},
 consumer
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:171},
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak irrational_totient_\allowbreak series_of_apFullDepthEscape}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:368},
 ambient equivalence
-\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:153}
+\lean{ErdosProblems.\allowbreak Erdos249.\allowbreak PeriodMultipleEscape.\allowbreak periodMultipleKillSupply_iff_irrational}{ErdosProblems/Erdos249/PeriodMultipleEscape.lean:350}
 \quad \ev{Open} \quad \scale{cofinal}. It is the shortest fully stated open
 inequality the programme has produced.
 
@@ -691,7 +691,7 @@ where $X_c=\sum_{n\ge1}c(n)/2^{n}$ and $\operatorname{rk}_e(u)$ is the
 dimension of the span of the dyadic sections of $u$ through level $e$.
 A suitable subexponential upper bound would also contradict the landed
 $\varphi$-specific floor
-\lean{Erdos249257.\allowbreak not_irrational_totientSeries_\allowbreak implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:300}
+\lean{Erdos249257.\allowbreak not_irrational_totientSeries_\allowbreak implies_unbounded_carryRank_unconditional}{TotientCarryKernelRigidity.lean:285}
 \quad \ev{Lean}.  No such rationality-side upper bound is proved.
 
 \paragraph{The right vocabulary, and the audited gap.}
