@@ -32,88 +32,88 @@
    {
     "source_path": "Erdos249257/DiagonalPincerCertificates.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificates",
-    "bytes": 123733,
-    "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132",
+    "bytes": 123729,
+    "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf",
     "certificate_declarations": 12,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT19.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT19",
-    "bytes": 35535,
-    "source_sha256": "sha256:b8efa92636d745354532280af2b5e35f2eacf2bd901971517a2e6213f720b0f3",
+    "bytes": 35531,
+    "source_sha256": "sha256:86c41699f6fd51067c1da59199d5d22794e2d594cc21f70c556771cd62cebff8",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT23.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT23",
-    "bytes": 40016,
-    "source_sha256": "sha256:112a88ca141f142d17f60c40557cafe39c1b53cf524a3eb389ed903010293939",
+    "bytes": 40012,
+    "source_sha256": "sha256:59aff093f3f8150c3492c59ccae13625e381b350da227009b289681a480a1bf6",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT25.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT25",
-    "bytes": 43098,
-    "source_sha256": "sha256:e16deb48bbc3062a8d29c4e9dbe9803447002891eeea2da1db19904149bf4633",
+    "bytes": 43094,
+    "source_sha256": "sha256:1f490d0e9645e9bd6e1718afbe44df3e49323d678a986467d53ad29fdeb9bc2f",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT27.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT27",
-    "bytes": 47216,
-    "source_sha256": "sha256:94b677e80770a3c0a303991e53747ef104d6638fbf2af8a7cc87d4b952e28d28",
+    "bytes": 47212,
+    "source_sha256": "sha256:d37e9d06eeb53e9b59a792e0738eb28e3fb0c2c59acde8adf7ecf85e8da872b2",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT29.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT29",
-    "bytes": 55534,
-    "source_sha256": "sha256:27dbb75d2c83c02d15cfd49dd50b327ad935f2f42fb7aca839ae2cb5f045447a",
+    "bytes": 55530,
+    "source_sha256": "sha256:376e50bad5caf332aa3f03ab467175c9d7520d4a25fd660e3c25136386bd8169",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT31.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT31",
-    "bytes": 62311,
-    "source_sha256": "sha256:1dc7559c38ea738dfe46694407e000f6168c9b44954d2a59469ef934301978d4",
+    "bytes": 62307,
+    "source_sha256": "sha256:776191cab31810170abbbf7be47f8e757733e203beea2333d45095fc6d225183",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT32.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT32",
-    "bytes": 61295,
-    "source_sha256": "sha256:ada9c9d87b89787ae335e5edb6fa58edf51c181dbcf6834490113bd8b455197e",
+    "bytes": 61291,
+    "source_sha256": "sha256:da074977487b5b28e1a439c8b4bc628831b77801ce0912aad049c05efa9d3859",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT37.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT37",
-    "bytes": 73507,
-    "source_sha256": "sha256:b2487564f0ce4791a0f6345dde552db99fffcda01efa269b0b0bd70d14c05670",
+    "bytes": 73503,
+    "source_sha256": "sha256:55bea2eb6ac08036a3d8c50238b94ffb0eda1b2e7b5a4b7314800373b40e5a2b",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT41.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT41",
-    "bytes": 82273,
-    "source_sha256": "sha256:59694e5da8b0effd1e0ea0361cef7031b191f9510a56f9e0735981917d79661a",
+    "bytes": 82269,
+    "source_sha256": "sha256:8466a9e0d2ca9e8068870cfcae88a46af84e4df94f3028f41e964ea4ce3ff9f5",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
    {
     "source_path": "Erdos249257/DiagonalPincerCertificatesT43.lean",
     "lean_module": "Erdos249257.DiagonalPincerCertificatesT43",
-    "bytes": 89337,
-    "source_sha256": "sha256:6c2a60419d38cd0468a1caed8094222250d17065b710eb7fdfc856edf66b0100",
+    "bytes": 89333,
+    "source_sha256": "sha256:1b9b0f3e378f2fde2532a3229fd65e9fc4844c594143fca272b44372af3b55bf",
     "certificate_declarations": 1,
     "least_depth_declarations": 0
    },
@@ -392,7 +392,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t1",
      "line": 2782,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -417,7 +417,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t2",
      "line": 2787,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -442,7 +442,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t3",
      "line": 2792,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -467,7 +467,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t4",
      "line": 2797,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -492,7 +492,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t5",
      "line": 2802,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -517,7 +517,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t7",
      "line": 2807,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -542,7 +542,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t8",
      "line": 2812,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -567,7 +567,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t9",
      "line": 2817,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -592,7 +592,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t11",
      "line": 2822,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -617,7 +617,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t13",
      "line": 2827,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -642,7 +642,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t16",
      "line": 2832,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -667,7 +667,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificates",
      "declaration": "certifiedKill_diagonal_t17",
      "line": 2837,
-     "source_sha256": "sha256:cf786d8b088134da67d6e86d627c4cdf6cc02c532c08b3fbf10a521170c45132"
+     "source_sha256": "sha256:a8812139548c314dd6a9b5016e688e10c28903ca7e0103d2bbd4db5115afaddf"
     },
     "least_depth": null
    }
@@ -692,7 +692,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT19",
      "declaration": "certifiedKill_diagonal_t19",
      "line": 698,
-     "source_sha256": "sha256:b8efa92636d745354532280af2b5e35f2eacf2bd901971517a2e6213f720b0f3"
+     "source_sha256": "sha256:86c41699f6fd51067c1da59199d5d22794e2d594cc21f70c556771cd62cebff8"
     },
     "least_depth": null
    }
@@ -717,7 +717,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT23",
      "declaration": "certifiedKill_diagonal_t23",
      "line": 764,
-     "source_sha256": "sha256:112a88ca141f142d17f60c40557cafe39c1b53cf524a3eb389ed903010293939"
+     "source_sha256": "sha256:59aff093f3f8150c3492c59ccae13625e381b350da227009b289681a480a1bf6"
     },
     "least_depth": null
    }
@@ -742,7 +742,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT25",
      "declaration": "certifiedKill_diagonal_t25",
      "line": 820,
-     "source_sha256": "sha256:e16deb48bbc3062a8d29c4e9dbe9803447002891eeea2da1db19904149bf4633"
+     "source_sha256": "sha256:1f490d0e9645e9bd6e1718afbe44df3e49323d678a986467d53ad29fdeb9bc2f"
     },
     "least_depth": null
    }
@@ -767,7 +767,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT27",
      "declaration": "certifiedKill_diagonal_t27",
      "line": 860,
-     "source_sha256": "sha256:94b677e80770a3c0a303991e53747ef104d6638fbf2af8a7cc87d4b952e28d28"
+     "source_sha256": "sha256:d37e9d06eeb53e9b59a792e0738eb28e3fb0c2c59acde8adf7ecf85e8da872b2"
     },
     "least_depth": null
    }
@@ -792,7 +792,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT29",
      "declaration": "certifiedKill_diagonal_t29",
      "line": 985,
-     "source_sha256": "sha256:27dbb75d2c83c02d15cfd49dd50b327ad935f2f42fb7aca839ae2cb5f045447a"
+     "source_sha256": "sha256:376e50bad5caf332aa3f03ab467175c9d7520d4a25fd660e3c25136386bd8169"
     },
     "least_depth": null
    }
@@ -817,7 +817,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT31",
      "declaration": "certifiedKill_diagonal_t31",
      "line": 1081,
-     "source_sha256": "sha256:1dc7559c38ea738dfe46694407e000f6168c9b44954d2a59469ef934301978d4"
+     "source_sha256": "sha256:776191cab31810170abbbf7be47f8e757733e203beea2333d45095fc6d225183"
     },
     "least_depth": null
    }
@@ -842,7 +842,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT32",
      "declaration": "certifiedKill_diagonal_t32",
      "line": 1065,
-     "source_sha256": "sha256:ada9c9d87b89787ae335e5edb6fa58edf51c181dbcf6834490113bd8b455197e"
+     "source_sha256": "sha256:da074977487b5b28e1a439c8b4bc628831b77801ce0912aad049c05efa9d3859"
     },
     "least_depth": null
    }
@@ -867,7 +867,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT37",
      "declaration": "certifiedKill_diagonal_t37",
      "line": 1237,
-     "source_sha256": "sha256:b2487564f0ce4791a0f6345dde552db99fffcda01efa269b0b0bd70d14c05670"
+     "source_sha256": "sha256:55bea2eb6ac08036a3d8c50238b94ffb0eda1b2e7b5a4b7314800373b40e5a2b"
     },
     "least_depth": null
    }
@@ -892,7 +892,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT41",
      "declaration": "certifiedKill_diagonal_t41",
      "line": 1356,
-     "source_sha256": "sha256:59694e5da8b0effd1e0ea0361cef7031b191f9510a56f9e0735981917d79661a"
+     "source_sha256": "sha256:8466a9e0d2ca9e8068870cfcae88a46af84e4df94f3028f41e964ea4ce3ff9f5"
     },
     "least_depth": null
    }
@@ -917,7 +917,7 @@
      "lean_module": "Erdos249257.DiagonalPincerCertificatesT43",
      "declaration": "certifiedKill_diagonal_t43",
      "line": 1452,
-     "source_sha256": "sha256:6c2a60419d38cd0468a1caed8094222250d17065b710eb7fdfc856edf66b0100"
+     "source_sha256": "sha256:1b9b0f3e378f2fde2532a3229fd65e9fc4844c594143fca272b44372af3b55bf"
     },
     "least_depth": null
    }

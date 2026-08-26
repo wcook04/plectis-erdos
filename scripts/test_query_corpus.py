@@ -1162,18 +1162,20 @@ def main() -> int:
     assert local_declaration["attached_claims"] == []
     assert local_declaration["paper_anchors"][0]["canonical_handle"] == "res:lift"
 
+    expected_source_declaration = query(
+        "--declaration",
+        "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053",
+    )["matches"][0]
     source_coordinate = query(
-        "--source", "Erdos249257/CertificateKernel.lean:18383"
+        "--source", expected_source_declaration["source_ref"]
     )
     assert source_coordinate["kind"] == "source_coordinate"
     assert source_coordinate["source"]["source_url"].endswith(
-        "/Erdos249257/CertificateKernel.lean#L18383"
+        f"/Erdos249257/CertificateKernel.lean#L{expected_source_declaration['line']}"
     )
     assert source_coordinate["source"]["lean_source_identity"] == adelic["lean_source_identity"]
     source_declaration = source_coordinate["nearby_declarations"][0]
-    assert source_declaration["name"] == (
-        "tsum_totient_div_pow_two_ne_ratCast_of_den_le_79639646646701375323355774875831053"
-    )
+    assert source_declaration["name"] == expected_source_declaration["name"]
     assert source_declaration["attached_claims"][0]["id"] == "denominator_exclusion"
     assert "res:farey" in {
         row["canonical_handle"] for row in source_declaration["paper_anchors"]
