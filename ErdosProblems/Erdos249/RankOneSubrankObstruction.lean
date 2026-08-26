@@ -23,7 +23,7 @@ namespace ErdosProblems.Erdos249.RankOneSubrankObstruction
 
 open scoped BigOperators
 open ArithmeticFunction
-open Erdos249257.SignedQMomentObstruction
+open Erdos257PeriodNoncollapse.SignedQMomentObstruction
 
 /-- The first `Y` atoms of the Möbius--Mersenne rung `r`. -/
 noncomputable def mobiusMersennePrefix (Y r : ℕ) : ℝ :=

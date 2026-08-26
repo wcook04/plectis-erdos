@@ -22,8 +22,8 @@ also checked by the Lean kernel.
 namespace ErdosProblems.Erdos249.CyclotomicAnchoredKill
 
 open ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
-open Erdos249257
-open Erdos249257.TotientTailPeriodKiller
+open Erdos257PeriodNoncollapse
+open Erdos257PeriodNoncollapse.TotientTailPeriodKiller
 
 /-- The cyclotomic layer for the exact polynomial `X - 2`. -/
 def mersenneLayer (n : ℕ) : ℕ := 2 ^ n - 1
@@ -2221,7 +2221,7 @@ theorem fullMersenneBlockResidue_succ
 class.  Unlike the least nonnegative residue, this lives in the closed
 signed half-cell around zero. -/
 def fullMersenneBlockCenteredLift (H N M : ℕ) : ℤ :=
-  Erdos249257.DiagonalFreshLossBridge.actualCenteredLift
+  Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.actualCenteredLift
     (-totientBlock H N) (M : ℤ)
 
 /-- Centering preserves exactly the least nonnegative full-Mersenne block
@@ -2232,7 +2232,7 @@ theorem fullMersenneBlockCenteredLift_emod
       fullMersenneBlockResidue H N M := by
   simpa only [fullMersenneBlockCenteredLift, fullMersenneBlockResidue,
     Int.ModEq] using
-    Erdos249257.DiagonalFreshLossBridge.actualCenteredLift_modEq
+    Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.actualCenteredLift_modEq
       (-totientBlock H N) (M : ℤ)
 
 /-- Signed centered lifts obey the same affine recurrence modulo every
@@ -2249,7 +2249,7 @@ theorem fullMersenneBlockCenteredLift_succ_modEq
         (fullMersenneBlockCenteredLift H (N + 1) M)
         (-totientBlock H (N + 1)) := by
     exact
-      Erdos249257.DiagonalFreshLossBridge.actualCenteredLift_modEq
+      Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.actualCenteredLift_modEq
         (-totientBlock H (N + 1)) (M : ℤ)
   have hMZ : (M : ℤ) ∣ (2 : ℤ) ^ H - 1 := by
     have hpow : 1 ≤ 2 ^ H := one_le_pow₀ (by omega : 1 ≤ 2)
@@ -2275,7 +2275,7 @@ theorem fullMersenneBlockCenteredLift_succ_modEq
         (2 * fullMersenneBlockCenteredLift H N M -
           deltaTotient H (N + 1)) := by
     exact
-      ((Erdos249257.DiagonalFreshLossBridge.actualCenteredLift_modEq
+      ((Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.actualCenteredLift_modEq
           (-totientBlock H N) (M : ℤ)).symm.mul_left 2).sub
           (Int.ModEq.refl (deltaTotient H (N + 1)))
   exact hleft.trans (hstep.trans hright)
@@ -2332,7 +2332,7 @@ theorem fullMersenneCenteredResidueGap_iff_abs_centeredLift
   have hz : |z| ≤ (M : ℤ) / 2 := by
     dsimp [z, fullMersenneBlockCenteredLift]
     exact
-      Erdos249257.DiagonalFreshLossBridge.abs_actualCenteredLift_le_half
+      Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.abs_actualCenteredLift_le_half
         hMZ
   have hzmod :
       z % (M : ℤ) = fullMersenneBlockResidue H N M := by
@@ -2341,7 +2341,7 @@ theorem fullMersenneCenteredResidueGap_iff_abs_centeredLift
   have hband :
       (T ≤ z % (M : ℤ) ∧ z % (M : ℤ) ≤ (M : ℤ) - T) ↔
         T ≤ |z| :=
-    Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.centeredTopEdgeBand_iff_abs
+    Erdos257PeriodNoncollapse.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.centeredTopEdgeBand_iff_abs
       hMZ hroomZ hz
   rw [hzmod] at hband
   change

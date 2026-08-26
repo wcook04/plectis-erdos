@@ -1,5 +1,7 @@
 import Erdos249257.MersenneLambertLadder
-import Mathlib.Tactic
+import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Ring
 
 /-!
 # Erdős #249: finite Euler-sieve algebra

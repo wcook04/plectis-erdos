@@ -210,6 +210,8 @@ theorem unboundedPrimeDivisorSupply_of_orderConsumer
     hsupply (finitePrimeSupportEscape_of_orderConsumer hm horder)
 
 #print axioms finitePrimeSupportEscape_of_orderConsumer
+#print axioms primeRay_divisor_pow_gt
+#print axioms primeRay_divisor_gt_of_pow_le
 #print axioms unboundedPrimeDivisorSupply_of_orderConsumer
 
 end ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature

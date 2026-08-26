@@ -14,7 +14,7 @@ open scoped ENNReal
 
 open Set
 open MeasureTheory
-open Erdos249257
+open Erdos257PeriodNoncollapse
 
 /-- Mersenne tails restricted to an arbitrary set of future offsets. -/
 noncomputable def selectedMersenneTail (J : Set ℕ) (n : ℕ) : ℝ :=
@@ -389,6 +389,27 @@ theorem volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
   exact ge_of_tendsto'
     (ENNReal.tendsto_pow_atTop_nhds_zero_of_lt_one
       (by norm_num : (2 : ℝ≥0∞)⁻¹ < 1)) hbound
+
+/-- A Boolean support with rational Mersenne value has a null orientation
+space.  Equivalently, if a rational fibre contains a zero-double point, all
+ways of splitting that point's unique combined support between the two sides
+form a Lebesgue-null set.  This closes positive-measure selection as a route
+to Booleanising a rational two-copy fibre; it does not exclude an exceptional
+null point. -/
+theorem volume_supportedMersenneAchievementSet_eq_zero_of_rat_value
+    {J : Set ℕ} (hJ0 : 0 ∉ J) {q : ℚ}
+    (hvalue : positiveMersenneSupportValue J = (q : ℝ)) :
+    volume (supportedMersenneAchievementSet J) = 0 := by
+  have hmem : (q : ℝ) ∈ mersenneAchievementSet := ⟨J, hJ0, hvalue.symm⟩
+  have hskips := infinite_greedyMersenneSkippedSupport_of_rat_mem hmem
+  have hsupport : greedyMersenneSupport (q : ℝ) = J := by
+    rw [← hvalue]
+    exact greedySupport_supportValue_eq J hJ0
+  apply volume_supportedMersenneAchievementSet_eq_zero_of_compl_infinite
+  rw [← hsupport]
+  exact hskips.mono (by
+    intro n hn
+    exact hn.2)
 
 /-- Complete Lebesgue-measure classification of supported Mersenne
 achievement sets.  Either only the finite set `F` of coordinates is omitted,

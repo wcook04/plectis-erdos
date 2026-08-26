@@ -1,8 +1,8 @@
+import ErdosProblems.Erdos243.DynamicCancellation
+import ErdosProblems.Erdos1041.CubicCriticalHub
+import ErdosProblems.Erdos1049.QAperyTailDenominator
 import ErdosProblems.Root
-import Erdos249257.FirstHarmonicPivot
-import Erdos249257.TotientKernelConditional
-import Erdos249257.TotientKernelIndex
-import Erdos249257.TotientKernelReduction
+import Erdos249257.AffineDiagonalKill
 
 /-!
 # Assumption audit for the problem-owned assimilation root
@@ -45,20 +45,11 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank
 #print axioms ErdosProblems.Erdos1049.commonMultiplier_not_two_not_three_of_endpoint_units
 #print axioms ErdosProblems.Erdos1049.cyclotomicHomEval_isCoprime_mul
-#print axioms ErdosProblems.Erdos1049.vanAsscheDiagonal_initial_values
-#print axioms ErdosProblems.Erdos1049.vanAsscheQAperyResidualAtZero_eq
-#print axioms ErdosProblems.Erdos1049.vanAsscheQAperyResidualAtZero_ne_zero
-#print axioms Erdos249257.totient_pow_mul_eq
-#print axioms Erdos249257.totient_pow_mul_gcd_cross_eq
-#print axioms Erdos249257.totient_pow_mul_affine_gcd_cross_eq
-#print axioms Erdos249257.existsUnique_totientKernelResidueAtLevel
-#print axioms Erdos249257.card_totientKernelIndex
-#print axioms Erdos249257.allBaseTotientKernelSeq_mul_residue_step
-#print axioms Erdos249257.span_allBaseTotientKernelThroughLevelFamily_eq_canonical
-#print axioms Erdos249257.finrank_allBaseTotientKernelThroughLevelFamily_eq_of_linearIndependent
-#print axioms Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber
-#print axioms Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample
+#print axioms Erdos257PeriodNoncollapse.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber
+#print axioms Erdos257PeriodNoncollapse.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample
 #print axioms ErdosProblems.Erdos251.carryPartialSum_eq
+#print axioms ErdosProblems.Erdos251.carryPartialSum_natCast_eq
+#print axioms ErdosProblems.Erdos251.carryCoeff_natCast_not_eventually_periodic
 #print axioms ErdosProblems.Erdos251.prime0_dyadic_summation_by_parts
 #print axioms ErdosProblems.Erdos251.prime0DisplayedPartialSumQ_eq_two_mul
 #print axioms ErdosProblems.Erdos251.exists_primeGap0_gt
@@ -122,6 +113,7 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.centeredState_zero_absorbing
 #print axioms ErdosProblems.Erdos243.boundedNegativePart_eventually_zero
 #print axioms ErdosProblems.Erdos243.eventuallyBoundedNegativePart_eventually_zero
+#print axioms ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial
 #print axioms ErdosProblems.Erdos243.rawNext_coprime_currentNumerator
 #print axioms ErdosProblems.Erdos243.rawNext_gcd_eq_gcd_sq
 #print axioms ErdosProblems.Erdos243.rawNext_gcd_exact_overlap
@@ -137,28 +129,196 @@ problem-centric wave.
 #print axioms ErdosProblems.Erdos243.cancellationFree_curvature_square
 #print axioms ErdosProblems.Erdos243.excursionMatrix_det_square
 #print axioms ErdosProblems.Erdos243.primitiveMatrix_gcd_eq_det_gcd
-#print axioms ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial
-#print axioms ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap
-#print axioms ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap
-#print axioms ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_one
-#print axioms ErdosProblems.Erdos249.FiniteEulerSieve.muSqEulerFactor_two
-#print axioms ErdosProblems.Erdos249.FiniteEulerSieve.sigmaPrimePow_secondDiff
-#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.checkerboard_unique
-#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.fourPoint_layer_identity
-#print axioms ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature.residueClass_step_has_centred_completion
-#print axioms ErdosProblems.Erdos257.selectedMersenneTail_lt_weight
-#print axioms ErdosProblems.Erdos257.supportedMersenneDigitValue_injective
-#print axioms ErdosProblems.Erdos257.card_squarefreeDivisors
-#print axioms ErdosProblems.Erdos257.squarefreeIncidence_eq
-#print axioms ErdosProblems.Erdos257.odd_squarefreeIncidence
-#print axioms ErdosProblems.Erdos257.one_le_squarefreeIncidence
-#print axioms ErdosProblems.Erdos257.two_pow_card_primeFactors_le
-#print axioms ErdosProblems.Erdos257.supportCoeff_squarefreeSupport
-#print axioms ErdosProblems.Erdos257.dvd_last_of_carry_block
-#print axioms ErdosProblems.Erdos257.no_carry_block_certificate
-#print axioms ErdosProblems.Erdos257.not_exists_carry_certificates_squarefreeSupport
-#print axioms ErdosProblems.Erdos257.not_exists_digitwise_certificates_squarefreeSupport
-#print axioms ErdosProblems.Erdos257.supportCoeff_squarefreeShiftedSupport
-#print axioms ErdosProblems.Erdos257.irrational_erdosSupportSeries_squarefreeSupport_iff_shifted
-#print axioms ErdosProblems.Erdos257.exists_omega_ge_block
-#print axioms ErdosProblems.Erdos257.exists_digitwise_block_squarefreeShiftedSupport
+#print axioms ErdosProblems.Erdos243.blockCancellationPayment_explicit
+#print axioms ErdosProblems.Erdos243.excursionCancellationPayment
+#print axioms ErdosProblems.Erdos243.blockScale_product_telescopes
+#print axioms ErdosProblems.Erdos243.blockScale_product_subexponential
+#print axioms ErdosProblems.Erdos243.scaledRecord_forces_payment
+#print axioms ErdosProblems.Erdos243.squareResiduePayment_of_scaledRecord
+
+/-! ## Second wave: shrinking-target, repair-entropy, carry-rank, adelic-height
+
+Added by the Comparator-widening pass.  Every declaration below is expected to
+depend on exactly `propext`, `Classical.choice`, `Quot.sound`. -/
+
+#print axioms ErdosProblems.Shared.exists_pos_nat_fract_mem_Ioo
+#print axioms ErdosProblems.Shared.det_carryStaircase
+#print axioms ErdosProblems.Shared.exists_staircase_indices
+#print axioms ErdosProblems.Erdos269.log_mul_eq_add_log_add_logCarry
+#print axioms ErdosProblems.Erdos269.logCarry_pow_eq_floor_fract
+#print axioms ErdosProblems.Erdos269.noIntegerOrbit_logb_of_prime
+#print axioms ErdosProblems.Erdos269.threePrimeHeight_factorisation
+#print axioms ErdosProblems.Erdos269.twoPrimeKernelQ_eq_outer_product
+#print axioms ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor
+#print axioms ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime
+#print axioms ErdosProblems.Erdos269.not_finite_separable_threePrimeKernel
+#print axioms ErdosProblems.Erdos269.finite_realisedSpan_of_functionFaithfulObserver
+#print axioms Erdos68.sharp_radius_satisfies_square_log_constraint
+#print axioms ErdosProblems.Erdos269.kernel_235_minor_eq_neg_one_fifteen
+#print axioms ErdosProblems.Erdos269.kernel_235_minor3_eq_one_over_81000
+#print axioms ErdosProblems.Erdos269.kernel_235_row_three_eq_smul_row_zero
+#print axioms ErdosProblems.Erdos269.kernel_235_row_three_ne_smul_row_zero_at_four
+#print axioms ErdosProblems.Erdos68.factorialGap_lower_endpoint_escape_iff_nonunit_or_maximal_digit
+#print axioms ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_lower_endpoint_escape
+#print axioms ErdosProblems.Erdos68.irrational_factorialGapSeries_of_cofinal_predecessorGap_outside_window
+#print axioms ErdosProblems.Erdos68.lower_endpoint_target_radius_lt_two_div_sq
+#print axioms ErdosProblems.Erdos243.repairedFamily_recovery_energy_divisionFree
+#print axioms ErdosProblems.Erdos243.repaired_card_bound_of_independent
+#print axioms ErdosProblems.Erdos243.eventually_recoveryPayment_eq_one_of_fixedLength
+#print axioms ErdosProblems.Erdos243.survivor_overlap_dvd_centeredError
+#print axioms ErdosProblems.Erdos243.repairedFamily_log_energy
+#print axioms ErdosProblems.Erdos1049.threeHalves_bv_height_gap_gt_threeThirteenths
+#print axioms ErdosProblems.Erdos1049.threeHalves_rectangular_hp_gap_gt_threeThirteenths
+#print axioms ErdosProblems.Erdos1049.threeHalves_hankelChargeThreshold_lt_eightFortyOne
+#print axioms ErdosProblems.Erdos1049.three_two_scalar_margin_lt_explicit
+#print axioms ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank_41
+#print axioms ErdosProblems.Erdos1049.fourJet_card_gt_two_pow_of_rank_41
+#print axioms ErdosProblems.Erdos1049.exists_ne_map_eq_map_ne_of_card_mul_lt
+#print axioms ErdosProblems.Erdos251.tailShift_integral_iff_orderOf_dvd
+#print axioms ErdosProblems.Erdos251.irrational_initial_iff_nonintegral_on_schedule
+#print axioms ErdosProblems.Erdos251.irrational_initial_iff_all_factorialDiagonal_nonintegral
+#print axioms ErdosProblems.Erdos1041.equal_norm_add_imp_mem_realAffineLine
+#print axioms ErdosProblems.Erdos1041.exists_small_translation_separating_arguments_and_norms
+
+/-! ## Third wave: sharp floor of the positive rank-one Schur cone
+
+Replaces the live `1/480` uniform gap with the exact minimiser `(e,Y)=(1,5)`
+and the uniform gap `21/320`.  `1/16` is the optimal uniform unit fraction;
+`1/15` fails at the minimiser. -/
+
+#print axioms ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_one_five
+#print axioms ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_eq_one_five_iff
+#print axioms ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_twentyOne_div_threeTwenty
+#print axioms ErdosProblems.Erdos249.RankOneSubrankObstruction.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen
+#print axioms ErdosProblems.Erdos249.RankOneSubrankObstruction.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen
+#print axioms ErdosProblems.Erdos249.RankOneSubrankObstruction.positive_direct_sum_sub_theta_two_gt_twentyOne_div_threeTwenty
+#print axioms ErdosProblems.Erdos249.RankOneSubrankObstruction.primitive_form_abs_gt_twentyOne_div_threeTwenty
+#print axioms ErdosProblems.Erdos249.PeriodMultipleEscape.exists_pointwiseTotientValued_permanent_endpointTrap
+#print axioms ErdosProblems.Erdos249.PeriodMultipleEscape.exists_actualTotientLetter_ne_two
+#print axioms ErdosProblems.Erdos249.PeriodMultipleEscape.actualTotientWord_ne_const_two
+
+/-! ## Fourth wave: successor objects
+
+The eight successor Type B lanes.  Headline: the #249 full-depth ray amplifier,
+which upgrades `ApFullDepthEscape` from sufficient to *equivalent* and so
+deletes the depth quantifier from the exact kill supply.  Every declaration
+below is expected to depend on exactly `propext`, `Classical.choice`,
+`Quot.sound`. -/
+
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.abs_pow_mul_shift_sub_windowDiscrepancy_le
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.one_le_pow_mul_abs_shift_sub_int
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.certifiedKill_of_forall_dist
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.exists_int_shift_concat
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.forall_dist_adjacent_of_seed
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.exists_adjacent_fullDepthKill_of_seed
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.exists_fullDepthKill_on_ray_of_seed
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.exists_fullDepthKill_on_ray_iff_shift_notMem_int
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.apFullDepthEscape_iff_irrational
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_periodMultipleKillSupply
+#print axioms ErdosProblems.Erdos249.FullDepthRayAmplifier.cofinalFullDepthKillSupply_iff_irrational
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.bezoutPluckerEquiv_anchor
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.exists_scalar_eq_of_det_eq_zero
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.anchor_det_zero_forces_all_det_zero
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.adjacent_det_zero_forces_all_det_zero
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_tail_pair_det_zero_of_adjacent_det_zero
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_binary_tail_collision_of_adjacent_det_zero
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_binary_tail_collision_of_two_three_depth
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.exists_binary_collision_of_card_lt
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.binary_row_collision_of_anchor_det_zero
+#print axioms ErdosProblems.Erdos1049.BezoutPluckerJets.zmod_binary_row_collision_of_anchor_det_zero
+#print axioms ErdosProblems.Erdos243.centered_rawNext_gcd
+#print axioms ErdosProblems.Erdos243.orientedSquareRoot_iff_feedback
+#print axioms ErdosProblems.Erdos243.feedbackTransport_existsUnique_iff
+#print axioms ErdosProblems.Erdos243.canonicalRoot_feedback_iff_existsUnique
+#print axioms ErdosProblems.Erdos243.rawNext_gcd_eq_gcd_denominator_sq
+#print axioms ErdosProblems.Erdos243.fifteen_fake_root_four
+#print axioms ErdosProblems.Erdos243.orientation_determines_root
+#print axioms ErdosProblems.Erdos243.forcedClock_forcedState_succ
+#print axioms ErdosProblems.Erdos243.dvd_forcedClock_of_forcedSurvives
+#print axioms ErdosProblems.Erdos243.not_forcedSurvives_of_two_le
+#print axioms ErdosProblems.Erdos243.forcedSurvives_one
+#print axioms ErdosProblems.Erdos243.factorialGhost_survives
+#print axioms ErdosProblems.Erdos243.survivor_window
+#print axioms ErdosProblems.Erdos251.digit_eq_two_or_neg_two_of_small_pair
+#print axioms ErdosProblems.Erdos251.shift_gt_half_of_digit_eq_two
+#print axioms ErdosProblems.Erdos251.shift_lt_neg_half_of_digit_eq_neg_two
+#print axioms ErdosProblems.Erdos251.evenIntegral_succ
+#print axioms ErdosProblems.Erdos251.affinePowTwo_of_evenIntegral
+#print axioms ErdosProblems.Erdos251.not_eventuallyIntegralTailShift_of_cofinal_affinePowTwo_escape
+#print axioms ErdosProblems.Erdos257.EndpointDivisorSignal.card_divisors_Icc_odd
+#print axioms ErdosProblems.Erdos257.EndpointDivisorSignal.card_divisors_Icc_even
+#print axioms ErdosProblems.Erdos257.EndpointDivisorSignal.endpointPulse_eq_divisorSignal
+#print axioms ErdosProblems.Erdos257.EndpointDivisorSignal.endpointDivisorSignal_unbounded_on_factorial_ray
+#print axioms ErdosProblems.Erdos269.HalfHeightDenominatorTransport.dvd_carry_iff_dvd_height
+#print axioms ErdosProblems.Erdos269.HalfHeightDenominatorTransport.exists_reducedCarry_isCoprime
+#print axioms ErdosProblems.Erdos269.HalfHeightDenominatorTransport.no_reduced_state_of_large_or_nonunit_residue
+#print axioms ErdosProblems.Erdos269.HalfHeightDenominatorTransport.reducedCarry_projective_shadow
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.four_mul_sqrt_sub_lt_two_mul
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.cassini_nine_tenths_slack
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.cassini_nine_tenths_forces_attachment_overhead
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.cassini_nine_tenths_falsifies_tree_budget
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.cassini_falsifies_tree_budget
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.newtonFlow_real_value_hasDerivAt
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.newtonFlow_real_scaledValue_eq
+#print axioms ErdosProblems.Erdos1041.CassiniTreeBudget.newtonFlow_real_samePositiveRay
+#print axioms ErdosProblems.Erdos68.BinaryCarryNormalForm.residualCentre_two_ne_canonicalRemainder
+#print axioms ErdosProblems.Erdos68.BinaryCarryNormalForm.fract_eq_tail_sub_gap_add_binary_wrap
+#print axioms ErdosProblems.Erdos68.BinaryCarryNormalForm.binary_coboundary_of_bridge
+#print axioms ErdosProblems.Erdos68.BinaryCarryNormalForm.digitSum_mem_four_symbol_alphabet
+#print axioms ErdosProblems.Erdos68.BinaryCarryNormalForm.binary_coboundary_telescope
+
+/-! ## Residual wave (2026-08-19): collapse, peeling, cocycle, feedback -/
+
+#print axioms ErdosProblems.Erdos251.evenIntegral_of_affinePowTwo
+#print axioms ErdosProblems.Erdos251.ratAffinePowTwo_iff_evenIntegral
+#print axioms ErdosProblems.Erdos251.ratAffinePowTwo_depth_independent
+#print axioms ErdosProblems.Erdos251.affinePowTwo_succ_iff_orderOf_dvd
+#print axioms ErdosProblems.Erdos251.cofinal_affinePowTwo_escape_iff_not_eventuallyIntegral
+#print axioms ErdosProblems.Erdos251.not_eventuallyIntegral_of_cofinal_blockResidue_escape
+#print axioms ErdosProblems.Erdos68.factorial_pow_dvd_factorial_of_mul_le
+#print axioms ErdosProblems.Erdos68.factorial_mul_series_eq_peeledHead_add_centre_add_scaledTail
+#print axioms ErdosProblems.Erdos68.signedCentreTailError_eq_zero_iff_exists_int
+#print axioms ErdosProblems.Erdos68.not_irrational_iff_exists_signedCentreTailError_eq_zero
+#print axioms ErdosProblems.Erdos68.signedCentreTailError_recurrence
+#print axioms ErdosProblems.Erdos68.not_irrational_iff_eventually_centreDefectCode_eq_one
+#print axioms ErdosProblems.Erdos68.one_div_succ_lt_factorialGapScaledTail
+#print axioms ErdosProblems.Erdos257.affine_cocycle_tsum_eq_neg_anchor
+#print axioms ErdosProblems.Erdos257.no_tempered_orbit_of_irrational_forcing
+#print axioms ErdosProblems.Erdos257.tsum_endpointPulseTerm_eq_erdosBorwein
+#print axioms ErdosProblems.Erdos257.irrational_tsum_endpointPulseTerm
+#print axioms ErdosProblems.Erdos257.irrational_tsum_correction_of_tempered_branch
+#print axioms ErdosProblems.Erdos243.negativeFeedback_squareDivision
+#print axioms ErdosProblems.Erdos243.negativeFeedback_centeredQuotient
+#print axioms ErdosProblems.Erdos243.centeredQuotient_window
+#print axioms ErdosProblems.Erdos243.negativeFeedback_normalizedDescent_counterexample
+#print axioms ErdosProblems.Erdos243.exists_divisor_between
+#print axioms Erdos257PeriodNoncollapse.TotientTailPeriodKiller.affineDiagonalKillSupply_iff_irrational
+#print axioms Erdos257PeriodNoncollapse.TotientTailPeriodKiller.progressionDiagonalKillSupply_iff_irrational
+#print axioms Erdos257PeriodNoncollapse.TotientTailPeriodKiller.factorialDiagonalKillSupply_iff_irrational
+#print axioms Erdos257PeriodNoncollapse.TotientTailPeriodKiller.no_certifiedKill_of_large_prime_annihilator
+#print axioms ErdosProblems.Erdos1041.two_add_le_two_of_bernoulli
+#print axioms ErdosProblems.Erdos1041.exists_two_roots_dist_sum_le_two_mul_geomMean
+#print axioms ErdosProblems.Erdos1041.spoke_escapes_lemniscate_exact
+#print axioms ErdosProblems.Erdos1041.normalizedCubic_spoke_identity
+#print axioms ErdosProblems.Erdos1041.cubicSpoke_envelope_le_one
+#print axioms ErdosProblems.Erdos1041.normalizedCubic_spoke_norm_le_one
+#print axioms ErdosProblems.Erdos1041.two_small_normalized_roots_give_short_hub
+#print axioms ErdosProblems.Erdos1041.normalizedCubic_two_small_roots_fan_in
+#print axioms ErdosProblems.Erdos1049.det_southeastBlock_dvd
+#print axioms ErdosProblems.Erdos1049.det_diagonal_mul_mul_diagonal
+#print axioms ErdosProblems.Erdos1049.fixedDiagonalRationalClearingExponent_pos
+#print axioms ErdosProblems.Erdos1049.fixedDiagonalSourceBalance_pos
+#print axioms ErdosProblems.Erdos1049.movingDiagonalRationalClearingMainTerm_pos
+#print axioms ErdosProblems.Erdos1049.movingDiagonalRatioExponent_pos
+#print axioms ErdosProblems.Erdos1049.commonDivisor_dvd_adjacentSecondKindNumerator
+#print axioms ErdosProblems.Erdos1049.not_tendsto_zero_of_eventually_one_le_abs
+#print axioms ErdosProblems.Erdos1049.zmod_binary_collision_of_zero_denominator_coordinates
+#print axioms ErdosProblems.Erdos1049.integerLinearFormNumerator_ne_zero_of_prime_support
+#print axioms ErdosProblems.Erdos1049.rational_integerLinearForm_ne_zero_of_prime_support
+#print axioms ErdosProblems.Erdos1049.rational_integerLinearForm_gap_of_prime_support
+#print axioms ErdosProblems.Erdos1049.twoSelector_one_numerator_not_dvd_of_prime_tail_support
+#print axioms ErdosProblems.Erdos1049.rational_twoSelector_gap_of_prime_tail_support
+#print axioms ErdosProblems.Erdos269.List.prod_eq_one_add_suffixCorrection
+#print axioms ErdosProblems.Erdos269.tailCap_bellman
+#print axioms ErdosProblems.Erdos269.tailCap_step_of_shellMass
+#print axioms ErdosProblems.Erdos269.tailCap_step_compose
