@@ -2650,6 +2650,27 @@ theorem seamMiddleBranch_nextRemainder_add_belowPulse_eq
   rw [seamAdjacentCut_remainder hs] at hnext
   omega
 
+/-- A middle coordinate `c` is transported without loss to the next row:
+the next seam remainder is exactly the new dyadic scale plus `c`.  This
+turns the exceptional signed cells `-3,-2,-1` into the three concrete
+lattice states `2^(s+1)+1`, `2^(s+1)+2`, `2^(s+1)+3`. -/
+theorem seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
+    {s c : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hcell :
+      4 * (seamAdjacentCut s hs).remainder =
+        (seamAdjacentCut s hs).belowPulse + c) :
+    seamIntegerGreedyRemainder (s + 1) = 2 ^ (s + 1) + c := by
+  have hadd :=
+    seamMiddleBranch_nextRemainder_add_belowPulse_eq hs hncarry hmiddle
+  rw [seamAdjacentCut_remainder hs] at hcell
+  omega
+
 /-- A middle branch cannot itself create a row-scale-small successor.  This
 uses no lower bound on the source remainder. -/
 theorem seamMiddleBranch_nextRemainder_ge_row
@@ -2661,17 +2682,12 @@ theorem seamMiddleBranch_nextRemainder_ge_row
             (seamAdjacentCut s hs).belowPulse <
           (seamAdjacentCut s hs).terminalWeight) :
     s + 1 ≤ seamIntegerGreedyRemainder (s + 1) := by
-  classical
+  have hadd := seamMiddleBranch_nextRemainder_add_belowPulse_eq
+    hs hncarry hmiddle
   have hpulse :=
     (seamPerturbedFamily s (by omega)).pulse_le
       (seamAdjacentCut s hs).below
   change (seamAdjacentCut s hs).belowPulse ≤ 2 * (s - 2) at hpulse
-  have hnext := (seamAdjacentCut s hs).nextRemainder_trichotomy
-  rw [if_neg hncarry, if_pos hmiddle,
-    seamAdjacentCut_nextRemainder hs] at hnext
-  change seamIntegerGreedyRemainder (s + 1) =
-      4 * (seamAdjacentCut s hs).remainder + 2 ^ (s + 1) -
-        (seamAdjacentCut s hs).belowPulse at hnext
   have hpow := three_mul_le_two_pow_succ hs
   omega
 
@@ -3223,12 +3239,8 @@ theorem largestSkipLateAt_succ_of_rowSmall
     (hlate : 2 * s < 3 * d)
     (hsmall : seamIntegerGreedyRemainder s < s) :
     LargestSkipLateAt (s + 1) := by
-  obtain ⟨hncarry, hmiddle⟩ :=
-    seamRowSmall_middleBranch_of_largestFalse_late hs hd hlate hsmall
-  refine ⟨s,
-    seamGreedyWord_succ_isLargestFalseRank_terminal_of_middleBranch
-      s hs hncarry hmiddle, ?_⟩
-  omega
+  exact (seamRowSmall_late_nextRemainder_recovers
+    hs hd hlate hsmall).2.2
 
 /-- Source-coordinate form requested by the reverse-producer argument:
 with `G` the exact largest-false adjacent gap, the upper reset charge is
@@ -3840,6 +3852,39 @@ theorem seamUpperThenRightRun_rowSmall_iff_resetCylinderWindow
   simpa [Nat.add_assoc] using
     (seamUpperThenRightRun_exactCylinder hd5 hcarry hrun)
 
+/-- Support-sensitive form of the same exact cylinder.  A failure of the
+floor-error cardinality gap at the endpoint is equivalent to the weighted
+upper-reset and pulse charge entering the top window whose width is exactly
+`card + 2`.  No row-scale pulse estimate is used or discarded here. -/
+theorem seamUpperThenRightRun_cardSmall_iff_resetCylinderWindow
+    {d k : ℕ} (hd5 : 5 ≤ d)
+    (hcarry : (seamAdjacentCut d hd5).successorCarries)
+    (hrun : ∀ j : ℕ, j < k →
+      seamIntegerGreedyRemainder (d + j + 2) +
+          2 ^ (d + j + 2) +
+          (seamAdjacentCut (d + j + 1) (by omega)).belowPulse + 4 =
+        4 * seamIntegerGreedyRemainder (d + j + 1)) :
+    seamIntegerGreedyRemainder (d + k + 1) <
+        (seamWordSupport (seamGreedyWord (d + k + 1))).card + 2 ↔
+      4 ^ k *
+            (4 * (seamAdjacentCut d hd5).overshoot +
+              (seamAdjacentCut d hd5).abovePulse) +
+          affineRightRunCharge
+            (fun j ↦
+              (seamAdjacentCut (d + j + 1) (by omega)).belowPulse) k ≤
+        2 ^ (d + k + 1) ∧
+      2 ^ (d + k + 1) <
+        (seamWordSupport (seamGreedyWord (d + k + 1))).card + 2 +
+          (4 ^ k *
+              (4 * (seamAdjacentCut d hd5).overshoot +
+                (seamAdjacentCut d hd5).abovePulse) +
+            affineRightRunCharge
+              (fun j ↦
+                (seamAdjacentCut (d + j + 1) (by omega)).belowPulse) k) := by
+  apply remainder_lt_iff_charge_in_topWindow
+  simpa [Nat.add_assoc] using
+    (seamUpperThenRightRun_exactCylinder hd5 hcarry hrun)
+
 /-- After dividing out the base-four length of the right run, a row-small
 terminal state forces an exponential lower bound on the *upper reset
 charge* itself.  The loss is only twice the terminal row.  Under the late
@@ -4132,8 +4177,349 @@ theorem seamMiddleCoordinate_not_safe_iff_three_cells
             ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 = -3 ∨
         4 * ((seamAdjacentCut s hs).remainder : ℤ) -
             ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 = -2 ∨
-        4 * ((seamAdjacentCut s hs).remainder : ℤ) -
+      4 * ((seamAdjacentCut s hs).remainder : ℤ) -
             ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 = -1 := by
+  omega
+
+/-- Failure of the safe middle-coordinate range is therefore equivalent,
+after one actual greedy step, to landing in one of three exact states just
+above the dyadic boundary. -/
+theorem seamMiddleBranch_nextRemainder_eq_pow_add_one_or_two_or_three
+    {s : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hunsafe :
+      ¬ (4 * ((seamAdjacentCut s hs).remainder : ℤ) -
+            ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 ≤ -4 ∨
+          0 ≤ 4 * ((seamAdjacentCut s hs).remainder : ℤ) -
+            ((seamAdjacentCut s hs).belowPulse : ℤ) - 4)) :
+    seamIntegerGreedyRemainder (s + 1) = 2 ^ (s + 1) + 1 ∨
+      seamIntegerGreedyRemainder (s + 1) = 2 ^ (s + 1) + 2 ∨
+      seamIntegerGreedyRemainder (s + 1) = 2 ^ (s + 1) + 3 := by
+  have hthree :=
+    (seamMiddleCoordinate_not_safe_iff_three_cells hs).mp hunsafe
+  have hadd :=
+    seamMiddleBranch_nextRemainder_add_belowPulse_eq hs hncarry hmiddle
+  rcases hthree with hcell | hcell | hcell
+  · left
+    rw [seamAdjacentCut_remainder hs] at hcell
+    omega
+  · right
+    left
+    rw [seamAdjacentCut_remainder hs] at hcell
+    omega
+  · right
+    right
+    rw [seamAdjacentCut_remainder hs] at hcell
+    omega
+
+/-- A middle cell has an equally rigid upper neighbour.  The terminal
+largest-false gap on the successor row is `2^(s+2)+4`, so a landing
+remainder `2^(s+1)+c` is paired with overshoot
+`2^(s+1)+(4-c)`. -/
+theorem seamMiddleBranch_nextOvershoot_eq_pow_add_of_cell
+    {s c : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hc : c ≤ 4)
+    (hcell :
+      4 * (seamAdjacentCut s hs).remainder =
+        (seamAdjacentCut s hs).belowPulse + c) :
+    (seamAdjacentCut (s + 1) (by omega)).overshoot =
+      2 ^ (s + 1) + (4 - c) := by
+  have hR :=
+    seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
+      hs hncarry hmiddle hcell
+  have hdNext :=
+    seamGreedyWord_succ_isLargestFalseRank_terminal_of_middleBranch
+      s hs hncarry hmiddle
+  have hgap :=
+    remainder_add_overshoot_eq_of_terminalLargestFalse
+      (s := s + 1) (by omega) hdNext
+  rw [seamAdjacentCut_remainder (by omega), hR] at hgap
+  rw [show s + 1 + 1 = (s + 1) + 1 by omega, pow_succ] at hgap
+  omega
+
+/-- The three exceptional middle coordinates therefore land in exactly
+three complementary adjacent pairs around the next dyadic boundary. -/
+theorem seamMiddleBranch_next_pair_eq_one_three_or_two_two_or_three_one
+    {s : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hunsafe :
+      ¬ (4 * ((seamAdjacentCut s hs).remainder : ℤ) -
+            ((seamAdjacentCut s hs).belowPulse : ℤ) - 4 ≤ -4 ∨
+          0 ≤ 4 * ((seamAdjacentCut s hs).remainder : ℤ) -
+            ((seamAdjacentCut s hs).belowPulse : ℤ) - 4)) :
+    (seamIntegerGreedyRemainder (s + 1) = 2 ^ (s + 1) + 1 ∧
+        (seamAdjacentCut (s + 1) (by omega)).overshoot =
+          2 ^ (s + 1) + 3) ∨
+      (seamIntegerGreedyRemainder (s + 1) = 2 ^ (s + 1) + 2 ∧
+        (seamAdjacentCut (s + 1) (by omega)).overshoot =
+          2 ^ (s + 1) + 2) ∨
+      (seamIntegerGreedyRemainder (s + 1) = 2 ^ (s + 1) + 3 ∧
+        (seamAdjacentCut (s + 1) (by omega)).overshoot =
+          2 ^ (s + 1) + 1) := by
+  have hthree :=
+    (seamMiddleCoordinate_not_safe_iff_three_cells hs).mp hunsafe
+  rcases hthree with hcell | hcell | hcell
+  · left
+    have hcellNat :
+        4 * (seamAdjacentCut s hs).remainder =
+          (seamAdjacentCut s hs).belowPulse + 1 := by
+      omega
+    exact
+      ⟨seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
+          hs hncarry hmiddle hcellNat,
+        by
+          simpa using
+            seamMiddleBranch_nextOvershoot_eq_pow_add_of_cell
+              hs hncarry hmiddle (by omega) hcellNat⟩
+  · right
+    left
+    have hcellNat :
+        4 * (seamAdjacentCut s hs).remainder =
+          (seamAdjacentCut s hs).belowPulse + 2 := by
+      omega
+    exact
+      ⟨seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
+          hs hncarry hmiddle hcellNat,
+        by
+          simpa using
+            seamMiddleBranch_nextOvershoot_eq_pow_add_of_cell
+              hs hncarry hmiddle (by omega) hcellNat⟩
+  · right
+    right
+    have hcellNat :
+        4 * (seamAdjacentCut s hs).remainder =
+          (seamAdjacentCut s hs).belowPulse + 3 := by
+      omega
+    exact
+      ⟨seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
+          hs hncarry hmiddle hcellNat,
+        by
+          simpa using
+            seamMiddleBranch_nextOvershoot_eq_pow_add_of_cell
+              hs hncarry hmiddle (by omega) hcellNat⟩
+
+/-- The first exceptional middle cell is transient rather than a genuine
+obstruction.  Its successor pair is
+`(2^(s+1)+1, 2^(s+1)+3)`.  The large upper distance rules out an upper
+reset, the linear pulse bound forces the following branch to be right, and
+the exact right recurrence then puts the row-`s+2` remainder back below its
+dyadic boundary. -/
+theorem seamMiddleBranch_cell_one_recovers_two_rows
+    {s : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hcell :
+      4 * (seamAdjacentCut s hs).remainder =
+        (seamAdjacentCut s hs).belowPulse + 1) :
+    seamIntegerGreedyRemainder (s + 2) ≤ 2 ^ (s + 2) := by
+  have hR :=
+    seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
+      hs hncarry hmiddle hcell
+  have hO :=
+    seamMiddleBranch_nextOvershoot_eq_pow_add_of_cell
+      hs hncarry hmiddle (by omega) hcell
+  have hncarryNext :
+      ¬ (seamAdjacentCut (s + 1) (by omega)).successorCarries := by
+    intro hcarry
+    change
+      4 * (seamAdjacentCut (s + 1) (by omega)).overshoot +
+          (seamAdjacentCut (s + 1) (by omega)).abovePulse ≤
+        2 ^ (s + 2) at hcarry
+    rw [hO] at hcarry
+    have hpow : (2 : ℕ) ^ (s + 2) = 2 * 2 ^ (s + 1) := by
+      rw [show s + 2 = (s + 1) + 1 by omega, pow_succ]
+      ring
+    rw [hpow] at hcarry
+    omega
+  have hpulse :=
+    (seamPerturbedFamily (s + 1) (by omega)).pulse_le
+      (seamAdjacentCut (s + 1) (by omega)).below
+  change
+    (seamAdjacentCut (s + 1) (by omega)).belowPulse ≤
+      2 * (s + 1 - 2) at hpulse
+  have hgrowth :=
+    two_mul_add_four_lt_two_pow_succ (s := s + 1) (by omega)
+  have hterminal :=
+    seamAdjacentCut_terminalWeight_eq (s := s + 1) (by omega)
+  have hrightNext :
+      (seamAdjacentCut (s + 1) (by omega)).terminalWeight ≤
+        4 * (seamAdjacentCut (s + 1) (by omega)).remainder +
+          (seamPerturbedFamily (s + 1) (by omega)).gap -
+          (seamAdjacentCut (s + 1) (by omega)).belowPulse := by
+    have hremNext :=
+      seamAdjacentCut_remainder (s := s + 1) (by omega)
+    have hgapNext :=
+      seamAdjacentCut_gap_eq (s := s + 1) (by omega)
+    rw [hterminal, hremNext, hgapNext, hR]
+    have hpow : (2 : ℕ) ^ (s + 2) = 2 * 2 ^ (s + 1) := by
+      rw [show s + 2 = (s + 1) + 1 by omega, pow_succ]
+      ring
+    rw [hpow]
+    omega
+  have hstep :=
+    seamRightBranch_remainder_add_charge_eq
+      (s := s + 1) (by omega) hncarryNext hrightNext
+  have hstep' :
+      seamIntegerGreedyRemainder (s + 2) + 2 ^ (s + 2) +
+          (seamAdjacentCut (s + 1) (by omega)).belowPulse + 4 =
+        4 * seamIntegerGreedyRemainder (s + 1) := by
+    simpa [show s + 1 + 1 = s + 2 by omega] using hstep
+  rw [hR] at hstep'
+  have hpow : (2 : ℕ) ^ (s + 2) = 2 * 2 ^ (s + 1) := by
+    rw [show s + 2 = (s + 1) + 1 by omega, pow_succ]
+    ring
+  rw [hpow] at hstep'
+  omega
+
+/-- Every exceptional middle cell is followed by a right branch, and the
+next remainder satisfies one exact affine transition.  Thus the three-cell
+obstruction is not an unstructured recurrence: after the landing
+`R_(s+1) = 2^(s+1)+c`, with `1 ≤ c ≤ 3`, the following state is determined
+by the single pulse at row `s+1`:
+
+`R_(s+2) + pulse_(s+1) + 4 = 2^(s+2) + 4*c`.
+
+For `c=1` this forces immediate recovery; for `c=2,3` any continued
+lower-side failure requires respectively a pulse at most `3` or `7`. -/
+theorem seamMiddleBranch_exceptionalCell_forcesRight_affine
+    {s c : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hcpos : 1 ≤ c) (hcle : c ≤ 3)
+    (hcell :
+      4 * (seamAdjacentCut s hs).remainder =
+        (seamAdjacentCut s hs).belowPulse + c) :
+    ¬ (seamAdjacentCut (s + 1) (by omega)).successorCarries ∧
+      (seamAdjacentCut (s + 1) (by omega)).terminalWeight ≤
+        4 * (seamAdjacentCut (s + 1) (by omega)).remainder +
+          (seamPerturbedFamily (s + 1) (by omega)).gap -
+          (seamAdjacentCut (s + 1) (by omega)).belowPulse ∧
+      seamIntegerGreedyRemainder (s + 2) +
+          (seamAdjacentCut (s + 1) (by omega)).belowPulse + 4 =
+        2 ^ (s + 2) + 4 * c := by
+  have hR :=
+    seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
+      hs hncarry hmiddle hcell
+  have hcle4 : c ≤ 4 := by omega
+  have hO :=
+    seamMiddleBranch_nextOvershoot_eq_pow_add_of_cell
+      hs hncarry hmiddle hcle4 hcell
+  have hncarryNext :
+      ¬ (seamAdjacentCut (s + 1) (by omega)).successorCarries := by
+    intro hcarry
+    change
+      4 * (seamAdjacentCut (s + 1) (by omega)).overshoot +
+          (seamAdjacentCut (s + 1) (by omega)).abovePulse ≤
+        2 ^ (s + 2) at hcarry
+    rw [hO] at hcarry
+    have hpow : (2 : ℕ) ^ (s + 2) = 2 * 2 ^ (s + 1) := by
+      rw [show s + 2 = (s + 1) + 1 by omega, pow_succ]
+      ring
+    rw [hpow] at hcarry
+    omega
+  have hpulse :=
+    (seamPerturbedFamily (s + 1) (by omega)).pulse_le
+      (seamAdjacentCut (s + 1) (by omega)).below
+  change
+    (seamAdjacentCut (s + 1) (by omega)).belowPulse ≤
+      2 * (s + 1 - 2) at hpulse
+  have hgrowth :=
+    two_mul_add_four_lt_two_pow_succ (s := s + 1) (by omega)
+  have hterminal :=
+    seamAdjacentCut_terminalWeight_eq (s := s + 1) (by omega)
+  have hrightNext :
+      (seamAdjacentCut (s + 1) (by omega)).terminalWeight ≤
+        4 * (seamAdjacentCut (s + 1) (by omega)).remainder +
+          (seamPerturbedFamily (s + 1) (by omega)).gap -
+          (seamAdjacentCut (s + 1) (by omega)).belowPulse := by
+    have hremNext :=
+      seamAdjacentCut_remainder (s := s + 1) (by omega)
+    have hgapNext :=
+      seamAdjacentCut_gap_eq (s := s + 1) (by omega)
+    rw [hterminal, hremNext, hgapNext, hR]
+    have hpow : (2 : ℕ) ^ (s + 2) = 2 * 2 ^ (s + 1) := by
+      rw [show s + 2 = (s + 1) + 1 by omega, pow_succ]
+      ring
+    rw [hpow]
+    omega
+  refine ⟨hncarryNext, hrightNext, ?_⟩
+  have hstep :=
+    seamRightBranch_remainder_add_charge_eq
+      (s := s + 1) (by omega) hncarryNext hrightNext
+  have hstep' :
+      seamIntegerGreedyRemainder (s + 2) + 2 ^ (s + 2) +
+          (seamAdjacentCut (s + 1) (by omega)).belowPulse + 4 =
+        4 * seamIntegerGreedyRemainder (s + 1) := by
+    simpa [show s + 1 + 1 = s + 2 by omega] using hstep
+  rw [hR] at hstep'
+  have hpow : (2 : ℕ) ^ (s + 2) = 2 * 2 ^ (s + 1) := by
+    rw [show s + 2 = (s + 1) + 1 by omega, pow_succ]
+    ring
+  rw [hpow] at hstep'
+  omega
+
+/-- Continued lower-side failure after the `c=2` exceptional landing is
+possible only when the next pulse lies in the four-value window `0,…,3`. -/
+theorem seamMiddleBranch_cell_two_recovers_or_nextPulse_le_three
+    {s : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hcell :
+      4 * (seamAdjacentCut s hs).remainder =
+        (seamAdjacentCut s hs).belowPulse + 2) :
+    seamIntegerGreedyRemainder (s + 2) ≤ 2 ^ (s + 2) ∨
+      (seamAdjacentCut (s + 1) (by omega)).belowPulse ≤ 3 := by
+  have htransition :=
+    (seamMiddleBranch_exceptionalCell_forcesRight_affine
+      hs hncarry hmiddle (by norm_num) (by norm_num) hcell).2.2
+  omega
+
+/-- Continued lower-side failure after the `c=3` exceptional landing is
+possible only when the next pulse lies in the eight-value window `0,…,7`. -/
+theorem seamMiddleBranch_cell_three_recovers_or_nextPulse_le_seven
+    {s : ℕ} (hs : 5 ≤ s)
+    (hncarry : ¬ (seamAdjacentCut s hs).successorCarries)
+    (hmiddle :
+      4 * (seamAdjacentCut s hs).remainder +
+            (seamPerturbedFamily s (by omega)).gap -
+            (seamAdjacentCut s hs).belowPulse <
+          (seamAdjacentCut s hs).terminalWeight)
+    (hcell :
+      4 * (seamAdjacentCut s hs).remainder =
+        (seamAdjacentCut s hs).belowPulse + 3) :
+    seamIntegerGreedyRemainder (s + 2) ≤ 2 ^ (s + 2) ∨
+      (seamAdjacentCut (s + 1) (by omega)).belowPulse ≤ 7 := by
+  have htransition :=
+    (seamMiddleBranch_exceptionalCell_forcesRight_affine
+      hs hncarry hmiddle (by norm_num) (by norm_num) hcell).2.2
   omega
 
 /-- In a middle cell `4*R = pulse + c`, the pulse part of `4*R` is already
@@ -4557,7 +4943,7 @@ theorem seamUpperResetDyadicBandEscape_at_thirteen
   intro j hj
   rw [seamUpperReset_band_iff_successorRemainder_avoids hd5 hj hcarry]
   have hrem : seamIntegerGreedyRemainder (13 + 1) = 392 := by
-    decide +kernel
+    simpa using seamIntegerGreedyRemainder_fourteen_eq
   rw [hrem]
   interval_cases j <;> norm_num
 
@@ -4574,17 +4960,23 @@ def SeamUpperResetDyadicBandEscape : Prop :=
                 (seamAdjacentCut d hd5).abovePulse + 2 * (d + j) ≤
             2 ^ (d - j + 1)
 
-/-- The forbidden-band producer excludes every row-small endpoint whose
-last non-right producer was an upper reset. -/
-theorem SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun
-    (hband : SeamUpperResetDyadicBandEscape)
-    {d k : ℕ} (hd5 : 5 ≤ d) (hd13 : 13 ≤ d) (hk : k ≤ d)
+/-- A forbidden-band certificate at one upper reset excludes every row-small
+endpoint reached from that reset by a right run. -/
+theorem not_rowSmall_after_upperRightRun_of_band
+    {d k : ℕ} (hd5 : 5 ≤ d) (hk : k ≤ d)
     (hcarry : (seamAdjacentCut d hd5).successorCarries)
     (hrun : ∀ j : ℕ, j < k →
       seamIntegerGreedyRemainder (d + j + 2) +
           2 ^ (d + j + 2) +
           (seamAdjacentCut (d + j + 1) (by omega)).belowPulse + 4 =
-        4 * seamIntegerGreedyRemainder (d + j + 1)) :
+        4 * seamIntegerGreedyRemainder (d + j + 1))
+    (hband : ∀ j : ℕ, j ≤ d →
+      2 ^ (d - j + 1) <
+          4 * (seamAdjacentCut d hd5).overshoot +
+            (seamAdjacentCut d hd5).abovePulse ∨
+        4 * (seamAdjacentCut d hd5).overshoot +
+              (seamAdjacentCut d hd5).abovePulse + 2 * (d + j) ≤
+          2 ^ (d - j + 1)) :
     ¬ seamIntegerGreedyRemainder (d + k + 1) < d + k + 1 := by
   intro hsmall
   let E := 4 * (seamAdjacentCut d hd5).overshoot +
@@ -4592,7 +4984,7 @@ theorem SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun
   have hlower := seamUpperThenRightRun_rowSmall_forces_resetCharge_lower
     hd5 hk hcarry hrun hsmall
   change 2 ^ (d - k + 1) < E + 2 * (d + k) at hlower
-  rcases hband d hd5 hd13 hcarry k hk with hhigh | hlow
+  rcases hband k hk with hhigh | hlow
   · change 2 ^ (d - k + 1) < E at hhigh
     have hcylinder :=
       seamUpperThenRightRun_exactCylinder hd5 hcarry hrun
@@ -4615,6 +5007,21 @@ theorem SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun
   · change E + 2 * (d + k) ≤ 2 ^ (d - k + 1) at hlow
     omega
 
+/-- The global forbidden-band producer supplies the one-reset certificate
+consumed by `not_rowSmall_after_upperRightRun_of_band`. -/
+theorem SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun
+    (hband : SeamUpperResetDyadicBandEscape)
+    {d k : ℕ} (hd5 : 5 ≤ d) (hd13 : 13 ≤ d) (hk : k ≤ d)
+    (hcarry : (seamAdjacentCut d hd5).successorCarries)
+    (hrun : ∀ j : ℕ, j < k →
+      seamIntegerGreedyRemainder (d + j + 2) +
+          2 ^ (d + j + 2) +
+          (seamAdjacentCut (d + j + 1) (by omega)).belowPulse + 4 =
+        4 * seamIntegerGreedyRemainder (d + j + 1)) :
+    ¬ seamIntegerGreedyRemainder (d + k + 1) < d + k + 1 := by
+  exact not_rowSmall_after_upperRightRun_of_band hd5 hk hcarry hrun
+    (hband d hd5 hd13 hcarry)
+
 /-! ## Last-ancestor fan-in
 
 The dyadic band is not merely a local estimate.  It forces the row-scale
@@ -4626,21 +5033,196 @@ exponential barrier; an upper last ancestor is excluded by the band.
 
 private theorem seamIntegerGreedyRemainder_thirteen_ge :
     13 ≤ seamIntegerGreedyRemainder 13 := by
-  decide +kernel
+  rw [seamIntegerGreedyRemainder_thirteen_eq]
+  norm_num
 
 /-- The row-thirteen transition is a concrete non-right producer.  This is
 extracted from the already certified largest-false base at row fourteen. -/
 private theorem thirteen_not_mem_seamGreedyWord_fourteen :
     13 ∉ seamWordSupport (seamGreedyWord (13 + 1)) := by
-  decide +kernel
+  apply (not_mem_seamWordSupport_iff_false
+    (seamGreedyWord (13 + 1)) (by omega) (by omega)).2
+  simpa [SeamRowWord.terminal] using seamGreedy_terminal_false_at_thirteen
 
-/-- If the dyadic upper-reset bands are avoided, no seam remainder at or
-after row thirteen can be smaller than its row index.  This is the global
-last-ancestor theorem missing from the local reverse-cylinder development.
--/
-theorem SeamUpperResetDyadicBandEscape.remainder_ge_row
-    (hband : SeamUpperResetDyadicBandEscape)
-    {s : ℕ} (hs13 : 13 ≤ s) :
+/-- **A row-small state exposes its last upper ancestor and actual danger
+band.**  Given any row-small state at or after row thirteen, take the first
+such row `D` and the last false terminal `d < D`.  The last producer cannot
+be middle, because the first-bad-row lower bound feeds the preserved
+middle/right exponential barrier.  Hence it is an upper reset, every
+intervening transition is an actual right recurrence, and row-smallness at
+the endpoint puts the reset charge in the forbidden band indexed by that
+actual run length.
+
+The endpoint may occur before the originally supplied row `s`; this is the
+deliberate first-bad-row localization.  The returned recurrence is exactly
+the interface consumed by the upper/right cylinder and endpoint-packet
+theorems. -/
+theorem exists_lastUpperAncestorRightRun_danger_of_rowSmall
+    {s : ℕ} (hs13 : 13 ≤ s)
+    (hsmall : seamIntegerGreedyRemainder s < s) :
+    ∃ (d : ℕ) (hd13 : 13 ≤ d) (k : ℕ),
+      d < s ∧ k ≤ d ∧ d + k + 1 ≤ s ∧
+        (seamAdjacentCut d (by omega)).successorCarries ∧
+        (∀ j : ℕ, j < k →
+          seamIntegerGreedyRemainder (d + j + 2) +
+              2 ^ (d + j + 2) +
+              (seamAdjacentCut (d + j + 1) (by omega)).belowPulse + 4 =
+            4 * seamIntegerGreedyRemainder (d + j + 1)) ∧
+        seamIntegerGreedyRemainder (d + k + 1) < d + k + 1 ∧
+        2 ^ (d - k + 1) <
+          4 * (seamAdjacentCut d (by omega)).overshoot +
+            (seamAdjacentCut d (by omega)).abovePulse + 2 * (d + k) := by
+  classical
+  let bad : Finset ℕ :=
+    (Finset.Icc 13 s).filter
+      (fun n ↦ seamIntegerGreedyRemainder n < n)
+  have hbadNonempty : bad.Nonempty := by
+    refine ⟨s, ?_⟩
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_Icc.mpr ⟨hs13, le_rfl⟩, hsmall⟩
+  let D : ℕ := bad.min' hbadNonempty
+  have hDmem : D ∈ bad := Finset.min'_mem bad hbadNonempty
+  have hDdata := Finset.mem_filter.mp hDmem
+  have hDbounds := Finset.mem_Icc.mp hDdata.1
+  have hD13 : 13 ≤ D := hDbounds.1
+  have hDs : D ≤ s := hDbounds.2
+  have hDsmall : seamIntegerGreedyRemainder D < D := hDdata.2
+  have hDgt13 : 13 < D := by
+    by_contra hle
+    have hD : D = 13 := by omega
+    rw [hD] at hDsmall
+    exact (Nat.not_lt_of_ge seamIntegerGreedyRemainder_thirteen_ge)
+      hDsmall
+  have hprior : ∀ n : ℕ, 13 ≤ n → n < D →
+      n ≤ seamIntegerGreedyRemainder n := by
+    intro n hn13 hnD
+    by_contra hn
+    have hnsmall : seamIntegerGreedyRemainder n < n :=
+      Nat.lt_of_not_ge hn
+    have hnmem : n ∈ bad := by
+      exact Finset.mem_filter.mpr
+        ⟨Finset.mem_Icc.mpr ⟨hn13, by omega⟩, hnsmall⟩
+    have hDle : D ≤ n := by
+      dsimp [D]
+      exact Finset.min'_le bad n hnmem
+    omega
+
+  let producers : Finset ℕ :=
+    (Finset.Icc 13 (D - 1)).filter
+      (fun t ↦ t ∉ seamWordSupport (seamGreedyWord (t + 1)))
+  have hproducersNonempty : producers.Nonempty := by
+    refine ⟨13, ?_⟩
+    exact Finset.mem_filter.mpr
+      ⟨Finset.mem_Icc.mpr ⟨le_rfl, by omega⟩,
+        thirteen_not_mem_seamGreedyWord_fourteen⟩
+  let d : ℕ := producers.max' hproducersNonempty
+  have hdmem : d ∈ producers := Finset.max'_mem producers hproducersNonempty
+  have hddata := Finset.mem_filter.mp hdmem
+  have hdbounds := Finset.mem_Icc.mp hddata.1
+  have hd13 : 13 ≤ d := hdbounds.1
+  have hdD : d < D := by omega
+  have hdrow : d ≤ seamIntegerGreedyRemainder d :=
+    hprior d hd13 hdD
+  have hUMd : SeamGreedyUpperOrMiddleAt d (by omega) := by
+    apply (seamGreedy_terminal_false_iff_upperOrMiddle d (by omega)).mp
+    have hfalse :=
+      (not_mem_seamWordSupport_iff_false
+        (seamGreedyWord (d + 1)) (by omega) (by omega)).mp hddata.2
+    simpa [SeamRowWord.terminal] using hfalse
+  have hnotUMAfter : ∀ (t : ℕ) (ht5 : 5 ≤ t), d < t → t < D →
+      ¬ SeamGreedyUpperOrMiddleAt t ht5 := by
+    intro t ht5 hdt htD hUMt
+    have hfalse :=
+      (seamGreedy_terminal_false_iff_upperOrMiddle t (by omega)).mpr hUMt
+    have htnot : t ∉ seamWordSupport (seamGreedyWord (t + 1)) := by
+      apply (not_mem_seamWordSupport_iff_false
+        (seamGreedyWord (t + 1)) (by omega) (by omega)).mpr
+      simpa [SeamRowWord.terminal] using hfalse
+    have htmem : t ∈ producers := by
+      exact Finset.mem_filter.mpr
+        ⟨Finset.mem_Icc.mpr ⟨by omega, by omega⟩, htnot⟩
+    have htd : t ≤ d := by
+      dsimp [d]
+      exact Finset.le_max' producers t htmem
+    omega
+  have hrightBetween : ∀ (t : ℕ) (ht5 : 5 ≤ t), d + 1 ≤ t → t < D →
+      ¬ (seamAdjacentCut t ht5).successorCarries ∧
+        (seamAdjacentCut t ht5).terminalWeight ≤
+          4 * (seamAdjacentCut t ht5).remainder +
+            (seamPerturbedFamily t (by omega)).gap -
+            (seamAdjacentCut t ht5).belowPulse := by
+    intro t ht5 hdt htD
+    have hnotUM := hnotUMAfter t ht5 (by omega) htD
+    have hncarry : ¬ (seamAdjacentCut t ht5).successorCarries := by
+      intro hcarry
+      exact hnotUM (Or.inl hcarry)
+    refine ⟨hncarry, Nat.le_of_not_gt ?_⟩
+    intro hmiddle
+    exact hnotUM (Or.inr ⟨hncarry, hmiddle⟩)
+
+  rcases hUMd with hcarry | ⟨hncarry, hmiddle⟩
+  · let k : ℕ := D - d - 1
+    have hDdk : D = d + k + 1 := by
+      dsimp [k]
+      omega
+    have hrun : ∀ j : ℕ, j < k →
+        seamIntegerGreedyRemainder (d + j + 2) +
+            2 ^ (d + j + 2) +
+            (seamAdjacentCut (d + j + 1) (by omega)).belowPulse + 4 =
+          4 * seamIntegerGreedyRemainder (d + j + 1) := by
+      intro j hj
+      have htD : d + j + 1 < D := by
+        dsimp [k] at hj
+        omega
+      rcases hrightBetween (d + j + 1) (by omega) (by omega) htD with
+        ⟨hncarry', hright'⟩
+      exact seamRightBranch_remainder_add_charge_eq
+        (by omega) hncarry' hright'
+    have hk : k ≤ d :=
+      seamUpperThenRightRun_length_le_resetRow
+        (by omega) hcarry hrun
+    have hdSmall :
+        seamIntegerGreedyRemainder (d + k + 1) < d + k + 1 := by
+      simpa [← hDdk] using hDsmall
+    have hdanger := seamUpperThenRightRun_rowSmall_forces_resetCharge_lower
+      (by omega) hk hcarry hrun hdSmall
+    refine ⟨d, hd13, k, ?_, hk, ?_, hcarry, hrun, hdSmall, ?_⟩
+    · omega
+    · omega
+    · simpa using hdanger
+  · have hd5 : 5 ≤ d := by omega
+    have hdDsucc : d + 1 ≤ D := by omega
+    have hdrow' : d ≤ (seamAdjacentCut d hd5).remainder := by
+      simpa [seamAdjacentCut_remainder] using hdrow
+    have hrightBetween' : ∀ (t : ℕ) (hdt : d + 1 ≤ t), t < D →
+        ¬ (seamAdjacentCut t (by omega)).successorCarries ∧
+          (seamAdjacentCut t (by omega)).terminalWeight ≤
+            4 * (seamAdjacentCut t (by omega)).remainder +
+              (seamPerturbedFamily t (by omega)).gap -
+              (seamAdjacentCut t (by omega)).belowPulse := by
+      intro t hdt htD
+      exact hrightBetween t (by omega) hdt htD
+    have hbarrier := seamMiddleThenRightRun_expBarrier
+      (d := d) (s := D) hd5 hdDsucc hdrow' hncarry hmiddle
+      hrightBetween'
+    have hDle : D ≤ 2 ^ D + D := Nat.le_add_left D (2 ^ D)
+    exact False.elim ((Nat.not_lt_of_ge (hDle.trans hbarrier)) hDsmall)
+
+/-- If every upper reset strictly before a row avoids the dyadic danger
+bands, then that row's seam remainder is at least its index.  The locality is
+exact: the first-bad-row/last-ancestor proof never queries a reset at or after
+the target row. -/
+theorem seamIntegerGreedyRemainder_ge_row_of_upperResetDyadicBandEscape_below
+    {s : ℕ} (hs13 : 13 ≤ s)
+    (hband : ∀ (d : ℕ) (hd5 : 5 ≤ d), 13 ≤ d → d < s →
+      (seamAdjacentCut d hd5).successorCarries →
+        ∀ j : ℕ, j ≤ d →
+          2 ^ (d - j + 1) <
+              4 * (seamAdjacentCut d hd5).overshoot +
+                (seamAdjacentCut d hd5).abovePulse ∨
+            4 * (seamAdjacentCut d hd5).overshoot +
+                  (seamAdjacentCut d hd5).abovePulse + 2 * (d + j) ≤
+              2 ^ (d - j + 1)) :
     s ≤ seamIntegerGreedyRemainder s := by
   classical
   by_contra hnot
@@ -4754,8 +5336,9 @@ theorem SeamUpperResetDyadicBandEscape.remainder_ge_row
       seamUpperThenRightRun_length_le_resetRow
         (by omega) hcarry hrun
     have hnotSmall :=
-      hband.not_rowSmall_after_upperRightRun
-        (by omega) hd13 hk hcarry hrun
+      not_rowSmall_after_upperRightRun_of_band
+        (by omega) hk hcarry hrun
+          (hband d (by omega) hd13 (by omega) hcarry)
     apply hnotSmall
     simpa [hDdk] using hDsmall
   · have hd5 : 5 ≤ d := by omega
@@ -4775,6 +5358,17 @@ theorem SeamUpperResetDyadicBandEscape.remainder_ge_row
       hrightBetween'
     have hDle : D ≤ 2 ^ D + D := Nat.le_add_left D (2 ^ D)
     exact (Nat.not_lt_of_ge (hDle.trans hbarrier)) hDsmall
+
+/-- If the dyadic upper-reset bands are avoided, no seam remainder at or
+after row thirteen can be smaller than its row index.  This is the global
+last-ancestor theorem missing from the local reverse-cylinder development.
+-/
+theorem SeamUpperResetDyadicBandEscape.remainder_ge_row
+    (hband : SeamUpperResetDyadicBandEscape)
+    {s : ℕ} (hs13 : 13 ≤ s) :
+    s ≤ seamIntegerGreedyRemainder s := by
+  exact seamIntegerGreedyRemainder_ge_row_of_upperResetDyadicBandEscape_below
+    hs13 (fun d hd5 hd13 _hds hcarry ↦ hband d hd5 hd13 hcarry)
 
 /-- The dyadic upper-reset producer supplies the exact row-scale middle
 producer required by the cardinality tail argument. -/
@@ -4833,6 +5427,7 @@ theorem half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
 #print axioms half_mem_mersenneAchievementSet_of_middleProducerRowEscape
 #print axioms three_mul_le_two_pow_succ
 #print axioms seamMiddleBranch_nextRemainder_add_belowPulse_eq
+#print axioms seamMiddleBranch_nextRemainder_eq_pow_add_of_cell
 #print axioms seamMiddleBranch_nextRemainder_ge_row
 #print axioms seamRowSmall_late_nextRemainder_recovers
 #print axioms largestSkipLateAt_succ_of_rowSmall
@@ -4864,6 +5459,13 @@ theorem half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
 #print axioms seamRightBranch_nextOvershoot_le_pow_of_charge_le
 #print axioms seamRightBranch_nextOvershoot_le_pow_of_overshoot_le_of_noPulseLeak
 #print axioms seamMiddleCoordinate_not_safe_iff_three_cells
+#print axioms seamMiddleBranch_nextRemainder_eq_pow_add_one_or_two_or_three
+#print axioms seamMiddleBranch_nextOvershoot_eq_pow_add_of_cell
+#print axioms seamMiddleBranch_next_pair_eq_one_three_or_two_two_or_three_one
+#print axioms seamMiddleBranch_cell_one_recovers_two_rows
+#print axioms seamMiddleBranch_exceptionalCell_forcesRight_affine
+#print axioms seamMiddleBranch_cell_two_recovers_or_nextPulse_le_three
+#print axioms seamMiddleBranch_cell_three_recovers_or_nextPulse_le_seven
 #print axioms seamMiddleCell_four_mul_floorZ_le
 #print axioms seamMiddleCell_scaledRationalRemainder_le
 #print axioms seamRightPulseLeak_iff_distanceCell
@@ -4889,11 +5491,14 @@ theorem half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape
 #print axioms remainder_lt_iff_charge_in_topWindow
 #print axioms middleInequality_iff_nextCharge_exceeds
 #print axioms seamUpperThenRightRun_rowSmall_iff_resetCylinderWindow
+#print axioms seamUpperThenRightRun_cardSmall_iff_resetCylinderWindow
 #print axioms seamUpperThenRightRun_rowSmall_forces_resetCharge_lower
 #print axioms seamUpperReset_band_iff_successorRemainder_avoids
 #print axioms upperResetCharge_dyadicDistance_add_abovePulse
 #print axioms seamUpperReset_band_of_overshoot_band
 #print axioms seamUpperResetDyadicBandEscape_at_thirteen
+#print axioms not_rowSmall_after_upperRightRun_of_band
+#print axioms seamIntegerGreedyRemainder_ge_row_of_upperResetDyadicBandEscape_below
 #print axioms SeamUpperResetDyadicBandEscape.not_rowSmall_after_upperRightRun
 #print axioms SeamUpperResetDyadicBandEscape.remainder_ge_row
 #print axioms SeamUpperResetDyadicBandEscape.toMiddleProducerRowEscape

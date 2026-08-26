@@ -9,9 +9,9 @@ The Stern--Brocot expansion of the cylinder
 
 emits one reciprocal-Mersenne term at rank `2p + 3q` for every positive
 coprime pair `(p,q)`.  Rank ten is the first place where Booleanisation loses
-one unit.  The lemmas below isolate the exact primitive-cone arithmetic.  They
-do not prove that the expansion Booleanises or that `1/21` belongs to the
-Mersenne achievement set.
+one unit.  The lemma below proves that this is the only negative source after
+passing to divisor sums: every later multiple `10k` has at least two distinct
+primitive witnesses.
 -/
 
 namespace Erdos249257

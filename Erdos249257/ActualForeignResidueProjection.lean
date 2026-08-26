@@ -458,7 +458,8 @@ noncomputable def renormalizedResidueProjection (H D : ℕ) : ℝ :=
 /-- Agreement of the corrected residue presentation with the canonical
 squared-Mersenne centre.  The exact checker proves this finite identity for
 fixtures; the remaining general Lean proof is the global divisor/kernel bridge
-owned by this residue lane. -/
+owned by this residue lane.  This proposition is coordinate-only: the direct
+squared-Mersenne full-target consumer does not require it. -/
 def RenormalizedResidueAgreement (H D : ℕ) : Prop :=
   renormalizedResidueProjection H D = lambertProjectedDiagonal H D
 

@@ -1,5 +1,6 @@
 import Erdos249257.CertificateKernel
 import Erdos249257.GenericTailOrbitRigidity
+import Erdos249257.ReciprocalSupportIrrationality
 import Erdos249257.SupportDilationDifferences
 import Mathlib.Analysis.PSeries
 import Mathlib.NumberTheory.PrimeCounting
@@ -202,6 +203,72 @@ theorem exists_pos_mem {A : Set ℕ} (hB : OrthogonalPetalBouquet A) :
     ∃ a : ℕ, 0 < a ∧ a ∈ A :=
   ⟨hB.ray 0, hB.ray_pos 0, hB.ray_mem 0⟩
 
+/-- Every orthogonal-petal bouquet is already reciprocal-summable.  The
+summable petal hypothesis dominates the ray reciprocals because every positive
+core only enlarges its petal; the exceptional frame is finite.  Consequently
+this bouquet interface cannot reach the reciprocal-divergent regime. -/
+theorem summable_reciprocalSupportTerm {A : Set ℕ}
+    (hB : OrthogonalPetalBouquet A) :
+    Summable (reciprocalSupportTerm A) := by
+  classical
+  have hray : Summable (fun i : ℕ => (1 : ℝ) / (hB.ray i : ℝ)) := by
+    refine Summable.of_nonneg_of_le (fun _ => by positivity) (fun i => ?_)
+      hB.summable_inv_petal
+    have hcore : (1 : ℝ) ≤ (hB.core i : ℝ) := by
+      exact_mod_cast hB.core_pos i
+    have hpetal : (0 : ℝ) < (hB.petal i : ℝ) := by
+      exact_mod_cast Nat.zero_lt_of_lt (hB.petal_one_lt i)
+    have hden : (hB.petal i : ℝ) ≤
+        (hB.core i : ℝ) * (hB.petal i : ℝ) := by
+      nlinarith
+    simpa [ray, Nat.cast_mul] using
+      one_div_le_one_div_of_le hpetal hden
+  let e : ℕ ≃ Set.range hB.ray := Equiv.ofInjective hB.ray hB.ray_injective
+  have hrangeSubtype :
+      Summable (fun d : Set.range hB.ray => (1 : ℝ) / (d : ℕ)) := by
+    have hcomp : Summable
+        ((fun i : ℕ => (1 : ℝ) / (hB.ray i : ℝ)) ∘ e.symm) :=
+      hray.comp_injective e.symm.injective
+    refine hcomp.congr (fun d => ?_)
+    change (1 : ℝ) / (hB.ray (e.symm d) : ℝ) = (1 : ℝ) / (d : ℕ)
+    rw [Equiv.apply_ofInjective_symm hB.ray_injective]
+  have hrange : Summable
+      (Set.indicator (Set.range hB.ray)
+        (fun d : ℕ => (1 : ℝ) / (d : ℝ))) := by
+    exact summable_subtype_iff_indicator.mp hrangeSubtype
+  have hexceptional : Summable
+      (Set.indicator (↑hB.exceptional : Set ℕ)
+        (fun d : ℕ => (1 : ℝ) / (d : ℝ))) := by
+    refine summable_of_ne_finset_zero (s := hB.exceptional) (fun d hd => ?_)
+    simp [Set.indicator, hd]
+  refine Summable.of_nonneg_of_le
+    (fun d => Set.indicator_nonneg (fun _ _ => by positivity) d)
+    (fun d => ?_) (hexceptional.add hrange)
+  have hexceptional_nonneg :
+      0 ≤ Set.indicator (↑hB.exceptional : Set ℕ)
+        (fun a : ℕ => (1 : ℝ) / (a : ℝ)) d :=
+    Set.indicator_nonneg (fun _ _ => by positivity) d
+  have hrange_nonneg :
+      0 ≤ Set.indicator (Set.range hB.ray)
+        (fun a : ℕ => (1 : ℝ) / (a : ℝ)) d :=
+    Set.indicator_nonneg (fun _ _ => by positivity) d
+  by_cases hdA : d ∈ A
+  · have hdA' := hdA
+    rw [hB.support_eq] at hdA'
+    rcases hdA' with hdexceptional | hdray
+    · rw [reciprocalSupportTerm, Set.indicator_of_mem hdA,
+        Set.indicator_of_mem hdexceptional]
+      exact le_add_of_nonneg_right hrange_nonneg
+    · have hdray' : d ∈ Set.range hB.ray := by
+        simpa [ray] using hdray
+      rw [reciprocalSupportTerm, Set.indicator_of_mem hdA,
+        Set.indicator_of_mem hdray']
+      exact le_add_of_nonneg_left hexceptional_nonneg
+  · have hlhs : reciprocalSupportTerm A d = 0 := by
+      simp [reciprocalSupportTerm, hdA]
+    rw [hlhs]
+    exact add_nonneg hexceptional_nonneg hrange_nonneg
+
 private theorem cardFactors_le_of_dvd {a Q : ℕ}
     (ha : 0 < a) (hQ : 0 < Q) (had : a ∣ Q) :
     ArithmeticFunction.cardFactors a ≤ ArithmeticFunction.cardFactors Q := by
@@ -363,6 +430,16 @@ theorem alternatingPrimeSquareBouquet_uses_two_cores :
   norm_num [alternatingPrimeSquareBouquet, alternatingPrimeCore]
 
 end OrthogonalPetalBouquet
+
+/-- Orthogonal-petal bouquets require no forced-slot selector: their defining
+reciprocal summability already puts them inside the general reciprocal-support
+irrationality theorem.  This strictly subsumes the conditional bouquet
+endpoint below and closes it as a distinct Erdős-257 mechanism. -/
+theorem irrational_erdosSupportSeries_of_orthogonalPetalBouquet_unconditional
+    {A : Set ℕ} (hB : OrthogonalPetalBouquet A) :
+    Irrational (erdosSupportSeries 2 A) := by
+  exact irrational_erdosSupportSeries_two_of_summable_reciprocal A hB.infinite
+    hB.summable_reciprocalSupportTerm
 
 /-- The unresolved analytic supply in the bounded-`Ω`, reciprocal-summable
 sunflower route.  Its conclusion is exactly the carry-aware certificate data
@@ -725,6 +802,8 @@ theorem supportCoeffInt_prime_power_layer_fixture :
   decide
 
 #print axioms irrational_erdosSupportSeries_of_sunflower_forcedCarry_supply
+#print axioms OrthogonalPetalBouquet.summable_reciprocalSupportTerm
+#print axioms irrational_erdosSupportSeries_of_orthogonalPetalBouquet_unconditional
 #print axioms OrthogonalPetalBouquet.alternatingPrimeSquareSupport_infinite
 #print axioms OrthogonalPetalBouquet.alternatingPrimeSquareSupport_cardFactors_eq_three
 #print axioms forcedSlotCarrySelection_of_tailSelection

@@ -1,6 +1,5 @@
 import Erdos249257.HalfCarryReachability
 import Erdos249257.PrimitiveSupportBridge
-import Erdos249257.DyadicPrefixCompression
 
 /-!
 # Finite shadows of the half-carry strip
@@ -838,20 +837,19 @@ theorem greedyHalf_rankThree_prefix_fixture :
     greedyMersennePrefixRat (1 / 2 : ℚ) 3 = ({2, 3} : Finset ℕ) ∧
       (1 / 2 : ℚ) - finiteErdosSum ({2, 3} : Finset ℕ) 2 = 1 / 42 := by
   constructor
-  · classical
-    ext k
+  · ext k
     simp only [greedyMersennePrefixRat, Finset.mem_image, Finset.mem_filter,
       Finset.mem_range, Finset.mem_insert, Finset.mem_singleton]
     constructor
     · rintro ⟨a, ⟨ha, htake⟩, rfl⟩
       interval_cases a
       · norm_num [greedyMersenneRemainderRat, mersenneWeightRat] at htake
-      · simp
-      · simp
+      · norm_num
+      · norm_num
     · rintro (rfl | rfl)
-      · refine ⟨1, ⟨by norm_num, ?_⟩, by norm_num⟩
+      · refine ⟨1, ⟨by norm_num, ?_⟩, rfl⟩
         norm_num [greedyMersenneRemainderRat, mersenneWeightRat]
-      · refine ⟨2, ⟨by norm_num, ?_⟩, by norm_num⟩
+      · refine ⟨2, ⟨by norm_num, ?_⟩, rfl⟩
         norm_num [greedyMersenneRemainderRat, mersenneWeightRat]
   · rw [two_three_dyadicPrefix_fixture.1]
     norm_num
@@ -1270,8 +1268,7 @@ def HalfGreedyGovernedFrozenMarginProducer : Prop :=
         greedyMersenneRemainder (1 / 2 : ℝ) k →
       ∃ J : ℕ, J ≤ k + 1 ∧ 0 ≤ greedyHalfFrozenMargin k J
 
-/-- The governed first-passage condition implies exact half-membership.
-The condition itself remains unproved. -/
+/-- The governed first-passage producer closes exact half-membership. -/
 theorem half_mem_mersenneAchievementSet_of_governedFrozenMarginProducer
     (hproducer : HalfGreedyGovernedFrozenMarginProducer) :
     (1 / 2 : ℝ) ∈ mersenneAchievementSet := by

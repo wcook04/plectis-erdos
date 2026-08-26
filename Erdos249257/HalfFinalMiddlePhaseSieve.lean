@@ -1,6 +1,4 @@
 import Erdos249257.HalfCylinderMiddleCarryLowerBound
-import Erdos249257.HalfCylinderFinalMiddleTailSocket
-import Erdos249257.HalfCylinderFiniteShadow
 
 /-!
 # A finite phase sieve for the final `-2` middle cell
@@ -18,14 +16,9 @@ namespace Erdos249257
 
 open Set
 open HalfCylinderIntegerGreedy
-open HalfCylinderFiniteShadow
 open scoped BigOperators
 
 noncomputable section
-
-/-! ## Public prerequisites for the phase sieve -/
-
-/-- A finite support contributes at most one divisor per support element. -/
 
 private theorem pair_rowPulse_le_wordPulse
     {s a b : ℕ} (hab : a ≠ b)
@@ -1021,6 +1014,7 @@ private theorem six_le_belowPulse_of_joint_phase_thirteen
         · exact h26mem
       · intro d _ _
         omega
+
 /-- When `s = 9 (mod 10)`, forced ranks `2` and `20` each contribute one
 unit of boundary pulse. -/
 private theorem two_le_belowPulse_of_mod_ten_nine

@@ -272,6 +272,12 @@ theorem three_le_of_actualTail_fatal_of_odd
   three_le_of_fatal_of_odd hk hu ha hodd hdecomp (mersenneTail k)
     (mersenneTailLB3_lt_mersenneTail k).le hfatal
 
+#print axioms mersenneTailLB3_lt_mersenneTail
+#print axioms skipSafe_actualTail_of_two_mul_le_three_mul
+#print axioms unitNumerator_skipSafe_actualTail
+#print axioms three_mul_lt_two_mul_of_actualTail_fatal
+#print axioms three_le_of_actualTail_fatal_of_odd
+
 end ActualMersenneTail
 
 end HalfGreedyFatalGap

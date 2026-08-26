@@ -29,9 +29,14 @@ namespace Erdos249257
 
 open Filter Topology
 
--- `mersenneGap` and `mersenneGap_pos` are already declared publicly in
--- `Erdos249257.GreedyAchievementSet` (same definition, same statement); this
--- file builds on those rather than redeclaring them.
+/-- The Mersenne gap at exponent `n`: the amount by which weight `n` exceeds
+the entire mass after it.  Positive for `0 < n` by strict
+superincreasingness. -/
+noncomputable def mersenneGap (n : ℕ) : ℝ :=
+  mersenneWeight n - mersenneTail n
+
+theorem mersenneGap_pos {n : ℕ} (hn : 0 < n) : 0 < mersenneGap n :=
+  sub_pos.mpr (mersenneTail_lt_weight hn)
 
 theorem mersenneGap_nonneg {n : ℕ} (hn : 0 < n) : 0 ≤ mersenneGap n :=
   (mersenneGap_pos hn).le

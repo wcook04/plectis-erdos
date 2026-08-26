@@ -10,7 +10,7 @@ This generated module materializes the kernel-safe prefix of finite
 pincer table: 12 distinct scales through `t = 17`. Prime factors are proved prime in Lean,
 the factorizations are multiplied back exactly, and Euler totients are
 reconstructed from pairwise-coprime prime-power blocks.  No
-`native evaluation`, custom axiom, or unbounded-supply inference is used.
+`native_decide`, custom axiom, or unbounded-supply inference is used.
 
 Results input SHA-256: `1114b667b8d044a97240d031dce4dcfd093d6ea93cef78086a05572c667416dd`.
 Factorization input SHA-256: `4a0c5360a08c34381c932692f66a2094178ff2dfec7302788caed8e6ee3fdf3d`.

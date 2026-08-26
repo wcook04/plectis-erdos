@@ -259,6 +259,31 @@ theorem fullCylinderStage54_halfTerminalOnlyStripWitness :
   Erdos249257.SuffixCylinderTerminalOnlyBridge.CylinderStage.halfTerminalOnlyStripWitness_after_operational_feedback
     fullCylinderStage53 (by norm_num) (by norm_num) (by norm_num)
 
+/-- One row beyond the row-`54` feedback boundary still has an unconditional
+terminal-only witness.  A full-cylinder output advances ordinarily.  An
+in-strip two-sheet output is a binary-adjacent singleton profiled gap, so its
+surviving canonical parent supplies the row-`55` witness. -/
+theorem fullCylinderStage55_halfTerminalOnlyStripWitness :
+    HalfTerminalOnlyStripWitness 55 := by
+  rcases
+      Erdos249257.SuffixCylinderInStrip.CylinderStage.feedbackAdvance_or_inStripTwoSheet
+        fullCylinderStage53 (by norm_num) (by norm_num) (by norm_num) with
+    hstage | htwoSheet
+  · rcases hstage with ⟨S⟩
+    exact
+      Erdos249257.SuffixCylinderTerminalOnlyBridge.CylinderStage.halfTerminalOnlyStripWitness
+        (S.advance (by norm_num) (by norm_num))
+  · rcases htwoSheet with ⟨T⟩
+    let P :=
+      Erdos249257.SuffixCylinderProfiledGap.profiledGapStageOfTwoSheet T
+    apply
+      Erdos249257.SuffixCylinderTerminalOnlyBridge.ProfiledGapStage.halfTerminalOnlyStripWitness_after_singletonGap
+        P (by norm_num) (by norm_num)
+    · exact
+        Erdos249257.SuffixCylinderProfiledAdjacency.profiledGapStageOfTwoSheet_hasAdjacentPrefixes
+          T
+    · rfl
+
 /-- Cofinal full-cylinder stages imply the strictly weaker terminal-only
 cofinal producer expected by the closed achievement-set consumer. -/
 theorem cofinalTerminalOnlyStrip_of_cofinalCylinderStages
@@ -282,25 +307,6 @@ theorem exists_infinite_support_half_of_cofinalCylinderStages
   exists_infinite_support_half_of_cofinalTerminalOnlyStrip
     (cofinalTerminalOnlyStrip_of_cofinalCylinderStages hstages)
 
-/-- Cofinal full-cylinder stages produce an infinite support of strictly
-positive exponents whose Mersenne support series is `1/2`. -/
-theorem exists_infinite_positive_support_half_of_cofinalCylinderStages
-    (hstages : ∀ N : ℕ, ∃ M K : ℕ,
-      max N 1 ≤ M ∧ Nonempty (CylinderStage K M)) :
-    ∃ A : Set ℕ, 0 ∉ A ∧ A.Infinite ∧
-      erdosSupportSeries 2 A = (1 : ℝ) / 2 := by
-  have hterminal :=
-    cofinalTerminalOnlyStrip_of_cofinalCylinderStages hstages
-  rcases
-      half_mem_mersenneAchievementSet_of_cofinalTerminalOnlyStrip hterminal with
-    ⟨A, hA0, hvalue⟩
-  have hseries : erdosSupportSeries 2 A = (1 : ℝ) / 2 := by
-    rw [← positiveMersenneSupportValue_eq_erdosSupportSeries]
-    exact hvalue.symm
-  refine ⟨A, hA0, ?_, hseries⟩
-  intro hfinite
-  exact finite_boolSupport_ne_half A hfinite hA0 hseries
-
 #print axioms halfTerminalOnlyStripWitness_of_halfTerminalReachable
 #print axioms SelectedHalfWindow.halfTerminalOnlyStripWitness
 #print axioms CylinderStage.halfTerminalOnlyStripWitness
@@ -315,8 +321,8 @@ theorem exists_infinite_positive_support_half_of_cofinalCylinderStages
 #print axioms fullCylinderStage53
 #print axioms fullCylinderStage53_halfTerminalOnlyStripWitness
 #print axioms fullCylinderStage54_halfTerminalOnlyStripWitness
+#print axioms fullCylinderStage55_halfTerminalOnlyStripWitness
 #print axioms cofinalTerminalOnlyStrip_of_cofinalCylinderStages
 #print axioms exists_infinite_support_half_of_cofinalCylinderStages
-#print axioms exists_infinite_positive_support_half_of_cofinalCylinderStages
 
 end Erdos249257.SuffixCylinderTerminalOnlyBridge

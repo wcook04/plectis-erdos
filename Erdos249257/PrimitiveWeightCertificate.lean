@@ -138,29 +138,22 @@ theorem primitiveReducedDenominatorUnitGapSupply_prime_power_projection
 /-- The first strict strengthening over the ordinary empty-gap certificate:
 at `(u,N,K)=(3,3,5)` the dyadic interval contains the single integer `3`,
 which is forbidden because it is a nonunit modulo the reduced denominator. -/
-private theorem primitiveCarry_three_window_3_5_eval : primitiveCarry 3 5 = 24 := by
-  have hφ4 : Nat.totient 4 = 2 := by decide
-  have hφ5 : Nat.totient 5 = 4 := by decide
-  have hφ6 : Nat.totient 6 = 2 := by decide
-  have hφ7 : Nat.totient 7 = 6 := by decide
-  have hφ8 : Nat.totient 8 = 4 := by decide
-  have hIcc : (Finset.Icc 1 5 : Finset ℕ) = {1, 2, 3, 4, 5} := by decide
-  simp only [primitiveCarry, hIcc]
-  norm_num [hφ4, hφ5, hφ6, hφ7, hφ8]
-
 theorem reducedDenominatorUnitGapCert_three_window_3_5 :
     ReducedDenominatorUnitGapCert 3 3 5 := by
-  norm_num [ReducedDenominatorUnitGapCert, primitiveCarry_three_window_3_5_eval]
+  have hcarry : primitiveCarry 3 5 = 24 := by
+    decide
+  apply (reducedDenominatorUnitGapCert_prime_pow_iff
+    (p := 3) (e := 1) (N := 3) (K := 5) (by norm_num) (by norm_num)).2
+  norm_num [hcarry]
 
 /-- The same row is not an ordinary empty-gap certificate: its scaled
 residue plus tail height is `38`, while the dyadic modulus is `32`. -/
 theorem not_ordinary_gap_certificate_three_window_3_5 :
     ¬ ((3 * primitiveCarry 3 5) % 2 ^ 5 + 3 * (3 + 5 + 2) < 2 ^ 5) := by
-  rw [primitiveCarry_three_window_3_5_eval]
-  norm_num
+  decide
 
 /-- Exact arithmetic in the strict-strengthening regression row. -/
 theorem primitiveCarry_three_window_3_5 : primitiveCarry 3 5 = 24 := by
-  exact primitiveCarry_three_window_3_5_eval
+  decide
 
 end Erdos249257

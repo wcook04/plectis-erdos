@@ -89,58 +89,58 @@ theorem seamUpperResetDyadicBandEscape_through_thirty
   intro j hj
   rw [seamUpperReset_band_iff_successorRemainder_avoids hd5 hj hcarry]
   interval_cases d
-  · have hrem : seamIntegerGreedyRemainder 14 = 392 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 14 = 392 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 15 = 34333 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 15 = 34333 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 16 = 71791 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 16 = 71791 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 17 = 156085 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 17 = 156085 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 18 = 362187 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 18 = 362187 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 19 = 924455 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 19 = 924455 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 20 = 549353 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 20 = 549353 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 21 = 100251 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 21 = 100251 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 22 = 4595307 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 22 = 4595307 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 23 = 9992613 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 23 = 9992613 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 24 = 23193229 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 24 = 23193229 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 25 = 59218477 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 25 = 59218477 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 26 = 35546625 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 26 = 35546625 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 27 = 7968765 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 27 = 7968765 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 28 = 300310513 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 28 = 300310513 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 29 = 664371133 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 29 = 664371133 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 30 = 1583742700 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 30 = 1583742700 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
-  · have hrem : seamIntegerGreedyRemainder 31 = 4187487147 := by decide +kernel
+  · have hrem : seamIntegerGreedyRemainder 31 = 4187487147 := by decide
     rw [hrem]
     interval_cases j <;> norm_num
 

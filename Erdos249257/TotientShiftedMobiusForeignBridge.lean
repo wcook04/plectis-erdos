@@ -6,25 +6,16 @@ import Mathlib.Tactic
 /-!
 # The shifted Möbius tail is the actual foreign-residue kernel
 
-This module compares two independently defined descriptions of the same
-totient-tail contribution.  The first is the shifted Möbius pulse obtained by
-an absolutely summable Lambert regrouping.  The second is the residue kernel
-used in the finite diagonal decomposition.  The equality
-`positiveForeignResidueKernel_eq_shiftedMobiusPulseTerm` identifies them
-term by term.
+`ActualForeignResidueProjection` introduced the residue channels needed by
+the full-target pincer, but deliberately left their global analytic kernel
+identity open.  `TotientShiftedMobiusPulse` now derives that identity from
+the absolutely summable Möbius--Lambert product.
 
-Consequently the literal totient tail is the sum of the positive residue
-kernels, that kernel family is summable, and diagonal tail differences are
-sums of the corresponding channel increments.  The later theorems split those
-sums at a finite cutoff and discharge the analytic tail-limit hypothesis in
-the projected-enclosure argument.
-
-These are coordinate and convergence statements.  They do not show that any
-channel is nonzero or dominant, prevent cancellation between channels, or
-produce the finite separation hypothesis consumed by the miss theorems.  In
-particular the bridge supplies no cofinal certificate family, carry escape,
-eventual nonintegrality, contradiction, irrationality theorem, or solution of
-Erdős 249.
+This file identifies the two coordinate systems.  In particular,
+`totientTail_eq_tsum_positiveForeignResidueKernel` is the previously missing
+unconditional statement that the literal totient tail is the sum of the
+actual positive residue channels.  No foreign term is defined by subtracting
+an approximation from the target.
 -/
 
 namespace Erdos249257.TotientShiftedMobiusForeignBridge

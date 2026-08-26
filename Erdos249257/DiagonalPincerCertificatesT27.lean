@@ -24,7 +24,7 @@ import Erdos249257.DiagonalPincerPrimeCertificates.Prime80313433231
 This generated extension consumes 18 new large-prime Lucas roots
 and 1 recursive Pratt dependency, reuses 12 earlier certificates,
 reconstructs all 80 Euler totients in the t=27 window, and proves the
-sixteenth finite diagonal kill without `native evaluation`.
+sixteenth finite diagonal kill without `native_decide`.
 -/
 
 namespace Erdos249257

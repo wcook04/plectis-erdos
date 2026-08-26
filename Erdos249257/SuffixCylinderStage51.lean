@@ -199,70 +199,70 @@ prevents the evaluator from retaining the full 22-row word computation in
 one reduction term. -/
 
 theorem depth29Prefix25_wordCoeff_thirty :
-    wordCoeff depth29Prefix25 30 = 3 := by decide +kernel
+    wordCoeff depth29Prefix25 30 = 3 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtyOne :
-    wordCoeff depth29Prefix25 31 = 0 := by decide +kernel
+    wordCoeff depth29Prefix25 31 = 0 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtyTwo :
-    wordCoeff depth29Prefix25 32 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 32 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtyThree :
-    wordCoeff depth29Prefix25 33 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 33 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtyFour :
-    wordCoeff depth29Prefix25 34 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 34 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtyFive :
-    wordCoeff depth29Prefix25 35 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 35 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtySix :
-    wordCoeff depth29Prefix25 36 = 3 := by decide +kernel
+    wordCoeff depth29Prefix25 36 = 3 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtySeven :
-    wordCoeff depth29Prefix25 37 = 0 := by decide +kernel
+    wordCoeff depth29Prefix25 37 = 0 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtyEight :
-    wordCoeff depth29Prefix25 38 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 38 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_thirtyNine :
-    wordCoeff depth29Prefix25 39 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 39 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_forty :
-    wordCoeff depth29Prefix25 40 = 2 := by decide +kernel
+    wordCoeff depth29Prefix25 40 = 2 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortyOne :
-    wordCoeff depth29Prefix25 41 = 0 := by decide +kernel
+    wordCoeff depth29Prefix25 41 = 0 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortyTwo :
-    wordCoeff depth29Prefix25 42 = 6 := by decide +kernel
+    wordCoeff depth29Prefix25 42 = 6 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortyThree :
-    wordCoeff depth29Prefix25 43 = 0 := by decide +kernel
+    wordCoeff depth29Prefix25 43 = 0 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortyFour :
-    wordCoeff depth29Prefix25 44 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 44 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortyFive :
-    wordCoeff depth29Prefix25 45 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 45 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortySix :
-    wordCoeff depth29Prefix25 46 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 46 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortySeven :
-    wordCoeff depth29Prefix25 47 = 0 := by decide +kernel
+    wordCoeff depth29Prefix25 47 = 0 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortyEight :
-    wordCoeff depth29Prefix25 48 = 3 := by decide +kernel
+    wordCoeff depth29Prefix25 48 = 3 := by decide
 
 theorem depth29Prefix25_wordCoeff_fortyNine :
-    wordCoeff depth29Prefix25 49 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 49 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_fifty :
-    wordCoeff depth29Prefix25 50 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 50 = 1 := by decide
 
 theorem depth29Prefix25_wordCoeff_fiftyOne :
-    wordCoeff depth29Prefix25 51 = 1 := by decide +kernel
+    wordCoeff depth29Prefix25 51 = 1 := by decide
 
 /-- All coefficients from rows 30 through 51, in one consumer-facing table. -/
 theorem depth29Prefix25_wordCoeff_thirty_add

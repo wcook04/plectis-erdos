@@ -64,7 +64,6 @@ limitations are worth stating explicitly.
 -/
 
 namespace Erdos249257
-namespace HalfGreedyTwoThirdsBand
 
 /-! ## Rational geometry of the band -/
 
@@ -254,7 +253,7 @@ theorem seven_le_of_intBand_odd {p D q : ℤ}
 
 /-! ## Trust receipt
 
-Every theorem above is kernel-reduced: no `native_decide`, hence no
+Every theorem above is kernel-reduced: there is no native evaluator, hence no
 `Lean.trustCompiler`, and no `sorryAx`.  The expected profile is the standard
 `[propext, Classical.choice, Quot.sound]`. -/
 
@@ -268,5 +267,4 @@ Every theorem above is kernel-reduced: no `native_decide`, hence no
 #print axioms four_dvd_bandDefect
 #print axioms seven_le_of_intBand_odd
 
-end HalfGreedyTwoThirdsBand
 end Erdos249257

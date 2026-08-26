@@ -294,7 +294,7 @@ private theorem moebius_prod_subset_primeFactors {r : ℕ}
       simpa [Function.id_def] using
         congrArg Finset.card (Nat.primeFactors_prod hsprime)
 
-private theorem divisor_mobiusNumerator_eq_subset {r : ℕ}
+theorem divisor_mobiusNumerator_eq_subset {r : ℕ}
     (hr : Squarefree r) :
     (∑ d ∈ r.divisors,
         ArithmeticFunction.moebius d * (((r / d : ℕ) : ℤ)) *

@@ -47,9 +47,8 @@ theorem irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply :
     refine ⟨2 ^ a, ha.trans hat.le, ?_⟩
     simpa only [actualLcmTailOrbit, actualLcmHeight, two_mul] using hnon
 
-/-- Cofinal actual-LCM orbit non-integrality implies irrationality of the
-totient series directly, with no quantitative separation hypothesis.  The
-non-integrality condition remains unproved. -/
+/-- Cofinal actual-LCM orbit non-integrality closes the irrationality
+endpoint directly, without a quantitative separation hypothesis. -/
 theorem irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply
     (hsupply : PowerTwoActualLcmOrbitNonintegralitySupply) :
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
