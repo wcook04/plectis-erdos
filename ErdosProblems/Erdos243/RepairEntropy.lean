@@ -42,6 +42,82 @@ theorem scaleProduct_eq_range_prod (h : ℕ → ℕ) (r L : ℕ) :
   rw [Finset.prod_Ico_eq_prod_range]
   simp
 
+/-- A recovery interval with pointwise relative error below `1 / K` has
+total scale growth below `((K + 1) / K) ^ L`.  The inequality is stated with
+all denominators cleared. -/
+theorem recovery_payment_bound_divisionFree
+    (u h : ℕ → ℕ) (e : ℕ → ℤ) (K r L : ℕ)
+    (hK : 0 < K)
+    (hupos : ∀ n, 0 < u n)
+    (hhpos : ∀ n, 0 < h n)
+    (hstep : ∀ n, (h n : ℤ) * (u (n + 1) : ℤ) = (u n : ℤ) - e n)
+    (herr : ∀ i, i < L → K * Int.natAbs (e (r + i)) < u (r + i))
+    (hL : 0 < L)
+    (hrecover : u r ≤ u (r + L)) :
+    K ^ L * (∏ i ∈ Finset.range L, h (r + i)) < (K + 1) ^ L := by
+  have hlocal : ∀ i, i < L →
+      K * h (r + i) * u (r + i + 1) < (K + 1) * u (r + i) := by
+    intro i hi
+    have hneg : -e (r + i) ≤ (Int.natAbs (e (r + i)) : ℤ) := by
+      rw [← Int.natAbs_neg]
+      exact Int.le_natAbs
+    have hupperInt :
+        (h (r + i) : ℤ) * (u (r + i + 1) : ℤ) ≤
+          (u (r + i) : ℤ) + Int.natAbs (e (r + i)) := by
+      rw [hstep (r + i)]
+      omega
+    have hupper : h (r + i) * u (r + i + 1) ≤
+        u (r + i) + Int.natAbs (e (r + i)) := by
+      exact_mod_cast hupperInt
+    calc
+      K * h (r + i) * u (r + i + 1) =
+          K * (h (r + i) * u (r + i + 1)) := by ring
+      _ ≤ K * (u (r + i) + Int.natAbs (e (r + i))) :=
+        Nat.mul_le_mul_left K hupper
+      _ = K * u (r + i) + K * Int.natAbs (e (r + i)) := by ring
+      _ < K * u (r + i) + u (r + i) :=
+        Nat.add_lt_add_left (herr i hi) _
+      _ = (K + 1) * u (r + i) := by ring
+  have hacc : ∀ j, 0 < j → j ≤ L →
+      K ^ j * (∏ i ∈ Finset.range j, h (r + i)) * u (r + j) <
+        (K + 1) ^ j * u r := by
+    intro j hj hjL
+    induction j with
+    | zero => omega
+    | succ j ih =>
+        have hloc := hlocal j (by omega)
+        by_cases hj0 : j = 0
+        · subst j
+          simpa using hloc
+        · have hprev := ih (by omega) (by omega)
+          have hprefixPos :
+              0 < K ^ j * ∏ i ∈ Finset.range j, h (r + i) := by
+            exact Nat.mul_pos (pow_pos hK j)
+              (Finset.prod_pos fun i _ => hhpos (r + i))
+          calc
+            K ^ (j + 1) * (∏ i ∈ Finset.range (j + 1), h (r + i)) *
+                u (r + (j + 1)) =
+                (K ^ j * ∏ i ∈ Finset.range j, h (r + i)) *
+                  (K * h (r + j) * u (r + j + 1)) := by
+                    rw [pow_succ, Finset.prod_range_succ]
+                    simp only [Nat.add_assoc]
+                    ring
+            _ < (K ^ j * ∏ i ∈ Finset.range j, h (r + i)) *
+                  ((K + 1) * u (r + j)) :=
+                Nat.mul_lt_mul_of_pos_left hloc hprefixPos
+            _ = (K + 1) *
+                  (K ^ j * (∏ i ∈ Finset.range j, h (r + i)) * u (r + j)) := by
+                ring
+            _ < (K + 1) * ((K + 1) ^ j * u r) :=
+                Nat.mul_lt_mul_of_pos_left hprev (by omega)
+            _ = (K + 1) ^ (j + 1) * u r := by ring
+  have hwhole := hacc L hL le_rfl
+  have hend :
+      K ^ L * (∏ i ∈ Finset.range L, h (r + i)) * u (r + L) <
+        (K + 1) ^ L * u (r + L) :=
+    lt_of_lt_of_le hwhole (Nat.mul_le_mul_left ((K + 1) ^ L) hrecover)
+  exact (Nat.mul_lt_mul_right (hupos (r + L))).mp hend
+
 /-- **Repair-entropy conservation law.**  A repaired family on a recovery
 interval pays the square of its transversal lcm inside the same division-free
 relative-error budget that bounds the whole reset payment. -/
