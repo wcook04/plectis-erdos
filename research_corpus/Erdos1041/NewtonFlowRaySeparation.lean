@@ -301,6 +301,25 @@ theorem constant_perturbation_roots_in_unitDisk
       (by positivity)
       hmargin (hroots b hbroot) hab
 
+/-- A uniform derivative margin on a protected set excludes critical points
+after a smaller linear-coefficient perturbation. -/
+theorem noncritical_on_of_norm_lt_uniform_lower_bound
+    {f' : ℂ → ℂ} {C : Set ℂ} {lower : ℝ} {shift : ℂ}
+    (hlower : ∀ z ∈ C, lower ≤ ‖f' z‖)
+    (hshift : ‖shift‖ < lower) :
+    ∀ z ∈ C, f' z + shift ≠ 0 := by
+  intro z hz hzero
+  have heq : f' z = -shift := by
+    calc
+      f' z = (f' z + shift) - shift := by ring
+      _ = -shift := by rw [hzero]; ring
+  have hnorm : ‖f' z‖ = ‖shift‖ := by
+    rw [heq, norm_neg]
+  have hlt : ‖f' z‖ < lower := by
+    rw [hnorm]
+    exact hshift
+  exact (not_lt_of_ge (hlower z hz)) hlt
+
 /-- The exact endpoint relation supplied by an exponentially decaying
 Newton-value orbit forces the endpoints onto one positive ray. -/
 theorem samePositiveRay_of_real_exp_decay
@@ -319,5 +338,73 @@ theorem no_newtonConnection_of_not_samePositiveRay
       endValue = (Real.exp (-time) : ℂ) * startValue) :
     False :=
   hrays (samePositiveRay_of_real_exp_decay hconnection)
+
+/-! ## Convex-hull confinement at a supporting line
+
+After rotating a supporting line so that its outward normal is the positive
+real direction, every root displacement has nonnegative real part.  The
+following three lemmas show that the Newton vector points into the supported
+half-plane.  They are the algebraic core of the convex-hull invariance
+argument recorded in `NewtonConvexHullInvariance.md`.
+-/
+
+/-- Inversion preserves the closed right half-plane.  This includes zero,
+using Lean's totalized inverse. -/
+theorem inv_re_nonneg_of_re_nonneg
+    {z : ℂ} (hz : 0 ≤ z.re) :
+    0 ≤ z⁻¹.re := by
+  rw [Complex.inv_re]
+  exact div_nonneg hz (Complex.normSq_nonneg z)
+
+/-- A finite sum of reciprocals of right-half-plane displacements again has
+nonnegative real part. -/
+theorem reciprocal_sum_re_nonneg
+    {ι : Type*} [Fintype ι] (w : ι → ℂ)
+    (hw : ∀ i, 0 ≤ (w i).re) :
+    0 ≤ (∑ i, (w i)⁻¹).re := by
+  rw [Complex.re_sum]
+  exact Finset.sum_nonneg fun i _ => inv_re_nonneg_of_re_nonneg (hw i)
+
+/-- Boundary rigidity behind the strict Gauss--Lucas alternative.  If every
+displacement lies in a supported half-plane, none is zero, and their
+reciprocals balance to zero, then every displacement lies on the supporting
+line itself. -/
+theorem re_eq_zero_of_reciprocal_sum_eq_zero
+    {ι : Type*} [Fintype ι] (w : ι → ℂ)
+    (hw : ∀ i, 0 ≤ (w i).re) (hne : ∀ i, w i ≠ 0)
+    (hbalance : ∑ i, (w i)⁻¹ = 0) :
+    ∀ i, (w i).re = 0 := by
+  have hsum : ∑ i, ((w i)⁻¹).re = 0 := by
+    have hre := congrArg Complex.re hbalance
+    simpa using hre
+  have heach : ∀ i, ((w i)⁻¹).re = 0 := by
+    exact funext_iff.mp <|
+      (Fintype.sum_eq_zero_iff_of_nonneg
+        fun i => inv_re_nonneg_of_re_nonneg (hw i)).mp hsum
+  intro i
+  have hi := heach i
+  rw [Complex.inv_re] at hi
+  have hnormSq : Complex.normSq (w i) ≠ 0 := by
+    exact mt Complex.normSq_eq_zero.mp (hne i)
+  exact (div_eq_zero_iff.mp hi).resolve_right hnormSq
+
+/-- The negative reciprocal of a right-half-plane number lies in the closed
+left half-plane. -/
+theorem neg_inv_re_nonpos_of_re_nonneg
+    {z : ℂ} (hz : 0 ≤ z.re) :
+    (-z⁻¹).re ≤ 0 := by
+  simp only [Complex.neg_re]
+  exact neg_nonpos.mpr (inv_re_nonneg_of_re_nonneg hz)
+
+/-- Supporting-half-plane form of Newton convex-hull confinement.  If the
+rotated displacements from the roots to the current point all have
+nonnegative real part, then the rotated Newton vector
+`-(∑ i, w i⁻¹)⁻¹` has nonpositive outward component. -/
+theorem newtonReciprocalVector_supportingHalfPlane
+    {ι : Type*} [Fintype ι] (w : ι → ℂ)
+    (hw : ∀ i, 0 ≤ (w i).re) :
+    (-(∑ i, (w i)⁻¹)⁻¹).re ≤ 0 := by
+  apply neg_inv_re_nonpos_of_re_nonneg
+  exact reciprocal_sum_re_nonneg w hw
 
 end ErdosProblems.Erdos1041
