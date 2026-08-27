@@ -1,0 +1,20 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/TetranomialReciprocalMomentSelector.lean",
+    "ErdosProblems/Erdos1041/TetranomialReciprocalMomentSelector.md",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_tetranomial_reciprocal_moment_selector.py"
+  ],
+  "human_understanding_delta": "Missing low tetranomial coefficients force vanishing reciprocal Newton moments. The strongest automatic moment k=s-1 bounds the second-smallest root radius by rho_2^(mk)<=(m-1)|c|^k, yielding a coefficient-only two-safe-spoke selector through the upper Abel tail.",
+  "verification_state": {
+    "analytic_proof": "complete",
+    "lean": "pass: exact canonical shared-cache build for ErdosProblems.Erdos1041.TetranomialReciprocalMomentSelector",
+    "computation": "pass: reciprocal selector certifies 1683 samples, its union with the tail-resultant theorem certifies 3203, and the existing close-pair budget certifies the last sample; zero observed second-radius-bound violation"
+  },
+  "publication_or_review_state": "Lean-verified expert note ready for scoped commit and Refinery review; no external review or literature-priority claim",
+  "canonicalization_state": "candidate theorem orthogonal to the tail-resultant energy selector",
+  "unresolved_downstream_bottleneck": "A broad search falsified the three-selector covering conjecture. The first nonprimitive witness compresses to an already-solved cubic quotient; a primitive (5,4,1) quintic remains outside all three sufficient tests despite three numerically safe tails. Unrestricted Erdos 1041 remains open.",
+  "next_stage_owner": "Closure Engine for a missing-middle-coefficient or root-count selector on the primitive (5,4,1) boundary, then Refinery for exposition and attribution review"
+}

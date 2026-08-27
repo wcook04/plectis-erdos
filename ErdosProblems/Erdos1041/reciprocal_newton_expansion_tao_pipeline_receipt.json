@@ -1,0 +1,20 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "reciprocal_newton_expansion",
+  "input_stage": "returned_research_assimilation",
+  "output_stage": "verification_and_exposition",
+  "artifact": [
+    "ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md",
+    "ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_reciprocal_newton_expansion.py"
+  ],
+  "human_understanding_delta": "FormACutQuantitativeExpansion carries an anchored nonlinear remainder of size O(eta^2 |z|) and budgets it against the active margin. In the reciprocal power-sum coordinates p_m = sum_j a_j^-m that remainder is not an error: -p_m/m = E_m - ((m+1)/2) E_m^(2) + ..., so the quadratic correction is the second term of an exact coefficient. The expansion log|f(z)| = log|f(0)| - Re sum_m (p_m/m) z^m is a Taylor series, controlled in C^2 rather than C^0, so the unmodelled part can be pushed past any prescribed finite contact order. Newton's identity for the reversed polynomial makes every coefficient rational in the coefficients of f with denominator a power of f(0), so the normalisation is semialgebraic without a root labelling. Separately: the equal-radius staple length is exactly |a_i|+|a_j|-s(2-|u_i-u_j|), so moving root directions cost nothing in the length budget, and a zero-margin contact is decided by the completed-square discriminant V+eps+B^2/(4 kappa)<0, not by uniform convergence, whose countermodel is -x^2+eps.",
+  "verification_state": "ordinary analytic proof complete; exact Gaussian-rational checker PASS on all six arms (14400 Newton recursion rows through order 12, 15000 coefficient-bound rows, 2700 bridge rows at n=4 with worst residual at 0.469 of the proved cap, 3000 staple rows, 2000 contact rows plus the sextic 45 delta^2 instance, and the uniform-convergence countermodel); canonical focused Lean build and serialized authority replay PASS, warning-free",
+  "publication_or_review_state": "private authoring checkpoint pending expert review",
+  "canonicalization_state": "coordinate theorem recorded beside FormACutQuantitativeExpansion rather than replacing it; the two forms are complementary and the note says which to use when",
+  "unresolved_downstream_bottleneck": "No open producer is closed. A general resolved-atlas transfer theorem needs, beyond this expansion, a finite stratification with strict leaves and a curve-selection argument; NearFeketeUniqueNewtonFaceClosure supplies that only for a unique outer Newton face. The compact sextic mixed band |E1|/|E2|<3/4 is a homogeneous statement and is untouched here.",
+  "next_stage_owner": "Refinery: re-derive the tied-face and face-switch transfer in reciprocal coordinates, where the competing quadratic correction is retained rather than budgeted.",
+  "tool_disclosure": "Exact Gaussian-rational arithmetic with normSq comparisons only, so no square root is taken; the rational parametrisation of the unit circle supplies exactly rational root moduli, and n=4 is used for the bridge arm because omega=i is then Gaussian rational.",
+  "claim_boundary": "Proved: the exact expansion and its C0/C1/C2 tails, the Newton recursion, the bridge identity and its eta^2 bound, the staple length identity, and the completed-square criterion. Not proved: Erdos #1041, and no producer of this directory. Novelty is not claimed: the expansion is the Taylor series of log(f/f(0)) and the recursion is Newton's identity for the reversed polynomial; what is claimed is the identification of the anchored remainder as an exact coefficient, and the resulting choice of coordinates."
+}

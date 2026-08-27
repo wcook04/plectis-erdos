@@ -1,0 +1,22 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem": "Erdos_1041",
+  "checkpoint": "translated_even_symmetric_trinomial_case",
+  "date": "2026-08-24",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/EvenSymmetricTrinomialCase.md",
+    "ErdosProblems/Erdos1041/EvenSymmetricTrinomialCase.lean"
+  ],
+  "human_understanding_delta": "The middle tangent family is not merely perturbatively stable.  After translating by an arbitrary centre h, the quotient w=(z-h)^q makes (z-h)^(2q)+a*(z-h)^q+c quadratic; Vieta selects a quotient root with |w|^2<=|c|, and the exact identity f(h+t*y)=c(1-u)(1-u*w^2/c), u=t^q, makes its entire q-fold fibre a safe hub through h.  Averaging squared moduli on that regular fibre proves its radius is below one.  This yields an explicit path and an exact all-scale solution class in every even degree at least four.",
+  "verification_state": {
+    "analytic": "complete",
+    "lean": "PASS: canonical shared-cache build of ErdosProblems.Erdos1041.EvenSymmetricTrinomialCase via lean_fast_build.py --jobs 2 on 2026-08-24",
+    "computation": "mechanism_discovered_from_higher_tangent_scan_then_replaced_by_exact_algebra; fixed-seed audit of 200000 quotient-root configurations found zero violations and maximum factorization residual 4.579e-16"
+  },
+  "publication_or_review_state": "local analytic and Lean-verified checkpoint ready for scoped commit; preserved as the independently derived quadratic specialization",
+  "canonicalization_state": "canonical quadratic-quotient specialization, retained after being strictly subsumed by CyclicTrinomialFiberCase",
+  "unresolved_downstream_bottleneck": "Unrestricted Erdős #1041 lacks a symmetry quotient selecting a full safe root fibre; literature-priority review is also still required before any novelty claim.",
+  "next_stage_owner": "Refinery: preserve this validated quadratic specialization beneath the stronger CyclicTrinomialFiberCase result, then return the closure engine to the unrestricted case."
+}

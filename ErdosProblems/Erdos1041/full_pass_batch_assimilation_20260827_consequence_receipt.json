@@ -1,0 +1,93 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "evidence_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstCriticalPairEnergyNoGo20260827.md",
+    "verifier": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_first_critical_pair_energy_no_go.py",
+    "delta_class": "exact_counterexample_and_multi_return_frontier_reconciliation",
+    "authority_at_review": "explicit current authored source with exact Gaussian-rational and Rouche replay; no Lean declaration claimed",
+    "claim_ceiling": "The pointwise first-critical pair-energy cone is false. The inverse-branch coordinate remains valid. Combined charge, COVER, FP-GM, and unrestricted Erdos 1041 remain open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "displayed_candidate_count": 2,
+    "discovered_candidate_count": 2,
+    "omitted_candidate_count": 0,
+    "review_scope": "The exact research-packet source bridge plus the owning Lean-mathematics navigation projection. A semantic pass additionally reviewed the five return coordinates and their source-current Problem 1041 consumers."
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_c904f64723e0939d",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The canonical claim ceiling must retire the false pair-energy producer, bind the exact cubic falsifier, and preserve the unchanged target/frontier relations.",
+      "authority_surface_checked": "target, frontier_integrity, landed_formal_source, exact_results, negative_results, open_producers, and claim-ceiling addenda",
+      "validation_or_reentry": "JSON parse, exact checker, frontier-integrity currency audit, and corpus-index check"
+    },
+    {
+      "candidate_id": "math_consequence_445852456bf4ede9",
+      "file": "tools/meta/factory/build_lean_mathematics_microcosm_projection.py",
+      "decision": "defer_non_authority_projection",
+      "mathematical_reason": "The new source and research-packet references are already present on the source-authority surface. The owner-builder check entered an unbounded full dependency traversal and was stopped without output mutation; generated navigation is not proof or claim authority.",
+      "authority_surface_checked": "builder-owned Lean mathematics microcosm projection route",
+      "validation_or_reentry": "Re-enter through the owner builder when its full projection traversal has a bounded validation window; never hand-edit generated output. This does not block the source-authority assimilation."
+    },
+    {
+      "candidate_id": "semantic_attachment_coupled_selector",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Return 006's weighted-tree identity is already strictly subsumed by AC1--AC4, while TR2 already records the exact common-ancestry ceiling. No theorem or boundary changes.",
+      "authority_surface_checked": "weighted separation identity, Jensen selector, and TR1--TR2 transport ceiling",
+      "validation_or_reentry": "re-enter if a polynomial-specific bound controls the common-age factor"
+    },
+    {
+      "candidate_id": "semantic_straight_spoke_authority",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/StraightSpokeHubCriterionLab.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Return 010 repeats an already-refuted minimum-critical nearest-spoke selector. The exact witnesses and curvature-forced routing remain source-current.",
+      "authority_surface_checked": "minimum-critical and all-critical spoke no-gos plus research_packet negative-results crosswalk",
+      "validation_or_reentry": "none; do not redispatch fixed-spoke producers"
+    },
+    {
+      "candidate_id": "semantic_combined_charge_frontier",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTreeLengthCharge.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Return 008's componentwise charge is an unproved coordinate of the existing combined-charge frontier. The new pair-energy no-go removes a competitor but does not prove or refute combined charge.",
+      "authority_surface_checked": "support identity, charge boundary, and critical_point_selection_with_inverse_ray_length_control open producer",
+      "validation_or_reentry": "re-enter on an exact combined-charge proof, counterexample, or strictly weaker sufficient producer"
+    },
+    {
+      "candidate_id": "semantic_near_fekete_frontier",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HardRegimeIsNearFekete.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Return 009's half-plane blow-up is conjectural and does not supersede the source-current quantitative cone/cusp results or discharge their nonlinear transfer boundary.",
+      "authority_surface_checked": "near-Fekete claim ceiling and source-current finite cone/cusp route",
+      "validation_or_reentry": "re-enter only after rigorous blow-up existence and metric transfer are supplied"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "No positive theorem was strengthened. The valid M/D inverse-branch coordinate is retained independently of its false cone inequality.",
+    "newly_discharged": "All future proof obligations that assume the returned pointwise pair-energy cone are discharged negatively: the universal producer is impossible.",
+    "nonimplications_preserved": "The cubic does not refute branch-pair length below two, combined charge, COVER, FP-GM, or the parent theorem.",
+    "surviving_boundary": "A successful route must be non-pointwise and attachment/component aware, or prove COVER.",
+    "neighboring_routes": "Attachment-coupled weighted selection and curvature charge share common-ancestry/trace debt; near-Fekete cones remain a distinct quantitative route."
+  },
+  "connectivity_receipt": {
+    "claimed_lean_module": null,
+    "reason": "No Lean path or declaration was introduced or mutated. Connectivity review used source-current named consumers rather than claiming proof authority for an evidence-only no-go.",
+    "existing_authority_reused": [
+      "ErdosProblems.Erdos1041.CriticalTwoRootProximity.exists_two_roots_dist_sum_le_two_mul_geomMean",
+      "AttachmentAwareReeb.md",
+      "AttachmentCoupledEnergySelector20260826.md",
+      "StraightSpokeHubCriterionLab.md"
+    ],
+    "consumer_edge_advanced": "first-critical pair-energy proposal -> exact no-go -> research_packet negative result and claim ceiling",
+    "projection_refresh": "owner builder scheduled in this pass"
+  },
+  "checkpoint_class": "terminal_arrival_closure",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The batch and consequence skills already require exact falsification, claim-level dispositions, and source-authority propagation. This run exercised those rules without exposing a reusable protocol gap.",
+    "reentry_condition": "Re-enter if another matching full-pass return arrives, a target-deciding producer changes, or a downstream surface still references the pair-energy cone as live."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "erdos1041_research_checkpoint_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_cubic_paired_radial_deficit_cone",
+  "status": "analytic_complete_lean_checked_exact_replay_passed",
+  "statement": "For the sextic Fourier model with actual-root pairings |E4|<=|E2|+2Delta and |E5|<=|E1|+2Delta, the branch |E1|+|E2|<=Delta has a strict same-parity staple whenever Delta=s^5 and s<=1/10. The selected rays and inner disk both have at least Delta/2 margin.",
+  "mechanism": "Pairing gives a total nuisance budget 6Delta. The exact factorization t^6-6s^5t+5s^6=(t-s)^2(t^4+2st^3+3s^2t^2+4s^3t+5s^4) absorbs it uniformly.",
+  "claim_ceiling": "This closes the paired low-mode coefficient branch and reduces its complement to |E1|+|E2|>Delta. It does not close the transverse branch, the origin-anchored remainder transfer, all sextics, or unrestricted Erdos #1041.",
+  "next_obligation": "Normalize the transverse branch by the larger of the E1 and E2 balance radii, prove a finite compact selector using the existing sextic mixed atlas, and overlap its constants with this cone.",
+  "artifacts": [
+    "SexticCubicPairedDeficitCone.md",
+    "SexticCubicPairedDeficitCone.lean",
+    "scripts/check_erdos1041_sextic_cubic_paired_deficit_cone.py",
+    "sextic_cubic_paired_deficit_tao_pipeline_receipt.json"
+  ]
+}

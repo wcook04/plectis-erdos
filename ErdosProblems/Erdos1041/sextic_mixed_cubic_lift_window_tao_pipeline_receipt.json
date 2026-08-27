@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_mixed_coefficient_cell_cubic_halfline_and_arbitrary_lift_nogo",
+  "recorded_at": "2026-08-25",
+  "input_stage": "open_mixed_complex_coefficient_cell_and_pure_second_mode_antipodal_cubic_lift",
+  "output_stage": "one_sided_cubic_halfline_tile_plus_exact_arbitrary_lift_obstruction_with_lean_kernel",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticMixedCubicLiftWindow.md",
+    "ErdosProblems/Erdos1041/SexticMixedCubicLiftWindow.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_mixed_cubic_lift_window.py"
+  ],
+  "human_understanding_delta": "The first open mixed cell extends through the entire one-sided cubic range c>=-10^-4 because the cubic vanishes on both rays and has a fixed favorable chord shape. It cannot extend through arbitrary c by choosing the antipodal chord: at c=-2 the original chord is positive at its midpoint and the antipodal chord is positive at an endpoint where the cubic vanishes. Mixed first-mode geometry therefore requires a genuine cubic-coordinate stratification, unlike the pure second-mode plane.",
+  "verification_state": {
+    "analytic": "complete_fixed_sign_cubic_shape_halfline_transfer_and_two_witness_no_go",
+    "symbolic": "exact_sympy_halfline_margin_and_radical_witness_replay_passed",
+    "lean": "warning_free_canonical_cached_build_and_final_serialized_authority_check_passed",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "Cubic half-line tile, exact arbitrary-lift no-go, expert explanation, and checker validated",
+  "unresolved_downstream_bottleneck": "Select a different adjacent pair or radius below the cubic threshold and certify the neighboring cubic stratum, then glue it to this half-line tile.",
+  "next_stage_owner": "Refinery: computationally minimize over pair and radius at the exact A0,B0 line for c<-10^-4, isolate the first selector transition, and turn it into the next Bernstein-and-Lean cell.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex computational falsification, analytic derivation, and Lean formalization under operator direction",
+    "computation": "Exact symbolic evaluation identified c=-2 as a two-witness obstruction and verified the half-line margins; the displayed inequalities and Lean kernel carry proof authority.",
+    "formalization": "Lean checks the chord cubic shape, its unit bound, the coefficient-cell half-line connector, both exact c=-2 values, and their positivity.",
+    "claim_boundary": "Proves one half-infinite homogeneous tangent-model tile and refutes arbitrary antipodal cubic lifting for that cell. It does not cover the lower cubic stratum, complete the sextic atlas, transfer nonlinear remainders, or solve unrestricted Erdos #1041."
+  }
+}

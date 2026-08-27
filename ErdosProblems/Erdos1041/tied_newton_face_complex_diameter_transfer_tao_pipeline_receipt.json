@@ -1,0 +1,18 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "tied_newton_face_complex_diameter_finite_transfer",
+  "input_stage": "strict complex rotated-diameter model tube plus reciprocal Newton expansion and metric-free staple identity",
+  "output_stage": "actual-polynomial sequential near-Fekete transfer on every strict complex norm-budget cell",
+  "artifact": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTransfer.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceComplexDiameterTransfer.lean",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_complex_diameter_transfer.py"
+  ],
+  "human_understanding_delta": "The strict complex tube now transfers to actual near-Fekete polynomials by a three-range proof: compact chord margin, half-leading mesoscopic domination with reciprocal-tail absorption, and a fixed regular-polygon root collar. R4 makes the resulting staple strictly shorter than two. The remaining tied-face task is coverage outside the union of strict complex tubes, not containment inside them.",
+  "verification_state": "passed exact rational checker and focused plus serialized Lean authority build",
+  "publication_or_review_state": "private source authority; not externally published",
+  "canonicalization_state": "validated private source authority awaiting scoped landing",
+  "unresolved_downstream_bottleneck": "prove a connector cover for tied faces outside all solved strict chart cells and their equality boundaries",
+  "next_stage_owner": "all-degree joint-selector and semialgebraic chart-cover producers"
+}

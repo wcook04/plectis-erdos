@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_null_branch_strict_companion",
+  "recorded_at": "2026-08-25",
+  "input_stage": "post_theorem_all_pair_falsification_of_an_optimality_overclaim",
+  "output_stage": "analytic_proof_and_formal_verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNullBranchCompanion.md",
+    "ErdosProblems/Erdos1041/SexticNullBranchCompanion.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_companion.py"
+  ],
+  "human_understanding_delta": "The null direction is not an optimized equality edge. The opposite adjacent pair at the mirror radius is controlled by the negative-parameter affine chord, whose terminal polynomial is a negative square times a positive Bernstein quartic. Radius-ratio corrections only improve the sign, and q>1/6 controls the whole outward ray.",
+  "verification_state": {
+    "analytic": "authored_complete_exact_mirror_dominance_and_ray_growth_proof",
+    "symbolic": "passed_exact_sympy_replay_over_Q_sqrt3",
+    "lean": "passed_canonical_cached_focused_build_jobs_2_and_final_serialized_lake_authority_check",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "private_problem_packet_exact_result_propagated_not_external_canonicalization",
+  "unresolved_downstream_bottleneck": "Extract a coefficient-neighbourhood margin from the strict companion comparison, cover the remaining sextic faces, and prove finite actual-polynomial transfer. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: verify the negative-parameter convex interpolation, five Bernstein signs, radius-ratio domination, ray-growth inequality, and repaired claim boundary.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation from bounded computation and the local verified corpus under operator direction",
+    "computation": "All-pair optimization falsified the provisional optimality interpretation and identified the mirror radius; SymPy recovered and checks the exact Q(sqrt(3)) certificate.",
+    "formalization": "Lean checks the real-algebraic mirror certificate in the canonical cached project.",
+    "claim_boundary": "A homogeneous sextic companion-connector theorem only; not a full sextic atlas, finite transfer, or unrestricted Erdos #1041."
+  }
+}

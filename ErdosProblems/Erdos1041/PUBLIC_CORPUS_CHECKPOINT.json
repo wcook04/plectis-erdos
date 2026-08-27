@@ -1,0 +1,11 @@
+{
+  "schema": "plectis_public_problem_corpus_checkpoint_v1",
+  "problem_id": "erdos_1041",
+  "source_repository": "ai_workflow/formal_math/erdos257_period_noncollapse",
+  "source_commit": "452e6469ee4c21b9070e62ed594d40c18f24a56b",
+  "source_subtree": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041",
+  "source_subtree_tree": "cff7fa885191155c662843232de0b9e2d8aa7478",
+  "exported_source_file_count": 606,
+  "publication_scope": "committed problem-facing Lean, mathematical notes, receipts, and executable checkers",
+  "status": "source_current_problem_snapshot"
+}

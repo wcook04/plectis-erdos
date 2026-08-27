@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_anisotropic_cubic_transition_cone",
+  "recorded_at": "2026-08-25",
+  "input_stage": "isotropic_cubic_transition_cone_and_unbounded_second_mode_normalization",
+  "output_stage": "natural_mode_scale_cone_and_compact_complementary_normalization",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticAnisotropicCubicCone.md",
+    "ErdosProblems/Erdos1041/SexticAnisotropicCubicCone.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_anisotropic_cubic_cone.py"
+  ],
+  "human_understanding_delta": "The cubic transition is anisotropic: E1 is safe at Delta^(5/6) scale and E2 at the larger Delta^(2/3) scale. Exact scaled Young inequalities and a two-regime radial-error bound give a half-deficit staple. In the complement, E2 normalization now bounds the cubic coordinate absolutely, turning the remaining atlas into a genuinely compact problem.",
+  "verification_state": {
+    "analytic": "complete_anisotropic_pairing_scaled_young_radial_error_inner_disk_and_compactness_proof",
+    "symbolic": "passed_4160_exact_ray_rows_64_exact_inner_rows_and_explicit_compactness_constant",
+    "lean": "passed_canonical_cached_focused_build_and_final_serialized_authority_check_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "analytic theorem, Lean scalar inequalities, exact checker, canonical research packet update, compactness handoff, and claim boundary authored and focused validation passed",
+  "unresolved_downstream_bottleneck": "Cover the now-bounded second-mode-normalized coefficient section by the phase-circle, first-mode-overlap, null-box, and finitely many remaining mixed cells, then absorb the nonlinear remainder.",
+  "next_stage_owner": "Refinery: audit the anisotropic exponents and constants, then hand the explicit compact box to the finite-atlas owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation under operator direction, correcting the isotropic normalization loss",
+    "computation": "Exact rational replay checks the displayed bounds; computation is not proof authority.",
+    "formalization": "Lean checks quadratic Young, paired-mode reduction, radial-error split, selected-ray half margin, and inner-budget fan-in.",
+    "claim_boundary": "Closes the anisotropic cubic transition cone and proves a compactness bound for its complement. It does not prove the compact atlas, nonlinear transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}

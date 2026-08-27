@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_null_branch_uniform_stability_tube",
+  "recorded_at": "2026-08-25",
+  "input_stage": "strict_companion_connector_without_quantitative_perturbation_stability",
+  "output_stage": "analytic_proof_formal_verification_and_expert_handoff",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticNullBranchUniformMargin.md",
+    "ErdosProblems/Erdos1041/SexticNullBranchUniformMargin.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_null_branch_uniform_margin.py"
+  ],
+  "human_understanding_delta": "The positive null branch has a quantitative stability mechanism after truncation away from beta=0. On the first half of the chord the old double-contact square is uniformly separated from zero; on the second half the actual mirror-radius ratio opens a quadratic beta-squared gap. These complementary regions yield the explicit normalized margin -epsilon^2/10.",
+  "verification_state": {
+    "analytic": "authored_complete_exact_two_region_margin_and_radius_ratio_proof",
+    "symbolic": "passed_exact_Q_sqrt3_identities_and_227367_point_deterministic_actual_radius_stress",
+    "lean": "passed_canonical_cached_focused_build_jobs_2_and_final_serialized_lake_authority_replay",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "private_problem_packet_exact_result_propagated_not_external_canonicalization",
+  "unresolved_downstream_bottleneck": "Cover the shrinking beta-to-zero transition by a stratified first-nonzero-mode blow-up, then cover the remaining sextic faces and transfer the homogeneous certificates to actual nearby polynomials. Unrestricted Erdos #1041 remains open.",
+  "next_stage_owner": "Refinery: check the split at t=1/2, Bernstein coefficient floors, actual radius-ratio cancellation, ray start margin, and the epsilon-squared perturbation budget; then use this checkpoint as the outer annulus for the beta=0 blow-up.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation from the local verified sextic corpus under operator direction",
+    "computation": "SymPy exposed exact Q(sqrt(3)) slack and a deterministic Python grid stress-tested the actual fourth-root radius ratio; computation guided but does not replace the proof.",
+    "formalization": "Lean checks the real-algebraic constants, Bernstein floors, actual radius bridge, chord and ray margins, and additive-error consumer in the canonical cached project.",
+    "claim_boundary": "A normalized finite-perturbation tube on every compact positive null subbranch epsilon<=beta<=betaStar; it excludes beta=0, the remaining sextic faces, finite actual-polynomial transfer, and unrestricted Erdos #1041."
+  }
+}

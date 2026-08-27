@@ -1,0 +1,27 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceNonAdjacentNoGo.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.TiedNewtonFaceNonAdjacentNoGo.critical_heights",
+      "ErdosProblems.Erdos1041.TiedNewtonFaceNonAdjacentNoGo.connector_length_lt_two_mul_radius"
+    ],
+    "delta_class": "exact_selector_no_go_with_stronger_constructive_chart",
+    "claim_ceiling": "Adjacency is false; an all-degree free-pair tied-face selector and Erdős #1041 remain open."
+  },
+  "decisions": [
+    {
+      "candidate_id": "free_pair_geometric_mean_two_arm_selector",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The local producer must permit nonadjacent ends and noncritical hubs.",
+      "validation_or_reentry": "JSON parse, exact checker, Lean replay"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_closed": "Universal adjacent pairing of the unique two-ended tied-face component.",
+    "newly_narrowed": "Free pair plus direct metric inequality replaces adjacency.",
+    "surviving_boundary": "All-degree simultaneous arm/tail selector and finite transfer.",
+    "claim_boundary": "One exact quintic chart is not an all-degree theorem."
+  }
+}

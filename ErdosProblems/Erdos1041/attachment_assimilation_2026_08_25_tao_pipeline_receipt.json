@@ -1,0 +1,48 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "attachment_assimilation_2026_08_25",
+  "input_stage": "three_returned_research_reports_plus_supplied_checkers",
+  "output_stage": "verification_canonicalization_and_next_frontier",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SelfInversiveComparisonDual.md",
+    "ErdosProblems/Erdos1041/SelfInversiveComparisonDual.lean",
+    "ErdosProblems/Erdos1041/CriticalBlaschkePairBound.md",
+    "ErdosProblems/Erdos1041/CriticalBlaschkePairBound.lean",
+    "ErdosProblems/Erdos1041/ConnectedClusterBergman.md",
+    "ErdosProblems/Erdos1041/ConnectedClusterBergman.lean",
+    "ErdosProblems/Erdos1041/BarycentricEnvelope.md",
+    "ErdosProblems/Erdos1041/BarycentricEnvelope.lean",
+    "ErdosProblems/Erdos1041/CriticalEllipseFreeHubLab.md"
+  ],
+  "human_understanding_delta": "The comparison-polynomial lane now has an exact affine-hyperplane description: positive quadrature forces alternation, but every nonempty proper candidate set can be prescribed, so comparison freedom alone carries no geometric selector. The critical Blaschke polygon gives an explicit pair-radius/product certificate and higher critical-moment constraints. Tied critical values have a valid whole-component consumer: the connected critical sublevel of the Blaschke uniformization forces overlapping pseudohyperbolic zero discs and hence a sharp Bergman pair bound. This replaces the invalid attempt to minimize plurisubharmonic marked-hub lengths. The barycentric report contributes a genuinely new exact union-of-discs representation and inverse-square descent disc, but its sharp critical ellipse is the already-landed theorem exists_two_roots_dist_sum_le_two_mul_geomMean and is not counted again. For a fixed point the feasible simplex-weight set is convex; joint convexity when the point moves is unavailable. Linear interpolation from a weight vector to a root vertex gives an exact sufficient arm inequality, but its numerical failure to certify three hard rows rotates the proof search away from that overly rigid interpolation. The strongest surviving tested form is CE--GM: move the least-critical hub inside its sharp 2rho ellipse until the two nearest visibility kernels overlap at the geometric-mean critical level.",
+  "verification_state": "All four focused Lean modules elaborate under the canonical memory-bounded build; after a combined capacity defer, each exact module passed its serialized authority check. Deterministic checkers PASS: self-inversive dual on 521 configurations through degree 14 with maximum weighted-projector error 1.45e-6; critical Blaschke on 15561 adversarial scalar rows through degree 40; connected-cluster scalar identities on 194805 rows with saturation explicitly receipted and maximum stable threshold error 1.18e-12; barycentric envelope on 15000 random scalar checks through degree 16 plus the exact 327/320 unsafe-spoke witness. The corrected visibility path arm passes all 26 scored rows with zero unit-cover failures and 12 explicit exclusions. CE--GM remains a numerical falsifier only: it survives seven hard witnesses and 120 boundary-biased random rows, while the stricter fixed-critical-hub form is refuted on two stored rows. A 600-step boundary-hexagon adversarial pass rescored at 0.9963941. The exact linear-simplex arm producer certifies four hard rows but was not found on the degree-six, degree-nine, and exact degree-seven rows, with percent-scale residuals; non-discovery is not a refutation.",
+  "publication_or_review_state": "private authoring checkpoint pending expert review; no priority or unrestricted-solution claim",
+  "canonicalization_state": "The pre-existing global critical two-nearest-root budget remains the canonical metric theorem. BarycentricEnvelope is a new containment representation subordinate to that theorem. The standalone concyclic adapted-comparison producer is retired by the affine-hyperplane no-go. ConnectedClusterBergman becomes the valid tie-component consumer. No public reviewer card is changed in this wave.",
+  "unresolved_downstream_bottleneck": "Erdos #1041 remains open. The sharp next containment target is CE--GM, or the weaker already-recorded V_E<=Gcrit: prove overlap of two root visibility kernels inside the sharp critical ellipse at the geometric-mean critical level. A complementary global target is cluster-defect forcing at some merge-tree node. COVER and the combined critical-forest charge remain independent live routes.",
+  "next_stage_owner": "Mathematics Refinery: attack CE--GM through moving-hub sensitivity or minimax stationarity for the two visibility kernels; use fixed-point simplex concavity only locally, connected-cluster Bergman as the away-from-pinching consumer, and quantitative Fekete/Hadamard stability near equality.",
+  "tool_disclosure": "The returned reports were treated as advisory mathematical evidence, not instructions or authority. Floating-point computation was used only for falsification, conditioning diagnostics, and candidate selection. Analytic proofs carry the complex arguments; Lean checks the named scalar kernels. The full complex self-inversive, Blaschke, Riemann--Hurwitz, and weighted-AM--GM assemblies are not claimed fully formalized.",
+  "claim_boundary": "Proved: the self-inversive weighted-affine no-go; the critical Blaschke radius/product consequences; the connected-cluster Bergman sufficient theorem; the exact barycentric disc envelope, descent disc, and inverse-square-mass spoke sufficient regime. Pre-existing rather than new: the sharp geometric-mean critical ellipse. Falsified: minimum-of-psh-hubs boundary induction, arbitrary critical-spoke containment, and the fixed-critical-hub Gcrit strengthening. Unproved: CE--GM, V_E<=Gcrit, cluster-defect forcing, COVER, combined charge, and unrestricted Erdos #1041.",
+  "consequence_decisions": [
+    {
+      "candidate": "Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "reason": "Add the three new exact theorem packages, the new disc representation, the comparison-selector retirement, and the corrected claim ceiling."
+    },
+    {
+      "candidate": "global_critical_two_nearest_root_budget reviewer card and CriticalTwoRootProximity.lean",
+      "decision": "verified_no_change",
+      "reason": "They already own the sharp geometric-mean ellipse interface; the attachment rederived rather than strengthened it."
+    },
+    {
+      "candidate": "prior_art route JSON and unrelated reviewer cards returned by namespace matching",
+      "decision": "outside_scope",
+      "reason": "The matches are broad Erdos1041 namespace references with no changed hypothesis, conclusion, or authority state."
+    },
+    {
+      "candidate": "CE--GM and V_E<=Gcrit consumers",
+      "decision": "defer_with_reason",
+      "reason": "The disc envelope supplies a new representation and strong falsifier evidence, but no analytic visibility-kernel overlap theorem yet. Re-enter on a sensitivity estimate or a counterexample."
+    }
+  ]
+}

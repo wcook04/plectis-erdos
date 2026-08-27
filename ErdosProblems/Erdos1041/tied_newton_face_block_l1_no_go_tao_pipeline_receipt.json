@@ -1,0 +1,21 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "input_stage": "generation",
+  "output_stage": "verification_and_exposition",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1NoGo.md",
+  "human_understanding_delta": "The first coevolution regression revealed that changing x from 1001/1000 to 999/1000 moves all critical values into the relevant negative half-plane without losing the exact speed excess. All five ramification units then force one six-ended negative component, so pointwise component-block L1 contraction is itself false. The live fibre route must start at weighted, weak-majorization, or integrated control.",
+  "verification_state": {
+    "ordinary_proof": "complete critical-value classification, component-passport count, exact fibre factorization, inverse-speed formula, and rational radical certificate",
+    "exact_checker": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_tied_newton_face_block_l1_no_go.py",
+    "lean": {
+      "module": "ErdosProblems.Erdos1041.TiedNewtonFaceBlockL1NoGo",
+      "status": "focused_build_and_final_serialized_lake_check_passed",
+      "boundary": "Lean checks the strict half-plane sign, rational radical bounds, and monotonicity consumer; the proper-cover component passport and analytic inverse branches remain ordinary proof."
+    }
+  },
+  "publication_or_review_state": "private_authoring_exact_no_go_not_peer_reviewed",
+  "canonicalization_state": "new negative-result source; pointwise component-block L1 must be retired from active packet producers",
+  "unresolved_downstream_bottleneck": "Prove an externally weighted, two-sheet weak-majorization, or integrated monodromy-loop inequality that survives this one-component sextic.",
+  "next_stage_owner": "packet-frontier coevolution cycle: update desk 3 and immediately test the weighted or integrated successor on this sextic",
+  "claim_boundary": "This refutes the unweighted pointwise L1 regular-baseline comparison even for one full monodromy block. It does not refute block duality, externally weighted or integrated selectors, or unrestricted Erdos 1041."
+}

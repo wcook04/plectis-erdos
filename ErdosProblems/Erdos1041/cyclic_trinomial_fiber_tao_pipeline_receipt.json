@@ -1,0 +1,22 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem": "Erdos_1041",
+  "checkpoint": "all_centered_trinomials_and_translated_cyclic_lifts",
+  "date": "2026-08-24",
+  "input_stage": "proof_generation",
+  "output_stage": "verification",
+  "artifact": [
+    "ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.md",
+    "ErdosProblems/Erdos1041/CyclicTrinomialFiberCase.lean"
+  ],
+  "human_understanding_delta": "The Vieta-small root selection was unnecessary. For every m>r>=1 and every quotient root w of w^m+a*w^r+c, the exact identity P(u*w)=(1-u^r)c-(u^r-u^m)w^m spends two nonnegative coefficients whose sum is 1-u^m. When |w|<1 and |c|<1, the whole spoke is therefore strictly safe. This proves Erdős #1041 for every centred trinomial z^m+a*z^r+c and, via the regular-fibre mean-square identity, every translated cyclic lift (z-h)^(qm)+a(z-h)^(qr)+c with q>=2, at all allowed coefficient scales.",
+  "verification_state": {
+    "analytic": "complete",
+    "lean": "PASS: canonical shared-cache build of ErdosProblems.Erdos1041.CyclicTrinomialFiberCase via lean_fast_build.py --jobs 2 on 2026-08-24",
+    "computation": "the higher-tangent scan indicated negative length defect, and a follow-up spoke audit found every sampled trinomial root spoke safe; the proof replaces both observations entirely by the exact coefficient-partition identity"
+  },
+  "publication_or_review_state": "local analytic and Lean-verified checkpoint ready for scoped commit and expert review",
+  "canonicalization_state": "new case theorem in the canonical ErdosProblems.Erdos1041 namespace; all centred trinomials become the headline sparse class, while the quadratic specialization is preserved",
+  "unresolved_downstream_bottleneck": "Translated coprime-exponent trinomials have neither a physical origin hub nor a nontrivial cyclic fibre controlling displacement from h, and unrestricted Erdős #1041 remains open; literature-priority review is still required before any novelty claim.",
+  "next_stage_owner": "Refinery: run the exact cached Lean target, assimilate the centred-trinomial theorem into the consequence map, preserve attribution and tool disclosure, then return translated coprime-exponent trinomials to the Closure Engine."
+}

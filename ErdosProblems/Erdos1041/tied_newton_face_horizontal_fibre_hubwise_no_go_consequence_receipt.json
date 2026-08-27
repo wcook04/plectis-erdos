@@ -1,0 +1,80 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceHorizontalFibreHubwiseNoGo.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.TiedNewtonFaceHorizontalFibreHubwiseNoGo.negative_hub_data",
+      "ErdosProblems.Erdos1041.TiedNewtonFaceHorizontalFibreHubwiseNoGo.nonreal_critical_value_kernel",
+      "ErdosProblems.Erdos1041.TiedNewtonFaceHorizontalFibreHubwiseNoGo.projectionDefect_positive"
+    ],
+    "delta_class": "exact_hubwise_horizontal_fibre_sign_no_go",
+    "claim_ceiling": "One negative critical hub has strictly positive horizontal-fibre defect. Existential HF-strict, component aggregate charge, finite connector selection, finite transfer, and unrestricted Erdős #1041 remain open."
+  },
+  "decisions": [
+    {
+      "candidate_id": "canonical_erdos1041_research_packet",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The no-go changes the exact result inventory, negative-result inventory, claim ceiling, and the priority-one tied-face producer.",
+      "authority_surface_checked": "canonical private research packet",
+      "validation_or_reentry": "JSON parse, exact checker, and focused Lean build"
+    },
+    {
+      "candidate_id": "returned_stratified_transfer_leftmost_fibre_claim",
+      "file": "/Users/willcook/.codex/attachments/7c6a91ee-8229-4741-833d-446a9bc21c75/pasted-text.txt",
+      "decision": "update_now",
+      "mathematical_reason": "Its LF residual is exactly false on this quintic because c=-1 is the unique leftmost critical point and has positive defect. Its all-branch product identity survives at a lower claim ceiling; RSCT is conditional on resolved signed contacts.",
+      "authority_surface_checked": "returned text against exact source note and checker",
+      "validation_or_reentry": "land LF0 separately if its resultant identity is formalized; do not retain LF as a producer"
+    },
+    {
+      "candidate_id": "latimer_pva_mobius_admissibility",
+      "file": "state/formal_math_research_operations/pilots/erdos257_issue217/latimer_pva_mobius_admissibility.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The extracted edge is only the common Erdős Lean namespace; the PVA pilot has no horizontal-fibre or tied-face consumer.",
+      "authority_surface_checked": "candidate map bridge",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "eight_dissemination_snapshots",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/*/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "These are eight builder/owner snapshots, not source authority. The canonical packet is updated and no publication refresh was requested.",
+      "authority_surface_checked": "all eight displayed snapshot candidates",
+      "validation_or_reentry": "refresh through the dissemination owner after an explicit publication/review wave"
+    },
+    {
+      "candidate_id": "constant_perturbation_prior_art_route",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The no-go uses a fixed model polynomial and inverse-fibre geometry, not constant perturbation root continuity.",
+      "authority_surface_checked": "source-current prior-art route",
+      "validation_or_reentry": "only if a finite transfer invokes that root-continuity theorem"
+    },
+    {
+      "candidate_id": "erdos1041_unrestricted_prior_art_route",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "This private mechanism no-go neither changes the source identity nor the refutation status of the inspected unrestricted drafts.",
+      "authority_surface_checked": "source-current prior-art route",
+      "validation_or_reentry": "only on a parent-proof or source-comparison change"
+    }
+  ],
+  "candidate_review": {
+    "displayed_candidate_count": 12,
+    "decision_denominator": 12,
+    "grouped_decisions": {
+      "update_now": 1,
+      "verified_no_change": 2,
+      "defer_with_reason": 8,
+      "outside_scope": 1
+    },
+    "authority_boundary": "Lean checks the finite kernel and the ordinary note proves the analytic no-go. Generated consequence candidates are navigation evidence only."
+  },
+  "semantic_second_pass": {
+    "newly_closed": "Universal horizontal-fibre negativity at every negative critical point is false.",
+    "newly_narrowed": "The paired trace supplies topology but cannot by itself select a metric-good saddle; minimization or aggregate charge is essential.",
+    "surviving_boundary": "Existential HF-strict or component aggregate or direct finite connector, then transfer and global composition.",
+    "claim_boundary": "The unrestricted theorem remains open."
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ConnectedClusterAreaForcing.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.ConnectedClusterAreaForcing.exists_cluster_certificate_of_area_sum",
+      "ErdosProblems.Erdos1041.ConnectedClusterAreaForcing.exists_length_le_two_of_area_forcing"
+    ],
+    "delta_class": "new_statement_and_strategy_no_go",
+    "authority_at_review": "explicit_current_source_with_green_focused_Lean_replay",
+    "claim_ceiling": "Fixed-level reciprocal-barrier forcing is proved; universal scalar merge-level forcing is numerically falsified; actual area-aware forcing and unrestricted Erdős #1041 remain open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "displayed_candidate_count": 15,
+    "discovered_candidate_count": 370,
+    "omitted_candidate_count": 355,
+    "review_scope": "all 15 machine-ranked displayed candidates; omitted lexical/import candidates remain available for re-expansion after landing"
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_c23666a65d8727a3",
+      "file": "state/formal_math_research_operations/pilots/erdos257_issue217/latimer_pva_mobius_admissibility.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "alpha_i is an unrelated exponent in a q-orthogonal-polynomial problem, not the normalized component area in Erdős #1041.",
+      "authority_surface_checked": "exact matched lines from the consequence map",
+      "validation_or_reentry": "none; lexical collision"
+    },
+    {
+      "candidate_id": "math_consequence_e1d4a87df825f0c7",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/01_RESULT_AUTHORITY_AND_100_PERCENT_ASSIMILATION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a purpose-specific dissemination copy, not the canonical research authority. The canonical packet is updated now.",
+      "authority_surface_checked": "canonical Erdős #1041 research packet and copy path",
+      "validation_or_reentry": "refresh through the dissemination owner after the canonical result lands"
+    },
+    {
+      "candidate_id": "math_consequence_62318b768106c83a",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/02_TAO_PROOF_DIGESTION_AND_SIGNAL_SELECTION/25_ERDOS_68_RESEARCH_PACKET.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "alpha_i is an unrelated sequence variable in Erdős #68.",
+      "authority_surface_checked": "exact matched line from the consequence map",
+      "validation_or_reentry": "none; lexical collision"
+    },
+    {
+      "candidate_id": "math_consequence_d52c95f544168226",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/02_TAO_PROOF_DIGESTION_AND_SIGNAL_SELECTION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a purpose-specific dissemination copy; updating it by hand would fork authority from the canonical packet.",
+      "authority_surface_checked": "canonical Erdős #1041 research packet and copy path",
+      "validation_or_reentry": "refresh through the dissemination owner after the canonical result lands"
+    },
+    {
+      "candidate_id": "math_consequence_3a4c9e9ca0a3e1a0",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/03_PRIOR_ART_CITATIONS_NOVELTY_AND_SIGNIFICANCE/25_ERDOS_68_RESEARCH_PACKET.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "alpha_i is an unrelated sequence variable in Erdős #68.",
+      "authority_surface_checked": "exact matched line from the consequence map",
+      "validation_or_reentry": "none; lexical collision"
+    },
+    {
+      "candidate_id": "math_consequence_6127bd4945bd2510",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/03_PRIOR_ART_CITATIONS_NOVELTY_AND_SIGNIFICANCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a purpose-specific dissemination copy; prior-art wording should be regenerated only after the canonical mathematical authority lands.",
+      "authority_surface_checked": "canonical Erdős #1041 research packet and copy path",
+      "validation_or_reentry": "refresh through the dissemination owner after the canonical result lands"
+    },
+    {
+      "candidate_id": "math_consequence_3b66e2bb7886e54e",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/04_LEAN_COMPARATOR_PALOMAR_AND_REVIEW_ASSURANCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a purpose-specific dissemination copy and the new conditional theorem is not being promoted to Comparator in this wave.",
+      "authority_surface_checked": "canonical Erdős #1041 research packet and copy path",
+      "validation_or_reentry": "reconsider after canonical landing and independent review"
+    },
+    {
+      "candidate_id": "math_consequence_0e81a93b163fb679",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/05_PAPER_LATTICE_AND_CANONICAL_EXPOSITION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a purpose-specific dissemination copy; the authored theorem note is the current exposition authority.",
+      "authority_surface_checked": "ConnectedClusterAreaForcing.md and canonical research packet",
+      "validation_or_reentry": "refresh through the paper/dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_faa06184582d5bdc",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/06_PUBLIC_REPOS_WEBSITE_AND_COLD_CLONE_EXPERIENCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "The theorem is private worktree progress and has no public-release authority yet.",
+      "authority_surface_checked": "canonical packet and public-copy role",
+      "validation_or_reentry": "re-enter on an explicit public-promotion decision"
+    },
+    {
+      "candidate_id": "math_consequence_165522d4815f662b",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/07_DISSEMINATION_ROUTE_PORTFOLIO_AND_PLUG_AND_PLAY_ADAPTERS/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a dissemination derivative, not a mathematical authority surface.",
+      "authority_surface_checked": "canonical packet and copy path",
+      "validation_or_reentry": "refresh through the dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_a1c86b184455996b",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/08_CONTINUOUS_GOAL_FLEET_AND_INCREMENTAL_1041_INGESTION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "This is a continuous-goal dissemination derivative; the canonical packet receives the result first.",
+      "authority_surface_checked": "canonical packet and copy path",
+      "validation_or_reentry": "refresh through the dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_0360eb0c92456f1f",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The new theorem strengthens the canonical exact-result inventory and changes the residual from generic cluster-defect forcing to actual area/Green-defect forcing plus near-Fekete composition.",
+      "authority_surface_checked": "connected_cluster_bergman_certificate, claim ceiling, source manifest, and open-producer statements",
+      "validation_or_reentry": "validate JSON, cold-reader packet, frontier integrity, and focused Lean replay"
+    },
+    {
+      "candidate_id": "math_consequence_9e1caa8ce60f9e69",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos68/research_packet.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "alpha_i is an unrelated sequence variable in Erdős #68.",
+      "authority_surface_checked": "exact matched line from the consequence map",
+      "validation_or_reentry": "none; lexical collision"
+    },
+    {
+      "candidate_id": "math_consequence_12bebf40e0d0df08",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The match is only the Erdős1041 namespace bridge; the constant-perturbation root theorem neither consumes nor is strengthened by fixed-level area forcing.",
+      "authority_surface_checked": "route theorem manifest",
+      "validation_or_reentry": "none unless an exact theorem consumer is added"
+    },
+    {
+      "candidate_id": "math_consequence_3bb6e814d9e8fe76",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The route already records the Bergman/lemniscate family at a coarser prior-art level; the new fixed-level sufficient condition changes current research state, not its historical attribution claims.",
+      "authority_surface_checked": "route statement and refutation fields",
+      "validation_or_reentry": "re-enter only if the route is promoted as the current frontier"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_discharged": "The global finite pigeonhole step from total component area to one Bergman certificate under the reciprocal-barrier sum.",
+    "newly_impossible": "A universal proof using only merge order, component multiplicities, and normalized critical levels to force that reciprocal sum.",
+    "surviving_boundary": "Actual component area or Green/capacity defect must be used where the scalar sum fails, or a separate all-degree near-Fekete mechanism must cover the equality shell.",
+    "neighboring_routes": "COVER and combined critical-branch charge remain structurally independent and unchanged."
+  },
+  "checkpoint_class": "checkpoint_rotate",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reentry_condition": "Re-run the consequence map after the scoped source commit or a new theorem/counterexample changes the Erdős #1041 frontier."
+  }
+}

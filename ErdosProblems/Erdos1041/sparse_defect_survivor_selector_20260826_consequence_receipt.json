@@ -1,0 +1,78 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SparseDefectSurvivorSelector20260826.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.SparseDefectSurvivorSelector20260826.survivorProductSq_le_pairSq_mul_energyPow",
+      "ErdosProblems.Erdos1041.SparseDefectSurvivorSelector20260826.er4_pair_transport",
+      "ErdosProblems.Erdos1041.SparseDefectSurvivorSelector20260826.starCentral_mass_fraction",
+      "ErdosProblems.Erdos1041.SparseDefectSurvivorSelector20260826.starTwoSurvivor_mass_fraction_cross"
+    ],
+    "delta_class": "counterexample_or_no_go_and_statement_strengthened",
+    "authority_at_review": "explicit current source with ordinary exact proof and green exact rational checker; focused Lean elaboration deferred by the repository low-disk firewall and therefore not claimed as proof authority",
+    "claim_ceiling": "Deletion-only Gram allocation is refuted by an actual polynomial family and the returned regular-pair currency is strengthened to a survivor-local theorem. Neither branch of the exceptional-or-regular connector dichotomy is universally closed; combined charge, COVER, and unrestricted Erdos 1041 remain open."
+  },
+  "candidate_map": {
+    "status": "candidates_ready_for_judgment",
+    "displayed_candidate_count": 13,
+    "discovered_candidate_count": 506,
+    "omitted_candidate_count": 493,
+    "review_scope": "All displayed namespace/manifest candidates plus the semantic Erdos1041 research packet, combined-charge producer, allocation residual, and dissemination-copy boundary."
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_namespace_state_candidates",
+      "file": "state/formal_math_research_operations/*",
+      "decision": "outside_scope",
+      "mathematical_reason": "The displayed state candidates are generic Erdős1041 namespace-to-manifest bridges, several into unrelated Erdős249/257 pilots. They contain no sparse-Gram, survivor-product, or connector consumer.",
+      "authority_surface_checked": "candidate excerpts, problem ids, and source-reference bridge class",
+      "validation_or_reentry": "Re-enter only on an exact declaration or evidence-symbol reference."
+    },
+    {
+      "candidate_id": "math_consequence_dissemination_packet_copies",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/*/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "These are dated purpose-specific dissemination copies rather than current mathematical authority. The canonical research packet and private batch intake are the correct immediate homes.",
+      "authority_surface_checked": "canonical research packet, derivative-copy role, and current private batch",
+      "validation_or_reentry": "Refresh through the dissemination owner after the result is committed and selected for a public packet."
+    },
+    {
+      "candidate_id": "semantic_erdos1041_research_packet",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The packet must retire deletion-only Gram allocation, register the survivor-local theorem and exact star family, preserve the rejected evidence status of return 001, and keep the target claim open.",
+      "authority_surface_checked": "landed_formal_source, exact_results, negative_results, combined-charge producer, and claim-ceiling addenda",
+      "validation_or_reentry": "JSON parse, exact checker, frontier integrity, cold-reader query, and focused Lean when the disk floor clears."
+    },
+    {
+      "candidate_id": "semantic_combined_charge_consumer",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CriticalTreeLengthCharge.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Return 001 does not supply the exact inverse-ray trace certificate needed to refute the componentwise combined-charge lemma. Its named quartic checks straight-spoke containment, a different mechanism, so the source-current open status is correct.",
+      "authority_surface_checked": "component charge statement, named quartic checker, evidence-bundle inventory, and current open producer",
+      "validation_or_reentry": "Re-enter on an exact L_can/B_pole witness or a proof of the component trace inequality."
+    },
+    {
+      "candidate_id": "semantic_attachment_allocation_consumers",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RootIndexedEntranceAncestry.md",
+      "decision": "verified_no_change",
+      "mathematical_reason": "RIA3 already provides the correct survivor-product geometric identity. The new theorem is a downstream same-pair selector and does not change RIA3's statement.",
+      "authority_surface_checked": "RIA3 survivor product, ER4 entrance energy, and the new complement-energy theorem",
+      "validation_or_reentry": "Re-enter when a complete metric consumer accepts the survivor threshold."
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_strengthened": "The returned whole-component product-age estimate is replaced by a sharp same-pair inequality using only the survivor product and the selected pair's complement energy.",
+    "newly_refuted": "A fixed determinant floor and deletion of only one Gram-exceptional row do not guarantee that a degree-free fraction of ER4 mass survives.",
+    "nonimplications_preserved": "The star family is not a counterexample to Erdos 1041, and the unsupported return-001 headline does not refute combined charge.",
+    "surviving_boundary": "Construct a complete connector through an exceptional root, or turn the regular survivor-local threshold into a complete metric connector for the same pair.",
+    "neighboring_routes": "COVER remains the smallest independent global target-deciding residual; FP-GM and componentwise combined charge remain structurally distinct."
+  },
+  "checkpoint_class": "checkpoint_yield_open_arrival_stream",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reason": "The reusable distinction between evidence admission, exact no-go scope, and parent-target status is already required by the Type-B batch and consequence-propagation skills; this pass exercised that contract without exposing a new system rule.",
+    "reentry_condition": "Rerun after returns 003-009 arrive, after an exceptional-root or regular-pair metric consumer lands, or after low disk clears for focused Lean elaboration."
+  }
+}

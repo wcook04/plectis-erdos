@@ -1,0 +1,40 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "research_actor_mode": "mixed",
+  "input_stage": "generation",
+  "output_stage": "verification_and_assimilation",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FullPassBatchAssimilation20260827.md",
+  "human_understanding_delta": "The five substantive full-pass returns collapse to three coordinates rather than five frontiers. The weighted-tree and component-charge returns meet the already-known attachment/common-ancestry obstruction; the near-Fekete half-plane return is conjectural and weaker than source-current cone/cusp authority; and the first-critical branch return uses a valid coordinate but a false pointwise pair-energy cone. The exact cubic no-go separates that coordinate from its producer and prevents numerical endpoint sampling from promoting a false lemma.",
+  "verification_state": "exact Gaussian-rational cubic, exact critical-value comparison, exact rational Rouche root-location certificate, and exact local asymptotic sign; ordinary proofs and source-current authority mapping for the retained claims; unrestricted target not claimed",
+  "publication_or_review_state": "private authoring assimilation; not externally reviewed",
+  "canonicalization_state": "ten artifacts reconciled into one digest-bound closed intake, four invalid audit-shell dispositions, one source-export disposition, and twenty-six terminal mathematical claim dispositions",
+  "unresolved_downstream_bottleneck": "Find a non-pointwise attachment-compatible consumer for the canonical descending/component geometry or prove COVER. The exact common-ancestry factor remains uncontrolled; pointwise pair-energy and fixed minimum-critical straight spokes are unavailable.",
+  "next_stage_owner": "Erdos1041 combined-charge/COVER research frontier",
+  "proof_effect": "exact_route_falsification_and_multi_return_reconciliation",
+  "focused_validation": "pass: check_erdos1041_first_critical_pair_energy_no_go.py exact replay",
+  "integration_validation": "pass: research packet JSON parse, ten source digest and byte-length checks, Problem 1041 corpus-index audit, and frontier-integrity audit. The generated Lean-mathematics projection check was attempted but not used as a closure gate because its full dependency traversal did not complete within the bounded pass; no generated output was mutated and research_packet.json remains source authority.",
+  "paper_assimilation": {
+    "paper": "Erdos 1041 private research corpus",
+    "section": "full-pass return assimilation and first-critical pair-energy no-go",
+    "canonical_mechanism_family": "canonical descending inverse branches versus attachment-compatible global metric selection",
+    "relation": "exact_falsification_and_coordinate_preservation",
+    "understanding_delta": "The midpoint/separation coordinate is sound, but its proposed reverse-Cauchy cone fails at the critical germ. The failure is local and exact, so later packets must seek non-pointwise selection rather than denser numerical support for the same lemma.",
+    "evidence_boundary": "exact computation/certificate and ordinary local analytic expansion; no Lean proof and no claim that the parent problem is solved",
+    "hard_step": "convert component or branch geometry into one safe pair-length bound without pointwise pair-energy or fixed spokes",
+    "meaningful_failed_route": "infer a global branch-length theorem from monotone-looking sampled pair energy along the first-critical inverse branches",
+    "open_remainder": "combined charge, COVER, FP-GM, and unrestricted Erdos 1041 remain open"
+  },
+  "source_manifest": [
+    {"return_id": "return_001", "path": "/Users/willcook/Downloads/p1041_gated_inline_answer.md", "sha256": "6e609e6c5f8b66c2e32ad86409a220c577871627e2018a9efe5acc10362a7fc4"},
+    {"return_id": "return_002", "path": "/Users/willcook/Downloads/p1041_integrated_result.md", "sha256": "e0a36b1dcd9e44d09854bd1dadcbe97d5e8559fe06e6d57744eb2a9976c927d5"},
+    {"return_id": "return_003", "path": "/Users/willcook/Downloads/p1041_verification_audit.md", "sha256": "1bdb563c8cb270934f735f9a9304005b5640fc6b57eecc56a9d16cb99c374a9c"},
+    {"return_id": "return_004", "path": "/Users/willcook/Downloads/p1041_gated_verdict.json", "sha256": "38d006f30046c34f2c6385c3fc2f128b42986b0afb0e897c0ec01027614130ef"},
+    {"return_id": "return_005", "path": "/Users/willcook/Downloads/Problem_1041_inline_answer.md", "sha256": "e42e6e52c25cc2ff0f8f1a93dc859868e06fa9f36c59eec13b70c15b9a42ea35"},
+    {"return_id": "return_006", "path": "/Users/willcook/.codex/attachments/a50839ae-d091-41d4-81be-b91b9348bdb6/pasted-text.txt", "sha256": "5b05f92d1cd7185baaa39e6abbab830bdfd2c83b0f586ebd025c77a8d9cf71bb"},
+    {"return_id": "return_007", "path": "/Users/willcook/.codex/attachments/ed125b76-1416-44e1-9f08-3bf0fccfa91f/pasted-text.txt", "sha256": "ee528006c5844a2a0c6bc75fc2d9e0051966f5c2045876016c66fe01fc3a80e4"},
+    {"return_id": "return_008", "path": "/Users/willcook/.codex/attachments/ea4725b6-2200-4556-8b15-2209ce9f9201/pasted-text.txt", "sha256": "c9960e5d5bac79b67efb7398f04ff827a75258fadd2ddd7780c81efc4226bb83"},
+    {"return_id": "return_009", "path": "/Users/willcook/.codex/attachments/4eb291d9-6a01-4720-b47f-1da9e09a7f00/pasted-text.txt", "sha256": "2a76b8a364c37e1cc0a686f09c621b85e61a2a584378833f42a2bca4f13ec7f1"},
+    {"return_id": "return_010", "path": "/Users/willcook/.codex/attachments/1e0edd35-42e1-4c54-9efc-9c93b8bef03d/pasted-text.txt", "sha256": "32daca463a707bd2551e032f0a420b57ea67749acf5628f6836ad5fd83caeb7c"}
+  ]
+}
