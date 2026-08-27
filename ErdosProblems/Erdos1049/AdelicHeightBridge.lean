@@ -98,13 +98,12 @@ theorem threeHalves_hankelChargeThreshold_lt_eightFortyOne :
 
 /-! ## Zudilin scalar-content ceiling -/
 
-/-- **The source scalar content cannot meet the Hankel charge threshold.**
-The specialized cleared rows have a source-natural row-and-column factor whose
-degree is at most `N^3-N`.  Even this overgenerous ceiling is strictly below the
-`39/41` fraction of the raw charge `4N^3-3N^2` required at `p=3/2`.
-
-The source-facing factor derivation is in `ZudilinScalarContentLab.md`; this
-theorem checks the exact comparison independently of asymptotic notation. -/
+/-- **Abstract scalar-ceiling comparison.**  For positive `N`, the polynomial
+ceiling `N^3-N` is strictly below the `39/41` fraction of the raw charge
+`4N^3-3N^2` used in the `p=3/2` bookkeeping.  This theorem proves that exact
+integer inequality only; it does not itself establish that a source scalar
+factor has degree at most `N^3-N`.  The source-facing factor derivation and any
+application of this ceiling are separate, explicit premises. -/
 theorem zudilinScalarContent_ceiling_lt_required (N : ℤ) (hN : 0 < N) :
     41 * (N ^ 3 - N) < 39 * (4 * N ^ 3 - 3 * N ^ 2) := by
   have hsq : 0 ≤ (230 * N - 117) ^ 2 := sq_nonneg (230 * N - 117)
@@ -114,9 +113,10 @@ theorem zudilinScalarContent_ceiling_lt_required (N : ℤ) (hN : 0 < N) :
     mul_pos hN hquad
   nlinarith
 
-/-- Any proposed scalar extraction under the source ceiling misses the required
-`39/41` raw-charge threshold.  Additional divisibility of the primitive
-residual Hankel matrix is therefore mandatory. -/
+/-- Any extracted degree satisfying the explicit bound `extractedDegree ≤ N^3-N`
+misses the required `39/41` raw-charge threshold.  A source application must
+establish that bound separately; further divisibility of the primitive
+residual Hankel matrix would then be needed to close the charge gap. -/
 theorem zudilinScalarContent_cannot_meet_required_charge
     (N extractedDegree : ℤ) (hN : 0 < N)
     (hextracted : extractedDegree ≤ N ^ 3 - N) :
@@ -126,14 +126,13 @@ theorem zudilinScalarContent_cannot_meet_required_charge
 
 /-! ## Zudilin scalar-plus-border ceiling -/
 
-/-- **The universally forced first-order residual border factors are still
-insufficient.**  The scalar content has degree at most `N^3-N`; the residual
-factor forced by all southeast `Phi_d` blocks has degree at most `N^3`.
-Even their deliberately overgenerous combined ceiling misses the explicit
-`39/41` charge threshold at every nontrivial Hankel rank.
-
-The source-facing residual exponent and border-factor derivation are in
-`ZudilinResidualBorderChargeLab.md`. -/
+/-- **Abstract scalar-plus-border ceiling comparison.**  For `N ≥ 2`, the
+deliberately overgenerous combined polynomial ceiling `2 * N^3 - N` misses the
+explicit `39/41` charge threshold.  This theorem checks that integer
+comparison only; it does not prove that scalar content and southeast `Phi_d`
+border factors in the source attain those individual ceilings.  The
+source-facing residual and border-factor derivation, and any use of this
+combined ceiling, are separate premises. -/
 theorem zudilinScalarPlusBorder_ceiling_lt_required (N : ℤ) (hN : 2 ≤ N) :
     41 * (2 * N ^ 3 - N) < 39 * (4 * N ^ 3 - 3 * N ^ 2) := by
   have hx : 0 ≤ N - 2 := by omega
@@ -143,10 +142,11 @@ theorem zudilinScalarPlusBorder_ceiling_lt_required (N : ℤ) (hN : 2 ≤ N) :
     nlinarith
   nlinarith
 
-/-- Any extraction bounded by the sum of the scalar and universally forced
-first-order border ceilings still misses the required charge.  Higher residual
-valuations, genuine determinant cancellation, or another integral model is
-therefore mandatory. -/
+/-- Any extraction satisfying the explicit bound `extractedDegree ≤ 2 * N^3-N`
+still misses the required charge.  A source application must establish that
+combined bound separately; higher residual valuations, genuine determinant
+cancellation, or another integral model would then be needed to close the
+remaining gap. -/
 theorem zudilinScalarPlusBorder_cannot_meet_required_charge
     (N extractedDegree : ℤ) (hN : 2 ≤ N)
     (hextracted : extractedDegree ≤ 2 * N ^ 3 - N) :
