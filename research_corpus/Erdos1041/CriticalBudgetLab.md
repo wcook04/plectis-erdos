@@ -479,11 +479,9 @@ harmless and in fact sound, because that claim is only that *some* interior path
 exists, and a certified broken line through any point is a genuine path. The
 difference is the claim, not the arithmetic.
 
-With the hub set corrected, 30 restarts and 600 hill-climb steps per degree:
-
-| n | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
-|---|---|---|---|---|---|---|---|---|---|
-| max cheapest connection | 1.999999998 | 1.999999998 | 1.999999998 | 1.999999998 | 1.999999998 | 1.999999998 | 1.999999998 | 1.999999998 | 1.999999998 |
+With the hub set corrected, 30 restarts and 600 hill-climb steps per degree
+gave the same maximum cheapest connection, `1.999999998`, for every tested
+degree `n = 2, 3, ..., 10`.
 
 **Exactly `2r` with `r = 1 − 10⁻⁹`, the modulus cap, at every degree — and nothing
 above it.** Every maximiser is the roots-of-unity family, identified by a minimum
