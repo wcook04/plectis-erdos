@@ -1,0 +1,30 @@
+{
+  "schema_version": "tao_pipeline_receipt_v0",
+  "problem_id": "erdos_1041",
+  "result_id": "orlicz_antichain_gram_pareto_selector_2026_08_26",
+  "input_stage": "return 003 of erdos1041_20260826_return_stream_02 plus the return-002 survivor-local product theorem and sparse-defect exceptional-root no-go",
+  "output_stage": "verified returned selector core, overlap-sensitive two-tier strengthening, and corrected target-level claim boundary",
+  "artifact": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OrliczAntichainGramParetoSelector20260826.md",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/OrliczAntichainGramParetoSelector20260826.lean",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_orlicz_antichain_gram_pareto_selector.py"
+  ],
+  "human_understanding_delta": "The returned individual-heavy selector is only one point on a sharper Pareto frontier. Exact overlap of edge-bad and Gram-bad roots gives better ages than separate Markov counts. With a reserve of b+2 young roots, two structural-good roots retain the sharper age threshold and a survivor-local pair-product bound; with b+3, two can additionally be individually heavy at the optimal B/P threshold. The Gram-good branch remains conditional because a Gram-bad root can be the essential connector hub.",
+  "verification_state": "ordinary exact proof plus checker PASS over 55053 exact rational selector rows and 83943 tier checks, with high-precision four-leaf calibration q4=0.143810397383<h_cl=0.163449418099<=h_opt=0.187827527911<0.3; Lean scalar kernels authored, with focused elaboration pending the repository low-disk firewall already recorded for this wave",
+  "integration_validation": "pass apart from explicitly deferred Lean elaboration: canonical research_packet JSON parses; formal_math_frontier_integrity reports status ok with zero issues and current currency; problem corpus index PASS; consequence-map candidates are adjudicated; the cold-reader cockpit selects this result first and preserves the declared target as open",
+  "publication_or_review_state": "private Type-B assimilation; not externally reviewed; unrestricted Erdos 1041 remains open",
+  "canonicalization_state": "return 003 is retained as a coarse corollary of an overlap-sensitive two-tier theorem; its abstract four-leaf countermodel remains explicitly non-polynomial",
+  "unresolved_downstream_bottleneck": "convert either the structural-good pair-product tier or individual-heavy tier into a complete metric connector, while separately handling exceptional roots",
+  "next_stage_owner": "the open nine-return batch and Erdos1041 research frontier",
+  "paper_assimilation": {
+    "paper": "private Erdos 1041 research corpus",
+    "section": "Orlicz, attachment, Gram, and entrance-energy allocation",
+    "canonical_mechanism_family": "overlap-sensitive attachment-compatible pair selection",
+    "relation": "strictly strengthens return 003 and composes it with the return-002 deletion no-go",
+    "understanding_delta": "pair-product and individual-heavy guarantees should be retained as two Pareto tiers rather than forcing one selector to pay every exclusion",
+    "evidence_boundary": "finite selection is exact; the four-leaf no-go is abstract rather than polynomial-realised; no complete metric consumer is proved",
+    "hard_step": "couple the selected pair's entrance/age/Gram tuple to a complete connector theorem",
+    "meaningful_failed_route": "young plus heavy cannot directly make the root-centred Green product small because conformal-radius monotonicity gives the opposite inequality",
+    "open_remainder": "exceptional-root connector versus regular pair-product or individual-heavy metric consumer"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "schema": "mathematical_consequence_decisions_v1",
+  "progress_anchor": {
+    "lean_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.lean",
+    "declarations": [
+      "ErdosProblems.Erdos1041.TiedNewtonFaceTwoSpokeNoGo.no_complete_safe_model_ray",
+      "ErdosProblems.Erdos1041.TiedNewtonFaceTwoSpokeNoGo.exact_connector_rescues_tied_face"
+    ],
+    "delta_class": "counterexample_or_no_go_and_positive_replacement",
+    "authority_at_review": "explicit_current_source_with_green_focused_Lean_replay",
+    "claim_ceiling": "Complete spokes fail on a tied quintic model; an exact truncated connector rescues that model; all-degree tied-face connector closure and unrestricted Erdős #1041 remain open."
+  },
+  "candidate_map": {
+    "displayed_candidate_count": 14,
+    "discovered_candidate_count": 367,
+    "omitted_candidate_count": 353,
+    "review_scope": "all 14 machine-ranked displayed candidates"
+  },
+  "decisions": [
+    {
+      "candidate_id": "math_consequence_bed9d455d7a9ac51",
+      "file": "state/formal_math_research_operations/pilots/erdos257_issue217/latimer_pva_mobius_admissibility.json",
+      "decision": "outside_scope",
+      "mathematical_reason": "The edge is a broad source-namespace collision with an unrelated q-orthogonal-polynomial pilot.",
+      "authority_surface_checked": "candidate use-site and problem identity",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_5a86210ee8537d9b",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/01_RESULT_AUTHORITY_AND_100_PERCENT_ASSIMILATION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Purpose-specific dissemination copy; canonical packet updated first.",
+      "authority_surface_checked": "canonical research packet and copy role",
+      "validation_or_reentry": "refresh through dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_282608ca3ffd169d",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/02_TAO_PROOF_DIGESTION_AND_SIGNAL_SELECTION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Purpose-specific dissemination copy; hand editing would fork authority.",
+      "authority_surface_checked": "canonical research packet and copy role",
+      "validation_or_reentry": "refresh through dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_05b617714663fcce",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/03_PRIOR_ART_CITATIONS_NOVELTY_AND_SIGNIFICANCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Prior-art derivative must follow the landed canonical statement and later novelty review.",
+      "authority_surface_checked": "canonical research packet and copy role",
+      "validation_or_reentry": "refresh through dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_763196d76178f0b3",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/04_LEAN_COMPARATOR_PALOMAR_AND_REVIEW_ASSURANCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "The model theorem is not being promoted to Comparator in this private wave.",
+      "authority_surface_checked": "canonical packet and private/public boundary",
+      "validation_or_reentry": "reconsider after independent review"
+    },
+    {
+      "candidate_id": "math_consequence_efd10c63042595b2",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/05_PAPER_LATTICE_AND_CANONICAL_EXPOSITION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "The authored theorem note is the current exposition authority.",
+      "authority_surface_checked": "TiedNewtonFaceTwoSpokeNoGo.md",
+      "validation_or_reentry": "refresh through paper owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_8803264e4ba0fe4d",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/06_PUBLIC_REPOS_WEBSITE_AND_COLD_CLONE_EXPERIENCE/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Private worktree theorem has no public-release authority.",
+      "authority_surface_checked": "private/public boundary",
+      "validation_or_reentry": "re-enter on explicit public promotion"
+    },
+    {
+      "candidate_id": "math_consequence_710f9ad2e836dffd",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/07_DISSEMINATION_ROUTE_PORTFOLIO_AND_PLUG_AND_PLAY_ADAPTERS/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Dissemination derivative, not mathematical authority.",
+      "authority_surface_checked": "canonical packet and copy role",
+      "validation_or_reentry": "refresh through dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_82d7eb79ce4e8261",
+      "file": "docs/formal_math/type_b_packets/repo_dissemination_architecture_2026_08_25/08_CONTINUOUS_GOAL_FLEET_AND_INCREMENTAL_1041_INGESTION/28_ERDOS_1041_RESEARCH_PACKET.json",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "Continuous-goal derivative follows canonical research authority.",
+      "authority_surface_checked": "canonical packet and copy role",
+      "validation_or_reentry": "refresh through dissemination owner after landing"
+    },
+    {
+      "candidate_id": "math_consequence_977010b7ae03b8b9",
+      "file": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The no-go retires complete spokes on tied faces, while the connector theorem supplies the correct replacement on the first exact model and changes the near-Fekete residual.",
+      "authority_surface_checked": "source manifest, exact results, negative results, and claim ceiling addendum",
+      "validation_or_reentry": "JSON parse, checker, focused Lean replay, frontier audit, and cold-reader query"
+    },
+    {
+      "candidate_id": "math_consequence_5f445148b064de30",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/constant_perturbation_roots_unit_disk_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Namespace bridge only; the root-continuity theorem does not consume this tied-face model.",
+      "authority_surface_checked": "route theorem manifest",
+      "validation_or_reentry": "none unless an exact consumer is added"
+    },
+    {
+      "candidate_id": "math_consequence_42935f2600dfff0c",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_lemniscate_short_path_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "Historical lemniscate attribution is unchanged by a new local mechanism theorem.",
+      "authority_surface_checked": "route statement and attribution fields",
+      "validation_or_reentry": "re-enter only for public frontier promotion"
+    },
+    {
+      "candidate_id": "math_consequence_5f3c77cafd6a6791",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/erdos1041_sharp_collinear_root_diameter_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The collinear theorem is structurally disjoint from the tied near-Fekete connector model.",
+      "authority_surface_checked": "route statement",
+      "validation_or_reentry": "none"
+    },
+    {
+      "candidate_id": "math_consequence_025d7f04acaadb59",
+      "file": "formal_math/erdos257_period_noncollapse/prior_art_routes/global_critical_two_nearest_root_budget_v0.json",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The critical-root metric budget neither implies nor is implied by the tied-face connector theorem.",
+      "authority_surface_checked": "route theorem manifest",
+      "validation_or_reentry": "re-enter only if a formal consumer is added"
+    }
+  ],
+  "semantic_second_pass": {
+    "newly_impossible": "Extending the unique-face proof by selecting complete safe root spokes on arbitrary tied faces.",
+    "newly_closed": "The first exact quintic tied face is rescued by a strict truncated connector.",
+    "surviving_boundary": "Prove a compact connector theorem for every all-degree tied-face model and transfer it to actual polynomials; the bulk, COVER, and combined-charge routes remain independent.",
+    "claim_boundary": "The model theorem is not a full near-Fekete neighbourhood and not unrestricted Erdős #1041."
+  },
+  "checkpoint_class": "checkpoint_rotate",
+  "nothing_to_refine": {
+    "stewardship_checked": true,
+    "next_best_lane_checked": true,
+    "reentry_condition": "Re-run after the scoped source commit or the next tied-face connector theorem."
+  }
+}

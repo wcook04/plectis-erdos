@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_genuinely_mixed_truncation_necessary_and_sufficient_fixture",
+  "recorded_at": "2026-08-25",
+  "input_stage": "moderate_mixed_band_connector_minimax_and_existing_paired_ray_model",
+  "output_stage": "exact_phase_family_no_go_and_positive_radius_repair_with_lean_kernel",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticMixedOriginSpokeNoGo.md",
+    "ErdosProblems/Erdos1041/SexticMixedOriginSpokeNoGo.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_mixed_origin_spoke_nogo.py"
+  ],
+  "human_understanding_delta": "A genuinely mixed first/second-mode family with ratio up to one quarter has at most two potentially safe complete sixth-root rays, and they are antipodal. At the endpoint ratio one quarter, the adjacent pair (0,1) becomes an exact connector after truncation at radius 2/3: both ray tails are safe and all seven degree-six chord Bernstein controls are below -1/1000. Positive-radius truncation is therefore not just structurally necessary but constructively sufficient for this hard fixture.",
+  "verification_state": {
+    "analytic": "complete_exact_radical_projection_escape_witness_ray_tail_and_bernstein_chord_proof",
+    "symbolic": "exact_sympy_phase_table_escape_replay_chord_reconstruction_and_shifted_barrier_passed",
+    "lean": "warning_free_canonical_cached_build_and_final_serialized_authority_check_passed",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "No-go theorem, exact truncated repair, expert explanation, symbolic checker, and mixed-atlas handoff validated",
+  "unresolved_downstream_bottleneck": "Thicken the strict radius-2/3 certificate to an explicit coefficient neighborhood, then assemble the positive-radius truncated-spoke atlas on the remaining compact mixed coefficient section.",
+  "next_stage_owner": "Refinery: extract a quantitative neighborhood from the -1/1000 chord margin and the ray-tail barriers, keeping radius as a live atlas variable and the complete-spoke failure as a negative fixture.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex computational discovery, analytic derivation, and Lean formalization under operator direction",
+    "computation": "Bounded minimax over the two-frequency ray model isolated the boundary phases and then the rational radius 2/3. Exact symbolic replay reconstructs every chord Bernstein control and the shifted positive ray barrier.",
+    "formalization": "Lean checks radical bounds, four explicit escaping-ray witnesses, the twelve-pair combinatorial exclusion, seven uniform Bernstein bounds, both ray tails, and the combined truncated connector.",
+    "claim_boundary": "Refutes a complete-origin-spoke architecture and proves a positive-radius connector for one genuine mixed endpoint configuration. It does not yet thicken that point to a parameter neighborhood, prove the full sextic tangent theorem, or solve unrestricted Erdos #1041."
+  }
+}

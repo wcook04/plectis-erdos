@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_cubic_radial_deficit_staple_cone",
+  "recorded_at": "2026-08-25",
+  "input_stage": "pure_cubic_positive_radius_no_go_and_secondary_blowup_scout",
+  "output_stage": "quantitative_full_fourier_radial_deficit_stability_cone",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticCubicRadialDeficitCone.md",
+    "ErdosProblems/Erdos1041/SexticCubicRadialDeficitCone.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_cubic_radial_deficit_cone.py"
+  ],
+  "human_understanding_delta": "The cubic-face singularity is repaired by restoring the negative radial deficit forced by disk-root geometry. If the four nuisance Fourier norms spend at most Delta, then s=Delta/4 creates an inner disk with Delta/2 margin, while one parity class supplies three strict outward rays; any two form a staple of length 2-(2-sqrt(3))s. The false deficit-free positive-radius atlas and the true deficit-bearing stability cone are now cleanly separated.",
+  "verification_state": {
+    "analytic": "complete_explicit_mode_budget_inner_disk_parity_ray_and_metric_proof",
+    "symbolic": "passed_exact_rational_inner_constant_parity_metric_and_4096_ray_rows",
+    "lean": "passed_canonical_cached_focused_build_and_serialized_authority_replay_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "research packet and claim ceiling updated; exact replay, focused serialized Lean validation, and consequence mapping completed; source-current connectivity will be refreshed at the scoped Git landing boundary",
+  "unresolved_downstream_bottleneck": "Use Parseval, tangent Fourier pairing, and radial-energy control to show that every actual cubic-dominant sextic perturbation either enters this cone after normalization or lies in finitely many complementary transverse charts; then absorb the origin-anchored logarithmic remainder.",
+  "next_stage_owner": "Refinery: verify the distinction between the deficit-free no-go and the deficit-bearing positive cone, then hand the exact normalization dichotomy to the sextic near-Fekete research owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation under operator direction, building on the existing origin-anchored expansion, radial-energy inequality, and sextic cubic-face no-go",
+    "computation": "A bounded secondary-model adversarial scout falsified the deficit-free stability interpretation and exposed the missing radial-deficit scale. Exact rational replay validates the final constants; computation is not proof authority.",
+    "formalization": "Lean checks the weighted four-mode budget, Delta/2 inner-disk absorption, strict selected-ray margin, parity sign selection, and strict sqrt(3) metric slack.",
+    "claim_boundary": "Complete finite sextic Fourier model cone under |E1|+|E2|+|E4|+|E5|<=Delta, |E3|<=1, and 0<Delta<=1. This is not yet the normalization dichotomy, actual-polynomial transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}

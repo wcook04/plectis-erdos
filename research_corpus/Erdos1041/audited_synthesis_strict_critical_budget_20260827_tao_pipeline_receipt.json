@@ -1,0 +1,36 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "research_actor_mode": "type_b_advisory",
+  "proof_campaign_completion_class": "residual_only_invalid_completion",
+  "input_stage": "generation",
+  "output_stage": "verification_and_canonicalization",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.lean",
+  "human_understanding_delta": "The attached synthesis contributes no new frontier object: every positive claim is dominated by source-current corpus authority and its perturbative spoke obstruction is weaker than an exact distinct-root unique-nearest Lean certificate. A new Lean consumer now extracts the strict <2 conclusion with explicit slack 2(1-r) from the stronger geometric-mean theorem.",
+  "verification_state": "Lean theorem checked by focused and serialized Lake validation; attachment claims cross-checked against stronger source-current corpus authority; unrestricted target remains open",
+  "publication_or_review_state": "private authoring assimilation; not externally reviewed",
+  "canonicalization_state": "attachment digest bound to one dominance crosswalk; duplicate claims subordinated to existing canonical results",
+  "unresolved_downstream_bottleneck": "Produce a non-pointwise attachment-compatible contained connector or prove COVER; metric slack alone does not control visibility.",
+  "next_stage_owner": "Erdos1041 combined-charge/COVER research frontier",
+  "proof_effect": "landed_strict_quantitative_consumer_and_decisive_duplicate_reconciliation",
+  "focused_validation": "pass: lean_fast_build.py checked ErdosProblems/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.lean",
+  "integration_validation": "pass: serialized Lake validation, JSON parse, problem-corpus index check, and structural frontier-integrity check",
+  "propagation_decision": "No public frontier promotion: this is an auxiliary strict consumer of an existing stronger theorem, and the accompanying dominance crosswalk already binds the attachment to the canonical corpus authorities.",
+  "paper_assimilation": {
+    "paper": "Erdos 1041 private research corpus",
+    "section": "strict critical budget and visibility-boundary canonicalization",
+    "canonical_mechanism_family": "critical geometric-mean metric budget versus attachment-compatible containment",
+    "relation": "auxiliary_not_target_deciding",
+    "understanding_delta": "The exact metric slack is now explicit in Lean, while the attachment's visibility and radial-selection gaps are tied to stronger existing no-go authority.",
+    "evidence_boundary": "Lean-checked metric corollary after focused validation; existing exact counterexamples; no contained path theorem",
+    "hard_step": "convert a selected critical/component geometry into a contained curve without assuming straight-spoke visibility",
+    "meaningful_failed_route": "join the two metric-budget roots to the critical point by straight segments, or select one radial spoke uniformly in the radius",
+    "open_remainder": "combined charge, COVER, FP-GM, and unrestricted Erdos 1041 remain open"
+  },
+  "source_manifest": [
+    {
+      "path": "/Users/willcook/.codex/attachments/d41c67c0-637d-48f4-a2f6-101d887da879/pasted-text.txt",
+      "sha256": "ce44d82aa03eb157c4476e874230216323ae4326c55ae788e1ff3f7a06abd435"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "result_id": "sextic_first_mode_dominant_tangent_cone",
+  "recorded_at": "2026-08-25",
+  "input_stage": "quantitatively_transverse_cubic_complement_and_root_fourier_pairing",
+  "output_stage": "all_phase_first_mode_dominant_homogeneous_tangent_connector",
+  "artifact": [
+    "ErdosProblems/Erdos1041/SexticFirstModeDominantTangentCone.md",
+    "ErdosProblems/Erdos1041/SexticFirstModeDominantTangentCone.lean",
+    "ErdosProblems/Erdos1041/scripts/check_erdos1041_sextic_first_mode_dominant_tangent_cone.py"
+  ],
+  "human_understanding_delta": "Actual inward radial perturbations have a favourable sign on every sixth-root ray because the length-six geometric kernel has positive real part. Pure tangent pairing kills the cubic ray term and reduces the model to two paired scalar modes. Two adjacent directions have first-mode projection at most minus half its norm; when |E2|<=|E1| an exact factorization makes both full rays safe, and a sufficiently small chord is strictly safe.",
+  "verification_state": {
+    "analytic": "complete_radial_kernel_tangent_pairing_phase_sector_ray_factorization_and_small_chord_proof",
+    "symbolic": "passed_276705_exact_ray_rows_256_exact_kernel_rows_4160_exact_chord_rows_and_100001_phase_rows",
+    "lean": "passed_canonical_cached_focused_build_and_final_serialized_authority_check_warning_free",
+    "external_review": "not_started"
+  },
+  "publication_or_review_state": "private_research_checkpoint_not_externally_reviewed_or_published",
+  "canonicalization_state": "analytic theorem, Lean scalar kernel, exact checker, falsified stronger selector, canonical research packet update, and second-mode handoff authored and focused validation passed",
+  "unresolved_downstream_bottleneck": "Close the all-phase second-mode-dominant tangent chart |E1|<|E2|, then absorb the origin-anchored nonlinear remainder on both transverse charts.",
+  "next_stage_owner": "Refinery: audit the exact pairing and phase-sector reduction, then route the residual |E1|<|E2| to the sextic mixed-slice owner.",
+  "attribution_and_tool_disclosure": {
+    "authorship": "Codex analytic derivation under operator direction, using the existing Fourier expansion and sixth-root connector corpus",
+    "computation": "A deterministic probe immediately falsified the stronger two-endpoint selector; exact rational replay checks the repaired ray, kernel, and chord bounds.",
+    "formalization": "Lean checks the paired ray factorization, six-sector cover, explicit small-chord absorption, and positive radial geometric kernel.",
+    "claim_boundary": "Closes the homogeneous all-phase tangent chart |E2|<=|E1| with E1 nonzero. It does not prove the second-mode chart, nonlinear remainder transfer, all sextics, or unrestricted Erdos #1041."
+  }
+}
