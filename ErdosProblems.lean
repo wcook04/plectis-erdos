@@ -16,6 +16,7 @@
 
 import ErdosProblems.AxiomAudit
 import ErdosProblems.DemandLedger
+import ErdosProblems.Erdos249.RankOneSharpFloor
 import ErdosProblems.Erdos269.RestrictedFloorSum
 import ErdosProblems.Root
 import ErdosProblems.Skip.LadderT67
