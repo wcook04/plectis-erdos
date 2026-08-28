@@ -316,6 +316,70 @@ the global admissible product (AP), without requiring (MS) at every node.
 The dominant obstruction is therefore coupled grafting/open-block closure.
 Only the virtual-cut subcase remains a standalone cherry base.
 
+## Naive substitution of the proved cherry bound is false
+
+The cherry theorem supplies quantitative slack, but its separately optimized
+upper bound cannot simply be inserted into every merger subtree.  Write
+
+```text
+B_v = b_v^(2/n) log((1+r_v)/(1-r_v))
+      / (2 (n-1)^(2/n) r_v^(2/n)).
+```
+
+The proof of `(CB4)` gives the rigorous inequality `h_v<=sqrt(B_v)` for every
+cherry, with `B_v<=1` exactly on the certified region.  A natural hybrid
+attempt is therefore to replace each certified cherry factor by `sqrt(B_v)`
+and retain the remaining measured grafting factors.  If every resulting
+hybrid rooted-subtree product were at most one, the proved local slack would
+already pay the observed ancestor debt and only the non-cherry estimates would
+remain to formalize.
+
+That hybrid statement is false.  The fixed-seed stress sweep finds one
+violation.  It occurs for the degree-three polynomial with roots
+
+```text
+ 0.027647095206652 + 0.073111096775191 i
+-0.069742851100732 - 0.659321277291393 i
+ 0.670877914107613 - 0.436422467336396 i.
+```
+
+Its monic coefficients are
+
+```text
+1,
+-0.628782158213533 + 1.022632647852598 i,
+-0.237800891799970 - 0.398231223942922 i,
+-0.020864665213896 + 0.035845440850288 i.
+```
+
+There is one certified cherry and one admissible grafting node.  The replay
+gives
+
+```text
+cherry factor h:                         0.401184511995
+rigorous local upper bound sqrt(B):      0.514126276899
+grafting factor:                         2.091848616726
+actual rooted-subtree product:           0.839217266469
+hybrid upper product:                     1.075474341153
+bound inflation hybrid/actual:            1.281520750493
+factor needed to repay the graft:         1/2.091848616726
+                                         =0.478046065095.
+```
+
+Thus the actual cherry has enough slack, but the independent
+Bergman--Pólya--capacity majorant loses too much of it: the bound exceeds the
+parent-compatible threshold by a factor `1.075474341153`.  This is not a
+counterexample to `(AP)`, `(MS)`, `(CB4)`, or the cherry theorem.  It is a
+numerical falsifier of the proof template “replace every certified cherry by
+its standalone `(CB4)` bound and multiply.”
+
+The next theorem must therefore couple the cherry estimate to its parent
+component, or recover at least one source of slack discarded by the separate
+Bergman, exterior-capacity, and Pólya steps.  A parent-aware area/capacity
+budget is now a sharper target than another universal node inequality: it must
+prove the binary step directly while preserving the child factor below the
+threshold forced by the observed graft.
+
 ## Exact charge-to-log bridge and its numerical failure
 
 There is a direct exact comparison with `CriticalTreeLengthCharge.md`. Let `R`
