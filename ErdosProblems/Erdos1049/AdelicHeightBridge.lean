@@ -26,9 +26,10 @@ sharpens every parameter obstruction already recorded for `3 / 2`.
 * The scalar cone misses by a fixed relative margin `17 / 41`
   (`three_two_scalar_margin_lt_explicit`).
 
-The final section adds a general **bounded-fibre escape** pigeonhole, which
-turns a bound on the multiplicity of equal analytic remainders into a
-four-jet collision that escapes the remainder nullspace.
+The final section adds a general **bounded-fibre escape** pigeonhole.  Once an
+analytic remainder is supplied as `g` together with a fibre bound, the generic
+theorem yields a four-jet collision separated by `g`; no such concrete
+remainder instantiation is formalized here.
 
 No theorem here decides the arithmetic nature of the Lambert value at `3 / 2`.
 -/
