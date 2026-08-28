@@ -2,7 +2,7 @@
   "schema": "erdos1041_strongest_result_activation_map_v1",
   "problem_id": "erdos_1041",
   "status": "open",
-  "source_checkpoint": "6a46e6e765030830b5c4d7941193de51af13b5d1",
+  "source_checkpoint": "a6e3ba8d74e094daeb36d7b6faadf3fa2beddc41",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the unrestricted parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -201,7 +201,7 @@
     {
       "result_id": "admissible_product_quantifier_firewall",
       "status": "strongest_premise",
-      "exact_statement": "The target-sufficient admissible product is exactly product_v h_v, where h_v=(L(v)/2)/r_v^((k_v-1)/n). The Bergman-Polya certificate proves h_v<=1 on an explicit bulk cherry region. Universal per-cherry and per-rooted-subtree inequalities are stronger than the parent requires: an uncertified cherry with an admissible parent can remain open as multiplicative debt in its ancestor block. All 126 corpus misses and 178/180 stress misses are internal in this sense; only a miss whose parent is the virtual level-one cut is a genuine standalone base. The corpus has zero such terminal misses and stress has two, with largest sampled factor 0.853771268558. The exact open throat is the global admissible product via adaptive open-block closure, retaining certified-child slack and treating only virtual-cut misses separately.",
+      "exact_statement": "The target-sufficient admissible product is exactly product_v h_v, where h_v=(L(v)/2)/r_v^((k_v-1)/n). The Bergman-Polya certificate proves h_v<=1 on an explicit bulk cherry region. Universal per-cherry and per-rooted-subtree inequalities are stronger than the parent requires: an uncertified cherry with an admissible parent can remain open as multiplicative debt in its ancestor block. All 126 corpus misses and 178/180 stress misses are internal in this sense; only a miss whose parent is the virtual level-one cut is a genuine standalone base. The corpus has zero such terminal misses and stress has two, with largest sampled factor 0.853771268558. A deterministic cubic also falsifies naive independent substitution of each certified cherry's standalone sqrt(B_v) majorant: the actual subtree product is 0.839217266469 but the hybrid bound is 1.075474341153. The exact open throat is therefore parent-coupled area/capacity or another adaptive open-block closure that retains certified-child slack, with only virtual-cut misses treated separately.",
       "hypotheses": "Simple generic critical points, canonical descending inverse-ray edge lengths, and the admissible set A={c:|f(c)|<1}.",
       "authority_paths": [
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md",
@@ -213,9 +213,10 @@
         "erdos_1041_parent"
       ],
       "supersedes": [
-        "universal per-cherry, per-node, or per-rooted-subtree inequalities stronger than the exact global admissible-product obligation"
+        "universal per-cherry, per-node, or per-rooted-subtree inequalities stronger than the exact global admissible-product obligation",
+        "independent multiplication of standalone Bergman-Polya cherry majorants inside a parent subtree"
       ],
-      "why_it_matters": "It removes both the certified cherry region and the unnecessary universal-cherry obligation. Internal near-ties are now grafting debt, not a second independent base problem; the proof should close adaptive open blocks directly into the global parent-deciding product.",
+      "why_it_matters": "It removes both the certified cherry region and the unnecessary universal-cherry obligation, while the hybrid cubic prevents throwing away the certified child's parent-compatible slack. Internal near-ties are grafting debt, not a second independent base problem; the proof should couple child area/capacity to its parent or close adaptive open blocks by another global mechanism.",
       "public_authority_paths": [
         "research_corpus/Erdos1041/AdmissibleCriticalArcProductLab.md",
         "research_corpus/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py",

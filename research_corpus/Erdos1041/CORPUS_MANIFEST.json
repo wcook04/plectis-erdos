@@ -2,15 +2,15 @@
   "schema": "erdos1041_public_research_corpus_manifest_v1",
   "problem_id": "erdos_1041",
   "status": "open",
-  "source_checkpoint": "6a46e6e765030830b5c4d7941193de51af13b5d1",
+  "source_checkpoint": "a6e3ba8d74e094daeb36d7b6faadf3fa2beddc41",
   "source_prefix": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041",
   "public_prefix": "research_corpus/Erdos1041",
   "file_count": 638,
-  "total_bytes": 5160076,
+  "total_bytes": 5168999,
   "local_path_replacement_count": 55,
   "strongest_result_map": {
     "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
-    "sha256": "717425fbd1e92efcbf4a9379c148f2159c45cac0637df2bb34e558ced682b603",
+    "sha256": "1e4f8a4429f85993cf9e92c60720c0c16fcdc55ce8fbf0e9707d74229f71e918",
     "result_count": 17
   },
   "files": [
@@ -44,11 +44,11 @@
     {
       "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md",
       "public_path": "research_corpus/Erdos1041/AdmissibleCriticalArcProductLab.md",
-      "source_sha256": "d1cba2b0bcf58e6a31769c49bd65f1a3f506e7ea06e6d8e816828a075665b9eb",
-      "published_sha256": "d1cba2b0bcf58e6a31769c49bd65f1a3f506e7ea06e6d8e816828a075665b9eb",
+      "source_sha256": "07046c58562369f909854b69594b337c05d27aa2da60183be39d691d0603e7af",
+      "published_sha256": "07046c58562369f909854b69594b337c05d27aa2da60183be39d691d0603e7af",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 17456
+      "bytes": 20057
     },
     {
       "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AffineNormalisedModuli.md",
@@ -2834,11 +2834,11 @@
     {
       "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/admissible_critical_arc_product_probe_tao_pipeline_receipt.json",
       "public_path": "research_corpus/Erdos1041/admissible_critical_arc_product_probe_tao_pipeline_receipt.json",
-      "source_sha256": "2f04d265f1e6de45bbc8e721e050864d4e04b5d1ac13ede129f27d5ab0dd1e7d",
-      "published_sha256": "2f04d265f1e6de45bbc8e721e050864d4e04b5d1ac13ede129f27d5ab0dd1e7d",
+      "source_sha256": "7f0dd560f3952a1f54fda3dab3bbcc42646fe8308fce1795982f218a9b4e8c8e",
+      "published_sha256": "7f0dd560f3952a1f54fda3dab3bbcc42646fe8308fce1795982f218a9b4e8c8e",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 6518
+      "bytes": 7866
     },
     {
       "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/attachment_assimilation_2026_08_25_tao_pipeline_receipt.json",
@@ -3455,11 +3455,11 @@
     {
       "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py",
       "public_path": "research_corpus/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py",
-      "source_sha256": "e470fe88861b602de38399bb27ab0c735fcbb08929f16d123901a460ce26bc9b",
-      "published_sha256": "e470fe88861b602de38399bb27ab0c735fcbb08929f16d123901a460ce26bc9b",
+      "source_sha256": "efa1e034140cb841e4318b23a2e5c58ced87009b098fbf442df542865a58bb4b",
+      "published_sha256": "efa1e034140cb841e4318b23a2e5c58ced87009b098fbf442df542865a58bb4b",
       "relation": "exact_copy",
       "local_path_replacements": 0,
-      "bytes": 38282
+      "bytes": 43256
     },
     {
       "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_affine_normalised_moduli.py",

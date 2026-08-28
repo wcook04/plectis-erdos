@@ -402,6 +402,9 @@ def merge_subtree_block_diagnostics(roots: np.ndarray) -> dict[str, float | int]
             / (2.0 * ((degree - 1.0) * ratio) ** (2.0 / degree))
         )
     cherry_bergman_cost_by_node = dict(zip(cherry_nodes, cherry_bergman_costs))
+    certified_cherry_nodes = [
+        node for node in cherry_nodes if cherry_bergman_cost_by_node[node] <= 1.0
+    ]
     uncertified_cherry_nodes = [
         node
         for node in cherry_nodes
@@ -418,6 +421,30 @@ def merge_subtree_block_diagnostics(roots: np.ndarray) -> dict[str, float | int]
         for node in uncertified_cherry_nodes
         if node not in uncertified_internal_cherry_nodes
     ]
+    # Replace every certified cherry's numerically integrated factor by the
+    # rigorous Bergman--Polya upper bound sqrt(cost).  Leave all other nodes at
+    # their measured factor.  This hybrid is not a proof—the grafting factors
+    # remain numerical—but it asks the decision-changing question: does the
+    # actually proved cherry slack still pay the observed open grafting debt?
+    hybrid_node_factors = dict(node_factors)
+    for node in certified_cherry_nodes:
+        hybrid_node_factors[node] = math.sqrt(cherry_bergman_cost_by_node[node])
+    hybrid_subtree_products: dict[int, float] = {}
+    for node in created:
+        if node not in hybrid_node_factors:
+            continue
+        product = hybrid_node_factors[node]
+        for child in nodes[node]["children"]:
+            child_index = int(child)
+            if child_index in hybrid_subtree_products:
+                product *= hybrid_subtree_products[child_index]
+        hybrid_subtree_products[node] = product
+    hybrid_block_product = math.prod(hybrid_node_factors.values())
+    largest_hybrid_node = max(
+        hybrid_subtree_products,
+        key=hybrid_subtree_products.__getitem__,
+        default=None,
+    )
     identity_relative_error = abs(block_product - direct_product) / max(
         direct_product, 1.0e-300
     )
@@ -444,6 +471,11 @@ def merge_subtree_block_diagnostics(roots: np.ndarray) -> dict[str, float | int]
         "bergman_uncertified_virtual_cut_cherry_count": len(
             uncertified_virtual_cut_cherry_nodes
         ),
+        "bergman_certified_bound_numerical_violation_count": sum(
+            node_factors[node]
+            > math.sqrt(cherry_bergman_cost_by_node[node]) + 1.0e-6
+            for node in certified_cherry_nodes
+        ),
         "largest_uncertified_internal_cherry_product": max(
             (node_factors[node] for node in uncertified_internal_cherry_nodes),
             default=0.0,
@@ -465,6 +497,36 @@ def merge_subtree_block_diagnostics(roots: np.ndarray) -> dict[str, float | int]
             and subtree_products[node] <= 1.0 + 1.0e-8
             for node in grafting_nodes
         ),
+        "hybrid_grafting_violation_count": sum(
+            hybrid_subtree_products[node] > 1.0 + 1.0e-8
+            for node in grafting_nodes
+        ),
+        "hybrid_subtree_violation_count": sum(
+            value > 1.0 + 1.0e-8
+            for value in hybrid_subtree_products.values()
+        ),
+        "largest_hybrid_subtree_product": max(
+            hybrid_subtree_products.values(), default=0.0
+        ),
+        "largest_hybrid_subtree_size": (
+            int(nodes[largest_hybrid_node]["size"])
+            if largest_hybrid_node is not None
+            else 0
+        ),
+        "largest_hybrid_subtree_actual_product": (
+            subtree_products[largest_hybrid_node]
+            if largest_hybrid_node is not None
+            else 0.0
+        ),
+        "largest_hybrid_subtree_bound_inflation": (
+            hybrid_subtree_products[largest_hybrid_node]
+            / max(subtree_products[largest_hybrid_node], 1.0e-300)
+            if largest_hybrid_node is not None
+            else 0.0
+        ),
+        "hybrid_full_block_product": hybrid_block_product,
+        "hybrid_to_actual_full_block_ratio": hybrid_block_product
+        / max(block_product, 1.0e-300),
         "subtree_count": len(subtree_products),
         "subtree_violation_count": sum(
             value > 1.0 + 1.0e-8 for value in subtree_products.values()
@@ -537,6 +599,10 @@ def run_deterministic_subtree_stress() -> None:
                         float(diagnostics["largest_node_factor"]),
                         float(diagnostics["full_block_product"]),
                         int(diagnostics["subtree_violation_count"]),
+                        float(diagnostics["largest_hybrid_subtree_product"]),
+                        int(diagnostics["largest_hybrid_subtree_size"]),
+                        float(diagnostics["largest_hybrid_subtree_actual_product"]),
+                        float(diagnostics["largest_hybrid_subtree_bound_inflation"]),
                     )
                 )
     rows.sort(reverse=True)
@@ -564,10 +630,25 @@ def run_deterministic_subtree_stress() -> None:
     grafting_violation_count = sum(
         int(row["grafting_violation_count"]) for row in diagnostic_rows
     )
+    hybrid_subtree_violation_count = sum(
+        int(row["hybrid_subtree_violation_count"]) for row in diagnostic_rows
+    )
+    certified_bound_numerical_violation_count = sum(
+        int(row["bergman_certified_bound_numerical_violation_count"])
+        for row in diagnostic_rows
+    )
+    largest_hybrid_row = max(
+        rows,
+        key=lambda row: row[7],
+    )
     assert len(rows) == 800
     assert violation_count == 0
     assert cherry_violation_count == 0
     assert grafting_violation_count == 0
+    assert certified_bound_numerical_violation_count == 0
+    assert hybrid_subtree_violation_count > 0
+    assert largest_hybrid_row[7] > 1.05
+    assert largest_hybrid_row[9] < 0.9
     assert (
         uncertified_internal_cherry_count
         + uncertified_virtual_cut_cherry_count
@@ -601,6 +682,18 @@ def run_deterministic_subtree_stress() -> None:
     )
     print(f"stress_grafting_count={grafting_count}")
     print(f"stress_grafting_violation_count={grafting_violation_count}")
+    print(
+        "stress_hybrid_subtree_violation_count="
+        f"{hybrid_subtree_violation_count}"
+    )
+    print(
+        "stress_largest_hybrid_subtree_product="
+        f"{largest_hybrid_row[7]:.12f} degree={largest_hybrid_row[1]} "
+        f"family={largest_hybrid_row[2]} repetition={largest_hybrid_row[3]} "
+        f"subtree_size={largest_hybrid_row[8]} "
+        f"actual_product={largest_hybrid_row[9]:.12f} "
+        f"bound_inflation={largest_hybrid_row[10]:.12f}"
+    )
     print(
         "stress_largest_subtree_product="
         f"{rows[0][0]:.12f} degree={rows[0][1]} family={rows[0][2]} "
@@ -767,6 +860,14 @@ def main() -> None:
     grafting_violations = sum(
         int(row[0]["grafting_violation_count"]) for row in subtree_block_rows
     )
+    hybrid_subtree_violations = sum(
+        int(row[0]["hybrid_subtree_violation_count"])
+        for row in subtree_block_rows
+    )
+    certified_bound_numerical_violations = sum(
+        int(row[0]["bergman_certified_bound_numerical_violation_count"])
+        for row in subtree_block_rows
+    )
     overspend_repaid_count = sum(
         int(row[0]["node_overspend_repaid_by_descendants_count"])
         for row in subtree_block_rows
@@ -776,6 +877,10 @@ def main() -> None:
     )
     largest_subtree_row = max(
         subtree_block_rows, key=lambda row: float(row[0]["largest_subtree_product"])
+    )
+    largest_hybrid_subtree_row = max(
+        subtree_block_rows,
+        key=lambda row: float(row[0]["largest_hybrid_subtree_product"]),
     )
     block_identity_max_relative_error = max(
         float(row[0]["identity_relative_error"]) for row in subtree_block_rows
@@ -842,6 +947,7 @@ def main() -> None:
     assert float(largest_cherry_row[0]["largest_cherry_product"]) > 0.98
     assert grafting_count > 800
     assert grafting_violations == 0
+    assert certified_bound_numerical_violations == 0
     assert overspend_repaid_count > 100
     assert configurations_with_node_factor_gt_one > 100
     assert node_factor_gt_one_count > configurations_with_node_factor_gt_one
@@ -886,6 +992,14 @@ def main() -> None:
     )
     print(f"admissible_grafting_count={grafting_count}")
     print(f"admissible_grafting_violation_count={grafting_violations}")
+    print(f"hybrid_subtree_violation_count={hybrid_subtree_violations}")
+    print(
+        "largest_hybrid_subtree_product="
+        f"{float(largest_hybrid_subtree_row[0]['largest_hybrid_subtree_product']):.12f} "
+        f"degree={largest_hybrid_subtree_row[1]} "
+        f"family={largest_hybrid_subtree_row[2]} "
+        f"repetition={largest_hybrid_subtree_row[3]}"
+    )
     print(f"node_overspend_repaid_by_descendants_count={overspend_repaid_count}")
     print(f"node_block_factor_gt_one_count={node_factor_gt_one_count}")
     print(
