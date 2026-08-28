@@ -96,8 +96,35 @@ d^2H/dc^2=4qr^2[(q^2-r^2)/(q^2+r^2-2qrc)^3
 Hence every pair kernel is strictly convex in the pair cosine and lies above
 its tangent at `c=-1/2`.  Exact minimization of the resulting weighted
 three-cosine energy reduces `DGP3` to a piecewise rational inequality in only
-`(r_1,r_2,r_3,q)`.  A global falsifier search minimizes that radial residual
-at equal radii to numerical precision; the rational inequality is still open.
+`(r_1,r_2,r_3,q)`.
+
+More explicitly, if the three tangent slopes are `alpha,beta,gamma>0`, the
+stationary angular value is
+
+```text
+-(alpha^2 beta^2+alpha^2 gamma^2+beta^2 gamma^2)
+ /(2 alpha beta gamma).
+```
+
+This branch is admissible exactly when `1/alpha,1/beta,1/gamma` are the side
+lengths of a (possibly degenerate) triangle; otherwise the angular minimum is
+an endpoint.  Thus the radial remainder has an exact semialgebraic branch
+condition, not a numerical branch choice.
+
+On the isosceles radial slice `(r_1,r_2,r_3)=(x,x,z)`, the reduced numerator
+of the stationary-branch residual has the exact factor
+
+```text
+(x-z)^2.
+```
+
+This identifies the regular equality locus to second order, but the remaining
+quotient has mixed monomial signs and its positivity is still open.  Global
+falsifier searches with the branch condition enforced find no negative radial
+residual.  Near `q=r_1=r_2=r_3`, ordinary floating point can report enormous
+spurious negatives because two divergent quantities cancel; 100-decimal-digit
+re-evaluation restores the exact zero.  The replay includes regression cases
+for this cancellation layer.
 
 ## Prior-art firewall
 
@@ -125,4 +152,5 @@ f5fe5280083dcbb84d213da20c3ba35d77de3584  m=3 angular envelope
 6d6c99bbde62f666db449ae47cd6b5e8aa3d74cf  regular-angle radial theorem
 a397aa8c0effc9a51389cdb4e9c37ce5cd93e4d7  product-shortcut no-go
 f944dbd3e9128bcc7757b32fbf3994da83676c3b  Green-polarization reduction
+b3b13f466916a1ecc38069691fb98d8fd5fe5fbb  radial branch and cancellation refinement
 ```
