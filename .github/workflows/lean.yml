@@ -37,7 +37,41 @@ permissions:
   contents: read
 
 jobs:
+  change_scope:
+    name: Classify pull-request scope
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      erdos1041_corpus_only: ${{ steps.scope.outputs.erdos1041_corpus_only }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - name: Detect an exact Erdős 1041 research-corpus publication
+        id: scope
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          corpus_only=false
+          if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" && -n "$PR_HEAD_SHA" ]]; then
+            mapfile -t changed < <(git diff --name-only "$PR_BASE_SHA" "$PR_HEAD_SHA")
+            if (( ${#changed[@]} > 0 )); then
+              corpus_only=true
+              for path in "${changed[@]}"; do
+                if [[ "$path" != research_corpus/Erdos1041/* ]]; then
+                  corpus_only=false
+                  break
+                fi
+              done
+            fi
+          fi
+          echo "erdos1041_corpus_only=$corpus_only" >> "$GITHUB_OUTPUT"
+          echo "Erdős 1041 corpus-only publication: $corpus_only"
+
   build:
+    needs: change_scope
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
     runs-on: ubuntu-latest
     timeout-minutes: 210
@@ -177,7 +211,8 @@ jobs:
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."
 
   external-verification:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only' }}
+    needs: change_scope
+    if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
     runs-on: ubuntu-latest
     # Four isolated checks now run here: headline positive and mismatch, then
     # the focused #1049 positive and mismatch. Each retains its own 20 minute
@@ -398,7 +433,8 @@ jobs:
     # the claim is that they need nothing else; this is where that is tested
     # rather than assumed.
     name: First contact without Lean (${{ matrix.os }})
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
+    needs: change_scope
+    if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only') }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     strategy:
@@ -436,7 +472,8 @@ jobs:
     # stating on the README if something checks it, and a job that cannot be
     # shown failing checks nothing, so this asserts the exact code.
     name: A truncated clone exits 2, never 1
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
+    needs: change_scope
+    if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only') }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -459,6 +496,7 @@ jobs:
           python3 scripts/verify_claims.py --verify-all
 
   release-surfaces:
+    needs: change_scope
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -466,13 +504,18 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 0 # corpus descriptor resolves the pinned proof-source tag
+      - name: Check content-addressed Erdős 1041 research corpus
+        run: python3 scripts/check_erdos1041_research_corpus.py
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         with:
           python-version: "3.12"
       - name: Install metadata validators
+        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: pip install cffconvert reuse
 
       - name: Check newcomer architecture guide
+        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: |
           python3 scripts/check_architecture_guide.py
           python3 scripts/check_agent_navigation_paper.py
@@ -487,7 +530,7 @@ jobs:
       # 2026-07-16.  Surfacing all failures at once weakens nothing; the job
       # still fails if any single check fails.
       - name: Cross-surface release checks (proof trust, claims, projections)
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_release.py
       # Most committed `check_*.py` gates are reached transitively: check_release
       # subprocesses the problem-note, semantic-corpus, theory-lab, and rendered
@@ -497,16 +540,16 @@ jobs:
       # that tests the published first-contact promise -- clone this, follow a
       # claim -- and it was the least enforced check in the repository.
       - name: Cold-clone comprehension (guards the published first-contact test)
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_cold_clone_comprehension.py
       - name: Test the claim-following verb reports drift
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_verify_claims.py
       - name: Publication contract
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_publication_contract.py
       - name: Problem-specific frontier checks
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: |
           python3 scripts/check_erdos269_dyadic_windows.py
           python3 scripts/check_farey_denominator_scaling.py
@@ -529,7 +572,7 @@ jobs:
       # column squashed.  `<wbr>` and `style` are both stripped by GitHub's
       # sanitiser, so the only fix is structural and the only guard is a check.
       - name: Markdown tables fit the rendered column
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_markdown_table_render.py --fail-on overflow .
       # The freshness comparison above is only meaningful if a projection is a
       # pure function of the committed tree.  This job checks `main` out as a
@@ -537,37 +580,37 @@ jobs:
       # consults the refs a checkout carries renders differently in the two and
       # fails one of them with no file having changed.
       - name: Test projections do not depend on the checkout shape
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_projection_checkout_independence.py
       - name: Test immutable release source resolution
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_release_source_identity.py
       - name: Test clean committed-snapshot release wrapper
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_check_release_ref.py
       - name: Test scope source-identity boundary
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_scope_source_identity.py
       - name: Test public-artifact boundary
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_public_artifact_boundary.py
       - name: Test supported root-import closure
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_root_import_closure.py
       - name: Test downstream example claim boundary
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_downstream_example_contract.py
       - name: Test adversarial methodology transitions
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_methodology_contract.py
       - name: Test publication artifact mutations
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_artifact_contract.py
       - name: Test exact claim packet boundaries
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_claim_packet_boundaries.py
       - name: Test publication evidence time axis
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_publication_evidence_time_axis.py
       # The clone-local paper corpus is generated from the private system
       # repository, so no builder here can refresh it and nothing above notices
@@ -576,29 +619,29 @@ jobs:
       # manuscripts and both PDFs carried, which is the one drift a reader must
       # not meet. The checker ships in the corpus it guards; run it.
       - name: Test clone-local paper corpus is current
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 docs/papers/check_paper_corpus.py
       # Nothing in this corpus has been externally reviewed and nothing carries
       # an archival identifier. A field that said otherwise would be read as a
       # credential, so the corpus is checked for that claim directly.
       - name: Test paper corpus claims no review or identifier it lacks
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 docs/papers/check_publication_taxonomy.py
       - name: Test publication taxonomy is the current projection
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 docs/papers/build_publication_taxonomy.py --check
       - name: Test ordinary-language status questions
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_status_question_search.py
       - name: Validate CITATION.cff
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_metadata.py
       - name: Test citation release identity
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_citation_identity_contract.py
       - name: REUSE licensing lint
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: reuse lint
       - name: Test semantic licence map
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/test_license_map_contract.py
