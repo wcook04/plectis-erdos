@@ -26,6 +26,7 @@ from __future__ import annotations
 import json
 import math
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 import numpy as np
@@ -34,6 +35,279 @@ VARPI = 2.6220575542921198104648395898911194136827549514316231628168
 SQRT2_VARPI = math.sqrt(2.0) * VARPI          # 3.7081445...
 
 
+def exact_seventy_one_tenths_certificate():
+    """Rational certificate for the improved lambda=2, r=3/20 constant."""
+    log2_lower = Fraction(842, 1215)
+    log2_upper = Fraction(23581, 34020)
+    sqrt_log2_lower = Fraction(104, 125)
+    sqrt_log_40_over_3_upper = Fraction(161, 100)
+    log_40_over_3_upper = 4 * log2_upper - Fraction(2, 11)
+    coefficient_upper = (
+        Fraction(60, 289) * Fraction(283, 200)
+        + Fraction(63, 50)
+        * (
+            sqrt_log_40_over_3_upper
+            + Fraction(22, 7) / sqrt_log2_lower
+        )
+    )
+    gates = {
+        "log2_lower": log2_lower > sqrt_log2_lower**2,
+        "log2_upper": log2_upper - log2_lower == Fraction(1, 6804),
+        "log_40_over_3_upper": (
+            log_40_over_3_upper < sqrt_log_40_over_3_upper**2
+        ),
+        "sqrt2_upper": Fraction(283, 200) ** 2 > 2,
+        "cuberoot2_upper": Fraction(63, 50) ** 3 > 2,
+        "coefficient_below_71_over_10": (
+            coefficient_upper < Fraction(71, 10)
+        ),
+    }
+    return {
+        "gates": gates,
+        "coefficient_upper": str(coefficient_upper),
+        "coefficient_upper_float": float(coefficient_upper),
+        "target": "71/10",
+        "pass": all(gates.values()),
+    }
+
+
+def exact_seventeen_root_low_critical_certificate():
+    """Exact certificate for Corollary 3: mu<=1/2 and first-merge k>=17."""
+    log2_upper = Fraction(23581, 34020)
+    sqrt_log2_lower = Fraction(104, 125)
+    low_upper = Fraction(1300, 7569) * Fraction(283, 200)
+    high_upper = Fraction(5, 3) + Fraction(22, 7) / sqrt_log2_lower
+    bracket_upper = low_upper + high_upper
+    gates = {
+        "log_200_over_13_below_25_over_9": (
+            4 * log2_upper < Fraction(25, 9)
+        ),
+        "sqrt2_upper": Fraction(283, 200) ** 2 > 2,
+        "bracket_square_below_34": bracket_upper**2 < 34,
+        "k_factor_closes_length_two": Fraction(2, 17) * bracket_upper**2 < 4,
+    }
+    return {
+        "gates": gates,
+        "low_upper": str(low_upper),
+        "high_upper": str(high_upper),
+        "bracket_upper": str(bracket_upper),
+        "bracket_square": str(bracket_upper**2),
+        "bracket_square_slack_below_34": str(Fraction(34) - bracket_upper**2),
+        "pass": all(gates.values()),
+    }
+
+
+def exact_twelve_root_quarter_critical_certificate():
+    """Exact certificate for mu<=1/4 and first-merge k>=12."""
+    log2_lower = Fraction(842, 1215)
+    log2_upper = Fraction(23581, 34020)
+    sqrt_log4_lower = Fraction(47, 40)
+    sqrt_log_100_over_3_upper = Fraction(15, 8)
+    low_upper = Fraction(75, 484) * Fraction(283, 200)
+    high_upper = (
+        sqrt_log_100_over_3_upper
+        + Fraction(22, 7) / sqrt_log4_lower
+    )
+    bracket_upper = low_upper + high_upper
+    gates = {
+        "log_100_over_3_bound": (
+            5 * log2_upper + Fraction(1, 24)
+            < sqrt_log_100_over_3_upper**2
+        ),
+        "sqrt_log4_lower": 2 * log2_lower > sqrt_log4_lower**2,
+        "bracket_square_below_24": bracket_upper**2 < 24,
+        "k_factor_closes_length_two": Fraction(2, 12) * bracket_upper**2 < 4,
+    }
+    return {
+        "gates": gates,
+        "bracket_upper": str(bracket_upper),
+        "bracket_square": str(bracket_upper**2),
+        "bracket_square_slack": str(Fraction(24) - bracket_upper**2),
+        "pass": all(gates.values()),
+    }
+
+
+def exact_ten_root_eighth_critical_certificate():
+    """Exact certificate for mu<=1/8 and first-merge k>=10."""
+    log2_lower = Fraction(842, 1215)
+    log2_upper = Fraction(23581, 34020)
+    sqrt_log8_lower = Fraction(36, 25)
+    sqrt_log_800_over_11_upper = Fraction(52, 25)
+    low_upper = Fraction(1100, 7921) * Fraction(283, 200)
+    high_upper = (
+        sqrt_log_800_over_11_upper
+        + Fraction(22, 7) / sqrt_log8_lower
+    )
+    bracket_upper = low_upper + high_upper
+    gates = {
+        "log_800_over_11_bound": (
+            6 * log2_upper + Fraction(3, 22)
+            < sqrt_log_800_over_11_upper**2
+        ),
+        "sqrt_log8_lower": 3 * log2_lower > sqrt_log8_lower**2,
+        "bracket_square_below_20": bracket_upper**2 < 20,
+        "k_factor_closes_length_two": Fraction(2, 10) * bracket_upper**2 < 4,
+    }
+    return {
+        "gates": gates,
+        "bracket_upper": str(bracket_upper),
+        "bracket_square": str(bracket_upper**2),
+        "bracket_square_slack": str(Fraction(20) - bracket_upper**2),
+        "pass": all(gates.values()),
+    }
+
+
+def exact_one_third_component_capacity_certificate():
+    """Exact certificate for Corollary 4: mu<=1/2 and kappa<=1/3."""
+    log2_upper = Fraction(23581, 34020)
+    sqrt_log2_lower = Fraction(104, 125)
+    sqrt_log40_upper = Fraction(97, 50)
+    low_upper = Fraction(20, 361) * Fraction(283, 200)
+    high_upper = Fraction(1, 3) * (
+        sqrt_log40_upper + Fraction(22, 7) / sqrt_log2_lower
+    )
+    coefficient_upper = low_upper + high_upper
+    gates = {
+        "log40_bound": (
+            5 * log2_upper + Fraction(1, 4) < sqrt_log40_upper**2
+        ),
+        "coefficient_below_two": coefficient_upper < 2,
+    }
+    return {
+        "gates": gates,
+        "coefficient_upper": str(coefficient_upper),
+        "coefficient_slack_below_two": str(Fraction(2) - coefficient_upper),
+        "pass": all(gates.values()),
+    }
+
+
+def exact_arity_capacity_table_certificate():
+    """Exact certificate for Corollary 5's rational kappa cutoffs."""
+    low_upper = Fraction(283, 3610)
+    high_coefficient = Fraction(52029, 9100)
+    cutoffs = {
+        2: Fraction(1, 3),
+        3: Fraction(2, 5),
+        4: Fraction(12, 25),
+        5: Fraction(1, 2),
+        6: Fraction(7, 12),
+        7: Fraction(16, 25),
+        8: Fraction(2, 3),
+        9: Fraction(7, 10),
+        10: Fraction(3, 4),
+        11: Fraction(4, 5),
+        12: Fraction(5, 6),
+        13: Fraction(7, 8),
+        14: Fraction(9, 10),
+        15: Fraction(33, 35),
+        16: Fraction(39, 40),
+    }
+    margins = {
+        str(k): str(Fraction(2 * k) - (low_upper + high_coefficient * q) ** 2)
+        for k, q in cutoffs.items()
+    }
+    gates = {
+        f"k_{k}_cutoff": (low_upper + high_coefficient * q) ** 2 < 2 * k
+        for k, q in cutoffs.items()
+    }
+    gates["cutoffs_strictly_increase"] = all(
+        cutoffs[k] < cutoffs[k + 1] for k in range(2, 16)
+    )
+    nested = {
+        "quarter": {
+            "A": Fraction(849, 3872),
+            "B": Fraction(11975, 2632),
+            "cutoffs": {
+                2: Fraction(19, 50), 3: Fraction(12, 25),
+                4: Fraction(4, 7), 5: Fraction(16, 25),
+                6: Fraction(7, 10), 7: Fraction(3, 4),
+                8: Fraction(4, 5), 9: Fraction(7, 8),
+                10: Fraction(14, 15), 11: Fraction(49, 50),
+            },
+        },
+        "eighth": {
+            "A": Fraction(3113, 15842),
+            "B": Fraction(13427, 3150),
+            "cutoffs": {
+                2: Fraction(2, 5), 3: Fraction(1, 2),
+                4: Fraction(3, 5), 5: Fraction(2, 3),
+                6: Fraction(3, 4), 7: Fraction(4, 5),
+                8: Fraction(8, 9), 9: Fraction(18, 19),
+            },
+        },
+    }
+    nested_margins = {}
+    for name, row in nested.items():
+        nested_margins[name] = {}
+        for k, q in row["cutoffs"].items():
+            margin = Fraction(2 * k) - (row["A"] + row["B"] * q) ** 2
+            gates[f"{name}_k_{k}_cutoff"] = margin > 0
+            nested_margins[name][str(k)] = str(margin)
+    return {
+        "gates": gates,
+        "cutoffs": {str(k): str(q) for k, q in cutoffs.items()},
+        "squared_margins": margins,
+        "nested_cutoffs": {
+            name: {str(k): str(q) for k, q in row["cutoffs"].items()}
+            for name, row in nested.items()
+        },
+        "nested_squared_margins": nested_margins,
+        "pass": all(gates.values()),
+    }
+
+
+def exact_sixty_fourth_critical_capacity_certificate():
+    """Sharpened exact lambda=64 lattice for the deep low-critical residual."""
+    log2_lower = Fraction(842, 1215)
+    log2_upper = Fraction(23581, 34020)
+    log3_lower = Fraction(13, 12)
+    sqrt_log_2048_over_3_upper = Fraction(64, 25)
+    sqrt_log64_lower = Fraction(203, 100)
+    low_upper = Fraction(3, 32) / Fraction(29, 32) ** 2 * Fraction(283, 200)
+    high_coefficient = (
+        sqrt_log_2048_over_3_upper
+        + Fraction(22, 7) / sqrt_log64_lower
+    )
+    cutoffs = {
+        2: Fraction(4, 9),
+        3: Fraction(5, 9),
+        4: Fraction(16, 25),
+        5: Fraction(8, 11),
+        6: Fraction(4, 5),
+        7: Fraction(13, 15),
+        8: Fraction(13, 14),
+        9: Fraction(99, 100),
+    }
+    gates = {
+        "log3_lower_from_three_positive_atanh_terms": (
+            Fraction(1) + Fraction(1, 12) + Fraction(1, 80) > log3_lower
+        ),
+        "log_2048_over_3_upper": (
+            11 * log2_upper - log3_lower
+            < sqrt_log_2048_over_3_upper**2
+        ),
+        "log64_lower_sharpened": 6 * log2_lower > sqrt_log64_lower**2,
+    }
+    margins = {}
+    for k, q in cutoffs.items():
+        margin = Fraction(2 * k) - (low_upper + high_coefficient * q) ** 2
+        gates[f"k_{k}_cutoff"] = margin > 0
+        margins[str(k)] = str(margin)
+    gates["k_10_closes_without_capacity_defect"] = (
+        low_upper + high_coefficient
+    ) ** 2 < 20
+    gates["cutoffs_strictly_increase"] = all(
+        cutoffs[k] < cutoffs[k + 1] for k in range(2, 9)
+    )
+    return {
+        "parameters": {"lambda": 64, "r": "3/32"},
+        "A": str(low_upper),
+        "B": str(high_coefficient),
+        "cutoffs": {str(k): str(q) for k, q in cutoffs.items()},
+        "squared_margins": margins,
+        "gates": gates,
+        "pass": all(gates.values()),
+    }
 # --------------------------------------------------------------------------
 # configuration
 # --------------------------------------------------------------------------
@@ -326,19 +600,40 @@ def main(trials=90, seed=20260824, lam=2.0):
         rows.append(row)
 
     tr = arm_tracer()
-    C8 = 8.0
+    C = 7.1
+    exact_constant = exact_seventy_one_tenths_certificate()
+    exact_high_arity = exact_seventeen_root_low_critical_certificate()
+    exact_quarter_arity = exact_twelve_root_quarter_critical_certificate()
+    exact_eighth_arity = exact_ten_root_eighth_critical_certificate()
+    exact_component_capacity = exact_one_third_component_capacity_certificate()
+    exact_arity_capacity = exact_arity_capacity_table_certificate()
+    exact_sixty_fourth_capacity = exact_sixty_fourth_critical_capacity_certificate()
     gates = {
         'tracer_bernoulli': tr['perimeter_err'] < 1e-5,
         'tracer_branch_pair': abs(tr['branch_pair_over_2rho'] - 1.0) < 1e-6,
         'lemma1_cauchy_schwarz_le_1': worst['cs'] <= 1.0,
         'gronwall_area_le_1': worst['area'] <= 1.0,
-        'theorem1_path_le_8rho': worst['path'] <= C8,
+        'theorem1_path_le_71_over_10_rho': worst['path'] <= C,
+        'theorem1_exact_constant_certificate': exact_constant['pass'],
+        'corollary3_exact_high_arity_certificate': exact_high_arity['pass'],
+        'corollary3_exact_quarter_arity_certificate': exact_quarter_arity['pass'],
+        'corollary3_exact_eighth_arity_certificate': exact_eighth_arity['pass'],
+        'corollary4_exact_component_capacity_certificate': exact_component_capacity['pass'],
+        'corollary5_exact_arity_capacity_table_certificate': exact_arity_capacity['pass'],
+        'corollary6_exact_sixty_fourth_critical_capacity_certificate': exact_sixty_fourth_capacity['pass'],
         'conjectureP_le_sqrt2_varpi': worst['conjP'] <= 1.0 + 1e-6,
     }
     verdict = 'pass' if all(gates.values()) else 'FAIL'
     out = dict(verdict=verdict, gates=gates, worst=worst, tracer=tr,
                rows_scored=len(rows), rows_excluded=len(excluded),
-               exclusions=excluded[:20], lam=lam, constant=C8,
+               exclusions=excluded[:20], lam=lam, constant=C,
+               exact_constant_certificate=exact_constant,
+               exact_high_arity_certificate=exact_high_arity,
+               exact_quarter_arity_certificate=exact_quarter_arity,
+               exact_eighth_arity_certificate=exact_eighth_arity,
+               exact_component_capacity_certificate=exact_component_capacity,
+               exact_arity_capacity_table_certificate=exact_arity_capacity,
+               exact_sixty_fourth_critical_capacity_certificate=exact_sixty_fourth_capacity,
                sqrt2_varpi=SQRT2_VARPI)
     print(json.dumps(out, indent=1, default=float))
     receipt = Path('state/formal_math/erdos257_period_noncollapse/'

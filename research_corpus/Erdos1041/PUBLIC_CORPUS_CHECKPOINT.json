@@ -2,14 +2,14 @@
   "schema": "plectis_public_problem_corpus_checkpoint_v1",
   "problem_id": "erdos_1041",
   "source_repository": "ai_workflow/formal_math/erdos257_period_noncollapse",
-  "source_commit": "a6e3ba8d74e094daeb36d7b6faadf3fa2beddc41",
+  "source_commit": "7f2f99c17885e17e23017e4c86d7c034842b107d",
   "source_subtree": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041",
-  "source_subtree_tree": "06a4f5914d2bcfc174d995312fae49f2ed937409",
-  "exported_source_file_count": 638,
+  "source_subtree_tree": "dfa4689b5e15f01c11eccef427ead747a392bb01",
+  "exported_source_file_count": 670,
   "publication_scope": "committed problem-facing Lean, mathematical notes, receipts, and executable checkers",
   "status": "source_current_problem_snapshot",
   "corpus_manifest_path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-  "corpus_manifest_sha256": "f56f1e173bae0ce6d5dcb896563248c42ef1bd1d7fd7611d463d09da69d001e1",
+  "corpus_manifest_sha256": "d508bf6b0a3803ce31411214f3103dd0d449519e21203739cb3fb47a85a7c926",
   "strongest_result_map_path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
-  "strongest_result_map_sha256": "1e4f8a4429f85993cf9e92c60720c0c16fcdc55ce8fbf0e9707d74229f71e918"
+  "strongest_result_map_sha256": "6dfd09ba508056c21ec8c7cc931889706e8f4751842323d43553783424db886a"
 }

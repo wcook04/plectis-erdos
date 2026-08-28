@@ -76,10 +76,23 @@ def main() -> None:
         fixed_obstruction
     )
 
+    # Net-margin compensation.  A strict whole-block margin Delta is spent
+    # against fixed-sheet slack S_F before any loss reaches the moved block.
+    fixed_net = (Fraction(3, 2),)
+    fixed_slack = threshold * len(fixed_net) - sum(fixed_net, Fraction(0))
+    whole_margin = Fraction(3, 4)
+    moved_net = (Fraction(15, 8), Fraction(15, 8))
+    assert sum(moved_net + fixed_net, Fraction(0)) == (
+        threshold * len(moved_net + fixed_net) - whole_margin
+    )
+    moved_ceiling = threshold + (fixed_slack - whole_margin) / len(moved_net)
+    assert min(moved_net) == moved_ceiling < threshold
+
     print("FIXED-BLOCK QUADRATIC BUDGET EQUIVALENCE: PASS")
     print("cauchy_gap", lifetime * energy - length * length)
     print("regularized_final_gap", errors[-1])
     print("fixed_point_compensation_obstruction", obstruction)
+    print("net_margin_strict_moved_ceiling", moved_ceiling)
 
 
 if __name__ == "__main__":

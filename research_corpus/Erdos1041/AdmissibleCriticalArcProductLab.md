@@ -418,6 +418,209 @@ examples: a very short edge contributes a large negative `log x_c` but only a
 bounded linear charge `1-x_c`. The nonlinear log gain, organized by the
 critical-value filtration, is essential.
 
+## Scale-weighted arithmetic charge bridge
+
+There is a distinct aggregate bridge which retains the inverse critical scale
+before applying AM--GM. Put
+
+```text
+s_c = |f(c)|^(1/n),        q(c)=L(c)/(2s_c),       m=|A|.
+```
+
+The arithmetic condition
+
+```text
+(1/m) sum_(c in A) q(c) <= 1                         (AQ)
+```
+
+implies `(AP)` exactly by AM--GM. Unlike the false factorwise assertion,
+`(AQ)` still permits individual factors above one and asks only that their
+overspend be repaid inside the admissible set.
+
+It also has an exact combined-charge form. With circumradius `R` and the
+source-current identity
+
+```text
+2R-L(c)=D_c+K_c,
+```
+
+condition `(AQ)` is equivalent to
+
+```text
+sum_(c in A) (D_c+K_c)/(2s_c)
+  >= sum_(c in A) (R/s_c-1).                         (WSC)
+```
+
+Thus `(WSC)` is a scale-weighted strengthening of the parent-deciding product
+route. It differs from the numerically false linearized bridge `(SC)`: the
+charge of a low-scale edge is amplified by `1/s_c`, so a genuinely short edge
+can repay a neighbouring overspend before the logarithm is discarded.
+
+A bounded probe over the existing 270 adversarial configurations found no
+`(AQ)` violation; the largest coarse arithmetic mean was `0.992241165746` on
+the controlled near-regular cubic shell. The independent fixed-seed 800-row
+merge-subtree stress sweep also found no violation; its largest arithmetic
+mean was `0.999478637196`, again on a near-regular cubic. This is
+floating-point candidate evidence only, but it survives the first two
+falsifier gates and is now a live proof target. The equality family
+`z^n-r^n` has `s_c=R`, `L(c)=2R`, and attains equality after resolving the
+central multiplicity.
+
+## Componentwise weighted charge refinement
+
+The scale-weighted bridge has a topology-aligned strengthening.  Let `C` run
+over the nontrivial connected components of the level-one sublevel set, and
+let `A_C` be the critical edges in the corresponding maximal admissible merge
+subtree.  Put `m_C=|A_C|`.  The componentwise arithmetic assertion is
+
+```text
+(1/m_C) sum_(c in A_C) L(c)/(2s_c) <= 1             (CAQ)
+```
+
+for every `C`.  Since the sets `A_C` partition `A`, multiplying `(CAQ)` by
+`m_C` and summing proves `(AQ)`.  Thus `(CAQ)` is target-deciding.  Using the
+same identity `2R-L(c)=D_c+K_c`, it is exactly equivalent component by
+component to
+
+```text
+sum_(c in A_C) (D_c+K_c)/(2s_c)
+  >= sum_(c in A_C) (R/s_c-1).                      (CWSC)
+```
+
+This is the scale-weighted analogue of the surviving componentwise combined
+charge in `CriticalTreeLengthCharge.md`.  It removes cross-component
+compensation while retaining the external roots through the global
+circumradius `R`; consequently it is naturally expressed through the proper
+map from one level-one component to the disk and its finite-Blaschke critical
+tree.
+
+The deterministic 270-row corpus contains 273 maximal admissible components.
+No component violates `(CAQ)` numerically; the largest sampled component mean
+is `0.995680941647`.  The independent 800-row stress corpus contains 801 such
+components, again with no violation, and its largest mean is
+`0.999478637196` on the near-regular cubic equality shell.  These are
+floating-point continuation results, not a proof of `(CAQ)` or `(CWSC)`.
+
+The same replay kills a simpler repayment rule.  Sort admissible edges by
+critical scale and demand that every factor above one be paired with the next
+higher-scale factor with pair mean at most one.  This rule fails on 89 of the
+base-corpus overspends and 62 stress-corpus overspends; the largest recorded
+failure statistics are respectively `1.103336645862` and `1.091323005424`.
+Some overspending edges are terminal in that scalar order, while others have
+an adjacent pair mean above one.  Therefore the cancellation cannot be proved
+by a one-dimensional nearest-scale matching.  The component subtree, not the
+next scalar level, is the smallest surviving repayment object.
+
+## Cut-scaled rooted-subtree potential
+
+There is now a recursive strengthening of `(CAQ)` which survives the known
+singleton-prefix falsifier. For an admissible merge node `v`, let
+
+```text
+beta_v = its critical modulus,
+b_v    = the next admissible ancestor modulus, or the level-one cut,
+T_v    = v together with all admissible internal descendants,
+N_v    = |T_v| = k_v-1.
+```
+
+Retain the direct factors `q(u)=L(u)/(2 beta_u^(1/n))` and define
+
+```text
+Phi_v = b_v^(1/n) / N_v * sum_(u in T_v) q(u).          (CSTA)
+```
+
+The cut-scaled rooted-subtree assertion is `Phi_v<=1` for every admissible
+`v`. It is target-deciding: at a maximal level-one component `b_v=1` and
+`T_v=A_C`, so `(CSTA)` is exactly `(CAQ)`. At a cherry, `N_v=1` and
+
+```text
+Phi_v = (L(v)/2) (b_v/beta_v)^(1/n) = h_v,
+```
+
+so its base case is exactly the existing cherry merge factor rather than the
+false unscaled singleton assertion `q(v)<=1`.
+
+The potential has an exact debt recurrence. Put
+
+```text
+delta_v = N_v(1-Phi_v),
+x_v     = (beta_v/b_v)^(1/n),
+G_v     = L(v)/2 + N_v-1 - N_v x_v,
+```
+
+and let `v_i` be the internal children of `v`. Since each child subtree has
+cut level `beta_v`, direct substitution gives
+
+```text
+delta_v = x_v^(-1) (sum_i delta_(v_i) - G_v).          (CSTR)
+```
+
+Thus the step at `v` is no longer the false requirement that the parent edge
+pay for itself. Its exact obligation is that accumulated child slack pays the
+grafting debt `G_v`. For a cherry the child sum is zero, and `(CSTR)` reduces
+to `L(v)/2<=x_v`, again `h_v<=1`. This is an ordinary exact algebraic
+reduction; proving the nonnegativity of all `delta_v` remains open.
+
+The graft debt itself has a sharper exact positive-part decomposition.  Write
+
+```text
+C_v = x_v^N_v - N_v x_v + N_v-1,
+O_v = max(0, L(v)/2 - x_v^N_v)
+    = x_v^N_v max(0,h_v-1).
+```
+
+Then
+
+```text
+C_v = (1-x_v)^2 sum_(j=0)^(N_v-2) (N_v-1-j)x_v^j >= 0,       (CVX)
+G_v = C_v + L(v)/2-x_v^N_v <= C_v+O_v.                       (PGL0)
+```
+
+The sum is empty when `N_v=1`.  The first identity follows by expanding the
+finite geometric derivative, and the second is direct substitution.  Hence
+the following positive graft-liability split is a sufficient recursive step:
+
+```text
+sum_i delta_(v_i) >= C_v+O_v.                                (PGLS)
+```
+
+Unlike `G_v`, both terms on the right are nonnegative and geometrically
+distinct.  `C_v` is the quadratic convexity cost of changing cut scale, while
+`O_v` is precisely the positive overspend of the multiplicative node factor
+`h_v`.  At a cherry `(PGLS)` is again exactly `h_v<=1`.  This is a strictly
+stronger candidate than the needed graft inequality when `L(v)/2<x_v^N_v`;
+it remains unproved.
+
+The unscaled subtree mean is false on the pinned near-tie quartic: its
+singleton subtree has mean `1.003293169915`. Multiplying by the exact cut
+scale removes that false strengthening. The base corpus has zero `(CSTA)`
+violations across 1,252 complete rooted subtrees, with largest value
+`0.995680941647`. It contains 308 nodes with positive grafting debt, and in
+every sampled case the measured child slack pays that debt. The recurrence
+replays to absolute error at most `1.998e-15`. The independent stress corpus
+has zero violations across 4,288 rooted subtrees and largest value
+`0.999478637196`; all 1,025 positive graft debts are paid by measured child
+slack, with recurrence error at most `3.553e-15`. These are deterministic
+floating-point continuation results, not a proof of `(CSTA)`, `(CAQ)`,
+`(CWSC)`, or the parent theorem.
+
+The same two corpora now test `(PGLS)` directly.  The base corpus has zero
+violations; among nodes with positive child slack the largest measured ratio
+`(C_v+O_v)/sum_i delta_(v_i)` is `0.857114446951`.  The independent stress
+corpus also has zero violations and largest ratio `0.960626426260`.  Child
+slack separately dominates `C_v` and `O_v` on every sampled node, but this
+does not come from a fixed equal allocation: the half-slack bounds fail on
+32/0 base nodes and 96/4 stress nodes for `C_v`/`O_v`, respectively.  Thus a
+proof must use a scale- or topology-dependent allocation; a universal 50--50
+split is numerically false.  These are again deterministic floating-point
+candidate/falsifier results, not proof authority for `(PGLS)`.
+
+This changes the analytic target. A tree induction should seek lower bounds
+for the actual `delta_v` currency and prove `sum_i delta_(v_i)>=G_v`; it should
+preferably prove the positive split `(PGLS)`, and should not attempt scalar
+nearest-scale pairing, unscaled subtree prefixes, a fixed half-slack
+allocation, or the factorwise bound `q(v)<=1`.
+
 ## Inadmissible-compensation probe
 
 The exact firewall also records the conditional route

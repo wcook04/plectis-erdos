@@ -114,4 +114,17 @@ theorem exists_nonpositive_critical_value
   exact weightedCriticalValue_sum_eq_zero Finset.univ n M A c
     (by simpa using hpower)
 
+/-- If the weighted trace has a nonzero real-part contribution, the tied face
+has a strictly negative-real critical value. -/
+theorem exists_negative_critical_value_of_some_real_part
+    {ι : Type*} [Fintype ι]
+    (n : ℕ) (M : Finset ℕ) (A : ℕ → ℂ) (c : ι → ℂ)
+    (hpower : ∀ m ∈ M, ∑ i, c i ^ m = 0)
+    (hreal : ∃ i, (weightedCriticalValue n M A (c i)).re ≠ 0) :
+    ∃ i, (weightedCriticalValue n M A (c i)).re < 0 := by
+  refine exists_re_neg_of_sum_eq_zero_of_some_re_ne_zero
+    (fun i => weightedCriticalValue n M A (c i)) ?_ hreal
+  exact weightedCriticalValue_sum_eq_zero Finset.univ n M A c
+    (by simpa using hpower)
+
 end ErdosProblems.Erdos1041.TiedNewtonFaceCriticalTrace

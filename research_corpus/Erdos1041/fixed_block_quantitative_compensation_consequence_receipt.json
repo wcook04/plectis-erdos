@@ -1,0 +1,79 @@
+{
+  "schema": "formal_math_consequence_receipt_v1",
+  "problem_id": "erdos_1041",
+  "delta_class": "statement_strengthened",
+  "progress_anchor": {
+    "ordinary_authority_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md",
+    "formal_kernel_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockCompensation.lean",
+    "declaration": "ErdosProblems.Erdos1041.moved_sum_le_baseline_add_fixed_slack",
+    "exact_delta": "If M and F are the moved and fixed sheets and sum_B L <= C(|M|+|F|)-Delta, then sum_M L <= C|M|+S_F-Delta and min_M L <= C+(S_F-Delta)/|M|, where S_F=C|F|-sum_F L. Thus Delta>S_F is the exact strict-shortening interface. The three-sheet transposition at Delta=0 attains equality.",
+    "strongest_verified_authority": "ordinary_exact_mathematics_plus_exact_rational_replay",
+    "lean_authority": "pending_low_disk_exit_75_not_proof_evidence"
+  },
+  "decisions": [
+    {
+      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md",
+      "decision": "update_now",
+      "mathematical_reason": "The fixed-average-at-least-C criterion is only the zero-slack specialization; the exact quantitative theorem identifies the weaker canonical residual S_F/|M|.",
+      "validation_or_reentry": "Exact rational owner checker passed. Re-enter Lean validation when the build firewall reports at least 25 GiB free and no project owner."
+    },
+    {
+      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+      "decision": "update_now",
+      "mathematical_reason": "The open monodromy producer must consume the occupied allocation theorem and launch at the strict-margin-versus-fixed-slack comparison or a direct moved-block bound.",
+      "validation_or_reentry": "JSON parse passed; frontier and packet validators must bind the updated digest."
+    },
+    {
+      "surface": "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27",
+      "decision": "update_now",
+      "mathematical_reason": "All ten unsent packets must receive the stronger premise and forbid reproof of the variational identity, moved-sheet selector, and zero-slack specialization.",
+      "validation_or_reentry": "Regenerate revision 14, run ten-packet attention integrity, rebuild the local folders, and run the fleet validator."
+    },
+    {
+      "surface": "formal_math/erdos257_period_noncollapse/ErdosProblems/Root.lean",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "The new formal kernel must not enter the root authority surface before focused elaboration succeeds.",
+      "validation_or_reentry": "Remove or keep the import uncommitted until lean_fast_build.py validates ErdosProblems.Erdos1041.FixedBlockCompensation after the low-disk guard clears."
+    },
+    {
+      "surface": "public Erdős 1041 corpus and immutable reachback",
+      "decision": "defer_with_reason",
+      "mathematical_reason": "The ordinary theorem is packet-local newer evidence; public promotion cannot precede focused Lean validation and a separately authorized publication transition.",
+      "validation_or_reentry": "Re-enter after Lean validation and a clean scoped source commit; publication remains a distinct owner action."
+    },
+    {
+      "surface": "unrestricted Erdős 1041 parent claim",
+      "decision": "verified_no_change",
+      "mathematical_reason": "The new theorem weakens the monodromy allocation hypothesis but does not prove that any source-current strict geometric margin pays S_F/|M|.",
+      "validation_or_reentry": "Parent remains open; re-enter on a proved margin comparison, direct moved-block average, or complete alternate route."
+    },
+    {
+      "surface": "cross-problem consequence candidates produced by generic path and schema symbols",
+      "decision": "outside_scope",
+      "mathematical_reason": "Matches on erdos257_period_noncollapse, source_path, proof_command, and other structural vocabulary are navigation noise, not mathematical implications.",
+      "validation_or_reentry": "No re-entry unless an exact theorem, mechanism, or owner reference creates a real cross-problem edge."
+    }
+  ],
+  "source_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockCompensation.lean",
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md"
+  ],
+  "propagated_surface_files": [
+    "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/research_packet.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/source_current_registry.manifest.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/build_fleet.py",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_01_cluster_direct_selection.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_02_cluster_level_coarea.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_03_cluster_blaschke_trace.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_04_cluster_bergman_dichotomy.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_05_cluster_merge_tree.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_06_cluster_near_fekete_transfer.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_07_cluster_charge_trace.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_08_unrestricted_solution_siege.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_09_componentwise_radial_contour.json",
+    "docs/formal_math/type_b_packets/erdos1041_coevolution_solution_octuple_2026_08_27/manifest_10_genuine_higher_tangent_splice.json"
+  ],
+  "checkpoint_class": "checkpoint_rotate",
+  "next_direct_target": "For a target-sufficient monodromy loop, prove a source-current strict whole-fibre margin Delta and fixed-sheet estimate with Delta>S_F, or prove the moved-block average directly. The existing near-Fekete and partial-cluster sources do not yet supply this comparison.",
+  "claim_ceiling": "Unrestricted Erdős 1041 remains open."
+}

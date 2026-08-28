@@ -40,6 +40,7 @@ SINGLETON = _load_singleton_lab()
 @dataclass(frozen=True)
 class AdmissibleDiagnostics:
     product_ratio: float
+    arithmetic_mean_factor: float
     max_factor: float
     count: int
     min_factor: float
@@ -210,6 +211,7 @@ def admissible_diagnostics(
         next_scale_gap = float("nan")
     return AdmissibleDiagnostics(
         product_ratio=math.exp(sum(logarithms)),
+        arithmetic_mean_factor=sum(normalized_factors) / len(normalized_factors),
         max_factor=max(normalized_factors),
         count=len(logarithms),
         min_factor=min(normalized_factors),
@@ -354,7 +356,9 @@ def merge_subtree_block_diagnostics(roots: np.ndarray) -> dict[str, float | int]
         created.append(node)
 
     node_factors: dict[int, float] = {}
+    direct_factor_by_node: dict[int, float] = {}
     parent_levels: dict[int, float] = {}
+    direct_factors: list[float] = []
     direct_product = 1.0
     for node in created:
         birth = float(nodes[node]["birth"])
@@ -371,7 +375,150 @@ def merge_subtree_block_diagnostics(roots: np.ndarray) -> dict[str, float | int]
         node_factors[node] = (length / 2.0) / (
             (birth / parent_level) ** ((size - 1.0) / degree)
         )
-        direct_product *= (length / 2.0) / (birth ** (1.0 / degree))
+        direct_factor = (length / 2.0) / (birth ** (1.0 / degree))
+        direct_factor_by_node[node] = direct_factor
+        direct_factors.append(direct_factor)
+        direct_product *= direct_factor
+
+    maximal_admissible_nodes = [
+        node
+        for node in direct_factor_by_node
+        if nodes[node]["parent"] is None
+        or int(nodes[node]["parent"]) not in direct_factor_by_node
+    ]
+    component_arithmetic_means: list[float] = []
+    for root in maximal_admissible_nodes:
+        stack = [root]
+        component_factors: list[float] = []
+        while stack:
+            node = stack.pop()
+            if node not in direct_factor_by_node:
+                continue
+            component_factors.append(direct_factor_by_node[node])
+            stack.extend(int(child) for child in nodes[node]["children"])
+        component_arithmetic_means.append(
+            sum(component_factors) / len(component_factors)
+        )
+
+    # Test the topology-first induction strengthening of CAQ: every complete
+    # admissible rooted merge subtree, not only each maximal level-one
+    # component, has arithmetic mean of the direct q-factors at most one.
+    # This is deliberately independent of the multiplicative ``h_v`` subtree
+    # probe below.  A failure identifies the exact point where any naive
+    # bottom-up arithmetic induction must carry debt through an ancestor.
+    subtree_arithmetic_means: dict[int, float] = {}
+    subtree_arithmetic_sizes: dict[int, int] = {}
+    for node in created:
+        if node not in direct_factor_by_node:
+            continue
+        factor_sum = direct_factor_by_node[node]
+        factor_count = 1
+        for child in nodes[node]["children"]:
+            child_index = int(child)
+            if child_index in subtree_arithmetic_means:
+                factor_sum += (
+                    subtree_arithmetic_means[child_index]
+                    * subtree_arithmetic_sizes[child_index]
+                )
+                factor_count += subtree_arithmetic_sizes[child_index]
+        subtree_arithmetic_means[node] = factor_sum / factor_count
+        subtree_arithmetic_sizes[node] = factor_count
+
+    largest_subtree_arithmetic_node = max(
+        subtree_arithmetic_means,
+        key=subtree_arithmetic_means.__getitem__,
+        default=None,
+    )
+    cut_scaled_subtree_arithmetic_means = {
+        node: parent_levels[node] ** (1.0 / degree) * mean
+        for node, mean in subtree_arithmetic_means.items()
+    }
+    largest_cut_scaled_subtree_arithmetic_node = max(
+        cut_scaled_subtree_arithmetic_means,
+        key=cut_scaled_subtree_arithmetic_means.__getitem__,
+        default=None,
+    )
+    cut_scaled_subtree_slacks = {
+        node: subtree_arithmetic_sizes[node]
+        * (1.0 - cut_scaled_subtree_arithmetic_means[node])
+        for node in cut_scaled_subtree_arithmetic_means
+    }
+    graft_debts: dict[int, float] = {}
+    graft_recurrence_errors: list[float] = []
+    child_slack_minus_graft_debt: dict[int, float] = {}
+    child_slack_minus_convexity_gap: dict[int, float] = {}
+    child_slack_minus_local_overspend: dict[int, float] = {}
+    half_child_slack_minus_convexity_gap: dict[int, float] = {}
+    half_child_slack_minus_local_overspend: dict[int, float] = {}
+    child_slack_minus_positive_liabilities: dict[int, float] = {}
+    convexity_slack_ratios: list[float] = []
+    overspend_slack_ratios: list[float] = []
+    combined_liability_slack_ratios: list[float] = []
+    for node in cut_scaled_subtree_arithmetic_means:
+        birth = float(nodes[node]["birth"])
+        parent_level = parent_levels[node]
+        node_count = subtree_arithmetic_sizes[node]
+        scale_ratio = (birth / parent_level) ** (1.0 / degree)
+        graft_debt = (
+            float(nodes[node]["length"]) / 2.0
+            + node_count
+            - 1.0
+            - node_count * scale_ratio
+        )
+        convexity_gap = scale_ratio**node_count - (
+            node_count * scale_ratio - node_count + 1.0
+        )
+        local_overspend = max(
+            0.0,
+            float(nodes[node]["length"]) / 2.0 - scale_ratio**node_count,
+        )
+        child_slack = sum(
+            cut_scaled_subtree_slacks[int(child)]
+            for child in nodes[node]["children"]
+            if int(child) in cut_scaled_subtree_slacks
+        )
+        alpha = 1.0 / scale_ratio
+        graft_debts[node] = graft_debt
+        child_slack_minus_graft_debt[node] = child_slack - graft_debt
+        child_slack_minus_convexity_gap[node] = child_slack - convexity_gap
+        child_slack_minus_local_overspend[node] = child_slack - local_overspend
+        half_child_slack_minus_convexity_gap[node] = (
+            0.5 * child_slack - convexity_gap
+        )
+        half_child_slack_minus_local_overspend[node] = (
+            0.5 * child_slack - local_overspend
+        )
+        child_slack_minus_positive_liabilities[node] = (
+            child_slack - convexity_gap - local_overspend
+        )
+        if child_slack > 1.0e-12:
+            convexity_slack_ratios.append(convexity_gap / child_slack)
+            overspend_slack_ratios.append(local_overspend / child_slack)
+            combined_liability_slack_ratios.append(
+                (convexity_gap + local_overspend) / child_slack
+            )
+        graft_recurrence_errors.append(
+            abs(
+                cut_scaled_subtree_slacks[node]
+                - alpha * (child_slack - graft_debt)
+            )
+        )
+
+    ordered_direct_nodes = sorted(
+        direct_factor_by_node, key=lambda node: float(nodes[node]["birth"])
+    )
+    adjacent_repayment_failures: list[float] = []
+    for index, node in enumerate(ordered_direct_nodes):
+        factor = direct_factor_by_node[node]
+        if factor <= 1.0 + 1.0e-8:
+            continue
+        if index + 1 == len(ordered_direct_nodes):
+            adjacent_repayment_failures.append(factor)
+            continue
+        next_factor = direct_factor_by_node[ordered_direct_nodes[index + 1]]
+        pair_mean = (factor + next_factor) / 2.0
+        if pair_mean > 1.0 + 1.0e-8:
+            adjacent_repayment_failures.append(pair_mean)
 
     subtree_products: dict[int, float] = {}
     for node in created:
@@ -534,6 +681,102 @@ def merge_subtree_block_diagnostics(roots: np.ndarray) -> dict[str, float | int]
         "largest_subtree_product": max(subtree_products.values(), default=0.0),
         "full_block_product": block_product,
         "direct_product": direct_product,
+        "arithmetic_mean_direct_factor": sum(direct_factors) / len(direct_factors),
+        "admissible_component_count": len(component_arithmetic_means),
+        "component_arithmetic_mean_violation_count": sum(
+            value > 1.0 + 1.0e-8 for value in component_arithmetic_means
+        ),
+        "largest_component_arithmetic_mean": max(
+            component_arithmetic_means, default=0.0
+        ),
+        "subtree_arithmetic_mean_violation_count": sum(
+            value > 1.0 + 1.0e-8 for value in subtree_arithmetic_means.values()
+        ),
+        "largest_subtree_arithmetic_mean": max(
+            subtree_arithmetic_means.values(), default=0.0
+        ),
+        "largest_subtree_arithmetic_mean_size": (
+            subtree_arithmetic_sizes[largest_subtree_arithmetic_node]
+            if largest_subtree_arithmetic_node is not None
+            else 0
+        ),
+        "cut_scaled_subtree_arithmetic_mean_violation_count": sum(
+            value > 1.0 + 1.0e-8
+            for value in cut_scaled_subtree_arithmetic_means.values()
+        ),
+        "largest_cut_scaled_subtree_arithmetic_mean": max(
+            cut_scaled_subtree_arithmetic_means.values(), default=0.0
+        ),
+        "largest_cut_scaled_subtree_arithmetic_mean_size": (
+            subtree_arithmetic_sizes[largest_cut_scaled_subtree_arithmetic_node]
+            if largest_cut_scaled_subtree_arithmetic_node is not None
+            else 0
+        ),
+        "positive_graft_debt_count": sum(
+            debt > 1.0e-10 for debt in graft_debts.values()
+        ),
+        "positive_graft_debt_paid_count": sum(
+            graft_debts[node] > 1.0e-10
+            and child_slack_minus_graft_debt[node] >= -1.0e-8
+            for node in graft_debts
+        ),
+        "largest_graft_debt": max(graft_debts.values(), default=0.0),
+        "smallest_child_slack_minus_graft_debt": min(
+            child_slack_minus_graft_debt.values(), default=0.0
+        ),
+        "convexity_gap_violation_count": sum(
+            margin < -1.0e-8
+            for margin in child_slack_minus_convexity_gap.values()
+        ),
+        "local_overspend_violation_count": sum(
+            margin < -1.0e-8
+            for margin in child_slack_minus_local_overspend.values()
+        ),
+        "half_slack_convexity_violation_count": sum(
+            margin < -1.0e-8
+            for margin in half_child_slack_minus_convexity_gap.values()
+        ),
+        "half_slack_local_overspend_violation_count": sum(
+            margin < -1.0e-8
+            for margin in half_child_slack_minus_local_overspend.values()
+        ),
+        "positive_liability_split_violation_count": sum(
+            margin < -1.0e-8
+            for margin in child_slack_minus_positive_liabilities.values()
+        ),
+        "smallest_child_slack_minus_convexity_gap": min(
+            child_slack_minus_convexity_gap.values(), default=0.0
+        ),
+        "smallest_child_slack_minus_local_overspend": min(
+            child_slack_minus_local_overspend.values(), default=0.0
+        ),
+        "smallest_half_slack_minus_convexity_gap": min(
+            half_child_slack_minus_convexity_gap.values(), default=0.0
+        ),
+        "smallest_half_slack_minus_local_overspend": min(
+            half_child_slack_minus_local_overspend.values(), default=0.0
+        ),
+        "smallest_child_slack_minus_positive_liabilities": min(
+            child_slack_minus_positive_liabilities.values(), default=0.0
+        ),
+        "largest_convexity_slack_ratio": max(
+            convexity_slack_ratios, default=0.0
+        ),
+        "largest_overspend_slack_ratio": max(
+            overspend_slack_ratios, default=0.0
+        ),
+        "largest_combined_liability_slack_ratio": max(
+            combined_liability_slack_ratios, default=0.0
+        ),
+        "graft_slack_recurrence_max_abs_error": max(
+            graft_recurrence_errors, default=0.0
+        ),
+        "adjacent_scale_repayment_failure_count": len(
+            adjacent_repayment_failures
+        ),
+        "largest_adjacent_scale_repayment_failure": max(
+            adjacent_repayment_failures, default=0.0
+        ),
         "identity_relative_error": identity_relative_error,
     }
 
@@ -542,7 +785,7 @@ def run_deterministic_subtree_stress() -> None:
     """Run a wider fixed-seed falsifier search for the rooted-subtree bound."""
 
     rng = np.random.default_rng(104120260828)
-    rows: list[tuple[float, int, str, int, float, float, int]] = []
+    rows = []
     diagnostic_rows: list[dict[str, float | int]] = []
     families = (
         "random_disk",
@@ -603,6 +846,7 @@ def run_deterministic_subtree_stress() -> None:
                         int(diagnostics["largest_hybrid_subtree_size"]),
                         float(diagnostics["largest_hybrid_subtree_actual_product"]),
                         float(diagnostics["largest_hybrid_subtree_bound_inflation"]),
+                        float(diagnostics["arithmetic_mean_direct_factor"]),
                     )
                 )
     rows.sort(reverse=True)
@@ -633,6 +877,86 @@ def run_deterministic_subtree_stress() -> None:
     hybrid_subtree_violation_count = sum(
         int(row["hybrid_subtree_violation_count"]) for row in diagnostic_rows
     )
+    arithmetic_mean_violation_count = sum(row[11] > 1.0 + 1.0e-8 for row in rows)
+    largest_arithmetic_mean_row = max(rows, key=lambda row: row[11])
+    admissible_component_count = sum(
+        int(row["admissible_component_count"]) for row in diagnostic_rows
+    )
+    component_arithmetic_mean_violation_count = sum(
+        int(row["component_arithmetic_mean_violation_count"])
+        for row in diagnostic_rows
+    )
+    largest_component_arithmetic_mean = max(
+        float(row["largest_component_arithmetic_mean"])
+        for row in diagnostic_rows
+    )
+    subtree_arithmetic_mean_violation_count = sum(
+        int(row["subtree_arithmetic_mean_violation_count"])
+        for row in diagnostic_rows
+    )
+    largest_subtree_arithmetic_row = max(
+        zip(rows, diagnostic_rows),
+        key=lambda pair: float(pair[1]["largest_subtree_arithmetic_mean"]),
+    )
+    cut_scaled_subtree_arithmetic_mean_violation_count = sum(
+        int(row["cut_scaled_subtree_arithmetic_mean_violation_count"])
+        for row in diagnostic_rows
+    )
+    largest_cut_scaled_subtree_arithmetic_row = max(
+        zip(rows, diagnostic_rows),
+        key=lambda pair: float(
+            pair[1]["largest_cut_scaled_subtree_arithmetic_mean"]
+        ),
+    )
+    positive_graft_debt_count = sum(
+        int(row["positive_graft_debt_count"]) for row in diagnostic_rows
+    )
+    positive_graft_debt_paid_count = sum(
+        int(row["positive_graft_debt_paid_count"]) for row in diagnostic_rows
+    )
+    graft_slack_recurrence_max_abs_error = max(
+        float(row["graft_slack_recurrence_max_abs_error"])
+        for row in diagnostic_rows
+    )
+    probe_fields = (
+        "convexity_gap_violation_count",
+        "local_overspend_violation_count",
+        "half_slack_convexity_violation_count",
+        "half_slack_local_overspend_violation_count",
+        "positive_liability_split_violation_count",
+    )
+    probe_counts = {
+        field: sum(int(row[field]) for row in diagnostic_rows)
+        for field in probe_fields
+    }
+    probe_margin_fields = (
+        "smallest_child_slack_minus_convexity_gap",
+        "smallest_child_slack_minus_local_overspend",
+        "smallest_half_slack_minus_convexity_gap",
+        "smallest_half_slack_minus_local_overspend",
+        "smallest_child_slack_minus_positive_liabilities",
+    )
+    probe_margins = {
+        field: min(float(row[field]) for row in diagnostic_rows)
+        for field in probe_margin_fields
+    }
+    probe_ratio_fields = (
+        "largest_convexity_slack_ratio",
+        "largest_overspend_slack_ratio",
+        "largest_combined_liability_slack_ratio",
+    )
+    probe_ratios = {
+        field: max(float(row[field]) for row in diagnostic_rows)
+        for field in probe_ratio_fields
+    }
+    adjacent_scale_repayment_failure_count = sum(
+        int(row["adjacent_scale_repayment_failure_count"])
+        for row in diagnostic_rows
+    )
+    largest_adjacent_scale_repayment_failure = max(
+        float(row["largest_adjacent_scale_repayment_failure"])
+        for row in diagnostic_rows
+    )
     certified_bound_numerical_violation_count = sum(
         int(row["bergman_certified_bound_numerical_violation_count"])
         for row in diagnostic_rows
@@ -647,6 +971,14 @@ def run_deterministic_subtree_stress() -> None:
     assert grafting_violation_count == 0
     assert certified_bound_numerical_violation_count == 0
     assert hybrid_subtree_violation_count > 0
+    assert arithmetic_mean_violation_count == 0
+    assert component_arithmetic_mean_violation_count == 0
+    assert subtree_arithmetic_mean_violation_count >= 0
+    assert cut_scaled_subtree_arithmetic_mean_violation_count == 0
+    assert positive_graft_debt_paid_count == positive_graft_debt_count
+    assert graft_slack_recurrence_max_abs_error < 1.0e-10
+    assert adjacent_scale_repayment_failure_count > 0
+    assert largest_adjacent_scale_repayment_failure > 1.05
     assert largest_hybrid_row[7] > 1.05
     assert largest_hybrid_row[9] < 0.9
     assert (
@@ -700,6 +1032,69 @@ def run_deterministic_subtree_stress() -> None:
         f"repetition={rows[0][3]} largest_node_factor={rows[0][4]:.12f} "
         f"full_product={rows[0][5]:.12f}"
     )
+    print(f"stress_arithmetic_mean_q_violation_count={arithmetic_mean_violation_count}")
+    print(
+        "stress_largest_arithmetic_mean_q="
+        f"{largest_arithmetic_mean_row[11]:.12f} "
+        f"degree={largest_arithmetic_mean_row[1]} "
+        f"family={largest_arithmetic_mean_row[2]} "
+        f"repetition={largest_arithmetic_mean_row[3]}"
+    )
+    print(f"stress_admissible_component_count={admissible_component_count}")
+    print(
+        "stress_component_arithmetic_mean_q_violation_count="
+        f"{component_arithmetic_mean_violation_count}"
+    )
+    print(
+        "stress_largest_component_arithmetic_mean_q="
+        f"{largest_component_arithmetic_mean:.12f}"
+    )
+    print(
+        "stress_subtree_arithmetic_mean_q_violation_count="
+        f"{subtree_arithmetic_mean_violation_count}"
+    )
+    print(
+        "stress_largest_subtree_arithmetic_mean_q="
+        f"{float(largest_subtree_arithmetic_row[1]['largest_subtree_arithmetic_mean']):.12f} "
+        f"degree={largest_subtree_arithmetic_row[0][1]} "
+        f"family={largest_subtree_arithmetic_row[0][2]} "
+        f"repetition={largest_subtree_arithmetic_row[0][3]} "
+        f"subtree_size={int(largest_subtree_arithmetic_row[1]['largest_subtree_arithmetic_mean_size'])}"
+    )
+    print(
+        "stress_cut_scaled_subtree_arithmetic_mean_q_violation_count="
+        f"{cut_scaled_subtree_arithmetic_mean_violation_count}"
+    )
+    print(
+        "stress_largest_cut_scaled_subtree_arithmetic_mean_q="
+        f"{float(largest_cut_scaled_subtree_arithmetic_row[1]['largest_cut_scaled_subtree_arithmetic_mean']):.12f} "
+        f"degree={largest_cut_scaled_subtree_arithmetic_row[0][1]} "
+        f"family={largest_cut_scaled_subtree_arithmetic_row[0][2]} "
+        f"repetition={largest_cut_scaled_subtree_arithmetic_row[0][3]} "
+        f"subtree_size={int(largest_cut_scaled_subtree_arithmetic_row[1]['largest_cut_scaled_subtree_arithmetic_mean_size'])}"
+    )
+    print(
+        "stress_positive_graft_debt_paid_count="
+        f"{positive_graft_debt_paid_count}/{positive_graft_debt_count}"
+    )
+    print(
+        "stress_graft_slack_recurrence_max_abs_error="
+        f"{graft_slack_recurrence_max_abs_error:.3e}"
+    )
+    for field in probe_fields:
+        print(f"stress_{field}={probe_counts[field]}")
+    for field in probe_margin_fields:
+        print(f"stress_{field}={probe_margins[field]:.12f}")
+    for field in probe_ratio_fields:
+        print(f"stress_{field}={probe_ratios[field]:.12f}")
+    print(
+        "stress_adjacent_scale_repayment_failure_count="
+        f"{adjacent_scale_repayment_failure_count}"
+    )
+    print(
+        "stress_largest_adjacent_scale_repayment_failure="
+        f"{largest_adjacent_scale_repayment_failure:.12f}"
+    )
 
 
 def main() -> None:
@@ -730,6 +1125,7 @@ def main() -> None:
                 diagnostics.descending_prefix_max_log,
                 diagnostics.linearized_charge_bridge_margin,
                 diagnostics.arithmetic_bridge_ratio,
+                diagnostics.arithmetic_mean_factor,
             )
         )
         complement = inadmissible_complement_row(
@@ -817,6 +1213,77 @@ def main() -> None:
     descending_prefix_violations = sum(row[10] > 1.0e-10 for row in coarse_rows)
     linearized_charge_bridge_failures = sum(row[11] < 0.0 for row in coarse_rows)
     arithmetic_bridge_failures = sum(row[12] > 1.0 for row in coarse_rows)
+    arithmetic_mean_q_violations = sum(row[13] > 1.0 + 1.0e-8 for row in coarse_rows)
+    largest_arithmetic_mean_q_row = max(coarse_rows, key=lambda row: row[13])
+    admissible_component_count = sum(
+        int(row[0]["admissible_component_count"]) for row in subtree_block_rows
+    )
+    component_arithmetic_mean_q_violations = sum(
+        int(row[0]["component_arithmetic_mean_violation_count"])
+        for row in subtree_block_rows
+    )
+    largest_component_arithmetic_mean_q = max(
+        float(row[0]["largest_component_arithmetic_mean"])
+        for row in subtree_block_rows
+    )
+    subtree_arithmetic_mean_q_violations = sum(
+        int(row[0]["subtree_arithmetic_mean_violation_count"])
+        for row in subtree_block_rows
+    )
+    largest_subtree_arithmetic_mean_q_row = max(
+        subtree_block_rows,
+        key=lambda row: float(row[0]["largest_subtree_arithmetic_mean"]),
+    )
+    cut_scaled_subtree_arithmetic_mean_q_violations = sum(
+        int(row[0]["cut_scaled_subtree_arithmetic_mean_violation_count"])
+        for row in subtree_block_rows
+    )
+    largest_cut_scaled_subtree_arithmetic_mean_q_row = max(
+        subtree_block_rows,
+        key=lambda row: float(
+            row[0]["largest_cut_scaled_subtree_arithmetic_mean"]
+        ),
+    )
+    positive_graft_debt_count = sum(
+        int(row[0]["positive_graft_debt_count"])
+        for row in subtree_block_rows
+    )
+    positive_graft_debt_paid_count = sum(
+        int(row[0]["positive_graft_debt_paid_count"])
+        for row in subtree_block_rows
+    )
+    graft_slack_recurrence_max_abs_error = max(
+        float(row[0]["graft_slack_recurrence_max_abs_error"])
+        for row in subtree_block_rows
+    )
+    base_probe_fields = (
+        "convexity_gap_violation_count",
+        "local_overspend_violation_count",
+        "half_slack_convexity_violation_count",
+        "half_slack_local_overspend_violation_count",
+        "positive_liability_split_violation_count",
+    )
+    base_probe_counts = {
+        field: sum(int(row[0][field]) for row in subtree_block_rows)
+        for field in base_probe_fields
+    }
+    base_probe_ratio_fields = (
+        "largest_convexity_slack_ratio",
+        "largest_overspend_slack_ratio",
+        "largest_combined_liability_slack_ratio",
+    )
+    base_probe_ratios = {
+        field: max(float(row[0][field]) for row in subtree_block_rows)
+        for field in base_probe_ratio_fields
+    }
+    adjacent_scale_repayment_failures = sum(
+        int(row[0]["adjacent_scale_repayment_failure_count"])
+        for row in subtree_block_rows
+    )
+    largest_adjacent_scale_repayment_failure = max(
+        float(row[0]["largest_adjacent_scale_repayment_failure"])
+        for row in subtree_block_rows
+    )
     subtree_count = sum(int(row[0]["subtree_count"]) for row in subtree_block_rows)
     subtree_violations = sum(
         int(row[0]["subtree_violation_count"]) for row in subtree_block_rows
@@ -930,6 +1397,17 @@ def main() -> None:
     assert linearized_charge_bridge_failures > 0
     assert linearized_bridge_failure_fine.linearized_charge_bridge_margin < -1.0
     assert arithmetic_bridge_failures > 0
+    assert arithmetic_mean_q_violations == 0
+    assert component_arithmetic_mean_q_violations == 0
+    assert subtree_arithmetic_mean_q_violations >= 0
+    assert cut_scaled_subtree_arithmetic_mean_q_violations == 0
+    assert positive_graft_debt_paid_count == positive_graft_debt_count
+    assert graft_slack_recurrence_max_abs_error < 1.0e-10
+    assert base_probe_counts["convexity_gap_violation_count"] == 0
+    assert base_probe_counts["local_overspend_violation_count"] == 0
+    assert base_probe_counts["positive_liability_split_violation_count"] == 0
+    assert base_probe_ratios["largest_combined_liability_slack_ratio"] <= 1.0 + 1.0e-8
+    assert adjacent_scale_repayment_failures > 0
     assert subtree_count > 1000
     assert subtree_violations == 0
     assert cherry_count > 400
@@ -966,6 +1444,67 @@ def main() -> None:
     print(f"descending_critical_scale_prefix_violation_count={descending_prefix_violations}")
     print(f"linearized_charge_bridge_failure_count={linearized_charge_bridge_failures}")
     print(f"arithmetic_bridge_failure_count={arithmetic_bridge_failures}")
+    print(f"arithmetic_mean_q_violation_count={arithmetic_mean_q_violations}")
+    print(
+        "largest_arithmetic_mean_q="
+        f"{largest_arithmetic_mean_q_row[13]:.12f} "
+        f"degree={largest_arithmetic_mean_q_row[2]} "
+        f"family={largest_arithmetic_mean_q_row[3]} "
+        f"repetition={largest_arithmetic_mean_q_row[4]}"
+    )
+    print(f"admissible_component_count={admissible_component_count}")
+    print(
+        "component_arithmetic_mean_q_violation_count="
+        f"{component_arithmetic_mean_q_violations}"
+    )
+    print(
+        "largest_component_arithmetic_mean_q="
+        f"{largest_component_arithmetic_mean_q:.12f}"
+    )
+    print(
+        "subtree_arithmetic_mean_q_violation_count="
+        f"{subtree_arithmetic_mean_q_violations}"
+    )
+    print(
+        "largest_subtree_arithmetic_mean_q="
+        f"{float(largest_subtree_arithmetic_mean_q_row[0]['largest_subtree_arithmetic_mean']):.12f} "
+        f"degree={largest_subtree_arithmetic_mean_q_row[1]} "
+        f"family={largest_subtree_arithmetic_mean_q_row[2]} "
+        f"repetition={largest_subtree_arithmetic_mean_q_row[3]} "
+        f"subtree_size={int(largest_subtree_arithmetic_mean_q_row[0]['largest_subtree_arithmetic_mean_size'])}"
+    )
+    print(
+        "cut_scaled_subtree_arithmetic_mean_q_violation_count="
+        f"{cut_scaled_subtree_arithmetic_mean_q_violations}"
+    )
+    print(
+        "largest_cut_scaled_subtree_arithmetic_mean_q="
+        f"{float(largest_cut_scaled_subtree_arithmetic_mean_q_row[0]['largest_cut_scaled_subtree_arithmetic_mean']):.12f} "
+        f"degree={largest_cut_scaled_subtree_arithmetic_mean_q_row[1]} "
+        f"family={largest_cut_scaled_subtree_arithmetic_mean_q_row[2]} "
+        f"repetition={largest_cut_scaled_subtree_arithmetic_mean_q_row[3]} "
+        f"subtree_size={int(largest_cut_scaled_subtree_arithmetic_mean_q_row[0]['largest_cut_scaled_subtree_arithmetic_mean_size'])}"
+    )
+    print(
+        "positive_graft_debt_paid_count="
+        f"{positive_graft_debt_paid_count}/{positive_graft_debt_count}"
+    )
+    print(
+        "graft_slack_recurrence_max_abs_error="
+        f"{graft_slack_recurrence_max_abs_error:.3e}"
+    )
+    for field in base_probe_fields:
+        print(f"{field}={base_probe_counts[field]}")
+    for field in base_probe_ratio_fields:
+        print(f"{field}={base_probe_ratios[field]:.12f}")
+    print(
+        "adjacent_scale_repayment_failure_count="
+        f"{adjacent_scale_repayment_failures}"
+    )
+    print(
+        "largest_adjacent_scale_repayment_failure="
+        f"{largest_adjacent_scale_repayment_failure:.12f}"
+    )
     print(f"admissible_merge_subtree_count={subtree_count}")
     print(f"merge_subtree_product_violation_count={subtree_violations}")
     print(f"admissible_cherry_count={cherry_count}")

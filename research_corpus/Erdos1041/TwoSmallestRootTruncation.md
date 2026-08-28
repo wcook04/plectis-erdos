@@ -1,6 +1,7 @@
 # Erdős #1041: a truncated path selected by the two smallest root moduli
 
-Status: analytic all-degree case theorem proved on 2026-08-25. The
+Status: analytic all-degree case theorem proved on 2026-08-25 and current through
+2026-08-27 replay. The
 load-bearing factor and length inequalities are formalized in
 `TwoSmallestRootTruncation.lean`. This is a genuine sufficient case of Erdős
 #1041, not the unrestricted solution.
@@ -142,6 +143,20 @@ The checker `scripts/check_erdos1041_two_smallest_root_truncation.py` validates
 the two exact scalar defects, the threshold table, and the full complex path
 bound on randomized configurations through degree twelve. The Lean module
 checks (1), (2), the strict multiplicative fan-in, and the length conclusion.
+Its exact authority anchors are
+[`twoSmallest_chord_twoFactor_bound#L21-L24`](TwoSmallestRootTruncation.lean#L21-L24),
+[`twoSmallest_chord_selected_factor#L27-L39`](TwoSmallestRootTruncation.lean#L27-L39),
+[`twoSmallest_factor_budget#L71-L87`](TwoSmallestRootTruncation.lean#L71-L87),
+and [`twoSmallest_path_length_lt_two#L92-L100`](TwoSmallestRootTruncation.lean#L92-L100).
+
+```sh
+./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_two_smallest_root_truncation.py
+```
+
+The 2026-08-27 replay reports `PASS` over 4,400 configurations, with worst
+sampled value over budget `0.999999984440`; it also reproduces the displayed
+thresholds through degree twelve. This validates the exact scalar/path-bound
+consumer and does not promote the unrestricted theorem.
 
 The Refinery should place this theorem beside `TruncatedSpokeReduction.md` as
 its first coefficient-free analytic consumer. Preserve the unrestricted-open

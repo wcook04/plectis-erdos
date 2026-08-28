@@ -6,7 +6,7 @@ This source assimilates the six returns preserved in
 `state/formal_math/type_b_return_batches/erdos1041_20260826_return_stream_01`.
 Every return was read against the current Erdős 1041 corpus, including the
 earlier 2026-08-26 multi-return assimilation and the optimized first-two-level
-Bergman theorem.
+Bergman theorem.  This synthesis is current through 2026-08-27.
 
 The unrestricted problem is not proved here.  The returns contain several
 exact theorems, but their proposed endpoints stop at three versions of the
@@ -22,6 +22,23 @@ coupling.  Two local improvements are proved below:
 
 Together with `FirstTwoCriticalOptimizedBergman.md`, this is strictly stronger
 than the six packets taken separately.
+
+The scalar authority anchors are [`fullEnergyChargedLifetimeBudget`](SixReturnJointAssimilation20260826.lean#L18-L24),
+[`leafChargedLifetimeBudget`](SixReturnJointAssimilation20260826.lean#L27-L34),
+[`spectralDeviation_sum_le`](SixReturnJointAssimilation20260826.lean#L47-L57),
+and the conditional critical-pole consumer
+[`criticalPoleTrace_charge_nonneg`](SixReturnJointAssimilation20260826.lean#L63-L74).
+Replay the companion module from the repository root with:
+
+```sh
+./repo-python formal_math/erdos257_period_noncollapse/scripts/lean_fast_build.py \
+  --jobs 2 --project-root formal_math/erdos257_period_noncollapse \
+  ErdosProblems.Erdos1041.SixReturnJointAssimilation20260826
+```
+
+These declarations check only the scalar fan-in and conditional charge
+consumers; the complex-analytic and geometric statements remain the ordinary
+proofs and reconciliations recorded below.
 
 ## 1. Retained exact results
 

@@ -1,7 +1,7 @@
 # Erdős #1041 holds up to an absolute constant
 
-Status: **one unconditional theorem, proved here**, plus one sharp conjecture it
-isolates. Current through 2026-08-27 source audit. **Erdős #1041 itself remains
+Status: **two unconditional theorems, proved here**, plus one sharp conjecture they
+isolate. Current through 2026-08-28 source audit. **Erdős #1041 itself remains
 open** — the constant `2` is sharp and nothing below reaches it. The numerical
 receipt in §11 remains dated 2026-08-24; this source-only update does not claim
 a fresh replay.
@@ -22,7 +22,7 @@ explicit absolute constant.
 
 ## Source and authority boundary
 
-Theorem 1, its corollary, the split at the critical level, and the constant-8
+Theorem 1, its corollaries, the split at the critical level, and the constant-factor
 construction are repository-authored ordinary mathematics. The proof uses only
 the inequalities written in this note: the capacity identity, the area bound,
 Cauchy--Schwarz, the univalent-map distortion estimate, and the finite graph
@@ -61,7 +61,7 @@ assume `f` squarefree and `μ > 0`.
 > possibly degenerate path of length at most
 >
 > ```text
-> 8 μ^{1/n}  =  8 cap(K_μ)
+> (71/10) μ^{1/n}  =  (71/10) cap(K_μ)
 > ```
 >
 > lying inside `K_{2μ} = {z : |f(z)| ≤ 2μ}`. In the squarefree branch their
@@ -75,13 +75,36 @@ The explicit constant is the minimum over two free parameters `r ∈ (0,1)`,
 `λ > 1` of
 
 ```text
-   C(n; r, λ)  =  8r/(1-r)^2  +  λ^{1/n} ( sqrt(log(λ/r))  +  π / sqrt(log λ) ),
+   C(n; r, λ)  =  sqrt(2)r/(1-r)^2
+                  + λ^{1/n} ( sqrt(log(λ/r)) + π / sqrt(log λ) ),
 ```
 
-with the path then lying in `K_{λμ}`. At `λ = 2`, `r = 0.03` this reads
-`7.592` at `n = 3`, `7.180` at `n = 4`, and decreases to `6.079` as `n → ∞`;
-`n = 2` is settled separately and exactly (Step 0 below) with constant `2`.
-Hence `8` is a valid absolute constant with `λ = 2`. Larger `λ` buys a smaller
+with the path then lying in `K_{λμ}`. At `λ=2`, `r=3/20`, this is below
+`71/10` for every `n≥3`: the largest case is `n=3`, where the displayed
+expression is `7.075598...`, and it decreases with `n`. The numerical
+inequality is exact: the positive-term expansion
+`log 2=2 sum_(j>=0)1/((2j+1)3^(2j+1))` gives
+
+```text
+10816/15625 < 842/1215 < log 2 < 23581/34020,
+log(40/3) = 4 log 2 - log(6/5)
+          < 4(23581/34020)-2/11 = 242381/93555 < (161/100)^2.
+```
+
+Here the upper tail after `j=2` is below `1/6804`, while
+`log(6/5)>2/11` is the first positive term of its analogous expansion.
+Together with `sqrt(2)<283/200`, `2^(1/3)<63/50`, and `pi<22/7`, the
+coefficient is at most
+
+```text
+(60/289)(283/200)
+ + (63/50)(161/100 + (22/7)/(104/125))
+= 66517563/9392500 < 71/10.
+```
+
+Degree `n=2` is settled separately and exactly (Step 0 below) with constant
+`2`. Hence `71/10` is a valid absolute constant with
+`λ=2`. Larger `λ` buys a smaller
 constant — `λ ≈ 62` gives `≈ 4.7` for large `n` — at the cost of a larger
 containment level.
 
@@ -90,18 +113,19 @@ containment level.
 > **inside the open unit lemniscate `{|f| < 1}`** by a path of length at most
 >
 > ```text
-> Θ(μ) = 8r/(1−r)^2 · μ^{1/n} + ( sqrt(log(λ/r)) + π/sqrt(log λ) ) (λμ)^{1/n},
+> Θ(μ) = sqrt(2)r/(1−r)^2 · μ^{1/n}
+>        + ( sqrt(log(λ/r)) + π/sqrt(log λ) ) (λμ)^{1/n},
 >                                                        λ = min(2, 1/μ).
 > ```
 >
-> In particular `Θ(μ) ≤ 6.1` whenever `μ ≤ 1/2` — for instance whenever the
+> In particular `Θ(μ) ≤ 5.7` whenever `μ ≤ 1/2` — for instance whenever the
 > roots lie in a disk of radius `R ≤ 2^{-1/n}`, since `μ ≤ R^n`.
 
 *Proof.* Run the proof of Theorem 1 with `T = λμ ≤ 1`, so the path lies in
 `K_t ⊆ K_T ⊆ {|f| ≤ 1}`, and `t < 1` may be chosen since Lemma 2 selects `t`
-from a set of positive measure. For the numerical claim take `r = 0.03`,
-`λ = 2`: then `(λμ)^{1/n} ≤ 1` and `μ^{1/n} ≤ 1`, so
-`Θ ≤ 0.2552 + (2.0493 + 3.7739) = 6.078`. For the Fekete step, the resultant
+from a set of positive measure. For the numerical claim take `r=3/20`,
+`λ=2`: then `(λμ)^{1/n}≤1` and `μ^{1/n}≤1`, and the improved expression is
+`5.676477...<5.7`. For the Fekete step, the resultant
 identity gives `μ^{n−1} ≤ prod_c |f(c)| = prod_{i<j}|z_i − z_j|^2 / n^n ≤ R^{n(n−1)}`,
 hence `μ ≤ R^n`. ∎
 
@@ -110,6 +134,287 @@ improves for small `μ`, reaching `≈ 4.7` once `μ ≤ 1/62` (take `λ ≈ 62`
 regime `μ → 1` is exactly the near-Fekete shell that
 [HardRegimeIsNearFekete.md](HardRegimeIsNearFekete.md) identifies, and §10
 removes it outright.
+
+> **Corollary 3 (an unrestricted high-arity first-merge regime).** Assume the
+> roots of `f` lie in the open unit disk, `μ ≤ 1/2`, and the component of
+> `K_μ` containing a minimising critical point carries at least `17` roots,
+> counted with multiplicity. Then two distinct roots are joined by a path of
+> length strictly less than `2` inside `{|f|<1}`.
+
+*Proof.* Use Theorem 1's construction with `λ=2` and `r=13/100`. Every
+selected component `C_t` contains the first-merge component, so its root count
+`k` is at least `17`. Since `μ≤1/2`, the high-level factor satisfies
+`2^(1/n)ρ=(2μ)^(1/n)≤1`, while the low-level factor satisfies `ρ≤1`.
+The following bounds are exact:
+
+```text
+sqrt(2) < 283/200,
+sqrt(log(200/13)) < 5/3,
+pi/sqrt(log 2) < (22/7)/(104/125) = 1375/364.
+```
+
+For the logarithmic inequality, `200/13=16(25/26)`, hence
+`log(200/13)<4 log 2<4(23581/34020)<25/9`. The remaining bounds are the
+rational bounds already used above. After multiplying by `ρ`, the expression
+inside the factor `sqrt(2/k)` is less than
+
+```text
+(1300/7569)(283/200)
+ + 5/3 + 1375/364
+= 15668813/2755116,
+
+(15668813/2755116)^2
+= 34 - 12570881068535/7590664173456
+< 34.
+```
+
+Thus `k≥17` gives `length^2 < (2/17)·34 = 4`. Lemma 2 may choose the regular
+level `t` in the interior of `[μ,2μ]`; when `μ≤1/2` this gives `t<1`, so
+the entire path lies in the open unit lemniscate. ∎
+
+This is a genuine parent-theorem regime, not merely another constant-factor
+statement. It shows that any remaining counterexample with `μ≤1/2` must
+have fewer than `17` roots in every first-merge component attached to a
+minimising critical point. The complementary low-arity allocation problem is
+still open.
+
+The same argument with a larger safe level window gives two stronger rows:
+
+```text
+μ ≤ 1/4,  first-merge root count k ≥ 12  =>  the parent theorem;
+μ ≤ 1/8,  first-merge root count k ≥ 10  =>  the parent theorem.
+```
+
+For the first row take `λ=4`, `r=3/25`. After multiplication by `ρ`, use
+`(4μ)^(1/n)≤1`, `ρ≤1`,
+
+```text
+log(100/3) = 5 log 2 + log(25/24)
+           < 5(23581/34020)+1/24
+           = 47729/13608 < (15/8)^2,
+2 log 2 > 2(842/1215) > (47/40)^2.
+```
+
+The bracket is then less than
+
+```text
+(75/484)(283/200) + 15/8 + (22/7)/(47/40)
+= 6075221/1273888,
+```
+
+whose square is
+`24-2038665078215/1622790636544<24`; multiplying by `2/k≤1/6`
+puts the squared path length strictly below `4`.
+
+For the second row take `λ=8`, `r=11/100`. Here
+
+```text
+log(800/11) = 6 log 2 + log(25/22)
+            < 6(23581/34020)+3/22
+            = 133948/31185 < (52/25)^2,
+3 log 2 > 3(842/1215) > (36/25)^2.
+```
+
+The bracket is less than
+
+```text
+(1100/7921)(283/200) + 52/25 + (22/7)/(36/25)
+= 55629121/12475575,
+```
+
+whose square is
+`20-18200328379859/155639971580625<20`; multiplying by `2/k≤1/5`
+again gives squared length `<4`. In the equality cases `λμ=1`, choose the
+regular working level strictly below the top of the window, as above.
+
+> **Corollary 4 (component-capacity defect closes every arity).** Assume the
+> roots lie in the open unit disk and `μ≤1/2`. Let `C` be the component of
+> `{|f|<2μ}` containing a minimising critical point and put
+>
+> ```text
+> κ = cap(closure C)/(2μ)^(1/n).
+> ```
+>
+> If `κ≤1/3`, then Erdős #1041 holds for `f`.
+
+*Proof.* The exact component-capacity theorem of
+[ComponentCapacityFormula.md](ComponentCapacityFormula.md) replaces the global
+area input in Lemmas 2 and 4 by
+
+```text
+Area(C) ≤ π cap(closure C)^2 = π κ^2 (2μ)^(2/n).
+```
+
+Hence only the high-lift and boundary terms acquire the factor `κ`; the
+LC2 low-lift term is unchanged. Since the selected component has `k≥2`, take
+`λ=2`, `r=1/20`, use `(2μ)^(1/n)≤1`, and discard the outer factor
+`sqrt(2/k)≤1`. The exact bounds above and
+
+```text
+log 40 = 5 log 2 + log(5/4)
+       < 5(23581/34020)+1/4
+       = 12641/3402 < (97/50)^2
+```
+
+give the strict length upper bound
+
+```text
+(20/361)(283/200)
+ + (1/3)(97/50 + 1375/364)
+= 6518353/3285100
+= 2 - 51847/3285100
+< 2.
+```
+
+As before, the regular level is selected below `1`, so containment is strict.
+∎
+
+By the component-capacity formula, `κ=exp(-Σ/n)` where `Σ` is the sum of
+the exterior Green functions at roots excluded from `C`. Thus the hypothesis
+is equivalently `Σ≥n log 3`: a remaining low-critical counterexample must
+simultaneously have small first-merge arity *and* small exterior Green defect.
+
+The preceding proof contains substantially more information than the uniform
+cutoff `κ≤1/3`, because it discarded both the root count and nearly all of
+the component-capacity gain. Retaining them gives the following refinement.
+
+> **Corollary 5 (arity-dependent component-capacity closure).** Keep the
+> hypotheses and notation of Corollary 4. Let `k₀≥2` be the number of roots
+> in the component of `K_μ` containing the chosen minimising critical point.
+> Put
+>
+> ```text
+> A = 283/3610,                 B = 52029/9100,
+> τ_k = (sqrt(2k)-A)/B.
+> ```
+>
+> If `κ≤τ_(k₀)`, then Erdős #1041 holds for `f`. In particular the
+> following entirely rational sufficient cutoffs are valid:
+>
+> | `k₀` | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+> |---|---:|---:|---:|---:|---:|---:|---:|---:|
+> | sufficient `κ≤` | `1/3` | `2/5` | `12/25` | `1/2` | `7/12` | `16/25` | `2/3` | `7/10` |
+>
+> | `k₀` | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
+> |---|---:|---:|---:|---:|---:|---:|---:|
+> | sufficient `κ≤` | `3/4` | `4/5` | `5/6` | `7/8` | `9/10` | `33/35` | `39/40` |
+>
+> Thus, for example, a remaining counterexample with `μ≤1/2` and
+> `k₀=16` must have `κ>39/40`, equivalently exterior Green defect
+> `Σ<n log(40/39)`. The exact thresholds `τ_k` increase from
+> `0.33609...` at `k=2` to `0.97568...` at `k=16`.
+
+*Proof.* In the proof of Theorem 1, every possible selected working component
+`C_t` contains the first-merge component, so its root count `k` is at least
+`k₀`. In Corollary 4 replace `A(T)≤πT^(2/n)` by
+`A(T)≤πκ²T^(2/n)`, but now retain the outer factor `sqrt(2/k)`.
+The same strict rational logarithm bounds used there give
+
+```text
+length < sqrt(2/k₀) (A+Bκ).
+```
+
+The definition of `τ_(k₀)` therefore makes the right side at most `2`.
+For each rational entry `q_k` in the tables, direct integer arithmetic gives
+`(A+Bq_k)²<2k`; hence `q_k<τ_k`. The Green-defect form again uses
+`κ=exp(-Σ/n)`. ∎
+
+This sharpens the compact residual left by Corollaries 3 and 4: when
+`μ≤1/2`, a counterexample must have `k₀≤16` and must lie above the
+corresponding row of the arity-dependent capacity table, not merely above the
+uniform line `κ=1/3`.
+
+The larger safe windows at smaller `μ` yield two nested lattices by the same
+calculation. For `μ≤1/4`, use `λ=4,r=3/25` and
+
+```text
+A₄=849/3872,       B₄=11975/2632;
+```
+
+then `length<sqrt(2/k₀)(A₄+B₄κ)`. Exact rational sufficient cutoffs
+for `k₀=2,...,11` are respectively
+
+```text
+19/50, 12/25, 4/7, 16/25, 7/10, 3/4, 4/5, 7/8, 14/15, 49/50.
+```
+
+For `μ≤1/8`, use `λ=8,r=11/100` and
+
+```text
+A₈=3113/15842,     B₈=13427/3150;
+```
+
+then `length<sqrt(2/k₀)(A₈+B₈κ)`. Exact rational sufficient cutoffs
+for `k₀=2,...,9` are respectively
+
+```text
+2/5, 1/2, 3/5, 2/3, 3/4, 4/5, 8/9, 18/19.
+```
+
+These lists are certified by the same integer test
+`(A_λ+B_λ q_k)²<2k`. Consequently a surviving row with `μ≤1/4`
+has `k₀≤11` and, at the top arity, `κ>49/50`; a surviving row with
+`μ≤1/8` has `k₀≤9` and, at the top arity, `κ>18/19`.
+
+The same method gives a sharper deep-low-critical lattice without any new
+analytic input.
+
+> **Corollary 6 (the `μ≤1/64` lattice).** If `μ≤1/64`, then every
+> minimizing first-merge component with `k₀≥10` closes the parent theorem.
+> For `k₀=2,...,9`, the following exact rational capacity cutoffs suffice:
+>
+> ```text
+> 4/9, 5/9, 16/25, 8/11, 4/5, 13/15, 13/14, 99/100.
+> ```
+>
+> In particular a remaining counterexample with `μ≤1/64` and `k₀=9`
+> has `κ>99/100`, equivalently `Σ<n log(100/99)`.
+
+*Proof.* Take `λ=64` and `r=3/32`. The low-lift coefficient is bounded by
+
+```text
+A₆₄ = (3/32)/(29/32)² · (283/200),
+```
+
+while the component-capacity coefficient is bounded by
+
+```text
+B₆₄ = 64/25 + (22/7)/(203/100).
+```
+
+Indeed `64/r=2048/3`. The positive atanh series gives
+
+```text
+log 3 > 1 + 1/12 + 1/80 > 13/12,
+```
+
+so the existing upper bound on `log 2` yields
+
+```text
+log(2048/3) = 11 log 2 - log 3
+             < 11(23581/34020)-13/12
+             < (64/25)².
+```
+
+Likewise `sqrt(log 64)>203/100`, because
+`6(842/1215)>(203/100)^2`, and therefore
+`π/sqrt(log 64)<(22/7)/(203/100)`. Therefore
+
+```text
+length < sqrt(2/k₀) (A₆₄+B₆₄ κ).
+```
+
+For each displayed cutoff `q_k`, exact integer arithmetic gives
+`(A₆₄+B₆₄q_k)²<2k`, now with
+`B₆₄=64/25+(22/7)/(203/100)`; it also gives
+`(A₆₄+B₆₄)²<20`, which closes every
+`k₀≥10`. The checker records all nine strict inequalities. Since
+`λμ≤1`, the regular working level is again chosen strictly below `1`. ∎
+
+Thus the deep-low-critical branch does not merely inherit the `μ≤1/8`
+lattice: the arity-eight cutoff improves from `8/9` to `13/14`,
+and the arity-nine cutoff improves from `18/19` to `99/100`. The complementary
+low-arity/high-capacity cells and the high-critical branch remain open.
 
 ## 2. Standing facts
 
@@ -262,7 +567,7 @@ that their total `Σ ∫ |dz|/|f'|` is at most the corresponding total over
 
 using `t/σ_1 ≤ λ/r`. Divide by `2π`. ∎
 
-## 7. Step 4: the hop, and assembly
+## 7. Step 4: the hop, LC2 aggregation, and assembly
 
 Choose `θ` with `Σ_i ℓ_i^{high}(θ)` at most its mean. The `k` points `p_i(θ)`
 are distinct (they are the `k` preimages of `t e^{iθ}` on `∂C_t`); order them
@@ -275,15 +580,36 @@ consecutive pair the concatenation `γ_i^{-1} · arc · γ_j` joins `a_i` to `a_
 geo  ≤  ( 2 Σ_i ℓ_i(θ) + H^1(∂C_t) ) / k .
 ```
 
-Insert Lemma 3, Lemma 4 and (B), with `A(T) ≤ π T^{2/n}` and `T^{1/n} = λ^{1/n} ρ`:
+The old assembly spent Lemma 3 pointwise, using `cr_i≤4ρ` for every root.
+The singleton part of the proof of the stronger fixed-level full-energy theorem
+`(LC2)` in `SixReturnJointAssimilation20260826.md` is unconditional below the
+first critical level: there are then no nontrivial active components, so the
+one-root area lower bounds add directly under Polya's global area bound. Letting
+that precritical inequality tend to the first critical level gives
 
 ```text
-geo ≤ 8r/(1−r)^2 · ρ  +  sqrt(2/k) ( sqrt(log(λ/r)) + π/sqrt(log λ) ) λ^{1/n} ρ .
+sum_i cr_i^2 = sum_i μ^2/|f'(a_i)|^2 ≤ ρ^2.              (D)
 ```
 
-Since `k ≥ 2`, `sqrt(2/k) ≤ 1`, which is Theorem 1's displayed constant. At
-`λ = 2`, `r = 0.03`, `n ≥ 3` the bracket is at most `7.592`, and the path lies
-in `K_{2μ}`. ∎
+Therefore, for the `k` roots in `C_t`, Cauchy--Schwarz and Lemma 3 give
+
+```text
+(2/k) sum_i ℓ_i^low(θ)
+  ≤ (2/k) r/(1-r)^2 sum_i cr_i
+  ≤ 2r/(sqrt(k)(1-r)^2) ρ.
+```
+
+Insert this, Lemma 4 and (B), with `A(T)≤πT^{2/n}` and
+`T^{1/n}=λ^{1/n}ρ`:
+
+```text
+geo ≤ sqrt(2/k) [ sqrt(2)r/(1-r)^2
+                  + λ^(1/n)(sqrt(log(λ/r))+π/sqrt(log λ)) ] ρ.
+```
+
+Since `k≥2`, `sqrt(2/k)≤1`, which is Theorem 1's displayed constant. At
+`λ=2`, `r=3/20`, `n≥3` the bracket is below `71/10`, and the path lies in
+`K_{2μ}`. ∎
 
 ## 8. Why this was not already in the directory
 
@@ -319,14 +645,14 @@ remove it.
   in the limit on `z^n − r^n` and exactly on every quadratic
   ([CapacityGeodesicConjecture.md](CapacityGeodesicConjecture.md) Theorem 2),
   and `8 > 2`. Every sharp statement in this directory is untouched.
-* It **does** give the first unconditional, degree-free bound on the pair
+* It **does** give an unconditional, degree-free bound on the pair
   geodesic recorded here. Before it, the `claim_ceiling` carried no
   unconditional length bound at all: `(C)`, `(COVER)`, `min_c L(c) ≤ 2R`, the
   per-component combined charge, Claim L and `ONE-SPOKE` are respectively open,
   open, open, open, open and refuted.
 * It is **not** an equivalent reformulation. It is a strictly weaker statement
   than the target, proved outright.
-* The constant `8` is not optimised. The three losses are Koebe's `(1−r)^{-3}`,
+* The constant `71/10` is not optimised. The remaining losses are Koebe's `(1−r)^{-3}`,
   the two Cauchy–Schwarz steps, and `Area ≤ π cap^2`. Measurement (§11) puts
   the constructed path at `≈ 2–5 ρ` on real configurations, so the true
   constant of this construction is nearer `5`.
@@ -467,12 +793,12 @@ tracer_bernoulli   perimeter/rho = 3.7081492209  vs  Gamma(1/4)^2/(2 sqrt pi)
 tracer_branch_pair descending pair / 2 rho = 1.0 exactly, audit max|f|/mu = 1.0
 lemma1             worst H^1(dC_t)^2/(2 pi k t A'(t)) = 0.9217405616   (<= 1)
 gronwall_area      worst Area(C_t)/(pi t^{2/n})      = 0.9693303583   (<= 1)
-theorem1_path      worst assembled path / rho        = 5.0663268684   (<= 8)
+theorem1_path      worst assembled path / rho        = 5.0663268684   (<= 7.1)
 conjectureP        worst H^1(dU)/(sqrt2 varpi rho)   = 0.9999997747   (<= 1)
 ```
 
 The assembled path is the one Theorem 1 constructs, audited for containment,
-and it comes in at `5.07 ρ` against the proved `8 ρ` — so the construction has
+and it comes in at `5.07 ρ` against the proved `7.1 ρ` — so the construction has
 about `1.6×` of unused margin even before the constant is optimised. Lemma 1
 runs at `0.92` of equality, so the Cauchy–Schwarz step is essentially tight and
 is not where the constant is lost; the losses are the distortion estimate's
@@ -485,7 +811,7 @@ mathematics; no computation enters any of their proofs. §11 is measurement:
 Conjecture P is **not** proved, and no adversarial search has been run against
 it — the `120` rows are random and family-seeded, so `negative_results` 19
 applies and the reported maximum is a basin record, not a supremum. The
-constant `8` in Theorem 1 is an honest upper bound for `λ = 2`, not an optimum.
+constant `71/10` in Theorem 1 is an honest upper bound for `λ=2`, not an optimum.
 Erdős #1041 is open.
 
 ## 13. Replay

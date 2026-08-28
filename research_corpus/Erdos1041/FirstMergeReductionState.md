@@ -381,7 +381,10 @@ hub — but inside a `1.55e−6` critical-value tie, and every tie-guarded searc
 all 440 bulk draws put the merging pair *at* the nearest pair. So no tie-free
 separation is on file, and gap 1's "the branch endpoints are not the nearest
 roots" is still a heuristic claim rather than a witnessed one at the first-merge
-hub. Whoever closes it closes the metric floor of (C) at the same time, because
+hub. *(Superseded 2026-08-28: tie-free separations are now on file at tie
+guards `1.001` and `1.05`, found by the gradient-proxy instrument; gap 1 is
+witnessed, and the merging-pair metric floor survives at every witness. See
+[ClaimLRefutation.md](ClaimLRefutation.md).)* Whoever closes it closes the metric floor of (C) at the same time, because
 `exact_results::critical_pair_metric_scale` already covers the nearest pair.
 
 ## Same-day addendum: every centred trinomial is closed exactly

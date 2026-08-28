@@ -45,7 +45,14 @@ theorem discounted_square_lower_of_attenuation_le
   have ha2 : 0 < attenuation ^ 2 := sq_pos_of_pos ha
   have hc2 : 0 < cap ^ 2 := sq_pos_of_pos hc
   apply (div_le_div_iff₀ hc2 ha2).2
-  nlinarith [sq_nonneg (scale * energyRow)]
+  have hsq : attenuation ^ 2 ≤ cap ^ 2 := by
+    nlinarith [mul_nonneg (sub_nonneg.mpr hac)
+      (add_nonneg (le_of_lt ha) (le_of_lt hc))]
+  have hscale : 0 ≤ scale ^ 2 * energyRow ^ 2 := by positivity
+  calc
+    scale ^ 2 * energyRow ^ 2 * attenuation ^ 2
+        ≤ scale ^ 2 * energyRow ^ 2 * cap ^ 2 :=
+      mul_le_mul_of_nonneg_left hsq hscale
+    _ = (scale * energyRow) ^ 2 * cap ^ 2 := by ring
 
 end ErdosProblems.Erdos1041.EntranceEnergyRatioBridge
-
