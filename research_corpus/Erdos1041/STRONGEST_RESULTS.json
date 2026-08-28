@@ -1,0 +1,370 @@
+{
+  "schema": "erdos1041_strongest_result_activation_map_v1",
+  "problem_id": "erdos_1041",
+  "status": "open",
+  "source_checkpoint": "6a46e6e765030830b5c4d7941193de51af13b5d1",
+  "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the unrestricted parent theorem. Route choice remains unrestricted.",
+  "results": [
+    {
+      "result_id": "generic_closed_extension",
+      "status": "strongest_premise",
+      "exact_statement": "A closed length-at-most-two connector theorem on the dense generic normalized locus extends to every normalized polynomial; radial shrinking then gives strict length and strict containment for the open theorem.",
+      "hypotheses": "Monic normalized polynomial; the generic closed theorem is proved on the dense simple/generic locus; lower semicontinuity of the connector functional.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GenericSufficiencyClosure.md"
+      ],
+      "named_consumers": [
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "separate equality, degeneration, radial strictification, and compactness repairs attached to each local connector"
+      ],
+      "why_it_matters": "It removes equality, degeneration, and strictification from every local bridge attack; proving the closed generic connector is enough.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/GenericSufficiencyClosure.md"
+      ]
+    },
+    {
+      "result_id": "cover_visibility_consumer",
+      "status": "strongest_premise",
+      "exact_statement": "If a connected carrier in {|P| <= 1} contains at least two roots and is intrinsically covered within distance 1 by one root, compactness/visibility overlap yields two roots joined inside {|P| <= 1} with length <= 2.",
+      "hypotheses": "A connected compact carrier, at least two roots on it, and root-to-every-point intrinsic distance at most one from a single covering root.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/VisibilityOverlapReduction.md"
+      ],
+      "named_consumers": [
+        "generic_closed_extension",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "reproof of the final path-concatenation and visibility-overlap consumer after a radius-one intrinsic cover is found"
+      ],
+      "why_it_matters": "COVER is already a complete parent consumer; packets must construct the missing cover rather than reprove path concatenation.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/VisibilityOverlapReduction.md"
+      ]
+    },
+    {
+      "result_id": "six_return_full_energy_budget",
+      "status": "strongest_premise",
+      "exact_statement": "The full-energy-charged lifetime aggregate and the strict critical budget are available in stronger joint form; the remaining defect is selection/attachment compatibility, not scalar budget.",
+      "hypotheses": "Regularized critical-value/merge-tree setting and the source theorem's active-component bookkeeping.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SixReturnJointAssimilation20260826.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.md"
+      ],
+      "named_consumers": [
+        "cover_visibility_consumer",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "weaker scalar sum, product, or first-critical energy budgets that do not select an attachment-compatible object"
+      ],
+      "why_it_matters": "It bans returning a weaker sum or product inequality and locates the actual bridge at a same-object attachment selection.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/SixReturnJointAssimilation20260826.md",
+        "research_corpus/Erdos1041/AuditedSynthesisStrictCriticalBudget20260827.md"
+      ]
+    },
+    {
+      "result_id": "tied_fibre_product_moment_hierarchy",
+      "status": "strongest_premise",
+      "exact_statement": "On a tied Newton-face fibre, the complete signed moment hierarchy and exact product identity hold for the full inverse-sheet block; inverse-sheet product bounds alone are dominated by this theorem.",
+      "hypotheses": "A regular tied Newton-face fibre with the full algebraic inverse-sheet block and multiplicities counted as in the source theorem.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceFibreProduct.md"
+      ],
+      "named_consumers": [
+        "fixed_block_monodromy_gap",
+        "cover_visibility_consumer"
+      ],
+      "supersedes": [
+        "inverse-sheet product bounds that discard the signed moment hierarchy or split the full fibre block"
+      ],
+      "why_it_matters": "Any inverse-sheet attack must preserve the full block and spend the hierarchy through monodromy/attachment, not headline its weaker product corollary.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/TiedNewtonFaceFibreProduct.md"
+      ]
+    },
+    {
+      "result_id": "attachment_common_ancestry_selector",
+      "status": "strongest_premise",
+      "exact_statement": "The weighted attachment-tree selector is sharp and the transport loss is exactly the common-ancestry factor; the unresolved theorem is polynomial-specific compensation of that factor on the same selected object.",
+      "hypotheses": "Root-indexed attachment tree with the landed entrance-energy identities and nonnegative node weights.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AttachmentCoupledEnergySelector20260826.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/EntranceEnergyRatioBridge.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/RootIndexedEntranceAncestry.md"
+      ],
+      "named_consumers": [
+        "cover_visibility_consumer",
+        "combined_charge_attachment_gap"
+      ],
+      "supersedes": [
+        "abstract average selectors that ignore the exact common-ancestry transport loss"
+      ],
+      "why_it_matters": "It isolates the exact topology/metric compatibility factor and forbids pretending an abstract average already selects an attached polynomial pair.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/AttachmentCoupledEnergySelector20260826.md",
+        "research_corpus/Erdos1041/EntranceEnergyRatioBridge.md",
+        "research_corpus/Erdos1041/RootIndexedEntranceAncestry.md"
+      ]
+    },
+    {
+      "result_id": "common_envelope_cluster_induction",
+      "status": "strongest_premise",
+      "exact_statement": "For a proper root cluster S of size k, the conditional induction certificate rho_S^k max_{z in conv(S)} |r_S(z)| <= 1 suffices; it is strictly sharper than multiplying separately attained per-factor maxima.",
+      "hypotheses": "The closed degree-k theorem, a proper cluster S, rho_S its minimum-enclosing-disc radius, and the displayed common-path envelope inequality.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FourReturnPacketFailureAssimilation20260827.md"
+      ],
+      "named_consumers": [
+        "generic_closed_extension",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "products of independently attained per-factor maxima on a proper root cluster"
+      ],
+      "why_it_matters": "This is the only genuinely stronger survivor from the four returns and creates a new target-sufficient selector route without weakening the corpus.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/FourReturnPacketFailureAssimilation20260827.md"
+      ]
+    },
+    {
+      "result_id": "partial_cluster_subtree_monodromy",
+      "status": "strongest_premise",
+      "exact_statement": "A Jordan contour enclosing exactly one connected critical-edge subtree has one full cycle on the incident sheet block and fixes the complement; an average complete-lift length at most two on that moved block is target-sufficient.",
+      "hypotheses": "Generic ray-separated component, connected critical-edge subtree, and an isolating Jordan value domain inside the unit value disk.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialCriticalClusterMonodromyLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md"
+      ],
+      "named_consumers": [
+        "integrated_monodromy_perimeter_gap",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "full-fibre metric budgets that retain fixed sheets or inadmissible critical values"
+      ],
+      "why_it_matters": "It removes inadmissible critical values and fixed sheets from the metric budget; topology is occupied and only the integrated geometric cost remains.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/PartialCriticalClusterMonodromyLab.md",
+        "research_corpus/Erdos1041/FixedBlockQuadraticBudgetEquivalence.md"
+      ]
+    },
+    {
+      "result_id": "partial_cluster_preimage_perimeter_identity",
+      "status": "strongest_premise",
+      "exact_statement": "For a degree-d branched preimage component W and access arc alpha, the sum of all moved lollipop lift lengths is exactly 2 Lambda(alpha,W)+length(boundary W).",
+      "hypotheses": "A regular Jordan value boundary, one Jordan preimage component W, and a critical-value-free access arc from the zero fibre.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialClusterPreimagePerimeterIdentity.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_partial_cluster_preimage_perimeter.py"
+      ],
+      "named_consumers": [
+        "integrated_monodromy_perimeter_gap",
+        "monodromy_bergman_dichotomy_gap",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "opaque fixed-block average-length bounds that do not expose access length and preimage perimeter separately"
+      ],
+      "why_it_matters": "It turns the opaque fixed-block average into the exact geometric inequality 2 Lambda+perimeter<2d and creates a direct route plus a complementary Bergman route.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/PartialClusterPreimagePerimeterIdentity.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_partial_cluster_preimage_perimeter.py"
+      ]
+    },
+    {
+      "result_id": "singleton_cluster_limit_equivalence",
+      "status": "strongest_premise",
+      "exact_statement": "For an isolated simple critical point c, the mean length of the two complete lifts of a shrinking singleton critical-value lollipop converges to the total canonical inverse-ray arm length L(c).",
+      "hypotheses": "A simple critical point c with nonzero critical value distinct from all other critical values and lying in the open unit value disk.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdaptiveClusterSelectionLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_adaptive_cluster_selection.py"
+      ],
+      "named_consumers": [
+        "combined_charge_component_gap",
+        "partial_cluster_preimage_perimeter_gap",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "treating singleton critical-ray selection and shrinking-cluster monodromy as unrelated proof routes"
+      ],
+      "why_it_matters": "It identifies the combined-charge critical-ray selector as the singleton limit of the exact cluster budget, making these routes one proof throat. A proof that some admissible c has L(c)<2 immediately yields a strict singleton-cluster certificate.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/AdaptiveClusterSelectionLab.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_adaptive_cluster_selection.py"
+      ]
+    },
+    {
+      "result_id": "admissible_product_quantifier_firewall",
+      "status": "strongest_premise",
+      "exact_statement": "The target-sufficient admissible product is exactly product_v h_v, where h_v=(L(v)/2)/r_v^((k_v-1)/n). The Bergman-Polya certificate proves h_v<=1 on an explicit bulk cherry region. Universal per-cherry and per-rooted-subtree inequalities are stronger than the parent requires: an uncertified cherry with an admissible parent can remain open as multiplicative debt in its ancestor block. All 126 corpus misses and 178/180 stress misses are internal in this sense; only a miss whose parent is the virtual level-one cut is a genuine standalone base. The corpus has zero such terminal misses and stress has two, with largest sampled factor 0.853771268558. The exact open throat is the global admissible product via adaptive open-block closure, retaining certified-child slack and treating only virtual-cut misses separately.",
+      "hypotheses": "Simple generic critical points, canonical descending inverse-ray edge lengths, and the admissible set A={c:|f(c)|<1}.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/admissible_critical_arc_product_probe_tao_pipeline_receipt.json"
+      ],
+      "named_consumers": [
+        "admissible_adaptive_open_block_product_gap",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "universal per-cherry, per-node, or per-rooted-subtree inequalities stronger than the exact global admissible-product obligation"
+      ],
+      "why_it_matters": "It removes both the certified cherry region and the unnecessary universal-cherry obligation. Internal near-ties are now grafting debt, not a second independent base problem; the proof should close adaptive open blocks directly into the global parent-deciding product.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/AdmissibleCriticalArcProductLab.md",
+        "research_corpus/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py",
+        "research_corpus/Erdos1041/admissible_critical_arc_product_probe_tao_pipeline_receipt.json"
+      ]
+    },
+    {
+      "result_id": "grouped_cluster_near_regular_solution",
+      "status": "strongest_premise",
+      "exact_statement": "A single grouped critical-value lollipop proves Erdős 1041 on an open coefficient neighbourhood of every strict regular polygon in every degree, with exact model length 2(r-s)+(2 pi/n)s.",
+      "hypotheses": "A sufficiently small coefficient neighbourhood of z^n-r^n with 0<r<1 and the grouped critical-value contour retained inside the unit value disk.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GroupedCriticalClusterMonodromy.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/MergeTreeDiscriminantDichotomy.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/HardRegimeIsNearFekete.md"
+      ],
+      "named_consumers": [
+        "quantitative_near_fekete_cluster_transfer_gap",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "rederivation of a local connector near strict regular polygons without a quantitative hard-regime transfer"
+      ],
+      "why_it_matters": "It supplies the exact local endpoint mechanism; the remaining hard-regime splice is quantitative cluster control rather than a new local connector.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/GroupedCriticalClusterMonodromy.md",
+        "research_corpus/Erdos1041/MergeTreeDiscriminantDichotomy.md",
+        "research_corpus/Erdos1041/HardRegimeIsNearFekete.md"
+      ]
+    },
+    {
+      "result_id": "first_critical_pair_energy_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "A monic cubic with exact Gaussian-rational data refutes the proposed pointwise first-critical pair-energy cone for all sufficiently small positive perturbations.",
+      "hypotheses": "The explicit cubic family and the precise pair-energy inequality (PEC) in the source.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/FirstCriticalPairEnergyNoGo20260827.md"
+      ],
+      "named_consumers": [
+        "six_return_full_energy_budget"
+      ],
+      "supersedes": [
+        "the pointwise first-critical pair-energy cone and perturbative repairs that preserve the same false selector"
+      ],
+      "why_it_matters": "Pointwise first-critical energy selection is closed; only aggregate or differently coupled substitutes may launch.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/FirstCriticalPairEnergyNoGo20260827.md"
+      ]
+    },
+    {
+      "result_id": "fixed_pair_cegm_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "An exact quartic refutes the fixed-nearest-pair critical-energy geometric-mean selector within the admissible polynomial class.",
+      "hypotheses": "The explicit quartic, its exact critical ordering, and the fixed-pair CE-GM claim stated in the source.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/CEGMQuarticFixedPairNoGo.md"
+      ],
+      "named_consumers": [
+        "cover_visibility_consumer",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "the fixed-nearest-pair CE-GM selector"
+      ],
+      "why_it_matters": "The pair must be adaptive and attachment-compatible; a fixed nearest pair cannot be revived as the missing selector.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/CEGMQuarticFixedPairNoGo.md"
+      ]
+    },
+    {
+      "result_id": "full_block_l1_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "The tied-face full-block pointwise L1 bound is false even though the exact moment and product identities remain true.",
+      "hypotheses": "The tied Newton-face block and the pointwise L1 inequality isolated in the source countermodel.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceBlockL1NoGo.md"
+      ],
+      "named_consumers": [
+        "fixed_block_monodromy_gap"
+      ],
+      "supersedes": [
+        "the tied-face full-block pointwise L1 shortcut"
+      ],
+      "why_it_matters": "The fixed-block attack must exploit cancellation, variation, or monodromy rather than the refuted pointwise L1 shortcut.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/TiedNewtonFaceBlockL1NoGo.md"
+      ]
+    },
+    {
+      "result_id": "charged_lifetime_scalar_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "The abstract charged-lifetime scalar allocation does not force the required compatible pair; polynomial-specific structure is indispensable.",
+      "hypotheses": "The finite weighted-tree abstraction and scalar allocation assumptions in the source theorem.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ChargedLifetimeAllocationNoGo.md"
+      ],
+      "named_consumers": [
+        "attachment_common_ancestry_selector",
+        "combined_charge_attachment_gap"
+      ],
+      "supersedes": [
+        "purely scalar charged-lifetime allocation detached from polynomial attachment topology"
+      ],
+      "why_it_matters": "A scalar budget detached from topology cannot close the theorem; charge and attachment must live on the same component/pair.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/ChargedLifetimeAllocationNoGo.md"
+      ]
+    },
+    {
+      "result_id": "fixed_two_spoke_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "The exact tied-face two-spoke and sextic origin-spoke witnesses rule out a universal fixed straight-spoke pair construction.",
+      "hypotheses": "The explicit tied-face/sextic polynomial witnesses and straight-spoke containment claims in the sources.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.md",
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SexticMixedOriginSpokeNoGo.md"
+      ],
+      "named_consumers": [
+        "cover_visibility_consumer",
+        "erdos_1041_parent"
+      ],
+      "supersedes": [
+        "universal fixed straight two-spoke or origin-spoke connector constructions"
+      ],
+      "why_it_matters": "Curved, intrinsic, adaptive carriers remain open; fixed straight arms do not.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/TiedNewtonFaceTwoSpokeNoGo.md",
+        "research_corpus/Erdos1041/SexticMixedOriginSpokeNoGo.md"
+      ]
+    },
+    {
+      "result_id": "separate_critical_contour_no_go",
+      "status": "exact_no_go",
+      "exact_statement": "Separately resolving and circling every radial critical slit has full-cycle monodromy but double-charges the critical tree and exceeds the average length-two budget on open cubic and quartic charts.",
+      "hypotheses": "The canonical thin separate-slit lollipop on a generic ray-separated degree-k component.",
+      "authority_paths": [
+        "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/SeparateCriticalContourNoGo.md"
+      ],
+      "named_consumers": [
+        "integrated_monodromy_perimeter_gap",
+        "monodromy_bergman_dichotomy_gap"
+      ],
+      "supersedes": [
+        "separate-slit contours that circle every critical value independently and double-charge the critical tree"
+      ],
+      "why_it_matters": "Monodromy topology alone is insufficient; admissible critical values must be grouped and the integrated perimeter/access cost must be controlled.",
+      "public_authority_paths": [
+        "research_corpus/Erdos1041/SeparateCriticalContourNoGo.md"
+      ]
+    }
+  ]
+}

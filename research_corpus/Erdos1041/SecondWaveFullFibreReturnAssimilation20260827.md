@@ -11,7 +11,7 @@ description of the same surviving attachment/allocation gap.
 Source attachment:
 
 ```text
-/Users/willcook/.codex/attachments/9422a73c-9912-4a72-a37e-8cbda45fb16d/pasted-text.txt
+public-source-redacted://pasted-text.txt
 sha256 52a4740a72358434574cb98ea75ab9ad64442f34eb88cb67a8dd5f00654df941
 ```
 

@@ -224,6 +224,74 @@ arbitrary root moduli.  It remains an `L1` selection statement: the good index
 may change with `t`, and the exact five-root one-spoke countermodel prevents a
 fixed-index upgrade.
 
+### Theorem 3a (exact defect factor and quantitative strict selection)
+
+The pairwise identity contains more information than (RR).  Put
+
+```text
+B_(i,j) = |1-t a_i conjugate(a_j)|^2,
+X_(i,j) = (1-|a_j|^2)(1-t^2|a_i|^2) / B_(i,j).
+```
+
+For `t<1`, every `B_(i,j)` is positive and `0<=X_(i,j)<=1`.  The same
+identity therefore gives the exact factorisation
+
+```text
+product_i |f(t a_i)|
+ = exp(-E(t)) product_(i,j) sqrt(1-X_(i,j)),             (RR1)
+
+E(t) = sum_(m>=1) t^m |p_m|^2/m.
+```
+
+Define the two modulus deficits
+
+```text
+D_0 = sum_j (1-|a_j|^2),
+D_t = sum_i (1-t^2|a_i|^2).
+```
+
+Then
+
+```text
+min_i |f(t a_i)|
+ <= exp(-E(t)/n - D_0 D_t/(2n(1+t)^2)).                 (RR2)
+```
+
+In particular, if at least one root is in the open unit disk, then for every
+`0<=t<1` at least one actual root-ray point satisfies `|f(t a_i)|<1`.
+
+### Proof
+
+Equation (RR1) follows by writing
+
+```text
+|t a_i-a_j|^2 = B_(i,j)(1-X_(i,j))
+```
+
+and multiplying over the ordered pairs.  Next, `1-x<=exp(-x)` on `[0,1]` and
+
+```text
+B_(i,j) <= (1+t|a_i||a_j|)^2 <= (1+t)^2
+```
+
+give
+
+```text
+sum_(i,j) X_(i,j)
+ >= D_0 D_t/(1+t)^2.
+```
+
+Taking the geometric mean of the `n` radial values proves (RR2).  If some
+`|a_j|<1`, then `D_0>0`; also `D_t>0` for `t<1`, so the displayed exponential
+is strictly below one.  Equality in the original product contraction can
+therefore occur only when every root lies on the unit circle.
+
+This is the source-current strengthening extracted while assimilating the
+late 2026-08-27 return.  It upgrades the set-valued radial cover from closed
+containment to a quantitative open-sublevel margin.  It still does not select
+one index continuously, put two outer tails in one component, or contain the
+joining chord required by `TruncatedSpokeReduction.md`.
+
 ## 3. Convex-hull projection
 
 ### Theorem 4
@@ -339,19 +407,245 @@ free-pair FP--GM.  The new root-ray contraction and convex-hull projection are
 reusable constraints on those routes, but neither is an exact equivalent of
 the original theorem.
 
+## 7. Critical-arc product return: exact normalization and quantifier firewall
+
+A later return proposed, for the canonical inverse-ray edge length `L(c)` and
+critical value `v_c=f(c)`, the all-critical inequality
+
+```text
+product_c L(c)
+  <= 2^(n-1) (product_c |v_c|)^(1/n).                (PG)
+```
+
+The inequality `(PG)` is **not proved** by the return.  Its discriminant
+normalization is exact: the resultant identity
+
+```text
+n^n product_c |v_c| = |Delta(a_1,...,a_n)|^2
+```
+
+turns `(PG)` into the equivalent statement
+
+```text
+product_c L(c) <= (2^(n-1)/n) |Delta|^(2/n).         (PG-Delta)
+```
+
+This explains the scaling and the regular-polygon equality model without
+creating a proof.  It also exposes a separate logical gap in the advertised
+completion.  Let
+
+```text
+A = {c : |v_c| < 1},       B = {c : |v_c| >= 1},
+q_c = L(c)/(2 |v_c|^(1/n)).
+```
+
+Then `(PG)` says only `product_(A union B) q_c <= 1`.  Fekete says `A` is
+nonempty, but neither statement says that an index with `L(c)<2` belongs to
+`A`.  The following exact scalar model blocks that inference already at
+`n=3`:
+
+```text
+(|v_A|,L_A) = (1/16,3),       (|v_B|,L_B) = (8,1).
+```
+
+Here `|v_A v_B|=1/2<1`; the only admissible edge has length `3`; and the only
+short edge has inadmissible value `8`.  Nevertheless `(PG)` holds strictly,
+because
+
+```text
+L_A L_B = 3 < 4(1/2)^(1/3),
+```
+
+equivalently `(3/4)^3=27/64<1/2`.  This is a countermodel to the **scalar
+deduction**, not a claim that these four numbers are realised by one
+polynomial.
+
+The corrected product completion is therefore the admissible-subproduct
+inequality
+
+```text
+product_(c in A) L(c)
+  <= 2^|A| (product_(c in A) |v_c|)^(1/n).            (AP)
+```
+
+Indeed every factor `|v_c|` on the right is strictly below one, so `(AP)`
+gives `product_(c in A)L(c)<2^|A|` and hence some admissible `L(c)<2`.  Its
+canonical inverse-ray edge lies in `{|f|<1}` and proves the parent theorem in
+the generic case, with the existing closure machinery handling the boundary.
+
+There is an exact compensation form which shows what `(PG)` is missing:
+
+```text
+(PG) plus product_(c in B) q_c >= 1  implies (AP).     (COMP)
+```
+
+The proof is division of `product_(A union B)q_c<=1` by the positive
+inadmissible product.  Thus a global product attack must prove either `(AP)`
+directly or a lower compensation bound on the inadmissible edges.  Equality
+models and the discriminant alone do not supply that allocation.
+
+The same return also called
+`H^1(f^(-1)([0,v])) <= n|v|^(1/n)` established.  It cannot be imported: the
+source-current `StraightSpokeHubCriterionLab.md` records a degree-three
+continuation witness with ratio `1.065658`, and the merging pair can carry
+almost the whole fibre length.  That evidence is numerical rather than a new
+exact certificate here, so it rejects theorem status without being promoted
+to an exact counterexample.
+
+## 8. Return stream 07: configuration metric, strong-trace refutation, and envelope closure
+
+Two further incomplete parent-proof returns were preserved together under
+`state/formal_math/type_b_return_batches/erdos1041_20260827_return_stream_07`.
+Their proof-campaign completion class is `parent_advance_incomplete`: both
+contain valid auxiliary mathematics, but neither proves the parent theorem or
+an exact equivalent.
+
+The first return's convex-hull projection and discriminant/Fekete merger are
+already source-current.  Its weighted `L1` convex carrier is valid.  Composing
+it with `BarycentricEnvelope.md` yields the stronger exact power-mean cover
+lattice `(Bp)`: every `p in [1,infinity]` gives an exact union of nested convex
+carriers, with `p=1` the returned carrier, `p=2` the existing disc envelope,
+and `p=infinity` an intersection of root-centred discs.  This is a genuine
+cross-return/corpus consequence, but it remains auxiliary because no fixed
+carrier or carrier chain is proved to keep a root attachment of intrinsic
+length at most one.
+
+The configuration metric
+
+```text
+rho(w)^2 = sum_(f(z)=w, z in U) 1/|f'(z)|^2
+```
+
+also survives review at ordinary-proof authority.  The area formula gives
+`integral_D rho^2 dA = area(U)`, Minkowski bounds the Euclidean `l2` norm of
+lift lengths by `rho`-length, and a ramification index `p` produces cone angle
+`2*pi/p`.  These identities reduce the parent problem to a special
+metric-systolic assertion, but do not prove it.  Area alone cannot control the
+distance from the base fibre to a branch value because the value-disc boundary
+can cut off comparison balls; the return correctly leaves that assertion open.
+
+The second return's proposed decisive inequality
+
+```text
+L(c*) <= 2 |f(c*)|^(1/n),
+```
+
+at a minimum-modulus critical point is not a live conjecture.  It is the
+source-current strong first-merge completion already refuted by the pinned
+quartic in `research_packet.json::negative_results`: the recorded ratio is
+`1.004246913`.  A fresh replay of
+`check_erdos1041_affine_normalised_moduli.py --quick --json` again gives a
+separated value above one (`1.0032927905` on the finer pinned mesh).  The
+return's random degrees `2..8` scan therefore illustrates the known
+threshold-search failure, not positive theorem evidence.  The weaker
+minimum-over-admissible-hubs statement remains open.
+
+Its independent lobe-radius quantity
+
+```text
+S(f) = mu sum_j 1/|f'(a_j)|
+```
+
+equals the sum of the conformal radii of the first-level univalent lobes.  A
+conditioning-aware finite probe on well-separated roots through degree ten
+found no value above one and approached equality only near regular polygons.
+This is evidence only.  The tempting strengthening `S(f)<=mu^(1/n)` is
+numerically false (observed ratio `S/mu^(1/n)=1.1208246`), so capacity alone
+cannot prove the returned conjecture.  No implication from `S(f)<=1` to an
+integrated two-branch length bound is established.
+
+Terminal dispositions for the distinct new units are therefore:
+
+| unit | disposition | authority |
+|---|---|---|
+| closed normalization, projection, first merger, moment identities | `superseded_by_stronger_route` | existing corpus |
+| weighted `L1` convex cover | `composed_into_stronger_result` | ordinary exact proof `(Bp)` |
+| configuration metric identities | `landed` | ordinary exact proof, auxiliary |
+| special cone-metric systolic assertion | `blocked_external` | unproved decisive bridge |
+| minimum-critical strong trace inequality | `rejected_exactly` | source-current pinned counterexample replay |
+| lobe-radius sum `S(f)<=1` | `blocked_external` | conjecture with finite evidence |
+| capacity strengthening of the lobe-radius sum | `rejected_exactly` | numerical falsifier only; no theorem claim |
+
+The parent frontier is unchanged: COVER, componentwise combined charge,
+FP--GM, and the weaker admissible-hub minimum remain open.  The prescribed
+`p=1` attachment probe is now closed negatively and exactly.  On
+`f(z)=z^4-(99/100)^4`, the origin-to-root arm is safe with length `99/100`, but
+the common-carrier dual product at `t=1/2` is
+`(99/100)^4*3(3+2sqrt(2))/16>1`.  Hence no fixed weighted `L1` carrier contains
+the origin and a root, despite sharp COVER on that same equality family.  This
+rotates the campaign away from fixed-carrier attachment and back to a
+switching-carrier path, direct COVER, combined charge, or FP--GM.
+
+## 9. Return stream 08: fixed-block quadratic premise audited exactly
+
+Two additional returns were preserved under
+`state/formal_math/type_b_return_batches/erdos1041_20260827_return_stream_08`.
+The first presents a full parent proof conditional on a “fixed-block
+quadratic-budget alternative”; the second correctly declines a parent-proof
+claim and restates centroid and proper-cluster consumers.
+
+The first return's post-premise selection is valid.  Cauchy--Schwarz on the
+whole sheet-time product space selects an entire lift only after integration;
+a nontrivial cyclic monodromy then gives distinct endpoints.  However
+`FixedBlockQuadraticBudgetEquivalence.md` proves the sharper variational fact
+
+```text
+inf_(lambda>0) A(lambda)E(lambda)
+  = ((1/k) sum_(nu in B) length(z_nu))^2.
+```
+
+Thus the asserted quadratic alternative is exactly the missing average-length
+bound on one fixed safe monodromy block.  The source-current full-fibre theorem
+explicitly leaves safe-block localization open, and the charged-lifetime and
+moment results do not supply it.  The return therefore contains a correct
+conditional consumer but not a proof of the premise or the parent theorem.
+
+The second return's centroid--ellipse lemma is already canonical in
+`centroid_hub_budget_tao_pipeline_receipt.json`: it settles hub level and
+metric length but not spoke containment.  Its proper-cluster certificate is
+already present in stronger, fully projected form in
+`FourReturnPacketFailureAssimilation20260827.md`; universal proper-cluster
+selection remains open.  Its normalization and strictification are also
+source-current.
+
+Terminal dispositions are:
+
+| unit | disposition | authority |
+|---|---|---|
+| closed normalization and strictification | `superseded_by_stronger_route` | source-current generic closure and scaling |
+| fixed-block quadratic-budget alternative as a corpus consequence | `rejected_exactly` | variational equivalence plus explicit source-current safe-block residual |
+| whole-block Cauchy--Schwarz and cyclic-lift selection | `composed_into_stronger_result` | `FixedBlockQuadraticBudgetEquivalence.md` |
+| convex projection to the normalized root disc | `superseded_by_stronger_route` | existing projection theorem |
+| claimed full parent proof | `rejected_exactly` | depends on the unsupported fixed-block alternative |
+| centroid interior and pair-ellipse budget | `superseded_by_stronger_route` | canonical all-degree theorem; quintic Lean kernel |
+| centroid two-spoke containment | `blocked_external` | explicitly unproved; exact counterexamples forbid a universal promotion |
+| common-envelope proper-cluster certificate | `superseded_by_stronger_route` | existing projected certificate |
+| universal proper-cluster selection or complementary global connector | `blocked_external` | no proof supplied or source-current |
+
+The parent frontier is unchanged: integrated componentwise combined charge,
+COVER, FP--GM, and the weaker admissible-hub minimum remain the leading
+target-deciding routes.  The fixed-block formulation is retained as an exact
+equivalent target inside the integrated monodromy route, not as a completed
+producer.
+
 ## Claim boundary
 
-Proved here by ordinary mathematics: Theorems 1--4, including the forest laws
-(FP1)--(FP3), and the exact rejection of
-the returned endpoint composition.
+Proved here by ordinary mathematics: Theorems 1--4, including the quantitative
+root-ray strengthening Theorem 3a, the forest laws (FP1)--(FP3), the exact rejection of
+the returned endpoint composition, the discriminant normalization `(PG-Delta)`,
+the admissible-product completion `(AP)`, and the compensation implication `(COMP)`.
 
 Verified by exact/symbolic computation: the merge exponents, degeneration
-multiplicity, resultants, reciprocal coefficient inequality, cyclic
-classification, and the cubic pointwise no-go identities.
+multiplicity, resultants, reciprocal coefficient inequality, root-ray defect
+factor and rational lower-bound kernel, cyclic classification, the cubic
+pointwise no-go identities, the equivalence of `(PG)` and `(PG-Delta)` after
+raising to the `n`-th power, and the exact admissible-index scalar countermodel.
 
-Not proved: the critical-angle/monodromy selector, threshold--chord selector,
-FP--GM, combined charge, COVER, an all-face near-Fekete atlas, compact-away
-forcing, or unrestricted Erdős 1041.
+Not proved: `(PG)`, `(AP)`, the inadmissible compensation premise in `(COMP)`,
+the claimed whole-inverse-fibre length bound, the critical-angle/monodromy
+selector, threshold--chord selector, FP--GM, combined charge, COVER, an all-face
+near-Fekete atlas, compact-away forcing, the special configuration-metric
+systolic assertion, `S(f)<=1`, or unrestricted Erdős 1041.
 
 ## Replay
 

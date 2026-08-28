@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[5]
 PACKET_DIR = ROOT / "docs/formal_math/type_b_packets/erdos1041_frontier_coevolution_nonet_r4_2026_08_26"
-OUT_ROOT = Path("/Users/willcook/Downloads/erdos1041_frontier_coevolution_nonet_r4_20260826")
+OUT_ROOT = Path("public-source-redacted://erdos1041_frontier_coevolution_nonet_r4_20260826")
 PREDECESSOR_DIR = ROOT / "docs/formal_math/type_b_packets/erdos1041_frontier_coevolution_nonet_r3_2026_08_26"
 RETURN_INTAKE = ROOT / "state/formal_math/type_b_return_batches/erdos1041_20260826_return_stream_01/intake.json"
 PREDECESSOR_PORTFOLIO_SHA256 = "60a65b85e4d78d1180d37d45b8f4761a19b20af01464ed8396f101d15e7d91aa"

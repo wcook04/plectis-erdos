@@ -80,6 +80,29 @@ theorem exists_re_nonpos_of_sum_eq_zero
     norm_num
   linarith
 
+/-- A zero-sum family with a nonzero real-part contribution has a strictly
+negative-real member. -/
+theorem exists_re_neg_of_sum_eq_zero_of_some_re_ne_zero
+    {ι : Type*} [Fintype ι] (v : ι → ℂ)
+    (htrace : ∑ i, v i = 0)
+    (hreal : ∃ i, (v i).re ≠ 0) :
+    ∃ i, (v i).re < 0 := by
+  by_contra hneg
+  push Not at hneg
+  have hnonneg : ∀ i, 0 ≤ (v i).re := by
+    intro i
+    exact hneg i
+  rcases hreal with ⟨i₀, hi₀⟩
+  have hi₀pos : 0 < (v i₀).re :=
+    lt_of_le_of_ne (hnonneg i₀) (Ne.symm hi₀)
+  have hsum_pos : 0 < ∑ i, (v i).re :=
+    Finset.sum_pos' (fun i _ => hnonneg i)
+      ⟨i₀, Finset.mem_univ _, hi₀pos⟩
+  have hsum_zero : ∑ i, (v i).re = 0 := by
+    rw [← Complex.re_sum, htrace]
+    norm_num
+  linarith
+
 /-- The load-bearing finite trace principle: automatic power-sum cancellation
 produces a critical value whose real part is nonpositive. -/
 theorem exists_nonpositive_critical_value

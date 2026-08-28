@@ -1,0 +1,61 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "batch_id": "erdos1041_20260827_return_stream_06",
+  "return_id": "return_001",
+  "research_actor_mode": "type_b_advisory_plus_type_a_adjudication",
+  "proof_campaign_completion_class": "residual_only_invalid_completion",
+  "input_stage": "generation",
+  "output_stage": "verification_exposition_and_canonicalization",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md",
+  "human_understanding_delta": "The all-critical arc-product conjecture has a clean discriminant form, but it does not select an admissible short edge. An exact scalar countermodel blocks the advertised inference. The corrected target-deciding statement is the admissible subproduct inequality, or equivalently the global conjecture plus an explicit lower compensation factor over inadmissible critical points.",
+  "verification_state": "ordinary exact algebraic proof; resultant normalization, radical-free scalar countermodel, and compensation kernel replay in exact rational arithmetic",
+  "publication_or_review_state": "private authoring corpus; not externally reviewed",
+  "canonicalization_state": "the conjecture is recorded as an auxiliary conditional route under the existing admissible critical-branch mechanism, not promoted to the canonical frontier or stated as proved",
+  "unresolved_downstream_bottleneck": "Prove the admissible critical-arc product inequality directly, prove the inadmissible normalized-length compensation, or return to combined charge/COVER. The all-critical product conjecture itself also remains unproved.",
+  "next_stage_owner": "Erdos1041 admissible critical-branch, combined-charge, or COVER frontier",
+  "proof_effect": "exact_residual_and_inference_rejection_landed",
+  "source": {
+    "path": "public-source-redacted://pasted-text.txt",
+    "byte_length": 7366,
+    "sha256": "483c4e57b86392e2aa92560f5696b83e93ea1d9c646c401dec32f067fec0b508",
+    "authority": "advisory return"
+  },
+  "claim_dispositions": [
+    {
+      "claim_id": "r006_c01_discriminant_critical_value_product",
+      "disposition": "superseded_by_stronger_route"
+    },
+    {
+      "claim_id": "r006_c02_canonical_inverse_ray_arc_reduction",
+      "disposition": "superseded_by_stronger_route"
+    },
+    {
+      "claim_id": "r006_c03_whole_inverse_fibre_length_bound",
+      "disposition": "blocked_external"
+    },
+    {
+      "claim_id": "r006_c04_all_critical_arc_product_conjecture",
+      "disposition": "strengthened_and_landed"
+    },
+    {
+      "claim_id": "r006_c05_product_conjecture_parent_implication",
+      "disposition": "rejected_exactly"
+    },
+    {
+      "claim_id": "r006_c06_tree_integration_by_parts_residual",
+      "disposition": "superseded_by_stronger_route"
+    }
+  ],
+  "paper_assimilation": {
+    "paper": "Erdos 1041 private research corpus",
+    "section": "admissible critical-arc product quantifier firewall",
+    "canonical_mechanism_family": "admissible critical-branch metric selection",
+    "relation": "exact normalization and corrected sufficient condition; conjectural producer remains open",
+    "understanding_delta": "A global geometric mean over every critical edge loses the level-one admissibility label. The missing datum is exactly a lower product compensation on the inadmissible edges.",
+    "evidence_boundary": "exact algebra and exact scalar inference countermodel; no polynomial counterexample to the product conjecture and no proof of the admissible product inequality",
+    "hard_step": "couple inverse-branch length to critical-value level without letting an inadmissible short edge absorb the global product gain",
+    "meaningful_failed_route": "combine the all-critical product inequality and Fekete's critical-value product and assume their two existential indices coincide",
+    "open_remainder": "admissible subproduct, inadmissible compensation, componentwise combined charge, COVER, or another target-deciding mechanism"
+  }
+}

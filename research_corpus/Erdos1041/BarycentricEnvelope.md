@@ -54,6 +54,107 @@ attachment remains present while its weight vectors are linearly
 interpolated.  This correlation is absent from the already-refuted
 independent-strip allocation.
 
+## 1a. Power-mean convex-cover lattice
+
+The quadratic representation is one member of a full exact family.  For
+`1 <= p < infinity`, positive `lambda_j` with `prod_j lambda_j=1`, and
+`G_T=T^(1/n)`, put
+
+```text
+C_(p,lambda)(T)
+  = {z : (1/n) sum_j (lambda_j |z-a_j|)^p <= G_T^p}.
+```
+
+Also put
+
+```text
+C_(infinity,lambda)(T)
+  = intersection_j closedDisc(a_j, G_T/lambda_j).
+```
+
+Then, for every `p in [1,infinity]`,
+
+```text
+K_T = union_(prod lambda=1) C_(p,lambda)(T).             (Bp)
+```
+
+For finite `p`, AM--GM applied to the `n` nonnegative numbers
+`(lambda_j|z-a_j|)^p` proves that every carrier lies in `K_T`.  Conversely,
+if `f(z) != 0`, set `G=|f(z)|^(1/n)` and
+`lambda_j=G/|z-a_j|`.  Their product is one and every normalized distance is
+exactly `G`, so `z` lies in the carrier whenever `G<=G_T`.  At a root `a_i`,
+take `lambda_j=epsilon` for `j!=i` and
+`lambda_i=epsilon^(-(n-1))`; a sufficiently small positive `epsilon` puts
+`a_i` in the carrier.  The same canonical weights prove the `p=infinity`
+case directly.
+
+Each carrier is convex.  For fixed weights the power-mean inequality gives
+
+```text
+C_(q,lambda)(T) subset C_(p,lambda)(T)   (1 <= p <= q <= infinity).
+```
+
+Thus the returned weighted-distance carrier (`p=1`), the disc carrier in
+(A) (`p=2`, after replacing its weights by `lambda_j^2`), and the new
+intersection-of-root-discs carrier (`p=infinity`) are not competing
+representations but a nested lattice with the same exact union.  The result
+does not supply a length bound: changing `lambda` along a chain can still
+destroy attachment to a fixed root, which is precisely the quantifier kept
+open by COVER.
+
+### 1b. Exact attachment no-go at the regular quartic
+
+The largest fixed-weight member `p=1` still cannot prove COVER.  For two
+points `x,y`, define
+
+```text
+M(x,y) = inf_(prod lambda=1)
+           max(sum_j lambda_j|x-a_j|, sum_j lambda_j|y-a_j|).
+```
+
+Convex duality and AM--GM give the exact minimax formula
+
+```text
+M(x,y)/n
+ = max_(0<=t<=1)
+     (product_j (t|x-a_j|+(1-t)|y-a_j|))^(1/n).       (Bdual)
+```
+
+Indeed `max(A,B)=max_t(tA+(1-t)B)`, strong convex duality exchanges the
+infimum and maximum, and the product-one minimum of `sum lambda_j c_j` is
+`n(product c_j)^(1/n)`.  Endpoint zero factors follow by a limit.
+
+Now take the roots `r,ir,-r,-ir`, with `r=99/100`, let `x=0`, and let `y=r`.
+At `t=1/2` the four affine distances are
+
+```text
+r/2,  r(1+sqrt(2))/2,  3r/2,  r(1+sqrt(2))/2,
+```
+
+whose product is
+
+```text
+r^4 * 3(3+2sqrt(2))/16 > r^4 * 87/80 > 1.            (Bno)
+```
+
+The first strict inequality uses `sqrt(2)>7/5`; the second is exact integer
+arithmetic.  Hence no `p=1` carrier in `K_1` contains both the origin and any
+root.  Nevertheless every radial arm is genuinely safe:
+
+```text
+|f(sr)| = r^4(1-s^4) < 1  for 0<=s<1,
+```
+
+and has length `r<1`.  Thus the common-carrier certificate fails on the
+parent problem's equality family while COVER itself holds sharply.  Optimizing
+the fixed-weight power-mean lattice cannot close the attachment quantifier;
+future convex-cover work must allow carrier switching with a separately
+controlled path, or leave this coordinate.
+
+The two scalar inequalities in `(Bno)` and the radial strictness are formalized
+in `PowerMeanCarrierAttachmentNoGo.lean` and replayed independently by
+`scripts/check_erdos1041_power_mean_carrier_attachment_no_go.py`.
+
 ## 2. Inverse-square descent disc
 
 For a non-root `z`, put

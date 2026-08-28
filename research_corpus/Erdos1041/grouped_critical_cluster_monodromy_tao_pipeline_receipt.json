@@ -1,0 +1,20 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "artifact_id": "grouped_critical_cluster_monodromy",
+  "date": "2026-08-27",
+  "status": "ordinary_exact_all_degree_local_positive_result",
+  "source_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/GroupedCriticalClusterMonodromy.md",
+  "checker_path": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_grouped_critical_cluster_monodromy.py",
+  "result": {
+    "proved": "For f_0(z)=z^n-r^n, the lollipop that stems to and circles the whole critical-value cluster at radius q has n-cycle monodromy and every complete lift has exact length 2r-2(1-pi/n)q^(1/n). In every degree q can be chosen so this is below two, and the certificate persists on an open coefficient neighbourhood of f_0.",
+    "human_understanding_delta": "The cluster-aware contour surviving the separate-slit no-go is constructive, all-degree, and locally stable. It charges the collapsed critical-value group once; for n>=4 its circular cost actually improves the two-radii path. This supplies the qualitative near-regular half requested by the merge-tree discriminant dichotomy.",
+    "verification_state": "PASS ordinary exact proof; PASS exact Fraction replay using pi<355/113; PASS deterministic grouped-loop continuation in degrees 3 through 10 with coarse/fine drift guards and full-cycle checks",
+    "lean_scope": "No Lean theorem was added. The load-bearing new result is an unbranched-covering continuity theorem for piecewise smooth lifted paths; the scalar pi inequalities are replayed exactly, and formalizing only them would not strengthen the analytic authority.",
+    "claim_boundary": "The coefficient neighbourhood is qualitative and shrinks as r tends to one. The theorem does not convert the discriminant bound into sufficient cluster control, and it does not directly cover hard witnesses whose critical cluster crosses the unit value circle. Partial admissible clusters, complementary Bergman allocation, combined charge, COVER, FP--GM, and unrestricted Erdős 1041 remain open.",
+    "surviving_frontier": "Quantify the grouped-loop stability in critical-value/merge-tree variables, or construct a partial admissible-cluster moved block when some critical values lie outside the unit value disk."
+  },
+  "validation_commands": [
+    "./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_grouped_critical_cluster_monodromy.py"
+  ]
+}

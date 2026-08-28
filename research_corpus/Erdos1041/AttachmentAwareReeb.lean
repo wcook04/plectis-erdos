@@ -27,6 +27,11 @@ ordinary proof leans on.
 Riemann–Hurwitz, the monodromy transposition argument, the strip
 diffeomorphism, and the skeleton limits of Theorem 3 are carried by the ordinary
 proof and are not encoded here.
+
+This is a standalone focused kernel: `ErdosProblems.Root` does not import it.
+Successful Lean replay validates only the algebraic and combinatorial lemmas
+listed above; it does not formalize the ordinary Reeb decomposition or the
+metric conclusion stated in `AttachmentAwareReeb.md`.
 -/
 
 namespace ErdosProblems.Erdos1041.AttachmentAwareReeb

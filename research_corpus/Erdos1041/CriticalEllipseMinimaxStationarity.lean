@@ -173,6 +173,21 @@ theorem ray_mem_descentDisc_iff_le_projection
     apply mul_nonpos_of_nonneg_of_nonpos (le_of_lt hspos)
     linarith
 
+/-- A strict projection bound gives strict entry into the descent disc. -/
+theorem ray_mem_descentDisc_of_lt_projection
+    {dx dy ux uy s : ℝ}
+    (hunit : ux ^ 2 + uy ^ 2 = 1)
+    (hspos : 0 < s)
+    (hsprojection : s < 2 * (dx * ux + dy * uy)) :
+    (s * ux - dx) ^ 2 + (s * uy - dy) ^ 2 < dx ^ 2 + dy ^ 2 := by
+  have hinner :
+      s * (ux ^ 2 + uy ^ 2) - 2 * (dx * ux + dy * uy) < 0 := by
+    nlinarith [hunit]
+  have hfactor :
+      s * (s * (ux ^ 2 + uy ^ 2) - 2 * (dx * ux + dy * uy)) < 0 :=
+    mul_neg_of_pos_of_neg hspos hinner
+  nlinarith [descentDisc_ray_squaredDifference dx dy ux uy s]
+
 /-- A three-contact coordinate balance has zero squared residual.  This is the
 scalar kernel consumed after planar Carathéodory reduces the active set. -/
 theorem threeContact_balance_residual
