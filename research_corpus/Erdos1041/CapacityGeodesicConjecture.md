@@ -453,6 +453,15 @@ Three sub-questions, in increasing order of strength.
    `1/d_j ≤ Σ_{k≠j} 1/d_k`, so a root close to `c*` forces another root close to
    `c*`. What is missing is the step from there to which two lobes actually
    touch. Tracked as `cap_quick_erdos1041_decide_merging_pair_nearest_pa_20d69b8f9d6d`.
+
+   **Update 2026-08-28: Claim L is FALSE away from ties.** The gradient-proxy
+   instrument this paragraph asks for was built and refutes Claim L at tie
+   separations `1.001` (degrees 6 and 10) and `1.05` (degree 8) — the last of
+   which is the guard level at which the flat-objective retest table above
+   reads `1.0000000`. See [ClaimLRefutation.md](ClaimLRefutation.md). The
+   metric floor of (C) for the **merging** pair survives at every witness
+   (worst `0.594`), but it can no longer be closed through the nearest-pair
+   theorem; it is now a standalone open obligation.
    *A proof of the nearest-pair case, for the record, since the directory cites
    it without a proof sketch:* normalise `ρ = 1`, so `prod_k d_k = 1`, and
    suppose `d_(1) + d_(2) > 2`. Then `d_(2) > 1`, and `d_k ≥ d_(2)` for `k ≥ 2`

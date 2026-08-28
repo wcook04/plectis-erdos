@@ -1,7 +1,7 @@
 # Erdős 1041 research corpus
 
 This directory is the complete public-safe committed research corpus for
-Erdős Problem 1041 at source checkpoint `a6e3ba8d74e094daeb36d7b6faadf3fa2beddc41`. The unrestricted
+Erdős Problem 1041 at source checkpoint `7f2f99c17885e17e23017e4c86d7c034842b107d`. The unrestricted
 problem remains open; these files contain proved conditional reductions,
 Lean-checked statements, exact computations, counterexamples, no-go results,
 assimilation records, and live proof-frontier notes. No navigation label or

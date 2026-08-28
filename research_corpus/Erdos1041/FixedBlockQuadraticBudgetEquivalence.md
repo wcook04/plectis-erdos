@@ -122,6 +122,76 @@ when the monodromy is nontrivial.  A successful integrated-loop proof has two
 precise options: construct fixed-point-free monodromy on the budgeted block,
 or prove the fixed sheets pay their baseline cost.
 
+### 2.2 Quantitative compensation: only unpaid fixed slack is lost
+
+The binary condition in `(FC1)` has an exact quantitative refinement.  Let
+`m=|M|>0`, `f=|F|`, and suppose only that
+
+```text
+sum_(nu in B) L_nu <= C(m+f).
+```
+
+Put
+
+```text
+S_F = C f - sum_(nu in F) L_nu.
+```
+
+Subtracting the fixed contribution gives
+
+```text
+sum_(nu in M) L_nu <= C m + S_F,                       (FC2)
+min_(nu in M) L_nu <= C + S_F/m.                       (FC3)
+```
+
+More generally, if the whole-fibre estimate itself has strict margin
+`Delta`,
+
+```text
+sum_(nu in B) L_nu <= C(m+f) - Delta,
+```
+
+then the exact net-margin form is
+
+```text
+sum_(nu in M) L_nu <= C m + S_F - Delta,                (FC3a)
+min_(nu in M) L_nu <= C + (S_F-Delta)/m.                (FC3b)
+```
+
+Consequently `Delta>S_F` is precisely sufficient for a moved lift of length
+strictly below `C`.  This separates the two missing analytic quantities: the
+geometric construction must produce a strict whole-fibre margin `Delta` and
+control the cheap fixed-sheet loss `S_F`, but it need not force `S_F<=0`.
+
+Thus the fixed-sheet average need not be at least `C`.  A cheap fixed block is
+permitted, and its total unpaid slack is exactly the additive penalty paid by
+the selected moved lift.  The three-sheet model above has `S_F=2 delta`, so
+`(FC3)` gives `C+delta` and is attained by both moved sheets; the coefficient
+and denominator are sharp.
+
+For the Erdős consumer, take `C=2`.  A whole-fibre loop budget now reduces to
+the weaker geometric interface
+
+```text
+some moved lift has length <= 2 +
+  (2|F| - total fixed-lift length)/|M|.                 (FC4)
+```
+
+To recover the sharp target directly one still needs nonpositive fixed slack,
+but `(FC4)` exposes how a second source of strict metric margin can pay for a
+cheap fixed block.  A grouped-cluster, Bergman, circumradius, or Fekete deficit
+only has to dominate the displayed normalized slack; it need not prove a
+separate fixed-sheet average lower bound of two.  This compensated margin
+comparison is the first unsupported downstream implication for the
+whole-fibre route.
+
+`FixedBlockCompensation.lean` formalizes the finite sum-selection kernel,
+`(FC2)`, the net-margin form `(FC3a)`, the zero-slack consumer, and the sharp
+three-sheet equality model.
+Focused Lean validation is currently deferred by the repository's low-disk
+single-flight guard; the ordinary derivation above and the exact rational
+checker remain the present authority.
+
 ## 3. Why this does not prove the parent theorem
 
 The source-current full-fibre angular theorem bounds integrated lengths only
