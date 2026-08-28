@@ -79,6 +79,26 @@ H(q,r,c)=(1-r^2)[q(1+r^2)-rc(1+q^2)]
 selector/interval lemma to produce one fixed ray whose optimized barrier is
 below the regular barrier.
 
+The angular half of `DGP3` is exact.  The kernel decomposes as
+
+```text
+H(q,r,c)=(q-rc)/(q^2+r^2-2qrc)
+         -(qr^2-rc)/(1+q^2r^2-2qrc),
+```
+
+and direct differentiation gives
+
+```text
+d^2H/dc^2=4qr^2[(q^2-r^2)/(q^2+r^2-2qrc)^3
+                +(1-q^2r^2)/(1+q^2r^2-2qrc)^3] > 0.
+```
+
+Hence every pair kernel is strictly convex in the pair cosine and lies above
+its tangent at `c=-1/2`.  Exact minimization of the resulting weighted
+three-cosine energy reduces `DGP3` to a piecewise rational inequality in only
+`(r_1,r_2,r_3,q)`.  A global falsifier search minimizes that radial residual
+at equal radii to numerical precision; the rational inequality is still open.
+
 ## Prior-art firewall
 
 Dubinin proved that a rotationally symmetric finite Blaschke product maximizes
