@@ -68,4 +68,21 @@ theorem energy_controls_action
     nlinarith [mul_le_mul_of_nonneg_right hFS hspeed]
   nlinarith
 
+/-- Strict mass slack and positive speed give strict action control. -/
+theorem energy_controls_action_strict_of_strict_mass
+    {F S n speedSq dissipation : ℝ}
+    (hn : 0 < n) (hFS : n < F * S) (hspeed : 0 < speedSq)
+    (hdiss : n * dissipation = 2 * F * S * speedSq) :
+    2 * speedSq < dissipation := by
+  have hmul : n * speedSq < F * S * speedSq :=
+    mul_lt_mul_of_pos_right hFS hspeed
+  have hbound : 2 * n * speedSq < n * dissipation := by
+    rw [hdiss]
+    nlinarith [hmul]
+  by_contra hnot
+  have hge : dissipation ≤ 2 * speedSq := le_of_not_gt hnot
+  have hmul_le : n * dissipation ≤ n * (2 * speedSq) :=
+    mul_le_mul_of_nonneg_left hge (le_of_lt hn)
+  nlinarith [hbound, hmul_le]
+
 end ErdosProblems.Erdos1041.BarycentricTargetDisc

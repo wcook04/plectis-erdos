@@ -220,6 +220,66 @@ theorem two_add_le_two_of_disk_inverse_balance
   rw [hcancel] at hstrict
   linarith
 
+/-- A strict diameter margin makes the global two-nearest-root budget strict. -/
+theorem two_add_lt_two_of_disk_inverse_balance_of_strict_diameter
+    {N t δ e : ℝ}
+    (hN : 2 ≤ N) (ht1 : t < 1)
+    (hδ : 0 < δ) (hδe : δ ≤ e) (hδ1 : δ ≤ 1)
+    (hemax : e < 1 + t) (hbal : e ≤ (N - 1) * δ)
+    (hstar : N ≤ (1 - t ^ 2) * (1 / δ ^ 2 + (N - 1) / e ^ 2)) :
+    δ + e < 2 := by
+  have hupper := two_add_le_two_of_disk_inverse_balance hN ht1 hδ hδe hδ1
+    (le_of_lt hemax) hbal hstar
+  by_contra hnot
+  have hge : 2 ≤ δ + e := le_of_not_gt hnot
+  have hsum : δ + e = 2 := le_antisymm hupper hge
+  have hgap : 1 - t < δ := by linarith
+  have hgap0 : 0 ≤ 1 - δ := by linarith
+  have htgap : 1 - δ < t := by linarith
+  have htsum : 0 < t + (1 - δ) := by nlinarith
+  have hsquares : (1 - δ) ^ 2 < t ^ 2 := by
+    have hfac : 0 < (t - (1 - δ)) * (t + (1 - δ)) :=
+      mul_pos (sub_pos.mpr htgap) htsum
+    nlinarith
+  have hscale : 1 - t ^ 2 < δ * (2 - δ) := by nlinarith [hsquares]
+  have hepos : 0 < e := by nlinarith [hsum, hδ1]
+  have htwodelta : 2 - δ = e := by linarith
+  have hscale' : 1 - t ^ 2 < δ * e := by
+    calc
+      1 - t ^ 2 < δ * (2 - δ) := hscale
+      _ = δ * e := by rw [htwodelta]
+  have hApos : 0 < 1 / δ ^ 2 + (N - 1) / e ^ 2 := by
+    have hleft : 0 < 1 / δ ^ 2 := one_div_pos.mpr (sq_pos_of_pos hδ)
+    have hright : 0 ≤ (N - 1) / e ^ 2 :=
+      div_nonneg (by linarith) (sq_nonneg e)
+    linarith
+  have hstrict :
+      N < δ * e * (1 / δ ^ 2 + (N - 1) / e ^ 2) := by
+    have hmul := mul_lt_mul_of_pos_right hscale' hApos
+    exact lt_of_le_of_lt hstar hmul
+  set x : ℝ := e / δ with hx
+  have hxpos : 0 < x := by simp only [hx]; positivity
+  have hx1 : 1 ≤ x := by
+    simp only [hx]
+    exact (le_div_iff₀ hδ).2 (by simpa using hδe)
+  have hxN : x ≤ N - 1 := by
+    simp only [hx]
+    exact (div_le_iff₀ hδ).2 hbal
+  have hquad : (x - 1) * (x - (N - 1)) ≤ 0 :=
+    mul_nonpos_of_nonneg_of_nonpos (sub_nonneg.mpr hx1) (sub_nonpos.mpr hxN)
+  have hpoly : x ^ 2 + (N - 1) ≤ N * x := by nlinarith [hquad]
+  have hratio : x + (N - 1) / x ≤ N := by
+    have hid : x + (N - 1) / x = (x ^ 2 + (N - 1)) / x := by
+      field_simp
+    rw [hid]
+    exact (div_le_iff₀ hxpos).2 hpoly
+  have hcancel :
+      δ * e * (1 / δ ^ 2 + (N - 1) / e ^ 2) = x + (N - 1) / x := by
+    simp only [hx]
+    field_simp
+  rw [hcancel] at hstrict
+  linarith
+
 /-! ## The critical two-root proximity theorem -/
 
 open Finset in

@@ -407,4 +407,29 @@ theorem newtonReciprocalVector_supportingHalfPlane
   apply neg_inv_re_nonpos_of_re_nonneg
   exact reciprocal_sum_re_nonneg w hw
 
+/-- A strictly positive displacement makes the supported Newton vector point
+strictly into the inward half-plane. -/
+theorem newtonReciprocalVector_strictly_inside_of_some_strict_displacement
+    {ι : Type*} [Fintype ι] (w : ι → ℂ)
+    (hw : ∀ i, 0 ≤ (w i).re) {i₀ : ι} (hi₀ : 0 < (w i₀).re) :
+    (-(∑ i, (w i)⁻¹)⁻¹).re < 0 := by
+  have hsum : 0 < (∑ i, (w i)⁻¹).re := by
+    rw [Complex.re_sum]
+    refine Finset.sum_pos' ?_ ⟨i₀, Finset.mem_univ _, ?_⟩
+    · intro i hi
+      exact inv_re_nonneg_of_re_nonneg (hw i)
+    · rw [Complex.inv_re]
+      exact div_pos hi₀ (Complex.normSq_pos.mpr (by
+        intro hzero
+        rw [hzero] at hi₀
+        norm_num at hi₀))
+  have hsum_ne : (∑ i, (w i)⁻¹) ≠ 0 := by
+    intro hzero
+    rw [hzero] at hsum
+    exact (lt_irrefl 0) hsum
+  simp only [Complex.neg_re]
+  apply neg_lt_zero.mpr
+  rw [Complex.inv_re]
+  exact div_pos hsum (Complex.normSq_pos.mpr hsum_ne)
+
 end ErdosProblems.Erdos1041

@@ -29,7 +29,7 @@
   },
   "source_manifest": [
     {
-      "path": "/Users/willcook/.codex/attachments/d41c67c0-637d-48f4-a2f6-101d887da879/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "sha256": "ce44d82aa03eb157c4476e874230216323ae4326c55ae788e1ff3f7a06abd435"
     }
   ]

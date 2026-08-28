@@ -28,32 +28,32 @@
   "source_manifest": [
     {
       "sha256": "822ed7d0b34cf9962d0632f87c3668531ca692b4f4268d4063f99f9c30857f19",
-      "path": "/Users/willcook/.codex/attachments/393b92c0-4aef-4e34-ab89-1e8ac2b06841/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "return_id": "return_001"
     },
     {
       "sha256": "d43ac15e21e2939e54c376f1bc5c87990f751e44604d8fd3355612f856c6a824",
-      "path": "/Users/willcook/.codex/attachments/d1878644-5021-4630-b2f1-20bf9d0bd23c/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "return_id": "return_002"
     },
     {
       "sha256": "5d679c490e4b3a3acc46b2f6237e48ea1c1af8520f2b917dedccfdaccd034333",
-      "path": "/Users/willcook/.codex/attachments/81512df7-2317-4edd-b596-919cc3a6b6c8/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "return_id": "return_003"
     },
     {
       "sha256": "801a024dfc7f151e15cfee1bdaa40617b2422dd1520db77417ca5b2137a188ba",
-      "path": "/Users/willcook/.codex/attachments/7c42b332-5fb3-4a49-9bba-b47107910d9e/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "return_id": "return_004"
     },
     {
       "sha256": "694e9040fbff81f5c201f4e2c3c01541cb77a991d9fba0bb08dc632a1aef7ee0",
-      "path": "/Users/willcook/.codex/attachments/8c01dbcb-e35f-4434-abc5-23a691e47f0d/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "return_id": "return_005"
     },
     {
       "sha256": "5eee4b835ed6ca8bfe20c62703c8eef138d69eef4e28e955d9db12392cad02b3",
-      "path": "/Users/willcook/.codex/attachments/175ebf3b-6c5b-4c45-a648-82a96a74fe0c/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "return_id": "return_006"
     }
   ]

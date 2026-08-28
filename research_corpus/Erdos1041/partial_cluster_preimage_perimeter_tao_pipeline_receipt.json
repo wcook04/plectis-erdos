@@ -1,0 +1,24 @@
+{
+  "schema": "tao_pipeline_receipt_v1",
+  "problem_id": "erdos_1041",
+  "input_stage": "generation",
+  "output_stage": "verification_and_exposition",
+  "artifact": "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/PartialClusterPreimagePerimeterIdentity.md",
+  "human_understanding_delta": "The moved-block lollipop average is exactly twice the total lifted access-stem length plus the perimeter of one branched preimage component, divided by its degree.  This replaces an opaque inverse-branch average by a concrete geometric inequality and splits the next packets into a direct perimeter/access desk and a complementary Bergman dichotomy desk.",
+  "verification_state": "ordinary exact covering-space and one-dimensional area-formula proof; exact rational finite bookkeeping and regular-family regression in the companion checker",
+  "publication_or_review_state": "private source-authority research note; not externally reviewed",
+  "canonicalization_state": "new exact interface between partial-cluster monodromy, perimeter/coarea, and the fixed-block consumer",
+  "unresolved_downstream_bottleneck": "Prove existence of an admissible component and access arc with 2 Lambda + perimeter < 2 degree, or prove that failure forces the existing Bergman/COVER certificate.",
+  "next_stage_owner": "packet-frontier coevolution desks for integrated monodromy and Bergman complement",
+  "paper_assimilation": {
+    "paper": "erdos-1041-lemniscate-newton-flow",
+    "section": "future integrated monodromy and component-geometry synthesis",
+    "canonical_mechanism_family": "partial critical-cluster monodromy",
+    "relation": "exact target-deciding sufficient criterion",
+    "understanding_delta": "Identifies the complete geometric cost paid by a grouped critical-value lollipop.",
+    "evidence_boundary": "ordinary exact theorem plus exact scalar regression; no universal certificate",
+    "hard_step": "control the access forest and boundary perimeter simultaneously or force a complementary short component",
+    "meaningful_failed_route": "pointwise component-block L1 contraction remains false and is not used",
+    "open_remainder": "unrestricted Erdős 1041"
+  }
+}

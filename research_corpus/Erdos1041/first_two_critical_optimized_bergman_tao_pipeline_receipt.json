@@ -28,7 +28,7 @@
   "source_manifest": [
     {
       "sha256": "822ed7d0b34cf9962d0632f87c3668531ca692b4f4268d4063f99f9c30857f19",
-      "path": "/Users/willcook/.codex/attachments/393b92c0-4aef-4e34-ab89-1e8ac2b06841/pasted-text.txt",
+      "path": "public-source-redacted://pasted-text.txt",
       "return_id": "return_001"
     }
   ]

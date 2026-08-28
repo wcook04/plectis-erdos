@@ -56,4 +56,15 @@ theorem exists_length_le_two_of_area_forcing
     ConnectedClusterBergman.length_le_two_of_cluster_certificate
       (hgeodesic i) hi⟩
 
+/-- A strict area-times-barrier certificate gives strict normalized length. -/
+theorem length_lt_two_of_strict_cluster_certificate
+    {length areaFactor logarithmicFactor : ℝ}
+    (hgeodesic : length ^ 2 ≤ 2 * areaFactor * logarithmicFactor)
+    (hcertificate : areaFactor * logarithmicFactor < 2) :
+    length < 2 := by
+  have hsquare : length ^ 2 < 4 := by nlinarith
+  by_contra hnot
+  have hge : 2 ≤ length := le_of_not_gt hnot
+  nlinarith [sq_nonneg (length - 2)]
+
 end ErdosProblems.Erdos1041.ConnectedClusterAreaForcing

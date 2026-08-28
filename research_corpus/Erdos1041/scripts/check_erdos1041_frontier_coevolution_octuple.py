@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[5]
 PACKET_DIR = ROOT / "docs/formal_math/type_b_packets/erdos1041_frontier_coevolution_octuple_2026_08_26"
-OUT_ROOT = Path("/Users/willcook/Downloads/erdos1041_frontier_coevolution_octuple_20260826")
+OUT_ROOT = Path("public-source-redacted://erdos1041_frontier_coevolution_octuple_20260826")
 MERGE_DISCRIMINANT_CHECKER = ROOT / (
     "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/"
     "check_erdos1041_merge_tree_discriminant_dichotomy.py"

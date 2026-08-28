@@ -26,29 +26,101 @@
     "open_remainder": "combined charge, COVER, FP-GM, all-face near-Fekete coverage, or another exact equivalent"
   },
   "source_manifest": [
-    {"sha256": "9d221340f7dc1d7ae6dc8323acc5053ad85aa86cbf736b4427b6f3fc65a9f13a", "path": "/Users/willcook/Downloads/Erdos1041_full_packet_composition.md"},
-    {"sha256": "22e3c54ceeacb7247c2b26c605b1b8c823f26fe7f31432d5946ba77c6cd4500c", "path": "/Users/willcook/Downloads/Erdos1041_TypeB_merge_tree_area_theorem.md"},
-    {"sha256": "8fec01dcf474fcb5bf40b30ed106ba166b03644ccbcd206eb86e85d7ff2241a9", "path": "/Users/willcook/Downloads/Erdos1041_exterior_blaschke_component_model.md"},
-    {"sha256": "30cb86a9c5d0d2f21dc48e92ff3beb3e257a5c63753de3c0d46dcb29a566359c", "path": "/Users/willcook/Downloads/Erdos1041_research_report.md"},
-    {"sha256": "8af6ae74200ead02bebe6639de963a91ceac10de57796fc7f83b57bfab9b2e27", "path": "/Users/willcook/Downloads/check_erdos1041_typeb_merge_tree.py"},
-    {"sha256": "796580ca01ea2ca7fc0f72b62a0cb4caf6797d46628709d1da64a66c11a7a040", "path": "/Users/willcook/Downloads/TYPE_B_VERIFICATION_STATUS.txt"},
-    {"sha256": "92c21172a14c801d42c3c60dc80dfd99254f90580ebb474abd64ccee4850a1fb", "path": "/Users/willcook/Downloads/attached_packet_readthrough_index.md"},
-    {"sha256": "aca3e636bb20f9ed4a6e3fe442affd8af9154a79a825cb4d8e7311b85e80ccab", "path": "/Users/willcook/Downloads/packet_key_statement_extracts.md"},
-    {"sha256": "c5db01531544802c40bd86e2e79b7a22e663c8cfdd0ac235e77ef2a1dd295aa3", "path": "/Users/willcook/Downloads/supplied_python_checker_report.md"},
-    {"sha256": "9153939f99247faecfbb5ccb6b90f71bb46658e3718ce69ffdcaeb21ec78b080", "path": "/Users/willcook/Downloads/TYPE_B_BREAKTHROUGH_REPORT.md"},
-    {"sha256": "23b679373a73706f65fad0b9b74157502530eb6b607488149fc6740f45d48092", "path": "/Users/willcook/Downloads/Erdos1041_resolved_transfer_and_global_reduction.md"},
-    {"sha256": "83486fc3171d4b4929cef6c073eea893461627aa253b06905f75c77734e380c1", "path": "/Users/willcook/Downloads/erdos1041_transfer_checker_spec.py"},
-    {"sha256": "ef20fb884312520923242bef251400ff35a24ec93e0e3a6f7792596285fe75d3", "path": "/Users/willcook/Downloads/attachment_reading_ledger.tsv"},
-    {"sha256": "d7061222c84b0658ab5996ca917a3470c7d20855d35292efc524cbcff5d00380", "path": "/Users/willcook/Downloads/erdos1041_packet_audit_20260826.md"},
-    {"sha256": "70dcaa4eb7be619a255417fc7b7f5348a147b87fe54f3bd5591716b917e00cb7", "path": "/Users/willcook/Downloads/erdos1041_convex_polygon_addendum_20260826.md"},
-    {"sha256": "d5b48fec3c253ce090d48c1f21c2f984addb95b2f7a643e973ec737a0c2a4872", "path": "/Users/willcook/Downloads/verify_cubic_pointwise_nogo_and_connector.py"},
-    {"sha256": "58eb47fcb187a959fd62e2990dcd80d0981d8d2e41d520d197f67d850c11183c", "path": "/Users/willcook/Downloads/cubic_certificate_run.txt"},
-    {"sha256": "b4f02c1a9dda6e43fdb48b2654ff94f6c848253394eec82e1a3b1e49eb31cd80", "path": "/Users/willcook/Downloads/check_reciprocal_face_algebra.py"},
-    {"sha256": "0392476bd9ffeafaecb1852cba9d7365942fe73ea20bd73d03f5e023d453fea1", "path": "/Users/willcook/.codex/attachments/b07a4fa5-d9bc-47f4-9d8c-111b95a64631/pasted-text.txt"},
-    {"sha256": "34ea31aba87fe4c408ae7eab84d84dbf47efe503eadcda8c3366232735a561d6", "path": "/Users/willcook/.codex/attachments/0014f384-9248-4225-8583-f931ea0e8a07/pasted-text.txt"},
-    {"sha256": "e3cc501d2fce98ad0617fd850ee9f9af0c970de9f7180c374f3a756fd6e1c0f6", "path": "/Users/willcook/.codex/attachments/3719c9cf-15af-45df-9f5d-56927298f143/pasted-text.txt"},
-    {"sha256": "66346d2ea221638a27a0855d160ca9b09f98bbeaf66d2546be24bbb3204298c6", "path": "/Users/willcook/.codex/attachments/97e8a9a6-39df-41c2-9a06-f60ed816ea85/pasted-text.txt"},
-    {"sha256": "effdf371e76319db6234b0e7c1313baa5ab40b7623690204c81c57d199483081", "path": "/Users/willcook/.codex/attachments/900aeb85-bc45-4d86-9970-d85dbad6832f/pasted-text.txt"},
-    {"sha256": "c9b221a4b0108d150828f6f34d22f552cc6cdac874e051e65fb2d46ea4e971bd", "path": "/Users/willcook/.codex/attachments/29316575-49d7-4273-9510-27a152173d62/pasted-text.txt"}
+    {
+      "sha256": "9d221340f7dc1d7ae6dc8323acc5053ad85aa86cbf736b4427b6f3fc65a9f13a",
+      "path": "public-source-redacted://Erdos1041_full_packet_composition.md"
+    },
+    {
+      "sha256": "22e3c54ceeacb7247c2b26c605b1b8c823f26fe7f31432d5946ba77c6cd4500c",
+      "path": "public-source-redacted://Erdos1041_TypeB_merge_tree_area_theorem.md"
+    },
+    {
+      "sha256": "8fec01dcf474fcb5bf40b30ed106ba166b03644ccbcd206eb86e85d7ff2241a9",
+      "path": "public-source-redacted://Erdos1041_exterior_blaschke_component_model.md"
+    },
+    {
+      "sha256": "30cb86a9c5d0d2f21dc48e92ff3beb3e257a5c63753de3c0d46dcb29a566359c",
+      "path": "public-source-redacted://Erdos1041_research_report.md"
+    },
+    {
+      "sha256": "8af6ae74200ead02bebe6639de963a91ceac10de57796fc7f83b57bfab9b2e27",
+      "path": "public-source-redacted://check_erdos1041_typeb_merge_tree.py"
+    },
+    {
+      "sha256": "796580ca01ea2ca7fc0f72b62a0cb4caf6797d46628709d1da64a66c11a7a040",
+      "path": "public-source-redacted://TYPE_B_VERIFICATION_STATUS.txt"
+    },
+    {
+      "sha256": "92c21172a14c801d42c3c60dc80dfd99254f90580ebb474abd64ccee4850a1fb",
+      "path": "public-source-redacted://attached_packet_readthrough_index.md"
+    },
+    {
+      "sha256": "aca3e636bb20f9ed4a6e3fe442affd8af9154a79a825cb4d8e7311b85e80ccab",
+      "path": "public-source-redacted://packet_key_statement_extracts.md"
+    },
+    {
+      "sha256": "c5db01531544802c40bd86e2e79b7a22e663c8cfdd0ac235e77ef2a1dd295aa3",
+      "path": "public-source-redacted://supplied_python_checker_report.md"
+    },
+    {
+      "sha256": "9153939f99247faecfbb5ccb6b90f71bb46658e3718ce69ffdcaeb21ec78b080",
+      "path": "public-source-redacted://TYPE_B_BREAKTHROUGH_REPORT.md"
+    },
+    {
+      "sha256": "23b679373a73706f65fad0b9b74157502530eb6b607488149fc6740f45d48092",
+      "path": "public-source-redacted://Erdos1041_resolved_transfer_and_global_reduction.md"
+    },
+    {
+      "sha256": "83486fc3171d4b4929cef6c073eea893461627aa253b06905f75c77734e380c1",
+      "path": "public-source-redacted://erdos1041_transfer_checker_spec.py"
+    },
+    {
+      "sha256": "ef20fb884312520923242bef251400ff35a24ec93e0e3a6f7792596285fe75d3",
+      "path": "public-source-redacted://attachment_reading_ledger.tsv"
+    },
+    {
+      "sha256": "d7061222c84b0658ab5996ca917a3470c7d20855d35292efc524cbcff5d00380",
+      "path": "public-source-redacted://erdos1041_packet_audit_20260826.md"
+    },
+    {
+      "sha256": "70dcaa4eb7be619a255417fc7b7f5348a147b87fe54f3bd5591716b917e00cb7",
+      "path": "public-source-redacted://erdos1041_convex_polygon_addendum_20260826.md"
+    },
+    {
+      "sha256": "d5b48fec3c253ce090d48c1f21c2f984addb95b2f7a643e973ec737a0c2a4872",
+      "path": "public-source-redacted://verify_cubic_pointwise_nogo_and_connector.py"
+    },
+    {
+      "sha256": "58eb47fcb187a959fd62e2990dcd80d0981d8d2e41d520d197f67d850c11183c",
+      "path": "public-source-redacted://cubic_certificate_run.txt"
+    },
+    {
+      "sha256": "b4f02c1a9dda6e43fdb48b2654ff94f6c848253394eec82e1a3b1e49eb31cd80",
+      "path": "public-source-redacted://check_reciprocal_face_algebra.py"
+    },
+    {
+      "sha256": "0392476bd9ffeafaecb1852cba9d7365942fe73ea20bd73d03f5e023d453fea1",
+      "path": "public-source-redacted://pasted-text.txt"
+    },
+    {
+      "sha256": "34ea31aba87fe4c408ae7eab84d84dbf47efe503eadcda8c3366232735a561d6",
+      "path": "public-source-redacted://pasted-text.txt"
+    },
+    {
+      "sha256": "e3cc501d2fce98ad0617fd850ee9f9af0c970de9f7180c374f3a756fd6e1c0f6",
+      "path": "public-source-redacted://pasted-text.txt"
+    },
+    {
+      "sha256": "66346d2ea221638a27a0855d160ca9b09f98bbeaf66d2546be24bbb3204298c6",
+      "path": "public-source-redacted://pasted-text.txt"
+    },
+    {
+      "sha256": "effdf371e76319db6234b0e7c1313baa5ab40b7623690204c81c57d199483081",
+      "path": "public-source-redacted://pasted-text.txt"
+    },
+    {
+      "sha256": "c9b221a4b0108d150828f6f34d22f552cc6cdac874e051e65fb2d46ea4e971bd",
+      "path": "public-source-redacted://pasted-text.txt"
+    }
   ]
 }

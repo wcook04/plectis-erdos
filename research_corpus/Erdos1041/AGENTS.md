@@ -59,6 +59,12 @@ inside this owner directory exact and bounded.
      --plan ErdosProblems.Erdos1041.CubicCriticalHub
    ```
 
+   That focused plan checks the owner module. For a source-current replay of
+   the complete supported owner route, use `--plan ErdosProblems.Root`; the
+   root import list and the public packet's `landed_formal_source` are the
+   authoritative module joins, not a promise that the open obligation is
+   solved.
+
 Finite scripts, papers, comparator corpora, returned research, and navigation
 graphs are evidence or routing surfaces, not proof authority. Do not rename or
 move Lean sources as organizational cleanup.

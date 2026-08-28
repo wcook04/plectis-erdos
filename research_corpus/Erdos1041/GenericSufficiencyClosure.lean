@@ -162,4 +162,15 @@ theorem normSq_radial_sub_one_le_one {t : ℝ} (h0 : 0 ≤ t) (h1 : t ≤ 1) (n 
   rw [hcast, Complex.normSq_ofReal]
   nlinarith
 
+/-- Away from both radial endpoints, the extremal radial segment is strictly
+inside the unit sublevel when the degree is positive. -/
+theorem normSq_radial_sub_one_lt_one {t : ℝ} (h0 : 0 < t) (h1 : t < 1)
+    {n : ℕ} (hn : n ≠ 0) :
+    Complex.normSq ((t : ℂ) ^ n - 1) < 1 := by
+  have hcast : ((t : ℂ) ^ n - 1) = ((t ^ n - 1 : ℝ) : ℂ) := by push_cast; ring
+  have hpow0 : 0 < t ^ n := pow_pos h0 n
+  have hpow1 : t ^ n < 1 := pow_lt_one₀ h0.le h1 hn
+  rw [hcast, Complex.normSq_ofReal]
+  nlinarith
+
 end ErdosProblems.Erdos1041.GenericSufficiencyClosure

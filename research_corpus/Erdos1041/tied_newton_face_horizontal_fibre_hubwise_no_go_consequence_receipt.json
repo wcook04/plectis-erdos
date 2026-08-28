@@ -21,7 +21,7 @@
     },
     {
       "candidate_id": "returned_stratified_transfer_leftmost_fibre_claim",
-      "file": "/Users/willcook/.codex/attachments/7c6a91ee-8229-4741-833d-446a9bc21c75/pasted-text.txt",
+      "file": "public-source-redacted://pasted-text.txt",
       "decision": "update_now",
       "mathematical_reason": "Its LF residual is exactly false on this quintic because c=-1 is the unique leftmost critical point and has positive defect. Its all-branch product identity survives at a lower claim ceiling; RSCT is conditional on resolved signed contacts.",
       "authority_surface_checked": "returned text against exact source note and checker",
