@@ -126,6 +126,33 @@ spurious negatives because two divergent quantities cancel; 100-decimal-digit
 re-evaluation restores the exact zero.  The replay includes regression cases
 for this cancellation layer.
 
+The leading transverse sign is now exact.  Write `x=q u`, `t=q^2`, and let
+`E(x,x,z;q)` be the stationary-branch residual.  Exact reduction gives
+
+```text
+(1/2) partial_z^2 E(x,x,z;q)|_(z=x) = u P(t,u)/Q(q,u),
+```
+
+where `P` has bidegree `(15,25)`.  The sign-bearing factors of `Q` are
+
+```text
+(u-1)^3 (qu-1) (q^2u-1)^3,
+```
+
+so `Q<0` in `0<u,q<1`; its only non-obvious remaining factor is positive by
+the decomposition
+
+```text
+(1-u^2)+q^2(1-q^4u^2)+q^6u^4+q^4u^4
+ +4q^4u^3+4q^4u^2+4q^2u^2+4q^2u.
+```
+
+All 416 exact tensor Bernstein coefficients of `P` on `[0,1]^2` are
+nonpositive, and 405 are strictly negative.  Hence `P<0` in the open square
+and the transverse second variation is strictly positive everywhere on the
+regular radial locus.  This proves strict local radial minimality of the
+tangent residual; it does not prove the global radial inequality.
+
 ## Prior-art firewall
 
 Dubinin proved that a rotationally symmetric finite Blaschke product maximizes
@@ -140,6 +167,7 @@ Blaschke product with nonzero derivative at the origin.
 
 ```sh
 python3 experiments/erdos1041_three_exterior_green_polarization.py
+python3 experiments/erdos1041_gp3_regular_second_variation.py  # requires sympy
 ```
 
 Projected from private source commits:
@@ -153,4 +181,5 @@ f5fe5280083dcbb84d213da20c3ba35d77de3584  m=3 angular envelope
 a397aa8c0effc9a51389cdb4e9c37ce5cd93e4d7  product-shortcut no-go
 f944dbd3e9128bcc7757b32fbf3994da83676c3b  Green-polarization reduction
 b3b13f466916a1ecc38069691fb98d8fd5fe5fbb  radial branch and cancellation refinement
+e10f53fd34ec217beb15fd204d46fa2e0c55b5a1  exact regular radial second variation
 ```
