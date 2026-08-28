@@ -153,6 +153,32 @@ and the transverse second variation is strictly positive everywhere on the
 regular radial locus.  This proves strict local radial minimality of the
 tangent residual; it does not prove the global radial inequality.
 
+The tangent direction completes the local picture.  Along the exactly
+product-preserving isosceles path
+
+```text
+r_1=r_2=s*w,   r_3=s/w^2,   p=s^3 for every w,
+```
+
+the stationary residual satisfies `(w d/dw)E|_(w=1)=0` and, with `u=s/q` and
+`t=q^2`,
+
+```text
+(w d/dw)^2 E|_(w=1) = 18 u^3 Nhat(t,u)/D(q,u) > 0.
+```
+
+The denominator `D` has the same three sign-bearing factors as `Q` together
+with the same positive tail, so `D<0` in the open square, and `Nhat` has
+bidegree `(15,25)`: all `416` tensor Bernstein coefficients on `[0,1]^2` are
+nonpositive with `405` strictly negative.  Because the residual vanishes on
+the whole regular diagonal, the surplus Hessian at the diagonal has
+eigenvalues `b,b` on the product-preserving tangent plane and zero along the
+diagonal, so the transverse and tangent certificates are the two faces of one
+strict-minimality statement: the regular triangle is a strict local minimizer
+of the stationary residual in every direction.  This remains a local theorem:
+the global radial inequality in `(r_1,r_2,r_3,q)`, `GP3`, the selector lemma,
+and unrestricted Erdős 1041 stay open.
+
 ## Prior-art firewall
 
 Dubinin proved that a rotationally symmetric finite Blaschke product maximizes
@@ -168,6 +194,7 @@ Blaschke product with nonzero derivative at the origin.
 ```sh
 python3 experiments/erdos1041_three_exterior_green_polarization.py
 python3 experiments/erdos1041_gp3_regular_second_variation.py  # requires sympy
+python3 experiments/erdos1041_gp3_simplex_curvature.py  # requires sympy
 ```
 
 Projected from private source commits:
@@ -182,4 +209,5 @@ a397aa8c0effc9a51389cdb4e9c37ce5cd93e4d7  product-shortcut no-go
 f944dbd3e9128bcc7757b32fbf3994da83676c3b  Green-polarization reduction
 b3b13f466916a1ecc38069691fb98d8fd5fe5fbb  radial branch and cancellation refinement
 e10f53fd34ec217beb15fd204d46fa2e0c55b5a1  exact regular radial second variation
+476e4a5c1858cb90020d77dfba20de1a22370083  exact simplex tangent curvature
 ```
