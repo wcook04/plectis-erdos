@@ -179,6 +179,22 @@ of the stationary residual in every direction.  This remains a local theorem:
 the global radial inequality in `(r_1,r_2,r_3,q)`, `GP3`, the selector lemma,
 and unrestricted Erdős 1041 stay open.
 
+The full isosceles slice is now a theorem.  With `u=x/q`, `w=z/q`, `t=q^2`,
+the stationary residual on `(r_1,r_2,r_3)=(x,x,z)` factors exactly as
+
+```text
+E = q^2 (u-w)^2 Num(t,u,w)/Den(q,u,w),
+```
+
+where `Den` is strictly negative on the open unit box (the same three
+sign-bearing factors as `Q`, four further negative factors `(1-w)`, `(1-q^2w)`,
+`(1-u^2w)`, `(1-q^6u^2w)`, and a manifestly positive remaining part), and
+`-Num` has bidegree `(21,20,20)`: all `22*21*21 = 9702` tensor Bernstein
+coefficients on `[0,1]^3` are nonnegative, `9569` strictly positive.  Hence
+`E >= 0` on the whole isosceles slice, with equality only on the diagonal
+`z=x`; by symmetry this covers every isosceles configuration.  The remaining
+gap is exactly the fully coupled case of three distinct radii.
+
 ## Prior-art firewall
 
 Dubinin proved that a rotationally symmetric finite Blaschke product maximizes
@@ -195,6 +211,7 @@ Blaschke product with nonzero derivative at the origin.
 python3 experiments/erdos1041_three_exterior_green_polarization.py
 python3 experiments/erdos1041_gp3_regular_second_variation.py  # requires sympy
 python3 experiments/erdos1041_gp3_simplex_curvature.py  # requires sympy
+python3 experiments/erdos1041_gp3_isosceles_slice.py  # requires sympy
 ```
 
 Projected from private source commits:
@@ -210,4 +227,5 @@ f944dbd3e9128bcc7757b32fbf3994da83676c3b  Green-polarization reduction
 b3b13f466916a1ecc38069691fb98d8fd5fe5fbb  radial branch and cancellation refinement
 e10f53fd34ec217beb15fd204d46fa2e0c55b5a1  exact regular radial second variation
 476e4a5c1858cb90020d77dfba20de1a22370083  exact simplex tangent curvature
+2672c35cd9478410d59af8cdd5bc0f67c6ab353b  exact isosceles surplus slice
 ```
