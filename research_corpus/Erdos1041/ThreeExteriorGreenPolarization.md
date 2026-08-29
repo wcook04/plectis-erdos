@@ -231,10 +231,36 @@ the Hessian is positive semidefinite with kernel exactly the diagonal
 direction.  The regular triangle is therefore a strict local minimizer of the
 stationary surplus on every product-preserving simplex, in every direction.
 
-### Evidence base for the remaining global inequality
+### Isosceles slice: the surplus inequality is proved
 
-Three computation families now back the global surplus inequality, and one
-shortcut is eliminated.
+The full isosceles slice is now an exact theorem, not evidence.  With
+`u=x/q`, `w=z/q`, `t=q^2`, the stationary surplus factors exactly as
+
+```text
+S(q;x,x,z) = q^2 (u-w)^2 Num(t,u,w)/Den(q,u,w),                 (16)
+```
+
+where `Den` is strictly negative on the open unit box (seven strictly
+negative sign-bearing factors `(1-u),(1-w),(1-qu),(1-q^2u),(1-q^2w),
+(1-u^2w),(1-q^6u^2w)` and a manifestly positive remaining part with the same
+positive tail `E` as above), and `-Num` has bidegree `(21,20,20)` in
+`(t,u,w)`: all `22*21*21 = 9702` tensor Bernstein coefficients on `[0,1]^3`
+are nonnegative, `9569` strictly positive and `133` exactly zero.  Hence
+
+```text
+S(q;x,x,z) >= 0   for all   0 < x, z <= q < 1,                  (17)
+```
+
+with equality only on the diagonal `z=x`.  By S_3 symmetry this covers every
+isosceles configuration.  Together with the two local certificates, the
+radial surplus is proved on the whole diagonal neighbourhood and on all
+isosceles slices; the remaining gap is strictly the fully coupled case of
+three distinct radii.
+
+### Evidence base for the remaining coupled case
+
+Three computation families back the coupled inequality, and three shortcuts
+are eliminated.
 
 1. Angular-layer validation.  Direct two-angle minimization of the weighted
    cosine sum confirms the closed-form minimum in both branches: the
@@ -244,18 +270,15 @@ shortcut is eliminated.
    precision in randomized trials.
 2. In-domain global search.  A 60-digit randomized search over
    `0<q<1`, `0<r_k<=q` with the branch condition enforced (4000
-   configurations, 1047 on the endpoint branch) found no negative operative
-   surplus; the worst margins sit near the regular diagonal, consistent with
-   the double zero certified above.
-3. Isosceles slice.  On the full slice `(x,x,z)` the operative surplus stays
-   nonnegative, but the quotient `S/(x-z)^2` has no positive uniform lower
-   bound: it falls from `0.81` (ratio `x/z=5`, `x=0.1q`, `q=0.99`) through
-   `0.71` at ratio `20` to `0.14` in the deep corner (`q=0.995`, ratio
-   `10`, `x=0.02q`), and structurally tends to `0` as the radius ratio grows
-   at fixed scale (the surplus is quadratic in the log deviations while
-   `(x-z)^2` grows exponentially).  Any quantitative isosceles strengthening
-   must therefore carry a ratio-dependent factor; constant-normalized forms
-   of the type `S>=c(x-z)^2` are eliminated.
+   configurations, 1047 on the endpoint branch), plus 60 adversarial
+   hill-climbs on the operative surplus, found no negative value; the search
+   converges to the two equality regimes (the diagonal and the collapse
+   corner) and nowhere else.
+3. Scale structure.  At the collapse corner the surplus is exactly quadratic
+   on the endpoint branch, `S_end = (1+q^2)(r_1+r_2-r_3)^2/q^2 + O(r^3)`
+   with a perfect-square leading form, and exactly cubic on the stationary
+   branch with leading form `3(1+q^4)/(2q^3)[2sum r^3 - sum_sym r^2 r']`,
+   which is `Schur(r) + (sum r^3 - 3r_1r_2r_3) >= 0` by Schur and AM-GM.
 4. Schur-convexity fails.  In log-radius coordinates on the
    product-preserving simplex the operative surplus is not Schur-convex:
    randomized in-domain probes found negative values of
@@ -263,6 +286,39 @@ shortcut is eliminated.
    No radius-smoothing (equalization) reduction of the global inequality to
    the isosceles slice is therefore available, and attempts along that route
    should not be retried without a new idea.
+5. Scale monotonicity fails.  The ratio `S_stat(erho)/e^3` is not
+   nondecreasing in the overall scale: 181 violations in 6000 randomized
+   checks, all at two-scale corners (two roots collapsed, the third at a
+   finite fraction of `q`), and the exact cubic lift `S_stat >= e^3 C_3`
+   fails by a small margin at the same corners although the surplus itself
+   stays positive there.  Monotonicity-based lift arguments are eliminated.
+6. Coefficientwise positivity fails.  In the scale expansion
+   `S_stat(erho) = sum_k e^k C_k` the forms `C_4` and `C_6` are positive on
+   randomized samples but `C_5` and `C_7` are negative at extreme ratios, so
+   no all-coefficients-positive certificate of the scale expansion exists.
+7. The isosceles slices are not global transverse minima.  The splitting
+   curvature `d^2/du^2 S(q; x+u, x-u, z)|_(u=0)` is negative in a thin
+   small-pair corner: all randomized negatives have `x/q <~ 0.02` and
+   `z/x >~ 10` (worst `-20.4` at `q=0.197`, `x/q=0.0057`, `z/q=0.32`), while
+   near the diagonal the certified curvature is positive.  Tube arguments
+   that would extend the slice theorem by transverse monotonicity are
+   therefore unavailable; the coupled positivity is a genuinely global
+   coupling.
+8. Endpoint-cone certificate state.  The endpoint-branch operative surplus
+   `S_end` on the dominant-radius cone has a fully verified cleared
+   numerator `N_end = S_end * D_0` (exact rational identity, 54336 terms,
+   degree 54; `D_0 > 0` on the domain).  After the simplex-to-box
+   parametrization its tensor Bernstein form on `[0,1]^4` (degrees
+   `(27,36,36,13)`, 536648 coefficients) has exactly `590` negative
+   coefficients (`0.11%`), all confined to the high-`t` (q near 1), tiny-`b`
+   corner, worst `-0.0163`.  Targeted subdivision improves the bounds but
+   re-exposes negativity along the branch-boundary surface
+   `alpha_12(alpha_13+alpha_23) = alpha_13 alpha_23` (equivalently
+   `b ~ x`), where the endpoint and stationary bounds coincide and the
+   surplus is only of order `e^3`.  The residual of the endpoint branch is
+   therefore exactly a neighbourhood of the branch-boundary layer; away from
+   it the numerator's Bernstein form is within targeted subdivision of a
+   complete certificate.
 
 Near `q=r_1=r_2=r_3` the self terms and the regular comparator separately
 diverge while their difference remains exactly zero.  Ordinary double
@@ -272,15 +328,17 @@ precision can consequently fabricate large negative residuals (values near
 the radial surplus must use arbitrary precision or a cancellation-free
 normal form in this boundary layer.
 
-Consequently the only unproved part of (8) is the global radial surplus
-inequality after subtracting (11) in the reciprocal-triangle region or the
-active endpoint outside it, on the full four-variable domain.  The local
-structure at the equality locus is now fully certified in every direction,
-and the Schur-smoothing shortcut is eliminated.  Computation with the branch
-condition enforced finds no negative value; endpoint minima approach a
-boundary equality regime, while apparent interior negatives collapse to
-regular equality under high precision.  This is evidence, not a proof.  No
-angular search and no maximization in the ambient polynomial degree remains.
+Consequently the only unproved part of (8) is the radial surplus inequality
+in the fully coupled case of three distinct radii, after subtracting (11) in
+the reciprocal-triangle region or the active endpoint outside it.  The local
+structure at the equality locus is certified in every direction, the full
+isosceles slices are proved by (16)-(17), and the Schur-smoothing,
+scale-monotonicity, and coefficientwise shortcuts are all eliminated.
+Computation with the branch condition enforced finds no negative value;
+endpoint minima approach a boundary equality regime, while apparent interior
+negatives collapse to regular equality under high precision.  This is
+evidence, not a proof.  No angular search and no maximization in the ambient
+polynomial degree remains.
 
 ## Relation to sharp Blaschke symmetrization literature
 
@@ -329,9 +387,11 @@ shortcuts from being retried.
 ```sh
 ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_three_exterior_green_polarization.py
 ./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_gp3_simplex_curvature.py
+./repo-python formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_gp3_isosceles_slice.py
 ```
 
-The second checker proves the tangent (simplex) curvature certificate (14)-(15).
-The disposable evidence probe behind the evidence base above is
+The second checker proves the tangent (simplex) curvature certificate (14)-(15);
+the third proves the full isosceles slice (16)-(17).  The disposable evidence
+probe behind the evidence base above is
 `scripts/explore_erdos1041_radial_surplus.py` (validation, isosceles scan,
 Schur probe, global search); it is evidence, not a proof surface.
