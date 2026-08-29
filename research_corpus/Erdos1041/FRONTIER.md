@@ -1,9 +1,16 @@
-# Erdős 1041 — current frontier (2026-08-29)
+# Erdős 1041 — current frontier (2026-08-29, updated by the same-day solve session)
 
 Read this before `STRONGEST_RESULTS.json`.  That map is generated from the
 2026-08-28 activation lists and therefore still presents as live several rows
 that were **refuted on 2026-08-29**.  This file is the dated delta.  The
 unrestricted problem is **OPEN**.
+
+SAME-DAY UPDATE (solve session, evening): §§1, 3, 4, 5 below carry the
+session's deltas — the model star kernel became a THEOREM at every degree
+(`QuinticStarKernelMechanics.md`), the two-root area gap (old gap 5) is
+PROVED in existence form (`ProperComponentUniformAreaGap.md`), (SPOKE-5)
+as stated is VIOLATED at an exact pocket corner, and the near-gon
+adversarial geography is mapped (`TwoTierStraightStarSelectorLab.md`).
 
 Target (unchanged): for monic `f` of degree `n >= 2` with all roots in the
 open unit disk, two roots are joined by a rectifiable path of length `< 2`
@@ -23,6 +30,7 @@ measurement plus adjudication, not by an absent proof.
 | `AdmissibleCriticalArcProductLab.md` (AQ), (CAQ) | **FALSE** at the same witness (measured `1.001853`) | same addendum |
 | Aggregate/sum form of the open producer `critical_point_selection_with_inverse_ray_length_control` | **FALSE**; only its SELECTION form survives | same addendum |
 | Origin two-radii connector inside the near-Fekete shell (any `eta`-neighbourhood) | **FALSE** for `n = 3` (proved) and every `n >= 5` (exact rational quintic witness; 4 of 5 spokes escape by rational signs) | `NearFeketeRadialAngularSplit.md` Theorem 7 |
+| (SPOKE-5) as stated (critical hub + two contained straight segments, length `<= 2`, closed disk) | **VIOLATED** at an exact on-circle rotated-gon-pocket corner: min over admissible hubs x pairs of star `sup|f| = 1.00008536426413` (two independent instruments, 35/60 dps, exact rational input; completes the deg-6/9 pattern at deg 5) | `Degree5AssemblyAndSharpenedCuts.md` addendum; `TwoTierStraightStarSelectorLab.md` |
 
 Older no-gos in `research_packet.json::negative_results` remain in force.
 
@@ -80,6 +88,36 @@ All proved on 2026-08-29 unless stated; see the named file for full proofs.
   (`SeparatrixAggregateReduction.md` §§PSH, MAX) — machinery that outlived
   its target inequality and applies to any arm functional.
 
+Added by the same-day solve session (owner files carry full proofs):
+
+- **The model star kernel is a THEOREM at every degree**
+  (`QuinticStarKernelMechanics.md` §1): for the blow-up
+  `H = w^n + sum_{k <= (n-1)/2} b_k w^k`, the trace-maximal critical hub's
+  two value-ray arms join two DISTINCT tracts at the OPTIMAL level
+  `D = max Re H(c) >= 0` (tangent case included), and no connector exists
+  above level `D`.  Component census `#comp{Re H > t} = n - #{Re H(c) > t}`;
+  hub bound `|c| <= 0.858594`; exact origin region; arm normal form with
+  exact C+ constants; the excess/curvature-budget identity (the exact
+  metric side); hub-shift desingularisation.
+- **The quintic tangent stratum is ONE closed-form gauge orbit**
+  (`320 |b_1|^3 = 27 |b_2|^4`, twist pinned at `+- i`; identification with
+  `QuinticEqualityTetrahedron.md`'s equality chart; two explicit connector
+  certificates there) — two independent derivations agree.
+- **Sector–ellipse hub metric, trace identity/selector, spine containment,
+  exact origin-ray criteria** (`NearFeketeAngularSelectorToolkit.md`).
+- **The uniform proper-component area gap**
+  (`ProperComponentUniformAreaGap.md`): `A_{n,k} < (k/(2n-k))^{2/n}`
+  exists for all `(n, k)` — old gap 5 is now a theorem in existence form —
+  plus the Schur-tail lemma for the future explicit constant.
+- **FP_3** (`FreePointMeanInequalityFP3.md`): the `m = 3` free-point case
+  of (S)'s reduction target.
+- **Real-scale selector geography** (`TwoTierStraightStarSelectorLab.md`,
+  computational): the near-gon pocket's mechanism ordering under three
+  adversarial rounds — origin, critical-hub stars, and radial-truncation
+  cuts die in successively deeper sub-pockets, while free-hub stars
+  survive thinly and DESCENT ARMS keep a `~0.15` length margin throughout
+  (`min_c L(c) <= 1.85` at every located corner).
+
 ## 4. Open gaps worth attacking (the actual ask)
 
 1. **Conjecture (S)** — `Sigma_{k=1}^{n-1} |f(c_k)|^{1/n} <= (n-1) R`, the
@@ -94,33 +132,45 @@ All proved on 2026-08-29 unless stated; see the named file for full proofs.
    `(1/m) Sigma_j (prod_k |1 - conj(c_j) c_k|)^{1/m} <= 1`.  Unused
    ingredient: the rank-2 Lorentzian structure of `N_{jk} = <u_j, u_k>`,
    `u_j = (1, conj(c_j))`.  **(S) does not imply the parent by itself** — it
-   is a standalone theorem worth having.
+   is a standalone theorem worth having.  SAME-DAY: the `m = 3` free-point
+   case is now proved (`FreePointMeanInequalityFP3.md`); composing it with
+   the general-`n` reduction chain (exponent-concavity step unverified as a
+   landed general theorem) is the captured next step.
 2. **Decide (AGG) at `n = 3`.**  Two independent hunts stall at `0.999386`,
    both on the instrument's `d_pt >= 0.02 R` gate.  A gate-free
    high-precision sweep would settle whether (AGG) is true at `n = 3` and
    false for all `n >= 4`.  Also: widen the `n = 5` witness into an open
    region.
-3. **(R1), the near-Fekete containment selector.**  After §3's reductions
-   the near-Fekete keystone is exactly: find `eta_n > 0` such that
-   `D >= 1 - eta_n` implies there are `i != j` and a hub `c` with
-   `|a_i - c| + |a_j - c| <= 2` and `|f| <= 1` on both segments.  The metric
-   side is free (length `<= 2` is automatic near the gon), the radial
-   direction is discharged, and `c = 0` is refuted — so the whole content is
-   choosing `c`.  Measured: the rescuing hub sits at `|c| ~ 0.35-0.4 rho`,
-   `rho = max_m |q_m/n|^{1/(n-m)}`.
-4. **(SPOKE-5).**  "For every monic quintic with roots in the closed unit
-   disk there is a critical point `c` with `|f(c)| <= 1` and two roots
-   `a, b` with `|f| <= 1` on `[c,a] u [c,b]` and `|c-a| + |c-b| <= 2`."  By
-   `TwoSegmentContainmentReduction.md` + `GenericSufficiencyClosure.md`
-   Corollary S this proves Erdős 1041 **at `n = 5`** — the first new full
-   degree (3 is proved in-corpus, 4 is Pendyala's).  It is genuinely
-   degree-specific: FALSE at degrees 6 and 9.  Adversarial search pins its
-   two functionals at `0.9999997708` and `1.9975399`, both under budget,
-   maximised at `z^5 - 1`.
-5. **Two-root component area bound**: `Area(U) <= A* pi t^{2/5}` with
-   `A* < (1/4)^{2/5} = 0.5743490`.  Measured max `0.482` overall and `0.264`
-   in the decisive band.  Would shrink the degree-5 residual band ~58x; the
-   Grönwall identity (§3) extended to proper components is the natural route.
+3. **(R1), the near-Fekete containment selector — first order now PROVED;
+   what remains is metric + transfer.**  The Main Theorem of
+   `QuinticStarKernelMechanics.md` closes (R1)'s first-order containment
+   content AT EVERY DEGREE: the trace-maximal critical hub's two value-ray
+   arms join two distinct tracts inside the model safe set, tangent
+   stratum included.  The remaining obligations are exactly: (a) the
+   EXCESS inequality `e_i + e_j <= 0` for those arms (the metric half;
+   measured to clear with factors `1.9x`–`5.0x` at the tangent orbit and
+   across the core; capture
+   `cap_quick_prove_the_model_excess_inequality_ex_the_c88f4d5faf54`), and
+   (b) the real-scale remainder budget (the model decides first order
+   only; the `D <~ rho` ball around the single tangent orbit needs the
+   next order — one-box recipe recorded in the owner note).
+4. **Degree-5 finite-certificate targets (REDIRECTED — (SPOKE-5) as
+   previously stated here is refuted, see §1).**  In order of measured
+   robustness in the pocket: (i) the descent-arm bound `min_c L(c) <= 2`
+   over admissible hubs (the canonical carrier of §2; containment
+   automatic, `min_c L <= 1.85` at every adversarial corner) and the
+   free-hub two-segment family (`TwoSegmentContainmentReduction.md`);
+   (ii) the length-free Form A-cut family (`TruncatedSpokeReduction.md`,
+   atlas-aligned) on the bulk, carried at real scale by the exact
+   remainder budget (`FormACutQuantitativeExpansion.md` (S)) — model
+   margins alone fail near the gon (measured, round 3).  Capture:
+   `cap_quick_build_the_cut_5_finite_certificate_for_d_b122beb7e514`.
+5. **Two-root component area bound — PROVED (existence form)**:
+   `ProperComponentUniformAreaGap.md` gives `A_{n,k} < (k/(2n-k))^{2/n}`
+   for all `(n, k)`; in particular `A_{5,2}* < (1/4)^{2/5}`.  OPEN
+   remainder: an EXPLICIT constant (Schur-tail route seeded in the owner
+   note; measured values `0.482`/`0.264` show the true gap is large), which
+   would turn the improved `Theta_{5,2}` threshold numeric.
 6. **Instrument law to adopt**: the binding degeneracy for arm measurements
    is a foreign critical **value** near the descending segment `[0, f(c)]`,
    invisible to critical-**point** separation gates.  Use
@@ -143,6 +193,19 @@ degrees: collinear, concyclic with radius `<= 2^{-1/n}`, cyclic trinomials
 and tetranomials, cyclic quotients, binomials, sparse quintics, quartic-core,
 deep-low critical value, separated-level Bergman, and the new exact-gon
 radial slice for `n <= 6`.
+
+Same-day pocket geography (computational, three adversarial rounds +
+35/60-dps adjudication of every corner): uniform-angle on-circle quintics
+close by the origin tier alone (1500/1500); the hard territory is
+exclusively the rotated-gon pocket, where straight mechanisms die in the
+order origin -> critical-hub stars -> radial-truncation cuts as the corner
+deepens, while free-hub stars survive thinly and descent arms never
+dropped below a `0.15` length margin.  Checkers for the same-day results:
+`scripts/check_erdos1041_angular_selector_toolkit.py`,
+`scripts/check_erdos1041_two_tier_selector_lab.py`,
+`scripts/check_erdos1041_quintic_star_kernel_mechanics.py`,
+`scripts/check_erdos1041_proper_component_area_gap.py`,
+`scripts/check_erdos1041_free_point_fp3.py`.
 
 ## 6. Evidence classes used here
 
