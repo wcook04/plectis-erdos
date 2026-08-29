@@ -17,7 +17,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the nineteen-interface
+This module contains only the definitions needed to state the twenty-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -130,6 +130,15 @@ def fullTotientKernelFamily : TotientDyadicKernelIndex → ℕ → ℚ
 noncomputable def mersenneWeight (n : ℕ) : ℝ :=
   1 / ((2 : ℝ) ^ n - 1)
 
+/-- The canonical greedy remainder after processing exponents `1,...,n`. -/
+noncomputable def greedyMersenneRemainder (x : ℝ) : ℕ → ℝ
+  | 0 => x
+  | n + 1 =>
+      if mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n then
+        greedyMersenneRemainder x n - mersenneWeight (n + 1)
+      else
+        greedyMersenneRemainder x n
+
 /-- The value coded by a set of positive exponents. -/
 noncomputable def positiveMersenneSupportValue (A : Set ℕ) : ℝ :=
   ∑' k : ℕ, Set.indicator A mersenneWeight (k + 1)
@@ -166,7 +175,7 @@ def rationalBaseClearedTailQ
     (r s B F : ℚ) (coeff : ℕ → ℚ) (N : ℕ) : ℚ :=
   B * r ^ N * (F - rationalBasePrefixQ r s coeff N)
 
-/-- One trusted challenge witness carries the nineteen exact interfaces selected
+/-- One trusted challenge witness carries the twenty exact interfaces selected
 for the eight-problem external-verification portfolio.  The named theorems in
 `Challenge` and `Solution` project these fields, so Comparator still compares
 each statement separately while the trusted challenge contains one hole. -/
@@ -222,6 +231,11 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       (Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
         Irrational (∑' n : ℕ, primeGapDyadicTerm n))
   problem257Measure : volume mersenneAchievementSet = 1
+  problem257CofinalGreedySkips :
+    ∀ (q : ℚ), 0 ≤ q →
+      ((q : ℝ) ∈ mersenneAchievementSet ↔
+        ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+          ¬ mersenneWeight (n + 1) ≤ greedyMersenneRemainder (q : ℝ) n)
   problem257FullSupport :
     ∀ b : ℕ, 2 ≤ b →
       Irrational (∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1))

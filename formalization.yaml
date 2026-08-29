@@ -226,6 +226,22 @@ status:
       source_mapping: "At base 2 the local development formalises compactness, perfection, total disconnectedness, nowhere density, and measure one. The strict-tail Cantor geometry aligns with the cited antecedents; the measure-one clause is locally derived and carries no novelty assertion."
       historical_attribution: "Kakeya (1914) for the strict-tail subsum-set criterion and Kovač--Tao (2025), Remark 4.1, for the fixed-base Mersenne antecedent."
       logical_dependency: "The topology and measure theorem are proved locally in Lean; the cited sources fix historical/source alignment and are not imported proof objects."
+    - declaration: "ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
+      file: "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Quot.sound"
+        - "Classical.choice"
+      comparator_config: "verification/comparator.json"
+      canonical_claim_status: "comparator_interface_not_registered_as_canonical_claim"
+      local_proof_provenance: "proved_in_this_repository"
+      novelty_status: "unassessed_no_priority_claim"
+      contribution_class: "exact conditional equivalence; novelty unassessed"
+      statement: "For every nonnegative rational target, Mersenne achievement-set membership is equivalent to the canonical greedy orbit making actual skips beyond every cutoff."
+      boundary: "The equivalence supplies no cofinal-skip producer for 1/2, 1/21, or another unresolved target."
+      comparator_declaration: "Erdos249257.ExternalVerification.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
+      literature_dependencies: []
     - declaration: "Erdos249257.irrational_erdosSum_full_support"
       file: "Erdos249257/CertificateKernel.lean"
       sorry_count: 0
@@ -445,6 +461,11 @@ alignment:
       module: "Erdos249257/GreedyAchievementSet.lean"
       status: "proved"
       note: "This does not decide whether every infinite-support sum is irrational."
+    - source: "For every nonnegative rational target, Mersenne achievement-set membership is equivalent to the canonical greedy orbit making actual skips beyond every cutoff."
+      lean: "ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips"
+      module: "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean"
+      status: "proved"
+      note: "The equivalence supplies no cofinal-skip producer for 1/2, 1/21, or another unresolved target."
     - source: "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational."
       lean: "Erdos249257.irrational_erdosSum_full_support"
       module: "Erdos249257/CertificateKernel.lean"
@@ -690,6 +711,12 @@ claim_review_matrix:
         source_mapping: "At base 2 the local development formalises compactness, perfection, total disconnectedness, nowhere density, and measure one. The strict-tail Cantor geometry aligns with the cited antecedents; the measure-one clause is locally derived and carries no novelty assertion."
         historical_attribution: "Kakeya (1914) for the strict-tail subsum-set criterion and Kovač--Tao (2025), Remark 4.1, for the fixed-base Mersenne antecedent."
         logical_dependency: "The topology and measure theorem are proved locally in Lean; the cited sources fix historical/source alignment and are not imported proof objects."
+      - id: "canonical_greedy_membership"
+        contribution_class: "exact conditional equivalence; novelty unassessed"
+        evidence_mode: "Lean kernel plus Comparator"
+        comparator_disposition: "targeted_bundled_equivalence"
+        summary: "For each nonnegative rational target, achievement-set membership is exactly cofinal actual skipping by its canonical greedy orbit."
+        boundary: "The theorem does not produce cofinal skips for any unresolved target."
       - id: "restricted_achievement_sets"
         contribution_class: "locally proved result; novelty unassessed"
         evidence_mode: "Lean kernel plus Comparator"
@@ -835,7 +862,7 @@ acknowledgements: null
 external_verification:
   owner: "docs/claims.json::external_verification_packet"
   problem_index: "docs/problems.json"
-  problem_index_digest: "sha256:e13e80b5cd74acba27587d4e067e4b9ae9f02160bf706da5bd54da6a7aa780d8"
+  problem_index_digest: "sha256:54de46e58704ef2f12ba37bfee3178ca11e0c7bb11a5ac8bf928c1a1723760a3"
   problem_count: 8
   problems:
     - id: "erdos_68"
@@ -865,8 +892,8 @@ external_verification:
     - id: "erdos_257"
       erdos_number: 257
       status: "open"
-      checked_frontier: "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights."
-      open_frontier: "The universal irrationality problem, or irrationality for any new infinite support."
+      checked_frontier: "For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff."
+      open_frontier: "Cofinal actual skips for 1/2, 1/21, or any other unresolved target; the universal irrationality problem also remains open."
       claim_registry_status: "not_registered; the claim registry does not carry these declarations and kernel checking them does not promote them into reviewed public claims"
     - id: "erdos_269"
       erdos_number: 269

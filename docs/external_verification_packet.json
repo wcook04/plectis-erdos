@@ -263,6 +263,20 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "rational_greedy_cofinal_skip_membership",
+      "problem": 257,
+      "review_family": "canonical_greedy_membership",
+      "contribution_class": "exact conditional equivalence; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+      "original_source": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+      "statement": "For every nonnegative rational target, Mersenne achievement-set membership is equivalent to the canonical greedy orbit making actual skips beyond every cutoff.",
+      "boundary": "The equivalence supplies no cofinal-skip producer for 1/2, 1/21, or another unresolved target.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "erdos_borwein_full_support",
       "problem": 257,
       "review_family": "known_irrational_supports",
@@ -648,6 +662,14 @@
           "boundary": "Geometry of the full set does not decide irrationality of every coded point."
         },
         {
+          "id": "canonical_greedy_membership",
+          "contribution_class": "exact conditional equivalence; novelty unassessed",
+          "summary": "For each nonnegative rational target, achievement-set membership is exactly cofinal actual skipping by its canonical greedy orbit.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted_bundled_equivalence",
+          "boundary": "The theorem does not produce cofinal skips for any unresolved target."
+        },
+        {
           "id": "restricted_achievement_sets",
           "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Support-restricted coding is injective and the associated achievement set has exact finite-complement measure or zero for infinite complement.",
@@ -872,9 +894,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:76129111c39b0624183cc6934f841f1e17279f3e32f81a19282d8ee182be3e91",
+    "owner_digest": "sha256:1c4be29d54b0043c1fb3c93e64aa0042976df04a4468ea34c2b2e7d643314272",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:e13e80b5cd74acba27587d4e067e4b9ae9f02160bf706da5bd54da6a7aa780d8",
+    "projection_digest": "sha256:54de46e58704ef2f12ba37bfee3178ca11e0c7bb11a5ac8bf928c1a1723760a3",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1440,10 +1462,10 @@
             "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
             "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
             "present": true,
-            "line_count": 421,
-            "declaration_count": 28,
-            "theorem_count": 23,
-            "content_digest": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419"
+            "line_count": 432,
+            "declaration_count": 29,
+            "theorem_count": 24,
+            "content_digest": "sha256:6a15ccb8be27230ab13ccf786b651778f54e020bc146711b9141495ac6f17737"
           }
         ],
         "note": {
@@ -1454,16 +1476,21 @@
           "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
         },
         "what_is_checked": [
+          "For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff.",
           "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
           "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
           "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
         ],
         "what_is_not_checked": [
-          "The universal irrationality problem, or irrationality for any new infinite support.",
+          "Cofinal actual skips for 1/2, 1/21, or any other unresolved target; the universal irrationality problem also remains open.",
           "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
           "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
         ],
         "open_obligations": [
+          {
+            "id": "cofinal_actual_greedy_skips",
+            "statement": "Produce actual canonical greedy skips beyond every cutoff for 1/2, 1/21, or another unresolved rational target. Arbitrary omitted supports and finite traces do not satisfy this quantifier."
+          },
           {
             "id": "arithmetic_rigidity_for_thin_supports",
             "statement": "Convert hereditary unique coding into an arithmetic obstruction to rational values for every infinite support, including zero-measure Cantor supports."
@@ -1484,11 +1511,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 7,
+          "family_count": 8,
           "by_class": {
             "not_applicable": 1,
             "not_selected": 2,
-            "targeted": 4
+            "targeted": 5
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
@@ -1496,6 +1523,7 @@
             "known_irrational_supports": "targeted_full_support_representative",
             "squarefree_support": "not_applicable_to_external_irrationality_input",
             "achievement_set_geometry": "targeted_measure_theorem",
+            "canonical_greedy_membership": "targeted_bundled_equivalence",
             "restricted_achievement_sets": "targeted_measure_dichotomy",
             "half_and_twenty_one_frontiers": "not_selected_deep_greedy_state_vocabulary"
           }
@@ -1886,7 +1914,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:097e60b08779ecfa78e99cf4ff7ed41f172d130096d4579010e8f3253ed4f3ad",
+    "digest": "sha256:c10f1958dc02c870dc48ff58308655a4abe0575463a556a6a3f3e3c674283deb",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -1894,6 +1922,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:2fa28f3148dc9089ccb4d4414e0bd53ea1d6ee6686c43b4a859a65d5c0089479",
-  "solution_source_digest": "sha256:1f8204cd41f3248ddb1bcd4987496a8443081d3b96be9c63adc3ab8358e33e80"
+  "config_digest": "sha256:62acb780daac314039cb50112d0df7bab287a09d0d310f54fd5bee632dfac808",
+  "solution_source_digest": "sha256:c4628da7b7cbe9df458ecc8ac9094ada7d3890201a1efaf9bda37bd7278d0ac8"
 }

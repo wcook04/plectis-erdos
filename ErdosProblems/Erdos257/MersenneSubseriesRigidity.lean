@@ -10,6 +10,17 @@ irrationality problem.
 
 namespace ErdosProblems.Erdos257
 
+/-- Public programme-level normal form for rational Mersenne achievement-set
+membership. This is an exact reduction, not a producer for any unresolved
+target. -/
+theorem rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips
+    (q : ℚ) (hq : 0 ≤ q) :
+    (q : ℝ) ∈ Erdos249257.mersenneAchievementSet ↔
+      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+        ¬ Erdos249257.mersenneWeight (n + 1) ≤
+          Erdos249257.greedyMersenneRemainder (q : ℝ) n := by
+  exact Erdos249257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips q hq
+
 open scoped ENNReal
 
 open Set

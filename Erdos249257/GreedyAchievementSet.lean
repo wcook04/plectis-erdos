@@ -2488,37 +2488,95 @@ theorem positiveMersenneSupportValue_eq_cast_finiteErdosSum
     _ = ((finiteErdosSum F 2 : ℚ) : ℝ) := by
           congr 1
 
-/-- If `1/2` is represented, its canonical greedy expansion must omit
-infinitely many positive exponents.  Otherwise the irrational full
+/-- If a rational number is represented, its canonical greedy expansion must
+omit infinitely many positive exponents. Otherwise the irrational full
 Erdős–Borwein constant would be a rational number plus a finite rational
 Mersenne sum. -/
-theorem infinite_greedyMersenneSkippedSupport_of_half_mem
-    (hhalf : (1 / 2 : ℝ) ∈ mersenneAchievementSet) :
-    (greedyMersenneSkippedSupport (1 / 2 : ℝ)).Infinite := by
+theorem infinite_greedyMersenneSkippedSupport_of_rat_mem
+    {q : ℚ} (hmem : (q : ℝ) ∈ mersenneAchievementSet) :
+    (greedyMersenneSkippedSupport (q : ℝ)).Infinite := by
   classical
   intro hfinite
   let F : Finset ℕ := hfinite.toFinset
-  have hF : (↑F : Set ℕ) = greedyMersenneSkippedSupport (1 / 2 : ℝ) := by
+  have hF : (↑F : Set ℕ) = greedyMersenneSkippedSupport (q : ℝ) := by
     dsimp [F]
     exact hfinite.coe_toFinset
   have hgreedy :
-      positiveMersenneSupportValue (greedyMersenneSupport (1 / 2 : ℝ))
-        = (1 / 2 : ℝ) := by
-    rcases hhalf with ⟨A, hA0, hvalue⟩
-    have hsupport : greedyMersenneSupport (1 / 2 : ℝ) = A := by
+      positiveMersenneSupportValue (greedyMersenneSupport (q : ℝ))
+        = (q : ℝ) := by
+    rcases hmem with ⟨A, hA0, hvalue⟩
+    have hsupport : greedyMersenneSupport (q : ℝ) = A := by
       rw [hvalue, greedySupport_supportValue_eq A hA0]
     rw [hsupport, ← hvalue]
   have hskipped :
-      positiveMersenneSupportValue (greedyMersenneSkippedSupport (1 / 2 : ℝ))
+      positiveMersenneSupportValue (greedyMersenneSkippedSupport (q : ℝ))
         = ((finiteErdosSum F 2 : ℚ) : ℝ) := by
     rw [← hF]
     exact positiveMersenneSupportValue_eq_cast_finiteErdosSum F
   apply (irrational_erdosBorweinMersenneConstant.ne_rat
-    ((1 : ℚ) / 2 + finiteErdosSum F 2))
+    (q + finiteErdosSum F 2))
   rw [erdosBorweinMersenneConstant_eq_greedy_add_skipped,
     hgreedy, hskipped]
   push_cast
   rfl
+
+/-- The rational skip criterion specializes to the target `1/2`. -/
+theorem infinite_greedyMersenneSkippedSupport_of_half_mem
+    (hhalf : (1 / 2 : ℝ) ∈ mersenneAchievementSet) :
+    (greedyMersenneSkippedSupport (1 / 2 : ℝ)).Infinite := by
+  have hhalf' : (((1 : ℚ) / 2 : ℚ) : ℝ) ∈ mersenneAchievementSet := by
+    simpa using hhalf
+  simpa using
+    (infinite_greedyMersenneSkippedSupport_of_rat_mem
+      (q := (1 : ℚ) / 2) hhalf')
+
+/-- A nonnegative rational target belongs to the Mersenne achievement set
+exactly when its canonical greedy orbit omits infinitely many exponents. -/
+theorem rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite
+    (q : ℚ) (hq : 0 ≤ q) :
+    (q : ℝ) ∈ mersenneAchievementSet ↔
+      (greedyMersenneSkippedSupport (q : ℝ)).Infinite := by
+  constructor
+  · exact infinite_greedyMersenneSkippedSupport_of_rat_mem
+  · exact mem_mersenneAchievementSet_of_greedySkippedSupport_infinite
+      (by exact_mod_cast hq)
+
+/-- A greedy skipped support is infinite exactly when it contains skipped
+ranks beyond every cutoff. -/
+theorem greedyMersenneSkippedSupport_infinite_iff_cofinal_skips (x : ℝ) :
+    (greedyMersenneSkippedSupport x).Infinite ↔
+      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+        ¬ mersenneWeight (n + 1) ≤ greedyMersenneRemainder x n := by
+  constructor
+  · intro hinfinite K
+    have hexists : ∃ m : ℕ, K + 1 ≤ m ∧
+        m ∈ greedyMersenneSkippedSupport x := by
+      by_contra hK
+      apply hinfinite
+      refine (Set.finite_Iio (K + 1)).subset ?_
+      intro m hm
+      by_contra hmlt
+      exact hK ⟨m, Nat.le_of_not_gt hmlt, hm⟩
+    obtain ⟨m, hKm, hm⟩ := hexists
+    obtain ⟨n, rfl⟩ := Nat.exists_eq_succ_of_ne_zero (by omega : m ≠ 0)
+    exact ⟨n, by omega,
+      (succ_mem_greedyMersenneSkippedSupport_iff x n).mp hm⟩
+  · intro hcofinal hfinite
+    obtain ⟨B, hB⟩ := hfinite.bddAbove
+    obtain ⟨n, hBn, hn⟩ := hcofinal B
+    have hnB := hB ((succ_mem_greedyMersenneSkippedSupport_iff x n).mpr hn)
+    omega
+
+/-- A nonnegative rational target belongs to the Mersenne achievement set
+exactly when its canonical greedy orbit skips at arbitrarily late ranks. -/
+theorem rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips
+    (q : ℚ) (hq : 0 ≤ q) :
+    (q : ℝ) ∈ mersenneAchievementSet ↔
+      ∀ K : ℕ, ∃ n : ℕ, K ≤ n ∧
+        ¬ mersenneWeight (n + 1) ≤
+          greedyMersenneRemainder (q : ℝ) n := by
+  rw [rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite q hq,
+    greedyMersenneSkippedSupport_infinite_iff_cofinal_skips]
 
 /-- **Greedy skip dichotomy for the half target.**  Exact half-membership is
 equivalent to the canonical greedy orbit omitting infinitely many exponents.

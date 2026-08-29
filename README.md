@@ -1,7 +1,56 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis: a public frontier across eight open Erdős problems
+# Plectis mathematical research corpus
+
+Plectis is an AI assisted research system that moves hard questions through
+mathematical construction, formal checking, exposition and public review. This
+repository is its proof bearing public corpus for eight Erdős programmes. The
+system has produced exact reductions, conditional reductions, countermodels,
+route killing results and finite certificates. All eight original problems
+remain open.
+
+Publication and a green Lean build are not mathematical peer review or
+community acceptance. Each public object states its evidence class and its
+limit.
+
+## Inspect first
+
+Four source current objects give the shortest route into the mathematics:
+
+- **#68, exact endpoint.** Irrationality is equivalent to cofinal failure of one
+  strict successor divisibility test. No cofinal failure producer is known.
+- **#249, canonical reduction.** The target is equivalent to one universal
+  forced basepoint Mersenne residue gap. The universal gap supply is open.
+- **#251, coordinate theorem.** Summation by parts identifies the original
+  prime series with a weighted tail of actual consecutive prime gaps. No
+  infinite obstruction for that genuine tail is known.
+- **#257, canonical normal form.** A nonnegative rational belongs to the
+  Mersenne achievement set exactly when its canonical greedy orbit skips
+  beyond every cutoff. No such producer is proved for the unresolved targets.
+
+These are internal review candidates selected for explanatory value. The list
+does not assert novelty, importance, priority or acceptance.
+
+## Eight programme map
+
+| Programme | Current representative | Open boundary |
+|---|---|---|
+| **#68** | Cofinal carry and divisibility equivalence | Produce cofinal strict successor misses. |
+| **#243** | Conditional extinction of a bounded negative tail | Prove the actual orbit has the required lower bound. |
+| **#249** | Universal forced basepoint residue gap equivalence | Produce the strict gap for every denominator shape. |
+| **#251** | Prime series to consecutive gap tail coordinate theorem | Control the actual infinite gap tail. |
+| **#257** | Rational membership to canonical cofinal skipping | Produce cofinal skips for an unresolved target. |
+| **#269** | Rationality forces a collision of normalized tail states | Prove all scale separation or exclude integral tails. |
+| **#1041** | All degree constant factor component path theorem under review | Obtain the sharp constant and original lemniscate. |
+| **#1049** | Effective height budget for a possible auxiliary family | Construct one family meeting every budget obligation. |
+
+[Read the problem papers](#problem-papers) or open the
+[human verification route](docs/EXTERNAL_VERIFICATION.md). Detailed registries,
+commands and counts follow the mathematical map.
+
+<details>
+<summary>Repository scope and one quick verification command</summary>
 
 Plectis is an AI-assisted mathematical research system. Its public
 proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and 1049.
@@ -9,18 +58,20 @@ It contains exact reductions, model families, theorems,
 countermodels, method boundaries, and certificates. **It does not solve them. All eight problems remain open.**
 Each programme states what is checked and what still blocks the question.
 
-**Start with the mathematics.** Read the [eight-programme verification map](docs/EXTERNAL_VERIFICATION.md),
-then inspect one proof handle. No Lean build is needed for the first check:
+**Check one of those claims before you read any of this.** No Lean, no build,
+no install: a clone and Python 3:
 
 ```bash
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-The command prints the statement, re-resolves its declaration, names any
-Comparator interface and paper, shows the release receipts, and states where
-the claim stops. Most claims intentionally have no Comparator interface.
-`--verify-all` checks all 103 claims and 335 declarations in about a fifth of a
-second. [Read or run it](#read-or-run-it) lists the routes that do need Lean.
+It prints the published statement, re-resolves the declaration in this
+checkout, names the Comparator interface that restates it and the paper that
+writes it up: or says plainly there is no such interface, which is true of
+most claims: and shows the release receipts and the exact point where the
+claim stops. `--verify-all` does the same for all 103 claims and 335 declarations in
+about a fifth of a second. [Read or run it](#read-or-run-it) has every other
+route, including the ones that do need Lean.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [prior art and attribution](docs/PRIOR_ART.md)
@@ -47,6 +98,8 @@ matters: those remain authored judgements, and the papers state them per result.
 
 Routes: [mathematics](docs/RESULTS.md) · [verification](docs/EXTERNAL_VERIFICATION.md)
 · [systems](ARCHITECTURE.md) · `query_corpus.py --overview` / `--papers`.
+
+</details>
 
 ## Problem papers
 
@@ -107,8 +160,8 @@ and the `1/2` and `1/21` targets remain open.
 
 [**#269: three-prime running least common multiple**](erdos-269-three-prime-running-lcm.pdf).
 For every two-prime set, both the de-duplicated and repeated sums are
-transcendental, by a paper argument using Loxton–van der Poorten in the
-Bugeaud–Laurent form. **This is not first and not formalised.** Steve Fan posted
+transcendental, by a paper argument using Loxton-van der Poorten in the
+Bugeaud-Laurent form. **This is not first and not formalised.** Steve Fan posted
 the same factorisation and conclusion on the erdosproblems.com #269 discussion
 page on 26 June 2026; this note was first released publicly on 22 July 2026.
 This project therefore claims no priority for the two-prime theorem, and no Lean
@@ -126,7 +179,7 @@ counterexample); repairing the topology and metric gluing remains open.
 [**#1049: multiplicative obstructions at base 3/2**](erdos-1049-rational-base-lambert.pdf).
 Lean checks construction-specific no-go theorems, four-jet cancellation, and
 direct-clearing obstructions at `3/2`, plus the elementary height inequality used
-by Bundschuh–Väänänen's external criterion at `7/2`. It proves no irrationality
+by Bundschuh-Väänänen's external criterion at `7/2`. It proves no irrationality
 result; `3/2`, the primitive noncollapsed construction, and analytic remainder
 control remain open.
 
@@ -135,7 +188,7 @@ control remain open.
 
 ## External verification
 
-Nineteen selected Lean propositions are declared a second time, without proofs,
+Twenty selected Lean propositions are declared a second time, without proofs,
 in [`ExternalVerification/Statements.lean`](ExternalVerification/Statements.lean).
 Comparator checks the proof-bearing module against those separate declarations
 and against a fixed axiom budget of `propext`, `Quot.sound`, and
@@ -162,55 +215,6 @@ development system. `v0.9.0` is the latest tagged release and citation anchor;
 [`docs/claims.json`](docs/claims.json) pins the exact formal-source checkpoint
 this release ships. Lean source checked by the pinned Lean kernel is
 proof authority; do not infer results from private or unreleased work.
-
-## What the formal source establishes
-
-Labels are descriptions, not scores. **Formalised here** means a statement
-rendered and kernel-checked in Lean, which for a known theorem is a checked
-rendering and not a priority claim; **proved here** means the argument is this
-project's. **Verified finite instance** means
-Lean checked only the listed inputs; **conditional reduction** means the
-conclusion depends on a named open condition.
-
-| Status | Result |
-|---|---|
-| **formalised here** | For every integer `b ≥ 2`, the full-support series `∑ 1/(bⁿ - 1)` is irrational; Erdős (1948) is a checked rendering rather than a new result. Several named infinite-support families are also formalised; this does not cover every infinite support. |
-| **formalised here** | The base-2 Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level. |
-| **proved here** | For the #257 test value `1/2`, achievement-set membership is equivalent to infinitely many greedy skips and would produce an infinite support of rational sum, refuting universal #257. Under the last-skip schema's hypotheses (a rank floor, a carry condition, and a strict middle-cell inequality), the upper branch and the middle coordinate `-3` are impossible. |
-| **conditional reduction** | Within that same last-skip contradiction schema, the two still-unexcluded middle coordinates, `-2` and `-1`, would also be ruled out if one current contribution were larger than the sum of all later possible contributions. That inequality is not proved. |
-| **formalised here** | The dyadic sections of Euler's totient have an explicit rational basis; for `e ≥ 1` the level-`e` span has dimension exactly `2ᵉ + 1`. The Lean proof is an independent constructive route to an independence consequence of Martin's stronger theorem; this is a theorem about the coefficient sequence, not the irrationality of `S`. |
-| **unconditional progress** | For every integer `k ≥ 2`, the sections through level `e ≥ 1` have rank `kᵉ + 1`, with an explicit basis and complete scalar relation normal form. The paper combines Martin's external affine-independence theorem with Lean-checked zero-channel and composite-base reduction identities, exact fixed-level residue coordinates, unconditional spanning, and a `kᵉ + 1` rank theorem parameterised by explicit linear independence. Martin's theorem and the all-base linear-independence premise are not formalised. |
-| **formalised here** | Applying the classical Farey/mediant bound directly to the committed `K=240` interval excludes rational denominators through `79 639 646 646 701 375 323 355 774 875 831 053` (about `7.96 × 10³⁴`). This is exactly the Farey bound, not an improvement on it; Lean also checks that the next denominator fails this finite window. |
-| **proved here** | `S` is irrational exactly when every positive binary tail difference is non-integral, equivalently when every fixed pair has a finite certificate. Finishing the argument would require certificates at arbitrarily large stages; that step is not proved. |
-| **verified finite instance** | Lean proves a diagonal certificate at every `t ≤ 82`. Historical free-position audit: 125 verified log rows represent 123 distinct off-diagonal `(h,N,L)` certificates in 122 Lean files. This finite evidence does not prove successful cases beyond every fixed cutoff. |
-
-### Other exact mathematics in the corpus
-
-| Package | Exact checked content | Boundary |
-|---|---|---|
-| Fair-coin coprimality | `S = 1/2 + P(gcd(X,Y)=1)` for independent `P(X=n)=2⁻ⁿ`. | Irrationality remains open. |
-| Squared-Lambert gcd moments | Two exact divisor-sum identities for squared Lambert denominators. | No transfer to the open Möbius row. |
-| Stern–Brocot cylinder law | Exact stop/child splitting; depth error at most `(2/3)^d`. | Probability law, not irrationality. |
-| Fibonacci/continuant run stability | Height at least `F_{r+3}` with exact defect expansion. | No analytic denominator-clearing theorem. |
-| Tempered binary tail rigidity | Exact rationality/carry-orbit classification for `c(n) ≤ n`. | Needs problem-specific orbit control. |
-| Exact Möbius-shadow denominator | Exact reduced denominator and an explicit divisor lower bound. | No unbounded avoidance supply. |
-| Scalar-localisation height obstruction | If `H ∣ x.den` and `(c·x).den ∣ H`, then `x.den/H ∣ |c|`. | Local obstruction only. |
-
-Typed routes expose sources: `probabilistic_gcd_geometry` for the first four
-rows, `boolean_mobius_constraints` for tail rigidity, and
-`arithmetic_obstruction_interfaces` for the last two. Orientation also lists
-eventually-periodic nonnegative weighted irrationality, a signed
-irrational-or-base-terminating dichotomy, five binary-carry
-criteria/consequences, and two scoped #249 no-go countermodels.
-Five further obstructions are stated with their limits in
-[RESULTS](docs/RESULTS.md#other-standalone-exact-obstructions).
-
-An exact final-skip band formula does not show that the actual orbit avoids
-an unsafe band.
-
-[Orientation](docs/ORIENTATION.md) routes claims; the retained
-[mathematics paper](erdos249-257-main-paper.pdf) preserves the joint
-#249/#257 exposition.
 
 ## What remains open
 
@@ -239,12 +243,12 @@ the next edition and the refutation credited.
 
 The layer a mathematician should judge is small: 103 curated claim records in 21 contribution families, reaching Lean source through 333 principal declaration links. `SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem.
 
-The rest is engineering inventory. About 93% of the 153,320 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 93% of the 153,325 declarations (142,668 across 683 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
 | Lean modules (the two library roots) | 1,023 |
-| Formal results and supporting lemmas | 151,085 |
+| Formal results and supporting lemmas | 151,090 |
 | Curated claim records | 103 |
 | Contribution families | 21 |
 

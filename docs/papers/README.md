@@ -49,7 +49,7 @@ This paper states no reading route. Its evidence boundary is in [Introduction an
 
 This paper states no reading route. Its evidence boundary is in [The wall](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [What the wall does not block](full-text/erdos249-totient-reasoning-surface.md#sec:survivors).
 
-### What tail-shift condition would prove irrationality in Erdős #251, and what prime-gap input is still missing?
+### What tail-shift condition would prove irrationality in Erdős #251, which natural affine schedules provably cannot supply it, and what prime-gap input still survives?
 
 **An Integral-Shift Criterion for Dyadic Tail Recurrences**
 

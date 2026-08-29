@@ -35,7 +35,7 @@
 % \lref/\lrefx/\lword/\lloc target resolves to the named declaration at that line.
 % ---------------------------------------------------------------------------
 % Public formal-source checkpoint used by this paper.
-\newcommand{\commit}{9e231ce4371fcda607f81c4520d29b16dcb4482e}
+\newcommand{\commit}{5d60c5345b8a770a9f3671733df5659dfb03c470}
 \newcommand{\commitshort}{c2b44eb04090}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-lean-erdos249-257/blob/\commit}
 \newcommand{\sourceurl}{https://github.com/wcook04/plectis-lean-erdos249-257/tree/\commit}
@@ -355,7 +355,7 @@ Membership would produce an infinite support of rational sum and refute the
 universal statement of Erd\H{o}s~\#257.  Thus the counterexample condition is
 exact: terminal zeros beyond every bound, equivalently no last greedy skip.
 The formal statements are the
-\lword{GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip equivalence},
+\lword{GreedyAchievementSet.lean}{2585}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip equivalence},
 \lword{HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{unbounded-terminal equivalence},
 \lword{HalfCylinderHalfMembershipClassification.lean}{235}{half_mem_mersenneAchievementSet_iff_no_lastHalfGreedySkip}{no-last-skip equivalence},
 and the
@@ -1016,7 +1016,7 @@ The following are equivalent:
 \]
 \end{theorem}
 \noindent The omitted-set equivalence is the
-\lword{GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip theorem};
+\lword{GreedyAchievementSet.lean}{2585}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{infinite-skip theorem};
 the terminal forms are the
 \lword{HalfCylinderHalfMembershipClassification.lean}{126}{half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse}{unbounded-terminal theorem}
 and
@@ -4019,7 +4019,7 @@ The residual--tail separation condition is decidable over $\Q$ and holds for
 $1\le n\le6$.
 \end{proposition}
 \noindent This is the
-\lword{GreedyAchievementSet.lean}{2917}{halfSecondChannelSeparatedRat_of_pos_le_six}{verified rank-(6) residual--tail separation}.
+\lword{GreedyAchievementSet.lean}{2975}{halfSecondChannelSeparatedRat_of_pos_le_six}{verified rank-(6) residual--tail separation}.
 
 \begin{corollary}[eventual residual--tail separation criterion]
 \label{res:secondcriterion}
@@ -4027,7 +4027,7 @@ If the residual--tail separation condition holds for every \(n\ge7\), then
 \(1/2\) belongs to the Mersenne achievement set \(\mathcal A\).
 \end{corollary}
 \noindent This implication is the
-\lword{GreedyAchievementSet.lean}{3095}{half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven}{eventual residual--tail separation criterion}.
+\lword{GreedyAchievementSet.lean}{3153}{half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven}{eventual residual--tail separation criterion}.
 The finite proposition supplies \(1\le n\le6\), but no case with \(n\ge7\);
 no converse is proved.  Membership itself has the exact characterisation
 \[
@@ -4036,7 +4036,7 @@ no converse is proved.  Membership itself has the exact characterisation
   \text{the canonical greedy orbit omits infinitely many exponents}.
 \]
 This is formalised at
-\lword{GreedyAchievementSet.lean}{2527}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{half-membership--infinite-skip equivalence}.
+\lword{GreedyAchievementSet.lean}{2585}{half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite}{half-membership--infinite-skip equivalence}.
 The forward implication uses the
 \hyperref[res:full]{full-support irrationality theorem}; for the reverse,
 if a residual ever exceeds the remaining tail, every later exponent is

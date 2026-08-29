@@ -608,10 +608,10 @@
           "module": "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
           "path": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
           "present": true,
-          "line_count": 421,
-          "declaration_count": 28,
-          "theorem_count": 23,
-          "content_digest": "sha256:7dd147a2bef89f7f23a168c02a8dfb4c7fee887314a7a5367d49336330eb1419"
+          "line_count": 432,
+          "declaration_count": 29,
+          "theorem_count": 24,
+          "content_digest": "sha256:6a15ccb8be27230ab13ccf786b651778f54e020bc146711b9141495ac6f17737"
         }
       ],
       "note": {
@@ -622,16 +622,21 @@
         "authority_posture": "authored_problem_owned_synthesis_of_reviewed_gateway_claims_and_unregistered_expansion_modules_not_Lean_proof_authority"
       },
       "what_is_checked": [
+        "For every nonnegative rational target, membership in the Mersenne achievement set is equivalent to its canonical greedy orbit making actual skips beyond every cutoff.",
         "That the strict Mersenne tail inequality is hereditary under deleting an arbitrary collection of future weights.",
         "That binary digit strings restricted to any chosen support retain unique Mersenne coding.",
         "Restricted sets are compact and nowhere dense; infinite-support sets are perfect; finite-complement measure is 2^(-|F|), otherwise zero."
       ],
       "what_is_not_checked": [
-        "The universal irrationality problem, or irrationality for any new infinite support.",
+        "Cofinal actual skips for 1/2, 1/21, or any other unresolved target; the universal irrationality problem also remains open.",
         "Fair-bit laws, finer singularity results, and periodic-stride dimensions.",
         "Any bridge from geometric uniqueness or measure rigidity to arithmetic irrationality."
       ],
       "open_obligations": [
+        {
+          "id": "cofinal_actual_greedy_skips",
+          "statement": "Produce actual canonical greedy skips beyond every cutoff for 1/2, 1/21, or another unresolved rational target. Arbitrary omitted supports and finite traces do not satisfy this quantifier."
+        },
         {
           "id": "arithmetic_rigidity_for_thin_supports",
           "statement": "Convert hereditary unique coding into an arithmetic obstruction to rational values for every infinite support, including zero-measure Cantor supports."
@@ -652,11 +657,11 @@
       },
       "external_check": {
         "state": "reviewed",
-        "family_count": 7,
+        "family_count": 8,
         "by_class": {
           "not_applicable": 1,
           "not_selected": 2,
-          "targeted": 4
+          "targeted": 5
         },
         "dispositions": {
           "finite_period_noncollapse": "targeted",
@@ -664,6 +669,7 @@
           "known_irrational_supports": "targeted_full_support_representative",
           "squarefree_support": "not_applicable_to_external_irrationality_input",
           "achievement_set_geometry": "targeted_measure_theorem",
+          "canonical_greedy_membership": "targeted_bundled_equivalence",
           "restricted_achievement_sets": "targeted_measure_dichotomy",
           "half_and_twenty_one_frontiers": "not_selected_deep_greedy_state_vocabulary"
         }

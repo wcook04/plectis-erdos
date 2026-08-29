@@ -76,7 +76,7 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # first screen. The section named "External verification" previously spent
     # every byte on prior-art boundaries and release identity and never said
     # what the verification is, so a reviewer could not learn from the README
-    # that nineteen propositions are separately declared, Comparator-checked
+    # that twenty propositions are separately declared, Comparator-checked
     # against a fixed axiom budget, and covered by an adversarial fixture, nor
     # that the same check runs in continuous integration. "Has anyone actually
     # run this?" is the first question a sceptical reviewer asks. A cheap
@@ -418,133 +418,43 @@ def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
     within one group permit harmless wording changes; satisfying one task with
     tokens scattered across three documents is deliberately impossible.
     """
-    open_rows = {row["id"]: row for row in summary["remaining_open_propositions"]}
     return {
         "identity_and_public_boundary": [
-            ["self-contained public"],
             ["Plectis"],
-            ["not an entrypoint into any private development system"],
+            ["AI assisted research system", "AI-assisted research system"],
+            ["proof bearing public corpus", "proof-bearing public corpus"],
+            ["All eight original problems remain open", "All eight problems remain open"],
         ],
-        "state_problem_frontier": [
-            ["All eight problems remain open"],
-            ["S = ∑ φ(n)/2ⁿ"],
-            ["∑_{n∈A} 1/(2ⁿ - 1)"],
-            ["every infinite", "for every infinite"],
+        "show_scarce_attention_first": [
+            ["## Inspect first"],
+            ["#68, exact endpoint"],
+            ["#249, canonical reduction"],
+            ["#251, coordinate theorem"],
+            ["#257, canonical normal form"],
+            ["does not assert novelty", "not claims of novelty"],
         ],
-        "recover_blank_slate_problem_card": [
+        "recover_eight_problem_map": [
+            ["## Eight programme map"],
             ["#68"],
-            ["n!−1", "n!-1"],
             ["#243"],
-            ["rapidly growing"],
-            ["Sylvester recurrence"],
             ["#249"],
-            ["∑ φ(n)/2ⁿ"],
             ["#251"],
-            ["∑ p_n/2ⁿ"],
             ["#257"],
-            ["every infinite"],
             ["#269"],
-            ["running lcms"],
             ["#1041"],
-            ["lemniscate"],
             ["#1049"],
-            ["rational bases"],
-            ["no query is required"],
-            ["does not require `ai_workflow`", "does not require ai_workflow"],
         ],
-        "distinguish_release_source_and_authority": [
-            ["latest tagged release and citation anchor"],
-            ["formal-source checkpoint"],
-            ["this release ships", "not a new tagged release"],
-            [PROOF_AUTHORITY],
-        ],
-        "recover_headline_statuses": [
-            ["formalised here"],
-            ["conditional reduction"],
-            ["verified finite instance"],
-            ["does not show that the actual orbit avoids", "does not show the actual orbit avoids"],
-            ["does not prove successful cases beyond every fixed cutoff"],
-        ],
-        "recover_farey_boundary": [
-            ["classical Farey/mediant bound"],
-            ["Farey's method supplies the number directly"],
-            ["numerical delta `0`", "numerical delta 0"],
-            ["exactly the Farey bound, not an improvement"],
-        ],
-        "recover_breadth_beyond_headlines": [
-            ["eventually-periodic nonnegative weighted irrationality"],
-            ["signed irrational-or-base-terminating dichotomy"],
-            [
-                "five binary-carry criteria/consequences",
-                "five binary-carry criteria or consequences",
-            ],
-            ["two scoped #249 no-go countermodels"],
-        ],
-        "recover_independent_exact_packages": [
-            ["fair-coin coprimality", "P(gcd(X,Y)=1)"],
-            ["squared-Lambert gcd moments"],
-            ["Stern–Brocot cylinder law"],
-            ["(2/3)^d"],
-            ["Fibonacci/continuant run stability"],
-            ["F_{r+3}"],
-            ["tempered binary tail rigidity"],
-            ["exact Möbius-shadow denominator"],
-            ["scalar-localisation height obstruction"],
-        ],
-        "recover_scale_and_assembly": [
-            ["Lean modules"],
-            ["Formal results and supporting lemmas"],
-            ["Curated claim records"],
-            ["Contribution families"],
-            ["navigation counts, not novelty claims"],
-        ],
-        "name_exact_open_frontier": [
-            [open_rows["remaining_open.erdos_249_irrationality"]["statement"],
-             "Prove that `S = ∑ φ(n)/2ⁿ` is irrational"],
-            [open_rows["remaining_open.unbounded_certificate_supply"]["statement"],
-             "Produce the unbounded certificate supply"],
-            [open_rows["remaining_open.universal_257_all_infinite_supports"]["statement"],
-             "Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite"],
-        ],
-        "route_exact_expert_handoffs": [
-            ["exact expert handoffs"],
-            ["what input is requested"],
-            ["current guess"],
-            ["alternatives"],
-            ["discriminating evidence"],
-            ["checked consumer"],
-            ["endpoint-or-counterexample boundary"],
-            ["python3 scripts/query_expert_handoffs.py"],
+        "route_human_review": [
+            ["Read the problem papers"],
+            ["human verification route"],
+            ["python3 scripts/verify_claims.py --claim"],
+            ["Comparator checks propositions only"],
         ],
         "choose_a_next_read": [
-            # The anchor is "a route into the manuscripts exists", not the name
-            # of one manuscript. This read ["Exposition PDF"] alone, which is
-            # the label of the joint #249/#257 paper -- the single manuscript
-            # docs/papers/corpus.json records as retired, whose "problem-specific
-            # successors are the active reader routes". So the gate required the
-            # reader's next-read bullet to name the superseded paper, and
-            # naming the live per-problem route instead failed it.
-            ["per-problem papers", "Exposition PDF", "joint PDF", "docs/papers"],
-            ["AGENTS.md"],
-            ["docs/orientation.json"],
-            ["docs/SOURCE_MAP.md"],
-        ],
-        "navigate_without_compiling": [
-            ["Whole-corpus agent navigation"],
-            ["without a Lean build"],
-            ["--tour --format card"],
-            ["corpus scale"],
-            ["mathematical map"],
-            ["canonical eight-problem map"],
-            ["problem-registry"],
-            [
-                "distinct reviewed #249/#257 open-proposition frontier",
-                "exact open frontier",
-            ],
-            ["agent_native_corpus_navigation"],
-            ["every indexed declaration"],
-            ["exact dependencies for both loaded roots"],
-            ["navigation projections, not proof authority"],
+            ["## Problem papers"],
+            ["docs/papers/corpus.json"],
+            ["## What remains open"],
+            ["## Read or run it"],
         ],
     }
 
@@ -714,8 +624,10 @@ def validate_human_first_contact(
 
     readme_prefix = first_bytes(surfaces["README.md"], README_FIRST_CONTACT_BUDGET_BYTES)
     section_order = (
+        "## Inspect first",
+        "## Eight programme map",
         "## Problem papers",
-        "## What the formal source establishes",
+        "## External verification",
         "## What remains open",
         "## Read or run it",
     )
@@ -725,30 +637,30 @@ def validate_human_first_contact(
     )
     assert positions == sorted(positions), "README first-contact sections are out of order"
 
-    # The four sections above are the mathematician's reading order and they are
-    # correct as an order. What they cannot do is answer "is any of this real?"
+    # The sections above are the mathematician's progressive-disclosure order.
+    # What they cannot do is answer "is any of this real?"
     # for someone who has not yet decided to read. Until 2026-08-16 the first
     # command in this README appeared at byte 15,345 — after the eight problem
     # papers, the external-verification account, the formal-results table, the
-    # open-wall section and the corpus census — so every route that returned a
+    # open-wall section and the corpus census, so every route that returned a
     # result was priced behind four screens of inventory.
     #
     # Positional, not keyword: `verify_claims.py` was already named under "Read
     # or run it" when this was written, and being named there did not put it in
     # front of anyone. The contract is that the cheapest runnable verb precedes
-    # the first section heading, i.e. it is inside the opening a reader always
-    # sees. Raising a byte budget to fund a new section must not quietly buy
-    # that back.
-    first_section = readme_prefix.find("\n## ")
+    # the detailed problem-paper inventory. A short thesis, a scarce-attention
+    # shortlist and the eight-programme map may come first because they answer
+    # what the corpus is and where a mathematician should begin.
+    first_inventory = readme_prefix.find("\n## Problem papers")
     first_command = readme_prefix.find("python3 scripts/")
     assert first_command >= 0, (
         "README first-contact surface no longer contains a runnable command"
     )
-    assert first_section >= 0, "README first-contact surface lost its section headings"
-    assert first_command < first_section, (
+    assert first_inventory >= 0, "README first-contact surface lost its paper inventory"
+    assert first_command < first_inventory, (
         f"README puts its first runnable command at byte {first_command}, below the "
-        f"first section heading at byte {first_section}; a reader deciding whether "
-        "this repository is worth their time meets an inventory before they meet "
+        f"paper inventory at byte {first_inventory}; a reader deciding whether "
+        "this repository is worth their time meets detailed inventory before "
         "anything they can run"
     )
     validate_first_command_keeps_its_promise(readme_prefix)

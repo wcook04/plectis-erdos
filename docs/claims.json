@@ -11170,11 +11170,11 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-lean-erdos249-257",
     "formal_source": {
-      "ref": "9e231ce4371fcda607f81c4520d29b16dcb4482e",
+      "ref": "5d60c5345b8a770a9f3671733df5659dfb03c470",
       "ref_kind": "commit",
       "publication_state": "published_committed_checkpoint",
       "relationship_to_last_tag": "post_tag_checkpoint",
-      "public_tag": "formal-source-2026-08-12-r2"
+      "public_tag": "formal-source-2026-08-24-r1"
     },
     "public_projection": {
       "posture": "self_contained_public_projection_from_a_larger_ongoing_research_workflow",
@@ -11431,6 +11431,17 @@
         "wrapper_declaration": "Erdos249257.ExternalVerification.volume_mersenneAchievementSet",
         "statement": "The base-2 Mersenne achievement set has Lebesgue measure exactly one.",
         "boundary": "This does not decide whether every infinite-support sum is irrational."
+      },
+      {
+        "id": "rational_greedy_cofinal_skip_membership",
+        "problem": 257,
+        "review_family": "canonical_greedy_membership",
+        "contribution_class": "exact conditional equivalence; novelty unassessed",
+        "original_declaration": "ErdosProblems.Erdos257.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+        "original_source": "ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips",
+        "statement": "For every nonnegative rational target, Mersenne achievement-set membership is equivalent to the canonical greedy orbit making actual skips beyond every cutoff.",
+        "boundary": "The equivalence supplies no cofinal-skip producer for 1/2, 1/21, or another unresolved target."
       },
       {
         "id": "erdos_borwein_full_support",
@@ -11791,6 +11802,14 @@
             "boundary": "Geometry of the full set does not decide irrationality of every coded point."
           },
           {
+            "id": "canonical_greedy_membership",
+            "contribution_class": "exact conditional equivalence; novelty unassessed",
+            "summary": "For each nonnegative rational target, achievement-set membership is exactly cofinal actual skipping by its canonical greedy orbit.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted_bundled_equivalence",
+            "boundary": "The theorem does not produce cofinal skips for any unresolved target."
+          },
+          {
             "id": "restricted_achievement_sets",
             "contribution_class": "locally proved result; novelty unassessed",
             "summary": "Support-restricted coding is injective and the associated achievement set has exact finite-complement measure or zero for infinite complement.",
@@ -12058,7 +12077,7 @@
         "source": "paper/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1173
+        "line": 1177
       }
     },
     {
@@ -14539,7 +14558,7 @@
         {
           "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2527
+          "line": 2585
         },
         {
           "name": "finite_boolSupport_ne_half",
@@ -14610,17 +14629,17 @@
         {
           "name": "HalfSecondChannelSeparatedRat",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2857
+          "line": 2915
         },
         {
           "name": "halfSecondChannelSeparatedRat_of_pos_le_six",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2917
+          "line": 2975
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_secondChannelSeparationRat_from_seven",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 3095
+          "line": 3153
         },
         {
           "name": "half_mem_mersenneAchievementSet_of_skipped_twoChannelCap",
@@ -14630,7 +14649,7 @@
         {
           "name": "half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite",
           "module": "Erdos249257/GreedyAchievementSet.lean",
-          "line": 2527
+          "line": 2585
         }
       ]
     },
