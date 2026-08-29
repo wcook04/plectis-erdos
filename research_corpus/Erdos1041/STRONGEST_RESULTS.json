@@ -2,7 +2,7 @@
   "schema": "erdos1041_strongest_result_activation_map_v1",
   "problem_id": "erdos_1041",
   "status": "open",
-  "source_checkpoint": "6658deca35adde05f60bd2a19c76da996698bc9a",
+  "source_checkpoint": "9b33a98d985823d9c79877cd62f9315e641730d2",
   "reading_rule": "Consume each row as a premise or falsifier before proof search. A result implied by a row is dominated; use the stronger row and continue toward the unrestricted parent theorem. Route choice remains unrestricted.",
   "results": [
     {
@@ -216,7 +216,7 @@
       ],
       "why_it_matters": "Return 010 rediscovered this occupied envelope; packets must spend it through a genuinely new selector or combine it with another parent consumer.",
       "local_frontier_only": true,
-      "local_authority_commit": "6658deca35adde05f60bd2a19c76da996698bc9a",
+      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
       "local_authority_sha256": {
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.md": "e794148607891dff94897b928f771fdd8128061d9c82a4ba5698c2fecf8243fd",
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/BarycentricEnvelope.lean": "f8db735538852d8db8a45234613b1b02b869ee08834f616148a38cf45fec90ea"
@@ -245,7 +245,7 @@
       ],
       "why_it_matters": "It removes another dominated radial derivation and forces work onto the missing pair/scale selector or a different endpoint bridge.",
       "local_frontier_only": true,
-      "local_authority_commit": "6658deca35adde05f60bd2a19c76da996698bc9a",
+      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
       "local_authority_sha256": {
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TypeBReturnAssimilation20260826.md": "afcab2005bbcbe800888d9e9c6ffd9a3a83498875b7dd10b00ef0fc14192867e"
       },
@@ -272,7 +272,7 @@
       ],
       "why_it_matters": "Return 009 stopped at the occupied staple theorem; the only creditable next step is a new selector or full composition.",
       "local_frontier_only": true,
-      "local_authority_commit": "6658deca35adde05f60bd2a19c76da996698bc9a",
+      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
       "local_authority_sha256": {
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.md": "a4a76758e216490f4cc567068726af8183b4b7a2cb1ab5cbc922af25a47de8e1",
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/ReciprocalNewtonExpansion.lean": "fc69e0d0c86c2159c5513f2bfe4142ced0d1e7de5c81180980af355a1ef21b7a"
@@ -302,7 +302,7 @@
       ],
       "why_it_matters": "Return 010 repeated occupied tied-face machinery; activate the whole chain and force the proof across the missing global splice.",
       "local_frontier_only": true,
-      "local_authority_commit": "6658deca35adde05f60bd2a19c76da996698bc9a",
+      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
       "local_authority_sha256": {
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceCriticalTrace.md": "8a64f560149290e7cda8cf06303e7ae02c791590b51634deb342e744c9f843b0",
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/TiedNewtonFaceAdjacentEllipse.md": "c201b91d78008706532f2f3f408af3fb2f67c6432d817d892e963a58df479741"
@@ -359,7 +359,7 @@
       ],
       "why_it_matters": "It localizes the scale-sensitive additive target to one proper-map component, where component topology and boundary trace can act without cross-component compensation. It must be proved or exactly falsified; numerical survival is not theorem authority.",
       "local_frontier_only": true,
-      "local_authority_commit": "6658deca35adde05f60bd2a19c76da996698bc9a",
+      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
       "local_authority_sha256": {
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md": "e3cdec3df99f4cfbd54f5687e6d8ccb54d69534d36a2ef004204b3137bd3b350",
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py": "eda40f3ab91f6567a61893e1c264b2519f81e0afafd131385fba87ac4a796546"
@@ -392,7 +392,7 @@
       ],
       "why_it_matters": "It splits the topology-first graft obligation into two explicit nonnegative liabilities: quadratic cut-scale convexity C_v and positive node-factor overspend O_v. Prove PGLS with a scale- or topology-dependent allocation, prove the weaker graft inequality directly, or falsify and pivot. Neither CSTA nor PGLS is a theorem, and CAQ/CWSC remains the weakest target-deciding producer.",
       "local_frontier_only": true,
-      "local_authority_commit": "6658deca35adde05f60bd2a19c76da996698bc9a",
+      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
       "local_authority_sha256": {
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/AdmissibleCriticalArcProductLab.md": "e3cdec3df99f4cfbd54f5687e6d8ccb54d69534d36a2ef004204b3137bd3b350",
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_admissible_critical_arc_product.py": "eda40f3ab91f6567a61893e1c264b2519f81e0afafd131385fba87ac4a796546"
@@ -424,7 +424,7 @@
       ],
       "why_it_matters": "It converts the low-critical branch into a finite arity-by-capacity residual and makes any proof attempt that ignores the exact lattice dominated. The live task is to exploit high normalized capacity plus low first-merge arity, splice the complementary cells to another parent consumer, or solve the high-critical branch—not to rediscover a weaker constant-factor estimate.",
       "local_frontier_only": true,
-      "local_authority_commit": "6658deca35adde05f60bd2a19c76da996698bc9a",
+      "local_authority_commit": "9b33a98d985823d9c79877cd62f9315e641730d2",
       "local_authority_sha256": {
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/UnconditionalConstantFactorBound.md": "4e0015e457c2671eb32f9776204f7ca9434c0de526b225dc5bb18596ccb8b427",
         "formal_math/erdos257_period_noncollapse/ErdosProblems/Erdos1041/scripts/check_erdos1041_constant_factor_bound.py": "ccc47cea94bda5d5401e49f2924c4a0407a33e044f0ffa6c76a96584bd944da9"
