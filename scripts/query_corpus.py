@@ -7447,6 +7447,8 @@ def route_packet(route_id: str) -> dict[str, Any]:
         "release_provenance": claims["release"]["public_projection"],
         "validation": "python3 scripts/check_release.py",
     }
+    if route_id == "instant_orientation":
+        packet["mathematical_signal_spine"] = mathematical_signal_spine(claims)
     if route.get("route_kind") == "mathematical_programme":
         core_claims = [claim_index[claim_id] for claim_id in route["core_claim_ids"]]
         packet["programme"] = {
@@ -9139,10 +9141,23 @@ def render_card(packet: dict[str, Any]) -> str:
                 for row in signal["results"]
             )
             return "\n".join(rows)
-        return (
+        card = (
             f"route {route['id']} | {route['intent']} | read={' -> '.join(route['read'])} "
             f"| next={route['query_steps'][0]}"
         )
+        signal = packet.get("mathematical_signal_spine")
+        if not isinstance(signal, Mapping):
+            return card
+        rows = [card]
+        rows.extend(
+            (
+                f"global_signal #{row['rank']} | problem=#{row['problem']} "
+                f"| tier={row['reader_tier']} | family={row['family_id']} "
+                f"| boundary={row['exact_boundary']}"
+            )
+            for row in signal["ranked_frontier"]
+        )
+        return "\n".join(rows)
     if kind == "problem_route":
         route = packet["route"]
         research = route.get("research_corpus")

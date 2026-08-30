@@ -1130,6 +1130,21 @@ def validate_mathematical_signal_spine() -> None:
         assert declaration["matches"], row["source_declaration"]
         assert (ROOT / row["source_file"]).is_file(), row["source_file"]
 
+    instant = query("--route", "instant_orientation")
+    instant_frontier = instant["mathematical_signal_spine"]["ranked_frontier"]
+    assert [row["rank"] for row in instant_frontier] == list(
+        range(1, len(expected) + 1)
+    )
+    assert [row["family_id"] for row in instant_frontier] == [
+        row["family_id"] for row in expected
+    ]
+    assert all(row["exact_boundary"] for row in instant_frontier)
+    instant_card = query_corpus.render_card(instant)
+    assert instant_card.index("family=actual_lcm_orbit_separation") < instant_card.index(
+        "family=first_harmonic_pivot_decomposition"
+    ) < instant_card.index("family=totient_kernel_rank")
+    assert instant_card.count("global_signal #") == len(expected)
+
     adversarial_claims = copy.deepcopy(load("docs/claims.json"))
     adversarial_claims["external_verification_packet"]["main_results"].reverse()
     adversarial_claims["external_verification_packet"]["review_matrix"].reverse()
