@@ -181,10 +181,13 @@ replacement for claim authority.
   and no unbounded certificate supply follows.
 - Two additional checked #249 families are directly inspectable: an exact
   [squared-Lambert gcd-moment transfer](../Erdos249257/GcdMomentCalculus.lean)
-  at base `1/2`, and a [Stern–Brocot run-stability floor](../Erdos249257/SternBrocotRunGeometry.lean)
-  `F_{r+3} + F_{r+1} · ∑ eᵢ`. These finite identities/inequalities do not
-  establish analytic denominator survival or the unbounded family, so #249
-  remains open.
+  at base `1/2`, and the Comparator-transported
+  `runHeight_defect_fib_sum_lower`
+  (`Erdos249257/SternBrocotRunGeometry.lean`). For every finite defect list
+  `e`, this theorem bounds the height of its positive Stern–Brocot run word
+  from below by `(F_{r+3} + F_{r+1}) · ∑ eᵢ`, where `r` is the number of runs.
+  These finite identities/inequalities do not establish analytic denominator
+  survival or the unbounded family, so #249 remains open.
 - The same gcd-moment source gives the exact visible-coprime lattice
   normalization `∑ 1/(2ⁿ−1) = 1` over positive coprime pairs
   (`tsum_pos_coprime_inv_mersenne_eq_one`). It supplies the reduced-direction
@@ -277,7 +280,10 @@ core)**
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:699`), and a rank-two
   kernel obstruction
   (`ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:479`,
-  `ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:721`).
+  `ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean:721`): the Comparator
+  theorem `kernel_235_minor_eq_neg_one_fifteen` identifies the smallest
+  displayed `2,3,5` kernel minor as exactly `-1/15`. This rules out the
+  displayed rank-one route only; it does not imply irrationality.
 - Open: any three-prime case; the rationality-to-carry bridge and the
   cofinal window escape.
 
