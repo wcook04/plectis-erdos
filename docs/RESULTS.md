@@ -675,6 +675,16 @@ core)**
   follows. This is now Comparator-transported evidence, with the same boundary, and is
   distinct from the
   three-prime cell, rank-two no-go, and conditional carry-escape families.
+- A separate typed consumer makes the conditional carry-escape boundary concrete:
+  `no_positive_reducedCarry_of_cofinalLocalWindowEscape` derives `False` from
+  `CofinalLocalWindowEscape`, `B > 0`, `Nat.Coprime B 30`, positivity of an
+  integer-valued carry, the exact multiplier recurrence, and its
+  denominator-dependent short bound (`ExternalVerification/Challenge.lean:498-509`;
+  `ErdosProblems/Erdos269/RestrictedFloorSum.lean:629-654`). Its hard step is
+  the cofinal window expansion against that bound. The escape producer and the
+  bridge from the actual three-prime running-LCM series (or its rationality) to
+  this carry remain unproved, so this is no #269 endpoint or irrationality
+  proof; it is distinct from the finite residue and weighted-phase observers.
 **#1041 — short connections inside polynomial lemniscates?**
 
 - Checked: quantitative root retention under constant perturbation
