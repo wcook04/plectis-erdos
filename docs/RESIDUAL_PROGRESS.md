@@ -68,6 +68,15 @@ mutual-implication class, and the reverse direction rests on a corpus
 completeness theorem.  Fourteen apparent reductions of an open problem were,
 under the kernel, the open problem.
 
+The exact boundary is [`G103_iff_erdos249`](../ErdosProblems/DemandLedger/edges/Discharge3_G103.lean#L58), whose reverse direction uses
+[`irrational_totient_series_iff_pointwise_certificates`](../Erdos249257/LcmConeFlatness.lean#L399).
+Those theorems identify an endpoint-equivalent supply normal form; they do not
+prove Erdős #249.  The public problem route
+(`python3 scripts/query_corpus.py --route erdos_249`) remains the source for
+the open status and continuation obligation, while the
+[`semantic frontier`](semantic/frontier.json) is the route for the
+fourteen-member equivalence class.
+
 `Basic.lean` names those 101 demands and nothing more; the relations between
 them were proved once, by hand, for this corpus.  The evaluator below is that
 audit turned into an instrument: the same question — does this remaining
@@ -160,10 +169,10 @@ Under budget `ladder_v3_independent`:
 
 Three vetoes, both controls clean, and the legitimate decomposition survives.
 `docs/residualbench_report.json` is the run: every proposition put to Lean, the
-tactic that discharged it, and its axiom budget.  The same eight verdicts came
-back under this repository's Mathlib and under the older one Formal Conjectures
-pins, so what the budget can and cannot reach is not an artefact of one library
-version.
+tactic that discharged it, and its axiom budget.  It records this repository's
+pinned Mathlib environment only; no cross-pin receipt is registered here, so
+this note makes no portability claim about the older Formal Conjectures pins or
+other library versions.
 
 Two rows disagree with their labels on budget grounds and are left that way.
 `B_reassociation` is an equivalent range reindexing and `F_strengthening`
