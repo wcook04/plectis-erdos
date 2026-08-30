@@ -3,9 +3,9 @@
 
 # Plectis: a public frontier across eight open Erdős problems
 
-Plectis is an AI-assisted mathematical research system with a public
-proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
-1049: exact reductions, theorems, countermodels, boundaries, and certificates.
+Plectis is an AI-assisted public Lean corpus for Erdős Problems 68, 243, 249,
+251, 257, 269, 1041, and 1049: reductions, theorems, countermodels,
+boundaries, and certificates.
 **All eight problems remain open; this repository does not solve them.**
 
 **Start with one checked claim.** No Lean build is needed:
@@ -15,7 +15,7 @@ python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
 This prints the statement, Comparator, paper, receipts, and boundary.
-`--verify-all` checks the set. [Read or run it](#read-or-run-it) gives Lean routes.
+`--verify-all` checks all. [Read or run](#read-or-run-it) gives Lean routes.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [verification](docs/EXTERNAL_VERIFICATION.md) → [prior art](docs/PRIOR_ART.md)
@@ -50,27 +50,27 @@ Links name checked routes and limits; reductions are not solutions.
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [quotient-band breakpoint](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): band factors exactly; cancellation with nonzero moment forces an index ≥ `2d`. Finite; cofinal source open. Divisibility: `67` checked, `300000` external.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalized-vanishing [bounded-negative no-go](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean); unbounded mixed signs are open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit top edge. Supply open
-- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap-series irrationality; unbounded gaps prove neither. Bridge open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity/recurrence; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1, 3, 5 (sharp at 7); [composite-dilation identity](Erdos249257/CompositeDilationDefect.lean) budgets foreign divisors (zero for prime support), but arbitrary defects lack a bound or tail selector; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership stays open.
+- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap irrationality; unbounded gaps prove neither. Bridge open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean) stay positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound or tail selector; [pairwise-coprime support](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocal mass; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership stays open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — max powers/log cells/grouped sums/shell bounds/rank-two obstruction; three-prime open.
-- [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton decay/ray separation/collisions/root retention; an invalid saddle block leaves topology, gluing, and operator-owned proof open.
+- [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton decay/ray separation/collisions/root retention; invalid saddle block leaves topology/gluing and operator-owned proof open.
 - [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor; `31/4` powers lie in `81/200` height region; Hermite–Padé/determinant/prime-support no-go at `3/2`/`7/2`; no irrationality, noncollapse, or remainder control.
 
 ## What the formal source establishes
 
-**Formalised here** means kernel-checked Lean, not priority; **proved here** is our
+**Formalised here** means checked Lean, not priority; **proved here** is our
 argument; **conditional reduction** names an open hypothesis;
 **verified finite instance** checks listed inputs. For every
 integer `b ≥ 2`, `∑ 1/(bⁿ - 1)` is irrational (a checked rendering of Erdős
 (1948)). #257's `1/2` criterion gives an infinite-support consequence; last-skip
 rules out its upper branch and `-3`, while `-2`/`-1` remain conditional. #249 has
-rank interfaces, finite moments, denominator exclusions, and an
+rank, finite-moment, and denominator interfaces plus an
 irrationality/unbounded-certificate equivalence; Martin's theorem and its
 independence premise are not formalised.
 
-**Farey/mediant bound** at `K=240` is exactly Farey's bound (delta `0`), no
-improvement; its next denominator fails this window, saying nothing
-beyond fixed cutoffs. Packages: **fair-coin coprimality**,
+**Farey/mediant bound** at `K=240` is Farey's bound (delta `0`), not an
+improvement; its next denominator fails this window, saying nothing beyond
+fixed cutoffs. Packages: **fair-coin coprimality**,
 **squared-Lambert gcd moments**, **Stern–Brocot law** `(2/3)^d`, **Fibonacci
 stability** `F_{r+3}`, **tempered tails**, **Möbius-shadow denominator**, and
 **scalar height obstruction**; [gcd](Erdos249257/GcdMomentCalculus.lean),
@@ -122,20 +122,20 @@ order without asking you to decode Lean declaration names first.
 ## Read or run it
 
 - **No-build:** `python3 scripts/verify_claims.py --verify-all` or
-  `--claim <id>` follows a claim to source, receipts, and stopping point on a
-  `git clone --depth 1`; missing history is reported with `git fetch --unshallow`.
+  `--claim <id>` follows claims to source, receipts, and stopping point on a
+  `git clone --depth 1`; missing history uses `git fetch --unshallow`.
 - **Mathematician:** [RESULTS](docs/RESULTS.md) → papers → [SOURCE MAP](docs/SOURCE_MAP.md) → Lean; joint PDF is exposition.
-- **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), [`AGENTS.md`](AGENTS.md), and [`docs/orientation.json`](docs/orientation.json); choose one problem or claim before the registry.
+- **Coding agent:** read [`AGENTS.override.md`](AGENTS.override.md), [`AGENTS.md`](AGENTS.md), and [`docs/orientation.json`](docs/orientation.json); choose a problem/claim before the registry.
 - **Corpus navigation (no Lean):** run
   `python3 scripts/query_corpus.py --tour --format card`; add
-  `--route erdos_<n>` for a problem's paper, source, and open handles.
+  `--route erdos_<n>` for its paper, source, and open handles.
   `--route agent_native_corpus_navigation` exposes scale, map, and reviewed
-  #249/#257 frontier; [family census](docs/ORIENTATION.md#publication-family-census)
-  lists all 21 families; [wave routes](docs/WAVE_INDEX.md) expose continuations.
+  #249/#257; [family census](docs/ORIENTATION.md#publication-family-census)
+  lists 21 families; [wave routes](docs/WAVE_INDEX.md) expose continuations.
   `query_semantic.py problem-registry` drills down; indexes expose declarations.
   These are navigation only, not proof authority.
 - **Continue/compare:** [`docs/AGENT_WORKBENCH.md`](docs/AGENT_WORKBENCH.md) defines
-  the ladder; `proof_workbench.py show --session <slug>` or `replay --session <slug>`
+  the ladder; `proof_workbench.py show` or `replay --session <slug>`
   rechecks append-only work. `hypOf%` and [residual progress](docs/RESIDUAL_PROGRESS.md)
   separate reductions from renamed targets. [Verification dossier](docs/EXTERNAL_VERIFICATION.md)
   groups selected interfaces and limits; [replay contract](docs/EXTERNAL_VERIFICATION_REPLAY.md)
@@ -151,11 +151,10 @@ lake exe cache get
 lake build
 ```
 
-A cold clone navigates first. A focused build is
+Cold clones navigate first. Focus with
 `python3 scripts/lean_fast_build.py --jobs 2 [target]`; `--lake-staleness` trusts
 traces and `--changed-from <git-ref>` selects modules. It rebuilds only the
-selected or stale cone; dependency-index `--check` is constant-time
-when inputs are unchanged.
+selected/stale cone; dependency-index `--check` is constant-time when unchanged.
 
 Release checks are `python3 scripts/check_cold_clone_comprehension.py --quick`
 and `python3 scripts/check_release.py`.
