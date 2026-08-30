@@ -8,9 +8,11 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
+import check_theory_lab as checker
 import validation_singleflight as singleflight
 
 
@@ -37,8 +39,32 @@ def check_child_invocation_contract() -> None:
         raise SystemExit("theory-lab environment probe must use the shared worker timeout")
 
 
+def check_file_boundary() -> None:
+    """The theory-lab checker must reject non-regular input surfaces."""
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        regular = root / "regular.json"
+        regular.write_text("{}\n", encoding="utf-8")
+        directory = root / "directory"
+        directory.mkdir()
+        link = root / "link.json"
+        link.symlink_to(regular)
+        fifo = root / "fifo"
+        os.mkfifo(fifo)
+        with patch.object(checker, "ROOT", root):
+            if checker.safe_read_text(regular) != "{}\n":
+                raise SystemExit("theory-lab regular-file read failed")
+            for path in (directory, link, fifo):
+                try:
+                    checker.safe_read_text(path)
+                except checker.UnsafeTheoryLabInput:
+                    continue
+                raise SystemExit(f"theory-lab {path.name} boundary escaped")
+
+
 def main() -> int:
     check_child_invocation_contract()
+    check_file_boundary()
     hostile = os.environ.copy()
     hostile.update(
         {

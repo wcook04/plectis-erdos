@@ -40,8 +40,10 @@ repository or is the obvious next one.
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import subprocess
+import stat
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -97,6 +99,58 @@ FAILURE_KINDS = {"candidate_route_ruled_out", "mechanism_scope_exceeded"}
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 
 
+class UnsafeTheoryLabInput(ValueError):
+    """A theory-lab input is outside the regular checkout boundary."""
+
+
+def _safe_theory_lab_path(path: Path) -> Path:
+    """Reject checkout escapes and symbolic-link path components."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeTheoryLabInput(f"symlinked theory-lab input: {candidate}")
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeTheoryLabInput(
+                f"theory-lab input escaped checkout: {candidate}"
+            )
+        current = current.parent
+    return candidate
+
+
+def safe_read_text(path: Path) -> str:
+    """Read a theory-lab JSON input through a no-follow regular descriptor."""
+    candidate = _safe_theory_lab_path(path)
+    if not candidate.is_file():
+        raise UnsafeTheoryLabInput(
+            f"theory-lab input is not a regular file: {candidate}"
+        )
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeTheoryLabInput(
+            f"theory-lab input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeTheoryLabInput(
+                f"theory-lab input is not a regular file: {candidate}"
+            )
+        with os.fdopen(descriptor, "r", encoding="utf-8") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 def git(*args: str) -> tuple[int, str]:
     proc = subprocess.run(
         ("git",) + args,
@@ -115,9 +169,13 @@ def main() -> int:
         print("check_theory_lab: docs/theory_lab.json is missing", file=sys.stderr)
         return 1
 
-    lab = json.loads(LAB.read_text(encoding="utf-8"))
-    atlas = json.loads(ATLAS.read_text(encoding="utf-8"))
-    corpus = json.loads(CORPUS.read_text(encoding="utf-8"))
+    try:
+        lab = json.loads(safe_read_text(LAB))
+        atlas = json.loads(safe_read_text(ATLAS))
+        corpus = json.loads(safe_read_text(CORPUS))
+    except UnsafeTheoryLabInput as exc:
+        print(f"unsafe theory-lab input: {exc}", file=sys.stderr)
+        return 1
 
     declarations = {d["name"] for d in atlas["declarations"]}
     node_index = {n["id"]: n for n in corpus["statement_nodes"]}
