@@ -1274,6 +1274,8 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
                 "open",
                 "--session",
                 "t_claims",
+                "--actor",
+                "human:alice",
                 "--intent",
                 "claim gate",
             ],
@@ -1443,6 +1445,18 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
             ],
         )
         assert claim["authority"] == "kernel_accepted_probe_receipt"
+        shown = _run(sessions_root, ["show", "--session", "t_claims"])
+        shown_open = shown["moves"][0]
+        assert shown_open["actor"] == "human:alice"
+        assert shown_open["intent"] == "claim gate"
+        shown_probe = shown["moves"][1]
+        assert shown_probe["input_path"] == "probes/m002.lean"
+        assert shown_probe["input_sha256"] == accepted["input_sha256"]
+        assert shown_probe["kernel_receipt"]["verdict"] == "kernel_accepted"
+        shown_claim = shown["moves"][3]
+        assert shown_claim["cited_probe"] == accepted["move_id"]
+        assert shown_claim["cited_input_sha256"] == accepted["input_sha256"]
+        assert shown_claim["authority"] == "kernel_accepted_probe_receipt"
         refused = False
         try:
             _run(
