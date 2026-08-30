@@ -14,9 +14,8 @@ public proof corpus for Erdős Problems 68, 243, 249, 251, 257, 269, 1041, and
 python3 scripts/verify_claims.py --claim eb_full_support
 ```
 
-This prints the statement, re-resolves its declaration, shows the Comparator
-interface, paper, release receipts, and claim boundary. `--verify-all` checks the
-complete set. [Read or run it](#read-or-run-it) gives routes that need Lean.
+This prints the statement, declaration, Comparator, paper, receipts, and boundary.
+`--verify-all` checks the set. [Read or run it](#read-or-run-it) gives Lean routes.
 
 [RESULTS](docs/RESULTS.md) → [SCOPE](SCOPE.md) → [SOURCE MAP](docs/SOURCE_MAP.md)
 → [verification](docs/EXTERNAL_VERIFICATION.md) → [prior art](docs/PRIOR_ART.md)
@@ -133,9 +132,10 @@ order without asking you to decode Lean declaration names first.
 - **Corpus navigation (no Lean):** run
   `python3 scripts/query_corpus.py --tour --format card`; add
   `--route erdos_<n>` for a problem's paper, source, and open handles.
-  `--route agent_native_corpus_navigation` exposes corpus scale, the canonical
-  eight-problem map, and the reviewed #249/#257 frontier. [Wave routes](docs/WAVE_INDEX.md);
-  `query_semantic.py problem-registry` drills down; indexes expose declarations/dependencies for both.
+  `--route agent_native_corpus_navigation` exposes scale, map, and reviewed
+  #249/#257 frontier; [family census](docs/ORIENTATION.md#publication-family-census)
+  lists all 21 families; [wave routes](docs/WAVE_INDEX.md) expose continuations.
+  `query_semantic.py problem-registry` drills down; indexes expose declarations.
   These are navigation only, not proof authority.
 - **Continue/compare:** [`docs/AGENT_WORKBENCH.md`](docs/AGENT_WORKBENCH.md) defines
   the ladder; `proof_workbench.py show --session <slug>` or `replay --session <slug>`
