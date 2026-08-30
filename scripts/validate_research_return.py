@@ -350,14 +350,18 @@ def _relative_path(value: Any, path: str, check: Validation) -> None:
     if text is None:
         return
     candidate = Path(text)
+    raw_parts = text.split("/")
     if (
         candidate.is_absolute()
         or "\\" in text
-        or ".." in candidate.parts
+        or any(part in {"", ".", ".."} for part in raw_parts)
         or not candidate.parts
     ):
-        check.error(path, "must be a repository-relative path without '..' or backslashes")
-    if candidate.parts and candidate.parts[0] == ".git":
+        check.error(
+            path,
+            "must be a canonical repository-relative path without empty, '.', '..', or backslash segments",
+        )
+    if raw_parts and raw_parts[0] == ".git":
         check.error(path, "must not target Git internals")
 
 

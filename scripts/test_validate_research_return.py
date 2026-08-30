@@ -122,6 +122,22 @@ def main() -> int:
         any("repository.changed_paths" in error for error in validator.validate_document(mutated_paths)),
         "repository escape path was not rejected",
     )
+    for noncanonical_path in (
+        ".github/./fixtures/unaccepted-research-return.json",
+        "docs//ambiguous-artifact.json",
+    ):
+        mutated_noncanonical = copy.deepcopy(fixture)
+        mutated_noncanonical["repository"]["changed_paths"] = [noncanonical_path]
+        mutated_noncanonical["frontier"]["starting_paths"] = [noncanonical_path]
+        mutated_noncanonical["evidence"][0]["artifacts"] = [noncanonical_path]
+        mutated_noncanonical["attribution"]["artifact_credit"][0]["artifact_paths"] = [
+            noncanonical_path
+        ]
+        errors = validator.validate_document(mutated_noncanonical)
+        require(
+            any("canonical repository-relative path" in error for error in errors),
+            f"noncanonical path {noncanonical_path!r} was accepted",
+        )
 
     with tempfile.TemporaryDirectory() as directory:
         directory_path = Path(directory)
