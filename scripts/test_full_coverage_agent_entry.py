@@ -83,44 +83,77 @@ def check_query_environment() -> None:
 
 
 def assert_complete(packet: dict) -> None:
-    assert packet["kind"] == "repository_overview"
+    require(packet["kind"] == "repository_overview", "overview packet kind drifted")
     coverage = packet["coverage_receipt"]
-    assert coverage["mathematical_programme_count"] == len(
-        coverage["mathematical_programme_ids"]
+    require(
+        coverage["mathematical_programme_count"]
+        == len(coverage["mathematical_programme_ids"]),
+        "mathematical programme coverage count drifted",
     )
-    assert coverage["mathematical_programme_count"] >= 10
-    assert coverage["claim_status_class_count"] == 7
-    assert coverage["remaining_open_proposition_count"] == len(
-        coverage["remaining_open_proposition_ids"]
+    require(
+        coverage["mathematical_programme_count"] >= 10,
+        "mathematical programme coverage regressed",
     )
-    assert coverage["publication_family_count"] >= 21
-    assert coverage["publication_family_count"] == len(
-        coverage["publication_family_ids"]
+    require(
+        coverage["claim_status_class_count"] == 7,
+        "claim status class coverage drifted",
     )
-    assert coverage["curated_claim_count"] >= 99
-    assert coverage["principal_claim_count"] == len(
-        packet["principal_claims"]
+    require(
+        coverage["remaining_open_proposition_count"]
+        == len(coverage["remaining_open_proposition_ids"]),
+        "open proposition coverage count drifted",
     )
-    assert len(packet["publication_family_index"]) == (
-        coverage["publication_family_count"]
+    require(
+        coverage["publication_family_count"] >= 21,
+        "publication family coverage regressed",
     )
-    assert len(packet["repository_map"]) == 6
-    assert len(packet["answer_contract"]["required_coverage"]) == 5
-    assert packet["companion_repository"]["name"] == "plectis"
-    assert packet["companion_repository"]["repository"] == (
-        "https://github.com/wcook04/plectis"
+    require(
+        coverage["publication_family_count"] == len(coverage["publication_family_ids"]),
+        "publication family coverage count drifted",
     )
-    assert "companion, not dependency" in (
-        packet["companion_repository"]["relationship"]
+    require(
+        coverage["curated_claim_count"] >= 99,
+        "curated claim coverage regressed",
+    )
+    require(
+        coverage["principal_claim_count"] == len(packet["principal_claims"]),
+        "principal claim coverage count drifted",
+    )
+    require(
+        len(packet["publication_family_index"]) == coverage["publication_family_count"],
+        "publication family index count drifted",
+    )
+    require(len(packet["repository_map"]) == 6, "repository map coverage drifted")
+    require(
+        len(packet["answer_contract"]["required_coverage"]) == 5,
+        "answer contract coverage drifted",
+    )
+    require(
+        packet["companion_repository"]["name"] == "plectis",
+        "companion repository name drifted",
+    )
+    require(
+        packet["companion_repository"]["repository"]
+        == "https://github.com/wcook04/plectis",
+        "companion repository URL drifted",
+    )
+    require(
+        "companion, not dependency" in packet["companion_repository"]["relationship"],
+        "companion relationship boundary drifted",
     )
     for problem in packet["problem_fleet"]:
         expected = (
             "python3 scripts/query_route_memory.py --problem "
             f"{problem['erdos_number']}"
         )
-        assert problem["route_memory"] == expected
-    assert packet["next"]["route_memory"] == (
-        "python3 scripts/query_route_memory.py --problem <problem_number>"
+        require(
+            problem["route_memory"] == expected,
+            f"route-memory command drifted for #{problem['erdos_number']}",
+        )
+    require(
+        packet["next"]["route_memory"]
+        == "python3 scripts/query_route_memory.py --problem <problem_number>",
+        "next route-memory command drifted",
     )
 
 
@@ -133,10 +166,15 @@ def main() -> int:
     )
     assert_complete(explicit)
     assert_complete(ordinary)
-    assert ordinary["query_interpretation"]["routed_by"] == (
-        "ordinary_cold_reader_phrase"
+    require(
+        ordinary["query_interpretation"]["routed_by"]
+        == "ordinary_cold_reader_phrase",
+        "ordinary overview route drifted",
     )
-    assert "weight reductions" in query_corpus.render_card(ordinary)
+    require(
+        "weight reductions" in query_corpus.render_card(ordinary),
+        "ordinary overview card lost the expected content",
+    )
 
     for question in (
         "What's in this repo?",
@@ -152,15 +190,19 @@ def main() -> int:
         "What is Plectis Lean?",
         "Tell me everything interesting and non-trivial in this repo.",
     ):
-        assert query_corpus.is_repository_overview_query(question)
+        require(
+            query_corpus.is_repository_overview_query(question),
+            f"overview question was not recognized: {question}",
+        )
 
     for specific_question in (
         "Explain why half-value membership remains open.",
         "What are the interesting results for Erdos 249?",
         "Walk me through theorem half_mem_of_greedy_hits.",
     ):
-        assert not query_corpus.is_repository_overview_query(
-            specific_question
+        require(
+            not query_corpus.is_repository_overview_query(specific_question),
+            f"specific question was misrouted as an overview: {specific_question}",
         )
 
     papers = run_query("--papers")
@@ -168,13 +210,28 @@ def main() -> int:
         "--ask",
         "Which papers should I read, in what order, and what does each establish?",
     )
-    assert papers["kind"] == "paper_reading_guide"
-    assert paper_question["kind"] == "paper_reading_guide"
-    assert papers["paper_count"] == len(papers["papers"])
-    assert papers["paper_count"] >= 2
-    assert papers["default_gateway"]["id"] == "human_exposition"
-    assert papers["default_gateway"]["rendered_available_in_checkout"]
-    assert papers["companion_repository"]["name"] == "plectis"
+    require(papers["kind"] == "paper_reading_guide", "papers packet kind drifted")
+    require(
+        paper_question["kind"] == "paper_reading_guide",
+        "paper question route drifted",
+    )
+    require(
+        papers["paper_count"] == len(papers["papers"]),
+        "paper count does not match paper entries",
+    )
+    require(papers["paper_count"] >= 2, "paper reading guide coverage regressed")
+    require(
+        papers["default_gateway"]["id"] == "human_exposition",
+        "paper gateway drifted",
+    )
+    require(
+        papers["default_gateway"]["rendered_available_in_checkout"],
+        "paper gateway is not checkout-local",
+    )
+    require(
+        papers["companion_repository"]["name"] == "plectis",
+        "paper companion repository drifted",
+    )
     routed_artifacts = {
         step["artifact_id"]
         for step in papers["recommended_routes"]["understand_the_mathematics"]
@@ -184,27 +241,45 @@ def main() -> int:
         row["id"]: row
         for row in papers["registered_publication_artifacts"]
     }
-    assert routed_artifacts <= set(registered)
-    assert all(
-        registered[artifact_id]["source_available_in_checkout"]
-        and registered[artifact_id]["rendered_available_in_checkout"]
-        for artifact_id in routed_artifacts
+    require(
+        routed_artifacts <= set(registered),
+        "paper route referenced an unregistered artifact",
     )
-    assert papers["paper_count"] >= 12
-    assert papers["clone_local_paper_index"] == "docs/papers/README.md"
-    assert all(
-        row["preferred_read_path"]
-        and row["full_text_available_in_checkout"]
-        for row in papers["papers"]
+    require(
+        all(
+            registered[artifact_id]["source_available_in_checkout"]
+            and registered[artifact_id]["rendered_available_in_checkout"]
+            for artifact_id in routed_artifacts
+        ),
+        "paper route referenced an unavailable artifact",
     )
-    assert "papers are exposition" in query_corpus.render_card(papers)
+    require(papers["paper_count"] >= 12, "full paper corpus coverage regressed")
+    require(
+        papers["clone_local_paper_index"] == "docs/papers/README.md",
+        "clone-local paper index route drifted",
+    )
+    require(
+        all(
+            row["preferred_read_path"]
+            and row["full_text_available_in_checkout"]
+            for row in papers["papers"]
+        ),
+        "paper entry lost a checkout-local reading path",
+    )
+    require(
+        "papers are exposition" in query_corpus.render_card(papers),
+        "paper reading card lost its exposition boundary",
+    )
     for question in (
         "Which paper should I read?",
         "What does each paper establish?",
         "Where are the papers?",
         "Show me the paper reading order.",
     ):
-        assert query_corpus.is_paper_reading_query(question)
+        require(
+            query_corpus.is_paper_reading_query(question),
+            f"paper question was not recognized: {question}",
+        )
 
     print(
         "full coverage agent entry: pass "
