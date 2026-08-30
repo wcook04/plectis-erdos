@@ -1896,10 +1896,110 @@ def current_corpus_census() -> dict[str, Any]:
     }
 
 
+def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
+    """Project exact external-assurance owners as bounded reading routes.
+
+    Comparator and Palomar are adjacent but non-equivalent review surfaces.
+    Keeping their route ids here lets a cold clone select either contract
+    without scanning declarations or treating a file name as an authority.
+    The route payloads are derived from their existing owner documents; they
+    do not create a new verification, qualification, or publication verdict.
+    """
+    external = claims["external_verification_packet"]
+    comparator = external["comparator"]
+    reconciliation = load("docs/PALOMAR_POLICY_RECONCILIATION.json")
+    qualification = reconciliation["qualification_decision"]
+    requirement_counts: dict[str, int] = {}
+    for row in reconciliation["requirements"]:
+        status = str(row["status"])
+        requirement_counts[status] = requirement_counts.get(status, 0) + 1
+    return [
+        {
+            "id": "comparator_assurance",
+            "route_kind": "external_assurance",
+            "intent": (
+                "Inspect the exact Comparator statement, axiom, replay, and "
+                "receipt boundary without treating Comparator as novelty or "
+                "independent-verification authority."
+            ),
+            "discovery_terms": [
+                "comparator assurance",
+                "comparator configuration",
+                "external verification",
+                "separately declared statement",
+            ],
+            "read": [
+                "docs/EXTERNAL_VERIFICATION.md",
+                "docs/claims.json::external_verification_packet",
+                comparator["config"],
+            ],
+            "query_steps": [
+                "python3 scripts/build_external_verification.py --check",
+                "python3 scripts/test_external_verification.py",
+            ],
+            "authority_posture": (
+                "configured_statement_axiom_and_kernel_assurance_not_novelty_"
+                "significance_source_fidelity_or_peer_review"
+            ),
+            "assurance": {
+                "status": external["review_status"],
+                "config": comparator["config"],
+                "challenge_module": comparator["challenge_module"],
+                "solution_module": comparator["solution_module"],
+                "permitted_axioms": comparator["permitted_axioms"],
+                "runtime_receipt": external["receipt_contract"]["runtime_output"],
+                "public_wording": external["receipt_contract"]["public_wording"],
+                "forbidden_wording": external["receipt_contract"]["forbidden_wording"],
+                "boundary": external["boundary"],
+            },
+        },
+        {
+            "id": "palomar_qualification",
+            "route_kind": "external_assurance",
+            "intent": (
+                "Inspect the current Palomar qualification decision, exact "
+                "remaining gates, and operator-owned submission boundary."
+            ),
+            "discovery_terms": [
+                "palomar qualification",
+                "palomar readiness",
+                "palomar submission",
+                "registry qualification",
+            ],
+            "read": [
+                "docs/PALOMAR_QUALIFICATION.md",
+                "docs/PALOMAR_POLICY_RECONCILIATION.json",
+                "docs/PALOMAR_RESULT_SHOWCASE.json",
+            ],
+            "query_steps": [
+                "python3 scripts/check_palomar_qualification.py --json",
+                "python3 scripts/test_palomar_qualification.py",
+            ],
+            "authority_posture": (
+                "repository_local_qualification_projection_not_palomar_"
+                "acceptance_registration_or_publication_authority"
+            ),
+            "assurance": {
+                "decision": qualification["decision"],
+                "reason": qualification["reason"],
+                "readiness_rule": qualification["readiness_rule"],
+                "requirement_status_counts": dict(sorted(requirement_counts.items())),
+                "safe_local_repairs_remaining": qualification[
+                    "safe_local_repairs_remaining"
+                ],
+                "operator_only_residuals": qualification[
+                    "operator_only_residuals"
+                ],
+            },
+        },
+    ]
+
+
 def all_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
     return [
         *claims["machine_readable_paper"]["entrypoints"],
         *publication_contract().get("entrypoints", []),
+        *assurance_entrypoints(claims),
     ]
 
 
@@ -7441,7 +7541,9 @@ def route_packet(route_id: str) -> dict[str, Any]:
     }
     packet = {
         "kind": "reading_route",
-        "authority_posture": "authored_navigation_route_not_proof_authority",
+        "authority_posture": route.get(
+            "authority_posture", "authored_navigation_route_not_proof_authority"
+        ),
         "route": route,
         "proof_authority": "Lean source checked by the pinned Lean kernel",
         "release_provenance": claims["release"]["public_projection"],

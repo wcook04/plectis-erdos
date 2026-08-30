@@ -1418,6 +1418,63 @@ def validate_mathematical_signal_spine() -> None:
     )
 
 
+def validate_external_assurance_routes() -> None:
+    comparator = query("--route", "comparator_assurance")
+    comparator_route = comparator["route"]
+    comparator_assurance = comparator_route["assurance"]
+    assert comparator["kind"] == "reading_route"
+    assert comparator_route["route_kind"] == "external_assurance"
+    assert comparator_assurance["config"] == "verification/comparator.json"
+    assert comparator_assurance["permitted_axioms"] == [
+        "propext",
+        "Quot.sound",
+        "Classical.choice",
+    ]
+    assert comparator_assurance["public_wording"] == (
+        "Comparator-checked against a separately declared statement and axiom budget"
+    )
+    assert comparator_assurance["forbidden_wording"] == "independently verified"
+    assert "does not assess novelty" in comparator_assurance["boundary"]
+    assert comparator["authority_posture"].startswith(
+        "configured_statement_axiom_and_kernel_assurance"
+    )
+    comparator_card = run(
+        "--route", "comparator_assurance", "--format", "card"
+    )
+    assert comparator_card.returncode == 0
+    assert comparator_card.stdout.startswith("route comparator_assurance |")
+    assert "next=python3 scripts/build_external_verification.py --check" in (
+        comparator_card.stdout
+    )
+
+    palomar = query("--route", "palomar_qualification")
+    palomar_route = palomar["route"]
+    palomar_assurance = palomar_route["assurance"]
+    reconciliation = load("docs/PALOMAR_POLICY_RECONCILIATION.json")
+    expected_decision = reconciliation["qualification_decision"]
+    assert palomar["kind"] == "reading_route"
+    assert palomar_route["route_kind"] == "external_assurance"
+    assert palomar_assurance["decision"] == expected_decision["decision"]
+    assert palomar_assurance["reason"] == expected_decision["reason"]
+    assert palomar_assurance["operator_only_residuals"] == expected_decision[
+        "operator_only_residuals"
+    ]
+    assert sum(palomar_assurance["requirement_status_counts"].values()) == len(
+        reconciliation["requirements"]
+    )
+    assert palomar["authority_posture"].startswith(
+        "repository_local_qualification_projection"
+    )
+    palomar_card = run(
+        "--route", "palomar_qualification", "--format", "card"
+    )
+    assert palomar_card.returncode == 0
+    assert palomar_card.stdout.startswith("route palomar_qualification |")
+    assert "next=python3 scripts/check_palomar_qualification.py --json" in (
+        palomar_card.stdout
+    )
+
+
 def main() -> int:
     validate_programme_routes()
     validate_indexed_problem_routes()
@@ -1430,6 +1487,7 @@ def main() -> int:
     validate_connection_query_ranking()
     validate_paper_semantic_citation_aliases()
     validate_mathematical_signal_spine()
+    validate_external_assurance_routes()
     bare_ask = subprocess.run(
         [
             sys.executable,
