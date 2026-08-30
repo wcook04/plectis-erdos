@@ -197,6 +197,51 @@ def test_replay_file_boundary() -> None:
         )
 
 
+def test_replay_output_boundary() -> None:
+    private_tmp = Path("/private/tmp")
+    temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+    with tempfile.TemporaryDirectory(
+        prefix="replay-receipt-parent-race-", dir=temporary_root
+    ) as raw:
+        root = Path(raw)
+        raced_parent = root / "receipt-parent"
+        raced_parent.mkdir()
+        original_parent = root / "receipt-parent-original"
+        outside = root / "outside"
+        outside.mkdir()
+        sentinel = outside / "sentinel.txt"
+        sentinel.write_text("keep me\n", encoding="utf-8")
+        raced_output = raced_parent / "replay.json"
+        original_open = replay.os.open
+
+        def swap_parent(
+            path: Path,
+            flags: int,
+            mode: int = 0o777,
+            *,
+            dir_fd: int | None = None,
+        ) -> int:
+            if dir_fd is not None and Path(path).name == raced_output.name:
+                raced_parent.rename(original_parent)
+                raced_parent.symlink_to(outside, target_is_directory=True)
+            return original_open(path, flags, mode, dir_fd=dir_fd) if dir_fd is not None else original_open(path, flags, mode)
+
+        with patch.object(replay.os, "open", side_effect=swap_parent):
+            replay._write_replay_receipt(raced_output, {"status": "blocked"})
+        require(
+            not (outside / raced_output.name).exists(),
+            "replay receipt writer followed a swapped parent directory",
+        )
+        require(
+            sentinel.read_text(encoding="utf-8") == "keep me\n",
+            "replay parent-swap race modified the outside sentinel",
+        )
+        require(
+            (original_parent / raced_output.name).is_file(),
+            "replay receipt writer did not create through the held parent descriptor",
+        )
+
+
 def test_runtime_input_boundary() -> None:
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)
@@ -655,6 +700,7 @@ def test_release_manifest() -> None:
 
 def main() -> int:
     test_replay_file_boundary()
+    test_replay_output_boundary()
     test_runtime_input_boundary()
     test_release_file_boundary()
     test_fixture_git_environment()
