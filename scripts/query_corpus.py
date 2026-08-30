@@ -1678,6 +1678,57 @@ def reviewed_result_family_census(
     return census
 
 
+def reviewed_result_family_source_rows(
+    claims: dict[str, Any], problem_number: str | int, family_id: str
+) -> list[dict[str, Any]]:
+    """Join a reviewed family to its governed source records when bound.
+
+    The review matrix is the complete family census, but some families are
+    intentionally recorded there without declaration handles.  The external
+    verification packet's ``main_results`` is the governed join for those
+    rows: it carries the family id, source declaration, and (when available)
+    corresponding reviewed claim id.  Keeping all matching rows matters when
+    one family groups more than one independently reviewed declaration.
+    """
+    return [
+        row
+        for row in claims.get("external_verification_packet", {}).get(
+            "main_results", []
+        )
+        if str(row.get("problem")) == str(problem_number)
+        and row.get("review_family") == family_id
+    ]
+
+
+def reviewed_result_family_source_declarations(
+    claims: dict[str, Any], problem_number: str | int, family_id: str
+) -> list[str]:
+    """Return exact declaration names from the family source authority."""
+    claim_index = {
+        claim["id"]: claim
+        for claim in claims.get("claims", [])
+        if isinstance(claim, Mapping) and isinstance(claim.get("id"), str)
+    }
+    declarations: list[str] = []
+    for source_row in reviewed_result_family_source_rows(
+        claims, problem_number, family_id
+    ):
+        claim_id = source_row.get("claim_id")
+        claim = claim_index.get(claim_id) if isinstance(claim_id, str) else None
+        if claim is not None:
+            for declaration in claim.get("declarations", []):
+                if (
+                    isinstance(declaration, Mapping)
+                    and isinstance(declaration.get("name"), str)
+                ):
+                    declarations.append(declaration["name"])
+            continue
+        original_declaration = source_row.get("original_declaration")
+        if isinstance(original_declaration, str) and original_declaration:
+            declarations.append(original_declaration.rsplit(".", 1)[-1])
+    return list(dict.fromkeys(declarations))
+
+
 def reviewed_result_family_index(
     claims: dict[str, Any],
 ) -> list[dict[str, Any]]:
@@ -2098,6 +2149,29 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                     }
                 )
 
+        if paper_row.get("anchor_label_allowlist") is not None:
+            first_anchor_offset = min(
+                (start["offset"] for start in starts), default=len(text)
+            )
+            opening_region = text[:first_anchor_offset]
+            if re.search(
+                r"\\(?:lref|lrefx|lword|mref|mword|lloc|mloc)\{[^}]+\}\{\d+\}",
+                opening_region,
+            ):
+                # Some dedicated notes put their formal-source guide in the
+                # unlabelled problem preamble.  Give that exact source-link
+                # region a stable source-ref handle so result families can
+                # return to it without inventing a paper label.
+                starts.append(
+                    {
+                        "offset": 0,
+                        "anchor_kind": "preamble",
+                        "title": "Opening guide to the formal sources",
+                        "label": None,
+                        "environment": None,
+                    }
+                )
+
         starts.sort(key=lambda row: row["offset"])
         for index, start in enumerate(starts):
             label_allowlist = paper_row.get("anchor_label_allowlist")
@@ -2108,7 +2182,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             # result prose has no separately labelled theorem environment.
             # Hiding that appendix would make a declaration-bearing family
             # appear to have no paper return route.
-            is_structural_appendix = (
+            is_structural_navigation = start["anchor_kind"] == "preamble" or (
                 start["anchor_kind"] in {
                     "section",
                     "subsection",
@@ -2121,7 +2195,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             if (
                 label_allowlist is not None
                 and start["label"] not in label_allowlist
-                and not is_structural_appendix
+                and not is_structural_navigation
             ):
                 continue
             region_end = starts[index + 1]["offset"] if index + 1 < len(starts) else len(text)
@@ -2177,7 +2251,7 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 )
 
             canonical_handle = (
-                source_ref if is_structural_appendix else (label or source_ref)
+                source_ref if is_structural_navigation else (label or source_ref)
             )
             inventory.append(
                 {
@@ -4214,6 +4288,10 @@ def problem_registry_route(query: str) -> dict[str, Any] | None:
         declarations = [
             str(declaration) for declaration in family.get("declarations", [])
         ]
+        if not declarations:
+            declarations = reviewed_result_family_source_declarations(
+                claims, row["erdos_number"], family["id"]
+            )
         matching_paper_anchors = paper_anchor_routes_for_declarations(
             paper_source, declarations
         )

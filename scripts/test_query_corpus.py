@@ -232,11 +232,35 @@ def validate_indexed_problem_routes() -> None:
             assert actual["comparator_disposition"] == expected[
                 "comparator_disposition"
             ]
-            assert actual["declarations"] == expected.get("declarations", [])
+            expected_declarations = expected.get("declarations", [])
+            if not expected_declarations:
+                main_results = [
+                    row
+                    for row in claims["external_verification_packet"]["main_results"]
+                    if str(row.get("problem")) == str(problem["erdos_number"])
+                    and row.get("review_family") == expected["id"]
+                ]
+                claim_index = {row["id"]: row for row in claims["claims"]}
+                resolved_declarations = []
+                for main_result in main_results:
+                    claim = claim_index.get(main_result.get("claim_id"))
+                    if claim is not None:
+                        resolved_declarations.extend(
+                            declaration["name"]
+                            for declaration in claim.get("declarations", [])
+                        )
+                    else:
+                        original_declaration = main_result.get("original_declaration")
+                        if original_declaration:
+                            resolved_declarations.append(
+                                original_declaration.rsplit(".", 1)[-1]
+                            )
+                expected_declarations = list(dict.fromkeys(resolved_declarations))
+            assert actual["declarations"] == expected_declarations
             assert actual["declaration_routes"] == [
                 "python3 scripts/query_corpus.py --declaration "
                 f"{declaration}"
-                for declaration in expected.get("declarations", [])
+                for declaration in expected_declarations
             ]
             assert actual["boundary"] == expected["boundary"]
             if expected.get("declarations"):
@@ -254,6 +278,23 @@ def validate_indexed_problem_routes() -> None:
                     == anchor["source_ref"]
                     for anchor in actual["paper_route"]["matching_anchors"]
                 )
+            if expected["id"] == "actual_lcm_orbit_separation":
+                assert actual["declarations"] == [
+                    "irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+                    "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
+                    "irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+                ]
+                assert [
+                    anchor["canonical_handle"]
+                    for anchor in actual["paper_route"]["matching_anchors"]
+                ] == ["res:actualorbit"]
+            if expected["id"] == "weighted_phase_carry_observer":
+                assert [
+                    anchor["canonical_handle"]
+                    for anchor in actual["paper_route"]["matching_anchors"]
+                ] == [
+                    "paper/erdos-269-three-prime-running-lcm.tex:1"
+                ]
         if route_id == "erdos_1041":
             research = route["research_corpus"]
             assert research["strongest_result_summary"]["result_count"] == 35
