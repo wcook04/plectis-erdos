@@ -79,9 +79,13 @@ records an `advances_open_target` edge.
   together, keeping the source-only frontier separate from reviewed claim
   authority.
 - **#1049** — the [rational-base note](papers/full-text/erdos-1049-rational-base-lambert.md)
-  and [RationalBaseLambert source](../ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155)
-  route the `3/2` clearing, height-region, and Padé obstructions; no
-  irrationality theorem is claimed. The integer-base case `b ≥ 2` is
+  and its checked source family — [RationalBaseLambert](../ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155)
+  for the `3/2` corridor and `7/2` height input, [ZudilinHeightRegion](../ErdosProblems/Erdos1049/ZudilinHeightRegion.lean#L91)
+  for the `81/200` region, [RationalPadeArithmetic](../ErdosProblems/Erdos1049/RationalPadeArithmetic.lean#L30)
+  and [HermitePadeNoGo](../ErdosProblems/Erdos1049/HermitePadeNoGo.lean#L103)
+  for finite Padé arithmetic and comparison, and [QAperyDiagonalNonEquivalence](../ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L67)
+  for the moving-diagonal no-go — route distinct mechanisms without claiming
+  irrationality. The integer-base case `b ≥ 2` is
   `irrational_erdosSum_full_support`; open boundary: irrationality at `3/2`,
   the primitive noncollapsed construction, and analytic remainder control.
 - **#69** — the prime-support case of #257; only the identity bridge to
