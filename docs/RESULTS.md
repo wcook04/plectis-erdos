@@ -795,6 +795,18 @@ characterisation, not a contradiction or a universal irrationality theorem;
 it does not produce cofinally nonintegral shifts for the actual recurrence,
 settle arbitrary infinite support, or settle the `1/2` membership boundary.
 
+A separate Comparator-backed conditional row route makes the half-membership
+mechanism executable: under `CofinalPositiveHalfGreedySkips`, a positive
+rational-greedy remainder below the next Mersenne weight yields an exact local
+half row; cofinally many such skips give
+`(1 / 2 : ℝ) ∈ mersenneAchievementSet`
+(`half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`,
+`ExternalVerification/Challenge.lean:400`, source
+`Erdos249257/BooleanMobiusSkipRowCofinal.lean:22,73`). The cofinal supply is
+unproved, and finite exact rows do not establish it, so this is a conditional
+counterexample route rather than an unconditional #257 result; it does not
+settle the universal problem.
+
 A separate necessary-condition family controls coverage under a hypothetical
 rational support value. `supportCoeffZeroWindow_length_le_eps_logb_add` forces
 every zero window in the divisor-count coefficient to have length at most
