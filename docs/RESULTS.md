@@ -69,7 +69,9 @@ pass, the high-signal spine is:
   pairwise-coprime moduli obstruct bounded rises, while periodic/vanishing
   negative-error regimes are excluded; for #251, unbounded prime gaps and an
   exact prime-gap irrationality equivalence still leave the concrete tail
-  bridge open.
+  bridge open. A separate source-level denominator classifier reduces a
+  dyadic tail's rationality to eventual integrality of one positive shift,
+  but does not supply the prime-specific producer.
 - **#269, #1041, and #1049, structurally useful route checks.** Running-LCM
   height and rank-two obstructions, plus a distinct weighted-phase observer
   that separates a finite residue digit from an uncontrolled integral
@@ -390,6 +392,15 @@ replacement for claim authority.
   prime-gap dyadic series
   (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean`). Unbounded coefficients
   and this equivalence alone prove irrationality of neither series.
+- A separate source-level denominator classification makes the arithmetic
+  boundary explicit. `tailShift_integral_iff_scaledTail` reduces integrality
+  of a positive tail shift to integrality of `(2^h - 1) * T_N`, and
+  `not_irrational_initial_iff_exists_eventually_integral_positive_tailShift`
+  says that an integer-digit dyadic tail is rational exactly when one positive
+  shift is eventually integral
+  (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:802-807,1525-1535`). This
+  is public source evidence outside the Comparator screen; it supplies no
+  prime-specific eventual-small or cofinal-mismatch producer.
 - A checked countermodel closes the periodicity route: an explicit unbounded,
   non-eventually-periodic digit sequence with rational dyadic sum
   (`carryCoeff_natCast_not_eventually_periodic`,
