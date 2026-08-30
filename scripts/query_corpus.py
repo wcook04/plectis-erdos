@@ -4136,6 +4136,9 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                         "title": anchor["title"],
                         "anchor_class": anchor["anchor_class"],
                         "source_ref": anchor["paper"]["source_ref"],
+                        "route_memory": paper_anchor_packet(
+                            anchor["canonical_handle"]
+                        )["route_memory"],
                     },
                 )
             )
@@ -4172,7 +4175,13 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
                 (
                     rank,
                     f"open_proposition:{proposition['id']}",
-                    {"kind": "open_proposition", **proposition},
+                    {
+                        "kind": "open_proposition",
+                        **proposition,
+                        "route_memory": open_proposition_packet(
+                            proposition["id"]
+                        )["route_memory"],
+                    },
                 )
             )
 

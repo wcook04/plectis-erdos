@@ -1550,10 +1550,14 @@ def main() -> int:
     assert sigil_search["results"][0]["path"] == "Erdos249257/CertificateKernel.lean"
 
     anchor_search = query("--search", "Lambert representation", "--limit", "5")
-    assert any(
-        row["kind"] == "paper_anchor" and row["canonical_handle"] == "res:lift"
+    searched_anchor = next(
+        row
         for row in anchor_search["results"]
+        if row["kind"] == "paper_anchor"
+        and row["canonical_handle"] == "res:lift"
     )
+    anchor_packet = query("--paper-anchor", "res:lift")
+    assert searched_anchor["route_memory"] == anchor_packet["route_memory"]
 
     search = query("--search", " denominator_exclusion ", "--limit", "5")
     assert search["match_count"] >= 1
@@ -1571,6 +1575,20 @@ def main() -> int:
         and binding["problem_number"] == 249
         for binding in searched_claim["route_memory"]["bindings"]
     )
+
+    open_search = query(
+        "--search", "remaining_open.unbounded_certificate_supply", "--limit", "10"
+    )
+    searched_open = next(
+        row
+        for row in open_search["results"]
+        if row["kind"] == "open_proposition"
+        and row["id"] == "remaining_open.unbounded_certificate_supply"
+    )
+    open_packet = query(
+        "--open", "remaining_open.unbounded_certificate_supply"
+    )
+    assert searched_open["route_memory"] == open_packet["route_memory"]
 
     declaration_search = query("--search", "totientTail", "--limit", "1")
     assert declaration_search["results"][0]["kind"] == "declaration"
