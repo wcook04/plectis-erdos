@@ -35,6 +35,7 @@ SOURCE_FILES = (
     "docs/claims.json",
     "docs/orientation.json",
 )
+PUBLIC_ROSTER = frozenset({68, 243, 249, 251, 257, 269, 1041, 1049})
 
 
 class RouteMemoryError(ValueError):
@@ -565,6 +566,14 @@ def build_all_packets(*, root: Path = ROOT) -> list[dict[str, Any]]:
         if number in selectors:
             raise RouteMemoryError("problem_index_duplicate", str(number))
         selectors.append(number)
+    indexed_roster = set(selectors)
+    if indexed_roster != PUBLIC_ROSTER:
+        missing = sorted(PUBLIC_ROSTER - indexed_roster)
+        extra = sorted(indexed_roster - PUBLIC_ROSTER)
+        raise RouteMemoryError(
+            "problem_roster_mismatch",
+            f"missing={missing or 'none'} extra={extra or 'none'}",
+        )
     selectors.sort()
     packets = [build_packet(number, root=root) for number in selectors]
     snapshots = {

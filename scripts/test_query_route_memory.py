@@ -610,6 +610,14 @@ def main() -> int:
     for malformed_index, expected_code in (
         ([{"erdos_number": 68}, {"erdos_number": 68}], "problem_index_duplicate"),
         ([{"erdos_number": "68"}], "problem_index_shape"),
+        (
+            [{"erdos_number": number} for number in (*PROBLEMS, 999)],
+            "problem_roster_mismatch",
+        ),
+        (
+            [{"erdos_number": number} for number in PROBLEMS[:-1]],
+            "problem_roster_mismatch",
+        ),
     ):
         with patch.object(
             route_memory, "_json", return_value={"problems": malformed_index}
