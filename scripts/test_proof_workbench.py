@@ -952,6 +952,24 @@ def check_session_lifecycle(sessions_root: Path) -> None:
             [
                 "open",
                 "--session",
+                "blank-actor",
+                "--actor",
+                " ",
+                "--intent",
+                "identity boundary",
+            ],
+        )
+    except SystemExit as error:
+        if "actor" not in str(error):
+            raise AssertionError(f"blank actor lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("workbench accepted whitespace-only actor identity")
+    try:
+        _run(
+            sessions_root,
+            [
+                "open",
+                "--session",
                 "blank-intent",
                 "--intent",
                 " ",

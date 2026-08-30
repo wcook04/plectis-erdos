@@ -528,6 +528,8 @@ def _validate_claim_evidence(
 
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
+    if not isinstance(args.actor, str) or not args.actor.strip():
+        raise SystemExit("open refused: actor identity must be non-empty")
     if not isinstance(args.intent, str) or not args.intent.strip():
         raise SystemExit("open refused: intent must be non-empty")
     if session.exists():
