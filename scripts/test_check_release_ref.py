@@ -19,6 +19,12 @@ import check_release_ref
 TIMEOUT_SECONDS = 1
 
 
+def require(condition: bool, message: str) -> None:
+    """Keep release-ref assurance failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -68,8 +74,14 @@ def main() -> int:
             }
             with patch.dict(os.environ, hostile_environment, clear=False):
                 sanitized = check_release_ref.clean_environment()
-                assert all(key not in sanitized for key in hostile_environment)
-                assert sanitized["PATH"] == os.environ["PATH"]
+                require(
+                    all(key not in sanitized for key in hostile_environment),
+                    "release-ref environment retained a hostile Git selector",
+                )
+                require(
+                    sanitized["PATH"] == os.environ["PATH"],
+                    "release-ref environment did not preserve PATH",
+                )
                 child = check_release_ref.run(
                     [
                         sys.executable,
@@ -80,8 +92,11 @@ def main() -> int:
                     ],
                     cwd=root,
                 )
-                assert child.returncode == 0
-                assert json.loads(child.stdout) == {}
+                require(child.returncode == 0, "sanitized child process failed")
+                require(
+                    json.loads(child.stdout) == {},
+                    "sanitized child process inherited a Git selector",
+                )
             git(root, "init", "-q")
             git(root, "config", "user.email", "release-ref-test@example.invalid")
             git(root, "config", "user.name", "Clean ref release test")
@@ -132,29 +147,47 @@ def main() -> int:
                 timeout_seconds=30,
                 probe_only=True,
             )
-            assert probe_exit == 0
-            assert probe["status"] == "clean_snapshot_prepared"
-            assert probe["resolved_commit"] == passing_commit
-            assert probe["subprocess_environment"] == {
-                "contract": check_release_ref.ENVIRONMENT_CONTRACT,
-                "sanitized_git_selectors": list(
-                    check_release_ref.SANITIZED_GIT_ENVIRONMENT_KEYS
-                ),
-            }
-            assert set(probe["caller_worktree_dirty_paths"]) == {
-                "caller.txt",
-                "untracked.txt",
-            }
-            assert not probe["caller_worktree_dirty_paths_truncated"]
-            assert probe["gate_coverage"] == {
-                "configured_gate_count": 4,
-                "started_gate_count": 0,
-                "completed_gate_count": 0,
-                "failed_gate_count": 0,
-                "timed_out_gate_count": 0,
-                "all_configured_gates_completed": False,
-                "not_run_commands": probe["release_commands"],
-            }
+            require(probe_exit == 0, "probe validation failed")
+            require(
+                probe["status"] == "clean_snapshot_prepared",
+                "probe did not prepare a clean snapshot",
+            )
+            require(
+                probe["resolved_commit"] == passing_commit,
+                "probe selected the wrong immutable commit",
+            )
+            require(
+                probe["subprocess_environment"] == {
+                    "contract": check_release_ref.ENVIRONMENT_CONTRACT,
+                    "sanitized_git_selectors": list(
+                        check_release_ref.SANITIZED_GIT_ENVIRONMENT_KEYS
+                    ),
+                },
+                "probe omitted the subprocess environment contract",
+            )
+            require(
+                set(probe["caller_worktree_dirty_paths"]) == {
+                    "caller.txt",
+                    "untracked.txt",
+                },
+                "probe misreported caller worktree dirt",
+            )
+            require(
+                not probe["caller_worktree_dirty_paths_truncated"],
+                "probe unexpectedly truncated caller dirt",
+            )
+            require(
+                probe["gate_coverage"] == {
+                    "configured_gate_count": 4,
+                    "started_gate_count": 0,
+                    "completed_gate_count": 0,
+                    "failed_gate_count": 0,
+                    "timed_out_gate_count": 0,
+                    "all_configured_gates_completed": False,
+                    "not_run_commands": probe["release_commands"],
+                },
+                "probe gate coverage receipt is incomplete",
+            )
 
             many_dirty_paths = [
                 f"untracked-{index:03d}.txt"
@@ -165,46 +198,70 @@ def main() -> int:
                 passing_commit,
                 many_dirty_paths,
             )
-            assert bounded_receipt["caller_worktree_dirty_path_count"] == len(
-                many_dirty_paths
+            require(
+                bounded_receipt["caller_worktree_dirty_path_count"]
+                == len(many_dirty_paths),
+                "bounded receipt lost the complete caller dirt count",
             )
-            assert len(bounded_receipt["caller_worktree_dirty_paths"]) == (
-                check_release_ref.DIRTY_PATH_LIMIT
+            require(
+                len(bounded_receipt["caller_worktree_dirty_paths"])
+                == check_release_ref.DIRTY_PATH_LIMIT,
+                "bounded receipt exceeded its dirty-path limit",
             )
-            assert bounded_receipt["caller_worktree_dirty_paths_truncated"]
+            require(
+                bounded_receipt["caller_worktree_dirty_paths_truncated"],
+                "bounded receipt failed to mark truncated caller dirt",
+            )
 
             passed, passed_exit = check_release_ref.validate_ref(
                 passing_commit,
                 timeout_seconds=30,
                 probe_only=False,
             )
-            assert passed_exit == 0
-            assert passed["status"] == "passed"
-            assert passed["reported_check_count"] == 17
-            assert passed["reported_release"] == "v-test"
-            assert "uncommitted caller edit" not in passed["stdout_tail"]
-            assert passed["release_commands"] == [
-                ["python3", "scripts/check_release.py"],
-                ["python3", "scripts/test_root_import_closure.py"],
-                ["python3", "scripts/test_release_source_identity.py"],
-                ["python3", "scripts/test_query_route_memory.py"],
-            ]
-            assert [row["exit_code"] for row in passed["gate_results"]] == [
-                0,
-                0,
-                0,
-                0,
-            ]
-            assert passed["failed_gate_count"] == 0
-            assert passed["gate_coverage"] == {
-                "configured_gate_count": 4,
-                "started_gate_count": 4,
-                "completed_gate_count": 4,
-                "failed_gate_count": 0,
-                "timed_out_gate_count": 0,
-                "all_configured_gates_completed": True,
-                "not_run_commands": [],
-            }
+            require(passed_exit == 0, "passing release snapshot failed")
+            require(passed["status"] == "passed", "passing snapshot was not passed")
+            require(
+                passed["reported_check_count"] == 17,
+                "passing snapshot lost the reported check count",
+            )
+            require(
+                passed["reported_release"] == "v-test",
+                "passing snapshot lost the reported release",
+            )
+            require(
+                "uncommitted caller edit" not in passed["stdout_tail"],
+                "caller worktree text leaked into the release receipt",
+            )
+            require(
+                passed["release_commands"] == [
+                    ["python3", "scripts/check_release.py"],
+                    ["python3", "scripts/test_root_import_closure.py"],
+                    ["python3", "scripts/test_release_source_identity.py"],
+                    ["python3", "scripts/test_query_route_memory.py"],
+                ],
+                "release command coverage changed unexpectedly",
+            )
+            require(
+                [row["exit_code"] for row in passed["gate_results"]]
+                == [0, 0, 0, 0],
+                "passing snapshot did not report every gate exit",
+            )
+            require(
+                passed["failed_gate_count"] == 0,
+                "passing snapshot reported a failed gate",
+            )
+            require(
+                passed["gate_coverage"] == {
+                    "configured_gate_count": 4,
+                    "started_gate_count": 4,
+                    "completed_gate_count": 4,
+                    "failed_gate_count": 0,
+                    "timed_out_gate_count": 0,
+                    "all_configured_gates_completed": True,
+                    "not_run_commands": [],
+                },
+                "passing snapshot gate coverage receipt is incomplete",
+            )
 
             (root / "scripts" / "test_root_import_closure.py").write_text(
                 auxiliary_gate_source(
@@ -223,20 +280,40 @@ def main() -> int:
                 timeout_seconds=30,
                 probe_only=False,
             )
-            assert root_failed_exit == 9
-            assert root_failed["status"] == "failed"
-            assert [row["exit_code"] for row in root_failed["gate_results"]] == [
-                0,
-                9,
-                0,
-                0,
-            ]
-            assert root_failed["failed_gate_count"] == 1
-            assert root_failed["gate_coverage"]["completed_gate_count"] == 4
-            assert root_failed["gate_coverage"]["failed_gate_count"] == 1
-            assert root_failed["gate_coverage"]["all_configured_gates_completed"]
-            assert "synthetic root census" in root_failed["stdout_tail"]
-            assert "synthetic source adversary" in root_failed["stdout_tail"]
+            require(root_failed_exit == 9, "root gate failure exit was not preserved")
+            require(
+                root_failed["status"] == "failed",
+                "root gate failure was not reported as failed",
+            )
+            require(
+                [row["exit_code"] for row in root_failed["gate_results"]]
+                == [0, 9, 0, 0],
+                "root gate failure receipt lost gate exits",
+            )
+            require(
+                root_failed["failed_gate_count"] == 1,
+                "root gate failure count is incorrect",
+            )
+            require(
+                root_failed["gate_coverage"]["completed_gate_count"] == 4,
+                "root gate failure did not complete the configured gates",
+            )
+            require(
+                root_failed["gate_coverage"]["failed_gate_count"] == 1,
+                "root gate failure coverage count is incorrect",
+            )
+            require(
+                root_failed["gate_coverage"]["all_configured_gates_completed"],
+                "root gate failure receipt lost completion coverage",
+            )
+            require(
+                "synthetic root census" in root_failed["stdout_tail"],
+                "root gate failure receipt lost root-gate output",
+            )
+            require(
+                "synthetic source adversary" in root_failed["stdout_tail"],
+                "root gate failure receipt lost later-gate output",
+            )
 
             (root / "scripts" / "test_root_import_closure.py").write_text(
                 auxiliary_gate_source(
@@ -268,16 +345,27 @@ def main() -> int:
                 timeout_seconds=30,
                 probe_only=False,
             )
-            assert source_failed_exit == 11
-            assert source_failed["status"] == "failed"
-            assert [row["exit_code"] for row in source_failed["gate_results"]] == [
-                0,
-                0,
-                11,
-                0,
-            ]
-            assert source_failed["failed_gate_count"] == 1
-            assert "synthetic source adversary" in source_failed["stdout_tail"]
+            require(
+                source_failed_exit == 11,
+                "source identity gate exit was not preserved",
+            )
+            require(
+                source_failed["status"] == "failed",
+                "source identity gate failure was not reported as failed",
+            )
+            require(
+                [row["exit_code"] for row in source_failed["gate_results"]]
+                == [0, 0, 11, 0],
+                "source identity gate receipt lost gate exits",
+            )
+            require(
+                source_failed["failed_gate_count"] == 1,
+                "source identity gate failure count is incorrect",
+            )
+            require(
+                "synthetic source adversary" in source_failed["stdout_tail"],
+                "source identity failure receipt lost gate output",
+            )
 
             (root / "scripts" / "test_release_source_identity.py").write_text(
                 auxiliary_gate_source(
@@ -309,16 +397,27 @@ def main() -> int:
                 timeout_seconds=30,
                 probe_only=False,
             )
-            assert route_failed_exit == 13
-            assert route_failed["status"] == "failed"
-            assert [row["exit_code"] for row in route_failed["gate_results"]] == [
-                0,
-                0,
-                0,
-                13,
-            ]
-            assert route_failed["failed_gate_count"] == 1
-            assert "synthetic route-memory adversary" in route_failed["stdout_tail"]
+            require(
+                route_failed_exit == 13,
+                "route-memory gate exit was not preserved",
+            )
+            require(
+                route_failed["status"] == "failed",
+                "route-memory gate failure was not reported as failed",
+            )
+            require(
+                [row["exit_code"] for row in route_failed["gate_results"]]
+                == [0, 0, 0, 13],
+                "route-memory gate receipt lost gate exits",
+            )
+            require(
+                route_failed["failed_gate_count"] == 1,
+                "route-memory gate failure count is incorrect",
+            )
+            require(
+                "synthetic route-memory adversary" in route_failed["stdout_tail"],
+                "route-memory failure receipt lost gate output",
+            )
 
             (root / "scripts" / "test_query_route_memory.py").write_text(
                 auxiliary_gate_source(
@@ -351,29 +450,55 @@ def main() -> int:
                 timeout_seconds=30,
                 probe_only=False,
             )
-            assert old_again_exit == 0
-            assert old_again["resolved_commit"] == passing_commit
-            assert old_again["status"] == "passed"
+            require(old_again_exit == 0, "previous passing commit did not replay")
+            require(
+                old_again["resolved_commit"] == passing_commit,
+                "previous passing commit was not selected immutably",
+            )
+            require(
+                old_again["status"] == "passed",
+                "previous passing commit lost its passing status",
+            )
 
             failed, failed_exit = check_release_ref.validate_ref(
                 failing_commit,
                 timeout_seconds=30,
                 probe_only=False,
             )
-            assert failed_exit == 7
-            assert failed["status"] == "failed"
-            assert failed["resolved_commit"] == failing_commit
-            assert failed["reported_check_count"] == 17
-            assert failed["reported_release"] is None
-            assert [row["exit_code"] for row in failed["gate_results"]] == [
-                7,
-                0,
-                0,
-                0,
-            ]
-            assert failed["failed_gate_count"] == 1
-            assert "synthetic root census" in failed["stdout_tail"]
-            assert "synthetic source adversary" in failed["stdout_tail"]
+            require(failed_exit == 7, "release gate failure exit was not preserved")
+            require(
+                failed["status"] == "failed",
+                "release gate failure was not reported as failed",
+            )
+            require(
+                failed["resolved_commit"] == failing_commit,
+                "release gate failure selected the wrong immutable commit",
+            )
+            require(
+                failed["reported_check_count"] == 17,
+                "release gate failure lost the reported check count",
+            )
+            require(
+                failed["reported_release"] is None,
+                "failed release gate reported a release value",
+            )
+            require(
+                [row["exit_code"] for row in failed["gate_results"]]
+                == [7, 0, 0, 0],
+                "release gate failure receipt lost gate exits",
+            )
+            require(
+                failed["failed_gate_count"] == 1,
+                "release gate failure count is incorrect",
+            )
+            require(
+                "synthetic root census" in failed["stdout_tail"],
+                "release gate failure receipt lost root-gate output",
+            )
+            require(
+                "synthetic source adversary" in failed["stdout_tail"],
+                "release gate failure receipt lost later-gate output",
+            )
 
             (root / "scripts" / "check_release.py").write_text(
                 "import time\n"
@@ -391,29 +516,48 @@ def main() -> int:
                 timeout_seconds=TIMEOUT_SECONDS,
                 probe_only=False,
             )
-            assert timeout_exit == 124
-            assert timed_out["status"] == "timeout"
-            assert timed_out["resolved_commit"] == timeout_commit
-            assert timed_out["timeout_seconds"] == TIMEOUT_SECONDS
-            assert timed_out["timed_out_command"] == [
-                "python3",
-                "scripts/check_release.py",
-            ]
-            assert timed_out["failed_gate_count"] == 0
-            assert timed_out["gate_coverage"] == {
-                "configured_gate_count": 4,
-                "started_gate_count": 1,
-                "completed_gate_count": 0,
-                "failed_gate_count": 0,
-                "timed_out_gate_count": 1,
-                "all_configured_gates_completed": False,
-                "not_run_commands": [
-                    ["python3", "scripts/test_root_import_closure.py"],
-                    ["python3", "scripts/test_release_source_identity.py"],
-                    ["python3", "scripts/test_query_route_memory.py"],
-                ],
-            }
-            assert "release gate started" in timed_out["stdout_tail"]
+            require(timeout_exit == 124, "timeout exit was not normalized to 124")
+            require(
+                timed_out["status"] == "timeout",
+                "timed-out release gate was not reported as timeout",
+            )
+            require(
+                timed_out["resolved_commit"] == timeout_commit,
+                "timeout receipt selected the wrong immutable commit",
+            )
+            require(
+                timed_out["timeout_seconds"] == TIMEOUT_SECONDS,
+                "timeout receipt lost its configured timeout",
+            )
+            require(
+                timed_out["timed_out_command"]
+                == ["python3", "scripts/check_release.py"],
+                "timeout receipt lost the timed-out command",
+            )
+            require(
+                timed_out["failed_gate_count"] == 0,
+                "timeout receipt misclassified the interrupted gate",
+            )
+            require(
+                timed_out["gate_coverage"] == {
+                    "configured_gate_count": 4,
+                    "started_gate_count": 1,
+                    "completed_gate_count": 0,
+                    "failed_gate_count": 0,
+                    "timed_out_gate_count": 1,
+                    "all_configured_gates_completed": False,
+                    "not_run_commands": [
+                        ["python3", "scripts/test_root_import_closure.py"],
+                        ["python3", "scripts/test_release_source_identity.py"],
+                        ["python3", "scripts/test_query_route_memory.py"],
+                    ],
+                },
+                "timeout receipt gate coverage is incomplete",
+            )
+            require(
+                "release gate started" in timed_out["stdout_tail"],
+                "timeout receipt lost gate output",
+            )
 
             try:
                 check_release_ref.resolve_commit("missing-ref")
