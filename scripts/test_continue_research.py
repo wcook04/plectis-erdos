@@ -426,6 +426,10 @@ def check_replay_command_boundary(sessions_root: Path, session: str) -> None:
 
 
 def main() -> int:
+    require(
+        continue_research.PROBLEMS is continue_research.route_memory_receipt.ROSTER,
+        "continuation selector roster must reuse route-memory authority",
+    )
     check_session_artifact_links_rejected()
     check_attached_git_context_scrubs_ref_state()
     check_subprocess_timeouts()

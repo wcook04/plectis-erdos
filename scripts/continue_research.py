@@ -34,7 +34,10 @@ DEFAULT_SESSIONS_ROOT = ROOT / "workbench" / "sessions"
 SESSION_SCHEMA = "research-continuation-session/1"
 CHECK_SCHEMA = "research-continuation-check/1"
 PACKAGE_SCHEMA = "research-return-package/1"
-PROBLEMS = {68, 243, 249, 251, 257, 269, 1041, 1049}
+# The route-memory receipt owns the frozen public roster.  Reuse that exact
+# object here so continuation selection cannot drift from the canonical route
+# authority as the corpus evolves.
+PROBLEMS = route_memory_receipt.ROSTER
 GIT_LOOKUP_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 COMPOSED_COMMAND_TIMEOUT_SECONDS = 120
 PYTHON_AMBIENT_KEYS = (
