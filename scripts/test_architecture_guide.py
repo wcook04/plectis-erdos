@@ -6,6 +6,9 @@
 from __future__ import annotations
 
 import re
+import os
+import tempfile
+from pathlib import Path
 
 import check_architecture_guide as checker
 
@@ -32,7 +35,46 @@ def reflow_tolerant_replace(source: str, phrase: str, replacement: str) -> str:
     return re.sub(pattern, lambda _match: replacement, source, count=1)
 
 
+def check_safe_input_boundary() -> None:
+    with tempfile.TemporaryDirectory(prefix="architecture-input-") as raw_workspace:
+        workspace = Path(raw_workspace)
+        regular = workspace / "regular.txt"
+        regular.write_text("architecture input\n", encoding="utf-8")
+        assert checker.safe_architecture_text(regular, root=workspace) == (
+            "architecture input\n"
+        )
+
+        directory = workspace / "directory"
+        directory.mkdir()
+        try:
+            checker.safe_architecture_text(directory, root=workspace)
+        except checker.UnsafeArchitectureInput:
+            pass
+        else:
+            raise AssertionError("architecture directory input escaped the regular-file boundary")
+
+        symlink = workspace / "symlink.txt"
+        symlink.symlink_to(regular)
+        try:
+            checker.safe_architecture_text(symlink, root=workspace)
+        except checker.UnsafeArchitectureInput:
+            pass
+        else:
+            raise AssertionError("architecture symlink input escaped the no-follow boundary")
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "fifo"
+            os.mkfifo(fifo)
+            try:
+                checker.safe_architecture_text(fifo, root=workspace)
+            except checker.UnsafeArchitectureInput:
+                pass
+            else:
+                raise AssertionError("architecture FIFO input escaped the non-blocking boundary")
+
+
 def main() -> int:
+    check_safe_input_boundary()
     guide = checker.GUIDE.read_text(encoding="utf-8")
     readme = checker.README.read_text(encoding="utf-8")
     agents = checker.AGENTS.read_text(encoding="utf-8")
@@ -45,7 +87,7 @@ def main() -> int:
     checks = 3
 
     contract = checker.json.loads(
-        checker.PUBLICATION_CONTRACT.read_text(encoding="utf-8")
+        checker.safe_architecture_text(checker.PUBLICATION_CONTRACT)
     )
     systems_paper_budget = (
         checker.SYSTEMS_PAPER_BASE_BYTES

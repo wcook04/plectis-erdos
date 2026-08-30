@@ -6,7 +6,9 @@
 from __future__ import annotations
 
 import json
+import os
 import re
+import stat
 from pathlib import Path
 
 
@@ -26,6 +28,60 @@ MAX_GUIDE_BYTES = 18_000
 # allowance therefore scales only when the governed public surface scales.
 SYSTEMS_PAPER_BASE_BYTES = 45_000
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
+
+
+class UnsafeArchitectureInput(ValueError):
+    """An architecture-check input escaped the checkout or is not a file."""
+
+
+def safe_architecture_text(path: Path, root: Path = ROOT) -> str:
+    """Read one architecture input through a no-follow regular-file descriptor."""
+    root = Path(os.path.abspath(root))
+    candidate = Path(os.path.abspath(path))
+    if candidate != root and root not in candidate.parents:
+        raise UnsafeArchitectureInput(f"architecture input escaped checkout: {candidate}")
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeArchitectureInput(f"symlinked architecture input: {candidate}")
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeArchitectureInput(f"architecture input escaped checkout: {candidate}")
+        current = current.parent
+    if not candidate.is_file():
+        raise UnsafeArchitectureInput(
+            f"architecture input is not a regular file: {candidate}"
+        )
+
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_NOFOLLOW", 0)
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeArchitectureInput(
+            f"architecture input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeArchitectureInput(
+                f"architecture input is not a regular file: {candidate}"
+            )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        try:
+            return b"".join(chunks).decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise UnsafeArchitectureInput(
+                f"architecture input is not UTF-8: {candidate}"
+            ) from exc
+    finally:
+        os.close(descriptor)
 
 SECTION_ORDER = (
     "## What this repository is",
@@ -199,130 +255,143 @@ def normalise_tex(text: str) -> str:
     return normalise(text)
 
 
+def require(condition: bool, message: str) -> None:
+    """Enforce a release check even when callers run Python with ``-O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
 def validate_guide(text: str) -> None:
     size = len(text.encode("utf-8"))
-    assert size <= MAX_GUIDE_BYTES, (
+    require(size <= MAX_GUIDE_BYTES, (
         f"ARCHITECTURE.md is {size} bytes (budget {MAX_GUIDE_BYTES})"
-    )
+    ))
 
     positions = [text.find(heading) for heading in SECTION_ORDER]
-    assert all(position >= 0 for position in positions), (
+    require(all(position >= 0 for position in positions), (
         f"architecture guide lost section sequence {SECTION_ORDER}"
-    )
-    assert positions == sorted(positions), "architecture guide sections are out of order"
+    ))
+    require(positions == sorted(positions), "architecture guide sections are out of order")
 
     compact = normalise_tex(text)
     for group_id, anchors in REQUIRED_ANCHOR_GROUPS.items():
         for anchor in anchors:
-            assert normalise(anchor).casefold() in compact.casefold(), (
+            require(normalise(anchor).casefold() in compact.casefold(), (
                 f"architecture guide lost {group_id} anchor {anchor!r}"
-            )
+            ))
 
     for pattern in BANNED_SHORTHAND:
-        assert not pattern.search(text), (
+        require(not pattern.search(text), (
             f"architecture guide exposes private or evaluation shorthand {pattern.pattern!r}"
-        )
+        ))
 
     for rel in REQUIRED_PATHS:
-        assert (ROOT / rel).exists(), f"architecture guide names missing path {rel}"
-        assert rel in text, f"architecture guide no longer routes through {rel}"
+        require((ROOT / rel).exists(), f"architecture guide names missing path {rel}")
+        require(rel in text, f"architecture guide no longer routes through {rel}")
 
     for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
         if target.startswith(("http://", "https://", "#")):
             continue
         path = target.split("#", 1)[0]
-        assert (ROOT / path).exists(), f"architecture guide has broken local link {target}"
+        require((ROOT / path).exists(), f"architecture guide has broken local link {target}")
 
 
 def validate_systems_paper(text: str) -> None:
     """Keep the PDF source architecture-first rather than experiment-first."""
     size = len(text.encode("utf-8"))
-    contract = json.loads(PUBLICATION_CONTRACT.read_text(encoding="utf-8"))
+    contract = json.loads(safe_architecture_text(PUBLICATION_CONTRACT))
     artifact_count = len(contract["artifacts"])
     byte_budget = (
         SYSTEMS_PAPER_BASE_BYTES
         + SYSTEMS_PAPER_BYTES_PER_ARTIFACT * artifact_count
     )
-    assert size <= byte_budget, (
+    require(size <= byte_budget, (
         f"systems architecture paper is {size} bytes "
         f"(budget {byte_budget} for {artifact_count} governed artifacts)"
-    )
+    ))
 
-    assert (
+    require(
         "From Lean Proofs to Public Claims" in text
         and "Release checks and trust boundaries in one formal mathematics repository"
         in text
-    ), "systems paper lost its plain architecture title"
+    , "systems paper lost its plain architecture title")
 
     positions = [text.find(heading) for heading in PAPER_SECTION_ORDER]
-    assert all(position >= 0 for position in positions), (
+    require(all(position >= 0 for position in positions), (
         f"systems paper lost section sequence {PAPER_SECTION_ORDER}"
-    )
-    assert positions == sorted(positions), "systems paper sections are out of order"
+    ))
+    require(positions == sorted(positions), "systems paper sections are out of order")
 
     compact = normalise_tex(text)
     for group_id, anchors in PAPER_REQUIRED_ANCHOR_GROUPS.items():
         for anchor in anchors:
-            assert normalise(anchor).casefold() in compact.casefold(), (
+            require(normalise(anchor).casefold() in compact.casefold(), (
                 f"systems paper lost {group_id} anchor {anchor!r}"
-            )
+            ))
 
     for pattern in BANNED_SHORTHAND:
-        assert not pattern.search(text), (
+        require(not pattern.search(text), (
             f"systems paper exposes private or score-like shorthand {pattern.pattern!r}"
-        )
+        ))
 
-    assert len(re.findall(r"\bsentence\b", text, flags=re.IGNORECASE)) <= 4, (
+    require(len(re.findall(r"\bsentence\b", text, flags=re.IGNORECASE)) <= 4, (
         "systems paper has drifted back to a sentence-centred case study"
-    )
+    ))
     public_meaning = compact.find("public meaning, not its internal name")
     internal_id = compact.find("certified_kill_instances")
-    assert 0 <= public_meaning < internal_id, (
+    require(0 <= public_meaning < internal_id, (
         "systems paper exposes its internal claim id before the public meaning"
-    )
-    assert SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing"
+    ))
+    require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
 
 
 def validate_entry_links(readme: str, agents: str, paper_readme: str) -> None:
     readme_prefix = readme.encode("utf-8")[:6_000].decode("utf-8", errors="ignore")
-    assert "[architecture and repository guide](ARCHITECTURE.md)" in readme_prefix
-    assert (
+    require("[architecture and repository guide](ARCHITECTURE.md)" in readme_prefix,
+            "README lost the architecture guide entry link")
+    require(
         "[printable PDF](claim-faithful-publication-systems-paper.pdf)"
         in readme_prefix
-    )
-    assert "It assumes no Lean or project history" in normalise(readme_prefix)
+    , "README lost the printable architecture PDF entry link")
+    require("It assumes no Lean or project history" in normalise(readme_prefix),
+            "README lost the no-history architecture boundary")
     for phrase in (
         "conditional producer",
         "unbounded or cofinal supply",
         "lcm-diagonal scales",
         "producer carry",
     ):
-        assert phrase not in readme_prefix.casefold(), (
+        require(phrase not in readme_prefix.casefold(), (
             f"README first impression exposes unexplained phrase {phrase!r}"
-        )
-    assert "ARCHITECTURE.md" in agents
-    assert "plain-language human guide" in agents
+        ))
+    require("ARCHITECTURE.md" in agents, "AGENTS lost the architecture guide route")
+    require("plain-language human guide" in agents,
+            "AGENTS lost the plain-language architecture guide route")
     compact_paper_readme = normalise(paper_readme)
-    assert "[`ARCHITECTURE.md`](../ARCHITECTURE.md)" in paper_readme
-    assert "authored papers with narrower jobs" in compact_paper_readme
-    assert "architecture and access guide" in compact_paper_readme
-    assert "historical checker example appears only after the architecture" in (
+    require("[`ARCHITECTURE.md`](../ARCHITECTURE.md)" in paper_readme,
+            "paper README lost the architecture guide route")
+    require("authored papers with narrower jobs" in compact_paper_readme,
+            "paper README lost the authored-paper boundary")
+    require("architecture and access guide" in compact_paper_readme,
+            "paper README lost the architecture role")
+    require("historical checker example appears only after the architecture" in (
         compact_paper_readme
-    )
+    ), "paper README moved the historical example ahead of architecture")
     for manuscript in (
         "erdos249-257-main-paper.tex",
         "claim-faithful-publication-systems-paper.tex",
     ):
-        assert manuscript in paper_readme
+        require(manuscript in paper_readme,
+                f"paper README lost manuscript route {manuscript}")
 
 
 def main() -> int:
-    validate_guide(GUIDE.read_text(encoding="utf-8"))
-    validate_systems_paper(SYSTEMS_PAPER.read_text(encoding="utf-8"))
+    validate_guide(safe_architecture_text(GUIDE))
+    validate_systems_paper(safe_architecture_text(SYSTEMS_PAPER))
     validate_entry_links(
-        README.read_text(encoding="utf-8"),
-        AGENTS.read_text(encoding="utf-8"),
-        PAPER_README.read_text(encoding="utf-8"),
+        safe_architecture_text(README),
+        safe_architecture_text(AGENTS),
+        safe_architecture_text(PAPER_README),
     )
     print("architecture guide: first-principles structure and entry links verified")
     return 0
