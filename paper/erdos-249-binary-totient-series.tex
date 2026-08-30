@@ -27,8 +27,8 @@
 % its own status column.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
-\renewcommand{\commit}{f25aa067c8457f28c0311e7972b524054a2de6b1}
-\renewcommand{\commitshort}{f25aa067c845}
+\renewcommand{\commit}{e45d6a35a72c412491efaaffc2dc79761b3644d0}
+\renewcommand{\commitshort}{e45d6a35a72c}
 \hypersetup{
   pdftitle={A basis for the 2-kernel of Euler's totient},
   pdfsubject={Erdős Problem Notes: Problem 249},
@@ -117,6 +117,22 @@ That decorrelation supply is unproved.  The exact supplier-fibre bijection does
 not provide global prime isolation: at
 $(X,L,s,m,N)=(16,20,1,2,18)$ the pivot is $38=2\cdot19$, while $19$ also
 divides the distinct window argument $N+1=19$.
+
+A distinct producer-side route studies the phase of the actual tail orbit rather
+than the LCM approximation.  Its first harmonic obeys the exact squaring law
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{167}{tailOrbitFirstExp_succ}{phase recurrence},
+so iteration gives a power-of-two closed form
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{201}{tailOrbitFirstExp_eq_initial_pow_two}{phase normal form}.
+The strict prime-index gap condition is therefore equivalent to an initial-phase
+condition
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{278}{naturalPrimeTailOrbitStrictGap_iff_initial_phase}{initial-phase equivalence},
+and a dyadic-root initial phase is an exact obstruction
+\lword{Erdos249/TotientStrictPrimeEscape.lean}{322}{not_naturalPrimeTailOrbitStrictGap_of_dyadic_root}{dyadic-root obstruction}.
+Either a cofinal block-density hypothesis on nonpositive phases or cofinally
+many prime indices with a strict phase gap supplies a conditional irrationality
+consumer.  Neither the phase-density premise, the cofinal prime-index supply,
+nor a prime-distribution bridge is proved here; this is a producer
+specification and classification, not an unconditional result for Problem~\#249.
 
 The principal unconditional theorem of this note is instead structural.  For
 $j\ge0$ and $0\le r<2^j$, write $\ph_{j,r}(n)=\ph(2^jn+r)$.  We prove that
@@ -1454,6 +1470,17 @@ The unknown is phase escape of the totient discrepancy modulo $2^L$, not
 large prime divisors or multiplicative order.  The checked $p=331$ instances
 are finite models of this exact predicate; unbounded support alone does not
 imply it.
+
+The
+\lword{Erdos249/CyclotomicAnchoredKill.lean}{1666}{exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational}{checked conditional support/period no-go}
+makes that limitation exact.  If $\Stot$ were rational, its eventual integral
+tail-period law would supply some $h>0$, while the actual binary cyclotomic
+layers would still have unbounded prime divisors on the same $h$-ray.
+Consequently, unbounded support cannot be the missing contradiction unless an
+additional carry- or phase-escape theorem relates that support to the period
+law.  This is a necessary-state theorem under hypothetical rationality: it
+neither constructs a rational example nor proves that the rationality
+hypothesis is consistent, and Erd\H{o}s \#249 remains open.
 
 \subsection{Stronger sufficient producer problems}
 
