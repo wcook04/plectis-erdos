@@ -7,9 +7,19 @@ from __future__ import annotations
 
 import argparse
 import copy
+import json
 import re
+import subprocess
+import sys
+from pathlib import Path
 
 import check_cold_clone_comprehension as diagnostic
+import query_route_memory as route_memory
+
+
+ROOT = Path(__file__).resolve().parent.parent
+ROUTE_MEMORY_SCRIPT = ROOT / "scripts" / "query_route_memory.py"
+FROZEN_PROBLEMS = (68, 243, 249, 251, 257, 269, 1041, 1049)
 
 
 def assert_rejected(packets: dict, label: str) -> None:
@@ -79,7 +89,56 @@ def remove_semantic_anchor(text: str, token: str) -> str:
     )
 
 
+def check_route_memory_cold_clone() -> int:
+    """Exercise the tracked-only route-memory entry for every selector."""
+    checked = 0
+    for problem_number in FROZEN_PROBLEMS:
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(ROUTE_MEMORY_SCRIPT),
+                "--problem",
+                str(problem_number),
+            ],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            raise AssertionError(
+                f"route-memory selector #{problem_number} failed: {result.stderr}"
+            )
+        packet = json.loads(result.stdout)
+        if packet["problem"]["erdos_number"] != problem_number:
+            raise AssertionError(f"route-memory crossed selector #{problem_number}")
+        if route_memory.validate_packet(packet)["resume_state"] != packet["resume_state"]:
+            raise AssertionError(f"route-memory resume identity drifted for #{problem_number}")
+        checked += 1
+
+    cross_problem = subprocess.run(
+        [
+            sys.executable,
+            str(ROUTE_MEMORY_SCRIPT),
+            "--problem",
+            "249",
+            "--route",
+            "erdos257_half_story",
+        ],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if cross_problem.returncode != 2 or cross_problem.stdout:
+        raise AssertionError("cross-problem route was not rejected by the CLI")
+    if "cross_problem_route" not in cross_problem.stderr:
+        raise AssertionError("cross-problem rejection lost its machine-readable code")
+    return checked + 1
+
+
 def main() -> int:
+    route_memory_checks = check_route_memory_cold_clone()
     packets = diagnostic.collect_agent_packets()
     summary = packets["summary"]
     quick_summary = diagnostic.quick_summary()
@@ -751,7 +810,8 @@ def main() -> int:
 
     print(
         "test_cold_clone_comprehension: bounded baseline passed; "
-        f"{checks - 3} semantic mutations were rejected"
+        f"{checks - 3} semantic mutations were rejected; "
+        f"route-memory cold-clone checks={route_memory_checks}"
     )
     return 0
 
