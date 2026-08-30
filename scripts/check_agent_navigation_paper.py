@@ -6,7 +6,10 @@
 from __future__ import annotations
 
 import hashlib
+import os
 import re
+import stat
+import sys
 from pathlib import Path
 
 
@@ -105,42 +108,116 @@ def normalise(text: str) -> str:
     return re.sub(r"\s+", " ", text)
 
 
+class UnsafeAgentNavigationInput(ValueError):
+    """An agent-navigation paper input is outside the regular checkout boundary."""
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep the paper contract active when the checker runs with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
+def _safe_navigation_path(path: Path) -> Path:
+    """Reject checkout escapes and symbolic-link path components."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeAgentNavigationInput(
+                f"symlinked agent-navigation input: {candidate}"
+            )
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeAgentNavigationInput(
+                f"agent-navigation input escaped checkout: {candidate}"
+            )
+        current = current.parent
+    return candidate
+
+
+def safe_read_bytes(path: Path) -> bytes:
+    """Read a paper or PDF through a no-follow regular descriptor."""
+    candidate = _safe_navigation_path(path)
+    if not candidate.is_file():
+        raise UnsafeAgentNavigationInput(
+            f"agent-navigation input is not a regular file: {candidate}"
+        )
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeAgentNavigationInput(
+            f"agent-navigation input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeAgentNavigationInput(
+                f"agent-navigation input is not a regular file: {candidate}"
+            )
+        with os.fdopen(descriptor, "rb") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
+def safe_read_text(path: Path) -> str:
+    """Read a UTF-8 paper source through the regular-file boundary."""
+    return safe_read_bytes(path).decode("utf-8")
+
+
 def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(safe_read_bytes(path)).hexdigest()
 
 
 def main() -> int:
-    source = SOURCE.read_text(encoding="utf-8")
-    assert len(source.encode("utf-8")) <= MAX_SOURCE_BYTES
+    try:
+        source = safe_read_text(SOURCE)
+        root_pdf_digest = sha256(ROOT_PDF)
+    except UnsafeAgentNavigationInput as exc:
+        print(f"unsafe agent-navigation input: {exc}", file=sys.stderr)
+        return 1
+    require(len(source.encode("utf-8")) <= MAX_SOURCE_BYTES, "agent-navigation source exceeds its size budget")
     positions = [source.find(section) for section in SECTION_ORDER]
-    assert all(position >= 0 for position in positions), (
+    require(all(position >= 0 for position in positions), (
         f"agent-navigation paper lost section sequence {SECTION_ORDER}"
-    )
-    assert positions == sorted(positions), (
+    ))
+    require(positions == sorted(positions), (
         "agent-navigation paper sections are out of order"
-    )
+    ))
     compact = normalise(source)
     for group_id, anchors in ANCHOR_GROUPS.items():
         for anchor in anchors:
-            assert normalise(anchor).casefold() in compact.casefold(), (
+            require(normalise(anchor).casefold() in compact.casefold(), (
                 f"agent-navigation paper lost {group_id} anchor {anchor!r}"
-            )
+            ))
     for pattern in BANNED:
         match = pattern.search(compact)
-        assert match is None, (
+        require(match is None, (
             "agent-navigation paper exposes private or inflated shorthand "
-            f"{match.group(0)!r}"
-        )
-    assert ROOT_PDF.is_file(), "root agent-navigation PDF is missing"
+            f"{match.group(0) if match else '<unknown>'!r}"
+        ))
     # ``paper/*.pdf`` is deliberately ignored build output.  A fresh clone
     # therefore has the shipped root PDF but no paper-local copy until someone
     # runs the paper Makefile.  Compare the optional build product when it
     # exists without making it a cold-clone prerequisite.
-    paper_local_present = PAPER_PDF.is_file()
+    try:
+        paper_local_digest = sha256(PAPER_PDF)
+    except UnsafeAgentNavigationInput:
+        paper_local_present = False
+    else:
+        paper_local_present = True
     if paper_local_present:
-        assert sha256(PAPER_PDF) == sha256(ROOT_PDF), (
+        require(paper_local_digest == root_pdf_digest, (
             "agent-navigation root and paper-local PDFs differ"
-        )
+        ))
     print(
         "agent-navigation paper: thesis, evidence boundary, prior art, "
         "reproduction routes, and shipped PDF verified"
