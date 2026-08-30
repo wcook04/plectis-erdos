@@ -27,18 +27,18 @@ pass, the high-signal spine is:
   not universal #257. A distinct adaptive-CRT certificate proves irrationality
   for every infinite pairwise-coprime support with summable reciprocal mass;
   those structured-support hypotheses likewise leave arbitrary support open.
-  A separate direct result covers nonnegative rational eventually periodic
-  coefficient sequences with a positive periodic-tail value: one common
-  denominator reduces the claim to the periodic divisor-orbit sieve
-  (`irrational_ratWeightSeries_eventuallyPeriodic`,
-  `Erdos249257/CertificateKernel.lean:12811`); mixed-sign coefficients and
-  arbitrary supports remain outside its hypotheses. A deeper, genuinely
-  distinct conditional route proves the base-2 support series under a finite-
-  core orthogonal-petal bouquet plus the uniform
+  A deeper, genuinely distinct conditional route proves the base-2 support
+  series under a finite-core orthogonal-petal bouquet plus the uniform
   `SunflowerForcedSlotTailSelection` predicate
   (`irrational_erdosSupportSeries_of_orthogonalPetalBouquet`,
   `Erdos249257/SupportSunflowerDichotomy.lean:540`); the selector and bouquet
-  are not constructed for arbitrary supports. Separately, the full base-2
+  are not constructed for arbitrary supports. A separate direct result covers
+  nonnegative rational eventually periodic coefficient sequences with a
+  positive periodic-tail value: one common denominator reduces the claim to
+  the periodic divisor-orbit sieve
+  (`irrational_ratWeightSeries_eventuallyPeriodic`,
+  `Erdos249257/CertificateKernel.lean:12811`); mixed-sign coefficients and
+  arbitrary supports remain outside its hypotheses. Separately, the full base-2
   Mersenne achievement set has Lebesgue measure exactly one, while the
   supported-set theorem gives exact finite-complement measure or zero for an
   infinite complement (`volume_mersenneAchievementSet`,
@@ -47,11 +47,8 @@ pass, the high-signal spine is:
   `ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean:397`). This is
   consequential global geometry, not a classification of rational points or
   a universal irrationality theorem.
-- **#249, two complementary structural spines.** The exact dyadic
-  totient-kernel rank `2^e + 1`, its odd-core basis, and the resulting
-  infinite-dimensional span expose a real finite-level mechanism; the all-base
-  rank is conditional on the displayed affine-independence input. Separately,
-  the actual-LCM orbit route gives a genuinely endpoint-facing conditional
+- **#249, an endpoint-facing conditional route plus a finite-level rank
+  spine.** The actual-LCM orbit route gives a genuinely endpoint-facing
   reduction: an explicit approximation of the orbit by an odd-rank raw block,
   with an error radius, turns cofinal distance at least `1/32` plus that radius
   from every integer into the existing signed-margin producer. The exact
@@ -59,9 +56,11 @@ pass, the high-signal spine is:
   irrationality from it, but this is a sufficient route, not an equivalence to
   the separate non-integrality criterion. The supply itself is not proved;
   neither divisibility nor irrationality alone supplies the required
-  anti-concentration.
-  Neither spine by itself supplies a rationality-to-finite-rank bridge or
-  solves the binary totient endpoint.
+  anti-concentration. Separately, the dyadic totient-kernel rank `2^e + 1`,
+  its odd-core basis, and the resulting infinite-dimensional span expose a
+  real finite-level mechanism; the all-base rank is conditional on the
+  displayed affine-independence input. Neither spine solves the binary
+  totient endpoint.
 - **#68, an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently to
   cofinally many non-unit carries. The equivalence transfers the hard
@@ -98,8 +97,8 @@ individually inspectable in the per-problem sections.
 
 | Disposition | Reader-facing treatment | Mathematical reason |
 |---|---|---|
-| **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, and nonnegative rational eventually-periodic coefficient theorem, plus #249's finite kernel rank/basis and actual-LCM separation reduction, and #68's exact carry/divisibility equivalence, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; pairwise CRT and periodic denominator-clearing are distinct direct mechanisms; #249's rank and actual-LCM rows expose different finite-level and endpoint-facing mechanisms, with the latter's unproved quantitative supply kept explicit; the #68 equivalence exposes its exact producer boundary. |
-| **retain** | #257's orthogonal-petal bouquet reduction and achievement-set measure geometry, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The bouquet route has genuine structural depth but requires an unconstructed selector and bouquet; the measure rows give consequential global geometry without classifying rational points; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
+| **promote** | #257's full-support irrationality theorem, pairwise-coprime extension, orthogonal-petal reduction, and nonnegative rational eventually-periodic coefficient theorem, together with #249's actual-LCM separation reduction, lead the first pass. | The full-support row is an unconditional endpoint case for each `b ≥ 2`; the pairwise CRT and periodic denominator-clearing rows are distinct direct mechanisms; the bouquet and actual-LCM rows add unusually deep endpoint-facing conditional structure, with their unproved supplies kept adjacent rather than hidden. |
+| **retain** | #257's achievement-set measure geometry, #68's exact carry equivalence, #249's finite kernel rank/basis, #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. | The measure rows give consequential global geometry without classifying rational points; the #68 and #249 rows are exact endpoint-adjacent or infinite-dimensionality results without their missing producers; the other rows rule out named regimes or supply exact identities without the missing universal, cofinal, topological, or irrationality bridge. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite-denominator, and synthetic LCM-shift results form one supporting arithmetic route; #257's finite-period, state, and defect results form one supporting universal-boundary route. | These results reuse finite-level or finite-support interfaces and share the same endpoint gap; grouping them preserves the mechanism without making repeated local identities look like separate endpoint advances. |
 | **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; the canonical #257 full-support theorem stays promoted. | Provenance and known formalised cases establish context or a restricted theorem, not a new #249 conclusion; the completed full-support mechanism is the explicit exception because it is a direct checked endpoint case. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. | Consequence and load-bearing mechanism are more informative to a first reader than paper order, while the per-problem sections preserve complete coverage and exact source routes. |

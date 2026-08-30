@@ -41,30 +41,32 @@ not a novelty or priority ranking:
 - A distinct adaptive-CRT extension handles every infinite pairwise-coprime
   support with summable reciprocal mass ([source](Erdos249257/CertificateKernel.lean));
   its structured-support hypotheses do not settle arbitrary infinite support.
-- A separate coefficient-class theorem proves irrationality when a rational
-  weight sequence is nonnegative, eventually periodic, and positive at a
-  positive index in its periodic tail; denominator clearing feeds a periodic
-  divisor-orbit sieve ([source](Erdos249257/CertificateKernel.lean)). This is
-  not the mixed-sign or arbitrary-support theorem.
 - A deeper support route proves the base-2 series irrational under an explicit
   finite-core orthogonal-petal bouquet and uniform tail-selection predicate
   ([source](Erdos249257/SupportSunflowerDichotomy.lean)). Those structural
   hypotheses are the unresolved selector: neither is constructed for arbitrary
   supports, so this remains a conditional reduction rather than another
   settled support family.
+- A separate coefficient-class theorem proves irrationality when a rational
+  weight sequence is nonnegative, eventually periodic, and positive at a
+  positive index in its periodic tail; denominator clearing feeds a periodic
+  divisor-orbit sieve ([source](Erdos249257/CertificateKernel.lean)). This is
+  not the mixed-sign or arbitrary-support theorem.
 - A separate geometric boundary is substantial but different: the full
   base-2 Mersenne achievement set has Lebesgue measure one, while supported
   achievement sets have a finite-complement/zero-measure dichotomy ([source](Erdos249257/GreedyAchievementSet.lean); [source](ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean)). This classifies neither rational points nor universal irrationality.
-- **#249 has two distinct structural frontiers.** The dyadic totient kernel
-  has rank `2^e + 1` with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
-  the all-base extension is conditional on affine independence. Separately,
-  an actual-LCM orbit is approximated by an odd-rank raw block with an explicit
-  error radius: the separate sufficient (not equivalent) condition
+- **#249's endpoint-facing frontier is conditional.** An actual-LCM orbit is
+  approximated by an odd-rank raw block with an explicit error radius: the
+  separate sufficient (not equivalent) condition
   `PowerTwoActualLcmOrbitSeparationSupply` would force the existing signed-margin
   producer and hence irrationality
   ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
   quantitative separation supply is unproved, and sign/top-edge information
-  does not supply it.
+  does not supply it. Separately, the dyadic totient kernel has rank `2^e + 1`
+  with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
+  its all-base extension is conditional on affine independence. That rank
+  spine is a finite-level mechanism, not a rationality-to-finite-rank bridge
+  or a solution of the binary totient endpoint.
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
