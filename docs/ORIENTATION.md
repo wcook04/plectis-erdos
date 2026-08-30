@@ -36,17 +36,11 @@ The authored prior-art record, not this table, is the source for antecedents.
 
 ## Exact open boundary
 
-- `remaining_open.erdos_68_irrationality` — Prove that S = ∑_{n≥2} 1/(n! − 1) is irrational.
 - `remaining_open.erdos_249_irrationality` — Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.
-- `remaining_open.erdos_251_irrationality` — Prove that Π = ∑_{n≥1} p_n/2ⁿ is irrational; the exact tail-shift equivalence and prime-gap constraints do not supply the required cofinal escape.
 - `remaining_open.unbounded_certificate_supply` — Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.
 - `remaining_open.half_value_membership` — Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.
 - `remaining_open.twenty_one_permanent_affine_supercapacity` — Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.
 - `remaining_open.universal_257_all_infinite_supports` — Prove irrationality for every infinite support A, not only the named support families formalised here.
-- `remaining_open.erdos_269_three_prime_irrationality` — Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three; the rationality-to-carry bridge and cofinal window escape remain open.
-- `remaining_open.erdos_1041_lemniscate_connection` — Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.
-- `remaining_open.erdos_1049_irrationality` — Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.
-- `remaining_open.erdos_243_eventual_recurrence` — Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.
 
 ## Where the substance is
 
@@ -94,8 +88,27 @@ record, and exact open obligations:
 `python3 scripts/query_corpus.py --route erdos_<problem_number>`.
 For a dedicated paper's anchor census use
 `python3 scripts/query_corpus.py --paper-source <paper_source>`, then
-follow each exact `--paper-anchor` handle. Family order is registry order,
-not theorem count or novelty.
+follow each exact `--paper-anchor` handle. The machine descriptor's
+selection surface separates the authored gateway spine from the complete
+lower-signal disposition list; review-matrix order is only stable drilldown
+order, never a significance proxy.
+
+## Selection spine and long tail
+
+The high-signal spine is the exact authored `view_decision` bucket whose
+decision begins with `gateway_`. The descriptor records each spine family's
+status summary and consumer/open obligation, so the reason for retaining it
+and its natural next friction remain visible. The remaining families are not
+discarded: their exact authored dispositions stay in the descriptor for
+complete drilldown.
+
+Gateway spine families: 15; lower-signal families: 6;
+no order inside either bucket is a significance ranking.
+Use `python3 scripts/query_corpus.py --publication-architecture` for the
+selection decisions and `python3 scripts/query_corpus.py --publication-family
+<family_id>` for the full reason, source route, and open obligation. Use the
+problem route for every reviewed family's exact evidence mode, Comparator
+disposition, declarations, and boundary.
 
 ## Principal claim routes
 
@@ -110,7 +123,7 @@ not theorem count or novelty.
 | `certified_kill_instances` | verified finite instance | `res:deposits` |
 | `diagonal_pincer_reduction` | conditional reduction | `res:fulltargetavoidance` |
 | `adelic_height_obstruction` | proved here | `res:adelic` |
-| `all_base_totient_kernel_index_reduction` | proved here | `thm:kkernelrank` |
+| `all_base_totient_kernel_index_reduction` | proved here | `None` |
 | `sublog_zero_windows` | proved here | `res:sublog` |
 | `greedy_achievement_geometry` | formalised here | `res:greedy` |
 

@@ -13,6 +13,9 @@ atlas or acquire proof authority.
 The companion orientation JSON and Markdown are deliberately small first-read
 surfaces. They expose scale, the proved/open boundary, principal claims, and
 typed drilldowns without asking a cold reader to load the exhaustive graphs.
+The descriptor additionally exposes the authored publication-selection spine
+and every lower-signal disposition, while leaving detailed evidence and
+boundaries in the typed query routes.
 """
 
 from __future__ import annotations
@@ -60,6 +63,87 @@ def canonical_digest(value: Any) -> str:
 
 def file_digest(path: Path) -> str:
     return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def build_selection_navigation(claims: dict[str, Any]) -> dict[str, Any]:
+    """Project authored selection decisions without making a significance rank."""
+    families = claims["machine_readable_paper"]["publication_assembly"][
+        "contribution_families"
+    ]
+    spine = []
+    long_tail = []
+    for family in families:
+        decision = str(family["view_decision"])
+        if decision.startswith("gateway_"):
+            spine.append(
+                {
+                    "id": family["id"],
+                    "view_decision": decision,
+                    "status_summary": family["status_summary"],
+                    "consumer_or_open_obligation": family[
+                        "consumer_or_open_obligation"
+                    ],
+                }
+            )
+        else:
+            long_tail.append(
+                {
+                    "id": family["id"],
+                    "view_decision": decision,
+                }
+            )
+    return {
+        "authority": (
+            "docs/claims.json::machine_readable_paper.publication_assembly."
+            "contribution_families"
+        ),
+        "decision_field": "view_decision",
+        "high_signal_spine_rule": (
+            "The high-signal spine is exactly the authored family subset whose "
+            "view_decision begins with gateway_; this is a selection bucket, "
+            "not a rank within the bucket."
+        ),
+        "high_signal_spine": spine,
+        "long_tail_dispositions": long_tail,
+        "complete_publication_family_count": len(families),
+        "reader_context": {
+            "spine_fields": [
+                "status_summary",
+                "consumer_or_open_obligation",
+                "view_decision",
+            ],
+            "publication_family_detail": (
+                "python3 scripts/query_corpus.py --publication-family <family_id>"
+            ),
+            "reviewed_problem_family_detail": (
+                "python3 scripts/query_corpus.py --route erdos_<problem_number>"
+            ),
+            "detail_fields": [
+                "prior_art_posture",
+                "comparator_disposition",
+                "evidence_mode",
+                "declarations",
+                "boundary",
+            ],
+        },
+        "reviewed_family_drilldown": {
+            "authority": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+            ),
+            "ordering": (
+                "Review-matrix order is retained only for stable drilldown; it "
+                "does not express significance."
+            ),
+            "boundary": (
+                "Comparator dispositions record execution selection, not truth, "
+                "novelty, or closure of an Erdős problem."
+            ),
+        },
+        "selection_order": (
+            "The two buckets preserve publication-assembly declaration order for "
+            "stable handles; no insertion order is used as a significance proxy."
+        ),
+    }
 
 
 def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str, Any]:
@@ -222,7 +306,9 @@ def build_orientation(claims: dict[str, Any], atlas: dict[str, Any]) -> dict[str
     }
 
 
-def render_orientation_markdown(orientation: dict[str, Any]) -> str:
+def render_orientation_markdown(
+    orientation: dict[str, Any], selection_navigation: dict[str, Any]
+) -> str:
     scale = orientation["scale"]
     # REUSE-IgnoreStart — these strings are emitted into the generated projection.
     lines = [
@@ -328,8 +414,33 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "`python3 scripts/query_corpus.py --route erdos_<problem_number>`.",
             "For a dedicated paper's anchor census use",
             "`python3 scripts/query_corpus.py --paper-source <paper_source>`, then",
-            "follow each exact `--paper-anchor` handle. Family order is registry order,",
-            "not theorem count or novelty.",
+            "follow each exact `--paper-anchor` handle. The machine descriptor's",
+            "selection surface separates the authored gateway spine from the complete",
+            "lower-signal disposition list; review-matrix order is only stable drilldown",
+            "order, never a significance proxy.",
+        ]
+    )
+    spine = selection_navigation["high_signal_spine"]
+    long_tail = selection_navigation["long_tail_dispositions"]
+    lines.extend(
+        [
+            "",
+            "## Selection spine and long tail",
+            "",
+            "The high-signal spine is the exact authored `view_decision` bucket whose",
+            "decision begins with `gateway_`. The descriptor records each spine family's",
+            "status summary and consumer/open obligation, so the reason for retaining it",
+            "and its natural next friction remain visible. The remaining families are not",
+            "discarded: their exact authored dispositions stay in the descriptor for",
+            "complete drilldown.",
+            "",
+            f"Gateway spine families: {len(spine)}; lower-signal families: {len(long_tail)};",
+            "no order inside either bucket is a significance ranking.",
+            "Use `python3 scripts/query_corpus.py --publication-architecture` for the",
+            "selection decisions and `python3 scripts/query_corpus.py --publication-family",
+            "<family_id>` for the full reason, source route, and open obligation. Use the",
+            "problem route for every reviewed family's exact evidence mode, Comparator",
+            "disposition, declarations, and boundary.",
         ]
     )
     lines.extend(["", "## Principal claim routes", ""])
@@ -638,6 +749,7 @@ def build() -> dict[str, Any]:
             else "unknown"
         )
     orientation = build_orientation(claims, atlas)
+    selection_navigation = build_selection_navigation(claims)
     root_paths = [
         machine_paper["module_graph"]["root"],
         *machine_paper["module_graph"].get("additional_roots", []),
@@ -782,7 +894,10 @@ def build() -> dict[str, Any]:
             "claim_transition_requirements": True,
             "claim_first_route_memory_resume": True,
             "human_mathematical_review_is_machine_decidable": False,
+            "reasoned_publication_selection_spine": True,
+            "complete_reviewed_family_disposition_drilldown": True,
         },
+        "selection_navigation": selection_navigation,
         "retrieval_modes": {
             "global": {
                 "source": "docs/orientation.json and compact_graph",
@@ -790,6 +905,7 @@ def build() -> dict[str, Any]:
                     "proved_open_boundary",
                     "principal_claim_routes",
                     "mathematical_programme_routes",
+                    "reasoned_selection_spine_and_long_tail_dispositions",
                     "release_scale",
                     "root_module_topology",
                 ],
@@ -981,6 +1097,7 @@ def main() -> int:
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
     atlas = json.loads(ATLAS_PATH.read_text(encoding="utf-8"))
     orientation = build_orientation(claims, atlas)
+    selection_navigation = build_selection_navigation(claims)
     expected = render() if not args.orientation_only else ""
     # This is a machine first-read packet with a strict byte ceiling. Compact
     # JSON preserves the complete object while keeping formatting whitespace
@@ -988,7 +1105,9 @@ def main() -> int:
     expected_orientation_json = (
         json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n"
     )
-    expected_orientation_markdown = render_orientation_markdown(orientation)
+    expected_orientation_markdown = render_orientation_markdown(
+        orientation, selection_navigation
+    )
     actual_readme = ""
     expected_readme = ""
     actual_wave_index = ""
