@@ -2243,6 +2243,59 @@ def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, An
         locations = ", ".join(sorted(row["paper"]["source_ref"] for row in matches))
         raise ValueError(f"ambiguous paper anchor {handle!r}: {locations}")
     anchor = matches[0]
+    claims = load("docs/claims.json")
+    attached_claim_ids = {row["id"] for row in anchor["attached_claims"]}
+    attached_open_ids = {
+        row["id"] for row in anchor["attached_open_propositions"]
+    }
+    route_memory_bindings = []
+    for route in all_entrypoints(claims):
+        if route.get("route_kind") != "mathematical_programme":
+            continue
+        if not (
+            attached_claim_ids.intersection(
+                route.get("core_claim_ids", [])
+                + route.get("problem_target_claim_ids", [])
+            )
+            or attached_open_ids.intersection(
+                route.get("remaining_open_proposition_ids", [])
+            )
+        ):
+            continue
+        problem_number = route_memory_problem_number(route)
+        if problem_number is None:
+            continue
+        route_memory_bindings.append(
+            {
+                "route_id": route["id"],
+                "problem_number": problem_number,
+                "command": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{problem_number} --route {route['id']}"
+                ),
+                "authority_posture": (
+                    "derived_resume_handoff_not_claim_or_proof_authority"
+                ),
+                "identity_contract": (
+                    "The route-memory command binds this route to the selected "
+                    "problem and current tracked source digests before resume."
+                ),
+            }
+        )
+    route_memory = {
+        "status": "bound" if route_memory_bindings else "unbound",
+        "bindings": route_memory_bindings,
+        "authority_posture": "derived_resume_handoff_not_claim_or_proof_authority",
+        "boundary": (
+            "Route-memory bindings are navigation handoffs only; they do not "
+            "promote paper anchors or replace claim and Lean authority."
+        ),
+    }
+    if not route_memory_bindings:
+        route_memory["unbound_reason"] = (
+            "anchor attachments do not resolve to a canonical mathematical "
+            "programme; no resume route was invented"
+        )
     return {
         "kind": kind,
         "authority_posture": "navigation_projection_not_proof_authority",
@@ -2256,6 +2309,7 @@ def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, An
         "attached_open_propositions": anchor["attached_open_propositions"],
         "source_links": anchor["source_links"],
         "anchor_neighbourhood": anchor["anchor_neighbourhood"],
+        "route_memory": route_memory,
         "attachment_receipt": {
             "claim_count": len(anchor["attached_claims"]),
             "open_proposition_count": len(anchor["attached_open_propositions"]),

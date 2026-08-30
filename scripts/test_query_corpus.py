@@ -1251,6 +1251,13 @@ def main() -> int:
     )
     navigation_anchor = query("--paper-anchor", "sec:intro")
     assert navigation_anchor["anchor_class"] == "section_navigation_anchor"
+    assert navigation_anchor["route_memory"]["status"] == "unbound"
+    farey_anchor = query("--paper-anchor", "res:farey")
+    assert farey_anchor["route_memory"]["status"] == "bound"
+    assert {
+        (binding["route_id"], binding["problem_number"])
+        for binding in farey_anchor["route_memory"]["bindings"]
+    } == {("erdos249_certificate_story", 249)}
     assert navigation_anchor["anchor_neighbourhood"]["previous"] is None
     assert query("--paper-anchor", "app:index")["anchor_neighbourhood"]["next"] is None
     unknown_paper_label = run("--paper-label", "prop:not-a-real-label")
