@@ -516,6 +516,15 @@ def _stored_probe_source(session: Session, row: dict[str, Any], action: str) -> 
     return source
 
 
+def _cleanup_unledgered_probe_artifact(stored: Path) -> str | None:
+    """Remove a probe artifact that has not yet acquired a ledger record."""
+    try:
+        stored.unlink(missing_ok=True)
+    except OSError as exc:
+        return f"unledgered probe artifact cleanup failed: {stored}: {exc}"
+    return None
+
+
 def _validate_claim_evidence(
     session: Session, moves: list[dict[str, Any]], action: str
 ) -> None:
@@ -610,10 +619,24 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     try:
         shutil.copyfile(source_path, stored)
     except OSError as exc:
+        cleanup_error = _cleanup_unledgered_probe_artifact(stored)
+        detail = f"probe artifact could not be stored: {stored}: {exc}"
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
         raise SystemExit(
-            f"probe artifact could not be stored: {stored}: {exc}"
+            detail
         ) from exc
-    receipt = run_lean_probe(root, source)
+    try:
+        receipt = run_lean_probe(root, source)
+    except Exception as exc:
+        cleanup_error = _cleanup_unledgered_probe_artifact(stored)
+        detail = (
+            "probe runner failed before ledger append: "
+            f"{type(exc).__name__}"
+        )
+        if cleanup_error:
+            detail = f"{detail}; {cleanup_error}"
+        raise SystemExit(detail) from exc
     record = _base_record(session, "probe")
     record["move_id"] = move_id
     record.update(

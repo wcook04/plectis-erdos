@@ -1169,6 +1169,81 @@ def check_probe_runner_failures() -> None:
         assert receipt["exit_code"] is None
 
 
+def check_probe_artifact_cleanup(tmp: Path) -> None:
+    sessions_root = tmp / "cleanup-sessions"
+    _run(
+        sessions_root,
+        [
+            "open",
+            "--session",
+            "cleanup",
+            "--actor",
+            "outsider",
+            "--intent",
+            "runner cleanup boundary",
+        ],
+    )
+    source_path = tmp / "cleanup.lean"
+    source_path.write_text("example : True := by trivial\n", encoding="utf-8")
+    real_runner = workbench.run_lean_probe
+
+    def unexpected_runner(*args, **kwargs):
+        raise RuntimeError("runner internals failed")
+
+    workbench.run_lean_probe = unexpected_runner
+    try:
+        try:
+            _run(
+                sessions_root,
+                [
+                    "probe",
+                    "--session",
+                    "cleanup",
+                    "--file",
+                    str(source_path),
+                ],
+            )
+        except SystemExit as error:
+            assert "probe runner failed before ledger append" in str(error)
+        else:
+            raise AssertionError("unexpected runner failure was not bounded")
+    finally:
+        workbench.run_lean_probe = real_runner
+
+    session = workbench.Session(sessions_root, "cleanup")
+    assert [row["kind"] for row in session.moves()] == ["session_opened"]
+    stored = sessions_root / "cleanup" / "probes" / "m002.lean"
+    assert not stored.exists(), "runner failure left an unledgered probe artifact"
+
+    def accepted_runner(*args, **kwargs):
+        return {
+            "verdict": "kernel_accepted",
+            "detail": None,
+            "exit_code": 0,
+            "error_count": 0,
+            "sorry_count": 0,
+            "duration_seconds": 0.01,
+            "output_tail": "",
+        }
+
+    workbench.run_lean_probe = accepted_runner
+    try:
+        recovered = _run(
+            sessions_root,
+            [
+                "probe",
+                "--session",
+                "cleanup",
+                "--file",
+                str(source_path),
+            ],
+        )
+    finally:
+        workbench.run_lean_probe = real_runner
+    assert recovered["move_id"] == "m002"
+    assert stored.read_text(encoding="utf-8") == source_path.read_text(encoding="utf-8")
+
+
 def check_environment_fingerprint_failures(tmp: Path) -> None:
     real_run = workbench.subprocess.run
 
@@ -1505,6 +1580,7 @@ def main() -> int:
         check_replay_receipt_boundary(tmp)
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
+        check_probe_artifact_cleanup(tmp)
         check_environment_fingerprint_failures(tmp)
         check_session_storage_failures(tmp)
         sessions_root = tmp / "sessions"
