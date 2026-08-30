@@ -594,6 +594,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--format", choices=("json", "card"), default="json")
     args = parser.parse_args(argv)
     try:
+        if args.validate and args.route:
+            raise RouteMemoryError(
+                "validate_route_override",
+                "--route cannot be combined with --validate; packet selector is authoritative",
+            )
         packet = (
             validate_packet(_load_packet(args.validate))
             if args.validate

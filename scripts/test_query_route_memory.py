@@ -329,6 +329,21 @@ def main() -> int:
                 )
             else:
                 raise AssertionError("nested docs symlink was accepted")
+    with tempfile.TemporaryDirectory(prefix="route-memory-route-override-") as temp_dir:
+        packet_path = Path(temp_dir) / "packet.json"
+        packet_path.write_text("{}", encoding="utf-8")
+        overridden = run_cli(
+            "--validate",
+            str(packet_path),
+            "--route",
+            "erdos257_half_story",
+        )
+        require(overridden.returncode == 2, "validate route override was accepted")
+        require(overridden.stdout == "", "validate route override emitted a payload")
+        require(
+            "validate_route_override" in overridden.stderr,
+            "validate route override omitted its rejection code",
+        )
     optimized = run_cli(
         "--problem", "257", "--format", "card", optimized=True, check=True
     )
