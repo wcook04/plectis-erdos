@@ -47,6 +47,64 @@ def test_snapshot_command_path_boundary() -> None:
         )
 
 
+def test_snapshot_clone_isolation_flags_are_pinned() -> None:
+    """Keep disposable snapshots independent from the caller's object store."""
+    with tempfile.TemporaryDirectory() as raw:
+        source = Path(raw) / "source"
+        source.mkdir()
+        git(source, "init", "-q")
+        git(source, "config", "user.email", "release-ref-test@example.invalid")
+        git(source, "config", "user.name", "Clean ref release test")
+        for command in check_release_ref.RELEASE_COMMANDS:
+            command_path = source / command[1]
+            command_path.parent.mkdir(parents=True, exist_ok=True)
+            command_path.write_text(
+                "#!/usr/bin/env python3\nprint('fixture')\n",
+                encoding="utf-8",
+            )
+        git(source, "add", ".")
+        git(source, "commit", "-qm", "snapshot isolation fixture")
+        commit_id = git(source, "rev-parse", "HEAD")
+
+        original_root = check_release_ref.ROOT
+        check_release_ref.ROOT = source
+        calls: list[tuple[list[str], Path]] = []
+        original_run = check_release_ref.run
+
+        def recording_run(
+            argv: list[str], *, cwd: Path, timeout: int | None = None
+        ) -> subprocess.CompletedProcess[str]:
+            calls.append((argv, cwd))
+            return original_run(argv, cwd=cwd, timeout=timeout)
+
+        try:
+            with patch.object(check_release_ref, "run", side_effect=recording_run):
+                with tempfile.TemporaryDirectory(dir=raw) as parent_raw:
+                    clone = check_release_ref.prepare_clone(
+                        commit_id, Path(parent_raw)
+                    )
+                    require(
+                        git(clone, "rev-parse", "HEAD") == commit_id,
+                        "snapshot commit drifted",
+                    )
+        finally:
+            check_release_ref.ROOT = original_root
+
+        require(calls, "snapshot preparation did not invoke Git")
+        clone_command, clone_cwd = calls[0]
+        require(clone_command[:2] == ["git", "clone"], "snapshot did not use git clone")
+        require("--local" in clone_command, "snapshot clone lost local source mode")
+        require(
+            "--no-hardlinks" in clone_command,
+            "snapshot clone may share mutable Git object files",
+        )
+        require(
+            "--no-checkout" in clone_command,
+            "snapshot clone checked out before the requested immutable commit",
+        )
+        require(clone_cwd == source, "snapshot clone used a different source checkout")
+
+
 def test_receipt_destination_boundary() -> None:
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)
@@ -153,6 +211,7 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 
 def main() -> int:
     test_snapshot_command_path_boundary()
+    test_snapshot_clone_isolation_flags_are_pinned()
     test_receipt_destination_boundary()
     test_singleflight_worker_flag_is_accepted()
     original_root = check_release_ref.ROOT
