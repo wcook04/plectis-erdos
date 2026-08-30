@@ -34,6 +34,8 @@ import validation_singleflight as singleflight
 SCHEMA = "erdos249257-source-bound-reproduction/1"
 ENVIRONMENT_CONTRACT = "clean_reproduction_subprocess_environment_v1"
 COMMAND_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
+TOOLCHAIN_BIN = Path.home() / ".elan" / "bin"
+TOOLCHAIN_COMMANDS = frozenset({"elan", "lake", "lean"})
 TAIL_BYTES = 16_000
 DEFAULT_MAX_AGE_SECONDS = 30 * 24 * 60 * 60
 CANONICAL_RECEIPT_PATH = "docs/measurements/source_bound_reproduction_receipt.json"
@@ -328,11 +330,10 @@ def bounded_tail(data: bytes) -> str:
 
 
 def execution_environment(argv: list[str]) -> dict[str, str]:
-    """Remove ambient configuration while retaining the declared tool path."""
+    """Remove ambient configuration while retaining the pinned tool path."""
     environment = singleflight.command_environment()
-    resolved = shutil.which(argv[0], path=os.environ.get("PATH"))
-    if resolved:
-        tool_directory = str(Path(resolved).resolve().parent)
+    if argv and Path(argv[0]).name in TOOLCHAIN_COMMANDS:
+        tool_directory = str(TOOLCHAIN_BIN)
         path = environment.get("PATH", os.defpath).split(os.pathsep)
         if tool_directory not in path:
             environment["PATH"] = os.pathsep.join([tool_directory, *path])

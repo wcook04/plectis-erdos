@@ -156,6 +156,29 @@ def test_command_timeout() -> None:
     )
 
 
+def test_toolchain_path_is_not_ambient() -> None:
+    hostile = {
+        "PATH": "/private/host-toolchain/bin",
+        "GIT_DIR": "/private/host.git",
+        "GIT_NAMESPACE": "hostile-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replace/hostile/",
+    }
+    with patch.dict(os.environ, hostile, clear=False):
+        with patch.object(
+            subject.shutil,
+            "which",
+            side_effect=AssertionError("ambient executable lookup was used"),
+        ):
+            environment = subject.execution_environment(["lake", "build"])
+    require(
+        environment["PATH"]
+        == os.pathsep.join((str(subject.TOOLCHAIN_BIN), os.defpath)),
+        "source-bound Lean commands did not use the pinned toolchain path",
+    )
+    for key in ("GIT_DIR", "GIT_NAMESPACE", "GIT_REPLACE_REF_BASE"):
+        require(key not in environment, f"source-bound environment retained {key}")
+
+
 def test_rejections(source: Path, plan: list[dict], receipt: dict) -> None:
     changed_source = source.parent / "changed"
     subject.copy_source(source, changed_source)
@@ -289,6 +312,7 @@ def main() -> None:
         receipt = test_isolation_success_and_validation(source, plan)
         test_environment_isolation(source)
         test_command_timeout()
+        test_toolchain_path_is_not_ambient()
         test_rejections(source, plan, receipt)
         test_timestamp_and_tail_rejections(source, plan, receipt)
         test_git_capability_refusal(source)
