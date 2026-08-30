@@ -164,6 +164,12 @@ theorem irrational_ratWeightSeries_eventuallyPeriodic
   (portfolioClaims Unit).problem257RatWeightEventuallyPeriodic
     b m N₀ γ hb hm hγ0 hper hpos
 
+theorem irrational_erdosSupportSeries_of_orthogonalPetalBouquet
+    {A : Set ℕ} (hB : OrthogonalPetalBouquet A)
+    (hselection : SunflowerForcedSlotTailSelection A) :
+    Irrational (erdosSupportSeries 2 A) :=
+  (portfolioClaims Unit).problem257OrthogonalPetalSunflower hB hselection
+
 theorem finite_period_noncollapse_rat_den_interface
     (F : Finset ℕ) (b : ℕ)
     (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)

@@ -7,7 +7,7 @@
 
 **What this is.** Plectis is an AI-assisted research system. This public surface shows one checked frontier for each of eight open Erdős problems. For each programme, read the question, the exact checked object, and the remaining open step before opening the technical registry.
 
-**How verification works.** The 30 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
+**How verification works.** The 31 selected propositions are declared again without proofs. Comparator checks that the proof-bearing modules match those independent statements and a fixed axiom budget. A named altered statement must fail. This checks formal propositions only. It does not assess exposition, citations, intended meaning, novelty, or significance. Technical detail is in the [Comparator interface appendix](#comparator-interface-appendix).
 
 **Programmes.** [#68: Factorial-denominator series](#programme-68) · [#243: Reciprocal-tail rigidity near the Sylvester recurrence](#programme-243) · [#249: Binary totient series](#programme-249) · [#251: Prime-gap dyadic series](#programme-251) · [#257: Reciprocal sums over infinite exponent supports](#programme-257) · [#269: Three-prime running least common multiples](#programme-269) · [#1041: Short connections inside polynomial lemniscates](#programme-1041) · [#1049: Lambert-type series at rational bases](#programme-1049)
 
@@ -384,7 +384,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Contribution families (11)</summary>
+<summary>Contribution families (12)</summary>
 
 Exact registry keys and Comparator routing are listed separately.
 
@@ -423,6 +423,11 @@ Exact registry keys and Comparator routing are listed separately.
   **Boundary.** This does not claim the broader mixed-sign periodic theorem; all coefficient, positivity, base, period, and threshold hypotheses remain explicit.<br>
   *Evidence.* formalised here; novelty unassessed · Lean kernel plus Comparator
 
+- **Orthogonal petal sunflower reduction**<br>
+  A finite-core orthogonal-petal bouquet together with the exact uniform tail-selection predicate composes through the forced-carry certificate consumer to irrationality; the explicit alternating-core, squared-prime-petal witness shows the structural class is non-vacuous, but the selector remains open.<br>
+  **Boundary.** The bouquet and selector hypotheses remain explicit; the selector is not proved, so this is not an unconditional #257 support family.<br>
+  *Evidence.* conditional reduction · Lean kernel plus Comparator plus paper argument
+
 - **Squarefree support**<br>
   Lean checks squarefree incidence and no-go statements; the irrationality conclusion uses an external analytic theorem in the paper.<br>
   **Boundary.** Comparator must not badge the paper-plus-external conclusion.<br>
@@ -446,7 +451,7 @@ Exact registry keys and Comparator routing are listed separately.
 </details>
 
 <details>
-<summary>Technical registry and Comparator routing (11)</summary>
+<summary>Technical registry and Comparator routing (12)</summary>
 
 - <code>finite_period_noncollapse</code><br>
   Comparator: <code>targeted</code>
@@ -468,6 +473,9 @@ Exact registry keys and Comparator routing are listed separately.
 
 - <code>periodic_nonnegative_weight_irrationality</code><br>
   Comparator: <code>targeted_strongest_nonnegative_rational_weight</code>
+
+- <code>orthogonal_petal_sunflower_reduction</code><br>
+  Comparator: <code>targeted_conditional_sunflower_reduction</code>
 
 - <code>squarefree_support</code><br>
   Comparator: <code>not_applicable_to_external_irrationality_input</code>
@@ -770,7 +778,7 @@ Exact registry keys and Comparator routing are listed separately.
 ## Comparator interface appendix
 
 <details>
-<summary>Show all 30 statement-isolated interfaces</summary>
+<summary>Show all 31 statement-isolated interfaces</summary>
 
 **#68: Factorial-denominator series**
 
@@ -901,6 +909,13 @@ Exact registry keys and Comparator routing are listed separately.
   - **Novelty.** unassessed; no priority claim
   - **Boundary.** This is the classical full-support theorem, not universal Erdos #257.
 
+- <code>Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet</code>
+  - **Class.** conditional reduction; novelty unassessed
+  - **Statement.** For every support A carrying the finite-core OrthogonalPetalBouquet structure and satisfying the exact uniform SunflowerForcedSlotTailSelection predicate, the base-2 support-restricted Mersenne series erdosSupportSeries 2 A is irrational.
+  - **Canonical claim status.** `supports_registered_claim_family:orthogonal_petal_sunflower_reduction`
+  - **Novelty.** unassessed; no priority claim
+  - **Boundary.** This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem.
+
 - <code>Erdos249257.ExternalVerification.finite_period_noncollapse_rat_den_interface</code>
   - **Class.** locally proved result; novelty unassessed
   - **Statement.** For a reduced finite Mersenne sum, the base order modulo the denominator equals the support lcm.
@@ -1005,7 +1020,7 @@ Exact registry keys and Comparator routing are listed separately.
 
 Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs; paper deductions, cited theorems, and external computations retain their own evidence classes.
 The `main_results` key in `formalization.yaml` is the format's list of selected executable interfaces. It is not the canonical claim registry and does not make an unregistered declaration a principal result.
-The 30 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
+The 31 exact interfaces cover all eight programmes. Local proof provenance is recorded separately from novelty, which remains unassessed unless a source-fidelity row says otherwise. The trusted challenge contains one proposition-package fixture and imports only `ExternalVerification.Statements` and Mathlib.
 The proof-bearing modules occur only in `ExternalVerification.Solution`.
 CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.
 For a reviewer-run Linux check and the immutable release-asset contract, see `docs/EXTERNAL_VERIFICATION_REPLAY.md`.

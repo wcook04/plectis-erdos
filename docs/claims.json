@@ -11523,6 +11523,18 @@
         "boundary": "This is the classical full-support theorem, not universal Erdos #257."
       },
       {
+        "id": "orthogonal_petal_sunflower_reduction",
+        "problem": 257,
+        "review_family": "orthogonal_petal_sunflower_reduction",
+        "claim_id": "orthogonal_petal_sunflower_reduction",
+        "contribution_class": "conditional reduction; novelty unassessed",
+        "original_declaration": "Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+        "original_source": "Erdos249257/SupportSunflowerDichotomy.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+        "statement": "For every support A carrying the finite-core OrthogonalPetalBouquet structure and satisfying the exact uniform SunflowerForcedSlotTailSelection predicate, the base-2 support-restricted Mersenne series erdosSupportSeries 2 A is irrational.",
+        "boundary": "This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem."
+      },
+      {
         "id": "finite_period_noncollapse",
         "problem": 257,
         "review_family": "finite_period_noncollapse",
@@ -11982,6 +11994,14 @@
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted_strongest_nonnegative_rational_weight",
             "boundary": "This does not claim the broader mixed-sign periodic theorem; all coefficient, positivity, base, period, and threshold hypotheses remain explicit."
+          },
+          {
+            "id": "orthogonal_petal_sunflower_reduction",
+            "contribution_class": "conditional reduction",
+            "summary": "A finite-core orthogonal-petal bouquet together with the exact uniform tail-selection predicate composes through the forced-carry certificate consumer to irrationality; the explicit alternating-core, squared-prime-petal witness shows the structural class is non-vacuous, but the selector remains open.",
+            "evidence_mode": "Lean kernel plus Comparator plus paper argument",
+            "comparator_disposition": "targeted_conditional_sunflower_reduction",
+            "boundary": "The bouquet and selector hypotheses remain explicit; the selector is not proved, so this is not an unconditional #257 support family."
           },
           {
             "id": "squarefree_support",
@@ -15179,6 +15199,34 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "declarations": []
+    },
+    {
+      "id": "orthogonal_petal_sunflower_reduction",
+      "label": "Conditional orthogonal-petal sunflower reduction",
+      "status": "conditional reduction",
+      "statement": "For a finite-core orthogonal-petal bouquet at base 2, the exact uniform tail-selection predicate implies a forced-carry certificate supply and hence irrationality of the associated support series. Lean formalises the carry conversion and an explicit infinite alternating-core, squared-prime-petal bouquet whose elements have three prime factors with multiplicity. The tail-selection predicate itself is not proved, so this does not add an unconditional #257 support family.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.universal_257_all_infinite_supports"
+      ],
+      "paper_label": "res:sunflower",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "sunflowerForcedCarrySupply_of_orthogonalPetalBouquet",
+          "module": "Erdos249257/SupportSunflowerDichotomy.lean",
+          "line": 531
+        },
+        {
+          "name": "irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+          "module": "Erdos249257/SupportSunflowerDichotomy.lean",
+          "line": 540
+        },
+        {
+          "name": "alternatingPrimeSquareSupport_cardFactors_eq_three",
+          "module": "Erdos249257/SupportSunflowerDichotomy.lean",
+          "line": 343
+        }
+      ]
     }
   ],
   "non_claims": [

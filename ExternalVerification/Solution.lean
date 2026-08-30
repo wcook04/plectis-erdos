@@ -9,6 +9,7 @@ import Erdos249257.GcdMomentCalculus
 import Erdos249257.LcmFactorIdealPulseObstruction
 import Erdos249257.RationalSupportCarrySkeleton
 import Erdos249257.CompositeDilationDefect
+import Erdos249257.SupportSunflowerDichotomy
 import Erdos249257.HalfGreedyTwoThirdsBand
 import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
@@ -24,7 +25,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose twenty-nine existing results through the Mathlib-only
+These thin wrappers expose thirty existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -80,6 +81,32 @@ private theorem shiftLinearWeight_eq_source (terms : List (ℕ × ℤ)) :
       rcases term with ⟨h, q⟩
       simp [shiftLinearWeight,
         Erdos249257.TotientTailPeriodKiller.shiftLinearWeight, ih]
+
+private def orthogonalPetalBouquet_to_source {A : Set ℕ}
+    (hB : OrthogonalPetalBouquet A) :
+    Erdos249257.SupportSunflowerDichotomy.OrthogonalPetalBouquet A where
+  Q := hB.Q
+  Q_pos := hB.Q_pos
+  exceptional := hB.exceptional
+  core := hB.core
+  petal := hB.petal
+  exceptional_pos := hB.exceptional_pos
+  exceptional_dvd_Q := hB.exceptional_dvd_Q
+  core_pos := hB.core_pos
+  core_dvd_Q := hB.core_dvd_Q
+  petal_one_lt := hB.petal_one_lt
+  petal_coprime_Q := hB.petal_coprime_Q
+  petal_pairwise := hB.petal_pairwise
+  support_eq := hB.support_eq
+  summable_inv_petal := hB.summable_inv_petal
+
+private theorem sunflowerForcedSlotTailSelection_to_source {A : Set ℕ}
+    (hselection : SunflowerForcedSlotTailSelection A) :
+    Erdos249257.SupportSunflowerDichotomy.SunflowerForcedSlotTailSelection A := by
+  simpa [SunflowerForcedSlotTailSelection,
+    Erdos249257.SupportSunflowerDichotomy.SunflowerForcedSlotTailSelection,
+    supportCoeff, Erdos249257.supportCoeff,
+    binaryCoeffTail, Erdos249257.binaryCoeffTail] using hselection
 
 /-! The statement-only packet owns isomorphic copies of the finite index
 types, because `Statements.lean` must not import proof-bearing source modules.
@@ -219,6 +246,12 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     simpa using
       Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic
         b m N₀ γ hb hm hγ0 hper hpos
+  · intro A hB hselection
+    have hB' := orthogonalPetalBouquet_to_source hB
+    have hselection' := sunflowerForcedSlotTailSelection_to_source hselection
+    simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
+      Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet
+        hB' hselection'
   · intro F b hF h0 hb hcop
     simpa [finiteErdosSum, Erdos249257.finiteErdosSum] using
       Erdos249257.finite_period_noncollapse_rat_den F b hF h0 hb
@@ -425,6 +458,16 @@ theorem irrational_ratWeightSeries_eventuallyPeriodic
   simpa using
     Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic
       b m N₀ γ hb hm hγ0 hper hpos
+
+theorem irrational_erdosSupportSeries_of_orthogonalPetalBouquet
+    {A : Set ℕ} (hB : OrthogonalPetalBouquet A)
+    (hselection : SunflowerForcedSlotTailSelection A) :
+    Irrational (erdosSupportSeries 2 A) := by
+  have hB' := orthogonalPetalBouquet_to_source hB
+  have hselection' := sunflowerForcedSlotTailSelection_to_source hselection
+  simpa [erdosSupportSeries, Erdos249257.erdosSupportSeries] using
+    Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet
+      hB' hselection'
 
 theorem finite_period_noncollapse_rat_den_interface
     (F : Finset ℕ) (b : ℕ)

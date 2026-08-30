@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the twenty-nine-interface
+This module contains only the definitions needed to state the thirty-interface
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -220,6 +220,38 @@ noncomputable def erdosSupportSeries (b : ℕ) (A : Set ℕ) : ℝ :=
 noncomputable def binaryCoeffTail (c : ℕ → ℕ) (N : ℕ) : ℝ :=
   ∑' j : ℕ, (c (N + j + 1) : ℝ) / (2 : ℝ) ^ (j + 1)
 
+/-! ## Orthogonal-petal sunflower conditional interface -/
+
+/-- Statement-side copy of the finite-core orthogonal-petal bouquet data.
+
+This mirrors the proof-bearing source structure without importing it into the
+trusted Challenge.  `Solution` supplies the explicit field-by-field transport
+to the source structure before invoking the landed conditional theorem.
+-/
+structure OrthogonalPetalBouquet (A : Set ℕ) where
+  Q : ℕ
+  Q_pos : 0 < Q
+  exceptional : Finset ℕ
+  core : ℕ → ℕ
+  petal : ℕ → ℕ
+  exceptional_pos : ∀ d ∈ exceptional, 0 < d
+  exceptional_dvd_Q : ∀ d ∈ exceptional, d ∣ Q
+  core_pos : ∀ i, 0 < core i
+  core_dvd_Q : ∀ i, core i ∣ Q
+  petal_one_lt : ∀ i, 1 < petal i
+  petal_coprime_Q : ∀ i, Nat.Coprime (petal i) Q
+  petal_pairwise : ∀ i j, i ≠ j → Nat.Coprime (petal i) (petal j)
+  support_eq :
+    A = (↑exceptional : Set ℕ) ∪ Set.range (fun i => core i * petal i)
+  summable_inv_petal : Summable (fun i => (1 : ℝ) / (petal i : ℝ))
+
+/-- The exact analytic selector left open by the sunflower route. -/
+def SunflowerForcedSlotTailSelection (A : Set ℕ) : Prop :=
+  ∀ K : ℕ, 0 < K → ∃ N : ℕ,
+    (2 ^ K ∣ ∑ r ∈ Finset.Icc 1 K,
+      supportCoeff A (N + r) * 2 ^ (K - r)) ∧
+    binaryCoeffTail (supportCoeff A) (N + K) ≤ 16
+
 noncomputable def compositeDilationDefect (A : Set ℕ) (a x : ℕ) : ℕ :=
   by
     classical
@@ -405,6 +437,11 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       (∀ n : ℕ, N₀ ≤ n → γ (n + m) = γ n) →
       (∃ a : ℕ, N₀ ≤ a ∧ 0 < a ∧ 0 < γ a) →
       Irrational (∑' a : ℕ, ((γ a : ℝ)) / ((b : ℝ) ^ a - 1))
+  problem257OrthogonalPetalSunflower :
+    ∀ {A : Set ℕ},
+      OrthogonalPetalBouquet A →
+      SunflowerForcedSlotTailSelection A →
+      Irrational (erdosSupportSeries 2 A)
   problem257FinitePeriod :
     ∀ (F : Finset ℕ) (b : ℕ)
       (hF : F.Nonempty) (h0 : 0 ∉ F) (hb : 2 ≤ b)

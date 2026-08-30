@@ -374,6 +374,21 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "orthogonal_petal_sunflower_reduction",
+      "problem": 257,
+      "review_family": "orthogonal_petal_sunflower_reduction",
+      "claim_id": "orthogonal_petal_sunflower_reduction",
+      "contribution_class": "conditional reduction; novelty unassessed",
+      "original_declaration": "Erdos249257.SupportSunflowerDichotomy.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+      "original_source": "Erdos249257/SupportSunflowerDichotomy.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_of_orthogonalPetalBouquet",
+      "statement": "For every support A carrying the finite-core OrthogonalPetalBouquet structure and satisfying the exact uniform SunflowerForcedSlotTailSelection predicate, the base-2 support-restricted Mersenne series erdosSupportSeries 2 A is irrational.",
+      "boundary": "This is a conditional reduction: the bouquet structure and uniform tail-selection predicate remain hypotheses; neither is constructed for arbitrary supports, so this does not add an unconditional Erdos #257 support family or solve the universal problem.",
+      "canonical_claim_status": "supports_registered_claim_family:orthogonal_petal_sunflower_reduction",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "finite_period_noncollapse",
       "problem": 257,
       "review_family": "finite_period_noncollapse",
@@ -872,6 +887,14 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted_strongest_nonnegative_rational_weight",
           "boundary": "This does not claim the broader mixed-sign periodic theorem; all coefficient, positivity, base, period, and threshold hypotheses remain explicit."
+        },
+        {
+          "id": "orthogonal_petal_sunflower_reduction",
+          "contribution_class": "conditional reduction",
+          "summary": "A finite-core orthogonal-petal bouquet together with the exact uniform tail-selection predicate composes through the forced-carry certificate consumer to irrationality; the explicit alternating-core, squared-prime-petal witness shows the structural class is non-vacuous, but the selector remains open.",
+          "evidence_mode": "Lean kernel plus Comparator plus paper argument",
+          "comparator_disposition": "targeted_conditional_sunflower_reduction",
+          "boundary": "The bouquet and selector hypotheses remain explicit; the selector is not proved, so this is not an unconditional #257 support family."
         },
         {
           "id": "squarefree_support",
@@ -2176,7 +2199,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:6050cdd5cb92c82de2b558b5c5c440a5abefb854e6e6e5df2719f199f82e62b5",
+    "digest": "sha256:2c0ee22bc660210e3c43bc4dd0a245ed6ceb9f725dda8b8309b980d8c6166c44",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2184,6 +2207,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:10097516ba6fe2bc268f602e90863bc3ab3128f3f435e676b624f0aa510b8ca4",
-  "solution_source_digest": "sha256:d841f5db38b1f275377bd5ab1bd743fcb840f895fb618bb2e4c3f53578d47fae"
+  "config_digest": "sha256:7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
+  "solution_source_digest": "sha256:6f15ed2c956985b04aeb98bdcc07250b4f43bf97c52c3330c8bee3541a02e8e9"
 }
