@@ -20,6 +20,7 @@ PAPER_DIR = ROOT / "paper"
 PAPERS = (
     PAPER_DIR / "erdos249-257-main-paper.tex",
     PAPER_DIR / "erdos-249-binary-totient-series.tex",
+    PAPER_DIR / "erdos-243-reciprocal-tail-rigidity.tex",
     PAPER_DIR / "erdos-251-prime-gap-dyadic-series.tex",
     PAPER_DIR / "erdos-269-three-prime-running-lcm.tex",
 )
