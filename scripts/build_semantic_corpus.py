@@ -47,6 +47,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import stat
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -74,6 +76,90 @@ MD_CENSUS_BEGIN = "<!-- BEGIN semantic_public_census -->"
 MD_CENSUS_END = "<!-- END semantic_public_census -->"
 TEX_COVERAGE_BEGIN = "% BEGIN generated_semantic_coverage_macros"
 TEX_COVERAGE_END = "% END generated_semantic_coverage_macros"
+
+
+class UnsafeSemanticCorpusInput(ValueError):
+    """A semantic-corpus builder path is outside the regular checkout boundary."""
+
+
+def _safe_semantic_path(path: Path) -> Path:
+    """Reject checkout escapes and symbolic-link path components."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeSemanticCorpusInput(
+                f"symlinked semantic-corpus path: {candidate}"
+            )
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeSemanticCorpusInput(
+                f"semantic-corpus path escaped checkout: {candidate}"
+            )
+        current = current.parent
+    return candidate
+
+
+def safe_read_bytes(path: Path) -> bytes:
+    """Read a builder input through a no-follow regular descriptor."""
+    candidate = _safe_semantic_path(path)
+    if not candidate.is_file():
+        raise UnsafeSemanticCorpusInput(
+            f"semantic-corpus path is not a regular file: {candidate}"
+        )
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeSemanticCorpusInput(
+            f"semantic-corpus path could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeSemanticCorpusInput(
+                f"semantic-corpus path is not a regular file: {candidate}"
+            )
+        with os.fdopen(descriptor, "rb") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
+def safe_read_text(path: Path) -> str:
+    """Read a UTF-8 builder input through a no-follow regular descriptor."""
+    return safe_read_bytes(path).decode("utf-8")
+
+
+def safe_write_text(path: Path, text: str) -> None:
+    """Write a generated projection without following a replacement symlink."""
+    candidate = _safe_semantic_path(path)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags, 0o644)
+    except OSError as exc:
+        raise UnsafeSemanticCorpusInput(
+            f"semantic-corpus output could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeSemanticCorpusInput(
+                f"semantic-corpus output is not a regular file: {candidate}"
+            )
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            descriptor = -1
+            stream.write(text)
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
 
 LOGICAL_CLASSES = (
     "unconditional_object_theorem",
@@ -129,7 +215,7 @@ DECLARATION_ROLES = (
 
 INDEXED_PROBLEMS = tuple(
     str(row["erdos_number"])
-    for row in json.loads(PROBLEM_INDEX.read_text(encoding="utf-8")).get(
+    for row in json.loads(safe_read_text(PROBLEM_INDEX)).get(
         "problems", []
     )
 )
@@ -157,7 +243,7 @@ RECURRING_CLASSES = frozenset(
 
 
 def load(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(safe_read_text(path))
 
 
 def zone_files() -> list[Path]:
@@ -196,7 +282,7 @@ def semantic_input_fingerprint() -> str:
     for path in semantic_input_paths():
         digest.update(path.relative_to(ROOT).as_posix().encode("utf-8"))
         digest.update(b"\0")
-        digest.update(path.read_bytes())
+        digest.update(safe_read_bytes(path))
         digest.update(b"\0")
     return f"sha256:{digest.hexdigest()}"
 
@@ -1357,25 +1443,25 @@ def generated_surface_texts(payload: dict) -> dict[Path, str]:
     macros = semantic_coverage_macro_region(payload)
     return {
         RESULTS: replace_generated_region(
-            RESULTS.read_text(encoding="utf-8"),
+            safe_read_text(RESULTS),
             begin=MD_CENSUS_BEGIN,
             end=MD_CENSUS_END,
             body=semantic_public_census_region(census, truth_audit=False),
         ),
         TRUTH_AUDIT: replace_generated_region(
-            TRUTH_AUDIT.read_text(encoding="utf-8"),
+            safe_read_text(TRUTH_AUDIT),
             begin=MD_CENSUS_BEGIN,
             end=MD_CENSUS_END,
             body=semantic_public_census_region(census, truth_audit=True),
         ),
         COLD_CLONE_PAPER: replace_generated_region(
-            COLD_CLONE_PAPER.read_text(encoding="utf-8"),
+            safe_read_text(COLD_CLONE_PAPER),
             begin=TEX_COVERAGE_BEGIN,
             end=TEX_COVERAGE_END,
             body=macros,
         ),
         SYSTEMS_PAPER: replace_generated_region(
-            SYSTEMS_PAPER.read_text(encoding="utf-8"),
+            safe_read_text(SYSTEMS_PAPER),
             begin=TEX_COVERAGE_BEGIN,
             end=TEX_COVERAGE_END,
             body=macros,
@@ -1403,13 +1489,13 @@ def main() -> int:
         if not OUTPUT.is_file():
             print("semantic corpus missing; run python3 scripts/build_semantic_corpus.py")
             return 1
-        if OUTPUT.read_text(encoding="utf-8") != text:
+        if safe_read_text(OUTPUT) != text:
             print("semantic corpus is stale; run python3 scripts/build_semantic_corpus.py")
             return 1
         stale_surfaces = [
             path.relative_to(ROOT).as_posix()
             for path, expected in surfaces.items()
-            if path.read_text(encoding="utf-8") != expected
+            if safe_read_text(path) != expected
         ]
         if stale_surfaces:
             print(
@@ -1425,9 +1511,9 @@ def main() -> int:
         )
         return 0
 
-    OUTPUT.write_text(text, encoding="utf-8")
+    safe_write_text(OUTPUT, text)
     for path, expected in surfaces.items():
-        path.write_text(expected, encoding="utf-8")
+        safe_write_text(path, expected)
     summary = payload["summary"]
     print(
         f"wrote {OUTPUT.relative_to(ROOT)}: {summary['statement_nodes']} statement nodes, "
