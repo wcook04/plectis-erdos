@@ -49,12 +49,12 @@ Links name a checked route and its limit; reductions are not solutions.
 
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — divisibility equivalence; `67` checked, `300000` external, cofinal source open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — normalised vanishing and Lean no-goes exclude bounded/finite negative mass; unbounded mixed signs open.
-- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) · [reasoning](erdos249-totient-reasoning-surface.pdf) — ranks, moments, anti-compression, [visible mass=1](Erdos249257/GcdMomentCalculus.lean); Farey `K=240`; diagonal `t≤82`; strict-jump/foreign-residue reductions; finite LCM [no-go](Erdos249257/LcmFactorIdealPulseObstruction.lean); supply open.
-- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts, tail recurrence, rational shifts, cofinal non-integral shifts; prime-tail bridge open.
-- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) · [reasoning surface](erdos257-mersenne-reasoning-surface.pdf) — full support, finite-period noncollapse, topology, carry criteria; [rational shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity, recurrence, and modular doubling; universal #257 and `1/2`/`1/21` open.
-- [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — maximal powers, logarithmic cells, grouped sums, shell bounds, rank-two obstruction; three-prime problem open.
+- [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit the top edge; finite-LCM [no-go](Erdos249257/LcmFactorIdealPulseObstruction.lean). Supply open.
+- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — summation by parts/tail recurrence; [equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) links a summable term to prime-gap-series irrationality; unbounded gaps prove neither. Bridge open.
+- [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — full support; [shifted-tail states](Erdos249257/RationalSupportCarrySkeleton.lean) obey positivity, recurrence, and doubling; [terminal half frontier](Erdos257/HalfCounterexampleFrontier.lean) would refute universality if constructed. #257, `1/2`, and `1/21` remain open.
+- [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — max powers/log cells/grouped sums/shell bounds/rank-two obstruction; three-prime open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — Newton-flow decay, ray separation, collisions, root retention; an invalid saddle block leaves topology, gluing, and operator-owned proof open.
-- [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor, height regions (including `31/4` powers), Hermite–Padé, determinant, prime-support no-go mechanisms at `3/2` and `7/2`; no irrationality, noncollapse, or remainder control is proved.
+- [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — corridor; `31/4` powers lie in `81/200` height region; Hermite–Padé/determinant/prime-support no-go at `3/2`/`7/2`; no irrationality, noncollapse, or remainder control.
 
 ## What the formal source establishes
 
