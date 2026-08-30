@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import stat
 import tempfile
 from pathlib import Path
 
@@ -43,6 +44,42 @@ def safe_public_file(root: Path, path: Path) -> Path:
         current = current.parent
     require(candidate.is_file(), f"public root-closure path is not a regular file: {candidate}")
     return candidate
+
+
+def safe_public_bytes(root: Path, path: Path) -> bytes:
+    """Read one public file through a no-follow descriptor."""
+    candidate = safe_public_file(root, path)
+    flags = os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise AssertionError(
+            f"public root-closure path could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        metadata = os.fstat(descriptor)
+        require(
+            stat.S_ISREG(metadata.st_mode),
+            f"public root-closure path is not a regular file: {candidate}",
+        )
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                return b"".join(chunks)
+            chunks.append(chunk)
+    finally:
+        os.close(descriptor)
+
+
+def safe_public_text(root: Path, path: Path) -> str:
+    """Decode one descriptor-bound public file as UTF-8."""
+    try:
+        return safe_public_bytes(root, path).decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise AssertionError(f"public root-closure file is not UTF-8: {path}") from exc
 
 
 def registry_errors(
@@ -138,6 +175,18 @@ def check_fixtures() -> None:
             pass
         else:
             require(False, "root-closure source guard followed a symlinked parent")
+
+    if hasattr(os, "mkfifo"):
+        with tempfile.TemporaryDirectory(prefix="root-closure-fifo-") as raw:
+            root = Path(raw)
+            fifo = root / "Erdos249257.lean"
+            os.mkfifo(fifo)
+            try:
+                safe_public_bytes(root, fifo)
+            except AssertionError as exc:
+                require("regular file" in str(exc), str(exc))
+            else:
+                require(False, "root-closure source guard opened a FIFO")
 
     connected = [
         {
@@ -275,7 +324,7 @@ def check_fixtures() -> None:
 def main() -> int:
     check_fixtures()
     claims = json.loads(
-        safe_public_file(ROOT, ROOT / "docs" / "claims.json").read_text(encoding="utf-8")
+        safe_public_text(ROOT, ROOT / "docs" / "claims.json")
     )
     graph = claims["machine_readable_paper"]["module_graph"]
     require(
@@ -291,7 +340,7 @@ def main() -> int:
         imported
         for root in roots
         for imported in IMPORT_RE.findall(
-            safe_public_file(ROOT, ROOT / root).read_text(encoding="utf-8")
+            safe_public_text(ROOT, ROOT / root)
         )
     ]
     imports_by_id = {
