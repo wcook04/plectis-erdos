@@ -158,6 +158,14 @@ sigil, and any bound route-memory context. The generated
 `docs/module_synopsis_index.json` supplies the header synopsis used by this
 route; it is an index, not proof or claim authority.
 
+For exact statement-identity comparison with the upstream Formal Conjectures
+corpus, use the generated
+[`docs/FORMAL_CONJECTURES_CROSSWALK.md`](docs/FORMAL_CONJECTURES_CROSSWALK.md).
+Each of the eight problem sections binds the pinned upstream declaration,
+source path, byte hash, and proof-status boundary to the matching canonical
+local problem route, so a reader can return from external prior art to local
+evidence without guessing a theorem name.
+
 ### Two libraries, two levels of claim
 
 The repository holds two Lean roots and they are not interchangeable.
