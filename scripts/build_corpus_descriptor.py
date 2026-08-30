@@ -302,19 +302,12 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "## Mathematical programmes",
+            "## Mathematical programme routes",
             "",
-            "These are reading routes through the checked corpus, not extra claims.",
-            "Each route states its mathematical focus and exact public claim ceiling.",
-            "",
+            "Programme routes are bounded reading handles, not extra claims; their",
+            "exact focus and claim ceiling are returned by the canonical route packet.",
         ]
     )
-    # Every ceiling is a full sentence, so a two-column table would be a stack of
-    # paragraphs wearing a grid. The same route id, title, and ceiling read as a
-    # list, in the shape the reading routes below already use.
-    for route in orientation["mathematical_programmes"]:
-        lines.append(f"- **{route['title']}** (`{route['id']}`)")
-        lines.append(f"  - Ceiling: {route['claim_ceiling']}")
     lines.extend(
         [
             "",
@@ -327,13 +320,16 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "## Publication-family census",
+            "## Problem and family routes",
             "",
-            "The canonical overview enumerates 21 distinct families, including",
-            "supporting and source-only results: `python3 scripts/query_corpus.py --overview`.",
-            "Open one with `python3 scripts/query_corpus.py --publication-family <family_id>`.",
-            "Its packet returns claims, source route, and resume handoff; order follows",
-            "publication architecture, not theorem count or novelty.",
+            "Each of the eight public problem routes returns every reviewed result",
+            "family, exact Lean declaration/source handles where supplied, the paper",
+            "record, and exact open obligations:",
+            "`python3 scripts/query_corpus.py --route erdos_<problem_number>`.",
+            "For a dedicated paper's anchor census use",
+            "`python3 scripts/query_corpus.py --paper-source <paper_source>`, then",
+            "follow each exact `--paper-anchor` handle. Family order is registry order,",
+            "not theorem count or novelty.",
         ]
     )
     lines.extend(["", "## Principal claim routes", ""])
@@ -985,7 +981,7 @@ def main() -> int:
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
     atlas = json.loads(ATLAS_PATH.read_text(encoding="utf-8"))
     orientation = build_orientation(claims, atlas)
-    expected = render()
+    expected = render() if not args.orientation_only else ""
     # This is a machine first-read packet with a strict byte ceiling. Compact
     # JSON preserves the complete object while keeping formatting whitespace
     # from crowding out newly registered routes or papers.
@@ -1015,13 +1011,13 @@ def main() -> int:
     descriptor_bytes = len(expected.encode("utf-8"))
     orientation_bytes = len(expected_orientation_json.encode("utf-8"))
     orientation_markdown_bytes = len(expected_orientation_markdown.encode("utf-8"))
-    if descriptor_bytes > DESCRIPTOR_MAX_BYTES:
+    if not args.orientation_only and descriptor_bytes > DESCRIPTOR_MAX_BYTES:
         print(
             "corpus descriptor exceeds the registration-envelope budget: "
             f"{descriptor_bytes:,} > {DESCRIPTOR_MAX_BYTES:,} bytes"
         )
         return 1
-    if orientation_bytes > ORIENTATION_MAX_BYTES:
+    if not args.orientation_only and orientation_bytes > ORIENTATION_MAX_BYTES:
         print(
             "orientation exceeds the bounded first-read budget: "
             f"{orientation_bytes:,} > {ORIENTATION_MAX_BYTES:,} bytes"
@@ -1090,7 +1086,11 @@ def main() -> int:
     print(
         "wrote "
         + (", ".join(changed) if changed else "no changed projections")
-        + f"; descriptor bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
+        + (
+            f"; descriptor bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
+            if not args.orientation_only
+            else ""
+        )
     )
     return 0
 

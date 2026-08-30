@@ -36,11 +36,17 @@ The authored prior-art record, not this table, is the source for antecedents.
 
 ## Exact open boundary
 
+- `remaining_open.erdos_68_irrationality` — Prove that S = ∑_{n≥2} 1/(n! − 1) is irrational.
 - `remaining_open.erdos_249_irrationality` — Prove that S = ∑ φ(n)/2ⁿ is irrational, with no bound on a possible rational denominator.
+- `remaining_open.erdos_251_irrationality` — Prove that Π = ∑_{n≥1} p_n/2ⁿ is irrational; the exact tail-shift equivalence and prime-gap constraints do not supply the required cofinal escape.
 - `remaining_open.unbounded_certificate_supply` — Produce certified non-integrality witnesses at unbounded parameters. A sufficient one-parameter form is to produce them along the lcm diagonal.
 - `remaining_open.half_value_membership` — Decide whether 1/2 lies in the Mersenne achievement set. Yes refutes universal #257; no closes only this route.
 - `remaining_open.twenty_one_permanent_affine_supercapacity` — Decide the exact 1/21 branch: equivalently, exclude the fatal/cofinite/aligned branch, contradict its eventual permanent affine-supercapacity recurrence, prove cofinally bounded scaled greedy remainders, or force an unbounded sequence of closed canonical quotient rows. A positive membership result would refute universal #257; no such producer is proved.
 - `remaining_open.universal_257_all_infinite_supports` — Prove irrationality for every infinite support A, not only the named support families formalised here.
+- `remaining_open.erdos_269_three_prime_irrationality` — Determine irrationality of the running-LCM reciprocal sum for finite prime sets of size at least three; the rationality-to-carry bridge and cofinal window escape remain open.
+- `remaining_open.erdos_1041_lemniscate_connection` — Find or refute the required short curve between two roots inside the open lemniscate; finite ray separation and perturbative root retention do not supply the global topology and length argument.
+- `remaining_open.erdos_1049_irrationality` — Determine whether F(t) = ∑_{n≥1} 1/(tⁿ − 1) is irrational for every rational t > 1; the checked base-3/2 exclusions and exact tail recurrence do not decide the endpoint or the universal assertion.
+- `remaining_open.erdos_243_eventual_recurrence` — Prove the Erdős #243 assertion: if 1 ≤ a₁ < a₂ < ··· has aₙ/aₙ₋₁² → 1 and rational reciprocal sum, then aₙ = aₙ₋₁² − aₙ₋₁ + 1 eventually; the checked barrier does not settle the mixed-sign unbounded regime.
 
 ## Where the substance is
 
@@ -70,44 +76,26 @@ counted as formal source, never as separate mathematical claims.
 The exhaustive declaration and import index is
 [`docs/declaration_atlas.json`](declaration_atlas.json).
 
-## Mathematical programmes
+## Mathematical programme routes
 
-These are reading routes through the checked corpus, not extra claims.
-Each route states its mathematical focus and exact public claim ceiling.
-
-- **Achievement-set geometry and the rational-target seams** (`erdos257_half_story`)
-  - Ceiling: Exact geometry and reductions for the 1/2 and 1/21 branches; neither target membership nor universal Erdős #257 is proved.
-- **#249 certificate and harmonic interface** (`erdos249_certificate_story`)
-  - Ceiling: The certificate formulation is exact and finite instances are checked; the unbounded certificate supply and irrationality of S remain open.
-- **Classical and structured support irrationality** (`structured_support_families`)
-  - Ceiling: These are structured families, coefficient classes, and a conditional bouquet reduction; arbitrary infinite supports in universal Erdős #257 remain open.
-- **#249 diagonal arithmetic and fresh-loss interfaces** (`erdos249_diagonal_arithmetic`)
-  - Ceiling: Each interface sharpens or re-expresses the same supply problem; no unbounded avoidance, slack, or separated-projection supply is proved.
-- **Boolean Möbius carry and global rationality constraints** (`boolean_mobius_constraints`)
-  - Ceiling: These are exact characterisations and necessary consequences of rationality; they do not contradict every hypothetical rational value or settle universal Erdős #257.
-- **Transport, curvature, phase separation, and no-go results** (`transport_curvature_programme`)
-  - Ceiling: The consumers and countermodels are exact, but no cofinal curvature, transport, phase-separation, or anti-reconstruction producer is proved.
-- **Mersenne–Lambert identities and obstruction interfaces** (`lambert_obstruction_interfaces`)
-  - Ceiling: These are exact identities, obstruction theorems, and one conditional rank consequence; they do not form an irrationality criterion for S.
-- **Coprimality probability, gcd moments, and Stern–Brocot geometry** (`probabilistic_gcd_geometry`)
-  - Ceiling: Exact identities, denominator transfer, convergence, and combinatorial stability only; no irrationality or novelty claim.
-- **Half-carry compactness, windows, seams, and finite propagation** (`half_carry_compactness_programme`)
-  - Ceiling: The closure implications, local propagation laws, and bounded stages are exact; no cofinal or coherent unbounded window family is proved, so neither half-membership nor universal Erdős #257 follows.
-- **Denominator, CRT, moment, and gauge obstructions** (`arithmetic_obstruction_interfaces`)
-  - Ceiling: These are exact arithmetic interfaces, finite mechanisms, and obstruction theorems; they do not supply an unbounded certificate family or an irrationality criterion for the totient constant.
+Programme routes are bounded reading handles, not extra claims; their
+exact focus and claim ceiling are returned by the canonical route packet.
 
 Open one programme with
 `python3 scripts/query_corpus.py --route <programme_route_id>`.
 The packet returns the ordered claim handles, exact open boundary, related
 programmes, and source owners without loading the exhaustive graph.
 
-## Publication-family census
+## Problem and family routes
 
-The canonical overview enumerates 21 distinct families, including
-supporting and source-only results: `python3 scripts/query_corpus.py --overview`.
-Open one with `python3 scripts/query_corpus.py --publication-family <family_id>`.
-Its packet returns claims, source route, and resume handoff; order follows
-publication architecture, not theorem count or novelty.
+Each of the eight public problem routes returns every reviewed result
+family, exact Lean declaration/source handles where supplied, the paper
+record, and exact open obligations:
+`python3 scripts/query_corpus.py --route erdos_<problem_number>`.
+For a dedicated paper's anchor census use
+`python3 scripts/query_corpus.py --paper-source <paper_source>`, then
+follow each exact `--paper-anchor` handle. Family order is registry order,
+not theorem count or novelty.
 
 ## Principal claim routes
 
@@ -122,7 +110,7 @@ publication architecture, not theorem count or novelty.
 | `certified_kill_instances` | verified finite instance | `res:deposits` |
 | `diagonal_pincer_reduction` | conditional reduction | `res:fulltargetavoidance` |
 | `adelic_height_obstruction` | proved here | `res:adelic` |
-| `all_base_totient_kernel_index_reduction` | proved here | `None` |
+| `all_base_totient_kernel_index_reduction` | proved here | `thm:kkernelrank` |
 | `sublog_zero_windows` | proved here | `res:sublog` |
 | `greedy_achievement_geometry` | formalised here | `res:greedy` |
 
