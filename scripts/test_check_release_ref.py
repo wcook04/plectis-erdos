@@ -79,6 +79,35 @@ def test_receipt_destination_boundary() -> None:
         else:
             raise AssertionError("receipt writer followed a symlinked parent")
 
+        private_tmp = Path("/private/tmp")
+        temporary_root = str(private_tmp) if private_tmp.is_dir() else None
+        with tempfile.TemporaryDirectory(
+            prefix="release-ref-race-", dir=temporary_root
+        ) as race_raw:
+            raced_receipt = Path(race_raw) / "raced-receipt.json"
+            raced_receipt.write_text("placeholder\n", encoding="utf-8")
+            original_open = check_release_ref.os.open
+
+            def replace_with_fifo(path: Path, flags: int, mode: int = 0o777) -> int:
+                if Path(path) == raced_receipt:
+                    raced_receipt.unlink()
+                    os.mkfifo(raced_receipt)
+                return original_open(path, flags, mode)
+
+            with patch.object(
+                check_release_ref.os, "open", side_effect=replace_with_fifo
+            ):
+                try:
+                    check_release_ref.write_receipt(
+                        raced_receipt, {"status": "blocked"}
+                    )
+                except check_release_ref.SnapshotError as error:
+                    require("safely" in str(error), str(error))
+                else:
+                    raise AssertionError(
+                        "receipt writer opened a final path replaced by a FIFO"
+                    )
+
 
 def test_singleflight_worker_flag_is_accepted() -> None:
     args = check_release_ref.build_parser().parse_args(

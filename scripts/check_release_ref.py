@@ -16,6 +16,7 @@ import argparse
 import json
 import os
 import re
+import stat
 import subprocess
 import tempfile
 import time
@@ -424,9 +425,29 @@ def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
     payload = json.dumps(receipt, ensure_ascii=False, indent=2) + "\n"
     flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
     flags |= getattr(os, "O_NOFOLLOW", 0)
-    descriptor = os.open(path, flags, 0o644)
-    with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
-        stream.write(payload)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    try:
+        descriptor = os.open(path, flags, 0o644)
+    except OSError as exc:
+        raise SnapshotError(
+            f"receipt destination could not be opened safely: {path}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise SnapshotError(f"receipt destination is not a regular file: {path}")
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            descriptor = -1
+            stream.write(payload)
+            stream.flush()
+            os.fsync(stream.fileno())
+    except OSError as exc:
+        raise SnapshotError(
+            f"receipt destination could not be written safely: {path}"
+        ) from exc
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
 
 
 def safe_receipt_path(path: Path) -> Path:
