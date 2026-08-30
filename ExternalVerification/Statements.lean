@@ -18,7 +18,7 @@ import Mathlib.NumberTheory.Real.Irrational
 /-!
 # External-verification statement vocabulary
 
-This module contains only the definitions needed to state the thirty-interface
+This module contains only the definitions needed to state the configured
 external-verification packet.  It imports Mathlib, not the proof-bearing
 `Erdos249257` modules.  `ExternalVerification.Challenge` and
 `ExternalVerification.Solution` therefore share byte-identical statement
@@ -324,6 +324,43 @@ def actualLcmHeight (a : ℕ) : ℕ :=
 noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
   totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
 
+/-! ## Quantitative actual-LCM orbit separation -/
+
+def diagonalWindowIncrement (t s : ℕ) : ℤ :=
+  (Nat.totient (2 * periodLcm t + s) : ℤ) -
+    (Nat.totient (periodLcm t + s) : ℤ)
+
+def diagonalAdjacentSuffixRawBlock (t J m : ℕ) : ℤ :=
+  (∑ r ∈ Finset.range m,
+      diagonalWindowIncrement t (J + 1 + r) * 2 ^ (m - 1 - r)) +
+    diagonalWindowIncrement t (J + m + 1)
+
+def canonicalAdjacentSuffixDepth (t : ℕ) : ℕ :=
+  Nat.log2 (periodLcm t) + 10
+
+def oddGuardedCanonicalAdjacentSuffixDepth (t : ℕ) : ℕ :=
+  let m := canonicalAdjacentSuffixDepth t
+  if Even m then m + 1 else m
+
+noncomputable def actualLcmRawApprox (a q : ℕ) : ℝ :=
+  (diagonalAdjacentSuffixRawBlock (2 ^ a) 0 (2 * q + 1) : ℝ) /
+    (2 : ℝ) ^ (2 * q + 1)
+
+noncomputable def actualLcmRawErrorRadius (a q : ℕ) : ℝ :=
+  ((2 * actualLcmHeight a + 2 * q + 3 : ℕ) : ℝ) /
+    (2 : ℝ) ^ (2 * q + 1)
+
+/-- Cofinal quantitative anti-concentration of the actual LCM tail orbit at
+the canonical odd ranks.  The supply is the explicit open arithmetic input;
+the downstream irrationality implication is theorem transport, not a claim
+that this supply has been constructed. -/
+def PowerTwoActualLcmOrbitSeparationSupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a q : ℕ, max 2 a₀ ≤ a ∧
+    oddGuardedCanonicalAdjacentSuffixDepth (2 ^ a) = 2 * q + 1 ∧
+    ∀ z : ℤ,
+      (1 : ℝ) / 32 + actualLcmRawErrorRadius a q ≤
+        |actualLcmTailOrbit a - (z : ℝ)|
+
 /-- Cofinal non-integrality of the actual power-two LCM-diagonal orbit. -/
 def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
   ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
@@ -457,6 +494,9 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
       PowerTwoActualLcmOrbitNonintegralitySupply
   problem249ActualLcmOrbit_of_supply :
     PowerTwoActualLcmOrbitNonintegralitySupply →
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
+  problem249ActualLcmOrbitSeparation :
+    PowerTwoActualLcmOrbitSeparationSupply →
       Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :

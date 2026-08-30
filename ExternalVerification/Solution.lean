@@ -15,6 +15,7 @@ import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
 import Erdos249257.TotientActualLcmOrbitNonintegrality
+import Erdos249257.TotientActualLcmOrbitSeparation
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
@@ -26,7 +27,7 @@ import ErdosProblems.Erdos1049.RationalBaseLambert
 /-!
 # Solutions for the external Comparator packet
 
-These thin wrappers expose thirty existing results through the Mathlib-only
+These thin wrappers expose the configured existing results through the Mathlib-only
 statement vocabulary in `ExternalVerification.Statements`.  They add no new
 mathematical claim: each proof is a definitional transport from the declaration
 owned by the public claim registry.
@@ -85,6 +86,55 @@ private theorem actualLcmOrbitSupply_eq_source :
     refine ⟨a, ha, ?_⟩
     rw [actualLcmTailOrbit_eq_source]
     exact hnon
+
+private theorem actualLcmRawApprox_eq_source (a q : ℕ) :
+    actualLcmRawApprox a q =
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmRawApprox a q := by
+  simp [actualLcmRawApprox,
+    Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmRawApprox,
+    diagonalAdjacentSuffixRawBlock,
+    Erdos249257.DiagonalFreshLossBridge.diagonalAdjacentSuffixRawBlock,
+    diagonalWindowIncrement,
+    Erdos249257.DiagonalFreshLossBridge.diagonalWindowIncrement,
+    actualLcmHeight_eq_source, periodLcm_eq_source]
+
+private theorem actualLcmRawErrorRadius_eq_source (a q : ℕ) :
+    actualLcmRawErrorRadius a q =
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmRawErrorRadius a q := by
+  simp [actualLcmRawErrorRadius,
+    Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmRawErrorRadius,
+    actualLcmHeight_eq_source, periodLcm_eq_source]
+
+private theorem oddGuardedCanonicalAdjacentSuffixDepth_eq_source (t : ℕ) :
+    oddGuardedCanonicalAdjacentSuffixDepth t =
+      Erdos249257.DiagonalFreshLossBridge.oddGuardedCanonicalAdjacentSuffixDepth t := by
+  simp [oddGuardedCanonicalAdjacentSuffixDepth,
+    Erdos249257.DiagonalFreshLossBridge.oddGuardedCanonicalAdjacentSuffixDepth,
+    canonicalAdjacentSuffixDepth,
+    Erdos249257.DiagonalFreshLossBridge.canonicalAdjacentSuffixDepth,
+    periodLcm_eq_source]
+
+private theorem actualLcmOrbitSeparationSupply_eq_source :
+    PowerTwoActualLcmOrbitSeparationSupply =
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmOrbitSeparationSupply := by
+  apply propext
+  constructor
+  · intro h a₀
+    obtain ⟨a, q, ha, hdepth, hsep⟩ := h a₀
+    refine ⟨a, q, ha, ?_, ?_⟩
+    · rw [oddGuardedCanonicalAdjacentSuffixDepth_eq_source] at hdepth
+      exact hdepth
+    · rw [actualLcmRawErrorRadius_eq_source,
+        actualLcmTailOrbit_eq_source] at hsep
+      exact hsep
+  · intro h a₀
+    obtain ⟨a, q, ha, hdepth, hsep⟩ := h a₀
+    refine ⟨a, q, ha, ?_, ?_⟩
+    · rw [oddGuardedCanonicalAdjacentSuffixDepth_eq_source]
+      exact hdepth
+    · rw [actualLcmRawErrorRadius_eq_source,
+        actualLcmTailOrbit_eq_source]
+      exact hsep
 
 private theorem dyadicClearedPrefix_eq_source
     (a : ℕ → ℤ) (n L : ℕ) :
@@ -265,6 +315,11 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
     apply
       Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply
     rw [← actualLcmOrbitSupply_eq_source]
+    exact hsupply
+  · intro hsupply
+    apply
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply
+    rw [← actualLcmOrbitSeparationSupply_eq_source]
     exact hsupply
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,

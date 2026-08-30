@@ -156,6 +156,11 @@ theorem irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
   (portfolioClaims Unit).problem249ActualLcmOrbit_of_supply hsupply
 
+theorem irrational_totientSeries_of_actualLcmOrbitSeparationSupply
+    (hsupply : PowerTwoActualLcmOrbitSeparationSupply) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  (portfolioClaims Unit).problem249ActualLcmOrbitSeparation hsupply
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 
