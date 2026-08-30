@@ -369,6 +369,24 @@ def check_claim_gate(sessions_root: Path, tmp: Path) -> None:
             refused_symlink = "symbolic links" in str(error)
         assert refused_symlink, "probe followed a symlinked source path"
         assert not (sessions_root / "t_claims" / "probes" / "m004.lean").exists()
+        invalid = tmp / "invalid-utf8.lean"
+        invalid.write_bytes(b"\xff\xfe\n")
+        refused_invalid_utf8 = False
+        try:
+            _run(
+                sessions_root,
+                [
+                    "probe",
+                    "--session",
+                    "t_claims",
+                    "--file",
+                    str(invalid),
+                ],
+            )
+        except SystemExit as error:
+            refused_invalid_utf8 = "not readable UTF-8" in str(error)
+        assert refused_invalid_utf8, "probe accepted invalid UTF-8 source"
+        assert not (sessions_root / "t_claims" / "probes" / "m004.lean").exists()
         claim = _run(
             sessions_root,
             [

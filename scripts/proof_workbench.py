@@ -314,7 +314,12 @@ def cmd_probe(args: argparse.Namespace, root: Path) -> dict[str, Any]:
         )
     if not source_path.is_file():
         raise SystemExit(f"probe input not found: {source_path}")
-    source = source_path.read_text(encoding="utf-8")
+    try:
+        source = source_path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        raise SystemExit(
+            f"probe input is not readable UTF-8: {source_path}: {exc}"
+        ) from exc
     move_id = session.next_move_id()
     stored = session.probes_dir / f"{move_id}.lean"
     shutil.copyfile(source_path, stored)
