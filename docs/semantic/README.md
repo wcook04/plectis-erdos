@@ -132,6 +132,12 @@ the #249 `probabilistic_gcd_geometry` family returns through that matrix to
 the exact gcd-moment and Stern–Brocot declarations, paper anchors, and the
 still-open irrationality boundary.
 
+For exact external statement identity, use the generated [Formal Conjectures
+crosswalk](../FORMAL_CONJECTURES_CROSSWALK.md). Its eight rows bind the pinned
+upstream declaration and source hash to the matching local problem route, so a
+semantic interpretation can be checked against primary statement evidence
+before it is treated as a local result.
+
 For module-level traversal, use
 `python3 scripts/query_corpus.py --module <module_path_or_sigil>`. A source
 path selects the exact Lean module; a paper sigil selects the same module from
