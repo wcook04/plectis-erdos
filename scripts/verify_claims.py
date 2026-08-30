@@ -61,15 +61,15 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import shutil
 import subprocess
 import sys
 import textwrap
-from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
+
+import validation_singleflight as singleflight
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = REPO_ROOT / "docs" / "claims.json"
@@ -131,15 +131,11 @@ OPTIONAL_TOOL_GATES = {"check_metadata.py": "cffconvert"}
 PAPER_SUBDIR = "paper"
 LABEL_PATTERN = re.compile(r"\\label\{([^}]+)\}")
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
-SANITIZED_GIT_ENVIRONMENT_KEYS = (
-    "GIT_DIR",
-    "GIT_WORK_TREE",
-    "GIT_INDEX_FILE",
-    "GIT_NAMESPACE",
-    "GIT_REPLACE_REF_BASE",
-    "GIT_OBJECT_DIRECTORY",
-    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
-    "GIT_COMMON_DIR",
+SANITIZED_GIT_ENVIRONMENT_KEYS = tuple(
+    sorted(singleflight.GIT_CONTEXT_KEYS | singleflight.GIT_PROCESS_CONTROL_KEYS)
+)
+SANITIZED_RUNTIME_ENVIRONMENT_KEYS = tuple(
+    sorted(singleflight.PYTHON_CONTEXT_KEYS | singleflight.LOCALE_KEYS)
 )
 
 # `follow_claim` scans the paper sources once per call unless a caller that is
@@ -147,12 +143,9 @@ SANITIZED_GIT_ENVIRONMENT_KEYS = (
 _BUILD_INDEX = object()
 
 
-def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
-    """Remove inherited Git selectors before any claim-verification subprocess."""
-    environment = dict(os.environ if base is None else base)
-    for key in SANITIZED_GIT_ENVIRONMENT_KEYS:
-        environment.pop(key, None)
-    return environment
+def clean_environment() -> dict[str, str]:
+    """Use the canonical isolated environment for claim-verification children."""
+    return singleflight.command_environment()
 
 
 def run(
@@ -220,6 +213,11 @@ def describe_environment(claims: dict[str, Any]) -> dict[str, Any]:
         "subprocess_environment": {
             "contract": ENVIRONMENT_CONTRACT,
             "sanitized_git_selectors": list(SANITIZED_GIT_ENVIRONMENT_KEYS),
+            "sanitized_runtime_selectors": list(SANITIZED_RUNTIME_ENVIRONMENT_KEYS),
+            "canonical_values": {
+                key: singleflight.command_environment()[key]
+                for key in ("PATH", "LC_ALL", "LANG", "LANGUAGE")
+            },
         },
         "head": git_output("rev-parse", "HEAD"),
         "missing_optional_tools": sorted(

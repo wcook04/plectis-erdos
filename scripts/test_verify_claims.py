@@ -129,12 +129,33 @@ def main() -> int:
             "GIT_OBJECT_DIRECTORY": "/private/wrong-objects",
             "GIT_ALTERNATE_OBJECT_DIRECTORIES": "/private/wrong-alternates",
             "GIT_COMMON_DIR": "/private/wrong-common",
+            "PYTHONHOME": "/private/wrong-python-home",
+            "PYTHONPATH": "/private/wrong-python-path",
+            "PYTHONOPTIMIZE": "2",
+            "LC_ALL": "C",
+            "LANG": "C",
+            "LANGUAGE": "C",
+            "PATH": "/private/wrong-bin",
         }
         with patch.dict(os.environ, hostile_environment, clear=False):
             sanitized = verify_claims.clean_environment()
             require(
-                all(key not in sanitized for key in hostile_environment),
-                "claims verifier retained a hostile Git selector",
+                all(
+                    key not in sanitized
+                    for key in hostile_environment
+                    if key not in {"LC_ALL", "LANG", "LANGUAGE", "PATH"}
+                ),
+                "claims verifier retained a hostile selector",
+            )
+            require(
+                sanitized["PATH"] == os.defpath,
+                "claims verifier did not pin PATH",
+            )
+            require(
+                sanitized["LC_ALL"] == "C.UTF-8"
+                and sanitized["LANG"] == "C.UTF-8"
+                and sanitized["LANGUAGE"] == "C.UTF-8",
+                "claims verifier did not pin locale",
             )
             require(
                 verify_claims.describe_environment({})["subprocess_environment"]
@@ -143,6 +164,15 @@ def main() -> int:
                     "sanitized_git_selectors": list(
                         verify_claims.SANITIZED_GIT_ENVIRONMENT_KEYS
                     ),
+                    "sanitized_runtime_selectors": list(
+                        verify_claims.SANITIZED_RUNTIME_ENVIRONMENT_KEYS
+                    ),
+                    "canonical_values": {
+                        "PATH": os.defpath,
+                        "LC_ALL": "C.UTF-8",
+                        "LANG": "C.UTF-8",
+                        "LANGUAGE": "C.UTF-8",
+                    },
                 },
                 "claims verifier environment receipt drifted",
             )
@@ -151,15 +181,23 @@ def main() -> int:
                     sys.executable,
                     "-c",
                     "import json, os; print(json.dumps({k: os.environ[k] for k in "
-                    "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE') "
+                    "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE', "
+                    "'PYTHONPATH', 'PYTHONHOME', 'PYTHONOPTIMIZE', 'LC_ALL', "
+                    "'LANG', 'LANGUAGE', 'PATH') "
                     "if k in os.environ}))",
                 ],
                 cwd=root,
             )
             require(child.returncode == 0, "claims verifier child process failed")
             require(
-                json.loads(child.stdout) == {},
-                "claims verifier child inherited a hostile Git selector",
+                json.loads(child.stdout)
+                == {
+                    "LC_ALL": "C.UTF-8",
+                    "LANG": "C.UTF-8",
+                    "LANGUAGE": "C.UTF-8",
+                    "PATH": os.defpath,
+                },
+                "claims verifier child inherited ambient execution state",
             )
 
         # A wrapped declaration recorded at its keyword line must resolve, and a
