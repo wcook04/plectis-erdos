@@ -1056,6 +1056,56 @@ fatal gap and is therefore semi-decidable, whereas membership is an infinite
 condition.  Computing further can only raise a lower bound on where a fatal
 gap could occur; it cannot establish survival.
 
+The next local obstruction is sharper than a numerical search.  Suppose a
+take occurs at rank $b$, the next take at rank $c>b+1$, and put
+$q=2^b-1$ and $m=2^{c-1}$.  If $R$ is the reciprocal of the residual just
+before the first take, then the final intervening skip is dyadically unsafe
+exactly when
+
+\[
+  \frac{q(m-1)}{q+m-1}<R<\frac{qm}{q+m}.
+\]
+
+The interval has the exact width
+$q^2/((q+m)(q+m-1))$.  For a single intervening skip, $c=b+2$ and
+$m=2q+2$, giving the two-thirds band
+
+\[
+  \frac{q(2q+1)}{3q+1}<R<\frac{2q(q+1)}{3q+2},
+\]
+
+whose width is below $1/9$.  Thus the band is an exact localization of one
+greedy danger, not a claim that the actual orbit enters it.
+
+\begin{theorem}[the sharp local two-adic obstruction]
+\label{res:twothirdsband}
+Let $p,D,q$ be positive odd integers.  If
+
+\[
+ q(2q+1)p<2D(3q+1),
+ \qquad
+ 2D(3q+2)<2pq(q+1),
+\]
+
+then $p\ge7$.  In particular, the odd numerator classes $p=1,3,5$ cannot
+occupy the cleared two-thirds band.  The bound is sharp for these local
+hypotheses: odd triples with $p=7$ do occur in the band.
+\end{theorem}
+
+\noindent The hard step is genuinely $2$-adic.  The band defect
+$\Delta=6D-2pq$ is positive and divisible by $4$ when $p,D,q$ are odd, so
+$\Delta\ge4$; combining that gap with the band inequalities forces $p>6$.
+The exact formal boundaries are the general localization
+\mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{88}{postTakeUnsafeAt_iff_band}{general band localization},
+the single-skip equivalence
+\mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{127}{singletonUnsafe_iff_twoThirdsBand}{two-thirds band},
+and the sharp numerator conclusion
+\mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{231}{seven_le_of_intBand_odd}{odd numerator bound}.
+Integral reciprocal states are excluded from the same band by
+\mword{Erdos249257/HalfGreedyTwoThirdsBand.lean}{185}{not_twoThirdsBand_of_int}{integral safety}.
+This is a one-step local no-go result: it neither proves that the half-greedy
+orbit reaches or avoids the band nor settles half-membership.
+
 Two further conditional routes now sharpen the boundary around this half-value
 problem.  They are logically distinct from the terminal scaled-vanishing
 route: one seeks irrationality from a structured support, while the other
