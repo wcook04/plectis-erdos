@@ -164,6 +164,8 @@ class LeanFastBuildTests(unittest.TestCase):
             checkout_step,
         )
         self.assertIn("persist-credentials: false", checkout_step)
+        self.assertIn("runs-on: ubuntu-24.04", workflow)
+        self.assertNotIn("runs-on: ubuntu-latest", workflow)
 
     def test_ci_does_not_repeat_required_pr_checks_after_merge(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
