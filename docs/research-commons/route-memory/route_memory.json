@@ -157,6 +157,55 @@
             "mechanism": "One producer family has two exact branches: 11/100 nonpositive infinite-orbit phases on each sufficiently late dyadic block yield an 89/100 block mean, and one uniform truncation at endpoint 2X with 1/100 error yields a 9/10 finite first-harmonic gap and certifiedKill; alternatively, cofinally many prime indices with real part below 9/10 yield a positive adaptive truncation margin and exact natural-fibre pivot escape. Both feed the same singleton certificate consumer.",
             "boundary": "The block-density antecedent, cofinal prime strict-gap antecedent, and their uniform margin are unproved; no large-prime instance is established. Irrationality or nonintegrality alone does not give a fixed distance from ℤ, and no prime-distribution, equidistribution, or actual-orbit density theorem supplies these hypotheses. This remains a conditional reduction only: no unconditional #249 endpoint, novelty, priority, significance, or external-review claim is made.",
             "next_research_route": "Prove or refute either the 11/100 block-density producer or the cofinal natural-prime strict-gap producer for the exact totient orbit, retaining the two-branch relation to the shared certificate socket and the explicit open boundary."
+          },
+          "actual_foreign_residue_projection": {
+            "route_id": "erdos_249_actual_foreign_residue_projection",
+            "status": "conditional_projection_separation_open",
+            "source_declaration": "Erdos249257.ActualForeignResidueProjection.scaleFullTarget_miss_of_projected_separation",
+            "source_module": "Erdos249257/ActualForeignResidueProjection.lean",
+            "source_anchor": 414,
+            "comparator_declaration": "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
+            "comparator_anchor": 315,
+            "comparator_transport_commit": "8a08768f3758f11e9640535523232b0300316a4b",
+            "comparator_registration_commit": "404592da8e164b24faaeae021642fa2e131319a8",
+            "solution_export": "Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation",
+            "solution_export_anchor": 1131,
+            "supporting_declarations": [
+              "Erdos249257.ActualForeignResidueProjection.abs_foreignTailWindow_le_foreignComplementBound",
+              "Erdos249257.ActualForeignResidueProjection.finiteResidueDiagonal_eq_projectedForeign_add_divisor"
+            ],
+            "paper_consumers": [
+              {
+                "path": "paper/erdos-249-binary-totient-series.tex",
+                "locators": ["res:foreignresidue"]
+              },
+              {
+                "path": "docs/papers/full-text/erdos-249-binary-totient-series.md",
+                "locators": ["res:foreignresidue", "line:202"]
+              }
+            ],
+            "public_consumers": [
+              {
+                "path": "docs/claims.json",
+                "locator": "claims[id=actual_foreign_residue_projection]"
+              },
+              {
+                "path": "docs/external_verification_packet.json",
+                "locator": "review_matrix[problem=249].families[id=actual_foreign_residue_projection]"
+              },
+              {
+                "path": "verification/comparator.json",
+                "locator": "theorem_names[Erdos249257.ExternalVerification.scaleFullTarget_miss_of_projected_separation]"
+              },
+              {
+                "path": "docs/PALOMAR_RESULT_SHOWCASE.json",
+                "locator": "source_review_row[family_id=actual_foreign_residue_projection]"
+              }
+            ],
+            "evidence_mode": "Lean kernel source plus source-faithful ExternalVerification wrapper",
+            "mechanism": "The finite Möbius residue diagonal splits into projected foreign and divisor channels. In the stable range 2H ≤ D, the omitted foreign window is bounded by diagonalCoefficient(H) * (2 / 2^D + 4 / (3 * 4^D)); if the limiting foreign defect is controlled by that budget and the projected state stays farther from every integer, the complement-noncancellation consumer forces a full-target miss.",
+            "boundary": "This is a conditional finite partition and geometric-majorant reduction only. ControlledForeignProjection, which identifies the limiting foreign defect with the finite projection, and any unbounded supply of projections separated from every integer remain unproved; the route does not establish an Erdős #249 endpoint, irrationality, novelty, priority, significance, or external review.",
+            "next_research_route": "Read ActualForeignResidueProjection.lean at declarations 276, 308, and 414, then the source-faithful ExternalVerification wrapper at Challenge.lean:305-318 and Solution.lean:1131. The missing obligations are the analytic ControlledForeignProjection comparison and a cofinal separated-projection producer; retain the fixed-precision no-go relation as contrary evidence and do not treat another finite partition as progress."
           }
         }
       },
