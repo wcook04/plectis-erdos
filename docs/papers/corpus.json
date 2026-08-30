@@ -1601,7 +1601,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:0425fc9e2310ec644788a7276bd744c13b13166fd829c688b1d86677bdd80b7e",
+      "source_sha256": "sha256:5666b8739f0208997dfcfab5c595ed1a28a96127e7fa4c0d5148fbe6efbb5e53",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
@@ -1795,8 +1795,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:1cc3d0629e6e287693bde7fd35cfd5be4d1dea9fa1037a4d108479e24db28167",
-      "pdf_byte_count": 200588,
+      "pdf_sha256": "sha256:016037dc4d81bb956e6597c977b9d09e4fec04f82a9a18b2341b4476e7e82090",
+      "pdf_byte_count": 200496,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",

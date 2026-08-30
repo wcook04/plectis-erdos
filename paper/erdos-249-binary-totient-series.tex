@@ -221,16 +221,23 @@ presented as a novelty claim.
 \externalreviewobject{The paper gives an explicit basis and relation normal
 form for the dyadic totient kernel, exposes the squared-Lambert first-gcd-moment
 identity and a sharp producer-independent squared-Mersenne enclosure, proves level rank $2^e+1$, derives the
-all-base rank $k^e+1$ from Martin plus explicit reductions, and checks a finite
-denominator exclusion together with its first failing
-certificate scale.}{The rank theorems do not supply a
-rationality-to-finite-rank bridge, while the finite certificate does not
-supply an unbounded producer.  Problem~\#249 remains open.}{Comparator selects
-the explicit odd-core basis and the exact dyadic finite-level rank theorem.
-Full-kernel infinite-dimensionality is prior-art context from Coons, while the
-all-base linear-independence input uses Martin externally; Lean checks the
-rank conclusion conditional on that explicit input.  The finite arithmetic
-certificate retains its separate evidence route.}
+all-base rank $k^e+1$ from Martin plus explicit reductions, checks a finite
+denominator exclusion together with its first failing certificate scale, and
+records the orbit-level modular-period/rank frontier.}{The rank theorems and
+the orbit-level frontier do not supply a rationality-to-finite-rank bridge,
+while the finite certificate does not supply an unbounded producer.  Problem~\#249
+remains open.}{Comparator carries the explicit odd-core basis, the exact
+dyadic finite-level rank theorem, and the necessary modular-period/rank
+conjunction
+\mword{Erdos249257/TotientTailCarryPeriod.lean}{224}
+      {not_irrational_totientSeries_implies_mod_period_and_unbounded_rank}
+      {the modular-period/rank frontier}.
+The latter is not a contradiction: modulo a divisor of the multiplier the
+totient forcing can vanish and the carry becomes geometric, so no finite-rank
+upper bound is claimed.  Full-kernel infinite-dimensionality is prior-art
+context from Coons, while the all-base linear-independence input uses Martin
+externally; Lean checks the rank conclusion conditional on that explicit input.
+The finite arithmetic certificate retains its separate evidence route.}
 
 \section{Introduction and main results}\label{sec:results}
 
