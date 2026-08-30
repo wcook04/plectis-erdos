@@ -1020,7 +1020,12 @@ def main(argv: list[str] | None = None) -> int:
         identity_contract = repository_identity_contract.load_identity(
             args.repository_identity
         )
-    except (OSError, json.JSONDecodeError, repository_identity_contract.IdentityError) as exc:
+    except (
+        OSError,
+        UnicodeError,
+        json.JSONDecodeError,
+        repository_identity_contract.IdentityError,
+    ) as exc:
         print(
             json.dumps(
                 {
@@ -1052,7 +1057,7 @@ def main(argv: list[str] | None = None) -> int:
             loaded_route_memory = json.loads(
                 route_memory_receipt_path.read_text(encoding="utf-8")
             )
-        except (OSError, json.JSONDecodeError) as exc:
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
             route_memory_errors.append(f"route_memory_receipt: cannot read JSON: {exc}")
         else:
             if not isinstance(loaded_route_memory, dict):

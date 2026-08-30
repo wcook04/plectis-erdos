@@ -36,7 +36,10 @@ REVIEW_NAMES = set(return_validator.REVIEW_STATES)
 
 
 def load_json(path: Path) -> Any:
-    return json.loads(path.read_text(encoding="utf-8"))
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except UnicodeError as exc:
+        raise ValueError(f"cannot decode JSON as UTF-8: {path}: {exc}") from exc
 
 
 def canonical(value: Any) -> bytes:
@@ -71,7 +74,7 @@ def route_memory_binding_errors(
         ], False
     try:
         value = load_json(receipt_path)
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as exc:
         return None, [f"route_memory_receipt: cannot read JSON: {exc}"], True
     if not isinstance(value, dict):
         return None, ["route_memory_receipt: must be a JSON object"], False
@@ -461,7 +464,13 @@ def main(argv: list[str] | None = None) -> int:
         identity_contract = repository_identity_contract.load_identity(
             args.repository_identity
         )
-    except (OSError, json.JSONDecodeError, repository_identity_contract.IdentityError) as exc:
+    except (
+        OSError,
+        UnicodeError,
+        ValueError,
+        json.JSONDecodeError,
+        repository_identity_contract.IdentityError,
+    ) as exc:
         print(json.dumps({"schema": result_schema, "valid": False, "errors": [str(exc)]}))
         return 2
 
@@ -533,7 +542,7 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--decision and --output are required for accepted receipt generation")
     try:
         decision = load_json(args.decision)
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as exc:
         print(json.dumps({"schema": RESULT_SCHEMA, "valid": False, "errors": [str(exc)]}))
         return 2
     candidate, errors = build_candidate(

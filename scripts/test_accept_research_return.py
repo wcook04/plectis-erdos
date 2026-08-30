@@ -145,6 +145,32 @@ def main() -> int:
         link_error = acceptor.write_new_file(link, b"linked")
         require(link_error == "output path must not be a symbolic link", "symlink output was followed")
 
+        malformed = Path(directory) / "malformed-utf8.json"
+        malformed.write_bytes(b"{\xff\n")
+        decision_template = Path(directory) / "decision-template.json"
+        malformed_cli = subprocess.run(
+            [
+                sys.executable,
+                str(ROOT / "scripts" / "accept_research_return.py"),
+                str(malformed),
+                "--write-decision-template",
+                str(decision_template),
+            ],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+            env=acceptor.return_validator.git_environment(),
+        )
+        require(malformed_cli.returncode == 2, "acceptance did not classify malformed UTF-8 as CLI input failure")
+        malformed_receipt = json.loads(malformed_cli.stdout)
+        require(
+            malformed_receipt["valid"] is False
+            and any("utf-8" in error.lower() for error in malformed_receipt["errors"]),
+            "acceptance did not emit a machine-readable decode diagnostic",
+        )
+        require("Traceback" not in malformed_cli.stderr, "acceptance emitted a traceback for malformed UTF-8")
+
     print("accept_research_return: explicit decision, ancestry, authority, route and output safety PASS")
     return 0
 

@@ -84,6 +84,17 @@ def main() -> int:
         directory_path = Path(directory)
         input_path = directory_path / "return.json"
         input_path.write_bytes(FIXTURE.read_bytes())
+        malformed_path = directory_path / "malformed-utf8.json"
+        malformed_path.write_bytes(b"{\xff\n")
+        malformed_cli = run_cli(malformed_path, "--require-submitted")
+        require(malformed_cli.returncode == 2, "malformed UTF-8 input was not classified as CLI input failure")
+        malformed_receipt = json.loads(malformed_cli.stdout)
+        require(
+            malformed_receipt["valid"] is False
+            and any("utf-8" in error.lower() for error in malformed_receipt["errors"]),
+            "malformed UTF-8 input did not produce a machine-readable decode diagnostic",
+        )
+        require("Traceback" not in malformed_cli.stderr, "malformed UTF-8 input emitted a traceback")
         hostile_environment = {
             "GIT_DIR": "/private/wrong-git-dir",
             "GIT_NAMESPACE": "refs/namespaces/wrong-release",

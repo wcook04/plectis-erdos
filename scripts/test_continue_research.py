@@ -185,6 +185,32 @@ def check_package_session_path_boundary() -> None:
             raise AssertionError("package input must reject symlinked session material")
 
 
+def check_malformed_utf8_inputs_rejected() -> None:
+    """Continuation readers must report malformed text as bounded input errors."""
+    with tempfile.TemporaryDirectory(prefix="continue-malformed-utf8-") as temporary:
+        root = Path(temporary)
+        malformed = root / "malformed.json"
+        malformed.write_bytes(b"{\xff\n")
+        try:
+            continue_research.load_json(malformed)
+        except SystemExit as error:
+            require("utf-8" in str(error).lower(), f"malformed JSON lacked a decode diagnostic: {error}")
+        else:
+            raise AssertionError("continuation JSON reader accepted malformed UTF-8")
+
+        sessions = root / "sessions"
+        session = sessions / "bounded"
+        session.mkdir(parents=True)
+        ledger = session / "ledger.jsonl"
+        ledger.write_bytes(b"{\xff\n")
+        try:
+            continue_research.read_ledger(session, sessions)
+        except SystemExit as error:
+            require("utf-8" in str(error).lower(), f"malformed ledger lacked a decode diagnostic: {error}")
+        else:
+            raise AssertionError("continuation ledger reader accepted malformed UTF-8")
+
+
 def check_start_session_path_boundary() -> None:
     """A start must reject a redirected sessions root before opening the workbench."""
     with tempfile.TemporaryDirectory(prefix="continue-start-path-") as temporary:
@@ -311,6 +337,7 @@ def main() -> int:
     check_subprocess_timeouts()
     check_replay_execution_posture()
     check_package_session_path_boundary()
+    check_malformed_utf8_inputs_rejected()
     check_start_session_path_boundary()
     assert continue_research.canonical_github_origin(
         "git@github.com:wcook04/plectis-lean-erdos249-257.git"

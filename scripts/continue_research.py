@@ -105,7 +105,7 @@ def dump_json(value: Any) -> str:
 def load_json(path: Path) -> dict[str, Any]:
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         raise SystemExit(f"cannot read JSON {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise SystemExit(f"expected a JSON object: {path}")
@@ -341,7 +341,11 @@ def read_ledger(directory: Path, sessions_root: Path) -> list[dict[str, Any]]:
     if not ledger_path.is_file():
         raise SystemExit(f"workbench ledger not found: {ledger_path}")
     rows = []
-    for line_number, line in enumerate(ledger_path.read_text(encoding="utf-8").splitlines(), 1):
+    try:
+        ledger_lines = ledger_path.read_text(encoding="utf-8").splitlines()
+    except (OSError, UnicodeError) as exc:
+        raise SystemExit(f"cannot read workbench ledger {ledger_path}: {exc}") from exc
+    for line_number, line in enumerate(ledger_lines, 1):
         if not line.strip():
             continue
         try:
