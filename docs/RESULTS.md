@@ -553,7 +553,8 @@ core)**
   `realise = readout.comp C` (`:334`). The quotient coboundary remains
   uncontrolled: no finite-state quotient, literal infinite realised span,
   scalar-evaluation implication, or #269 rationality/irrationality conclusion
-  follows. This is not a 33rd Comparator row and is distinct from the
+  follows. This is not Comparator evidence at this source-only stage and is
+  distinct from the
   three-prime cell, rank-two no-go, and conditional carry-escape families.
 **#1041 — short connections inside polynomial lemniscates?**
 
