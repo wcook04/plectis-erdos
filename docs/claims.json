@@ -11864,6 +11864,18 @@
         "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
       },
       {
+        "id": "actual_lcm_orbit_separation",
+        "problem": 249,
+        "review_family": "actual_lcm_orbit_separation",
+        "claim_id": "actual_lcm_orbit_nonintegrality_frontier",
+        "contribution_class": "conditional reduction",
+        "original_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        "original_source": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+        "statement": "A cofinal quantitative separation supply for the actual power-two LCM tail orbit implies irrationality of the binary totient series.",
+        "boundary": "The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open."
+      },
+      {
         "id": "prime_gap_unboundedness",
         "problem": 251,
         "review_family": "coefficient_only_no_go",
@@ -12233,6 +12245,14 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
+        },
+        {
+          "id": "actual_lcm_orbit_separation",
+          "contribution_class": "conditional reduction",
+          "summary": "A cofinal quantitative separation supply at the canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "boundary": "The supply is open and stronger than mere non-integrality; this is a sufficient route, not an equivalence, and it leaves the punctured/top-edge boundary and the #249 endpoint open."
         },
         {
           "id": "totient_finite_denominator_exclusion",
@@ -15824,7 +15844,7 @@
       "id": "actual_lcm_orbit_nonintegrality_frontier",
       "label": "Actual LCM-orbit non-integrality frontier",
       "status": "conditional reduction",
-      "statement": "Let H_a = lcm(1,…,2^a) and R_a = totientTail(2H_a) − totientTail(H_a). The totient series S is irrational if and only if, beyond every threshold a₀, some a ≥ a₀ has R_a ∉ ℤ. This is an exact cofinal non-integrality criterion for the actual LCM diagonal, not a quantitative separation estimate and not a proved supply of such indices.",
+      "statement": "Let H_a = lcm(1,…,2^a) and R_a = totientTail(2H_a) − totientTail(H_a). The totient series S is irrational if and only if, beyond every threshold a₀, some a ≥ a₀ has R_a ∉ ℤ. This is an exact cofinal non-integrality criterion for the actual LCM diagonal. That equivalence itself is not a quantitative separation estimate; the same source also provides a distinct sufficient route in which, cofinally in a₀, some a,q satisfy max 2 a₀ ≤ a, oddGuardedCanonicalAdjacentSuffixDepth (2^a) = 2q+1, and every integer z obeys 1/32 + actualLcmRawErrorRadius a q ≤ |actualLcmTailOrbit a − z|. This quantitative supply is not equivalent to the frontier criterion and remains unproved.",
       "remaining_open_proposition_ids": [
         "remaining_open.unbounded_certificate_supply"
       ],
@@ -15840,6 +15860,11 @@
           "name": "irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
           "module": "Erdos249257/TotientActualLcmOrbitNonintegrality.lean",
           "line": 53
+        },
+        {
+          "name": "irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+          "module": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+          "line": 305
         }
       ]
     },
