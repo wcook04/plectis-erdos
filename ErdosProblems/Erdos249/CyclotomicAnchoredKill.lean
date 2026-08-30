@@ -1453,6 +1453,108 @@ theorem two_ne_zero_of_prime_dvd_binaryCyclotomicLayer
   rw [hcoeff] at hcoeffZero
   exact one_ne_zero hcoeffZero
 
+/-- Past the explicit exceptional range, every prime divisor of the binary
+cyclotomic layer is clean and supplies exact order `h*q`.  The two bounds have
+different roles: `q > h` excludes characteristics dividing the fixed ray
+multiplier, while `q > 2^h` excludes the moving characteristic `p = q`. -/
+theorem prime_dvd_binaryCyclotomicLayer_clean_order
+    {h q p : ℕ} (hh : 0 < h) (hq : q.Prime)
+    (hqh : h < q) (hqpow : 2 ^ h < q)
+    (hp : p.Prime) (hpLayer : p ∣ binaryCyclotomicLayer (h * q)) :
+    Nat.Coprime p (h * q) ∧ h * q ∣ p - 1 := by
+  have hHtwo : 2 ≤ h * q := by
+    have hqTwo : 2 ≤ q := hq.two_le
+    nlinarith
+  letI : Fact (Nat.Prime p) := ⟨hp⟩
+  letI : NeZero p := ⟨hp.pos.ne'⟩
+  obtain ⟨a, hdecomp⟩ :=
+    binaryCyclotomicLayer_prime_order_decomposition
+      (n := h * q) (p := p) (by positivity) hp hpLayer
+  let o : ℕ := orderOf ((2 : ℕ) : ZMod p)
+  have hdecomp' : h * q = p ^ a * o := by
+    simpa [o] using hdecomp
+  have htwoNonzero : ((2 : ℕ) : ZMod p) ≠ 0 :=
+    two_ne_zero_of_prime_dvd_binaryCyclotomicLayer
+      (n := h * q) (p := p) hHtwo hp hpLayer
+  have hoDvd : o ∣ p - 1 := by
+    simpa [o] using ZMod.orderOf_dvd_card_sub_one htwoNonzero
+  have hpNotIndex : ¬p ∣ h * q := by
+    intro hpIndex
+    rcases hp.dvd_mul.mp hpIndex with hph | hpq
+    · have hpLeH : p ≤ h := Nat.le_of_dvd hh hph
+      have hpNeQ : p ≠ q := by omega
+      have hqProd : q ∣ p ^ a * o := by
+        rw [← hdecomp']
+        exact ⟨h, by ring⟩
+      have hqO : q ∣ o := by
+        rcases hq.dvd_mul.mp hqProd with hqPow | hqo
+        · have hqp : q = p := Nat.prime_eq_prime_of_dvd_pow hq hp hqPow
+          exact (hpNeQ hqp.symm).elim
+        · exact hqo
+      have hqPred : q ∣ p - 1 := hqO.trans hoDvd
+      have hpTwo : 2 ≤ p := hp.two_le
+      have hpredPos : 0 < p - 1 := by omega
+      have hqLe : q ≤ p - 1 := Nat.le_of_dvd hpredPos hqPred
+      omega
+    · have hpEqQ : p = q := by
+        rcases (Nat.dvd_prime hq).mp hpq with hpOne | hpq'
+        · exact (hp.ne_one hpOne).elim
+        · exact hpq'
+      subst p
+      rcases Nat.eq_zero_or_pos a with haZero | haPos
+      · subst a
+        simp only [pow_zero, one_mul] at hdecomp'
+        have hoLe : o ≤ q - 1 := Nat.le_of_dvd (by omega) hoDvd
+        have hqLeH : q ≤ h * q := by
+          simpa using Nat.mul_le_mul_right q (show 1 ≤ h by omega)
+        omega
+      · by_cases haOne : a = 1
+        · subst a
+          simp only [pow_one] at hdecomp'
+          have hoEq : o = h := by
+            have hEq : q * h = q * o := by
+              simpa [Nat.mul_comm] using hdecomp'
+            exact (Nat.mul_left_cancel hq.pos hEq).symm
+          have hpowZ : (((2 : ℕ) : ZMod q) ^ h) = 1 := by
+            rw [← hoEq]
+            exact pow_orderOf_eq_one _
+          have hpowOne : 1 ≤ 2 ^ h := Nat.one_le_pow _ _ (by norm_num)
+          have hcastPow : ((2 ^ h : ℕ) : ZMod q) = 1 := by
+            simpa using hpowZ
+          have hcast : ((2 ^ h - 1 : ℕ) : ZMod q) = 0 := by
+            rw [Nat.cast_sub hpowOne, hcastPow, Nat.cast_one, sub_self]
+          have hqDvd : q ∣ 2 ^ h - 1 :=
+            (ZMod.natCast_eq_zero_iff (2 ^ h - 1) q).mp hcast
+          have hsubPos : 0 < 2 ^ h - 1 := by
+            have : 1 < 2 ^ h := Nat.one_lt_pow hh.ne' (by norm_num)
+            omega
+          have hsubLt : 2 ^ h - 1 < q := by omega
+          exact (Nat.not_dvd_of_pos_of_lt hsubPos hsubLt) hqDvd
+        · have haTwo : 2 ≤ a := by omega
+          have hqSqPow : q ^ 2 ∣ q ^ a := pow_dvd_pow q haTwo
+          have hqSqH : q ^ 2 ∣ h * q := by
+            rw [hdecomp']
+            exact dvd_mul_of_dvd_left hqSqPow o
+          obtain ⟨k, hk⟩ := hqSqH
+          have hhFactor : h = q * k := by
+            have hEq : h * q = (q * k) * q := by
+              simpa [pow_two, mul_assoc, mul_comm, mul_left_comm] using hk
+            exact Nat.mul_right_cancel hq.pos hEq
+          have hqDvdH : q ∣ h := ⟨k, hhFactor⟩
+          have hqLeH : q ≤ h := Nat.le_of_dvd hh hqDvdH
+          omega
+  have hcop : Nat.Coprime p (h * q) := hp.coprime_iff_not_dvd.mpr hpNotIndex
+  have haZero : a = 0 := by
+    by_contra ha
+    have haPos : 0 < a := Nat.pos_of_ne_zero ha
+    apply hpNotIndex
+    rw [hdecomp']
+    exact dvd_mul_of_dvd_left (dvd_pow_self p haPos.ne') o
+  have hHord : h * q = o := by simpa [haZero] using hdecomp'
+  refine ⟨hcop, ?_⟩
+  rw [hHord]
+  exact hoDvd
+
 /-- **Unconditional clean composite-ray producer.**  For every positive
 period `h` and every threshold, a prime-index multiplier `q` and a prime
 factor `p` of `Φ_(h*q)(2)` can be chosen so that the factor is clean,
@@ -1490,100 +1592,9 @@ theorem exists_clean_binaryCyclotomicAnchor
   have hpLayer : p ∣ binaryCyclotomicLayer (h * q) := by
     unfold binaryCyclotomicLayer
     exact Int.natCast_dvd_natCast.mp (Int.dvd_natAbs.mpr hpEval)
-  letI : Fact (Nat.Prime p) := ⟨hp⟩
-  letI : NeZero p := ⟨hp.pos.ne'⟩
-  obtain ⟨a, hdecomp⟩ :=
-    binaryCyclotomicLayer_prime_order_decomposition
-      (n := h * q) (p := p) (by positivity) hp hpLayer
-  let m : ℕ := orderOf ((2 : ℕ) : ZMod p)
-  have hdecomp' : h * q = p ^ a * m := by
-    simpa [m] using hdecomp
-  have htwoNonzero :
-      ((2 : ℕ) : ZMod p) ≠ 0 :=
-    two_ne_zero_of_prime_dvd_binaryCyclotomicLayer
-      (n := h * q) (p := p) hHtwo hp hpLayer
-  have hmDvd : m ∣ p - 1 := by
-    simpa [m] using ZMod.orderOf_dvd_card_sub_one htwoNonzero
-  have hpNotH : ¬p ∣ h * q := by
-    intro hpH
-    rcases hp.dvd_mul.mp hpH with hph | hpq
-    · have hpLeH : p ≤ h := Nat.le_of_dvd hh hph
-      have hpNeQ : p ≠ q := by omega
-      have hqProd : q ∣ p ^ a * m := by
-        rw [← hdecomp']
-        exact ⟨h, by ring⟩
-      have hqM : q ∣ m := by
-        rcases hq.dvd_mul.mp hqProd with hqPow | hqm
-        · have hqp : q = p :=
-            Nat.prime_eq_prime_of_dvd_pow hq hp hqPow
-          exact (hpNeQ hqp.symm).elim
-        · exact hqm
-      have hqPred : q ∣ p - 1 := hqM.trans hmDvd
-      have hpTwo : 2 ≤ p := hp.two_le
-      have hpredPos : 0 < p - 1 := by omega
-      have hqLe : q ≤ p - 1 := Nat.le_of_dvd hpredPos hqPred
-      omega
-    · have hpEqQ : p = q := by
-        rcases (Nat.dvd_prime hq).mp hpq with hpOne | hpq'
-        · exact (hp.ne_one hpOne).elim
-        · exact hpq'
-      subst p
-      rcases Nat.eq_zero_or_pos a with haZero | haPos
-      · subst a
-        simp only [pow_zero, one_mul] at hdecomp'
-        have hmLe : m ≤ q - 1 := Nat.le_of_dvd (by omega) hmDvd
-        have hqLeH : q ≤ h * q := by
-          simpa using Nat.mul_le_mul_right q (show 1 ≤ h by omega)
-        omega
-      · by_cases haOne : a = 1
-        · subst a
-          simp only [pow_one] at hdecomp'
-          have hmEq : m = h := by
-            have hEq : q * h = q * m := by
-              simpa [Nat.mul_comm] using hdecomp'
-            exact (Nat.mul_left_cancel hq.pos hEq).symm
-          have hpowZ : (((2 : ℕ) : ZMod q) ^ h) = 1 := by
-            rw [← hmEq]
-            exact pow_orderOf_eq_one _
-          have hpowOne : 1 ≤ 2 ^ h := Nat.one_le_pow _ _ (by norm_num)
-          have hcastPow : ((2 ^ h : ℕ) : ZMod q) = 1 := by
-            simpa using hpowZ
-          have hcast :
-              ((2 ^ h - 1 : ℕ) : ZMod q) = 0 := by
-            rw [Nat.cast_sub hpowOne, hcastPow, Nat.cast_one, sub_self]
-          have hqDvd : q ∣ 2 ^ h - 1 :=
-            (ZMod.natCast_eq_zero_iff (2 ^ h - 1) q).mp hcast
-          have hsubPos : 0 < 2 ^ h - 1 := by
-            have : 1 < 2 ^ h := Nat.one_lt_pow hh.ne' (by norm_num)
-            omega
-          have hsubLt : 2 ^ h - 1 < q := by omega
-          exact (Nat.not_dvd_of_pos_of_lt hsubPos hsubLt) hqDvd
-        · have haTwo : 2 ≤ a := by omega
-          have hqSqPow : q ^ 2 ∣ q ^ a := pow_dvd_pow q haTwo
-          have hqSqH : q ^ 2 ∣ h * q := by
-            rw [hdecomp']
-            exact dvd_mul_of_dvd_left hqSqPow m
-          obtain ⟨k, hk⟩ := hqSqH
-          have hhFactor : h = q * k := by
-            have hEq : h * q = (q * k) * q := by
-              simpa [pow_two, mul_assoc, mul_comm, mul_left_comm] using hk
-            exact Nat.mul_right_cancel hq.pos hEq
-          have hqDvdH : q ∣ h := ⟨k, hhFactor⟩
-          have hqLeH : q ≤ h := Nat.le_of_dvd hh hqDvdH
-          omega
-  have hcop : Nat.Coprime p (h * q) :=
-    hp.coprime_iff_not_dvd.mpr hpNotH
-  have haZero : a = 0 := by
-    by_contra ha
-    have haPos : 0 < a := Nat.pos_of_ne_zero ha
-    apply hpNotH
-    rw [hdecomp']
-    exact dvd_mul_of_dvd_left (dvd_pow_self p haPos.ne') m
-  have hHord : h * q = m := by
-    simpa [haZero] using hdecomp'
-  have hperiodDvd : h * q ∣ p - 1 := by
-    rw [hHord]
-    exact hmDvd
+  obtain ⟨hcop, hperiodDvd⟩ :=
+    prime_dvd_binaryCyclotomicLayer_clean_order
+      hh hq hqh hqpow hp hpLayer
   have hpTwo : 2 ≤ p := hp.two_le
   have hHle : h * q ≤ p - 1 :=
     Nat.le_of_dvd (by omega) hperiodDvd
@@ -1592,6 +1603,72 @@ theorem exists_clean_binaryCyclotomicAnchor
       nlinarith
     omega
   exact ⟨q, p, hq, hp, hcop, hpLayer, hperiodDvd, hN⟩
+
+/-- The actual binary cyclotomic layers are eventually nontrivial and clean
+on every positive prime ray. -/
+theorem binaryCyclotomicLayer_layerSupply (h : ℕ) (hh : 0 < h) :
+    PrimeRayLayerSupply binaryCyclotomicLayer h := by
+  refine ⟨max (h + 1) (2 ^ h + 1), ?_⟩
+  intro q hq hqLower
+  have hqh : h < q := by
+    have : h + 1 ≤ q := le_trans (le_max_left _ _) hqLower
+    omega
+  have hqpow : 2 ^ h < q := by
+    have : 2 ^ h + 1 ≤ q := le_trans (le_max_right _ _) hqLower
+    omega
+  have hHtwo : 2 ≤ h * q := by
+    have hqTwo : 2 ≤ q := hq.two_le
+    nlinarith
+  have hlarge : 1 < binaryCyclotomicLayer (h * q) := by
+    simpa [binaryCyclotomicLayer] using
+      (Polynomial.sub_one_lt_natAbs_cyclotomic_eval
+        (n := h * q) (q := 2) hHtwo (by norm_num))
+  refine ⟨hlarge, ?_⟩
+  by_contra hcop
+  obtain ⟨p, hp, hpLayer, hpIndex⟩ := Nat.Prime.not_coprime_iff_dvd.mp hcop
+  exact (hp.coprime_iff_not_dvd.mp
+    (prime_dvd_binaryCyclotomicLayer_clean_order
+      hh hq hqh hqpow hp hpLayer).1) hpIndex
+
+/-- The actual binary cyclotomic layer has degree-one order witnesses beyond
+the same explicit exceptional range. -/
+theorem binaryCyclotomicLayer_eventualOrderConsumer (h : ℕ) (hh : 0 < h) :
+    EventualBoundedDegreeOrderConsumer binaryCyclotomicLayer h 1 := by
+  refine ⟨max (h + 1) (2 ^ h + 1), ?_⟩
+  intro q p hq hqLower hp hpLayer
+  have hqh : h < q := by
+    have : h + 1 ≤ q := le_trans (le_max_left _ _) hqLower
+    omega
+  have hqpow : 2 ^ h < q := by
+    have : 2 ^ h + 1 ≤ q := le_trans (le_max_right _ _) hqLower
+    omega
+  refine ⟨1, by omega, by omega, ?_⟩
+  simpa using (prime_dvd_binaryCyclotomicLayer_clean_order
+    hh hq hqh hqpow hp hpLayer).2
+
+/-- Unbounded prime support is unconditional for every positive binary
+cyclotomic prime ray.  This remains an arithmetic support statement, not a
+carry/phase escape theorem and not an irrationality theorem for Erdős #249. -/
+theorem binaryCyclotomicLayer_unboundedPrimeDivisorSupply
+    (h : ℕ) (hh : 0 < h) :
+    UnboundedPrimeDivisorSupply binaryCyclotomicLayer h :=
+  unboundedPrimeDivisorSupply_of_eventualOrderConsumer hh
+    (binaryCyclotomicLayer_layerSupply h hh)
+    (binaryCyclotomicLayer_eventualOrderConsumer h hh)
+
+/-- The original global order-consumer predicate is genuinely too strong for
+composite cyclotomic rays: at `h = 2`, `q = 3`, the layer is
+`Φ₆(2) = 3`, whose characteristic prime cannot realise order six. -/
+theorem binaryCyclotomicLayer_not_globalOrderConsumer :
+    ¬ BoundedDegreeOrderConsumer binaryCyclotomicLayer 2 1 := by
+  intro horder
+  have hthree : 3 ∣ binaryCyclotomicLayer (2 * 3) := by
+    norm_num [binaryCyclotomicLayer, Polynomial.cyclotomic_six]
+  obtain ⟨k, hk1, hkUpper, hkdiv⟩ :=
+    horder 3 3 (by norm_num) (by norm_num) hthree
+  have hk : k = 1 := by omega
+  subst k
+  norm_num at hkdiv
 
 /-- An eventual `h`-period tail-integrality law also holds for every
 positive or zero multiple `h * k`, by telescoping `k` adjacent differences. -/

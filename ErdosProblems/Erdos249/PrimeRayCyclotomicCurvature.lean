@@ -105,6 +105,15 @@ def BoundedDegreeOrderConsumer
     q.Prime → p.Prime → p ∣ C (m * q) →
       ∃ k : ℕ, 1 ≤ k ∧ k ≤ d ∧ m * q ∣ p ^ k - 1
 
+/-- Bounded-degree order witnesses beyond a prime-index cutoff.  Unlike
+`BoundedDegreeOrderConsumer`, this permits the finitely many characteristic
+primes that occur naturally in cyclotomic layers. -/
+def EventualBoundedDegreeOrderConsumer
+    (C : ℕ → ℕ) (m d : ℕ) : Prop :=
+  ∃ Q₀ : ℕ, ∀ q p : ℕ,
+    q.Prime → Q₀ ≤ q → p.Prime → p ∣ C (m * q) →
+      ∃ k : ℕ, 1 ≤ k ∧ k ≤ d ∧ m * q ∣ p ^ k - 1
+
 /-- If a prime `p` divides `C (m*q)`, then a bounded-degree order witness
 forces the exact natural-number inequality `m * q < p ^ d`. -/
 theorem primeRay_divisor_pow_gt
@@ -171,6 +180,36 @@ theorem finitePrimeSupportEscape_of_orderConsumer
     (primeRay_divisor_pow_gt horder hq hp hpC).trans hpd_lt_q
   exact (not_lt_of_ge (Nat.le_mul_of_pos_left q hm)) hmq_lt_q
 
+/-- Eventual bounded-degree order realisability is already enough to exclude
+every fixed finite set of characteristics on a sufficiently remote prime ray.
+This is the version matched by actual cyclotomic layers. -/
+theorem finitePrimeSupportEscape_of_eventualOrderConsumer
+    {C : ℕ → ℕ} {m d : ℕ}
+    (hm : 0 < m)
+    (horder : EventualBoundedDegreeOrderConsumer C m d) :
+    FinitePrimeSupportEscape C m := by
+  obtain ⟨Qo, horder⟩ := horder
+  intro S
+  let B := ∑ p ∈ S, p ^ d
+  refine ⟨max Qo (B + 1), ?_⟩
+  intro q hq hqB p hpS hp hpC
+  obtain ⟨k, hk1, hkd, horderDvd⟩ :=
+    horder q p hq (le_trans (le_max_left _ _) hqB) hp hpC
+  have hpk_sub_pos : 0 < p ^ k - 1 :=
+    Nat.sub_pos_of_lt (one_lt_pow₀ hp.one_lt (by omega))
+  have hmq_le : m * q ≤ p ^ k - 1 :=
+    Nat.le_of_dvd hpk_sub_pos horderDvd
+  have hpk_le_hpd : p ^ k ≤ p ^ d :=
+    Nat.pow_le_pow_right hp.pos hkd
+  have hpd_le_B : p ^ d ≤ B := by
+    dsimp [B]
+    exact Finset.single_le_sum (fun x _ => Nat.zero_le (x ^ d)) hpS
+  have hpd_lt_q : p ^ d < q := by
+    have hBq : B + 1 ≤ q := le_trans (le_max_right _ _) hqB
+    omega
+  have hmq_lt_q : m * q < q := by omega
+  exact (not_lt_of_ge (Nat.le_mul_of_pos_left q hm)) hmq_lt_q
+
 /-- Nontrivial layers together with finite-support escape force genuinely new,
 arbitrarily large prime divisors on cofinally large prime indices. -/
 theorem unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape
@@ -209,7 +248,21 @@ theorem unboundedPrimeDivisorSupply_of_orderConsumer
   unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape
     hsupply (finitePrimeSupportEscape_of_orderConsumer hm horder)
 
+/-- Eventual order witnesses and eventual nontrivial layers suffice for
+cofinally unbounded prime divisors.  No conclusion about phase escape or
+irrationality is asserted. -/
+theorem unboundedPrimeDivisorSupply_of_eventualOrderConsumer
+    {C : ℕ → ℕ} {m d : ℕ}
+    (hm : 0 < m)
+    (hsupply : PrimeRayLayerSupply C m)
+    (horder : EventualBoundedDegreeOrderConsumer C m d) :
+    UnboundedPrimeDivisorSupply C m :=
+  unboundedPrimeDivisorSupply_of_layerSupply_of_finitePrimeSupportEscape
+    hsupply (finitePrimeSupportEscape_of_eventualOrderConsumer hm horder)
+
 #print axioms finitePrimeSupportEscape_of_orderConsumer
+#print axioms finitePrimeSupportEscape_of_eventualOrderConsumer
 #print axioms unboundedPrimeDivisorSupply_of_orderConsumer
+#print axioms unboundedPrimeDivisorSupply_of_eventualOrderConsumer
 
 end ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature
