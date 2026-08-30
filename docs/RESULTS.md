@@ -293,7 +293,7 @@ core)**
   says so.
 
 The semantic corpus marks exactly eight statements `candidate_new_statement` —
-the only machine novelty marks in this release, against 5,460 of 6,036
+the only machine novelty marks in this release, against 5,505 of 6,089
 statement nodes still `not_assessed`. They concentrate in the #249/#257 core
 (the totient Möbius-numerator normal form, a rank-one overshoot barrier, and
 the `1/2` tail-escape and middle-producer family). Reproduce the list from
