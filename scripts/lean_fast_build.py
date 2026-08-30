@@ -22,6 +22,7 @@ import re
 import subprocess
 import sys
 import time
+import tomllib
 from typing import Iterable
 
 import validation_singleflight as singleflight
@@ -178,6 +179,49 @@ def resolve_targets(
                 continue
         raise ValueError(f"unknown local Lean target: {target}")
     return resolved
+
+
+def lake_library_names(root: Path = ROOT) -> set[str] | None:
+    """Return declared Lake library names, or ``None`` for fixture roots."""
+
+    lakefile = root / "lakefile.toml"
+    if not lakefile.is_file():
+        return None
+    try:
+        config = tomllib.loads(lakefile.read_text(encoding="utf-8"))
+    except (OSError, tomllib.TOMLDecodeError) as error:
+        raise ValueError(f"cannot parse Lake configuration: {lakefile}") from error
+    return {
+        library["name"]
+        for library in config.get("lean_lib", [])
+        if isinstance(library, dict) and isinstance(library.get("name"), str)
+    }
+
+
+def is_registered_lake_module(name: str, root: Path = ROOT) -> bool:
+    """Tell whether a discovered module name is a valid Lake library target."""
+
+    library_names = lake_library_names(root)
+    if library_names is None:
+        # Small unit-test fixture roots do not need a Lake manifest to exercise
+        # the historical module-target path.
+        return True
+    return any(
+        name == library or name.startswith(f"{library}.")
+        for library in library_names
+    )
+
+
+def direct_source_targets(
+    names: Iterable[str], modules: dict[str, Path], root: Path = ROOT
+) -> dict[str, Path]:
+    """Return existing discovered sources whose names are not Lake targets."""
+
+    return {
+        name: modules[name]
+        for name in names
+        if name in modules and not is_registered_lake_module(name, root)
+    }
 
 
 def default_root_targets(modules: dict[str, Path], root: Path = ROOT) -> list[str]:
@@ -543,6 +587,25 @@ def run_final_authority_check(
     return 0
 
 
+def run_source_authority_check(
+    sources: Iterable[Path], root: Path = ROOT
+) -> int:
+    """Check unregistered Lean sources directly through the pinned Lake env."""
+
+    resolved_root = root.resolve()
+    for source in sources:
+        relative_source = source.resolve().relative_to(resolved_root)
+        result = _run(
+            lake_command("env", "lean", relative_source.as_posix()),
+            cwd=root,
+            timeout_seconds=LAKE_COMMAND_TIMEOUT_SECONDS,
+            check=False,
+        )
+        if result.returncode:
+            return result.returncode
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -601,6 +664,8 @@ def main(argv: list[str] | None = None) -> int:
             target_modules = resolve_targets(args.targets, modules, root)
     except (RuntimeError, ValueError) as error:
         parser.error(str(error))
+    direct_targets = direct_source_targets(target_modules, modules, root)
+    direct_target_names = set(direct_targets)
     graph = reachable_graph(target_modules, modules)
     build_waves = waves(reachable(target_modules, graph), graph)
     use_lake_staleness = args.lake_staleness
@@ -608,11 +673,22 @@ def main(argv: list[str] | None = None) -> int:
     if use_lake_staleness:
         # One verbose Lake authority query reports the complete stale import
         # closure.  Partition that verdict into topological waves locally.
+        lake_targets = sorted(
+            name
+            for name in reachable(target_modules, graph)
+            if name not in direct_target_names
+        )
         stale_targets = propagate_stale_targets(
-            lake_stale_targets(target_modules, root), build_waves, graph
+            lake_stale_targets(lake_targets, root) if lake_targets else [],
+            build_waves,
+            graph,
         )
         pending = [
-            [name for name in wave if name in stale_targets]
+            [
+                name
+                for name in wave
+                if name in stale_targets and name not in direct_target_names
+            ]
             for wave in build_waves
         ]
         pending = [wave for wave in pending if wave]
@@ -631,6 +707,7 @@ def main(argv: list[str] | None = None) -> int:
                     cached_olean_mtimes=output_mtimes,
                     cached_config_mtime_ns=config_mtime,
                 )
+                and name not in direct_target_names
             ]
             for wave in build_waves
         ]
@@ -656,8 +733,17 @@ def main(argv: list[str] | None = None) -> int:
         if failed:
             raise RuntimeError("module prebuild failed: " + ", ".join(sorted(failed)))
 
-    print("lean-fast-build: final serialized Lake authority check", flush=True)
-    return run_final_authority_check(target_modules, root)
+    lake_target_names = [
+        name for name in target_modules if name not in direct_target_names
+    ]
+    if lake_target_names:
+        print("lean-fast-build: final serialized Lake authority check", flush=True)
+        lake_result = run_final_authority_check(lake_target_names, root)
+        if lake_result:
+            return lake_result
+    if direct_targets:
+        print("lean-fast-build: direct Lake environment source check", flush=True)
+    return run_source_authority_check(direct_targets.values(), root)
 
 
 if __name__ == "__main__":

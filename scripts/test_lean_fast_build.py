@@ -766,6 +766,59 @@ import Pkg.TooLate
             )
             self.assertEqual(run.call_args.kwargs["cwd"], root)
 
+    def test_registered_and_unregistered_sources_use_their_real_authority_commands(
+        self,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            registered = root / "Pkg" / "Leaf.lean"
+            unregistered = root / "examples" / "Examples.lean"
+            registered.parent.mkdir(parents=True)
+            unregistered.parent.mkdir(parents=True)
+            registered.write_text("-- registered\n", encoding="utf-8")
+            unregistered.write_text("-- unregistered\n", encoding="utf-8")
+            (root / "lakefile.toml").write_text(
+                '[[lean_lib]]\nname = "Pkg"\n', encoding="utf-8"
+            )
+            completed = fast.subprocess.CompletedProcess([], 0, "", "")
+            with mock.patch.object(fast, "ROOT", root), mock.patch.object(
+                fast, "lake_stale_targets", return_value=[]
+            ) as stale_targets, mock.patch.object(
+                fast.subprocess, "run", return_value=completed
+            ) as run:
+                self.assertEqual(
+                    fast.main(
+                        [
+                            "Pkg/Leaf.lean",
+                            "examples/Examples.lean",
+                            "--lake-staleness",
+                        ]
+                    ),
+                    0,
+                )
+
+            stale_targets.assert_called_once_with(["Pkg.Leaf"], root)
+            self.assertEqual(
+                [call.args[0] for call in run.call_args_list],
+                [
+                    fast.lake_command(
+                        "--quiet",
+                        "--no-ansi",
+                        "--log-level=error",
+                        "build",
+                        "+Pkg.Leaf",
+                    ),
+                    fast.lake_command("env", "lean", "examples/Examples.lean"),
+                ],
+            )
+            for call in run.call_args_list:
+                self.assertEqual(
+                    call.kwargs["env"], singleflight.command_environment()
+                )
+                self.assertEqual(
+                    call.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
+                )
+
     def test_final_authority_checks_focused_modules_serially(self) -> None:
         completed = fast.subprocess.CompletedProcess([], 0, "", "")
         with mock.patch.object(fast.subprocess, "run", return_value=completed) as run:
