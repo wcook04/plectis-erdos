@@ -142,6 +142,15 @@ replacement for claim authority.
 
 **#249 — is `∑ φ(n)/2ⁿ` irrational? (reviewed core)**
 
+- Cited-only source ceiling: Nesterenko's 1996 Corollary 2 gives algebraic
+  independence of the Ramanujan values at algebraic `q` with `0 < |q| < 1`.
+  At `q = 1/2`, its exact identity
+  `P(1/2) = 1 − 24 ∑_{n≥1} σ(n)/2ⁿ` makes the divisor-sum series
+  `∑_{n≥1} σ(n)/2ⁿ` transcendental by an elementary affine rewrite
+  ([source closure](primary-sources/totient-kernel/nesterenko-1996-source-closure.md)).
+  This is a distinct `σ`-coefficient ladder rung, not the Euler-totient
+  constant `S`; Nesterenko's analytic proof is not formalised here, and no
+  #249 irrationality or novelty claim follows.
 - Unconditional: the dyadic sections `n ↦ φ(2ʲn+r)` of Euler's totient have
   an explicit rational basis, and the level-`e` span has dimension exactly
   `2ᵉ + 1` — `finrank_canonicalTotientKernel_eq`,
