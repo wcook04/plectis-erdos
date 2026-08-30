@@ -802,7 +802,18 @@ def cmd_replay(args: argparse.Namespace, root: Path) -> dict[str, Any]:
                 }
             )
             continue
-        fresh = run_lean_probe(root, source)
+        try:
+            fresh = run_lean_probe(root, source)
+        except Exception as exc:
+            results.append(
+                {
+                    "move_id": row.get("move_id"),
+                    "recorded_verdict": recorded_verdict,
+                    "replay": "runner_failed",
+                    "runner_error": type(exc).__name__,
+                }
+            )
+            continue
         results.append(
             {
                 "move_id": row.get("move_id"),

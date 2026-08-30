@@ -249,6 +249,67 @@ def check_replay_receipt_boundary(tmp: Path) -> None:
         assert not calls, "replay ran Lean against an invalid receipt"
 
 
+def check_replay_runner_failure(tmp: Path) -> None:
+    sessions_root = tmp / "replay-runner-failure-sessions"
+    source_path = tmp / "replay-runner-failure.lean"
+    source_path.write_text("example : True := by trivial\n", encoding="utf-8")
+    real_runner = workbench.run_lean_probe
+    receipt = {
+        "verdict": "kernel_accepted",
+        "detail": None,
+        "exit_code": 0,
+        "error_count": 0,
+        "sorry_count": 0,
+        "duration_seconds": 0.01,
+        "output_tail": "",
+    }
+    workbench.run_lean_probe = lambda root, source: receipt
+    try:
+        _run(
+            sessions_root,
+            [
+                "open",
+                "--session",
+                "runner-failure",
+                "--actor",
+                "outsider",
+                "--intent",
+                "replay runner boundary",
+            ],
+        )
+        _run(
+            sessions_root,
+            [
+                "probe",
+                "--session",
+                "runner-failure",
+                "--file",
+                str(source_path),
+            ],
+        )
+    finally:
+        workbench.run_lean_probe = real_runner
+
+    def unexpected_runner(root: Path, source: str) -> dict:
+        raise RuntimeError("replay runner internals failed")
+
+    workbench.run_lean_probe = unexpected_runner
+    try:
+        result = _run(
+            sessions_root,
+            ["replay", "--session", "runner-failure"],
+        )
+    finally:
+        workbench.run_lean_probe = real_runner
+    assert result["probes_replayed"] == 1
+    assert not result["all_match"]
+    replay = result["results"][0]
+    assert replay["recorded_verdict"] == "kernel_accepted"
+    assert replay["replay"] == "runner_failed"
+    assert replay["runner_error"] == "RuntimeError"
+    assert "replayed_verdict" not in replay
+
+
 def check_malformed_ledger_boundary(tmp: Path) -> None:
     """Every workbench command must receive a bounded ledger-read failure."""
     sessions_root = tmp / "malformed-ledger-sessions"
@@ -1660,6 +1721,7 @@ def main() -> int:
         check_session_path_boundaries(tmp)
         check_replay_path_boundary(tmp)
         check_replay_receipt_boundary(tmp)
+        check_replay_runner_failure(tmp)
         check_malformed_ledger_boundary(tmp)
         check_probe_runner_failures()
         check_probe_artifact_cleanup(tmp)
