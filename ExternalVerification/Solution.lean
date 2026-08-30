@@ -766,6 +766,11 @@ theorem exists_normalized_support_fraction_iff_exists_booleanMobiusCarry
       ∃ U : ℕ → ℤ, BooleanMobiusCarryCertificate p q U :=
   (portfolioClaims Unit).problem257BooleanMobiusCarry p q hq
 
+theorem half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips
+    (hskips : CofinalPositiveHalfGreedySkips) :
+    (1 / 2 : ℝ) ∈ mersenneAchievementSet :=
+  (portfolioClaims Unit).problem257BooleanMobiusExactRowDynamics hskips
+
 theorem rectangular_hp_threshold_eq_classical_iff
     (rho sigma : ℝ) (hrho : 0 ≤ rho) (hsigma : 1 + rho ≤ sigma) :
     hpThreshold rho sigma = 1 / 2 - 1 / Real.pi ^ 2 ↔
