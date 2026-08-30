@@ -57,8 +57,37 @@ def valid_review(response: dict) -> dict:
     }
 
 
+def test_mathematical_handoff_exposes_selector_without_route_invention() -> None:
+    question = next(
+        row
+        for row in handoffs.mathematical_questions()
+        if row["id"] == "XQ249-lcm-diagonal-supply"
+    )
+    compact = handoffs.compact_respondent_view(question)
+    full = handoffs.respondent_view(question)
+    for packet in (compact, full):
+        route_memory = packet["route_memory"]
+        assert route_memory["status"] == "unbound"
+        assert route_memory["problem_number"] == 249
+        assert route_memory["bindings"] == []
+        assert route_memory["command"] == (
+            "python3 scripts/query_route_memory.py --problem 249"
+        )
+        assert "current source digests" in route_memory["identity_contract"]
+        assert "no resume route was invented" in route_memory["unbound_reason"]
+
+    invalid = handoffs.route_memory_handoff(
+        {"domain": handoffs.MATH_DOMAIN, "problem": "249/257"}
+    )
+    assert invalid["status"] == "unbound"
+    assert invalid["bindings"] == []
+    assert "command" not in invalid
+    assert "frozen public problem selectors" in invalid["unbound_reason"]
+
+
 def main() -> int:
     assert handoffs.protocol_errors() == []
+    test_mathematical_handoff_exposes_selector_without_route_invention()
     packet = handoffs.question_packet(None)
     assert packet["packet_kind"] == "compact_index"
     assert packet["count"] == 6
