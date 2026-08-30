@@ -4191,7 +4191,23 @@ def search_packet(query: str, limit: int) -> dict[str, Any]:
         ) is not None:
             rank = -10 + hint_priority
         if rank is not None:
-            ranked.append((rank, f"claim:{claim['id']}", {"kind": "claim", **compact_claim(claim)}))
+            ranked.append(
+                (
+                    rank,
+                    f"claim:{claim['id']}",
+                    {
+                        "kind": "claim",
+                        **compact_claim(claim),
+                        # A search hit is a resumable handoff, not just a
+                        # status row. Keep its complete canonical route
+                        # bindings so readers do not lose the selected
+                        # problem at this bounded fan-in boundary.
+                        "route_memory": claim_route_memory_projection(
+                            claim["id"], claims
+                        ),
+                    },
+                )
+            )
 
     for row in atlas_declarations(atlas):
         rank = search_rank(
@@ -5989,42 +6005,11 @@ def claim_status_packet(status: str, limit: int) -> dict[str, Any]:
         claims["remaining_open_propositions"] if canonical_status == "open" else []
     )
     emitted_claims = matching_claims[:limit]
-    programme_routes = [
-        route
-        for route in all_entrypoints(claims)
-        if route.get("route_kind") == "mathematical_programme"
-    ]
     route_memory_by_claim = {}
     for claim in emitted_claims:
-        bindings = []
-        for route in programme_routes:
-            if (
-                claim["id"] not in route.get("core_claim_ids", [])
-                and claim["id"] not in route.get("problem_target_claim_ids", [])
-            ):
-                continue
-            problem_number = route_memory_problem_number(route)
-            if problem_number is None:
-                continue
-            bindings.append(
-                {
-                    "route_id": route["id"],
-                    "problem_number": problem_number,
-                    "command": (
-                        "python3 scripts/query_route_memory.py --problem "
-                        f"{problem_number} --route {route['id']}"
-                    ),
-                }
-            )
-        route_memory_by_claim[claim["id"]] = {
-            "status": "bound" if bindings else "unbound",
-            "bindings": bindings,
-        }
-        if not bindings:
-            route_memory_by_claim[claim["id"]]["unbound_reason"] = (
-                "claim does not resolve to a canonical mathematical programme; "
-                "no resume route was invented"
-            )
+        route_memory_by_claim[claim["id"]] = claim_route_memory_projection(
+            claim["id"], claims
+        )
     return {
         "kind": "claim_status",
         "authority_posture": "claim_registry_status_navigation_not_proof_authority",
@@ -6066,6 +6051,52 @@ def route_memory_problem_number(route: Mapping[str, Any]) -> int | None:
         if match:
             return int(match.group(1))
     return None
+
+
+def claim_route_memory_projection(
+    claim_id: str, claims: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Project every canonical programme route that can resume a claim."""
+    programme_routes = [
+        route
+        for route in all_entrypoints(claims)
+        if route.get("route_kind") == "mathematical_programme"
+    ]
+    bindings = []
+    for route in programme_routes:
+        if (
+            claim_id not in route.get("core_claim_ids", [])
+            and claim_id not in route.get("problem_target_claim_ids", [])
+        ):
+            continue
+        problem_number = route_memory_problem_number(route)
+        if problem_number is None:
+            continue
+        bindings.append(
+            {
+                "route_id": route["id"],
+                "problem_number": problem_number,
+                "command": (
+                    "python3 scripts/query_route_memory.py --problem "
+                    f"{problem_number} --route {route['id']}"
+                ),
+            }
+        )
+    projection = {
+        "status": "bound" if bindings else "unbound",
+        "bindings": bindings,
+        "authority_posture": "derived_resume_handoff_not_claim_or_proof_authority",
+        "identity_contract": (
+            "Bindings are complete canonical programme options for the claim; "
+            "they are not ranked and resolve current source digests when queried."
+        ),
+    }
+    if not bindings:
+        projection["unbound_reason"] = (
+            "claim does not resolve to a canonical mathematical programme; "
+            "no resume route was invented"
+        )
+    return projection
 
 
 def route_packet(route_id: str) -> dict[str, Any]:

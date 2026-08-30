@@ -1560,6 +1560,17 @@ def main() -> int:
     assert search["results"][0]["kind"] == "claim"
     assert search["results"][0]["id"] == "denominator_exclusion"
     assert len(search["results"]) <= 5
+    searched_claim = search["results"][0]
+    status_packet = claim_status_packet(searched_claim["status"], 100)
+    assert searched_claim["route_memory"] == status_packet["route_memory"][
+        "by_claim"
+    ][searched_claim["id"]]
+    assert searched_claim["route_memory"]["status"] == "bound"
+    assert any(
+        binding["route_id"] == "erdos249_certificate_story"
+        and binding["problem_number"] == 249
+        for binding in searched_claim["route_memory"]["bindings"]
+    )
 
     declaration_search = query("--search", "totientTail", "--limit", "1")
     assert declaration_search["results"][0]["kind"] == "declaration"
