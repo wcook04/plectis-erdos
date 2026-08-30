@@ -44,3 +44,13 @@ theorem downstream_conditional_rational_shell_bound
       ((whole.den * pfx.den : ℕ) : ℝ) * (K + 1) :=
   prefixDenominator_shell_power_bound_of_rational_difference
     whole pfx K X hpositive hX hupper
+
+/-- The external import also exposes the exact finite correction for a
+composite support multiplier.  This is a local divisor identity: it does not
+bound arbitrary defects or prove the open #257 irrationality statement. -/
+theorem downstream_composite_dilation_defect
+    (A : Set ℕ) {a x : ℕ} (ha : a ∈ A) (ha0 : 0 < a) (hx0 : 0 < x) :
+    supportCoeff A (a * x) =
+      supportCoeff A x + (if a ∣ x then 0 else 1) +
+        CompositeDilationDefect.compositeDilationDefect A a x :=
+  CompositeDilationDefect.supportCoeff_mul_eq_add_defect A ha ha0 hx0
