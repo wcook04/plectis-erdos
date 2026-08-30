@@ -542,6 +542,43 @@ def main() -> int:
                 )
             else:
                 raise AssertionError("nested docs symlink was accepted")
+    with tempfile.TemporaryDirectory(prefix="route-memory-descriptor-boundary-") as temp_dir:
+        boundary_root = Path(temp_dir)
+        regular = boundary_root / "regular.json"
+        regular.write_bytes(b"{}")
+        require(
+            route_memory._safe_read_bytes(
+                regular, error_code="source_unreadable", label="regular"
+            )
+            == b"{}",
+            "descriptor-safe route-memory reader rejected a regular file",
+        )
+        linked = boundary_root / "linked.json"
+        linked.symlink_to(regular)
+        try:
+            route_memory._safe_read_bytes(
+                linked, error_code="source_unreadable", label="linked"
+            )
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "unsafe_source_path",
+                f"descriptor-safe symlink rejection returned {exc.code}",
+            )
+        else:
+            raise AssertionError("descriptor-safe reader followed a symlink")
+        fifo = boundary_root / "input.fifo"
+        os.mkfifo(fifo)
+        try:
+            route_memory._safe_read_bytes(
+                fifo, error_code="source_unreadable", label="fifo"
+            )
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "unsafe_source_path",
+                f"descriptor-safe special-file rejection returned {exc.code}",
+            )
+        else:
+            raise AssertionError("descriptor-safe reader accepted a special file")
     with tempfile.TemporaryDirectory(prefix="route-memory-route-override-") as temp_dir:
         packet_path = Path(temp_dir) / "packet.json"
         packet_path.write_text("{}", encoding="utf-8")

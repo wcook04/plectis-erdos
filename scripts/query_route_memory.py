@@ -14,11 +14,13 @@ resume work without silently crossing a problem or an edited checkout.
 from __future__ import annotations
 
 import argparse
+import errno
 import hashlib
 import json
 import os
 import re
 import subprocess
+import stat
 import sys
 from pathlib import Path
 from typing import Any, Mapping
@@ -47,14 +49,46 @@ class RouteMemoryError(ValueError):
         super().__init__(f"{code}: {detail}")
 
 
+def _safe_read_bytes(
+    path: Path, *, error_code: str, label: str
+) -> bytes:
+    """Read one route-memory input without following a substituted path."""
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(path, flags)
+    except OSError as exc:
+        code = "unsafe_source_path" if exc.errno == errno.ELOOP else error_code
+        raise RouteMemoryError(code, label) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise RouteMemoryError("unsafe_source_path", label)
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        return b"".join(chunks)
+    except OSError as exc:
+        raise RouteMemoryError(error_code, label) from exc
+    finally:
+        os.close(descriptor)
+
+
 def _json(path: Path) -> dict[str, Any]:
     if _path_has_symlink_component(path):
         raise RouteMemoryError("unsafe_source_path", str(path))
     if not path.is_file() or path.is_symlink():
         raise RouteMemoryError("source_missing", str(path))
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        payload = _safe_read_bytes(
+            path, error_code="source_unreadable", label=str(path)
+        )
+        value = json.loads(payload)
+    except json.JSONDecodeError as exc:
         raise RouteMemoryError("source_unreadable", str(path)) from exc
     if not isinstance(value, dict):
         raise RouteMemoryError("source_shape", str(path))
@@ -69,7 +103,10 @@ def _source_digests(root: Path) -> dict[str, str]:
             raise RouteMemoryError("unsafe_source_path", relative)
         if not path.is_file() or path.is_symlink():
             raise RouteMemoryError("source_missing", relative)
-        digests[relative] = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+        payload = _safe_read_bytes(
+            path, error_code="source_unreadable", label=relative
+        )
+        digests[relative] = "sha256:" + hashlib.sha256(payload).hexdigest()
     return digests
 
 
@@ -106,7 +143,10 @@ def _research_source_digests(
             raise RouteMemoryError("unsafe_source_path", raw_path)
         if not path.is_file() or path.is_symlink():
             raise RouteMemoryError("research_source_missing", raw_path)
-        digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+        payload = _safe_read_bytes(
+            path, error_code="research_source_unreadable", label=raw_path
+        )
+        digest = "sha256:" + hashlib.sha256(payload).hexdigest()
         if row.get("content_digest") != digest:
             raise RouteMemoryError("research_source_stale", raw_path)
         digests[str(key)] = digest
@@ -401,7 +441,10 @@ def _safe_module_digest(root: Path, module: str) -> str:
         raise RouteMemoryError("unsafe_source_path", module)
     if not path.is_file() or path.is_symlink():
         raise RouteMemoryError("declaration_source_missing", module)
-    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+    payload = _safe_read_bytes(
+        path, error_code="declaration_source_unreadable", label=module
+    )
+    return "sha256:" + hashlib.sha256(payload).hexdigest()
 
 
 def _problem_module_owners(root: Path) -> dict[str, set[str]]:
@@ -739,7 +782,10 @@ def _load_packet(argument: str) -> dict[str, Any]:
         path = Path(argument)
         if _path_has_symlink_component(path):
             raise RouteMemoryError("unsafe_input_path", argument)
-        value = json.loads(path.read_text(encoding="utf-8"))
+        payload = _safe_read_bytes(
+            path, error_code="unsafe_input_path", label=argument
+        )
+        value = json.loads(payload)
     if not isinstance(value, dict):
         raise RouteMemoryError("packet_shape", argument)
     return value
