@@ -22,7 +22,9 @@ import contextlib
 import copy
 import io
 import json
+import os
 import re
+import stat
 import subprocess
 import sys
 from pathlib import Path
@@ -41,17 +43,61 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+class UnsafeColdCloneInput(ValueError):
+    """A cold-clone evaluator input is outside the regular checkout boundary."""
+
+
+def _safe_cold_clone_path(path: Path) -> Path:
+    """Reject checkout escapes and symbolic-link path components."""
+    root = Path(os.path.abspath(ROOT))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            raise UnsafeColdCloneInput(f"symlinked cold-clone input: {candidate}")
+        if current == root:
+            break
+        if current.parent == current:
+            raise UnsafeColdCloneInput(f"cold-clone input escaped checkout: {candidate}")
+        current = current.parent
+    return candidate
+
+
+def safe_read_text(rel: str) -> str:
+    """Read a public cold-clone surface through a no-follow regular descriptor."""
+    candidate = _safe_cold_clone_path(ROOT / rel)
+    if not candidate.is_file():
+        raise UnsafeColdCloneInput(f"cold-clone input is not a regular file: {candidate}")
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(candidate, flags)
+    except OSError as exc:
+        raise UnsafeColdCloneInput(
+            f"cold-clone input could not be opened safely: {candidate}"
+        ) from exc
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise UnsafeColdCloneInput(
+                f"cold-clone input is not a regular file: {candidate}"
+            )
+        with os.fdopen(descriptor, "r", encoding="utf-8") as stream:
+            descriptor = -1
+            return stream.read()
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 INDEXED_PROBLEM_NUMBERS = frozenset(
     row["erdos_number"]
-    for row in json.loads(
-        (ROOT / "docs" / "problems.json").read_text(encoding="utf-8")
-    )["problems"]
+    for row in json.loads(safe_read_text("docs/problems.json"))["problems"]
 )
 INDEXED_PROBLEM_ORDER = tuple(
     row["erdos_number"]
-    for row in json.loads(
-        (ROOT / "docs" / "problems.json").read_text(encoding="utf-8")
-    )["problems"]
+    for row in json.loads(safe_read_text("docs/problems.json"))["problems"]
 )
 INDEXED_PROBLEM_COUNT = len(INDEXED_PROBLEM_NUMBERS)
 QUERY = ROOT / "scripts" / "query_corpus.py"
@@ -285,7 +331,7 @@ PROOF_PLAN_QUERIES = {
 
 
 def read(rel: str) -> str:
-    return (ROOT / rel).read_text(encoding="utf-8")
+    return safe_read_text(rel)
 
 
 def quick_summary() -> dict[str, Any]:

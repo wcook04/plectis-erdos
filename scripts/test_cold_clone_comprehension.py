@@ -12,6 +12,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -241,8 +242,46 @@ def check_checker_child_environment() -> None:
     )
 
 
+def check_public_surface_file_boundary() -> None:
+    """The cold-clone evaluator must reject non-regular public surfaces."""
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        regular = root / "regular.txt"
+        regular.write_text("public fixture\n", encoding="utf-8")
+        directory = root / "directory"
+        directory.mkdir()
+        link = root / "link.txt"
+        link.symlink_to(regular)
+        fifo = root / "fifo"
+        try:
+            os.mkfifo(fifo)
+        except AttributeError:
+            fifo = None
+
+        with patch.object(diagnostic, "ROOT", root):
+            require(
+                diagnostic.safe_read_text("regular.txt") == "public fixture\n",
+                "cold-clone regular file could not be read",
+            )
+            for path in ("directory", "link.txt"):
+                try:
+                    diagnostic.safe_read_text(path)
+                except diagnostic.UnsafeColdCloneInput:
+                    pass
+                else:
+                    raise AssertionError(f"cold-clone {path} boundary escaped")
+            if fifo is not None:
+                try:
+                    diagnostic.safe_read_text("fifo")
+                except diagnostic.UnsafeColdCloneInput:
+                    pass
+                else:
+                    raise AssertionError("cold-clone FIFO boundary escaped")
+
+
 def main() -> int:
     check_checker_child_environment()
+    check_public_surface_file_boundary()
     with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
         route_memory_checks = check_route_memory_cold_clone()
     packets = diagnostic.collect_agent_packets()
