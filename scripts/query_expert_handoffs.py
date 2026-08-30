@@ -52,6 +52,7 @@ SEMANTIC_HANDOFF_ROOT_FAMILIES = (
     "conditional_carry_escape",
 )
 THREE_PRIME_LCM_FAMILY = "three_prime_lcm_cells"
+RANK_TWO_KERNEL_FAMILY = "rank_two_kernel_no_go"
 
 
 @lru_cache(maxsize=16)
@@ -265,7 +266,8 @@ def _live_source_declaration(
     if not source_path.is_file():
         raise ValueError(f"source declaration module is missing: {module}")
     declaration_pattern = re.compile(
-        r"^\s*(?:theorem|lemma|def|abbrev)\s+" + re.escape(name) + r"\b"
+        r"^\s*(?:@\[[^\]]*\]\s*)*"
+        r"(?:theorem|lemma|def|abbrev)\s+" + re.escape(name) + r"\b"
     )
     live_line = next(
         (
@@ -547,6 +549,169 @@ def three_prime_lcm_cells_handoff(
     }
 
 
+def rank_two_kernel_no_go_handoff(
+    palomar: Mapping[str, Any] | None = None,
+    claims: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Expose the next source-bound #269 finite-kernel no-go consumer."""
+    palomar = palomar or load_json(PALOMAR)
+    claims_document = claims or load_json(CLAIMS)
+    review_rows = _claim_family_rows(claims_document)
+    review = review_rows.get(RANK_TWO_KERNEL_FAMILY)
+    if not isinstance(review, dict):
+        raise ValueError("Claims review matrix lacks rank_two_kernel_no_go")
+    ranks = _canonical_family_ranks(palomar)
+    rank = ranks.get(RANK_TWO_KERNEL_FAMILY)
+    if rank is None:
+        raise ValueError("Palomar programme order lacks rank_two_kernel_no_go")
+    claim = next(
+        (
+            row
+            for row in claims_document.get("external_verification_packet", {}).get(
+                "main_results", []
+            )
+            if row.get("review_family") == RANK_TWO_KERNEL_FAMILY
+        ),
+        None,
+    )
+    if not isinstance(claim, dict):
+        raise ValueError("Claims lacks the three_prime_kernel_minor source claim")
+    source_module = str(claim.get("original_source"))
+    source_names = (
+        "kernel_235_origin",
+        "kernel_235_two",
+        "kernel_235_three",
+        "kernel_235_six",
+        "kernel_235_not_rankOne",
+        "kernel_235_minor_eq_neg_one_fifteen",
+    )
+    atlas = load_json(ATLAS)
+    declarations = [
+        _live_source_declaration(source_module, name, atlas)
+        for name in source_names
+    ]
+    wrapper_name = str(claim.get("wrapper_declaration"))
+    wrapper_module = "ExternalVerification/Solution.lean"
+    wrapper_pattern = re.compile(
+        r"^\s*theorem\s+" + re.escape(wrapper_name.rsplit(".", 1)[-1]) + r"\b"
+    )
+    wrapper_path = ROOT / wrapper_module
+    wrapper_line = next(
+        (
+            line_number
+            for line_number, line in enumerate(
+                wrapper_path.read_text(encoding="utf-8").splitlines(), start=1
+            )
+            if wrapper_pattern.search(line)
+        ),
+        None,
+    )
+    if wrapper_line is None:
+        raise ValueError(f"source file lacks wrapper declaration {wrapper_name}")
+    screening = [
+        row
+        for row in palomar.get("candidate_screening", [])
+        if row.get("family_id") == RANK_TWO_KERNEL_FAMILY
+    ]
+    if len(screening) != 1:
+        raise ValueError("Palomar must expose one rank-two screening row")
+    canonical_relations = [
+        row
+        for row in palomar.get("selection_contract", {}).get(
+            "family_relations", []
+        )
+        if row.get("from_family_id") == RANK_TWO_KERNEL_FAMILY
+    ]
+    canonical_relations.sort(
+        key=lambda row: (
+            ranks.get(str(row.get("to_family_id")), {}).get("problem", 10**9),
+            ranks.get(str(row.get("to_family_id")), {}).get(
+                "programme_position", 10**9
+            ),
+        )
+    )
+    return {
+        "family": {
+            "family_id": RANK_TWO_KERNEL_FAMILY,
+            "problem": rank["problem"],
+            "authority_rank": {
+                "programme_position": rank["programme_position"],
+                "basis": (
+                    "docs/PALOMAR_RESULT_SHOWCASE.json::selection_contract."
+                    "programme_family_order"
+                ),
+                "boundary": (
+                    "Within-problem order only; no cross-problem rank is inferred."
+                ),
+            },
+            "palomar_disposition": screening[0].get("disposition"),
+            "proof_status": review.get("contribution_class"),
+            "proof_status_authority": (
+                "docs/claims.json::external_verification_packet.review_matrix"
+                ".families[rank_two_kernel_no_go].contribution_class"
+            ),
+            "summary": review.get("summary"),
+            "boundary": review.get("boundary"),
+            "claim_id": claim.get("id"),
+        },
+        "hard_mechanism": (
+            "The exact 2,3,5 lattice-kernel fixtures evaluate the origin, pure "
+            "2- and 3-channel points, and their mixed point; the cross-product "
+            "minor is nonzero (exactly -1/15), so this displayed kernel is not "
+            "rank one."
+        ),
+        "source_declarations": declarations,
+        "wrapper": {
+            "declaration": wrapper_name,
+            "module": wrapper_module,
+            "line": wrapper_line,
+            "source_authority": "direct Lean source declaration",
+            "claim_authority": "docs/claims.json::claims[three_prime_kernel_minor]",
+        },
+        "natural_friction_evidence": [
+            review.get("boundary"),
+            "The finite minor rules out a separable shortcut but does not create "
+            "a cofinal carry-escape producer.",
+        ],
+        "open_producer_boundaries": {
+            "endpoint": "Failure of rank one does not itself imply irrationality.",
+            "conditional_carry": (
+                "Palomar’s contrary_evidence_for edge to conditional_carry_escape "
+                "does not supply the cofinal residue-window escape or the actual-"
+                "series-to-carry bridge."
+            ),
+        },
+        "canonical_relations": canonical_relations,
+        "related_families": [
+            {
+                "family": _family_card(
+                    "conditional_carry_escape", ranks, palomar, review_rows
+                ),
+                "relation": "contrary_evidence_for",
+                "relation_class": "canonical_palomar_edge",
+                "reason": (
+                    "The non-rank-one minor blocks a separable carry shortcut; "
+                    "it does not supply conditional carry escape."
+                ),
+            }
+        ],
+        "relation_authority": (
+            "The family position and contrary-evidence edge are read from Palomar; "
+            "source status and the non-implication boundary come from Claims."
+        ),
+        "authority": {
+            "claims": "docs/claims.json::claims[three_prime_kernel_minor] and external_verification_packet.review_matrix.families[rank_two_kernel_no_go]",
+            "palomar": "docs/PALOMAR_RESULT_SHOWCASE.json::candidate_screening, selection_contract.programme_family_order, and family_relations",
+            "source": "ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean",
+            "wrapper_source": "ExternalVerification/Solution.lean",
+        },
+        "follow": {
+            "family": "python3 scripts/query_semantic.py family-relations rank_two_kernel_no_go",
+            "problem": "python3 scripts/query_corpus.py --route erdos_269",
+        },
+    }
+
+
 def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     """Join the expert index to canonical endpoint-facing family packets.
 
@@ -555,15 +720,23 @@ def semantic_endpoint_handoff_packet() -> dict[str, Any]:
     relation-array order never becomes a ranking rule.
     """
     palomar = load_json(PALOMAR)
-    claims = _claim_family_rows(load_json(CLAIMS))
+    claims_document = load_json(CLAIMS)
+    claims = _claim_family_rows(claims_document)
     ranks = _canonical_family_ranks(palomar)
     roots = [
         _family_hierarchy(family_id, ranks, palomar, claims)
         for family_id in SEMANTIC_HANDOFF_ROOT_FAMILIES
     ]
     supporting_families = [
-        three_prime_lcm_cells_handoff(palomar, load_json(CLAIMS))
+        three_prime_lcm_cells_handoff(palomar, claims_document),
+        rank_two_kernel_no_go_handoff(palomar, claims_document),
     ]
+    supporting_families.sort(
+        key=lambda row: (
+            row["family"]["problem"],
+            row["family"]["authority_rank"]["programme_position"],
+        )
+    )
     return {
         "question": (
             "Which endpoint-facing checked interfaces, supporting mechanisms, "

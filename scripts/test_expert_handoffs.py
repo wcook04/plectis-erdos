@@ -165,8 +165,18 @@ def test_semantic_endpoint_handoff_uses_canonical_claims_and_palomar() -> None:
 
 def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries() -> None:
     packet = handoffs.semantic_endpoint_handoff_packet()
-    assert len(packet["supporting_families"]) == 1
-    handoff = packet["supporting_families"][0]
+    supporting = {
+        row["family"]["family_id"]: row
+        for row in packet["supporting_families"]
+    }
+    assert set(supporting) == {
+        "rank_two_kernel_no_go",
+        "three_prime_lcm_cells",
+    }
+    assert [
+        row["family"]["family_id"] for row in packet["supporting_families"]
+    ] == ["rank_two_kernel_no_go", "three_prime_lcm_cells"]
+    handoff = supporting["three_prime_lcm_cells"]
     family = handoff["family"]
     assert family["family_id"] == "three_prime_lcm_cells"
     assert family["problem"] == 269
@@ -240,6 +250,35 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     ]
     assert handoff["follow"]["family"] == (
         "python3 scripts/query_semantic.py family-relations three_prime_lcm_cells"
+    )
+
+    rank_two = supporting["rank_two_kernel_no_go"]
+    assert rank_two["family"]["authority_rank"]["programme_position"] == 3
+    assert rank_two["family"]["palomar_disposition"] == "supporting_finite_no_go"
+    assert rank_two["family"]["proof_status"] == "no-go result"
+    assert rank_two["family"]["claim_id"] == "three_prime_kernel_minor"
+    assert "nonzero (exactly -1/15)" in rank_two["hard_mechanism"]
+    assert {
+        row["name"] for row in rank_two["source_declarations"]
+    } == {
+        "kernel_235_origin",
+        "kernel_235_two",
+        "kernel_235_three",
+        "kernel_235_six",
+        "kernel_235_not_rankOne",
+        "kernel_235_minor_eq_neg_one_fifteen",
+    }
+    assert rank_two["wrapper"]["declaration"] == (
+        "Erdos249257.ExternalVerification.kernel_235_minor_eq_neg_one_fifteen"
+    )
+    assert rank_two["related_families"][0]["family"]["family_id"] == (
+        "conditional_carry_escape"
+    )
+    assert rank_two["related_families"][0]["relation_class"] == (
+        "canonical_palomar_edge"
+    )
+    assert rank_two["canonical_relations"][0]["relation"] == (
+        "contrary_evidence_for"
     )
 
 
