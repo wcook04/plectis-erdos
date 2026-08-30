@@ -316,6 +316,36 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
+      "id": "actual_lcm_orbit_separation",
+      "problem": 249,
+      "review_family": "actual_lcm_orbit_separation",
+      "claim_id": "actual_lcm_orbit_nonintegrality_frontier",
+      "contribution_class": "conditional reduction",
+      "original_declaration": "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+      "original_source": "Erdos249257/TotientActualLcmOrbitSeparation.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+      "statement": "A cofinal quantitative separation supply for the actual power-two LCM tail orbit implies irrationality of the binary totient series.",
+      "boundary": "The cofinal separation supply is an open premise, stronger than mere non-integrality; this sufficient route is not an equivalence and leaves the punctured/top-edge boundary and the Erdős #249 endpoint open.",
+      "canonical_claim_status": "supports_registered_claim_family:actual_lcm_orbit_nonintegrality_frontier",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "totient_carry_anti_compression",
+      "problem": 249,
+      "review_family": "totient_carry_anti_compression",
+      "claim_id": "totient_carry_kernel_anti_compression",
+      "contribution_class": "locally proved necessary consequence; novelty unassessed",
+      "original_declaration": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+      "original_source": "Erdos249257/TotientTailCarryPeriod.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+      "statement": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry has dyadic sections uniformly eventually periodic modulo its multiplier and canonical carry-section span dimension at least 2^e − 1 for every e.",
+      "boundary": "This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open.",
+      "canonical_claim_status": "supports_registered_claim_family:totient_carry_kernel_anti_compression",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
       "id": "prime_gap_unboundedness",
       "problem": 251,
       "review_family": "coefficient_only_no_go",
@@ -339,6 +369,20 @@
       "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap",
       "statement": "The prime-value dyadic series is irrational exactly when the prime-gap dyadic series is irrational.",
       "boundary": "The equivalence does not prove irrationality of either series.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "dyadic_tail_integrality_classification",
+      "problem": 251,
+      "review_family": "dyadic_tail_integrality_classification",
+      "contribution_class": "abstract Lean-checked classification and normal form; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+      "original_source": "ErdosProblems/Erdos251/PrimeGapDyadicTail.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral",
+      "statement": "For any integer-digit real dyadic tail recurrence T(N + 1) = 2*T(N) - g(N + 1), the initial value T(0) is irrational exactly when every positive-length tail shift is nonintegral.",
+      "boundary": "This exact normal form covers arbitrary integer-digit dyadic tail recurrences with the declared real state type; it does not supply a cofinal nonintegral shift for the consecutive-prime-gap recurrence. The prime-specific producer remains open, so no prime-gap irrationality, novelty, significance, or external-review claim is made and Erdős #251 remains open.",
       "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
@@ -370,6 +414,36 @@
       "statement": "For every integer base b >= 2, the full-support Erdos-Borwein series is irrational.",
       "boundary": "This is the classical full-support theorem, not universal Erdos #257.",
       "canonical_claim_status": "supports_registered_claim_family:eb_full_support",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "erdos_support_pairwise_coprime",
+      "problem": 257,
+      "review_family": "pairwise_coprime_support",
+      "claim_id": "support_families",
+      "contribution_class": "formalisation of an existing theorem",
+      "original_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
+      "original_source": "Erdos249257/CertificateKernel.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
+      "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series is irrational.",
+      "boundary": "This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.",
+      "canonical_claim_status": "supports_registered_claim_family:support_families",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "periodic_nonnegative_weight_irrationality",
+      "problem": 257,
+      "review_family": "periodic_nonnegative_weight_irrationality",
+      "claim_id": "periodic_nonnegative_weight_irrationality",
+      "contribution_class": "formalised here; novelty unassessed",
+      "original_declaration": "Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic",
+      "original_source": "Erdos249257/CertificateKernel.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
+      "statement": "For every integer base b >= 2 and every eventually-periodic nonnegative rational coefficient sequence γ with a positive value at a positive index in its periodic region, the series sum_a γ(a)/(b^a - 1) is irrational.",
+      "boundary": "This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed.",
+      "canonical_claim_status": "supports_registered_claim_family:periodic_nonnegative_weight_irrationality",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
     },
@@ -427,6 +501,21 @@
       "statement": "A rational support value with a positive support seed and denominator 2^c*v produces a positive natural shifted tail state with an exact binary recurrence and a modular doubling orbit modulo v.",
       "boundary": "This state-extraction theorem does not exclude rational infinite supports or settle universal Erdős #257; the support and rational-value hypotheses remain explicit.",
       "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "boolean_mobius_carry",
+      "problem": 257,
+      "review_family": "boolean_mobius_carry",
+      "claim_id": "boolean_mobius_carry",
+      "contribution_class": "locally proved exact equivalence plus conditional consequences; novelty unassessed",
+      "original_declaration": "Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+      "original_source": "Erdos249257/BooleanMobiusCarry.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+      "statement": "For p : ℤ and q > 0, a nonempty positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate exists, with positive square-root-bounded integer orbit, divisible carry differences, and support reconstructed from its Boolean Möbius transform.",
+      "boundary": "The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made.",
+      "canonical_claim_status": "supports_registered_claim_family:boolean_mobius_carry",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
     },
@@ -489,36 +578,6 @@
       "novelty_status": "unassessed_no_priority_claim"
     },
     {
-      "id": "erdos_support_pairwise_coprime",
-      "problem": 257,
-      "review_family": "pairwise_coprime_support",
-      "claim_id": "support_families",
-      "contribution_class": "formalisation of an existing theorem",
-      "original_declaration": "Erdos249257.irrational_erdosSupportSeries_pairwise_coprime",
-      "original_source": "Erdos249257/CertificateKernel.lean",
-      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_erdosSupportSeries_pairwise_coprime",
-      "statement": "For every integer base b >= 2 and every infinite pairwise-coprime support A with summable reciprocal mass, the support-restricted Mersenne series is irrational.",
-      "boundary": "This is the pairwise-coprime support theorem, not universal Erdos #257; the infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit.",
-      "canonical_claim_status": "supports_registered_claim_family:support_families",
-      "local_proof_provenance": "proved_in_this_repository",
-      "novelty_status": "unassessed_no_priority_claim"
-    },
-    {
-      "id": "periodic_nonnegative_weight_irrationality",
-      "problem": 257,
-      "review_family": "periodic_nonnegative_weight_irrationality",
-      "claim_id": "periodic_nonnegative_weight_irrationality",
-      "contribution_class": "formalised here; novelty unassessed",
-      "original_declaration": "Erdos249257.irrational_ratWeightSeries_eventuallyPeriodic",
-      "original_source": "Erdos249257/CertificateKernel.lean",
-      "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_ratWeightSeries_eventuallyPeriodic",
-      "statement": "For every integer base b >= 2 and every eventually-periodic nonnegative rational coefficient sequence γ with a positive value at a positive index in its periodic region, the series sum_a γ(a)/(b^a - 1) is irrational.",
-      "boundary": "This is the nonnegative rational eventually-periodic coefficient theorem; its nonnegativity, eventual periodicity, and positive-tail hypotheses remain explicit, and the broader mixed-sign periodic theorem is not claimed.",
-      "canonical_claim_status": "supports_registered_claim_family:periodic_nonnegative_weight_irrationality",
-      "local_proof_provenance": "proved_in_this_repository",
-      "novelty_status": "unassessed_no_priority_claim"
-    },
-    {
       "id": "newton_small_translation",
       "problem": 1041,
       "review_family": "translation_avoidance",
@@ -573,6 +632,20 @@
       "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
       "local_proof_provenance": "proved_in_this_repository",
       "novelty_status": "unassessed_no_priority_claim"
+    },
+    {
+      "id": "rectangular_hp_threshold",
+      "problem": 1049,
+      "review_family": "height_and_pade_arithmetic",
+      "contribution_class": "locally proved sharp model-specific no-go; novelty unassessed",
+      "original_declaration": "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff",
+      "original_source": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+      "wrapper_declaration": "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff",
+      "statement": "For the explicit rectangular two-function exponent model, with real rho and sigma satisfying 0 <= rho and 1 + rho <= sigma, the threshold equals 1/2 - 1/pi^2 exactly when rho = 0 and sigma = 1.",
+      "boundary": "This is a sharp no-go only for the explicit rectangular two-function model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Pade or Hermite-Pade no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open.",
+      "canonical_claim_status": "comparator_interface_not_registered_as_canonical_claim",
+      "local_proof_provenance": "proved_in_this_repository",
+      "novelty_status": "unassessed_no_priority_claim"
     }
   ],
   "review_matrix": [
@@ -595,7 +668,7 @@
         {
           "id": "factorial_channel_and_projection_rigidity",
           "contribution_class": "locally proved result; novelty unassessed",
-          "summary": "Finite channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.",
+          "summary": "Finite quotient-band channel factorisation and breakpoint, channel congruences, a two-term prime-channel corrector, and endpoint-weighted projection rigidity.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "represented_by_isolated_headline",
           "boundary": "These finite and structural results do not produce a cofinal obstruction."
@@ -632,11 +705,16 @@
       "families": [
         {
           "id": "centered_state_dynamics",
-          "contribution_class": "locally proved result; novelty unassessed",
-          "summary": "Exact update and defect identities, scale equivariance, zero absorption, and eventual recovery of the Sylvester recurrence.",
-          "evidence_mode": "Lean kernel",
-          "comparator_disposition": "represented_by_selected_boundary_theorems",
-          "boundary": "The recovery theorem requires eventual centred-state vanishing."
+          "contribution_class": "locally proved signed recovery/rigidity theorem; novelty unassessed",
+          "summary": "Under exact natural C/D dynamics with a > 1, C > 0, E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, boundedNegativePart_eventually_zero forces E = 0 eventually. centeredState_eventually_zero supplies the nonnegative stabilization mechanism, and sylvesterNext_eventually_of_centered_zero recovers eventual Sylvester recurrence when the next tail is nonzero.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "ErdosProblems.Erdos243.boundedNegativePart_eventually_zero",
+            "ErdosProblems.Erdos243.centeredState_eventually_zero",
+            "ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero"
+          ],
+          "boundary": "The signed theorem has a C D : ℕ → ℕ, E : ℕ → ℤ, and B : ℕ with all exact hypotheses explicit: a > 1, C > 0, C(n + 1) + D(n) = a(n) · C(n), D(n + 1) = a(n) · D(n), E is the centered state D − (a − 1)C, |E| < C, a uniform lower bound on E, and division-free normalized vanishing. It excludes persistent bounded negative behaviour and forces eventual centered defect zero; centered-zero plus an eventually nonzero next tail recovers Sylvester, but no reciprocal-tail irrationality follows. The unbounded negative mixed-sign branch and the prime-specific producer remain open. This is distinct from the periodic negative-orbit and cofinally bounded-negative no-go families; no novelty, priority, significance, or external-review claim is made, and no unrestricted #243 solution follows."
         },
         {
           "id": "negative_orbit_no_go",
@@ -741,6 +819,56 @@
           "boundary": "The witness is synthetic: it does not assert that its forcing letters are actual totient differences, does not address nonlinear combinations, and leaves the unbounded certificate supply for Erdős #249 open."
         },
         {
+          "id": "actual_lcm_orbit_separation",
+          "contribution_class": "conditional reduction",
+          "summary": "A cofinal quantitative 1/32 separation supply at canonically guarded odd ranks transfers through the explicit raw-block approximation and error radius to the existing half-word/signed-margin irrationality consumer. The landed actual-LCM sign/top-edge analysis is supporting and contrary-boundary evidence: positivity leaves the true survivor negative, and integrality forces the exact top-edge residue.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply",
+            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply",
+            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitSeparationSupply",
+            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_trueEndpointSurvivor_neg",
+            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue",
+            "Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailDiff_shift_pos"
+          ],
+          "boundary": "The quantitative 1/32 separation supply is sufficient but stronger than mere non-integrality, is not an equivalence, and remains open. The sign positivity alone does not exclude the negative true survivor; the top-edge forcing does not exclude that residue or supply cofinal non-integrality. These source declarations are supporting/contrary-boundary evidence, not a second actual-LCM family, and the punctured/top-edge boundary and #249 endpoint remain open."
+        },
+        {
+          "id": "first_harmonic_pivot_decomposition",
+          "contribution_class": "conditional reduction",
+          "summary": "The supplier fibre is an exact prime-image/fibre bijection, while a checked finite counterexample shows that supplier-prime global isolation fails. The load-bearing result is an exact four-term first-harmonic decomposition; under the explicit PivotBudgetAt budgets, the centred real-part bound and three contribution bounds give the 9X/10 gap and a finite certificate, and the conditional pivot-residual-decorrelation theorem transfers a cofinal supply to irrationality.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "Erdos249257.TotientTailPeriodKiller.mem_pivotFiber_iff_exists_supplierPrime",
+            "Erdos249257.TotientTailPeriodKiller.pivotBaseOfPrime_injective_on_supplierPrimes",
+            "Erdos249257.TotientTailPeriodKiller.image_pivotSupplierPrimes_eq_pivotFiber",
+            "Erdos249257.TotientTailPeriodKiller.supplierPrime_not_globally_isolated_counterexample",
+            "Erdos249257.TotientTailPeriodKiller.windowFirstExp_sum_eq_pivot_decomposition",
+            "Erdos249257.TotientTailPeriodKiller.PivotBudgetAt",
+            "Erdos249257.TotientTailPeriodKiller.first_harmonic_gap_of_pivotBudgetAt",
+            "Erdos249257.TotientTailPeriodKiller.DTWPivotResidualDecorrelation",
+            "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation"
+          ],
+          "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
+        },
+        {
+          "id": "totient_carry_anti_compression",
+          "contribution_class": "locally proved necessary consequence; novelty unassessed",
+          "summary": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have dyadic sections uniformly eventually periodic modulo its multiplier while its canonical carry-section span has dimension at least 2^e − 1 for every e. This is the orbit-level quotient-periodicity/anti-compression conjunction, distinct from the coefficient-side kernel-rank family.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+            "Erdos249257.finrank_canonicalCarryKernel_ge",
+            "Erdos249257.carrySectionsEventuallyPeriodicMod_of_shift_dvd",
+            "Erdos249257.totient_forcing_vanishes_mod_of_dvd_multiplier",
+            "Erdos249257.totient_carry_modEq_geometric_of_dvd_multiplier"
+          ],
+          "boundary": "This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open."
+        },
+        {
           "id": "totient_finite_denominator_exclusion",
           "contribution_class": "finite computation",
           "summary": "A Farey denominator exclusion through 7.96e34, sharp for its selected window, and diagonal certificates through t=82.",
@@ -803,6 +931,20 @@
           "boundary": "The concrete prime-gap producer remains missing."
         },
         {
+          "id": "dyadic_tail_integrality_classification",
+          "contribution_class": "abstract Lean-checked classification and normal form; novelty unassessed",
+          "summary": "For any integer-digit dyadic tail recurrence T(N+1) = 2*T(N) - g(N+1), the rational h-shift is integral exactly when the reduced denominator of T(N) divides 2^h - 1, equivalently when 2^h is congruent to 1 modulo that denominator. For the real recurrence, the load-bearing normal form says that irrationality of T(0) is equivalent to every positive tail shift being nonintegral; the eventual-integrality equivalence and denominator/order laws are supporting mechanism evidence.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne",
+            "ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one",
+            "ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift",
+            "ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral"
+          ],
+          "boundary": "These exact statements cover arbitrary integer-digit dyadic tail recurrences with the declared rational and real state types; they classify integrality and give an irrationality normal form but do not supply a cofinal nonintegral shift for the consecutive-prime-gap recurrence. The generic hypotheses therefore do not close the prime-specific producer gap: no prime-gap irrationality, novelty, significance, or external review is claimed, and Erdős #251 remains open. This is one abstract classification family, distinct from prime_gap_reformulation, not a duplicate frontier claim."
+        },
+        {
           "id": "totient_shift_propagation",
           "contribution_class": "locally proved result; novelty unassessed",
           "summary": "Odd rational denominators give totient-length integral shifts, and integrality propagates through the recurrence.",
@@ -841,12 +983,20 @@
           "boundary": "A finite-support denominator theorem does not settle an infinite-support sum."
         },
         {
-          "id": "rational_support_constraints",
-          "contribution_class": "conditional reduction",
-          "summary": "Rational infinite supports force unbounded scaled tails, sublogarithmic zero windows, and reciprocal-mass constraints.",
-          "evidence_mode": "Lean kernel",
-          "comparator_disposition": "not_selected_deep_support_vocabulary",
-          "boundary": "The constraints do not exclude every infinite support."
+          "id": "boolean_mobius_carry",
+          "contribution_class": "locally proved exact equivalence plus conditional consequences; novelty unassessed",
+          "summary": "For p : ℤ and q > 0, a nonempty normalized positive-index support with erdosSupportSeries 2 A = p/q exists exactly when a quotient-only Boolean–Möbius carry certificate U exists. The certificate has U 0 = p, positive U, the square-root bound U(N) ≤ q(2√N + 4), q-divisible carry differences, and a Boolean Möbius transform; the converse reconstructs the support from that transform. This quotient-level equivalence is distinct from the shifted natural-tail state family.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "Erdos249257.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry",
+            "Erdos249257.BooleanMobiusCarryCertificate",
+            "Erdos249257.binaryCoeffSeries_rational_iff_exists_temperedBinaryOrbit",
+            "Erdos249257.one_div_oddOrder_le_reciprocalMass_of_support_fraction",
+            "Erdos249257.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction",
+            "Erdos249257.supportCoeffZeroWindow_length_le_eps_logb_add"
+          ],
+          "boundary": "The equivalence is stated at the existence level with q > 0, 0 ∉ A, and a positive support witness; it gives no contradiction, no universal Erdős #257 irrationality result, and no producer of cofinally nonintegral shifts for the actual recurrence. The generic tempered-orbit theorem and the reciprocal-mass, unbounded-tail, and zero-window results are subordinate consequences, not separate families; the zero-window constant depends on the support and numerator and is not uniform. This does not settle every infinite support, and no novelty, priority, significance, external-review, or unrestricted #257 endpoint claim is made."
         },
         {
           "id": "shifted_odd_tail_state",
@@ -923,10 +1073,10 @@
         {
           "id": "half_and_twenty_one_frontiers",
           "contribution_class": "conditional reduction and no-go result",
-          "summary": "Exact greedy characterisations, finite-support exclusions, and the odd 2-adic two-thirds-band bound isolate local constraints around the remaining 1/2 and 1/21 alternatives.",
+          "summary": "Exact greedy characterisations, finite-support exclusions, the odd 2-adic two-thirds-band bound, and two conditional rational-half countermodel frontiers isolate local constraints around the remaining 1/2 and 1/21 alternatives.",
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
-          "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally but does not establish reachability or orbit avoidance."
+          "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents."
         }
       ]
     },
@@ -975,20 +1125,26 @@
           "boundary": "The finite alphabet does not supply the needed carry escape."
         },
         {
-          "id": "pairwise_coprime_support",
-          "contribution_class": "formalisation of an existing theorem",
-          "summary": "Infinite pairwise-coprime supports with summable reciprocal mass have irrational Mersenne support series by an adaptive CRT and weighted coefficient certificate argument.",
-          "evidence_mode": "Lean kernel plus Comparator",
-          "comparator_disposition": "targeted_pairwise_coprime_support",
-          "boundary": "This structured support theorem does not settle arbitrary infinite supports; its infinitude, pairwise-coprimality, and summable-reciprocal hypotheses remain explicit."
-        },
-        {
           "id": "conditional_carry_escape",
           "contribution_class": "conditional reduction",
           "summary": "Cofinal local-window residue escape would rule out bounded positive carries after an unproved rationality-to-carry bridge.",
           "evidence_mode": "Lean kernel",
           "comparator_disposition": "not_selected_unproved_bridge_and_deep_predicates",
           "boundary": "The producer and actual-series identification are missing."
+        },
+        {
+          "id": "weighted_phase_carry_observer",
+          "contribution_class": "locally proved result; novelty unassessed",
+          "summary": "An exact weighted-phase carry recurrence splits into a finite residue digit and an uncontrolled integral quotient coboundary; an explicit function-faithful finite-dimensional observer then forces finite realised span.",
+          "evidence_mode": "Lean kernel",
+          "comparator_disposition": "not_selected_pending_wrapper_and_statement_isolation",
+          "declarations": [
+            "ErdosProblems.Erdos269.carry_eq_residueDigit_add_coboundary",
+            "ErdosProblems.Erdos269.carryResidue_mem_interval",
+            "ErdosProblems.Erdos269.residueDigit_mem_interval",
+            "ErdosProblems.Erdos269.finite_realisedSpan_of_factorisation"
+          ],
+          "boundary": "The recurrence supplies a finite residue coordinate but leaves an uncontrolled integral quotient coboundary; it proves neither a finite-state quotient nor a literal infinite realised span. Finite realised span requires an explicit factorisation through a finite-dimensional function-faithful observer, and scalar evaluation alone is insufficient. No rationality or irrationality conclusion follows; the actual three-prime running-LCM bridge and cofinal escape remain open."
         },
         {
           "id": "three_prime_finite_search",
@@ -1108,11 +1264,17 @@
         },
         {
           "id": "height_and_pade_arithmetic",
-          "contribution_class": "locally proved result and finite arithmetic; novelty unassessed",
-          "summary": "Exact height-region inclusions and exclusions, Padé denominator-exponent bounds, and a rectangular Hermite-Padé threshold no-go are checked.",
-          "evidence_mode": "Lean kernel",
-          "comparator_disposition": "not_selected_multiple_scoped_arithmetic_families",
-          "boundary": "The analytic remainder and nonvanishing input remain untreated."
+          "contribution_class": "locally proved sharp model-specific no-go; novelty unassessed",
+          "summary": "For the explicit rectangular two-function exponent model, the cleared gap is nonpositive throughout rho >= 0 and 1 + rho <= sigma, and the threshold is at most 1/2 - 1/pi^2 with equality exactly at rho = 0, sigma = 1. The gap sign and unique-zero mechanism support this sharp threshold no-go within the wider height-and-Padé arithmetic family.",
+          "evidence_mode": "Lean kernel plus Comparator",
+          "comparator_disposition": "targeted",
+          "declarations": [
+            "ErdosProblems.Erdos1049.hpClearedGap_nonpos",
+            "ErdosProblems.Erdos1049.hpClearedGap_eq_zero_iff",
+            "ErdosProblems.Erdos1049.rectangular_hp_threshold_le_classical",
+            "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff"
+          ],
+          "boundary": "This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
         }
       ]
     }
@@ -1145,9 +1307,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:4ff586aab1cd5b27436990d79848add116991847eb0f63e377fdb1101a601b19",
+    "owner_digest": "sha256:173f50f015366a063839a46cd70cea5c477dceb7e58fdf1b62f96275a9c831ca",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:e036d61b7a1e8cb292cde09d6043181c129b9914b0153ae44e2912dbd36357a1",
+    "projection_digest": "sha256:65f303ab83ded2079148c05f37e208dbe208e329d74f30e59bc33038bccd7269",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1595,11 +1757,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 13,
+          "family_count": 15,
           "by_class": {
             "not_selected": 4,
             "represented_by": 1,
-            "targeted": 8
+            "targeted": 10
           },
           "dispositions": {
             "totient_kernel_basis": "targeted",
@@ -1610,6 +1772,8 @@
             "stern_brocot_run_fibonacci_stability": "targeted",
             "stern_brocot_cylinder_law": "targeted",
             "lcm_factor_ideal_shift_algebra_no_go": "targeted",
+            "actual_lcm_orbit_separation": "targeted",
+            "first_harmonic_pivot_decomposition": "targeted",
             "totient_finite_denominator_exclusion": "not_selected_finite_family_has_separate_receipt",
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
@@ -1689,15 +1853,16 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 5,
+          "family_count": 6,
           "by_class": {
             "not_selected": 2,
             "represented_by": 1,
-            "targeted": 2
+            "targeted": 3
           },
           "dispositions": {
             "prime_gap_reformulation": "targeted",
             "integral_shift_classification": "not_selected_abstract_family_represented_in_manifest",
+            "dyadic_tail_integrality_classification": "targeted",
             "totient_shift_propagation": "represented_by_integral_shift_family",
             "small_mismatch_criterion": "not_selected_open_producer_hypothesis",
             "coefficient_only_no_go": "targeted_unboundedness_theorem_only"
@@ -1762,11 +1927,11 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 9,
+          "family_count": 12,
           "by_class": {
             "not_applicable": 1,
             "not_selected": 1,
-            "targeted": 7
+            "targeted": 10
           },
           "dispositions": {
             "finite_period_noncollapse": "targeted",
@@ -1774,6 +1939,9 @@
             "shifted_odd_tail_state": "targeted",
             "composite_dilation_defect_identity": "targeted",
             "known_irrational_supports": "targeted_full_support_representative",
+            "pairwise_coprime_support": "targeted_pairwise_coprime_support",
+            "periodic_nonnegative_weight_irrationality": "targeted_strongest_nonnegative_rational_weight",
+            "orthogonal_petal_sunflower_reduction": "targeted_conditional_sunflower_reduction",
             "squarefree_support": "not_applicable_to_external_irrationality_input",
             "achievement_set_geometry": "targeted_measure_theorem",
             "restricted_achievement_sets": "targeted_measure_dichotomy",
@@ -1915,10 +2083,10 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 7,
+          "family_count": 8,
           "by_class": {
             "not_applicable": 2,
-            "not_selected": 1,
+            "not_selected": 2,
             "represented_by": 2,
             "targeted": 2
           },
@@ -1929,6 +2097,7 @@
             "rank_two_kernel_no_go": "targeted",
             "dyadic_block_alphabet": "represented_by_three_prime_structure_target",
             "conditional_carry_escape": "not_selected_unproved_bridge_and_deep_predicates",
+            "weighted_phase_carry_observer": "not_selected_pending_wrapper_and_statement_isolation",
             "three_prime_finite_search": "not_applicable_not_a_lean_theorem"
           }
         }
@@ -2177,9 +2346,9 @@
           "family_count": 7,
           "by_class": {
             "not_applicable": 1,
-            "not_selected": 2,
+            "not_selected": 1,
             "represented_by": 2,
-            "targeted": 2
+            "targeted": 3
           },
           "dispositions": {
             "scalar_content_no_go": "represented_by_selected_coordinatewise_no_go",
@@ -2188,7 +2357,7 @@
             "coordinatewise_corridor_no_go": "targeted",
             "rational_base_tail_recurrence": "targeted",
             "seven_halves_irrationality": "not_applicable_to_external_irrationality_conclusion",
-            "height_and_pade_arithmetic": "not_selected_multiple_scoped_arithmetic_families"
+            "height_and_pade_arithmetic": "targeted"
           }
         }
       }
@@ -2199,7 +2368,7 @@
       "ExternalVerification/Challenge.lean",
       "ExternalVerification/Statements.lean"
     ],
-    "digest": "sha256:2c0ee22bc660210e3c43bc4dd0a245ed6ceb9f725dda8b8309b980d8c6166c44",
+    "digest": "sha256:dd4aa8eba2e1fd491437f59c1a74c597d544c25b3a601a687c60187578bc019e",
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
@@ -2207,6 +2376,6 @@
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },
-  "config_digest": "sha256:7f3a36323877fcf4458f17abdec536d822edcf08fa3883c0b9a353b921523cb6",
-  "solution_source_digest": "sha256:6f15ed2c956985b04aeb98bdcc07250b4f43bf97c52c3330c8bee3541a02e8e9"
+  "config_digest": "sha256:67116d872a78c50cf60bba466025b1e72ee827ed795baaab0710c12cd3c646c5",
+  "solution_source_digest": "sha256:039f8a5a9c6136615ceea9e18ce7f9f1348bfeaa744f7fb7d375cd47b8facbf7"
 }
