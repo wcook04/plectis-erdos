@@ -669,6 +669,14 @@ def validate_route_memory_cards() -> None:
         "erdos249_certificate_story"
     ) in anchor_card
 
+    label_card = query_corpus.render_card(query_corpus.paper_label_packet("res:farey"))
+    assert (
+        "paper res:farey | paper/erdos249-257-main-paper.tex:2199 "
+        "| rendered=erdos249-257-main-paper.pdf | claims=denominator_exclusion "
+        "| resume=python3 scripts/query_route_memory.py --problem 249 --route "
+        "erdos249_certificate_story"
+    ) in label_card
+
     open_card = query_corpus.render_card(
         open_proposition_packet("remaining_open.unbounded_certificate_supply")
     )
