@@ -52,7 +52,10 @@ records an `advances_open_target` edge.
   carries, not merely one finite miss.
 - **#249** — the [problem-owned paper note](papers/full-text/erdos-249-binary-totient-series.md)
   and [canonical source map](SOURCE_MAP.md) return the unconditional denominator
-  exclusion and conditional reductions; no solution.
+  exclusion and conditional reductions. The new [squared-Lambert/GCD-moment
+  family](EXTERNAL_VERIFICATION.md#programme-249) routes to the exact first-moment
+  identity in [GcdMomentCalculus](../Erdos249257/GcdMomentCalculus.lean#L235);
+  it is an identity with no irrationality consequence, so #249 remains open.
 - **#257** — the [problem-owned paper note](papers/full-text/erdos-257-mersenne-support-subseries.md)
   and [canonical source map](SOURCE_MAP.md) return the named infinite-support
   cases and full support (`A = ℕ`), not the universal statement.
