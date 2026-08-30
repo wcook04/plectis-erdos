@@ -164,7 +164,12 @@ def test_release_manifest() -> None:
             f"/blob/{commit}/" in row["immutable_url"]
             for row in manifest["tracked_artifacts"]
         )
-        assert manifest["runtime_receipt"]["theorem_count"] == 19
+        expected_theorem_count = len(
+            json.loads(
+                (root / "verification/comparator.json").read_text(encoding="utf-8")
+            )["theorem_names"]
+        )
+        assert manifest["runtime_receipt"]["theorem_count"] == expected_theorem_count
         assert manifest["release_assets"]["required"] == [
             f"external-verification-receipt-{commit}.json",
             f"external-verification-release-manifest-{commit}.json",
