@@ -1011,6 +1011,9 @@ def declaration_rows_for_handle(name: str) -> list[dict[str, Any]]:
     matches = by_name.get(name)
     if matches is not None:
         return list(matches)
+    alias = external_verification_declaration_aliases().get(name)
+    if alias is not None:
+        return declaration_rows_for_handle(alias)
     if "." not in name:
         return []
     parts = name.split(".")
@@ -1023,6 +1026,17 @@ def declaration_rows_for_handle(name: str) -> list[dict[str, Any]]:
         for row in candidates.values()
         if qualified_declaration_name(row) == name
     ]
+
+
+@lru_cache(maxsize=1)
+def external_verification_declaration_aliases() -> dict[str, str]:
+    """Return claim-owned wrapper handles mapped to their source declarations."""
+    packet = load("docs/claims.json")["external_verification_packet"]
+    return {
+        row["wrapper_declaration"]: row["original_declaration"]
+        for row in packet["main_results"]
+        if row.get("wrapper_declaration") and row.get("original_declaration")
+    }
 
 
 def support_goal_request(query: str) -> dict[str, str] | None:
@@ -9541,6 +9555,7 @@ def render_card(packet: dict[str, Any]) -> str:
         return "\n".join(rows)
     if kind == "paper_reading_guide":
         signal = packet["mathematical_signal_spine"]
+        lead = signal["ranked_frontier"][0]
         rows = [
             f"paper reading guide | papers={packet['paper_count']} "
             f"| index={packet['clone_local_paper_index']}",
@@ -9548,44 +9563,27 @@ def render_card(packet: dict[str, Any]) -> str:
                 "authority | papers are exposition; Lean source proves, "
                 "docs/claims.json declares public status"
             ),
+            "signal rule | Palomar rank precedes inventory; shelf order is not significance",
             (
-                "signal rule | Palomar mathematical rank before the complete "
-                "manuscript shelf; paper inventory order is not significance"
+                f"paper_signal #1 | problem=#{lead['problem']} "
+                f"| tier={lead['reader_tier']} | family={lead['family_id']} "
+                f"| paper={lead['paper_id']} | read={lead['preferred_read_path']}"
             ),
+            (
+                "paper_frontier | ranked="
+                f"{len(signal['ranked_frontier'])} "
+                f"| natural_friction={len(signal['natural_friction']['results'])} "
+                f"| long_tail_declarations={signal['long_tail']['declaration_count']}"
+            ),
+            "paper_routes | one=--paper-source <path> | exact=--paper-anchor <label-or-source-ref>",
+            "paper_detail | command=python3 scripts/query_corpus.py --papers --format json",
         ]
-        rows.extend(
-            f"paper_signal #{row['rank']} | problem=#{row['problem']} "
-            f"| tier={row['reader_tier']} | family={row['family_id']} "
-            f"| paper={row['paper_id']} | read={row['preferred_read_path']} "
-            f"| boundary={row['exact_boundary']}"
-            for row in signal["ranked_frontier"]
-        )
-        rows.extend(
-            f"paper_friction | problem=#{row['problem']} "
-            f"| family={row['family_id']} | paper={row['paper_id']} "
-            f"| read={row['preferred_read_path']} | boundary={row['boundary']}"
-            for row in signal["natural_friction"]["results"]
-        )
-        rows.extend(
-            [
-                (
-                    "paper_long_tail | subordinate_not_deleted "
-                    f"| declarations={signal['long_tail']['declaration_count']}"
-                ),
-                "paper_inventory | exhaustive_not_ranked",
-            ]
-        )
-        rows.extend(
-            f"paper_inventory | {row['paper_id']} | {row['publication_state']} "
-            f"| {row['title']} | read={row['preferred_read_path']}"
-            for row in packet["papers"]
-        )
         return "\n".join(rows)
     if kind == "agent_corpus_tour":
         scale = packet["scale"]
         graph = packet["formal_dependency_graph"]
         signal = packet["mathematical_signal_spine"]
-        frontier = ",".join(row["id"] for row in packet["frontier"])
+        lead = signal["ranked_frontier"][0]
         problem_ids = ",".join(
             f"#{row['erdos_number']}" for row in packet["problem_map"]
         )
@@ -9594,74 +9592,27 @@ def render_card(packet: dict[str, Any]) -> str:
                 "corpus tour | signal_source=Palomar "
                 "| mathematical_rank_before_scale_and_inventory"
             ),
-        ]
-        rows.extend(
-            f"tour_signal #{row['rank']} | problem=#{row['problem']} "
-            f"| tier={row['reader_tier']} | family={row['family_id']} "
-            f"| declaration={row['declaration']} "
-            f"| boundary={row['exact_boundary']}"
-            for row in signal["ranked_frontier"]
-        )
-        rows.extend(
-            f"tour_friction | problem=#{row['problem']} "
-            f"| family={row['family_id']} | boundary={row['boundary']}"
-            for row in signal["natural_friction"]["results"]
-        )
-        rows.extend(
-            [
-                (
-                    "tour_long_tail | subordinate_not_deleted "
-                    f"| declarations={signal['long_tail']['declaration_count']}"
-                ),
-                (
-                    f"scale | modules={scale['module_count']} "
-                f"| theorem_like={scale['theorem_like_count']} "
-                f"| curated_claims={scale['curated_claim_count']} "
-                f"| programmes={scale['mathematical_programme_count']} "
-                f"| contribution_families={scale['contribution_family_count']} "
-                f"| reviewed_open_propositions="
-                    f"{scale['reviewed_remaining_open_proposition_count']} "
-                    "| counts=descriptive_not_ranked"
-                ),
-                (
-                    f"problem map | indexed={scale['indexed_problem_count']} "
-                f"| open={scale['indexed_open_problem_count']} "
-                f"| ids={problem_ids} "
-                "| route=python3 scripts/query_semantic.py problem-registry"
-                ),
-            ]
-        )
-        for problem in packet.get("problem_map", []):
-            route_memory = problem.get("route_memory")
-            if not isinstance(route_memory, str) or not route_memory:
-                continue
-            rows.append(
-                f"problem_route | #{problem['erdos_number']} | resume={route_memory}"
-            )
-        rows.extend(
             (
-                (
-                    f"formal graph | roots={','.join(graph['loaded_library_roots'])} "
-                    f"| nodes={graph['source_resolved_node_count']} "
-                    f"| direct_edges={graph['source_resolved_direct_edge_count']} "
-                    f"| unresolved_atlas={graph['unresolved_atlas_declaration_count']} "
-                    f"| unresolved_edges={graph['unresolved_public_edge_count']}"
-                ),
-                (
-                    "authority | navigation=committed projections/no build "
-                    "| proof=pinned Lean kernel | public meaning=maintainer review"
-                ),
-                (
-                    "open frontier | scope=all-eight "
-                    f"| propositions={scale['reviewed_remaining_open_proposition_count']} "
-                    f"| ids={frontier}"
-                ),
-                (
-                    "next | command=python3 scripts/query_corpus.py --route "
-                    "agent_native_corpus_navigation | requires_lean_build=false"
-                ),
-            )
-        )
+                f"tour_signal #1 | problem=#{lead['problem']} "
+                f"| tier={lead['reader_tier']} | family={lead['family_id']} "
+                f"| declaration={lead['declaration']}"
+            ),
+            (
+                f"problem map | indexed={scale['indexed_problem_count']} "
+                f"| open={scale['indexed_open_problem_count']} | ids={problem_ids} "
+                "| drilldown=--route erdos_<number>"
+            ),
+            (
+                f"formal graph | roots={len(graph['loaded_library_roots'])} "
+                f"| nodes={graph['source_resolved_node_count']} "
+                f"| direct_edges={graph['source_resolved_direct_edge_count']} "
+                "| drilldown=--connections <module-or-declaration>"
+            ),
+            "papers | drilldown=--papers | full=--papers --format json",
+            "assurance | comparator=--route comparator_assurance | palomar=--route palomar_qualification",
+            "authority | navigation=committed projections | proof=pinned Lean kernel | meaning=maintainer review",
+            "tour_detail | command=python3 scripts/query_corpus.py --tour --format json",
+        ]
         return "\n".join(rows)
     scale = packet["scale"]
     return (
@@ -9737,6 +9688,8 @@ def main() -> int:
     args = parser.parse_args()
     if args.format:
         output_format = args.format
+    elif args.tour or args.papers:
+        output_format = "card"
     elif args.ask and not (
         is_repository_overview_query(args.ask)
         or is_paper_reading_query(args.ask)

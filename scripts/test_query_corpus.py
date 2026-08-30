@@ -531,57 +531,20 @@ def validate_agent_tour() -> None:
     assert card.returncode == 0
     lines = card.stdout.strip().splitlines()
     signal = packet["mathematical_signal_spine"]
-    ranked = signal["ranked_frontier"]
-    friction = signal["natural_friction"]["results"]
-    assert len(lines) == len(ranked) + len(friction) + 16
+    lead = signal["ranked_frontier"][0]
+    assert len(lines) <= 8
+    assert len(card.stdout.encode("utf-8")) <= 4096
     assert lines[0] == (
         "corpus tour | signal_source=Palomar "
         "| mathematical_rank_before_scale_and_inventory"
     )
-    signal_lines = lines[1 : 1 + len(ranked)]
-    assert [line.split(" | ")[0] for line in signal_lines] == [
-        f"tour_signal #{rank}" for rank in range(1, len(ranked) + 1)
-    ]
-    assert all(
-        f"family={row['family_id']}" in line
-        and f"boundary={row['exact_boundary']}" in line
-        for row, line in zip(ranked, signal_lines, strict=True)
-    )
-    friction_start = 1 + len(ranked)
-    scale_index = friction_start + len(friction) + 1
-    assert all(
-        lines[friction_start + index].startswith("tour_friction | ")
-        for index in range(len(friction))
-    )
-    assert lines[scale_index].startswith("scale | modules=")
-    assert "counts=descriptive_not_ranked" in lines[scale_index]
-    problem_map_index = scale_index + 1
-    assert lines[problem_map_index].startswith("problem map | indexed=8 | open=8")
-    problem_route_start = problem_map_index + 1
-    assert [line.split(" | ")[1] for line in lines[problem_route_start : problem_route_start + 8]] == [
-        "#68",
-        "#243",
-        "#249",
-        "#251",
-        "#257",
-        "#269",
-        "#1041",
-        "#1049",
-    ]
-    assert all(
-        "| resume=python3 scripts/query_route_memory.py --problem " in line
-        for line in lines[problem_route_start : problem_route_start + 8]
-    )
-    formal_graph_index = problem_route_start + 8
-    assert lines[formal_graph_index].startswith("formal graph | roots=")
-    assert lines[formal_graph_index + 1].startswith("authority | navigation=")
-    assert lines[formal_graph_index + 2].startswith(
-        "open frontier | scope=all-eight"
-    )
-    assert lines[formal_graph_index + 3] == (
-        "next | command=python3 scripts/query_corpus.py --route "
-        "agent_native_corpus_navigation | requires_lean_build=false"
-    )
+    assert f"family={lead['family_id']}" in lines[1]
+    assert "drilldown=--route erdos_<number>" in card.stdout
+    assert "drilldown=--connections <module-or-declaration>" in card.stdout
+    assert "--route comparator_assurance" in card.stdout
+    assert "--route palomar_qualification" in card.stdout
+    assert "--tour --format json" in card.stdout
+    assert run("--tour").stdout == card.stdout
 
 
 def validate_paper_guide() -> None:
@@ -662,21 +625,13 @@ def validate_paper_guide() -> None:
         f"paper reading guide | papers={corpus['paper_count']} "
     )
     assert "papers are exposition" in card.stdout
-    assert card.stdout.index("paper_signal #1") < card.stdout.index(
-        "paper_signal #5"
-    ) < card.stdout.index("paper_signal #9")
-    assert card.stdout.index("paper_signal #9") < card.stdout.index(
-        "paper_friction"
-    ) < card.stdout.index("paper_inventory | exhaustive_not_ranked")
-    assert card.stdout.index("paper_signal #1") < card.stdout.index(
-        "paper_inventory | erdos249-257-main | retired"
-    )
-    assert len(card.stdout.strip().splitlines()) == (
-        corpus["paper_count"]
-        + len(ranked)
-        + len(signal["natural_friction"]["results"])
-        + 5
-    )
+    assert "paper_signal #1" in card.stdout
+    assert "paper_frontier | ranked=" in card.stdout
+    assert "--paper-source <path>" in card.stdout
+    assert "--papers --format json" in card.stdout
+    assert len(card.stdout.strip().splitlines()) <= 8
+    assert len(card.stdout.encode("utf-8")) <= 4096
+    assert run("--papers").stdout == card.stdout
 
     natural = query("--ask", "which papers should I read?")
     assert natural["kind"] == "paper_reading_guide"
@@ -879,11 +834,29 @@ def validate_indexed_declaration_lookup() -> None:
 
     bare = declaration_packet(name, 20)
     qualified = declaration_packet(qualified_name, 20)
+    wrapper_name = (
+        "Erdos249257.ExternalVerification.irrational_erdosSum_full_support"
+    )
+    wrapper = declaration_packet(wrapper_name, 20)
+    wrapper_source = declaration_packet("irrational_erdosSum_full_support", 20)
     source = source_coordinate_packet(
         "Erdos249257/CertificateKernel.lean:18384", 20
     )
 
     assert bare == qualified
+    assert wrapper == wrapper_source
+    assert wrapper["matches"][0]["qualified_name"] == (
+        "Erdos249257.irrational_erdosSum_full_support"
+    )
+    try:
+        declaration_packet(
+            "Erdos249257.NotExternalVerification.irrational_erdosSum_full_support",
+            20,
+        )
+    except KeyError:
+        pass
+    else:
+        raise AssertionError("unowned qualified aliases must remain invalid")
     assert source["nearby_declarations"][0]["qualified_name"] == qualified_name
     declaration_route_memory = bare["matches"][0]["route_memory"]
     assert declaration_route_memory["status"] == "bound"
