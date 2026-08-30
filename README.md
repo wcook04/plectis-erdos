@@ -75,11 +75,14 @@ not a novelty or priority ranking:
   exclude that survivor, so no cofinal separation supply is claimed. A separate
   public
   [first-harmonic pivot route](ExternalVerification/Challenge.lean) is now
-  represented in Comparator: its four-term decomposition and sufficient
-  `9X/10` certificate budget are exposed alongside a conditional cofinal
-  residual-decorrelation endpoint. A concrete overlap at `X=16` shows why
-  global supplier-prime isolation is unavailable, and the cofinal producer
-  remains open
+  represented in Comparator: `windowFirstExp_sum_eq_pivot_decomposition` and
+  `first_harmonic_gap_of_pivotBudgetAt` expose its four-term decomposition and
+  sufficient `9X/10` certificate budget alongside a conditional cofinal
+  residual-decorrelation endpoint. The supporting
+  `image_pivotSupplierPrimes_eq_pivotFiber` identity and
+  `supplierPrime_not_globally_isolated_counterexample` make the natural
+  friction explicit: a concrete overlap at `X=16` blocks global supplier-prime
+  isolation. The cofinal producer remains open
   ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
@@ -104,8 +107,12 @@ factorisation yields finite realised span
 finite ray separation/root retention while a topology/gluing step is missing
 ([source](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean)); and #1049
 rules out a literal `3/2` corridor while a finite four-jet/Padé obstruction
-records selector collisions and content barriers, leaving irrationality open
-([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean)).
+records selector collisions and content barriers. A distinct explicit
+rectangular two-function Hermite–Padé model has a sharp threshold no-go under
+`0 ≤ ρ` and `1+ρ ≤ σ`, but constructs no approximants or remainders, leaving
+irrationality open
+([source](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean);
+[transport](ExternalVerification/Challenge.lean#L399)).
 
 This order is a value audit of the 40 declarations in the committed Comparator
 roster, not a claim that the remaining rows are unimportant. [RESULTS](docs/RESULTS.md#signal-audit-dispositions)
@@ -145,7 +152,7 @@ Links name checked routes and limits; reductions are not solutions.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. A separate [weighted-phase observer](ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109) splits a carry into finite residue and uncontrolled integral coboundary; finite realised span needs an explicit finite-dimensional factorisation. This source-only family proves no finite-state quotient or irrationality. Irrationality open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — [ray separation/root retention](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean): finite shifts avoid shared rays; strict margins keep roots in the open disc; decay is a checked hypothesis. Invalid saddle block leaves topology/gluing and operator-owned proof open.
-- [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — [q-Apéry no-go](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean): n=0 residual < 0 for p>1; [four-jet/Padé obstruction](ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L129): rank-bounded binary selectors collide and row-content barriers remain; 3/2 corridor; 7/2 height bound; no irrationality, noncollapse, or remainder control.
+- [**#1049: rational-base Lambert obstructions**](erdos-1049-rational-base-lambert.pdf) — [q-Apéry no-go](ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean): n=0 residual < 0 for p>1; [four-jet/Padé obstruction](ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean#L129): rank-bounded binary selectors collide and row-content barriers remain; [rectangular threshold](ExternalVerification/Challenge.lean#L399): in the explicit two-function model, `0 ≤ ρ` and `1+ρ ≤ σ` imply `hpThreshold ≤ 1/2 − 1/π²`, with equality only at `(0,1)`; 3/2 corridor; 7/2 height bound; no universal Padé theorem, remainder control, or irrationality.
 
 ## What the formal source establishes
 

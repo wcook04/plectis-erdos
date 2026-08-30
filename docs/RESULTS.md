@@ -80,7 +80,13 @@ pass, the high-signal spine is:
   coboundary; finite translation/root-retention inputs plus a diagnosed saddle
   gap; and the rational-base recurrence/no-go at `3/2` plus a finite
   four-jet/Padé obstruction each isolate a mechanism without claiming the
-  endpoint.
+  endpoint. A separate explicit rectangular two-function Hermite–Padé model
+  has a sharp threshold no-go: under `0 ≤ ρ` and `1 + ρ ≤ σ`, the cleared gap
+  is nonpositive and vanishes only at `(ρ,σ) = (0,1)`, equivalently the model
+  threshold is at most `1/2 − 1/π²` with equality only there. This remains a
+  model-specific comparison: it constructs no approximating polynomials or
+  remainders, proves no universal Padé theorem, and says nothing about
+  irrationality at `3/2`.
 
 The finite #249 certificate band, Stern–Brocot and gcd-moment identities,
 #257 measure/noncollapse geometry, and the cited-only ladders remain useful
@@ -327,15 +333,18 @@ replacement for claim authority.
   decomposition of one block is
   `windowFirstExp_sum_eq_pivot_decomposition`; under the explicit room
   inequality, `PivotBudgetAt` bounds the centred real part by `14X/25` and the
-  other three norms by `X/100`, `X/100`, and `8X/25`, yielding a real
+  other three norms by `X/100`, `X/100`, and `8X/25`. The exact
+  `first_harmonic_gap_of_pivotBudgetAt` consequence records the resulting real
   first-harmonic gap of `9X/10` and hence a finite certificate
   (`Erdos249257/FirstHarmonicPivot.lean:514-552`). The cofinal socket
   `DTWPivotResidualDecorrelation` would imply irrationality, but its supplier
-  decorrelation budgets are unproved; the exact `X=16, L=20, s=1, m=2, N=18`
-  overlap shows that a supplier prime is not globally isolated (`:394`,
-  `:569-588`). Comparator exposes this conditional route, but the supplier
-  decorrelation budgets are unproved, so the unbounded certificate supply
-  remains open.
+  decorrelation budgets are unproved. The supporting
+  `image_pivotSupplierPrimes_eq_pivotFiber` identity and
+  `supplierPrime_not_globally_isolated_counterexample` counterexample expose
+  the exact support boundary: at `X=16, L=20, s=1, m=2, N=18`, a supplier
+  prime is not globally isolated (`:394`, `:569-588`). Comparator exposes this
+  conditional route, but the supplier decorrelation budgets are unproved, so
+  the unbounded certificate supply remains open.
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
@@ -657,6 +666,18 @@ core)**
   package exposes finite collision and content barriers without supplying an
   analytic remainder, nonvanishing, or irrationality theorem. It is distinct
   source evidence, not a Comparator result or an endpoint closure.
+- A source-faithful rectangular Hermite–Padé threshold family is now exposed
+  through the external consumer. In the explicit two-function exponent model,
+  `0 ≤ ρ` and `1 + ρ ≤ σ` imply `hpClearedGap_nonpos` and
+  `hpClearedGap_eq_zero_iff`; equivalently,
+  `rectangular_hp_threshold_le_classical` and
+  `rectangular_hp_threshold_eq_classical_iff` give
+  `hpThreshold ≤ 1/2 − 1/π²`, with equality only at `(ρ,σ) = (0,1)`
+  (`ErdosProblems/Erdos1049/HermitePadeNoGo.lean:58-129`;
+  `ExternalVerification/Challenge.lean:399-420`). This is a sharp no-go for
+  the displayed model, not a universal Padé result: no approximating
+  polynomials or analytic remainders are constructed, and no #1049
+  irrationality conclusion follows.
 - The Van Assche moving diagonal fails the Amdeberhan–Zeilberger scalar
   recurrence already at `n=0`: its exact residual is
   `-p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2)`, strictly negative for every real
