@@ -14,6 +14,7 @@ from unittest import mock
 from pathlib import Path
 
 import continue_research
+import route_memory_receipt
 import validation_singleflight as singleflight
 
 
@@ -220,6 +221,49 @@ def check_malformed_utf8_inputs_rejected() -> None:
             raise AssertionError("continuation ledger reader accepted malformed UTF-8")
 
 
+def check_route_memory_corpus_contract() -> None:
+    """Canonical route memory must not silently change authority or identity shape."""
+    source_document = json.loads(
+        (ROOT / route_memory_receipt.ROUTE_MEMORY_PATH).read_text(encoding="utf-8")
+    )
+    mutations = (
+        ("authority posture", {"authority_posture": "claim registry"}),
+        ("top-level shape", {"claim_authority": "docs/claims.json"}),
+        ("duplicate route identity", {"duplicate_route": True}),
+    )
+    for label, mutation in mutations:
+        with tempfile.TemporaryDirectory(prefix="continue-route-memory-contract-") as temporary:
+            root = Path(temporary)
+            source = root / route_memory_receipt.ROUTE_MEMORY_PATH
+            source.parent.mkdir(parents=True)
+            document = json.loads(json.dumps(source_document))
+            if label == "duplicate route identity":
+                document["records"][1]["route_id"] = document["records"][0]["route_id"]
+            else:
+                document.update(mutation)
+            payload = (json.dumps(document, ensure_ascii=False) + "\n").encode("utf-8")
+            source.write_bytes(payload)
+            committed = subprocess.CompletedProcess(
+                ["git", "show"], 0, stdout=payload, stderr=b""
+            )
+            with mock.patch.object(
+                route_memory_receipt.subprocess, "run", return_value=committed
+            ):
+                try:
+                    route_memory_receipt.canonical_corpus(root)
+                except ValueError as error:
+                    require(
+                        "authority" in str(error)
+                        or "contract" in str(error)
+                        or "identity" in str(error),
+                        f"{label} rejection lacked a bounded diagnostic: {error}",
+                    )
+                else:
+                    raise AssertionError(
+                        f"canonical route memory accepted dishonest {label} mutation"
+                    )
+
+
 def check_nested_return_shape_boundary() -> None:
     """Malformed nested return objects must remain validation errors, not crashes."""
     manifest = {
@@ -388,6 +432,7 @@ def main() -> int:
     check_replay_execution_posture()
     check_package_session_path_boundary()
     check_malformed_utf8_inputs_rejected()
+    check_route_memory_corpus_contract()
     check_nested_return_shape_boundary()
     check_start_session_path_boundary()
     assert continue_research.canonical_github_origin(

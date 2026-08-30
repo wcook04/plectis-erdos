@@ -22,6 +22,13 @@ RETURN_RECEIPT_SCHEMA = "research-route-memory-return/1"
 RELATIONSHIPS = frozenset({"confirms", "narrows", "supersedes", "unrelated"})
 DISPOSITIONS = frozenset({"consulted", "no_applicable_route"})
 ROSTER = frozenset({68, 243, 249, 251, 257, 269, 1041, 1049})
+CANONICAL_DOCUMENT_FIELDS = frozenset(
+    {"schema", "authority_posture", "scope", "recording_rule", "records"}
+)
+CANONICAL_AUTHORITY_POSTURE = (
+    "navigation record of checked, tracked corpus boundaries; not a claim registry, "
+    "proof authority, or a statement of problem status"
+)
 
 
 def _error(errors: list[str], path: str, message: str) -> None:
@@ -92,8 +99,22 @@ def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
         document = json.loads(payload.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValueError("canonical route memory is not valid UTF-8 JSON") from exc
-    if not isinstance(document, dict) or document.get("schema") != "research_route_memory_v1":
+    if not isinstance(document, dict):
+        raise ValueError("canonical route memory must be a JSON object")
+    if set(document) != CANONICAL_DOCUMENT_FIELDS:
+        raise ValueError(
+            "canonical route memory has an ambiguous top-level contract"
+        )
+    if document.get("schema") != "research_route_memory_v1":
         raise ValueError("canonical route memory has an invalid schema")
+    if document.get("authority_posture") != CANONICAL_AUTHORITY_POSTURE:
+        raise ValueError(
+            "canonical route memory authority posture must remain navigation-only"
+        )
+    for field in ("scope", "recording_rule"):
+        value = document.get(field)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"canonical route memory {field} must be nonempty text")
     records = document.get("records")
     if not isinstance(records, list):
         raise ValueError("canonical route memory records must be an array")
@@ -111,6 +132,7 @@ def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
         "route",
     }
     indexed: dict[int, dict[str, Any]] = {}
+    route_ids: set[str] = set()
     for record in records:
         if not isinstance(record, dict) or set(record) != required:
             raise ValueError("canonical route memory contains an ambiguous record")
@@ -119,7 +141,27 @@ def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
         if not isinstance(problem, int) or problem not in ROSTER:
             raise ValueError("canonical route memory contains an unknown problem")
         if problem in indexed or not isinstance(route_id, str) or not route_id.strip():
-            raise ValueError("canonical route memory contains duplicate or invalid route identity")
+            raise ValueError(
+                "canonical route memory contains duplicate or invalid route identity"
+            )
+        if route_id in route_ids:
+            raise ValueError(
+                "canonical route memory contains duplicate route identity"
+            )
+        route_ids.add(route_id)
+        for field in (
+            "status",
+            "actual_established",
+            "failure_boundary",
+            "next_obligation",
+            "prerequisites_and_assumptions",
+            "route",
+        ):
+            value = record.get(field)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(
+                    f"canonical route memory record {route_id} has invalid {field}"
+                )
         indexed[problem] = record
     if set(indexed) != ROSTER:
         raise ValueError("canonical route memory does not cover the public roster")
