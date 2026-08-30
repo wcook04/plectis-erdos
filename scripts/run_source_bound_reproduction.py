@@ -20,6 +20,7 @@ import platform
 import re
 import resource
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -208,6 +209,81 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _path_has_symlink_component(path: Path) -> bool:
+    """Reject a file path whose bytes could be substituted through a link."""
+    current = Path(os.path.abspath(path))
+    while True:
+        if current.is_symlink():
+            if current == Path("/var") and current.resolve(strict=True) == Path("/private/var"):
+                current = current.resolve(strict=True)
+                continue
+            if current == Path("/tmp") and current.resolve(strict=True) == Path("/private/tmp"):
+                current = current.resolve(strict=True)
+                continue
+            return True
+        if current.parent == current:
+            return False
+        current = current.parent
+
+
+def _read_regular_json(path: Path, label: str) -> Any:
+    """Read JSON only from a regular, non-symlinked file descriptor."""
+    if _path_has_symlink_component(path):
+        raise ReproductionError(f"{label} path contains a symlink: {path}")
+    flags = os.O_RDONLY
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(path, flags)
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ReproductionError(f"{label} path is not a regular file: {path}")
+        with os.fdopen(descriptor, "r", encoding="utf-8") as stream:
+            descriptor = -1
+            return json.load(stream)
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
+def _check_receipt_destination(path: Path) -> None:
+    """Reject symlinked or special receipt destinations before opening them."""
+    if _path_has_symlink_component(path):
+        raise ReproductionError(f"receipt destination contains a symlink: {path}")
+    try:
+        mode = os.lstat(path).st_mode
+    except FileNotFoundError:
+        return
+    if not stat.S_ISREG(mode):
+        raise ReproductionError(f"receipt destination is not a regular file: {path}")
+
+
+def _write_regular_receipt(path: Path, payload: str, *, overwrite: bool) -> None:
+    """Write a receipt through a regular, no-following file descriptor."""
+    _check_receipt_destination(path)
+    if path.exists() and not overwrite:
+        raise ReproductionError(
+            f"receipt already exists; pass --overwrite to replace it: {path}"
+        )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    _check_receipt_destination(path)
+    flags = os.O_WRONLY | os.O_CREAT
+    flags |= getattr(os, "O_CLOEXEC", 0)
+    flags |= getattr(os, "O_NONBLOCK", 0)
+    flags |= getattr(os, "O_NOFOLLOW", 0)
+    flags |= os.O_TRUNC if overwrite else os.O_EXCL
+    descriptor = os.open(path, flags, 0o644)
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ReproductionError(f"receipt destination is not a regular file: {path}")
+        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
+            descriptor = -1
+            stream.write(payload)
+    finally:
+        if descriptor >= 0:
+            os.close(descriptor)
+
+
 def canonical_json(value: Any) -> bytes:
     return json.dumps(
         value, ensure_ascii=False, sort_keys=True, separators=(",", ":")
@@ -294,7 +370,7 @@ def copy_version_control_metadata(source_root: Path, destination: Path) -> None:
 
 
 def load_plan(path: Path | None) -> list[dict[str, Any]]:
-    value = DEFAULT_PLAN if path is None else json.loads(path.read_text())
+    value = DEFAULT_PLAN if path is None else _read_regular_json(path, "command plan")
     if not isinstance(value, list) or not value:
         raise ReproductionError("command plan must be a nonempty JSON list")
     result: list[dict[str, Any]] = []
@@ -594,12 +670,11 @@ def validate_receipt(
 
 
 def write_receipt(path: Path, receipt: dict[str, Any], *, overwrite: bool) -> None:
-    if path.exists() and not overwrite:
-        raise ReproductionError(
-            f"receipt already exists; pass --overwrite to replace it: {path}"
-        )
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n")
+    _write_regular_receipt(
+        path,
+        json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
+        overwrite=overwrite,
+    )
 
 
 def main(argv: Iterable[str] | None = None) -> int:
@@ -654,7 +729,7 @@ def main(argv: Iterable[str] | None = None) -> int:
                 f"source={receipt['source']['source_digest'][:12]}"
             )
             return 0
-        receipt = json.loads(args.receipt.read_text())
+        receipt = _read_regular_json(args.receipt, "receipt")
         if not isinstance(receipt, dict):
             raise ReproductionError("receipt root must be an object")
         validate_receipt(

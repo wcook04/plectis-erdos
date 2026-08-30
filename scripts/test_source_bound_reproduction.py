@@ -301,6 +301,42 @@ def test_overwrite_guard(root: Path) -> None:
     )
 
 
+def test_file_boundaries(root: Path) -> None:
+    plan_path = root / "plan.json"
+    plan_path.write_text(json.dumps(tiny_plan()), encoding="utf-8")
+    plan_link = root / "plan-link.json"
+    plan_link.symlink_to(plan_path)
+    expect_failure(
+        lambda: subject.load_plan(plan_link),
+        "command plan path contains a symlink",
+    )
+    plan_fifo = root / "plan.fifo"
+    os.mkfifo(plan_fifo)
+    expect_failure(
+        lambda: subject.load_plan(plan_fifo),
+        "command plan path is not a regular file",
+    )
+
+    sentinel = root / "receipt-sentinel.json"
+    sentinel.write_text("sentinel\n", encoding="utf-8")
+    receipt_link = root / "receipt-link.json"
+    receipt_link.symlink_to(sentinel)
+    expect_failure(
+        lambda: subject.write_receipt(receipt_link, {"ok": True}, overwrite=True),
+        "receipt destination contains a symlink",
+    )
+    require(
+        sentinel.read_text(encoding="utf-8") == "sentinel\n",
+        "symlinked receipt destination modified its target",
+    )
+    receipt_fifo = root / "receipt.fifo"
+    os.mkfifo(receipt_fifo)
+    expect_failure(
+        lambda: subject.write_receipt(receipt_fifo, {"ok": True}, overwrite=True),
+        "receipt destination is not a regular file",
+    )
+
+
 def main() -> None:
     with tempfile.TemporaryDirectory(prefix="source-bound-repro-test-") as temp:
         root = Path(temp)
@@ -318,9 +354,11 @@ def main() -> None:
         test_git_capability_refusal(source)
         test_canonical_receipt_round_trip(source, plan, receipt)
         test_overwrite_guard(root)
+        test_file_boundaries(root)
     print(
         "source-bound reproduction tests passed: hashing, exclusions, isolation, "
         "validation, rejection classes, Git gate, canonical receipt, overwrite guard"
+        ", and file boundaries"
     )
 
 
