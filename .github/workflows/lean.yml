@@ -39,7 +39,7 @@ permissions:
 jobs:
   change_scope:
     name: Classify pull-request scope
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
       erdos1041_corpus_only: ${{ steps.scope.outputs.erdos1041_corpus_only }}
@@ -73,7 +73,7 @@ jobs:
   build:
     needs: change_scope
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 210
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -213,7 +213,7 @@ jobs:
   external-verification:
     needs: change_scope
     if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # Four isolated checks now run here: headline positive and mismatch, then
     # the focused #1049 positive and mismatch. Each retains its own 20 minute
     # ceiling, so the job ceiling must cover the full serial trust sequence.
@@ -426,12 +426,11 @@ jobs:
 
   first-contact:
     # The published invitation, run the way a stranger runs it: clone it, no
-    # Lean, no toolchain, no pinned interpreter. Every other job in this file
-    # is ubuntu-latest with a Python it installs itself, so nothing here had
-    # ever executed a reader-facing command on macOS or on whatever `python3`
-    # a reader happens to have. The reader-facing surfaces are pure Python and
-    # the claim is that they need nothing else; this is where that is tested
-    # rather than assumed.
+    # Lean, no toolchain, no pinned interpreter. The fixed Linux jobs use the
+    # pinned ubuntu-24.04 image; this matrix deliberately adds macOS and an
+    # unpinned reader-host Ubuntu lane so reader portability remains visible.
+    # The reader-facing surfaces are pure Python and the claim is that they
+    # need nothing else; this is where that is tested rather than assumed.
     name: First contact without Lean (${{ matrix.os }})
     needs: change_scope
     if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only') }}
@@ -474,7 +473,7 @@ jobs:
     name: A truncated clone exits 2, never 1
     needs: change_scope
     if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only') }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -498,7 +497,7 @@ jobs:
   release-surfaces:
     needs: change_scope
     if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'release-surfaces-only' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
