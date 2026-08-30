@@ -57,34 +57,31 @@ All eight remain open. Pass is mechanism-first:
   omitting `0` exists iff a positive square-root-bounded integer orbit has
   q-divisible carries and Boolean–Möbius reconstruction of that support
   ([consumer](ExternalVerification/Challenge.lean#L363); [source](Erdos249257/BooleanMobiusCarry.lean#L949)). It is not a contradiction or universal proof; arbitrary infinite support and `1/2` remain open.
-- **#249's endpoint-facing frontier is conditional.** An actual-LCM orbit is
-  approximated by an odd-rank raw block with an explicit error radius: the
-  separate sufficient (not equivalent) condition
-  `PowerTwoActualLcmOrbitSeparationSupply` would force the existing signed-margin
-  producer and hence irrationality
-  ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its
-  quantitative separation supply is unproved, and sign/top-edge information
-  does not supply it. Separately, the finite dyadic kernel has rank `2^e+1`
-  for `e≥1` with an odd-core basis ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); all-base extension needs
-  affine independence, but this is no rationality-to-finite-rank bridge or endpoint solution. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137):
-  hypothetical rationality gives a positive multiplier and tempered carry with common eventual modular period across dyadic sections, with carry-kernel rank `≥2^e−1`
-  for every `e`; modulo a divisor, forcing vanishes and the carry is geometric: no
-  finite-rank contradiction or irrationality proof
-  ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
-  The diagonal form equates integrality with a full-target foreign-defect hit;
-  cofinal misses would prove irrationality, but the supply is open
-  ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). A separate
-  public
-  [first-harmonic pivot route](ExternalVerification/Challenge.lean) is now
-  represented in Comparator: `windowFirstExp_sum_eq_pivot_decomposition` and
-  `first_harmonic_gap_of_pivotBudgetAt` expose its four-term decomposition and
-  sufficient `9X/10` certificate budget alongside a conditional cofinal
-  residual-decorrelation endpoint. The supporting
-  `image_pivotSupplierPrimes_eq_pivotFiber` identity and
-  `supplierPrime_not_globally_isolated_counterexample` make the natural
-  friction explicit: a concrete overlap at `X=16` blocks global supplier-prime
-  isolation. The cofinal producer remains open
+- **Exact #257 half-membership classification.** A Comparator equivalence puts
+  `1/2` in the base-2 Mersenne achievement set iff false terminal seam bits
+  are unbounded, equivalently iff upper-or-middle successors or skipped ranks
+  are unbounded ([consumer](ExternalVerification/Challenge.lean#L443); [source](Erdos249257/HalfCylinderHalfMembershipClassification.lean#L126)). It proves no witness occurrence, so neither `1/2` membership nor a refutation of universal #257 follows.
+- **#249's endpoint-facing frontier is conditional.** Actual-LCM gives
+  an odd-rank/error-radius reduction; the sufficient (not equivalent)
+  `PowerTwoActualLcmOrbitSeparationSupply` would force irrationality
+  ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its supply
+  is open; sign/top-edge data do not provide it. Under hypothetical rationality,
+  an [orbit consequence](ExternalVerification/Challenge.lean#L137) gives a
+  positive multiplier, common eventual modular periods, and carry-kernel rank
+  `≥2^e−1`; divisor reduction erases forcing, so no finite-rank contradiction
+  ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The diagonal form
+  makes integrality a full-target foreign-defect hit; cofinal misses would force
+  irrationality, but supply is open
+  ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). The
+  [first-harmonic pivot](ExternalVerification/Challenge.lean) gives a four-term
+  `9X/10` decomposition and conditional cofinal residual decorrelation; supplier
+  isolation fails at `X=16`, so its producer is open
   ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
+- **Fixed precision does not close #249.** `fixedPrecisionTropicalNoGo` gives
+  every finite compatible odd-unit word at `u>0` a bounded prefix-locked
+  centred completion from an unrestricted high quotient
+  ([consumer](ExternalVerification/Challenge.lean#L166); [source](Erdos249257/TropicalCurvatureCarry.lean#L137)). It blocks bounded local signatures only: the quotient is synthetic, not actual totient arithmetic, and no growing-precision/global bridge or #249 endpoint follows.
+
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
