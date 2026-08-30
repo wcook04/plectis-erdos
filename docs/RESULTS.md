@@ -69,9 +69,9 @@ pass, the high-signal spine is:
   pairwise-coprime moduli obstruct bounded rises, while periodic/vanishing
   negative-error regimes are excluded; for #251, unbounded prime gaps and an
   exact prime-gap irrationality equivalence still leave the concrete tail
-  bridge open. A separate source-level denominator classifier reduces a
-  dyadic tail's rationality to eventual integrality of one positive shift,
-  but does not supply the prime-specific producer.
+  bridge open. A separate public, non-Comparator denominator classifier
+  reduces a dyadic tail's rationality to eventual integrality of one positive
+  shift, but does not supply the prime-specific producer.
 - **#269, #1041, and #1049, structurally useful route checks.** Running-LCM
   height and rank-two obstructions, plus a distinct weighted-phase observer
   that separates a finite residue digit from an uncontrolled integral
@@ -308,10 +308,10 @@ replacement for claim authority.
   does not establish it. See
   `Erdos249257/TotientActualLcmOrbitSeparation.lean:254-310` and the transported
   consumer `ExternalVerification/Challenge.lean:159`.
-- A separate public, non-Comparator first-harmonic pivot route, transported in
-  `ExternalVerification/Challenge.lean`, keeps the analytic mechanism explicit
-  without promoting it to Comparator evidence. The exact
-  four-term decomposition of one block is
+- A separate public first-harmonic pivot route is represented in the Comparator
+  roster through its transported decomposition, budget, and conditional
+  endpoint in `ExternalVerification/Challenge.lean`. The exact four-term
+  decomposition of one block is
   `windowFirstExp_sum_eq_pivot_decomposition`; under the explicit room
   inequality, `PivotBudgetAt` bounds the centred real part by `14X/25` and the
   other three norms by `X/100`, `X/100`, and `8X/25`, yielding a real
@@ -320,8 +320,9 @@ replacement for claim authority.
   `DTWPivotResidualDecorrelation` would imply irrationality, but its supplier
   decorrelation budgets are unproved; the exact `X=16, L=20, s=1, m=2, N=18`
   overlap shows that a supplier prime is not globally isolated (`:394`,
-  `:569-588`). This is a deferred public route outside the Comparator evidence
-  screen, and it leaves the unbounded certificate supply open.
+  `:569-588`). Comparator exposes this conditional route, but the supplier
+  decorrelation budgets are unproved, so the unbounded certificate supply
+  remains open.
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
@@ -393,14 +394,19 @@ replacement for claim authority.
   prime-gap dyadic series
   (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean`). Unbounded coefficients
   and this equivalence alone prove irrationality of neither series.
-- A separate source-level denominator classification makes the arithmetic
-  boundary explicit. `tailShift_integral_iff_scaledTail` reduces integrality
-  of a positive tail shift to integrality of `(2^h - 1) * T_N`, and
+- A separate public, non-Comparator transport makes the arithmetic boundary
+  explicit. For a `DyadicTailRecurrence`,
+  `tailShift_integral_iff_den_dvd_mersenne` and
+  `tailShift_integral_iff_two_pow_modEq_one` classify an integral shift by the
+  current reduced denominator and the congruence `2^h ≡ 1`; the source-level
+  `tailShift_integral_iff_scaledTail` gives the equivalent integrality of
+  `(2^h - 1) * T_N`. The transported
   `not_irrational_initial_iff_exists_eventually_integral_positive_tailShift`
   says that an integer-digit dyadic tail is rational exactly when one positive
   shift is eventually integral
-  (`ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:802-807,1525-1535`). This
-  is public source evidence outside the Comparator screen; it supplies no
+  (`ExternalVerification/Challenge.lean:245-264`; source
+  `ErdosProblems/Erdos251/PrimeGapDyadicTail.lean:802-807,1279-1295,1525-1535`).
+  These declarations remain outside the Comparator screen and supply no
   prime-specific eventual-small or cofinal-mismatch producer.
 - A checked countermodel closes the periodicity route: an explicit unbounded,
   non-eventually-periodic digit sequence with rational dyadic sum

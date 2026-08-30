@@ -66,12 +66,13 @@ not a novelty or priority ranking:
   with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
   its all-base extension is conditional on affine independence. That rank
   spine is a finite-level mechanism, not a rationality-to-finite-rank bridge
-  or a solution of the binary totient endpoint. A separate public,
-  non-Comparator [first-harmonic pivot route](ExternalVerification/Challenge.lean)
-  transports a decomposition of one block into four exact terms and gives a
-  sufficient `9X/10` certificate budget; a concrete overlap at
-  `X=16` shows why global supplier-prime isolation is unavailable, and the
-  cofinal decorrelation budget remains open
+  or a solution of the binary totient endpoint. A separate public
+  [first-harmonic pivot route](ExternalVerification/Challenge.lean) is now
+  represented in Comparator: its four-term decomposition and sufficient
+  `9X/10` certificate budget are exposed alongside a conditional cofinal
+  residual-decorrelation endpoint. A concrete overlap at `X=16` shows why
+  global supplier-prime isolation is unavailable, and the cofinal producer
+  remains open
   ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
@@ -81,9 +82,9 @@ not a novelty or priority ranking:
 The next boundary results are also worth reading: #243 excludes bounded-rise
 and periodic negative-orbit regimes ([source](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean));
 #251 gives unbounded prime gaps and an exact prime-gap equivalence, while a
-source-level denominator classifier reduces rationality of a dyadic tail to
-eventual integrality of one positive shift
-([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)); #269 checks a
+public, non-Comparator [denominator classifier](ExternalVerification/Challenge.lean#L245)
+reduces rationality of a dyadic tail to eventual integrality of one positive
+shift ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean)); #269 checks a
 running-LCM height identity and rank-two obstruction, and a separate
 weighted-phase carry observer splits each digit into a finite residue digit
 plus an uncontrolled integral coboundary; only its explicit finite-dimensional
@@ -129,7 +130,7 @@ Links name checked routes and limits; reductions are not solutions.
 - [**#68: factorial denominators**](erdos-68-factorial-denominator-irrationality.pdf) — [cofinal equivalence](ErdosProblems/Erdos68/FactorialZeroPlateau.lean): irrationality iff cofinally strict factorial-top misses divisibility; [band](ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean): nonzero-moment cancellation forces index ≥2d. q≥67; 300000 external; cofinal producer open.
 - [**#243: reciprocal-tail rigidity**](erdos-243-reciprocal-tail-rigidity.pdf) — [bounded-rise obstruction](ErdosProblems/Erdos243/ReciprocalTailRigidity.lean): bounded rises cannot avoid fresh pairwise-coprime moduli as `u`→∞; normalized-vanishing no-go; mixed-sign bridge open.
 - [**#249: binary totients**](erdos-249-binary-totient-series.pdf) — [actual-LCM frontier](Erdos249257/TotientActualLcmOrbitNonintegrality.lean): irrationality iff cofinal non-integrality; [quantitative separation bridge](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254): a sufficient, non-equivalent cofinal orbit-to-signed-margin reduction, with its supply open; [sign trap](Erdos249257/TotientActualLcmOrbitSign.lean): integral orbits hit the top edge.
-- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — [tail equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean): irrationality iff cofinally nonintegral tail shifts under its checked recurrence; [integral-shift classifier](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1479): rationality iff one positive shift is eventually integral for a dyadic tail recurrence; neither supplies the prime-tail bridge.
+- [**#251: prime-gap dyadic tails**](erdos-251-prime-gap-dyadic-series.pdf) — [tail equivalence](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean): irrationality iff cofinally nonintegral tail shifts under its checked recurrence; [public integral-shift classifier](ExternalVerification/Challenge.lean#L245) ([source](ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L1279)): rationality iff one positive shift is eventually integral for a dyadic tail recurrence; it remains outside Comparator and supplies no prime-tail bridge.
 - [**#257: reciprocal Mersenne subseries**](erdos-257-mersenne-support-subseries.pdf) — [shifted tails](Erdos249257/RationalSupportCarrySkeleton.lean): positive/recursive; [two-adic band](Erdos249257/HalfGreedyTwoThirdsBand.lean) excludes odd 1,3,5 (sharp at 7); [composite dilation](Erdos249257/CompositeDilationDefect.lean): foreign-divisor budget (zero for prime support); arbitrary defects lack a bound/tail selector; [pairwise-coprime](Erdos249257/CertificateKernel.lean): adaptive CRT gives irrationality for infinite pairwise-coprime `A` with summable reciprocals; hypotheses explicit; [half frontier](Erdos257/HalfCounterexampleFrontier.lean) could refute universality if built. Half-membership open.
 - [**#269: three-prime running lcms**](erdos-269-three-prime-running-lcm.pdf) — [height](ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean): distinct-prime LCM = `threePrimeHeight`; rank-2 minor `-1/15` rules out rank one only. A separate [weighted-phase observer](ErdosProblems/Erdos269/WeightedPhaseCarry.lean#L109) splits a carry into finite residue and uncontrolled integral coboundary; finite realised span needs an explicit finite-dimensional factorisation. This source-only family proves no finite-state quotient or irrationality. Irrationality open.
 - [**#1041: short lemniscate connections**](erdos-1041-lemniscate-newton-flow.pdf) — [ray separation/root retention](ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean): finite shifts avoid shared rays; strict margins keep roots in the open disc; decay is a checked hypothesis. Invalid saddle block leaves topology/gluing and operator-owned proof open.
