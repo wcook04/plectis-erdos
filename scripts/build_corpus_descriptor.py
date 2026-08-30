@@ -28,6 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "docs" / "corpus_descriptor.json"
 DESCRIPTOR_MAX_BYTES = 64_000
 ORIENTATION_MAX_BYTES = 32_000
+ORIENTATION_MARKDOWN_MAX_BYTES = 16_000
 ORIENTATION_JSON = ROOT / "docs" / "orientation.json"
 ORIENTATION_MARKDOWN = ROOT / "docs" / "ORIENTATION.md"
 README_PATH = ROOT / "README.md"
@@ -285,6 +286,8 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "",
             "| Surface | Count |",
             "|---|---:|",
+            "| Supported Lean roots | `Erdos249257.lean`, `ErdosProblems.lean` |",
+            "| Problems in the public corpus | #68, #243, #249, #251, #257, #269, #1041, #1049 |",
             f"| Lean modules | {scale['module_count']:,} |",
             f"| Lean declarations | {scale['declaration_count']:,} |",
             f"| Theorem-like declarations | {scale['theorem_like_count']:,} |",
@@ -367,11 +370,8 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
     for route in orientation["reading_routes"]:
         paths = " → ".join(f"`{path}`" for path in route["read"])
         title = route.get("title") or route["intent"]
-        lines.append(f"- **{title}** (`{route['id']}`): {paths}")
-        if title != route["intent"]:
-            lines.append(f"  - Intent: {route['intent']}")
         lines.append(
-            "  - Route: "
+            f"- **{title}** (`{route['id']}`): {paths}; "
             f"`python3 scripts/query_corpus.py --route {route['id']}`"
         )
     lines.extend(
@@ -398,15 +398,11 @@ def render_orientation_markdown(orientation: dict[str, Any]) -> str:
             "",
             "## Query one handle",
             "",
-            "The read-only query helper returns bounded JSON by default:",
-            "Module packets include authored roles and both sides of the direct import",
-            "neighbourhood, with truncation receipts pointing to the exhaustive graph.",
-            "Claim packets resolve adjacent argument edges into labels, statuses, and",
-            "relation meanings, so each neighbour can be followed as another handle.",
-            "Every exact remaining-open proposition ID is itself a typed handle whose",
-            "packet preserves the open target and lists linked progress claims.",
-            "Claim paper labels resolve to exact TeX files and lines across both papers;",
-            "declaration packets add pinned Lean URLs, module context, and attached claims.",
+            "The read-only query helper returns bounded JSON and typed drilldown handles:",
+            "module packets expose import neighbours, claim packets expose typed edges",
+            "and open-proposition packets preserve the unresolved target and its progress.",
+            "Paper labels resolve to exact TeX lines; declaration packets add pinned Lean",
+            "URLs, module context, and attached claims.",
             "",
             "```sh",
             "python3 scripts/query_corpus.py --format card",
@@ -930,6 +926,11 @@ def write_if_changed(path: Path, content: str) -> bool:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if the descriptor is stale")
+    parser.add_argument(
+        "--orientation-only",
+        action="store_true",
+        help="check or write only docs/ORIENTATION.md without touching sibling projections",
+    )
     args = parser.parse_args()
     claims = json.loads(CLAIMS_PATH.read_text(encoding="utf-8"))
     atlas = json.loads(ATLAS_PATH.read_text(encoding="utf-8"))
@@ -942,22 +943,28 @@ def main() -> int:
         json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n"
     )
     expected_orientation_markdown = render_orientation_markdown(orientation)
-    actual_readme = README_PATH.read_text(encoding="utf-8")
-    expected_readme = replace_readme_scale_strip(
-        actual_readme, render_readme_scale_strip(orientation, claims, atlas)
-    )
-    expected_readme = replace_readme_principal_declaration_anchors(
-        expected_readme, render_readme_principal_declaration_anchors(orientation)
-    )
-    actual_wave_index = WAVE_INDEX_PATH.read_text(encoding="utf-8")
-    expected_wave_index = replace_generated_region(
-        actual_wave_index,
-        WAVE_SHAPE_BEGIN,
-        WAVE_SHAPE_END,
-        render_wave_package_shape(atlas),
-    )
+    actual_readme = ""
+    expected_readme = ""
+    actual_wave_index = ""
+    expected_wave_index = ""
+    if not args.orientation_only:
+        actual_readme = README_PATH.read_text(encoding="utf-8")
+        expected_readme = replace_readme_scale_strip(
+            actual_readme, render_readme_scale_strip(orientation, claims, atlas)
+        )
+        expected_readme = replace_readme_principal_declaration_anchors(
+            expected_readme, render_readme_principal_declaration_anchors(orientation)
+        )
+        actual_wave_index = WAVE_INDEX_PATH.read_text(encoding="utf-8")
+        expected_wave_index = replace_generated_region(
+            actual_wave_index,
+            WAVE_SHAPE_BEGIN,
+            WAVE_SHAPE_END,
+            render_wave_package_shape(atlas),
+        )
     descriptor_bytes = len(expected.encode("utf-8"))
     orientation_bytes = len(expected_orientation_json.encode("utf-8"))
+    orientation_markdown_bytes = len(expected_orientation_markdown.encode("utf-8"))
     if descriptor_bytes > DESCRIPTOR_MAX_BYTES:
         print(
             "corpus descriptor exceeds the registration-envelope budget: "
@@ -970,6 +977,12 @@ def main() -> int:
             f"{orientation_bytes:,} > {ORIENTATION_MAX_BYTES:,} bytes"
         )
         return 1
+    if orientation_markdown_bytes > ORIENTATION_MARKDOWN_MAX_BYTES:
+        print(
+            "orientation Markdown exceeds the bounded first-read budget: "
+            f"{orientation_markdown_bytes:,} > {ORIENTATION_MARKDOWN_MAX_BYTES:,} bytes"
+        )
+        return 1
     if args.check:
         actual = OUTPUT.read_text(encoding="utf-8") if OUTPUT.is_file() else ""
         actual_orientation_json = (
@@ -980,35 +993,48 @@ def main() -> int:
             if ORIENTATION_MARKDOWN.is_file()
             else ""
         )
-        if (
-            actual != expected
-            or actual_orientation_json != expected_orientation_json
-            or actual_orientation_markdown != expected_orientation_markdown
-            or actual_readme != expected_readme
-            or actual_wave_index != expected_wave_index
-        ):
+        if args.orientation_only:
+            stale = actual_orientation_markdown != expected_orientation_markdown
+        else:
+            stale = (
+                actual != expected
+                or actual_orientation_json != expected_orientation_json
+                or actual_orientation_markdown != expected_orientation_markdown
+                or actual_readme != expected_readme
+                or actual_wave_index != expected_wave_index
+            )
+        if stale:
             print(
                 "corpus descriptor, orientation, README scale, or wave package-shape projection is stale; "
                 "run python3 scripts/build_corpus_descriptor.py"
             )
             return 1
-        descriptor = json.loads(actual)
-        print(
-            "corpus descriptor and orientation current: "
-            f"formal={descriptor['identity']['formal_source']['resolved_commit'][:8]} "
-            "navigation=content-addressed "
-            f"bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
-        )
+        if args.orientation_only:
+            print(
+                "orientation Markdown current: "
+                f"bytes={orientation_markdown_bytes:,}/{ORIENTATION_MARKDOWN_MAX_BYTES:,}"
+            )
+        else:
+            descriptor = json.loads(actual)
+            print(
+                "corpus descriptor and orientation current: "
+                f"formal={descriptor['identity']['formal_source']['resolved_commit'][:8]} "
+                "navigation=content-addressed "
+                f"bytes={descriptor_bytes:,}/{DESCRIPTOR_MAX_BYTES:,}"
+            )
         return 0
-    changed = [
-        path.relative_to(ROOT).as_posix()
-        for path, content in (
+    outputs = [(ORIENTATION_MARKDOWN, expected_orientation_markdown)]
+    if not args.orientation_only:
+        outputs = [
             (OUTPUT, expected),
             (ORIENTATION_JSON, expected_orientation_json),
-            (ORIENTATION_MARKDOWN, expected_orientation_markdown),
+            *outputs,
             (README_PATH, expected_readme),
             (WAVE_INDEX_PATH, expected_wave_index),
-        )
+        ]
+    changed = [
+        path.relative_to(ROOT).as_posix()
+        for path, content in outputs
         if write_if_changed(path, content)
     ]
     print(
