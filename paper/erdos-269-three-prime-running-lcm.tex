@@ -105,13 +105,21 @@ obstruction}).  These are conditional no-go statements, not assertions that
 the actual three-prime orbit supplies the anchors or a carry lift.
 
 At the structural frontier, the carry splits exactly into a residue digit and a
-coboundary; its Cartier realisation shows that any finite-dimensional
-factorisation would force the realised symbolic span to be finite
+coboundary.  The bounded part is literal: for a positive modulus the residue
+lies in the half-open interval \(0\le c\bmod B<B\), and when the next residue
+is the canonical reduction of \(b(c\bmod B)\), the residue digit lies in the
+finite alphabet \(0\le d<b\)
+(\lword{Erdos269/WeightedPhaseCarry.lean}{150}{carryResidue_mem_interval}{residue interval}
+and \lword{Erdos269/WeightedPhaseCarry.lean}{157}{residueDigit_mem_interval}{digit interval}).
+Its Cartier realisation shows that any finite-dimensional factorisation would force the realised symbolic span to be finite
 (\lword{Erdos269/WeightedPhaseCarry.lean}{109}{carry_eq_residueDigit_add_coboundary}{residue--coboundary form},
 \lword{Erdos269/WeightedPhaseCarry.lean}{293}{CartierRealisation}{Cartier realisation},
 and \lword{Erdos269/WeightedPhaseCarry.lean}{334}{finite_realisedSpan_of_factorisation}{finite-span consequence}).
-No theorem proves that the literal realised span is infinite, so this is a
-representation obligation, not a general analytic no-go.
+The exact recurrence still contains the uncontrolled integral coboundary:
+finite residue does not give a finite-state quotient, and no theorem here
+proves that the literal realised span is infinite.  This is therefore a
+representation obligation, not a general analytic no-go; a scalar evaluation
+alone supplies no function-faithful factorisation.
 
 Problem~\#269 remains open from three primes onward: we prove no irrationality
 or transcendence statement in any three-prime case.  What we prove towards it
