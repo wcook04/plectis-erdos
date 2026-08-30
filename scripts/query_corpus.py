@@ -1756,6 +1756,44 @@ def reviewed_result_family_source_rows(
     ]
 
 
+def reviewed_result_family_atlas_source_rows(
+    family: Mapping[str, Any], module_path: str
+) -> list[dict[str, Any]]:
+    """Resolve review-matrix declarations when no main-result transport exists.
+
+    The review matrix is the canonical family census.  A source-current family
+    can be admitted there before its external-verification ``main_results``
+    transport lands, so module navigation must still follow the exact declared
+    atlas rows rather than silently dropping the family or inventing a wrapper.
+    """
+    rows: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for declaration in family.get("declarations", []):
+        if not isinstance(declaration, str) or not declaration:
+            continue
+        for atlas_row in declaration_rows_for_handle(declaration):
+            if atlas_row.get("module") != module_path:
+                continue
+            qualified_name = qualified_declaration_name(atlas_row)
+            if qualified_name in seen:
+                continue
+            seen.add(qualified_name)
+            rows.append(
+                {
+                    "original_declaration": qualified_name,
+                    "original_source": module_path,
+                    "wrapper_declaration": None,
+                    "claim_id": None,
+                    "source_authority": (
+                        "docs/claims.json::external_verification_packet."
+                        "review_matrix declarations resolved through "
+                        "docs/declaration_atlas.json"
+                    ),
+                }
+            )
+    return rows
+
+
 def reviewed_result_family_source_declarations(
     claims: dict[str, Any], problem_number: str | int, family_id: str
 ) -> list[str]:
@@ -3483,6 +3521,10 @@ def reviewed_result_family_module_routes(
                 if str(row.get("original_source", "")).removeprefix("./")
                 == module_path
             ]
+            if not matching_source_rows:
+                matching_source_rows = reviewed_result_family_atlas_source_rows(
+                    family, module_path
+                )
             if not matching_source_rows:
                 continue
             representative_source_row = next(
