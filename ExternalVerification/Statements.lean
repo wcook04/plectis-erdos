@@ -556,6 +556,82 @@ def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
   ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
     actualLcmTailOrbit a ∉ Set.range ((↑) : ℤ → ℝ)
 
+/-! ## Finite actual foreign-residue projection -/
+
+def mersenne (n : ℕ) : ℕ := 2 ^ n - 1
+
+def squarefreeKernel (n : ℕ) : ℕ := ∏ p ∈ n.primeFactors, p
+
+def mobiusNumerator (r : ℕ) : ℤ :=
+  ∑ s ∈ r.primeFactors.powerset,
+    (-1 : ℤ) ^ s.card *
+      ((r / s.prod id : ℕ) : ℤ) *
+        (((mersenne r) / (mersenne (s.prod id)) : ℕ) : ℤ)
+
+def baseMobiusShadow (r : ℕ) : ℚ :=
+  Rat.divInt (mobiusNumerator r) (mersenne r : ℤ)
+
+def numericMobiusShadow (H : ℕ) : ℚ :=
+  baseMobiusShadow (squarefreeKernel H) / (squarefreeKernel H : ℚ)
+
+def diagonalCoefficient (H : ℕ) : ℕ := 2 ^ H * (2 ^ H - 1)
+
+noncomputable def scaleExplicitShadowRat (H : ℕ) : ℚ :=
+  (H : ℚ) * numericMobiusShadow H
+
+noncomputable def scaleExplicitShadow (H : ℕ) : ℝ :=
+  (scaleExplicitShadowRat H : ℝ)
+
+noncomputable def scaleDiagonalTailDifference (H : ℕ) : ℝ :=
+  totientTail (2 * H) - totientTail H
+
+noncomputable def scaleForeignDefect (H : ℕ) : ℝ :=
+  scaleDiagonalTailDifference H - scaleExplicitShadow H
+
+def ScaleFullTargetHit (H : ℕ) : Prop :=
+  ∃ z : ℤ, ((scaleExplicitShadowRat H).den : ℝ) * scaleForeignDefect H =
+    (-(scaleExplicitShadowRat H).num : ℝ) +
+      ((scaleExplicitShadowRat H).den : ℝ) * (z : ℝ)
+
+def residueOffset (d N : ℕ) : ℕ := d - N % d
+
+noncomputable def foreignResidueKernel (d N : ℕ) : ℝ :=
+  ((ArithmeticFunction.moebius d : ℤ) : ℝ) *
+    (2 : ℝ) ^ (d - residueOffset d N) *
+      (((N + residueOffset d N : ℕ) : ℝ) /
+          ((d : ℝ) * ((2 : ℝ) ^ d - 1)) +
+        1 / (((2 : ℝ) ^ d - 1) ^ 2))
+
+noncomputable def stableResidueFactor (d : ℕ) : ℝ :=
+  1 / ((2 : ℝ) ^ d - 1) + 1 / (((2 : ℝ) ^ d - 1) ^ 2)
+
+noncomputable def residueIncrement (d H : ℕ) : ℝ :=
+  foreignResidueKernel d (2 * H) - foreignResidueKernel d H
+
+noncomputable def foreignTailWindow (H D L : ℕ) : ℝ :=
+  ∑ d ∈ Finset.Icc (D + 1) L, residueIncrement d H
+
+noncomputable def foreignComplementBound (H D : ℕ) : ℝ :=
+  (diagonalCoefficient H : ℝ) *
+    (2 / (2 : ℝ) ^ D + 4 / (3 * (4 : ℝ) ^ D))
+
+noncomputable def projectedForeignDefect (H D : ℕ) : ℝ :=
+  ∑ d ∈ Finset.Icc 1 D, if d ∣ H then 0 else residueIncrement d H
+
+noncomputable def projectedDivisorChannels (H D : ℕ) : ℝ :=
+  ∑ d ∈ Finset.Icc 1 D, if d ∣ H then residueIncrement d H else 0
+
+noncomputable def finiteResidueDiagonal (H D : ℕ) : ℝ :=
+  ∑ d ∈ Finset.Icc 1 D, residueIncrement d H
+
+def ControlledForeignProjection (H D : ℕ) : Prop :=
+  |scaleForeignDefect H - projectedForeignDefect H D| ≤
+    foreignComplementBound H D
+
+def ProjectedFullTargetSeparation (H D : ℕ) : Prop :=
+  ∀ z : ℤ, foreignComplementBound H D <
+    |scaleExplicitShadow H + projectedForeignDefect H D - (z : ℝ)|
+
 /-! ## First-harmonic pivot supplier fibres -/
 
 /-- Offset of the first-harmonic pivot argument `N + (L-s+1)`. -/
@@ -900,6 +976,14 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
         windowDiscrepancy H (H + J) K % P = P - e ∧
           P - B < windowDiscrepancy H (H + J) K % P ∧
           windowDiscrepancy H (H + J) K % P < P
+  problem249ActualForeignResidueProjection :
+    (∀ {H D L : ℕ}, 2 * H ≤ D →
+      |foreignTailWindow H D L| ≤ foreignComplementBound H D) ∧
+    (∀ H D : ℕ,
+      finiteResidueDiagonal H D =
+        projectedForeignDefect H D + projectedDivisorChannels H D) ∧
+    (∀ {H D : ℕ}, ControlledForeignProjection H D →
+      ProjectedFullTargetSeparation H D → ¬ScaleFullTargetHit H)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →

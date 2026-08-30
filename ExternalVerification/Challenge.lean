@@ -277,6 +277,23 @@ theorem actualLcm_integral_forces_topEdgeResidue
       windowDiscrepancy H (H + J) K % P < P :=
   (portfolioClaims Unit).problem249ActualLcmTopEdgeResidue ha hshort hd hroom
 
+theorem abs_foreignTailWindow_le_foreignComplementBound
+    {H D L : ℕ} (hcutoff : 2 * H ≤ D) :
+    |foreignTailWindow H D L| ≤ foreignComplementBound H D :=
+  (portfolioClaims Unit).problem249ActualForeignResidueProjection.1 hcutoff
+
+theorem finiteResidueDiagonal_eq_projectedForeign_add_divisor (H D : ℕ) :
+    finiteResidueDiagonal H D =
+      projectedForeignDefect H D + projectedDivisorChannels H D :=
+  (portfolioClaims Unit).problem249ActualForeignResidueProjection.2.1 H D
+
+theorem scaleFullTarget_miss_of_projected_separation
+    {H D : ℕ} (hcontrol : ControlledForeignProjection H D)
+    (hseparation : ProjectedFullTargetSeparation H D) :
+    ¬ScaleFullTargetHit H :=
+  (portfolioClaims Unit).problem249ActualForeignResidueProjection.2.2
+    hcontrol hseparation
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

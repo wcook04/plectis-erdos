@@ -21,6 +21,7 @@ import Erdos249257.TotientActualLcmOrbitNonintegrality
 import Erdos249257.TotientActualLcmOrbitSeparation
 import Erdos249257.FirstHarmonicPivot
 import Erdos249257.TotientActualLcmOrbitSign
+import Erdos249257.ActualForeignResidueProjection
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
@@ -502,6 +503,20 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
           carryOrbit_eq_source] using
           (Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcm_integral_forces_topEdgeResidue
             ha hshort hd' hroom'))
+  · constructor
+    · intro H D L hcutoff
+      exact
+        Erdos249257.ActualForeignResidueProjection.abs_foreignTailWindow_le_foreignComplementBound
+          hcutoff
+    · constructor
+      · intro H D
+        exact
+          Erdos249257.ActualForeignResidueProjection.finiteResidueDiagonal_eq_projectedForeign_add_divisor
+            H D
+      · intro H D hcontrol hseparation
+        exact
+          Erdos249257.ActualForeignResidueProjection.scaleFullTarget_miss_of_projected_separation
+            hcontrol hseparation
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using
