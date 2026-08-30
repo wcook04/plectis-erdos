@@ -31,8 +31,9 @@ explicit parameter closure. The exact source declaration is at
 the preceding source lines.
 
 The value-selection record starts from the committed claims review matrix,
-which currently contains 63 source families (the 60-family dispatch baseline
-plus the newly canonical actual-LCM and weighted-phase-carry families), and six targeted theorem-forest
+which currently contains 64 source families (the 60-family dispatch baseline
+plus the newly canonical actual-LCM, weighted-phase-carry, and dyadic-tail
+classification families), and seven targeted theorem-forest
 discoveries. Each source family has an explicit selected, represented,
 deferred, subordinate, rejected, or long-tail disposition, with support and
 contrary evidence, cheapest probe, stop evidence, hard mechanism,
@@ -113,19 +114,38 @@ under integral representation, but does not exclude that edge.
 Certificate completeness (`LcmConeFlatness.lean:316-435`) is subordinate and
 consolidated: its exact equivalence between irrationality and pointwise/cofinal
 certificate supply is already represented by the certificate interface, and it
-adds no executable producer. The #1049 four-jet/Padé obstruction
-(`ZudilinConeArithmetic.lean:129-167`, `RationalPadeArithmetic.lean:80-220`,
-and `QAperyDiagonalNonEquivalence.lean:61-100`) is deferred: finite selector
-collision, determinant-content bookkeeping, and the negative QApery residual
-are strong review evidence, but they do not provide analytic nonvanishing or
-irrationality. The #251 integral-tail classification
-(`PrimeGapDyadicTail.lean:1276-1535`) is deferred but now has a committed
-four-declaration ExternalVerification transport at `e10b161a`: denominator/
-Mersenne divisibility classifies integral positive shifts, and the eventual-
-integrality obstruction is equivalent to the abstract irrationality normal
-form. It remains outside the Comparator roster pending registration, and the
-prime-specific cofinal mismatch producer remains open; the abstract normal
-form is not a prime-gap endpoint proof. Finally, #269's weighted-phase-carry
+adds no executable producer. The #1049 rectangular Hermite–Padé threshold
+family (`HermitePadeNoGo.lean:58, 75, 103, 126`) is represented under the
+existing `height_and_pade_arithmetic` family: its exact cleared-gap sign and
+unique-zero analysis gives a sharp no-go for the explicit two-function
+exponent model, with equality only at `rho = 0`, `sigma = 1`. The committed
+source-faithful transport is `f52f903a`, but its four declarations remain
+outside the 40-row Comparator roster until configuration registration. This
+is not a universal Padé/Hermite–Padé no-go, constructs no approximants or
+remainders, and proves no irrationality at 3/2 or any general rational-base
+endpoint. The #251 dyadic-tail integrality classification
+(`PrimeGapDyadicTail.lean:1276-1535`) is deferred for Comparator admission but
+has a committed four-declaration ExternalVerification transport at `e10b161a`:
+denominator/Mersenne divisibility classifies integral positive shifts, and the
+eventual-integrality obstruction is equivalent to the abstract irrationality
+normal form. It is now represented as a source-current high-signal
+classification family in the widened review matrix, while remaining outside
+the Comparator roster pending registration. The prime-specific cofinal
+mismatch producer remains open; the abstract normal form is not a prime-gap
+endpoint proof.
+The #243 centered-state recovery/rigidity transport
+(`ReciprocalTailRigidity.lean:1799, 1837, 2265`) is represented as a distinct
+source-landscape discovery mapped to the existing `centered_state_dynamics`
+family. Its load-bearing `boundedNegativePart_eventually_zero` theorem uses
+the exact signed natural C/D dynamics, `a > 1`, `C > 0`,
+`E = D - (a - 1)C`, strict `|E| < C`, a uniform lower bound, and normalized
+vanishing; centered-zero and nonzero-tail hypotheses recover eventual
+Sylvester recurrence. The source-faithful three-file transport is
+`ea12f041`, but the declarations are not yet Comparator-configured. This
+does not prove reciprocal-tail irrationality: the unbounded negative
+mixed-sign branch and prime-specific producer remain open, and the result is
+not another periodic-orbit or cofinally-bounded-negative no-go family.
+Finally, #269's weighted-phase-carry
 observer (`WeightedPhaseCarry.lean:109, 150, 157, 334`) is deferred: the
 finite residue plus uncontrolled integral coboundary split and the precise
 function-faithful finite-span factorization are useful mechanisms, but there

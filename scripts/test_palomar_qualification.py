@@ -185,9 +185,9 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert universe["authority"] == (
         "HEAD:docs/claims.json::external_verification_packet.review_matrix"
     )
-    assert universe["source_review_family_count"] == 63
+    assert universe["source_review_family_count"] == 64
     assert universe["source_review_family_count_at_dispatch"] == 60
-    assert len(universe["source_review_family_ids"]) == 63
+    assert len(universe["source_review_family_ids"]) == 64
     assert set(universe["source_family_dispositions"]) == set(
         universe["source_review_family_ids"]
     )
@@ -212,6 +212,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "certificate_completeness",
         "erdos1049_four_jet_pade_obstruction",
         "erdos251_integral_tail_classification",
+        "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
     }
     assert [row["rank"] for row in showcase["candidate_ranking"]] == list(
@@ -238,7 +239,7 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         "long_tail",
     }
     landscape = disposition["source_landscape_candidates"]
-    assert len(landscape) == 7
+    assert len(landscape) == 8
     landscape_by_id = {row["candidate_id"]: row for row in landscape}
     assert landscape_by_id["actual_lcm_orbit_separation"]["disposition"] == "represented"
     assert landscape_by_id["actual_lcm_orbit_separation"]["prior_disposition"] == "deferred"
@@ -253,7 +254,6 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     assert "Irrational" in landscape_by_id["actual_lcm_orbit_separation"]["conclusion"]
     for candidate_id in (
         "certificate_completeness",
-        "erdos1049_four_jet_pade_obstruction",
         "weighted_phase_carry_observer",
     ):
         row = landscape_by_id[candidate_id]
@@ -263,6 +263,46 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
         )
         assert row["queue_role"] == "source_landscape_review_not_comparator_evidence"
         assert "comparator_declaration" not in row
+    pade = landscape_by_id["erdos1049_four_jet_pade_obstruction"]
+    assert pade["family_id"] == "height_and_pade_arithmetic"
+    assert pade["disposition"] == "represented"
+    assert pade["prior_disposition"] == "deferred"
+    assert pade["canonical_family_binding"] == "height_and_pade_arithmetic"
+    assert pade["comparator_eligibility"] == "source_landed_but_not_comparator_configured"
+    assert pade["source_transport_commit"] == "f52f903a6f5b564644b19b89b66d65f97990c5b6"
+    assert pade["source_transport_files"] == [
+        "ExternalVerification/Challenge.lean",
+        "ExternalVerification/Solution.lean",
+        "ExternalVerification/Statements.lean",
+    ]
+    assert pade["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.hpClearedGap_nonpos",
+        "Erdos249257.ExternalVerification.hpClearedGap_eq_zero_iff",
+        "Erdos249257.ExternalVerification.rectangular_hp_threshold_le_classical",
+        "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff",
+    ]
+    assert "HermitePadeNoGo.lean" in pade["source_file"]
+    assert "rectangular two-function exponent model" in pade["statement"]
+    assert any("universal Padé" in item for item in pade["limitations"])
+    centered = landscape_by_id["erdos243_centered_state_recovery"]
+    assert centered["family_id"] == "centered_state_dynamics"
+    assert centered["disposition"] == "represented"
+    assert centered["prior_disposition"] == "deferred"
+    assert centered["canonical_family_binding"] == "centered_state_dynamics"
+    assert centered["comparator_eligibility"] == "source_landed_but_not_comparator_configured"
+    assert centered["source_transport_commit"] == "ea12f041307bfea8ca423d8f76f6fe2d38c35055"
+    assert centered["source_transport_files"] == [
+        "ExternalVerification/Challenge.lean",
+        "ExternalVerification/Solution.lean",
+        "ExternalVerification/Statements.lean",
+    ]
+    assert centered["transport_declarations"] == [
+        "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_centered_zero",
+        "Erdos249257.ExternalVerification.centeredState_eventually_zero",
+        "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero",
+    ]
+    assert "boundedNegativePart_eventually_zero" in centered["source_declaration"]
+    assert "mixed-sign branch" in " ".join(centered["limitations"])
     committed = {
         row["candidate_id"]: row
         for row in landscape
@@ -301,7 +341,9 @@ def test_full_current_roster_and_eight_problem_crosswalk() -> None:
     }
     assert set(pending) == {"erdos251_integral_tail_classification"}
     row = pending["erdos251_integral_tail_classification"]
-    assert row["family_id"] == "integral_shift_classification"
+    assert row["family_id"] == "dyadic_tail_integrality_classification"
+    assert row["disposition"] == "represented"
+    assert row["prior_disposition"] == "deferred"
     assert row["source_transport_commit"] == "e10b161abd964381e0e8e6830e6f48e7629ca8ad"
     assert row["source_transport_files"] == [
         "ExternalVerification/Challenge.lean",

@@ -386,6 +386,7 @@ def candidate_selection_errors(
         "certificate_completeness",
         "erdos1049_four_jet_pade_obstruction",
         "erdos251_integral_tail_classification",
+        "erdos243_centered_state_recovery",
         "weighted_phase_carry_observer",
     }
     if not isinstance(discoveries, list) or {
@@ -556,6 +557,7 @@ def candidate_selection_errors(
                 "certificate_completeness",
                 "erdos1049_four_jet_pade_obstruction",
                 "erdos251_integral_tail_classification",
+                "erdos243_centered_state_recovery",
                 "weighted_phase_carry_observer",
             }
             if set(candidate_ids) != expected_landscape_ids:

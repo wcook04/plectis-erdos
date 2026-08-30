@@ -8,8 +8,8 @@
     "comparator_sha256": "ef970718e15171d8d3d21b8ea6620bd2ccd179509bc19ec9aaf998a72b87e12c",
     "comparator_theorem_count": 40,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "bd4ec9ba45cefbc8b4d5ddf8a81c0582e598e93f586f0874b7419114a858d254",
-    "source_review_family_count": 63,
+    "source_review_matrix_sha256": "8d38affbb4ced780617ab8d382ed09c05949e2208ab2d3c641ad6d39b1aeff8d",
+    "source_review_family_count": 64,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
@@ -98,24 +98,25 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "bd4ec9ba45cefbc8b4d5ddf8a81c0582e598e93f586f0874b7419114a858d254",
-    "source_review_family_count": 63,
+    "source_review_matrix_sha256": "8d38affbb4ced780617ab8d382ed09c05949e2208ab2d3c641ad6d39b1aeff8d",
+    "source_review_family_count": 64,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
-    "source_review_family_ids": ["factorial_carry_characterisation","factorial_channel_and_projection_rigidity","factorial_conditional_producers","factorial_finite_certificates","factorial_lcm_growth","centered_state_dynamics","negative_orbit_no_go","bounded_rise_coprimality","bounded_negative_exclusion","negative_mass_recovery","totient_kernel_basis","totient_kernel_rank","totient_kernel_all_base_index","totient_visible_coprime_lattice_mass","squared_lambert_gcd_moments","stern_brocot_run_fibonacci_stability","stern_brocot_cylinder_law","lcm_factor_ideal_shift_algebra_no_go","actual_lcm_orbit_separation","first_harmonic_pivot_decomposition","totient_finite_denominator_exclusion","totient_carry_rank","totient_lambert_coefficients","eventually_periodic_lambert","totient_certificate_equivalences","prime_gap_reformulation","integral_shift_classification","totient_shift_propagation","small_mismatch_criterion","coefficient_only_no_go","finite_period_noncollapse","rational_support_constraints","shifted_odd_tail_state","composite_dilation_defect_identity","known_irrational_supports","pairwise_coprime_support","periodic_nonnegative_weight_irrationality","orthogonal_petal_sunflower_reduction","squarefree_support","achievement_set_geometry","restricted_achievement_sets","half_and_twenty_one_frontiers","three_prime_lcm_cells","two_prime_transcendence","height_fibre_and_shell","rank_two_kernel_no_go","dyadic_block_alphabet","conditional_carry_escape","weighted_phase_carry_observer","three_prime_finite_search","newton_value_decay","ray_separation","translation_avoidance","root_retention","published_proof_gap","lemniscate_finite_search","scalar_content_no_go","endpoint_residues","four_jet_collision","coordinatewise_corridor_no_go","rational_base_tail_recurrence","seven_halves_irrationality","height_and_pade_arithmetic"],
+    "source_review_family_ids": ["factorial_carry_characterisation","factorial_channel_and_projection_rigidity","factorial_conditional_producers","factorial_finite_certificates","factorial_lcm_growth","centered_state_dynamics","negative_orbit_no_go","bounded_rise_coprimality","bounded_negative_exclusion","negative_mass_recovery","totient_kernel_basis","totient_kernel_rank","totient_kernel_all_base_index","totient_visible_coprime_lattice_mass","squared_lambert_gcd_moments","stern_brocot_run_fibonacci_stability","stern_brocot_cylinder_law","lcm_factor_ideal_shift_algebra_no_go","actual_lcm_orbit_separation","first_harmonic_pivot_decomposition","totient_finite_denominator_exclusion","totient_carry_rank","totient_lambert_coefficients","eventually_periodic_lambert","totient_certificate_equivalences","prime_gap_reformulation","integral_shift_classification","dyadic_tail_integrality_classification","totient_shift_propagation","small_mismatch_criterion","coefficient_only_no_go","finite_period_noncollapse","rational_support_constraints","shifted_odd_tail_state","composite_dilation_defect_identity","known_irrational_supports","pairwise_coprime_support","periodic_nonnegative_weight_irrationality","orthogonal_petal_sunflower_reduction","squarefree_support","achievement_set_geometry","restricted_achievement_sets","half_and_twenty_one_frontiers","three_prime_lcm_cells","two_prime_transcendence","height_fibre_and_shell","rank_two_kernel_no_go","dyadic_block_alphabet","conditional_carry_escape","weighted_phase_carry_observer","three_prime_finite_search","newton_value_decay","ray_separation","translation_avoidance","root_retention","published_proof_gap","lemniscate_finite_search","scalar_content_no_go","endpoint_residues","four_jet_collision","coordinatewise_corridor_no_go","rational_base_tail_recurrence","seven_halves_irrationality","height_and_pade_arithmetic"],
     "source_family_disposition_contract": {
       "authority_binding": "Resolve each source_review_row against HEAD:docs/claims.json::external_verification_packet.review_matrix.",
       "required_fields": ["disposition", "support_evidence", "contrary_evidence", "cheapest_probe", "stop_evidence", "hard_mechanism", "attribution", "limitations", "open_boundary"],
       "field_bindings": {"support_evidence":"source_review_row.summary", "contrary_evidence":"source_review_row.boundary", "cheapest_probe":"source_review_row.evidence_mode plus exact source-coordinate comparison", "stop_evidence":"source_review_row.boundary", "hard_mechanism":"source_review_row.summary", "attribution":"source_review_row.contribution_class", "limitations":"source_review_row.boundary", "open_boundary":"source_review_row.boundary"},
       "comparator_role": "Comparator membership is an evidence, eligibility, and admission field nested below the source universe."
     },
-    "source_family_dispositions": {"factorial_carry_characterisation":"represented","factorial_channel_and_projection_rigidity":"represented","factorial_conditional_producers":"subordinate","factorial_finite_certificates":"long_tail","factorial_lcm_growth":"long_tail","centered_state_dynamics":"represented","negative_orbit_no_go":"rejected","bounded_rise_coprimality":"represented","bounded_negative_exclusion":"represented","negative_mass_recovery":"subordinate","totient_kernel_basis":"represented","totient_kernel_rank":"represented","totient_kernel_all_base_index":"represented","totient_visible_coprime_lattice_mass":"represented","squared_lambert_gcd_moments":"represented","stern_brocot_run_fibonacci_stability":"represented","stern_brocot_cylinder_law":"represented","lcm_factor_ideal_shift_algebra_no_go":"rejected","actual_lcm_orbit_separation":"represented","first_harmonic_pivot_decomposition":"represented","totient_finite_denominator_exclusion":"long_tail","totient_carry_rank":"subordinate","totient_lambert_coefficients":"represented","eventually_periodic_lambert":"represented","totient_certificate_equivalences":"subordinate","prime_gap_reformulation":"represented","integral_shift_classification":"represented","totient_shift_propagation":"represented","small_mismatch_criterion":"subordinate","coefficient_only_no_go":"rejected","finite_period_noncollapse":"represented","rational_support_constraints":"subordinate","shifted_odd_tail_state":"represented","composite_dilation_defect_identity":"represented","known_irrational_supports":"represented","pairwise_coprime_support":"represented","periodic_nonnegative_weight_irrationality":"represented","orthogonal_petal_sunflower_reduction":"represented","squarefree_support":"long_tail","achievement_set_geometry":"represented","restricted_achievement_sets":"represented","half_and_twenty_one_frontiers":"subordinate","three_prime_lcm_cells":"represented","two_prime_transcendence":"long_tail","height_fibre_and_shell":"represented","rank_two_kernel_no_go":"rejected","dyadic_block_alphabet":"represented","conditional_carry_escape":"subordinate","weighted_phase_carry_observer":"represented","three_prime_finite_search":"long_tail","newton_value_decay":"represented","ray_separation":"represented","translation_avoidance":"represented","root_retention":"represented","published_proof_gap":"long_tail","lemniscate_finite_search":"long_tail","scalar_content_no_go":"rejected","endpoint_residues":"rejected","four_jet_collision":"subordinate","coordinatewise_corridor_no_go":"rejected","rational_base_tail_recurrence":"represented","seven_halves_irrationality":"long_tail","height_and_pade_arithmetic":"subordinate"},
+    "source_family_dispositions": {"factorial_carry_characterisation":"represented","factorial_channel_and_projection_rigidity":"represented","factorial_conditional_producers":"subordinate","factorial_finite_certificates":"long_tail","factorial_lcm_growth":"long_tail","centered_state_dynamics":"represented","negative_orbit_no_go":"rejected","bounded_rise_coprimality":"represented","bounded_negative_exclusion":"represented","negative_mass_recovery":"subordinate","totient_kernel_basis":"represented","totient_kernel_rank":"represented","totient_kernel_all_base_index":"represented","totient_visible_coprime_lattice_mass":"represented","squared_lambert_gcd_moments":"represented","stern_brocot_run_fibonacci_stability":"represented","stern_brocot_cylinder_law":"represented","lcm_factor_ideal_shift_algebra_no_go":"rejected","actual_lcm_orbit_separation":"represented","first_harmonic_pivot_decomposition":"represented","totient_finite_denominator_exclusion":"long_tail","totient_carry_rank":"subordinate","totient_lambert_coefficients":"represented","eventually_periodic_lambert":"represented","totient_certificate_equivalences":"subordinate","prime_gap_reformulation":"represented","integral_shift_classification":"represented","dyadic_tail_integrality_classification":"represented","totient_shift_propagation":"represented","small_mismatch_criterion":"subordinate","coefficient_only_no_go":"rejected","finite_period_noncollapse":"represented","rational_support_constraints":"subordinate","shifted_odd_tail_state":"represented","composite_dilation_defect_identity":"represented","known_irrational_supports":"represented","pairwise_coprime_support":"represented","periodic_nonnegative_weight_irrationality":"represented","orthogonal_petal_sunflower_reduction":"represented","squarefree_support":"long_tail","achievement_set_geometry":"represented","restricted_achievement_sets":"represented","half_and_twenty_one_frontiers":"subordinate","three_prime_lcm_cells":"represented","two_prime_transcendence":"long_tail","height_fibre_and_shell":"represented","rank_two_kernel_no_go":"rejected","dyadic_block_alphabet":"represented","conditional_carry_escape":"subordinate","weighted_phase_carry_observer":"represented","three_prime_finite_search":"long_tail","newton_value_decay":"represented","ray_separation":"represented","translation_avoidance":"represented","root_retention":"represented","published_proof_gap":"long_tail","lemniscate_finite_search":"long_tail","scalar_content_no_go":"rejected","endpoint_residues":"rejected","four_jet_collision":"subordinate","coordinatewise_corridor_no_go":"rejected","rational_base_tail_recurrence":"represented","seven_halves_irrationality":"long_tail","height_and_pade_arithmetic":"represented"},
     "targeted_theorem_forest_discoveries": [
       {"candidate_id":"first_harmonic_pivot","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[first_harmonic_pivot]"},
       {"candidate_id":"actual_lcm_positive_corridor_top_edge","disposition":"subordinate","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[actual_lcm_positive_corridor_top_edge]"},
       {"candidate_id":"certificate_completeness","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[certificate_completeness]"},
-      {"candidate_id":"erdos1049_four_jet_pade_obstruction","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos1049_four_jet_pade_obstruction]"},
-      {"candidate_id":"erdos251_integral_tail_classification","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos251_integral_tail_classification]"},
+      {"candidate_id":"erdos1049_four_jet_pade_obstruction","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos1049_four_jet_pade_obstruction]"},
+      {"candidate_id":"erdos251_integral_tail_classification","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos251_integral_tail_classification]"},
+      {"candidate_id":"erdos243_centered_state_recovery","disposition":"represented","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[erdos243_centered_state_recovery]"},
       {"candidate_id":"weighted_phase_carry_observer","disposition":"deferred","source_landscape_record":"candidate_value_dispositions.source_landscape_candidates[weighted_phase_carry_observer]"}
     ],
     "comparator_screen": {
@@ -392,34 +393,40 @@
       },
       {
         "candidate_id": "erdos1049_four_jet_pade_obstruction",
-        "family_id": "erdos1049_four_jet_pade_obstruction",
-        "disposition": "deferred",
+        "family_id": "height_and_pade_arithmetic",
+        "disposition": "represented",
+        "prior_disposition": "deferred",
+        "canonical_family_binding": "height_and_pade_arithmetic",
         "comparator_eligibility": "source_landed_but_not_comparator_configured",
         "queue_role": "source_landscape_review_not_comparator_evidence",
-        "source_declaration": "ErdosProblems.Erdos1049.exists_distinct_binary_selectors_same_fourJet_of_rank",
-        "source_file": "ErdosProblems/Erdos1049/ZudilinConeArithmetic.lean; ErdosProblems/Erdos1049/RationalPadeArithmetic.lean; ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean",
-        "source_anchor": "ZudilinConeArithmetic.lean:129-167; RationalPadeArithmetic.lean:80-220; QAperyDiagonalNonEquivalence.lean:61-100",
-        "statement": "A rank-bounded four-jet signature forces distinct binary selectors with equal four-jet sum; accompanying Padé content identities and the QApery residual calculation expose arithmetic and diagonal obstructions.",
+        "source_transport_commit": "f52f903a6f5b564644b19b89b66d65f97990c5b6",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.hpClearedGap_nonpos", "Erdos249257.ExternalVerification.hpClearedGap_eq_zero_iff", "Erdos249257.ExternalVerification.rectangular_hp_threshold_le_classical", "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"],
+        "source_declaration": "ErdosProblems.Erdos1049.hpClearedGap_nonpos; ErdosProblems.Erdos1049.hpClearedGap_eq_zero_iff; ErdosProblems.Erdos1049.rectangular_hp_threshold_le_classical; ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff",
+        "source_file": "ErdosProblems/Erdos1049/HermitePadeNoGo.lean",
+        "source_anchor": "58; 75; 103; 126",
+        "statement": "For the explicit rectangular two-function exponent model with rho >= 0 and 1 + rho <= sigma, the cleared gap is nonpositive and the threshold is at most 1/2 - 1/pi^2, with equality exactly at rho = 0 and sigma = 1.",
         "exact_hypotheses": [
-          "For R,S with 0 < R and 4*R + 2*S ≤ n, the four-jet target cardinality (3^R)^2*(2^S)^2 is less than 2^n.",
-          "The selector conclusion is a finite collision of Bool-weighted four-jet sums, not an analytic remainder estimate.",
-          "The Padé exterior determinant statements retain their row-content divisors, and the QApery residual factorization is strictly negative/nonzero at n=0 for every p > 1."
+          "rho and sigma are real numbers with 0 <= rho and 1 + rho <= sigma.",
+          "The rectangular_hp_threshold statements retain their explicit two-function exponent-model definitions.",
+          "The equality characterization is the load-bearing representative; the gap sign/unique-zero mechanism and threshold upper bound are supporting evidence."
         ],
-        "conclusion": "Distinct binary selectors share the same four-jet signature, while the source's content-adjusted Padé and QApery calculations rule out the tempting diagonal recurrence at its stated boundary.",
-        "hard_mechanism": "Finite image-cardinality collision combines with exact determinant-content bookkeeping and a sign obstruction; the arithmetic prevents hidden height gains from being smuggled in through row-content divisors.",
-        "attribution": "These are source-current Erdős #1049 declarations in the named modules; the source record makes no novelty or endpoint-closure claim.",
+        "conclusion": "The explicit rectangular model admits no positive cleared gap in the stated domain, and its classical threshold equality occurs only at the unique boundary point rho = 0, sigma = 1.",
+        "hard_mechanism": "The cleared-gap sign and unique-zero analysis gives a sharp threshold bound and equality locus for the concrete rectangular two-function exponent model; it is a model-specific no-go, not a general Padé theorem.",
+        "attribution": "These are source-current Erdős #1049 declarations in HermitePadeNoGo.lean, transported by the committed three-file ExternalVerification batch at f52f903a; no novelty, priority, or external-review claim is made.",
         "limitations": [
-          "The four-jet result is finite combinatorics and does not supply analytic nonvanishing or irrationality.",
-          "The Padé content and QApery results are obstructions/no-go evidence, not a completed solution to #1049.",
-          "No source-faithful Comparator row currently represents this combined route, so it must remain outside the committed Comparator universe."
+          "This sharp no-go is restricted to the explicit rectangular two-function exponent model and does not construct approximating polynomials or remainders.",
+          "It is not a universal Padé or Hermite-Padé no-go and proves no irrationality at 3/2 or any general rational-base endpoint.",
+          "The exact f52f903a ExternalVerification transport is source-current but remains outside the committed 40-row Comparator roster until configuration registration; the canonical review matrix represents it under height_and_pade_arithmetic."
         ],
-        "reason": "Deferred after value review: the collision-plus-obstruction package has strong independent mechanism and review value, but its endpoint consequence is indirect and its evidence class is source-landscape Lean rather than Comparator transport.",
-        "reversal_evidence": "A committed wrapper preserving the finite rank hypotheses and the exact obstruction conclusions would justify representation; a new analytic nonvanishing/height result would be needed before it could challenge the selected endpoint."
+        "reason": "Represented after source-current value review: this is a sharp, high-signal model-specific #1049 no-go with an isolated equality endpoint and clear natural friction. It is consolidated under the canonical height_and_pade_arithmetic family, while exact Comparator configuration admission and the analytic remainder/nonvanishing problem remain open; it stays below direct endpoint families.",
+        "reversal_evidence": "A source-faithful Comparator registration preserves representation; only a genuinely broader no-go, analytic nonvanishing result, or direct rational-base endpoint with equal evidence certainty could elevate or reorder it."
       },
       {
         "candidate_id": "erdos251_integral_tail_classification",
-        "family_id": "integral_shift_classification",
-        "disposition": "deferred",
+        "family_id": "dyadic_tail_integrality_classification",
+        "disposition": "represented",
+        "prior_disposition": "deferred",
         "comparator_eligibility": "committed_source_transport_pending_comparator_registration",
         "queue_role": "source_landscape_review_not_comparator_evidence",
         "source_declaration": "ErdosProblems.Erdos251.tailShift_integral_iff_den_dvd_mersenne; ErdosProblems.Erdos251.tailShift_integral_iff_two_pow_modEq_one; ErdosProblems.Erdos251.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift; ErdosProblems.Erdos251.irrational_initial_iff_all_positive_tailShifts_nonintegral",
@@ -428,7 +435,7 @@
         "source_transport_commit": "e10b161abd964381e0e8e6830e6f48e7629ca8ad",
         "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
         "transport_declarations": ["Erdos249257.ExternalVerification.tailShift_integral_iff_den_dvd_mersenne", "Erdos249257.ExternalVerification.tailShift_integral_iff_two_pow_modEq_one", "Erdos249257.ExternalVerification.not_irrational_initial_iff_exists_eventually_integral_positive_tailShift", "Erdos249257.ExternalVerification.irrational_initial_iff_all_positive_tailShifts_nonintegral"],
-        "transport_admission_boundary": "The four exact abstract classification declarations are committed in ExternalVerification at e10b161a, but they are not Comparator evidence until verification/comparator.json registers them; the canonical review matrix already carries integral_shift_classification, and the existing prime-gap equivalence remains distinct.",
+        "transport_admission_boundary": "The four exact abstract classification declarations are committed in ExternalVerification at e10b161a, but they are not Comparator evidence until verification/comparator.json registers them; the canonical review matrix now carries dyadic_tail_integrality_classification, while integral_shift_classification and the existing prime-gap equivalence remain distinct.",
         "statement": "For integer-digit dyadic tail recurrences, denominator/Mersenne divisibility classifies integral positive shifts, while eventual integrality gives the exact rationality obstruction and the complementary nonintegrality normal form.",
         "exact_hypotheses": [
           "DyadicTailRecurrence supplies the recurrence needed for tailShift_integral_iff_den_dvd_mersenne.",
@@ -437,14 +444,45 @@
         ],
         "conclusion": "For the abstract recurrence, ¬Irrational(initial tail) is equivalent to existence of an eventually integral positive tail shift, and Irrational(initial tail) is equivalent to every positive tail shift being nonintegral; prime-specific eventual nonintegrality remains a separate producer obligation.",
         "hard_mechanism": "Block identities reduce real tail rationality to exact denominator/Mersenne divisibility and eventual integrality, exposing the arithmetic boundary a prime-gap producer must cross.",
-        "attribution": "This is source-current Erdős #251 classification material in PrimeGapDyadicTail.lean, transported by the committed three-file ExternalVerification batch at e10b161a; no novelty, priority, or Comparator admission is claimed.",
+        "attribution": "This is source-current Erdős #251 classification material in PrimeGapDyadicTail.lean, transported by the committed three-file ExternalVerification batch at e10b161a; it is represented in the source-landscape review, with no novelty, priority, or Comparator admission claimed.",
         "limitations": [
           "The classifier does not prove the prime-tail cofinal mismatch or eventual-small hypothesis needed for irrationality.",
           "The committed transport is abstract classification evidence pending Comparator registration and is not an unconditional prime-gap endpoint result.",
           "The existing Comparator prime-gap equivalence remains a separate transport surface; this queue item does not silently merge the two."
         ],
-        "reason": "Deferred after value review: this is endpoint-proximate and mathematically useful denominator classification with strong digestion value. Its exact four-declaration ExternalVerification transport is now committed, but Comparator admission and the prime-specific cofinal mismatch producer remain open.",
+        "reason": "Represented after source-current value review: this is endpoint-proximate and mathematically useful denominator classification with strong digestion value. Its exact four-declaration ExternalVerification transport is committed and the canonical review family is now explicit, but Comparator admission and the prime-specific cofinal mismatch producer remain open; it remains below direct endpoint families.",
         "reversal_evidence": "Register the source-faithful abstract classification in Comparator and prove a genuinely new prime-specific mismatch or eventual-small producer; another equivalent classifier would remain subordinate."
+      },
+      {
+        "candidate_id": "erdos243_centered_state_recovery",
+        "family_id": "centered_state_dynamics",
+        "disposition": "represented",
+        "prior_disposition": "deferred",
+        "canonical_family_binding": "centered_state_dynamics",
+        "comparator_eligibility": "source_landed_but_not_comparator_configured",
+        "queue_role": "source_landscape_review_not_comparator_evidence",
+        "source_transport_commit": "ea12f041307bfea8ca423d8f76f6fe2d38c35055",
+        "source_transport_files": ["ExternalVerification/Challenge.lean", "ExternalVerification/Solution.lean", "ExternalVerification/Statements.lean"],
+        "transport_declarations": ["Erdos249257.ExternalVerification.sylvesterNext_eventually_of_centered_zero", "Erdos249257.ExternalVerification.centeredState_eventually_zero", "Erdos249257.ExternalVerification.boundedNegativePart_eventually_zero"],
+        "source_declaration": "ErdosProblems.Erdos243.boundedNegativePart_eventually_zero; ErdosProblems.Erdos243.centeredState_eventually_zero; ErdosProblems.Erdos243.sylvesterNext_eventually_of_centered_zero",
+        "source_file": "ErdosProblems/Erdos243/ReciprocalTailRigidity.lean",
+        "source_anchor": "1799; 1837; 2265",
+        "statement": "Under exact natural C/D dynamics with a > 1, C > 0, centered defect E = D - (a - 1)C, strict |E| < C, a uniform lower bound on E, and normalized vanishing, persistent bounded negative behavior is excluded and the centered defect is eventually zero; centered zero plus a nonzero tail recovers the eventual Sylvester recurrence.",
+        "exact_hypotheses": [
+          "a > 1 and C > 0, with exact natural recurrences for C and D.",
+          "E is the signed centered state D - (a - 1)C with strict |E| < C, a uniform lower bound, and the stated normalized-vanishing condition.",
+          "The Sylvester recovery branch additionally supplies eventual nonzero tail state."
+        ],
+        "conclusion": "The signed recovery theorem forces eventual centered defect zero and, in the centered-zero/nonzero-tail branch, eventual Sylvester recurrence; it does not prove reciprocal-tail irrationality.",
+        "hard_mechanism": "The signed bounded-negative-part dichotomy combines exact natural C/D dynamics, a strict centered-state margin, a uniform lower bound, and normalized vanishing to turn a mixed-sign obstruction into eventual rigidity; the centered and Sylvester lemmas expose the recovery mechanism.",
+        "attribution": "These are source-current Erdős #243 declarations in ReciprocalTailRigidity.lean, transported by the committed three-file ExternalVerification batch at ea12f041; no novelty, priority, or endpoint claim is made.",
+        "limitations": [
+          "The theorem does not prove irrationality of the reciprocal-tail series.",
+          "The unbounded negative mixed-sign branch and the prime-specific producer remain open.",
+          "The recovery theorem is distinct from periodic-orbit and cofinally-bounded-negative no-go families; its exact signed hypotheses remain necessary."
+        ],
+        "reason": "Represented after source-current value review: this is a distinct, high-signal executable signed recovery mechanism with stronger digestion value than another periodic/no-go restatement. It remains below direct endpoints because its mixed-sign producer and reciprocal-tail irrationality consequence are open, and its exact transport is not yet Comparator-configured.",
+        "reversal_evidence": "A committed source-faithful Comparator registration preserves representation; a proved unbounded mixed-sign producer or direct reciprocal-tail endpoint would justify promotion, while another periodic or bounded-negative exclusion would remain subordinate."
       },
       {
         "candidate_id": "weighted_phase_carry_observer",
