@@ -323,6 +323,27 @@ def _probe_input_hash(row: dict[str, Any], action: str) -> str:
     return input_sha256
 
 
+def _stored_probe_source(session: Session, row: dict[str, Any], action: str) -> str:
+    """Require the cited receipt's durable artifact to remain exact."""
+    stored = replay_probe_path(session, row.get("input_path"))
+    if stored is None:
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} has an invalid or missing stored artifact"
+        )
+    try:
+        source = stored.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} stored artifact is not readable UTF-8"
+        ) from exc
+    input_sha256 = _probe_input_hash(row, action)
+    if _sha256_text(source) != input_sha256:
+        raise SystemExit(
+            f"{action} refused: probe move {row.get('move_id')} stored artifact hash does not match input hash"
+        )
+    return source
+
+
 def cmd_open(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     if session.exists():
@@ -433,12 +454,14 @@ def cmd_claim(args: argparse.Namespace, root: Path) -> dict[str, Any]:
             "claim refused: cited probe verdict is"
             f" {verdict!r}, not kernel_accepted"
         )
+    input_sha256 = _probe_input_hash(cited, "claim")
+    _stored_probe_source(session, cited, "claim")
     record = _base_record(session, "claim")
     record.update(
         {
             "text": args.text,
             "cited_probe": args.probe,
-            "cited_input_sha256": _probe_input_hash(cited, "claim"),
+            "cited_input_sha256": input_sha256,
             "authority": "kernel_accepted_probe_receipt",
         }
     )

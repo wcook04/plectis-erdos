@@ -362,6 +362,87 @@ def check_malformed_ledger_boundary(tmp: Path) -> None:
     else:
         raise AssertionError("claim accepted a non-canonical input hash")
 
+    missing_artifact_session = workbench.Session(sessions_root, "missing-artifact")
+    missing_artifact_session.directory.mkdir(parents=True)
+    missing_artifact_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    missing_artifact_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "input_sha256": "0" * 64,
+            "kernel_receipt": {"verdict": "kernel_accepted"},
+        }
+    )
+    try:
+        workbench.cmd_claim(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": sessions_root,
+                    "session": "missing-artifact",
+                    "probe": "m002",
+                    "text": "must cite a stored artifact",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "stored artifact" not in str(error):
+            raise AssertionError(f"missing stored artifact lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("claim accepted a receipt without its stored artifact")
+
+    mismatched_artifact_session = workbench.Session(sessions_root, "mismatched-artifact")
+    mismatched_artifact_session.probes_dir.mkdir(parents=True)
+    (mismatched_artifact_session.probes_dir / "m002.lean").write_text(
+        "different bytes\n", encoding="utf-8"
+    )
+    mismatched_artifact_session.append(
+        {
+            "schema": workbench.SESSION_SCHEMA,
+            "move_id": "m001",
+            "kind": "session_opened",
+        }
+    )
+    mismatched_artifact_session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "kind": "probe",
+            "input_path": "probes/m002.lean",
+            "input_sha256": workbench._sha256_text("expected bytes\n"),
+            "kernel_receipt": {"verdict": "kernel_accepted"},
+        }
+    )
+    try:
+        workbench.cmd_claim(
+            type(
+                "Args",
+                (),
+                {
+                    "sessions_root": sessions_root,
+                    "session": "mismatched-artifact",
+                    "probe": "m002",
+                    "text": "must cite unchanged bytes",
+                },
+            )(),
+            workbench.repo_root(),
+        )
+    except SystemExit as error:
+        if "does not match input hash" not in str(error):
+            raise AssertionError(f"mismatched stored artifact lacked a bounded diagnostic: {error}")
+    else:
+        raise AssertionError("claim accepted a stored artifact with a mismatched hash")
+
     incomplete_rows = (
         (
             "missing-note-text",
