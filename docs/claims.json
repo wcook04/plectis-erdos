@@ -11934,6 +11934,18 @@
         "boundary": "The four-term decomposition and 9X/10 gap remain conditional on the explicit dyadic-room and PivotBudgetAt hypotheses; the cofinal decorrelation producer is unproved. The fibre/image lemmas do not give global supplier-prime isolation or a prime-distribution estimate, and no Erdős #249 irrationality conclusion is claimed."
       },
       {
+        "id": "strict_prime_tail_orbit_gap",
+        "problem": 249,
+        "review_family": "strict_prime_tail_orbit_gap",
+        "claim_id": "strict_prime_tail_orbit_gap",
+        "contribution_class": "conditional reduction",
+        "original_declaration": "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "original_source": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+        "wrapper_declaration": "Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+        "statement": "An 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and a finite 9/10 gap; alternatively, a cofinal natural-prime tail-orbit strict gap below 9/10 yields adaptive pivot escape and conditional irrationality.",
+        "boundary": "The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families."
+      },
+      {
         "id": "totient_carry_anti_compression",
         "problem": 249,
         "review_family": "totient_carry_anti_compression",
@@ -12475,7 +12487,24 @@
             "Erdos249257.TotientTailPeriodKiller.DTWPivotResidualDecorrelation",
             "Erdos249257.TotientTailPeriodKiller.irrational_totient_series_of_pivotResidualDecorrelation"
           ],
-            "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
+          "boundary": "The fibre/image lemmas and the explicit counterexample establish neither global supplier-prime isolation nor a prime-distribution estimate. The 9X/10 gap is conditional on PivotBudgetAt and the stated dyadic-room inequality; irrationality is conditional on DTWPivotResidualDecorrelation, whose exact cofinal producer remains open. No decorrelation estimate supplying those budgets is proved, and the #249 endpoint remains open."
+          },
+          {
+            "id": "strict_prime_tail_orbit_gap",
+            "contribution_class": "conditional reduction",
+            "summary": "A single two-branch source mechanism gives an 89/100 first-harmonic block saving from an 11/100 nonpositive-phase density, or an adaptive pivot escape from a cofinal natural-prime tail-orbit strict gap below 9/10. The load-bearing representative is the natural-prime irrationality reduction; block-gap and density declarations remain subordinate.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "ErdosProblems.Erdos249.TotientTailOrbitBlockGap",
+              "ErdosProblems.Erdos249.TotientTailOrbitNonpositiveBlockDensity",
+              "ErdosProblems.Erdos249.tailOrbitBlockGap_of_nonpositiveBlockDensity",
+              "ErdosProblems.Erdos249.irrational_totient_series_of_tailOrbitBlockGap",
+              "ErdosProblems.Erdos249.DTWNaturalPrimeTailOrbitStrictGap",
+              "ErdosProblems.Erdos249.naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
+              "ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap"
+            ],
+            "boundary": "The 11/100 phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. Both branches are conditional certificate/irrationality reductions only: they do not close Erdős #249, duplicate first_harmonic_pivot_decomposition or actual_lcm_orbit_separation, or justify novelty, priority, significance, or external review."
           },
           {
             "id": "totient_carry_anti_compression",
@@ -16296,6 +16325,54 @@
           "name": "actualLcm_integral_forces_topEdgeResidue",
           "module": "Erdos249257/TotientActualLcmOrbitSign.lean",
           "line": 211
+        }
+      ]
+    },
+    {
+      "id": "strict_prime_tail_orbit_gap",
+      "label": "Tail-orbit phase-density and natural-prime strict-gap reductions",
+      "status": "conditional reduction",
+      "statement": "A uniform 11/100 nonpositive-phase density on arbitrarily late dyadic blocks yields an 89/100 first-harmonic saving and hence a finite certificate; alternatively, cofinally many natural prime indices with tail-orbit real part below 9/10 yield adaptive pivot escape. The required density, cofinal prime strict-gap, and associated uniform-margin producers are unproved for the actual totient orbit, so no unconditional Erdős #249 result is claimed.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
+      "paper_label": null,
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "TotientTailOrbitBlockGap",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 25
+        },
+        {
+          "name": "TotientTailOrbitNonpositiveBlockDensity",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 35
+        },
+        {
+          "name": "tailOrbitBlockGap_of_nonpositiveBlockDensity",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 45
+        },
+        {
+          "name": "irrational_totient_series_of_tailOrbitBlockGap",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 96
+        },
+        {
+          "name": "DTWNaturalPrimeTailOrbitStrictGap",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 157
+        },
+        {
+          "name": "naturalPivotPointEscape_of_naturalPrimeTailOrbitStrictGap",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 166
+        },
+        {
+          "name": "irrational_totient_series_of_naturalPrimeTailOrbitStrictGap",
+          "module": "ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
+          "line": 205
         }
       ]
     },
