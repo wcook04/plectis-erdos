@@ -204,6 +204,33 @@
       "next_obligation": "Direct next research route: specialize the carry coordinates to the actual three-prime running-LCM digit stream, prove the required recurrence and digit identification, and separately produce the cofinal local-window escape needed by the #269 reduction. Track the uncontrolled integral quotient rather than treating the finite residue coordinate as a finite-state quotient; only after those bridges are checked can this family feed an actual #269 conclusion."
     },
     {
+      "route_id": "erdos_269_conditional_carry_escape",
+      "problem": 269,
+      "route": "Cofinal local-window escape excludes a positive reduced carry",
+      "status": "conditional_obstruction_bridge_open",
+      "evidence": {
+        "kind": "checked_lean_plus_comparator",
+        "path": "ExternalVerification/Challenge.lean",
+        "anchors": [
+          "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+          "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape"
+        ],
+        "source_declaration": "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "source_module": "ErdosProblems/Erdos269/RestrictedFloorSum.lean",
+        "source_anchor": 645,
+        "comparator_declaration": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "comparator_anchor": 498,
+        "comparator_transport_commit": "069245dfa77c55565611f04f9269707e0c31ce24",
+        "comparator_registration_commit": "4faff4e6824e99ad1cf760d024fab92ff9df3c56",
+        "solution_export": "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "solution_export_anchor": 1408
+      },
+      "actual_established": "Given a cofinal local-window escape, the checked source theorem rules out a positive integer carry state satisfying the displayed recurrence and the matching short-bound condition. The local mechanism is an escaping window whose least positive residue exceeds the allowed bound, contradicting positivity and the recurrence congruence; the Comparator wrapper and Solution export transport this exact consumer theorem.",
+      "failure_boundary": "This is a conditional obstruction only. It assumes the cofinal local-window escape producer, positive coprime modulus, and the stated positive reduced-carry recurrence and bound; it does not prove cofinal escape, connect the carry consumer to the actual #269 running-LCM series, supply the actual-series/rationality bridge, prove Erdős #269 irrationality, or make endpoint, novelty, priority, significance, or external-review claims.",
+      "prerequisites_and_assumptions": "The source declaration consumes b, m, and shortBound together with CofinalLocalWindowEscape, a positive B coprime to 30, and a positive integer-valued d obeying d (n + 1) = b n * d n - B * m n and the stated natAbs bound. The Comparator transport is source-faithful evidence only; it is not a producer of the cofinal escape hypothesis or an application to the actual running-LCM sequence.",
+      "next_obligation": "Direct next research route: inspect `ErdosProblems/Erdos269/RestrictedFloorSum.lean:645` and the actual three-prime running-LCM modules, then separately produce the cofinal local-window escape for the actual digit stream and prove the actual-series/rationality bridge. Only after those bridges are checked should this conditional consumer be used toward an Erdős #269 conclusion."
+    },
+    {
       "route_id": "erdos_1041_smallest_gap_selector",
       "problem": 1041,
       "route": "Always choose the smallest angular-gap Form-A selector",
