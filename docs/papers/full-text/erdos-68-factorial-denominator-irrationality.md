@@ -159,11 +159,31 @@ n\,W_{d,n-1}-W_{d,n}=0
 ```
 So the channel weight is arithmetically inert except at multiples of $`d`$. The formal statements are *factorial pow floor dvd factorial*, *channel weight mul denominator*, and *channel event eq zero of not dvd*.
 
+There is a separate finite rigidity before any congruence is taken. For a finite coefficient family $`(c_j,i_j)`$, write
+
+``` math
+M=\sum_j c_j i_j!,\qquad
+  C_d=\sum_j c_j\frac{i_j!}{(d!)^{\lfloor i_j/d\rfloor}}.
+```
+If all indices lie in one quotient band $`kd\le i_j<(k+1)d`$, then the quotient $`\lfloor i_j/d\rfloor`$ is constant and the factorial moment factors exactly:
+
+<div id="res:bandbreakpoint" class="theorem">
+
+**Theorem 2** (quotient-band breakpoint). *Under the band hypothesis,
+``` math
+M=(d!)^k C_d.
+```
+In particular, in the first band $`d\le i_j<2d`$, channel cancellation $`C_d=0`$ forces $`M=0`$. If all indices are at least $`d`$, channel cancellation and $`M\ne0`$ therefore force at least one index $`i_j\ge2d`$.*
+
+</div>
+
+The exact factorisation is checked for every quotient band at [the band identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L71), and its zero-channel consequence is [band cancellation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L91). The first-band form is explicit at [first-band factorisation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L101); the final breakpoint alternative is [breakpoint witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/8c455842bcc5d17e861816391ec75e85e76a57d3/ErdosProblems/Erdos68/ChannelBreakpointRigidity.lean#L130). The hard step is the constant quotient, not a valuation estimate: within one band every factorial has the same extracted power of $`d!`$. Thus a nonzero moment cannot be hidden entirely below $`2d`$ while the $`d`$-channel cancels. This is a finite-family obstruction only. It constructs no cancelling family, says nothing about simultaneous channels or residual size, and does not by itself address the cofinal non-unit-carry input for Problem #68.
+
 Let $`\lambda`$ be a finitely supported integer vector on indices $`n\ge2`$, let $`M=M(\lambda)`$ be its factorial moment, and let $`V_{d}(\lambda)`$ be the $`d`$-th channel numerator. The kernel checks two facts about them.
 
 <div id="res:congruence" class="theorem">
 
-**Theorem 2** (channel congruence). *For every finite integer support and every $`d\ge2`$,
+**Theorem 3** (channel congruence). *For every finite integer support and every $`d\ge2`$,
 ``` math
 V_{d}(\lambda)\equiv M(\lambda)\pmod{d!-1}.
 ```
@@ -176,13 +196,13 @@ L_D=\operatorname{lcm}_{2\le d\le D}(d!-1)\ \Big|\ M(\lambda).
 
 <div id="res:normalform" class="theorem">
 
-**Theorem 3** (integral normal form). *For every finite integer support and every $`d\ge2`$ there is an integer $`k`$ with $`V_{d}(\lambda)=M(\lambda)+(d!-1)k`$.*
+**Theorem 4** (integral normal form). *For every finite integer support and every $`d\ge2`$ there is an integer $`k`$ with $`V_{d}(\lambda)=M(\lambda)+(d!-1)k`$.*
 
 </div>
 
-Theorem <a href="#res:normalform" data-reference-type="ref" data-reference="res:normalform">3</a> is the sharper of the two for design purposes. It says that every zero-moment variation of the support changes the normalised $`d`$-th channel contribution by an integer only. Zero-moment variations therefore cannot manufacture an extra fractional cancellation coordinate: the congruence forces every normalised channel defect to be integral.
+Theorem <a href="#res:normalform" data-reference-type="ref" data-reference="res:normalform">4</a> is the sharper of the two for design purposes. It says that every zero-moment variation of the support changes the normalised $`d`$-th channel contribution by an integer only. Zero-moment variations therefore cannot manufacture an extra fractional cancellation coordinate: the congruence forces every normalised channel defect to be integral.
 
-Theorem <a href="#res:congruence" data-reference-type="ref" data-reference="res:congruence">2</a> is an obstruction rather than a source of cancellation. Any finite family that kills the low channels must have moment divisible by $`L_D`$, and $`L_D`$ grows faster than the tail shrinks. The returned analysis proposes the quantitative form
+Theorem <a href="#res:congruence" data-reference-type="ref" data-reference="res:congruence">3</a> is an obstruction rather than a source of cancellation. Any finite family that kills the low channels must have moment divisible by $`L_D`$, and $`L_D`$ grows faster than the tail shrinks. The returned analysis proposes the quantitative form
 ``` math
 \log \operatorname{lcm}_{2\le n\le N}(n!-1)\ \gg\ N^{4/3}\log N
   \qquad(N\to\infty).
@@ -216,7 +236,7 @@ The channel obstruction raises a natural question: can a finite support affect e
 
 <div id="res:translator" class="theorem">
 
-**Theorem 4** (two-term prime channel corrector). *Let $`p`$ be prime and take the coefficient–index pair $`(p,-1)`$ on the indices $`(p-1,p)`$. Then the factorial moment is $`0`$; every channel $`d<p`$ vanishes, by the exact quotient identity $`\lfloor(p-1)/d\rfloor=\lfloor p/d\rfloor`$; every channel $`d>p`$ vanishes, because both indices lie below $`d`$; and the $`p`$-channel numerator is exactly $`p!-1`$.*
+**Theorem 5** (two-term prime channel corrector). *Let $`p`$ be prime and take the coefficient–index pair $`(p,-1)`$ on the indices $`(p-1,p)`$. Then the factorial moment is $`0`$; every channel $`d<p`$ vanishes, by the exact quotient identity $`\lfloor(p-1)/d\rfloor=\lfloor p/d\rfloor`$; every channel $`d>p`$ vanishes, because both indices lie below $`d`$; and the $`p`$-channel numerator is exactly $`p!-1`$.*
 
 </div>
 
@@ -318,7 +338,7 @@ The third formal layer converts modular disagreement into exclusion.
 
 <div id="res:projection" class="theorem">
 
-**Theorem 5** (projection rigidity). *Suppose the natural endpoint numerator $`Z`$ is congruent to a weighted numerator $`T`$ modulo $`R`$. Then every divisor $`Q`$ of $`R`$ with $`Z\le B<Q`$ satisfies $`T\bmod Q=Z`$. Consequently two divisors $`Q_1,Q_2>B`$ with unequal projected residues exclude any such bounded endpoint; and unequal projections force $`\min(Q_1,Q_2)\le T`$.*
+**Theorem 6** (projection rigidity). *Suppose the natural endpoint numerator $`Z`$ is congruent to a weighted numerator $`T`$ modulo $`R`$. Then every divisor $`Q`$ of $`R`$ with $`Z\le B<Q`$ satisfies $`T\bmod Q=Z`$. Consequently two divisors $`Q_1,Q_2>B`$ with unequal projected residues exclude any such bounded endpoint; and unequal projections force $`\min(Q_1,Q_2)\le T`$.*
 
 </div>
 
@@ -544,7 +564,7 @@ Let $`M_p`$ denote the moving private modulus, let $`q\mid M_p`$ be the selected
 
 <div id="prob:weighted-collision68" class="problem">
 
-**Problem 6** (weighted collision-product control). Prove on an unbounded family of tailored prime blocks both
+**Problem 7** (weighted collision-product control). Prove on an unbounded family of tailored prime blocks both
 ``` math
 \sum_r\#\{e:h_{r,e}(p)>1\}\log r
  <
@@ -581,7 +601,7 @@ Lean proves $`A_n\mid v_{n+1}`$ and, when $`A_n>1`$, that the new numerator has 
 
 <div id="prob:amplification68" class="problem">
 
-**Problem 7** (cofinal valuation amplification). Prove that there is $`\eta>0`$ and infinitely many genuinely nonterminal indices $`n`$ such that
+**Problem 8** (cofinal valuation amplification). Prove that there is $`\eta>0`$ and infinitely many genuinely nonterminal indices $`n`$ such that
 ``` math
 \log A_n\ge\eta\log v_{n+1},
 \tag{9.4}\label{eq:amplification-mass68}
@@ -622,7 +642,7 @@ The lower unit-carry branch is exactly
 
 <div id="prob:lower-cylinder68" class="problem">
 
-**Problem 8** (cofinal lower-endpoint escape). Prove for infinitely many primes $`p`$ that
+**Problem 9** (cofinal lower-endpoint escape). Prove for infinitely many primes $`p`$ that
 ``` math
 1+\frac1{p!-1}+\frac2p\le p\Delta_p.
 \tag{9.6}\label{eq:lower-cylinder68}
@@ -656,7 +676,7 @@ p^2\mid Z_{2p}
 
 <div id="prob:double-prime68" class="problem">
 
-**Problem 9** (cofinal doubled-prime branch failure). Prove that infinitely many odd primes $`p`$ satisfy simultaneously
+**Problem 10** (cofinal doubled-prime branch failure). Prove that infinitely many odd primes $`p`$ satisfy simultaneously
 ``` math
 \neg\bigl(b_{2p}=1\land p\mid Z_{2p-1}\bigr),
  \qquad
@@ -694,7 +714,7 @@ and $`N_d(n,t)=\det(A_{n,t})\ne0`$ after the largest support index. The finite i
 
 <div id="prob:cramer68" class="problem">
 
-**Problem 10** (Cramer residual nonintegrality). Construct an unbounded family $`(n,t)`$ for which
+**Problem 11** (Cramer residual nonintegrality). Construct an unbounded family $`(n,t)`$ for which
 ``` math
 \mathcal R_{n,t}\notin\mathbb{Z},
 ```

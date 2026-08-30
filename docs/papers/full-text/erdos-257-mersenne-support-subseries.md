@@ -16,6 +16,10 @@ Erdős #257 asks whether $`X_A=\sum_{a\in A}(2^a-1)^{-1}`$ is irrational for ev
 ```
 At the dyadic endpoint $`X_A=p/2^c`$, an infinite support instead forces either nonsummability of the reciprocal support terms or reciprocal mass greater than $`1`$. This becomes a contradiction only after an independent proof of summability and mass at most $`1`$. Finally, rational values admit an exact Boolean–Möbius scaled-tail characterisation from which the support is reconstructed. These constraints are not known to be contradictory.
 
+On the multiplicative side, a composite support element obeys an exact dilation identity with an explicit foreign-divisor defect. For an orthogonal petal bouquet that defect is bounded by the finite exceptional frame plus the petal incidence, while prime supports have zero defect. This is a local interface for a correlation argument, not a correlation theorem.
+
+There is one further conditional countermodel frontier. A sequence of finite terminal-only words whose depths tend to infinity and whose scaled terminal carry tends to zero would converge to the rational value $`1/2`$ through actual achievement-set points. It would therefore produce an infinite rational support and refute the universal irrationality assertion. No such sequence is constructed here.
+
 We then record the achievement-set geometry. Every restriction to a set $`J`$ of allowed exponents preserves unique coding, compactness and nowhere density, is perfect when $`J`$ is infinite, and has measure $`2^{-|F|}`$ when the complement $`J^c=F`$ is finite and measure zero when $`J^c`$ is infinite. For the squarefree support the incidence is $`2^{\omega(n)}-1`$; at every even base two divisibility-first certificate hypotheses fail already at precision $`b^2`$, while adjoining $`1`$ preserves irrationality and restores arbitrarily long base-$`2`$ opening blocks. Since the squarefree values at every power-of-two base are jointly controlled by the literature, that failure is internal to a normalisation rather than to the value itself. Finite support represents neither $`1/2`$ nor $`1/21`$: membership of the first is equivalent to unbounded greedy skips, and membership of the second to excluding one explicit fatal aligned branch whose eventual affine-supercapacity regime remains possible. For $`1/2`$, membership would refute \#257, while non-membership would eliminate only this one candidate. Tao–Teräväinen’s base-$`2`$ prime-support theorem and Duverney–Tachiya’s power-of-two squarefree theorem are cited prior work, not formalised here. These classifications and scoped frontiers do not solve \#257 or either target.
 
 > **Contribution.** The paper proves finite-support denominator-period noncollapse, exact injective coding and a measure dichotomy for restricted achievement sets, and formalises the classical full-support irrationality theorem for every integer base $`b\ge 2`$.
@@ -476,7 +480,100 @@ In the statement, $`u=(u_1,\dots,u_d)\in\{0,1\}^{d}`$ is a finite prefix, $`V(u)
 
 Checked as [the greedy form](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/GreedyAchievementSet.lean#L2527), [the terminal-bit form](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L126), [the skipped-rank form](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L213), [the fatal-gap equivalence](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfCylinderFatalGapRightTail.lean#L781), [its transfer to non-membership](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfCylinderFatalGapRightTail.lean#L787), and [the finite-support exclusion](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfCarryReachability.lean#L589).
 
+<div id="res:terminalhalf" class="theorem">
+
+**Theorem 14** (terminal scaled-vanishing countermodel frontier). *Let $`S`$ be a `HalfTerminalOnlyScaledVanishingSequence`: its finite words exclude ranks $`0`$ and $`1`$, their depths tend to infinity, and the absolute terminal carry divided by $`2^M`$ tends to zero along the depths $`M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with*
+
+*``` math
+\sum_{a\in A}\frac1{2^a-1}=\frac12.
+```
+Consequently the universal irrationality assertion in Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a> is false under this hypothesis. This is a conditional countermodel route, not a construction of $`S`$ and not a solution of Problem #257.*
+
+</div>
+
+The terminal-only consumer first places $`1/2`$ in the achievement set by the vanishing normalized-carry estimate, then uses the finite-support exclusion to show that the limiting support is infinite: [achievement-set consumer](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/TerminalOnlyScaledVanishing.lean#L165), [infinite-support lift](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/TerminalOnlyScaledVanishing.lean#L221). The problem-level refutation is the direct formal consequence [rational half counterexample](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos257/HalfCounterexampleFrontier.lean#L31), [universal-claim refutation](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos257/HalfCounterexampleFrontier.lean#L39).
+
 The formal source also proves equivalent terminal-bit and unbounded skipped-rank formulations in its internal half-cylinder seam coordinate; the two middle source links above are those versions. Their definitions are not needed for the self-contained greedy and fatal-gap statement used here. The two sides are asymmetric: non-membership is witnessed by a *finite* fatal gap and is therefore semi-decidable, whereas membership is an infinite condition. Computing further can only raise a lower bound on where a fatal gap could occur; it cannot establish survival.
+
+The next local obstruction is sharper than a numerical search. Suppose a take occurs at rank $`b`$, the next take at rank $`c>b+1`$, and put $`q=2^b-1`$ and $`m=2^{c-1}`$. If $`R`$ is the reciprocal of the residual just before the first take, then the final intervening skip is dyadically unsafe exactly when
+
+``` math
+\frac{q(m-1)}{q+m-1}<R<\frac{qm}{q+m}.
+```
+
+The interval has the exact width $`q^2/((q+m)(q+m-1))`$. For a single intervening skip, $`c=b+2`$ and $`m=2q+2`$, giving the two-thirds band
+
+``` math
+\frac{q(2q+1)}{3q+1}<R<\frac{2q(q+1)}{3q+2},
+```
+
+whose width is below $`1/9`$. Thus the band is an exact localization of one greedy danger, not a claim that the actual orbit enters it.
+
+<div id="res:twothirdsband" class="theorem">
+
+**Theorem 15** (the sharp local two-adic obstruction). *Let $`p,D,q`$ be positive odd integers. If*
+
+*``` math
+q(2q+1)p<2D(3q+1),
+ \qquad
+ 2D(3q+2)<2pq(q+1),
+```*
+
+*then $`p\ge7`$. In particular, the odd numerator classes $`p=1,3,5`$ cannot occupy the cleared two-thirds band. The bound is sharp for these local hypotheses: odd triples with $`p=7`$ do occur in the band.*
+
+</div>
+
+The hard step is genuinely $`2`$-adic. The band defect $`\Delta=6D-2pq`$ is positive and divisible by $`4`$ when $`p,D,q`$ are odd, so $`\Delta\ge4`$; combining that gap with the band inequalities forces $`p>6`$. The exact formal boundaries are the general localization [general band localization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfGreedyTwoThirdsBand.lean#L88), the single-skip equivalence [two-thirds band](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfGreedyTwoThirdsBand.lean#L127), and the sharp numerator conclusion [odd numerator bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfGreedyTwoThirdsBand.lean#L231). Integral reciprocal states are excluded from the same band by [integral safety](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/HalfGreedyTwoThirdsBand.lean#L185). This is a one-step local no-go result: it neither proves that the half-greedy orbit reaches or avoids the band nor settles half-membership.
+
+Two further conditional routes now sharpen the boundary around this half-value problem. They are logically distinct from the terminal scaled-vanishing route: one seeks irrationality from a structured support, while the other would produce a rational counterexample from cofinal geometric stages.
+
+<div id="res:sunflower" class="theorem">
+
+**Theorem 16** (orthogonal-petal sunflower route). *Let $`A\subseteq\mathbb{N}`$ support an `OrthogonalPetalBouquet` and satisfy `SunflowerForcedSlotTailSelection`. Then*
+
+*``` math
+\operatorname{Irrational}\!\left(\sum_{a\in A}\frac{1}{2^a-1}\right).
+```
+The bouquet hypothesis packages a finite exceptional/core part and residual petals that are nontrivial, pairwise coprime, and reciprocal-summable. The remaining selector hypothesis is a uniform tail condition: at every positive length $`K`$ it supplies a shifted block whose binary carry is divisible by $`2^K`$ while its residual tail is bounded. Neither hypothesis is constructed here, so this is a conditional reduction rather than a solution of Problem #257.*
+
+</div>
+
+The hard mechanism is the persistent-reduced-modulus averaging argument: the selector forces a carry supply, and the support-series consumer turns that supply into irrationality. The exact formal consumers are [forced carry supply](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/SupportSunflowerDichotomy.lean#L531) and [irrationality endpoint](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/SupportSunflowerDichotomy.lean#L540). The source definition of the selector makes the missing analytic obligation explicit at [uniform tail selector](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/SupportSunflowerDichotomy.lean#L406).
+
+<div id="res:compositedefect" class="theorem">
+
+**Theorem 17** (the composite-dilation defect). *Let $`A\subseteq\mathbb{N}`$ and let $`a,x\in\mathbb{N}_{>0}`$ with $`a\in A`$. Define the foreign-divisor defect
+``` math
+\delta_A(a,x)=\#\{d\mid ax:d\in A,\ d\nmid x,\ d\ne a\}.
+```
+Then the divisor incidence satisfies the exact identity
+``` math
+\operatorname{sc}_A(ax)=\operatorname{sc}_A(x)+\mathbf 1_{a\nmid x}+\delta_A(a,x).
+```
+If every member of $`A`$ is prime, then $`\delta_A(a,x)=0`$, so the familiar prime-support dilation formula is recovered. More generally, if $`A`$ has an `OrthogonalPetalBouquet` witness $`h_B`$, then for every $`i\in\mathbb{N}`$,
+``` math
+\delta_A(\operatorname{ray}_{h_B}(i),x)\le
+  |h_B.\mathrm{exceptional}|+
+  \operatorname{sc}_{\operatorname{range}(h_B.\mathrm{petal})}(x),
+```
+where $`\operatorname{ray}_{h_B}(i)=h_B.\mathrm{core}(i)h_B.\mathrm{petal}(i)`$.*
+
+</div>
+
+The first identity is the finite divisor partition checked at [exact dilation identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/CompositeDilationDefect.lean#L30). The hard point is that a composite multiplier can create support divisors which are neither the multiplier itself nor old divisors of $`x`$; they are recorded by $`\delta_A`$ rather than silently discarded. The defect vanishes under the prime-support hypothesis by [prime-support no-defect](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/CompositeDilationDefect.lean#L103), and the corresponding incidence formula is [prime specialization](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/CompositeDilationDefect.lean#L119). For a bouquet, every non-exceptional foreign divisor injects into a unique petal divisor of $`x`$, yielding the displayed budget through [foreign-divisor classification](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/CompositeDilationDefect.lean#L133) and [defect bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/CompositeDilationDefect.lean#L151). The correction is concrete already for $`A=\{2,6\}`$: multiplying $`x=1`$ by the composite support element $`6`$ creates the additional support divisor $`2`$, so $`\delta_A(6,1)=1`$ ([two-six witness](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/CompositeDilationDefect.lean#L218)). Thus a composite bouquet cannot be analysed by copying the prime formula until this explicit foreign channel has been budgeted. This theorem provides that local budget only; it neither bounds defects along an infinite orbit nor supplies the uniform tail selector required by Theorem <a href="#res:sunflower" data-reference-type="ref" data-reference="res:sunflower">16</a>.
+
+<div id="res:cylinderhalf" class="theorem">
+
+**Theorem 18** (cofinal-cylinder half countermodel route). *Suppose that for every $`N`$ there are $`M,K`$ with $`\max\{N,1\}\le M`$ and a nonempty `CylinderStage` $`K~M`$. Then there is an infinite set $`A\subseteq\mathbb{N}`$ with $`0\notin A`$ and*
+
+*``` math
+\sum_{a\in A}\frac{1}{2^a-1}=\frac12.
+```
+Thus the universal irrationality assertion in Problem #257 is false under this cofinal-stage hypothesis. The formal route does not construct the cofinal family of full-cylinder stages.*
+
+</div>
+
+The bridge first converts each full-cylinder stage into a weaker terminal-only strip, then invokes the closed half-achievement-set consumer and the positive-support lift. The exact steps are [terminal-only bridge](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L264), [infinite half-support](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L277), and [positive-support lift](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L287). This is a conditional countermodel frontier, not evidence that such stages exist; proving or refuting their cofinality is the surviving task for this route.
 
 One natural route to $`1/2`$ is closed. The Boolean support selected by the negative values of the Möbius function has value exactly $`1/2`$ plus the positive Möbius tail, hence at least $`1/2+1/63`$ ([identity](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/MobiusSignSupportNoGo.lean#L111), [bound](https://github.com/wcook04/plectis-lean-erdos249-257/blob/9e231ce4371fcda607f81c4520d29b16dcb4482e/Erdos249257/MobiusSignSupportNoGo.lean#L150)). That closes the sign-truncation construction; it excludes no other support.
 
@@ -488,7 +585,7 @@ The target $`1/21`$ has a useful property that does not depend on any finite sea
 
 <div id="res:one-over-twenty-one" class="theorem">
 
-**Theorem 14** (finite-support obstruction at $`1/21`$). *For every finite set $`F`$ of exponents with $`n\ge2`$ for all $`n\in F`$,
+**Theorem 19** (finite-support obstruction at $`1/21`$). *For every finite set $`F`$ of exponents with $`n\ge2`$ for all $`n\in F`$,
 ``` math
 \sum_{n\in F}\frac{1}{2^n-1}\ne\frac1{21}.
 ```*
@@ -529,7 +626,7 @@ Here $`D_R\subseteq\{2,\ldots,R\}`$ is the Boolean support obtained by descendin
 
 <div id="res:one-over-twenty-one-frontier" class="theorem">
 
-**Theorem 15** (canonical quotient-greedy frontier at $`1/21`$). *The following statements hold.*
+**Theorem 20** (canonical quotient-greedy frontier at $`1/21`$). *The following statements hold.*
 
 1.  *$`1/21\in\mathcal A`$ if and only if $`\mathcal F_{21}`$ does not hold.*
 
@@ -556,7 +653,7 @@ Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:pr
 
 <div id="prob:one-over-twenty-one-membership" class="problem">
 
-**Problem 16** (membership of 1/21 in the Mersenne achievement set). Exclude the explicit fatal/cofinite/aligned branch $`\mathcal F_{21}`$. It is sufficient either to contradict the eventual permanent affine-supercapacity recurrence forced by that branch or to force an unbounded sequence of closed canonical quotient rows; neither sufficient route is claimed to be equivalent by itself.
+**Problem 21** (membership of 1/21 in the Mersenne achievement set). Exclude the explicit fatal/cofinite/aligned branch $`\mathcal F_{21}`$. It is sufficient either to contradict the eventual permanent affine-supercapacity recurrence forced by that branch or to force an unbounded sequence of closed canonical quotient rows; neither sufficient route is claimed to be equivalent by itself.
 
 </div>
 
@@ -564,13 +661,13 @@ Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:pr
 
 2.  **Membership of $`1/2`$ in $`\mathcal A`$.** Theorem <a href="#res:half" data-reference-type="ref" data-reference="res:half">13</a> makes this exactly equivalent to infinitely many greedy skips, and to a fatal gap on the other side; neither is proved. A proof of non-membership would take the form of one finite fatal gap.
 
-3.  **Problem <a href="#prob:one-over-twenty-one-membership" data-reference-type="ref" data-reference="prob:one-over-twenty-one-membership">16</a>.** Theorem <a href="#res:one-over-twenty-one" data-reference-type="ref" data-reference="res:one-over-twenty-one">14</a> rules out finite support, while Theorem <a href="#res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="res:one-over-twenty-one-frontier">15</a> reduces membership exactly to excluding $`\mathcal F_{21}`$. Contradicting its forced eventual affine-supercapacity recurrence or producing arbitrarily deep closed canonical rows would suffice. Neither input is known, and neither is promoted to an equivalence.
+3.  **Problem <a href="#prob:one-over-twenty-one-membership" data-reference-type="ref" data-reference="prob:one-over-twenty-one-membership">21</a>.** Theorem <a href="#res:one-over-twenty-one" data-reference-type="ref" data-reference="res:one-over-twenty-one">19</a> rules out finite support, while Theorem <a href="#res:one-over-twenty-one-frontier" data-reference-type="ref" data-reference="res:one-over-twenty-one-frontier">20</a> reduces membership exactly to excluding $`\mathcal F_{21}`$. Contradicting its forced eventual affine-supercapacity recurrence or producing arbitrarily deep closed canonical rows would suffice. Neither input is known, and neither is promoted to an equivalence.
 
 The half-value question remains valid on both sides; the frontier at $`1/21`$ is at present the sharper of the two. The questions below refine that frontier and the arithmetic interfaces around it, and are ranked by how directly an answer would move the checked boundary.
 
 <div id="prob:affine-supercapacity" class="problem">
 
-**Problem 17** (permanent affine supercapacity). Can the *actual* denominator-$`21`$ greedy orbit satisfy $`\mathcal F_{21}`$ indefinitely? Equivalently, can the complete fatal, cofinite-selection, alignment and doubling-block hypotheses coexist with the eventual recurrence
+**Problem 22** (permanent affine supercapacity). Can the *actual* denominator-$`21`$ greedy orbit satisfy $`\mathcal F_{21}`$ indefinitely? Equivalently, can the complete fatal, cofinite-selection, alignment and doubling-block hypotheses coexist with the eventual recurrence
 ``` math
 s_R>2^R,\quad D_{R+1}=D_R\cup\{R+1\},\quad
  s_{R+1}=4s_R+\tau_R-\pi_R-(2^{R+1}+1),
@@ -579,11 +676,11 @@ or must an arbitrarily deep closed return $`s_R\le2^R`$ occur?
 
 </div>
 
-A contradiction from a Lyapunov function, a $`2`$-adic obstruction, a divisibility theorem or a recurrence classification would prove $`1/21\in\mathcal A`$ and, by Theorem <a href="#res:one-over-twenty-one" data-reference-type="ref" data-reference="res:one-over-twenty-one">14</a>, produce an infinite rational support. Conversely, an actual construction satisfying *all* clauses of $`\mathcal F_{21}`$ would prove $`1/21\notin\mathcal A`$. Constructing only an abstract affine orbit with adversarial pulses does neither.
+A contradiction from a Lyapunov function, a $`2`$-adic obstruction, a divisibility theorem or a recurrence classification would prove $`1/21\in\mathcal A`$ and, by Theorem <a href="#res:one-over-twenty-one" data-reference-type="ref" data-reference="res:one-over-twenty-one">19</a>, produce an infinite rational support. Conversely, an actual construction satisfying *all* clauses of $`\mathcal F_{21}`$ would prove $`1/21\notin\mathcal A`$. Constructing only an abstract affine orbit with adversarial pulses does neither.
 
 <div id="prob:scaled-return" class="problem">
 
-**Problem 18** (weakest native recurrence criterion). Does the scaled actual greedy remainder return cofinally to one bounded interval?
+**Problem 23** (weakest native recurrence criterion). Does the scaled actual greedy remainder return cofinally to one bounded interval?
 ``` math
 \exists B<\infty\ \forall K\ \exists N\ge K:
  \qquad 2^N r_N\le B.
@@ -595,7 +692,7 @@ This is not merely sufficient: it is equivalent to $`1/21\in\mathcal A`$ ([check
 
 <div id="prob:actual-invariant" class="problem">
 
-**Problem 19** (actual-orbit invariant). Is there a finite-memory, $`2`$-adic or discrepancy invariant, using the correlated divisor pulses of the actual support, that forces a closed return or forbids permanent supercapacity? More precisely, can one use a bounded window of $`R\bmod6`$, residues of $`s_R`$, endpoint divisor counts and the finite set of eventual skips to force descent or a forbidden state? Alternatively, can one prove that no bounded-memory invariant distinguishes the true orbit from synthetic permanent-supercapacity controls?
+**Problem 24** (actual-orbit invariant). Is there a finite-memory, $`2`$-adic or discrepancy invariant, using the correlated divisor pulses of the actual support, that forces a closed return or forbids permanent supercapacity? More precisely, can one use a bounded window of $`R\bmod6`$, residues of $`s_R`$, endpoint divisor counts and the finite set of eventual skips to force descent or a forbidden state? Alternatively, can one prove that no bounded-memory invariant distinguishes the true orbit from synthetic permanent-supercapacity controls?
 
 </div>
 
@@ -607,7 +704,7 @@ with $`L_N`$ the actual weighted repair load ([checked](https://github.com/wcook
 
 <div id="prob:fatal-interval" class="problem">
 
-**Problem 20** (final-skip Diophantine exclusion). Let $`E=\sum_{n\ge1}(2^n-1)^{-1}`$. If $`1/21\notin\mathcal A`$, let $`M`$ be the last skipped exponent, $`S_M`$ its finite skipped prefix, and
+**Problem 25** (final-skip Diophantine exclusion). Let $`E=\sum_{n\ge1}(2^n-1)^{-1}`$. If $`1/21\notin\mathcal A`$, let $`M`$ be the last skipped exponent, $`S_M`$ its finite skipped prefix, and
 ``` math
 a_M=\frac1{21}+\sum_{d\in S_M}\frac1{2^d-1}.
 ```
@@ -622,7 +719,7 @@ The fatal interval is checked as [an exact one-sided approximation](https://gith
 
 <div id="prob:target-classification" class="problem">
 
-**Problem 21** (classification of rational targets). For $`L\ge1`$, classify the reduced rationals
+**Problem 26** (classification of rational targets). For $`L\ge1`$, classify the reduced rationals
 ``` math
 \mathcal T_L=\left\{\frac pq\in(0,1):
  \begin{array}{l}
@@ -636,7 +733,7 @@ for which non-membership reduces to an eventually deterministic finite-memory or
 
 <div id="prob:denominator-realisation" class="problem">
 
-**Problem 22** (realised finite denominators). For fixed $`b\ge2`$ and $`L\ge2`$, let $`\mathcal D_b(L)`$ be the reduced denominators of the nonempty finite sums $`\sum_{n\in F}(b^n-1)^{-1}`$ with $`\operatorname{lcm}(F)=L`$. Is
+**Problem 27** (realised finite denominators). For fixed $`b\ge2`$ and $`L\ge2`$, let $`\mathcal D_b(L)`$ be the reduced denominators of the nonempty finite sums $`\sum_{n\in F}(b^n-1)^{-1}`$ with $`\operatorname{lcm}(F)=L`$. Is
 ``` math
 \mathcal D_b(L)=
  \{D:D\mid b^L-1,\ \operatorname{ord}_D(b)=L\}?
@@ -645,7 +742,7 @@ If not, what cyclotomic, valuation or cancellation conditions characterise the r
 
 </div>
 
-The order theorem supplies the inclusion from left to right, not its converse. A counterexample and corrected classification, or effective extremal bounds within $`\mathcal D_b(L)`$, would strengthen the lead theorem and feed height information back into Problem <a href="#prob:fatal-interval" data-reference-type="ref" data-reference="prob:fatal-interval">20</a>.
+The order theorem supplies the inclusion from left to right, not its converse. A counterexample and corrected classification, or effective extremal bounds within $`\mathcal D_b(L)`$, would strengthen the lead theorem and feed height information back into Problem <a href="#prob:fatal-interval" data-reference-type="ref" data-reference="prob:fatal-interval">25</a>.
 
 For scope, all squarefree values at power-of-two bases, jointly in each finite family, are settled by Corollary 1.2 and Example 1.1 of  \[duverneytachiya, author-preprint p. 4\] (Corollary <a href="#res:sfsettled" data-reference-type="ref" data-reference="res:sfsettled">9</a>). Their cited corollary does not cover bases that are not powers of $`2`$, and this note makes no global open-status or priority claim for those values.
 
