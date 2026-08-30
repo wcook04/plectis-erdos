@@ -6,8 +6,11 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
+from unittest.mock import patch
 
+import check_problem_note_sources as scanner
 from check_problem_note_sources import (
     declarations_in,
     declares_at,
@@ -18,6 +21,12 @@ from check_problem_note_sources import (
 )
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep the environment contract active when Python is run with -O."""
+    if not condition:
+        raise AssertionError(message)
 
 
 def test_comment_injection_is_not_a_declaration() -> None:
@@ -141,6 +150,45 @@ def test_commit_override_without_matching_short_is_rejected() -> None:
     )
 
 
+def test_git_snapshot_reads_use_clean_bounded_environment() -> None:
+    hostile_environment = {
+        "GIT_DIR": "/private/wrong-git-dir",
+        "GIT_NAMESPACE": "refs/namespaces/wrong-release",
+        "GIT_REPLACE_REF_BASE": "refs/replace/",
+        "PYTHONPATH": "/private/wrong-python-path",
+        "LC_ALL": "C",
+        "LANG": "C",
+        "PATH": "/private/wrong-bin",
+    }
+    completed = scanner.subprocess.CompletedProcess(
+        ["git", "show"], 0, stdout="theorem linked : True\n", stderr=""
+    )
+    with patch.dict(os.environ, hostile_environment, clear=False):
+        with patch.object(scanner.subprocess, "run", return_value=completed) as run:
+            lines = scanner.snapshot_lines(
+                "a" * 40, "ErdosProblems/Synthetic.lean", {}
+            )
+
+    require(lines == ["theorem linked : True"], "Git snapshot output was not returned")
+    require(len(run.call_args_list) == 1, "Git snapshot read was not exercised")
+    kwargs = run.call_args.kwargs
+    sanitized = kwargs["env"]
+    for key in ("GIT_DIR", "GIT_NAMESPACE", "GIT_REPLACE_REF_BASE", "PYTHONPATH"):
+        require(key not in sanitized, f"ambient {key} leaked into Git snapshot read")
+    require(sanitized["LC_ALL"] == "C.UTF-8", "canonical locale missing")
+    require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
+    require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into Git snapshot read")
+    require(
+        kwargs["timeout"] == scanner.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "Git snapshot read timeout drifted",
+    )
+    require(
+        scanner.ENVIRONMENT_CONTRACT
+        == "clean_committed_snapshot_subprocess_environment_v1",
+        "problem-note environment contract drifted",
+    )
+
+
 def main() -> int:
     test_comment_injection_is_not_a_declaration()
     test_split_declaration_head_resolves_at_keyword_line()
@@ -150,6 +198,7 @@ def main() -> int:
     test_erdos257_headline_anchors_are_required()
     test_mismatched_note_commitshort_is_rejected()
     test_commit_override_without_matching_short_is_rejected()
+    test_git_snapshot_reads_use_clean_bounded_environment()
     print(
         "test_problem_note_sources: comment injection, split heads, module "
         "collisions, required anchors, invalid floors, and mismatched source "

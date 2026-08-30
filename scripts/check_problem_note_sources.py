@@ -35,11 +35,14 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import validation_singleflight as singleflight
+
 ROOT = Path(__file__).resolve().parent.parent
 PREAMBLE = ROOT / "paper" / "problem-note-preamble.tex"
 CONTRACT = ROOT / "docs" / "publication_contract.json"
 INDEX_SOURCE = ROOT / "docs" / "problem_index_source.json"
 NOTE_ARTIFACT_CLASS = "problem_note"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
 LIBRARY_PREFIX = "ErdosProblems"
 # A note may also cite the reviewed #249/#257 corpus directly.  The expansion
 # library is where problem-owned work lands, but the headline theorems for
@@ -194,6 +197,19 @@ def source_pin_failure(
     )
 
 
+def git_run(*args: str) -> subprocess.CompletedProcess[str]:
+    """Read committed note sources without ambient Git selectors or hangs."""
+    return subprocess.run(
+        ["git", *args],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
+
+
 def snapshot_lines(
     commit: str,
     relative: str,
@@ -202,13 +218,7 @@ def snapshot_lines(
     key = (commit, relative)
     if key in cache:
         return cache[key]
-    completed = subprocess.run(
-        ["git", "show", f"{commit}:{relative}"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    completed = git_run("show", f"{commit}:{relative}")
     if completed.returncode != 0:
         cache[key] = []
     else:
@@ -435,13 +445,7 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
                 continue
             live = path.read_text(encoding="utf-8")
             current.extend(declarations_for_module(relative, live))
-            pinned = subprocess.run(
-                ["git", "show", f"{commit}:{relative}"],
-                cwd=ROOT,
-                capture_output=True,
-                text=True,
-                check=False,
-            )
+            pinned = git_run("show", f"{commit}:{relative}")
             if pinned.returncode != 0 or pinned.stdout != live:
                 moved.append(relative)
         if not current:
@@ -489,13 +493,7 @@ def coverage_report(default_commit: str) -> tuple[list[str], list[str]]:
             ahead = 0
             for module in modules:
                 relative = module_relative(module)
-                shown = subprocess.run(
-                    ["git", "show", f"{upstream}:{relative}"],
-                    cwd=ROOT,
-                    capture_output=True,
-                    text=True,
-                    check=False,
-                )
+                shown = git_run("show", f"{upstream}:{relative}")
                 if shown.returncode == 0:
                     ahead += len(declarations_in(shown.stdout))
             if ahead > len(current):
@@ -546,12 +544,7 @@ def main() -> int:
         commit = note_pinned_commit(note_text, default_commit)
         resolved_commits.add(commit)
         if (
-            subprocess.run(
-                ["git", "cat-file", "-e", f"{commit}^{{commit}}"],
-                cwd=ROOT,
-                capture_output=True,
-                check=False,
-            ).returncode
+            git_run("cat-file", "-e", f"{commit}^{{commit}}").returncode
             != 0
         ):
             errors.append(f"{source}: pinned commit is absent: {commit}")
