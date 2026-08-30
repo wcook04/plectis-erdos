@@ -267,11 +267,12 @@ Lean build when a result must be checked.
    missing original run logs or exact targets.
 7. Read `SCOPE.md` before describing what the project proves. Erdős #249 and
    the universal form of #257 remain open.
-8. For one claim, follow its `paper_label` into
-   `paper/erdos249-257-main-paper.tex`, then follow its `declarations` to the
-   named Lean source coordinates. To read the surrounding exposition rather
-   than locate a claim, use the generated full text in `docs/papers/`, where
-   the manuscript's own section labels are HTML anchors:
+8. For one claim, use `docs/papers/corpus.json` to resolve its `paper_label`
+   to the owning individual problem paper, then follow its `declarations` to
+   the named Lean source coordinates. The archived combined #249/#257
+   manuscript is provenance, not the default gateway. To read surrounding
+   exposition rather than locate a claim, use the generated full text in
+   `docs/papers/`, where each manuscript's own section labels are HTML anchors:
    `grep -n '<a id="sec:unresolved">' docs/papers/full-text/*.md`.
 9. Read `docs/papers/corpus.json` when the task concerns what the papers say
    rather than what Lean checked. It is the bounded index to every registered
