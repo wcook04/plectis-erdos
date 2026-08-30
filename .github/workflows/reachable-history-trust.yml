@@ -47,4 +47,3 @@ jobs:
         run: python3 scripts/test_reachable_release_history_environment.py
       - name: Enforce public-clone release gate
         run: python3 scripts/test_reachable_release_history.py --release-gate
-

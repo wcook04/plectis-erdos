@@ -552,4 +552,3 @@ if __name__ == "__main__":
         "test_reachable_release_history_environment: history boundary and redaction fixtures pass "
         f"({posture['classification']})"
     )
-
