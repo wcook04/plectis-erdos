@@ -335,6 +335,12 @@ core)**
   (`ErdosProblems/Erdos1049/RationalBaseLambert.lean:83`);
   the analytic theorem itself remains external. Formalisation of known
   inputs.
+- A separate exact rational-base state recurrence is checked under `r ≠ 0`:
+  `rationalBaseClearedTailQ_succ` gives
+  `Q(N+1) = r·Q(N) − B·coeff(N+1)·s^(N+1)` for the denominator-cleared tail
+  state (`ErdosProblems/Erdos1049/RationalBaseLambert.lean`). The
+  `s^(N+1)` forcing term records the denominator-base tax; this recurrence is
+  not itself a rationality contradiction, so it yields no #1049 endpoint.
 - The Van Assche moving diagonal fails the Amdeberhan–Zeilberger scalar
   recurrence already at `n=0`: its exact residual is
   `-p(p-1)^2(p+1)(p^5+2p^4+2p^3+2p^2+2)`, strictly negative for every real
