@@ -1364,6 +1364,47 @@ theorem exists_int_scaled_tail_of_rat_den_eq
   push_cast at hscaled ⊢
   linarith [hscaled, congrArg (fun x : ℝ => (v : ℝ) * x) hshift]
 
+/-- A multiplier whose dyadic scaling is merely divisible by the reduced
+denominator already clears every sufficiently shifted rational tail.  This
+is the divisor-strengthening of `exists_int_scaled_tail_of_rat_den_eq`. -/
+theorem exists_int_scaled_tail_of_rat_den_dvd
+    (r : ℚ)
+    (hS : (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) = (r : ℝ))
+    {c v N : ℕ} (hden : r.den ∣ 2 ^ c * v) (hN : c ≤ N) :
+    ∃ u : ℤ, (u : ℝ) = (v : ℝ) * totientTail N := by
+  obtain ⟨k, hk⟩ := hden
+  have hpowNat : 2 ^ N = 2 ^ c * 2 ^ (N - c) := by
+    rw [← pow_add]
+    congr 1
+    omega
+  have hscaled :
+      (v : ℝ) * ((2 : ℝ) ^ N * (r : ℝ)) =
+        ((((2 ^ (N - c) * k : ℕ) : ℤ) * r.num : ℤ) : ℝ) := by
+    rw [Rat.cast_def]
+    push_cast
+    rw [show (2 : ℝ) ^ N = (2 : ℝ) ^ c * 2 ^ (N - c) by
+      exact_mod_cast hpowNat]
+    have hkR : (2 : ℝ) ^ c * (v : ℝ) = (r.den : ℝ) * (k : ℝ) := by
+      exact_mod_cast hk
+    calc
+      (v : ℝ) *
+          ((2 : ℝ) ^ c * 2 ^ (N - c) *
+            ((r.num : ℝ) / (r.den : ℝ))) =
+          (2 : ℝ) ^ (N - c) *
+            (((2 : ℝ) ^ c * (v : ℝ)) *
+              ((r.num : ℝ) / (r.den : ℝ))) := by ring
+      _ = (2 : ℝ) ^ (N - c) *
+            (((r.den : ℝ) * (k : ℝ)) *
+              ((r.num : ℝ) / (r.den : ℝ))) := by rw [hkR]
+      _ = (2 : ℝ) ^ (N - c) * (k : ℝ) * (r.num : ℝ) := by
+        field_simp
+  have hshift := two_pow_mul_totient_series_eq N
+  rw [hS] at hshift
+  refine ⟨((2 ^ (N - c) * k : ℕ) : ℤ) * r.num -
+    (v : ℤ) * (totientPrefix N : ℤ), ?_⟩
+  push_cast at hscaled ⊢
+  linarith [hscaled, congrArg (fun x : ℝ => (v : ℝ) * x) hshift]
+
 /-! ## Cofinal clean composite-index cyclotomic anchors -/
 
 /-- The unsigned binary cyclotomic layer `|Φ_n(2)|`. -/
@@ -2848,29 +2889,33 @@ theorem fullMersenneInitialResidueGapSupply_iff_centered :
       ⟨H, N, M, hH, hperiod, hN, hfactor,
         (fullMersenneInitialResidueGap_iff_centered hM).mpr hgap⟩
 
-/-- **One canonical residue gap excludes its exact denominator class.**
-If `r.den = 2^c * v` and one full-Mersenne factorization at the canonical
-basepoint `c` has a centered residue gap, then the totient series is not
-`r`.  This is the pointwise converse needed to turn computed instances of
-`FullMersenneCanonicalBasepointResidueGapSupply` into genuine denominator
-exclusions; it makes no cofinal or irrationality claim. -/
-theorem totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap
+/-- **One canonical residue gap excludes a full divisor class.**  If the
+reduced denominator of `r` divides `2^c * v` and one full-Mersenne
+factorization at the canonical basepoint `c` has a centered residue gap, then
+the totient series is not `r`.  This turns any certified pointwise gap into a
+genuine finite denominator exclusion; it makes no cofinal or irrationality
+claim. -/
+theorem
+    totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap_of_den_dvd
     {c v H M : ℕ} (hv : 0 < v) (hH : 0 < H)
     (hfactor : v * M = 2 ^ H - 1)
     (hgap : FullMersenneCenteredResidueGap H c M)
-    (r : ℚ) (hden : 2 ^ c * v = r.den) :
+    (r : ℚ) (hden : r.den ∣ 2 ^ c * v) :
     (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ≠ (r : ℝ) := by
   intro hS
   have hM : 0 < M := mersenne_factor_modulus_pos hH hfactor
   have hinitial : FullMersenneInitialResidueGap H c M :=
     (fullMersenneInitialResidueGap_iff_centered hM).mpr hgap
+  have hscaleDvd : 2 ^ c * v ∣ 2 ^ c * (2 ^ H - 1) := by
+    refine ⟨M, ?_⟩
+    rw [← hfactor]
+    ring
   have hrdenDvd : r.den ∣ 2 ^ c * (2 ^ H - 1) := by
-    rw [← hden, ← hfactor]
-    exact ⟨M, by ring⟩
+    exact hden.trans hscaleDvd
   obtain ⟨d, hd⟩ :=
     tail_diff_int_of_den_dvd r hS H c hrdenDvd
   obtain ⟨u, hu⟩ :=
-    exists_int_scaled_tail_of_rat_den_eq r hS hden (le_refl c)
+    exists_int_scaled_tail_of_rat_den_dvd r hS hden (le_refl c)
   have hfilter : ∀ z : ℤ,
       (z : ℝ) = totientTail (c + H) - totientTail c →
       Int.ModEq (M : ℤ) z (-totientBlock H c) := by
@@ -2883,6 +2928,18 @@ theorem totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap
   exact
     (tail_diff_notMem_int_of_primeBasepointFilteredCarryKill
       hkill hfilter) ⟨d, hd⟩
+
+/-- Equality-form specialization of the pointwise denominator-divisor
+consumer. -/
+theorem totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap
+    {c v H M : ℕ} (hv : 0 < v) (hH : 0 < H)
+    (hfactor : v * M = 2 ^ H - 1)
+    (hgap : FullMersenneCenteredResidueGap H c M)
+    (r : ℚ) (hden : 2 ^ c * v = r.den) :
+    (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ≠ (r : ℝ) := by
+  exact
+    totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap_of_den_dvd
+      hv hH hfactor hgap r (by simp [← hden])
 
 /-- At every *prescribed* basepoint, irrationality supplies a sufficiently
 large Euler-multiple height whose full Mersenne quotient misses the complete
@@ -3332,6 +3389,7 @@ theorem totient_series_ne_rat_of_den_dvd_30_300
 #print axioms cleanCyclotomicAnchorSupply_binaryCyclotomicLayer
 #print axioms exists_unbounded_binaryCyclotomicSupport_with_periodLock_of_not_irrational
 #print axioms tail_diff_int_of_period_mul
+#print axioms exists_int_scaled_tail_of_rat_den_dvd
 #print axioms fullMersenneBlockResidue_succ
 #print axioms fullMersenneBlockCenteredLift_succ_modEq
 #print axioms fullMersenneCenteredResidueGap_iff_abs_centeredLift
@@ -3341,6 +3399,7 @@ theorem totient_series_ne_rat_of_den_dvd_30_300
 #print axioms exists_fullMersenneCenteredResidueGap_of_survivorKill
 #print axioms survivorKill_of_certifiedKill
 #print axioms exists_fullMersenneCenteredResidueGap_of_certifiedKill
+#print axioms totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap_of_den_dvd
 #print axioms totient_series_ne_rat_of_fullMersenneCanonicalBasepointResidueGap
 #print axioms exists_fullMersenneInitialResidueGap_at_of_irrational
 #print axioms fullMersenneCanonicalBasepointResidueGapSupply_iff_irrational
