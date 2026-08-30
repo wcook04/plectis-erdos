@@ -1164,7 +1164,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
       "local_source": "paper/erdos-68-factorial-denominator-irrationality.tex",
-      "source_sha256": "sha256:7a79a936a41e08af7c2267cecd994e4a7fa9ffd21ef602fc77df91b6e0763ecf",
+      "source_sha256": "sha256:67b0ef73cfb3114e838d5f09c6b58d81383fc01eb8cd79078fae0ebd675bf355",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-68-factorial-denominator-irrationality.tex",
@@ -1211,73 +1211,73 @@
           "level": 1,
           "id": "sec:projection",
           "title": "Weighted projection rigidity",
-          "line": 312
+          "line": 313
         },
         {
           "level": 1,
           "id": "sec:nogo",
           "title": "What the returns rule out",
-          "line": 462
+          "line": 463
         },
         {
           "level": 1,
           "id": "sec:finite",
           "title": "Finite certificates",
-          "line": 480
+          "line": 481
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "The missing cofinal inputs",
-          "line": 498
+          "line": 499
         },
         {
           "level": 2,
           "id": "weighted-collision-mass-and-the-complementary-residue",
           "title": "1. Weighted collision mass and the complementary residue",
-          "line": 526
+          "line": 527
         },
         {
           "level": 2,
           "id": "nonterminal-prime-power-amplification",
           "title": "2. Nonterminal prime-power amplification",
-          "line": 566
+          "line": 567
         },
         {
           "level": 2,
           "id": "escape-from-the-lower-endpoint-interval",
           "title": "3. Escape from the lower endpoint interval",
-          "line": 607
+          "line": 608
         },
         {
           "level": 2,
           "id": "failure-of-the-two-exact-doubled-prime-branches",
           "title": "4. Failure of the two exact doubled-prime branches",
-          "line": 640
+          "line": 641
         },
         {
           "level": 2,
           "id": "a-finite-cramer-block-across-floor-discontinuities",
           "title": "5. A finite Cramer block across floor discontinuities",
-          "line": 671
+          "line": 672
         },
         {
           "level": 1,
           "id": "statements-and-declarations",
           "title": "Statements and declarations",
-          "line": 720
+          "line": 721
         },
         {
           "level": 4,
           "id": "declaration-of-generative-ai-use.",
           "title": "Declaration of generative AI use.",
-          "line": 724
+          "line": 725
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Guide to the formal sources",
-          "line": 732
+          "line": 733
         }
       ],
       "citations_rendered": 12,
@@ -1286,8 +1286,8 @@
         "manuscript_title": "Factorial Carries and Finite Channel Obstructions"
       },
       "local_pdf": "erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:797587bb93c6600b9807372f34ae282ae0afc7a54aa866165f97bdca6013819e",
-      "pdf_byte_count": 138245,
+      "pdf_sha256": "sha256:881e7ae5db91b1d7580479ff5c06643d3742155a48039b5b1b78c983f40f5d6c",
+      "pdf_byte_count": 139082,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1305,12 +1305,12 @@
           {
             "id": "sec:projection",
             "title": "Weighted projection rigidity",
-            "line": 312
+            "line": 313
           },
           {
             "id": "sec:open",
             "title": "The missing cofinal inputs",
-            "line": 498
+            "line": 499
           }
         ],
         "unresolved_count": 0
