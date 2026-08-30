@@ -66,7 +66,12 @@ not a novelty or priority ranking:
   with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
   its all-base extension is conditional on affine independence. That rank
   spine is a finite-level mechanism, not a rationality-to-finite-rank bridge
-  or a solution of the binary totient endpoint.
+  or a solution of the binary totient endpoint. A separate source-only
+  first-harmonic pivot route decomposes one block into four exact terms and
+  gives a sufficient `9X/10` certificate budget; a concrete overlap at
+  `X=16` shows why global supplier-prime isolation is unavailable, and the
+  cofinal decorrelation budget remains open
+  ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
