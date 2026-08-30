@@ -12669,11 +12669,17 @@
           },
           {
             "id": "height_and_pade_arithmetic",
-            "contribution_class": "locally proved result and finite arithmetic; novelty unassessed",
-            "summary": "Exact height-region inclusions and exclusions, Padé denominator-exponent bounds, and a rectangular Hermite-Padé threshold no-go are checked.",
-            "evidence_mode": "Lean kernel",
-            "comparator_disposition": "not_selected_multiple_scoped_arithmetic_families",
-            "boundary": "The analytic remainder and nonvanishing input remain untreated."
+            "contribution_class": "locally proved sharp model-specific no-go; novelty unassessed",
+            "summary": "For the explicit rectangular two-function exponent model, the cleared gap is nonpositive throughout rho >= 0 and 1 + rho <= sigma, and the threshold is at most 1/2 - 1/pi^2 with equality exactly at rho = 0, sigma = 1. The gap sign and unique-zero mechanism support this sharp threshold no-go within the wider height-and-Padé arithmetic family.",
+            "evidence_mode": "Lean kernel plus Comparator",
+            "comparator_disposition": "targeted",
+            "declarations": [
+              "ErdosProblems.Erdos1049.hpClearedGap_nonpos",
+              "ErdosProblems.Erdos1049.hpClearedGap_eq_zero_iff",
+              "ErdosProblems.Erdos1049.rectangular_hp_threshold_le_classical",
+              "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff"
+            ],
+            "boundary": "This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
           }
         ]
       }
