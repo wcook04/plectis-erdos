@@ -79,43 +79,32 @@ GIT_LOOKUP_TIMEOUT_SECONDS = singleflight.GIT_COMMAND_TIMEOUT_SECONDS
 
 def has_symlink_component(path: Path, root: Path = ROOT) -> bool:
     """Return whether ``path`` escapes ``root`` through a symbolic link."""
-    candidate = Path(os.path.abspath(path))
-
-    def platform_alias(component: Path) -> bool:
-        """Allow only macOS's system-owned temp-directory compatibility aliases."""
-        aliases = {
-            Path("/tmp"): Path("/private/tmp"),
-            Path("/var"): Path("/private/var"),
-        }
-        target = aliases.get(component)
-        if target is None:
-            return False
-        try:
-            return component.resolve(strict=True) == target
-        except OSError:
-            return False
-
-    try:
-        relative = candidate.relative_to(root)
-    except ValueError:
-        # Test and caller-supplied paths may intentionally live outside this
-        # checkout. Walk every existing component so a nested substituted
-        # parent cannot redirect generated output to an external target, while
-        # retaining the platform-owned macOS ``/tmp`` and ``/var`` aliases.
-        current = Path(candidate.anchor)
-        for part in candidate.parts[1:]:
-            current /= part
-            if current.is_symlink():
-                if platform_alias(current):
-                    current = current.resolve(strict=True)
-                    continue
-                return True
-        return False
-
-    current = root
-    for component in relative.parts:
+    # ``root`` remains in the public signature for callers that use a custom
+    # checkout root.  Walk from the filesystem root for both in- and
+    # out-of-checkout paths so ``link/../file`` cannot hide a link through
+    # lexical normalization before the kernel resolves ``..``.
+    del root
+    candidate = path if path.is_absolute() else Path.cwd() / path
+    aliases = {
+        Path("/tmp"): Path("/private/tmp"),
+        Path("/var"): Path("/private/var"),
+    }
+    current = Path(candidate.anchor)
+    for component in candidate.parts[1:]:
+        if component in {"", "."}:
+            continue
+        if component == "..":
+            current = current.parent
+            continue
         current /= component
-        if current.is_symlink():
+        if not current.is_symlink():
+            continue
+        target = aliases.get(current)
+        try:
+            if target is None or current.resolve(strict=True) != target:
+                return True
+            current = current.resolve(strict=True)
+        except OSError:
             return True
     return False
 

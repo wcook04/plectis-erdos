@@ -72,23 +72,29 @@ def _canonical_json(value: dict[str, Any]) -> bytes:
 
 def _has_symlink_component(path: Path) -> bool:
     """Reject output paths that would read through a substituted directory."""
-    current = Path(os.path.abspath(path))
-    while True:
-        if current.is_symlink():
-            try:
-                platform_aliases = {
-                    Path("/tmp"): Path("/private/tmp"),
-                    Path("/var"): Path("/private/var"),
-                }
-                alias_target = platform_aliases.get(current)
-                if alias_target is None or current.resolve(strict=True) != alias_target:
-                    return True
-            except OSError:
+    candidate = path if path.is_absolute() else Path.cwd() / path
+    platform_aliases = {
+        Path("/tmp"): Path("/private/tmp"),
+        Path("/var"): Path("/private/var"),
+    }
+    current = Path(candidate.anchor)
+    for component in candidate.parts[1:]:
+        if component in {"", "."}:
+            continue
+        if component == "..":
+            current = current.parent
+            continue
+        current /= component
+        if not current.is_symlink():
+            continue
+        try:
+            alias_target = platform_aliases.get(current)
+            if alias_target is None or current.resolve(strict=True) != alias_target:
                 return True
             current = current.resolve(strict=True)
-        if current.parent == current:
-            return False
-        current = current.parent
+        except OSError:
+            return True
+    return False
 
 
 def _read_regular(path: Path, label: str) -> tuple[bytes | None, list[str]]:

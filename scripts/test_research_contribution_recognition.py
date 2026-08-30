@@ -122,6 +122,11 @@ def main() -> int:
             checker._has_symlink_component(linked / "contributions.json"),
             "recognition checker accepted an arbitrary symlinked output directory",
         )
+        hidden = linked / ".." / "hidden.json"
+        require(
+            checker._has_symlink_component(hidden),
+            "recognition checker normalized away a symlink before resolving ..",
+        )
 
     name, receipt, payload, head = accepted_source()
     original_route = contributions.public_result_family_route

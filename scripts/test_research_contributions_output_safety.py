@@ -61,6 +61,27 @@ def main() -> int:
         else:
             raise AssertionError("generated output followed a symlinked parent")
 
+        with tempfile.TemporaryDirectory(dir="/tmp") as redirected:
+            hidden_link = parent / ".." / "hidden.json"
+            redirect = root / "redirect"
+            redirect.symlink_to(redirected, target_is_directory=True)
+            hidden_link = redirect / ".." / "hidden.json"
+            require(
+                contributions.has_symlink_component(hidden_link, root),
+                "projection output normalized away a symlink before resolving ..",
+            )
+            try:
+                contributions.write_projection_outputs(
+                    json_payload,
+                    markdown_payload,
+                    json_output=hidden_link,
+                    markdown_output=root / "hidden.md",
+                )
+            except ValueError as exc:
+                require("symbolic link" in str(exc), "hidden symlink failure omitted its path-policy reason")
+            else:
+                raise AssertionError("generated output followed a hidden symlink")
+
     print("research contribution output safety: atomic pair publication and symlink rejection PASS")
     return 0
 
