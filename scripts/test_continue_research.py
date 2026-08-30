@@ -271,6 +271,36 @@ def check_route_memory_corpus_contract() -> None:
         and source_current["paper_consumers"],
         "#251 canonical route-memory consumer handoff is incomplete",
     )
+    route_269 = next(
+        row for row in source_document["records"] if row.get("problem") == 269
+    )
+    related_269 = route_269["evidence"]["related_families"]
+    conditional = related_269["conditional_carry_escape"]
+    require(
+        conditional["source_declaration"]
+        == "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "#269 conditional family source declaration drifted",
+    )
+    require(
+        conditional["comparator_declaration"]
+        == "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "#269 conditional family Comparator wrapper drifted",
+    )
+    require(
+        "cofinal local-window escape" in conditional["mechanism"]
+        and "actual-series/rationality bridge" in conditional["boundary"],
+        "#269 conditional family mechanism or boundary drifted",
+    )
+    require(
+        set(related_269)
+        >= {
+            "conditional_carry_escape",
+            "dyadic_block_alphabet",
+            "rank_two_kernel_no_go",
+            "three_prime_lcm_cells",
+        },
+        "#269 related-family fan-in drifted",
+    )
     mutations = (
         ("authority posture", {"authority_posture": "claim registry"}),
         ("top-level shape", {"claim_authority": "docs/claims.json"}),
@@ -307,6 +337,31 @@ def check_route_memory_corpus_contract() -> None:
                     raise AssertionError(
                         f"canonical route memory accepted dishonest {label} mutation"
                     )
+    malformed_family = json.loads(json.dumps(source_document))
+    del malformed_family["records"][5]["evidence"]["related_families"][
+        "conditional_carry_escape"
+    ]["mechanism"]
+    with tempfile.TemporaryDirectory(prefix="continue-route-memory-family-") as temporary:
+        root = Path(temporary)
+        source = root / route_memory_receipt.ROUTE_MEMORY_PATH
+        source.parent.mkdir(parents=True)
+        payload = (json.dumps(malformed_family, ensure_ascii=False) + "\n").encode("utf-8")
+        source.write_bytes(payload)
+        committed = subprocess.CompletedProcess(
+            ["git", "show"], 0, stdout=payload, stderr=b""
+        )
+        with mock.patch.object(
+            route_memory_receipt.subprocess, "run", return_value=committed
+        ):
+            try:
+                route_memory_receipt.canonical_corpus(root)
+            except ValueError as error:
+                require(
+                    "related family" in str(error),
+                    f"malformed related family rejection lacked a bounded diagnostic: {error}",
+                )
+            else:
+                raise AssertionError("canonical route memory accepted a family without mechanism")
 
 
 def check_route_memory_file_boundary() -> None:

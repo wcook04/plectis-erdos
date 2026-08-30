@@ -48,6 +48,30 @@ PRODUCER_SOCKET_FIELDS = frozenset(
 )
 CONSUMER_FIELDS = frozenset({"path", "locators"})
 PUBLIC_CONSUMER_FIELDS = frozenset({"path", "locator"})
+RELATED_FAMILY_REQUIRED_FIELDS = frozenset(
+    {
+        "route_id",
+        "status",
+        "source_declaration",
+        "source_module",
+        "source_anchor",
+        "mechanism",
+        "boundary",
+        "next_research_route",
+    }
+)
+RELATED_FAMILY_OPTIONAL_FIELDS = frozenset(
+    {
+        "comparator_declaration",
+        "comparator_anchor",
+        "comparator_transport_commit",
+        "comparator_registration_commit",
+        "solution_export",
+        "solution_export_anchor",
+        "supporting_declarations",
+        "evidence_mode",
+    }
+)
 
 
 def _error(errors: list[str], path: str, message: str) -> None:
@@ -218,6 +242,124 @@ def _validate_source_current(record: dict[str, Any]) -> None:
                 raise ValueError("#251 public consumer locator must be nonempty")
 
 
+def _validate_related_families(record: dict[str, Any]) -> None:
+    """Validate compact result-family evidence without making it claim authority."""
+    evidence = record.get("evidence")
+    if not isinstance(evidence, dict):
+        raise ValueError("canonical route memory evidence must be an object")
+    related = evidence.get("related_families")
+    if related is None:
+        return
+    if not isinstance(related, dict) or not related:
+        raise ValueError("canonical route memory related_families must be a nonempty object")
+    problem = record["problem"]
+    for family_id, family in related.items():
+        if not isinstance(family_id, str) or not re.fullmatch(r"[a-z0-9][a-z0-9_]*", family_id):
+            raise ValueError("canonical route memory related_families has an invalid family id")
+        if not isinstance(family, dict):
+            raise ValueError(
+                f"canonical route memory related family {family_id} must be an object"
+            )
+        allowed = RELATED_FAMILY_REQUIRED_FIELDS | RELATED_FAMILY_OPTIONAL_FIELDS
+        if not RELATED_FAMILY_REQUIRED_FIELDS.issubset(family) or not set(family) <= allowed:
+            raise ValueError(
+                f"canonical route memory related family {family_id} has an ambiguous shape"
+            )
+        if family.get("route_id") != f"erdos_{problem}_{family_id}":
+            raise ValueError(
+                f"canonical route memory related family {family_id} has a mismatched route id"
+            )
+        for field in (
+            "route_id",
+            "status",
+            "source_declaration",
+            "source_module",
+            "mechanism",
+            "boundary",
+            "next_research_route",
+        ):
+            value = family.get(field)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(
+                    f"canonical route memory related family {family_id} has invalid {field}"
+                )
+        source_module = family["source_module"]
+        source_path = Path(source_module)
+        if (
+            source_path.is_absolute()
+            or "\\" in source_module
+            or any(part in {"", ".", ".."} for part in source_module.split("/"))
+        ):
+            raise ValueError(
+                f"canonical route memory related family {family_id} has an invalid source module"
+            )
+        if not isinstance(family["source_anchor"], int) or family["source_anchor"] < 1:
+            raise ValueError(
+                f"canonical route memory related family {family_id} has an invalid source anchor"
+            )
+        supporting = family.get("supporting_declarations")
+        if supporting is not None and (
+            not isinstance(supporting, list)
+            or not supporting
+            or not all(isinstance(item, str) and item.strip() for item in supporting)
+        ):
+            raise ValueError(
+                f"canonical route memory related family {family_id} has invalid supporting declarations"
+            )
+        evidence_mode = family.get("evidence_mode")
+        if evidence_mode is not None and (
+            not isinstance(evidence_mode, str) or not evidence_mode.strip()
+        ):
+            raise ValueError(
+                f"canonical route memory related family {family_id} has invalid evidence mode"
+            )
+        comparator = family.get("comparator_declaration")
+        comparator_anchor = family.get("comparator_anchor")
+        if comparator is None and comparator_anchor is not None:
+            raise ValueError(
+                f"canonical route memory related family {family_id} has an orphan comparator anchor"
+            )
+        if comparator is not None and (
+            not isinstance(comparator, str) or not comparator.strip()
+        ):
+            raise ValueError(
+                f"canonical route memory related family {family_id} has invalid comparator declaration"
+            )
+        if comparator_anchor is not None and (
+            not isinstance(comparator_anchor, int) or comparator_anchor < 1
+        ):
+            raise ValueError(
+                f"canonical route memory related family {family_id} has invalid comparator anchor"
+            )
+        solution = family.get("solution_export")
+        solution_anchor = family.get("solution_export_anchor")
+        if solution is None and solution_anchor is not None:
+            raise ValueError(
+                f"canonical route memory related family {family_id} has an orphan solution anchor"
+            )
+        if solution is not None and (not isinstance(solution, str) or not solution.strip()):
+            raise ValueError(
+                f"canonical route memory related family {family_id} has invalid solution export"
+            )
+        if solution_anchor is not None and (
+            not isinstance(solution_anchor, int) or solution_anchor < 1
+        ):
+            raise ValueError(
+                f"canonical route memory related family {family_id} has invalid solution anchor"
+            )
+        for field in (
+            "comparator_transport_commit",
+            "comparator_registration_commit",
+        ):
+            value = family.get(field)
+            if value is not None and (
+                not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{40}", value)
+            ):
+                raise ValueError(
+                    f"canonical route memory related family {family_id} has invalid {field}"
+                )
+
+
 def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
     """Return canonical route records and the digest of their tracked source."""
     source = root / ROUTE_MEMORY_PATH
@@ -308,6 +450,7 @@ def canonical_corpus(root: Path) -> tuple[dict[int, dict[str, Any]], str]:
                     f"canonical route memory record {route_id} has invalid {field}"
                 )
         _validate_source_current(record)
+        _validate_related_families(record)
         indexed[problem] = record
     if set(indexed) != ROSTER:
         raise ValueError("canonical route memory does not cover the public roster")
