@@ -37,7 +37,8 @@ problem-closure claim; every ranked family remains reachable below.
 | 7 | `strict_prime_tail_orbit_gap` / `represented` | `Erdos249257.ExternalVerification.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` → `ErdosProblems.Erdos249.irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` | The phase-density, cofinal natural-prime strict-gap, and associated uniform-margin producers remain unproved for the actual totient orbit. This is a conditional reduction only: no unconditional Erdős #249 endpoint, novelty, priority, significance, or external-review claim is made. It is distinct from the finite first_harmonic_pivot_decomposition and actual_lcm_orbit_separation families. |
 | 8 | `factorial_carry_characterisation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` → `ErdosProblems.Erdos68.irrational_factorialGapSeries_iff_cofinal_nonunit_carries` | The equivalence does not supply a cofinal carry producer. |
 | 9 | `prime_gap_reformulation` / `subordinate` | `Erdos249257.ExternalVerification.irrational_tsum_primeDyadicTerm_iff_primeGap` → `ErdosProblems.Erdos251.irrational_tsum_primeDyadicTerm_iff_primeGap` | The equivalence does not prove irrationality of either series. |
-| 10 | `totient_kernel_rank` / `subordinate` | `Erdos249257.ExternalVerification.not_finiteDimensional_span_fullTotientKernel` → `Erdos249257.not_finiteDimensional_span_fullTotientKernel` | The declaration is kernel-checked locally, but full-kernel infinite-dimensionality is not an independent contribution of this release; no rationality-to-finite-rank bridge is proved. |
+| 10 | `totient_carry_anti_compression` / `represented` | `Erdos249257.ExternalVerification.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` → `Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank` | This is a necessary consequence of rationality only: it gives no contradiction, no finite-rank upper bound for a rationality-supplied carry, and no irrationality proof for Erdős #249. Modulo a divisor of the multiplier, the forcing disappears and the carry becomes geometric, so quotient periodicity alone supplies no finite-ℚ-rank upper bound. The coefficient-side kernel-rank and certificate-equivalence families are not duplicated, and #249 remains open. |
+| 11 | `half_membership_seam_classification` / `represented` | `Erdos249257.ExternalVerification.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` → `Erdos249257.half_mem_mersenneAchievementSet_iff_unboundedTerminalFalse` | This exact endpoint-socket classification does not supply any unbounded terminal-false or upper-or-middle occurrences, cofinal supply, skipped-support producer, or half-membership witness; finite exact rows do not establish the required global supply. It is not an unconditional or universal Erdős #257 result, and no novelty, priority, significance, or external-review claim is made. |
 
 ### Reader tiers and relational boundaries
 
@@ -90,7 +91,7 @@ The prior-art record, not this table, supplies antecedents.
 Navigation inventory, not results. Generated certificate shards are
 counted as formal source, never as separate mathematical claims. The
 two roots currently expose 1,023 modules and
-153,320 declarations across #68, #243, #249,
+153,356 declarations across #68, #243, #249,
 #251, #257, #269, #1041, and #1049; exact counts and atlas handles
 remain in `docs/orientation.json`.
 
