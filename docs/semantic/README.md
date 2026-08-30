@@ -132,6 +132,14 @@ the #249 `probabilistic_gcd_geometry` family returns through that matrix to
 the exact gcd-moment and Stern–Brocot declarations, paper anchors, and the
 still-open irrationality boundary.
 
+For module-level traversal, use
+`python3 scripts/query_corpus.py --module <module_path_or_sigil>`. A source
+path selects the exact Lean module; a paper sigil selects the same module from
+the paper-facing alias table. The packet returns the authored synopsis,
+declaration preview, source identity, attached claims, and any bound
+route-memory context before the reader drills into a declaration or source
+coordinate.
+
 ### Problem-to-family return packets
 
 The public problem route is the bounded return surface for every indexed
