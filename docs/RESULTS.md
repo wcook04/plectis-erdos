@@ -19,12 +19,14 @@ All eight Erdős problems remain open. The development is neither a partial
 solution nor an empty collection of restatements. For a first mathematical
 pass, the high-signal spine is:
 
-- **#257, an actual irrationality theorem under explicit hypotheses.** The
-  adaptive-CRT certificate proves irrationality for every infinite
-  pairwise-coprime support with summable reciprocal mass, in every integer
-  base `b ≥ 2` (`irrational_erdosSupportSeries_pairwise_coprime`). This is the
-  strongest direct consequence in the public Comparator spine, but it is a
-  structured-support theorem, not universal #257.
+- **#257, a completed unconditional endpoint theorem in the full-support
+  case.** The checked divisor-block proof combines a bounded Bertrand/CRT first
+  block, middle-window divisor-pair averaging, weighted tail control, and
+  parameter closure (`irrational_erdosSum_full_support`). It proves the
+  canonical full-support series irrational in every integer base `b ≥ 2`, but
+  not universal #257. A distinct adaptive-CRT certificate proves irrationality
+  for every infinite pairwise-coprime support with summable reciprocal mass;
+  those structured-support hypotheses likewise leave arbitrary support open.
 - **#249, a constructive kernel-rank spine.** The exact dyadic totient-kernel
   rank `2^e + 1`, its odd-core basis, and the resulting infinite-dimensional
   span expose a real finite-level mechanism; the all-base rank is conditional
@@ -58,10 +60,10 @@ full evidence and exact boundaries.
 
 | Disposition | Reader-facing treatment |
 |---|---|
-| **promote** | #257 pairwise-coprime irrationality, #249 finite kernel rank/basis, and #68's exact carry/divisibility equivalence lead the first pass. |
+| **promote** | #257's canonical full-support irrationality theorem and distinct pairwise-coprime extension, #249 finite kernel rank/basis, and #68's exact carry/divisibility equivalence lead the first pass. |
 | **retain** | #243 bounded-rise/negative-orbit exclusions, #251's equivalence and countermodel, #269's height/rank obstruction, #1041's ray/root route, and #1049's recurrence/no-go remain the strongest boundary for each problem. |
 | **consolidate** | The adjacent #249 gcd-moment, Stern–Brocot, finite denominator, and synthetic LCM-shift results are one supporting arithmetic route; #257's geometry, finite-period, state, and defect results are one supporting universal-boundary route. |
-| **demote** | Citation-only #249 context and classical formalised results follow the local checked mechanisms; they establish provenance or context, not a new #249 conclusion. |
+| **demote** | Citation-only #249 context and other classical formalised variants follow the local checked mechanisms; they establish provenance or context, not a new #249 conclusion. The canonical #257 full-support theorem is promoted because its completed proof mechanism and exact endpoint are directly useful. |
 | **replace** | The old citation-first/problem-order first pass is replaced by this mechanism-first spine; the eight problem sections remain the verification index. |
 | **long-tail-only** | Finite searches, measurement logs, routine certificate shards, and unselected conditional predicate stacks stay available through the linked source maps, but do not lead the reader. |
 

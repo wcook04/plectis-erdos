@@ -32,10 +32,15 @@ is formal proof authority, not for meaning or novelty.
 All eight problems remain open. The most useful first pass is mechanism-first,
 not a novelty or priority ranking:
 
-- **#257 has a genuine conditional irrationality theorem.** An adaptive-CRT
-  argument handles every infinite pairwise-coprime support with summable
-  reciprocal mass in each integer base `b ≥ 2` ([source](Erdos249257/CertificateKernel.lean));
-  the universal-support endpoint remains open.
+- **#257 leads with a completed unconditional endpoint theorem for full
+  support.** Its checked divisor-block proof combines a bounded Bertrand/CRT
+  first block, middle-window divisor-pair averaging, weighted tail control,
+  and parameter closure ([source](Erdos249257/CertificateKernel.lean)); it
+  proves the canonical full-support series irrational for every integer base
+  `b ≥ 2`. This is not universal #257.
+- A distinct adaptive-CRT extension handles every infinite pairwise-coprime
+  support with summable reciprocal mass ([source](Erdos249257/CertificateKernel.lean));
+  its structured-support hypotheses do not settle arbitrary infinite support.
 - **#249 has an exact finite-level kernel spine.** The dyadic totient kernel
   has rank `2^e + 1` with an explicit odd-core basis ([source](Erdos249257/TotientKernelConditional.lean));
   the all-base extension is conditional on affine independence and no
