@@ -76,6 +76,9 @@ their own status in the same sentence. The reviewed claim registry
 *registry: none* are kernel-checked source whose reviewed claim rows do not
 yet exist, and [`docs/problems.json`](problems.json) is the per-problem
 authority for the six expansion problems.
+For the complete grouped family inventory with evidence classes and boundaries,
+use the generated [`docs/EXTERNAL_VERIFICATION.md`](EXTERNAL_VERIFICATION.md);
+it is a verification projection, not a replacement for claim authority.
 
 **#68 — is `∑_{n≥2} 1/(n!−1)` irrational?**
 
