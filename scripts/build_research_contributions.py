@@ -101,7 +101,7 @@ def has_symlink_component(path: Path, root: Path = ROOT) -> bool:
         # Test and caller-supplied paths may intentionally live outside this
         # checkout. Walk every existing component so a nested substituted
         # parent cannot redirect generated output to an external target, while
-        # retaining the platform-owned macOS ``/var`` compatibility alias.
+        # retaining the platform-owned macOS ``/tmp`` and ``/var`` aliases.
         current = Path(candidate.anchor)
         for part in candidate.parts[1:]:
             current /= part

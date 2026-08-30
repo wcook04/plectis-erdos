@@ -20,7 +20,7 @@ def main() -> int:
     projection = contributions.build_projection([])
     json_payload = contributions.canonical(projection)
     markdown_payload = contributions.human_projection(projection)
-    with tempfile.TemporaryDirectory() as directory:
+    with tempfile.TemporaryDirectory(dir="/tmp") as directory:
         root = Path(directory)
         json_output = root / "contributions.json"
         markdown_output = root / "CONTRIBUTIONS.md"
