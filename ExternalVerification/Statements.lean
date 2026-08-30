@@ -91,6 +91,32 @@ noncomputable def primeDyadicTerm (n : ℕ) : ℝ :=
 noncomputable def primeGapDyadicTerm (n : ℕ) : ℝ :=
   (primeGap0 n : ℝ) / 2 ^ (n + 1)
 
+/-! ## Coefficient-only natural-friction interface -/
+
+/-- The coefficient emitted by an unrestricted rational-valued carry. -/
+def carryCoeff (K : ℕ → ℚ) (n : ℕ) : ℚ :=
+  2 * K n - K (n + 1)
+
+/-- The finite dyadic partial sum emitted by `carryCoeff`. -/
+def carryPartialSum (K : ℕ → ℚ) (n : ℕ) : ℚ :=
+  ∑ i ∈ Finset.range n, carryCoeff K i / 2 ^ (i + 1)
+
+/-- A coherent no-go interface for the tempting claim that rational dyadic
+coefficient sums force periodic coefficients.  It records the exact finite
+endpoint identity for the linear carry, the linear carry's nonperiodicity,
+and the matching nonperiodicity of the actual consecutive-prime gaps.  It
+does not assert the infinite limit of the countermodel. -/
+def CoefficientOnlyNoGo : Prop :=
+  (∀ n : ℕ,
+    carryPartialSum (fun j => (j : ℚ)) n = -((n : ℚ) / 2 ^ n)) ∧
+  (∀ {h : ℕ}, 0 < h →
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N →
+      carryCoeff (fun j => (j : ℚ)) (N + h) =
+        carryCoeff (fun j => (j : ℚ)) N) ∧
+  (∀ {h : ℕ}, 0 < h →
+    ¬ ∃ N₀, ∀ N, N₀ ≤ N →
+      primeGap0 (N + h + 1) = primeGap0 (N + 1))
+
 /-! ## Abstract dyadic-tail classification vocabulary -/
 
 def DyadicTailRecurrence (g : ℕ → ℤ) (T : ℕ → ℚ) : Prop :=
@@ -1104,6 +1130,7 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
     (∀ {H D : ℕ}, ControlledForeignProjection H D →
       ProjectedFullTargetSeparation H D → ¬ScaleFullTargetHit H)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
+  problem251CoefficientOnlyNoGo : CoefficientOnlyNoGo
   problem251Equivalence :
     Summable primeDyadicTerm →
       (Irrational (∑' n : ℕ, primeDyadicTerm n) ↔
