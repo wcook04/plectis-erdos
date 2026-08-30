@@ -79,11 +79,20 @@ All eight remain open. Pass is mechanism-first:
   Comparator-visible: its four-term decomposition and sufficient `9X/10`
   certificate budget feed a conditional cofinal residual-decorrelation endpoint.
   A supplier-prime overlap at `X=16` blocks global isolation, so its producer is
-  open ([source](Erdos249257/FirstHarmonicPivot.lean#L514)). Its pointwise
-  prime-index branch asks, for every `h>0,N₀`, for a prime `p` beyond both with
-  `Re(tailOrbitFirstExp h (p-h-1)) < 9/10`, then feeds the same finite
-  certificate ([consumer](ExternalVerification/Challenge.lean#L579)); that cofinal
-  supply is open.
+  open ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
+- **A separate #249 producer-side route stays below those two frontiers.**
+  The exact Comparator wrapper
+  `irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` has two branches:
+  for every `h>0` and cutoff `X₀`, some block `X ≥ max X₀ 1` with at least
+  `(11/100)X` nonpositive tail-orbit phases yields an `89/100` mean saving and
+  a finite `9/10` gap; or, for every `h>0,N₀`, a prime
+  `p ≥ max (N₀+h+1) (h+5)` with
+  `Re(tailOrbitFirstExp h (p-h-1)) < 9/10` yields adaptive pivot escape
+  ([consumer](ExternalVerification/Challenge.lean#L579);
+  [source](ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean#L25)).
+  Both producer supplies are open for the actual totient orbit; nonintegrality
+  alone gives no fixed distance from integers, so this is a conditional
+  reduction, not a #249 solution.
 
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently

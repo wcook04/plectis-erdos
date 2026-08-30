@@ -392,6 +392,25 @@ replacement for claim authority.
   prime is not globally isolated (`:394`, `:569-588`). Comparator exposes this
   conditional route, but the supplier decorrelation budgets are unproved, so
   the unbounded certificate supply remains open.
+- A separate source-current `strict_prime_tail_orbit_gap` family is retained
+  below the actual-LCM and first-harmonic frontiers. Its Comparator wrapper
+  `irrational_totient_series_of_naturalPrimeTailOrbitStrictGap` has one coherent
+  two-branch interface. In the block branch, for every `h > 0` and cutoff
+  `X₀`, `TotientTailOrbitNonpositiveBlockDensity` assumes a late block with at
+  least `(11/100) * X` nonpositive values of
+  `Re(tailOrbitFirstExp h N)`; unit norm gives an `89/100` block saving, and a
+  single `1/100` truncation budget gives the finite `9/10` certificate gap. In
+  the prime branch, for every `h > 0` and `N₀`,
+  `DTWNaturalPrimeTailOrbitStrictGap` assumes a prime
+  `p ≥ max (N₀ + h + 1) (h + 5)` with
+  `Re(tailOrbitFirstExp h (p − h − 1)) < 9/10`; its positive margin feeds exact
+  natural pivot-fibre escape. The phase-density, cofinal-prime, and
+  uniform-margin producers are all open for the actual totient orbit, and
+  nonintegrality alone gives no fixed distance from the integers. This is
+  producer-side conditional evidence, distinct from the actual-LCM and
+  first-harmonic routes and not an #249 proof, novelty, or priority claim
+  (`ExternalVerification/Challenge.lean`;
+  `ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean:25-233`).
 - Irrationality of `S` has six checked exact characterisations, from
   tail-difference certificates through the lcm-diagonal form to
   window-separated pairs — `Erdos249257/LcmConeFlatness.lean:316–426`,
