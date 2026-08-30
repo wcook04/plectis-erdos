@@ -1595,7 +1595,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
       "local_source": "paper/erdos-249-binary-totient-series.tex",
-      "source_sha256": "sha256:76bf69bd10fd6697ed6d329e6e818d983eb578e727afda617e30508c7bde2b2f",
+      "source_sha256": "sha256:ca73eddad0047d34a967426f96f36cd682b90864e7ba0ec74956d7d30e7a94fa",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "moving_default_ref",
       "canonical_source_url": "https://github.com/wcook04/plectis-lean-erdos249-257/blob/main/paper/erdos-249-binary-totient-series.tex",
@@ -1612,175 +1612,175 @@
           "level": 1,
           "id": "sec:results",
           "title": "Introduction and main results",
-          "line": 70
+          "line": 72
         },
         {
           "level": 1,
           "id": "sec:family",
           "title": "The Lambert-series form of Problem #249",
-          "line": 231
+          "line": 233
         },
         {
           "level": 4,
           "id": "a-nearby-2026-totient-theorem-has-different-coordinates.",
           "title": "A nearby 2026 totient theorem has different coordinates.",
-          "line": 254
+          "line": 256
         },
         {
           "level": 4,
           "id": "exact-identities-and-representations.",
           "title": "Exact identities and representations.",
-          "line": 266
+          "line": 268
         },
         {
           "level": 1,
           "id": "sec:rank",
           "title": "Proof of the dyadic-section basis theorem",
-          "line": 303
+          "line": 305
         },
         {
           "level": 2,
           "id": "prior-work",
           "title": "Prior work",
-          "line": 307
+          "line": 309
         },
         {
           "level": 2,
           "id": "parity-separated-evaluation-matrices",
           "title": "Parity-separated evaluation matrices",
-          "line": 332
+          "line": 334
         },
         {
           "level": 1,
           "id": "sec:carry-rank",
           "title": "Carry-rank consequences of rationality",
-          "line": 348
+          "line": 350
         },
         {
           "level": 1,
           "id": "sec:denominator",
           "title": "A Farey-mediant denominator exclusion",
-          "line": 354
+          "line": 356
         },
         {
           "level": 1,
           "id": "sec:fresh-prime",
           "title": "Fresh-prime losses in the diagonal probes",
-          "line": 364
+          "line": 366
         },
         {
           "level": 4,
           "id": "finite-square-crt-correction-suppression.",
           "title": "Finite square-CRT correction suppression.",
-          "line": 403
+          "line": 405
         },
         {
           "level": 4,
           "id": "canonical-strict-jump-slack.",
           "title": "Canonical strict-jump slack.",
-          "line": 418
+          "line": 420
         },
         {
           "level": 4,
           "id": "finite-foreign-residue-projection.",
           "title": "Finite foreign-residue projection.",
-          "line": 429
+          "line": 431
         },
         {
           "level": 4,
           "id": "the-actual-lcm-orbit-exact-frontier-and-sign-trap.",
           "title": "The actual LCM orbit: exact frontier and sign trap.",
-          "line": 449
+          "line": 451
         },
         {
           "level": 4,
           "id": "a-quantitative-bridge-and-its-route-pruning-test.",
           "title": "A quantitative bridge, and its route-pruning test.",
-          "line": 457
+          "line": 459
         },
         {
           "level": 1,
           "id": "sec:nogo",
           "title": "Obstructions for fixed-coordinate methods",
-          "line": 467
+          "line": 469
         },
         {
           "level": 1,
           "id": "sec:programmes",
           "title": "Further conditional criteria",
-          "line": 479
+          "line": 481
         },
         {
           "level": 4,
           "id": "a-prime-orbit-sufficient-condition.",
           "title": "A prime-orbit sufficient condition.",
-          "line": 485
+          "line": 487
         },
         {
           "level": 4,
           "id": "finite-euler-factor-identities.",
           "title": "Finite Euler-factor identities.",
-          "line": 491
+          "line": 493
         },
         {
           "level": 4,
           "id": "mixed-differences-of-cyclotomic-layers.",
           "title": "Mixed differences of cyclotomic layers.",
-          "line": 518
+          "line": 520
         },
         {
           "level": 1,
           "id": "sec:frontier",
           "title": "Open problems",
-          "line": 564
+          "line": 566
         },
         {
           "level": 2,
           "id": "exact-equivalent-formulations",
           "title": "Exact equivalent formulations",
-          "line": 570
+          "line": 572
         },
         {
           "level": 2,
           "id": "stronger-sufficient-producer-problems",
           "title": "Stronger sufficient producer problems",
-          "line": 599
+          "line": 601
         },
         {
           "level": 2,
           "id": "structural-and-diophantine-routes",
           "title": "Structural and Diophantine routes",
-          "line": 651
+          "line": 658
         },
         {
           "level": 2,
           "id": "independent-extension",
           "title": "Independent extension",
-          "line": 686
+          "line": 693
         },
         {
           "level": 4,
           "id": "the-independent-denominator-exclusion.",
           "title": "The independent denominator exclusion.",
-          "line": 728
+          "line": 735
         },
         {
           "level": 2,
           "id": "sec:open",
           "title": "Logical status and analytic input",
-          "line": 734
+          "line": 741
         },
         {
           "level": 1,
           "id": "formal-source-notes",
           "title": "Formal source notes",
-          "line": 758
+          "line": 765
         },
         {
           "level": 4,
           "id": "registry-coverage.",
           "title": "Registry coverage.",
-          "line": 762
+          "line": 769
         }
       ],
       "citations_rendered": 21,
@@ -1789,8 +1789,8 @@
         "manuscript_title": "A Basis for the 2-Kernel of Euler\u2019s Totient"
       },
       "local_pdf": "erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:da1b319000fe35046173be3d8b996a6e01f6d34fc677accd5a8c32f9634327b7",
-      "pdf_byte_count": 197078,
+      "pdf_sha256": "sha256:dc0285853ef88d4856cc39d7e66ea4e88489ca6ed5309278770a794af1d5be39",
+      "pdf_byte_count": 198825,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection; this paper states no reading route of its own",
@@ -1798,7 +1798,7 @@
           {
             "id": "sec:results",
             "title": "Introduction and main results",
-            "line": 70
+            "line": 72
           },
           {
             "id": "sec:ask",
@@ -1808,7 +1808,7 @@
           {
             "id": "sec:open",
             "title": "Logical status and analytic input",
-            "line": 734
+            "line": 741
           }
         ],
         "unresolved_count": 1
