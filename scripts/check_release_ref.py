@@ -30,6 +30,7 @@ SCHEMA = "erdos249257-clean-ref-release-receipt/1"
 TAIL_BYTES = 16_000
 DIRTY_PATH_LIMIT = 120
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+SOURCE_REPOSITORY_LABEL = "local_checkout"
 SANITIZED_GIT_ENVIRONMENT_KEYS = (
     "GIT_DIR",
     "GIT_WORK_TREE",
@@ -66,6 +67,22 @@ RELEASE_COMMANDS = (
 
 class SnapshotError(RuntimeError):
     """Raised when the requested clean snapshot cannot be prepared."""
+
+
+def is_safe_snapshot_file(root: Path, path: Path) -> bool:
+    """Return whether a snapshot input is a regular, non-symlinked file."""
+    root = Path(os.path.abspath(root))
+    candidate = Path(os.path.abspath(path))
+    current = candidate
+    while True:
+        if current.is_symlink():
+            return False
+        if current == root:
+            break
+        if current.parent == current:
+            return False
+        current = current.parent
+    return candidate.is_file()
 
 
 def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
@@ -193,7 +210,7 @@ def prepare_clone(commit: str, parent: Path) -> Path:
     missing = [
         command[1]
         for command in RELEASE_COMMANDS
-        if not (clone / command[1]).is_file()
+        if not is_safe_snapshot_file(clone, clone / command[1])
     ]
     if missing:
         raise SnapshotError(
@@ -210,7 +227,7 @@ def receipt_base(ref: str, commit: str, caller_dirty_paths: list[str]) -> dict[s
         "requested_ref": ref,
         "resolved_commit": commit,
         "snapshot_posture": "clean_committed_clone_excludes_caller_worktree_changes",
-        "source_repository": str(ROOT),
+        "source_repository": SOURCE_REPOSITORY_LABEL,
         "caller_worktree_dirty_path_count": dirty_path_count,
         "caller_worktree_dirty_paths": caller_dirty_paths[:DIRTY_PATH_LIMIT],
         "caller_worktree_dirty_path_limit": DIRTY_PATH_LIMIT,

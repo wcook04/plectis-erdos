@@ -25,6 +25,28 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def test_snapshot_command_path_boundary() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        private = root / "private"
+        private.mkdir()
+        (private / "entry.py").write_text("print('outside')\n", encoding="utf-8")
+        commands = root / "commands"
+        commands.mkdir()
+        (commands / "linked.py").symlink_to(private / "entry.py")
+        require(
+            not check_release_ref.is_safe_snapshot_file(root, commands / "linked.py"),
+            "snapshot command guard accepted a symlinked file",
+        )
+        (root / "scripts").symlink_to(private, target_is_directory=True)
+        require(
+            not check_release_ref.is_safe_snapshot_file(
+                root, root / "scripts" / "entry.py"
+            ),
+            "snapshot command guard accepted a symlinked parent directory",
+        )
+
+
 def git(root: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args],
@@ -58,6 +80,7 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
 
 
 def main() -> int:
+    test_snapshot_command_path_boundary()
     original_root = check_release_ref.ROOT
     try:
         with tempfile.TemporaryDirectory() as tmp:
@@ -211,6 +234,10 @@ def main() -> int:
             require(
                 probe["resolved_commit"] == passing_commit,
                 "probe selected the wrong immutable commit",
+            )
+            require(
+                probe["source_repository"] == check_release_ref.SOURCE_REPOSITORY_LABEL,
+                "probe receipt exposed a local checkout path",
             )
             require(
                 probe["subprocess_environment"] == {
