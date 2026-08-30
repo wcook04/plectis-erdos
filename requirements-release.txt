@@ -1,0 +1,27 @@
+# Release-surface validator lock for Python 3.12.9.
+# Keep direct and transitive versions explicit so clean-clone validation does
+# not resolve a moving dependency graph.
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+attrs==26.1.0
+boolean.py==5.0
+certifi==2026.7.22
+cffconvert==2.0.0
+charset-normalizer==3.5.1
+click==8.5.0
+docopt==0.6.2
+idna==3.19
+jsonschema==3.2.0
+license-expression==30.4.4
+pykwalify==1.8.0
+pyrsistent==0.20.0
+python-dateutil==2.9.0.post0
+python-debian==1.1.1
+python-magic==0.4.27
+requests==2.34.2
+reuse==6.2.0
+ruamel.yaml==0.19.1
+setuptools==84.0.0
+six==1.17.0
+tomlkit==0.15.1
+urllib3==2.7.0

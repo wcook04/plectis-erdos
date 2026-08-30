@@ -516,7 +516,11 @@ jobs:
           python-version: "3.12"
       - name: Install metadata validators
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: pip install cffconvert reuse
+        run: python3 -m pip install --disable-pip-version-check --no-cache-dir --requirement requirements-release.txt
+
+      - name: Check pinned release-validator dependency lock
+        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
+        run: python3 scripts/test_dependency_lock_contract.py
 
       - name: Check newcomer architecture guide
         if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}

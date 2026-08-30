@@ -17,6 +17,39 @@ ROOT = Path(__file__).resolve().parent.parent
 LEAN_TOOLCHAIN_RE = re.compile(r"leanprover/lean4:(v[0-9]+\.[0-9]+\.[0-9]+)")
 COMMIT_RE = re.compile(r"[0-9a-f]{40}")
 MATHLIB_URL = "https://github.com/leanprover-community/mathlib4"
+RELEASE_VALIDATOR_REQUIREMENTS = (
+    ("Jinja2", "3.1.6"),
+    ("MarkupSafe", "3.0.3"),
+    ("attrs", "26.1.0"),
+    ("boolean.py", "5.0"),
+    ("certifi", "2026.7.22"),
+    ("cffconvert", "2.0.0"),
+    ("charset-normalizer", "3.5.1"),
+    ("click", "8.5.0"),
+    ("docopt", "0.6.2"),
+    ("idna", "3.19"),
+    ("jsonschema", "3.2.0"),
+    ("license-expression", "30.4.4"),
+    ("pykwalify", "1.8.0"),
+    ("pyrsistent", "0.20.0"),
+    ("python-dateutil", "2.9.0.post0"),
+    ("python-debian", "1.1.1"),
+    ("python-magic", "0.4.27"),
+    ("requests", "2.34.2"),
+    ("reuse", "6.2.0"),
+    ("ruamel.yaml", "0.19.1"),
+    ("setuptools", "84.0.0"),
+    ("six", "1.17.0"),
+    ("tomlkit", "0.15.1"),
+    ("urllib3", "2.7.0"),
+)
+RELEASE_INSTALL_COMMAND = (
+    "python3 -m pip install --disable-pip-version-check --no-cache-dir "
+    "--requirement requirements-release.txt"
+)
+REQUIREMENT_PIN_RE = re.compile(
+    r"^([A-Za-z0-9][A-Za-z0-9_.-]*)==([^\s#]+)$"
+)
 
 
 def encode_manifest(manifest: dict[str, Any]) -> str:
@@ -104,11 +137,53 @@ def dependency_lock_errors(
     return errors
 
 
+def release_validator_lock_errors(
+    requirements_text: str,
+    workflow_text: str,
+) -> list[str]:
+    """Return release-validator lock and workflow-install failures."""
+    errors: list[str] = []
+    parsed: list[tuple[str, str]] = []
+    for line_number, raw_line in enumerate(requirements_text.splitlines(), 1):
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        match = REQUIREMENT_PIN_RE.fullmatch(line)
+        if match is None:
+            errors.append(
+                "requirements-release.txt line "
+                f"{line_number} must be an exact name==version pin"
+            )
+            continue
+        parsed.append((match.group(1), match.group(2)))
+
+    if parsed != list(RELEASE_VALIDATOR_REQUIREMENTS):
+        errors.append(
+            "requirements-release.txt must contain exactly the pinned "
+            "release-validator package set"
+        )
+
+    if RELEASE_INSTALL_COMMAND not in workflow_text:
+        errors.append(
+            "release workflow must install metadata validators from "
+            "requirements-release.txt with the pinned command"
+        )
+    if "pip install cffconvert reuse" in workflow_text:
+        errors.append(
+            "release workflow must not resolve metadata validators from "
+            "moving package names"
+        )
+    return errors
+
+
 def main() -> int:
     toolchain = (ROOT / "lean-toolchain").read_text(encoding="utf-8")
     lakefile = (ROOT / "lakefile.toml").read_text(encoding="utf-8")
     manifest = (ROOT / "lake-manifest.json").read_text(encoding="utf-8")
+    requirements = (ROOT / "requirements-release.txt").read_text(encoding="utf-8")
+    workflow = (ROOT / ".github/workflows/lean.yml").read_text(encoding="utf-8")
     assert not dependency_lock_errors(toolchain, lakefile, manifest)
+    assert not release_validator_lock_errors(requirements, workflow)
 
     lake_rev_drift = lakefile.replace('rev = "v4.29.1"', 'rev = "v4.29.0"', 1)
     assert any(
@@ -162,10 +237,30 @@ def main() -> int:
         )
     )
 
+    moving_requirement = requirements.replace("cffconvert==2.0.0", "cffconvert", 1)
+    assert any(
+        "exact name==version pin" in error
+        for error in release_validator_lock_errors(moving_requirement, workflow)
+    )
+
+    extra_requirement = requirements + "\npytest==9.0.0\n"
+    assert any(
+        "exactly the pinned" in error
+        for error in release_validator_lock_errors(extra_requirement, workflow)
+    )
+
+    moving_install = workflow.replace(
+        RELEASE_INSTALL_COMMAND, "pip install cffconvert reuse", 1
+    )
+    moving_errors = release_validator_lock_errors(requirements, moving_install)
+    assert any("pinned command" in error for error in moving_errors)
+    assert any("moving package names" in error for error in moving_errors)
+
     print(
         "test_dependency_lock_contract: Lean, direct Mathlib input, and "
-        f"{len(manifest_data['packages'])} exact package revisions agree; "
-        "6 negative fixtures rejected"
+        f"{len(manifest_data['packages'])} exact package revisions plus "
+        f"{len(RELEASE_VALIDATOR_REQUIREMENTS)} release-validator pins agree; "
+        "9 negative fixtures rejected"
     )
     return 0
 
