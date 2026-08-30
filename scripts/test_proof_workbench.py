@@ -68,6 +68,73 @@ def check_session_path_boundaries(tmp: Path) -> None:
         raise AssertionError("traversing session slug received an escaped ledger")
 
 
+def check_replay_path_boundary(tmp: Path) -> None:
+    sessions_root = tmp / "replay-sessions"
+    parser = workbench.build_parser(workbench.repo_root())
+    _run(
+        sessions_root,
+        ["open", "--session", "replay", "--intent", "replay path boundary"],
+    )
+    source = "-- redirected replay bytes\n"
+    outside = tmp / "replay-outside.lean"
+    outside.write_text(source, encoding="utf-8")
+    receipt = {
+        "verdict": "kernel_accepted",
+        "detail": None,
+        "exit_code": 0,
+        "error_count": 0,
+        "sorry_count": 0,
+        "duration_seconds": 0.0,
+        "output_tail": "",
+    }
+    session = workbench.Session(sessions_root, "replay")
+    session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m002",
+            "at": "2026-08-30T00:00:00+00:00",
+            "kind": "probe",
+            "input_path": "../../replay-outside.lean",
+            "input_sha256": workbench._sha256_text(source),
+            "label": "redirected",
+            "kernel_receipt": receipt,
+        }
+    )
+    linked = sessions_root / "replay" / "probes" / "m003.lean"
+    linked.symlink_to(outside)
+    session.append(
+        {
+            "schema": workbench.MOVE_SCHEMA,
+            "move_id": "m003",
+            "at": "2026-08-30T00:00:00+00:00",
+            "kind": "probe",
+            "input_path": "probes/m003.lean",
+            "input_sha256": workbench._sha256_text(source),
+            "label": "linked",
+            "kernel_receipt": receipt,
+        }
+    )
+    calls: list[str] = []
+    real_runner = workbench.run_lean_probe
+    workbench.run_lean_probe = lambda _root, text: calls.append(text) or receipt
+    try:
+        replay_args = parser.parse_args(
+            ["--sessions-root", str(sessions_root), "replay", "--session", "replay"]
+        )
+        result = replay_args.func(replay_args, workbench.repo_root())
+    finally:
+        workbench.run_lean_probe = real_runner
+    if result["all_match"]:
+        raise AssertionError("replay treated rejected probe paths as matches")
+    if [row["replay"] for row in result["results"]] != [
+        "input_path_rejected",
+        "input_path_rejected",
+    ]:
+        raise AssertionError(f"replay path rejection drifted: {result}")
+    if calls:
+        raise AssertionError("replay executed a path rejected by the session boundary")
+
+
 def check_session_lifecycle(sessions_root: Path) -> None:
     opened = _run(
         sessions_root,
@@ -254,6 +321,7 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
         check_session_path_boundaries(tmp)
+        check_replay_path_boundary(tmp)
         sessions_root = tmp / "sessions"
         check_session_lifecycle(sessions_root)
         check_claim_gate(sessions_root, tmp)

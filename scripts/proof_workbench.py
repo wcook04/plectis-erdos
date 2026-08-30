@@ -361,6 +361,24 @@ def cmd_close(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     return session.append(record)
 
 
+def replay_probe_path(session: Session, input_path: Any) -> Path | None:
+    """Resolve only a regular stored probe beneath the session directory."""
+    if not isinstance(input_path, str) or not input_path or "\x00" in input_path:
+        return None
+    relative = Path(input_path)
+    if (
+        relative.is_absolute()
+        or ".." in relative.parts
+        or "." in relative.parts
+        or "\\" in input_path
+    ):
+        return None
+    candidate = session.directory / relative
+    if path_has_symlink_component(candidate) or not candidate.is_file():
+        return None
+    return candidate
+
+
 def cmd_replay(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     session = Session(args.sessions_root, args.session)
     if not session.exists():
@@ -369,26 +387,66 @@ def cmd_replay(args: argparse.Namespace, root: Path) -> dict[str, Any]:
     for row in session.moves():
         if row.get("kind") != "probe":
             continue
-        stored = session.directory / row["input_path"]
-        source = stored.read_text(encoding="utf-8")
-        if _sha256_text(source) != row["input_sha256"]:
+        stored = replay_probe_path(session, row.get("input_path"))
+        if stored is None:
             results.append(
                 {
-                    "move_id": row["move_id"],
+                    "move_id": row.get("move_id"),
+                    "replay": "input_path_rejected",
+                }
+            )
+            continue
+        input_sha256 = row.get("input_sha256")
+        if not isinstance(input_sha256, str):
+            results.append(
+                {
+                    "move_id": row.get("move_id"),
+                    "replay": "input_hash_missing",
+                }
+            )
+            continue
+        try:
+            source = stored.read_text(encoding="utf-8")
+        except (OSError, UnicodeError):
+            results.append(
+                {
+                    "move_id": row.get("move_id"),
+                    "replay": "input_unreadable",
+                }
+            )
+            continue
+        if _sha256_text(source) != input_sha256:
+            results.append(
+                {
+                    "move_id": row.get("move_id"),
                     "replay": "input_bytes_changed",
+                }
+            )
+            continue
+        kernel_receipt = row.get("kernel_receipt")
+        recorded_verdict = (
+            kernel_receipt.get("verdict")
+            if isinstance(kernel_receipt, dict)
+            else None
+        )
+        if not isinstance(recorded_verdict, str):
+            results.append(
+                {
+                    "move_id": row.get("move_id"),
+                    "replay": "kernel_receipt_invalid",
                 }
             )
             continue
         fresh = run_lean_probe(root, source)
         results.append(
             {
-                "move_id": row["move_id"],
-                "recorded_verdict": row["kernel_receipt"]["verdict"],
+                "move_id": row.get("move_id"),
+                "recorded_verdict": recorded_verdict,
                 "replayed_verdict": fresh["verdict"],
                 "replay": (
                     "match"
                     if fresh["verdict"]
-                    == row["kernel_receipt"]["verdict"]
+                    == recorded_verdict
                     else "verdict_changed"
                 ),
             }
