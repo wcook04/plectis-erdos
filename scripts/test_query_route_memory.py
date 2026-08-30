@@ -378,6 +378,35 @@ def main() -> int:
         else:
             raise AssertionError("unrouted available-route relationship escaped")
 
+    # Route IDs are public identity keys. A duplicate indexed entrypoint must
+    # fail before selector resolution can produce an ambiguous packet.
+    duplicate_entrypoints = {
+        "machine_readable_paper": {
+            "entrypoints": [
+                {
+                    "id": "duplicate-route",
+                    "route_kind": "mathematical_programme",
+                    "problem_target_claim_ids": ["erdos_249"],
+                },
+                {
+                    "id": "duplicate-route",
+                    "route_kind": "mathematical_programme",
+                    "problem_target_claim_ids": ["erdos_249"],
+                },
+            ]
+        }
+    }
+    with patch.object(route_memory, "_json", return_value=duplicate_entrypoints):
+        try:
+            route_memory._entrypoints(ROOT)
+        except route_memory.RouteMemoryError as exc:
+            require(
+                exc.code == "duplicate_route_identity",
+                f"duplicate entrypoint returned {exc.code}",
+            )
+        else:
+            raise AssertionError("duplicate indexed route identity was accepted")
+
     # Exercise the real CLI, including the optimized interpreter path.
     check_cli_environment()
     completed = run_cli(

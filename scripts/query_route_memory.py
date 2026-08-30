@@ -181,7 +181,19 @@ def _problem_row(root: Path, selector: str | int) -> dict[str, Any]:
 def _entrypoints(root: Path) -> list[dict[str, Any]]:
     claims = _json(root / "docs" / "claims.json")
     rows = claims.get("machine_readable_paper", {}).get("entrypoints", [])
-    return [dict(row) for row in rows if isinstance(row, Mapping) and row.get("id")]
+    result: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for row in rows:
+        if not isinstance(row, Mapping) or not row.get("id"):
+            continue
+        route_id = row.get("id")
+        if not isinstance(route_id, str) or not route_id.strip():
+            raise RouteMemoryError("route_identity_shape", str(route_id))
+        if route_id in seen_ids:
+            raise RouteMemoryError("duplicate_route_identity", route_id)
+        seen_ids.add(route_id)
+        result.append(dict(row))
+    return result
 
 
 def _problem_target_claim_ids(problem: Mapping[str, Any]) -> set[str]:
