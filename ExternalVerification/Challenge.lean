@@ -146,6 +146,16 @@ theorem lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient
             (2 * |(Nat.totient (periodLcm t) : ℤ)|) :=
   (portfolioClaims Unit).problem249LcmFactorIdealShiftAlgebra t ht
 
+theorem irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
+      PowerTwoActualLcmOrbitNonintegralitySupply :=
+  (portfolioClaims Unit).problem249ActualLcmOrbit
+
+theorem irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply
+    (hsupply : PowerTwoActualLcmOrbitNonintegralitySupply) :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) :=
+  (portfolioClaims Unit).problem249ActualLcmOrbit_of_supply hsupply
+
 theorem exists_primeGap0_gt (M : ℕ) : ∃ n, M < primeGap0 n :=
   (portfolioClaims Unit).problem251 M
 

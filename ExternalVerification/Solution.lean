@@ -14,6 +14,7 @@ import Erdos249257.HalfGreedyTwoThirdsBand
 import Erdos249257.SternBrocotRunGeometry
 import Erdos249257.TotientKernelConditional
 import Erdos249257.TotientMahlerDefect
+import Erdos249257.TotientActualLcmOrbitNonintegrality
 import ErdosProblems.Erdos68.FactorialZeroPlateau
 import ErdosProblems.Erdos243.ReciprocalTailRigidity
 import ErdosProblems.Erdos251.PrimeGapDyadicTail
@@ -50,6 +51,40 @@ private theorem periodLcm_eq_source (t : ℕ) :
   | succ t ih =>
       simp [periodLcm,
         Erdos249257.TotientTailPeriodKiller.periodLcm, ih]
+
+private theorem totientTail_eq_source (N : ℕ) :
+    totientTail N = Erdos249257.TotientTailPeriodKiller.totientTail N := by
+  rfl
+
+private theorem actualLcmHeight_eq_source (a : ℕ) :
+    actualLcmHeight a =
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmHeight a := by
+  simp [actualLcmHeight,
+    Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmHeight,
+    periodLcm_eq_source]
+
+private theorem actualLcmTailOrbit_eq_source (a : ℕ) :
+    actualLcmTailOrbit a =
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit a := by
+  simp only [actualLcmTailOrbit,
+    Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.actualLcmTailOrbit,
+    totientTail_eq_source, actualLcmHeight_eq_source]
+
+private theorem actualLcmOrbitSupply_eq_source :
+    PowerTwoActualLcmOrbitNonintegralitySupply =
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.PowerTwoActualLcmOrbitNonintegralitySupply := by
+  apply propext
+  constructor
+  · intro h a₀
+    obtain ⟨a, ha, hnon⟩ := h a₀
+    refine ⟨a, ha, ?_⟩
+    rw [actualLcmTailOrbit_eq_source] at hnon
+    exact hnon
+  · intro h a₀
+    obtain ⟨a, ha, hnon⟩ := h a₀
+    refine ⟨a, ha, ?_⟩
+    rw [actualLcmTailOrbit_eq_source]
+    exact hnon
 
 private theorem dyadicClearedPrefix_eq_source
     (a : ℕ → ℤ) (n L : ℕ) :
@@ -223,6 +258,14 @@ theorem portfolioClaims (ι : Type*) [Fintype ι] : PortfolioClaims ι := by
       shiftLinearCombination_eq_source, shiftLinearWeight_eq_source] using
       Erdos249257.TotientTailPeriodKiller.lcm_factorIdeal_finiteRank_shiftAlgebra_not_sufficient
         t ht
+  · rw [actualLcmOrbitSupply_eq_source]
+    exact
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_iff_actualLcmOrbitNonintegralitySupply
+  · intro hsupply
+    apply
+      Erdos249257.DiagonalFreshLossBridge.PowerTwoOddWindowAffine.irrational_totientSeries_of_actualLcmOrbitNonintegralitySupply
+    rw [← actualLcmOrbitSupply_eq_source]
+    exact hsupply
   · intro M
     simpa [primeGap0, prime0, ErdosProblems.Erdos251.primeGap0,
       ErdosProblems.Erdos251.prime0] using

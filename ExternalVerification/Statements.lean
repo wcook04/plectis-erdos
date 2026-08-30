@@ -312,6 +312,23 @@ def periodLcm : ℕ → ℕ
   | 0 => 1
   | t + 1 => Nat.lcm (periodLcm t) (t + 1)
 
+/-- The totient tail whose actual-LCM differences form the diagonal orbit. -/
+noncomputable def totientTail (N : ℕ) : ℝ :=
+  ∑' j : ℕ, (Nat.totient (N + 1 + j) : ℝ) / 2 ^ (j + 1)
+
+/-- The actual power-two LCM height used by the diagonal orbit. -/
+def actualLcmHeight (a : ℕ) : ℕ :=
+  periodLcm (2 ^ a)
+
+/-- The actual LCM-diagonal tail orbit at exponent `a`. -/
+noncomputable def actualLcmTailOrbit (a : ℕ) : ℝ :=
+  totientTail (2 * actualLcmHeight a) - totientTail (actualLcmHeight a)
+
+/-- Cofinal non-integrality of the actual power-two LCM-diagonal orbit. -/
+def PowerTwoActualLcmOrbitNonintegralitySupply : Prop :=
+  ∀ a₀ : ℕ, ∃ a, a₀ ≤ a ∧
+    actualLcmTailOrbit a ∉ Set.range ((↑) : ℤ → ℝ)
+
 /-- The zero-based dyadic coboundary `(2 - E)c`. -/
 def dyadicCoboundary (c : ℕ → ℤ) (n : ℕ) : ℤ :=
   2 * c n - c (n + 1)
@@ -435,6 +452,12 @@ structure PortfolioClaims (ι : Type*) [Fintype ι] : Prop where
               |(Nat.totient (periodLcm t) : ℤ)|) ∧
             ∀ i, |b i| ≤ shiftLinearWeight terms *
               (2 * |(Nat.totient (periodLcm t) : ℤ)|)
+  problem249ActualLcmOrbit :
+    Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n) ↔
+      PowerTwoActualLcmOrbitNonintegralitySupply
+  problem249ActualLcmOrbit_of_supply :
+    PowerTwoActualLcmOrbitNonintegralitySupply →
+      Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
   problem251 : ∀ M : ℕ, ∃ n, M < primeGap0 n
   problem251Equivalence :
     Summable primeDyadicTerm →
