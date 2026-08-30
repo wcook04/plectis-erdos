@@ -10,7 +10,9 @@ import json
 import os
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
+import check_primary_source_dispositions as checker
 from check_primary_source_dispositions import (
     LEDGER,
     NOTICE,
@@ -81,6 +83,41 @@ def main() -> int:
             )
         else:
             raise AssertionError("special disposition input was accepted")
+
+        raced_parent = root / "input-parent"
+        raced_parent.mkdir()
+        original_parent = root / "input-parent-original"
+        outside = root / "outside"
+        outside.mkdir()
+        raced_input = raced_parent / "metadata.json"
+        raced_input.write_text("inside\n", encoding="utf-8")
+        (outside / raced_input.name).write_text("outside\n", encoding="utf-8")
+        original_open = checker.os.open
+
+        def swap_parent(
+            path: Path,
+            flags: int,
+            mode: int = 0o777,
+            *,
+            dir_fd: int | None = None,
+        ) -> int:
+            if dir_fd is not None and Path(path).name == raced_input.name:
+                raced_parent.rename(original_parent)
+                raced_parent.symlink_to(outside, target_is_directory=True)
+            if dir_fd is not None:
+                return original_open(path, flags, mode, dir_fd=dir_fd)
+            return original_open(path, flags, mode)
+
+        with patch.object(checker.os, "open", side_effect=swap_parent):
+            observed = read_regular_bytes(raced_input, root=root)
+        require(
+            observed == b"inside\n",
+            "disposition reader followed a swapped parent directory",
+        )
+        require(
+            (original_parent / raced_input.name).is_file(),
+            "disposition reader did not use the held parent descriptor",
+        )
     release_checker = (ROOT / "scripts" / "check_release.py").read_text(encoding="utf-8")
     require(
         "check_primary_source_dispositions.py" in release_checker,

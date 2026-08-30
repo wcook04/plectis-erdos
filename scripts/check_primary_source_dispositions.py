@@ -56,6 +56,28 @@ def require(condition: bool, message: str, errors: list[str]) -> None:
         errors.append(message)
 
 
+def _is_allowed_platform_alias(path: Path) -> bool:
+    """Permit the host's canonical temporary-directory aliases only."""
+    try:
+        aliases = {
+            Path("/var"): Path("/private/var"),
+            Path("/tmp"): Path("/private/tmp"),
+        }
+        return path in aliases and path.resolve(strict=True) == aliases[path]
+    except OSError:
+        return False
+
+
+def _canonical_input_path(path: Path) -> Path:
+    """Resolve only the explicitly permitted macOS temporary aliases."""
+    candidate = Path(os.path.abspath(path))
+    if len(candidate.parts) >= 2:
+        alias = Path(os.sep, candidate.parts[1])
+        if _is_allowed_platform_alias(alias):
+            return alias.resolve(strict=True).joinpath(*candidate.parts[2:])
+    return candidate
+
+
 def artifact_path(value: Any, errors: list[str]) -> Path | None:
     if not isinstance(value, str) or not value.startswith("docs/primary-sources/"):
         errors.append(f"artifact path must stay under docs/primary-sources: {value!r}")
@@ -87,18 +109,38 @@ def read_regular_bytes(path: Path, *, root: Path | None = ROOT) -> bytes:
         current = current.parent
     if not candidate.is_file():
         raise OSError(f"disposition input is not a regular file: {candidate}")
-    flags = os.O_RDONLY
-    flags |= getattr(os, "O_CLOEXEC", 0)
-    flags |= getattr(os, "O_NONBLOCK", 0)
-    flags |= getattr(os, "O_NOFOLLOW", 0)
-    descriptor = os.open(candidate, flags)
+    candidate = _canonical_input_path(candidate)
+    directory_flags = os.O_RDONLY
+    directory_flags |= getattr(os, "O_CLOEXEC", 0)
+    directory_flags |= getattr(os, "O_DIRECTORY", 0)
+    directory_flags |= getattr(os, "O_NOFOLLOW", 0)
+    directory = os.open(os.sep, directory_flags)
+    descriptor = -1
     try:
+        for component in candidate.parts[1:-1]:
+            child = os.open(component, directory_flags, dir_fd=directory)
+            try:
+                if not stat.S_ISDIR(os.fstat(child).st_mode):
+                    raise OSError(
+                        f"disposition input parent is not a directory: {candidate.parent}"
+                    )
+            except BaseException:
+                os.close(child)
+                raise
+            os.close(directory)
+            directory = child
+        flags = os.O_RDONLY
+        flags |= getattr(os, "O_CLOEXEC", 0)
+        flags |= getattr(os, "O_NONBLOCK", 0)
+        flags |= getattr(os, "O_NOFOLLOW", 0)
+        descriptor = os.open(candidate.name, flags, dir_fd=directory)
         if not stat.S_ISREG(os.fstat(descriptor).st_mode):
             raise OSError(f"disposition input is not a regular file: {candidate}")
         with os.fdopen(descriptor, "rb") as stream:
             descriptor = -1
             return stream.read()
     finally:
+        os.close(directory)
         if descriptor >= 0:
             os.close(descriptor)
 
