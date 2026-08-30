@@ -64,19 +64,23 @@ All eight remain open. Pass is mechanism-first:
   an odd-rank/error-radius reduction; the sufficient (not equivalent)
   `PowerTwoActualLcmOrbitSeparationSupply` would force irrationality
   ([source](Erdos249257/TotientActualLcmOrbitSeparation.lean#L254)). Its supply
-  is unproved, and sign/top-edge data do not provide it. The finite dyadic
-  kernel has rank `2^e+1` for `e≥1` with an odd-core basis
-  ([source](Erdos249257/TotientMahlerDefect.lean#L1084)); affine independence and
-  a rationality-to-finite-rank bridge remain open. A distinct [orbit consequence](ExternalVerification/Challenge.lean#L137) gives, under hypothetical rationality, a positive multiplier, common eventual modular periods, and carry-kernel rank `≥2^e−1`; modulo a divisor the forcing vanishes, so there is no finite-rank contradiction
-  ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The public actual-LCM
-  diagonal form equates integrality with a full-target foreign-defect hit;
-  cofinal misses would prove irrationality, but the supply is open
-  ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). A separate
-  [first-harmonic pivot route](ExternalVerification/Challenge.lean) exposes a
-  four-term decomposition, a sufficient `9X/10` budget, and a conditional
-  cofinal residual-decorrelation endpoint; supplier isolation fails at `X=16`,
-  so its cofinal producer remains open
+  is open; sign/top-edge data do not provide it. Under hypothetical rationality,
+  an [orbit consequence](ExternalVerification/Challenge.lean#L137) gives a
+  positive multiplier, common eventual modular periods, and carry-kernel rank
+  `≥2^e−1`; divisor reduction erases forcing, so no finite-rank contradiction
+  ([source](Erdos249257/TotientTailCarryPeriod.lean#L224)). The diagonal form
+  makes integrality a full-target foreign-defect hit; cofinal misses would force
+  irrationality, but supply is open
+  ([source](Erdos249257/DiagonalPincerDecomposition.lean#L215)). The
+  [first-harmonic pivot](ExternalVerification/Challenge.lean) gives a four-term
+  `9X/10` decomposition and conditional cofinal residual decorrelation; supplier
+  isolation fails at `X=16`, so its producer is open
   ([source](Erdos249257/FirstHarmonicPivot.lean#L514)).
+- **Fixed precision does not close #249.** Each finite compatible odd-unit word at
+  `u>0` gets a bounded prefix-locked centred completion from a synthetic
+  unrestricted high quotient ([source](Erdos249257/TropicalCurvatureCarry.lean#L137)).
+  It blocks bounded local signatures only: no actual totient arithmetic or #249
+  endpoint.
 - **#68 has an exact endpoint reduction.** Irrationality is equivalent to
   cofinally many strict factorial-top divisibility misses, equivalently
   non-unit carries ([source](ErdosProblems/Erdos68/FactorialZeroPlateau.lean));
