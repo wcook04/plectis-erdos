@@ -65,44 +65,33 @@ source-level premises, computations, no-go results, and open boundaries.
 Nothing in this route settles #1041; the exact continuation boundary is in
 `FRONTIER.md` and must be read before any new proof search.
 
-## Expansion-problem source routes
+## Complete eight-problem return matrix
 
 The per-problem [machine index](problems.json) is the source for the complete
-module and note inventories below. Use the paper note for the mathematical
-exposition, the principal Lean file for checked propositions, and the stated
-open boundary for resumable work. These expansion roots are exact Lean source
-under `ErdosProblems.lean`, not reviewed claim-registry entries.
+module, paper, and open-obligation inventories. This single matrix makes the
+same route bidirectional: start at a public problem id, reach the strongest
+checked source and paper record, then use the exact index handles to resume the
+open boundary; a paper or source reader can return with the `--route` command
+in the second column. The checked sources under `ErdosProblems.lean` are exact
+Lean propositions, not reviewed claim-registry entries. For #249 and #257, the
+reviewed route is an additional registered claim spine, not a replacement for
+the problem-owned index route.
 
-| Problem | Paper-facing exposition | Principal checked source | Exact open boundary |
-|---|---|---|---|
-| #68 | [`erdos-68-factorial-denominator-irrationality.md`](papers/full-text/erdos-68-factorial-denominator-irrationality.md) | [`FactorialZeroPlateau.lean`](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean#L1090) | Produce cofinally many non-unit carries; the finite denominator exclusion is not cofinal. |
-| #243 | [`erdos-243-reciprocal-tail-rigidity.md`](papers/full-text/erdos-243-reciprocal-tail-rigidity.md) | [`ReciprocalTailRigidity.lean`](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L897) | Exclude the unbounded mixed-sign/negative-excursion regime after the conditional bounded case. |
-| #251 | [`erdos-251-prime-gap-dyadic-series.md`](papers/full-text/erdos-251-prime-gap-dyadic-series.md) | [`PrimeGapDyadicTail.lean`](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L360) | Obtain cofinally many adjacent small tail shifts at indices where the prime gaps differ. |
-| #269 | [`erdos-269-three-prime-running-lcm.md`](papers/full-text/erdos-269-three-prime-running-lcm.md) | [`ThreePrimeRunningLcm.lean`](../ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean#L123) | Supply the rationality-to-carry bridge and cofinal window escape for three-prime instances. |
-| #1049 | [`erdos-1049-rational-base-lambert.md`](papers/full-text/erdos-1049-rational-base-lambert.md) | [`RationalBaseLambert.lean`](../ErdosProblems/Erdos1049/RationalBaseLambert.lean#L155) | Prove or refute irrationality at `3/2`; current obstructions do not supply a method-wide construction or analytic remainder bound. |
+| Problem | Problem return / source back-route | Strongest checked source | Paper and source record | Exact open boundary |
+|---|---|---|---|---|
+| #68 | `python3 scripts/query_corpus.py --route erdos_68` | [`FactorialZeroPlateau.lean`](../ErdosProblems/Erdos68/FactorialZeroPlateau.lean) | [paper note](papers/full-text/erdos-68-factorial-denominator-irrationality.md) · [TeX source](../paper/erdos-68-factorial-denominator-irrationality.tex) | `weighted_collision_and_complementary_residue`; `cofinal_prime_power_amplification`; `cofinal_lower_endpoint_escape`; `cofinal_doubled_prime_branch_failure`; `cramer_residual_nonintegrality` |
+| #243 | `python3 scripts/query_corpus.py --route erdos_243` | [`ReciprocalTailRigidity.lean`](../ErdosProblems/Erdos243/ReciprocalTailRigidity.lean) | [paper note](papers/full-text/erdos-243-reciprocal-tail-rigidity.md) · [TeX source](../paper/erdos-243-reciprocal-tail-rigidity.tex) | `unbounded_negative_excursions`; `derive_the_two_analytic_hypotheses`; `formalise_the_published_criteria` |
+| #249 | `python3 scripts/query_corpus.py --route erdos_249` · reviewed return: `python3 scripts/query_corpus.py --route erdos249_certificate_story` | [`TotientStrictPrimeEscape.lean`](../ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean) | [paper note](papers/full-text/erdos-249-binary-totient-series.md) · [TeX source](../paper/erdos-249-binary-totient-series.tex) | Index: `strict_prime_tail_orbit_gap`; `hankel_denominator_fan_in`; `euler_sieve_limit_theorem`; `prime_ray_resultant_supply`; `stern_brocot_arithmetic_bridge`. Reviewed: `remaining_open.erdos_249_irrationality`; `remaining_open.unbounded_certificate_supply` |
+| #251 | `python3 scripts/query_corpus.py --route erdos_251` | [`PrimeGapDyadicTail.lean`](../ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) | [paper note](papers/full-text/erdos-251-prime-gap-dyadic-series.md) · [TeX source](../paper/erdos-251-prime-gap-dyadic-series.tex) | `prime_gap_cofinal_shift_escape`; `cofinal_adjacent_small_mismatch`; `actual_prime_gap_tail_formal_bridge` |
+| #257 | `python3 scripts/query_corpus.py --route erdos_257` · reviewed return: `python3 scripts/query_corpus.py --route erdos257_half_story` | [`MersenneSubseriesRigidity.lean`](../ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean) | [paper note](papers/full-text/erdos-257-mersenne-support-subseries.md) · [TeX source](../paper/erdos-257-mersenne-support-subseries.tex) | Index: `arithmetic_rigidity_for_thin_supports`; `formalise_measure_and_stride_geometry`. Reviewed: `remaining_open.half_value_membership`; `remaining_open.twenty_one_permanent_affine_supercapacity`; `remaining_open.universal_257_all_infinite_supports` |
+| #269 | `python3 scripts/query_corpus.py --route erdos_269` | [`ThreePrimeRunningLcm.lean`](../ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean) | [paper note](papers/full-text/erdos-269-three-prime-running-lcm.md) · [TeX source](../paper/erdos-269-three-prime-running-lcm.tex) | `actual_local_window_residue_escape`; `actual_rational_carry_instantiation`; `nonstationary_analytic_theorem`; `unbounded_height_certificate` |
+| #1041 | `python3 scripts/query_corpus.py --route erdos_1041` | [`NewtonFlowRaySeparation.lean`](../ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean) | [dated frontier](../research_corpus/Erdos1041/FRONTIER.md) → [paper note](papers/full-text/erdos-1041-lemniscate-newton-flow.md) · [TeX source](../paper/erdos-1041-lemniscate-newton-flow.tex) | `repair_or_refute_saddle_block`; `compact_ray_cut_strip_decomposition`; `metric_gluing_below_two`; `two_stage_stable_perturbation`; `relative_global_newton_flow_theorem` |
+| #1049 | `python3 scripts/query_corpus.py --route erdos_1049` | [`RationalBaseLambert.lean`](../ErdosProblems/Erdos1049/RationalBaseLambert.lean) | [paper note](papers/full-text/erdos-1049-rational-base-lambert.md) · [TeX source](../paper/erdos-1049-rational-base-lambert.tex) | `three_halves_growing_rank_endpoint_jet_kernel` |
 
-For #249 and #257, use the reviewed routes above and the registered paper
-labels returned by `query_corpus.py`; this table deliberately covers only the
-five expansion roots that are not represented in the reviewed module map.
-Every row remains open at the problem level, and a checked local proposition
-does not upgrade that status.
-
-## Reviewed problem return routes
-
-The two reviewed problems also have problem-owned registry routes. Use the
-registry route to return from a problem number, the reviewed route to recover
-the strongest registered claim spine, and the exact open handles to resume
-work. The paper notes are exposition; the reviewed route's claim and source
-packets retain their own authority boundaries.
-
-| Problem | Problem-owned return | Reviewed result route and paper note | Exact open frontier |
-|---|---|---|---|
-| #249 | `python3 scripts/query_corpus.py --route erdos_249` | `python3 scripts/query_corpus.py --route erdos249_certificate_story`; [problem note](papers/full-text/erdos-249-binary-totient-series.md) | `remaining_open.erdos_249_irrationality`; `remaining_open.unbounded_certificate_supply` |
-| #257 | `python3 scripts/query_corpus.py --route erdos_257` | `python3 scripts/query_corpus.py --route erdos257_half_story`; [problem note](papers/full-text/erdos-257-mersenne-support-subseries.md) | `remaining_open.half_value_membership`; `remaining_open.twenty_one_permanent_affine_supercapacity`; `remaining_open.universal_257_all_infinite_supports` |
-
-From either reviewed route, use the registered claim or paper-anchor query
-to travel back to exact Lean declarations; use the open query for the
-unresolved boundary rather than treating a checked special case as a solution:
+From a reviewed route, use the registered claim or paper-anchor query to
+travel back to exact Lean declarations; use the open query for the registered
+unresolved boundary rather than treating a checked special case as a
+solution:
 
 ```sh
 python3 scripts/query_corpus.py --claim <claim_id>
